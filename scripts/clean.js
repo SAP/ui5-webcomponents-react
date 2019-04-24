@@ -1,7 +1,5 @@
 const rimraf = require('rimraf');
 
-rimraf('packages/**/*.d.ts', (error) => {
-  if (error) {
-    console.error(error);
-  }
-});
+rimraf.sync('build');
+rimraf.sync('coverage');
+rimraf.sync('packages/**/*.d.ts');

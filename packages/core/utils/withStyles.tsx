@@ -1,5 +1,5 @@
 import React, { ComponentType, Ref } from 'react';
-import injectSheet, { jss, withTheme } from 'react-jss';
+import injectSheet from 'react-jss';
 import deepMerge from 'deepmerge';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { Logger } from '@fiori-for-react/utils';

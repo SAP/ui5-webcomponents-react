@@ -6,17 +6,17 @@ require('dotenv').config({
 });
 
 module.exports = ({ config }) => {
-  const tsLoaders = [
-    {
-      test: /\.(ts|tsx)$/,
-      loader: require.resolve('ts-loader'),
-      options: {
-        compilerOptions: {
-          emitDeclarationOnly: false
+  const tsLoader = {
+    test: /\.(ts|tsx)$/,
+    use: [
+      {
+        loader: require.resolve('awesome-typescript-loader'),
+        options: {
+          errorsAsWarnings: true
         }
       }
-    }
-  ];
+    ]
+  };
 
   if (!process.env.SKIP_DOC_GENERATION) {
     highlightLog('Warning: Prop Types Table Generation is active');
@@ -27,12 +27,8 @@ If you don't need the prop tables we strongly recommend to turn it off by adding
 SKIP_DOC_GENERATION=true
     
 `);
-
-    tsLoaders.push({
-      test: /\.(ts|tsx)$/,
-      use: [require.resolve('./styleInfoLoader.js'), require.resolve('react-docgen-typescript-loader')]
-    });
-  } else {
+    tsLoader.use.push({ loader: require.resolve('./styleInfoLoader.js') });
+    tsLoader.use.push({ loader: require.resolve('react-docgen-typescript-loader') });
   }
   return {
     ...config,
@@ -40,7 +36,7 @@ SKIP_DOC_GENERATION=true
       ...config.module,
       rules: [
         ...config.module.rules,
-        ...tsLoaders,
+        tsLoader,
         {
           test: /\.jsx/,
           exclude: /node_modules/,

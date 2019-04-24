@@ -29,14 +29,12 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "files": [
-    "typings/untyped-modules.d.ts"
-  ],
   "include": [
     "packages/**/*",
     "shared/**/*",
     "typings/**/*"
   ],
   "exclude": [
+    "node_modules"
   ]
 }

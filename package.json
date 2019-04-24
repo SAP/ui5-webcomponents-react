@@ -7,17 +7,15 @@
   "license": "Apache-2.0",
   "repository": "https://github.com/SAP/fiori-for-react",
   "scripts": {
-    "start": "cd packages/docs && start-storybook -p 6006",
-    "bootstrap": "lerna bootstrap",
+    "start": "start-storybook -p 6006 -c packages/docs/.storybook",
     "build": "node ./scripts/rollup/build.js",
-    "deploy": "node ./scripts/deploy.js",
     "test": "npm-run-all --sequential test:clean test:jest:coverage test:karma test:combineCoverage",
     "test:clean": "node scripts/test/clean.js",
     "test:karma": "cd ./packages/fiori3 && node scripts/test/karma.js --coverage && cd ../../",
     "test:jest": "jest --config=config/jest.config.js --env=jsdom",
     "test:jest:coverage": "jest --config=config/jest.config.js --env=jsdom --coverage && node scripts/test/renameJestFile.js",
     "test:combineCoverage": "nyc report --reporter=html --reporter=clover --temp-dir coverage/partial",
-    "clean": "lerna clean && node scripts/clean.js",
+    "clean": "lerna clean --yes && node scripts/clean.js",
     "postversion": "node ./scripts/postversion/index.js",
     "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\""
   },
@@ -51,13 +49,15 @@
     "@storybook/theming": "^5.0.10",
     "@types/chai": "^4.1.7",
     "@types/enzyme": "^3.9.1",
+    "@types/hoist-non-react-statics": "^3.3.1",
     "@types/jest": "^24.0.11",
     "@types/mocha": "^5.2.6",
     "@types/modernizr": "^3.5.3",
-    "@types/react": "^16.8.13",
+    "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
     "@types/sinon": "^7.0.11",
     "@types/storybook__react": "^4.0.1",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-code-frame": "^6.26.0",
     "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
@@ -111,7 +111,7 @@
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
     "npm-run-all": "^4.1.5",
-    "nyc": "^13.3.0",
+    "nyc": "^14.0.0",
     "open": "^6.1.0",
     "ora": "^3.4.0",
     "puppeteer": "^1.14.0",
@@ -137,7 +137,6 @@
     "targz": "^1.0.1",
     "tmp": "^0.0.33",
     "ts-jest": "^24.0.2",
-    "ts-loader": "^5.3.3",
     "ts-node": "6.2.0",
     "tslint": "^5.15.0",
     "tslint-config-prettier": "^1.18.0",
@@ -147,7 +146,7 @@
     "webpack-cli": "^3.3.0"
   },
   "resolutions": {
-    "@types/react": "16.8.13"
+    "@types/react": "16.8.14"
   },
   "husky": {
     "hooks": {

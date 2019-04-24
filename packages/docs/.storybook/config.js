@@ -7,7 +7,6 @@ import { withInfo } from '@storybook/addon-info';
 import { TableComponent } from './TableComponent';
 import { withStyleInfo } from './decorators/withStyleInfo';
 import { Fiori4ReactTheme } from './theme';
-import { sap_fiori_3 } from '@fiori-for-react/styles';
 
 export const propTablesExclude = [ThemeProvider];
 
