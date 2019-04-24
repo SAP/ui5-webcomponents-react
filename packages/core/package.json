@@ -1,0 +1,20 @@
+{
+  "name": "@fiori-for-react/core",
+  "version": "4.5.2",
+  "description": "Shared, basic elements of Fiori4React",
+  "author": "D059190",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "dependencies": {
+    "core-js": "^2.6.4",
+    "deepmerge": "^3.2.0",
+    "hoist-non-react-statics": "^3.3.0",
+    "react-jss": "^8.6.1"
+  },
+  "peerDependencies": {
+    "@fiori-for-react/styles": "^4.2.2",
+    "@fiori-for-react/utils": "^4.2.2",
+    "react": "^16.4.2"
+  }
+}

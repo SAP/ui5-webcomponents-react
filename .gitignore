@@ -1,0 +1,21 @@
+# Created by .ignore support plugin (hsz.mobi)
+node_modules
+*.iml
+yarn-error.log
+.idea
+coverage
+/.env
+lib/
+dist/
+@types
+typings
+!/typings
+.cache
+!packages/core/utils/Device/lib
+!packages/fiori3/src/lib
+build
+packages/core/npm/
+/packages/*/npm/**/*.d.ts
+!packages/core/npm/.xmake.cfg
+!packages/core/npm/.npmignore
+.out

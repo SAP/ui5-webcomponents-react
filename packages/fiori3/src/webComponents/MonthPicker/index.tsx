@@ -1,0 +1,17 @@
+import React, { FC } from 'react';
+import { CalendarType } from '@fiori-for-react/core/enums/CalendarType';
+import { Event } from '@fiori-for-react/utils';
+import UI5MonthPicker from '@ui5/webcomponents/dist/MonthPicker';
+import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+
+export interface MonthPickerPropTypes extends WithWebComponentPropTypes {
+  timestamp?: number; // @generated
+  primaryCalendarType?: CalendarType; // @generated
+  onSelectedMonthChange?: (event: Event) => void; // @generated
+}
+
+const MonthPicker: FC<MonthPickerPropTypes> = withWebComponent<MonthPickerPropTypes>(UI5MonthPicker);
+
+MonthPicker.displayName = 'MonthPicker';
+
+export { MonthPicker };

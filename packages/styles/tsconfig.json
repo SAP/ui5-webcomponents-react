@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "npm",
+    "emitDeclarationOnly": true
+  },
+  "include": [
+    "src/index.ts"
+  ]
+}

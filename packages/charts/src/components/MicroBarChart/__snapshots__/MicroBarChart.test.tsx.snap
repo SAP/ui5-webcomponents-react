@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Micro Bar Chart Renders with data 1`] = `
+<div
+  class="MicroBarChart-container- undefined"
+>
+  <div>
+    <div
+      class="MicroBarChart-labelContainer-"
+    >
+      <span
+        class="MicroBarChart-label-"
+      >
+        Bar Number One
+      </span>
+      <span
+        class="MicroBarChart-text-"
+        style="font-size:12px;color:#5899DA"
+      >
+        10
+      </span>
+    </div>
+    <div
+      class="MicroBarChart-valueContainer-"
+    >
+      <div
+        class="MicroBarChart-valueBar-"
+        style="width:10%;background-color:#5899DA"
+      />
+      <div
+        class="MicroBarChart-fillUp-"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      class="MicroBarChart-labelContainer-"
+    >
+      <span
+        class="MicroBarChart-label-"
+      >
+        Bar Number Two
+      </span>
+      <span
+        class="MicroBarChart-text-"
+        style="font-size:12px;color:#E8743B"
+      >
+        100
+      </span>
+    </div>
+    <div
+      class="MicroBarChart-valueContainer-"
+    >
+      <div
+        class="MicroBarChart-valueBar-"
+        style="width:100%;background-color:#E8743B"
+      />
+      <div
+        class="MicroBarChart-fillUp-"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Micro Bar Chart custom colors 1`] = `
+<div
+  class="MicroBarChart-container- undefined"
+>
+  <div>
+    <div
+      class="MicroBarChart-labelContainer-"
+    >
+      <span
+        class="MicroBarChart-label-"
+      >
+        Bar Number One
+      </span>
+      <span
+        class="MicroBarChart-text-"
+        style="font-size:12px;color:#f0ab00"
+      >
+        10
+      </span>
+    </div>
+    <div
+      class="MicroBarChart-valueContainer-"
+    >
+      <div
+        class="MicroBarChart-valueBar-"
+        style="width:10%;background-color:#f0ab00"
+      />
+      <div
+        class="MicroBarChart-fillUp-"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      class="MicroBarChart-labelContainer-"
+    >
+      <span
+        class="MicroBarChart-label-"
+      >
+        Bar Number Two
+      </span>
+      <span
+        class="MicroBarChart-text-"
+        style="font-size:12px;color:#E8743B"
+      >
+        100
+      </span>
+    </div>
+    <div
+      class="MicroBarChart-valueContainer-"
+    >
+      <div
+        class="MicroBarChart-valueBar-"
+        style="width:100%;background-color:#E8743B"
+      />
+      <div
+        class="MicroBarChart-fillUp-"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Micro Bar Chart element selection 1`] = `
+<div
+  class="MicroBarChart-container- undefined"
+>
+  <div>
+    <div
+      class="MicroBarChart-labelContainer-"
+    >
+      <span
+        class="MicroBarChart-label-"
+      >
+        Bar Number One
+      </span>
+      <span
+        class="MicroBarChart-text-"
+        style="font-size:12px;color:#5899DA"
+      >
+        10
+      </span>
+    </div>
+    <div
+      class="MicroBarChart-valueContainer-"
+    >
+      <div
+        class="MicroBarChart-valueBar-"
+        style="width:10%;background-color:#5899DA"
+      />
+      <div
+        class="MicroBarChart-fillUp-"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Micro Bar Chart maxWidth selection 1`] = `
+<div
+  class="MicroBarChart-container- undefined"
+  style="max-width:200px"
+>
+  <div>
+    <div
+      class="MicroBarChart-labelContainer-"
+    >
+      <span
+        class="MicroBarChart-label-"
+      >
+        Bar Number One
+      </span>
+      <span
+        class="MicroBarChart-text-"
+        style="font-size:12px;color:#5899DA"
+      >
+        10
+      </span>
+    </div>
+    <div
+      class="MicroBarChart-valueContainer-"
+    >
+      <div
+        class="MicroBarChart-valueBar-"
+        style="width:10%;background-color:#5899DA"
+      />
+      <div
+        class="MicroBarChart-fillUp-"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      class="MicroBarChart-labelContainer-"
+    >
+      <span
+        class="MicroBarChart-label-"
+      >
+        Bar Number Two
+      </span>
+      <span
+        class="MicroBarChart-text-"
+        style="font-size:12px;color:#E8743B"
+      >
+        100
+      </span>
+    </div>
+    <div
+      class="MicroBarChart-valueContainer-"
+    >
+      <div
+        class="MicroBarChart-valueBar-"
+        style="width:100%;background-color:#E8743B"
+      />
+      <div
+        class="MicroBarChart-fillUp-"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,12 @@
+{
+  "minify": true,
+  "options": [],
+  "feature-detects": [
+    "test/pointerevents",
+    "test/touchevents",
+    "test/websockets",
+    "test/event/deviceorientation-motion",
+    "test/forms/placeholder",
+    "test/window/matchmedia"
+  ]
+}

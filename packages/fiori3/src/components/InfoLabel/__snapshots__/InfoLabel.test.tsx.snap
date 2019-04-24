@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoLabel Render without crashing 1`] = `
+<div
+  class="InfoLabel-infoLabelContainer- InfoLabel-infoLabelContainer- InfoLabel-text- InfoLabel-displayOnly-"
+>
+  <span
+    class="InfoLabel-label-"
+  />
+</div>
+`;
+
+exports[`InfoLabel With Number 1`] = `
+<div
+  class="InfoLabel-infoLabelContainer- InfoLabel-infoLabelContainer- InfoLabel-numeric-"
+  style="width: 100px;"
+>
+  <span
+    class="InfoLabel-label-"
+  >
+    123
+  </span>
+</div>
+`;
+
+exports[`InfoLabel With Text 1`] = `
+<div
+  class="InfoLabel-infoLabelContainer- InfoLabel-infoLabelContainer- InfoLabel-text-"
+  style="width: 100px;"
+>
+  <span
+    class="InfoLabel-label-"
+  >
+    Test
+  </span>
+</div>
+`;

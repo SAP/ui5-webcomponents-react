@@ -1,0 +1,11 @@
+{
+  "name": "@fiori-for-react/styles",
+  "version": "4.5.2",
+  "description": "Stylesheets for Fiori4React",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
+  "types": "index.d.ts",
+  "repository": "https://github.com/SAP/fiori-for-react/packages/styles",
+  "author": "Marcus Notheis <marcus.notheis@sap.com>",
+  "license": "Apache-2.0"
+}

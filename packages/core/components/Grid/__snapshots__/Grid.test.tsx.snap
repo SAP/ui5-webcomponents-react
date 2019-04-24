@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid Custom Class Names and Styling 1`] = `
+<div
+  class="GridComponent-grid- GridComponent-gridVSpace1- customClassName"
+  style="width: 60%; background-color: purple;"
+>
+  <div
+    class="GridComponent-gridSpan-"
+  >
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+  </div>
+</div>
+`;
+
+exports[`Grid Grid Position Center 1`] = `
+<div
+  class="GridComponent-grid- GridComponent-gridHSpace1- GridComponent-gridVSpace1- GridComponent-gridPositionCenter-"
+>
+  <div
+    class="GridComponent-gridSpan-"
+  >
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+  </div>
+</div>
+`;
+
+exports[`Grid Grid Position Right 1`] = `
+<div
+  class="GridComponent-grid- GridComponent-gridHSpace1- GridComponent-gridVSpace1- GridComponent-gridPositionRight-"
+>
+  <div
+    class="GridComponent-gridSpan-"
+  >
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+  </div>
+</div>
+`;
+
+exports[`Grid Renders Children 1`] = `
+<div
+  class="GridComponent-grid- GridComponent-gridHSpace1- GridComponent-gridVSpace1-"
+>
+  <div
+    class="GridComponent-gridSpan-"
+  >
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+  </div>
+</div>
+`;
+
+exports[`Grid Renders Children with custom layout data 1`] = `
+<div
+  class="GridComponent-grid- GridComponent-gridHSpace1- GridComponent-gridVSpace1-"
+>
+  <div
+    class="GridComponent-gridSpan-"
+  >
+    <div
+      data-layout="[object Object]"
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+  </div>
+  <div
+    class="GridComponent-gridSpan-"
+  >
+    <div
+      data-layout="[object Object]"
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+  </div>
+</div>
+`;

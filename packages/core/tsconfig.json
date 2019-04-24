@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "npm",
+    "declaration": true,
+    "declarationDir": "npm",
+    "emitDeclarationOnly": false,
+    "allowJs": true
+  },
+  "include": [
+    "components",
+    "enums",
+    "interfaces",
+    "types",
+    "utils",
+    "index.ts"
+  ],
+  "exclude": [
+    "**/*.test.tsx",
+    "**/*.test.ts",
+    "**/*.jss.ts"
+  ]
+}

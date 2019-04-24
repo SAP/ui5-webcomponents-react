@@ -1,0 +1,23 @@
+{
+  "name": "@fiori-for-react/charts",
+  "version": "4.5.2",
+  "description": "Charts for Fiori4React",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
+  "types": "index.d.ts",
+  "repository": "https://github.com/SAP/fiori-for-react/packages/charts",
+  "author": "Marcus Notheis <marcus.notheis@sap.com>",
+  "license": "Apache-2.0",
+  "private": false,
+  "devDependencies": {
+    "@types/chart.js": "^2.7.51"
+  },
+  "dependencies": {
+    "@fiori-for-react/core": "^4.5.2",
+    "@fiori-for-react/utils": "^4.5.2",
+    "chart.js": "^2.8.0",
+    "chartjs-plugin-datalabels": "^0.6.0",
+    "is-mergeable-object": "^1.1.0",
+    "react-chartjs-2": "^2.7.6"
+  }
+}
