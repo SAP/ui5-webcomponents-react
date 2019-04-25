@@ -88,29 +88,29 @@
       "filename": "charts.development.js",
       "bundleType": "NODE_ES_DEV",
       "packageName": "charts",
-      "size": 88927,
-      "gzip": 15659
+      "size": 103736,
+      "gzip": 19071
     },
     {
       "filename": "charts.production.min.js",
       "bundleType": "NODE_ES_PROD",
       "packageName": "charts",
-      "size": 88927,
-      "gzip": 15659
+      "size": 103736,
+      "gzip": 19071
     },
     {
       "filename": "charts.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "charts",
-      "size": 89353,
-      "gzip": 15708
+      "size": 104162,
+      "gzip": 19089
     },
     {
       "filename": "charts.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "charts",
-      "size": 38450,
-      "gzip": 9811
+      "size": 43597,
+      "gzip": 11147
     },
     {
       "filename": "custom-components.development.js",

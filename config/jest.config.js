@@ -25,10 +25,8 @@ module.exports = {
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
   moduleNameMapper: {
-    '\\.(css)$': 'identity-obj-proxy',
-    '^@fiori-for-react/styles$': '<rootDir>/packages/styles/src/index.ts',
-    '^@fiori-for-react/utils$': '<rootDir>/packages/utils/src/index.ts',
-    '^@shared/(.*)$': '<rootDir>/shared/$1'
+    '^@shared/(.*)$': '<rootDir>/shared/$1',
+    '^@ui5/webcomponents/dist(.*)$': '<rootDir>/shared/tests/mock/ReactComponent.js'
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   globals: {

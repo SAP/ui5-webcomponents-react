@@ -7,6 +7,17 @@ import { matchSnapshot } from 'chai-karma-snapshot';
 use(matchSnapshot);
 
 describe('Text', () => {
+  let appRoot: HTMLElement;
+
+  before(() => {
+    appRoot = document.createElement('div');
+    document.body.appendChild(appRoot);
+  });
+
+  after(() => {
+    document.body.removeChild(appRoot);
+  });
+
   it('Render Basic Text', () => {
     const wrapper = mountThemedComponent(<Text>FioriText</Text>);
     expect(wrapper.debug()).to.matchSnapshot();
@@ -29,7 +40,7 @@ describe('Text', () => {
   });
 
   it('custom width', () => {
-    const wrapper = mountThemedComponent(<Text width="300px">Test</Text>);
+    const wrapper = mountThemedComponent(<Text width="300px">Test</Text>, {}, { attachTo: appRoot });
     // console.log(window.getComputedStyle(wrapper.getDOMNode()));
 
     // document.find('body').append(wrapper.getDOMNode());
