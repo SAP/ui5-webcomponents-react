@@ -7,7 +7,7 @@
   <a href="https://ci.appveyor.com/projects" target="_blank">
     <img alt="Build Status" src="https://img.shields.io/appveyor/ci/SAP/fiori-for-react/master.svg">
   </a>
-  <a href="https://coveralls.io/" target="_blank">
+  <a href="https://coveralls.io/github/SAP/fiori-for-react" target="_blank">
     <img alt="Code Coverage" src="https://img.shields.io/coveralls/github/SAP/fiori-for-react/master.svg">
   </a>
   <a href="https://sap-ea.slack.com/messages/CEN48B210" target="_blank">

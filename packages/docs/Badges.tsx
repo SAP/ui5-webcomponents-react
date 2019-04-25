@@ -9,7 +9,7 @@ export const Badges = () => (
     <a href="https://ci.appveyor.com/projects" target="_blank" style={{ marginRight: '0.5rem' }}>
       <img alt="Build Status" src="https://img.shields.io/appveyor/ci/SAP/fiori-for-react/master.svg" />
     </a>
-    <a href="https://coveralls.io/" target="_blank" style={{ marginRight: '0.5rem' }}>
+    <a href="https://coveralls.io/github/SAP/fiori-for-react" target="_blank" style={{ marginRight: '0.5rem' }}>
       <img alt="Code Coverage" src="https://img.shields.io/coveralls/github/SAP/fiori-for-react/master.svg" />
     </a>
     <a href="https://sap-ea.slack.com/messages/CEN48B210" target="_blank">
