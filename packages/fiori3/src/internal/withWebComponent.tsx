@@ -254,7 +254,7 @@ export function withWebComponent<T>(WebComponent): FC<T> {
               return Children.map(slotProps[slot], (item: ReactElement<any>, index) =>
                 cloneElement(item, {
                   key: `${slot}-${index}`,
-                  'data-ui5-slot': toKebabCase(slot)
+                  'data-ui5-slot': slot
                 })
               );
             }
