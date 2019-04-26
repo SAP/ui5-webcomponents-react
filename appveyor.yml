@@ -1,6 +1,9 @@
 image: Ubuntu
 # Test against the latest version of this Node.js version
 environment:
+  COVERALLS_SERVICE_NAME: 'appveyor'
+  COVERALLS_REPO_TOKEN: '$env:coveralls_repo_token'
+  COVERALLS_SERVICE_JOB_ID: '$(APPVEYOR_JOB_ID)'
   matrix:
     - nodejs_version: "8"
     - nodejs_version: "10"
@@ -15,26 +18,26 @@ install:
 # Post-install test scripts.
 test_script:
   # Output useful info for debugging.
-  - node --version
-  - npm --version
+  - 'node --version'
+  - 'npm --version'
   # run tests
-  - yarn test
+  - 'yarn test:coveralls'
 
 # Don't actually build.
 build_script:
   - 'yarn build'
 
 deploy_script:
-  - if [ $env:APPVEYOR_REPO_BRANCH = "master"]
-     then
-       echo "//registry.npmjs.org/:_authToken=$env:npm_auth_token" > "$env:userprofile/.npmrc"
-       npm whoami
-       RELEASE_VERSION=$(node -p \"require('./lerna.json').version\")-$(git rev-parse --short HEAD)
-       cd build/node_modules/charts && npm version $(RELEASE_VERSION) && npm publish --access public --tag next
-       cd build/node_modules/core && npm version $(RELEASE_VERSION) && npm publish --access public --tag next
-       cd build/node_modules/fiori3 && npm version $(RELEASE_VERSION) && npm publish --access public --tag next
-       cd build/node_modules/styles && npm version $(RELEASE_VERSION) && npm publish --access public --tag next
-       cd build/node_modules/utils && npm version $(RELEASE_VERSION) && npm publish --access public --tag next
-     fi
+  - if [ $env:APPVEYOR_REPO_BRANCH = "master" ]
+    then
+      echo "//registry.npmjs.org/:_authToken=$env:npm_auth_token" > "$env:userprofile/.npmrc"
+      npm whoami
+      RELEASE_VERSION=$(node -p \"require('./lerna.json').version\")-$(git rev-parse --short HEAD)
+      cd build/node_modules/charts && npm version $(RELEASE_VERSION) && npm publish --access public --tag next
+      cd build/node_modules/core && npm version $(RELEASE_VERSION) && npm publish --access public --tag next
+      cd build/node_modules/fiori3 && npm version $(RELEASE_VERSION) && npm publish --access public --tag next
+      cd build/node_modules/styles && npm version $(RELEASE_VERSION) && npm publish --access public --tag next
+      cd build/node_modules/utils && npm version $(RELEASE_VERSION) && npm publish --access public --tag next
+    fi
 
 
