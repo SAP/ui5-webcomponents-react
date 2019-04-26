@@ -22,7 +22,7 @@ module.exports = {
     '!**/webComponents/**/*'
   ],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jsdom-fourteen',
   testMatch: ['<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',

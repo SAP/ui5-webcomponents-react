@@ -1,7 +1,6 @@
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { createSerializer } from 'enzyme-to-json';
-import { MutationObserver } from '@shared/tests/mock/mutation-observer';
 import jssSerializer from '@shared/tests/serializer/jss-snapshot-serializer';
 
 process.env.NODE_ENV = 'test';
@@ -9,8 +8,6 @@ process.env.BABEL_ENV = 'test';
 
 // React 16 Enzyme adapter
 Enzyme.configure({ adapter: new Adapter() });
-
-Object.defineProperty(window, 'MutationObserver', { value: MutationObserver });
 
 expect.addSnapshotSerializer(
   // @ts-ignore
