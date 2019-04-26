@@ -10,11 +10,12 @@
     "start": "start-storybook -p 6006 -c packages/docs/.storybook",
     "build": "node ./scripts/rollup/build.js",
     "test": "npm-run-all --sequential test:clean test:jest:coverage test:karma test:combineCoverage",
+    "test:coveralls": "npm run test | coveralls",
     "test:clean": "node scripts/test/clean.js",
     "test:karma": "cd ./packages/fiori3 && node scripts/test/karma.js --coverage && cd ../../",
     "test:jest": "jest --config=config/jest.config.js --env=jsdom",
     "test:jest:coverage": "jest --config=config/jest.config.js --env=jsdom --coverage && node scripts/test/renameJestFile.js",
-    "test:combineCoverage": "nyc report --reporter=html --reporter=clover --reporter=text-lcov --temp-dir coverage/partial | coveralls",
+    "test:combineCoverage": "nyc report --reporter=html --reporter=clover --reporter=text-lcov --temp-dir coverage/partial",
     "clean": "lerna clean --yes && node scripts/clean.js",
     "postversion": "node ./scripts/postversion/index.js",
     "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\""
