@@ -1,9 +1,6 @@
 <a name="top"></a>
 # fiori-for-react
 <p align="center">
-  <a href="https://www.npmjs.com/package/fiori-for-react">
-    <img alt="npm version" src="https://img.shields.io/npm/v/fiori-for-react/fiori3.svg"
-  </a>
   <a href="https://ci.appveyor.com/projects" target="_blank">
     <img alt="Build Status" src="https://img.shields.io/appveyor/ci/SAP/fiori-for-react/master.svg">
   </a>
@@ -34,41 +31,36 @@
 7. [Contributing](#contributing)
 8. [License](#license)
 
-<!--  1. [Limitations](#limitations) -->
-
-
-
 <!-- *********************************************************************** -->
 <a name="description"></a>
 ## Description
 
-Fiori4React is providing a Fiori-compliant React implementation. The Fiori 3 package is leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
+Fiori4React is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
 
-### Package Overview
-
-#### [@fiori-for-react/fiori3](https://github.com/SAP/fiori-for-react/tree/master/packages/fiori3) - Standard Fiori3 React components 
-<!-- fiori3 -->
-![](https://badgen.net/badge/size/151.1%20kB/green) ![](https://badgen.net/badge/gzip%20size/38.8%20kB/green)
-<!-- fiori3! -->
-
-#### [@fiori-for-react/styles](https://github.com/SAP/fiori-for-react/tree/master/packages/styles) - Decoupled styles repository
-<!-- styles -->
-![](https://badgen.net/badge/size/73.3%20kB/green) ![](https://badgen.net/badge/gzip%20size/14.4%20kB/green)
-<!-- styles! -->
-
-#### [@fiori-for-react/utils](https://github.com/SAP/fiori-for-react/tree/master/packages/utils) - Utils for Fiori4React
-<!-- utils -->
-![](https://badgen.net/badge/size/5.1%20kB/green) ![](https://badgen.net/badge/gzip%20size/1.9%20kB/green)
-<!-- utils! -->
-
-#### [@fiori-for-react/charts](https://github.com/SAP/fiori-for-react/tree/master/packages/charts) - Standard React Fiori charts 
-<!-- charts -->
-![](https://badgen.net/badge/size/39.9%20kB/green) ![](https://badgen.net/badge/gzip%20size/10.1%20kB/green)
-<!-- charts! -->
-   
 ### Explore our components
 You can play around with our components by visiting our [Storybook](https://github.com/pages/SAP/fiori-for-react/).
 
+### Package Overview
+
+#### [@fiori-for-react/fiori3](https://github.com/SAP/fiori-for-react/tree/master/packages/fiori3) - Fiori 3 Components
+![https://www.npmjs.com/package/@fiori-for-react/fiori3](https://img.shields.io/npm/v/@fiori-for-react/fiori3.svg) 
+![https://bundlephobia.com/result?p=@fiori-for-react/fiori3](https://img.shields.io/bundlephobia/min/@fiori-for-react/fiori3.svg?label=size) 
+![https://bundlephobia.com/result?p=@fiori-for-react/fiori3](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/fiori3.svg?label=gzip size)
+
+#### [@fiori-for-react/styles](https://github.com/SAP/fiori-for-react/tree/master/packages/styles) - Styles
+![https://www.npmjs.com/package/@fiori-for-react/styles](https://img.shields.io/npm/v/@fiori-for-react/styles.svg)
+![https://bundlephobia.com/result?p=@fiori-for-react/styles](https://img.shields.io/bundlephobia/min/@fiori-for-react/styles.svg?label=size) 
+![https://bundlephobia.com/result?p=@fiori-for-react/styles](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/styles.svg?label=gzip size)
+
+#### [@fiori-for-react/utils](https://github.com/SAP/fiori-for-react/tree/master/packages/utils) - Utils
+![https://www.npmjs.com/package/@fiori-for-react/utils](https://img.shields.io/npm/v/@fiori-for-react/utils.svg)
+![https://bundlephobia.com/result?p=@fiori-for-react/utils](https://img.shields.io/bundlephobia/min/@fiori-for-react/utils.svg?label=size) 
+![https://bundlephobia.com/result?p=@fiori-for-react/utils](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/utils.svg?label=gzip size)
+
+#### [@fiori-for-react/charts](https://github.com/SAP/fiori-for-react/tree/master/packages/charts) - Fiori Charts 
+![https://www.npmjs.com/package/@fiori-for-react/charts](https://img.shields.io/npm/v/@fiori-for-react/charts.svg)
+![https://bundlephobia.com/result?p=@fiori-for-react/charts](https://img.shields.io/bundlephobia/min/@fiori-for-react/charts.svg?label=size) 
+![https://bundlephobia.com/result?p=@fiori-for-react/charts](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/charts.svg?label=gzip size)
 
 
 <!-- *********************************************************************** -->
