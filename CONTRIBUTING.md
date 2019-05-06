@@ -1,4 +1,4 @@
-# Contributing to Fiori for React
+# Contributing to fiori-for-react
 
 
 #### TypeScript

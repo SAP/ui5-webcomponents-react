@@ -6,16 +6,16 @@ import React from 'react';
 import dedent from 'dedent';
 import { Badges } from './Badges';
 
-storiesOf(' Welcome | Fiori for React', module)
+storiesOf(' Welcome | Fiori-for-React', module)
   .addParameters({
     info: {
       disable: true
     }
   })
-  .add('What is Fiori for React', () => {
+  .add('What is Fiori-for-React', () => {
     return (
       <Page
-        title="What is Fiori for React?"
+        title="What is Fiori-for-React?"
         style={{ height: '300px' }}
         showBackButton={false}
         className="pageWithPadding"
@@ -25,14 +25,14 @@ storiesOf(' Welcome | Fiori for React', module)
 
           <Title>Description</Title>
           <br />
-          <Text>Fiori for React is a Fiori3 compliant React library built on top of the UI5 Web Components.</Text>
+          <Text>Fiori-for-React is a Fiori3 compliant React library built on top of the UI5 Web Components.</Text>
 
           <Text>
-            With the help of Fiori for React, you can use UI5 Web Components as if they were native React components.
+            With the help of Fiori-for-React, you can use UI5 Web Components as if they were native React components.
           </Text>
           <br />
           <Text>
-            In addition to that, Fiori for React is providing complex components and layouts on top of the UI5 Web
+            In addition to that, Fiori-for-React is providing complex components and layouts on top of the UI5 Web
             Components.
           </Text>
         </FlexBox>

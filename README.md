@@ -35,7 +35,7 @@
 <a name="description"></a>
 ## Description
 
-Fiori for React is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
+`fiori-for-react` is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
 
 ### Explore our components
 You can play around with our components by visiting our [Storybook](https://github.com/pages/SAP/fiori-for-react/).
@@ -75,7 +75,7 @@ You can play around with our components by visiting our [Storybook](https://gith
 <a name="download"></a>
 ## Download and Installation
 
-To consume Fiori for React, first you need to install the npm module:
+To consume `fiori-for-react`, first you need to install the npm module:
 ```sh
 npm install @fiori-for-react/fiori3 --save
 ```
