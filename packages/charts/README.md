@@ -1,5 +1,5 @@
 # @fiori-for-react/charts
-Charts for Fiori4React
+Charts for fiori-for-react
 
 ## Usage
 

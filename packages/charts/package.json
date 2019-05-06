@@ -1,7 +1,7 @@
 {
   "name": "@fiori-for-react/charts",
   "version": "0.1.0",
-  "description": "Charts for Fiori4React",
+  "description": "Charts for fiori-for-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "index.d.ts",

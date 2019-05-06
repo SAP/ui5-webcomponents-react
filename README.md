@@ -35,7 +35,7 @@
 <a name="description"></a>
 ## Description
 
-Fiori4React is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
+Fiori for React is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
 
 ### Explore our components
 You can play around with our components by visiting our [Storybook](https://github.com/pages/SAP/fiori-for-react/).
@@ -75,7 +75,7 @@ You can play around with our components by visiting our [Storybook](https://gith
 <a name="download"></a>
 ## Download and Installation
 
-To consume Fiori4React, first you need to install the npm module:
+To consume Fiori for React, first you need to install the npm module:
 ```sh
 npm install @fiori-for-react/fiori3 --save
 ```
@@ -84,7 +84,9 @@ npm install @fiori-for-react/fiori3 --save
 <a name="configuration"></a>
 ## Configuration
 
-Wrap the App Root into our Theme Provider:
+**Prerequisite: You have a React app.** In case you don't, we recommend to create one using [create-react-app](https://facebook.github.io/create-react-app/).<br/>
+In order to use `fiori-for-react` you have to wrap your applications' root component into the `ThemeProvider`.<br/>
+You will find this component most likely in `src/App.js`: 
 ```js
 import { ContentDensity, ThemeProvider, Themes } from '@fiori-for-react/fiori3';
 ...
@@ -99,11 +101,11 @@ render() {
 }
 ```
 
-Import the desired component(s) in your app:
+Then, you are ready to use `fiori-for-react` and you can import the desired component(s) in your app:<br />
 For example, to use ```Button``` you need to import it:
 
 ```jsx
-import { Button } from '@fiori-for-react/fiori3'; // loads ui5-button
+import { Button } from '@fiori-for-react/fiori3'; // loads ui5-button wrapped in a fiori-for-react component
 ```
 
 Then, you can use the Button in your app:

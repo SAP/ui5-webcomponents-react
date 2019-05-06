@@ -35,7 +35,7 @@ export const getThemeOverwrite = (theme: Themes, overwrite: Themes): Themes => {
 };
 
 export const deprecationNotice = (component: string, message: string) => {
-  const value = `* Fiori4React Deprecation Notice - ${component}`;
+  const value = `* fiori-for-react Deprecation Notice - ${component}`;
   const dots = '*'.padStart(value.length, '*');
   // eslint-disable-next-line no-console
   console.warn(`${dots}${value}${dots}${message}`);

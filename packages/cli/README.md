@@ -1,5 +1,5 @@
 # @fiori-for-react/cli
-CLI for Fiori4React
+CLI for fiori-for-react
 
 
 ## Contribute

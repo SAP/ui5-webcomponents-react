@@ -1,6 +1,6 @@
 # @fiori-for-react/core
 
-Set of core elements for Fiori4React.
+Set of core elements for fiori-for-react.
 Do not use directly!
 
 

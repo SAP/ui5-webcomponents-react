@@ -6,28 +6,33 @@ import React from 'react';
 import dedent from 'dedent';
 import { Badges } from './Badges';
 
-storiesOf(' Welcome | Fiori4React', module)
+storiesOf(' Welcome | Fiori for React', module)
   .addParameters({
     info: {
       disable: true
     }
   })
-  .add('What is Fiori4React', () => {
+  .add('What is Fiori for React', () => {
     return (
-      <Page title="What is Fiori4React?" style={{ height: '300px' }} showBackButton={false} className="pageWithPadding">
+      <Page
+        title="What is Fiori for React?"
+        style={{ height: '300px' }}
+        showBackButton={false}
+        className="pageWithPadding"
+      >
         <FlexBox direction={FlexBoxDirection.Column}>
           <Badges />
 
           <Title>Description</Title>
           <br />
-          <Text>Fiori4React is a Fiori3 compliant React library built on top of the UI5 Web Components.</Text>
+          <Text>Fiori for React is a Fiori3 compliant React library built on top of the UI5 Web Components.</Text>
 
           <Text>
-            With the help of Fiori4React, you can use UI5 Web Components as if they were native React components.
+            With the help of Fiori for React, you can use UI5 Web Components as if they were native React components.
           </Text>
           <br />
           <Text>
-            In addition to that, Fiori4React is providing complex components and layouts on top of the UI5 Web
+            In addition to that, Fiori for React is providing complex components and layouts on top of the UI5 Web
             Components.
           </Text>
         </FlexBox>
@@ -39,7 +44,7 @@ storiesOf(' Welcome | Fiori4React', module)
     () => {
       return (
         <Page
-          title="Fiori4React - Getting Started"
+          title="Fiori-for-React - Getting Started"
           style={{ height: '800px' }}
           showBackButton={false}
           className="pageWithPadding"
@@ -49,7 +54,7 @@ storiesOf(' Welcome | Fiori4React', module)
 
             <Title>Requirements</Title>
             <br />
-            <Text>In order to use Fiori4React, you need to have Node.js and npm installed on your computer.</Text>
+            <Text>In order to use fiori-for-react, you need to have Node.js and npm installed on your computer.</Text>
             <ul>
               <li>
                 <Link href="https://nodejs.org/" target="_blank">
@@ -72,7 +77,7 @@ storiesOf(' Welcome | Fiori4React', module)
 
             <Title>Installation and Configuration</Title>
             <br />
-            <Text>To consume Fiori4React, first you need to install the fiori-for-react npm module:</Text>
+            <Text>To consume fiori-for-react, first you need to install the fiori-for-react npm module:</Text>
             <Highlight lanuage="bash">npm install @fiori-for-react/fiori3 --save</Highlight>
 
             <Text>Setup your React App</Text>
@@ -100,7 +105,7 @@ storiesOf(' Welcome | Fiori4React', module)
             <Text>Now you can use the fiori-for-react components in your app:</Text>
             <Text>If you want to use a Button component, import it from fiori-for-react:</Text>
             <Highlight language="javascript">
-              {`import { Button } from '@fiori-for-react/fiori3'; // loads ui5-button wrapped in a Fiori4React Component`}
+              {`import { Button } from '@fiori-for-react/fiori3'; // loads ui5-button wrapped in a fiori-for-react Component`}
             </Highlight>
             <Text>and use it in your component:</Text>
             <Highlight language="javascript">

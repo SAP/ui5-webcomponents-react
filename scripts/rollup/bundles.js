@@ -19,28 +19,28 @@ const bundles = [
     label: 'fiori3',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
     entry: 'fiori3',
-    global: 'Fiori4React',
+    global: 'FioriForReact',
     externals: ['react', 'react-dom', 'react-jss']
   },
   {
     label: 'styles',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
     entry: 'styles',
-    global: 'Fiori4ReactStyles',
+    global: 'FioriForReactStyles',
     externals: []
   },
   {
     label: 'utils',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
     entry: 'utils',
-    global: 'Fiori4ReactUtils',
+    global: 'FioriForReactUtils',
     externals: []
   },
   {
     label: 'charts',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
     entry: 'charts',
-    global: 'Fiori4ReactCharts',
+    global: 'FioriForReactCharts',
     externals: ['react', 'react-dom']
   }
 ];

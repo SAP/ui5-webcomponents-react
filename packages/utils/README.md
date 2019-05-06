@@ -1,5 +1,5 @@
 # @fiori-for-react/utils
-Helper Utils for Fiori4React
+Helper Utils for fiori-for-react
 
 ## Installation
 ```

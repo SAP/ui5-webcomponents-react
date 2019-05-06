@@ -1,7 +1,7 @@
 {
   "name": "@fiori-for-react/core",
   "version": "0.1.0",
-  "description": "Shared, basic elements of Fiori4React",
+  "description": "Shared, basic elements of fiori-for-react",
   "author": "D059190",
   "license": "Apache-2.0",
   "main": "index.js",

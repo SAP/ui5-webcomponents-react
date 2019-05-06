@@ -30,8 +30,6 @@ addDecorator(withKnobs);
 
 addParameters({
   options: {
-    // name: 'Fiori4React',
-
     theme: Fiori4ReactTheme,
     /**
      * show story component as full screen
