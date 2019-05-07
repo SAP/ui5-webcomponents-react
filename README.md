@@ -1,8 +1,8 @@
 <a name="top"></a>
 # fiori-for-react
 <p align="center">
-  <a href="https://ci.appveyor.com/projects" target="_blank">
-    <img alt="Build Status" src="https://img.shields.io/appveyor/ci/SAP/fiori-for-react/master.svg">
+  <a href="https://travis-ci.org/SAP/fiori-for-react" target="_blank">
+    <img alt="Build Status" src="https://img.shields.io/travis/SAP/fiori-for-react/master.svg">
   </a>
   <a href="https://coveralls.io/github/SAP/fiori-for-react" target="_blank">
     <img alt="Code Coverage" src="https://img.shields.io/coveralls/github/SAP/fiori-for-react/master.svg">
