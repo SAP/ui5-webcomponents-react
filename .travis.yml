@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - 8
+  - 10
+dist: trusty
+
+addons:
+  chrome: stable
+
+script:
+  - 'yarn build'
+
+jobs:
+  include:
+    - stage: Test
+      script: yarn test:coveralls
+    - stage: Deploy
+      name: Release NPM Artifacts
+      node_js: '10'
+      if: branch = master
+      before_deploy:
+        - git checkout master
+        - bash ./scripts/ci/setup-npm.sh
+      deploy:
+        - provider: script
+          script: bash ./scripts/ci/release-npm-next-tag.sh
+          skip_cleanup: true

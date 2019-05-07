@@ -4,12 +4,12 @@ const webpackConfig = require('./karma.webpack.config');
 const snapshotConfig = require('./karma.snapshot.config');
 const deepmerge = require('deepmerge');
 const ip = require('ip');
-const isCi = require('is-ci');
+const ci = require('ci-info');
 
 process.env.NODE_ENV = 'test';
 process.env.BABEL_ENV = 'test';
 
-const gridUrl = `http://${isCi ? 'hub' : 'localhost'}:4444/wd/hub`;
+const gridUrl = `http://${ci.JENKINS ? 'hub' : 'localhost'}:4444/wd/hub`;
 console.log(`Using Selenium Grid URL: '${gridUrl}'`);
 
 module.exports = function(config) {
@@ -25,7 +25,7 @@ module.exports = function(config) {
   }
 
   const browsers = [];
-  if (isCi || config.useSelenium) {
+  if (ci.JENKINS || config.useSelenium) {
     browsers.push('selenium_chrome');
   } else {
     browsers.push('ChromeHeadless');
