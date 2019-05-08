@@ -35,7 +35,7 @@ interface DocGenInfo {
 }
 
 class WithStyleInfo extends Component<any> {
-  static STORY_NAME = /\|\s([\w\s]+)$/;
+  static STORY_NAME = /\|\s([\w\s-]+)$/;
 
   getDocGenInfo = () => {
     let docgen = null;
