@@ -1,7 +1,4 @@
 language: node_js
-node_js:
-  - 8
-  - 10
 dist: trusty
 
 addons:
@@ -11,22 +8,33 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
 
-script:
-  - 'yarn test:coveralls'
-
 jobs:
+  allow_failures:
+    - script: ./scripts/ci/setup-npm.sh
+    - script: ./scripts/ci/release-npm-next-tag.sh
   include:
+    - stage: Test
+      node_js:
+        - '8'
+      script: yarn test
+    - stage: Collect Coverage
+      node_js:
+        - '10'
+      script: yarn test:coveralls
     - stage: Build
-      node_js: '10'
+      node_js:
+        - '10'
       script: yarn build
     - stage: Deploy
       name: Release NPM Artifacts
-      node_js: '10'
+      node_js:
+        - '10'
       if: branch = master
       before_deploy:
         - git checkout master
-        - bash ./scripts/ci/setup-npm.sh
+        - yarn build
+        - ./scripts/ci/setup-npm.sh
       deploy:
         - provider: script
-          script: bash ./scripts/ci/release-npm-next-tag.sh
+          script: ./scripts/ci/release-npm-next-tag.sh
           skip_cleanup: true
