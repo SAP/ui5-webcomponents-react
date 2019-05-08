@@ -79,6 +79,7 @@ import { ToggleButton } from './lib/ToggleButton';
 import { Token } from './lib/Token';
 import { Tokenizer } from './lib/Tokenizer';
 import { ValueState } from './lib/ValueState';
+import { VariantManagement } from './lib/VariantManagement';
 import { YearPicker } from './lib/YearPicker';
 
 export {
@@ -90,6 +91,7 @@ export {
   Size,
   TitleLevel,
   ValueState,
+  VariantManagement,
   ActionSheet,
   AnalyticalCard,
   AnalyticalCardHeader,
