@@ -38,7 +38,7 @@
 `fiori-for-react` is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
 
 ### Explore our components
-You can play around with our components by visiting our [Storybook](https://github.com/pages/SAP/fiori-for-react/).
+You can play around with our components by visiting our [Storybook](https://sap.github.io/fiori-for-react/).
 
 ### Package Overview
 

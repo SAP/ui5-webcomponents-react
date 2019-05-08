@@ -9,7 +9,7 @@ yarn add @fiori-for-react/charts
 ```
 
 ### Documentation
-You can find an interactive documentation in our [Storybook](https://github.com/pages/SAP/fiori-for-react/).
+You can find an interactive documentation in our [Storybook](https://sap.github.io/fiori-for-react/).
 
 ## Contributing
 
