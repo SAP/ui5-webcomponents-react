@@ -82,9 +82,9 @@ After the optional commit body, there should be an empty line followed by the op
 
 #### Example
 ```
-fix(ui5-button): correct focus with 'tab' key
+fix(text): correct focus with 'tab' key
 
-The button should receive a correct focus outline
+The text should receive a correct focus outline
 when the 'tab' key is pressed.
 
 Fixes #42
