@@ -33,8 +33,8 @@ jobs:
       before_deploy:
         - git checkout master
         - yarn build
-        - ./scripts/ci/setup-npm.sh
+        - bash ./scripts/ci/setup-npm.sh
       deploy:
         - provider: script
-          script: ./scripts/ci/release-npm-next-tag.sh
+          script: bash ./scripts/ci/release-npm-next-tag.sh
           skip_cleanup: true

@@ -85,7 +85,7 @@ npm install @fiori-for-react/fiori3 --save
 ## Configuration
 
 **Prerequisite: You have a React app.** In case you don't, we recommend to create one using [create-react-app](https://facebook.github.io/create-react-app/).<br/>
-In order to use `fiori-for-react` you have to wrap your applications' root component into the `ThemeProvider`.<br/>
+In order to use `fiori-for-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
 You will find this component most likely in `src/App.js`: 
 ```js
 import { ContentDensity, ThemeProvider, Themes } from '@fiori-for-react/fiori3';
