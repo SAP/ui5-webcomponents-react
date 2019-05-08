@@ -27,6 +27,7 @@ jobs:
       script: yarn build
     - stage: Deploy
       name: Release NPM Artifacts
+      script: skip
       node_js:
         - '10'
       if: branch = master
