@@ -139,8 +139,6 @@ This project is provided "as-is": there is no guarantee that raised issues will 
 <a name="contributing"></a>
 ## Contributing
 Please check our [Contribution Guidelines](/CONTRIBUTING.md).
-#### Contributors
-
 
 <!-- *********************************************************************** -->
 ## License
