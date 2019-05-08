@@ -1,4 +1,3 @@
-import { deprecationNotice } from '@fiori-for-react/utils';
 import React, { PureComponent } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { DEFAULT_OPTIONS } from '../../config';
@@ -10,10 +9,7 @@ import { formatTooltipLabel, getTextHeight, getTextWidth, mergeConfig } from '..
 import { withChartContainer } from '../ChartContainer/withChartContainer';
 import { ColumnChartPlaceholder } from './Placeholder';
 
-export interface ColumnChartPropTypes extends ChartBaseProps {
-  // TODO Remove v5
-  yValueFormatter?: (label: any) => any;
-}
+export interface ColumnChartPropTypes extends ChartBaseProps {}
 
 @withChartContainer
 export class ColumnChart extends PureComponent<ColumnChartPropTypes> {
@@ -70,7 +66,6 @@ export class ColumnChart extends PureComponent<ColumnChartPropTypes> {
       theme,
       categoryAxisFormatter,
       valueAxisFormatter,
-      yValueFormatter,
       getDatasetAtEvent,
       getElementAtEvent,
       colors,
@@ -78,14 +73,6 @@ export class ColumnChart extends PureComponent<ColumnChartPropTypes> {
     } = this.props as ColumnChartPropTypes & ChartInternalProps;
 
     const bar = populateData(labels, datasets, colors, theme.theme);
-    // TODO Remove v5
-    if (yValueFormatter) {
-      deprecationNotice(
-        'ColumnChart',
-        `The prop 'yValueFormatter' is deprecated and will be removed on the next major release.
-Please use 'valueAxisFormatter' instead.`
-      );
-    }
 
     const mergedOptions = mergeConfig(
       {
@@ -108,14 +95,14 @@ Please use 'valueAxisFormatter' instead.`
             {
               ...DEFAULT_OPTIONS.scales.yAxes[0],
               ticks: {
-                callback: yValueFormatter || valueAxisFormatter
+                callback: valueAxisFormatter
               }
             }
           ]
         },
         tooltips: {
           callbacks: {
-            label: formatTooltipLabel(categoryAxisFormatter, yValueFormatter || valueAxisFormatter)
+            label: formatTooltipLabel(categoryAxisFormatter, valueAxisFormatter)
           }
         },
         plugins: {
@@ -136,7 +123,7 @@ Please use 'valueAxisFormatter' instead.`
 
               // check whether label fits in bar
               const barWidth = chartElement._model.width;
-              const text = (yValueFormatter || valueAxisFormatter)(context.dataset.data[context.dataIndex]);
+              const text = valueAxisFormatter(context.dataset.data[context.dataIndex]);
               const textWidth = getTextWidth(text);
               if (barWidth < textWidth) {
                 return false;
@@ -147,7 +134,7 @@ Please use 'valueAxisFormatter' instead.`
             anchor: this.getAnchor,
             align: 'end',
             offset: 0,
-            formatter: yValueFormatter || valueAxisFormatter,
+            formatter: valueAxisFormatter,
             color: (context) => {
               const anchor = this.getAnchor(context);
               if (anchor === 'end') {

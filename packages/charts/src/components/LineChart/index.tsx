@@ -6,14 +6,10 @@ import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
 import { formatTooltipLabel, mergeConfig } from '../../util/utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { deprecationNotice } from '@fiori-for-react/utils';
 import { withChartContainer } from '../ChartContainer/withChartContainer';
 import { LineChartPlaceholder } from './Placeholder';
 
-export interface LineChartPropTypes extends ChartBaseProps {
-  // TODO Remove v5
-  yValueFormatter?: (e) => any;
-}
+export interface LineChartPropTypes extends ChartBaseProps {}
 
 @withChartContainer
 export class LineChart extends PureComponent<LineChartPropTypes> {
@@ -35,18 +31,8 @@ export class LineChart extends PureComponent<LineChartPropTypes> {
       categoryAxisFormatter,
       getElementAtEvent,
       getDatasetAtEvent,
-      theme,
-      yValueFormatter
+      theme
     } = this.props as LineChartPropTypes & ChartInternalProps;
-
-    // TODO Remove v5
-    if (yValueFormatter) {
-      deprecationNotice(
-        'LineChart',
-        `The prop 'yValueFormatter' is deprecated and will be removed on the next major release.
-Please use 'valueAxisFormatter' instead.`
-      );
-    }
 
     const chartOptions = mergeConfig(
       {
@@ -55,7 +41,7 @@ Please use 'valueAxisFormatter' instead.`
             {
               display: false,
               ticks: {
-                callback: yValueFormatter || valueAxisFormatter
+                callback: valueAxisFormatter
               }
             }
           ],
@@ -63,13 +49,13 @@ Please use 'valueAxisFormatter' instead.`
         },
         tooltips: {
           callbacks: {
-            label: formatTooltipLabel(categoryAxisFormatter, yValueFormatter || valueAxisFormatter)
+            label: formatTooltipLabel(categoryAxisFormatter, valueAxisFormatter)
           }
         },
         plugins: {
           datalabels: {
             // offset: 100
-            formatter: yValueFormatter || valueAxisFormatter
+            formatter: valueAxisFormatter
           }
         }
       },

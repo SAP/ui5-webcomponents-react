@@ -12,10 +12,6 @@ describe('BarChart', () => {
     renderThemedComponent(<BarChart labels={labels} datasets={singleDataset} colors={['#f0ab00']} />);
   });
 
-  test('deprecatedFormatter', () => {
-    renderThemedComponent(<BarChart labels={labels} datasets={singleDataset} yValueFormatter={(d) => `${d}%`} />);
-  });
-
   test('valueAxisFormatter', () => {
     renderThemedComponent(<BarChart labels={labels} datasets={singleDataset} valueAxisFormatter={(d) => `${d}%`} />);
   });

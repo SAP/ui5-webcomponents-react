@@ -5,14 +5,10 @@ import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
 import { formatTooltipLabel, mergeConfig } from '../../util/utils';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { deprecationNotice } from '@fiori-for-react/utils';
 import { HSLColor } from '@fiori-for-react/styles';
 import { withChartContainer } from '../ChartContainer/withChartContainer';
 
-export interface RadarChartPropTypes extends ChartBaseProps {
-  // TODO Remove v5
-  yValueFormatter?: (label: any) => any;
-}
+export interface RadarChartPropTypes extends ChartBaseProps {}
 
 @withChartContainer
 export class RadarChart extends PureComponent<RadarChartPropTypes> {
@@ -28,7 +24,6 @@ export class RadarChart extends PureComponent<RadarChartPropTypes> {
       width,
       height,
       options,
-      yValueFormatter,
       categoryAxisFormatter,
       getDatasetAtEvent,
       getElementAtEvent,
@@ -44,25 +39,16 @@ export class RadarChart extends PureComponent<RadarChartPropTypes> {
           .toString())
     );
 
-    // TODO Remove v5
-    if (yValueFormatter) {
-      deprecationNotice(
-        'DonutChart',
-        `The prop 'yValueFormatter' is deprecated and will be removed on the next major release.
-Please use 'valueAxisFormatter' instead.`
-      );
-    }
-
     const mergedOptions = mergeConfig(
       {
         scale: {
           ticks: {
-            callback: yValueFormatter || valueAxisFormatter
+            callback: valueAxisFormatter
           }
         },
         tooltips: {
           callbacks: {
-            label: formatTooltipLabel(categoryAxisFormatter, yValueFormatter || valueAxisFormatter)
+            label: formatTooltipLabel(categoryAxisFormatter, valueAxisFormatter)
           }
         },
         plugins: {

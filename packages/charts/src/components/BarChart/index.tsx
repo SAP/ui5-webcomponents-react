@@ -6,14 +6,11 @@ import { DEFAULT_OPTIONS } from '../../config';
 import { formatTooltipLabel, getTextWidth, mergeConfig } from '../../util/utils';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { deprecationNotice, LOG_LEVEL, Logger } from '@fiori-for-react/utils';
+import { LOG_LEVEL, Logger } from '@fiori-for-react/utils';
 import { withChartContainer } from '../ChartContainer/withChartContainer';
 import { BarChartPlaceholder } from './Placeholder';
 
-export interface BarChartPropTypes extends ChartBaseProps {
-  // TODO Remove v5
-  yValueFormatter?: (d: any) => any;
-}
+export interface BarChartPropTypes extends ChartBaseProps {}
 
 @withChartContainer
 export class BarChart extends PureComponent<BarChartPropTypes> {
@@ -32,7 +29,7 @@ export class BarChart extends PureComponent<BarChartPropTypes> {
   // }
 
   getAnchor = (context) => {
-    const { yValueFormatter, valueAxisFormatter } = this.props;
+    const { valueAxisFormatter } = this.props;
 
     try {
       const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
@@ -52,7 +49,7 @@ export class BarChart extends PureComponent<BarChartPropTypes> {
         } else {
           const chartElement = datasetMeta.data[context.dataIndex];
           const barWidth = Math.abs(chartElement._model.base - chartElement._model.x);
-          const text = (yValueFormatter || valueAxisFormatter)(context.dataset.data[context.dataIndex]);
+          const text = valueAxisFormatter(context.dataset.data[context.dataIndex]);
           const textWidth = getTextWidth(text);
           if (barWidth < 1.5 * textWidth) {
             // arbitrary estimate
@@ -76,20 +73,10 @@ export class BarChart extends PureComponent<BarChartPropTypes> {
       options,
       categoryAxisFormatter,
       valueAxisFormatter,
-      yValueFormatter,
       getDatasetAtEvent,
       getElementAtEvent,
       colors
     } = this.props as BarChartPropTypes & ChartInternalProps;
-
-    // TODO Remove v5
-    if (yValueFormatter) {
-      deprecationNotice(
-        'BarChart',
-        `The prop 'yValueFormatter' is deprecated and will be removed on the next major release.
-Please use 'valueAxisFormatter' instead.`
-      );
-    }
 
     const bar = populateData(labels, datasets, colors, theme.theme);
 
@@ -105,7 +92,7 @@ Please use 'valueAxisFormatter' instead.`
             {
               ...DEFAULT_OPTIONS.scales.yAxes[0],
               ticks: {
-                callback: yValueFormatter || valueAxisFormatter
+                callback: valueAxisFormatter
               }
             }
           ],
@@ -120,7 +107,7 @@ Please use 'valueAxisFormatter' instead.`
         },
         tooltips: {
           callbacks: {
-            label: formatTooltipLabel(categoryAxisFormatter, valueAxisFormatter || yValueFormatter, 'xLabel')
+            label: formatTooltipLabel(categoryAxisFormatter, valueAxisFormatter, 'xLabel')
           }
         },
         plugins: {
@@ -132,7 +119,7 @@ Please use 'valueAxisFormatter' instead.`
             //     const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
             //     const chartElement = datasetMeta.data[context.dataIndex];
             //     const barWidth = Math.abs(chartElement._model.base - chartElement._model.x);
-            //     const text = (yValueFormatter || valueAxisFormatter)(context.dataset.data[context.dataIndex]);
+            //     const text = valueAxisFormatter(context.dataset.data[context.dataIndex]);
             //     const textWidth = getTextWidth(text);
             //     if (barWidth < textWidth - 5) {
             //       // arbitrary 5px tolerance
@@ -144,7 +131,7 @@ Please use 'valueAxisFormatter' instead.`
             anchor: this.getAnchor,
             align: 'end',
             offset: 0,
-            formatter: yValueFormatter || valueAxisFormatter,
+            formatter: valueAxisFormatter,
             color: (context) => {
               const anchor = this.getAnchor(context);
               if (anchor === 'end') {
