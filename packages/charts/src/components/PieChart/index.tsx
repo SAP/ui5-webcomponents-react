@@ -7,6 +7,7 @@ import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { deprecationNotice } from '@fiori-for-react/utils';
 import { formatTooltipLabelForPieCharts, mergeConfig } from '../../util/utils';
 import { withChartContainer } from '../ChartContainer/withChartContainer';
+import { PieChartPlaceholder } from './Placeholder';
 
 export interface PieChartPropTypes extends ChartBaseProps {
   // TODO Remove v5
@@ -21,6 +22,8 @@ export class PieChart extends PureComponent<PieChartPropTypes> {
     ...ChartBaseDefaultProps,
     internalNoMerge: true
   };
+
+  static LoadingPlaceholder = PieChartPlaceholder;
 
   render() {
     const {

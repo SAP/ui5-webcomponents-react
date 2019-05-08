@@ -8,6 +8,7 @@ import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { populateData } from '../../util/populateData';
 import { formatTooltipLabel, getTextHeight, getTextWidth, mergeConfig } from '../../util/utils';
 import { withChartContainer } from '../ChartContainer/withChartContainer';
+import { ColumnChartPlaceholder } from './Placeholder';
 
 export interface ColumnChartPropTypes extends ChartBaseProps {
   // TODO Remove v5
@@ -19,6 +20,8 @@ export class ColumnChart extends PureComponent<ColumnChartPropTypes> {
   static defaultProps = {
     ...ChartBaseDefaultProps
   };
+
+  static LoadingPlaceholder = ColumnChartPlaceholder;
 
   componentDidMount() {
     this.setState({ options: { ...this.props.options } });

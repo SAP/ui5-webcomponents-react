@@ -8,6 +8,7 @@ import { formatTooltipLabel, mergeConfig } from '../../util/utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { deprecationNotice } from '@fiori-for-react/utils';
 import { withChartContainer } from '../ChartContainer/withChartContainer';
+import { LineChartPlaceholder } from './Placeholder';
 
 export interface LineChartPropTypes extends ChartBaseProps {
   // TODO Remove v5
@@ -19,6 +20,8 @@ export class LineChart extends PureComponent<LineChartPropTypes> {
   static defaultProps = {
     ...ChartBaseDefaultProps
   };
+
+  static LoadingPlaceholder = LineChartPlaceholder;
 
   render() {
     const {

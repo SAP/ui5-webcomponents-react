@@ -18,6 +18,7 @@
     "chart.js": "^2.8.0",
     "chartjs-plugin-datalabels": "^0.6.0",
     "is-mergeable-object": "^1.1.0",
-    "react-chartjs-2": "^2.7.6"
+    "react-chartjs-2": "^2.7.6",
+    "react-content-loader": "^4.2.1"
   }
 }

@@ -8,6 +8,7 @@ import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { deprecationNotice, LOG_LEVEL, Logger } from '@fiori-for-react/utils';
 import { withChartContainer } from '../ChartContainer/withChartContainer';
+import { BarChartPlaceholder } from './Placeholder';
 
 export interface BarChartPropTypes extends ChartBaseProps {
   // TODO Remove v5
@@ -20,6 +21,8 @@ export class BarChart extends PureComponent<BarChartPropTypes> {
     ...ChartBaseDefaultProps,
     internalNoMerge: true
   };
+
+  static LoadingPlaceholder = BarChartPlaceholder;
 
   // private static checkIfDataLabelIsInScale(context) {
   //   const chartElement = getCurrentChartElementFromContext(context);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { boolean } from '@storybook/addon-knobs';
 import { BarChart } from './index';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
@@ -33,9 +34,22 @@ const options = {
 
 storiesOf('Charts | BarChart', module)
   .add('Default', () => (
-    <BarChart labels={labels} datasets={datasets} getElementAtEvent={action('getElementAtEvent')} />
+    <BarChart
+      labels={labels}
+      datasets={datasets}
+      getElementAtEvent={action('getElementAtEvent')}
+      loading={boolean('loading')}
+    />
   ))
-  .add('with Formatter', () => <BarChart labels={labels} datasets={datasets} valueAxisFormatter={(d) => `${d}%`} />)
+  .add('with Formatter', () => (
+    <BarChart labels={labels} datasets={datasets} valueAxisFormatter={(d) => `${d}%`} loading={boolean('loading')} />
+  ))
   .add('Stacked', () => (
-    <BarChart labels={labels} datasets={datasets} valueAxisFormatter={(d) => `${d}%`} options={options} />
+    <BarChart
+      labels={labels}
+      datasets={datasets}
+      valueAxisFormatter={(d) => `${d}%`}
+      options={options}
+      loading={boolean('loading')}
+    />
   ));

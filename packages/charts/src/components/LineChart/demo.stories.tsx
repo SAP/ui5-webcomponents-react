@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { boolean } from '@storybook/addon-knobs';
 import { LineChart } from './index';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
@@ -10,16 +11,18 @@ const datasets = [
   }
 ];
 function renderStory() {
-  return <LineChart labels={labels} datasets={datasets} />;
+  return <LineChart labels={labels} datasets={datasets} loading={boolean('loading')} />;
 }
 
 const colors = ['#f0ab00'];
 
 const renderStoryWithFormatter = () => (
-  <LineChart labels={labels} datasets={datasets} valueAxisFormatter={(i) => `${i}%`} />
+  <LineChart labels={labels} datasets={datasets} valueAxisFormatter={(i) => `${i}%`} loading={boolean('loading')} />
 );
 
-const renderStoryWithCustomColors = () => <LineChart labels={labels} datasets={datasets} colors={colors} />;
+const renderStoryWithCustomColors = () => (
+  <LineChart labels={labels} datasets={datasets} colors={colors} loading={boolean('loading')} />
+);
 
 storiesOf('Charts | Line Chart', module)
   .add('Default', renderStory)

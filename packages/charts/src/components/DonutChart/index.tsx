@@ -6,6 +6,7 @@ import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { deprecationNotice } from '@fiori-for-react/utils';
 import { PieChart } from '../PieChart';
 import { withChartContainer } from '../ChartContainer/withChartContainer';
+import { PieChartPlaceholder } from '../PieChart/Placeholder';
 
 export interface DonutChartPropTypes extends ChartBaseProps {
   // TODO Remove v5
@@ -21,6 +22,8 @@ export class DonutChart extends PureComponent<DonutChartPropTypes> {
     colors: null,
     internalNoMerge: true
   };
+
+  static LoadingPlaceholder = PieChartPlaceholder;
 
   render() {
     const { data, datasets, valueFormatter, valueAxisFormatter, options, ...otherProps } = this
