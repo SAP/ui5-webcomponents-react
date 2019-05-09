@@ -25,7 +25,7 @@
   "devDependencies": {
     "diff": "^4.0.1",
     "inquirer": "^6.3.1",
-    "webpack": "^4.30.0"
+    "webpack": "^4.31.0"
   },
   "peerDependencies": {
     "react": "^16.4.2",
