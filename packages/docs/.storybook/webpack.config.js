@@ -38,6 +38,14 @@ SKIP_DOC_GENERATION=true
         ...config.module.rules,
         tsLoader,
         {
+          test: [/cldr\/.*\.json$/, /i18n\/.*\.json$/],
+          loader: 'file-loader',
+          options: {
+            name: 'static/media/[name].[hash:8].[ext]'
+          },
+          type: 'javascript/auto'
+        },
+        {
           test: /\.jsx/,
           exclude: /node_modules/,
           use: {
