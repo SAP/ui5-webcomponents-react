@@ -16,6 +16,7 @@ import { CustomListItem } from './lib/CustomListItem';
 import { DatePicker } from './lib/DatePicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
 import { Dialog } from './lib/Dialog';
+import { FilterBar } from './lib/FilterBar';
 import { FilterItem } from './lib/FilterItem';
 import { FlexBox } from './lib/FlexBox';
 import { FlexBoxAlignItems } from './lib/FlexBoxAlignItems';
@@ -101,6 +102,7 @@ export {
   Carousel,
   InfoLabel,
   Bar,
+  FilterBar,
   FilterItem,
   FlexBox,
   FlexBoxJustifyContent,
