@@ -45,6 +45,14 @@ module.exports = {
         }
       },
       {
+        test: [/cldr\/.*\.json$/, /i18n\/.*\.json$/],
+        loader: 'file-loader',
+        options: {
+          name: 'static/media/[name].[ext]'
+        },
+        type: 'javascript/auto'
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
         exclude: {
