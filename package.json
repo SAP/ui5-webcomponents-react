@@ -92,7 +92,6 @@
     "karma-webpack": "^3.0.5",
     "lerna": "^3.13.3",
     "less": "^3.9.0",
-    "less-loader": "^4.1.0",
     "lint-staged": "^8.1.5",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
