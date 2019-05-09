@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@fiori-for-react/core": "0.1.0",
-    "@ui5/webcomponents": "^0.10.0",
+    "@ui5/webcomponents": "0.10.1",
     "react-scroll": "^1.7.11",
     "react-toastify": "^5.0.1"
   },

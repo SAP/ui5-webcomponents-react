@@ -7,7 +7,6 @@ import { ListItemTypes } from '../../src/enums/ListItemTypes';
 import { PlacementType } from '../../../core/enums/PlacementType';
 import { PopoverVerticalAlign } from '../../../core/enums/PopoverVerticalAlign';
 import { PopoverHorizontalAlign } from '../../../core/enums/PopoverHorizontalAlign';
-import { TextAlign } from '../../../core/enums/TextAlign';
 
 const path = require('path');
 
@@ -30,7 +29,6 @@ const f4rEnums = {
   PlacementType: require(path.resolve(enumsFolder, 'PlacementType.ts')).PlacementType,
   PopoverVerticalAlign: require(path.resolve(enumsFolder, 'PopoverVerticalAlign.ts')).PopoverVerticalAlign,
   IconColor: require(path.resolve(enumsFolder, 'IconColor.ts')).IconColor,
-  TextAlign: require(path.resolve(enumsFolder, 'TextAlign.ts')).TextAlign,
   TitleLevel: require(path.resolve(fiori3Enums, 'TitleLevel.ts')).TitleLevel
 };
 
