@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "description": "CLI for creating React Components",
   "main": "src/index.js",
-  "author": "Marcus Notheis <marcus.notheis@sap.com>",
-  "license": "MIT",
+  "author": "SAP SE (https://www.sap.com)",
+  "license": "Apache-2.0",
   "bin": {
     "create-f4r-component": "./src/index.js"
   },

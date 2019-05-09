@@ -6,7 +6,7 @@
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
-  "author": "D059190",
+  "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "private": false,
   "scripts": {

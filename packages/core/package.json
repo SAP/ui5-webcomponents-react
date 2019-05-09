@@ -2,7 +2,7 @@
   "name": "@fiori-for-react/core",
   "version": "0.1.0",
   "description": "Shared, basic elements of fiori-for-react",
-  "author": "D059190",
+  "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "main": "index.js",
   "types": "index.d.ts",
