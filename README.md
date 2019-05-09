@@ -93,7 +93,7 @@ import { ContentDensity, ThemeProvider, Themes } from '@fiori-for-react/fiori3';
 render() {
   return (
     <div>
-      <ThemeProvider theme={Themes.sap_fiori_3} contentDensity={ContentDensity.Compact} withToastContainer>
+      <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact} withToastContainer>
         <MyApp />
       </ThemeProvider>
     </div>
