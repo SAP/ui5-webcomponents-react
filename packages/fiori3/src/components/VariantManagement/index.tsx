@@ -13,7 +13,7 @@ import React, { Component, ReactElement } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import { ButtonPropTypes } from '../../webComponents/Button';
 
 export interface VariantItem {

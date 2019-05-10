@@ -1,4 +1,5 @@
-import { StyleClassHelper, withStyles } from '@fiori-for-react/utils';
+import { StyleClassHelper } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import { ChartOptions } from 'chart.js';
 import React, { CSSProperties, PureComponent, Ref } from 'react';
 import { ChartInternalProps } from '../../interfaces/ChartInternalProps';

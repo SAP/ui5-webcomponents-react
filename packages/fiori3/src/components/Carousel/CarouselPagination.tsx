@@ -5,7 +5,7 @@ import { Label } from '@lib/Label';
 import { PlacementType } from '@lib/PlacementType';
 import React, { Children, Component } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import styles from './CarouselPagination.jss';
 
 export interface CarouselPaginationPropTypes {

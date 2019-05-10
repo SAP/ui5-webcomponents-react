@@ -2,7 +2,7 @@ import { MessageToast } from '@lib/MessageToast';
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { ExtendedWindow } from '../../interfaces/ExtendedWindow';
-import { bootstrap } from '@fiori-for-react/utils';
+import { bootstrap } from '@fiori-for-react/styles';
 
 bootstrap();
 

@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import styles from './Token.jss';
 
 export interface TokenPropTypes extends Fiori3CommonProps {

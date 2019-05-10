@@ -1,4 +1,4 @@
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import { StyleClassHelper } from '@fiori-for-react/utils';
 import { ButtonType } from '@lib/ButtonType';
 import { Device } from '@lib/Device';

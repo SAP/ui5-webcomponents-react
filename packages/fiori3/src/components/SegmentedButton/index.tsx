@@ -1,6 +1,6 @@
 import { ContentDensity } from '@lib/ContentDensity';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
 import React, { Children, cloneElement, Component, CSSProperties, ReactElement } from 'react';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

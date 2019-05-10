@@ -3,7 +3,7 @@ import { Size } from '@lib/Size';
 import React, { FC } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import { styles } from './Spinner.jss';
 
 export interface SpinnerProps extends Fiori3CommonProps {

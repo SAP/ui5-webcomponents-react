@@ -1,7 +1,7 @@
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ThemeOptions } from '../../interfaces/ThemeOptions';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import { StyleClassHelper } from '@fiori-for-react/utils';
 import React, { CSSProperties, ReactNode, FC } from 'react';
 import { TextStyles } from './Text.jss';

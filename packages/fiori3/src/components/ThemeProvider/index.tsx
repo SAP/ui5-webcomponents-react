@@ -1,10 +1,9 @@
-import { bootstrap } from '@fiori-for-react/utils';
 import { ContentDensity } from '@lib/ContentDensity';
 import { MessageToast } from '@lib/MessageToast';
 import { Themes } from '@lib/Themes';
 import { jss, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import React, { Fragment, PureComponent, ReactNode } from 'react';
-import { sap_fiori_3 } from '@fiori-for-react/styles';
+import { bootstrap, sap_fiori_3 } from '@fiori-for-react/styles';
 
 bootstrap();
 

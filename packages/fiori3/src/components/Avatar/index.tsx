@@ -4,7 +4,7 @@ import { AvatarSize } from '@lib/AvatarSize';
 import React, { CSSProperties, PureComponent } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import styles from './Avatar.jss';
 
 export interface AvatarPropTypes extends Fiori3CommonProps {

@@ -7,7 +7,7 @@ import { ValueState } from '@lib/ValueState';
 import React, { Fragment, PureComponent } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { CommonProps } from '../../../interfaces/CommonProps';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {

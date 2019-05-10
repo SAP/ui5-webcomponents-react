@@ -1,6 +1,6 @@
 import { ValueState } from '@lib/ValueState';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import { StyleClassHelper } from '@fiori-for-react/utils';
 import React, { FC, ReactNode } from 'react';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

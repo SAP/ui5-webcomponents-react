@@ -8,7 +8,7 @@ import { TitleLevel } from '@lib/TitleLevel';
 import React, { Component, ReactElement, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
 

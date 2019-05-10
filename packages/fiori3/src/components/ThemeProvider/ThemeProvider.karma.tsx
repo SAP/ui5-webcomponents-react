@@ -4,7 +4,7 @@ import { Themes } from '@lib/Themes';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import React from 'react';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 
 describe('ThemeProvider', () => {
   it('Provides Correct Context', (done) => {

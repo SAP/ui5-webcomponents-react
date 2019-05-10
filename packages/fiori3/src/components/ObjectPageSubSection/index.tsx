@@ -4,7 +4,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import { fonts, HSLColor } from '@fiori-for-react/styles';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 import { StyleClassHelper } from '@fiori-for-react/utils';
 
 const lighten = (amount, color) => HSLColor.of(color).lighten(amount * 100).hsl;

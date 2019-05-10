@@ -1,4 +1,3 @@
-import { Logger } from '../Logger';
 import deepMerge from 'deepmerge';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { ComponentType, Ref } from 'react';
@@ -42,7 +41,7 @@ export const withStyles = (styles) => (Component: ComponentType<any>) => {
     }
 
     componentDidCatch(error, info) {
-      Logger.error(error.message, Component.displayName || WithStyles.displayName);
+      // Logger.error(error.message, Component.displayName || WithStyles.displayName);
       this.setState({ error: true });
     }
 

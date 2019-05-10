@@ -7,7 +7,7 @@ import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './MessageToast.jss';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
 
 const coloredStyles = ({ parameters }: JSSTheme) => ({
   base: {
