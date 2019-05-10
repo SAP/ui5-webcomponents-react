@@ -75,10 +75,10 @@ The form contains a list of employees who are authorized to contribute on behalf
 ### How to contribute - the Process
 
 1.  Make sure the issue you've filed in the [issue tracker](https://github.com/SAP/fiori-for-react/issues) has the label "contribution welcome" - otherwise, it is not ready to be worked on.
-2. Create a branch by forking the `fiori-for-react` repository into your GitHub account and apply your change.
+2. Fork the `fiori-for-react` repository into your GitHub account, create a branch and apply your change. Please don't work directly on the `master` branch of your fork. This will help to update your fork in the future more easily.
 3. Commit and push your change on that branch.
       Please follow our [Development Conventions and Guidelines](/docs/Guidelines.md).
-4. Create a pull request in the `fiori-for-react` repository.
+4. Create a pull request from your branch into `fiori-for-react`-`master` branch.
 5. Follow the link posted by the CLA assistant to your pull request and accept it, as described above.
 6. Wait for our code review and approval, possibly enhancing your change on request.
       Note that the `fiori-for-react` developers have many duties. So, depending on the required effort for reviewing, testing, and clarification, this may take a while.
