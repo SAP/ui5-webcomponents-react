@@ -5,7 +5,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import BelizeColors from '../../themes/sap_belize';
 import { populateDataMicroChart } from '../../util/populateData';
 
-const BarStyles = {
+const BarStyles = () => ({
   container: {
     display: 'flex',
     flexDirection: 'column'
@@ -43,7 +43,7 @@ const BarStyles = {
     whiteSpace: 'pre-line',
     color: '#333333'
   }
-};
+});
 
 interface DataItems {
   value: number;

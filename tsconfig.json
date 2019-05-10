@@ -14,7 +14,8 @@
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
+      "@lib/*": ["packages/fiori3/src/lib/*"]
     },
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,

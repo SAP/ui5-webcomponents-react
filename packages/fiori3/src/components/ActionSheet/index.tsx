@@ -7,7 +7,7 @@ import { ResponsivePopover } from '@lib/ResponsivePopover';
 import React, { Children, cloneElement, Component, ReactElement, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { ButtonPropTypes } from '@lib/Button';
+import { ButtonPropTypes } from '../../webComponents/Button';
 import styles from './ActionSheet.jss';
 
 export interface ActionSheetPropTypes extends Fiori3CommonProps {

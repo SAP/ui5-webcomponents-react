@@ -1,4 +1,4 @@
-import { Logger } from '@fiori-for-react/utils';
+import { Logger } from '../Logger';
 import deepMerge from 'deepmerge';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { ComponentType, Ref } from 'react';

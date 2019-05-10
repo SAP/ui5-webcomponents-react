@@ -27,6 +27,7 @@ module.exports = {
   testMatch: ['<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
+    '^@lib/(.*)$': '<rootDir>/packages/fiori3/src/lib/$1',
     '^@ui5/webcomponents/dist(.*)$': '<rootDir>/shared/tests/mock/ReactComponent.js'
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
