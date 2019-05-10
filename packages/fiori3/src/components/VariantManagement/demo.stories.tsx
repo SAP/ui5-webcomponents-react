@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { VariantManagement } from './index';
 import { PlacementType } from '@fiori-for-react/core/enums/PlacementType';
 
-import { TitleLevel } from '../..';
+import { TitleLevel } from '../../enums/TitleLevel';
 
 function renderStory() {
   const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];

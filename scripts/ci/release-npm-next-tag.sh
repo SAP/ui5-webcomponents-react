@@ -5,7 +5,7 @@ CHANGED_PACKAGES=$(git diff-tree --no-commit-id --name-only -r -m  ${TRAVIS_COMM
 
 if [ -n ${CHANGED_PACKAGES} ]
 then
-    echo "This npm relevant packages changed - skip npm release"
+    echo "No npm relevant packages changed - skip npm release"
     exit 0
 fi
 

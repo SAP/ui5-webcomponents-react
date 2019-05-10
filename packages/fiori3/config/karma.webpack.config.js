@@ -47,6 +47,14 @@ module.exports = function() {
             }
           },
           {
+            test: [/cldr\/.*\.json$/, /i18n\/.*\.json$/],
+            loader: 'file-loader',
+            options: {
+              name: 'static/media/[name].[hash:8].[ext]'
+            },
+            type: 'javascript/auto'
+          },
+          {
             test: /\.properties$/,
             loader: 'file-loader'
           },
@@ -57,10 +65,6 @@ module.exports = function() {
               name: '[name].[ext]',
               outputPath: 'fonts/'
             }
-          },
-          {
-            test: /\.less$/,
-            loader: 'less-loader' // compiles Less to CSS
           },
           {
             test: /\.css$/,

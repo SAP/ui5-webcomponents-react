@@ -38,15 +38,12 @@ SKIP_DOC_GENERATION=true
         ...config.module.rules,
         tsLoader,
         {
-          test: /\.jsx/,
-          exclude: /node_modules/,
-          use: {
-            loader: require.resolve('babel-loader'),
-            options: {
-              presets: [require.resolve('@babel/preset-env'), require.resolve('@babel/preset-react')],
-              plugins: ['@babel/plugin-proposal-class-properties']
-            }
-          }
+          test: [/cldr\/.*\.json$/, /i18n\/.*\.json$/],
+          loader: 'file-loader',
+          options: {
+            name: 'static/media/[name].[hash:8].[ext]'
+          },
+          type: 'javascript/auto'
         },
         {
           test: /\.properties$/,

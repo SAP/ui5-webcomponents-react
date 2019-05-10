@@ -6,7 +6,7 @@
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
-  "author": "D059190",
+  "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
@@ -18,14 +18,14 @@
   },
   "dependencies": {
     "@fiori-for-react/core": "0.1.0",
-    "@ui5/webcomponents": "^0.10.0",
+    "@ui5/webcomponents": "0.10.1",
     "react-scroll": "^1.7.11",
     "react-toastify": "^5.0.1"
   },
   "devDependencies": {
     "diff": "^4.0.1",
     "inquirer": "^6.3.1",
-    "webpack": "^4.30.0"
+    "webpack": "^4.31.0"
   },
   "peerDependencies": {
     "react": "^16.4.2",
