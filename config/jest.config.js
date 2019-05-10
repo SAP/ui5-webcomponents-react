@@ -18,6 +18,7 @@ module.exports = {
     '!packages/*/index.ts',
     '!packages/*/test/**/*',
     '!packages/*/stories/**/*',
+    '!packages/docs/**/*',
     '!**/npm/**/*',
     '!**/webComponents/**/*'
   ],
