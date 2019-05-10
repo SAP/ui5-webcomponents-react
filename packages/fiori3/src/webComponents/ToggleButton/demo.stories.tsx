@@ -1,8 +1,8 @@
-import React from 'react';
+import { ButtonType } from '@lib/ButtonType';
+import { ToggleButton } from '@lib/ToggleButton';
+import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
-import { ButtonType } from '../../enums/ButtonType';
-import { select, boolean } from '@storybook/addon-knobs';
-import { ToggleButton } from './index';
+import React from 'react';
 
 storiesOf('UI5 Web Components | ToggleButton', module).add('Generated default story', () => (
   <ToggleButton

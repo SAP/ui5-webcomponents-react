@@ -1,6 +1,6 @@
 import { fonts, HSLColor, sap_fiori_3 } from '@fiori-for-react/styles';
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
-import { UnknownFlavourException } from '@fiori-for-react/core/exceptions/UnknownFlavourException';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { UnknownFlavourException } from '../../exceptions/UnknownFlavourException';
 
 const darken = (amount, color) => HSLColor.of(color).darken(amount * 100).hsl;
 const lighten = (amount, color) => HSLColor.of(color).lighten(amount * 100).hsl;

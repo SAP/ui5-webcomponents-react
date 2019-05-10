@@ -1,13 +1,12 @@
-import React, { cloneElement } from 'react';
-import { Carousel } from './index';
-import { CarouselArrowsPlacement } from '@fiori-for-react/core/enums/CarouselArrowsPlacement';
-import { PlacementType } from '@fiori-for-react/core/enums/PlacementType';
-import * as sinon from 'sinon';
-import { Icon } from '../../webComponents/Icon';
+import { Carousel } from '@lib/Carousel';
+import { CarouselArrowsPlacement } from '@lib/CarouselArrowsPlacement';
+import { Icon } from '@lib/Icon';
+import { PlacementType } from '@lib/PlacementType';
+import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
-import { mountThemedComponent } from '@shared/tests/utils';
-import { getEventFromCallback } from '@shared/tests/utils';
+import React, { cloneElement } from 'react';
+import * as sinon from 'sinon';
 
 use(matchSnapshot);
 

@@ -40,3 +40,5 @@ export const renderThemedComponent = (component, contextOverwrite = {}) =>
       {component}
     </ThemeProvider>
   ).render();
+
+export { mount };

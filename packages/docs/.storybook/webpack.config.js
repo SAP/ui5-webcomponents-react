@@ -56,7 +56,8 @@ SKIP_DOC_GENERATION=true
       extensions: [...config.resolve.extensions, '.ts', '.tsx', '.jsx'],
       alias: {
         ...config.resolve.alias,
-        '@shared': path.join(PATHS.root, 'shared')
+        '@shared': path.join(PATHS.root, 'shared'),
+        '@lib': path.join(PATHS.root, 'packages', 'fiori3', 'src', 'lib')
       }
     }
   };

@@ -1,8 +1,8 @@
-import '@fiori-for-react/core/utils/bootstrap';
-import { MessageToast } from './index';
-import sinon from 'sinon';
-import { ExtendedWindow } from '@fiori-for-react/core/interfaces/ExtendedWindow';
+import { MessageToast } from '@lib/MessageToast';
 import { expect } from 'chai';
+import sinon from 'sinon';
+import { ExtendedWindow } from '../../interfaces/ExtendedWindow';
+import '../../utils/bootstrap';
 
 (window as ExtendedWindow).Fiori4React.__SECRET_INTERNALS_DO_NOT_USE.messageToast = {
   toast: () => {}

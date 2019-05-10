@@ -1,6 +1,6 @@
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
+import { ValueState } from '@lib/ValueState';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { fonts, HSLColor } from '@fiori-for-react/styles';
-import { ValueState } from '@fiori-for-react/core/enums';
 
 function getBackgroundColor(state) {
   switch (state) {

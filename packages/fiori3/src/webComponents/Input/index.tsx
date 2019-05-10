@@ -1,6 +1,6 @@
+import { ValueState } from '@lib/ValueState';
 import React, { FC } from 'react';
-import { InputType } from '@fiori-for-react/core/enums/InputType';
-import { ValueState } from '../../enums/ValueState';
+import { InputType } from '@lib/InputType';
 import UI5Input from '@ui5/webcomponents/dist/Input';
 import { Event } from '@fiori-for-react/utils';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';

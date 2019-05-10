@@ -1,9 +1,10 @@
-import '@fiori-for-react/core/utils/bootstrap';
+import '../../utils/bootstrap';
+import { ContentDensity } from '@lib/ContentDensity';
+import { MessageToast } from '@lib/MessageToast';
+import { Themes } from '@lib/Themes';
 import { jss, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
-import { ContentDensity, Themes } from '@fiori-for-react/core/enums';
 import React, { Fragment, PureComponent, ReactNode } from 'react';
 import { sap_fiori_3 } from '@fiori-for-react/styles';
-import { MessageToast } from '../MessageToast';
 
 export interface ThemeProviderProps {
   theme: Themes;

@@ -1,14 +1,14 @@
-import { ValueState } from '@fiori-for-react/core/enums';
-import { CommonProps } from '@fiori-for-react/core/interfaces';
-import { ClassProps } from '@fiori-for-react/core/types';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { BusyIndicator } from '@lib/BusyIndicator';
+import { DeviationIndicator } from '@lib/DeviationIndicator';
+import { Label } from '@lib/Label';
+import { Text } from '@lib/Text';
+import { ValueState } from '@lib/ValueState';
 import React, { Fragment, PureComponent } from 'react';
-import { Text } from '../../../components/Text';
-import { Label } from '../../../webComponents/Label';
-import { BusyIndicator } from '../../BusyIndicator';
+import { ClassProps } from '../../../interfaces/ClassProps';
+import { CommonProps } from '../../../interfaces/CommonProps';
+import { withStyles } from '../../../utils/withStyles';
 import styles from './AnalyticalCardHeader.jss';
-import { DeviationIndicator } from './DeviationIndicator';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   title?: string;

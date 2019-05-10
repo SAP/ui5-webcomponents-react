@@ -1,12 +1,10 @@
+import { Carousel } from '@lib/Carousel';
+import { CarouselArrowsPlacement } from '@lib/CarouselArrowsPlacement';
+import { Label } from '@lib/Label';
+import { PlacementType } from '@lib/PlacementType';
+import { boolean, number, select } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
 import React from 'react';
-
-import { number, select } from '@storybook/addon-knobs/';
-import { storiesOf } from '@storybook/react/';
-import { Carousel } from './index';
-import { PlacementType } from '@fiori-for-react/core/enums/PlacementType';
-import { boolean } from '@storybook/addon-knobs';
-import { Label } from '../../webComponents/Label';
-import { CarouselArrowsPlacement } from '@fiori-for-react/core/enums/CarouselArrowsPlacement';
 
 function renderCarousel() {
   return (

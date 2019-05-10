@@ -1,7 +1,7 @@
-import React from 'react';
+import { Timeline } from '@lib/Timeline';
+import { TimelineItem } from '@lib/TimelineItem';
 import { storiesOf } from '@storybook/react';
-import { Timeline } from './index';
-import { TimelineItem } from '../TimelineItem';
+import React from 'react';
 
 storiesOf('UI5 Web Components | Timeline', module).add('Generated default story', () => (
   <Timeline>

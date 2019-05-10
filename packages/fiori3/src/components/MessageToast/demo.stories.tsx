@@ -1,9 +1,10 @@
-import { ContentDensity, Themes } from '@fiori-for-react/core/enums';
+import { Button } from '@lib/Button';
+import { ContentDensity } from '@lib/ContentDensity';
+import { MessageToast } from '@lib/MessageToast';
+import { ThemeProvider } from '@lib/ThemeProvider';
+import { Themes } from '@lib/Themes';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { Button } from '../../webComponents/Button';
-import { ThemeProvider } from '../ThemeProvider';
-import { MessageToast } from './index';
 
 storiesOf('F4R Components | MessageToast', module).add(
   'Default',

@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import { ButtonType } from '../../enums/ButtonType';
 import { Event } from '@fiori-for-react/utils';
+import { ButtonType } from '@lib/ButtonType';
 import UI5ToggleButton from '@ui5/webcomponents/dist/ToggleButton';
+import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ToggleButtonPropTypes extends WithWebComponentPropTypes {

@@ -1,7 +1,7 @@
-import { ContentDensity } from '@fiori-for-react/core/enums/ContentDensity';
-import { ClassProps } from '@fiori-for-react/core/types/ClassProps';
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
+import { ContentDensity } from '@lib/ContentDensity';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { withStyles } from '../../utils/withStyles';
 import { StyleClassHelper } from '@fiori-for-react/utils';
 import React, { PureComponent } from 'react';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

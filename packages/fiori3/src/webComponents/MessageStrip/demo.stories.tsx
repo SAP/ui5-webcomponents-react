@@ -1,9 +1,9 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { MessageStrip } from '@lib/MessageStrip';
+import { MessageStripType } from '@lib/MessageStripType';
 import { action } from '@storybook/addon-actions';
-import { MessageStrip } from './index';
-import { MessageStripType } from '../../enums/MessageStripType';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 storiesOf('UI5 Web Components | MessageStrip', module).add('Default story', () => (
   <MessageStrip

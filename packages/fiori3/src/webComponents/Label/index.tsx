@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import UI5Label from '@ui5/webcomponents/dist/Label';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 

@@ -1,10 +1,10 @@
-import { UnknownFlavourException } from '@fiori-for-react/core/exceptions/UnknownFlavourException';
-import { ClassProps } from '@fiori-for-react/core/types/ClassProps';
-import { isNumeric } from '@fiori-for-react/core/utils';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 import { StyleClassHelper } from '@fiori-for-react/utils';
 import React, { CSSProperties, PureComponent, ReactText } from 'react';
+import { UnknownFlavourException } from '../../exceptions/UnknownFlavourException';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { isNumeric } from '../../utils/isNumeric';
+import { withStyles } from '../../utils/withStyles';
 import styles from './InfoLabel.jss';
 
 export interface InfoLabelPropTypes extends Fiori3CommonProps {

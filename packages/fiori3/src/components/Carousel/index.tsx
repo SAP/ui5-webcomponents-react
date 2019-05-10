@@ -1,11 +1,10 @@
-import { PlacementType } from '@fiori-for-react/core/enums';
-import { CarouselArrowsPlacement } from '@fiori-for-react/core/enums/CarouselArrowsPlacement';
-import { ClassProps } from '@fiori-for-react/core/types/ClassProps';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { CarouselArrowsPlacement } from '@lib/CarouselArrowsPlacement';
+import { PlacementType } from '@lib/PlacementType';
 import React, { Children, Component, CSSProperties, Fragment, ReactNode, ReactNodeArray } from 'react';
-import { findDOMNode } from 'react-dom';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { withStyles } from '../../utils/withStyles';
 import styles from './Carousel.jss';
 import { CarouselPagination, CarouselPaginationPropTypes } from './CarouselPagination';
 

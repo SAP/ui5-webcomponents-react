@@ -1,13 +1,12 @@
+import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { CarouselArrowsPlacement } from '@lib/CarouselArrowsPlacement';
+import { Icon } from '@lib/Icon';
+import { Label } from '@lib/Label';
+import { PlacementType } from '@lib/PlacementType';
 import React, { Children, Component } from 'react';
-import { PlacementType } from '@fiori-for-react/core/enums/PlacementType';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { withStyles } from '../../utils/withStyles';
 import styles from './CarouselPagination.jss';
-import { CarouselArrowsPlacement } from '@fiori-for-react/core/enums/CarouselArrowsPlacement';
-import { StyleClassHelper } from '@fiori-for-react/utils';
-import { ClassProps } from '@fiori-for-react/core/types/ClassProps';
-import { Icon } from '../../webComponents/Icon';
-import { Label } from '../../webComponents/Label';
-import { Event } from '@fiori-for-react/utils';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 
 export interface CarouselPaginationPropTypes {
   /**

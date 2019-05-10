@@ -1,3 +1,3 @@
-import { FlexBoxAlignItems } from '@fiori-for-react/core/components/FlexBox';
+import { FlexBoxAlignItems } from '../components/FlexBox';
 
 export { FlexBoxAlignItems };

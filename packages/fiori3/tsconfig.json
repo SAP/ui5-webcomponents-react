@@ -3,10 +3,15 @@
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "npm",
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "paths": {
+      "@shared/*": ["shared/*"],
+      "@lib/*": ["packages/fiori3/src/lib/*"]
+    }
   },
   "types": ["chai"],
   "include": [
-    "src/index.ts"
+    "src/index.ts",
+    "src"
   ]
 }

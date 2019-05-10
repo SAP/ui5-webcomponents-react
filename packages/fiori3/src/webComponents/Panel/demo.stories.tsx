@@ -1,10 +1,10 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
+import { BackgroundDesign } from '@lib/BackgroundDesign';
+import { Panel } from '@lib/Panel';
+import { PanelAccessibleRoles } from '@lib/PanelAccessibleRoles';
 import { action } from '@storybook/addon-actions';
-import { BackgroundDesign } from '@fiori-for-react/core/enums/BackgroundDesign';
-import { PanelAccessibleRoles } from '@fiori-for-react/core/enums/PanelAccessibleRoles';
 import { boolean, select } from '@storybook/addon-knobs';
-import { Panel } from './index';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 storiesOf('UI5 Web Components | Panel', module).add('Generated default story', () => (
   <Panel

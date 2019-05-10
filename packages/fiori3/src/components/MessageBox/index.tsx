@@ -1,14 +1,14 @@
-import { ClassProps } from '@fiori-for-react/core/types/ClassProps';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { Icon } from '@lib/Icon';
+import { MessageBoxButton } from '@lib/MessageBoxButton';
+import { Text } from '@lib/Text';
+import { Title } from '@lib/Title';
+import { TitleLevel } from '@lib/TitleLevel';
 import React, { isValidElement, PureComponent, ReactNode } from 'react';
-import { TitleLevel } from '../../enums/TitleLevel';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { Icon } from '../../webComponents/Icon';
-import { Title } from '../../webComponents/Title';
-import { Text } from '../Text';
+import { withStyles } from '../../utils/withStyles';
 import styles from './MessageBox.jss';
-import { MessageBoxButton } from './MessageBoxButton';
 
 export enum MessageBoxActions {
   ABORT = 'Abort',

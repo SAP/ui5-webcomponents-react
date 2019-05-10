@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean, object as objectKnob } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { Tokenizer } from './index';
+import { Tokenizer } from '@lib/Tokenizer';
 
 storiesOf('F4R Components | Tokenizer', module).add('Default', () => (
   <Tokenizer

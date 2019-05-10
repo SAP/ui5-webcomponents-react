@@ -1,7 +1,7 @@
-import React from 'react';
-import { Spinner } from './index';
+import { Size } from '@lib/Size';
+import { Spinner } from '@lib/Spinner';
 import { renderThemedComponent } from '@shared/tests/utils';
-import { Size } from '../../enums/Size';
+import React from 'react';
 
 describe('Spinner', () => {
   test('small', () => {

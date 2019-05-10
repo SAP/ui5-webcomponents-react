@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import styles from './BusyIndicator.jss';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 import { StyleClassHelper } from '@fiori-for-react/utils';
-import { ClassProps } from '@fiori-for-react/core/types';
+import React, { FC } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { withStyles } from '../../utils/withStyles';
+import styles from './BusyIndicator.jss';
 
 export interface BusyIndicatorProps extends Fiori3CommonProps {
   /**

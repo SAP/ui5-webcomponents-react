@@ -1,10 +1,11 @@
-import { ContentDensity } from '@fiori-for-react/core/enums/ContentDensity';
-import { Themes } from '@fiori-for-react/core/enums/Themes';
-import { ClassProps, JSSTheme } from '@fiori-for-react/core/types';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 import { StyleClassHelper } from '@fiori-for-react/utils';
+import { ContentDensity } from '@lib/ContentDensity';
+import { Themes } from '@lib/Themes';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { withStyles } from '../../utils/withStyles';
 import styles from './AnalyticalCard.jss';
 
 export interface AnalyticalCardTypes extends Fiori3CommonProps {

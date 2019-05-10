@@ -4,9 +4,9 @@
 //   preserveConstEnums: true
 // });
 import { ListItemTypes } from '../../src/enums/ListItemTypes';
-import { PlacementType } from '../../../core/enums/PlacementType';
-import { PopoverVerticalAlign } from '../../../core/enums/PopoverVerticalAlign';
-import { PopoverHorizontalAlign } from '../../../core/enums/PopoverHorizontalAlign';
+import { PlacementType } from '../../src/enums/PlacementType';
+import { PopoverVerticalAlign } from '../../src/enums/PopoverVerticalAlign';
+import { PopoverHorizontalAlign } from '../../src/enums/PopoverHorizontalAlign';
 
 const path = require('path');
 

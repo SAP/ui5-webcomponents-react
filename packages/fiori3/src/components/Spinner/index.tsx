@@ -1,9 +1,9 @@
 import { ClassProps } from '@fiori-for-react/core/types';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 import { StyleClassHelper } from '@fiori-for-react/utils';
+import { Size } from '@lib/Size';
 import React, { FC } from 'react';
-import { Size } from '../../enums/Size';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { withStyles } from '../../utils/withStyles';
 import { styles } from './Spinner.jss';
 
 export interface SpinnerProps extends Fiori3CommonProps {

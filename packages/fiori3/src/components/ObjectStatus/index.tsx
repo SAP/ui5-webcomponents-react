@@ -1,10 +1,10 @@
-import { ClassProps } from '@fiori-for-react/core/types';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
+import { ValueState } from '@lib/ValueState';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { withStyles } from '../../utils/withStyles';
 import { StyleClassHelper } from '@fiori-for-react/utils';
 import React, { FC, ReactNode } from 'react';
-import { ValueState } from '../../enums/ValueState';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { Icon } from '../../webComponents/Icon';
+import { Icon } from '@lib/Icon';
 import styles from './ObjectStatus.jss';
 
 export interface ObjectStatusPropTypes extends Fiori3CommonProps {

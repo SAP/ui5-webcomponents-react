@@ -1,17 +1,20 @@
-import React, { Component, ReactElement } from 'react';
-import { ButtonType, PlacementType } from '@fiori-for-react/core/enums';
 import { Event } from '@fiori-for-react/utils';
-import { ClassProps, JSSTheme } from '@fiori-for-react/core/types';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
-import { Title } from '../../webComponents/Title';
-import { Button, ButtonPropTypes } from '../../webComponents/Button';
-import { ResponsivePopover } from '../ResponsivePopover';
-import { List } from '../../webComponents/List';
-import { ListItemTypes } from '../../enums/ListItemTypes';
-import { ListMode } from '../../enums/ListMode';
-import { TitleLevel } from '../../enums/TitleLevel';
-import { CommonProps } from '@fiori-for-react/core/interfaces';
-import { StandardListItem } from '../../webComponents/StandardListItem';
+import { Button } from '@lib/Button';
+import { ButtonType } from '@lib/ButtonType';
+import { List } from '@lib/List';
+import { ListItemTypes } from '@lib/ListItemTypes';
+import { ListMode } from '@lib/ListMode';
+import { PlacementType } from '@lib/PlacementType';
+import { ResponsivePopover } from '@lib/ResponsivePopover';
+import { StandardListItem } from '@lib/StandardListItem';
+import { Title } from '@lib/Title';
+import { TitleLevel } from '@lib/TitleLevel';
+import React, { Component, ReactElement } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { withStyles } from '../../utils/withStyles';
+import { ButtonPropTypes } from '../../webComponents/Button';
 
 export interface VariantItem {
   key: string;

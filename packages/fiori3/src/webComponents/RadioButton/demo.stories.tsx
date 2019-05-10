@@ -1,9 +1,9 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { ValueState } from '../../enums/ValueState';
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { RadioButton } from '@lib/RadioButton';
+import { ValueState } from '@lib/ValueState';
 import { action } from '@storybook/addon-actions';
-import { RadioButton } from './index';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 // TODO We need to fix this as soon as the UI5 Web Component Content Density is writeable
 storiesOf('UI5 Web Components | RadioButton', module).add(

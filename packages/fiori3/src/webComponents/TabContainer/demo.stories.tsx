@@ -1,12 +1,10 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { BackgroundDesign } from '@fiori-for-react/core/enums/BackgroundDesign';
-import { TabContainerHeaderMode } from '@fiori-for-react/core/enums/TabContainerHeaderMode';
-import { boolean, number, select } from '@storybook/addon-knobs';
+import { Label } from '@lib/Label';
+import { Tab } from '@lib/Tab';
+import { TabContainer } from '@lib/TabContainer';
 import { action } from '@storybook/addon-actions';
-import { TabContainer } from './index';
-import { Tab } from '../Tab';
-import { Label } from '../Label';
+import { boolean } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 import { propTablesExclude } from '../../../../docs/.storybook/config';
 
 storiesOf('UI5 Web Components | TabContainer', module)

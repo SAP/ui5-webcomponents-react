@@ -1,5 +1,5 @@
+import { ValueState } from '@lib/ValueState';
 import React, { FC } from 'react';
-import { ValueState } from '../../enums/ValueState';
 import { Event } from '@fiori-for-react/utils';
 import UI5CheckBox from '@ui5/webcomponents/dist/CheckBox';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';

@@ -1,9 +1,9 @@
-import React from 'react';
+import { Device } from '@lib/Device';
+import { ResponsivePopover } from '@lib/ResponsivePopover';
+import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
-import { mountThemedComponent } from '@shared/tests/utils';
-import { ResponsivePopover } from './index';
-import { Device } from '@fiori-for-react/core/utils';
+import React from 'react';
 
 use(matchSnapshot);
 

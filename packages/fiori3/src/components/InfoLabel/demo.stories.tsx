@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, select } from '@storybook/addon-knobs';
-import { InfoLabel } from './index';
+import { InfoLabel } from '@lib/InfoLabel';
 
 const flavours = [];
 for (let i = 1; i <= 9; i++) {
