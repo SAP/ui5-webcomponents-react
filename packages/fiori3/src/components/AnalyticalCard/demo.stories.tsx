@@ -1,8 +1,8 @@
 import { LineChart } from '@fiori-for-react/charts';
-import { ValueState } from '@fiori-for-react/core';
 import { AnalyticalCard } from '@lib/AnalyticalCard';
 import { AnalyticalCardHeader } from '@lib/AnalyticalCardHeader';
 import { DeviationIndicator } from '@lib/DeviationIndicator';
+import { ValueState } from '@lib/ValueState';
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';

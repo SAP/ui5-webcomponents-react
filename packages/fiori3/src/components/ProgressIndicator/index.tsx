@@ -1,7 +1,7 @@
 import { ContentDensity } from '@lib/ContentDensity';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { withStyles } from '../../utils/withStyles';
+import { withStyles } from '@fiori-for-react/utils';
 import { StyleClassHelper } from '@fiori-for-react/utils';
 import React, { PureComponent } from 'react';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

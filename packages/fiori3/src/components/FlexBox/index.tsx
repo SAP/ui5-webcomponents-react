@@ -2,7 +2,7 @@ import { StyleClassHelper } from '@fiori-for-react/utils';
 import React, { Component, CSSProperties, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { withStyles } from '../../utils/withStyles';
+import { withStyles } from '@fiori-for-react/utils';
 import { styles } from './Flexbox.jss';
 
 export enum FlexBoxJustifyContent {

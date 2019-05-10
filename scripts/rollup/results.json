@@ -111,62 +111,6 @@
       "packageName": "charts",
       "size": 45039,
       "gzip": 11564
-    },
-    {
-      "filename": "custom-components.development.js",
-      "bundleType": "NODE_ES_DEV",
-      "packageName": "custom-components",
-      "size": 52251,
-      "gzip": 9312
-    },
-    {
-      "filename": "custom-components.production.min.js",
-      "bundleType": "NODE_ES_PROD",
-      "packageName": "custom-components",
-      "size": 52251,
-      "gzip": 9312
-    },
-    {
-      "filename": "custom-components.development.js",
-      "bundleType": "NODE_DEV",
-      "packageName": "custom-components",
-      "size": 52937,
-      "gzip": 9326
-    },
-    {
-      "filename": "custom-components.production.min.js",
-      "bundleType": "NODE_PROD",
-      "packageName": "custom-components",
-      "size": 27437,
-      "gzip": 7132
-    },
-    {
-      "filename": "core.development.js",
-      "bundleType": "NODE_DEV",
-      "packageName": "core",
-      "size": 74588,
-      "gzip": 17161
-    },
-    {
-      "filename": "core.production.min.js",
-      "bundleType": "NODE_PROD",
-      "packageName": "core",
-      "size": 37439,
-      "gzip": 12772
-    },
-    {
-      "filename": "core.development.js",
-      "bundleType": "NODE_ES_DEV",
-      "packageName": "core",
-      "size": 79426,
-      "gzip": 17689
-    },
-    {
-      "filename": "core.production.min.js",
-      "bundleType": "NODE_ES_PROD",
-      "packageName": "core",
-      "size": 79426,
-      "gzip": 17689
     }
   ]
 }

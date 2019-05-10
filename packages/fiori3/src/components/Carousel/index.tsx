@@ -4,7 +4,7 @@ import { PlacementType } from '@lib/PlacementType';
 import React, { Children, Component, CSSProperties, Fragment, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { withStyles } from '../../utils/withStyles';
+import { withStyles } from '@fiori-for-react/utils';
 import styles from './Carousel.jss';
 import { CarouselPagination, CarouselPaginationPropTypes } from './CarouselPagination';
 

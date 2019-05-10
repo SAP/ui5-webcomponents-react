@@ -1,8 +1,8 @@
-import React, { ComponentType, Ref } from 'react';
-import injectSheet from 'react-jss';
+import { Logger } from '@fiori-for-react/utils';
 import deepMerge from 'deepmerge';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import { Logger } from '@fiori-for-react/utils';
+import React, { ComponentType, Ref } from 'react';
+import injectSheet from 'react-jss';
 import { createGenerateClassName } from './createGenerateClassName';
 
 const generateClassName = createGenerateClassName();

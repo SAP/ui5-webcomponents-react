@@ -4,7 +4,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import { ClassProps } from '../../interfaces/ClassProps';
 import styles from './ObjectPageSection.jss';
-import { withStyles } from '../../utils/withStyles';
+import { withStyles } from '@fiori-for-react/utils';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
   title?: string;

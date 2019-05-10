@@ -1,12 +1,11 @@
-import React, { CSSProperties, PureComponent, Ref } from 'react';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
-import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
-import { CommonProps } from '@fiori-for-react/core/interfaces';
-import { StyleClassHelper } from '@fiori-for-react/utils';
-import { DonutChart } from '../DonutChart';
+import { StyleClassHelper, withStyles } from '@fiori-for-react/utils';
 import { ChartOptions } from 'chart.js';
-import { mergeConfig } from '../../util/utils';
+import React, { CSSProperties, PureComponent, Ref } from 'react';
+import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
+import { mergeConfig } from '../../util/utils';
+import { DonutChart } from '../DonutChart';
 
 export interface RadialChartPropTypes extends CommonProps {
   value: number;

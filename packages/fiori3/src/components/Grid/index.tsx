@@ -3,7 +3,7 @@ import { Device } from '@lib/Device';
 import React, { Children, Component, CSSProperties, ReactElement, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { withStyles } from '../../utils/withStyles';
+import { withStyles } from '@fiori-for-react/utils';
 import { styles } from './Grid.jss';
 
 export enum GridPosition {

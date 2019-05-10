@@ -1,5 +1,5 @@
-import './bootstrap';
-import { ExtendedWindow } from '../interfaces/ExtendedWindow';
+import { bootstrap } from '../bootstrap';
+bootstrap();
 
 const env = process.env.NODE_ENV;
 const prodClassPrefix = 'f4r';
@@ -11,10 +11,13 @@ const extractClassNamePrefix = (className) => {
 
 export const createGenerateClassName = () => {
   const defaultPrefix = env === 'production' ? prodClassPrefix : '';
-  if (!!(window as ExtendedWindow).Fiori4React.__SECRET_INTERNALS_DO_NOT_USE.jssRuleCounter === false) {
-    Object.assign((window as ExtendedWindow).Fiori4React.__SECRET_INTERNALS_DO_NOT_USE, { jssRuleCounter: 0 });
+  // @ts-ignore
+  if (!!window.Fiori4React.__SECRET_INTERNALS_DO_NOT_USE.jssRuleCounter === false) {
+    // @ts-ignore
+    Object.assign(window.Fiori4React.__SECRET_INTERNALS_DO_NOT_USE, { jssRuleCounter: 0 });
   }
-  const internals = (window as ExtendedWindow).Fiori4React.__SECRET_INTERNALS_DO_NOT_USE;
+  // @ts-ignore
+  const internals = window.Fiori4React.__SECRET_INTERNALS_DO_NOT_USE;
   return (rule, sheet) => {
     internals.jssRuleCounter++;
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Event } from '@fiori-for-react/utils';
 import { mount, shallow } from 'enzyme';
-import { ThemeProvider } from '../../packages/fiori3/src/components/ThemeProvider';
-import { ContentDensity, Themes } from '@fiori-for-react/core/enums';
+import { ThemeProvider } from '../../packages/fiori3/src/lib/ThemeProvider';
+import { Themes } from '../../packages/fiori3/src/lib/Themes';
+import { ContentDensity } from '../../packages/fiori3/src/lib/ContentDensity';
 
 export const modifyObjectProperty = (object: any, attr: string, value: any) => {
   Object.defineProperty(object, attr, {

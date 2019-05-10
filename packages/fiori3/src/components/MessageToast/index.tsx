@@ -6,7 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { withStyles } from '../../utils/withStyles';
+import { withStyles } from '@fiori-for-react/utils';
 import styles from './MessageToast.jss';
 
 const coloredStyles = ({ parameters }: JSSTheme) => ({

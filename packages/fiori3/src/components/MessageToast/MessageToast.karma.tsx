@@ -2,7 +2,9 @@ import { MessageToast } from '@lib/MessageToast';
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { ExtendedWindow } from '../../interfaces/ExtendedWindow';
-import '../../utils/bootstrap';
+import { bootstrap } from '@fiori-for-react/utils';
+
+bootstrap();
 
 (window as ExtendedWindow).Fiori4React.__SECRET_INTERNALS_DO_NOT_USE.messageToast = {
   toast: () => {}

@@ -5,7 +5,7 @@ import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { withStyles } from '../../utils/withStyles';
+import { withStyles } from '@fiori-for-react/utils';
 import styles from './AnalyticalCard.jss';
 
 export interface AnalyticalCardTypes extends Fiori3CommonProps {

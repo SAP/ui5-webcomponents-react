@@ -1,5 +1,5 @@
 import React, { cloneElement, Component } from 'react';
-import { withStyles } from './withStyles';
+import { withStyles } from './index';
 import { mountThemedComponent } from '@shared/tests/utils';
 import sinon from 'sinon';
 
