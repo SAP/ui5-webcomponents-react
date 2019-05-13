@@ -13,12 +13,12 @@ module.exports = function() {
       resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.cjs', '.mjs', '.esm'],
         alias: {
-          '@fiori-for-react/styles': path.join(PATHS.packageRoot, 'styles', 'src', 'index.ts'),
-          '@fiori-for-react/utils': path.join(PATHS.packageRoot, 'utils', 'src', 'index.ts'),
-          '@fiori-for-react/fiori3': path.join(PATHS.root, 'packages', 'fiori3', 'src', 'index.ts'),
-          '@fiori-for-react/charts': path.join(PATHS.root, 'packages', 'charts', 'src', 'index.ts'),
-          '@lib': path.join(PATHS.src, 'lib'),
-          '@shared': path.join(PATHS.packageRoot, '..', 'shared')
+          '@fiori-for-react/styles': path.join(PATHS.packages, 'styles', 'src', 'index.ts'),
+          '@fiori-for-react/utils': path.join(PATHS.packages, 'utils', 'src', 'index.ts'),
+          '@fiori-for-react/fiori3': path.join(PATHS.packages, 'fiori3', 'src', 'index.ts'),
+          '@fiori-for-react/charts': path.join(PATHS.packages, 'charts', 'src', 'index.ts'),
+          '@lib': path.join(PATHS.packages, 'fiori3', 'src', 'lib'),
+          '@shared': PATHS.shared
         }
       },
       module: {
@@ -84,7 +84,7 @@ module.exports = function() {
             },
             // Need this since it's supposed to work after the compilation of .ts
             enforce: 'post',
-            include: PATHS.src,
+            include: path.join(PATHS.packages, 'fiori3', 'src'),
             exclude: [/node_modules|\.karma\.tsx?/, /jss.ts/, /stories/, /enums/, /test/, /lib/]
           }
         ]

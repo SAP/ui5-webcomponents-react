@@ -18,7 +18,7 @@ module.exports = function(config) {
       reporters: ['coverage-istanbul'],
       coverageIstanbulReporter: {
         reports: ['json', 'text', 'clover'], // jest default
-        dir: path.join(PATHS.libRoot, 'coverage', 'partial')
+        dir: path.join(PATHS.coverage, 'partial')
       }
     };
   }
@@ -36,7 +36,7 @@ module.exports = function(config) {
     snapshotConfig,
     coverageConfig,
     {
-      basePath: PATHS.root,
+      basePath: path.join(PATHS.packages, 'fiori3'),
       customLaunchers: {
         selenium_chrome: {
           base: 'SeleniumGrid',

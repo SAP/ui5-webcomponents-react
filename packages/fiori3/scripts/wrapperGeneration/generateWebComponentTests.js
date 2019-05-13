@@ -1,8 +1,8 @@
 const path = require('path');
-const PATHS = require('../../config/paths');
+const PATHS = require('../../../../config/paths');
 const { readdirSync, statSync, writeFileSync } = require('fs');
 
-const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packageRoot, 'fiori3', 'src', 'webComponents');
+const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'fiori3', 'src', 'webComponents');
 
 const webComponents = readdirSync(WEB_COMPONENTS_ROOT_DIR).filter((f) =>
   statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory()

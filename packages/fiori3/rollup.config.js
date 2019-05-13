@@ -6,10 +6,10 @@ const postcss = require('rollup-plugin-postcss');
 const typescript = require('typescript');
 const path = require('path');
 const fs = require('fs');
-const pkg = require('../package.json');
-const PATHS = require('./paths');
+const pkg = require('./package.json');
+const PATHS = require('../../config/paths');
 
-const LIB_BASE_PATH = path.resolve(PATHS.packageRoot, 'fiori3', 'src', 'lib');
+const LIB_BASE_PATH = path.resolve(PATHS.packages, 'fiori3', 'src', 'lib');
 
 const allLibFiles = fs.readdirSync(LIB_BASE_PATH).filter((file) => fs.statSync(`${LIB_BASE_PATH}/${file}`).isFile());
 
@@ -40,7 +40,7 @@ module.exports = allLibFiles.map((file) => ({
   external: (id) => EXTERNAL_MODULE_REGEX.test(id),
   output: [
     {
-      file: path.resolve(PATHS.libRoot, 'build', 'node_modules', 'fiori3', 'lib', file.replace(/\.ts$/, '.js')),
+      file: path.resolve(PATHS.root, 'build', 'node_modules', 'fiori3', 'lib', file.replace(/\.ts$/, '.js')),
       format: 'es'
     }
   ],

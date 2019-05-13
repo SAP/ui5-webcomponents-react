@@ -29,6 +29,10 @@ module.exports = {
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
     '^@lib/(.*)$': '<rootDir>/packages/fiori3/src/lib/$1',
+    '^@fiori-for-react/charts$': '<rootDir>/packages/charts/src',
+    '^@fiori-for-react/fiori3(.*)?': '<rootDir>/packages/fiori3/src$1',
+    '^@fiori-for-react/utils': '<rootDir>/packages/utils/src',
+    '^@fiori-for-react/styles': '<rootDir>/packages/styles/src',
     '^@ui5/webcomponents/dist(.*)$': 'identity-obj-proxy', // ui5 web components can be mocked, not relevant for jest tests
     '\\.(css|less)$': 'identity-obj-proxy'
   },

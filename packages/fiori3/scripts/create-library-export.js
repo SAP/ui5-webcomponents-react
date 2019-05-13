@@ -1,8 +1,8 @@
 const path = require('path');
 const fs = require('fs');
-const PATHS = require('../config/paths');
+const PATHS = require('../../../config/paths');
 
-const LIB_BASE_PATH = path.resolve(PATHS.packageRoot, 'fiori3', 'src', 'lib');
+const LIB_BASE_PATH = path.resolve(PATHS.packages, 'fiori3', 'src', 'lib');
 
 const allLibFiles = fs
   .readdirSync(LIB_BASE_PATH)
