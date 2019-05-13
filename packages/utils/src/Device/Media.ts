@@ -1,6 +1,6 @@
 import { changeRootCSSClass, getQuery, matchLegacyBySize, windowSize } from './utils';
 import { EventRegistry } from './EventRegistry';
-import { Logger } from '@fiori-for-react/utils';
+import { Logger } from '../Logger';
 
 export enum RANGESETS {
   SAP_3STEPS = '3Step',

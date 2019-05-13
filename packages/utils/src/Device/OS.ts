@@ -1,4 +1,4 @@
-import { Logger } from '@fiori-for-react/utils';
+import { Logger } from '../Logger';
 
 export enum OSTypes {
   WINDOWS = 'win',
