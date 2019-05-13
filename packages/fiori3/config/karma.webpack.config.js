@@ -15,6 +15,8 @@ module.exports = function() {
         alias: {
           '@fiori-for-react/styles': path.join(PATHS.packageRoot, 'styles', 'src', 'index.ts'),
           '@fiori-for-react/utils': path.join(PATHS.packageRoot, 'utils', 'src', 'index.ts'),
+          '@fiori-for-react/fiori3': path.join(PATHS.root, 'packages', 'fiori3', 'src', 'index.ts'),
+          '@fiori-for-react/charts': path.join(PATHS.root, 'packages', 'charts', 'src', 'index.ts'),
           '@lib': path.join(PATHS.src, 'lib'),
           '@shared': path.join(PATHS.packageRoot, '..', 'shared')
         }

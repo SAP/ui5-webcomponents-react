@@ -321,7 +321,7 @@ async function createBundle(bundle, bundleType) {
   const format = getFormat(bundleType);
   const packageName = Packaging.getPackageName(bundle.entry);
 
-  let resolvedEntry = path.resolve(__dirname, '..', '..', 'packages', bundle.entry, 'index.ts'); //require.resolve(bundle.entry);
+  let resolvedEntry = path.resolve(__dirname, '..', '..', 'packages', bundle.entry, 'src', 'index.ts'); //require.resolve(bundle.entry);
 
   const shouldBundleDependencies = bundleType === UMD_DEV || bundleType === UMD_PROD;
   const peerGlobals = Modules.getPeerGlobals(bundle.externals, bundleType);

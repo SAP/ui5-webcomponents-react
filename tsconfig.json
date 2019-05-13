@@ -15,7 +15,9 @@
     "baseUrl": ".",
     "paths": {
       "@shared/*": ["shared/*"],
-      "@lib/*": ["packages/fiori3/src/lib/*"]
+      "@lib/*": ["packages/fiori3/src/lib/*"],
+      "@fiori-for-react/styles": ["packages/styles/src/index.ts"],
+      "@fiori-for-react/utils": ["packages/utils/src/index.ts"]
     },
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,

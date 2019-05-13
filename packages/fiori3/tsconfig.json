@@ -1,17 +1,7 @@
 {
   "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "npm",
-    "emitDeclarationOnly": true,
-    "paths": {
-      "@shared/*": ["shared/*"],
-      "@lib/*": ["packages/fiori3/src/lib/*"]
-    }
-  },
   "types": ["chai"],
   "include": [
-    "src/index.ts",
-    "src"
+    "src/index.ts"
   ]
 }
