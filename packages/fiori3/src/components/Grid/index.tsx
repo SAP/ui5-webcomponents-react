@@ -1,5 +1,4 @@
-import { StyleClassHelper } from '@fiori-for-react/utils';
-import { Device } from '@lib/Device';
+import { Device, StyleClassHelper } from '@fiori-for-react/utils';
 import React, { Children, Component, CSSProperties, ReactElement, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';

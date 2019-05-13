@@ -7,6 +7,8 @@ import { LOG_LEVEL, Logger } from './Logger';
 import Optional from './Optional';
 import StyleClassHelper from './StyleClassHelper';
 import Themes from './Themes';
+import { isNumeric } from './isNumeric';
+import { Device } from './Device';
 
 import {
   createThemeMap,
@@ -28,5 +30,7 @@ export {
   Themes,
   Event,
   Logger,
-  LOG_LEVEL
+  LOG_LEVEL,
+  isNumeric,
+  Device
 };

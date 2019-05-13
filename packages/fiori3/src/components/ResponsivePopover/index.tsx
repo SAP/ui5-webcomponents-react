@@ -1,5 +1,4 @@
-import { Device } from '@lib/Device';
-import { Event } from '@fiori-for-react/utils';
+import { Device, Event } from '@fiori-for-react/utils';
 import React, { Component } from 'react';
 import { Dialog } from '@lib/Dialog';
 import { Popover } from '@lib/Popover';

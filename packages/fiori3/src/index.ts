@@ -1,4 +1,4 @@
-import { BusyIndicator } from './components/BusyIndicator';
+import { BusyIndicator } from './lib/BusyIndicator';
 import { ActionSheet } from './lib/ActionSheet';
 import { AnalyticalCard } from './lib/AnalyticalCard';
 import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';

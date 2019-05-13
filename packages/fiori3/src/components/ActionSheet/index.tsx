@@ -1,7 +1,6 @@
 import { withStyles } from '@fiori-for-react/styles';
-import { StyleClassHelper } from '@fiori-for-react/utils';
+import { Device, StyleClassHelper } from '@fiori-for-react/utils';
 import { ButtonType } from '@lib/ButtonType';
-import { Device } from '@lib/Device';
 import { PlacementType } from '@lib/PlacementType';
 import { ResponsivePopover } from '@lib/ResponsivePopover';
 import React, { Children, cloneElement, Component, ReactElement, ReactNode } from 'react';
