@@ -45,7 +45,7 @@ storiesOf(' Welcome | Fiori-for-React', module)
       return (
         <Page
           title="Fiori-for-React - Getting Started"
-          style={{ height: '800px' }}
+          style={{ height: '900px' }}
           showBackButton={false}
           className="pageWithPadding"
         >
@@ -91,7 +91,9 @@ storiesOf(' Welcome | Fiori-for-React', module)
             </Text>
             <Highlight source="javascript">
               {dedent`...
-              import { ContentDensity, ThemeProvider, Themes } from '@fiori-for-react/fiori3';
+              import { ContentDensity } from '@fiori-for-react/fiori3/lib/ContentDensity';
+              import { ThemeProvider } from '@fiori-for-react/fiori3/lib/ThemeProvider';
+              import { Themes } from '@fiori-for-react/fiori3/lib/Themes';
               ...
               render() {
                 return (
@@ -105,12 +107,16 @@ storiesOf(' Welcome | Fiori-for-React', module)
             <Text>Now you can use the fiori-for-react components in your app:</Text>
             <Text>If you want to use a Button component, import it from fiori-for-react:</Text>
             <Highlight language="javascript">
-              {`import { Button } from '@fiori-for-react/fiori3'; // loads ui5-button wrapped in a fiori-for-react Component`}
+              {`import { Button } from '@fiori-for-react/fiori3/lib/Button'; // loads ui5-button wrapped in a fiori-for-react Component`}
             </Highlight>
             <Text>and use it in your component:</Text>
             <Highlight language="javascript">
               {`<Button onPress={() => alert('Hello World!')}>Hello world!</Button>`}
             </Highlight>
+            <Text>
+              You could import all components also from '@fiori-for-react/fiori3' directly, but this will have a
+              negative impact on your bundle size.
+            </Text>
 
             <Title>Known Issues</Title>
             <br />
