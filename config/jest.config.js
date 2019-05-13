@@ -10,6 +10,7 @@ module.exports = {
   collectCoverage: false,
   collectCoverageFrom: [
     'packages/**/*.{ts,tsx}',
+    'packages/fiori3/src/lib/*.ts',
     '!**/*.stories.tsx',
     '!**/*.jss.ts',
     '!**/*.karma.tsx',
@@ -28,7 +29,8 @@ module.exports = {
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
     '^@lib/(.*)$': '<rootDir>/packages/fiori3/src/lib/$1',
-    '^@ui5/webcomponents/dist(.*)$': '<rootDir>/shared/tests/mock/ReactComponent.js'
+    '^@ui5/webcomponents/dist(.*)$': 'identity-obj-proxy', // ui5 web components can be mocked, not relevant for jest tests
+    '\\.(css|less)$': 'identity-obj-proxy'
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   globals: {

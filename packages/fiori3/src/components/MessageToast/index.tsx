@@ -3,6 +3,7 @@ import { ValueState } from '@lib/ValueState';
 import React, { PureComponent } from 'react';
 import { createPortal } from 'react-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
