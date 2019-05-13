@@ -4,57 +4,57 @@
       "filename": "fiori3.development.js",
       "bundleType": "NODE_ES_DEV",
       "packageName": "fiori3",
-      "size": 174607,
-      "gzip": 30078
+      "size": 174630,
+      "gzip": 30084
     },
     {
       "filename": "fiori3.production.min.js",
       "bundleType": "NODE_ES_PROD",
       "packageName": "fiori3",
-      "size": 174607,
-      "gzip": 30078
+      "size": 174630,
+      "gzip": 30084
     },
     {
       "filename": "fiori3.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "fiori3",
-      "size": 178057,
-      "gzip": 30215
+      "size": 178062,
+      "gzip": 30213
     },
     {
       "filename": "fiori3.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "fiori3",
-      "size": 91630,
-      "gzip": 23307
+      "size": 91635,
+      "gzip": 23305
     },
     {
       "filename": "styles.development.js",
       "bundleType": "NODE_ES_DEV",
       "packageName": "styles",
-      "size": 221503,
-      "gzip": 31250
+      "size": 190293,
+      "gzip": 28393
     },
     {
       "filename": "styles.production.min.js",
       "bundleType": "NODE_ES_PROD",
       "packageName": "styles",
-      "size": 221217,
-      "gzip": 31116
+      "size": 190033,
+      "gzip": 28236
     },
     {
       "filename": "styles.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "styles",
-      "size": 221786,
-      "gzip": 31323
+      "size": 190574,
+      "gzip": 28461
     },
     {
       "filename": "styles.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "styles",
-      "size": 80411,
-      "gzip": 17488
+      "size": 68741,
+      "gzip": 15730
     },
     {
       "filename": "utils.development.js",

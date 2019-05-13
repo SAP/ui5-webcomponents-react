@@ -3,7 +3,7 @@ import { MessageToast } from '@lib/MessageToast';
 import { Themes } from '@lib/Themes';
 import { jss, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import React, { Fragment, PureComponent, ReactNode } from 'react';
-import { bootstrap, sap_fiori_3 } from '@fiori-for-react/styles';
+import { bootstrap, sap_fiori3_light } from '@fiori-for-react/styles';
 
 bootstrap();
 
@@ -22,7 +22,7 @@ export class ThemeProvider extends PureComponent<ThemeProviderProps> {
   };
 
   private static getTheme = (theme: Themes) => {
-    if (theme === Themes.sap_fiori3_light) return sap_fiori_3;
+    if (theme === Themes.sap_fiori3_light) return sap_fiori3_light;
     return null;
   };
 

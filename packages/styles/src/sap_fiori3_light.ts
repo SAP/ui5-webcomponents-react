@@ -9,16 +9,16 @@ export const sapColorPrimary5 = `hsl(${HSLColor.of(sapColorPrimary2).getHue()}, 
 export const sapColorPrimary6 = `hsl(${HSLColor.of(sapColorPrimary2).getHue()}, 7.5%, 21%`;
 
 // Accent Colors
-export const sapAccentColor1 = 'hsl(34, 82%, 49%)';
-export const sapAccentColor2 = 'hsl(0, 60%, 66%)';
-export const sapAccentColor3 = 'hsl(332, 75%, 49%)';
-export const sapAccentColor4 = 'hsl(315, 54%, 49%)';
-export const sapAccentColor5 = 'hsl(238, 65%, 63%)';
-export const sapAccentColor6 = 'hsl(210, 64%, 60%)';
-export const sapAccentColor7 = 'hsl(186, 81%, 39%)';
-export const sapAccentColor8 = 'hsl(75, 86%, 34%)';
-export const sapAccentColor9 = 'hsl(269, 54%, 58%)';
-export const sapAccentColor10 = 'hsl(205, 15%, 58%)';
+export const sapAccentColor1 = '#d08014'; //'hsl(34, 82%, 49%)';
+export const sapAccentColor2 = '#d04343'; //'hsl(0, 60%, 66%)';
+export const sapAccentColor3 = '#db1f77'; //'hsl(332, 75%, 49%)';
+export const sapAccentColor4 = '#c0399f'; //'hsl(315, 54%, 49%)';
+export const sapAccentColor5 = '#6367de'; //'hsl(238, 65%, 63%)';
+export const sapAccentColor6 = '#286eb4'; //'hsl(210, 64%, 60%)';
+export const sapAccentColor7 = '#0f828f'; //'hsl(186, 81%, 39%)';
+export const sapAccentColor8 = '#7ca10c'; //'hsl(75, 86%, 34%)';
+export const sapAccentColor9 = '#925ace'; //'hsl(269, 54%, 58%)';
+export const sapAccentColor10 = '#647987'; //'hsl(205, 15%, 58%)';
 
 // Semantic Colors
 export const sapColorSemanticPositive = 'hsl(145, 77%, 28%)';
@@ -1291,6 +1291,7 @@ export const sapUiLightBoxMagnifyingGlassBorder = 'none';
 export const sapUiLightBoxMagnifyingGlassBackgroundColor = '#0a6ed1';
 /** The background pattern color of the shell. To turn off the pattern set the value to 'transparent' */
 export const sapUiShellBackgroundPatternColor = 'transparent';
+
 /** The background pattern color of the shell. To turn off the pattern set the value to 'transparent' */
 export const sapUiPrimary1 = '#354a5f';
 /** The background pattern color of the shell. To turn off the pattern set the value to 'transparent' */

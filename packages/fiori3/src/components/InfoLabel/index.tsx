@@ -27,7 +27,7 @@ export class InfoLabel extends PureComponent<InfoLabelPropTypes> {
     const { children, classes, displayOnly, width, style, className, flavour, tooltip } = this
       .props as InfoLabelInternalProps;
 
-    if (!(flavour >= 1 && flavour <= 9)) {
+    if (!(flavour >= 1 && flavour <= 10)) {
       throw new UnknownFlavourException('Unknown Flavour prop passed to InfoLabel');
     }
 
@@ -46,6 +46,8 @@ export class InfoLabel extends PureComponent<InfoLabelPropTypes> {
     if (className) {
       containerStyles.put(className);
     }
+
+    containerStyles.put(classes[`flavour${flavour}`]);
 
     const inlineStyle = { width };
     if (style) {
