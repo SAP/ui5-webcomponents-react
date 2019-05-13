@@ -10,7 +10,6 @@ process.env.NODE_ENV = 'test';
 process.env.BABEL_ENV = 'test';
 
 const gridUrl = `http://${ci.JENKINS ? 'hub' : 'localhost'}:4444/wd/hub`;
-console.log(`Using Selenium Grid URL: '${gridUrl}'`);
 
 module.exports = function(config) {
   let coverageConfig = {};
@@ -27,6 +26,7 @@ module.exports = function(config) {
   const browsers = [];
   if (ci.JENKINS || config.useSelenium) {
     browsers.push('selenium_chrome');
+    console.log(`Using Selenium Grid URL: '${gridUrl}'`);
   } else {
     browsers.push('ChromeHeadless');
   }
