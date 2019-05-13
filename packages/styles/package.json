@@ -12,5 +12,8 @@
     "deepmerge": "^3.2.0",
     "hoist-non-react-statics": "^3.3.0",
     "react-jss": "^8.6.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
   }
 }
