@@ -1,8 +1,8 @@
-import { VariantManagement } from './index';
-import React from 'react';
+import { VariantManagement } from '@lib/VariantManagement';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
+import React from 'react';
 
 const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
 

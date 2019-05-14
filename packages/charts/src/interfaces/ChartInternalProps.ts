@@ -1,5 +1,4 @@
-import { ClassProps, JSSTheme } from '@fiori-for-react/core/types';
-
-export interface ChartInternalProps extends ClassProps {
-  theme?: JSSTheme;
+export interface ChartInternalProps {
+  theme?: any;
+  classes?: any;
 }

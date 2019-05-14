@@ -1,8 +1,9 @@
-import { Device } from '@fiori-for-react/core/utils';
-import { Event } from '@fiori-for-react/utils';
+import { Device, Event } from '@fiori-for-react/utils';
 import React, { Component } from 'react';
-import { Dialog, DialogPropTypes } from '../../webComponents/Dialog';
-import { Popover, PopoverPropTypes } from '../../webComponents/Popover';
+import { Dialog } from '@lib/Dialog';
+import { Popover } from '@lib/Popover';
+import { DialogPropTypes } from '../../webComponents/Dialog';
+import { PopoverPropTypes } from '../../webComponents/Popover';
 
 export interface ResponsivePopoverPropTypes extends PopoverPropTypes, DialogPropTypes {
   open?: boolean;

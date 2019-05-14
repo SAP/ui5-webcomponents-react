@@ -1,13 +1,10 @@
-/**
- * Created by d059190 on 13.03.18
- */
-
-import { ClassProps, JSSTheme } from '@fiori-for-react/core/types';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
+import { ObjectPageMode } from '@lib/ObjectPageMode';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { withStyles } from '@fiori-for-react/styles';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
 import React, { Children, cloneElement, PureComponent, ReactElement, ReactNode, ReactNodeArray } from 'react';
 import { scroller } from 'react-scroll';
-import { ObjectPageMode } from '@fiori-for-react/core/enums';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchor } from './ObjectPageAnchor';

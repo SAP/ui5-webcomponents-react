@@ -1,9 +1,9 @@
-import { ContentDensity } from '@fiori-for-react/core/enums';
-import { JSSTheme } from '@fiori-for-react/core/types';
 import { Event } from '@fiori-for-react/utils';
+import { ContentDensity } from '@lib/ContentDensity';
 import React, { Children, cloneElement, Component, CSSProperties, FC, ReactElement } from 'react';
 import { withTheme } from 'react-jss';
 import { Fiori3CommonProps } from '../interfaces/Fiori3CommonProps';
+import { JSSTheme } from '../interfaces/JSSTheme';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
 import { Ui5WebComponentMetadata } from '../interfaces/Ui5WebComponentMetadata';
 

@@ -1,17 +1,16 @@
+import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { Bar } from '@lib/Bar';
+import { Button } from '@lib/Button';
+import { ButtonType } from '@lib/ButtonType';
+import { PageBackgroundDesign } from '@lib/PageBackgroundDesign';
+import { Title } from '@lib/Title';
+import { TitleLevel } from '@lib/TitleLevel';
 import React, { Component, ReactElement, ReactNode } from 'react';
-import { StyleClassHelper } from '@fiori-for-react/utils';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { withStyles } from '@fiori-for-react/styles';
+import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
-import { Title } from '../../webComponents/Title';
-import { ButtonType } from '../../enums/ButtonType';
-import { ClassProps } from '@fiori-for-react/core/types';
-import { Button } from '../../webComponents/Button';
-import { Bar } from '../Bar';
-import { Event } from '@fiori-for-react/utils';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
-import { PageBackgroundDesign } from '../../enums/PageBackgroundDesign';
-import { TitleLevel } from '../../enums/TitleLevel';
-import { BarPropTypes } from '@fiori-for-react/core/components/Bar';
 
 export interface PagePropTypes extends Fiori3CommonProps {
   title?: string;

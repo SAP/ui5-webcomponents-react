@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
-import { Tab } from './index';
+import { Tab } from '@lib/Tab';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 use(matchSnapshot);

@@ -1,13 +1,12 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-
+import { Label } from '@lib/Label';
+import { Table } from '@lib/Table';
+import { TableCell } from '@lib/TableCell';
+import { TableColumn } from '@lib/TableColumn';
+import { TableRow } from '@lib/TableRow';
+import { Text } from '@lib/Text';
 import { boolean } from '@storybook/addon-knobs';
-import { Table } from './index';
-import { TableColumn } from '../TableColumn';
-import { Text } from '@fiori-for-react/core';
-import { TableRow } from '../TableRow';
-import { TableCell } from '../TableCell';
-import { Label } from '../Label';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 import { propTablesExclude } from '../../../../docs/.storybook/config';
 
 storiesOf('UI5 Web Components | Table', module)

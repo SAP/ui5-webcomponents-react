@@ -1,10 +1,10 @@
-import { ContentDensity } from '@fiori-for-react/core/enums/ContentDensity';
-import { ClassProps } from '@fiori-for-react/core/types/ClassProps';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
+import { ContentDensity } from '@lib/ContentDensity';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { withStyles } from '@fiori-for-react/styles';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
 import React, { Children, cloneElement, Component, CSSProperties, ReactElement } from 'react';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { SegmentedButtonItemPropTypes } from '../SegmentedButtonItem/index';
+import { SegmentedButtonItemPropTypes } from '../SegmentedButtonItem';
 
 export type SelectedKey = string | number;
 

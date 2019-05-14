@@ -1,6 +1,6 @@
-import React, { FC, ReactNode } from 'react';
-import { IconColor } from '@fiori-for-react/core/enums/IconColor';
+import { IconColor } from '@lib/IconColor';
 import UI5Tab from '@ui5/webcomponents/dist/Tab';
+import React, { FC, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TabPropTypes extends WithWebComponentPropTypes {

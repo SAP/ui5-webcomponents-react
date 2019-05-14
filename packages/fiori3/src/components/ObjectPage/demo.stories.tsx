@@ -1,22 +1,19 @@
-/**
- * Created by d059190 on 12.12.17
- */
-
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { Button } from '@lib/Button';
+import { ButtonType } from '@lib/ButtonType';
+import { Label } from '@lib/Label';
+import { Link } from '@lib/Link';
+import { ObjectPage } from '@lib/ObjectPage';
+import { ObjectPageMode } from '@lib/ObjectPageMode';
+import { ObjectPageSection } from '@lib/ObjectPageSection';
+import { ObjectPageSubSection } from '@lib/ObjectPageSubSection';
+import { Text } from '@lib/Text';
 import { action } from '@storybook/addon-actions';
-import { ObjectPage } from './index';
-import { Button } from '../../webComponents/Button';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 import { propTablesExclude } from '../../../../docs/.storybook/config';
 // @ts-ignore
 import SampleImage from './DemoImage.png';
-import { Label } from '../../webComponents/Label';
-import { ObjectPageSection } from '../ObjectPageSection';
-import { Link } from '../../webComponents/Link';
-import { Text } from '../Text';
-import { ObjectPageSubSection } from '../ObjectPageSubSection';
-import { ButtonType, ObjectPageMode } from '@fiori-for-react/core/enums';
 
 const renderHeaderContent = () => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>

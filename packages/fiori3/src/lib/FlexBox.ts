@@ -1,3 +1,3 @@
-import { FlexBox } from '@fiori-for-react/core/components/FlexBox';
+import { FlexBox } from '../components/FlexBox';
 
 export { FlexBox };

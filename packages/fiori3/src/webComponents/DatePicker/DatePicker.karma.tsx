@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
-import { DatePicker } from './index';
+import { DatePicker } from '@lib/DatePicker';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 use(matchSnapshot);

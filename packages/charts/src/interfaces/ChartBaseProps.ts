@@ -1,6 +1,6 @@
-import { CommonProps } from '@fiori-for-react/core/interfaces';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { CSSProperties, Ref } from 'react';
+import { CommonProps } from './CommonProps';
 
 export interface ChartBaseProps extends CommonProps {
   labels?: string[];

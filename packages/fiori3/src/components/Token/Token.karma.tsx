@@ -1,8 +1,8 @@
-import React from 'react';
-import { Token } from './index';
+import { Token } from '@lib/Token';
+import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
-import { mountThemedComponent } from '@shared/tests/utils';
+import React from 'react';
 
 use(matchSnapshot);
 

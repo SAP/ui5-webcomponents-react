@@ -2,7 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import { MessageBox, MessageBoxTypes } from './index';
+import { MessageBox } from '@lib/MessageBox';
+import { MessageBoxTypes } from '@lib/MessageBoxTypes';
 
 storiesOf('F4R Components | MessageBox', module)
   .addParameters({

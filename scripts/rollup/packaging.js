@@ -53,7 +53,7 @@ async function prepareNpmPackages() {
   const builtPackageFolders = readdirSync('build/node_modules').filter((dir) => dir.charAt(0) !== '.');
   await Promise.all(builtPackageFolders.map(prepareNpmPackage));
   // create fiori3 lib
-  await asyncExecuteCommand(`node_modules/.bin/rollup -c packages/fiori3/config/rollup.config.js`);
+  await asyncExecuteCommand(`node_modules/.bin/rollup -c packages/fiori3/rollup.config.js`);
 }
 
 module.exports = {

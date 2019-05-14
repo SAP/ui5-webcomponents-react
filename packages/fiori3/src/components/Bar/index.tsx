@@ -1,36 +1,52 @@
-import { Bar as CoreBar } from '@fiori-for-react/core/components/Bar';
-import { ContentDensity } from '@fiori-for-react/core/enums/ContentDensity';
-import { CommonProps } from '@fiori-for-react/core/interfaces';
-import { FC } from 'react';
+import { StyleClassHelper } from '@fiori-for-react/utils';
+import React, { Component } from 'react';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { withStyles } from '@fiori-for-react/styles';
+import styles from './Bar.jss';
 
-// This is completely useless but required for Demo Prop Types.
-interface BarPropTypes extends CommonProps {
+export interface BarPropTypes extends CommonProps {
   renderContentLeft?: () => JSX.Element;
   renderContentMiddle?: () => JSX.Element;
   renderContentRight?: () => JSX.Element;
 }
 
-const styles = ({ contentDensity }) => ({
-  left: {
-    paddingLeft: '0.5rem'
-  },
-  right: {
-    paddingRight: '0.5rem'
-  },
-  inner: {
-    padding: '0 0.5rem 0 0.5rem',
-    height: ContentDensity.Compact === contentDensity ? '2.5rem' : '2.75rem'
-  },
-  bar: {
-    height: ContentDensity.Compact === contentDensity ? '2.5rem' : '2.75rem',
-    lineHeight: ContentDensity.Compact === contentDensity ? '2.5rem' : '2.75rem',
-    '& ui5-button': {
-      display: 'flex'
+interface BarInternalProps extends BarPropTypes, ClassProps {}
+
+@withStyles(styles)
+export class Bar extends Component<BarPropTypes> {
+  static defaultProps = {
+    renderContentLeft: () => null,
+    renderContentMiddle: () => null,
+    renderContentRight: () => null
+  };
+
+  render() {
+    const { classes, renderContentLeft, renderContentMiddle, renderContentRight, className, style, tooltip } = this
+      .props as BarInternalProps;
+
+    const cssClasses = StyleClassHelper.of(classes.bar);
+    if (className) {
+      cssClasses.put(className);
     }
+    return (
+      <div
+        data-bar-part="Root"
+        className={cssClasses.toString()}
+        style={style}
+        title={tooltip}
+        data-ui5-slot={this.props['data-ui5-slot']}
+      >
+        <div data-bar-part="Left" className={classes.left}>
+          {renderContentLeft()}
+        </div>
+        <div data-bar-part="Center" className={classes.center}>
+          <div className={classes.inner}>{renderContentMiddle()}</div>
+        </div>
+        <div data-bar-part="Right" className={classes.right}>
+          {renderContentRight()}
+        </div>
+      </div>
+    );
   }
-});
-
-// @ts-ignore
-const Bar: FC<BarPropTypes> = CoreBar.withCustomStyles(styles);
-
-export { Bar };
+}

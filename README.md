@@ -87,8 +87,10 @@ npm install @fiori-for-react/fiori3 --save
 **Prerequisite: You have a React app.** In case you don't, we recommend to create one using [create-react-app](https://facebook.github.io/create-react-app/).<br/>
 In order to use `fiori-for-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
 You will find this component most likely in `src/App.js`: 
-```js
-import { ContentDensity, ThemeProvider, Themes } from '@fiori-for-react/fiori3';
+```jsx
+import { ContentDensity } from '@fiori-for-react/fiori3/lib/ContentDensity';
+import { ThemeProvider } from '@fiori-for-react/fiori3/lib/ThemeProvider';
+import { Themes } from '@fiori-for-react/fiori3/lib/Themes';
 ...
 render() {
   return (
@@ -105,7 +107,7 @@ Then, you are ready to use `fiori-for-react` and you can import the desired comp
 For example, to use ```Button``` you need to import it:
 
 ```jsx
-import { Button } from '@fiori-for-react/fiori3'; // loads ui5-button wrapped in a fiori-for-react component
+import { Button } from '@fiori-for-react/fiori3/lib/Button'; // loads ui5-button wrapped in a fiori-for-react component
 ```
 
 Then, you can use the Button in your app:
@@ -113,6 +115,8 @@ Then, you can use the Button in your app:
 ```jsx
 <Button onPress={() => alert('Hello World!')}>Hello world!</Button>
 ```
+
+You could import all components also from `@fiori-for-react/fiori3` directly, but this will have a negative impact on your bundle size.
 
 
 <!-- *********************************************************************** -->

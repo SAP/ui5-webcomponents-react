@@ -1,6 +1,7 @@
 import { fonts } from '@fiori-for-react/styles';
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
-import { ContentDensity, ZIndex } from '@fiori-for-react/core/enums';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ZIndex } from '../../enums/ZIndex';
+import { ContentDensity } from '@lib/ContentDensity';
 
 const style = ({ parameters, contentDensity }: JSSTheme) => ({
   overlay: {

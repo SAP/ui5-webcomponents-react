@@ -1,6 +1,6 @@
-import React, { FC, ReactNode } from 'react';
 import { Event } from '@fiori-for-react/utils';
 import UI5TimelineItem from '@ui5/webcomponents/dist/TimelineItem';
+import React, { FC, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
