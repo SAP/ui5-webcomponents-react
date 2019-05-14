@@ -1,3 +1,3 @@
-import { ObjectPageMode } from '@fiori-for-react/core/enums';
+import { ObjectPageMode } from '../enums/ObjectPageMode';
 
 export { ObjectPageMode };

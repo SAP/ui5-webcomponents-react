@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const PATHS = require(path.resolve(__dirname, '../', '../', 'config', 'paths.js'));
+const PATHS = require('../../../../config/paths');
 
 // create list of modules
-const webComponentsModulePath = path.resolve(PATHS.rootNodeModules, '@ui5', 'webcomponents', 'dist');
+const webComponentsModulePath = path.resolve(PATHS.nodeModules, '@ui5', 'webcomponents', 'dist');
 const files = fs
   .readdirSync(webComponentsModulePath)
   .filter((file) => file.endsWith('.js'))

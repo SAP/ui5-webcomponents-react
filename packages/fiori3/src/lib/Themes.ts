@@ -1,3 +1,3 @@
-import { Themes } from '@fiori-for-react/core/enums';
+import { Themes } from '../enums/Themes';
 
 export { Themes };

@@ -1,14 +1,6 @@
-/**
- * Style Class Generator Function
- *
- * @param {Object} themeContext - Current Theme Context by JSS Provider.
- * @param {string} themeContext.theme - Current Theme (sap_belize, sap_belize_plus, etc.)
- * @param {string} themeContext.contentDensity - Current Content Density (Cozy, Compact)
- * @param {object} themeContext.parameters - Theming parameters (e.g. LabelColor)
- */
-import { ContentDensity } from '@fiori-for-react/core/enums/ContentDensity';
+import { ContentDensity } from '@lib/ContentDensity';
 import { fonts } from '@fiori-for-react/styles';
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
   segmentedButtonItem: {

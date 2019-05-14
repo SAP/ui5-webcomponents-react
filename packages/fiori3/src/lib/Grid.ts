@@ -1,3 +1,3 @@
-import { Grid } from '@fiori-for-react/core/components/Grid';
+import { Grid } from '../components/Grid';
 
 export { Grid };

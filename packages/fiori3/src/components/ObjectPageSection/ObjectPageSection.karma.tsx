@@ -1,9 +1,10 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { ObjectPageSection } from './index';
+import { ObjectPageSection } from '@lib/ObjectPageSection';
 import { renderThemedComponent } from '@shared/tests/utils';
-import { matchSnapshot } from 'chai-karma-snapshot';
 import { expect, use } from 'chai';
+import { matchSnapshot } from 'chai-karma-snapshot';
+import { shallow } from 'enzyme';
+import React from 'react';
+
 use(matchSnapshot);
 
 describe('ObjectPageSection', () => {

@@ -1,13 +1,9 @@
-/**
- * Created by d059190 on 12.12.17
- */
-
-import React from 'react';
+import { Icon } from '@lib/Icon';
+import { ObjectStatus } from '@lib/ObjectStatus';
+import { ValueState } from '@lib/ValueState';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
-import { ValueState } from '../../enums/ValueState';
-import { Icon } from '../../webComponents/Icon';
-import { ObjectStatus } from './index';
+import React from 'react';
 
 storiesOf('F4R Components | ObjectStatus', module)
   .add('Only Text', () => (

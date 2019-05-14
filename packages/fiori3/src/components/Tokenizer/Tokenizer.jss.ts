@@ -1,13 +1,5 @@
-/**
- * Style Class Generator Function
- *
- * @param {Object} themeContext - Current Theme Context by JSS Provider.
- * @param {string} obj.theme - Current Theme (sap_belize, sap_belize_plus, etc.)
- * @param {string} obj.contentDensity - Current Content Density (Cozy, Compact)
- * @param {object} obj.parameters - Theming parameters (e.g. LabelColor)
- */
-import { ContentDensity } from '@fiori-for-react/core/enums/ContentDensity';
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
+import { ContentDensity } from '@lib/ContentDensity';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { fonts } from '@fiori-for-react/styles';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({

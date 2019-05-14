@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
 import UI5TabSeparator from '@ui5/webcomponents/dist/TabSeparator';
+import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TabSeparatorPropTypes extends WithWebComponentPropTypes {}

@@ -13,12 +13,14 @@
     "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' --type-check -r esm ./scripts/wrapperGeneration/generateWebComponentWrappers --onlyStopForMerge && prettier --write --config ../../prettier.config.js \"src/webComponents/**/*.tsx\"",
     "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
     "test:karma": "node scripts/test/karma.js",
-    "test:karma:coverage": "karma start ./config/karma.conf.js --coverage",
+    "test:karma:coverage": "karma start ../../config/karma.conf.js --coverage",
     "test:karma:update": "cross-env UPDATE=1 yarn run test:karma"
   },
   "dependencies": {
-    "@fiori-for-react/core": "0.1.0",
+    "@fiori-for-react/styles": "0.1.0",
+    "@fiori-for-react/utils": "0.1.0",
     "@ui5/webcomponents": "0.10.1",
+    "core-js": "^2.6.4",
     "react-scroll": "^1.7.11",
     "react-toastify": "^5.0.1"
   },
@@ -28,7 +30,7 @@
     "webpack": "^4.31.0"
   },
   "peerDependencies": {
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   }
 }

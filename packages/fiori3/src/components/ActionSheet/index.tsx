@@ -1,14 +1,12 @@
-import { PlacementType } from '@fiori-for-react/core/enums';
-import { ClassProps } from '@fiori-for-react/core/types';
-import { Device } from '@fiori-for-react/core/utils';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
-import { StyleClassHelper } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
+import { Device, StyleClassHelper } from '@fiori-for-react/utils';
+import { ButtonType } from '@lib/ButtonType';
+import { PlacementType } from '@lib/PlacementType';
+import { ResponsivePopover } from '@lib/ResponsivePopover';
 import React, { Children, cloneElement, Component, ReactElement, ReactNode } from 'react';
-import { findDOMNode } from 'react-dom';
-import { ButtonType } from '../../enums/ButtonType';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { ButtonPropTypes } from '../../webComponents/Button';
-import { ResponsivePopover } from '../ResponsivePopover';
 import styles from './ActionSheet.jss';
 
 export interface ActionSheetPropTypes extends Fiori3CommonProps {

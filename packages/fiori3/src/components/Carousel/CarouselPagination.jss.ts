@@ -1,5 +1,5 @@
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
-import { ZIndex } from '@fiori-for-react/core/enums';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ZIndex } from '../../enums/ZIndex';
 import { HSLColor } from '@fiori-for-react/styles';
 
 const lighten = HSLColor.lighten;

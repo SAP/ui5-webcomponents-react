@@ -1,6 +1,6 @@
 import { fonts, HSLColor } from '@fiori-for-react/styles';
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
-import { ContentDensity } from '@fiori-for-react/core/enums';
+import { ContentDensity } from '@lib/ContentDensity';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const darken = (amount, color) => HSLColor.of(color).darken(amount * 100).hsl;
 

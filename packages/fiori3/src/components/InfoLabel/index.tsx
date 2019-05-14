@@ -1,9 +1,8 @@
-import { UnknownFlavourException } from '@fiori-for-react/core/exceptions/UnknownFlavourException';
-import { ClassProps } from '@fiori-for-react/core/types/ClassProps';
-import { isNumeric } from '@fiori-for-react/core/utils';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
-import { StyleClassHelper } from '@fiori-for-react/utils';
+import { withStyles } from '@fiori-for-react/styles';
+import { isNumeric, StyleClassHelper } from '@fiori-for-react/utils';
 import React, { CSSProperties, PureComponent, ReactText } from 'react';
+import { UnknownFlavourException } from '../../exceptions/UnknownFlavourException';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import styles from './InfoLabel.jss';
 
@@ -28,7 +27,7 @@ export class InfoLabel extends PureComponent<InfoLabelPropTypes> {
     const { children, classes, displayOnly, width, style, className, flavour, tooltip } = this
       .props as InfoLabelInternalProps;
 
-    if (!(flavour >= 1 && flavour <= 9)) {
+    if (!(flavour >= 1 && flavour <= 10)) {
       throw new UnknownFlavourException('Unknown Flavour prop passed to InfoLabel');
     }
 
@@ -47,6 +46,8 @@ export class InfoLabel extends PureComponent<InfoLabelPropTypes> {
     if (className) {
       containerStyles.put(className);
     }
+
+    containerStyles.put(classes[`flavour${flavour}`]);
 
     const inlineStyle = { width };
     if (style) {

@@ -1,7 +1,7 @@
 import { Event } from '@fiori-for-react/utils';
+import { ButtonType } from '@lib/ButtonType';
 import UI5Button from '@ui5/webcomponents/dist/Button';
 import React, { FC } from 'react';
-import { ButtonType } from '../../enums/ButtonType';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ButtonPropTypes extends WithWebComponentPropTypes {

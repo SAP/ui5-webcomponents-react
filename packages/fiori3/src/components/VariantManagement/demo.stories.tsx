@@ -1,11 +1,10 @@
-import React from 'react';
-import { boolean, select } from '@storybook/addon-knobs';
+import { PlacementType } from '@lib/PlacementType';
+import { TitleLevel } from '@lib/TitleLevel';
+import { VariantManagement } from '@lib/VariantManagement';
 import { action } from '@storybook/addon-actions';
+import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
-import { VariantManagement } from './index';
-import { PlacementType } from '@fiori-for-react/core/enums/PlacementType';
-
-import { TitleLevel } from '../../enums/TitleLevel';
+import React from 'react';
 
 function renderStory() {
   const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];

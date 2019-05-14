@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
+import { withStyles } from '@fiori-for-react/styles';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';

@@ -1,7 +1,5 @@
-import React, { FC, ReactNode } from 'react';
-
-// @ts-ignore
 import UI5TableRow from '@ui5/webcomponents/dist/TableRow';
+import React, { FC, ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent';
 
 export interface TableRowPropTypes {
