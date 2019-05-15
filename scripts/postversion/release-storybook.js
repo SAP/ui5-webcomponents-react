@@ -13,7 +13,7 @@ module.exports = new Promise((resolve) => {
   }
   highlightLog('Deploy Storybook');
 
-  shell.exec('node_modules/.bin/storybook-to-ghpages --existing-output-dir .out');
+  shell.exec('node_modules/.bin/storybook-to-ghpages --ci --existing-output-dir .out');
 
   highlightLog('Storybooks deployed successfully');
   resolve();
