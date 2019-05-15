@@ -13,9 +13,9 @@ yarn test
 ./node_modules/.bin/lerna version \
 		--conventional-commits \
 		--exact \
-        --github-release \
-        --no-push \
-        --yes
+		--github-release \
+		--no-push \
+		--yes
 
 # get the new version number
 RELEASE_VERSION=$(node -p "require('./lerna.json').version")
