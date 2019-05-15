@@ -14,7 +14,14 @@ yarn test
 		--conventional-commits \
 		--exact \
         --github-release \
+        --no-push \
         --yes
+
+# get the new version number
+RELEASE_VERSION=$(node -p "require('./lerna.json').version")
+# get the new version number
+git checkout -b releases/${RELEASE_VERSION}
+git push --set-upstream origin releases/${RELEASE_VERSION}
 
 # build the project with the new version after lerna version
 yarn build
@@ -22,13 +29,13 @@ yarn build
 # if we came to that point we are ready for publish
 
 # create npmrc with auth
-bash $WORKSPACE/scripts/ci/setup-npm.sh
+bash ${WORKSPACE}/scripts/ci/setup-npm.sh
 
 # now start publishing each package
-cd $WORKSPACE/build/node_modules/charts && npm publish --access public
-cd $WORKSPACE/build/node_modules/fiori3 && npm publish --access public
-cd $WORKSPACE/build/node_modules/styles && npm publish --access public
-cd $WORKSPACE/build/node_modules/utils && npm publish --access public
+cd ${WORKSPACE}/build/node_modules/charts && npm publish --access public
+cd ${WORKSPACE}/build/node_modules/fiori3 && npm publish --access public
+cd ${WORKSPACE}/build/node_modules/styles && npm publish --access public
+cd ${WORKSPACE}/build/node_modules/utils && npm publish --access public
 
 # all packages are now released, clear npm-session
 rm ~/.npmrc
