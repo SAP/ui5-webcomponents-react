@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# setup git
+git config user.email ${GITHUB_EMAIL}
+git config user.name ${GITHUB_USER}
+git remote set-url origin "https://${GH_TOKEN}@github.com/SAP/fiori-for-react.git" > /dev/null 2>&1
+
 # make sure we are on the master branch
 git checkout master
 
