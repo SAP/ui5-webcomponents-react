@@ -10,7 +10,7 @@ import { FilterType } from '../../enums/FilterType';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
 import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 import { CommonProps } from '@fiori-for-react/core/interfaces';
-import { ListItemTypes } from '../../enums/ListItemTypes';
+import { ListItemTypes } from '../..';
 
 export interface FilterItemPropTypes extends CommonProps {
   placeholder?: string;
@@ -81,7 +81,14 @@ export class FilterItem extends PureComponent<FilterItemPropTypes> {
           <div>
             {React.Children.map(children, (child) => {
               return React.cloneElement(child as React.ReactElement<any>, {
-                [this.props.changeEventName]: this.onSelect,
+                [this.props.changeEventName]: (event) => {
+                  this.onSelect(event);
+                  // @ts-ignore
+                  if (child.props.hasOwnProperty(this.props.changeEventName)) {
+                    // @ts-ignore
+                    child.props[this.props.changeEventName](event);
+                  }
+                },
                 valueParameter: this.props.valueParamName,
                 style: { width: '100%' }
               });
