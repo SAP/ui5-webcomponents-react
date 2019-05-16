@@ -1,5 +1,5 @@
 import { fonts } from '@fiori-for-react/styles';
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const size = (s) => ({
   height: s,

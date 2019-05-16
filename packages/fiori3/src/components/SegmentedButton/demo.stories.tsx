@@ -1,10 +1,10 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { boolean, number } from '@storybook/addon-knobs';
+import { Icon } from '@lib/Icon';
+import { SegmentedButton } from '@lib/SegmentedButton';
+import { SegmentedButtonItem } from '@lib/SegmentedButtonItem';
 import { action } from '@storybook/addon-actions';
-import { SegmentedButton } from './index';
-import { Icon } from '../../webComponents/Icon';
-import { SegmentedButtonItem } from '../SegmentedButtonItem';
+import { boolean, number } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 function renderStory() {
   return (

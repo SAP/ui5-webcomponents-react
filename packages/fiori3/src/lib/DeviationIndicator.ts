@@ -1,3 +1,3 @@
-import { DeviationIndicator } from '../components/AnalyticalCard/header/DeviationIndicator';
+import { DeviationIndicator } from '../enums/DeviationIndicator';
 
 export { DeviationIndicator };

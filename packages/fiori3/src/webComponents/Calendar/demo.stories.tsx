@@ -1,8 +1,8 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { CalendarType } from '@fiori-for-react/core/enums/CalendarType';
+import { Calendar } from '@lib/Calendar';
+import { CalendarType } from '@lib/CalendarType';
 import { select } from '@storybook/addon-knobs';
-import { Calendar } from './index';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 const now = new Date().getTime();
 

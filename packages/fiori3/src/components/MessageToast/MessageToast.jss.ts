@@ -1,5 +1,5 @@
-import { JSSTheme } from '@fiori-for-react/core/types';
 import { fonts } from '@fiori-for-react/styles';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export default ({ parameters }: JSSTheme) => ({
   messageToast: {

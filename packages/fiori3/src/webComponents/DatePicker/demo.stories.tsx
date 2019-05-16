@@ -1,9 +1,9 @@
-import React from 'react';
+import { CalendarType } from '@lib/CalendarType';
+import { DatePicker } from '@lib/DatePicker';
+import { ValueState } from '@lib/ValueState';
+import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
-import { ValueState } from '../../enums/ValueState';
-import { CalendarType } from '@fiori-for-react/core/enums/CalendarType';
-import { select, boolean } from '@storybook/addon-knobs';
-import { DatePicker } from './index';
+import React from 'react';
 
 storiesOf('UI5 Web Components | DatePicker', module).add('Generated default story', () => (
   <DatePicker

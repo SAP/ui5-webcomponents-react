@@ -1,9 +1,9 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { boolean, number } from '@storybook/addon-knobs';
+import { ShellBar } from '@lib/ShellBar';
+import { ShellBarItem } from '@lib/ShellBarItem';
 import { action } from '@storybook/addon-actions';
-import { ShellBar } from './index';
-import { ShellBarItem } from '../ShellBarItem';
+import { boolean, number } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 storiesOf('UI5 Web Components | ShellBar', module).add('Generated default story', () => (
   <ShellBar

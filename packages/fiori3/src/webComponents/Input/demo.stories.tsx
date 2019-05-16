@@ -1,10 +1,10 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { InputType } from '@fiori-for-react/core/enums/InputType';
-import { ValueState } from '../../enums/ValueState';
-import { boolean, select } from '@storybook/addon-knobs';
+import { Input } from '@lib/Input';
+import { InputType } from '@lib/InputType';
+import { ValueState } from '@lib/ValueState';
 import { action } from '@storybook/addon-actions';
-import { Input } from './index';
+import { boolean, select } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 storiesOf('UI5 Web Components | Input', module).add('Generated default story', () => (
   <Input

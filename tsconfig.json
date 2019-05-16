@@ -14,7 +14,12 @@
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
+      "@lib/*": ["packages/fiori3/src/lib/*"],
+      "@fiori-for-react/fiori3/*": ["packages/fiori3/src/*"],
+      "@fiori-for-react/fiori3": ["packages/fiori3/src/index.ts"],
+      "@fiori-for-react/styles": ["packages/styles/src/index.ts"],
+      "@fiori-for-react/utils": ["packages/utils/src/index.ts"]
     },
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,

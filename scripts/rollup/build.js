@@ -13,7 +13,7 @@ const postcss = require('rollup-plugin-postcss');
 const stripUnusedImports = require('./plugins/strip-unused-imports');
 const Bundles = require('./bundles');
 const Stats = require('./stats');
-const { asyncCopyTo, asyncRimRaf, highlightLog, asyncExecuteCommand } = require('../utils');
+const { asyncCopyTo, asyncRimRaf } = require('../utils');
 const argv = require('minimist')(process.argv.slice(2));
 const codeFrame = require('babel-code-frame');
 const chalk = require('chalk');
@@ -164,7 +164,6 @@ function getPlugins(
   const isES6Bundle = bundleType === NODE_ES_DEV || bundleType === NODE_ES_PROD;
   const shouldStayReadable = forcePrettyOutput;
   return [
-    // Use Node resolution mechanism.
     resolve(),
     // Remove license headers from individual modules
     stripBanner({
@@ -322,7 +321,7 @@ async function createBundle(bundle, bundleType) {
   const format = getFormat(bundleType);
   const packageName = Packaging.getPackageName(bundle.entry);
 
-  let resolvedEntry = path.resolve(__dirname, '..', '..', 'packages', bundle.entry, 'index.ts'); //require.resolve(bundle.entry);
+  let resolvedEntry = path.resolve(__dirname, '..', '..', 'packages', bundle.entry, 'src', 'index.ts'); //require.resolve(bundle.entry);
 
   const shouldBundleDependencies = bundleType === UMD_DEV || bundleType === UMD_PROD;
   const peerGlobals = Modules.getPeerGlobals(bundle.externals, bundleType);

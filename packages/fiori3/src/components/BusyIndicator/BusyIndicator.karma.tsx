@@ -1,5 +1,5 @@
 import React from 'react';
-import { BusyIndicator } from './index';
+import { BusyIndicator } from '@lib/BusyIndicator';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
 import { mountThemedComponent } from '@shared/tests/utils';

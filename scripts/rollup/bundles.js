@@ -9,13 +9,6 @@ const bundleTypes = {
 
 const bundles = [
   {
-    label: 'core',
-    bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD],
-    entry: 'core',
-    global: 'Core',
-    externals: ['react', '@fiori-for-react/utils', '@fiori-for-react/styles']
-  },
-  {
     label: 'fiori3',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
     entry: 'fiori3',

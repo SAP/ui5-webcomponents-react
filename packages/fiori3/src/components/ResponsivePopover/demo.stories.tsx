@@ -1,11 +1,11 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { PlacementType } from '@fiori-for-react/core/enums/PlacementType';
-import { PopoverHorizontalAlign } from '@fiori-for-react/core/enums/PopoverHorizontalAlign';
-import { PopoverVerticalAlign } from '@fiori-for-react/core/enums/PopoverVerticalAlign';
+import { Button } from '@lib/Button';
+import { PlacementType } from '@lib/PlacementType';
+import { PopoverHorizontalAlign } from '@lib/PopoverHorizontalAlign';
+import { PopoverVerticalAlign } from '@lib/PopoverVerticalAlign';
+import { ResponsivePopover } from '@lib/ResponsivePopover';
 import { boolean, select } from '@storybook/addon-knobs';
-import { ResponsivePopover } from './index';
-import { Button } from '../../webComponents/Button';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 storiesOf('F4R Components | ResponsivePopover', module).add('Default', () => (
   <ResponsivePopover

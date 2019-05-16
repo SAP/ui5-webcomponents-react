@@ -1,8 +1,8 @@
-import React, { FC, ReactNode } from 'react';
-import { BackgroundDesign } from '@fiori-for-react/core/enums/BackgroundDesign';
-import { PanelAccessibleRoles } from '@fiori-for-react/core/enums/PanelAccessibleRoles';
-import UI5Panel from '@ui5/webcomponents/dist/Panel';
 import { Event } from '@fiori-for-react/utils';
+import { BackgroundDesign } from '@lib/BackgroundDesign';
+import { PanelAccessibleRoles } from '@lib/PanelAccessibleRoles';
+import UI5Panel from '@ui5/webcomponents/dist/Panel';
+import React, { FC, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface PanelPropTypes extends WithWebComponentPropTypes {

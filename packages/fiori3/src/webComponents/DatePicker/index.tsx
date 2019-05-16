@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
-import { ValueState } from '../../enums/ValueState';
-import { CalendarType } from '@fiori-for-react/core/enums/CalendarType';
 import { Event } from '@fiori-for-react/utils';
+import { CalendarType } from '@lib/CalendarType';
+import { ValueState } from '@lib/ValueState';
 import UI5DatePicker from '@ui5/webcomponents/dist/DatePicker';
+import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface DatePickerPropTypes extends WithWebComponentPropTypes {

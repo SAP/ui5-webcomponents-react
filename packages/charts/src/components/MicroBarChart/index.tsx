@@ -1,51 +1,49 @@
+import { withStyles } from '@fiori-for-react/styles';
 import React, { CSSProperties, PureComponent } from 'react';
-import { CommonProps } from '@fiori-for-react/core/interfaces';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
-import { ClassProps, JSSTheme } from '@fiori-for-react/core/types';
+import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import BelizeColors from '../../themes/sap_belize';
 import { populateDataMicroChart } from '../../util/populateData';
 
-const BarStyles = ({ theme, parameters }: JSSTheme) => {
-  return {
-    container: {
-      display: 'flex',
-      flexDirection: 'column'
-    },
-    labelContainer: {
-      display: 'flex',
-      justifyContent: 'space-between'
-    },
-    valueContainer: {
-      display: 'flex'
-    },
-    valueBar: { height: '4px' },
-    fillUp: {
-      height: '4px',
-      backgroundColor: BelizeColors.sapUiChartPaletteSemanticNeutralLight3,
-      flexGrow: 1
-    },
-    label: {
-      color: 'hsl(0, 0%, 40%)',
-      display: 'block',
-      overflow: 'hidden',
-      fontFamily: "'72', Arial, Helvetica, sans-serif",
-      fontWeight: 'normal',
-      whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
-      fontSize: '12px'
-    },
-    text: {
-      display: 'inline-block',
-      fontSize: '14px',
-      wordWrap: 'break-word',
-      boxSizing: 'border-box',
-      fontFamily: "'72', Arial, Helvetica, sans-serif",
-      fontWeight: 'normal',
-      whiteSpace: 'pre-line',
-      color: '#333333'
-    }
-  };
-};
+const BarStyles = () => ({
+  container: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  labelContainer: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  valueContainer: {
+    display: 'flex'
+  },
+  valueBar: { height: '4px' },
+  fillUp: {
+    height: '4px',
+    backgroundColor: BelizeColors.sapUiChartPaletteSemanticNeutralLight3,
+    flexGrow: 1
+  },
+  label: {
+    color: 'hsl(0, 0%, 40%)',
+    display: 'block',
+    overflow: 'hidden',
+    fontFamily: "'72', Arial, Helvetica, sans-serif",
+    fontWeight: 'normal',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    fontSize: '12px'
+  },
+  text: {
+    display: 'inline-block',
+    fontSize: '14px',
+    wordWrap: 'break-word',
+    boxSizing: 'border-box',
+    fontFamily: "'72', Arial, Helvetica, sans-serif",
+    fontWeight: 'normal',
+    whiteSpace: 'pre-line',
+    color: '#333333'
+  }
+});
 
 interface DataItems {
   value: number;
@@ -60,9 +58,8 @@ export interface MicroBarChartPropTypes extends CommonProps {
   valueFormatter?: (value: any) => string | number;
   labelFormatter?: (value: any) => string | number;
 }
-interface InternalProps extends MicroBarChartPropTypes, ClassProps {
-  theme?: JSSTheme;
-}
+
+interface InternalProps extends MicroBarChartPropTypes, ChartInternalProps {}
 
 @withStyles(BarStyles)
 export class MicroBarChart extends PureComponent<InternalProps> {
@@ -70,6 +67,7 @@ export class MicroBarChart extends PureComponent<InternalProps> {
     valueFormatter: (value) => value,
     labelFormatter: (value) => value
   };
+
   render() {
     const {
       className,

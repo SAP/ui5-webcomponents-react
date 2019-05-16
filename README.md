@@ -20,18 +20,6 @@
 </p>
 
 <!-- *********************************************************************** -->
-<a name="contents"></a>
-## Table of Contents
-1. [Description](#description)
-2. [Requirements](#requirements)
-3. [Download & Installation](#download)
-4. [Configuration](#configuration)
-5. [Known Issues](#issues)
-6. [Support](#support)
-7. [Contributing](#contributing)
-8. [License](#license)
-
-<!-- *********************************************************************** -->
 <a name="description"></a>
 ## Description
 
@@ -68,7 +56,7 @@ You can play around with our components by visiting our [Storybook](https://sap.
 ## Requirements
 
 - [Node.js](https://nodejs.org/) (**version 8.5 or higher** ⚠️)
-- [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.4.2 or higher**)
+- [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.8.0 or higher**)
 
 
 <!-- *********************************************************************** -->
@@ -87,8 +75,10 @@ npm install @fiori-for-react/fiori3 --save
 **Prerequisite: You have a React app.** In case you don't, we recommend to create one using [create-react-app](https://facebook.github.io/create-react-app/).<br/>
 In order to use `fiori-for-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
 You will find this component most likely in `src/App.js`: 
-```js
-import { ContentDensity, ThemeProvider, Themes } from '@fiori-for-react/fiori3';
+```jsx
+import { ContentDensity } from '@fiori-for-react/fiori3/lib/ContentDensity';
+import { ThemeProvider } from '@fiori-for-react/fiori3/lib/ThemeProvider';
+import { Themes } from '@fiori-for-react/fiori3/lib/Themes';
 ...
 render() {
   return (
@@ -105,7 +95,7 @@ Then, you are ready to use `fiori-for-react` and you can import the desired comp
 For example, to use ```Button``` you need to import it:
 
 ```jsx
-import { Button } from '@fiori-for-react/fiori3'; // loads ui5-button wrapped in a fiori-for-react component
+import { Button } from '@fiori-for-react/fiori3/lib/Button'; // loads ui5-button wrapped in a fiori-for-react component
 ```
 
 Then, you can use the Button in your app:
@@ -114,12 +104,35 @@ Then, you can use the Button in your app:
 <Button onPress={() => alert('Hello World!')}>Hello world!</Button>
 ```
 
+You could import all components also from `@fiori-for-react/fiori3` directly, but this will have a negative impact on your bundle size.
 
-<!-- *********************************************************************** -->
-<!-- <a name="limitations"></a> -->
-<!-- ## Limitations -->
-
-
+For Browser Support and the configuration of the UI5 Web Components, please take a look at the 
+ [Browser Support](https://github.com/SAP/ui5-webcomponents#browser-support) and the
+ [Configure](https://github.com/SAP/ui5-webcomponents#browser-support) sections of the 
+ [UI5 Web Components Readme](https://github.com/SAP/ui5-webcomponents#ui5-web-components).
+ 
+### Improving Bundle Size
+If you are running a default `create-react-app`, you will have will huge bundle size after creating a production build. 
+This is caused by the fact that the webpack bundler is including all UI5 Web Component translation files and CLDR data files in the application bundle. 
+In order to decrease the bundle size of the application a custom Webpack configuration should be provided.
+1. Eject the react build with ```npm run eject```
+2. Open ```config/webpack.config.js``` file and add the following lines before the last loader:
+```js
+{
+  test: [/cldr\/.*\.json$/, /i18n\/.*\.json$/],
+  loader: 'file-loader',
+  options: {
+    name: 'static/media/[name].[hash:8].[ext]',
+  },
+  type: 'javascript/auto'
+},
+// "file" loader makes sure those assets get served by WebpackDevServer.
+// When you `import` an asset, you get its (virtual) filename.
+// In production, they would get copied to the `build` folder.
+// This loader doesn't use a "test" so it will catch all modules
+// that fall through the other loaders.
+```
+Please also refer to the [UI5 Web Components React Sample](https://github.com/SAP/ui5-webcomponents-sample-react#configure-react-build).
 
 <!-- *********************************************************************** -->
 <a name="issues"></a>

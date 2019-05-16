@@ -1,6 +1,5 @@
-import React, { FC } from 'react';
-
 import UI5TabBase from '@ui5/webcomponents/dist/TabBase';
+import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TabBasePropTypes extends WithWebComponentPropTypes {}

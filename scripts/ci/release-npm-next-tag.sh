@@ -5,7 +5,7 @@ CHANGED_PACKAGES=$(git diff-tree --no-commit-id --name-only -r -m  ${TRAVIS_COMM
 
 if [ -n ${CHANGED_PACKAGES} ]
 then
-    echo "This npm relevant packages changed - skip npm release"
+    echo "No npm relevant packages changed - skip npm release"
     exit 0
 fi
 
@@ -18,7 +18,6 @@ fi
 
 RELEASE_VERSION=$(node -p "require('./lerna.json').version")-$(git rev-parse --short HEAD)
 cd ${TRAVIS_BUILD_DIR}/build/node_modules/charts && npm version ${RELEASE_VERSION} && npm publish --access public --tag next
-cd ${TRAVIS_BUILD_DIR}/build/node_modules/core && npm version ${RELEASE_VERSION} && npm publish --access public --tag next
 cd ${TRAVIS_BUILD_DIR}/build/node_modules/fiori3 && npm version ${RELEASE_VERSION} && npm publish --access public --tag next
 cd ${TRAVIS_BUILD_DIR}/build/node_modules/styles && npm version ${RELEASE_VERSION} && npm publish --access public --tag next
 cd ${TRAVIS_BUILD_DIR}/build/node_modules/utils && npm version ${RELEASE_VERSION} && npm publish --access public --tag next

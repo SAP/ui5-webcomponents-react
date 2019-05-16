@@ -1,4 +1,4 @@
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { fonts, HSLColor } from '@fiori-for-react/styles';
 
 const styles = ({ theme, parameters }: JSSTheme) => ({

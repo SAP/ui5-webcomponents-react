@@ -1,4 +1,4 @@
-import { CommonProps } from '@fiori-for-react/core/interfaces';
+import { CommonProps } from './CommonProps';
 
 export interface Fiori3CommonProps extends CommonProps {
   'data-ui5-slot'?: string;

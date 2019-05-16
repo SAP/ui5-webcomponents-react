@@ -1,8 +1,8 @@
-import React from 'react';
+import { ListItem } from '@lib/ListItem';
+import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
-import { ListItem } from './index';
-import { mountThemedComponent } from '@shared/tests/utils';
+import React from 'react';
 
 use(matchSnapshot);
 

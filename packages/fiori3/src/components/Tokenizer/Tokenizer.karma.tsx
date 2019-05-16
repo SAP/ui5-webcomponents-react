@@ -1,11 +1,11 @@
-import React, { cloneElement } from 'react';
-import * as sinon from 'sinon';
-import { Tokenizer } from './index';
-import { Token } from '../Token';
-import { Icon } from '../../webComponents/Icon';
+import { Icon } from '@lib/Icon';
+import { Tokenizer } from '@lib/Tokenizer';
+import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
-import { mountThemedComponent } from '@shared/tests/utils';
+import React, { cloneElement } from 'react';
+import * as sinon from 'sinon';
+import { Token } from '../Token';
 
 use(matchSnapshot);
 

@@ -1,10 +1,10 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { ContentDensity } from '@lib/ContentDensity';
+import { ThemeProvider } from '@lib/ThemeProvider';
+import { Themes } from '@lib/Themes';
 import { expect } from 'chai';
-import { ThemeProvider } from './index';
-import { Themes } from '@fiori-for-react/core/enums/Themes';
-import { ContentDensity } from '@fiori-for-react/core/enums/ContentDensity';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
+import { mount } from 'enzyme';
+import React from 'react';
+import { withStyles } from '@fiori-for-react/styles';
 
 describe('ThemeProvider', () => {
   it('Provides Correct Context', (done) => {

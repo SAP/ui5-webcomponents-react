@@ -2,7 +2,7 @@
 
 exports[`InfoLabel Render without crashing 1`] = `
 <div
-  class="InfoLabel-infoLabelContainer- InfoLabel-infoLabelContainer- InfoLabel-text- InfoLabel-displayOnly-"
+  class="InfoLabel-infoLabelContainer- InfoLabel-text- InfoLabel-displayOnly- InfoLabel-flavour3-"
 >
   <span
     class="InfoLabel-label-"
@@ -12,7 +12,7 @@ exports[`InfoLabel Render without crashing 1`] = `
 
 exports[`InfoLabel With Number 1`] = `
 <div
-  class="InfoLabel-infoLabelContainer- InfoLabel-infoLabelContainer- InfoLabel-numeric-"
+  class="InfoLabel-infoLabelContainer- InfoLabel-numeric- InfoLabel-flavour3-"
   style="width: 100px;"
 >
   <span
@@ -25,7 +25,7 @@ exports[`InfoLabel With Number 1`] = `
 
 exports[`InfoLabel With Text 1`] = `
 <div
-  class="InfoLabel-infoLabelContainer- InfoLabel-infoLabelContainer- InfoLabel-text-"
+  class="InfoLabel-infoLabelContainer- InfoLabel-text- InfoLabel-flavour3-"
   style="width: 100px;"
 >
   <span

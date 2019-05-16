@@ -1,10 +1,10 @@
-import { InputBaseItemType } from '@fiori-for-react/core/interfaces';
-import { ClassProps } from '@fiori-for-react/core/types/ClassProps';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { Token } from '@lib/Token';
 import React, { cloneElement, Component, CSSProperties } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { Token } from '../Token';
+import { InputBaseItemType } from '../../interfaces/InputBaseItemType';
+import { withStyles } from '@fiori-for-react/styles';
 import styles from './Tokenizer.jss';
 
 export interface TokenizerPropTypes extends Fiori3CommonProps {

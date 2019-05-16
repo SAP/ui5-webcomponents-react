@@ -1,9 +1,9 @@
-import React from 'react';
-import { ProgressIndicator } from './index';
-import { ValueState } from '@fiori-for-react/core/enums/ValueState';
-import { ContentDensity } from '@fiori-for-react/core/enums/ContentDensity';
-import { expect } from 'chai';
+import { ContentDensity } from '@lib/ContentDensity';
+import { ProgressIndicator } from '@lib/ProgressIndicator';
+import { ValueState } from '@lib/ValueState';
 import { mountThemedComponent } from '@shared/tests/utils';
+import { expect } from 'chai';
+import React from 'react';
 
 const testFactory = () => {
   Object.values(ValueState).forEach((state) => {

@@ -1,6 +1,6 @@
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { fonts, HSLColor } from '@fiori-for-react/styles';
-import { ZIndex } from '@fiori-for-react/core/enums';
+import { ZIndex } from '../../enums/ZIndex';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
   objectPage: {

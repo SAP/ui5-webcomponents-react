@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { ProgressIndicator } from './index';
+import { ProgressIndicator } from '@lib/ProgressIndicator';
 
 function renderStory() {
   return (

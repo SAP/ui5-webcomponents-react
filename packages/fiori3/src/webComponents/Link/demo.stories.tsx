@@ -1,8 +1,8 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { LinkType } from '@fiori-for-react/core/enums/LinkType';
+import { Link } from '@lib/Link';
+import { LinkType } from '@lib/LinkType';
 import { boolean, select } from '@storybook/addon-knobs';
-import { Link } from './index';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 storiesOf('UI5 Web Components | Link', module).add('Generated default story', () => (
   <Link

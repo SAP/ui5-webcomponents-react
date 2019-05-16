@@ -1,17 +1,16 @@
-import { getEventFromCallback } from '@shared/tests/utils';
+import { Button } from '@lib/Button';
+import { Label } from '@lib/Label';
+import { Link } from '@lib/Link';
+import { ObjectPage } from '@lib/ObjectPage';
+import { ObjectPageMode } from '@lib/ObjectPageMode';
+import { ObjectPageSection } from '@lib/ObjectPageSection';
+import { ObjectPageSubSection } from '@lib/ObjectPageSubSection';
+import { Text } from '@lib/Text';
+import { getEventFromCallback, mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
+import { expect, use } from 'chai';
+import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
 import * as sinon from 'sinon';
-import { ObjectPageMode } from '@fiori-for-react/core/enums';
-import { Button } from '../../webComponents/Button';
-import { Label } from '../../webComponents/Label';
-import { Link } from '../../webComponents/Link';
-import { ObjectPageSection } from '../ObjectPageSection';
-import { ObjectPageSubSection } from '../ObjectPageSubSection';
-import { Text } from '../Text/index';
-import { ObjectPage } from './index';
-import { expect, use } from 'chai';
-import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
-import { matchSnapshot } from 'chai-karma-snapshot';
 
 use(matchSnapshot);
 

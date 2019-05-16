@@ -1,13 +1,12 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { boolean, select } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
-
-import { AnalyticalCard } from './index';
-import { AnalyticalCardHeader } from './header/AnalyticalCardHeader';
-import { DeviationIndicator } from './header/DeviationIndicator';
-import { ValueState } from '@fiori-for-react/core';
 import { LineChart } from '@fiori-for-react/charts';
+import { AnalyticalCard } from '@lib/AnalyticalCard';
+import { AnalyticalCardHeader } from '@lib/AnalyticalCardHeader';
+import { DeviationIndicator } from '@lib/DeviationIndicator';
+import { ValueState } from '@lib/ValueState';
+import { action } from '@storybook/addon-actions';
+import { boolean, select } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 storiesOf('F4R Components | Analytical Card', module).add('default', () => (
   <AnalyticalCard

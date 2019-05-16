@@ -45,8 +45,12 @@ module.exports = {
         }
       },
       {
-        test: /\.less$/,
-        loader: 'less-loader' // compiles Less to CSS
+        test: [/cldr\/.*\.json$/, /i18n\/.*\.json$/],
+        loader: 'file-loader',
+        options: {
+          name: 'static/media/[name].[ext]'
+        },
+        type: 'javascript/auto'
       },
       {
         test: /\.css$/,
