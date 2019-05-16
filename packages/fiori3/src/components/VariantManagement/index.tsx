@@ -44,6 +44,7 @@ interface VariantManagementState {
 const styles = ({ parameters }: JSSTheme) => ({
   VariantManagement: {
     display: 'flex',
+    alignItems: 'center',
     textAlign: 'center',
     cursor: 'pointer'
   },
