@@ -1,4 +1,4 @@
-import { fonts, sap_fiori3_light } from '@fiori-for-react/styles';
+import { fonts } from '@fiori-for-react/styles';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
@@ -8,13 +8,13 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       paddingLeft: '2rem',
       paddingRight: '2rem',
       paddingBottom: '1px',
-      background: sap_fiori3_light.sapUiObjectHeaderBackground,
-      boxShadow: sap_fiori3_light.sapUiShadowHeader
+      background: parameters.sapUiObjectHeaderBackground,
+      boxShadow: parameters.sapUiShadowHeader
     },
     filterBarHeader: {
       alignItems: 'center',
       display: 'flex',
-      background: sap_fiori3_light.sapUiObjectHeaderBackground,
+      background: parameters.sapUiObjectHeaderBackground,
       minHeight: '3rem',
       paddingBottom: '0.5rem',
       boxShadow: 'none'
@@ -28,7 +28,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       flexWrap: 'wrap',
       paddingTop: '1rem',
       paddingBottom: '1rem',
-      background: sap_fiori3_light.sapUiObjectHeaderBackground
+      background: parameters.sapUiObjectHeaderBackground
     },
     '@media (max-width: 599px)': {
       filterArea: {

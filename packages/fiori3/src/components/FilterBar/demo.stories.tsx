@@ -2,12 +2,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, select } from '@storybook/addon-knobs';
 import { FilterBar } from './index';
-import { VariantManagement } from '../VariantManagement';
+import { VariantManagement } from '@lib/VariantManagement';
 import { FilterItem } from '../FilterItem';
-import { PlacementType } from '../../enums/PlacementType';
+import { PlacementType } from '@lib/PlacementType';
 import { TitleLevel } from '@lib/TitleLevel';
-import { FilterType } from '../../enums/FilterType';
-import { Switch } from '../../webComponents/Switch';
+import { FilterType } from '@lib/FilterType';
+import { Switch } from '@lib/Switch';
 
 const flavours = [];
 for (let i = 1; i <= 9; i++) {
