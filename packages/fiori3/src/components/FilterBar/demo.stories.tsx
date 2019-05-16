@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, select } from '@storybook/addon-knobs';
-import { FilterBar } from './index';
+import { FilterBar } from '@lib/FilterBar';
 import { VariantManagement } from '@lib/VariantManagement';
-import { FilterItem } from '../FilterItem';
+import { FilterItem } from '@lib/FilterItem';
 import { PlacementType } from '@lib/PlacementType';
 import { TitleLevel } from '@lib/TitleLevel';
 import { FilterType } from '@lib/FilterType';
