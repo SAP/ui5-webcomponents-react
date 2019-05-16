@@ -28,9 +28,10 @@ jobs:
     - stage: 'Build and Deploy'
       node_js:
         - '10'
+      before_script:
+        - bash ./scripts/ci/version-bump.sh
       script: yarn build
       before_deploy:
-        - git checkout master
         - bash ./scripts/ci/setup-npm.sh
       deploy:
         - provider: script
