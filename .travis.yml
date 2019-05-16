@@ -36,5 +36,5 @@ jobs:
         - provider: script
           script: bash ./scripts/ci/release-npm-next-tag.sh
           skip_cleanup: true
-        - on:
+          on:
             branch: master
