@@ -1,5 +1,5 @@
-import { FlexBox } from '@lib/FlexBox';
-import { FlexBoxJustifyContent } from '@lib/FlexBoxJustifyContent';
+import { FlexBox } from '../../lib/FlexBox';
+import { FlexBoxJustifyContent } from '../../lib/FlexBoxJustifyContent';
 import { mountThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
 

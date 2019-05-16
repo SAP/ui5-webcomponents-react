@@ -1,16 +1,16 @@
 import { ClassProps } from '../../interfaces/ClassProps';
 import React, { PureComponent, ReactNode } from 'react';
 import styles from './FilterItem.jss';
-import { Label } from '@lib/Label';
-import { Input } from '@lib/Input';
-import { Select } from '@lib/Select';
-import { StandardListItem } from '@lib/StandardListItem';
-import { BusyIndicator } from '@lib/BusyIndicator';
-import { FilterType } from '@lib/FilterType';
+import { Label } from '../../lib/Label';
+import { Input } from '../../lib/Input';
+import { Select } from '../../lib/Select';
+import { StandardListItem } from '../../lib/StandardListItem';
+import { BusyIndicator } from '../../lib/BusyIndicator';
+import { FilterType } from '../../lib/FilterType';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
 import { withStyles } from '@fiori-for-react/styles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { ListItemTypes } from '@lib/ListItemTypes';
+import { ListItemTypes } from '../../lib/ListItemTypes';
 
 export interface FilterItemPropTypes extends CommonProps {
   placeholder?: string;

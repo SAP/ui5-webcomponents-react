@@ -1,4 +1,4 @@
-import { MonthPicker } from '@lib/MonthPicker';
+import { MonthPicker } from '../../lib/MonthPicker';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

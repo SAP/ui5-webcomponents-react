@@ -1,7 +1,7 @@
-import { ListItemTypes } from '@lib/ListItemTypes';
-import { Select } from '@lib/Select';
-import { StandardListItem } from '@lib/StandardListItem';
-import { ValueState } from '@lib/ValueState';
+import { ListItemTypes } from '../../lib/ListItemTypes';
+import { Select } from '../../lib/Select';
+import { StandardListItem } from '../../lib/StandardListItem';
+import { ValueState } from '../../lib/ValueState';
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';

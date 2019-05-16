@@ -1,4 +1,4 @@
-import { ContentDensity } from '@lib/ContentDensity';
+import { ContentDensity } from '../../lib/ContentDensity';
 import { fonts } from '@fiori-for-react/styles';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 

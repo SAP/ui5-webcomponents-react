@@ -1,7 +1,7 @@
-import { Carousel } from '@lib/Carousel';
-import { CarouselArrowsPlacement } from '@lib/CarouselArrowsPlacement';
-import { Icon } from '@lib/Icon';
-import { PlacementType } from '@lib/PlacementType';
+import { Carousel } from '../../lib/Carousel';
+import { CarouselArrowsPlacement } from '../../lib/CarouselArrowsPlacement';
+import { Icon } from '../../lib/Icon';
+import { PlacementType } from '../../lib/PlacementType';
 import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

@@ -1,6 +1,6 @@
-import { CalendarType } from '@lib/CalendarType';
-import { DatePicker } from '@lib/DatePicker';
-import { ValueState } from '@lib/ValueState';
+import { CalendarType } from '../../lib/CalendarType';
+import { DatePicker } from '../../lib/DatePicker';
+import { ValueState } from '../../lib/ValueState';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';

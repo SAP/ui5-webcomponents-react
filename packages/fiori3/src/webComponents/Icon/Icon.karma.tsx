@@ -1,4 +1,4 @@
-import { Icon } from '@lib/Icon';
+import { Icon } from '../../lib/Icon';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

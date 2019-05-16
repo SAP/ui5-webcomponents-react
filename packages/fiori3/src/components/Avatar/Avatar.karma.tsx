@@ -1,6 +1,6 @@
 import { KeyCodes } from '@fiori-for-react/utils';
-import { AvatarShape } from '@lib/AvatarShape';
-import { AvatarSize } from '@lib/AvatarSize';
+import { AvatarShape } from '../../lib/AvatarShape';
+import { AvatarSize } from '../../lib/AvatarSize';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

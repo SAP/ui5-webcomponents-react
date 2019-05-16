@@ -1,6 +1,6 @@
-import { Label } from '@lib/Label';
-import { Tab } from '@lib/Tab';
-import { TabContainer } from '@lib/TabContainer';
+import { Label } from '../../lib/Label';
+import { Tab } from '../../lib/Tab';
+import { TabContainer } from '../../lib/TabContainer';
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';

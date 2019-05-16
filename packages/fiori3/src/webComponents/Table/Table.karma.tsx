@@ -1,4 +1,4 @@
-import { Table } from '@lib/Table';
+import { Table } from '../../lib/Table';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

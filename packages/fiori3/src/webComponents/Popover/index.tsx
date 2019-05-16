@@ -1,7 +1,7 @@
 import React, { Component, ReactNode, RefObject, CSSProperties } from 'react';
-import { PlacementType } from '@lib/PlacementType';
-import { PopoverHorizontalAlign } from '@lib/PopoverHorizontalAlign';
-import { PopoverVerticalAlign } from '@lib/PopoverVerticalAlign';
+import { PlacementType } from '../../lib/PlacementType';
+import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
+import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
 import UI5Popover from '@ui5/webcomponents/dist/Popover';
 import { Event } from '@fiori-for-react/utils';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
@@ -92,7 +92,11 @@ class Popover extends Component<PopoverPropTypes> {
     return (
       <>
         {openBy && (
-          <div style={style} onClick={this.handleOpenPopover} ref={this.openByRef}>
+          <div
+            style={style}
+            onClick={this.handleOpenPopover}
+            ref={this.openByRef}
+          >
             {openBy}
           </div>
         )}

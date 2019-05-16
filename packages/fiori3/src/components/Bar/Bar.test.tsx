@@ -1,4 +1,4 @@
-import { Bar } from '@lib/Bar';
+import { Bar } from '../../lib/Bar';
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 

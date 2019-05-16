@@ -1,4 +1,4 @@
-import { GroupHeaderListItem } from '@lib/GroupHeaderListItem';
+import { GroupHeaderListItem } from '../../lib/GroupHeaderListItem';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

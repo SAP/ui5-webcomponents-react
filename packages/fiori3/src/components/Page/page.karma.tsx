@@ -1,4 +1,4 @@
-import { Page } from '@lib/Page';
+import { Page } from '../../lib/Page';
 import { renderThemedComponent, ThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

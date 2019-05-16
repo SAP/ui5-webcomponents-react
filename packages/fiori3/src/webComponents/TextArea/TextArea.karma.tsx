@@ -1,4 +1,4 @@
-import { TextArea } from '@lib/TextArea';
+import { TextArea } from '../../lib/TextArea';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

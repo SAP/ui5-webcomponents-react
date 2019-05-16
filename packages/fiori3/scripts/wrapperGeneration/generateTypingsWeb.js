@@ -22,67 +22,67 @@ import TimelineItem from '@ui5/webcomponents/dist/TimelineItem';
 
 const mappings = {
   [UI5ButtonType]: {
-    importStatement: "import { ButtonType } from '@lib/ButtonType';",
+    importStatement: "import { ButtonType } from '../../lib/ButtonType';",
     tsType: 'ButtonType',
     isEnum: true
   },
   [UI5PopoverPlacementTypes]: {
-    importStatement: "import { PlacementType } from '@lib/PlacementType';",
+    importStatement: "import { PlacementType } from '../../lib/PlacementType';",
     tsType: 'PlacementType',
     isEnum: true
   },
   [UI5PopoverHorizontalAligns]: {
-    importStatement: "import { PopoverHorizontalAlign } from '@lib/PopoverHorizontalAlign';",
+    importStatement: "import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';",
     tsType: 'PopoverHorizontalAlign',
     isEnum: true
   },
   [UI5PopoverVerticalAligns]: {
-    importStatement: "import { PopoverVerticalAlign } from '@lib/PopoverVerticalAlign';",
+    importStatement: "import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';",
     tsType: 'PopoverVerticalAlign',
     isEnum: true
   },
   [UI5LinkType]: {
-    importStatement: "import { LinkType } from '@lib/LinkType';",
+    importStatement: "import { LinkType } from '../../lib/LinkType';",
     tsType: 'LinkType',
     isEnum: true
   },
   [UI5IconColors]: {
-    importStatement: "import { IconColor } from '@lib/IconColor';",
+    importStatement: "import { IconColor } from '../../lib/IconColor';",
     tsType: 'IconColor',
     isEnum: true
   },
   [UI5ListItemTypes]: {
-    importStatement: "import { ListItemTypes } from '@lib/ListItemTypes';",
+    importStatement: "import { ListItemTypes } from '../../lib/ListItemTypes';",
     tsType: 'ListItemTypes',
     isEnum: true
   },
   [UI5PanelAccessibleRoles]: {
-    importStatement: "import { PanelAccessibleRoles } from '@lib/PanelAccessibleRoles';",
+    importStatement: "import { PanelAccessibleRoles } from '../../lib/PanelAccessibleRoles';",
     tsType: 'PanelAccessibleRoles',
     isEnum: true
   },
   [UI5ListSeparators]: {
-    importStatement: "import { ListSeparators } from '@lib/ListSeparators';",
+    importStatement: "import { ListSeparators } from '../../lib/ListSeparators';",
     tsType: 'ListSeparators',
     isEnum: true
   },
   [UI5ListMode]: {
-    importStatement: "import { ListMode } from '@lib/ListMode';",
+    importStatement: "import { ListMode } from '../../lib/ListMode';",
     tsType: 'ListMode',
     isEnum: true
   },
   [UI5TitleLevel]: {
-    importStatement: "import { TitleLevel } from '@lib/TitleLevel';",
+    importStatement: "import { TitleLevel } from '../../lib/TitleLevel';",
     tsType: 'TitleLevel',
     isEnum: true
   },
   [UI5BackgroundDesign]: {
-    importStatement: "import { BackgroundDesign } from '@lib/BackgroundDesign';",
+    importStatement: "import { BackgroundDesign } from '../../lib/BackgroundDesign';",
     tsType: 'BackgroundDesign',
     isEnum: true
   },
   [UI5InputType]: {
-    importStatement: "import { InputType } from '@lib/InputType';",
+    importStatement: "import { InputType } from '../../lib/InputType';",
     tsType: 'InputType',
     isEnum: true
   },
@@ -91,17 +91,17 @@ const mappings = {
     comment: 'UI5 Icon Web Component'
   },
   [UI5CalendarType]: {
-    importStatement: "import { CalendarType } from '@lib/CalendarType';",
+    importStatement: "import { CalendarType } from '../../lib/CalendarType';",
     tsType: 'CalendarType',
     isEnum: true
   },
   [UI5ValueState]: {
-    importStatement: "import { ValueState } from '@lib/ValueState';",
+    importStatement: "import { ValueState } from '../../lib/ValueState';",
     tsType: 'ValueState',
     isEnum: true
   },
   [UI5MessageStripType]: {
-    importStatement: "import { MessageStripType } from '@lib/MessageStripType';",
+    importStatement: "import { MessageStripType } from '../../lib/MessageStripType';",
     tsType: 'MessageStripType',
     isEnum: true
   },

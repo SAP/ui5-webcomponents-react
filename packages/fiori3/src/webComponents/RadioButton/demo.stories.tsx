@@ -1,5 +1,5 @@
-import { RadioButton } from '@lib/RadioButton';
-import { ValueState } from '@lib/ValueState';
+import { RadioButton } from '../../lib/RadioButton';
+import { ValueState } from '../../lib/ValueState';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';

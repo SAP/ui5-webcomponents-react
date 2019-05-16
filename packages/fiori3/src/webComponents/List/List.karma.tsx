@@ -1,4 +1,4 @@
-import { List } from '@lib/List';
+import { List } from '../../lib/List';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

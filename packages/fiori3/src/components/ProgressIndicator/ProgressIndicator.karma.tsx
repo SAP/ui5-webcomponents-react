@@ -1,6 +1,6 @@
-import { ContentDensity } from '@lib/ContentDensity';
-import { ProgressIndicator } from '@lib/ProgressIndicator';
-import { ValueState } from '@lib/ValueState';
+import { ContentDensity } from '../../lib/ContentDensity';
+import { ProgressIndicator } from '../../lib/ProgressIndicator';
+import { ValueState } from '../../lib/ValueState';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect } from 'chai';
 import React from 'react';

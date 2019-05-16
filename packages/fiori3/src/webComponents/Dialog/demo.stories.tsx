@@ -1,4 +1,4 @@
-import { Dialog } from '@lib/Dialog';
+import { Dialog } from '../../lib/Dialog';
 import { boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';

@@ -1,5 +1,5 @@
-import { SegmentedButton } from '@lib/SegmentedButton';
-import { SegmentedButtonItem } from '@lib/SegmentedButtonItem';
+import { SegmentedButton } from '../../lib/SegmentedButton';
+import { SegmentedButtonItem } from '../../lib/SegmentedButtonItem';
 import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
 import { expect } from 'chai';
 import { mount } from 'enzyme';

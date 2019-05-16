@@ -1,5 +1,5 @@
-import { Card } from '@lib/Card';
-import { Text } from '@lib/Text';
+import { Card } from '../../lib/Card';
+import { Text } from '../../lib/Text';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { propTablesExclude } from '../../../../docs/.storybook/config';

@@ -1,4 +1,4 @@
-import { ValueState } from '@lib/ValueState';
+import { ValueState } from '../../lib/ValueState';
 import React, { FC } from 'react';
 import { Event } from '@fiori-for-react/utils';
 import UI5CheckBox from '@ui5/webcomponents/dist/CheckBox';

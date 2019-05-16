@@ -1,4 +1,4 @@
-import { TableCell } from '@lib/TableCell';
+import { TableCell } from '../../lib/TableCell';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

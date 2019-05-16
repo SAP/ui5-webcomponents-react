@@ -1,5 +1,5 @@
 import React from 'react';
-import { ObjectPageSubSection } from '@lib/ObjectPageSubSection';
+import { ObjectPageSubSection } from '../../lib/ObjectPageSubSection';
 import { shallow } from 'enzyme';
 import { renderThemedComponent } from '@shared/tests/utils';
 import { matchSnapshot } from 'chai-karma-snapshot';

@@ -1,4 +1,4 @@
-import { MessageToast } from '@lib/MessageToast';
+import { MessageToast } from '../../lib/MessageToast';
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { ExtendedWindow } from '../../interfaces/ExtendedWindow';

@@ -1,4 +1,7 @@
 import { Device, Event } from '@fiori-for-react/utils';
+import React, { Component } from 'react';
+import { Dialog } from '../../lib/Dialog';
+import { Popover } from '../../lib/Popover';
 import React, { Component, CSSProperties } from 'react';
 import { Dialog } from '@lib/Dialog';
 import { Popover } from '@lib/Popover';
@@ -49,7 +52,11 @@ export class ResponsivePopover extends Component<ResponsivePopoverPropTypes> {
       return (
         <>
           {openBy && (
-            <div style={style} onClick={this.handleOpenDialog} data-ui5-slot={this.props['data-ui5-slot']}>
+            <div
+              style={style}
+              onClick={this.handleOpenDialog}
+              data-ui5-slot={this.props['data-ui5-slot']}
+            >
               {openBy}
             </div>
           )}
