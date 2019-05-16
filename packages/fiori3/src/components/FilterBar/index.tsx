@@ -1,10 +1,10 @@
-import { ClassProps } from '@fiori-for-react/core/types/ClassProps';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { withStyles } from '@fiori-for-react/styles';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import styles from './FilterBar.jss';
-import { Input } from '../../webComponents/Input';
-import { Button } from '../../webComponents/Button';
+import { Input } from '@lib/Input';
+import { Button } from '@lib/Button';
 import { ButtonType } from '../../enums/ButtonType';
 
 export interface FilterBarPropTypes extends Fiori3CommonProps {

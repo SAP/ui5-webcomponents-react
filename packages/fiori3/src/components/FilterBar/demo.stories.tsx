@@ -4,11 +4,10 @@ import { boolean, select } from '@storybook/addon-knobs';
 import { FilterBar } from './index';
 import { VariantManagement } from '../VariantManagement';
 import { FilterItem } from '../FilterItem';
-import { PlacementType } from '@fiori-for-react/core/enums/PlacementType';
-import { TitleLevel } from '@fiori-for-react/core';
+import { PlacementType } from '../../enums/PlacementType';
+import { TitleLevel } from '@lib/TitleLevel';
 import { FilterType } from '../../enums/FilterType';
 import { Switch } from '../../webComponents/Switch';
-import { RadioButton } from '../../webComponents/RadioButton';
 
 const flavours = [];
 for (let i = 1; i <= 9; i++) {

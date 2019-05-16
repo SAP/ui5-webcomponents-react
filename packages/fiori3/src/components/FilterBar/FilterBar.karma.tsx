@@ -6,8 +6,7 @@ import { matchSnapshot } from 'chai-karma-snapshot';
 import { VariantManagement } from '../VariantManagement';
 import { FilterItem } from '../FilterItem';
 import { FilterType } from '../../enums/FilterType';
-import { Switch } from '../../webComponents/Switch';
-import { Button } from '../../webComponents/Button';
+import { Switch } from '@lib/Switch';
 
 const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
 const filterItems = [{ text: 'Text 1', key: '1' }, { text: 'Text 2', key: '2' }];
@@ -109,7 +108,6 @@ describe('FilterBar', () => {
     );
     // console.log(wrapper.debug());
     // console.log(wrapper.find('Select').debug());
-    console.log(wrapper.find('ui5-li').debug());
     wrapper
       .find('ui5-li')
       .at(1)
