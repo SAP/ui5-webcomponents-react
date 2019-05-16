@@ -43,7 +43,8 @@ interface VariantManagementState {
 
 const styles = ({ parameters }: JSSTheme) => ({
   VariantManagement: {
-    display: 'inline',
+    display: 'flex',
+    alignItems: 'center',
     textAlign: 'center',
     cursor: 'pointer'
   },

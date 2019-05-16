@@ -30,4 +30,4 @@ fileContent += `
 };
 `;
 
-fs.writeFileSync(path.join(PATHS.src, 'index.ts'), fileContent);
+fs.writeFileSync(path.join(PATHS.packages, 'fiori3', 'src', 'index.ts'), fileContent);
