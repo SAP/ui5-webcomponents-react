@@ -10,7 +10,7 @@ import { FilterType } from '../../enums/FilterType';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
 import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 import { CommonProps } from '@fiori-for-react/core/interfaces';
-import { ListItemTypes } from '../..';
+import { ListItemTypes } from '../../enums/ListItemTypes';
 
 export interface FilterItemPropTypes extends CommonProps {
   placeholder?: string;

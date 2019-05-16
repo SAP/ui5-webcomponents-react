@@ -1,4 +1,5 @@
 #! /bin/bash
+
 CHANGED_PACKAGES=$(git diff-tree --no-commit-id --name-only -r -m  ${TRAVIS_COMMIT} | \
     grep -e "^packages/" | \
     grep -v -e "packages/docs")

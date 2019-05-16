@@ -5,7 +5,7 @@ import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import styles from './FilterBar.jss';
 import { Input } from '../../webComponents/Input';
 import { Button } from '../../webComponents/Button';
-import { ButtonType } from '../..';
+import { ButtonType } from '../../enums/ButtonType';
 
 export interface FilterBarPropTypes extends Fiori3CommonProps {
   renderVariants?: () => JSX.Element;
