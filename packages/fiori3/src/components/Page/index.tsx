@@ -1,10 +1,10 @@
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
-import { Bar } from '@lib/Bar';
-import { Button } from '@lib/Button';
-import { ButtonType } from '@lib/ButtonType';
-import { PageBackgroundDesign } from '@lib/PageBackgroundDesign';
-import { Title } from '@lib/Title';
-import { TitleLevel } from '@lib/TitleLevel';
+import { Bar } from '../../lib/Bar';
+import { Button } from '../../lib/Button';
+import { ButtonType } from '../../lib/ButtonType';
+import { PageBackgroundDesign } from '../../lib/PageBackgroundDesign';
+import { Title } from '../../lib/Title';
+import { TitleLevel } from '../../lib/TitleLevel';
 import React, { Component, ReactElement, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

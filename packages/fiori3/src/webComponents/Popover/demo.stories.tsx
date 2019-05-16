@@ -1,8 +1,8 @@
-import { Button } from '@lib/Button';
-import { PlacementType } from '@lib/PlacementType';
-import { Popover } from '@lib/Popover';
-import { PopoverHorizontalAlign } from '@lib/PopoverHorizontalAlign';
-import { PopoverVerticalAlign } from '@lib/PopoverVerticalAlign';
+import { Button } from '../../lib/Button';
+import { PlacementType } from '../../lib/PlacementType';
+import { Popover } from '../../lib/Popover';
+import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
+import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';

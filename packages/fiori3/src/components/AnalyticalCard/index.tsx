@@ -1,6 +1,6 @@
 import { StyleClassHelper } from '@fiori-for-react/utils';
-import { ContentDensity } from '@lib/ContentDensity';
-import { Themes } from '@lib/Themes';
+import { ContentDensity } from '../../lib/ContentDensity';
+import { Themes } from '../../lib/Themes';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

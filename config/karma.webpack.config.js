@@ -13,11 +13,6 @@ module.exports = function() {
       resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.cjs', '.mjs', '.esm'],
         alias: {
-          '@fiori-for-react/styles': path.join(PATHS.packages, 'styles', 'src', 'index.ts'),
-          '@fiori-for-react/utils': path.join(PATHS.packages, 'utils', 'src', 'index.ts'),
-          '@fiori-for-react/fiori3': path.join(PATHS.packages, 'fiori3', 'src', 'index.ts'),
-          '@fiori-for-react/charts': path.join(PATHS.packages, 'charts', 'src', 'index.ts'),
-          '@lib': path.join(PATHS.packages, 'fiori3', 'src', 'lib'),
           '@shared': PATHS.shared
         }
       },

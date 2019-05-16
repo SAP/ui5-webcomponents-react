@@ -1,4 +1,4 @@
-import { Panel } from '@lib/Panel';
+import { Panel } from '../../lib/Panel';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

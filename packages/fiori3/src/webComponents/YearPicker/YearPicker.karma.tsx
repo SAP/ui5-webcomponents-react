@@ -1,4 +1,4 @@
-import { YearPicker } from '@lib/YearPicker';
+import { YearPicker } from '../../lib/YearPicker';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

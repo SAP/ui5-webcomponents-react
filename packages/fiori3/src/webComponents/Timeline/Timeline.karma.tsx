@@ -1,4 +1,4 @@
-import { Timeline } from '@lib/Timeline';
+import { Timeline } from '../../lib/Timeline';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

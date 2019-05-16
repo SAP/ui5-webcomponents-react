@@ -1,4 +1,4 @@
-import { Calendar } from '@lib/Calendar';
+import { Calendar } from '../../lib/Calendar';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

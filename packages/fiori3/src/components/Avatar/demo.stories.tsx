@@ -1,7 +1,7 @@
-import { Avatar } from '@lib/Avatar';
-import { AvatarShape } from '@lib/AvatarShape';
-import { AvatarSize } from '@lib/AvatarSize';
-import { Icon } from '@lib/Icon';
+import { Avatar } from '../../lib/Avatar';
+import { AvatarShape } from '../../lib/AvatarShape';
+import { AvatarSize } from '../../lib/AvatarSize';
+import { Icon } from '../../lib/Icon';
 import { action } from '@storybook/addon-actions/';
 import { select, text } from '@storybook/addon-knobs/';
 import { storiesOf } from '@storybook/react';

@@ -1,4 +1,4 @@
-import { TabSeparator } from '@lib/TabSeparator';
+import { TabSeparator } from '../../lib/TabSeparator';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

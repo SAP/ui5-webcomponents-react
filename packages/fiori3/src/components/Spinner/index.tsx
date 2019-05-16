@@ -1,5 +1,5 @@
 import { StyleClassHelper } from '@fiori-for-react/utils';
-import { Size } from '@lib/Size';
+import { Size } from '../../lib/Size';
 import React, { FC } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

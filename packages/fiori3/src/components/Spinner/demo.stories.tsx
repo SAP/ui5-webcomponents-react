@@ -1,5 +1,5 @@
-import { Size } from '@lib/Size';
-import { Spinner } from '@lib/Spinner';
+import { Size } from '../../lib/Size';
+import { Spinner } from '../../lib/Spinner';
 import { select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';

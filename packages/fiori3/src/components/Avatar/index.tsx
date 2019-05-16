@@ -1,6 +1,6 @@
 import { Event, KeyCodes } from '@fiori-for-react/utils';
-import { AvatarShape } from '@lib/AvatarShape';
-import { AvatarSize } from '@lib/AvatarSize';
+import { AvatarShape } from '../../lib/AvatarShape';
+import { AvatarSize } from '../../lib/AvatarSize';
 import React, { CSSProperties, PureComponent } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

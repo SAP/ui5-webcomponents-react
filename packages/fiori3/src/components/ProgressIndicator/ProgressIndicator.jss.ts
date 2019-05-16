@@ -1,4 +1,4 @@
-import { ValueState } from '@lib/ValueState';
+import { ValueState } from '../../lib/ValueState';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { fonts, HSLColor } from '@fiori-for-react/styles';
 

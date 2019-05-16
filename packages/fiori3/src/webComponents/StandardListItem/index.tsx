@@ -1,4 +1,4 @@
-import { ListItemTypes } from '@lib/ListItemTypes';
+import { ListItemTypes } from '../../lib/ListItemTypes';
 import UI5StandardListItem from '@ui5/webcomponents/dist/StandardListItem';
 import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';

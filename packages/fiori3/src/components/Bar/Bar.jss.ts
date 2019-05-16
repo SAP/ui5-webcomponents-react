@@ -1,4 +1,4 @@
-import { ContentDensity } from '@lib/ContentDensity';
+import { ContentDensity } from '../../lib/ContentDensity';
 
 /**
  * Style Class Generator Function

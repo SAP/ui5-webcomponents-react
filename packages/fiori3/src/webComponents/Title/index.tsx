@@ -1,4 +1,4 @@
-import { TitleLevel } from '@lib/TitleLevel';
+import { TitleLevel } from '../../lib/TitleLevel';
 import UI5Title from '@ui5/webcomponents/dist/Title';
 import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';

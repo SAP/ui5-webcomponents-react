@@ -3,9 +3,9 @@ import { withStyles } from '@fiori-for-react/styles';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import styles from './FilterBar.jss';
-import { Input } from '@lib/Input';
-import { Button } from '@lib/Button';
-import { ButtonType } from '@lib/ButtonType';
+import { Input } from '../../lib/Input';
+import { Button } from '../../lib/Button';
+import { ButtonType } from '../../lib/ButtonType';
 
 export interface FilterBarPropTypes extends Fiori3CommonProps {
   renderVariants?: () => JSX.Element;

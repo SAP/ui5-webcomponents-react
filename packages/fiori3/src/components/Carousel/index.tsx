@@ -1,6 +1,6 @@
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
-import { CarouselArrowsPlacement } from '@lib/CarouselArrowsPlacement';
-import { PlacementType } from '@lib/PlacementType';
+import { CarouselArrowsPlacement } from '../../lib/CarouselArrowsPlacement';
+import { PlacementType } from '../../lib/PlacementType';
 import React, { Children, Component, CSSProperties, Fragment, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

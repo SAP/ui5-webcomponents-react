@@ -1,6 +1,6 @@
-import { PlacementType } from '@lib/PlacementType';
-import { TitleLevel } from '@lib/TitleLevel';
-import { VariantManagement } from '@lib/VariantManagement';
+import { PlacementType } from '../../lib/PlacementType';
+import { TitleLevel } from '../../lib/TitleLevel';
+import { VariantManagement } from '../../lib/VariantManagement';
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';

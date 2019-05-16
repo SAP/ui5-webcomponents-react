@@ -1,9 +1,9 @@
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
-import { BusyIndicator } from '@lib/BusyIndicator';
-import { DeviationIndicator } from '@lib/DeviationIndicator';
-import { Label } from '@lib/Label';
-import { Text } from '@lib/Text';
-import { ValueState } from '@lib/ValueState';
+import { BusyIndicator } from '../../../lib/BusyIndicator';
+import { DeviationIndicator } from '../../../lib/DeviationIndicator';
+import { Label } from '../../../lib/Label';
+import { Text } from '../../../lib/Text';
+import { ValueState } from '../../../lib/ValueState';
 import React, { Fragment, PureComponent } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { CommonProps } from '../../../interfaces/CommonProps';

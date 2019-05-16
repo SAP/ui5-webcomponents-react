@@ -1,5 +1,5 @@
-import { Icon } from '@lib/Icon';
-import { ValueState } from '@lib/ValueState';
+import { Icon } from '../../lib/Icon';
+import { ValueState } from '../../lib/ValueState';
 import React, { PureComponent } from 'react';
 import { createPortal } from 'react-dom';
 import { toast, ToastContainer } from 'react-toastify';

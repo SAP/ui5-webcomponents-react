@@ -1,5 +1,5 @@
-import { InfoLabel } from '@lib/InfoLabel';
-import { Label } from '@lib/Label';
+import { InfoLabel } from '../../lib/InfoLabel';
+import { Label } from '../../lib/Label';
 import { boolean, text, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';

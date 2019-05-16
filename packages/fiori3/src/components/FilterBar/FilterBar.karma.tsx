@@ -1,12 +1,12 @@
-import { FilterBar } from '@lib/FilterBar';
+import { FilterBar } from '../../lib/FilterBar';
 import React from 'react';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
-import { VariantManagement } from '@lib/VariantManagement';
-import { FilterItem } from '@lib/FilterItem';
-import { FilterType } from '@lib/FilterType';
-import { Switch } from '@lib/Switch';
+import { VariantManagement } from '../../lib/VariantManagement';
+import { FilterItem } from '../../lib/FilterItem';
+import { FilterType } from '../../lib/FilterType';
+import { Switch } from '../../lib/Switch';
 
 const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
 const filterItems = [{ text: 'Text 1', key: '1' }, { text: 'Text 2', key: '2' }];

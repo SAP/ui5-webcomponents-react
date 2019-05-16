@@ -1,4 +1,4 @@
-import { ObjectPageSection } from '@lib/ObjectPageSection';
+import { ObjectPageSection } from '../../lib/ObjectPageSection';
 import { renderThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

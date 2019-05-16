@@ -1,5 +1,5 @@
 import { Event } from '@fiori-for-react/utils';
-import { ButtonType } from '@lib/ButtonType';
+import { ButtonType } from '../../lib/ButtonType';
 import UI5Button from '@ui5/webcomponents/dist/Button';
 import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';

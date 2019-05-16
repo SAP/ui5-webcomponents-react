@@ -1,7 +1,7 @@
 import { fonts } from '@fiori-for-react/styles';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
-import { ContentDensity } from '@lib/ContentDensity';
-import { Icon } from '@lib/Icon';
+import { ContentDensity } from '../../lib/ContentDensity';
+import { Icon } from '../../lib/Icon';
 import React, { Component } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

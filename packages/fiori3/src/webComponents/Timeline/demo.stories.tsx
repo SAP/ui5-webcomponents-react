@@ -1,5 +1,5 @@
-import { Timeline } from '@lib/Timeline';
-import { TimelineItem } from '@lib/TimelineItem';
+import { Timeline } from '../../lib/Timeline';
+import { TimelineItem } from '../../lib/TimelineItem';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
