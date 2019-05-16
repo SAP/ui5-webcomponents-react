@@ -1,4 +1,4 @@
-import { Card } from '@lib/Card';
+import { Card } from '../../lib/Card';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

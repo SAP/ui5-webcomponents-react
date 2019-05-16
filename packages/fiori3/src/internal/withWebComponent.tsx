@@ -1,5 +1,5 @@
 import { Event } from '@fiori-for-react/utils';
-import { ContentDensity } from '@lib/ContentDensity';
+import { ContentDensity } from '../lib/ContentDensity';
 import React, { Children, cloneElement, Component, CSSProperties, FC, ReactElement } from 'react';
 import { withTheme } from 'react-jss';
 import { Fiori3CommonProps } from '../interfaces/Fiori3CommonProps';

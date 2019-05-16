@@ -1,5 +1,5 @@
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
-import { Token } from '@lib/Token';
+import { Token } from '../../lib/Token';
 import React, { cloneElement, Component, CSSProperties } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

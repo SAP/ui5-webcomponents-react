@@ -1,5 +1,5 @@
-import { Icon } from '@lib/Icon';
-import { SegmentedButtonItem } from '@lib/SegmentedButtonItem';
+import { Icon } from '../../lib/Icon';
+import { SegmentedButtonItem } from '../../lib/SegmentedButtonItem';
 import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

@@ -1,5 +1,5 @@
 import { Event } from '@fiori-for-react/utils';
-import { ValueState } from '@lib/ValueState';
+import { ValueState } from '../../lib/ValueState';
 import UI5RadioButton from '@ui5/webcomponents/dist/RadioButton';
 import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';

@@ -1,4 +1,4 @@
-import { ObjectPageMode } from '@lib/ObjectPageMode';
+import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { withStyles } from '@fiori-for-react/styles';

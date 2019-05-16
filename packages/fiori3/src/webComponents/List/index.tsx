@@ -1,7 +1,7 @@
 import { Event } from '@fiori-for-react/utils';
-import { BackgroundDesign } from '@lib/BackgroundDesign';
-import { ListMode } from '@lib/ListMode';
-import { ListSeparators } from '@lib/ListSeparators';
+import { BackgroundDesign } from '../../lib/BackgroundDesign';
+import { ListMode } from '../../lib/ListMode';
+import { ListSeparators } from '../../lib/ListSeparators';
 import UI5List from '@ui5/webcomponents/dist/List';
 import React, { FC, ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent';

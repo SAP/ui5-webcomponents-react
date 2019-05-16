@@ -1,6 +1,6 @@
-import { ContentDensity } from '@lib/ContentDensity';
-import { ThemeProvider } from '@lib/ThemeProvider';
-import { Themes } from '@lib/Themes';
+import { ContentDensity } from '../../lib/ContentDensity';
+import { ThemeProvider } from '../../lib/ThemeProvider';
+import { Themes } from '../../lib/Themes';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import React from 'react';

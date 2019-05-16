@@ -1,4 +1,4 @@
-import { ShellBarItem } from '@lib/ShellBarItem';
+import { ShellBarItem } from '../../lib/ShellBarItem';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

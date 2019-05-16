@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Bar } from '@lib/Bar';
-import { Label } from '@lib/Label';
+import { Bar } from '../../lib/Bar';
+import { Label } from '../../lib/Label';
 
 function renderStory() {
   return (

@@ -1,13 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, select } from '@storybook/addon-knobs';
-import { FilterBar } from '@lib/FilterBar';
-import { VariantManagement } from '@lib/VariantManagement';
-import { FilterItem } from '@lib/FilterItem';
-import { PlacementType } from '@lib/PlacementType';
-import { TitleLevel } from '@lib/TitleLevel';
-import { FilterType } from '@lib/FilterType';
-import { Switch } from '@lib/Switch';
+import { FilterBar } from '../../lib/FilterBar';
+import { VariantManagement } from '../../lib/VariantManagement';
+import { FilterItem } from '../../lib/FilterItem';
+import { PlacementType } from '../../lib/PlacementType';
+import { TitleLevel } from '../../lib/TitleLevel';
+import { FilterType } from '../../lib/FilterType';
+import { Switch } from '../../lib/Switch';
 
 const flavours = [];
 for (let i = 1; i <= 9; i++) {

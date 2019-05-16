@@ -1,4 +1,4 @@
-import { ContentDensity } from '@lib/ContentDensity';
+import { ContentDensity } from '../../lib/ContentDensity';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { withStyles } from '@fiori-for-react/styles';

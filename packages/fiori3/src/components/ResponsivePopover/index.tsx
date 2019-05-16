@@ -1,7 +1,7 @@
 import { Device, Event } from '@fiori-for-react/utils';
 import React, { Component } from 'react';
-import { Dialog } from '@lib/Dialog';
-import { Popover } from '@lib/Popover';
+import { Dialog } from '../../lib/Dialog';
+import { Popover } from '../../lib/Popover';
 import { DialogPropTypes } from '../../webComponents/Dialog';
 import { PopoverPropTypes } from '../../webComponents/Popover';
 

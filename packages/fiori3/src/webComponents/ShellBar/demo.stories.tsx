@@ -1,5 +1,5 @@
-import { ShellBar } from '@lib/ShellBar';
-import { ShellBarItem } from '@lib/ShellBarItem';
+import { ShellBar } from '../../lib/ShellBar';
+import { ShellBarItem } from '../../lib/ShellBarItem';
 import { action } from '@storybook/addon-actions';
 import { boolean, number } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';

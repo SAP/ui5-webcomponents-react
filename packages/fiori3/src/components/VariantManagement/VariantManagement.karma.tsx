@@ -1,4 +1,4 @@
-import { VariantManagement } from '@lib/VariantManagement';
+import { VariantManagement } from '../../lib/VariantManagement';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

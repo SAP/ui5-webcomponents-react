@@ -1,6 +1,6 @@
-import { Icon } from '@lib/Icon';
-import { SegmentedButton } from '@lib/SegmentedButton';
-import { SegmentedButtonItem } from '@lib/SegmentedButtonItem';
+import { Icon } from '../../lib/Icon';
+import { SegmentedButton } from '../../lib/SegmentedButton';
+import { SegmentedButtonItem } from '../../lib/SegmentedButtonItem';
 import { action } from '@storybook/addon-actions';
 import { boolean, number } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
