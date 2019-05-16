@@ -6,7 +6,7 @@
   "module": "index.esm.js",
   "types": "index.d.ts",
   "repository": "https://github.com/SAP/fiori-for-react/packages/utils",
-  "author": "Marcus Notheis <marcus.notheis@sap.com>",
+  "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "devDependencies": {},
   "dependencies": {

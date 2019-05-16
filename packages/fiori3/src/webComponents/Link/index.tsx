@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { LinkType } from '@fiori-for-react/core/enums/LinkType';
+import { LinkType } from '@lib/LinkType';
 import { Event } from '@fiori-for-react/utils';
 import UI5Link from '@ui5/webcomponents/dist/Link';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';

@@ -1,3 +1,3 @@
-import { FlexBoxJustifyContent } from '@fiori-for-react/core/components/FlexBox';
+import { FlexBoxJustifyContent } from '../components/FlexBox';
 
 export { FlexBoxJustifyContent };

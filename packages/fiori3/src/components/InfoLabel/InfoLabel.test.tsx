@@ -1,4 +1,4 @@
-import { InfoLabel } from './index';
+import { InfoLabel } from '@lib/InfoLabel';
 import { mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 

@@ -1,11 +1,11 @@
-import React from 'react';
+import { BackgroundDesign } from '@lib/BackgroundDesign';
+import { List } from '@lib/List';
+import { ListMode } from '@lib/ListMode';
+import { ListSeparators } from '@lib/ListSeparators';
+import { StandardListItem } from '@lib/StandardListItem';
+import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
-import { BackgroundDesign } from '@fiori-for-react/core/enums/BackgroundDesign';
-import { ListMode } from '../../enums/ListMode';
-import { ListSeparators } from '@fiori-for-react/core/enums/ListSeparators';
-import { select, boolean } from '@storybook/addon-knobs';
-import { List } from './index';
-import { StandardListItem } from '../StandardListItem';
+import React from 'react';
 
 storiesOf('UI5 Web Components | List', module).add('Generated default story', () => (
   <List

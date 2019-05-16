@@ -1,45 +1,50 @@
-import { fonts, HSLColor, sap_fiori_3 } from '@fiori-for-react/styles';
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
-import { UnknownFlavourException } from '@fiori-for-react/core/exceptions/UnknownFlavourException';
+import { fonts, HSLColor } from '@fiori-for-react/styles';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const darken = (amount, color) => HSLColor.of(color).darken(amount * 100).hsl;
-const lighten = (amount, color) => HSLColor.of(color).lighten(amount * 100).hsl;
+const lighten = (color, amount) => HSLColor.lighten(color, amount).hsl;
 
-const colorFlavors = {
-  1: lighten(0.4, sap_fiori_3.sapUiAccent1),
-  2: lighten(0.24, sap_fiori_3.sapUiAccent2),
-  3: lighten(0.4, sap_fiori_3.sapUiAccent3),
-  4: lighten(0.39, sap_fiori_3.sapUiAccent4),
-  5: lighten(0.29, sap_fiori_3.sapUiAccent5),
-  6: lighten(0.31, sap_fiori_3.sapUiAccent6),
-  7: lighten(0.5, sap_fiori_3.sapUiAccent7),
-  8: lighten(0.52, sap_fiori_3.sapUiAccent8),
-  9: lighten(0.35, sap_fiori_3.sapUiContentForegroundBorderColor)
-};
+const backgroundColorFactory = (sap_fiori_3: JSSTheme['parameters']) => ({
+  1: lighten(sap_fiori_3.sapAccentColor1, 50),
+  2: lighten(sap_fiori_3.sapAccentColor2, 40),
+  3: lighten(sap_fiori_3.sapAccentColor3, 46),
+  4: lighten(sap_fiori_3.sapAccentColor4, 46),
+  5: lighten(sap_fiori_3.sapAccentColor5, 32),
+  6: lighten(sap_fiori_3.sapAccentColor6, 52),
+  7: lighten(sap_fiori_3.sapAccentColor7, 64),
+  8: lighten(sap_fiori_3.sapAccentColor8, 61),
+  9: lighten(sap_fiori_3.sapAccentColor9, 37),
+  10: lighten(sap_fiori_3.sapAccentColor10, 49)
+});
 
-const borderColors = {
-  1: sap_fiori_3.sapUiAccent1,
-  2: darken(0.08, sap_fiori_3.sapUiAccent2),
-  3: sap_fiori_3.sapUiAccent3,
-  4: sap_fiori_3.sapUiAccent4,
-  5: sap_fiori_3.sapUiAccent5,
-  6: darken(0.07, sap_fiori_3.sapUiAccent6),
-  7: darken(0.04, sap_fiori_3.sapUiAccent7),
-  8: darken(0.03, sap_fiori_3.sapUiAccent8),
-  9: darken(0.04, sap_fiori_3.sapUiContentForegroundBorderColor)
-};
+const borderColorsFactory = (sap_fiori_3: JSSTheme['parameters']) => ({
+  1: sap_fiori_3.sapAccentColor1,
+  2: sap_fiori_3.sapAccentColor2,
+  3: sap_fiori_3.sapAccentColor3,
+  4: sap_fiori_3.sapAccentColor4,
+  5: sap_fiori_3.sapAccentColor5,
+  6: sap_fiori_3.sapAccentColor6,
+  7: sap_fiori_3.sapAccentColor7,
+  8: sap_fiori_3.sapAccentColor8,
+  9: sap_fiori_3.sapAccentColor9,
+  10: sap_fiori_3.sapAccentColor10
+});
 
-const getBackgroundColor = (props) => {
-  if (!(props.flavour >= 1 && props.flavour <= 9)) {
-    throw new UnknownFlavourException('Unknown Flavour prop passed to InfoLabel');
-  }
+const flavors = Array.from(Array(11).keys()).slice(1);
 
-  return colorFlavors[props.flavour];
-};
+const styles = ({ parameters }: JSSTheme) => {
+  const backgroundColors = backgroundColorFactory(parameters);
+  const borderColors = borderColorsFactory(parameters);
 
-const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
-  const border = (props) => `1px solid ${borderColors[props.flavour]}`;
-
+  const flavorClasses = flavors.reduce(
+    (acc, val) => ({
+      ...acc,
+      [`flavour${val}`]: {
+        border: `1px solid ${borderColors[val]}`,
+        backgroundColor: backgroundColors[val]
+      }
+    }),
+    {}
+  );
   return {
     /**
      * outer container
@@ -50,8 +55,6 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       display: 'inline-block',
       maxWidth: '100%',
       textAlign: 'center',
-      background: getBackgroundColor,
-      border,
       height: '1.125rem',
       '&$numeric': {
         padding: '0 0.3125rem'
@@ -61,9 +64,9 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       },
       '&$displayOnly': {
         height: '1rem',
+        lineHeight: '1rem',
         margin: 0,
         '& $label': {
-          fontSize: '0.6875rem',
           lineHeight: '1rem'
         }
       }
@@ -77,18 +80,19 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       letterSpacing: '0.0125rem',
       textTransform: 'uppercase',
       textAlign: 'center',
-      verticalAlign: 'top',
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
       display: 'inline-block',
-      color: parameters.sapUiBaseText
+      color: parameters.sapUiBaseText,
+      verticalAlign: 'top'
     },
     // specific padding needed for purely numeric input
     numeric: {},
     // specific padding needed for text input
     text: {},
     // displayOnly mode
-    displayOnly: {}
+    displayOnly: {},
+    ...flavorClasses
   };
 };
 

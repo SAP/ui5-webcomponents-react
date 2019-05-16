@@ -1,6 +1,6 @@
+import { ValueState } from '@lib/ValueState';
 import React from 'react';
-import { ObjectStatus } from './index';
-import { ValueState } from '../../enums/ValueState';
+import { ObjectStatus } from '@lib/ObjectStatus';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';

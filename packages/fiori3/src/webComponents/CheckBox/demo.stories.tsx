@@ -1,9 +1,9 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { ValueState } from '../../enums/ValueState';
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { CheckBox } from '@lib/CheckBox';
+import { ValueState } from '@lib/ValueState';
 import { action } from '@storybook/addon-actions';
-import { CheckBox } from './index';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 storiesOf('UI5 Web Components | CheckBox', module).add('Default story', () => (
   <CheckBox

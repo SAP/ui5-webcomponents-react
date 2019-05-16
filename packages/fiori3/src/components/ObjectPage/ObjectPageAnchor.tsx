@@ -1,16 +1,17 @@
-import { ObjectPageMode, PlacementType } from '@fiori-for-react/core/enums';
-import { ButtonType } from '@fiori-for-react/core/enums/ButtonType';
-import { ObjectWithVariableKeys } from '@fiori-for-react/core/interfaces';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { Button } from '@lib/Button';
+import { ButtonType } from '@lib/ButtonType';
+import { CustomListItem } from '@lib/CustomListItem';
+import { Icon } from '@lib/Icon';
+import { Label } from '@lib/Label';
+import { List } from '@lib/List';
+import { ListItemTypes } from '@lib/ListItemTypes';
+import { ObjectPageMode } from '@lib/ObjectPageMode';
+import { PlacementType } from '@lib/PlacementType';
+import { Popover } from '@lib/Popover';
 import React, { Component } from 'react';
 import { Link } from 'react-scroll';
-import { ListItemTypes } from '../../enums/ListItemTypes';
-import { Button } from '../../webComponents/Button';
-import { CustomListItem } from '../../webComponents/CustomListItem';
-import { Icon } from '../../webComponents/Icon';
-import { Label } from '../../webComponents/Label';
-import { List } from '../../webComponents/List';
-import { Popover } from '../../webComponents/Popover';
+import { ObjectWithVariableKeys } from '../../interfaces/ObjectWithVariableKeys';
 
 export interface ObjectPageAnchorPropTypes {
   section: any;

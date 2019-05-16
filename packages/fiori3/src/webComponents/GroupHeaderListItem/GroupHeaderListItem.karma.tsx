@@ -1,8 +1,8 @@
-import React from 'react';
+import { GroupHeaderListItem } from '@lib/GroupHeaderListItem';
+import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
-import { GroupHeaderListItem } from './index';
-import { mountThemedComponent } from '@shared/tests/utils';
+import React from 'react';
 
 use(matchSnapshot);
 

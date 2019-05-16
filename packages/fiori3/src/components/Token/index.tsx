@@ -1,11 +1,12 @@
-import { ContentDensity } from '@fiori-for-react/core/enums/ContentDensity';
-import { ClassProps, JSSTheme } from '@fiori-for-react/core/types';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
 import { fonts } from '@fiori-for-react/styles';
 import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { ContentDensity } from '@lib/ContentDensity';
+import { Icon } from '@lib/Icon';
 import React, { Component } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { Icon } from '../../webComponents/Icon';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { withStyles } from '@fiori-for-react/styles';
 import styles from './Token.jss';
 
 export interface TokenPropTypes extends Fiori3CommonProps {

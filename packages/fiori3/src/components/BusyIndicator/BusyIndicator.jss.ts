@@ -1,5 +1,4 @@
-import { JSSTheme } from '@fiori-for-react/core/types';
-// import { rgba } from "polished";
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
   '@global': {

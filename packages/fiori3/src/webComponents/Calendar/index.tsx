@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { CalendarType } from '@fiori-for-react/core/enums/CalendarType';
+import { CalendarType } from '@lib/CalendarType';
 import { Event } from '@fiori-for-react/utils';
 import UI5Calendar from '@ui5/webcomponents/dist/Calendar';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';

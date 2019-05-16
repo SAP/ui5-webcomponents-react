@@ -145,3 +145,27 @@
 </ThemeProvider>
 ```
 
+#### `ProgressIndicator with state Information`
+
+```
+<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+  <ThemeProvider jss={{...}} theme={{...}}>
+    <Jss(WithStyles(ProgressIndicator)) state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="">
+      <WithStyles(ProgressIndicator) state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
+        <ProgressIndicator state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
+          <div className="ProgressIndicator-wrapper--- " style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
+            <div className="ProgressIndicator-progressbar--- ProgressIndicator-progressbar---" style={{...}} />
+            <div className="ProgressIndicator-progressBarRemaining---">
+              <span className="ProgressIndicator-progressBarText--- ProgressIndicator-progressBarTextColorLow--- ProgressIndicator-progressBarTextRight---">
+                 
+                 
+              </span>
+            </div>
+          </div>
+        </ProgressIndicator>
+      </WithStyles(ProgressIndicator)>
+    </Jss(WithStyles(ProgressIndicator))>
+  </ThemeProvider>
+</ThemeProvider>
+```
+

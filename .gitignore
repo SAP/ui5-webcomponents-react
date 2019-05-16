@@ -11,11 +11,8 @@ dist/
 typings
 !/typings
 .cache
-!packages/core/utils/Device/lib
+!packages/utils/src/Device/lib
 !packages/fiori3/src/lib
 build
-packages/core/npm/
 /packages/*/npm/**/*.d.ts
-!packages/core/npm/.xmake.cfg
-!packages/core/npm/.npmignore
 .out

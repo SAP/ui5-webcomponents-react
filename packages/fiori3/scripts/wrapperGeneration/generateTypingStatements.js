@@ -1,36 +1,23 @@
-// require('ts-node').register({
-//   TS_NODE_TRANSPILE_ONLY: true,
-//   TS_NODE_CACHE: false,
-//   preserveConstEnums: true
-// });
-import { ListItemTypes } from '../../src/enums/ListItemTypes';
-import { PlacementType } from '../../../core/enums/PlacementType';
-import { PopoverVerticalAlign } from '../../../core/enums/PopoverVerticalAlign';
-import { PopoverHorizontalAlign } from '../../../core/enums/PopoverHorizontalAlign';
-import { TextAlign } from '../../../core/enums/TextAlign';
-
 const path = require('path');
 
-const enumsFolder = path.resolve(__dirname, '..', '..', '..', 'core', 'enums');
 const fiori3Enums = path.resolve(__dirname, '..', '..', 'src', 'enums');
 
 const f4rEnums = {
   ValueState: require(path.resolve(fiori3Enums, 'ValueState.ts')).ValueState,
   ButtonType: require(path.resolve(fiori3Enums, 'ButtonType.ts')).ButtonType,
   MessageStripType: require(path.resolve(fiori3Enums, 'MessageStripType.ts')).MessageStripType,
-  CalendarType: require(path.resolve(enumsFolder, 'CalendarType.ts')).CalendarType,
-  PopoverHorizontalAlign: require(path.resolve(enumsFolder, 'PopoverHorizontalAlign.ts')).PopoverHorizontalAlign,
-  InputType: require(path.resolve(enumsFolder, 'InputType.ts')).InputType,
-  LinkType: require(path.resolve(enumsFolder, 'LinkType.ts')).LinkType,
-  BackgroundDesign: require(path.resolve(enumsFolder, 'BackgroundDesign.ts')).BackgroundDesign,
+  CalendarType: require(path.resolve(fiori3Enums, 'CalendarType.ts')).CalendarType,
+  PopoverHorizontalAlign: require(path.resolve(fiori3Enums, 'PopoverHorizontalAlign.ts')).PopoverHorizontalAlign,
+  InputType: require(path.resolve(fiori3Enums, 'InputType.ts')).InputType,
+  LinkType: require(path.resolve(fiori3Enums, 'LinkType.ts')).LinkType,
+  BackgroundDesign: require(path.resolve(fiori3Enums, 'BackgroundDesign.ts')).BackgroundDesign,
   ListMode: require(path.resolve(fiori3Enums, 'ListMode.ts')).ListMode,
   ListItemTypes: require(path.resolve(fiori3Enums, 'ListItemTypes.ts')).ListItemTypes,
-  ListSeparators: require(path.resolve(enumsFolder, 'ListSeparators.ts')).ListSeparators,
-  PanelAccessibleRoles: require(path.resolve(enumsFolder, 'PanelAccessibleRoles.ts')).PanelAccessibleRoles,
-  PlacementType: require(path.resolve(enumsFolder, 'PlacementType.ts')).PlacementType,
-  PopoverVerticalAlign: require(path.resolve(enumsFolder, 'PopoverVerticalAlign.ts')).PopoverVerticalAlign,
-  IconColor: require(path.resolve(enumsFolder, 'IconColor.ts')).IconColor,
-  TextAlign: require(path.resolve(enumsFolder, 'TextAlign.ts')).TextAlign,
+  ListSeparators: require(path.resolve(fiori3Enums, 'ListSeparators.ts')).ListSeparators,
+  PanelAccessibleRoles: require(path.resolve(fiori3Enums, 'PanelAccessibleRoles.ts')).PanelAccessibleRoles,
+  PlacementType: require(path.resolve(fiori3Enums, 'PlacementType.ts')).PlacementType,
+  PopoverVerticalAlign: require(path.resolve(fiori3Enums, 'PopoverVerticalAlign.ts')).PopoverVerticalAlign,
+  IconColor: require(path.resolve(fiori3Enums, 'IconColor.ts')).IconColor,
   TitleLevel: require(path.resolve(fiori3Enums, 'TitleLevel.ts')).TitleLevel
 };
 

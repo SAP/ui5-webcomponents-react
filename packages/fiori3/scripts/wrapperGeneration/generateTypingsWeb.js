@@ -22,67 +22,67 @@ import TimelineItem from '@ui5/webcomponents/dist/TimelineItem';
 
 const mappings = {
   [UI5ButtonType]: {
-    importStatement: "import { ButtonType } from '../../enums/ButtonType';",
+    importStatement: "import { ButtonType } from '@lib/ButtonType';",
     tsType: 'ButtonType',
     isEnum: true
   },
   [UI5PopoverPlacementTypes]: {
-    importStatement: "import { PlacementType } from '@fiori-for-react/core/enums/PlacementType';",
+    importStatement: "import { PlacementType } from '@lib/PlacementType';",
     tsType: 'PlacementType',
     isEnum: true
   },
   [UI5PopoverHorizontalAligns]: {
-    importStatement: "import { PopoverHorizontalAlign } from '@fiori-for-react/core/enums/PopoverHorizontalAlign';",
+    importStatement: "import { PopoverHorizontalAlign } from '@lib/PopoverHorizontalAlign';",
     tsType: 'PopoverHorizontalAlign',
     isEnum: true
   },
   [UI5PopoverVerticalAligns]: {
-    importStatement: "import { PopoverVerticalAlign } from '@fiori-for-react/core/enums/PopoverVerticalAlign';",
+    importStatement: "import { PopoverVerticalAlign } from '@lib/PopoverVerticalAlign';",
     tsType: 'PopoverVerticalAlign',
     isEnum: true
   },
   [UI5LinkType]: {
-    importStatement: "import { LinkType } from '@fiori-for-react/core/enums/LinkType';",
+    importStatement: "import { LinkType } from '@lib/LinkType';",
     tsType: 'LinkType',
     isEnum: true
   },
   [UI5IconColors]: {
-    importStatement: "import { IconColor } from '@fiori-for-react/core/enums/IconColor';",
+    importStatement: "import { IconColor } from '@lib/IconColor';",
     tsType: 'IconColor',
     isEnum: true
   },
   [UI5ListItemTypes]: {
-    importStatement: "import { ListItemTypes } from '../../enums/ListItemTypes';",
+    importStatement: "import { ListItemTypes } from '@lib/ListItemTypes';",
     tsType: 'ListItemTypes',
     isEnum: true
   },
   [UI5PanelAccessibleRoles]: {
-    importStatement: "import { PanelAccessibleRoles } from '@fiori-for-react/core/enums/PanelAccessibleRoles';",
+    importStatement: "import { PanelAccessibleRoles } from '@lib/PanelAccessibleRoles';",
     tsType: 'PanelAccessibleRoles',
     isEnum: true
   },
   [UI5ListSeparators]: {
-    importStatement: "import { ListSeparators } from '@fiori-for-react/core/enums/ListSeparators';",
+    importStatement: "import { ListSeparators } from '@lib/ListSeparators';",
     tsType: 'ListSeparators',
     isEnum: true
   },
   [UI5ListMode]: {
-    importStatement: "import { ListMode } from '../../enums/ListMode';",
+    importStatement: "import { ListMode } from '@lib/ListMode';",
     tsType: 'ListMode',
     isEnum: true
   },
   [UI5TitleLevel]: {
-    importStatement: "import { TitleLevel } from '../../enums/TitleLevel';",
+    importStatement: "import { TitleLevel } from '@lib/TitleLevel';",
     tsType: 'TitleLevel',
     isEnum: true
   },
   [UI5BackgroundDesign]: {
-    importStatement: "import { BackgroundDesign } from '@fiori-for-react/core/enums/BackgroundDesign';",
+    importStatement: "import { BackgroundDesign } from '@lib/BackgroundDesign';",
     tsType: 'BackgroundDesign',
     isEnum: true
   },
   [UI5InputType]: {
-    importStatement: "import { InputType } from '@fiori-for-react/core/enums/InputType';",
+    importStatement: "import { InputType } from '@lib/InputType';",
     tsType: 'InputType',
     isEnum: true
   },
@@ -91,17 +91,17 @@ const mappings = {
     comment: 'UI5 Icon Web Component'
   },
   [UI5CalendarType]: {
-    importStatement: "import { CalendarType } from '@fiori-for-react/core/enums/CalendarType';",
+    importStatement: "import { CalendarType } from '@lib/CalendarType';",
     tsType: 'CalendarType',
     isEnum: true
   },
   [UI5ValueState]: {
-    importStatement: "import { ValueState } from '../../enums/ValueState';",
+    importStatement: "import { ValueState } from '@lib/ValueState';",
     tsType: 'ValueState',
     isEnum: true
   },
   [UI5MessageStripType]: {
-    importStatement: "import { MessageStripType } from '../../enums/MessageStripType';",
+    importStatement: "import { MessageStripType } from '@lib/MessageStripType';",
     tsType: 'MessageStripType',
     isEnum: true
   },

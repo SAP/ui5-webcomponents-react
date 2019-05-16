@@ -1,10 +1,11 @@
+import { MessageBox } from '@lib/MessageBox';
+import { MessageBoxActions } from '@lib/MessageBoxActions';
+import { MessageBoxTypes } from '@lib/MessageBoxTypes';
+import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
+import { expect, use } from 'chai';
+import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
 import { spy } from 'sinon';
-import { expect, use } from 'chai';
-import { MessageBox, MessageBoxActions, MessageBoxTypes } from './index';
-import { getEventFromCallback } from '@shared/tests/utils';
-import { mountThemedComponent } from '@shared/tests/utils';
-import { matchSnapshot } from 'chai-karma-snapshot';
 
 use(matchSnapshot);
 

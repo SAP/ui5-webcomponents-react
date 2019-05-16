@@ -6,6 +6,14 @@
   "module": "index.esm.js",
   "types": "index.d.ts",
   "repository": "https://github.com/SAP/fiori-for-react/packages/styles",
-  "author": "Marcus Notheis <marcus.notheis@sap.com>",
-  "license": "Apache-2.0"
+  "author": "SAP SE (https://www.sap.com)",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "deepmerge": "^3.2.0",
+    "hoist-non-react-statics": "^3.3.0",
+    "react-jss": "^8.6.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
+  }
 }

@@ -1,11 +1,10 @@
+import { Event, StyleClassHelper } from '@fiori-for-react/utils';
 import React, { CSSProperties, PureComponent } from 'react';
-import { StyleClassHelper } from '@fiori-for-react/utils';
-import styles from './SegmentedButtonItem.jss';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { withStyles } from '@fiori-for-react/styles';
 import { SelectedKey } from '../SegmentedButton';
-import { ClassProps } from '@fiori-for-react/core/types/ClassProps';
-import { Event } from '@fiori-for-react/utils';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
-import { CommonProps } from '@fiori-for-react/core/interfaces';
+import styles from './SegmentedButtonItem.jss';
 
 export interface SegmentedButtonItemPropTypes extends CommonProps {
   icon?: JSX.Element;

@@ -1,13 +1,14 @@
 const { Server } = require('karma');
-const karmaConfig = require('../../config/karma.conf');
+const karmaConfig = require('../../../../config/karma.conf');
 const { exec } = require('shelljs');
 const path = require('path');
 const ci = require('ci-info');
+const PATHS = require('../../../../config/paths');
 
 const useSelenium = false;
 const coverage = !!process.argv.find((item) => item === '--coverage');
 
-const pathToDockerCompose = path.resolve(__dirname, '..', '..', 'config', 'docker-compose.yml');
+const pathToDockerCompose = path.resolve(PATHS.root, 'config', 'docker-compose.yml');
 
 const useDocker = !ci.isCI && useSelenium;
 

@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import { MessageStripType } from '../../enums/MessageStripType';
 import { Event } from '@fiori-for-react/utils';
+import { MessageStripType } from '@lib/MessageStripType';
 import UI5MessageStrip from '@ui5/webcomponents/dist/MessageStrip';
+import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface MessageStripPropTypes extends WithWebComponentPropTypes {

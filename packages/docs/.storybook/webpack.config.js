@@ -38,15 +38,12 @@ SKIP_DOC_GENERATION=true
         ...config.module.rules,
         tsLoader,
         {
-          test: /\.jsx/,
-          exclude: /node_modules/,
-          use: {
-            loader: require.resolve('babel-loader'),
-            options: {
-              presets: [require.resolve('@babel/preset-env'), require.resolve('@babel/preset-react')],
-              plugins: ['@babel/plugin-proposal-class-properties']
-            }
-          }
+          test: [/cldr\/.*\.json$/, /i18n\/.*\.json$/],
+          loader: 'file-loader',
+          options: {
+            name: 'static/media/[name].[hash:8].[ext]'
+          },
+          type: 'javascript/auto'
         },
         {
           test: /\.properties$/,
@@ -59,7 +56,12 @@ SKIP_DOC_GENERATION=true
       extensions: [...config.resolve.extensions, '.ts', '.tsx', '.jsx'],
       alias: {
         ...config.resolve.alias,
-        '@shared': path.join(PATHS.root, 'shared')
+        '@shared': path.join(PATHS.root, 'shared'),
+        '@lib': path.join(PATHS.root, 'packages', 'fiori3', 'src', 'lib'),
+        '@fiori-for-react/fiori3': path.join(PATHS.root, 'packages', 'fiori3', 'src', 'index.ts'),
+        '@fiori-for-react/charts': path.join(PATHS.root, 'packages', 'charts', 'src', 'index.ts'),
+        '@fiori-for-react/utils': path.join(PATHS.root, 'packages', 'utils', 'src', 'index.ts'),
+        '@fiori-for-react/styles': path.join(PATHS.root, 'packages', 'styles', 'src', 'index.ts')
       }
     }
   };

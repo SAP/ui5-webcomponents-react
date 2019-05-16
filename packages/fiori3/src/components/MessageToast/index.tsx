@@ -1,12 +1,14 @@
-import { ValueState } from '@fiori-for-react/core/enums/ValueState';
-import { CommonProps } from '@fiori-for-react/core/interfaces';
-import { ClassProps, JSSTheme } from '@fiori-for-react/core/types';
-import { withStyles } from '@fiori-for-react/core/utils/withStyles';
+import { Icon } from '@lib/Icon';
+import { ValueState } from '@lib/ValueState';
 import React, { PureComponent } from 'react';
 import { createPortal } from 'react-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { Icon } from '../../webComponents/Icon';
+import 'react-toastify/dist/ReactToastify.min.css';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './MessageToast.jss';
+import { withStyles } from '@fiori-for-react/styles';
 
 const coloredStyles = ({ parameters }: JSSTheme) => ({
   base: {

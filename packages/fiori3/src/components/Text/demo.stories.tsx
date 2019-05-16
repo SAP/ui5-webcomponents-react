@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, text } from '@storybook/addon-knobs';
-import { Text } from './index';
+import { Text } from '@lib/Text';
 
 function renderStory() {
   return (

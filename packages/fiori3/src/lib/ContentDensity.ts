@@ -1,3 +1,3 @@
-import { ContentDensity } from '@fiori-for-react/core/enums';
+import { ContentDensity } from '../enums/ContentDensity';
 
 export { ContentDensity };

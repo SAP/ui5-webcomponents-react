@@ -1,5 +1,5 @@
-import { JSSTheme } from '@fiori-for-react/core/types/JSSTheme';
-import { ContentDensity } from '@fiori-for-react/core/enums/ContentDensity';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ContentDensity } from '@lib/ContentDensity';
 
 /**
  * Style Class Generator Function
