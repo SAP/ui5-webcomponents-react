@@ -7,9 +7,8 @@ import { FilterItem } from '../FilterItem';
 import { PlacementType } from '@fiori-for-react/core/enums/PlacementType';
 import { TitleLevel } from '@fiori-for-react/core';
 import { FilterType } from '../../enums/FilterType';
-import { CheckBox } from '../../webComponents/CheckBox';
-import { Select } from '../../webComponents/Select';
 import { Switch } from '../../webComponents/Switch';
+import { RadioButton } from '../../webComponents/RadioButton';
 
 const flavours = [];
 for (let i = 1; i <= 9; i++) {
@@ -45,48 +44,6 @@ function renderStory() {
         type={FilterType.Select}
       />
       <FilterItem
-        onChange={(e) => alert(e.getParameter('selectedItem').key)}
-        filterItems={filterItems}
-        label="Classification"
-        key="classification"
-        type={FilterType.Select}
-      />
-      <FilterItem
-        onChange={(e) => alert(e.getParameter('selectedItem').key)}
-        filterItems={filterItems}
-        label="Classification"
-        key="classification"
-        type={FilterType.Select}
-      />
-      <FilterItem
-        onChange={(e) => alert(e.getParameter('selectedItem').key)}
-        filterItems={filterItems}
-        label="Classification"
-        key="classification"
-        type={FilterType.Select}
-      />
-      <FilterItem
-        onChange={(e) => alert(e.getParameter('selectedItem').key)}
-        filterItems={filterItems}
-        label="Classification"
-        key="classification"
-        type={FilterType.Select}
-      />
-      <FilterItem
-        onChange={(e) => alert(e.getParameter('selectedItem').key)}
-        filterItems={filterItems}
-        label="Classification"
-        key="classification"
-        type={FilterType.Select}
-      />
-      <FilterItem
-        onChange={(e) => alert(e.getParameter('selectedItem').key)}
-        filterItems={filterItems}
-        label="Classification"
-        key="classification"
-        type={FilterType.Select}
-      />
-      <FilterItem
         key={'filter2'}
         type={FilterType.Custom}
         label={'Custom Filter 1'}
@@ -95,6 +52,17 @@ function renderStory() {
       >
         <Switch />
       </FilterItem>
+      {/*<FilterItem*/}
+      {/*key={'filter2'}*/}
+      {/*type={FilterType.Custom}*/}
+      {/*label={'Custom Filter 2'}*/}
+      {/*changeEventName={'onSelect'}*/}
+      {/*valueParamName={'state'}*/}
+      {/*>*/}
+      {/*<RadioButton text={"Custom Radio Button filter"} onSelect={(e) => {*/}
+      {/*alert(e.parameters.selectedItem);*/}
+      {/*}}/>*/}
+      {/*</FilterItem>*/}
     </FilterBar>
   );
 }
