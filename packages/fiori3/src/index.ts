@@ -26,6 +26,9 @@ import { DatePicker } from './lib/DatePicker';
 import { DayPicker } from './lib/DayPicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
 import { Dialog } from './lib/Dialog';
+import { FilterBar } from './lib/FilterBar';
+import { FilterItem } from './lib/FilterItem';
+import { FilterType } from './lib/FilterType';
 import { FlexBox } from './lib/FlexBox';
 import { FlexBoxAlignItems } from './lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from './lib/FlexBoxDirection';
@@ -130,6 +133,9 @@ export {
   DayPicker,
   DeviationIndicator,
   Dialog,
+  FilterBar,
+  FilterItem,
+  FilterType,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxDirection,
