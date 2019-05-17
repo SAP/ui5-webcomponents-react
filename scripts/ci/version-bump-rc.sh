@@ -11,8 +11,7 @@ git config --global user.name "ui5-webcomponents-react-bot"
 
 export FIORI_FOR_REACT_SNAPSHOT_BUILD='true'
 
-ls
-cat package.json
+git status
 
 # create a new version using standard version
 echo "Version Bump with standard version"
