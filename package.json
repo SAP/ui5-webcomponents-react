@@ -147,7 +147,6 @@
   "standard-version": {
     "skip": {
       "changelog": true,
-      "commit": true,
       "tag": true
     }
   }
