@@ -29,7 +29,7 @@ jobs:
       node_js:
         - '10'
       before_script:
-        - bash ./scripts/ci/version-bump.sh
+        - bash ./scripts/ci/version-bump-rc.sh
       script: yarn build
       before_deploy:
         - bash ./scripts/ci/setup-npm.sh
