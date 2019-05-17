@@ -43,4 +43,4 @@ jobs:
           script: bash ./scripts/ci/release-npm-next-tag.sh
           skip_cleanup: true
           on:
-            condition: branch = master AND type != pull_request
+            condition: (branch = master) AND (type != pull_request)
