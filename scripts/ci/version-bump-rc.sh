@@ -2,17 +2,17 @@
 
 set -e
 
-if [ "${TRAVIS_PULL_REQUEST}" != "false" ]
-then
-    echo "This is a pull request build - skip version bump"
-    exit 0
-fi
-
-if [ "${TRAVIS_BRANCH}" != "master" ]
-then
-    echo "This is a not on the master branch - skip version bump"
-    exit 0
-fi
+#if [ "${TRAVIS_PULL_REQUEST}" != "false" ]
+#then
+#    echo "This is a pull request build - skip version bump"
+#    exit 0
+#fi
+#
+#if [ "${TRAVIS_BRANCH}" != "master" ]
+#then
+#    echo "This is a not on the master branch - skip version bump"
+#    exit 0
+#fi
 
 
 echo "Set Git User Name"
