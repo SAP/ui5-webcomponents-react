@@ -12,12 +12,6 @@ then
     exit 0
 fi
 
-if [ "${TRAVIS_PULL_REQUEST}" != "false" ]
-then
-    echo "This is a pull request build - skip npm release"
-    exit 0
-fi
-
 git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" "$TRAVIS_BRANCH" > /dev/null 2>&1;
 
 cd ${TRAVIS_BUILD_DIR}/build/node_modules/charts && npm publish --access public --tag next

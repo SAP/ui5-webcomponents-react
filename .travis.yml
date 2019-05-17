@@ -33,6 +33,7 @@ jobs:
       node_js:
         - '10'
       before_script:
+        - git checkout ${TRAVIS_BRANCH}
         - bash ./scripts/ci/version-bump-rc.sh
       script: yarn build
       before_deploy:
@@ -42,4 +43,4 @@ jobs:
           script: bash ./scripts/ci/release-npm-next-tag.sh
           skip_cleanup: true
           on:
-            branch: master
+            condition: branch = master AND type != pull_request
