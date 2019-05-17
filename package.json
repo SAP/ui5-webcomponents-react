@@ -1,5 +1,6 @@
 {
   "name": "@fiori-for-react/suite",
+  "version": "0.2.0",
   "workspaces": [
     "packages/*"
   ],
@@ -116,6 +117,7 @@
     "rollup-plugin-typescript": "^1.0.1",
     "shelljs": "^0.8.3",
     "sinon": "^7.3.1",
+    "standard-version": "^6.0.1",
     "targz": "^1.0.1",
     "tmp": "^0.1.0",
     "ts-jest": "^24.0.2",
