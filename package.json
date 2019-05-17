@@ -19,7 +19,8 @@
     "test:combineCoverage": "nyc report --reporter=html --reporter=clover --reporter=lcov --temp-dir coverage/partial",
     "clean": "lerna clean --yes && node scripts/clean.js",
     "postversion": "node ./scripts/postversion/index.js",
-    "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\""
+    "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\"",
+    "std-version": "standard-version -m \"chore(release): version %s\""
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
