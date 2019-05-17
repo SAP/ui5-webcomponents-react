@@ -7,8 +7,7 @@ git checkout ${TRAVIS_BRANCH}
 ${TRAVIS_BUILD_DIR}/node_modules/.bin/standard-version --prerelease rc
 PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
 
-git tag --delete "v${PACKAGE_VERSION}"
-git reset --hard HEAD~1
+exit 0
 
 # trigger lerna release
 ${TRAVIS_BUILD_DIR}/node_modules/.bin/lerna version ${PACKAGE_VERSION} \

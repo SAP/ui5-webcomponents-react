@@ -143,5 +143,12 @@
       "prettier -config ./prettier.config.js --write",
       "git add"
     ]
+  },
+  "standard-version": {
+    "skpi": {
+      "changelog": true,
+      "commit": true,
+      "tag": true
+    }
   }
 }
