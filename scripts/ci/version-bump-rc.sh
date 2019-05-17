@@ -10,7 +10,9 @@ echo "Set Git User Name"
 git config --global user.name "ui5-webcomponents-react-bot"
 
 export FIORI_FOR_REACT_SNAPSHOT_BUILD='true'
-git checkout ${TRAVIS_BRANCH}
+
+ls
+cat package.json
 
 # create a new version using standard version
 echo "Version Bump with standard version"
