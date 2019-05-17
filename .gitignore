@@ -16,3 +16,4 @@ typings
 build
 /packages/*/npm/**/*.d.ts
 .out
+lerna-debug.log
