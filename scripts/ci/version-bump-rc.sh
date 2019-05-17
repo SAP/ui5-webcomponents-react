@@ -14,7 +14,7 @@ git checkout ${TRAVIS_BRANCH}
 
 # create a new version using standard version
 echo "Version Bump with standard version"
-${TRAVIS_BUILD_DIR}/node_modules/.bin/standard-version --prerelease rc --no-verify
+npm run std-version -- --prerelease rc --no-verify
 PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
 echo "New Version after bump ${PACKAGE_VERSION}"
 
