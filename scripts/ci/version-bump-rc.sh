@@ -11,6 +11,7 @@ PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
 ${TRAVIS_BUILD_DIR}/node_modules/.bin/lerna version ${PACKAGE_VERSION} \
         --conventional-commits \
         --allow-branch ${TRAVIS_BRANCH} \
+        --ignore-changes 'package.json' \
 		--exact \
 		--no-push \
 		--yes
