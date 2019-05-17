@@ -1,5 +1,7 @@
 language: node_js
 dist: trusty
+git:
+  depth: false
 
 node_js:
   - '8'
