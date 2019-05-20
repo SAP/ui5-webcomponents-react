@@ -34,7 +34,7 @@ jobs:
         - '10'
       before_script:
         - git checkout ${TRAVIS_BRANCH}
-        - bash ./scripts/ci/version-bump-rc.sh || exit 0
+        - bash ./scripts/ci/version-bump-rc.sh
       script: yarn build
       before_deploy:
         - bash ./scripts/ci/setup-npm.sh
@@ -44,4 +44,4 @@ jobs:
           skip_cleanup: true
           on:
             branch: master
-            condition: ${TRAVIS_PULL_REQUEST} != false
+            condition: '"${TRAVIS_PULL_REQUEST}" != "false"'
