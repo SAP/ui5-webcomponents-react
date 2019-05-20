@@ -19,8 +19,7 @@
     "test:combineCoverage": "nyc report --reporter=html --reporter=clover --reporter=lcov --temp-dir coverage/partial",
     "clean": "lerna clean --yes && node scripts/clean.js",
     "postversion": "node ./scripts/postversion/index.js",
-    "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\"",
-    "std-version": "standard-version -m \"chore(release): version %s\""
+    "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\""
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -118,7 +117,6 @@
     "rollup-plugin-typescript": "^1.0.1",
     "shelljs": "^0.8.3",
     "sinon": "^7.3.1",
-    "standard-version": "^6.0.1",
     "targz": "^1.0.1",
     "tmp": "^0.1.0",
     "ts-jest": "^24.0.2",
@@ -144,11 +142,5 @@
       "prettier -config ./prettier.config.js --write",
       "git add"
     ]
-  },
-  "standard-version": {
-    "skip": {
-      "changelog": true,
-      "tag": true
-    }
   }
 }

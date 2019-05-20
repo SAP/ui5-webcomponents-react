@@ -22,6 +22,5 @@ git status
 # trigger lerna release
 ${TRAVIS_BUILD_DIR}/node_modules/.bin/lerna version prerelease \
         --conventional-prerelease \
-        --no-git-tag-version \
         --allow-branch ${TRAVIS_BRANCH} \
         --no-push

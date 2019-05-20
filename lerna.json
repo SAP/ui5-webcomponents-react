@@ -11,7 +11,8 @@
       "conventionalCommits": true,
       "exact": true,
       "yes": true,
-      "preid": "rc"
+      "preid": "rc",
+      "message": "chore(release): publish %s"
     }
   }
 }
