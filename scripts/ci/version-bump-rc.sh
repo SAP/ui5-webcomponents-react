@@ -21,11 +21,6 @@ echo "New Version after bump ${PACKAGE_VERSION}"
 
 # trigger lerna release
 ${TRAVIS_BUILD_DIR}/node_modules/.bin/lerna version \
-        --conventional-commits \
         --conventional-prerelease \
         --no-git-tag-version \
-        --preid rc \
-        --allow-branch ${TRAVIS_BRANCH} \
-		--exact \
-		--no-push \
-		--yes
+        --allow-branch ${TRAVIS_BRANCH}
