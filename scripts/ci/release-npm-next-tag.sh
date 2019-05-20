@@ -1,5 +1,11 @@
 #! /bin/bash
 
+if [ "${TRAVIS_PULL_REQUEST}" != "false" ]
+then
+    echo "This is a pull request build - skip npm release"
+    exit 0
+fi
+
 CHANGED_PACKAGES=$(git diff-tree --no-commit-id --name-only -r -m  ${TRAVIS_COMMIT} | \
     grep -e "^packages/" | \
     grep -v -e "packages/docs")
