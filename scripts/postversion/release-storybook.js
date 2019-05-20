@@ -3,6 +3,11 @@ const shell = require('shelljs');
 const { highlightLog } = require('../utils');
 
 module.exports = new Promise((resolve) => {
+  if (process.env.FIORI_FOR_REACT_SNAPSHOT_BUILD === 'true') {
+    resolve();
+    return;
+  }
+
   highlightLog('Prepare Storybook');
 
   const storybooksGenerated =

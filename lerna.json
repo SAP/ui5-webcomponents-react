@@ -7,7 +7,12 @@
   "useWorkspaces": true,
   "command": {
     "version": {
-      "allowBranch": "master"
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "exact": true,
+      "yes": true,
+      "preid": "rc",
+      "message": "chore(release): publish %s"
     }
   }
 }

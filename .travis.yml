@@ -1,9 +1,13 @@
 language: node_js
 dist: trusty
+git:
+  depth: false
 
 node_js:
   - '8'
   - '10'
+
+cache: yarn
 
 addons:
   chrome: stable
@@ -28,13 +32,15 @@ jobs:
     - stage: 'Build and Deploy'
       node_js:
         - '10'
+      before_script:
+        - git checkout ${TRAVIS_BRANCH}
+        - bash ./scripts/ci/version-bump-rc.sh || exit 0
       script: yarn build
       before_deploy:
-        - git checkout master
         - bash ./scripts/ci/setup-npm.sh
       deploy:
         - provider: script
           script: bash ./scripts/ci/release-npm-next-tag.sh
           skip_cleanup: true
           on:
-            branch: master
+            condition: (branch = master) AND (type != pull_request)
