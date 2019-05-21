@@ -19,7 +19,6 @@
   "dependencies": {
     "@fiori-for-react/styles": "0.2.0",
     "@fiori-for-react/utils": "0.2.0",
-    "react-table": "6.8.6",
     "@ui5/webcomponents": "0.10.1",
     "core-js": "^2.6.4",
     "react-scroll": "^1.7.11",
