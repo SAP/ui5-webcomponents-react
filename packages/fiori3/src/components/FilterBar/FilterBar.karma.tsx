@@ -61,7 +61,7 @@ describe('FilterBar', () => {
         </FilterItem>
         <FilterItem
           loading
-          key={'filter2'}
+          key={'filter3'}
           type={FilterType.Custom}
           label={'Custom Filter 1'}
           changeEventName={'onClick'}
@@ -94,14 +94,14 @@ describe('FilterBar', () => {
           loading
           filterItems={filterItems}
           label="Classification"
-          key="classification"
+          key="classification2"
           type={FilterType.Select}
         />
         <FilterItem
           // onChange={(e) => alert(e.getParameter('selectedItem').key)}
           // filterItems={filterItems}
           label="Classification"
-          key="classification"
+          key="classification3"
           type={FilterType.Default}
         />
       </FilterBar>
