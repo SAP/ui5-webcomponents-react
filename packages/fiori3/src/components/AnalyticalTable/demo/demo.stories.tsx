@@ -3,8 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { boolean, number } from '@storybook/addon-knobs';
 import { Table } from '../index';
 import generateData from './generateData';
-import { TextAlign } from '@lib/TextAlign';
-import { Title } from '@lib/Title';
+import { Title } from '../../../webComponents/Title';
 
 const columns = [
   {

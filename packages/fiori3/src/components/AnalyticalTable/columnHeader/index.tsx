@@ -1,6 +1,6 @@
 import React, { Component, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
-import { Icon } from '@lib/Icon';
+import { Icon } from '../../../webComponents/Icon';
 import { ColumnHeaderModal } from '../columnHeaderModal/index';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { StyleClassHelper } from '@fiori-for-react/utils';

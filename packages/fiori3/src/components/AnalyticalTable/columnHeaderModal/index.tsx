@@ -1,10 +1,10 @@
-import React, { Component, CSSProperties, ReactElement, ReactNode } from 'react';
-import { ResponsivePopover } from '@lib/ResponsivePopover';
-import { List } from '@lib/List';
-import { StandardListItem } from '@lib/StandardListItem';
+import React, { Component, ReactNode } from 'react';
+import { ResponsivePopover } from '../../ResponsivePopover';
+import { List } from '../../../webComponents/List';
+import { StandardListItem } from '../../../webComponents/StandardListItem';
 import { ClassProps } from '../../../interfaces/ClassProps';
-import { Input } from '@lib/Input';
-import { ColumnType } from '../columnHeader/index';
+import { Input } from '../../../webComponents/Input';
+import { ColumnType } from '../columnHeader';
 import { Event } from '@fiori-for-react/utils';
 import { withStyles } from '@fiori-for-react/styles';
 import { ListItemTypes, PlacementType, PopoverHorizontalAlign } from '@fiori-for-react/fiori3';
