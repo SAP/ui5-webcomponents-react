@@ -12,8 +12,7 @@
   "scripts": {
     "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' --type-check -r esm ./scripts/wrapperGeneration/generateWebComponentWrappers --onlyStopForMerge && prettier --write --config ../../prettier.config.js \"src/webComponents/**/*.tsx\"",
     "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
-    "test:karma": "node scripts/test/karma.js",
-    "test:karma:coverage": "karma start ../../config/karma.conf.js --coverage",
+    "test:karma": "karma start ../../config/karma.conf.js",
     "test:karma:update": "cross-env UPDATE=1 yarn run test:karma"
   },
   "dependencies": {
