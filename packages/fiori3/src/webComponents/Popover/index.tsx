@@ -1,4 +1,4 @@
-import React, { Component, ReactNode, RefObject } from 'react';
+import React, { Component, ReactNode, RefObject, CSSProperties } from 'react';
 import { PlacementType } from '@lib/PlacementType';
 import { PopoverHorizontalAlign } from '@lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@lib/PopoverVerticalAlign';
@@ -24,6 +24,7 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
   header?: ReactNode; // @generated
   footer?: ReactNode; // @generated
   content?: ReactNode | ReactNode[];
+  openByStyle?: CSSProperties;
   openBy?: ReactNode;
   open?: boolean;
 }
@@ -81,12 +82,17 @@ class Popover extends Component<PopoverPropTypes> {
   }
 
   render() {
-    const { openBy, ...props } = this.props;
+    const { openBy, openByStyle, ...props } = this.props;
+
+    let style = { display: 'inline-block' };
+    if (openByStyle) {
+      style = Object.assign(openByStyle, style);
+    }
 
     return (
       <>
         {openBy && (
-          <div style={{ display: 'inline-block' }} onClick={this.handleOpenPopover} ref={this.openByRef}>
+          <div style={style} onClick={this.handleOpenPopover} ref={this.openByRef}>
             {openBy}
           </div>
         )}

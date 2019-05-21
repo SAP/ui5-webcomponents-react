@@ -1,5 +1,5 @@
 import { Device, Event } from '@fiori-for-react/utils';
-import React, { Component } from 'react';
+import React, { Component, CSSProperties } from 'react';
 import { Dialog } from '@lib/Dialog';
 import { Popover } from '@lib/Popover';
 import { DialogPropTypes } from '../../webComponents/Dialog';
@@ -7,6 +7,7 @@ import { PopoverPropTypes } from '../../webComponents/Popover';
 
 export interface ResponsivePopoverPropTypes extends PopoverPropTypes, DialogPropTypes {
   open?: boolean;
+  openByStyle?: CSSProperties;
 }
 
 export class ResponsivePopover extends Component<ResponsivePopoverPropTypes> {
@@ -37,17 +38,18 @@ export class ResponsivePopover extends Component<ResponsivePopoverPropTypes> {
   };
 
   render() {
-    const { openBy, ...props } = this.props;
+    const { openBy, openByStyle, ...props } = this.props;
+
+    let style = { display: 'inline-block' };
+    if (openByStyle) {
+      style = Object.assign(openByStyle, style);
+    }
 
     if (Device.system.phone) {
       return (
         <>
           {openBy && (
-            <div
-              style={{ display: 'inline-block' }}
-              onClick={this.handleOpenDialog}
-              data-ui5-slot={this.props['data-ui5-slot']}
-            >
+            <div style={style} onClick={this.handleOpenDialog} data-ui5-slot={this.props['data-ui5-slot']}>
               {openBy}
             </div>
           )}

@@ -17,6 +17,7 @@
     "test:karma:update": "cross-env UPDATE=1 yarn run test:karma"
   },
   "dependencies": {
+    "react-table": "6.8.6",
     "@fiori-for-react/styles": "0.1.0",
     "@fiori-for-react/utils": "0.1.0",
     "@ui5/webcomponents": "0.10.1",
