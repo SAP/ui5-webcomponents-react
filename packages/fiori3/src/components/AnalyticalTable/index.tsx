@@ -1,5 +1,5 @@
-import { VerticalAlign } from '@lib/VerticalAlign';
-import { TextAlign } from '@lib/TextAlign';
+import { VerticalAlign } from '../../enums/VerticalAlign';
+import { TextAlign } from '../../enums/TextAlign';
 import React, { Component, CSSProperties, ReactNode, ReactText } from 'react';
 import ReactTable from 'react-table';
 import '../../../../../node_modules/react-table/react-table.css';
