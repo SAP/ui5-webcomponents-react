@@ -96,7 +96,7 @@ export function withWebComponent<T>(WebComponent): FC<T> {
         const eventHandler = this.props[eventIdentifier] || this.props[alternativeKey];
         if (typeof eventHandler === 'function' && this.eventRegistry[alternativeKey] !== eventHandler) {
           if (this.eventRegistry[alternativeKey]) {
-            this.wcRef.removeEventListener(eventIdentifier, this.eventRegistry[alternativeKey]);
+            this.wcRef.removeEventListener(eventIdentifier, this.eventRegistryWrapped[alternativeKey]);
           }
           this.eventRegistryWrapped[alternativeKey] = this.createEventWrapperFor(eventIdentifier, eventHandler);
           this.wcRef.addEventListener(eventIdentifier, this.eventRegistryWrapped[alternativeKey]);

@@ -11,15 +11,14 @@ function snapshotPathResolver(browserName, basePath, suiteName) {
 }
 
 module.exports = {
-  browserNoActivityTimeout: 20000,
   frameworks: ['snapshot', 'mocha-snapshot'],
-  files: ['__karma_snapshots__/**/*.md'],
+  files: ['__karma_snapshots__/*.md'],
   preprocessors: {
-    '__karma_snapshots__/**/*.md': ['snapshot']
+    '__karma_snapshots__/*.md': ['snapshot']
   },
   snapshot: {
     update: !!process.env.UPDATE,
-    prune: true,
+    prune: !!process.env.PRUNE,
     // format: 'indented-md',
     pathResolver: snapshotPathResolver.bind(null, 'ChromeHeadless')
   }
