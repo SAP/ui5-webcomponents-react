@@ -31,22 +31,22 @@ You can play around with our components by visiting our [Storybook](https://sap.
 ### Package Overview
 
 #### [@fiori-for-react/fiori3](https://github.com/SAP/fiori-for-react/tree/master/packages/fiori3) - Fiori 3 Components
-![https://www.npmjs.com/package/@fiori-for-react/fiori3](https://img.shields.io/npm/v/@fiori-for-react/fiori3.svg) 
+[![](https://img.shields.io/npm/v/@fiori-for-react/fiori3.svg)](https://www.npmjs.com/package/@fiori-for-react/fiori3)
 <!-- ![https://bundlephobia.com/result?p=@fiori-for-react/fiori3](https://img.shields.io/bundlephobia/min/@fiori-for-react/fiori3.svg?label=size) --> 
 <!-- ![https://bundlephobia.com/result?p=@fiori-for-react/fiori3](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/fiori3.svg?label=gzip%20size) -->
 
 #### [@fiori-for-react/styles](https://github.com/SAP/fiori-for-react/tree/master/packages/styles) - Styles
-![https://www.npmjs.com/package/@fiori-for-react/styles](https://img.shields.io/npm/v/@fiori-for-react/styles.svg)
+[![](https://img.shields.io/npm/v/@fiori-for-react/styles.svg)](https://www.npmjs.com/package/@fiori-for-react/styles)
 <!-- ![https://bundlephobia.com/result?p=@fiori-for-react/styles](https://img.shields.io/bundlephobia/min/@fiori-for-react/styles.svg?label=size)  -->
 <!-- ![https://bundlephobia.com/result?p=@fiori-for-react/styles](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/styles.svg?label=gzip%20size) -->
 
 #### [@fiori-for-react/utils](https://github.com/SAP/fiori-for-react/tree/master/packages/utils) - Utils
-![https://www.npmjs.com/package/@fiori-for-react/utils](https://img.shields.io/npm/v/@fiori-for-react/utils.svg)
+[![](https://img.shields.io/npm/v/@fiori-for-react/utils.svg)](https://www.npmjs.com/package/@fiori-for-react/utils)
 <!-- ![https://bundlephobia.com/result?p=@fiori-for-react/utils](https://img.shields.io/bundlephobia/min/@fiori-for-react/utils.svg?label=size) --> 
 <!-- ![https://bundlephobia.com/result?p=@fiori-for-react/utils](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/utils.svg?label=gzip%20size) -->
 
 #### [@fiori-for-react/charts](https://github.com/SAP/fiori-for-react/tree/master/packages/charts) - Fiori Charts 
-![https://www.npmjs.com/package/@fiori-for-react/charts](https://img.shields.io/npm/v/@fiori-for-react/charts.svg)
+[![](https://img.shields.io/npm/v/@fiori-for-react/charts.svg)](https://www.npmjs.com/package/@fiori-for-react/charts)
 <!-- ![https://bundlephobia.com/result?p=@fiori-for-react/charts](https://img.shields.io/bundlephobia/min/@fiori-for-react/charts.svg?label=size)  -->
 <!-- ![https://bundlephobia.com/result?p=@fiori-for-react/charts](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/charts.svg?label=gzip%20size) -->
 
