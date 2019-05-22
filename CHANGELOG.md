@@ -19,17 +19,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **VariantManagement:** Initial Version ([a1e9cbb](https://github.com/SAP/fiori-for-react/commit/a1e9cbb))
 
 
-### WIP
-
-* Removed unused parts of release script ([45cf82e](https://github.com/SAP/fiori-for-react/commit/45cf82e))
-
-
-### BREAKING CHANGES
-
-* Test
-
-
-
 
 
 # 0.2.0 (2019-05-15)
