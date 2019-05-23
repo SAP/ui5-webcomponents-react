@@ -84,7 +84,7 @@ export function withWebComponent<T>(WebComponent): FC<T> {
             ...e[val]
           };
         }
-        acc[val] = e.detail[val] || e[val];
+        acc[val] = (e.detail && e.detail[val]) || e[val];
         return acc;
       }, payload);
       eventHandler(Event.of(this, e, payload));

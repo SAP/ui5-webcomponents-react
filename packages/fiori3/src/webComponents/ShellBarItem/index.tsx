@@ -14,8 +14,7 @@ const ShellBarItem: FC<ShellBarItemPropTypes> = withWebComponent<ShellBarItemPro
 ShellBarItem.displayName = 'ShellBarItem';
 
 ShellBarItem.defaultProps = {
-  src: null, // @generated
-  text: null // @generated
+  src: null // @generated
 };
 
 export { ShellBarItem };

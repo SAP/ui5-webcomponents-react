@@ -76,7 +76,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
         return HSLColor.of(backgroundColor).contrast(
           parameters.sapUiContentForegroundTextColor,
           parameters.sapUiContentContrastTextColor,
-          parameters.sapUiContentContrastTextThreshold
+          (parameters.sapUiContentContrastTextThreshold as any) as number
         );
       }
     }

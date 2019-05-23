@@ -1,3 +1,3 @@
-import { Token } from '../components/Token';
+import { Token } from '../webComponents/Token';
 
 export { Token };

@@ -2,6 +2,7 @@ import { CalendarType } from '../../lib/CalendarType';
 import { DatePicker } from '../../lib/DatePicker';
 import { ValueState } from '../../lib/ValueState';
 import { boolean, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
@@ -14,7 +15,7 @@ storiesOf('UI5 Web Components | DatePicker', module).add('Generated default stor
     disabled={boolean('disabled', false)}
     readonly={boolean('readonly', false)}
     placeholder={'generatedString'}
-    onChange={null}
-    onLiveChange={null}
+    onChange={action('onChange')}
+    onInput={action('onInput')}
   />
 ));
