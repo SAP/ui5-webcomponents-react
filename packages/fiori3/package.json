@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
-    "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' --type-check -r esm ./scripts/wrapperGeneration/generateWebComponentWrappers --onlyStopForMerge && prettier --write --config ../../prettier.config.js \"src/webComponents/**/*.tsx\"",
+    "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/generateWebComponentWrappers --onlyStopForMerge && prettier --write --config ../../prettier.config.js \"src/webComponents/**/*.tsx\"",
     "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
     "test:karma": "karma start ../../config/karma.conf.js",
     "test:karma:update": "cross-env UPDATE=1 yarn run test:karma"

@@ -5,9 +5,9 @@
 ```
 "<ThemeProvider theme=\"sap_fiori3_light\" contentDensity=\"Compact\" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <TableColumn minWidth={Infinity} popinText=\"\" width=\"\">
-      <WithWebComponent theme={{...}} minWidth={Infinity} popinText=\"\" width=\"\">
-        <ui5-table-column min-width={Infinity} popin-text=\"\" width=\"\" class=\"sapUiSizeCompact\" />
+    <TableColumn minWidth={Infinity} width=\"\">
+      <WithWebComponent theme={{...}} minWidth={Infinity} width=\"\">
+        <ui5-table-column min-width={Infinity} width=\"\" class=\"sapUiSizeCompact\" />
       </WithWebComponent>
     </TableColumn>
   </ThemeProvider>

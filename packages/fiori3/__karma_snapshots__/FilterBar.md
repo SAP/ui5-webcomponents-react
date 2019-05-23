@@ -43,9 +43,9 @@
                                   </ui5-button>
                                 </WithWebComponent>
                               </Button>
-                              <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" backgroundDesign="Solid" headerText="" footerText="" noDataText="" separators="All">
-                                <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" backgroundDesign="Solid" headerText="" footerText="" noDataText="" separators="All">
-                                  <ui5-list mode="SingleSelect" background-design="Solid" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
+                              <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
+                                <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
+                                  <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
                                     <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
                                       <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
                                         <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
@@ -100,8 +100,8 @@
                           </ui5-label>
                         </WithWebComponent>
                       </Label>
-                      <Select onChange={[Function]} style={{...}} disabled={false} valueState="None">
-                        <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} disabled={false} valueState="None">
+                      <Select onChange={[Function]} style={{...}} valueState="None">
+                        <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="sapUiSizeCompact">
                             <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
                               <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
@@ -198,9 +198,9 @@
                                   </ui5-button>
                                 </WithWebComponent>
                               </Button>
-                              <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" backgroundDesign="Solid" headerText="" footerText="" noDataText="" separators="All">
-                                <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" backgroundDesign="Solid" headerText="" footerText="" noDataText="" separators="All">
-                                  <ui5-list mode="SingleSelect" background-design="Solid" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
+                              <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
+                                <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
+                                  <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
                                     <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
                                       <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
                                         <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
@@ -255,8 +255,8 @@
                           </ui5-label>
                         </WithWebComponent>
                       </Label>
-                      <Select onChange={[Function]} style={{...}} disabled={false} valueState="None">
-                        <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} disabled={false} valueState="None">
+                      <Select onChange={[Function]} style={{...}} valueState="None">
+                        <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="sapUiSizeCompact">
                             <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
                               <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
@@ -379,9 +379,9 @@
                                   </ui5-button>
                                 </WithWebComponent>
                               </Button>
-                              <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" backgroundDesign="Solid" headerText="" footerText="" noDataText="" separators="All">
-                                <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" backgroundDesign="Solid" headerText="" footerText="" noDataText="" separators="All">
-                                  <ui5-list mode="SingleSelect" background-design="Solid" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
+                              <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
+                                <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
+                                  <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
                                     <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
                                       <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
                                         <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
@@ -436,8 +436,8 @@
                           </ui5-label>
                         </WithWebComponent>
                       </Label>
-                      <Select onChange={[Function]} style={{...}} disabled={false} valueState="None">
-                        <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} disabled={false} valueState="None">
+                      <Select onChange={[Function]} style={{...}} valueState="None">
+                        <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="sapUiSizeCompact">
                             <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
                               <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
