@@ -22,12 +22,8 @@ const TextArea: FC<TextAreaPropTypes> = withWebComponent<TextAreaPropTypes>(UI5T
 TextArea.displayName = 'TextArea';
 
 TextArea.defaultProps = {
-  value: '', // @generated
-  placeholder: '', // @generated
   rows: 0, // @generated
   maxLength: null, // @generated
-  showExceededText: false, // @generated
-  growing: false, // @generated
   growingMaxLines: 0 // @generated
 };
 

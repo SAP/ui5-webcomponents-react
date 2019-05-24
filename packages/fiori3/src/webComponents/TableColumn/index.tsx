@@ -16,7 +16,6 @@ TableColumn.displayName = 'TableColumn';
 
 TableColumn.defaultProps = {
   minWidth: Infinity, // @generated
-  popinText: '', // @generated
   width: '' // @generated
 };
 

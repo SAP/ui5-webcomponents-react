@@ -1,4 +1,3 @@
-import { BackgroundDesign } from '../../lib/BackgroundDesign';
 import { List } from '../../lib/List';
 import { ListMode } from '../../lib/ListMode';
 import { ListSeparators } from '../../lib/ListSeparators';
@@ -9,7 +8,6 @@ import React from 'react';
 
 storiesOf('UI5 Web Components | List', module).add('Generated default story', () => (
   <List
-    backgroundDesign={select('backgroundDesign', BackgroundDesign, null)}
     headerText={'generatedString'}
     footerText={'generatedString'}
     inset={boolean('inset', false)}

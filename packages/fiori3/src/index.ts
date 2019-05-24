@@ -8,7 +8,6 @@ import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';
 import { Avatar } from './lib/Avatar';
 import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
-import { BackgroundDesign } from './lib/BackgroundDesign';
 import { Bar } from './lib/Bar';
 import { BusyIndicator } from './lib/BusyIndicator';
 import { Button } from './lib/Button';
@@ -59,6 +58,7 @@ import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
 import { MessageToast } from './lib/MessageToast';
 import { MonthPicker } from './lib/MonthPicker';
+import { MultiComboBox } from './lib/MultiComboBox';
 import { ObjectPage } from './lib/ObjectPage';
 import { ObjectPageMode } from './lib/ObjectPageMode';
 import { ObjectPageSection } from './lib/ObjectPageSection';
@@ -117,7 +117,6 @@ export {
   Avatar,
   AvatarShape,
   AvatarSize,
-  BackgroundDesign,
   Bar,
   BusyIndicator,
   Button,
@@ -168,6 +167,7 @@ export {
   MessageStripType,
   MessageToast,
   MonthPicker,
+  MultiComboBox,
   ObjectPage,
   ObjectPageMode,
   ObjectPageSection,

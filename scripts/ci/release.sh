@@ -16,17 +16,15 @@ yarn test
 
 # trigger lerna release and create new storybook
 ./node_modules/.bin/lerna version \
-		--conventional-commits \
-		--exact \
-		--github-release \
-		--no-push \
-		--yes
+        --conventional-graduate \
+		--force-publish
 
+# These steps are only required in case we don't a user with admin privileges
 # get the new version number
-RELEASE_VERSION=$(node -p "require('./lerna.json').version")
+#RELEASE_VERSION=$(node -p "require('./lerna.json').version")
 # get the new version number
-git checkout -b releases/${RELEASE_VERSION}
-git push --set-upstream origin releases/${RELEASE_VERSION}
+#git checkout -b releases/${RELEASE_VERSION}
+#git push --set-upstream origin releases/${RELEASE_VERSION}
 
 # build the project with the new version after lerna version
 yarn build

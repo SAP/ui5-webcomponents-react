@@ -1,3 +1,3 @@
-import { Tokenizer } from '../components/Tokenizer';
+import { Tokenizer } from '../webComponents/Tokenizer';
 
 export { Tokenizer };

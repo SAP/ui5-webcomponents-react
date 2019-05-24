@@ -3,17 +3,14 @@ const path = require('path');
 const webpackConfig = require('./karma.webpack.config');
 const snapshotConfig = require('./karma.snapshot.config');
 const deepmerge = require('deepmerge');
-const ip = require('ip');
-const ci = require('ci-info');
 
 process.env.NODE_ENV = 'test';
 process.env.BABEL_ENV = 'test';
 
-const gridUrl = `http://${ci.JENKINS ? 'hub' : 'localhost'}:4444/wd/hub`;
-
 module.exports = function(config) {
+  const coverage = !!process.argv.find((item) => item === '--coverage');
   let coverageConfig = {};
-  if (config.coverage) {
+  if (coverage) {
     coverageConfig = {
       reporters: ['coverage-istanbul'],
       coverageIstanbulReporter: {
@@ -23,30 +20,18 @@ module.exports = function(config) {
     };
   }
 
-  const browsers = [];
-  if (ci.JENKINS || config.useSelenium) {
-    browsers.push('selenium_chrome');
-    console.log(`Using Selenium Grid URL: '${gridUrl}'`);
-  } else {
-    browsers.push('ChromeHeadless');
-  }
+  const browsers = ['ChromeHeadless'];
 
   const finalConfig = deepmerge.all([
-    webpackConfig(config),
+    webpackConfig(),
     snapshotConfig,
     coverageConfig,
     {
+      browserNoActivityTimeout: 20000,
       basePath: path.join(PATHS.packages, 'fiori3'),
-      customLaunchers: {
-        selenium_chrome: {
-          base: 'SeleniumGrid',
-          gridUrl,
-          browserName: 'chrome'
-        }
-      },
       browsers,
       frameworks: ['mocha', 'chai'],
-      files: ['test/testRunner.js'],
+      files: [path.join(PATHS.packages, 'fiori3', 'test', 'testRunner.js')],
       preprocessors: {
         'test/testRunner.js': ['webpack', 'sourcemap']
       },
@@ -56,14 +41,10 @@ module.exports = function(config) {
         showDiff: true // Leverage the really good mocha diff
       },
       port: 9876,
-      hostname: ip.address(),
-      listenAddress: ip.address(),
       colors: true,
-      logLevel: config.LOG_INFO,
       autoWatch: false,
       singleRun: true
     }
   ]);
-
-  return finalConfig;
+  config.set(finalConfig);
 };
