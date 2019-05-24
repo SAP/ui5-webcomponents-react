@@ -10,7 +10,6 @@ const f4rEnums = {
   PopoverHorizontalAlign: require(path.resolve(fiori3Enums, 'PopoverHorizontalAlign.ts')).PopoverHorizontalAlign,
   InputType: require(path.resolve(fiori3Enums, 'InputType.ts')).InputType,
   LinkType: require(path.resolve(fiori3Enums, 'LinkType.ts')).LinkType,
-  BackgroundDesign: require(path.resolve(fiori3Enums, 'BackgroundDesign.ts')).BackgroundDesign,
   ListMode: require(path.resolve(fiori3Enums, 'ListMode.ts')).ListMode,
   ListItemTypes: require(path.resolve(fiori3Enums, 'ListItemTypes.ts')).ListItemTypes,
   ListSeparators: require(path.resolve(fiori3Enums, 'ListSeparators.ts')).ListSeparators,

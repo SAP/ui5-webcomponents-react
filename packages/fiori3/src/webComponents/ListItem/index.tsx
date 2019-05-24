@@ -1,5 +1,5 @@
-import { ListItemTypes } from '../../lib/ListItemTypes';
 import React, { FC } from 'react';
+import { ListItemTypes } from '../../lib/ListItemTypes';
 import UI5ListItem from '@ui5/webcomponents/dist/ListItem';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -13,7 +13,7 @@ const ListItem: FC<ListItemPropTypes> = withWebComponent<ListItemPropTypes>(UI5L
 ListItem.displayName = 'ListItem';
 
 ListItem.defaultProps = {
-  type: ListItemTypes.Inactive // @generated
+  type: ListItemTypes.Active // @generated
 };
 
 export { ListItem };

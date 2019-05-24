@@ -14,7 +14,7 @@ const CustomListItem: FC<CustomListItemPropTypes> = withWebComponent<CustomListI
 CustomListItem.displayName = 'CustomListItem';
 
 CustomListItem.defaultProps = {
-  type: ListItemTypes.Inactive // @generated
+  type: ListItemTypes.Active // @generated
 };
 
 export { CustomListItem };

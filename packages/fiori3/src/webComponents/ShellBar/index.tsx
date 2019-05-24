@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, ReactNodeArray } from 'react';
 import { Event } from '@fiori-for-react/utils';
 import UI5ShellBar from '@ui5/webcomponents/dist/ShellBar';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
@@ -18,8 +18,8 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   onLogoPress?: (event: Event) => void; // @generated
   onCoPilotPress?: (event: Event) => void; // @generated
   onMenuItemPress?: (event: Event) => void; // @generated
-  children?: ReactNode | ReactNode[]; // @generated
-  menuItems?: ReactNode | ReactNode[]; // @generated
+  children?: ReactNode | ReactNodeArray; // @generated
+  menuItems?: ReactNode | ReactNodeArray; // @generated
   searchField?: ReactNode; // @generated
   icon?: ReactNode; // @generated
 }
@@ -30,8 +30,6 @@ ShellBar.displayName = 'ShellBar';
 
 ShellBar.defaultProps = {
   logo: null, // @generated
-  primaryTitle: '', // @generated
-  secondaryTitle: '', // @generated
   profile: '' // @generated
 };
 

@@ -11,11 +11,10 @@ storiesOf('UI5 Web Components | RadioButton', module).add(
   () => (
     <RadioButton
       disabled={boolean('disabled', false)}
-      readOnly={boolean('readOnly', false)}
+      readonly={boolean('readonly', false)}
       selected={boolean('selected', false)}
       text={text('text', 'Option A')}
       valueState={select('valueState', ValueState, null)}
-      group={text('group', 'GroupA')}
       onSelect={action('onSelect')}
     />
   ),

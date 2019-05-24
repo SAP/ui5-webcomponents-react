@@ -5,9 +5,9 @@
 ```
 "<ThemeProvider theme=\"sap_fiori3_light\" contentDensity=\"Compact\" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <RadioButton text={{...}} valueState=\"None\" group=\"\">
-      <WithWebComponent theme={{...}} text={{...}} valueState=\"None\" group=\"\">
-        <ui5-radiobutton text={{...}} value-state=\"None\" group=\"\" class=\"sapUiSizeCompact\" />
+    <RadioButton valueState=\"None\">
+      <WithWebComponent theme={{...}} valueState=\"None\">
+        <ui5-radiobutton value-state=\"None\" class=\"sapUiSizeCompact\" />
       </WithWebComponent>
     </RadioButton>
   </ThemeProvider>

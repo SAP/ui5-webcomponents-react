@@ -8,7 +8,7 @@ import React from 'react';
 storiesOf('UI5 Web Components | CheckBox', module).add('Default story', () => (
   <CheckBox
     disabled={boolean('disabled', false)}
-    readOnly={boolean('readOnly', false)}
+    readonly={boolean('readonly', false)}
     checked={boolean('checked', false)}
     text={text('text', 'Checkbox Text')}
     valueState={select('valueState', ValueState, null)}

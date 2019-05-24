@@ -5,9 +5,9 @@
 ```
 "<ThemeProvider theme=\"sap_fiori3_light\" contentDensity=\"Compact\" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <CheckBox text=\"\" valueState=\"None\">
-      <WithWebComponent theme={{...}} text=\"\" valueState=\"None\">
-        <ui5-checkbox text=\"\" value-state=\"None\" class=\"sapUiSizeCompact\" />
+    <CheckBox valueState=\"None\">
+      <WithWebComponent theme={{...}} valueState=\"None\">
+        <ui5-checkbox value-state=\"None\" class=\"sapUiSizeCompact\" />
       </WithWebComponent>
     </CheckBox>
   </ThemeProvider>

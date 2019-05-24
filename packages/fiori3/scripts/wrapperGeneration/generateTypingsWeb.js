@@ -2,7 +2,6 @@ import UI5ButtonType from '@ui5/webcomponents/dist/types/ButtonType';
 import UI5Icon from '@ui5/webcomponents/dist/Icon';
 import UI5InputType from '@ui5/webcomponents/dist/types/InputType';
 import UI5LinkType from '@ui5/webcomponents/dist/types/LinkType';
-import UI5BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign';
 import UI5ListMode from '@ui5/webcomponents/dist/types/ListMode';
 import UI5ListItemTypes from '@ui5/webcomponents/dist/types/ListItemType';
 import UI5PopoverPlacementTypes from '@ui5/webcomponents/dist/types/PopoverPlacementType';
@@ -76,11 +75,6 @@ const mappings = {
     tsType: 'TitleLevel',
     isEnum: true
   },
-  [UI5BackgroundDesign]: {
-    importStatement: "import { BackgroundDesign } from '../../lib/BackgroundDesign';",
-    tsType: 'BackgroundDesign',
-    isEnum: true
-  },
   [UI5InputType]: {
     importStatement: "import { InputType } from '../../lib/InputType';",
     tsType: 'InputType',
@@ -150,7 +144,7 @@ function parseSlots(meta, typings) {
     } else {
       typings[propKey] = {
         tsType: 'any',
-        originalProp: prop
+        originalProp: slot
       };
     }
   });
