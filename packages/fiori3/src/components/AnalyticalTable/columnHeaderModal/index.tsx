@@ -29,41 +29,16 @@ export interface ColumnHeaderModalProperties {
   FilterComponent: any;
   filter: any;
   column: ColumnType;
-  // onFilterChange: (e?: any) => void;
 }
 
 interface ColumnHeaderModalInternalProperties extends ColumnHeaderModalProperties, ClassProps {}
 
 @withStyles(styles)
 export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
-  private modalRef: HTMLElement;
-  private receivedFocus = false;
-
-  private static DEFAULT_FILTER_COMPONENT({ filter, onChange }) {
-    const handleChange = (e) => {
-      onChange(Event.of(this, e.getOriginalEvent(), e.getParameters()));
-    };
-    return <Input onChange={handleChange}>{(filter && filter.value) || ''}</Input>;
-  }
-
   static defaultProps = {
     showSort: true,
     showFilter: false,
-    FilterComponent: ColumnHeaderModal.DEFAULT_FILTER_COMPONENT,
-    filter: null,
-    onFilterChange: () => {}
-  };
-
-  private getItemTypeOfClickEvent = (e) => {
-    if (e.target.parentElement.hasAttribute('data-item-type')) {
-      return e.target.parentElement.getAttribute('data-item-type');
-    }
-    if (e.target.parentElement.parentElement.hasAttribute('data-item-type')) {
-      return e.target.parentElement.parentElement.getAttribute('data-item-type');
-    }
-    if (e.target.parentElement.parentElement.parentElement.hasAttribute('data-item-type')) {
-      return e.target.parentElement.parentElement.parentElement.getAttribute('data-item-type');
-    }
+    filter: null
   };
 
   private handleSort = (e) => {
@@ -76,8 +51,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
   };
 
   render() {
-    const { classes, showSort, showFilter, FilterComponent, filter, column } = this
-      .props as ColumnHeaderModalInternalProperties;
+    const { showSort } = this.props as ColumnHeaderModalInternalProperties;
 
     return (
       <ResponsivePopover
@@ -88,15 +62,6 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
         horizontalAlign={PopoverHorizontalAlign.Left}
         placementType={PlacementType.Bottom}
       >
-        {/*<div*/}
-        {/*tabIndex={-1}*/}
-        {/*ref={(ref) => {*/}
-        {/*this.modalRef = ref;*/}
-        {/*}}*/}
-        {/*className={classes.modalRoot}*/}
-        {/*onBlur={this.handleModalBlur}*/}
-        {/*onClick={this.handleModalClick}*/}
-        {/*>*/}
         <List onItemPress={this.handleSort}>
           {showSort && (
             <StandardListItem type={ListItemTypes.Active} icon={'sap-icon://sort-ascending'} data-sort={'asc'}>
@@ -108,14 +73,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
               Sort Descending
             </StandardListItem>
           )}
-          {/*{showFilter &&*/}
-          {/*((*/}
-          {/*<StandardListItem icon={<Icon src="filter" />} htmlItemType="filter">*/}
-          {/*<FilterComponent filter={filter} onChange={onFilterChange} column={column} />*/}
-          {/*</StandardListItem>*/}
-          {/*) as ReactElement<MenuListItemPropTypes>)}*/}
         </List>
-        {/*</div>*/}
       </ResponsivePopover>
     );
   }
