@@ -29,7 +29,7 @@ export interface ColumnHeaderModalProperties {
   FilterComponent: any;
   filter: any;
   column: ColumnType;
-  onFilterChange: (e?: any) => void;
+  // onFilterChange: (e?: any) => void;
 }
 
 interface ColumnHeaderModalInternalProperties extends ColumnHeaderModalProperties, ClassProps {}
@@ -76,7 +76,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
   };
 
   render() {
-    const { classes, showSort, showFilter, FilterComponent, filter, column, onFilterChange } = this
+    const { classes, showSort, showFilter, FilterComponent, filter, column } = this
       .props as ColumnHeaderModalInternalProperties;
 
     return (

@@ -111,18 +111,18 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
     }
   };
 
-  private onFilterChange = (e) => {
-    const { column, filtered } = this.props as ColumnHeaderPropsInternal;
-    const columnId = column.id;
-    const currentFilters = filtered.filter((item) => item.id !== columnId);
-    if (e) {
-      currentFilters.push({
-        id: columnId,
-        value: e.getParameter('value')
-      });
-    }
-    this.props.onFilteredChange(Event.of(this, e.getOriginalEvent(), { currentFilters, column }));
-  };
+  // private onFilterChange = (e) => {
+  //   const { column, filtered } = this.props as ColumnHeaderPropsInternal;
+  //   const columnId = column.id;
+  //   const currentFilters = filtered.filter((item) => item.id !== columnId);
+  //   if (e) {
+  //     currentFilters.push({
+  //       id: columnId,
+  //       value: e.getParameter('value')
+  //     });
+  //   }
+  //   this.props.onFilteredChange(Event.of(this, e.getOriginalEvent(), { currentFilters, column }));
+  // };
 
   private get openBy() {
     const { classes, children, sorted, column, filtered } = this.props as ColumnHeaderPropsInternal;
@@ -169,7 +169,7 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
         column={column}
         FilterComponent={column.Filter}
         filter={filter}
-        onFilterChange={this.onFilterChange}
+        // onFilterChange={this.onFilterChange}
       />
     );
   }
