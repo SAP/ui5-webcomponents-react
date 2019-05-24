@@ -9,6 +9,7 @@ const showOptions = require('./showOptions');
 
 let pattern;
 let onlyStopForMerge = false;
+const queue = [];
 
 process.argv.forEach((val) => {
   if (val.startsWith('-pattern') || val.startsWith('--pattern')) {
@@ -65,13 +66,8 @@ async function generateWebComponentWrapper(dto) {
   }
 }
 
-let queueIndex = 0;
-function executeQueue(queue) {
-  const msg = queue[queueIndex];
-  function continueExecution() {
-    queueIndex++;
-    executeQueue(queue);
-  }
+function executeQueue() {
+  const msg = queue.shift();
 
   if (!msg) {
     return;
@@ -79,30 +75,25 @@ function executeQueue(queue) {
   try {
     const dto = JSON.parse(msg.text());
     if (!pattern || dto.componentName.indexOf(pattern) !== -1) {
-      generateWebComponentWrapper(dto).then(continueExecution);
+      generateWebComponentWrapper(dto).then(executeQueue);
       generateComponentDemos(dto);
     } else {
-      continueExecution();
+      executeQueue();
     }
   } catch (e) {
     console.error(e.message);
-    continueExecution();
+    executeQueue();
   }
 }
-
-const url = fileUrl('./scripts/wrapperGeneration/puppeteer.html');
 
 (async () => {
   const browser = await puppeteer.launch(); //{devtools: true}
   const page = await browser.newPage();
-
-  const queue = [];
-
   page.on('console', (msg) => {
     // console.log(msg.text());
     queue.push(msg);
   });
-  await page.goto(url);
+  await page.goto(fileUrl('./scripts/wrapperGeneration/puppeteer.html'));
   // await browser.waitForFunction('false');
-  await browser.close().then(() => executeQueue(queue));
+  await browser.close().then(executeQueue);
 })();

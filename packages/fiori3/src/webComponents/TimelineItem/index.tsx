@@ -18,10 +18,7 @@ const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPro
 TimelineItem.displayName = 'TimelineItem';
 
 TimelineItem.defaultProps = {
-  icon: null, // @generated
-  itemName: '', // @generated
-  titleText: '', // @generated
-  subtitleText: '' // @generated
+  icon: null // @generated
 };
 
 export { TimelineItem };

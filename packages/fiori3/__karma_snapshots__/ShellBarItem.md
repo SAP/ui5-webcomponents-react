@@ -5,9 +5,9 @@
 ```
 "<ThemeProvider theme=\"sap_fiori3_light\" contentDensity=\"Compact\" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <ShellBarItem src={{...}} text={{...}}>
-      <WithWebComponent theme={{...}} src={{...}} text={{...}}>
-        <ui5-shellbar-item src={{...}} text={{...}} class=\"sapUiSizeCompact\" />
+    <ShellBarItem src={{...}}>
+      <WithWebComponent theme={{...}} src={{...}}>
+        <ui5-shellbar-item src={{...}} class=\"sapUiSizeCompact\" />
       </WithWebComponent>
     </ShellBarItem>
   </ThemeProvider>
