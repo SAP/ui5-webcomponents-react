@@ -1,6 +1,6 @@
 {
   "name": "@fiori-for-react/fiori3",
-  "version": "0.2.1-rc.0",
+  "version": "0.2.1-rc.1",
   "description": "Fiori 3 Components in React",
   "repository": "https://github.com/SAP/fiori-for-react/tree/master/packages/fiori3",
   "main": "index.cjs.js",
