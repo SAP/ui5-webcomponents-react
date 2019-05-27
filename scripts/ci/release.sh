@@ -15,9 +15,7 @@ yarn install --mutex network
 yarn test
 
 # trigger lerna release and create new storybook
-./node_modules/.bin/lerna version \
-        --conventional-graduate \
-		--force-publish
+./node_modules/.bin/lerna version --conventional-graduate
 
 # These steps are only required in case we don't a user with admin privileges
 # get the new version number
