@@ -8,6 +8,7 @@ import { PlacementType } from '../../lib/PlacementType';
 import { TitleLevel } from '../../lib/TitleLevel';
 import { FilterType } from '../../lib/FilterType';
 import { Switch } from '../../lib/Switch';
+import { Input } from '../../webComponents/Input';
 
 const flavours = [];
 for (let i = 1; i <= 9; i++) {
@@ -32,9 +33,13 @@ const renderVariants = () => {
   );
 };
 
+const renderSearch = () => {
+  return <Input placeholder={'Search'} />;
+};
+
 function renderStory() {
   return (
-    <FilterBar renderVariants={renderVariants}>
+    <FilterBar renderSearch={renderSearch} renderVariants={renderVariants}>
       <FilterItem
         onChange={(e) => alert(e.getParameter('selectedItem').key)}
         filterItems={filterItems}

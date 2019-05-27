@@ -3,13 +3,12 @@ import { withStyles } from '@fiori-for-react/styles';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import styles from './FilterBar.jss';
-import { Input } from '../../lib/Input';
 import { Button } from '../../lib/Button';
 import { ButtonType } from '../../lib/ButtonType';
 
 export interface FilterBarPropTypes extends Fiori3CommonProps {
   renderVariants?: () => JSX.Element;
-  renderSearch?: boolean;
+  renderSearch?: () => JSX.Element;
   children: ReactNode | ReactNodeArray;
 }
 
@@ -38,11 +37,7 @@ export class FilterBar extends PureComponent<FilterBarPropTypes> {
       <div className={classes.outerContainer}>
         <div className={classes.filterBarHeader}>
           {renderVariants && renderVariants()}
-          {renderSearch && (
-            <div className={classes.vLine}>
-              <Input placeholder={'Search'} />
-            </div>
-          )}
+          {renderSearch && <div className={classes.vLine}> {renderSearch()} </div>}
           <div className={classes.headerRowRight}>
             <Button onPress={this.handelHideFilterBar} type={ButtonType.Transparent}>
               {this.state.showFilters ? 'Hide Filter Bar' : 'Show Filter Bar'}
