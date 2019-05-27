@@ -73,7 +73,7 @@ interface TableState {
 }
 
 @withStyles(styles)
-export class Table extends Component<TablePropsInternal, TableState> {
+export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
   static defaultProps = {
     alternateRowColors: false,
     loading: false,
@@ -255,7 +255,7 @@ export class Table extends Component<TablePropsInternal, TableState> {
           multiSort={false}
           filterable={filterable}
           filtered={this.state.filtered}
-          defaultFilterMethod={Table.DEFAULT_FILTER_METHOD}
+          defaultFilterMethod={AnalyticalTable.DEFAULT_FILTER_METHOD}
           onFilteredChange={this.onFilteredChange}
           sortable={sortable}
           {...reactTableProps}

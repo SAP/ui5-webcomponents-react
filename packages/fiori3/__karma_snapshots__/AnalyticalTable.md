@@ -5,9 +5,9 @@
 ```
 <ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(Table)) showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]}>
-      <WithStyles(Table) showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]} theme={{...}} classes={{...}}>
-        <Table showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(AnalyticalTable)) showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]}>
+      <WithStyles(AnalyticalTable) showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]} theme={{...}} classes={{...}}>
+        <AnalyticalTable showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]} theme={{...}} classes={{...}}>
           <div className={[undefined]} style={[undefined]} title={[undefined]}>
             <Jss(WithStyles(Component))>
               <WithStyles(Component) classes={{...}}>
@@ -26,10 +26,10 @@
             </Jss(WithStyles(Component))>
             <ReactTable data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={10} className="" showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: CustomLoadingComponent]} PaginationComponent={[Function: Jss]} PreviousComponent={[undefined]} NextComponent={[undefined]} ThComponent={[Function: Jss]} multiSort={false} filterable={false} filtered={{...}} defaultFilterMethod={[Function]} onFilteredChange={[Function]} sortable={true} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} defaultPage={0} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} onPageChange={[undefined]} onPageSizeChange={[undefined]} onSortedChange={[undefined]} onResizedChange={[undefined]} onExpandedChange={[undefined]} pivotBy={[undefined]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={{...}} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" pageJumpText="jump to page" rowsSelectorText="rows per page" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} PivotComponent={[undefined]} NoDataComponent={[Function: cmp]} ResizerComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]}>
               <div className="ReactTable" style={{...}}>
-                <TableComponent className="Table-table---" style={[undefined]}>
-                  <div className="rt-table Table-table---" role="grid" style={[undefined]}>
-                    <Thead className="-header Table-tHead---" style={{...}}>
-                      <div className="rt-thead -header Table-tHead---" style={{...}}>
+                <TableComponent className="AnalyticalTable-table---" style={[undefined]}>
+                  <div className="rt-table AnalyticalTable-table---" role="grid" style={[undefined]}>
+                    <Thead className="-header AnalyticalTable-tHead---" style={{...}}>
+                      <div className="rt-thead -header AnalyticalTable-tHead---" style={{...}}>
                         <TrComponent className={[undefined]} style={[undefined]}>
                           <div className="rt-tr" role="row" style={[undefined]}>
                             <Jss(WithStyles(ColumnHeader)) className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} defaultSortDesc={false} column={{...}} firstColumn={true} onFilteredChange={[Function]}>
@@ -252,29 +252,29 @@
                         </TrComponent>
                       </div>
                     </Thead>
-                    <Tbody className="Table-tBody---" style={{...}}>
-                      <div className="rt-tbody Table-tBody---" style={{...}}>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="Table-tr--- -odd" style={[undefined]}>
-                              <div className="rt-tr Table-tr--- -odd" role="row" style={[undefined]}>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                    <Tbody className="AnalyticalTable-tBody---" style={{...}}>
+                      <div className="rt-tbody AnalyticalTable-tBody---" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="AnalyticalTable-tr--- -odd" style={[undefined]}>
+                              <div className="rt-tr AnalyticalTable-tr--- -odd" role="row" style={[undefined]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     Fra
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     40
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     MAR
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     28
                                   </div>
                                 </TdComponent>
@@ -282,27 +282,27 @@
                             </TrComponent>
                           </div>
                         </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="Table-tr--- -even" style={[undefined]}>
-                              <div className="rt-tr Table-tr--- -even" role="row" style={[undefined]}>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="AnalyticalTable-tr--- -even" style={[undefined]}>
+                              <div className="rt-tr AnalyticalTable-tr--- -even" role="row" style={[undefined]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     bla
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     20
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     Nei
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     50
                                   </div>
                                 </TdComponent>
@@ -310,12 +310,12 @@
                             </TrComponent>
                           </div>
                         </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -odd Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -odd Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -odd AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -323,8 +323,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -332,8 +332,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -341,52 +341,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                              </div>
-                            </TrComponent>
-                          </div>
-                        </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -even Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -even Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -398,12 +354,12 @@
                             </TrComponent>
                           </div>
                         </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -odd Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -odd Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -even AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -411,8 +367,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -420,8 +376,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -429,52 +385,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                              </div>
-                            </TrComponent>
-                          </div>
-                        </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -even Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -even Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -486,12 +398,12 @@
                             </TrComponent>
                           </div>
                         </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -odd Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -odd Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -odd AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -499,8 +411,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -508,8 +420,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -517,52 +429,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                              </div>
-                            </TrComponent>
-                          </div>
-                        </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -even Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -even Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -574,12 +442,12 @@
                             </TrComponent>
                           </div>
                         </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -odd Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -odd Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -even AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -587,8 +455,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -596,8 +464,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -605,8 +473,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -618,12 +486,12 @@
                             </TrComponent>
                           </div>
                         </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -even Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -even Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -odd AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -631,8 +499,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -640,8 +508,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -649,8 +517,140 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                              </div>
+                            </TrComponent>
+                          </div>
+                        </TrGroupComponent>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -even AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                              </div>
+                            </TrComponent>
+                          </div>
+                        </TrGroupComponent>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -odd AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                              </div>
+                            </TrComponent>
+                          </div>
+                        </TrGroupComponent>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -even AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -730,9 +730,9 @@
               </div>
             </ReactTable>
           </div>
-        </Table>
-      </WithStyles(Table)>
-    </Jss(WithStyles(Table))>
+        </AnalyticalTable>
+      </WithStyles(AnalyticalTable)>
+    </Jss(WithStyles(AnalyticalTable))>
   </ThemeProvider>
 </ThemeProvider>
 ```
@@ -742,9 +742,9 @@
 ```
 <ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(Table)) defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]}>
-      <WithStyles(Table) defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]} theme={{...}} classes={{...}}>
-        <Table defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(AnalyticalTable)) defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]}>
+      <WithStyles(AnalyticalTable) defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]} theme={{...}} classes={{...}}>
+        <AnalyticalTable defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]} theme={{...}} classes={{...}}>
           <div className={[undefined]} style={[undefined]} title={[undefined]}>
             <Jss(WithStyles(Component))>
               <WithStyles(Component) classes={{...}}>
@@ -763,10 +763,10 @@
             </Jss(WithStyles(Component))>
             <ReactTable data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={1} className="" showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: CustomLoadingComponent]} PaginationComponent={[Function: Jss]} PreviousComponent={[undefined]} NextComponent={[undefined]} ThComponent={[Function: Jss]} multiSort={false} filterable={false} filtered={{...}} defaultFilterMethod={[Function]} onFilteredChange={[Function]} sortable={true} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} defaultPage={0} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} onPageChange={[undefined]} onPageSizeChange={[undefined]} onSortedChange={[undefined]} onResizedChange={[undefined]} onExpandedChange={[undefined]} pivotBy={[undefined]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={{...}} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" pageJumpText="jump to page" rowsSelectorText="rows per page" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} PivotComponent={[undefined]} NoDataComponent={[Function: cmp]} ResizerComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]}>
               <div className="ReactTable" style={{...}}>
-                <TableComponent className="Table-table---" style={[undefined]}>
-                  <div className="rt-table Table-table---" role="grid" style={[undefined]}>
-                    <Thead className="-header Table-tHead---" style={{...}}>
-                      <div className="rt-thead -header Table-tHead---" style={{...}}>
+                <TableComponent className="AnalyticalTable-table---" style={[undefined]}>
+                  <div className="rt-table AnalyticalTable-table---" role="grid" style={[undefined]}>
+                    <Thead className="-header AnalyticalTable-tHead---" style={{...}}>
+                      <div className="rt-thead -header AnalyticalTable-tHead---" style={{...}}>
                         <TrComponent className={[undefined]} style={[undefined]}>
                           <div className="rt-tr" role="row" style={[undefined]}>
                             <Jss(WithStyles(ColumnHeader)) className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} defaultSortDesc={false} column={{...}} firstColumn={true} onFilteredChange={[Function]}>
@@ -989,29 +989,29 @@
                         </TrComponent>
                       </div>
                     </Thead>
-                    <Tbody className="Table-tBody---" style={{...}}>
-                      <div className="rt-tbody Table-tBody---" style={{...}}>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="Table-tr--- -odd" style={[undefined]}>
-                              <div className="rt-tr Table-tr--- -odd" role="row" style={[undefined]}>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                    <Tbody className="AnalyticalTable-tBody---" style={{...}}>
+                      <div className="rt-tbody AnalyticalTable-tBody---" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="AnalyticalTable-tr--- -odd" style={[undefined]}>
+                              <div className="rt-tr AnalyticalTable-tr--- -odd" role="row" style={[undefined]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     Fra
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     40
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     MAR
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}} onClick={[Function]}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}} onClick={[Function]}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}} onClick={[Function]}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}} onClick={[Function]}>
                                     28
                                   </div>
                                 </TdComponent>
@@ -1019,12 +1019,12 @@
                             </TrComponent>
                           </div>
                         </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -even Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -even Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -even AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1032,8 +1032,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1041,8 +1041,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1050,52 +1050,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                              </div>
-                            </TrComponent>
-                          </div>
-                        </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -odd Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -odd Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1107,12 +1063,12 @@
                             </TrComponent>
                           </div>
                         </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -even Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -even Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -odd AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1120,8 +1076,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1129,8 +1085,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1138,52 +1094,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                              </div>
-                            </TrComponent>
-                          </div>
-                        </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -odd Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -odd Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1195,12 +1107,12 @@
                             </TrComponent>
                           </div>
                         </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -even Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -even Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -even AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1208,8 +1120,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1217,8 +1129,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1226,52 +1138,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                              </div>
-                            </TrComponent>
-                          </div>
-                        </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -odd Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -odd Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1283,12 +1151,12 @@
                             </TrComponent>
                           </div>
                         </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -even Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -even Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -odd AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1296,8 +1164,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1305,8 +1173,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1314,52 +1182,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                              </div>
-                            </TrComponent>
-                          </div>
-                        </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -odd Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -odd Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
-                                    <PadRowComponent>
-                                      <span>
-                                         
-                                      </span>
-                                    </PadRowComponent>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1371,12 +1195,12 @@
                             </TrComponent>
                           </div>
                         </TrGroupComponent>
-                        <TrGroupComponent className="Table-trGroup---">
-                          <div className="rt-tr-group Table-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -even Table-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -even Table-tr---" role="row" style={{...}}>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -even AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1384,8 +1208,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1393,8 +1217,8 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1402,8 +1226,184 @@
                                     </PadRowComponent>
                                   </div>
                                 </TdComponent>
-                                <TdComponent className="Table-td---" style={{...}}>
-                                  <div className="rt-td Table-td---" role="gridcell" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                              </div>
+                            </TrComponent>
+                          </div>
+                        </TrGroupComponent>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -odd AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                              </div>
+                            </TrComponent>
+                          </div>
+                        </TrGroupComponent>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -even AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                              </div>
+                            </TrComponent>
+                          </div>
+                        </TrGroupComponent>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -odd AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                              </div>
+                            </TrComponent>
+                          </div>
+                        </TrGroupComponent>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -even AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
                                     <PadRowComponent>
                                       <span>
                                          
@@ -1492,9 +1492,9 @@
               </div>
             </ReactTable>
           </div>
-        </Table>
-      </WithStyles(Table)>
-    </Jss(WithStyles(Table))>
+        </AnalyticalTable>
+      </WithStyles(AnalyticalTable)>
+    </Jss(WithStyles(AnalyticalTable))>
   </ThemeProvider>
 </ThemeProvider>
 ```

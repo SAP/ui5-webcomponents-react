@@ -1,10 +1,8 @@
 import React from 'react';
-import { Table } from './index';
+import { AnalyticalTable as Table } from './index';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { matchSnapshot } from 'chai-karma-snapshot';
 import { expect, use } from 'chai';
-import { StandardListItem } from '../../webComponents/StandardListItem';
-import generateData from './demo/generateData';
 
 const columns = [
   {

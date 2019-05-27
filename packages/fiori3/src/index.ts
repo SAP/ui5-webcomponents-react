@@ -5,6 +5,7 @@
 import { ActionSheet } from './lib/ActionSheet';
 import { AnalyticalCard } from './lib/AnalyticalCard';
 import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';
+import { AnalyticalTable } from './lib/AnalyticalTable';
 import { Avatar } from './lib/Avatar';
 import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
@@ -114,6 +115,7 @@ export {
   ActionSheet,
   AnalyticalCard,
   AnalyticalCardHeader,
+  AnalyticalTable,
   Avatar,
   AvatarShape,
   AvatarSize,

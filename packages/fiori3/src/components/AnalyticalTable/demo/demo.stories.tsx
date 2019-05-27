@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, number } from '@storybook/addon-knobs';
-import { Table } from '../index';
+import { AnalyticalTable as Table } from '../index';
 import generateData from './generateData';
 import { Title } from '../../../webComponents/Title';
 
