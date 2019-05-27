@@ -18,8 +18,7 @@ interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
 export class FilterBar extends PureComponent<FilterBarPropTypes> {
   static defaultProps = {
     children: '',
-    displayOnly: true,
-    renderSearch: true
+    displayOnly: true
   };
 
   state = {

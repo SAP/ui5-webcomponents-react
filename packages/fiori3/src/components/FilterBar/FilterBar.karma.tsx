@@ -7,18 +7,20 @@ import { VariantManagement } from '../../lib/VariantManagement';
 import { FilterItem } from '../../lib/FilterItem';
 import { FilterType } from '../../lib/FilterType';
 import { Switch } from '../../lib/Switch';
+import { Input } from '../../webComponents/Input';
 
 const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
 const filterItems = [{ text: 'Text 1', key: '1' }, { text: 'Text 2', key: '2' }];
 
 const renderVariants = () => <VariantManagement variantItems={variantItems} />;
+const renderSearch = () => <Input placeholder={'Search'} />;
 
 use(matchSnapshot);
 
 describe('FilterBar', () => {
   it('Render without crashing', () => {
     const wrapper = mountThemedComponent(
-      <FilterBar renderVariants={renderVariants}>
+      <FilterBar renderSearch={renderSearch} renderVariants={renderVariants}>
         <FilterItem
           // onChange={(e) => alert(e.getParameter('selectedItem').key)}
           filterItems={filterItems}
