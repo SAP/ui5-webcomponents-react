@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1-rc.2](https://github.com/SAP/fiori-for-react/compare/v0.2.1-rc.1...v0.2.1-rc.2) (2019-05-27)
+
+
+### Features
+
+* **FilterBar:** renderSearch function ([94b468e](https://github.com/SAP/fiori-for-react/commit/94b468e))
+
+
+### BREAKING CHANGES
+
+* **FilterBar:** replaced boolean value with render function
+
+
+
+
+
 ## [0.2.1-rc.1](https://github.com/SAP/fiori-for-react/compare/v0.2.1-rc.0...v0.2.1-rc.1) (2019-05-24)
 
 
