@@ -7,7 +7,7 @@ import { VariantManagement } from '../../lib/VariantManagement';
 import { FilterItem } from '../../lib/FilterItem';
 import { FilterType } from '../../lib/FilterType';
 import { Switch } from '../../lib/Switch';
-import { Input } from '../../webComponents/Input';
+import { Input } from '../../lib/Input';
 
 const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
 const filterItems = [{ text: 'Text 1', key: '1' }, { text: 'Text 2', key: '2' }];
