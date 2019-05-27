@@ -5,9 +5,9 @@
 ```
 <ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(FilterBar)) renderVariants={[Function: renderVariants]} displayOnly={true} renderSearch={true}>
-      <WithStyles(FilterBar) renderVariants={[Function: renderVariants]} displayOnly={true} renderSearch={true} theme={{...}} classes={{...}}>
-        <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} renderSearch={true} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(FilterBar)) renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]} displayOnly={true}>
+      <WithStyles(FilterBar) renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]} displayOnly={true} theme={{...}} classes={{...}}>
+        <FilterBar renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]} displayOnly={true} theme={{...}} classes={{...}}>
           <div className="FilterBar-outerContainer---">
             <div className="FilterBar-filterBarHeader---">
               <Jss(WithStyles(VariantManagement)) variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4">
@@ -72,11 +72,13 @@
                 </WithStyles(VariantManagement)>
               </Jss(WithStyles(VariantManagement))>
               <div className="FilterBar-vLine---">
+                 
                 <Input placeholder="Search" type="Text" value="" valueState="None">
                   <WithWebComponent theme={{...}} placeholder="Search" type="Text" value="" valueState="None">
                     <ui5-input placeholder="Search" type="Text" value="" value-state="None" class="sapUiSizeCompact" />
                   </WithWebComponent>
                 </Input>
+                 
               </div>
               <div className="FilterBar-headerRowRight---">
                 <Button onPress={[Function]} type="Transparent" icon={{...}} activeIcon={{...}}>
@@ -160,9 +162,9 @@
 ```
 <ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(FilterBar)) renderVariants={[Function: renderVariants]} displayOnly={true} renderSearch={true}>
-      <WithStyles(FilterBar) renderVariants={[Function: renderVariants]} displayOnly={true} renderSearch={true} theme={{...}} classes={{...}}>
-        <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} renderSearch={true} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(FilterBar)) renderVariants={[Function: renderVariants]} displayOnly={true}>
+      <WithStyles(FilterBar) renderVariants={[Function: renderVariants]} displayOnly={true} theme={{...}} classes={{...}}>
+        <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} theme={{...}} classes={{...}}>
           <div className="FilterBar-outerContainer---">
             <div className="FilterBar-filterBarHeader---">
               <Jss(WithStyles(VariantManagement)) variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4">
@@ -226,13 +228,6 @@
                   </VariantManagement>
                 </WithStyles(VariantManagement)>
               </Jss(WithStyles(VariantManagement))>
-              <div className="FilterBar-vLine---">
-                <Input placeholder="Search" type="Text" value="" valueState="None">
-                  <WithWebComponent theme={{...}} placeholder="Search" type="Text" value="" valueState="None">
-                    <ui5-input placeholder="Search" type="Text" value="" value-state="None" class="sapUiSizeCompact" />
-                  </WithWebComponent>
-                </Input>
-              </div>
               <div className="FilterBar-headerRowRight---">
                 <Button onPress={[Function]} type="Transparent" icon={{...}} activeIcon={{...}}>
                   <WithWebComponent theme={{...}} onPress={[Function]} type="Transparent" icon={{...}} activeIcon={{...}}>
@@ -341,9 +336,9 @@
 ```
 <ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(FilterBar)) renderVariants={[Function: renderVariants]} displayOnly={true} renderSearch={true}>
-      <WithStyles(FilterBar) renderVariants={[Function: renderVariants]} displayOnly={true} renderSearch={true} theme={{...}} classes={{...}}>
-        <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} renderSearch={true} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(FilterBar)) renderVariants={[Function: renderVariants]} displayOnly={true}>
+      <WithStyles(FilterBar) renderVariants={[Function: renderVariants]} displayOnly={true} theme={{...}} classes={{...}}>
+        <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} theme={{...}} classes={{...}}>
           <div className="FilterBar-outerContainer---">
             <div className="FilterBar-filterBarHeader---">
               <Jss(WithStyles(VariantManagement)) variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4">
@@ -407,13 +402,6 @@
                   </VariantManagement>
                 </WithStyles(VariantManagement)>
               </Jss(WithStyles(VariantManagement))>
-              <div className="FilterBar-vLine---">
-                <Input placeholder="Search" type="Text" value="" valueState="None">
-                  <WithWebComponent theme={{...}} placeholder="Search" type="Text" value="" valueState="None">
-                    <ui5-input placeholder="Search" type="Text" value="" value-state="None" class="sapUiSizeCompact" />
-                  </WithWebComponent>
-                </Input>
-              </div>
               <div className="FilterBar-headerRowRight---">
                 <Button onPress={[Function]} type="Transparent" icon={{...}} activeIcon={{...}}>
                   <WithWebComponent theme={{...}} onPress={[Function]} type="Transparent" icon={{...}} activeIcon={{...}}>
