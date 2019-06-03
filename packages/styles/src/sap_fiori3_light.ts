@@ -225,7 +225,7 @@ export const sapUiListSelectionBackgroundColor = '#e5f0fa';
 /** The background color of lists. */
 export const sapUiListBackground = '#ffffff';
 /** The background color of the column header area of lists. */
-export const sapUiListHeaderBackground = HSLColor.of(sapUiListBackground).darken(5);
+export const sapUiListHeaderBackground = HSLColor.of(sapUiListBackground).darken(5).hsl;
 /** The background color of lists on hover. */
 export const sapUiListHoverBackground = '#fafafa';
 /** The color of the surface of a scrollbar. */
