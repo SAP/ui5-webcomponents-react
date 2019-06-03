@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, number } from '@storybook/addon-knobs';
-import { AnalyticalTable as Table } from '../index';
+import { AnalyticalTable } from '../index';
 import generateData from './generateData';
 import { Title } from '../../../webComponents/Title';
 
@@ -50,7 +50,7 @@ const data = generateData(20);
 
 function renderStory() {
   return (
-    <Table
+    <AnalyticalTable
       title="Table Title"
       data={data}
       columns={columns}
@@ -69,7 +69,7 @@ function witCroppedPopup() {
   return (
     <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
       <div style={{ width: '400px' }}>
-        <Table
+        <AnalyticalTable
           title="Table Title"
           data={data}
           columns={columns}
@@ -88,7 +88,7 @@ function witCroppedPopup() {
 
 const tableWithExtension = () => {
   return (
-    <Table
+    <AnalyticalTable
       data={data}
       columns={columns}
       alternateRowColors={boolean('alternateRowColors', false)}
@@ -104,7 +104,7 @@ const tableWithExtension = () => {
 
 const tableWithCustomTitle = () => {
   return (
-    <Table
+    <AnalyticalTable
       title={<Title>Test 123</Title>}
       data={data}
       columns={columns}

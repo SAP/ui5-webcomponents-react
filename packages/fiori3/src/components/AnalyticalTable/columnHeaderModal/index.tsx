@@ -1,9 +1,8 @@
 import React, { Component, ReactNode } from 'react';
-import { ResponsivePopover } from '../../ResponsivePopover';
-import { List } from '../../../webComponents/List';
-import { StandardListItem } from '../../../webComponents/StandardListItem';
+import { ResponsivePopover } from '../../../lib/ResponsivePopover';
+import { List } from '../../../lib/List';
+import { StandardListItem } from '../../../lib/StandardListItem';
 import { ClassProps } from '../../../interfaces/ClassProps';
-import { Input } from '../../../webComponents/Input';
 import { ColumnType } from '../columnHeader';
 import { Event } from '@fiori-for-react/utils';
 import { withStyles } from '@fiori-for-react/styles';

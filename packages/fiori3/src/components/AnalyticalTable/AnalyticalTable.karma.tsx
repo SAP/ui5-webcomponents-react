@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnalyticalTable as Table } from './index';
+import { AnalyticalTable } from './index';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { matchSnapshot } from 'chai-karma-snapshot';
 import { expect, use } from 'chai';
@@ -45,8 +45,12 @@ const data = [
 use(matchSnapshot);
 
 describe('AnalyticalTable', () => {
-  it('with Columns', () => {
-    const wrapper = mountThemedComponent(<Table showPagination data={data} title={'Test'} columns={columns} />);
+  it('test Asc desc', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable showPagination data={data} title={'Test'} columns={columns} />
+    );
+
+    // test asc and desc function inside the popover element
 
     let component = wrapper
       .find('ui5-li')
@@ -66,8 +70,10 @@ describe('AnalyticalTable', () => {
   });
   it('pagination', () => {
     const wrapper = mountThemedComponent(
-      <Table defaultPageSize={1} showPagination data={data} title={'Test'} columns={columns} />
+      <AnalyticalTable defaultPageSize={1} showPagination data={data} title={'Test'} columns={columns} />
     );
+
+    // test the right arrow of the pagination
 
     let component = wrapper
       .find('ui5-link')
@@ -76,6 +82,7 @@ describe('AnalyticalTable', () => {
     // @ts-ignore
     component.onclick({});
 
+    // test the right page number link of the pagination
     component = wrapper
       .find('ui5-link')
       .at(2)
@@ -83,6 +90,7 @@ describe('AnalyticalTable', () => {
     // @ts-ignore
     component.onclick({});
 
+    // test the left page number link of the pagination
     component = wrapper
       .find('ui5-link')
       .at(1)
@@ -90,6 +98,7 @@ describe('AnalyticalTable', () => {
     // @ts-ignore
     component.onclick({});
 
+    // test the left arrow of the pagination
     component = wrapper
       .find('ui5-link')
       .at(0)

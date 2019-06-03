@@ -1,7 +1,7 @@
 import React, { Component, FC, Fragment } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
-import { Label } from '../../../webComponents/Label';
-import { Link } from '../../../webComponents/Link';
+import { Label } from '../../../lib/Label';
+import { Link } from '../../../lib/Link';
 import { ContentDensity } from '../../../enums/ContentDensity';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { withStyles } from '@fiori-for-react/styles';

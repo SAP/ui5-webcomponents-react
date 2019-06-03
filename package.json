@@ -142,6 +142,6 @@
     ]
   },
   "dependencies": {
-    "react-table": "latest"
+    "react-table": "6.10.0"
   }
 }
