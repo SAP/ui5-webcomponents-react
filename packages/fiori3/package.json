@@ -18,7 +18,7 @@
   "dependencies": {
     "@fiori-for-react/styles": "0.2.1-rc.2",
     "@fiori-for-react/utils": "0.2.1-rc.2",
-    "@ui5/webcomponents": "0.11.0",
+    "@ui5/webcomponents": "0.11.1",
     "core-js": "^2.6.4",
     "react-scroll": "^1.7.11",
     "react-toastify": "^5.0.1"
