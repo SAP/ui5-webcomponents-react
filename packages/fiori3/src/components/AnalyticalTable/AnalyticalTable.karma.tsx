@@ -50,8 +50,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable showPagination data={data} title={'Test'} columns={columns} />
     );
 
-    // test asc and desc function inside the popover element
-
+    // test asc function inside the popover element
     let component = wrapper
       .find('ui5-li')
       .at(1)
@@ -59,6 +58,7 @@ describe('AnalyticalTable', () => {
     // @ts-ignore
     component.onclick({});
 
+    // test desc function inside the popover element
     component = wrapper
       .find('ui5-li')
       .at(0)
