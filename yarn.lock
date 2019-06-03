@@ -2499,10 +2499,10 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"
   integrity sha512-2Y8uPt0/jwjhQ6EiluT0XCri1Dbplr0ZxfFXUz+ye13gaqE8u5gL5ppao1JrUYr9cIip5S6MvQzBS7Kke7U9VA==
 
-"@types/chart.js@^2.7.51":
-  version "2.7.52"
-  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.7.52.tgz#30a12c838fa8909ea76918afeaaf48069d18b2dc"
-  integrity sha512-h4Md9c0FYPoqHyPeo3sG+wBIDFGz6GubulKUopsmFkSSW2ieyI2phjlj+FjqzTwhrWwR9dbw/HlCW3axj+tWug==
+"@types/chart.js@^2.7.53":
+  version "2.7.53"
+  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.7.53.tgz#bda97377b2d364514f041ae509440bdf1161d7f6"
+  integrity sha512-z4j5PWjQff3qGF+5nJIegI5b7drtGA6+XAxoAOINZYkkUuwlmBvjbGtruUAugbaxQkLcCklKZ88dZaPSnFNggg==
 
 "@types/cheerio@*":
   version "0.22.11"
@@ -2511,10 +2511,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/enzyme@^3.9.1":
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.9.1.tgz#3a0ce07e30066dbc26cd3474c8e680af2d249e26"
-  integrity sha512-CasnOP73BFE3/5JvGkod+oQtGOD1+CVWz9BV2iAqDFJ+sofL5gTiizSr8ZM3lpDY27ptC8yjAdrUCdv8diKKqw==
+"@types/enzyme@^3.9.3":
+  version "3.9.3"
+  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.9.3.tgz#d1029c0edd353d7b00f3924803eb88216460beed"
+  integrity sha512-jDKoZiiMA3lGO3skSO7dfqEHNvmiTLLV+PHD9EBQVlJANJvpY6qq1zzjRI24ZOtG7F+CS7BVWDXKewRmN8PjHQ==
   dependencies:
     "@types/cheerio" "*"
     "@types/react" "*"
@@ -2557,17 +2557,17 @@
   resolved "https://registry.yarnpkg.com/@types/jest-diff/-/jest-diff-20.0.1.tgz#35cc15b9c4f30a18ef21852e255fdb02f6d59b89"
   integrity sha512-yALhelO3i0hqZwhjtcr6dYyaLoCHbAMshwtj6cGxTvHZAKXHsYGdff6E8EPw3xLKY0ELUTQ69Q1rQiJENnccMA==
 
-"@types/jest@^24.0.12":
-  version "24.0.12"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.12.tgz#0553dd0a5ac744e7dc4e8700da6d3baedbde3e8f"
-  integrity sha512-60sjqMhat7i7XntZckcSGV8iREJyXXI6yFHZkSZvCPUeOnEJ/VP1rU/WpEWQ56mvoh8NhC+sfKAuJRTyGtCOow==
+"@types/jest@^24.0.13":
+  version "24.0.13"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.13.tgz#10f50b64cb05fb02411fbba49e9042a3a11da3f9"
+  integrity sha512-3m6RPnO35r7Dg+uMLj1+xfZaOgIHHHut61djNjzwExXN4/Pm9has9C6I1KMYSfz7mahDhWUOVg4HW/nZdv5Pww==
   dependencies:
     "@types/jest-diff" "*"
 
-"@types/mocha@^5.2.6":
-  version "5.2.6"
-  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.6.tgz#b8622d50557dd155e9f2f634b7d68fd38de5e94b"
-  integrity sha512-1axi39YdtBI7z957vdqXI4Ac25e7YihYQtJa+Clnxg1zTJEaIRbndt71O3sP4GAMgiAm0pY26/b9BrY4MR/PMw==
+"@types/mocha@^5.2.7":
+  version "5.2.7"
+  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.7.tgz#315d570ccb56c53452ff8638738df60726d5b6ea"
+  integrity sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==
 
 "@types/modernizr@^3.5.3":
   version "3.5.3"
@@ -2606,10 +2606,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.8.17", "@types/react@^16.8.17":
-  version "16.8.17"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.17.tgz#f287b76a5badb93bc9aa3f54521a3eb53d6c2374"
-  integrity sha512-pln3mgc6VfkNg92WXODul/ONo140huK9OMsx62GlBlZ2lvjNK86PQJhYMPLO1i66aF5O9OPyZefogvNltBIszA==
+"@types/react@*", "@types/react@16.8.19", "@types/react@^16.8.19":
+  version "16.8.19"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.19.tgz#629154ef05e2e1985cdde94477deefd823ad9be3"
+  integrity sha512-QzEzjrd1zFzY9cDlbIiFvdr+YUmefuuRYrPxmkwG0UQv5XF35gFIi7a95m1bNVcFU0VimxSZ5QVGSiBmlggQXQ==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -2621,10 +2621,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/sinon@^7.0.11":
-  version "7.0.11"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-7.0.11.tgz#6f28f005a36e779b7db0f1359b9fb9eef72aae88"
-  integrity sha512-6ee09Ugx6GyEr0opUIakmxIWFNmqYPjkqa3/BuxCBokA0klsOLPgMD5K4q40lH7/yZVuJVzOfQpd7pipwjngkQ==
+"@types/sinon@^7.0.12":
+  version "7.0.12"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-7.0.12.tgz#18412939ae45b225bd38715a25c1040cbad80f42"
+  integrity sha512-fo0MWpVPSUrnZZhp9wyu+hhI3VJ9+Jhs+PWrokBTg3d2ryNPDOAWF1csIhQuYWBTn7KdZzXpRgpX2o6cwOlPWg==
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -2671,28 +2671,28 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.12.tgz#45dd1d0638e8c8f153e87d296907659296873916"
   integrity sha512-SOhuU4wNBxhhTHxYaiG5NY4HBhDIDnJF60GU+2LqHAdKKer86//e4yg69aENCtQ04n0ovz+tq2YPME5t5yp4pw==
 
-"@ui5/webcomponents-base@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-0.11.0.tgz#810c37b255d6f725605169cb24f3a1158a27e166"
-  integrity sha512-IVzgXzUNEq8jsWOnWWBdB4xY3Me+awXBpmNvubkgP4rrLTrCZ5qKUZXzSZGrMKiQQKJ1WrdcLbXEc1XOTam2Bw==
+"@ui5/webcomponents-base@0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-0.11.1.tgz#461be944cc593d501532231a8542a1b95a18a935"
+  integrity sha512-yzKdeBny5PItT1jAOksfEahuJKFdje1bJ7ZDzG8m534SMBdycwifMxVsE1PlWt35jS7n+HEyIeCCzHmpvx3RPA==
   dependencies:
-    "@ui5/webcomponents-core" "0.11.0"
+    "@ui5/webcomponents-core" "0.11.1"
     lit-html "^1.0.0"
     regenerator-runtime "0.12.1"
     url-search-params-polyfill "^5.0.0"
 
-"@ui5/webcomponents-core@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-core/-/webcomponents-core-0.11.0.tgz#97aa99155d8ae50e344ef5bb99b263542e9bed64"
-  integrity sha512-akgKnF2s2mM4yQmjwYX3GVbddChL8+Z2JiJrdctxoGaSbTJXw7I/SgP1ZYq6VuZ5k+mOQrYm5jMiS0YCz3bzDg==
+"@ui5/webcomponents-core@0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-core/-/webcomponents-core-0.11.1.tgz#fb494fb755656eae17e23fb88dd5edefccdac746"
+  integrity sha512-UajB+Q3ZfRtdJgEApg5MYrpQbAMJg7pxvfZrVbQFEjxmofoZueNTZaPjscOK4XWfeajtdAtBKYE9963p94yB8A==
 
-"@ui5/webcomponents@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents/-/webcomponents-0.11.0.tgz#ac012855bc6cf4df3ee8bc8f37bfb64aea1f4aa9"
-  integrity sha512-a30Zy7oGHZ0DAxVVRoQdkdGlhDLMLyZjsK6JqrU8mpE2eYlP1wK4mj1PxwTy0v3FXm9r8gl/M99TB2DxVVI6BQ==
+"@ui5/webcomponents@0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents/-/webcomponents-0.11.1.tgz#2d42294578d75cc201ae479a53a250143d255398"
+  integrity sha512-yFjvGBpbUwmjhHyF0MO58VRZYSqBJ9JQySJaGP+ClFxh+KaWPtiTasana9/fFNMQhqEsFI7Y9B7fTBPvjRp4MQ==
   dependencies:
-    "@ui5/webcomponents-base" "0.11.0"
-    "@ui5/webcomponents-core" "0.11.0"
+    "@ui5/webcomponents-base" "0.11.1"
+    "@ui5/webcomponents-core" "0.11.1"
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"

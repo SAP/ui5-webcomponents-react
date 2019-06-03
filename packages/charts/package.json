@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "private": false,
   "devDependencies": {
-    "@types/chart.js": "^2.7.51"
+    "@types/chart.js": "^2.7.53"
   },
   "dependencies": {
     "@fiori-for-react/styles": "0.2.1-rc.2",
