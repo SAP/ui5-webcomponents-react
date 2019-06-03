@@ -1,6 +1,6 @@
 {
   "name": "@fiori-for-react/utils",
-  "version": "0.2.1-rc.2",
+  "version": "0.2.1-rc.3",
   "description": "Utils for fiori-for-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",

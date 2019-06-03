@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1-rc.3](https://github.com/SAP/fiori-for-react/packages/charts/compare/v0.2.1-rc.2...v0.2.1-rc.3) (2019-06-03)
+
+**Note:** Version bump only for package @fiori-for-react/charts
+
+
+
+
+
 ## [0.2.1-rc.2](https://github.com/SAP/fiori-for-react/packages/charts/compare/v0.2.1-rc.1...v0.2.1-rc.2) (2019-05-27)
 
 **Note:** Version bump only for package @fiori-for-react/charts
