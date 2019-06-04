@@ -2,7 +2,7 @@ import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { withStyles } from '@fiori-for-react/styles';
-import { Event, isNumeric, StyleClassHelper } from '@fiori-for-react/utils';
+import { Event, StyleClassHelper } from '@fiori-for-react/utils';
 import React, {
   Children,
   cloneElement,
@@ -10,13 +10,13 @@ import React, {
   PureComponent,
   ReactElement,
   ReactNode,
-  ReactNodeArray,
-  RefObject
+  ReactNodeArray
 } from 'react';
 import { scroller } from 'react-scroll';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchor } from './ObjectPageAnchor';
+import { Button } from '../../lib/Button';
 
 const objectPageContentStyles = ({ parameters }: JSSTheme) => ({
   sectionsContainer: {
@@ -41,10 +41,10 @@ const objectPageContentStyles = ({ parameters }: JSSTheme) => ({
 });
 
 const ObjectPageContent = withStyles(objectPageContentStyles)((props) => {
-  const { children, classes, getFillerDivDomRef, handleScroll } = props;
+  const { children, classes, getFillerDivDomRef } = props;
 
   return (
-    <section onScroll={handleScroll} id="ObjectPageSections" className={classes.sectionsContainer}>
+    <section id="ObjectPageSections" className={classes.sectionsContainer}>
       {children}
       <div ref={getFillerDivDomRef} />
     </section>
@@ -62,7 +62,7 @@ export interface ObjectPagePropTypes extends Fiori3CommonProps {
   mode?: ObjectPageMode;
   selectedSectionId?: string;
   onSelectedSectionChanged?: (event: Event) => void;
-  hideHeaderOnScroll?: boolean;
+  showHideHeaderButton?: boolean;
 }
 
 interface ObjectPageInternalProps extends ObjectPagePropTypes, ClassProps {}
@@ -72,6 +72,7 @@ interface ObjectPageState {
   prevProps: {
     selectedSectionId: string;
   };
+  showHeader: boolean;
 }
 
 @withStyles(styles)
@@ -85,7 +86,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
     renderHeaderContent: null,
     mode: ObjectPageMode.Default,
     onSelectedSectionChanged: () => {},
-    hideHeaderOnScroll: true
+    showHideHeaderButton: false
   };
 
   private objectPage: HTMLElement;
@@ -111,7 +112,8 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
     selectedSectionIndex: 0,
     prevProps: {
       selectedSectionId: ''
-    }
+    },
+    showHeader: true
   };
 
   private getFillerDivDomRef = (ref) => {
@@ -130,35 +132,6 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
       }
     }
   }
-
-  private currentScrollPosition = 0;
-  private scrollDown = false;
-  private objectPageHeaderContent: RefObject<HTMLDivElement> = createRef();
-
-  private handleScroll = (e) => {
-    if (this.props.hideHeaderOnScroll) {
-      if (this.currentScrollPosition - e.target.scrollTop > 0) {
-        this.objectPageHeaderContent.current.style.maxHeight = '500px';
-        console.log('scrollUp');
-      } else {
-        this.objectPageHeaderContent.current.style.maxHeight = '0px';
-        console.log('scrollDown');
-      }
-      this.currentScrollPosition = e.target.scrollTop;
-      this.adjustDummyDivHeight();
-      // requestAnimationFrame(() => {
-      //   // const newHeight = this.objectPageHeaderContent.current.offsetHeight - currentScrollPos;
-      //   // if (newHeight < 0) {
-      //   //   // console.log(true)
-      //   //   (this.objectPage.querySelector('section#sectionsContentHeader') as HTMLElement).style.display = '';
-      //   //   // this.showObjectPageHeaderAnchor = true;t
-      //   // } else {
-      //   //   (this.objectPage.querySelector('section#sectionsContentHeader') as HTMLElement).style.display = 'none';
-      //   //
-      //   // }
-      // });
-    }
-  };
 
   componentDidUpdate(
     prevProps: Readonly<ObjectPagePropTypes>,
@@ -280,18 +253,31 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
             </span>
           </header>
           {/* Header Content */}
-          <div ref={this.objectPageHeaderContent} className={classes.headerContent}>
-            {image && (
-              <span
-                className={classes.headerImage}
-                style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
-              >
-                <img src={image} style={{ width: '100%', height: '100%' }} />
-              </span>
+          <div className={classes.headerContentWrapper}>
+            {this.state.showHeader && (
+              <div className={classes.headerContent}>
+                {image && (
+                  <span
+                    className={classes.headerImage}
+                    style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
+                  >
+                    <img src={image} style={{ width: '100%', height: '100%' }} />
+                  </span>
+                )}
+                {renderHeaderContent && <span className={classes.headerCustomContent}>{renderHeaderContent()}</span>}
+              </div>
             )}
-            {renderHeaderContent && <span className={classes.headerCustomContent}>{renderHeaderContent()}</span>}
+            {this.props.showHideHeaderButton && (
+              <div className={classes.sectionContent}>
+                <Button
+                  style={{ position: 'absolute', transform: 'translateX(-50%)' }}
+                  icon={this.state.showHeader ? 'sap-icon://navigation-up-arrow' : 'sap-icon://navigation-down-arrow'}
+                  onPress={this.changeHeader}
+                />
+              </div>
+            )}
           </div>
-
+          {/*<div className={classes.sectionContent}>*/}
           <section className={classes.anchorBar} role="navigation">
             {Children.map(children, (section, index) => (
               <ObjectPageAnchor
@@ -306,14 +292,17 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
               />
             ))}
           </section>
+          {/*</div>*/}
         </header>
 
-        <ObjectPageContent handleScroll={this.handleScroll} getFillerDivDomRef={this.getFillerDivDomRef}>
-          {content}
-        </ObjectPageContent>
+        <ObjectPageContent getFillerDivDomRef={this.getFillerDivDomRef}>{content}</ObjectPageContent>
       </div>
     );
   }
+
+  private changeHeader = () => {
+    this.setState({ showHeader: !this.state.showHeader });
+  };
 
   private handleOnSubSectionSelected = (index) => (e) => {
     if (this.props.mode === ObjectPageMode.IconTabBar) {

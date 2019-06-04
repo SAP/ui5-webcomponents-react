@@ -29,6 +29,7 @@ const renderComponent = (mode = ObjectPageMode.Default) => (
     subTitle="Sub Title"
     headerActions={[<Button key="Actions">Action</Button>]}
     renderHeaderContent={renderHeaderContent}
+    showHideHeaderButton
     mode={mode}
   >
     <ObjectPageSection title="Test 1" id="1">

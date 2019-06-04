@@ -40,6 +40,7 @@ const renderDemo = () => {
       renderHeaderContent={renderHeaderContent}
       mode={select('mode', ObjectPageMode, ObjectPageMode.Default)}
       imageShapeCircle={boolean('imageShapeCircle', false)}
+      showHideHeaderButton={boolean('showHideHeaderButton', true)}
       selectedSectionId={text('selectedSectionId', '1')}
       onSelectedSectionChanged={action('onSelectedSectionChanged')}
       style={{ height: '700px' }}
