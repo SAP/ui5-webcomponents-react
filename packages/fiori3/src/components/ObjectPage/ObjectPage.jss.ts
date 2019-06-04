@@ -76,6 +76,10 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
       }
     },
     '& $headerContent': {
+      transition: 'max-height 0.5s',
+      maxHeight: '500px',
+      overflow: 'hidden',
+
       paddingLeft: '2rem',
       position: 'relative',
       '& $headerImage': {
@@ -156,7 +160,8 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
   headerCustomContent: {},
   anchorButtonContainer: {},
   anchorButton: {},
-  active: {}
+  active: {},
+  hiddenHeader: {}
 });
 
 export default styles;

@@ -2,8 +2,17 @@ import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { withStyles } from '@fiori-for-react/styles';
-import { Event, StyleClassHelper } from '@fiori-for-react/utils';
-import React, { Children, cloneElement, PureComponent, ReactElement, ReactNode, ReactNodeArray } from 'react';
+import { Event, isNumeric, StyleClassHelper } from '@fiori-for-react/utils';
+import React, {
+  Children,
+  cloneElement,
+  createRef,
+  PureComponent,
+  ReactElement,
+  ReactNode,
+  ReactNodeArray,
+  RefObject
+} from 'react';
 import { scroller } from 'react-scroll';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import styles from './ObjectPage.jss';
@@ -32,10 +41,10 @@ const objectPageContentStyles = ({ parameters }: JSSTheme) => ({
 });
 
 const ObjectPageContent = withStyles(objectPageContentStyles)((props) => {
-  const { children, classes, getFillerDivDomRef } = props;
+  const { children, classes, getFillerDivDomRef, handleScroll } = props;
 
   return (
-    <section id="ObjectPageSections" className={classes.sectionsContainer}>
+    <section onScroll={handleScroll} id="ObjectPageSections" className={classes.sectionsContainer}>
       {children}
       <div ref={getFillerDivDomRef} />
     </section>
@@ -53,6 +62,7 @@ export interface ObjectPagePropTypes extends Fiori3CommonProps {
   mode?: ObjectPageMode;
   selectedSectionId?: string;
   onSelectedSectionChanged?: (event: Event) => void;
+  hideHeaderOnScroll?: boolean;
 }
 
 interface ObjectPageInternalProps extends ObjectPagePropTypes, ClassProps {}
@@ -74,7 +84,8 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
     headerActions: [],
     renderHeaderContent: null,
     mode: ObjectPageMode.Default,
-    onSelectedSectionChanged: () => {}
+    onSelectedSectionChanged: () => {},
+    hideHeaderOnScroll: true
   };
 
   private objectPage: HTMLElement;
@@ -119,6 +130,35 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
       }
     }
   }
+
+  private currentScrollPosition = 0;
+  private scrollDown = false;
+  private objectPageHeaderContent: RefObject<HTMLDivElement> = createRef();
+
+  private handleScroll = (e) => {
+    if (this.props.hideHeaderOnScroll) {
+      if (this.currentScrollPosition - e.target.scrollTop > 0) {
+        this.objectPageHeaderContent.current.style.maxHeight = '500px';
+        console.log('scrollUp');
+      } else {
+        this.objectPageHeaderContent.current.style.maxHeight = '0px';
+        console.log('scrollDown');
+      }
+      this.currentScrollPosition = e.target.scrollTop;
+      this.adjustDummyDivHeight();
+      // requestAnimationFrame(() => {
+      //   // const newHeight = this.objectPageHeaderContent.current.offsetHeight - currentScrollPos;
+      //   // if (newHeight < 0) {
+      //   //   // console.log(true)
+      //   //   (this.objectPage.querySelector('section#sectionsContentHeader') as HTMLElement).style.display = '';
+      //   //   // this.showObjectPageHeaderAnchor = true;t
+      //   // } else {
+      //   //   (this.objectPage.querySelector('section#sectionsContentHeader') as HTMLElement).style.display = 'none';
+      //   //
+      //   // }
+      // });
+    }
+  };
 
   componentDidUpdate(
     prevProps: Readonly<ObjectPagePropTypes>,
@@ -240,7 +280,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
             </span>
           </header>
           {/* Header Content */}
-          <div className={classes.headerContent}>
+          <div ref={this.objectPageHeaderContent} className={classes.headerContent}>
             {image && (
               <span
                 className={classes.headerImage}
@@ -268,7 +308,9 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
           </section>
         </header>
 
-        <ObjectPageContent getFillerDivDomRef={this.getFillerDivDomRef}>{content}</ObjectPageContent>
+        <ObjectPageContent handleScroll={this.handleScroll} getFillerDivDomRef={this.getFillerDivDomRef}>
+          {content}
+        </ObjectPageContent>
       </div>
     );
   }
