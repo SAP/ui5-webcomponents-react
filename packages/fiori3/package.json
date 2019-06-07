@@ -1,6 +1,6 @@
 {
   "name": "@fiori-for-react/fiori3",
-  "version": "0.3.1-rc.0",
+  "version": "0.3.1-rc.1",
   "description": "Fiori 3 Components in React",
   "repository": "https://github.com/SAP/fiori-for-react/tree/master/packages/fiori3",
   "main": "index.cjs.js",
@@ -16,8 +16,8 @@
     "test:karma:update": "cross-env UPDATE=1 yarn run test:karma"
   },
   "dependencies": {
-    "@fiori-for-react/styles": "0.3.1-rc.0",
-    "@fiori-for-react/utils": "0.3.1-rc.0",
+    "@fiori-for-react/styles": "0.3.1-rc.1",
+    "@fiori-for-react/utils": "0.3.1-rc.1",
     "@ui5/webcomponents": "0.11.1",
     "core-js": "^2.6.4",
     "react-scroll": "^1.7.11",
