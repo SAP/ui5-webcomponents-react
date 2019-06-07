@@ -101,10 +101,10 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
       }
     }
   },
-  sectionContent: {
+  hideHeaderContent: {
     paddingTop: '0.5rem',
     marginBottom: '0.5rem',
-    boxShadow: `0 1px 0.5rem 0 rgba(0, 0, 0, 0.05), inset 0 -1px 0 0 ${parameters.sapUiButtonHoverBackground}`,
+    boxShadow: `inset 0 -1px 0 0 ${parameters.sapUiShellBorderColor}`,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'

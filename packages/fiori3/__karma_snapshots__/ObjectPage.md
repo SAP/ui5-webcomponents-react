@@ -70,7 +70,7 @@
                     </div>
                   </span>
                 </div>
-                <div className="ObjectPage-sectionContent---">
+                <div className="ObjectPage-hideHeaderContent---">
                   <Button style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default" activeIcon={{...}}>
                     <WithWebComponent theme={{...}} style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default" activeIcon={{...}}>
                       <ui5-button style={{...}} icon="sap-icon://navigation-up-arrow" type="Default" active-icon={{...}} class="sapUiSizeCompact" />
@@ -534,6 +534,7 @@
                     </div>
                   </span>
                 </div>
+                <div className="ObjectPage-hideHeaderContent---" />
               </div>
               <section className="ObjectPage-anchorBar---" role="navigation">
                 <ObjectPageAnchor section={{...}} index={0} mode="Default" selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
@@ -748,7 +749,7 @@
                     </div>
                   </span>
                 </div>
-                <div className="ObjectPage-sectionContent---">
+                <div className="ObjectPage-hideHeaderContent---">
                   <Button style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default" activeIcon={{...}}>
                     <WithWebComponent theme={{...}} style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default" activeIcon={{...}}>
                       <ui5-button style={{...}} icon="sap-icon://navigation-up-arrow" type="Default" active-icon={{...}} class="sapUiSizeCompact" />
@@ -976,7 +977,7 @@
 #### `Just Some Sections`
 
 ```
-<header class="ObjectPage-header---"><header class="ObjectPage-titleBar---"><span class="ObjectPage-container---"><h1 class="ObjectPage-title---"></h1><span class="ObjectPage-subTitle---"></span></span><span class="ObjectPage-actions---"></span></header><div><div class="ObjectPage-headerContent---"></div></div><section class="ObjectPage-anchorBar---" role="navigation"><div class="ObjectPage-anchorButtonContainer--- ObjectPage-iconTabModeSelected---"><ui5-button type="Transparent" class="sapUiSizeCompact ObjectPage-anchorButton---"></ui5-button></div><div class="ObjectPage-anchorButtonContainer---"><ui5-button type="Transparent" class="sapUiSizeCompact ObjectPage-anchorButton---"></ui5-button></div></section></header><section id="ObjectPageSections" class="Component-sectionsContainer---"><section id="ObjectPageSection-1" role="region"><div role="heading" class="ObjectPageSection-header---"><div class="ObjectPageSection-title--- ObjectPageSection-uppercase---"></div></div><div class="ObjectPageSection-sectionContent---"><div class="ObjectPageSection-sectionContentInner---">Test</div></div></section><div></div></section>
+<header class="ObjectPage-header---"><header class="ObjectPage-titleBar---"><span class="ObjectPage-container---"><h1 class="ObjectPage-title---"></h1><span class="ObjectPage-subTitle---"></span></span><span class="ObjectPage-actions---"></span></header><div><div class="ObjectPage-headerContent---"></div><div class="ObjectPage-hideHeaderContent---"></div></div><section class="ObjectPage-anchorBar---" role="navigation"><div class="ObjectPage-anchorButtonContainer--- ObjectPage-iconTabModeSelected---"><ui5-button type="Transparent" class="sapUiSizeCompact ObjectPage-anchorButton---"></ui5-button></div><div class="ObjectPage-anchorButtonContainer---"><ui5-button type="Transparent" class="sapUiSizeCompact ObjectPage-anchorButton---"></ui5-button></div></section></header><section id="ObjectPageSections" class="Component-sectionsContainer---"><section id="ObjectPageSection-1" role="region"><div role="heading" class="ObjectPageSection-header---"><div class="ObjectPageSection-title--- ObjectPageSection-uppercase---"></div></div><div class="ObjectPageSection-sectionContent---"><div class="ObjectPageSection-sectionContentInner---">Test</div></div></section><div></div></section>
 ```
 
 #### `Not crashing with 1 section`
@@ -998,6 +999,7 @@
               </header>
               <div className={[undefined]}>
                 <div className="ObjectPage-headerContent---" />
+                <div className="ObjectPage-hideHeaderContent---" />
               </div>
               <section className="ObjectPage-anchorBar---" role="navigation">
                 <ObjectPageAnchor section={{...}} index={0} mode="IconTabBar" selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
@@ -1063,6 +1065,7 @@
               </header>
               <div className={[undefined]}>
                 <div className="ObjectPage-headerContent---" />
+                <div className="ObjectPage-hideHeaderContent---" />
               </div>
               <section className="ObjectPage-anchorBar---" role="navigation" />
             </header>
@@ -1102,6 +1105,7 @@
               </header>
               <div className={[undefined]}>
                 <div className="ObjectPage-headerContent---" />
+                <div className="ObjectPage-hideHeaderContent---" />
               </div>
               <section className="ObjectPage-anchorBar---" role="navigation">
                 <ObjectPageAnchor section={{...}} index={0} mode="IconTabBar" selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
