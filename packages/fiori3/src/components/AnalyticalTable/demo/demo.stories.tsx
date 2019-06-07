@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, number } from '@storybook/addon-knobs';
-import { AnalyticalTable } from '../index';
+import { AnalyticalTable } from '../../../lib/AnalyticalTable';
 import generateData from './generateData';
-import { Title } from '../../../webComponents/Title';
+import { Title } from '../../../lib/Title';
 
 const columns = [
   {
@@ -65,7 +65,7 @@ function renderStory() {
   );
 }
 
-function witCroppedPopup() {
+function withCroppedPopup() {
   return (
     <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
       <div style={{ width: '400px' }}>
@@ -122,5 +122,5 @@ const tableWithCustomTitle = () => {
 storiesOf('F4R Components | AnalyticalTable', module)
   .add('Default', renderStory)
   .add('with Extension', tableWithExtension)
-  .add('with cropped Search/Filter Popup', witCroppedPopup)
+  .add('with cropped Search/Filter Popup', withCroppedPopup)
   .add('with Custom Title', tableWithCustomTitle);

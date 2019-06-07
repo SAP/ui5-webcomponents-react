@@ -6,13 +6,16 @@ import { ClassProps } from '../../../interfaces/ClassProps';
 import { ColumnType } from '../columnHeader';
 import { Event } from '@fiori-for-react/utils';
 import { withStyles } from '@fiori-for-react/styles';
-import { ListItemTypes, PlacementType, PopoverHorizontalAlign } from '@fiori-for-react/fiori3';
+import { ListItemTypes } from '../../../lib/ListItemTypes';
+import { PlacementType } from '../../../lib/PlacementType';
+import { PopoverHorizontalAlign } from '../../../lib/PopoverHorizontalAlign';
+import { JSSTheme } from '../../../interfaces/JSSTheme';
 
-const styles = () => ({
+const styles = ({ parameters }: JSSTheme) => ({
   modalRoot: {
     border: 'none',
     borderRadius: '0.25rem',
-    boxShadow: '0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.15)',
+    boxShadow: parameters.sapUiShadowLevel1,
     '&:focus': {
       outline: 'none'
     }

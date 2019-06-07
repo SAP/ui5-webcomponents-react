@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnalyticalTable } from './index';
+import { AnalyticalTable } from '../../lib/AnalyticalTable';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { matchSnapshot } from 'chai-karma-snapshot';
 import { expect, use } from 'chai';

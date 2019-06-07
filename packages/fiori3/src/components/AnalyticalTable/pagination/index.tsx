@@ -2,10 +2,10 @@ import React, { Component, FC, Fragment } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { Label } from '../../../lib/Label';
 import { Link } from '../../../lib/Link';
-import { ContentDensity } from '../../../enums/ContentDensity';
+import { ContentDensity } from '../../../lib/ContentDensity';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { withStyles } from '@fiori-for-react/styles';
-import { LinkType } from '@fiori-for-react/fiori3';
+import { LinkType } from '../../../lib/LinkType';
 
 enum NavigationModes {
   rightArrowPress,
@@ -76,7 +76,7 @@ const styles = ({ theme, parameters, contentDensity }: JSSTheme) => ({
 export interface PaginationProps {
   children: string;
   numItems: number;
-  onSelectionChange: (event: object) => null;
+  onSelectionChange: (event: object) => void;
 }
 
 interface PaginationPropsInternal extends PaginationProps, ClassProps {

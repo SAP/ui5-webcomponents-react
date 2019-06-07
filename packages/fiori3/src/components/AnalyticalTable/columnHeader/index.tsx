@@ -3,8 +3,7 @@ import { ClassProps } from '../../../interfaces/ClassProps';
 import { Icon } from '../../../lib/Icon';
 import { ColumnHeaderModal } from '../columnHeaderModal/index';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { StyleClassHelper } from '@fiori-for-react/utils';
-import { Event } from '@fiori-for-react/utils';
+import { Event, StyleClassHelper } from '@fiori-for-react/utils';
 import { fonts, withStyles } from '@fiori-for-react/styles';
 
 export interface ColumnType {

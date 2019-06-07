@@ -1,10 +1,10 @@
-import { VerticalAlign } from '../../enums/VerticalAlign';
-import { TextAlign } from '../../enums/TextAlign';
+import { VerticalAlign } from '../../lib/VerticalAlign';
+import { TextAlign } from '../../lib/TextAlign';
 import React, { Component, CSSProperties, ReactNode, ReactText } from 'react';
 import ReactTable from 'react-table';
-import '../../../../../node_modules/react-table/react-table.css';
+import 'react-table/react-table.css';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { BusyIndicator } from '../BusyIndicator';
+import { BusyIndicator } from '../../lib/BusyIndicator';
 import styles from './style/Table.jss';
 import { TitleBar } from './titleBar';
 import { Pagination } from './pagination';
