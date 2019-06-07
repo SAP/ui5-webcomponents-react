@@ -5,9 +5,9 @@
 ```
 <ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ObjectPage)) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
-      <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
-        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(ObjectPage)) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
+      <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
+        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
           <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -29,45 +29,54 @@
                   </Button>
                 </span>
               </header>
-              <div className="ObjectPage-headerContent---">
-                <span className="ObjectPage-headerCustomContent---">
-                  <div style={{...}}>
-                    <Link href="https://www.sap.com" target="" type="Default">
-                      <WithWebComponent theme={{...}} href="https://www.sap.com" target="" type="Default">
-                        <ui5-link href="https://www.sap.com" target="" type="Default" class="sapUiSizeCompact">
-                          www.myurl.com
-                        </ui5-link>
-                      </WithWebComponent>
-                    </Link>
-                    <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
-                            Address 1
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                    </Jss(WithStyles(Component))>
-                    <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
-                            Address 2
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                    </Jss(WithStyles(Component))>
-                    <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
-                            Address 3
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                    </Jss(WithStyles(Component))>
-                  </div>
-                </span>
+              <div className={[undefined]}>
+                <div className="ObjectPage-headerContent---">
+                  <span className="ObjectPage-headerCustomContent---">
+                    <div style={{...}}>
+                      <Link href="https://www.sap.com" target="" type="Default">
+                        <WithWebComponent theme={{...}} href="https://www.sap.com" target="" type="Default">
+                          <ui5-link href="https://www.sap.com" target="" type="Default" class="sapUiSizeCompact">
+                            www.myurl.com
+                          </ui5-link>
+                        </WithWebComponent>
+                      </Link>
+                      <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
+                        <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                          <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                            <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                              Address 1
+                            </span>
+                          </Component>
+                        </WithStyles(Component)>
+                      </Jss(WithStyles(Component))>
+                      <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
+                        <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                          <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                            <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                              Address 2
+                            </span>
+                          </Component>
+                        </WithStyles(Component)>
+                      </Jss(WithStyles(Component))>
+                      <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
+                        <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                          <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                            <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                              Address 3
+                            </span>
+                          </Component>
+                        </WithStyles(Component)>
+                      </Jss(WithStyles(Component))>
+                    </div>
+                  </span>
+                </div>
+                <div className="ObjectPage-hideHeaderContent---">
+                  <Button style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default" activeIcon={{...}}>
+                    <WithWebComponent theme={{...}} style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default" activeIcon={{...}}>
+                      <ui5-button style={{...}} icon="sap-icon://navigation-up-arrow" type="Default" active-icon={{...}} class="sapUiSizeCompact" />
+                    </WithWebComponent>
+                  </Button>
+                </div>
               </div>
               <section className="ObjectPage-anchorBar---" role="navigation">
                 <ObjectPageAnchor section={{...}} index={0} mode="Default" selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
@@ -460,9 +469,9 @@
 ```
 <ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ObjectPage)) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
-      <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
-        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(ObjectPage)) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
+      <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>
+        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>
           <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -484,45 +493,48 @@
                   </Button>
                 </span>
               </header>
-              <div className="ObjectPage-headerContent---">
-                <span className="ObjectPage-headerCustomContent---">
-                  <div style={{...}}>
-                    <Link href="https://www.sap.com" target="" type="Default">
-                      <WithWebComponent theme={{...}} href="https://www.sap.com" target="" type="Default">
-                        <ui5-link href="https://www.sap.com" target="" type="Default" class="sapUiSizeCompact">
-                          www.myurl.com
-                        </ui5-link>
-                      </WithWebComponent>
-                    </Link>
-                    <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
-                            Address 1
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                    </Jss(WithStyles(Component))>
-                    <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
-                            Address 2
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                    </Jss(WithStyles(Component))>
-                    <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
-                            Address 3
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                    </Jss(WithStyles(Component))>
-                  </div>
-                </span>
+              <div className={[undefined]}>
+                <div className="ObjectPage-headerContent---">
+                  <span className="ObjectPage-headerCustomContent---">
+                    <div style={{...}}>
+                      <Link href="https://www.sap.com" target="" type="Default">
+                        <WithWebComponent theme={{...}} href="https://www.sap.com" target="" type="Default">
+                          <ui5-link href="https://www.sap.com" target="" type="Default" class="sapUiSizeCompact">
+                            www.myurl.com
+                          </ui5-link>
+                        </WithWebComponent>
+                      </Link>
+                      <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
+                        <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                          <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                            <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                              Address 1
+                            </span>
+                          </Component>
+                        </WithStyles(Component)>
+                      </Jss(WithStyles(Component))>
+                      <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
+                        <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                          <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                            <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                              Address 2
+                            </span>
+                          </Component>
+                        </WithStyles(Component)>
+                      </Jss(WithStyles(Component))>
+                      <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
+                        <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                          <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                            <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                              Address 3
+                            </span>
+                          </Component>
+                        </WithStyles(Component)>
+                      </Jss(WithStyles(Component))>
+                    </div>
+                  </span>
+                </div>
+                <div className="ObjectPage-hideHeaderContent---" />
               </div>
               <section className="ObjectPage-anchorBar---" role="navigation">
                 <ObjectPageAnchor section={{...}} index={0} mode="Default" selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
@@ -672,9 +684,9 @@
 ```
 <ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ObjectPage)) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
-      <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
-        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(ObjectPage)) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
+      <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
+        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
           <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -696,45 +708,54 @@
                   </Button>
                 </span>
               </header>
-              <div className="ObjectPage-headerContent---">
-                <span className="ObjectPage-headerCustomContent---">
-                  <div style={{...}}>
-                    <Link href="https://www.sap.com" target="" type="Default">
-                      <WithWebComponent theme={{...}} href="https://www.sap.com" target="" type="Default">
-                        <ui5-link href="https://www.sap.com" target="" type="Default" class="sapUiSizeCompact">
-                          www.myurl.com
-                        </ui5-link>
-                      </WithWebComponent>
-                    </Link>
-                    <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
-                            Address 1
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                    </Jss(WithStyles(Component))>
-                    <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
-                            Address 2
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                    </Jss(WithStyles(Component))>
-                    <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
-                            Address 3
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                    </Jss(WithStyles(Component))>
-                  </div>
-                </span>
+              <div className={[undefined]}>
+                <div className="ObjectPage-headerContent---">
+                  <span className="ObjectPage-headerCustomContent---">
+                    <div style={{...}}>
+                      <Link href="https://www.sap.com" target="" type="Default">
+                        <WithWebComponent theme={{...}} href="https://www.sap.com" target="" type="Default">
+                          <ui5-link href="https://www.sap.com" target="" type="Default" class="sapUiSizeCompact">
+                            www.myurl.com
+                          </ui5-link>
+                        </WithWebComponent>
+                      </Link>
+                      <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
+                        <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                          <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                            <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                              Address 1
+                            </span>
+                          </Component>
+                        </WithStyles(Component)>
+                      </Jss(WithStyles(Component))>
+                      <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
+                        <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                          <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                            <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                              Address 2
+                            </span>
+                          </Component>
+                        </WithStyles(Component)>
+                      </Jss(WithStyles(Component))>
+                      <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
+                        <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                          <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+                            <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                              Address 3
+                            </span>
+                          </Component>
+                        </WithStyles(Component)>
+                      </Jss(WithStyles(Component))>
+                    </div>
+                  </span>
+                </div>
+                <div className="ObjectPage-hideHeaderContent---">
+                  <Button style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default" activeIcon={{...}}>
+                    <WithWebComponent theme={{...}} style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default" activeIcon={{...}}>
+                      <ui5-button style={{...}} icon="sap-icon://navigation-up-arrow" type="Default" active-icon={{...}} class="sapUiSizeCompact" />
+                    </WithWebComponent>
+                  </Button>
+                </div>
               </div>
               <section className="ObjectPage-anchorBar---" role="navigation">
                 <ObjectPageAnchor section={{...}} index={0} mode="IconTabBar" selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
@@ -956,7 +977,7 @@
 #### `Just Some Sections`
 
 ```
-<header class="ObjectPage-header---"><header class="ObjectPage-titleBar---"><span class="ObjectPage-container---"><h1 class="ObjectPage-title---"></h1><span class="ObjectPage-subTitle---"></span></span><span class="ObjectPage-actions---"></span></header><div class="ObjectPage-headerContent---"></div><section class="ObjectPage-anchorBar---" role="navigation"><div class="ObjectPage-anchorButtonContainer--- ObjectPage-iconTabModeSelected---"><ui5-button type="Transparent" class="sapUiSizeCompact ObjectPage-anchorButton---"></ui5-button></div><div class="ObjectPage-anchorButtonContainer---"><ui5-button type="Transparent" class="sapUiSizeCompact ObjectPage-anchorButton---"></ui5-button></div></section></header><section id="ObjectPageSections" class="Component-sectionsContainer---"><section id="ObjectPageSection-1" role="region"><div role="heading" class="ObjectPageSection-header---"><div class="ObjectPageSection-title--- ObjectPageSection-uppercase---"></div></div><div class="ObjectPageSection-sectionContent---"><div class="ObjectPageSection-sectionContentInner---">Test</div></div></section><div></div></section>
+<header class="ObjectPage-header---"><header class="ObjectPage-titleBar---"><span class="ObjectPage-container---"><h1 class="ObjectPage-title---"></h1><span class="ObjectPage-subTitle---"></span></span><span class="ObjectPage-actions---"></span></header><div><div class="ObjectPage-headerContent---"></div><div class="ObjectPage-hideHeaderContent---"></div></div><section class="ObjectPage-anchorBar---" role="navigation"><div class="ObjectPage-anchorButtonContainer--- ObjectPage-iconTabModeSelected---"><ui5-button type="Transparent" class="sapUiSizeCompact ObjectPage-anchorButton---"></ui5-button></div><div class="ObjectPage-anchorButtonContainer---"><ui5-button type="Transparent" class="sapUiSizeCompact ObjectPage-anchorButton---"></ui5-button></div></section></header><section id="ObjectPageSections" class="Component-sectionsContainer---"><section id="ObjectPageSection-1" role="region"><div role="heading" class="ObjectPageSection-header---"><div class="ObjectPageSection-title--- ObjectPageSection-uppercase---"></div></div><div class="ObjectPageSection-sectionContent---"><div class="ObjectPageSection-sectionContentInner---">Test</div></div></section><div></div></section>
 ```
 
 #### `Not crashing with 1 section`
@@ -964,9 +985,9 @@
 ```
 <ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ObjectPage)) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
-      <WithStyles(ObjectPage) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
-        <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(ObjectPage)) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
+      <WithStyles(ObjectPage) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>
+        <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>
           <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -976,7 +997,10 @@
                 </span>
                 <span className="ObjectPage-actions---" />
               </header>
-              <div className="ObjectPage-headerContent---" />
+              <div className={[undefined]}>
+                <div className="ObjectPage-headerContent---" />
+                <div className="ObjectPage-hideHeaderContent---" />
+              </div>
               <section className="ObjectPage-anchorBar---" role="navigation">
                 <ObjectPageAnchor section={{...}} index={0} mode="IconTabBar" selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <div className="ObjectPage-anchorButtonContainer--- ObjectPage-iconTabModeSelected---">
@@ -1027,9 +1051,9 @@
 ```
 <ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ObjectPage)) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
-      <WithStyles(ObjectPage) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
-        <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(ObjectPage)) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
+      <WithStyles(ObjectPage) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>
+        <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>
           <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -1039,7 +1063,10 @@
                 </span>
                 <span className="ObjectPage-actions---" />
               </header>
-              <div className="ObjectPage-headerContent---" />
+              <div className={[undefined]}>
+                <div className="ObjectPage-headerContent---" />
+                <div className="ObjectPage-hideHeaderContent---" />
+              </div>
               <section className="ObjectPage-anchorBar---" role="navigation" />
             </header>
             <Jss(WithStyles(Component)) getFillerDivDomRef={[Function]}>
@@ -1064,9 +1091,9 @@
 ```
 <ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ObjectPage)) selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
-      <WithStyles(ObjectPage) selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
-        <ObjectPage selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(ObjectPage)) selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
+      <WithStyles(ObjectPage) selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>
+        <ObjectPage selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>
           <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -1076,7 +1103,10 @@
                 </span>
                 <span className="ObjectPage-actions---" />
               </header>
-              <div className="ObjectPage-headerContent---" />
+              <div className={[undefined]}>
+                <div className="ObjectPage-headerContent---" />
+                <div className="ObjectPage-hideHeaderContent---" />
+              </div>
               <section className="ObjectPage-anchorBar---" role="navigation">
                 <ObjectPageAnchor section={{...}} index={0} mode="IconTabBar" selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <div className="ObjectPage-anchorButtonContainer---">

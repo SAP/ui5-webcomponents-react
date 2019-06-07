@@ -29,7 +29,7 @@ export const sapColorSemanticNeutral = 'hsl(210, 3%, 42.7%)';
 /** The color which builds your brand */
 export const sapUiBrand = '#0a6ed1';
 /** The color which is used to highlight screen elements */
-export const sapUiHighlight = '#0a6ed1';
+export const sapUiHighlight = HSLColor.darken(sapUiBrand, 10).hsl;
 /** The color which is used to derive the most dominant background colors */
 export const sapUiBaseColor = '#ffffff';
 /** The color of the shell header bar */
@@ -133,7 +133,7 @@ export const sapUiButtonDisabledBorderColor = '#666666';
 /** The color of texts on buttons. */
 export const sapUiButtonDisabledTextColor = '#666666';
 /** The background color of buttons on hover. */
-export const sapUiButtonHoverBackground = '#fafafa';
+export const sapUiButtonHoverBackground = HSLColor.lighten(sapUiHighlight, 63).hsl;
 /** The color of a button's borders on hover. */
 export const sapUiButtonHoverBorderColor = '#0a6ed1';
 /** The color of texts on buttons on hover. */

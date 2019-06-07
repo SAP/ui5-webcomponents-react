@@ -33,7 +33,6 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
         width: '70%',
         boxSizing: 'border-box',
         paddingTop: '1.5rem',
-        paddingBottom: '1.5rem',
         '& $title': {
           fontSize: '1.375rem',
           paddingRight: '1rem',
@@ -76,6 +75,12 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
       }
     },
     '& $headerContent': {
+      paddingTop: '1.5rem',
+      paddingBottom: '0.25rem',
+      transition: 'max-height 0.5s',
+      maxHeight: '500px',
+      overflow: 'hidden',
+
       paddingLeft: '2rem',
       position: 'relative',
       '& $headerImage': {
@@ -96,10 +101,18 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
       }
     }
   },
+  hideHeaderContent: {
+    paddingTop: '0.5rem',
+    marginBottom: '0.5rem',
+    boxShadow: `inset 0 -1px 0 0 ${parameters.sapUiShellBorderColor}`,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   anchorBar: {
     paddingLeft: '2rem',
     backgroundColor: parameters.sapUiObjectHeaderBackground,
-    boxShadow: `inset 0 -0.125rem ${parameters.sapUiObjectHeaderBackground}`,
+    boxShadow: `inset 0 0.125rem ${parameters.sapUiObjectHeaderBackground}`,
     '& $anchorButtonContainer': {
       display: 'inline-flex',
       '& $anchorButton': {
@@ -156,7 +169,8 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
   headerCustomContent: {},
   anchorButtonContainer: {},
   anchorButton: {},
-  active: {}
+  active: {},
+  hiddenHeader: {}
 });
 
 export default styles;
