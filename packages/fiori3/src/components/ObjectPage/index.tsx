@@ -270,7 +270,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
             {this.props.showHideHeaderButton && (
               <div className={classes.sectionContent}>
                 <Button
-                  style={{ position: 'absolute', transform: 'translateX(-50%)' }}
+                  style={{ position: 'absolute', '--_ui5_button_compact_height': '1rem', lineHeight: '1.25rem' }}
                   icon={this.state.showHeader ? 'sap-icon://navigation-up-arrow' : 'sap-icon://navigation-down-arrow'}
                   onPress={this.changeHeader}
                 />
