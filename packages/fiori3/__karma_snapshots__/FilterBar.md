@@ -26,9 +26,9 @@
                                 </WithWebComponent>
                               </Title>
                             </span>
-                            <Button type="Transparent" icon="navigation-down-arrow" activeIcon={{...}}>
-                              <WithWebComponent theme={{...}} type="Transparent" icon="navigation-down-arrow" activeIcon={{...}}>
-                                <ui5-button type="Transparent" icon="navigation-down-arrow" active-icon={{...}} class="sapUiSizeCompact" />
+                            <Button type="Transparent" icon="navigation-down-arrow">
+                              <WithWebComponent theme={{...}} type="Transparent" icon="navigation-down-arrow">
+                                <ui5-button type="Transparent" icon="navigation-down-arrow" class="sapUiSizeCompact" />
                               </WithWebComponent>
                             </Button>
                           </div>
@@ -36,9 +36,9 @@
                         <WithTheme(WithWebComponent) open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                           <WithWebComponent theme={{...}} open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                             <ui5-popover open={false} header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="sapUiSizeCompact">
-                              <Button className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" icon={{...}} activeIcon={{...}} data-ui5-slot="footer">
-                                <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" icon={{...}} activeIcon={{...}} data-ui5-slot="footer">
-                                  <ui5-button type="Emphasized" icon={{...}} active-icon={{...}} data-ui5-slot="footer" class="sapUiSizeCompact VariantManagement-footer---">
+                              <Button className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
+                                <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
+                                  <ui5-button type="Emphasized" data-ui5-slot="footer" class="sapUiSizeCompact VariantManagement-footer---">
                                     Cancel
                                   </ui5-button>
                                 </WithWebComponent>
@@ -46,16 +46,16 @@
                               <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                 <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                   <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true}>
+                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" class="sapUiSizeCompact">
                                           Variant 1
                                         </ui5-li>
                                       </WithWebComponent>
                                     </StandardListItem>
-                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                        <ui5-li style={{...}} data-key="2" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false}>
+                                        <ui5-li style={{...}} data-key="2" type="Active" class="sapUiSizeCompact">
                                           Variant 2
                                         </ui5-li>
                                       </WithWebComponent>
@@ -81,9 +81,9 @@
                  
               </div>
               <div className="FilterBar-headerRowRight---">
-                <Button onPress={[Function]} type="Transparent" icon={{...}} activeIcon={{...}}>
-                  <WithWebComponent theme={{...}} onPress={[Function]} type="Transparent" icon={{...}} activeIcon={{...}}>
-                    <ui5-button type="Transparent" icon={{...}} active-icon={{...}} class="sapUiSizeCompact">
+                <Button onPress={[Function]} type="Transparent">
+                  <WithWebComponent theme={{...}} onPress={[Function]} type="Transparent">
+                    <ui5-button type="Transparent" class="sapUiSizeCompact">
                       Hide Filter Bar
                     </ui5-button>
                   </WithWebComponent>
@@ -105,16 +105,16 @@
                       <Select onChange={[Function]} style={{...}} valueState="None">
                         <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="sapUiSizeCompact">
-                            <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="1" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="1">
+                              <WithWebComponent theme={{...}} type="Active" data-key="1">
+                                <ui5-li type="Active" data-key="1" class="sapUiSizeCompact">
                                   Text 1
                                 </ui5-li>
                               </WithWebComponent>
                             </StandardListItem>
-                            <StandardListItem type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="2" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="2">
+                              <WithWebComponent theme={{...}} type="Active" data-key="2">
+                                <ui5-li type="Active" data-key="2" class="sapUiSizeCompact">
                                   Text 2
                                 </ui5-li>
                               </WithWebComponent>
@@ -183,9 +183,9 @@
                                 </WithWebComponent>
                               </Title>
                             </span>
-                            <Button type="Transparent" icon="navigation-down-arrow" activeIcon={{...}}>
-                              <WithWebComponent theme={{...}} type="Transparent" icon="navigation-down-arrow" activeIcon={{...}}>
-                                <ui5-button type="Transparent" icon="navigation-down-arrow" active-icon={{...}} class="sapUiSizeCompact" />
+                            <Button type="Transparent" icon="navigation-down-arrow">
+                              <WithWebComponent theme={{...}} type="Transparent" icon="navigation-down-arrow">
+                                <ui5-button type="Transparent" icon="navigation-down-arrow" class="sapUiSizeCompact" />
                               </WithWebComponent>
                             </Button>
                           </div>
@@ -193,9 +193,9 @@
                         <WithTheme(WithWebComponent) open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                           <WithWebComponent theme={{...}} open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                             <ui5-popover open={false} header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="sapUiSizeCompact">
-                              <Button className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" icon={{...}} activeIcon={{...}} data-ui5-slot="footer">
-                                <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" icon={{...}} activeIcon={{...}} data-ui5-slot="footer">
-                                  <ui5-button type="Emphasized" icon={{...}} active-icon={{...}} data-ui5-slot="footer" class="sapUiSizeCompact VariantManagement-footer---">
+                              <Button className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
+                                <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
+                                  <ui5-button type="Emphasized" data-ui5-slot="footer" class="sapUiSizeCompact VariantManagement-footer---">
                                     Cancel
                                   </ui5-button>
                                 </WithWebComponent>
@@ -203,16 +203,16 @@
                               <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                 <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                   <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true}>
+                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" class="sapUiSizeCompact">
                                           Variant 1
                                         </ui5-li>
                                       </WithWebComponent>
                                     </StandardListItem>
-                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                        <ui5-li style={{...}} data-key="2" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false}>
+                                        <ui5-li style={{...}} data-key="2" type="Active" class="sapUiSizeCompact">
                                           Variant 2
                                         </ui5-li>
                                       </WithWebComponent>
@@ -229,9 +229,9 @@
                 </WithStyles(VariantManagement)>
               </Jss(WithStyles(VariantManagement))>
               <div className="FilterBar-headerRowRight---">
-                <Button onPress={[Function]} type="Transparent" icon={{...}} activeIcon={{...}}>
-                  <WithWebComponent theme={{...}} onPress={[Function]} type="Transparent" icon={{...}} activeIcon={{...}}>
-                    <ui5-button type="Transparent" icon={{...}} active-icon={{...}} class="sapUiSizeCompact">
+                <Button onPress={[Function]} type="Transparent">
+                  <WithWebComponent theme={{...}} onPress={[Function]} type="Transparent">
+                    <ui5-button type="Transparent" class="sapUiSizeCompact">
                       Hide Filter Bar
                     </ui5-button>
                   </WithWebComponent>
@@ -253,16 +253,16 @@
                       <Select onChange={[Function]} style={{...}} valueState="None">
                         <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="sapUiSizeCompact">
-                            <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="1" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="1">
+                              <WithWebComponent theme={{...}} type="Active" data-key="1">
+                                <ui5-li type="Active" data-key="1" class="sapUiSizeCompact">
                                   Text 1
                                 </ui5-li>
                               </WithWebComponent>
                             </StandardListItem>
-                            <StandardListItem type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="2" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="2">
+                              <WithWebComponent theme={{...}} type="Active" data-key="2">
+                                <ui5-li type="Active" data-key="2" class="sapUiSizeCompact">
                                   Text 2
                                 </ui5-li>
                               </WithWebComponent>
@@ -307,17 +307,11 @@
                           </ui5-label>
                         </WithWebComponent>
                       </Label>
-                      <Jss(WithStyles(Component)) fadeIn={false}>
-                        <WithStyles(Component) fadeIn={false} theme={{...}} classes={{...}}>
-                          <Component fadeIn={false} theme={{...}} classes={{...}}>
-                            <div className="Component-busyIndicator---" data-component-name="BusyIndicator" aria-busy="true" role="progressbar" tabIndex={0} aria-valuemin={0} aria-valuemax={100} title="Please wait" style={[undefined]} data-ui5-slot={[undefined]}>
-                              <div className="Component-circle---" />
-                              <div className="Component-circle---" />
-                              <div className="Component-circle---" />
-                            </div>
-                          </Component>
-                        </WithStyles(Component)>
-                      </Jss(WithStyles(Component))>
+                      <BusyIndicator size="Large">
+                        <WithWebComponent theme={{...}} size="Large">
+                          <ui5-busyindicator size="Large" class="sapUiSizeCompact" />
+                        </WithWebComponent>
+                      </BusyIndicator>
                     </div>
                   </FilterItem>
                 </WithStyles(FilterItem)>
@@ -357,9 +351,9 @@
                                 </WithWebComponent>
                               </Title>
                             </span>
-                            <Button type="Transparent" icon="navigation-down-arrow" activeIcon={{...}}>
-                              <WithWebComponent theme={{...}} type="Transparent" icon="navigation-down-arrow" activeIcon={{...}}>
-                                <ui5-button type="Transparent" icon="navigation-down-arrow" active-icon={{...}} class="sapUiSizeCompact" />
+                            <Button type="Transparent" icon="navigation-down-arrow">
+                              <WithWebComponent theme={{...}} type="Transparent" icon="navigation-down-arrow">
+                                <ui5-button type="Transparent" icon="navigation-down-arrow" class="sapUiSizeCompact" />
                               </WithWebComponent>
                             </Button>
                           </div>
@@ -367,9 +361,9 @@
                         <WithTheme(WithWebComponent) open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                           <WithWebComponent theme={{...}} open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                             <ui5-popover open={false} header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="sapUiSizeCompact">
-                              <Button className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" icon={{...}} activeIcon={{...}} data-ui5-slot="footer">
-                                <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" icon={{...}} activeIcon={{...}} data-ui5-slot="footer">
-                                  <ui5-button type="Emphasized" icon={{...}} active-icon={{...}} data-ui5-slot="footer" class="sapUiSizeCompact VariantManagement-footer---">
+                              <Button className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
+                                <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
+                                  <ui5-button type="Emphasized" data-ui5-slot="footer" class="sapUiSizeCompact VariantManagement-footer---">
                                     Cancel
                                   </ui5-button>
                                 </WithWebComponent>
@@ -377,16 +371,16 @@
                               <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                 <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                   <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true}>
+                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" class="sapUiSizeCompact">
                                           Variant 1
                                         </ui5-li>
                                       </WithWebComponent>
                                     </StandardListItem>
-                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                        <ui5-li style={{...}} data-key="2" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false}>
+                                        <ui5-li style={{...}} data-key="2" type="Active" class="sapUiSizeCompact">
                                           Variant 2
                                         </ui5-li>
                                       </WithWebComponent>
@@ -403,9 +397,9 @@
                 </WithStyles(VariantManagement)>
               </Jss(WithStyles(VariantManagement))>
               <div className="FilterBar-headerRowRight---">
-                <Button onPress={[Function]} type="Transparent" icon={{...}} activeIcon={{...}}>
-                  <WithWebComponent theme={{...}} onPress={[Function]} type="Transparent" icon={{...}} activeIcon={{...}}>
-                    <ui5-button type="Transparent" icon={{...}} active-icon={{...}} class="sapUiSizeCompact">
+                <Button onPress={[Function]} type="Transparent">
+                  <WithWebComponent theme={{...}} onPress={[Function]} type="Transparent">
+                    <ui5-button type="Transparent" class="sapUiSizeCompact">
                       Hide Filter Bar
                     </ui5-button>
                   </WithWebComponent>
@@ -427,16 +421,16 @@
                       <Select onChange={[Function]} style={{...}} valueState="None">
                         <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="sapUiSizeCompact">
-                            <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="1" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="1">
+                              <WithWebComponent theme={{...}} type="Active" data-key="1">
+                                <ui5-li type="Active" data-key="1" class="sapUiSizeCompact">
                                   Text 1
                                 </ui5-li>
                               </WithWebComponent>
                             </StandardListItem>
-                            <StandardListItem type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="2" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="2">
+                              <WithWebComponent theme={{...}} type="Active" data-key="2">
+                                <ui5-li type="Active" data-key="2" class="sapUiSizeCompact">
                                   Text 2
                                 </ui5-li>
                               </WithWebComponent>
@@ -459,17 +453,11 @@
                           </ui5-label>
                         </WithWebComponent>
                       </Label>
-                      <Jss(WithStyles(Component)) fadeIn={false}>
-                        <WithStyles(Component) fadeIn={false} theme={{...}} classes={{...}}>
-                          <Component fadeIn={false} theme={{...}} classes={{...}}>
-                            <div className="Component-busyIndicator---" data-component-name="BusyIndicator" aria-busy="true" role="progressbar" tabIndex={0} aria-valuemin={0} aria-valuemax={100} title="Please wait" style={[undefined]} data-ui5-slot={[undefined]}>
-                              <div className="Component-circle---" />
-                              <div className="Component-circle---" />
-                              <div className="Component-circle---" />
-                            </div>
-                          </Component>
-                        </WithStyles(Component)>
-                      </Jss(WithStyles(Component))>
+                      <BusyIndicator size="Large">
+                        <WithWebComponent theme={{...}} size="Large">
+                          <ui5-busyindicator size="Large" class="sapUiSizeCompact" />
+                        </WithWebComponent>
+                      </BusyIndicator>
                     </div>
                   </FilterItem>
                 </WithStyles(FilterItem)>

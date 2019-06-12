@@ -11,9 +11,9 @@
           <ResponsivePopover hideHeader={true} innerComponentRef={[Function]} openBy={{...}} placementType="Bottom" style={[undefined]} data-ui5-slot={[undefined]}>
             <Popover hideHeader={true} innerComponentRef={[Function]} openBy={{...}} placementType="Bottom" style={[undefined]} data-ui5-slot={[undefined]} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
               <div style={{...}} onClick={[Function]}>
-                <Button type="Default" icon={{...}} activeIcon={{...}}>
-                  <WithWebComponent theme={{...}} type="Default" icon={{...}} activeIcon={{...}}>
-                    <ui5-button type="Default" icon={{...}} active-icon={{...}} class="sapUiSizeCompact" />
+                <Button type="Default">
+                  <WithWebComponent theme={{...}} type="Default">
+                    <ui5-button type="Default" class="sapUiSizeCompact" />
                   </WithWebComponent>
                 </Button>
               </div>
