@@ -4,6 +4,7 @@ import { Themes } from '../../lib/Themes';
 import { jss, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import React, { Fragment, PureComponent, ReactNode } from 'react';
 import { bootstrap, sap_fiori_3 } from '@fiori-for-react/styles';
+import { getCompactSize, getTheme } from '@ui5/webcomponents-base/src/Configuration';
 
 bootstrap();
 
@@ -26,12 +27,20 @@ export class ThemeProvider extends PureComponent<ThemeProviderProps> {
     return null;
   };
 
+  private static getContentDensity = (compactSize: boolean) => {
+    return compactSize ? ContentDensity.Compact : ContentDensity.Cozy;
+  };
+
   render() {
-    const { theme, contentDensity, withToastContainer } = this.props;
+    const { withToastContainer } = this.props;
     return (
       <ReactJssThemeProvider
         jss={jss}
-        theme={{ theme, contentDensity, parameters: ThemeProvider.getTheme(this.props.theme) }}
+        theme={{
+          theme: getTheme(),
+          contentDensity: ThemeProvider.getContentDensity(getCompactSize()),
+          parameters: ThemeProvider.getTheme(getTheme())
+        }}
       >
         <Fragment>
           {this.props.children}
