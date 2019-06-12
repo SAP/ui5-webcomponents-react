@@ -1,6 +1,6 @@
 import {
   ContentDensity,
-  InfoLabel,
+  Badge,
   Label,
   Table,
   TableCell,
@@ -41,7 +41,7 @@ export const TableComponent = (props) => {
             <TableCell>
               <Text>{componentInfo.type.name}</Text>
             </TableCell>
-            <TableCell>{componentInfo.required && <InfoLabel flavour={8}>Yes</InfoLabel>}</TableCell>
+            <TableCell>{componentInfo.required && <Badge colorScheme="8">Yes</Badge>}</TableCell>
             <TableCell>{componentInfo.defaultValue && <Text>{componentInfo.defaultValue.value}</Text>}</TableCell>
             <TableCell>
               <Text>{componentInfo.description}</Text>
