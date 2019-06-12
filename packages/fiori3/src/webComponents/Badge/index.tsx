@@ -4,7 +4,7 @@ import { withWebComponent, WithWebComponentPropTypes } from '../../internal/with
 
 export interface BadgePropTypes extends WithWebComponentPropTypes {
   colorScheme?: string; // @generated
-  children?: any[]; // @generated
+  children?: string; // @generated
   icon?: any; // @generated
 }
 
