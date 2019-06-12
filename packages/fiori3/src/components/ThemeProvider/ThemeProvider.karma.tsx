@@ -1,6 +1,4 @@
-import { ContentDensity } from '../../lib/ContentDensity';
 import { ThemeProvider } from '../../lib/ThemeProvider';
-import { Themes } from '../../lib/Themes';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import React from 'react';
@@ -16,7 +14,7 @@ describe('ThemeProvider', () => {
     });
 
     mount(
-      <ThemeProvider theme={Themes.sap_fiori_3} contentDensity={ContentDensity.Cozy}>
+      <ThemeProvider>
         <InnerComponent />
       </ThemeProvider>
     );

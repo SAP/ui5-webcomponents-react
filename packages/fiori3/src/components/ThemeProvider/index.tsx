@@ -9,16 +9,12 @@ import { getCompactSize, getTheme } from '@ui5/webcomponents-base/src/Configurat
 bootstrap();
 
 export interface ThemeProviderProps {
-  theme: Themes;
-  contentDensity: ContentDensity;
   withToastContainer?: boolean;
   children: ReactNode;
 }
 
 export class ThemeProvider extends PureComponent<ThemeProviderProps> {
   static defaultProps = {
-    theme: Themes.sap_fiori_3,
-    contentDensity: ContentDensity.Compact,
     withToastContainer: false
   };
 

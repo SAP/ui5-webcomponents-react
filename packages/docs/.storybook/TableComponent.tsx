@@ -1,15 +1,4 @@
-import {
-  ContentDensity,
-  Badge,
-  Label,
-  Table,
-  TableCell,
-  TableColumn,
-  TableRow,
-  Text,
-  ThemeProvider,
-  Themes
-} from '@fiori-for-react/fiori3';
+import { Badge, Label, Table, TableCell, TableColumn, TableRow, Text, ThemeProvider } from '@fiori-for-react/fiori3';
 import React from 'react';
 
 const columns = [
@@ -24,13 +13,13 @@ export const TableComponent = (props) => {
   const info = props.type.__docgenInfo;
   if (!info || !info.props) {
     return (
-      <ThemeProvider theme={Themes.sap_fiori_3} contentDensity={ContentDensity.Compact}>
+      <ThemeProvider>
         <Text>Unfortunately, there are no prop types available for this component.</Text>
       </ThemeProvider>
     );
   }
   return (
-    <ThemeProvider theme={Themes.sap_fiori_3} contentDensity={ContentDensity.Compact}>
+    <ThemeProvider>
       <Table
         columns={columns}
         rows={Object.values(info.props).map((componentInfo: any) => (
