@@ -23,21 +23,21 @@ export const setUserAgentString = (userAgent) => {
 
 export const mountThemedComponent = (component, contextOverwrite = {}, enzymeOptions = {}) =>
   mount(
-    <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact} {...contextOverwrite}>
+    <ThemeProvider theme={Themes.sap_fiori_3} contentDensity={ContentDensity.Compact} {...contextOverwrite}>
       {component}
     </ThemeProvider>,
     enzymeOptions
   );
 
 export const ThemedComponent = (component, contextOverwrite = {}) => (
-  <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact} {...contextOverwrite}>
+  <ThemeProvider theme={Themes.sap_fiori_3} contentDensity={ContentDensity.Compact} {...contextOverwrite}>
     {component}
   </ThemeProvider>
 );
 
 export const renderThemedComponent = (component, contextOverwrite = {}) =>
   shallow(
-    <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact} {...contextOverwrite}>
+    <ThemeProvider theme={Themes.sap_fiori_3} contentDensity={ContentDensity.Compact} {...contextOverwrite}>
       {component}
     </ThemeProvider>
   ).render();

@@ -101,7 +101,7 @@ const themr = makeDecorator({
   wrapper: (getStory, context, { parameters }) => {
     return (
       <ThemeProvider
-        theme={select('Theme', [Themes.sap_fiori3_light], Themes.sap_fiori3_light)}
+        theme={select('Theme', [Themes.sap_fiori_3], Themes.sap_fiori_3)}
         contentDensity={select('ContentDensity', ContentDensity, ContentDensity.Compact)}
         withToastContainer
       >

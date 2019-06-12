@@ -9,14 +9,14 @@ import { withStyles } from '@fiori-for-react/styles';
 describe('ThemeProvider', () => {
   it('Provides Correct Context', (done) => {
     const InnerComponent = withStyles(() => {})(({ theme }) => {
-      expect(theme.theme).to.equal('sap_fiori3_light');
+      expect(theme.theme).to.equal('sap_fiori_3');
       expect(theme.contentDensity).to.equal('Cozy');
       done();
       return null;
     });
 
     mount(
-      <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Cozy}>
+      <ThemeProvider theme={Themes.sap_fiori_3} contentDensity={ContentDensity.Cozy}>
         <InnerComponent />
       </ThemeProvider>
     );

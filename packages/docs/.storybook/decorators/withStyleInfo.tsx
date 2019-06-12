@@ -64,7 +64,7 @@ class WithStyleInfo extends Component<any> {
       <div>
         {children}
         <div style={withStyleContainer}>
-          <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact}>
+          <ThemeProvider theme={Themes.sap_fiori_3} contentDensity={ContentDensity.Compact}>
             <h1 style={titleStyle}>Styling API</h1>
             <div style={{ display: 'flex', flexDirection: 'column', marginTop: '1rem' }}>
               {styleInfo.attributes.map((info) => (

@@ -97,7 +97,7 @@ storiesOf(' Welcome | Fiori-for-React', module)
               ...
               render() {
                 return (
-                  <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact} withToastContainer>
+                  <ThemeProvider theme={Themes.sap_fiori_3} contentDensity={ContentDensity.Compact} withToastContainer>
                     <MyApp />
                   </ThemeProvider>
                 );
