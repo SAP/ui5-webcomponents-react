@@ -46,16 +46,16 @@
                               <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                 <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                   <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true}>
-                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
+                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                           Variant 1
                                         </ui5-li>
                                       </WithWebComponent>
                                     </StandardListItem>
-                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false}>
-                                        <ui5-li style={{...}} data-key="2" type="Active" class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
+                                        <ui5-li style={{...}} data-key="2" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                           Variant 2
                                         </ui5-li>
                                       </WithWebComponent>
@@ -105,16 +105,16 @@
                       <Select onChange={[Function]} style={{...}} valueState="None">
                         <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="sapUiSizeCompact">
-                            <StandardListItem type="Active" data-key="1">
-                              <WithWebComponent theme={{...}} type="Active" data-key="1">
-                                <ui5-li type="Active" data-key="1" class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
+                              <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
+                                <ui5-li type="Active" data-key="1" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                   Text 1
                                 </ui5-li>
                               </WithWebComponent>
                             </StandardListItem>
-                            <StandardListItem type="Active" data-key="2">
-                              <WithWebComponent theme={{...}} type="Active" data-key="2">
-                                <ui5-li type="Active" data-key="2" class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="2" description="" icon={{...}} image={{...}}>
+                              <WithWebComponent theme={{...}} type="Active" data-key="2" description="" icon={{...}} image={{...}}>
+                                <ui5-li type="Active" data-key="2" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                   Text 2
                                 </ui5-li>
                               </WithWebComponent>
@@ -203,16 +203,16 @@
                               <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                 <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                   <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true}>
-                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
+                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                           Variant 1
                                         </ui5-li>
                                       </WithWebComponent>
                                     </StandardListItem>
-                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false}>
-                                        <ui5-li style={{...}} data-key="2" type="Active" class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
+                                        <ui5-li style={{...}} data-key="2" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                           Variant 2
                                         </ui5-li>
                                       </WithWebComponent>
@@ -253,16 +253,16 @@
                       <Select onChange={[Function]} style={{...}} valueState="None">
                         <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="sapUiSizeCompact">
-                            <StandardListItem type="Active" data-key="1">
-                              <WithWebComponent theme={{...}} type="Active" data-key="1">
-                                <ui5-li type="Active" data-key="1" class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
+                              <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
+                                <ui5-li type="Active" data-key="1" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                   Text 1
                                 </ui5-li>
                               </WithWebComponent>
                             </StandardListItem>
-                            <StandardListItem type="Active" data-key="2">
-                              <WithWebComponent theme={{...}} type="Active" data-key="2">
-                                <ui5-li type="Active" data-key="2" class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="2" description="" icon={{...}} image={{...}}>
+                              <WithWebComponent theme={{...}} type="Active" data-key="2" description="" icon={{...}} image={{...}}>
+                                <ui5-li type="Active" data-key="2" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                   Text 2
                                 </ui5-li>
                               </WithWebComponent>
@@ -371,16 +371,16 @@
                               <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                 <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                   <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true}>
-                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
+                                        <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                           Variant 1
                                         </ui5-li>
                                       </WithWebComponent>
                                     </StandardListItem>
-                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false}>
-                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false}>
-                                        <ui5-li style={{...}} data-key="2" type="Active" class="sapUiSizeCompact">
+                                    <StandardListItem style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
+                                      <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
+                                        <ui5-li style={{...}} data-key="2" type="Active" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                           Variant 2
                                         </ui5-li>
                                       </WithWebComponent>
@@ -421,16 +421,16 @@
                       <Select onChange={[Function]} style={{...}} valueState="None">
                         <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="sapUiSizeCompact">
-                            <StandardListItem type="Active" data-key="1">
-                              <WithWebComponent theme={{...}} type="Active" data-key="1">
-                                <ui5-li type="Active" data-key="1" class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
+                              <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
+                                <ui5-li type="Active" data-key="1" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                   Text 1
                                 </ui5-li>
                               </WithWebComponent>
                             </StandardListItem>
-                            <StandardListItem type="Active" data-key="2">
-                              <WithWebComponent theme={{...}} type="Active" data-key="2">
-                                <ui5-li type="Active" data-key="2" class="sapUiSizeCompact">
+                            <StandardListItem type="Active" data-key="2" description="" icon={{...}} image={{...}}>
+                              <WithWebComponent theme={{...}} type="Active" data-key="2" description="" icon={{...}} image={{...}}>
+                                <ui5-li type="Active" data-key="2" description="" icon={{...}} image={{...}} class="sapUiSizeCompact">
                                   Text 2
                                 </ui5-li>
                               </WithWebComponent>
