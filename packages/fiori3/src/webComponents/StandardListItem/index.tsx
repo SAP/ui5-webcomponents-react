@@ -10,7 +10,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   icon?: string; // @generated
   iconEnd?: boolean; // @generated
   image?: string; // @generated
-  children?: string; // @generated
+  children?: any[]; // @generated
 }
 
 const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<StandardListItemPropTypes>(
@@ -20,10 +20,7 @@ const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<Standar
 StandardListItem.displayName = 'StandardListItem';
 
 StandardListItem.defaultProps = {
-  type: ListItemTypes.Inactive, // @generated
-  description: '', // @generated
-  icon: null, // @generated
-  image: null // @generated
+  type: ListItemTypes.Active // @generated
 };
 
 export { StandardListItem };

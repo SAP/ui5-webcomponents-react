@@ -8,6 +8,7 @@ import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';
 import { Avatar } from './lib/Avatar';
 import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
+import { Badge } from './lib/Badge';
 import { Bar } from './lib/Bar';
 import { BusyIndicator } from './lib/BusyIndicator';
 import { Button } from './lib/Button';
@@ -37,8 +38,6 @@ import { Grid } from './lib/Grid';
 import { GridPosition } from './lib/GridPosition';
 import { GroupHeaderListItem } from './lib/GroupHeaderListItem';
 import { Icon } from './lib/Icon';
-import { IconColor } from './lib/IconColor';
-import { InfoLabel } from './lib/InfoLabel';
 import { Input } from './lib/Input';
 import { InputType } from './lib/InputType';
 import { Label } from './lib/Label';
@@ -79,6 +78,7 @@ import { ResponsivePopover } from './lib/ResponsivePopover';
 import { SegmentedButton } from './lib/SegmentedButton';
 import { SegmentedButtonItem } from './lib/SegmentedButtonItem';
 import { Select } from './lib/Select';
+import { SemanticColor } from './lib/SemanticColor';
 import { ShellBar } from './lib/ShellBar';
 import { ShellBarItem } from './lib/ShellBarItem';
 import { Size } from './lib/Size';
@@ -115,6 +115,7 @@ export {
   Avatar,
   AvatarShape,
   AvatarSize,
+  Badge,
   Bar,
   BusyIndicator,
   Button,
@@ -144,8 +145,6 @@ export {
   GridPosition,
   GroupHeaderListItem,
   Icon,
-  IconColor,
-  InfoLabel,
   Input,
   InputType,
   Label,
@@ -186,6 +185,7 @@ export {
   SegmentedButton,
   SegmentedButtonItem,
   Select,
+  SemanticColor,
   ShellBar,
   ShellBarItem,
   Size,

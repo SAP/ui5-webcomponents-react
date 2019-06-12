@@ -9,10 +9,9 @@ import UI5ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators';
 import UI5PanelAccessibleRoles from '@ui5/webcomponents/dist/types/PanelAccessibleRole';
 import UI5PopoverHorizontalAligns from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign';
 import UI5PopoverVerticalAligns from '@ui5/webcomponents/dist/types/PopoverVerticalAlign';
-import UI5IconColors from '@ui5/webcomponents/dist/types/IconColor';
+import UI5SemanticColors from '@ui5/webcomponents/dist/types/SemanticColor';
 import UI5TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel';
 import UI5MessageStripType from '@ui5/webcomponents/dist/types/MessageStripType';
-import URI from '@ui5/webcomponents-base/src/types/URI';
 import CSSSize from '@ui5/webcomponents-base/src/types/CSSSize';
 import Integer from '@ui5/webcomponents-base/src/types/Integer';
 import UI5ValueState from '@ui5/webcomponents-base/src/types/ValueState';
@@ -45,9 +44,9 @@ const mappings = {
     tsType: 'LinkType',
     isEnum: true
   },
-  [UI5IconColors]: {
-    importStatement: "import { IconColor } from '../../lib/IconColor';",
-    tsType: 'IconColor',
+  [UI5SemanticColors]: {
+    importStatement: "import { SemanticColor } from '../../lib/SemanticColor';",
+    tsType: 'SemanticColor',
     isEnum: true
   },
   [UI5ListItemTypes]: {
@@ -102,9 +101,6 @@ const mappings = {
   [Boolean]: {
     tsType: 'boolean',
     defaultPropAsString: false
-  },
-  [URI]: {
-    tsType: 'string'
   },
   [CSSSize]: {
     tsType: "CSSProperties['width'] | CSSProperties['height']",
