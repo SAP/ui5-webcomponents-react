@@ -7,6 +7,8 @@ import { withInfo } from '@storybook/addon-info';
 import { TableComponent } from './TableComponent';
 import { withStyleInfo } from './decorators/withStyleInfo';
 import { Fiori4ReactTheme } from './theme';
+import { document, history, window } from 'global';
+import qs from 'qs';
 
 export const propTablesExclude = [ThemeProvider];
 
@@ -94,23 +96,66 @@ addParameters({
   }
 });
 
-const themr = makeDecorator({
-  name: 'themr',
-  parameterName: 'themr',
-  skipIfNoParametersOrOptions: false,
-  wrapper: (getStory, context, { parameters }) => {
+class ThemeContainer extends React.PureComponent {
+  componentDidUpdate(prevProps) {
+    const { contentDensity, setQueryParam } = this.props;
+    if (contentDensity !== prevProps.contentDensity) {
+      setQueryParam({
+        'sap-ui-compactSize': contentDensity === ContentDensity.Compact
+      });
+    }
+  }
+
+  render() {
+    return this.props.children;
+  }
+}
+
+const withQuery = makeDecorator({
+  name: 'withQuery',
+  parameterName: 'query',
+  wrapper: (getStory, context) => {
+    function setQueryParam(queryObj) {
+      const iframe = window.parent.document.getElementById('storybook-preview-iframe');
+      const [base, search] = iframe.src.split('?');
+      const currentQuery = qs.parse(search, { ignoreQueryPrefix: true });
+      iframe.src = `${base}?${qs.stringify({ ...currentQuery, ...queryObj })}`;
+    }
+    let contentDensity;
+    try {
+      const iframe = window.parent.document.getElementById('storybook-preview-iframe');
+      const currentQuery = qs.parse(iframe.src.split('?')[1]);
+      contentDensity =
+        currentQuery['sap-ui-compactSize'] && currentQuery['sap-ui-compactSize'] !== 'false'
+          ? ContentDensity.Compact
+          : ContentDensity.Cozy;
+    } catch (e) {
+      contentDensity = ContentDensity.Cozy;
+    }
+
     return (
-      <ThemeProvider
+      <ThemeContainer
         theme={select('Theme', [Themes.sap_fiori_3], Themes.sap_fiori_3)}
-        contentDensity={select('ContentDensity', ContentDensity, ContentDensity.Compact)}
-        withToastContainer
+        contentDensity={select('ContentDensity', ContentDensity, contentDensity)}
+        setQueryParam={setQueryParam}
       >
         {getStory(context)}
-      </ThemeProvider>
+      </ThemeContainer>
     );
   }
 });
 
+const themr = makeDecorator({
+  name: 'themr',
+  parameterName: 'themr',
+  skipIfNoParametersOrOptions: false,
+  wrapper: (getStory, context) => {
+    // debugger;
+    return <ThemeProvider withToastContainer>{getStory(context)}</ThemeProvider>;
+  }
+});
+
+addDecorator(withQuery);
 addDecorator(themr);
 
 // Load all Stories
