@@ -1,5 +1,6 @@
 const PATHS = require('./paths');
 const path = require('path');
+// const webComponentConfigMock = require('./webComponentConfigMock');
 
 module.exports = {
   preset: 'ts-jest',
@@ -29,6 +30,7 @@ module.exports = {
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
     '^@ui5/webcomponents/dist(.*)$': 'identity-obj-proxy', // ui5 web components can be mocked, not relevant for jest tests
+    '^@ui5/webcomponents-base/src/Configuration(.*)$': path.resolve(__dirname, './webComponentConfigMock'),
     '\\.(css|less)$': 'identity-obj-proxy'
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
