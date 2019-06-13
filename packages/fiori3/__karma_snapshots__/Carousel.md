@@ -55,7 +55,7 @@
                     <div data-value="paginationArrow" className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-left">
                         <WithWebComponent theme={{...}} src="slim-arrow-left">
-                          <ui5-icon src="slim-arrow-left" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-left" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>
@@ -85,7 +85,7 @@
                     <div data-value="paginationArrow" className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-right">
                         <WithWebComponent theme={{...}} src="slim-arrow-right">
-                          <ui5-icon src="slim-arrow-right" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-right" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>
@@ -171,14 +171,14 @@
                     <div data-value="paginationArrow" className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-left">
                         <WithWebComponent theme={{...}} src="slim-arrow-left">
-                          <ui5-icon src="slim-arrow-left" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-left" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>
                     <div className="CarouselPagination-paginationIndicator---">
                       <Label for="">
                         <WithWebComponent theme={{...}} for="">
-                          <ui5-label for="" class="sapUiSizeCompact">
+                          <ui5-label for="" class="">
                             Showing 1 of 10
                           </ui5-label>
                         </WithWebComponent>
@@ -187,7 +187,7 @@
                     <div data-value="paginationArrow" className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-right">
                         <WithWebComponent theme={{...}} src="slim-arrow-right">
-                          <ui5-icon src="slim-arrow-right" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-right" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>
@@ -258,7 +258,7 @@
                     <div data-value="paginationArrow" className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-left">
                         <WithWebComponent theme={{...}} src="slim-arrow-left">
-                          <ui5-icon src="slim-arrow-left" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-left" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>
@@ -288,7 +288,7 @@
                     <div data-value="paginationArrow" className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-right">
                         <WithWebComponent theme={{...}} src="slim-arrow-right">
-                          <ui5-icon src="slim-arrow-right" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-right" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>
@@ -359,7 +359,7 @@
                     <div data-value={{...}} className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-left">
                         <WithWebComponent theme={{...}} src="slim-arrow-left">
-                          <ui5-icon src="slim-arrow-left" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-left" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>
@@ -389,7 +389,7 @@
                     <div data-value={{...}} className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-right">
                         <WithWebComponent theme={{...}} src="slim-arrow-right">
-                          <ui5-icon src="slim-arrow-right" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-right" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>
@@ -421,7 +421,7 @@
                     <div data-value={{...}} className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-left">
                         <WithWebComponent theme={{...}} src="slim-arrow-left">
-                          <ui5-icon src="slim-arrow-left" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-left" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>
@@ -451,7 +451,7 @@
                     <div data-value={{...}} className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-right">
                         <WithWebComponent theme={{...}} src="slim-arrow-right">
-                          <ui5-icon src="slim-arrow-right" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-right" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>
@@ -561,7 +561,7 @@
                     <div data-value="paginationArrow" className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-left">
                         <WithWebComponent theme={{...}} src="slim-arrow-left">
-                          <ui5-icon src="slim-arrow-left" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-left" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>
@@ -591,7 +591,7 @@
                     <div data-value="paginationArrow" className="CarouselPagination-paginationArrow---" onClick={[Function]}>
                       <Icon src="slim-arrow-right">
                         <WithWebComponent theme={{...}} src="slim-arrow-right">
-                          <ui5-icon src="slim-arrow-right" class="sapUiSizeCompact" />
+                          <ui5-icon src="slim-arrow-right" class="" />
                         </WithWebComponent>
                       </Icon>
                     </div>

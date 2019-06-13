@@ -16,8 +16,9 @@ const f4rEnums = {
   PanelAccessibleRoles: require(path.resolve(fiori3Enums, 'PanelAccessibleRoles.ts')).PanelAccessibleRoles,
   PlacementType: require(path.resolve(fiori3Enums, 'PlacementType.ts')).PlacementType,
   PopoverVerticalAlign: require(path.resolve(fiori3Enums, 'PopoverVerticalAlign.ts')).PopoverVerticalAlign,
-  IconColor: require(path.resolve(fiori3Enums, 'IconColor.ts')).IconColor,
-  TitleLevel: require(path.resolve(fiori3Enums, 'TitleLevel.ts')).TitleLevel
+  SemanticColor: require(path.resolve(fiori3Enums, 'SemanticColor.ts')).SemanticColor,
+  TitleLevel: require(path.resolve(fiori3Enums, 'TitleLevel.ts')).TitleLevel,
+  BusyIndicatorType: require(path.resolve(fiori3Enums, 'BusyIndicatorType.ts')).BusyIndicatorType
 };
 
 function getDefaultPropValue(meta) {

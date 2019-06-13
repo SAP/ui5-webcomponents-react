@@ -2671,28 +2671,28 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.12.tgz#45dd1d0638e8c8f153e87d296907659296873916"
   integrity sha512-SOhuU4wNBxhhTHxYaiG5NY4HBhDIDnJF60GU+2LqHAdKKer86//e4yg69aENCtQ04n0ovz+tq2YPME5t5yp4pw==
 
-"@ui5/webcomponents-base@0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-0.11.1.tgz#461be944cc593d501532231a8542a1b95a18a935"
-  integrity sha512-yzKdeBny5PItT1jAOksfEahuJKFdje1bJ7ZDzG8m534SMBdycwifMxVsE1PlWt35jS7n+HEyIeCCzHmpvx3RPA==
+"@ui5/webcomponents-base@0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-0.12.0.tgz#5b382fdbac4b5b839452f1df4e4376aee309a7dc"
+  integrity sha512-RVXTv+jHHRwjxICEQkc7pb9/BdOiNjIkBUZUHutMwyAK3Lnc6+xG5Fx57WVTbdPflpE5TVFcMdRsBJm19KdDOw==
   dependencies:
-    "@ui5/webcomponents-core" "0.11.1"
+    "@ui5/webcomponents-core" "0.12.0"
     lit-html "^1.0.0"
     regenerator-runtime "0.12.1"
     url-search-params-polyfill "^5.0.0"
 
-"@ui5/webcomponents-core@0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-core/-/webcomponents-core-0.11.1.tgz#fb494fb755656eae17e23fb88dd5edefccdac746"
-  integrity sha512-UajB+Q3ZfRtdJgEApg5MYrpQbAMJg7pxvfZrVbQFEjxmofoZueNTZaPjscOK4XWfeajtdAtBKYE9963p94yB8A==
+"@ui5/webcomponents-core@0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-core/-/webcomponents-core-0.12.0.tgz#aee3bd66c014387f02c8bafa5aa8e29ef950786e"
+  integrity sha512-SVr7siJf04axSjonB/tYsJ6BNqrLtUm0EJ3/4Y6xTVmHsqx8u0YG/YQKwSfO9FS9D7QuofIsojMh9IjIxRRCOw==
 
-"@ui5/webcomponents@0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents/-/webcomponents-0.11.1.tgz#2d42294578d75cc201ae479a53a250143d255398"
-  integrity sha512-yFjvGBpbUwmjhHyF0MO58VRZYSqBJ9JQySJaGP+ClFxh+KaWPtiTasana9/fFNMQhqEsFI7Y9B7fTBPvjRp4MQ==
+"@ui5/webcomponents@0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents/-/webcomponents-0.12.0.tgz#98da24c74b409cb0eaaf1001983f30a5ece8dd3f"
+  integrity sha512-l+aYHyG0gtmA8wUYol+P0ELWkH8HlSbet7N7XVTyP4qG60Nc8uLHzN3GwtwkQltcTDR/iVM+b9JZdl5zVzgN6g==
   dependencies:
-    "@ui5/webcomponents-base" "0.11.1"
-    "@ui5/webcomponents-core" "0.11.1"
+    "@ui5/webcomponents-base" "0.12.0"
+    "@ui5/webcomponents-core" "0.12.0"
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"

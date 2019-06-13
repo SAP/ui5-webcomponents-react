@@ -34,7 +34,7 @@ class DemoButton extends React.Component {
           <Button onPress={() => this.setState({ showCS2: !showCS2 })}>Toggle Custom Style 2</Button>
         </div>
         <Button
-          type={select('type', ButtonType, null)}
+          type={select('type', ButtonType, ButtonType.Default)}
           disabled={boolean('disabled', false)}
           icon={'sap-icon://add'}
           iconEnd={boolean('iconEnd', false)}
@@ -51,7 +51,7 @@ class DemoButton extends React.Component {
 storiesOf('UI5 Web Components | Button', module)
   .add('Generated default story', () => (
     <Button
-      type={select('type', ButtonType, null)}
+      type={select('type', ButtonType, ButtonType.Default)}
       disabled={boolean('disabled', false)}
       icon={'sap-icon://add'}
       iconEnd={boolean('iconEnd', false)}

@@ -3,14 +3,14 @@
 #### `Basic Test (generated)`
 
 ```
-"<ThemeProvider theme=\"sap_fiori3_light\" contentDensity=\"Compact\" withToastContainer={false}>
+<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <WithTheme(WithWebComponent)>
+    <TabContainer>
       <WithWebComponent theme={{...}}>
-        <ui5-tabcontainer class=\"sapUiSizeCompact\" />
+        <ui5-tabcontainer class="" />
       </WithWebComponent>
-    </WithTheme(WithWebComponent)>
+    </TabContainer>
   </ThemeProvider>
-</ThemeProvider>"
+</ThemeProvider>
 ```
 

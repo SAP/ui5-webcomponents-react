@@ -9,7 +9,6 @@ export interface ToggleButtonPropTypes extends WithWebComponentPropTypes {
   disabled?: boolean; // @generated
   icon?: string; // @generated
   iconEnd?: boolean; // @generated
-  activeIcon?: string; // @generated
   submits?: boolean; // @generated
   pressed?: boolean; // @generated
   onPress?: (event: Event) => void; // @generated
@@ -21,9 +20,7 @@ const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPro
 ToggleButton.displayName = 'ToggleButton';
 
 ToggleButton.defaultProps = {
-  type: ButtonType.Default, // @generated
-  icon: null, // @generated
-  activeIcon: null // @generated
+  type: ButtonType.Default // @generated
 };
 
 export { ToggleButton };

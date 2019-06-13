@@ -13,4 +13,6 @@ export interface TabContainerPropTypes {
 
 const TabContainer = withWebComponent<TabContainerPropTypes>(UI5TabContainer);
 
+TabContainer.displayName = 'TabContainer';
+
 export { TabContainer };

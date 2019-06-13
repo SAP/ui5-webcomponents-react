@@ -1,5 +1,4 @@
 import { Event } from '@fiori-for-react/utils';
-import { ContentDensity } from '../lib/ContentDensity';
 import React, { Children, cloneElement, Component, CSSProperties, FC, ReactElement } from 'react';
 import { withTheme } from 'react-jss';
 import { Fiori3CommonProps } from '../interfaces/Fiori3CommonProps';
@@ -166,19 +165,6 @@ export function withWebComponent<T>(WebComponent): FC<T> {
       return { props, slotProps };
     }
 
-    applyContentDensity = () => {
-      const { theme } = this.props as T & WithWebComponentInternalPropTypes;
-      const shadowRef = this.shadowDomRef;
-      if (!shadowRef) {
-        return;
-      }
-      if (theme.contentDensity === ContentDensity.Compact) {
-        shadowRef.parentElement.classList.add('sapUiSizeCompact');
-      } else {
-        shadowRef.parentElement.classList.remove('sapUiSizeCompact');
-      }
-    };
-
     applyInnerStyles = () => {
       const { innerStyles } = this.props;
       const shadowRef = this.shadowDomRef;
@@ -201,13 +187,8 @@ export function withWebComponent<T>(WebComponent): FC<T> {
     };
 
     componentDidUpdate(prevProps) {
-      const { theme } = this.props as T & WithWebComponentInternalPropTypes;
-
       const executionList = [];
 
-      if (prevProps.theme.contentDensity !== theme.contentDensity) {
-        executionList.push(this.applyContentDensity);
-      }
       if (prevProps.innerStyles !== this.props.innerStyles) {
         executionList.push(() => this.removeOldStyles(prevProps.innerStyles));
         executionList.push(this.applyInnerStyles);
@@ -224,7 +205,6 @@ export function withWebComponent<T>(WebComponent): FC<T> {
       if (this.wcRef) {
         this.bindEvents();
         requestAnimationFrame(() => {
-          this.applyContentDensity();
           this.applyInnerStyles();
         });
       } else {
@@ -235,20 +215,15 @@ export function withWebComponent<T>(WebComponent): FC<T> {
     }
 
     render() {
-      const { className } = this.props;
+      const { className = '' } = this.props;
 
       const CustomTag = WebComponent.getMetadata().getTag();
       const slots = WebComponent.getMetadata().getSlots();
 
       const { props, slotProps } = this.regularProps;
       const { children, theme, ...regularProps } = props as T & WithWebComponentInternalPropTypes;
-
-      let classString = theme.contentDensity === ContentDensity.Compact ? 'sapUiSizeCompact' : '';
-      if (className) {
-        classString = `${classString} ${className}`;
-      }
       return (
-        <CustomTag {...this.booleanProps} ref={this.handleInnerRef} {...regularProps} class={classString}>
+        <CustomTag {...this.booleanProps} ref={this.handleInnerRef} {...regularProps} class={className}>
           {Object.keys(slots).map((slot) => {
             if (slotProps[slot]) {
               return Children.map(slotProps[slot], (item: ReactElement<any>, index) =>

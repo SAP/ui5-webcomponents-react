@@ -20,7 +20,7 @@ const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<Standar
 StandardListItem.displayName = 'StandardListItem';
 
 StandardListItem.defaultProps = {
-  type: ListItemTypes.Inactive, // @generated
+  type: ListItemTypes.Active, // @generated
   description: '', // @generated
   icon: null, // @generated
   image: null // @generated

@@ -1,4 +1,4 @@
-export enum IconColor {
+export enum SemanticColor {
   Default = 'Default',
   Positive = 'Positive',
   Negative = 'Negative',
