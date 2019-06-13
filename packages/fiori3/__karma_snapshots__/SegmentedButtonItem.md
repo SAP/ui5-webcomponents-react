@@ -12,7 +12,7 @@
             <div className="SegmentedButtonItem-icon--- SegmentedButtonItem-withText---">
               <Icon src="add">
                 <WithWebComponent theme={{...}} src="add">
-                  <ui5-icon src="add" class="sapUiSizeCompact" />
+                  <ui5-icon src="add" class="" />
                 </WithWebComponent>
               </Icon>
             </div>
@@ -37,7 +37,7 @@
             <div className="SegmentedButtonItem-icon--- SegmentedButtonItem-withText---">
               <Icon src="add">
                 <WithWebComponent theme={{...}} src="add">
-                  <ui5-icon src="add" class="sapUiSizeCompact" />
+                  <ui5-icon src="add" class="" />
                 </WithWebComponent>
               </Icon>
             </div>
@@ -62,7 +62,7 @@
             <div className="SegmentedButtonItem-icon---">
               <Icon src="add">
                 <WithWebComponent theme={{...}} src="add">
-                  <ui5-icon src="add" class="sapUiSizeCompact" />
+                  <ui5-icon src="add" class="" />
                 </WithWebComponent>
               </Icon>
             </div>
@@ -86,7 +86,7 @@
             <div className="SegmentedButtonItem-icon---">
               <Icon src="add">
                 <WithWebComponent theme={{...}} src="add">
-                  <ui5-icon src="add" class="sapUiSizeCompact" />
+                  <ui5-icon src="add" class="" />
                 </WithWebComponent>
               </Icon>
             </div>
@@ -110,7 +110,7 @@
             <div className="SegmentedButtonItem-icon---">
               <Icon src="add">
                 <WithWebComponent theme={{...}} src="add">
-                  <ui5-icon src="add" class="sapUiSizeCompact" />
+                  <ui5-icon src="add" class="" />
                 </WithWebComponent>
               </Icon>
             </div>

@@ -10,7 +10,6 @@ storiesOf('UI5 Web Components | ToggleButton', module).add('Generated default st
     disabled={boolean('disabled', false)}
     icon="sap-icon://add"
     iconEnd={boolean('iconEnd', false)}
-    activeIcon="sap-icon://add"
     pressed={boolean('pressed', false)}
     onPress={null}
   >

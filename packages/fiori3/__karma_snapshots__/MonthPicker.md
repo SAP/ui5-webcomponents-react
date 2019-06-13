@@ -3,14 +3,14 @@
 #### `Basic Test (generated)`
 
 ```
-"<ThemeProvider theme=\"sap_fiori3_light\" contentDensity=\"Compact\" withToastContainer={false}>
+<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <MonthPicker>
       <WithWebComponent theme={{...}}>
-        <ui5-month-picker class=\"sapUiSizeCompact\" />
+        <ui5-month-picker class="" />
       </WithWebComponent>
     </MonthPicker>
   </ThemeProvider>
-</ThemeProvider>"
+</ThemeProvider>
 ```
 

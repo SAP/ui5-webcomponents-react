@@ -1,5 +1,4 @@
 import { Event } from '@fiori-for-react/utils';
-import { ContentDensity } from '../lib/ContentDensity';
 import React, { Children, cloneElement, Component, CSSProperties, FC, ReactElement } from 'react';
 import { withTheme } from 'react-jss';
 import { Fiori3CommonProps } from '../interfaces/Fiori3CommonProps';
@@ -223,7 +222,6 @@ export function withWebComponent<T>(WebComponent): FC<T> {
 
       const { props, slotProps } = this.regularProps;
       const { children, theme, ...regularProps } = props as T & WithWebComponentInternalPropTypes;
-
       return (
         <CustomTag {...this.booleanProps} ref={this.handleInnerRef} {...regularProps} class={className}>
           {Object.keys(slots).map((slot) => {

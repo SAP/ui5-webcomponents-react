@@ -40,7 +40,7 @@
                           <div>
                             <Label for="">
                               <WithWebComponent theme={{...}} for="">
-                                <ui5-label for="" class="sapUiSizeCompact">
+                                <ui5-label for="" class="">
                                   Target
                                 </ui5-label>
                               </WithWebComponent>
@@ -60,7 +60,7 @@
                           <div className="AnalyticalCardHeader-deviation---">
                             <Label for="">
                               <WithWebComponent theme={{...}} for="">
-                                <ui5-label for="" class="sapUiSizeCompact">
+                                <ui5-label for="" class="">
                                   Deviation
                                 </ui5-label>
                               </WithWebComponent>

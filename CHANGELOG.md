@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1-rc.2](https://github.com/SAP/fiori-for-react/compare/v0.3.1-rc.1...v0.3.1-rc.2) (2019-06-13)
+
+
+### Features
+
+* Update UI5 WebComponents to v0.12.0 ([#30](https://github.com/SAP/fiori-for-react/issues/30)) ([4958a15](https://github.com/SAP/fiori-for-react/commit/4958a15))
+
+
+### BREAKING CHANGES
+
+* IconColor is renamed to SemanticColor
+* Tab: renamed property iconColor to semanticColor
+* Button: Remove activeIcon property
+* ToggleButton: Remove activeIcon property
+
+See also [UI5-WebComponents 0.12.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v0.12.0) release notes.
+
+
+
+
+
 ## [0.3.1-rc.1](https://github.com/SAP/fiori-for-react/compare/v0.3.1-rc.0...v0.3.1-rc.1) (2019-06-07)
 
 
