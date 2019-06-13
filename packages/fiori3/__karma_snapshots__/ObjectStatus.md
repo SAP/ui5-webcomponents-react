@@ -12,7 +12,7 @@
             <div className="Component-icon--- Component-iconError---">
               <Icon src="status-negative" style={{...}}>
                 <WithWebComponent theme={{...}} src="status-negative" style={{...}}>
-                  <ui5-icon src="status-negative" style={{...}} class="sapUiSizeCompact" />
+                  <ui5-icon src="status-negative" style={{...}} class="" />
                 </WithWebComponent>
               </Icon>
             </div>
@@ -39,7 +39,7 @@
             <div className="Component-icon--- Component-iconError---">
               <Icon src="status-negative" style={{...}}>
                 <WithWebComponent theme={{...}} src="status-negative" style={{...}}>
-                  <ui5-icon src="status-negative" style={{...}} class="sapUiSizeCompact" />
+                  <ui5-icon src="status-negative" style={{...}} class="" />
                 </WithWebComponent>
               </Icon>
             </div>
@@ -66,7 +66,7 @@
             <div className="Component-icon--- Component-iconError---">
               <Icon src="status-negative" style={{...}}>
                 <WithWebComponent theme={{...}} src="status-negative" style={{...}}>
-                  <ui5-icon src="status-negative" style={{...}} class="sapUiSizeCompact" />
+                  <ui5-icon src="status-negative" style={{...}} class="" />
                 </WithWebComponent>
               </Icon>
             </div>
@@ -90,7 +90,7 @@
             <div className="Component-icon--- Component-iconNone---">
               <Icon src="status-inactive" style={{...}}>
                 <WithWebComponent theme={{...}} src="status-inactive" style={{...}}>
-                  <ui5-icon src="status-inactive" style={{...}} class="sapUiSizeCompact" />
+                  <ui5-icon src="status-inactive" style={{...}} class="" />
                 </WithWebComponent>
               </Icon>
             </div>
@@ -114,7 +114,7 @@
             <div className="Component-icon--- Component-iconSuccess---">
               <Icon src="status-positive" style={{...}}>
                 <WithWebComponent theme={{...}} src="status-positive" style={{...}}>
-                  <ui5-icon src="status-positive" style={{...}} class="sapUiSizeCompact" />
+                  <ui5-icon src="status-positive" style={{...}} class="" />
                 </WithWebComponent>
               </Icon>
             </div>
@@ -138,7 +138,7 @@
             <div className="Component-icon--- Component-iconWarning---">
               <Icon src="status-critical" style={{...}}>
                 <WithWebComponent theme={{...}} src="status-critical" style={{...}}>
-                  <ui5-icon src="status-critical" style={{...}} class="sapUiSizeCompact" />
+                  <ui5-icon src="status-critical" style={{...}} class="" />
                 </WithWebComponent>
               </Icon>
             </div>
@@ -162,7 +162,7 @@
             <div className="Component-icon--- Component-iconInformation---">
               <Icon src="hint" style={{...}}>
                 <WithWebComponent theme={{...}} src="hint" style={{...}}>
-                  <ui5-icon src="hint" style={{...}} class="sapUiSizeCompact" />
+                  <ui5-icon src="hint" style={{...}} class="" />
                 </WithWebComponent>
               </Icon>
             </div>

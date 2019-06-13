@@ -13,13 +13,13 @@
               <div style={{...}} onClick={[Function]}>
                 <Button type="Default">
                   <WithWebComponent theme={{...}} type="Default">
-                    <ui5-button type="Default" class="sapUiSizeCompact" />
+                    <ui5-button type="Default" class="" />
                   </WithWebComponent>
                 </Button>
               </div>
               <WithTheme(WithWebComponent) hideHeader={true} innerComponentRef={[Function]} placementType="Bottom" style={[undefined]} data-ui5-slot={[undefined]} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                 <WithWebComponent theme={{...}} hideHeader={true} innerComponentRef={[Function]} placementType="Bottom" style={[undefined]} data-ui5-slot={[undefined]} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
-                  <ui5-popover hide-header={true} inner-component-ref={[Function]} placement-type="Bottom" style={[undefined]} data-ui5-slot={[undefined]} initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="sapUiSizeCompact">
+                  <ui5-popover hide-header={true} inner-component-ref={[Function]} placement-type="Bottom" style={[undefined]} data-ui5-slot={[undefined]} initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
                     <ul className="ActionSheet-actionSheet---" />
                   </ui5-popover>
                 </WithWebComponent>

@@ -14,13 +14,13 @@
                 <div className="MessageBox-icon---">
                   <Icon src="question-mark">
                     <WithWebComponent theme={{...}} src="question-mark">
-                      <ui5-icon src="question-mark" class="sapUiSizeCompact" />
+                      <ui5-icon src="question-mark" class="" />
                     </WithWebComponent>
                   </Icon>
                 </div>
                 <Title level="H5">
                   <WithWebComponent theme={{...}} level="H5">
-                    <ui5-title level="H5" class="sapUiSizeCompact">
+                    <ui5-title level="H5" class="">
                       Confirmation
                     </ui5-title>
                   </WithWebComponent>
@@ -41,7 +41,7 @@
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
                   <Button style={{...}} onPress={[Function]} type="Emphasized">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
@@ -50,7 +50,7 @@
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
                   <Button style={{...}} onPress={[Function]} type="Transparent">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Transparent">
-                      <ui5-button style={{...}} type="Transparent" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Transparent" class="">
                         Cancel
                       </ui5-button>
                     </WithWebComponent>
@@ -80,13 +80,13 @@
                 <div className="MessageBox-icon---">
                   <Icon src="question-mark">
                     <WithWebComponent theme={{...}} src="question-mark">
-                      <ui5-icon src="question-mark" class="sapUiSizeCompact" />
+                      <ui5-icon src="question-mark" class="" />
                     </WithWebComponent>
                   </Icon>
                 </div>
                 <Title level="H5">
                   <WithWebComponent theme={{...}} level="H5">
-                    <ui5-title level="H5" class="sapUiSizeCompact">
+                    <ui5-title level="H5" class="">
                       Confirmation
                     </ui5-title>
                   </WithWebComponent>
@@ -107,7 +107,7 @@
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
                   <Button style={{...}} onPress={[Function]} type="Emphasized">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
@@ -116,7 +116,7 @@
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
                   <Button style={{...}} onPress={[Function]} type="Transparent">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Transparent">
-                      <ui5-button style={{...}} type="Transparent" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Transparent" class="">
                         Cancel
                       </ui5-button>
                     </WithWebComponent>
@@ -146,13 +146,13 @@
                 <div className="MessageBox-icon---">
                   <Icon src="message-success">
                     <WithWebComponent theme={{...}} src="message-success">
-                      <ui5-icon src="message-success" class="sapUiSizeCompact" />
+                      <ui5-icon src="message-success" class="" />
                     </WithWebComponent>
                   </Icon>
                 </div>
                 <Title level="H5">
                   <WithWebComponent theme={{...}} level="H5">
-                    <ui5-title level="H5" class="sapUiSizeCompact">
+                    <ui5-title level="H5" class="">
                       Success
                     </ui5-title>
                   </WithWebComponent>
@@ -173,7 +173,7 @@
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
                   <Button style={{...}} onPress={[Function]} type="Emphasized">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
@@ -203,13 +203,13 @@
                 <div className="MessageBox-icon---">
                   <Icon src="message-warning">
                     <WithWebComponent theme={{...}} src="message-warning">
-                      <ui5-icon src="message-warning" class="sapUiSizeCompact" />
+                      <ui5-icon src="message-warning" class="" />
                     </WithWebComponent>
                   </Icon>
                 </div>
                 <Title level="H5">
                   <WithWebComponent theme={{...}} level="H5">
-                    <ui5-title level="H5" class="sapUiSizeCompact">
+                    <ui5-title level="H5" class="">
                       Warning
                     </ui5-title>
                   </WithWebComponent>
@@ -230,7 +230,7 @@
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
                   <Button style={{...}} onPress={[Function]} type="Emphasized">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
@@ -260,13 +260,13 @@
                 <div className="MessageBox-icon---">
                   <Icon src="message-error">
                     <WithWebComponent theme={{...}} src="message-error">
-                      <ui5-icon src="message-error" class="sapUiSizeCompact" />
+                      <ui5-icon src="message-error" class="" />
                     </WithWebComponent>
                   </Icon>
                 </div>
                 <Title level="H5">
                   <WithWebComponent theme={{...}} level="H5">
-                    <ui5-title level="H5" class="sapUiSizeCompact">
+                    <ui5-title level="H5" class="">
                       Error
                     </ui5-title>
                   </WithWebComponent>
@@ -287,7 +287,7 @@
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="Close">
                   <Button style={{...}} onPress={[Function]} type="Emphasized">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Emphasized" class="">
                         Close
                       </ui5-button>
                     </WithWebComponent>
@@ -317,13 +317,13 @@
                 <div className="MessageBox-icon---">
                   <Icon src="message-information">
                     <WithWebComponent theme={{...}} src="message-information">
-                      <ui5-icon src="message-information" class="sapUiSizeCompact" />
+                      <ui5-icon src="message-information" class="" />
                     </WithWebComponent>
                   </Icon>
                 </div>
                 <Title level="H5">
                   <WithWebComponent theme={{...}} level="H5">
-                    <ui5-title level="H5" class="sapUiSizeCompact">
+                    <ui5-title level="H5" class="">
                       Information
                     </ui5-title>
                   </WithWebComponent>
@@ -344,7 +344,7 @@
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
                   <Button style={{...}} onPress={[Function]} type="Emphasized">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
@@ -374,13 +374,13 @@
                 <div className="MessageBox-icon---">
                   <Icon src="question-mark">
                     <WithWebComponent theme={{...}} src="question-mark">
-                      <ui5-icon src="question-mark" class="sapUiSizeCompact" />
+                      <ui5-icon src="question-mark" class="" />
                     </WithWebComponent>
                   </Icon>
                 </div>
                 <Title level="H5">
                   <WithWebComponent theme={{...}} level="H5">
-                    <ui5-title level="H5" class="sapUiSizeCompact">
+                    <ui5-title level="H5" class="">
                       Custom
                     </ui5-title>
                   </WithWebComponent>
@@ -401,7 +401,7 @@
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="Yes">
                   <Button style={{...}} onPress={[Function]} type="Emphasized">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Emphasized" class="">
                         Yes
                       </ui5-button>
                     </WithWebComponent>
@@ -410,7 +410,7 @@
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="No">
                   <Button style={{...}} onPress={[Function]} type="Transparent">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Transparent">
-                      <ui5-button style={{...}} type="Transparent" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Transparent" class="">
                         No
                       </ui5-button>
                     </WithWebComponent>
@@ -440,13 +440,13 @@
                 <div className="MessageBox-icon---">
                   <Icon src="message-success">
                     <WithWebComponent theme={{...}} src="message-success">
-                      <ui5-icon src="message-success" class="sapUiSizeCompact" />
+                      <ui5-icon src="message-success" class="" />
                     </WithWebComponent>
                   </Icon>
                 </div>
                 <Title level="H5">
                   <WithWebComponent theme={{...}} level="H5">
-                    <ui5-title level="H5" class="sapUiSizeCompact">
+                    <ui5-title level="H5" class="">
                       Custom Success
                     </ui5-title>
                   </WithWebComponent>
@@ -467,7 +467,7 @@
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
                   <Button style={{...}} onPress={[Function]} type="Emphasized">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
@@ -511,13 +511,13 @@
                 <div className="MessageBox-icon---">
                   <Icon src="question-mark">
                     <WithWebComponent theme={{...}} src="question-mark">
-                      <ui5-icon src="question-mark" class="sapUiSizeCompact" />
+                      <ui5-icon src="question-mark" class="" />
                     </WithWebComponent>
                   </Icon>
                 </div>
                 <Title level="H5">
                   <WithWebComponent theme={{...}} level="H5">
-                    <ui5-title level="H5" class="sapUiSizeCompact">
+                    <ui5-title level="H5" class="">
                       Confirmation
                     </ui5-title>
                   </WithWebComponent>
@@ -538,7 +538,7 @@
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
                   <Button style={{...}} onPress={[Function]} type="Emphasized">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
@@ -547,7 +547,7 @@
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
                   <Button style={{...}} onPress={[Function]} type="Transparent">
                     <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Transparent">
-                      <ui5-button style={{...}} type="Transparent" class="sapUiSizeCompact">
+                      <ui5-button style={{...}} type="Transparent" class="">
                         Cancel
                       </ui5-button>
                     </WithWebComponent>
