@@ -1,9 +1,9 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { boolean, number } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 import { AnalyticalTable } from '../../../lib/AnalyticalTable';
-import generateData from './generateData';
 import { Title } from '../../../lib/Title';
+import generateData from './generateData';
 
 const columns = [
   {

@@ -1,10 +1,10 @@
+import { withStyles } from '@fiori-for-react/styles';
 import React, { Component, FC, Fragment } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
+import { JSSTheme } from '../../../interfaces/JSSTheme';
+import { ContentDensity } from '../../../lib/ContentDensity';
 import { Label } from '../../../lib/Label';
 import { Link } from '../../../lib/Link';
-import { ContentDensity } from '../../../lib/ContentDensity';
-import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { withStyles } from '@fiori-for-react/styles';
 import { LinkType } from '../../../lib/LinkType';
 
 enum NavigationModes {

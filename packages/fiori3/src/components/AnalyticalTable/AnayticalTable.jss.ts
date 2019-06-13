@@ -1,6 +1,6 @@
 import { fonts } from '@fiori-for-react/styles';
-import { ContentDensity } from '../../../lib/ContentDensity';
-import { JSSTheme } from '../../../interfaces/JSSTheme';
+import { ContentDensity } from '../../lib/ContentDensity';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters, contentDensity }: JSSTheme) => ({
   tHead: {

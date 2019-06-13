@@ -1,6 +1,6 @@
+import { withStyles } from '@fiori-for-react/styles';
 import React, { FC, isValidElement, ReactNode, ReactText } from 'react';
 import { Title } from '../../../lib/Title';
-import { withStyles } from '@fiori-for-react/styles';
 
 const styles = {
   bar: {

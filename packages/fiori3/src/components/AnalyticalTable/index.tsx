@@ -1,17 +1,17 @@
-import { VerticalAlign } from '../../lib/VerticalAlign';
-import { TextAlign } from '../../lib/TextAlign';
+import { withStyles } from '@fiori-for-react/styles';
 import React, { Component, CSSProperties, ReactNode, ReactText } from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { BusyIndicator } from '../../lib/BusyIndicator';
-import styles from './style/Table.jss';
-import { TitleBar } from './titleBar';
-import { Pagination } from './pagination';
-import { ColumnHeader } from './columnHeader';
-import { FilterEntry } from './types/FilterEntry';
-import { withStyles } from '@fiori-for-react/styles';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { BusyIndicator } from '../../lib/BusyIndicator';
+import { TextAlign } from '../../lib/TextAlign';
+import { VerticalAlign } from '../../lib/VerticalAlign';
+import styles from './AnayticalTable.jss';
+import { ColumnHeader } from './columnHeader';
+import { Pagination } from './pagination';
+import { TitleBar } from './titleBar';
+import { FilterEntry } from './types/FilterEntry';
 
 const CustomLoadingComponent = (props) => {
   let className = '-loading';
@@ -30,6 +30,7 @@ export interface ColumnConfiguration {
   width?: number;
   hAlign?: TextAlign;
   vAlign?: VerticalAlign;
+
   [key: string]: any;
 }
 

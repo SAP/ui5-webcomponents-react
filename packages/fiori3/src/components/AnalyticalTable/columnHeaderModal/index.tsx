@@ -1,15 +1,15 @@
-import React, { Component, ReactNode } from 'react';
-import { ResponsivePopover } from '../../../lib/ResponsivePopover';
-import { List } from '../../../lib/List';
-import { StandardListItem } from '../../../lib/StandardListItem';
-import { ClassProps } from '../../../interfaces/ClassProps';
-import { ColumnType } from '../columnHeader';
-import { Event } from '@fiori-for-react/utils';
 import { withStyles } from '@fiori-for-react/styles';
+import { Event } from '@fiori-for-react/utils';
+import React, { Component, ReactNode } from 'react';
+import { ClassProps } from '../../../interfaces/ClassProps';
+import { JSSTheme } from '../../../interfaces/JSSTheme';
+import { List } from '../../../lib/List';
 import { ListItemTypes } from '../../../lib/ListItemTypes';
 import { PlacementType } from '../../../lib/PlacementType';
 import { PopoverHorizontalAlign } from '../../../lib/PopoverHorizontalAlign';
-import { JSSTheme } from '../../../interfaces/JSSTheme';
+import { ResponsivePopover } from '../../../lib/ResponsivePopover';
+import { StandardListItem } from '../../../lib/StandardListItem';
+import { ColumnType } from '../columnHeader';
 
 const styles = ({ parameters }: JSSTheme) => ({
   modalRoot: {

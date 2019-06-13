@@ -1,10 +1,10 @@
+import { fonts, withStyles } from '@fiori-for-react/styles';
+import { Event, StyleClassHelper } from '@fiori-for-react/utils';
 import React, { Component, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
-import { Icon } from '../../../lib/Icon';
-import { ColumnHeaderModal } from '../columnHeaderModal/index';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { Event, StyleClassHelper } from '@fiori-for-react/utils';
-import { fonts, withStyles } from '@fiori-for-react/styles';
+import { Icon } from '../../../lib/Icon';
+import { ColumnHeaderModal } from '../columnHeaderModal';
 
 export interface ColumnType {
   filterable: boolean;
