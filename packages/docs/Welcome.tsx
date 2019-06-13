@@ -91,9 +91,7 @@ storiesOf(' Welcome | Fiori-for-React', module)
             </Text>
             <Highlight source="javascript">
               {dedent`...
-              import { ContentDensity } from '@fiori-for-react/fiori3/lib/ContentDensity';
               import { ThemeProvider } from '@fiori-for-react/fiori3/lib/ThemeProvider';
-              import { Themes } from '@fiori-for-react/fiori3/lib/Themes';
               ...
               render() {
                 return (
