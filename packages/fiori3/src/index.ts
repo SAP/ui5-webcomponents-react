@@ -5,6 +5,7 @@
 import { ActionSheet } from './lib/ActionSheet';
 import { AnalyticalCard } from './lib/AnalyticalCard';
 import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';
+import { AnalyticalTable } from './lib/AnalyticalTable';
 import { Avatar } from './lib/Avatar';
 import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
@@ -94,6 +95,7 @@ import { TableCell } from './lib/TableCell';
 import { TableColumn } from './lib/TableColumn';
 import { TableRow } from './lib/TableRow';
 import { Text } from './lib/Text';
+import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
 import { ThemeProvider } from './lib/ThemeProvider';
 import { Themes } from './lib/Themes';
@@ -106,12 +108,14 @@ import { Token } from './lib/Token';
 import { Tokenizer } from './lib/Tokenizer';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
+import { VerticalAlign } from './lib/VerticalAlign';
 import { YearPicker } from './lib/YearPicker';
 
 export {
   ActionSheet,
   AnalyticalCard,
   AnalyticalCardHeader,
+  AnalyticalTable,
   Avatar,
   AvatarShape,
   AvatarSize,
@@ -201,6 +205,7 @@ export {
   TableColumn,
   TableRow,
   Text,
+  TextAlign,
   TextArea,
   ThemeProvider,
   Themes,
@@ -213,5 +218,6 @@ export {
   Tokenizer,
   ValueState,
   VariantManagement,
+  VerticalAlign,
   YearPicker
 };
