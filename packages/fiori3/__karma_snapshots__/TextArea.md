@@ -3,7 +3,7 @@
 #### `Basic Test (generated)`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <TextArea rows={0} maxLength={{...}} growingMaxLines={0}>
       <WithWebComponent theme={{...}} rows={0} maxLength={{...}} growingMaxLines={0}>

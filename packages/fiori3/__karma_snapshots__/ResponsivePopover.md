@@ -3,7 +3,7 @@
 #### `render on Desktop`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" attachTo={{...}} withToastContainer={false}>
+<ThemeProvider attachTo={{...}} withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <ResponsivePopover footer={{...}} openBy={{...}}>
       <Popover footer={{...}} openBy={{...}} initialFocus={{...}} headerText="" placementType="Right" horizontalAlign="Center" verticalAlign="Center">
@@ -33,7 +33,7 @@
 #### `render on Phone`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <ResponsivePopover footer={{...}} openBy={{...}}>
       <div style={{...}} onClick={[Function]} data-ui5-slot={[undefined]}>

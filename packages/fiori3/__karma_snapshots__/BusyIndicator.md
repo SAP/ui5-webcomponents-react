@@ -3,7 +3,7 @@
 #### `Basic Test`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <BusyIndicator active={true} size="Large">
       <WithWebComponent theme={{...}} active={true} size="Large">
@@ -17,7 +17,7 @@
 #### `Inactive`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <BusyIndicator size="Large">
       <WithWebComponent theme={{...}} size="Large">
@@ -31,7 +31,7 @@
 #### `Size Medium`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <BusyIndicator active={true} size="Medium">
       <WithWebComponent theme={{...}} active={true} size="Medium">
@@ -45,7 +45,7 @@
 #### `Size Small`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <BusyIndicator active={true} size="Small">
       <WithWebComponent theme={{...}} active={true} size="Small">

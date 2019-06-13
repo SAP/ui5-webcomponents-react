@@ -3,7 +3,7 @@
 #### `Avatar - size: XL shape: Circle`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="XL" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="XL" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -19,7 +19,7 @@
 #### `Avatar - size: XL shape: Square`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="XL" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="XL" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -35,7 +35,7 @@
 #### `Avatar - size: L shape: Circle`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="L" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="L" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -51,7 +51,7 @@
 #### `Avatar - size: L shape: Square`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="L" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="L" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -67,7 +67,7 @@
 #### `Avatar - size: M shape: Circle`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="M" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="M" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -83,7 +83,7 @@
 #### `Avatar - size: M shape: Square`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="M" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="M" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -99,7 +99,7 @@
 #### `Avatar - size: S shape: Circle`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="S" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="S" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -115,7 +115,7 @@
 #### `Avatar - size: S shape: Square`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="S" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="S" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -131,7 +131,7 @@
 #### `Avatar - size: XS shape: Circle`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="XS" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="XS" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -147,7 +147,7 @@
 #### `Avatar - size: XS shape: Square`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="XS" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="XS" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -163,7 +163,7 @@
 #### `Avatar - size: Custom shape: Circle`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="Custom" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="Custom" shape="Circle" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -179,7 +179,7 @@
 #### `Avatar - size: Custom shape: Square`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="Custom" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="Custom" shape="Square" initials={{...}} image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
@@ -195,7 +195,7 @@
 #### `with Initials`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Avatar)) size="XL" initials="JD" shape="Circle" image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem">
       <WithStyles(Avatar) size="XL" initials="JD" shape="Circle" image={{...}} onClick={{...}} customDisplaySize="3rem" customFontSize="1.125rem" theme={{...}} classes={{...}}>
