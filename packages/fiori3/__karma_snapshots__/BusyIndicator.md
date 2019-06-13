@@ -1,5 +1,61 @@
 # `BusyIndicator`
 
+#### `Basic Test`
+
+```
+<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+  <ThemeProvider jss={{...}} theme={{...}}>
+    <BusyIndicator active={true} size="Large">
+      <WithWebComponent theme={{...}} active={true} size="Large">
+        <ui5-busyindicator active={true} size="Large" class="" />
+      </WithWebComponent>
+    </BusyIndicator>
+  </ThemeProvider>
+</ThemeProvider>
+```
+
+#### `Inactive`
+
+```
+<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+  <ThemeProvider jss={{...}} theme={{...}}>
+    <BusyIndicator size="Large">
+      <WithWebComponent theme={{...}} size="Large">
+        <ui5-busyindicator size="Large" class="" />
+      </WithWebComponent>
+    </BusyIndicator>
+  </ThemeProvider>
+</ThemeProvider>
+```
+
+#### `Size Medium`
+
+```
+<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+  <ThemeProvider jss={{...}} theme={{...}}>
+    <BusyIndicator active={true} size="Medium">
+      <WithWebComponent theme={{...}} active={true} size="Medium">
+        <ui5-busyindicator active={true} size="Medium" class="" />
+      </WithWebComponent>
+    </BusyIndicator>
+  </ThemeProvider>
+</ThemeProvider>
+```
+
+#### `Size Small`
+
+```
+<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+  <ThemeProvider jss={{...}} theme={{...}}>
+    <BusyIndicator active={true} size="Small">
+      <WithWebComponent theme={{...}} active={true} size="Small">
+        <ui5-busyindicator active={true} size="Small" class="" />
+      </WithWebComponent>
+    </BusyIndicator>
+  </ThemeProvider>
+</ThemeProvider>
+```
+
 #### `Check Elements`
 
 ```
