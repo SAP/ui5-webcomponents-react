@@ -3,7 +3,7 @@
 #### `Custom`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ProgressIndicator)) displayValue="sdf" width="50%" height="50%" percentValue={40} visible={true} state="None">
       <WithStyles(ProgressIndicator) displayValue="sdf" width="50%" height="50%" percentValue={40} visible={true} state="None" theme={{...}} classes={{...}}>
@@ -28,7 +28,7 @@
 #### `State`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Cozy" withToastContainer={false}>
+<ThemeProvider contentDensity="Cozy" withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ProgressIndicator)) percentValue={85} state="Error" displayValue="" visible={true} width="auto" height="">
       <WithStyles(ProgressIndicator) percentValue={85} state="Error" displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
@@ -52,7 +52,7 @@
 #### `ProgressIndicator with state Error`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ProgressIndicator)) state="Error" percentValue={0} displayValue="" visible={true} width="auto" height="">
       <WithStyles(ProgressIndicator) state="Error" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
@@ -76,7 +76,7 @@
 #### `ProgressIndicator with state None`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ProgressIndicator)) state="None" percentValue={0} displayValue="" visible={true} width="auto" height="">
       <WithStyles(ProgressIndicator) state="None" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
@@ -100,7 +100,7 @@
 #### `ProgressIndicator with state Success`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ProgressIndicator)) state="Success" percentValue={0} displayValue="" visible={true} width="auto" height="">
       <WithStyles(ProgressIndicator) state="Success" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
@@ -124,7 +124,7 @@
 #### `ProgressIndicator with state Warning`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ProgressIndicator)) state="Warning" percentValue={0} displayValue="" visible={true} width="auto" height="">
       <WithStyles(ProgressIndicator) state="Warning" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
@@ -148,7 +148,7 @@
 #### `ProgressIndicator with state Information`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ProgressIndicator)) state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="">
       <WithStyles(ProgressIndicator) state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>

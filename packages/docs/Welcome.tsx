@@ -98,13 +98,11 @@ storiesOf(' Welcome | UI5 Web Components for React', module)
             </Text>
             <Highlight source="javascript">
               {dedent`...
-              import { ContentDensity } from '@ui5-webcomponents-react/fiori3/lib/ContentDensity';
               import { ThemeProvider } from '@ui5-webcomponents-react/fiori3/lib/ThemeProvider';
-              import { Themes } from '@ui5-webcomponents-react/fiori3/lib/Themes';
               ...
               render() {
                 return (
-                  <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact} withToastContainer>
+                  <ThemeProvider withToastContainer>
                     <MyApp />
                   </ThemeProvider>
                 );

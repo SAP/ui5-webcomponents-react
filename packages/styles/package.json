@@ -1,6 +1,6 @@
 {
   "name": "@ui5-webcomponents-react/styles",
-  "version": "0.3.1-rc.2",
+  "version": "0.3.2-rc.0",
   "description": "Stylesheets for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",

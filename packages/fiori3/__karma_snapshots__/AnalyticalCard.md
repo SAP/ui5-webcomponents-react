@@ -3,7 +3,7 @@
 #### `Render without Crashing`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(AnalyticalCard)) renderHeader={[Function: renderHeader]}>
       <WithStyles(AnalyticalCard) renderHeader={[Function: renderHeader]} theme={{...}} classes={{...}}>

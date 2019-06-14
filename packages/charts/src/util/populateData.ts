@@ -4,7 +4,7 @@ import belizePlus from './../themes/sap_belize_plus';
 const getMapForTheme = (theme) => {
   switch (theme) {
     case 'sap_belize':
-    case 'sap_fiori3_light': // TODO This needs to change as soon there is a Fiori3 Color Map Available
+    case 'sap_fiori_3': // TODO This needs to change as soon there is a Fiori3 Color Map Available
       return belize;
     case 'sap_belize_plus':
       return belizePlus;

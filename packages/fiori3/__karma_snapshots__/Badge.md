@@ -3,7 +3,7 @@
 #### `Basic Test`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Badge>
       <WithWebComponent theme={{...}}>
@@ -19,7 +19,7 @@
 #### `with Icon`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Badge icon={{...}}>
       <WithWebComponent theme={{...}} icon={{...}}>

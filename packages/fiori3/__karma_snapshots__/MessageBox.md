@@ -3,7 +3,7 @@
 #### `Confirm - OK`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(MessageBox)) type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
       <WithStyles(MessageBox) type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} theme={{...}} classes={{...}}>
@@ -69,7 +69,7 @@
 #### `Confirm - Cancel`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(MessageBox)) type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
       <WithStyles(MessageBox) type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} theme={{...}} classes={{...}}>
@@ -135,7 +135,7 @@
 #### `Success`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(MessageBox)) type="Success" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
       <WithStyles(MessageBox) type="Success" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} theme={{...}} classes={{...}}>
@@ -192,7 +192,7 @@
 #### `Warning`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(MessageBox)) type="Warning" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
       <WithStyles(MessageBox) type="Warning" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} theme={{...}} classes={{...}}>
@@ -249,7 +249,7 @@
 #### `Error`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(MessageBox)) type="Error" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
       <WithStyles(MessageBox) type="Error" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} theme={{...}} classes={{...}}>
@@ -306,7 +306,7 @@
 #### `Information`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(MessageBox)) type="Information" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
       <WithStyles(MessageBox) type="Information" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} theme={{...}} classes={{...}}>
@@ -363,7 +363,7 @@
 #### `Show`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(MessageBox)) visible={true} onClose={[Function]} title="Custom" actions={{...}} icon={{...}} type="Confirm">
       <WithStyles(MessageBox) visible={true} onClose={[Function]} title="Custom" actions={{...}} icon={{...}} type="Confirm" theme={{...}} classes={{...}}>
@@ -429,7 +429,7 @@
 #### `Success w/ custom title`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(MessageBox)) type="Success" visible={true} onClose={[Function]} title="Custom Success" icon={{...}} actions={{...}}>
       <WithStyles(MessageBox) type="Success" visible={true} onClose={[Function]} title="Custom Success" icon={{...}} actions={{...}} theme={{...}} classes={{...}}>
@@ -486,7 +486,7 @@
 #### `Not visible`
 
 ```
-"<ThemeProvider theme=\"sap_fiori3_light\" contentDensity=\"Compact\" withToastContainer={false}>
+"<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(MessageBox)) type=\"Success\" visible={false} onClose={[Function]} title=\"Custom Success\" icon={{...}} actions={{...}}>
       <WithStyles(MessageBox) type=\"Success\" visible={false} onClose={[Function]} title=\"Custom Success\" icon={{...}} actions={{...}} theme={{...}} classes={{...}}>
@@ -500,7 +500,7 @@
 #### `No Title`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(MessageBox)) visible={true} onClose={[Function]} title={{...}} icon={{...}} type="Confirm" actions={{...}}>
       <WithStyles(MessageBox) visible={true} onClose={[Function]} title={{...}} icon={{...}} type="Confirm" actions={{...}} theme={{...}} classes={{...}}>

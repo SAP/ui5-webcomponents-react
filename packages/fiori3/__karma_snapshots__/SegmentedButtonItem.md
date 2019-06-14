@@ -3,7 +3,7 @@
 #### `Basic SegmentedButtonItem`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(SegmentedButtonItem)) id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false} theme={{...}} classes={{...}}>
@@ -28,7 +28,7 @@
 #### `Selected SegmentedButtonItem`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(SegmentedButtonItem)) id={1} icon={{...}} selected={true} visible={true} enabled={true} onClick={{...}}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} selected={true} visible={true} enabled={true} onClick={{...}} theme={{...}} classes={{...}}>
@@ -53,7 +53,7 @@
 #### `SegmentedButtonItem Icon Only`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(SegmentedButtonItem)) id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false} theme={{...}} classes={{...}}>
@@ -77,7 +77,7 @@
 #### `SegmentedButtonItem Disabled`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(SegmentedButtonItem)) id={1} icon={{...}} enabled={false} onClick={[Function]} visible={true} selected={false}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} enabled={false} onClick={[Function]} visible={true} selected={false} theme={{...}} classes={{...}}>
@@ -101,7 +101,7 @@
 #### `SegmentedButtonItem onClick`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(SegmentedButtonItem)) id={1} icon={{...}} onClick={[Function]} visible={true} enabled={true} selected={false}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} onClick={[Function]} visible={true} enabled={true} selected={false} theme={{...}} classes={{...}}>

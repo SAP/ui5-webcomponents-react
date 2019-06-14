@@ -3,7 +3,7 @@
 #### `Render Basic Text`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
@@ -21,7 +21,7 @@
 #### `No Wrap`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Component)) wrapping={false} renderWhitespace={false} width={{...}}>
       <WithStyles(Component) wrapping={false} renderWhitespace={false} width={{...}} theme={{...}} classes={{...}}>
@@ -39,7 +39,7 @@
 #### `Render Whitespace`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Component)) renderWhitespace={true} wrapping={true} width={{...}}>
       <WithStyles(Component) renderWhitespace={true} wrapping={true} width={{...}} theme={{...}} classes={{...}}>

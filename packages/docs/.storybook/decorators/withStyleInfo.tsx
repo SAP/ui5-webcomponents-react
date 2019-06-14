@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ContentDensity, Label, Text, ThemeProvider, Themes } from '@ui5-webcomponents-react/fiori3';
+import { Label, Text, ThemeProvider } from '@ui5-webcomponents-react/fiori3';
 
 const withStyleContainer = {
   fontFamily:
@@ -64,7 +64,7 @@ class WithStyleInfo extends Component<any> {
       <div>
         {children}
         <div style={withStyleContainer}>
-          <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact}>
+          <ThemeProvider>
             <h1 style={titleStyle}>Styling API</h1>
             <div style={{ display: 'flex', flexDirection: 'column', marginTop: '1rem' }}>
               {styleInfo.attributes.map((info) => (

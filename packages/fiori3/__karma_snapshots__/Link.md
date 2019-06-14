@@ -3,7 +3,7 @@
 #### `Basic Test (generated)`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Link href="" target="" type="Default">
       <WithWebComponent theme={{...}} href="" target="" type="Default">

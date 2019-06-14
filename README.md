@@ -76,14 +76,12 @@ npm install @ui5-webcomponents-react/fiori3 --save
 In order to use `ui5-webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
 You will find this component most likely in `src/App.js`: 
 ```jsx
-import { ContentDensity } from '@ui5-webcomponents-react/fiori3/lib/ContentDensity';
 import { ThemeProvider } from '@ui5-webcomponents-react/fiori3/lib/ThemeProvider';
-import { Themes } from '@ui5-webcomponents-react/fiori3/lib/Themes';
 ...
 render() {
   return (
     <div>
-      <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact} withToastContainer>
+      <ThemeProvider withToastContainer>
         <MyApp />
       </ThemeProvider>
     </div>

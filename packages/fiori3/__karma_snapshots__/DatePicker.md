@@ -3,7 +3,7 @@
 #### `Basic Test (generated)`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <DatePicker valueState="None">
       <WithWebComponent theme={{...}} valueState="None">

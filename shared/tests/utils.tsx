@@ -2,8 +2,6 @@ import React from 'react';
 import { Event } from '@ui5-webcomponents-react/utils';
 import { mount, shallow } from 'enzyme';
 import { ThemeProvider } from '../../packages/fiori3/src/lib/ThemeProvider';
-import { Themes } from '../../packages/fiori3/src/lib/Themes';
-import { ContentDensity } from '../../packages/fiori3/src/lib/ContentDensity';
 
 export const modifyObjectProperty = (object: any, attr: string, value: any) => {
   Object.defineProperty(object, attr, {
@@ -22,24 +20,13 @@ export const setUserAgentString = (userAgent) => {
 };
 
 export const mountThemedComponent = (component, contextOverwrite = {}, enzymeOptions = {}) =>
-  mount(
-    <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact} {...contextOverwrite}>
-      {component}
-    </ThemeProvider>,
-    enzymeOptions
-  );
+  mount(<ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>, enzymeOptions);
 
 export const ThemedComponent = (component, contextOverwrite = {}) => (
-  <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact} {...contextOverwrite}>
-    {component}
-  </ThemeProvider>
+  <ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>
 );
 
 export const renderThemedComponent = (component, contextOverwrite = {}) =>
-  shallow(
-    <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact} {...contextOverwrite}>
-      {component}
-    </ThemeProvider>
-  ).render();
+  shallow(<ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>).render();
 
 export { mount };
