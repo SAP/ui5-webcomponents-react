@@ -30,7 +30,12 @@ module.exports = {
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
     '^@ui5/webcomponents/dist(.*)$': 'identity-obj-proxy', // ui5 web components can be mocked, not relevant for jest tests
-    '^@ui5/webcomponents-base/src/Configuration(.*)$': path.resolve(__dirname, './webComponentConfigMock'),
+    '^@ui5/webcomponents-base/src/Configuration(.*)$': path.resolve(
+      PATHS.shared,
+      'tests',
+      'mock',
+      'webComponentConfigMock.js'
+    ),
     '\\.(css|less)$': 'identity-obj-proxy'
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],

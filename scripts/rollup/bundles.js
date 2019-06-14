@@ -13,7 +13,7 @@ const bundles = [
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
     entry: 'fiori3',
     global: 'FioriForReact',
-    externals: ['react', 'react-dom', 'react-jss']
+    externals: ['react', 'react-dom', 'react-jss', '@ui5/webcomponents-base']
   },
   {
     label: 'styles',
