@@ -3,7 +3,7 @@
 #### `Render without Crashing`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ActionSheet)) openBy={{...}} placement="Bottom">
       <WithStyles(ActionSheet) openBy={{...}} placement="Bottom" classes={{...}}>

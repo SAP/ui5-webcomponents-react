@@ -76,14 +76,12 @@ npm install @fiori-for-react/fiori3 --save
 In order to use `fiori-for-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
 You will find this component most likely in `src/App.js`: 
 ```jsx
-import { ContentDensity } from '@fiori-for-react/fiori3/lib/ContentDensity';
 import { ThemeProvider } from '@fiori-for-react/fiori3/lib/ThemeProvider';
-import { Themes } from '@fiori-for-react/fiori3/lib/Themes';
 ...
 render() {
   return (
     <div>
-      <ThemeProvider theme={Themes.sap_fiori3_light} contentDensity={ContentDensity.Compact} withToastContainer>
+      <ThemeProvider withToastContainer>
         <MyApp />
       </ThemeProvider>
     </div>
