@@ -43,6 +43,12 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
     filter: null
   };
 
+  private popoverRef = null;
+
+  private handlePopoverRef = (el) => {
+    this.popoverRef = el;
+  };
+
   private handleSort = (e) => {
     const sortType = e.getParameter('item').getAttribute('data-sort');
     if (sortType === 'asc') {
@@ -50,6 +56,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
     } else {
       this.props.sortDescending(Event.of(this, e.getOriginalEvent()));
     }
+    this.popoverRef.close();
   };
 
   render() {
@@ -63,6 +70,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
         hideArrow
         horizontalAlign={PopoverHorizontalAlign.Left}
         placementType={PlacementType.Bottom}
+        innerComponentRef={this.handlePopoverRef}
       >
         <List onItemPress={this.handleSort}>
           {showSort && (
