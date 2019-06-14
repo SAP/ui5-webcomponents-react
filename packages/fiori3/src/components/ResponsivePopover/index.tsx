@@ -1,4 +1,4 @@
-import { Device, Event } from '@fiori-for-react/utils';
+import { Device, Event } from '@ui5-webcomponents-react/utils';
 import React, { Component } from 'react';
 import { Dialog } from '../../lib/Dialog';
 import { Popover } from '../../lib/Popover';

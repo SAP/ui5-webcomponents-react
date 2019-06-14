@@ -1,14 +1,14 @@
 <a name="top"></a>
-# fiori-for-react
+# UI5 Web Components for React
 <p align="center">
-  <a href="https://travis-ci.org/SAP/fiori-for-react" target="_blank">
-    <img alt="Build Status" src="https://img.shields.io/travis/SAP/fiori-for-react/master.svg">
+  <a href="https://travis-ci.org/SAP/ui5-webcomponents-react" target="_blank">
+    <img alt="Build Status" src="https://img.shields.io/travis/SAP/ui5-webcomponents-react/master.svg">
   </a>
-  <a href="https://coveralls.io/github/SAP/fiori-for-react" target="_blank">
-    <img alt="Code Coverage" src="https://img.shields.io/coveralls/github/SAP/fiori-for-react/master.svg">
+  <a href="https://coveralls.io/github/SAP/ui5-webcomponents-react" target="_blank">
+    <img alt="Code Coverage" src="https://img.shields.io/coveralls/github/SAP/ui5-webcomponents-react/master.svg">
   </a>
   <!-- <a href="https://sap-ea.slack.com/messages/CEN48B210" target="_blank">
-    <img alt="Slack Badge" src="https://badgen.net/badge/slack/fiori-for-react/orange?icon=slack">
+    <img alt="Slack Badge" src="https://badgen.net/badge/slack/ui5-webcomponents-react/orange?icon=slack">
   </a> -->
   <a href="https://github.com/prettier/prettier" target="_blank">
     <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg"> 
@@ -23,32 +23,32 @@
 <a name="description"></a>
 ## Description
 
-`fiori-for-react` is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
+`ui5-webcomponents-react` is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
 
 ### Explore our components
-You can play around with our components by visiting our [Storybook](https://sap.github.io/fiori-for-react/).
+You can play around with our components by visiting our [Storybook](https://sap.github.io/ui5-webcomponents-react/).
 
 ### Package Overview
 
-#### [@fiori-for-react/fiori3](https://github.com/SAP/fiori-for-react/tree/master/packages/fiori3) - Fiori 3 Components
-[![](https://img.shields.io/npm/v/@fiori-for-react/fiori3.svg)](https://www.npmjs.com/package/@fiori-for-react/fiori3)
-<!-- ![https://bundlephobia.com/result?p=@fiori-for-react/fiori3](https://img.shields.io/bundlephobia/min/@fiori-for-react/fiori3.svg?label=size) --> 
-<!-- ![https://bundlephobia.com/result?p=@fiori-for-react/fiori3](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/fiori3.svg?label=gzip%20size) -->
+#### [@ui5-webcomponents-react/fiori3](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/fiori3) - Fiori 3 Components
+[![](https://img.shields.io/npm/v/@ui5-webcomponents-react/fiori3.svg)](https://www.npmjs.com/package/@ui5-webcomponents-react/fiori3)
+<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/fiori3](https://img.shields.io/bundlephobia/min/@ui5-webcomponents-react/fiori3.svg?label=size) --> 
+<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/fiori3](https://img.shields.io/bundlephobia/minzip/@ui5-webcomponents-react/fiori3.svg?label=gzip%20size) -->
 
-#### [@fiori-for-react/styles](https://github.com/SAP/fiori-for-react/tree/master/packages/styles) - Styles
-[![](https://img.shields.io/npm/v/@fiori-for-react/styles.svg)](https://www.npmjs.com/package/@fiori-for-react/styles)
-<!-- ![https://bundlephobia.com/result?p=@fiori-for-react/styles](https://img.shields.io/bundlephobia/min/@fiori-for-react/styles.svg?label=size)  -->
-<!-- ![https://bundlephobia.com/result?p=@fiori-for-react/styles](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/styles.svg?label=gzip%20size) -->
+#### [@ui5-webcomponents-react/styles](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/styles) - Styles
+[![](https://img.shields.io/npm/v/@ui5-webcomponents-react/styles.svg)](https://www.npmjs.com/package/@ui5-webcomponents-react/styles)
+<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/styles](https://img.shields.io/bundlephobia/min/@ui5-webcomponents-react/styles.svg?label=size)  -->
+<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/styles](https://img.shields.io/bundlephobia/minzip/@ui5-webcomponents-react/styles.svg?label=gzip%20size) -->
 
-#### [@fiori-for-react/utils](https://github.com/SAP/fiori-for-react/tree/master/packages/utils) - Utils
-[![](https://img.shields.io/npm/v/@fiori-for-react/utils.svg)](https://www.npmjs.com/package/@fiori-for-react/utils)
-<!-- ![https://bundlephobia.com/result?p=@fiori-for-react/utils](https://img.shields.io/bundlephobia/min/@fiori-for-react/utils.svg?label=size) --> 
-<!-- ![https://bundlephobia.com/result?p=@fiori-for-react/utils](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/utils.svg?label=gzip%20size) -->
+#### [@ui5-webcomponents-react/utils](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/utils) - Utils
+[![](https://img.shields.io/npm/v/@ui5-webcomponents-react/utils.svg)](https://www.npmjs.com/package/@ui5-webcomponents-react/utils)
+<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/utils](https://img.shields.io/bundlephobia/min/@ui5-webcomponents-react/utils.svg?label=size) --> 
+<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/utils](https://img.shields.io/bundlephobia/minzip/@ui5-webcomponents-react/utils.svg?label=gzip%20size) -->
 
-#### [@fiori-for-react/charts](https://github.com/SAP/fiori-for-react/tree/master/packages/charts) - Fiori Charts 
-[![](https://img.shields.io/npm/v/@fiori-for-react/charts.svg)](https://www.npmjs.com/package/@fiori-for-react/charts)
-<!-- ![https://bundlephobia.com/result?p=@fiori-for-react/charts](https://img.shields.io/bundlephobia/min/@fiori-for-react/charts.svg?label=size)  -->
-<!-- ![https://bundlephobia.com/result?p=@fiori-for-react/charts](https://img.shields.io/bundlephobia/minzip/@fiori-for-react/charts.svg?label=gzip%20size) -->
+#### [@ui5-webcomponents-react/charts](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts) - Fiori Charts 
+[![](https://img.shields.io/npm/v/@ui5-webcomponents-react/charts.svg)](https://www.npmjs.com/package/@ui5-webcomponents-react/charts)
+<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/charts](https://img.shields.io/bundlephobia/min/@ui5-webcomponents-react/charts.svg?label=size)  -->
+<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/charts](https://img.shields.io/bundlephobia/minzip/@ui5-webcomponents-react/charts.svg?label=gzip%20size) -->
 
 
 <!-- *********************************************************************** -->
@@ -63,9 +63,9 @@ You can play around with our components by visiting our [Storybook](https://sap.
 <a name="download"></a>
 ## Download and Installation
 
-To consume `fiori-for-react`, first you need to install the npm module:
+To consume `ui5-webcomponents-react`, first you need to install the npm module:
 ```sh
-npm install @fiori-for-react/fiori3 --save
+npm install @ui5-webcomponents-react/fiori3 --save
 ```
 
 <!-- *********************************************************************** -->
@@ -73,12 +73,12 @@ npm install @fiori-for-react/fiori3 --save
 ## Configuration
 
 **Prerequisite: You have a React app.** In case you don't, we recommend to create one using [create-react-app](https://facebook.github.io/create-react-app/).<br/>
-In order to use `fiori-for-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
+In order to use `ui5-webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
 You will find this component most likely in `src/App.js`: 
 ```jsx
-import { ContentDensity } from '@fiori-for-react/fiori3/lib/ContentDensity';
-import { ThemeProvider } from '@fiori-for-react/fiori3/lib/ThemeProvider';
-import { Themes } from '@fiori-for-react/fiori3/lib/Themes';
+import { ContentDensity } from '@ui5-webcomponents-react/fiori3/lib/ContentDensity';
+import { ThemeProvider } from '@ui5-webcomponents-react/fiori3/lib/ThemeProvider';
+import { Themes } from '@ui5-webcomponents-react/fiori3/lib/Themes';
 ...
 render() {
   return (
@@ -91,11 +91,11 @@ render() {
 }
 ```
 
-Then, you are ready to use `fiori-for-react` and you can import the desired component(s) in your app:<br />
+Then, you are ready to use `ui5-webcomponents-react` and you can import the desired component(s) in your app:<br />
 For example, to use ```Button``` you need to import it:
 
 ```jsx
-import { Button } from '@fiori-for-react/fiori3/lib/Button'; // loads ui5-button wrapped in a fiori-for-react component
+import { Button } from '@ui5-webcomponents-react/fiori3/lib/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react component
 ```
 
 Then, you can use the Button in your app:
@@ -104,7 +104,7 @@ Then, you can use the Button in your app:
 <Button onPress={() => alert('Hello World!')}>Hello world!</Button>
 ```
 
-You could import all components also from `@fiori-for-react/fiori3` directly, but this will have a negative impact on your bundle size.
+You could import all components also from `@ui5-webcomponents-react/fiori3` directly, but this will have a negative impact on your bundle size.
 
 For Browser Support and the configuration of the UI5 Web Components, please take a look at the 
  [Browser Support](https://github.com/SAP/ui5-webcomponents#browser-support) and the
@@ -138,7 +138,7 @@ Please also refer to the [UI5 Web Components React Sample](https://github.com/SA
 <a name="issues"></a>
 ## Known Issues
 
-Please look at our [GitHub Issues](https://github.com/SAP/fiori-for-react/issues) .
+Please look at our [GitHub Issues](https://github.com/SAP/ui5-webcomponents-react/issues) .
 
 
 

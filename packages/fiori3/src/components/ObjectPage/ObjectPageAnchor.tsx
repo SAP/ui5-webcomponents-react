@@ -1,4 +1,4 @@
-import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import { Button } from '../../lib/Button';
 import { ButtonType } from '../../lib/ButtonType';
 import { CustomListItem } from '../../lib/CustomListItem';

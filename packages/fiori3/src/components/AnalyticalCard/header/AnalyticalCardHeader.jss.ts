@@ -1,5 +1,5 @@
 import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { fonts, HSLColor } from '@fiori-for-react/styles';
+import { fonts, HSLColor } from '@ui5-webcomponents-react/styles';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
   helpText: {

@@ -37,7 +37,7 @@ export const Fiori4ReactTheme = create({
    * name to display in the top left corner
    * @type {String}
    */
-  brandTitle: 'Fiori-for-React',
+  brandTitle: 'UI5 Web Components for React',
   /**
    * URL for name in top left corner to link to
    * @type {String}

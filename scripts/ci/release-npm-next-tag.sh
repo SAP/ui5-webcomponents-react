@@ -29,7 +29,7 @@ cd ${TRAVIS_BUILD_DIR}/build/node_modules/styles && npm publish --access public 
 cd ${TRAVIS_BUILD_DIR}/build/node_modules/utils && npm publish --access public --tag next
 
 #curl --request POST \
-#  --url https://api.github.com/repos/SAP/fiori-for-react/pulls \
+#  --url https://api.github.com/repos/SAP/ui5-webcomponents-react/pulls \
 #  --header 'authorization: Bearer ${GH_TOKEN}' \
 #  --header 'content-type: application/json' \
 #  --data '{

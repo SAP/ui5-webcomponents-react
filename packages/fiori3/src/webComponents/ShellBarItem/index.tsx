@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import UI5ShellBarItem from '@ui5/webcomponents/dist/ShellBarItem';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 

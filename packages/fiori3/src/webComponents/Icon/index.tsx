@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import UI5Icon from '@ui5/webcomponents/dist/Icon';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 

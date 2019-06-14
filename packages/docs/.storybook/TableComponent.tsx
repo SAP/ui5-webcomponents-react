@@ -9,7 +9,7 @@ import {
   Text,
   ThemeProvider,
   Themes
-} from '@fiori-for-react/fiori3';
+} from '@ui5-webcomponents-react/fiori3';
 import React from 'react';
 
 const columns = [

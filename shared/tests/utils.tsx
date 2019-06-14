@@ -1,5 +1,5 @@
 import React from 'react';
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import { mount, shallow } from 'enzyme';
 import { ThemeProvider } from '../../packages/fiori3/src/lib/ThemeProvider';
 import { Themes } from '../../packages/fiori3/src/lib/Themes';

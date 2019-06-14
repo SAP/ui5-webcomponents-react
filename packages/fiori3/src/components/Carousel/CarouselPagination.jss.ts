@@ -1,6 +1,6 @@
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ZIndex } from '../../enums/ZIndex';
-import { HSLColor } from '@fiori-for-react/styles';
+import { HSLColor } from '@ui5-webcomponents-react/styles';
 
 const lighten = HSLColor.lighten;
 

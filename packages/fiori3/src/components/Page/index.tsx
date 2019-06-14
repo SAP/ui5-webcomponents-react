@@ -1,4 +1,4 @@
-import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import { Bar } from '../../lib/Bar';
 import { Button } from '../../lib/Button';
 import { ButtonType } from '../../lib/ButtonType';
@@ -8,7 +8,7 @@ import { TitleLevel } from '../../lib/TitleLevel';
 import React, { Component, ReactElement, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
 

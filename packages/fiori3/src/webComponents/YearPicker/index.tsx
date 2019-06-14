@@ -1,4 +1,4 @@
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import { CalendarType } from '../../lib/CalendarType';
 import UI5YearPicker from '@ui5/webcomponents/dist/YearPicker';
 import React, { FC } from 'react';

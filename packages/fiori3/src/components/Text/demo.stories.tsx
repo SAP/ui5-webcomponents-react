@@ -21,4 +21,4 @@ function renderStory() {
   );
 }
 
-storiesOf('F4R Components | Text', module).add('default', renderStory);
+storiesOf('Components | Text', module).add('default', renderStory);

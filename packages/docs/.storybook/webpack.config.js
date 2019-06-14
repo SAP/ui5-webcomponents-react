@@ -57,10 +57,10 @@ SKIP_DOC_GENERATION=true
       alias: {
         ...config.resolve.alias,
         '@shared': path.join(PATHS.root, 'shared'),
-        '@fiori-for-react/fiori3': path.join(PATHS.root, 'packages', 'fiori3', 'src', 'index.ts'),
-        '@fiori-for-react/charts': path.join(PATHS.root, 'packages', 'charts', 'src', 'index.ts'),
-        '@fiori-for-react/utils': path.join(PATHS.root, 'packages', 'utils', 'src', 'index.ts'),
-        '@fiori-for-react/styles': path.join(PATHS.root, 'packages', 'styles', 'src', 'index.ts')
+        '@ui5-webcomponents-react/fiori3': path.join(PATHS.root, 'packages', 'fiori3', 'src', 'index.ts'),
+        '@ui5-webcomponents-react/charts': path.join(PATHS.root, 'packages', 'charts', 'src', 'index.ts'),
+        '@ui5-webcomponents-react/utils': path.join(PATHS.root, 'packages', 'utils', 'src', 'index.ts'),
+        '@ui5-webcomponents-react/styles': path.join(PATHS.root, 'packages', 'styles', 'src', 'index.ts')
       }
     }
   };

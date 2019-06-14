@@ -14,4 +14,4 @@ function renderStory() {
   );
 }
 
-storiesOf('F4R Components | ProgressIndicator', module).add('Default', renderStory);
+storiesOf('Components | ProgressIndicator', module).add('Default', renderStory);

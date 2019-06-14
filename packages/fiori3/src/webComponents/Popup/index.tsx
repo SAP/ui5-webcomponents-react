@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import UI5Popup from '@ui5/webcomponents/dist/Popup';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 

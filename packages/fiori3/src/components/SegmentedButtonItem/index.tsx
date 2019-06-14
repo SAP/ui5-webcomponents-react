@@ -1,8 +1,8 @@
-import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import React, { CSSProperties, PureComponent } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import { SelectedKey } from '../SegmentedButton';
 import styles from './SegmentedButtonItem.jss';
 

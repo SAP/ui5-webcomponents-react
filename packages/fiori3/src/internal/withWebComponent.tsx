@@ -1,4 +1,4 @@
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import React, { Children, cloneElement, Component, CSSProperties, FC, ReactElement } from 'react';
 import { withTheme } from 'react-jss';
 import { Fiori3CommonProps } from '../interfaces/Fiori3CommonProps';

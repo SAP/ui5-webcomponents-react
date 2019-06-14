@@ -4,7 +4,7 @@ import { ThemeProvider } from '../../lib/ThemeProvider';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-storiesOf('F4R Components | MessageToast', module).add(
+storiesOf('Components | MessageToast', module).add(
   'Default',
   () => (
     <div>
@@ -46,25 +46,25 @@ storiesOf('F4R Components | MessageToast', module).add(
       propTablesExclude: [ThemeProvider, Button],
       text: `
 #### Success Message Toast:
-import { MessageToast } from '@fiori-for-react/fiori3';
+import { MessageToast } from '@ui5-webcomponents-react/fiori3';
 
 MessageToast.success('Hello Success Message Toast');
 
 #### Warning Message Toast:
-import { MessageToast } from '@fiori-for-react/fiori3';
+import { MessageToast } from '@ui5-webcomponents-react/fiori3';
 
 MessageToast.warning('Hello Warning Message Toast');
 
 
 #### Error Message Toast:
-import { MessageToast } from '@fiori-for-react/fiori3';
+import { MessageToast } from '@ui5-webcomponents-react/fiori3';
 
 MessageToast.error('Hello Error Message Toast');
 
 
 
 #### Generic Message Toast:
-import { MessageToast } from '@fiori-for-react/fiori3';
+import { MessageToast } from '@ui5-webcomponents-react/fiori3';
 
 MessageToast.show('Hello Generic Message Toast');
 

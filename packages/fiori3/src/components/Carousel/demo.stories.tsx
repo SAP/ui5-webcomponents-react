@@ -59,6 +59,6 @@ const renderCarouselWithOneChild = () => {
   );
 };
 
-storiesOf('F4R Components | Carousel', module)
+storiesOf('Components | Carousel', module)
   .add('Default', renderCarousel)
   .add('with 1 Child', renderCarouselWithOneChild);
