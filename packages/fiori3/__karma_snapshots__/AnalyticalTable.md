@@ -3,7 +3,7 @@
 #### `test Asc desc`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(AnalyticalTable)) showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]}>
       <WithStyles(AnalyticalTable) showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]} theme={{...}} classes={{...}}>
@@ -660,7 +660,7 @@
 #### `pagination`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(AnalyticalTable)) defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]}>
       <WithStyles(AnalyticalTable) defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} cellHeight={{...}} minRows={10} numItems={{...}} getTrProps={[Function: getTrProps]} theme={{...}} classes={{...}}>

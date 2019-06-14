@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { ValueState } from '../../lib/ValueState';
 import { CalendarType } from '../../lib/CalendarType';
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import UI5DatePicker from '@ui5/webcomponents/dist/DatePicker';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 

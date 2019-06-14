@@ -1,4 +1,4 @@
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import UI5TabContainer from '@ui5/webcomponents/dist/TabContainer';
 import React, { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent';

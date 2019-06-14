@@ -22,4 +22,4 @@ function renderStory() {
   );
 }
 
-storiesOf('F4R Components | VariantManagement', module).add('Default', renderStory);
+storiesOf('Components | VariantManagement', module).add('Default', renderStory);

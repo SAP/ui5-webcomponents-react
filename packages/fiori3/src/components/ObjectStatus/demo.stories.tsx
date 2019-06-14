@@ -5,7 +5,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-storiesOf('F4R Components | ObjectStatus', module)
+storiesOf('Components | ObjectStatus', module)
   .add('Only Text', () => (
     <ObjectStatus state={select('state', ValueState, ValueState.Success)}>Object Status</ObjectStatus>
   ))

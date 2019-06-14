@@ -1,4 +1,4 @@
-import { FlexBox, FlexBoxDirection, Link, Page, Text, Title } from '@fiori-for-react/fiori3';
+import { FlexBox, FlexBoxDirection, Link, Page, Text, Title } from '@ui5-webcomponents-react/fiori3';
 import { storiesOf } from '@storybook/react';
 import 'highlight.js/styles/solarized-dark.css';
 import Highlight from 'react-highlight.js';
@@ -6,16 +6,16 @@ import React from 'react';
 import dedent from 'dedent';
 import { Badges } from './Badges';
 
-storiesOf(' Welcome | Fiori-for-React', module)
+storiesOf(' Welcome | UI5 Web Components for React', module)
   .addParameters({
     info: {
       disable: true
     }
   })
-  .add('What is Fiori-for-React', () => {
+  .add('What is UI5 Web Components for React', () => {
     return (
       <Page
-        title="What is Fiori-for-React?"
+        title="What is UI5 Web Components for React?"
         style={{ height: '300px' }}
         showBackButton={false}
         className="pageWithPadding"
@@ -25,15 +25,18 @@ storiesOf(' Welcome | Fiori-for-React', module)
 
           <Title>Description</Title>
           <br />
-          <Text>Fiori-for-React is a Fiori3 compliant React library built on top of the UI5 Web Components.</Text>
+          <Text>
+            UI5 Web Components for React is a Fiori3 compliant React library built on top of the UI5 Web Components.
+          </Text>
 
           <Text>
-            With the help of Fiori-for-React, you can use UI5 Web Components as if they were native React components.
+            With the help of UI5 Web Components for React, you can use UI5 Web Components as if they were native React
+            components.
           </Text>
           <br />
           <Text>
-            In addition to that, Fiori-for-React is providing complex components and layouts on top of the UI5 Web
-            Components.
+            In addition to that, UI5 Web Components for React is providing complex components and layouts on top of the
+            UI5 Web Components.
           </Text>
         </FlexBox>
       </Page>
@@ -44,7 +47,7 @@ storiesOf(' Welcome | Fiori-for-React', module)
     () => {
       return (
         <Page
-          title="Fiori-for-React - Getting Started"
+          title="UI5 Web Components for React - Getting Started"
           style={{ height: '900px' }}
           showBackButton={false}
           className="pageWithPadding"
@@ -54,7 +57,9 @@ storiesOf(' Welcome | Fiori-for-React', module)
 
             <Title>Requirements</Title>
             <br />
-            <Text>In order to use fiori-for-react, you need to have Node.js and npm installed on your computer.</Text>
+            <Text>
+              In order to use ui5-webcomponents-react, you need to have Node.js and npm installed on your computer.
+            </Text>
             <ul>
               <li>
                 <Link href="https://nodejs.org/" target="_blank">
@@ -77,8 +82,10 @@ storiesOf(' Welcome | Fiori-for-React', module)
 
             <Title>Installation and Configuration</Title>
             <br />
-            <Text>To consume fiori-for-react, first you need to install the fiori-for-react npm module:</Text>
-            <Highlight lanuage="bash">npm install @fiori-for-react/fiori3 --save</Highlight>
+            <Text>
+              To consume ui5-webcomponents-react, first you need to install the ui5-webcomponents-react npm module:
+            </Text>
+            <Highlight lanuage="bash">npm install @ui5-webcomponents-react/fiori3 --save</Highlight>
 
             <Text>Setup your React App</Text>
             <Text>
@@ -86,12 +93,12 @@ storiesOf(' Welcome | Fiori-for-React', module)
               <Link href="https://facebook.github.io/create-react-app/" target="_blank">
                 create-react-app
               </Link>{' '}
-              or add fiori-for-react to your existing app by wrapping the root component of the app into our
+              or add ui5-webcomponents-react to your existing app by wrapping the root component of the app into our
               ThemeProvider:
             </Text>
             <Highlight source="javascript">
               {dedent`...
-              import { ThemeProvider } from '@fiori-for-react/fiori3/lib/ThemeProvider';
+              import { ThemeProvider } from '@ui5-webcomponents-react/fiori3/lib/ThemeProvider';
               ...
               render() {
                 return (
@@ -102,23 +109,23 @@ storiesOf(' Welcome | Fiori-for-React', module)
               }`}
             </Highlight>
 
-            <Text>Now you can use the fiori-for-react components in your app:</Text>
-            <Text>If you want to use a Button component, import it from fiori-for-react:</Text>
+            <Text>Now you can use the ui5-webcomponents-react components in your app:</Text>
+            <Text>If you want to use a Button component, import it from ui5-webcomponents-react:</Text>
             <Highlight language="javascript">
-              {`import { Button } from '@fiori-for-react/fiori3/lib/Button'; // loads ui5-button wrapped in a fiori-for-react Component`}
+              {`import { Button } from '@ui5-webcomponents-react/fiori3/lib/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react Component`}
             </Highlight>
             <Text>and use it in your component:</Text>
             <Highlight language="javascript">
               {`<Button onPress={() => alert('Hello World!')}>Hello world!</Button>`}
             </Highlight>
             <Text>
-              You could import all components also from '@fiori-for-react/fiori3' directly, but this will have a
+              You could import all components also from '@ui5-webcomponents-react/fiori3' directly, but this will have a
               negative impact on your bundle size.
             </Text>
 
             <Title>Known Issues</Title>
             <br />
-            <Link href="https://github.com/SAP/fiori-for-react/issues" target="_blank">
+            <Link href="https://github.com/SAP/ui5-webcomponents-react/issues" target="_blank">
               GitHub Issue Board
             </Link>
           </FlexBox>

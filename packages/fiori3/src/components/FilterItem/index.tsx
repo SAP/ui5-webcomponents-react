@@ -7,8 +7,8 @@ import { Select } from '../../lib/Select';
 import { StandardListItem } from '../../lib/StandardListItem';
 import { BusyIndicator } from '../../lib/BusyIndicator';
 import { FilterType } from '../../lib/FilterType';
-import { Event, StyleClassHelper } from '@fiori-for-react/utils';
-import { withStyles } from '@fiori-for-react/styles';
+import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ListItemTypes } from '../../lib/ListItemTypes';
 

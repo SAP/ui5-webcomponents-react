@@ -1,4 +1,4 @@
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import React, { FC, isValidElement, ReactNode, ReactText } from 'react';
 import { Title } from '../../../lib/Title';
 

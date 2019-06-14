@@ -1,8 +1,8 @@
-import { StyleClassHelper } from '@fiori-for-react/utils';
+import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import React, { Component } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import styles from './Bar.jss';
 
 export interface BarPropTypes extends CommonProps {

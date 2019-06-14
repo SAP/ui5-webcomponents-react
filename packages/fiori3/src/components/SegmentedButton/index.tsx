@@ -1,7 +1,7 @@
 import { ContentDensity } from '../../lib/ContentDensity';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { withStyles } from '@fiori-for-react/styles';
-import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { withStyles } from '@ui5-webcomponents-react/styles';
+import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import React, { Children, cloneElement, Component, CSSProperties, ReactElement } from 'react';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { SegmentedButtonItemPropTypes } from '../SegmentedButtonItem';

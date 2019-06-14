@@ -71,4 +71,4 @@ function renderStory() {
   );
 }
 
-storiesOf('F4R Components | FilterBar', module).add('Default', renderStory);
+storiesOf('Components | FilterBar', module).add('Default', renderStory);

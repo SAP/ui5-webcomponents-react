@@ -1,4 +1,4 @@
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import { ButtonType } from '../../lib/ButtonType';
 import UI5ToggleButton from '@ui5/webcomponents/dist/ToggleButton';
 import React, { FC } from 'react';

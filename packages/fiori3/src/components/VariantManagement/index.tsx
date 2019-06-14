@@ -1,4 +1,4 @@
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import { Button } from '../../lib/Button';
 import { ButtonType } from '../../lib/ButtonType';
 import { List } from '../../lib/List';
@@ -13,7 +13,7 @@ import React, { Component, ReactElement } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import { ButtonPropTypes } from '../../webComponents/Button';
 
 export interface VariantItem {

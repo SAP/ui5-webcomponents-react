@@ -1,5 +1,5 @@
-import { withStyles } from '@fiori-for-react/styles';
-import { Device, StyleClassHelper } from '@fiori-for-react/utils';
+import { withStyles } from '@ui5-webcomponents-react/styles';
+import { Device, StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import { ButtonType } from '../../lib/ButtonType';
 import { PlacementType } from '../../lib/PlacementType';
 import { Popover } from '../../lib/Popover';

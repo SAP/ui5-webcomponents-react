@@ -1,4 +1,4 @@
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import React, { Component, FC, Fragment } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { JSSTheme } from '../../../interfaces/JSSTheme';

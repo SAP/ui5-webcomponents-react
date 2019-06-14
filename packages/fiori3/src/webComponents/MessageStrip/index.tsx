@@ -1,4 +1,4 @@
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import { MessageStripType } from '../../lib/MessageStripType';
 import UI5MessageStrip from '@ui5/webcomponents/dist/MessageStrip';
 import React, { FC } from 'react';

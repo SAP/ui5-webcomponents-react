@@ -6,4 +6,4 @@ import React from 'react';
 
 const renderSpinner = () => <Spinner size={select('size', Size, Size.Medium)} />;
 
-storiesOf('F4R Components | Spinner', module).add('Default', renderSpinner);
+storiesOf('Components | Spinner', module).add('Default', renderSpinner);

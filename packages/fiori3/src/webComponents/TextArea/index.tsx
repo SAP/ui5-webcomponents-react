@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import UI5TextArea from '@ui5/webcomponents/dist/TextArea';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 

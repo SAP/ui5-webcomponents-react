@@ -2,7 +2,7 @@ import { ThemeProvider } from '../../lib/ThemeProvider';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import React from 'react';
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 
 describe('ThemeProvider', () => {
   it('Provides Correct Context', (done) => {

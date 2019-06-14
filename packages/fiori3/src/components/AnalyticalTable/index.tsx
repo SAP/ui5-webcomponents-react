@@ -1,4 +1,4 @@
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import React, { Component, CSSProperties, ReactNode, ReactText } from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';

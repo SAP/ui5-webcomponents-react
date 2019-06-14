@@ -97,7 +97,7 @@ const renderComponentWithSections = () => (
   </ObjectPage>
 );
 
-storiesOf('F4R Components | ObjectPage', module)
+storiesOf('Components | ObjectPage', module)
   .addParameters({
     info: {
       inline: false,

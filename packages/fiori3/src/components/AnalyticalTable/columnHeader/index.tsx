@@ -1,5 +1,5 @@
-import { fonts, withStyles } from '@fiori-for-react/styles';
-import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { fonts, withStyles } from '@ui5-webcomponents-react/styles';
+import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import React, { Component, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { JSSTheme } from '../../../interfaces/JSSTheme';

@@ -5,7 +5,7 @@ import { boolean, select, text } from '@storybook/addon-knobs';
 import { MessageBox } from '../../lib/MessageBox';
 import { MessageBoxTypes } from '../../lib/MessageBoxTypes';
 
-storiesOf('F4R Components | MessageBox', module)
+storiesOf('Components | MessageBox', module)
   .addParameters({
     info: {}
   })

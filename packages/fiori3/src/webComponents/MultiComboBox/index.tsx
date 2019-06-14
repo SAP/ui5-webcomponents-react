@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { ValueState } from '../../lib/ValueState';
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import UI5MultiComboBox from '@ui5/webcomponents/dist/MultiComboBox';
 import '@ui5/webcomponents/dist/InputSuggestions';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';

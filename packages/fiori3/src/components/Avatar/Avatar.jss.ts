@@ -1,4 +1,4 @@
-import { fonts } from '@fiori-for-react/styles';
+import { fonts } from '@ui5-webcomponents-react/styles';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const size = (s) => ({

@@ -1,4 +1,4 @@
-import { fonts } from '@fiori-for-react/styles';
+import { fonts } from '@ui5-webcomponents-react/styles';
 import { ContentDensity } from '../../lib/ContentDensity';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 

@@ -1,5 +1,5 @@
 import { ClassProps } from '../../interfaces/ClassProps';
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import styles from './FilterBar.jss';
