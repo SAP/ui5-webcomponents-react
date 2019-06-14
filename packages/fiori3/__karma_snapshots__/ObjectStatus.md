@@ -3,7 +3,7 @@
 #### `Render without Crashing`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Component)) state="Error" showDefaultIcon={true} icon={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}} theme={{...}} classes={{...}}>
@@ -30,7 +30,7 @@
 #### `Text Deprecation`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Component)) state="Error" showDefaultIcon={true} icon={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}} theme={{...}} classes={{...}}>
@@ -57,7 +57,7 @@
 #### `ObjectStatus: state: Error`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Component)) state="Error" showDefaultIcon={true} icon={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}} theme={{...}} classes={{...}}>
@@ -81,7 +81,7 @@
 #### `ObjectStatus: state: None`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Component)) state="None" showDefaultIcon={true} icon={{...}}>
       <WithStyles(Component) state="None" showDefaultIcon={true} icon={{...}} theme={{...}} classes={{...}}>
@@ -105,7 +105,7 @@
 #### `ObjectStatus: state: Success`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Component)) state="Success" showDefaultIcon={true} icon={{...}}>
       <WithStyles(Component) state="Success" showDefaultIcon={true} icon={{...}} theme={{...}} classes={{...}}>
@@ -129,7 +129,7 @@
 #### `ObjectStatus: state: Warning`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Component)) state="Warning" showDefaultIcon={true} icon={{...}}>
       <WithStyles(Component) state="Warning" showDefaultIcon={true} icon={{...}} theme={{...}} classes={{...}}>
@@ -153,7 +153,7 @@
 #### `ObjectStatus: state: Information`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(Component)) state="Information" showDefaultIcon={true} icon={{...}}>
       <WithStyles(Component) state="Information" showDefaultIcon={true} icon={{...}} theme={{...}} classes={{...}}>

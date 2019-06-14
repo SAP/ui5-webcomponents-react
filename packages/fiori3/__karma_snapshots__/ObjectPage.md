@@ -3,7 +3,7 @@
 #### `With Subsections`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ObjectPage)) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
       <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
@@ -467,7 +467,7 @@
 #### `Only Sections`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ObjectPage)) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
       <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>
@@ -682,7 +682,7 @@
 #### `IconTabBar Mode`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ObjectPage)) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
       <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} theme={{...}} classes={{...}}>
@@ -983,7 +983,7 @@
 #### `Not crashing with 1 section`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ObjectPage)) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
       <WithStyles(ObjectPage) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>
@@ -1049,7 +1049,7 @@
 #### `Not crashing with 0 sections`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ObjectPage)) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
       <WithStyles(ObjectPage) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>
@@ -1089,7 +1089,7 @@
 #### `Set selected section id`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(ObjectPage)) selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
       <WithStyles(ObjectPage) selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} theme={{...}} classes={{...}}>

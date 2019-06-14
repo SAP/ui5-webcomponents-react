@@ -3,7 +3,7 @@
 #### `Render without crashing`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(FilterBar)) renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]} displayOnly={true}>
       <WithStyles(FilterBar) renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]} displayOnly={true} theme={{...}} classes={{...}}>
@@ -158,7 +158,7 @@
 #### `Hide Filter Bar`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(FilterBar)) renderVariants={[Function: renderVariants]} displayOnly={true}>
       <WithStyles(FilterBar) renderVariants={[Function: renderVariants]} displayOnly={true} theme={{...}} classes={{...}}>
@@ -324,7 +324,7 @@
 #### `Select Filter Item`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(FilterBar)) renderVariants={[Function: renderVariants]} displayOnly={true}>
       <WithStyles(FilterBar) renderVariants={[Function: renderVariants]} displayOnly={true} theme={{...}} classes={{...}}>

@@ -3,7 +3,7 @@
 #### `Render without crashing`
 
 ```
-<ThemeProvider theme="sap_fiori3_light" contentDensity="Compact" withToastContainer={false}>
+<ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
     <Jss(WithStyles(VariantManagement)) variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4">
       <WithStyles(VariantManagement) variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" theme={{...}} classes={{...}}>
