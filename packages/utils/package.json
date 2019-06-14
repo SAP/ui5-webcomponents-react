@@ -1,6 +1,6 @@
 {
   "name": "@ui5-webcomponents-react/utils",
-  "version": "0.3.2-rc.0",
+  "version": "0.3.2-rc.1",
   "description": "Utils for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
