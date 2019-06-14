@@ -119,7 +119,7 @@ const tableWithCustomTitle = () => {
   );
 };
 
-storiesOf('F4R Components | AnalyticalTable', module)
+storiesOf('F4R Components | Analytical Table', module)
   .add('Default', renderStory)
   .add('with Extension', tableWithExtension)
   .add('with cropped Search/Filter Popup', withCroppedPopup)
