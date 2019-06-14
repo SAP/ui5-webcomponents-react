@@ -22,4 +22,4 @@ const renderPage = () => (
   </div>
 );
 
-storiesOf('F4R Components | Page', module).add('Default', renderPage);
+storiesOf('Components | Page', module).add('Default', renderPage);

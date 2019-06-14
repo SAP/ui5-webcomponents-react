@@ -1,11 +1,11 @@
 {
-  "name": "@fiori-for-react/styles",
+  "name": "@ui5-webcomponents-react/styles",
   "version": "0.3.2-rc.0",
-  "description": "Stylesheets for fiori-for-react",
+  "description": "Stylesheets for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
-  "repository": "https://github.com/SAP/fiori-for-react/packages/styles",
+  "repository": "https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/styles",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "dependencies": {

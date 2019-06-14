@@ -1,4 +1,4 @@
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import { ListMode } from '../../lib/ListMode';
 import { ListSeparators } from '../../lib/ListSeparators';
 import UI5List from '@ui5/webcomponents/dist/List';

@@ -1,8 +1,8 @@
 import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { withStyles } from '@fiori-for-react/styles';
-import { Event, StyleClassHelper } from '@fiori-for-react/utils';
+import { withStyles } from '@ui5-webcomponents-react/styles';
+import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import React, { Children, cloneElement, PureComponent, ReactElement, ReactNode, ReactNodeArray } from 'react';
 import { scroller } from 'react-scroll';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';

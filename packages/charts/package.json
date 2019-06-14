@@ -1,11 +1,11 @@
 {
-  "name": "@fiori-for-react/charts",
+  "name": "@ui5-webcomponents-react/charts",
   "version": "0.3.2-rc.0",
-  "description": "Charts for fiori-for-react",
+  "description": "Charts for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
-  "repository": "https://github.com/SAP/fiori-for-react/packages/charts",
+  "repository": "https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "private": false,
@@ -13,8 +13,8 @@
     "@types/chart.js": "^2.7.53"
   },
   "dependencies": {
-    "@fiori-for-react/styles": "0.3.2-rc.0",
-    "@fiori-for-react/utils": "0.3.2-rc.0",
+    "@ui5-webcomponents-react/styles": "0.3.2-rc.0",
+    "@ui5-webcomponents-react/utils": "0.3.2-rc.0",
     "chart.js": "^2.8.0",
     "chartjs-plugin-datalabels": "^0.6.0",
     "is-mergeable-object": "^1.1.0",

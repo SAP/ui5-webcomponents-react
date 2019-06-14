@@ -1,4 +1,4 @@
-import { LineChart } from '@fiori-for-react/charts';
+import { LineChart } from '@ui5-webcomponents-react/charts';
 import { AnalyticalCard } from '../../lib/AnalyticalCard';
 import { AnalyticalCardHeader } from '../../lib/AnalyticalCardHeader';
 import { DeviationIndicator } from '../../lib/DeviationIndicator';
@@ -8,7 +8,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-storiesOf('F4R Components | Analytical Card', module).add('default', () => (
+storiesOf('Components | Analytical Card', module).add('default', () => (
   <AnalyticalCard
     renderHeader={() => (
       <AnalyticalCardHeader

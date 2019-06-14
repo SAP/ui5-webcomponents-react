@@ -39,7 +39,7 @@ const jsxSpinner = ora('Creating index.tsx').start();
 // create jsx
 const jsxContent = `
 import React, { Component, ComponentClass } from 'react';
-import { withStyles } from '@fiori-for-react/utils';
+import { withStyles } from '@ui5-webcomponents-react/utils';
 import styles from './${componentName}.jss';
 import { ClassProps } from '../../types/ClassProps';
 

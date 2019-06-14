@@ -1,6 +1,6 @@
 import React, { Component, ReactNode } from 'react';
 import UI5Dialog from '@ui5/webcomponents/dist/Dialog';
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {

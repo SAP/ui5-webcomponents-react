@@ -1,4 +1,4 @@
-import { Event } from '@fiori-for-react/utils';
+import { Event } from '@ui5-webcomponents-react/utils';
 import { PanelAccessibleRoles } from '../../lib/PanelAccessibleRoles';
 import UI5Panel from '@ui5/webcomponents/dist/Panel';
 import React, { FC, ReactNode } from 'react';

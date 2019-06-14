@@ -1,4 +1,4 @@
-import { Device } from '@fiori-for-react/utils';
+import { Device } from '@ui5-webcomponents-react/utils';
 import { ResponsivePopover } from '../../lib/ResponsivePopover';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';

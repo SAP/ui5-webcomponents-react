@@ -22,4 +22,4 @@ function renderStory() {
   );
 }
 
-storiesOf('F4R Components | SegmentedButton', module).add('Default', renderStory);
+storiesOf('Components | SegmentedButton', module).add('Default', renderStory);

@@ -6,7 +6,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { propTablesExclude } from '../../../../docs/.storybook/config';
 
-storiesOf('F4R Components | ActionSheet', module)
+storiesOf('Components | ActionSheet', module)
   .addParameters({
     info: {
       propTablesExclude: [...propTablesExclude, Button]

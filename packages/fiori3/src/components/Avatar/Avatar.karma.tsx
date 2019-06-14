@@ -1,4 +1,4 @@
-import { KeyCodes } from '@fiori-for-react/utils';
+import { KeyCodes } from '@ui5-webcomponents-react/utils';
 import { AvatarShape } from '../../lib/AvatarShape';
 import { AvatarSize } from '../../lib/AvatarSize';
 import { mountThemedComponent } from '@shared/tests/utils';

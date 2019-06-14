@@ -1,11 +1,11 @@
-# @fiori-for-react/utils
-Helper Utils for fiori-for-react
+# @ui5-webcomponents-react/utils
+Helper Utils for ui5-webcomponents-react
 
 ## Installation
 ```
-yarn add @fiori-for-react/utils
+yarn add @ui5-webcomponents-react/utils
 OR
-npm install @fiori-for-react/utils --save
+npm install @ui5-webcomponents-react/utils --save
 ```
 
 ## Modules
@@ -14,7 +14,7 @@ npm install @fiori-for-react/utils --save
 Concat multiple CSS Module into an instance of this class helper and place them into a react component.<br>
 Example:
 ```javascript
-import { StyleClassHelper } from '@fiori-for-react/utils';
+import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import style from 'YOUR_STYLESHEET';
 
 const classes = new StyleClassHelper.of(style.text);
@@ -32,8 +32,8 @@ export default MyComponent;
 ```
 
 ## Contribute
-Please check our [Contribution Guidelines](https://github.com/SAP/fiori-for-react/blob/master/CONTRIBUTING.md).
+Please check our [Contribution Guidelines](https://github.com/SAP/ui5-webcomponents-react/blob/master/CONTRIBUTING.md).
 
 ## License
 Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
-This file is licensed under the Apache Software License, Version 2.0 except as noted otherwise in the [LICENSE](https://github.com/SAP/fiori-for-react/blob/master/LICENSE) file.
+This file is licensed under the Apache Software License, Version 2.0 except as noted otherwise in the [LICENSE](https://github.com/SAP/ui5-webcomponents-react/blob/master/LICENSE) file.

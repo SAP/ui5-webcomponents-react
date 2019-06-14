@@ -1,8 +1,8 @@
-import { StyleClassHelper } from '@fiori-for-react/utils';
+import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import React, { Component, CSSProperties, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import { styles } from './Flexbox.jss';
 
 export enum FlexBoxJustifyContent {

@@ -7,7 +7,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-storiesOf('F4R Components | ResponsivePopover', module).add('Default', () => (
+storiesOf('Components | ResponsivePopover', module).add('Default', () => (
   <ResponsivePopover
     initialFocus={'generatedString'}
     hideHeader={boolean('hideHeader', false)}

@@ -6,7 +6,7 @@ import { DEFAULT_OPTIONS } from '../../config';
 import { formatTooltipLabel, getTextWidth, mergeConfig } from '../../util/utils';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { LOG_LEVEL, Logger } from '@fiori-for-react/utils';
+import { LOG_LEVEL, Logger } from '@ui5-webcomponents-react/utils';
 import { withChartContainer } from '../ChartContainer/withChartContainer';
 import { BarChartPlaceholder } from './Placeholder';
 

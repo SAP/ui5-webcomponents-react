@@ -1,11 +1,11 @@
-import { StyleClassHelper } from '@fiori-for-react/utils';
+import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import { ContentDensity } from '../../lib/ContentDensity';
 import { Themes } from '../../lib/Themes';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import styles from './AnalyticalCard.jss';
 
 export interface AnalyticalCardTypes extends Fiori3CommonProps {

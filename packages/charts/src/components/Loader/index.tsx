@@ -1,4 +1,4 @@
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 import * as React from 'react';
 import { LoaderStyles } from './Loader.jss';
 

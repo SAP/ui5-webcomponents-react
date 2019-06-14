@@ -51,6 +51,6 @@ function renderWithExtendedStyles() {
   );
 }
 
-storiesOf('F4R Components | Bar', module)
+storiesOf('Components | Bar', module)
   .add('Default', renderStory)
   .add('Extended Styles', renderWithExtendedStyles);

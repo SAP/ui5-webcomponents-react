@@ -1,10 +1,10 @@
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
-import { StyleClassHelper } from '@fiori-for-react/utils';
+import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import { ClassProps } from '../../interfaces/ClassProps';
 import styles from './ObjectPageSection.jss';
-import { withStyles } from '@fiori-for-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/styles';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
   title?: string;
