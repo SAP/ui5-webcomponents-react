@@ -1,6 +1,6 @@
 {
   "name": "@fiori-for-react/charts",
-  "version": "0.3.1-rc.2",
+  "version": "0.3.2-rc.0",
   "description": "Charts for fiori-for-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -13,8 +13,8 @@
     "@types/chart.js": "^2.7.53"
   },
   "dependencies": {
-    "@fiori-for-react/styles": "0.3.1-rc.2",
-    "@fiori-for-react/utils": "0.3.1-rc.2",
+    "@fiori-for-react/styles": "0.3.2-rc.0",
+    "@fiori-for-react/utils": "0.3.2-rc.0",
     "chart.js": "^2.8.0",
     "chartjs-plugin-datalabels": "^0.6.0",
     "is-mergeable-object": "^1.1.0",

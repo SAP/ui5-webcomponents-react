@@ -1,6 +1,6 @@
 {
   "name": "@fiori-for-react/styles",
-  "version": "0.3.1-rc.2",
+  "version": "0.3.2-rc.0",
   "description": "Stylesheets for fiori-for-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
