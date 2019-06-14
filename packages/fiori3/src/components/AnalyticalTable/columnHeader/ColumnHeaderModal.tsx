@@ -1,15 +1,19 @@
 import { withStyles } from '@fiori-for-react/styles';
 import { Event } from '@fiori-for-react/utils';
-import React, { Component, ReactNode } from 'react';
+import React, { Component, FC, ReactNode } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
+import { CustomListItem } from '../../../lib/CustomListItem';
+import { Input } from '../../../lib/Input';
 import { List } from '../../../lib/List';
 import { ListItemTypes } from '../../../lib/ListItemTypes';
 import { PlacementType } from '../../../lib/PlacementType';
-import { PopoverHorizontalAlign } from '../../../lib/PopoverHorizontalAlign';
 import { Popover } from '../../../lib/Popover';
+import { PopoverHorizontalAlign } from '../../../lib/PopoverHorizontalAlign';
 import { StandardListItem } from '../../../lib/StandardListItem';
-import { ColumnType } from '../columnHeader';
+import { Icon } from '../../../webComponents/Icon';
+import { FlexBox, FlexBoxAlignItems } from '../../FlexBox';
+import { ColumnType } from '../types/ColumnType';
 
 const styles = ({ parameters }: JSSTheme) => ({
   modalRoot: {
@@ -28,9 +32,10 @@ export interface ColumnHeaderModalProperties {
   showFilter?: boolean;
   sortAscending: (event: Event) => void;
   sortDescending: (event: Event) => void;
-  FilterComponent: any;
+  FilterComponent: FC<{ filter: any; onChange: () => void; column: ColumnType }>;
   filter: any;
   column: ColumnType;
+  onFilterChange: (e?: any) => void;
 }
 
 interface ColumnHeaderModalInternalProperties extends ColumnHeaderModalProperties, ClassProps {}
@@ -40,7 +45,9 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
   static defaultProps = {
     showSort: true,
     showFilter: false,
-    filter: null
+    filter: null,
+    FilterComponent: ColumnHeaderModal.DEFAULT_FILTER_COMPONENT,
+    onFilterChange: () => {}
   };
 
   private popoverRef = null;
@@ -59,8 +66,16 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
     this.popoverRef.close();
   };
 
+  private static DEFAULT_FILTER_COMPONENT({ filter, onChange }) {
+    const handleChange = (e) => {
+      onChange(Event.of(this, e.getOriginalEvent(), e.getParameters()));
+    };
+    return <Input onInput={handleChange}>{(filter && filter.value) || ''}</Input>;
+  }
+
   render() {
-    const { showSort } = this.props as ColumnHeaderModalInternalProperties;
+    const { showSort, showFilter, FilterComponent, onFilterChange, column, filter } = this
+      .props as ColumnHeaderModalInternalProperties;
 
     return (
       <Popover
@@ -82,6 +97,14 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
             <StandardListItem type={ListItemTypes.Active} icon={'sap-icon://sort-descending'} data-sort={'desc'}>
               Sort Descending
             </StandardListItem>
+          )}
+          {showFilter && (
+            <CustomListItem type={ListItemTypes.Inactive}>
+              <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ padding: '0px 1rem' }}>
+                <Icon src="sap-icon://filter" style={{ paddingRight: '1rem' }} />
+                <FilterComponent filter={filter} onChange={onFilterChange} column={column} />
+              </FlexBox>
+            </CustomListItem>
           )}
         </List>
       </Popover>

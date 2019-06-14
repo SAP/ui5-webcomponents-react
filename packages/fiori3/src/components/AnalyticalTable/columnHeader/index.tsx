@@ -4,15 +4,8 @@ import React, { Component, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { Icon } from '../../../lib/Icon';
-import { ColumnHeaderModal } from '../columnHeaderModal';
-
-export interface ColumnType {
-  filterable: boolean;
-  sortable: boolean;
-  show: boolean;
-  id: string;
-  Filter: JSX.Element;
-}
+import { ColumnType } from '../types/ColumnType';
+import { ColumnHeaderModal } from './ColumnHeaderModal';
 
 export interface ColumnHeaderProps {
   firstColumn: boolean;
@@ -110,18 +103,18 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
     }
   };
 
-  // private onFilterChange = (e) => {
-  //   const { column, filtered } = this.props as ColumnHeaderPropsInternal;
-  //   const columnId = column.id;
-  //   const currentFilters = filtered.filter((item) => item.id !== columnId);
-  //   if (e) {
-  //     currentFilters.push({
-  //       id: columnId,
-  //       value: e.getParameter('value')
-  //     });
-  //   }
-  //   this.props.onFilteredChange(Event.of(this, e.getOriginalEvent(), { currentFilters, column }));
-  // };
+  private onFilterChange = (e) => {
+    const { column, filtered } = this.props as ColumnHeaderPropsInternal;
+    const columnId = column.id;
+    const currentFilters = filtered.filter((item) => item.id !== columnId);
+    if (e) {
+      currentFilters.push({
+        id: columnId,
+        value: e.getParameter('value')
+      });
+    }
+    this.props.onFilteredChange(Event.of(this, e.getOriginalEvent(), { currentFilters, column }));
+  };
 
   private get openBy() {
     const { classes, children, sorted, column, filtered } = this.props as ColumnHeaderPropsInternal;
@@ -139,7 +132,7 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
     }
 
     const sortingIcon = sort ? <Icon src={desc ? 'sort-descending' : 'sort-ascending'} /> : null;
-    const filterIcon = filter ? <Icon src={'filter'} /> : null;
+    const filterIcon = filter && filter.value ? <Icon src={'filter'} /> : null;
 
     return (
       <div className={classNames.valueOf()}>
@@ -166,9 +159,9 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
         sortAscending={this.sortAscending}
         sortDescending={this.sortDescending}
         column={column}
-        FilterComponent={column.Filter}
+        FilterComponent={column.Filter as any}
         filter={filter}
-        // onFilterChange={this.onFilterChange}
+        onFilterChange={this.onFilterChange}
       />
     );
   }
