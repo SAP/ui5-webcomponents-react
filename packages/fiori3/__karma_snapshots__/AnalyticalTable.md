@@ -15,7 +15,7 @@
                   <div className="Component-bar---">
                     <Title level="H2">
                       <WithWebComponent theme={{...}} level="H2">
-                        <ui5-title level="H2" class="sapUiSizeCompact">
+                        <ui5-title level="H2" class="">
                           Test
                         </ui5-title>
                       </WithWebComponent>
@@ -38,47 +38,45 @@
                                   <Jss(WithStyles(ColumnHeaderModal)) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true}>
                                     <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
                                       <ColumnHeaderModal openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
-                                        <ResponsivePopover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom">
-                                          <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
-                                            <div style={{...}} onClick={[Function]}>
-                                              <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
-                                                <div className="rt-resizable-header-content">
-                                                  Name
-                                                </div>
-                                                <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                                  <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
-                                                </Resizer>
-                                                <div className="ColumnHeader-iconContainer---" />
+                                        <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
+                                          <div style={{...}} onClick={[Function]}>
+                                            <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
+                                              <div className="rt-resizable-header-content">
+                                                Name
                                               </div>
+                                              <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
+                                                <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                              </Resizer>
+                                              <div className="ColumnHeader-iconContainer---" />
                                             </div>
-                                            <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                              <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                                <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="sapUiSizeCompact">
-                                                  <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                    <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                      <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Ascending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Descending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                      </ui5-list>
-                                                    </WithWebComponent>
-                                                  </WithTheme(WithWebComponent)>
-                                                </ui5-popover>
-                                              </WithWebComponent>
-                                            </WithTheme(WithWebComponent)>
-                                          </Popover>
-                                        </ResponsivePopover>
+                                          </div>
+                                          <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                            <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                              <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="">
+                                                <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                  <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                    <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="">
+                                                            Sort Ascending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="">
+                                                            Sort Descending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                    </ui5-list>
+                                                  </WithWebComponent>
+                                                </WithTheme(WithWebComponent)>
+                                              </ui5-popover>
+                                            </WithWebComponent>
+                                          </WithTheme(WithWebComponent)>
+                                        </Popover>
                                       </ColumnHeaderModal>
                                     </WithStyles(ColumnHeaderModal)>
                                   </Jss(WithStyles(ColumnHeaderModal))>
@@ -91,47 +89,45 @@
                                   <Jss(WithStyles(ColumnHeaderModal)) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true}>
                                     <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
                                       <ColumnHeaderModal openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
-                                        <ResponsivePopover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom">
-                                          <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
-                                            <div style={{...}} onClick={[Function]}>
-                                              <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
-                                                <div className="rt-resizable-header-content">
-                                                  Age
-                                                </div>
-                                                <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                                  <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
-                                                </Resizer>
-                                                <div className="ColumnHeader-iconContainer---" />
+                                        <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
+                                          <div style={{...}} onClick={[Function]}>
+                                            <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
+                                              <div className="rt-resizable-header-content">
+                                                Age
                                               </div>
+                                              <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
+                                                <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                              </Resizer>
+                                              <div className="ColumnHeader-iconContainer---" />
                                             </div>
-                                            <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                              <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                                <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="sapUiSizeCompact">
-                                                  <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                    <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                      <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Ascending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Descending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                      </ui5-list>
-                                                    </WithWebComponent>
-                                                  </WithTheme(WithWebComponent)>
-                                                </ui5-popover>
-                                              </WithWebComponent>
-                                            </WithTheme(WithWebComponent)>
-                                          </Popover>
-                                        </ResponsivePopover>
+                                          </div>
+                                          <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                            <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                              <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="">
+                                                <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                  <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                    <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="">
+                                                            Sort Ascending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="">
+                                                            Sort Descending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                    </ui5-list>
+                                                  </WithWebComponent>
+                                                </WithTheme(WithWebComponent)>
+                                              </ui5-popover>
+                                            </WithWebComponent>
+                                          </WithTheme(WithWebComponent)>
+                                        </Popover>
                                       </ColumnHeaderModal>
                                     </WithStyles(ColumnHeaderModal)>
                                   </Jss(WithStyles(ColumnHeaderModal))>
@@ -144,47 +140,45 @@
                                   <Jss(WithStyles(ColumnHeaderModal)) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true}>
                                     <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
                                       <ColumnHeaderModal openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
-                                        <ResponsivePopover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom">
-                                          <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
-                                            <div style={{...}} onClick={[Function]}>
-                                              <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
-                                                <div className="rt-resizable-header-content">
-                                                  Friend Name
-                                                </div>
-                                                <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                                  <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
-                                                </Resizer>
-                                                <div className="ColumnHeader-iconContainer---" />
+                                        <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
+                                          <div style={{...}} onClick={[Function]}>
+                                            <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
+                                              <div className="rt-resizable-header-content">
+                                                Friend Name
                                               </div>
+                                              <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
+                                                <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                              </Resizer>
+                                              <div className="ColumnHeader-iconContainer---" />
                                             </div>
-                                            <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                              <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                                <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="sapUiSizeCompact">
-                                                  <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                    <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                      <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Ascending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Descending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                      </ui5-list>
-                                                    </WithWebComponent>
-                                                  </WithTheme(WithWebComponent)>
-                                                </ui5-popover>
-                                              </WithWebComponent>
-                                            </WithTheme(WithWebComponent)>
-                                          </Popover>
-                                        </ResponsivePopover>
+                                          </div>
+                                          <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                            <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                              <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="">
+                                                <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                  <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                    <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="">
+                                                            Sort Ascending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="">
+                                                            Sort Descending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                    </ui5-list>
+                                                  </WithWebComponent>
+                                                </WithTheme(WithWebComponent)>
+                                              </ui5-popover>
+                                            </WithWebComponent>
+                                          </WithTheme(WithWebComponent)>
+                                        </Popover>
                                       </ColumnHeaderModal>
                                     </WithStyles(ColumnHeaderModal)>
                                   </Jss(WithStyles(ColumnHeaderModal))>
@@ -197,49 +191,47 @@
                                   <Jss(WithStyles(ColumnHeaderModal)) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true}>
                                     <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
                                       <ColumnHeaderModal openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
-                                        <ResponsivePopover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom">
-                                          <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
-                                            <div style={{...}} onClick={[Function]}>
-                                              <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
-                                                <div className="rt-resizable-header-content">
-                                                  <span>
-                                                    Friend Age
-                                                  </span>
-                                                </div>
-                                                <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                                  <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
-                                                </Resizer>
-                                                <div className="ColumnHeader-iconContainer---" />
+                                        <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
+                                          <div style={{...}} onClick={[Function]}>
+                                            <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
+                                              <div className="rt-resizable-header-content">
+                                                <span>
+                                                  Friend Age
+                                                </span>
                                               </div>
+                                              <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
+                                                <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                              </Resizer>
+                                              <div className="ColumnHeader-iconContainer---" />
                                             </div>
-                                            <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                              <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                                <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="sapUiSizeCompact">
-                                                  <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                    <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                      <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Ascending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Descending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                      </ui5-list>
-                                                    </WithWebComponent>
-                                                  </WithTheme(WithWebComponent)>
-                                                </ui5-popover>
-                                              </WithWebComponent>
-                                            </WithTheme(WithWebComponent)>
-                                          </Popover>
-                                        </ResponsivePopover>
+                                          </div>
+                                          <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                            <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                              <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="">
+                                                <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                  <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                    <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="">
+                                                            Sort Ascending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="">
+                                                            Sort Descending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                    </ui5-list>
+                                                  </WithWebComponent>
+                                                </WithTheme(WithWebComponent)>
+                                              </ui5-popover>
+                                            </WithWebComponent>
+                                          </WithTheme(WithWebComponent)>
+                                        </Popover>
                                       </ColumnHeaderModal>
                                     </WithStyles(ColumnHeaderModal)>
                                   </Jss(WithStyles(ColumnHeaderModal))>
@@ -608,7 +600,7 @@
                           <div className="Pagination-total---">
                             <Label for="">
                               <WithWebComponent theme={{...}} for="">
-                                <ui5-label for="" class="sapUiSizeCompact">
+                                <ui5-label for="" class="">
                                   2 Items
                                 </ui5-label>
                               </WithWebComponent>
@@ -617,7 +609,7 @@
                           <LinkHOC mode={1} enabled={false} onClick={[Function]} selectedPage={0} page={-1}>
                             <Link style={{...}} onPress={[Function]} type="Default" href="" target="">
                               <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Default" href="" target="">
-                                <ui5-link style={{...}} type="Default" href="" target="" class="sapUiSizeCompact">
+                                <ui5-link style={{...}} type="Default" href="" target="" class="">
                                   &lt;
                                 </ui5-link>
                               </WithWebComponent>
@@ -626,7 +618,7 @@
                           <LinkHOC onClick={[Function]} page={0} selectedPage={0} enabled={true}>
                             <Link style={{...}} onPress={[Function]} type="Emphasized" href="" target="">
                               <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized" href="" target="">
-                                <ui5-link style={{...}} type="Emphasized" href="" target="" class="sapUiSizeCompact">
+                                <ui5-link style={{...}} type="Emphasized" href="" target="" class="">
                                   1
                                 </ui5-link>
                               </WithWebComponent>
@@ -635,7 +627,7 @@
                           <LinkHOC mode={0} enabled={false} onClick={[Function]} selectedPage={0} page={-1}>
                             <Link style={{...}} onPress={[Function]} type="Default" href="" target="">
                               <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Default" href="" target="">
-                                <ui5-link style={{...}} type="Default" href="" target="" class="sapUiSizeCompact">
+                                <ui5-link style={{...}} type="Default" href="" target="" class="">
                                   &gt;
                                 </ui5-link>
                               </WithWebComponent>
@@ -648,17 +640,11 @@
                 </div>
                 <CustomLoadingComponent loading={false} loadingText="Loading...">
                   <div className="-loading">
-                    <Jss(WithStyles(Component)) fadeIn={false}>
-                      <WithStyles(Component) fadeIn={false} theme={{...}} classes={{...}}>
-                        <Component fadeIn={false} theme={{...}} classes={{...}}>
-                          <div className="Component-busyIndicator---" data-component-name="BusyIndicator" aria-busy="true" role="progressbar" tabIndex={0} aria-valuemin={0} aria-valuemax={100} title="Please wait" style={[undefined]} data-ui5-slot={[undefined]}>
-                            <div className="Component-circle---" />
-                            <div className="Component-circle---" />
-                            <div className="Component-circle---" />
-                          </div>
-                        </Component>
-                      </WithStyles(Component)>
-                    </Jss(WithStyles(Component))>
+                    <BusyIndicator size="Large">
+                      <WithWebComponent theme={{...}} size="Large">
+                        <ui5-busyindicator size="Large" class="" />
+                      </WithWebComponent>
+                    </BusyIndicator>
                   </div>
                 </CustomLoadingComponent>
               </div>
@@ -686,7 +672,7 @@
                   <div className="Component-bar---">
                     <Title level="H2">
                       <WithWebComponent theme={{...}} level="H2">
-                        <ui5-title level="H2" class="sapUiSizeCompact">
+                        <ui5-title level="H2" class="">
                           Test
                         </ui5-title>
                       </WithWebComponent>
@@ -709,47 +695,45 @@
                                   <Jss(WithStyles(ColumnHeaderModal)) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true}>
                                     <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
                                       <ColumnHeaderModal openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
-                                        <ResponsivePopover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom">
-                                          <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
-                                            <div style={{...}} onClick={[Function]}>
-                                              <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
-                                                <div className="rt-resizable-header-content">
-                                                  Name
-                                                </div>
-                                                <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                                  <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
-                                                </Resizer>
-                                                <div className="ColumnHeader-iconContainer---" />
+                                        <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
+                                          <div style={{...}} onClick={[Function]}>
+                                            <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
+                                              <div className="rt-resizable-header-content">
+                                                Name
                                               </div>
+                                              <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
+                                                <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                              </Resizer>
+                                              <div className="ColumnHeader-iconContainer---" />
                                             </div>
-                                            <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                              <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                                <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="sapUiSizeCompact">
-                                                  <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                    <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                      <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Ascending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Descending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                      </ui5-list>
-                                                    </WithWebComponent>
-                                                  </WithTheme(WithWebComponent)>
-                                                </ui5-popover>
-                                              </WithWebComponent>
-                                            </WithTheme(WithWebComponent)>
-                                          </Popover>
-                                        </ResponsivePopover>
+                                          </div>
+                                          <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                            <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                              <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="">
+                                                <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                  <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                    <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="">
+                                                            Sort Ascending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="">
+                                                            Sort Descending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                    </ui5-list>
+                                                  </WithWebComponent>
+                                                </WithTheme(WithWebComponent)>
+                                              </ui5-popover>
+                                            </WithWebComponent>
+                                          </WithTheme(WithWebComponent)>
+                                        </Popover>
                                       </ColumnHeaderModal>
                                     </WithStyles(ColumnHeaderModal)>
                                   </Jss(WithStyles(ColumnHeaderModal))>
@@ -762,47 +746,45 @@
                                   <Jss(WithStyles(ColumnHeaderModal)) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true}>
                                     <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
                                       <ColumnHeaderModal openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
-                                        <ResponsivePopover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom">
-                                          <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
-                                            <div style={{...}} onClick={[Function]}>
-                                              <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
-                                                <div className="rt-resizable-header-content">
-                                                  Age
-                                                </div>
-                                                <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                                  <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
-                                                </Resizer>
-                                                <div className="ColumnHeader-iconContainer---" />
+                                        <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
+                                          <div style={{...}} onClick={[Function]}>
+                                            <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
+                                              <div className="rt-resizable-header-content">
+                                                Age
                                               </div>
+                                              <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
+                                                <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                              </Resizer>
+                                              <div className="ColumnHeader-iconContainer---" />
                                             </div>
-                                            <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                              <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                                <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="sapUiSizeCompact">
-                                                  <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                    <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                      <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Ascending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Descending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                      </ui5-list>
-                                                    </WithWebComponent>
-                                                  </WithTheme(WithWebComponent)>
-                                                </ui5-popover>
-                                              </WithWebComponent>
-                                            </WithTheme(WithWebComponent)>
-                                          </Popover>
-                                        </ResponsivePopover>
+                                          </div>
+                                          <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                            <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                              <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="">
+                                                <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                  <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                    <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="">
+                                                            Sort Ascending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="">
+                                                            Sort Descending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                    </ui5-list>
+                                                  </WithWebComponent>
+                                                </WithTheme(WithWebComponent)>
+                                              </ui5-popover>
+                                            </WithWebComponent>
+                                          </WithTheme(WithWebComponent)>
+                                        </Popover>
                                       </ColumnHeaderModal>
                                     </WithStyles(ColumnHeaderModal)>
                                   </Jss(WithStyles(ColumnHeaderModal))>
@@ -815,47 +797,45 @@
                                   <Jss(WithStyles(ColumnHeaderModal)) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true}>
                                     <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
                                       <ColumnHeaderModal openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
-                                        <ResponsivePopover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom">
-                                          <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
-                                            <div style={{...}} onClick={[Function]}>
-                                              <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
-                                                <div className="rt-resizable-header-content">
-                                                  Friend Name
-                                                </div>
-                                                <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                                  <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
-                                                </Resizer>
-                                                <div className="ColumnHeader-iconContainer---" />
+                                        <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
+                                          <div style={{...}} onClick={[Function]}>
+                                            <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
+                                              <div className="rt-resizable-header-content">
+                                                Friend Name
                                               </div>
+                                              <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
+                                                <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                              </Resizer>
+                                              <div className="ColumnHeader-iconContainer---" />
                                             </div>
-                                            <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                              <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                                <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="sapUiSizeCompact">
-                                                  <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                    <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                      <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Ascending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Descending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                      </ui5-list>
-                                                    </WithWebComponent>
-                                                  </WithTheme(WithWebComponent)>
-                                                </ui5-popover>
-                                              </WithWebComponent>
-                                            </WithTheme(WithWebComponent)>
-                                          </Popover>
-                                        </ResponsivePopover>
+                                          </div>
+                                          <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                            <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                              <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="">
+                                                <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                  <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                    <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="">
+                                                            Sort Ascending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="">
+                                                            Sort Descending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                    </ui5-list>
+                                                  </WithWebComponent>
+                                                </WithTheme(WithWebComponent)>
+                                              </ui5-popover>
+                                            </WithWebComponent>
+                                          </WithTheme(WithWebComponent)>
+                                        </Popover>
                                       </ColumnHeaderModal>
                                     </WithStyles(ColumnHeaderModal)>
                                   </Jss(WithStyles(ColumnHeaderModal))>
@@ -868,49 +848,47 @@
                                   <Jss(WithStyles(ColumnHeaderModal)) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true}>
                                     <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
                                       <ColumnHeaderModal openBy={{...}} showFilter={false} sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[undefined]} filter={{...}} showSort={true} theme={{...}} classes={{...}}>
-                                        <ResponsivePopover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom">
-                                          <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
-                                            <div style={{...}} onClick={[Function]}>
-                                              <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
-                                                <div className="rt-resizable-header-content">
-                                                  <span>
-                                                    Friend Age
-                                                  </span>
-                                                </div>
-                                                <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                                  <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
-                                                </Resizer>
-                                                <div className="ColumnHeader-iconContainer---" />
+                                        <Popover openByStyle={{...}} openBy={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
+                                          <div style={{...}} onClick={[Function]}>
+                                            <div className="rt-th ColumnHeader-header--- ColumnHeader-header---">
+                                              <div className="rt-resizable-header-content">
+                                                <span>
+                                                  Friend Age
+                                                </span>
                                               </div>
+                                              <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
+                                                <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                              </Resizer>
+                                              <div className="ColumnHeader-iconContainer---" />
                                             </div>
-                                            <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                              <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
-                                                <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="sapUiSizeCompact">
-                                                  <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                    <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
-                                                      <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="sapUiSizeCompact">
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Ascending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                        <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                          <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
-                                                            <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="sapUiSizeCompact">
-                                                              Sort Descending
-                                                            </ui5-li>
-                                                          </WithWebComponent>
-                                                        </StandardListItem>
-                                                      </ui5-list>
-                                                    </WithWebComponent>
-                                                  </WithTheme(WithWebComponent)>
-                                                </ui5-popover>
-                                              </WithWebComponent>
-                                            </WithTheme(WithWebComponent)>
-                                          </Popover>
-                                        </ResponsivePopover>
+                                          </div>
+                                          <WithTheme(WithWebComponent) hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                            <WithWebComponent theme={{...}} hideHeader={true} hideArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center" innerComponentRef={[Function]}>
+                                              <ui5-popover hide-header={true} hide-arrow={true} horizontal-align="Left" placement-type="Bottom" initial-focus={{...}} header-text="" vertical-align="Center" inner-component-ref={[Function]} class="">
+                                                <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                  <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                                                    <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-ascending" data-sort="asc" description="" image={{...}} class="">
+                                                            Sort Ascending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                      <StandardListItem type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                        <WithWebComponent theme={{...}} type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}}>
+                                                          <ui5-li type="Active" icon="sap-icon://sort-descending" data-sort="desc" description="" image={{...}} class="">
+                                                            Sort Descending
+                                                          </ui5-li>
+                                                        </WithWebComponent>
+                                                      </StandardListItem>
+                                                    </ui5-list>
+                                                  </WithWebComponent>
+                                                </WithTheme(WithWebComponent)>
+                                              </ui5-popover>
+                                            </WithWebComponent>
+                                          </WithTheme(WithWebComponent)>
+                                        </Popover>
                                       </ColumnHeaderModal>
                                     </WithStyles(ColumnHeaderModal)>
                                   </Jss(WithStyles(ColumnHeaderModal))>
@@ -1287,7 +1265,7 @@
                           <div className="Pagination-total---">
                             <Label for="">
                               <WithWebComponent theme={{...}} for="">
-                                <ui5-label for="" class="sapUiSizeCompact">
+                                <ui5-label for="" class="">
                                   2 Items
                                 </ui5-label>
                               </WithWebComponent>
@@ -1296,7 +1274,7 @@
                           <LinkHOC mode={1} enabled={false} onClick={[Function]} selectedPage={0} page={-1}>
                             <Link style={{...}} onPress={[Function]} type="Default" href="" target="">
                               <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Default" href="" target="">
-                                <ui5-link style={{...}} type="Default" href="" target="" class="sapUiSizeCompact">
+                                <ui5-link style={{...}} type="Default" href="" target="" class="">
                                   &lt;
                                 </ui5-link>
                               </WithWebComponent>
@@ -1305,7 +1283,7 @@
                           <LinkHOC onClick={[Function]} page={0} selectedPage={0} enabled={true}>
                             <Link style={{...}} onPress={[Function]} type="Emphasized" href="" target="">
                               <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized" href="" target="">
-                                <ui5-link style={{...}} type="Emphasized" href="" target="" class="sapUiSizeCompact">
+                                <ui5-link style={{...}} type="Emphasized" href="" target="" class="">
                                   1
                                 </ui5-link>
                               </WithWebComponent>
@@ -1314,7 +1292,7 @@
                           <LinkHOC onClick={[Function]} page={1} selectedPage={0} enabled={true}>
                             <Link style={{...}} onPress={[Function]} type="Default" href="" target="">
                               <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Default" href="" target="">
-                                <ui5-link style={{...}} type="Default" href="" target="" class="sapUiSizeCompact">
+                                <ui5-link style={{...}} type="Default" href="" target="" class="">
                                   2
                                 </ui5-link>
                               </WithWebComponent>
@@ -1323,7 +1301,7 @@
                           <LinkHOC mode={0} enabled={true} onClick={[Function]} selectedPage={0} page={-1}>
                             <Link style={{...}} onPress={[Function]} type="Default" href="" target="">
                               <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Default" href="" target="">
-                                <ui5-link style={{...}} type="Default" href="" target="" class="sapUiSizeCompact">
+                                <ui5-link style={{...}} type="Default" href="" target="" class="">
                                   &gt;
                                 </ui5-link>
                               </WithWebComponent>
@@ -1336,17 +1314,11 @@
                 </div>
                 <CustomLoadingComponent loading={false} loadingText="Loading...">
                   <div className="-loading">
-                    <Jss(WithStyles(Component)) fadeIn={false}>
-                      <WithStyles(Component) fadeIn={false} theme={{...}} classes={{...}}>
-                        <Component fadeIn={false} theme={{...}} classes={{...}}>
-                          <div className="Component-busyIndicator---" data-component-name="BusyIndicator" aria-busy="true" role="progressbar" tabIndex={0} aria-valuemin={0} aria-valuemax={100} title="Please wait" style={[undefined]} data-ui5-slot={[undefined]}>
-                            <div className="Component-circle---" />
-                            <div className="Component-circle---" />
-                            <div className="Component-circle---" />
-                          </div>
-                        </Component>
-                      </WithStyles(Component)>
-                    </Jss(WithStyles(Component))>
+                    <BusyIndicator size="Large">
+                      <WithWebComponent theme={{...}} size="Large">
+                        <ui5-busyindicator size="Large" class="" />
+                      </WithWebComponent>
+                    </BusyIndicator>
                   </div>
                 </CustomLoadingComponent>
               </div>

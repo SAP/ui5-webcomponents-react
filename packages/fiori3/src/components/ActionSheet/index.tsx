@@ -2,7 +2,7 @@ import { withStyles } from '@fiori-for-react/styles';
 import { Device, StyleClassHelper } from '@fiori-for-react/utils';
 import { ButtonType } from '../../lib/ButtonType';
 import { PlacementType } from '../../lib/PlacementType';
-import { ResponsivePopover } from '../../lib/ResponsivePopover';
+import { Popover } from '../../lib/Popover';
 import React, { Children, cloneElement, Component, ReactElement, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
@@ -68,7 +68,7 @@ export class ActionSheet extends Component<ActionSheetPropTypes, ActionSheetStat
     }
 
     return (
-      <ResponsivePopover
+      <Popover
         hideHeader
         innerComponentRef={this.getPopoverRef}
         openBy={openBy}
@@ -79,7 +79,7 @@ export class ActionSheet extends Component<ActionSheetPropTypes, ActionSheetStat
         <ul className={classes.actionSheet}>
           {Children.map(children, (child: ReactElement<ButtonPropTypes>) => this.renderActionSheetButton(child))}
         </ul>
-      </ResponsivePopover>
+      </Popover>
     );
   }
 }

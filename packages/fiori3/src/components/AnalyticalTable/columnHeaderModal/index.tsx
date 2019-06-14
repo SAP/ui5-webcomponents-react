@@ -7,7 +7,7 @@ import { List } from '../../../lib/List';
 import { ListItemTypes } from '../../../lib/ListItemTypes';
 import { PlacementType } from '../../../lib/PlacementType';
 import { PopoverHorizontalAlign } from '../../../lib/PopoverHorizontalAlign';
-import { ResponsivePopover } from '../../../lib/ResponsivePopover';
+import { Popover } from '../../../lib/Popover';
 import { StandardListItem } from '../../../lib/StandardListItem';
 import { ColumnType } from '../columnHeader';
 
@@ -56,7 +56,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
     const { showSort } = this.props as ColumnHeaderModalInternalProperties;
 
     return (
-      <ResponsivePopover
+      <Popover
         openByStyle={{ flex: '100 0 auto', width: '100px' }}
         openBy={this.props.openBy}
         hideHeader
@@ -76,7 +76,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
             </StandardListItem>
           )}
         </List>
-      </ResponsivePopover>
+      </Popover>
     );
   }
 }

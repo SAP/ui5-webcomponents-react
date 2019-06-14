@@ -75,7 +75,6 @@ import { PopoverVerticalAlign } from './lib/PopoverVerticalAlign';
 import { Popup } from './lib/Popup';
 import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
-import { ResponsivePopover } from './lib/ResponsivePopover';
 import { SegmentedButton } from './lib/SegmentedButton';
 import { SegmentedButtonItem } from './lib/SegmentedButtonItem';
 import { Select } from './lib/Select';
@@ -185,7 +184,6 @@ export {
   Popup,
   ProgressIndicator,
   RadioButton,
-  ResponsivePopover,
   SegmentedButton,
   SegmentedButtonItem,
   Select,
