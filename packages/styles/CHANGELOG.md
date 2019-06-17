@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2-rc.2](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/styles/compare/v0.3.2-rc.1...v0.3.2-rc.2) (2019-06-17)
+
+
+### Features
+
+* **AnalyticalTable:** Initial Implementation ([#32](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/styles/issues/32)) ([4f30127](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/styles/commit/4f30127))
+
+
+### BREAKING CHANGES
+
+* **AnalyticalTable:** Deleted `ResponsivePopover`, please use the `Popover` Component
+
+
+
+
+
 ## [0.3.2-rc.1](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/styles/compare/v0.3.2-rc.0...v0.3.2-rc.1) (2019-06-14)
 
 **Note:** Version bump only for package @ui5-webcomponents-react/styles
