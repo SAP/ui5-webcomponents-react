@@ -5,7 +5,7 @@ import { List } from '../../lib/List';
 import { ListItemTypes } from '../../lib/ListItemTypes';
 import { ListMode } from '../../lib/ListMode';
 import { PlacementType } from '../../lib/PlacementType';
-import { ResponsivePopover } from '../../lib/ResponsivePopover';
+import { Popover } from '../../lib/Popover';
 import { StandardListItem } from '../../lib/StandardListItem';
 import { Title } from '../../lib/Title';
 import { TitleLevel } from '../../lib/TitleLevel';
@@ -141,7 +141,7 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
     }
 
     return (
-      <ResponsivePopover
+      <Popover
         open={this.state.open}
         onAfterOpen={this.handleAfterOpen}
         headerText={popupTitle}
@@ -165,7 +165,7 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
             </StandardListItem>
           ))}
         </List>
-      </ResponsivePopover>
+      </Popover>
     );
   }
 }

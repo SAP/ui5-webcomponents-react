@@ -1,5 +1,5 @@
-import 'core-js/modules/es6.object.assign';
-import 'core-js/modules/es7.object.values';
+import 'core-js/modules/es.object.assign';
+import 'core-js/modules/es.object.values';
 
 export const bootstrap = () => {
   // @ts-ignore

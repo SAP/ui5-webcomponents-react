@@ -142,5 +142,8 @@
       "prettier -config ./prettier.config.js --write",
       "git add"
     ]
+  },
+  "dependencies": {
+    "react-table": "6.8.6"
   }
 }

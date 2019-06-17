@@ -212,8 +212,6 @@ export const sapUiGroupFooterBackground = 'transparent';
 export const sapUiToolbarBackground = 'transparent';
 /** The color of a toolbar's separators. */
 export const sapUiToolbarSeparatorColor = '#ededed';
-/** The background color of the column header area of lists. */
-export const sapUiListHeaderBackground = '#fafafa';
 /** The color of the borders of the list column header area. */
 export const sapUiListHeaderBorderColor = '#ededed';
 /** The color of texts on the list column header area. */
@@ -226,6 +224,8 @@ export const sapUiListHighlightColor = '#0854a0';
 export const sapUiListSelectionBackgroundColor = '#e5f0fa';
 /** The background color of lists. */
 export const sapUiListBackground = '#ffffff';
+/** The background color of the column header area of lists. */
+export const sapUiListHeaderBackground = HSLColor.of(sapUiListBackground).darken(5).hsl;
 /** The background color of lists on hover. */
 export const sapUiListHoverBackground = '#fafafa';
 /** The color of the surface of a scrollbar. */
