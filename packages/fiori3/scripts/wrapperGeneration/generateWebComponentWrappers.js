@@ -94,4 +94,5 @@ function executeQueue() {
   await page.goto(fileUrl('./scripts/wrapperGeneration/puppeteer.html'));
   // await browser.waitForFunction('false');
   await browser.close().then(executeQueue);
+  require('./generateWebComponentTests');
 })();

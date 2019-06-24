@@ -1,5 +1,19 @@
 # `Tokenizer`
 
+#### `Basic Test (generated)`
+
+```
+<ThemeProvider withToastContainer={false}>
+  <ThemeProvider jss={{...}} theme={{...}}>
+    <Tokenizer>
+      <WithWebComponent theme={{...}}>
+        <ui5-tokenizer class="" />
+      </WithWebComponent>
+    </Tokenizer>
+  </ThemeProvider>
+</ThemeProvider>
+```
+
 #### `Render without crashing`
 
 ```

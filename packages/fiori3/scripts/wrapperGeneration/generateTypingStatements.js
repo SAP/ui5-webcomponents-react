@@ -4,12 +4,12 @@ const fiori3Enums = path.resolve(__dirname, '..', '..', 'src', 'enums');
 
 const f4rEnums = {
   ValueState: require(path.resolve(fiori3Enums, 'ValueState.ts')).ValueState,
-  ButtonType: require(path.resolve(fiori3Enums, 'ButtonType.ts')).ButtonType,
+  ButtonDesign: require(path.resolve(fiori3Enums, 'ButtonDesign.ts')).ButtonDesign,
   MessageStripType: require(path.resolve(fiori3Enums, 'MessageStripType.ts')).MessageStripType,
   CalendarType: require(path.resolve(fiori3Enums, 'CalendarType.ts')).CalendarType,
   PopoverHorizontalAlign: require(path.resolve(fiori3Enums, 'PopoverHorizontalAlign.ts')).PopoverHorizontalAlign,
   InputType: require(path.resolve(fiori3Enums, 'InputType.ts')).InputType,
-  LinkType: require(path.resolve(fiori3Enums, 'LinkType.ts')).LinkType,
+  LinkDesign: require(path.resolve(fiori3Enums, 'LinkDesign.ts')).LinkDesign,
   ListMode: require(path.resolve(fiori3Enums, 'ListMode.ts')).ListMode,
   ListItemTypes: require(path.resolve(fiori3Enums, 'ListItemTypes.ts')).ListItemTypes,
   ListSeparators: require(path.resolve(fiori3Enums, 'ListSeparators.ts')).ListSeparators,

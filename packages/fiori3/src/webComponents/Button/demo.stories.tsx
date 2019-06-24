@@ -3,7 +3,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Button } from '../../lib/Button';
-import { ButtonType } from '../../lib/ButtonType';
+import { ButtonDesign } from '../../lib/ButtonDesign';
 
 const customStyle1 = {
   color: 'red'
@@ -34,7 +34,7 @@ class DemoButton extends React.Component {
           <Button onPress={() => this.setState({ showCS2: !showCS2 })}>Toggle Custom Style 2</Button>
         </div>
         <Button
-          type={select('type', ButtonType, ButtonType.Default)}
+          design={select('design', ButtonDesign, ButtonDesign.Default)}
           disabled={boolean('disabled', false)}
           icon={'sap-icon://add'}
           iconEnd={boolean('iconEnd', false)}
@@ -51,7 +51,7 @@ class DemoButton extends React.Component {
 storiesOf('UI5 Web Components | Button', module)
   .add('Generated default story', () => (
     <Button
-      type={select('type', ButtonType, ButtonType.Default)}
+      design={select('design', ButtonDesign, ButtonDesign.Default)}
       disabled={boolean('disabled', false)}
       icon={'sap-icon://add'}
       iconEnd={boolean('iconEnd', false)}

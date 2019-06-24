@@ -1,7 +1,7 @@
-import UI5ButtonType from '@ui5/webcomponents/dist/types/ButtonType';
+import UI5ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign';
 import UI5Icon from '@ui5/webcomponents/dist/Icon';
 import UI5InputType from '@ui5/webcomponents/dist/types/InputType';
-import UI5LinkType from '@ui5/webcomponents/dist/types/LinkType';
+import UI5LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign';
 import UI5ListMode from '@ui5/webcomponents/dist/types/ListMode';
 import UI5ListItemTypes from '@ui5/webcomponents/dist/types/ListItemType';
 import UI5PopoverPlacementTypes from '@ui5/webcomponents/dist/types/PopoverPlacementType';
@@ -20,9 +20,9 @@ import UI5CalendarType from '@ui5/webcomponents-base/src/dates/CalendarType';
 import TimelineItem from '@ui5/webcomponents/dist/TimelineItem';
 
 const mappings = {
-  [UI5ButtonType]: {
-    importStatement: "import { ButtonType } from '../../lib/ButtonType';",
-    tsType: 'ButtonType',
+  [UI5ButtonDesign]: {
+    importStatement: "import { ButtonDesign } from '../../lib/ButtonDesign';",
+    tsType: 'ButtonDesign',
     isEnum: true
   },
   [UI5PopoverPlacementTypes]: {
@@ -45,9 +45,9 @@ const mappings = {
     tsType: 'PopoverVerticalAlign',
     isEnum: true
   },
-  [UI5LinkType]: {
-    importStatement: "import { LinkType } from '../../lib/LinkType';",
-    tsType: 'LinkType',
+  [UI5LinkDesign]: {
+    importStatement: "import { LinkDesign } from '../../lib/LinkDesign';",
+    tsType: 'LinkDesign',
     isEnum: true
   },
   [UI5SemanticColors]: {

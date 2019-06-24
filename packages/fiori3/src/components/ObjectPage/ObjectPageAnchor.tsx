@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-scroll';
 import { ObjectWithVariableKeys } from '../../interfaces/ObjectWithVariableKeys';
 import { Button } from '../../lib/Button';
-import { ButtonType } from '../../lib/ButtonType';
+import { ButtonDesign } from '../../lib/ButtonDesign';
 import { CustomListItem } from '../../lib/CustomListItem';
 import { Icon } from '../../lib/Icon';
 import { Label } from '../../lib/Label';
@@ -107,7 +107,7 @@ export class ObjectPageAnchor extends Component<ObjectPageAnchorPropTypes, Objec
     const subSectionsAvailable = this.subSectionsAvailable();
 
     const titleButton = (
-      <Button className={classes.anchorButton} type={ButtonType.Transparent} onPress={this.handleAnchorButtonClick}>
+      <Button className={classes.anchorButton} design={ButtonDesign.Transparent} onPress={this.handleAnchorButtonClick}>
         {section.props.title}
       </Button>
     );
@@ -153,8 +153,8 @@ export class ObjectPageAnchor extends Component<ObjectPageAnchorPropTypes, Objec
             placementType={PlacementType.Bottom}
             openBy={navigationIcon}
             onAfterClose={this.closeModal}
-            hideArrow
-            hideHeader
+            noArrow
+            noHeader
           >
             <List onItemPress={this.onSubSectionClick}>
               {this.props.section.props.children

@@ -6,6 +6,7 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
   heading?: string; // @generated
   subtitle?: string; // @generated
   status?: string; // @generated
+  headerInteractive?: boolean; // @generated
   avatar?: string; // @generated
   onHeaderPress?: (event: Event) => void; // @generated
   children?: ReactNode | ReactNode[];

@@ -9,8 +9,8 @@ storiesOf('UI5 Web Components | MessageStrip', module).add('Default story', () =
   <MessageStrip
     type={select('type', MessageStripType, MessageStripType.Information)}
     icon={text('icon', 'add')}
-    hideIcon={boolean('hideIcon', false)}
-    hideCloseButton={boolean('hideCloseButton', false)}
+    noIcon={boolean('noIcon', false)}
+    noCloseButton={boolean('noCloseButton', false)}
     onClose={action('onClose')}
   >
     Some Content

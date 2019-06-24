@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Button } from '../../lib/Button';
-import { ButtonType } from '../../lib/ButtonType';
+import { ButtonDesign } from '../../lib/ButtonDesign';
 import { MessageBoxActions } from '../../lib/MessageBoxActions';
 
 export class MessageBoxButton extends PureComponent<{
@@ -19,7 +19,7 @@ export class MessageBoxButton extends PureComponent<{
           minWidth: '4rem'
         }}
         onPress={this.handleClick}
-        type={emphasize ? ButtonType.Emphasized : ButtonType.Transparent}
+        design={emphasize ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
       >
         {this.props.action}
       </Button>

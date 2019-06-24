@@ -12,4 +12,8 @@ const Badge: FC<BadgePropTypes> = withWebComponent<BadgePropTypes>(UI5Badge);
 
 Badge.displayName = 'Badge';
 
+Badge.defaultProps = {
+  colorScheme: '1' // @generated
+};
+
 export { Badge };

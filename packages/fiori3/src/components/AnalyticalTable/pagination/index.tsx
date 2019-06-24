@@ -5,7 +5,7 @@ import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { ContentDensity } from '../../../lib/ContentDensity';
 import { Label } from '../../../lib/Label';
 import { Link } from '../../../lib/Link';
-import { LinkType } from '../../../lib/LinkType';
+import { LinkDesign } from '../../../lib/LinkDesign';
 
 enum NavigationModes {
   rightArrowPress,
@@ -42,7 +42,7 @@ export const LinkHOC: FC<LinkHOCProps> = (props) => {
     <Link
       style={{ paddingRight: '0.2rem' }}
       onPress={onClickHandler(props)}
-      type={page === selectedPage ? LinkType.Emphasized : LinkType.Default}
+      design={page === selectedPage ? LinkDesign.Emphasized : LinkDesign.Default}
     >
       {children.toString()}
     </Link>

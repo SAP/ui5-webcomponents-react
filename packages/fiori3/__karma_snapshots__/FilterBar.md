@@ -25,9 +25,9 @@
                               </WithWebComponent>
                             </Title>
                           </span>
-                          <Button type="Transparent" icon="navigation-down-arrow">
-                            <WithWebComponent theme={{...}} type="Transparent" icon="navigation-down-arrow">
-                              <ui5-button type="Transparent" icon="navigation-down-arrow" class="" />
+                          <Button design="Transparent" icon="navigation-down-arrow">
+                            <WithWebComponent theme={{...}} design="Transparent" icon="navigation-down-arrow">
+                              <ui5-button design="Transparent" icon="navigation-down-arrow" class="" />
                             </WithWebComponent>
                           </Button>
                         </div>
@@ -35,9 +35,9 @@
                       <WithTheme(WithWebComponent) open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                         <WithWebComponent theme={{...}} open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                           <ui5-popover open={false} header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="">
-                            <Button className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
-                              <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
-                                <ui5-button type="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
+                            <Button className="VariantManagement-footer---" onPress={[Function]} design="Emphasized" data-ui5-slot="footer">
+                              <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} design="Emphasized" data-ui5-slot="footer">
+                                <ui5-button design="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
                                   Cancel
                                 </ui5-button>
                               </WithWebComponent>
@@ -45,16 +45,16 @@
                             <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                               <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                 <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="">
-                                  <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                    <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                      <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="">
+                                  <StandardListItem style={{...}} data-key="1" type="Active" selected={true} infoState="None">
+                                    <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} infoState="None">
+                                      <ui5-li selected={true} style={{...}} data-key="1" type="Active" info-state="None" class="">
                                         Variant 1
                                       </ui5-li>
                                     </WithWebComponent>
                                   </StandardListItem>
-                                  <StandardListItem style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                    <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                      <ui5-li style={{...}} data-key="2" type="Active" description="" icon={{...}} image={{...}} class="">
+                                  <StandardListItem style={{...}} data-key="2" type="Active" selected={false} infoState="None">
+                                    <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} infoState="None">
+                                      <ui5-li style={{...}} data-key="2" type="Active" info-state="None" class="">
                                         Variant 2
                                       </ui5-li>
                                     </WithWebComponent>
@@ -79,9 +79,9 @@
                  
               </div>
               <div className="FilterBar-headerRowRight---">
-                <Button onPress={[Function]} type="Transparent">
-                  <WithWebComponent theme={{...}} onPress={[Function]} type="Transparent">
-                    <ui5-button type="Transparent" class="">
+                <Button onPress={[Function]} design="Transparent">
+                  <WithWebComponent theme={{...}} onPress={[Function]} design="Transparent">
+                    <ui5-button design="Transparent" class="">
                       Hide Filter Bar
                     </ui5-button>
                   </WithWebComponent>
@@ -103,16 +103,16 @@
                       <Select onChange={[Function]} style={{...}} valueState="None">
                         <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="">
-                            <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="1" description="" icon={{...}} image={{...}} class="">
+                            <StandardListItem type="Active" data-key="1" infoState="None">
+                              <WithWebComponent theme={{...}} type="Active" data-key="1" infoState="None">
+                                <ui5-li type="Active" data-key="1" info-state="None" class="">
                                   Text 1
                                 </ui5-li>
                               </WithWebComponent>
                             </StandardListItem>
-                            <StandardListItem type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="2" description="" icon={{...}} image={{...}} class="">
+                            <StandardListItem type="Active" data-key="2" infoState="None">
+                              <WithWebComponent theme={{...}} type="Active" data-key="2" infoState="None">
+                                <ui5-li type="Active" data-key="2" info-state="None" class="">
                                   Text 2
                                 </ui5-li>
                               </WithWebComponent>
@@ -136,9 +136,9 @@
                         </WithWebComponent>
                       </Label>
                       <div>
-                        <Switch textOn="" textOff="" type="Textual" onClick={[Function]} valueParameter="state" style={{...}}>
-                          <WithWebComponent theme={{...}} textOn="" textOff="" type="Textual" onClick={[Function]} valueParameter="state" style={{...}}>
-                            <ui5-switch text-on="" text-off="" type="Textual" on-click={[Function]} value-parameter="state" style={{...}} class="" />
+                        <Switch onClick={[Function]} valueParameter="state" style={{...}}>
+                          <WithWebComponent theme={{...}} onClick={[Function]} valueParameter="state" style={{...}}>
+                            <ui5-switch on-click={[Function]} value-parameter="state" style={{...}} class="" />
                           </WithWebComponent>
                         </Switch>
                       </div>
@@ -180,9 +180,9 @@
                               </WithWebComponent>
                             </Title>
                           </span>
-                          <Button type="Transparent" icon="navigation-down-arrow">
-                            <WithWebComponent theme={{...}} type="Transparent" icon="navigation-down-arrow">
-                              <ui5-button type="Transparent" icon="navigation-down-arrow" class="" />
+                          <Button design="Transparent" icon="navigation-down-arrow">
+                            <WithWebComponent theme={{...}} design="Transparent" icon="navigation-down-arrow">
+                              <ui5-button design="Transparent" icon="navigation-down-arrow" class="" />
                             </WithWebComponent>
                           </Button>
                         </div>
@@ -190,9 +190,9 @@
                       <WithTheme(WithWebComponent) open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                         <WithWebComponent theme={{...}} open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                           <ui5-popover open={false} header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="">
-                            <Button className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
-                              <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
-                                <ui5-button type="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
+                            <Button className="VariantManagement-footer---" onPress={[Function]} design="Emphasized" data-ui5-slot="footer">
+                              <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} design="Emphasized" data-ui5-slot="footer">
+                                <ui5-button design="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
                                   Cancel
                                 </ui5-button>
                               </WithWebComponent>
@@ -200,16 +200,16 @@
                             <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                               <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                 <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="">
-                                  <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                    <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                      <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="">
+                                  <StandardListItem style={{...}} data-key="1" type="Active" selected={true} infoState="None">
+                                    <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} infoState="None">
+                                      <ui5-li selected={true} style={{...}} data-key="1" type="Active" info-state="None" class="">
                                         Variant 1
                                       </ui5-li>
                                     </WithWebComponent>
                                   </StandardListItem>
-                                  <StandardListItem style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                    <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                      <ui5-li style={{...}} data-key="2" type="Active" description="" icon={{...}} image={{...}} class="">
+                                  <StandardListItem style={{...}} data-key="2" type="Active" selected={false} infoState="None">
+                                    <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} infoState="None">
+                                      <ui5-li style={{...}} data-key="2" type="Active" info-state="None" class="">
                                         Variant 2
                                       </ui5-li>
                                     </WithWebComponent>
@@ -225,9 +225,9 @@
                 </WithStyles(VariantManagement)>
               </Jss(WithStyles(VariantManagement))>
               <div className="FilterBar-headerRowRight---">
-                <Button onPress={[Function]} type="Transparent">
-                  <WithWebComponent theme={{...}} onPress={[Function]} type="Transparent">
-                    <ui5-button type="Transparent" class="">
+                <Button onPress={[Function]} design="Transparent">
+                  <WithWebComponent theme={{...}} onPress={[Function]} design="Transparent">
+                    <ui5-button design="Transparent" class="">
                       Hide Filter Bar
                     </ui5-button>
                   </WithWebComponent>
@@ -249,16 +249,16 @@
                       <Select onChange={[Function]} style={{...}} valueState="None">
                         <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="">
-                            <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="1" description="" icon={{...}} image={{...}} class="">
+                            <StandardListItem type="Active" data-key="1" infoState="None">
+                              <WithWebComponent theme={{...}} type="Active" data-key="1" infoState="None">
+                                <ui5-li type="Active" data-key="1" info-state="None" class="">
                                   Text 1
                                 </ui5-li>
                               </WithWebComponent>
                             </StandardListItem>
-                            <StandardListItem type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="2" description="" icon={{...}} image={{...}} class="">
+                            <StandardListItem type="Active" data-key="2" infoState="None">
+                              <WithWebComponent theme={{...}} type="Active" data-key="2" infoState="None">
+                                <ui5-li type="Active" data-key="2" info-state="None" class="">
                                   Text 2
                                 </ui5-li>
                               </WithWebComponent>
@@ -282,9 +282,9 @@
                         </WithWebComponent>
                       </Label>
                       <div>
-                        <Switch textOn="" textOff="" type="Textual" onClick={[Function]} valueParameter="state" style={{...}}>
-                          <WithWebComponent theme={{...}} textOn="" textOff="" type="Textual" onClick={[Function]} valueParameter="state" style={{...}}>
-                            <ui5-switch text-on="" text-off="" type="Textual" on-click={[Function]} value-parameter="state" style={{...}} class="" />
+                        <Switch onClick={[Function]} valueParameter="state" style={{...}}>
+                          <WithWebComponent theme={{...}} onClick={[Function]} valueParameter="state" style={{...}}>
+                            <ui5-switch on-click={[Function]} value-parameter="state" style={{...}} class="" />
                           </WithWebComponent>
                         </Switch>
                       </div>
@@ -346,9 +346,9 @@
                               </WithWebComponent>
                             </Title>
                           </span>
-                          <Button type="Transparent" icon="navigation-down-arrow">
-                            <WithWebComponent theme={{...}} type="Transparent" icon="navigation-down-arrow">
-                              <ui5-button type="Transparent" icon="navigation-down-arrow" class="" />
+                          <Button design="Transparent" icon="navigation-down-arrow">
+                            <WithWebComponent theme={{...}} design="Transparent" icon="navigation-down-arrow">
+                              <ui5-button design="Transparent" icon="navigation-down-arrow" class="" />
                             </WithWebComponent>
                           </Button>
                         </div>
@@ -356,9 +356,9 @@
                       <WithTheme(WithWebComponent) open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                         <WithWebComponent theme={{...}} open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
                           <ui5-popover open={false} header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="">
-                            <Button className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
-                              <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} type="Emphasized" data-ui5-slot="footer">
-                                <ui5-button type="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
+                            <Button className="VariantManagement-footer---" onPress={[Function]} design="Emphasized" data-ui5-slot="footer">
+                              <WithWebComponent theme={{...}} className="VariantManagement-footer---" onPress={[Function]} design="Emphasized" data-ui5-slot="footer">
+                                <ui5-button design="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
                                   Cancel
                                 </ui5-button>
                               </WithWebComponent>
@@ -366,16 +366,16 @@
                             <WithTheme(WithWebComponent) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                               <WithWebComponent theme={{...}} onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                                 <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="">
-                                  <StandardListItem style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                    <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} description="" icon={{...}} image={{...}}>
-                                      <ui5-li selected={true} style={{...}} data-key="1" type="Active" description="" icon={{...}} image={{...}} class="">
+                                  <StandardListItem style={{...}} data-key="1" type="Active" selected={true} infoState="None">
+                                    <WithWebComponent theme={{...}} style={{...}} data-key="1" type="Active" selected={true} infoState="None">
+                                      <ui5-li selected={true} style={{...}} data-key="1" type="Active" info-state="None" class="">
                                         Variant 1
                                       </ui5-li>
                                     </WithWebComponent>
                                   </StandardListItem>
-                                  <StandardListItem style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                    <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} description="" icon={{...}} image={{...}}>
-                                      <ui5-li style={{...}} data-key="2" type="Active" description="" icon={{...}} image={{...}} class="">
+                                  <StandardListItem style={{...}} data-key="2" type="Active" selected={false} infoState="None">
+                                    <WithWebComponent theme={{...}} style={{...}} data-key="2" type="Active" selected={false} infoState="None">
+                                      <ui5-li style={{...}} data-key="2" type="Active" info-state="None" class="">
                                         Variant 2
                                       </ui5-li>
                                     </WithWebComponent>
@@ -391,9 +391,9 @@
                 </WithStyles(VariantManagement)>
               </Jss(WithStyles(VariantManagement))>
               <div className="FilterBar-headerRowRight---">
-                <Button onPress={[Function]} type="Transparent">
-                  <WithWebComponent theme={{...}} onPress={[Function]} type="Transparent">
-                    <ui5-button type="Transparent" class="">
+                <Button onPress={[Function]} design="Transparent">
+                  <WithWebComponent theme={{...}} onPress={[Function]} design="Transparent">
+                    <ui5-button design="Transparent" class="">
                       Hide Filter Bar
                     </ui5-button>
                   </WithWebComponent>
@@ -415,16 +415,16 @@
                       <Select onChange={[Function]} style={{...}} valueState="None">
                         <WithWebComponent theme={{...}} onChange={[Function]} style={{...}} valueState="None">
                           <ui5-select style={{...}} value-state="None" class="">
-                            <StandardListItem type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="1" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="1" description="" icon={{...}} image={{...}} class="">
+                            <StandardListItem type="Active" data-key="1" infoState="None">
+                              <WithWebComponent theme={{...}} type="Active" data-key="1" infoState="None">
+                                <ui5-li type="Active" data-key="1" info-state="None" class="">
                                   Text 1
                                 </ui5-li>
                               </WithWebComponent>
                             </StandardListItem>
-                            <StandardListItem type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                              <WithWebComponent theme={{...}} type="Active" data-key="2" description="" icon={{...}} image={{...}}>
-                                <ui5-li type="Active" data-key="2" description="" icon={{...}} image={{...}} class="">
+                            <StandardListItem type="Active" data-key="2" infoState="None">
+                              <WithWebComponent theme={{...}} type="Active" data-key="2" infoState="None">
+                                <ui5-li type="Active" data-key="2" info-state="None" class="">
                                   Text 2
                                 </ui5-li>
                               </WithWebComponent>

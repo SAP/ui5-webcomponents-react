@@ -5,9 +5,9 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Link href="" target="" type="Default">
-      <WithWebComponent theme={{...}} href="" target="" type="Default">
-        <ui5-link href="" target="" type="Default" class="" />
+    <Link design="Default">
+      <WithWebComponent theme={{...}} design="Default">
+        <ui5-link design="Default" class="" />
       </WithWebComponent>
     </Link>
   </ThemeProvider>

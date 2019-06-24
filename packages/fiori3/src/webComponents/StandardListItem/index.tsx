@@ -1,7 +1,8 @@
-import UI5StandardListItem from '@ui5/webcomponents/dist/StandardListItem';
 import React, { FC } from 'react';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 import { ListItemTypes } from '../../lib/ListItemTypes';
+import { ValueState } from '../../lib/ValueState';
+import UI5StandardListItem from '@ui5/webcomponents/dist/StandardListItem';
+import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   selected?: boolean; // @generated
@@ -10,6 +11,8 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   icon?: string; // @generated
   iconEnd?: boolean; // @generated
   image?: string; // @generated
+  info?: string; // @generated
+  infoState?: ValueState; // @generated
   children?: string; // @generated
 }
 
@@ -21,9 +24,7 @@ StandardListItem.displayName = 'StandardListItem';
 
 StandardListItem.defaultProps = {
   type: ListItemTypes.Active, // @generated
-  description: '', // @generated
-  icon: null, // @generated
-  image: null // @generated
+  infoState: ValueState.None // @generated
 };
 
 export { StandardListItem };

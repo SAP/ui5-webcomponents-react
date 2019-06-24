@@ -12,8 +12,9 @@ import { AvatarSize } from './lib/AvatarSize';
 import { Badge } from './lib/Badge';
 import { Bar } from './lib/Bar';
 import { BusyIndicator } from './lib/BusyIndicator';
+import { BusyIndicatorType } from './lib/BusyIndicatorType';
 import { Button } from './lib/Button';
-import { ButtonType } from './lib/ButtonType';
+import { ButtonDesign } from './lib/ButtonDesign';
 import { Calendar } from './lib/Calendar';
 import { CalendarHeader } from './lib/CalendarHeader';
 import { CalendarType } from './lib/CalendarType';
@@ -43,7 +44,7 @@ import { Input } from './lib/Input';
 import { InputType } from './lib/InputType';
 import { Label } from './lib/Label';
 import { Link } from './lib/Link';
-import { LinkType } from './lib/LinkType';
+import { LinkDesign } from './lib/LinkDesign';
 import { List } from './lib/List';
 import { ListItem } from './lib/ListItem';
 import { ListItemBase } from './lib/ListItemBase';
@@ -64,6 +65,7 @@ import { ObjectPageMode } from './lib/ObjectPageMode';
 import { ObjectPageSection } from './lib/ObjectPageSection';
 import { ObjectPageSubSection } from './lib/ObjectPageSubSection';
 import { ObjectStatus } from './lib/ObjectStatus';
+import { Option } from './lib/Option';
 import { Page } from './lib/Page';
 import { PageBackgroundDesign } from './lib/PageBackgroundDesign';
 import { Panel } from './lib/Panel';
@@ -88,11 +90,11 @@ import { Switch } from './lib/Switch';
 import { Tab } from './lib/Tab';
 import { TabBase } from './lib/TabBase';
 import { TabContainer } from './lib/TabContainer';
+import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
 import { TableCell } from './lib/TableCell';
 import { TableColumn } from './lib/TableColumn';
 import { TableRow } from './lib/TableRow';
-import { TabSeparator } from './lib/TabSeparator';
 import { Text } from './lib/Text';
 import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
@@ -121,8 +123,9 @@ export {
   Badge,
   Bar,
   BusyIndicator,
+  BusyIndicatorType,
   Button,
-  ButtonType,
+  ButtonDesign,
   Calendar,
   CalendarHeader,
   CalendarType,
@@ -152,7 +155,7 @@ export {
   InputType,
   Label,
   Link,
-  LinkType,
+  LinkDesign,
   List,
   ListItem,
   ListItemBase,
@@ -173,6 +176,7 @@ export {
   ObjectPageSection,
   ObjectPageSubSection,
   ObjectStatus,
+  Option,
   Page,
   PageBackgroundDesign,
   Panel,
