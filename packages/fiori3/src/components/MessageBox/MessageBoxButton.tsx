@@ -1,7 +1,7 @@
+import React, { PureComponent } from 'react';
 import { Button } from '../../lib/Button';
 import { ButtonType } from '../../lib/ButtonType';
 import { MessageBoxActions } from '../../lib/MessageBoxActions';
-import React, { PureComponent } from 'react';
 
 export class MessageBoxButton extends PureComponent<{
   action: MessageBoxActions;

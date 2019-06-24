@@ -1,4 +1,5 @@
 import { generateDiff } from './diff';
+
 const inquirer = require('inquirer');
 const fs = require('fs');
 const chalk = require('chalk');

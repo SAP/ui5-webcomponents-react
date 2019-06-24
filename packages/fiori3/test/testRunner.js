@@ -1,8 +1,9 @@
 /* global __karma__ */
 const { configure } = require('enzyme');
 import { addSerializer } from 'chai-karma-snapshot';
-const Adapter = require('enzyme-adapter-react-16');
 import snapshotSerializer from './snapshot-serializer';
+
+const Adapter = require('enzyme-adapter-react-16');
 
 // configure enzyme
 configure({ adapter: new Adapter() });

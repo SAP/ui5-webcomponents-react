@@ -1,4 +1,5 @@
 import { generateTypings } from './generateTypingsWeb';
+
 const modules = require('./json/modules');
 
 modules.forEach((moduleName) => {

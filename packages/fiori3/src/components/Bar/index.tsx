@@ -1,8 +1,7 @@
-import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import React, { Component } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { withStyles } from '@ui5-webcomponents-react/styles';
+import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './Bar.jss';
 
 export interface BarPropTypes extends CommonProps {

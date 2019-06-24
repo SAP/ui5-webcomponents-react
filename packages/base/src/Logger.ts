@@ -39,9 +39,7 @@ class DeviceLogger {
       component: sComponent || ''
     };
     if (window.console) {
-      const logText = `${oLogEntry.date} ${oLogEntry.time} ${this.sWindowName}${oLogEntry.message} - ${
-        oLogEntry.component
-      }`;
+      const logText = `${oLogEntry.date} ${oLogEntry.time} ${this.sWindowName}${oLogEntry.message} - ${oLogEntry.component}`;
       switch (iLevel) {
         case LOG_LEVEL.FATAL:
         case LOG_LEVEL.ERROR:

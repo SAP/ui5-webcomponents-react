@@ -1,8 +1,8 @@
-import { Calendar } from '../../lib/Calendar';
-import { CalendarType } from '../../lib/CalendarType';
 import { select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import { Calendar } from '../../lib/Calendar';
+import { CalendarType } from '../../lib/CalendarType';
 
 const now = new Date().getTime();
 

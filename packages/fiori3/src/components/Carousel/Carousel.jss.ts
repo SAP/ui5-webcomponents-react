@@ -1,5 +1,5 @@
+import { fonts } from '@ui5-webcomponents-react/base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { fonts } from '@ui5-webcomponents-react/styles';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
   carousel: {

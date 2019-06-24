@@ -13,8 +13,7 @@
     "@types/chart.js": "^2.7.53"
   },
   "dependencies": {
-    "@ui5-webcomponents-react/styles": "0.3.2-rc.2",
-    "@ui5-webcomponents-react/utils": "0.3.2-rc.2",
+    "@ui5-webcomponents-react/base": "0.3.2-rc.2",
     "chart.js": "^2.8.0",
     "chartjs-plugin-datalabels": "^0.6.0",
     "is-mergeable-object": "^1.1.0",

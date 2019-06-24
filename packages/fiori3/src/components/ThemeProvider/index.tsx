@@ -1,10 +1,10 @@
+import { bootstrap, sap_fiori_3 } from '@ui5-webcomponents-react/base';
+import { getCompactSize, getTheme } from '@ui5/webcomponents-base/src/Configuration';
+import React, { Fragment, PureComponent, ReactNode } from 'react';
+import { jss, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { ContentDensity } from '../../lib/ContentDensity';
 import { MessageToast } from '../../lib/MessageToast';
 import { Themes } from '../../lib/Themes';
-import { jss, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
-import React, { Fragment, PureComponent, ReactNode } from 'react';
-import { bootstrap, sap_fiori_3 } from '@ui5-webcomponents-react/styles';
-import { getCompactSize, getTheme } from '@ui5/webcomponents-base/src/Configuration';
 
 bootstrap();
 

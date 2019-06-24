@@ -1,9 +1,9 @@
-import { Page } from '../../lib/Page';
 import { renderThemedComponent, ThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
 import { shallow } from 'enzyme';
 import React from 'react';
+import { Page } from '../../lib/Page';
 
 use(matchSnapshot);
 

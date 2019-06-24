@@ -1,8 +1,7 @@
-import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import React, { Component, CSSProperties, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { withStyles } from '@ui5-webcomponents-react/styles';
 import { styles } from './Flexbox.jss';
 
 export enum FlexBoxJustifyContent {

@@ -1,8 +1,8 @@
-import { Link } from '../../lib/Link';
-import { LinkType } from '../../lib/LinkType';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import { Link } from '../../lib/Link';
+import { LinkType } from '../../lib/LinkType';
 
 storiesOf('UI5 Web Components | Link', module).add('Generated default story', () => (
   <Link

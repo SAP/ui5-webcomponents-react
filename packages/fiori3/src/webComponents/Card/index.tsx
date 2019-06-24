@@ -1,5 +1,5 @@
-import React, { FC, ReactNode } from 'react';
 import UI5Card from '@ui5/webcomponents/dist/Card';
+import React, { FC, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface CardPropTypes extends WithWebComponentPropTypes {

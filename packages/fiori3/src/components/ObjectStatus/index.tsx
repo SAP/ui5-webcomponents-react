@@ -1,10 +1,9 @@
-import { ValueState } from '../../lib/ValueState';
-import { ClassProps } from '../../interfaces/ClassProps';
-import { withStyles } from '@ui5-webcomponents-react/styles';
-import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import React, { FC, ReactNode } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { Icon } from '../../lib/Icon';
+import { ValueState } from '../../lib/ValueState';
 import styles from './ObjectStatus.jss';
 
 export interface ObjectStatusPropTypes extends Fiori3CommonProps {

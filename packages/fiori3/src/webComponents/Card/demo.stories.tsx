@@ -1,8 +1,8 @@
-import { Card } from '../../lib/Card';
-import { Text } from '../../lib/Text';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { propTablesExclude } from '../../../../docs/.storybook/config';
+import { Card } from '../../lib/Card';
+import { Text } from '../../lib/Text';
 
 storiesOf('UI5 Web Components | Card', module).add(
   'Generated default story',

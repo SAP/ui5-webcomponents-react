@@ -1,5 +1,5 @@
-import React, { FC, ReactNode } from 'react';
 import UI5Timeline from '@ui5/webcomponents/dist/Timeline';
+import React, { FC, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TimelinePropTypes extends WithWebComponentPropTypes {

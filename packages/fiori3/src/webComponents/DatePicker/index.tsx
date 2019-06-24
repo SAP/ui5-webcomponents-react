@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
-import { ValueState } from '../../lib/ValueState';
-import { CalendarType } from '../../lib/CalendarType';
-import { Event } from '@ui5-webcomponents-react/utils';
+import { Event } from '@ui5-webcomponents-react/base';
 import UI5DatePicker from '@ui5/webcomponents/dist/DatePicker';
+import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { CalendarType } from '../../lib/CalendarType';
+import { ValueState } from '../../lib/ValueState';
 
 export interface DatePickerPropTypes extends WithWebComponentPropTypes {
   value?: string; // @generated

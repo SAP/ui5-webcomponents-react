@@ -1,9 +1,8 @@
-import { ContentDensity } from '../../lib/ContentDensity';
-import { ClassProps } from '../../interfaces/ClassProps';
-import { withStyles } from '@ui5-webcomponents-react/styles';
-import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { Event, StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import React, { Children, cloneElement, Component, CSSProperties, ReactElement } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { ContentDensity } from '../../lib/ContentDensity';
 import { SegmentedButtonItemPropTypes } from '../SegmentedButtonItem';
 
 export type SelectedKey = string | number;

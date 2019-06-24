@@ -1,10 +1,10 @@
-import { ClassProps } from '../../interfaces/ClassProps';
-import { withStyles } from '@ui5-webcomponents-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/base';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import styles from './FilterBar.jss';
 import { Button } from '../../lib/Button';
 import { ButtonType } from '../../lib/ButtonType';
+import styles from './FilterBar.jss';
 
 export interface FilterBarPropTypes extends Fiori3CommonProps {
   renderVariants?: () => JSX.Element;

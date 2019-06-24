@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import { withStyles } from '@ui5-webcomponents-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/base';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';

@@ -1,10 +1,10 @@
-import { ActionSheet } from '../../lib/ActionSheet';
-import { Button } from '../../lib/Button';
-import { PlacementType } from '../../lib/PlacementType';
 import { select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { propTablesExclude } from '../../../../docs/.storybook/config';
+import { ActionSheet } from '../../lib/ActionSheet';
+import { Button } from '../../lib/Button';
+import { PlacementType } from '../../lib/PlacementType';
 
 storiesOf('Components | ActionSheet', module)
   .addParameters({

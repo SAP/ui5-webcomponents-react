@@ -1,4 +1,4 @@
-import { withStyles } from '@ui5-webcomponents-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/base';
 import * as React from 'react';
 import { LoaderStyles } from './Loader.jss';
 

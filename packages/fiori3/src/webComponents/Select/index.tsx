@@ -1,8 +1,8 @@
-import React, { FC, ReactNode } from 'react';
-import { ValueState } from '../../lib/ValueState';
-import { Event } from '@ui5-webcomponents-react/utils';
+import { Event } from '@ui5-webcomponents-react/base';
 import UI5Select from '@ui5/webcomponents/dist/Select';
+import React, { FC, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { ValueState } from '../../lib/ValueState';
 
 export interface SelectPropTypes extends WithWebComponentPropTypes {
   disabled?: boolean; // @generated

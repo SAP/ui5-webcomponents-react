@@ -1,10 +1,9 @@
-import { ContentDensity } from '../../lib/ContentDensity';
-import { ClassProps } from '../../interfaces/ClassProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
-import { withStyles } from '@ui5-webcomponents-react/styles';
-import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import React, { PureComponent } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ContentDensity } from '../../lib/ContentDensity';
 import styles from './ProgressIndicator.jss';
 
 export interface ProgressIndicatorPropTypes extends Fiori3CommonProps {

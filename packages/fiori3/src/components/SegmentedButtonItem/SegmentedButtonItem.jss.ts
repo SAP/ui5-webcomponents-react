@@ -1,6 +1,6 @@
-import { ContentDensity } from '../../lib/ContentDensity';
-import { fonts } from '@ui5-webcomponents-react/styles';
+import { fonts } from '@ui5-webcomponents-react/base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ContentDensity } from '../../lib/ContentDensity';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
   segmentedButtonItem: {

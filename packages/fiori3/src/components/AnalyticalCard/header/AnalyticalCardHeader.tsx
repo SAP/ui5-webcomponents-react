@@ -1,13 +1,12 @@
-import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { Event, StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
+import React, { Fragment, PureComponent } from 'react';
+import { ClassProps } from '../../../interfaces/ClassProps';
+import { CommonProps } from '../../../interfaces/CommonProps';
 import { BusyIndicator } from '../../../lib/BusyIndicator';
 import { DeviationIndicator } from '../../../lib/DeviationIndicator';
 import { Label } from '../../../lib/Label';
 import { Text } from '../../../lib/Text';
 import { ValueState } from '../../../lib/ValueState';
-import React, { Fragment, PureComponent } from 'react';
-import { ClassProps } from '../../../interfaces/ClassProps';
-import { CommonProps } from '../../../interfaces/CommonProps';
-import { withStyles } from '@ui5-webcomponents-react/styles';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {

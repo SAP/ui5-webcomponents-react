@@ -5,14 +5,11 @@ yarn-error.log
 .idea
 coverage
 /.env
-lib/
 dist/
 @types
 typings
 !/typings
 .cache
-!packages/utils/src/Device/lib
-!packages/fiori3/src/lib
 build
 /packages/*/npm/**/*.d.ts
 .out

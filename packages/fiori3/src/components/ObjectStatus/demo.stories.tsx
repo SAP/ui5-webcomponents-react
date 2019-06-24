@@ -1,9 +1,9 @@
-import { Icon } from '../../lib/Icon';
-import { ObjectStatus } from '../../lib/ObjectStatus';
-import { ValueState } from '../../lib/ValueState';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import { Icon } from '../../lib/Icon';
+import { ObjectStatus } from '../../lib/ObjectStatus';
+import { ValueState } from '../../lib/ValueState';
 
 storiesOf('Components | ObjectStatus', module)
   .add('Only Text', () => (

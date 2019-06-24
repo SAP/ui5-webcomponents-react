@@ -1,6 +1,6 @@
-import React, { FC, ReactNode } from 'react';
-import { Event } from '@ui5-webcomponents-react/utils';
+import { Event } from '@ui5-webcomponents-react/base';
 import UI5Popup from '@ui5/webcomponents/dist/Popup';
+import React, { FC, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface PopupPropTypes extends WithWebComponentPropTypes {

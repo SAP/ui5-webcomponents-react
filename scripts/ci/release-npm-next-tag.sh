@@ -25,8 +25,7 @@ git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" "$TRAVIS
 
 cd ${TRAVIS_BUILD_DIR}/build/node_modules/charts && npm publish --access public --tag next
 cd ${TRAVIS_BUILD_DIR}/build/node_modules/fiori3 && npm publish --access public --tag next
-cd ${TRAVIS_BUILD_DIR}/build/node_modules/styles && npm publish --access public --tag next
-cd ${TRAVIS_BUILD_DIR}/build/node_modules/utils && npm publish --access public --tag next
+cd ${TRAVIS_BUILD_DIR}/build/node_modules/base && npm publish --access public --tag next
 
 #curl --request POST \
 #  --url https://api.github.com/repos/SAP/ui5-webcomponents-react/pulls \

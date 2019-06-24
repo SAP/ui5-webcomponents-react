@@ -1,8 +1,8 @@
-import React from 'react';
+import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
+import React from 'react';
 import { CalendarHeader } from '../../lib/CalendarHeader';
-import { mountThemedComponent } from '@shared/tests/utils';
 
 use(matchSnapshot);
 

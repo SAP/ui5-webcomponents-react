@@ -40,9 +40,7 @@ async function generateWebComponentWrapper(dto) {
     '\n\n',
     tsTypings.interfaceStatement,
     '\n\n',
-    `const ${componentName}: FC<${tsTypings.interfaceName}> = withWebComponent<${
-      tsTypings.interfaceName
-    }>(${ui5ComponentName});`,
+    `const ${componentName}: FC<${tsTypings.interfaceName}> = withWebComponent<${tsTypings.interfaceName}>(${ui5ComponentName});`,
     '\n\n',
     `${componentName}.displayName = '${componentName}';`,
     '\n\n',

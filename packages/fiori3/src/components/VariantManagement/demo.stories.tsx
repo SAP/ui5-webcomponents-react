@@ -1,10 +1,10 @@
-import { PlacementType } from '../../lib/PlacementType';
-import { TitleLevel } from '../../lib/TitleLevel';
-import { VariantManagement } from '../../lib/VariantManagement';
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import { PlacementType } from '../../lib/PlacementType';
+import { TitleLevel } from '../../lib/TitleLevel';
+import { VariantManagement } from '../../lib/VariantManagement';
 
 function renderStory() {
   const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];

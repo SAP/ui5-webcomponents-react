@@ -1,9 +1,9 @@
-import { Button } from '../../lib/Button';
-import { ButtonType } from '../../lib/ButtonType';
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import { Button } from '../../lib/Button';
+import { ButtonType } from '../../lib/ButtonType';
 
 const customStyle1 = {
   color: 'red'

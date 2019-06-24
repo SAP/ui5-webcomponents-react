@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
-import { LinkType } from '../../lib/LinkType';
-import { Event } from '@ui5-webcomponents-react/utils';
+import { Event } from '@ui5-webcomponents-react/base';
 import UI5Link from '@ui5/webcomponents/dist/Link';
+import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { LinkType } from '../../lib/LinkType';
 
 export interface LinkPropTypes extends WithWebComponentPropTypes {
   disabled?: boolean; // @generated

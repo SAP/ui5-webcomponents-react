@@ -1,16 +1,15 @@
-import { ClassProps } from '../../interfaces/ClassProps';
+import { Event, StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import React, { PureComponent, ReactNode } from 'react';
-import styles from './FilterItem.jss';
-import { Label } from '../../lib/Label';
-import { Input } from '../../lib/Input';
-import { Select } from '../../lib/Select';
-import { StandardListItem } from '../../lib/StandardListItem';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { BusyIndicator } from '../../lib/BusyIndicator';
 import { FilterType } from '../../lib/FilterType';
-import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
-import { withStyles } from '@ui5-webcomponents-react/styles';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { Input } from '../../lib/Input';
+import { Label } from '../../lib/Label';
 import { ListItemTypes } from '../../lib/ListItemTypes';
+import { Select } from '../../lib/Select';
+import { StandardListItem } from '../../lib/StandardListItem';
+import styles from './FilterItem.jss';
 
 export interface FilterItemPropTypes extends CommonProps {
   placeholder?: string;

@@ -1,4 +1,4 @@
-import { fonts } from '@ui5-webcomponents-react/styles';
+import { fonts } from '@ui5-webcomponents-react/base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {

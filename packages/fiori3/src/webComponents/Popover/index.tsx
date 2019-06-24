@@ -1,10 +1,10 @@
+import { Event } from '@ui5-webcomponents-react/base';
+import UI5Popover from '@ui5/webcomponents/dist/Popover';
 import React, { Component, CSSProperties, ReactNode, RefObject } from 'react';
+import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 import { PlacementType } from '../../lib/PlacementType';
 import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
-import UI5Popover from '@ui5/webcomponents/dist/Popover';
-import { Event } from '@ui5-webcomponents-react/utils';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated

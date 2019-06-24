@@ -1,10 +1,9 @@
-import { Event, KeyCodes } from '@ui5-webcomponents-react/utils';
-import { AvatarShape } from '../../lib/AvatarShape';
-import { AvatarSize } from '../../lib/AvatarSize';
+import { Event, KeyCodes, withStyles } from '@ui5-webcomponents-react/base';
 import React, { CSSProperties, PureComponent } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { withStyles } from '@ui5-webcomponents-react/styles';
+import { AvatarShape } from '../../lib/AvatarShape';
+import { AvatarSize } from '../../lib/AvatarSize';
 import styles from './Avatar.jss';
 
 export interface AvatarPropTypes extends Fiori3CommonProps {

@@ -1,4 +1,4 @@
-import { withStyles } from '@ui5-webcomponents-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/base';
 import React, { Component, FC, Fragment } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { JSSTheme } from '../../../interfaces/JSSTheme';

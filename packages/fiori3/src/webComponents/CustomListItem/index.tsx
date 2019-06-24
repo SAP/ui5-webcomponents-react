@@ -1,7 +1,7 @@
-import { ListItemTypes } from '../../lib/ListItemTypes';
-import React, { FC, ReactNode } from 'react';
 import UI5CustomListItem from '@ui5/webcomponents/dist/CustomListItem';
+import React, { FC, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { ListItemTypes } from '../../lib/ListItemTypes';
 
 export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
   selected?: boolean; // @generated
