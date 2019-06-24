@@ -1,11 +1,11 @@
 import { Event } from '@ui5-webcomponents-react/base';
 import UI5List from '@ui5/webcomponents/dist/List';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 import { ListMode } from '../../lib/ListMode';
 import { ListSeparators } from '../../lib/ListSeparators';
 
-export interface ListPropTypes {
+export interface ListPropTypes extends WithWebComponentPropTypes {
   headerText?: string;
   footerText?: string;
   inset?: boolean;

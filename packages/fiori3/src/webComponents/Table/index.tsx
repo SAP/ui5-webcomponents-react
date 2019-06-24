@@ -1,8 +1,8 @@
 import UI5Table from '@ui5/webcomponents/dist/Table';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface TablePropTypes {
+export interface TablePropTypes extends WithWebComponentPropTypes {
   showNoData?: boolean; // @generated
   noDataText?: string; // @generated
   stickyColumnHeader?: boolean;
