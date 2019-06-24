@@ -5,6 +5,9 @@ import { jss, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { ContentDensity } from '../../lib/ContentDensity';
 import { MessageToast } from '../../lib/MessageToast';
 import { Themes } from '../../lib/Themes';
+import fiori3ThemeProperties from '@ui5/webcomponents/dist/themes/sap_fiori_3/parameters-bundle.css.js';
+import { injectThemeProperties } from '@ui5/webcomponents-base/src/theming/StyleInjection';
+import boot from '@ui5/webcomponents-base/src/boot';
 
 export interface ThemeProviderProps {
   withToastContainer?: boolean;
@@ -15,6 +18,14 @@ export class ThemeProvider extends PureComponent<ThemeProviderProps> {
   static defaultProps = {
     withToastContainer: false
   };
+
+  constructor(props) {
+    super(props);
+    // inject default CSS custom parameters in head
+    boot().then((_) => {
+      injectThemeProperties(fiori3ThemeProperties);
+    });
+  }
 
   private static getTheme = (theme: Themes) => {
     if (theme === Themes.sap_fiori_3) return sap_fiori_3;

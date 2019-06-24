@@ -58,9 +58,7 @@ export class ProgressIndicator extends PureComponent<ProgressIndicatorPropTypes>
 
     // CSS classes
     const wrapperClasses = StyleClassHelper.of(classes.wrapper);
-    const progressBarClasses = StyleClassHelper.of(classes.progressbar);
     const progressBarTextClasses = StyleClassHelper.of(classes.progressBarText);
-    const progressBarRemainingClasses = StyleClassHelper.of(classes.progressBarRemaining);
     const progressBarContainerStyle = { width, height };
     const progressBarStyle = { flexBasis: `${percentValue}%` };
 
@@ -104,10 +102,10 @@ export class ProgressIndicator extends PureComponent<ProgressIndicatorPropTypes>
         title={tooltip}
         data-ui5-slot={this.props['data-ui5-slot']}
       >
-        <div className={progressBarClasses.valueOf()} style={progressBarStyle}>
+        <div className={classes.progressbar} style={progressBarStyle}>
           {percentValue <= 50 ? null : progressBarTextSpan}
         </div>
-        <div className={progressBarRemainingClasses.valueOf()}>{percentValue <= 50 ? progressBarTextSpan : null}</div>
+        <div className={classes.progressBarRemaining}>{percentValue <= 50 ? progressBarTextSpan : null}</div>
       </div>
     );
   }

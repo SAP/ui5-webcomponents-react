@@ -40,16 +40,19 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     textDecoration: 'none',
     overflow: 'hidden',
     display: 'inline-block',
-    width: '0.5rem',
-    height: '0.5rem',
-    margin: '0 0.25rem',
+    margin: '0 0.375rem',
+    width: '0.25rem',
+    height: '0.25rem',
     transition: 'background-color 0.1s ease-in',
     borderRadius: '50%',
     alignSelf: 'center',
     boxSizing: 'border-box',
-    backgroundColor: lighten(parameters.sapUiContentForegroundColor, 50).hsl,
+    backgroundColor: parameters.sapUiContentNonInteractiveIconColor,
     '&$paginationIconActive': {
-      backgroundColor: parameters.sapUiContentNonInteractiveIconColor
+      margin: '0 0.25rem',
+      width: '0.5rem',
+      height: '0.5rem',
+      backgroundColor: parameters.sapUiSelected
     }
   },
   paginationIconActive: {},
