@@ -4,7 +4,7 @@ import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { Bar } from '../../lib/Bar';
 import { Button } from '../../lib/Button';
-import { ButtonType } from '../../lib/ButtonType';
+import { ButtonDesign } from '../../lib/ButtonDesign';
 import { PageBackgroundDesign } from '../../lib/PageBackgroundDesign';
 import { Title } from '../../lib/Title';
 import { TitleLevel } from '../../lib/TitleLevel';
@@ -43,7 +43,7 @@ export class Page extends Component<PagePropTypes> {
 
   private renderBackButton = () => {
     return (
-      <Button icon="navigation-left-arrow" type={ButtonType.Transparent} onPress={this.handleNavBackButtonPress} />
+      <Button icon="navigation-left-arrow" design={ButtonDesign.Transparent} onPress={this.handleNavBackButtonPress} />
     );
   };
 

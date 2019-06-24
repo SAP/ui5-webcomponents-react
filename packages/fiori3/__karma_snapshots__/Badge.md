@@ -5,9 +5,9 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Badge>
-      <WithWebComponent theme={{...}}>
-        <ui5-badge class="">
+    <Badge colorScheme="1">
+      <WithWebComponent theme={{...}} colorScheme="1">
+        <ui5-badge color-scheme="1" class="">
           My Badge
         </ui5-badge>
       </WithWebComponent>
@@ -21,9 +21,9 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Badge icon={{...}}>
-      <WithWebComponent theme={{...}} icon={{...}}>
-        <ui5-badge class="">
+    <Badge icon={{...}} colorScheme="1">
+      <WithWebComponent theme={{...}} icon={{...}} colorScheme="1">
+        <ui5-badge color-scheme="1" class="">
           <Icon src="sap-icon://employee" data-ui5-slot="icon">
             <WithWebComponent theme={{...}} src="sap-icon://employee" data-ui5-slot="icon">
               <ui5-icon src="sap-icon://employee" data-ui5-slot="icon" class="" />

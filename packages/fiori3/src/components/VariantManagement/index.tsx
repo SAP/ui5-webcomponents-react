@@ -4,7 +4,7 @@ import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Button } from '../../lib/Button';
-import { ButtonType } from '../../lib/ButtonType';
+import { ButtonDesign } from '../../lib/ButtonDesign';
 import { List } from '../../lib/List';
 import { ListItemTypes } from '../../lib/ListItemTypes';
 import { ListMode } from '../../lib/ListMode';
@@ -112,7 +112,7 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
         <span className={classes.VariantManagementText}>
           <Title level={level}>{selectedItem.label}</Title>
         </span>
-        <Button type={ButtonType.Transparent} icon={'navigation-down-arrow'} />
+        <Button design={ButtonDesign.Transparent} icon={'navigation-down-arrow'} />
       </div>
     );
   }
@@ -124,7 +124,7 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
         className={classes.footer}
         key="btn-cancel"
         onPress={this.handleCancelButtonClick}
-        type={ButtonType.Emphasized}
+        design={ButtonDesign.Emphasized}
       >
         Cancel
       </Button>

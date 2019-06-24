@@ -5,9 +5,9 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <StandardListItem type="Active" description="" icon={{...}} image={{...}}>
-      <WithWebComponent theme={{...}} type="Active" description="" icon={{...}} image={{...}}>
-        <ui5-li type="Active" description="" icon={{...}} image={{...}} class="" />
+    <StandardListItem type="Active" infoState="None">
+      <WithWebComponent theme={{...}} type="Active" infoState="None">
+        <ui5-li type="Active" info-state="None" class="" />
       </WithWebComponent>
     </StandardListItem>
   </ThemeProvider>

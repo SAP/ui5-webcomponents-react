@@ -39,18 +39,18 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} type="Emphasized">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="">
+                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Emphasized">
+                      <ui5-button style={{...}} design="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
-                  <Button style={{...}} onPress={[Function]} type="Transparent">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Transparent">
-                      <ui5-button style={{...}} type="Transparent" class="">
+                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Transparent">
+                      <ui5-button style={{...}} design="Transparent" class="">
                         Cancel
                       </ui5-button>
                     </WithWebComponent>
@@ -105,18 +105,18 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} type="Emphasized">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="">
+                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Emphasized">
+                      <ui5-button style={{...}} design="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
-                  <Button style={{...}} onPress={[Function]} type="Transparent">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Transparent">
-                      <ui5-button style={{...}} type="Transparent" class="">
+                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Transparent">
+                      <ui5-button style={{...}} design="Transparent" class="">
                         Cancel
                       </ui5-button>
                     </WithWebComponent>
@@ -171,9 +171,9 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} type="Emphasized">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="">
+                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Emphasized">
+                      <ui5-button style={{...}} design="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
@@ -228,9 +228,9 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} type="Emphasized">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="">
+                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Emphasized">
+                      <ui5-button style={{...}} design="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
@@ -285,9 +285,9 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="Close">
-                  <Button style={{...}} onPress={[Function]} type="Emphasized">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="">
+                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Emphasized">
+                      <ui5-button style={{...}} design="Emphasized" class="">
                         Close
                       </ui5-button>
                     </WithWebComponent>
@@ -342,9 +342,9 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} type="Emphasized">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="">
+                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Emphasized">
+                      <ui5-button style={{...}} design="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
@@ -399,18 +399,18 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="Yes">
-                  <Button style={{...}} onPress={[Function]} type="Emphasized">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="">
+                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Emphasized">
+                      <ui5-button style={{...}} design="Emphasized" class="">
                         Yes
                       </ui5-button>
                     </WithWebComponent>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="No">
-                  <Button style={{...}} onPress={[Function]} type="Transparent">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Transparent">
-                      <ui5-button style={{...}} type="Transparent" class="">
+                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Transparent">
+                      <ui5-button style={{...}} design="Transparent" class="">
                         No
                       </ui5-button>
                     </WithWebComponent>
@@ -465,9 +465,9 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} type="Emphasized">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="">
+                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Emphasized">
+                      <ui5-button style={{...}} design="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
@@ -536,18 +536,18 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} type="Emphasized">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Emphasized">
-                      <ui5-button style={{...}} type="Emphasized" class="">
+                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Emphasized">
+                      <ui5-button style={{...}} design="Emphasized" class="">
                         OK
                       </ui5-button>
                     </WithWebComponent>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
-                  <Button style={{...}} onPress={[Function]} type="Transparent">
-                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} type="Transparent">
-                      <ui5-button style={{...}} type="Transparent" class="">
+                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                    <WithWebComponent theme={{...}} style={{...}} onPress={[Function]} design="Transparent">
+                      <ui5-button style={{...}} design="Transparent" class="">
                         Cancel
                       </ui5-button>
                     </WithWebComponent>

@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { boolean, text } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Switch } from '../../lib/Switch';
@@ -10,7 +10,7 @@ storiesOf('UI5 Web Components | Switch', module).add('Generated default story', 
     disabled={boolean('disabled', false)}
     textOn={text('textOn', 'Yes')}
     textOff={text('textOff', 'No')}
-    type={select('type', ['Textual', 'Graphical'], 'Textual')}
+    graphical={boolean('graphical', false)}
     onChange={action('onChange')}
   />
 ));

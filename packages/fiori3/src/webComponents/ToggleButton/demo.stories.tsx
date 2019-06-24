@@ -1,12 +1,12 @@
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { ButtonType } from '../../lib/ButtonType';
+import { ButtonDesign } from '../../lib/ButtonDesign';
 import { ToggleButton } from '../../lib/ToggleButton';
 
 storiesOf('UI5 Web Components | ToggleButton', module).add('Generated default story', () => (
   <ToggleButton
-    type={select('type', ButtonType, null)}
+    design={select('design', ButtonDesign, null)}
     disabled={boolean('disabled', false)}
     icon="sap-icon://add"
     iconEnd={boolean('iconEnd', false)}

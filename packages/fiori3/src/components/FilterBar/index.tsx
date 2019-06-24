@@ -3,7 +3,7 @@ import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { Button } from '../../lib/Button';
-import { ButtonType } from '../../lib/ButtonType';
+import { ButtonDesign } from '../../lib/ButtonDesign';
 import styles from './FilterBar.jss';
 
 export interface FilterBarPropTypes extends Fiori3CommonProps {
@@ -38,7 +38,7 @@ export class FilterBar extends PureComponent<FilterBarPropTypes> {
           {renderVariants && renderVariants()}
           {renderSearch && <div className={classes.vLine}> {renderSearch()} </div>}
           <div className={classes.headerRowRight}>
-            <Button onPress={this.handelHideFilterBar} type={ButtonType.Transparent}>
+            <Button onPress={this.handelHideFilterBar} design={ButtonDesign.Transparent}>
               {this.state.showFilters ? 'Hide Filter Bar' : 'Show Filter Bar'}
             </Button>
           </div>

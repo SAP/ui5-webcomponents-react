@@ -1,11 +1,11 @@
+import React, { FC } from 'react';
+import { ButtonDesign } from '../../lib/ButtonDesign';
 import { Event } from '@ui5-webcomponents-react/base';
 import UI5ToggleButton from '@ui5/webcomponents/dist/ToggleButton';
-import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { ButtonType } from '../../lib/ButtonType';
 
 export interface ToggleButtonPropTypes extends WithWebComponentPropTypes {
-  type?: ButtonType; // @generated
+  design?: ButtonDesign; // @generated
   disabled?: boolean; // @generated
   icon?: string; // @generated
   iconEnd?: boolean; // @generated
@@ -20,7 +20,7 @@ const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPro
 ToggleButton.displayName = 'ToggleButton';
 
 ToggleButton.defaultProps = {
-  type: ButtonType.Default // @generated
+  design: ButtonDesign.Default // @generated
 };
 
 export { ToggleButton };

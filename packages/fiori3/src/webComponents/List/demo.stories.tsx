@@ -5,6 +5,7 @@ import { List } from '../../lib/List';
 import { ListMode } from '../../lib/ListMode';
 import { ListSeparators } from '../../lib/ListSeparators';
 import { StandardListItem } from '../../lib/StandardListItem';
+import { ValueState } from '../../lib/ValueState';
 
 storiesOf('UI5 Web Components | List', module).add('Generated default story', () => (
   <List
@@ -19,7 +20,9 @@ storiesOf('UI5 Web Components | List', module).add('Generated default story', ()
     onSelectionChange={null}
     header={null}
   >
-    <StandardListItem>Item 1</StandardListItem>
+    <StandardListItem info="3" infoState={ValueState.Warning}>
+      Item 1
+    </StandardListItem>
     <StandardListItem>Item 2</StandardListItem>
     <StandardListItem>Item 3</StandardListItem>
   </List>

@@ -5,9 +5,9 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Button type="Default">
-      <WithWebComponent theme={{...}} type="Default">
-        <ui5-button type="Default" class="" />
+    <Button design="Default">
+      <WithWebComponent theme={{...}} design="Default">
+        <ui5-button design="Default" class="" />
       </WithWebComponent>
     </Button>
   </ThemeProvider>

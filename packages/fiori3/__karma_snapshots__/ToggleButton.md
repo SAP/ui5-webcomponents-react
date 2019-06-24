@@ -5,9 +5,9 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <ToggleButton type="Default">
-      <WithWebComponent theme={{...}} type="Default">
-        <ui5-togglebutton type="Default" class="" />
+    <ToggleButton design="Default">
+      <WithWebComponent theme={{...}} design="Default">
+        <ui5-togglebutton design="Default" class="" />
       </WithWebComponent>
     </ToggleButton>
   </ThemeProvider>
