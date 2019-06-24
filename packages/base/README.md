@@ -1,11 +1,11 @@
-# @ui5-webcomponents-react/utils
-Helper Utils for ui5-webcomponents-react
+# @ui5-webcomponents-react/base
+Base Utilities for ui5-webcomponents-react
 
 ## Installation
 ```
-yarn add @ui5-webcomponents-react/utils
+yarn add @ui5-webcomponents-react/base
 OR
-npm install @ui5-webcomponents-react/utils --save
+npm install @ui5-webcomponents-react/base --save
 ```
 
 ## Modules
@@ -14,7 +14,7 @@ npm install @ui5-webcomponents-react/utils --save
 Concat multiple CSS Module into an instance of this class helper and place them into a react component.<br>
 Example:
 ```javascript
-import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { StyleClassHelper } from '@ui5-webcomponents-react/base';
 import style from 'YOUR_STYLESHEET';
 
 const classes = new StyleClassHelper.of(style.text);

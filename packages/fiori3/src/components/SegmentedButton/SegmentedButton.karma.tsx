@@ -1,10 +1,10 @@
-import { SegmentedButton } from '../../lib/SegmentedButton';
-import { SegmentedButtonItem } from '../../lib/SegmentedButtonItem';
 import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import React from 'react';
 import sinon from 'sinon';
+import { SegmentedButton } from '../../lib/SegmentedButton';
+import { SegmentedButtonItem } from '../../lib/SegmentedButtonItem';
 
 describe('SegmentedButton', () => {
   it('Selection', () => {

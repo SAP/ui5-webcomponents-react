@@ -1,13 +1,13 @@
+import { boolean } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
+import { propTablesExclude } from '../../../../docs/.storybook/config';
 import { Label } from '../../lib/Label';
 import { Table } from '../../lib/Table';
 import { TableCell } from '../../lib/TableCell';
 import { TableColumn } from '../../lib/TableColumn';
 import { TableRow } from '../../lib/TableRow';
 import { Text } from '../../lib/Text';
-import { boolean } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
-import { propTablesExclude } from '../../../../docs/.storybook/config';
 
 storiesOf('UI5 Web Components | Table', module)
   .addParameters({

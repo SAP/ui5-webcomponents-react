@@ -1,14 +1,13 @@
-import { ObjectPageMode } from '../../lib/ObjectPageMode';
-import { ClassProps } from '../../interfaces/ClassProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
-import { withStyles } from '@ui5-webcomponents-react/styles';
-import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { Event, StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import React, { Children, cloneElement, PureComponent, ReactElement, ReactNode, ReactNodeArray } from 'react';
 import { scroller } from 'react-scroll';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { Button } from '../../lib/Button';
+import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchor } from './ObjectPageAnchor';
-import { Button } from '../../lib/Button';
 
 const objectPageContentStyles = ({ parameters }: JSSTheme) => ({
   sectionsContainer: {

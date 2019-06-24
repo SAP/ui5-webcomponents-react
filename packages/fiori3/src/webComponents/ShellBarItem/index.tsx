@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import { Event } from '@ui5-webcomponents-react/utils';
+import { Event } from '@ui5-webcomponents-react/base';
 import UI5ShellBarItem from '@ui5/webcomponents/dist/ShellBarItem';
+import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {

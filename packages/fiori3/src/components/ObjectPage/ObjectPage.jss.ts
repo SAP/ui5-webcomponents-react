@@ -1,6 +1,6 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
-import { fonts, HSLColor } from '@ui5-webcomponents-react/styles';
+import { fonts, HSLColor } from '@ui5-webcomponents-react/base';
 import { ZIndex } from '../../enums/ZIndex';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
   objectPage: {

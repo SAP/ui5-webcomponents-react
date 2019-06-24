@@ -1,12 +1,12 @@
+import { mountThemedComponent } from '@shared/tests/utils';
+import { expect, use } from 'chai';
+import { matchSnapshot } from 'chai-karma-snapshot';
+import React from 'react';
 import { AnalyticalCard } from '../../lib/AnalyticalCard';
 import { AnalyticalCardHeader } from '../../lib/AnalyticalCardHeader';
 import { DeviationIndicator } from '../../lib/DeviationIndicator';
 import { Text } from '../../lib/Text';
 import { ValueState } from '../../lib/ValueState';
-import { mountThemedComponent } from '@shared/tests/utils';
-import { expect, use } from 'chai';
-import { matchSnapshot } from 'chai-karma-snapshot';
-import React from 'react';
 
 use(matchSnapshot);
 

@@ -1,9 +1,9 @@
-import React from 'react';
+import { action } from '@storybook/addon-actions';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
+import React from 'react';
 import { StandardListItem } from '../../lib/StandardListItem';
 import { ValueState } from '../../lib/ValueState';
-import { boolean, select, text } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
 import { MultiComboBox } from './index';
 
 storiesOf('UI5 Web Components | MultiComboBox', module).add('Default story', () => (

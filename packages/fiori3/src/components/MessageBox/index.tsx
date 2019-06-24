@@ -1,13 +1,12 @@
-import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { Event, StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
+import React, { isValidElement, PureComponent, ReactNode } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { Icon } from '../../lib/Icon';
 import { MessageBoxButton } from '../../lib/MessageBoxButton';
 import { Text } from '../../lib/Text';
 import { Title } from '../../lib/Title';
 import { TitleLevel } from '../../lib/TitleLevel';
-import React, { isValidElement, PureComponent, ReactNode } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { withStyles } from '@ui5-webcomponents-react/styles';
 import styles from './MessageBox.jss';
 
 export enum MessageBoxActions {

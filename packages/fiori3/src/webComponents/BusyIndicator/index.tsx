@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
 import UI5BusyIndicator from '@ui5/webcomponents/dist/BusyIndicator';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import React, { FC } from 'react';
 import { BusyIndicatorType } from '../../enums/BusyIndicatorType';
+import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
   size?: BusyIndicatorType; // @generated

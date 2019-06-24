@@ -1,8 +1,8 @@
-import { TableRow } from '../../lib/TableRow';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
+import { TableRow } from '../../lib/TableRow';
 
 use(matchSnapshot);
 

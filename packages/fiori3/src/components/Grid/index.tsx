@@ -1,8 +1,7 @@
-import { Device, StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { Device, StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import React, { Children, Component, CSSProperties, ReactElement, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { withStyles } from '@ui5-webcomponents-react/styles';
 import { styles } from './Grid.jss';
 
 export enum GridPosition {

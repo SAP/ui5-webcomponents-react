@@ -1,8 +1,8 @@
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 import { Button } from '../../lib/Button';
 import { MessageToast } from '../../lib/MessageToast';
 import { ThemeProvider } from '../../lib/ThemeProvider';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
 
 storiesOf('Components | MessageToast', module).add(
   'Default',

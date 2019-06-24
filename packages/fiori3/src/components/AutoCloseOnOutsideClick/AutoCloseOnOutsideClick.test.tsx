@@ -1,7 +1,7 @@
-import React from 'react';
-import { AutoCloseOnOutsideClick } from './index';
-import sinon from 'sinon';
 import { mount } from 'enzyme';
+import React from 'react';
+import sinon from 'sinon';
+import { AutoCloseOnOutsideClick } from './index';
 
 describe('AutoCloseOnOutsideClick', () => {
   test('Loose Focus', () => {

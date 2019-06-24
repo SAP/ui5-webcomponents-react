@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import { Event } from '@ui5-webcomponents-react/base';
 import UI5Switch from '@ui5/webcomponents/dist/Switch';
-import { Event } from '@ui5-webcomponents-react/utils';
+import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface SwitchPropTypes extends WithWebComponentPropTypes {

@@ -1,8 +1,8 @@
-import { ThemeProvider } from '../../lib/ThemeProvider';
+import { withStyles } from '@ui5-webcomponents-react/base';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import React from 'react';
-import { withStyles } from '@ui5-webcomponents-react/styles';
+import { ThemeProvider } from '../../lib/ThemeProvider';
 
 describe('ThemeProvider', () => {
   it('Provides Correct Context', (done) => {

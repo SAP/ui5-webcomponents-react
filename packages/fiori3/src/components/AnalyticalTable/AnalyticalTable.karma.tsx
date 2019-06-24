@@ -1,8 +1,8 @@
+import { mountThemedComponent } from '@shared/tests/utils';
+import { expect, use } from 'chai';
+import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
 import { AnalyticalTable } from '../../lib/AnalyticalTable';
-import { mountThemedComponent } from '@shared/tests/utils';
-import { matchSnapshot } from 'chai-karma-snapshot';
-import { expect, use } from 'chai';
 
 const columns = [
   {

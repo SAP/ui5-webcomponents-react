@@ -1,7 +1,7 @@
-import { Dialog } from '../../lib/Dialog';
 import { boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import { Dialog } from '../../lib/Dialog';
 
 storiesOf('UI5 Web Components | Dialog', module).add('Generated default story', () => (
   <Dialog

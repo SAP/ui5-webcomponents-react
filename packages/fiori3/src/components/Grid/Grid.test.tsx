@@ -1,5 +1,5 @@
-import React from 'react';
 import { mount } from '@shared/tests/utils';
+import React from 'react';
 import { Grid, GridPosition } from './index';
 
 const GridContent = () => (

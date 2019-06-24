@@ -1,8 +1,8 @@
-import { Event } from '@ui5-webcomponents-react/utils';
-import { CalendarType } from '../../lib/CalendarType';
+import { Event } from '@ui5-webcomponents-react/base';
 import UI5YearPicker from '@ui5/webcomponents/dist/YearPicker';
 import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { CalendarType } from '../../lib/CalendarType';
 
 export interface YearPickerPropTypes extends WithWebComponentPropTypes {
   timestamp?: number; // @generated

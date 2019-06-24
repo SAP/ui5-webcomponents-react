@@ -1,7 +1,7 @@
-import { TextArea } from '../../lib/TextArea';
 import { boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import { TextArea } from '../../lib/TextArea';
 
 storiesOf('UI5 Web Components | TextArea', module).add('Generated default story', () => (
   <TextArea

@@ -1,14 +1,13 @@
-import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { Event, StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
+import React, { Component, ReactElement, ReactNode } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { Bar } from '../../lib/Bar';
 import { Button } from '../../lib/Button';
 import { ButtonType } from '../../lib/ButtonType';
 import { PageBackgroundDesign } from '../../lib/PageBackgroundDesign';
 import { Title } from '../../lib/Title';
 import { TitleLevel } from '../../lib/TitleLevel';
-import React, { Component, ReactElement, ReactNode } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { withStyles } from '@ui5-webcomponents-react/styles';
 import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
 

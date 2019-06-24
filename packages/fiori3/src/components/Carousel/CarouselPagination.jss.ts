@@ -1,6 +1,6 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { HSLColor } from '@ui5-webcomponents-react/base';
 import { ZIndex } from '../../enums/ZIndex';
-import { HSLColor } from '@ui5-webcomponents-react/styles';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const lighten = HSLColor.lighten;
 

@@ -1,10 +1,10 @@
+import { action } from '@storybook/addon-actions';
+import { boolean, select } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 import { CalendarType } from '../../lib/CalendarType';
 import { DatePicker } from '../../lib/DatePicker';
 import { ValueState } from '../../lib/ValueState';
-import { boolean, select } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
 
 storiesOf('UI5 Web Components | DatePicker', module).add('Generated default story', () => (
   <DatePicker

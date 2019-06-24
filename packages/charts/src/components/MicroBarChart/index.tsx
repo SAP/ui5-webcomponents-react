@@ -1,4 +1,4 @@
-import { withStyles } from '@ui5-webcomponents-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/base';
 import React, { CSSProperties, PureComponent } from 'react';
 import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
 import { CommonProps } from '../../interfaces/CommonProps';

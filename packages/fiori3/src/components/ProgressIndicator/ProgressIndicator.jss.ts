@@ -1,6 +1,6 @@
-import { ValueState } from '../../lib/ValueState';
+import { fonts, HSLColor } from '@ui5-webcomponents-react/base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { fonts, HSLColor } from '@ui5-webcomponents-react/styles';
+import { ValueState } from '../../lib/ValueState';
 
 function getBackgroundColor(state) {
   switch (state) {

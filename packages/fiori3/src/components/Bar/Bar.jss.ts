@@ -4,7 +4,7 @@ import { ContentDensity } from '../../lib/ContentDensity';
  * Style Class Generator Function
  *
  * @param {Object} themeContext - Current Theme Context by JSS Provider.
- * @param {string} obj.theme - Current Theme (sap_belize, sap_belize_plus, etc.)
+ * @param {string} obj.theme - Current Theme (sap_fiori_3)
  * @param {string} obj.contentDensity - Current Content Density (Cozy, Compact)
  * @param {object} obj.parameters - Theming parameters (e.g. LabelColor)
  */

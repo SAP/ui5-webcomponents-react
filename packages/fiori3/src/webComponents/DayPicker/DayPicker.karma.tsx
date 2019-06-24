@@ -1,8 +1,8 @@
-import { DayPicker } from '../../lib/DayPicker';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
+import { DayPicker } from '../../lib/DayPicker';
 
 use(matchSnapshot);
 

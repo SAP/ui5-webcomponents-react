@@ -1,5 +1,5 @@
+import { fonts, HSLColor } from '@ui5-webcomponents-react/base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { fonts, HSLColor } from '@ui5-webcomponents-react/styles';
 
 const styles = ({ theme, parameters }: JSSTheme) => ({
   header: {

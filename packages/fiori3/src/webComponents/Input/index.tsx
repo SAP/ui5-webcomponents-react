@@ -1,9 +1,9 @@
-import { ValueState } from '../../lib/ValueState';
-import React, { FC } from 'react';
-import { InputType } from '../../lib/InputType';
+import { Event } from '@ui5-webcomponents-react/base';
 import UI5Input from '@ui5/webcomponents/dist/Input';
-import { Event } from '@ui5-webcomponents-react/utils';
+import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { InputType } from '../../lib/InputType';
+import { ValueState } from '../../lib/ValueState';
 
 export interface InputPropTypes extends WithWebComponentPropTypes {
   disabled?: boolean; // @generated

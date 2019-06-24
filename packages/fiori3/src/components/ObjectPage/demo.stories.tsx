@@ -1,3 +1,8 @@
+import { action } from '@storybook/addon-actions';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
+import { propTablesExclude } from '../../../../docs/.storybook/config';
 import { Button } from '../../lib/Button';
 import { ButtonType } from '../../lib/ButtonType';
 import { Label } from '../../lib/Label';
@@ -7,11 +12,6 @@ import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import { ObjectPageSection } from '../../lib/ObjectPageSection';
 import { ObjectPageSubSection } from '../../lib/ObjectPageSubSection';
 import { Text } from '../../lib/Text';
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
-import { propTablesExclude } from '../../../../docs/.storybook/config';
 // @ts-ignore
 import SampleImage from './DemoImage.png';
 

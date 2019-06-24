@@ -1,8 +1,8 @@
 import UI5TableRow from '@ui5/webcomponents/dist/TableRow';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface TableRowPropTypes {
+export interface TableRowPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[];
 }
 

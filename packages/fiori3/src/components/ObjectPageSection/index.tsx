@@ -1,10 +1,9 @@
+import { StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
-import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
-import { ClassProps } from '../../interfaces/ClassProps';
 import styles from './ObjectPageSection.jss';
-import { withStyles } from '@ui5-webcomponents-react/styles';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
   title?: string;

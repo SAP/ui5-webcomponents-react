@@ -1,4 +1,8 @@
-import { Event } from '@ui5-webcomponents-react/utils';
+import { Event, withStyles } from '@ui5-webcomponents-react/base';
+import React, { Component, ReactElement } from 'react';
+import { ClassProps } from '../../interfaces/ClassProps';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Button } from '../../lib/Button';
 import { ButtonType } from '../../lib/ButtonType';
 import { List } from '../../lib/List';
@@ -9,11 +13,6 @@ import { Popover } from '../../lib/Popover';
 import { StandardListItem } from '../../lib/StandardListItem';
 import { Title } from '../../lib/Title';
 import { TitleLevel } from '../../lib/TitleLevel';
-import React, { Component, ReactElement } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
-import { withStyles } from '@ui5-webcomponents-react/styles';
 import { ButtonPropTypes } from '../../webComponents/Button';
 
 export interface VariantItem {

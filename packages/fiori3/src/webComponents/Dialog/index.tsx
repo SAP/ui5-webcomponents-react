@@ -1,6 +1,6 @@
-import React, { Component, ReactNode } from 'react';
+import { Event } from '@ui5-webcomponents-react/base';
 import UI5Dialog from '@ui5/webcomponents/dist/Dialog';
-import { Event } from '@ui5-webcomponents-react/utils';
+import React, { Component, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {

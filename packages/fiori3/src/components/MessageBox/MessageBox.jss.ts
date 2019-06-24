@@ -1,6 +1,6 @@
-import { fonts } from '@ui5-webcomponents-react/styles';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { fonts } from '@ui5-webcomponents-react/base';
 import { ZIndex } from '../../enums/ZIndex';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ContentDensity } from '../../lib/ContentDensity';
 
 const style = ({ parameters, contentDensity }: JSSTheme) => ({

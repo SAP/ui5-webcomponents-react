@@ -1,8 +1,8 @@
-import { Event } from '@ui5-webcomponents-react/utils';
-import { PanelAccessibleRoles } from '../../lib/PanelAccessibleRoles';
+import { Event } from '@ui5-webcomponents-react/base';
 import UI5Panel from '@ui5/webcomponents/dist/Panel';
 import React, { FC, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { PanelAccessibleRoles } from '../../lib/PanelAccessibleRoles';
 
 export interface PanelPropTypes extends WithWebComponentPropTypes {
   headerText?: string; // @generated

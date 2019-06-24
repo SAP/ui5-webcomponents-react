@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
-import { ValueState } from '../../lib/ValueState';
-import { Event } from '@ui5-webcomponents-react/utils';
+import { Event } from '@ui5-webcomponents-react/base';
 import UI5RadioButton from '@ui5/webcomponents/dist/RadioButton';
+import React, { FC } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { ValueState } from '../../lib/ValueState';
 
 export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
   disabled?: boolean; // @generated

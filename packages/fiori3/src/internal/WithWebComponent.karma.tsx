@@ -1,9 +1,9 @@
-import { withWebComponent } from './withWebComponent';
-import UI5Button from '@ui5/webcomponents/dist/Button';
 import { mountThemedComponent } from '@shared/tests/utils';
+import UI5Button from '@ui5/webcomponents/dist/Button';
 import { expect } from 'chai';
-import React, { FC, cloneElement } from 'react';
+import React, { cloneElement, FC } from 'react';
 import { spy } from 'sinon';
+import { withWebComponent } from './withWebComponent';
 
 describe('withWebComponent', () => {
   it('Unmount Event Handlers correctly after prop update', () => {

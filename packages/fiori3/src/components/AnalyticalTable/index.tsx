@@ -1,4 +1,4 @@
-import { withStyles } from '@ui5-webcomponents-react/styles';
+import { withStyles } from '@ui5-webcomponents-react/base';
 import React, { Component, CSSProperties, ReactNode, ReactText } from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';

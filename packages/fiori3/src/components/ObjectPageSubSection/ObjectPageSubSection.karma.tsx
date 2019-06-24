@@ -1,9 +1,10 @@
+import { renderThemedComponent } from '@shared/tests/utils';
+import { expect, use } from 'chai';
+import { matchSnapshot } from 'chai-karma-snapshot';
+import { shallow } from 'enzyme';
 import React from 'react';
 import { ObjectPageSubSection } from '../../lib/ObjectPageSubSection';
-import { shallow } from 'enzyme';
-import { renderThemedComponent } from '@shared/tests/utils';
-import { matchSnapshot } from 'chai-karma-snapshot';
-import { expect, use } from 'chai';
+
 use(matchSnapshot);
 
 describe('ObjectPageSubSection', () => {

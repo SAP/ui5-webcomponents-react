@@ -1,3 +1,8 @@
+import { getEventFromCallback, mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
+import { expect, use } from 'chai';
+import { matchSnapshot } from 'chai-karma-snapshot';
+import React from 'react';
+import * as sinon from 'sinon';
 import { Button } from '../../lib/Button';
 import { Label } from '../../lib/Label';
 import { Link } from '../../lib/Link';
@@ -6,11 +11,6 @@ import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import { ObjectPageSection } from '../../lib/ObjectPageSection';
 import { ObjectPageSubSection } from '../../lib/ObjectPageSubSection';
 import { Text } from '../../lib/Text';
-import { getEventFromCallback, mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
-import { expect, use } from 'chai';
-import { matchSnapshot } from 'chai-karma-snapshot';
-import React from 'react';
-import * as sinon from 'sinon';
 
 use(matchSnapshot);
 

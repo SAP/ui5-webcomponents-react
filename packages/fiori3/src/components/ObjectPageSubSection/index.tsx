@@ -1,11 +1,9 @@
+import { fonts, HSLColor, StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
-import { fonts, HSLColor } from '@ui5-webcomponents-react/styles';
-import { withStyles } from '@ui5-webcomponents-react/styles';
-import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
 
 const lighten = (amount, color) => HSLColor.of(color).lighten(amount * 100).hsl;
 

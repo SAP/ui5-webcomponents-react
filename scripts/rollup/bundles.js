@@ -13,20 +13,20 @@ const bundles = [
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
     entry: 'fiori3',
     global: 'FioriForReact',
-    externals: ['react', 'react-dom', 'react-jss', '@ui5/webcomponents-base']
+    externals: [
+      'react',
+      'react-dom',
+      'react-jss',
+      '@ui5/webcomponents-base',
+      '@ui5-webcomponents-react/base',
+      'react-table'
+    ]
   },
   {
-    label: 'styles',
+    label: 'base',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
-    entry: 'styles',
-    global: 'FioriForReactStyles',
-    externals: []
-  },
-  {
-    label: 'utils',
-    bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
-    entry: 'utils',
-    global: 'FioriForReactUtils',
+    entry: 'base',
+    global: 'FioriForReactBase',
     externals: []
   },
   {

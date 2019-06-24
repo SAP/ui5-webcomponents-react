@@ -1,8 +1,8 @@
-import { MonthPicker } from '../../lib/MonthPicker';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
+import { MonthPicker } from '../../lib/MonthPicker';
 
 use(matchSnapshot);
 

@@ -1,4 +1,7 @@
-import { Event, StyleClassHelper } from '@ui5-webcomponents-react/utils';
+import { Event, StyleClassHelper } from '@ui5-webcomponents-react/base';
+import React, { Component } from 'react';
+import { Link } from 'react-scroll';
+import { ObjectWithVariableKeys } from '../../interfaces/ObjectWithVariableKeys';
 import { Button } from '../../lib/Button';
 import { ButtonType } from '../../lib/ButtonType';
 import { CustomListItem } from '../../lib/CustomListItem';
@@ -9,9 +12,6 @@ import { ListItemTypes } from '../../lib/ListItemTypes';
 import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import { PlacementType } from '../../lib/PlacementType';
 import { Popover } from '../../lib/Popover';
-import React, { Component } from 'react';
-import { Link } from 'react-scroll';
-import { ObjectWithVariableKeys } from '../../interfaces/ObjectWithVariableKeys';
 
 export interface ObjectPageAnchorPropTypes {
   section: any;

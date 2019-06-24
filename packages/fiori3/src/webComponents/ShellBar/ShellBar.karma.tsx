@@ -1,8 +1,8 @@
-import { ShellBar } from '../../lib/ShellBar';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
+import { ShellBar } from '../../lib/ShellBar';
 
 use(matchSnapshot);
 

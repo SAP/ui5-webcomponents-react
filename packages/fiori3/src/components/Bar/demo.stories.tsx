@@ -1,5 +1,5 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
+import React from 'react';
 import { Bar } from '../../lib/Bar';
 import { Label } from '../../lib/Label';
 

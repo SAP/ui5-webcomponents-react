@@ -1,11 +1,10 @@
-import { withStyles } from '@ui5-webcomponents-react/styles';
-import { Device, StyleClassHelper } from '@ui5-webcomponents-react/utils';
-import { ButtonType } from '../../lib/ButtonType';
-import { PlacementType } from '../../lib/PlacementType';
-import { Popover } from '../../lib/Popover';
+import { Device, StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import React, { Children, cloneElement, Component, ReactElement, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { ButtonType } from '../../lib/ButtonType';
+import { PlacementType } from '../../lib/PlacementType';
+import { Popover } from '../../lib/Popover';
 import { ButtonPropTypes } from '../../webComponents/Button';
 import styles from './ActionSheet.jss';
 

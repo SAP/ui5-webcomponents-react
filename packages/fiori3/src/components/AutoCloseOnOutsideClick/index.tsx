@@ -1,4 +1,4 @@
-import { Event } from '@ui5-webcomponents-react/utils';
+import { Event } from '@ui5-webcomponents-react/base';
 import React, { PureComponent, ReactNode } from 'react';
 
 export interface AutoCloseOnOutsideClickPropTypes {

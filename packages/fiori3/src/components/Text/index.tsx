@@ -1,9 +1,8 @@
+import { StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
+import React, { CSSProperties, FC, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ThemeOptions } from '../../interfaces/ThemeOptions';
-import { withStyles } from '@ui5-webcomponents-react/styles';
-import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
-import React, { CSSProperties, ReactNode, FC } from 'react';
 import { TextStyles } from './Text.jss';
 
 export interface TextProps extends CommonProps {

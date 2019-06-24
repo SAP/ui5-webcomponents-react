@@ -1,10 +1,10 @@
+import { boolean, number, select } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
 import { Carousel } from '../../lib/Carousel';
 import { CarouselArrowsPlacement } from '../../lib/CarouselArrowsPlacement';
 import { Label } from '../../lib/Label';
 import { PlacementType } from '../../lib/PlacementType';
-import { boolean, number, select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
 
 function renderCarousel() {
   return (

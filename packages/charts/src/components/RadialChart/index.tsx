@@ -1,5 +1,4 @@
-import { StyleClassHelper } from '@ui5-webcomponents-react/utils';
-import { withStyles } from '@ui5-webcomponents-react/styles';
+import { StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
 import { ChartOptions } from 'chart.js';
 import React, { CSSProperties, PureComponent, Ref } from 'react';
 import { ChartInternalProps } from '../../interfaces/ChartInternalProps';

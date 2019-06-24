@@ -1,5 +1,4 @@
-import { withStyles } from '@ui5-webcomponents-react/styles';
-import { Event } from '@ui5-webcomponents-react/utils';
+import { Event, withStyles } from '@ui5-webcomponents-react/base';
 import React, { Component, FC, ReactNode } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
