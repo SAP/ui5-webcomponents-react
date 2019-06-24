@@ -1,5 +1,19 @@
 # `MessageStrip`
 
+#### `Basic Test (generated)`
+
+```
+<ThemeProvider withToastContainer={false}>
+  <ThemeProvider jss={{...}} theme={{...}}>
+    <MessageStrip type="Information">
+      <WithWebComponent theme={{...}} type="Information">
+        <ui5-messagestrip type="Information" class="" />
+      </WithWebComponent>
+    </MessageStrip>
+  </ThemeProvider>
+</ThemeProvider>
+```
+
 #### `Dismissible`
 
 ```
