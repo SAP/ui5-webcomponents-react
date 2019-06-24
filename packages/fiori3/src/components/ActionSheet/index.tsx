@@ -2,7 +2,7 @@ import { Device, StyleClassHelper, withStyles } from '@ui5-webcomponents-react/b
 import React, { Children, cloneElement, Component, ReactElement, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { ButtonType } from '../../lib/ButtonType';
+import { ButtonDesign } from '../../lib/ButtonDesign';
 import { PlacementType } from '../../lib/PlacementType';
 import { Popover } from '../../lib/Popover';
 import { ButtonPropTypes } from '../../webComponents/Button';
@@ -42,7 +42,7 @@ export class ActionSheet extends Component<ActionSheetPropTypes, ActionSheetStat
             style: {
               justifyContent: 'flex-start'
             },
-            type: ButtonType.Transparent,
+            design: ButtonDesign.Transparent,
             className: classes.actionButton,
             onPress: this.onActionButtonClicked(element.props.onPress)
           })}
@@ -68,7 +68,7 @@ export class ActionSheet extends Component<ActionSheetPropTypes, ActionSheetStat
 
     return (
       <Popover
-        hideHeader
+        noHeader
         innerComponentRef={this.getPopoverRef}
         openBy={openBy}
         placementType={placement}

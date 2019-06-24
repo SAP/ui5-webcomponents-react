@@ -1,5 +1,19 @@
 # `Token`
 
+#### `Basic Test (generated)`
+
+```
+<ThemeProvider withToastContainer={false}>
+  <ThemeProvider jss={{...}} theme={{...}}>
+    <Token>
+      <WithWebComponent theme={{...}}>
+        <ui5-token class="" />
+      </WithWebComponent>
+    </Token>
+  </ThemeProvider>
+</ThemeProvider>
+```
+
 #### `first`
 
 ```

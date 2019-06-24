@@ -1,5 +1,19 @@
 # `Switch`
 
+#### `Basic Test (generated)`
+
+```
+<ThemeProvider withToastContainer={false}>
+  <ThemeProvider jss={{...}} theme={{...}}>
+    <Switch>
+      <WithWebComponent theme={{...}}>
+        <ui5-switch class="" />
+      </WithWebComponent>
+    </Switch>
+  </ThemeProvider>
+</ThemeProvider>
+```
+
 #### `Basic Rendering`
 
 ```

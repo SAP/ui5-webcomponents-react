@@ -1,15 +1,15 @@
-# `Button`
+# `Option`
 
 #### `Basic Test (generated)`
 
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Button design="Default">
-      <WithWebComponent theme={{...}} design="Default">
-        <ui5-button design="Default" class="" />
+    <Option icon={{...}}>
+      <WithWebComponent theme={{...}} icon={{...}}>
+        <ui5-option icon={{...}} class="" />
       </WithWebComponent>
-    </Button>
+    </Option>
   </ThemeProvider>
 </ThemeProvider>
 ```

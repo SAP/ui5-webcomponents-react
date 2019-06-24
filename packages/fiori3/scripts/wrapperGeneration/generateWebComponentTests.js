@@ -1,6 +1,6 @@
+const { readdirSync, statSync, writeFileSync, existsSync } = require('fs');
 const path = require('path');
 const PATHS = require('../../../../config/paths');
-const { readdirSync, statSync, writeFileSync } = require('fs');
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'fiori3', 'src', 'webComponents');
 
@@ -10,12 +10,15 @@ const webComponents = readdirSync(WEB_COMPONENTS_ROOT_DIR).filter((f) =>
 
 webComponents.forEach((component) => {
   const absPath = path.join(WEB_COMPONENTS_ROOT_DIR, component, `${component}.karma.tsx`);
+  if (existsSync(absPath)) {
+    return;
+  }
   const jsxContent = `
 import React from 'react';
 import { expect, use } from 'chai';
 import { matchSnapshot } from "chai-karma-snapshot";
-import { ${component} } from './index';
-import { mountThemedComponent } from "../../../test/utils";
+import { ${component} } from '../../lib/${component}';
+import { mountThemedComponent } from "@shared/tests/utils";
 
 use(matchSnapshot);
 

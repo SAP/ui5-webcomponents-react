@@ -7,8 +7,8 @@ import { MessageStripType } from '../../lib/MessageStripType';
 export interface MessageStripPropTypes extends WithWebComponentPropTypes {
   type?: MessageStripType; // @generated
   icon?: string; // @generated
-  hideIcon?: boolean; // @generated
-  hideCloseButton?: boolean; // @generated
+  noIcon?: boolean; // @generated
+  noCloseButton?: boolean; // @generated
   onClose?: (event: Event) => void; // @generated
   children?: string; // @generated
 }
@@ -18,10 +18,7 @@ const MessageStrip: FC<MessageStripPropTypes> = withWebComponent<MessageStripPro
 MessageStrip.displayName = 'MessageStrip';
 
 MessageStrip.defaultProps = {
-  type: MessageStripType.Information, // @generated
-  icon: null, // @generated
-  hideIcon: false, // @generated
-  hideCloseButton: false // @generated
+  type: MessageStripType.Information // @generated
 };
 
 export { MessageStrip };

@@ -1,11 +1,11 @@
+import React, { FC, ReactNode } from 'react';
 import { Event } from '@ui5-webcomponents-react/base';
 import UI5Popup from '@ui5/webcomponents/dist/Popup';
-import React, { FC, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface PopupPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated
-  hideHeader?: boolean; // @generated
+  noHeader?: boolean; // @generated
   headerText?: string; // @generated
   onBeforeOpen?: (event: Event) => void; // @generated
   onAfterOpen?: (event: Event) => void; // @generated
@@ -19,10 +19,5 @@ export interface PopupPropTypes extends WithWebComponentPropTypes {
 const Popup: FC<PopupPropTypes> = withWebComponent<PopupPropTypes>(UI5Popup);
 
 Popup.displayName = 'Popup';
-
-Popup.defaultProps = {
-  initialFocus: null, // @generated
-  headerText: '' // @generated
-};
 
 export { Popup };

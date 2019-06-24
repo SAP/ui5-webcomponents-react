@@ -20,9 +20,9 @@
                   </span>
                 </span>
                 <span className="ObjectPage-actions---">
-                  <Button type="Default">
-                    <WithWebComponent theme={{...}} type="Default">
-                      <ui5-button type="Default" class="">
+                  <Button design="Default">
+                    <WithWebComponent theme={{...}} design="Default">
+                      <ui5-button design="Default" class="">
                         Action
                       </ui5-button>
                     </WithWebComponent>
@@ -33,9 +33,9 @@
                 <div className="ObjectPage-headerContent---">
                   <span className="ObjectPage-headerCustomContent---">
                     <div style={{...}}>
-                      <Link href="https://www.sap.com" target="" type="Default">
-                        <WithWebComponent theme={{...}} href="https://www.sap.com" target="" type="Default">
-                          <ui5-link href="https://www.sap.com" target="" type="Default" class="">
+                      <Link href="https://www.sap.com" design="Default">
+                        <WithWebComponent theme={{...}} href="https://www.sap.com" design="Default">
+                          <ui5-link href="https://www.sap.com" design="Default" class="">
                             www.myurl.com
                           </ui5-link>
                         </WithWebComponent>
@@ -71,9 +71,9 @@
                   </span>
                 </div>
                 <div className="ObjectPage-hideHeaderContent---">
-                  <Button style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default">
-                    <WithWebComponent theme={{...}} style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default">
-                      <ui5-button style={{...}} icon="sap-icon://navigation-up-arrow" type="Default" class="" />
+                  <Button style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} design="Default">
+                    <WithWebComponent theme={{...}} style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} design="Default">
+                      <ui5-button style={{...}} icon="sap-icon://navigation-up-arrow" design="Default" class="" />
                     </WithWebComponent>
                   </Button>
                 </div>
@@ -84,9 +84,9 @@
                     <Link spy={true} smooth={true} activeClass="ObjectPage-active---" to="ObjectPageSection-1" containerId="ObjectPageSections" offset={0}>
                       <LinkElement className="ObjectPage-active---" onClick={[Function]}>
                         <a className="ObjectPage-active---" onClick={[Function]}>
-                          <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                              <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                          <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                              <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                                 Test 1
                               </ui5-button>
                             </WithWebComponent>
@@ -101,9 +101,9 @@
                     <Link spy={true} smooth={true} activeClass="ObjectPage-active---" to="ObjectPageSection-2" containerId="ObjectPageSections" offset={0}>
                       <LinkElement className={[undefined]} onClick={[Function]}>
                         <a className={[undefined]} onClick={[Function]}>
-                          <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                              <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                          <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                              <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                                 Test 2
                               </ui5-button>
                             </WithWebComponent>
@@ -118,9 +118,9 @@
                     <Link spy={true} smooth={true} activeClass="ObjectPage-active---" to="ObjectPageSection-3" containerId="ObjectPageSections" offset={0}>
                       <LinkElement className={[undefined]} onClick={[Function]}>
                         <a className={[undefined]} onClick={[Function]}>
-                          <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                              <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                          <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                              <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                                 Test 3
                               </ui5-button>
                             </WithWebComponent>
@@ -135,9 +135,9 @@
                     <Link spy={true} smooth={true} activeClass="ObjectPage-active---" to="ObjectPageSection-4" containerId="ObjectPageSections" offset={0}>
                       <LinkElement className={[undefined]} onClick={[Function]}>
                         <a className={[undefined]} onClick={[Function]}>
-                          <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                              <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                          <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                              <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                                 Test 4
                               </ui5-button>
                             </WithWebComponent>
@@ -145,7 +145,7 @@
                         </a>
                       </LinkElement>
                     </Link>
-                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                       <div style={{...}} onClick={[Function]}>
                         <Icon src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
                           <WithWebComponent theme={{...}} src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
@@ -153,9 +153,9 @@
                           </WithWebComponent>
                         </Icon>
                       </div>
-                      <WithTheme(WithWebComponent) open={false} placementType="Bottom" onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
-                        <WithWebComponent theme={{...}} open={false} placementType="Bottom" onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
-                          <ui5-popover hide-header={true} hide-arrow={true} open={false} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="">
+                      <WithTheme(WithWebComponent) open={false} placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
+                        <WithWebComponent theme={{...}} open={false} placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
+                          <ui5-popover no-header={true} no-arrow={true} open={false} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="">
                             <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                               <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                                 <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
@@ -211,9 +211,9 @@
                     <Link spy={true} smooth={true} activeClass="ObjectPage-active---" to="ObjectPageSection-5" containerId="ObjectPageSections" offset={0}>
                       <LinkElement className={[undefined]} onClick={[Function]}>
                         <a className={[undefined]} onClick={[Function]}>
-                          <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                              <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                          <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                              <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                                 Test 5
                               </ui5-button>
                             </WithWebComponent>
@@ -221,7 +221,7 @@
                         </a>
                       </LinkElement>
                     </Link>
-                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                       <div style={{...}} onClick={[Function]}>
                         <Icon src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
                           <WithWebComponent theme={{...}} src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
@@ -229,9 +229,9 @@
                           </WithWebComponent>
                         </Icon>
                       </div>
-                      <WithTheme(WithWebComponent) open={false} placementType="Bottom" onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
-                        <WithWebComponent theme={{...}} open={false} placementType="Bottom" onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
-                          <ui5-popover hide-header={true} hide-arrow={true} open={false} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="">
+                      <WithTheme(WithWebComponent) open={false} placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
+                        <WithWebComponent theme={{...}} open={false} placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
+                          <ui5-popover no-header={true} no-arrow={true} open={false} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="">
                             <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                               <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                                 <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
@@ -484,9 +484,9 @@
                   </span>
                 </span>
                 <span className="ObjectPage-actions---">
-                  <Button type="Default">
-                    <WithWebComponent theme={{...}} type="Default">
-                      <ui5-button type="Default" class="">
+                  <Button design="Default">
+                    <WithWebComponent theme={{...}} design="Default">
+                      <ui5-button design="Default" class="">
                         Action
                       </ui5-button>
                     </WithWebComponent>
@@ -497,9 +497,9 @@
                 <div className="ObjectPage-headerContent---">
                   <span className="ObjectPage-headerCustomContent---">
                     <div style={{...}}>
-                      <Link href="https://www.sap.com" target="" type="Default">
-                        <WithWebComponent theme={{...}} href="https://www.sap.com" target="" type="Default">
-                          <ui5-link href="https://www.sap.com" target="" type="Default" class="">
+                      <Link href="https://www.sap.com" design="Default">
+                        <WithWebComponent theme={{...}} href="https://www.sap.com" design="Default">
+                          <ui5-link href="https://www.sap.com" design="Default" class="">
                             www.myurl.com
                           </ui5-link>
                         </WithWebComponent>
@@ -542,9 +542,9 @@
                     <Link spy={true} smooth={true} activeClass="ObjectPage-active---" to="ObjectPageSection-1" containerId="ObjectPageSections" offset={0}>
                       <LinkElement className="ObjectPage-active---" onClick={[Function]}>
                         <a className="ObjectPage-active---" onClick={[Function]}>
-                          <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                              <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                          <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                              <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                                 Test 1
                               </ui5-button>
                             </WithWebComponent>
@@ -559,9 +559,9 @@
                     <Link spy={true} smooth={true} activeClass="ObjectPage-active---" to="ObjectPageSection-2" containerId="ObjectPageSections" offset={0}>
                       <LinkElement className={[undefined]} onClick={[Function]}>
                         <a className={[undefined]} onClick={[Function]}>
-                          <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                              <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                          <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                              <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                                 Test 2
                               </ui5-button>
                             </WithWebComponent>
@@ -576,9 +576,9 @@
                     <Link spy={true} smooth={true} activeClass="ObjectPage-active---" to="ObjectPageSection-3" containerId="ObjectPageSections" offset={0}>
                       <LinkElement className={[undefined]} onClick={[Function]}>
                         <a className={[undefined]} onClick={[Function]}>
-                          <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                              <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                          <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                            <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                              <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                                 Test 3
                               </ui5-button>
                             </WithWebComponent>
@@ -699,9 +699,9 @@
                   </span>
                 </span>
                 <span className="ObjectPage-actions---">
-                  <Button type="Default">
-                    <WithWebComponent theme={{...}} type="Default">
-                      <ui5-button type="Default" class="">
+                  <Button design="Default">
+                    <WithWebComponent theme={{...}} design="Default">
+                      <ui5-button design="Default" class="">
                         Action
                       </ui5-button>
                     </WithWebComponent>
@@ -712,9 +712,9 @@
                 <div className="ObjectPage-headerContent---">
                   <span className="ObjectPage-headerCustomContent---">
                     <div style={{...}}>
-                      <Link href="https://www.sap.com" target="" type="Default">
-                        <WithWebComponent theme={{...}} href="https://www.sap.com" target="" type="Default">
-                          <ui5-link href="https://www.sap.com" target="" type="Default" class="">
+                      <Link href="https://www.sap.com" design="Default">
+                        <WithWebComponent theme={{...}} href="https://www.sap.com" design="Default">
+                          <ui5-link href="https://www.sap.com" design="Default" class="">
                             www.myurl.com
                           </ui5-link>
                         </WithWebComponent>
@@ -750,9 +750,9 @@
                   </span>
                 </div>
                 <div className="ObjectPage-hideHeaderContent---">
-                  <Button style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default">
-                    <WithWebComponent theme={{...}} style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} type="Default">
-                      <ui5-button style={{...}} icon="sap-icon://navigation-up-arrow" type="Default" class="" />
+                  <Button style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} design="Default">
+                    <WithWebComponent theme={{...}} style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} design="Default">
+                      <ui5-button style={{...}} icon="sap-icon://navigation-up-arrow" design="Default" class="" />
                     </WithWebComponent>
                   </Button>
                 </div>
@@ -760,9 +760,9 @@
               <section className="ObjectPage-anchorBar---" role="navigation">
                 <ObjectPageAnchor section={{...}} index={0} mode="IconTabBar" selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <div className="ObjectPage-anchorButtonContainer--- ObjectPage-iconTabModeSelected---">
-                    <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                        <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                    <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                        <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                           Test 1
                         </ui5-button>
                       </WithWebComponent>
@@ -771,9 +771,9 @@
                 </ObjectPageAnchor>
                 <ObjectPageAnchor section={{...}} index={1} mode="IconTabBar" selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <div className="ObjectPage-anchorButtonContainer---">
-                    <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                        <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                    <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                        <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                           Test 2
                         </ui5-button>
                       </WithWebComponent>
@@ -782,9 +782,9 @@
                 </ObjectPageAnchor>
                 <ObjectPageAnchor section={{...}} index={2} mode="IconTabBar" selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <div className="ObjectPage-anchorButtonContainer---">
-                    <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                        <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                    <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                        <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                           Test 3
                         </ui5-button>
                       </WithWebComponent>
@@ -793,14 +793,14 @@
                 </ObjectPageAnchor>
                 <ObjectPageAnchor section={{...}} index={3} mode="IconTabBar" selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <div className="ObjectPage-anchorButtonContainer---">
-                    <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                        <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                    <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                        <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                           Test 4
                         </ui5-button>
                       </WithWebComponent>
                     </Button>
-                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                       <div style={{...}} onClick={[Function]}>
                         <Icon src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
                           <WithWebComponent theme={{...}} src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
@@ -808,9 +808,9 @@
                           </WithWebComponent>
                         </Icon>
                       </div>
-                      <WithTheme(WithWebComponent) open={false} placementType="Bottom" onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
-                        <WithWebComponent theme={{...}} open={false} placementType="Bottom" onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
-                          <ui5-popover hide-header={true} hide-arrow={true} open={false} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="">
+                      <WithTheme(WithWebComponent) open={false} placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
+                        <WithWebComponent theme={{...}} open={false} placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
+                          <ui5-popover no-header={true} no-arrow={true} open={false} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="">
                             <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                               <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                                 <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
@@ -863,14 +863,14 @@
                 </ObjectPageAnchor>
                 <ObjectPageAnchor section={{...}} index={4} mode="IconTabBar" selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <div className="ObjectPage-anchorButtonContainer---">
-                    <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                        <ui5-button type="Transparent" class="ObjectPage-anchorButton---">
+                    <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                        <ui5-button design="Transparent" class="ObjectPage-anchorButton---">
                           Test 5
                         </ui5-button>
                       </WithWebComponent>
                     </Button>
-                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                       <div style={{...}} onClick={[Function]}>
                         <Icon src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
                           <WithWebComponent theme={{...}} src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
@@ -878,9 +878,9 @@
                           </WithWebComponent>
                         </Icon>
                       </div>
-                      <WithTheme(WithWebComponent) open={false} placementType="Bottom" onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
-                        <WithWebComponent theme={{...}} open={false} placementType="Bottom" onAfterClose={[Function]} hideArrow={true} hideHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
-                          <ui5-popover hide-header={true} hide-arrow={true} open={false} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="">
+                      <WithTheme(WithWebComponent) open={false} placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
+                        <WithWebComponent theme={{...}} open={false} placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
+                          <ui5-popover no-header={true} no-arrow={true} open={false} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="">
                             <WithTheme(WithWebComponent) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                               <WithWebComponent theme={{...}} onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                                 <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
@@ -977,7 +977,7 @@
 #### `Just Some Sections`
 
 ```
-<header class="ObjectPage-header---"><header class="ObjectPage-titleBar---"><span class="ObjectPage-container---"><h1 class="ObjectPage-title---"></h1><span class="ObjectPage-subTitle---"></span></span><span class="ObjectPage-actions---"></span></header><div><div class="ObjectPage-headerContent---"></div><div class="ObjectPage-hideHeaderContent---"></div></div><section class="ObjectPage-anchorBar---" role="navigation"><div class="ObjectPage-anchorButtonContainer--- ObjectPage-iconTabModeSelected---"><ui5-button type="Transparent" class="ObjectPage-anchorButton---"></ui5-button></div><div class="ObjectPage-anchorButtonContainer---"><ui5-button type="Transparent" class="ObjectPage-anchorButton---"></ui5-button></div></section></header><section id="ObjectPageSections" class="Component-sectionsContainer---"><section id="ObjectPageSection-1" role="region"><div role="heading" class="ObjectPageSection-header---"><div class="ObjectPageSection-title--- ObjectPageSection-uppercase---"></div></div><div class="ObjectPageSection-sectionContent---"><div class="ObjectPageSection-sectionContentInner---">Test</div></div></section><div></div></section>
+<header class="ObjectPage-header---"><header class="ObjectPage-titleBar---"><span class="ObjectPage-container---"><h1 class="ObjectPage-title---"></h1><span class="ObjectPage-subTitle---"></span></span><span class="ObjectPage-actions---"></span></header><div><div class="ObjectPage-headerContent---"></div><div class="ObjectPage-hideHeaderContent---"></div></div><section class="ObjectPage-anchorBar---" role="navigation"><div class="ObjectPage-anchorButtonContainer--- ObjectPage-iconTabModeSelected---"><ui5-button design="Transparent" class="ObjectPage-anchorButton---"></ui5-button></div><div class="ObjectPage-anchorButtonContainer---"><ui5-button design="Transparent" class="ObjectPage-anchorButton---"></ui5-button></div></section></header><section id="ObjectPageSections" class="Component-sectionsContainer---"><section id="ObjectPageSection-1" role="region"><div role="heading" class="ObjectPageSection-header---"><div class="ObjectPageSection-title--- ObjectPageSection-uppercase---"></div></div><div class="ObjectPageSection-sectionContent---"><div class="ObjectPageSection-sectionContentInner---">Test</div></div></section><div></div></section>
 ```
 
 #### `Not crashing with 1 section`
@@ -1004,9 +1004,9 @@
               <section className="ObjectPage-anchorBar---" role="navigation">
                 <ObjectPageAnchor section={{...}} index={0} mode="IconTabBar" selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <div className="ObjectPage-anchorButtonContainer--- ObjectPage-iconTabModeSelected---">
-                    <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                        <ui5-button type="Transparent" class="ObjectPage-anchorButton---" />
+                    <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                        <ui5-button design="Transparent" class="ObjectPage-anchorButton---" />
                       </WithWebComponent>
                     </Button>
                   </div>
@@ -1110,18 +1110,18 @@
               <section className="ObjectPage-anchorBar---" role="navigation">
                 <ObjectPageAnchor section={{...}} index={0} mode="IconTabBar" selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <div className="ObjectPage-anchorButtonContainer---">
-                    <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                        <ui5-button type="Transparent" class="ObjectPage-anchorButton---" />
+                    <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                        <ui5-button design="Transparent" class="ObjectPage-anchorButton---" />
                       </WithWebComponent>
                     </Button>
                   </div>
                 </ObjectPageAnchor>
                 <ObjectPageAnchor section={{...}} index={1} mode="IconTabBar" selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <div className="ObjectPage-anchorButtonContainer--- ObjectPage-iconTabModeSelected---">
-                    <Button className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" type="Transparent" onPress={[Function]}>
-                        <ui5-button type="Transparent" class="ObjectPage-anchorButton---" />
+                    <Button className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                      <WithWebComponent theme={{...}} className="ObjectPage-anchorButton---" design="Transparent" onPress={[Function]}>
+                        <ui5-button design="Transparent" class="ObjectPage-anchorButton---" />
                       </WithWebComponent>
                     </Button>
                   </div>

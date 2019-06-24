@@ -8,13 +8,13 @@ import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated
-  hideHeader?: boolean; // @generated
+  noHeader?: boolean; // @generated
   headerText?: string; // @generated
   placementType?: PlacementType; // @generated
   horizontalAlign?: PopoverHorizontalAlign; // @generated
   verticalAlign?: PopoverVerticalAlign; // @generated
   modal?: boolean; // @generated
-  hideArrow?: boolean; // @generated
+  noArrow?: boolean; // @generated
   stayOpenOnScroll?: boolean; // @generated
   allowTargetOverlap?: boolean; // @generated
   onBeforeOpen?: (event: Event) => void; // @generated
