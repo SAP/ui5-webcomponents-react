@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.3.2-rc.4",
   "description": "CLI for creating React Components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/ui5-webcomponents-react.git",
+    "directory": "packages/cli"
+  },
   "main": "src/index.js",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
