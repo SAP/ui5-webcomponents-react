@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2-rc.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.3...v0.3.2-rc.4) (2019-06-24)
+
+
+* * chore(Web Components): Updated Web Components to v0.13.1 (#39) ([e7f6164](https://github.com/SAP/ui5-webcomponents-react/commit/e7f6164)), closes [#39](https://github.com/SAP/ui5-webcomponents-react/issues/39) [#36](https://github.com/SAP/ui5-webcomponents-react/issues/36)
+
+
+### BREAKING CHANGES
+
+* **Select**: the parameter of the change event is now called `selectedOption`
+* **Select**: Use `Option` instead of `StandardListItem` for selection
+* **Link**: Use design with `LinkDesign`,  type with `LinkType` is deleted
+* **Button**: Use design with `ButtonDesign`, type with `ButtonDesign` is deleted
+* **ToggleButton**: Use design with `ButtonDesign`, type with `ButtonDesign` is deleted
+* **Switch**: type is removed, use `graphical`
+* **MessageStrip**: `hideIcon` and `hideCloseButton` are renamed to `noIcon` and `noCloseButton`
+* **Popover**: `hideArrow` and `hideHeader` are renamed to `noArrow` and `noHeader`
+
+Please refer to the [UI5 Web Components Changelog](https://github.com/SAP/ui5-webcomponents/releases/tag/v0.13.1) as well.
+
+
+
+
+
 ## [0.3.2-rc.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.2...v0.3.2-rc.3) (2019-06-24)
 
 
