@@ -1,6 +1,6 @@
 {
   "name": "@ui5-webcomponents-react/charts",
-  "version": "0.3.2-rc.4",
+  "version": "0.3.2-rc.5",
   "description": "Charts for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -17,7 +17,7 @@
     "@types/chart.js": "^2.7.53"
   },
   "dependencies": {
-    "@ui5-webcomponents-react/base": "0.3.2-rc.4",
+    "@ui5-webcomponents-react/base": "0.3.2-rc.5",
     "chart.js": "^2.8.0",
     "chartjs-plugin-datalabels": "^0.6.0",
     "is-mergeable-object": "^1.1.0",
