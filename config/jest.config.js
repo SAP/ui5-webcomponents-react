@@ -12,6 +12,7 @@ module.exports = {
   collectCoverageFrom: [
     'packages/**/*.{ts,tsx}',
     '!packages/main/src/lib/*.ts',
+    '!packages/main/src/enums/*.ts',
     '!**/*.stories.tsx',
     '!**/*.jss.ts',
     '!**/*.karma.tsx',
