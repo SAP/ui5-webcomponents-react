@@ -66,6 +66,7 @@ import { ObjectPageSection } from './lib/ObjectPageSection';
 import { ObjectPageSubSection } from './lib/ObjectPageSubSection';
 import { ObjectStatus } from './lib/ObjectStatus';
 import { Option } from './lib/Option';
+import { OverflowToolbar } from './lib/OverflowToolbar';
 import { Page } from './lib/Page';
 import { PageBackgroundDesign } from './lib/PageBackgroundDesign';
 import { Panel } from './lib/Panel';
@@ -107,6 +108,8 @@ import { TitleLevel } from './lib/TitleLevel';
 import { ToggleButton } from './lib/ToggleButton';
 import { Token } from './lib/Token';
 import { Tokenizer } from './lib/Tokenizer';
+import { ToolbarAlignment } from './lib/ToolbarAlignment';
+import { ToolbarDesign } from './lib/ToolbarDesign';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
@@ -177,6 +180,7 @@ export {
   ObjectPageSubSection,
   ObjectStatus,
   Option,
+  OverflowToolbar,
   Page,
   PageBackgroundDesign,
   Panel,
@@ -218,6 +222,8 @@ export {
   ToggleButton,
   Token,
   Tokenizer,
+  ToolbarAlignment,
+  ToolbarDesign,
   ValueState,
   VariantManagement,
   VerticalAlign,
