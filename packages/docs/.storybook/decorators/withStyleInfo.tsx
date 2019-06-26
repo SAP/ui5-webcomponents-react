@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Label, Text, ThemeProvider } from '@ui5-webcomponents-react/fiori3';
+import { Label, Text, ThemeProvider } from '@ui5/webcomponents-react';
 
 const withStyleContainer = {
   fontFamily:

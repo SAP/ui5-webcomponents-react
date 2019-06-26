@@ -24,7 +24,7 @@ git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" "$TRAVIS
 #git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" "release/${PACKAGE_VERSION}" > /dev/null 2>&1;
 
 cd ${TRAVIS_BUILD_DIR}/build/node_modules/charts && npm publish --access public --tag next
-cd ${TRAVIS_BUILD_DIR}/build/node_modules/fiori3 && npm publish --access public --tag next
+cd ${TRAVIS_BUILD_DIR}/build/node_modules/main && npm publish --access public --tag next
 cd ${TRAVIS_BUILD_DIR}/build/node_modules/base && npm publish --access public --tag next
 
 #curl --request POST \

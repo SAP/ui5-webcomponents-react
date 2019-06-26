@@ -1,7 +1,7 @@
 import React from 'react';
-import { Event } from '@ui5-webcomponents-react/base';
+import { Event } from '@ui5/webcomponents-react-base';
 import { mount, shallow } from 'enzyme';
-import { ThemeProvider } from '../../packages/fiori3/src/lib/ThemeProvider';
+import { ThemeProvider } from '../../packages/main/src/lib/ThemeProvider';
 
 export const modifyObjectProperty = (object: any, attr: string, value: any) => {
   Object.defineProperty(object, attr, {

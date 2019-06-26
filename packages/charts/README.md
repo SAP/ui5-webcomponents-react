@@ -1,11 +1,11 @@
-# @ui5-webcomponents-react/charts
+# @ui5/webcomponents-react-charts
 Charts for ui5-webcomponents-react
 
 ## Usage
 
 ### Installation
 ```bash
-yarn add @ui5-webcomponents-react/charts
+yarn add @ui5/webcomponents-react-charts
 ```
 
 ### Documentation

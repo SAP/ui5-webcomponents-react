@@ -30,20 +30,20 @@ You can play around with our components by visiting our [Storybook](https://sap.
 
 ### Package Overview
 
-#### [@ui5-webcomponents-react/fiori3](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/fiori3) - Fiori 3 Components
-[![](https://img.shields.io/npm/v/@ui5-webcomponents-react/fiori3.svg)](https://www.npmjs.com/package/@ui5-webcomponents-react/fiori3)
-<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/fiori3](https://img.shields.io/bundlephobia/min/@ui5-webcomponents-react/fiori3.svg?label=size) --> 
-<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/fiori3](https://img.shields.io/bundlephobia/minzip/@ui5-webcomponents-react/fiori3.svg?label=gzip%20size) -->
+#### [@ui5/webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main) - Fiori 3 Components
+[![](https://img.shields.io/npm/v/@ui5/webcomponents-react.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
+<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react.svg?label=size) --> 
+<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react.svg?label=gzip%20size) -->
 
-#### [@ui5-webcomponents-react/charts](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts) - Fiori Charts 
-[![](https://img.shields.io/npm/v/@ui5-webcomponents-react/charts.svg)](https://www.npmjs.com/package/@ui5-webcomponents-react/charts)
-<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/charts](https://img.shields.io/bundlephobia/min/@ui5-webcomponents-react/charts.svg?label=size)  -->
-<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/charts](https://img.shields.io/bundlephobia/minzip/@ui5-webcomponents-react/charts.svg?label=gzip%20size) -->
+#### [@ui5/webcomponents-react-charts](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts) - Fiori Charts 
+[![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts)
+<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react-charts.svg?label=size)  -->
+<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-charts.svg?label=gzip%20size) -->
 
-#### [@ui5-webcomponents-react/base](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base) - Utils
-[![](https://img.shields.io/npm/v/@ui5-webcomponents-react/base.svg)](https://www.npmjs.com/package/@ui5-webcomponents-react/base)
-<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/base](https://img.shields.io/bundlephobia/min/@ui5-webcomponents-react/base.svg?label=size) --> 
-<!-- ![https://bundlephobia.com/result?p=@ui5-webcomponents-react/base](https://img.shields.io/bundlephobia/minzip/@ui5-webcomponents-react/base.svg?label=gzip%20size) -->
+#### [@ui5/webcomponents-react-base](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base) - Utils
+[![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base)
+<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-base](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react-base.svg?label=size) --> 
+<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-base](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-base.svg?label=gzip%20size) -->
 
 
 <!-- *********************************************************************** -->
@@ -60,7 +60,7 @@ You can play around with our components by visiting our [Storybook](https://sap.
 
 To consume `ui5-webcomponents-react`, first you need to install the npm module:
 ```sh
-npm install @ui5-webcomponents-react/fiori3 --save
+npm install @ui5/webcomponents-react --save
 ```
 
 <!-- *********************************************************************** -->
@@ -71,7 +71,7 @@ npm install @ui5-webcomponents-react/fiori3 --save
 In order to use `ui5-webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
 You will find this component most likely in `src/App.js`: 
 ```jsx
-import { ThemeProvider } from '@ui5-webcomponents-react/fiori3/lib/ThemeProvider';
+import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 ...
 render() {
   return (
@@ -88,7 +88,7 @@ Then, you are ready to use `ui5-webcomponents-react` and you can import the desi
 For example, to use ```Button``` you need to import it:
 
 ```jsx
-import { Button } from '@ui5-webcomponents-react/fiori3/lib/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react component
+import { Button } from '@ui5/webcomponents-react/lib/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react component
 ```
 
 Then, you can use the Button in your app:
@@ -97,7 +97,7 @@ Then, you can use the Button in your app:
 <Button onPress={() => alert('Hello World!')}>Hello world!</Button>
 ```
 
-You could import all components also from `@ui5-webcomponents-react/fiori3` directly, but this will have a negative impact on your bundle size.
+You could import all components also from `@ui5/webcomponents-react` directly, but this will have a negative impact on your bundle size.
 
 For Browser Support and the configuration of the UI5 Web Components, please take a look at the 
  [Browser Support](https://github.com/SAP/ui5-webcomponents#browser-support) and the

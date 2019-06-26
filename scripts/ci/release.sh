@@ -34,7 +34,7 @@ bash ${WORKSPACE}/scripts/ci/setup-npm.sh
 
 # now start publishing each package
 cd ${WORKSPACE}/build/node_modules/charts && npm publish --access public
-cd ${WORKSPACE}/build/node_modules/fiori3 && npm publish --access public
+cd ${WORKSPACE}/build/node_modules/main && npm publish --access public
 cd ${WORKSPACE}/build/node_modules/base && npm publish --access public
 
 

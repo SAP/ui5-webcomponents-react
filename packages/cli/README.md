@@ -1,4 +1,4 @@
-# @ui5-webcomponents-react/cli
+# @ui5/webcomponents-react-cli
 CLI for ui5-webcomponents-react
 
 
