@@ -50,7 +50,7 @@ storiesOf('Components | Analytical Card', module).add('default', () => (
         }
       ]}
       height={200}
-      width={500}
+      width={270}
       options={{
         layout: {
           padding: { top: 25 }

@@ -3,6 +3,7 @@ import React, { Fragment, PureComponent } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { CommonProps } from '../../../interfaces/CommonProps';
 import { BusyIndicator } from '../../../lib/BusyIndicator';
+import { BusyIndicatorType } from '../../../lib/BusyIndicatorType';
 import { DeviationIndicator } from '../../../lib/DeviationIndicator';
 import { Label } from '../../../lib/Label';
 import { Text } from '../../../lib/Text';
@@ -162,7 +163,7 @@ export class AnalyticalCardHeader extends PureComponent<AnalyticalCardHeaderProp
                     </div>
                     {loading && (
                       <span style={{ verticalAlign: 'super', display: 'inline-block' }}>
-                        <BusyIndicator />
+                        <BusyIndicator active size={BusyIndicatorType.Medium} />
                       </span>
                     )}
                   </div>
