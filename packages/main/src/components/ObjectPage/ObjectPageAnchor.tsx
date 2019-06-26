@@ -1,5 +1,5 @@
 import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { Component } from 'react';
+import React, { Component, RefObject } from 'react';
 import { Link } from 'react-scroll';
 import { ObjectWithVariableKeys } from '../../interfaces/ObjectWithVariableKeys';
 import { Button } from '../../lib/Button';
@@ -31,8 +31,6 @@ export class ObjectPageAnchor extends Component<ObjectPageAnchorPropTypes, Objec
   state = {
     open: false
   };
-
-  private containerDiv: HTMLElement;
 
   private openModal = () => {
     this.setState({
@@ -140,12 +138,7 @@ export class ObjectPageAnchor extends Component<ObjectPageAnchorPropTypes, Objec
     }
 
     return (
-      <div
-        ref={(ref) => {
-          this.containerDiv = ref;
-        }}
-        className={containerClasses.valueOf()}
-      >
+      <div className={containerClasses.valueOf()}>
         {anchorContent}
         {subSectionsAvailable && (
           <Popover

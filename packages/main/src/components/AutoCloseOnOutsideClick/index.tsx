@@ -1,5 +1,5 @@
 import { Event } from '@ui5/webcomponents-react-base';
-import React, { PureComponent, ReactNode } from 'react';
+import React, { PureComponent, ReactNode, RefObject } from 'react';
 
 export interface AutoCloseOnOutsideClickPropTypes {
   onOutsideClick?: (e: Event) => void;
@@ -21,16 +21,16 @@ export class AutoCloseOnOutsideClick extends PureComponent<
     isContentAreaOpen: true
   };
 
-  private contentRef: HTMLDivElement;
+  private contentRef: RefObject<HTMLDivElement> = React.createRef();
 
   componentDidMount() {
     document.addEventListener('mousedown', this.checkFocus);
   }
 
   private checkFocus = (oEvent) => {
-    const contentDiv = this.contentRef;
+    const contentDiv = this.contentRef.current;
 
-    if (contentDiv !== null) {
+    if (contentDiv) {
       if (!contentDiv.contains(oEvent.target)) {
         this.setState({
           isContentAreaOpen: !this.state.isContentAreaOpen
@@ -46,13 +46,7 @@ export class AutoCloseOnOutsideClick extends PureComponent<
     const { isContentAreaOpen } = this.state;
     if (!isContentAreaOpen) return null;
     return (
-      <div
-        id="contentDiv"
-        tabIndex={0}
-        ref={(element) => {
-          this.contentRef = element;
-        }}
-      >
+      <div id="contentDiv" tabIndex={0} ref={this.contentRef}>
         {children}
       </div>
     );
