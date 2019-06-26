@@ -1,4 +1,4 @@
-import { FlexBox, FlexBoxDirection, Link, Page, Text, Title } from '@ui5-webcomponents-react/fiori3';
+import { FlexBox, FlexBoxDirection, Link, Page, Text, Title } from '@ui5/webcomponents-react';
 import { storiesOf } from '@storybook/react';
 import 'highlight.js/styles/solarized-dark.css';
 import Highlight from 'react-highlight.js';
@@ -85,7 +85,7 @@ storiesOf(' Welcome | UI5 Web Components for React', module)
             <Text>
               To consume ui5-webcomponents-react, first you need to install the ui5-webcomponents-react npm module:
             </Text>
-            <Highlight lanuage="bash">npm install @ui5-webcomponents-react/fiori3 --save</Highlight>
+            <Highlight lanuage="bash">npm install @ui5/webcomponents-react --save</Highlight>
 
             <Text>Setup your React App</Text>
             <Text>
@@ -98,7 +98,7 @@ storiesOf(' Welcome | UI5 Web Components for React', module)
             </Text>
             <Highlight source="javascript">
               {dedent`...
-              import { ThemeProvider } from '@ui5-webcomponents-react/fiori3/lib/ThemeProvider';
+              import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
               ...
               render() {
                 return (
@@ -112,14 +112,14 @@ storiesOf(' Welcome | UI5 Web Components for React', module)
             <Text>Now you can use the ui5-webcomponents-react components in your app:</Text>
             <Text>If you want to use a Button component, import it from ui5-webcomponents-react:</Text>
             <Highlight language="javascript">
-              {`import { Button } from '@ui5-webcomponents-react/fiori3/lib/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react Component`}
+              {`import { Button } from '@ui5/webcomponents-react/lib/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react Component`}
             </Highlight>
             <Text>and use it in your component:</Text>
             <Highlight language="javascript">
               {`<Button onPress={() => alert('Hello World!')}>Hello world!</Button>`}
             </Highlight>
             <Text>
-              You could import all components also from '@ui5-webcomponents-react/fiori3' directly, but this will have a
+              You could import all components also from '@ui5/webcomponents-react' directly, but this will have a
               negative impact on your bundle size.
             </Text>
 

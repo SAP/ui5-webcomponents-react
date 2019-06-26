@@ -28,10 +28,10 @@ module.exports = function(config) {
     coverageConfig,
     {
       browserNoActivityTimeout: 20000,
-      basePath: path.join(PATHS.packages, 'fiori3'),
+      basePath: path.join(PATHS.packages, 'main'),
       browsers,
       frameworks: ['mocha', 'chai'],
-      files: [path.join(PATHS.packages, 'fiori3', 'test', 'testRunner.js')],
+      files: [path.join(PATHS.packages, 'main', 'test', 'testRunner.js')],
       preprocessors: {
         'test/testRunner.js': ['webpack', 'sourcemap']
       },

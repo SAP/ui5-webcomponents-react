@@ -9,16 +9,16 @@ const bundleTypes = {
 
 const bundles = [
   {
-    label: 'fiori3',
+    label: 'main',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
-    entry: 'fiori3',
+    entry: 'main',
     global: 'FioriForReact',
     externals: [
       'react',
       'react-dom',
       'react-jss',
       '@ui5/webcomponents-base',
-      '@ui5-webcomponents-react/base',
+      '@ui5/webcomponents-react-base',
       'react-table'
     ]
   },

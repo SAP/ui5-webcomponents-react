@@ -1,144 +1,88 @@
 {
   "bundleSizes": [
     {
-      "filename": "fiori3.development.js",
-      "bundleType": "NODE_ES_DEV",
-      "packageName": "fiori3",
-      "size": 186569,
-      "gzip": 32486
-    },
-    {
-      "filename": "fiori3.production.min.js",
-      "bundleType": "NODE_ES_PROD",
-      "packageName": "fiori3",
-      "size": 186569,
-      "gzip": 32486
-    },
-    {
-      "filename": "fiori3.development.js",
-      "bundleType": "NODE_DEV",
-      "packageName": "fiori3",
-      "size": 189774,
-      "gzip": 32538
-    },
-    {
-      "filename": "fiori3.production.min.js",
-      "bundleType": "NODE_PROD",
-      "packageName": "fiori3",
-      "size": 98745,
-      "gzip": 24984
-    },
-    {
-      "filename": "styles.development.js",
-      "bundleType": "NODE_ES_DEV",
-      "packageName": "styles",
-      "size": 190238,
-      "gzip": 28376
-    },
-    {
-      "filename": "styles.production.min.js",
-      "bundleType": "NODE_ES_PROD",
-      "packageName": "styles",
-      "size": 189978,
-      "gzip": 28219
-    },
-    {
-      "filename": "styles.development.js",
-      "bundleType": "NODE_DEV",
-      "packageName": "styles",
-      "size": 190514,
-      "gzip": 28446
-    },
-    {
-      "filename": "styles.production.min.js",
-      "bundleType": "NODE_PROD",
-      "packageName": "styles",
-      "size": 68670,
-      "gzip": 15710
-    },
-    {
-      "filename": "utils.development.js",
-      "bundleType": "NODE_ES_DEV",
-      "packageName": "utils",
-      "size": 50257,
-      "gzip": 11582
-    },
-    {
-      "filename": "utils.production.min.js",
-      "bundleType": "NODE_ES_PROD",
-      "packageName": "utils",
-      "size": 50257,
-      "gzip": 11582
-    },
-    {
-      "filename": "utils.development.js",
-      "bundleType": "NODE_DEV",
-      "packageName": "utils",
-      "size": 50696,
-      "gzip": 11660
-    },
-    {
-      "filename": "utils.production.min.js",
-      "bundleType": "NODE_PROD",
-      "packageName": "utils",
-      "size": 24750,
-      "gzip": 8837
-    },
-    {
       "filename": "charts.development.js",
       "bundleType": "NODE_ES_DEV",
       "packageName": "charts",
       "size": 68878,
-      "gzip": 13359
+      "gzip": 13360
     },
     {
       "filename": "charts.production.min.js",
       "bundleType": "NODE_ES_PROD",
       "packageName": "charts",
       "size": 68878,
-      "gzip": 13359
+      "gzip": 13360
     },
     {
       "filename": "charts.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "charts",
-      "size": 69236,
-      "gzip": 13354
+      "size": 69398,
+      "gzip": 13370
     },
     {
       "filename": "charts.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "charts",
       "size": 35355,
-      "gzip": 8887
+      "gzip": 8886
     },
     {
       "filename": "base.development.js",
       "bundleType": "NODE_ES_DEV",
       "packageName": "base",
-      "size": 298977,
-      "gzip": 55829
+      "size": 211441,
+      "gzip": 46069
     },
     {
       "filename": "base.production.min.js",
       "bundleType": "NODE_ES_PROD",
       "packageName": "base",
-      "size": 298719,
-      "gzip": 55708
+      "size": 211261,
+      "gzip": 45963
     },
     {
       "filename": "base.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "base",
-      "size": 299743,
-      "gzip": 55948
+      "size": 212048,
+      "gzip": 46154
     },
     {
       "filename": "base.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "base",
-      "size": 115584,
-      "gzip": 30590
+      "size": 86402,
+      "gzip": 25866
+    },
+    {
+      "filename": "main.development.js",
+      "bundleType": "NODE_ES_DEV",
+      "packageName": "main",
+      "size": 186567,
+      "gzip": 32438
+    },
+    {
+      "filename": "main.production.min.js",
+      "bundleType": "NODE_ES_PROD",
+      "packageName": "main",
+      "size": 186567,
+      "gzip": 32438
+    },
+    {
+      "filename": "main.development.js",
+      "bundleType": "NODE_DEV",
+      "packageName": "main",
+      "size": 192174,
+      "gzip": 32563
+    },
+    {
+      "filename": "main.production.min.js",
+      "bundleType": "NODE_PROD",
+      "packageName": "main",
+      "size": 98840,
+      "gzip": 24961
     }
   ]
 }

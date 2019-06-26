@@ -8,7 +8,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **fiori3:** Added react-table dependency ([ebc8fc5](https://github.com/SAP/ui5-webcomponents-react/commit/ebc8fc5))
+* **main:** Added react-table dependency ([ebc8fc5](https://github.com/SAP/ui5-webcomponents-react/commit/ebc8fc5))
 
 
 
@@ -16,7 +16,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.3.2-rc.4](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base/compare/v0.3.2-rc.3...v0.3.2-rc.4) (2019-06-24)
 
-**Note:** Version bump only for package @ui5-webcomponents-react/base
+**Note:** Version bump only for package @ui5/webcomponents-react-base
 
 
 
@@ -32,7 +32,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* **base:** `@ui5-webcomponents-react/styles` and `@ui5-webcomponents-react/utils` are replaced by ``@ui5-webcomponents-react/base`
+* **base:** `@ui5-webcomponents-react/styles` and `@ui5-webcomponents-react/utils` are replaced by ``@ui5/webcomponents-react-base`
 * **base:** Deleted Themes `sap_belize`, `sap_belize_plus` and `sap_belize_hcb`
 * **base:** Removed `createThemeMap` from base
 * **base:** Removed `getThemeClassFor` from base

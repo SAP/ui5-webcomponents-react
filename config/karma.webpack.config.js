@@ -79,7 +79,7 @@ module.exports = function() {
             },
             // Need this since it's supposed to work after the compilation of .ts
             enforce: 'post',
-            include: path.join(PATHS.packages, 'fiori3', 'src'),
+            include: path.join(PATHS.packages, 'main', 'src'),
             exclude: [/node_modules|\.karma\.tsx?/, /jss.ts/, /stories/, /enums/, /test/, /lib/]
           }
         ]

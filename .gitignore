@@ -14,4 +14,4 @@ build
 /packages/*/npm/**/*.d.ts
 .out
 lerna-debug.log
-packages/fiori3/scripts/wrapperGeneration/json
+packages/main/scripts/wrapperGeneration/json
