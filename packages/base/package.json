@@ -16,7 +16,7 @@
     "core-js": "^3.1.4",
     "deepmerge": "^3.2.0",
     "hoist-non-react-statics": "^3.3.0",
-    "react-jss": "^8.6.1",
+    "react-jss": "^10.0.0-alpha.21",
     "tslib": "^1.9.3"
   }
 }
