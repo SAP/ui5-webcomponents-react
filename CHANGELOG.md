@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2-rc.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.5...v0.3.2-rc.6) (2019-06-26)
+
+**Note:** Version bump only for package ui5-webcomponents-react
+
+
+
+
+
+## [0.3.2-rc.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.4...v0.3.2-rc.5) (2019-06-24)
+
+
+### Bug Fixes
+
+* **main:** Added react-table dependency ([ebc8fc5](https://github.com/SAP/ui5-webcomponents-react/commit/ebc8fc5))
+
+
+
+
+
+## [0.3.2-rc.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.3...v0.3.2-rc.4) (2019-06-24)
+
+
+* * chore(Web Components): Updated Web Components to v0.13.1 (#39) ([e7f6164](https://github.com/SAP/ui5-webcomponents-react/commit/e7f6164)), closes [#39](https://github.com/SAP/ui5-webcomponents-react/issues/39) [#36](https://github.com/SAP/ui5-webcomponents-react/issues/36)
+
+
+### BREAKING CHANGES
+
+* **Select**: the parameter of the change event is now called `selectedOption`
+* **Select**: Use `Option` instead of `StandardListItem` for selection
+* **Link**: Use design with `LinkDesign`,  type with `LinkType` is deleted
+* **Button**: Use design with `ButtonDesign`, type with `ButtonDesign` is deleted
+* **ToggleButton**: Use design with `ButtonDesign`, type with `ButtonDesign` is deleted
+* **Switch**: type is removed, use `graphical`
+* **MessageStrip**: `hideIcon` and `hideCloseButton` are renamed to `noIcon` and `noCloseButton`
+* **Popover**: `hideArrow` and `hideHeader` are renamed to `noArrow` and `noHeader`
+
+Please refer to the [UI5 Web Components Changelog](https://github.com/SAP/ui5-webcomponents/releases/tag/v0.13.1) as well.
+
+
+
+
+
 ## [0.3.2-rc.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.2...v0.3.2-rc.3) (2019-06-24)
 
 
@@ -13,7 +55,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* **base:** `@ui5-webcomponents-react/styles` and `@ui5-webcomponents-react/utils` are replaced by ``@ui5-webcomponents-react/base`
+* **base:** `@ui5-webcomponents-react/styles` and `@ui5-webcomponents-react/utils` are replaced by ``@ui5/webcomponents-react-base`
 * **base:** Deleted Themes `sap_belize`, `sap_belize_plus` and `sap_belize_hcb`
 * **base:** Removed `createThemeMap` from base
 * **base:** Removed `getThemeClassFor` from base
@@ -42,7 +84,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.3.2-rc.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.0...v0.3.2-rc.1) (2019-06-14)
 
-**Note:** Version bump only for package @ui5-webcomponents-react/suite
+**Note:** Version bump only for package @ui5/webcomponents-react-suite
 
 
 
@@ -99,7 +141,7 @@ See also [UI5-WebComponents 0.12.0](https://github.com/SAP/ui5-webcomponents/rel
 
 ## [0.3.1-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.0...v0.3.1-rc.0) (2019-06-03)
 
-**Note:** Version bump only for package @ui5-webcomponents-react/suite
+**Note:** Version bump only for package @ui5/webcomponents-react-suite
 
 
 

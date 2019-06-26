@@ -1,11 +1,15 @@
 {
-  "name": "@ui5-webcomponents-react/base",
-  "version": "0.3.2-rc.3",
+  "name": "@ui5/webcomponents-react-base",
+  "version": "0.3.2-rc.6",
   "description": "Base for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
-  "repository": "https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/ui5-webcomponents-react.git",
+    "directory": "packages/base"
+  },
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "dependencies": {

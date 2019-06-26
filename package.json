@@ -1,12 +1,9 @@
 {
-  "name": "@ui5-webcomponents-react/suite",
-  "version": "0.2.0",
   "workspaces": [
     "packages/*"
   ],
   "private": true,
   "license": "Apache-2.0",
-  "repository": "https://github.com/SAP/ui5-webcomponents-react",
   "scripts": {
     "start": "start-storybook -p 6006 -c packages/docs/.storybook",
     "build": "node ./scripts/rollup/build.js",
@@ -141,8 +138,5 @@
       "prettier -config ./prettier.config.js --write",
       "git add"
     ]
-  },
-  "dependencies": {
-    "react-table": "6.8.6"
   }
 }

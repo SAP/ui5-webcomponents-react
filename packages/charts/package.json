@@ -1,11 +1,15 @@
 {
-  "name": "@ui5-webcomponents-react/charts",
-  "version": "0.3.2-rc.3",
+  "name": "@ui5/webcomponents-react-charts",
+  "version": "0.3.2-rc.6",
   "description": "Charts for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
-  "repository": "https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/ui5-webcomponents-react.git",
+    "directory": "packages/charts"
+  },
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "private": false,
@@ -13,7 +17,7 @@
     "@types/chart.js": "^2.7.53"
   },
   "dependencies": {
-    "@ui5-webcomponents-react/base": "0.3.2-rc.3",
+    "@ui5/webcomponents-react-base": "0.3.2-rc.6",
     "chart.js": "^2.8.0",
     "chartjs-plugin-datalabels": "^0.6.0",
     "is-mergeable-object": "^1.1.0",

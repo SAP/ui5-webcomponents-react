@@ -1,13 +1,4 @@
-import {
-  Badge,
-  Label,
-  Table,
-  TableCell,
-  TableColumn,
-  TableRow,
-  Text,
-  ThemeProvider
-} from '@ui5-webcomponents-react/fiori3';
+import { Badge, Label, Table, TableCell, TableColumn, TableRow, Text, ThemeProvider } from '@ui5/webcomponents-react';
 import React from 'react';
 
 const columns = [

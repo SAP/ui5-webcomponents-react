@@ -1,4 +1,4 @@
-import { FlexBox } from '@ui5-webcomponents-react/fiori3';
+import { FlexBox } from '@ui5/webcomponents-react';
 import React from 'react';
 
 export const Badges = () => (
