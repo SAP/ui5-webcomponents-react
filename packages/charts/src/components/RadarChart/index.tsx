@@ -5,7 +5,7 @@ import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
 import { formatTooltipLabel, mergeConfig } from '../../util/utils';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { HSLColor } from '@ui5-webcomponents-react/base';
+import { HSLColor } from '@ui5/webcomponents-react-base';
 import { withChartContainer } from '../ChartContainer/withChartContainer';
 
 export interface RadarChartPropTypes extends ChartBaseProps {}

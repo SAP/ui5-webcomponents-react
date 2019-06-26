@@ -57,9 +57,9 @@ SKIP_DOC_GENERATION=true
       alias: {
         ...config.resolve.alias,
         '@shared': path.join(PATHS.root, 'shared'),
-        '@ui5-webcomponents-react/fiori3': path.join(PATHS.root, 'packages', 'fiori3', 'src', 'index.ts'),
-        '@ui5-webcomponents-react/charts': path.join(PATHS.root, 'packages', 'charts', 'src', 'index.ts'),
-        '@ui5-webcomponents-react/base': path.join(PATHS.root, 'packages', 'base', 'src', 'index.ts')
+        '@ui5/webcomponents-react': path.join(PATHS.root, 'packages', 'main', 'src', 'index.ts'),
+        '@ui5/webcomponents-react-charts': path.join(PATHS.root, 'packages', 'charts', 'src', 'index.ts'),
+        '@ui5/webcomponents-react-base': path.join(PATHS.root, 'packages', 'base', 'src', 'index.ts')
       }
     }
   };

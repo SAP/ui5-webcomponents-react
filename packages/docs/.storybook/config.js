@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContentDensity, ThemeProvider, Themes } from '@ui5-webcomponents-react/fiori3';
+import { ContentDensity, ThemeProvider, Themes } from '@ui5/webcomponents-react';
 import { addDecorator, addParameters, configure } from '@storybook/react';
 import { makeDecorator } from '@storybook/addons';
 import { select, withKnobs } from '@storybook/addon-knobs';
