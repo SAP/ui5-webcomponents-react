@@ -1,8 +1,6 @@
 import { Event } from '@ui5/webcomponents-react-base';
 import React, { Children, cloneElement, Component, CSSProperties, FC, ReactElement } from 'react';
-import { withTheme } from 'react-jss';
 import { Fiori3CommonProps } from '../interfaces/Fiori3CommonProps';
-import { JSSTheme } from '../interfaces/JSSTheme';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
 import { Ui5WebComponentMetadata } from '../interfaces/Ui5WebComponentMetadata';
 
@@ -18,10 +16,6 @@ export interface WithWebComponentPropTypes extends Fiori3CommonProps {
   innerComponentRef?: (el: HTMLElement) => void;
   children?: any | void;
   innerStyles?: CSSProperties;
-}
-
-interface WithWebComponentInternalPropTypes extends WithWebComponentPropTypes {
-  theme: JSSTheme;
 }
 
 export function withWebComponent<T>(WebComponent): FC<T> {
@@ -221,7 +215,7 @@ export function withWebComponent<T>(WebComponent): FC<T> {
       const slots = WebComponent.getMetadata().getSlots();
 
       const { props, slotProps } = this.regularProps;
-      const { children, theme, ...regularProps } = props as T & WithWebComponentInternalPropTypes;
+      const { children, ...regularProps } = props as T & WithWebComponentPropTypes;
       return (
         <CustomTag {...this.booleanProps} ref={this.handleInnerRef} {...regularProps} class={className}>
           {Object.keys(slots).map((slot) => {
@@ -241,5 +235,5 @@ export function withWebComponent<T>(WebComponent): FC<T> {
     }
   }
 
-  return withTheme(WithWebComponent);
+  return WithWebComponent;
 }
