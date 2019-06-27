@@ -6,6 +6,8 @@ import React, {
   FC,
   MutableRefObject,
   ReactElement,
+  Ref,
+  RefForwardingComponent,
   RefObject,
   useEffect,
   useRef,
@@ -29,12 +31,12 @@ const propBlacklist = {
 };
 
 export interface WithWebComponentPropTypes extends Fiori3CommonProps {
-  innerComponentRef?: (el: HTMLElement) => void;
+  ref?: Ref<any>;
   children?: any | void;
   innerStyles?: CSSProperties;
 }
 
-export function withWebComponent<T>(WebComponent): FC<T> {
+export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5DomRef, T & WithWebComponentPropTypes> {
   const getWebComponentMetadata = (): Ui5WebComponentMetadata => {
     if (WebComponent) {
       return WebComponent.getMetadata();
@@ -229,6 +231,5 @@ export function withWebComponent<T>(WebComponent): FC<T> {
     );
   });
 
-  // @ts-ignore
-  return WithWebComponent;
+  return WithWebComponent as RefForwardingComponent<Ui5DomRef, T & WithWebComponentPropTypes>;
 }
