@@ -19,18 +19,23 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
   open?: boolean;
 }
 
+export interface Ui5DialogDomRef extends Ui5DomRef {
+  open: () => void;
+  close: () => void;
+}
+
 const InnerDialog: RefForwardingComponent<Ui5DomRef, DialogPropTypes> = withWebComponent<DialogPropTypes>(UI5Dialog);
 
-const Dialog = React.forwardRef((props: DialogPropTypes, dialogRef: RefObject<Ui5DomRef>) => {
-  const localDialogRef: RefObject<Ui5DomRef> = useRef(null);
+const Dialog = React.forwardRef((props: DialogPropTypes, dialogRef: RefObject<Ui5DialogDomRef>) => {
+  const localDialogRef: RefObject<Ui5DialogDomRef> = useRef(null);
 
   const getDialogRef = () => dialogRef || localDialogRef;
 
   const setDialogOpen = (open) => {
-    if (!getDialogRef().current || (!getDialogRef().current as any).open) {
+    if (!getDialogRef().current || !getDialogRef().current.open) {
       return;
     }
-    return open ? (getDialogRef().current as any).open() : (getDialogRef().current as any).close();
+    return open ? getDialogRef().current.open() : getDialogRef().current.close();
   };
 
   useEffect(() => {
