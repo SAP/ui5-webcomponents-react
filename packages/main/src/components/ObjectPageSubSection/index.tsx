@@ -22,7 +22,7 @@ const styles = ({ theme, parameters }: JSSTheme) => ({
     'padding-bottom': 0,
     borderBottom: `0.125rem solid ${lighten(0.05, parameters.sapUiListBorderColor)}`,
     '&:focus': {
-      outline: `1px dotted ${parameters.sapUIContentFocusColor}`,
+      outline: `1px dotted ${parameters.sapUiContentFocusColor}`,
       outlineOffset: '-1px'
     }
   },

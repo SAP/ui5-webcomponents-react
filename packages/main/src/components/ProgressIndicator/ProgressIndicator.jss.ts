@@ -15,7 +15,7 @@ function getBackgroundColor(state) {
   }
 }
 
-const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
+const styles = ({ parameters }: JSSTheme) => {
   return {
     progressBarRemaining: {
       height: '100%',
@@ -51,13 +51,10 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       overflow: 'hidden'
     },
     progressbar: {
-      WebkitTransition: 'flex-basis 2s',
       transition: 'flex-basis 1s',
       justifyContent: 'flex-end',
       display: 'flex',
-      alignItems: 'center',
-      WebkitAlignItems: 'center',
-      background: (props) => parameters[getBackgroundColor(props.state)]
+      alignItems: 'center'
     },
     progressBarText: {
       textOverflow: 'ellipsis',
@@ -71,14 +68,30 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       color: parameters.sapUiBaseText
     },
     progressBarTextColorHigh: {
-      color: (props) => {
-        const backgroundColor = parameters[getBackgroundColor(props.state)];
-        return HSLColor.of(backgroundColor).contrast(
-          parameters.sapUiContentForegroundTextColor,
-          parameters.sapUiContentContrastTextColor,
-          (parameters.sapUiContentContrastTextThreshold as any) as number
-        );
-      }
+      // color: (props) => {
+      //   const backgroundColor = parameters[getBackgroundColor(props.state)];
+      //   return HSLColor.of(backgroundColor).contrast(
+      //     parameters.sapUiContentForegroundTextColor,
+      //     parameters.sapUiBaseText,
+      //     (parameters.sapUiContentContrastTextThreshold as any) as number
+      //   );
+      // }
+      color: parameters.sapUiContentContrastTextColor
+    },
+    [`state${ValueState.None}`]: {
+      backgroundColor: parameters.sapUiNeutralElement
+    },
+    [`state${ValueState.Success}`]: {
+      backgroundColor: parameters.sapUiPositiveElement
+    },
+    [`state${ValueState.Warning}`]: {
+      backgroundColor: parameters.sapUiCriticalElement
+    },
+    [`state${ValueState.Error}`]: {
+      backgroundColor: parameters.sapUiNegativeElement
+    },
+    [`state${ValueState.Information}`]: {
+      backgroundColor: parameters.sapUiInformativeElement
     }
   };
 };

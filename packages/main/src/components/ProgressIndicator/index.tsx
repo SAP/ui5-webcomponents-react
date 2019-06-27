@@ -1,5 +1,6 @@
 import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { PureComponent } from 'react';
+import { ValueState } from '../../lib/ValueState';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -34,7 +35,7 @@ export interface ProgressIndicatorPropTypes extends Fiori3CommonProps {
   /*
    * State of indicator (using ValueState)
    */
-  state?: string;
+  state?: ValueState;
 }
 
 interface ProgressIndicatorInternalProps extends ProgressIndicatorPropTypes, ClassProps {
@@ -53,11 +54,23 @@ export class ProgressIndicator extends PureComponent<ProgressIndicatorPropTypes>
   };
 
   render() {
-    const { percentValue, displayValue, visible, width, height, classes, theme, className, style, tooltip } = this
-      .props as ProgressIndicatorInternalProps;
+    const {
+      percentValue,
+      displayValue,
+      visible,
+      width,
+      height,
+      classes,
+      theme,
+      className,
+      style,
+      tooltip,
+      state
+    } = this.props as ProgressIndicatorInternalProps;
 
     // CSS classes
     const wrapperClasses = StyleClassHelper.of(classes.wrapper);
+    const progressBarClasses = StyleClassHelper.of(classes.progressbar);
     const progressBarTextClasses = StyleClassHelper.of(classes.progressBarText);
     const progressBarContainerStyle = { width, height };
     const progressBarStyle = { flexBasis: `${percentValue}%` };
@@ -87,6 +100,8 @@ export class ProgressIndicator extends PureComponent<ProgressIndicatorPropTypes>
 
     const progressBarTextSpan = <span className={progressBarTextClasses.valueOf()}> {displayValue} </span>;
 
+    progressBarClasses.put(classes[`state${state}`]);
+
     if (className) {
       wrapperClasses.put(className);
     }
@@ -102,7 +117,7 @@ export class ProgressIndicator extends PureComponent<ProgressIndicatorPropTypes>
         title={tooltip}
         data-ui5-slot={this.props['data-ui5-slot']}
       >
-        <div className={classes.progressbar} style={progressBarStyle}>
+        <div className={progressBarClasses.valueOf()} style={progressBarStyle}>
           {percentValue <= 50 ? null : progressBarTextSpan}
         </div>
         <div className={classes.progressBarRemaining}>{percentValue <= 50 ? progressBarTextSpan : null}</div>
