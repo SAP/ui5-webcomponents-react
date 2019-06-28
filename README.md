@@ -23,7 +23,7 @@
 <a name="description"></a>
 ## Description
 
-`ui5-webcomponents-react` is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents). This project was formerly knowns as `fiori-for-react`.
+`ui5-webcomponents-react` is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents). This project was formerly known as `fiori-for-react`.
 
 ### Explore our components
 You can play around with our components by visiting our [Storybook](https://sap.github.io/ui5-webcomponents-react/).
