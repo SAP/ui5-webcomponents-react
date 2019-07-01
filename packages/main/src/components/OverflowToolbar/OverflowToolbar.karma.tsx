@@ -1,5 +1,5 @@
 import React from 'react';
-import { OverflowToolbar } from './index';
+import { OverflowToolbar } from '../../lib/OverflowToolbar';
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { ToolbarAlignment } from '../../lib/ToolbarAlignment';
