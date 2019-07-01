@@ -13070,7 +13070,7 @@ react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.3, react-is@^16.8.4, react-is
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
-react-jss@^10.0.0-alpha.21:
+react-jss@10.0.0-alpha.21:
   version "10.0.0-alpha.21"
   resolved "https://registry.yarnpkg.com/react-jss/-/react-jss-10.0.0-alpha.21.tgz#451f8c878ee3cf5b5de4e63cd1564a8b8fe3f220"
   integrity sha512-eFUzf44PzPqqbKgHlvBWcYjRk2zchQrvHBaUGKmrYPVhH8uoDlnRWGhv3GO6YZl0t3bAKAy35bw1rmbRwFhWVg==
