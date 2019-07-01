@@ -1,7 +1,7 @@
 import React from 'react';
 import { select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
-import { OverflowToolbar } from './index';
+import { OverflowToolbar } from '../../lib/OverflowToolbar';
 import { ToolbarAlignment } from '../../lib/ToolbarAlignment';
 import { ToolbarDesign } from '../../lib/ToolbarDesign';
 import { Button } from '../../lib/Button';
