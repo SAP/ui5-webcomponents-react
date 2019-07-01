@@ -1,8 +1,7 @@
-import { fonts, HSLColor } from '@ui5/webcomponents-react-base';
-import { ZIndex } from '../../enums/ZIndex';
+import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
+const styles = ({ parameters }: JSSTheme) => ({
   objectPage: {
     width: '100%',
     height: '100%',
@@ -104,7 +103,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
   hideHeaderContent: {
     paddingTop: '0.5rem',
     marginBottom: '0.5rem',
-    boxShadow: `inset 0 -1px 0 0 ${parameters.sapUiShellBorderColor}`,
+    boxShadow: `inset 0 -1px 0 0 ${parameters.sapUiObjectHeaderBorderColor}`,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
@@ -113,49 +112,19 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     paddingLeft: '2rem',
     backgroundColor: parameters.sapUiObjectHeaderBackground,
     boxShadow: `inset 0 0.125rem ${parameters.sapUiObjectHeaderBackground}`,
+    display: 'flex',
+    margin: '0px',
+    height: '2.75rem',
+    padding: '0px',
+    listStyle: 'none',
     '& $anchorButtonContainer': {
+      position: 'relative',
       display: 'inline-flex',
-      '& $anchorButton': {
-        textTransform: 'uppercase',
-        '& > span:hover, & > span:active': {
-          backgroundColor: 'transparent',
-          borderColor: 'transparent',
-          color: parameters.sapUiButtonLiteTextColor,
-          '& span[data-icon-content]': {
-            color: parameters.sapUiButtonLiteTextColor
-          }
-        }
-      },
+      alignItems: 'center',
       '&:not(:first-child)': {
         marginLeft: '2rem'
       }
-    },
-    '& $active': {
-      color: HSLColor.of(parameters.sapUiGroupTitleTextColor).lighten(20).hsl,
-      borderBottom: `0.125rem solid ${parameters.sapUiSelected}`
-    },
-    '& $active + div': {
-      color: HSLColor.of(parameters.sapUiGroupTitleTextColor).lighten(20).hsl,
-      borderBottom: `0.125rem solid ${parameters.sapUiSelected}`
     }
-  },
-  anchorButtonModal: {
-    position: 'absolute',
-    minWidth: '6.25rem',
-    boxSizing: 'border-box',
-    outline: 'none',
-    maxWidth: '100%',
-    maxHeight: '100%',
-    border: 'none',
-    boxShadow: '0 0.625rem 1.875rem 0 rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.15)',
-    borderRadius: '0.25rem',
-    minHeight: '2rem',
-    margin: '0',
-    zIndex: ZIndex.InputModal
-  },
-  iconTabModeSelected: {
-    color: HSLColor.of(parameters.sapUiGroupTitleTextColor).lighten(20).hsl,
-    borderBottom: `0.125rem solid ${parameters.sapUiSelected}`
   },
   titleBar: {},
   image: {},

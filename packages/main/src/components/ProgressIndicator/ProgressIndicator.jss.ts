@@ -1,19 +1,6 @@
-import { fonts, HSLColor } from '@ui5/webcomponents-react-base';
+import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ValueState } from '../../lib/ValueState';
-
-function getBackgroundColor(state) {
-  switch (state) {
-    case ValueState.Success:
-      return 'sapUiPositiveElement';
-    case ValueState.Warning:
-      return 'sapUiCriticalElement';
-    case ValueState.Error:
-      return 'sapUiNegativeElement';
-    default:
-      return 'sapUiNeutralElement';
-  }
-}
 
 const styles = ({ parameters }: JSSTheme) => {
   return {
@@ -68,14 +55,6 @@ const styles = ({ parameters }: JSSTheme) => {
       color: parameters.sapUiBaseText
     },
     progressBarTextColorHigh: {
-      // color: (props) => {
-      //   const backgroundColor = parameters[getBackgroundColor(props.state)];
-      //   return HSLColor.of(backgroundColor).contrast(
-      //     parameters.sapUiContentForegroundTextColor,
-      //     parameters.sapUiBaseText,
-      //     (parameters.sapUiContentContrastTextThreshold as any) as number
-      //   );
-      // }
       color: parameters.sapUiContentContrastTextColor
     },
     [`state${ValueState.None}`]: {

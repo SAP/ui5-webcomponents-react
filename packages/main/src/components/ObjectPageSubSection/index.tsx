@@ -1,11 +1,9 @@
-import { fonts, HSLColor, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
+import { fonts, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
-
-const lighten = (amount, color) => HSLColor.of(color).lighten(amount * 100).hsl;
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
   title?: string;
@@ -17,28 +15,18 @@ export interface ObjectPageSubSectionInternalProps extends ObjectPageSubSectionP
   isSubSection?: boolean;
 }
 
-const styles = ({ theme, parameters }: JSSTheme) => ({
+const styles = ({ parameters }: JSSTheme) => ({
   objectPageSubSection: {
-    'padding-bottom': 0,
-    borderBottom: `0.125rem solid ${lighten(0.05, parameters.sapUiListBorderColor)}`,
+    padding: '1rem 0',
     '&:focus': {
       outline: `1px dotted ${parameters.sapUiContentFocusColor}`,
       outlineOffset: '-1px'
     }
   },
-  objectPageSubSectionHeader: {
-    height: 'auto',
-    overflow: 'auto',
-    wordWrap: 'break-word',
-    padding: '1rem 0 0 0'
-  },
   objectPageSubSectionHeaderTitle: {
-    whiteSpace: 'normal',
-    float: 'left',
-    lineHeight: '3rem',
-    fontSize: fonts.sapMFontHeader4Size,
-    fontWeight: 'normal',
-    color: parameters.sapUiGroupTitleTextColor
+    fontSize: fonts.sapMFontHeader5Size,
+    color: parameters.sapUiGroupTitleTextColor,
+    marginBottom: '0.5rem'
   },
   subSectionContent: {
     padding: '1rem 2rem 3rem 0'
@@ -72,9 +60,7 @@ export class ObjectPageSubSection extends PureComponent<ObjectPageSubSectionProp
         style={style}
         title={tooltip}
       >
-        <div className={classes.objectPageSubSectionHeader}>
-          <div className={classes.objectPageSubSectionHeaderTitle}>{title}</div>
-        </div>
+        <div className={classes.objectPageSubSectionHeaderTitle}>{title}</div>
         <div className={classes.subSectionContent}>{children}</div>
       </div>
     );

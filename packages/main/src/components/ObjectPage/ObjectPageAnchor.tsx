@@ -1,23 +1,16 @@
 import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
 import React, { Component } from 'react';
-import { Link } from 'react-scroll';
 import { ObjectWithVariableKeys } from '../../interfaces/ObjectWithVariableKeys';
-import { Button } from '../../lib/Button';
-import { ButtonDesign } from '../../lib/ButtonDesign';
-import { CustomListItem } from '../../lib/CustomListItem';
 import { Icon } from '../../lib/Icon';
-import { Label } from '../../lib/Label';
 import { List } from '../../lib/List';
-import { ListItemTypes } from '../../lib/ListItemTypes';
-import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import { PlacementType } from '../../lib/PlacementType';
 import { Popover } from '../../lib/Popover';
+import { StandardListItem } from '../../lib/StandardListItem';
+import { AnchorButton } from './AnchorButton';
 
 export interface ObjectPageAnchorPropTypes {
   section: any;
-  index: number;
   classes: ObjectWithVariableKeys;
-  mode: ObjectPageMode;
   onAnchorSelected: (event: Event) => void;
   onSubSectionSelected: (event: Event) => void;
   selected: boolean;
@@ -32,8 +25,6 @@ export class ObjectPageAnchor extends Component<ObjectPageAnchorPropTypes, Objec
     open: false
   };
 
-  private containerDiv: HTMLElement;
-
   private openModal = () => {
     this.setState({
       open: true
@@ -46,23 +37,16 @@ export class ObjectPageAnchor extends Component<ObjectPageAnchorPropTypes, Objec
     });
   };
 
-  private handleSubSectionSelected = (e) => {
-    const { section, onAnchorSelected } = this.props;
-    if (this.state.open && onAnchorSelected) {
-      onAnchorSelected(Event.of(this, new CustomEvent('subSectionSelected'), section));
-    }
-    this.closeModal();
-  };
-
   private onSubSectionClick = (e) => {
     const { section, onSubSectionSelected } = this.props;
     const selectedId = e.getParameter('item').dataset.key;
     const subSection = section.props.children
       .filter((item) => item.props && item.props.isSubSection)
       .find((item) => item.props.id === selectedId);
-    if (this.state.open && subSection && typeof onSubSectionSelected === 'function') {
-      onSubSectionSelected(Event.of(this, new CustomEvent('subSectionSelected'), subSection));
+    if (this.state.open && subSection) {
+      onSubSectionSelected(Event.of(this, e.getOriginalEvent(), subSection));
     }
+    this.closeModal();
   };
 
   private subSectionsAvailable() {
@@ -76,22 +60,14 @@ export class ObjectPageAnchor extends Component<ObjectPageAnchorPropTypes, Objec
 
   private renderSubSectionListItem = (item) => {
     return (
-      <CustomListItem key={item.props.id} type={ListItemTypes.Active} data-key={item.props.id}>
-        <Link
-          onSetActive={this.handleSubSectionSelected}
-          spy
-          smooth
-          to={`ObjectPageSubSection-${item.props.id}`}
-          containerId="ObjectPageSections"
-        >
-          <Label>{item.props.title}</Label>
-        </Link>
-      </CustomListItem>
+      <StandardListItem key={item.props.id} data-key={item.props.id}>
+        {item.props.title}
+      </StandardListItem>
     );
   };
 
   private handleAnchorButtonClick = (e) => {
-    const isIconClicked = e.getHtmlSourceElement().constructor.getMetadata().metadata.tag === 'ui5-icon';
+    const isIconClicked = !e.getParameter('text');
     const { section, onAnchorSelected } = this.props;
     if (isIconClicked) {
       this.openModal();
@@ -101,52 +77,34 @@ export class ObjectPageAnchor extends Component<ObjectPageAnchorPropTypes, Objec
   };
 
   render() {
-    const { section, classes, mode, selected } = this.props;
+    const { section, classes, selected } = this.props;
 
     const containerClasses = StyleClassHelper.of(classes.anchorButtonContainer);
     const subSectionsAvailable = this.subSectionsAvailable();
 
     const titleButton = (
-      <Button className={classes.anchorButton} design={ButtonDesign.Transparent} onPress={this.handleAnchorButtonClick}>
+      <AnchorButton onClick={this.handleAnchorButtonClick} selected={selected}>
         {section.props.title}
-      </Button>
-    );
-
-    let anchorContent = (
-      <Link
-        spy
-        smooth
-        activeClass={classes.active}
-        to={`ObjectPageSection-${section.props.id}`}
-        containerId="ObjectPageSections"
-      >
-        {titleButton}
-      </Link>
+      </AnchorButton>
     );
 
     const navigationIcon = (
       <Icon
         src="sap-icon://slim-arrow-down"
         onPress={this.handleAnchorButtonClick}
-        style={{ display: 'flex', height: '1.875rem', cursor: 'pointer' }}
+        style={{
+          height: '1rem',
+          width: '1rem',
+          cursor: 'pointer',
+          margin: '0 0.25rem 0 0.375rem',
+          fontSize: '0.875rem'
+        }}
       />
     );
 
-    if (mode === ObjectPageMode.IconTabBar) {
-      anchorContent = titleButton;
-      if (selected) {
-        containerClasses.put(classes.iconTabModeSelected);
-      }
-    }
-
     return (
-      <div
-        ref={(ref) => {
-          this.containerDiv = ref;
-        }}
-        className={containerClasses.valueOf()}
-      >
-        {anchorContent}
+      <li className={containerClasses.valueOf()}>
+        {titleButton}
         {subSectionsAvailable && (
           <Popover
             open={this.state.open}
@@ -163,7 +121,7 @@ export class ObjectPageAnchor extends Component<ObjectPageAnchorPropTypes, Objec
             </List>
           </Popover>
         )}
-      </div>
+      </li>
     );
   }
 }

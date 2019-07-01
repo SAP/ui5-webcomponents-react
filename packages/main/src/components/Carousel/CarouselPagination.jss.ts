@@ -1,10 +1,7 @@
-import { HSLColor } from '@ui5/webcomponents-react-base';
 import { ZIndex } from '../../enums/ZIndex';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const lighten = HSLColor.lighten;
-
-const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
+const styles = ({ parameters }: JSSTheme) => ({
   pagination: {
     display: 'flex',
     width: 'calc(100% - 2rem)',
