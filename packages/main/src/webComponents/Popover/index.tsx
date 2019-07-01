@@ -5,7 +5,7 @@ import { withWebComponent, WithWebComponentPropTypes } from '../../internal/with
 import { PlacementType } from '../../lib/PlacementType';
 import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { Ui5PopoverDomRef } from '../../lib/Ui5PopoverDomRef';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated
@@ -28,11 +28,6 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
   openByStyle?: CSSProperties;
   openBy?: ReactNode;
   open?: boolean;
-}
-
-export interface Ui5PopoverDomRef extends Ui5DomRef {
-  openBy: (p: HTMLElement) => void;
-  close: () => void;
 }
 
 const InternalPopover = withWebComponent<PopoverPropTypes>(UI5Popover);

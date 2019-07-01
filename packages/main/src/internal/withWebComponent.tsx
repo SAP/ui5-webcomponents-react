@@ -13,7 +13,7 @@ import React, {
   useState
 } from 'react';
 import { Fiori3CommonProps } from '../interfaces/Fiori3CommonProps';
-import { Ui5DomRef } from '../interfaces/Ui5DomRef';
+import { Ui5DomRef } from '../lib/Ui5DomRef';
 import { Ui5WebComponentMetadata } from '../interfaces/Ui5WebComponentMetadata';
 
 function capitalizeFirstLetter(s: string) {

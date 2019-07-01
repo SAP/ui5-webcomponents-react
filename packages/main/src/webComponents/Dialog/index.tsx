@@ -2,7 +2,8 @@ import { Event } from '@ui5/webcomponents-react-base';
 import UI5Dialog from '@ui5/webcomponents/dist/Dialog';
 import React, { ReactNode, RefForwardingComponent, RefObject, useEffect, useRef } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { Ui5DomRef } from '../../lib/Ui5DomRef';
+import { Ui5DialogDomRef } from '../../lib/Ui5DialogDomRef';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated
@@ -17,11 +18,6 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
   footer?: ReactNode; // @generated
   content?: ReactNode | ReactNode[];
   open?: boolean;
-}
-
-export interface Ui5DialogDomRef extends Ui5DomRef {
-  open: () => void;
-  close: () => void;
 }
 
 const InnerDialog: RefForwardingComponent<Ui5DomRef, DialogPropTypes> = withWebComponent<DialogPropTypes>(UI5Dialog);

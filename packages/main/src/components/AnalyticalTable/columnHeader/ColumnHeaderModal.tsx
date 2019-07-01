@@ -10,10 +10,10 @@ import { PlacementType } from '../../../lib/PlacementType';
 import { Popover } from '../../../lib/Popover';
 import { PopoverHorizontalAlign } from '../../../lib/PopoverHorizontalAlign';
 import { StandardListItem } from '../../../lib/StandardListItem';
-import { Icon } from '../../../webComponents/Icon';
-import { FlexBox, FlexBoxAlignItems } from '../../FlexBox';
+import { Icon } from '../../../lib/Icon';
+import { FlexBox } from '../../FlexBox';
 import { ColumnType } from '../types/ColumnType';
-import { Ui5PopoverDomRef } from '../../../webComponents/Popover';
+import { Ui5PopoverDomRef } from '../../../lib/Ui5PopoverDomRef';
 
 const styles = ({ parameters }: JSSTheme) => ({
   modalRoot: {
