@@ -1,6 +1,6 @@
 import React, { Children, Component, CSSProperties, ReactNode, ReactNodeArray, RefObject } from 'react';
 import styles from './OverflowToolbar.jss';
-import { StyleClassHelper, withStyles } from '@ui5-webcomponents-react/base';
+import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import { ToolbarAlignment } from '../../lib/ToolbarAlignment';
 import { ToolbarDesign } from '../../lib/ToolbarDesign';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -30,7 +30,7 @@ export class OverflowToolbar extends Component<ToolbarInternalProps> {
     width: 'auto',
     align: ToolbarAlignment.Start,
     toolbarDesign: ToolbarDesign.ContentBar,
-    overflow: false
+    overflow: true
   };
   state = {
     children: this.props.children,

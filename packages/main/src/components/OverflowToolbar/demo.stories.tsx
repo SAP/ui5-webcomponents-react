@@ -12,7 +12,6 @@ const renderOverflowToolbar = () => (
   <OverflowToolbar
     align={select('align', ToolbarAlignment, ToolbarAlignment.Start)}
     toolbarDesign={select('design', ToolbarDesign, ToolbarDesign.ContentBar)}
-    overflow={true}
   >
     <Label style={{ minWidth: '20px' }}>Label</Label>
     <Button>Button1</Button>
