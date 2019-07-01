@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.3.2-rc.6",
+  "version": "0.3.2-rc.7",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@ui5/webcomponents": "0.13.1",
-    "@ui5/webcomponents-react-base": "0.3.2-rc.6",
+    "@ui5/webcomponents-react-base": "0.3.2-rc.7",
     "react-scroll": "^1.7.11",
     "react-table": "6.8.6",
     "react-toastify": "^5.0.1"
