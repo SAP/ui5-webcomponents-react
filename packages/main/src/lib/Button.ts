@@ -1,3 +1,3 @@
-import { Button, ButtonPropTypes } from '../webComponents/Button';
+import { Button } from '../webComponents/Button';
 
-export { Button, ButtonPropTypes };
+export { Button };

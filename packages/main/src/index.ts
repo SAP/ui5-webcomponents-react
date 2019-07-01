@@ -107,9 +107,6 @@ import { TitleLevel } from './lib/TitleLevel';
 import { ToggleButton } from './lib/ToggleButton';
 import { Token } from './lib/Token';
 import { Tokenizer } from './lib/Tokenizer';
-import { Ui5DialogDomRef } from './lib/Ui5DialogDomRef';
-import { Ui5DomRef } from './lib/Ui5DomRef';
-import { Ui5PopoverDomRef } from './lib/Ui5PopoverDomRef';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
@@ -221,9 +218,6 @@ export {
   ToggleButton,
   Token,
   Tokenizer,
-  Ui5DialogDomRef,
-  Ui5DomRef,
-  Ui5PopoverDomRef,
   ValueState,
   VariantManagement,
   VerticalAlign,

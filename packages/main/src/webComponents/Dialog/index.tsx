@@ -2,8 +2,8 @@ import { Event } from '@ui5/webcomponents-react-base';
 import UI5Dialog from '@ui5/webcomponents/dist/Dialog';
 import React, { ReactNode, RefForwardingComponent, RefObject, useEffect, useRef } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { Ui5DomRef } from '../../lib/Ui5DomRef';
-import { Ui5DialogDomRef } from '../../lib/Ui5DialogDomRef';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated

@@ -5,7 +5,7 @@ import { withWebComponent, WithWebComponentPropTypes } from '../../internal/with
 import { PlacementType } from '../../lib/PlacementType';
 import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
-import { Ui5PopoverDomRef } from '../../lib/Ui5PopoverDomRef';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated

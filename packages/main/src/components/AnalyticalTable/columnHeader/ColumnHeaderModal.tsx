@@ -11,9 +11,10 @@ import { Popover } from '../../../lib/Popover';
 import { PopoverHorizontalAlign } from '../../../lib/PopoverHorizontalAlign';
 import { StandardListItem } from '../../../lib/StandardListItem';
 import { Icon } from '../../../lib/Icon';
-import { FlexBox } from '../../FlexBox';
+import { FlexBox } from '../../../lib/FlexBox';
+import { FlexBoxAlignItems } from '../../../lib/FlexBoxAlignItems';
 import { ColumnType } from '../types/ColumnType';
-import { Ui5PopoverDomRef } from '../../../lib/Ui5PopoverDomRef';
+import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 
 const styles = ({ parameters }: JSSTheme) => ({
   modalRoot: {

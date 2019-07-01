@@ -5,9 +5,9 @@ import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { ButtonDesign } from '../../lib/ButtonDesign';
 import { PlacementType } from '../../lib/PlacementType';
 import { Popover } from '../../lib/Popover';
-import { ButtonPropTypes } from '../../lib/Button';
+import { ButtonPropTypes } from '../../webComponents/Button';
 import styles from './ActionSheet.jss';
-import { Ui5PopoverDomRef } from '../../lib/Ui5PopoverDomRef';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 export interface ActionSheetPropTypes extends Fiori3CommonProps {
   openBy: ReactNode;
