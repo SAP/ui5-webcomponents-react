@@ -4,13 +4,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <ToggleButton design="Default">
-      <WithWebComponent theme={{...}} design="Default">
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <ToggleButton design="Default">
         <ui5-togglebutton design="Default" class="" />
-      </WithWebComponent>
-    </ToggleButton>
-  </ThemeProvider>
+      </ToggleButton>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 

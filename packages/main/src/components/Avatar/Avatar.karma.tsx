@@ -6,7 +6,7 @@ import React from 'react';
 import sinon from 'sinon';
 import { AvatarShape } from '../../lib/AvatarShape';
 import { AvatarSize } from '../../lib/AvatarSize';
-import { Avatar } from './index';
+import { Avatar } from '../../lib/Avatar';
 
 use(matchSnapshot);
 
@@ -48,7 +48,7 @@ describe('Avatar', () => {
       <Avatar size={AvatarSize.XL} customDisplaySize="5rem" customFontSize="2rem" initials="JD" />
     );
     const el = wrapper.find(Avatar).getDOMNode() as HTMLElement;
-    expect(el.style.length).to.equal(0);
+    expect(el.style.fontSize).not.to.equal('2rem');
   });
 
   it('with Image', () => {

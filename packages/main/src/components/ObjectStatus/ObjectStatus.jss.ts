@@ -10,16 +10,24 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     display: 'flex'
   },
   iconSuccess: {
-    color: parameters.sapUiPositiveText
+    '& ui5-icon': {
+      color: parameters.sapUiPositiveText
+    }
   },
   iconWarning: {
-    color: parameters.sapUiCriticalText
+    '& ui5-icon': {
+      color: parameters.sapUiCriticalText
+    }
   },
   iconError: {
-    color: parameters.sapUiNegativeText
+    '& ui5-icon': {
+      color: parameters.sapUiNegativeText
+    }
   },
   iconNone: {
-    color: parameters.sapUiNeutralText
+    '& ui5-icon': {
+      color: parameters.sapUiNeutralText
+    }
   },
   iconInformation: {
     color: parameters.sapUiInformativeElement

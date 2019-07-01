@@ -4,13 +4,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <GroupHeaderListItem>
-      <WithWebComponent theme={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <GroupHeaderListItem>
         <ui5-li-groupheader class="" />
-      </WithWebComponent>
-    </GroupHeaderListItem>
-  </ThemeProvider>
+      </GroupHeaderListItem>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 

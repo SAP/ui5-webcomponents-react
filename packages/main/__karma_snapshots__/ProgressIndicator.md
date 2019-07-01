@@ -4,12 +4,12 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ProgressIndicator)) displayValue="sdf" width="50%" height="50%" percentValue={40} visible={true} state="None">
-      <WithStyles(ProgressIndicator) displayValue="sdf" width="50%" height="50%" percentValue={40} visible={true} state="None" theme={{...}} classes={{...}}>
-        <ProgressIndicator displayValue="sdf" width="50%" height="50%" percentValue={40} visible={true} state="None" theme={{...}} classes={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <WithStyles(ProgressIndicator) displayValue="sdf" width="50%" height="50%" percentValue={40} visible={true} state="None">
+        <ProgressIndicator displayValue="sdf" width="50%" height="50%" percentValue={40} visible={true} state="None" classes={{...}} theme={{...}}>
           <div className="ProgressIndicator-wrapper--- " style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
-            <div className="ProgressIndicator-progressbar--- ProgressIndicator-progressbar---" style={{...}} />
+            <div className="ProgressIndicator-progressbar--- ProgressIndicator-stateNone---" style={{...}} />
             <div className="ProgressIndicator-progressBarRemaining---">
               <span className="ProgressIndicator-progressBarText--- ProgressIndicator-progressBarTextColorLow--- ProgressIndicator-progressBarTextRight---">
                  
@@ -20,8 +20,8 @@
           </div>
         </ProgressIndicator>
       </WithStyles(ProgressIndicator)>
-    </Jss(WithStyles(ProgressIndicator))>
-  </ThemeProvider>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
@@ -29,13 +29,13 @@
 
 ```
 <ThemeProvider contentDensity="Cozy" withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ProgressIndicator)) percentValue={85} state="Error" displayValue="" visible={true} width="auto" height="">
-      <WithStyles(ProgressIndicator) percentValue={85} state="Error" displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
-        <ProgressIndicator percentValue={85} state="Error" displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <WithStyles(ProgressIndicator) percentValue={85} state="Error" displayValue="" visible={true} width="auto" height="">
+        <ProgressIndicator percentValue={85} state="Error" displayValue="" visible={true} width="auto" height="" classes={{...}} theme={{...}}>
           <div className="ProgressIndicator-wrapper--- " style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
-            <div className="ProgressIndicator-progressbar--- ProgressIndicator-progressbar---" style={{...}}>
-              <span className="ProgressIndicator-progressBarText--- ProgressIndicator-progressBarTextColorHigh--- ProgressIndicator-progressBarTextColorHigh--- ProgressIndicator-progressBarTextLeft---">
+            <div className="ProgressIndicator-progressbar--- ProgressIndicator-stateError---" style={{...}}>
+              <span className="ProgressIndicator-progressBarText--- ProgressIndicator-progressBarTextColorHigh--- ProgressIndicator-progressBarTextLeft---">
                  
                  
               </span>
@@ -44,8 +44,8 @@
           </div>
         </ProgressIndicator>
       </WithStyles(ProgressIndicator)>
-    </Jss(WithStyles(ProgressIndicator))>
-  </ThemeProvider>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
@@ -53,12 +53,12 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ProgressIndicator)) state="Error" percentValue={0} displayValue="" visible={true} width="auto" height="">
-      <WithStyles(ProgressIndicator) state="Error" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
-        <ProgressIndicator state="Error" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <WithStyles(ProgressIndicator) state="Error" percentValue={0} displayValue="" visible={true} width="auto" height="">
+        <ProgressIndicator state="Error" percentValue={0} displayValue="" visible={true} width="auto" height="" classes={{...}} theme={{...}}>
           <div className="ProgressIndicator-wrapper--- " style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
-            <div className="ProgressIndicator-progressbar--- ProgressIndicator-progressbar---" style={{...}} />
+            <div className="ProgressIndicator-progressbar--- ProgressIndicator-stateError---" style={{...}} />
             <div className="ProgressIndicator-progressBarRemaining---">
               <span className="ProgressIndicator-progressBarText--- ProgressIndicator-progressBarTextColorLow--- ProgressIndicator-progressBarTextRight---">
                  
@@ -68,8 +68,8 @@
           </div>
         </ProgressIndicator>
       </WithStyles(ProgressIndicator)>
-    </Jss(WithStyles(ProgressIndicator))>
-  </ThemeProvider>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
@@ -77,12 +77,12 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ProgressIndicator)) state="None" percentValue={0} displayValue="" visible={true} width="auto" height="">
-      <WithStyles(ProgressIndicator) state="None" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
-        <ProgressIndicator state="None" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <WithStyles(ProgressIndicator) state="None" percentValue={0} displayValue="" visible={true} width="auto" height="">
+        <ProgressIndicator state="None" percentValue={0} displayValue="" visible={true} width="auto" height="" classes={{...}} theme={{...}}>
           <div className="ProgressIndicator-wrapper--- " style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
-            <div className="ProgressIndicator-progressbar--- ProgressIndicator-progressbar---" style={{...}} />
+            <div className="ProgressIndicator-progressbar--- ProgressIndicator-stateNone---" style={{...}} />
             <div className="ProgressIndicator-progressBarRemaining---">
               <span className="ProgressIndicator-progressBarText--- ProgressIndicator-progressBarTextColorLow--- ProgressIndicator-progressBarTextRight---">
                  
@@ -92,8 +92,8 @@
           </div>
         </ProgressIndicator>
       </WithStyles(ProgressIndicator)>
-    </Jss(WithStyles(ProgressIndicator))>
-  </ThemeProvider>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
@@ -101,12 +101,12 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ProgressIndicator)) state="Success" percentValue={0} displayValue="" visible={true} width="auto" height="">
-      <WithStyles(ProgressIndicator) state="Success" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
-        <ProgressIndicator state="Success" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <WithStyles(ProgressIndicator) state="Success" percentValue={0} displayValue="" visible={true} width="auto" height="">
+        <ProgressIndicator state="Success" percentValue={0} displayValue="" visible={true} width="auto" height="" classes={{...}} theme={{...}}>
           <div className="ProgressIndicator-wrapper--- " style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
-            <div className="ProgressIndicator-progressbar--- ProgressIndicator-progressbar---" style={{...}} />
+            <div className="ProgressIndicator-progressbar--- ProgressIndicator-stateSuccess---" style={{...}} />
             <div className="ProgressIndicator-progressBarRemaining---">
               <span className="ProgressIndicator-progressBarText--- ProgressIndicator-progressBarTextColorLow--- ProgressIndicator-progressBarTextRight---">
                  
@@ -116,8 +116,8 @@
           </div>
         </ProgressIndicator>
       </WithStyles(ProgressIndicator)>
-    </Jss(WithStyles(ProgressIndicator))>
-  </ThemeProvider>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
@@ -125,12 +125,12 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ProgressIndicator)) state="Warning" percentValue={0} displayValue="" visible={true} width="auto" height="">
-      <WithStyles(ProgressIndicator) state="Warning" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
-        <ProgressIndicator state="Warning" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <WithStyles(ProgressIndicator) state="Warning" percentValue={0} displayValue="" visible={true} width="auto" height="">
+        <ProgressIndicator state="Warning" percentValue={0} displayValue="" visible={true} width="auto" height="" classes={{...}} theme={{...}}>
           <div className="ProgressIndicator-wrapper--- " style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
-            <div className="ProgressIndicator-progressbar--- ProgressIndicator-progressbar---" style={{...}} />
+            <div className="ProgressIndicator-progressbar--- ProgressIndicator-stateWarning---" style={{...}} />
             <div className="ProgressIndicator-progressBarRemaining---">
               <span className="ProgressIndicator-progressBarText--- ProgressIndicator-progressBarTextColorLow--- ProgressIndicator-progressBarTextRight---">
                  
@@ -140,8 +140,8 @@
           </div>
         </ProgressIndicator>
       </WithStyles(ProgressIndicator)>
-    </Jss(WithStyles(ProgressIndicator))>
-  </ThemeProvider>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
@@ -149,12 +149,12 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(ProgressIndicator)) state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="">
-      <WithStyles(ProgressIndicator) state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
-        <ProgressIndicator state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="" theme={{...}} classes={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <WithStyles(ProgressIndicator) state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="">
+        <ProgressIndicator state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="" classes={{...}} theme={{...}}>
           <div className="ProgressIndicator-wrapper--- " style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
-            <div className="ProgressIndicator-progressbar--- ProgressIndicator-progressbar---" style={{...}} />
+            <div className="ProgressIndicator-progressbar--- ProgressIndicator-stateInformation---" style={{...}} />
             <div className="ProgressIndicator-progressBarRemaining---">
               <span className="ProgressIndicator-progressBarText--- ProgressIndicator-progressBarTextColorLow--- ProgressIndicator-progressBarTextRight---">
                  
@@ -164,8 +164,8 @@
           </div>
         </ProgressIndicator>
       </WithStyles(ProgressIndicator)>
-    </Jss(WithStyles(ProgressIndicator))>
-  </ThemeProvider>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 

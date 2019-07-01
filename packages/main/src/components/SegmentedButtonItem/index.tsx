@@ -55,15 +55,16 @@ export class SegmentedButtonItem extends PureComponent<SegmentedButtonItemPropTy
       segmentedButtonItemClasses.put(classes.disabled);
     }
 
+    const inlineStyle = { minWidth: width };
     if (selected) {
       segmentedButtonItemClasses.put(classes.selected);
+      inlineStyle['--sapUiContentNonInteractiveIconColor'] = 'var(--sapContent_ContrastIconColor)';
     }
 
     if (className) {
       segmentedButtonItemClasses.put(className);
     }
 
-    const inlineStyle = { minWidth: width };
     if (style) {
       Object.assign(inlineStyle, style);
     }

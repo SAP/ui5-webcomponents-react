@@ -1,7 +1,9 @@
 import { Event } from '@ui5/webcomponents-react-base';
 import UI5Dialog from '@ui5/webcomponents/dist/Dialog';
-import React, { Component, ReactNode } from 'react';
+import React, { ReactNode, RefForwardingComponent, RefObject, useEffect, useRef } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated
@@ -18,44 +20,32 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
   open?: boolean;
 }
 
-const InnerDialog = withWebComponent<DialogPropTypes>(UI5Dialog);
+const InnerDialog: RefForwardingComponent<Ui5DomRef, DialogPropTypes> = withWebComponent<DialogPropTypes>(UI5Dialog);
 
-export class Dialog extends Component<DialogPropTypes> {
-  static defaultProps = {
-    initialFocus: null, // @generated
-    headerText: '' // @generated
-  };
+const Dialog = React.forwardRef((props: DialogPropTypes, dialogRef: RefObject<Ui5DialogDomRef>) => {
+  const localDialogRef: RefObject<Ui5DialogDomRef> = useRef(null);
 
-  private dialogRef;
+  const getDialogRef = () => dialogRef || localDialogRef;
 
-  private handleDialogRef = (el) => {
-    const { innerComponentRef } = this.props;
-    this.dialogRef = el;
-    if (innerComponentRef) {
-      innerComponentRef(el);
-    }
-  };
-
-  private setDialogOpen(open) {
-    if (!this.dialogRef || !this.dialogRef.open) {
+  const setDialogOpen = (open) => {
+    if (!getDialogRef().current || !getDialogRef().current.open) {
       return;
     }
-    return open ? this.dialogRef.open() : this.dialogRef.close();
-  }
+    return open ? getDialogRef().current.open() : getDialogRef().current.close();
+  };
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.open !== this.props.open) {
-      this.setDialogOpen(this.props.open);
-    }
-  }
+  useEffect(() => {
+    setDialogOpen(props.open);
+  }, [props.open]);
 
-  componentDidMount() {
-    if (this.props.open) {
-      this.setDialogOpen(true);
-    }
-  }
+  return <InnerDialog {...props} ref={getDialogRef()} />;
+});
 
-  render() {
-    return <InnerDialog {...this.props} innerComponentRef={this.handleDialogRef} />;
-  }
-}
+Dialog.defaultProps = {
+  initialFocus: null, // @generated
+  headerText: '' // @generated
+};
+
+Dialog.displayName = 'Dialog';
+
+export { Dialog };

@@ -1,4 +1,4 @@
-import { fonts, HSLColor } from '@ui5/webcomponents-react-base';
+import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
@@ -17,7 +17,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiTileBackground,
     fontFamily: fonts.sapUiFontHeaderFamily,
     '&:hover': {
-      backgroundColor: HSLColor.darken(parameters.sapUiTileBackground, 2).toString()
+      backgroundColor: parameters.sapUiTileBackgroundDarken20
     }
   },
   arrowIndicatorShape: {

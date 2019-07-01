@@ -1,5 +1,5 @@
 import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, Component, CSSProperties, ReactElement } from 'react';
+import React, { Children, cloneElement, Component, CSSProperties, ReactElement, RefObject } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { ContentDensity } from '../../lib/ContentDensity';
@@ -50,6 +50,14 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
     width: null
   };
 
+  state = {
+    selectedKey: null,
+    prevPropSelectedKey: null,
+    itemWidth: 'auto'
+  };
+
+  items: RefObject<HTMLUListElement> = React.createRef();
+
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.prevPropSelectedKey !== nextProps.selectedKey) {
       const newKey = nextProps.selectedKey ? nextProps.selectedKey : nextProps.children[0].props.id;
@@ -60,14 +68,6 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
     }
     return null;
   }
-
-  state = {
-    selectedKey: null,
-    prevPropSelectedKey: null,
-    itemWidth: 'auto'
-  };
-
-  items: HTMLUListElement;
 
   private handleSegmentedButtonItemSelected = (e) => {
     const selectedKey = e.getParameter('selectedKey');
@@ -84,14 +84,14 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
   private updateChildElementSize() {
     let maxWidth = 0;
     requestAnimationFrame(() => {
-      for (let i = 0; i < this.items.childElementCount; i++) {
-        const item = this.items.children.item(i) as HTMLUListElement;
+      for (let i = 0; i < this.items.current.childElementCount; i++) {
+        const item = this.items.current.children.item(i) as HTMLUListElement;
         if (item.offsetWidth && item.offsetWidth > maxWidth) {
           maxWidth = item.offsetWidth;
         }
       }
 
-      if (maxWidth > this.items.offsetWidth) {
+      if (maxWidth > this.items.current.offsetWidth) {
         this.setState({
           itemWidth: 'auto'
         });
@@ -126,9 +126,7 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
         role="radiogroup"
         className={segmentedBtnClasses.toString()}
         style={style}
-        ref={(el) => {
-          this.items = el;
-        }}
+        ref={this.items}
         title={tooltip}
         data-ui5-slot={this.props['data-ui5-slot']}
       >

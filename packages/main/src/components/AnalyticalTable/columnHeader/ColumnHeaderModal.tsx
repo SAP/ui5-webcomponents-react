@@ -1,5 +1,5 @@
 import { Event, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Component, FC, ReactNode } from 'react';
+import React, { Component, FC, ReactNode, RefObject } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { CustomListItem } from '../../../lib/CustomListItem';
@@ -10,9 +10,11 @@ import { PlacementType } from '../../../lib/PlacementType';
 import { Popover } from '../../../lib/Popover';
 import { PopoverHorizontalAlign } from '../../../lib/PopoverHorizontalAlign';
 import { StandardListItem } from '../../../lib/StandardListItem';
-import { Icon } from '../../../webComponents/Icon';
-import { FlexBox, FlexBoxAlignItems } from '../../FlexBox';
+import { Icon } from '../../../lib/Icon';
+import { FlexBox } from '../../../lib/FlexBox';
+import { FlexBoxAlignItems } from '../../../lib/FlexBoxAlignItems';
 import { ColumnType } from '../types/ColumnType';
+import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 
 const styles = ({ parameters }: JSSTheme) => ({
   modalRoot: {
@@ -49,11 +51,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
     onFilterChange: () => {}
   };
 
-  private popoverRef = null;
-
-  private handlePopoverRef = (el) => {
-    this.popoverRef = el;
-  };
+  private popoverRef: RefObject<Ui5PopoverDomRef> = React.createRef();
 
   private handleSort = (e) => {
     const sortType = e.getParameter('item').getAttribute('data-sort');
@@ -62,7 +60,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
     } else {
       this.props.sortDescending(Event.of(this, e.getOriginalEvent()));
     }
-    this.popoverRef.close();
+    this.popoverRef.current.close();
   };
 
   private static DEFAULT_FILTER_COMPONENT({ filter, onChange }) {
@@ -84,7 +82,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
         noArrow
         horizontalAlign={PopoverHorizontalAlign.Left}
         placementType={PlacementType.Bottom}
-        innerComponentRef={this.handlePopoverRef}
+        ref={this.popoverRef}
       >
         <List onItemPress={this.handleSort}>
           {showSort && (

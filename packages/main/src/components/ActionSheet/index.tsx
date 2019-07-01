@@ -1,5 +1,5 @@
 import { Device, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, Component, ReactElement, ReactNode } from 'react';
+import React, { Children, cloneElement, Component, ReactElement, ReactNode, RefObject } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
 import { ButtonDesign } from '../../lib/ButtonDesign';
@@ -7,6 +7,7 @@ import { PlacementType } from '../../lib/PlacementType';
 import { Popover } from '../../lib/Popover';
 import { ButtonPropTypes } from '../../webComponents/Button';
 import styles from './ActionSheet.jss';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 export interface ActionSheetPropTypes extends Fiori3CommonProps {
   openBy: ReactNode;
@@ -26,7 +27,7 @@ export class ActionSheet extends Component<ActionSheetPropTypes, ActionSheetStat
     placement: PlacementType.Bottom
   };
 
-  private popoverRef = null;
+  private popoverRef: RefObject<Ui5PopoverDomRef> = React.createRef();
 
   private onActionButtonClicked = (handler) => () => {
     this.setState({ open: false });
@@ -52,10 +53,6 @@ export class ActionSheet extends Component<ActionSheetPropTypes, ActionSheetStat
     return element;
   };
 
-  getPopoverRef = (el) => {
-    this.popoverRef = el;
-  };
-
   render() {
     const { children, placement, classes, openBy, style } = this.props as ActionSheetPropsInternal;
 
@@ -69,7 +66,7 @@ export class ActionSheet extends Component<ActionSheetPropTypes, ActionSheetStat
     return (
       <Popover
         noHeader
-        innerComponentRef={this.getPopoverRef}
+        ref={this.popoverRef}
         openBy={openBy}
         placementType={placement}
         style={style}

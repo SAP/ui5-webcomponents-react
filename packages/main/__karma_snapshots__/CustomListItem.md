@@ -4,13 +4,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <CustomListItem type="Active">
-      <WithWebComponent theme={{...}} type="Active">
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <CustomListItem type="Active">
         <ui5-li-custom type="Active" class="" />
-      </WithWebComponent>
-    </CustomListItem>
-  </ThemeProvider>
+      </CustomListItem>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
