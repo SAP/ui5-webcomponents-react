@@ -5,12 +5,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="Start" toolbarDesign="PageFooter" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="Start" toolbarDesign="PageFooter" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="Start" toolbarDesign="PageFooter" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="Start" toolbarDesign="PageFooter" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="Start" toolbarDesign="PageFooter" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="Start" toolbarDesign="PageFooter" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignStart--- OverflowToolbar-pageFooter---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -24,12 +23,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="Middle" toolbarDesign="PageFooter" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="Middle" toolbarDesign="PageFooter" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="Middle" toolbarDesign="PageFooter" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="Middle" toolbarDesign="PageFooter" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="Middle" toolbarDesign="PageFooter" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="Middle" toolbarDesign="PageFooter" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignMiddle--- OverflowToolbar-pageFooter---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -43,12 +41,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="End" toolbarDesign="PageFooter" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="End" toolbarDesign="PageFooter" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="End" toolbarDesign="PageFooter" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="End" toolbarDesign="PageFooter" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="End" toolbarDesign="PageFooter" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="End" toolbarDesign="PageFooter" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignEnd--- OverflowToolbar-pageFooter---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -62,12 +59,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="SpaceBetween" toolbarDesign="PageFooter" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="SpaceBetween" toolbarDesign="PageFooter" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="SpaceBetween" toolbarDesign="PageFooter" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="SpaceBetween" toolbarDesign="PageFooter" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="SpaceBetween" toolbarDesign="PageFooter" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="SpaceBetween" toolbarDesign="PageFooter" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignSpaceBetween--- OverflowToolbar-pageFooter---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -81,12 +77,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="Start" toolbarDesign="ContainerBar" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="Start" toolbarDesign="ContainerBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="Start" toolbarDesign="ContainerBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="Start" toolbarDesign="ContainerBar" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="Start" toolbarDesign="ContainerBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="Start" toolbarDesign="ContainerBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignStart--- OverflowToolbar-containerBar---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -100,12 +95,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="Middle" toolbarDesign="ContainerBar" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="Middle" toolbarDesign="ContainerBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="Middle" toolbarDesign="ContainerBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="Middle" toolbarDesign="ContainerBar" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="Middle" toolbarDesign="ContainerBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="Middle" toolbarDesign="ContainerBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignMiddle--- OverflowToolbar-containerBar---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -119,12 +113,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="End" toolbarDesign="ContainerBar" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="End" toolbarDesign="ContainerBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="End" toolbarDesign="ContainerBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="End" toolbarDesign="ContainerBar" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="End" toolbarDesign="ContainerBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="End" toolbarDesign="ContainerBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignEnd--- OverflowToolbar-containerBar---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -138,12 +131,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="SpaceBetween" toolbarDesign="ContainerBar" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="SpaceBetween" toolbarDesign="ContainerBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="SpaceBetween" toolbarDesign="ContainerBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="SpaceBetween" toolbarDesign="ContainerBar" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="SpaceBetween" toolbarDesign="ContainerBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="SpaceBetween" toolbarDesign="ContainerBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignSpaceBetween--- OverflowToolbar-containerBar---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -157,12 +149,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="Start" toolbarDesign="ContentBar" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="Start" toolbarDesign="ContentBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="Start" toolbarDesign="ContentBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="Start" toolbarDesign="ContentBar" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="Start" toolbarDesign="ContentBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="Start" toolbarDesign="ContentBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignStart--- OverflowToolbar-contentBar---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -176,12 +167,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="Middle" toolbarDesign="ContentBar" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="Middle" toolbarDesign="ContentBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="Middle" toolbarDesign="ContentBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="Middle" toolbarDesign="ContentBar" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="Middle" toolbarDesign="ContentBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="Middle" toolbarDesign="ContentBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignMiddle--- OverflowToolbar-contentBar---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -195,12 +185,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="End" toolbarDesign="ContentBar" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="End" toolbarDesign="ContentBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="End" toolbarDesign="ContentBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="End" toolbarDesign="ContentBar" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="End" toolbarDesign="ContentBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="End" toolbarDesign="ContentBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignEnd--- OverflowToolbar-contentBar---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -214,12 +203,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="SpaceBetween" toolbarDesign="ContentBar" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="SpaceBetween" toolbarDesign="ContentBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="SpaceBetween" toolbarDesign="ContentBar" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="SpaceBetween" toolbarDesign="ContentBar" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="SpaceBetween" toolbarDesign="ContentBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="SpaceBetween" toolbarDesign="ContentBar" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignSpaceBetween--- OverflowToolbar-contentBar---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -233,12 +221,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="Start" toolbarDesign="ContentBarTransparent" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="Start" toolbarDesign="ContentBarTransparent" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="Start" toolbarDesign="ContentBarTransparent" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="Start" toolbarDesign="ContentBarTransparent" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="Start" toolbarDesign="ContentBarTransparent" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="Start" toolbarDesign="ContentBarTransparent" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignStart--- OverflowToolbar-contentBarTransparent---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -252,12 +239,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="Middle" toolbarDesign="ContentBarTransparent" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="Middle" toolbarDesign="ContentBarTransparent" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="Middle" toolbarDesign="ContentBarTransparent" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="Middle" toolbarDesign="ContentBarTransparent" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="Middle" toolbarDesign="ContentBarTransparent" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="Middle" toolbarDesign="ContentBarTransparent" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignMiddle--- OverflowToolbar-contentBarTransparent---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -271,12 +257,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="End" toolbarDesign="ContentBarTransparent" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="End" toolbarDesign="ContentBarTransparent" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="End" toolbarDesign="ContentBarTransparent" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="End" toolbarDesign="ContentBarTransparent" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="End" toolbarDesign="ContentBarTransparent" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="End" toolbarDesign="ContentBarTransparent" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignEnd--- OverflowToolbar-contentBarTransparent---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -290,12 +275,11 @@
 ```
 <ThemeProvider withToastContainer={false}>
   <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(OverflowToolbar)) align="SpaceBetween" toolbarDesign="ContentBarTransparent" width="auto" overflow={false}>
-      <WithStyles(OverflowToolbar) align="SpaceBetween" toolbarDesign="ContentBarTransparent" width="auto" overflow={false} theme={{...}} classes={{...}}>
-        <OverflowToolbar align="SpaceBetween" toolbarDesign="ContentBarTransparent" width="auto" overflow={false} theme={{...}} classes={{...}}>
+    <Jss(WithStyles(OverflowToolbar)) align="SpaceBetween" toolbarDesign="ContentBarTransparent" width="auto" overflow={true}>
+      <WithStyles(OverflowToolbar) align="SpaceBetween" toolbarDesign="ContentBarTransparent" width="auto" overflow={true} theme={{...}} classes={{...}}>
+        <OverflowToolbar align="SpaceBetween" toolbarDesign="ContentBarTransparent" width="auto" overflow={true} theme={{...}} classes={{...}}>
           <div className="OverflowToolbar-toolbarRoot--- OverflowToolbar-toolbarAlignSpaceBetween--- OverflowToolbar-contentBarTransparent---" style={{...}} title={[undefined]}>
             Test
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -320,7 +304,6 @@
             <span>
               Test 2
             </span>
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>
@@ -385,7 +368,6 @@
                 <ui5-switch class="" />
               </WithWebComponent>
             </Switch>
-            <PopoverWrapper />
           </div>
         </OverflowToolbar>
       </WithStyles(OverflowToolbar)>

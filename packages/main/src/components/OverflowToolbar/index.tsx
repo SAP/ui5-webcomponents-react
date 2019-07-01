@@ -45,13 +45,13 @@ export class OverflowToolbar extends Component<ToolbarInternalProps> {
   componentDidMount(): void {
     boot().then(() => {
       if (this.props.overflow) {
-        if (this.state.toolbarWidth === 0) {
+        if (this.state.toolbarWidth === 0 && this.toolbarRef.current !== null) {
           this.setState({ toolbarWidth: this.toolbarRef.current.scrollWidth });
         }
         window.addEventListener('resize', () => {
-          setTimeout(() => {
+          requestAnimationFrame(() => {
             this.handleResize();
-          }, 50);
+          });
         });
       }
     });
@@ -59,7 +59,7 @@ export class OverflowToolbar extends Component<ToolbarInternalProps> {
 
   componentDidUpdate(prevProps: Readonly<ToolbarInternalProps>, prevState, snapshot?: any): void {
     boot().then(() => {
-      if (this.props.overflow) {
+      if (this.props.overflow && this.toolbarRef.current !== null) {
         if (this.toolbarRef.current.clientWidth < this.toolbarRef.current.scrollWidth) {
           this.handleResize();
         }
@@ -75,36 +75,36 @@ export class OverflowToolbar extends Component<ToolbarInternalProps> {
   }
 
   private handleResize = () => {
+    const toolbarRef = this.toolbarRef.current;
     let newChildren = this.state.children;
-    let { popoverElements, renderToggle, previousWidth } = this.state;
-    if (this.state.toolbarWidth > this.toolbarRef.current.clientWidth) {
-      if (this.toolbarRef.current.clientWidth < this.toolbarRef.current.scrollWidth) {
-        newChildren = Children.toArray(this.state.children).slice(0, -1);
-        popoverElements = [Children.toArray(this.state.children).slice(-1)[0]].concat(this.state.popoverElements);
+    let { popoverElements, renderToggle, previousWidth, toolbarWidth, children } = this.state;
+    if (toolbarWidth > toolbarRef.clientWidth) {
+      if (toolbarRef.clientWidth < toolbarRef.scrollWidth) {
+        newChildren = Children.toArray(children).slice(0, -1);
+        popoverElements = [Children.toArray(children).slice(-1)[0]].concat(popoverElements);
         renderToggle = true;
-        previousWidth = [this.toolbarRef.current.scrollWidth + 10].concat(this.state.previousWidth);
+        previousWidth = [toolbarRef.scrollWidth + 10].concat(previousWidth);
       }
       this.setState({
-        toolbarWidth: this.toolbarRef.current.scrollWidth,
+        toolbarWidth: toolbarRef.scrollWidth,
         children: newChildren,
         renderToggle,
         popoverElements,
         previousWidth
       });
     }
-    if (this.state.toolbarWidth < this.toolbarRef.current.clientWidth) {
+    if (toolbarWidth < toolbarRef.clientWidth) {
       this.addToolbarItem(newChildren, popoverElements, previousWidth, renderToggle);
     }
-  }
+  };
 
   private addToolbarItem(newChildren, popoverElements, previousWidth, renderToggle) {
-    if (Children.count(this.props.children) !== Children.count(this.state.children)) {
-      if (
-        this.toolbarRef.current.clientWidth === this.toolbarRef.current.scrollWidth &&
-        this.toolbarRef.current.clientWidth >= this.state.previousWidth[0]
-      ) {
-        const currentChildrenLength = Children.count(this.state.children);
-        newChildren = Children.toArray(this.state.children).concat([
+    const toolbarRef = this.toolbarRef.current;
+    let { children } = this.state;
+    if (Children.count(this.props.children) !== Children.count(children)) {
+      if (toolbarRef.clientWidth === toolbarRef.scrollWidth && toolbarRef.clientWidth >= previousWidth[0]) {
+        const currentChildrenLength = Children.count(children);
+        newChildren = Children.toArray(children).concat([
           Children.only(Children.toArray(this.props.children)[currentChildrenLength])
         ]);
         popoverElements.shift();
@@ -112,16 +112,13 @@ export class OverflowToolbar extends Component<ToolbarInternalProps> {
       }
     }
     this.setState({
-      toolbarWidth: this.toolbarRef.current.clientWidth,
+      toolbarWidth: toolbarRef.clientWidth,
       children: newChildren,
       popoverElements,
       previousWidth
     });
-    if (Children.count(this.props.children) !== Children.count(this.state.children)) {
-      if (
-        this.toolbarRef.current.clientWidth === this.toolbarRef.current.scrollWidth &&
-        this.toolbarRef.current.clientWidth >= this.state.previousWidth[0]
-      ) {
+    if (Children.count(this.props.children) !== Children.count(children)) {
+      if (toolbarRef.clientWidth === toolbarRef.scrollWidth && toolbarRef.clientWidth >= previousWidth[0]) {
         this.addToolbarItem(newChildren, popoverElements, previousWidth, renderToggle);
       }
     } else {
@@ -181,9 +178,10 @@ export class OverflowToolbar extends Component<ToolbarInternalProps> {
     if (style) {
       Object.assign(inlineStyle, style);
     }
-    const PopoverWrapper = () => {
-      if (this.state.renderToggle) {
-        return (
+    return (
+      <div className={rootClasses.valueOf()} style={{ ...inlineStyle }} title={tooltip} ref={this.toolbarRef}>
+        {this.state.children}
+        {this.state.renderToggle && (
           <Popover
             style={{ marginLeft: 'auto' }}
             key="popover"
@@ -193,14 +191,7 @@ export class OverflowToolbar extends Component<ToolbarInternalProps> {
           >
             <div style={{ display: 'flex', flexDirection: 'column' }}>{this.state.popoverElements}</div>
           </Popover>
-        );
-      }
-      return null;
-    };
-    return (
-      <div className={rootClasses.valueOf()} style={{ ...inlineStyle }} title={tooltip} ref={this.toolbarRef}>
-        {this.state.children}
-        <PopoverWrapper />
+        )}
       </div>
     );
   }
