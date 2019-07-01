@@ -74,7 +74,7 @@ export class OverflowToolbar extends Component<ToolbarInternalProps> {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  private handleResize() {
+  private handleResize = () => {
     let newChildren = this.state.children;
     let { popoverElements, renderToggle, previousWidth } = this.state;
     if (this.state.toolbarWidth > this.toolbarRef.current.clientWidth) {
