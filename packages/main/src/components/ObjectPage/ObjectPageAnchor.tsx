@@ -1,5 +1,5 @@
 import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { Component } from 'react';
+import React, { Component, RefObject } from 'react';
 import { ObjectWithVariableKeys } from '../../interfaces/ObjectWithVariableKeys';
 import { Icon } from '../../lib/Icon';
 import { List } from '../../lib/List';

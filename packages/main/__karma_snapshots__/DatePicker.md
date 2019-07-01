@@ -4,13 +4,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <DatePicker valueState="None">
-      <WithWebComponent theme={{...}} valueState="None">
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <DatePicker valueState="None">
         <ui5-datepicker value-state="None" class="" />
-      </WithWebComponent>
-    </DatePicker>
-  </ThemeProvider>
+      </DatePicker>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
