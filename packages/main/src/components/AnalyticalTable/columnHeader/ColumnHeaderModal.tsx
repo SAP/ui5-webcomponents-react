@@ -29,12 +29,15 @@ export interface ColumnHeaderModalProperties {
   openBy: ReactNode;
   showSort?: boolean;
   showFilter?: boolean;
+  showGroup?: boolean;
+  grouping?: string;
   sortAscending: (event: Event) => void;
   sortDescending: (event: Event) => void;
   FilterComponent: FC<{ filter: any; onChange: () => void; column: ColumnType }>;
   filter: any;
   column: ColumnType;
   onFilterChange: (e?: any) => void;
+  onGroupBy: (e?: any) => void;
 }
 
 interface ColumnHeaderModalInternalProperties extends ColumnHeaderModalProperties, ClassProps {}
@@ -44,9 +47,12 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
   static defaultProps = {
     showSort: true,
     showFilter: false,
+    showGroup: false,
+    grouping: '',
     filter: null,
     FilterComponent: ColumnHeaderModal.DEFAULT_FILTER_COMPONENT,
-    onFilterChange: () => {}
+    onFilterChange: () => {},
+    onGroupBy: () => {}
   };
 
   private popoverRef = null;
@@ -57,12 +63,20 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
 
   private handleSort = (e) => {
     const sortType = e.getParameter('item').getAttribute('data-sort');
-    if (sortType === 'asc') {
-      this.props.sortAscending(Event.of(this, e.getOriginalEvent()));
-    } else {
-      this.props.sortDescending(Event.of(this, e.getOriginalEvent()));
+    switch (sortType) {
+      case 'asc':
+        this.props.sortAscending(Event.of(this, e.getOriginalEvent()));
+        break;
+      case 'desc':
+        this.props.sortDescending(Event.of(this, e.getOriginalEvent()));
+        break;
+      case 'group':
+        this.props.onGroupBy();
+        break;
+      default:
+        this.props.sortDescending(Event.of(this, e.getOriginalEvent()));
     }
-    this.popoverRef.close();
+    this.popoverRef && this.popoverRef.close();
   };
 
   private static DEFAULT_FILTER_COMPONENT({ filter, onChange }) {
@@ -73,9 +87,8 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
   }
 
   render() {
-    const { showSort, showFilter, FilterComponent, onFilterChange, column, filter } = this
+    const { showGroup, grouping, showSort, showFilter, FilterComponent, onFilterChange, column, filter } = this
       .props as ColumnHeaderModalInternalProperties;
-
     return (
       <Popover
         openByStyle={{ flex: '100 0 auto', width: '100px' }}
@@ -97,13 +110,18 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
               Sort Descending
             </StandardListItem>
           )}
-          {showFilter && (
+          {showFilter && !grouping && (
             <CustomListItem type={ListItemTypes.Inactive}>
               <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ padding: '0px 1rem' }}>
                 <Icon src="sap-icon://filter" style={{ paddingRight: '1rem' }} />
                 <FilterComponent filter={filter} onChange={onFilterChange} column={column} />
               </FlexBox>
             </CustomListItem>
+          )}
+          {showGroup && (
+            <StandardListItem type={ListItemTypes.Active} icon="sap-icon://group-2" data-sort={'group'}>
+              {grouping !== column.id ? 'Group' : 'Ungroup'}
+            </StandardListItem>
           )}
         </List>
       </Popover>

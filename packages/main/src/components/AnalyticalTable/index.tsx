@@ -40,6 +40,7 @@ export interface TableProps extends CommonProps {
   loading?: boolean;
   filterable?: boolean;
   sortable?: boolean;
+  groupable?: boolean;
   data: object[];
   /**
    * In addition to the standard 'react-table' column config you can pass the properties 'hAlign' and 'vAlign'.
@@ -65,12 +66,14 @@ export interface TableProps extends CommonProps {
    * Pass in any react-table props you need
    */
   reactTableProps?: object;
+  pivotBy?: string[] | number[];
 }
 
 interface TablePropsInternal extends TableProps, ClassProps {}
 
 interface TableState {
   filtered: FilterEntry[];
+  pivot: string[] | number[];
 }
 
 @withStyles(styles)
@@ -80,6 +83,7 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
     loading: false,
     sortable: true,
     filterable: false,
+    groupable: false,
     data: [],
     columns: [],
     title: null,
@@ -88,11 +92,13 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
     defaultPageSize: 10,
     minRows: 10,
     numItems: null,
+    pivotBy: [],
     getTrProps: () => ({})
   };
 
   state = {
-    filtered: []
+    filtered: [],
+    pivot: []
   };
 
   getTableProps = () => {
@@ -115,6 +121,9 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
       sorted: tableData.sorted,
       filterable: tableData.filterable,
       sortable: tableData.sortable,
+      groupable: tableData.groupable,
+      onGroupBy: this.onGroupBy,
+      grouping: this.state.pivot.join(),
       defaultSortDesc: tableData.defaultSortDesc,
       column,
       firstColumn: tableData.allVisibleColumns.length > 0 ? tableData.allVisibleColumns[0].id === column.id : false,
@@ -203,6 +212,10 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
     this.setState({ filtered });
   };
 
+  private onGroupBy = (pivotBy) => {
+    this.setState({ pivot: pivotBy, filtered: [] });
+  };
+
   render() {
     const {
       data,
@@ -216,6 +229,7 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
       reactTableProps,
       filterable,
       sortable,
+      groupable,
       className,
       renderExtension,
       style,
@@ -259,6 +273,8 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
           defaultFilterMethod={AnalyticalTable.DEFAULT_FILTER_METHOD}
           onFilteredChange={this.onFilteredChange}
           sortable={sortable}
+          pivotBy={this.state.pivot}
+          groupable={groupable}
           {...reactTableProps}
         />
       </div>
