@@ -1,5 +1,8 @@
 import { createGenerateClassName, sap_fiori_3 } from '@ui5/webcomponents-react-base';
+import boot from '@ui5/webcomponents-base/src/boot';
 import { getCompactSize, getTheme } from '@ui5/webcomponents-base/src/Configuration';
+import { injectThemeProperties } from '@ui5/webcomponents-base/src/theming/StyleInjection';
+import fiori3ThemeProperties from '@ui5/webcomponents/dist/themes/sap_fiori_3/parameters-bundle.css.js';
 import React, { Fragment, PureComponent, ReactNode } from 'react';
 import { JssProvider, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { ContentDensity } from '../../lib/ContentDensity';
@@ -17,6 +20,14 @@ export class ThemeProvider extends PureComponent<ThemeProviderProps> {
   static defaultProps = {
     withToastContainer: false
   };
+
+  constructor(props) {
+    super(props);
+    // inject default CSS custom parameters in head
+    boot().then((_) => {
+      injectThemeProperties(fiori3ThemeProperties);
+    });
+  }
 
   private static getTheme = (theme: Themes) => {
     if (theme === Themes.sap_fiori_3) return sap_fiori_3;

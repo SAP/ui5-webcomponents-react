@@ -68,6 +68,8 @@ export class Avatar extends PureComponent<AvatarPropTypes> {
       cssClasses.push(classes[`size${size}`]);
     }
 
+    inlineStyle['--sapUiContentNonInteractiveIconColor'] = 'var(--sapContent_ContrastIconColor)';
+
     if (shape === AvatarShape.Circle) {
       cssClasses.push(classes.circle);
     }

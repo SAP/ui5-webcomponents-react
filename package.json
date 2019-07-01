@@ -71,7 +71,7 @@
     "istanbul-instrumenter-loader": "^3.0.1",
     "jest": "^24.8.0",
     "jest-canvas-mock": "^2.0.0-beta.1",
-    "jest-environment-jsdom-fourteen": "^0.1.0",
+    "jest-environment-jsdom-fifteen": "^1.0.0",
     "jest-enzyme": "^7.0.2",
     "jss-snapshot-serializer": "^1.0.0",
     "karma": "^4.0.1",

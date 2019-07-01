@@ -1,22 +1,18 @@
-import { fonts, HSLColor } from '@ui5/webcomponents-react-base';
+import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ theme, parameters }: JSSTheme) => ({
   header: {
     padding: '0 3rem 0 2.5rem',
-    borderBottom: `0.125rem solid ${HSLColor.of(parameters.sapUiListBorderColor).lighten(5).hsl}`,
+    borderBottom: `1px solid ${parameters.sapUiGroupTitleBorderColor}`,
     boxSizing: 'border-box',
-    height: '2.5rem',
-    lineHeight: '2rem'
+    height: '2.75rem'
   },
   title: {
-    height: '2.5rem',
-    lineHeight: '2rem',
-    paddingBottom: '0.5rem',
+    height: '2.75rem',
     color: parameters.sapUiBaseText,
-    fontSize: '1.375rem',
-    borderBottom: `0.125rem solid ${HSLColor.of(parameters.sapUiListBorderColor).darken(30).hsl}`,
-    boxSizing: 'border-box',
+    fontSize: parameters.sapMFontHeader4Size,
+    borderBottom: `1px solid ${parameters.sapUiActive}`,
     display: 'inline-block',
     maxWidth: '100%',
     overflow: 'hidden',
