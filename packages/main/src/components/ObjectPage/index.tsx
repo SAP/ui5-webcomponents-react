@@ -1,5 +1,13 @@
 import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, PureComponent, ReactElement, ReactNode, ReactNodeArray } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  PureComponent,
+  ReactElement,
+  ReactNode,
+  ReactNodeArray,
+  RefObject
+} from 'react';
 import { scroller } from 'react-scroll';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
@@ -31,16 +39,18 @@ const objectPageContentStyles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const ObjectPageContent = withStyles(objectPageContentStyles)((props) => {
-  const { children, classes, getFillerDivDomRef } = props;
+const ObjectPageContent = withStyles(objectPageContentStyles)(
+  React.forwardRef((props: any, ref: RefObject<HTMLDivElement>) => {
+    const { children, classes } = props;
 
-  return (
-    <section id="ObjectPageSections" className={classes.sectionsContainer}>
-      {children}
-      <div ref={getFillerDivDomRef} />
-    </section>
-  );
-});
+    return (
+      <section id="ObjectPageSections" className={classes.sectionsContainer}>
+        {children}
+        <div ref={ref} />
+      </section>
+    );
+  })
+);
 
 export interface ObjectPagePropTypes extends Fiori3CommonProps {
   title?: string;
@@ -80,8 +90,8 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
     showHideHeaderButton: false
   };
 
-  private objectPage: HTMLElement;
-  private fillerDivDomRef: HTMLElement;
+  private objectPage: RefObject<HTMLDivElement> = React.createRef();
+  private fillerDivDomRef: RefObject<HTMLDivElement> = React.createRef();
 
   static getDerivedStateFromProps(nextProps: ObjectPagePropTypes, prevState: ObjectPageState) {
     if (nextProps.selectedSectionId !== prevState.prevProps.selectedSectionId) {
@@ -105,10 +115,6 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
       selectedSectionId: ''
     },
     showHeader: true
-  };
-
-  private getFillerDivDomRef = (ref) => {
-    this.fillerDivDomRef = ref;
   };
 
   componentDidMount() {
@@ -149,7 +155,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
   }
 
   adjustDummyDivHeight() {
-    if (!this.objectPage) {
+    if (!this.objectPage.current) {
       // in case componentWillUnmount didn´t fire
       window.removeEventListener('resize', this.adjustDummyDivHeight);
       return;
@@ -158,7 +164,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
       return;
     }
 
-    const sections = this.objectPage.querySelectorAll('[id^="ObjectPageSection"]');
+    const sections = this.objectPage.current.querySelectorAll('[id^="ObjectPageSection"]');
     if (!sections || sections.length < 1) {
       return;
     }
@@ -175,7 +181,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
 
     let heightDiff = lastSectionDomRef.parentElement.offsetHeight - domRef.offsetHeight;
     heightDiff = heightDiff > 0 ? heightDiff : 0;
-    this.fillerDivDomRef.style.height = `${heightDiff}px`;
+    this.fillerDivDomRef.current.style.height = `${heightDiff}px`;
   }
 
   render() {
@@ -218,9 +224,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
         data-ui5-slot={this.props['data-ui5-slot']}
         className={objectPageClasses.toString()}
         style={style}
-        ref={(el) => {
-          this.objectPage = el;
-        }}
+        ref={this.objectPage}
         title={tooltip}
       >
         <header className={classes.header}>
@@ -262,6 +266,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
             <div className={classes.hideHeaderContent}>
               {this.props.showHideHeaderButton && (
                 <Button
+                  // @ts-ignore
                   style={{ position: 'absolute', '--_ui5_button_compact_height': '1rem', lineHeight: '1.25rem' }}
                   icon={this.state.showHeader ? 'sap-icon://navigation-up-arrow' : 'sap-icon://navigation-down-arrow'}
                   onPress={this.changeHeader}
@@ -284,7 +289,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
             ))}
           </section>
         </header>
-        <ObjectPageContent getFillerDivDomRef={this.getFillerDivDomRef}>{content}</ObjectPageContent>
+        <ObjectPageContent ref={this.fillerDivDomRef}>{content}</ObjectPageContent>
       </div>
     );
   }

@@ -4,17 +4,17 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(Component)) renderWhitespace={false} wrapping={true} width={{...}}>
-      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-        <Component renderWhitespace={false} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
+        <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
           <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
             FioriText
           </span>
         </Component>
       </WithStyles(Component)>
-    </Jss(WithStyles(Component))>
-  </ThemeProvider>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
@@ -22,17 +22,17 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(Component)) wrapping={false} renderWhitespace={false} width={{...}}>
-      <WithStyles(Component) wrapping={false} renderWhitespace={false} width={{...}} theme={{...}} classes={{...}}>
-        <Component wrapping={false} renderWhitespace={false} width={{...}} theme={{...}} classes={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <WithStyles(Component) wrapping={false} renderWhitespace={false} width={{...}}>
+        <Component wrapping={false} renderWhitespace={false} width={{...}} classes={{...}} theme={{...}}>
           <span style={{...}} className="Component-text--- Component-noWrap---" title={[undefined]} data-ui5-slot={[undefined]}>
             Lorem Ipsum dolor sit amed
           </span>
         </Component>
       </WithStyles(Component)>
-    </Jss(WithStyles(Component))>
-  </ThemeProvider>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
@@ -40,17 +40,17 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <Jss(WithStyles(Component)) renderWhitespace={true} wrapping={true} width={{...}}>
-      <WithStyles(Component) renderWhitespace={true} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
-        <Component renderWhitespace={true} wrapping={true} width={{...}} theme={{...}} classes={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <WithStyles(Component) renderWhitespace={true} wrapping={true} width={{...}}>
+        <Component renderWhitespace={true} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
           <span style={{...}} className="Component-text--- Component-renderWhitespace---" title={[undefined]} data-ui5-slot={[undefined]}>
             Lorem Ipsum dolor sit amed
           </span>
         </Component>
       </WithStyles(Component)>
-    </Jss(WithStyles(Component))>
-  </ThemeProvider>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 

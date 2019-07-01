@@ -1,8 +1,18 @@
 import { Event } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, Component, CSSProperties, FC, ReactElement } from 'react';
-import { withTheme } from 'react-jss';
+import React, {
+  Children,
+  cloneElement,
+  CSSProperties,
+  MutableRefObject,
+  ReactElement,
+  Ref,
+  RefForwardingComponent,
+  RefObject,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { Fiori3CommonProps } from '../interfaces/Fiori3CommonProps';
-import { JSSTheme } from '../interfaces/JSSTheme';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
 import { Ui5WebComponentMetadata } from '../interfaces/Ui5WebComponentMetadata';
 
@@ -14,160 +24,151 @@ function toKebabCase(s: string) {
   return s.replace(/([A-Z])/g, (a, b) => `-${b.toLowerCase()}`);
 }
 
+const propBlacklist = {
+  className: true,
+  innerStyles: true
+};
+
 export interface WithWebComponentPropTypes extends Fiori3CommonProps {
-  innerComponentRef?: (el: HTMLElement) => void;
+  ref?: Ref<any>;
   children?: any | void;
   innerStyles?: CSSProperties;
 }
 
-interface WithWebComponentInternalPropTypes extends WithWebComponentPropTypes {
-  theme: JSSTheme;
-}
+export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5DomRef, T & WithWebComponentPropTypes> {
+  const getWebComponentMetadata = (): Ui5WebComponentMetadata => {
+    if (WebComponent) {
+      return WebComponent.getMetadata();
+    }
 
-export function withWebComponent<T>(WebComponent): FC<T> {
-  class WithWebComponent extends Component<T & WithWebComponentPropTypes> {
-    state = {
-      updateAfterMount: false
-    };
-
-    private wcRef: Ui5DomRef;
-    private shadowRootRef: HTMLElement;
-    private eventRegistry = {};
-    private eventRegistryWrapped = {};
-
-    private handleInnerRef = (ref: HTMLElement) => {
-      const { innerComponentRef } = this.props;
-      this.wcRef = ref;
-      if (innerComponentRef) {
-        innerComponentRef(ref);
+    return {
+      getProperties() {
+        return {};
+      },
+      getEvents() {
+        return {};
+      },
+      getSlots() {
+        return {};
       }
     };
+  };
 
-    private getWebComponentMetadata = (): Ui5WebComponentMetadata => {
-      if (WebComponent) {
-        return WebComponent.getMetadata();
+  const getMetadataBooleans = () => {
+    return Object.entries(getWebComponentMetadata().getProperties())
+      .filter(([key, value]) => value.type === Boolean)
+      .map(([key]) => key);
+  };
+
+  const createEventWrapperFor = (eventIdentifier, eventHandler) => (e) => {
+    let payload = Object.keys(getWebComponentMetadata().getProperties()).reduce((acc, val) => {
+      if (/^_/.test(val)) {
+        return acc;
       }
+      acc[val] = e.target[toKebabCase(val)];
+      return acc;
+    }, {});
 
-      return {
-        getProperties() {
-          return {};
-        },
-        getEvents() {
-          return {};
-        },
-        getSlots() {
-          return {};
-        }
-      };
-    };
+    payload = Object.keys(getWebComponentMetadata().getEvents()[eventIdentifier]).reduce((acc, val) => {
+      if (val === 'detail' && e[val]) {
+        return {
+          ...acc,
+          ...e[val]
+        };
+      }
+      acc[val] = (e.detail && e.detail[val]) || e[val];
+      return acc;
+    }, payload);
+    // TODO: Pass Web Component Ref in here?
+    eventHandler(Event.of(null, e, payload));
+  };
 
-    private getMetadataBooleans = () => {
-      return Object.entries(this.getWebComponentMetadata().getProperties())
-        .filter(([key, value]) => value.type === Boolean)
-        .map(([key]) => key);
-    };
+  const getMetadataEvents = () => {
+    return Object.keys(getWebComponentMetadata().getEvents());
+  };
 
-    private createEventWrapperFor = (eventIdentifier, eventHandler) => (e) => {
-      let payload = Object.keys(this.getWebComponentMetadata().getProperties()).reduce((acc, val) => {
-        if (/^_/.test(val)) {
-          return acc;
-        }
-        acc[val] = e.target[toKebabCase(val)];
-        return acc;
-      }, {});
+  const getMetadataSlots = () => {
+    return Object.keys(getWebComponentMetadata().getSlots());
+  };
 
-      payload = Object.keys(this.getWebComponentMetadata().getEvents()[eventIdentifier]).reduce((acc, val) => {
-        if (val === 'detail' && e[val]) {
-          return {
-            ...acc,
-            ...e[val]
-          };
-        }
-        acc[val] = (e.detail && e.detail[val]) || e[val];
-        return acc;
-      }, payload);
-      eventHandler(Event.of(this, e, payload));
-    };
+  const WithWebComponent = React.forwardRef((props: T & WithWebComponentPropTypes, wcRef: RefObject<Ui5DomRef>) => {
+    const { className = '' } = props;
 
-    private bindEvents = () => {
-      this.getMetadataEvents().forEach((eventIdentifier) => {
-        const alternativeKey = 'on' + capitalizeFirstLetter(eventIdentifier);
-        const eventHandler = this.props[eventIdentifier] || this.props[alternativeKey];
-        if (typeof eventHandler === 'function' && this.eventRegistry[alternativeKey] !== eventHandler) {
-          if (this.eventRegistry[alternativeKey]) {
-            this.wcRef.removeEventListener(eventIdentifier, this.eventRegistryWrapped[alternativeKey]);
-          }
-          this.eventRegistryWrapped[alternativeKey] = this.createEventWrapperFor(eventIdentifier, eventHandler);
-          this.wcRef.addEventListener(eventIdentifier, this.eventRegistryWrapped[alternativeKey]);
-          this.eventRegistry[alternativeKey] = eventHandler;
-        } else if (this.eventRegistry[alternativeKey] && !eventHandler) {
-          this.wcRef.removeEventListener(eventIdentifier, this.eventRegistryWrapped[alternativeKey]);
-        }
-      });
-    };
+    const [updateAfterMount, setUpdateAfterMount] = useState(false);
+    const prevInnerStylesProp = useRef(null);
+    const shadowRootRef: MutableRefObject<HTMLElement> = useRef();
+    const eventRegistry = useRef({});
+    const eventRegistryWrapped = useRef({});
+    const localWcRef = useRef(null);
 
-    private getMetadataSlots = () => {
-      return Object.keys(this.getWebComponentMetadata().getSlots());
-    };
+    const CustomTag = WebComponent.getMetadata().getTag();
+    const slots = WebComponent.getMetadata().getSlots();
 
-    private getMetadataEvents = () => {
-      return Object.keys(this.getWebComponentMetadata().getEvents());
-    };
+    const getWcRef = () => wcRef || localWcRef;
 
-    get booleanProps() {
-      return this.getMetadataBooleans().reduce((acc, key) => {
-        if (this.props[key]) {
+    const getBooleanProps = () => {
+      return getMetadataBooleans().reduce((acc, key) => {
+        if (props[key]) {
           acc[toKebabCase(key)] = true;
         }
         return acc;
       }, {});
-    }
+    };
 
-    static get propBlacklist() {
-      return {
-        className: true,
-        innerStyles: true
-      };
-    }
+    const bindEvents = () => {
+      getMetadataEvents().forEach((eventIdentifier) => {
+        const alternativeKey = 'on' + capitalizeFirstLetter(eventIdentifier);
+        const eventHandler = props[eventIdentifier] || props[alternativeKey];
+        if (typeof eventHandler === 'function' && eventRegistry.current[alternativeKey] !== eventHandler) {
+          if (eventRegistry.current[alternativeKey]) {
+            getWcRef().current.removeEventListener(eventIdentifier, eventRegistryWrapped.current[alternativeKey]);
+          }
+          eventRegistryWrapped.current[alternativeKey] = createEventWrapperFor(eventIdentifier, eventHandler);
+          getWcRef().current.addEventListener(eventIdentifier, eventRegistryWrapped.current[alternativeKey]);
+          eventRegistry.current[alternativeKey] = eventHandler;
+        } else if (eventRegistry.current[alternativeKey] && !eventHandler) {
+          getWcRef().current.removeEventListener(eventIdentifier, eventRegistryWrapped.current[alternativeKey]);
+        }
+      });
+    };
 
-    get shadowDomRef() {
-      if (this.shadowRootRef) {
-        return this.shadowRootRef;
+    const getShadowDomRef = () => {
+      if (shadowRootRef.current) {
+        return shadowRootRef.current;
       }
-      return (this.shadowRootRef = this.wcRef && this.wcRef.getDomRef ? this.wcRef.getDomRef() : null);
-    }
+      return (shadowRootRef.current =
+        getWcRef().current && getWcRef().current.getDomRef ? getWcRef().current.getDomRef() : null);
+    };
 
-    get regularProps() {
-      if (this.wcRef) {
-        this.bindEvents();
+    const getRegularProps = () => {
+      if (getWcRef().current) {
+        bindEvents();
       }
 
-      const props = {};
+      const regularProps = {};
       const slotProps = {};
 
-      Object.entries(this.props)
-        .filter(([key]) => !this.getMetadataBooleans().includes(key))
+      Object.entries(props)
+        .filter(([key]) => !getMetadataBooleans().includes(key))
         .filter(
           ([key]) =>
-            !this.getMetadataEvents().some(
-              (eventKey) => `on${capitalizeFirstLetter(eventKey)}` === key || key === eventKey
-            )
+            !getMetadataEvents().some((eventKey) => `on${capitalizeFirstLetter(eventKey)}` === key || key === eventKey)
         )
-        .filter(([key]) => !WithWebComponent.propBlacklist[key])
+        .filter(([key]) => !propBlacklist[key])
         .forEach(([key, value]) => {
-          if (this.getMetadataSlots().includes(key)) {
+          if (getMetadataSlots().includes(key)) {
             slotProps[key] = value;
           } else {
-            props[toKebabCase(key)] = value;
+            regularProps[toKebabCase(key)] = value;
           }
         });
 
-      return { props, slotProps };
-    }
+      return { regularProps, slotProps };
+    };
 
-    applyInnerStyles = () => {
-      const { innerStyles } = this.props;
-      const shadowRef = this.shadowDomRef;
+    const applyInnerStyles = () => {
+      const { innerStyles } = props;
+      const shadowRef = getShadowDomRef();
       if (!shadowRef) {
         return;
       }
@@ -178,68 +179,60 @@ export function withWebComponent<T>(WebComponent): FC<T> {
       }
     };
 
-    removeOldStyles = (prevStyles) => {
+    const removeOldStyles = (prevStyles) => {
       if (prevStyles) {
         Object.keys(prevStyles).forEach((key) => {
-          this.shadowDomRef.style[key] = '';
+          getShadowDomRef().style[key] = '';
         });
       }
     };
 
-    componentDidUpdate(prevProps) {
-      const executionList = [];
+    // effects
+    useEffect(() => {
+      requestAnimationFrame(() => {
+        removeOldStyles(prevInnerStylesProp.current);
+        applyInnerStyles();
+      });
 
-      if (prevProps.innerStyles !== this.props.innerStyles) {
-        executionList.push(() => this.removeOldStyles(prevProps.innerStyles));
-        executionList.push(this.applyInnerStyles);
-      }
+      prevInnerStylesProp.current = props.innerStyles;
+    }, [props.innerStyles]);
 
-      if (executionList.length > 0) {
+    useEffect(() => {
+      if (getWcRef().current) {
+        bindEvents();
         requestAnimationFrame(() => {
-          executionList.forEach((exec) => exec());
-        });
-      }
-    }
-
-    componentDidMount() {
-      if (this.wcRef) {
-        this.bindEvents();
-        requestAnimationFrame(() => {
-          this.applyInnerStyles();
+          applyInnerStyles();
         });
       } else {
-        this.setState({
-          updateAfterMount: true
-        });
+        setUpdateAfterMount(true);
       }
-    }
+    }, []);
 
-    render() {
-      const { className = '' } = this.props;
+    // render
+    const { regularProps: passedProps, slotProps: actualSlotProps } = getRegularProps();
 
-      const CustomTag = WebComponent.getMetadata().getTag();
-      const slots = WebComponent.getMetadata().getSlots();
+    const { children, ...rest } = passedProps as T & WithWebComponentPropTypes;
+    return (
+      <CustomTag {...getBooleanProps()} ref={getWcRef()} {...rest} class={className}>
+        {Object.keys(slots).map((slot) => {
+          if (actualSlotProps[slot]) {
+            return Children.map(actualSlotProps[slot], (item: ReactElement<any>, index) =>
+              cloneElement(item, {
+                key: `${slot}-${index}`,
+                'data-ui5-slot': slot
+              })
+            );
+          }
+          return null;
+        })}
+        {children}
+      </CustomTag>
+    );
+  });
 
-      const { props, slotProps } = this.regularProps;
-      const { children, theme, ...regularProps } = props as T & WithWebComponentInternalPropTypes;
-      return (
-        <CustomTag {...this.booleanProps} ref={this.handleInnerRef} {...regularProps} class={className}>
-          {Object.keys(slots).map((slot) => {
-            if (slotProps[slot]) {
-              return Children.map(slotProps[slot], (item: ReactElement<any>, index) =>
-                cloneElement(item, {
-                  key: `${slot}-${index}`,
-                  'data-ui5-slot': slot
-                })
-              );
-            }
-            return null;
-          })}
-          {children}
-        </CustomTag>
-      );
-    }
+  if (WebComponent) {
+    WithWebComponent.displayName = `WithWebComponent(${WebComponent.name})`;
   }
 
-  return withTheme(WithWebComponent);
+  return WithWebComponent as RefForwardingComponent<Ui5DomRef, T & WithWebComponentPropTypes>;
 }

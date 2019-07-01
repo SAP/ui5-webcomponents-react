@@ -4,13 +4,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <BusyIndicator active={true} size="Large">
-      <WithWebComponent theme={{...}} active={true} size="Large">
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <BusyIndicator active={true} size="Large">
         <ui5-busyindicator active={true} size="Large" class="" />
-      </WithWebComponent>
-    </BusyIndicator>
-  </ThemeProvider>
+      </BusyIndicator>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
@@ -18,13 +18,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <BusyIndicator size="Large">
-      <WithWebComponent theme={{...}} size="Large">
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <BusyIndicator size="Large">
         <ui5-busyindicator size="Large" class="" />
-      </WithWebComponent>
-    </BusyIndicator>
-  </ThemeProvider>
+      </BusyIndicator>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
@@ -32,13 +32,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <BusyIndicator active={true} size="Medium">
-      <WithWebComponent theme={{...}} active={true} size="Medium">
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <BusyIndicator active={true} size="Medium">
         <ui5-busyindicator active={true} size="Medium" class="" />
-      </WithWebComponent>
-    </BusyIndicator>
-  </ThemeProvider>
+      </BusyIndicator>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
@@ -46,13 +46,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <BusyIndicator active={true} size="Small">
-      <WithWebComponent theme={{...}} active={true} size="Small">
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <BusyIndicator active={true} size="Small">
         <ui5-busyindicator active={true} size="Small" class="" />
-      </WithWebComponent>
-    </BusyIndicator>
-  </ThemeProvider>
+      </BusyIndicator>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 

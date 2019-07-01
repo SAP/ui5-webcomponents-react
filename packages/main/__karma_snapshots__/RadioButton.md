@@ -4,13 +4,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <RadioButton valueState="None">
-      <WithWebComponent theme={{...}} valueState="None">
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <RadioButton valueState="None">
         <ui5-radiobutton value-state="None" class="" />
-      </WithWebComponent>
-    </RadioButton>
-  </ThemeProvider>
+      </RadioButton>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 

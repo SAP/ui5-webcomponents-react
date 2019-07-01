@@ -15,8 +15,8 @@ import KeyCodes from './KeyCodes';
 import { LOG_LEVEL, Logger } from './Logger';
 import Optional from './Optional';
 import StyleClassHelper from './StyleClassHelper';
-
 import { deprecationNotice, pushElementBackInScreen } from './Util';
+import { createGenerateClassName } from './withStyles/createGenerateClassName';
 
 export {
   StyleClassHelper,
@@ -35,5 +35,6 @@ export {
   HSLColor,
   sap_fiori_3,
   bootstrap,
-  withStyles
+  withStyles,
+  createGenerateClassName
 };
