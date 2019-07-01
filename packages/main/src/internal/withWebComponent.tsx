@@ -3,7 +3,6 @@ import React, {
   Children,
   cloneElement,
   CSSProperties,
-  FC,
   MutableRefObject,
   ReactElement,
   Ref,
@@ -92,9 +91,6 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
     return Object.keys(getWebComponentMetadata().getSlots());
   };
 
-  const CustomTag = WebComponent.getMetadata().getTag();
-  const slots = WebComponent.getMetadata().getSlots();
-
   const WithWebComponent = React.forwardRef((props: T & WithWebComponentPropTypes, wcRef: RefObject<Ui5DomRef>) => {
     const { className = '' } = props;
 
@@ -104,6 +100,9 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
     const eventRegistry = useRef({});
     const eventRegistryWrapped = useRef({});
     const localWcRef = useRef(null);
+
+    const CustomTag = WebComponent.getMetadata().getTag();
+    const slots = WebComponent.getMetadata().getSlots();
 
     const getWcRef = () => wcRef || localWcRef;
 
@@ -230,6 +229,10 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
       </CustomTag>
     );
   });
+
+  if (WebComponent) {
+    WithWebComponent.displayName = `WithWebComponent(${WebComponent.name})`;
+  }
 
   return WithWebComponent as RefForwardingComponent<Ui5DomRef, T & WithWebComponentPropTypes>;
 }

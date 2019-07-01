@@ -4,13 +4,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <ShellBar logo={{...}} profile="">
-      <WithWebComponent theme={{...}} logo={{...}} profile="">
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <ShellBar logo={{...}} profile="">
         <ui5-shellbar logo={{...}} profile="" class="" />
-      </WithWebComponent>
-    </ShellBar>
-  </ThemeProvider>
+      </ShellBar>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 

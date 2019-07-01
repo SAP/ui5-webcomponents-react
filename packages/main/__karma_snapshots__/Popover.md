@@ -4,15 +4,15 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <Popover initialFocus={{...}} headerText="" placementType="Right" horizontalAlign="Center" verticalAlign="Center">
-      <WithTheme(WithWebComponent) initialFocus={{...}} headerText="" placementType="Right" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
-        <WithWebComponent theme={{...}} initialFocus={{...}} headerText="" placementType="Right" horizontalAlign="Center" verticalAlign="Center" innerComponentRef={[Function]}>
-          <ui5-popover initial-focus={{...}} header-text="" placement-type="Right" horizontal-align="Center" vertical-align="Center" inner-component-ref={[Function]} class="" />
-        </WithWebComponent>
-      </WithTheme(WithWebComponent)>
-    </Popover>
-  </ThemeProvider>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <Popover initialFocus={{...}} headerText="" placementType="Right" horizontalAlign="Center" verticalAlign="Center">
+        <WithWebComponent(Popover) initialFocus={{...}} headerText="" placementType="Right" horizontalAlign="Center" verticalAlign="Center">
+          <ui5-popover initial-focus={{...}} header-text="" placement-type="Right" horizontal-align="Center" vertical-align="Center" class="" />
+        </WithWebComponent(Popover)>
+      </Popover>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 

@@ -4,13 +4,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <CheckBox valueState="None">
-      <WithWebComponent theme={{...}} valueState="None">
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <CheckBox valueState="None">
         <ui5-checkbox value-state="None" class="" />
-      </WithWebComponent>
-    </CheckBox>
-  </ThemeProvider>
+      </CheckBox>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 

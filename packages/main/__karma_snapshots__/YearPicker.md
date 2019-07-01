@@ -4,13 +4,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <YearPicker>
-      <WithWebComponent theme={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <YearPicker>
         <ui5-yearpicker class="" />
-      </WithWebComponent>
-    </YearPicker>
-  </ThemeProvider>
+      </YearPicker>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 
