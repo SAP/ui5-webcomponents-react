@@ -1,5 +1,5 @@
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ContentDensity } from '../..';
+import { ContentDensity } from '../../lib/ContentDensity';
 
 const styles = ({ contentDensity, parameters }: JSSTheme) => ({
   toolbarRoot: {

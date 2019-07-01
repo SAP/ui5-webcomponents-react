@@ -7,7 +7,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { Popover } from '../../lib/Popover';
 import { Button } from '../../lib/Button';
-import { PlacementType } from '../..';
+import { PlacementType } from '../../lib/PlacementType';
 import boot from '@ui5/webcomponents-base/src/boot';
 
 export interface ToolbarPropTypes extends CommonProps {
@@ -74,7 +74,7 @@ export class OverflowToolbar extends Component<ToolbarInternalProps> {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  private handleResize() {
+  private handleResize = () => {
     let newChildren = this.state.children;
     let { popoverElements, renderToggle, previousWidth } = this.state;
     if (this.state.toolbarWidth > this.toolbarRef.current.clientWidth) {
