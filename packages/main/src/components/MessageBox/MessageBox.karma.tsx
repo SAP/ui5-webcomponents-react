@@ -10,17 +10,6 @@ import { MessageBoxTypes } from '../../lib/MessageBoxTypes';
 use(matchSnapshot);
 
 describe('MessageBox', () => {
-  // let appRoot: HTMLElement;
-  //
-  // before(() => {
-  //   appRoot = document.createElement("div");
-  //   document.body.appendChild(appRoot);
-  // });
-  //
-  // after(() => {
-  //   document.body.removeChild(appRoot);
-  // });
-
   it('Confirm - OK', () => {
     const callback = spy();
     const wrapper = mountThemedComponent(
@@ -31,10 +20,12 @@ describe('MessageBox', () => {
     );
     expect(wrapper.debug()).to.matchSnapshot();
 
-    (wrapper
-      .find('Button')
+    const component = wrapper
+      .find('ui5-button')
       .first()
-      .prop('onPress') as any)({ target: {} });
+      .instance() as any;
+
+    component.fireEvent('click');
     expect(getEventFromCallback(callback).getParameter('action')).to.equal(MessageBoxActions.OK);
   });
 
@@ -47,10 +38,11 @@ describe('MessageBox', () => {
     );
     expect(wrapper.debug()).to.matchSnapshot();
 
-    (wrapper
-      .find('Button')
+    const component = wrapper
+      .find('ui5-button')
       .last()
-      .prop('onPress') as any)({ target: {} });
+      .instance() as any;
+    component.fireEvent('click');
     expect(getEventFromCallback(callback).getParameter('action')).to.equal(MessageBoxActions.CANCEL);
   });
 
@@ -63,10 +55,11 @@ describe('MessageBox', () => {
     );
     expect(wrapper.debug()).to.matchSnapshot();
 
-    (wrapper
-      .find('Button')
+    const component = wrapper
+      .find('ui5-button')
       .first()
-      .prop('onPress') as any)({ target: {} });
+      .instance() as any;
+    component.fireEvent('click');
     expect(getEventFromCallback(callback).getParameter('action')).to.equal(MessageBoxActions.OK);
   });
 
@@ -79,10 +72,11 @@ describe('MessageBox', () => {
     );
     expect(wrapper.debug()).to.matchSnapshot();
 
-    (wrapper
-      .find('Button')
+    const component = wrapper
+      .find('ui5-button')
       .first()
-      .prop('onPress') as any)({ target: {} });
+      .instance() as any;
+    component.fireEvent('click');
     expect(getEventFromCallback(callback).getParameter('action')).to.equal(MessageBoxActions.OK);
   });
 
@@ -95,10 +89,11 @@ describe('MessageBox', () => {
     );
     expect(wrapper.debug()).to.matchSnapshot();
 
-    (wrapper
-      .find('Button')
+    const component = wrapper
+      .find('ui5-button')
       .first()
-      .prop('onPress') as any)({ target: {} });
+      .instance() as any;
+    component.fireEvent('click');
     expect(getEventFromCallback(callback).getParameter('action')).to.equal(MessageBoxActions.CLOSE);
   });
 
@@ -111,10 +106,11 @@ describe('MessageBox', () => {
     );
     expect(wrapper.debug()).to.matchSnapshot();
 
-    (wrapper
-      .find('Button')
+    const component = wrapper
+      .find('ui5-button')
       .first()
-      .prop('onPress') as any)({ target: {} });
+      .instance() as any;
+    component.fireEvent('click');
     expect(getEventFromCallback(callback).getParameter('action')).to.equal(MessageBoxActions.OK);
   });
 
@@ -127,16 +123,18 @@ describe('MessageBox', () => {
     );
     expect(wrapper.debug()).to.matchSnapshot();
 
-    (wrapper
-      .find('Button')
+    let component = wrapper
+      .find('ui5-button')
       .first()
-      .prop('onPress') as any)({ target: {} });
+      .instance() as any;
+    component.fireEvent('click');
     expect(getEventFromCallback(callback).getParameter('action')).to.equal(MessageBoxActions.YES);
 
-    (wrapper
-      .find('Button')
+    component = wrapper
+      .find('ui5-button')
       .last()
-      .prop('onPress') as any)({ target: {} });
+      .instance() as any;
+    component.fireEvent('click');
     expect(getEventFromCallback(callback, 1).getParameter('action')).to.equal(MessageBoxActions.NO);
   });
 
@@ -149,10 +147,11 @@ describe('MessageBox', () => {
     );
     expect(wrapper.debug()).to.matchSnapshot();
 
-    (wrapper
-      .find('Button')
+    const component = wrapper
+      .find('ui5-button')
       .first()
-      .prop('onPress') as any)({ target: {} });
+      .instance() as any;
+    component.fireEvent('click');
     expect(getEventFromCallback(callback).getParameter('action')).to.equal(MessageBoxActions.OK);
   });
 

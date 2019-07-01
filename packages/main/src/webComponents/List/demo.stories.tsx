@@ -1,4 +1,5 @@
 import { boolean, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { List } from '../../lib/List';
@@ -15,9 +16,9 @@ storiesOf('UI5 Web Components | List', module).add('Generated default story', ()
     mode={select('mode', ListMode, null)}
     noDataText={'generatedString'}
     separators={select('separators', ListSeparators, null)}
-    onItemPress={null}
-    onItemDelete={null}
-    onSelectionChange={null}
+    onItemClick={action('onItemClick')}
+    onItemDelete={action('onItemDelete')}
+    onSelectionChange={action('onSelectionChange')}
     header={null}
   >
     <StandardListItem info="3" infoState={ValueState.Warning}>

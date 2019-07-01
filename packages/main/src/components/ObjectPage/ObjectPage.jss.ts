@@ -121,6 +121,7 @@ const styles = ({ parameters }: JSSTheme) => ({
       position: 'relative',
       display: 'inline-flex',
       alignItems: 'center',
+      cursor: 'pointer',
       '&:not(:first-child)': {
         marginLeft: '2rem'
       }
@@ -137,7 +138,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   headerImage: {},
   headerCustomContent: {},
   anchorButtonContainer: {},
-  anchorButton: {},
   active: {},
   hiddenHeader: {}
 });

@@ -43,7 +43,7 @@ export class Page extends Component<PagePropTypes> {
 
   private renderBackButton = () => {
     return (
-      <Button icon="navigation-left-arrow" design={ButtonDesign.Transparent} onPress={this.handleNavBackButtonPress} />
+      <Button icon="navigation-left-arrow" design={ButtonDesign.Transparent} onClick={this.handleNavBackButtonPress} />
     );
   };
 

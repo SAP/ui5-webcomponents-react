@@ -1,6 +1,6 @@
+import React, { FC, ReactNode } from 'react';
 import { Event } from '@ui5/webcomponents-react-base';
 import UI5ShellBar from '@ui5/webcomponents/dist/ShellBar';
-import React, { FC, ReactNode, ReactNodeArray } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {
@@ -12,14 +12,14 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   showNotifications?: boolean; // @generated
   showProductSwitch?: boolean; // @generated
   showCoPilot?: boolean; // @generated
-  onNotificationsPress?: (event: Event) => void; // @generated
-  onProfilePress?: (event: Event) => void; // @generated
-  onProductSwitchPress?: (event: Event) => void; // @generated
-  onLogoPress?: (event: Event) => void; // @generated
-  onCoPilotPress?: (event: Event) => void; // @generated
-  onMenuItemPress?: (event: Event) => void; // @generated
-  children?: ReactNode | ReactNodeArray; // @generated
-  menuItems?: ReactNode | ReactNodeArray; // @generated
+  onNotificationsClick?: (event: Event) => void; // @generated
+  onProfileClick?: (event: Event) => void; // @generated
+  onProductSwitchClick?: (event: Event) => void; // @generated
+  onLogoClick?: (event: Event) => void; // @generated
+  onCoPilotClick?: (event: Event) => void; // @generated
+  onMenuItemClick?: (event: Event) => void; // @generated
+  children?: ReactNode; // @generated
+  menuItems?: ReactNode; // @generated
   searchField?: ReactNode; // @generated
   icon?: ReactNode; // @generated
 }
@@ -27,10 +27,5 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
 const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(UI5ShellBar);
 
 ShellBar.displayName = 'ShellBar';
-
-ShellBar.defaultProps = {
-  logo: null, // @generated
-  profile: '' // @generated
-};
 
 export { ShellBar };

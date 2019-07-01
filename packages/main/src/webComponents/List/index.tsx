@@ -12,7 +12,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
   mode?: ListMode;
   noDataText?: string;
   separators?: ListSeparators;
-  onItemPress?: (event: Event) => void;
+  onItemClick?: (event: Event) => void;
   onItemDelete?: (event: Event) => void;
   onSelectionChange?: (event: Event) => void;
   header?: ReactNode;

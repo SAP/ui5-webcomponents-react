@@ -114,7 +114,7 @@ export class ObjectPageAnchor extends Component<ObjectPageAnchorPropTypes, Objec
             noArrow
             noHeader
           >
-            <List onItemPress={this.onSubSectionClick}>
+            <List onItemClick={this.onSubSectionClick}>
               {this.props.section.props.children
                 .filter((item) => item.props && item.props.isSubSection)
                 .map(this.renderSubSectionListItem)}

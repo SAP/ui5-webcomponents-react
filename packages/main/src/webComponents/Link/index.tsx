@@ -10,7 +10,7 @@ export interface LinkPropTypes extends WithWebComponentPropTypes {
   target?: string; // @generated
   design?: LinkDesign; // @generated
   wrap?: boolean; // @generated
-  onPress?: (event: Event) => void; // @generated
+  onClick?: (event: Event) => void; // @generated
   children?: string; // @generated
 }
 

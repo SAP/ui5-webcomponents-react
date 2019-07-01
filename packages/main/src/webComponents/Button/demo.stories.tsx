@@ -30,15 +30,15 @@ class DemoButton extends React.Component {
     return (
       <div>
         <div>
-          <Button onPress={() => this.setState({ showCS1: !showCS1 })}>Toggle Custom Style 1</Button>
-          <Button onPress={() => this.setState({ showCS2: !showCS2 })}>Toggle Custom Style 2</Button>
+          <Button onClick={() => this.setState({ showCS1: !showCS1 })}>Toggle Custom Style 1</Button>
+          <Button onClick={() => this.setState({ showCS2: !showCS2 })}>Toggle Custom Style 2</Button>
         </div>
         <Button
           design={select('design', ButtonDesign, ButtonDesign.Default)}
           disabled={boolean('disabled', false)}
           icon={'sap-icon://add'}
           iconEnd={boolean('iconEnd', false)}
-          onPress={action('Button clicked')}
+          onClick={action('Button clicked')}
           innerStyles={innerStyles}
         >
           Some Content
@@ -55,7 +55,7 @@ storiesOf('UI5 Web Components | Button', module)
       disabled={boolean('disabled', false)}
       icon={'sap-icon://add'}
       iconEnd={boolean('iconEnd', false)}
-      onPress={action('Button clicked')}
+      onClick={action('onClick')}
     >
       Some Content
     </Button>

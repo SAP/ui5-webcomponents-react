@@ -61,7 +61,7 @@
                   </span>
                 </div>
                 <div className="ObjectPage-hideHeaderContent---">
-                  <Button style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} design="Default">
+                  <Button style={{...}} icon="sap-icon://navigation-up-arrow" onClick={[Function]} design="Default">
                     <ui5-button style={{...}} icon="sap-icon://navigation-up-arrow" design="Default" class="" />
                   </Button>
                 </div>
@@ -117,7 +117,7 @@
                       </div>
                       <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                         <ui5-popover no-header={true} no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
-                          <WithWebComponent(List) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                          <WithWebComponent(List) onItemClick={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                             <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
                               <StandardListItem data-key="4.1" type="Active" infoState="None">
                                 <ui5-li data-key="4.1" type="Active" info-state="None" class="">
@@ -153,7 +153,7 @@
                       </div>
                       <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                         <ui5-popover no-header={true} no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
-                          <WithWebComponent(List) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                          <WithWebComponent(List) onItemClick={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                             <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
                               <StandardListItem data-key="5.1" type="Active" infoState="None">
                                 <ui5-li data-key="5.1" type="Active" info-state="None" class="">
@@ -562,7 +562,7 @@
                   </span>
                 </div>
                 <div className="ObjectPage-hideHeaderContent---">
-                  <Button style={{...}} icon="sap-icon://navigation-up-arrow" onPress={[Function]} design="Default">
+                  <Button style={{...}} icon="sap-icon://navigation-up-arrow" onClick={[Function]} design="Default">
                     <ui5-button style={{...}} icon="sap-icon://navigation-up-arrow" design="Default" class="" />
                   </Button>
                 </div>
@@ -618,7 +618,7 @@
                       </div>
                       <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                         <ui5-popover no-header={true} no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
-                          <WithWebComponent(List) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                          <WithWebComponent(List) onItemClick={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                             <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
                               <StandardListItem data-key="4.1" type="Active" infoState="None">
                                 <ui5-li data-key="4.1" type="Active" info-state="None" class="">
@@ -654,7 +654,7 @@
                       </div>
                       <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                         <ui5-popover no-header={true} no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
-                          <WithWebComponent(List) onItemPress={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
+                          <WithWebComponent(List) onItemClick={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                             <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
                               <StandardListItem data-key="5.1" type="Active" infoState="None">
                                 <ui5-li data-key="5.1" type="Active" info-state="None" class="">

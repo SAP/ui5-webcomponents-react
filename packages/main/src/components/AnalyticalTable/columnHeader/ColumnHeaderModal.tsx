@@ -84,7 +84,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
         placementType={PlacementType.Bottom}
         ref={this.popoverRef}
       >
-        <List onItemPress={this.handleSort}>
+        <List onItemClick={this.handleSort}>
           {showSort && (
             <StandardListItem type={ListItemTypes.Active} icon={'sap-icon://sort-ascending'} data-sort={'asc'}>
               Sort Ascending

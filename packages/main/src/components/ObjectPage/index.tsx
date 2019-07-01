@@ -280,7 +280,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
                 <Button
                   style={{ position: 'absolute', '--_ui5_button_compact_height': '1rem', lineHeight: '1.25rem' } as any}
                   icon={this.state.showHeader ? 'sap-icon://navigation-up-arrow' : 'sap-icon://navigation-down-arrow'}
-                  onPress={this.changeHeader}
+                  onClick={this.changeHeader}
                 />
               )}
             </div>
