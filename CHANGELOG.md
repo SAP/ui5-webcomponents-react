@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2-rc.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.8...v0.3.2-rc.9) (2019-07-02)
+
+
+### Features
+
+* **WebComponents:** Updated Wrappers to v1.0.0-rc.1 ([#48](https://github.com/SAP/ui5-webcomponents-react/issues/48)) ([ac6570c](https://github.com/SAP/ui5-webcomponents-react/commit/ac6570c)), closes [#43](https://github.com/SAP/ui5-webcomponents-react/issues/43)
+
+
+### BREAKING CHANGES
+
+* **WebComponents:** **Button**: `onPress` renamed to `onClick`
+* **WebComponents:** **ToggleButton**: `onPress` renamed to `onClick`
+* **WebComponents:** **Link**: `onPress` renamed to `onClick`
+* **WebComponents:** **List**: `onItemPress` renamed to `onItemClick`
+* **WebComponents:** **ShellBar**: `onNotificationsPress` renamed to `onNotificationsClick`
+* **WebComponents:** **Card**: `onHeaderPress` renamed to `onHeaderClick`
+* **WebComponents:** **ShellBar**: `onProductSwitchPress` renamed to `onProductSwitchClick`
+* **WebComponents:** **ShellBar**: `onLogoPress` renamed to `onLogoClick`
+* **WebComponents:** **ShellBar**: `onCoPilotPress` renamed to `onCoPilotClick`
+* **WebComponents:** **TimelineItem**: `onItemNamePress` renamed to `onItemNameClick`
+* **WebComponents:** **ShellBar**: `onProfilePress` renamed to `onProfileClick`
+
+
+
+
+
 ## [0.3.2-rc.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.7...v0.3.2-rc.8) (2019-07-01)
 
 
