@@ -1,4 +1,5 @@
 import { boolean, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Link } from '../../lib/Link';
@@ -11,7 +12,7 @@ storiesOf('UI5 Web Components | Link', module).add('Generated default story', ()
     target={'generatedString'}
     design={select('design', LinkDesign, null)}
     wrap={boolean('wrap', false)}
-    onPress={null}
+    onClick={action('onClick')}
   >
     Some Content
   </Link>

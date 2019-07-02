@@ -80,7 +80,7 @@ describe('AnalyticalTable', () => {
       .at(3)
       .instance();
     // @ts-ignore
-    component.onclick({});
+    component.fireEvent('click');
 
     // test the right page number link of the pagination
     component = wrapper
@@ -88,7 +88,7 @@ describe('AnalyticalTable', () => {
       .at(2)
       .instance();
     // @ts-ignore
-    component.onclick({});
+    component.fireEvent('click');
 
     // test the left page number link of the pagination
     component = wrapper
@@ -96,7 +96,7 @@ describe('AnalyticalTable', () => {
       .at(1)
       .instance();
     // @ts-ignore
-    component.onclick({});
+    component.fireEvent('click');
 
     // test the left arrow of the pagination
     component = wrapper
@@ -104,7 +104,7 @@ describe('AnalyticalTable', () => {
       .at(0)
       .instance();
     // @ts-ignore
-    component.onclick({});
+    component.fireEvent('click');
 
     expect(wrapper.debug()).to.matchSnapshot();
   });

@@ -33,14 +33,14 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
-                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                  <Button style={{...}} onClick={[Function]} design="Transparent">
                     <ui5-button style={{...}} design="Transparent" class="">
                       Cancel
                     </ui5-button>
@@ -89,14 +89,14 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
-                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                  <Button style={{...}} onClick={[Function]} design="Transparent">
                     <ui5-button style={{...}} design="Transparent" class="">
                       Cancel
                     </ui5-button>
@@ -145,7 +145,7 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
@@ -194,7 +194,7 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
@@ -243,7 +243,7 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="Close">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       Close
                     </ui5-button>
@@ -292,7 +292,7 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
@@ -341,14 +341,14 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="Yes">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       Yes
                     </ui5-button>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="No">
-                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                  <Button style={{...}} onClick={[Function]} design="Transparent">
                     <ui5-button style={{...}} design="Transparent" class="">
                       No
                     </ui5-button>
@@ -397,7 +397,7 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
@@ -460,14 +460,14 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
-                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                  <Button style={{...}} onClick={[Function]} design="Transparent">
                     <ui5-button style={{...}} design="Transparent" class="">
                       Cancel
                     </ui5-button>

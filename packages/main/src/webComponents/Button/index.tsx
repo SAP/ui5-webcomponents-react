@@ -10,8 +10,8 @@ export interface ButtonPropTypes extends WithWebComponentPropTypes {
   icon?: string; // @generated
   iconEnd?: boolean; // @generated
   submits?: boolean; // @generated
-  onPress?: (event: Event) => void; // @generated
-  children?: string; // @generated
+  onClick?: (event: Event) => void; // @generated
+  default?: string; // @generated
 }
 
 const Button: FC<ButtonPropTypes> = withWebComponent<ButtonPropTypes>(UI5Button);

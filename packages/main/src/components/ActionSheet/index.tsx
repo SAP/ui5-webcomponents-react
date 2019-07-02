@@ -17,12 +17,8 @@ export interface ActionSheetPropTypes extends Fiori3CommonProps {
 
 export interface ActionSheetPropsInternal extends ActionSheetPropTypes, ClassProps {}
 
-interface ActionSheetState {
-  open: boolean;
-}
-
 @withStyles(styles)
-export class ActionSheet extends Component<ActionSheetPropTypes, ActionSheetState> {
+export class ActionSheet extends Component<ActionSheetPropTypes> {
   static defaultProps = {
     placement: PlacementType.Bottom
   };
@@ -30,8 +26,8 @@ export class ActionSheet extends Component<ActionSheetPropTypes, ActionSheetStat
   private popoverRef: RefObject<Ui5PopoverDomRef> = React.createRef();
 
   private onActionButtonClicked = (handler) => () => {
-    this.setState({ open: false });
-    handler();
+    this.popoverRef.current.close();
+    typeof handler === 'function' && handler();
   };
 
   private renderActionSheetButton = (element) => {
@@ -45,7 +41,7 @@ export class ActionSheet extends Component<ActionSheetPropTypes, ActionSheetStat
             },
             design: ButtonDesign.Transparent,
             className: classes.actionButton,
-            onPress: this.onActionButtonClicked(element.props.onPress)
+            onClick: this.onActionButtonClicked(element.props.onClick)
           })}
         </div>
       );

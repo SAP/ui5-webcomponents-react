@@ -123,7 +123,7 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
       <Button
         className={classes.footer}
         key="btn-cancel"
-        onPress={this.handleCancelButtonClick}
+        onClick={this.handleCancelButtonClick}
         design={ButtonDesign.Emphasized}
       >
         Cancel
@@ -151,7 +151,7 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
         innerStyles={style}
         tooltip={tooltip}
       >
-        <List onItemPress={this.handleVariantItemSelect} mode={ListMode.SingleSelect}>
+        <List onItemClick={this.handleVariantItemSelect} mode={ListMode.SingleSelect}>
           {variantItems.map((item) => (
             <StandardListItem
               style={{ width: '300px' }}
