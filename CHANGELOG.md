@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2-rc.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.9...v0.3.2-rc.10) (2019-07-03)
+
+
+### Bug Fixes
+
+* **Table:** Fixed Table and adapt slot handling ([#50](https://github.com/SAP/ui5-webcomponents-react/issues/50)) ([2159ab1](https://github.com/SAP/ui5-webcomponents-react/commit/2159ab1))
+
+
+### BREAKING CHANGES
+
+* **Table:** Use prop `slot` instead of `data-ui5-slot`
+* **Table:** **Table**: prop `rows` is replaced by `children`
+* **Table:** **TableRow**: prop `header` is replaced by `children`
+
+
+
+
+
 ## [0.3.2-rc.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.8...v0.3.2-rc.9) (2019-07-02)
 
 
