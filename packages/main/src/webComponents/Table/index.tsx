@@ -6,7 +6,7 @@ export interface TablePropTypes extends WithWebComponentPropTypes {
   showNoData?: boolean; // @generated
   noDataText?: string; // @generated
   stickyColumnHeader?: boolean;
-  rows?: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
   columns?: ReactNode | ReactNode[];
 }
 
