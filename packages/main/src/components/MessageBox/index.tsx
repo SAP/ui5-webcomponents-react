@@ -128,7 +128,7 @@ export class MessageBox extends PureComponent<MessageBoxPropTypes> {
     const title = this.getTitle();
 
     return (
-      <div className={classes.overlay} data-ui5-slot={this.props['data-ui5-slot']}>
+      <div className={classes.overlay} slot={this.props['slot']}>
         <div className={messageBoxClasses.toString()} style={style} title={tooltip}>
           <header className={classes.header} data-type={type}>
             {!!icon && <div className={classes.icon}>{icon}</div>}

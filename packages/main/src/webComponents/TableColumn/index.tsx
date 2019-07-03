@@ -7,7 +7,7 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
   popinText?: string; // @generated
   demandPopin?: boolean; // @generated
   width?: CSSProperties['width'] | CSSProperties['height']; // @generated
-  header?: ReactNode; // @generated
+  children?: ReactNode; // @generated
 }
 
 const TableColumn: FC<TableColumnPropTypes> = withWebComponent<TableColumnPropTypes>(UI5TableColumn);

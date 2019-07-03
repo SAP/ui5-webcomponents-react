@@ -92,12 +92,7 @@ export class Page extends Component<PagePropTypes> {
     pageContainer.put(classes[`background${backgroundDesign}`]);
 
     return (
-      <div
-        className={pageContainer.valueOf()}
-        style={style}
-        title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
-      >
+      <div className={pageContainer.valueOf()} style={style} title={tooltip} slot={this.props['slot']}>
         {showHeader && (
           <header className={headerClasses.valueOf()}>
             {renderCustomHeader && renderCustomHeader()}

@@ -8,7 +8,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
         <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
             FioriText
           </span>
         </Component>
@@ -26,7 +26,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) wrapping={false} renderWhitespace={false} width={{...}}>
         <Component wrapping={false} renderWhitespace={false} width={{...}} classes={{...}} theme={{...}}>
-          <span style={{...}} className="Component-text--- Component-noWrap---" title={[undefined]} data-ui5-slot={[undefined]}>
+          <span style={{...}} className="Component-text--- Component-noWrap---" title={[undefined]} slot={[undefined]}>
             Lorem Ipsum dolor sit amed
           </span>
         </Component>
@@ -44,7 +44,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) renderWhitespace={true} wrapping={true} width={{...}}>
         <Component renderWhitespace={true} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-          <span style={{...}} className="Component-text--- Component-renderWhitespace---" title={[undefined]} data-ui5-slot={[undefined]}>
+          <span style={{...}} className="Component-text--- Component-renderWhitespace---" title={[undefined]} slot={[undefined]}>
             Lorem Ipsum dolor sit amed
           </span>
         </Component>

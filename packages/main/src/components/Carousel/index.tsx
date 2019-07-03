@@ -155,12 +155,7 @@ export class Carousel extends Component<CarouselPropTypes, CarouselState> {
     }
 
     return (
-      <div
-        className={classNameString.toString()}
-        style={outerStyle}
-        title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
-      >
+      <div className={classNameString.toString()} style={outerStyle} title={tooltip} slot={this.props['slot']}>
         {Children.count(children) > 1 && pageIndicatorPlacement === PlacementType.Top && (
           <CarouselPagination
             {...this.props}

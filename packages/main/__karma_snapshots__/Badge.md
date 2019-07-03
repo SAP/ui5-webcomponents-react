@@ -24,8 +24,8 @@
     <ThemeProvider theme={{...}}>
       <Badge icon={{...}} colorScheme="1">
         <ui5-badge color-scheme="1" class="">
-          <Icon src="sap-icon://employee" data-ui5-slot="icon">
-            <ui5-icon src="sap-icon://employee" data-ui5-slot="icon" class="" />
+          <Icon src="sap-icon://employee" slot="icon">
+            <ui5-icon src="sap-icon://employee" slot="icon" class="" />
           </Icon>
           My Badge
         </ui5-badge>

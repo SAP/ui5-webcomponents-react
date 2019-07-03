@@ -50,7 +50,7 @@ export const ObjectStatus: FC<ObjectStatusPropTypes> = withStyles(styles)((props
   const textClass = classes[`text${state}`];
 
   return (
-    <div className={objStatusClasses.valueOf()} style={style} title={tooltip} data-ui5-slot={props['data-ui5-slot']}>
+    <div className={objStatusClasses.valueOf()} style={style} title={tooltip} slot={props['slot']}>
       {iconToRender && <div className={iconClasses.valueOf()}>{iconToRender}</div>}
       {children !== null && children !== undefined && <span className={textClass}>{children}</span>}
     </div>

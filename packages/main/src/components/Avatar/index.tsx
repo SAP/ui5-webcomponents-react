@@ -97,7 +97,7 @@ export class Avatar extends PureComponent<AvatarPropTypes> {
         tabIndex={0}
         onKeyDown={this.handleKeyDown}
         title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
+        slot={this.props['slot']}
       >
         {initials ? initials : children}
       </span>

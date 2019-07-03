@@ -115,7 +115,7 @@ export class ProgressIndicator extends PureComponent<ProgressIndicatorPropTypes>
         className={wrapperClasses.valueOf()}
         style={progressBarContainerStyle}
         title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
+        slot={this.props['slot']}
       >
         <div className={progressBarClasses.valueOf()} style={progressBarStyle}>
           {percentValue <= 50 ? null : progressBarTextSpan}

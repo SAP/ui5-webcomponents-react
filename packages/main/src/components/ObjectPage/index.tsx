@@ -239,7 +239,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
     return (
       <div
         data-component-name="ObjectPage"
-        data-ui5-slot={this.props['data-ui5-slot']}
+        slot={this.props['slot']}
         className={objectPageClasses.toString()}
         style={style}
         ref={this.objectPage}

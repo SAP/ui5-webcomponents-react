@@ -18,34 +18,39 @@ storiesOf('UI5 Web Components | Table', module)
   .add('Default', () => (
     <Table
       stickyColumnHeader={boolean('stickyColumnHeader', false)}
-      rows={[
-        <TableRow>
-          <TableCell>
-            <Label>Cell 1</Label>
-          </TableCell>
-          <TableCell>
-            <Label>Cell 2</Label>
-          </TableCell>
-          <TableCell>
-            <Label>Cell 3</Label>
-          </TableCell>
-        </TableRow>,
-        <TableRow>
-          <TableCell>
-            <Label>Cell 2.1</Label>
-          </TableCell>
-          <TableCell>
-            <Label>Cell 2.2</Label>
-          </TableCell>
-          <TableCell>
-            <Label>Cell 2.3</Label>
-          </TableCell>
-        </TableRow>
-      ]}
       columns={[
-        <TableColumn header={<Label>Column 1</Label>} />,
-        <TableColumn header={<Text>Column 2</Text>} />,
-        <TableColumn header={<Text>Column 3</Text>} />
+        <TableColumn>
+          <Label>Column 1</Label>
+        </TableColumn>,
+        <TableColumn>
+          <Text>Column 2</Text>
+        </TableColumn>,
+        <TableColumn>
+          <Text>Column 3</Text>
+        </TableColumn>
       ]}
-    />
+    >
+      <TableRow>
+        <TableCell>
+          <Label>Cell 1</Label>
+        </TableCell>
+        <TableCell>
+          <Label>Cell 2</Label>
+        </TableCell>
+        <TableCell>
+          <Label>Cell 3</Label>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>
+          <Label>Cell 2.1</Label>
+        </TableCell>
+        <TableCell>
+          <Label>Cell 2.2</Label>
+        </TableCell>
+        <TableCell>
+          <Label>Cell 2.3</Label>
+        </TableCell>
+      </TableRow>
+    </Table>
   ));

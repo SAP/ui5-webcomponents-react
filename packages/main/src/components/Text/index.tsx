@@ -41,12 +41,7 @@ export const Text: FC<TextProps> = withStyles(TextStyles)((props: TextInternalPr
     Object.assign(inlineStyles, style);
   }
   return (
-    <span
-      style={inlineStyles}
-      className={classNameString.toString()}
-      title={tooltip}
-      data-ui5-slot={props['data-ui5-slot']}
-    >
+    <span style={inlineStyles} className={classNameString.toString()} title={tooltip} slot={props['slot']}>
       {children}
     </span>
   );
