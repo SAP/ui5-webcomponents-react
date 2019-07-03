@@ -103,12 +103,7 @@ export class FlexBox extends Component<FlexBoxPropTypes> {
     }
 
     return (
-      <div
-        className={flexBoxClasses.valueOf()}
-        style={inlineStyle}
-        title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
-      >
+      <div className={flexBoxClasses.valueOf()} style={inlineStyle} title={tooltip} slot={this.props['slot']}>
         {children}
       </div>
     );

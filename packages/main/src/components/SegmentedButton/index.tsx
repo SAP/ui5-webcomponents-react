@@ -128,7 +128,7 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
         style={style}
         ref={this.items}
         title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
+        slot={this.props['slot']}
       >
         {Children.map(children, (item: any) =>
           cloneElement(item, {

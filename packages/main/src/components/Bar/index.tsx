@@ -34,7 +34,7 @@ export class Bar extends Component<BarPropTypes> {
         className={cssClasses.toString()}
         style={style}
         title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
+        slot={this.props['slot']}
       >
         <div data-bar-part="Left" className={classes.left}>
           {renderContentLeft()}

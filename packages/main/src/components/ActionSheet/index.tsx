@@ -66,7 +66,7 @@ export class ActionSheet extends Component<ActionSheetPropTypes> {
         openBy={openBy}
         placementType={placement}
         style={style}
-        data-ui5-slot={this.props['data-ui5-slot']}
+        slot={this.props['slot']}
       >
         <ul className={classes.actionSheet}>
           {Children.map(children, (child: ReactElement<ButtonPropTypes>) => this.renderActionSheetButton(child))}

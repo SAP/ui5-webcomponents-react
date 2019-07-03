@@ -8,7 +8,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom" classes={{...}} theme={{...}}>
-          <div className="Carousel-carousel---" style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
+          <div className="Carousel-carousel---" style={{...}} title={[undefined]} slot={[undefined]}>
             <div className="Carousel-carouselInner---">
               <CarouselInner className="Carousel-carouselItem--- Carousel-carouselItemContentIndicator---" activePage={0}>
                 <div className="Carousel-carouselItem--- Carousel-carouselItemContentIndicator---" style={{...}}>
@@ -103,7 +103,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom" classes={{...}} theme={{...}}>
-          <div className="Carousel-carousel---" style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
+          <div className="Carousel-carousel---" style={{...}} title={[undefined]} slot={[undefined]}>
             <div className="Carousel-carouselInner---">
               <CarouselInner className="Carousel-carouselItem--- Carousel-carouselItemContentIndicator---" activePage={0}>
                 <div className="Carousel-carouselItem--- Carousel-carouselItemContentIndicator---" style={{...}}>
@@ -197,7 +197,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) arrowsPlacement="Content" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <Carousel arrowsPlacement="Content" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom" classes={{...}} theme={{...}}>
-          <div className="Carousel-carousel---" style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
+          <div className="Carousel-carousel---" style={{...}} title={[undefined]} slot={[undefined]}>
             <div className="Carousel-carouselInner---">
               <CarouselInner className="Carousel-carouselItem--- Carousel-carouselItemContentIndicator---" activePage={0}>
                 <div className="Carousel-carouselItem--- Carousel-carouselItemContentIndicator---" style={{...}}>
@@ -292,7 +292,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) arrowsPlacement="PageIndicator" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <Carousel arrowsPlacement="PageIndicator" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom" classes={{...}} theme={{...}}>
-          <div className="Carousel-carousel---" style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
+          <div className="Carousel-carousel---" style={{...}} title={[undefined]} slot={[undefined]}>
             <div className="Carousel-carouselInner---">
               <CarouselInner className="Carousel-carouselItem---" activePage={0}>
                 <div className="Carousel-carouselItem---" style={{...}}>
@@ -387,7 +387,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) arrowsPlacement="PageIndicator" pageIndicatorPlacement="Top" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false}>
         <Carousel arrowsPlacement="PageIndicator" pageIndicatorPlacement="Top" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} classes={{...}} theme={{...}}>
-          <div className="Carousel-carousel---" style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
+          <div className="Carousel-carousel---" style={{...}} title={[undefined]} slot={[undefined]}>
             <WithStyles(CarouselPagination) arrowsPlacement="PageIndicator" pageIndicatorPlacement="Top" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} classes={{...}} theme={{...}} goToPreviousPage={[Function]} goToNextPage={[Function]}>
               <CarouselPagination arrowsPlacement="PageIndicator" pageIndicatorPlacement="Top" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} classes={{...}} theme={{...}} goToPreviousPage={[Function]} goToNextPage={[Function]}>
                 <div className="CarouselPagination-pagination--- CarouselPagination-paginationTop---">
@@ -482,7 +482,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom" classes={{...}} theme={{...}}>
-          <div className="Carousel-carousel---" style={{...}} title={[undefined]} data-ui5-slot={[undefined]}>
+          <div className="Carousel-carousel---" style={{...}} title={[undefined]} slot={[undefined]}>
             <div className="Carousel-carouselInner---">
               <CarouselInner className="Carousel-carouselItem--- Carousel-carouselItemContentIndicator---" activePage={0}>
                 <div className="Carousel-carouselItem--- Carousel-carouselItemContentIndicator---" style={{...}}>

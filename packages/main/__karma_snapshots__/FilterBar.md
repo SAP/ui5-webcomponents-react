@@ -29,8 +29,8 @@
                     </div>
                     <WithWebComponent(Popover) onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                       <ui5-popover header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" class="">
-                        <Button className="VariantManagement-footer---" onClick={[Function]} design="Emphasized" data-ui5-slot="footer">
-                          <ui5-button design="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
+                        <Button className="VariantManagement-footer---" onClick={[Function]} design="Emphasized" slot="footer">
+                          <ui5-button design="Emphasized" slot="footer" class="VariantManagement-footer---">
                             Cancel
                           </ui5-button>
                         </Button>
@@ -148,8 +148,8 @@
                     </div>
                     <WithWebComponent(Popover) onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                       <ui5-popover header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" class="">
-                        <Button className="VariantManagement-footer---" onClick={[Function]} design="Emphasized" data-ui5-slot="footer">
-                          <ui5-button design="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
+                        <Button className="VariantManagement-footer---" onClick={[Function]} design="Emphasized" slot="footer">
+                          <ui5-button design="Emphasized" slot="footer" class="VariantManagement-footer---">
                             Cancel
                           </ui5-button>
                         </Button>
@@ -274,8 +274,8 @@
                     </div>
                     <WithWebComponent(Popover) onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                       <ui5-popover header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" class="">
-                        <Button className="VariantManagement-footer---" onClick={[Function]} design="Emphasized" data-ui5-slot="footer">
-                          <ui5-button design="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
+                        <Button className="VariantManagement-footer---" onClick={[Function]} design="Emphasized" slot="footer">
+                          <ui5-button design="Emphasized" slot="footer" class="VariantManagement-footer---">
                             Cancel
                           </ui5-button>
                         </Button>

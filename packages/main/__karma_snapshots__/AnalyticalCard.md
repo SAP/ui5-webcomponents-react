@@ -45,7 +45,7 @@
                           <div>
                             <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                               <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                                <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                                <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                                   Target
                                 </span>
                               </Component>
@@ -61,7 +61,7 @@
                           <div>
                             <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                               <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                                <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                                <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                                   Deviation
                                 </span>
                               </Component>
@@ -80,7 +80,7 @@
             <div style={{...}}>
               <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                 <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                  <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                  <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                     I&#39;m a content!
                   </span>
                 </Component>

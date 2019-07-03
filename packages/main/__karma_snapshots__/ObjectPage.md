@@ -8,7 +8,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
         <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} classes={{...}} theme={{...}}>
-          <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
+          <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
                 <span className="ObjectPage-container---">
@@ -38,21 +38,21 @@
                       </Link>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                         <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 1
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                         <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 2
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                         <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 3
                           </span>
                         </Component>
@@ -334,7 +334,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
         <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} classes={{...}} theme={{...}}>
-          <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
+          <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
                 <span className="ObjectPage-container---">
@@ -364,21 +364,21 @@
                       </Link>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                         <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 1
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                         <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 2
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                         <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 3
                           </span>
                         </Component>
@@ -509,7 +509,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
         <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} classes={{...}} theme={{...}}>
-          <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
+          <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
                 <span className="ObjectPage-container---">
@@ -539,21 +539,21 @@
                       </Link>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                         <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 1
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                         <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 2
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
                         <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 3
                           </span>
                         </Component>
@@ -726,7 +726,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
         <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} classes={{...}} theme={{...}}>
-          <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
+          <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
                 <span className="ObjectPage-container---">
@@ -790,7 +790,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
         <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} classes={{...}} theme={{...}}>
-          <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
+          <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
                 <span className="ObjectPage-container---">
@@ -830,7 +830,7 @@
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
         <ObjectPage selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} classes={{...}} theme={{...}}>
-          <div data-component-name="ObjectPage" data-ui5-slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
+          <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
                 <span className="ObjectPage-container---">

@@ -219,7 +219,7 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
             return Children.map(actualSlotProps[slot], (item: ReactElement<any>, index) =>
               cloneElement(item, {
                 key: `${slot}-${index}`,
-                'data-ui5-slot': slot
+                slot: slot
               })
             );
           }

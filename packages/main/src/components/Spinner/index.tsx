@@ -31,7 +31,7 @@ export const Spinner: FC<SpinnerProps> = withStyles(styles)((props: SpinnerInter
       aria-valuemin={0}
       aria-valuemax={100}
       title={tooltip || 'Please wait'}
-      data-ui5-slot={props['data-ui5-slot']}
+      slot={props['slot']}
     >
       Loading...
     </div>
