@@ -1,6 +1,6 @@
 import { Event } from '@ui5/webcomponents-react-base';
 import UI5Input from '@ui5/webcomponents/dist/Input';
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 import { InputType } from '../../lib/InputType';
 import { ValueState } from '../../lib/ValueState';
@@ -18,7 +18,7 @@ export interface InputPropTypes extends WithWebComponentPropTypes {
   onInput?: (event: Event) => void; // @generated
   onSubmit?: (event: Event) => void; // @generated
   onSuggestionItemSelect?: (event: Event) => void; // @generated
-  icon?: any; // @generated
+  icon?: ReactNode; // @generated
   children?: string;
 }
 
