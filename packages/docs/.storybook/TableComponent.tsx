@@ -1,4 +1,4 @@
-import { Badge, Label, Table, TableCell, TableColumn, TableRow, Text, ThemeProvider } from '@ui5/webcomponents-react';
+import { Badge, Label, Table, TableCell, TableColumn, TableRow, Text } from '@ui5/webcomponents-react';
 import React from 'react';
 
 const columns = [
@@ -25,28 +25,26 @@ export const TableComponent = (props) => {
   const componentProps = info && info.props;
 
   return (
-    <ThemeProvider>
-      <Table
-        showNoData={componentProps === undefined}
-        noDataText="Unfortunately, there are no prop types available for this component"
-        columns={columns}
-      >
-        {Object.values(componentProps || {}).map((componentInfo: any) => (
-          <TableRow key={componentInfo.name}>
-            <TableCell>
-              <Text>{componentInfo.name}</Text>
-            </TableCell>
-            <TableCell>
-              <Text>{componentInfo.type.name}</Text>
-            </TableCell>
-            <TableCell>{componentInfo.required && <Badge colorScheme="8">Yes</Badge>}</TableCell>
-            <TableCell>{componentInfo.defaultValue && <Text>{componentInfo.defaultValue.value}</Text>}</TableCell>
-            <TableCell>
-              <Text>{componentInfo.description}</Text>
-            </TableCell>
-          </TableRow>
-        ))}
-      </Table>
-    </ThemeProvider>
+    <Table
+      showNoData={componentProps === undefined}
+      noDataText="Unfortunately, there are no prop types available for this component"
+      columns={columns}
+    >
+      {Object.values(componentProps || {}).map((componentInfo: any) => (
+        <TableRow key={componentInfo.name}>
+          <TableCell>
+            <Text>{componentInfo.name}</Text>
+          </TableCell>
+          <TableCell>
+            <Text>{componentInfo.type.name}</Text>
+          </TableCell>
+          <TableCell>{componentInfo.required && <Badge colorScheme="8">Yes</Badge>}</TableCell>
+          <TableCell>{componentInfo.defaultValue && <Text>{componentInfo.defaultValue.value}</Text>}</TableCell>
+          <TableCell>
+            <Text>{componentInfo.description}</Text>
+          </TableCell>
+        </TableRow>
+      ))}
+    </Table>
   );
 };
