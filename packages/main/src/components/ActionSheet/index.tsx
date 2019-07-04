@@ -60,14 +60,7 @@ export class ActionSheet extends Component<ActionSheetPropTypes> {
     }
 
     return (
-      <Popover
-        noHeader
-        ref={this.popoverRef}
-        openBy={openBy}
-        placementType={placement}
-        style={style}
-        slot={this.props['slot']}
-      >
+      <Popover ref={this.popoverRef} openBy={openBy} placementType={placement} style={style} slot={this.props['slot']}>
         <ul className={classes.actionSheet}>
           {Children.map(children, (child: ReactElement<ButtonPropTypes>) => this.renderActionSheetButton(child))}
         </ul>

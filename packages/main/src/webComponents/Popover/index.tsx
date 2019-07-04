@@ -9,7 +9,6 @@ import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated
-  noHeader?: boolean; // @generated
   headerText?: string; // @generated
   placementType?: PlacementType; // @generated
   horizontalAlign?: PopoverHorizontalAlign; // @generated

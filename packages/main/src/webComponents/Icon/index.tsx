@@ -12,8 +12,4 @@ const Icon: FC<IconPropTypes> = withWebComponent<IconPropTypes>(UI5Icon);
 
 Icon.displayName = 'Icon';
 
-Icon.defaultProps = {
-  src: null // @generated
-};
-
 export { Icon };

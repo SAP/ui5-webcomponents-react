@@ -6,8 +6,8 @@
 <ThemeProvider withToastContainer={false}>
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
-      <Icon src={{...}}>
-        <ui5-icon src={{...}} class="" />
+      <Icon>
+        <ui5-icon class="" />
       </Icon>
     </ThemeProvider>
   </JssProvider>

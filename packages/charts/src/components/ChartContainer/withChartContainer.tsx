@@ -6,7 +6,7 @@ import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { mergeConfig } from '../../util/utils';
 import { Loader } from '../Loader';
 
-const styles = () => ({
+const styles = {
   chart: {
     position: 'relative',
     paddingTop: '6px',
@@ -21,7 +21,7 @@ const styles = () => ({
       height: (props) => `${props.height}px`
     }
   }
-});
+};
 
 export const withChartContainer = (Component: ComponentType<any>) => {
   const ChartContainer = (props) => {
