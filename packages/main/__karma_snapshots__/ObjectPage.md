@@ -109,14 +109,14 @@
                         </span>
                       </Component>
                     </WithStyles(Component)>
-                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                       <div style={{...}} onClick={[Function]}>
                         <Icon src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
                           <ui5-icon src="sap-icon://slim-arrow-down" style={{...}} class="" />
                         </Icon>
                       </div>
-                      <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
-                        <ui5-popover no-header={true} no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
+                      <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                        <ui5-popover no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
                           <WithWebComponent(List) onItemClick={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                             <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
                               <StandardListItem data-key="4.1" type="Active" infoState="None">
@@ -145,14 +145,14 @@
                         </span>
                       </Component>
                     </WithStyles(Component)>
-                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                       <div style={{...}} onClick={[Function]}>
                         <Icon src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
                           <ui5-icon src="sap-icon://slim-arrow-down" style={{...}} class="" />
                         </Icon>
                       </div>
-                      <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
-                        <ui5-popover no-header={true} no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
+                      <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                        <ui5-popover no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
                           <WithWebComponent(List) onItemClick={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                             <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
                               <StandardListItem data-key="5.1" type="Active" infoState="None">
@@ -610,14 +610,14 @@
                         </span>
                       </Component>
                     </WithStyles(Component)>
-                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                       <div style={{...}} onClick={[Function]}>
                         <Icon src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
                           <ui5-icon src="sap-icon://slim-arrow-down" style={{...}} class="" />
                         </Icon>
                       </div>
-                      <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
-                        <ui5-popover no-header={true} no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
+                      <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                        <ui5-popover no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
                           <WithWebComponent(List) onItemClick={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                             <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
                               <StandardListItem data-key="4.1" type="Active" infoState="None">
@@ -646,14 +646,14 @@
                         </span>
                       </Component>
                     </WithStyles(Component)>
-                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                    <Popover open={false} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
                       <div style={{...}} onClick={[Function]}>
                         <Icon src="sap-icon://slim-arrow-down" onPress={[Function]} style={{...}}>
                           <ui5-icon src="sap-icon://slim-arrow-down" style={{...}} class="" />
                         </Icon>
                       </div>
-                      <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} noHeader={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
-                        <ui5-popover no-header={true} no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
+                      <WithWebComponent(Popover) placementType="Bottom" onAfterClose={[Function]} noArrow={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
+                        <ui5-popover no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
                           <WithWebComponent(List) onItemClick={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                             <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
                               <StandardListItem data-key="5.1" type="Active" infoState="None">

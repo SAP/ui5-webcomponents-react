@@ -112,7 +112,6 @@ export class ObjectPageAnchor extends Component<ObjectPageAnchorPropTypes, Objec
             openBy={navigationIcon}
             onAfterClose={this.closeModal}
             noArrow
-            noHeader
           >
             <List onItemClick={this.onSubSectionClick}>
               {this.props.section.props.children

@@ -5,13 +5,12 @@ import { withWebComponent, WithWebComponentPropTypes } from '../../internal/with
 
 export interface PopupPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated
-  noHeader?: boolean; // @generated
   headerText?: string; // @generated
   onBeforeOpen?: (event: Event) => void; // @generated
   onAfterOpen?: (event: Event) => void; // @generated
   onBeforeClose?: (event: Event) => void; // @generated
   onAfterClose?: (event: Event) => void; // @generated
-  content?: ReactNode[]; // @generated
+  children?: any; // @generated
   header?: ReactNode; // @generated
   footer?: ReactNode; // @generated
 }

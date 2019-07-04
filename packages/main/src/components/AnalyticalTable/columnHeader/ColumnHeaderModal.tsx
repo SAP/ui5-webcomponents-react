@@ -78,7 +78,6 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
       <Popover
         openByStyle={{ flex: '100 0 auto', width: '100px' }}
         openBy={this.props.openBy}
-        noHeader
         noArrow
         horizontalAlign={PopoverHorizontalAlign.Left}
         placementType={PlacementType.Bottom}
