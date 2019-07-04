@@ -2,27 +2,36 @@ import { Badge, Label, Table, TableCell, TableColumn, TableRow, Text, ThemeProvi
 import React from 'react';
 
 const columns = [
-  <TableColumn key="name" header={<Label>Prop</Label>} width="150px" />,
-  <TableColumn key="propType" header={<Label>PropType</Label>} width="150px" />,
-  <TableColumn key="required" header={<Label>Required</Label>} width="80px" />,
-  <TableColumn key="defaultValue" header={<Label>Default Value</Label>} width="100px" />,
-  <TableColumn key="desc" header={<Label>Description</Label>} />
+  <TableColumn key="name" width="150px">
+    <Label>Prop</Label>
+  </TableColumn>,
+  <TableColumn key="propType" width="150px">
+    <Label>PropType</Label>
+  </TableColumn>,
+  <TableColumn key="required" width="80px">
+    <Label>Required</Label>
+  </TableColumn>,
+  <TableColumn key="defaultValue" width="100px">
+    <Label>Default Value</Label>
+  </TableColumn>,
+  <TableColumn key="desc">
+    <Label>Description</Label>
+  </TableColumn>
 ];
 
 export const TableComponent = (props) => {
   const info = props.type.__docgenInfo;
-  if (!info || !info.props) {
-    return (
-      <ThemeProvider>
-        <Text>Unfortunately, there are no prop types available for this component.</Text>
-      </ThemeProvider>
-    );
-  }
+
+  const componentProps = info && info.props;
+
   return (
     <ThemeProvider>
       <Table
+        showNoData={componentProps === undefined}
+        noDataText="Unfortunately, there are no prop types available for this component"
         columns={columns}
-        rows={Object.values(info.props).map((componentInfo: any) => (
+      >
+        {Object.values(componentProps || {}).map((componentInfo: any) => (
           <TableRow key={componentInfo.name}>
             <TableCell>
               <Text>{componentInfo.name}</Text>
@@ -37,7 +46,7 @@ export const TableComponent = (props) => {
             </TableCell>
           </TableRow>
         ))}
-      />
+      </Table>
     </ThemeProvider>
   );
 };
