@@ -18,7 +18,7 @@ export interface RadialChartPropTypes extends CommonProps {
   innerChartRef?: Ref<any>;
 }
 
-const styles = () => ({
+const styles = {
   radialChart: {
     position: 'relative'
   },
@@ -34,7 +34,7 @@ const styles = () => ({
     pointerEvents: 'none',
     fontSize: '2rem'
   }
-});
+};
 
 @withStyles(styles)
 export class RadialChart extends PureComponent<RadialChartPropTypes> {
@@ -46,7 +46,7 @@ export class RadialChart extends PureComponent<RadialChartPropTypes> {
   };
 
   render() {
-    const { maxValue, value, displayValue, classes, style, className, colors, options } = this
+    const { maxValue, value, displayValue, classes, style, className, colors, options, width, height } = this
       .props as RadialChartPropTypes & ChartInternalProps;
 
     const data = [value, maxValue - value];
@@ -66,23 +66,29 @@ export class RadialChart extends PureComponent<RadialChartPropTypes> {
       options
     );
 
+    const radialChartContainerStyles = {
+      width: `${width}px`,
+      height: `${height}px`,
+      ...style
+    };
+
     const outerClasses = StyleClassHelper.of(classes.radialChart);
     if (className) {
       outerClasses.put(className);
     }
 
     return (
-      <div className={outerClasses.toString()} style={style}>
+      <div className={outerClasses.toString()} style={radialChartContainerStyles}>
         <DonutChart
           innerChartRef={this.props.innerChartRef}
           datasets={[{ data }]}
           colors={colors}
           options={mergedOptions}
+          width={width}
+          height={height}
+          style={{ paddingTop: 0 }}
         />
-        <div
-          className={classes.content}
-          style={{ maxWidth: `${this.props.width}px`, maxHeight: `${this.props.height}px` }}
-        >
+        <div className={classes.content}>
           <h3
             style={{
               color: '#333333',
