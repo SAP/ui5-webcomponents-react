@@ -18,7 +18,7 @@ export interface RadialChartPropTypes extends CommonProps {
   innerChartRef?: Ref<any>;
 }
 
-const styles = () => ({
+const styles = {
   radialChart: {
     position: 'relative'
   },
@@ -34,7 +34,7 @@ const styles = () => ({
     pointerEvents: 'none',
     fontSize: '2rem'
   }
-});
+};
 
 @withStyles(styles)
 export class RadialChart extends PureComponent<RadialChartPropTypes> {
