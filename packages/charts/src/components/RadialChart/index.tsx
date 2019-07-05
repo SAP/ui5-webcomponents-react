@@ -66,7 +66,7 @@ export class RadialChart extends PureComponent<RadialChartPropTypes> {
       options
     );
 
-    const styles = {
+    const radialChartContainerStyles = {
       width: `${width}px`,
       height: `${height}px`,
       ...style
@@ -78,7 +78,7 @@ export class RadialChart extends PureComponent<RadialChartPropTypes> {
     }
 
     return (
-      <div className={outerClasses.toString()} style={styles}>
+      <div className={outerClasses.toString()} style={radialChartContainerStyles}>
         <DonutChart
           innerChartRef={this.props.innerChartRef}
           datasets={[{ data }]}
