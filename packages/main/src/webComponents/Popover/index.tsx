@@ -36,15 +36,14 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, popoverRef: Re
 
   const localPopoverRef: RefObject<Ui5PopoverDomRef> = useRef(null);
   const openByRef: RefObject<HTMLDivElement> = useRef(null);
-  const getPopoverRef = () => popoverRef || localPopoverRef;
 
   const handleOpenPopover = useCallback(() => {
-    return getPopoverRef().current.openBy ? getPopoverRef().current.openBy(openByRef.current) : null;
-  }, [getPopoverRef(), openByRef]);
+    localPopoverRef.current.openBy && localPopoverRef.current.openBy(openByRef.current);
+  }, [localPopoverRef, openByRef]);
 
-  const closePopover = () => {
-    return getPopoverRef().current.close ? getPopoverRef().current.close() : null;
-  };
+  const closePopover = useCallback(() => {
+    localPopoverRef.current.close && localPopoverRef.current.close();
+  }, [localPopoverRef]);
 
   useEffect(() => {
     if (open) {
@@ -53,6 +52,18 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, popoverRef: Re
       closePopover();
     }
   }, [open]);
+
+  useEffect(() => {
+    if (popoverRef) {
+      if (typeof popoverRef === 'function') {
+        // @ts-ignore
+        popoverRef(localPopoverRef.current);
+      } else if (popoverRef.hasOwnProperty('current')) {
+        // @ts-ignore
+        popoverRef.current = localPopoverRef.current;
+      }
+    }
+  }, [popoverRef, localPopoverRef.current]);
 
   let style = { display: 'inline-block' };
   if (openByStyle) {
@@ -66,7 +77,7 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, popoverRef: Re
           {openBy}
         </div>
       )}
-      <InternalPopover {...rest} ref={getPopoverRef()} />
+      <InternalPopover {...rest} ref={localPopoverRef} />
     </>
   );
 });
