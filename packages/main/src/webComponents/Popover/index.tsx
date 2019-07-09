@@ -1,6 +1,6 @@
 import { Event } from '@ui5/webcomponents-react-base';
 import UI5Popover from '@ui5/webcomponents/dist/Popover';
-import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useRef } from 'react';
+import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useMemo, useRef } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 import { PlacementType } from '../../lib/PlacementType';
 import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
@@ -31,19 +31,40 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
 
 const InternalPopover = withWebComponent<PopoverPropTypes>(UI5Popover);
 
-export const Popover = React.forwardRef((props: PopoverPropTypes, popoverRef: RefObject<Ui5PopoverDomRef>) => {
+export const Popover = React.forwardRef((props: PopoverPropTypes, givenRef: RefObject<Ui5PopoverDomRef>) => {
   const { openBy, openByStyle, open, ...rest } = props;
 
-  const localPopoverRef: RefObject<Ui5PopoverDomRef> = useRef(null);
   const openByRef: RefObject<HTMLDivElement> = useRef(null);
 
+  const useConsolidatedRef = (ref) => {
+    const localPopoverRef: RefObject<Ui5PopoverDomRef> = useRef(null);
+
+    const popRef = useMemo(() => {
+      if (!givenRef || typeof givenRef === 'function') {
+        return localPopoverRef;
+      }
+      return givenRef;
+    }, [ref]);
+
+    useEffect(() => {
+      if (typeof givenRef === 'function') {
+        // @ts-ignore
+        givenRef(popRef.current);
+      }
+    }, [popRef.current]);
+
+    return popRef;
+  };
+
+  const internalPopoverRef = useConsolidatedRef(givenRef);
+
   const handleOpenPopover = useCallback(() => {
-    localPopoverRef.current.openBy && localPopoverRef.current.openBy(openByRef.current);
-  }, [localPopoverRef, openByRef]);
+    internalPopoverRef.current.openBy && internalPopoverRef.current.openBy(openByRef.current);
+  }, [internalPopoverRef, openByRef]);
 
   const closePopover = useCallback(() => {
-    localPopoverRef.current.close && localPopoverRef.current.close();
-  }, [localPopoverRef]);
+    internalPopoverRef.current.close && internalPopoverRef.current.close();
+  }, [internalPopoverRef]);
 
   useEffect(() => {
     if (open) {
@@ -52,18 +73,6 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, popoverRef: Re
       closePopover();
     }
   }, [open]);
-
-  useEffect(() => {
-    if (popoverRef) {
-      if (typeof popoverRef === 'function') {
-        // @ts-ignore
-        popoverRef(localPopoverRef.current);
-      } else if (popoverRef.hasOwnProperty('current')) {
-        // @ts-ignore
-        popoverRef.current = localPopoverRef.current;
-      }
-    }
-  }, [popoverRef, localPopoverRef.current]);
 
   let style = { display: 'inline-block' };
   if (openByStyle) {
@@ -77,7 +86,7 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, popoverRef: Re
           {openBy}
         </div>
       )}
-      <InternalPopover {...rest} ref={localPopoverRef} />
+      <InternalPopover {...rest} ref={internalPopoverRef} />
     </>
   );
 });
