@@ -9,6 +9,9 @@ import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
 
 storiesOf('UI5 Web Components | Popover', module).add('Default', () => (
   <Popover
+    ref={(e) => {
+      console.log(e);
+    }}
     initialFocus={'generatedString'}
     headerText={'generatedString'}
     placementType={select('placementType', PlacementType)}
