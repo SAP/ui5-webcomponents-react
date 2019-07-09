@@ -1,6 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base';
 import UI5Popover from '@ui5/webcomponents/dist/Popover';
-import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useRef } from 'react';
+import { useConsolidatedRef } from '../../hooks/useConsolidatedRef';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 import { PlacementType } from '../../lib/PlacementType';
 import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
@@ -36,27 +37,7 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, givenRef: RefO
 
   const openByRef: RefObject<HTMLDivElement> = useRef(null);
 
-  const useConsolidatedRef = (ref) => {
-    const localPopoverRef: RefObject<Ui5PopoverDomRef> = useRef(null);
-
-    const popRef = useMemo(() => {
-      if (!givenRef || typeof givenRef === 'function') {
-        return localPopoverRef;
-      }
-      return givenRef;
-    }, [ref]);
-
-    useEffect(() => {
-      if (typeof givenRef === 'function') {
-        // @ts-ignore
-        givenRef(popRef.current);
-      }
-    }, [popRef.current]);
-
-    return popRef;
-  };
-
-  const internalPopoverRef = useConsolidatedRef(givenRef);
+  const internalPopoverRef = useConsolidatedRef<Ui5PopoverDomRef>(givenRef);
 
   const handleOpenPopover = useCallback(() => {
     internalPopoverRef.current.openBy && internalPopoverRef.current.openBy(openByRef.current);
