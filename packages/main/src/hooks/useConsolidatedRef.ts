@@ -3,7 +3,7 @@ import { RefObject, useEffect, useMemo, useRef } from 'react';
 export const useConsolidatedRef = <T>(ref): RefObject<T> => {
   const localPopoverRef: RefObject<T> = useRef(null);
 
-  const popRef = useMemo(() => {
+  const consolidatedRef = useMemo(() => {
     if (!ref || typeof ref === 'function') {
       return localPopoverRef;
     }
@@ -13,9 +13,9 @@ export const useConsolidatedRef = <T>(ref): RefObject<T> => {
   useEffect(() => {
     if (typeof ref === 'function') {
       // @ts-ignore
-      givenRef(popRef.current);
+      givenRef(consolidatedRef.current);
     }
-  }, [popRef.current]);
+  }, [consolidatedRef.current]);
 
-  return popRef;
+  return consolidatedRef;
 };
