@@ -27,14 +27,14 @@ export interface AnalyticalCardPropsInternal extends AnalyticalCardTypes, ClassP
 @withStyles(styles)
 export class AnalyticalCard extends PureComponent<AnalyticalCardTypes> {
   render() {
-    const { renderHeader, children, classes, theme, style, className, tooltip } = this
+    const { renderHeader, children, classes, theme, style, className, tooltip, innerRef } = this
       .props as AnalyticalCardPropsInternal;
     const classNameString = StyleClassHelper.of(classes.card);
     if (className) {
       classNameString.put(className);
     }
     return (
-      <div className={classNameString.toString()} style={style} title={tooltip}>
+      <div ref={innerRef} className={classNameString.toString()} style={style} title={tooltip}>
         {renderHeader(theme.theme, theme.contentDensity)}
         <div style={{ padding: '1rem' }}>{children}</div>
       </div>

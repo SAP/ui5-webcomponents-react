@@ -17,6 +17,7 @@ import Optional from './Optional';
 import StyleClassHelper from './StyleClassHelper';
 import { deprecationNotice, pushElementBackInScreen } from './Util';
 import { createGenerateClassName } from './withStyles/createGenerateClassName';
+import { useConsolidatedRef } from './hooks/useConsolidatedRef';
 
 export {
   StyleClassHelper,
@@ -36,5 +37,6 @@ export {
   sap_fiori_3,
   bootstrap,
   withStyles,
-  createGenerateClassName
+  createGenerateClassName,
+  useConsolidatedRef
 };

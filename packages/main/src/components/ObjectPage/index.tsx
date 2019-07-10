@@ -47,7 +47,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
     showHideHeaderButton: false
   };
 
-  private objectPage: RefObject<HTMLDivElement> = createRef();
+  private objectPage: RefObject<HTMLDivElement> = (this.props as ObjectPageInternalProps).innerRef;
   private fillerDivDomRef: RefObject<HTMLDivElement> = createRef();
 
   static getDerivedStateFromProps(nextProps: ObjectPagePropTypes, prevState: ObjectPageState) {
@@ -213,7 +213,8 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
       imageShapeCircle,
       className,
       style,
-      tooltip
+      tooltip,
+      slot
     } = this.props;
 
     const { selectedSectionIndex } = this.state;
@@ -239,7 +240,7 @@ export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageSta
     return (
       <div
         data-component-name="ObjectPage"
-        slot={this.props['slot']}
+        slot={slot}
         className={objectPageClasses.toString()}
         style={style}
         ref={this.objectPage}

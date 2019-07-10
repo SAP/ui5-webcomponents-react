@@ -1,7 +1,6 @@
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event, useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import UI5Popover from '@ui5/webcomponents/dist/Popover';
 import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useRef } from 'react';
-import { useConsolidatedRef } from '../../hooks/useConsolidatedRef';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 import { PlacementType } from '../../lib/PlacementType';
 import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';

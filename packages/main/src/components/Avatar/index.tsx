@@ -17,7 +17,7 @@ export interface AvatarPropTypes extends CommonProps {
   customFontSize?: CSSProperties['width'];
 }
 
-export interface AvatarPropsInternal extends AvatarPropTypes, ClassProps {}
+export interface AvatarPropsInternal extends AvatarPropTypes, CommonProps, ClassProps {}
 
 @withStyles(styles)
 export class Avatar extends PureComponent<AvatarPropTypes> {
@@ -54,7 +54,9 @@ export class Avatar extends PureComponent<AvatarPropTypes> {
       children,
       className,
       style,
-      tooltip
+      tooltip,
+      innerRef,
+      slot
     } = this.props as AvatarPropsInternal;
 
     const cssClasses = [classes.avatar];
@@ -91,13 +93,14 @@ export class Avatar extends PureComponent<AvatarPropTypes> {
 
     return (
       <span
+        ref={innerRef}
         className={cssClasses.join(' ')}
         style={inlineStyle}
         onClick={this.handleOnClick}
         tabIndex={0}
         onKeyDown={this.handleKeyDown}
         title={tooltip}
-        slot={this.props['slot']}
+        slot={slot}
       >
         {initials ? initials : children}
       </span>

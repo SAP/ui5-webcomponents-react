@@ -1,4 +1,4 @@
-import { Device, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { Device, StyleClassHelper, useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import React, { Children, cloneElement, forwardRef, ReactElement, ReactNode, RefObject } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -10,7 +10,6 @@ import { ButtonPropTypes } from '../../webComponents/Button';
 import styles from './ActionSheet.jss';
 // @ts-ignore
 import { createUseStyles } from 'react-jss';
-import { useConsolidatedRef } from '../../hooks/useConsolidatedRef';
 
 export interface ActionSheetPropTypes extends CommonProps {
   openBy: ReactNode;

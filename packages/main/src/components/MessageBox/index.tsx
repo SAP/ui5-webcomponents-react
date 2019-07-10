@@ -114,7 +114,8 @@ export class MessageBox extends PureComponent<MessageBoxPropTypes> {
   };
 
   render() {
-    const { visible, classes, type, children, className, style, tooltip } = this.props as MessageBoxInternalPropTypes;
+    const { visible, classes, type, children, className, style, tooltip, innerRef, slot } = this
+      .props as MessageBoxInternalPropTypes;
     if (!visible) {
       return null;
     }
@@ -128,7 +129,7 @@ export class MessageBox extends PureComponent<MessageBoxPropTypes> {
     const title = this.getTitle();
 
     return (
-      <div className={classes.overlay} slot={this.props['slot']}>
+      <div ref={innerRef} className={classes.overlay} slot={slot}>
         <div className={messageBoxClasses.toString()} style={style} title={tooltip}>
           <header className={classes.header} data-type={type}>
             {!!icon && <div className={classes.icon}>{icon}</div>}

@@ -30,10 +30,10 @@ export class FilterBar extends PureComponent<FilterBarPropTypes> {
   };
 
   render() {
-    const { children, classes, renderVariants, renderSearch } = this.props as FilterBarInternalProps;
+    const { children, classes, renderVariants, renderSearch, innerRef } = this.props as FilterBarInternalProps;
 
     return (
-      <div className={classes.outerContainer}>
+      <div ref={innerRef} className={classes.outerContainer}>
         <div className={classes.filterBarHeader}>
           {renderVariants && renderVariants()}
           {renderSearch && <div className={classes.vLine}> {renderSearch()} </div>}
