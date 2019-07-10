@@ -1,9 +1,9 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
-import React from 'react';
+import React, { createRef } from 'react';
+import { ActionSheet } from '../../lib/ActionSheet';
 import { Button } from '../../lib/Button';
-import { ActionSheet } from './index';
 
 use(matchSnapshot);
 
@@ -12,6 +12,24 @@ describe('ActionSheet', () => {
     const button = <Button />;
     const wrapper = mountThemedComponent(<ActionSheet openBy={button} />);
     expect(wrapper.debug()).to.matchSnapshot();
+  });
+
+  it('Test Legacy Ref', () => {
+    let legacyRef = null;
+
+    const ref = (el) => {
+      legacyRef = el;
+    };
+    const button = <Button />;
+    mountThemedComponent(<ActionSheet ref={ref} openBy={button} />);
+    expect(legacyRef.tagName).to.equal('UI5-POPOVER');
+  });
+
+  it('Ref object', () => {
+    const ref = createRef();
+    const button = <Button />;
+    mountThemedComponent(<ActionSheet ref={ref} openBy={button} />);
+    expect((ref.current as any).tagName).to.equal('UI5-POPOVER');
   });
 
   // it('Click Handler', () => {
