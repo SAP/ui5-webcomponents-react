@@ -7,7 +7,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-        <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
+        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
           <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
             FioriText
           </span>
@@ -25,7 +25,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) wrapping={false} renderWhitespace={false} width={{...}}>
-        <Component wrapping={false} renderWhitespace={false} width={{...}} classes={{...}} theme={{...}}>
+        <Component wrapping={false} renderWhitespace={false} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
           <span style={{...}} className="Component-text--- Component-noWrap---" title={[undefined]} slot={[undefined]}>
             Lorem Ipsum dolor sit amed
           </span>
@@ -43,7 +43,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) renderWhitespace={true} wrapping={true} width={{...}}>
-        <Component renderWhitespace={true} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
+        <Component renderWhitespace={true} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
           <span style={{...}} className="Component-text--- Component-renderWhitespace---" title={[undefined]} slot={[undefined]}>
             Lorem Ipsum dolor sit amed
           </span>

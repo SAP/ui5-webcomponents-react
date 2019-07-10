@@ -7,7 +7,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
-        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} classes={{...}} theme={{...}}>
+        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} innerRef={{...}} classes={{...}} theme={{...}}>
           <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -37,21 +37,21 @@
                         </ui5-link>
                       </Link>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
+                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                           <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 1
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
+                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                           <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 2
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
+                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                           <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 3
                           </span>
@@ -70,7 +70,7 @@
                 <ObjectPageAnchor section={{...}} selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={true}>
-                      <Component onClick={[Function]} selected={true} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button--- Component-selected---">
                           Test 1
                         </span>
@@ -81,7 +81,7 @@
                 <ObjectPageAnchor section={{...}} selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={false}>
-                      <Component onClick={[Function]} selected={false} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button---">
                           Test 2
                         </span>
@@ -92,7 +92,7 @@
                 <ObjectPageAnchor section={{...}} selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={false}>
-                      <Component onClick={[Function]} selected={false} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button---">
                           Test 3
                         </span>
@@ -103,7 +103,7 @@
                 <ObjectPageAnchor section={{...}} selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={false}>
-                      <Component onClick={[Function]} selected={false} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button---">
                           Test 4
                         </span>
@@ -139,7 +139,7 @@
                 <ObjectPageAnchor section={{...}} selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={false}>
-                      <Component onClick={[Function]} selected={false} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button---">
                           Test 5
                         </span>
@@ -176,10 +176,10 @@
             </header>
             <ForwardRef>
               <WithStyles(Component)>
-                <Component classes={{...}} theme={{...}}>
+                <Component innerRef={{...}} classes={{...}} theme={{...}}>
                   <section id="ObjectPageSections" className="Component-sectionsContainer---">
                     <WithStyles(ObjectPageSection) title="Test 1" id="1" isSection={true} titleUppercase={true}>
-                      <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true} classes={{...}} theme={{...}}>
+                      <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
                           <div role="heading" className="ObjectPageSection-header---">
                             <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
@@ -199,7 +199,7 @@
                       </ObjectPageSection>
                     </WithStyles(ObjectPageSection)>
                     <WithStyles(ObjectPageSection) title="Test 2" id="2" isSection={true} titleUppercase={true}>
-                      <ObjectPageSection title="Test 2" id="2" isSection={true} titleUppercase={true} classes={{...}} theme={{...}}>
+                      <ObjectPageSection title="Test 2" id="2" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
                           <div role="heading" className="ObjectPageSection-header---">
                             <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
@@ -217,7 +217,7 @@
                       </ObjectPageSection>
                     </WithStyles(ObjectPageSection)>
                     <WithStyles(ObjectPageSection) title="Test 3" id="3" isSection={true} titleUppercase={true}>
-                      <ObjectPageSection title="Test 3" id="3" isSection={true} titleUppercase={true} classes={{...}} theme={{...}}>
+                      <ObjectPageSection title="Test 3" id="3" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <section id="ObjectPageSection-3" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
                           <div role="heading" className="ObjectPageSection-header---">
                             <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
@@ -233,7 +233,7 @@
                       </ObjectPageSection>
                     </WithStyles(ObjectPageSection)>
                     <WithStyles(ObjectPageSection) title="Test 4" id="4" isSection={true} titleUppercase={true}>
-                      <ObjectPageSection title="Test 4" id="4" isSection={true} titleUppercase={true} classes={{...}} theme={{...}}>
+                      <ObjectPageSection title="Test 4" id="4" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <section id="ObjectPageSection-4" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
                           <div role="heading" className="ObjectPageSection-header---">
                             <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
@@ -246,7 +246,7 @@
                                 Section 4
                               </h1>
                               <WithStyles(ObjectPageSubSection) title="SubSection 4.1" id="4.1" isSubSection={true}>
-                                <ObjectPageSubSection title="SubSection 4.1" id="4.1" isSubSection={true} classes={{...}} theme={{...}}>
+                                <ObjectPageSubSection title="SubSection 4.1" id="4.1" isSubSection={true} innerRef={{...}} classes={{...}} theme={{...}}>
                                   <div className="ObjectPageSubSection-objectPageSubSection---" id="ObjectPageSubSection-4.1" role="region" style={[undefined]} title={[undefined]}>
                                     <div className="ObjectPageSubSection-objectPageSubSectionHeaderTitle---">
                                       SubSection 4.1
@@ -258,7 +258,7 @@
                                 </ObjectPageSubSection>
                               </WithStyles(ObjectPageSubSection)>
                               <WithStyles(ObjectPageSubSection) title="SubSection 4.2" id="4.2" isSubSection={true}>
-                                <ObjectPageSubSection title="SubSection 4.2" id="4.2" isSubSection={true} classes={{...}} theme={{...}}>
+                                <ObjectPageSubSection title="SubSection 4.2" id="4.2" isSubSection={true} innerRef={{...}} classes={{...}} theme={{...}}>
                                   <div className="ObjectPageSubSection-objectPageSubSection---" id="ObjectPageSubSection-4.2" role="region" style={[undefined]} title={[undefined]}>
                                     <div className="ObjectPageSubSection-objectPageSubSectionHeaderTitle---">
                                       SubSection 4.2
@@ -275,7 +275,7 @@
                       </ObjectPageSection>
                     </WithStyles(ObjectPageSection)>
                     <WithStyles(ObjectPageSection) title="Test 5" id="5" isSection={true} titleUppercase={true}>
-                      <ObjectPageSection title="Test 5" id="5" isSection={true} titleUppercase={true} classes={{...}} theme={{...}}>
+                      <ObjectPageSection title="Test 5" id="5" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <section id="ObjectPageSection-5" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
                           <div role="heading" className="ObjectPageSection-header---">
                             <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
@@ -285,7 +285,7 @@
                           <div className="ObjectPageSection-sectionContent---">
                             <div className="ObjectPageSection-sectionContentInner---">
                               <WithStyles(ObjectPageSubSection) title="SubSection 5.1" id="5.1" isSubSection={true}>
-                                <ObjectPageSubSection title="SubSection 5.1" id="5.1" isSubSection={true} classes={{...}} theme={{...}}>
+                                <ObjectPageSubSection title="SubSection 5.1" id="5.1" isSubSection={true} innerRef={{...}} classes={{...}} theme={{...}}>
                                   <div className="ObjectPageSubSection-objectPageSubSection---" id="ObjectPageSubSection-5.1" role="region" style={[undefined]} title={[undefined]}>
                                     <div className="ObjectPageSubSection-objectPageSubSectionHeaderTitle---">
                                       SubSection 5.1
@@ -297,7 +297,7 @@
                                 </ObjectPageSubSection>
                               </WithStyles(ObjectPageSubSection)>
                               <WithStyles(ObjectPageSubSection) title="SubSection 5.2" id="5.2" isSubSection={true}>
-                                <ObjectPageSubSection title="SubSection 5.2" id="5.2" isSubSection={true} classes={{...}} theme={{...}}>
+                                <ObjectPageSubSection title="SubSection 5.2" id="5.2" isSubSection={true} innerRef={{...}} classes={{...}} theme={{...}}>
                                   <div className="ObjectPageSubSection-objectPageSubSection---" id="ObjectPageSubSection-5.2" role="region" style={[undefined]} title={[undefined]}>
                                     <div className="ObjectPageSubSection-objectPageSubSectionHeaderTitle---">
                                       SubSection 5.2
@@ -333,7 +333,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
-        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} classes={{...}} theme={{...}}>
+        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} innerRef={{...}} classes={{...}} theme={{...}}>
           <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -363,21 +363,21 @@
                         </ui5-link>
                       </Link>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
+                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                           <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 1
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
+                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                           <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 2
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
+                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                           <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 3
                           </span>
@@ -392,7 +392,7 @@
                 <ObjectPageAnchor section={{...}} selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={true}>
-                      <Component onClick={[Function]} selected={true} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button--- Component-selected---">
                           Test 1
                         </span>
@@ -403,7 +403,7 @@
                 <ObjectPageAnchor section={{...}} selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={false}>
-                      <Component onClick={[Function]} selected={false} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button---">
                           Test 2
                         </span>
@@ -414,7 +414,7 @@
                 <ObjectPageAnchor section={{...}} selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={false}>
-                      <Component onClick={[Function]} selected={false} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button---">
                           Test 3
                         </span>
@@ -426,10 +426,10 @@
             </header>
             <ForwardRef>
               <WithStyles(Component)>
-                <Component classes={{...}} theme={{...}}>
+                <Component innerRef={{...}} classes={{...}} theme={{...}}>
                   <section id="ObjectPageSections" className="Component-sectionsContainer---">
                     <WithStyles(ObjectPageSection) title="Test 1" id="1" isSection={true} titleUppercase={true}>
-                      <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true} classes={{...}} theme={{...}}>
+                      <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
                           <div role="heading" className="ObjectPageSection-header---">
                             <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
@@ -449,7 +449,7 @@
                       </ObjectPageSection>
                     </WithStyles(ObjectPageSection)>
                     <WithStyles(ObjectPageSection) title="Test 2" id="2" isSection={true} titleUppercase={true}>
-                      <ObjectPageSection title="Test 2" id="2" isSection={true} titleUppercase={true} classes={{...}} theme={{...}}>
+                      <ObjectPageSection title="Test 2" id="2" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
                           <div role="heading" className="ObjectPageSection-header---">
                             <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
@@ -469,7 +469,7 @@
                       </ObjectPageSection>
                     </WithStyles(ObjectPageSection)>
                     <WithStyles(ObjectPageSection) title="Test 3" id="3" isSection={true} titleUppercase={true}>
-                      <ObjectPageSection title="Test 3" id="3" isSection={true} titleUppercase={true} classes={{...}} theme={{...}}>
+                      <ObjectPageSection title="Test 3" id="3" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <section id="ObjectPageSection-3" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
                           <div role="heading" className="ObjectPageSection-header---">
                             <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
@@ -508,7 +508,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]}>
-        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} classes={{...}} theme={{...}}>
+        <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} innerRef={{...}} classes={{...}} theme={{...}}>
           <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -538,21 +538,21 @@
                         </ui5-link>
                       </Link>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
+                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                           <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 1
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
+                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                           <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 2
                           </span>
                         </Component>
                       </WithStyles(Component)>
                       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
+                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                           <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                             Address 3
                           </span>
@@ -571,7 +571,7 @@
                 <ObjectPageAnchor section={{...}} selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={true}>
-                      <Component onClick={[Function]} selected={true} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button--- Component-selected---">
                           Test 1
                         </span>
@@ -582,7 +582,7 @@
                 <ObjectPageAnchor section={{...}} selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={false}>
-                      <Component onClick={[Function]} selected={false} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button---">
                           Test 2
                         </span>
@@ -593,7 +593,7 @@
                 <ObjectPageAnchor section={{...}} selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={false}>
-                      <Component onClick={[Function]} selected={false} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button---">
                           Test 3
                         </span>
@@ -604,7 +604,7 @@
                 <ObjectPageAnchor section={{...}} selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={false}>
-                      <Component onClick={[Function]} selected={false} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button---">
                           Test 4
                         </span>
@@ -640,7 +640,7 @@
                 <ObjectPageAnchor section={{...}} selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={false}>
-                      <Component onClick={[Function]} selected={false} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button---">
                           Test 5
                         </span>
@@ -677,10 +677,10 @@
             </header>
             <ForwardRef>
               <WithStyles(Component)>
-                <Component classes={{...}} theme={{...}}>
+                <Component innerRef={{...}} classes={{...}} theme={{...}}>
                   <section id="ObjectPageSections" className="Component-sectionsContainer---">
                     <WithStyles(ObjectPageSection) title="Test 1" id="1" isSection={true} titleUppercase={true}>
-                      <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true} classes={{...}} theme={{...}}>
+                      <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
                           <div role="heading" className="ObjectPageSection-header---">
                             <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
@@ -725,7 +725,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
-        <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} classes={{...}} theme={{...}}>
+        <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} innerRef={{...}} classes={{...}} theme={{...}}>
           <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -743,7 +743,7 @@
                 <ObjectPageAnchor section={{...}} selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={true}>
-                      <Component onClick={[Function]} selected={true} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button--- Component-selected---" />
                       </Component>
                     </WithStyles(Component)>
@@ -753,10 +753,10 @@
             </header>
             <ForwardRef>
               <WithStyles(Component)>
-                <Component classes={{...}} theme={{...}}>
+                <Component innerRef={{...}} classes={{...}} theme={{...}}>
                   <section id="ObjectPageSections" className="Component-sectionsContainer---">
                     <WithStyles(ObjectPageSection) id="1" title="" isSection={true} titleUppercase={true}>
-                      <ObjectPageSection id="1" title="" isSection={true} titleUppercase={true} classes={{...}} theme={{...}}>
+                      <ObjectPageSection id="1" title="" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
                           <div role="heading" className="ObjectPageSection-header---">
                             <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---" />
@@ -789,7 +789,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
-        <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} classes={{...}} theme={{...}}>
+        <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} innerRef={{...}} classes={{...}} theme={{...}}>
           <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -807,7 +807,7 @@
             </header>
             <ForwardRef>
               <WithStyles(Component)>
-                <Component classes={{...}} theme={{...}}>
+                <Component innerRef={{...}} classes={{...}} theme={{...}}>
                   <section id="ObjectPageSections" className="Component-sectionsContainer---">
                     <div />
                   </section>
@@ -829,7 +829,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ObjectPage) selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
-        <ObjectPage selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} classes={{...}} theme={{...}}>
+        <ObjectPage selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} innerRef={{...}} classes={{...}} theme={{...}}>
           <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage-objectPage---" style={[undefined]} title={[undefined]}>
             <header className="ObjectPage-header---">
               <header className="ObjectPage-titleBar---">
@@ -847,7 +847,7 @@
                 <ObjectPageAnchor section={{...}} selected={false} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={false}>
-                      <Component onClick={[Function]} selected={false} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button---" />
                       </Component>
                     </WithStyles(Component)>
@@ -856,7 +856,7 @@
                 <ObjectPageAnchor section={{...}} selected={true} classes={{...}} onAnchorSelected={[Function]} onSubSectionSelected={[Function]}>
                   <li className="ObjectPage-anchorButtonContainer---">
                     <WithStyles(Component) onClick={[Function]} selected={true}>
-                      <Component onClick={[Function]} selected={true} classes={{...}} theme={{...}}>
+                      <Component onClick={[Function]} selected={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <span onClick={[Function: eventWrapper]} className="Component-button--- Component-selected---" />
                       </Component>
                     </WithStyles(Component)>
@@ -866,10 +866,10 @@
             </header>
             <ForwardRef>
               <WithStyles(Component)>
-                <Component classes={{...}} theme={{...}}>
+                <Component innerRef={{...}} classes={{...}} theme={{...}}>
                   <section id="ObjectPageSections" className="Component-sectionsContainer---">
                     <WithStyles(ObjectPageSection) id="2" title="" isSection={true} titleUppercase={true}>
-                      <ObjectPageSection id="2" title="" isSection={true} titleUppercase={true} classes={{...}} theme={{...}}>
+                      <ObjectPageSection id="2" title="" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
                         <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
                           <div role="heading" className="ObjectPageSection-header---">
                             <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---" />
