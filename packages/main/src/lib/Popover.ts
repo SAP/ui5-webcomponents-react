@@ -1,3 +1,3 @@
-import { Popover } from '../webComponents/Popover/popover_refs';
+import { Popover } from '../webComponents/Popover';
 
 export { Popover };
