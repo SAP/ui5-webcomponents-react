@@ -194,8 +194,7 @@ function getPlugins(
     commonjs({
       namedExports: {
         'react-jss': ['ThemeProvider', 'jss', 'withTheme'],
-        'prop-types': ['array', 'arrayOf', 'func', 'number', 'object', 'oneOf', 'oneOfType', 'string'],
-        react: ['useRef', 'useMemo', 'useEffect']
+        'prop-types': ['array', 'arrayOf', 'func', 'number', 'object', 'oneOf', 'oneOfType', 'string']
       }
     }),
     postcss(),
