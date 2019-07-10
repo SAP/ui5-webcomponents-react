@@ -1,11 +1,11 @@
 import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { FC } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Size } from '../../lib/Size';
 import { styles } from './Spinner.jss';
 
-export interface SpinnerProps extends Fiori3CommonProps {
+export interface SpinnerProps extends CommonProps {
   size?: Size;
 }
 

@@ -1,16 +1,18 @@
 import { Device, StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, forwardRef, ReactElement, ReactNode, RefObject, useRef } from 'react';
-import { useWithStyles } from '../../hooks/useWithStyles';
+import React, { Children, cloneElement, forwardRef, ReactElement, ReactNode, RefObject } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { ButtonDesign } from '../../lib/ButtonDesign';
 import { PlacementType } from '../../lib/PlacementType';
 import { Popover } from '../../lib/Popover';
 import { ButtonPropTypes } from '../../webComponents/Button';
 import styles from './ActionSheet.jss';
+// @ts-ignore
+import { createUseStyles } from 'react-jss';
+import { useConsolidatedRef } from '../../hooks/useConsolidatedRef';
 
-export interface ActionSheetPropTypes extends Fiori3CommonProps {
+export interface ActionSheetPropTypes extends CommonProps {
   openBy: ReactNode;
   placement?: PlacementType;
   children?: ReactElement<ButtonPropTypes> | Array<ReactElement<ButtonPropTypes>>;
@@ -18,10 +20,12 @@ export interface ActionSheetPropTypes extends Fiori3CommonProps {
 
 export interface ActionSheetPropsInternal extends ActionSheetPropTypes, ClassProps {}
 
-const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5PopoverDomRef>) => {
-  const { children, placement, openBy, style } = props as ActionSheetPropsInternal;
+const useStyles = createUseStyles(styles);
 
-  const classes = useWithStyles(styles, props);
+const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5PopoverDomRef>) => {
+  const { children, placement, openBy, style, slot } = props as ActionSheetPropsInternal;
+
+  const classes = useStyles();
 
   const actionSheetClasses = StyleClassHelper.of(classes.actionSheet);
   if (Device.system.tablet) {
@@ -30,7 +34,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5P
     actionSheetClasses.put(classes.phone);
   }
 
-  const popoverRef: RefObject<Ui5PopoverDomRef> = ref || useRef(null);
+  const popoverRef: RefObject<Ui5PopoverDomRef> = useConsolidatedRef(ref);
 
   const renderActionSheetButton = (element) => {
     if (element && element.props) {
@@ -48,11 +52,13 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5P
 
   const onActionButtonClicked = (handler) => () => {
     popoverRef.current.close();
-    typeof handler === 'function' && handler();
+    if (typeof handler === 'function') {
+      handler();
+    }
   };
 
   return (
-    <Popover ref={popoverRef} openBy={openBy} placementType={placement} style={style} slot={props['slot']}>
+    <Popover ref={popoverRef} openBy={openBy} placementType={placement} style={style} slot={slot}>
       <ul className={actionSheetClasses.valueOf()}>{Children.map(children, renderActionSheetButton)}</ul>
     </Popover>
   );

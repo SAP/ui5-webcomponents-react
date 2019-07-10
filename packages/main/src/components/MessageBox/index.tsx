@@ -1,7 +1,7 @@
 import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { isValidElement, PureComponent, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Icon } from '../../lib/Icon';
 import { MessageBoxButton } from '../../lib/MessageBoxButton';
 import { Text } from '../../lib/Text';
@@ -30,7 +30,7 @@ export enum MessageBoxTypes {
   HIGHLIGHT = 'Highlight'
 }
 
-export interface MessageBoxPropTypes extends Fiori3CommonProps {
+export interface MessageBoxPropTypes extends CommonProps {
   visible: boolean;
   title?: string;
   children: string;

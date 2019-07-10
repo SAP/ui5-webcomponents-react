@@ -1,7 +1,7 @@
 import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { Component, ReactElement, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Bar } from '../../lib/Bar';
 import { Button } from '../../lib/Button';
 import { ButtonDesign } from '../../lib/ButtonDesign';
@@ -11,7 +11,7 @@ import { TitleLevel } from '../../lib/TitleLevel';
 import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
 
-export interface PagePropTypes extends Fiori3CommonProps {
+export interface PagePropTypes extends CommonProps {
   title?: string;
   backgroundDesign?: PageBackgroundDesign;
   renderCustomHeader?: () => ReactElement<BarPropTypes>;

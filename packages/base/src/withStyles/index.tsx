@@ -22,7 +22,7 @@ export function withStyles<T>(styles): any {
       const classes = useStyles(props);
       const theme = useTheme();
 
-      return <Component {...props} ref={ref} classes={classes} theme={theme} />;
+      return <Component {...props} innerComponentRef={ref} classes={classes} theme={theme} />;
     });
 
     WithStyles.defaultProps = Component.defaultProps;

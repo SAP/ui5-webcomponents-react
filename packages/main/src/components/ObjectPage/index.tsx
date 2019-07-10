@@ -2,14 +2,14 @@ import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-ba
 import React, { Children, createRef, PureComponent, ReactElement, ReactNode, ReactNodeArray, RefObject } from 'react';
 import { scroller } from 'react-scroll';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Button } from '../../lib/Button';
 import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchor } from './ObjectPageAnchor';
 import { ObjectPageContent } from './ObjectPageContent';
 
-export interface ObjectPagePropTypes extends Fiori3CommonProps {
+export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
   subTitle?: string;
   image?: string;

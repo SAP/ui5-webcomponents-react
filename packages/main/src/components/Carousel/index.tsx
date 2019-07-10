@@ -1,13 +1,13 @@
 import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { Children, Component, CSSProperties, Fragment, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { CarouselArrowsPlacement } from '../../lib/CarouselArrowsPlacement';
 import { PlacementType } from '../../lib/PlacementType';
 import styles from './Carousel.jss';
 import { CarouselPagination, CarouselPaginationPropTypes } from './CarouselPagination';
 
-export interface CarouselPropTypes extends CarouselPaginationPropTypes, Fiori3CommonProps {
+export interface CarouselPropTypes extends CarouselPaginationPropTypes, CommonProps {
   /**
    * The content which the carousel displays.
    */

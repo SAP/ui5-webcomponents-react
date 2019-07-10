@@ -1,13 +1,13 @@
 import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { Children, cloneElement, Component, CSSProperties, ReactElement, RefObject } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { ContentDensity } from '../../lib/ContentDensity';
 import { SegmentedButtonItemPropTypes } from '../SegmentedButtonItem';
 
 export type SelectedKey = string | number;
 
-export interface SegmentedButtonPropTypes extends Fiori3CommonProps {
+export interface SegmentedButtonPropTypes extends CommonProps {
   enabled?: boolean;
   selectedKey?: SelectedKey;
   children: ReactElement<SegmentedButtonItemPropTypes> | Array<ReactElement<SegmentedButtonItemPropTypes>>;

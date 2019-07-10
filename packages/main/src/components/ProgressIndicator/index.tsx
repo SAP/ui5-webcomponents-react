@@ -2,12 +2,12 @@ import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { PureComponent } from 'react';
 import { ValueState } from '../../lib/ValueState';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ContentDensity } from '../../lib/ContentDensity';
 import styles from './ProgressIndicator.jss';
 
-export interface ProgressIndicatorPropTypes extends Fiori3CommonProps {
+export interface ProgressIndicatorPropTypes extends CommonProps {
   /*
    * Percent value to be used
    */

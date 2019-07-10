@@ -1,13 +1,13 @@
 import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ContentDensity } from '../../lib/ContentDensity';
 import { Themes } from '../../lib/Themes';
 import styles from './AnalyticalCard.jss';
 
-export interface AnalyticalCardTypes extends Fiori3CommonProps {
+export interface AnalyticalCardTypes extends CommonProps {
   /**
    * Render Function for Header Content
    * This function will pass two parameters: theme and Content Density.
