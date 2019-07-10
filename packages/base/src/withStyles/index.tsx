@@ -2,6 +2,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { ComponentType, ForwardRefExoticComponent, RefAttributes, RefObject } from 'react';
 // @ts-ignore
 import { createUseStyles, useTheme } from 'react-jss';
+import { useConsolidatedRef } from '../hooks/useConsolidatedRef';
 
 const getDisplayName = (Component) => Component.displayName || Component.name || 'Component';
 const wrapComponentName = (componentName) => `WithStyles(${componentName})`;
@@ -22,7 +23,9 @@ export function withStyles<T>(styles): any {
       const classes = useStyles(props);
       const theme = useTheme();
 
-      return <Component {...props} ref={ref} classes={classes} theme={theme} />;
+      const consolidatedRef = useConsolidatedRef(ref);
+
+      return <Component {...props} innerRef={consolidatedRef} classes={classes} theme={theme} />;
     });
 
     WithStyles.defaultProps = Component.defaultProps;

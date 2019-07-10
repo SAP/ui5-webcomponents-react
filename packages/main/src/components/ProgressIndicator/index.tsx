@@ -2,12 +2,12 @@ import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { PureComponent } from 'react';
 import { ValueState } from '../../lib/ValueState';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ContentDensity } from '../../lib/ContentDensity';
 import styles from './ProgressIndicator.jss';
 
-export interface ProgressIndicatorPropTypes extends Fiori3CommonProps {
+export interface ProgressIndicatorPropTypes extends CommonProps {
   /*
    * Percent value to be used
    */
@@ -65,7 +65,9 @@ export class ProgressIndicator extends PureComponent<ProgressIndicatorPropTypes>
       className,
       style,
       tooltip,
-      state
+      state,
+      innerRef,
+      slot
     } = this.props as ProgressIndicatorInternalProps;
 
     // CSS classes
@@ -112,10 +114,11 @@ export class ProgressIndicator extends PureComponent<ProgressIndicatorPropTypes>
 
     return (
       <div
+        ref={innerRef}
         className={wrapperClasses.valueOf()}
         style={progressBarContainerStyle}
         title={tooltip}
-        slot={this.props['slot']}
+        slot={slot}
       >
         <div className={progressBarClasses.valueOf()} style={progressBarStyle}>
           {percentValue <= 50 ? null : progressBarTextSpan}

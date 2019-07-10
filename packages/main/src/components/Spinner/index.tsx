@@ -1,18 +1,18 @@
 import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { FC } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Size } from '../../lib/Size';
 import { styles } from './Spinner.jss';
 
-export interface SpinnerProps extends Fiori3CommonProps {
+export interface SpinnerProps extends CommonProps {
   size?: Size;
 }
 
 interface SpinnerInternalProps extends SpinnerProps, ClassProps {}
 
-export const Spinner: FC<SpinnerProps> = withStyles(styles)((props: SpinnerInternalProps) => {
-  const { classes, className, size, tooltip } = props;
+export const Spinner: FC<SpinnerProps> = withStyles(styles)((props: SpinnerProps) => {
+  const { classes, className, size, tooltip, innerRef, slot } = props as SpinnerInternalProps;
 
   const spinnerClasses = StyleClassHelper.of(classes.spinner);
   if (className) {
@@ -23,6 +23,7 @@ export const Spinner: FC<SpinnerProps> = withStyles(styles)((props: SpinnerInter
 
   return (
     <div
+      ref={innerRef}
       className={spinnerClasses.valueOf()}
       data-component-name="BusyIndicator"
       aria-busy="true"
@@ -31,7 +32,7 @@ export const Spinner: FC<SpinnerProps> = withStyles(styles)((props: SpinnerInter
       aria-valuemin={0}
       aria-valuemax={100}
       title={tooltip || 'Please wait'}
-      slot={props['slot']}
+      slot={slot}
     >
       Loading...
     </div>

@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event, useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import UI5Dialog from '@ui5/webcomponents/dist/Dialog';
 import React, { ReactNode, RefForwardingComponent, RefObject, useEffect, useRef } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
@@ -23,22 +23,20 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
 const InnerDialog: RefForwardingComponent<Ui5DomRef, DialogPropTypes> = withWebComponent<DialogPropTypes>(UI5Dialog);
 
 const Dialog = React.forwardRef((props: DialogPropTypes, dialogRef: RefObject<Ui5DialogDomRef>) => {
-  const localDialogRef: RefObject<Ui5DialogDomRef> = useRef(null);
-
-  const getDialogRef = () => dialogRef || localDialogRef;
+  const localDialogRef = useConsolidatedRef<Ui5DialogDomRef>(dialogRef);
 
   const setDialogOpen = (open) => {
-    if (!getDialogRef().current || !getDialogRef().current.open) {
+    if (!localDialogRef.current || !localDialogRef.current.open) {
       return;
     }
-    return open ? getDialogRef().current.open() : getDialogRef().current.close();
+    return open ? localDialogRef.current.open() : localDialogRef.current.close();
   };
 
   useEffect(() => {
     setDialogOpen(props.open);
   }, [props.open]);
 
-  return <InnerDialog {...props} ref={getDialogRef()} />;
+  return <InnerDialog {...props} ref={localDialogRef} />;
 });
 
 Dialog.defaultProps = {

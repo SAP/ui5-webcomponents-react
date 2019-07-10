@@ -120,7 +120,8 @@ export class AnalyticalCardHeader extends PureComponent<AnalyticalCardHeaderProp
       tooltip,
       className,
       description,
-      style
+      style,
+      innerRef
     } = this.props as AnalyticalCardHeaderInternalProps;
 
     const headerClasses = StyleClassHelper.of(classes.cardHeader);
@@ -145,54 +146,52 @@ export class AnalyticalCardHeader extends PureComponent<AnalyticalCardHeaderProp
     const shouldRenderContent = [value, unit, deviation, target].some((v) => v !== null) || loading === true;
 
     return (
-      <Fragment>
-        <div onClick={this.onClick} className={headerClasses.valueOf()} title={tooltip} style={style}>
-          <div className={classes.headerContent}>
-            <div className={classes.headerText}>
-              <span>{title}</span>
-              <div className={classes.subHeaderText}>{subTitle}</div>
-            </div>
-            {shouldRenderContent && (
-              <div className={classes.kpiContent}>
-                <div className={classes.leftContent}>
-                  <div className={valueAndUnitClasses.valueOf()}>
-                    <div className={classes.value}>{value}</div>
-                    <div className={classes.indicatorAndUnit}>
-                      {showIndicator && this.getIndicatorIcon()}
-                      <div className={classes.unit}>{unit}</div>
-                    </div>
-                    {loading && (
-                      <span style={{ verticalAlign: 'super', display: 'inline-block' }}>
-                        <BusyIndicator active size={BusyIndicatorType.Medium} />
-                      </span>
-                    )}
+      <div ref={innerRef} onClick={this.onClick} className={headerClasses.valueOf()} title={tooltip} style={style}>
+        <div className={classes.headerContent}>
+          <div className={classes.headerText}>
+            <span>{title}</span>
+            <div className={classes.subHeaderText}>{subTitle}</div>
+          </div>
+          {shouldRenderContent && (
+            <div className={classes.kpiContent}>
+              <div className={classes.leftContent}>
+                <div className={valueAndUnitClasses.valueOf()}>
+                  <div className={classes.value}>{value}</div>
+                  <div className={classes.indicatorAndUnit}>
+                    {showIndicator && this.getIndicatorIcon()}
+                    <div className={classes.unit}>{unit}</div>
                   </div>
-                </div>
-
-                <div className={classes.targetAndDeviation}>
-                  {target !== null && (
-                    <div>
-                      <Label>Target</Label>
-                      <div>
-                        <Text>{target}</Text>
-                      </div>
-                    </div>
-                  )}
-                  {deviation !== null && (
-                    <div className={classes.deviation}>
-                      <Label>Deviation</Label>
-                      <div>
-                        <Text>{deviation}</Text>
-                      </div>
-                    </div>
+                  {loading && (
+                    <span style={{ verticalAlign: 'super', display: 'inline-block' }}>
+                      <BusyIndicator active size={BusyIndicatorType.Medium} />
+                    </span>
                   )}
                 </div>
               </div>
-            )}
-            <div className={classes.subHeaderText}>{description}</div>
-          </div>
+
+              <div className={classes.targetAndDeviation}>
+                {target !== null && (
+                  <div>
+                    <Label>Target</Label>
+                    <div>
+                      <Text>{target}</Text>
+                    </div>
+                  </div>
+                )}
+                {deviation !== null && (
+                  <div className={classes.deviation}>
+                    <Label>Deviation</Label>
+                    <div>
+                      <Text>{deviation}</Text>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+          <div className={classes.subHeaderText}>{description}</div>
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

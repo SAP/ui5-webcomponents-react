@@ -37,7 +37,7 @@ export class SegmentedButtonItem extends PureComponent<SegmentedButtonItemPropTy
   };
 
   render() {
-    const { enabled, children, selected, icon, classes, width, className, style, tooltip } = this
+    const { enabled, children, selected, icon, classes, width, className, style, tooltip, innerRef } = this
       .props as SegmentedButtonItemInternalProps;
 
     const iconClasses = StyleClassHelper.of(classes.icon);
@@ -70,6 +70,7 @@ export class SegmentedButtonItem extends PureComponent<SegmentedButtonItemPropTy
     }
     return (
       <li
+        ref={innerRef}
         className={segmentedButtonItemClasses.valueOf()}
         onClick={this.handleOnClick}
         style={inlineStyle}

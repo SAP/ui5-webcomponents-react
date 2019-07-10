@@ -1,13 +1,13 @@
 import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { Children, cloneElement, Component, CSSProperties, ReactElement, RefObject } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { ContentDensity } from '../../lib/ContentDensity';
 import { SegmentedButtonItemPropTypes } from '../SegmentedButtonItem';
 
 export type SelectedKey = string | number;
 
-export interface SegmentedButtonPropTypes extends Fiori3CommonProps {
+export interface SegmentedButtonPropTypes extends CommonProps {
   enabled?: boolean;
   selectedKey?: SelectedKey;
   children: ReactElement<SegmentedButtonItemPropTypes> | Array<ReactElement<SegmentedButtonItemPropTypes>>;
@@ -56,7 +56,7 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
     itemWidth: 'auto'
   };
 
-  items: RefObject<HTMLUListElement> = React.createRef();
+  items: RefObject<HTMLUListElement> = (this.props as SegmentedButtonInternalProps).innerRef;
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.prevPropSelectedKey !== nextProps.selectedKey) {
@@ -112,7 +112,7 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
   }
 
   render() {
-    const { children, enabled, classes, className, style, tooltip } = this.props as SegmentedButtonInternalProps;
+    const { children, enabled, classes, className, style, tooltip, slot } = this.props as SegmentedButtonInternalProps;
     const { selectedKey } = this.state;
 
     const segmentedBtnClasses = StyleClassHelper.of(classes.segmentedButton);
@@ -128,7 +128,7 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
         style={style}
         ref={this.items}
         title={tooltip}
-        slot={this.props['slot']}
+        slot={slot}
       >
         {Children.map(children, (item: any) =>
           cloneElement(item, {

@@ -20,10 +20,7 @@ const styles = {
       justifyContent: 'flex-start',
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      '& button': {
-        justifyContent: 'flex-start'
-      }
+      overflow: 'hidden'
     },
     display: 'block'
   }

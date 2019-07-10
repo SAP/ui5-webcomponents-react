@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event, useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import UI5Popover from '@ui5/webcomponents/dist/Popover';
 import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useRef } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
@@ -31,20 +31,20 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
 
 const InternalPopover = withWebComponent<PopoverPropTypes>(UI5Popover);
 
-export const Popover = React.forwardRef((props: PopoverPropTypes, popoverRef: RefObject<Ui5PopoverDomRef>) => {
+export const Popover = React.forwardRef((props: PopoverPropTypes, givenRef: RefObject<Ui5PopoverDomRef>) => {
   const { openBy, openByStyle, open, ...rest } = props;
 
-  const localPopoverRef: RefObject<Ui5PopoverDomRef> = useRef(null);
   const openByRef: RefObject<HTMLDivElement> = useRef(null);
-  const getPopoverRef = () => popoverRef || localPopoverRef;
+
+  const internalPopoverRef = useConsolidatedRef<Ui5PopoverDomRef>(givenRef);
 
   const handleOpenPopover = useCallback(() => {
-    return getPopoverRef().current.openBy ? getPopoverRef().current.openBy(openByRef.current) : null;
-  }, [getPopoverRef(), openByRef]);
+    internalPopoverRef.current.openBy && internalPopoverRef.current.openBy(openByRef.current);
+  }, [internalPopoverRef, openByRef]);
 
-  const closePopover = () => {
-    return getPopoverRef().current.close ? getPopoverRef().current.close() : null;
-  };
+  const closePopover = useCallback(() => {
+    internalPopoverRef.current.close && internalPopoverRef.current.close();
+  }, [internalPopoverRef]);
 
   useEffect(() => {
     if (open) {
@@ -66,7 +66,7 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, popoverRef: Re
           {openBy}
         </div>
       )}
-      <InternalPopover {...rest} ref={getPopoverRef()} />
+      <InternalPopover {...rest} ref={internalPopoverRef} />
     </>
   );
 });

@@ -7,7 +7,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}}>
-        <Component state="Error" showDefaultIcon={true} icon={{...}} classes={{...}} theme={{...}}>
+        <Component state="Error" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="Component-objectStatus---" style={[undefined]} title={[undefined]} slot={[undefined]}>
             <div className="Component-icon--- Component-iconError---">
               <Icon src="status-negative" style={{...}}>
@@ -32,7 +32,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}}>
-        <Component state="Error" showDefaultIcon={true} icon={{...}} classes={{...}} theme={{...}}>
+        <Component state="Error" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="Component-objectStatus---" style={[undefined]} title={[undefined]} slot={[undefined]}>
             <div className="Component-icon--- Component-iconError---">
               <Icon src="status-negative" style={{...}}>
@@ -57,7 +57,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}}>
-        <Component state="Error" showDefaultIcon={true} icon={{...}} classes={{...}} theme={{...}}>
+        <Component state="Error" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="Component-objectStatus---" style={[undefined]} title={[undefined]} slot={[undefined]}>
             <div className="Component-icon--- Component-iconError---">
               <Icon src="status-negative" style={{...}}>
@@ -79,7 +79,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="None" showDefaultIcon={true} icon={{...}}>
-        <Component state="None" showDefaultIcon={true} icon={{...}} classes={{...}} theme={{...}}>
+        <Component state="None" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="Component-objectStatus---" style={[undefined]} title={[undefined]} slot={[undefined]}>
             <div className="Component-icon--- Component-iconNone---">
               <Icon src="status-inactive" style={{...}}>
@@ -101,7 +101,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Success" showDefaultIcon={true} icon={{...}}>
-        <Component state="Success" showDefaultIcon={true} icon={{...}} classes={{...}} theme={{...}}>
+        <Component state="Success" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="Component-objectStatus---" style={[undefined]} title={[undefined]} slot={[undefined]}>
             <div className="Component-icon--- Component-iconSuccess---">
               <Icon src="status-positive" style={{...}}>
@@ -123,7 +123,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Warning" showDefaultIcon={true} icon={{...}}>
-        <Component state="Warning" showDefaultIcon={true} icon={{...}} classes={{...}} theme={{...}}>
+        <Component state="Warning" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="Component-objectStatus---" style={[undefined]} title={[undefined]} slot={[undefined]}>
             <div className="Component-icon--- Component-iconWarning---">
               <Icon src="status-critical" style={{...}}>
@@ -145,7 +145,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Information" showDefaultIcon={true} icon={{...}}>
-        <Component state="Information" showDefaultIcon={true} icon={{...}} classes={{...}} theme={{...}}>
+        <Component state="Information" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="Component-objectStatus---" style={[undefined]} title={[undefined]} slot={[undefined]}>
             <div className="Component-icon--- Component-iconInformation---">
               <Icon src="hint" style={{...}}>

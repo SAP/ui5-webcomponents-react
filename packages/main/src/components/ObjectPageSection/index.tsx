@@ -25,7 +25,7 @@ export class ObjectPageSection extends PureComponent<ObjectPageSectionPropTypes>
   };
 
   render() {
-    const { title, id, children, classes, titleUppercase, className, style, tooltip } = this
+    const { title, id, children, classes, titleUppercase, className, style, tooltip, innerRef } = this
       .props as ObjectPageSectionInternalProps;
 
     if (!id) {
@@ -38,7 +38,14 @@ export class ObjectPageSection extends PureComponent<ObjectPageSectionPropTypes>
     }
 
     return (
-      <section id={`ObjectPageSection-${id}`} role="region" className={className} style={style} title={tooltip}>
+      <section
+        ref={innerRef}
+        id={`ObjectPageSection-${id}`}
+        role="region"
+        className={className}
+        style={style}
+        title={tooltip}
+      >
         <div role="heading" className={classes.header}>
           <div className={titleClasses.valueOf()}>{title}</div>
         </div>
