@@ -34,8 +34,19 @@ const getDefaultIcon = (state) => {
   }
 };
 
-export const ObjectStatus: FC<ObjectStatusPropTypes> = withStyles(styles)((props: ObjectStatusPropTypesInternal) => {
-  const { state, showDefaultIcon, children, icon, classes, className, style, tooltip } = props;
+export const ObjectStatus: FC<ObjectStatusPropTypes> = withStyles(styles)((props: ObjectStatusPropTypes) => {
+  const {
+    state,
+    showDefaultIcon,
+    children,
+    icon,
+    classes,
+    className,
+    style,
+    tooltip,
+    innerRef,
+    slot
+  } = props as ObjectStatusPropTypesInternal;
   const iconToRender = !icon && showDefaultIcon ? getDefaultIcon(state) : icon;
 
   const objStatusClasses = StyleClassHelper.of(classes.objectStatus);
@@ -50,7 +61,7 @@ export const ObjectStatus: FC<ObjectStatusPropTypes> = withStyles(styles)((props
   const textClass = classes[`text${state}`];
 
   return (
-    <div className={objStatusClasses.valueOf()} style={style} title={tooltip} slot={props['slot']}>
+    <div ref={innerRef} className={objStatusClasses.valueOf()} style={style} title={tooltip} slot={slot}>
       {iconToRender && <div className={iconClasses.valueOf()}>{iconToRender}</div>}
       {children !== null && children !== undefined && <span className={textClass}>{children}</span>}
     </div>

@@ -132,7 +132,8 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
   };
 
   render() {
-    const { variantItems, popupTitle, className, style, tooltip } = this.props;
+    const { variantItems, popupTitle, className, style, tooltip, innerRef } = this
+      .props as VariantManagementInternalProps;
     const { selectedKey } = this.state;
 
     if (!variantItems || variantItems.length < 1) {
@@ -141,6 +142,7 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
 
     return (
       <Popover
+        ref={innerRef}
         open={this.state.open}
         onAfterOpen={this.handleAfterOpen}
         headerText={popupTitle}

@@ -56,7 +56,7 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
     itemWidth: 'auto'
   };
 
-  items: RefObject<HTMLUListElement> = React.createRef();
+  items: RefObject<HTMLUListElement> = (this.props as SegmentedButtonInternalProps).innerRef;
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.prevPropSelectedKey !== nextProps.selectedKey) {
@@ -112,7 +112,7 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
   }
 
   render() {
-    const { children, enabled, classes, className, style, tooltip } = this.props as SegmentedButtonInternalProps;
+    const { children, enabled, classes, className, style, tooltip, slot } = this.props as SegmentedButtonInternalProps;
     const { selectedKey } = this.state;
 
     const segmentedBtnClasses = StyleClassHelper.of(classes.segmentedButton);
@@ -128,7 +128,7 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
         style={style}
         ref={this.items}
         title={tooltip}
-        slot={this.props['slot']}
+        slot={slot}
       >
         {Children.map(children, (item: any) =>
           cloneElement(item, {

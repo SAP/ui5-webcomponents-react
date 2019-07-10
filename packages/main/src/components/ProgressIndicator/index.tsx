@@ -65,7 +65,9 @@ export class ProgressIndicator extends PureComponent<ProgressIndicatorPropTypes>
       className,
       style,
       tooltip,
-      state
+      state,
+      innerRef,
+      slot
     } = this.props as ProgressIndicatorInternalProps;
 
     // CSS classes
@@ -112,10 +114,11 @@ export class ProgressIndicator extends PureComponent<ProgressIndicatorPropTypes>
 
     return (
       <div
+        ref={innerRef}
         className={wrapperClasses.valueOf()}
         style={progressBarContainerStyle}
         title={tooltip}
-        slot={this.props['slot']}
+        slot={slot}
       >
         <div className={progressBarClasses.valueOf()} style={progressBarStyle}>
           {percentValue <= 50 ? null : progressBarTextSpan}

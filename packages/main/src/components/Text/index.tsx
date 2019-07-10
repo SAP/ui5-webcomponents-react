@@ -24,8 +24,19 @@ export interface TextProps extends CommonProps {
 
 interface TextInternalProps extends TextProps, ClassProps {}
 
-export const Text: FC<TextProps> = withStyles(TextStyles)((props: TextInternalProps) => {
-  const { classes, children, renderWhitespace, wrapping, width, className, style, tooltip } = props;
+export const Text: FC<TextProps> = withStyles(TextStyles)((props: TextProps) => {
+  const {
+    classes,
+    children,
+    renderWhitespace,
+    wrapping,
+    width,
+    className,
+    style,
+    tooltip,
+    innerRef,
+    slot
+  } = props as TextInternalProps;
   const classNameString = StyleClassHelper.of(classes.text);
   if (wrapping === false) {
     classNameString.put(classes.noWrap);
@@ -41,7 +52,7 @@ export const Text: FC<TextProps> = withStyles(TextStyles)((props: TextInternalPr
     Object.assign(inlineStyles, style);
   }
   return (
-    <span style={inlineStyles} className={classNameString.toString()} title={tooltip} slot={props['slot']}>
+    <span ref={innerRef} style={inlineStyles} className={classNameString.toString()} title={tooltip} slot={slot}>
       {children}
     </span>
   );

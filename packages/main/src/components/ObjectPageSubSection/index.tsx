@@ -41,7 +41,8 @@ export class ObjectPageSubSection extends PureComponent<ObjectPageSubSectionProp
   };
 
   render() {
-    const { children, id, title, classes, className, style, tooltip } = this.props as ObjectPageSubSectionInternalProps;
+    const { children, id, title, classes, className, style, tooltip, innerRef } = this
+      .props as ObjectPageSubSectionInternalProps;
 
     if (!id) {
       throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
@@ -54,6 +55,7 @@ export class ObjectPageSubSection extends PureComponent<ObjectPageSubSectionProp
 
     return (
       <div
+        ref={innerRef}
         className={subSectionClassName.toString()}
         id={`ObjectPageSubSection-${id}`}
         role="region"

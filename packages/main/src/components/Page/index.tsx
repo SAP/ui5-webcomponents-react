@@ -70,7 +70,9 @@ export class Page extends Component<PagePropTypes> {
       renderCustomHeader,
       renderCustomFooter,
       backgroundDesign,
-      tooltip
+      tooltip,
+      innerRef,
+      slot
     } = this.props as PagePropsInternal;
 
     const pageContainer = StyleClassHelper.of(classes.pageContainer);
@@ -92,7 +94,7 @@ export class Page extends Component<PagePropTypes> {
     pageContainer.put(classes[`background${backgroundDesign}`]);
 
     return (
-      <div className={pageContainer.valueOf()} style={style} title={tooltip} slot={this.props['slot']}>
+      <div ref={innerRef} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot}>
         {showHeader && (
           <header className={headerClasses.valueOf()}>
             {renderCustomHeader && renderCustomHeader()}
