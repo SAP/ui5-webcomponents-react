@@ -148,4 +148,14 @@ describe('ObjectPage', () => {
       .simulate('click');
     expect(getEventFromCallback(callback).getParameter('selectedSectionId')).to.eq('1');
   });
+
+  it('No Header', () => {
+    const wrapper = mountThemedComponent(
+      <ObjectPage selectedSectionId={'2'} noHeader>
+        <ObjectPageSection id={'1'}>Test</ObjectPageSection>
+        <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
+      </ObjectPage>
+    );
+    expect(wrapper.debug()).to.matchSnapshot();
+  });
 });

@@ -34,6 +34,7 @@ export interface ObjectPagePropTypes extends CommonProps {
   selectedSectionId?: string;
   onSelectedSectionChanged?: (event: Event) => void;
   showHideHeaderButton?: boolean;
+  noHeader?: boolean;
 }
 
 const useStyles = createUseStyles(styles);
@@ -75,7 +76,8 @@ export const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject
     showHideHeaderButton,
     children,
     onSelectedSectionChanged,
-    selectedSectionId
+    selectedSectionId,
+    noHeader
   } = props;
 
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(findSectionIndexById(children, selectedSectionId));
@@ -217,15 +219,17 @@ export const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject
       ref={objectPage}
       title={tooltip}
     >
-      <ObjectPageHeader
-        title={title}
-        subTitle={subTitle}
-        image={image}
-        headerActions={headerActions}
-        renderHeaderContent={renderHeaderContent}
-        imageShapeCircle={imageShapeCircle}
-        showHideHeaderButton={showHideHeaderButton}
-      />
+      {!noHeader && (
+        <ObjectPageHeader
+          title={title}
+          subTitle={subTitle}
+          image={image}
+          headerActions={headerActions}
+          renderHeaderContent={renderHeaderContent}
+          imageShapeCircle={imageShapeCircle}
+          showHideHeaderButton={showHideHeaderButton}
+        />
+      )}
       <section className={classes.anchorBar} role="navigation">
         {Children.map(children, (section, index) => (
           <ObjectPageAnchorButton
@@ -256,5 +260,6 @@ ObjectPage.defaultProps = {
   mode: ObjectPageMode.Default,
   onSelectedSectionChanged: () => {},
   showHideHeaderButton: false,
-  selectedSectionId: null
+  selectedSectionId: null,
+  noHeader: false
 };
