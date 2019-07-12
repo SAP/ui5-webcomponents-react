@@ -26,13 +26,14 @@ const objectPageContentStyles = ({ parameters }: JSSTheme) => ({
 
 interface Props {
   children: ReactNode | ReactNode[];
+  fillerRef: RefObject<any>;
 }
 
-export const ObjectPageContent = forwardRef(({ children }: Props, ref: RefObject<HTMLDivElement>) => {
+export const ObjectPageContent = forwardRef(({ children, fillerRef }: Props, ref: RefObject<HTMLElement>) => {
   const ObjectPageInner = withStyles(objectPageContentStyles)(({ classes }) => (
-    <section id="ObjectPageSections" className={classes.sectionsContainer}>
+    <section ref={ref} id="ObjectPageSections" className={classes.sectionsContainer}>
       {children}
-      <div ref={ref} />
+      <div ref={fillerRef} />
     </section>
   ));
   return <ObjectPageInner />;
