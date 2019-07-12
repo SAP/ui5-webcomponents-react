@@ -209,141 +209,123 @@
           </section>
           <ForwardRef fillerRef={{...}}>
             <section id="ObjectPageSections" className="-sectionsContainer---">
-              <WithStyles(ObjectPageSection) title="Test 1" id="1" isSection={true} titleUppercase={true}>
-                <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
-                        Test 1
+              <ForwardRef title="Test 1" id="1" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---">
+                      Test 1
+                    </div>
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      <Label for="">
+                        <ui5-label for="" class="">
+                          My Content 1
+                        </ui5-label>
+                      </Label>
+                    </div>
+                  </div>
+                </section>
+              </ForwardRef>
+              <ForwardRef title="Test 2" id="2" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---">
+                      Test 2
+                    </div>
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      <div style={{...}}>
+                        Test2
                       </div>
                     </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        <Label for="">
-                          <ui5-label for="" class="">
-                            My Content 1
-                          </ui5-label>
-                        </Label>
-                      </div>
+                  </div>
+                </section>
+              </ForwardRef>
+              <ForwardRef title="Test 3" id="3" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-3" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---">
+                      Test 3
                     </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
-              <WithStyles(ObjectPageSection) title="Test 2" id="2" isSection={true} titleUppercase={true}>
-                <ObjectPageSection title="Test 2" id="2" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
-                        Test 2
-                      </div>
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      Test1
                     </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        <div style={{...}}>
-                          Test2
+                  </div>
+                </section>
+              </ForwardRef>
+              <ForwardRef title="Test 4" id="4" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-4" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---">
+                      Test 4
+                    </div>
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      <h1>
+                        Section 4
+                      </h1>
+                      <ForwardRef title="SubSection 4.1" id="4.1" isSubSection={true}>
+                        <div className="-objectPageSubSection---" id="ObjectPageSubSection-4.1" role="region" style={[undefined]} title={[undefined]}>
+                          <div className="-objectPageSubSectionHeaderTitle---">
+                            SubSection 4.1
+                          </div>
+                          <div className="-subSectionContent---">
+                            Test 4 SubSection 1
+                          </div>
                         </div>
-                      </div>
+                      </ForwardRef>
+                      <ForwardRef title="SubSection 4.2" id="4.2" isSubSection={true}>
+                        <div className="-objectPageSubSection---" id="ObjectPageSubSection-4.2" role="region" style={[undefined]} title={[undefined]}>
+                          <div className="-objectPageSubSectionHeaderTitle---">
+                            SubSection 4.2
+                          </div>
+                          <div className="-subSectionContent---">
+                            Test 4 SubSection 2
+                          </div>
+                        </div>
+                      </ForwardRef>
                     </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
-              <WithStyles(ObjectPageSection) title="Test 3" id="3" isSection={true} titleUppercase={true}>
-                <ObjectPageSection title="Test 3" id="3" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-3" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
-                        Test 3
-                      </div>
+                  </div>
+                </section>
+              </ForwardRef>
+              <ForwardRef title="Test 5" id="5" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-5" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---">
+                      Test 5
                     </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        Test1
-                      </div>
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      <ForwardRef title="SubSection 5.1" id="5.1" isSubSection={true}>
+                        <div className="-objectPageSubSection---" id="ObjectPageSubSection-5.1" role="region" style={[undefined]} title={[undefined]}>
+                          <div className="-objectPageSubSectionHeaderTitle---">
+                            SubSection 5.1
+                          </div>
+                          <div className="-subSectionContent---">
+                            Content of SubSection 5.1
+                          </div>
+                        </div>
+                      </ForwardRef>
+                      <ForwardRef title="SubSection 5.2" id="5.2" isSubSection={true}>
+                        <div className="-objectPageSubSection---" id="ObjectPageSubSection-5.2" role="region" style={[undefined]} title={[undefined]}>
+                          <div className="-objectPageSubSectionHeaderTitle---">
+                            SubSection 5.2
+                          </div>
+                          <div className="-subSectionContent---">
+                            Content of SubSection 5.2
+                          </div>
+                        </div>
+                      </ForwardRef>
                     </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
-              <WithStyles(ObjectPageSection) title="Test 4" id="4" isSection={true} titleUppercase={true}>
-                <ObjectPageSection title="Test 4" id="4" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-4" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
-                        Test 4
-                      </div>
-                    </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        <h1>
-                          Section 4
-                        </h1>
-                        <WithStyles(ObjectPageSubSection) title="SubSection 4.1" id="4.1" isSubSection={true}>
-                          <ObjectPageSubSection title="SubSection 4.1" id="4.1" isSubSection={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                            <div className="ObjectPageSubSection-objectPageSubSection---" id="ObjectPageSubSection-4.1" role="region" style={[undefined]} title={[undefined]}>
-                              <div className="ObjectPageSubSection-objectPageSubSectionHeaderTitle---">
-                                SubSection 4.1
-                              </div>
-                              <div className="ObjectPageSubSection-subSectionContent---">
-                                Test 4 SubSection 1
-                              </div>
-                            </div>
-                          </ObjectPageSubSection>
-                        </WithStyles(ObjectPageSubSection)>
-                        <WithStyles(ObjectPageSubSection) title="SubSection 4.2" id="4.2" isSubSection={true}>
-                          <ObjectPageSubSection title="SubSection 4.2" id="4.2" isSubSection={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                            <div className="ObjectPageSubSection-objectPageSubSection---" id="ObjectPageSubSection-4.2" role="region" style={[undefined]} title={[undefined]}>
-                              <div className="ObjectPageSubSection-objectPageSubSectionHeaderTitle---">
-                                SubSection 4.2
-                              </div>
-                              <div className="ObjectPageSubSection-subSectionContent---">
-                                Test 4 SubSection 2
-                              </div>
-                            </div>
-                          </ObjectPageSubSection>
-                        </WithStyles(ObjectPageSubSection)>
-                      </div>
-                    </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
-              <WithStyles(ObjectPageSection) title="Test 5" id="5" isSection={true} titleUppercase={true}>
-                <ObjectPageSection title="Test 5" id="5" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-5" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
-                        Test 5
-                      </div>
-                    </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        <WithStyles(ObjectPageSubSection) title="SubSection 5.1" id="5.1" isSubSection={true}>
-                          <ObjectPageSubSection title="SubSection 5.1" id="5.1" isSubSection={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                            <div className="ObjectPageSubSection-objectPageSubSection---" id="ObjectPageSubSection-5.1" role="region" style={[undefined]} title={[undefined]}>
-                              <div className="ObjectPageSubSection-objectPageSubSectionHeaderTitle---">
-                                SubSection 5.1
-                              </div>
-                              <div className="ObjectPageSubSection-subSectionContent---">
-                                Content of SubSection 5.1
-                              </div>
-                            </div>
-                          </ObjectPageSubSection>
-                        </WithStyles(ObjectPageSubSection)>
-                        <WithStyles(ObjectPageSubSection) title="SubSection 5.2" id="5.2" isSubSection={true}>
-                          <ObjectPageSubSection title="SubSection 5.2" id="5.2" isSubSection={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                            <div className="ObjectPageSubSection-objectPageSubSection---" id="ObjectPageSubSection-5.2" role="region" style={[undefined]} title={[undefined]}>
-                              <div className="ObjectPageSubSection-objectPageSubSectionHeaderTitle---">
-                                SubSection 5.2
-                              </div>
-                              <div className="ObjectPageSubSection-subSectionContent---">
-                                Content of SubSection 5.2
-                              </div>
-                            </div>
-                          </ObjectPageSubSection>
-                        </WithStyles(ObjectPageSubSection)>
-                      </div>
-                    </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
+                  </div>
+                </section>
+              </ForwardRef>
               <div />
             </section>
           </ForwardRef>
@@ -460,66 +442,60 @@
           </section>
           <ForwardRef fillerRef={{...}}>
             <section id="ObjectPageSections" className="-sectionsContainer---">
-              <WithStyles(ObjectPageSection) title="Test 1" id="1" isSection={true} titleUppercase={true}>
-                <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
-                        Test 1
-                      </div>
+              <ForwardRef title="Test 1" id="1" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---">
+                      Test 1
                     </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        <Label for="">
-                          <ui5-label for="" class="">
-                            My Content 1
-                          </ui5-label>
-                        </Label>
-                      </div>
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      <Label for="">
+                        <ui5-label for="" class="">
+                          My Content 1
+                        </ui5-label>
+                      </Label>
                     </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
-              <WithStyles(ObjectPageSection) title="Test 2" id="2" isSection={true} titleUppercase={true}>
-                <ObjectPageSection title="Test 2" id="2" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
-                        Test 2
-                      </div>
+                  </div>
+                </section>
+              </ForwardRef>
+              <ForwardRef title="Test 2" id="2" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---">
+                      Test 2
                     </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        <Label for="">
-                          <ui5-label for="" class="">
-                            My Content 2
-                          </ui5-label>
-                        </Label>
-                      </div>
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      <Label for="">
+                        <ui5-label for="" class="">
+                          My Content 2
+                        </ui5-label>
+                      </Label>
                     </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
-              <WithStyles(ObjectPageSection) title="Test 3" id="3" isSection={true} titleUppercase={true}>
-                <ObjectPageSection title="Test 3" id="3" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-3" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
-                        Test 3
-                      </div>
+                  </div>
+                </section>
+              </ForwardRef>
+              <ForwardRef title="Test 3" id="3" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-3" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---">
+                      Test 3
                     </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        <Label for="">
-                          <ui5-label for="" class="">
-                            My Content 3
-                          </ui5-label>
-                        </Label>
-                      </div>
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      <Label for="">
+                        <ui5-label for="" class="">
+                          My Content 3
+                        </ui5-label>
+                      </Label>
                     </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
+                  </div>
+                </section>
+              </ForwardRef>
               <div />
             </section>
           </ForwardRef>
@@ -685,26 +661,24 @@
           </section>
           <ForwardRef fillerRef={{...}}>
             <section id="ObjectPageSections" className="-sectionsContainer---">
-              <WithStyles(ObjectPageSection) title="Test 1" id="1" isSection={true} titleUppercase={true}>
-                <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---">
-                        Test 1
-                      </div>
+              <ForwardRef title="Test 1" id="1" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---">
+                      Test 1
                     </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        <Label for="">
-                          <ui5-label for="" class="">
-                            My Content 1
-                          </ui5-label>
-                        </Label>
-                      </div>
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      <Label for="">
+                        <ui5-label for="" class="">
+                          My Content 1
+                        </ui5-label>
+                      </Label>
                     </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
+                  </div>
+                </section>
+              </ForwardRef>
               <div />
             </section>
           </ForwardRef>
@@ -718,7 +692,7 @@
 #### `Just Some Sections`
 
 ```
-<header class="-header---"><header class="-titleBar---"><span class="-container---"><h1 class="-title---"></h1><span class="-subTitle---"></span></span><span class="-actions---"></span></header><div style="position:relative"><div class="-headerContent---"></div></div></header><section class="-anchorBar---" role="navigation"><li class="-anchorButtonContainer---"><span class="-button--- -selected---"></span></li><li class="-anchorButtonContainer---"><span class="-button---"></span></li></section><section id="ObjectPageSections" class="-sectionsContainer---"><section id="ObjectPageSection-1" role="region"><div role="heading" class="ObjectPageSection-header---"><div class="ObjectPageSection-title--- ObjectPageSection-uppercase---"></div></div><div class="ObjectPageSection-sectionContent---"><div class="ObjectPageSection-sectionContentInner---">Test</div></div></section><div></div></section>
+<header class="-header---"><header class="-titleBar---"><span class="-container---"><h1 class="-title---"></h1><span class="-subTitle---"></span></span><span class="-actions---"></span></header><div style="position:relative"><div class="-headerContent---"></div></div></header><section class="-anchorBar---" role="navigation"><li class="-anchorButtonContainer---"><span class="-button--- -selected---"></span></li><li class="-anchorButtonContainer---"><span class="-button---"></span></li></section><section id="ObjectPageSections" class="-sectionsContainer---"><section id="ObjectPageSection-1" role="region"><div role="heading" class="-header---"><div class="-title--- -uppercase---"></div></div><div class="-sectionContent---"><div class="-sectionContentInner---">Test</div></div></section><div></div></section>
 ```
 
 #### `Not crashing with 1 section`
@@ -752,20 +726,18 @@
           </section>
           <ForwardRef fillerRef={{...}}>
             <section id="ObjectPageSections" className="-sectionsContainer---">
-              <WithStyles(ObjectPageSection) id="1" title="" isSection={true} titleUppercase={true}>
-                <ObjectPageSection id="1" title="" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---" />
+              <ForwardRef id="1" title="" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---" />
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      Test
                     </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        Test
-                      </div>
-                    </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
+                  </div>
+                </section>
+              </ForwardRef>
               <div />
             </section>
           </ForwardRef>
@@ -847,20 +819,18 @@
           </section>
           <ForwardRef fillerRef={{...}}>
             <section id="ObjectPageSections" className="-sectionsContainer---">
-              <WithStyles(ObjectPageSection) id="2" title="" isSection={true} titleUppercase={true}>
-                <ObjectPageSection id="2" title="" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---" />
+              <ForwardRef id="2" title="" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---" />
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      Test 2
                     </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        Test 2
-                      </div>
-                    </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
+                  </div>
+                </section>
+              </ForwardRef>
               <div />
             </section>
           </ForwardRef>
@@ -905,34 +875,30 @@
           </section>
           <ForwardRef fillerRef={{...}}>
             <section id="ObjectPageSections" className="-sectionsContainer---">
-              <WithStyles(ObjectPageSection) id="1" title="" isSection={true} titleUppercase={true}>
-                <ObjectPageSection id="1" title="" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---" />
+              <ForwardRef id="1" title="" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---" />
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      Test
                     </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        Test
-                      </div>
+                  </div>
+                </section>
+              </ForwardRef>
+              <ForwardRef id="2" title="" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="-header---">
+                    <div className="-title--- -uppercase---" />
+                  </div>
+                  <div className="-sectionContent---">
+                    <div className="-sectionContentInner---">
+                      Test 2
                     </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
-              <WithStyles(ObjectPageSection) id="2" title="" isSection={true} titleUppercase={true}>
-                <ObjectPageSection id="2" title="" isSection={true} titleUppercase={true} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                    <div role="heading" className="ObjectPageSection-header---">
-                      <div className="ObjectPageSection-title--- ObjectPageSection-uppercase---" />
-                    </div>
-                    <div className="ObjectPageSection-sectionContent---">
-                      <div className="ObjectPageSection-sectionContentInner---">
-                        Test 2
-                      </div>
-                    </div>
-                  </section>
-                </ObjectPageSection>
-              </WithStyles(ObjectPageSection)>
+                  </div>
+                </section>
+              </ForwardRef>
               <div />
             </section>
           </ForwardRef>

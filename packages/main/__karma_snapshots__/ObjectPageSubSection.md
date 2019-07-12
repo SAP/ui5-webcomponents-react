@@ -3,6 +3,6 @@
 #### `Render without Crashing`
 
 ```
-<div class="ObjectPageSubSection-objectPageSubSectionHeaderTitle---"></div><div class="ObjectPageSubSection-subSectionContent---"></div>
+<div class="-objectPageSubSectionHeaderTitle---"></div><div class="-subSectionContent---"></div>
 ```
 
