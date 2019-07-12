@@ -135,10 +135,13 @@ export const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject
 
   // register resize handler
   useEffect(() => {
-    adjustDummyDivHeight();
     window.addEventListener('resize', adjustDummyDivHeight);
     return window.removeEventListener('resize', adjustDummyDivHeight);
   }, []);
+
+  useEffect(() => {
+    adjustDummyDivHeight();
+  }, [noHeader]);
 
   // scroll to selected section after mount
   useEffect(() => {
@@ -164,7 +167,6 @@ export const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject
 
   useEffect(() => {
     if (mode === ObjectPageMode.Default) {
-      console.log('forced reflow');
       scrollToSectionById(children[selectedSectionIndex].props.id, selectedSectionIndex);
     }
     if (mode === ObjectPageMode.IconTabBar) {
