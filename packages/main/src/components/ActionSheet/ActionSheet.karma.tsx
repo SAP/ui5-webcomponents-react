@@ -1,7 +1,8 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import { expect, use } from 'chai';
 import { matchSnapshot } from 'chai-karma-snapshot';
-import React, { createRef } from 'react';
+import React, { createRef, RefObject } from 'react';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { ActionSheet } from '../../lib/ActionSheet';
 import { Button } from '../../lib/Button';
 
@@ -26,7 +27,7 @@ describe('ActionSheet', () => {
   });
 
   it('Ref object', () => {
-    const ref = createRef();
+    const ref: RefObject<Ui5PopoverDomRef> = createRef();
     const button = <Button />;
     mountThemedComponent(<ActionSheet ref={ref} openBy={button} />);
     expect((ref.current as any).tagName).to.equal('UI5-POPOVER');

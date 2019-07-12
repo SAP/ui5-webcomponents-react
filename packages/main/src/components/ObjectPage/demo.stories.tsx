@@ -43,6 +43,7 @@ const renderDemo = () => {
       showHideHeaderButton={boolean('showHideHeaderButton', true)}
       selectedSectionId={text('selectedSectionId', '1')}
       onSelectedSectionChanged={action('onSelectedSectionChanged')}
+      noHeader={boolean('noHeader', false)}
       style={{ height: '700px' }}
     >
       <ObjectPageSection title="Test 1" id="1">

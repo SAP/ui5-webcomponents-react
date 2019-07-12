@@ -1,5 +1,6 @@
 import React, { forwardRef, ReactNode, RefObject } from 'react';
-import { withStyles } from '@ui5/webcomponents-react-base';
+// @ts-ignore
+import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const objectPageContentStyles = ({ parameters }: JSSTheme) => ({
@@ -26,14 +27,17 @@ const objectPageContentStyles = ({ parameters }: JSSTheme) => ({
 
 interface Props {
   children: ReactNode | ReactNode[];
+  fillerRef: RefObject<any>;
 }
 
-export const ObjectPageContent = forwardRef(({ children }: Props, ref: RefObject<HTMLDivElement>) => {
-  const ObjectPageInner = withStyles(objectPageContentStyles)(({ classes }) => (
-    <section id="ObjectPageSections" className={classes.sectionsContainer}>
+const useStyles = createUseStyles(objectPageContentStyles);
+
+export const ObjectPageContent = forwardRef(({ children, fillerRef }: Props, ref: RefObject<HTMLElement>) => {
+  const classes = useStyles();
+  return (
+    <section ref={ref} id="ObjectPageSections" className={classes.sectionsContainer}>
       {children}
-      <div ref={ref} />
+      <div ref={fillerRef} />
     </section>
-  ));
-  return <ObjectPageInner />;
+  );
 });
