@@ -4,19 +4,20 @@ import React, { FC, useCallback, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { Link } from 'react-scroll';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ObjectWithVariableKeys } from '../../interfaces/ObjectWithVariableKeys';
 import { Icon } from '../../lib/Icon';
 import { List } from '../../lib/List';
+import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import { PlacementType } from '../../lib/PlacementType';
 import { Popover } from '../../lib/Popover';
 import { StandardListItem } from '../../lib/StandardListItem';
 
 interface ObjectPageAnchorPropTypes {
   section: any;
-  classes: ObjectWithVariableKeys;
-  onAnchorSelected: (event: Event) => void;
+  onSectionSelected: (event: Event) => void;
   onSubSectionSelected?: (event: Event) => void;
   index: number;
+  selected: boolean;
+  mode: ObjectPageMode;
 }
 
 const useStyles = createUseStyles(({ parameters }: JSSTheme) => ({
@@ -52,7 +53,7 @@ const useStyles = createUseStyles(({ parameters }: JSSTheme) => ({
 export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState();
-  const { section, index, onSubSectionSelected, onAnchorSelected } = props;
+  const { section, index, onSubSectionSelected, onSectionSelected, selected, mode } = props;
 
   const openModal = useCallback(() => {
     setOpen(true);
@@ -67,16 +68,19 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
     subSectionsAvailable = subSections.length > 0;
   }
 
-  const onSubSectionClick = useCallback((e) => {
-    const selectedId = e.getParameter('item').dataset.key;
-    const subSection = section.props.children
-      .filter((item) => item.props && item.props.isSubSection)
-      .find((item) => item.props.id === selectedId);
-    if (open && subSection) {
-      onSubSectionSelected(Event.of(null, e.getOriginalEvent(), subSection));
-    }
-    closeModal();
-  }, []);
+  const onSubSectionClick = useCallback(
+    (e) => {
+      const selectedId = e.getParameter('item').dataset.key;
+      const subSection = section.props.children
+        .filter((item) => item.props && item.props.isSubSection)
+        .find((item) => item.props.id === selectedId);
+      if (open && subSection) {
+        onSubSectionSelected(Event.of(null, e.getOriginalEvent(), { section, subSection, sectionIndex: index }));
+      }
+      closeModal();
+    },
+    [onSubSectionSelected, open]
+  );
 
   const navigationIcon = (
     <Icon
@@ -92,30 +96,40 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
     />
   );
 
-  const onScrollActive = useCallback(
-    (e) => {
-      onAnchorSelected(
-        Event.of(null, {} as any, {
-          ...section,
-          index
-        })
-      );
-    },
-    [onAnchorSelected]
-  );
+  const onScrollActive = useCallback(() => {
+    onSectionSelected(
+      Event.of(null, {} as any, {
+        ...section,
+        index
+      })
+    );
+  }, [onSectionSelected]);
 
   const renderSubSectionListItem = (item) => {
-    return (
-      <Link to={`ObjectPageSubSection-${item.props.id}`} containerId="ObjectPageSections" smooth offset={36}>
+    if (mode === ObjectPageMode.IconTabBar) {
+      return (
         <StandardListItem key={item.props.id} data-key={item.props.id}>
           {item.props.title}
         </StandardListItem>
+      );
+    }
+
+    return (
+      <Link
+        key={item.props.id}
+        to={`ObjectPageSubSection-${item.props.id}`}
+        containerId="ObjectPageSections"
+        smooth
+        offset={36}
+      >
+        <StandardListItem data-key={item.props.id}>{item.props.title}</StandardListItem>
       </Link>
     );
   };
 
-  return (
-    <li className={classes.anchorButtonContainer}>
+  let sectionSelector = null;
+  if (mode === ObjectPageMode.Default) {
+    sectionSelector = (
       <Link
         to={`ObjectPageSection-${section.props.id}`}
         containerId="ObjectPageSections"
@@ -128,6 +142,18 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
       >
         <span className={classes.button}>{section.props.title}</span>
       </Link>
+    );
+  } else {
+    sectionSelector = (
+      <span onClick={onScrollActive} className={`${classes.button}${selected ? ` ${classes.selected}` : ''}`}>
+        {section.props.title}
+      </span>
+    );
+  }
+
+  return (
+    <li className={classes.anchorButtonContainer}>
+      {sectionSelector}
       {subSectionsAvailable && (
         <Popover
           open={open}
