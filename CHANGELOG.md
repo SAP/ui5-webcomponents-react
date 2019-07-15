@@ -5,10 +5,61 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.17...v0.4.0) (2019-07-15)
 
-**Note:** Version bump only for package node-library-fiori-for-react-github.com-release
+### Features
+
+* **AnalyticalTable:** Added option to create pivot tables ([#47](https://github.com/SAP/ui5-webcomponents-react/issues/47)) ([71b546d](https://github.com/SAP/ui5-webcomponents-react/commit/71b546d))
+* **ThemeProvider:** Read config from UI5 Web Components ([efee11f](https://github.com/SAP/ui5-webcomponents-react/commit/efee11f))
+* **WebComponents**: Updated to v1.0.0-rc.2 (#51) ([8a40deb](https://github.com/SAP/ui5-webcomponents-react/commit/8a40deb)), closes [#51](https://github.com/SAP/ui5-webcomponents-react/issues/51)
+
+### Bug Fixes
+
+* **CSS-Variables:** remove trailing semicolon ([#53](https://github.com/SAP/ui5-webcomponents-react/issues/53)) ([f9d1daf](https://github.com/SAP/ui5-webcomponents-react/commit/f9d1daf)), closes [#49](https://github.com/SAP/ui5-webcomponents-react/issues/49)
+* **ObjectPage:** Highlight selected section while scrolling ([#56](https://github.com/SAP/ui5-webcomponents-react/issues/56)) ([42a6a10](https://github.com/SAP/ui5-webcomponents-react/commit/42a6a10))
+* **ObjectPage:** Added Hide Header Button ([#28](https://github.com/SAP/ui5-webcomponents-react/issues/28)) ([5509098](https://github.com/SAP/ui5-webcomponents-react/commit/5509098))
+* **RadialChart:** Handle width and height prop correctly ([#52](https://github.com/SAP/ui5-webcomponents-react/issues/52)) ([2d3f091](https://github.com/SAP/ui5-webcomponents-react/commit/2d3f091))
+* **ThemeProvider:** Only inject theme properties if they are not present ([#55](https://github.com/SAP/ui5-webcomponents-react/issues/55)) ([3ec61d5](https://github.com/SAP/ui5-webcomponents-react/commit/3ec61d5))
+* **Table:** Fixed Table and adapt slot handling ([#50](https://github.com/SAP/ui5-webcomponents-react/issues/50)) ([2159ab1](https://github.com/SAP/ui5-webcomponents-react/commit/2159ab1))
+
+### Code Refactoring
+
+* **base:** Merge `styles` and `utils` into `base` ([#38](https://github.com/SAP/ui5-webcomponents-react/issues/38)) ([9309505](https://github.com/SAP/ui5-webcomponents-react/commit/9309505)), closes [#34](https://github.com/SAP/ui5-webcomponents-react/issues/34)
+* **Custom Components:** Expose HTML Element via ref in every component ([#54](https://github.com/SAP/ui5-webcomponents-react/issues/54)) ([c285ee6](https://github.com/SAP/ui5-webcomponents-react/commit/c285ee6))
+* **withWebComponent:** replace innerComponentRef with ref for Web Components ([#44](https://github.com/SAP/ui5-webcomponents-react/issues/44)) ([08982ba](https://github.com/SAP/ui5-webcomponents-react/commit/08982ba))
 
 
+### BREAKING CHANGES
 
+* **Button**: Use design with `ButtonDesign`, type with `ButtonType` is deleted
+* **Button**: `onPress` renamed to `onClick`
+* **Card**: `onHeaderPress` renamed to `onHeaderClick`
+* **Custom Components:** All Components now expose their root html node/the encapsulated Web Component via ref instead of the React instance.
+* **Dialog**: remove prop `noHeader`
+* **Link**: `onPress` renamed to `onClick`
+* **List**: `onItemPress` renamed to `onItemClick`
+* **Link**: Use design with `LinkDesign`,  type with `LinkType` is deleted
+* **MessageStrip**: `hideIcon` and `hideCloseButton` are renamed to `noIcon` and `noCloseButton`
+* **Popup**: remove prop `noHeader`
+* **ResponsivePopover:** Deleted `ResponsivePopover`, please use the `Popover` Component
+* **Select**: the parameter of the change event is now called `selectedOption`
+* **Select**: Use `Option` instead of `StandardListItem` for selection
+* **ShellBar**: `onProfilePress` renamed to `onProfileClick`
+* **ShellBar**: `onNotificationsPress` renamed to `onNotificationsClick`
+* **ShellBar**: `onProductSwitchPress` renamed to `onProductSwitchClick`
+* **ShellBar**: `onLogoPress` renamed to `onLogoClick`
+* **ShellBar**: `onCoPilotPress` renamed to `onCoPilotClick`
+* **ShellBarItem**: prop `onPress` is renamed to `onClick`
+* **Switch**: type is removed, use `graphical`
+* **Table:** Use prop `slot` instead of `data-ui5-slot`
+* **Table**: prop `rows` is replaced by `children`
+* **TableRow**: prop `header` is replaced by `children`
+* **ThemeProvider:** Themes: rename Theme `sap_fiori3_light` to `sap_fiori_3`
+* **ThemeProvider:** ThemeProvider: removed contentDensity and theme props. To set those, use the [ui5 WebComponents configuration script tag](https://github.com/SAP/ui5-webcomponents#configure).
+* **TimelineItem**: `onItemNamePress` renamed to `onItemNameClick`
+* **ToggleButton**: Use design with `ButtonDesign`, type with `ButtonDesign` is deleted
+* **ToggleButton**: `onPress` renamed to `onClick`
+* **withWebComponent:** Replaced `innerComponentRef` with `ref` to support React `RefObject`
+
+Please also check the [UI5 Web Components Release Notes](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0-rc.2)
 
 
 ## [0.3.2-rc.17](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.16...v0.3.2-rc.17) (2019-07-15)
