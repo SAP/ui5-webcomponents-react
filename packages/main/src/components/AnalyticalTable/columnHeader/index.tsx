@@ -31,14 +31,14 @@ interface ColumnHeaderState {
 }
 
 const calcPaddingLeft = (props) => {
-  return props.firstColumn ? '1rem !important' : '0.5rem !important';
+  return props.firstColumn ? '1rem' : '0.5rem';
 };
 
 const styles = ({ parameters }: JSSTheme) => ({
   header: {
     borderRight: `1px solid ${parameters.sapUiListBorderColor} !important`,
-    paddingLeft: calcPaddingLeft,
-    paddingRight: '0.5rem',
+    padding: (props) => `0 ${calcPaddingLeft(props)} 0 0.5rem !important`,
+    height: '100%',
     display: 'flex',
     justifyContent: 'begin',
     alignItems: 'center',
