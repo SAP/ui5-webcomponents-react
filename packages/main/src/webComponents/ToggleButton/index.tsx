@@ -11,7 +11,7 @@ export interface ToggleButtonPropTypes extends WithWebComponentPropTypes {
   iconEnd?: boolean; // @generated
   submits?: boolean; // @generated
   pressed?: boolean; // @generated
-  onPress?: (event: Event) => void; // @generated
+  onClick?: (event: Event) => void; // @generated
   children?: string; // @generated
 }
 

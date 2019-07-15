@@ -136,7 +136,7 @@ const reactNodeType = {
 function parseSlots(meta, typings) {
   Object.entries(meta.slots).forEach(([slotKey, slot]) => {
     const typeMeta = mappings[slot.type];
-    let propKey = slotKey === meta.defaultSlot ? 'children' : slotKey;
+    let propKey = slotKey === 'default' ? 'children' : slotKey;
 
     if (typeMeta) {
       typings[propKey] = {

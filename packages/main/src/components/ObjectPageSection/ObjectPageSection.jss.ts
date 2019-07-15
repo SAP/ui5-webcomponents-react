@@ -1,7 +1,7 @@
 import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const styles = ({ theme, parameters }: JSSTheme) => ({
+const styles = ({ parameters }: JSSTheme) => ({
   header: {
     padding: '0 3rem 0 2.5rem',
     borderBottom: `1px solid ${parameters.sapUiGroupTitleBorderColor}`,

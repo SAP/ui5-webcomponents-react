@@ -18,7 +18,7 @@ export class MessageBoxButton extends PureComponent<{
         style={{
           minWidth: '4rem'
         }}
-        onPress={this.handleClick}
+        onClick={this.handleClick}
         design={emphasize ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
       >
         {this.props.action}

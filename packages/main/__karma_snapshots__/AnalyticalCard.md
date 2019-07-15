@@ -7,10 +7,10 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(AnalyticalCard) renderHeader={[Function: renderHeader]}>
-        <AnalyticalCard renderHeader={[Function: renderHeader]} classes={{...}} theme={{...}}>
+        <AnalyticalCard renderHeader={[Function: renderHeader]} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="AnalyticalCard-card---" style={[undefined]} title={[undefined]}>
             <WithStyles(AnalyticalCardHeader) title="Title" subTitle="Subtitle" arrowIndicator="Down" indicatorState="Success" value="Value" valueState="Success" unit="Unit" target="Target" deviation="Deviation" loading={false} showIndicator={true} description="Description" onHeaderPress={{...}}>
-              <AnalyticalCardHeader title="Title" subTitle="Subtitle" arrowIndicator="Down" indicatorState="Success" value="Value" valueState="Success" unit="Unit" target="Target" deviation="Deviation" loading={false} showIndicator={true} description="Description" onHeaderPress={{...}} classes={{...}} theme={{...}}>
+              <AnalyticalCardHeader title="Title" subTitle="Subtitle" arrowIndicator="Down" indicatorState="Success" value="Value" valueState="Success" unit="Unit" target="Target" deviation="Deviation" loading={false} showIndicator={true} description="Description" onHeaderPress={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                 <div onClick={[Function]} className="AnalyticalCardHeader-cardHeader---" title={[undefined]} style={[undefined]}>
                   <div className="AnalyticalCardHeader-headerContent---">
                     <div className="AnalyticalCardHeader-headerText---">
@@ -44,8 +44,8 @@
                           </Label>
                           <div>
                             <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                              <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                                <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                              <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                                <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                                   Target
                                 </span>
                               </Component>
@@ -60,8 +60,8 @@
                           </Label>
                           <div>
                             <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                              <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                                <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                              <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                                <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                                   Deviation
                                 </span>
                               </Component>
@@ -79,8 +79,8 @@
             </WithStyles(AnalyticalCardHeader)>
             <div style={{...}}>
               <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                  <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                  <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                     I&#39;m a content!
                   </span>
                 </Component>

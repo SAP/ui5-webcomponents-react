@@ -145,7 +145,7 @@ export class Grid extends Component<GridPropTypes, GridState> {
   };
 
   render() {
-    const { children, classes, hSpacing, vSpacing, position, width, style, className, tooltip } = this
+    const { children, classes, hSpacing, vSpacing, position, width, style, className, tooltip, innerRef, slot } = this
       .props as GridPropsInternal;
 
     const gridClasses = StyleClassHelper.of(classes.grid);
@@ -178,12 +178,7 @@ export class Grid extends Component<GridPropTypes, GridState> {
     }
 
     return (
-      <div
-        className={gridClasses.valueOf()}
-        style={gridStyle}
-        title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
-      >
+      <div ref={innerRef} className={gridClasses.valueOf()} style={gridStyle} title={tooltip} slot={slot}>
         {Children.map(children, this.renderGridElements)}
       </div>
     );

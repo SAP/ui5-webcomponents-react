@@ -27,7 +27,7 @@ const bundles = [
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
     entry: 'base',
     global: 'FioriForReactBase',
-    externals: []
+    externals: ['react']
   },
   {
     label: 'charts',

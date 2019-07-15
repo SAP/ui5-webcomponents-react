@@ -73,11 +73,11 @@ describe('FilterBar', () => {
         </FilterItem>
       </FilterBar>
     );
-    (wrapper
-      .find('Button')
-      .at(2)
-      .prop('onPress') as any)({ target: {} });
-
+    const component = wrapper
+      .find('ui5-button')
+      .first()
+      .instance() as any;
+    component.fireEvent('click');
     expect(wrapper.debug()).to.matchSnapshot();
   });
 

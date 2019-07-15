@@ -1,6 +1,7 @@
-import { fonts, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { fonts, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import React, { forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
+// @ts-ignore
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
@@ -9,10 +10,6 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
   title?: string;
   id: string;
   children: ReactNode | ReactNodeArray;
-}
-
-export interface ObjectPageSubSectionInternalProps extends ObjectPageSubSectionPropTypes, ClassProps {
-  isSubSection?: boolean;
 }
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -33,36 +30,38 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-@withStyles(styles)
-export class ObjectPageSubSection extends PureComponent<ObjectPageSubSectionPropTypes> {
-  static defaultProps = {
-    title: null,
-    isSubSection: true
-  };
+const useStyles = createUseStyles(styles);
 
-  render() {
-    const { children, id, title, classes, className, style, tooltip } = this.props as ObjectPageSubSectionInternalProps;
+export const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, ref: RefObject<any>) => {
+  const { children, id, title, className, style, tooltip } = props;
 
-    if (!id) {
-      throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
-    }
-
-    const subSectionClassName = StyleClassHelper.of(classes.objectPageSubSection);
-    if (className) {
-      subSectionClassName.put(className);
-    }
-
-    return (
-      <div
-        className={subSectionClassName.toString()}
-        id={`ObjectPageSubSection-${id}`}
-        role="region"
-        style={style}
-        title={tooltip}
-      >
-        <div className={classes.objectPageSubSectionHeaderTitle}>{title}</div>
-        <div className={classes.subSectionContent}>{children}</div>
-      </div>
-    );
+  if (!id) {
+    throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
   }
-}
+
+  const classes = useStyles();
+  const subSectionClassName = StyleClassHelper.of(classes.objectPageSubSection);
+  if (className) {
+    subSectionClassName.put(className);
+  }
+
+  return (
+    <div
+      ref={ref}
+      className={subSectionClassName.toString()}
+      id={`ObjectPageSubSection-${id}`}
+      role="region"
+      style={style}
+      title={tooltip}
+    >
+      <div className={classes.objectPageSubSectionHeaderTitle}>{title}</div>
+      <div className={classes.subSectionContent}>{children}</div>
+    </div>
+  );
+});
+
+ObjectPageSubSection.defaultProps = {
+  title: null,
+  // @ts-ignore
+  isSubSection: true
+};

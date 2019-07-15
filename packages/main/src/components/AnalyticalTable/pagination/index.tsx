@@ -41,7 +41,7 @@ export const LinkHOC: FC<LinkHOCProps> = (props) => {
   return (
     <Link
       style={{ paddingRight: '0.2rem' }}
-      onPress={onClickHandler(props)}
+      onClick={onClickHandler(props)}
       design={page === selectedPage ? LinkDesign.Emphasized : LinkDesign.Default}
     >
       {children.toString()}

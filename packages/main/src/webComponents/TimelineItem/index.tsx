@@ -9,7 +9,7 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   itemNameClickable?: boolean; // @generated
   titleText?: string; // @generated
   subtitleText?: string; // @generated
-  onItemNamePress?: (event: Event) => void; // @generated
+  onItemNameClick?: (event: Event) => void; // @generated
   children?: ReactNode; // @generated
 }
 

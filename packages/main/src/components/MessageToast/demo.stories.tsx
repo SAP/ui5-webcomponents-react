@@ -9,7 +9,7 @@ storiesOf('Components | MessageToast', module).add(
   () => (
     <div>
       <Button
-        onPress={() => {
+        onClick={() => {
           MessageToast.show('Hello World');
         }}
       >
@@ -17,7 +17,7 @@ storiesOf('Components | MessageToast', module).add(
       </Button>
 
       <Button
-        onPress={() => {
+        onClick={() => {
           MessageToast.error('Hello World');
         }}
       >
@@ -25,7 +25,7 @@ storiesOf('Components | MessageToast', module).add(
       </Button>
 
       <Button
-        onPress={() => {
+        onClick={() => {
           MessageToast.success('Hello World');
         }}
       >
@@ -33,7 +33,7 @@ storiesOf('Components | MessageToast', module).add(
       </Button>
 
       <Button
-        onPress={() => {
+        onClick={() => {
           MessageToast.warning('Hello World this is a very long message. Just testing. Hello Hello Hello.');
         }}
       >

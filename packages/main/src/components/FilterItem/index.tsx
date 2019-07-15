@@ -98,11 +98,11 @@ export class FilterItem extends PureComponent<FilterItemPropTypes> {
   };
 
   render() {
-    const { label, classes, style, tooltip } = this.props as FilterItemInternalProps;
+    const { label, classes, style, tooltip, innerRef } = this.props as FilterItemInternalProps;
     const filterItemClasses = StyleClassHelper.of(classes.filterItem);
 
     return (
-      <div className={filterItemClasses.toString()} style={style} title={tooltip}>
+      <div ref={innerRef} className={filterItemClasses.toString()} style={style} title={tooltip}>
         <Label>{label}</Label>
         {this.getFilterComponent()}
       </div>

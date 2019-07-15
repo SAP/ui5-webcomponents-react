@@ -7,11 +7,11 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(FilterBar) renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]} displayOnly={true}>
-        <FilterBar renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]} displayOnly={true} classes={{...}} theme={{...}}>
+        <FilterBar renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]} displayOnly={true} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="FilterBar-outerContainer---">
             <div className="FilterBar-filterBarHeader---">
               <WithStyles(VariantManagement) variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4">
-                <VariantManagement variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" classes={{...}} theme={{...}}>
+                <VariantManagement variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" innerRef={{...}} classes={{...}} theme={{...}}>
                   <Popover open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" openBy={{...}} footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                     <div style={{...}} onClick={[Function]}>
                       <div className="VariantManagement-VariantManagement---">
@@ -29,12 +29,12 @@
                     </div>
                     <WithWebComponent(Popover) onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                       <ui5-popover header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" class="">
-                        <Button className="VariantManagement-footer---" onPress={[Function]} design="Emphasized" data-ui5-slot="footer">
-                          <ui5-button design="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
+                        <Button className="VariantManagement-footer---" onClick={[Function]} design="Emphasized" slot="footer">
+                          <ui5-button design="Emphasized" slot="footer" class="VariantManagement-footer---">
                             Cancel
                           </ui5-button>
                         </Button>
-                        <WithWebComponent(List) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
+                        <WithWebComponent(List) onItemClick={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                           <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="">
                             <StandardListItem style={{...}} data-key="1" type="Active" selected={true} infoState="None">
                               <ui5-li selected={true} style={{...}} data-key="1" type="Active" info-state="None" class="">
@@ -61,7 +61,7 @@
                  
               </div>
               <div className="FilterBar-headerRowRight---">
-                <Button onPress={[Function]} design="Transparent">
+                <Button onClick={[Function]} design="Transparent">
                   <ui5-button design="Transparent" class="">
                     Hide Filter Bar
                   </ui5-button>
@@ -70,7 +70,7 @@
             </div>
             <div className="FilterBar-filterArea---">
               <WithStyles(FilterItem) filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false}>
-                <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false} classes={{...}} theme={{...}}>
+                <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
                   <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
                     <Label for="">
                       <ui5-label for="" class="">
@@ -95,7 +95,7 @@
                 </FilterItem>
               </WithStyles(FilterItem)>
               <WithStyles(FilterItem) type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false}>
-                <FilterItem type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false} classes={{...}} theme={{...}}>
+                <FilterItem type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
                   <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
                     <Label for="">
                       <ui5-label for="" class="">
@@ -126,11 +126,11 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(FilterBar) renderVariants={[Function: renderVariants]} displayOnly={true}>
-        <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} classes={{...}} theme={{...}}>
+        <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="FilterBar-outerContainer---">
             <div className="FilterBar-filterBarHeader---">
               <WithStyles(VariantManagement) variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4">
-                <VariantManagement variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" classes={{...}} theme={{...}}>
+                <VariantManagement variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" innerRef={{...}} classes={{...}} theme={{...}}>
                   <Popover open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" openBy={{...}} footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                     <div style={{...}} onClick={[Function]}>
                       <div className="VariantManagement-VariantManagement---">
@@ -148,12 +148,12 @@
                     </div>
                     <WithWebComponent(Popover) onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                       <ui5-popover header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" class="">
-                        <Button className="VariantManagement-footer---" onPress={[Function]} design="Emphasized" data-ui5-slot="footer">
-                          <ui5-button design="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
+                        <Button className="VariantManagement-footer---" onClick={[Function]} design="Emphasized" slot="footer">
+                          <ui5-button design="Emphasized" slot="footer" class="VariantManagement-footer---">
                             Cancel
                           </ui5-button>
                         </Button>
-                        <WithWebComponent(List) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
+                        <WithWebComponent(List) onItemClick={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                           <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="">
                             <StandardListItem style={{...}} data-key="1" type="Active" selected={true} infoState="None">
                               <ui5-li selected={true} style={{...}} data-key="1" type="Active" info-state="None" class="">
@@ -173,7 +173,7 @@
                 </VariantManagement>
               </WithStyles(VariantManagement)>
               <div className="FilterBar-headerRowRight---">
-                <Button onPress={[Function]} design="Transparent">
+                <Button onClick={[Function]} design="Transparent">
                   <ui5-button design="Transparent" class="">
                     Hide Filter Bar
                   </ui5-button>
@@ -182,7 +182,7 @@
             </div>
             <div className="FilterBar-filterArea---">
               <WithStyles(FilterItem) filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false}>
-                <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false} classes={{...}} theme={{...}}>
+                <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
                   <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
                     <Label for="">
                       <ui5-label for="" class="">
@@ -207,7 +207,7 @@
                 </FilterItem>
               </WithStyles(FilterItem)>
               <WithStyles(FilterItem) type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false}>
-                <FilterItem type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false} classes={{...}} theme={{...}}>
+                <FilterItem type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
                   <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
                     <Label for="">
                       <ui5-label for="" class="">
@@ -223,7 +223,7 @@
                 </FilterItem>
               </WithStyles(FilterItem)>
               <WithStyles(FilterItem) loading={true} type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]}>
-                <FilterItem loading={true} type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} classes={{...}} theme={{...}}>
+                <FilterItem loading={true} type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} innerRef={{...}} classes={{...}} theme={{...}}>
                   <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
                     <Label for="">
                       <ui5-label for="" class="">
@@ -252,11 +252,11 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(FilterBar) renderVariants={[Function: renderVariants]} displayOnly={true}>
-        <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} classes={{...}} theme={{...}}>
+        <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="FilterBar-outerContainer---">
             <div className="FilterBar-filterBarHeader---">
               <WithStyles(VariantManagement) variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4">
-                <VariantManagement variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" classes={{...}} theme={{...}}>
+                <VariantManagement variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" innerRef={{...}} classes={{...}} theme={{...}}>
                   <Popover open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" openBy={{...}} footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                     <div style={{...}} onClick={[Function]}>
                       <div className="VariantManagement-VariantManagement---">
@@ -274,12 +274,12 @@
                     </div>
                     <WithWebComponent(Popover) onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                       <ui5-popover header-text="Variants" placement-type="Bottom" tooltip={[undefined]} initial-focus={{...}} horizontal-align="Center" vertical-align="Center" class="">
-                        <Button className="VariantManagement-footer---" onPress={[Function]} design="Emphasized" data-ui5-slot="footer">
-                          <ui5-button design="Emphasized" data-ui5-slot="footer" class="VariantManagement-footer---">
+                        <Button className="VariantManagement-footer---" onClick={[Function]} design="Emphasized" slot="footer">
+                          <ui5-button design="Emphasized" slot="footer" class="VariantManagement-footer---">
                             Cancel
                           </ui5-button>
                         </Button>
-                        <WithWebComponent(List) onItemPress={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
+                        <WithWebComponent(List) onItemClick={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                           <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="">
                             <StandardListItem style={{...}} data-key="1" type="Active" selected={true} infoState="None">
                               <ui5-li selected={true} style={{...}} data-key="1" type="Active" info-state="None" class="">
@@ -299,7 +299,7 @@
                 </VariantManagement>
               </WithStyles(VariantManagement)>
               <div className="FilterBar-headerRowRight---">
-                <Button onPress={[Function]} design="Transparent">
+                <Button onClick={[Function]} design="Transparent">
                   <ui5-button design="Transparent" class="">
                     Hide Filter Bar
                   </ui5-button>
@@ -308,7 +308,7 @@
             </div>
             <div className="FilterBar-filterArea---">
               <WithStyles(FilterItem) filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false}>
-                <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false} classes={{...}} theme={{...}}>
+                <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
                   <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
                     <Label for="">
                       <ui5-label for="" class="">
@@ -333,7 +333,7 @@
                 </FilterItem>
               </WithStyles(FilterItem)>
               <WithStyles(FilterItem) loading={true} filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]}>
-                <FilterItem loading={true} filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} classes={{...}} theme={{...}}>
+                <FilterItem loading={true} filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} innerRef={{...}} classes={{...}} theme={{...}}>
                   <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
                     <Label for="">
                       <ui5-label for="" class="">
@@ -347,7 +347,7 @@
                 </FilterItem>
               </WithStyles(FilterItem)>
               <WithStyles(FilterItem) label="Classification" type="Default" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false}>
-                <FilterItem label="Classification" type="Default" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false} classes={{...}} theme={{...}}>
+                <FilterItem label="Classification" type="Default" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
                   <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
                     <Label for="">
                       <ui5-label for="" class="">

@@ -6,8 +6,8 @@
 <ThemeProvider withToastContainer={false}>
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
-      <ShellBarItem src={{...}}>
-        <ui5-shellbar-item src={{...}} class="" />
+      <ShellBarItem>
+        <ui5-shellbar-item class="" />
       </ShellBarItem>
     </ThemeProvider>
   </JssProvider>

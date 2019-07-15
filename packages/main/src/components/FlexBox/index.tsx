@@ -70,7 +70,9 @@ export class FlexBox extends Component<FlexBoxPropTypes> {
       wrap,
       style,
       className,
-      tooltip
+      tooltip,
+      innerRef,
+      slot
     } = this.props as FlexBoxPropTypes & ClassProps;
     const flexBoxClasses = StyleClassHelper.of(classes.flexBox);
     // direction
@@ -103,12 +105,7 @@ export class FlexBox extends Component<FlexBoxPropTypes> {
     }
 
     return (
-      <div
-        className={flexBoxClasses.valueOf()}
-        style={inlineStyle}
-        title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
-      >
+      <div ref={innerRef} className={flexBoxClasses.valueOf()} style={inlineStyle} title={tooltip} slot={slot}>
         {children}
       </div>
     );

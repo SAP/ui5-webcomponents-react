@@ -9,20 +9,20 @@ describe('withWebComponent', () => {
   it('Unmount Event Handlers correctly after prop update', () => {
     let Button: FC<any> = withWebComponent(UI5Button);
     const callback = spy();
-    const wrapper = mountThemedComponent(<Button onPress={(...args) => callback(...args)} />);
+    const wrapper = mountThemedComponent(<Button onClick={(...args) => callback(...args)} />);
     const component = wrapper
       .find('ui5-button')
       .first()
       .instance();
     // @ts-ignore
-    component.onclick({});
+    component.fireEvent('click');
     expect(callback.callCount).to.equal(1, 'onPress handler has not been called');
     wrapper.setProps({
-      children: cloneElement(wrapper.prop('children'), { onPress: (...args) => callback(...args) })
+      children: cloneElement(wrapper.prop('children'), { onClick: (...args) => callback(...args) })
     });
     wrapper.update();
     // @ts-ignore
-    component.onclick({});
+    component.fireEvent('click');
     expect(callback.callCount).to.equal(2, 'onPress handler has not been called after update');
   });
 });

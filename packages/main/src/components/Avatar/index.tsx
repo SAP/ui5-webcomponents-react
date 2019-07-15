@@ -1,12 +1,12 @@
 import { Event, KeyCodes, withStyles } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, PureComponent } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { AvatarShape } from '../../lib/AvatarShape';
 import { AvatarSize } from '../../lib/AvatarSize';
 import styles from './Avatar.jss';
 
-export interface AvatarPropTypes extends Fiori3CommonProps {
+export interface AvatarPropTypes extends CommonProps {
   size?: AvatarSize;
   shape?: AvatarShape;
   initials?: string;
@@ -17,7 +17,7 @@ export interface AvatarPropTypes extends Fiori3CommonProps {
   customFontSize?: CSSProperties['width'];
 }
 
-export interface AvatarPropsInternal extends AvatarPropTypes, ClassProps {}
+export interface AvatarPropsInternal extends AvatarPropTypes, CommonProps, ClassProps {}
 
 @withStyles(styles)
 export class Avatar extends PureComponent<AvatarPropTypes> {
@@ -54,7 +54,9 @@ export class Avatar extends PureComponent<AvatarPropTypes> {
       children,
       className,
       style,
-      tooltip
+      tooltip,
+      innerRef,
+      slot
     } = this.props as AvatarPropsInternal;
 
     const cssClasses = [classes.avatar];
@@ -91,13 +93,14 @@ export class Avatar extends PureComponent<AvatarPropTypes> {
 
     return (
       <span
+        ref={innerRef}
         className={cssClasses.join(' ')}
         style={inlineStyle}
         onClick={this.handleOnClick}
         tabIndex={0}
         onKeyDown={this.handleKeyDown}
         title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
+        slot={slot}
       >
         {initials ? initials : children}
       </span>

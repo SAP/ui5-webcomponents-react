@@ -10,7 +10,9 @@ export interface ColumnHeaderProps {
   firstColumn: boolean;
   defaultSortDesc: boolean;
   onFilteredChange: (event: Event) => void;
+  onGroupBy: (strArr: String[]) => void;
   children: ReactNode | ReactNodeArray;
+  grouping: string;
 }
 
 interface ColumnHeaderPropsInternal extends ColumnHeaderProps, ClassProps {
@@ -21,6 +23,7 @@ interface ColumnHeaderPropsInternal extends ColumnHeaderProps, ClassProps {
   filtered: any[];
   sortable: boolean;
   filterable: boolean;
+  groupable: boolean;
 }
 
 interface ColumnHeaderState {
@@ -28,14 +31,14 @@ interface ColumnHeaderState {
 }
 
 const calcPaddingLeft = (props) => {
-  return props.firstColumn ? '1rem !important' : '0.5rem !important';
+  return props.firstColumn ? '1rem' : '0.5rem';
 };
 
 const styles = ({ parameters }: JSSTheme) => ({
   header: {
     borderRight: `1px solid ${parameters.sapUiListBorderColor} !important`,
-    paddingLeft: calcPaddingLeft,
-    paddingRight: '0.5rem',
+    padding: (props) => `0 ${calcPaddingLeft(props)} 0 0.5rem !important`,
+    height: '100%',
     display: 'flex',
     justifyContent: 'begin',
     alignItems: 'center',
@@ -116,7 +119,7 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
   };
 
   private get openBy() {
-    const { classes, children, sorted, column, filtered } = this.props as ColumnHeaderPropsInternal;
+    const { classes, children, sorted, column, filtered, grouping } = this.props as ColumnHeaderPropsInternal;
 
     if (!column) return null;
 
@@ -132,6 +135,7 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
 
     const sortingIcon = sort ? <Icon src={desc ? 'sort-descending' : 'sort-ascending'} /> : null;
     const filterIcon = filter && filter.value ? <Icon src={'filter'} /> : null;
+    const groupingIcon = column.id === grouping ? <Icon src={'group-2'} /> : null;
 
     return (
       <div className={classNames.valueOf()}>
@@ -139,29 +143,45 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
         <div className={classes.iconContainer}>
           {filterIcon}
           {sortingIcon}
+          {groupingIcon}
         </div>
       </div>
     );
   }
 
+  private onGroupBy = () => {
+    const { column } = this.props as ColumnHeaderPropsInternal;
+    this.props.grouping !== column.id ? this.props.onGroupBy([column.id]) : this.props.onGroupBy([]);
+  };
+
   render() {
-    const { column, filtered, filterable } = this.props as ColumnHeaderPropsInternal;
+    const { column, filtered, filterable, groupable, sortable } = this.props as ColumnHeaderPropsInternal;
 
     if (!column) return null;
 
     const filter = filtered.find((c) => c.id === column.id);
 
     return (
-      <ColumnHeaderModal
-        openBy={this.openBy}
-        showFilter={filterable}
-        sortAscending={this.sortAscending}
-        sortDescending={this.sortDescending}
-        column={column}
-        FilterComponent={column.Filter as any}
-        filter={filter}
-        onFilterChange={this.onFilterChange}
-      />
+      <>
+        {filterable || sortable || groupable ? (
+          <ColumnHeaderModal
+            openBy={this.openBy}
+            showFilter={filterable}
+            showGroup={groupable}
+            showSort={sortable}
+            grouping={this.props.grouping}
+            sortAscending={this.sortAscending}
+            sortDescending={this.sortDescending}
+            column={column}
+            FilterComponent={column.Filter as any}
+            filter={filter}
+            onFilterChange={this.onFilterChange}
+            onGroupBy={this.onGroupBy}
+          />
+        ) : (
+          this.openBy
+        )}
+      </>
     );
   }
 }

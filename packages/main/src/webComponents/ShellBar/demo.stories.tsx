@@ -15,12 +15,12 @@ storiesOf('UI5 Web Components | ShellBar', module).add('Generated default story'
     showNotifications={boolean('showNotifications', true)}
     showProductSwitch={boolean('showProductSwitch', true)}
     showCoPilot={boolean('showCoPilot', true)}
-    onMenuItemPress={action('onMenuItemPress')}
-    onCoPilotPress={action('onCoPilotPress')}
-    onLogoPress={action('onLogoPress')}
-    onNotificationsPress={action('onNotificationsPress')}
-    onProfilePress={action('onProfilePress')}
-    onProductSwitchPress={action('onProductSwitchPress')}
+    onMenuItemClick={action('onMenuItemClick')}
+    onCoPilotClick={action('onCoPilotClick')}
+    onLogoClick={action('onLogoClick')}
+    onNotificationsClick={action('onNotificationsClick')}
+    onProfileClick={action('onProfileClick')}
+    onProductSwitchClick={action('onProductSwitchClick')}
     searchField={null}
     icon={null}
   >

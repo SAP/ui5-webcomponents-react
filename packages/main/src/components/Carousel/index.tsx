@@ -1,13 +1,13 @@
 import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { Children, Component, CSSProperties, Fragment, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { CarouselArrowsPlacement } from '../../lib/CarouselArrowsPlacement';
 import { PlacementType } from '../../lib/PlacementType';
 import styles from './Carousel.jss';
 import { CarouselPagination, CarouselPaginationPropTypes } from './CarouselPagination';
 
-export interface CarouselPropTypes extends CarouselPaginationPropTypes, Fiori3CommonProps {
+export interface CarouselPropTypes extends CarouselPaginationPropTypes, CommonProps {
   /**
    * The content which the carousel displays.
    */
@@ -155,12 +155,7 @@ export class Carousel extends Component<CarouselPropTypes, CarouselState> {
     }
 
     return (
-      <div
-        className={classNameString.toString()}
-        style={outerStyle}
-        title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
-      >
+      <div className={classNameString.toString()} style={outerStyle} title={tooltip} slot={this.props['slot']}>
         {Children.count(children) > 1 && pageIndicatorPlacement === PlacementType.Top && (
           <CarouselPagination
             {...this.props}

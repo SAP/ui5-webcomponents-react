@@ -12,7 +12,7 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { Fiori3CommonProps } from '../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../interfaces/CommonProps';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
 import { Ui5WebComponentMetadata } from '../interfaces/Ui5WebComponentMetadata';
 
@@ -29,7 +29,7 @@ const propBlacklist = {
   innerStyles: true
 };
 
-export interface WithWebComponentPropTypes extends Fiori3CommonProps {
+export interface WithWebComponentPropTypes extends CommonProps {
   ref?: Ref<any>;
   children?: any | void;
   innerStyles?: CSSProperties;
@@ -219,7 +219,7 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
             return Children.map(actualSlotProps[slot], (item: ReactElement<any>, index) =>
               cloneElement(item, {
                 key: `${slot}-${index}`,
-                'data-ui5-slot': slot
+                slot: slot
               })
             );
           }

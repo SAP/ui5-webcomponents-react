@@ -7,8 +7,8 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
-        <MessageBox type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} classes={{...}} theme={{...}}>
-          <div className="MessageBox-overlay---" data-ui5-slot={[undefined]}>
+        <MessageBox type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+          <div className="MessageBox-overlay---" slot={[undefined]}>
             <div className="MessageBox-messageBox---" style={[undefined]} title={[undefined]}>
               <header className="MessageBox-header---" data-type="Confirm">
                 <div className="MessageBox-icon---">
@@ -24,8 +24,8 @@
               </header>
               <section className="MessageBox-content---">
                 <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                       Confirm - OK
                     </span>
                   </Component>
@@ -33,14 +33,14 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
-                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                  <Button style={{...}} onClick={[Function]} design="Transparent">
                     <ui5-button style={{...}} design="Transparent" class="">
                       Cancel
                     </ui5-button>
@@ -63,8 +63,8 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
-        <MessageBox type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} classes={{...}} theme={{...}}>
-          <div className="MessageBox-overlay---" data-ui5-slot={[undefined]}>
+        <MessageBox type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+          <div className="MessageBox-overlay---" slot={[undefined]}>
             <div className="MessageBox-messageBox---" style={[undefined]} title={[undefined]}>
               <header className="MessageBox-header---" data-type="Confirm">
                 <div className="MessageBox-icon---">
@@ -80,8 +80,8 @@
               </header>
               <section className="MessageBox-content---">
                 <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                       Confirm - Cancel
                     </span>
                   </Component>
@@ -89,14 +89,14 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
-                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                  <Button style={{...}} onClick={[Function]} design="Transparent">
                     <ui5-button style={{...}} design="Transparent" class="">
                       Cancel
                     </ui5-button>
@@ -119,8 +119,8 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Success" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
-        <MessageBox type="Success" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} classes={{...}} theme={{...}}>
-          <div className="MessageBox-overlay---" data-ui5-slot={[undefined]}>
+        <MessageBox type="Success" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+          <div className="MessageBox-overlay---" slot={[undefined]}>
             <div className="MessageBox-messageBox---" style={[undefined]} title={[undefined]}>
               <header className="MessageBox-header---" data-type="Success">
                 <div className="MessageBox-icon---">
@@ -136,8 +136,8 @@
               </header>
               <section className="MessageBox-content---">
                 <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                       Success
                     </span>
                   </Component>
@@ -145,7 +145,7 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
@@ -168,8 +168,8 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Warning" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
-        <MessageBox type="Warning" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} classes={{...}} theme={{...}}>
-          <div className="MessageBox-overlay---" data-ui5-slot={[undefined]}>
+        <MessageBox type="Warning" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+          <div className="MessageBox-overlay---" slot={[undefined]}>
             <div className="MessageBox-messageBox---" style={[undefined]} title={[undefined]}>
               <header className="MessageBox-header---" data-type="Warning">
                 <div className="MessageBox-icon---">
@@ -185,8 +185,8 @@
               </header>
               <section className="MessageBox-content---">
                 <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                       Warning
                     </span>
                   </Component>
@@ -194,7 +194,7 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
@@ -217,8 +217,8 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Error" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
-        <MessageBox type="Error" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} classes={{...}} theme={{...}}>
-          <div className="MessageBox-overlay---" data-ui5-slot={[undefined]}>
+        <MessageBox type="Error" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+          <div className="MessageBox-overlay---" slot={[undefined]}>
             <div className="MessageBox-messageBox---" style={[undefined]} title={[undefined]}>
               <header className="MessageBox-header---" data-type="Error">
                 <div className="MessageBox-icon---">
@@ -234,8 +234,8 @@
               </header>
               <section className="MessageBox-content---">
                 <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                       Error
                     </span>
                   </Component>
@@ -243,7 +243,7 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="Close">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       Close
                     </ui5-button>
@@ -266,8 +266,8 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Information" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
-        <MessageBox type="Information" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} classes={{...}} theme={{...}}>
-          <div className="MessageBox-overlay---" data-ui5-slot={[undefined]}>
+        <MessageBox type="Information" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+          <div className="MessageBox-overlay---" slot={[undefined]}>
             <div className="MessageBox-messageBox---" style={[undefined]} title={[undefined]}>
               <header className="MessageBox-header---" data-type="Information">
                 <div className="MessageBox-icon---">
@@ -283,8 +283,8 @@
               </header>
               <section className="MessageBox-content---">
                 <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                       Information
                     </span>
                   </Component>
@@ -292,7 +292,7 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
@@ -315,8 +315,8 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) visible={true} onClose={[Function]} title="Custom" actions={{...}} icon={{...}} type="Confirm">
-        <MessageBox visible={true} onClose={[Function]} title="Custom" actions={{...}} icon={{...}} type="Confirm" classes={{...}} theme={{...}}>
-          <div className="MessageBox-overlay---" data-ui5-slot={[undefined]}>
+        <MessageBox visible={true} onClose={[Function]} title="Custom" actions={{...}} icon={{...}} type="Confirm" innerRef={{...}} classes={{...}} theme={{...}}>
+          <div className="MessageBox-overlay---" slot={[undefined]}>
             <div className="MessageBox-messageBox---" style={[undefined]} title={[undefined]}>
               <header className="MessageBox-header---" data-type="Confirm">
                 <div className="MessageBox-icon---">
@@ -332,8 +332,8 @@
               </header>
               <section className="MessageBox-content---">
                 <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                       Custom
                     </span>
                   </Component>
@@ -341,14 +341,14 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="Yes">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       Yes
                     </ui5-button>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="No">
-                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                  <Button style={{...}} onClick={[Function]} design="Transparent">
                     <ui5-button style={{...}} design="Transparent" class="">
                       No
                     </ui5-button>
@@ -371,8 +371,8 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Success" visible={true} onClose={[Function]} title="Custom Success" icon={{...}} actions={{...}}>
-        <MessageBox type="Success" visible={true} onClose={[Function]} title="Custom Success" icon={{...}} actions={{...}} classes={{...}} theme={{...}}>
-          <div className="MessageBox-overlay---" data-ui5-slot={[undefined]}>
+        <MessageBox type="Success" visible={true} onClose={[Function]} title="Custom Success" icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+          <div className="MessageBox-overlay---" slot={[undefined]}>
             <div className="MessageBox-messageBox---" style={[undefined]} title={[undefined]}>
               <header className="MessageBox-header---" data-type="Success">
                 <div className="MessageBox-icon---">
@@ -388,8 +388,8 @@
               </header>
               <section className="MessageBox-content---">
                 <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                       Custom Success
                     </span>
                   </Component>
@@ -397,7 +397,7 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
@@ -420,7 +420,7 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type=\"Success\" visible={false} onClose={[Function]} title=\"Custom Success\" icon={{...}} actions={{...}}>
-        <MessageBox type=\"Success\" visible={false} onClose={[Function]} title=\"Custom Success\" icon={{...}} actions={{...}} classes={{...}} theme={{...}} />
+        <MessageBox type=\"Success\" visible={false} onClose={[Function]} title=\"Custom Success\" icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}} />
       </WithStyles(MessageBox)>
     </ThemeProvider>
   </JssProvider>
@@ -434,8 +434,8 @@
   <JssProvider generateId={[Function]} id={{...}}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) visible={true} onClose={[Function]} title={{...}} icon={{...}} type="Confirm" actions={{...}}>
-        <MessageBox visible={true} onClose={[Function]} title={{...}} icon={{...}} type="Confirm" actions={{...}} classes={{...}} theme={{...}}>
-          <div className="MessageBox-overlay---" data-ui5-slot={[undefined]}>
+        <MessageBox visible={true} onClose={[Function]} title={{...}} icon={{...}} type="Confirm" actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+          <div className="MessageBox-overlay---" slot={[undefined]}>
             <div className="MessageBox-messageBox---" style={[undefined]} title={[undefined]}>
               <header className="MessageBox-header---" data-type="Confirm">
                 <div className="MessageBox-icon---">
@@ -451,8 +451,8 @@
               </header>
               <section className="MessageBox-content---">
                 <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} data-ui5-slot={[undefined]}>
+                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
+                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
                       No Title
                     </span>
                   </Component>
@@ -460,14 +460,14 @@
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
-                  <Button style={{...}} onPress={[Function]} design="Emphasized">
+                  <Button style={{...}} onClick={[Function]} design="Emphasized">
                     <ui5-button style={{...}} design="Emphasized" class="">
                       OK
                     </ui5-button>
                   </Button>
                 </MessageBoxButton>
                 <MessageBoxButton emphasize={false} onClick={[Function]} action="Cancel">
-                  <Button style={{...}} onPress={[Function]} design="Transparent">
+                  <Button style={{...}} onClick={[Function]} design="Transparent">
                     <ui5-button style={{...}} design="Transparent" class="">
                       Cancel
                     </ui5-button>
