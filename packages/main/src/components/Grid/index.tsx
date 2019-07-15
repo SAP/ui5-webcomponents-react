@@ -55,7 +55,8 @@ interface GridState {
   update: boolean;
 }
 
-class GridComponent extends Component<GridPropTypes, GridState> {
+@withStyles(styles)
+export class Grid extends Component<GridPropTypes, GridState> {
   private static INDENT_PATTERN = /^([X][L](?:[0-9]|1[0-1]))? ?([L](?:[0-9]|1[0-1]))? ?([M](?:[0-9]|1[0-1]))? ?([S](?:[0-9]|1[0-1]))?$/i;
   private static SPAN_PATTERN = /^([X][L](?:[1-9]|1[0-2]))? ?([L](?:[1-9]|1[0-2]))? ?([M](?:[1-9]|1[0-2]))? ?([S](?:[1-9]|1[0-2]))?$/i;
 
@@ -103,16 +104,16 @@ class GridComponent extends Component<GridPropTypes, GridState> {
   };
 
   private static getSpanFromString = (span) => {
-    const currentSpan = GridComponent.getCurrentSpan();
-    const spanConfig = GridComponent.SPAN_PATTERN.exec(span);
+    const currentSpan = Grid.getCurrentSpan();
+    const spanConfig = Grid.SPAN_PATTERN.exec(span);
     return spanConfig[currentSpan]
       ? parseInt(spanConfig[currentSpan].replace(/[XLMS]{0,2}/g, ''), 10)
       : [undefined, 3, 3, 6, 12][currentSpan];
   };
 
   private static getIndentFromString = (indent) => {
-    const currentSpan = GridComponent.getCurrentSpan();
-    const indentConfig = GridComponent.INDENT_PATTERN.exec(indent);
+    const currentSpan = Grid.getCurrentSpan();
+    const indentConfig = Grid.INDENT_PATTERN.exec(indent);
     return indentConfig[currentSpan]
       ? parseInt(indentConfig[currentSpan].replace(/[XLMS]{0,2}/g, ''), 10)
       : [undefined, 0, 0, 0, 0][currentSpan];
@@ -121,19 +122,19 @@ class GridComponent extends Component<GridPropTypes, GridState> {
   private renderGridElements = (child: ReactElement<any>) => {
     const { defaultIndent, defaultSpan, classes } = this.props as GridPropsInternal;
 
-    const span = GridComponent.getSpanFromString(defaultSpan);
-    const indentSpan = GridComponent.getIndentFromString(defaultIndent);
+    const span = Grid.getSpanFromString(defaultSpan);
+    const indentSpan = Grid.getIndentFromString(defaultIndent);
 
     const gridSpanClasses = StyleClassHelper.of(classes.gridSpan);
     if (child.props['data-layout'] && child.props['data-layout'].span) {
-      const childSpan = GridComponent.getSpanFromString(child.props['data-layout'].span);
+      const childSpan = Grid.getSpanFromString(child.props['data-layout'].span);
       gridSpanClasses.put(classes[`gridSpan${childSpan}`]);
     } else {
       gridSpanClasses.put(classes[`gridSpan${span}`]);
     }
 
     if (child.props['data-layout'] && child.props['data-layout'].indent) {
-      const childIndent = GridComponent.getIndentFromString(child.props['data-layout'].indent);
+      const childIndent = Grid.getIndentFromString(child.props['data-layout'].indent);
       if (childIndent && childIndent > 0) {
         gridSpanClasses.put(classes[`gridIndent${childIndent}`]);
       }
@@ -144,7 +145,7 @@ class GridComponent extends Component<GridPropTypes, GridState> {
   };
 
   render() {
-    const { children, classes, hSpacing, vSpacing, position, width, style, className, tooltip } = this
+    const { children, classes, hSpacing, vSpacing, position, width, style, className, tooltip, innerRef, slot } = this
       .props as GridPropsInternal;
 
     const gridClasses = StyleClassHelper.of(classes.grid);
@@ -177,16 +178,9 @@ class GridComponent extends Component<GridPropTypes, GridState> {
     }
 
     return (
-      <div
-        className={gridClasses.valueOf()}
-        style={gridStyle}
-        title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
-      >
+      <div ref={innerRef} className={gridClasses.valueOf()} style={gridStyle} title={tooltip} slot={slot}>
         {Children.map(children, this.renderGridElements)}
       </div>
     );
   }
 }
-
-export const Grid = withStyles(styles)(GridComponent);

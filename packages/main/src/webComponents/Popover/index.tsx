@@ -1,14 +1,14 @@
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event, useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import UI5Popover from '@ui5/webcomponents/dist/Popover';
-import React, { Component, CSSProperties, ReactNode, RefObject } from 'react';
+import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useRef } from 'react';
 import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
 import { PlacementType } from '../../lib/PlacementType';
 import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated
-  noHeader?: boolean; // @generated
   headerText?: string; // @generated
   placementType?: PlacementType; // @generated
   horizontalAlign?: PopoverHorizontalAlign; // @generated
@@ -31,73 +31,51 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
 
 const InternalPopover = withWebComponent<PopoverPropTypes>(UI5Popover);
 
-class Popover extends Component<PopoverPropTypes> {
-  private popoverRef: any;
-  private openByRef: RefObject<HTMLDivElement> = React.createRef();
+export const Popover = React.forwardRef((props: PopoverPropTypes, givenRef: RefObject<Ui5PopoverDomRef>) => {
+  const { openBy, openByStyle, open, ...rest } = props;
 
-  static defaultProps = {
-    initialFocus: null, // @generated
-    headerText: '', // @generated
-    placementType: PlacementType.Right, // @generated
-    horizontalAlign: PopoverHorizontalAlign.Center, // @generated
-    verticalAlign: PopoverVerticalAlign.Center // @generated
-  };
+  const openByRef: RefObject<HTMLDivElement> = useRef(null);
 
-  private handleOpenPopover = () => {
-    return this.popoverRef.openBy ? this.popoverRef.openBy(this.openByRef.current) : null;
-  };
+  const internalPopoverRef = useConsolidatedRef<Ui5PopoverDomRef>(givenRef);
 
-  private closePopover = () => {
-    return this.popoverRef.close ? this.popoverRef.close() : null;
-  };
+  const handleOpenPopover = useCallback(() => {
+    internalPopoverRef.current.openBy && internalPopoverRef.current.openBy(openByRef.current);
+  }, [internalPopoverRef, openByRef]);
 
-  getPopoverRef = (el: any) => {
-    const { innerComponentRef } = this.props;
-    this.popoverRef = el;
-    if (innerComponentRef) {
-      innerComponentRef(el);
-    }
-  };
+  const closePopover = useCallback(() => {
+    internalPopoverRef.current.close && internalPopoverRef.current.close();
+  }, [internalPopoverRef]);
 
-  componentDidMount() {
-    const { open } = this.props;
-    if (!this.popoverRef) {
-      return;
-    }
+  useEffect(() => {
     if (open) {
-      this.handleOpenPopover();
+      handleOpenPopover();
     } else {
-      this.closePopover();
+      closePopover();
     }
+  }, [open]);
+
+  let style = { display: 'inline-block' };
+  if (openByStyle) {
+    style = Object.assign(openByStyle, style);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.open !== this.props.open) {
-      if (this.props.open) {
-        this.handleOpenPopover();
-      } else {
-        this.closePopover();
-      }
-    }
-  }
+  return (
+    <>
+      {openBy && (
+        <div style={style} onClick={handleOpenPopover} ref={openByRef}>
+          {openBy}
+        </div>
+      )}
+      <InternalPopover {...rest} ref={internalPopoverRef} />
+    </>
+  );
+});
 
-  render() {
-    const { openBy, openByStyle, ...props } = this.props;
-    let style = { display: 'inline-block' };
-    if (openByStyle) {
-      style = Object.assign(openByStyle, style);
-    }
-    return (
-      <>
-        {openBy && (
-          <div style={style} onClick={this.handleOpenPopover} ref={this.openByRef}>
-            {openBy}
-          </div>
-        )}
-        <InternalPopover {...props} innerComponentRef={this.getPopoverRef} />
-      </>
-    );
-  }
-}
-
-export { Popover };
+Popover.defaultProps = {
+  initialFocus: null, // @generated
+  headerText: '', // @generated
+  placementType: PlacementType.Right, // @generated
+  horizontalAlign: PopoverHorizontalAlign.Center, // @generated
+  verticalAlign: PopoverVerticalAlign.Center // @generated
+};
+Popover.displayName = 'Popover';

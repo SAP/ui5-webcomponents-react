@@ -1,48 +1,28 @@
-import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, PureComponent, ReactElement, ReactNode, ReactNodeArray } from 'react';
+import { Event, StyleClassHelper, useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import debounce from 'lodash.debounce';
+import React, {
+  Children,
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  ReactNodeArray,
+  RefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
+// @ts-ignore
+import { createUseStyles } from 'react-jss';
 import { scroller } from 'react-scroll';
-import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
-import { Button } from '../../lib/Button';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import styles from './ObjectPage.jss';
-import { ObjectPageAnchor } from './ObjectPageAnchor';
+import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
+import { ObjectPageContent } from './ObjectPageContent';
+import { ObjectPageHeader } from './ObjectPageHeader';
 
-const objectPageContentStyles = ({ parameters }: JSSTheme) => ({
-  sectionsContainer: {
-    '&:before': {
-      display: 'table',
-      content: '""'
-    },
-    '& :first-child > div[role="heading"]': {
-      display: 'none'
-    },
-    position: 'relative',
-    height: '100%',
-    overflowX: 'hidden',
-    overflowY: 'auto',
-    backgroundColor: parameters.sapUiBaseBG,
-    '&:after': {
-      clear: 'both',
-      display: 'table',
-      content: '""'
-    }
-  }
-});
-
-const ObjectPageContent = withStyles(objectPageContentStyles)((props) => {
-  const { children, classes, getFillerDivDomRef } = props;
-
-  return (
-    <section id="ObjectPageSections" className={classes.sectionsContainer}>
-      {children}
-      <div ref={getFillerDivDomRef} />
-    </section>
-  );
-});
-
-export interface ObjectPagePropTypes extends Fiori3CommonProps {
+export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
   subTitle?: string;
   image?: string;
@@ -54,275 +34,234 @@ export interface ObjectPagePropTypes extends Fiori3CommonProps {
   selectedSectionId?: string;
   onSelectedSectionChanged?: (event: Event) => void;
   showHideHeaderButton?: boolean;
+  noHeader?: boolean;
 }
 
-interface ObjectPageInternalProps extends ObjectPagePropTypes, ClassProps {}
+const useStyles = createUseStyles(styles);
 
-interface ObjectPageState {
-  selectedSectionIndex: number;
-  prevProps: {
-    selectedSectionId: string;
-  };
-  showHeader: boolean;
-}
+const findSectionIndexById = (sections, id) => {
+  const index = Children.toArray(sections).findIndex(
+    (objectPageSection: ReactElement<any>) => objectPageSection.props.id === id
+  );
+  if (index === -1) {
+    return 0;
+  }
+  return index;
+};
 
-@withStyles(styles)
-export class ObjectPage extends PureComponent<ObjectPagePropTypes, ObjectPageState> {
-  static defaultProps = {
-    title: '',
-    subTitle: '',
-    image: null,
-    imageShapeCircle: false,
-    headerActions: [],
-    renderHeaderContent: null,
-    mode: ObjectPageMode.Default,
-    onSelectedSectionChanged: () => {},
-    showHideHeaderButton: false
-  };
+const scrollToSectionById = (id, index) => {
+  requestAnimationFrame(() => {
+    scroller.scrollTo(`ObjectPageSection-${id}`, {
+      containerId: 'ObjectPageSections',
+      smooth: true,
+      offset: index > 0 ? 45 : 0,
+      duration: 400
+    });
+  });
+};
 
-  private objectPage: HTMLElement;
-  private fillerDivDomRef: HTMLElement;
+export const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
+  const {
+    title,
+    image,
+    subTitle,
+    headerActions,
+    renderHeaderContent,
+    mode,
+    imageShapeCircle,
+    className,
+    style,
+    tooltip,
+    slot,
+    showHideHeaderButton,
+    children,
+    onSelectedSectionChanged,
+    selectedSectionId,
+    noHeader
+  } = props;
 
-  static getDerivedStateFromProps(nextProps: ObjectPagePropTypes, prevState: ObjectPageState) {
-    if (nextProps.selectedSectionId !== prevState.prevProps.selectedSectionId) {
-      let selectedSectionIndex = Children.toArray(nextProps.children).findIndex(
-        (objectPageSection: ReactElement<any>) => objectPageSection.props.id === nextProps.selectedSectionId
-      );
-      if (selectedSectionIndex < 0) selectedSectionIndex = 0;
-      return {
-        selectedSectionIndex,
-        prevProps: {
-          selectedSectionId: nextProps.selectedSectionId
-        }
-      };
+  const [selectedSectionIndex, setSelectedSectionIndex] = useState(findSectionIndexById(children, selectedSectionId));
+  const [selectedSubSectionId, setSelectedSubSectionId] = useState(null);
+  const objectPage: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
+  const fillerDivDomRef: RefObject<HTMLDivElement> = useRef();
+  const objectPageContent: RefObject<HTMLDivElement> = useRef();
+
+  useEffect(() => {
+    let selectedIndex = findSectionIndexById(children, selectedSectionId);
+    if (selectedIndex === -1) {
+      selectedIndex = 0;
     }
-    return null;
+
+    if (selectedSectionIndex !== selectedIndex) {
+      setSelectedSectionIndex(selectedIndex);
+    }
+  }, [selectedSectionId]);
+
+  let content = children;
+  if (mode === ObjectPageMode.IconTabBar) {
+    content = Children.toArray(children)[selectedSectionIndex];
   }
 
-  state = {
-    selectedSectionIndex: 0,
-    prevProps: {
-      selectedSectionId: ''
-    },
-    showHeader: true
+  const adjustDummyDivHeight = () => {
+    requestAnimationFrame(() => {
+      if (!objectPage.current) {
+        // in case componentWillUnmount didn´t fire
+        window.removeEventListener('resize', adjustDummyDivHeight);
+        return;
+      }
+
+      const sections = objectPage.current.querySelectorAll('[id^="ObjectPageSection"]');
+      if (!sections || sections.length < 1) {
+        return;
+      }
+
+      const lastSectionDomRef = sections[sections.length - 1];
+      const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
+      let scrollOffset = 0;
+
+      let domRef = null;
+      if (subSections.length > 0) {
+        domRef = subSections[subSections.length - 1];
+      } else {
+        domRef = lastSectionDomRef;
+        scrollOffset = 45;
+      }
+
+      let heightDiff = objectPageContent.current.offsetHeight - domRef.offsetHeight + scrollOffset;
+      heightDiff = heightDiff > 0 ? heightDiff : 0;
+      fillerDivDomRef.current.style.height = `${heightDiff}px`;
+    });
   };
 
-  private getFillerDivDomRef = (ref) => {
-    this.fillerDivDomRef = ref;
-  };
+  // register resize handler
+  useEffect(() => {
+    window.addEventListener('resize', adjustDummyDivHeight);
+    return window.removeEventListener('resize', adjustDummyDivHeight);
+  }, []);
 
-  componentDidMount() {
-    this.adjustDummyDivHeight();
-    if (this.props.mode !== ObjectPageMode.IconTabBar) {
-      window.addEventListener('resize', this.adjustDummyDivHeight);
-      if (this.props.selectedSectionId && this.state.selectedSectionIndex >= 0) {
-        scroller.scrollTo(`ObjectPageSection-${this.props.selectedSectionId}`, {
-          containerId: 'ObjectPageSections',
-          smooth: true
-        });
+  useEffect(() => {
+    adjustDummyDivHeight();
+  }, [noHeader]);
+
+  // scroll to selected section after mount
+  useEffect(() => {
+    if (mode !== ObjectPageMode.IconTabBar) {
+      if (selectedSectionId && selectedSectionIndex > 0) {
+        scrollToSectionById(selectedSectionId, selectedSectionIndex);
       }
     }
-  }
+  }, []);
 
-  componentDidUpdate(
-    prevProps: Readonly<ObjectPagePropTypes>,
-    prevState: Readonly<ObjectPageState>,
-    snapshot?: any
-  ): void {
-    if (
-      this.props.selectedSectionId !== prevProps.selectedSectionId &&
-      this.props.mode === ObjectPageMode.Default &&
-      this.state.selectedSectionIndex >= 0
-    ) {
+  useEffect(() => {
+    if (selectedSubSectionId && mode === ObjectPageMode.IconTabBar) {
       requestAnimationFrame(() => {
-        scroller.scrollTo(`ObjectPageSection-${this.props.selectedSectionId}`, {
-          containerId: 'ObjectPageSections'
+        scroller.scrollTo(`ObjectPageSubSection-${selectedSubSectionId}`, {
+          containerId: 'ObjectPageSections',
+          smooth: true,
+          offset: 36,
+          duration: 400
         });
       });
     }
-  }
+  }, [selectedSubSectionId]);
 
-  componentWillUnmount() {
-    if (this.props.mode !== ObjectPageMode.IconTabBar) {
-      window.removeEventListener('resize', this.adjustDummyDivHeight);
+  useEffect(() => {
+    if (mode === ObjectPageMode.Default) {
+      scrollToSectionById(children[selectedSectionIndex].props.id, selectedSectionIndex);
     }
-  }
-
-  adjustDummyDivHeight() {
-    if (!this.objectPage) {
-      // in case componentWillUnmount didn´t fire
-      window.removeEventListener('resize', this.adjustDummyDivHeight);
-      return;
+    if (mode === ObjectPageMode.IconTabBar) {
+      adjustDummyDivHeight();
     }
-    if (this.props.mode !== ObjectPageMode.Default) {
-      return;
-    }
+  }, [selectedSectionIndex]);
 
-    const sections = this.objectPage.querySelectorAll('[id^="ObjectPageSection"]');
-    if (!sections || sections.length < 1) {
-      return;
-    }
-
-    const lastSectionDomRef = sections[sections.length - 1];
-    const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
-
-    let domRef = null;
-    if (subSections.length > 0) {
-      domRef = subSections[subSections.length - 1];
-    } else {
-      domRef = lastSectionDomRef;
-    }
-
-    let heightDiff = lastSectionDomRef.parentElement.offsetHeight - domRef.offsetHeight;
-    heightDiff = heightDiff > 0 ? heightDiff : 0;
-    this.fillerDivDomRef.style.height = `${heightDiff}px`;
-  }
-
-  render() {
-    const {
-      title,
-      image,
-      subTitle,
-      headerActions,
-      renderHeaderContent,
-      mode,
-      imageShapeCircle,
-      className,
-      style,
-      tooltip
-    } = this.props;
-
-    const { selectedSectionIndex } = this.state;
-
-    const { children, classes } = this.props as ObjectPageInternalProps;
-
-    let content = null;
-
-    switch (mode) {
-      case ObjectPageMode.IconTabBar:
-        content = Children.toArray(children)[selectedSectionIndex];
-        break;
-      default:
-        content = children;
-        break;
-    }
-
-    const objectPageClasses = StyleClassHelper.of(classes.objectPage);
-    if (className) {
-      objectPageClasses.put(className);
-    }
-
-    return (
-      <div
-        data-component-name="ObjectPage"
-        data-ui5-slot={this.props['data-ui5-slot']}
-        className={objectPageClasses.toString()}
-        style={style}
-        ref={(el) => {
-          this.objectPage = el;
-        }}
-        title={tooltip}
-      >
-        <header className={classes.header}>
-          {/* Title Bar */}
-          <header className={classes.titleBar}>
-            {image && (
-              <span className={classes.image}>
-                <img src={image} />
-              </span>
-            )}
-            <span className={classes.container}>
-              <h1 className={classes.title}>{title}</h1>
-              <span className={classes.subTitle}>{subTitle}</span>
-            </span>
-            <span className={classes.actions}>
-              {headerActions.map((action, index) =>
-                cloneElement(action, {
-                  key: index
-                })
-              )}
-            </span>
-          </header>
-          {/* Header Content */}
-          <div className={classes.headerContentWrapper}>
-            {this.state.showHeader && (
-              <div className={classes.headerContent}>
-                {image && (
-                  <span
-                    className={classes.headerImage}
-                    style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
-                  >
-                    <img src={image} style={{ width: '100%', height: '100%' }} />
-                  </span>
-                )}
-                {renderHeaderContent && <span className={classes.headerCustomContent}>{renderHeaderContent()}</span>}
-              </div>
-            )}
-
-            <div className={classes.hideHeaderContent}>
-              {this.props.showHideHeaderButton && (
-                <Button
-                  style={{ position: 'absolute', '--_ui5_button_compact_height': '1rem', lineHeight: '1.25rem' }}
-                  icon={this.state.showHeader ? 'sap-icon://navigation-up-arrow' : 'sap-icon://navigation-down-arrow'}
-                  onPress={this.changeHeader}
-                />
-              )}
-            </div>
-          </div>
-          <section className={classes.anchorBar} role="navigation">
-            {Children.map(children, (section, index) => (
-              <ObjectPageAnchor
-                key={`Anchor-${index}`}
-                section={section}
-                index={index}
-                mode={mode}
-                selected={index === selectedSectionIndex}
-                classes={classes}
-                onAnchorSelected={this.handleOnAnchorSelected(index)}
-                onSubSectionSelected={this.handleOnSubSectionSelected(index)}
-              />
-            ))}
-          </section>
-        </header>
-        <ObjectPageContent getFillerDivDomRef={this.getFillerDivDomRef}>{content}</ObjectPageContent>
-      </div>
-    );
-  }
-
-  private changeHeader = () => {
-    this.setState({ showHeader: !this.state.showHeader });
-  };
-
-  private handleOnSubSectionSelected = (index) => (e) => {
-    if (this.props.mode === ObjectPageMode.IconTabBar) {
-      const scrollId = e.getParameter('props').id;
-      this.setState(
-        {
-          selectedSectionIndex: index
-        },
-        () => {
-          scroller.scrollTo(`ObjectPageSection-${scrollId}`, {
-            containerId: 'ObjectPageSections',
-            smooth: true
-          });
-        }
-      );
-    }
-  };
-
-  private handleOnAnchorSelected = (index) => (e) => {
-    if (this.props.mode !== ObjectPageMode.Default) {
-      this.setState({
-        selectedSectionIndex: index
-      });
-    }
-
-    this.props.onSelectedSectionChanged(
-      Event.of(this, e.getOriginalEvent(), {
-        selectedSectionIndex: index,
+  const fireOnSelectedChangedEvent = debounce((e) => {
+    onSelectedSectionChanged(
+      Event.of(null, e.getOriginalEvent(), {
+        selectedSectionIndex: e.getParameter('index'),
         selectedSectionId: e.getParameter('props').id,
         section: e.getParameters()
       })
     );
-  };
-}
+  }, 500);
+
+  const handleOnSectionSelected = useCallback(
+    (e) => {
+      if (mode === ObjectPageMode.IconTabBar) {
+        setSelectedSectionIndex(e.getParameter('index'));
+      }
+      fireOnSelectedChangedEvent(e);
+    },
+    [onSelectedSectionChanged]
+  );
+
+  const handleOnSubSectionSelected = useCallback(
+    (e) => {
+      if (mode === ObjectPageMode.IconTabBar) {
+        const sectionIndex = e.getParameter('sectionIndex');
+        const subSection = e.getParameter('subSection');
+        setSelectedSectionIndex(sectionIndex);
+        setSelectedSubSectionId(subSection.props.id);
+      }
+    },
+    [mode]
+  );
+
+  const classes = useStyles();
+  const objectPageClasses = StyleClassHelper.of(classes.objectPage);
+  if (className) {
+    objectPageClasses.put(className);
+  }
+
+  return (
+    <div
+      data-component-name="ObjectPage"
+      slot={slot}
+      className={objectPageClasses.toString()}
+      style={style}
+      ref={objectPage}
+      title={tooltip}
+    >
+      {!noHeader && (
+        <ObjectPageHeader
+          title={title}
+          subTitle={subTitle}
+          image={image}
+          headerActions={headerActions}
+          renderHeaderContent={renderHeaderContent}
+          imageShapeCircle={imageShapeCircle}
+          showHideHeaderButton={showHideHeaderButton}
+        />
+      )}
+      <section className={classes.anchorBar} role="navigation">
+        {Children.map(children, (section, index) => (
+          <ObjectPageAnchorButton
+            key={`Anchor-${index}`}
+            section={section}
+            index={index}
+            selected={selectedSectionIndex === index}
+            mode={mode}
+            onSectionSelected={handleOnSectionSelected}
+            onSubSectionSelected={handleOnSubSectionSelected}
+          />
+        ))}
+      </section>
+      <ObjectPageContent ref={objectPageContent} fillerRef={fillerDivDomRef}>
+        {content}
+      </ObjectPageContent>
+    </div>
+  );
+});
+
+ObjectPage.defaultProps = {
+  title: '',
+  subTitle: '',
+  image: null,
+  imageShapeCircle: false,
+  headerActions: [],
+  renderHeaderContent: null,
+  mode: ObjectPageMode.Default,
+  onSelectedSectionChanged: () => {},
+  showHideHeaderButton: false,
+  selectedSectionId: null,
+  noHeader: false
+};

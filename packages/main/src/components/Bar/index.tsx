@@ -21,8 +21,17 @@ export class Bar extends Component<BarPropTypes> {
   };
 
   render() {
-    const { classes, renderContentLeft, renderContentMiddle, renderContentRight, className, style, tooltip } = this
-      .props as BarInternalProps;
+    const {
+      classes,
+      renderContentLeft,
+      renderContentMiddle,
+      renderContentRight,
+      className,
+      style,
+      tooltip,
+      innerRef,
+      slot
+    } = this.props as BarInternalProps;
 
     const cssClasses = StyleClassHelper.of(classes.bar);
     if (className) {
@@ -34,7 +43,8 @@ export class Bar extends Component<BarPropTypes> {
         className={cssClasses.toString()}
         style={style}
         title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
+        slot={slot}
+        ref={innerRef}
       >
         <div data-bar-part="Left" className={classes.left}>
           {renderContentLeft()}

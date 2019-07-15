@@ -10,7 +10,6 @@ import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
 storiesOf('UI5 Web Components | Popover', module).add('Default', () => (
   <Popover
     initialFocus={'generatedString'}
-    noHeader={boolean('noHeader', false)}
     headerText={'generatedString'}
     placementType={select('placementType', PlacementType)}
     horizontalAlign={select('horizontalAlign', PopoverHorizontalAlign, null)}

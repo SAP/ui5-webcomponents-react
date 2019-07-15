@@ -1,7 +1,7 @@
 import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { isValidElement, PureComponent, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Icon } from '../../lib/Icon';
 import { MessageBoxButton } from '../../lib/MessageBoxButton';
 import { Text } from '../../lib/Text';
@@ -30,7 +30,7 @@ export enum MessageBoxTypes {
   HIGHLIGHT = 'Highlight'
 }
 
-export interface MessageBoxPropTypes extends Fiori3CommonProps {
+export interface MessageBoxPropTypes extends CommonProps {
   visible: boolean;
   title?: string;
   children: string;
@@ -114,7 +114,8 @@ export class MessageBox extends PureComponent<MessageBoxPropTypes> {
   };
 
   render() {
-    const { visible, classes, type, children, className, style, tooltip } = this.props as MessageBoxInternalPropTypes;
+    const { visible, classes, type, children, className, style, tooltip, innerRef, slot } = this
+      .props as MessageBoxInternalPropTypes;
     if (!visible) {
       return null;
     }
@@ -128,7 +129,7 @@ export class MessageBox extends PureComponent<MessageBoxPropTypes> {
     const title = this.getTitle();
 
     return (
-      <div className={classes.overlay} data-ui5-slot={this.props['data-ui5-slot']}>
+      <div ref={innerRef} className={classes.overlay} slot={slot}>
         <div className={messageBoxClasses.toString()} style={style} title={tooltip}>
           <header className={classes.header} data-type={type}>
             {!!icon && <div className={classes.icon}>{icon}</div>}

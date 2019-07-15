@@ -123,7 +123,7 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
       <Button
         className={classes.footer}
         key="btn-cancel"
-        onPress={this.handleCancelButtonClick}
+        onClick={this.handleCancelButtonClick}
         design={ButtonDesign.Emphasized}
       >
         Cancel
@@ -132,7 +132,8 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
   };
 
   render() {
-    const { variantItems, popupTitle, className, style, tooltip } = this.props;
+    const { variantItems, popupTitle, className, style, tooltip, innerRef } = this
+      .props as VariantManagementInternalProps;
     const { selectedKey } = this.state;
 
     if (!variantItems || variantItems.length < 1) {
@@ -141,6 +142,7 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
 
     return (
       <Popover
+        ref={innerRef}
         open={this.state.open}
         onAfterOpen={this.handleAfterOpen}
         headerText={popupTitle}
@@ -151,7 +153,7 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
         innerStyles={style}
         tooltip={tooltip}
       >
-        <List onItemPress={this.handleVariantItemSelect} mode={ListMode.SingleSelect}>
+        <List onItemClick={this.handleVariantItemSelect} mode={ListMode.SingleSelect}>
           {variantItems.map((item) => (
             <StandardListItem
               style={{ width: '300px' }}

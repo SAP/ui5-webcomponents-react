@@ -1,6 +1,5 @@
 const PATHS = require('./paths');
 const path = require('path');
-// const webComponentConfigMock = require('./webComponentConfigMock');
 
 module.exports = {
   preset: 'ts-jest',
@@ -26,7 +25,7 @@ module.exports = {
     '!**/webComponents/**/*'
   ],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
-  testEnvironment: 'jsdom-fourteen',
+  testEnvironment: 'jsdom-fifteen',
   testMatch: ['<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
@@ -37,6 +36,8 @@ module.exports = {
       'mock',
       'webComponentConfigMock.js'
     ),
+    '^@ui5/webcomponents-base/src/boot': '<rootDir>/shared/tests/mock/WebComponentsBoot',
+    '^@ui5/webcomponents-base/src/theming/StyleInjection': '<rootDir>/shared/tests/mock/StyleInjection',
     '\\.(css|less)$': 'identity-obj-proxy'
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],

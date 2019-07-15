@@ -1,12 +1,12 @@
 import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { FC, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Icon } from '../../lib/Icon';
 import { ValueState } from '../../lib/ValueState';
 import styles from './ObjectStatus.jss';
 
-export interface ObjectStatusPropTypes extends Fiori3CommonProps {
+export interface ObjectStatusPropTypes extends CommonProps {
   children?: string | number | ReactNode;
   icon?: ReactNode;
   state?: ValueState;
@@ -34,8 +34,19 @@ const getDefaultIcon = (state) => {
   }
 };
 
-export const ObjectStatus: FC<ObjectStatusPropTypes> = withStyles(styles)((props: ObjectStatusPropTypesInternal) => {
-  const { state, showDefaultIcon, children, icon, classes, className, style, tooltip } = props;
+export const ObjectStatus: FC<ObjectStatusPropTypes> = withStyles(styles)((props: ObjectStatusPropTypes) => {
+  const {
+    state,
+    showDefaultIcon,
+    children,
+    icon,
+    classes,
+    className,
+    style,
+    tooltip,
+    innerRef,
+    slot
+  } = props as ObjectStatusPropTypesInternal;
   const iconToRender = !icon && showDefaultIcon ? getDefaultIcon(state) : icon;
 
   const objStatusClasses = StyleClassHelper.of(classes.objectStatus);
@@ -50,7 +61,7 @@ export const ObjectStatus: FC<ObjectStatusPropTypes> = withStyles(styles)((props
   const textClass = classes[`text${state}`];
 
   return (
-    <div className={objStatusClasses.valueOf()} style={style} title={tooltip} data-ui5-slot={props['data-ui5-slot']}>
+    <div ref={innerRef} className={objStatusClasses.valueOf()} style={style} title={tooltip} slot={slot}>
       {iconToRender && <div className={iconClasses.valueOf()}>{iconToRender}</div>}
       {children !== null && children !== undefined && <span className={textClass}>{children}</span>}
     </div>

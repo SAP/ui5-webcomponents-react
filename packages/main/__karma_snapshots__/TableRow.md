@@ -4,13 +4,13 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <ThemeProvider jss={{...}} theme={{...}}>
-    <TableRow>
-      <WithWebComponent theme={{...}}>
+  <JssProvider generateId={[Function]} id={{...}}>
+    <ThemeProvider theme={{...}}>
+      <TableRow>
         <ui5-table-row class="" />
-      </WithWebComponent>
-    </TableRow>
-  </ThemeProvider>
+      </TableRow>
+    </ThemeProvider>
+  </JssProvider>
 </ThemeProvider>
 ```
 

@@ -10,7 +10,7 @@ export interface ButtonPropTypes extends WithWebComponentPropTypes {
   icon?: string; // @generated
   iconEnd?: boolean; // @generated
   submits?: boolean; // @generated
-  onPress?: (event: Event) => void; // @generated
+  onClick?: (event: Event) => void; // @generated
   children?: string; // @generated
 }
 

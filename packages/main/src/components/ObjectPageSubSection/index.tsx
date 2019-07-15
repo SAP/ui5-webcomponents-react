@@ -1,11 +1,10 @@
-import { fonts, HSLColor, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { fonts, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import React, { forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
+// @ts-ignore
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
-
-const lighten = (amount, color) => HSLColor.of(color).lighten(amount * 100).hsl;
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
   title?: string;
@@ -13,70 +12,56 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
 }
 
-export interface ObjectPageSubSectionInternalProps extends ObjectPageSubSectionPropTypes, ClassProps {
-  isSubSection?: boolean;
-}
-
-const styles = ({ theme, parameters }: JSSTheme) => ({
+const styles = ({ parameters }: JSSTheme) => ({
   objectPageSubSection: {
-    'padding-bottom': 0,
-    borderBottom: `0.125rem solid ${lighten(0.05, parameters.sapUiListBorderColor)}`,
+    padding: '1rem 0',
     '&:focus': {
-      outline: `1px dotted ${parameters.sapUIContentFocusColor}`,
+      outline: `1px dotted ${parameters.sapUiContentFocusColor}`,
       outlineOffset: '-1px'
     }
   },
-  objectPageSubSectionHeader: {
-    height: 'auto',
-    overflow: 'auto',
-    wordWrap: 'break-word',
-    padding: '1rem 0 0 0'
-  },
   objectPageSubSectionHeaderTitle: {
-    whiteSpace: 'normal',
-    float: 'left',
-    lineHeight: '3rem',
-    fontSize: fonts.sapMFontHeader4Size,
-    fontWeight: 'normal',
-    color: parameters.sapUiGroupTitleTextColor
+    fontSize: fonts.sapMFontHeader5Size,
+    color: parameters.sapUiGroupTitleTextColor,
+    marginBottom: '0.5rem'
   },
   subSectionContent: {
     padding: '1rem 2rem 3rem 0'
   }
 });
 
-@withStyles(styles)
-export class ObjectPageSubSection extends PureComponent<ObjectPageSubSectionPropTypes> {
-  static defaultProps = {
-    title: null,
-    isSubSection: true
-  };
+const useStyles = createUseStyles(styles);
 
-  render() {
-    const { children, id, title, classes, className, style, tooltip } = this.props as ObjectPageSubSectionInternalProps;
+export const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, ref: RefObject<any>) => {
+  const { children, id, title, className, style, tooltip } = props;
 
-    if (!id) {
-      throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
-    }
-
-    const subSectionClassName = StyleClassHelper.of(classes.objectPageSubSection);
-    if (className) {
-      subSectionClassName.put(className);
-    }
-
-    return (
-      <div
-        className={subSectionClassName.toString()}
-        id={`ObjectPageSubSection-${id}`}
-        role="region"
-        style={style}
-        title={tooltip}
-      >
-        <div className={classes.objectPageSubSectionHeader}>
-          <div className={classes.objectPageSubSectionHeaderTitle}>{title}</div>
-        </div>
-        <div className={classes.subSectionContent}>{children}</div>
-      </div>
-    );
+  if (!id) {
+    throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
   }
-}
+
+  const classes = useStyles();
+  const subSectionClassName = StyleClassHelper.of(classes.objectPageSubSection);
+  if (className) {
+    subSectionClassName.put(className);
+  }
+
+  return (
+    <div
+      ref={ref}
+      className={subSectionClassName.toString()}
+      id={`ObjectPageSubSection-${id}`}
+      role="region"
+      style={style}
+      title={tooltip}
+    >
+      <div className={classes.objectPageSubSectionHeaderTitle}>{title}</div>
+      <div className={classes.subSectionContent}>{children}</div>
+    </div>
+  );
+});
+
+ObjectPageSubSection.defaultProps = {
+  title: null,
+  // @ts-ignore
+  isSubSection: true
+};

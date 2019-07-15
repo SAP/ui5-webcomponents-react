@@ -3,6 +3,154 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2-rc.16](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.15...v0.3.2-rc.16) (2019-07-12)
+
+
+### Bug Fixes
+
+* **ObjectPage:** Highlight selected section while scrolling ([#56](https://github.com/SAP/ui5-webcomponents-react/issues/56)) ([42a6a10](https://github.com/SAP/ui5-webcomponents-react/commit/42a6a10))
+
+
+
+
+
+## [0.3.2-rc.15](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.14...v0.3.2-rc.15) (2019-07-11)
+
+
+### Bug Fixes
+
+* **ThemeProvider:** Only inject theme properties if they are not present ([#55](https://github.com/SAP/ui5-webcomponents-react/issues/55)) ([3ec61d5](https://github.com/SAP/ui5-webcomponents-react/commit/3ec61d5))
+
+
+
+
+
+## [0.3.2-rc.14](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.13...v0.3.2-rc.14) (2019-07-10)
+
+
+### Code Refactoring
+
+* **Custom Components:** Expose HTML Element via ref in every component ([#54](https://github.com/SAP/ui5-webcomponents-react/issues/54)) ([c285ee6](https://github.com/SAP/ui5-webcomponents-react/commit/c285ee6))
+
+
+### BREAKING CHANGES
+
+* **Custom Components:** All Components now expose their root html node/the encapsulated Web Component via ref instead of the React instance.
+
+
+
+
+
+## [0.3.2-rc.13](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.12...v0.3.2-rc.13) (2019-07-05)
+
+
+### Bug Fixes
+
+* **CSS-Variables:** remove trailing semicolon ([#53](https://github.com/SAP/ui5-webcomponents-react/issues/53)) ([f9d1daf](https://github.com/SAP/ui5-webcomponents-react/commit/f9d1daf)), closes [#49](https://github.com/SAP/ui5-webcomponents-react/issues/49)
+
+
+
+
+
+## [0.3.2-rc.12](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.11...v0.3.2-rc.12) (2019-07-05)
+
+
+### Bug Fixes
+
+* **RadialChart:** Handle width and height prop correctly ([#52](https://github.com/SAP/ui5-webcomponents-react/issues/52)) ([2d3f091](https://github.com/SAP/ui5-webcomponents-react/commit/2d3f091))
+
+
+
+
+
+## [0.3.2-rc.11](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.10...v0.3.2-rc.11) (2019-07-04)
+
+
+*  feat(WebComponents): Updated to v1.0.0-rc.2 (#51) ([8a40deb](https://github.com/SAP/ui5-webcomponents-react/commit/8a40deb)), closes [#51](https://github.com/SAP/ui5-webcomponents-react/issues/51)
+
+
+### BREAKING CHANGES
+
+* **ShellBarItem**: prop `onPress` is renamed to `onClick`
+* **Dialog**: remove prop `noHeader`
+* **Popup**: remove prop `noHeader`
+Please also check the [UI5 Web Components Release Notes](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0-rc.2)
+
+
+
+
+
+## [0.3.2-rc.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.9...v0.3.2-rc.10) (2019-07-03)
+
+
+### Bug Fixes
+
+* **Table:** Fixed Table and adapt slot handling ([#50](https://github.com/SAP/ui5-webcomponents-react/issues/50)) ([2159ab1](https://github.com/SAP/ui5-webcomponents-react/commit/2159ab1))
+
+
+### BREAKING CHANGES
+
+* **Table:** Use prop `slot` instead of `data-ui5-slot`
+* **Table:** **Table**: prop `rows` is replaced by `children`
+* **Table:** **TableRow**: prop `header` is replaced by `children`
+
+
+
+
+
+## [0.3.2-rc.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.8...v0.3.2-rc.9) (2019-07-02)
+
+
+### Features
+
+* **WebComponents:** Updated Wrappers to v1.0.0-rc.1 ([#48](https://github.com/SAP/ui5-webcomponents-react/issues/48)) ([ac6570c](https://github.com/SAP/ui5-webcomponents-react/commit/ac6570c)), closes [#43](https://github.com/SAP/ui5-webcomponents-react/issues/43)
+
+
+### BREAKING CHANGES
+
+* **WebComponents:** **Button**: `onPress` renamed to `onClick`
+* **WebComponents:** **ToggleButton**: `onPress` renamed to `onClick`
+* **WebComponents:** **Link**: `onPress` renamed to `onClick`
+* **WebComponents:** **List**: `onItemPress` renamed to `onItemClick`
+* **WebComponents:** **ShellBar**: `onNotificationsPress` renamed to `onNotificationsClick`
+* **WebComponents:** **Card**: `onHeaderPress` renamed to `onHeaderClick`
+* **WebComponents:** **ShellBar**: `onProductSwitchPress` renamed to `onProductSwitchClick`
+* **WebComponents:** **ShellBar**: `onLogoPress` renamed to `onLogoClick`
+* **WebComponents:** **ShellBar**: `onCoPilotPress` renamed to `onCoPilotClick`
+* **WebComponents:** **TimelineItem**: `onItemNamePress` renamed to `onItemNameClick`
+* **WebComponents:** **ShellBar**: `onProfilePress` renamed to `onProfileClick`
+
+
+
+
+
+## [0.3.2-rc.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.7...v0.3.2-rc.8) (2019-07-01)
+
+
+### Bug Fixes
+
+* **fiori3:** Fixed Import in Ui5PopoverDomRef interface ([88326b4](https://github.com/SAP/ui5-webcomponents-react/commit/88326b4))
+
+
+
+
+
+## [0.3.2-rc.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.6...v0.3.2-rc.7) (2019-07-01)
+
+
+### Code Refactoring
+
+* **withWebComponent:** replace innerComponentRef with ref for Web Components ([#44](https://github.com/SAP/ui5-webcomponents-react/issues/44)) ([08982ba](https://github.com/SAP/ui5-webcomponents-react/commit/08982ba))
+
+
+### BREAKING CHANGES
+
+* **withWebComponent:** Replaced `innerComponentRef` with `ref` to support React `RefObject`
+
+
+
+
+
 ## [0.3.2-rc.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.5...v0.3.2-rc.6) (2019-06-26)
 
 **Note:** Version bump only for package ui5-webcomponents-react

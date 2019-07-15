@@ -29,10 +29,10 @@ const renderDemo = () => {
       title={text('title', 'Object Page Title')}
       subTitle={text('subTitle', 'Object Page Sub Title')}
       headerActions={[
-        <Button key="1" design={ButtonDesign.Emphasized} onPress={action('onHeaderAction1Pressed')}>
+        <Button key="1" design={ButtonDesign.Emphasized} onClick={action('onHeaderAction1Pressed')}>
           Primary Action
         </Button>,
-        <Button key="2" onPress={action('onHeaderAction2Pressed')}>
+        <Button key="2" onClick={action('onHeaderAction2Pressed')}>
           Action
         </Button>
       ]}
@@ -43,6 +43,7 @@ const renderDemo = () => {
       showHideHeaderButton={boolean('showHideHeaderButton', true)}
       selectedSectionId={text('selectedSectionId', '1')}
       onSelectedSectionChanged={action('onSelectedSectionChanged')}
+      noHeader={boolean('noHeader', false)}
       style={{ height: '700px' }}
     >
       <ObjectPageSection title="Test 1" id="1">

@@ -234,7 +234,8 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
       renderExtension,
       style,
       classes,
-      tooltip
+      tooltip,
+      innerRef
     } = this.props;
 
     let tableClassName = '';
@@ -247,6 +248,7 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
         {title && <TitleBar>{title}</TitleBar>}
         {typeof renderExtension === 'function' && <div className={classes.extension}>{renderExtension()}</div>}
         <ReactTable
+          ref={innerRef}
           data={data}
           loading={loading}
           columns={columns}

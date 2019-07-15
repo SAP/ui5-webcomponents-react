@@ -37,7 +37,7 @@ export class SegmentedButtonItem extends PureComponent<SegmentedButtonItemPropTy
   };
 
   render() {
-    const { enabled, children, selected, icon, classes, width, className, style, tooltip } = this
+    const { enabled, children, selected, icon, classes, width, className, style, tooltip, innerRef } = this
       .props as SegmentedButtonItemInternalProps;
 
     const iconClasses = StyleClassHelper.of(classes.icon);
@@ -55,20 +55,22 @@ export class SegmentedButtonItem extends PureComponent<SegmentedButtonItemPropTy
       segmentedButtonItemClasses.put(classes.disabled);
     }
 
+    const inlineStyle = { minWidth: width };
     if (selected) {
       segmentedButtonItemClasses.put(classes.selected);
+      inlineStyle['--sapUiContentNonInteractiveIconColor'] = 'var(--sapContent_ContrastIconColor)';
     }
 
     if (className) {
       segmentedButtonItemClasses.put(className);
     }
 
-    const inlineStyle = { minWidth: width };
     if (style) {
       Object.assign(inlineStyle, style);
     }
     return (
       <li
+        ref={innerRef}
         className={segmentedButtonItemClasses.valueOf()}
         onClick={this.handleOnClick}
         style={inlineStyle}

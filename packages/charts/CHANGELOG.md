@@ -3,6 +3,106 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2-rc.16](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.15...v0.3.2-rc.16) (2019-07-12)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+## [0.3.2-rc.15](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.14...v0.3.2-rc.15) (2019-07-11)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+## [0.3.2-rc.14](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.13...v0.3.2-rc.14) (2019-07-10)
+
+
+### Code Refactoring
+
+* **Custom Components:** Expose HTML Element via ref in every component ([#54](https://github.com/SAP/ui5-webcomponents-react/issues/54)) ([c285ee6](https://github.com/SAP/ui5-webcomponents-react/commit/c285ee6))
+
+
+### BREAKING CHANGES
+
+* **Custom Components:** All Components now expose their root html node/the encapsulated Web Component via ref instead of the React instance.
+
+
+
+
+
+## [0.3.2-rc.13](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.12...v0.3.2-rc.13) (2019-07-05)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+## [0.3.2-rc.12](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.11...v0.3.2-rc.12) (2019-07-05)
+
+
+### Bug Fixes
+
+* **RadialChart:** Handle width and height prop correctly ([#52](https://github.com/SAP/ui5-webcomponents-react/issues/52)) ([2d3f091](https://github.com/SAP/ui5-webcomponents-react/commit/2d3f091))
+
+
+
+
+
+## [0.3.2-rc.11](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.10...v0.3.2-rc.11) (2019-07-04)
+
+
+*  feat(WebComponents): Updated to v1.0.0-rc.2 (#51) ([8a40deb](https://github.com/SAP/ui5-webcomponents-react/commit/8a40deb)), closes [#51](https://github.com/SAP/ui5-webcomponents-react/issues/51)
+
+
+### BREAKING CHANGES
+
+* **ShellBarItem**: prop `onPress` is renamed to `onClick`
+* **Dialog**: remove prop `noHeader`
+* **Popup**: remove prop `noHeader`
+Please also check the [UI5 Web Components Release Notes](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0-rc.2)
+
+
+
+
+
+## [0.3.2-rc.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.9...v0.3.2-rc.10) (2019-07-03)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+## [0.3.2-rc.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.8...v0.3.2-rc.9) (2019-07-02)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+## [0.3.2-rc.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.7...v0.3.2-rc.8) (2019-07-01)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+## [0.3.2-rc.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.6...v0.3.2-rc.7) (2019-07-01)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
 ## [0.3.2-rc.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.3.2-rc.5...v0.3.2-rc.6) (2019-06-26)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

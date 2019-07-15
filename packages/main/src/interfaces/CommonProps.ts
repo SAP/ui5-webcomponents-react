@@ -15,4 +15,5 @@ export interface CommonProps {
    * A tooltip which will be shown on hover
    */
   tooltip?: string;
+  slot?: string;
 }

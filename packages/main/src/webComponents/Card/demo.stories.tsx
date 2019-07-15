@@ -17,7 +17,7 @@ storiesOf('UI5 Web Components | Card', module).add(
       status={text('status', '5 of 22')}
       avatar={text('avatar', 'sap-icon://order-status')}
       headerInteractive={boolean('headerInteractive', false)}
-      onHeaderPress={action('onHeaderPress')}
+      onHeaderClick={action('onHeaderClick')}
     >
       <List>
         <StandardListItem info="100€">Keyboard</StandardListItem>

@@ -1,7 +1,7 @@
 import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { Component, ReactElement, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
-import { Fiori3CommonProps } from '../../interfaces/Fiori3CommonProps';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { Bar } from '../../lib/Bar';
 import { Button } from '../../lib/Button';
 import { ButtonDesign } from '../../lib/ButtonDesign';
@@ -11,7 +11,7 @@ import { TitleLevel } from '../../lib/TitleLevel';
 import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
 
-export interface PagePropTypes extends Fiori3CommonProps {
+export interface PagePropTypes extends CommonProps {
   title?: string;
   backgroundDesign?: PageBackgroundDesign;
   renderCustomHeader?: () => ReactElement<BarPropTypes>;
@@ -43,7 +43,7 @@ export class Page extends Component<PagePropTypes> {
 
   private renderBackButton = () => {
     return (
-      <Button icon="navigation-left-arrow" design={ButtonDesign.Transparent} onPress={this.handleNavBackButtonPress} />
+      <Button icon="navigation-left-arrow" design={ButtonDesign.Transparent} onClick={this.handleNavBackButtonPress} />
     );
   };
 
@@ -70,7 +70,9 @@ export class Page extends Component<PagePropTypes> {
       renderCustomHeader,
       renderCustomFooter,
       backgroundDesign,
-      tooltip
+      tooltip,
+      innerRef,
+      slot
     } = this.props as PagePropsInternal;
 
     const pageContainer = StyleClassHelper.of(classes.pageContainer);
@@ -92,12 +94,7 @@ export class Page extends Component<PagePropTypes> {
     pageContainer.put(classes[`background${backgroundDesign}`]);
 
     return (
-      <div
-        className={pageContainer.valueOf()}
-        style={style}
-        title={tooltip}
-        data-ui5-slot={this.props['data-ui5-slot']}
-      >
+      <div ref={innerRef} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot}>
         {showHeader && (
           <header className={headerClasses.valueOf()}>
             {renderCustomHeader && renderCustomHeader()}
