@@ -16,7 +16,7 @@ const columns = [
   },
   {
     Header: 'Friend Name',
-    accessor: 'friend.name' // Custom value accessors!
+    accessor: 'friend.name'
   },
   {
     Header: () => <span>Friend Age</span>, // Custom header components!
@@ -61,6 +61,7 @@ function renderStory() {
       filterable={boolean('filterable', true)}
       defaultPageSize={number('defaultPageSize', 15)}
       minRows={number('minRows', 10)}
+      groupable={boolean('groupable', true)}
     />
   );
 }
@@ -80,6 +81,7 @@ function withCroppedPopup() {
           filterable={boolean('filterable', true)}
           defaultPageSize={number('defaultPageSize', 15)}
           minRows={number('minRows', 10)}
+          groupable={boolean('groupable', true)}
         />
       </div>
     </div>
@@ -98,6 +100,7 @@ const tableWithExtension = () => {
       filterable={boolean('filterable', true)}
       defaultPageSize={number('defaultPageSize', 15)}
       minRows={number('minRows', 10)}
+      groupable={boolean('groupable', true)}
     />
   );
 };
@@ -115,6 +118,7 @@ const tableWithCustomTitle = () => {
       filterable={boolean('filterable', true)}
       defaultPageSize={number('defaultPageSize', 15)}
       minRows={number('minRows', 10)}
+      groupable={boolean('groupable', true)}
     />
   );
 };
