@@ -18,4 +18,9 @@ describe('Spinner', () => {
     const wrapper = renderThemedComponent(<Spinner size={Size.Large} />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('with custom class name', () => {
+    const wrapper = renderThemedComponent(<Spinner size={Size.Large} className="testClassName1337" />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });
