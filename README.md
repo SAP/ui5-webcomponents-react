@@ -99,6 +99,13 @@ Then, you can use the Button in your app:
 
 You could import all components also from `@ui5/webcomponents-react` directly, but this will have a negative impact on your bundle size.
 
+### Browser Support
+`@ui5/webcomponents-react` is supporting all modern major browsers. There is no support for Internet Explorer 11 built in.<br />
+If you want your application to run in IE11, you will have to polyfill some features by importing:
+```js
+import '@ui5/webcomponents-react-base/polyfill/IE11';
+```
+
 For Browser Support and the configuration of the UI5 Web Components, please take a look at the 
  [Browser Support](https://github.com/SAP/ui5-webcomponents#browser-support) and the
  [Configure](https://github.com/SAP/ui5-webcomponents#browser-support) sections of the 

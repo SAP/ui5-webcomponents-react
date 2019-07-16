@@ -2,7 +2,6 @@
  * Created by d059190 at 16.03.18
  */
 import font72 from './72';
-import { bootstrap } from './bootstrap';
 import * as fonts from './fonts';
 import { HSLColor } from './HSLColor';
 import * as sap_fiori_3 from './sap_fiori_3';
@@ -35,7 +34,6 @@ export {
   spacing,
   HSLColor,
   sap_fiori_3,
-  bootstrap,
   withStyles,
   createGenerateClassName,
   useConsolidatedRef
