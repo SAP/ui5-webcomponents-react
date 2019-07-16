@@ -35,6 +35,6 @@ export const styles = {
     borderBottom: '4px solid rgba(54, 64, 81, 0.16)',
     borderLeft: '4px solid rgba(54, 64, 81, 1)',
     transform: 'translateZ(0)',
-    animation: 'spin .8s infinite linear'
+    animation: '$spin .8s infinite linear'
   }
 };
