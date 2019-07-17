@@ -4,10 +4,6 @@ React Components with Fiori Style
 
 ## Usage
 
-## Disclaimer
-Please be aware that this package is still under active development. Semantic Versioning does not apply!<br/>
-**We will not create a new major release for every breaking change**
-
 ### Installation
 Using npm: `npm install @ui5/webcomponents-react --save`<br />
 Using yarn: `yarn add @ui5/webcomponents-react`

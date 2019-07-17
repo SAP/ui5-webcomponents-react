@@ -7,6 +7,7 @@
   "scripts": {
     "start": "start-storybook -p 6006 -c packages/docs/.storybook",
     "build": "node ./scripts/rollup/build.js",
+    "build:storybook": "build-storybook -c packages/docs/.storybook -o .out",
     "test": "npm-run-all --sequential test:clean test:jest:coverage test:karma test:combineCoverage",
     "test:coveralls": "npm run test && cat ./coverage/lcov.info | coveralls",
     "test:clean": "node scripts/test/clean.js",
