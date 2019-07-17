@@ -12,6 +12,7 @@ import { ColumnHeader } from './columnHeader';
 import { Pagination } from './pagination';
 import { TitleBar } from './titleBar';
 import { FilterEntry } from './types/FilterEntry';
+import { BusyIndicatorType } from '../../lib/BusyIndicatorType';
 
 const CustomLoadingComponent = (props) => {
   let className = '-loading';
@@ -19,8 +20,8 @@ const CustomLoadingComponent = (props) => {
     className += ' -active';
   }
   return (
-    <div className={className}>
-      <BusyIndicator />
+    <div className={className} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <BusyIndicator size={BusyIndicatorType.Medium} active style={{ backgroundColor: 'transparent' }} />
     </div>
   );
 };

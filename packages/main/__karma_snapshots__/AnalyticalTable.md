@@ -577,9 +577,9 @@
                   </WithStyles(Pagination)>
                 </div>
                 <CustomLoadingComponent loading={false} loadingText="Loading...">
-                  <div className="-loading">
-                    <BusyIndicator size="Large">
-                      <ui5-busyindicator size="Large" class="" />
+                  <div className="-loading" style={{...}}>
+                    <BusyIndicator size="Medium" active={true} style={{...}}>
+                      <ui5-busyindicator active={true} size="Medium" style={{...}} class="" />
                     </BusyIndicator>
                   </div>
                 </CustomLoadingComponent>
@@ -1185,9 +1185,9 @@
                   </WithStyles(Pagination)>
                 </div>
                 <CustomLoadingComponent loading={false} loadingText="Loading...">
-                  <div className="-loading">
-                    <BusyIndicator size="Large">
-                      <ui5-busyindicator size="Large" class="" />
+                  <div className="-loading" style={{...}}>
+                    <BusyIndicator size="Medium" active={true} style={{...}}>
+                      <ui5-busyindicator active={true} size="Medium" style={{...}} class="" />
                     </BusyIndicator>
                   </div>
                 </CustomLoadingComponent>
