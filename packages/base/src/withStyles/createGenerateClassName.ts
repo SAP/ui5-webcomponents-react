@@ -1,8 +1,7 @@
-import { bootstrap } from '../bootstrap';
-bootstrap();
-
 const env = process.env.NODE_ENV;
 const prodClassPrefix = 'f4r';
+
+const globalPackageName = '@ui5/webcomponents-react-base';
 
 const extractClassNamePrefix = (className) => {
   const match = className.match && className.match(/WithStyles\((.*)\)/);
@@ -11,13 +10,13 @@ const extractClassNamePrefix = (className) => {
 
 export const createGenerateClassName = () => {
   const defaultPrefix = env === 'production' ? prodClassPrefix : '';
-  // @ts-ignore
-  if (!!window.Fiori4React.__SECRET_INTERNALS_DO_NOT_USE.jssRuleCounter === false) {
-    // @ts-ignore
-    Object.assign(window.Fiori4React.__SECRET_INTERNALS_DO_NOT_USE, { jssRuleCounter: 0 });
+  if (!window[globalPackageName]) {
+    window[globalPackageName] = { jssRuleCounter: 0 };
+  } else if (!!window[globalPackageName].jssRuleCounter === false) {
+    Object.assign(window[globalPackageName], { jssRuleCounter: 0 });
   }
-  // @ts-ignore
-  const internals = window.Fiori4React.__SECRET_INTERNALS_DO_NOT_USE;
+
+  const internals = window[globalPackageName];
   return (rule, sheet) => {
     internals.jssRuleCounter++;
 

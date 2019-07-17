@@ -7,9 +7,6 @@ const { asyncCopyTo, asyncExecuteCommand, asyncExtractTar, asyncRimRaf } = requi
 const { UMD_DEV, UMD_PROD, NODE_DEV, NODE_PROD, NODE_ES_DEV, NODE_ES_PROD } = Bundles.bundleTypes;
 
 function getPackageName(name) {
-  // if (name.indexOf('/') !== -1) {
-  //   return name.split('/')[0];
-  // }
   return name;
 }
 
@@ -37,12 +34,6 @@ async function prepareNpmPackage(name) {
     asyncCopyTo(`packages/${name}/README.md`, `build/node_modules/${name}/README.md`),
     asyncCopyTo(`packages/${name}/npm`, `build/node_modules/${name}`)
   ]);
-  // const tgzName = (await asyncExecuteCommand(
-  //   `npm pack build/node_modules/${name}`
-  // )).trim();
-  // await asyncRimRaf(`build/node_modules/${name}`);
-  // await asyncExtractTar(getTarOptions(tgzName, name));
-  // unlinkSync(tgzName);
 }
 
 async function prepareNpmPackages() {
@@ -54,6 +45,9 @@ async function prepareNpmPackages() {
   await Promise.all(builtPackageFolders.map(prepareNpmPackage));
   // create main lib
   await asyncExecuteCommand(`node_modules/.bin/rollup -c packages/main/rollup.config.js`);
+  await asyncExecuteCommand(
+    `tsc packages/base/src/polyfill/*.ts --outDir build/node_modules/base/polyfill --skipLibCheck`
+  );
 }
 
 module.exports = {

@@ -1,15 +1,6 @@
-import { bootstrap } from '@ui5/webcomponents-react-base';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { ExtendedWindow } from '../../interfaces/ExtendedWindow';
 import { MessageToast } from '../../lib/MessageToast';
-
-bootstrap();
-
-// TODO Do we still need this?
-(window as ExtendedWindow).Fiori4React.__SECRET_INTERNALS_DO_NOT_USE.messageToast = {
-  toast: () => {}
-};
 
 describe('Message Toast', () => {
   it('Show Default', () => {
