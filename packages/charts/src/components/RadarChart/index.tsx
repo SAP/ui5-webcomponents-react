@@ -1,26 +1,19 @@
-import React, { PureComponent } from 'react';
+import React, { FC, forwardRef, Ref } from 'react';
 import { Radar } from 'react-chartjs-2';
-import { populateData } from '../../util/populateData';
-import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
-import { formatTooltipLabel, mergeConfig } from '../../util/utils';
+import { useTheme } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
+import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { HSLColor } from '@ui5/webcomponents-react-base';
-import { withChartContainer } from '../ChartContainer/withChartContainer';
+import { populateData } from '../../util/populateData';
+import { formatTooltipLabel, mergeConfig } from '../../util/utils';
 
 export interface RadarChartPropTypes extends ChartBaseProps {}
 
-@withChartContainer
-export class RadarChart extends PureComponent<RadarChartPropTypes> {
-  static defaultProps = {
-    ...ChartBaseDefaultProps
-  };
-
-  render() {
+const RadarChart: FC<RadarChartPropTypes> = withChartContainer(
+  forwardRef((props: RadarChartPropTypes, ref: Ref<any>) => {
     const {
       labels,
       datasets,
-      theme,
       width,
       height,
       options,
@@ -29,15 +22,10 @@ export class RadarChart extends PureComponent<RadarChartPropTypes> {
       getElementAtEvent,
       valueAxisFormatter,
       colors
-    } = this.props as RadarChartPropTypes & ChartInternalProps;
+    } = props;
 
-    const bar = populateData(labels, datasets, colors, theme.theme);
-    bar.datasets.map(
-      (set) =>
-        (set.backgroundColor = HSLColor.of(set.backgroundColor)
-          .setAlpha(0.3)
-          .toString())
-    );
+    const theme: any = useTheme();
+    const data = populateData(labels, datasets, colors, theme.theme);
 
     const mergedOptions = mergeConfig(
       {
@@ -60,16 +48,21 @@ export class RadarChart extends PureComponent<RadarChartPropTypes> {
 
     return (
       <Radar
-        ref={this.props.innerChartRef}
-        data={bar}
+        ref={ref}
+        data={data}
         height={height}
         width={width}
         options={mergedOptions}
-        // @ts-ignore
         getDatasetAtEvent={getDatasetAtEvent}
-        // @ts-ignore
         getElementAtEvent={getElementAtEvent}
       />
     );
-  }
-}
+  })
+);
+
+RadarChart.defaultProps = {
+  ...ChartBaseDefaultProps
+};
+RadarChart.displayName = 'RadarChart';
+
+export { RadarChart };

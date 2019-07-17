@@ -2,7 +2,6 @@ import DataLabels from 'chartjs-plugin-datalabels';
 import { defaults, pluginService } from 'chart.js';
 
 export const defaultFont = {
-  // family: "'72', Arial, Helvetica, sans-serif",
   family: '"72", Arial, Helvetica, sans-serif',
   size: '12'
 };

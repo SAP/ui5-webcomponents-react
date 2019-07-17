@@ -1,38 +1,32 @@
-import React, { PureComponent } from 'react';
+import React, { FC, forwardRef, Ref } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { populateData } from '../../util/populateData';
-import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
+import { useTheme } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
+import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
+import { populateData } from '../../util/populateData';
 import { formatTooltipLabelForPieCharts, mergeConfig } from '../../util/utils';
-import { withChartContainer } from '../ChartContainer/withChartContainer';
 import { PieChartPlaceholder } from './Placeholder';
 
 export interface PieChartPropTypes extends ChartBaseProps {}
 
-@withChartContainer
-export class PieChart extends PureComponent<PieChartPropTypes> {
-  static defaultProps = {
-    ...ChartBaseDefaultProps,
-    internalNoMerge: true
-  };
-
-  static LoadingPlaceholder = PieChartPlaceholder;
-
-  render() {
+const PieChart = withChartContainer(
+  forwardRef((props: PieChartPropTypes, ref: Ref<any>) => {
     const {
       labels,
       datasets,
       colors,
-      theme,
       categoryAxisFormatter,
       getDatasetAtEvent,
       getElementAtEvent,
       valueAxisFormatter,
-      options
-    } = this.props as PieChartPropTypes & ChartInternalProps;
+      options,
+      width,
+      height
+    } = props;
 
-    const doughnut = populateData(labels, datasets, colors, theme.theme, true);
+    const theme: any = useTheme();
+    const data = populateData(labels, datasets, colors, theme.theme, true);
 
     const mergedOptions = mergeConfig(
       {
@@ -43,13 +37,10 @@ export class PieChart extends PureComponent<PieChartPropTypes> {
         },
         plugins: {
           datalabels: {
-            anchor: 'center',
-            align: 'center',
-            offset: 0,
+            anchor: 'end',
+            align: 'end',
             color: (context) => {
-              return parseInt(context.dataset.backgroundColor[context.datasetIndex], 16) > 0xffffff / 2
-                ? '#666'
-                : '#fff';
+              return /* sapUiBaseText */ '#32363a';
             },
             formatter: valueAxisFormatter
           }
@@ -60,16 +51,23 @@ export class PieChart extends PureComponent<PieChartPropTypes> {
 
     return (
       <Pie
-        ref={this.props.innerChartRef}
-        data={doughnut}
-        height={this.props.height}
-        width={this.props.width}
+        ref={ref}
+        data={data}
+        height={height}
+        width={width}
         options={mergedOptions}
-        // @ts-ignore
         getDatasetAtEvent={getDatasetAtEvent}
-        // @ts-ignore
         getElementAtEvent={getElementAtEvent}
       />
     );
-  }
-}
+  })
+);
+
+// @ts-ignore
+PieChart.LoadingPlaceholder = PieChartPlaceholder;
+PieChart.defaultProps = {
+  ...ChartBaseDefaultProps
+};
+PieChart.displayName = 'PieChart';
+
+export { PieChart };

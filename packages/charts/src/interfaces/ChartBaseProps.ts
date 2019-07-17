@@ -11,8 +11,7 @@ export interface ChartBaseProps extends CommonProps {
   options?: ChartOptions;
   categoryAxisFormatter?: (value: any) => string | number;
   valueAxisFormatter?: (value: any) => string | number;
-  getDatasetAtEvent?: (dataset: ChartDataSets[], event: Event) => void;
-  getElementAtEvent?: (dataset: ChartDataSets[], event: Event) => void;
-  innerChartRef?: Ref<any>;
+  getDatasetAtEvent?: (dataset: ChartDataSets[], event?: Event) => void;
+  getElementAtEvent?: (dataset: ChartDataSets[], event?: Event) => void;
   loading?: boolean;
 }

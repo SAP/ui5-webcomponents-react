@@ -1,46 +1,39 @@
-import React, { PureComponent } from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { Line } from 'react-chartjs-2';
-import { populateData } from '../../util/populateData';
+import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
-import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
-import { formatTooltipLabel, mergeConfig } from '../../util/utils';
+import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { withChartContainer } from '../ChartContainer/withChartContainer';
+import { populateData } from '../../util/populateData';
+import { formatTooltipLabel, mergeConfig } from '../../util/utils';
 import { LineChartPlaceholder } from './Placeholder';
 
 export interface LineChartPropTypes extends ChartBaseProps {}
 
-@withChartContainer
-export class LineChart extends PureComponent<LineChartPropTypes> {
-  static defaultProps = {
-    ...ChartBaseDefaultProps
-  };
-
-  static LoadingPlaceholder = LineChartPlaceholder;
-
-  render() {
+const LineChart = withChartContainer(
+  forwardRef((props: LineChartPropTypes, ref: Ref<any>) => {
     const {
       labels,
       datasets,
       colors,
-      width,
-      height,
       options,
       valueAxisFormatter,
       categoryAxisFormatter,
       getElementAtEvent,
       getDatasetAtEvent,
-      theme
-    } = this.props as LineChartPropTypes & ChartInternalProps;
+      width,
+      height
+    } = props;
 
     const chartOptions = mergeConfig(
       {
         scales: {
           yAxes: [
             {
-              display: false,
+              ...DEFAULT_OPTIONS.scales.yAxes[0],
               ticks: {
+                ...DEFAULT_OPTIONS.scales.yAxes[0].ticks,
                 callback: valueAxisFormatter
               }
             }
@@ -54,7 +47,6 @@ export class LineChart extends PureComponent<LineChartPropTypes> {
         },
         plugins: {
           datalabels: {
-            // offset: 100
             formatter: valueAxisFormatter
           }
         }
@@ -62,22 +54,27 @@ export class LineChart extends PureComponent<LineChartPropTypes> {
       options
     );
 
-    const line = populateData(labels, datasets, colors, theme.theme);
-    line.datasets.forEach((dataset) => {
-      dataset.backgroundColor = 'transparent';
-    });
+    const theme: any = useTheme();
+    const data = populateData(labels, datasets, colors, theme.theme);
     return (
       <Line
-        ref={this.props.innerChartRef}
-        data={line}
+        ref={ref}
+        data={data}
         height={height}
         width={width}
         options={chartOptions}
-        // @ts-ignore
         getDatasetAtEvent={getDatasetAtEvent}
-        // @ts-ignore
         getElementAtEvent={getElementAtEvent}
       />
     );
-  }
-}
+  })
+);
+
+// @ts-ignore
+LineChart.LoadingPlaceholder = LineChartPlaceholder;
+LineChart.defaultProps = {
+  ...ChartBaseDefaultProps
+};
+LineChart.displayName = 'LineChart';
+
+export { LineChart };

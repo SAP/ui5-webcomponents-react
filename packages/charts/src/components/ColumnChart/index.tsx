@@ -1,82 +1,37 @@
-import React, { PureComponent } from 'react';
+import bestContrast from 'get-best-contrast-color';
+import React, { forwardRef, Ref } from 'react';
 import { Bar } from 'react-chartjs-2';
+import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
-import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
+import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { populateData } from '../../util/populateData';
 import { formatTooltipLabel, getTextHeight, getTextWidth, mergeConfig } from '../../util/utils';
-import { withChartContainer } from '../ChartContainer/withChartContainer';
 import { ColumnChartPlaceholder } from './Placeholder';
 
 export interface ColumnChartPropTypes extends ChartBaseProps {}
 
-@withChartContainer
-export class ColumnChart extends PureComponent<ColumnChartPropTypes> {
-  static defaultProps = {
-    ...ChartBaseDefaultProps
-  };
-
-  static LoadingPlaceholder = ColumnChartPlaceholder;
-
-  componentDidMount() {
-    this.setState({ options: { ...this.props.options } });
-  }
-
-  getAnchor = (context) => {
-    const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
-    const dataSetLength = context.chart.data.datasets.length;
-    const xAxisId = datasetMeta.xAxisID;
-    const yAxisId = datasetMeta.yAxisID;
-
-    const xAxis = context.chart.scales[xAxisId];
-    const yAxis = context.chart.scales[yAxisId];
-
-    if (datasetMeta.type === 'bar') {
-      if (yAxis.options.stacked) {
-        if (!xAxis.options.stacked) {
-          return 'end';
-        }
-
-        if (dataSetLength - 1 === context.datasetIndex) {
-          // highest stack
-          return 'end';
-        } else {
-          const chartElement = datasetMeta.data[context.dataIndex];
-          const barHeight = Math.abs(chartElement._model.base - chartElement._model.y);
-          const textHeight = getTextHeight();
-          if (barHeight < 1.5 * textHeight) {
-            // arbitrary estimate
-            return 'start';
-          }
-          return 'center';
-        }
-      }
-      if (Object.keys(context.chart.scales).length > 2) {
-        return 'center';
-      }
-    }
-    return 'end';
-  };
-
-  render() {
+const ColumnChart = withChartContainer(
+  forwardRef((props: ColumnChartPropTypes, ref: Ref<any>) => {
     const {
       labels,
       datasets,
-      theme,
       categoryAxisFormatter,
       valueAxisFormatter,
       getDatasetAtEvent,
       getElementAtEvent,
       colors,
-      options
-    } = this.props as ColumnChartPropTypes & ChartInternalProps;
+      options,
+      width,
+      height
+    } = props;
 
-    const bar = populateData(labels, datasets, colors, theme.theme);
+    const theme: any = useTheme();
+    const data = populateData(labels, datasets, colors, theme.theme);
 
     const mergedOptions = mergeConfig(
       {
-        animation: false,
         layout: {
           padding: {
             top: 15
@@ -95,6 +50,7 @@ export class ColumnChart extends PureComponent<ColumnChartPropTypes> {
             {
               ...DEFAULT_OPTIONS.scales.yAxes[0],
               ticks: {
+                ...DEFAULT_OPTIONS.scales.yAxes[0].ticks,
                 callback: valueAxisFormatter
               }
             }
@@ -108,40 +64,26 @@ export class ColumnChart extends PureComponent<ColumnChartPropTypes> {
         plugins: {
           datalabels: {
             display: (context) => {
-              const anchor = this.getAnchor(context);
               const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
-              const chartElement = datasetMeta.data[context.dataIndex];
-
-              if (anchor === 'start') {
-                // edge case
-                const barHeight = Math.abs(chartElement._model.base - chartElement._model.y);
-                const textHeight = getTextHeight();
-                if (barHeight < textHeight) {
-                  return false;
-                }
-              }
-
-              // check whether label fits in bar
-              const barWidth = chartElement._model.width;
-              const text = valueAxisFormatter(context.dataset.data[context.dataIndex]);
-              const textWidth = getTextWidth(text);
-              if (barWidth < textWidth) {
+              const dataMeta = datasetMeta.data[context.dataIndex];
+              const height = dataMeta._view.base - dataMeta._view.y; // offset
+              if (height < getTextHeight() + 6) {
                 return false;
               }
-
-              return true;
+              const formattedValue = valueAxisFormatter(context.dataset.data[context.dataIndex]);
+              const textWidth = getTextWidth(formattedValue);
+              return textWidth < dataMeta._view.width;
             },
-            anchor: this.getAnchor,
-            align: 'end',
-            offset: 0,
+            anchor: 'end',
+            align: 'start',
             formatter: valueAxisFormatter,
             color: (context) => {
-              const anchor = this.getAnchor(context);
-              if (anchor === 'end') {
-                return '#666';
-              } else {
-                return '#fff';
-              }
+              const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
+              const dataMeta = datasetMeta.data[context.dataIndex];
+              return bestContrast(dataMeta._view.backgroundColor, [
+                /* sapUiBaseText */ '#32363a',
+                /* sapUiContentContrastTextColor */ '#ffffff'
+              ]);
             }
           }
         }
@@ -151,16 +93,23 @@ export class ColumnChart extends PureComponent<ColumnChartPropTypes> {
 
     return (
       <Bar
-        ref={this.props.innerChartRef}
-        data={bar}
-        height={this.props.height}
-        width={this.props.width}
+        ref={ref}
+        data={data}
+        height={height}
+        width={width}
         options={mergedOptions}
-        // @ts-ignore
         getDatasetAtEvent={getDatasetAtEvent}
-        // @ts-ignore
         getElementAtEvent={getElementAtEvent}
       />
     );
-  }
-}
+  })
+);
+
+// @ts-ignore
+ColumnChart.LoadingPlaceholder = ColumnChartPlaceholder;
+ColumnChart.defaultProps = {
+  ...ChartBaseDefaultProps
+};
+ColumnChart.displayName = 'ColumnChart';
+
+export { ColumnChart };

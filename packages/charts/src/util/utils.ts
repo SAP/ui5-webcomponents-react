@@ -56,7 +56,8 @@ export const formatTooltipLabelForPieCharts = (categoryFormatter, valueFormatter
 let canvas;
 let textHeight;
 
-export const getTextWidth = (text, font = `normal ${defaultFont.size}pt ${defaultFont.family}`) => {
+export const getTextWidth = (text) => {
+  const font = `normal ${defaultFont.size}pt ${defaultFont.family}`;
   // re-use canvas object for better performance
   canvas = canvas || (canvas = document.createElement('canvas'));
   const context = canvas.getContext('2d');

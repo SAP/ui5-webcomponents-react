@@ -7228,6 +7228,13 @@ genfun@^5.0.0:
   resolved "https://registry.yarnpkg.com/genfun/-/genfun-5.0.0.tgz#9dd9710a06900a5c4a5bf57aca5da4e52fe76537"
   integrity sha512-KGDOARWVga7+rnB3z9Sd2Letx515owfk0hSxHGuqjANb1M+x2bGZGqHLiozPsYMdM2OubeMni/Hpwmjq6qIUhA==
 
+get-best-contrast-color@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/get-best-contrast-color/-/get-best-contrast-color-0.3.1.tgz#e13e0ea32d82871ccdfb742ccab1d6e07b137f44"
+  integrity sha512-B88vyjLzu+fDq2mMky/75pg14Pwgb9Zl6RZ3ws43Jyk4tsdvgiF/KAvRkFZAaMEgd1HTuykKg0GaG2KnsBoaCA==
+  dependencies:
+    get-contrast-ratio "0.2.1"
+
 get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
@@ -7237,6 +7244,13 @@ get-caller-file@^2.0.1:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
+
+get-contrast-ratio@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/get-contrast-ratio/-/get-contrast-ratio-0.2.1.tgz#3f8e2a9610df2fb55fc2004bfce002ff0aa25c0a"
+  integrity sha512-lNIpmDIoxlVJsEQ5G/XCxH2YiiXH0ukOZ0ASvPp9ku2f+2AOYG5OXQ9cLgc9p3lNom5gy8JLkfSzi8fZN9LdKg==
+  dependencies:
+    get-relative-luminance "0.3.1"
 
 get-func-name@^2.0.0:
   version "2.0.0"
@@ -7268,6 +7282,13 @@ get-port@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/get-port/-/get-port-3.2.0.tgz#dd7ce7de187c06c8bf353796ac71e099f0980ebc"
   integrity sha1-3Xzn3hh8Bsi/NTeWrHHgmfCYDrw=
+
+get-relative-luminance@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/get-relative-luminance/-/get-relative-luminance-0.3.1.tgz#f86b722194f87f23c9d4df9075e066329001907f"
+  integrity sha512-nLEJhDAPC4anQlFhBxt8lHRwxs5OvOxmN0mHCxOCFDtzy0x5cXTMKNKUycpulsAw1zNOtz6GIRcIaVMcUUcU7Q==
+  dependencies:
+    parse-color "1.0.0"
 
 get-stdin@^4.0.1:
   version "4.0.1"
@@ -11718,7 +11739,7 @@ parse-code-context@^1.0.0:
   resolved "https://registry.yarnpkg.com/parse-code-context/-/parse-code-context-1.0.0.tgz#718c295c593d0d19a37f898473268cc75e98de1e"
   integrity sha512-OZQaqKaQnR21iqhlnPfVisFjBWjhnMl5J9MgbP8xC+EwoVqbXrq78lp+9Zb3ahmLzrIX5Us/qbvBnaS3hkH6OA==
 
-parse-color@^1.0.0:
+parse-color@1.0.0, parse-color@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/parse-color/-/parse-color-1.0.0.tgz#7b748b95a83f03f16a94f535e52d7f3d94658619"
   integrity sha1-e3SLlag/A/FqlPU15S1/PZRlhhk=

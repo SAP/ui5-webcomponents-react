@@ -19,7 +19,7 @@ export const LoaderStyles = {
       left: '-256px',
       width: '256px',
       height: '4px',
-      animation: 'load 1.5s linear infinite'
+      animation: '$load 1.5s linear infinite'
     }
   },
   loaderLight: {

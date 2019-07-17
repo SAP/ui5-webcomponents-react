@@ -1,39 +1,32 @@
-import React, { PureComponent } from 'react';
-import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
+import React, { FC, Ref, forwardRef } from 'react';
+import { Pie } from 'react-chartjs-2';
+import { useTheme } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
+import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
+import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { populateData } from '../../util/populateData';
 import { formatTooltipLabelForPieCharts, mergeConfig } from '../../util/utils';
-import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { Pie } from 'react-chartjs-2';
-import { withChartContainer } from '../ChartContainer/withChartContainer';
 import { PieChartPlaceholder } from '../PieChart/Placeholder';
 
 export interface DonutChartPropTypes extends ChartBaseProps {}
 
-@withChartContainer
-export class DonutChart extends PureComponent<DonutChartPropTypes> {
-  static defaultProps = {
-    ...ChartBaseDefaultProps,
-    colors: null,
-    internalNoMerge: true
-  };
-
-  static LoadingPlaceholder = PieChartPlaceholder;
-
-  render() {
+const DonutChart = withChartContainer(
+  forwardRef((props: DonutChartPropTypes, ref: Ref<any>) => {
     const {
       labels,
       datasets,
       colors,
-      theme,
       categoryAxisFormatter,
       getDatasetAtEvent,
       getElementAtEvent,
       valueAxisFormatter,
-      options
-    } = this.props as DonutChartPropTypes & ChartInternalProps;
+      options,
+      width,
+      height
+    } = props;
 
-    const doughnut = populateData(labels, datasets, colors, theme.theme, true);
+    const theme: any = useTheme();
+    const data = populateData(labels, datasets, colors, theme.theme, true);
 
     const mergedOptions = mergeConfig(
       {
@@ -45,13 +38,10 @@ export class DonutChart extends PureComponent<DonutChartPropTypes> {
         },
         plugins: {
           datalabels: {
-            anchor: 'center',
-            align: 'center',
-            offset: 0,
+            anchor: 'end',
+            align: 'end',
             color: (context) => {
-              return parseInt(context.dataset.backgroundColor[context.datasetIndex], 16) > 0xffffff / 2
-                ? '#666'
-                : '#fff';
+              return /* sapUiBaseText */ '#32363a';
             },
             formatter: valueAxisFormatter
           }
@@ -62,16 +52,24 @@ export class DonutChart extends PureComponent<DonutChartPropTypes> {
 
     return (
       <Pie
-        ref={this.props.innerChartRef}
-        data={doughnut}
-        height={this.props.height}
-        width={this.props.width}
+        ref={ref}
+        data={data}
+        height={height}
+        width={width}
         options={mergedOptions}
-        // @ts-ignore
         getDatasetAtEvent={getDatasetAtEvent}
-        // @ts-ignore
         getElementAtEvent={getElementAtEvent}
       />
     );
-  }
-}
+  })
+);
+
+// @ts-ignore
+DonutChart.LoadingPlaceholder = PieChartPlaceholder;
+DonutChart.defaultProps = {
+  ...ChartBaseDefaultProps,
+  colors: null
+};
+DonutChart.displayName = 'DonutChart';
+
+export { DonutChart };
