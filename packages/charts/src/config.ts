@@ -6,15 +6,23 @@ export const defaultFont = {
   size: '12'
 };
 
-pluginService.register(DataLabels);
-defaults.global.plugins.datalabels.align = 'top';
+defaults.global.animation.duration = 0;
+defaults.scale.ticks.fontStyle = 'bold';
+
+// Legend Configuration
 defaults.global.legend.position = 'bottom';
 defaults.global.legend.labels.fontFamily = defaultFont.family;
+defaults.global.legend.labels.fontColor = '#6a6d70'; /* sapUiContentLabelColor */
+
+// Chart Type Configuration
+defaults.global.elements.line.fill = false;
+
+// Data Labels Configuration
+pluginService.register(DataLabels);
+defaults.global.plugins.datalabels.align = 'top';
+defaults.global.plugins.datalabels.display = 'auto';
 // @ts-ignore
 defaults.global.plugins.datalabels.font = defaultFont;
-defaults.global.animation.duration = 0;
-defaults.global.plugins.datalabels.display = 'auto';
-// defaults.global.maintainAspectRatio = false;
 
 export const DEFAULT_OPTIONS = {
   scales: {
@@ -22,14 +30,21 @@ export const DEFAULT_OPTIONS = {
       {
         display: false,
         ticks: {
-          beginAtZero: true
+          beginAtZero: true,
+          maxTicksLimit: 6
+        },
+        gridLines: {
+          display: true
         }
       }
     ],
     xAxes: [
       {
         gridLines: {
-          display: false
+          display: false,
+          lineWidth: 2,
+          color: '#32363a' /* sapUiBaseText */,
+          fontColor: '#32363a' /* sapUiBaseText */
         }
       }
     ]

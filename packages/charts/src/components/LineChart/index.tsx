@@ -32,6 +32,7 @@ const LineChart = withChartContainer(
           yAxes: [
             {
               ...DEFAULT_OPTIONS.scales.yAxes[0],
+              display: true,
               ticks: {
                 ...DEFAULT_OPTIONS.scales.yAxes[0].ticks,
                 callback: valueAxisFormatter
