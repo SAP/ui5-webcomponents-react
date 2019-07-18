@@ -14,4 +14,5 @@ export interface ChartBaseProps extends CommonProps {
   getDatasetAtEvent?: (dataset: ChartDataSets[], event?: Event) => void;
   getElementAtEvent?: (dataset: ChartDataSets[], event?: Event) => void;
   loading?: boolean;
+  noLegend?: boolean;
 }

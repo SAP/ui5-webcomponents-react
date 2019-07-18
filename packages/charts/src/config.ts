@@ -1,5 +1,6 @@
 import DataLabels from 'chartjs-plugin-datalabels';
 import { defaults, pluginService } from 'chart.js';
+import { generateLegend } from './internal/ChartLegend';
 
 export const defaultFont = {
   family: '"72", Arial, Helvetica, sans-serif',
@@ -8,14 +9,20 @@ export const defaultFont = {
 
 defaults.global.animation.duration = 0;
 defaults.scale.ticks.fontStyle = 'bold';
+defaults.global.layout.padding = 16;
 
 // Legend Configuration
-defaults.global.legend.position = 'bottom';
-defaults.global.legend.labels.fontFamily = defaultFont.family;
-defaults.global.legend.labels.fontColor = '#6a6d70'; /* sapUiContentLabelColor */
+defaults.global.legend.display = false;
+defaults.global.legendCallback = generateLegend;
+
+// defaults.global.legend.position = 'bottom';
+// defaults.global.legend.labels.fontFamily = defaultFont.family;
+// defaults.global.legend.labels.fontColor = '#6a6d70'; /* sapUiContentLabelColor */
 
 // Chart Type Configuration
 defaults.global.elements.line.fill = false;
+defaults.doughnut.legendCallback = generateLegend;
+defaults.pie.legendCallback = generateLegend;
 
 // Data Labels Configuration
 pluginService.register(DataLabels);

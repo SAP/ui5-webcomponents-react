@@ -1,7 +1,8 @@
 import bestContrast from 'get-best-contrast-color';
-import React, { forwardRef, Ref } from 'react';
+import React, { forwardRef, Ref, RefObject, useEffect, useRef, useCallback } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
@@ -24,19 +25,42 @@ const ColumnChart = withChartContainer(
       colors,
       options,
       width,
-      height
+      height,
+      noLegend
     } = props;
 
     const theme: any = useTheme();
     const data = populateData(labels, datasets, colors, theme.theme);
 
+    const chartRef = useConsolidatedRef<any>(ref);
+    const legendRef: RefObject<HTMLDivElement> = useRef();
+
+    const handleLegendItemPress = useCallback(
+      (e) => {
+        const clickTarget = (e.currentTarget as unknown) as HTMLLIElement;
+        const datasetIndex = parseInt(clickTarget.dataset.datasetindex);
+        const { chartInstance } = chartRef.current;
+        const meta = chartInstance.getDatasetMeta(datasetIndex);
+        meta.hidden = meta.hidden === null ? !chartInstance.data.datasets[datasetIndex].hidden : null;
+        chartInstance.update();
+        clickTarget.style.textDecoration = meta.hidden ? 'line-through' : 'unset';
+      },
+      [legendRef.current, chartRef.current]
+    );
+
+    useEffect(() => {
+      if (noLegend) {
+        legendRef.current.innerHTML = '';
+      } else {
+        legendRef.current.innerHTML = chartRef.current.chartInstance.generateLegend();
+        legendRef.current.querySelectorAll('li').forEach((legendItem) => {
+          legendItem.addEventListener('click', handleLegendItemPress);
+        });
+      }
+    }, [chartRef.current, legendRef.current, noLegend]);
+
     const mergedOptions = mergeConfig(
       {
-        layout: {
-          padding: {
-            top: 15
-          }
-        },
         scales: {
           xAxes: [
             {
@@ -92,15 +116,18 @@ const ColumnChart = withChartContainer(
     );
 
     return (
-      <Bar
-        ref={ref}
-        data={data}
-        height={height}
-        width={width}
-        options={mergedOptions}
-        getDatasetAtEvent={getDatasetAtEvent}
-        getElementAtEvent={getElementAtEvent}
-      />
+      <>
+        <Bar
+          ref={chartRef}
+          data={data}
+          height={height}
+          width={width}
+          options={mergedOptions}
+          getDatasetAtEvent={getDatasetAtEvent}
+          getElementAtEvent={getElementAtEvent}
+        />
+        <div ref={legendRef} />
+      </>
     );
   })
 );

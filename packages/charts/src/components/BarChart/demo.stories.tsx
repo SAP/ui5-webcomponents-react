@@ -39,6 +39,7 @@ storiesOf('Charts | BarChart', module)
       datasets={datasets}
       getElementAtEvent={action('getElementAtEvent')}
       loading={boolean('loading')}
+      noLegend={boolean('noLegend')}
     />
   ))
   .add('with Formatter', () => (

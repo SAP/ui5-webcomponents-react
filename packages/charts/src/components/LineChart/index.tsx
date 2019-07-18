@@ -1,9 +1,11 @@
-import React, { forwardRef, Ref } from 'react';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import React, { forwardRef, Ref, RefObject, useEffect, useRef, useCallback } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
+import { useLegend } from '../../internal/ChartLegend';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { populateData } from '../../util/populateData';
 import { formatTooltipLabel, mergeConfig } from '../../util/utils';
@@ -23,7 +25,8 @@ const LineChart = withChartContainer(
       getElementAtEvent,
       getDatasetAtEvent,
       width,
-      height
+      height,
+      noLegend
     } = props;
 
     const chartOptions = mergeConfig(
@@ -57,16 +60,46 @@ const LineChart = withChartContainer(
 
     const theme: any = useTheme();
     const data = populateData(labels, datasets, colors, theme.theme);
+
+    const chartRef = useConsolidatedRef<any>(ref);
+    const legendRef: RefObject<HTMLDivElement> = useRef();
+    const handleLegendItemPress = useCallback(
+      (e) => {
+        const clickTarget = (e.currentTarget as unknown) as HTMLLIElement;
+        const datasetIndex = parseInt(clickTarget.dataset.datasetindex);
+        const { chartInstance } = chartRef.current;
+        const meta = chartInstance.getDatasetMeta(datasetIndex);
+        meta.hidden = meta.hidden === null ? !chartInstance.data.datasets[datasetIndex].hidden : null;
+        chartInstance.update();
+        clickTarget.style.textDecoration = meta.hidden ? 'line-through' : 'unset';
+      },
+      [legendRef.current, chartRef.current]
+    );
+
+    useEffect(() => {
+      if (noLegend) {
+        legendRef.current.innerHTML = '';
+      } else {
+        legendRef.current.innerHTML = chartRef.current.chartInstance.generateLegend();
+        legendRef.current.querySelectorAll('li').forEach((legendItem) => {
+          legendItem.addEventListener('click', handleLegendItemPress);
+        });
+      }
+    }, [chartRef.current, legendRef.current, noLegend]);
+
     return (
-      <Line
-        ref={ref}
-        data={data}
-        height={height}
-        width={width}
-        options={chartOptions}
-        getDatasetAtEvent={getDatasetAtEvent}
-        getElementAtEvent={getElementAtEvent}
-      />
+      <>
+        <Line
+          ref={chartRef}
+          data={data}
+          height={height}
+          width={width}
+          options={chartOptions}
+          getDatasetAtEvent={getDatasetAtEvent}
+          getElementAtEvent={getElementAtEvent}
+        />
+        <div ref={legendRef} />
+      </>
     );
   })
 );

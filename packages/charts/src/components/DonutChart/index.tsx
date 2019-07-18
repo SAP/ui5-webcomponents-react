@@ -1,6 +1,7 @@
-import React, { FC, Ref, forwardRef } from 'react';
+import React, { FC, Ref, forwardRef, RefObject, useRef, useEffect, useCallback } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
@@ -22,7 +23,8 @@ const DonutChart = withChartContainer(
       valueAxisFormatter,
       options,
       width,
-      height
+      height,
+      noLegend
     } = props;
 
     const theme: any = useTheme();
@@ -50,16 +52,46 @@ const DonutChart = withChartContainer(
       options
     );
 
+    const chartRef = useConsolidatedRef<any>(ref);
+    const legendRef: RefObject<HTMLDivElement> = useRef();
+
+    const handleLegendItemPress = useCallback(
+      (e) => {
+        const clickTarget = (e.currentTarget as unknown) as HTMLLIElement;
+        const datasetIndex = parseInt(clickTarget.dataset.datasetindex);
+        const { chartInstance } = chartRef.current;
+        const meta = chartInstance.getDatasetMeta(datasetIndex);
+        meta.hidden = meta.hidden === null ? !chartInstance.data.datasets[datasetIndex].hidden : null;
+        chartInstance.update();
+        clickTarget.style.textDecoration = meta.hidden ? 'line-through' : 'unset';
+      },
+      [legendRef.current, chartRef.current]
+    );
+
+    useEffect(() => {
+      if (noLegend) {
+        legendRef.current.innerHTML = '';
+      } else {
+        legendRef.current.innerHTML = chartRef.current.chartInstance.generateLegend();
+        legendRef.current.querySelectorAll('li').forEach((legendItem) => {
+          legendItem.addEventListener('click', handleLegendItemPress);
+        });
+      }
+    }, [chartRef.current, legendRef.current, noLegend]);
+
     return (
-      <Pie
-        ref={ref}
-        data={data}
-        height={height}
-        width={width}
-        options={mergedOptions}
-        getDatasetAtEvent={getDatasetAtEvent}
-        getElementAtEvent={getElementAtEvent}
-      />
+      <>
+        <Pie
+          ref={chartRef}
+          data={data}
+          height={height}
+          width={width}
+          options={mergedOptions}
+          getDatasetAtEvent={getDatasetAtEvent}
+          getElementAtEvent={getElementAtEvent}
+        />
+        <div ref={legendRef} />
+      </>
     );
   })
 );

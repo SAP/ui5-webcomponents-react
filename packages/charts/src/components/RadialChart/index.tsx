@@ -48,9 +48,6 @@ const RadialChart = forwardRef((props: RadialChartPropTypes, ref: Ref<HTMLDivEle
       tooltips: {
         enabled: false
       },
-      legend: {
-        display: false
-      },
       plugins: {
         datalabels: false
       }
@@ -81,6 +78,7 @@ const RadialChart = forwardRef((props: RadialChartPropTypes, ref: Ref<HTMLDivEle
         width={width}
         height={height}
         style={{ paddingTop: 0 }}
+        noLegend
       />
       <div className={classes.content}>
         <h3
