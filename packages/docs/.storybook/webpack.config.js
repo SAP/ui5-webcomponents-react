@@ -1,5 +1,6 @@
 const { highlightLog } = require('../../../scripts/utils');
 const path = require('path');
+const ci = require('ci-info');
 const PATHS = require('../../../config/paths');
 require('dotenv').config({
   path: path.join(PATHS.root, '.env')
@@ -12,7 +13,10 @@ module.exports = ({ config }) => {
       {
         loader: require.resolve('awesome-typescript-loader'),
         options: {
-          errorsAsWarnings: true
+          errorsAsWarnings: true,
+          transpileOnly: ci.NETLIFY,
+          useCache: true,
+          forceIsolatedModules: true
         }
       }
     ]
