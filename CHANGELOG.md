@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.1...v0.4.2-rc.0) (2019-07-19)
+
+
+### Code Refactoring
+
+* **Charts:** Update ref API and color maps ([#62](https://github.com/SAP/ui5-webcomponents-react/issues/62)) ([a343567](https://github.com/SAP/ui5-webcomponents-react/commit/a343567))
+
+
+### BREAKING CHANGES
+
+* **Charts:** `innerChartRef` is replaced by `ref`
+* **Charts:** `sap_belize` and `sap_belize_plus` stylings are not longer exported
+* **Charts:** Name of color variables for all themes changed. Now `sapUiChartAccent1` to `sapUiChartAccent12` plus `sapUiChartGood`, `sapUiChartBad` and `sapUiChartHighlight` are available
+
+
+
+
+
 ## [0.4.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.1-rc.2...v0.4.1) (2019-07-19)
 
 **Note:** Version bump only for package node-library-fiori-for-react-github.com-release
