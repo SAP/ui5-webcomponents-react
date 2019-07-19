@@ -2,61 +2,61 @@
 
 exports[`Micro Bar Chart Renders with data 1`] = `
 <div
-  class="MicroBarChart-container- undefined"
+  class="-container- undefined"
 >
   <div>
     <div
-      class="MicroBarChart-labelContainer-"
+      class="-labelContainer-"
     >
       <span
-        class="MicroBarChart-label-"
+        class="-label-"
       >
         Bar Number One
       </span>
       <span
-        class="MicroBarChart-text-"
-        style="font-size:12px;color:#5899DA"
+        class="-text-"
+        style="font-size:12px"
       >
         10
       </span>
     </div>
     <div
-      class="MicroBarChart-valueContainer-"
+      class="-valueContainer-"
     >
       <div
-        class="MicroBarChart-valueBar-"
-        style="width:10%;background-color:#5899DA"
+        class="-valueBar-"
+        style="width:10%;background-color:#0f828f"
       />
       <div
-        class="MicroBarChart-fillUp-"
+        class="-fillUp-"
       />
     </div>
   </div>
   <div>
     <div
-      class="MicroBarChart-labelContainer-"
+      class="-labelContainer-"
     >
       <span
-        class="MicroBarChart-label-"
+        class="-label-"
       >
         Bar Number Two
       </span>
       <span
-        class="MicroBarChart-text-"
-        style="font-size:12px;color:#E8743B"
+        class="-text-"
+        style="font-size:12px"
       >
         100
       </span>
     </div>
     <div
-      class="MicroBarChart-valueContainer-"
+      class="-valueContainer-"
     >
       <div
-        class="MicroBarChart-valueBar-"
-        style="width:100%;background-color:#E8743B"
+        class="-valueBar-"
+        style="width:100%;background-color:#5ac2ce"
       />
       <div
-        class="MicroBarChart-fillUp-"
+        class="-fillUp-"
       />
     </div>
   </div>
@@ -65,61 +65,61 @@ exports[`Micro Bar Chart Renders with data 1`] = `
 
 exports[`Micro Bar Chart custom colors 1`] = `
 <div
-  class="MicroBarChart-container- undefined"
+  class="-container- undefined"
 >
   <div>
     <div
-      class="MicroBarChart-labelContainer-"
+      class="-labelContainer-"
     >
       <span
-        class="MicroBarChart-label-"
+        class="-label-"
       >
         Bar Number One
       </span>
       <span
-        class="MicroBarChart-text-"
-        style="font-size:12px;color:#f0ab00"
+        class="-text-"
+        style="font-size:12px"
       >
         10
       </span>
     </div>
     <div
-      class="MicroBarChart-valueContainer-"
+      class="-valueContainer-"
     >
       <div
-        class="MicroBarChart-valueBar-"
+        class="-valueBar-"
         style="width:10%;background-color:#f0ab00"
       />
       <div
-        class="MicroBarChart-fillUp-"
+        class="-fillUp-"
       />
     </div>
   </div>
   <div>
     <div
-      class="MicroBarChart-labelContainer-"
+      class="-labelContainer-"
     >
       <span
-        class="MicroBarChart-label-"
+        class="-label-"
       >
         Bar Number Two
       </span>
       <span
-        class="MicroBarChart-text-"
-        style="font-size:12px;color:#E8743B"
+        class="-text-"
+        style="font-size:12px"
       >
         100
       </span>
     </div>
     <div
-      class="MicroBarChart-valueContainer-"
+      class="-valueContainer-"
     >
       <div
-        class="MicroBarChart-valueBar-"
-        style="width:100%;background-color:#E8743B"
+        class="-valueBar-"
+        style="width:100%"
       />
       <div
-        class="MicroBarChart-fillUp-"
+        class="-fillUp-"
       />
     </div>
   </div>
@@ -128,33 +128,33 @@ exports[`Micro Bar Chart custom colors 1`] = `
 
 exports[`Micro Bar Chart element selection 1`] = `
 <div
-  class="MicroBarChart-container- undefined"
+  class="-container- undefined"
 >
   <div>
     <div
-      class="MicroBarChart-labelContainer-"
+      class="-labelContainer-"
     >
       <span
-        class="MicroBarChart-label-"
+        class="-label-"
       >
         Bar Number One
       </span>
       <span
-        class="MicroBarChart-text-"
-        style="font-size:12px;color:#5899DA"
+        class="-text-"
+        style="font-size:12px"
       >
         10
       </span>
     </div>
     <div
-      class="MicroBarChart-valueContainer-"
+      class="-valueContainer-"
     >
       <div
-        class="MicroBarChart-valueBar-"
-        style="width:10%;background-color:#5899DA"
+        class="-valueBar-"
+        style="width:10%;background-color:#0f828f"
       />
       <div
-        class="MicroBarChart-fillUp-"
+        class="-fillUp-"
       />
     </div>
   </div>
@@ -163,62 +163,62 @@ exports[`Micro Bar Chart element selection 1`] = `
 
 exports[`Micro Bar Chart maxWidth selection 1`] = `
 <div
-  class="MicroBarChart-container- undefined"
+  class="-container- undefined"
   style="max-width:200px"
 >
   <div>
     <div
-      class="MicroBarChart-labelContainer-"
+      class="-labelContainer-"
     >
       <span
-        class="MicroBarChart-label-"
+        class="-label-"
       >
         Bar Number One
       </span>
       <span
-        class="MicroBarChart-text-"
-        style="font-size:12px;color:#5899DA"
+        class="-text-"
+        style="font-size:12px"
       >
         10
       </span>
     </div>
     <div
-      class="MicroBarChart-valueContainer-"
+      class="-valueContainer-"
     >
       <div
-        class="MicroBarChart-valueBar-"
-        style="width:10%;background-color:#5899DA"
+        class="-valueBar-"
+        style="width:10%;background-color:#0f828f"
       />
       <div
-        class="MicroBarChart-fillUp-"
+        class="-fillUp-"
       />
     </div>
   </div>
   <div>
     <div
-      class="MicroBarChart-labelContainer-"
+      class="-labelContainer-"
     >
       <span
-        class="MicroBarChart-label-"
+        class="-label-"
       >
         Bar Number Two
       </span>
       <span
-        class="MicroBarChart-text-"
-        style="font-size:12px;color:#E8743B"
+        class="-text-"
+        style="font-size:12px"
       >
         100
       </span>
     </div>
     <div
-      class="MicroBarChart-valueContainer-"
+      class="-valueContainer-"
     >
       <div
-        class="MicroBarChart-valueBar-"
-        style="width:100%;background-color:#E8743B"
+        class="-valueBar-"
+        style="width:100%;background-color:#5ac2ce"
       />
       <div
-        class="MicroBarChart-fillUp-"
+        class="-fillUp-"
       />
     </div>
   </div>

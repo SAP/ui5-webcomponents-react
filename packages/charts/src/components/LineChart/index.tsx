@@ -5,7 +5,6 @@ import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
-import { useLegend } from '../../internal/ChartLegend';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { populateData } from '../../util/populateData';
 import { formatTooltipLabel, mergeConfig } from '../../util/utils';
