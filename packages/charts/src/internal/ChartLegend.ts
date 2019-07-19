@@ -39,15 +39,3 @@ export const generateLegend = (chart) => {
 ${itemsForLegend.map((item, index) => getLegendEntry(item, type, index)).join(' ')}
 </div>`;
 };
-
-export const useLegend = ({ legend, chart, noLegend }, deps) => {
-  useEffect(() => {
-    if (legend && chart) {
-      if (noLegend) {
-        legend.innerHTML = '';
-      } else {
-        legend.innerHTML = chart.chartInstance.generateLegend();
-      }
-    }
-  }, deps);
-};

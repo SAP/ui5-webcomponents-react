@@ -59,8 +59,8 @@ const PieChart = withChartContainer(
         const clickTarget = (e.currentTarget as unknown) as HTMLLIElement;
         const datasetIndex = parseInt(clickTarget.dataset.datasetindex);
         const { chartInstance } = chartRef.current;
-        const meta = chartInstance.getDatasetMeta(datasetIndex);
-        meta.hidden = meta.hidden === null ? !chartInstance.data.datasets[datasetIndex].hidden : null;
+        const meta = chartInstance.getDatasetMeta(0).data[datasetIndex];
+        meta.hidden = !meta.hidden;
         chartInstance.update();
         clickTarget.style.textDecoration = meta.hidden ? 'line-through' : 'unset';
       },
