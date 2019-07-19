@@ -90,7 +90,7 @@ const DonutChart = withChartContainer(
           getDatasetAtEvent={getDatasetAtEvent}
           getElementAtEvent={getElementAtEvent}
         />
-        <div ref={legendRef} />
+        <div ref={legendRef} className="legend" />
       </>
     );
   })

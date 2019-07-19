@@ -8,11 +8,19 @@ const styles = {
   chart: {
     '& canvas': {
       maxWidth: (props) => `${props.width}px`,
-      maxHeight: (props) => `${props.height}px`
+      maxHeight: (props) => `${props.height - props.noLegend ? 0 : 60}px`
     },
     '& svg': {
       width: (props) => `${props.width}px`,
-      height: (props) => `${props.height}px`
+      height: (props) => `${props.height - props.noLegend ? 0 : 60}px`
+    },
+    '& .legend': {
+      height: '55px',
+      maxHeight: '55px',
+      marginTop: '5px',
+      overflowY: 'auto',
+      display: 'flex',
+      alignItems: 'center'
     }
   }
 };
@@ -21,7 +29,7 @@ const useStyles = createUseStyles(styles);
 
 export const withChartContainer = (Component: ComponentType<any>) => {
   const ChartContainer = forwardRef((props: ChartBaseProps, ref: Ref<any>) => {
-    const { style, className, tooltip, loading, datasets, slot, ...rest } = props;
+    const { style, className, tooltip, loading, datasets, slot, noLegend, height, ...rest } = props;
 
     const classes = useStyles(props);
     let classNames = classes.chart;
@@ -39,10 +47,21 @@ export const withChartContainer = (Component: ComponentType<any>) => {
       ...style
     };
 
+    const chartHeight = noLegend ? height : height - 60;
+
     return (
       <div className={classNames} style={inlineStyle} title={tooltip} slot={slot}>
         {loadingIndicator}
-        {datasets.length > 0 && <Component {...rest} ref={ref} datasets={datasets} loading={loading} />}
+        {datasets.length > 0 && (
+          <Component
+            {...rest}
+            noLegend={noLegend}
+            height={chartHeight}
+            ref={ref}
+            datasets={datasets}
+            loading={loading}
+          />
+        )}
       </div>
     );
   });
