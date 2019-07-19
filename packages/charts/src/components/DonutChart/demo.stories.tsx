@@ -16,7 +16,7 @@ storiesOf('Charts | DonutChart', module)
       width={300}
       labels={['Stalled', 'Active']}
       datasets={[{ data: [65, 45] }]}
-      colors={['sapUiChartPaletteSemanticBad', 'sapUiChartPaletteSemanticGood']}
+      colors={['sapUiChartBad', 'sapUiChartGood']}
       loading={boolean('loading')}
     />
   ))
@@ -25,7 +25,6 @@ storiesOf('Charts | DonutChart', module)
       labels={labels}
       datasets={dataset}
       valueAxisFormatter={(number) => `${number}$`}
-      options={{ cutoutPercentage: 0 }}
       loading={boolean('loading')}
     />
   ));

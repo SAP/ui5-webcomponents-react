@@ -12,7 +12,7 @@ const datasets = [
 
   {
     label: 'Probable/Committed',
-    data: [5, 9, 8, 8, 5, 5, 4]
+    data: [5, 9, 8, 8, 5, 5, 1]
   }
 ];
 

@@ -1,10 +1,11 @@
-import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 import { ChartOptions } from 'chart.js';
-import React, { CSSProperties, PureComponent, Ref } from 'react';
-import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
+import React, { CSSProperties, forwardRef, Ref, useMemo } from 'react';
+// @ts-ignore
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { mergeConfig } from '../../util/utils';
+import { useMergedConfig } from '../../util/utils';
 import { DonutChart } from '../DonutChart';
 
 export interface RadialChartPropTypes extends CommonProps {
@@ -15,7 +16,6 @@ export interface RadialChartPropTypes extends CommonProps {
   options?: ChartOptions;
   height?: number;
   width?: number;
-  innerChartRef?: Ref<any>;
 }
 
 const styles = {
@@ -36,76 +36,78 @@ const styles = {
   }
 };
 
-@withStyles(styles)
-export class RadialChart extends PureComponent<RadialChartPropTypes> {
-  static defaultProps = {
-    ...ChartBaseDefaultProps,
-    maxValue: 100,
-    colors: ['sapUiChartPaletteQualitativeHue1', 'sapUiChartPaletteSemanticNeutralLight3'],
-    internalNoMerge: true
-  };
+const useStyles = createUseStyles(styles);
 
-  render() {
-    const { maxValue, value, displayValue, classes, style, className, colors, options, width, height } = this
-      .props as RadialChartPropTypes & ChartInternalProps;
+const RadialChart = forwardRef((props: RadialChartPropTypes, ref: Ref<HTMLDivElement>) => {
+  const { maxValue, value, displayValue, style, className, colors, options, width, height } = props;
 
-    const data = [value, maxValue - value];
-    const mergedOptions = mergeConfig(
-      {
-        cutoutPercentage: 90,
-        tooltips: {
-          enabled: false
-        },
-        legend: {
-          display: false
-        },
-        plugins: {
-          datalabels: false
-        }
+  const data = [value, maxValue - value];
+  const radialChartDefaultConfig = useMemo(() => {
+    return {
+      cutoutPercentage: 90,
+      tooltips: {
+        enabled: false
       },
-      options
-    );
+      plugins: {
+        datalabels: false
+      }
+    };
+  }, []);
+  const mergedOptions = useMergedConfig(radialChartDefaultConfig, options);
 
-    const radialChartContainerStyles = {
+  const classes = useStyles();
+
+  const radialChartContainerStyles = useMemo(
+    () => ({
       width: `${width}px`,
       height: `${height}px`,
       ...style
-    };
+    }),
+    [width, height, style]
+  );
 
-    const outerClasses = StyleClassHelper.of(classes.radialChart);
-    if (className) {
-      outerClasses.put(className);
-    }
-
-    return (
-      <div className={outerClasses.toString()} style={radialChartContainerStyles}>
-        <DonutChart
-          innerChartRef={this.props.innerChartRef}
-          datasets={[{ data }]}
-          colors={colors}
-          options={mergedOptions}
-          width={width}
-          height={height}
-          style={{ paddingTop: 0 }}
-        />
-        <div className={classes.content}>
-          <h3
-            style={{
-              color: '#333333',
-              fontSize: '20px',
-              margin: '0',
-              cursor: 'text',
-              display: 'inline-block',
-              position: 'relative',
-              textShadow: '0 0 0.125rem #ffffff',
-              fontFamily: "'72', Arial, Helvetica, sans-serif",
-              fontWeight: 'normal'
-            }}
-          >
-            {displayValue as string}
-          </h3>
-        </div>
-      </div>
-    );
+  const outerClasses = StyleClassHelper.of(classes.radialChart);
+  if (className) {
+    outerClasses.put(className);
   }
-}
+
+  return (
+    <div className={outerClasses.toString()} style={radialChartContainerStyles}>
+      <DonutChart
+        ref={ref}
+        datasets={[{ data }]}
+        colors={colors}
+        options={mergedOptions}
+        width={width}
+        height={height}
+        style={{ paddingTop: 0 }}
+        noLegend
+      />
+      <div className={classes.content}>
+        <h3
+          style={{
+            color: '#333333',
+            fontSize: '20px',
+            margin: '0',
+            cursor: 'text',
+            display: 'inline-block',
+            position: 'relative',
+            textShadow: '0 0 0.125rem #ffffff',
+            fontFamily: "'72', Arial, Helvetica, sans-serif",
+            fontWeight: 'normal'
+          }}
+        >
+          {displayValue as string}
+        </h3>
+      </div>
+    </div>
+  );
+});
+
+RadialChart.defaultProps = {
+  ...ChartBaseDefaultProps,
+  maxValue: 100,
+  colors: ['#5899DA', '#adbcc3']
+};
+
+export { RadialChart };

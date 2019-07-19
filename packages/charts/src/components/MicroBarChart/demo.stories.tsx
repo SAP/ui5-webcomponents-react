@@ -9,7 +9,7 @@ const dataset = [
   { value: 40, label: 'Bar Number Four' },
   { value: 50, label: 'Bar Number Five' }
 ];
-const colors = ['sapUiChartPaletteSemanticBad', 'pink', '#de890d', 'rgb(33, 9, 205)', 'green'];
+const colors = ['sapUiChartBad', 'pink', '#de890d', 'rgb(33, 9, 205)', 'green'];
 const valueFormatter = (value) => `${value}$`;
 const labelFormatter = (value) => `${value} in Dollar`;
 

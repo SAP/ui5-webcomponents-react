@@ -1,11 +1,10 @@
-import { withStyles } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, PureComponent } from 'react';
-import { ChartInternalProps } from '../../interfaces/ChartInternalProps';
+import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
+// @ts-ignore
+import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import BelizeColors from '../../themes/sap_belize';
-import { populateDataMicroChart } from '../../util/populateData';
+import { resolveColors } from '../../util/populateData';
 
-const BarStyles = () => ({
+const BarStyles = {
   container: {
     display: 'flex',
     flexDirection: 'column'
@@ -20,7 +19,7 @@ const BarStyles = () => ({
   valueBar: { height: '4px' },
   fillUp: {
     height: '4px',
-    backgroundColor: BelizeColors.sapUiChartPaletteSemanticNeutralLight3,
+    backgroundColor: '#f1f2f3',
     flexGrow: 1
   },
   label: {
@@ -43,7 +42,9 @@ const BarStyles = () => ({
     whiteSpace: 'pre-line',
     color: '#333333'
   }
-});
+};
+
+const useStyles = createUseStyles(BarStyles);
 
 interface DataItems {
   value: number;
@@ -59,64 +60,53 @@ export interface MicroBarChartPropTypes extends CommonProps {
   labelFormatter?: (value: any) => string | number;
 }
 
-interface InternalProps extends MicroBarChartPropTypes, ChartInternalProps {}
+const MicroBarChart = forwardRef((props: MicroBarChartPropTypes, ref: Ref<HTMLDivElement>) => {
+  const { className, dataset, colors, maxWidth, visibleDatasetCount, valueFormatter, labelFormatter, style } = props;
+  const classes = useStyles();
+  const theme: any = useTheme();
+  const visibleDatasetArray = visibleDatasetCount ? dataset.slice(0, visibleDatasetCount) : dataset;
 
-@withStyles(BarStyles)
-export class MicroBarChart extends PureComponent<InternalProps> {
-  static defaultProps = {
-    valueFormatter: (value) => value,
-    labelFormatter: (value) => value
-  };
+  const colorPalette = resolveColors(colors, theme.theme);
 
-  render() {
-    const {
-      className,
-      dataset,
-      colors,
-      maxWidth,
-      visibleDatasetCount,
-      valueFormatter,
-      labelFormatter,
-      classes,
-      style,
-      theme
-    } = this.props;
-    const visibleDatasetArray = dataset.slice(0, !visibleDatasetCount ? dataset.length : visibleDatasetCount);
-    const maxValue = Math.max(...dataset.map((item) => item.value));
-    const colorPallets = populateDataMicroChart(colors, theme.theme);
-    const setColor = (index) =>
-      colorPallets[index] ? colorPallets[index] : populateDataMicroChart(null, theme.theme)[index];
-    return (
-      <div className={`${classes.container} ${className}`} style={{ maxWidth, ...style }}>
-        {visibleDatasetArray.map((item, index) => {
-          return (
-            <div key={item.label}>
-              <div className={classes.labelContainer}>
-                <span className={classes.label}>{labelFormatter(item.label)}</span>
-                <span
-                  className={classes.text}
-                  style={{
-                    fontSize: '12px',
-                    color: setColor(index)
-                  }}
-                >
-                  {valueFormatter(item.value)}
-                </span>
-              </div>
-              <div className={classes.valueContainer}>
-                <div
-                  className={classes.valueBar}
-                  style={{
-                    width: `${(item.value / maxValue) * 100}%`,
-                    backgroundColor: setColor(index)
-                  }}
-                />
-                <div className={classes.fillUp} />
-              </div>
+  const maxValue = Math.max(...dataset.map((item) => item.value));
+
+  return (
+    <div className={`${classes.container} ${className}`} style={{ maxWidth, ...style }} ref={ref}>
+      {visibleDatasetArray.map((item, index) => {
+        return (
+          <div key={item.label}>
+            <div className={classes.labelContainer}>
+              <span className={classes.label}>{labelFormatter(item.label)}</span>
+              <span
+                className={classes.text}
+                style={{
+                  fontSize: '12px'
+                }}
+              >
+                {valueFormatter(item.value)}
+              </span>
             </div>
-          );
-        })}
-      </div>
-    );
-  }
-}
+            <div className={classes.valueContainer}>
+              <div
+                className={classes.valueBar}
+                style={{
+                  width: `${(item.value / maxValue) * 100}%`,
+                  backgroundColor: colorPalette[index]
+                }}
+              />
+              <div className={classes.fillUp} />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+});
+
+MicroBarChart.displayName = 'MicroBarChart';
+MicroBarChart.defaultProps = {
+  valueFormatter: (value) => value,
+  labelFormatter: (value) => value
+};
+
+export { MicroBarChart };

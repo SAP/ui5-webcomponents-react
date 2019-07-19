@@ -1,5 +1,6 @@
 import merge from 'deepmerge';
 import { defaultFont } from '../config';
+import { useMemo } from 'react';
 
 export const getCurrentChartElementFromContext = (context) => {
   const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
@@ -27,7 +28,11 @@ const combineMerge = (target, source, options) => {
   return destination;
 };
 
-export const mergeConfig = (x, y, options?) => merge(x, y, { ...options, arrayMerge: combineMerge });
+export const useMergedConfig = (x, y) => {
+  return useMemo(() => {
+    return merge(x, y, { arrayMerge: combineMerge });
+  }, [x, y]);
+};
 
 export const formatTooltipLabel = (categoryFormatter, valueFormatter, valueAccessor = 'yLabel') => (
   tooltipItem,
@@ -56,7 +61,8 @@ export const formatTooltipLabelForPieCharts = (categoryFormatter, valueFormatter
 let canvas;
 let textHeight;
 
-export const getTextWidth = (text, font = `normal ${defaultFont.size}pt ${defaultFont.family}`) => {
+export const getTextWidth = (text) => {
+  const font = `normal ${defaultFont.size}pt ${defaultFont.family}`;
   // re-use canvas object for better performance
   canvas = canvas || (canvas = document.createElement('canvas'));
   const context = canvas.getContext('2d');
