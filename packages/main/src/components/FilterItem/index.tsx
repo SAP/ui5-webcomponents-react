@@ -10,6 +10,7 @@ import { ListItemTypes } from '../../lib/ListItemTypes';
 import { Select } from '../../lib/Select';
 import { StandardListItem } from '../../lib/StandardListItem';
 import styles from './FilterItem.jss';
+import { BusyIndicatorType } from '../../lib/BusyIndicatorType';
 
 export interface FilterItemPropTypes extends CommonProps {
   placeholder?: string;
@@ -61,7 +62,13 @@ export class FilterItem extends PureComponent<FilterItemPropTypes> {
         return <Input placeholder={placeholder} onChange={this.onSelect} style={{ width: '100%' }} />;
       case FilterType.Select:
         if (loading) {
-          return <BusyIndicator />;
+          return (
+            <BusyIndicator
+              active
+              size={BusyIndicatorType.Medium}
+              style={{ backgroundColor: 'transparent', width: '80px' }}
+            />
+          );
         }
         return (
           <Select onChange={this.onSelect} style={{ width: '100%' }}>
@@ -74,7 +81,13 @@ export class FilterItem extends PureComponent<FilterItemPropTypes> {
         );
       case FilterType.Custom:
         if (loading) {
-          return <BusyIndicator />;
+          return (
+            <BusyIndicator
+              active
+              size={BusyIndicatorType.Medium}
+              style={{ backgroundColor: 'transparent', width: '80px' }}
+            />
+          );
         }
         return (
           <div>
@@ -103,8 +116,16 @@ export class FilterItem extends PureComponent<FilterItemPropTypes> {
 
     return (
       <div ref={innerRef} className={filterItemClasses.toString()} style={style} title={tooltip}>
-        <Label>{label}</Label>
-        {this.getFilterComponent()}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'start'
+          }}
+        >
+          <Label>{label}</Label>
+          {this.getFilterComponent()}
+        </div>
       </div>
     );
   }
