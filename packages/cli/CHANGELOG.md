@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.1-rc.2...v0.4.1) (2019-07-19)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-cli
+
+
+
+
+
+## [0.4.1-rc.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.1-rc.1...v0.4.1-rc.2) (2019-07-19)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-cli
+
+
+
+
+
 ## [0.4.1-rc.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.1-rc.0...v0.4.1-rc.1) (2019-07-17)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-cli
