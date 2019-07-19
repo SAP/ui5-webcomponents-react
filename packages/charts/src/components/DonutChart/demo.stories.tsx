@@ -25,7 +25,6 @@ storiesOf('Charts | DonutChart', module)
       labels={labels}
       datasets={dataset}
       valueAxisFormatter={(number) => `${number}$`}
-      options={{ cutoutPercentage: 0 }}
       loading={boolean('loading')}
     />
   ));
