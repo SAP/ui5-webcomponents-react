@@ -1,4 +1,5 @@
 import { getOrLoadTheme } from '../themes/themeMap';
+import { useMemo } from 'react';
 
 export const populateData = (labels, datasets, colors, theme, isPie = false) => {
   const colorPalette = resolveColors(colors, theme);
@@ -19,4 +20,8 @@ export const resolveColors = (colors, theme) => {
     return colors.map((key) => semanticColors[key] || sequentialColors[key] || key);
   }
   return Object.values(sequentialColors);
+};
+
+export const useChartData = (labels, datasets, colors, theme, isPie = false) => {
+  return useMemo(() => populateData(labels, datasets, colors, theme, isPie), [labels, datasets, colors, theme, isPie]);
 };

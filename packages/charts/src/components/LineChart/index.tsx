@@ -1,12 +1,12 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Ref, RefObject, useEffect, useRef, useCallback } from 'react';
+import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { populateData } from '../../util/populateData';
+import { useChartData } from '../../util/populateData';
 import { formatTooltipLabel, mergeConfig } from '../../util/utils';
 import { LineChartPlaceholder } from './Placeholder';
 
@@ -58,7 +58,7 @@ const LineChart = withChartContainer(
     );
 
     const theme: any = useTheme();
-    const data = populateData(labels, datasets, colors, theme.theme);
+    const data = useChartData(labels, datasets, colors, theme.theme);
 
     const chartRef = useConsolidatedRef<any>(ref);
     const legendRef: RefObject<HTMLDivElement> = useRef();

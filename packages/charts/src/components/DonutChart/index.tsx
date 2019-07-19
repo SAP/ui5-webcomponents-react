@@ -1,11 +1,11 @@
-import React, { FC, Ref, forwardRef, RefObject, useRef, useEffect, useCallback } from 'react';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { populateData } from '../../util/populateData';
+import { useChartData } from '../../util/populateData';
 import { formatTooltipLabelForPieCharts, mergeConfig } from '../../util/utils';
 import { PieChartPlaceholder } from '../PieChart/Placeholder';
 
@@ -28,7 +28,7 @@ const DonutChart = withChartContainer(
     } = props;
 
     const theme: any = useTheme();
-    const data = populateData(labels, datasets, colors, theme.theme, true);
+    const data = useChartData(labels, datasets, colors, theme.theme, true);
 
     const mergedOptions = mergeConfig(
       {

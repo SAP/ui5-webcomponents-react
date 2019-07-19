@@ -1,14 +1,13 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import bestContrast from 'get-best-contrast-color';
-import React, { forwardRef, Ref, useEffect, useRef, RefObject, useCallback } from 'react';
+import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
-import { generateLegend } from '../../internal/ChartLegend';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { populateData } from '../../util/populateData';
+import { useChartData } from '../../util/populateData';
 import { formatTooltipLabel, getTextWidth, mergeConfig } from '../../util/utils';
 import { BarChartPlaceholder } from './Placeholder';
 
@@ -31,7 +30,7 @@ const BarChart = withChartContainer(
     } = props as BarChartPropTypes;
 
     const theme: any = useTheme();
-    const data = populateData(labels, datasets, colors, theme.theme);
+    const data = useChartData(labels, datasets, colors, theme.theme);
 
     const chartRef = useConsolidatedRef<any>(ref);
     const legendRef: RefObject<HTMLDivElement> = useRef();

@@ -1,11 +1,11 @@
-import React, { FC, forwardRef, Ref, RefObject, useRef, useEffect, useCallback } from 'react';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import React, { FC, forwardRef, Ref, RefObject, useCallback, useEffect, useRef } from 'react';
 import { Radar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { populateData } from '../../util/populateData';
+import { useChartData } from '../../util/populateData';
 import { formatTooltipLabel, mergeConfig } from '../../util/utils';
 
 export interface RadarChartPropTypes extends ChartBaseProps {}
@@ -27,7 +27,7 @@ const RadarChart: FC<RadarChartPropTypes> = withChartContainer(
     } = props;
 
     const theme: any = useTheme();
-    const data = populateData(labels, datasets, colors, theme.theme);
+    const data = useChartData(labels, datasets, colors, theme.theme);
 
     const mergedOptions = mergeConfig(
       {
