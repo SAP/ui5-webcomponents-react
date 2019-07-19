@@ -1,12 +1,12 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef } from 'react';
+import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef, useMemo } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabelForPieCharts, mergeConfig } from '../../util/utils';
+import { formatTooltipLabelForPieCharts, useMergedConfig } from '../../util/utils';
 import { PieChartPlaceholder } from './Placeholder';
 
 export interface PieChartPropTypes extends ChartBaseProps {}
@@ -30,8 +30,8 @@ const PieChart = withChartContainer(
     const theme: any = useTheme();
     const data = useChartData(labels, datasets, colors, theme.theme, true);
 
-    const mergedOptions = mergeConfig(
-      {
+    const pieChartDefaultConfig = useMemo(() => {
+      return {
         tooltips: {
           callbacks: {
             label: formatTooltipLabelForPieCharts(categoryAxisFormatter, valueAxisFormatter)
@@ -47,9 +47,10 @@ const PieChart = withChartContainer(
             formatter: valueAxisFormatter
           }
         }
-      },
-      options
-    );
+      };
+    }, [categoryAxisFormatter, valueAxisFormatter]);
+
+    const mergedOptions = useMergedConfig(pieChartDefaultConfig, options);
 
     const chartRef = useConsolidatedRef<any>(ref);
     const legendRef: RefObject<HTMLDivElement> = useRef();

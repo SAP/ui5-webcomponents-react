@@ -1,6 +1,6 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import bestContrast from 'get-best-contrast-color';
-import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef } from 'react';
+import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef, useMemo } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
@@ -8,7 +8,7 @@ import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabel, getTextWidth, mergeConfig } from '../../util/utils';
+import { formatTooltipLabel, getTextWidth, useMergedConfig } from '../../util/utils';
 import { BarChartPlaceholder } from './Placeholder';
 
 export interface BarChartPropTypes extends ChartBaseProps {}
@@ -59,8 +59,8 @@ const BarChart = withChartContainer(
       }
     }, [chartRef.current, legendRef.current, noLegend]);
 
-    const mergedOptions = mergeConfig(
-      {
+    const barChartDefaultConfig = useMemo(() => {
+      return {
         scales: {
           xAxes: [
             {
@@ -108,9 +108,10 @@ const BarChart = withChartContainer(
             }
           }
         }
-      },
-      options
-    );
+      };
+    }, [valueAxisFormatter, categoryAxisFormatter]);
+
+    const mergedOptions = useMergedConfig(barChartDefaultConfig, options);
 
     return (
       <>

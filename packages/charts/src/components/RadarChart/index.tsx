@@ -1,12 +1,12 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import React, { FC, forwardRef, Ref, RefObject, useCallback, useEffect, useRef } from 'react';
+import React, { FC, forwardRef, Ref, RefObject, useCallback, useEffect, useRef, useMemo } from 'react';
 import { Radar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabel, mergeConfig } from '../../util/utils';
+import { formatTooltipLabel, useMergedConfig } from '../../util/utils';
 
 export interface RadarChartPropTypes extends ChartBaseProps {}
 
@@ -29,8 +29,8 @@ const RadarChart: FC<RadarChartPropTypes> = withChartContainer(
     const theme: any = useTheme();
     const data = useChartData(labels, datasets, colors, theme.theme);
 
-    const mergedOptions = mergeConfig(
-      {
+    const radarChartDefaultConfig = useMemo(() => {
+      return {
         scale: {
           ticks: {
             callback: valueAxisFormatter
@@ -44,9 +44,9 @@ const RadarChart: FC<RadarChartPropTypes> = withChartContainer(
         plugins: {
           datalabels: false
         }
-      },
-      options
-    );
+      };
+    }, [categoryAxisFormatter, valueAxisFormatter]);
+    const mergedOptions = useMergedConfig(radarChartDefaultConfig, options);
 
     const chartRef = useConsolidatedRef<any>(ref);
     const legendRef: RefObject<HTMLDivElement> = useRef();

@@ -1,6 +1,6 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import bestContrast from 'get-best-contrast-color';
-import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef } from 'react';
+import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
@@ -8,7 +8,7 @@ import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabel, getTextHeight, getTextWidth, mergeConfig } from '../../util/utils';
+import { formatTooltipLabel, getTextHeight, getTextWidth, useMergedConfig } from '../../util/utils';
 import { ColumnChartPlaceholder } from './Placeholder';
 
 export interface ColumnChartPropTypes extends ChartBaseProps {}
@@ -59,8 +59,8 @@ const ColumnChart = withChartContainer(
       }
     }, [chartRef.current, legendRef.current, noLegend]);
 
-    const mergedOptions = mergeConfig(
-      {
+    const columnChartDefaultConfig = useMemo(() => {
+      return {
         scales: {
           xAxes: [
             {
@@ -111,9 +111,10 @@ const ColumnChart = withChartContainer(
             }
           }
         }
-      },
-      options
-    );
+      };
+    }, [categoryAxisFormatter, valueAxisFormatter]);
+
+    const mergedOptions = useMergedConfig(columnChartDefaultConfig, options);
 
     return (
       <>

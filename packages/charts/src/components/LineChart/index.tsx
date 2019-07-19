@@ -1,5 +1,5 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef } from 'react';
+import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
@@ -7,7 +7,7 @@ import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { withChartContainer } from '../../internal/ChartContainer/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabel, mergeConfig } from '../../util/utils';
+import { formatTooltipLabel, useMergedConfig } from '../../util/utils';
 import { LineChartPlaceholder } from './Placeholder';
 
 export interface LineChartPropTypes extends ChartBaseProps {}
@@ -28,8 +28,8 @@ const LineChart = withChartContainer(
       noLegend
     } = props;
 
-    const chartOptions = mergeConfig(
-      {
+    const lineChartDefaultConfig = useMemo(() => {
+      return {
         scales: {
           yAxes: [
             {
@@ -53,9 +53,9 @@ const LineChart = withChartContainer(
             formatter: valueAxisFormatter
           }
         }
-      },
-      options
-    );
+      };
+    }, [categoryAxisFormatter, valueAxisFormatter]);
+    const chartOptions = useMergedConfig(lineChartDefaultConfig, options);
 
     const theme: any = useTheme();
     const data = useChartData(labels, datasets, colors, theme.theme);

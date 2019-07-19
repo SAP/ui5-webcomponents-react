@@ -1,4 +1,4 @@
-import React, { ComponentType, CSSProperties, forwardRef, Ref } from 'react';
+import React, { ComponentType, CSSProperties, forwardRef, Ref, useMemo } from 'react';
 // @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
@@ -37,17 +37,22 @@ export const withChartContainer = (Component: ComponentType<any>) => {
       classNames = `${classNames} ${className}`;
     }
 
-    const loadingIndicator = getLoadingState(loading, datasets, (Component as any).LoadingPlaceholder);
+    const loadingIndicator = useMemo(() => {
+      return getLoadingState(loading, datasets, (Component as any).LoadingPlaceholder);
+    }, [loading, datasets, Component]);
 
-    const inlineStyle: CSSProperties = {
-      position: 'relative',
-      paddingTop: '6px',
-      width: `${props.width}px`,
-      height: `${props.height}px`,
-      ...style
-    };
+    const inlineStyle: CSSProperties = useMemo(
+      () => ({
+        position: 'relative',
+        paddingTop: '6px',
+        width: `${props.width}px`,
+        height: `${props.height}px`,
+        ...style
+      }),
+      [props.width, props.height, style]
+    );
 
-    const chartHeight = noLegend ? height : height - 60;
+    const chartHeight = useMemo(() => (noLegend ? height : height - 60), [noLegend, height]);
 
     return (
       <div className={classNames} style={inlineStyle} title={tooltip} slot={slot}>

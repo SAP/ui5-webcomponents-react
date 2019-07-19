@@ -1,11 +1,11 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 import { ChartOptions } from 'chart.js';
-import React, { CSSProperties, forwardRef, Ref } from 'react';
+import React, { CSSProperties, forwardRef, Ref, useMemo } from 'react';
 // @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { mergeConfig } from '../../util/utils';
+import { useMergedConfig } from '../../util/utils';
 import { DonutChart } from '../DonutChart';
 
 export interface RadialChartPropTypes extends CommonProps {
@@ -42,8 +42,8 @@ const RadialChart = forwardRef((props: RadialChartPropTypes, ref: Ref<HTMLDivEle
   const { maxValue, value, displayValue, style, className, colors, options, width, height } = props;
 
   const data = [value, maxValue - value];
-  const mergedOptions = mergeConfig(
-    {
+  const radialChartDefaultConfig = useMemo(() => {
+    return {
       cutoutPercentage: 90,
       tooltips: {
         enabled: false
@@ -51,17 +51,20 @@ const RadialChart = forwardRef((props: RadialChartPropTypes, ref: Ref<HTMLDivEle
       plugins: {
         datalabels: false
       }
-    },
-    options
-  );
+    };
+  }, []);
+  const mergedOptions = useMergedConfig(radialChartDefaultConfig, options);
 
   const classes = useStyles();
 
-  const radialChartContainerStyles = {
-    width: `${width}px`,
-    height: `${height}px`,
-    ...style
-  };
+  const radialChartContainerStyles = useMemo(
+    () => ({
+      width: `${width}px`,
+      height: `${height}px`,
+      ...style
+    }),
+    [width, height, style]
+  );
 
   const outerClasses = StyleClassHelper.of(classes.radialChart);
   if (className) {
