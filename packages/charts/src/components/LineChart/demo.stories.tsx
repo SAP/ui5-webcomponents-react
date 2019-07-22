@@ -27,4 +27,5 @@ const renderStoryWithCustomColors = () => (
 storiesOf('Charts | Line Chart', module)
   .add('Default', renderStory)
   .add('with custom colors', renderStoryWithCustomColors)
-  .add('with Formatter', renderStoryWithFormatter);
+  .add('with Formatter', renderStoryWithFormatter)
+  .add('Loading Placeholder', () => <LineChart labels={labels} loading={boolean('loading', true)} />);

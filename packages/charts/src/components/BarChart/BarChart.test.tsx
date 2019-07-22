@@ -5,15 +5,15 @@ import { BarChart } from './index';
 
 describe('BarChart', () => {
   test('Renders with data', () => {
-    renderThemedComponent(<BarChart labels={labels} datasets={singleDataset} />);
+    mountThemedComponent(<BarChart labels={labels} datasets={singleDataset} />);
   });
 
   test('custom colors', () => {
-    renderThemedComponent(<BarChart labels={labels} datasets={singleDataset} colors={['#f0ab00']} />);
+    mountThemedComponent(<BarChart labels={labels} datasets={singleDataset} colors={['#f0ab00']} />);
   });
 
   test('valueAxisFormatter', () => {
-    renderThemedComponent(<BarChart labels={labels} datasets={singleDataset} valueAxisFormatter={(d) => `${d}%`} />);
+    mountThemedComponent(<BarChart labels={labels} datasets={singleDataset} valueAxisFormatter={(d) => `${d}%`} />);
   });
 
   test('with Ref', () => {
@@ -23,12 +23,17 @@ describe('BarChart', () => {
   });
 
   test('stacked', () => {
-    renderThemedComponent(
+    mountThemedComponent(
       <BarChart
         labels={labels}
         datasets={datasets}
         options={{ scales: { yAxes: [{ stacked: true }], xAxes: [{ stacked: true }] } }}
       />
     );
+  });
+
+  test('loading placeholder', () => {
+    const wrapper = mountThemedComponent(<BarChart labels={labels} datasets={[]} loading />);
+    expect(wrapper.render()).toMatchSnapshot();
   });
 });

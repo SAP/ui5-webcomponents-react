@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BarChart loading placeholder 1`] = `
+<div
+  class="-chart- -chart-0-"
+  style="position: relative; padding-top: 6px; width: 300px; height: 300px;"
+>
+  <svg
+    aria-label="Loading interface..."
+    preserveAspectRatio="none"
+    role="img"
+    viewBox="0 0 165 145"
+  >
+    <title>
+      Loading interface...
+    </title>
+    <rect
+      clip-path="CLIP-PATH-URL"
+      height="145"
+      style="fill: url(#STYLE-URL);"
+      width="165"
+      x="0"
+      y="0"
+    />
+    <defs>
+      <clipPath
+        id="CLIP-PATH-URL"
+      >
+        <rect
+          height="135"
+          width="1"
+          x="20"
+          y="10"
+        />
+        <rect
+          height="15"
+          width="85"
+          x="20"
+          y="20"
+        />
+        <rect
+          height="15"
+          width="117"
+          x="20"
+          y="40"
+        />
+        <rect
+          height="15"
+          width="67"
+          x="20"
+          y="60"
+        />
+        <rect
+          height="15"
+          width="75"
+          x="20"
+          y="80"
+        />
+        <rect
+          height="15"
+          width="125"
+          x="20"
+          y="100"
+        />
+        <rect
+          height="15"
+          width="60"
+          x="20"
+          y="120"
+        />
+      </clipPath>
+      <linearGradient
+        id="STYLE-URL"
+      >
+        <stop
+          offset="0%"
+          stop-color="#6a6d70"
+          stop-opacity="0.3"
+        >
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="-2; -2; 1"
+          />
+        </stop>
+        <stop
+          offset="50%"
+          stop-color="#d9d9d9"
+          stop-opacity="1"
+        >
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="-1; -1; 2"
+          />
+        </stop>
+        <stop
+          offset="100%"
+          stop-color="#6a6d70"
+          stop-opacity="0.3"
+        >
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="0; 0; 3"
+          />
+        </stop>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+`;
