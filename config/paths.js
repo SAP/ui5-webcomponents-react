@@ -4,6 +4,7 @@ const root = path.resolve(__dirname, '..');
 const PATHS = {
   root,
   src: path.join(root, 'src'),
+  build: path.join(root, 'build'),
   test: path.join(root, 'test'),
   shared: path.join(root, 'shared'),
   coverage: path.join(root, 'coverage'),

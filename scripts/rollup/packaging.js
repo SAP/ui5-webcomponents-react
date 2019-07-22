@@ -44,10 +44,7 @@ async function prepareNpmPackages() {
   const builtPackageFolders = readdirSync('build/node_modules').filter((dir) => dir.charAt(0) !== '.');
   await Promise.all(builtPackageFolders.map(prepareNpmPackage));
   // create main lib
-  await asyncExecuteCommand(`node_modules/.bin/rollup -c packages/main/rollup.config.js`);
-  await asyncExecuteCommand(
-    `tsc packages/base/src/polyfill/*.ts --outDir build/node_modules/base/polyfill --skipLibCheck`
-  );
+  await asyncExecuteCommand(`node_modules/.bin/lerna run postbuild --stream`);
 }
 
 module.exports = {

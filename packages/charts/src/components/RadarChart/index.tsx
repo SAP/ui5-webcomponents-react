@@ -1,5 +1,5 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import React, { FC, forwardRef, Ref, RefObject, useCallback, useEffect, useRef, useMemo } from 'react';
+import React, { forwardRef, Ref, RefObject, useCallback, useEffect, useRef, useMemo } from 'react';
 import { Radar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
