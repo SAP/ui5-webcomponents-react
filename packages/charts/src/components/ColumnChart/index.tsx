@@ -13,128 +13,127 @@ import { ColumnChartPlaceholder } from './Placeholder';
 
 export interface ColumnChartPropTypes extends ChartBaseProps {}
 
-const ColumnChart = withChartContainer(
-  forwardRef((props: ColumnChartPropTypes, ref: Ref<any>) => {
-    const {
-      labels,
-      datasets,
-      categoryAxisFormatter,
-      valueAxisFormatter,
-      getDatasetAtEvent,
-      getElementAtEvent,
-      colors,
-      options,
-      width,
-      height,
-      noLegend
-    } = props;
+const ColumnChartComponent = forwardRef((props: ColumnChartPropTypes, ref: Ref<any>) => {
+  const {
+    labels,
+    datasets,
+    categoryAxisFormatter,
+    valueAxisFormatter,
+    getDatasetAtEvent,
+    getElementAtEvent,
+    colors,
+    options,
+    width,
+    height,
+    noLegend
+  } = props;
 
-    const theme: any = useTheme();
-    const data = useChartData(labels, datasets, colors, theme.theme);
+  const theme: any = useTheme();
+  const data = useChartData(labels, datasets, colors, theme.theme);
 
-    const chartRef = useConsolidatedRef<any>(ref);
-    const legendRef: RefObject<HTMLDivElement> = useRef();
+  const chartRef = useConsolidatedRef<any>(ref);
+  const legendRef: RefObject<HTMLDivElement> = useRef();
 
-    const handleLegendItemPress = useCallback(
-      (e) => {
-        const clickTarget = (e.currentTarget as unknown) as HTMLLIElement;
-        const datasetIndex = parseInt(clickTarget.dataset.datasetindex);
-        const { chartInstance } = chartRef.current;
-        const meta = chartInstance.getDatasetMeta(datasetIndex);
-        meta.hidden = meta.hidden === null ? !chartInstance.data.datasets[datasetIndex].hidden : null;
-        chartInstance.update();
-        clickTarget.style.textDecoration = meta.hidden ? 'line-through' : 'unset';
-      },
-      [legendRef.current, chartRef.current]
-    );
+  const handleLegendItemPress = useCallback(
+    (e) => {
+      const clickTarget = (e.currentTarget as unknown) as HTMLLIElement;
+      const datasetIndex = parseInt(clickTarget.dataset.datasetindex);
+      const { chartInstance } = chartRef.current;
+      const meta = chartInstance.getDatasetMeta(datasetIndex);
+      meta.hidden = meta.hidden === null ? !chartInstance.data.datasets[datasetIndex].hidden : null;
+      chartInstance.update();
+      clickTarget.style.textDecoration = meta.hidden ? 'line-through' : 'unset';
+    },
+    [legendRef.current, chartRef.current]
+  );
 
-    useEffect(() => {
-      if (noLegend) {
-        legendRef.current.innerHTML = '';
-      } else {
-        legendRef.current.innerHTML = chartRef.current.chartInstance.generateLegend();
-        legendRef.current.querySelectorAll('li').forEach((legendItem) => {
-          legendItem.addEventListener('click', handleLegendItemPress);
-        });
-      }
-    }, [chartRef.current, legendRef.current, noLegend]);
+  useEffect(() => {
+    if (noLegend) {
+      legendRef.current.innerHTML = '';
+    } else {
+      legendRef.current.innerHTML = chartRef.current.chartInstance.generateLegend();
+      legendRef.current.querySelectorAll('li').forEach((legendItem) => {
+        legendItem.addEventListener('click', handleLegendItemPress);
+      });
+    }
+  }, [chartRef.current, legendRef.current, noLegend]);
 
-    const columnChartDefaultConfig = useMemo(() => {
-      return {
-        scales: {
-          xAxes: [
-            {
-              ...DEFAULT_OPTIONS.scales.xAxes[0],
-              ticks: {
-                callback: categoryAxisFormatter
-              }
+  const columnChartDefaultConfig = useMemo(() => {
+    return {
+      scales: {
+        xAxes: [
+          {
+            ...DEFAULT_OPTIONS.scales.xAxes[0],
+            ticks: {
+              callback: categoryAxisFormatter
             }
-          ],
-          yAxes: [
-            {
-              ...DEFAULT_OPTIONS.scales.yAxes[0],
-              ticks: {
-                ...DEFAULT_OPTIONS.scales.yAxes[0].ticks,
-                callback: valueAxisFormatter
-              }
-            }
-          ]
-        },
-        tooltips: {
-          callbacks: {
-            label: formatTooltipLabel(categoryAxisFormatter, valueAxisFormatter)
           }
-        },
-        plugins: {
-          datalabels: {
-            display: (context) => {
-              const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
-              const dataMeta = datasetMeta.data[context.dataIndex];
-              const height = dataMeta._view.base - dataMeta._view.y; // offset
-              if (height < getTextHeight() + 6) {
-                return false;
-              }
-              const formattedValue = valueAxisFormatter(context.dataset.data[context.dataIndex]);
-              const textWidth = getTextWidth(formattedValue);
-              return textWidth < dataMeta._view.width;
-            },
-            anchor: 'end',
-            align: 'start',
-            formatter: valueAxisFormatter,
-            color: (context) => {
-              const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
-              const dataMeta = datasetMeta.data[context.dataIndex];
-              return bestContrast(dataMeta._view.backgroundColor, [
-                /* sapUiBaseText */ '#32363a',
-                /* sapUiContentContrastTextColor */ '#ffffff'
-              ]);
+        ],
+        yAxes: [
+          {
+            ...DEFAULT_OPTIONS.scales.yAxes[0],
+            ticks: {
+              ...DEFAULT_OPTIONS.scales.yAxes[0].ticks,
+              callback: valueAxisFormatter
             }
+          }
+        ]
+      },
+      tooltips: {
+        callbacks: {
+          label: formatTooltipLabel(categoryAxisFormatter, valueAxisFormatter)
+        }
+      },
+      plugins: {
+        datalabels: {
+          display: (context) => {
+            const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
+            const dataMeta = datasetMeta.data[context.dataIndex];
+            const height = dataMeta._view.base - dataMeta._view.y; // offset
+            if (height < getTextHeight() + 6) {
+              return false;
+            }
+            const formattedValue = valueAxisFormatter(context.dataset.data[context.dataIndex]);
+            const textWidth = getTextWidth(formattedValue);
+            return textWidth < dataMeta._view.width;
+          },
+          anchor: 'end',
+          align: 'start',
+          formatter: valueAxisFormatter,
+          color: (context) => {
+            const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
+            const dataMeta = datasetMeta.data[context.dataIndex];
+            return bestContrast(dataMeta._view.backgroundColor, [
+              /* sapUiBaseText */ '#32363a',
+              /* sapUiContentContrastTextColor */ '#ffffff'
+            ]);
           }
         }
-      };
-    }, [categoryAxisFormatter, valueAxisFormatter]);
+      }
+    };
+  }, [categoryAxisFormatter, valueAxisFormatter]);
 
-    const mergedOptions = useMergedConfig(columnChartDefaultConfig, options);
+  const mergedOptions = useMergedConfig(columnChartDefaultConfig, options);
 
-    return (
-      <>
-        <Bar
-          ref={chartRef}
-          data={data}
-          height={height}
-          width={width}
-          options={mergedOptions}
-          getDatasetAtEvent={getDatasetAtEvent}
-          getElementAtEvent={getElementAtEvent}
-        />
-        <div ref={legendRef} className="legend" />
-      </>
-    );
-  })
-);
-
+  return (
+    <>
+      <Bar
+        ref={chartRef}
+        data={data}
+        height={height}
+        width={width}
+        options={mergedOptions}
+        getDatasetAtEvent={getDatasetAtEvent}
+        getElementAtEvent={getElementAtEvent}
+      />
+      <div ref={legendRef} className="legend" />
+    </>
+  );
+});
 // @ts-ignore
-ColumnChart.LoadingPlaceholder = ColumnChartPlaceholder;
+ColumnChartComponent.LoadingPlaceholder = ColumnChartPlaceholder;
+const ColumnChart = withChartContainer(ColumnChartComponent);
+
 ColumnChart.defaultProps = {
   ...ChartBaseDefaultProps
 };

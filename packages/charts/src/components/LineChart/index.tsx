@@ -12,99 +12,99 @@ import { LineChartPlaceholder } from './Placeholder';
 
 export interface LineChartPropTypes extends ChartBaseProps {}
 
-const LineChart = withChartContainer(
-  forwardRef((props: LineChartPropTypes, ref: Ref<any>) => {
-    const {
-      labels,
-      datasets,
-      colors,
-      options,
-      valueAxisFormatter,
-      categoryAxisFormatter,
-      getElementAtEvent,
-      getDatasetAtEvent,
-      width,
-      height,
-      noLegend
-    } = props;
+const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>) => {
+  const {
+    labels,
+    datasets,
+    colors,
+    options,
+    valueAxisFormatter,
+    categoryAxisFormatter,
+    getElementAtEvent,
+    getDatasetAtEvent,
+    width,
+    height,
+    noLegend
+  } = props;
 
-    const lineChartDefaultConfig = useMemo(() => {
-      return {
-        scales: {
-          yAxes: [
-            {
-              ...DEFAULT_OPTIONS.scales.yAxes[0],
-              display: true,
-              ticks: {
-                ...DEFAULT_OPTIONS.scales.yAxes[0].ticks,
-                callback: valueAxisFormatter
-              }
+  const lineChartDefaultConfig = useMemo(() => {
+    return {
+      scales: {
+        yAxes: [
+          {
+            ...DEFAULT_OPTIONS.scales.yAxes[0],
+            display: true,
+            ticks: {
+              ...DEFAULT_OPTIONS.scales.yAxes[0].ticks,
+              callback: valueAxisFormatter
             }
-          ],
-          xAxes: DEFAULT_OPTIONS.scales.xAxes
-        },
-        tooltips: {
-          callbacks: {
-            label: formatTooltipLabel(categoryAxisFormatter, valueAxisFormatter)
           }
-        },
-        plugins: {
-          datalabels: {
-            formatter: valueAxisFormatter
-          }
-        }
-      };
-    }, [categoryAxisFormatter, valueAxisFormatter]);
-    const chartOptions = useMergedConfig(lineChartDefaultConfig, options);
-
-    const theme: any = useTheme();
-    const data = useChartData(labels, datasets, colors, theme.theme);
-
-    const chartRef = useConsolidatedRef<any>(ref);
-    const legendRef: RefObject<HTMLDivElement> = useRef();
-    const handleLegendItemPress = useCallback(
-      (e) => {
-        const clickTarget = (e.currentTarget as unknown) as HTMLLIElement;
-        const datasetIndex = parseInt(clickTarget.dataset.datasetindex);
-        const { chartInstance } = chartRef.current;
-        const meta = chartInstance.getDatasetMeta(datasetIndex);
-        meta.hidden = meta.hidden === null ? !chartInstance.data.datasets[datasetIndex].hidden : null;
-        chartInstance.update();
-        clickTarget.style.textDecoration = meta.hidden ? 'line-through' : 'unset';
+        ],
+        xAxes: DEFAULT_OPTIONS.scales.xAxes
       },
-      [legendRef.current, chartRef.current]
-    );
-
-    useEffect(() => {
-      if (noLegend) {
-        legendRef.current.innerHTML = '';
-      } else {
-        legendRef.current.innerHTML = chartRef.current.chartInstance.generateLegend();
-        legendRef.current.querySelectorAll('li').forEach((legendItem) => {
-          legendItem.addEventListener('click', handleLegendItemPress);
-        });
+      tooltips: {
+        callbacks: {
+          label: formatTooltipLabel(categoryAxisFormatter, valueAxisFormatter)
+        }
+      },
+      plugins: {
+        datalabels: {
+          formatter: valueAxisFormatter
+        }
       }
-    }, [chartRef.current, legendRef.current, noLegend]);
+    };
+  }, [categoryAxisFormatter, valueAxisFormatter]);
+  const chartOptions = useMergedConfig(lineChartDefaultConfig, options);
 
-    return (
-      <>
-        <Line
-          ref={chartRef}
-          data={data}
-          height={height}
-          width={width}
-          options={chartOptions}
-          getDatasetAtEvent={getDatasetAtEvent}
-          getElementAtEvent={getElementAtEvent}
-        />
-        <div ref={legendRef} className="legend" />
-      </>
-    );
-  })
-);
+  const theme: any = useTheme();
+  const data = useChartData(labels, datasets, colors, theme.theme);
 
+  const chartRef = useConsolidatedRef<any>(ref);
+  const legendRef: RefObject<HTMLDivElement> = useRef();
+  const handleLegendItemPress = useCallback(
+    (e) => {
+      const clickTarget = (e.currentTarget as unknown) as HTMLLIElement;
+      const datasetIndex = parseInt(clickTarget.dataset.datasetindex);
+      const { chartInstance } = chartRef.current;
+      const meta = chartInstance.getDatasetMeta(datasetIndex);
+      meta.hidden = meta.hidden === null ? !chartInstance.data.datasets[datasetIndex].hidden : null;
+      chartInstance.update();
+      clickTarget.style.textDecoration = meta.hidden ? 'line-through' : 'unset';
+    },
+    [legendRef.current, chartRef.current]
+  );
+
+  useEffect(() => {
+    if (noLegend) {
+      legendRef.current.innerHTML = '';
+    } else {
+      legendRef.current.innerHTML = chartRef.current.chartInstance.generateLegend();
+      legendRef.current.querySelectorAll('li').forEach((legendItem) => {
+        legendItem.addEventListener('click', handleLegendItemPress);
+      });
+    }
+  }, [chartRef.current, legendRef.current, noLegend]);
+
+  return (
+    <>
+      <Line
+        ref={chartRef}
+        data={data}
+        height={height}
+        width={width}
+        options={chartOptions}
+        getDatasetAtEvent={getDatasetAtEvent}
+        getElementAtEvent={getElementAtEvent}
+      />
+      <div ref={legendRef} className="legend" />
+    </>
+  );
+});
 // @ts-ignore
-LineChart.LoadingPlaceholder = LineChartPlaceholder;
+LineChartComponent.LoadingPlaceholder = LineChartPlaceholder;
+
+const LineChart = withChartContainer(LineChartComponent);
+
 LineChart.defaultProps = {
   ...ChartBaseDefaultProps
 };

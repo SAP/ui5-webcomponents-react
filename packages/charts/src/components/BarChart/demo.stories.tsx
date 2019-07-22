@@ -53,4 +53,5 @@ storiesOf('Charts | BarChart', module)
       options={options}
       loading={boolean('loading')}
     />
-  ));
+  ))
+  .add('Loading Placeholder', () => <BarChart labels={labels} loading={boolean('loading', true)} />);

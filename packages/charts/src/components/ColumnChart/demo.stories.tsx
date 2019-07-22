@@ -99,4 +99,5 @@ storiesOf('Charts | ColumnChart', module)
       options={growthLineOptions}
       loading={boolean('loading')}
     />
-  ));
+  ))
+  .add('Loading Placeholder', () => <ColumnChart labels={labels} loading={boolean('loading', true)} />);

@@ -10,4 +10,5 @@ storiesOf('Charts | PieChart', module)
   .add('Default', () => <PieChart labels={labels} datasets={datasets} loading={boolean('loading')} />)
   .add('with Formatter', () => (
     <PieChart labels={labels} datasets={datasets} valueAxisFormatter={(d) => `${d}%`} loading={boolean('loading')} />
-  ));
+  ))
+  .add('Loading Placeholder', () => <PieChart labels={labels} loading={boolean('loading', true)} />);
