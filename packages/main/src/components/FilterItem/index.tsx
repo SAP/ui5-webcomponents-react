@@ -122,3 +122,5 @@ FilterItem.defaultProps = {
   onChange: () => null,
   loading: false
 };
+
+FilterItem.displayName = 'FilterItem';
