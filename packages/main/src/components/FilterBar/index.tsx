@@ -25,7 +25,7 @@ export class FilterBar extends PureComponent<FilterBarPropTypes> {
     showFilters: true
   };
 
-  handelHideFilterBar = () => {
+  handleHideFilterBar = () => {
     this.setState({ showFilters: !this.state.showFilters });
   };
 
@@ -38,7 +38,7 @@ export class FilterBar extends PureComponent<FilterBarPropTypes> {
           {renderVariants && renderVariants()}
           {renderSearch && <div className={classes.vLine}> {renderSearch()} </div>}
           <div className={classes.headerRowRight}>
-            <Button onClick={this.handelHideFilterBar} design={ButtonDesign.Transparent}>
+            <Button onClick={this.handleHideFilterBar} design={ButtonDesign.Transparent}>
               {this.state.showFilters ? 'Hide Filter Bar' : 'Show Filter Bar'}
             </Button>
           </div>

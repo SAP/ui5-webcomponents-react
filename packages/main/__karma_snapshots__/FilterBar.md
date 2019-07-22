@@ -69,51 +69,47 @@
               </div>
             </div>
             <div className="FilterBar-filterArea---">
-              <WithStyles(FilterItem) filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false}>
-                <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
-                    <div style={{...}}>
-                      <Label for="">
-                        <ui5-label for="" class="">
-                          Classification
-                        </ui5-label>
-                      </Label>
-                      <Select onChange={[Function]} style={{...}} valueState="None">
-                        <ui5-select style={{...}} value-state="None" class="">
-                          <StandardListItem type="Active" data-key="1" infoState="None">
-                            <ui5-li type="Active" data-key="1" info-state="None" class="">
-                              Text 1
-                            </ui5-li>
-                          </StandardListItem>
-                          <StandardListItem type="Active" data-key="2" infoState="None">
-                            <ui5-li type="Active" data-key="2" info-state="None" class="">
-                              Text 2
-                            </ui5-li>
-                          </StandardListItem>
-                        </ui5-select>
-                      </Select>
+              <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false}>
+                <div className="-filterItem---" style={[undefined]} title={[undefined]}>
+                  <div className="-innerFilterItemContainer---">
+                    <Label for="">
+                      <ui5-label for="" class="">
+                        Classification
+                      </ui5-label>
+                    </Label>
+                    <Select onChange={[Function: onSelect]} style={{...}} valueState="None">
+                      <ui5-select style={{...}} value-state="None" class="">
+                        <Option data-key="1" icon={{...}}>
+                          <ui5-option data-key="1" icon={{...}} class="">
+                            Text 1
+                          </ui5-option>
+                        </Option>
+                        <Option data-key="2" icon={{...}}>
+                          <ui5-option data-key="2" icon={{...}} class="">
+                            Text 2
+                          </ui5-option>
+                        </Option>
+                      </ui5-select>
+                    </Select>
+                  </div>
+                </div>
+              </FilterItem>
+              <FilterItem type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false}>
+                <div className="-filterItem---" style={[undefined]} title={[undefined]}>
+                  <div className="-innerFilterItemContainer---">
+                    <Label for="">
+                      <ui5-label for="" class="">
+                        Custom Filter 1
+                      </ui5-label>
+                    </Label>
+                    <div>
+                      <Switch onClick={[Function]} valueParameter="state" style={{...}}>
+                        <ui5-switch on-click={[Function]} value-parameter="state" style={{...}} class="" />
+                      </Switch>
                     </div>
                   </div>
-                </FilterItem>
-              </WithStyles(FilterItem)>
-              <WithStyles(FilterItem) type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false}>
-                <FilterItem type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
-                    <div style={{...}}>
-                      <Label for="">
-                        <ui5-label for="" class="">
-                          Custom Filter 1
-                        </ui5-label>
-                      </Label>
-                      <div>
-                        <Switch onClick={[Function]} valueParameter="state" style={{...}}>
-                          <ui5-switch on-click={[Function]} value-parameter="state" style={{...}} class="" />
-                        </Switch>
-                      </div>
-                    </div>
-                  </div>
-                </FilterItem>
-              </WithStyles(FilterItem)>
+                </div>
+              </FilterItem>
             </div>
           </div>
         </FilterBar>
@@ -185,67 +181,63 @@
               </div>
             </div>
             <div className="FilterBar-filterArea---">
-              <WithStyles(FilterItem) filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false}>
-                <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
-                    <div style={{...}}>
-                      <Label for="">
-                        <ui5-label for="" class="">
-                          Classification
-                        </ui5-label>
-                      </Label>
-                      <Select onChange={[Function]} style={{...}} valueState="None">
-                        <ui5-select style={{...}} value-state="None" class="">
-                          <StandardListItem type="Active" data-key="1" infoState="None">
-                            <ui5-li type="Active" data-key="1" info-state="None" class="">
-                              Text 1
-                            </ui5-li>
-                          </StandardListItem>
-                          <StandardListItem type="Active" data-key="2" infoState="None">
-                            <ui5-li type="Active" data-key="2" info-state="None" class="">
-                              Text 2
-                            </ui5-li>
-                          </StandardListItem>
-                        </ui5-select>
-                      </Select>
+              <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false}>
+                <div className="-filterItem---" style={[undefined]} title={[undefined]}>
+                  <div className="-innerFilterItemContainer---">
+                    <Label for="">
+                      <ui5-label for="" class="">
+                        Classification
+                      </ui5-label>
+                    </Label>
+                    <Select onChange={[Function: onSelect]} style={{...}} valueState="None">
+                      <ui5-select style={{...}} value-state="None" class="">
+                        <Option data-key="1" icon={{...}}>
+                          <ui5-option data-key="1" icon={{...}} class="">
+                            Text 1
+                          </ui5-option>
+                        </Option>
+                        <Option data-key="2" icon={{...}}>
+                          <ui5-option data-key="2" icon={{...}} class="">
+                            Text 2
+                          </ui5-option>
+                        </Option>
+                      </ui5-select>
+                    </Select>
+                  </div>
+                </div>
+              </FilterItem>
+              <FilterItem type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false}>
+                <div className="-filterItem---" style={[undefined]} title={[undefined]}>
+                  <div className="-innerFilterItemContainer---">
+                    <Label for="">
+                      <ui5-label for="" class="">
+                        Custom Filter 1
+                      </ui5-label>
+                    </Label>
+                    <div>
+                      <Switch onClick={[Function]} valueParameter="state" style={{...}}>
+                        <ui5-switch on-click={[Function]} value-parameter="state" style={{...}} class="" />
+                      </Switch>
                     </div>
                   </div>
-                </FilterItem>
-              </WithStyles(FilterItem)>
-              <WithStyles(FilterItem) type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false}>
-                <FilterItem type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
-                    <div style={{...}}>
-                      <Label for="">
-                        <ui5-label for="" class="">
-                          Custom Filter 1
-                        </ui5-label>
-                      </Label>
-                      <div>
-                        <Switch onClick={[Function]} valueParameter="state" style={{...}}>
-                          <ui5-switch on-click={[Function]} value-parameter="state" style={{...}} class="" />
-                        </Switch>
-                      </div>
-                    </div>
-                  </div>
-                </FilterItem>
-              </WithStyles(FilterItem)>
-              <WithStyles(FilterItem) loading={true} type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]}>
-                <FilterItem loading={true} type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
-                    <div style={{...}}>
-                      <Label for="">
-                        <ui5-label for="" class="">
-                          Custom Filter 1
-                        </ui5-label>
-                      </Label>
+                </div>
+              </FilterItem>
+              <FilterItem loading={true} type="Custom" label="Custom Filter 1" changeEventName="onClick" valueParamName="state" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]}>
+                <div className="-filterItem---" style={[undefined]} title={[undefined]}>
+                  <div className="-innerFilterItemContainer---">
+                    <Label for="">
+                      <ui5-label for="" class="">
+                        Custom Filter 1
+                      </ui5-label>
+                    </Label>
+                    <div className="-loadingContainer---">
                       <BusyIndicator active={true} size="Medium" style={{...}}>
                         <ui5-busyindicator active={true} size="Medium" style={{...}} class="" />
                       </BusyIndicator>
                     </div>
                   </div>
-                </FilterItem>
-              </WithStyles(FilterItem)>
+                </div>
+              </FilterItem>
             </div>
           </div>
         </FilterBar>
@@ -317,65 +309,61 @@
               </div>
             </div>
             <div className="FilterBar-filterArea---">
-              <WithStyles(FilterItem) filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false}>
-                <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
-                    <div style={{...}}>
-                      <Label for="">
-                        <ui5-label for="" class="">
-                          Classification
-                        </ui5-label>
-                      </Label>
-                      <Select onChange={[Function]} style={{...}} valueState="None">
-                        <ui5-select style={{...}} value-state="None" class="">
-                          <StandardListItem type="Active" data-key="1" infoState="None">
-                            <ui5-li type="Active" data-key="1" info-state="None" class="">
-                              Text 1
-                            </ui5-li>
-                          </StandardListItem>
-                          <StandardListItem type="Active" data-key="2" infoState="None">
-                            <ui5-li type="Active" data-key="2" info-state="None" class="">
-                              Text 2
-                            </ui5-li>
-                          </StandardListItem>
-                        </ui5-select>
-                      </Select>
-                    </div>
+              <FilterItem filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false}>
+                <div className="-filterItem---" style={[undefined]} title={[undefined]}>
+                  <div className="-innerFilterItemContainer---">
+                    <Label for="">
+                      <ui5-label for="" class="">
+                        Classification
+                      </ui5-label>
+                    </Label>
+                    <Select onChange={[Function: onSelect]} style={{...}} valueState="None">
+                      <ui5-select style={{...}} value-state="None" class="">
+                        <Option data-key="1" icon={{...}}>
+                          <ui5-option data-key="1" icon={{...}} class="">
+                            Text 1
+                          </ui5-option>
+                        </Option>
+                        <Option data-key="2" icon={{...}}>
+                          <ui5-option data-key="2" icon={{...}} class="">
+                            Text 2
+                          </ui5-option>
+                        </Option>
+                      </ui5-select>
+                    </Select>
                   </div>
-                </FilterItem>
-              </WithStyles(FilterItem)>
-              <WithStyles(FilterItem) loading={true} filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]}>
-                <FilterItem loading={true} filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
-                    <div style={{...}}>
-                      <Label for="">
-                        <ui5-label for="" class="">
-                          Classification
-                        </ui5-label>
-                      </Label>
+                </div>
+              </FilterItem>
+              <FilterItem loading={true} filterItems={{...}} label="Classification" type="Select" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]}>
+                <div className="-filterItem---" style={[undefined]} title={[undefined]}>
+                  <div className="-innerFilterItemContainer---">
+                    <Label for="">
+                      <ui5-label for="" class="">
+                        Classification
+                      </ui5-label>
+                    </Label>
+                    <div className="-loadingContainer---">
                       <BusyIndicator active={true} size="Medium" style={{...}}>
                         <ui5-busyindicator active={true} size="Medium" style={{...}} class="" />
                       </BusyIndicator>
                     </div>
                   </div>
-                </FilterItem>
-              </WithStyles(FilterItem)>
-              <WithStyles(FilterItem) label="Classification" type="Default" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false}>
-                <FilterItem label="Classification" type="Default" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <div className="FilterItem-filterItem---" style={[undefined]} title={[undefined]}>
-                    <div style={{...}}>
-                      <Label for="">
-                        <ui5-label for="" class="">
-                          Classification
-                        </ui5-label>
-                      </Label>
-                      <Input placeholder="" onChange={[Function]} style={{...}} type="Text" value="" valueState="None">
-                        <ui5-input placeholder="" style={{...}} type="Text" value="" value-state="None" class="" />
-                      </Input>
-                    </div>
+                </div>
+              </FilterItem>
+              <FilterItem label="Classification" type="Default" placeholder="" renderText={[Function: renderText]} filterItems={{...}} onChange={[Function: onChange]} loading={false}>
+                <div className="-filterItem---" style={[undefined]} title={[undefined]}>
+                  <div className="-innerFilterItemContainer---">
+                    <Label for="">
+                      <ui5-label for="" class="">
+                        Classification
+                      </ui5-label>
+                    </Label>
+                    <Input placeholder="" onChange={[Function: onSelect]} style={{...}} type="Text" value="" valueState="None">
+                      <ui5-input placeholder="" style={{...}} type="Text" value="" value-state="None" class="" />
+                    </Input>
                   </div>
-                </FilterItem>
-              </WithStyles(FilterItem)>
+                </div>
+              </FilterItem>
             </div>
           </div>
         </FilterBar>

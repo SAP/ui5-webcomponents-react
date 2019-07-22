@@ -1,14 +1,14 @@
-import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { PureComponent, ReactNode } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import React, { forwardRef, ReactNode, RefObject, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BusyIndicator } from '../../lib/BusyIndicator';
 import { FilterType } from '../../lib/FilterType';
 import { Input } from '../../lib/Input';
 import { Label } from '../../lib/Label';
-import { ListItemTypes } from '../../lib/ListItemTypes';
+// @ts-ignore
+import { createUseStyles } from 'react-jss';
 import { Select } from '../../lib/Select';
-import { StandardListItem } from '../../lib/StandardListItem';
+import { Option } from '../../lib/Option';
 import styles from './FilterItem.jss';
 import { BusyIndicatorType } from '../../lib/BusyIndicatorType';
 
@@ -25,108 +25,102 @@ export interface FilterItemPropTypes extends CommonProps {
   changeEventName?: string;
 }
 
-interface FilterItemInternalProps extends FilterItemPropTypes, ClassProps {}
+const useStyles = createUseStyles(styles);
 
-@withStyles(styles)
-export class FilterItem extends PureComponent<FilterItemPropTypes> {
-  state = {
-    selectedText: ''
-  };
+export const FilterItem = forwardRef((props: FilterItemPropTypes, ref: RefObject<HTMLDivElement>) => {
+  const {
+    filterItems,
+    onChange,
+    type,
+    placeholder,
+    children,
+    loading,
+    changeEventName,
+    valueParamName,
+    label,
+    style,
+    tooltip
+  } = props as FilterItemPropTypes;
+  const classes = useStyles();
 
-  static defaultProps = {
-    placeholder: '',
-    renderText: (item) => (item && item.text) || '',
-    type: FilterType.Default,
-    filterItems: [],
-    label: '',
-    onChange: () => null,
-    loading: false
-  };
-
-  private onSelect = (e) => {
-    const selectedKey = e.getParameter('selectedItem').getAttribute('data-key');
-    const { filterItems } = this.props;
-    const selectedItem = this._getItemByKey(selectedKey, filterItems) || filterItems[0];
-    this.setState({ selectedItem });
-    this.props.onChange(Event.of(this, e.getOriginalEvent(), { selectedItem }));
-  };
-
-  _getItemByKey(key, items) {
-    return items.filter((item) => item.key === key)[0];
+  function getItemByKey(key) {
+    return filterItems.filter((item) => item.key === key)[0];
   }
 
-  private getFilterComponent = () => {
-    const { type, filterItems, placeholder, children, loading } = this.props as FilterItemInternalProps;
+  function onSelect(e) {
+    const selectedKey = e.getParameter('selectedOption').getAttribute('data-key');
+    const item = getItemByKey(selectedKey) || filterItems[0];
+    onChange(Event.of(null, e.getOriginalEvent(), { selectedItem: item }));
+  }
+
+  const filterComponent = useMemo(() => {
+    if (loading) {
+      return (
+        <div className={classes.loadingContainer}>
+          <BusyIndicator
+            active
+            size={BusyIndicatorType.Medium}
+            style={{ backgroundColor: 'transparent', width: '80px' }}
+          />
+        </div>
+      );
+    }
+
     switch (type) {
       case FilterType.Default:
-        return <Input placeholder={placeholder} onChange={this.onSelect} style={{ width: '100%' }} />;
+        return <Input placeholder={placeholder} onChange={onSelect} style={{ width: '100%' }} />;
       case FilterType.Select:
-        if (loading) {
-          return (
-            <BusyIndicator
-              active
-              size={BusyIndicatorType.Medium}
-              style={{ backgroundColor: 'transparent', width: '80px' }}
-            />
-          );
-        }
         return (
-          <Select onChange={this.onSelect} style={{ width: '100%' }}>
+          <Select onChange={onSelect} style={{ width: '100%' }}>
             {filterItems.map((item) => (
-              <StandardListItem type={ListItemTypes.Active} key={item.key} data-key={item.key}>
+              <Option key={item.key} data-key={item.key}>
                 {item.text}
-              </StandardListItem>
+              </Option>
             ))}
           </Select>
         );
       case FilterType.Custom:
-        if (loading) {
-          return (
-            <BusyIndicator
-              active
-              size={BusyIndicatorType.Medium}
-              style={{ backgroundColor: 'transparent', width: '80px' }}
-            />
-          );
-        }
         return (
           <div>
             {React.Children.map(children, (child) => {
               return React.cloneElement(child as React.ReactElement<any>, {
-                [this.props.changeEventName]: (event) => {
-                  this.onSelect(event);
+                [changeEventName]: (event) => {
+                  onSelect(event);
                   // @ts-ignore
-                  if (child.props.hasOwnProperty(this.props.changeEventName)) {
+                  if (child.props.hasOwnProperty(changeEventName)) {
                     // @ts-ignore
-                    child.props[this.props.changeEventName](event);
+                    child.props[changeEventName](event);
                   }
                 },
-                valueParameter: this.props.valueParamName,
+                valueParameter: valueParamName,
                 style: { width: '100%' }
               });
             })}
           </div>
         );
     }
-  };
+  }, [valueParamName, changeEventName, filterItems, loading, type, children]);
 
-  render() {
-    const { label, classes, style, tooltip, innerRef } = this.props as FilterItemInternalProps;
-    const filterItemClasses = StyleClassHelper.of(classes.filterItem);
+  const filterItemClasses = StyleClassHelper.of(classes.filterItem);
 
-    return (
-      <div ref={innerRef} className={filterItemClasses.toString()} style={style} title={tooltip}>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'start'
-          }}
-        >
-          <Label>{label}</Label>
-          {this.getFilterComponent()}
-        </div>
+  return (
+    <div ref={ref} className={filterItemClasses.toString()} style={style} title={tooltip}>
+      <div className={classes.innerFilterItemContainer}>
+        <Label>{label}</Label>
+        {filterComponent}
       </div>
-    );
-  }
-}
+    </div>
+  );
+});
+
+FilterItem.defaultProps = {
+  placeholder: '',
+  renderText: (item) => (item && item.text) || '',
+  type: FilterType.Default,
+  filterItems: [],
+  label: '',
+  onChange: () => null,
+  loading: false
+};
+
+FilterItem.displayName = 'FilterItem';
