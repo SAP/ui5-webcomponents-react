@@ -54,6 +54,7 @@
     "coveralls": "^3.0.3",
     "cross-env": "^5.2.0",
     "dedent": "^0.7.0",
+    "deepmerge": "^4.0.0",
     "dotenv": "^8.0.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",

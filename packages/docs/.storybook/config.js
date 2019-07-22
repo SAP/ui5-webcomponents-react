@@ -150,7 +150,6 @@ const themr = makeDecorator({
   parameterName: 'themr',
   skipIfNoParametersOrOptions: false,
   wrapper: (getStory, context) => {
-    // debugger;
     return <ThemeProvider withToastContainer>{getStory(context)}</ThemeProvider>;
   }
 });

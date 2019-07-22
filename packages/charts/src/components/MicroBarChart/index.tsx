@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
+import React, { CSSProperties, forwardRef, Ref } from 'react';
 // @ts-ignore
 import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';

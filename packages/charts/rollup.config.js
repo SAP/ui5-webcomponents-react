@@ -1,3 +1,4 @@
 const rollupConfigFactory = require('../../shared/rollup/configFactory');
 
-module.exports = rollupConfigFactory('main');
+const config = rollupConfigFactory('charts');
+module.exports = config;
