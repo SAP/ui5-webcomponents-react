@@ -27,4 +27,5 @@ storiesOf('Charts | DonutChart', module)
       valueAxisFormatter={(number) => `${number}$`}
       loading={boolean('loading')}
     />
-  ));
+  ))
+  .add('Loading Placeholder', () => <DonutChart labels={labels} loading={boolean('loading', true)} />);
