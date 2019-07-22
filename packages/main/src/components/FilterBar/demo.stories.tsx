@@ -46,6 +46,7 @@ function renderStory() {
         label="Classification"
         key="classification"
         type={FilterType.Select}
+        loading={boolean('loading', false)}
       />
       <FilterItem
         key={'filter2'}
