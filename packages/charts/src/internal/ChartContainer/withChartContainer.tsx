@@ -1,5 +1,4 @@
 import React, { ComponentType, CSSProperties, forwardRef, Ref, useMemo } from 'react';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { getLoadingState } from '../Placeholder';
@@ -25,7 +24,7 @@ const styles = {
   }
 };
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles(styles, { name: 'ChartContainer' });
 
 export const withChartContainer = (Component: ComponentType<any>) => {
   const ChartContainer = forwardRef((props: ChartBaseProps, ref: Ref<any>) => {

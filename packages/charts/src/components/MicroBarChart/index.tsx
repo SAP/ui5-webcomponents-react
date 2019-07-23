@@ -1,5 +1,4 @@
 import React, { CSSProperties, forwardRef, Ref } from 'react';
-// @ts-ignore
 import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { resolveColors } from '../../util/populateData';
@@ -44,7 +43,7 @@ const BarStyles = {
   }
 };
 
-const useStyles = createUseStyles(BarStyles);
+const useStyles = createUseStyles(BarStyles, { name: 'MicroBarChart' });
 
 interface DataItems {
   value: number;

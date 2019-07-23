@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <BusyIndicator active={true} size="Large">
         <ui5-busyindicator active={true} size="Large" class="" />
@@ -18,7 +18,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <BusyIndicator size="Large">
         <ui5-busyindicator size="Large" class="" />
@@ -32,7 +32,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <BusyIndicator active={true} size="Medium">
         <ui5-busyindicator active={true} size="Medium" class="" />
@@ -46,7 +46,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <BusyIndicator active={true} size="Small">
         <ui5-busyindicator active={true} size="Small" class="" />
