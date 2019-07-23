@@ -1,6 +1,5 @@
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { ComponentType, ForwardRefExoticComponent, RefAttributes, RefObject } from 'react';
-// @ts-ignore
 import { createUseStyles, useTheme } from 'react-jss';
 import { useConsolidatedRef } from '../hooks/useConsolidatedRef';
 

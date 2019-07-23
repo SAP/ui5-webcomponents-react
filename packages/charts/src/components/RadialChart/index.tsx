@@ -1,7 +1,6 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 import { ChartOptions } from 'chart.js';
 import React, { CSSProperties, forwardRef, Ref, useMemo } from 'react';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
@@ -36,7 +35,7 @@ const styles = {
   }
 };
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles(styles, { name: 'RadialChart' });
 
 const RadialChart = forwardRef((props: RadialChartPropTypes, ref: Ref<HTMLDivElement>) => {
   const { maxValue, value, displayValue, style, className, colors, options, width, height } = props;

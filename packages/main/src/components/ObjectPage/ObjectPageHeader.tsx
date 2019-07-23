@@ -1,5 +1,4 @@
 import React, { FC, ReactElement, useCallback, useState } from 'react';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Button } from '../../lib/Button';
@@ -14,96 +13,101 @@ interface Props {
   showHideHeaderButton?: boolean;
 }
 
-const useStyles = createUseStyles(({ parameters }: JSSTheme) => ({
-  header: {
-    flexShrink: 0,
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
-    '&$stickied': {
-      '& $image': {
-        opacity: '1',
-        height: '3rem',
-        width: '3rem',
-        margin: '0.25rem 1rem 0.25rem 0'
+const useStyles = createUseStyles<string>(
+  ({ parameters }: JSSTheme) => ({
+    header: {
+      flexShrink: 0,
+      backgroundColor: parameters.sapUiObjectHeaderBackground,
+      '&$stickied': {
+        '& $image': {
+          opacity: '1',
+          height: '3rem',
+          width: '3rem',
+          margin: '0.25rem 1rem 0.25rem 0'
+        }
+      }
+    },
+    titleBar: {
+      padding: '0.5rem 2rem',
+      display: 'block'
+    },
+    headerImage: {
+      maxWidth: '5rem',
+      maxHeight: '5rem',
+      display: 'inline-block',
+      marginRight: '2rem',
+      marginBottom: '1rem'
+    },
+    image: {
+      height: '0',
+      width: '0',
+      opacity: '0',
+      display: 'inline-block',
+      verticalAlign: 'middle'
+    },
+    container: {
+      display: 'inline-block',
+      lineHeight: 'normal',
+      verticalAlign: 'middle',
+      width: '70%',
+      boxSizing: 'border-box',
+      paddingTop: '1.5rem'
+    },
+    title: {
+      fontSize: '1.375rem',
+      paddingRight: '1rem',
+      verticalAlign: 'baseline',
+      lineHeight: 'normal',
+      display: 'inline-block',
+      margin: '0',
+      fontWeight: 'normal',
+      color: parameters.sapUiBaseText
+    },
+    subTitle: {
+      display: 'inline-block',
+      wordBreak: 'break-word',
+      verticalAlign: 'baseline',
+      paddingTop: '0.5rem',
+      fontSize: '0.875rem',
+      color: parameters.sapUiContentLabelColor
+    },
+    actions: {
+      position: 'absolute',
+      top: '0',
+      paddingTop: '0.75rem',
+      right: '1.25rem',
+      display: 'inline-block',
+      float: 'right',
+      verticalAlign: 'top',
+      '& > *': {
+        marginLeft: '0.5rem',
+        padding: 0
+      }
+    },
+    stickied: {},
+    headerContent: {
+      paddingTop: '1.5rem',
+      paddingBottom: '0.25rem',
+      transition: 'max-height 0.5s',
+      maxHeight: '500px',
+      overflow: 'hidden',
+      paddingLeft: '2rem',
+      position: 'relative'
+    },
+    headerCustomContent: {
+      display: 'inline-block',
+      verticalAlign: 'top',
+      '& > *': {
+        marginRight: '2rem',
+        marginBottom: '1rem',
+        lineHeight: '1.5rem'
       }
     }
-  },
-  titleBar: {
-    padding: '0.5rem 2rem',
-    display: 'block'
-  },
-  headerImage: {
-    maxWidth: '5rem',
-    maxHeight: '5rem',
-    display: 'inline-block',
-    marginRight: '2rem',
-    marginBottom: '1rem'
-  },
-  image: {
-    height: '0',
-    width: '0',
-    opacity: '0',
-    display: 'inline-block',
-    verticalAlign: 'middle'
-  },
-  container: {
-    display: 'inline-block',
-    lineHeight: 'normal',
-    verticalAlign: 'middle',
-    width: '70%',
-    boxSizing: 'border-box',
-    paddingTop: '1.5rem'
-  },
-  title: {
-    fontSize: '1.375rem',
-    paddingRight: '1rem',
-    verticalAlign: 'baseline',
-    lineHeight: 'normal',
-    display: 'inline-block',
-    margin: '0',
-    fontWeight: 'normal',
-    color: parameters.sapUiBaseText
-  },
-  subTitle: {
-    display: 'inline-block',
-    wordBreak: 'break-word',
-    verticalAlign: 'baseline',
-    paddingTop: '0.5rem',
-    fontSize: '0.875rem',
-    color: parameters.sapUiContentLabelColor
-  },
-  actions: {
-    position: 'absolute',
-    top: '0',
-    paddingTop: '0.75rem',
-    right: '1.25rem',
-    display: 'inline-block',
-    float: 'right',
-    verticalAlign: 'top',
-    '& > *': {
-      marginLeft: '0.5rem',
-      padding: 0
-    }
-  },
-  stickied: {},
-  headerContent: {
-    paddingTop: '1.5rem',
-    paddingBottom: '0.25rem',
-    transition: 'max-height 0.5s',
-    maxHeight: '500px',
-    overflow: 'hidden',
-    paddingLeft: '2rem',
-    position: 'relative'
-  },
-  headerCustomContent: {
-    display: 'inline-block',
-    verticalAlign: 'top',
-    '& > *': {
-      marginRight: '2rem',
-      marginBottom: '1rem',
-      lineHeight: '1.5rem'
-    }
+  }),
+  {
+    name: 'ObjectPageHeader'
   }
-}));
+);
 
 export const ObjectPageHeader: FC<Props> = (props) => {
   const [showHeader, setShowHeader] = useState(true);

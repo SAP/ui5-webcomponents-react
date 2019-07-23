@@ -1,6 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
@@ -13,9 +12,9 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
 }
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles<string>(styles, { name: 'ObjectPageSection' });
 
-export const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: RefObject<any>) => {
+const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: RefObject<any>) => {
   const { title, id, children, titleUppercase, className, style, tooltip } = props;
   const classes = useStyles();
 
@@ -47,3 +46,7 @@ ObjectPageSection.defaultProps = {
   isSection: true,
   titleUppercase: true
 };
+
+ObjectPageSection.displayName = 'ObjectPageSection';
+
+export { ObjectPageSection };

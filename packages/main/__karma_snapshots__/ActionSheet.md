@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <ActionSheet openBy={{...}} placement="Bottom">
         <Popover openBy={{...}} placementType="Bottom" style={[undefined]} slot={[undefined]} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
@@ -15,7 +15,7 @@
           </div>
           <WithWebComponent(Popover) placementType="Bottom" style={[undefined]} slot={[undefined]} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
             <ui5-popover placement-type="Bottom" style={[undefined]} slot={[undefined]} initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
-              <ul className="-actionSheet---" />
+              <ul className="ActionSheet--actionSheet---" />
             </ui5-popover>
           </WithWebComponent(Popover)>
         </Popover>

@@ -1,6 +1,5 @@
 import { fonts, StyleClassHelper } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -30,9 +29,9 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles<string>(styles, { name: 'ObjectPageSubSection' });
 
-export const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, ref: RefObject<any>) => {
+const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, ref: RefObject<any>) => {
   const { children, id, title, className, style, tooltip } = props;
 
   if (!id) {
@@ -65,3 +64,7 @@ ObjectPageSubSection.defaultProps = {
   // @ts-ignore
   isSubSection: true
 };
+
+ObjectPageSubSection.displayName = 'ObjectPageSubSection';
+
+export { ObjectPageSubSection };

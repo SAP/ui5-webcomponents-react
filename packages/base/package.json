@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.4.2-rc.3",
+  "version": "0.4.2-rc.4",
   "description": "Base for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -18,7 +18,7 @@
   "dependencies": {
     "core-js": "^3.1.4",
     "hoist-non-react-statics": "^3.3.0",
-    "react-jss": "10.0.0-alpha.21",
+    "react-jss": "10.0.0-alpha.23",
     "tslib": "^1.9.3"
   }
 }

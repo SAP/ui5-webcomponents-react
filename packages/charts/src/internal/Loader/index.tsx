@@ -1,9 +1,8 @@
 import * as React from 'react';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { LoaderStyles } from './Loader.jss';
 
-const useStyles = createUseStyles(LoaderStyles);
+const useStyles = createUseStyles(LoaderStyles, { name: 'Loader' });
 
 const Loader = React.forwardRef((props, ref: React.RefObject<HTMLDivElement>) => {
   const classes = useStyles();
