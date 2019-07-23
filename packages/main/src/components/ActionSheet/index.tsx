@@ -7,7 +7,6 @@ import { PlacementType } from '../../lib/PlacementType';
 import { Popover } from '../../lib/Popover';
 import { ButtonPropTypes } from '../../webComponents/Button';
 import styles from './ActionSheet.jss';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 
 export interface ActionSheetPropTypes extends CommonProps {
@@ -16,7 +15,7 @@ export interface ActionSheetPropTypes extends CommonProps {
   children?: ReactElement<ButtonPropTypes> | Array<ReactElement<ButtonPropTypes>>;
 }
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles<string>(styles, { name: 'ActionSheet' });
 
 const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5PopoverDomRef>) => {
   const { children, placement, openBy, style, slot } = props;

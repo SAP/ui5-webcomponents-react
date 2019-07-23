@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
         <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -22,7 +22,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) wrapping={false} renderWhitespace={false} width={{...}}>
         <Component wrapping={false} renderWhitespace={false} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -40,7 +40,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) renderWhitespace={true} wrapping={true} width={{...}}>
         <Component renderWhitespace={true} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>

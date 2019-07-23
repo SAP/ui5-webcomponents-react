@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(AnalyticalCard) renderHeader={[Function: renderHeader]}>
         <AnalyticalCard renderHeader={[Function: renderHeader]} innerRef={{...}} classes={{...}} theme={{...}}>

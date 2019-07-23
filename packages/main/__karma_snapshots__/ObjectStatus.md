@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}}>
         <Component state="Error" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -29,7 +29,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}}>
         <Component state="Error" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -54,7 +54,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}}>
         <Component state="Error" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -76,7 +76,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="None" showDefaultIcon={true} icon={{...}}>
         <Component state="None" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -98,7 +98,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Success" showDefaultIcon={true} icon={{...}}>
         <Component state="Success" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -120,7 +120,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Warning" showDefaultIcon={true} icon={{...}}>
         <Component state="Warning" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -142,7 +142,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Information" showDefaultIcon={true} icon={{...}}>
         <Component state="Information" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>

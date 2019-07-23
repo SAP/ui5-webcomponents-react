@@ -1,5 +1,5 @@
 const env = process.env.NODE_ENV;
-const prodClassPrefix = 'f4r';
+const prodClassPrefix = 'ui5wcr';
 
 const globalPackageName = '@ui5/webcomponents-react-base';
 

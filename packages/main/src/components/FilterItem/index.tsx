@@ -5,7 +5,6 @@ import { BusyIndicator } from '../../lib/BusyIndicator';
 import { FilterType } from '../../lib/FilterType';
 import { Input } from '../../lib/Input';
 import { Label } from '../../lib/Label';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { Select } from '../../lib/Select';
 import { Option } from '../../lib/Option';
@@ -25,9 +24,9 @@ export interface FilterItemPropTypes extends CommonProps {
   changeEventName?: string;
 }
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles<string>(styles, { name: 'FilterItem' });
 
-export const FilterItem = forwardRef((props: FilterItemPropTypes, ref: RefObject<HTMLDivElement>) => {
+const FilterItem = forwardRef((props: FilterItemPropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     filterItems,
     onChange,
@@ -124,3 +123,5 @@ FilterItem.defaultProps = {
 };
 
 FilterItem.displayName = 'FilterItem';
+
+export { FilterItem };

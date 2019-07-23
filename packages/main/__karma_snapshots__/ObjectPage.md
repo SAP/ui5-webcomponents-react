@@ -4,22 +4,22 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <ForwardRef title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} selectedSectionId={{...}} noHeader={false}>
-        <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
+      <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} selectedSectionId={{...}} noHeader={false}>
+        <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
           <ObjectPageHeader title="Fiori Object Page Title" subTitle="Sub Title" image={{...}} headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} imageShapeCircle={false} showHideHeaderButton={true}>
-            <header className="-header---">
-              <header className="-titleBar---">
-                <span className="-container---">
-                  <h1 className="-title---">
+            <header className="ObjectPageHeader--header---">
+              <header className="ObjectPageHeader--titleBar---">
+                <span className="ObjectPageHeader--container---">
+                  <h1 className="ObjectPageHeader--title---">
                     Fiori Object Page Title
                   </h1>
-                  <span className="-subTitle---">
+                  <span className="ObjectPageHeader--subTitle---">
                     Sub Title
                   </span>
                 </span>
-                <span className="-actions---">
+                <span className="ObjectPageHeader--actions---">
                   <Button design="Default">
                     <ui5-button design="Default" class="">
                       Action
@@ -28,8 +28,8 @@
                 </span>
               </header>
               <div style={{...}}>
-                <div className="-headerContent---">
-                  <span className="-headerCustomContent---">
+                <div className="ObjectPageHeader--headerContent---">
+                  <span className="ObjectPageHeader--headerCustomContent---">
                     <div style={{...}}>
                       <Link href="https://www.sap.com" design="Default">
                         <ui5-link href="https://www.sap.com" design="Default" class="">
@@ -66,13 +66,13 @@
               </div>
             </header>
           </ObjectPageHeader>
-          <section className="-anchorBar---" role="navigation">
+          <section className="ObjectPage--anchorBar---" role="navigation">
             <ObjectPageAnchorButton section={{...}} index={0} selected={true} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <Link to="ObjectPageSection-1" containerId="ObjectPageSections" spy={true} activeClass="-selected---" onSetActive={[Function]} duration={400} smooth={true} offset={0}>
-                  <LinkElement className="-selected---" onClick={[Function]}>
-                    <a className="-selected---" onClick={[Function]}>
-                      <span className="-button---">
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <Link to="ObjectPageSection-1" containerId="ObjectPageSections" spy={true} activeClass="ObjectPageAnchorButton--selected---" onSetActive={[Function]} duration={400} smooth={true} offset={0}>
+                  <LinkElement className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
+                    <a className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
+                      <span className="ObjectPageAnchorButton--button---">
                         Test 1
                       </span>
                     </a>
@@ -81,11 +81,11 @@
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={1} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <Link to="ObjectPageSection-2" containerId="ObjectPageSections" spy={true} activeClass="-selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <Link to="ObjectPageSection-2" containerId="ObjectPageSections" spy={true} activeClass="ObjectPageAnchorButton--selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
                   <LinkElement className={[undefined]} onClick={[Function]}>
                     <a className={[undefined]} onClick={[Function]}>
-                      <span className="-button---">
+                      <span className="ObjectPageAnchorButton--button---">
                         Test 2
                       </span>
                     </a>
@@ -94,11 +94,11 @@
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={2} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <Link to="ObjectPageSection-3" containerId="ObjectPageSections" spy={true} activeClass="-selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <Link to="ObjectPageSection-3" containerId="ObjectPageSections" spy={true} activeClass="ObjectPageAnchorButton--selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
                   <LinkElement className={[undefined]} onClick={[Function]}>
                     <a className={[undefined]} onClick={[Function]}>
-                      <span className="-button---">
+                      <span className="ObjectPageAnchorButton--button---">
                         Test 3
                       </span>
                     </a>
@@ -107,11 +107,11 @@
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={3} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <Link to="ObjectPageSection-4" containerId="ObjectPageSections" spy={true} activeClass="-selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <Link to="ObjectPageSection-4" containerId="ObjectPageSections" spy={true} activeClass="ObjectPageAnchorButton--selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
                   <LinkElement className={[undefined]} onClick={[Function]}>
                     <a className={[undefined]} onClick={[Function]}>
-                      <span className="-button---">
+                      <span className="ObjectPageAnchorButton--button---">
                         Test 4
                       </span>
                     </a>
@@ -157,11 +157,11 @@
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={4} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <Link to="ObjectPageSection-5" containerId="ObjectPageSections" spy={true} activeClass="-selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <Link to="ObjectPageSection-5" containerId="ObjectPageSections" spy={true} activeClass="ObjectPageAnchorButton--selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
                   <LinkElement className={[undefined]} onClick={[Function]}>
                     <a className={[undefined]} onClick={[Function]}>
-                      <span className="-button---">
+                      <span className="ObjectPageAnchorButton--button---">
                         Test 5
                       </span>
                     </a>
@@ -207,17 +207,17 @@
               </li>
             </ObjectPageAnchorButton>
           </section>
-          <ForwardRef fillerRef={{...}}>
-            <section id="ObjectPageSections" className="-sectionsContainer---">
-              <ForwardRef title="Test 1" id="1" isSection={true} titleUppercase={true}>
+          <ObjectPageContent fillerRef={{...}}>
+            <section id="ObjectPageSections" className="ObjectPageContent--sectionsContainer---">
+              <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---">
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---">
                       Test 1
                     </div>
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       <Label for="">
                         <ui5-label for="" class="">
                           My Content 1
@@ -226,111 +226,111 @@
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
-              <ForwardRef title="Test 2" id="2" isSection={true} titleUppercase={true}>
+              </ObjectPageSection>
+              <ObjectPageSection title="Test 2" id="2" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---">
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---">
                       Test 2
                     </div>
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       <div style={{...}}>
                         Test2
                       </div>
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
-              <ForwardRef title="Test 3" id="3" isSection={true} titleUppercase={true}>
+              </ObjectPageSection>
+              <ObjectPageSection title="Test 3" id="3" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-3" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---">
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---">
                       Test 3
                     </div>
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       Test1
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
-              <ForwardRef title="Test 4" id="4" isSection={true} titleUppercase={true}>
+              </ObjectPageSection>
+              <ObjectPageSection title="Test 4" id="4" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-4" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---">
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---">
                       Test 4
                     </div>
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       <h1>
                         Section 4
                       </h1>
-                      <ForwardRef title="SubSection 4.1" id="4.1" isSubSection={true}>
-                        <div className="-objectPageSubSection---" id="ObjectPageSubSection-4.1" role="region" style={[undefined]} title={[undefined]}>
-                          <div className="-objectPageSubSectionHeaderTitle---">
+                      <ObjectPageSubSection title="SubSection 4.1" id="4.1" isSubSection={true}>
+                        <div className="ObjectPageSubSection--objectPageSubSection---" id="ObjectPageSubSection-4.1" role="region" style={[undefined]} title={[undefined]}>
+                          <div className="ObjectPageSubSection--objectPageSubSectionHeaderTitle---">
                             SubSection 4.1
                           </div>
-                          <div className="-subSectionContent---">
+                          <div className="ObjectPageSubSection--subSectionContent---">
                             Test 4 SubSection 1
                           </div>
                         </div>
-                      </ForwardRef>
-                      <ForwardRef title="SubSection 4.2" id="4.2" isSubSection={true}>
-                        <div className="-objectPageSubSection---" id="ObjectPageSubSection-4.2" role="region" style={[undefined]} title={[undefined]}>
-                          <div className="-objectPageSubSectionHeaderTitle---">
+                      </ObjectPageSubSection>
+                      <ObjectPageSubSection title="SubSection 4.2" id="4.2" isSubSection={true}>
+                        <div className="ObjectPageSubSection--objectPageSubSection---" id="ObjectPageSubSection-4.2" role="region" style={[undefined]} title={[undefined]}>
+                          <div className="ObjectPageSubSection--objectPageSubSectionHeaderTitle---">
                             SubSection 4.2
                           </div>
-                          <div className="-subSectionContent---">
+                          <div className="ObjectPageSubSection--subSectionContent---">
                             Test 4 SubSection 2
                           </div>
                         </div>
-                      </ForwardRef>
+                      </ObjectPageSubSection>
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
-              <ForwardRef title="Test 5" id="5" isSection={true} titleUppercase={true}>
+              </ObjectPageSection>
+              <ObjectPageSection title="Test 5" id="5" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-5" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---">
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---">
                       Test 5
                     </div>
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
-                      <ForwardRef title="SubSection 5.1" id="5.1" isSubSection={true}>
-                        <div className="-objectPageSubSection---" id="ObjectPageSubSection-5.1" role="region" style={[undefined]} title={[undefined]}>
-                          <div className="-objectPageSubSectionHeaderTitle---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
+                      <ObjectPageSubSection title="SubSection 5.1" id="5.1" isSubSection={true}>
+                        <div className="ObjectPageSubSection--objectPageSubSection---" id="ObjectPageSubSection-5.1" role="region" style={[undefined]} title={[undefined]}>
+                          <div className="ObjectPageSubSection--objectPageSubSectionHeaderTitle---">
                             SubSection 5.1
                           </div>
-                          <div className="-subSectionContent---">
+                          <div className="ObjectPageSubSection--subSectionContent---">
                             Content of SubSection 5.1
                           </div>
                         </div>
-                      </ForwardRef>
-                      <ForwardRef title="SubSection 5.2" id="5.2" isSubSection={true}>
-                        <div className="-objectPageSubSection---" id="ObjectPageSubSection-5.2" role="region" style={[undefined]} title={[undefined]}>
-                          <div className="-objectPageSubSectionHeaderTitle---">
+                      </ObjectPageSubSection>
+                      <ObjectPageSubSection title="SubSection 5.2" id="5.2" isSubSection={true}>
+                        <div className="ObjectPageSubSection--objectPageSubSection---" id="ObjectPageSubSection-5.2" role="region" style={[undefined]} title={[undefined]}>
+                          <div className="ObjectPageSubSection--objectPageSubSectionHeaderTitle---">
                             SubSection 5.2
                           </div>
-                          <div className="-subSectionContent---">
+                          <div className="ObjectPageSubSection--subSectionContent---">
                             Content of SubSection 5.2
                           </div>
                         </div>
-                      </ForwardRef>
+                      </ObjectPageSubSection>
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
+              </ObjectPageSection>
               <div />
             </section>
-          </ForwardRef>
+          </ObjectPageContent>
         </div>
-      </ForwardRef>
+      </ObjectPage>
     </ThemeProvider>
   </JssProvider>
 </ThemeProvider>
@@ -340,22 +340,22 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <ForwardRef title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
-        <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
+      <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
+        <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
           <ObjectPageHeader title="Fiori Object Page Title" subTitle="Sub Title" image={{...}} headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} imageShapeCircle={false} showHideHeaderButton={false}>
-            <header className="-header---">
-              <header className="-titleBar---">
-                <span className="-container---">
-                  <h1 className="-title---">
+            <header className="ObjectPageHeader--header---">
+              <header className="ObjectPageHeader--titleBar---">
+                <span className="ObjectPageHeader--container---">
+                  <h1 className="ObjectPageHeader--title---">
                     Fiori Object Page Title
                   </h1>
-                  <span className="-subTitle---">
+                  <span className="ObjectPageHeader--subTitle---">
                     Sub Title
                   </span>
                 </span>
-                <span className="-actions---">
+                <span className="ObjectPageHeader--actions---">
                   <Button design="Default">
                     <ui5-button design="Default" class="">
                       Action
@@ -364,8 +364,8 @@
                 </span>
               </header>
               <div style={{...}}>
-                <div className="-headerContent---">
-                  <span className="-headerCustomContent---">
+                <div className="ObjectPageHeader--headerContent---">
+                  <span className="ObjectPageHeader--headerCustomContent---">
                     <div style={{...}}>
                       <Link href="https://www.sap.com" design="Default">
                         <ui5-link href="https://www.sap.com" design="Default" class="">
@@ -399,13 +399,13 @@
               </div>
             </header>
           </ObjectPageHeader>
-          <section className="-anchorBar---" role="navigation">
+          <section className="ObjectPage--anchorBar---" role="navigation">
             <ObjectPageAnchorButton section={{...}} index={0} selected={true} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <Link to="ObjectPageSection-1" containerId="ObjectPageSections" spy={true} activeClass="-selected---" onSetActive={[Function]} duration={400} smooth={true} offset={0}>
-                  <LinkElement className="-selected---" onClick={[Function]}>
-                    <a className="-selected---" onClick={[Function]}>
-                      <span className="-button---">
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <Link to="ObjectPageSection-1" containerId="ObjectPageSections" spy={true} activeClass="ObjectPageAnchorButton--selected---" onSetActive={[Function]} duration={400} smooth={true} offset={0}>
+                  <LinkElement className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
+                    <a className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
+                      <span className="ObjectPageAnchorButton--button---">
                         Test 1
                       </span>
                     </a>
@@ -414,11 +414,11 @@
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={1} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <Link to="ObjectPageSection-2" containerId="ObjectPageSections" spy={true} activeClass="-selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <Link to="ObjectPageSection-2" containerId="ObjectPageSections" spy={true} activeClass="ObjectPageAnchorButton--selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
                   <LinkElement className={[undefined]} onClick={[Function]}>
                     <a className={[undefined]} onClick={[Function]}>
-                      <span className="-button---">
+                      <span className="ObjectPageAnchorButton--button---">
                         Test 2
                       </span>
                     </a>
@@ -427,11 +427,11 @@
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={2} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <Link to="ObjectPageSection-3" containerId="ObjectPageSections" spy={true} activeClass="-selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <Link to="ObjectPageSection-3" containerId="ObjectPageSections" spy={true} activeClass="ObjectPageAnchorButton--selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
                   <LinkElement className={[undefined]} onClick={[Function]}>
                     <a className={[undefined]} onClick={[Function]}>
-                      <span className="-button---">
+                      <span className="ObjectPageAnchorButton--button---">
                         Test 3
                       </span>
                     </a>
@@ -440,17 +440,17 @@
               </li>
             </ObjectPageAnchorButton>
           </section>
-          <ForwardRef fillerRef={{...}}>
-            <section id="ObjectPageSections" className="-sectionsContainer---">
-              <ForwardRef title="Test 1" id="1" isSection={true} titleUppercase={true}>
+          <ObjectPageContent fillerRef={{...}}>
+            <section id="ObjectPageSections" className="ObjectPageContent--sectionsContainer---">
+              <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---">
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---">
                       Test 1
                     </div>
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       <Label for="">
                         <ui5-label for="" class="">
                           My Content 1
@@ -459,16 +459,16 @@
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
-              <ForwardRef title="Test 2" id="2" isSection={true} titleUppercase={true}>
+              </ObjectPageSection>
+              <ObjectPageSection title="Test 2" id="2" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---">
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---">
                       Test 2
                     </div>
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       <Label for="">
                         <ui5-label for="" class="">
                           My Content 2
@@ -477,16 +477,16 @@
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
-              <ForwardRef title="Test 3" id="3" isSection={true} titleUppercase={true}>
+              </ObjectPageSection>
+              <ObjectPageSection title="Test 3" id="3" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-3" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---">
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---">
                       Test 3
                     </div>
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       <Label for="">
                         <ui5-label for="" class="">
                           My Content 3
@@ -495,12 +495,12 @@
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
+              </ObjectPageSection>
               <div />
             </section>
-          </ForwardRef>
+          </ObjectPageContent>
         </div>
-      </ForwardRef>
+      </ObjectPage>
     </ThemeProvider>
   </JssProvider>
 </ThemeProvider>
@@ -510,22 +510,22 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <ForwardRef title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} selectedSectionId={{...}} noHeader={false}>
-        <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
+      <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} selectedSectionId={{...}} noHeader={false}>
+        <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
           <ObjectPageHeader title="Fiori Object Page Title" subTitle="Sub Title" image={{...}} headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} imageShapeCircle={false} showHideHeaderButton={true}>
-            <header className="-header---">
-              <header className="-titleBar---">
-                <span className="-container---">
-                  <h1 className="-title---">
+            <header className="ObjectPageHeader--header---">
+              <header className="ObjectPageHeader--titleBar---">
+                <span className="ObjectPageHeader--container---">
+                  <h1 className="ObjectPageHeader--title---">
                     Fiori Object Page Title
                   </h1>
-                  <span className="-subTitle---">
+                  <span className="ObjectPageHeader--subTitle---">
                     Sub Title
                   </span>
                 </span>
-                <span className="-actions---">
+                <span className="ObjectPageHeader--actions---">
                   <Button design="Default">
                     <ui5-button design="Default" class="">
                       Action
@@ -534,8 +534,8 @@
                 </span>
               </header>
               <div style={{...}}>
-                <div className="-headerContent---">
-                  <span className="-headerCustomContent---">
+                <div className="ObjectPageHeader--headerContent---">
+                  <span className="ObjectPageHeader--headerCustomContent---">
                     <div style={{...}}>
                       <Link href="https://www.sap.com" design="Default">
                         <ui5-link href="https://www.sap.com" design="Default" class="">
@@ -572,31 +572,31 @@
               </div>
             </header>
           </ObjectPageHeader>
-          <section className="-anchorBar---" role="navigation">
+          <section className="ObjectPage--anchorBar---" role="navigation">
             <ObjectPageAnchorButton section={{...}} index={0} selected={true} mode="IconTabBar" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <span onClick={[Function]} className="-button--- -selected---">
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <span onClick={[Function]} className="ObjectPageAnchorButton--button--- ObjectPageAnchorButton--selected---">
                   Test 1
                 </span>
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={1} selected={false} mode="IconTabBar" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <span onClick={[Function]} className="-button---">
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <span onClick={[Function]} className="ObjectPageAnchorButton--button---">
                   Test 2
                 </span>
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={2} selected={false} mode="IconTabBar" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <span onClick={[Function]} className="-button---">
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <span onClick={[Function]} className="ObjectPageAnchorButton--button---">
                   Test 3
                 </span>
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={3} selected={false} mode="IconTabBar" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <span onClick={[Function]} className="-button---">
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <span onClick={[Function]} className="ObjectPageAnchorButton--button---">
                   Test 4
                 </span>
                 <Popover open={[undefined]} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
@@ -627,8 +627,8 @@
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={4} selected={false} mode="IconTabBar" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <span onClick={[Function]} className="-button---">
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <span onClick={[Function]} className="ObjectPageAnchorButton--button---">
                   Test 5
                 </span>
                 <Popover open={[undefined]} placementType="Bottom" openBy={{...}} onAfterClose={[Function]} noArrow={true} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
@@ -659,17 +659,17 @@
               </li>
             </ObjectPageAnchorButton>
           </section>
-          <ForwardRef fillerRef={{...}}>
-            <section id="ObjectPageSections" className="-sectionsContainer---">
-              <ForwardRef title="Test 1" id="1" isSection={true} titleUppercase={true}>
+          <ObjectPageContent fillerRef={{...}}>
+            <section id="ObjectPageSections" className="ObjectPageContent--sectionsContainer---">
+              <ObjectPageSection title="Test 1" id="1" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---">
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---">
                       Test 1
                     </div>
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       <Label for="">
                         <ui5-label for="" class="">
                           My Content 1
@@ -678,12 +678,12 @@
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
+              </ObjectPageSection>
               <div />
             </section>
-          </ForwardRef>
+          </ObjectPageContent>
         </div>
-      </ForwardRef>
+      </ObjectPage>
     </ThemeProvider>
   </JssProvider>
 </ThemeProvider>
@@ -692,57 +692,57 @@
 #### `Just Some Sections`
 
 ```
-<header class="-header---"><header class="-titleBar---"><span class="-container---"><h1 class="-title---"></h1><span class="-subTitle---"></span></span><span class="-actions---"></span></header><div style="position:relative"><div class="-headerContent---"></div></div></header><section class="-anchorBar---" role="navigation"><li class="-anchorButtonContainer---"><span class="-button--- -selected---"></span></li><li class="-anchorButtonContainer---"><span class="-button---"></span></li></section><section id="ObjectPageSections" class="-sectionsContainer---"><section id="ObjectPageSection-1" role="region"><div role="heading" class="-header---"><div class="-title--- -uppercase---"></div></div><div class="-sectionContent---"><div class="-sectionContentInner---">Test</div></div></section><div></div></section>
+<header class="ObjectPageHeader--header---"><header class="ObjectPageHeader--titleBar---"><span class="ObjectPageHeader--container---"><h1 class="ObjectPageHeader--title---"></h1><span class="ObjectPageHeader--subTitle---"></span></span><span class="ObjectPageHeader--actions---"></span></header><div style="position:relative"><div class="ObjectPageHeader--headerContent---"></div></div></header><section class="ObjectPage--anchorBar---" role="navigation"><li class="ObjectPageAnchorButton--anchorButtonContainer---"><span class="ObjectPageAnchorButton--button--- ObjectPageAnchorButton--selected---"></span></li><li class="ObjectPageAnchorButton--anchorButtonContainer---"><span class="ObjectPageAnchorButton--button---"></span></li></section><section id="ObjectPageSections" class="ObjectPageContent--sectionsContainer---"><section id="ObjectPageSection-1" role="region"><div role="heading" class="ObjectPageSection--header---"><div class="ObjectPageSection--title--- ObjectPageSection--uppercase---"></div></div><div class="ObjectPageSection--sectionContent---"><div class="ObjectPageSection--sectionContentInner---">Test</div></div></section><div></div></section>
 ```
 
 #### `Not crashing with 1 section`
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <ForwardRef mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
-        <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
+      <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
+        <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
           <ObjectPageHeader title="" subTitle="" image={{...}} headerActions={{...}} renderHeaderContent={{...}} imageShapeCircle={false} showHideHeaderButton={false}>
-            <header className="-header---">
-              <header className="-titleBar---">
-                <span className="-container---">
-                  <h1 className="-title---" />
-                  <span className="-subTitle---" />
+            <header className="ObjectPageHeader--header---">
+              <header className="ObjectPageHeader--titleBar---">
+                <span className="ObjectPageHeader--container---">
+                  <h1 className="ObjectPageHeader--title---" />
+                  <span className="ObjectPageHeader--subTitle---" />
                 </span>
-                <span className="-actions---" />
+                <span className="ObjectPageHeader--actions---" />
               </header>
               <div style={{...}}>
-                <div className="-headerContent---" />
+                <div className="ObjectPageHeader--headerContent---" />
               </div>
             </header>
           </ObjectPageHeader>
-          <section className="-anchorBar---" role="navigation">
+          <section className="ObjectPage--anchorBar---" role="navigation">
             <ObjectPageAnchorButton section={{...}} index={0} selected={true} mode="IconTabBar" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <span onClick={[Function]} className="-button--- -selected---" />
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <span onClick={[Function]} className="ObjectPageAnchorButton--button--- ObjectPageAnchorButton--selected---" />
               </li>
             </ObjectPageAnchorButton>
           </section>
-          <ForwardRef fillerRef={{...}}>
-            <section id="ObjectPageSections" className="-sectionsContainer---">
-              <ForwardRef id="1" title="" isSection={true} titleUppercase={true}>
+          <ObjectPageContent fillerRef={{...}}>
+            <section id="ObjectPageSections" className="ObjectPageContent--sectionsContainer---">
+              <ObjectPageSection id="1" title="" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---" />
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---" />
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       Test
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
+              </ObjectPageSection>
               <div />
             </section>
-          </ForwardRef>
+          </ObjectPageContent>
         </div>
-      </ForwardRef>
+      </ObjectPage>
     </ThemeProvider>
   </JssProvider>
 </ThemeProvider>
@@ -752,32 +752,32 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <ForwardRef mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
-        <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
+      <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
+        <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
           <ObjectPageHeader title="" subTitle="" image={{...}} headerActions={{...}} renderHeaderContent={{...}} imageShapeCircle={false} showHideHeaderButton={false}>
-            <header className="-header---">
-              <header className="-titleBar---">
-                <span className="-container---">
-                  <h1 className="-title---" />
-                  <span className="-subTitle---" />
+            <header className="ObjectPageHeader--header---">
+              <header className="ObjectPageHeader--titleBar---">
+                <span className="ObjectPageHeader--container---">
+                  <h1 className="ObjectPageHeader--title---" />
+                  <span className="ObjectPageHeader--subTitle---" />
                 </span>
-                <span className="-actions---" />
+                <span className="ObjectPageHeader--actions---" />
               </header>
               <div style={{...}}>
-                <div className="-headerContent---" />
+                <div className="ObjectPageHeader--headerContent---" />
               </div>
             </header>
           </ObjectPageHeader>
-          <section className="-anchorBar---" role="navigation" />
-          <ForwardRef fillerRef={{...}}>
-            <section id="ObjectPageSections" className="-sectionsContainer---">
+          <section className="ObjectPage--anchorBar---" role="navigation" />
+          <ObjectPageContent fillerRef={{...}}>
+            <section id="ObjectPageSections" className="ObjectPageContent--sectionsContainer---">
               <div />
             </section>
-          </ForwardRef>
+          </ObjectPageContent>
         </div>
-      </ForwardRef>
+      </ObjectPage>
     </ThemeProvider>
   </JssProvider>
 </ThemeProvider>
@@ -787,55 +787,55 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <ForwardRef selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} noHeader={false}>
-        <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
+      <ObjectPage selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} noHeader={false}>
+        <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
           <ObjectPageHeader title="" subTitle="" image={{...}} headerActions={{...}} renderHeaderContent={{...}} imageShapeCircle={false} showHideHeaderButton={false}>
-            <header className="-header---">
-              <header className="-titleBar---">
-                <span className="-container---">
-                  <h1 className="-title---" />
-                  <span className="-subTitle---" />
+            <header className="ObjectPageHeader--header---">
+              <header className="ObjectPageHeader--titleBar---">
+                <span className="ObjectPageHeader--container---">
+                  <h1 className="ObjectPageHeader--title---" />
+                  <span className="ObjectPageHeader--subTitle---" />
                 </span>
-                <span className="-actions---" />
+                <span className="ObjectPageHeader--actions---" />
               </header>
               <div style={{...}}>
-                <div className="-headerContent---" />
+                <div className="ObjectPageHeader--headerContent---" />
               </div>
             </header>
           </ObjectPageHeader>
-          <section className="-anchorBar---" role="navigation">
+          <section className="ObjectPage--anchorBar---" role="navigation">
             <ObjectPageAnchorButton section={{...}} index={0} selected={false} mode="IconTabBar" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <span onClick={[Function]} className="-button---" />
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <span onClick={[Function]} className="ObjectPageAnchorButton--button---" />
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={1} selected={true} mode="IconTabBar" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <span onClick={[Function]} className="-button--- -selected---" />
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <span onClick={[Function]} className="ObjectPageAnchorButton--button--- ObjectPageAnchorButton--selected---" />
               </li>
             </ObjectPageAnchorButton>
           </section>
-          <ForwardRef fillerRef={{...}}>
-            <section id="ObjectPageSections" className="-sectionsContainer---">
-              <ForwardRef id="2" title="" isSection={true} titleUppercase={true}>
+          <ObjectPageContent fillerRef={{...}}>
+            <section id="ObjectPageSections" className="ObjectPageContent--sectionsContainer---">
+              <ObjectPageSection id="2" title="" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---" />
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---" />
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       Test 2
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
+              </ObjectPageSection>
               <div />
             </section>
-          </ForwardRef>
+          </ObjectPageContent>
         </div>
-      </ForwardRef>
+      </ObjectPage>
     </ThemeProvider>
   </JssProvider>
 </ThemeProvider>
@@ -845,65 +845,65 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <ForwardRef selectedSectionId="2" noHeader={true} title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} mode="Default" onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
-        <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
-          <section className="-anchorBar---" role="navigation">
+      <ObjectPage selectedSectionId="2" noHeader={true} title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} mode="Default" onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
+        <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
+          <section className="ObjectPage--anchorBar---" role="navigation">
             <ObjectPageAnchorButton section={{...}} index={0} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <Link to="ObjectPageSection-1" containerId="ObjectPageSections" spy={true} activeClass="-selected---" onSetActive={[Function]} duration={400} smooth={true} offset={0}>
-                  <LinkElement className="-selected---" onClick={[Function]}>
-                    <a className="-selected---" onClick={[Function]}>
-                      <span className="-button---" />
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <Link to="ObjectPageSection-1" containerId="ObjectPageSections" spy={true} activeClass="ObjectPageAnchorButton--selected---" onSetActive={[Function]} duration={400} smooth={true} offset={0}>
+                  <LinkElement className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
+                    <a className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
+                      <span className="ObjectPageAnchorButton--button---" />
                     </a>
                   </LinkElement>
                 </Link>
               </li>
             </ObjectPageAnchorButton>
             <ObjectPageAnchorButton section={{...}} index={1} selected={true} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
-              <li className="-anchorButtonContainer---">
-                <Link to="ObjectPageSection-2" containerId="ObjectPageSections" spy={true} activeClass="-selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <Link to="ObjectPageSection-2" containerId="ObjectPageSections" spy={true} activeClass="ObjectPageAnchorButton--selected---" onSetActive={[Function]} duration={400} smooth={true} offset={45}>
                   <LinkElement className={[undefined]} onClick={[Function]}>
                     <a className={[undefined]} onClick={[Function]}>
-                      <span className="-button---" />
+                      <span className="ObjectPageAnchorButton--button---" />
                     </a>
                   </LinkElement>
                 </Link>
               </li>
             </ObjectPageAnchorButton>
           </section>
-          <ForwardRef fillerRef={{...}}>
-            <section id="ObjectPageSections" className="-sectionsContainer---">
-              <ForwardRef id="1" title="" isSection={true} titleUppercase={true}>
+          <ObjectPageContent fillerRef={{...}}>
+            <section id="ObjectPageSections" className="ObjectPageContent--sectionsContainer---">
+              <ObjectPageSection id="1" title="" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---" />
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---" />
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       Test
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
-              <ForwardRef id="2" title="" isSection={true} titleUppercase={true}>
+              </ObjectPageSection>
+              <ObjectPageSection id="2" title="" isSection={true} titleUppercase={true}>
                 <section id="ObjectPageSection-2" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
-                  <div role="heading" className="-header---">
-                    <div className="-title--- -uppercase---" />
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---" />
                   </div>
-                  <div className="-sectionContent---">
-                    <div className="-sectionContentInner---">
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
                       Test 2
                     </div>
                   </div>
                 </section>
-              </ForwardRef>
+              </ObjectPageSection>
               <div />
             </section>
-          </ForwardRef>
+          </ObjectPageContent>
         </div>
-      </ForwardRef>
+      </ObjectPage>
     </ThemeProvider>
   </JssProvider>
 </ThemeProvider>

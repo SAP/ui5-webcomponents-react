@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(AnalyticalTable) showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} groupable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} pivotBy={{...}} getTrProps={[Function: getTrProps]}>
         <AnalyticalTable showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} groupable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} pivotBy={{...}} getTrProps={[Function: getTrProps]} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -597,7 +597,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(AnalyticalTable) defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} groupable={false} cellHeight={{...}} minRows={10} numItems={{...}} pivotBy={{...}} getTrProps={[Function: getTrProps]}>
         <AnalyticalTable defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} groupable={false} cellHeight={{...}} minRows={10} numItems={{...}} pivotBy={{...}} getTrProps={[Function: getTrProps]} innerRef={{...}} classes={{...}} theme={{...}}>

@@ -1,6 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, RefObject } from 'react';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Size } from '../../lib/Size';
@@ -10,7 +9,7 @@ export interface SpinnerProps extends CommonProps {
   size?: Size;
 }
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles(styles, { name: 'Spinner' });
 
 const Spinner = forwardRef((props: SpinnerProps, ref: RefObject<HTMLDivElement>) => {
   const { className, size, tooltip, slot } = props;
@@ -27,7 +26,7 @@ const Spinner = forwardRef((props: SpinnerProps, ref: RefObject<HTMLDivElement>)
     <div
       ref={ref}
       className={spinnerClasses.valueOf()}
-      data-component-name="BusyIndicator"
+      data-component-name="Spinner"
       aria-busy="true"
       role="progressbar"
       tabIndex={0}
