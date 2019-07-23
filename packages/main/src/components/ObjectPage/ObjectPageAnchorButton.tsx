@@ -1,6 +1,5 @@
 import { Event, fonts } from '@ui5/webcomponents-react-base';
 import React, { FC, useCallback, useState } from 'react';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { Link } from 'react-scroll';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -20,35 +19,40 @@ interface ObjectPageAnchorPropTypes {
   mode: ObjectPageMode;
 }
 
-const useStyles = createUseStyles(({ parameters }: JSSTheme) => ({
-  anchorButtonContainer: {
-    position: 'relative',
-    display: 'inline-flex',
-    alignItems: 'center',
-    cursor: 'pointer',
-    '&:not(:first-child)': {
-      marginLeft: '2rem'
+const useStyles = createUseStyles<string>(
+  ({ parameters }: JSSTheme) => ({
+    anchorButtonContainer: {
+      position: 'relative',
+      display: 'inline-flex',
+      alignItems: 'center',
+      cursor: 'pointer',
+      '&:not(:first-child)': {
+        marginLeft: '2rem'
+      }
+    },
+    button: {
+      color: parameters.sapUiContentLabelColor,
+      fontFamily: fonts.sapUiFontFamily,
+      fontSize: fonts.sapMFontMediumSize
+    },
+    selected: {
+      color: parameters.sapUiSelected,
+      minWidth: '2rem',
+      textAlign: 'center',
+      '&:after': {
+        content: '""',
+        borderBottom: `0.188rem solid ${parameters.sapUiSelected}`,
+        width: '100%',
+        position: 'absolute',
+        bottom: 0,
+        left: 0
+      }
     }
-  },
-  button: {
-    color: parameters.sapUiContentLabelColor,
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize
-  },
-  selected: {
-    color: parameters.sapUiSelected,
-    minWidth: '2rem',
-    textAlign: 'center',
-    '&:after': {
-      content: '""',
-      borderBottom: `0.188rem solid ${parameters.sapUiSelected}`,
-      width: '100%',
-      position: 'absolute',
-      bottom: 0,
-      left: 0
-    }
+  }),
+  {
+    name: 'ObjectPageAnchorButton'
   }
-}));
+);
 
 export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => {
   const classes = useStyles();

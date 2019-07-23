@@ -1,5 +1,4 @@
 import React, { forwardRef, ReactNode, RefObject } from 'react';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
@@ -30,9 +29,9 @@ interface Props {
   fillerRef: RefObject<any>;
 }
 
-const useStyles = createUseStyles(objectPageContentStyles);
+const useStyles = createUseStyles<string>(objectPageContentStyles, { name: 'ObjectPageContent' });
 
-export const ObjectPageContent = forwardRef(({ children, fillerRef }: Props, ref: RefObject<HTMLElement>) => {
+const ObjectPageContent = forwardRef(({ children, fillerRef }: Props, ref: RefObject<HTMLElement>) => {
   const classes = useStyles();
   return (
     <section ref={ref} id="ObjectPageSections" className={classes.sectionsContainer}>
@@ -41,3 +40,7 @@ export const ObjectPageContent = forwardRef(({ children, fillerRef }: Props, ref
     </section>
   );
 });
+
+ObjectPageContent.displayName = 'ObjectPageContent';
+
+export { ObjectPageContent };

@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
         <MessageBox type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -60,7 +60,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
         <MessageBox type="Confirm" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -116,7 +116,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Success" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
         <MessageBox type="Success" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -165,7 +165,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Warning" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
         <MessageBox type="Warning" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -214,7 +214,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Error" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
         <MessageBox type="Error" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -263,7 +263,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Information" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}}>
         <MessageBox type="Information" visible={true} onClose={[Function]} title={{...}} icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -312,7 +312,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) visible={true} onClose={[Function]} title="Custom" actions={{...}} icon={{...}} type="Confirm">
         <MessageBox visible={true} onClose={[Function]} title="Custom" actions={{...}} icon={{...}} type="Confirm" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -368,7 +368,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type="Success" visible={true} onClose={[Function]} title="Custom Success" icon={{...}} actions={{...}}>
         <MessageBox type="Success" visible={true} onClose={[Function]} title="Custom Success" icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -417,7 +417,7 @@
 
 ```
 "<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) type=\"Success\" visible={false} onClose={[Function]} title=\"Custom Success\" icon={{...}} actions={{...}}>
         <MessageBox type=\"Success\" visible={false} onClose={[Function]} title=\"Custom Success\" icon={{...}} actions={{...}} innerRef={{...}} classes={{...}} theme={{...}} />
@@ -431,7 +431,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(MessageBox) visible={true} onClose={[Function]} title={{...}} icon={{...}} type="Confirm" actions={{...}}>
         <MessageBox visible={true} onClose={[Function]} title={{...}} icon={{...}} type="Confirm" actions={{...}} innerRef={{...}} classes={{...}} theme={{...}}>

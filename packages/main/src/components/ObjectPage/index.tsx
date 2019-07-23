@@ -12,7 +12,6 @@ import React, {
   useRef,
   useState
 } from 'react';
-// @ts-ignore
 import { createUseStyles } from 'react-jss';
 import { scroller } from 'react-scroll';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -37,7 +36,7 @@ export interface ObjectPagePropTypes extends CommonProps {
   noHeader?: boolean;
 }
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles<string>(styles, { name: 'ObjectPage' });
 
 const findSectionIndexById = (sections, id) => {
   const index = Children.toArray(sections).findIndex(
@@ -60,7 +59,7 @@ const scrollToSectionById = (id, index) => {
   });
 };
 
-export const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
+const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     title,
     image,
@@ -265,3 +264,7 @@ ObjectPage.defaultProps = {
   selectedSectionId: null,
   noHeader: false
 };
+
+ObjectPage.displayName = 'ObjectPage';
+
+export { ObjectPage };

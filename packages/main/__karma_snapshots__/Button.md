@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <Button design="Default">
         <ui5-button design="Default" class="" />

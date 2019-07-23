@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <Calendar>
         <ui5-calendar class="" />
