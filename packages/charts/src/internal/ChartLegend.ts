@@ -1,10 +1,8 @@
 import { Optional } from '@ui5/webcomponents-react-base';
-import { useEffect } from 'react';
 
 const getSymbolForDataset = (type, dataset) => {
   const datasetMeta: any = dataset.hasOwnProperty('_meta') ? Object.values(dataset._meta)[0] : null;
   const elementType = Optional.of(datasetMeta, 'type').orElse(type);
-  console.log(datasetMeta);
   switch (elementType) {
     case 'line':
       return `
