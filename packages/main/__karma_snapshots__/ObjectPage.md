@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <ForwardRef title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} selectedSectionId={{...}} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
@@ -340,7 +340,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <ForwardRef title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
@@ -510,7 +510,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <ForwardRef title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} selectedSectionId={{...}} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
@@ -699,7 +699,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <ForwardRef mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
@@ -752,7 +752,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <ForwardRef mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
@@ -787,7 +787,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <ForwardRef selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>
@@ -845,7 +845,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <ForwardRef selectedSectionId="2" noHeader={true} title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} mode="Default" onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="-objectPage---" style={[undefined]} title={[undefined]}>

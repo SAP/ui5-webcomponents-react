@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(FilterBar) renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]} displayOnly={true}>
         <FilterBar renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]} displayOnly={true} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -123,7 +123,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(FilterBar) renderVariants={[Function: renderVariants]} displayOnly={true}>
         <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -251,7 +251,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(FilterBar) renderVariants={[Function: renderVariants]} displayOnly={true}>
         <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} innerRef={{...}} classes={{...}} theme={{...}}>

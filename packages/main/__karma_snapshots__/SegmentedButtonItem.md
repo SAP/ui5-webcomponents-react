@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false}>
         <SegmentedButtonItem id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -27,7 +27,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} selected={true} visible={true} enabled={true} onClick={{...}}>
         <SegmentedButtonItem id={1} icon={{...}} selected={true} visible={true} enabled={true} onClick={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -50,7 +50,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false}>
         <SegmentedButtonItem id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -72,7 +72,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} enabled={false} onClick={[Function]} visible={true} selected={false}>
         <SegmentedButtonItem id={1} icon={{...}} enabled={false} onClick={[Function]} visible={true} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -94,7 +94,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} onClick={[Function]} visible={true} enabled={true} selected={false}>
         <SegmentedButtonItem id={1} icon={{...}} onClick={[Function]} visible={true} enabled={true} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>

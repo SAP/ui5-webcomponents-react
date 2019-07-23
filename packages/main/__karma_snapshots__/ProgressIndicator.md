@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) displayValue="sdf" width="50%" height="50%" percentValue={40} visible={true} state="None">
         <ProgressIndicator displayValue="sdf" width="50%" height="50%" percentValue={40} visible={true} state="None" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -29,7 +29,7 @@
 
 ```
 <ThemeProvider contentDensity="Cozy" withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) percentValue={85} state="Error" displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator percentValue={85} state="Error" displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -53,7 +53,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) state="Error" percentValue={0} displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator state="Error" percentValue={0} displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -77,7 +77,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) state="None" percentValue={0} displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator state="None" percentValue={0} displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -101,7 +101,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) state="Success" percentValue={0} displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator state="Success" percentValue={0} displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -125,7 +125,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) state="Warning" percentValue={0} displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator state="Warning" percentValue={0} displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -149,7 +149,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
