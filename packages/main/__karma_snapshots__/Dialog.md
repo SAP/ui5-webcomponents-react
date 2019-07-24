@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <Dialog initialFocus={{...}} headerText="">
         <WithWebComponent(Dialog) initialFocus={{...}} headerText="">
