@@ -23,13 +23,11 @@
                 </Title>
               </header>
               <section className="MessageBox-content---">
-                <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                      Confirm - OK
-                    </span>
-                  </Component>
-                </WithStyles(Component)>
+                <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                    Confirm - OK
+                  </span>
+                </Text>
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
@@ -79,13 +77,11 @@
                 </Title>
               </header>
               <section className="MessageBox-content---">
-                <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                      Confirm - Cancel
-                    </span>
-                  </Component>
-                </WithStyles(Component)>
+                <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                    Confirm - Cancel
+                  </span>
+                </Text>
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
@@ -135,13 +131,11 @@
                 </Title>
               </header>
               <section className="MessageBox-content---">
-                <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                      Success
-                    </span>
-                  </Component>
-                </WithStyles(Component)>
+                <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                    Success
+                  </span>
+                </Text>
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
@@ -184,13 +178,11 @@
                 </Title>
               </header>
               <section className="MessageBox-content---">
-                <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                      Warning
-                    </span>
-                  </Component>
-                </WithStyles(Component)>
+                <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                    Warning
+                  </span>
+                </Text>
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
@@ -233,13 +225,11 @@
                 </Title>
               </header>
               <section className="MessageBox-content---">
-                <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                      Error
-                    </span>
-                  </Component>
-                </WithStyles(Component)>
+                <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                    Error
+                  </span>
+                </Text>
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="Close">
@@ -282,13 +272,11 @@
                 </Title>
               </header>
               <section className="MessageBox-content---">
-                <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                      Information
-                    </span>
-                  </Component>
-                </WithStyles(Component)>
+                <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                    Information
+                  </span>
+                </Text>
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
@@ -331,13 +319,11 @@
                 </Title>
               </header>
               <section className="MessageBox-content---">
-                <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                      Custom
-                    </span>
-                  </Component>
-                </WithStyles(Component)>
+                <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                    Custom
+                  </span>
+                </Text>
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="Yes">
@@ -387,13 +373,11 @@
                 </Title>
               </header>
               <section className="MessageBox-content---">
-                <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                      Custom Success
-                    </span>
-                  </Component>
-                </WithStyles(Component)>
+                <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                    Custom Success
+                  </span>
+                </Text>
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">
@@ -450,13 +434,11 @@
                 </Title>
               </header>
               <section className="MessageBox-content---">
-                <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                  <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                    <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                      No Title
-                    </span>
-                  </Component>
-                </WithStyles(Component)>
+                <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                    No Title
+                  </span>
+                </Text>
               </section>
               <footer className="MessageBox-footer---">
                 <MessageBoxButton emphasize={true} onClick={[Function]} action="OK">

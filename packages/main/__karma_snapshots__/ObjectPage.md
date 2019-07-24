@@ -36,27 +36,21 @@
                           www.myurl.com
                         </ui5-link>
                       </Link>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                            Address 1
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                            Address 2
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                            Address 3
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
+                      <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                          Address 1
+                        </span>
+                      </Text>
+                      <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                          Address 2
+                        </span>
+                      </Text>
+                      <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                          Address 3
+                        </span>
+                      </Text>
                     </div>
                   </span>
                 </div>
@@ -372,27 +366,21 @@
                           www.myurl.com
                         </ui5-link>
                       </Link>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                            Address 1
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                            Address 2
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                            Address 3
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
+                      <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                          Address 1
+                        </span>
+                      </Text>
+                      <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                          Address 2
+                        </span>
+                      </Text>
+                      <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                          Address 3
+                        </span>
+                      </Text>
                     </div>
                   </span>
                 </div>
@@ -542,27 +530,21 @@
                           www.myurl.com
                         </ui5-link>
                       </Link>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                            Address 1
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                            Address 2
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
-                      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                            Address 3
-                          </span>
-                        </Component>
-                      </WithStyles(Component)>
+                      <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                          Address 1
+                        </span>
+                      </Text>
+                      <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                          Address 2
+                        </span>
+                      </Text>
+                      <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                          Address 3
+                        </span>
+                      </Text>
                     </div>
                   </span>
                 </div>

@@ -6,13 +6,11 @@
 <ThemeProvider withToastContainer={false}>
   <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-        <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-          <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-            FioriText
-          </span>
-        </Component>
-      </WithStyles(Component)>
+      <Text renderWhitespace={false} wrapping={true} width={{...}}>
+        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+          FioriText
+        </span>
+      </Text>
     </ThemeProvider>
   </JssProvider>
 </ThemeProvider>
@@ -24,13 +22,11 @@
 <ThemeProvider withToastContainer={false}>
   <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <WithStyles(Component) wrapping={false} renderWhitespace={false} width={{...}}>
-        <Component wrapping={false} renderWhitespace={false} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-          <span style={{...}} className="Component-text--- Component-noWrap---" title={[undefined]} slot={[undefined]}>
-            Lorem Ipsum dolor sit amed
-          </span>
-        </Component>
-      </WithStyles(Component)>
+      <Text wrapping={false} renderWhitespace={false} width={{...}}>
+        <span style={{...}} className="Text---text--- Text---noWrap---" title={[undefined]} slot={[undefined]}>
+          Lorem Ipsum dolor sit amed
+        </span>
+      </Text>
     </ThemeProvider>
   </JssProvider>
 </ThemeProvider>
@@ -42,13 +38,11 @@
 <ThemeProvider withToastContainer={false}>
   <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <WithStyles(Component) renderWhitespace={true} wrapping={true} width={{...}}>
-        <Component renderWhitespace={true} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-          <span style={{...}} className="Component-text--- Component-renderWhitespace---" title={[undefined]} slot={[undefined]}>
-            Lorem Ipsum dolor sit amed
-          </span>
-        </Component>
-      </WithStyles(Component)>
+      <Text renderWhitespace={true} wrapping={true} width={{...}}>
+        <span style={{...}} className="Text---text--- Text---renderWhitespace---" title={[undefined]} slot={[undefined]}>
+          Lorem Ipsum dolor sit amed
+        </span>
+      </Text>
     </ThemeProvider>
   </JssProvider>
 </ThemeProvider>

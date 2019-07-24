@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <TableCell>
         <ui5-table-cell class="" />

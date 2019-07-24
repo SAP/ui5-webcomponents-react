@@ -1,7 +1,8 @@
-import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, ReactNode } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import React, { CSSProperties, FC, forwardRef, ReactNode, Ref } from 'react';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ThemeOptions } from '../../interfaces/ThemeOptions';
 import { TextStyles } from './Text.jss';
 
@@ -22,21 +23,11 @@ export interface TextProps extends CommonProps {
   width?: CSSProperties['width'];
 }
 
-interface TextInternalProps extends TextProps, ClassProps {}
+const useStyles = createUseStyles<JSSTheme, string>(TextStyles, { name: 'Text ' });
 
-export const Text: FC<TextProps> = withStyles(TextStyles)((props: TextProps) => {
-  const {
-    classes,
-    children,
-    renderWhitespace,
-    wrapping,
-    width,
-    className,
-    style,
-    tooltip,
-    innerRef,
-    slot
-  } = props as TextInternalProps;
+const Text: FC<TextProps> = forwardRef((props: TextProps, ref: Ref<HTMLSpanElement>) => {
+  const { children, renderWhitespace, wrapping, width, className, style, tooltip, slot } = props;
+  const classes = useStyles();
   const classNameString = StyleClassHelper.of(classes.text);
   if (wrapping === false) {
     classNameString.put(classes.noWrap);
@@ -52,7 +43,7 @@ export const Text: FC<TextProps> = withStyles(TextStyles)((props: TextProps) => 
     Object.assign(inlineStyles, style);
   }
   return (
-    <span ref={innerRef} style={inlineStyles} className={classNameString.toString()} title={tooltip} slot={slot}>
+    <span ref={ref} style={inlineStyles} className={classNameString.toString()} title={tooltip} slot={slot}>
       {children}
     </span>
   );
@@ -63,3 +54,7 @@ Text.defaultProps = {
   wrapping: true,
   width: null
 };
+
+Text.displayName = 'Text';
+
+export { Text };
