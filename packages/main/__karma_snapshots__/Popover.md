@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <Popover initialFocus={{...}} headerText="" placementType="Right" horizontalAlign="Center" verticalAlign="Center">
         <WithWebComponent(Popover) initialFocus={{...}} headerText="" placementType="Right" horizontalAlign="Center" verticalAlign="Center">

@@ -4,7 +4,7 @@
 
 ```
 <ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+  <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <WithWebComponent(List) headerText="" footerText="" mode="None" noDataText="" separators="All">
         <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="" />
