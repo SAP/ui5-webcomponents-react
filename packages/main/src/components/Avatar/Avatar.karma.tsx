@@ -67,7 +67,7 @@ describe('Avatar', () => {
   it('enter key down', () => {
     const callback = sinon.spy();
     const wrapper = mountThemedComponent(<Avatar size={AvatarSize.XL} initials="JD" onClick={callback} />);
-    wrapper.find(Avatar).simulate('keyDown', { keyCode: KeyCodes.ENTER });
+    wrapper.find(Avatar).simulate('keyDown', { key: 'Enter' });
     expect(callback.called).to.equal(true);
   });
 
