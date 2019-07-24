@@ -44,7 +44,7 @@
                           </Label>
                           <div>
                             <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                              <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                              <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                                 Target
                               </span>
                             </Text>
@@ -58,7 +58,7 @@
                           </Label>
                           <div>
                             <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                              <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                              <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                                 Deviation
                               </span>
                             </Text>
@@ -75,7 +75,7 @@
             </WithStyles(AnalyticalCardHeader)>
             <div style={{...}}>
               <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                   I&#39;m a content!
                 </span>
               </Text>

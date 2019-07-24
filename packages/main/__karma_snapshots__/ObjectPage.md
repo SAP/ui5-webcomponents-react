@@ -37,17 +37,17 @@
                         </ui5-link>
                       </Link>
                       <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                        <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                           Address 1
                         </span>
                       </Text>
                       <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                        <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                           Address 2
                         </span>
                       </Text>
                       <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                        <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                           Address 3
                         </span>
                       </Text>
@@ -367,17 +367,17 @@
                         </ui5-link>
                       </Link>
                       <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                        <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                           Address 1
                         </span>
                       </Text>
                       <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                        <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                           Address 2
                         </span>
                       </Text>
                       <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                        <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                           Address 3
                         </span>
                       </Text>
@@ -531,17 +531,17 @@
                         </ui5-link>
                       </Link>
                       <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                        <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                           Address 1
                         </span>
                       </Text>
                       <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                        <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                           Address 2
                         </span>
                       </Text>
                       <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                        <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                           Address 3
                         </span>
                       </Text>

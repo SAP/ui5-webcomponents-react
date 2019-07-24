@@ -24,7 +24,7 @@
               </header>
               <section className="MessageBox-content---">
                 <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                  <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                     Confirm - OK
                   </span>
                 </Text>
@@ -78,7 +78,7 @@
               </header>
               <section className="MessageBox-content---">
                 <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                  <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                     Confirm - Cancel
                   </span>
                 </Text>
@@ -132,7 +132,7 @@
               </header>
               <section className="MessageBox-content---">
                 <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                  <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                     Success
                   </span>
                 </Text>
@@ -179,7 +179,7 @@
               </header>
               <section className="MessageBox-content---">
                 <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                  <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                     Warning
                   </span>
                 </Text>
@@ -226,7 +226,7 @@
               </header>
               <section className="MessageBox-content---">
                 <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                  <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                     Error
                   </span>
                 </Text>
@@ -273,7 +273,7 @@
               </header>
               <section className="MessageBox-content---">
                 <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                  <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                     Information
                   </span>
                 </Text>
@@ -320,7 +320,7 @@
               </header>
               <section className="MessageBox-content---">
                 <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                  <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                     Custom
                   </span>
                 </Text>
@@ -374,7 +374,7 @@
               </header>
               <section className="MessageBox-content---">
                 <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                  <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                     Custom Success
                   </span>
                 </Text>
@@ -435,7 +435,7 @@
               </header>
               <section className="MessageBox-content---">
                 <Text renderWhitespace={false} wrapping={true} width={{...}}>
-                  <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+                  <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
                     No Title
                   </span>
                 </Text>

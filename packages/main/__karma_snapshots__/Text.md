@@ -7,7 +7,7 @@
   <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <Text renderWhitespace={false} wrapping={true} width={{...}}>
-        <span style={{...}} className="Text---text---" title={[undefined]} slot={[undefined]}>
+        <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
           FioriText
         </span>
       </Text>
@@ -23,7 +23,7 @@
   <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <Text wrapping={false} renderWhitespace={false} width={{...}}>
-        <span style={{...}} className="Text---text--- Text---noWrap---" title={[undefined]} slot={[undefined]}>
+        <span style={{...}} className="Text--text--- Text--noWrap---" title={[undefined]} slot={[undefined]}>
           Lorem Ipsum dolor sit amed
         </span>
       </Text>
@@ -39,7 +39,7 @@
   <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <Text renderWhitespace={true} wrapping={true} width={{...}}>
-        <span style={{...}} className="Text---text--- Text---renderWhitespace---" title={[undefined]} slot={[undefined]}>
+        <span style={{...}} className="Text--text--- Text--renderWhitespace---" title={[undefined]} slot={[undefined]}>
           Lorem Ipsum dolor sit amed
         </span>
       </Text>
