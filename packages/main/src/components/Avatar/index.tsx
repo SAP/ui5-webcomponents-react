@@ -1,7 +1,8 @@
-import { Event, KeyCodes, withStyles } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, PureComponent } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { Event } from '@ui5/webcomponents-react-base';
+import React, { CSSProperties, forwardRef, Ref, useCallback } from 'react';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { AvatarShape } from '../../lib/AvatarShape';
 import { AvatarSize } from '../../lib/AvatarSize';
 import styles from './Avatar.jss';
@@ -17,93 +18,100 @@ export interface AvatarPropTypes extends CommonProps {
   customFontSize?: CSSProperties['width'];
 }
 
-export interface AvatarPropsInternal extends AvatarPropTypes, CommonProps, ClassProps {}
+const useStyles = createUseStyles<JSSTheme, string>(styles);
 
-@withStyles(styles)
-export class Avatar extends PureComponent<AvatarPropTypes> {
-  static defaultProps = {
-    size: AvatarSize.S,
-    shape: AvatarShape.Circle,
-    initials: null,
-    image: null,
-    onClick: null,
-    customDisplaySize: '3rem',
-    customFontSize: '1.125rem'
-  };
+const Avatar = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) => {
+  const {
+    initials,
+    size,
+    shape,
+    image,
+    onClick,
+    customFontSize,
+    customDisplaySize,
+    children,
+    className,
+    style,
+    tooltip,
+    slot
+  } = props;
 
-  private handleKeyDown = (e) => {
-    if (e.keyCode === KeyCodes.ENTER) {
-      this.props.onClick(Event.of(this, e));
-    }
-  };
+  const classes = useStyles();
 
-  private handleOnClick = (e) => {
-    this.props.onClick(Event.of(this, e));
-  };
-
-  render() {
-    const {
-      initials,
-      size,
-      shape,
-      image,
-      onClick,
-      classes,
-      customFontSize,
-      customDisplaySize,
-      children,
-      className,
-      style,
-      tooltip,
-      innerRef,
-      slot
-    } = this.props as AvatarPropsInternal;
-
-    const cssClasses = [classes.avatar];
-    const inlineStyle: CSSProperties = {};
-    if (size === AvatarSize.Custom) {
-      inlineStyle.fontSize = customFontSize;
-      inlineStyle.width = customDisplaySize;
-      inlineStyle.height = customDisplaySize;
-      inlineStyle.lineHeight = customDisplaySize;
-    } else {
-      cssClasses.push(classes[`size${size}`]);
-    }
-
-    inlineStyle['--sapUiContentNonInteractiveIconColor'] = 'var(--sapContent_ContrastIconColor)';
-
-    if (shape === AvatarShape.Circle) {
-      cssClasses.push(classes.circle);
-    }
-
-    if (image) {
-      inlineStyle.backgroundImage = `url(${image})`;
-    }
-
-    if (onClick) {
-      inlineStyle.cursor = 'pointer';
-    }
-
-    if (className) {
-      cssClasses.push(className);
-    }
-    if (style) {
-      Object.assign(inlineStyle, style);
-    }
-
-    return (
-      <span
-        ref={innerRef}
-        className={cssClasses.join(' ')}
-        style={inlineStyle}
-        onClick={this.handleOnClick}
-        tabIndex={0}
-        onKeyDown={this.handleKeyDown}
-        title={tooltip}
-        slot={slot}
-      >
-        {initials ? initials : children}
-      </span>
-    );
+  const cssClasses = [classes.avatar];
+  const inlineStyle: CSSProperties = {};
+  if (size === AvatarSize.Custom) {
+    inlineStyle.fontSize = customFontSize;
+    inlineStyle.width = customDisplaySize;
+    inlineStyle.height = customDisplaySize;
+    inlineStyle.lineHeight = customDisplaySize;
+  } else {
+    cssClasses.push(classes[`size${size}`]);
   }
-}
+
+  inlineStyle['--sapUiContentNonInteractiveIconColor'] = 'var(--sapContent_ContrastIconColor)';
+
+  if (shape === AvatarShape.Circle) {
+    cssClasses.push(classes.circle);
+  }
+
+  if (image) {
+    inlineStyle.backgroundImage = `url(${image})`;
+  }
+
+  if (onClick) {
+    inlineStyle.cursor = 'pointer';
+  }
+
+  if (className) {
+    cssClasses.push(className);
+  }
+  if (style) {
+    Object.assign(inlineStyle, style);
+  }
+
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (e.key === 'Enter') {
+        onClick(Event.of(null, e));
+      }
+    },
+    [onClick]
+  );
+
+  const handleOnClick = useCallback(
+    (e) => {
+      onClick(Event.of(null, e));
+    },
+    [onClick]
+  );
+
+  return (
+    <span
+      ref={ref}
+      className={cssClasses.join(' ')}
+      style={inlineStyle}
+      onClick={handleOnClick}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      title={tooltip}
+      slot={slot}
+    >
+      {initials ? initials : children}
+    </span>
+  );
+});
+
+Avatar.defaultProps = {
+  size: AvatarSize.S,
+  shape: AvatarShape.Circle,
+  initials: null,
+  image: null,
+  onClick: null,
+  customDisplaySize: '3rem',
+  customFontSize: '1.125rem'
+};
+
+Avatar.displayName = 'Avatar';
+
+export { Avatar };
