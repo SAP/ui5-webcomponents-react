@@ -1,5 +1,5 @@
 import { Device, StyleClassHelper, useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, forwardRef, ReactElement, ReactNode, RefObject } from 'react';
+import React, { Children, cloneElement, forwardRef, ReactElement, ReactNode, RefObject, FC } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { ButtonDesign } from '../../lib/ButtonDesign';
@@ -15,49 +15,51 @@ export interface ActionSheetPropTypes extends CommonProps {
   children?: ReactElement<ButtonPropTypes> | Array<ReactElement<ButtonPropTypes>>;
 }
 
-const useStyles = createUseStyles<string>(styles, { name: 'ActionSheet' });
+const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 
-const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: RefObject<Ui5PopoverDomRef>) => {
-  const { children, placement, openBy, style, slot } = props;
+const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
+  (props: ActionSheetPropTypes, ref: RefObject<Ui5PopoverDomRef>) => {
+    const { children, placement, openBy, style, slot } = props;
 
-  const classes = useStyles();
+    const classes = useStyles();
 
-  const actionSheetClasses = StyleClassHelper.of(classes.actionSheet);
-  if (Device.system.tablet) {
-    actionSheetClasses.put(classes.tablet);
-  } else if (Device.system.phone) {
-    actionSheetClasses.put(classes.phone);
+    const actionSheetClasses = StyleClassHelper.of(classes.actionSheet);
+    if (Device.system.tablet) {
+      actionSheetClasses.put(classes.tablet);
+    } else if (Device.system.phone) {
+      actionSheetClasses.put(classes.phone);
+    }
+
+    const popoverRef: RefObject<Ui5PopoverDomRef> = useConsolidatedRef(ref);
+
+    const renderActionSheetButton = (element) => {
+      if (element && element.props) {
+        return (
+          <div key={element.key} className={classes.actionButtonContainer}>
+            {cloneElement(element, {
+              design: ButtonDesign.Transparent,
+              onClick: onActionButtonClicked(element.props.onClick)
+            })}
+          </div>
+        );
+      }
+      return element;
+    };
+
+    const onActionButtonClicked = (handler) => () => {
+      popoverRef.current.close();
+      if (typeof handler === 'function') {
+        handler();
+      }
+    };
+
+    return (
+      <Popover ref={popoverRef} openBy={openBy} placementType={placement} style={style} slot={slot}>
+        <ul className={actionSheetClasses.valueOf()}>{Children.map(children, renderActionSheetButton)}</ul>
+      </Popover>
+    );
   }
-
-  const popoverRef: RefObject<Ui5PopoverDomRef> = useConsolidatedRef(ref);
-
-  const renderActionSheetButton = (element) => {
-    if (element && element.props) {
-      return (
-        <div key={element.key} className={classes.actionButtonContainer}>
-          {cloneElement(element, {
-            design: ButtonDesign.Transparent,
-            onClick: onActionButtonClicked(element.props.onClick)
-          })}
-        </div>
-      );
-    }
-    return element;
-  };
-
-  const onActionButtonClicked = (handler) => () => {
-    popoverRef.current.close();
-    if (typeof handler === 'function') {
-      handler();
-    }
-  };
-
-  return (
-    <Popover ref={popoverRef} openBy={openBy} placementType={placement} style={style} slot={slot}>
-      <ul className={actionSheetClasses.valueOf()}>{Children.map(children, renderActionSheetButton)}</ul>
-    </Popover>
-  );
-});
+);
 
 ActionSheet.defaultProps = {
   placement: PlacementType.Bottom

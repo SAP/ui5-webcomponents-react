@@ -19,40 +19,38 @@ interface ObjectPageAnchorPropTypes {
   mode: ObjectPageMode;
 }
 
-const useStyles = createUseStyles<string>(
-  ({ parameters }: JSSTheme) => ({
-    anchorButtonContainer: {
-      position: 'relative',
-      display: 'inline-flex',
-      alignItems: 'center',
-      cursor: 'pointer',
-      '&:not(:first-child)': {
-        marginLeft: '2rem'
-      }
-    },
-    button: {
-      color: parameters.sapUiContentLabelColor,
-      fontFamily: fonts.sapUiFontFamily,
-      fontSize: fonts.sapMFontMediumSize
-    },
-    selected: {
-      color: parameters.sapUiSelected,
-      minWidth: '2rem',
-      textAlign: 'center',
-      '&:after': {
-        content: '""',
-        borderBottom: `0.188rem solid ${parameters.sapUiSelected}`,
-        width: '100%',
-        position: 'absolute',
-        bottom: 0,
-        left: 0
-      }
+const anchorButtonStyles = ({ parameters }: JSSTheme) => ({
+  anchorButtonContainer: {
+    position: 'relative',
+    display: 'inline-flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    '&:not(:first-child)': {
+      marginLeft: '2rem'
     }
-  }),
-  {
-    name: 'ObjectPageAnchorButton'
+  },
+  button: {
+    color: parameters.sapUiContentLabelColor,
+    fontFamily: fonts.sapUiFontFamily,
+    fontSize: fonts.sapMFontMediumSize
+  },
+  selected: {
+    color: parameters.sapUiSelected,
+    minWidth: '2rem',
+    textAlign: 'center',
+    '&:after': {
+      content: '""',
+      borderBottom: `0.188rem solid ${parameters.sapUiSelected}`,
+      width: '100%',
+      position: 'absolute',
+      bottom: 0,
+      left: 0
+    }
   }
-);
+});
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof anchorButtonStyles>>(anchorButtonStyles, {
+  name: 'ObjectPageAnchorButton'
+});
 
 export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => {
   const classes = useStyles();

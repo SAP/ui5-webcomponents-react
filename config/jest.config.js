@@ -2,7 +2,6 @@ const PATHS = require('./paths');
 const path = require('path');
 
 module.exports = {
-  preset: 'ts-jest',
   rootDir: PATHS.root,
   setupFiles: ['jest-canvas-mock'],
   coverageDirectory: path.join(PATHS.root, 'coverage', 'partial'),

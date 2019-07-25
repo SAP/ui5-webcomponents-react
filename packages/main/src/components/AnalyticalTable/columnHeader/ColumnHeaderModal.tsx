@@ -44,6 +44,13 @@ export interface ColumnHeaderModalProperties {
 
 interface ColumnHeaderModalInternalProperties extends ColumnHeaderModalProperties, ClassProps {}
 
+const DEFAULT_FILTER_COMPONENT = ({ filter, onChange }) => {
+  const handleChange = (e) => {
+    onChange(Event.of(null, e.getOriginalEvent(), e.getParameters()));
+  };
+  return <Input onInput={handleChange}>{(filter && filter.value) || ''}</Input>;
+};
+
 @withStyles(styles)
 export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
   static defaultProps = {
@@ -52,7 +59,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
     showGroup: false,
     grouping: '',
     filter: null,
-    FilterComponent: ColumnHeaderModal.DEFAULT_FILTER_COMPONENT,
+    FilterComponent: DEFAULT_FILTER_COMPONENT,
     onFilterChange: () => {},
     onGroupBy: () => {}
   };
@@ -76,13 +83,6 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
     }
     this.popoverRef.current && this.popoverRef.current.close();
   };
-
-  private static DEFAULT_FILTER_COMPONENT({ filter, onChange }) {
-    const handleChange = (e) => {
-      onChange(Event.of(this, e.getOriginalEvent(), e.getParameters()));
-    };
-    return <Input onInput={handleChange}>{(filter && filter.value) || ''}</Input>;
-  }
 
   render() {
     const { showGroup, grouping, showSort, showFilter, FilterComponent, onFilterChange, column, filter } = this
