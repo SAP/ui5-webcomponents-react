@@ -4,8 +4,8 @@ const path = require('path');
 module.exports = {
   rootDir: PATHS.root,
   setupFiles: ['jest-canvas-mock'],
-  coverageDirectory: path.join(PATHS.root, 'coverage', 'partial'),
-  coverageReporters: ['json', 'text', 'clover'],
+  coverageDirectory: PATHS.nycOutput,
+  coverageReporters: ['json', 'text'],
   collectCoverage: false,
   collectCoverageFrom: [
     'packages/**/*.{ts,tsx}',

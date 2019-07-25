@@ -3,6 +3,7 @@ const path = require('path');
 const webpackConfig = require('./karma.webpack.config');
 const snapshotConfig = require('./karma.snapshot.config');
 const deepmerge = require('deepmerge');
+const uuid = require('uuid/v4');
 
 process.env.NODE_ENV = 'test';
 process.env.BABEL_ENV = 'test';
@@ -14,8 +15,13 @@ module.exports = function(config) {
     coverageConfig = {
       reporters: ['coverage-istanbul'],
       coverageIstanbulReporter: {
-        reports: ['json', 'text', 'clover'], // jest default
-        dir: path.join(PATHS.coverage, 'partial')
+        reports: ['text', 'json', 'clover'],
+        dir: PATHS.nycOutput,
+        'report-config': {
+          json: {
+            file: `${uuid()}.json`
+          }
+        }
       }
     };
   }
