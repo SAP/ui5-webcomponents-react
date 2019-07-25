@@ -103,8 +103,8 @@
                       </ui5-label>
                     </Label>
                     <div>
-                      <Switch onClick={[Function]} valueParameter="state" style={{...}}>
-                        <ui5-switch on-click={[Function]} value-parameter="state" style={{...}} class="" />
+                      <Switch onClick={[Function: onClick]} valueParameter="state" style={{...}}>
+                        <ui5-switch on-click={[Function: onClick]} value-parameter="state" style={{...}} class="" />
                       </Switch>
                     </div>
                   </div>
@@ -215,8 +215,8 @@
                       </ui5-label>
                     </Label>
                     <div>
-                      <Switch onClick={[Function]} valueParameter="state" style={{...}}>
-                        <ui5-switch on-click={[Function]} value-parameter="state" style={{...}} class="" />
+                      <Switch onClick={[Function: onClick]} valueParameter="state" style={{...}}>
+                        <ui5-switch on-click={[Function: onClick]} value-parameter="state" style={{...}} class="" />
                       </Switch>
                     </div>
                   </div>
