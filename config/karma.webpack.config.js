@@ -21,9 +21,6 @@ module.exports = function() {
           {
             test: /\.[tj]sx?$/,
             loader: 'babel-loader',
-            exclude: {
-              test: [/types\/CustomListItem.js/, /test-resources/]
-            },
             options: {
               presets: [require.resolve('babel-preset-react-app')]
             }
