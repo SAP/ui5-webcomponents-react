@@ -2648,10 +2648,10 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"
   integrity sha512-2Y8uPt0/jwjhQ6EiluT0XCri1Dbplr0ZxfFXUz+ye13gaqE8u5gL5ppao1JrUYr9cIip5S6MvQzBS7Kke7U9VA==
 
-"@types/chart.js@^2.7.53":
-  version "2.7.55"
-  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.7.55.tgz#42fa503865ccbbcebe3399d90c00125bbcafcf9a"
-  integrity sha512-CACGbxPkr0vcyrZFpDAr4dqpfgu/PiHWzsKAhXdY+g72Laebjn/dijr7ExwVv9JS/99KrhtKmfJ0vBEhPTJBTQ==
+"@types/chart.js@^2.7.56":
+  version "2.7.56"
+  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.7.56.tgz#f7cc5c1b9d702e544bea5760c39b5f26fbeddb82"
+  integrity sha512-toWLqetzDO32PtrDCRKCsMmOYgHzOQUbWh3h7dGuupDpxoyx+o33lZkBBXFV0FoOUuMMEHluZBjw9Xye9ubYvg==
 
 "@types/cheerio@*":
   version "0.22.12"
@@ -2757,7 +2757,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.8.19", "@types/react@^16.8.19":
+"@types/react@*", "@types/react@^16.8.19":
   version "16.8.19"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.19.tgz#629154ef05e2e1985cdde94477deefd823ad9be3"
   integrity sha512-QzEzjrd1zFzY9cDlbIiFvdr+YUmefuuRYrPxmkwG0UQv5XF35gFIi7a95m1bNVcFU0VimxSZ5QVGSiBmlggQXQ==

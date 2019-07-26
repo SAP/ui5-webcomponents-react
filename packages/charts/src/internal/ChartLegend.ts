@@ -34,9 +34,7 @@ export const generateLegend = (chart) => {
     let pieDataSet = Object.values(datasets[0]._meta)[0] as any;
     itemsForLegend = pieDataSet.data.map((meta) => meta._model);
   }
-  return `<div style="display: flex; flex-wrap: wrap; padding: 0 1rem; box-sizing: border-box">
-${itemsForLegend.map((item, index) => getLegendEntry(item, type, index)).join(' ')}
-</div>`;
+  return itemsForLegend.map((item, index) => getLegendEntry(item, type, index)).join(' ');
 };
 
 export const useLegend = (

@@ -17,7 +17,7 @@
     "postbuild": "rollup -c"
   },
   "devDependencies": {
-    "@types/chart.js": "^2.7.53"
+    "@types/chart.js": "^2.7.56"
   },
   "dependencies": {
     "@ui5/webcomponents-react-base": "0.4.2-rc.6",

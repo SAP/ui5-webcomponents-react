@@ -14,6 +14,7 @@ const styles = {
   chart: {
     '& canvas': {
       maxWidth: (props) => `${props.width}px`,
+      width: (props) => `${props.width}px`,
       maxHeight: chartHeight
     },
     '& svg': {
@@ -26,7 +27,9 @@ const styles = {
       marginTop: '5px',
       overflowY: 'auto',
       display: 'flex',
-      alignItems: 'center'
+      flexWrap: 'wrap',
+      padding: '0 1rem',
+      boxSizing: 'border-box'
     }
   }
 };
