@@ -81,7 +81,7 @@
     "karma-snapshot": "^0.6.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^4.0.2",
-    "lerna": "^3.14.1",
+    "lerna": "^3.16.4",
     "lint-staged": "^8.1.6",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
