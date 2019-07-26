@@ -1,17 +1,24 @@
 import React, { ComponentType, CSSProperties, forwardRef, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
-import { getLoadingState } from '../Placeholder';
+import { ChartBaseProps } from '../interfaces/ChartBaseProps';
+import { getLoadingState } from './Placeholder';
+
+const chartHeight = (props) => {
+  if (props.noLegend) {
+    return `${props.height}px`;
+  }
+  return `${props.height - 60}px`;
+};
 
 const styles = {
   chart: {
     '& canvas': {
       maxWidth: (props) => `${props.width}px`,
-      maxHeight: (props) => `${props.height - props.noLegend ? 0 : 60}px`
+      maxHeight: chartHeight
     },
     '& svg': {
       width: (props) => `${props.width}px`,
-      height: (props) => `${props.height - props.noLegend ? 0 : 60}px`
+      height: chartHeight
     },
     '& .legend': {
       height: '55px',
