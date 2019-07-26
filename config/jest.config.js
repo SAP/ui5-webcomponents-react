@@ -9,8 +9,9 @@ module.exports = {
   collectCoverage: false,
   collectCoverageFrom: [
     'packages/**/*.{ts,tsx}',
-    '!packages/main/src/lib/*.ts',
-    '!packages/main/src/enums/*.ts',
+    '!**/src/lib/*',
+    '!**/src/interfaces/*',
+    '!**/src/enums/*',
     '!**/*.stories.tsx',
     '!**/*.jss.ts',
     '!**/*.karma.tsx',
