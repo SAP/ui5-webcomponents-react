@@ -1,12 +1,13 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import bestContrast from 'get-best-contrast-color';
-import React, { forwardRef, Ref, RefObject, useRef, useMemo } from 'react';
+import React, { forwardRef, Ref, useMemo } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
-import { withChartContainer } from '../../internal/withChartContainer';
+import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
+import { withChartContainer } from '../../internal/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
 import { formatTooltipLabel, getTextWidth, useMergedConfig } from '../../util/utils';
@@ -26,17 +27,14 @@ const BarChartComponent = forwardRef((props: BarChartPropTypes, ref: Ref<any>) =
     colors,
     width,
     height,
-    noLegend
-  } = props as BarChartPropTypes;
+    noLegend,
+    legendRef
+  } = props as BarChartPropTypes & InternalProps;
 
   const theme: any = useTheme();
   const data = useChartData(labels, datasets, colors, theme.theme);
 
   const chartRef = useConsolidatedRef<any>(ref);
-  const legendRef: RefObject<HTMLDivElement> = useRef();
-
-  const handleLegendItemPress = useLegendItemClickHandler(chartRef, legendRef);
-  useLegend(chartRef, legendRef, noLegend, handleLegendItemPress);
 
   const barChartDefaultConfig = useMemo(() => {
     return {
@@ -89,24 +87,24 @@ const BarChartComponent = forwardRef((props: BarChartPropTypes, ref: Ref<any>) =
       }
     };
   }, [valueAxisFormatter, categoryAxisFormatter]);
-
   const mergedOptions = useMergedConfig(barChartDefaultConfig, options);
 
+  const handleLegendItemPress = useLegendItemClickHandler(chartRef, legendRef);
+  useLegend(chartRef, legendRef, noLegend, handleLegendItemPress);
+
   return (
-    <>
-      <HorizontalBar
-        ref={chartRef}
-        data={data}
-        height={height}
-        width={width}
-        options={mergedOptions}
-        getDatasetAtEvent={getDatasetAtEvent}
-        getElementAtEvent={getElementAtEvent}
-      />
-      <div ref={legendRef} className="legend" />
-    </>
+    <HorizontalBar
+      ref={chartRef}
+      data={data}
+      height={height}
+      width={width}
+      options={mergedOptions}
+      getDatasetAtEvent={getDatasetAtEvent}
+      getElementAtEvent={getElementAtEvent}
+    />
   );
 });
+
 // @ts-ignore
 BarChartComponent.LoadingPlaceholder = BarChartPlaceholder;
 const BarChart = withChartContainer(BarChartComponent);

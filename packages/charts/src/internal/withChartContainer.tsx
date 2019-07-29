@@ -1,4 +1,4 @@
-import React, { ComponentType, CSSProperties, forwardRef, Ref, useMemo } from 'react';
+import React, { ComponentType, CSSProperties, forwardRef, Ref, useMemo, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ChartBaseProps } from '../interfaces/ChartBaseProps';
 import { getLoadingState } from './Placeholder';
@@ -12,11 +12,6 @@ const chartHeight = (props) => {
 
 const styles = {
   chart: {
-    '& canvas': {
-      maxWidth: (props) => `${props.width}px`,
-      width: (props) => `${props.width}px`,
-      maxHeight: chartHeight
-    },
     '& svg': {
       width: (props) => `${props.width}px`,
       height: chartHeight
@@ -38,7 +33,7 @@ const useStyles = createUseStyles(styles, { name: 'ChartContainer' });
 
 export const withChartContainer = (Component: ComponentType<any>) => {
   const ChartContainer = forwardRef((props: ChartBaseProps, ref: Ref<any>) => {
-    const { style, className, tooltip, loading, datasets, slot, noLegend, height, ...rest } = props;
+    const { style, className, tooltip, loading, datasets, slot, noLegend, height, width, ...rest } = props;
 
     const classes = useStyles(props);
     let classNames = classes.chart;
@@ -54,28 +49,39 @@ export const withChartContainer = (Component: ComponentType<any>) => {
       () => ({
         position: 'relative',
         paddingTop: '6px',
-        width: `${props.width}px`,
-        height: `${props.height}px`,
+        width: `${width}px`,
+        height: `${height}px`,
         ...style
       }),
-      [props.width, props.height, style]
+      [width, height, style]
     );
 
     const chartHeight = useMemo(() => (noLegend ? height : height - 60), [noLegend, height]);
 
+    const chartWrapperStyles: CSSProperties = useMemo(
+      () => ({ position: 'relative', height: `${chartHeight}px`, width: `${width}px` }),
+      [chartHeight, width]
+    );
+
+    const legendRef = useRef(null);
     return (
       <div className={classNames} style={inlineStyle} title={tooltip} slot={slot}>
         {loadingIndicator}
         {datasets.length > 0 && (
-          <Component
-            {...rest}
-            noLegend={noLegend}
-            height={chartHeight}
-            ref={ref}
-            datasets={datasets}
-            loading={loading}
-          />
+          <div style={chartWrapperStyles}>
+            <Component
+              {...rest}
+              noLegend={noLegend}
+              height={chartHeight}
+              width={width}
+              ref={ref}
+              datasets={datasets}
+              loading={loading}
+              legendRef={legendRef}
+            />
+          </div>
         )}
+        <div ref={legendRef} className="legend" />
       </div>
     );
   });

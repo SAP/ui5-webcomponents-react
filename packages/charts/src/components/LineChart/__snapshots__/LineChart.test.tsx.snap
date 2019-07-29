@@ -77,5 +77,8 @@ exports[`LineChart loading placeholder 1`] = `
       </linearGradient>
     </defs>
   </svg>
+  <div
+    class="legend"
+  />
 </div>
 `;

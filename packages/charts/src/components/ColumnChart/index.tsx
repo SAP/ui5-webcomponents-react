@@ -1,10 +1,11 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import bestContrast from 'get-best-contrast-color';
-import React, { forwardRef, Ref, RefObject, useRef, useMemo } from 'react';
+import React, { forwardRef, Ref, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
+import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
 import { withChartContainer } from '../../internal/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
@@ -26,14 +27,14 @@ const ColumnChartComponent = forwardRef((props: ColumnChartPropTypes, ref: Ref<a
     options,
     width,
     height,
-    noLegend
-  } = props;
+    noLegend,
+    legendRef
+  } = props as ColumnChartPropTypes & InternalProps;
 
   const theme: any = useTheme();
   const data = useChartData(labels, datasets, colors, theme.theme);
 
   const chartRef = useConsolidatedRef<any>(ref);
-  const legendRef: RefObject<HTMLDivElement> = useRef();
 
   const handleLegendItemPress = useLegendItemClickHandler(chartRef, legendRef);
   useLegend(chartRef, legendRef, noLegend, handleLegendItemPress);
@@ -96,18 +97,15 @@ const ColumnChartComponent = forwardRef((props: ColumnChartPropTypes, ref: Ref<a
   const mergedOptions = useMergedConfig(columnChartDefaultConfig, options);
 
   return (
-    <>
-      <Bar
-        ref={chartRef}
-        data={data}
-        height={height}
-        width={width}
-        options={mergedOptions}
-        getDatasetAtEvent={getDatasetAtEvent}
-        getElementAtEvent={getElementAtEvent}
-      />
-      <div ref={legendRef} className="legend" />
-    </>
+    <Bar
+      ref={chartRef}
+      data={data}
+      height={height}
+      width={width}
+      options={mergedOptions}
+      getDatasetAtEvent={getDatasetAtEvent}
+      getElementAtEvent={getElementAtEvent}
+    />
   );
 });
 // @ts-ignore

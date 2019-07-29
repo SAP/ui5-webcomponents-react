@@ -1,8 +1,9 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Ref, RefObject, useMemo, useRef } from 'react';
+import React, { forwardRef, Ref, useMemo } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
+import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, usePieLegendItemClickHandler } from '../../internal/ChartLegend';
 import { withChartContainer } from '../../internal/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
@@ -24,8 +25,9 @@ const DonutChartComponent = forwardRef((props: DonutChartPropTypes, ref: Ref<any
     options,
     width,
     height,
-    noLegend
-  } = props;
+    noLegend,
+    legendRef
+  } = props as DonutChartPropTypes & InternalProps;
 
   const theme: any = useTheme();
   const data = useChartData(labels, datasets, colors, theme.theme, true);
@@ -54,24 +56,20 @@ const DonutChartComponent = forwardRef((props: DonutChartPropTypes, ref: Ref<any
   const mergedOptions = useMergedConfig(donutChartDefaultConfig, options);
 
   const chartRef = useConsolidatedRef<any>(ref);
-  const legendRef: RefObject<HTMLDivElement> = useRef();
 
   const handleLegendItemPress = usePieLegendItemClickHandler(chartRef, legendRef);
   useLegend(chartRef, legendRef, noLegend, handleLegendItemPress);
 
   return (
-    <>
-      <Pie
-        ref={chartRef}
-        data={data}
-        height={height}
-        width={width}
-        options={mergedOptions}
-        getDatasetAtEvent={getDatasetAtEvent}
-        getElementAtEvent={getElementAtEvent}
-      />
-      <div ref={legendRef} className="legend" />
-    </>
+    <Pie
+      ref={chartRef}
+      data={data}
+      height={height}
+      width={width}
+      options={mergedOptions}
+      getDatasetAtEvent={getDatasetAtEvent}
+      getElementAtEvent={getElementAtEvent}
+    />
   );
 });
 // @ts-ignore

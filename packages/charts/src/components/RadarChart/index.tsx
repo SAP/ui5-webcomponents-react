@@ -1,8 +1,9 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Ref, RefObject, useMemo, useRef } from 'react';
+import React, { forwardRef, Ref, useMemo } from 'react';
 import { Radar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
+import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
 import { withChartContainer } from '../../internal/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
@@ -23,8 +24,9 @@ const RadarChartComponent = forwardRef((props: RadarChartPropTypes, ref: Ref<any
     getElementAtEvent,
     valueAxisFormatter,
     colors,
-    noLegend
-  } = props;
+    noLegend,
+    legendRef
+  } = props as RadarChartPropTypes & InternalProps;
 
   const theme: any = useTheme();
   const data = useChartData(labels, datasets, colors, theme.theme);
@@ -49,23 +51,19 @@ const RadarChartComponent = forwardRef((props: RadarChartPropTypes, ref: Ref<any
   const mergedOptions = useMergedConfig(radarChartDefaultConfig, options);
 
   const chartRef = useConsolidatedRef<any>(ref);
-  const legendRef: RefObject<HTMLDivElement> = useRef();
   const handleLegendItemPress = useLegendItemClickHandler(chartRef, legendRef);
   useLegend(chartRef, legendRef, noLegend, handleLegendItemPress);
 
   return (
-    <>
-      <Radar
-        ref={chartRef}
-        data={data}
-        height={height}
-        width={width}
-        options={mergedOptions}
-        getDatasetAtEvent={getDatasetAtEvent}
-        getElementAtEvent={getElementAtEvent}
-      />{' '}
-      <div ref={legendRef} className="legend" />
-    </>
+    <Radar
+      ref={chartRef}
+      data={data}
+      height={height}
+      width={width}
+      options={mergedOptions}
+      getDatasetAtEvent={getDatasetAtEvent}
+      getElementAtEvent={getElementAtEvent}
+    />
   );
 });
 const RadarChart = withChartContainer(RadarChartComponent);

@@ -1,9 +1,10 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Ref, RefObject, useMemo, useRef } from 'react';
+import React, { forwardRef, Ref, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
+import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
 import { withChartContainer } from '../../internal/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
@@ -25,8 +26,9 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
     getDatasetAtEvent,
     width,
     height,
-    noLegend
-  } = props;
+    noLegend,
+    legendRef
+  } = props as LineChartPropTypes & InternalProps;
 
   const lineChartDefaultConfig = useMemo(() => {
     return {
@@ -61,23 +63,19 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
   const data = useChartData(labels, datasets, colors, theme.theme);
 
   const chartRef = useConsolidatedRef<any>(ref);
-  const legendRef: RefObject<HTMLDivElement> = useRef();
   const handleLegendItemPress = useLegendItemClickHandler(chartRef, legendRef);
   useLegend(chartRef, legendRef, noLegend, handleLegendItemPress);
 
   return (
-    <>
-      <Line
-        ref={chartRef}
-        data={data}
-        height={height}
-        width={width}
-        options={chartOptions}
-        getDatasetAtEvent={getDatasetAtEvent}
-        getElementAtEvent={getElementAtEvent}
-      />
-      <div ref={legendRef} className="legend" />
-    </>
+    <Line
+      ref={chartRef}
+      data={data}
+      height={height}
+      width={width}
+      options={chartOptions}
+      getDatasetAtEvent={getDatasetAtEvent}
+      getElementAtEvent={getElementAtEvent}
+    />
   );
 });
 // @ts-ignore
