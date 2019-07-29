@@ -71,10 +71,8 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
     level: TitleLevel.H4
   };
 
-  private initialSelectedKey = this.props.variantItems && this.props.variantItems[0] && this.props.variantItems[0].key;
-
   state = {
-    selectedKey: this.initialSelectedKey,
+    selectedKey: this.props.initialSelectedKey ? this.props.initialSelectedKey : this.props.variantItems[0].key,
     open: false
   };
 
