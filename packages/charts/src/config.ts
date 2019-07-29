@@ -11,6 +11,8 @@ defaults.global.animation.duration = 0;
 defaults.scale.ticks.fontStyle = 'bold';
 defaults.global.layout.padding = 16;
 
+defaults.global.maintainAspectRatio = false;
+
 // Legend Configuration
 defaults.global.legend.display = false;
 defaults.global.legendCallback = generateLegend;
