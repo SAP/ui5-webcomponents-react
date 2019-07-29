@@ -1,5 +1,5 @@
-import { getOrLoadTheme } from '../themes/themeMap';
 import { useMemo } from 'react';
+import { getOrLoadTheme } from '../themes/themeMap';
 
 export const populateData = (labels, datasets, colors, theme, isPie = false) => {
   const colorPalette = resolveColors(colors, theme);
