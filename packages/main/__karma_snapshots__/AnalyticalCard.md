@@ -43,13 +43,11 @@
                             </ui5-label>
                           </Label>
                           <div>
-                            <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                              <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                                <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                                  Target
-                                </span>
-                              </Component>
-                            </WithStyles(Component)>
+                            <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                              <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
+                                Target
+                              </span>
+                            </Text>
                           </div>
                         </div>
                         <div className="AnalyticalCardHeader-deviation---">
@@ -59,13 +57,11 @@
                             </ui5-label>
                           </Label>
                           <div>
-                            <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                              <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                                <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                                  Deviation
-                                </span>
-                              </Component>
-                            </WithStyles(Component)>
+                            <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                              <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
+                                Deviation
+                              </span>
+                            </Text>
                           </div>
                         </div>
                       </div>
@@ -78,13 +74,11 @@
               </AnalyticalCardHeader>
             </WithStyles(AnalyticalCardHeader)>
             <div style={{...}}>
-              <WithStyles(Component) renderWhitespace={false} wrapping={true} width={{...}}>
-                <Component renderWhitespace={false} wrapping={true} width={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
-                  <span style={{...}} className="Component-text---" title={[undefined]} slot={[undefined]}>
-                    I&#39;m a content!
-                  </span>
-                </Component>
-              </WithStyles(Component)>
+              <Text renderWhitespace={false} wrapping={true} width={{...}}>
+                <span style={{...}} className="Text--text---" title={[undefined]} slot={[undefined]}>
+                  I&#39;m a content!
+                </span>
+              </Text>
             </div>
           </div>
         </AnalyticalCard>
