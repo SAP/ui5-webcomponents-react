@@ -1,5 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, RefObject } from 'react';
+import React, { forwardRef, RefObject, FC } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Size } from '../../lib/Size';
@@ -11,7 +11,7 @@ export interface SpinnerProps extends CommonProps {
 
 const useStyles = createUseStyles(styles, { name: 'Spinner' });
 
-const Spinner = forwardRef((props: SpinnerProps, ref: RefObject<HTMLDivElement>) => {
+const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObject<HTMLDivElement>) => {
   const { className, size, tooltip, slot } = props;
   const classes = useStyles();
 

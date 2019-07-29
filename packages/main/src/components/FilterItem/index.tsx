@@ -1,5 +1,5 @@
 import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, ReactNode, RefObject, useMemo } from 'react';
+import React, { forwardRef, ReactNode, RefObject, useMemo, FC } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BusyIndicator } from '../../lib/BusyIndicator';
 import { FilterType } from '../../lib/FilterType';
@@ -24,9 +24,9 @@ export interface FilterItemPropTypes extends CommonProps {
   changeEventName?: string;
 }
 
-const useStyles = createUseStyles<string>(styles, { name: 'FilterItem' });
+const useStyles = createUseStyles(styles, { name: 'FilterItem' });
 
-const FilterItem = forwardRef((props: FilterItemPropTypes, ref: RefObject<HTMLDivElement>) => {
+const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     filterItems,
     onChange,

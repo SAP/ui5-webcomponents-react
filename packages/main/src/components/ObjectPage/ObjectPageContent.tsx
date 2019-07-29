@@ -29,7 +29,9 @@ interface Props {
   fillerRef: RefObject<any>;
 }
 
-const useStyles = createUseStyles<string>(objectPageContentStyles, { name: 'ObjectPageContent' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof objectPageContentStyles>>(objectPageContentStyles, {
+  name: 'ObjectPageContent'
+});
 
 const ObjectPageContent = forwardRef(({ children, fillerRef }: Props, ref: RefObject<HTMLElement>) => {
   const classes = useStyles();

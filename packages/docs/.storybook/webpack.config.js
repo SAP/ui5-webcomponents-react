@@ -1,6 +1,5 @@
 const { highlightLog } = require('../../../scripts/utils');
 const path = require('path');
-const ci = require('ci-info');
 const PATHS = require('../../../config/paths');
 require('dotenv').config({
   path: path.join(PATHS.root, '.env')
@@ -8,15 +7,12 @@ require('dotenv').config({
 
 module.exports = ({ config }) => {
   const tsLoader = {
-    test: /\.(ts|tsx)$/,
+    test: /\.tsx?$/,
     use: [
       {
-        loader: require.resolve('awesome-typescript-loader'),
+        loader: require.resolve('babel-loader'),
         options: {
-          errorsAsWarnings: true,
-          transpileOnly: ci.NETLIFY,
-          useCache: true,
-          forceIsolatedModules: true
+          presets: [require.resolve('babel-preset-react-app')]
         }
       }
     ]
@@ -31,9 +27,9 @@ If you don't need the prop tables we strongly recommend to turn it off by adding
 SKIP_DOC_GENERATION=true
     
 `);
-    tsLoader.use.push({ loader: require.resolve('./styleInfoLoader.js') });
     tsLoader.use.push({ loader: require.resolve('react-docgen-typescript-loader') });
   }
+
   return {
     ...config,
     module: {

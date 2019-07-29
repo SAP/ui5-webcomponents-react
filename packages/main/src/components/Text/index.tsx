@@ -23,7 +23,7 @@ export interface TextProps extends CommonProps {
   width?: CSSProperties['width'];
 }
 
-const useStyles = createUseStyles<JSSTheme, string>(TextStyles, { name: 'Text' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof TextStyles>>(TextStyles, { name: 'Text' });
 
 const Text: FC<TextProps> = forwardRef((props: TextProps, ref: Ref<HTMLSpanElement>) => {
   const { children, renderWhitespace, wrapping, width, className, style, tooltip, slot } = props;

@@ -25,6 +25,8 @@ const { createDeclarationFiles } = require('./declarations');
 const forcePrettyOutput = argv.pretty;
 const shouldExtractErrors = argv['extract-errors'];
 
+process.env.NODE_ENV = 'production';
+
 // Errors in promises should be fatal.
 let loggedErrors = new Set();
 process.on('unhandledRejection', (err) => {
@@ -266,7 +268,8 @@ function getBabelConfig(updateBabelOptions, bundleType, filename) {
   let options = {
     exclude: '/**/node_modules/**',
     presets: [],
-    plugins: []
+    plugins: [],
+    runtimeHelpers: true
   };
   if (updateBabelOptions) {
     options = updateBabelOptions(options);

@@ -10,11 +10,13 @@ import React, {
   useCallback,
   useEffect,
   useRef,
-  useState
+  useState,
+  FC
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { scroller } from 'react-scroll';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
@@ -36,7 +38,7 @@ export interface ObjectPagePropTypes extends CommonProps {
   noHeader?: boolean;
 }
 
-const useStyles = createUseStyles<string>(styles, { name: 'ObjectPage' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPage' });
 
 const findSectionIndexById = (sections, id) => {
   const index = Children.toArray(sections).findIndex(
@@ -59,7 +61,7 @@ const scrollToSectionById = (id, index) => {
   });
 };
 
-const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
+const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     title,
     image,

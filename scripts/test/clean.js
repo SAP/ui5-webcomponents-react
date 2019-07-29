@@ -1,7 +1,4 @@
 const rimraf = require('rimraf');
 
-rimraf('coverage', (error) => {
-  if (error) {
-    console.error(error);
-  }
-});
+rimraf.sync('coverage');
+rimraf.sync('.nyc_output');
