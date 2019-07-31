@@ -33,8 +33,8 @@
                       </Button>
                       <WithWebComponent(List) onItemClick={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                         <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="">
-                          <StandardListItem style={{...}} data-key="1" type="Active" selected={false} infoState="None">
-                            <ui5-li style={{...}} data-key="1" type="Active" info-state="None" class="">
+                          <StandardListItem style={{...}} data-key="1" type="Active" selected={true} infoState="None">
+                            <ui5-li selected={true} style={{...}} data-key="1" type="Active" info-state="None" class="">
                               Variant 1
                             </ui5-li>
                           </StandardListItem>
@@ -148,8 +148,8 @@
                       </Button>
                       <WithWebComponent(List) onItemClick={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                         <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="">
-                          <StandardListItem style={{...}} data-key="1" type="Active" selected={false} infoState="None">
-                            <ui5-li style={{...}} data-key="1" type="Active" info-state="None" class="">
+                          <StandardListItem style={{...}} data-key="1" type="Active" selected={true} infoState="None">
+                            <ui5-li selected={true} style={{...}} data-key="1" type="Active" info-state="None" class="">
                               Variant 1
                             </ui5-li>
                           </StandardListItem>
@@ -272,8 +272,8 @@
                       </Button>
                       <WithWebComponent(List) onItemClick={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                         <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="">
-                          <StandardListItem style={{...}} data-key="1" type="Active" selected={false} infoState="None">
-                            <ui5-li style={{...}} data-key="1" type="Active" info-state="None" class="">
+                          <StandardListItem style={{...}} data-key="1" type="Active" selected={true} infoState="None">
+                            <ui5-li selected={true} style={{...}} data-key="1" type="Active" info-state="None" class="">
                               Variant 1
                             </ui5-li>
                           </StandardListItem>
