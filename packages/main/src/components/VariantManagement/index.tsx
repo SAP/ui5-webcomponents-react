@@ -1,6 +1,6 @@
-import { Event, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Component, ReactElement } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { Event } from '@ui5/webcomponents-react-base';
+import React, { FC, forwardRef, Ref, useCallback, useMemo, useState, useEffect } from 'react';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Button } from '../../lib/Button';
@@ -13,7 +13,6 @@ import { Popover } from '../../lib/Popover';
 import { StandardListItem } from '../../lib/StandardListItem';
 import { Title } from '../../lib/Title';
 import { TitleLevel } from '../../lib/TitleLevel';
-import { ButtonPropTypes } from '../../webComponents/Button';
 
 export interface VariantItem {
   key: string;
@@ -29,15 +28,7 @@ export interface VariantManagementPropTypes extends CommonProps {
   variantItems: VariantItem[];
   onSelect?: (event: Event) => void;
   level?: TitleLevel;
-}
-
-interface VariantManagementInternalProps extends VariantManagementPropTypes, ClassProps {
-  theme: JSSTheme;
-}
-
-interface VariantManagementState {
-  selectedKey: string;
-  open: boolean;
+  disabled?: boolean;
 }
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -48,9 +39,23 @@ const styles = ({ parameters }: JSSTheme) => ({
     cursor: 'pointer'
   },
   VariantManagementText: {
-    '& > *': {
-      cursor: 'pointer',
-      textShadow: parameters.sapUiContentShadowColor
+    cursor: 'pointer',
+    color: parameters.sapUiButtonTextColor,
+    '&:hover': {
+      color: parameters.sapUiHighlight
+    },
+    '&:active': {
+      color: parameters.sapUiHighlight
+    }
+  },
+  disabled: {
+    color: parameters.sapUiGroupTitleTextColor,
+    cursor: 'default',
+    '&:hover': {
+      color: parameters.sapUiGroupTitleTextColor
+    },
+    '&:active': {
+      color: parameters.sapUiGroupTitleTextColor
     }
   },
   footer: {
@@ -59,101 +64,109 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-@withStyles(styles)
-export class VariantManagement extends Component<VariantManagementPropTypes, VariantManagementState> {
-  static defaultProps = {
-    enabled: true,
-    popupTitle: 'Variants',
-    initialSelectedKey: null,
-    onSelect: () => {},
-    closeOnItemSelect: true,
-    placement: PlacementType.Bottom,
-    level: TitleLevel.H4
-  };
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Variant Management' });
 
-  private initialSelectedKey = this.props.variantItems && this.props.variantItems[0] && this.props.variantItems[0].key;
-
-  state = {
-    selectedKey: this.initialSelectedKey,
-    open: false
-  };
-
-  _getItemByKey(key, items) {
-    return items.filter((item) => item.key === key)[0];
-  }
-
-  private handleCancelButtonClick = () => {
-    this.setState({ open: false });
-  };
-
-  private handleAfterOpen = () => {
-    this.setState({ open: true });
-  };
-
-  private handleVariantItemSelect = (event) => {
-    const selectedKey = event.getParameter('item').getAttribute('data-key');
-    const { variantItems } = this.props as VariantManagementInternalProps;
-    const selectedItem = this._getItemByKey(selectedKey, variantItems) || variantItems[0];
-    this.setState({ selectedKey });
-    this.props.onSelect(Event.of(this, event.getOriginalEvent(), { selectedItem }));
-    if (this.props.closeOnItemSelect) {
-      const openPopover = !this.state.open;
-      this.setState({ open: openPopover });
-    }
-  };
-
-  private get variantManagementButton() {
-    const { classes, variantItems, level } = this.props as VariantManagementInternalProps;
-    const { selectedKey } = this.state;
-    const selectedItem = this._getItemByKey(selectedKey, variantItems) || variantItems[0];
-
-    return (
-      <div className={classes.VariantManagement}>
-        <span className={classes.VariantManagementText}>
-          <Title level={level}>{selectedItem.label}</Title>
-        </span>
-        <Button design={ButtonDesign.Transparent} icon={'navigation-down-arrow'} />
-      </div>
+const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
+  (props: VariantManagementPropTypes, ref: Ref<any>) => {
+    const {
+      variantItems,
+      popupTitle,
+      className,
+      style,
+      tooltip,
+      placement,
+      level,
+      initialSelectedKey,
+      onSelect,
+      closeOnItemSelect,
+      disabled
+    } = props;
+    const classes = useStyles();
+    const [open, setOpen] = useState(false);
+    const [selectedKey, setSelectedKey] = useState(
+      initialSelectedKey ? initialSelectedKey : variantItems.length ? variantItems[0].key : null
     );
-  }
-
-  private getVariantManagementFooterButtons = () => {
-    const { classes } = this.props as VariantManagementInternalProps;
-    return [
-      <Button
-        className={classes.footer}
-        key="btn-cancel"
-        onClick={this.handleCancelButtonClick}
-        design={ButtonDesign.Emphasized}
-      >
-        Cancel
-      </Button>
-    ] as Array<ReactElement<ButtonPropTypes>>;
-  };
-
-  render() {
-    const { variantItems, popupTitle, className, style, tooltip, innerRef } = this
-      .props as VariantManagementInternalProps;
-    const { selectedKey } = this.state;
 
     if (!variantItems || variantItems.length < 1) {
       return null;
     }
 
+    useEffect(() => {
+      if (initialSelectedKey) {
+        setSelectedKey(initialSelectedKey);
+      }
+    }, [initialSelectedKey, setSelectedKey]);
+
+    const handleCancelButtonClick = useCallback(() => {
+      setOpen(false);
+    }, [setOpen]);
+
+    const handleAfterOpen = useCallback(() => {
+      setOpen(true);
+    }, [setOpen]);
+
+    const footerButtons = useMemo(() => {
+      return [
+        <Button
+          className={classes.footer}
+          key="btn-cancel"
+          onClick={handleCancelButtonClick}
+          design={ButtonDesign.Emphasized}
+        >
+          Cancel
+        </Button>
+      ];
+    }, [classes.footer]);
+
+    const getItemByKey = (key) => {
+      return variantItems.find((item) => item.key === key);
+    };
+
+    const variantManagementButton = useMemo(() => {
+      const selectedItem = getItemByKey(selectedKey) || variantItems[0];
+
+      let textClasses = classes.VariantManagementText;
+      if (disabled) {
+        textClasses += ` ${classes.disabled}`;
+      }
+
+      return (
+        <div className={classes.VariantManagement}>
+          <Title level={level} className={textClasses}>
+            {selectedItem.label}
+          </Title>
+          <Button design={ButtonDesign.Transparent} icon={'navigation-down-arrow'} disabled={disabled} />
+        </div>
+      );
+    }, [classes, variantItems, level, selectedKey, disabled]);
+
+    const handleVariantItemSelect = useCallback(
+      (event) => {
+        const newSelectedKey = event.getParameter('item').dataset.key;
+        const selectedItem = getItemByKey(newSelectedKey) || variantItems[0];
+        setSelectedKey(newSelectedKey);
+        onSelect(Event.of(null, event.getOriginalEvent(), { selectedItem }));
+        if (closeOnItemSelect) {
+          handleCancelButtonClick();
+        }
+      },
+      [handleCancelButtonClick, closeOnItemSelect, selectedKey, variantItems, setSelectedKey]
+    );
+
     return (
       <Popover
-        ref={innerRef}
-        open={this.state.open}
-        onAfterOpen={this.handleAfterOpen}
+        ref={ref}
+        open={open}
+        onAfterOpen={handleAfterOpen}
         headerText={popupTitle}
-        placementType={this.props.placement}
-        openBy={this.variantManagementButton}
-        footer={this.getVariantManagementFooterButtons() as Array<ReactElement<ButtonPropTypes>>}
+        placementType={placement}
+        openBy={variantManagementButton}
+        footer={footerButtons}
         className={className}
         innerStyles={style}
         tooltip={tooltip}
       >
-        <List onItemClick={this.handleVariantItemSelect} mode={ListMode.SingleSelect}>
+        <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
           {variantItems.map((item) => (
             <StandardListItem
               style={{ width: '300px' }}
@@ -169,4 +182,18 @@ export class VariantManagement extends Component<VariantManagementPropTypes, Var
       </Popover>
     );
   }
-}
+);
+
+VariantManagement.defaultProps = {
+  enabled: true,
+  popupTitle: 'Variants',
+  initialSelectedKey: null,
+  onSelect: () => {},
+  closeOnItemSelect: true,
+  placement: PlacementType.Bottom,
+  level: TitleLevel.H4,
+  disabled: false
+};
+VariantManagement.displayName = 'Variant Management';
+
+export { VariantManagement };
