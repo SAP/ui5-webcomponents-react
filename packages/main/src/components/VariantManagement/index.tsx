@@ -92,7 +92,9 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
     }
 
     useEffect(() => {
-      setSelectedKey(initialSelectedKey);
+      if (initialSelectedKey) {
+        setSelectedKey(initialSelectedKey);
+      }
     }, [initialSelectedKey, setSelectedKey]);
 
     const handleCancelButtonClick = useCallback(() => {
