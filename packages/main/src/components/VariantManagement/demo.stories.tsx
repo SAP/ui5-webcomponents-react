@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, select } from '@storybook/addon-knobs';
+import { boolean, text, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { PlacementType } from '../../lib/PlacementType';
@@ -13,11 +13,12 @@ function renderStory() {
     <VariantManagement
       style={{ width: '300px', height: 'auto' }}
       closeOnItemSelect={boolean('closeOnItemSelect', true)}
-      initialSelectedKey={'2'}
+      initialSelectedKey={text('initialSelectedKey', '2')}
       variantItems={variantItems}
       onSelect={action('onSelect')}
       placement={select('Placement', PlacementType, PlacementType.Bottom)}
       level={select('level', TitleLevel, TitleLevel.H4)}
+      disabled={boolean('disabled', false)}
     />
   );
 }
