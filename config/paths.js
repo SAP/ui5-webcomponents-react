@@ -8,6 +8,7 @@ const PATHS = {
   test: path.join(root, 'test'),
   shared: path.join(root, 'shared'),
   coverage: path.join(root, 'coverage'),
+  nycOutput: path.join(root, '.nyc_output'),
   nodeModules: path.join(root, 'node_modules'),
   packages: path.join(root, 'packages')
 };

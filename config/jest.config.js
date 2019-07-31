@@ -2,16 +2,16 @@ const PATHS = require('./paths');
 const path = require('path');
 
 module.exports = {
-  preset: 'ts-jest',
   rootDir: PATHS.root,
   setupFiles: ['jest-canvas-mock'],
-  coverageDirectory: path.join(PATHS.root, 'coverage', 'partial'),
-  coverageReporters: ['json', 'text', 'clover'],
+  coverageDirectory: PATHS.nycOutput,
+  coverageReporters: ['json', 'text'],
   collectCoverage: false,
   collectCoverageFrom: [
     'packages/**/*.{ts,tsx}',
-    '!packages/main/src/lib/*.ts',
-    '!packages/main/src/enums/*.ts',
+    '!**/src/lib/*',
+    '!**/src/interfaces/*',
+    '!**/src/enums/*',
     '!**/*.stories.tsx',
     '!**/*.jss.ts',
     '!**/*.karma.tsx',

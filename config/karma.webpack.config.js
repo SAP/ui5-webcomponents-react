@@ -19,29 +19,10 @@ module.exports = function() {
       module: {
         rules: [
           {
-            test: /\.tsx?$/,
-            loader: 'ts-loader',
-            exclude: ['/node_modules/'],
-            options: {
-              transpileOnly: true,
-              compilerOptions: {
-                emitDeclarationOnly: false
-              }
-            }
-          },
-          {
-            test: /\.js[x]$/,
+            test: /\.[tj]sx?$/,
             loader: 'babel-loader',
-            exclude: {
-              test: [/types\/CustomListItem.js/, /test-resources/]
-            },
             options: {
-              plugins: [
-                '@babel/plugin-syntax-dynamic-import',
-                '@babel/plugin-proposal-object-rest-spread'
-                // 'require-context-hook'
-              ],
-              presets: ['@babel/preset-react']
+              presets: [require.resolve('babel-preset-react-app')]
             }
           },
           {

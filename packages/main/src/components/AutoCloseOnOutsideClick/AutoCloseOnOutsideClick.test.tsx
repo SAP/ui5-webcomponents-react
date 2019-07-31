@@ -3,12 +3,14 @@ import React from 'react';
 import sinon from 'sinon';
 import { AutoCloseOnOutsideClick } from './index';
 
+declare const expect: any;
+
 describe('AutoCloseOnOutsideClick', () => {
   test('Loose Focus', () => {
     const callback = sinon.spy();
 
     const map = {};
-    document.addEventListener = jest.fn((event, cb) => {
+    document.addEventListener = sinon.fake((event, cb) => {
       map[event] = cb;
     });
     const wrapper = mount(
