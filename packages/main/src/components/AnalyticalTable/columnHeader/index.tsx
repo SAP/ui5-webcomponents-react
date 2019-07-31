@@ -155,7 +155,7 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
   };
 
   render() {
-    const { column, filtered, filterable, groupable, sortable } = this.props as ColumnHeaderPropsInternal;
+    const { column, filtered, filterable, groupable, sortable, style } = this.props as ColumnHeaderPropsInternal;
 
     if (!column) return null;
 
@@ -177,6 +177,7 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
             filter={filter}
             onFilterChange={this.onFilterChange}
             onGroupBy={this.onGroupBy}
+            style={style}
           />
         ) : (
           this.openBy
