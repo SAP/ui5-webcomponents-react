@@ -1,5 +1,5 @@
 import { Event, fonts, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Component, ReactNode, ReactNodeArray } from 'react';
+import React, { Component, ReactNode, ReactNodeArray, CSSProperties } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { Icon } from '../../../lib/Icon';
@@ -16,7 +16,7 @@ export interface ColumnHeaderProps {
 }
 
 interface ColumnHeaderPropsInternal extends ColumnHeaderProps, ClassProps {
-  style?: object;
+  style?: CSSProperties;
   toggleSort: () => any;
   sorted: any[];
   column: ColumnType;

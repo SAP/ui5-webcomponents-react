@@ -88,6 +88,7 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
   render() {
     const { showGroup, grouping, showSort, showFilter, FilterComponent, onFilterChange, column, filter, style } = this
       .props as ColumnHeaderModalInternalProperties;
+
     return (
       <Popover
         openByStyle={style}

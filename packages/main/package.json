@@ -25,7 +25,7 @@
     "@ui5/webcomponents-react-base": "0.4.2-rc.9",
     "lodash.debounce": "^4.0.8",
     "react-scroll": "^1.7.11",
-    "react-table": "6.8.6",
+    "react-table": "6.10.0",
     "react-toastify": "^5.0.1"
   },
   "devDependencies": {

@@ -10,6 +10,7 @@ import { VerticalAlign } from '../../lib/VerticalAlign';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './columnHeader';
 import { Pagination } from './pagination';
+import { Resizer } from './Resizer';
 import { TitleBar } from './titleBar';
 import { FilterEntry } from './types/FilterEntry';
 import { BusyIndicatorType } from '../../lib/BusyIndicatorType';
@@ -109,7 +110,7 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
     };
   };
 
-  getTheadProps = (state, rowInfo, column, instance) => {
+  getTheadProps = () => {
     const { classes } = this.props;
     return {
       className: classes.tHead
@@ -147,7 +148,7 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
     };
   };
 
-  getTdProps = (state, rowInfo, column, instance) => {
+  getTdProps = (state, rowInfo, column) => {
     const { classes, cellHeight } = this.props;
     const enhancedProps: {
       className: string;
@@ -270,6 +271,7 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
           PreviousComponent={undefined}
           NextComponent={undefined}
           ThComponent={ColumnHeader}
+          ResizerComponent={Resizer}
           multiSort={false}
           filterable={filterable}
           filtered={this.state.filtered}
