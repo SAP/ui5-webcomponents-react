@@ -20,7 +20,6 @@ export interface VariantItem {
 }
 
 export interface VariantManagementPropTypes extends CommonProps {
-  enabled?: boolean;
   placement?: PlacementType;
   popupTitle?: string;
   initialSelectedKey?: string;
@@ -185,7 +184,6 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
 );
 
 VariantManagement.defaultProps = {
-  enabled: true,
   popupTitle: 'Variants',
   initialSelectedKey: null,
   onSelect: () => {},

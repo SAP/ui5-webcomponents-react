@@ -6,7 +6,7 @@
 <ThemeProvider withToastContainer={false}>
   <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <Variant Management variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" disabled={false}>
+      <Variant Management variantItems={{...}} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" disabled={false}>
         <Popover open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" openBy={{...}} footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
           <div style={{...}} onClick={[Function]}>
             <div className="Variant-Management--VariantManagement---">
