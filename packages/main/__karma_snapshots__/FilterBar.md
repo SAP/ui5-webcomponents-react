@@ -10,7 +10,7 @@
         <FilterBar renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]} displayOnly={true} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="FilterBar-outerContainer---">
             <div className="FilterBar-filterBarHeader---">
-              <Variant Management variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" disabled={false}>
+              <Variant Management variantItems={{...}} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" disabled={false}>
                 <Popover open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" openBy={{...}} footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                   <div style={{...}} onClick={[Function]}>
                     <div className="Variant-Management--VariantManagement---">
@@ -125,7 +125,7 @@
         <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="FilterBar-outerContainer---">
             <div className="FilterBar-filterBarHeader---">
-              <Variant Management variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" disabled={false}>
+              <Variant Management variantItems={{...}} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" disabled={false}>
                 <Popover open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" openBy={{...}} footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                   <div style={{...}} onClick={[Function]}>
                     <div className="Variant-Management--VariantManagement---">
@@ -249,7 +249,7 @@
         <FilterBar renderVariants={[Function: renderVariants]} displayOnly={true} innerRef={{...}} classes={{...}} theme={{...}}>
           <div className="FilterBar-outerContainer---">
             <div className="FilterBar-filterBarHeader---">
-              <Variant Management variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" disabled={false}>
+              <Variant Management variantItems={{...}} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" disabled={false}>
                 <Popover open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" openBy={{...}} footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
                   <div style={{...}} onClick={[Function]}>
                     <div className="Variant-Management--VariantManagement---">
