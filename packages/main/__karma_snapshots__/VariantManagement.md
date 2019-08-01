@@ -6,7 +6,7 @@
 <ThemeProvider withToastContainer={false}>
   <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
-      <Variant Management variantItems={{...}} enabled={true} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" disabled={false}>
+      <Variant Management variantItems={{...}} popupTitle="Variants" initialSelectedKey={{...}} onSelect={[Function: onSelect]} closeOnItemSelect={true} placement="Bottom" level="H4" disabled={false}>
         <Popover open={false} onAfterOpen={[Function]} headerText="Variants" placementType="Bottom" openBy={{...}} footer={{...}} className={[undefined]} innerStyles={[undefined]} tooltip={[undefined]} initialFocus={{...}} horizontalAlign="Center" verticalAlign="Center">
           <div style={{...}} onClick={[Function]}>
             <div className="Variant-Management--VariantManagement---">
@@ -29,8 +29,8 @@
               </Button>
               <WithWebComponent(List) onItemClick={[Function]} mode="SingleSelect" headerText="" footerText="" noDataText="" separators="All">
                 <ui5-list mode="SingleSelect" header-text="" footer-text="" no-data-text="" separators="All" class="">
-                  <StandardListItem style={{...}} data-key="1" type="Active" selected={false} infoState="None">
-                    <ui5-li style={{...}} data-key="1" type="Active" info-state="None" class="">
+                  <StandardListItem style={{...}} data-key="1" type="Active" selected={true} infoState="None">
+                    <ui5-li selected={true} style={{...}} data-key="1" type="Active" info-state="None" class="">
                       Variant 1
                     </ui5-li>
                   </StandardListItem>
