@@ -4,28 +4,15 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { BusyIndicator } from '../../lib/BusyIndicator';
 import { TextAlign } from '../../lib/TextAlign';
 import { VerticalAlign } from '../../lib/VerticalAlign';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './columnHeader';
+import { LoadingComponent } from './LoadingComponent';
 import { Pagination } from './pagination';
 import { Resizer } from './Resizer';
 import { TitleBar } from './titleBar';
 import { FilterEntry } from './types/FilterEntry';
-import { BusyIndicatorType } from '../../lib/BusyIndicatorType';
-
-const CustomLoadingComponent = (props) => {
-  let className = '-loading';
-  if (props.loading) {
-    className += ' -active';
-  }
-  return (
-    <div className={className} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <BusyIndicator size={BusyIndicatorType.Medium} active style={{ backgroundColor: 'transparent' }} />
-    </div>
-  );
-};
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -102,6 +89,10 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
     filtered: [],
     pivot: []
   };
+
+  private static DEFAULT_FILTER_METHOD(filter, row) {
+    return new RegExp(filter.value, 'gi').test(String(row[filter.id]));
+  }
 
   getTableProps = () => {
     const { classes } = this.props;
@@ -205,19 +196,6 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
     };
   };
 
-  private static DEFAULT_FILTER_METHOD(filter, row) {
-    return new RegExp(filter.value, 'gi').test(String(row[filter.id]));
-  }
-
-  private onFilteredChange = (event) => {
-    const filtered = event.getParameter('currentFilters');
-    this.setState({ filtered });
-  };
-
-  private onGroupBy = (pivotBy) => {
-    this.setState({ pivot: pivotBy, filtered: [] });
-  };
-
   render() {
     const {
       data,
@@ -266,7 +244,7 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
           getTdProps={this.getTdProps}
           getTbodyProps={this.getTbodyProps}
           getPaginationProps={this.getPaginationProps}
-          LoadingComponent={CustomLoadingComponent}
+          LoadingComponent={LoadingComponent}
           PaginationComponent={Pagination}
           PreviousComponent={undefined}
           NextComponent={undefined}
@@ -285,4 +263,13 @@ export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
       </div>
     );
   }
+
+  private onFilteredChange = (event) => {
+    const filtered = event.getParameter('currentFilters');
+    this.setState({ filtered });
+  };
+
+  private onGroupBy = (pivotBy) => {
+    this.setState({ pivot: pivotBy, filtered: [] });
+  };
 }
