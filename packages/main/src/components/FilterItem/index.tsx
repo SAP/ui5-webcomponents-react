@@ -1,5 +1,5 @@
 import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, ReactNode, RefObject, useMemo, FC } from 'react';
+import React, { FC, forwardRef, ReactNode, RefObject, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BusyIndicator } from '../../lib/BusyIndicator';
 import { FilterType } from '../../lib/FilterType';
@@ -7,6 +7,8 @@ import { Input } from '../../lib/Input';
 import { Label } from '../../lib/Label';
 import { createUseStyles } from 'react-jss';
 import { Select } from '../../lib/Select';
+import { MultiComboBox } from '../../lib/MultiComboBox';
+import { StandardListItem } from '../../lib/StandardListItem';
 import { Option } from '../../lib/Option';
 import styles from './FilterItem.jss';
 import { BusyIndicatorType } from '../../lib/BusyIndicatorType';
@@ -52,6 +54,17 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
     onChange(Event.of(null, e.getOriginalEvent(), { selectedItem: item }));
   }
 
+  function onMultiCbChange(e) {
+    const selectedItems = e.getParameter('items');
+    onChange(
+      Event.of(null, e.getOriginalEvent(), {
+        selectedItems: selectedItems.map((item) => {
+          return getItemByKey(item.getAttribute('data-key'));
+        })
+      })
+    );
+  }
+
   const filterComponent = useMemo(() => {
     if (loading) {
       return (
@@ -68,6 +81,16 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
     switch (type) {
       case FilterType.Default:
         return <Input placeholder={placeholder} onChange={onSelect} style={{ width: '100%' }} />;
+      case FilterType.MultiSelect:
+        return (
+          <MultiComboBox onSelectionChange={onMultiCbChange}>
+            {filterItems.map((item) => (
+              <StandardListItem data-key={item.key} key={item.key}>
+                {item.text}
+              </StandardListItem>
+            ))}
+          </MultiComboBox>
+        );
       case FilterType.Select:
         return (
           <Select onChange={onSelect} style={{ width: '100%' }}>

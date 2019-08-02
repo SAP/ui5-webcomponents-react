@@ -1,3 +1,3 @@
-import { FlexBoxAlignItems } from '../components/FlexBox';
+import { FlexBoxAlignItems } from '../enums/FlexBoxAlignItems';
 
 export { FlexBoxAlignItems };

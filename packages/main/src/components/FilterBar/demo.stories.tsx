@@ -9,6 +9,7 @@ import { PlacementType } from '../../lib/PlacementType';
 import { Switch } from '../../lib/Switch';
 import { TitleLevel } from '../../lib/TitleLevel';
 import { VariantManagement } from '../../lib/VariantManagement';
+import { action } from '@storybook/addon-actions';
 
 const flavours = [];
 for (let i = 1; i <= 9; i++) {
@@ -57,17 +58,17 @@ function renderStory() {
       >
         <Switch />
       </FilterItem>
-      {/*<FilterItem*/}
-      {/*key={'filter2'}*/}
-      {/*type={FilterType.Custom}*/}
-      {/*label={'Custom Filter 2'}*/}
-      {/*changeEventName={'onSelect'}*/}
-      {/*valueParamName={'state'}*/}
-      {/*>*/}
-      {/*<RadioButton text={"Custom Radio Button filter"} onSelect={(e) => {*/}
-      {/*alert(e.parameters.selectedItem);*/}
-      {/*}}/>*/}
-      {/*</FilterItem>*/}
+      <FilterItem
+        onChange={action('onChange')}
+        filterItems={filterItems}
+        style={{
+          maxWidth: '200px'
+        }}
+        label="Multi"
+        key="Multi"
+        type={FilterType.MultiSelect}
+        loading={boolean('loading', false)}
+      />
     </FilterBar>
   );
 }
