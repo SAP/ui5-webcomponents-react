@@ -352,6 +352,31 @@
                   </div>
                 </div>
               </FilterItem>
+              <FilterItem filterItems={{...}} label="Classification" type="MultiSelect" placeholder="" renderText={[Function: renderText]} onChange={[Function: onChange]} loading={false}>
+                <div className="FilterItem--filterItem---" style={[undefined]} title={[undefined]}>
+                  <div className="FilterItem--innerFilterItemContainer---">
+                    <Label for="">
+                      <ui5-label for="" class="">
+                        Classification
+                      </ui5-label>
+                    </Label>
+                    <MultiComboBox onSelectionChange={[Function: onMultiCbChange]} value="" placeholder="" valueState="None">
+                      <ui5-multi-combobox value="" placeholder="" value-state="None" class="">
+                        <StandardListItem data-key="1" type="Active" infoState="None">
+                          <ui5-li data-key="1" type="Active" info-state="None" class="">
+                            Text 1
+                          </ui5-li>
+                        </StandardListItem>
+                        <StandardListItem data-key="2" type="Active" infoState="None">
+                          <ui5-li data-key="2" type="Active" info-state="None" class="">
+                            Text 2
+                          </ui5-li>
+                        </StandardListItem>
+                      </ui5-multi-combobox>
+                    </MultiComboBox>
+                  </div>
+                </div>
+              </FilterItem>
             </div>
           </div>
         </FilterBar>
