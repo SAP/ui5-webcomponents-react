@@ -1,7 +1,8 @@
-import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Component, ReactElement, ReactNode } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import React, { forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Bar } from '../../lib/Bar';
 import { Button } from '../../lib/Button';
 import { ButtonDesign } from '../../lib/ButtonDesign';
@@ -23,89 +24,94 @@ export interface PagePropTypes extends CommonProps {
   children: ReactElement<any> | Array<ReactElement<any>> | ReactNode;
 }
 
-interface PagePropsInternal extends PagePropTypes, ClassProps {}
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, {
+  name: 'Page'
+});
 
-@withStyles(styles)
-export class Page extends Component<PagePropTypes> {
-  static defaultProps = {
-    showHeader: true,
-    showFooter: false,
-    showBackButton: true,
-    renderCustomHeader: null,
-    renderCustomFooter: null,
-    title: '',
-    backgroundDesign: PageBackgroundDesign.Standard
-  };
+const Page = forwardRef((props: PagePropTypes, ref: Ref<HTMLDivElement>) => {
+  const {
+    children,
+    showFooter,
+    showHeader,
+    showBackButton,
+    className,
+    style,
+    renderCustomHeader,
+    renderCustomFooter,
+    backgroundDesign,
+    tooltip,
+    slot,
+    onNavButtonPress,
+    title
+  } = props;
 
-  private handleNavBackButtonPress = (e) => {
-    this.props.onNavButtonPress(Event.of(this, e.getOriginalEvent()));
-  };
+  const classes = useStyles();
 
-  private renderBackButton = () => {
-    return (
-      <Button icon="navigation-left-arrow" design={ButtonDesign.Transparent} onClick={this.handleNavBackButtonPress} />
-    );
-  };
+  const handleNavBackButtonPress = useCallback(
+    (e) => {
+      if (typeof onNavButtonPress === 'function') {
+        onNavButtonPress(Event.of(null, e.getOriginalEvent()));
+      }
+    },
+    [onNavButtonPress]
+  );
 
-  private renderTitle = () => <Title level={TitleLevel.H5}>{this.props.title}</Title>;
+  const renderBackButton = useCallback(() => {
+    if (showBackButton) {
+      return (
+        <Button icon="navigation-left-arrow" design={ButtonDesign.Transparent} onClick={handleNavBackButtonPress} />
+      );
+    }
+    return null;
+  }, [showBackButton]);
 
-  private renderHeader = () => {
-    const { showBackButton } = this.props;
-    return (
-      <Bar
-        renderContentLeft={showBackButton ? this.renderBackButton : () => null}
-        renderContentMiddle={this.renderTitle}
-      />
-    );
-  };
+  const renderTitle = useCallback(() => <Title level={TitleLevel.H5}>{title}</Title>, [title]);
 
-  render() {
-    const {
-      children,
-      showFooter,
-      showHeader,
-      classes,
-      className,
-      style,
-      renderCustomHeader,
-      renderCustomFooter,
-      backgroundDesign,
-      tooltip,
-      innerRef,
-      slot
-    } = this.props as PagePropsInternal;
-
-    const pageContainer = StyleClassHelper.of(classes.pageContainer);
-    const headerClasses = StyleClassHelper.of(classes.pageHeader, classes.baseBar);
-    const footerClasses = StyleClassHelper.of(classes.pageFooter, classes.baseBar);
-
-    if (showHeader) {
-      pageContainer.put(classes.pageWithHeader);
+  const header = useMemo(() => {
+    if (renderCustomHeader) {
+      return renderCustomHeader();
     }
 
-    if (showFooter) {
-      pageContainer.put(classes.pageWithFooter);
-    }
+    return <Bar renderContentLeft={renderBackButton} renderContentMiddle={renderTitle} />;
+  }, [renderCustomHeader, renderTitle, renderBackButton]);
 
-    if (className) {
-      pageContainer.put(className);
-    }
+  const pageContainer = StyleClassHelper.of(classes.pageContainer);
+  const headerClasses = StyleClassHelper.of(classes.pageHeader, classes.baseBar);
+  const footerClasses = StyleClassHelper.of(classes.pageFooter, classes.baseBar);
 
-    pageContainer.put(classes[`background${backgroundDesign}`]);
-
-    return (
-      <div ref={innerRef} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot}>
-        {showHeader && (
-          <header className={headerClasses.valueOf()}>
-            {renderCustomHeader && renderCustomHeader()}
-            {!renderCustomHeader && this.renderHeader()}
-          </header>
-        )}
-        <section className={classes.contentSection}>{children}</section>
-        {showFooter && (
-          <footer className={footerClasses.valueOf()}>{renderCustomFooter && renderCustomFooter()}</footer>
-        )}
-      </div>
-    );
+  if (showHeader) {
+    pageContainer.put(classes.pageWithHeader);
   }
-}
+
+  if (showFooter) {
+    pageContainer.put(classes.pageWithFooter);
+  }
+
+  if (className) {
+    pageContainer.put(className);
+  }
+
+  pageContainer.put(classes[`background${backgroundDesign}`]);
+
+  return (
+    <div ref={ref} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot}>
+      {showHeader && <header className={headerClasses.valueOf()}>{header}</header>}
+      <section className={classes.contentSection}>{children}</section>
+      {showFooter && <footer className={footerClasses.valueOf()}>{renderCustomFooter && renderCustomFooter()}</footer>}
+    </div>
+  );
+});
+
+Page.defaultProps = {
+  showHeader: true,
+  showFooter: false,
+  showBackButton: true,
+  renderCustomHeader: null,
+  renderCustomFooter: null,
+  title: '',
+  backgroundDesign: PageBackgroundDesign.Standard
+};
+
+Page.displayName = 'Page';
+
+export { Page };
