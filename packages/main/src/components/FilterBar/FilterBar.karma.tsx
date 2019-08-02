@@ -106,12 +106,19 @@ describe('FilterBar', () => {
           key="classification3"
           type={FilterType.Default}
         />
+        <FilterItem
+          // onChange={(e) => alert(e.getParameter('selectedItem').key)}
+          filterItems={filterItems}
+          label="Classification"
+          key="classification3"
+          type={FilterType.MultiSelect}
+        />
       </FilterBar>
     );
     // console.log(wrapper.debug());
     // console.log(wrapper.find('Select').debug());
     wrapper
-      .find('ui5-li')
+      .find('ui5-option')
       .at(1)
       .simulate('change');
 
