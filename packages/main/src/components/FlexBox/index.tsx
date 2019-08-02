@@ -1,12 +1,12 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { styles } from './Flexbox.jss';
-import { FlexBoxJustifyContent } from '../../lib/FlexBoxJustifyContent';
 import { FlexBoxAlignItems } from '../../lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '../../lib/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '../../lib/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '../../lib/FlexBoxWrap';
+import { styles } from './Flexbox.jss';
 
 const useStyles = createUseStyles(styles, { name: 'FlexBox' });
 
@@ -53,24 +53,26 @@ const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: 
     flexBoxClasses.put(classes.flexBoxDisplayInline);
   }
 
-  const inlineStyle = {} as CSSProperties;
-  if (height) {
-    inlineStyle.height = height;
-  }
-  if (width) {
-    inlineStyle.width = width;
-  }
-
   if (className) {
     flexBoxClasses.put(className);
   }
 
-  if (style) {
-    Object.assign(inlineStyle, style);
-  }
+  const memoizedStyles = useMemo(() => {
+    const innerStyles: CSSProperties = {};
+    if (height) {
+      innerStyles.height = height;
+    }
+    if (width) {
+      innerStyles.width = width;
+    }
+    if (style) {
+      Object.assign(innerStyles, style);
+    }
+    return innerStyles;
+  }, [height, width, style]);
 
   return (
-    <div ref={ref} className={flexBoxClasses.valueOf()} style={inlineStyle} title={tooltip} slot={slot}>
+    <div ref={ref} className={flexBoxClasses.valueOf()} style={memoizedStyles} title={tooltip} slot={slot}>
       {children}
     </div>
   );
