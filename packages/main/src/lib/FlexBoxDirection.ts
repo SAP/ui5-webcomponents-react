@@ -1,3 +1,3 @@
-import { FlexBoxDirection } from '../components/FlexBox';
+import { FlexBoxDirection } from '../enums/FlexBoxDirection';
 
 export { FlexBoxDirection };

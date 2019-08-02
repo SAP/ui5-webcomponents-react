@@ -20,7 +20,7 @@
                 </div>
               </Component>
             </WithStyles(Component)>
-            <ReactTable data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={10} className="" showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: CustomLoadingComponent]} PaginationComponent={{...}} PreviousComponent={[undefined]} NextComponent={[undefined]} ThComponent={{...}} multiSort={false} filterable={false} filtered={{...}} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} onPageChange={[undefined]} onPageSizeChange={[undefined]} onSortedChange={[undefined]} onResizedChange={[undefined]} onExpandedChange={[undefined]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={{...}} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} PivotComponent={[undefined]} NoDataComponent={[Function: cmp]} ResizerComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]}>
+            <ReactTable data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={10} className="" showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: LoadingComponent]} PaginationComponent={{...}} PreviousComponent={[undefined]} NextComponent={[undefined]} ThComponent={{...}} ResizerComponent={[Function: Resizer]} multiSort={false} filterable={false} filtered={{...}} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} defaultPage={0} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} onPageChange={[undefined]} onPageSizeChange={[undefined]} onSortedChange={[undefined]} onResizedChange={[undefined]} onExpandedChange={[undefined]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={{...}} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" pageJumpText="jump to page" rowsSelectorText="rows per page" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} PivotComponent={[undefined]} NoDataComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]}>
               <div className="ReactTable" style={{...}}>
                 <TableComponent className="AnalyticalTable-table---" style={[undefined]}>
                   <div className="rt-table AnalyticalTable-table---" role="grid" style={[undefined]}>
@@ -30,8 +30,8 @@
                           <div className="rt-tr" role="row" style={[undefined]}>
                             <WithStyles(ColumnHeader) className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={true} onFilteredChange={[Function]}>
                               <ColumnHeader className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={true} onFilteredChange={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
-                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]}>
-                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
+                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}}>
+                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                                     <Popover openByStyle={{...}} openBy={{...}} noArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
                                       <div style={{...}} onClick={[Function]}>
                                         <div className="rt-th ColumnHeader-header--- ColumnHeader-header----">
@@ -39,7 +39,7 @@
                                             Name
                                           </div>
                                           <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} onClick={[Function]} />
                                           </Resizer>
                                           <div className="ColumnHeader-iconContainer---" />
                                         </div>
@@ -69,8 +69,8 @@
                             </WithStyles(ColumnHeader)>
                             <WithStyles(ColumnHeader) className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]}>
                               <ColumnHeader className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
-                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]}>
-                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
+                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}}>
+                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                                     <Popover openByStyle={{...}} openBy={{...}} noArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
                                       <div style={{...}} onClick={[Function]}>
                                         <div className="rt-th ColumnHeader-header--- ColumnHeader-header----">
@@ -78,7 +78,7 @@
                                             Age
                                           </div>
                                           <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} onClick={[Function]} />
                                           </Resizer>
                                           <div className="ColumnHeader-iconContainer---" />
                                         </div>
@@ -108,8 +108,8 @@
                             </WithStyles(ColumnHeader)>
                             <WithStyles(ColumnHeader) className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]}>
                               <ColumnHeader className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
-                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]}>
-                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
+                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}}>
+                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                                     <Popover openByStyle={{...}} openBy={{...}} noArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
                                       <div style={{...}} onClick={[Function]}>
                                         <div className="rt-th ColumnHeader-header--- ColumnHeader-header----">
@@ -117,7 +117,7 @@
                                             Friend Name
                                           </div>
                                           <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} onClick={[Function]} />
                                           </Resizer>
                                           <div className="ColumnHeader-iconContainer---" />
                                         </div>
@@ -147,18 +147,20 @@
                             </WithStyles(ColumnHeader)>
                             <WithStyles(ColumnHeader) className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]}>
                               <ColumnHeader className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
-                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]}>
-                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
+                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}}>
+                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                                     <Popover openByStyle={{...}} openBy={{...}} noArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
                                       <div style={{...}} onClick={[Function]}>
                                         <div className="rt-th ColumnHeader-header--- ColumnHeader-header----">
                                           <div className="rt-resizable-header-content">
-                                            <span>
-                                              Friend Age
-                                            </span>
+                                            <Header data={{...}} column={{...}}>
+                                              <span>
+                                                Friend Age
+                                              </span>
+                                            </Header>
                                           </div>
                                           <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} onClick={[Function]} />
                                           </Resizer>
                                           <div className="ColumnHeader-iconContainer---" />
                                         </div>
@@ -254,30 +256,38 @@
                               <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -290,30 +300,38 @@
                               <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -326,30 +344,38 @@
                               <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -362,30 +388,38 @@
                               <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -398,30 +432,38 @@
                               <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -434,30 +476,38 @@
                               <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -470,30 +520,38 @@
                               <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -506,30 +564,38 @@
                               <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -541,8 +607,8 @@
                   </div>
                 </TableComponent>
                 <div className="pagination-bottom">
-                  <WithStyles(Pagination) page={0} pageSize={10} sorted={{...}} expanded={{...}} filtered={{...}} resized={{...}} currentlyResizing={false} skipNextSort={false} data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={10} className={[undefined]} showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: CustomLoadingComponent]} PaginationComponent={{...}} ThComponent={{...}} multiSort={false} filterable={false} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={[undefined]} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} NoDataComponent={[Function: cmp]} ResizerComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]} resolvedData={{...}} allVisibleColumns={{...}} headerGroups={{...}} allDecoratedColumns={{...}} hasHeaderGroups={false} frozen={false} sortedData={{...}} pages={1} canPrevious={false} canNext={false} onPageChange={[Function: bound onPageChange]} onPageSizeChange={[Function: bound onPageSizeChange]} numItems={2}>
-                    <Pagination page={0} pageSize={10} sorted={{...}} expanded={{...}} filtered={{...}} resized={{...}} currentlyResizing={false} skipNextSort={false} data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={10} className={[undefined]} showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: CustomLoadingComponent]} PaginationComponent={{...}} ThComponent={{...}} multiSort={false} filterable={false} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={[undefined]} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} NoDataComponent={[Function: cmp]} ResizerComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]} resolvedData={{...}} allVisibleColumns={{...}} headerGroups={{...}} allDecoratedColumns={{...}} hasHeaderGroups={false} frozen={false} sortedData={{...}} pages={1} canPrevious={false} canNext={false} onPageChange={[Function: bound onPageChange]} onPageSizeChange={[Function: bound onPageSizeChange]} numItems={2} innerRef={{...}} classes={{...}} theme={{...}}>
+                  <WithStyles(Pagination) page={0} pageSize={10} sorted={{...}} expanded={{...}} filtered={{...}} resized={{...}} currentlyResizing={false} skipNextSort={false} data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={10} className={[undefined]} showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: LoadingComponent]} PaginationComponent={{...}} ThComponent={{...}} ResizerComponent={[Function: Resizer]} multiSort={false} filterable={false} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} defaultPage={0} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={[undefined]} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" pageJumpText="jump to page" rowsSelectorText="rows per page" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} NoDataComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]} resolvedData={{...}} allVisibleColumns={{...}} headerGroups={{...}} allDecoratedColumns={{...}} hasHeaderGroups={false} frozen={false} sortedData={{...}} pages={1} canPrevious={false} canNext={false} onPageChange={[Function: bound onPageChange]} onPageSizeChange={[Function: bound onPageSizeChange]} isTop={false} numItems={2}>
+                    <Pagination page={0} pageSize={10} sorted={{...}} expanded={{...}} filtered={{...}} resized={{...}} currentlyResizing={false} skipNextSort={false} data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={10} className={[undefined]} showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: LoadingComponent]} PaginationComponent={{...}} ThComponent={{...}} ResizerComponent={[Function: Resizer]} multiSort={false} filterable={false} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} defaultPage={0} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={[undefined]} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" pageJumpText="jump to page" rowsSelectorText="rows per page" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} NoDataComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]} resolvedData={{...}} allVisibleColumns={{...}} headerGroups={{...}} allDecoratedColumns={{...}} hasHeaderGroups={false} frozen={false} sortedData={{...}} pages={1} canPrevious={false} canNext={false} onPageChange={[Function: bound onPageChange]} onPageSizeChange={[Function: bound onPageSizeChange]} isTop={false} numItems={2} innerRef={{...}} classes={{...}} theme={{...}}>
                       <div className="Pagination-container---">
                         <div className="Pagination-total---">
                           <Label for="">
@@ -576,13 +642,7 @@
                     </Pagination>
                   </WithStyles(Pagination)>
                 </div>
-                <CustomLoadingComponent loading={false} loadingText="Loading...">
-                  <div className="-loading" style={{...}}>
-                    <BusyIndicator size="Medium" active={true} style={{...}}>
-                      <ui5-busyindicator active={true} size="Medium" style={{...}} class="" />
-                    </BusyIndicator>
-                  </div>
-                </CustomLoadingComponent>
+                <LoadingComponent loading={false} loadingText="Loading..." />
               </div>
             </ReactTable>
           </div>
@@ -613,7 +673,7 @@
                 </div>
               </Component>
             </WithStyles(Component)>
-            <ReactTable data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={1} className="" showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: CustomLoadingComponent]} PaginationComponent={{...}} PreviousComponent={[undefined]} NextComponent={[undefined]} ThComponent={{...}} multiSort={false} filterable={false} filtered={{...}} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} onPageChange={[undefined]} onPageSizeChange={[undefined]} onSortedChange={[undefined]} onResizedChange={[undefined]} onExpandedChange={[undefined]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={{...}} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} PivotComponent={[undefined]} NoDataComponent={[Function: cmp]} ResizerComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]}>
+            <ReactTable data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={1} className="" showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: LoadingComponent]} PaginationComponent={{...}} PreviousComponent={[undefined]} NextComponent={[undefined]} ThComponent={{...}} ResizerComponent={[Function: Resizer]} multiSort={false} filterable={false} filtered={{...}} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} defaultPage={0} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} onPageChange={[undefined]} onPageSizeChange={[undefined]} onSortedChange={[undefined]} onResizedChange={[undefined]} onExpandedChange={[undefined]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={{...}} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" pageJumpText="jump to page" rowsSelectorText="rows per page" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} PivotComponent={[undefined]} NoDataComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]}>
               <div className="ReactTable" style={{...}}>
                 <TableComponent className="AnalyticalTable-table---" style={[undefined]}>
                   <div className="rt-table AnalyticalTable-table---" role="grid" style={[undefined]}>
@@ -623,8 +683,8 @@
                           <div className="rt-tr" role="row" style={[undefined]}>
                             <WithStyles(ColumnHeader) className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={true} onFilteredChange={[Function]}>
                               <ColumnHeader className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={true} onFilteredChange={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
-                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]}>
-                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
+                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}}>
+                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                                     <Popover openByStyle={{...}} openBy={{...}} noArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
                                       <div style={{...}} onClick={[Function]}>
                                         <div className="rt-th ColumnHeader-header--- ColumnHeader-header----">
@@ -632,7 +692,7 @@
                                             Name
                                           </div>
                                           <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} onClick={[Function]} />
                                           </Resizer>
                                           <div className="ColumnHeader-iconContainer---" />
                                         </div>
@@ -662,8 +722,8 @@
                             </WithStyles(ColumnHeader)>
                             <WithStyles(ColumnHeader) className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]}>
                               <ColumnHeader className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
-                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]}>
-                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
+                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}}>
+                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                                     <Popover openByStyle={{...}} openBy={{...}} noArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
                                       <div style={{...}} onClick={[Function]}>
                                         <div className="rt-th ColumnHeader-header--- ColumnHeader-header----">
@@ -671,7 +731,7 @@
                                             Age
                                           </div>
                                           <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} onClick={[Function]} />
                                           </Resizer>
                                           <div className="ColumnHeader-iconContainer---" />
                                         </div>
@@ -701,8 +761,8 @@
                             </WithStyles(ColumnHeader)>
                             <WithStyles(ColumnHeader) className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]}>
                               <ColumnHeader className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
-                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]}>
-                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
+                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}}>
+                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                                     <Popover openByStyle={{...}} openBy={{...}} noArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
                                       <div style={{...}} onClick={[Function]}>
                                         <div className="rt-th ColumnHeader-header--- ColumnHeader-header----">
@@ -710,7 +770,7 @@
                                             Friend Name
                                           </div>
                                           <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} onClick={[Function]} />
                                           </Resizer>
                                           <div className="ColumnHeader-iconContainer---" />
                                         </div>
@@ -740,18 +800,20 @@
                             </WithStyles(ColumnHeader)>
                             <WithStyles(ColumnHeader) className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]}>
                               <ColumnHeader className="rt-resizable-header -cursor-pointer" style={{...}} toggleSort={[Function: toggleSort]} filtered={{...}} sorted={{...}} filterable={false} sortable={true} groupable={false} onGroupBy={[Function]} grouping="" defaultSortDesc={false} column={{...}} firstColumn={false} onFilteredChange={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
-                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]}>
-                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} innerRef={{...}} classes={{...}} theme={{...}}>
+                                <WithStyles(ColumnHeaderModal) openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}}>
+                                  <ColumnHeaderModal openBy={{...}} showFilter={false} showGroup={false} showSort={true} grouping="" sortAscending={[Function]} sortDescending={[Function]} column={{...}} FilterComponent={[Function: DEFAULT_FILTER_COMPONENT]} filter={{...}} onFilterChange={[Function]} onGroupBy={[Function]} style={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
                                     <Popover openByStyle={{...}} openBy={{...}} noArrow={true} horizontalAlign="Left" placementType="Bottom" initialFocus={{...}} headerText="" verticalAlign="Center">
                                       <div style={{...}} onClick={[Function]}>
                                         <div className="rt-th ColumnHeader-header--- ColumnHeader-header----">
                                           <div className="rt-resizable-header-content">
-                                            <span>
-                                              Friend Age
-                                            </span>
+                                            <Header data={{...}} column={{...}}>
+                                              <span>
+                                                Friend Age
+                                              </span>
+                                            </Header>
                                           </div>
                                           <Resizer onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]}>
-                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} />
+                                            <div className="rt-resizer" onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} onClick={[Function]} />
                                           </Resizer>
                                           <div className="ColumnHeader-iconContainer---" />
                                         </div>
@@ -819,102 +881,38 @@
                               <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
-                                  </div>
-                                </TdComponent>
-                              </div>
-                            </TrComponent>
-                          </div>
-                        </TrGroupComponent>
-                        <TrGroupComponent className="AnalyticalTable-trGroup---">
-                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -odd AnalyticalTable-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
-                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
-                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
-                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
-                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
-                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
-                                  </div>
-                                </TdComponent>
-                              </div>
-                            </TrComponent>
-                          </div>
-                        </TrGroupComponent>
-                        <TrGroupComponent className="AnalyticalTable-trGroup---">
-                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
-                            <TrComponent className="-padRow -even AnalyticalTable-tr---" style={{...}}>
-                              <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
-                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
-                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
-                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
-                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
-                                  </div>
-                                </TdComponent>
-                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
-                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -927,30 +925,38 @@
                               <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -963,30 +969,38 @@
                               <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -999,30 +1013,38 @@
                               <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -1035,30 +1057,38 @@
                               <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -1071,30 +1101,38 @@
                               <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -1107,30 +1145,126 @@
                               <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                                 <TdComponent className="AnalyticalTable-td---" style={{...}}>
                                   <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
-                                    <span>
-                                       
-                                    </span>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                              </div>
+                            </TrComponent>
+                          </div>
+                        </TrGroupComponent>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -odd AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -odd AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                              </div>
+                            </TrComponent>
+                          </div>
+                        </TrGroupComponent>
+                        <TrGroupComponent className="AnalyticalTable-trGroup---">
+                          <div className="rt-tr-group AnalyticalTable-trGroup---" role="rowgroup">
+                            <TrComponent className="-padRow -even AnalyticalTable-tr---" style={{...}}>
+                              <div className="rt-tr -padRow -even AnalyticalTable-tr---" role="row" style={{...}}>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
+                                  </div>
+                                </TdComponent>
+                                <TdComponent className="AnalyticalTable-td---" style={{...}}>
+                                  <div className="rt-td AnalyticalTable-td---" role="gridcell" style={{...}}>
+                                    <PadRowComponent>
+                                      <span>
+                                         
+                                      </span>
+                                    </PadRowComponent>
                                   </div>
                                 </TdComponent>
                               </div>
@@ -1142,8 +1276,8 @@
                   </div>
                 </TableComponent>
                 <div className="pagination-bottom">
-                  <WithStyles(Pagination) page={0} pageSize={1} sorted={{...}} expanded={{...}} filtered={{...}} resized={{...}} currentlyResizing={false} skipNextSort={false} data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={1} className={[undefined]} showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: CustomLoadingComponent]} PaginationComponent={{...}} ThComponent={{...}} multiSort={false} filterable={false} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={[undefined]} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} NoDataComponent={[Function: cmp]} ResizerComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]} resolvedData={{...}} allVisibleColumns={{...}} headerGroups={{...}} allDecoratedColumns={{...}} hasHeaderGroups={false} frozen={false} sortedData={{...}} pages={2} canPrevious={false} canNext={true} onPageChange={[Function: bound onPageChange]} onPageSizeChange={[Function: bound onPageSizeChange]} numItems={2}>
-                    <Pagination page={0} pageSize={1} sorted={{...}} expanded={{...}} filtered={{...}} resized={{...}} currentlyResizing={false} skipNextSort={false} data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={1} className={[undefined]} showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: CustomLoadingComponent]} PaginationComponent={{...}} ThComponent={{...}} multiSort={false} filterable={false} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={[undefined]} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} NoDataComponent={[Function: cmp]} ResizerComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]} resolvedData={{...}} allVisibleColumns={{...}} headerGroups={{...}} allDecoratedColumns={{...}} hasHeaderGroups={false} frozen={false} sortedData={{...}} pages={2} canPrevious={false} canNext={true} onPageChange={[Function: bound onPageChange]} onPageSizeChange={[Function: bound onPageSizeChange]} numItems={2} innerRef={{...}} classes={{...}} theme={{...}}>
+                  <WithStyles(Pagination) page={0} pageSize={1} sorted={{...}} expanded={{...}} filtered={{...}} resized={{...}} currentlyResizing={false} skipNextSort={false} data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={1} className={[undefined]} showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: LoadingComponent]} PaginationComponent={{...}} ThComponent={{...}} ResizerComponent={[Function: Resizer]} multiSort={false} filterable={false} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} defaultPage={0} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={[undefined]} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" pageJumpText="jump to page" rowsSelectorText="rows per page" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} NoDataComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]} resolvedData={{...}} allVisibleColumns={{...}} headerGroups={{...}} allDecoratedColumns={{...}} hasHeaderGroups={false} frozen={false} sortedData={{...}} pages={2} canPrevious={false} canNext={true} onPageChange={[Function: bound onPageChange]} onPageSizeChange={[Function: bound onPageSizeChange]} isTop={false} numItems={2}>
+                    <Pagination page={0} pageSize={1} sorted={{...}} expanded={{...}} filtered={{...}} resized={{...}} currentlyResizing={false} skipNextSort={false} data={{...}} loading={false} columns={{...}} minRows={10} defaultPageSize={1} className={[undefined]} showPagination={true} getTheadThProps={[Function]} getTheadProps={[Function]} getTableProps={[Function]} getTrProps={[Function]} getTrGroupProps={[Function]} getTdProps={[Function]} getTbodyProps={[Function]} getPaginationProps={[Function]} LoadingComponent={[Function: LoadingComponent]} PaginationComponent={{...}} ThComponent={{...}} ResizerComponent={[Function: Resizer]} multiSort={false} filterable={false} defaultFilterMethod={[Function: DEFAULT_FILTER_METHOD]} onFilteredChange={[Function]} sortable={true} pivotBy={{...}} groupable={false} resolveData={[Function: resolveData]} showPaginationTop={false} showPaginationBottom={true} showPageSizeOptions={true} pageSizeOptions={{...}} defaultPage={0} showPageJump={true} collapseOnSortingChange={true} collapseOnPageChange={true} collapseOnDataChange={true} freezeWhenExpanded={false} resizable={true} defaultSortDesc={false} defaultSorted={{...}} defaultFiltered={{...}} defaultResized={{...}} defaultExpanded={{...}} defaultSortMethod={[Function: defaultSortMethod]} pivotValKey="_pivotVal" pivotIDKey="_pivotID" subRowsKey="_subRows" aggregatedKey="_aggregated" nestingLevelKey="_nestingLevel" originalKey="_original" indexKey="_index" groupedByPivotKey="_groupedByPivot" onFetchData={[Function: onFetchData]} style={[undefined]} getProps={[Function: emptyObj]} getTheadGroupProps={[Function: emptyObj]} getTheadGroupTrProps={[Function: emptyObj]} getTheadGroupThProps={[Function: emptyObj]} getTheadTrProps={[Function: emptyObj]} getTheadFilterProps={[Function: emptyObj]} getTheadFilterTrProps={[Function: emptyObj]} getTheadFilterThProps={[Function: emptyObj]} getTfootProps={[Function: emptyObj]} getTfootTrProps={[Function: emptyObj]} getTfootTdProps={[Function: emptyObj]} getLoadingProps={[Function: emptyObj]} getNoDataProps={[Function: emptyObj]} getResizerProps={[Function: emptyObj]} column={{...}} expanderDefaults={{...}} pivotDefaults={{...}} previousText="Previous" nextText="Next" loadingText="Loading..." noDataText="No rows found" pageText="Page" ofText="of" rowsText="rows" pageJumpText="jump to page" rowsSelectorText="rows per page" TableComponent={[Function: TableComponent]} TheadComponent={[Function: cmp]} TbodyComponent={[Function: cmp]} TrGroupComponent={[Function: TrGroupComponent]} TrComponent={[Function: TrComponent]} TdComponent={[Function: TdComponent]} TfootComponent={[Function: cmp]} FilterComponent={[Function: FilterComponent]} ExpanderComponent={[Function: ExpanderComponent]} PivotValueComponent={[Function: PivotValueComponent]} AggregatedComponent={[Function: AggregatedComponent]} NoDataComponent={[Function: cmp]} PadRowComponent={[Function: PadRowComponent]} resolvedData={{...}} allVisibleColumns={{...}} headerGroups={{...}} allDecoratedColumns={{...}} hasHeaderGroups={false} frozen={false} sortedData={{...}} pages={2} canPrevious={false} canNext={true} onPageChange={[Function: bound onPageChange]} onPageSizeChange={[Function: bound onPageSizeChange]} isTop={false} numItems={2} innerRef={{...}} classes={{...}} theme={{...}}>
                       <div className="Pagination-container---">
                         <div className="Pagination-total---">
                           <Label for="">
@@ -1184,13 +1318,7 @@
                     </Pagination>
                   </WithStyles(Pagination)>
                 </div>
-                <CustomLoadingComponent loading={false} loadingText="Loading...">
-                  <div className="-loading" style={{...}}>
-                    <BusyIndicator size="Medium" active={true} style={{...}}>
-                      <ui5-busyindicator active={true} size="Medium" style={{...}} class="" />
-                    </BusyIndicator>
-                  </div>
-                </CustomLoadingComponent>
+                <LoadingComponent loading={false} loadingText="Loading..." />
               </div>
             </ReactTable>
           </div>

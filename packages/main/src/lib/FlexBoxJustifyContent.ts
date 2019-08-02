@@ -1,3 +1,3 @@
-import { FlexBoxJustifyContent } from '../components/FlexBox';
+import { FlexBoxJustifyContent } from '../enums/FlexBoxJustifyContent';
 
 export { FlexBoxJustifyContent };

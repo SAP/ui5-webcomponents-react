@@ -3,6 +3,8 @@ import * as React from 'react';
 import { FlexBox } from '../../lib/FlexBox';
 import { FlexBoxJustifyContent } from '../../lib/FlexBoxJustifyContent';
 
+declare const expect: any;
+
 describe('FlexBox', () => {
   test('JustifyContent: End', () => {
     const wrapper = mountThemedComponent(
@@ -33,5 +35,14 @@ describe('FlexBox', () => {
     );
     const node = wrapper.getDOMNode();
     expect(window.getComputedStyle(node).display).toEqual('inline-flex');
+  });
+
+  test('with Custom Class Names and Style', () => {
+    const wrapper = mountThemedComponent(
+      <FlexBox className="testClass" style={{ backgroundColor: '#000' }}>
+        <span>Test 1</span>
+      </FlexBox>
+    );
+    expect(wrapper.render()).toMatchSnapshot();
   });
 });

@@ -9,17 +9,6 @@ const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', ke
 use(matchSnapshot);
 
 describe('VariantManagement', () => {
-  let appRoot: HTMLElement;
-
-  before(() => {
-    appRoot = document.createElement('div');
-    document.body.appendChild(appRoot);
-  });
-
-  after(() => {
-    document.body.removeChild(appRoot);
-  });
-
   it('Render without crashing', () => {
     const wrapper = mountThemedComponent(<VariantManagement variantItems={variantItems} />);
     expect(wrapper.debug()).to.matchSnapshot();
