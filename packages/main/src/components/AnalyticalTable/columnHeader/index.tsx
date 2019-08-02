@@ -1,5 +1,5 @@
 import { Event, fonts, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Component, ReactNode, ReactNodeArray } from 'react';
+import React, { Component, ReactNode, ReactNodeArray, CSSProperties } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { Icon } from '../../../lib/Icon';
@@ -16,7 +16,7 @@ export interface ColumnHeaderProps {
 }
 
 interface ColumnHeaderPropsInternal extends ColumnHeaderProps, ClassProps {
-  style?: object;
+  style?: CSSProperties;
   toggleSort: () => any;
   sorted: any[];
   column: ColumnType;
@@ -155,7 +155,7 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
   };
 
   render() {
-    const { column, filtered, filterable, groupable, sortable } = this.props as ColumnHeaderPropsInternal;
+    const { column, filtered, filterable, groupable, sortable, style } = this.props as ColumnHeaderPropsInternal;
 
     if (!column) return null;
 
@@ -177,6 +177,7 @@ export class ColumnHeader extends Component<ColumnHeaderProps, ColumnHeaderState
             filter={filter}
             onFilterChange={this.onFilterChange}
             onGroupBy={this.onGroupBy}
+            style={style}
           />
         ) : (
           this.openBy
