@@ -1,3 +1,3 @@
-import { FlexBoxWrap } from '../components/FlexBox';
+import { FlexBoxWrap } from '../enums/FlexBoxWrap';
 
 export { FlexBoxWrap };
