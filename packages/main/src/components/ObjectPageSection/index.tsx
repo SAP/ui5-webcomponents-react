@@ -15,8 +15,8 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPageSection' });
 
-const ObjectPageSection: RefForwardingComponent<any, ObjectPageSectionPropTypes> = forwardRef(
-  (props: ObjectPageSectionPropTypes, ref: RefObject<any>) => {
+const ObjectPageSection: RefForwardingComponent<HTMLElement, ObjectPageSectionPropTypes> = forwardRef(
+  (props: ObjectPageSectionPropTypes, ref: RefObject<HTMLElement>) => {
     const { title, id, children, titleUppercase, className, style, tooltip } = props;
     const classes = useStyles();
 

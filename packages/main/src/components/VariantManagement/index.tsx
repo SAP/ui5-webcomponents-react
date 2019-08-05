@@ -1,5 +1,5 @@
 import { Event } from '@ui5/webcomponents-react-base';
-import React, { FC, forwardRef, Ref, useCallback, useMemo, useState, useEffect, RefForwardingComponent } from 'react';
+import React, { forwardRef, Ref, RefForwardingComponent, useCallback, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -13,6 +13,7 @@ import { Popover } from '../../lib/Popover';
 import { StandardListItem } from '../../lib/StandardListItem';
 import { Title } from '../../lib/Title';
 import { TitleLevel } from '../../lib/TitleLevel';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 export interface VariantItem {
   key: string;
@@ -65,8 +66,8 @@ const styles = ({ parameters }: JSSTheme) => ({
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Variant Management' });
 
-const VariantManagement: RefForwardingComponent<any, VariantManagementPropTypes> = forwardRef(
-  (props: VariantManagementPropTypes, ref: Ref<any>) => {
+const VariantManagement: RefForwardingComponent<Ui5PopoverDomRef, VariantManagementPropTypes> = forwardRef(
+  (props: VariantManagementPropTypes, ref: Ref<Ui5PopoverDomRef>) => {
     const {
       variantItems,
       popupTitle,
