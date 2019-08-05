@@ -29,11 +29,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       paddingTop: '1rem',
       paddingBottom: '1rem',
       background: parameters.sapUiObjectHeaderBackground,
-      transition: 'max-height 0.2s, opacity 0.2s ease-in'
-      // overflow: 'hidden'
-      // '& > *': {
-      //   marginBottom: '10px'
-      // }
+      transition: 'max-height 0.2s ease-out, opacity 0.2s ease-in'
     },
     filterAreaClosed: {
       maxHeight: '0',
@@ -42,34 +38,6 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
     filterAreaOpen: {
       maxHeight: '500px',
       opacity: 1
-    },
-    '@media (max-width: 599px)': {
-      filterArea: {
-        columnCount: 3,
-        columnGap: '0.5rem',
-        rowGap: '0.5rem'
-      }
-    },
-    '@media (min-width: 600px) and (max-width: 1023px)': {
-      filterArea: {
-        columnCount: 8,
-        columnGap: '1rem',
-        rowGap: '1rem'
-      }
-    },
-    '@media (min-width: 1024px) and (max-width: 1439px)': {
-      filterArea: {
-        columnCount: 12,
-        columnGap: '1rem',
-        rowGap: '1rem'
-      }
-    },
-    '@media (min-width: 1440px)': {
-      filterArea: {
-        columnCount: 16,
-        columnGap: '1rem',
-        rowGap: '1rem'
-      }
     },
     headerRowRight: {
       display: 'flex',
