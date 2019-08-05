@@ -12,12 +12,16 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     paddingTop: '1rem',
     paddingBottom: '1rem',
     outlineOffset: '-0.125rem',
-    boxSizing: 'border-box',
-    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
+    borderBottom: `0.0625rem solid ${parameters.sapUiTileBackgroundDarken20}`,
     backgroundColor: parameters.sapUiTileBackground,
     fontFamily: fonts.sapUiFontHeaderFamily,
     '&:hover': {
-      backgroundColor: parameters.sapUiTileBackgroundDarken20
+      //TODO sapUiTileHoverBackground
+      backgroundColor: '#f5f5f5'
+    },
+    '&:active': {
+      //TODO sapUiTileActiveBackground
+      backgroundColor: '#f5f5f5'
     }
   },
   arrowIndicatorShape: {
@@ -39,7 +43,6 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     borderTop: '8px solid transparent',
     borderBottom: '8px solid transparent'
   },
-
   cardHeaderClickable: {
     cursor: 'pointer'
   },
@@ -48,16 +51,23 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     marginRight: '1rem',
     position: 'relative'
   },
-  headerText: {
+  headerTitles: {
     overflow: 'hidden',
+    textAlign: 'left',
+    whiteSpace: 'normal',
+    wordWrap: 'break-word'
+  },
+  headerText: {
     fontFamily: fonts.sapUiFontHeaderFamily,
     fontWeight: fonts.sapUiFontHeaderWeight,
     fontSize: fonts.sapMFontHeader5Size,
     color: parameters.sapUiTileTitleTextColor,
-    textAlign: 'left',
-    whiteSpace: 'normal',
-    wordWrap: 'break-word',
-    textOverflow: 'ellipsis'
+    overflow: 'hidden',
+    display: '-webkit-box',
+    lineHeight: '18px',
+    maxHeight: '54px' /* height * number of lines */,
+    WebkitLineClamp: '3' /* number of lines to show */,
+    WebkitBoxOrient: 'vertical'
   },
   subHeaderText: {
     overflow: 'hidden',
@@ -70,7 +80,27 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     wordWrap: 'break-word',
     textOverflow: 'ellipsis',
     marginTop: '0.5rem',
-    width: '100%'
+    width: '100%',
+    display: '-webkit-box',
+    lineHeight: '16px',
+    maxHeight: '32px',
+    WebkitLineClamp: '2',
+    WebkitBoxOrient: 'vertical'
+  },
+  counter: {
+    fontSize: fonts.sapMFontSmallSize,
+    margin: '0.188rem 0  0 1rem',
+    lineHeight: 'normal',
+    textAlign: 'right'
+  },
+  currency: {
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
+    fontWeight: 'normal',
+    color: parameters.sapUiTileTextColor,
+    overflow: 'hidden',
+    marginLeft: '0.25rem',
+    textAlign: 'right'
   },
   helpIcon: {
     position: 'absolute',
@@ -79,26 +109,23 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
   },
   kpiContent: {
     fontWeight: 'normal',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-    marginTop: '10px',
-    color: parameters.sapUiTileTextColor
-  },
-  leftContent: {
-    display: 'flex',
-    alignItems: 'baseline'
+    marginTop: '0.5rem',
+    color: parameters.sapUiTileTextColor,
+    width: '100%',
+    boxSizing: 'border-box'
   },
   valueAndUnit: {
     display: 'flex',
     alignItems: 'end',
-    marginLeft: '0.25rem',
     color: parameters.sapUiNeutralText
   },
   value: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    fontSize: '2rem'
+    fontSize: '2rem',
+    maxWidth: '135px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: 'block'
   },
   unit: {
     marginLeft: '0.25rem',
@@ -112,12 +139,38 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     justifyContent: 'flex-end'
   },
   targetAndDeviation: {
+    width: '60%',
+    paddingBottom: '0.25rem',
     textAlign: 'right',
-    fontSize: fonts.sapMFontSmallSize,
-    display: 'flex'
+    fontSize: parameters.sapMFontSmallSize,
+    color: parameters.sapUiTileTextColor
   },
-  deviation: {
-    marginLeft: '0.5rem'
+  targetAndDeviationColumn: {
+    maxWidth: '45%',
+    marginLeft: '1rem'
+  },
+  targetAndDeviationValue: {
+    color: parameters.sapUiTileTitleTextColor,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
+  },
+  description: {
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontSmallSize,
+    fontWeight: 'normal',
+    color: parameters.sapUiTileTextColor,
+    whiteSpace: 'normal',
+    overflow: 'hidden',
+    textAlign: 'left',
+    textOverflow: 'ellipsis',
+    marginTop: '0.25rem',
+    width: '100%',
+    display: '-webkit-box',
+    lineHeight: '14px',
+    maxHeight: '14px' /* height * number of lines */,
+    WebkitLineClamp: '1' /* number of lines to show */,
+    WebkitBoxOrient: 'vertical'
   },
   good: {
     color: parameters.sapUiPositiveText

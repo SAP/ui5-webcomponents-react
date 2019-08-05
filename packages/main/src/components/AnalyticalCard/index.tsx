@@ -1,11 +1,11 @@
 import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
+import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ContentDensity } from '../../lib/ContentDensity';
-import { Themes } from '../../lib/Themes';
+
 import styles from './AnalyticalCard.jss';
+import { createUseStyles } from 'react-jss';
 
 export interface AnalyticalCardTypes extends CommonProps {
   /**
@@ -13,31 +13,33 @@ export interface AnalyticalCardTypes extends CommonProps {
    * This function will pass two parameters: theme and Content Density.
    * Expect to return a CardHeader.
    */
-  renderHeader: (theme: Themes, contentDensity: ContentDensity) => JSX.Element;
+  header: ReactNode | ReactNodeArray;
   /**
    * Expected one or more React Components
    */
   children?: ReactNode | ReactNodeArray;
+  width?: CSSProperties['width'];
 }
 
 export interface AnalyticalCardPropsInternal extends AnalyticalCardTypes, ClassProps {
   theme?: JSSTheme;
 }
 
-@withStyles(styles)
-export class AnalyticalCard extends PureComponent<AnalyticalCardTypes> {
-  render() {
-    const { renderHeader, children, classes, theme, style, className, tooltip, innerRef } = this
-      .props as AnalyticalCardPropsInternal;
-    const classNameString = StyleClassHelper.of(classes.card);
-    if (className) {
-      classNameString.put(className);
-    }
-    return (
-      <div ref={innerRef} className={classNameString.toString()} style={style} title={tooltip}>
-        {renderHeader(theme.theme, theme.contentDensity)}
-        <div style={{ padding: '1rem' }}>{children}</div>
-      </div>
-    );
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalCard' });
+
+export const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef((props: AnalyticalCardTypes, ref: Ref<any>) => {
+  const { children, style, className, tooltip, innerRef, header } = props as AnalyticalCardPropsInternal;
+  const classes = useStyles(props);
+  const classNameString = StyleClassHelper.of(classes.card);
+  if (className) {
+    classNameString.put(className);
   }
-}
+  return (
+    <div ref={innerRef} className={classNameString.toString()} style={style} title={tooltip}>
+      {header}
+      <div className={classes.content}>{children}</div>
+    </div>
+  );
+});
+
+AnalyticalCard.defaultProps = { width: '20rem', header: null };

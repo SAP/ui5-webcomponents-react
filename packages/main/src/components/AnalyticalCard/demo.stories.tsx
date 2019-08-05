@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, select } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { LineChart } from '@ui5/webcomponents-react-charts';
 import React from 'react';
@@ -10,23 +10,26 @@ import { ValueState } from '../../lib/ValueState';
 
 storiesOf('Components | Analytical Card', module).add('default', () => (
   <AnalyticalCard
-    renderHeader={() => (
+    width={text('width', '20rem')}
+    header={
       <AnalyticalCardHeader
-        title="Title"
-        subTitle="Subtitle"
+        title={text('title', 'Title')}
+        subTitle={text('subTitle', 'Subtitle')}
         arrowIndicator={select('arrowIndicator', DeviationIndicator, DeviationIndicator.Down)}
         indicatorState={select('indicatorState', ValueState, ValueState.Success)}
-        value="Value"
+        value={text('value', 'Value')}
         valueState={select('valueState', ValueState, ValueState.Success)}
-        unit="Unit"
-        target="Target"
-        deviation="Deviation"
+        unit={text('unit', 'Unit')}
+        target={text('target', 'target')}
+        deviation={text('deviation', 'deviation')}
         onHeaderPress={action('Header pressed')}
-        loading={boolean('loading', false)}
-        showIndicator
-        description="Description"
+        showIndicator={boolean('showIndicator', true)}
+        description={text('description', 'Description')}
+        counter={text('counter', 'Counter')}
+        counterState={select('counterState', ValueState, ValueState.Success)}
+        currency={text('currency', 'EUR')}
       />
-    )}
+    }
   >
     <LineChart
       labels={[
