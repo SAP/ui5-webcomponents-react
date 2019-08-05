@@ -28,7 +28,20 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       flexWrap: 'wrap',
       paddingTop: '1rem',
       paddingBottom: '1rem',
-      background: parameters.sapUiObjectHeaderBackground
+      background: parameters.sapUiObjectHeaderBackground,
+      transition: 'max-height 0.2s, opacity 0.2s ease-in'
+      // overflow: 'hidden'
+      // '& > *': {
+      //   marginBottom: '10px'
+      // }
+    },
+    filterAreaClosed: {
+      maxHeight: '0',
+      opacity: 0
+    },
+    filterAreaOpen: {
+      maxHeight: '500px',
+      opacity: 1
     },
     '@media (max-width: 599px)': {
       filterArea: {
