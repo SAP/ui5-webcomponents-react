@@ -1,10 +1,12 @@
-import { withStyles } from '@ui5/webcomponents-react-base';
-import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
+import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject, useCallback, useState } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Button } from '../../lib/Button';
 import { ButtonDesign } from '../../lib/ButtonDesign';
 import styles from './FilterBar.jss';
+import { createUseStyles } from 'react-jss';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 
 export interface FilterBarPropTypes extends CommonProps {
   renderVariants?: () => JSX.Element;
@@ -14,37 +16,44 @@ export interface FilterBarPropTypes extends CommonProps {
 
 interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
 
-@withStyles(styles)
-export class FilterBar extends PureComponent<FilterBarPropTypes> {
-  static defaultProps = {
-    children: '',
-    displayOnly: true
-  };
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'FilterBar' });
 
-  state = {
-    showFilters: true
-  };
+const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
+  const { children, renderVariants, renderSearch } = props as FilterBarInternalProps;
+  const [showFilters, setShowFilters] = useState(true);
 
-  handleHideFilterBar = () => {
-    this.setState({ showFilters: !this.state.showFilters });
-  };
+  const classes = useStyles();
 
-  render() {
-    const { children, classes, renderVariants, renderSearch, innerRef } = this.props as FilterBarInternalProps;
+  const handleHideFilterBar = useCallback(() => {
+    setShowFilters(!showFilters);
+  }, [showFilters]);
 
-    return (
-      <div ref={innerRef} className={classes.outerContainer}>
-        <div className={classes.filterBarHeader}>
-          {renderVariants && renderVariants()}
-          {renderSearch && <div className={classes.vLine}> {renderSearch()} </div>}
-          <div className={classes.headerRowRight}>
-            <Button onClick={this.handleHideFilterBar} design={ButtonDesign.Transparent}>
-              {this.state.showFilters ? 'Hide Filter Bar' : 'Show Filter Bar'}
-            </Button>
-          </div>
-        </div>
-        {this.state.showFilters && <div className={classes.filterArea}>{children}</div>}
-      </div>
-    );
+  const filterAreaClasses = StyleClassHelper.of(classes.filterArea);
+  if (showFilters) {
+    filterAreaClasses.put(classes.filterAreaOpen);
+  } else {
+    filterAreaClasses.put(classes.filterAreaClosed);
   }
-}
+
+  return (
+    <div ref={ref} className={classes.outerContainer}>
+      <div className={classes.filterBarHeader}>
+        {renderVariants && renderVariants()}
+        {renderSearch && <div className={classes.vLine}> {renderSearch()} </div>}
+        <div className={classes.headerRowRight}>
+          <Button onClick={handleHideFilterBar} design={ButtonDesign.Transparent}>
+            {showFilters ? 'Hide Filter Bar' : 'Show Filter Bar'}
+          </Button>
+        </div>
+      </div>
+      <div className={filterAreaClasses.valueOf()}>{children}</div>
+    </div>
+  );
+});
+
+FilterBar.defaultProps = {
+  children: ''
+};
+
+FilterBar.displayName = 'FilterBar';
+export { FilterBar };
