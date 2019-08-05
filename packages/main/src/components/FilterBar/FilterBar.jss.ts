@@ -33,7 +33,8 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
     },
     filterAreaClosed: {
       maxHeight: '0',
-      opacity: 0
+      opacity: 0,
+      padding: 0
     },
     filterAreaOpen: {
       maxHeight: '500px',
