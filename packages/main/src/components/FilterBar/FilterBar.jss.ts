@@ -28,35 +28,17 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       flexWrap: 'wrap',
       paddingTop: '1rem',
       paddingBottom: '1rem',
-      background: parameters.sapUiObjectHeaderBackground
+      background: parameters.sapUiObjectHeaderBackground,
+      transition: 'max-height 0.2s ease-out, opacity 0.2s ease-in'
     },
-    '@media (max-width: 599px)': {
-      filterArea: {
-        columnCount: 3,
-        columnGap: '0.5rem',
-        rowGap: '0.5rem'
-      }
+    filterAreaClosed: {
+      maxHeight: '0',
+      opacity: 0,
+      padding: 0
     },
-    '@media (min-width: 600px) and (max-width: 1023px)': {
-      filterArea: {
-        columnCount: 8,
-        columnGap: '1rem',
-        rowGap: '1rem'
-      }
-    },
-    '@media (min-width: 1024px) and (max-width: 1439px)': {
-      filterArea: {
-        columnCount: 12,
-        columnGap: '1rem',
-        rowGap: '1rem'
-      }
-    },
-    '@media (min-width: 1440px)': {
-      filterArea: {
-        columnCount: 16,
-        columnGap: '1rem',
-        rowGap: '1rem'
-      }
+    filterAreaOpen: {
+      maxHeight: '500px',
+      opacity: 1
     },
     headerRowRight: {
       display: 'flex',
