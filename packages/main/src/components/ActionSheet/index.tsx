@@ -1,5 +1,13 @@
 import { Device, StyleClassHelper, useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, forwardRef, ReactElement, ReactNode, RefObject, FC } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  RefForwardingComponent,
+  RefObject
+} from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { ButtonDesign } from '../../lib/ButtonDesign';
@@ -17,7 +25,7 @@ export interface ActionSheetPropTypes extends CommonProps {
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 
-const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
+const ActionSheet: RefForwardingComponent<Ui5PopoverDomRef, ActionSheetPropTypes> = forwardRef(
   (props: ActionSheetPropTypes, ref: RefObject<Ui5PopoverDomRef>) => {
     const { children, placement, openBy, style, slot } = props;
 

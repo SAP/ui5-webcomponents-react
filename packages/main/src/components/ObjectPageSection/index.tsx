@@ -1,5 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, ReactNode, ReactNodeArray, RefObject, FC } from 'react';
+import React, { forwardRef, ReactNode, ReactNodeArray, RefForwardingComponent, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -15,7 +15,7 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPageSection' });
 
-const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
+const ObjectPageSection: RefForwardingComponent<any, ObjectPageSectionPropTypes> = forwardRef(
   (props: ObjectPageSectionPropTypes, ref: RefObject<any>) => {
     const { title, id, children, titleUppercase, className, style, tooltip } = props;
     const classes = useStyles();

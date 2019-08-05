@@ -1,5 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, ReactNode, Ref } from 'react';
+import React, { CSSProperties, forwardRef, ReactNode, Ref, RefForwardingComponent } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -25,29 +25,31 @@ export interface TextProps extends CommonProps {
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof TextStyles>>(TextStyles, { name: 'Text' });
 
-const Text: FC<TextProps> = forwardRef((props: TextProps, ref: Ref<HTMLSpanElement>) => {
-  const { children, renderWhitespace, wrapping, width, className, style, tooltip, slot } = props;
-  const classes = useStyles();
-  const classNameString = StyleClassHelper.of(classes.text);
-  if (wrapping === false) {
-    classNameString.put(classes.noWrap);
+const Text: RefForwardingComponent<HTMLSpanElement, TextProps> = forwardRef(
+  (props: TextProps, ref: Ref<HTMLSpanElement>) => {
+    const { children, renderWhitespace, wrapping, width, className, style, tooltip, slot } = props;
+    const classes = useStyles();
+    const classNameString = StyleClassHelper.of(classes.text);
+    if (wrapping === false) {
+      classNameString.put(classes.noWrap);
+    }
+    if (renderWhitespace) {
+      classNameString.put(classes.renderWhitespace);
+    }
+    if (className) {
+      classNameString.put(className);
+    }
+    const inlineStyles = { width };
+    if (style) {
+      Object.assign(inlineStyles, style);
+    }
+    return (
+      <span ref={ref} style={inlineStyles} className={classNameString.toString()} title={tooltip} slot={slot}>
+        {children}
+      </span>
+    );
   }
-  if (renderWhitespace) {
-    classNameString.put(classes.renderWhitespace);
-  }
-  if (className) {
-    classNameString.put(className);
-  }
-  const inlineStyles = { width };
-  if (style) {
-    Object.assign(inlineStyles, style);
-  }
-  return (
-    <span ref={ref} style={inlineStyles} className={classNameString.toString()} title={tooltip} slot={slot}>
-      {children}
-    </span>
-  );
-});
+);
 
 Text.defaultProps = {
   renderWhitespace: false,

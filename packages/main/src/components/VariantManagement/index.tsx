@@ -1,5 +1,5 @@
 import { Event } from '@ui5/webcomponents-react-base';
-import React, { FC, forwardRef, Ref, useCallback, useMemo, useState, useEffect } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo, useState, useEffect, RefForwardingComponent } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -65,7 +65,7 @@ const styles = ({ parameters }: JSSTheme) => ({
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Variant Management' });
 
-const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
+const VariantManagement: RefForwardingComponent<any, VariantManagementPropTypes> = forwardRef(
   (props: VariantManagementPropTypes, ref: Ref<any>) => {
     const {
       variantItems,
