@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, Ref } from 'react';
 
 export interface CommonProps {
   /**
@@ -16,4 +16,5 @@ export interface CommonProps {
    */
   tooltip?: string;
   slot?: string;
+  ref?: Ref<any>;
 }
