@@ -30,8 +30,7 @@
   },
   "devDependencies": {
     "diff": "^4.0.1",
-    "inquirer": "^6.3.1",
-    "webpack": "^4.31.0"
+    "inquirer": "^6.3.1"
   },
   "peerDependencies": {
     "react": "^16.8.0",
