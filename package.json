@@ -57,7 +57,6 @@
     "file-loader": "^4.1.0",
     "file-url": "^3.0.0",
     "filesize": "^4.1.2",
-    "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "global": "^4.4.0",
     "google-closure-compiler": "^20190415.0.0",
