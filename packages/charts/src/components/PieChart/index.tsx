@@ -6,9 +6,10 @@ import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, usePieLegendItemClickHandler } from '../../internal/ChartLegend';
 import { withChartContainer } from '../../internal/withChartContainer';
+import { getCssVariableValue } from '../../themes/Utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabelForPieCharts, useMergedConfig } from '../../util/utils';
+import { formatTooltipLabelForPieCharts, useMergedConfig } from '../../util/Utils';
 import { PieChartPlaceholder } from './Placeholder';
 
 export interface PieChartPropTypes extends ChartBaseProps {}
@@ -43,9 +44,7 @@ const PieChartComponent = forwardRef((props: PieChartPropTypes, ref: Ref<any>) =
         datalabels: {
           anchor: 'end',
           align: 'end',
-          color: (context) => {
-            return /* sapUiBaseText */ '#32363a';
-          },
+          color: getCssVariableValue('--sapUiBaseText', '#32363a'),
           formatter: valueAxisFormatter
         }
       }

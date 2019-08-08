@@ -1,5 +1,6 @@
 import { Optional } from '@ui5/webcomponents-react-base';
 import { useEffect, Ref, RefObject, useCallback } from 'react';
+import '@ui5/webcomponents/dist/Label';
 
 const getSymbolForDataset = (type, dataset) => {
   const datasetMeta: any = dataset.hasOwnProperty('_meta') ? Object.values(dataset._meta)[0] : null;
@@ -21,7 +22,7 @@ const getLegendEntry = (dataset, type, index) => {
 
   return `<li style="display: flex; align-items: center; margin-right: 24px; margin-bottom: 1rem; cursor:pointer;" data-datasetindex="${index}">
 ${symbol}
-<span style="font-size: 12px; color: #32363a; font-family: '72', Arial, Helvetica, sans-serif; user-select: none">${dataset.label}</span>
+<ui5-label style="font-size: 12px; user-select: none">${dataset.label}</ui5-label>
 </li>`;
 };
 

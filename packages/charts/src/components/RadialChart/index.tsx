@@ -2,9 +2,10 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 import { ChartOptions } from 'chart.js';
 import React, { CSSProperties, forwardRef, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { useMergedConfig } from '../../util/utils';
+import { useMergedConfig } from '../../util/Utils';
 import { DonutChart } from '../DonutChart';
 
 export interface RadialChartPropTypes extends CommonProps {
@@ -83,21 +84,7 @@ const RadialChart = forwardRef((props: RadialChartPropTypes, ref: Ref<HTMLDivEle
         noLegend
       />
       <div className={classes.content}>
-        <h3
-          style={{
-            color: '#333333',
-            fontSize: '20px',
-            margin: '0',
-            cursor: 'text',
-            display: 'inline-block',
-            position: 'relative',
-            textShadow: '0 0 0.125rem #ffffff',
-            fontFamily: "'72', Arial, Helvetica, sans-serif",
-            fontWeight: 'normal'
-          }}
-        >
-          {displayValue as string}
-        </h3>
+        <Title>{displayValue as string}</Title>
       </div>
     </div>
   );
