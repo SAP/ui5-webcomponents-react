@@ -6,8 +6,8 @@ export const populateData = (labels, datasets, colors, theme, isPie = false) => 
   return {
     labels,
     datasets: datasets.map((item, index) => ({
-      backgroundColor: isPie ? colorPalette : colorPalette[index],
-      borderColor: isPie ? colorPalette : colorPalette[index],
+      backgroundColor: isPie ? colorPalette : colorPalette[index % colorPalette.length],
+      borderColor: isPie ? colorPalette : colorPalette[index % colorPalette.length],
       ...item
     }))
   };
