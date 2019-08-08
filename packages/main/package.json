@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.4.2-rc.15",
+  "version": "0.4.2-rc.16",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@ui5/webcomponents": "1.0.0-rc.2",
-    "@ui5/webcomponents-react-base": "0.4.2-rc.15",
+    "@ui5/webcomponents-react-base": "0.4.2-rc.16",
     "lodash.debounce": "^4.0.8",
     "react-scroll": "^1.7.11",
     "react-table": "6.10.0",
