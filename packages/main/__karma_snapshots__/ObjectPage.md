@@ -677,7 +677,66 @@
 <header class="ObjectPageHeader--header---"><header class="ObjectPageHeader--titleBar---"><span class="ObjectPageHeader--container---"><h1 class="ObjectPageHeader--title---"></h1><span class="ObjectPageHeader--subTitle---"></span></span><span class="ObjectPageHeader--actions---"></span></header><div style="position:relative"><div class="ObjectPageHeader--headerContent---"></div></div></header><section class="ObjectPage--anchorBar---" role="navigation"><li class="ObjectPageAnchorButton--anchorButtonContainer---"><span class="ObjectPageAnchorButton--button--- ObjectPageAnchorButton--selected---"></span></li><li class="ObjectPageAnchorButton--anchorButtonContainer---"><span class="ObjectPageAnchorButton--button---"></span></li></section><section id="ObjectPageSections" class="ObjectPageContent--sectionsContainer---"><section id="ObjectPageSection-1" role="region"><div role="heading" class="ObjectPageSection--header---"><div class="ObjectPageSection--title--- ObjectPageSection--uppercase---"></div></div><div class="ObjectPageSection--sectionContent---"><div class="ObjectPageSection--sectionContentInner---">Test</div></div></section><div></div></section>
 ```
 
-#### `Not crashing with 1 section`
+#### `Not crashing with 1 section - Default Mode`
+
+```
+<ThemeProvider withToastContainer={false}>
+  <JssProvider generateId={[Function]}>
+    <ThemeProvider theme={{...}}>
+      <ObjectPage title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} mode="Default" onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
+        <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
+          <ObjectPageHeader title="" subTitle="" image={{...}} headerActions={{...}} renderHeaderContent={{...}} imageShapeCircle={false} showHideHeaderButton={false}>
+            <header className="ObjectPageHeader--header---">
+              <header className="ObjectPageHeader--titleBar---">
+                <span className="ObjectPageHeader--container---">
+                  <h1 className="ObjectPageHeader--title---" />
+                  <span className="ObjectPageHeader--subTitle---" />
+                </span>
+                <span className="ObjectPageHeader--actions---" />
+              </header>
+              <div style={{...}}>
+                <div className="ObjectPageHeader--headerContent---" />
+              </div>
+            </header>
+          </ObjectPageHeader>
+          <section className="ObjectPage--anchorBar---" role="navigation">
+            <ObjectPageAnchorButton section={{...}} index={0} selected={true} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <Link to="ObjectPageSection-1" containerId="ObjectPageSections" spy={true} activeClass="ObjectPageAnchorButton--selected---" onSetActive={[Function]} duration={400} smooth={true} offset={0}>
+                  <LinkElement className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
+                    <a className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
+                      <span className="ObjectPageAnchorButton--button---" />
+                    </a>
+                  </LinkElement>
+                </Link>
+              </li>
+            </ObjectPageAnchorButton>
+          </section>
+          <ObjectPageContent fillerRef={{...}}>
+            <section id="ObjectPageSections" className="ObjectPageContent--sectionsContainer---">
+              <ObjectPageSection id="1" title="" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---" />
+                  </div>
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
+                      Test
+                    </div>
+                  </div>
+                </section>
+              </ObjectPageSection>
+              <div />
+            </section>
+          </ObjectPageContent>
+        </div>
+      </ObjectPage>
+    </ThemeProvider>
+  </JssProvider>
+</ThemeProvider>
+```
+
+#### `Not crashing with 1 section - IconTabBar Mode`
 
 ```
 <ThemeProvider withToastContainer={false}>
@@ -877,6 +936,59 @@
                   <div className="ObjectPageSection--sectionContent---">
                     <div className="ObjectPageSection--sectionContentInner---">
                       Test 2
+                    </div>
+                  </div>
+                </section>
+              </ObjectPageSection>
+              <div />
+            </section>
+          </ObjectPageContent>
+        </div>
+      </ObjectPage>
+    </ThemeProvider>
+  </JssProvider>
+</ThemeProvider>
+```
+
+#### `Not crashing with 1 section`
+
+```
+<ThemeProvider withToastContainer={false}>
+  <JssProvider generateId={[Function]}>
+    <ThemeProvider theme={{...}}>
+      <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
+        <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
+          <ObjectPageHeader title="" subTitle="" image={{...}} headerActions={{...}} renderHeaderContent={{...}} imageShapeCircle={false} showHideHeaderButton={false}>
+            <header className="ObjectPageHeader--header---">
+              <header className="ObjectPageHeader--titleBar---">
+                <span className="ObjectPageHeader--container---">
+                  <h1 className="ObjectPageHeader--title---" />
+                  <span className="ObjectPageHeader--subTitle---" />
+                </span>
+                <span className="ObjectPageHeader--actions---" />
+              </header>
+              <div style={{...}}>
+                <div className="ObjectPageHeader--headerContent---" />
+              </div>
+            </header>
+          </ObjectPageHeader>
+          <section className="ObjectPage--anchorBar---" role="navigation">
+            <ObjectPageAnchorButton section={{...}} index={0} selected={true} mode="IconTabBar" onSectionSelected={[Function]} onSubSectionSelected={[Function]}>
+              <li className="ObjectPageAnchorButton--anchorButtonContainer---">
+                <span onClick={[Function]} className="ObjectPageAnchorButton--button--- ObjectPageAnchorButton--selected---" />
+              </li>
+            </ObjectPageAnchorButton>
+          </section>
+          <ObjectPageContent fillerRef={{...}}>
+            <section id="ObjectPageSections" className="ObjectPageContent--sectionsContainer---">
+              <ObjectPageSection id="1" title="" isSection={true} titleUppercase={true}>
+                <section id="ObjectPageSection-1" role="region" className={[undefined]} style={[undefined]} title={[undefined]}>
+                  <div role="heading" className="ObjectPageSection--header---">
+                    <div className="ObjectPageSection--title--- ObjectPageSection--uppercase---" />
+                  </div>
+                  <div className="ObjectPageSection--sectionContent---">
+                    <div className="ObjectPageSection--sectionContentInner---">
+                      Test
                     </div>
                   </div>
                 </section>

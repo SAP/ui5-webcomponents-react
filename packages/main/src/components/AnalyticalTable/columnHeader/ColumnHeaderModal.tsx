@@ -1,5 +1,5 @@
 import { Event, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Component, FC, ReactNode, RefObject } from 'react';
+import React, { Component, FC, ReactNode, RefObject, CSSProperties } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { CustomListItem } from '../../../lib/CustomListItem';
@@ -40,6 +40,7 @@ export interface ColumnHeaderModalProperties {
   column: ColumnType;
   onFilterChange: (e?: any) => void;
   onGroupBy: (e?: any) => void;
+  style: CSSProperties;
 }
 
 interface ColumnHeaderModalInternalProperties extends ColumnHeaderModalProperties, ClassProps {}
@@ -85,11 +86,12 @@ export class ColumnHeaderModal extends Component<ColumnHeaderModalProperties> {
   };
 
   render() {
-    const { showGroup, grouping, showSort, showFilter, FilterComponent, onFilterChange, column, filter } = this
+    const { showGroup, grouping, showSort, showFilter, FilterComponent, onFilterChange, column, filter, style } = this
       .props as ColumnHeaderModalInternalProperties;
+
     return (
       <Popover
-        openByStyle={{ flex: '100 0 auto', width: '100px' }}
+        openByStyle={style}
         openBy={this.props.openBy}
         noArrow
         horizontalAlign={PopoverHorizontalAlign.Left}

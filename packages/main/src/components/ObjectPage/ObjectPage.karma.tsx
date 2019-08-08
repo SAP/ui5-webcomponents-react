@@ -108,7 +108,17 @@ describe('ObjectPage', () => {
     expect(wrapper.html()).to.matchSnapshot();
   });
 
-  it('Not crashing with 1 section', () => {
+  it('Not crashing with 1 section - Default Mode', () => {
+    const wrapper = mountThemedComponent(
+      <ObjectPage>
+        <ObjectPageSection id={'1'}>Test</ObjectPageSection>
+      </ObjectPage>
+    );
+
+    expect(wrapper.debug()).to.matchSnapshot();
+  });
+
+  it('Not crashing with 1 section - IconTabBar Mode', () => {
     const wrapper = mountThemedComponent(
       <ObjectPage mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>

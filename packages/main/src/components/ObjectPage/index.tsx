@@ -168,7 +168,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   useEffect(() => {
     if (mode === ObjectPageMode.Default) {
-      scrollToSectionById(children[selectedSectionIndex].props.id, selectedSectionIndex);
+      // @ts-ignore
+      scrollToSectionById(Children.toArray(children)[selectedSectionIndex].props.id, selectedSectionIndex);
     }
     if (mode === ObjectPageMode.IconTabBar) {
       adjustDummyDivHeight();
