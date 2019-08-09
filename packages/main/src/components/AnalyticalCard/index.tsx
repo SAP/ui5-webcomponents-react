@@ -13,7 +13,7 @@ export interface AnalyticalCardTypes extends CommonProps {
    * This function will pass two parameters: theme and Content Density.
    * Expect to return a CardHeader.
    */
-  header: ReactNode | ReactNodeArray;
+  header?: ReactNode;
   /**
    * Expected one or more React Components
    */
@@ -21,25 +21,24 @@ export interface AnalyticalCardTypes extends CommonProps {
   width?: CSSProperties['width'];
 }
 
-export interface AnalyticalCardPropsInternal extends AnalyticalCardTypes, ClassProps {
-  theme?: JSSTheme;
-}
-
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalCard' });
 
-export const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef((props: AnalyticalCardTypes, ref: Ref<any>) => {
-  const { children, style, className, tooltip, innerRef, header } = props as AnalyticalCardPropsInternal;
-  const classes = useStyles(props);
-  const classNameString = StyleClassHelper.of(classes.card);
-  if (className) {
-    classNameString.put(className);
+export const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef(
+  (props: AnalyticalCardTypes, ref: Ref<HTMLDivElement>) => {
+    const { children, style, className, tooltip, header } = props;
+    const classes = useStyles(props);
+    const classNameString = StyleClassHelper.of(classes.card);
+    if (className) {
+      classNameString.put(className);
+    }
+    return (
+      <div ref={ref} className={classNameString.toString()} style={style} title={tooltip}>
+        {header}
+        <div className={classes.content}>{children}</div>
+      </div>
+    );
   }
-  return (
-    <div ref={innerRef} className={classNameString.toString()} style={style} title={tooltip}>
-      {header}
-      <div className={classes.content}>{children}</div>
-    </div>
-  );
-});
+);
 
+AnalyticalCard.displayName = 'AnalyticalCard';
 AnalyticalCard.defaultProps = { width: '20rem', header: null };

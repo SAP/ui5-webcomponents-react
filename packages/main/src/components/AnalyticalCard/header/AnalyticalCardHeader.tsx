@@ -1,6 +1,5 @@
 import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { FC, forwardRef, Ref } from 'react';
-import { ClassProps } from '../../../interfaces/ClassProps';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { CommonProps } from '../../../interfaces/CommonProps';
 import { DeviationIndicator } from '../../../lib/DeviationIndicator';
 import { ObjectStatus } from '../../../lib/ObjectStatus';
@@ -32,14 +31,12 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   currency?: string;
 }
 
-interface AnalyticalCardHeaderInternalProps extends AnalyticalCardHeaderPropTypes, ClassProps {}
-
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, {
-  name: 'Analytical Card Header'
+  name: 'AnalyticalCardHeader'
 });
 
 export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRef(
-  (props: AnalyticalCardHeaderPropTypes, ref: Ref<any>) => {
+  (props: AnalyticalCardHeaderPropTypes, ref: Ref<HTMLDivElement>) => {
     const {
       title,
       subTitle,
@@ -56,20 +53,21 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
       counter,
       counterState,
       currency,
-      style,
-      innerRef
-    } = props as AnalyticalCardHeaderInternalProps;
+      indicatorState,
+      arrowIndicator,
+      style
+    } = props;
     const classes = useStyles(props);
-    const onClick = (e) => {
-      if (props.onHeaderPress) {
-        props.onHeaderPress(Event.of(null, e));
-      }
-    };
-    const getIndicatorIcon = () => {
-      const { indicatorState, arrowIndicator } = props as AnalyticalCardHeaderInternalProps;
-
+    const onClick = useCallback(
+      (e) => {
+        if (props.onHeaderPress) {
+          props.onHeaderPress(Event.of(null, e));
+        }
+      },
+      [props.onHeaderPress]
+    );
+    const getIndicatorIcon = useMemo(() => {
       const arrowClasses = StyleClassHelper.of(classes.arrowIndicatorShape);
-
       switch (arrowIndicator) {
         case DeviationIndicator.Up:
           arrowClasses.put(classes.arrowUp);
@@ -98,7 +96,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
           break;
       }
       return <div className={arrowClasses.valueOf()} />;
-    };
+    }, []);
     const headerClasses = StyleClassHelper.of(classes.cardHeader);
     if (onHeaderPress) {
       headerClasses.put(classes.cardHeaderClickable);
@@ -120,7 +118,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     }
     const shouldRenderContent = [value, unit, deviation, target].some((v) => v !== null);
     return (
-      <div ref={innerRef} onClick={onClick} className={headerClasses.valueOf()} title={tooltip} style={style}>
+      <div ref={ref} onClick={onClick} className={headerClasses.valueOf()} title={tooltip} style={style}>
         <div className={classes.headerContent}>
           <div className={classes.headerTitles}>
             <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>
@@ -140,7 +138,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
                 <div className={valueAndUnitClasses.valueOf()}>
                   <div className={classes.value}>{value}</div>
                   <div className={classes.indicatorAndUnit}>
-                    {showIndicator && getIndicatorIcon()}
+                    {showIndicator && getIndicatorIcon}
                     <div className={classes.unit}>{unit}</div>
                   </div>
                 </div>
@@ -179,6 +177,8 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     );
   }
 );
+
+AnalyticalCardHeader.displayName = 'AnalyticalCardHeader';
 
 AnalyticalCardHeader.defaultProps = {
   title: null,

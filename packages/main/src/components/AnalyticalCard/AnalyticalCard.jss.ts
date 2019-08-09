@@ -1,6 +1,5 @@
-import { fonts } from '@ui5/webcomponents-react-base';
+import { fonts, spacing } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { spacing } from '@ui5/webcomponents-react-base';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
   card: {
