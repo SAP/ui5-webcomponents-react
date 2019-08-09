@@ -1,6 +1,6 @@
 workflow "Pull Request" {
   on = "pull_request"
-  resolves = ["Test"]
+  resolves = ["Build"]
 }
 
 action "Install" {
@@ -8,16 +8,14 @@ action "Install" {
   args = "install"
 }
 
-
 action "Test" {
-  needs = "Install"
+  needs = ["Install"]
   uses = "actions/npm@master"
-  args = "Test"
+  args = "test"
 }
 
-
 action "Build" {
-  needs = "Test"
+  needs = ["Test"]
   uses = "actions/npm@master"
   args = "build"
 }
