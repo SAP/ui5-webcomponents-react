@@ -1,16 +1,16 @@
 import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { CommonProps } from '../../../interfaces/CommonProps';
-import { DeviationIndicator } from '../../../lib/DeviationIndicator';
-import { ObjectStatus } from '../../../lib/ObjectStatus';
-import { ValueState } from '../../../lib/ValueState';
-import { FlexBox } from '../../../lib/FlexBox';
-import { FlexBoxAlignItems } from '../../../lib/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../../lib/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '../../../lib/FlexBoxJustifyContent';
-import { FlexBoxWrap } from '../../../lib/FlexBoxWrap';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
+import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
 import styles from './AnalyticalCardHeader.jss';
-import { JSSTheme } from '../../../interfaces/JSSTheme';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { createUseStyles } from 'react-jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
@@ -144,7 +144,6 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
                   </div>
                 </div>
               </FlexBox>
-              <span style={{ flexGrow: 1 }} />
               <FlexBox
                 direction={FlexBoxDirection.Row}
                 wrap={FlexBoxWrap.NoWrap}

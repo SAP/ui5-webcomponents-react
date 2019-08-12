@@ -7,7 +7,7 @@
   <JssProvider generateId={[Function]}>
     <ThemeProvider theme={{...}}>
       <AnalyticalCard header={{...}} width="20rem">
-        <div className="AnalyticalCard--card--- AnalyticalCard--card----" style={[undefined]} title={[undefined]}>
+        <div className="AnalyticalCard--card---" style={{...}} title={[undefined]}>
           <AnalyticalCardHeader title="Title" subTitle="Subtitle" arrowIndicator="Down" indicatorState="Success" value="Value" valueState="Success" unit="Unit" target="Target" deviation="Deviation" showIndicator={true} description="Description" onHeaderPress={{...}} counter={{...}} counterState="None" currency={{...}}>
             <div onClick={[Function]} className="AnalyticalCardHeader--cardHeader---" title={[undefined]} style={[undefined]}>
               <div className="AnalyticalCardHeader--headerContent---">

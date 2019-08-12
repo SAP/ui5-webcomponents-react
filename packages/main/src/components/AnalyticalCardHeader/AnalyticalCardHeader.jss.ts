@@ -1,5 +1,5 @@
 import { fonts } from '@ui5/webcomponents-react-base';
-import { JSSTheme } from '../../../interfaces/JSSTheme';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
   helpText: {

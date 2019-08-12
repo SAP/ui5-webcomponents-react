@@ -1,3 +1,3 @@
-import { AnalyticalCardHeader } from '../components/AnalyticalCard/header/AnalyticalCardHeader';
+import { AnalyticalCardHeader } from '../components/AnalyticalCardHeader';
 
 export { AnalyticalCardHeader };
