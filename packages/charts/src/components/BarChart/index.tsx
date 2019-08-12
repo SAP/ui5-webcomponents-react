@@ -8,9 +8,10 @@ import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
 import { withChartContainer } from '../../internal/withChartContainer';
+import { getCssVariableValue } from '../../themes/Utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabel, getTextWidth, useMergedConfig } from '../../util/utils';
+import { formatTooltipLabel, getTextWidth, useMergedConfig } from '../../util/Utils';
 import { BarChartPlaceholder } from './Placeholder';
 
 export interface BarChartPropTypes extends ChartBaseProps {}
@@ -79,8 +80,8 @@ const BarChartComponent = forwardRef((props: BarChartPropTypes, ref: Ref<any>) =
             const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
             const dataMeta = datasetMeta.data[context.dataIndex];
             return bestContrast(dataMeta._view.backgroundColor, [
-              /* sapUiBaseText */ '#32363a',
-              /* sapUiContentContrastTextColor */ '#ffffff'
+              getCssVariableValue('--sapUiBaseText', '#32363a'),
+              getCssVariableValue('--sapUiContentContrastTextColor', '#fff')
             ]);
           }
         }

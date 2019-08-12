@@ -13,7 +13,9 @@ module.exports = function() {
       resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.cjs', '.mjs', '.esm'],
         alias: {
-          '@shared': PATHS.shared
+          '@shared': PATHS.shared,
+          '@ui5/webcomponents-react/lib': path.join(PATHS.root, 'packages', 'main', 'src', 'lib'),
+          '@ui5/webcomponents-react-charts/lib': path.join(PATHS.root, 'packages', 'charts', 'src', 'lib')
         }
       },
       module: {

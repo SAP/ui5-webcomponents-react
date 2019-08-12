@@ -57,8 +57,8 @@ SKIP_DOC_GENERATION=true
       alias: {
         ...config.resolve.alias,
         '@shared': path.join(PATHS.root, 'shared'),
-        '@ui5/webcomponents-react': path.join(PATHS.root, 'packages', 'main', 'src', 'index.ts'),
-        '@ui5/webcomponents-react-charts': path.join(PATHS.root, 'packages', 'charts', 'src', 'index.ts'),
+        '@ui5/webcomponents-react/lib': path.join(PATHS.root, 'packages', 'main', 'src', 'lib'),
+        '@ui5/webcomponents-react-charts/lib': path.join(PATHS.root, 'packages', 'charts', 'src', 'lib'),
         '@ui5/webcomponents-react-base': path.join(PATHS.root, 'packages', 'base', 'src', 'index.ts')
       }
     }

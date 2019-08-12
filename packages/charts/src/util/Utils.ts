@@ -1,36 +1,10 @@
-import merge from 'deepmerge';
-import { defaultFont } from '../config';
+import merge from 'lodash.merge';
 import { useMemo } from 'react';
-
-export const getCurrentChartElementFromContext = (context) => {
-  const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
-  return datasetMeta.data[context.dataIndex];
-};
-
-const emptyTarget = (value) => (Array.isArray(value) ? [] : {});
-
-const clone = (value, options) => merge(emptyTarget(value), value, options);
-
-const combineMerge = (target, source, options) => {
-  const destination = target.slice();
-
-  source.forEach((e, i) => {
-    if (typeof destination[i] === 'undefined') {
-      const cloneRequested = options.clone !== false;
-      const shouldClone = cloneRequested && options.isMergeableObject(e);
-      destination[i] = shouldClone ? clone(e, options) : e;
-    } else if (options.isMergeableObject(e)) {
-      destination[i] = merge(target[i], e, options);
-    } else if (target.indexOf(e) === -1) {
-      destination.push(e);
-    }
-  });
-  return destination;
-};
+import { defaultFont } from '../config';
 
 export const useMergedConfig = (x, y) => {
   return useMemo(() => {
-    return merge(x, y, { arrayMerge: combineMerge });
+    return merge(x, y);
   }, [x, y]);
 };
 
@@ -79,3 +53,4 @@ export const getTextHeight = (font = `normal ${defaultFont.size}pt ${defaultFont
   const metrics = context.measureText('M'); // should be around 90% accurate...
   return textHeight || (textHeight = metrics.width);
 };
+
