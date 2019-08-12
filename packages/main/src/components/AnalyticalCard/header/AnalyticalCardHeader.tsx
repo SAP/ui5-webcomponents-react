@@ -60,13 +60,13 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     const classes = useStyles(props);
     const onClick = useCallback(
       (e) => {
-        if (props.onHeaderPress) {
-          props.onHeaderPress(Event.of(null, e));
+        if (onHeaderPress) {
+          onHeaderPress(Event.of(null, e));
         }
       },
-      [props.onHeaderPress]
+      [onHeaderPress]
     );
-    const getIndicatorIcon = useMemo(() => {
+    const indicatorIcon = useMemo(() => {
       const arrowClasses = StyleClassHelper.of(classes.arrowIndicatorShape);
       switch (arrowIndicator) {
         case DeviationIndicator.Up:
@@ -96,7 +96,8 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
           break;
       }
       return <div className={arrowClasses.valueOf()} />;
-    }, []);
+    }, [arrowIndicator, indicatorState, classes]);
+
     const headerClasses = StyleClassHelper.of(classes.cardHeader);
     if (onHeaderPress) {
       headerClasses.put(classes.cardHeaderClickable);
@@ -138,11 +139,12 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
                 <div className={valueAndUnitClasses.valueOf()}>
                   <div className={classes.value}>{value}</div>
                   <div className={classes.indicatorAndUnit}>
-                    {showIndicator && getIndicatorIcon}
+                    {showIndicator && indicatorIcon}
                     <div className={classes.unit}>{unit}</div>
                   </div>
                 </div>
               </FlexBox>
+              <span style={{ flexGrow: 1 }} />
               <FlexBox
                 direction={FlexBoxDirection.Row}
                 wrap={FlexBoxWrap.NoWrap}

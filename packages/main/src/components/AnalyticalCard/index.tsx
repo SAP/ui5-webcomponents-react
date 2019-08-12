@@ -1,23 +1,20 @@
-import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 import styles from './AnalyticalCard.jss';
-import { createUseStyles } from 'react-jss';
 
 export interface AnalyticalCardTypes extends CommonProps {
   /**
-   * Render Function for Header Content
-   * This function will pass two parameters: theme and Content Density.
-   * Expect to return a CardHeader.
+   * The Card header Component, using the AnalyticalCardHeader is recommended.
    */
   header?: ReactNode;
   /**
    * Expected one or more React Components
    */
-  children?: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNodeArray;
   width?: CSSProperties['width'];
 }
 
