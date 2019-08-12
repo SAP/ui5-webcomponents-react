@@ -9,11 +9,10 @@
     "build": "node ./scripts/rollup/build.js",
     "build:storybook": "build-storybook -c packages/docs/.storybook -o .out",
     "pretest": "node scripts/test/clean.js",
-    "test": "npm-run-all --sequential test:jest test:karma test:combineCoverage",
-    "test:coveralls": "npm run test && cat ./coverage/lcov.info | coveralls",
+    "test": "npm-run-all --sequential test:jest test:karma",
     "test:karma": "karma start ./config/karma.conf.js --coverage",
     "test:jest": "jest --config=config/jest.config.js --coverage",
-    "test:combineCoverage": "nyc report -r text -r lcov",
+    "posttest": "nyc report -r text -r lcov || exit 0",
     "clean": "lerna clean --yes && node scripts/clean.js",
     "postversion": "node ./scripts/postversion/index.js",
     "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\""
