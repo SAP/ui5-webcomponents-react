@@ -10,30 +10,27 @@ import { ValueState } from '../../lib/ValueState';
 
 use(matchSnapshot);
 
-const renderHeader = () => {
-  return (
-    <AnalyticalCardHeader
-      title="Title"
-      subTitle="Subtitle"
-      arrowIndicator={DeviationIndicator.Down}
-      indicatorState={ValueState.Success}
-      value="Value"
-      valueState={ValueState.Success}
-      unit="Unit"
-      target="Target"
-      deviation="Deviation"
-      loading={false}
-      showIndicator
-      description="Description"
-    />
-  );
-};
+const Header = (
+  <AnalyticalCardHeader
+    title="Title"
+    subTitle="Subtitle"
+    arrowIndicator={DeviationIndicator.Down}
+    indicatorState={ValueState.Success}
+    value="Value"
+    valueState={ValueState.Success}
+    unit="Unit"
+    target="Target"
+    deviation="Deviation"
+    showIndicator
+    description="Description"
+  />
+);
 
 // TODO Add more tests
 describe('Analytical Card', () => {
   it('Render without Crashing', () => {
     const wrapper = mountThemedComponent(
-      <AnalyticalCard renderHeader={renderHeader}>
+      <AnalyticalCard header={Header}>
         <Text>I'm a content!</Text>
       </AnalyticalCard>
     );

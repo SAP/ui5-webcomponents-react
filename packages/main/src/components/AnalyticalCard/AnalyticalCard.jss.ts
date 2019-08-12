@@ -1,18 +1,20 @@
-import { fonts } from '@ui5/webcomponents-react-base';
+import { fonts, spacing } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
+const styles = ({ parameters }: JSSTheme) => ({
   card: {
     backgroundColor: parameters.sapUiTileBackground,
-    border: `1px solid ${parameters.sapUiTileBorderColor}`,
-    boxShadow: '0 0 0 1px rgba(0,0,0,0.15)',
+    // TODO There is a border mentioned in the specs, but this one looks weird.
+    // border: `0.625rem solid ${parameters.sapUiTileBorderColor}`,
+    boxShadow: parameters.sapUiShadowLevel0,
     borderRadius: '0.25rem',
     textAlign: 'start',
     overflow: 'hidden',
     position: 'relative',
-    width: '20rem',
-    fontFamily: fonts.sapUiFontFamily
-  }
+    fontFamily: fonts.sapUiFontFamily,
+    boxSizing: 'border-box'
+  },
+  content: spacing.sapUiContentPadding
 });
 
 export default styles;
