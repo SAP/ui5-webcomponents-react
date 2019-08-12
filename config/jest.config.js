@@ -29,7 +29,7 @@ module.exports = {
   testMatch: ['<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
-    '^@ui5/webcomponents/dist(.*)$': 'identity-obj-proxy', // ui5 web components can be mocked, not relevant for jest tests
+    '^@ui5/webcomponents/dist(.*)$': '<rootDir>/shared/tests/mock/UI5WebComponent', // ui5 web components can be mocked, not relevant for jest tests
     '^@ui5/webcomponents-base/src/Configuration(.*)$': path.resolve(
       PATHS.shared,
       'tests',
@@ -38,6 +38,7 @@ module.exports = {
     ),
     '^@ui5/webcomponents-base/src/boot': '<rootDir>/shared/tests/mock/WebComponentsBoot',
     '^@ui5/webcomponents-base/src/theming/StyleInjection': '<rootDir>/shared/tests/mock/StyleInjection',
+    '^@ui5/webcomponents-react/lib/(.*)$': '<rootDir>/packages/main/src/lib/$1',
     '\\.(css|less)$': 'identity-obj-proxy'
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],

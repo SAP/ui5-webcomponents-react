@@ -1,4 +1,4 @@
-import { FlexBox } from '@ui5/webcomponents-react';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import React from 'react';
 
 export const Badges = () => (

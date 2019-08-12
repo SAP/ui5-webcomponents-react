@@ -34,7 +34,7 @@ const bundles = [
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES_DEV, bundleTypes.NODE_ES_PROD],
     entry: 'charts',
     global: 'FioriForReactCharts',
-    externals: ['react', 'react-jss']
+    externals: ['react', 'react-jss', '@ui5/webcomponents-base', '@ui5/webcomponents-react-base', '@ui5/webcomponents']
   }
 ];
 

@@ -1,5 +1,7 @@
 import React from 'react';
-import { ContentDensity, ThemeProvider, Themes } from '@ui5/webcomponents-react';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
+import { Themes } from '@ui5/webcomponents-react/lib/Themes';
 import { addDecorator, addParameters, configure } from '@storybook/react';
 import { makeDecorator } from '@storybook/addons';
 import { select, withKnobs } from '@storybook/addon-knobs';
