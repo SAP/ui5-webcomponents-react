@@ -1,5 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -22,14 +22,21 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
 
 export const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef(
   (props: AnalyticalCardTypes, ref: Ref<HTMLDivElement>) => {
-    const { children, style, className, tooltip, header } = props;
-    const classes = useStyles(props);
+    const { children, style, className, tooltip, header, width } = props;
+    const classes = useStyles();
     const classNameString = StyleClassHelper.of(classes.card);
     if (className) {
       classNameString.put(className);
     }
+
+    const analyticalCardStyles = useMemo(() => {
+      return {
+        width,
+        ...style
+      };
+    }, [style, width]);
     return (
-      <div ref={ref} className={classNameString.toString()} style={style} title={tooltip}>
+      <div ref={ref} className={classNameString.toString()} style={analyticalCardStyles} title={tooltip}>
         {header}
         <div className={classes.content}>{children}</div>
       </div>

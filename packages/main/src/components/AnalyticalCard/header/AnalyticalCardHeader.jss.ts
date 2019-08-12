@@ -1,7 +1,7 @@
 import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 
-const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
+const styles = ({ parameters }: JSSTheme) => ({
   helpText: {
     fontFamily: fonts.sapUiFontFamily,
     fontSize: fonts.sapMFontMediumSize,
@@ -16,12 +16,10 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiTileBackground,
     fontFamily: fonts.sapUiFontHeaderFamily,
     '&:hover': {
-      //TODO sapUiTileHoverBackground
-      backgroundColor: '#f5f5f5'
+      backgroundColor: parameters.sapUiListHoverBackground // TODO sapUiTileHoverBackground '#fafafa'
     },
     '&:active': {
-      //TODO sapUiTileActiveBackground
-      backgroundColor: '#f5f5f5'
+      backgroundColor: parameters.sapUiListHoverBackground // TODO sapUiTileHoverBackground '#fafafa'
     }
   },
   arrowIndicatorShape: {
