@@ -101,9 +101,16 @@ You could import all components also from `@ui5/webcomponents-react` directly, b
 
 ### Browser Support
 `@ui5/webcomponents-react` is supporting all modern major browsers. There is no support for Internet Explorer 11 built in.<br />
-If you want your application to run in IE11, you will have to polyfill some features by importing:
+If you want your application to run in IE11, you will have to polyfill some features by importing these polyfills as **first** imports in your `src/index.js`:
 ```js
+import 'react-app-polyfill/ie11';
+import '@ui5/webcomponents-base/src/features/browsersupport/IE11';
 import '@ui5/webcomponents-react-base/polyfill/IE11';
+import '@webcomponents/webcomponentsjs/webcomponents-bundle';
+```
+You can install `react-app-polyfill` and `@webcomponents/webcomponentsjs` with the following command:
+```bash
+npm install react-app-polyfill @webcomponents/webcomponentsjs --save
 ```
 
 For Browser Support and the configuration of the UI5 Web Components, please take a look at the 
