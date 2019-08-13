@@ -1,3 +1,6 @@
+import 'react-app-polyfill/ie11';
+import '@ui5/webcomponents-base/src/features/browsersupport/IE11';
+import '@webcomponents/webcomponentsjs/webcomponents-bundle';
 import React from 'react';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';

@@ -1,7 +1,7 @@
 import boot from '@ui5/webcomponents-base/src/boot';
 import { getCompactSize, getTheme } from '@ui5/webcomponents-base/src/Configuration';
 import { injectThemeProperties } from '@ui5/webcomponents-base/src/theming/StyleInjection';
-import { createGenerateClassName, sap_fiori_3 } from '@ui5/webcomponents-react-base';
+import { createGenerateClassName, sap_fiori_3, Device } from '@ui5/webcomponents-react-base';
 import fiori3Theme from '@ui5/webcomponents/dist/generated/themes/sap_fiori_3/parameters-bundle.css.js';
 import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
 import { JssProvider, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
@@ -25,12 +25,13 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
       // only inject parameters for sap_fiori_3 and if they haven't been injected before
       if (theme === Themes.sap_fiori_3 && !styleElement.textContent) {
         injectThemeProperties(fiori3Theme);
-        // if (Device.browser.msie && window.CSSVarsPonyfill) {
-        //   setTimeout(() => {
-        //     window.CSSVarsPonyfill.resetCssVars();
-        //     window.CSSVarsPonyfill.cssVars();
-        //   }, 0);
-        // }
+        const CSSVarsPonyfill = window['CSSVarsPonyfill'];
+        if (Device.browser.msie && CSSVarsPonyfill) {
+          setTimeout(() => {
+            CSSVarsPonyfill.resetCssVars();
+            CSSVarsPonyfill.cssVars();
+          }, 0);
+        }
       }
     });
   }, [theme]);
