@@ -2,10 +2,11 @@ import boot from '@ui5/webcomponents-base/src/boot';
 import { getCompactSize, getTheme } from '@ui5/webcomponents-base/src/Configuration';
 import { injectThemeProperties } from '@ui5/webcomponents-base/src/theming/StyleInjection';
 import { createGenerateClassName, sap_fiori_3 } from '@ui5/webcomponents-react-base';
-import fiori3ThemeProperties from '@ui5/webcomponents/dist/themes/sap_fiori_3/parameters-bundle.css.json';
-import React, { FC, Fragment, ReactNode, useEffect, useMemo, lazy, Suspense } from 'react';
+import fiori3Theme from '@ui5/webcomponents/dist/generated/themes/sap_fiori_3/parameters-bundle.css.js';
+import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
 import { JssProvider, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { ContentDensity } from '../../lib/ContentDensity';
+import { MessageToast } from '../../lib/MessageToast';
 import { Themes } from '../../lib/Themes';
 
 export interface ThemeProviderProps {
@@ -13,24 +14,28 @@ export interface ThemeProviderProps {
   children: ReactNode;
 }
 
-const EmptyComponent = () => null;
-
 const generateClassName = createGenerateClassName();
 
-const MessageToast = lazy(() => import('../../lib/MessageToast'));
-
 const ThemeProvider: FC<ThemeProviderProps> = (props) => {
+  const theme = getTheme();
   useEffect(() => {
-    boot().then((_) => {
-      let existingThemingProperties = document.querySelector('head style[data-ui5-webcomponents-theme-properties]');
-      if (!existingThemingProperties || !existingThemingProperties.innerHTML) {
-        injectThemeProperties(fiori3ThemeProperties._);
+    boot().then(async () => {
+      // TODO will rename to 'data-ui5-theme-properties' after next UI5 Web Components Release
+      const styleElement = document.head.querySelector('style[data-ui5-webcomponents-theme-properties]');
+      // only inject parameters for sap_fiori_3 and if they haven't been injected before
+      if (theme === Themes.sap_fiori_3 && !styleElement.textContent) {
+        injectThemeProperties(fiori3Theme);
+        // if (Device.browser.msie && window.CSSVarsPonyfill) {
+        //   setTimeout(() => {
+        //     window.CSSVarsPonyfill.resetCssVars();
+        //     window.CSSVarsPonyfill.cssVars();
+        //   }, 0);
+        // }
       }
     });
-  }, []);
+  }, [theme]);
   const { withToastContainer, children } = props;
 
-  const theme = getTheme();
   const isCompactSize = getCompactSize();
 
   const contentDensity = useMemo(() => {
@@ -55,11 +60,7 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
       <ReactJssThemeProvider theme={themeContext}>
         <Fragment>
           {children}
-          {withToastContainer && (
-            <Suspense fallback={<EmptyComponent />}>
-              <MessageToast />
-            </Suspense>
-          )}
+          {withToastContainer && <MessageToast />}
         </Fragment>
       </ReactJssThemeProvider>
     </JssProvider>
