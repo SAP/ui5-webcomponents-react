@@ -4,18 +4,18 @@ workflow "Pull Request" {
 }
 
 action "Install" {
-  uses = "actions/npm@master"
+  uses = "nuxt/actions-yarn@master"
   args = "install"
 }
 
 action "Test" {
   needs = ["Install"]
-  uses = "actions/npm@master"
+  uses = "nuxt/actions-yarn@master"
   args = "test"
 }
 
 action "Build" {
   needs = ["Test"]
-  uses = "actions/npm@master"
+  uses = "nuxt/actions-yarn@master"
   args = "build"
 }
