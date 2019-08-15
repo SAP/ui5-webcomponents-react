@@ -40,6 +40,8 @@ Combined Changelog from `0.4.1` to `0.5.0`
 * **Charts:** `sap_belize` and `sap_belize_plus` stylings are not longer exported
 * **Charts:** Name of color variables for all themes changed. Now `sapUiChartAccent1` to `sapUiChartAccent12` plus `sapUiChartGood`, `sapUiChartBad` and `sapUiChartHighlight` are available
 * **VariantManagement:** Removed prop `enabled`, please use `disabled` instead. This change should not affect your applications, because `enabled` was never implemented.
+* **AnalyticalCard**: Prop `renderHeader` renamed to `header`, now accepting the React Element direclty
+* **AnalyticalCardHeader**: Prop `loading` was removed as it was not part of the specs
 
 
 
