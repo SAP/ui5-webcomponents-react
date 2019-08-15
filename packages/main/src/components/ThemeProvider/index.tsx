@@ -39,10 +39,6 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
 
   const isCompactSize = getCompactSize();
 
-  const contentDensity = useMemo(() => {
-    return isCompactSize ? ContentDensity.Compact : ContentDensity.Cozy;
-  }, [isCompactSize]);
-
   const parameters = useMemo(() => {
     if (theme === Themes.sap_fiori_3) return sap_fiori_3;
     return null;
@@ -51,10 +47,10 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
   const themeContext = useMemo(() => {
     return {
       theme,
-      contentDensity,
+      contentDensity: isCompactSize ? ContentDensity.Compact : ContentDensity.Cozy,
       parameters
     };
-  }, [theme, contentDensity, parameters]);
+  }, [theme, isCompactSize, parameters]);
 
   return (
     <JssProvider generateId={generateClassName}>
