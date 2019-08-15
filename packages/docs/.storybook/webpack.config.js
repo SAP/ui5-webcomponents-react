@@ -5,6 +5,9 @@ require('dotenv').config({
   path: path.join(PATHS.root, '.env')
 });
 
+process.env.NODE_ENV = 'development';
+process.env.BABEL_ENV = 'development';
+
 module.exports = ({ config }) => {
   const tsLoader = {
     test: /\.tsx?$/,
@@ -12,7 +15,7 @@ module.exports = ({ config }) => {
       {
         loader: require.resolve('babel-loader'),
         options: {
-          presets: [require.resolve('babel-preset-react-app')]
+          presets: [[require.resolve('babel-preset-react-app'), { flow: false, typescript: true }]]
         }
       }
     ]
@@ -30,37 +33,48 @@ SKIP_DOC_GENERATION=true
     tsLoader.use.push({ loader: require.resolve('react-docgen-typescript-loader') });
   }
 
-  return {
-    ...config,
-    module: {
-      ...config.module,
-      rules: [
-        ...config.module.rules,
-        tsLoader,
-        {
-          test: [/cldr\/.*\.json$/, /i18n\/.*\.json$/],
-          loader: 'file-loader',
-          options: {
-            name: 'static/media/[name].[hash:8].[ext]'
-          },
-          type: 'javascript/auto'
-        },
-        {
-          test: /\.properties$/,
-          use: 'file-loader'
-        }
-      ]
-    },
-    resolve: {
-      ...config.resolve,
-      extensions: [...config.resolve.extensions, '.ts', '.tsx', '.jsx'],
-      alias: {
-        ...config.resolve.alias,
-        '@shared': path.join(PATHS.root, 'shared'),
-        '@ui5/webcomponents-react/lib': path.join(PATHS.root, 'packages', 'main', 'src', 'lib'),
-        '@ui5/webcomponents-react-charts/lib': path.join(PATHS.root, 'packages', 'charts', 'src', 'lib'),
-        '@ui5/webcomponents-react-base': path.join(PATHS.root, 'packages', 'base', 'src', 'index.ts')
+  config.module.rules.push(
+    tsLoader,
+    {
+      test: /\.(js|mjs)$/,
+      exclude: /@babel(?:\/|\\{1,2})runtime/,
+      loader: require.resolve('babel-loader'),
+      options: {
+        babelrc: false,
+        configFile: false,
+        compact: false,
+        presets: [[require.resolve('babel-preset-react-app/dependencies'), { helpers: true }]],
+        cacheDirectory: true,
+        cacheCompression: false,
+
+        // If an error happens in a package, it's possible to be
+        // because it was compiled. Thus, we don't want the browser
+        // debugger to show the original code. Instead, the code
+        // being evaluated would be much more helpful.
+        sourceMaps: false
       }
+    },
+    {
+      test: /\.properties$/,
+      use: 'file-loader'
     }
+  );
+
+  config.module.rules = [
+    {
+      oneOf: config.module.rules
+    }
+  ];
+
+  config.resolve.extensions.push('.ts', '.tsx');
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    '@shared': path.join(PATHS.root, 'shared'),
+    '@ui5/webcomponents-react/lib': path.join(PATHS.root, 'packages', 'main', 'src', 'lib'),
+    '@ui5/webcomponents-react-charts/lib': path.join(PATHS.root, 'packages', 'charts', 'src', 'lib'),
+    '@ui5/webcomponents-react-base/lib': path.join(PATHS.root, 'packages', 'base', 'src', 'lib'),
+    '@ui5/webcomponents-react-base/polyfill': path.join(PATHS.root, 'packages', 'base', 'npm', 'polyfill')
   };
+
+  return config;
 };
