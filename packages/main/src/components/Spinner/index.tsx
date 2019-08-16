@@ -12,7 +12,7 @@ export interface SpinnerProps extends CommonProps {
 const useStyles = createUseStyles(styles, { name: 'Spinner' });
 
 const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObject<HTMLDivElement>) => {
-  const { className, size, tooltip, slot } = props;
+  const { className, size, tooltip, slot, style } = props;
   const classes = useStyles();
 
   const spinnerClasses = StyleClassHelper.of(classes.spinner);
@@ -34,6 +34,7 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
       aria-valuemax={100}
       title={tooltip || 'Please wait'}
       slot={slot}
+      style={style}
     >
       Loading...
     </div>
