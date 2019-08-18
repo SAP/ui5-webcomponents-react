@@ -1,0 +1,25 @@
+on: pull_request
+name: Pull Request
+jobs:
+  testNode10:
+    name: Test Node 10
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Test Node 10
+      uses: aquariuslt/node-browsers-github-actions@master
+      with:
+        entrypoint: yarn
+        args: test
+    - name: Install
+      uses: Borales/actions-yarn@master
+      with:
+        args: install
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build
+      uses: Borales/actions-yarn@master
+      with:
+        args: build
