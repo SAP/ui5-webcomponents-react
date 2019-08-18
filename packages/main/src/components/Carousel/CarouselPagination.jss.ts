@@ -12,12 +12,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiPageFooterBackground
   },
   paginationTop: {
-    borderBottom: `1px solid ${parameters.sapUiPageFooterBorderColor}`,
-    '&$paginationArrowContent': {
-      '& $paginationArrow': {
-        top: 'calc(50% + 2rem) !important'
-      }
-    }
+    borderBottom: `1px solid ${parameters.sapUiPageFooterBorderColor}`
   },
   paginationBottom: {
     borderTop: `1px solid ${parameters.sapUiPageFooterBorderColor}`
@@ -76,14 +71,33 @@ const styles = ({ parameters }: JSSTheme) => ({
       boxShadow: parameters.sapUiShadowLevel1,
       '&:first-child': {
         position: 'absolute',
-        top: 'calc(50% - 2rem)',
+        top: 'calc(50% - 2.75rem)',
         left: '0.5rem',
         opacity: 0,
         zIndex: ZIndex.InputModal
       },
       '&:last-child': {
         position: 'absolute',
-        top: 'calc(50% - 2rem)',
+        top: 'calc(50% - 2.75rem)',
+        right: '0.5rem',
+        opacity: 0,
+        zIndex: ZIndex.InputModal
+      }
+    }
+  },
+  paginationArrowContentNoBar: {
+    '& $paginationArrow': {
+      boxShadow: parameters.sapUiShadowLevel1,
+      '&:first-child': {
+        position: 'absolute',
+        top: 'calc(50% - 1rem)',
+        left: '0.5rem',
+        opacity: 0,
+        zIndex: ZIndex.InputModal
+      },
+      '&:last-child': {
+        position: 'absolute',
+        top: 'calc(50% - 1rem)',
         right: '0.5rem',
         opacity: 0,
         zIndex: ZIndex.InputModal

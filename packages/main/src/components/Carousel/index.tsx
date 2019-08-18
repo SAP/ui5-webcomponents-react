@@ -7,15 +7,13 @@ import { PlacementType } from '../../lib/PlacementType';
 import styles from './Carousel.jss';
 import { CarouselPagination, CarouselPaginationPropTypes } from './CarouselPagination';
 
-export interface CarouselPropTypes extends CarouselPaginationPropTypes, CommonProps {
+export interface CarouselPropTypes
+  extends Omit<CarouselPaginationPropTypes, 'goToPreviousPage' | 'goToNextPage'>,
+    CommonProps {
   /**
    * The content which the carousel displays.
    */
   children: ReactNode | ReactNodeArray;
-  /**
-   * Index of the active page to be displayed
-   */
-  activePage?: number;
   /**
    * This event is fired after a carousel swipe has been completed
    */
@@ -44,27 +42,6 @@ interface CarouselState {
     activePage: number;
   };
 }
-
-const CarouselInner = (props) => {
-  const { children, className, activePage } = props;
-
-  return (
-    <Fragment>
-      {Children.map(children, (item, index) => (
-        <div
-          key={index}
-          className={className}
-          style={{
-            transform: `translateX(-${activePage * 100}%)`,
-            visibility: [activePage - 1, activePage, activePage + 1].includes(index) ? 'visible' : 'hidden'
-          }}
-        >
-          {item}
-        </div>
-      ))}
-    </Fragment>
-  );
-};
 
 @withStyles(styles)
 export class Carousel extends Component<CarouselPropTypes, CarouselState> {
@@ -133,7 +110,8 @@ export class Carousel extends Component<CarouselPropTypes, CarouselState> {
       className,
       style,
       arrowsPlacement,
-      tooltip
+      tooltip,
+      showPageIndicator
     } = this.props as CarouselPropsInternal;
 
     const { activePage } = this.state;
@@ -158,21 +136,35 @@ export class Carousel extends Component<CarouselPropTypes, CarouselState> {
       <div className={classNameString.toString()} style={outerStyle} title={tooltip} slot={this.props['slot']}>
         {Children.count(children) > 1 && pageIndicatorPlacement === PlacementType.Top && (
           <CarouselPagination
-            {...this.props}
+            arrowsPlacement={arrowsPlacement}
+            showPageIndicator={showPageIndicator}
+            pageIndicatorPlacement={pageIndicatorPlacement}
             activePage={activePage}
+            children={children}
             goToPreviousPage={this.goToPreviousPage}
             goToNextPage={this.goToNextPage}
           />
         )}
         <div className={classes.carouselInner}>
-          <CarouselInner className={carouselItemClasses.toString()} activePage={activePage}>
-            {children}
-          </CarouselInner>
+          {Children.map(children, (item, index) => (
+            <div
+              key={index}
+              className={carouselItemClasses.toString()}
+              style={{
+                transform: `translateX(-${activePage * 100}%)`
+              }}
+            >
+              {item}
+            </div>
+          ))}
         </div>
         {Children.count(children) > 1 && pageIndicatorPlacement === PlacementType.Bottom && (
           <CarouselPagination
-            {...this.props}
+            arrowsPlacement={arrowsPlacement}
+            showPageIndicator={showPageIndicator}
+            pageIndicatorPlacement={pageIndicatorPlacement}
             activePage={activePage}
+            children={children}
             goToPreviousPage={this.goToPreviousPage}
             goToNextPage={this.goToNextPage}
           />
