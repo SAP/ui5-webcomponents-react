@@ -9,7 +9,6 @@ LABEL com.github.actions.name="UI5 Web Components for React Image"
 LABEL com.github.actions.description="Provides node, the yarn CLI and Java"
 LABEL com.github.actions.icon="package"
 LABEL com.github.actions.color="blue"
-COPY LICENSE README.md /
 
 RUN mkdir -p /tools/sap-machine
 ENV JAVA_HOME=/tools/sap-machine

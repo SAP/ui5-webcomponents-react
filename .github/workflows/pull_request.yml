@@ -1,20 +1,20 @@
 on: pull_request
 name: Pull Request
 jobs:
-  testNode10:
-    name: Test Node 10
-    runs-on: ubuntu-latest
+  test_and_build:
+    name: Install, Test & Build
+    runs-on: ubuntu-18.04
     steps:
     - name: Install
-      uses: ./.github/action-image
+      uses: ./.github/actions/image
       with:
         args: install
     - name: Build
-      uses: ./.github/action-image
+      uses: ./.github/actions/image
       with:
         args: build
     - name: Test Node 10
-      uses: ./.github/action-image
+      uses: ./.github/actions/image
       with:
         entrypoint: yarn
         args: test
