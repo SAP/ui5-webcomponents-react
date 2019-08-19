@@ -46,25 +46,25 @@ storiesOf('Components | MessageToast', module).add(
       propTablesExclude: [ThemeProvider, Button],
       text: `
 #### Success Message Toast:
-import { MessageToast } from '@ui5/webcomponents-react';
+import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 
 MessageToast.success('Hello Success Message Toast');
 
 #### Warning Message Toast:
-import { MessageToast } from '@ui5/webcomponents-react';
+import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 
 MessageToast.warning('Hello Warning Message Toast');
 
 
 #### Error Message Toast:
-import { MessageToast } from '@ui5/webcomponents-react';
+import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 
 MessageToast.error('Hello Error Message Toast');
 
 
 
 #### Generic Message Toast:
-import { MessageToast } from '@ui5/webcomponents-react';
+import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 
 MessageToast.show('Hello Generic Message Toast');
 

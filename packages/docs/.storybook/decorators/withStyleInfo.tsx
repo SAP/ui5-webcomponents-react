@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Label, Text, ThemeProvider } from '@ui5/webcomponents-react';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 
 const withStyleContainer = {
   fontFamily:

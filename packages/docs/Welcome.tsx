@@ -1,4 +1,9 @@
-import { FlexBox, FlexBoxDirection, Link, Page, Text, Title } from '@ui5/webcomponents-react';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { Link } from '@ui5/webcomponents-react/lib/Link';
+import { Page } from '@ui5/webcomponents-react/lib/Page';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { storiesOf } from '@storybook/react';
 import 'highlight.js/styles/solarized-dark.css';
 import Highlight from 'react-highlight.js';

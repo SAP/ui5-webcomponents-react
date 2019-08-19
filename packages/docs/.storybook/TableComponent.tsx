@@ -1,4 +1,10 @@
-import { Badge, Label, Table, TableCell, TableColumn, TableRow, Text } from '@ui5/webcomponents-react';
+import { Badge } from '@ui5/webcomponents-react/lib/Badge';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Table } from '@ui5/webcomponents-react/lib/Table';
+import { TableCell } from '@ui5/webcomponents-react/lib/TableCell';
+import { TableColumn } from '@ui5/webcomponents-react/lib/TableColumn';
+import { TableRow } from '@ui5/webcomponents-react/lib/TableRow';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React from 'react';
 
 const columns = [

@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.2-rc.18...v0.5.0) (2019-08-15)
+
+Combined Changelog from `0.4.1` to `0.5.0`
+
+
+### Features
+
+* **Charts:** Added lib export per chart ([#66](https://github.com/SAP/ui5-webcomponents-react/issues/66)) ([977cc25](https://github.com/SAP/ui5-webcomponents-react/commit/977cc25
+* **FilterItem:** Add MultiSelect option to FilterTypes ([#79](https://github.com/SAP/ui5-webcomponents-react/issues/79)) ([0665824](https://github.com/SAP/ui5-webcomponents-react/commit/0665824))
+
+
+
+### Bug Fixes
+
+* **Charts:** Show Loading Placeholder ([#64](https://github.com/SAP/ui5-webcomponents-react/issues/64)) ([589f787](https://github.com/SAP/ui5-webcomponents-react/commit/589f787))
+* **VariantManagement:** initialSelectedKey prop is working as intended ([#75](https://github.com/SAP/ui5-webcomponents-react/issues/75)) ([a5e4267](https://github.com/SAP/ui5-webcomponents-react/commit/a5e4267))
+* **AnalyticalTable:** Header is now resizable ([#76](https://github.com/SAP/ui5-webcomponents-react/issues/76)) ([eadd61a](https://github.com/SAP/ui5-webcomponents-react/commit/eadd61a))
+* **FilterBar:** Increase margin between FilterItems in FilterBar ([#80](https://github.com/SAP/ui5-webcomponents-react/issues/80)) ([ee94065](https://github.com/SAP/ui5-webcomponents-react/commit/ee94065))
+* **ObjectPage:** Don't crash in default mode with only 1 child provided ([#81](https://github.com/SAP/ui5-webcomponents-react/issues/81)) ([2e5ddb5](https://github.com/SAP/ui5-webcomponents-react/commit/2e5ddb5))
+* **Custom Components:** adding ref to CommonProps interface ([#84](https://github.com/SAP/ui5-webcomponents-react/issues/84)) ([bb612ec](https://github.com/SAP/ui5-webcomponents-react/commit/bb612ec))
+* **charts:** Repeat the color palette if more datasets than colors are used ([#86](https://github.com/SAP/ui5-webcomponents-react/issues/86)) ([e22387c](https://github.com/SAP/ui5-webcomponents-react/commit/e22387c))
+
+
+
+### Code Refactoring
+
+* **Charts:** Update ref API and color maps ([#62](https://github.com/SAP/ui5-webcomponents-react/issues/62)) ([a343567](https://github.com/SAP/ui5-webcomponents-react/commit/a343567))
+* **VariantManagement:** removed unused prop enabled ([#77](https://github.com/SAP/ui5-webcomponents-react/issues/77)) ([5080316](https://github.com/SAP/ui5-webcomponents-react/commit/5080316))
+
+
+
+### BREAKING CHANGES
+
+* **Charts:** `innerChartRef` is replaced by `ref`
+* **Charts:** `sap_belize` and `sap_belize_plus` stylings are not longer exported
+* **Charts:** Name of color variables for all themes changed. Now `sapUiChartAccent1` to `sapUiChartAccent12` plus `sapUiChartGood`, `sapUiChartBad` and `sapUiChartHighlight` are available
+* **VariantManagement:** Removed prop `enabled`, please use `disabled` instead. This change should not affect your applications, because `enabled` was never implemented.
+* **AnalyticalCard**: Prop `renderHeader` renamed to `header`, now accepting the React Element direclty
+* **AnalyticalCardHeader**: Prop `loading` was removed as it was not part of the specs
+
+
+
+
+## [0.4.2-rc.18](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.2-rc.17...v0.4.2-rc.18) (2019-08-15)
+
+**Note:** Version bump only for package ui5-webcomponents-react
+
+
+
+
+
+## [0.4.2-rc.17](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.2-rc.16...v0.4.2-rc.17) (2019-08-12)
+
+**Note:** Version bump only for package ui5-webcomponents-react
+
+
+
+
+
 ## [0.4.2-rc.16](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.2-rc.15...v0.4.2-rc.16) (2019-08-08)
 
 

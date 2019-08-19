@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.2-rc.18...v0.5.0) (2019-08-15)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-base
+
+
+
+
+
+## [0.4.2-rc.18](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.2-rc.17...v0.4.2-rc.18) (2019-08-15)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-base
+
+
+
+
+
+## [0.4.2-rc.17](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.2-rc.16...v0.4.2-rc.17) (2019-08-12)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-base
+
+
+
+
+
 ## [0.4.2-rc.16](https://github.com/SAP/ui5-webcomponents-react/compare/v0.4.2-rc.15...v0.4.2-rc.16) (2019-08-08)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-base

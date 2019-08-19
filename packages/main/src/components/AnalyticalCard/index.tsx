@@ -1,43 +1,48 @@
-import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { PureComponent, ReactNode, ReactNodeArray } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ContentDensity } from '../../lib/ContentDensity';
-import { Themes } from '../../lib/Themes';
+
 import styles from './AnalyticalCard.jss';
 
 export interface AnalyticalCardTypes extends CommonProps {
   /**
-   * Render Function for Header Content
-   * This function will pass two parameters: theme and Content Density.
-   * Expect to return a CardHeader.
+   * The Card header Component, using the AnalyticalCardHeader is recommended.
    */
-  renderHeader: (theme: Themes, contentDensity: ContentDensity) => JSX.Element;
+  header?: ReactNode;
   /**
    * Expected one or more React Components
    */
-  children?: ReactNode | ReactNodeArray;
+  children: ReactNode | ReactNodeArray;
+  width?: CSSProperties['width'];
 }
 
-export interface AnalyticalCardPropsInternal extends AnalyticalCardTypes, ClassProps {
-  theme?: JSSTheme;
-}
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalCard' });
 
-@withStyles(styles)
-export class AnalyticalCard extends PureComponent<AnalyticalCardTypes> {
-  render() {
-    const { renderHeader, children, classes, theme, style, className, tooltip, innerRef } = this
-      .props as AnalyticalCardPropsInternal;
+export const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef(
+  (props: AnalyticalCardTypes, ref: Ref<HTMLDivElement>) => {
+    const { children, style, className, tooltip, header, width } = props;
+    const classes = useStyles();
     const classNameString = StyleClassHelper.of(classes.card);
     if (className) {
       classNameString.put(className);
     }
+
+    const analyticalCardStyles = useMemo(() => {
+      return {
+        width,
+        ...style
+      };
+    }, [style, width]);
     return (
-      <div ref={innerRef} className={classNameString.toString()} style={style} title={tooltip}>
-        {renderHeader(theme.theme, theme.contentDensity)}
-        <div style={{ padding: '1rem' }}>{children}</div>
+      <div ref={ref} className={classNameString.toString()} style={analyticalCardStyles} title={tooltip}>
+        {header}
+        <div className={classes.content}>{children}</div>
       </div>
     );
   }
-}
+);
+
+AnalyticalCard.displayName = 'AnalyticalCard';
+AnalyticalCard.defaultProps = { width: '20rem', header: null };

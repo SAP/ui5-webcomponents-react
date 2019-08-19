@@ -21,7 +21,7 @@ script:
   - |
     if [ ${TRAVIS_NODE_VERSION} = "10" ]
     then
-      cat ${TRAVIS_BUILD_DIR}/coverage/lcov.info | ${TRAVIS_BUILD_DIR}/node_modules/.bin/coveralls
+      cat ${TRAVIS_BUILD_DIR}/coverage/lcov.info | ${TRAVIS_BUILD_DIR}/node_modules/.bin/coveralls || exit 0
     fi
 
 jobs:
