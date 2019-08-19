@@ -5,17 +5,16 @@ jobs:
     name: Test Node 10
     runs-on: ubuntu-latest
     steps:
-    - uses: ./.github/action-image
     - name: Install
-      uses: Borales/actions-yarn@master
+      uses: .github/action-image
       with:
         args: install
     - name: Build
-      uses: ./.github/action-image
+      uses: .github/action-image
       with:
         args: build
     - name: Test Node 10
-      uses: ./.github/action-image
+      uses: .github/action-image
       with:
         entrypoint: yarn
         args: test
