@@ -6,20 +6,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - name: Install
+      uses: Borales/actions-yarn@master
+      with:
+        args: install
+    - name: Build
+      uses: Borales/actions-yarn@master
+      with:
+        args: build
     - name: Test Node 10
       uses: aquariuslt/node-browsers-github-actions@master
       with:
         entrypoint: yarn
         args: test
-    - name: Install
-      uses: Borales/actions-yarn@master
-      with:
-        args: install
     - name: Coveralls
       uses: coverallsapp/github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build
-      uses: Borales/actions-yarn@master
-      with:
-        args: build
