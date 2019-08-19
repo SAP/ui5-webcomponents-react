@@ -1,4 +1,3 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -9,7 +8,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     border: '1px solid transparent',
     touchAction: 'pan-y',
     minWidth: '15.5rem',
-    fontFamily: fonts.sapUiFontFamily,
+    fontFamily: parameters.sapUiFontFamily,
+    backgroundColor: parameters.sapUiBaseBG,
     '&:hover': {
       '& [data-value="paginationArrow"]': {
         opacity: 1
@@ -22,22 +22,17 @@ const styles = ({ parameters }: JSSTheme) => ({
     whiteSpace: 'nowrap',
     textAlign: 'start',
     fontSize: '0',
-    backgroundColor: parameters.sapUiBaseBG,
-    '& > *': {
-      transitionProperty: 'transform',
-      transitionTimingFunction: 'cubic-bezier(0.46, 0, 0.44, 1)',
-      transitionDuration: '0.5s',
-      display: 'inline-block',
-      verticalAlign: 'top',
-      whiteSpace: 'normal',
-      fontSize: '1rem',
-      backgroundColor: parameters.sapUiBaseBG
-    }
+    transition: 'transform 0.5s cubic-bezier(0.46, 0, 0.44, 1)'
   },
   carouselItem: {
     width: '100%',
     height: '100%',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    display: 'inline-block',
+    verticalAlign: 'top',
+    whiteSpace: 'normal',
+    fontSize: '1rem',
+    visibility: 'hidden'
   },
   carouselItemContentIndicator: {
     padding: '0 4rem',
