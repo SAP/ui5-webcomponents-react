@@ -3,8 +3,8 @@
 #### `Renders without crashing`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
@@ -92,8 +92,8 @@
 #### `Should render a text indicator`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
@@ -180,8 +180,8 @@
 #### `CarouselArrowsPlacement: Content`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel arrowsPlacement="Content" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
@@ -269,8 +269,8 @@
 #### `CarouselArrowsPlacement: PageIndicator`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel arrowsPlacement="PageIndicator" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
@@ -358,8 +358,8 @@
 #### `Page Indicator Placement: Top`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel arrowsPlacement="PageIndicator" pageIndicatorPlacement="Top" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false}>
         <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
@@ -445,8 +445,8 @@
 ```
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel arrowsPlacement="PageIndicator" pageIndicatorPlacement="Top" activePage={1} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false}>
         <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
@@ -534,8 +534,8 @@
 #### `Update activePage via prop`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">

@@ -3,8 +3,8 @@
 #### `test Asc desc`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(AnalyticalTable) showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} groupable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} pivotBy={{...}} getTrProps={[Function: getTrProps]}>
         <AnalyticalTable showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} groupable={false} cellHeight={{...}} defaultPageSize={10} minRows={10} numItems={{...}} pivotBy={{...}} getTrProps={[Function: getTrProps]} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -656,8 +656,8 @@
 #### `pagination`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(AnalyticalTable) defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} groupable={false} cellHeight={{...}} minRows={10} numItems={{...}} pivotBy={{...}} getTrProps={[Function: getTrProps]}>
         <AnalyticalTable defaultPageSize={1} showPagination={true} data={{...}} title="Test" columns={{...}} alternateRowColors={false} loading={false} sortable={true} filterable={false} groupable={false} cellHeight={{...}} minRows={10} numItems={{...}} pivotBy={{...}} getTrProps={[Function: getTrProps]} innerRef={{...}} classes={{...}} theme={{...}}>

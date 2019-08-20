@@ -3,8 +3,8 @@
 #### `Basic Test`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <BusyIndicator active={true} size="Large">
         <ui5-busyindicator active={true} size="Large" class="" />
@@ -17,8 +17,8 @@
 #### `Inactive`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <BusyIndicator size="Large">
         <ui5-busyindicator size="Large" class="" />
@@ -31,8 +31,8 @@
 #### `Size Medium`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <BusyIndicator active={true} size="Medium">
         <ui5-busyindicator active={true} size="Medium" class="" />
@@ -45,8 +45,8 @@
 #### `Size Small`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <BusyIndicator active={true} size="Small">
         <ui5-busyindicator active={true} size="Small" class="" />

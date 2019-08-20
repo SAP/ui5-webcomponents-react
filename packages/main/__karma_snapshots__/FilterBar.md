@@ -3,8 +3,8 @@
 #### `Render without crashing`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <FilterBar renderSearch={[Function: renderSearch]} renderVariants={[Function: renderVariants]}>
         <div className="FilterBar--outerContainer---">
@@ -116,8 +116,8 @@
 #### `Hide Filter Bar`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <FilterBar renderVariants={[Function: renderVariants]}>
         <div className="FilterBar--outerContainer---">
@@ -238,8 +238,8 @@
 #### `Select Filter Item`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <FilterBar renderVariants={[Function: renderVariants]}>
         <div className="FilterBar--outerContainer---">

@@ -3,8 +3,8 @@
 #### `Basic Test`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Badge colorScheme="1">
         <ui5-badge color-scheme="1" class="">
@@ -19,8 +19,8 @@
 #### `with Icon`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Badge icon={{...}} colorScheme="1">
         <ui5-badge color-scheme="1" class="">

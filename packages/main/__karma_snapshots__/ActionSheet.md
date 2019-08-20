@@ -3,8 +3,8 @@
 #### `Render without Crashing`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <ActionSheet openBy={{...}} placement="Bottom">
         <Popover openBy={{...}} placementType="Bottom" style={[undefined]} slot={[undefined]} initialFocus={{...}} headerText="" horizontalAlign="Center" verticalAlign="Center">
