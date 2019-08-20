@@ -70,10 +70,7 @@ describe('Carousel', () => {
       children: cloneElement(wrapper.props().children, { activePage: 1 })
     });
     wrapper.update();
-    // @ts-ignore
-    const instance = wrapper.find(Carousel.InnerComponent).instance();
-    // @ts-ignore
-    expect(instance.state.activePage).to.equal(1);
+    expect(wrapper.debug()).to.matchSnapshot();
   });
 
   it('Update activePage via prop', () => {
@@ -92,77 +89,57 @@ describe('Carousel', () => {
       .find(Icon)
       .last()
       .simulate('click');
-    wrapper.update();
-    // @ts-ignore
-    const instance = wrapper.find(Carousel.InnerComponent).instance();
-    // @ts-ignore
-    expect(instance.state.activePage).to.equal(1);
     expect(getEventFromCallback(callback).getParameter('selectedIndex')).to.equal(1);
   });
 
   it('Navigation to previous page', () => {
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 1 }));
+    const callback = sinon.spy();
+    const wrapper = mountThemedComponent(renderCarousel({ activePage: 1, onPageChanged: callback }));
     wrapper
       .find(Icon)
       .first()
       .simulate('click');
-    wrapper.update();
-    // @ts-ignore
-    const instance = wrapper.find(Carousel.InnerComponent).instance();
-    // @ts-ignore
-    expect(instance.state.activePage).to.equal(0);
+    expect(getEventFromCallback(callback).getParameter('selectedIndex')).to.equal(0);
   });
 
   it('Navigation to previous page - w/o Loop', () => {
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 0 }));
+    const callback = sinon.spy();
+    const wrapper = mountThemedComponent(renderCarousel({ activePage: 0, onPageChanged: callback }));
     wrapper
       .find(Icon)
       .first()
       .simulate('click');
-    wrapper.update();
-    // @ts-ignore
-    const instance = wrapper.find(Carousel.InnerComponent).instance();
-    // @ts-ignore
-    expect(instance.state.activePage).to.equal(0);
+    expect(callback.called).to.equal(false);
   });
 
   it('Navigation to previous page - w/ Loop', () => {
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 0, loop: true }));
+    const callback = sinon.spy();
+    const wrapper = mountThemedComponent(renderCarousel({ activePage: 0, loop: true, onPageChanged: callback }));
     wrapper
       .find(Icon)
       .first()
       .simulate('click');
-    wrapper.update();
-    // @ts-ignore
-    const instance = wrapper.find(Carousel.InnerComponent).instance();
-    // @ts-ignore
-    expect(instance.state.activePage).to.equal(6);
+    expect(getEventFromCallback(callback).getParameter('selectedIndex')).to.equal(6);
   });
 
   it('Navigation to next page - w/o Loop', () => {
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 6 }));
+    const callback = sinon.spy();
+    const wrapper = mountThemedComponent(renderCarousel({ activePage: 6, onPageChanged: callback }));
     wrapper
       .find(Icon)
       .last()
       .simulate('click');
-    wrapper.update();
-    // @ts-ignore
-    const instance = wrapper.find(Carousel.InnerComponent).instance();
-    // @ts-ignore
-    expect(instance.state.activePage).to.equal(6);
+    expect(callback.called).to.equal(false);
   });
 
   it('Navigation to next page - w/ Loop', () => {
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 6, loop: true }));
+    const callback = sinon.spy();
+    const wrapper = mountThemedComponent(renderCarousel({ activePage: 6, loop: true, onPageChanged: callback }));
     wrapper
       .find(Icon)
       .last()
       .simulate('click');
-    wrapper.update();
-    // @ts-ignore
-    const instance = wrapper.find(Carousel.InnerComponent).instance();
-    // @ts-ignore
-    expect(instance.state.activePage).to.equal(0);
+    expect(getEventFromCallback(callback).getParameter('selectedIndex')).to.equal(0);
   });
 
   it('Carousel with 1 child', () => {

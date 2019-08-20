@@ -1,4 +1,5 @@
 import { boolean, number, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Carousel } from '../../lib/Carousel';
@@ -10,6 +11,7 @@ function renderCarousel() {
   return (
     <Carousel
       activePage={number('active', 0)}
+      onPageChanged={action('onPageChanged')}
       arrowsPlacement={select(
         'arrowsPlacement',
         Object.values(CarouselArrowsPlacement),
