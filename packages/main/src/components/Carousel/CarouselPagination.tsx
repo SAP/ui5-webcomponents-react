@@ -1,11 +1,14 @@
-import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Children, Component } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import React, { Children, FC, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { CarouselArrowsPlacement } from '../../lib/CarouselArrowsPlacement';
 import { Icon } from '../../lib/Icon';
 import { Label } from '../../lib/Label';
 import { PlacementType } from '../../lib/PlacementType';
 import styles from './CarouselPagination.jss';
+
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles);
 
 export interface CarouselPaginationPropTypes {
   /**
@@ -26,78 +29,96 @@ export interface CarouselPaginationPropTypes {
    * The default value is PlacementType.Bottom.
    */
   pageIndicatorPlacement?: PlacementType.Top | PlacementType.Bottom;
-}
 
-interface CarouselPaginationInternalProps extends CarouselPaginationPropTypes, ClassProps {
-  goToPreviousPage: (e: Event) => void;
-  goToNextPage: (e: Event) => void;
+  /**
+   * Index of the active page to be displayed
+   */
   activePage?: number;
+
+  goToPreviousPage?: (e: any) => void;
+  goToNextPage?: (e: any) => void;
 }
 
-@withStyles(styles)
-export class CarouselPagination extends Component<CarouselPaginationInternalProps> {
-  private static TEXT_INDICATOR_THRESHOLD = 8;
+const TEXT_INDICATOR_THRESHOLD = 8;
+const CarouselPagination: FC<CarouselPaginationPropTypes> = (props) => {
+  const classes = useStyles();
 
-  private handleGoToNextPage = (e) => {
-    this.props.goToNextPage(Event.of(this, e));
-  };
+  const {
+    arrowsPlacement,
+    children,
+    showPageIndicator,
+    pageIndicatorPlacement,
+    activePage,
+    goToPreviousPage,
+    goToNextPage
+  } = props;
 
-  private handleGoToPreviousPage = (e) => {
-    this.props.goToPreviousPage(Event.of(this, e));
-  };
+  const numberOfChildren = React.Children.count(children);
+  const showTextIndicator = numberOfChildren >= TEXT_INDICATOR_THRESHOLD;
 
-  render() {
-    const { arrowsPlacement, children, showPageIndicator, pageIndicatorPlacement, classes, activePage } = this.props;
+  const paginationClasses = StyleClassHelper.of(classes.pagination);
+  if (arrowsPlacement === CarouselArrowsPlacement.Content) {
+    paginationClasses.put(classes.paginationArrowContent);
+  }
+  if (pageIndicatorPlacement === PlacementType.Top) {
+    paginationClasses.put(classes.paginationTop);
+  }
+  if (pageIndicatorPlacement === PlacementType.Bottom) {
+    paginationClasses.put(classes.paginationBottom);
+  }
 
-    const numberOfChildren = React.Children.count(children);
-    const showTextIndicator = numberOfChildren >= CarouselPagination.TEXT_INDICATOR_THRESHOLD;
+  const shouldRenderPaginationBar = useMemo(() => {
+    return showPageIndicator || arrowsPlacement === CarouselArrowsPlacement.PageIndicator;
+  }, [showPageIndicator, arrowsPlacement]);
 
-    const paginationClasses = StyleClassHelper.of(classes.pagination);
-    if (arrowsPlacement === CarouselArrowsPlacement.Content) {
-      paginationClasses.put(classes.paginationArrowContent);
-    }
-    if (pageIndicatorPlacement === PlacementType.Top) {
-      paginationClasses.put(classes.paginationTop);
-    }
-    if (pageIndicatorPlacement === PlacementType.Bottom) {
-      paginationClasses.put(classes.paginationBottom);
-    }
-
+  if (!shouldRenderPaginationBar) {
     return (
-      <div className={paginationClasses.valueOf()}>
-        <div
-          data-value={arrowsPlacement === CarouselArrowsPlacement.Content ? 'paginationArrow' : null}
-          className={classes.paginationArrow}
-          onClick={this.handleGoToPreviousPage}
-        >
-          <Icon src="slim-arrow-left" />
+      <div className={classes.paginationArrowContentNoBar}>
+        <div data-value="paginationArrow" className={classes.paginationArrow} onClick={goToPreviousPage}>
+          <Icon src="sap-icon://slim-arrow-left" />
         </div>
-
-        {showPageIndicator && (
-          <div className={classes.paginationIndicator}>
-            {showTextIndicator && <Label>{`Showing ${activePage + 1} of ${numberOfChildren}`}</Label>}
-
-            {!showTextIndicator &&
-              Children.map(children, (item, index) => (
-                <span
-                  key={index}
-                  className={`${activePage === index ? classes.paginationIconActive : null} ${classes.paginationIcon}`}
-                  aria-label={`Item ${index + 1} of ${numberOfChildren} displayed`}
-                >
-                  {index + 1}
-                </span>
-              ))}
-          </div>
-        )}
-
-        <div
-          data-value={arrowsPlacement === CarouselArrowsPlacement.Content ? 'paginationArrow' : null}
-          className={classes.paginationArrow}
-          onClick={this.handleGoToNextPage}
-        >
-          <Icon src="slim-arrow-right" />
+        <div data-value="paginationArrow" className={classes.paginationArrow} onClick={goToNextPage}>
+          <Icon src="sap-icon://slim-arrow-right" />
         </div>
       </div>
     );
   }
-}
+
+  return (
+    <div className={paginationClasses.valueOf()}>
+      <div
+        data-value={arrowsPlacement === CarouselArrowsPlacement.Content ? 'paginationArrow' : null}
+        className={classes.paginationArrow}
+        onClick={goToPreviousPage}
+      >
+        <Icon src="sap-icon://slim-arrow-left" />
+      </div>
+
+      <div className={classes.paginationIndicator}>
+        {showPageIndicator && showTextIndicator && <Label>{`Showing ${activePage + 1} of ${numberOfChildren}`}</Label>}
+
+        {showPageIndicator &&
+          !showTextIndicator &&
+          Children.map(children, (item, index) => (
+            <span
+              key={index}
+              className={`${activePage === index ? classes.paginationIconActive : null} ${classes.paginationIcon}`}
+              aria-label={`Item ${index + 1} of ${numberOfChildren} displayed`}
+            >
+              {index + 1}
+            </span>
+          ))}
+      </div>
+
+      <div
+        data-value={arrowsPlacement === CarouselArrowsPlacement.Content ? 'paginationArrow' : null}
+        className={classes.paginationArrow}
+        onClick={goToNextPage}
+      >
+        <Icon src="sap-icon://slim-arrow-right" />
+      </div>
+    </div>
+  );
+};
+
+export { CarouselPagination };
