@@ -16,6 +16,7 @@ interface ObjectPageAnchorPropTypes {
   onSubSectionSelected?: (event: Event) => void;
   index: number;
   selected: boolean;
+  collapsedHeader: boolean;
   mode: ObjectPageMode;
 }
 
@@ -55,7 +56,7 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof anchorButton
 export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState();
-  const { section, index, onSubSectionSelected, onSectionSelected, selected, mode } = props;
+  const { section, index, collapsedHeader, onSubSectionSelected, onSectionSelected, selected, mode } = props;
 
   const openModal = useCallback(() => {
     setOpen(true);
@@ -120,7 +121,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
       <Link
         key={item.props.id}
         to={`ObjectPageSubSection-${item.props.id}`}
-        containerId="ObjectPageSections"
+        containerId="ObjectPageContent"
         smooth
         offset={36}
       >
@@ -131,20 +132,28 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
 
   let sectionSelector = null;
   if (mode === ObjectPageMode.Default) {
-    sectionSelector = (
-      <Link
-        to={`ObjectPageSection-${section.props.id}`}
-        containerId="ObjectPageSections"
-        spy
-        activeClass={classes.selected}
-        onSetActive={onScrollActive}
-        duration={400}
-        smooth
-        offset={index === 0 ? 0 : 45}
-      >
-        <span className={classes.button}>{section.props.title}</span>
-      </Link>
-    );
+    if (!collapsedHeader && index === 0) {
+      sectionSelector = (
+        <div className={classes.selected}>
+          <span className={classes.button}>{section.props.title}</span>
+        </div>
+      );
+    } else {
+      sectionSelector = (
+        <Link
+          to={`ObjectPageSection-${section.props.id}`}
+          containerId="ObjectPageContent"
+          spy
+          activeClass={classes.selected}
+          onSetActive={onScrollActive}
+          duration={400}
+          smooth
+          offset={index === 0 ? -45 : 0}
+        >
+          <span className={classes.button}>{section.props.title}</span>
+        </Link>
+      );
+    }
   } else {
     sectionSelector = (
       <span onClick={onScrollActive} className={`${classes.button}${selected ? ` ${classes.selected}` : ''}`}>
