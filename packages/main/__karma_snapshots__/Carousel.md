@@ -445,8 +445,8 @@
 ```
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel arrowsPlacement="PageIndicator" pageIndicatorPlacement="Top" activePage={1} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false}>
         <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
