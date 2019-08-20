@@ -3,8 +3,8 @@
 #### `Renders without crashing`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -98,8 +98,8 @@
 #### `Should render a text indicator`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -192,8 +192,8 @@
 #### `CarouselArrowsPlacement: Content`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) arrowsPlacement="Content" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <Carousel arrowsPlacement="Content" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -287,8 +287,8 @@
 #### `CarouselArrowsPlacement: PageIndicator`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) arrowsPlacement="PageIndicator" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <Carousel arrowsPlacement="PageIndicator" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -382,8 +382,8 @@
 #### `Page Indicator Placement: Top`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) arrowsPlacement="PageIndicator" pageIndicatorPlacement="Top" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false}>
         <Carousel arrowsPlacement="PageIndicator" pageIndicatorPlacement="Top" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -477,8 +477,8 @@
 #### `Update activePage via prop`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Carousel) activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
         <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom" innerRef={{...}} classes={{...}} theme={{...}}>

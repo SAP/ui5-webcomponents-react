@@ -3,8 +3,8 @@
 #### `Basic SegmentedButtonItem`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false}>
         <SegmentedButtonItem id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -26,8 +26,8 @@
 #### `Selected SegmentedButtonItem`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} selected={true} visible={true} enabled={true} onClick={{...}}>
         <SegmentedButtonItem id={1} icon={{...}} selected={true} visible={true} enabled={true} onClick={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -49,8 +49,8 @@
 #### `SegmentedButtonItem Icon Only`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(SegmentedButtonItem) id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false}>
         <SegmentedButtonItem id={1} icon={{...}} visible={true} enabled={true} onClick={{...}} selected={false} innerRef={{...}} classes={{...}} theme={{...}}>

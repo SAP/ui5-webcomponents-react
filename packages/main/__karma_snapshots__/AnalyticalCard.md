@@ -3,8 +3,8 @@
 #### `Render without Crashing`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <AnalyticalCard header={{...}} width="20rem">
         <div className="AnalyticalCard--card---" style={{...}} title={[undefined]}>
