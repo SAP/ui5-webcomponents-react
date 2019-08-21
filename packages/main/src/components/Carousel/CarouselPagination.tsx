@@ -98,7 +98,7 @@ const CarouselPagination: FC<CarouselPaginationPropTypes> = (props) => {
           Children.map(children, (item, index) => (
             <span
               key={index}
-              className={`${classes.paginationIcon} ${activePage === index ? classes.paginationIconActive : null}`}
+              className={`${classes.paginationIcon}${activePage === index ? ` ${classes.paginationIconActive}` : ''}`}
               aria-label={`Item ${index + 1} of ${numberOfChildren} displayed`}
             >
               {index + 1}

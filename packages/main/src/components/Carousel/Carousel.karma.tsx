@@ -155,9 +155,9 @@ describe('Carousel', () => {
     const callback = sinon.spy();
     const wrapper = mountThemedComponent(renderCarousel({ activePage: 0, onPageChanged: callback }));
     wrapper
-      .find('div [role="list"]')
+      .find('div[role="list"]')
       .last()
-      .simulate('keydown', { key: 'ArrowRight ' });
+      .simulate('keydown', { key: 'ArrowRight' });
     expect(getEventFromCallback(callback).getParameter('selectedIndex')).to.equal(1);
   });
 
@@ -165,9 +165,9 @@ describe('Carousel', () => {
     const callback = sinon.spy();
     const wrapper = mountThemedComponent(renderCarousel({ activePage: 1, onPageChanged: callback }));
     wrapper
-      .find('div [role="list"]')
+      .find('div[role="list"]')
       .first()
-      .simulate('keydown', { key: 'ArrowLeft ' });
+      .simulate('keydown', { key: 'ArrowLeft' });
     expect(getEventFromCallback(callback).getParameter('selectedIndex')).to.equal(0);
   });
 });
