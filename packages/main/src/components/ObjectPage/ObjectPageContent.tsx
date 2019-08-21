@@ -15,6 +15,7 @@ const objectPageContentStyles = ({ parameters }: JSSTheme) => ({
     height: '100%',
     overflowX: 'hidden',
     overflowY: 'auto',
+    overflow: 'hidden',
     backgroundColor: parameters.sapUiBaseBG,
     '&:after': {
       clear: 'both',

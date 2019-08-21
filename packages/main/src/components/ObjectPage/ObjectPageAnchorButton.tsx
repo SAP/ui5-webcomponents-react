@@ -143,14 +143,14 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
         <Link
           to={`ObjectPageSection-${section.props.id}`}
           containerId="ObjectPageContent"
-          spy
-          activeClass={classes.selected}
           onSetActive={onScrollActive}
           duration={400}
           smooth
-          offset={index === 0 ? -45 : 0}
+          offset={index > 0 ? 139 : 0}
         >
-          <span className={classes.button}>{section.props.title}</span>
+          <div className={classes.selected}>
+            <span className={classes.button}>{section.props.title}</span>
+          </div>
         </Link>
       );
     }
