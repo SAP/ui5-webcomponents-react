@@ -39,15 +39,14 @@ const styles = ({ parameters }: JSSTheme) => ({
     borderRadius: '50%',
     alignSelf: 'center',
     boxSizing: 'border-box',
-    backgroundColor: parameters.sapUiContentNonInteractiveIconColor,
-    '&$paginationIconActive': {
-      margin: '0 0.25rem',
-      width: '0.5rem',
-      height: '0.5rem',
-      backgroundColor: parameters.sapUiSelected
-    }
+    backgroundColor: parameters.sapUiContentNonInteractiveIconColor
   },
-  paginationIconActive: {},
+  paginationIconActive: {
+    margin: '0 0.25rem',
+    width: '0.5rem',
+    height: '0.5rem',
+    backgroundColor: parameters.sapUiSelected
+  },
   paginationArrow: {
     boxShadow: 'none',
     border: `1px solid ${parameters.sapUiButtonBorderColor}`,
@@ -65,6 +64,9 @@ const styles = ({ parameters }: JSSTheme) => ({
       backgroundColor: parameters.sapUiButtonEmphasizedActiveBackground,
       color: parameters.sapUiButtonEmphasizedTextColor
     }
+  },
+  '@global html[dir="rtl"] div[data-value="paginationArrow"] ui5-icon': {
+    transform: 'rotate(180deg)'
   },
   paginationArrowContent: {
     '& $paginationArrow': {
@@ -86,21 +88,13 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   paginationArrowContentNoBar: {
+    composes: ['$paginationArrowContent'],
     '& $paginationArrow': {
-      boxShadow: parameters.sapUiShadowLevel1,
       '&:first-child': {
-        position: 'absolute',
-        top: 'calc(50% - 1rem)',
-        left: '0.5rem',
-        opacity: 0,
-        zIndex: ZIndex.InputModal
+        top: 'calc(50% - 1rem)'
       },
       '&:last-child': {
-        position: 'absolute',
-        top: 'calc(50% - 1rem)',
-        right: '0.5rem',
-        opacity: 0,
-        zIndex: ZIndex.InputModal
+        top: 'calc(50% - 1rem)'
       }
     }
   }

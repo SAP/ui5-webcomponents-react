@@ -10,9 +10,29 @@ const styles = ({ parameters }: JSSTheme) => ({
     minWidth: '15.5rem',
     fontFamily: parameters.sapUiFontFamily,
     backgroundColor: parameters.sapUiBaseBG,
-    '&:hover': {
-      '& [data-value="paginationArrow"]': {
-        opacity: 1
+    '&:focus': {
+      outline: 'none',
+      '&:before': {
+        border: '1px solid #000000',
+        position: 'absolute',
+        content: '" "',
+        top: '0',
+        right: '0',
+        bottom: '0',
+        left: '0',
+        zIndex: '2',
+        pointerEvents: 'none'
+      },
+      '&:after': {
+        border: '1px dotted #ffffff',
+        position: 'absolute',
+        content: '" "',
+        top: '0',
+        right: '0',
+        bottom: '0',
+        left: '0',
+        zIndex: '2',
+        pointerEvents: 'none'
       }
     }
   },
@@ -34,9 +54,19 @@ const styles = ({ parameters }: JSSTheme) => ({
     fontSize: '1rem',
     visibility: 'hidden'
   },
-  carouselItemContentIndicator: {
-    padding: '0 4rem',
-    width: 'calc(100% - 8rem)'
+  carouselArrowPlacementContent: {
+    '&:hover': {
+      '& [data-value="paginationArrow"]': {
+        opacity: 1,
+        '& ui5-icon': {
+          transform: 'rotate(0deg)'
+        }
+      }
+    },
+    '& $carouselItem': {
+      padding: '0 4rem',
+      width: 'calc(100% - 8rem)'
+    }
   }
 });
 

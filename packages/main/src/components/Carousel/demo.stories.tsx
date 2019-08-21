@@ -10,6 +10,7 @@ import { PlacementType } from '../../lib/PlacementType';
 function renderCarousel() {
   return (
     <Carousel
+      width="90%"
       activePage={number('active', 0)}
       onPageChanged={action('onPageChanged')}
       arrowsPlacement={select(
