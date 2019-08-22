@@ -3,8 +3,8 @@
 #### `Render without Crashing`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}}>
         <Component state="Error" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -28,8 +28,8 @@
 #### `Text Deprecation`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}}>
         <Component state="Error" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -53,8 +53,8 @@
 #### `ObjectStatus: state: Error`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Error" showDefaultIcon={true} icon={{...}}>
         <Component state="Error" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -75,8 +75,8 @@
 #### `ObjectStatus: state: None`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="None" showDefaultIcon={true} icon={{...}}>
         <Component state="None" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -97,8 +97,8 @@
 #### `ObjectStatus: state: Success`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Success" showDefaultIcon={true} icon={{...}}>
         <Component state="Success" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -119,8 +119,8 @@
 #### `ObjectStatus: state: Warning`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Warning" showDefaultIcon={true} icon={{...}}>
         <Component state="Warning" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>
@@ -141,8 +141,8 @@
 #### `ObjectStatus: state: Information`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(Component) state="Information" showDefaultIcon={true} icon={{...}}>
         <Component state="Information" showDefaultIcon={true} icon={{...}} innerRef={{...}} classes={{...}} theme={{...}}>

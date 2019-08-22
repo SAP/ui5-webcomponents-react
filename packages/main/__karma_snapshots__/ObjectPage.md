@@ -3,8 +3,8 @@
 #### `With Subsections`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} selectedSectionId={{...}} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
@@ -333,8 +333,8 @@
 #### `Only Sections`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} mode="Default" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
@@ -497,8 +497,8 @@
 #### `IconTabBar Mode`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <ObjectPage title="Fiori Object Page Title" subTitle="Sub Title" headerActions={{...}} renderHeaderContent={[Function: renderHeaderContent]} showHideHeaderButton={true} mode="IconTabBar" image={{...}} imageShapeCircle={false} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} selectedSectionId={{...}} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
@@ -680,8 +680,8 @@
 #### `Not crashing with 1 section - Default Mode`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <ObjectPage title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} mode="Default" onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
@@ -739,8 +739,8 @@
 #### `Not crashing with 1 section - IconTabBar Mode`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
@@ -792,8 +792,8 @@
 #### `Not crashing with 0 sections`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <ObjectPage mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} selectedSectionId={{...}} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
@@ -827,8 +827,8 @@
 #### `Set selected section id`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <ObjectPage selectedSectionId="2" mode="IconTabBar" title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false} noHeader={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>
@@ -885,8 +885,8 @@
 #### `No Header`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <ObjectPage selectedSectionId="2" noHeader={true} title="" subTitle="" image={{...}} imageShapeCircle={false} headerActions={{...}} renderHeaderContent={{...}} mode="Default" onSelectedSectionChanged={[Function: onSelectedSectionChanged]} showHideHeaderButton={false}>
         <div data-component-name="ObjectPage" slot={[undefined]} className="ObjectPage--objectPage---" style={[undefined]} title={[undefined]}>

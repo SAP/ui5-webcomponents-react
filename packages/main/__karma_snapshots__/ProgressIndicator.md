@@ -3,8 +3,8 @@
 #### `Custom`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) displayValue="sdf" width="50%" height="50%" percentValue={40} visible={true} state="None">
         <ProgressIndicator displayValue="sdf" width="50%" height="50%" percentValue={40} visible={true} state="None" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -28,8 +28,8 @@
 #### `State`
 
 ```
-<ThemeProvider contentDensity="Cozy" withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider contentDensity="Cozy" withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) percentValue={85} state="Error" displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator percentValue={85} state="Error" displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -52,8 +52,8 @@
 #### `ProgressIndicator with state Error`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) state="Error" percentValue={0} displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator state="Error" percentValue={0} displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -76,8 +76,8 @@
 #### `ProgressIndicator with state None`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) state="None" percentValue={0} displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator state="None" percentValue={0} displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -100,8 +100,8 @@
 #### `ProgressIndicator with state Success`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) state="Success" percentValue={0} displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator state="Success" percentValue={0} displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -124,8 +124,8 @@
 #### `ProgressIndicator with state Warning`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) state="Warning" percentValue={0} displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator state="Warning" percentValue={0} displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
@@ -148,8 +148,8 @@
 #### `ProgressIndicator with state Information`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <WithStyles(ProgressIndicator) state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="">
         <ProgressIndicator state="Information" percentValue={0} displayValue="" visible={true} width="auto" height="" innerRef={{...}} classes={{...}} theme={{...}}>
