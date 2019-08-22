@@ -191,13 +191,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     }
 
     setCollapsedHeader(!collapsedHeader);
-
-    // if(!expandHeaderActive) {
-    // debugger;
-    // setCollapsedHeader(!collapsedHeader);
-    // setExpandHeaderActive(!expandHeaderActive);
-    // }
-    //
   }, [collapsedHeader, expandHeaderActive]);
 
   const renderHideHeaderButton = () => {
