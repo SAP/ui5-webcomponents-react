@@ -14,7 +14,7 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ObjectPageMode } from '../../lib/ObjectPageMode';
@@ -26,6 +26,7 @@ import { ObjectPageScroller } from './scroll/ObjectPageScroller';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
+import { ContentDensity } from '../..';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
@@ -79,6 +80,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const [expandHeaderActive, setExpandHeaderActive] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [collapsedHeader, setCollapsedHeader] = useState(false);
+  const theme = useTheme();
 
   const objectPage: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const fillerDivDomRef: RefObject<HTMLDivElement> = useRef();
@@ -201,14 +203,16 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const renderHideHeaderButton = () => {
     if (!showHideHeaderButton) return null;
 
+    const { contentDensity } = theme as JSSTheme;
+
     return (
       <Button
         style={
           {
             position: 'absolute',
             '--_ui5_button_compact_height': '1rem',
-            lineHeight: '1.25rem',
-            bottom: 'calc(-1.25rem / 2)',
+            lineHeight: '2.5rem',
+            bottom: contentDensity === ContentDensity.Cozy ? 'calc(-2.5rem / 2)' : 'calc(-1.25rem / 2)',
             left: 'calc(50% - 1rem)'
           } as any
         }
