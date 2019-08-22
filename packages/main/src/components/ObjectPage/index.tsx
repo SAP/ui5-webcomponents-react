@@ -218,21 +218,23 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   };
 
   const renderContentHeader = () => {
-    let avatar;
-    if (typeof image === 'string') {
-      avatar = (
-        <Avatar
-          className={classes.headerImage}
-          image={image}
-          size={AvatarSize.L}
-          shape={imageShapeCircle ? AvatarShape.Circle : AvatarShape.Square}
-        />
-      );
-    } else {
-      // @ts-ignore
-      avatar = React.cloneElement(image, {
-        size: AvatarSize.L
-      });
+    let avatar = null;
+    if (image) {
+      if (typeof image === 'string') {
+        avatar = (
+          <Avatar
+            className={classes.headerImage}
+            image={image}
+            size={AvatarSize.L}
+            shape={imageShapeCircle ? AvatarShape.Circle : AvatarShape.Square}
+          />
+        );
+      } else {
+        // @ts-ignore
+        avatar = React.cloneElement(image, {
+          size: AvatarSize.L
+        });
+      }
     }
 
     return (
