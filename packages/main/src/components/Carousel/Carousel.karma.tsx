@@ -150,4 +150,24 @@ describe('Carousel', () => {
     );
     expect(wrapper.render().find('[data-value="paginationArrow"]')).to.have.length(0);
   });
+
+  it('Navigation to next page with Keyboard', () => {
+    const callback = sinon.spy();
+    const wrapper = mountThemedComponent(renderCarousel({ activePage: 0, onPageChanged: callback }));
+    wrapper
+      .find('div[role="list"]')
+      .last()
+      .simulate('keydown', { key: 'ArrowRight' });
+    expect(getEventFromCallback(callback).getParameter('selectedIndex')).to.equal(1);
+  });
+
+  it('Navigation to previous page with Keyboard', () => {
+    const callback = sinon.spy();
+    const wrapper = mountThemedComponent(renderCarousel({ activePage: 1, onPageChanged: callback }));
+    wrapper
+      .find('div[role="list"]')
+      .first()
+      .simulate('keydown', { key: 'ArrowLeft' });
+    expect(getEventFromCallback(callback).getParameter('selectedIndex')).to.equal(0);
+  });
 });

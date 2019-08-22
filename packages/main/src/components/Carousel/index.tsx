@@ -83,7 +83,7 @@ const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, re
 
   const carouselItemClasses = StyleClassHelper.of(classes.carouselItem);
   if (arrowsPlacement === CarouselArrowsPlacement.Content) {
-    carouselItemClasses.put(classes.carouselItemContentIndicator);
+    classNameString.put(classes.carouselArrowPlacementContent);
   }
 
   const selectPageAtIndex = useCallback(
@@ -96,27 +96,64 @@ const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, re
 
   const childElementCount = Children.count(children);
   const goToNextPage = useCallback(
-    (e) => {
+    (e, skipManualInversion = false) => {
+      if (
+        document.dir === 'rtl' &&
+        arrowsPlacement === CarouselArrowsPlacement.Content &&
+        e.type === 'click' &&
+        !skipManualInversion
+      ) {
+        return goToPreviousPage(e, true);
+      }
       if (loop === false && currentlyActivePage === childElementCount - 1) {
         return;
       }
       const nextPage = currentlyActivePage === childElementCount - 1 ? 0 : currentlyActivePage + 1;
       selectPageAtIndex(nextPage, e);
     },
-    [loop, currentlyActivePage, selectPageAtIndex, childElementCount]
+    [loop, currentlyActivePage, selectPageAtIndex, childElementCount, arrowsPlacement]
   );
 
   const goToPreviousPage = useCallback(
-    (e) => {
+    (e, skipManualInversion = false) => {
+      if (
+        document.dir === 'rtl' &&
+        arrowsPlacement === CarouselArrowsPlacement.Content &&
+        e.type === 'click' &&
+        !skipManualInversion
+      ) {
+        return goToNextPage(e, true);
+      }
       if (loop === false && currentlyActivePage === 0) {
         return;
       }
       const previousPage = currentlyActivePage === 0 ? childElementCount - 1 : currentlyActivePage - 1;
       selectPageAtIndex(previousPage, e);
     },
-    [loop, childElementCount, currentlyActivePage, selectPageAtIndex]
+    [loop, childElementCount, currentlyActivePage, selectPageAtIndex, arrowsPlacement, goToNextPage]
   );
 
+  const onKeyDown = useCallback(
+    (e) => {
+      if (e.key === 'ArrowRight') {
+        if (document.dir === 'rtl') {
+          goToPreviousPage(e);
+        } else {
+          goToNextPage(e);
+        }
+      }
+      if (e.key === 'ArrowLeft') {
+        if (document.dir === 'rtl') {
+          goToNextPage(e);
+        } else {
+          goToPreviousPage(e);
+        }
+      }
+    },
+    [goToPreviousPage, goToNextPage]
+  );
+
+  const translateXPrefix = document.dir === 'rtl' ? '' : '-';
   return (
     <div
       className={classNameString.toString()}
@@ -125,6 +162,8 @@ const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, re
       slot={props['slot']}
       ref={ref}
       role="list"
+      tabIndex={0}
+      onKeyDown={onKeyDown}
     >
       {childElementCount > 1 && pageIndicatorPlacement === PlacementType.Top && (
         <CarouselPagination
@@ -140,7 +179,7 @@ const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, re
       <div
         className={classes.carouselInner}
         style={{
-          transform: `translateX(-${currentlyActivePage * 100}%)`
+          transform: `translateX(${translateXPrefix}${currentlyActivePage * 100}%)`
         }}
       >
         {Children.map(children, (item, index) => (

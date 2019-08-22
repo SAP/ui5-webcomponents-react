@@ -8,7 +8,7 @@ import { Label } from '../../lib/Label';
 import { PlacementType } from '../../lib/PlacementType';
 import styles from './CarouselPagination.jss';
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles);
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'CarouselPagination' });
 
 export interface CarouselPaginationPropTypes {
   /**
@@ -56,17 +56,6 @@ const CarouselPagination: FC<CarouselPaginationPropTypes> = (props) => {
   const numberOfChildren = React.Children.count(children);
   const showTextIndicator = numberOfChildren >= TEXT_INDICATOR_THRESHOLD;
 
-  const paginationClasses = StyleClassHelper.of(classes.pagination);
-  if (arrowsPlacement === CarouselArrowsPlacement.Content) {
-    paginationClasses.put(classes.paginationArrowContent);
-  }
-  if (pageIndicatorPlacement === PlacementType.Top) {
-    paginationClasses.put(classes.paginationTop);
-  }
-  if (pageIndicatorPlacement === PlacementType.Bottom) {
-    paginationClasses.put(classes.paginationBottom);
-  }
-
   const shouldRenderPaginationBar = useMemo(() => {
     return showPageIndicator || arrowsPlacement === CarouselArrowsPlacement.PageIndicator;
   }, [showPageIndicator, arrowsPlacement]);
@@ -84,13 +73,20 @@ const CarouselPagination: FC<CarouselPaginationPropTypes> = (props) => {
     );
   }
 
+  const paginationClasses = StyleClassHelper.of(classes.pagination);
+  if (arrowsPlacement === CarouselArrowsPlacement.Content) {
+    paginationClasses.put(classes.paginationArrowContent);
+  }
+  if (pageIndicatorPlacement === PlacementType.Top) {
+    paginationClasses.put(classes.paginationTop);
+  }
+  if (pageIndicatorPlacement === PlacementType.Bottom) {
+    paginationClasses.put(classes.paginationBottom);
+  }
+
   return (
     <div className={paginationClasses.valueOf()}>
-      <div
-        data-value={arrowsPlacement === CarouselArrowsPlacement.Content ? 'paginationArrow' : null}
-        className={classes.paginationArrow}
-        onClick={goToPreviousPage}
-      >
+      <div data-value="paginationArrow" className={classes.paginationArrow} onClick={goToPreviousPage}>
         <Icon src="sap-icon://slim-arrow-left" />
       </div>
 
@@ -102,7 +98,7 @@ const CarouselPagination: FC<CarouselPaginationPropTypes> = (props) => {
           Children.map(children, (item, index) => (
             <span
               key={index}
-              className={`${activePage === index ? classes.paginationIconActive : null} ${classes.paginationIcon}`}
+              className={`${classes.paginationIcon}${activePage === index ? ` ${classes.paginationIconActive}` : ''}`}
               aria-label={`Item ${index + 1} of ${numberOfChildren} displayed`}
             >
               {index + 1}
@@ -110,11 +106,7 @@ const CarouselPagination: FC<CarouselPaginationPropTypes> = (props) => {
           ))}
       </div>
 
-      <div
-        data-value={arrowsPlacement === CarouselArrowsPlacement.Content ? 'paginationArrow' : null}
-        className={classes.paginationArrow}
-        onClick={goToNextPage}
-      >
+      <div data-value="paginationArrow" className={classes.paginationArrow} onClick={goToNextPage}>
         <Icon src="sap-icon://slim-arrow-right" />
       </div>
     </div>

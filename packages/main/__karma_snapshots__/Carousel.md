@@ -7,75 +7,75 @@
   <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
-        <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
+        <div className="Carousel--carousel--- Carousel--carouselArrowPlacementContent---" style={{...}} title={[undefined]} slot={[undefined]} role="list" tabIndex={0} onKeyDown={[Function]}>
           <div className="Carousel--carouselInner---" style={{...}}>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={0} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={0} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 1
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={1} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={1} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 2
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={2} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={2} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 3
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={3} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={3} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 4
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={4} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={4} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 5
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={5} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={5} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 6
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={6} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={6} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 7
               </p>
             </div>
           </div>
           <CarouselPagination arrowsPlacement="Content" showPageIndicator={true} pageIndicatorPlacement="Bottom" activePage={0} goToPreviousPage={[Function]} goToNextPage={[Function]}>
-            <div className="-pagination--- -paginationArrowContent--- -paginationBottom---">
-              <div data-value="paginationArrow" className="-paginationArrow---" onClick={[Function]}>
+            <div className="CarouselPagination--pagination--- CarouselPagination--paginationArrowContent--- CarouselPagination--paginationBottom---">
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-left">
                   <ui5-icon src="sap-icon://slim-arrow-left" class="" />
                 </Icon>
               </div>
-              <div className="-paginationIndicator---">
-                <span className="-paginationIconActive--- -paginationIcon---" aria-label="Item 1 of 7 displayed">
+              <div className="CarouselPagination--paginationIndicator---">
+                <span className="CarouselPagination--paginationIcon--- CarouselPagination--paginationIconActive---" aria-label="Item 1 of 7 displayed">
                   1
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 2 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 2 of 7 displayed">
                   2
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 3 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 3 of 7 displayed">
                   3
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 4 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 4 of 7 displayed">
                   4
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 5 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 5 of 7 displayed">
                   5
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 6 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 6 of 7 displayed">
                   6
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 7 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 7 of 7 displayed">
                   7
                 </span>
               </div>
-              <div data-value="paginationArrow" className="-paginationArrow---" onClick={[Function]}>
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-right">
                   <ui5-icon src="sap-icon://slim-arrow-right" class="" />
                 </Icon>
@@ -96,74 +96,74 @@
   <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
-        <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
+        <div className="Carousel--carousel--- Carousel--carouselArrowPlacementContent---" style={{...}} title={[undefined]} slot={[undefined]} role="list" tabIndex={0} onKeyDown={[Function]}>
           <div className="Carousel--carouselInner---" style={{...}}>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={0} aria-setsize={10} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={0} aria-setsize={10} style={{...}}>
               <p>
                 Carousel 1
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={1} aria-setsize={10} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={1} aria-setsize={10} style={{...}}>
               <p>
                 Carousel 2
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={2} aria-setsize={10} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={2} aria-setsize={10} style={{...}}>
               <p>
                 Carousel 3
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={3} aria-setsize={10} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={3} aria-setsize={10} style={{...}}>
               <p>
                 Carousel 4
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={4} aria-setsize={10} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={4} aria-setsize={10} style={{...}}>
               <p>
                 Carousel 5
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={5} aria-setsize={10} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={5} aria-setsize={10} style={{...}}>
               <p>
                 Carousel 6
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={6} aria-setsize={10} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={6} aria-setsize={10} style={{...}}>
               <p>
                 Carousel 7
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={7} aria-setsize={10} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={7} aria-setsize={10} style={{...}}>
               <p>
                 Carousel 8
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={8} aria-setsize={10} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={8} aria-setsize={10} style={{...}}>
               <p>
                 Carousel 9
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={9} aria-setsize={10} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={9} aria-setsize={10} style={{...}}>
               <p>
                 Carousel 10
               </p>
             </div>
           </div>
           <CarouselPagination arrowsPlacement="Content" showPageIndicator={true} pageIndicatorPlacement="Bottom" activePage={0} goToPreviousPage={[Function]} goToNextPage={[Function]}>
-            <div className="-pagination--- -paginationArrowContent--- -paginationBottom---">
-              <div data-value="paginationArrow" className="-paginationArrow---" onClick={[Function]}>
+            <div className="CarouselPagination--pagination--- CarouselPagination--paginationArrowContent--- CarouselPagination--paginationBottom---">
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-left">
                   <ui5-icon src="sap-icon://slim-arrow-left" class="" />
                 </Icon>
               </div>
-              <div className="-paginationIndicator---">
+              <div className="CarouselPagination--paginationIndicator---">
                 <Label for="">
                   <ui5-label for="" class="">
                     Showing 1 of 10
                   </ui5-label>
                 </Label>
               </div>
-              <div data-value="paginationArrow" className="-paginationArrow---" onClick={[Function]}>
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-right">
                   <ui5-icon src="sap-icon://slim-arrow-right" class="" />
                 </Icon>
@@ -184,75 +184,75 @@
   <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel arrowsPlacement="Content" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
-        <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
+        <div className="Carousel--carousel--- Carousel--carouselArrowPlacementContent---" style={{...}} title={[undefined]} slot={[undefined]} role="list" tabIndex={0} onKeyDown={[Function]}>
           <div className="Carousel--carouselInner---" style={{...}}>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={0} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={0} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 1
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={1} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={1} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 2
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={2} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={2} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 3
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={3} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={3} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 4
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={4} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={4} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 5
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={5} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={5} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 6
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={6} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={6} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 7
               </p>
             </div>
           </div>
           <CarouselPagination arrowsPlacement="Content" showPageIndicator={true} pageIndicatorPlacement="Bottom" activePage={0} goToPreviousPage={[Function]} goToNextPage={[Function]}>
-            <div className="-pagination--- -paginationArrowContent--- -paginationBottom---">
-              <div data-value="paginationArrow" className="-paginationArrow---" onClick={[Function]}>
+            <div className="CarouselPagination--pagination--- CarouselPagination--paginationArrowContent--- CarouselPagination--paginationBottom---">
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-left">
                   <ui5-icon src="sap-icon://slim-arrow-left" class="" />
                 </Icon>
               </div>
-              <div className="-paginationIndicator---">
-                <span className="-paginationIconActive--- -paginationIcon---" aria-label="Item 1 of 7 displayed">
+              <div className="CarouselPagination--paginationIndicator---">
+                <span className="CarouselPagination--paginationIcon--- CarouselPagination--paginationIconActive---" aria-label="Item 1 of 7 displayed">
                   1
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 2 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 2 of 7 displayed">
                   2
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 3 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 3 of 7 displayed">
                   3
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 4 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 4 of 7 displayed">
                   4
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 5 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 5 of 7 displayed">
                   5
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 6 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 6 of 7 displayed">
                   6
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 7 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 7 of 7 displayed">
                   7
                 </span>
               </div>
-              <div data-value="paginationArrow" className="-paginationArrow---" onClick={[Function]}>
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-right">
                   <ui5-icon src="sap-icon://slim-arrow-right" class="" />
                 </Icon>
@@ -273,7 +273,7 @@
   <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel arrowsPlacement="PageIndicator" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
-        <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
+        <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list" tabIndex={0} onKeyDown={[Function]}>
           <div className="Carousel--carouselInner---" style={{...}}>
             <div className="Carousel--carouselItem---" role="listitem" aria-posinset={0} aria-setsize={7} style={{...}}>
               <p>
@@ -312,36 +312,36 @@
             </div>
           </div>
           <CarouselPagination arrowsPlacement="PageIndicator" showPageIndicator={true} pageIndicatorPlacement="Bottom" activePage={0} goToPreviousPage={[Function]} goToNextPage={[Function]}>
-            <div className="-pagination--- -paginationBottom---">
-              <div data-value={{...}} className="-paginationArrow---" onClick={[Function]}>
+            <div className="CarouselPagination--pagination--- CarouselPagination--paginationBottom---">
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-left">
                   <ui5-icon src="sap-icon://slim-arrow-left" class="" />
                 </Icon>
               </div>
-              <div className="-paginationIndicator---">
-                <span className="-paginationIconActive--- -paginationIcon---" aria-label="Item 1 of 7 displayed">
+              <div className="CarouselPagination--paginationIndicator---">
+                <span className="CarouselPagination--paginationIcon--- CarouselPagination--paginationIconActive---" aria-label="Item 1 of 7 displayed">
                   1
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 2 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 2 of 7 displayed">
                   2
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 3 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 3 of 7 displayed">
                   3
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 4 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 4 of 7 displayed">
                   4
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 5 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 5 of 7 displayed">
                   5
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 6 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 6 of 7 displayed">
                   6
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 7 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 7 of 7 displayed">
                   7
                 </span>
               </div>
-              <div data-value={{...}} className="-paginationArrow---" onClick={[Function]}>
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-right">
                   <ui5-icon src="sap-icon://slim-arrow-right" class="" />
                 </Icon>
@@ -362,38 +362,38 @@
   <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel arrowsPlacement="PageIndicator" pageIndicatorPlacement="Top" activePage={0} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false}>
-        <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
+        <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list" tabIndex={0} onKeyDown={[Function]}>
           <CarouselPagination arrowsPlacement="PageIndicator" showPageIndicator={true} pageIndicatorPlacement="Top" activePage={0} goToPreviousPage={[Function]} goToNextPage={[Function]}>
-            <div className="-pagination--- -paginationTop---">
-              <div data-value={{...}} className="-paginationArrow---" onClick={[Function]}>
+            <div className="CarouselPagination--pagination--- CarouselPagination--paginationTop---">
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-left">
                   <ui5-icon src="sap-icon://slim-arrow-left" class="" />
                 </Icon>
               </div>
-              <div className="-paginationIndicator---">
-                <span className="-paginationIconActive--- -paginationIcon---" aria-label="Item 1 of 7 displayed">
+              <div className="CarouselPagination--paginationIndicator---">
+                <span className="CarouselPagination--paginationIcon--- CarouselPagination--paginationIconActive---" aria-label="Item 1 of 7 displayed">
                   1
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 2 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 2 of 7 displayed">
                   2
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 3 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 3 of 7 displayed">
                   3
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 4 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 4 of 7 displayed">
                   4
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 5 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 5 of 7 displayed">
                   5
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 6 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 6 of 7 displayed">
                   6
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 7 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 7 of 7 displayed">
                   7
                 </span>
               </div>
-              <div data-value={{...}} className="-paginationArrow---" onClick={[Function]}>
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-right">
                   <ui5-icon src="sap-icon://slim-arrow-right" class="" />
                 </Icon>
@@ -449,38 +449,38 @@
   <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel arrowsPlacement="PageIndicator" pageIndicatorPlacement="Top" activePage={1} onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false}>
-        <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
+        <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list" tabIndex={0} onKeyDown={[Function]}>
           <CarouselPagination arrowsPlacement="PageIndicator" showPageIndicator={true} pageIndicatorPlacement="Top" activePage={1} goToPreviousPage={[Function]} goToNextPage={[Function]}>
-            <div className="-pagination--- -paginationTop---">
-              <div data-value={{...}} className="-paginationArrow---" onClick={[Function]}>
+            <div className="CarouselPagination--pagination--- CarouselPagination--paginationTop---">
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-left">
                   <ui5-icon src="sap-icon://slim-arrow-left" class="" />
                 </Icon>
               </div>
-              <div className="-paginationIndicator---">
-                <span className="null -paginationIcon---" aria-label="Item 1 of 7 displayed">
+              <div className="CarouselPagination--paginationIndicator---">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 1 of 7 displayed">
                   1
                 </span>
-                <span className="-paginationIconActive--- -paginationIcon---" aria-label="Item 2 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon--- CarouselPagination--paginationIconActive---" aria-label="Item 2 of 7 displayed">
                   2
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 3 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 3 of 7 displayed">
                   3
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 4 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 4 of 7 displayed">
                   4
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 5 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 5 of 7 displayed">
                   5
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 6 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 6 of 7 displayed">
                   6
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 7 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 7 of 7 displayed">
                   7
                 </span>
               </div>
-              <div data-value={{...}} className="-paginationArrow---" onClick={[Function]}>
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-right">
                   <ui5-icon src="sap-icon://slim-arrow-right" class="" />
                 </Icon>
@@ -538,75 +538,75 @@
   <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Carousel activePage={0} arrowsPlacement="Content" onPageChanged={[Function: onPageChanged]} height="100%" width="100%" showPageIndicator={true} loop={false} pageIndicatorPlacement="Bottom">
-        <div className="Carousel--carousel---" style={{...}} title={[undefined]} slot={[undefined]} role="list">
+        <div className="Carousel--carousel--- Carousel--carouselArrowPlacementContent---" style={{...}} title={[undefined]} slot={[undefined]} role="list" tabIndex={0} onKeyDown={[Function]}>
           <div className="Carousel--carouselInner---" style={{...}}>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={0} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={0} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 1
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={1} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={1} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 2
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={2} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={2} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 3
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={3} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={3} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 4
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={4} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={4} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 5
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={5} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={5} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 6
               </p>
             </div>
-            <div className="Carousel--carouselItem--- Carousel--carouselItemContentIndicator---" role="listitem" aria-posinset={6} aria-setsize={7} style={{...}}>
+            <div className="Carousel--carouselItem---" role="listitem" aria-posinset={6} aria-setsize={7} style={{...}}>
               <p>
                 Carousel 7
               </p>
             </div>
           </div>
           <CarouselPagination arrowsPlacement="Content" showPageIndicator={true} pageIndicatorPlacement="Bottom" activePage={0} goToPreviousPage={[Function]} goToNextPage={[Function]}>
-            <div className="-pagination--- -paginationArrowContent--- -paginationBottom---">
-              <div data-value="paginationArrow" className="-paginationArrow---" onClick={[Function]}>
+            <div className="CarouselPagination--pagination--- CarouselPagination--paginationArrowContent--- CarouselPagination--paginationBottom---">
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-left">
                   <ui5-icon src="sap-icon://slim-arrow-left" class="" />
                 </Icon>
               </div>
-              <div className="-paginationIndicator---">
-                <span className="-paginationIconActive--- -paginationIcon---" aria-label="Item 1 of 7 displayed">
+              <div className="CarouselPagination--paginationIndicator---">
+                <span className="CarouselPagination--paginationIcon--- CarouselPagination--paginationIconActive---" aria-label="Item 1 of 7 displayed">
                   1
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 2 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 2 of 7 displayed">
                   2
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 3 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 3 of 7 displayed">
                   3
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 4 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 4 of 7 displayed">
                   4
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 5 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 5 of 7 displayed">
                   5
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 6 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 6 of 7 displayed">
                   6
                 </span>
-                <span className="null -paginationIcon---" aria-label="Item 7 of 7 displayed">
+                <span className="CarouselPagination--paginationIcon---" aria-label="Item 7 of 7 displayed">
                   7
                 </span>
               </div>
-              <div data-value="paginationArrow" className="-paginationArrow---" onClick={[Function]}>
+              <div data-value="paginationArrow" className="CarouselPagination--paginationArrow---" onClick={[Function]}>
                 <Icon src="sap-icon://slim-arrow-right">
                   <ui5-icon src="sap-icon://slim-arrow-right" class="" />
                 </Icon>
