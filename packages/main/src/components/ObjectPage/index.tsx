@@ -15,7 +15,6 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { scroller } from 'react-scroll';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ObjectPageMode } from '../../lib/ObjectPageMode';
@@ -23,6 +22,10 @@ import styles from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { Button } from '../../webComponents/Button';
 import { CollapsedAvatar } from './CollapsedAvatar';
+import { ObjectPageScroller } from './scroll/ObjectPageScroller';
+import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
+import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
@@ -49,17 +52,6 @@ const findSectionIndexById = (sections, id) => {
     return 0;
   }
   return index;
-};
-
-const scrollToSectionById = (id, index) => {
-  requestAnimationFrame(() => {
-    scroller.scrollTo(`ObjectPageSection-${id}`, {
-      containerId: 'ObjectPageContent',
-      smooth: true,
-      offset: index > 0 ? 45 : 0,
-      duration: 400
-    });
-  });
 };
 
 const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
@@ -99,6 +91,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const collapsedHeaderFiller: RefObject<HTMLDivElement> = useRef();
   const expandedHeaderHeight = useRef(0);
   const hideHeaderButtonPressed = useRef(false);
+  const scroller = useRef(null);
 
   const classes = useStyles();
 
@@ -149,26 +142,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           domRef = subSections[subSections.length - 1];
         } else {
           domRef = lastSectionDomRef;
-          // scrollOffset = 45;
         }
 
-        // const prevFillerHeight = fillerDivDomRef.current ? fillerDivDomRef.current.getBoundingClientRect().height : 0;
         let heightDiff = contentContainer.current.offsetHeight - domRef.offsetHeight;
         heightDiff = heightDiff > 0 ? heightDiff : 0;
-        // const totalHeight = objectPage.current.getBoundingClientRect().height;
-        // const headerHeight = topHeader.current.getBoundingClientRect().height;
-        // const scrollHeight = totalHeight - headerHeight;
-        //
-        // const scrollContainerHeight = contentScrollContainer.current.getBoundingClientRect().height;
-        //
-        // const scrollEnabled = (scrollContainerHeight - prevFillerHeight + heightDiff) > scrollHeight;
-        // let fillerHeight = 0;
-        // if(scrollEnabled) {
-        //   fillerHeight = heightDiff + headerHeight;
-        // } else {
-        //   fillerHeight = heightDiff;
-        // }
-
         fillerDivDomRef.current.style.height = `${heightDiff}px`;
         setScrollbarHeight();
         resolve();
@@ -179,18 +156,20 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const renderAnchorBar = () => {
     return (
       <section className={classes.anchorBar} role="navigation">
-        {Children.map(children, (section, index) => (
-          <ObjectPageAnchorButton
-            key={`Anchor-${(section as any).id}`}
-            section={section}
-            index={index}
-            selected={selectedSectionIndex === index}
-            mode={mode}
-            onSectionSelected={handleOnSectionSelected}
-            onSubSectionSelected={handleOnSubSectionSelected}
-            collapsedHeader={collapsedHeader}
-          />
-        ))}
+        {Children.map(children, (section, index) => {
+          return (
+            <ObjectPageAnchorButton
+              key={`Anchor-${((section as any).props || {}).id}`}
+              section={section}
+              index={index}
+              selected={selectedSectionIndex === index}
+              mode={mode}
+              onSectionSelected={handleOnSectionSelected}
+              onSubSectionSelected={handleOnSubSectionSelected}
+              collapsedHeader={collapsedHeader}
+            />
+          );
+        })}
       </section>
     );
   };
@@ -242,17 +221,27 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   };
 
   const renderContentHeader = () => {
+    let avatar;
+    if (typeof image === 'string') {
+      avatar = (
+        <Avatar
+          className={classes.headerImage}
+          image={image}
+          size={AvatarSize.L}
+          shape={imageShapeCircle ? AvatarShape.Circle : AvatarShape.Square}
+        />
+      );
+    } else {
+      // @ts-ignore
+      avatar = React.cloneElement(image, {
+        size: AvatarSize.L
+      });
+    }
+
     return (
       <div style={{ position: 'relative' }} className={classes.contentHeader}>
         <div className={classes.headerContent}>
-          {image && (
-            <span
-              className={classes.headerImage}
-              style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
-            >
-              <img src={image as string} style={{ width: '100%', height: '100%' }} />
-            </span>
-          )}
+          {avatar}
           {renderHeaderContent && <span className={classes.headerCustomContent}>{renderHeaderContent()}</span>}
         </div>
         {!expandHeaderActive && renderHideHeaderButton()}
@@ -271,7 +260,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           <div style={{ display: 'flex' }}>
             {image && collapsedHeader && !expandHeaderActive && (
               <div style={{ marginRight: '1rem' }}>
-                <CollapsedAvatar image={image} />
+                <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
               </div>
             )}
             <span className={classes.container}>
@@ -309,32 +298,25 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     adjustDummyDivHeight();
   }, [noHeader, mode]);
 
-  // scroll to selected section after mount
   useEffect(() => {
-    if (mode !== ObjectPageMode.IconTabBar) {
-      if (selectedSectionId && selectedSectionIndex > 0) {
-        scrollToSectionById(selectedSectionId, selectedSectionIndex);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    if (selectedSubSectionId && mode === ObjectPageMode.IconTabBar) {
-      requestAnimationFrame(() => {
-        scroller.scrollTo(`ObjectPageSubSection-${selectedSubSectionId}`, {
-          containerId: 'ObjectPageContent',
-          smooth: true,
-          offset: 36,
-          duration: 400
-        });
-      });
+    if (selectedSubSectionId && mode === ObjectPageMode.IconTabBar && scroller.current) {
+      scroller.current.scrollToElementById(`ObjectPageSubSection-${selectedSubSectionId}`, collapsedHeader ? 0 : -45);
     }
   }, [selectedSubSectionId]);
 
   useEffect(() => {
-    if (mode === ObjectPageMode.Default) {
-      // @ts-ignore
-      scrollToSectionById(Children.toArray(children)[selectedSectionIndex].props.id, selectedSectionIndex);
+    if (!isMounted && selectedSectionIndex < 1) return;
+
+    if (mode === ObjectPageMode.Default && scroller.current) {
+      if (selectedSectionIndex > 0) {
+        // @ts-ignore
+        const id = Children.toArray(children)[selectedSectionIndex].props.id;
+        if (id) {
+          scroller.current.scrollToElementById(`ObjectPageSection-${id}`, collapsedHeader ? 0 : -45);
+        }
+      } else {
+        scroller.current.scrollToTop();
+      }
     }
     if (mode === ObjectPageMode.IconTabBar) {
       adjustDummyDivHeight();
@@ -349,6 +331,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     requestAnimationFrame(() => {
       if (noHeader) {
         scrollBar.current.scrollTop = getProportionateScrollTop(e.target.scrollTop);
+        scroller.current.scroll(e);
         return;
       }
       if (expandHeaderActive) {
@@ -370,6 +353,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         scrollBar.current.scrollTop = collapsedHeader
           ? e.target.scrollTop
           : getProportionateScrollTop(e.target.scrollTop);
+        scroller.current.scroll(e);
       }
     });
   };
@@ -455,24 +439,26 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       ref={objectPage}
       title={tooltip}
     >
-      <div className={classes.outerScrollbar}>
-        <div ref={scrollBar} className={classes.innerScrollbar}>
-          <div ref={innerScrollBar} className={classes.scrollbarContent} />
-        </div>
-      </div>
-      <header ref={topHeader} role="banner" aria-roledescription="Object page header" className={classes.header}>
-        {renderTopHeader()}
-      </header>
-      <div className={classes.outerContentContainer}>
-        <div id="ObjectPageContent" ref={contentContainer} className={classes.contentContainer}>
-          <div ref={contentScrollContainer} className={classes.contentScrollContainer}>
-            <div ref={collapsedHeaderFiller} />
-            <div ref={innerHeader}>{renderInnerHeader()}</div>
-            <section className={classes.sectionsContainer}>{content}</section>
-            <div className={classes.fillerDiv} ref={fillerDivDomRef} />
+      <ObjectPageScroller ref={scroller} scrollContainer={contentContainer}>
+        <div className={classes.outerScrollbar}>
+          <div ref={scrollBar} className={classes.innerScrollbar}>
+            <div ref={innerScrollBar} className={classes.scrollbarContent} />
           </div>
         </div>
-      </div>
+        <header ref={topHeader} role="banner" aria-roledescription="Object page header" className={classes.header}>
+          {renderTopHeader()}
+        </header>
+        <div className={classes.outerContentContainer}>
+          <div id="ObjectPageContent" ref={contentContainer} className={classes.contentContainer}>
+            <div ref={contentScrollContainer} className={classes.contentScrollContainer}>
+              <div ref={collapsedHeaderFiller} />
+              <div ref={innerHeader}>{renderInnerHeader()}</div>
+              <section className={classes.sectionsContainer}>{content}</section>
+              <div className={classes.fillerDiv} ref={fillerDivDomRef} />
+            </div>
+          </div>
+        </div>
+      </ObjectPageScroller>
     </div>
   );
 });

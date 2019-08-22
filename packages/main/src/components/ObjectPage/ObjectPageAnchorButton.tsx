@@ -1,7 +1,6 @@
 import { Event, fonts } from '@ui5/webcomponents-react-base';
 import React, { FC, useCallback, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Link } from 'react-scroll';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Icon } from '../../lib/Icon';
 import { List } from '../../lib/List';
@@ -9,6 +8,7 @@ import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import { PlacementType } from '../../lib/PlacementType';
 import { Popover } from '../../lib/Popover';
 import { StandardListItem } from '../../lib/StandardListItem';
+import { ObjectPageLink } from './scroll/ObjectPageLink';
 
 interface ObjectPageAnchorPropTypes {
   section: any;
@@ -33,7 +33,8 @@ const anchorButtonStyles = ({ parameters }: JSSTheme) => ({
   button: {
     color: parameters.sapUiContentLabelColor,
     fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize
+    fontSize: fonts.sapMFontMediumSize,
+    cursor: 'pointer'
   },
   selected: {
     color: parameters.sapUiSelected,
@@ -56,7 +57,7 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof anchorButton
 export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState();
-  const { section, index, collapsedHeader, onSubSectionSelected, onSectionSelected, selected, mode } = props;
+  const { section, collapsedHeader, index, onSubSectionSelected, onSectionSelected, selected, mode } = props;
 
   const openModal = useCallback(() => {
     setOpen(true);
@@ -118,42 +119,29 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
     }
 
     return (
-      <Link
+      <ObjectPageLink
         key={item.props.id}
-        to={`ObjectPageSubSection-${item.props.id}`}
-        containerId="ObjectPageContent"
-        smooth
-        offset={36}
+        id={`ObjectPageSubSection-${item.props.id}`}
+        scrollOffset={collapsedHeader ? 0 : -45}
       >
         <StandardListItem data-key={item.props.id}>{item.props.title}</StandardListItem>
-      </Link>
+      </ObjectPageLink>
     );
   };
 
   let sectionSelector = null;
   if (mode === ObjectPageMode.Default) {
-    if (!collapsedHeader && index === 0) {
-      sectionSelector = (
-        <div className={classes.selected}>
-          <span className={classes.button}>{section.props.title}</span>
-        </div>
-      );
-    } else {
-      sectionSelector = (
-        <Link
-          to={`ObjectPageSection-${section.props.id}`}
-          containerId="ObjectPageContent"
-          onSetActive={onScrollActive}
-          duration={400}
-          smooth
-          offset={index > 0 ? 139 : 0}
-        >
-          <div className={classes.selected}>
-            <span className={classes.button}>{section.props.title}</span>
-          </div>
-        </Link>
-      );
-    }
+    sectionSelector = (
+      <ObjectPageLink
+        id={`ObjectPageSection-${section.props.id}`}
+        onSetActive={onScrollActive}
+        activeClass={classes.selected}
+        alwaysToTop={index === 0}
+        scrollOffset={collapsedHeader ? 0 : -45}
+      >
+        <span className={classes.button}>{section.props.title}</span>
+      </ObjectPageLink>
+    );
   } else {
     sectionSelector = (
       <span onClick={onScrollActive} className={`${classes.button}${selected ? ` ${classes.selected}` : ''}`}>

@@ -1,4 +1,4 @@
-import React, { ReactNode, useLayoutEffect, useMemo, useState, useRef } from 'react';
+import React, { ReactNode, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { Avatar } from '../Avatar';
 import { AvatarShape, AvatarSize } from '../..';
@@ -22,10 +22,11 @@ const useStyles = createUseStyles(styles);
 
 export interface CollapsedAvatarPropTypes {
   image?: string | ReactNode;
+  imageShapeCircle?: boolean;
 }
 
 export function CollapsedAvatar(props: CollapsedAvatarPropTypes) {
-  const { image } = props;
+  const { image, imageShapeCircle } = props;
   const classes = useStyles();
   const [isMounted, setIsMounted] = useState(false);
   const domRef = useRef();
@@ -34,14 +35,20 @@ export function CollapsedAvatar(props: CollapsedAvatarPropTypes) {
     if (!image) return null;
 
     if (typeof image === 'string') {
-      return <Avatar size={AvatarSize.S} shape={AvatarShape.Circle} image={image as string} />;
+      return (
+        <Avatar
+          size={AvatarSize.S}
+          shape={imageShapeCircle ? AvatarShape.Circle : AvatarShape.Square}
+          image={image as string}
+        />
+      );
     } else {
       // @ts-ignore
       return React.cloneElement(image, {
         size: AvatarSize.S
       });
     }
-  }, [image]);
+  }, [image, imageShapeCircle]);
 
   useLayoutEffect(() => {
     requestAnimationFrame(() => {
