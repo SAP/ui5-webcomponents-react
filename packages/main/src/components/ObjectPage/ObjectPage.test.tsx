@@ -1,6 +1,4 @@
 import { getEventFromCallback, mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
-import { expect, use } from 'chai';
-import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
 import * as sinon from 'sinon';
 import { Button } from '../../lib/Button';
@@ -11,8 +9,6 @@ import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import { ObjectPageSection } from '../../lib/ObjectPageSection';
 import { ObjectPageSubSection } from '../../lib/ObjectPageSubSection';
 import { Text } from '../../lib/Text';
-
-use(matchSnapshot);
 
 const renderHeaderContent = () => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -82,22 +78,22 @@ const renderComponentWithSections = () => (
 );
 
 describe('ObjectPage', () => {
-  it('With Subsections', () => {
+  test('With Subsections', () => {
     const wrapper = mountThemedComponent(renderComponent(), {}, { attachTo: document.body });
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it('Only Sections', () => {
+  test('Only Sections', () => {
     const wrapper = mountThemedComponent(renderComponentWithSections());
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it('IconTabBar Mode', () => {
+  test('IconTabBar Mode', () => {
     const wrapper = mountThemedComponent(renderComponent(ObjectPageMode.IconTabBar));
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it('Just Some Sections', () => {
+  test('Just Some Sections', () => {
     const wrapper = renderThemedComponent(
       <ObjectPage mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
@@ -105,46 +101,46 @@ describe('ObjectPage', () => {
       </ObjectPage>
     );
 
-    expect(wrapper.html()).to.matchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('Not crashing with 1 section - Default Mode', () => {
+  test('Not crashing with 1 section - Default Mode', () => {
     const wrapper = mountThemedComponent(
       <ObjectPage>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
       </ObjectPage>
     );
 
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it('Not crashing with 1 section - IconTabBar Mode', () => {
+  test('Not crashing with 1 section - IconTabBar Mode', () => {
     const wrapper = mountThemedComponent(
       <ObjectPage mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
       </ObjectPage>
     );
 
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it('Not crashing with 0 sections', () => {
+  test('Not crashing with 0 sections', () => {
     const wrapper = mountThemedComponent(<ObjectPage mode={ObjectPageMode.IconTabBar} />);
 
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it('Set selected section id', () => {
+  test('Set selected section id', () => {
     const wrapper = mountThemedComponent(
       <ObjectPage selectedSectionId={'2'} mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>
     );
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it.skip('onSelectedSectionChangedHandler', () => {
+  test.skip('onSelectedSectionChangedHandler', () => {
     const callback = sinon.spy();
     const wrapper = mountThemedComponent(
       <ObjectPage selectedSectionId={'2'} mode={ObjectPageMode.IconTabBar} onSelectedSectionChanged={callback}>
@@ -156,16 +152,16 @@ describe('ObjectPage', () => {
       .find('section[role="navigation"] ui5-button')
       .first()
       .simulate('click');
-    expect(getEventFromCallback(callback).getParameter('selectedSectionId')).to.eq('1');
+    expect(getEventFromCallback(callback).getParameter('selectedSectionId')).toEqual('1');
   });
 
-  it('No Header', () => {
+  test('No Header', () => {
     const wrapper = mountThemedComponent(
       <ObjectPage selectedSectionId={'2'} noHeader>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>
     );
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 });
