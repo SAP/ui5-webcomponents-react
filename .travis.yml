@@ -12,15 +12,15 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
 
-script:
-  - yarn test
-  - cat ${TRAVIS_BUILD_DIR}/coverage/lcov.info | ${TRAVIS_BUILD_DIR}/node_modules/.bin/coveralls
-
 jobs:
   allow_failures:
     - script: ./scripts/ci/setup-npm.sh
     - script: ./scripts/ci/release-npm-next-tag.sh
   include:
+    - stage: 'Test'
+      script:
+        - yarn test
+        - cat ${TRAVIS_BUILD_DIR}/coverage/lcov.info | ${TRAVIS_BUILD_DIR}/node_modules/.bin/coveralls
     - stage: 'Build and Deploy'
       before_script:
         - git checkout ${TRAVIS_BRANCH}
