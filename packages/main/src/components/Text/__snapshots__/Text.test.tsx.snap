@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text No Wrap 1`] = `
+<span
+  class="Text--text- Text--noWrap-"
+>
+  Lorem Ipsum dolor sit amed
+</span>
+`;
+
+exports[`Text Render Basic Text 1`] = `
+<span
+  class="Text--text-"
+>
+  FioriText
+</span>
+`;
+
+exports[`Text Render Whitespace 1`] = `
+<span
+  class="Text--text- Text--renderWhitespace-"
+>
+  Lorem Ipsum dolor sit amed
+</span>
+`;
