@@ -4,13 +4,9 @@ git:
   depth: false
 
 node_js:
-  - '8.16.0'
-  - '10'
+  - '12'
 
 cache: yarn
-
-addons:
-  chrome: stable
 
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
@@ -18,11 +14,7 @@ before_install:
 
 script:
   - yarn test
-  - |
-    if [ ${TRAVIS_NODE_VERSION} = "10" ]
-    then
-      cat ${TRAVIS_BUILD_DIR}/coverage/lcov.info | ${TRAVIS_BUILD_DIR}/node_modules/.bin/coveralls || exit 0
-    fi
+  - cat ${TRAVIS_BUILD_DIR}/coverage/lcov.info | ${TRAVIS_BUILD_DIR}/node_modules/.bin/coveralls
 
 jobs:
   allow_failures:
@@ -30,8 +22,6 @@ jobs:
     - script: ./scripts/ci/release-npm-next-tag.sh
   include:
     - stage: 'Build and Deploy'
-      node_js:
-        - '10'
       before_script:
         - git checkout ${TRAVIS_BRANCH}
         - bash ./scripts/ci/version-bump-rc.sh
