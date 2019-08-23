@@ -1,17 +1,13 @@
 import { mountThemedComponent } from '@shared/tests/utils';
-import { expect, use } from 'chai';
-import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
 import { VariantManagement } from '../../lib/VariantManagement';
 
 const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
 
-use(matchSnapshot);
-
 describe('VariantManagement', () => {
-  it('Render without crashing', () => {
+  test('Render without crashing', () => {
     const wrapper = mountThemedComponent(<VariantManagement variantItems={variantItems} />);
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   // it('With suggestions', () => {
