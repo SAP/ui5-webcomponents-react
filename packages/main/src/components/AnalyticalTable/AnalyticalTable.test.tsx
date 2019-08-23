@@ -1,6 +1,4 @@
 import { mountThemedComponent } from '@shared/tests/utils';
-import { expect, use } from 'chai';
-import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
 import { AnalyticalTable } from '../../lib/AnalyticalTable';
 
@@ -42,10 +40,8 @@ const data = [
   }
 ];
 
-use(matchSnapshot);
-
 describe('AnalyticalTable', () => {
-  it('test Asc desc', () => {
+  test('test Asc desc', () => {
     const wrapper = mountThemedComponent(
       <AnalyticalTable showPagination data={data} title={'Test'} columns={columns} />
     );
@@ -66,9 +62,9 @@ describe('AnalyticalTable', () => {
     // @ts-ignore
     component.onclick({});
 
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
-  it('pagination', () => {
+  test('pagination', () => {
     const wrapper = mountThemedComponent(
       <AnalyticalTable defaultPageSize={1} showPagination data={data} title={'Test'} columns={columns} />
     );
@@ -106,6 +102,6 @@ describe('AnalyticalTable', () => {
     // @ts-ignore
     component.fireEvent('click');
 
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 });
