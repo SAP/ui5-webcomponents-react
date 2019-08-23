@@ -16,9 +16,7 @@
   "scripts": {
     "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/generateWebComponentWrappers --onlyStopForMerge",
     "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
-    "postbuild": "rollup -c rollup.config.js",
-    "test:karma": "karma start ../../config/karma.conf.js",
-    "test:karma:update": "cross-env UPDATE=1 yarn run test:karma"
+    "postbuild": "rollup -c rollup.config.js"
   },
   "dependencies": {
     "@ui5/webcomponents": "1.0.0-rc.2",

@@ -2,8 +2,8 @@ const PATHS = require('./paths');
 
 module.exports = {
   rootDir: PATHS.root,
-  coverageDirectory: PATHS.nycOutput,
-  coverageReporters: ['json', 'text'],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['lcov', 'text'],
   collectCoverage: false,
   collectCoverageFrom: [
     'packages/**/*.{ts,tsx}',
@@ -12,7 +12,6 @@ module.exports = {
     '!**/src/enums/*',
     '!**/*.stories.tsx',
     '!**/*.jss.ts',
-    '!**/*.karma.tsx',
     '!**/node_modules/**',
     '!packages/*/src/index.ts',
     '!packages/*/index.ts',
