@@ -1,0 +1,1074 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
+<div
+  class="Carousel--carousel- Carousel--carouselArrowPlacementContent-"
+  role="list"
+  style="width: 100%; height: 100%;"
+  tabindex="0"
+>
+  <div
+    class="Carousel--carouselInner-"
+    style="transform: translateX(-0%);"
+  >
+    <div
+      aria-posinset="0"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+      style="visibility: visible;"
+    >
+      <p>
+        Carousel 1
+      </p>
+    </div>
+    <div
+      aria-posinset="1"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 2
+      </p>
+    </div>
+    <div
+      aria-posinset="2"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 3
+      </p>
+    </div>
+    <div
+      aria-posinset="3"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 4
+      </p>
+    </div>
+    <div
+      aria-posinset="4"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 5
+      </p>
+    </div>
+    <div
+      aria-posinset="5"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 6
+      </p>
+    </div>
+    <div
+      aria-posinset="6"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 7
+      </p>
+    </div>
+  </div>
+  <div
+    class="CarouselPagination--pagination- CarouselPagination--paginationArrowContent- CarouselPagination--paginationBottom-"
+  >
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-left"
+      />
+    </div>
+    <div
+      class="CarouselPagination--paginationIndicator-"
+    >
+      <span
+        aria-label="Item 1 of 7 displayed"
+        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+      >
+        1
+      </span>
+      <span
+        aria-label="Item 2 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        2
+      </span>
+      <span
+        aria-label="Item 3 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        3
+      </span>
+      <span
+        aria-label="Item 4 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        4
+      </span>
+      <span
+        aria-label="Item 5 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        5
+      </span>
+      <span
+        aria-label="Item 6 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        6
+      </span>
+      <span
+        aria-label="Item 7 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        7
+      </span>
+    </div>
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-right"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
+<div
+  class="Carousel--carousel-"
+  role="list"
+  style="width: 100%; height: 100%;"
+  tabindex="0"
+>
+  <div
+    class="Carousel--carouselInner-"
+    style="transform: translateX(-0%);"
+  >
+    <div
+      aria-posinset="0"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+      style="visibility: visible;"
+    >
+      <p>
+        Carousel 1
+      </p>
+    </div>
+    <div
+      aria-posinset="1"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 2
+      </p>
+    </div>
+    <div
+      aria-posinset="2"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 3
+      </p>
+    </div>
+    <div
+      aria-posinset="3"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 4
+      </p>
+    </div>
+    <div
+      aria-posinset="4"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 5
+      </p>
+    </div>
+    <div
+      aria-posinset="5"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 6
+      </p>
+    </div>
+    <div
+      aria-posinset="6"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 7
+      </p>
+    </div>
+  </div>
+  <div
+    class="CarouselPagination--pagination- CarouselPagination--paginationBottom-"
+  >
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-left"
+      />
+    </div>
+    <div
+      class="CarouselPagination--paginationIndicator-"
+    >
+      <span
+        aria-label="Item 1 of 7 displayed"
+        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+      >
+        1
+      </span>
+      <span
+        aria-label="Item 2 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        2
+      </span>
+      <span
+        aria-label="Item 3 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        3
+      </span>
+      <span
+        aria-label="Item 4 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        4
+      </span>
+      <span
+        aria-label="Item 5 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        5
+      </span>
+      <span
+        aria-label="Item 6 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        6
+      </span>
+      <span
+        aria-label="Item 7 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        7
+      </span>
+    </div>
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-right"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Carousel Page Indicator Placement: Top 1`] = `
+<div
+  class="Carousel--carousel-"
+  role="list"
+  style="width: 100%; height: 100%;"
+  tabindex="0"
+>
+  <div
+    class="CarouselPagination--pagination- CarouselPagination--paginationTop-"
+  >
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-left"
+      />
+    </div>
+    <div
+      class="CarouselPagination--paginationIndicator-"
+    >
+      <span
+        aria-label="Item 1 of 7 displayed"
+        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+      >
+        1
+      </span>
+      <span
+        aria-label="Item 2 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        2
+      </span>
+      <span
+        aria-label="Item 3 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        3
+      </span>
+      <span
+        aria-label="Item 4 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        4
+      </span>
+      <span
+        aria-label="Item 5 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        5
+      </span>
+      <span
+        aria-label="Item 6 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        6
+      </span>
+      <span
+        aria-label="Item 7 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        7
+      </span>
+    </div>
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-right"
+      />
+    </div>
+  </div>
+  <div
+    class="Carousel--carouselInner-"
+    style="transform: translateX(-0%);"
+  >
+    <div
+      aria-posinset="0"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+      style="visibility: visible;"
+    >
+      <p>
+        Carousel 1
+      </p>
+    </div>
+    <div
+      aria-posinset="1"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 2
+      </p>
+    </div>
+    <div
+      aria-posinset="2"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 3
+      </p>
+    </div>
+    <div
+      aria-posinset="3"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 4
+      </p>
+    </div>
+    <div
+      aria-posinset="4"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 5
+      </p>
+    </div>
+    <div
+      aria-posinset="5"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 6
+      </p>
+    </div>
+    <div
+      aria-posinset="6"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 7
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Carousel Page Indicator Placement: Top 2`] = `
+<div
+  class="Carousel--carousel-"
+  role="list"
+  style="width: 100%; height: 100%;"
+  tabindex="0"
+>
+  <div
+    class="CarouselPagination--pagination- CarouselPagination--paginationTop-"
+  >
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-left"
+      />
+    </div>
+    <div
+      class="CarouselPagination--paginationIndicator-"
+    >
+      <span
+        aria-label="Item 1 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        1
+      </span>
+      <span
+        aria-label="Item 2 of 7 displayed"
+        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+      >
+        2
+      </span>
+      <span
+        aria-label="Item 3 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        3
+      </span>
+      <span
+        aria-label="Item 4 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        4
+      </span>
+      <span
+        aria-label="Item 5 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        5
+      </span>
+      <span
+        aria-label="Item 6 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        6
+      </span>
+      <span
+        aria-label="Item 7 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        7
+      </span>
+    </div>
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-right"
+      />
+    </div>
+  </div>
+  <div
+    class="Carousel--carouselInner-"
+    style="transform: translateX(-100%);"
+  >
+    <div
+      aria-posinset="0"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+      style=""
+    >
+      <p>
+        Carousel 1
+      </p>
+    </div>
+    <div
+      aria-posinset="1"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+      style="visibility: visible;"
+    >
+      <p>
+        Carousel 2
+      </p>
+    </div>
+    <div
+      aria-posinset="2"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 3
+      </p>
+    </div>
+    <div
+      aria-posinset="3"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 4
+      </p>
+    </div>
+    <div
+      aria-posinset="4"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 5
+      </p>
+    </div>
+    <div
+      aria-posinset="5"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 6
+      </p>
+    </div>
+    <div
+      aria-posinset="6"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 7
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Carousel Renders without crashing 1`] = `
+<div
+  class="Carousel--carousel- Carousel--carouselArrowPlacementContent-"
+  role="list"
+  style="width: 100%; height: 100%;"
+  tabindex="0"
+>
+  <div
+    class="Carousel--carouselInner-"
+    style="transform: translateX(-0%);"
+  >
+    <div
+      aria-posinset="0"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+      style="visibility: visible;"
+    >
+      <p>
+        Carousel 1
+      </p>
+    </div>
+    <div
+      aria-posinset="1"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 2
+      </p>
+    </div>
+    <div
+      aria-posinset="2"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 3
+      </p>
+    </div>
+    <div
+      aria-posinset="3"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 4
+      </p>
+    </div>
+    <div
+      aria-posinset="4"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 5
+      </p>
+    </div>
+    <div
+      aria-posinset="5"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 6
+      </p>
+    </div>
+    <div
+      aria-posinset="6"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 7
+      </p>
+    </div>
+  </div>
+  <div
+    class="CarouselPagination--pagination- CarouselPagination--paginationArrowContent- CarouselPagination--paginationBottom-"
+  >
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-left"
+      />
+    </div>
+    <div
+      class="CarouselPagination--paginationIndicator-"
+    >
+      <span
+        aria-label="Item 1 of 7 displayed"
+        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+      >
+        1
+      </span>
+      <span
+        aria-label="Item 2 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        2
+      </span>
+      <span
+        aria-label="Item 3 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        3
+      </span>
+      <span
+        aria-label="Item 4 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        4
+      </span>
+      <span
+        aria-label="Item 5 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        5
+      </span>
+      <span
+        aria-label="Item 6 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        6
+      </span>
+      <span
+        aria-label="Item 7 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        7
+      </span>
+    </div>
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-right"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Carousel Should render a text indicator 1`] = `
+<div
+  class="Carousel--carousel- Carousel--carouselArrowPlacementContent-"
+  role="list"
+  style="width: 100%; height: 100%;"
+  tabindex="0"
+>
+  <div
+    class="Carousel--carouselInner-"
+    style="transform: translateX(-0%);"
+  >
+    <div
+      aria-posinset="0"
+      aria-setsize="10"
+      class="Carousel--carouselItem-"
+      role="listitem"
+      style="visibility: visible;"
+    >
+      <p>
+        Carousel 1
+      </p>
+    </div>
+    <div
+      aria-posinset="1"
+      aria-setsize="10"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 2
+      </p>
+    </div>
+    <div
+      aria-posinset="2"
+      aria-setsize="10"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 3
+      </p>
+    </div>
+    <div
+      aria-posinset="3"
+      aria-setsize="10"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 4
+      </p>
+    </div>
+    <div
+      aria-posinset="4"
+      aria-setsize="10"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 5
+      </p>
+    </div>
+    <div
+      aria-posinset="5"
+      aria-setsize="10"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 6
+      </p>
+    </div>
+    <div
+      aria-posinset="6"
+      aria-setsize="10"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 7
+      </p>
+    </div>
+    <div
+      aria-posinset="7"
+      aria-setsize="10"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 8
+      </p>
+    </div>
+    <div
+      aria-posinset="8"
+      aria-setsize="10"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 9
+      </p>
+    </div>
+    <div
+      aria-posinset="9"
+      aria-setsize="10"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 10
+      </p>
+    </div>
+  </div>
+  <div
+    class="CarouselPagination--pagination- CarouselPagination--paginationArrowContent- CarouselPagination--paginationBottom-"
+  >
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-left"
+      />
+    </div>
+    <div
+      class="CarouselPagination--paginationIndicator-"
+    >
+      <ui5-label
+        class=""
+        for=""
+      >
+        Showing 1 of 10
+      </ui5-label>
+    </div>
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-right"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Carousel Update activePage via prop 1`] = `
+<div
+  class="Carousel--carousel- Carousel--carouselArrowPlacementContent-"
+  role="list"
+  style="width: 100%; height: 100%;"
+  tabindex="0"
+>
+  <div
+    class="Carousel--carouselInner-"
+    style="transform: translateX(-0%);"
+  >
+    <div
+      aria-posinset="0"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+      style="visibility: visible;"
+    >
+      <p>
+        Carousel 1
+      </p>
+    </div>
+    <div
+      aria-posinset="1"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 2
+      </p>
+    </div>
+    <div
+      aria-posinset="2"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 3
+      </p>
+    </div>
+    <div
+      aria-posinset="3"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 4
+      </p>
+    </div>
+    <div
+      aria-posinset="4"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 5
+      </p>
+    </div>
+    <div
+      aria-posinset="5"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 6
+      </p>
+    </div>
+    <div
+      aria-posinset="6"
+      aria-setsize="7"
+      class="Carousel--carouselItem-"
+      role="listitem"
+    >
+      <p>
+        Carousel 7
+      </p>
+    </div>
+  </div>
+  <div
+    class="CarouselPagination--pagination- CarouselPagination--paginationArrowContent- CarouselPagination--paginationBottom-"
+  >
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-left"
+      />
+    </div>
+    <div
+      class="CarouselPagination--paginationIndicator-"
+    >
+      <span
+        aria-label="Item 1 of 7 displayed"
+        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+      >
+        1
+      </span>
+      <span
+        aria-label="Item 2 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        2
+      </span>
+      <span
+        aria-label="Item 3 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        3
+      </span>
+      <span
+        aria-label="Item 4 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        4
+      </span>
+      <span
+        aria-label="Item 5 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        5
+      </span>
+      <span
+        aria-label="Item 6 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        6
+      </span>
+      <span
+        aria-label="Item 7 of 7 displayed"
+        class="CarouselPagination--paginationIcon-"
+      >
+        7
+      </span>
+    </div>
+    <div
+      class="CarouselPagination--paginationArrow-"
+      data-value="paginationArrow"
+    >
+      <ui5-icon
+        class=""
+        src="sap-icon://slim-arrow-right"
+      />
+    </div>
+  </div>
+</div>
+`;
