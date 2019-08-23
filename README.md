@@ -30,15 +30,15 @@ You can play around with our components by visiting our [Storybook](https://sap.
 
 ### Package Overview
 
-#### [@ui5/webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main) - Fiori 3 Components [![](https://img.shields.io/npm/v/@ui5/webcomponents-react.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
+#### [@ui5/webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main) - Fiori 3 Components [![](https://img.shields.io/npm/v/@ui5/webcomponents-react/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
 <!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react.svg?label=size) --> 
 <!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react.svg?label=gzip%20size) -->
 
-#### [@ui5/webcomponents-react-charts](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts) - Fiori Charts  [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts)
+#### [@ui5/webcomponents-react-charts](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts) - Fiori Charts  [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts)
 <!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react-charts.svg?label=size)  -->
 <!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-charts.svg?label=gzip%20size) -->
 
-#### [@ui5/webcomponents-react-base](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base) - Utils [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base)
+#### [@ui5/webcomponents-react-base](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base) - Utils [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base)
 <!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-base](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react-base.svg?label=size) --> 
 <!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-base](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-base.svg?label=gzip%20size) -->
 
