@@ -3,8 +3,8 @@
 #### `Basic Test (generated)`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <MessageStrip type="Information">
         <ui5-messagestrip type="Information" class="" />

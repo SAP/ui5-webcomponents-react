@@ -58,6 +58,7 @@
     "global": "^4.4.0",
     "google-closure-compiler": "^20190415.0.0",
     "gzip-size": "^5.1.0",
+    "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
@@ -103,7 +104,8 @@
     "util": "^0.12.0",
     "uuid": "^3.3.2",
     "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.2"
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.8.0"
   },
   "resolutions": {
     "@types/react": "16.8.24"

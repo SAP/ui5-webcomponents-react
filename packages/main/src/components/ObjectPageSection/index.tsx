@@ -1,10 +1,11 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper, useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, ReactNode, ReactNodeArray, RefObject, FC } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';
+import { useScrollElement } from '../ObjectPage/scroll/useScrollElement';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
   title?: string;
@@ -24,20 +25,20 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
       throw new EmptyIdPropException('ObjectPageSection requires a unique ID property!');
     }
 
+    const sectionRef: RefObject<HTMLElement> = useConsolidatedRef(ref);
+    const htmlId = `ObjectPageSection-${id}`;
+
+    useScrollElement(htmlId, sectionRef, {
+      spy: true
+    });
+
     const titleClasses = StyleClassHelper.of(classes.title);
     if (titleUppercase) {
       titleClasses.put(classes.uppercase);
     }
 
     return (
-      <section
-        ref={ref}
-        id={`ObjectPageSection-${id}`}
-        role="region"
-        className={className}
-        style={style}
-        title={tooltip}
-      >
+      <section ref={sectionRef} id={htmlId} role="region" className={className} style={style} title={tooltip}>
         <div role="heading" className={classes.header}>
           <div className={titleClasses.valueOf()}>{title}</div>
         </div>
