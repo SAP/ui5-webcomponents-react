@@ -1,5 +1,4 @@
 import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
-import { expect } from 'chai';
 import { mount } from 'enzyme';
 import React from 'react';
 import sinon from 'sinon';
@@ -7,7 +6,7 @@ import { SegmentedButton } from '../../lib/SegmentedButton';
 import { SegmentedButtonItem } from '../../lib/SegmentedButtonItem';
 
 describe('SegmentedButton', () => {
-  it('Selection', () => {
+  test('Selection', () => {
     const callback = sinon.spy();
     const wrapper = mountThemedComponent(
       // @ts-ignore
@@ -21,10 +20,10 @@ describe('SegmentedButton', () => {
       .last()
       .simulate('click');
     wrapper.update();
-    expect(getEventFromCallback(callback).getParameter('selectedKey')).to.equal('btn-2');
+    expect(getEventFromCallback(callback).getParameter('selectedKey')).toEqual('btn-2');
   });
 
-  it('Update Selection via API', () => {
+  test('Update Selection via API', () => {
     const callback = sinon.spy();
     const SegmentedBtn = (SegmentedButton as any).InnerComponent;
     const SegmentedBtnItem = (SegmentedButtonItem as any).InnerComponent;
@@ -40,7 +39,7 @@ describe('SegmentedButton', () => {
     );
     wrapper.setProps({ selectedKey: 'btn-2' });
     wrapper.update();
-    expect(wrapper.state('selectedKey')).to.equal('btn-2');
-    expect(callback.called).to.equal(false);
+    expect(wrapper.state('selectedKey')).toEqual('btn-2');
+    expect(callback.called).toBe(false);
   });
 });

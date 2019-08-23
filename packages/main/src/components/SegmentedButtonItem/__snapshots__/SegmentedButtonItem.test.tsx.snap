@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SegmentedButtonItem Basic SegmentedButtonItem 1`] = `
+<li
+  class="SegmentedButtonItem-segmentedButtonItem- SegmentedButtonItem-focusableItem-"
+>
+  <div
+    class="SegmentedButtonItem-icon- SegmentedButtonItem-withText-"
+  >
+    <ui5-icon
+      class=""
+      src="add"
+    />
+  </div>
+  My Item
+</li>
+`;
+
+exports[`SegmentedButtonItem SegmentedButtonItem Disabled 1`] = `
+<li
+  class="SegmentedButtonItem-segmentedButtonItem- SegmentedButtonItem-iconOnly- SegmentedButtonItem-disabled-"
+>
+  <div
+    class="SegmentedButtonItem-icon-"
+  >
+    <ui5-icon
+      class=""
+      src="add"
+    />
+  </div>
+</li>
+`;
+
+exports[`SegmentedButtonItem SegmentedButtonItem Icon Only 1`] = `
+<li
+  class="SegmentedButtonItem-segmentedButtonItem- SegmentedButtonItem-iconOnly- SegmentedButtonItem-focusableItem-"
+>
+  <div
+    class="SegmentedButtonItem-icon-"
+  >
+    <ui5-icon
+      class=""
+      src="add"
+    />
+  </div>
+</li>
+`;
+
+exports[`SegmentedButtonItem SegmentedButtonItem onClick 1`] = `
+<li
+  class="SegmentedButtonItem-segmentedButtonItem- SegmentedButtonItem-iconOnly- SegmentedButtonItem-focusableItem-"
+>
+  <div
+    class="SegmentedButtonItem-icon-"
+  >
+    <ui5-icon
+      class=""
+      src="add"
+    />
+  </div>
+</li>
+`;
+
+exports[`SegmentedButtonItem Selected SegmentedButtonItem 1`] = `
+<li
+  class="SegmentedButtonItem-segmentedButtonItem- SegmentedButtonItem-focusableItem- SegmentedButtonItem-selected-"
+>
+  <div
+    class="SegmentedButtonItem-icon- SegmentedButtonItem-withText-"
+  >
+    <ui5-icon
+      class=""
+      src="add"
+    />
+  </div>
+  My Item
+</li>
+`;
