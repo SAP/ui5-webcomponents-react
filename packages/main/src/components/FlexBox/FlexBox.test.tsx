@@ -3,8 +3,6 @@ import * as React from 'react';
 import { FlexBox } from '../../lib/FlexBox';
 import { FlexBoxJustifyContent } from '../../lib/FlexBoxJustifyContent';
 
-declare const expect: any;
-
 describe('FlexBox', () => {
   test('JustifyContent: End', () => {
     const wrapper = mountThemedComponent(

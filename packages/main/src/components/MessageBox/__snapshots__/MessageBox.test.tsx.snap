@@ -1,0 +1,481 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageBox Confirm - Cancel 1`] = `
+<div
+  class="MessageBox-overlay-"
+>
+  <div
+    class="MessageBox-messageBox-"
+  >
+    <header
+      class="MessageBox-header-"
+      data-type="Confirm"
+    >
+      <div
+        class="MessageBox-icon-"
+      >
+        <ui5-icon
+          class=""
+          src="question-mark"
+        />
+      </div>
+      <ui5-title
+        class=""
+        level="H5"
+      >
+        Confirmation
+      </ui5-title>
+    </header>
+    <section
+      class="MessageBox-content-"
+    >
+      <span
+        class="Text--text-"
+      >
+        Confirm - Cancel
+      </span>
+    </section>
+    <footer
+      class="MessageBox-footer-"
+    >
+      <ui5-button
+        class=""
+        design="Emphasized"
+        style="min-width: 4rem;"
+      >
+        OK
+      </ui5-button>
+      <ui5-button
+        class=""
+        design="Transparent"
+        style="min-width: 4rem;"
+      >
+        Cancel
+      </ui5-button>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`MessageBox Confirm - OK 1`] = `
+<div
+  class="MessageBox-overlay-"
+>
+  <div
+    class="MessageBox-messageBox-"
+  >
+    <header
+      class="MessageBox-header-"
+      data-type="Confirm"
+    >
+      <div
+        class="MessageBox-icon-"
+      >
+        <ui5-icon
+          class=""
+          src="question-mark"
+        />
+      </div>
+      <ui5-title
+        class=""
+        level="H5"
+      >
+        Confirmation
+      </ui5-title>
+    </header>
+    <section
+      class="MessageBox-content-"
+    >
+      <span
+        class="Text--text-"
+      >
+        Confirm - OK
+      </span>
+    </section>
+    <footer
+      class="MessageBox-footer-"
+    >
+      <ui5-button
+        class=""
+        design="Emphasized"
+        style="min-width: 4rem;"
+      >
+        OK
+      </ui5-button>
+      <ui5-button
+        class=""
+        design="Transparent"
+        style="min-width: 4rem;"
+      >
+        Cancel
+      </ui5-button>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`MessageBox Error 1`] = `
+<div
+  class="MessageBox-overlay-"
+>
+  <div
+    class="MessageBox-messageBox-"
+  >
+    <header
+      class="MessageBox-header-"
+      data-type="Error"
+    >
+      <div
+        class="MessageBox-icon-"
+      >
+        <ui5-icon
+          class=""
+          src="message-error"
+        />
+      </div>
+      <ui5-title
+        class=""
+        level="H5"
+      >
+        Error
+      </ui5-title>
+    </header>
+    <section
+      class="MessageBox-content-"
+    >
+      <span
+        class="Text--text-"
+      >
+        Error
+      </span>
+    </section>
+    <footer
+      class="MessageBox-footer-"
+    >
+      <ui5-button
+        class=""
+        design="Emphasized"
+        style="min-width: 4rem;"
+      >
+        Close
+      </ui5-button>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`MessageBox Information 1`] = `
+<div
+  class="MessageBox-overlay-"
+>
+  <div
+    class="MessageBox-messageBox-"
+  >
+    <header
+      class="MessageBox-header-"
+      data-type="Information"
+    >
+      <div
+        class="MessageBox-icon-"
+      >
+        <ui5-icon
+          class=""
+          src="message-information"
+        />
+      </div>
+      <ui5-title
+        class=""
+        level="H5"
+      >
+        Information
+      </ui5-title>
+    </header>
+    <section
+      class="MessageBox-content-"
+    >
+      <span
+        class="Text--text-"
+      >
+        Information
+      </span>
+    </section>
+    <footer
+      class="MessageBox-footer-"
+    >
+      <ui5-button
+        class=""
+        design="Emphasized"
+        style="min-width: 4rem;"
+      >
+        OK
+      </ui5-button>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`MessageBox No Title 1`] = `
+<div
+  class="MessageBox-overlay-"
+>
+  <div
+    class="MessageBox-messageBox-"
+  >
+    <header
+      class="MessageBox-header-"
+      data-type="Confirm"
+    >
+      <div
+        class="MessageBox-icon-"
+      >
+        <ui5-icon
+          class=""
+          src="question-mark"
+        />
+      </div>
+      <ui5-title
+        class=""
+        level="H5"
+      >
+        Confirmation
+      </ui5-title>
+    </header>
+    <section
+      class="MessageBox-content-"
+    >
+      <span
+        class="Text--text-"
+      >
+        No Title
+      </span>
+    </section>
+    <footer
+      class="MessageBox-footer-"
+    >
+      <ui5-button
+        class=""
+        design="Emphasized"
+        style="min-width: 4rem;"
+      >
+        OK
+      </ui5-button>
+      <ui5-button
+        class=""
+        design="Transparent"
+        style="min-width: 4rem;"
+      >
+        Cancel
+      </ui5-button>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`MessageBox Not visible 1`] = `null`;
+
+exports[`MessageBox Show 1`] = `
+<div
+  class="MessageBox-overlay-"
+>
+  <div
+    class="MessageBox-messageBox-"
+  >
+    <header
+      class="MessageBox-header-"
+      data-type="Confirm"
+    >
+      <div
+        class="MessageBox-icon-"
+      >
+        <ui5-icon
+          class=""
+          src="question-mark"
+        />
+      </div>
+      <ui5-title
+        class=""
+        level="H5"
+      >
+        Custom
+      </ui5-title>
+    </header>
+    <section
+      class="MessageBox-content-"
+    >
+      <span
+        class="Text--text-"
+      >
+        Custom
+      </span>
+    </section>
+    <footer
+      class="MessageBox-footer-"
+    >
+      <ui5-button
+        class=""
+        design="Emphasized"
+        style="min-width: 4rem;"
+      >
+        Yes
+      </ui5-button>
+      <ui5-button
+        class=""
+        design="Transparent"
+        style="min-width: 4rem;"
+      >
+        No
+      </ui5-button>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`MessageBox Success 1`] = `
+<div
+  class="MessageBox-overlay-"
+>
+  <div
+    class="MessageBox-messageBox-"
+  >
+    <header
+      class="MessageBox-header-"
+      data-type="Success"
+    >
+      <div
+        class="MessageBox-icon-"
+      >
+        <ui5-icon
+          class=""
+          src="message-success"
+        />
+      </div>
+      <ui5-title
+        class=""
+        level="H5"
+      >
+        Success
+      </ui5-title>
+    </header>
+    <section
+      class="MessageBox-content-"
+    >
+      <span
+        class="Text--text-"
+      >
+        Success
+      </span>
+    </section>
+    <footer
+      class="MessageBox-footer-"
+    >
+      <ui5-button
+        class=""
+        design="Emphasized"
+        style="min-width: 4rem;"
+      >
+        OK
+      </ui5-button>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`MessageBox Success w/ custom title 1`] = `
+<div
+  class="MessageBox-overlay-"
+>
+  <div
+    class="MessageBox-messageBox-"
+  >
+    <header
+      class="MessageBox-header-"
+      data-type="Success"
+    >
+      <div
+        class="MessageBox-icon-"
+      >
+        <ui5-icon
+          class=""
+          src="message-success"
+        />
+      </div>
+      <ui5-title
+        class=""
+        level="H5"
+      >
+        Custom Success
+      </ui5-title>
+    </header>
+    <section
+      class="MessageBox-content-"
+    >
+      <span
+        class="Text--text-"
+      >
+        Custom Success
+      </span>
+    </section>
+    <footer
+      class="MessageBox-footer-"
+    >
+      <ui5-button
+        class=""
+        design="Emphasized"
+        style="min-width: 4rem;"
+      >
+        OK
+      </ui5-button>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`MessageBox Warning 1`] = `
+<div
+  class="MessageBox-overlay-"
+>
+  <div
+    class="MessageBox-messageBox-"
+  >
+    <header
+      class="MessageBox-header-"
+      data-type="Warning"
+    >
+      <div
+        class="MessageBox-icon-"
+      >
+        <ui5-icon
+          class=""
+          src="message-warning"
+        />
+      </div>
+      <ui5-title
+        class=""
+        level="H5"
+      >
+        Warning
+      </ui5-title>
+    </header>
+    <section
+      class="MessageBox-content-"
+    >
+      <span
+        class="Text--text-"
+      >
+        Warning
+      </span>
+    </section>
+    <footer
+      class="MessageBox-footer-"
+    >
+      <ui5-button
+        class=""
+        design="Emphasized"
+        style="min-width: 4rem;"
+      >
+        OK
+      </ui5-button>
+    </footer>
+  </div>
+</div>
+`;
