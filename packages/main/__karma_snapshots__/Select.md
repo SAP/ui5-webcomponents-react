@@ -3,8 +3,8 @@
 #### `Basic Test (generated)`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Select valueState="None">
         <ui5-select value-state="None" class="" />

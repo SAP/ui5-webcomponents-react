@@ -3,8 +3,8 @@
 #### `Basic Test (generated)`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]} id={{...}}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <Panel headerText="" accessibleRole="Form">
         <ui5-panel header-text="" accessible-role="Form" class="" />

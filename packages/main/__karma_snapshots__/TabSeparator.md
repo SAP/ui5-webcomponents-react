@@ -3,8 +3,8 @@
 #### `Basic Test (generated)`
 
 ```
-<ThemeProvider withToastContainer={false}>
-  <JssProvider generateId={[Function]}>
+<ThemeProvider withToastContainer={false} noInjectThemeProperties={false}>
+  <JssProvider generateId={[Function]} jss={[undefined]}>
     <ThemeProvider theme={{...}}>
       <TabSeparator>
         <ui5-tab-separator class="" />

@@ -80,6 +80,7 @@ export const ObjectPageScroller = forwardRef((props: Props, ref) => {
 
   const getOffset = useCallback(
     (el, offset = 0) => {
+      if (!el) return 0;
       const nextOffset = el.offsetTop + offset;
       if (el.parentElement === scrollContainer.current) {
         return nextOffset;
