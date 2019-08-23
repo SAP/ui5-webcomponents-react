@@ -1,6 +1,4 @@
 import { mountThemedComponent } from '@shared/tests/utils';
-import { expect, use } from 'chai';
-import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
 import { FilterBar } from '../../lib/FilterBar';
 import { FilterItem } from '../../lib/FilterItem';
@@ -14,8 +12,6 @@ const filterItems = [{ text: 'Text 1', key: '1' }, { text: 'Text 2', key: '2' }]
 
 const renderVariants = () => <VariantManagement variantItems={variantItems} />;
 const renderSearch = () => <Input placeholder={'Search'} />;
-
-use(matchSnapshot);
 
 describe('FilterBar', () => {
   it('Render without crashing', () => {
@@ -39,7 +35,7 @@ describe('FilterBar', () => {
         </FilterItem>
       </FilterBar>
     );
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   it('Hide Filter Bar', () => {
@@ -78,7 +74,7 @@ describe('FilterBar', () => {
       .first()
       .instance() as any;
     component.fireEvent('click');
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   it('Select Filter Item', () => {
@@ -115,13 +111,13 @@ describe('FilterBar', () => {
         />
       </FilterBar>
     );
-    // console.log(wrapper.debug());
-    // console.log(wrapper.find('Select').debug());
+    // console.log(wrapper.render());
+    // console.log(wrapper.find('Select').render());
     wrapper
       .find('ui5-option')
       .at(1)
       .simulate('change');
 
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 });
