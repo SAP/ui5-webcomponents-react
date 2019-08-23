@@ -27,7 +27,6 @@
     "@types/enzyme": "^3.9.3",
     "@types/hoist-non-react-statics": "^3.3.1",
     "@types/jest": "^24.0.18",
-    "@types/mocha": "^5.2.7",
     "@types/modernizr": "^3.5.3",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
