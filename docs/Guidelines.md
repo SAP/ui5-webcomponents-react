@@ -1,4 +1,10 @@
 # Development Conventions and Guidelines
+
+## Requirements
+
+- [Yarn](https://yarnpkg.com/en/)
+- [Node.js](https://nodejs.org/) (**version 12 or higher** ⚠️)
+
 ## TypeScript
 
 Please use TypeScript to write your components. A good introduction to TypeScript in React can be found [here](https://levelup.gitconnected.com/ultimate-react-component-patterns-with-typescript-2-8-82990c516935).

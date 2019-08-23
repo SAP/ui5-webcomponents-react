@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label Basic Test (generated) 1`] = `
+<ui5-label
+  class=""
+  for=""
+/>
+`;

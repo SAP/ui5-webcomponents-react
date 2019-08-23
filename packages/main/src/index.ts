@@ -25,7 +25,6 @@ import { CheckBox } from './lib/CheckBox';
 import { ContentDensity } from './lib/ContentDensity';
 import { CustomListItem } from './lib/CustomListItem';
 import { DatePicker } from './lib/DatePicker';
-import { DayPicker } from './lib/DayPicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
 import { Dialog } from './lib/Dialog';
 import { FilterBar } from './lib/FilterBar';
@@ -46,8 +45,6 @@ import { Label } from './lib/Label';
 import { Link } from './lib/Link';
 import { LinkDesign } from './lib/LinkDesign';
 import { List } from './lib/List';
-import { ListItem } from './lib/ListItem';
-import { ListItemBase } from './lib/ListItemBase';
 import { ListItemTypes } from './lib/ListItemTypes';
 import { ListMode } from './lib/ListMode';
 import { ListSeparators } from './lib/ListSeparators';
@@ -58,7 +55,6 @@ import { MessageBoxTypes } from './lib/MessageBoxTypes';
 import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
 import { MessageToast } from './lib/MessageToast';
-import { MonthPicker } from './lib/MonthPicker';
 import { MultiComboBox } from './lib/MultiComboBox';
 import { ObjectPage } from './lib/ObjectPage';
 import { ObjectPageMode } from './lib/ObjectPageMode';
@@ -74,7 +70,6 @@ import { PlacementType } from './lib/PlacementType';
 import { Popover } from './lib/Popover';
 import { PopoverHorizontalAlign } from './lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from './lib/PopoverVerticalAlign';
-import { Popup } from './lib/Popup';
 import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
 import { SegmentedButton } from './lib/SegmentedButton';
@@ -88,7 +83,6 @@ import { Spinner } from './lib/Spinner';
 import { StandardListItem } from './lib/StandardListItem';
 import { Switch } from './lib/Switch';
 import { Tab } from './lib/Tab';
-import { TabBase } from './lib/TabBase';
 import { TabContainer } from './lib/TabContainer';
 import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
@@ -136,7 +130,6 @@ export {
   ContentDensity,
   CustomListItem,
   DatePicker,
-  DayPicker,
   DeviationIndicator,
   Dialog,
   FilterBar,
@@ -157,8 +150,6 @@ export {
   Link,
   LinkDesign,
   List,
-  ListItem,
-  ListItemBase,
   ListItemTypes,
   ListMode,
   ListSeparators,
@@ -169,7 +160,6 @@ export {
   MessageStrip,
   MessageStripType,
   MessageToast,
-  MonthPicker,
   MultiComboBox,
   ObjectPage,
   ObjectPageMode,
@@ -185,7 +175,6 @@ export {
   Popover,
   PopoverHorizontalAlign,
   PopoverVerticalAlign,
-  Popup,
   ProgressIndicator,
   RadioButton,
   SegmentedButton,
@@ -199,7 +188,6 @@ export {
   StandardListItem,
   Switch,
   Tab,
-  TabBase,
   TabContainer,
   TabSeparator,
   Table,

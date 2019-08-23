@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VariantManagement Render without crashing 1`] = `
+Array [
+  <div
+    style="display: inline-block;"
+  >
+    <div
+      class="Variant-Management--VariantManagement-"
+    >
+      <ui5-title
+        class="Variant-Management--VariantManagementText-"
+        level="H4"
+      >
+        Variant 1
+      </ui5-title>
+      <ui5-button
+        class=""
+        design="Transparent"
+        icon="navigation-down-arrow"
+      />
+    </div>
+  </div>,
+  <ui5-popover
+    class=""
+    header-text="Variants"
+    horizontal-align="Center"
+    placement-type="Bottom"
+    vertical-align="Center"
+  >
+    <ui5-button
+      class="Variant-Management--footer-"
+      design="Emphasized"
+      slot="footer"
+    >
+      Cancel
+    </ui5-button>
+    <ui5-list
+      class=""
+      footer-text=""
+      header-text=""
+      mode="SingleSelect"
+      no-data-text=""
+      separators="All"
+    >
+      <ui5-li
+        class=""
+        data-key="1"
+        info-state="None"
+        selected="true"
+        style="width: 300px;"
+        type="Active"
+      >
+        Variant 1
+      </ui5-li>
+      <ui5-li
+        class=""
+        data-key="2"
+        info-state="None"
+        style="width: 300px;"
+        type="Active"
+      >
+        Variant 2
+      </ui5-li>
+    </ui5-list>
+  </ui5-popover>,
+]
+`;

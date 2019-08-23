@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List Basic Test (generated) 1`] = `
+<ui5-list
+  class=""
+  footer-text=""
+  header-text=""
+  mode="None"
+  no-data-text=""
+  separators="All"
+/>
+`;

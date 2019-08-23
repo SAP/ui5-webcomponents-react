@@ -1,0 +1,520 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterBar Hide Filter Bar 1`] = `
+<div
+  class="FilterBar--outerContainer-"
+>
+  <div
+    class="FilterBar--filterBarHeader-"
+  >
+    <div
+      style="display: inline-block;"
+    >
+      <div
+        class="Variant-Management--VariantManagement-"
+      >
+        <ui5-title
+          class="Variant-Management--VariantManagementText-"
+          level="H4"
+        >
+          Variant 1
+        </ui5-title>
+        <ui5-button
+          class=""
+          design="Transparent"
+          icon="navigation-down-arrow"
+        />
+      </div>
+    </div>
+    <ui5-popover
+      class=""
+      header-text="Variants"
+      horizontal-align="Center"
+      placement-type="Bottom"
+      vertical-align="Center"
+    >
+      <ui5-button
+        class="Variant-Management--footer-"
+        design="Emphasized"
+        slot="footer"
+      >
+        Cancel
+      </ui5-button>
+      <ui5-list
+        class=""
+        footer-text=""
+        header-text=""
+        mode="SingleSelect"
+        no-data-text=""
+        separators="All"
+      >
+        <ui5-li
+          class=""
+          data-key="1"
+          info-state="None"
+          selected="true"
+          style="width: 300px;"
+          type="Active"
+        >
+          Variant 1
+        </ui5-li>
+        <ui5-li
+          class=""
+          data-key="2"
+          info-state="None"
+          style="width: 300px;"
+          type="Active"
+        >
+          Variant 2
+        </ui5-li>
+      </ui5-list>
+    </ui5-popover>
+    <div
+      class="FilterBar--headerRowRight-"
+    >
+      <ui5-button
+        class=""
+        design="Transparent"
+      >
+        Hide Filter Bar
+      </ui5-button>
+    </div>
+  </div>
+  <div
+    class="FilterBar--filterArea- FilterBar--filterAreaOpen-"
+  >
+    <div
+      class="FilterItem--filterItem-"
+    >
+      <div
+        class="FilterItem--innerFilterItemContainer-"
+      >
+        <ui5-label
+          class=""
+          for=""
+        >
+          Classification
+        </ui5-label>
+        <ui5-select
+          class=""
+          style="width: 100%;"
+          value-state="None"
+        >
+          <ui5-option
+            class=""
+            data-key="1"
+          >
+            Text 1
+          </ui5-option>
+          <ui5-option
+            class=""
+            data-key="2"
+          >
+            Text 2
+          </ui5-option>
+        </ui5-select>
+      </div>
+    </div>
+    <div
+      class="FilterItem--filterItem-"
+    >
+      <div
+        class="FilterItem--innerFilterItemContainer-"
+      >
+        <ui5-label
+          class=""
+          for=""
+        >
+          Custom Filter 1
+        </ui5-label>
+        <div>
+          <ui5-switch
+            class=""
+            style="width: 100%;"
+            value-parameter="state"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="FilterItem--filterItem-"
+    >
+      <div
+        class="FilterItem--innerFilterItemContainer-"
+      >
+        <ui5-label
+          class=""
+          for=""
+        >
+          Custom Filter 1
+        </ui5-label>
+        <div
+          class="FilterItem--loadingContainer-"
+        >
+          <ui5-busyindicator
+            active="true"
+            class=""
+            size="Medium"
+            style="background-color: transparent; width: 80px;"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FilterBar Render without crashing 1`] = `
+<div
+  class="FilterBar--outerContainer-"
+>
+  <div
+    class="FilterBar--filterBarHeader-"
+  >
+    <div
+      style="display: inline-block;"
+    >
+      <div
+        class="Variant-Management--VariantManagement-"
+      >
+        <ui5-title
+          class="Variant-Management--VariantManagementText-"
+          level="H4"
+        >
+          Variant 1
+        </ui5-title>
+        <ui5-button
+          class=""
+          design="Transparent"
+          icon="navigation-down-arrow"
+        />
+      </div>
+    </div>
+    <ui5-popover
+      class=""
+      header-text="Variants"
+      horizontal-align="Center"
+      placement-type="Bottom"
+      vertical-align="Center"
+    >
+      <ui5-button
+        class="Variant-Management--footer-"
+        design="Emphasized"
+        slot="footer"
+      >
+        Cancel
+      </ui5-button>
+      <ui5-list
+        class=""
+        footer-text=""
+        header-text=""
+        mode="SingleSelect"
+        no-data-text=""
+        separators="All"
+      >
+        <ui5-li
+          class=""
+          data-key="1"
+          info-state="None"
+          selected="true"
+          style="width: 300px;"
+          type="Active"
+        >
+          Variant 1
+        </ui5-li>
+        <ui5-li
+          class=""
+          data-key="2"
+          info-state="None"
+          style="width: 300px;"
+          type="Active"
+        >
+          Variant 2
+        </ui5-li>
+      </ui5-list>
+    </ui5-popover>
+    <div
+      class="FilterBar--vLine-"
+    >
+       
+      <ui5-input
+        class=""
+        placeholder="Search"
+        type="Text"
+        value=""
+        value-state="None"
+      />
+       
+    </div>
+    <div
+      class="FilterBar--headerRowRight-"
+    >
+      <ui5-button
+        class=""
+        design="Transparent"
+      >
+        Hide Filter Bar
+      </ui5-button>
+    </div>
+  </div>
+  <div
+    class="FilterBar--filterArea- FilterBar--filterAreaOpen-"
+  >
+    <div
+      class="FilterItem--filterItem-"
+    >
+      <div
+        class="FilterItem--innerFilterItemContainer-"
+      >
+        <ui5-label
+          class=""
+          for=""
+        >
+          Classification
+        </ui5-label>
+        <ui5-select
+          class=""
+          style="width: 100%;"
+          value-state="None"
+        >
+          <ui5-option
+            class=""
+            data-key="1"
+          >
+            Text 1
+          </ui5-option>
+          <ui5-option
+            class=""
+            data-key="2"
+          >
+            Text 2
+          </ui5-option>
+        </ui5-select>
+      </div>
+    </div>
+    <div
+      class="FilterItem--filterItem-"
+    >
+      <div
+        class="FilterItem--innerFilterItemContainer-"
+      >
+        <ui5-label
+          class=""
+          for=""
+        >
+          Custom Filter 1
+        </ui5-label>
+        <div>
+          <ui5-switch
+            class=""
+            style="width: 100%;"
+            value-parameter="state"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FilterBar Select Filter Item 1`] = `
+<div
+  class="FilterBar--outerContainer-"
+>
+  <div
+    class="FilterBar--filterBarHeader-"
+  >
+    <div
+      style="display: inline-block;"
+    >
+      <div
+        class="Variant-Management--VariantManagement-"
+      >
+        <ui5-title
+          class="Variant-Management--VariantManagementText-"
+          level="H4"
+        >
+          Variant 1
+        </ui5-title>
+        <ui5-button
+          class=""
+          design="Transparent"
+          icon="navigation-down-arrow"
+        />
+      </div>
+    </div>
+    <ui5-popover
+      class=""
+      header-text="Variants"
+      horizontal-align="Center"
+      placement-type="Bottom"
+      vertical-align="Center"
+    >
+      <ui5-button
+        class="Variant-Management--footer-"
+        design="Emphasized"
+        slot="footer"
+      >
+        Cancel
+      </ui5-button>
+      <ui5-list
+        class=""
+        footer-text=""
+        header-text=""
+        mode="SingleSelect"
+        no-data-text=""
+        separators="All"
+      >
+        <ui5-li
+          class=""
+          data-key="1"
+          info-state="None"
+          selected="true"
+          style="width: 300px;"
+          type="Active"
+        >
+          Variant 1
+        </ui5-li>
+        <ui5-li
+          class=""
+          data-key="2"
+          info-state="None"
+          style="width: 300px;"
+          type="Active"
+        >
+          Variant 2
+        </ui5-li>
+      </ui5-list>
+    </ui5-popover>
+    <div
+      class="FilterBar--headerRowRight-"
+    >
+      <ui5-button
+        class=""
+        design="Transparent"
+      >
+        Hide Filter Bar
+      </ui5-button>
+    </div>
+  </div>
+  <div
+    class="FilterBar--filterArea- FilterBar--filterAreaOpen-"
+  >
+    <div
+      class="FilterItem--filterItem-"
+    >
+      <div
+        class="FilterItem--innerFilterItemContainer-"
+      >
+        <ui5-label
+          class=""
+          for=""
+        >
+          Classification
+        </ui5-label>
+        <ui5-select
+          class=""
+          style="width: 100%;"
+          value-state="None"
+        >
+          <ui5-option
+            class=""
+            data-key="1"
+          >
+            Text 1
+          </ui5-option>
+          <ui5-option
+            class=""
+            data-key="2"
+          >
+            Text 2
+          </ui5-option>
+        </ui5-select>
+      </div>
+    </div>
+    <div
+      class="FilterItem--filterItem-"
+    >
+      <div
+        class="FilterItem--innerFilterItemContainer-"
+      >
+        <ui5-label
+          class=""
+          for=""
+        >
+          Classification
+        </ui5-label>
+        <div
+          class="FilterItem--loadingContainer-"
+        >
+          <ui5-busyindicator
+            active="true"
+            class=""
+            size="Medium"
+            style="background-color: transparent; width: 80px;"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="FilterItem--filterItem-"
+    >
+      <div
+        class="FilterItem--innerFilterItemContainer-"
+      >
+        <ui5-label
+          class=""
+          for=""
+        >
+          Classification
+        </ui5-label>
+        <ui5-input
+          class=""
+          placeholder=""
+          style="width: 100%;"
+          type="Text"
+          value=""
+          value-state="None"
+        />
+      </div>
+    </div>
+    <div
+      class="FilterItem--filterItem-"
+    >
+      <div
+        class="FilterItem--innerFilterItemContainer-"
+      >
+        <ui5-label
+          class=""
+          for=""
+        >
+          Classification
+        </ui5-label>
+        <ui5-multi-combobox
+          class=""
+          placeholder=""
+          value=""
+          value-state="None"
+        >
+          <ui5-li
+            class=""
+            data-key="1"
+            info-state="None"
+            type="Active"
+          >
+            Text 1
+          </ui5-li>
+          <ui5-li
+            class=""
+            data-key="2"
+            info-state="None"
+            type="Active"
+          >
+            Text 2
+          </ui5-li>
+        </ui5-multi-combobox>
+      </div>
+    </div>
+  </div>
+</div>
+`;

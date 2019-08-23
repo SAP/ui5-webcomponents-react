@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge Basic Test 1`] = `
+<ui5-badge
+  class=""
+  color-scheme="1"
+>
+  My Badge
+</ui5-badge>
+`;
+
+exports[`Badge with Icon 1`] = `
+<ui5-badge
+  class=""
+  color-scheme="1"
+>
+  <ui5-icon
+    class=""
+    slot="icon"
+    src="sap-icon://employee"
+  />
+  My Badge
+</ui5-badge>
+`;
