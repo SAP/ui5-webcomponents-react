@@ -1,45 +1,41 @@
 import { mountThemedComponent } from '@shared/tests/utils';
-import { expect, use } from 'chai';
-import { matchSnapshot } from 'chai-karma-snapshot';
 import React from 'react';
 import { ObjectStatus } from '../../lib/ObjectStatus';
 import { ValueState } from '../../lib/ValueState';
 
-use(matchSnapshot);
-
 const testFactory = () => {
   Object.values(ValueState).forEach((state) => {
-    it(`ObjectStatus: state: ${state}`, () => {
+    test(`ObjectStatus: state: ${state}`, () => {
       const wrapper = mountThemedComponent(<ObjectStatus state={state} showDefaultIcon />);
-      expect(wrapper.debug()).to.matchSnapshot();
+      expect(wrapper.render()).toMatchSnapshot();
     });
   });
 };
 
 describe('ObjectStatus', () => {
-  it('Render without Crashing', () => {
+  test('Render without Crashing', () => {
     const wrapper = mountThemedComponent(
       <ObjectStatus state={ValueState.Error} showDefaultIcon>
         Hello
       </ObjectStatus>
     );
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it('Text Deprecation', () => {
+  test('Text Deprecation', () => {
     const wrapper = mountThemedComponent(
       <ObjectStatus state={ValueState.Error} showDefaultIcon>
         Hello
       </ObjectStatus>
     );
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   testFactory();
 
-  it('Renders correct ObjectStatus text', () => {
+  test('Renders correct ObjectStatus text', () => {
     const el = 'My Text';
     const wrapper = mountThemedComponent(<ObjectStatus>{el}</ObjectStatus>);
-    expect(wrapper.text()).to.equal(el);
+    expect(wrapper.text()).toEqual(el);
   });
 });
