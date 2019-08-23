@@ -1,11 +1,8 @@
 import { renderThemedComponent, ThemedComponent } from '@shared/tests/utils';
-import { expect, use } from 'chai';
-import { matchSnapshot } from 'chai-karma-snapshot';
 import { shallow } from 'enzyme';
 import React from 'react';
 import { Page } from '../../lib/Page';
 
-use(matchSnapshot);
 
 const renderPage = (props = {}) =>
   ThemedComponent(
@@ -17,22 +14,22 @@ const renderPage = (props = {}) =>
   );
 
 describe('Page', () => {
-  it('Basic Page', () => {
+  test('Basic Page', () => {
     const wrapper = shallow(renderPage()).render();
-    expect(wrapper.html()).to.matchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('Basic Page w/o back button', () => {
+  test('Basic Page w/o back button', () => {
     const wrapper = shallow(renderPage({ showBackButton: false })).render();
-    expect(wrapper.html()).to.matchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('Without footer and Header', () => {
+  test('Without footer and Header', () => {
     const wrapper = renderThemedComponent(
       <Page title="Page Demo" showFooter={false} showHeader={false}>
         Page Content
       </Page>
     );
-    expect(wrapper.html()).to.matchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });
