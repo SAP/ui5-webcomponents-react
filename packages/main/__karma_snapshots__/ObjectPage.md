@@ -75,7 +75,7 @@
                       <section className="ObjectPage--anchorBar---" role="navigation">
                         <ObjectPageAnchorButton section={{...}} index={0} selected={true} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]} collapsedHeader={false}>
                           <li className="ObjectPageAnchorButton--anchorButtonContainer---">
-                            <ObjectPageLink id="ObjectPageSection-1" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={true} scrollOffset={-45}>
+                            <ObjectPageLink id="ObjectPageSection-1" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={true} scrollOffset={0}>
                               <div style={{...}} className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
                                 <span className="ObjectPageAnchorButton--button---">
                                   Test 1
@@ -86,7 +86,7 @@
                         </ObjectPageAnchorButton>
                         <ObjectPageAnchorButton section={{...}} index={1} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]} collapsedHeader={false}>
                           <li className="ObjectPageAnchorButton--anchorButtonContainer---">
-                            <ObjectPageLink id="ObjectPageSection-2" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={-45}>
+                            <ObjectPageLink id="ObjectPageSection-2" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={0}>
                               <div style={{...}} className="" onClick={[Function]}>
                                 <span className="ObjectPageAnchorButton--button---">
                                   Test 2
@@ -97,7 +97,7 @@
                         </ObjectPageAnchorButton>
                         <ObjectPageAnchorButton section={{...}} index={2} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]} collapsedHeader={false}>
                           <li className="ObjectPageAnchorButton--anchorButtonContainer---">
-                            <ObjectPageLink id="ObjectPageSection-3" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={-45}>
+                            <ObjectPageLink id="ObjectPageSection-3" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={0}>
                               <div style={{...}} className="" onClick={[Function]}>
                                 <span className="ObjectPageAnchorButton--button---">
                                   Test 3
@@ -108,7 +108,7 @@
                         </ObjectPageAnchorButton>
                         <ObjectPageAnchorButton section={{...}} index={3} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]} collapsedHeader={false}>
                           <li className="ObjectPageAnchorButton--anchorButtonContainer---">
-                            <ObjectPageLink id="ObjectPageSection-4" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={-45}>
+                            <ObjectPageLink id="ObjectPageSection-4" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={0}>
                               <div style={{...}} className="" onClick={[Function]}>
                                 <span className="ObjectPageAnchorButton--button---">
                                   Test 4
@@ -125,7 +125,7 @@
                                 <ui5-popover no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
                                   <WithWebComponent(List) onItemClick={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                                     <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
-                                      <ObjectPageLink id="ObjectPageSubSection-4.1" scrollOffset={-45}>
+                                      <ObjectPageLink id="ObjectPageSubSection-4.1" scrollOffset={0}>
                                         <div style={{...}} className="" onClick={[Function]}>
                                           <StandardListItem data-key="4.1" type="Active" infoState="None">
                                             <ui5-li data-key="4.1" type="Active" info-state="None" class="">
@@ -134,7 +134,7 @@
                                           </StandardListItem>
                                         </div>
                                       </ObjectPageLink>
-                                      <ObjectPageLink id="ObjectPageSubSection-4.2" scrollOffset={-45}>
+                                      <ObjectPageLink id="ObjectPageSubSection-4.2" scrollOffset={0}>
                                         <div style={{...}} className="" onClick={[Function]}>
                                           <StandardListItem data-key="4.2" type="Active" infoState="None">
                                             <ui5-li data-key="4.2" type="Active" info-state="None" class="">
@@ -152,7 +152,7 @@
                         </ObjectPageAnchorButton>
                         <ObjectPageAnchorButton section={{...}} index={4} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]} collapsedHeader={false}>
                           <li className="ObjectPageAnchorButton--anchorButtonContainer---">
-                            <ObjectPageLink id="ObjectPageSection-5" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={-45}>
+                            <ObjectPageLink id="ObjectPageSection-5" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={0}>
                               <div style={{...}} className="" onClick={[Function]}>
                                 <span className="ObjectPageAnchorButton--button---">
                                   Test 5
@@ -169,7 +169,7 @@
                                 <ui5-popover no-arrow={true} placement-type="Bottom" initial-focus={{...}} header-text="" horizontal-align="Center" vertical-align="Center" class="">
                                   <WithWebComponent(List) onItemClick={[Function]} headerText="" footerText="" mode="None" noDataText="" separators="All">
                                     <ui5-list header-text="" footer-text="" mode="None" no-data-text="" separators="All" class="">
-                                      <ObjectPageLink id="ObjectPageSubSection-5.1" scrollOffset={-45}>
+                                      <ObjectPageLink id="ObjectPageSubSection-5.1" scrollOffset={0}>
                                         <div style={{...}} className="" onClick={[Function]}>
                                           <StandardListItem data-key="5.1" type="Active" infoState="None">
                                             <ui5-li data-key="5.1" type="Active" info-state="None" class="">
@@ -178,7 +178,7 @@
                                           </StandardListItem>
                                         </div>
                                       </ObjectPageLink>
-                                      <ObjectPageLink id="ObjectPageSubSection-5.2" scrollOffset={-45}>
+                                      <ObjectPageLink id="ObjectPageSubSection-5.2" scrollOffset={0}>
                                         <div style={{...}} className="" onClick={[Function]}>
                                           <StandardListItem data-key="5.2" type="Active" infoState="None">
                                             <ui5-li data-key="5.2" type="Active" info-state="None" class="">
@@ -400,7 +400,7 @@
                       <section className="ObjectPage--anchorBar---" role="navigation">
                         <ObjectPageAnchorButton section={{...}} index={0} selected={true} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]} collapsedHeader={false}>
                           <li className="ObjectPageAnchorButton--anchorButtonContainer---">
-                            <ObjectPageLink id="ObjectPageSection-1" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={true} scrollOffset={-45}>
+                            <ObjectPageLink id="ObjectPageSection-1" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={true} scrollOffset={0}>
                               <div style={{...}} className="" onClick={[Function]}>
                                 <span className="ObjectPageAnchorButton--button---">
                                   Test 1
@@ -411,7 +411,7 @@
                         </ObjectPageAnchorButton>
                         <ObjectPageAnchorButton section={{...}} index={1} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]} collapsedHeader={false}>
                           <li className="ObjectPageAnchorButton--anchorButtonContainer---">
-                            <ObjectPageLink id="ObjectPageSection-2" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={-45}>
+                            <ObjectPageLink id="ObjectPageSection-2" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={0}>
                               <div style={{...}} className="" onClick={[Function]}>
                                 <span className="ObjectPageAnchorButton--button---">
                                   Test 2
@@ -422,7 +422,7 @@
                         </ObjectPageAnchorButton>
                         <ObjectPageAnchorButton section={{...}} index={2} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]} collapsedHeader={false}>
                           <li className="ObjectPageAnchorButton--anchorButtonContainer---">
-                            <ObjectPageLink id="ObjectPageSection-3" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={-45}>
+                            <ObjectPageLink id="ObjectPageSection-3" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={0}>
                               <div style={{...}} className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
                                 <span className="ObjectPageAnchorButton--button---">
                                   Test 3
@@ -738,7 +738,7 @@
                       <section className="ObjectPage--anchorBar---" role="navigation">
                         <ObjectPageAnchorButton section={{...}} index={0} selected={true} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]} collapsedHeader={false}>
                           <li className="ObjectPageAnchorButton--anchorButtonContainer---">
-                            <ObjectPageLink id="ObjectPageSection-1" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={true} scrollOffset={-45}>
+                            <ObjectPageLink id="ObjectPageSection-1" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={true} scrollOffset={0}>
                               <div style={{...}} className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
                                 <span className="ObjectPageAnchorButton--button---" />
                               </div>
@@ -986,7 +986,7 @@
                 <section className="ObjectPage--anchorBar---" role="navigation">
                   <ObjectPageAnchorButton section={{...}} index={0} selected={false} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]} collapsedHeader={false}>
                     <li className="ObjectPageAnchorButton--anchorButtonContainer---">
-                      <ObjectPageLink id="ObjectPageSection-1" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={true} scrollOffset={-45}>
+                      <ObjectPageLink id="ObjectPageSection-1" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={true} scrollOffset={0}>
                         <div style={{...}} className="" onClick={[Function]}>
                           <span className="ObjectPageAnchorButton--button---" />
                         </div>
@@ -995,7 +995,7 @@
                   </ObjectPageAnchorButton>
                   <ObjectPageAnchorButton section={{...}} index={1} selected={true} mode="Default" onSectionSelected={[Function]} onSubSectionSelected={[Function]} collapsedHeader={false}>
                     <li className="ObjectPageAnchorButton--anchorButtonContainer---">
-                      <ObjectPageLink id="ObjectPageSection-2" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={-45}>
+                      <ObjectPageLink id="ObjectPageSection-2" onSetActive={[Function]} activeClass="ObjectPageAnchorButton--selected---" alwaysToTop={false} scrollOffset={0}>
                         <div style={{...}} className="ObjectPageAnchorButton--selected---" onClick={[Function]}>
                           <span className="ObjectPageAnchorButton--button---" />
                         </div>
