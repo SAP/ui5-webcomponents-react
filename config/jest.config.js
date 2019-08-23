@@ -1,9 +1,7 @@
 const PATHS = require('./paths');
-const path = require('path');
 
 module.exports = {
   rootDir: PATHS.root,
-  setupFiles: ['jest-canvas-mock'],
   coverageDirectory: PATHS.nycOutput,
   coverageReporters: ['json', 'text'],
   collectCoverage: false,
@@ -24,20 +22,17 @@ module.exports = {
     '!**/npm/**/*',
     '!**/webComponents/**/*'
   ],
+  setupFiles: [
+    '<rootDir>/node_modules/document-register-element/build/document-register-element.node.js',
+    '<rootDir>/node_modules/jest-canvas-mock/lib/index.js',
+    '<rootDir>/test/setupFiles/UI5WebComponentsSetup.js'
+  ],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
   testEnvironment: 'jsdom-fifteen',
-  testMatch: ['<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
+  testMatch: ['<rootDir>/packages/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
+  transformIgnorePatterns: ['node_modules/(?!(@ui5|lit-html))'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
-    '^@ui5/webcomponents/dist(.*)$': '<rootDir>/shared/tests/mock/UI5WebComponent', // ui5 web components can be mocked, not relevant for jest tests
-    '^@ui5/webcomponents-base/src/Configuration(.*)$': path.resolve(
-      PATHS.shared,
-      'tests',
-      'mock',
-      'webComponentConfigMock.js'
-    ),
-    '^@ui5/webcomponents-base/src/boot': '<rootDir>/shared/tests/mock/WebComponentsBoot',
-    '^@ui5/webcomponents-base/src/theming/StyleInjection': '<rootDir>/shared/tests/mock/StyleInjection',
     '^@ui5/webcomponents-react/lib/(.*)$': '<rootDir>/packages/main/src/lib/$1',
     '\\.(css|less)$': 'identity-obj-proxy'
   },

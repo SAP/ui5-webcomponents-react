@@ -1,8 +1,8 @@
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { createSerializer } from 'enzyme-to-json';
-import jssSerializer from '@shared/tests/serializer/jss-snapshot-serializer';
-import contentLoaderSerializer from '@shared/tests/serializer/content-loader-serializer.js';
+const Enzyme = require('enzyme');
+const Adapter = require('enzyme-adapter-react-16');
+const { createSerializer } = require('enzyme-to-json');
+const jssSerializer = require('@shared/tests/serializer/jss-snapshot-serializer');
+const contentLoaderSerializer = require('@shared/tests/serializer/content-loader-serializer.js');
 
 process.env.NODE_ENV = 'test';
 process.env.BABEL_ENV = 'test';
@@ -25,7 +25,7 @@ expect.addSnapshotSerializer(
 expect.addSnapshotSerializer(jssSerializer);
 expect.addSnapshotSerializer(contentLoaderSerializer);
 
-export const setupMatchMedia = () => {
+const setupMatchMedia = () => {
   // @ts-ignore
   window.matchMedia = () => {
     return {
@@ -37,3 +37,7 @@ export const setupMatchMedia = () => {
 };
 
 setupMatchMedia();
+
+module.exports = {
+  setupMatchMedia
+};
