@@ -15,11 +15,9 @@ module.exports = {
     '!**/node_modules/**',
     '!packages/*/src/index.ts',
     '!packages/*/index.ts',
-    '!packages/*/test/**/*',
-    '!packages/*/stories/**/*',
     '!packages/docs/**/*',
-    '!**/npm/**/*',
-    '!**/webComponents/**/*'
+    '!packages/**/demo/*',
+    '!**/npm/**/*'
   ],
   setupFiles: [
     '<rootDir>/node_modules/document-register-element/build/document-register-element.node.js',
