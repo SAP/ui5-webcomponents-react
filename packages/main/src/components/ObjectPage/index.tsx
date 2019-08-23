@@ -2,6 +2,7 @@ import { Event, StyleClassHelper, useConsolidatedRef } from '@ui5/webcomponents-
 import debounce from 'lodash.debounce';
 import React, {
   Children,
+  FC,
   forwardRef,
   ReactElement,
   ReactNode,
@@ -9,24 +10,28 @@ import React, {
   RefObject,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
-  useState,
-  FC
+  useState
 } from 'react';
-import { createUseStyles } from 'react-jss';
-import { scroller } from 'react-scroll';
+import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ObjectPageMode } from '../../lib/ObjectPageMode';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
-import { ObjectPageContent } from './ObjectPageContent';
-import { ObjectPageHeader } from './ObjectPageHeader';
+import { Button } from '../../webComponents/Button';
+import { CollapsedAvatar } from './CollapsedAvatar';
+import { ObjectPageScroller } from './scroll/ObjectPageScroller';
+import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
+import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
+import { ContentDensity } from '../../lib/ContentDensity';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
   subTitle?: string;
-  image?: string;
+  image?: string | ReactNode;
   imageShapeCircle?: boolean;
   headerActions?: Array<ReactElement<any>>;
   renderHeaderContent?: () => JSX.Element;
@@ -48,17 +53,6 @@ const findSectionIndexById = (sections, id) => {
     return 0;
   }
   return index;
-};
-
-const scrollToSectionById = (id, index) => {
-  requestAnimationFrame(() => {
-    scroller.scrollTo(`ObjectPageSection-${id}`, {
-      containerId: 'ObjectPageSections',
-      smooth: true,
-      offset: index > 0 ? 45 : 0,
-      duration: 400
-    });
-  });
 };
 
 const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
@@ -83,9 +77,34 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(findSectionIndexById(children, selectedSectionId));
   const [selectedSubSectionId, setSelectedSubSectionId] = useState(null);
+  const [expandHeaderActive, setExpandHeaderActive] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [collapsedHeader, setCollapsedHeader] = useState(false);
+  const theme = useTheme();
+
   const objectPage: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const fillerDivDomRef: RefObject<HTMLDivElement> = useRef();
-  const objectPageContent: RefObject<HTMLDivElement> = useRef();
+  const scrollBar: RefObject<HTMLDivElement> = useRef();
+  const contentContainer: RefObject<HTMLDivElement> = useRef();
+  const topHeader: RefObject<HTMLDivElement> = useRef();
+  const innerHeader: RefObject<HTMLDivElement> = useRef();
+  const innerScrollBar: RefObject<HTMLDivElement> = useRef();
+  const contentScrollContainer: RefObject<HTMLDivElement> = useRef();
+  const collapsedHeaderFiller: RefObject<HTMLDivElement> = useRef();
+  const expandedHeaderHeight = useRef(0);
+  const hideHeaderButtonPressed = useRef(false);
+  const scroller = useRef(null);
+
+  const classes = useStyles();
+
+  const setScrollbarHeight = () => {
+    requestAnimationFrame(() => {
+      const scrollbarContainerHeight =
+        contentScrollContainer.current.getBoundingClientRect().height +
+        topHeader.current.getBoundingClientRect().height;
+      innerScrollBar.current.style.height = `${scrollbarContainerHeight}px`;
+    });
+  };
 
   useEffect(() => {
     let selectedIndex = findSectionIndexById(children, selectedSectionId);
@@ -104,34 +123,167 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   }
 
   const adjustDummyDivHeight = () => {
-    requestAnimationFrame(() => {
-      if (!objectPage.current) {
-        // in case componentWillUnmount didn´t fire
-        window.removeEventListener('resize', adjustDummyDivHeight);
-        return;
-      }
+    return new Promise((resolve) => {
+      requestAnimationFrame(() => {
+        if (!objectPage.current) {
+          // in case componentWillUnmount didn´t fire
+          window.removeEventListener('resize', adjustDummyDivHeight);
+          return;
+        }
 
-      const sections = objectPage.current.querySelectorAll('[id^="ObjectPageSection"]');
-      if (!sections || sections.length < 1) {
-        return;
-      }
+        const sections = objectPage.current.querySelectorAll('[id^="ObjectPageSection"]');
+        if (!sections || sections.length < 1) {
+          return;
+        }
 
-      const lastSectionDomRef = sections[sections.length - 1];
-      const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
-      let scrollOffset = 0;
+        const lastSectionDomRef = sections[sections.length - 1];
+        const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
 
-      let domRef = null;
-      if (subSections.length > 0) {
-        domRef = subSections[subSections.length - 1];
-      } else {
-        domRef = lastSectionDomRef;
-        scrollOffset = 45;
-      }
+        let domRef = null;
+        if (subSections.length > 0) {
+          domRef = subSections[subSections.length - 1];
+        } else {
+          domRef = lastSectionDomRef;
+        }
 
-      let heightDiff = objectPageContent.current.offsetHeight - domRef.offsetHeight + scrollOffset;
-      heightDiff = heightDiff > 0 ? heightDiff : 0;
-      fillerDivDomRef.current.style.height = `${heightDiff}px`;
+        let heightDiff = contentContainer.current.offsetHeight - domRef.offsetHeight;
+        heightDiff = heightDiff > 0 ? heightDiff : 0;
+        fillerDivDomRef.current.style.height = `${heightDiff}px`;
+        setScrollbarHeight();
+        resolve();
+      });
     });
+  };
+
+  const renderAnchorBar = () => {
+    return (
+      <section className={classes.anchorBar} role="navigation">
+        {Children.map(children, (section, index) => {
+          return (
+            <ObjectPageAnchorButton
+              key={`Anchor-${((section as any).props || {}).id}`}
+              section={section}
+              index={index}
+              selected={selectedSectionIndex === index}
+              mode={mode}
+              onSectionSelected={handleOnSectionSelected}
+              onSubSectionSelected={handleOnSubSectionSelected}
+              collapsedHeader={collapsedHeader}
+            />
+          );
+        })}
+      </section>
+    );
+  };
+
+  const changeHeader = useCallback(() => {
+    hideHeaderButtonPressed.current = true;
+    contentContainer.current.removeEventListener('scroll', onScroll);
+
+    if (!expandHeaderActive && collapsedHeader) {
+      setExpandHeaderActive(true);
+      return;
+    }
+
+    if (expandHeaderActive && collapsedHeader) {
+      setExpandHeaderActive(false);
+      return;
+    }
+
+    setCollapsedHeader(!collapsedHeader);
+  }, [collapsedHeader, expandHeaderActive]);
+
+  const renderHideHeaderButton = () => {
+    if (!showHideHeaderButton) return null;
+
+    const { contentDensity } = theme as JSSTheme;
+
+    return (
+      <Button
+        style={
+          {
+            position: 'absolute',
+            '--_ui5_button_compact_height': '1rem',
+            lineHeight: '2.5rem',
+            bottom: contentDensity === ContentDensity.Cozy ? 'calc(-2.5rem / 2)' : 'calc(-1.25rem / 2)',
+            left: 'calc(50% - 1rem)'
+          } as any
+        }
+        icon={
+          !collapsedHeader || expandHeaderActive ? 'sap-icon://navigation-up-arrow' : 'sap-icon://navigation-down-arrow'
+        }
+        onClick={changeHeader}
+      />
+    );
+  };
+
+  const renderContentHeader = () => {
+    let avatar = null;
+    if (image) {
+      if (typeof image === 'string') {
+        avatar = (
+          <Avatar
+            className={classes.headerImage}
+            image={image}
+            size={AvatarSize.L}
+            shape={imageShapeCircle ? AvatarShape.Circle : AvatarShape.Square}
+          />
+        );
+      } else {
+        // @ts-ignore
+        avatar = React.cloneElement(image, {
+          size: AvatarSize.L
+        });
+      }
+    }
+
+    return (
+      <div style={{ position: 'relative' }} className={classes.contentHeader}>
+        <div className={classes.headerContent}>
+          {avatar}
+          {renderHeaderContent && <span className={classes.headerCustomContent}>{renderHeaderContent()}</span>}
+        </div>
+        {!expandHeaderActive && renderHideHeaderButton()}
+      </div>
+    );
+  };
+
+  const renderTopHeader = () => {
+    if (noHeader) {
+      return renderAnchorBar();
+    }
+
+    return (
+      <>
+        <header className={classes.titleBar}>
+          <div style={{ display: 'flex' }}>
+            {image && collapsedHeader && !expandHeaderActive && (
+              <div style={{ marginRight: '1rem' }}>
+                <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
+              </div>
+            )}
+            <span className={classes.container}>
+              <h1 className={classes.title}>{title}</h1>
+              <span className={classes.subTitle}>{subTitle}</span>
+            </span>
+          </div>
+          <span className={classes.actions}>{headerActions}</span>
+          {expandHeaderActive && renderContentHeader()}
+          {collapsedHeader && renderHideHeaderButton()}
+        </header>
+        {collapsedHeader && renderAnchorBar()}
+      </>
+    );
+  };
+
+  const renderInnerHeader = () => {
+    if (noHeader || collapsedHeader || expandHeaderActive) return null;
+    return (
+      <>
+        {renderContentHeader()}
+        {renderAnchorBar()}
+      </>
+    );
   };
 
   // register resize handler
@@ -140,41 +292,92 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     return window.removeEventListener('resize', adjustDummyDivHeight);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (!isMounted) return;
     adjustDummyDivHeight();
-  }, [noHeader]);
-
-  // scroll to selected section after mount
-  useEffect(() => {
-    if (mode !== ObjectPageMode.IconTabBar) {
-      if (selectedSectionId && selectedSectionIndex > 0) {
-        scrollToSectionById(selectedSectionId, selectedSectionIndex);
-      }
-    }
-  }, []);
+  }, [noHeader, mode]);
 
   useEffect(() => {
-    if (selectedSubSectionId && mode === ObjectPageMode.IconTabBar) {
-      requestAnimationFrame(() => {
-        scroller.scrollTo(`ObjectPageSubSection-${selectedSubSectionId}`, {
-          containerId: 'ObjectPageSections',
-          smooth: true,
-          offset: 36,
-          duration: 400
-        });
-      });
+    if (selectedSubSectionId && mode === ObjectPageMode.IconTabBar && scroller.current) {
+      scroller.current.scrollToElementById(`ObjectPageSubSection-${selectedSubSectionId}`, collapsedHeader ? 45 : 0);
     }
   }, [selectedSubSectionId]);
 
   useEffect(() => {
-    if (mode === ObjectPageMode.Default) {
-      // @ts-ignore
-      scrollToSectionById(Children.toArray(children)[selectedSectionIndex].props.id, selectedSectionIndex);
+    if (!isMounted && selectedSectionIndex < 1) return;
+
+    if (mode === ObjectPageMode.Default && scroller.current) {
+      if (selectedSectionIndex > 0) {
+        // @ts-ignore
+        const id = Children.toArray(children)[selectedSectionIndex].props.id;
+        if (id) {
+          scroller.current.scrollToElementById(`ObjectPageSection-${id}`, collapsedHeader ? 45 : 0);
+        }
+      } else {
+        scroller.current.scrollToTop();
+      }
     }
     if (mode === ObjectPageMode.IconTabBar) {
       adjustDummyDivHeight();
     }
   }, [selectedSectionIndex]);
+
+  const addScrollListener = () => {
+    contentContainer.current.addEventListener('scroll', onScroll, { passive: true });
+  };
+
+  const onScroll = (e) => {
+    requestAnimationFrame(() => {
+      if (noHeader) {
+        scrollBar.current.scrollTop = getProportionateScrollTop(e.target.scrollTop);
+        scroller.current.scroll(e);
+        return;
+      }
+      if (expandHeaderActive) {
+        setExpandHeaderActive(false);
+      }
+      const innerHeaderHeight = innerHeader.current.getBoundingClientRect().height;
+      const threshold = collapsedHeader ? expandedHeaderHeight.current + 4 : innerHeaderHeight - 45;
+      const shouldBeCollapsed = e.target.scrollTop > threshold;
+      if (collapsedHeader !== shouldBeCollapsed) {
+        contentContainer.current.removeEventListener('scroll', onScroll);
+        if (shouldBeCollapsed) {
+          expandedHeaderHeight.current = innerHeaderHeight - 45;
+          collapsedHeaderFiller.current.style.height = `${expandedHeaderHeight.current}px`;
+        } else {
+          collapsedHeaderFiller.current.style.height = `${0}px`;
+        }
+        setCollapsedHeader(shouldBeCollapsed);
+      } else {
+        scrollBar.current.scrollTop = collapsedHeader
+          ? e.target.scrollTop
+          : getProportionateScrollTop(e.target.scrollTop);
+        scroller.current.scroll(e);
+      }
+    });
+  };
+
+  useLayoutEffect(() => {
+    if (!isMounted) return;
+    adjustDummyDivHeight().then(() => {
+      if (!hideHeaderButtonPressed.current) {
+        const innerHeaderHeight = innerHeader.current.getBoundingClientRect().height;
+        const base = collapsedHeader ? expandedHeaderHeight.current + 5 : innerHeaderHeight - 50;
+        contentContainer.current.scrollTop = base;
+        scrollBar.current.scrollTop = collapsedHeader ? base : getProportionateScrollTop(base);
+      }
+      hideHeaderButtonPressed.current = false;
+      addScrollListener();
+    });
+  }, [collapsedHeader]);
+
+  useLayoutEffect(() => {
+    if (!isMounted) return;
+    requestAnimationFrame(() => {
+      adjustDummyDivHeight();
+      addScrollListener();
+    });
+  }, [expandHeaderActive]);
 
   const fireOnSelectedChangedEvent = debounce((e) => {
     onSelectedSectionChanged(
@@ -208,7 +411,19 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     [mode]
   );
 
-  const classes = useStyles();
+  const getProportionateScrollTop = (base) => {
+    const contentContainerHeightFull = contentScrollContainer.current.getBoundingClientRect().height;
+    const scrollBarHeight = innerScrollBar.current.getBoundingClientRect().height;
+
+    return (base / contentContainerHeightFull) * scrollBarHeight;
+  };
+
+  useEffect(() => {
+    adjustDummyDivHeight();
+    addScrollListener();
+    setIsMounted(true);
+  }, []);
+
   const objectPageClasses = StyleClassHelper.of(classes.objectPage);
   if (className) {
     objectPageClasses.put(className);
@@ -223,33 +438,26 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       ref={objectPage}
       title={tooltip}
     >
-      {!noHeader && (
-        <ObjectPageHeader
-          title={title}
-          subTitle={subTitle}
-          image={image}
-          headerActions={headerActions}
-          renderHeaderContent={renderHeaderContent}
-          imageShapeCircle={imageShapeCircle}
-          showHideHeaderButton={showHideHeaderButton}
-        />
-      )}
-      <section className={classes.anchorBar} role="navigation">
-        {Children.map(children, (section, index) => (
-          <ObjectPageAnchorButton
-            key={`Anchor-${index}`}
-            section={section}
-            index={index}
-            selected={selectedSectionIndex === index}
-            mode={mode}
-            onSectionSelected={handleOnSectionSelected}
-            onSubSectionSelected={handleOnSubSectionSelected}
-          />
-        ))}
-      </section>
-      <ObjectPageContent ref={objectPageContent} fillerRef={fillerDivDomRef}>
-        {content}
-      </ObjectPageContent>
+      <ObjectPageScroller ref={scroller} scrollContainer={contentContainer}>
+        <div className={classes.outerScrollbar}>
+          <div ref={scrollBar} className={classes.innerScrollbar}>
+            <div ref={innerScrollBar} className={classes.scrollbarContent} />
+          </div>
+        </div>
+        <header ref={topHeader} role="banner" aria-roledescription="Object page header" className={classes.header}>
+          {renderTopHeader()}
+        </header>
+        <div className={classes.outerContentContainer}>
+          <div id="ObjectPageContent" ref={contentContainer} className={classes.contentContainer}>
+            <div ref={contentScrollContainer} className={classes.contentScrollContainer}>
+              <div ref={collapsedHeaderFiller} />
+              <div ref={innerHeader}>{renderInnerHeader()}</div>
+              <section className={classes.sectionsContainer}>{content}</section>
+              <div className={classes.fillerDiv} ref={fillerDivDomRef} />
+            </div>
+          </div>
+        </div>
+      </ObjectPageScroller>
     </div>
   );
 });
