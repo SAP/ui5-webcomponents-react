@@ -1,33 +1,32 @@
-import { expect } from 'chai';
 import sinon from 'sinon';
 import { MessageToast } from '../../lib/MessageToast';
 
 describe('Message Toast', () => {
-  it('Show Default', () => {
+  test('Show Default', () => {
     const callback = sinon.spy(MessageToast, 'show');
     MessageToast.show('Default');
-    expect(callback.called).to.equal(true);
+    expect(callback.called).toEqual(true);
     callback.restore();
   });
 
-  it('Show Error', () => {
+  test('Show Error', () => {
     const callback = sinon.spy(MessageToast, 'error');
     MessageToast.error('Error');
-    expect(callback.called).to.equal(true);
+    expect(callback.called).toEqual(true);
     callback.restore();
   });
 
-  it('Show Warning', () => {
+  test('Show Warning', () => {
     const callback = sinon.spy(MessageToast, 'warning');
     MessageToast.warning('Warning');
-    expect(callback.called).to.equal(true);
+    expect(callback.called).toEqual(true);
     callback.restore();
   });
 
-  it('Show Success', () => {
+  test('Show Success', () => {
     const callback = sinon.spy(MessageToast, 'success');
     MessageToast.success('Default');
-    expect(callback.called).to.equal(true);
+    expect(callback.called).toEqual(true);
     callback.restore();
   });
 });
