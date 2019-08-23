@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popover Basic Test (generated) 1`] = `
+<ui5-popover
+  class=""
+  header-text=""
+  horizontal-align="Center"
+  placement-type="Right"
+  vertical-align="Center"
+/>
+`;

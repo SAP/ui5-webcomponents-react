@@ -9,23 +9,19 @@ const webComponents = readdirSync(WEB_COMPONENTS_ROOT_DIR).filter((f) =>
 );
 
 webComponents.forEach((component) => {
-  const absPath = path.join(WEB_COMPONENTS_ROOT_DIR, component, `${component}.karma.tsx`);
+  const absPath = path.join(WEB_COMPONENTS_ROOT_DIR, component, `${component}.test.tsx`);
   if (existsSync(absPath)) {
     return;
   }
   const jsxContent = `
-import React from 'react';
-import { expect, use } from 'chai';
-import { matchSnapshot } from "chai-karma-snapshot";
-import { ${component} } from '../../lib/${component}';
 import { mountThemedComponent } from "@shared/tests/utils";
-
-use(matchSnapshot);
+import React from 'react';
+import { ${component} } from '../../lib/${component}';
 
 describe('${component}', () => {
-  it('Basic Test (generated)', () => {
+  test('Basic Test (generated)', () => {
     const wrapper = mountThemedComponent(<${component} />);
-    expect(wrapper.debug()).to.matchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 });
 

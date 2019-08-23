@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Basic Test (generated) 1`] = `
+<ui5-input
+  class=""
+  type="Text"
+  value=""
+  value-state="None"
+/>
+`;
