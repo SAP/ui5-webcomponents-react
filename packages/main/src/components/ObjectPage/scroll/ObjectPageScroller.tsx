@@ -53,7 +53,7 @@ export const ObjectPageScroller = forwardRef((props: Props, ref) => {
       if (element) {
         const { htmlRef } = element;
         scrollTo(
-          element.offsetTop + 1 + scrollOffset,
+          element.offsetTop + scrollOffset,
           {
             scrollContainer,
             absolute: true

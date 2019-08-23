@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect } from 'react';
 import { ScrollContext } from './ScrollContext';
 
-export function ObjectPageLink(props) {
+export const ObjectPageLink = (props) => {
   const {
     children,
     inactiveClass = '',
@@ -41,4 +41,4 @@ export function ObjectPageLink(props) {
       {children}
     </div>
   );
-}
+};

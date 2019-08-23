@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { ScrollContext } from './ScrollContext';
 
-export function ScrollContentProvider(props) {
+export const ScrollContentProvider = (props) => {
   const {
     children,
     scrollContainer,
@@ -23,4 +23,4 @@ export function ScrollContentProvider(props) {
   }, [scrollContainer, registerElement, unregisterElement, scrollToElementById, selectedElementId, scrollToTop]);
 
   return <ScrollContext.Provider value={context}>{children}</ScrollContext.Provider>;
-}
+};

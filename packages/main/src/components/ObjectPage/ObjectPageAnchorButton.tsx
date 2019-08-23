@@ -122,7 +122,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
       <ObjectPageLink
         key={item.props.id}
         id={`ObjectPageSubSection-${item.props.id}`}
-        scrollOffset={collapsedHeader ? 0 : -45}
+        scrollOffset={collapsedHeader ? 45 : 0}
       >
         <StandardListItem data-key={item.props.id}>{item.props.title}</StandardListItem>
       </ObjectPageLink>
@@ -137,7 +137,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
         onSetActive={onScrollActive}
         activeClass={classes.selected}
         alwaysToTop={index === 0}
-        scrollOffset={collapsedHeader ? 0 : -45}
+        scrollOffset={collapsedHeader ? 45 : 0}
       >
         <span className={classes.button}>{section.props.title}</span>
       </ObjectPageLink>

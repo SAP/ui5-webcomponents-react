@@ -1,7 +1,8 @@
 import React, { ReactNode, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Avatar } from '../Avatar';
-import { AvatarShape, AvatarSize } from '../..';
+import { Avatar } from '../../lib/Avatar';
+import { AvatarSize } from '../../lib/AvatarSize';
+import { AvatarShape } from '../../lib/AvatarShape';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 
 const styles = {
@@ -18,14 +19,16 @@ const styles = {
   }
 };
 
-const useStyles = createUseStyles(styles);
+const useStyles = createUseStyles(styles, {
+  name: 'CollapsedAvatar'
+});
 
 export interface CollapsedAvatarPropTypes {
   image?: string | ReactNode;
   imageShapeCircle?: boolean;
 }
 
-export function CollapsedAvatar(props: CollapsedAvatarPropTypes) {
+export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
   const { image, imageShapeCircle } = props;
   const classes = useStyles();
   const [isMounted, setIsMounted] = useState(false);
@@ -53,21 +56,13 @@ export function CollapsedAvatar(props: CollapsedAvatarPropTypes) {
   useLayoutEffect(() => {
     requestAnimationFrame(() => {
       setIsMounted(true);
-      // @ts-ignore
-      // setTimeout(() => {
-      //   // @ts-ignore
-      //   domRef.current.style.opacity = 1;
-      //   domRef.current.style.transition = 'opacity 3s';
-      // }, 1000);
     });
   }, []);
 
   const containerClasses = StyleClassHelper.of(classes.base);
   if (isMounted) {
-    // debugger;
     containerClasses.put(classes.visible);
   } else {
-    // debugger;
     containerClasses.put(classes.hidden);
   }
 
@@ -76,4 +71,4 @@ export function CollapsedAvatar(props: CollapsedAvatarPropTypes) {
       {avatarContent}
     </div>
   );
-}
+};

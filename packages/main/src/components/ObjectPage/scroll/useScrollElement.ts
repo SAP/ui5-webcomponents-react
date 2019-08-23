@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { ScrollContext } from './ScrollContext';
 
-export function useScrollElement(id, htmlRef, options = {}) {
+export const useScrollElement = (id, htmlRef, options = {}) => {
   const { registerElement, unregisterElement } = useContext(ScrollContext);
 
   useEffect(() => {
@@ -16,4 +16,4 @@ export function useScrollElement(id, htmlRef, options = {}) {
       unregisterElement(id);
     };
   }, [htmlRef.current]);
-}
+};

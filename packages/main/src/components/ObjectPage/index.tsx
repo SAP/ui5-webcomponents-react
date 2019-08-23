@@ -26,7 +26,7 @@ import { ObjectPageScroller } from './scroll/ObjectPageScroller';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
-import { ContentDensity } from '../..';
+import { ContentDensity } from '../../lib/ContentDensity';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
@@ -299,7 +299,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   useEffect(() => {
     if (selectedSubSectionId && mode === ObjectPageMode.IconTabBar && scroller.current) {
-      scroller.current.scrollToElementById(`ObjectPageSubSection-${selectedSubSectionId}`, collapsedHeader ? 0 : -45);
+      scroller.current.scrollToElementById(`ObjectPageSubSection-${selectedSubSectionId}`, collapsedHeader ? 45 : 0);
     }
   }, [selectedSubSectionId]);
 
@@ -311,7 +311,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         // @ts-ignore
         const id = Children.toArray(children)[selectedSectionIndex].props.id;
         if (id) {
-          scroller.current.scrollToElementById(`ObjectPageSection-${id}`, collapsedHeader ? 0 : -45);
+          scroller.current.scrollToElementById(`ObjectPageSection-${id}`, collapsedHeader ? 45 : 0);
         }
       } else {
         scroller.current.scrollToTop();

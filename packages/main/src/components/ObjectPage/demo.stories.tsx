@@ -14,8 +14,6 @@ import { ObjectPageSubSection } from '../../lib/ObjectPageSubSection';
 import { Text } from '../../lib/Text';
 // @ts-ignore
 import SampleImage from './DemoImage.png';
-import { ScrollDemo } from './ScrollDemo';
-import { ScrollSyncExample } from './scrollSync/ScrollSyncExample';
 
 const renderHeaderContent = () => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
