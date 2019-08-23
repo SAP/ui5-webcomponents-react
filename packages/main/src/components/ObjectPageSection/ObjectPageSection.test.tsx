@@ -1,34 +1,31 @@
 import { renderThemedComponent } from '@shared/tests/utils';
-import { expect, use } from 'chai';
-import { matchSnapshot } from 'chai-karma-snapshot';
 import { shallow } from 'enzyme';
 import React from 'react';
 import { ObjectPageSection } from '../../lib/ObjectPageSection';
 
-use(matchSnapshot);
 
 describe('ObjectPageSection', () => {
-  it('Renders with children', () => {
+  test('Renders with children', () => {
     const wrapper = renderThemedComponent(
       <ObjectPageSection id={'1'} title="Test" titleUppercase>
         This is my Text
       </ObjectPageSection>
     );
-    expect(wrapper.html()).to.matchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('ObjectPage w/ lowercase title', () => {
+  test('ObjectPage w/ lowercase title', () => {
     const wrapper = renderThemedComponent(
       <ObjectPageSection id={'1'} title="Test" titleUppercase={false}>
         This is my Text
       </ObjectPageSection>
     );
-    expect(wrapper.html()).to.matchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('Empty Id Prop', () => {
+  test('Empty Id Prop', () => {
     // @ts-ignore
     const renderer = () => shallow(<ObjectPageSection.InnerComponent />);
-    expect(renderer).to.throw();
+    expect(renderer).toThrow();
   });
 });
