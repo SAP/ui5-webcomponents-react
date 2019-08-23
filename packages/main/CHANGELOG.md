@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1-rc.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.5.1-rc.2...v0.5.1-rc.3) (2019-08-23)
+
+
+### Code Refactoring
+
+* **tests:** Replace karma with jest ([#105](https://github.com/SAP/ui5-webcomponents-react/issues/105)) ([2ebd8ab](https://github.com/SAP/ui5-webcomponents-react/commit/2ebd8ab))
+
+
+### BREAKING CHANGES
+
+* **tests:** Deleted export for TabBase (internal component)
+* **tests:** Deleted export for ListItem (internal component)
+* **tests:** Deleted export for ListItemBase (internal component)
+* **tests:** Deleted export for DayPicker (internal component)
+* **tests:** Deleted export for MonthPicker (internal component)
+* **tests:** Deleted export for Popup (internal component)
+
+
+
+
+
 ## [0.5.1-rc.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.5.1-rc.1...v0.5.1-rc.2) (2019-08-23)
 
 
