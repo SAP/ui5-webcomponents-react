@@ -11,10 +11,6 @@ import { TitleLevel } from '../../lib/TitleLevel';
 import { VariantManagement } from '../../lib/VariantManagement';
 import { action } from '@storybook/addon-actions';
 
-const flavours = [];
-for (let i = 1; i <= 9; i++) {
-  flavours.push(i);
-}
 const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
 const filterItems = [{ text: 'Text 1', key: '1' }, { text: 'Text 2', key: '2' }];
 
@@ -38,7 +34,7 @@ const renderSearch = () => {
   return <Input placeholder={'Search'} />;
 };
 
-function renderStory() {
+export const renderStory = () => {
   return (
     <FilterBar renderSearch={renderSearch} renderVariants={renderVariants}>
       <FilterItem
@@ -71,6 +67,12 @@ function renderStory() {
       />
     </FilterBar>
   );
-}
+};
+renderStory.story = {
+  name: 'Default'
+};
 
-storiesOf('Components | FilterBar', module).add('Default', renderStory);
+export default {
+  title: 'Components | FilterBar',
+  component: FilterBar
+};

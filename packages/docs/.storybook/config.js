@@ -1,38 +1,17 @@
-import 'react-app-polyfill/ie11';
+import { select, withKnobs } from '@storybook/addon-knobs';
+import { makeDecorator } from '@storybook/addons';
+import { addDecorator, addParameters, configure } from '@storybook/react';
 import '@ui5/webcomponents-base/src/features/browsersupport/IE11';
-import '@webcomponents/webcomponentsjs/webcomponents-bundle';
-import React from 'react';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { Themes } from '@ui5/webcomponents-react/lib/Themes';
-import { addDecorator, addParameters, configure } from '@storybook/react';
-import { makeDecorator } from '@storybook/addons';
-import { select, withKnobs } from '@storybook/addon-knobs';
-import { withInfo } from '@storybook/addon-info';
-import { TableComponent } from './TableComponent';
-import { withStyleInfo } from './decorators/withStyleInfo';
-import { Fiori4ReactTheme } from './theme';
-import { document, history, window } from 'global';
+import '@webcomponents/webcomponentsjs/webcomponents-bundle';
+import { window } from 'global';
 import qs from 'qs';
+import React from 'react';
+import 'react-app-polyfill/ie11';
+import { Fiori4ReactTheme } from './theme';
 
-export const propTablesExclude = [ThemeProvider];
-
-addDecorator(
-  withInfo({
-    inline: true,
-    propTablesExclude,
-    TableComponent,
-    styles: {
-      infoBody: {
-        background: '#edeff0',
-        borderBottom: '2px solid #0a6ed1',
-        padding: '10px 40px'
-      }
-    }
-  })
-);
-
-addDecorator(withStyleInfo);
 addDecorator(withKnobs);
 
 addParameters({
@@ -126,6 +105,7 @@ const withQuery = makeDecorator({
       const currentQuery = qs.parse(search, { ignoreQueryPrefix: true });
       iframe.src = `${base}?${qs.stringify({ ...currentQuery, ...queryObj })}`;
     }
+
     let contentDensity;
     try {
       const iframe = window.parent.document.getElementById('storybook-preview-iframe');
@@ -162,12 +142,7 @@ const themr = makeDecorator({
 addDecorator(withQuery);
 addDecorator(themr);
 
-// Load all Stories
-const req = require.context('../../', true, /\.stories\.[jt]sx?$/);
-
-function loadStories() {
-  req.keys().forEach((filename) => req(filename));
-}
-
-configure(() => require('../Welcome'), module);
-configure(loadStories, module);
+configure(
+  [require.context('../../', true, /\.stories\.mdx$/), require.context('../../', true, /\.stories\.[jt]sx$/)],
+  module
+);

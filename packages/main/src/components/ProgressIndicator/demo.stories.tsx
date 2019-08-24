@@ -1,9 +1,8 @@
-import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { ValueState } from '../..';
 import { ProgressIndicator } from '../../lib/ProgressIndicator';
 
-function renderStory() {
+export const renderStory = () => {
   return (
     <div>
       <ProgressIndicator visible={false} percentValue={5} width="50%" displayValue="5%" />
@@ -14,6 +13,12 @@ function renderStory() {
       <ProgressIndicator percentValue={33} state={ValueState.Information} displayValue="33%" />
     </div>
   );
-}
+};
+renderStory.story = {
+  name: 'Default'
+};
 
-storiesOf('Components | ProgressIndicator', module).add('Default', renderStory);
+export default {
+  title: 'Components | ProgressIndicator',
+  component: ProgressIndicator
+};

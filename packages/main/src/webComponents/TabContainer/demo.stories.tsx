@@ -2,17 +2,11 @@ import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { propTablesExclude } from '../../../../docs/.storybook/config';
 import { Label } from '../../lib/Label';
 import { Tab } from '../../lib/Tab';
 import { TabContainer } from '../../lib/TabContainer';
 
 storiesOf('UI5 Web Components | TabContainer', module)
-  .addParameters({
-    info: {
-      propTablesExclude: [...propTablesExclude, Label]
-    }
-  })
   .add('Default', () => (
     <TabContainer
       fixed={boolean('fixed', false)}

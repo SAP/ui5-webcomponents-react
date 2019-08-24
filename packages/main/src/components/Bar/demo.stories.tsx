@@ -1,9 +1,8 @@
-import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Bar } from '../../lib/Bar';
 import { Label } from '../../lib/Label';
 
-function renderStory() {
+export const defaultStory = () => {
   return (
     <Bar
       renderContentLeft={() => <Label>Content Left</Label>}
@@ -11,6 +10,12 @@ function renderStory() {
       renderContentRight={() => <Label>Content Right</Label>}
     />
   );
-}
+};
+defaultStory.story = {
+  name: 'Default'
+};
 
-storiesOf('Components | Bar', module).add('Default', renderStory);
+export default {
+  title: 'Components | Bar',
+  component: Bar
+};

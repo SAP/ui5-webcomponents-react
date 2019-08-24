@@ -1,8 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { propTablesExclude } from '../../../../docs/.storybook/config';
 import { Button } from '../../lib/Button';
 import { ButtonDesign } from '../../lib/ButtonDesign';
 import { Label } from '../../lib/Label';
@@ -23,7 +21,7 @@ const renderHeaderContent = () => (
     <Text>Address 3</Text>
   </div>
 );
-const renderDemo = () => {
+export const renderDemo = () => {
   return (
     <div style={{ width: 'calc(100% - 1rem)', height: 'calc(100% - 1rem)', position: 'relative', marginTop: '2rem' }}>
       <ObjectPage
@@ -77,8 +75,11 @@ const renderDemo = () => {
     </div>
   );
 };
+renderDemo.story = {
+  name: 'Default'
+};
 
-const renderComponentWithSections = () => (
+export const renderComponentWithSections = () => (
   <ObjectPage
     title="Fiori Object Page Title"
     subTitle="Sub Title"
@@ -99,8 +100,11 @@ const renderComponentWithSections = () => (
     </ObjectPageSection>
   </ObjectPage>
 );
+renderComponentWithSections.story = {
+  name: 'with Sections Only'
+};
 
-const renderShortContent = () => {
+export const renderShortContent = () => {
   return (
     <div style={{ width: 'calc(100% - 1rem)', height: '100%', position: 'relative', marginTop: '2rem' }}>
       <ObjectPage
@@ -131,19 +135,11 @@ const renderShortContent = () => {
     </div>
   );
 };
+renderShortContent.story = {
+  name: 'Short Content'
+};
 
-// const renderScrollDemo = () => <div style={{width: 'calc(100% - 2rem)'}}><ScrollDemo /></div>;
-// const renderScrollSync = () => <div style={{width: 'calc(100% - 2rem)'}}><ScrollSyncExample /></div>;
-
-storiesOf('Components | ObjectPage', module)
-  .addParameters({
-    info: {
-      inline: false,
-      propTablesExclude: [...propTablesExclude, Text, Label]
-    }
-  })
-  .add('Default', renderDemo)
-  .add('Short Content', renderShortContent);
-// .add('Scroll Sync Example', renderScrollSync)
-// .add('Scroll Demo', renderScrollDemo);
-// .add('Only Sections', renderComponentWithSections);
+export default {
+  title: 'Components | ObjectPage',
+  component: ObjectPage
+};

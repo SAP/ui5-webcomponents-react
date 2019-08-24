@@ -8,7 +8,12 @@ import { AnalyticalCardHeader } from '../../lib/AnalyticalCardHeader';
 import { DeviationIndicator } from '../../lib/DeviationIndicator';
 import { ValueState } from '../../lib/ValueState';
 
-storiesOf('Components | Analytical Card', module).add('default', () => (
+export default {
+  title: 'Components | Analytical Card',
+  component: AnalyticalCard
+};
+
+export const defaultStory = () => (
   <AnalyticalCard
     width={text('width', '20rem')}
     header={
@@ -65,4 +70,6 @@ storiesOf('Components | Analytical Card', module).add('default', () => (
       colors={['#607182']}
     />
   </AnalyticalCard>
-));
+);
+
+defaultStory.story = { name: 'Default' };
