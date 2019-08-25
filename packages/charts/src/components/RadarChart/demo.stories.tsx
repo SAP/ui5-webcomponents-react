@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { RadarChart } from './index';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
@@ -15,6 +14,21 @@ const datasets = [
   }
 ];
 
-storiesOf('Charts | RadarChart', module)
-  .add('Default', () => <RadarChart labels={labels} datasets={datasets} />)
-  .add('with Formatter', () => <RadarChart labels={labels} datasets={datasets} valueAxisFormatter={(d) => `${d}x`} />);
+export default {
+  title: 'Charts | RadarChart',
+  component: RadarChart
+};
+
+export const defaultStory = () => <RadarChart labels={labels} datasets={datasets} />;
+
+defaultStory.story = {
+  name: 'Default'
+};
+
+export const withFormatter = () => (
+  <RadarChart labels={labels} datasets={datasets} valueAxisFormatter={(d) => `${d}x`} />
+);
+
+withFormatter.story = {
+  name: 'with Formatter'
+};

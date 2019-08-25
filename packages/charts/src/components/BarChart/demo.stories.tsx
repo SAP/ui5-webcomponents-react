@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import { BarChart } from './index';
@@ -32,26 +31,49 @@ const options = {
   }
 };
 
-storiesOf('Charts | BarChart', module)
-  .add('Default', () => (
-    <BarChart
-      labels={labels}
-      datasets={datasets}
-      getElementAtEvent={action('getElementAtEvent')}
-      loading={boolean('loading')}
-      noLegend={boolean('noLegend')}
-    />
-  ))
-  .add('with Formatter', () => (
-    <BarChart labels={labels} datasets={datasets} valueAxisFormatter={(d) => `${d}%`} loading={boolean('loading')} />
-  ))
-  .add('Stacked', () => (
-    <BarChart
-      labels={labels}
-      datasets={datasets}
-      valueAxisFormatter={(d) => `${d}%`}
-      options={options}
-      loading={boolean('loading')}
-    />
-  ))
-  .add('Loading Placeholder', () => <BarChart labels={labels} loading={boolean('loading', true)} />);
+export default {
+  title: 'Charts | BarChart',
+  component: BarChart
+};
+
+export const defaultStory = () => (
+  <BarChart
+    labels={labels}
+    datasets={datasets}
+    getElementAtEvent={action('getElementAtEvent')}
+    loading={boolean('loading')}
+    noLegend={boolean('noLegend')}
+  />
+);
+
+defaultStory.story = {
+  name: 'Default'
+};
+
+export const withFormatter = () => (
+  <BarChart labels={labels} datasets={datasets} valueAxisFormatter={(d) => `${d}%`} loading={boolean('loading')} />
+);
+
+withFormatter.story = {
+  name: 'with Formatter'
+};
+
+export const stacked = () => (
+  <BarChart
+    labels={labels}
+    datasets={datasets}
+    valueAxisFormatter={(d) => `${d}%`}
+    options={options}
+    loading={boolean('loading')}
+  />
+);
+
+stacked.story = {
+  name: 'Stacked'
+};
+
+export const loadingPlaceholder = () => <BarChart labels={labels} loading={boolean('loading', true)} />;
+
+loadingPlaceholder.story = {
+  name: 'Loading Placeholder'
+};
