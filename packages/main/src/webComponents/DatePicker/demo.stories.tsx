@@ -1,12 +1,16 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { CalendarType } from '../../lib/CalendarType';
 import { DatePicker } from '../../lib/DatePicker';
 import { ValueState } from '../../lib/ValueState';
 
-storiesOf('UI5 Web Components | DatePicker', module).add('Generated default story', () => (
+export default {
+  title: 'UI5 Web Components | DatePicker',
+  component: DatePicker
+};
+
+export const generatedDefaultStory = () => (
   <DatePicker
     value={'generatedString'}
     valueState={select('valueState', ValueState, null)}
@@ -18,4 +22,8 @@ storiesOf('UI5 Web Components | DatePicker', module).add('Generated default stor
     onChange={action('onChange')}
     onInput={action('onInput')}
   />
-));
+);
+
+generatedDefaultStory.story = {
+  name: 'Generated default story'
+};

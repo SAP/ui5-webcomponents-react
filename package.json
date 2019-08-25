@@ -21,6 +21,7 @@
     "@storybook/addon-knobs": "^5.2.0-beta.39",
     "@storybook/addon-options": "^5.2.0-beta.39",
     "@storybook/addons": "^5.2.0-beta.39",
+    "@storybook/cli": "^5.2.0-beta.40",
     "@storybook/react": "^5.2.0-beta.39",
     "@storybook/theming": "^5.2.0-beta.39"
   },

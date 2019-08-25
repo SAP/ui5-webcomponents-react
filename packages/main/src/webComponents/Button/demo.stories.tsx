@@ -1,6 +1,5 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Button } from '../../lib/Button';
 import { ButtonDesign } from '../../lib/ButtonDesign';
@@ -48,16 +47,29 @@ class DemoButton extends React.Component {
   }
 }
 
-storiesOf('UI5 Web Components | Button', module)
-  .add('Generated default story', () => (
-    <Button
-      design={select('design', ButtonDesign, ButtonDesign.Default)}
-      disabled={boolean('disabled', false)}
-      icon={'sap-icon://add'}
-      iconEnd={boolean('iconEnd', false)}
-      onClick={action('onClick')}
-    >
-      Some Content
-    </Button>
-  ))
-  .add('With custom Styles', () => <DemoButton />);
+export default {
+  title: 'UI5 Web Components | Button',
+  component: Button
+};
+
+export const generatedDefaultStory = () => (
+  <Button
+    design={select('design', ButtonDesign, ButtonDesign.Default)}
+    disabled={boolean('disabled', false)}
+    icon={'sap-icon://add'}
+    iconEnd={boolean('iconEnd', false)}
+    onClick={action('onClick')}
+  >
+    Some Content
+  </Button>
+);
+
+generatedDefaultStory.story = {
+  name: 'Generated default story'
+};
+
+export const withCustomStyles = () => <DemoButton />;
+
+withCustomStyles.story = {
+  name: 'With custom Styles'
+};

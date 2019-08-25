@@ -1,12 +1,16 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Card } from '../../lib/Card';
 import { List } from '../../lib/List';
 import { StandardListItem } from '../../lib/StandardListItem';
 
-storiesOf('UI5 Web Components | Card', module).add('Default story', () => (
+export default {
+  title: 'UI5 Web Components | Card',
+  component: Card
+};
+
+export const defaultStory = () => (
   <Card
     heading={text('heading', 'My Orders')}
     subtitle={text('subtitle', 'Open')}
@@ -23,4 +27,8 @@ storiesOf('UI5 Web Components | Card', module).add('Default story', () => (
       <StandardListItem info="1499€">Desktop</StandardListItem>
     </List>
   </Card>
-));
+);
+
+defaultStory.story = {
+  name: 'Default story'
+};

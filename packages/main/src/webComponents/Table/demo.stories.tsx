@@ -1,5 +1,4 @@
 import { boolean } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Label } from '../../lib/Label';
 import { Table } from '../../lib/Table';
@@ -8,7 +7,12 @@ import { TableColumn } from '../../lib/TableColumn';
 import { TableRow } from '../../lib/TableRow';
 import { Text } from '../../lib/Text';
 
-storiesOf('UI5 Web Components | Table', module).add('Default', () => (
+export default {
+  title: 'UI5 Web Components | Table',
+  component: Table
+};
+
+export const defaultStory = () => (
   <Table
     stickyColumnHeader={boolean('stickyColumnHeader', false)}
     columns={[
@@ -46,4 +50,8 @@ storiesOf('UI5 Web Components | Table', module).add('Default', () => (
       </TableCell>
     </TableRow>
   </Table>
-));
+);
+
+defaultStory.story = {
+  name: 'Default'
+};
