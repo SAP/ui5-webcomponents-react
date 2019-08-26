@@ -16,7 +16,6 @@ import { BusyIndicatorType } from './lib/BusyIndicatorType';
 import { Button } from './lib/Button';
 import { ButtonDesign } from './lib/ButtonDesign';
 import { Calendar } from './lib/Calendar';
-import { CalendarHeader } from './lib/CalendarHeader';
 import { CalendarType } from './lib/CalendarType';
 import { Card } from './lib/Card';
 import { Carousel } from './lib/Carousel';
@@ -104,7 +103,6 @@ import { Tokenizer } from './lib/Tokenizer';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
-import { YearPicker } from './lib/YearPicker';
 
 export {
   ActionSheet,
@@ -121,7 +119,6 @@ export {
   Button,
   ButtonDesign,
   Calendar,
-  CalendarHeader,
   CalendarType,
   Card,
   Carousel,
@@ -208,6 +205,5 @@ export {
   Tokenizer,
   ValueState,
   VariantManagement,
-  VerticalAlign,
-  YearPicker
+  VerticalAlign
 };
