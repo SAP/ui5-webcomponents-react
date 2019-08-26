@@ -1,8 +1,8 @@
 const puppeteer = require('puppeteer');
 const fileUrl = require('file-url');
-const { createWrapperForComponent } = require('./steps/wrapper');
-const { createDemoForComponent } = require('./steps/demo');
-const { createTestForComponent } = require('./steps/test');
+const { createWrapperForComponent } = require('./steps/createWrapper');
+const { createDemoForComponent } = require('./steps/createDemo');
+const { createTestForComponent } = require('./steps/createTest');
 
 let pattern;
 let onlyStopForMerge = false;
