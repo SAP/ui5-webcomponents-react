@@ -1,15 +1,17 @@
 
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 
 <Meta title=" Welcome | UI5 Web Components for React" />
 
-# Welcome
+# UI5 Web Components for React
 [![](https://img.shields.io/travis/SAP/ui5-webcomponents-react/master.svg)](https://travis-ci.org/SAP/ui5-webcomponents-react)
 [![](https://img.shields.io/coveralls/github/SAP/ui5-webcomponents-react/master.svg)](https://coveralls.io/github/SAP/ui5-webcomponents-react)
 [![](https://img.shields.io/npm/v/@ui5/webcomponents-react/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
 [![](https://img.shields.io/npm/v/@ui5/webcomponents-react/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
+[![GitHub stars](https://img.shields.io/github/stars/SAP/ui5-webcomponents-react?style=social)](https://github.com/SAP/ui5-webcomponents-react/stargazers)
 
-
+[Open Github Project](https://github.com/SAP/ui5-webcomponents-react)
 
 ## Description
 UI5 Web Components for React is a Fiori3 compliant React library built on top of the UI5 Web Components.
@@ -39,7 +41,7 @@ Then, you are ready to use `ui5-webcomponents-react` and you can import the desi
 For example, to use ```Button``` you need to import it:
 
 ```jsx
-import { Button } from '@ui5/webcomponents-react/lib/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react component
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 ```
 
 Then, you can use the Button in your app:
@@ -47,6 +49,7 @@ Then, you can use the Button in your app:
 ```jsx
 <Button onPress={() => alert('Hello World!')}>Hello world!</Button>
 ```
+<Button onClick={() => alert('Hello World!')}>Hello World</Button>
 
 You could import all components also from `@ui5/webcomponents-react` directly, but this will have a negative impact on your bundle size.
 

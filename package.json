@@ -15,19 +15,18 @@
     "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "@storybook/addon-actions": "^5.2.0-beta.39",
-    "@storybook/addon-docs": "^5.2.0-beta.39",
-    "@storybook/addon-info": "^5.2.0-beta.39",
-    "@storybook/addon-knobs": "^5.2.0-beta.39",
-    "@storybook/addon-options": "^5.2.0-beta.39",
-    "@storybook/addons": "^5.2.0-beta.39",
+    "@storybook/addon-actions": "^5.2.0-beta.40",
+    "@storybook/addon-docs": "^5.2.0-beta.40",
+    "@storybook/addon-info": "^5.2.0-beta.40",
+    "@storybook/addon-knobs": "^5.2.0-beta.40",
+    "@storybook/addon-options": "^5.2.0-beta.40",
+    "@storybook/addons": "^5.2.0-beta.40",
     "@storybook/cli": "^5.2.0-beta.40",
-    "@storybook/react": "^5.2.0-beta.39",
-    "@storybook/theming": "^5.2.0-beta.39"
+    "@storybook/react": "^5.2.0-beta.40",
+    "@storybook/theming": "^5.2.0-beta.40"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
-    "@storybook/codemod": "^5.2.0-beta.40",
     "@storybook/storybook-deployer": "^2.8.1",
     "@types/enzyme": "^3.9.3",
     "@types/hoist-non-react-statics": "^3.3.1",
@@ -69,7 +68,6 @@
     "jest-canvas-mock": "^2.0.0-beta.1",
     "jest-environment-jsdom-fifteen": "^1.0.0",
     "jest-enzyme": "^7.1.0",
-    "jscodeshift": "^0.6.4",
     "jss-snapshot-serializer": "^1.0.0",
     "lerna": "^3.16.4",
     "lint-staged": "^9.2.1",

@@ -11,6 +11,7 @@ import qs from 'qs';
 import React from 'react';
 import 'react-app-polyfill/ie11';
 import { Fiori4ReactTheme } from './theme';
+import 'highlight.js/styles/solarized-dark.css';
 
 addDecorator(withKnobs);
 
@@ -43,11 +44,6 @@ addParameters({
      */
     panelPosition: 'right',
     /**
-     * sorts stories
-     * @type {Boolean}
-     */
-    sortStoriesByKind: false,
-    /**
      * regex for finding the hierarchy separator
      * @example:
      *   null - turn off hierarchy
@@ -72,11 +68,9 @@ addParameters({
      */
     sidebarAnimations: true,
 
-    /**
-     * id to select an addon panel
-     * @type {String}
-     */
-    selectedAddonPanel: undefined // The order of addons in the "Addons Panel" is the same as you import them in 'addons.js'. The first panel will be opened by default as you run Storybook
+    storySort: (a, b) => {
+      return a[1].kind.localeCompare(b[1].kind);
+    }
   }
 });
 
