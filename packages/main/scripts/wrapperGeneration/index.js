@@ -4,7 +4,8 @@ const fileUrl = require('file-url');
 const path = require('path');
 const chalk = require('chalk');
 const generateTypingStatements = require('./generateTypingStatements');
-const generateComponentDemos = require('./generateComponentDemos');
+const { createDemoForComponent } = require('./steps/demo');
+const { createTestForComponent } = require('./steps/test');
 const showOptions = require('./showOptions');
 
 let pattern;
@@ -73,8 +74,11 @@ function executeQueue() {
   try {
     const dto = JSON.parse(msg.text());
     if (!pattern || dto.componentName.indexOf(pattern) !== -1) {
-      generateWebComponentWrapper(dto).then(executeQueue);
-      generateComponentDemos(dto);
+      generateWebComponentWrapper(dto).then(() => {
+        createTestForComponent(dto);
+        createDemoForComponent(dto);
+        executeQueue()
+      });
     } else {
       executeQueue();
     }
@@ -88,11 +92,8 @@ function executeQueue() {
   const browser = await puppeteer.launch(); //{devtools: true}
   const page = await browser.newPage();
   page.on('console', (msg) => {
-    // console.log(msg.text());
     queue.push(msg);
   });
   await page.goto(fileUrl('./scripts/wrapperGeneration/puppeteer.html'));
-  // await browser.waitForFunction('false');
   await browser.close().then(executeQueue);
-  require('./generateWebComponentTests');
 })();
