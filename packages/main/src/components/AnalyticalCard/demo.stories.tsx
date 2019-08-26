@@ -1,6 +1,5 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
 import React from 'react';
 import { AnalyticalCard } from '../../lib/AnalyticalCard';
