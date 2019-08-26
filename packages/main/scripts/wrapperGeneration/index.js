@@ -1,12 +1,8 @@
-const fs = require('fs');
 const puppeteer = require('puppeteer');
 const fileUrl = require('file-url');
-const path = require('path');
-const chalk = require('chalk');
-const generateTypingStatements = require('./generateTypingStatements');
+const { createWrapperForComponent } = require('./steps/wrapper');
 const { createDemoForComponent } = require('./steps/demo');
 const { createTestForComponent } = require('./steps/test');
-const showOptions = require('./showOptions');
 
 let pattern;
 let onlyStopForMerge = false;
@@ -20,76 +16,26 @@ process.argv.forEach((val) => {
   }
 });
 
-async function generateWebComponentWrapper(dto) {
-  const componentName = dto.componentName;
-  const ui5ComponentName = `UI5${componentName}`;
-
-  const folderName = path.resolve(__dirname, '..', '..', 'src', 'webComponents', componentName);
-  const libFolder = path.resolve(__dirname, '..', '..', 'src', 'lib');
-
-  if (!fs.existsSync(folderName)) {
-    fs.mkdirSync(folderName);
-  }
-
-  const tsTypings = generateTypingStatements(dto.typings, dto.componentName);
-  const indexPath = path.resolve(folderName, 'index.tsx');
-
-  const jsxContent = ''.concat(
-    tsTypings.importStatements,
-    `import ${ui5ComponentName} from '@ui5/webcomponents/dist/${componentName}';\n`,
-    "import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';",
-    '\n\n',
-    tsTypings.interfaceStatement,
-    '\n\n',
-    `const ${componentName}: FC<${tsTypings.interfaceName}> = withWebComponent<${tsTypings.interfaceName}>(${ui5ComponentName});`,
-    '\n\n',
-    `${componentName}.displayName = '${componentName}';`,
-    '\n\n',
-    tsTypings.defaultPropsStatement,
-    `export { ${componentName} };\n`
-  );
-
-  const libContent = `import { ${componentName} } from '../webComponents/${componentName}';
-  
-  export { ${componentName} };
-  
-  `;
-
-  if (fs.existsSync(indexPath)) {
-    // update interface and defaultProps
-    return showOptions(componentName, tsTypings, indexPath, jsxContent, onlyStopForMerge);
-  } else {
-    fs.writeFileSync(indexPath, jsxContent);
-    fs.writeFileSync(path.resolve(libFolder, `${componentName}.ts`), libContent);
-    console.log(chalk.green(`Wrapper for ${componentName} created`));
-  }
-}
-
-function executeQueue() {
-  const msg = queue.shift();
-
-  if (!msg) {
-    return;
-  }
-  try {
-    const dto = JSON.parse(msg.text());
-    if (!pattern || dto.componentName.indexOf(pattern) !== -1) {
-      generateWebComponentWrapper(dto).then(() => {
+async function executeQueue() {
+  for await (const msg of queue) {
+    if (!msg) {
+      return;
+    }
+    try {
+      const dto = JSON.parse(msg.text());
+      if (!pattern || dto.componentName.indexOf(pattern) !== -1) {
+        await createWrapperForComponent(dto, { onlyStopForMerge });
         createTestForComponent(dto);
         createDemoForComponent(dto);
-        executeQueue()
-      });
-    } else {
-      executeQueue();
+      }
+    } catch (e) {
+      console.error(e.message);
     }
-  } catch (e) {
-    console.error(e.message);
-    executeQueue();
   }
 }
 
 (async () => {
-  const browser = await puppeteer.launch(); //{devtools: true}
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   page.on('console', (msg) => {
     queue.push(msg);
