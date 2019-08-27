@@ -8,7 +8,7 @@ import { FlexBoxJustifyContent } from '../../lib/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '../../lib/FlexBoxWrap';
 import { Label } from '../../lib/Label';
 
-storiesOf('Components | FlexBox', module).add('Default', () => (
+export const defaultStory = () => (
   <FlexBox
     justifyContent={select('justifyContent', FlexBoxJustifyContent, FlexBoxJustifyContent.Start)}
     alignItems={select('alignItems', FlexBoxAlignItems, FlexBoxAlignItems.Stretch)}
@@ -24,4 +24,12 @@ storiesOf('Components | FlexBox', module).add('Default', () => (
     <Label>Item 4</Label>
     <Label>Item 5</Label>
   </FlexBox>
-));
+);
+defaultStory.story = {
+  name: 'Default'
+};
+
+export default {
+  title: 'Components | FlexBox',
+  component: FlexBox
+};

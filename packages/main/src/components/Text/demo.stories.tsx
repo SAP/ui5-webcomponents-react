@@ -1,9 +1,8 @@
 import { boolean, text } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Text } from '../../lib/Text';
 
-function renderStory() {
+export const renderStory = () => {
   return (
     <Text
       wrapping={boolean('wrapping', true)}
@@ -19,6 +18,12 @@ function renderStory() {
       sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat
     </Text>
   );
-}
+};
+renderStory.story = {
+  name: 'Default'
+};
 
-storiesOf('Components | Text', module).add('default', renderStory);
+export default {
+  title: 'Components | Text',
+  component: Text
+};

@@ -1,9 +1,13 @@
 import { boolean } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Dialog } from '../../lib/Dialog';
 
-storiesOf('UI5 Web Components | Dialog', module).add('Generated default story', () => (
+export default {
+  title: 'UI5 Web Components | Dialog',
+  component: Dialog
+};
+
+export const generatedDefaultStory = () => (
   <Dialog
     initialFocus={''}
     hideHeader={boolean('hideHeader', false)}
@@ -18,4 +22,8 @@ storiesOf('UI5 Web Components | Dialog', module).add('Generated default story', 
     header={null}
     footer={<div>Footer</div>}
   />
-));
+);
+
+generatedDefaultStory.story = {
+  name: 'Generated default story'
+};

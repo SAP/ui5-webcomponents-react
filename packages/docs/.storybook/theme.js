@@ -3,7 +3,7 @@ import { create } from '@storybook/theming';
 const TEXT_COLOR = '#32363A';
 const PRIMARY_COLOR = '#0a6ed1';
 export const Fiori4ReactTheme = create({
-  base: 'dark',
+  base: 'light',
 
   colorPrimary: TEXT_COLOR, //'#000000',
   colorSecondary: '#0a6ed1',

@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { boolean } from '@storybook/addon-knobs';
 import { LineChart } from './index';
 
@@ -24,8 +23,31 @@ const renderStoryWithCustomColors = () => (
   <LineChart labels={labels} datasets={datasets} colors={colors} loading={boolean('loading')} />
 );
 
-storiesOf('Charts | Line Chart', module)
-  .add('Default', renderStory)
-  .add('with custom colors', renderStoryWithCustomColors)
-  .add('with Formatter', renderStoryWithFormatter)
-  .add('Loading Placeholder', () => <LineChart labels={labels} loading={boolean('loading', true)} />);
+export default {
+  title: 'Charts | Line Chart',
+  component: LineChart
+};
+
+export const defaultStory = renderStory;
+
+defaultStory.story = {
+  name: 'Default'
+};
+
+export const withCustomColors = renderStoryWithCustomColors;
+
+withCustomColors.story = {
+  name: 'with custom colors'
+};
+
+export const withFormatter = renderStoryWithFormatter;
+
+withFormatter.story = {
+  name: 'with Formatter'
+};
+
+export const loadingPlaceholder = () => <LineChart labels={labels} loading={boolean('loading', true)} />;
+
+loadingPlaceholder.story = {
+  name: 'Loading Placeholder'
+};

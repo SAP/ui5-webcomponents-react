@@ -1,5 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+const dedent = require('dedent');
+const prettier = require("prettier");
+const PATHS = require('../../../../../config/paths');
+
+const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 
 const COMPONENT_DEMO_BLACKLIST = [
   'CalendarHeader',
@@ -48,7 +53,7 @@ function buildPropWithKnob(knob, meta, key, alt) {
   return `${knob}('${key}', ${checkForDefaultProp(meta, alt)})`;
 }
 
-function generateComponentDemos(dto) {
+function createDemoForComponent(dto) {
   const componentName = dto.componentName;
 
   if (COMPONENT_DEMO_BLACKLIST.includes(componentName)) {
@@ -56,15 +61,14 @@ function generateComponentDemos(dto) {
     return;
   }
 
-  const srcFolder = path.resolve(__dirname, '..', '..', 'src');
-  const folderName = path.resolve(srcFolder, 'webComponents', componentName);
-  const demoPath = path.resolve(folderName, 'demo.stories.tsx');
+  const demoPath = path.resolve(WEB_COMPONENTS_ROOT_DIR, componentName, 'demo.stories.tsx');
 
   if (fs.existsSync(demoPath)) {
     return;
   }
 
   const storyBookImports = {};
+  let importStorybookActions = false;
   const imports = {};
   const props = {};
 
@@ -79,6 +83,9 @@ function generateComponentDemos(dto) {
     } else if (meta.isEnum) {
       storyBookImports['select'] = true;
       return `select('${key}', ${meta.tsType}, ${checkForDefaultProp(meta, 'null')})`;
+    } else if (meta.tsType === '(event : Event) => void') {
+      importStorybookActions = true;
+      return `action('${key}')`;
     } else {
       return 'null';
     }
@@ -111,31 +118,49 @@ function generateComponentDemos(dto) {
   const hasProps = !!Object.keys(props).filter((prop) => !prop.children);
   const hasChildren = !!props.children;
 
-  const storyBookImportStatement =
-    Object.keys(storyBookImports).length > 0
-      ? `\nimport { ${Object.keys(storyBookImports).join(', ')} } from '@storybook/addon-knobs'\n`
-      : '';
+  const getStorybookImports = () => {
+    let storybookImportStatements = '';
+    if (Object.keys(storyBookImports).length > 0) {
+      storybookImportStatements += `import { ${Object.keys(storyBookImports).join(', ')} } from '@storybook/addon-knobs'`
+    }
+    if (importStorybookActions) {
+      if (storybookImportStatements.length > 0) storybookImportStatements += '\n';
+      storybookImportStatements += "import { action } from '@storybook/addon-actions';"
+    }
+    return storybookImportStatements;
+  }
 
-  const tsxContent = ''.concat(
-    "import React from 'react';\n",
-    "import { storiesOf } from '@storybook/react';\n",
-    Object.keys(imports).join(''),
-    storyBookImportStatement,
-    `import { ${componentName} } from './index';\n\n`,
-    `storiesOf('UI5 Web Components | ${componentName}', module)\n`,
-    "\t.add('Generated default story', () => (\n",
-    `\t<${componentName}${hasProps ? '\n' : hasChildren ? ' />' : '>'}`,
-    Object.entries(props)
-      .map(([key, string]) => (key === 'children' ? '' : string))
-      .join(''),
-    hasProps ? (hasChildren ? '\t>\n' : '\t/>\n') : '',
-    hasChildren ? `\t\t${props.children}` : '',
-    hasChildren ? `\n\t</${componentName}>` : '',
-    '\n));\n'
+  const tsxContent = dedent`
+  import React from 'react';
+  ${Object.keys(imports).join('\n')}
+  ${getStorybookImports()}
+  import { ${componentName} } from '../../lib/${componentName}';
+
+  export default {
+    title: 'UI5 Web Components | ${componentName}',
+    component: ${componentName}
+  };
+
+  export const generatedDefaultStory = () => (
+    <${componentName}${hasProps ? '' : hasChildren ? ' />' : '>'}
+    ${Object.entries(props)
+    .map(([key, string]) => (key === 'children' ? '' : string))
+    .join('')}
+    ${hasProps ? (hasChildren ? '\t>' : '\t/>') : ''}
+    ${hasChildren ? `\t\t${props.children}` : ''}
+    ${hasChildren ? `\t</${componentName}>` : ''}
   );
 
-  fs.writeFileSync(demoPath, tsxContent);
+  generatedDefaultStory.story = {
+    name: 'Generated Default Story'
+  };
+
+  `;
+
+  fs.writeFileSync(demoPath, prettier.format(tsxContent));
   console.log(`Demo created for component ${componentName}`);
 }
 
-module.exports = generateComponentDemos;
+module.exports = {
+  createDemoForComponent
+};

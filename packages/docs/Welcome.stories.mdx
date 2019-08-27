@@ -1,0 +1,65 @@
+
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+
+<Meta title=" Welcome | UI5 Web Components for React" />
+
+# UI5 Web Components for React
+[![](https://img.shields.io/travis/SAP/ui5-webcomponents-react/master.svg)](https://travis-ci.org/SAP/ui5-webcomponents-react)
+[![](https://img.shields.io/coveralls/github/SAP/ui5-webcomponents-react/master.svg)](https://coveralls.io/github/SAP/ui5-webcomponents-react)
+[![](https://img.shields.io/npm/v/@ui5/webcomponents-react/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
+[![](https://img.shields.io/npm/v/@ui5/webcomponents-react/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
+[![GitHub stars](https://img.shields.io/github/stars/SAP/ui5-webcomponents-react?style=social)](https://github.com/SAP/ui5-webcomponents-react/stargazers)
+
+[Open Github Project](https://github.com/SAP/ui5-webcomponents-react)
+
+## Description
+UI5 Web Components for React is a Fiori3 compliant React library built on top of the UI5 Web Components.
+With the help of UI5 Web Components for React, you can use UI5 Web Components as if they were native React components.
+In addition to that, UI5 Web Components for React is providing complex components and layouts on top of the UI5 Web Components.
+
+## Getting Started
+
+**Prerequisite: You have a React app.** In case you don't, we recommend to create one using [create-react-app](https://facebook.github.io/create-react-app/).<br/>
+In order to use `ui5-webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
+You will find this component most likely in `src/App.js`:
+```jsx
+import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
+...
+render() {
+  return (
+    <div>
+      <ThemeProvider withToastContainer>
+        <MyApp />
+      </ThemeProvider>
+    </div>
+  );
+}
+```
+
+Then, you are ready to use `ui5-webcomponents-react` and you can import the desired component(s) in your app:<br />
+For example, to use ```Button``` you need to import it:
+
+```jsx
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+```
+
+Then, you can use the Button in your app:
+
+```jsx
+<Button onPress={() => alert('Hello World!')}>Hello world!</Button>
+```
+<Button onClick={() => alert('Hello World!')}>Hello World</Button>
+
+You could import all components also from `@ui5/webcomponents-react` directly, but this will have a negative impact on your bundle size.
+
+### Configure Compact/Cozy setting
+UI5 Web Components supports ```Compact``` and ```Cozy``` mode. It is set to ```Cozy``` by default. To enable ```Compact``` globally, provide the option ```compactSize: true``` in the configuration ```script``` tag:
+
+```html
+<script data-id="sap-ui-config" type="application/json">
+{
+  "compactSize": true
+}
+</script>
+```

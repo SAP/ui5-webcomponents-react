@@ -1,0 +1,70 @@
+
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Button } from '../../lib/Button';
+import { ThemeProvider } from '../../lib/ThemeProvider';
+import { MessageToast } from '../../lib/MessageToast';
+
+<Meta title="Components | MessageToast" component={MessageToast} />
+
+# MessageToast
+
+<ThemeProvider withToastContainer />
+
+
+
+## Success Message Toast:
+```js
+import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
+
+MessageToast.success('Hello Success Message Toast');
+```
+<Button
+        onClick={() => {
+          MessageToast.success('Hello World');
+        }}
+      >
+        Click to trigger Success Toast
+      </Button>
+
+## Warning Message Toast:
+```js
+import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
+
+MessageToast.warning('Hello Warning Message Toast');
+```
+<Button
+        onClick={() => {
+          MessageToast.warning('Hello World this is a very long message. Just testing. Hello Hello Hello.');
+        }}
+      >
+        Click to trigger Warning Toast
+      </Button>
+
+## Error Message Toast:
+```js
+import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
+
+MessageToast.error('Hello Error Message Toast');
+```
+<Button
+        onClick={() => {
+          MessageToast.error('Hello World');
+        }}
+      >
+        Click to trigger Error Toast
+      </Button>
+
+
+## Generic Message Toast:
+```js
+import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
+
+MessageToast.show('Hello Generic Message Toast');
+```
+<Button
+        onClick={() => {
+          MessageToast.show('Hello World');
+        }}
+      >
+        Click to trigger Message Toast
+</Button>

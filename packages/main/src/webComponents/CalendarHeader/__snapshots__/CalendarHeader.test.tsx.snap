@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`CalendarHeader Basic Test (generated) 1`] = `
-<ui5-calendar-header
-  class=""
-/>
-`;

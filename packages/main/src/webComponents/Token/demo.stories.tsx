@@ -1,10 +1,14 @@
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Token } from './index';
 
-storiesOf('UI5 Web Components | Token', module).add('Generated default story', () => (
+export default {
+  title: 'UI5 Web Components | Token',
+  component: Token
+};
+
+export const generatedDefaultStory = () => (
   <Token
     selected={boolean('selected', false)}
     readonly={boolean('readonly', false)}
@@ -13,4 +17,8 @@ storiesOf('UI5 Web Components | Token', module).add('Generated default story', (
   >
     Token 1
   </Token>
-));
+);
+
+generatedDefaultStory.story = {
+  name: 'Generated default story'
+};

@@ -15,6 +15,16 @@ export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
   onSelect?: (event: Event) => void; // @generated
 }
 
+/**
+ * In order to use the Radio Button in Compact Size, please add the following snippet to your `index.html`:
+ * ```
+ * <script data-id="sap-ui-config" type="application/json">
+ *  { "compactSize": true }
+ * </script>
+ * ```
+ *
+ * This Storybook is currently only working in ContentDensity=Cozy.
+ */
 const RadioButton: FC<RadioButtonPropTypes> = withWebComponent<RadioButtonPropTypes>(UI5RadioButton);
 
 RadioButton.displayName = 'RadioButton';

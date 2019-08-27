@@ -1,9 +1,17 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { boolean } from '@storybook/addon-knobs';
 import { Option } from './index';
 
-storiesOf('UI5 Web Components | Option', module).add('Generated default story', () => (
+export default {
+  title: 'UI5 Web Components | Option',
+  component: Option
+};
+
+export const generatedDefaultStory = () => (
   <Option selected={boolean('selected', false)} icon={'sap-icon://add'} value={'generatedString'} />
-));
+);
+
+generatedDefaultStory.story = {
+  name: 'Generated default story'
+};

@@ -1,9 +1,14 @@
 import { select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Size } from '../../lib/Size';
 import { Spinner } from '../../lib/Spinner';
 
-const renderSpinner = () => <Spinner size={select('size', Size, Size.Medium)} />;
+export const renderSpinner = () => <Spinner size={select('size', Size, Size.Medium)} />;
+renderSpinner.story = {
+  name: 'Default'
+};
 
-storiesOf('Components | Spinner', module).add('Default', renderSpinner);
+export default {
+  title: 'Components | Spinner',
+  component: Spinner
+};

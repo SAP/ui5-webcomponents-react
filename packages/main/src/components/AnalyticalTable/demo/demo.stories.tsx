@@ -48,7 +48,7 @@ const columns = [
 
 const data = generateData(20);
 
-function renderStory() {
+export const defaultStory = () => {
   return (
     <AnalyticalTable
       title="Table Title"
@@ -64,9 +64,13 @@ function renderStory() {
       groupable={boolean('groupable', true)}
     />
   );
-}
+};
 
-function withCroppedPopup() {
+defaultStory.story = {
+  name: 'Default'
+};
+
+export const withCroppedPopup = () => {
   return (
     <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
       <div style={{ width: '400px' }}>
@@ -86,9 +90,12 @@ function withCroppedPopup() {
       </div>
     </div>
   );
-}
+};
+withCroppedPopup.story = {
+  name: 'with Cropped Popup'
+};
 
-const tableWithExtension = () => {
+export const tableWithExtension = () => {
   return (
     <AnalyticalTable
       data={data}
@@ -104,8 +111,11 @@ const tableWithExtension = () => {
     />
   );
 };
+tableWithExtension.story = {
+  name: 'with Table Extension'
+};
 
-const tableWithCustomTitle = () => {
+export const tableWithCustomTitle = () => {
   return (
     <AnalyticalTable
       title={<Title>Test 123</Title>}
@@ -122,9 +132,11 @@ const tableWithCustomTitle = () => {
     />
   );
 };
+tableWithCustomTitle.story = {
+  name: 'with Custom Title'
+};
 
-storiesOf('Components | Analytical Table', module)
-  .add('Default', renderStory)
-  .add('with Extension', tableWithExtension)
-  .add('with cropped Search/Filter Popup', withCroppedPopup)
-  .add('with Custom Title', tableWithCustomTitle);
+export default {
+  title: 'Components | Analytical Table',
+  component: AnalyticalTable
+};

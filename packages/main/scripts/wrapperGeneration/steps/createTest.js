@@ -1,14 +1,12 @@
-const { readdirSync, statSync, writeFileSync, existsSync } = require('fs');
+const {readdirSync, statSync, writeFileSync, existsSync} = require('fs');
 const path = require('path');
-const PATHS = require('../../../../config/paths');
+const prettier = require("prettier");
+const PATHS = require('../../../../../config/paths');
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 
-const webComponents = readdirSync(WEB_COMPONENTS_ROOT_DIR).filter((f) =>
-  statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory()
-);
-
-webComponents.forEach((component) => {
+const createTestForComponent = (dto) => {
+  const component = dto.componentName;
   const absPath = path.join(WEB_COMPONENTS_ROOT_DIR, component, `${component}.test.tsx`);
   if (existsSync(absPath)) {
     return;
@@ -26,5 +24,9 @@ describe('${component}', () => {
 });
 
 `;
-  writeFileSync(absPath, jsxContent);
-});
+  writeFileSync(absPath, prettier.format(jsxContent));
+};
+
+module.exports = {
+  createTestForComponent
+};

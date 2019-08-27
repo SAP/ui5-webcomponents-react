@@ -1,10 +1,17 @@
-import { boolean } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
+import { boolean, text } from '@storybook/addon-knobs';
 import React from 'react';
 import { Label } from '../../lib/Label';
 
-storiesOf('UI5 Web Components | Label', module).add('Generated default story', () => (
-  <Label required={boolean('required', false)} wrap={boolean('wrap', false)} for={'generatedString'}>
-    Some Content
+export default {
+  title: 'UI5 Web Components | Label',
+  component: Label
+};
+
+export const story = () => (
+  <Label required={boolean('required', false)} wrap={boolean('wrap', false)} for={text('for', 'generatedString')}>
+    {text('children', 'Some Content')}
   </Label>
-));
+);
+story.story = {
+  name: 'Default Story'
+};

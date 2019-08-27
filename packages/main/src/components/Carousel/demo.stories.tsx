@@ -1,13 +1,12 @@
 import { boolean, number, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Carousel } from '../../lib/Carousel';
 import { CarouselArrowsPlacement } from '../../lib/CarouselArrowsPlacement';
 import { Label } from '../../lib/Label';
 import { PlacementType } from '../../lib/PlacementType';
 
-function renderCarousel() {
+export const renderCarousel = () => {
   return (
     <Carousel
       width="90%"
@@ -38,7 +37,10 @@ function renderCarousel() {
       <Label>Carousel 5</Label>
     </Carousel>
   );
-}
+};
+renderCarousel.story = {
+  name: 'Default'
+};
 
 const renderCarouselWithOneChild = () => {
   return (
@@ -61,7 +63,11 @@ const renderCarouselWithOneChild = () => {
     </Carousel>
   );
 };
+renderCarouselWithOneChild.story = {
+  name: 'with One Child'
+};
 
-storiesOf('Components | Carousel', module)
-  .add('Default', renderCarousel)
-  .add('with 1 Child', renderCarouselWithOneChild);
+export default {
+  title: 'Components | Carousel',
+  component: Carousel
+};

@@ -1,6 +1,5 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
 import React from 'react';
 import { AnalyticalCard } from '../../lib/AnalyticalCard';
@@ -8,7 +7,12 @@ import { AnalyticalCardHeader } from '../../lib/AnalyticalCardHeader';
 import { DeviationIndicator } from '../../lib/DeviationIndicator';
 import { ValueState } from '../../lib/ValueState';
 
-storiesOf('Components | Analytical Card', module).add('default', () => (
+export default {
+  title: 'Components | Analytical Card',
+  component: AnalyticalCard
+};
+
+export const defaultStory = () => (
   <AnalyticalCard
     width={text('width', '20rem')}
     header={
@@ -65,4 +69,6 @@ storiesOf('Components | Analytical Card', module).add('default', () => (
       colors={['#607182']}
     />
   </AnalyticalCard>
-));
+);
+
+defaultStory.story = { name: 'Default' };

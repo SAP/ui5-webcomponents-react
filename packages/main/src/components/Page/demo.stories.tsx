@@ -1,5 +1,4 @@
 import { boolean, select, text } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { Bar } from '../../lib/Bar';
@@ -8,7 +7,7 @@ import { Label } from '../../lib/Label';
 import { Page } from '../../lib/Page';
 import { PageBackgroundDesign } from '../../lib/PageBackgroundDesign';
 
-const renderPage = () => (
+export const renderPage = () => (
   <div style={{ height: '400px', width: '100%' }}>
     <Page
       title={text('title', 'Page Demo')}
@@ -23,5 +22,11 @@ const renderPage = () => (
     </Page>
   </div>
 );
+renderPage.story = {
+  name: 'Default'
+};
 
-storiesOf('Components | Page', module).add('Default', renderPage);
+export default {
+  title: 'Components | Page',
+  component: Page
+};

@@ -14,7 +14,7 @@
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
-    "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/generateWebComponentWrappers --onlyStopForMerge",
+    "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/index.js --onlyStopForMerge",
     "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
     "postbuild": "rollup -c rollup.config.js"
   },
