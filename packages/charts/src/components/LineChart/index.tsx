@@ -9,7 +9,7 @@ import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend
 import { withChartContainer } from '../../internal/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabel, useMergedConfig } from '../../util/Utils';
+import { formatAxisCallback, formatDataLabel, formatTooltipLabel, useMergedConfig } from '../../util/Utils';
 import { LineChartPlaceholder } from './Placeholder';
 
 export interface LineChartPropTypes extends ChartBaseProps {}
@@ -39,11 +39,18 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
             display: true,
             ticks: {
               ...DEFAULT_OPTIONS.scales.yAxes[0].ticks,
-              callback: valueAxisFormatter
+              callback: formatAxisCallback(valueAxisFormatter)
             }
           }
         ],
-        xAxes: DEFAULT_OPTIONS.scales.xAxes
+        xAxes: [
+          {
+            ...DEFAULT_OPTIONS.scales.xAxes[0],
+            ticks: {
+              callback: formatAxisCallback(categoryAxisFormatter)
+            }
+          }
+        ]
       },
       tooltips: {
         callbacks: {
@@ -52,7 +59,7 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
       },
       plugins: {
         datalabels: {
-          formatter: valueAxisFormatter
+          formatter: formatDataLabel(valueAxisFormatter)
         }
       }
     };

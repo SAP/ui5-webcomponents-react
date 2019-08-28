@@ -73,7 +73,7 @@ export default {
 };
 
 export const defaultStory = () => (
-  <ColumnChart width={700} height={500} labels={labels} datasets={datasets} loading={boolean('loading')} />
+  <ColumnChart width={700} height={500} labels={labels} datasets={datasets} loading={boolean('loading', false)} />
 );
 
 defaultStory.story = {
@@ -85,12 +85,17 @@ export const stacked = () => (
     labels={labels}
     datasets={datasets}
     options={{ scales: { xAxes: [{ stacked: true }], yAxes: [{ stacked: true }] } }}
-    loading={boolean('loading')}
+    loading={boolean('loading', false)}
   />
 );
 
 export const withFormatter = () => (
-  <ColumnChart labels={labels} datasets={datasets} valueAxisFormatter={(d) => `${d}USD`} loading={boolean('loading')} />
+  <ColumnChart
+    labels={labels}
+    datasets={datasets}
+    valueAxisFormatter={(d) => `${d}USD`}
+    loading={boolean('loading', false)}
+  />
 );
 
 withFormatter.story = {
@@ -98,7 +103,7 @@ withFormatter.story = {
 };
 
 export const withGrowthLine = () => (
-  <ColumnChart labels={labels} datasets={dataset2} options={growthLineOptions} loading={boolean('loading')} />
+  <ColumnChart labels={labels} datasets={dataset2} options={growthLineOptions} loading={boolean('loading', false)} />
 );
 
 withGrowthLine.story = {
@@ -111,7 +116,7 @@ export const withGrowthLineFormatter = () => (
     datasets={dataset2}
     valueAxisFormatter={(d) => `${d}USD`}
     options={growthLineOptions}
-    loading={boolean('loading')}
+    loading={boolean('loading', false)}
   />
 );
 

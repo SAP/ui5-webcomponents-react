@@ -11,7 +11,7 @@ export default {
 };
 
 export const defaultStory = () => (
-  <DonutChart labels={labels} datasets={dataset} height={300} width={300} loading={boolean('loading')} />
+  <DonutChart labels={labels} datasets={dataset} height={300} width={300} loading={boolean('loading', false)} />
 );
 
 defaultStory.story = {
@@ -25,7 +25,7 @@ export const withCustomColors = () => (
     labels={['Stalled', 'Active']}
     datasets={[{ data: [65, 45] }]}
     colors={['sapUiChartBad', 'sapUiChartGood']}
-    loading={boolean('loading')}
+    loading={boolean('loading', false)}
   />
 );
 
@@ -38,7 +38,7 @@ export const withFormatter = () => (
     labels={labels}
     datasets={dataset}
     valueAxisFormatter={(number) => `${number}$`}
-    loading={boolean('loading')}
+    loading={boolean('loading', false)}
   />
 );
 

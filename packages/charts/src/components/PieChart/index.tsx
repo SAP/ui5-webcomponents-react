@@ -45,7 +45,9 @@ const PieChartComponent = forwardRef((props: PieChartPropTypes, ref: Ref<any>) =
           anchor: 'end',
           align: 'end',
           color: getCssVariableValue('--sapUiBaseText', '#32363a'),
-          formatter: valueAxisFormatter
+          formatter: (val, context) => {
+            return valueAxisFormatter(val, context.dataset, context);
+          }
         }
       }
     };
