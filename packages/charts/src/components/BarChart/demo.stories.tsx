@@ -7,12 +7,14 @@ const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [
   {
     label: 'Upside',
-    data: [65, 59, 80, 93, 56, 55, 5]
+    data: [65, 59, 80, 93, 56, 55, 5],
+    anyOtherDataILike: 1337
   },
 
   {
     label: 'Probable/Committed',
-    data: [5, 9, 8, 8, 5, 5, 4]
+    data: [5, 9, 8, 8, 5, 5, 4],
+    anyOtherDataILike: 1337
   }
 ];
 
@@ -41,8 +43,8 @@ export const defaultStory = () => (
     labels={labels}
     datasets={datasets}
     getElementAtEvent={action('getElementAtEvent')}
-    loading={boolean('loading')}
-    noLegend={boolean('noLegend')}
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
   />
 );
 
@@ -51,9 +53,13 @@ defaultStory.story = {
 };
 
 export const withFormatter = () => (
-  <BarChart labels={labels} datasets={datasets} valueAxisFormatter={(d) => `${d}%`} loading={boolean('loading')} />
+  <BarChart
+    labels={labels}
+    datasets={datasets}
+    valueAxisFormatter={(d) => `${d}%`}
+    loading={boolean('loading', false)}
+  />
 );
-
 withFormatter.story = {
   name: 'with Formatter'
 };
@@ -64,10 +70,9 @@ export const stacked = () => (
     datasets={datasets}
     valueAxisFormatter={(d) => `${d}%`}
     options={options}
-    loading={boolean('loading')}
+    loading={boolean('loading', false)}
   />
 );
-
 stacked.story = {
   name: 'Stacked'
 };

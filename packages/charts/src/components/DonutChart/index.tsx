@@ -9,7 +9,7 @@ import { withChartContainer } from '../../internal/withChartContainer';
 import { getCssVariableValue } from '../../themes/Utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabelForPieCharts, useMergedConfig } from '../../util/Utils';
+import { formatDataLabel, formatTooltipLabelForPieCharts, useMergedConfig } from '../../util/Utils';
 import { PieChartPlaceholder } from '../PieChart/Placeholder';
 
 export interface DonutChartPropTypes extends ChartBaseProps {}
@@ -46,7 +46,7 @@ const DonutChartComponent = forwardRef((props: DonutChartPropTypes, ref: Ref<any
           anchor: 'end',
           align: 'end',
           color: getCssVariableValue('--sapUiBaseText', '#32363a'),
-          formatter: valueAxisFormatter
+          formatter: formatDataLabel(valueAxisFormatter)
         }
       }
     };

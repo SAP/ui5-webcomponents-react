@@ -11,7 +11,14 @@ import { withChartContainer } from '../../internal/withChartContainer';
 import { getCssVariableValue } from '../../themes/Utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabel, getTextHeight, getTextWidth, useMergedConfig } from '../../util/Utils';
+import {
+  formatAxisCallback,
+  formatDataLabel,
+  formatTooltipLabel,
+  getTextHeight,
+  getTextWidth,
+  useMergedConfig
+} from '../../util/Utils';
 import { ColumnChartPlaceholder } from './Placeholder';
 
 export interface ColumnChartPropTypes extends ChartBaseProps {}
@@ -47,7 +54,7 @@ const ColumnChartComponent = forwardRef((props: ColumnChartPropTypes, ref: Ref<a
           {
             ...DEFAULT_OPTIONS.scales.xAxes[0],
             ticks: {
-              callback: categoryAxisFormatter
+              callback: formatAxisCallback(categoryAxisFormatter)
             }
           }
         ],
@@ -56,7 +63,7 @@ const ColumnChartComponent = forwardRef((props: ColumnChartPropTypes, ref: Ref<a
             ...DEFAULT_OPTIONS.scales.yAxes[0],
             ticks: {
               ...DEFAULT_OPTIONS.scales.yAxes[0].ticks,
-              callback: valueAxisFormatter
+              callback: formatAxisCallback(valueAxisFormatter)
             }
           }
         ]
@@ -75,13 +82,17 @@ const ColumnChartComponent = forwardRef((props: ColumnChartPropTypes, ref: Ref<a
             if (height < getTextHeight() + 6) {
               return false;
             }
-            const formattedValue = valueAxisFormatter(context.dataset.data[context.dataIndex]);
+            const formattedValue = valueAxisFormatter(
+              context.dataset.data[context.dataIndex],
+              context.dataset,
+              context
+            );
             const textWidth = getTextWidth(formattedValue);
             return textWidth < dataMeta._view.width;
           },
           anchor: 'end',
           align: 'start',
-          formatter: valueAxisFormatter,
+          formatter: formatDataLabel(valueAxisFormatter),
           color: (context) => {
             const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
             const dataMeta = datasetMeta.data[context.dataIndex];

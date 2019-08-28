@@ -10,17 +10,22 @@ const datasets = [
   }
 ];
 function renderStory() {
-  return <LineChart labels={labels} datasets={datasets} loading={boolean('loading')} />;
+  return <LineChart labels={labels} datasets={datasets} loading={boolean('loading', false)} />;
 }
 
 const colors = ['#f0ab00'];
 
 const renderStoryWithFormatter = () => (
-  <LineChart labels={labels} datasets={datasets} valueAxisFormatter={(i) => `${i}%`} loading={boolean('loading')} />
+  <LineChart
+    labels={labels}
+    datasets={datasets}
+    valueAxisFormatter={(i) => `${i}%`}
+    loading={boolean('loading', false)}
+  />
 );
 
 const renderStoryWithCustomColors = () => (
-  <LineChart labels={labels} datasets={datasets} colors={colors} loading={boolean('loading')} />
+  <LineChart labels={labels} datasets={datasets} colors={colors} loading={boolean('loading', false)} />
 );
 
 export default {

@@ -8,7 +8,7 @@ import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend
 import { withChartContainer } from '../../internal/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabel, useMergedConfig } from '../../util/Utils';
+import { formatAxisCallback, formatTooltipLabel, useMergedConfig } from '../../util/Utils';
 
 export interface RadarChartPropTypes extends ChartBaseProps {}
 
@@ -35,7 +35,7 @@ const RadarChartComponent = forwardRef((props: RadarChartPropTypes, ref: Ref<any
     return {
       scale: {
         ticks: {
-          callback: valueAxisFormatter
+          callback: formatAxisCallback(valueAxisFormatter)
         }
       },
       tooltips: {
