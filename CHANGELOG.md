@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1-rc.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.5.1-rc.4...v0.5.1-rc.5) (2019-08-28)
+
+
+### Features
+
+* **Charts:** Pass current dataset to formatters ([#107](https://github.com/SAP/ui5-webcomponents-react/issues/107)) ([a8c7e96](https://github.com/SAP/ui5-webcomponents-react/commit/a8c7e96))
+
+
+
+
+
 ## [0.5.1-rc.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.5.1-rc.3...v0.5.1-rc.4) (2019-08-27)
 
 
