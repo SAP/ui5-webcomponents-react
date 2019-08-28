@@ -10,14 +10,19 @@ export default {
   component: PieChart
 };
 
-export const defaultStory = () => <PieChart labels={labels} datasets={datasets} loading={boolean('loading')} />;
+export const defaultStory = () => <PieChart labels={labels} datasets={datasets} loading={boolean('loading', false)} />;
 
 defaultStory.story = {
   name: 'Default'
 };
 
 export const withFormatter = () => (
-  <PieChart labels={labels} datasets={datasets} valueAxisFormatter={(d) => `${d}%`} loading={boolean('loading')} />
+  <PieChart
+    labels={labels}
+    datasets={datasets}
+    valueAxisFormatter={(d) => `${d}%`}
+    loading={boolean('loading', false)}
+  />
 );
 
 withFormatter.story = {
