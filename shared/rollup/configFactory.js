@@ -43,7 +43,8 @@ const rollupConfigFactory = (pkgName) => {
     output: [
       {
         file: path.resolve(PATHS.build, 'node_modules', pkgName, 'lib', file.replace(/\.ts$/, '.js')),
-        format: 'es'
+        format: 'es',
+        sourcemap: true
       }
     ],
     plugins

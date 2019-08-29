@@ -104,7 +104,7 @@ function handleRollupError(error) {
   }
 }
 
-function getFilename(name, globalName, bundleType) {
+function getFilename(name, bundleType) {
   // we do this to replace / to -, for react-dom/server
   name = name.replace('/', '-');
   switch (bundleType) {
@@ -154,7 +154,6 @@ function getPlugins(
   filename,
   packageName,
   bundleType,
-  globalName,
   moduleType,
   modulesToStub
 ) {
@@ -293,7 +292,7 @@ function getBabelConfig(updateBabelOptions, bundleType, filename) {
   }
 }
 
-function getRollupOutputOptions(outputPath, format, globals, globalName, bundleType) {
+function getRollupOutputOptions(outputPath, format, globals, bundleType) {
   const isProduction = isProductionBundleType(bundleType);
 
   return Object.assign(
@@ -304,7 +303,6 @@ function getRollupOutputOptions(outputPath, format, globals, globalName, bundleT
       globals,
       freeze: !isProduction,
       interop: false,
-      name: globalName,
       sourcemap: false
     }
   );
@@ -315,7 +313,7 @@ async function createBundle(bundle, bundleType) {
     return;
   }
 
-  const filename = getFilename(bundle.entry, bundle.global, bundleType);
+  const filename = getFilename(bundle.entry, bundleType);
   const logKey = chalk.white.bold(filename) + chalk.dim(` (${bundleType.toLowerCase()})`);
   const format = getFormat(bundleType);
   const packageName = Packaging.getPackageName(bundle.entry);
@@ -348,13 +346,12 @@ async function createBundle(bundle, bundleType) {
       filename,
       packageName,
       bundleType,
-      bundle.global,
       bundle.moduleType,
       bundle.modulesToStub
     )
   };
   const [mainOutputPath, ...otherOutputPaths] = Packaging.getBundleOutputPaths(bundleType, filename, packageName);
-  const rollupOutputOptions = getRollupOutputOptions(mainOutputPath, format, peerGlobals, bundle.global, bundleType);
+  const rollupOutputOptions = getRollupOutputOptions(mainOutputPath, format, peerGlobals, bundleType);
 
   console.log(`${chalk.bgYellow.black(' BUILDING ')} ${logKey}`);
   try {
