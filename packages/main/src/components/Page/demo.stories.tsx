@@ -1,11 +1,11 @@
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
-import { Bar } from '../../lib/Bar';
-import { Button } from '../../lib/Button';
-import { Label } from '../../lib/Label';
-import { Page } from '../../lib/Page';
-import { PageBackgroundDesign } from '../../lib/PageBackgroundDesign';
+import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Page } from '@ui5/webcomponents-react/lib/Page';
+import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 
 export const renderPage = () => (
   <div style={{ height: '400px', width: '100%' }}>

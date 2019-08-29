@@ -1,6 +1,6 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
-import { Text } from '../../lib/Text';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
 
 describe('Text', () => {
   test('Render Basic Text', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab } from '../../lib/Tab';
+import { Tab } from '@ui5/webcomponents-react/lib/Tab';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Tab', () => {

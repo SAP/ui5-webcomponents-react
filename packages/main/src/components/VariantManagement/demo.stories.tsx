@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text, select } from '@storybook/addon-knobs';
 import React from 'react';
-import { PlacementType } from '../../lib/PlacementType';
-import { TitleLevel } from '../../lib/TitleLevel';
-import { VariantManagement } from '../../lib/VariantManagement';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 
 const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
 export const renderStory = () => (

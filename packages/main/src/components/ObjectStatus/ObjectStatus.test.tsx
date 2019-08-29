@@ -1,7 +1,7 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
-import { ObjectStatus } from '../../lib/ObjectStatus';
-import { ValueState } from '../../lib/ValueState';
+import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 const testFactory = () => {
   Object.values(ValueState).forEach((state) => {

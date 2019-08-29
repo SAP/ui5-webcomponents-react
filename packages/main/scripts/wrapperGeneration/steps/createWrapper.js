@@ -26,7 +26,8 @@ async function createWrapperForComponent(dto, options = {}) {
   const jsxContent = ''.concat(
     tsTypings.importStatements,
     `import ${ui5ComponentName} from '@ui5/webcomponents/dist/${componentName}';\n`,
-    "import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';",
+    "import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';",
+    "import { WithWebComponentPropTypes } from '../../internal/withWebComponent';",
     '\n\n',
     tsTypings.interfaceStatement,
     '\n\n',

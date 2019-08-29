@@ -1,7 +1,7 @@
 import { fonts } from '@ui5/webcomponents-react-base';
 import { ZIndex } from '../../enums/ZIndex';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ContentDensity } from '../../lib/ContentDensity';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 
 const style = ({ parameters, contentDensity }: JSSTheme) => ({
   overlay: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from '../../lib/Table';
+import { Table } from '@ui5/webcomponents-react/lib/Table';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Table', () => {

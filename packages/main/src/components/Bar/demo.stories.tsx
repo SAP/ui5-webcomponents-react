@@ -1,6 +1,6 @@
 import React from 'react';
-import { Bar } from '../../lib/Bar';
-import { Label } from '../../lib/Label';
+import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
 
 export const defaultStory = () => {
   return (

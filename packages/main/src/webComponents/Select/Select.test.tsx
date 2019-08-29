@@ -1,5 +1,5 @@
 import React from 'react';
-import { Select } from '../../lib/Select';
+import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Select', () => {

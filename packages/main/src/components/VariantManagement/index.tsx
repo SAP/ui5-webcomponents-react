@@ -3,16 +3,16 @@ import React, { FC, forwardRef, Ref, useCallback, useMemo, useState, useEffect }
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { Button } from '../../lib/Button';
-import { ButtonDesign } from '../../lib/ButtonDesign';
-import { List } from '../../lib/List';
-import { ListItemTypes } from '../../lib/ListItemTypes';
-import { ListMode } from '../../lib/ListMode';
-import { PlacementType } from '../../lib/PlacementType';
-import { Popover } from '../../lib/Popover';
-import { StandardListItem } from '../../lib/StandardListItem';
-import { Title } from '../../lib/Title';
-import { TitleLevel } from '../../lib/TitleLevel';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { List } from '@ui5/webcomponents-react/lib/List';
+import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
+import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 
 export interface VariantItem {
   key: string;

@@ -1,7 +1,7 @@
 import { renderThemedComponent } from '@shared/tests/utils';
 import { shallow } from 'enzyme';
 import React from 'react';
-import { ObjectPageSubSection } from '../../lib/ObjectPageSubSection';
+import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
 
 describe('ObjectPageSubSection', () => {
   test('Render without Crashing', () => {

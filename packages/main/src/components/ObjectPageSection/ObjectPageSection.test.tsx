@@ -1,8 +1,7 @@
 import { renderThemedComponent } from '@shared/tests/utils';
 import { shallow } from 'enzyme';
 import React from 'react';
-import { ObjectPageSection } from '../../lib/ObjectPageSection';
-
+import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';
 
 describe('ObjectPageSection', () => {
   test('Renders with children', () => {

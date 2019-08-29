@@ -1,10 +1,10 @@
 import { boolean, select } from '@storybook/addon-knobs';
 import React from 'react';
-import { Button } from '../../lib/Button';
-import { PlacementType } from '../../lib/PlacementType';
-import { Popover } from '../../lib/Popover';
-import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
-import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
+import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 
 export default {
   title: 'UI5 Web Components | Popover',

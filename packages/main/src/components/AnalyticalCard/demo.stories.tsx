@@ -2,10 +2,10 @@ import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
 import React from 'react';
-import { AnalyticalCard } from '../../lib/AnalyticalCard';
-import { AnalyticalCardHeader } from '../../lib/AnalyticalCardHeader';
-import { DeviationIndicator } from '../../lib/DeviationIndicator';
-import { ValueState } from '../../lib/ValueState';
+import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';
+import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';
+import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 export default {
   title: 'Components | Analytical Card',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ValueState } from '../..';
-import { ProgressIndicator } from '../../lib/ProgressIndicator';
+import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 
 export const renderStory = () => {
   return (

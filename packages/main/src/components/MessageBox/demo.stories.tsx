@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import React from 'react';
-import { MessageBox } from '../../lib/MessageBox';
-import { MessageBoxTypes } from '../../lib/MessageBoxTypes';
+import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
+import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 
 export const defaultStory = () => (
   <MessageBox

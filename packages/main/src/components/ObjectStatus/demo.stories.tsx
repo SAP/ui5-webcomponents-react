@@ -1,8 +1,8 @@
 import { boolean, select } from '@storybook/addon-knobs';
 import React from 'react';
-import { Icon } from '../../lib/Icon';
-import { ObjectStatus } from '../../lib/ObjectStatus';
-import { ValueState } from '../../lib/ValueState';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 export const onlyText = () => (
   <ObjectStatus state={select('state', ValueState, ValueState.Success)}>Object Status</ObjectStatus>

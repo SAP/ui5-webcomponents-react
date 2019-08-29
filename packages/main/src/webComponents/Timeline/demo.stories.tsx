@@ -1,6 +1,6 @@
 import React from 'react';
-import { Timeline } from '../../lib/Timeline';
-import { TimelineItem } from '../../lib/TimelineItem';
+import { Timeline } from '@ui5/webcomponents-react/lib/Timeline';
+import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';
 
 export default {
   title: 'UI5 Web Components | Timeline',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Option } from '../../lib/Option';
+import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Option', () => {

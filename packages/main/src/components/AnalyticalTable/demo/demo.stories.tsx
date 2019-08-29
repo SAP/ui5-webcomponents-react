@@ -1,8 +1,8 @@
 import { boolean, number } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { AnalyticalTable } from '../../../lib/AnalyticalTable';
-import { Title } from '../../../lib/Title';
+import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
 import generateData from './generateData';
 
 const columns = [

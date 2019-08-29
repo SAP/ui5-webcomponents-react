@@ -1,14 +1,14 @@
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { FilterBar } from '../../lib/FilterBar';
-import { FilterItem } from '../../lib/FilterItem';
-import { FilterType } from '../../lib/FilterType';
-import { Input } from '../../lib/Input';
-import { PlacementType } from '../../lib/PlacementType';
-import { Switch } from '../../lib/Switch';
-import { TitleLevel } from '../../lib/TitleLevel';
-import { VariantManagement } from '../../lib/VariantManagement';
+import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
+import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';
+import { FilterType } from '@ui5/webcomponents-react/lib/FilterType';
+import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { Switch } from '@ui5/webcomponents-react/lib/Switch';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import { action } from '@storybook/addon-actions';
 
 const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];

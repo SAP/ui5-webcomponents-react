@@ -1,5 +1,5 @@
 import React from 'react';
-import { DatePicker } from '../../lib/DatePicker';
+import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('DatePicker', () => {

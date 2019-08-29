@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableColumn } from '../../lib/TableColumn';
+import { TableColumn } from '@ui5/webcomponents-react/lib/TableColumn';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('TableColumn', () => {

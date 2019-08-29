@@ -14,8 +14,8 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { CarouselArrowsPlacement } from '../../lib/CarouselArrowsPlacement';
-import { PlacementType } from '../../lib/PlacementType';
+import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import styles from './Carousel.jss';
 import { CarouselPagination, CarouselPaginationPropTypes } from './CarouselPagination';
 

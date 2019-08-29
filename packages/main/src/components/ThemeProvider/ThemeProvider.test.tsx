@@ -1,7 +1,7 @@
 import { withStyles } from '@ui5/webcomponents-react-base';
 import { mount } from 'enzyme';
 import React from 'react';
-import { ThemeProvider } from '../../lib/ThemeProvider';
+import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 
 describe('ThemeProvider', () => {
   it('Provides Correct Context', (done) => {

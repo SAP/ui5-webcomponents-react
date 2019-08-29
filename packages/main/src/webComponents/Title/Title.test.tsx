@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title } from '../../lib/Title';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Title', () => {

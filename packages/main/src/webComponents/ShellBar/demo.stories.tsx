@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, number } from '@storybook/addon-knobs';
 import React from 'react';
-import { ShellBar } from '../../lib/ShellBar';
-import { ShellBarItem } from '../../lib/ShellBarItem';
+import { ShellBar } from '@ui5/webcomponents-react/lib/ShellBar';
+import { ShellBarItem } from '@ui5/webcomponents-react/lib/ShellBarItem';
 
 export default {
   title: 'UI5 Web Components | ShellBar',

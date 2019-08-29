@@ -1,8 +1,8 @@
 import { boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
-import { Link } from '../../lib/Link';
-import { LinkDesign } from '../../lib/LinkDesign';
+import { Link } from '@ui5/webcomponents-react/lib/Link';
+import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 
 export default {
   title: 'UI5 Web Components | Link',

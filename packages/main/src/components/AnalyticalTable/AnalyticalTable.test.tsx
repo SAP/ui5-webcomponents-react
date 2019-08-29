@@ -1,6 +1,6 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
-import { AnalyticalTable } from '../../lib/AnalyticalTable';
+import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 
 const columns = [
   {

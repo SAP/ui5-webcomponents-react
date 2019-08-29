@@ -2,7 +2,7 @@ import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-ba
 import React, { Children, cloneElement, Component, CSSProperties, ReactElement, RefObject } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { ContentDensity } from '../../lib/ContentDensity';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { SegmentedButtonItemPropTypes } from '../SegmentedButtonItem';
 
 export type SelectedKey = string | number;

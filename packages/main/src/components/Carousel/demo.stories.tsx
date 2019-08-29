@@ -1,10 +1,10 @@
 import { boolean, number, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
-import { Carousel } from '../../lib/Carousel';
-import { CarouselArrowsPlacement } from '../../lib/CarouselArrowsPlacement';
-import { Label } from '../../lib/Label';
-import { PlacementType } from '../../lib/PlacementType';
+import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
+import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 
 export const renderCarousel = () => {
   return (
