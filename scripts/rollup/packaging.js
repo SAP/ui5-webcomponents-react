@@ -4,7 +4,7 @@ const { existsSync, readdirSync, unlinkSync } = require('fs');
 const Bundles = require('./bundles');
 const { asyncCopyTo, asyncExecuteCommand, asyncExtractTar, asyncRimRaf } = require('../utils');
 
-const { UMD_DEV, UMD_PROD, NODE_DEV, NODE_PROD, NODE_ES_DEV, NODE_ES_PROD } = Bundles.bundleTypes;
+const { UMD_DEV, UMD_PROD, NODE_DEV, NODE_PROD, NODE_ES } = Bundles.bundleTypes;
 
 function getPackageName(name) {
   return name;
@@ -15,8 +15,7 @@ function getBundleOutputPaths(bundleType, filename, packageName) {
     case NODE_DEV:
     case NODE_PROD:
       return [`build/node_modules/${packageName}/cjs/${filename}`];
-    case NODE_ES_DEV:
-    case NODE_ES_PROD:
+    case NODE_ES:
       return [`build/node_modules/${packageName}/esm/${filename}`];
     case UMD_DEV:
     case UMD_PROD:
