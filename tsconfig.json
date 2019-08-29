@@ -15,8 +15,8 @@
     "baseUrl": ".",
     "paths": {
       "@shared/*": ["shared/*"],
-      "@ui5/webcomponents-react/lib/*": ["packages/main/src/lib/*"],
-      "@ui5/webcomponents-react-charts/lib/*": ["packages/charts/src/lib/*"]
+      "@ui5/webcomponents-react/lib/*": ["node_modules/@ui5/webcomponents-react/src/lib/*"],
+      "@ui5/webcomponents-react-charts/lib/*": ["node_modules/@ui5/webcomponents-react-charts/src/lib/*"]
     },
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
