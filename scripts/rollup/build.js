@@ -37,7 +37,7 @@ process.on('unhandledRejection', (err) => {
   throw err;
 });
 
-const { UMD_DEV, UMD_PROD, NODE_DEV, NODE_PROD, NODE_ES_DEV, NODE_ES_PROD } = Bundles.bundleTypes;
+const { UMD_DEV, UMD_PROD, NODE_DEV, NODE_PROD, NODE_ES } = Bundles.bundleTypes;
 
 const closureOptions = {
   compilation_level: 'SIMPLE',
@@ -104,7 +104,7 @@ function handleRollupError(error) {
   }
 }
 
-function getFilename(name, globalName, bundleType) {
+function getFilename(name, bundleType) {
   // we do this to replace / to -, for react-dom/server
   name = name.replace('/', '-');
   switch (bundleType) {
@@ -113,11 +113,11 @@ function getFilename(name, globalName, bundleType) {
     case UMD_PROD:
       return `${name}.production.min.js`;
     case NODE_DEV:
-    case NODE_ES_DEV:
       return `${name}.development.js`;
     case NODE_PROD:
-    case NODE_ES_PROD:
       return `${name}.production.min.js`;
+    case NODE_ES:
+      return `${name}.js`;
   }
 }
 
@@ -129,8 +129,7 @@ function getFormat(bundleType) {
     case NODE_DEV:
     case NODE_PROD:
       return `cjs`;
-    case NODE_ES_DEV:
-    case NODE_ES_PROD:
+    case NODE_ES:
       return `es`;
   }
 }
@@ -139,11 +138,9 @@ function isProductionBundleType(bundleType) {
   switch (bundleType) {
     case UMD_DEV:
     case NODE_DEV:
-    case NODE_ES_DEV:
-      return false;
     case UMD_PROD:
     case NODE_PROD:
-    case NODE_ES_PROD:
+    case NODE_ES:
       return true;
     default:
       throw new Error(`Unknown type: ${bundleType}`);
@@ -157,13 +154,12 @@ function getPlugins(
   filename,
   packageName,
   bundleType,
-  globalName,
   moduleType,
   modulesToStub
 ) {
   const isProduction = isProductionBundleType(bundleType);
   const isUMDBundle = bundleType === UMD_DEV || bundleType === UMD_PROD;
-  const isES6Bundle = bundleType === NODE_ES_DEV || bundleType === NODE_ES_PROD;
+  const isES6Bundle = bundleType === NODE_ES;
   const shouldStayReadable = forcePrettyOutput;
   return [
     resolve(),
@@ -280,8 +276,7 @@ function getBabelConfig(updateBabelOptions, bundleType, filename) {
     case UMD_PROD:
     case NODE_DEV:
     case NODE_PROD:
-    case NODE_ES_DEV:
-    case NODE_ES_PROD:
+    case NODE_ES:
       return Object.assign({}, options, {
         // plugins: options.plugins.concat([
         //   // Use object-assign polyfill in open source
@@ -297,7 +292,7 @@ function getBabelConfig(updateBabelOptions, bundleType, filename) {
   }
 }
 
-function getRollupOutputOptions(outputPath, format, globals, globalName, bundleType) {
+function getRollupOutputOptions(outputPath, format, globals, bundleType) {
   const isProduction = isProductionBundleType(bundleType);
 
   return Object.assign(
@@ -308,7 +303,6 @@ function getRollupOutputOptions(outputPath, format, globals, globalName, bundleT
       globals,
       freeze: !isProduction,
       interop: false,
-      name: globalName,
       sourcemap: false
     }
   );
@@ -319,7 +313,7 @@ async function createBundle(bundle, bundleType) {
     return;
   }
 
-  const filename = getFilename(bundle.entry, bundle.global, bundleType);
+  const filename = getFilename(bundle.entry, bundleType);
   const logKey = chalk.white.bold(filename) + chalk.dim(` (${bundleType.toLowerCase()})`);
   const format = getFormat(bundleType);
   const packageName = Packaging.getPackageName(bundle.entry);
@@ -352,13 +346,12 @@ async function createBundle(bundle, bundleType) {
       filename,
       packageName,
       bundleType,
-      bundle.global,
       bundle.moduleType,
       bundle.modulesToStub
     )
   };
   const [mainOutputPath, ...otherOutputPaths] = Packaging.getBundleOutputPaths(bundleType, filename, packageName);
-  const rollupOutputOptions = getRollupOutputOptions(mainOutputPath, format, peerGlobals, bundle.global, bundleType);
+  const rollupOutputOptions = getRollupOutputOptions(mainOutputPath, format, peerGlobals, bundleType);
 
   console.log(`${chalk.bgYellow.black(' BUILDING ')} ${logKey}`);
   try {
@@ -388,8 +381,7 @@ async function buildEverything() {
   for (const bundle of Bundles.bundles) {
     await createBundle(bundle, UMD_DEV);
     await createBundle(bundle, UMD_PROD);
-    await createBundle(bundle, NODE_ES_DEV);
-    await createBundle(bundle, NODE_ES_PROD);
+    await createBundle(bundle, NODE_ES);
     await createBundle(bundle, NODE_DEV);
     await createBundle(bundle, NODE_PROD);
     createDeclarationFiles(bundle);

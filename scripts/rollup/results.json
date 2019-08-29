@@ -2,52 +2,24 @@
   "bundleSizes": [
     {
       "filename": "charts.development.js",
-      "bundleType": "NODE_ES_DEV",
-      "packageName": "charts",
-      "size": 39752,
-      "gzip": 7671
-    },
-    {
-      "filename": "charts.production.min.js",
-      "bundleType": "NODE_ES_PROD",
-      "packageName": "charts",
-      "size": 39648,
-      "gzip": 7649
-    },
-    {
-      "filename": "charts.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "charts",
-      "size": 40513,
-      "gzip": 7711
+      "size": 20398,
+      "gzip": 6214
     },
     {
       "filename": "charts.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "charts",
-      "size": 20079,
-      "gzip": 6122
-    },
-    {
-      "filename": "base.development.js",
-      "bundleType": "NODE_ES_DEV",
-      "packageName": "base",
-      "size": 131842,
-      "gzip": 23349
-    },
-    {
-      "filename": "base.production.min.js",
-      "bundleType": "NODE_ES_PROD",
-      "packageName": "base",
-      "size": 131665,
-      "gzip": 23244
+      "size": 20398,
+      "gzip": 6214
     },
     {
       "filename": "base.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "base",
-      "size": 132463,
-      "gzip": 23410
+      "size": 64127,
+      "gzip": 15689
     },
     {
       "filename": "base.production.min.js",
@@ -58,31 +30,38 @@
     },
     {
       "filename": "main.development.js",
-      "bundleType": "NODE_ES_DEV",
-      "packageName": "main",
-      "size": 184672,
-      "gzip": 34502
-    },
-    {
-      "filename": "main.production.min.js",
-      "bundleType": "NODE_ES_PROD",
-      "packageName": "main",
-      "size": 184672,
-      "gzip": 34502
-    },
-    {
-      "filename": "main.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "main",
-      "size": 190406,
-      "gzip": 34658
+      "size": 113615,
+      "gzip": 29945
     },
     {
       "filename": "main.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "main",
-      "size": 97719,
-      "gzip": 26216
+      "size": 113615,
+      "gzip": 29945
+    },
+    {
+      "filename": "main.js",
+      "bundleType": "NODE_ES",
+      "packageName": "main",
+      "size": 225011,
+      "gzip": 40218
+    },
+    {
+      "filename": "base.js",
+      "bundleType": "NODE_ES",
+      "packageName": "base",
+      "size": 131665,
+      "gzip": 23244
+    },
+    {
+      "filename": "charts.js",
+      "bundleType": "NODE_ES",
+      "packageName": "charts",
+      "size": 40735,
+      "gzip": 7766
     }
   ]
 }
