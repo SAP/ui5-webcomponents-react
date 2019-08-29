@@ -1,5 +1,5 @@
 import React from 'react';
-import { List } from '../../lib/List';
+import { List } from '@ui5/webcomponents-react/lib/List';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('List', () => {

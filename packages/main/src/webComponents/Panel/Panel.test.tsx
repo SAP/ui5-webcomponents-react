@@ -1,5 +1,5 @@
 import React from 'react';
-import { Panel } from '../../lib/Panel';
+import { Panel } from '@ui5/webcomponents-react/lib/Panel';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Panel', () => {

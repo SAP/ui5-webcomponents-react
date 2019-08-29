@@ -1,5 +1,5 @@
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ContentDensity } from '../../lib/ContentDensity';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 
 /**
  * Style Class Generator Function

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Timeline } from '../../lib/Timeline';
+import { Timeline } from '@ui5/webcomponents-react/lib/Timeline';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Timeline', () => {

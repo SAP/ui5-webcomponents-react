@@ -1,7 +1,7 @@
 import React, { FC, ReactElement, useCallback, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { Button } from '../../lib/Button';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 
 interface Props {
   title?: string;

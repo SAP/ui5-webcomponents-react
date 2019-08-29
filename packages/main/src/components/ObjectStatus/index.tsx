@@ -2,8 +2,8 @@ import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
 import React, { FC, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Icon } from '../../lib/Icon';
-import { ValueState } from '../../lib/ValueState';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import styles from './ObjectStatus.jss';
 
 export interface ObjectStatusPropTypes extends CommonProps {

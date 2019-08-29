@@ -1,7 +1,8 @@
 import React, { FC, ReactNode } from 'react';
 import { Event } from '@ui5/webcomponents-react-base';
 import UI5Card from '@ui5/webcomponents/dist/Card';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface CardPropTypes extends WithWebComponentPropTypes {
   heading?: string; // @generated

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RadioButton } from '../../lib/RadioButton';
+import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('RadioButton', () => {

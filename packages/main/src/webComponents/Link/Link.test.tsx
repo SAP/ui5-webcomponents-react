@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '../../lib/Link';
+import { Link } from '@ui5/webcomponents-react/lib/Link';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Link', () => {

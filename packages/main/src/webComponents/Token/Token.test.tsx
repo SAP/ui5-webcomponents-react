@@ -1,5 +1,5 @@
 import React from 'react';
-import { Token } from '../../lib/Token';
+import { Token } from '@ui5/webcomponents-react/lib/Token';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Token', () => {

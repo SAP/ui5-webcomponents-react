@@ -1,7 +1,7 @@
 import { boolean, select } from '@storybook/addon-knobs';
 import React from 'react';
-import { Title } from '../../lib/Title';
-import { TitleLevel } from '../../lib/TitleLevel';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 
 export default {
   title: 'UI5 Web Components | Title',

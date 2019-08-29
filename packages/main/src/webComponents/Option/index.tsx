@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import UI5Option from '@ui5/webcomponents/dist/Option';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface OptionPropTypes extends WithWebComponentPropTypes {
   selected?: boolean; // @generated

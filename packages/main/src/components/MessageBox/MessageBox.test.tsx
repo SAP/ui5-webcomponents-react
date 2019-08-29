@@ -1,9 +1,9 @@
 import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import { spy } from 'sinon';
-import { MessageBox } from '../../lib/MessageBox';
-import { MessageBoxActions } from '../../lib/MessageBoxActions';
-import { MessageBoxTypes } from '../../lib/MessageBoxTypes';
+import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
+import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
+import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 
 describe('MessageBox', () => {
   test('Confirm - OK', () => {

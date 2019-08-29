@@ -1,6 +1,6 @@
 import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ValueState } from '../../lib/ValueState';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 const styles = ({ parameters }: JSSTheme) => {
   return {

@@ -1,6 +1,6 @@
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import React from 'react';
-import { Bar } from '../../lib/Bar';
+import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 
 const createRenderLabel = (text) => () => {
   return <p>{text}</p>;

@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
-import { Token } from '../../lib/Token';
+import { Token } from '@ui5/webcomponents-react/lib/Token';
 import { Tokenizer } from './index';
 
 export default {

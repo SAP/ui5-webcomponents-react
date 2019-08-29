@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const dedent = require('dedent');
-const prettier = require("prettier");
+const prettier = require('prettier');
 const PATHS = require('../../../../../config/paths');
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
@@ -121,20 +121,22 @@ function createDemoForComponent(dto) {
   const getStorybookImports = () => {
     let storybookImportStatements = '';
     if (Object.keys(storyBookImports).length > 0) {
-      storybookImportStatements += `import { ${Object.keys(storyBookImports).join(', ')} } from '@storybook/addon-knobs'`
+      storybookImportStatements += `import { ${Object.keys(storyBookImports).join(
+        ', '
+      )} } from '@storybook/addon-knobs'`;
     }
     if (importStorybookActions) {
       if (storybookImportStatements.length > 0) storybookImportStatements += '\n';
-      storybookImportStatements += "import { action } from '@storybook/addon-actions';"
+      storybookImportStatements += "import { action } from '@storybook/addon-actions';";
     }
     return storybookImportStatements;
-  }
+  };
 
   const tsxContent = dedent`
   import React from 'react';
   ${Object.keys(imports).join('\n')}
   ${getStorybookImports()}
-  import { ${componentName} } from '../../lib/${componentName}';
+  import { ${componentName} } from '@ui5/webcomponents-react/lib/${componentName}';
 
   export default {
     title: 'UI5 Web Components | ${componentName}',
@@ -144,8 +146,8 @@ function createDemoForComponent(dto) {
   export const generatedDefaultStory = () => (
     <${componentName}${hasProps ? '' : hasChildren ? ' />' : '>'}
     ${Object.entries(props)
-    .map(([key, string]) => (key === 'children' ? '' : string))
-    .join('')}
+      .map(([key, string]) => (key === 'children' ? '' : string))
+      .join('')}
     ${hasProps ? (hasChildren ? '\t>' : '\t/>') : ''}
     ${hasChildren ? `\t\t${props.children}` : ''}
     ${hasChildren ? `\t</${componentName}>` : ''}

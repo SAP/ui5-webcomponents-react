@@ -6,8 +6,8 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { Icon } from '../../lib/Icon';
-import { ValueState } from '../../lib/ValueState';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import styles from './MessageToast.jss';
 
 const coloredStyles = ({ parameters }: JSSTheme) => ({

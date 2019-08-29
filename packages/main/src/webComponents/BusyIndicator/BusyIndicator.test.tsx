@@ -1,7 +1,7 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import { BusyIndicatorType } from '../..';
-import { BusyIndicator } from '../../lib/BusyIndicator';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 
 describe('BusyIndicator', () => {
   test('Basic Test', () => {

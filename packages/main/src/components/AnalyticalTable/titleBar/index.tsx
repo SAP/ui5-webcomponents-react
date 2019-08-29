@@ -1,6 +1,6 @@
 import { withStyles } from '@ui5/webcomponents-react-base';
 import React, { FC, isValidElement, ReactNode, ReactText } from 'react';
-import { Title } from '../../../lib/Title';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
 
 const styles = {
   bar: {

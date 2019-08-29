@@ -2,12 +2,12 @@ import { Event, fonts } from '@ui5/webcomponents-react-base';
 import React, { FC, useCallback, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { Icon } from '../../lib/Icon';
-import { List } from '../../lib/List';
-import { ObjectPageMode } from '../../lib/ObjectPageMode';
-import { PlacementType } from '../../lib/PlacementType';
-import { Popover } from '../../lib/Popover';
-import { StandardListItem } from '../../lib/StandardListItem';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { List } from '@ui5/webcomponents-react/lib/List';
+import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { ObjectPageLink } from './scroll/ObjectPageLink';
 
 interface ObjectPageAnchorPropTypes {

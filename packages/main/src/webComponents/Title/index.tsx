@@ -1,7 +1,8 @@
 import UI5Title from '@ui5/webcomponents/dist/Title';
 import React, { FC } from 'react';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { TitleLevel } from '../../lib/TitleLevel';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 
 export interface TitlePropTypes extends WithWebComponentPropTypes {
   wrap?: boolean; // @generated

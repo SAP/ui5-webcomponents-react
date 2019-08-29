@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import React from 'react';
-import { CheckBox } from '../../lib/CheckBox';
-import { ValueState } from '../../lib/ValueState';
+import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 export default {
   title: 'UI5 Web Components | CheckBox',

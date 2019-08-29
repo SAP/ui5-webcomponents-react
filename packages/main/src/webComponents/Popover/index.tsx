@@ -1,10 +1,11 @@
 import { Event, useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import UI5Popover from '@ui5/webcomponents/dist/Popover';
 import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useRef } from 'react';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { PlacementType } from '../../lib/PlacementType';
-import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
-import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
+import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {

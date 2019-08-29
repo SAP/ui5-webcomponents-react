@@ -5,9 +5,9 @@ import { createGenerateClassName, sap_fiori_3, Device } from '@ui5/webcomponents
 import fiori3Theme from '@ui5/webcomponents/dist/generated/themes/sap_fiori_3/parameters-bundle.css.js';
 import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
 import { JssProvider, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
-import { ContentDensity } from '../../lib/ContentDensity';
-import { MessageToast } from '../../lib/MessageToast';
-import { Themes } from '../../lib/Themes';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
+import { Themes } from '@ui5/webcomponents-react/lib/Themes';
 import { Jss } from 'jss';
 
 export interface ThemeProviderProps {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShellBar } from '../../lib/ShellBar';
+import { ShellBar } from '@ui5/webcomponents-react/lib/ShellBar';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('ShellBar', () => {

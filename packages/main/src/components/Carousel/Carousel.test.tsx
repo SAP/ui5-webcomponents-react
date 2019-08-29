@@ -1,10 +1,10 @@
 import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
 import React, { cloneElement } from 'react';
 import * as sinon from 'sinon';
-import { Carousel } from '../../lib/Carousel';
-import { CarouselArrowsPlacement } from '../../lib/CarouselArrowsPlacement';
-import { Icon } from '../../lib/Icon';
-import { PlacementType } from '../../lib/PlacementType';
+import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
+import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 
 const renderCarousel = (props) => {
   return (

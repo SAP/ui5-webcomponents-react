@@ -1,6 +1,6 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
-import { Card } from '../../lib/Card';
+import { Card } from '@ui5/webcomponents-react/lib/Card';
 
 describe('Card', () => {
   test('Basic Test (generated)', () => {

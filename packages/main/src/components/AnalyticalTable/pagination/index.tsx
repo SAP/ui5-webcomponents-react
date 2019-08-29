@@ -2,10 +2,10 @@ import { withStyles } from '@ui5/webcomponents-react-base';
 import React, { Component, FC, Fragment } from 'react';
 import { ClassProps } from '../../../interfaces/ClassProps';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { ContentDensity } from '../../../lib/ContentDensity';
-import { Label } from '../../../lib/Label';
-import { Link } from '../../../lib/Link';
-import { LinkDesign } from '../../../lib/LinkDesign';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Link } from '@ui5/webcomponents-react/lib/Link';
+import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 
 enum NavigationModes {
   rightArrowPress,

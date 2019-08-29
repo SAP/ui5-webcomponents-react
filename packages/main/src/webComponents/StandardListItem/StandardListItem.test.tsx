@@ -1,5 +1,5 @@
 import React from 'react';
-import { StandardListItem } from '../../lib/StandardListItem';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('StandardListItem', () => {

@@ -2,11 +2,11 @@ import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-ba
 import React, { isValidElement, PureComponent, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Icon } from '../../lib/Icon';
-import { MessageBoxButton } from '../../lib/MessageBoxButton';
-import { Text } from '../../lib/Text';
-import { Title } from '../../lib/Title';
-import { TitleLevel } from '../../lib/TitleLevel';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { MessageBoxButton } from '@ui5/webcomponents-react/lib/MessageBoxButton';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import styles from './MessageBox.jss';
 
 export enum MessageBoxActions {
