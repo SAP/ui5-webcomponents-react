@@ -23,15 +23,14 @@ const columns = [
   {
     Header: () => <span>Friend Age</span>, // Custom header components!
     accessor: 'friend.age',
-    filter: (filter, row) => {
-      debugger;
-      if (filter.value === 'all') {
-        return true;
+    filter: (rows, accessor, filterValue) => {
+      if (filterValue === 'all') {
+        return rows;
       }
-      if (filter.value === 'true') {
-        return row[filter.id] >= 21;
+      if (filterValue === 'true') {
+        return rows.filter((row) => row.values[accessor] >= 21);
       }
-      return row[filter.id] < 21;
+      return rows.filter((row) => row.values[accessor] < 21);
     },
     Filter: ({ column }) => {
       return (
