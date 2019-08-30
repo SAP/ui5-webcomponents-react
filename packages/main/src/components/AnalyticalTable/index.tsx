@@ -99,9 +99,13 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
       className: classes.th
     }));
 
-    instance.getRowProps.push(() => {
+    instance.getRowProps.push((row) => {
+      let className = classes.tr;
+      if (row.isAggregated) {
+        className += ` ${classes.tableGroupHeader}`;
+      }
       return {
-        className: classes.tr
+        className
       };
     });
     instance.getCellProps.push(({ column }) => {
@@ -196,8 +200,13 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
                         {cell.isGrouped ? (
                           <>
                             <span {...row.getExpandedToggleProps()}>
-                              <Icon src={`sap-icon://${row.isExpanded ? 'slim-arrow-down' : 'slim-arrow-right'}`} />
-                            </span>{' '}
+                              <Icon
+                                src={`sap-icon://${
+                                  row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'
+                                }`}
+                                className={classes.tableGroupExpandCollapseIcon}
+                              />
+                            </span>
                             {cell.render('Cell')} ({row.subRows.length})
                           </>
                         ) : cell.isAggregated ? (
@@ -249,10 +258,7 @@ AnalyticalTable.defaultProps = {
 //     return (
 
 //         <ReactTable
-//           loading={loading}
 //           minRows={minRows}
-//           defaultPageSize={defaultPageSize}
-//           LoadingComponent={LoadingComponent}
 //           ResizerComponent={Resizer}
 //         />
 //     );

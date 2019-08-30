@@ -24,11 +24,26 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
 
   tableHeaderRow: {},
 
+  tableGroupHeader: {
+    '&$tr': {
+      backgroundColor: `${parameters.sapUiListTableGroupHeaderBackground} !important`,
+      border: `1px solid ${parameters.sapUiListTableGroupHeaderBorderColor}`,
+      color: parameters.sapUiListTextColor
+    }
+  },
+
+  tableGroupExpandCollapseIcon: {
+    color: parameters.sapUiContentIconColor,
+    height: '2rem',
+    width: '2rem',
+    fontSize: '0.75rem'
+  },
+
   tbody: {
     position: 'relative',
     '& $tr': {
-      background: parameters.sapUiListBackground,
-      borderBottom: `1px solid ${parameters.sapUiListVerticalBorderColor} !important`,
+      backgroundColor: parameters.sapUiListBackground,
+      borderBottom: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
       '&:hover': {
         backgroundColor: parameters.sapUiListHoverBackground
       },
