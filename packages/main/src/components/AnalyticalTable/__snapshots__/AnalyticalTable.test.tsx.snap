@@ -23,13 +23,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         class="-tableHeaderRow-"
       >
         <th
+          class="-th-"
           style="position: sticky; top: 0px;"
         >
           <div
             style="width: 100%; font-weight: normal; cursor: pointer; display: inline-block;"
           >
             <div
-              class="-header- -th-"
+              class="-header-"
             >
               Name
               <div
@@ -76,13 +77,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </ui5-popover>
         </th>
         <th
+          class="-th-"
           style="position: sticky; top: 0px;"
         >
           <div
             style="width: 100%; font-weight: normal; cursor: pointer; display: inline-block;"
           >
             <div
-              class="-header- -th-"
+              class="-header-"
             >
               Age
               <div
@@ -129,13 +131,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </ui5-popover>
         </th>
         <th
+          class="-th-"
           style="position: sticky; top: 0px;"
         >
           <div
             style="width: 100%; font-weight: normal; cursor: pointer; display: inline-block;"
           >
             <div
-              class="-header- -th-"
+              class="-header-"
             >
               Friend Name
               <div
@@ -182,13 +185,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </ui5-popover>
         </th>
         <th
+          class="-th-"
           style="position: sticky; top: 0px;"
         >
           <div
             style="width: 100%; font-weight: normal; cursor: pointer; display: inline-block;"
           >
             <div
-              class="-header- -th-"
+              class="-header-"
             >
               <span>
                 Friend Age
