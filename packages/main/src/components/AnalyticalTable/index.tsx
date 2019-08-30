@@ -231,9 +231,7 @@ AnalyticalTable.defaultProps = {
   columns: [],
   title: null,
   cellHeight: null,
-  defaultPageSize: 10,
   minRows: 10,
-  numItems: null,
   pivotBy: []
 };
 
