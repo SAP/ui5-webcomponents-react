@@ -22,7 +22,6 @@ export interface ColumnHeaderProps {
 
 const styles = ({ parameters }: JSSTheme) => ({
   header: {
-    borderRight: `1px solid ${parameters.sapUiListBorderColor} !important`,
     padding: `0 0.5rem`,
     height: '100%',
     display: 'flex',
@@ -60,7 +59,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     const isFiltered = column.filterValue && column.filterValue.length > 0;
     const desc = column.isSortedDesc;
 
-    const classNames = StyleClassHelper.of(classes.header, className);
+    const classNames = StyleClassHelper.of(classes.header);
 
     const sortingIcon = column.isSorted ? <Icon src={desc ? 'sort-descending' : 'sort-ascending'} /> : null;
     const filterIcon = isFiltered ? <Icon src="sap-icon://filter" /> : null;
@@ -76,7 +75,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
         </div>
       </div>
     );
-  }, [classes, column.filterValue, column.isSorted, column.isGrouped, column.isSortedDesc, children, className]);
+  }, [classes, column.filterValue, column.isSorted, column.isGrouped, column.isSortedDesc, children]);
 
   style.width = '100%';
   style.fontWeight = 'normal';
@@ -85,7 +84,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   if (!column) return null;
 
   return (
-    <th style={{ position: 'sticky', top: 0 }}>
+    <th style={{ position: 'sticky', top: 0 }} className={className}>
       {groupable || sortable || filterable ? (
         <ColumnHeaderModal
           openBy={openBy}

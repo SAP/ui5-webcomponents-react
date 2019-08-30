@@ -15,11 +15,15 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
     fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
     color: parameters.sapUiListHeaderTextColor,
+    borderTop: `1px solid ${parameters.sapUiListBorderColor}`,
     borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
     borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
     textAlign: 'start',
-    width: '100%',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+
+    '&:first-child': {
+      borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
+    }
   },
 
   tableHeaderRow: {},
@@ -28,7 +32,10 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
     '&$tr': {
       backgroundColor: `${parameters.sapUiListTableGroupHeaderBackground} !important`,
       border: `1px solid ${parameters.sapUiListTableGroupHeaderBorderColor}`,
-      color: parameters.sapUiListTextColor
+      color: parameters.sapUiListTextColor,
+      '& $td': {
+        borderRight: 'none'
+      }
     }
   },
 
@@ -43,7 +50,6 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
     position: 'relative',
     '& $tr': {
       backgroundColor: parameters.sapUiListBackground,
-      borderBottom: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
       '&:hover': {
         backgroundColor: parameters.sapUiListHoverBackground
       },
@@ -65,7 +71,10 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
     borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
     borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
     display: 'table-cell',
-    padding: '0 0.5rem'
+    padding: '0 0.5rem',
+    '&:first-child': {
+      borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
+    }
   },
   tBody: {
     boxShadow: 'none !important'

@@ -1,11 +1,11 @@
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
+import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import React, { CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useExpanded, useFilters, useGroupBy, useSortBy, useTable } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
-import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './columnHeader';
 import { DefaultFilterComponent } from './columnHeader/DefaultFilterComponent';
@@ -207,7 +207,9 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
                                 className={classes.tableGroupExpandCollapseIcon}
                               />
                             </span>
-                            {cell.render('Cell')} ({row.subRows.length})
+                            <span>
+                              {cell.render('Cell')} ({row.subRows.length})
+                            </span>
                           </>
                         ) : cell.isAggregated ? (
                           // If the cell is aggregated, use the Aggregated
