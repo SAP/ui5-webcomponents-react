@@ -1,9 +1,9 @@
 import { boolean, number } from '@storybook/addon-knobs';
 import React from 'react';
-import { AnalyticalTable } from '../../../lib/AnalyticalTable';
-import { TextAlign } from '../../../lib/TextAlign';
-import { Title } from '../../../lib/Title';
-import { Button } from '../../../webComponents/Button';
+import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 import generateData from './generateData';
 
 const columns = [

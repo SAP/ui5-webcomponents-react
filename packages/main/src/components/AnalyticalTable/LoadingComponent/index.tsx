@@ -1,6 +1,6 @@
 import React from 'react';
-import { BusyIndicator } from '../../../lib/BusyIndicator';
-import { BusyIndicatorType } from '../../../lib/BusyIndicatorType';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
+import { BusyIndicatorType } from '@ui5/webcomponents-react/lib/BusyIndicatorType';
 
 const LoadingComponent = () => {
   return (

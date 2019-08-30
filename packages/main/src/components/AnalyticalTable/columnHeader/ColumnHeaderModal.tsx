@@ -1,15 +1,15 @@
 import React, { CSSProperties, FC, ReactNode, RefObject, useCallback, useRef } from 'react';
 import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
-import { CustomListItem } from '../../../lib/CustomListItem';
-import { FlexBox } from '../../../lib/FlexBox';
-import { FlexBoxAlignItems } from '../../../lib/FlexBoxAlignItems';
-import { Icon } from '../../../lib/Icon';
-import { List } from '../../../lib/List';
-import { ListItemTypes } from '../../../lib/ListItemTypes';
-import { PlacementType } from '../../../lib/PlacementType';
-import { Popover } from '../../../lib/Popover';
-import { PopoverHorizontalAlign } from '../../../lib/PopoverHorizontalAlign';
-import { StandardListItem } from '../../../lib/StandardListItem';
+import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { List } from '@ui5/webcomponents-react/lib/List';
+import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { ColumnType } from '../types/ColumnType';
 
 export interface ColumnHeaderModalProperties {
