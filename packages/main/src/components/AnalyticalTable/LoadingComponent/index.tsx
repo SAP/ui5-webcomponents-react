@@ -1,16 +1,26 @@
-import { BusyIndicatorType } from '../../../lib/BusyIndicatorType';
-import { BusyIndicator } from '../../../lib/BusyIndicator';
 import React from 'react';
+import { BusyIndicator } from '../../../lib/BusyIndicator';
+import { BusyIndicatorType } from '../../../lib/BusyIndicatorType';
 
-const LoadingComponent = (props) => {
-  if (!props.loading) {
-    return null;
-  }
-  let className = '-loading -active';
+const LoadingComponent = () => {
   return (
-    <div className={className} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <BusyIndicator size={BusyIndicatorType.Medium} active style={{ backgroundColor: 'transparent' }} />
-    </div>
+    <tr>
+      <td
+        style={{
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          right: '0',
+          bottom: '0',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: 'rgba(247,247,247,0.72)' // TODO is there a theming parameter available?
+        }}
+      >
+        <BusyIndicator size={BusyIndicatorType.Medium} active style={{ backgroundColor: 'transparent' }} />
+      </td>
+    </tr>
   );
 };
 

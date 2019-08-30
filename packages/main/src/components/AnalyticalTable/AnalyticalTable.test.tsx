@@ -42,9 +42,7 @@ const data = [
 
 describe('AnalyticalTable', () => {
   test('test Asc desc', () => {
-    const wrapper = mountThemedComponent(
-      <AnalyticalTable showPagination data={data} title={'Test'} columns={columns} />
-    );
+    const wrapper = mountThemedComponent(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
 
     // test asc function inside the popover element
     let component = wrapper
@@ -61,46 +59,6 @@ describe('AnalyticalTable', () => {
       .instance();
     // @ts-ignore
     component.onclick({});
-
-    expect(wrapper.render()).toMatchSnapshot();
-  });
-  test('pagination', () => {
-    const wrapper = mountThemedComponent(
-      <AnalyticalTable defaultPageSize={1} showPagination data={data} title={'Test'} columns={columns} />
-    );
-
-    // test the right arrow of the pagination
-
-    let component = wrapper
-      .find('ui5-link')
-      .at(3)
-      .instance();
-    // @ts-ignore
-    component.fireEvent('click');
-
-    // test the right page number link of the pagination
-    component = wrapper
-      .find('ui5-link')
-      .at(2)
-      .instance();
-    // @ts-ignore
-    component.fireEvent('click');
-
-    // test the left page number link of the pagination
-    component = wrapper
-      .find('ui5-link')
-      .at(1)
-      .instance();
-    // @ts-ignore
-    component.fireEvent('click');
-
-    // test the left arrow of the pagination
-    component = wrapper
-      .find('ui5-link')
-      .at(0)
-      .instance();
-    // @ts-ignore
-    component.fireEvent('click');
 
     expect(wrapper.render()).toMatchSnapshot();
   });

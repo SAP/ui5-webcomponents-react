@@ -5,41 +5,59 @@ import { ContentDensity } from '../../lib/ContentDensity';
 const styles = ({ parameters, contentDensity }: JSSTheme) => ({
   tHead: {
     boxShadow: 'none !important',
-    height: `${contentDensity === ContentDensity.Compact ? '2rem' : '3rem'}`,
-    borderBottom: `1px solid ${parameters.sapUiListVerticalBorderColor} !important`,
-    borderTop: `1px solid ${parameters.sapUiListVerticalBorderColor} !important`
+    height: `${contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem'}`
   },
 
-  tr: {
-    background: parameters.sapUiListBackground,
-    borderBottom: `1px solid ${parameters.sapUiListVerticalBorderColor} !important`,
-    '& >:first-child': {
-      paddingLeft: '1rem !important'
-    },
-    '& >:not(:first-child)': {
-      paddingLeft: '0.5rem'
+  th: {
+    backgroundColor: parameters.sapUiListHeaderBackground,
+    height: `${contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem'}`,
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
+    fontWeight: 'normal',
+    color: parameters.sapUiListHeaderTextColor,
+    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
+    borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
+    textAlign: 'start',
+    width: '100%',
+    boxSizing: 'border-box'
+  },
+
+  tableHeaderRow: {},
+
+  tbody: {
+    position: 'relative',
+    '& $tr': {
+      background: parameters.sapUiListBackground,
+      borderBottom: `1px solid ${parameters.sapUiListVerticalBorderColor} !important`,
+      '&:hover': {
+        backgroundColor: parameters.sapUiListHoverBackground
+      },
+      '&:active': {
+        backgroundColor: parameters.sapUiListActiveBackground,
+        color: parameters.sapUiListActiveTextColor
+      }
     }
   },
-  trGroup: {
-    border: 'none!important'
-  },
+
+  tr: {},
+
   td: {
-    // borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor} !important`,
-    height: `${contentDensity === ContentDensity.Compact ? '2rem' : '3rem'}`,
-    display: 'flex',
-    alignItems: 'center',
+    height: `${contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem'}`,
     fontFamily: fonts.sapUiFontFamily,
     fontSize: fonts.sapMFontMediumSize,
     fontWeight: 'normal',
-    // backgroundColor: parameters.sapUiListBackground,
     color: parameters.sapUiListTextColor,
-    paddingRight: '0.5rem !important'
+    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
+    borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
+    display: 'table-cell',
+    padding: '0 0.5rem'
   },
   tBody: {
     boxShadow: 'none !important'
   },
   table: {
-    // border: `1px solid ${parameters.sapList_BorderColor} !important`
+    borderSpacing: 0,
+    position: 'relative'
   }
 });
 
