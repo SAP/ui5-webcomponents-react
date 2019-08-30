@@ -1,8 +1,8 @@
 import { boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
-import { ButtonDesign } from '../../lib/ButtonDesign';
-import { ToggleButton } from '../../lib/ToggleButton';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 
 export default {
   title: 'UI5 Web Components | ToggleButton',

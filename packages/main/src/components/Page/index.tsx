@@ -3,12 +3,12 @@ import React, { forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo }
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { Bar } from '../../lib/Bar';
-import { Button } from '../../lib/Button';
-import { ButtonDesign } from '../../lib/ButtonDesign';
-import { PageBackgroundDesign } from '../../lib/PageBackgroundDesign';
-import { Title } from '../../lib/Title';
-import { TitleLevel } from '../../lib/TitleLevel';
+import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
 

@@ -1,6 +1,6 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
-import { VariantManagement } from '../../lib/VariantManagement';
+import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 
 const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
 

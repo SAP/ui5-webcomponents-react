@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import React from 'react';
-import { StandardListItem } from '../../lib/StandardListItem';
-import { ValueState } from '../../lib/ValueState';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { MultiComboBox } from './index';
 
 export default {

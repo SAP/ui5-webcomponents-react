@@ -3,8 +3,8 @@ import React, { CSSProperties, forwardRef, Ref, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { AvatarShape } from '../../lib/AvatarShape';
-import { AvatarSize } from '../../lib/AvatarSize';
+import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
+import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import styles from './Avatar.jss';
 
 export interface AvatarPropTypes extends CommonProps {

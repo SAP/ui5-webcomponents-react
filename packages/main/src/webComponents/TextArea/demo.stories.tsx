@@ -1,6 +1,6 @@
 import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
-import { TextArea } from '../../lib/TextArea';
+import { TextArea } from '@ui5/webcomponents-react/lib/TextArea';
 
 export default {
   title: 'UI5 Web Components | TextArea',

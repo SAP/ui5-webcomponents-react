@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tokenizer } from '../../lib/Tokenizer';
+import { Tokenizer } from '@ui5/webcomponents-react/lib/Tokenizer';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Tokenizer', () => {

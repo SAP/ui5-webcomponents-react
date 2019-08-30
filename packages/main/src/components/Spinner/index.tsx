@@ -2,7 +2,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, RefObject, FC } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Size } from '../../lib/Size';
+import { Size } from '@ui5/webcomponents-react/lib/Size';
 import { styles } from './Spinner.jss';
 
 export interface SpinnerProps extends CommonProps {

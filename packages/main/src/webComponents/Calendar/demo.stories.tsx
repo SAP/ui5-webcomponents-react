@@ -1,7 +1,7 @@
 import { select } from '@storybook/addon-knobs';
 import React from 'react';
-import { Calendar } from '../../lib/Calendar';
-import { CalendarType } from '../../lib/CalendarType';
+import { Calendar } from '@ui5/webcomponents-react/lib/Calendar';
+import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 
 const now = new Date().getTime();
 

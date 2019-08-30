@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
-import { Label } from '../../lib/Label';
-import { Tab } from '../../lib/Tab';
-import { TabContainer } from '../../lib/TabContainer';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Tab } from '@ui5/webcomponents-react/lib/Tab';
+import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 
 export default {
   title: 'UI5 Web Components | TabContainer',

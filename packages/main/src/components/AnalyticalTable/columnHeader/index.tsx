@@ -2,7 +2,7 @@ import { Event, fonts, StyleClassHelper } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { Icon } from '../../../lib/Icon';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
 

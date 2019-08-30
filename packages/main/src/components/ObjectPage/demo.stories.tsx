@@ -1,15 +1,15 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import React from 'react';
-import { Button } from '../../lib/Button';
-import { ButtonDesign } from '../../lib/ButtonDesign';
-import { Label } from '../../lib/Label';
-import { Link } from '../../lib/Link';
-import { ObjectPage } from '../../lib/ObjectPage';
-import { ObjectPageMode } from '../../lib/ObjectPageMode';
-import { ObjectPageSection } from '../../lib/ObjectPageSection';
-import { ObjectPageSubSection } from '../../lib/ObjectPageSubSection';
-import { Text } from '../../lib/Text';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Link } from '@ui5/webcomponents-react/lib/Link';
+import { ObjectPage } from '@ui5/webcomponents-react/lib/ObjectPage';
+import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
+import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';
+import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
 // @ts-ignore
 import SampleImage from './DemoImage.png';
 

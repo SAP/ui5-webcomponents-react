@@ -1,5 +1,5 @@
 import React from 'react';
-import { GroupHeaderListItem } from '../../lib/GroupHeaderListItem';
+import { GroupHeaderListItem } from '@ui5/webcomponents-react/lib/GroupHeaderListItem';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('GroupHeaderListItem', () => {

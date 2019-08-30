@@ -1,6 +1,6 @@
 import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
-import { Dialog } from '../../lib/Dialog';
+import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
 
 export default {
   title: 'UI5 Web Components | Dialog',

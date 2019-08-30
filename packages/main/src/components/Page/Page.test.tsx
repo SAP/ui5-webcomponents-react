@@ -1,8 +1,7 @@
 import { renderThemedComponent, ThemedComponent } from '@shared/tests/utils';
 import { shallow } from 'enzyme';
 import React from 'react';
-import { Page } from '../../lib/Page';
-
+import { Page } from '@ui5/webcomponents-react/lib/Page';
 
 const renderPage = (props = {}) =>
   ThemedComponent(

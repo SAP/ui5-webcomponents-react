@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '../../lib/Input';
+import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Input', () => {

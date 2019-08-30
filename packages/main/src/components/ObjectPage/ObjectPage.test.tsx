@@ -1,14 +1,14 @@
 import { getEventFromCallback, mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import * as sinon from 'sinon';
-import { Button } from '../../lib/Button';
-import { Label } from '../../lib/Label';
-import { Link } from '../../lib/Link';
-import { ObjectPage } from '../../lib/ObjectPage';
-import { ObjectPageMode } from '../../lib/ObjectPageMode';
-import { ObjectPageSection } from '../../lib/ObjectPageSection';
-import { ObjectPageSubSection } from '../../lib/ObjectPageSubSection';
-import { Text } from '../../lib/Text';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Link } from '@ui5/webcomponents-react/lib/Link';
+import { ObjectPage } from '@ui5/webcomponents-react/lib/ObjectPage';
+import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
+import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';
+import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
 
 const renderHeaderContent = () => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>

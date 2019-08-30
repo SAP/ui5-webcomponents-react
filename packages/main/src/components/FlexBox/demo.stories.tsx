@@ -1,12 +1,12 @@
 import { boolean, select, text } from '@storybook/addon-knobs/';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { FlexBox } from '../../lib/FlexBox';
-import { FlexBoxAlignItems } from '../../lib/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../lib/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '../../lib/FlexBoxJustifyContent';
-import { FlexBoxWrap } from '../../lib/FlexBoxWrap';
-import { Label } from '../../lib/Label';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
 
 export const defaultStory = () => (
   <FlexBox

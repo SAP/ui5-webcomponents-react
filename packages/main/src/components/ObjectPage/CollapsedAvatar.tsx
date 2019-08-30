@@ -1,8 +1,8 @@
 import React, { ReactNode, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Avatar } from '../../lib/Avatar';
-import { AvatarSize } from '../../lib/AvatarSize';
-import { AvatarShape } from '../../lib/AvatarShape';
+import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
+import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 
 const styles = {

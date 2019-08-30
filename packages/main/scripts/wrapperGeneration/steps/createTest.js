@@ -1,6 +1,6 @@
-const {readdirSync, statSync, writeFileSync, existsSync} = require('fs');
+const { readdirSync, statSync, writeFileSync, existsSync } = require('fs');
 const path = require('path');
-const prettier = require("prettier");
+const prettier = require('prettier');
 const PATHS = require('../../../../../config/paths');
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
@@ -14,7 +14,7 @@ const createTestForComponent = (dto) => {
   const jsxContent = `
 import { mountThemedComponent } from "@shared/tests/utils";
 import React from 'react';
-import { ${component} } from '../../lib/${component}';
+import { ${component} } from '@ui5/webcomponents-react/lib/${component}';
 
 describe('${component}', () => {
   test('Basic Test (generated)', () => {

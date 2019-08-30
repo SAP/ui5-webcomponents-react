@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableRow } from '../../lib/TableRow';
+import { TableRow } from '@ui5/webcomponents-react/lib/TableRow';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('TableRow', () => {

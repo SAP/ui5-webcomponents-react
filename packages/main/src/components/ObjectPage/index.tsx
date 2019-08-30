@@ -17,7 +17,7 @@ import React, {
 import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ObjectPageMode } from '../../lib/ObjectPageMode';
+import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { Button } from '../../webComponents/Button';
@@ -26,7 +26,7 @@ import { ObjectPageScroller } from './scroll/ObjectPageScroller';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
-import { ContentDensity } from '../../lib/ContentDensity';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;

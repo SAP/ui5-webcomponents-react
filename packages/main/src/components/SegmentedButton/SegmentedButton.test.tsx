@@ -2,8 +2,8 @@ import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils'
 import { mount } from 'enzyme';
 import React from 'react';
 import sinon from 'sinon';
-import { SegmentedButton } from '../../lib/SegmentedButton';
-import { SegmentedButtonItem } from '../../lib/SegmentedButtonItem';
+import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
+import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';
 
 describe('SegmentedButton', () => {
   test('Selection', () => {

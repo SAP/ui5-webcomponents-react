@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '../../lib/Icon';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { mountThemedComponent } from '@shared/tests/utils';
 
 describe('Icon', () => {
