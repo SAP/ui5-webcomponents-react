@@ -3,7 +3,7 @@ import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import React, { CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useExpanded, useFilters, useGroupBy, useSortBy, useTable } from 'react-table';
+import { useExpanded, useFilters, useGroupBy, useSortBy, useTable, useTableState } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
@@ -79,7 +79,8 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     title,
     renderExtension,
     cellHeight,
-    loading
+    loading,
+    pivotBy
   } = props;
 
   const classes = useStyles();
@@ -151,11 +152,16 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     return instance;
   };
 
+  const tableState = useTableState({
+    groupBy: groupable ? pivotBy : []
+  });
+
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
       columns,
       data,
-      defaultColumn
+      defaultColumn,
+      state: tableState
     },
     useFilters,
     useGroupBy,
