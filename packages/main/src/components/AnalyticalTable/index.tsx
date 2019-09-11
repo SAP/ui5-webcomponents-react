@@ -158,8 +158,8 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
       defaultColumn
     },
     useFilters,
-    useSortBy,
     useGroupBy,
+    useSortBy,
     useExpanded,
     myCustomHook
   );
@@ -245,24 +245,3 @@ AnalyticalTable.defaultProps = {
   minRows: 10,
   pivotBy: []
 };
-
-// export class AnalyticalTable2 extends Component<TablePropsInternal, TableState> {
-//
-//   render() {
-//     const {
-//       loading,
-//       showPagination,
-//       defaultPageSize,
-//       minRows,
-//       reactTableProps,
-//     } = this.props;
-//
-//     return (
-
-//         <ReactTable
-//           minRows={minRows}
-//           ResizerComponent={Resizer}
-//         />
-//     );
-//   }
-// }
