@@ -1,7 +1,7 @@
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
-import React, { CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref } from 'react';
+import React, { CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useExpanded, useFilters, useGroupBy, useSortBy, useTable, useTableState } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -80,77 +80,82 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     renderExtension,
     cellHeight,
     loading,
-    pivotBy
+    pivotBy,
+    minRows
   } = props;
 
   const classes = useStyles();
 
-  const myCustomHook = (instance) => {
-    instance.getTableProps.push(() => ({
-      className: classes.table,
-      style: {
-        width: '100%'
-      }
-    }));
+  const useTableStyling = useCallback(
+    (instance) => {
+      instance.getTableProps.push(() => ({
+        className: classes.table,
+        style: {
+          width: '100%'
+        }
+      }));
 
-    instance.getHeaderGroupProps.push(() => ({
-      className: classes.tableHeaderRow
-    }));
-    instance.getHeaderProps.push(() => ({
-      className: classes.th
-    }));
+      instance.getHeaderGroupProps.push(() => ({
+        className: classes.tableHeaderRow
+      }));
+      instance.getHeaderProps.push(() => ({
+        className: classes.th
+      }));
 
-    instance.getRowProps.push((row) => {
-      let className = classes.tr;
-      if (row.isAggregated) {
-        className += ` ${classes.tableGroupHeader}`;
-      }
-      return {
-        className
-      };
-    });
-    instance.getCellProps.push(({ column }) => {
-      const style: CSSProperties = {};
+      instance.getRowProps.push((row) => {
+        let className = classes.tr;
+        if (row.isAggregated) {
+          className += ` ${classes.tableGroupHeader}`;
+        }
+        return {
+          className
+        };
+      });
 
-      if (cellHeight) {
-        style.height = cellHeight;
-      }
-      switch (column.hAlign) {
-        case TextAlign.Begin:
-          style.textAlign = 'start';
-          break;
-        case TextAlign.Center:
-          style.textAlign = 'center';
-          break;
-        case TextAlign.End:
-          style.textAlign = 'end';
-          break;
-        case TextAlign.Left:
-          style.textAlign = 'left';
-          break;
-        case TextAlign.Right:
-          style.textAlign = 'right';
-          break;
-      }
-      switch (column.vAlign) {
-        case VerticalAlign.Bottom:
-          style.verticalAlign = 'bottom';
-          break;
-        case VerticalAlign.Middle:
-          style.verticalAlign = 'inherit';
-          break;
-        case VerticalAlign.Top:
-          style.verticalAlign = 'top';
-          break;
-      }
+      instance.getCellProps.push(({ column }) => {
+        const style: CSSProperties = {};
 
-      return {
-        className: classes.td,
-        style
-      };
-    });
-    return instance;
-  };
+        if (cellHeight) {
+          style.height = cellHeight;
+        }
+        switch (column.hAlign) {
+          case TextAlign.Begin:
+            style.textAlign = 'start';
+            break;
+          case TextAlign.Center:
+            style.textAlign = 'center';
+            break;
+          case TextAlign.End:
+            style.textAlign = 'end';
+            break;
+          case TextAlign.Left:
+            style.textAlign = 'left';
+            break;
+          case TextAlign.Right:
+            style.textAlign = 'right';
+            break;
+        }
+        switch (column.vAlign) {
+          case VerticalAlign.Bottom:
+            style.verticalAlign = 'bottom';
+            break;
+          case VerticalAlign.Middle:
+            style.verticalAlign = 'inherit';
+            break;
+          case VerticalAlign.Top:
+            style.verticalAlign = 'top';
+            break;
+        }
+
+        return {
+          className: classes.td,
+          style
+        };
+      });
+      return instance;
+    },
+    [classes]
+  );
 
   const tableState = useTableState({
     groupBy: groupable ? pivotBy : []
@@ -167,8 +172,24 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     useGroupBy,
     useSortBy,
     useExpanded,
-    myCustomHook
+    useTableStyling
   );
+
+  const minimumRows = useMemo(() => {
+    const missingRows = minRows - rows.length;
+
+    if (missingRows > 0) {
+      const intData = [];
+      for (let i = 0; i < missingRows; i++) {
+        intData.push({
+          key: `minRow-${i}`
+        });
+      }
+      return intData;
+    }
+
+    return [];
+  }, [rows]);
 
   // Render the UI for your table
   return (
@@ -231,6 +252,13 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
                 </tr>
               )
           )}
+          {minimumRows.map((minRow) => (
+            <tr key={minRow.key} className={classes.tr}>
+              {columns.map((col, index) => (
+                <td key={`${minRow.key}-${index}`} className={classes.td} />
+              ))}
+            </tr>
+          ))}
           {loading && <LoadingComponent />}
         </tbody>
       </table>
