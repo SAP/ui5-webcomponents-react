@@ -20,14 +20,11 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
     borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
     textAlign: 'start',
     boxSizing: 'border-box',
-
     '&:first-child': {
       borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
     }
   },
-
   tableHeaderRow: {},
-
   tableGroupHeader: {
     '&$tr': {
       backgroundColor: `${parameters.sapUiListTableGroupHeaderBackground} !important`,
@@ -79,9 +76,26 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
   tBody: {
     boxShadow: 'none !important'
   },
+  tableContainer: {
+    width: '100%',
+    height: `${contentDensity === ContentDensity.Compact ? 'calc(100% - 2rem)' : 'calc(100% - 2.75rem)'}`,
+    minHeight: '3rem'
+  },
   table: {
     borderSpacing: 0,
     position: 'relative'
+  },
+  noDataContainer: {
+    textAlign: 'center',
+    paddingTop: '0.5rem',
+    paddingBottom: '0.5rem',
+    backgroundColor: parameters.sapUiListBackground,
+    width: '100%',
+    boxSizing: 'border-box',
+    color: parameters.sapUiListTextColor,
+    fontFamily: fonts.sapUiFontFamily,
+    fontSize: fonts.sapMFontMediumSize,
+    fontWeight: 'normal'
   }
 });
 

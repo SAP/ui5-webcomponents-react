@@ -61,7 +61,7 @@ export const defaultStory = () => {
       filterable={boolean('filterable', true)}
       minRows={number('minRows', 10)}
       groupable={boolean('groupable', true)}
-      style={{ height: '300px' }}
+      style={{ height: '600px', overflowY: 'auto', paddingRight: '12px' }}
     />
   );
 };

@@ -11,13 +11,14 @@ import { ColumnHeader } from './columnHeader';
 import { DefaultFilterComponent } from './columnHeader/DefaultFilterComponent';
 import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './titleBar';
+import { DefaultNoDataComponent } from './DefaultNoDataComponent';
+import { ReactComponentLike } from 'prop-types';
 
 export interface ColumnConfiguration {
   accessor?: string;
   width?: number;
   hAlign?: TextAlign;
   vAlign?: VerticalAlign;
-
   [key: string]: any;
 }
 
@@ -54,6 +55,8 @@ export interface TableProps extends CommonProps {
   getHeaderProps?: () => any;
   getRowProps?: () => any;
   getCellProps?: () => any;
+  NoDataComponent?: ReactComponentLike;
+  noDataText?: string;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles);
@@ -81,7 +84,9 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     cellHeight,
     loading,
     pivotBy,
-    minRows
+    minRows,
+    NoDataComponent,
+    noDataText
   } = props;
 
   const classes = useStyles();
@@ -178,7 +183,7 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
   const minimumRows = useMemo(() => {
     const missingRows = minRows - rows.length;
 
-    if (missingRows > 0) {
+    if (missingRows > 0 && rows.length > 0) {
       const intData = [];
       for (let i = 0; i < missingRows; i++) {
         intData.push({
@@ -196,72 +201,77 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     <div className={className} style={style} title={tooltip} ref={ref}>
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
-      <table {...getTableProps()}>
-        <thead className={classes.tHead}>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => {
-                return (
-                  <ColumnHeader
-                    {...column.getHeaderProps()}
-                    column={column}
-                    groupable={groupable}
-                    sortable={sortable}
-                    filterable={filterable}
-                  >
-                    {column.render('Header')}
-                  </ColumnHeader>
-                );
-              })}
-            </tr>
-          ))}
-        </thead>
-        <tbody className={classes.tbody}>
-          {rows.map(
-            (row, i) =>
-              prepareRow(row) || (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>
-                        {cell.isGrouped ? (
-                          <>
-                            <span {...row.getExpandedToggleProps()}>
-                              <Icon
-                                src={`sap-icon://${
-                                  row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'
-                                }`}
-                                className={classes.tableGroupExpandCollapseIcon}
-                              />
-                            </span>
-                            <span>
-                              {cell.render('Cell')} ({row.subRows.length})
-                            </span>
-                          </>
-                        ) : cell.isAggregated ? (
-                          // If the cell is aggregated, use the Aggregated
-                          // renderer for cell
-                          cell.render('Aggregated')
-                        ) : cell.isRepeatedValue ? null : ( // For cells with repeated values, render null
-                          // Otherwise, just render the regular cell
-                          cell.render('Cell')
-                        )}
-                      </td>
-                    );
-                  })}
-                </tr>
-              )
-          )}
-          {minimumRows.map((minRow) => (
-            <tr key={minRow.key} className={classes.tr}>
-              {columns.map((col, index) => (
-                <td key={`${minRow.key}-${index}`} className={classes.td} />
-              ))}
-            </tr>
-          ))}
-          {loading && <LoadingComponent />}
-        </tbody>
-      </table>
+      <div className={classes.tableContainer}>
+        <table {...getTableProps()}>
+          <thead className={classes.tHead}>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => {
+                  return (
+                    <ColumnHeader
+                      {...column.getHeaderProps()}
+                      column={column}
+                      groupable={groupable}
+                      sortable={sortable}
+                      filterable={filterable}
+                    >
+                      {column.render('Header')}
+                    </ColumnHeader>
+                  );
+                })}
+              </tr>
+            ))}
+          </thead>
+          <tbody className={classes.tbody}>
+            {rows.map(
+              (row, i) =>
+                prepareRow(row) || (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => {
+                      return (
+                        <td {...cell.getCellProps()}>
+                          {cell.isGrouped ? (
+                            <>
+                              <span {...row.getExpandedToggleProps()}>
+                                <Icon
+                                  src={`sap-icon://${
+                                    row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'
+                                  }`}
+                                  className={classes.tableGroupExpandCollapseIcon}
+                                />
+                              </span>
+                              <span>
+                                {cell.render('Cell')} ({row.subRows.length})
+                              </span>
+                            </>
+                          ) : cell.isAggregated ? (
+                            // If the cell is aggregated, use the Aggregated
+                            // renderer for cell
+                            cell.render('Aggregated')
+                          ) : cell.isRepeatedValue ? null : ( // For cells with repeated values, render null
+                            // Otherwise, just render the regular cell
+                            cell.render('Cell')
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                )
+            )}
+            {minimumRows.map((minRow) => (
+              <tr key={minRow.key} className={classes.tr}>
+                {columns.map((col, index) => (
+                  <td key={`${minRow.key}-${index}`} className={classes.td} />
+                ))}
+              </tr>
+            ))}
+            {loading && <LoadingComponent />}
+          </tbody>
+        </table>
+        {!loading && rows.length === 0 && (
+          <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} />
+        )}
+      </div>
     </div>
   );
 });
@@ -277,5 +287,7 @@ AnalyticalTable.defaultProps = {
   title: null,
   cellHeight: null,
   minRows: 10,
-  pivotBy: []
+  pivotBy: [],
+  NoDataComponent: DefaultNoDataComponent,
+  noDataText: 'No Data'
 };
