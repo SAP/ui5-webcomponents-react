@@ -9,7 +9,7 @@ import { ColumnHeaderModal } from './ColumnHeaderModal';
 export interface ColumnHeaderProps {
   defaultSortDesc: boolean;
   onFilteredChange: (event: Event) => void;
-  onGroupBy: (strArr: String[]) => void;
+  onGroupBy: (strArr: string[]) => void;
   children: ReactNode | ReactNodeArray;
   grouping: string;
   className: string;
@@ -18,6 +18,7 @@ export interface ColumnHeaderProps {
   groupable: boolean;
   sortable: boolean;
   filterable: boolean;
+  sticky?: boolean;
 }
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -43,6 +44,10 @@ const styles = ({ parameters }: JSSTheme) => ({
     '& :last-child': {
       marginLeft: '0.25rem'
     }
+  },
+  sticky: {
+    position: 'sticky',
+    top: 0
   }
 });
 
@@ -51,7 +56,7 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
 export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   const classes = useStyles(props);
 
-  const { children, column, className, style, groupable, sortable, filterable } = props;
+  const { children, column, className, style, groupable, sortable, filterable, sticky } = props;
 
   const openBy = useMemo(() => {
     if (!column) return null;
@@ -84,8 +89,12 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
 
   if (!column) return null;
 
+  let thClasses = className;
+  if (sticky) {
+    thClasses = `${thClasses} ${classes.sticky}`;
+  }
   return (
-    <th style={{ position: 'sticky', top: 0 }} className={className}>
+    <th className={thClasses}>
       {groupable || sortable || filterable ? (
         <ColumnHeaderModal
           openBy={openBy}

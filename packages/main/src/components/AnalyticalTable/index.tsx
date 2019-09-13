@@ -13,7 +13,7 @@ import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './titleBar';
 import { DefaultNoDataComponent } from './DefaultNoDataComponent';
 import { ReactComponentLike } from 'prop-types';
-import { StyleClassHelper, Event } from '@ui5/webcomponents-react-base';
+import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -60,6 +60,7 @@ export interface TableProps extends CommonProps {
   onRowSelected?: (e?: Event) => any;
   NoDataComponent?: ReactComponentLike;
   noDataText?: string;
+  stickyHeader?: boolean;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles);
@@ -91,7 +92,8 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     NoDataComponent,
     noDataText,
     selectable,
-    onRowSelected
+    onRowSelected,
+    stickyHeader
   } = props;
 
   const [selectedRow, setSelectedRow] = useState(null);
@@ -236,6 +238,7 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
                       groupable={groupable}
                       sortable={sortable}
                       filterable={filterable}
+                      sticky={stickyHeader}
                     >
                       {column.render('Header')}
                     </ColumnHeader>
@@ -318,5 +321,6 @@ AnalyticalTable.defaultProps = {
   minRows: 10,
   pivotBy: [],
   NoDataComponent: DefaultNoDataComponent,
-  noDataText: 'No Data'
+  noDataText: 'No Data',
+  stickyHeader: true
 };

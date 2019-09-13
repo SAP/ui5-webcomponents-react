@@ -60,6 +60,7 @@ export const defaultStory = () => {
       loading={boolean('loading', false)}
       sortable={boolean('sortable', true)}
       filterable={boolean('filterable', true)}
+      stickyHeader={boolean('stickyHeader', true)}
       minRows={number('minRows', 10)}
       groupable={boolean('groupable', true)}
       selectable={boolean('selectable', true)}
