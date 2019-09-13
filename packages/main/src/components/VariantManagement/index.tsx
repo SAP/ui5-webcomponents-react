@@ -160,6 +160,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
         headerText={popupTitle}
         placementType={placement}
         openBy={variantManagementButton}
+        openByStyle={{ pointerEvents: disabled ? 'none' : 'auto' }}
         footer={footerButtons}
         className={className}
         innerStyles={style}
