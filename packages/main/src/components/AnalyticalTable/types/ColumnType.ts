@@ -1,7 +1,16 @@
+import { ComponentType } from 'react';
+
 export interface ColumnType {
-  filterable: boolean;
-  sortable: boolean;
   show: boolean;
   id: string;
-  Filter: JSX.Element;
+  Filter: ComponentType<{ column: ColumnType }>;
+  toggleSortBy: (descending: boolean, multi?: any) => void;
+  toggleGroupBy: (set: boolean) => void;
+  canFilter: boolean;
+  filterValue?: string;
+  canGroupBy: boolean;
+  isGrouped: boolean;
+  canSort: boolean;
+  isSorted: boolean;
+  isSortedDesc: boolean;
 }

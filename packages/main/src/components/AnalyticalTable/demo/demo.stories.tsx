@@ -1,8 +1,10 @@
 import { boolean, number } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 import generateData from './generateData';
 
 const columns = [
@@ -12,7 +14,8 @@ const columns = [
   },
   {
     Header: 'Age',
-    accessor: 'age'
+    accessor: 'age',
+    hAlign: TextAlign.End
   },
   {
     Header: 'Friend Name',
@@ -21,21 +24,21 @@ const columns = [
   {
     Header: () => <span>Friend Age</span>, // Custom header components!
     accessor: 'friend.age',
-    filterMethod: (filter, row) => {
-      if (filter.value === 'all') {
-        return true;
+    filter: (rows, accessor, filterValue) => {
+      if (filterValue === 'all') {
+        return rows;
       }
-      if (filter.value === 'true') {
-        return row[filter.id] >= 21;
+      if (filterValue === 'true') {
+        return rows.filter((row) => row.values[accessor] >= 21);
       }
-      return row[filter.id] < 21;
+      return rows.filter((row) => row.values[accessor] < 21);
     },
-    Filter: ({ filter, onChange }) => {
+    Filter: ({ column }) => {
       return (
         <select
-          onChange={(event) => onChange(event.target.value)}
+          onChange={(event) => column.setFilter(event.target.value)}
           style={{ width: '100%' }}
-          value={filter ? filter.value : 'all'}
+          value={column.filterValue ? column.filterValue : 'all'}
         >
           <option value="all">Show All</option>
           <option value="true">Can Drink</option>
@@ -46,7 +49,7 @@ const columns = [
   }
 ];
 
-const data = generateData(20);
+const data = generateData(200);
 
 export const defaultStory = () => {
   return (
@@ -54,14 +57,15 @@ export const defaultStory = () => {
       title="Table Title"
       data={data}
       columns={columns}
-      alternateRowColors={boolean('alternateRowColors', false)}
-      showPagination={boolean('showPagination', true)}
       loading={boolean('loading', false)}
       sortable={boolean('sortable', true)}
       filterable={boolean('filterable', true)}
-      defaultPageSize={number('defaultPageSize', 15)}
+      stickyHeader={boolean('stickyHeader', true)}
       minRows={number('minRows', 10)}
       groupable={boolean('groupable', true)}
+      selectable={boolean('selectable', true)}
+      style={{ height: '600px', overflowY: 'auto', paddingRight: '12px' }}
+      onRowSelected={action('onRowSelected')}
     />
   );
 };
@@ -78,12 +82,9 @@ export const withCroppedPopup = () => {
           title="Table Title"
           data={data}
           columns={columns}
-          alternateRowColors={boolean('alternateRowColors', false)}
-          showPagination={boolean('showPagination', true)}
           loading={boolean('loading', false)}
           sortable={boolean('sortable', true)}
           filterable={boolean('filterable', true)}
-          defaultPageSize={number('defaultPageSize', 15)}
           minRows={number('minRows', 10)}
           groupable={boolean('groupable', true)}
         />
@@ -100,14 +101,12 @@ export const tableWithExtension = () => {
     <AnalyticalTable
       data={data}
       columns={columns}
-      alternateRowColors={boolean('alternateRowColors', false)}
-      showPagination={boolean('showPagination', true)}
       loading={boolean('loading', false)}
       sortable={boolean('sortable', true)}
       filterable={boolean('filterable', true)}
-      defaultPageSize={number('defaultPageSize', 15)}
       minRows={number('minRows', 10)}
       groupable={boolean('groupable', true)}
+      renderExtension={() => <Button>Hello from the Table Extension!</Button>}
     />
   );
 };
@@ -121,12 +120,9 @@ export const tableWithCustomTitle = () => {
       title={<Title>Test 123</Title>}
       data={data}
       columns={columns}
-      alternateRowColors={boolean('alternateRowColors', false)}
-      showPagination={boolean('showPagination', true)}
       loading={boolean('loading', false)}
       sortable={boolean('sortable', true)}
       filterable={boolean('filterable', true)}
-      defaultPageSize={number('defaultPageSize', 15)}
       minRows={number('minRows', 10)}
       groupable={boolean('groupable', true)}
     />
