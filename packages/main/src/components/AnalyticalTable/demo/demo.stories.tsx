@@ -1,4 +1,5 @@
 import { boolean, number } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
@@ -61,7 +62,9 @@ export const defaultStory = () => {
       filterable={boolean('filterable', true)}
       minRows={number('minRows', 10)}
       groupable={boolean('groupable', true)}
+      selectable={boolean('selectable', true)}
       style={{ height: '600px', overflowY: 'auto', paddingRight: '12px' }}
+      onRowSelected={action('onRowSelected')}
     />
   );
 };

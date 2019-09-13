@@ -45,20 +45,32 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
 
   tbody: {
     position: 'relative',
-    '& $tr': {
-      backgroundColor: parameters.sapUiListBackground,
+    '&$selectable $tr': {
       '&:hover': {
         backgroundColor: parameters.sapUiListHoverBackground
       },
-      '&:active': {
+      '&:active:not($selectedRow)': {
         backgroundColor: parameters.sapUiListActiveBackground,
-        color: parameters.sapUiListActiveTextColor
+        '& $td': {
+          color: parameters.sapUiListActiveTextColor,
+          borderRight: `1px solid ${parameters.sapUiListActiveBackground}`
+        }
+      },
+      '&$selectedRow': {
+        backgroundColor: parameters.sapUiListSelectionBackgroundColor,
+        color: parameters.sapUiListActiveTextColor,
+        '&:hover': {
+          backgroundColor: parameters.sapUiListSelectionHoverBackground
+        }
       }
+    },
+    '& $tr': {
+      backgroundColor: parameters.sapUiListBackground
     }
   },
-
   tr: {},
-
+  selectable: {},
+  selectedRow: {},
   td: {
     height: `${contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem'}`,
     fontFamily: fonts.sapUiFontFamily,

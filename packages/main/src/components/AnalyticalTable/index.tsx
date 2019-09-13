@@ -1,7 +1,7 @@
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
-import React, { CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref, useCallback, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref, useCallback, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useExpanded, useFilters, useGroupBy, useSortBy, useTable, useTableState } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -13,6 +13,7 @@ import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './titleBar';
 import { DefaultNoDataComponent } from './DefaultNoDataComponent';
 import { ReactComponentLike } from 'prop-types';
+import { StyleClassHelper, Event } from '@ui5/webcomponents-react-base';
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -28,6 +29,7 @@ export interface TableProps extends CommonProps {
   filterable?: boolean;
   sortable?: boolean;
   groupable?: boolean;
+  selectable?: boolean;
   data: object[];
   /**
    * In addition to the standard 'react-table' column config you can pass the properties 'hAlign' and 'vAlign'.
@@ -55,6 +57,7 @@ export interface TableProps extends CommonProps {
   getHeaderProps?: () => any;
   getRowProps?: () => any;
   getCellProps?: () => any;
+  onRowSelected?: (e?: Event) => any;
   NoDataComponent?: ReactComponentLike;
   noDataText?: string;
 }
@@ -86,8 +89,12 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     pivotBy,
     minRows,
     NoDataComponent,
-    noDataText
+    noDataText,
+    selectable,
+    onRowSelected
   } = props;
+
+  const [selectedRow, setSelectedRow] = useState(null);
 
   const classes = useStyles();
 
@@ -196,6 +203,21 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     return [];
   }, [rows]);
 
+  const onRowClicked = useCallback(
+    (row) => (e) => {
+      setSelectedRow(row.getRowProps().key);
+      if (typeof onRowSelected === 'function') {
+        onRowSelected(Event.of(null, e, { row }));
+      }
+    },
+    []
+  );
+
+  const tableBodyClasses = StyleClassHelper.of(classes.tbody);
+  if (selectable) {
+    tableBodyClasses.put(classes.selectable);
+  }
+
   // Render the UI for your table
   return (
     <div className={className} style={style} title={tooltip} ref={ref}>
@@ -222,42 +244,48 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
               </tr>
             ))}
           </thead>
-          <tbody className={classes.tbody}>
-            {rows.map(
-              (row, i) =>
-                prepareRow(row) || (
-                  <tr {...row.getRowProps()}>
-                    {row.cells.map((cell) => {
-                      return (
-                        <td {...cell.getCellProps()}>
-                          {cell.isGrouped ? (
-                            <>
-                              <span {...row.getExpandedToggleProps()}>
-                                <Icon
-                                  src={`sap-icon://${
-                                    row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'
-                                  }`}
-                                  className={classes.tableGroupExpandCollapseIcon}
-                                />
-                              </span>
-                              <span>
-                                {cell.render('Cell')} ({row.subRows.length})
-                              </span>
-                            </>
-                          ) : cell.isAggregated ? (
-                            // If the cell is aggregated, use the Aggregated
-                            // renderer for cell
-                            cell.render('Aggregated')
-                          ) : cell.isRepeatedValue ? null : ( // For cells with repeated values, render null
-                            // Otherwise, just render the regular cell
-                            cell.render('Cell')
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                )
-            )}
+          <tbody className={tableBodyClasses.valueOf()}>
+            {rows.map((row) => {
+              prepareRow(row);
+              const rowProps = row.getRowProps();
+              const { className: rowClasses } = rowProps;
+              let finalRowClasses = rowClasses;
+              if (selectable && rowProps.key === selectedRow) {
+                finalRowClasses = `${finalRowClasses} ${classes.selectedRow}`;
+              }
+              return (
+                <tr {...rowProps} className={finalRowClasses} onClick={onRowClicked(row)}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <td {...cell.getCellProps()}>
+                        {cell.isGrouped ? (
+                          <>
+                            <span {...row.getExpandedToggleProps()}>
+                              <Icon
+                                src={`sap-icon://${
+                                  row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'
+                                }`}
+                                className={classes.tableGroupExpandCollapseIcon}
+                              />
+                            </span>
+                            <span>
+                              {cell.render('Cell')} ({row.subRows.length})
+                            </span>
+                          </>
+                        ) : cell.isAggregated ? (
+                          // If the cell is aggregated, use the Aggregated
+                          // renderer for cell
+                          cell.render('Aggregated')
+                        ) : cell.isRepeatedValue ? null : ( // For cells with repeated values, render null
+                          // Otherwise, just render the regular cell
+                          cell.render('Cell')
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
             {minimumRows.map((minRow) => (
               <tr key={minRow.key} className={classes.tr}>
                 {columns.map((col, index) => (
@@ -282,6 +310,7 @@ AnalyticalTable.defaultProps = {
   sortable: true,
   filterable: false,
   groupable: false,
+  selectable: false,
   data: [],
   columns: [],
   title: null,

@@ -80,6 +80,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   style.width = '100%';
   style.fontWeight = 'normal';
   style.cursor = 'pointer';
+  style.height = '100%';
 
   if (!column) return null;
 
