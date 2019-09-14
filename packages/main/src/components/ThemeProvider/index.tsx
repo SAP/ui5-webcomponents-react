@@ -42,14 +42,16 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
         const styleElement = document.head.querySelector('style[data-ui5-webcomponents-theme-properties]');
         // only inject parameters for sap_fiori_3 and if they haven't been injected before
         if (theme === Themes.sap_fiori_3 && !styleElement.textContent) {
-          injectThemeProperties(fiori3Theme);
-          const CSSVarsPonyfill = window['CSSVarsPonyfill'];
-          if (Device.browser.msie && CSSVarsPonyfill) {
-            setTimeout(() => {
-              CSSVarsPonyfill.resetCssVars();
-              CSSVarsPonyfill.cssVars();
-            }, 0);
-          }
+          requestAnimationFrame(() => {
+            injectThemeProperties(fiori3Theme);
+            const CSSVarsPonyfill = window['CSSVarsPonyfill'];
+            if (Device.browser.msie && CSSVarsPonyfill) {
+              setTimeout(() => {
+                CSSVarsPonyfill.resetCssVars();
+                CSSVarsPonyfill.cssVars();
+              }, 0);
+            }
+          });
         }
       });
     }
