@@ -39,9 +39,8 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
     if (!noInjectThemeProperties) {
       boot().then(() => {
         // only inject parameters for sap_fiori_3 and if they haven't been injected before
+        let styleElement = document.head.querySelector('style[data-ui5-webcomponents-react-theme-properties]');
         if (theme === Themes.sap_fiori_3) {
-          let styleElement = document.head.querySelector('style[data-ui5-webcomponents-react-theme-properties]');
-
           if (!styleElement) {
             styleElement = document.createElement('style');
             // @ts-ignore
@@ -56,6 +55,10 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
               CSSVarsPonyfill.resetCssVars();
               CSSVarsPonyfill.cssVars();
             }, 0);
+          }
+        } else {
+          if (styleElement) {
+            styleElement.textContent = '';
           }
         }
       });
