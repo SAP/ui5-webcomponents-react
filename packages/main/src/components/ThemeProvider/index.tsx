@@ -37,21 +37,33 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
 
   useEffect(() => {
     if (!noInjectThemeProperties) {
-      boot().then(async () => {
-        // TODO will rename to 'data-ui5-theme-properties' after next UI5 Web Components Release
-        const styleElement = document.head.querySelector('style[data-ui5-webcomponents-theme-properties]');
+      boot().then(() => {
         // only inject parameters for sap_fiori_3 and if they haven't been injected before
-        if (theme === Themes.sap_fiori_3 && !styleElement.textContent) {
-          requestAnimationFrame(() => {
-            injectThemeProperties(fiori3Theme);
-            const CSSVarsPonyfill = window['CSSVarsPonyfill'];
-            if (Device.browser.msie && CSSVarsPonyfill) {
-              setTimeout(() => {
-                CSSVarsPonyfill.resetCssVars();
-                CSSVarsPonyfill.cssVars();
-              }, 0);
-            }
-          });
+        let styleElement = document.head.querySelector('style[data-ui5-webcomponents-react-theme-properties]');
+        if (theme === Themes.sap_fiori_3) {
+          if (!styleElement) {
+            styleElement = document.createElement('style');
+            // @ts-ignore
+            styleElement.type = 'text/css';
+            styleElement.setAttribute('data-ui5-webcomponents-react-theme-properties', '');
+            document.head.appendChild(styleElement);
+          }
+
+          if (!styleElement.textContent) {
+            styleElement.textContent = fiori3Theme;
+          }
+
+          const CSSVarsPonyfill = window['CSSVarsPonyfill'];
+          if (Device.browser.msie && CSSVarsPonyfill) {
+            setTimeout(() => {
+              CSSVarsPonyfill.resetCssVars();
+              CSSVarsPonyfill.cssVars();
+            }, 0);
+          }
+        } else {
+          if (styleElement) {
+            styleElement.textContent = '';
+          }
         }
       });
     }
