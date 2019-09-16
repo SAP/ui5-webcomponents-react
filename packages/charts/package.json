@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-charts",
-  "version": "0.5.1-rc.10",
+  "version": "0.5.1-rc.11",
   "description": "Charts for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -20,8 +20,8 @@
     "@types/chart.js": "^2.7.56"
   },
   "dependencies": {
-    "@ui5/webcomponents-react": "0.5.1-rc.10",
-    "@ui5/webcomponents-react-base": "0.5.1-rc.10",
+    "@ui5/webcomponents-react": "0.5.1-rc.11",
+    "@ui5/webcomponents-react-base": "0.5.1-rc.11",
     "chart.js": "^2.8.0",
     "chartjs-plugin-datalabels": "^0.6.0",
     "get-best-contrast-color": "^0.3.1",
