@@ -46,9 +46,13 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
             // @ts-ignore
             styleElement.type = 'text/css';
             styleElement.setAttribute('data-ui5-webcomponents-react-theme-properties', '');
-            styleElement.textContent = fiori3Theme;
             document.head.appendChild(styleElement);
           }
+
+          if (!styleElement.textContent) {
+            styleElement.textContent = fiori3Theme;
+          }
+
           const CSSVarsPonyfill = window['CSSVarsPonyfill'];
           if (Device.browser.msie && CSSVarsPonyfill) {
             setTimeout(() => {
