@@ -1,6 +1,8 @@
+import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
+import { ReactComponentLike } from 'prop-types';
 import React, { CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref, useCallback, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useExpanded, useFilters, useGroupBy, useSortBy, useTable, useTableState } from 'react-table';
@@ -9,17 +11,18 @@ import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './columnHeader';
 import { DefaultFilterComponent } from './columnHeader/DefaultFilterComponent';
+import { DefaultNoDataComponent } from './DefaultNoDataComponent';
 import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './titleBar';
-import { DefaultNoDataComponent } from './DefaultNoDataComponent';
-import { ReactComponentLike } from 'prop-types';
-import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
 
 export interface ColumnConfiguration {
   accessor?: string;
   width?: number;
   hAlign?: TextAlign;
   vAlign?: VerticalAlign;
+  canResize?: boolean;
+  minWidth?: number;
+
   [key: string]: any;
 }
 
@@ -68,6 +71,8 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
 
 const defaultColumn = {
   Filter: DefaultFilterComponent,
+  canResize: true,
+  minWidth: 30,
   Aggregated: () => null,
   defaultFilter: (filter, row) => {
     return new RegExp(filter.value, 'gi').test(String(row[filter.id]));
@@ -179,6 +184,7 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
 
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
+      // @ts-ignore
       columns,
       data,
       defaultColumn,
@@ -233,7 +239,7 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
           <thead className={classes.tHead}>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => {
+                {headerGroup.headers.map((column, index) => {
                   return (
                     <ColumnHeader
                       {...column.getHeaderProps()}
@@ -242,6 +248,7 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
                       sortable={sortable}
                       filterable={filterable}
                       sticky={stickyHeader}
+                      isLastColumn={index === columns.length - 1}
                       onSort={onSort}
                     >
                       {column.render('Header')}
