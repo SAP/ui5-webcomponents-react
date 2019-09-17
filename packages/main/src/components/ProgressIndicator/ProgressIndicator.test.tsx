@@ -1,8 +1,8 @@
 import { mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React from 'react';
 
 const testFactory = () => {
   Object.values(ValueState).forEach((state) => {

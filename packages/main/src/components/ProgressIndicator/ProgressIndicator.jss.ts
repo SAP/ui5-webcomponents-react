@@ -1,6 +1,6 @@
 import { fonts } from '@ui5/webcomponents-react-base';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => {
   return {
@@ -17,9 +17,6 @@ const styles = ({ parameters }: JSSTheme) => {
     progressBarTextLeft: {
       marginRight: '0.375rem'
     },
-    invisible: {
-      display: 'none !important'
-    },
     wrapper: {
       display: 'flex',
       flexDirection: 'row',
@@ -28,7 +25,7 @@ const styles = ({ parameters }: JSSTheme) => {
       outline: 'none',
       background: parameters.sapUiFieldBackground,
       width: '100%',
-      height: '1rem',
+      height: '1.5rem',
       minWidth: '4rem',
       minHeight: '1rem',
       padding: '0',
@@ -36,6 +33,9 @@ const styles = ({ parameters }: JSSTheme) => {
       border: `1px solid ${parameters.sapUiFieldBorderColor}`,
       borderRadius: '0.5rem',
       overflow: 'hidden'
+    },
+    compact: {
+      height: '1.125rem'
     },
     progressbar: {
       transition: 'flex-basis 1s',
