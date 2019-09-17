@@ -2,7 +2,7 @@ import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 
-const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
+const styles = ({ contentDensity, parameters }: JSSTheme) => ({
   segmentedButtonItem: {
     fontFamily: fonts.sapUiFontFamily,
     listStyle: 'none',
@@ -41,6 +41,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     background: parameters.sapUiSegmentedButtonSelectedBackground,
     color: parameters.sapUiSegmentedButtonSelectedTextColor,
     borderColor: parameters.sapUiSegmentedButtonSelectedHoverBorderColor,
+    '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentContrastIconColor,
     '$:active': {
       background: parameters.sapUiButtonActiveBackground,
       color: parameters.sapUiButtonActiveTextColor

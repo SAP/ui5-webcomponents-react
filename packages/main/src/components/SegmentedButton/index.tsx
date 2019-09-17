@@ -1,25 +1,28 @@
-import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, Component, CSSProperties, ReactElement, RefObject } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { Event, StyleClassHelper, useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-import { SegmentedButtonItemPropTypes } from '../SegmentedButtonItem';
+import React, {
+  Children,
+  cloneElement,
+  FC,
+  forwardRef,
+  ReactNode,
+  Ref,
+  RefObject,
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
+import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export type SelectedKey = string | number;
 
 export interface SegmentedButtonPropTypes extends CommonProps {
-  enabled?: boolean;
+  disabled?: boolean;
   selectedKey?: SelectedKey;
-  children: ReactElement<SegmentedButtonItemPropTypes> | Array<ReactElement<SegmentedButtonItemPropTypes>>;
+  children: ReactNode | ReactNode[];
   onItemSelected?: (event: Event) => void;
-}
-
-interface SegmentedButtonInternalProps extends SegmentedButtonPropTypes, ClassProps {}
-
-interface SegmentedButtonState {
-  selectedKey: SelectedKey;
-  prevPropSelectedKey: SelectedKey;
-  itemWidth: CSSProperties['width'];
 }
 
 const styles = ({ contentDensity }) => ({
@@ -28,7 +31,6 @@ const styles = ({ contentDensity }) => ({
     position: 'relative',
     margin: '0',
     padding: contentDensity === ContentDensity.Compact ? '0.1875rem 0' : '0.250rem 0',
-    WebkitTapHighlightColor: 'rgba(255, 255, 255, 0)',
     border: 'none',
     whiteSpace: 'nowrap',
     display: 'inline-block',
@@ -41,84 +43,68 @@ const styles = ({ contentDensity }) => ({
   }
 });
 
-@withStyles(styles)
-export class SegmentedButton extends Component<SegmentedButtonPropTypes, SegmentedButtonState> {
-  static defaultProps = {
-    enabled: true,
-    selectedKey: '',
-    onItemSelected: null,
-    width: null
-  };
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'SegmentedButton' });
 
-  state = {
-    selectedKey: null,
-    prevPropSelectedKey: null,
-    itemWidth: 'auto'
-  };
+const SegmentedButton: FC<SegmentedButtonPropTypes> = forwardRef(
+  (props: SegmentedButtonPropTypes, ref: Ref<HTMLUListElement>) => {
+    const { children, disabled, className, style, tooltip, slot, onItemSelected, selectedKey } = props;
 
-  items: RefObject<HTMLUListElement> = (this.props as SegmentedButtonInternalProps).innerRef;
+    const listRef: RefObject<HTMLUListElement> = useConsolidatedRef(ref);
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.prevPropSelectedKey !== nextProps.selectedKey) {
-      const newKey = nextProps.selectedKey ? nextProps.selectedKey : nextProps.children[0].props.id;
-      return {
-        selectedKey: newKey,
-        prevPropSelectedKey: newKey
-      };
-    }
-    return null;
-  }
-
-  private handleSegmentedButtonItemSelected = (e) => {
-    const selectedKey = e.getParameter('selectedKey');
-    if (selectedKey !== this.state.selectedKey) {
-      this.setState({
-        selectedKey
-      });
-      if (this.props.onItemSelected) {
-        this.props.onItemSelected(Event.of(this, e.getOriginalEvent(), e.getParameters()));
+    const [internalSelectedKey, setSelectedKey] = useState(() => {
+      if (selectedKey) return selectedKey;
+      const firstChild: any = Children.toArray(children)[0];
+      if (firstChild && firstChild.props) {
+        return firstChild.props.id;
       }
-    }
-  };
-
-  private updateChildElementSize() {
-    let maxWidth = 0;
-    requestAnimationFrame(() => {
-      for (let i = 0; i < this.items.current.childElementCount; i++) {
-        const item = this.items.current.children.item(i) as HTMLUListElement;
-        if (item.offsetWidth && item.offsetWidth > maxWidth) {
-          maxWidth = item.offsetWidth;
-        }
-      }
-
-      if (maxWidth > this.items.current.offsetWidth) {
-        this.setState({
-          itemWidth: 'auto'
-        });
-      } else if (this.state.itemWidth !== `${maxWidth}px`) {
-        this.setState({
-          itemWidth: `${maxWidth}px`
-        });
-      }
+      return null;
     });
-  }
 
-  componentDidMount() {
-    this.updateChildElementSize();
-  }
+    useEffect(() => {
+      if (selectedKey) {
+        setSelectedKey(selectedKey);
+      }
+    }, [selectedKey, setSelectedKey]);
 
-  componentDidUpdate() {
-    this.updateChildElementSize();
-  }
-
-  render() {
-    const { children, enabled, classes, className, style, tooltip, slot } = this.props as SegmentedButtonInternalProps;
-    const { selectedKey } = this.state;
+    const classes = useStyles();
 
     const segmentedBtnClasses = StyleClassHelper.of(classes.segmentedButton);
     if (className) {
       segmentedBtnClasses.put(className);
     }
+
+    const handleSegmentedButtonItemSelected = useCallback(
+      (e) => {
+        const newSelectedKey = e.getParameter('selectedKey');
+        if (newSelectedKey !== internalSelectedKey) {
+          setSelectedKey(newSelectedKey);
+          if (typeof onItemSelected === 'function') {
+            onItemSelected(Event.of(null, e.getOriginalEvent(), e.getParameters()));
+          }
+        }
+      },
+      [internalSelectedKey, setSelectedKey, onItemSelected]
+    );
+
+    useEffect(() => {
+      requestAnimationFrame(() => {
+        let maxWidth = 0;
+        for (let i = 0; i < listRef.current.childElementCount; i++) {
+          const item = listRef.current.children.item(i) as HTMLLIElement;
+          if (item.offsetWidth && item.offsetWidth > maxWidth) {
+            maxWidth = item.offsetWidth;
+          }
+        }
+        if (maxWidth < listRef.current.offsetWidth) {
+          for (let i = 0; i < listRef.current.childElementCount; i++) {
+            const item = listRef.current.children.item(i) as HTMLLIElement;
+            if (item.getAttribute('data-has-own-width') === 'false') {
+              item.style.width = `${maxWidth}px`;
+            }
+          }
+        }
+      });
+    }, [children, listRef]);
 
     return (
       <ul
@@ -126,20 +112,31 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
         role="radiogroup"
         className={segmentedBtnClasses.toString()}
         style={style}
-        ref={this.items}
+        ref={listRef}
         title={tooltip}
         slot={slot}
       >
-        {Children.map(children, (item: any) =>
-          cloneElement(item, {
-            key: item.props.id,
-            selected: selectedKey === item.props.id,
-            enabled: enabled === false ? enabled : item.props.enabled,
-            width: item.props.width ? item.props.width : this.state.itemWidth,
-            onClick: this.handleSegmentedButtonItemSelected
-          })
-        )}
+        {Children.toArray(children)
+          .filter(Boolean)
+          .map((item: any) =>
+            cloneElement(item, {
+              key: item.props.id,
+              selected: internalSelectedKey === item.props.id,
+              disabled: disabled === true ? disabled : item.props.disabled,
+              onClick: handleSegmentedButtonItemSelected
+            })
+          )}
       </ul>
     );
   }
-}
+);
+
+SegmentedButton.displayName = 'SegmentedButton';
+
+SegmentedButton.defaultProps = {
+  disabled: false,
+  selectedKey: '',
+  onItemSelected: null
+};
+
+export { SegmentedButton };
