@@ -1,5 +1,5 @@
 import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -8,7 +8,7 @@ import styles from './SegmentedButtonItem.jss';
 export interface SegmentedButtonItemPropTypes extends CommonProps {
   icon?: JSX.Element;
   id: string | number;
-  enabled?: boolean;
+  disabled?: boolean;
   children?: string;
   width?: CSSProperties['width'];
   onClick?: (e: Event) => void;
@@ -18,7 +18,7 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
 
 const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = forwardRef(
   (props: SegmentedButtonItemPropTypes, ref: Ref<HTMLLIElement>) => {
-    const { enabled, children, icon, width, className, style, tooltip, onClick, id } = props;
+    const { disabled, children, icon, className, style, tooltip, onClick, id, width } = props;
 
     const classes = useStyles();
 
@@ -31,42 +31,48 @@ const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = forwardRef(
       segmentedButtonItemClasses.put(classes.iconOnly);
     }
 
-    if (enabled) {
-      segmentedButtonItemClasses.put(classes.focusableItem);
-    } else {
+    if (disabled) {
       segmentedButtonItemClasses.put(classes.disabled);
+    } else {
+      segmentedButtonItemClasses.put(classes.focusableItem);
     }
 
-    const inlineStyle = { minWidth: width };
     if (props['selected']) {
       segmentedButtonItemClasses.put(classes.selected);
-      inlineStyle['--sapUiContentNonInteractiveIconColor'] = 'var(--sapContent_ContrastIconColor)';
     }
 
     if (className) {
       segmentedButtonItemClasses.put(className);
     }
 
-    if (style) {
-      Object.assign(inlineStyle, style);
-    }
-
     const handleOnClick = useCallback(
       (e) => {
-        if (enabled && typeof onClick === 'function') {
+        if (!disabled && typeof onClick === 'function') {
           onClick(Event.of(null, e, { selectedKey: id }));
         }
       },
-      [onClick, enabled, id]
+      [onClick, disabled, id]
     );
+
+    const inlineStyles = useMemo(() => {
+      if (width === undefined || width === null) {
+        return style;
+      }
+
+      return {
+        ...style,
+        width
+      };
+    }, [style, width]);
 
     return (
       <li
         ref={ref}
         className={segmentedButtonItemClasses.valueOf()}
         onClick={handleOnClick}
-        style={inlineStyle}
+        style={inlineStyles}
         title={tooltip}
+        data-has-own-width={!!width}
       >
         {icon && <div className={iconClasses.valueOf()}>{icon}</div>}
         {children}
@@ -78,10 +84,7 @@ const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = forwardRef(
 SegmentedButtonItem.displayName = 'SegmentedButtonItem';
 
 SegmentedButtonItem.defaultProps = {
-  icon: null,
-  enabled: true,
-  children: null,
-  onClick: null
+  disabled: false
 };
 
 export { SegmentedButtonItem };

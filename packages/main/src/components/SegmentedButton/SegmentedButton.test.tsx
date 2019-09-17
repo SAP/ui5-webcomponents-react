@@ -1,9 +1,8 @@
 import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
-import { mount } from 'enzyme';
-import React from 'react';
-import sinon from 'sinon';
 import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
 import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';
+import React, { cloneElement } from 'react';
+import sinon from 'sinon';
 
 describe('SegmentedButton', () => {
   test('Selection', () => {
@@ -25,21 +24,19 @@ describe('SegmentedButton', () => {
 
   test('Update Selection via API', () => {
     const callback = sinon.spy();
-    const SegmentedBtn = (SegmentedButton as any).InnerComponent;
-    const SegmentedBtnItem = (SegmentedButtonItem as any).InnerComponent;
-    const wrapper = mount(
-      <SegmentedBtn onItemSelected={callback} classes={{}}>
-        <SegmentedBtnItem id="btn-1" classes={{}}>
-          Test
-        </SegmentedBtnItem>
-        <SegmentedBtnItem id="btn-2" classes={{}}>
-          Test
-        </SegmentedBtnItem>
-      </SegmentedBtn>
+
+    const wrapper = mountThemedComponent(
+      <SegmentedButton onItemSelected={callback}>
+        <SegmentedButtonItem id="btn-1">Test</SegmentedButtonItem>
+        <SegmentedButtonItem id="btn-2">Test</SegmentedButtonItem>
+      </SegmentedButton>
     );
-    wrapper.setProps({ selectedKey: 'btn-2' });
+    expect(wrapper.render()).toMatchSnapshot();
+    wrapper.setProps({
+      children: cloneElement(wrapper.prop('children'), { selectedKey: 'btn-2' })
+    });
     wrapper.update();
-    expect(wrapper.state('selectedKey')).toEqual('btn-2');
+    expect(wrapper.render()).toMatchSnapshot();
     expect(callback.called).toBe(false);
   });
 });

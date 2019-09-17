@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SegmentedButton Update Selection via API 1`] = `
+<ul
+  class="SegmentedButton--segmentedButton-"
+  role="radiogroup"
+  tabindex="0"
+>
+  <li
+    class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem- SegmentedButtonItem--selected-"
+    data-has-own-width="false"
+  >
+    Test
+  </li>
+  <li
+    class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem-"
+    data-has-own-width="false"
+  >
+    Test
+  </li>
+</ul>
+`;
+
+exports[`SegmentedButton Update Selection via API 2`] = `
+<ul
+  class="SegmentedButton--segmentedButton-"
+  role="radiogroup"
+  tabindex="0"
+>
+  <li
+    class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem-"
+    data-has-own-width="false"
+  >
+    Test
+  </li>
+  <li
+    class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem- SegmentedButtonItem--selected-"
+    data-has-own-width="false"
+  >
+    Test
+  </li>
+</ul>
+`;

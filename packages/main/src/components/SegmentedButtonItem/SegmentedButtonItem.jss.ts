@@ -41,6 +41,7 @@ const styles = ({ contentDensity, parameters }: JSSTheme) => ({
     background: parameters.sapUiSegmentedButtonSelectedBackground,
     color: parameters.sapUiSegmentedButtonSelectedTextColor,
     borderColor: parameters.sapUiSegmentedButtonSelectedHoverBorderColor,
+    '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentContrastIconColor,
     '$:active': {
       background: parameters.sapUiButtonActiveBackground,
       color: parameters.sapUiButtonActiveTextColor
