@@ -8,7 +8,7 @@ import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButto
 export const renderStory = () => {
   return (
     <SegmentedButton
-      enabled={boolean('enabled', true)}
+      disabled={boolean('disabled', false)}
       onItemSelected={action('onItemSelected')}
       selectedKey={number('SelectedKey', 1)}
     >
@@ -16,7 +16,9 @@ export const renderStory = () => {
       <SegmentedButtonItem id={2} icon={<Icon src="world" />}>
         Button 2
       </SegmentedButtonItem>
-      <SegmentedButtonItem id={3}>Button 3</SegmentedButtonItem>
+      <SegmentedButtonItem id={3} width="300px">
+        Button 3
+      </SegmentedButtonItem>
     </SegmentedButton>
   );
 };

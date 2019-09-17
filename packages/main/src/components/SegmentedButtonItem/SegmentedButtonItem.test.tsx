@@ -32,7 +32,7 @@ describe('SegmentedButtonItem', () => {
   test('SegmentedButtonItem Disabled', () => {
     const callback = sinon.spy();
     const wrapper = mountThemedComponent(
-      <SegmentedButtonItem id={1} icon={<Icon src="add" />} enabled={false} onClick={callback} />
+      <SegmentedButtonItem id={1} icon={<Icon src="add" />} disabled onClick={callback} />
     );
     wrapper.simulate('click');
     expect(wrapper.render()).toMatchSnapshot();

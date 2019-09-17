@@ -1,44 +1,26 @@
-import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, PureComponent } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { SelectedKey } from '../SegmentedButton';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './SegmentedButtonItem.jss';
 
 export interface SegmentedButtonItemPropTypes extends CommonProps {
   icon?: JSX.Element;
-  visible?: boolean;
-  id: SelectedKey;
-  enabled?: boolean;
+  id: string | number;
+  disabled?: boolean;
   children?: string;
   width?: CSSProperties['width'];
   onClick?: (e: Event) => void;
 }
 
-export interface SegmentedButtonItemInternalProps extends SegmentedButtonItemPropTypes, ClassProps {
-  selected?: boolean;
-}
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'SegmentedButtonItem' });
 
-@withStyles(styles)
-export class SegmentedButtonItem extends PureComponent<SegmentedButtonItemPropTypes> {
-  static defaultProps = {
-    icon: null,
-    visible: true,
-    enabled: true,
-    children: null,
-    onClick: null,
-    selected: false
-  };
+const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = forwardRef(
+  (props: SegmentedButtonItemPropTypes, ref: Ref<HTMLLIElement>) => {
+    const { disabled, children, icon, className, style, tooltip, onClick, id, width } = props;
 
-  private handleOnClick = (e) => {
-    if (this.props.enabled && this.props.onClick && typeof this.props.onClick === 'function') {
-      this.props.onClick(Event.of(this, e, { selectedKey: this.props.id }));
-    }
-  };
-
-  render() {
-    const { enabled, children, selected, icon, classes, width, className, style, tooltip, innerRef } = this
-      .props as SegmentedButtonItemInternalProps;
+    const classes = useStyles();
 
     const iconClasses = StyleClassHelper.of(classes.icon);
     const segmentedButtonItemClasses = StyleClassHelper.of(classes.segmentedButtonItem);
@@ -49,36 +31,60 @@ export class SegmentedButtonItem extends PureComponent<SegmentedButtonItemPropTy
       segmentedButtonItemClasses.put(classes.iconOnly);
     }
 
-    if (enabled) {
-      segmentedButtonItemClasses.put(classes.focusableItem);
-    } else {
+    if (disabled) {
       segmentedButtonItemClasses.put(classes.disabled);
+    } else {
+      segmentedButtonItemClasses.put(classes.focusableItem);
     }
 
-    const inlineStyle = { minWidth: width };
-    if (selected) {
+    if (props['selected']) {
       segmentedButtonItemClasses.put(classes.selected);
-      inlineStyle['--sapUiContentNonInteractiveIconColor'] = 'var(--sapContent_ContrastIconColor)';
     }
 
     if (className) {
       segmentedButtonItemClasses.put(className);
     }
 
-    if (style) {
-      Object.assign(inlineStyle, style);
-    }
+    const handleOnClick = useCallback(
+      (e) => {
+        if (!disabled && typeof onClick === 'function') {
+          onClick(Event.of(null, e, { selectedKey: id }));
+        }
+      },
+      [onClick, disabled, id]
+    );
+
+    const inlineStyles = useMemo(() => {
+      if (width === undefined || width === null) {
+        return style;
+      }
+
+      return {
+        ...style,
+        width
+      };
+    }, [style, width]);
+
     return (
       <li
-        ref={innerRef}
+        ref={ref}
         className={segmentedButtonItemClasses.valueOf()}
-        onClick={this.handleOnClick}
-        style={inlineStyle}
+        onClick={handleOnClick}
+        style={inlineStyles}
         title={tooltip}
+        data-has-own-width={!!width}
       >
         {icon && <div className={iconClasses.valueOf()}>{icon}</div>}
         {children}
       </li>
     );
   }
-}
+);
+
+SegmentedButtonItem.displayName = 'SegmentedButtonItem';
+
+SegmentedButtonItem.defaultProps = {
+  disabled: false
+};
+
+export { SegmentedButtonItem };
