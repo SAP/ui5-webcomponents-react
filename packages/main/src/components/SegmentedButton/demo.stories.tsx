@@ -16,7 +16,7 @@ export const renderStory = () => {
       <SegmentedButtonItem id={2} icon={<Icon src="world" />}>
         Button 2
       </SegmentedButtonItem>
-      <SegmentedButtonItem id={3}>Button 3</SegmentedButtonItem>
+      {false === true && <SegmentedButtonItem id={3}>Button 3</SegmentedButtonItem>}
     </SegmentedButton>
   );
 };

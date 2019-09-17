@@ -1,16 +1,15 @@
 import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, Component, CSSProperties, ReactElement, RefObject } from 'react';
+import React, { Children, cloneElement, Component, CSSProperties, RefObject, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-import { SegmentedButtonItemPropTypes } from '../SegmentedButtonItem';
 
 export type SelectedKey = string | number;
 
 export interface SegmentedButtonPropTypes extends CommonProps {
   enabled?: boolean;
   selectedKey?: SelectedKey;
-  children: ReactElement<SegmentedButtonItemPropTypes> | Array<ReactElement<SegmentedButtonItemPropTypes>>;
+  children: ReactNode | ReactNode[];
   onItemSelected?: (event: Event) => void;
 }
 
@@ -130,15 +129,17 @@ export class SegmentedButton extends Component<SegmentedButtonPropTypes, Segment
         title={tooltip}
         slot={slot}
       >
-        {Children.map(children, (item: any) =>
-          cloneElement(item, {
-            key: item.props.id,
-            selected: selectedKey === item.props.id,
-            enabled: enabled === false ? enabled : item.props.enabled,
-            width: item.props.width ? item.props.width : this.state.itemWidth,
-            onClick: this.handleSegmentedButtonItemSelected
-          })
-        )}
+        {Children.toArray(children)
+          .filter(Boolean)
+          .map((item: any) =>
+            cloneElement(item, {
+              key: item.props.id,
+              selected: selectedKey === item.props.id,
+              enabled: enabled === false ? enabled : item.props.enabled,
+              width: item.props.width ? item.props.width : this.state.itemWidth,
+              onClick: this.handleSegmentedButtonItemSelected
+            })
+          )}
       </ul>
     );
   }
