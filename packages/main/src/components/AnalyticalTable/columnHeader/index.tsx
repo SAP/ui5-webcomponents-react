@@ -88,19 +88,23 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     );
   }, [classes, column.filterValue, column.isSorted, column.isGrouped, column.isSortedDesc, children]);
 
-  const innerStyle = { ...style };
-  innerStyle.width = '100%';
-  innerStyle.fontWeight = 'normal';
-  innerStyle.cursor = 'pointer';
-  innerStyle.height = '100%';
-  innerStyle.overflowX = 'hidden';
+  const isResizable = !isLastColumn && column.canResize;
+  const innerStyle = useMemo(() => {
+    const modifiedStyles = {
+      ...style,
+      width: '100%',
+      fontWeight: 'normal',
+      cursor: 'pointer',
+      height: '100%',
+      overflowX: 'hidden'
+    };
+    if (isResizable) {
+      modifiedStyles.maxWidth = `calc(100% - 16px)`;
+    }
+    return modifiedStyles;
+  }, [style, isResizable]);
 
   if (!column) return null;
-
-  const isResizable = !isLastColumn && column.canResize;
-  if (isResizable) {
-    innerStyle.maxWidth = `calc(100% - 16px)`;
-  }
 
   let thClasses = className;
   if (sticky) {
