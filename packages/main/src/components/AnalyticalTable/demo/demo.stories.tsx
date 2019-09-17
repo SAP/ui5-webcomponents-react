@@ -66,6 +66,7 @@ export const defaultStory = () => {
       selectable={boolean('selectable', true)}
       style={{ height: '600px', overflowY: 'auto', paddingRight: '12px' }}
       onRowSelected={action('onRowSelected')}
+      onSort={action('onSort')}
     />
   );
 };

@@ -21,6 +21,7 @@ export interface ColumnHeaderProps {
   filterable: boolean;
   sticky?: boolean;
   isLastColumn?: boolean;
+  onSort?: (e: Event) => void;
 }
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -61,7 +62,7 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
 export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   const classes = useStyles(props);
 
-  const { children, column, className, style, groupable, sortable, filterable, sticky, isLastColumn } = props;
+  const { children, column, className, style, groupable, sortable, filterable, sticky, isLastColumn, onSort } = props;
 
   const openBy = useMemo(() => {
     if (!column) return null;
@@ -116,6 +117,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
           showSort={sortable}
           column={column}
           style={innerStyle}
+          onSort={onSort}
         />
       ) : (
         openBy
