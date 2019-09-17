@@ -1,7 +1,7 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import React, { forwardRef, Ref } from 'react';
+import React, { forwardRef, Ref, useMemo } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -44,7 +44,7 @@ const ProgressIndicator = forwardRef((props: ProgressIndicatorPropTypes, ref: Re
   const wrapperClasses = StyleClassHelper.of(classes.wrapper);
   const progressBarClasses = StyleClassHelper.of(classes.progressbar);
   const progressBarTextClasses = StyleClassHelper.of(classes.progressBarText);
-  const progressBarContainerStyle = { width, height };
+
   const progressBarStyle = { flexBasis: `${percentValue}%` };
 
   // change content density
@@ -70,9 +70,7 @@ const ProgressIndicator = forwardRef((props: ProgressIndicatorPropTypes, ref: Re
     wrapperClasses.put(className);
   }
 
-  if (style) {
-    Object.assign(progressBarContainerStyle, style);
-  }
+  const progressBarContainerStyle = useMemo(() => ({ ...style, width, height }), [style, width, height]);
 
   return (
     <div ref={ref} className={wrapperClasses.valueOf()} style={progressBarContainerStyle} title={tooltip} slot={slot}>
