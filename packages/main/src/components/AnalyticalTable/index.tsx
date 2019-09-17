@@ -61,6 +61,7 @@ export interface TableProps extends CommonProps {
   NoDataComponent?: ReactComponentLike;
   noDataText?: string;
   stickyHeader?: boolean;
+  onSort?: (e?: Event) => void;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles);
@@ -93,7 +94,8 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     noDataText,
     selectable,
     onRowSelected,
-    stickyHeader
+    stickyHeader,
+    onSort
   } = props;
 
   const [selectedRow, setSelectedRow] = useState(null);
@@ -207,12 +209,13 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
 
   const onRowClicked = useCallback(
     (row) => (e) => {
-      setSelectedRow(row.getRowProps().key);
+      const newKey = row.getRowProps().key;
+      setSelectedRow(selectedRow === newKey ? null : newKey);
       if (typeof onRowSelected === 'function') {
         onRowSelected(Event.of(null, e, { row }));
       }
     },
-    []
+    [selectedRow]
   );
 
   const tableBodyClasses = StyleClassHelper.of(classes.tbody);
@@ -239,6 +242,7 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
                       sortable={sortable}
                       filterable={filterable}
                       sticky={stickyHeader}
+                      onSort={onSort}
                     >
                       {column.render('Header')}
                     </ColumnHeader>

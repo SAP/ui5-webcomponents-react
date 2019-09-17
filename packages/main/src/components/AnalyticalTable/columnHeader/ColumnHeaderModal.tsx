@@ -1,5 +1,6 @@
 import React, { CSSProperties, FC, ReactNode, RefObject, useCallback, useRef } from 'react';
 import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
+import { Event } from '@ui5/webcomponents-react-base';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
@@ -19,10 +20,11 @@ export interface ColumnHeaderModalProperties {
   showGroup?: boolean;
   column: ColumnType;
   style: CSSProperties;
+  onSort?: (e: Event) => void;
 }
 
 export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
-  const { showGroup, showSort, showFilter, column, style, openBy } = props;
+  const { showGroup, showSort, showFilter, column, style, openBy, onSort } = props;
 
   const { Filter } = column;
 
@@ -35,9 +37,25 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
       switch (sortType) {
         case 'asc':
           column.toggleSortBy(false);
+          if (typeof onSort === 'function') {
+            onSort(
+              Event.of(null, e, {
+                column,
+                sortDirection: sortType
+              })
+            );
+          }
           break;
         case 'desc':
           column.toggleSortBy(true);
+          if (typeof onSort === 'function') {
+            onSort(
+              Event.of(null, e, {
+                column,
+                sortDirection: sortType
+              })
+            );
+          }
           break;
         case 'group':
           column.toggleGroupBy(!column.isGrouped);
