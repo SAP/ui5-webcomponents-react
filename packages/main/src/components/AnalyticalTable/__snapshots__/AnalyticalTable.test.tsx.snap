@@ -29,12 +29,16 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             class="-th- -sticky-"
           >
             <div
-              style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; display: inline-block;"
+              style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px); display: inline-block;"
             >
               <div
                 class="-header-"
               >
-                Name
+                <span
+                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                >
+                  Name
+                </span>
                 <div
                   class="-iconContainer-"
                 />
@@ -77,17 +81,24 @@ exports[`AnalyticalTable test Asc desc 1`] = `
                 </ui5-li>
               </ui5-list>
             </ui5-popover>
+            <div
+              style="width: 16px; float: right; height: 100%; cursor: ew-resize;"
+            />
           </th>
           <th
             class="-th- -sticky-"
           >
             <div
-              style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; display: inline-block;"
+              style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px); display: inline-block;"
             >
               <div
                 class="-header-"
               >
-                Age
+                <span
+                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                >
+                  Age
+                </span>
                 <div
                   class="-iconContainer-"
                 />
@@ -130,17 +141,24 @@ exports[`AnalyticalTable test Asc desc 1`] = `
                 </ui5-li>
               </ui5-list>
             </ui5-popover>
+            <div
+              style="width: 16px; float: right; height: 100%; cursor: ew-resize;"
+            />
           </th>
           <th
             class="-th- -sticky-"
           >
             <div
-              style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; display: inline-block;"
+              style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px); display: inline-block;"
             >
               <div
                 class="-header-"
               >
-                Friend Name
+                <span
+                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                >
+                  Friend Name
+                </span>
                 <div
                   class="-iconContainer-"
                 />
@@ -183,18 +201,25 @@ exports[`AnalyticalTable test Asc desc 1`] = `
                 </ui5-li>
               </ui5-list>
             </ui5-popover>
+            <div
+              style="width: 16px; float: right; height: 100%; cursor: ew-resize;"
+            />
           </th>
           <th
             class="-th- -sticky-"
           >
             <div
-              style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; display: inline-block;"
+              style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; display: inline-block;"
             >
               <div
                 class="-header-"
               >
-                <span>
-                  Friend Age
+                <span
+                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                >
+                  <span>
+                    Friend Age
+                  </span>
                 </span>
                 <div
                   class="-iconContainer-"

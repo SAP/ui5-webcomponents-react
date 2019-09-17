@@ -7,6 +7,7 @@ export interface ColumnType {
   toggleSortBy: (descending: boolean, multi?: any) => void;
   toggleGroupBy: (set: boolean) => void;
   canFilter: boolean;
+  canResize: boolean;
   filterValue?: string;
   canGroupBy: boolean;
   isGrouped: boolean;
