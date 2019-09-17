@@ -1,8 +1,9 @@
 import { Event, fonts, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React, { CSSProperties, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { Resizer } from '../Resizer';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
 
@@ -19,6 +20,7 @@ export interface ColumnHeaderProps {
   sortable: boolean;
   filterable: boolean;
   sticky?: boolean;
+  isLastColumn?: boolean;
 }
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -33,7 +35,10 @@ const styles = ({ parameters }: JSSTheme) => ({
     fontSize: fonts.sapMFontMediumSize,
     fontWeight: 'normal',
     color: parameters.sapUiListTextColor,
-    background: parameters.sapUiListHeaderBackground
+    background: parameters.sapUiListHeaderBackground,
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    maxWidth: '100%'
   },
   iconContainer: {
     display: 'inline-block',
@@ -56,7 +61,7 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
 export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   const classes = useStyles(props);
 
-  const { children, column, className, style, groupable, sortable, filterable, sticky } = props;
+  const { children, column, className, style, groupable, sortable, filterable, sticky, isLastColumn } = props;
 
   const openBy = useMemo(() => {
     if (!column) return null;
@@ -72,7 +77,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
 
     return (
       <div className={classNames.valueOf()}>
-        {children}
+        <span style={{ textOverflow: 'ellipsis', overflowX: 'hidden', whiteSpace: 'nowrap' }}>{children}</span>
         <div className={classes.iconContainer}>
           {filterIcon}
           {sortingIcon}
@@ -82,19 +87,27 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     );
   }, [classes, column.filterValue, column.isSorted, column.isGrouped, column.isSortedDesc, children]);
 
-  style.width = '100%';
-  style.fontWeight = 'normal';
-  style.cursor = 'pointer';
-  style.height = '100%';
+  const innerStyle = { ...style };
+  innerStyle.width = '100%';
+  innerStyle.fontWeight = 'normal';
+  innerStyle.cursor = 'pointer';
+  innerStyle.height = '100%';
+  innerStyle.overflowX = 'hidden';
 
   if (!column) return null;
+
+  const isResizable = !isLastColumn && column.canResize;
+  if (isResizable) {
+    innerStyle.maxWidth = `calc(100% - 16px)`;
+  }
 
   let thClasses = className;
   if (sticky) {
     thClasses = `${thClasses} ${classes.sticky}`;
   }
+
   return (
-    <th className={thClasses}>
+    <th className={thClasses} style={style}>
       {groupable || sortable || filterable ? (
         <ColumnHeaderModal
           openBy={openBy}
@@ -102,11 +115,12 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
           showGroup={groupable}
           showSort={sortable}
           column={column}
-          style={style}
+          style={innerStyle}
         />
       ) : (
         openBy
       )}
+      {isResizable && <Resizer {...props} />}
     </th>
   );
 };

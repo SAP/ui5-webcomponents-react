@@ -83,7 +83,11 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
     padding: '0 0.5rem',
     '&:first-child': {
       borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
-    }
+    },
+    textOverflow: 'ellipsis',
+    overflowX: 'hidden',
+    maxWidth: '0px',
+    whiteSpace: 'nowrap'
   },
   tBody: {
     boxShadow: 'none !important'
