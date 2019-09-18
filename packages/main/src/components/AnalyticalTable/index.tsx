@@ -64,7 +64,10 @@ export interface TableProps extends CommonProps {
   noDataText?: string;
   stickyHeader?: boolean;
   onSort?: (e?: Event) => void;
-  useTableProps?: object;
+  /**
+   * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api.md#table-options)
+   */
+  reactTableOptions?: object;
   tableHooks?: Array<() => any>;
 }
 
@@ -102,7 +105,7 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     onRowSelected,
     stickyHeader,
     onSort,
-    useTableProps,
+    reactTableOptions,
     tableHooks
   } = props;
 
@@ -192,7 +195,7 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
       data,
       defaultColumn,
       state: tableState,
-      ...useTableProps
+      ...reactTableOptions
     },
     useFilters,
     useGroupBy,
@@ -339,6 +342,6 @@ AnalyticalTable.defaultProps = {
   NoDataComponent: DefaultNoDataComponent,
   noDataText: 'No Data',
   stickyHeader: true,
-  useTableProps: {},
+  reactTableOptions: {},
   tableHooks: []
 };
