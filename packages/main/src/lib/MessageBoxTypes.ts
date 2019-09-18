@@ -1,3 +1,3 @@
-import { MessageBoxTypes } from '../components/MessageBox';
+import { MessageBoxTypes } from '../enums/MessageBoxTypes';
 
 export { MessageBoxTypes };

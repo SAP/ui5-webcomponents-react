@@ -1,13 +1,13 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import React from 'react';
 import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
+import React from 'react';
 
 export const defaultStory = () => (
   <MessageBox
     type={select('type', Object.values(MessageBoxTypes), MessageBoxTypes.CONFIRM)}
-    visible={boolean('visible', true)}
+    open={boolean('open', true)}
     onClose={action('onClose')}
     title={text('title', '')}
   >

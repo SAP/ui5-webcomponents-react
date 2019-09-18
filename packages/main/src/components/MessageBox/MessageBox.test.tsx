@@ -9,7 +9,7 @@ describe('MessageBox', () => {
   test('Confirm - OK', () => {
     const callback = spy();
     const wrapper = mountThemedComponent(
-      <MessageBox type={MessageBoxTypes.CONFIRM} visible onClose={callback}>
+      <MessageBox type={MessageBoxTypes.CONFIRM} open onClose={callback}>
         Confirm - OK
       </MessageBox>,
       {}
@@ -28,7 +28,7 @@ describe('MessageBox', () => {
   test('Confirm - Cancel', () => {
     const callback = spy();
     const wrapper = mountThemedComponent(
-      <MessageBox type={MessageBoxTypes.CONFIRM} visible onClose={callback}>
+      <MessageBox type={MessageBoxTypes.CONFIRM} open onClose={callback}>
         Confirm - Cancel
       </MessageBox>
     );
@@ -45,7 +45,7 @@ describe('MessageBox', () => {
   test('Success', () => {
     const callback = spy();
     const wrapper = mountThemedComponent(
-      <MessageBox type={MessageBoxTypes.SUCCESS} visible onClose={callback}>
+      <MessageBox type={MessageBoxTypes.SUCCESS} open onClose={callback}>
         Success
       </MessageBox>
     );
@@ -62,7 +62,7 @@ describe('MessageBox', () => {
   test('Warning', () => {
     const callback = spy();
     const wrapper = mountThemedComponent(
-      <MessageBox type={MessageBoxTypes.WARNING} visible onClose={callback}>
+      <MessageBox type={MessageBoxTypes.WARNING} open onClose={callback}>
         Warning
       </MessageBox>
     );
@@ -79,7 +79,7 @@ describe('MessageBox', () => {
   test('Error', () => {
     const callback = spy();
     const wrapper = mountThemedComponent(
-      <MessageBox type={MessageBoxTypes.ERROR} visible onClose={callback}>
+      <MessageBox type={MessageBoxTypes.ERROR} open onClose={callback}>
         Error
       </MessageBox>
     );
@@ -96,7 +96,7 @@ describe('MessageBox', () => {
   test('Information', () => {
     const callback = spy();
     const wrapper = mountThemedComponent(
-      <MessageBox type={MessageBoxTypes.INFORMATION} visible onClose={callback}>
+      <MessageBox type={MessageBoxTypes.INFORMATION} open onClose={callback}>
         Information
       </MessageBox>
     );
@@ -113,7 +113,7 @@ describe('MessageBox', () => {
   test('Show', () => {
     const callback = spy();
     const wrapper = mountThemedComponent(
-      <MessageBox visible onClose={callback} title="Custom" actions={[MessageBoxActions.YES, MessageBoxActions.NO]}>
+      <MessageBox open onClose={callback} title="Custom" actions={[MessageBoxActions.YES, MessageBoxActions.NO]}>
         Custom
       </MessageBox>
     );
@@ -137,7 +137,7 @@ describe('MessageBox', () => {
   test('Success w/ custom title', () => {
     const callback = spy();
     const wrapper = mountThemedComponent(
-      <MessageBox type={MessageBoxTypes.SUCCESS} visible onClose={callback} title="Custom Success">
+      <MessageBox type={MessageBoxTypes.SUCCESS} open onClose={callback} title="Custom Success">
         Custom Success
       </MessageBox>
     );
@@ -151,10 +151,10 @@ describe('MessageBox', () => {
     expect(getEventFromCallback(callback).getParameter('action')).toEqual(MessageBoxActions.OK);
   });
 
-  test('Not visible', () => {
+  test('Not open', () => {
     const callback = spy();
     const wrapper = mountThemedComponent(
-      <MessageBox type={MessageBoxTypes.SUCCESS} visible={false} onClose={callback} title="Custom Success">
+      <MessageBox type={MessageBoxTypes.SUCCESS} open={false} onClose={callback} title="Custom Success">
         Custom Success
       </MessageBox>
     );
@@ -164,7 +164,7 @@ describe('MessageBox', () => {
   test('No Title', () => {
     const callback = spy();
     const wrapper = mountThemedComponent(
-      <MessageBox visible onClose={callback}>
+      <MessageBox open onClose={callback}>
         No Title
       </MessageBox>
     );
