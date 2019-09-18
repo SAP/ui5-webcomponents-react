@@ -1,10 +1,10 @@
-import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { PureComponent } from 'react';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { ClassProps } from '../../interfaces/ClassProps';
+import React, { forwardRef, Ref, useMemo } from 'react';
+import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import styles from './ProgressIndicator.jss';
 
 export interface ProgressIndicatorPropTypes extends CommonProps {
@@ -16,11 +16,6 @@ export interface ProgressIndicatorPropTypes extends CommonProps {
    * Value to be displayed
    */
   displayValue?: string;
-
-  /*
-   * Flag to make component invisible
-   */
-  visible?: boolean;
 
   /*
    * Specified width of component
@@ -38,93 +33,63 @@ export interface ProgressIndicatorPropTypes extends CommonProps {
   state?: ValueState;
 }
 
-interface ProgressIndicatorInternalProps extends ProgressIndicatorPropTypes, ClassProps {
-  theme: JSSTheme;
-}
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ProgressIndicator' });
 
-@withStyles(styles)
-export class ProgressIndicator extends PureComponent<ProgressIndicatorPropTypes> {
-  static defaultProps = {
-    percentValue: 0,
-    displayValue: '',
-    visible: true,
-    width: 'auto',
-    height: '',
-    state: 'None'
-  };
+const ProgressIndicator = forwardRef((props: ProgressIndicatorPropTypes, ref: Ref<HTMLDivElement>) => {
+  const { percentValue, displayValue, width, height, className, style, tooltip, state, slot } = props;
 
-  render() {
-    const {
-      percentValue,
-      displayValue,
-      visible,
-      width,
-      height,
-      classes,
-      theme,
-      className,
-      style,
-      tooltip,
-      state,
-      innerRef,
-      slot
-    } = this.props as ProgressIndicatorInternalProps;
+  const classes = useStyles();
 
-    // CSS classes
-    const wrapperClasses = StyleClassHelper.of(classes.wrapper);
-    const progressBarClasses = StyleClassHelper.of(classes.progressbar);
-    const progressBarTextClasses = StyleClassHelper.of(classes.progressBarText);
-    const progressBarContainerStyle = { width, height };
-    const progressBarStyle = { flexBasis: `${percentValue}%` };
+  // CSS classes
+  const wrapperClasses = StyleClassHelper.of(classes.wrapper);
+  const progressBarClasses = StyleClassHelper.of(classes.progressbar);
+  const progressBarTextClasses = StyleClassHelper.of(classes.progressBarText);
 
-    // change content density
-    switch (theme.contentDensity) {
-      case ContentDensity.Cozy:
-        progressBarContainerStyle.height = height || '1.5rem';
-        wrapperClasses.put(classes.cozy);
-        break;
-      default:
-        progressBarContainerStyle.height = height || '1.125rem';
-        wrapperClasses.put(classes.compact);
-    }
+  const progressBarStyle = { flexBasis: `${percentValue}%` };
 
-    // change text color based on percent value
-    if (percentValue <= 50) {
-      progressBarTextClasses.put(classes.progressBarTextColorLow);
-      progressBarTextClasses.put(classes.progressBarTextRight);
-    } else {
-      progressBarTextClasses.put(classes.progressBarTextColorHigh);
-      progressBarTextClasses.put(classes.progressBarTextLeft);
-    }
-
-    // visibility handling
-    if (!visible) wrapperClasses.put(classes.invisible);
-
-    const progressBarTextSpan = <span className={progressBarTextClasses.valueOf()}> {displayValue} </span>;
-
-    progressBarClasses.put(classes[`state${state}`]);
-
-    if (className) {
-      wrapperClasses.put(className);
-    }
-
-    if (style) {
-      Object.assign(progressBarContainerStyle, style);
-    }
-
-    return (
-      <div
-        ref={innerRef}
-        className={wrapperClasses.valueOf()}
-        style={progressBarContainerStyle}
-        title={tooltip}
-        slot={slot}
-      >
-        <div className={progressBarClasses.valueOf()} style={progressBarStyle}>
-          {percentValue <= 50 ? null : progressBarTextSpan}
-        </div>
-        <div className={classes.progressBarRemaining}>{percentValue <= 50 ? progressBarTextSpan : null}</div>
-      </div>
-    );
+  // change content density
+  const theme = useTheme() as JSSTheme;
+  if (theme.contentDensity === ContentDensity.Compact) {
+    wrapperClasses.put(classes.compact);
   }
-}
+
+  // change text color based on percent value
+  if (percentValue <= 50) {
+    progressBarTextClasses.put(classes.progressBarTextColorLow);
+    progressBarTextClasses.put(classes.progressBarTextRight);
+  } else {
+    progressBarTextClasses.put(classes.progressBarTextColorHigh);
+    progressBarTextClasses.put(classes.progressBarTextLeft);
+  }
+
+  const progressBarTextSpan = <span className={progressBarTextClasses.valueOf()}> {displayValue} </span>;
+
+  progressBarClasses.put(classes[`state${state}`]);
+
+  if (className) {
+    wrapperClasses.put(className);
+  }
+
+  const progressBarContainerStyle = useMemo(() => ({ ...style, width, height }), [style, width, height]);
+
+  return (
+    <div ref={ref} className={wrapperClasses.valueOf()} style={progressBarContainerStyle} title={tooltip} slot={slot}>
+      <div className={progressBarClasses.valueOf()} style={progressBarStyle}>
+        {percentValue <= 50 ? null : progressBarTextSpan}
+      </div>
+      <div className={classes.progressBarRemaining}>{percentValue <= 50 ? progressBarTextSpan : null}</div>
+    </div>
+  );
+});
+
+ProgressIndicator.displayName = 'ProgressIndicator';
+
+ProgressIndicator.defaultProps = {
+  percentValue: 0,
+  displayValue: '',
+  width: 'auto',
+  height: '',
+  state: ValueState.None
+};
+
+export { ProgressIndicator };
