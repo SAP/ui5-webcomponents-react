@@ -20,5 +20,8 @@
     "hoist-non-react-statics": "^3.3.0",
     "react-jss": "10.0.0-alpha.23",
     "tslib": "^1.9.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
   }
 }
