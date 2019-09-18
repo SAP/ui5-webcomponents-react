@@ -49,7 +49,6 @@ import { ListMode } from './lib/ListMode';
 import { ListSeparators } from './lib/ListSeparators';
 import { MessageBox } from './lib/MessageBox';
 import { MessageBoxActions } from './lib/MessageBoxActions';
-import { MessageBoxButton } from './lib/MessageBoxButton';
 import { MessageBoxTypes } from './lib/MessageBoxTypes';
 import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
@@ -152,7 +151,6 @@ export {
   ListSeparators,
   MessageBox,
   MessageBoxActions,
-  MessageBoxButton,
   MessageBoxTypes,
   MessageStrip,
   MessageStripType,
