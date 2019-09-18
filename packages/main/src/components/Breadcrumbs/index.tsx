@@ -1,6 +1,6 @@
 import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/lib/BreadcrumbsSeparatorStyle';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
-import React, { Children, FC, forwardRef, Fragment, ReactNode, Ref, ReactNodeArray } from 'react';
+import React, { Children, FC, forwardRef, Fragment, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 
 const SeparatorStyles = {
@@ -11,6 +11,8 @@ const SeparatorStyles = {
   GreaterThan: '>',
   Slash: '/'
 };
+
+const separatorInlineStyles = { margin: '0 0.25rem' };
 
 export interface BreadcrumbsPropTypes extends CommonProps {
   /**
@@ -40,13 +42,13 @@ const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsProp
         return (
           <Fragment key={index}>
             {item}
-            <Label style={{ margin: '0 0.25rem' }} children={SeparatorStyles[separatorStyle]} />
+            <Label style={separatorInlineStyles} children={SeparatorStyles[separatorStyle]} />
           </Fragment>
         );
       })}
       {currentLocationText && (
         <>
-          <Label style={{ margin: '0 0.25rem' }}>{SeparatorStyles[separatorStyle]}</Label>
+          <Label style={separatorInlineStyles}>{SeparatorStyles[separatorStyle]}</Label>
           <Label>{currentLocationText}</Label>
         </>
       )}
