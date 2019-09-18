@@ -22,7 +22,6 @@ export interface ColumnConfiguration {
   vAlign?: VerticalAlign;
   canResize?: boolean;
   minWidth?: number;
-
   [key: string]: any;
 }
 
@@ -65,6 +64,8 @@ export interface TableProps extends CommonProps {
   noDataText?: string;
   stickyHeader?: boolean;
   onSort?: (e?: Event) => void;
+  useTableProps?: object;
+  tableHooks?: Array<() => any>;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles);
@@ -100,7 +101,9 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     selectable,
     onRowSelected,
     stickyHeader,
-    onSort
+    onSort,
+    useTableProps,
+    tableHooks
   } = props;
 
   const [selectedRow, setSelectedRow] = useState(null);
@@ -188,13 +191,15 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
       columns,
       data,
       defaultColumn,
-      state: tableState
+      state: tableState,
+      ...useTableProps
     },
     useFilters,
     useGroupBy,
     useSortBy,
     useExpanded,
-    useTableStyling
+    useTableStyling,
+    ...tableHooks
   );
 
   const minimumRows = useMemo(() => {
@@ -333,5 +338,7 @@ AnalyticalTable.defaultProps = {
   pivotBy: [],
   NoDataComponent: DefaultNoDataComponent,
   noDataText: 'No Data',
-  stickyHeader: true
+  stickyHeader: true,
+  useTableProps: {},
+  tableHooks: []
 };
