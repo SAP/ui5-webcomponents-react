@@ -11,6 +11,8 @@ import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
 import { Badge } from './lib/Badge';
 import { Bar } from './lib/Bar';
+import { Breadcrumbs } from './lib/Breadcrumbs';
+import { BreadcrumbsSeparatorStyle } from './lib/BreadcrumbsSeparatorStyle';
 import { BusyIndicator } from './lib/BusyIndicator';
 import { BusyIndicatorType } from './lib/BusyIndicatorType';
 import { Button } from './lib/Button';
@@ -113,6 +115,8 @@ export {
   AvatarSize,
   Badge,
   Bar,
+  Breadcrumbs,
+  BreadcrumbsSeparatorStyle,
   BusyIndicator,
   BusyIndicatorType,
   Button,
