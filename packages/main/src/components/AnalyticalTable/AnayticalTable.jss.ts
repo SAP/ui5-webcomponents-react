@@ -1,11 +1,23 @@
 import { fonts } from '@ui5/webcomponents-react-base';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters, contentDensity }: JSSTheme) => ({
-  tHead: {
+  tableContainer: {
+    width: '100%',
+    height: `${contentDensity === ContentDensity.Compact ? 'calc(100% - 2rem)' : 'calc(100% - 2.75rem)'}`,
+    minHeight: '3rem'
+  },
+
+  table: {
+    position: 'relative',
+    width: '100%'
+  },
+
+  tableHeaderRow: {
     boxShadow: 'none !important',
-    height: `${contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem'}`
+    height: `${contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem'}`,
+    display: 'grid'
   },
 
   th: {
@@ -24,34 +36,15 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
       borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
     }
   },
-  tableHeaderRow: {},
-  tableGroupHeader: {
-    '&$tr': {
-      backgroundColor: `${parameters.sapUiListTableGroupHeaderBackground} !important`,
-      border: `1px solid ${parameters.sapUiListTableGroupHeaderBorderColor}`,
-      color: parameters.sapUiListTextColor,
-      '& $td': {
-        borderRight: 'none'
-      }
-    }
-  },
-
-  tableGroupExpandCollapseIcon: {
-    color: parameters.sapUiContentIconColor,
-    height: '2rem',
-    width: '2rem',
-    fontSize: '0.75rem'
-  },
 
   tbody: {
-    position: 'relative',
     '&$selectable $tr': {
       '&:hover': {
         backgroundColor: parameters.sapUiListHoverBackground
       },
       '&:active:not($selectedRow)': {
         backgroundColor: parameters.sapUiListActiveBackground,
-        '& $td': {
+        '& $tableCell': {
           color: parameters.sapUiListActiveTextColor,
           borderRight: `1px solid ${parameters.sapUiListActiveBackground}`
         }
@@ -68,10 +61,32 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
       backgroundColor: parameters.sapUiListBackground
     }
   },
-  tr: {},
+
+  tr: {
+    display: 'grid'
+  },
+
+  tableGroupHeader: {
+    '&$tr': {
+      backgroundColor: `${parameters.sapUiListTableGroupHeaderBackground} !important`,
+      border: `1px solid ${parameters.sapUiListTableGroupHeaderBorderColor}`,
+      color: parameters.sapUiListTextColor,
+      '& $tableCell': {
+        borderRight: 'none'
+      }
+    }
+  },
+
+  tableGroupExpandCollapseIcon: {
+    color: parameters.sapUiContentIconColor,
+    height: '2rem',
+    width: '2rem',
+    fontSize: '0.75rem'
+  },
+
   selectable: {},
   selectedRow: {},
-  td: {
+  tableCell: {
     height: `${contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem'}`,
     fontFamily: fonts.sapUiFontFamily,
     fontSize: fonts.sapMFontMediumSize,
@@ -79,27 +94,16 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
     color: parameters.sapUiListTextColor,
     borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
     borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
-    display: 'table-cell',
+    display: 'flex',
     padding: '0 0.5rem',
     '&:first-child': {
       borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
-    },
+    }
+  },
+  tableCellContent: {
     textOverflow: 'ellipsis',
-    overflowX: 'hidden',
-    maxWidth: '0px',
+    overflow: 'hidden',
     whiteSpace: 'nowrap'
-  },
-  tBody: {
-    boxShadow: 'none !important'
-  },
-  tableContainer: {
-    width: '100%',
-    height: `${contentDensity === ContentDensity.Compact ? 'calc(100% - 2rem)' : 'calc(100% - 2.75rem)'}`,
-    minHeight: '3rem'
-  },
-  table: {
-    borderSpacing: 0,
-    position: 'relative'
   },
   noDataContainer: {
     textAlign: 'center',

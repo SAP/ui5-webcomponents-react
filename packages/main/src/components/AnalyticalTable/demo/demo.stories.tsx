@@ -49,7 +49,7 @@ const columns = [
   }
 ];
 
-const data = generateData(200);
+const data = generateData(15);
 
 export const defaultStory = () => {
   return (

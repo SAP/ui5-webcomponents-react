@@ -2,8 +2,7 @@ import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
-import { ReactComponentLike } from 'prop-types';
-import React, { CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref, useCallback, useMemo, useState } from 'react';
+import React, { ComponentType, CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useExpanded, useFilters, useGroupBy, useSortBy, useTable, useTableState } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -12,6 +11,14 @@ import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './columnHeader';
 import { DefaultFilterComponent } from './columnHeader/DefaultFilterComponent';
 import { DefaultNoDataComponent } from './DefaultNoDataComponent';
+import { useFillMissingRows } from './hooks/useFillMissingRows';
+import { useResizeColumns } from './hooks/useResizeColumns';
+import { useRowSelection } from './hooks/useRowSelection';
+import { useTableCellStyling } from './hooks/useTableCellStyling';
+import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
+import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
+import { useTableRowStyling } from './hooks/useTableRowStyling';
+import { useTableStyling } from './hooks/useTableStyling';
 import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './titleBar';
 
@@ -22,6 +29,7 @@ export interface ColumnConfiguration {
   vAlign?: VerticalAlign;
   canResize?: boolean;
   minWidth?: number;
+
   [key: string]: any;
 }
 
@@ -60,7 +68,7 @@ export interface TableProps extends CommonProps {
   getRowProps?: () => any;
   getCellProps?: () => any;
   onRowSelected?: (e?: Event) => any;
-  NoDataComponent?: ReactComponentLike;
+  NoDataComponent?: ComponentType<any>;
   noDataText?: string;
   stickyHeader?: boolean;
   onSort?: (e?: Event) => void;
@@ -71,25 +79,24 @@ export interface TableProps extends CommonProps {
   tableHooks?: Array<() => any>;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles);
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
 
 const defaultColumn = {
   Filter: DefaultFilterComponent,
   canResize: true,
   minWidth: 30,
+  vAlign: VerticalAlign.Middle,
   Aggregated: () => null,
   defaultFilter: (filter, row) => {
     return new RegExp(filter.value, 'gi').test(String(row[filter.id]));
   }
 };
 
-export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLTableElement>) => {
+const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
   const {
     columns,
     data,
     groupable,
-    sortable,
-    filterable,
     className,
     style,
     tooltip,
@@ -104,85 +111,14 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     selectable,
     onRowSelected,
     stickyHeader,
-    onSort,
     reactTableOptions,
     tableHooks
   } = props;
 
-  const [selectedRow, setSelectedRow] = useState(null);
-
   const classes = useStyles();
 
-  const useTableStyling = useCallback(
-    (instance) => {
-      instance.getTableProps.push(() => ({
-        className: classes.table,
-        style: {
-          width: '100%'
-        }
-      }));
-
-      instance.getHeaderGroupProps.push(() => ({
-        className: classes.tableHeaderRow
-      }));
-      instance.getHeaderProps.push(() => ({
-        className: classes.th
-      }));
-
-      instance.getRowProps.push((row) => {
-        let className = classes.tr;
-        if (row.isAggregated) {
-          className += ` ${classes.tableGroupHeader}`;
-        }
-        return {
-          className
-        };
-      });
-
-      instance.getCellProps.push(({ column }) => {
-        const style: CSSProperties = {};
-
-        if (cellHeight) {
-          style.height = cellHeight;
-        }
-        switch (column.hAlign) {
-          case TextAlign.Begin:
-            style.textAlign = 'start';
-            break;
-          case TextAlign.Center:
-            style.textAlign = 'center';
-            break;
-          case TextAlign.End:
-            style.textAlign = 'end';
-            break;
-          case TextAlign.Left:
-            style.textAlign = 'left';
-            break;
-          case TextAlign.Right:
-            style.textAlign = 'right';
-            break;
-        }
-        switch (column.vAlign) {
-          case VerticalAlign.Bottom:
-            style.verticalAlign = 'bottom';
-            break;
-          case VerticalAlign.Middle:
-            style.verticalAlign = 'inherit';
-            break;
-          case VerticalAlign.Top:
-            style.verticalAlign = 'top';
-            break;
-        }
-
-        return {
-          className: classes.td,
-          style
-        };
-      });
-      return instance;
-    },
-    [classes]
-  );
+  const [selectedRow, onRowClicked] = useRowSelection(onRowSelected);
+  const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
 
   const tableState = useTableState({
     groupBy: groupable ? pivotBy : []
@@ -201,36 +137,15 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
     useGroupBy,
     useSortBy,
     useExpanded,
-    useTableStyling,
+    useTableStyling(classes),
+    useTableHeaderGroupStyling(classes, resizedColumns, stickyHeader),
+    useTableHeaderStyling(classes, onColumnSizeChanged, props),
+    useTableRowStyling(classes, resizedColumns),
+    useTableCellStyling(classes, cellHeight),
     ...tableHooks
   );
 
-  const minimumRows = useMemo(() => {
-    const missingRows = minRows - rows.length;
-
-    if (missingRows > 0 && rows.length > 0) {
-      const intData = [];
-      for (let i = 0; i < missingRows; i++) {
-        intData.push({
-          key: `minRow-${i}`
-        });
-      }
-      return intData;
-    }
-
-    return [];
-  }, [rows]);
-
-  const onRowClicked = useCallback(
-    (row) => (e) => {
-      const newKey = row.getRowProps().key;
-      setSelectedRow(selectedRow === newKey ? null : newKey);
-      if (typeof onRowSelected === 'function') {
-        onRowSelected(Event.of(null, e, { row }));
-      }
-    },
-    [selectedRow]
-  );
+  const minimumRows = useFillMissingRows(rows, minRows);
 
   const tableBodyClasses = StyleClassHelper.of(classes.tbody);
   if (selectable) {
@@ -243,30 +158,17 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
       <div className={classes.tableContainer}>
-        <table {...getTableProps()}>
-          <thead className={classes.tHead}>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column, index) => {
-                  return (
-                    <ColumnHeader
-                      {...column.getHeaderProps()}
-                      column={column}
-                      groupable={groupable}
-                      sortable={sortable}
-                      filterable={filterable}
-                      sticky={stickyHeader}
-                      isLastColumn={index === columns.length - 1}
-                      onSort={onSort}
-                    >
-                      {column.render('Header')}
-                    </ColumnHeader>
-                  );
-                })}
-              </tr>
-            ))}
-          </thead>
-          <tbody className={tableBodyClasses.valueOf()}>
+        <div {...getTableProps()}>
+          {headerGroups.map((headerGroup) => (
+            <header {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column, index) => (
+                <ColumnHeader {...column.getHeaderProps()} isLastColumn={index === columns.length - 1}>
+                  {column.render('Header')}
+                </ColumnHeader>
+              ))}
+            </header>
+          ))}
+          <div className={tableBodyClasses.valueOf()}>
             {rows.map((row) => {
               prepareRow(row);
               const rowProps = row.getRowProps();
@@ -276,10 +178,10 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
                 finalRowClasses = `${finalRowClasses} ${classes.selectedRow}`;
               }
               return (
-                <tr {...rowProps} className={finalRowClasses} onClick={onRowClicked(row)}>
+                <div {...rowProps} className={finalRowClasses} onClick={onRowClicked(row)}>
                   {row.cells.map((cell) => {
                     return (
-                      <td {...cell.getCellProps()}>
+                      <div {...cell.getCellProps()}>
                         {cell.isGrouped ? (
                           <>
                             <span {...row.getExpandedToggleProps()}>
@@ -300,24 +202,24 @@ export const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, re
                           cell.render('Aggregated')
                         ) : cell.isRepeatedValue ? null : ( // For cells with repeated values, render null
                           // Otherwise, just render the regular cell
-                          cell.render('Cell')
+                          <div className={classes.tableCellContent}>{cell.render('Cell')}</div>
                         )}
-                      </td>
+                      </div>
                     );
                   })}
-                </tr>
+                </div>
               );
             })}
             {minimumRows.map((minRow) => (
               <tr key={minRow.key} className={classes.tr}>
                 {columns.map((col, index) => (
-                  <td key={`${minRow.key}-${index}`} className={classes.td} />
+                  <div key={`${minRow.key}-${index}`} className={classes.tableCell} />
                 ))}
               </tr>
             ))}
             {loading && <LoadingComponent />}
-          </tbody>
-        </table>
+          </div>
+        </div>
         {!loading && rows.length === 0 && (
           <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} />
         )}
@@ -345,3 +247,5 @@ AnalyticalTable.defaultProps = {
   reactTableOptions: {},
   tableHooks: []
 };
+
+export { AnalyticalTable };
