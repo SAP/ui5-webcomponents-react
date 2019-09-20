@@ -2,7 +2,7 @@ import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export const sideNavigationStyles = ({ parameters }: JSSTheme) => ({
   sideNavigation: {
-    height: '1000px',
+    height: '100%',
     borderRight: `0.0625rem solid ${parameters.sapUiGroupContentBorderColor}`,
     backgroundColor: parameters.sapUiListBackground,
     display: 'flex',

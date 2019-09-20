@@ -2,7 +2,7 @@ import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
-import React, { Children, cloneElement, FC, forwardRef, ReactNode, Ref, useEffect, useState, useCallback } from 'react';
+import React, { Children, cloneElement, FC, forwardRef, ReactNode, Ref, useCallback, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -20,7 +20,7 @@ export interface SideNavigationProps extends CommonProps {
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigationStyles>>(sideNavigationStyles);
 
 const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigationProps, ref: Ref<HTMLDivElement>) => {
-  const { children, openState, footerItems, selectedId, onItemSelect, noIcons } = props;
+  const { children, openState, footerItems, selectedId, onItemSelect, noIcons, style, className } = props;
 
   const classes = useStyles();
 
@@ -47,10 +47,19 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
     }
   }
 
+  if (className) {
+    sideNavigationClasses.put(className);
+  }
+
   const onListItemSelected = useCallback(
     (e) => {
       const listItem = e.getParameter('item');
       if (listItem.dataset.hasChildren === 'true') {
+        if (openState === SideNavigationOpenState.Condensed) {
+          requestAnimationFrame(() => {
+            listItem.selected = false;
+          });
+        }
         return;
       }
 
@@ -61,11 +70,11 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
         })
       );
     },
-    [onItemSelect, setInternalSelectedId]
+    [onItemSelect, setInternalSelectedId, openState]
   );
 
   return (
-    <div ref={ref} className={sideNavigationClasses.valueOf()}>
+    <div ref={ref} className={sideNavigationClasses.valueOf()} style={style}>
       <List mode={ListMode.SingleSelect} onItemClick={onListItemSelected}>
         {Children.map(children, (child: any) =>
           cloneElement(child, {

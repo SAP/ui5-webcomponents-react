@@ -4,9 +4,9 @@ import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React, {
   Children,
@@ -21,6 +21,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
+import { ListItemTypes } from '../..';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { sideNavigationListItemStyles } from './SideNavigationListItem.jss';
@@ -99,7 +100,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
     return (
       <>
         <CustomListItem
-          selected={isSelfSelected || hasSelectedChild}
+          selected={childCount > 0 ? hasSelectedChild : isSelfSelected}
           ref={ref}
           className={listItemClasses.valueOf()}
           tooltip={tooltip}

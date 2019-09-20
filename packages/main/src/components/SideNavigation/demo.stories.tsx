@@ -11,6 +11,7 @@ export const defaultStory = () => (
     selectedId={text('selectedId', 'sales-leads')}
     onItemSelect={action('onItemSelect')}
     noIcons={boolean('noIcons', false)}
+    style={{ height: '900px' }}
     footerItems={[
       <SideNavigationListItem text="Legal Information" icon="sap-icon://compare" />,
       <SideNavigationListItem text="Useful Links" icon="sap-icon://chain-link" />
