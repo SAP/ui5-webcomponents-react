@@ -7,8 +7,6 @@ coverage
 /.env
 dist/
 @types
-typings
-!/typings
 .cache
 build
 /packages/*/npm/**/*.d.ts

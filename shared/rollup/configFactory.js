@@ -17,8 +17,7 @@ const rollupConfigFactory = (pkgName) => {
     typescriptPlugin({
       typescript,
       tsconfig: path.resolve(PATHS.root, 'tsconfig.json'),
-      importHelpers: true,
-      declarationDir: path.join(PATHS.root, 'typings')
+      importHelpers: true
     }),
     resolve(),
     jsonPlugin(),

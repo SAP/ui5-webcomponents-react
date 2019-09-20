@@ -32,22 +32,22 @@
       "filename": "main.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "main",
-      "size": 117411,
-      "gzip": 32162
+      "size": 114458,
+      "gzip": 31269
     },
     {
       "filename": "main.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "main",
-      "size": 117411,
-      "gzip": 32162
+      "size": 114458,
+      "gzip": 31269
     },
     {
       "filename": "main.js",
       "bundleType": "NODE_ES",
       "packageName": "main",
-      "size": 236673,
-      "gzip": 43731
+      "size": 230785,
+      "gzip": 42352
     },
     {
       "filename": "base.js",

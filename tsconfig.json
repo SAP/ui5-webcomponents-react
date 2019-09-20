@@ -33,8 +33,7 @@
   },
   "include": [
     "packages/**/*",
-    "shared/**/*",
-    "typings/**/*"
+    "shared/**/*"
   ],
   "exclude": [
     "node_modules"
