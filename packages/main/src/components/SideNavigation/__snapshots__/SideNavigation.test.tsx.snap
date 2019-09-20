@@ -62,7 +62,7 @@ exports[`SideNavigation Collapsed 1`] = `
       </div>
       <ui5-popover
         class=""
-        header-text="Sales"
+        header-text=""
         horizontal-align="Center"
         placement-type="Right"
         vertical-align="Top"
@@ -77,7 +77,16 @@ exports[`SideNavigation Collapsed 1`] = `
         >
           <ui5-li
             class=""
+            data-id="sales"
+            info-state="None"
+            type="Active"
+          >
+            Sales
+          </ui5-li>
+          <ui5-li
+            class=""
             data-id="sales-opportunities"
+            data-parent-id="sales"
             info-state="None"
             type="Active"
           >
@@ -86,6 +95,7 @@ exports[`SideNavigation Collapsed 1`] = `
           <ui5-li
             class=""
             data-id="sales-leads"
+            data-parent-id="sales"
             info-state="None"
             selected="true"
             type="Active"
@@ -95,6 +105,7 @@ exports[`SideNavigation Collapsed 1`] = `
           <ui5-li
             class=""
             data-id="sales-cpqs"
+            data-parent-id="sales"
             info-state="None"
             type="Active"
           >
@@ -218,7 +229,7 @@ exports[`SideNavigation Condensed 1`] = `
       </div>
       <ui5-popover
         class=""
-        header-text="Sales"
+        header-text=""
         horizontal-align="Center"
         placement-type="Right"
         vertical-align="Top"
@@ -233,7 +244,16 @@ exports[`SideNavigation Condensed 1`] = `
         >
           <ui5-li
             class=""
+            data-id="sales"
+            info-state="None"
+            type="Active"
+          >
+            Sales
+          </ui5-li>
+          <ui5-li
+            class=""
             data-id="sales-opportunities"
+            data-parent-id="sales"
             info-state="None"
             type="Active"
           >
@@ -242,6 +262,7 @@ exports[`SideNavigation Condensed 1`] = `
           <ui5-li
             class=""
             data-id="sales-leads"
+            data-parent-id="sales"
             info-state="None"
             selected="true"
             type="Active"
@@ -251,6 +272,7 @@ exports[`SideNavigation Condensed 1`] = `
           <ui5-li
             class=""
             data-id="sales-cpqs"
+            data-parent-id="sales"
             info-state="None"
             type="Active"
           >
