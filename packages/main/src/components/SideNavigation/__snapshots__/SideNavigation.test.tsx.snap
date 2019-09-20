@@ -8,7 +8,7 @@ exports[`SideNavigation Collapsed 1`] = `
     class=""
     footer-text=""
     header-text=""
-    mode="SingleSelect"
+    mode="None"
     no-data-text=""
     separators="All"
   >
@@ -128,7 +128,7 @@ exports[`SideNavigation Collapsed 1`] = `
     class=""
     footer-text=""
     header-text=""
-    mode="SingleSelect"
+    mode="None"
     no-data-text=""
     separators="All"
   >
@@ -164,7 +164,7 @@ exports[`SideNavigation Condensed 1`] = `
     class=""
     footer-text=""
     header-text=""
-    mode="SingleSelect"
+    mode="None"
     no-data-text=""
     separators="All"
   >
@@ -284,7 +284,7 @@ exports[`SideNavigation Condensed 1`] = `
     class=""
     footer-text=""
     header-text=""
-    mode="SingleSelect"
+    mode="None"
     no-data-text=""
     separators="All"
   >
@@ -320,7 +320,7 @@ exports[`SideNavigation Expanded 1`] = `
     class=""
     footer-text=""
     header-text=""
-    mode="SingleSelect"
+    mode="None"
     no-data-text=""
     separators="All"
   >
@@ -468,7 +468,7 @@ exports[`SideNavigation Expanded 1`] = `
     class=""
     footer-text=""
     header-text=""
-    mode="SingleSelect"
+    mode="None"
     no-data-text=""
     separators="All"
   >
@@ -514,7 +514,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     class=""
     footer-text=""
     header-text=""
-    mode="SingleSelect"
+    mode="None"
     no-data-text=""
     separators="All"
   >
@@ -633,7 +633,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     class=""
     footer-text=""
     header-text=""
-    mode="SingleSelect"
+    mode="None"
     no-data-text=""
     separators="All"
   >
