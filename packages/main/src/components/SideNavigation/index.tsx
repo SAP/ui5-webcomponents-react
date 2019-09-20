@@ -18,7 +18,9 @@ export interface SideNavigationProps extends CommonProps {
 
 let lastFiredSelection = '';
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigationStyles>>(sideNavigationStyles);
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigationStyles>>(sideNavigationStyles, {
+  name: 'SideNavigation'
+});
 
 const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigationProps, ref: Ref<HTMLDivElement>) => {
   const { children, openState, footerItems, selectedId, onItemSelect, noIcons, style, className } = props;

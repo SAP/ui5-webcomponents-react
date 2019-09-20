@@ -33,7 +33,10 @@ export interface SideNavigationListItemProps extends CommonProps {
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigationListItemStyles>>(
-  sideNavigationListItemStyles
+  sideNavigationListItemStyles,
+  {
+    name: 'SideNavigationListItem'
+  }
 );
 const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
   (props: SideNavigationListItemProps, ref: Ref<HTMLDivElement>) => {
