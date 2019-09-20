@@ -23,7 +23,8 @@
     "@ui5/webcomponents-react-base": "0.5.1-rc.15",
     "lodash.debounce": "^4.0.8",
     "react-table": "7.0.0-beta.0",
-    "react-toastify": "^5.0.1"
+    "react-toastify": "^5.0.1",
+    "react-window": "^1.8.5"
   },
   "devDependencies": {
     "diff": "^4.0.1",

@@ -49,7 +49,7 @@ const columns = [
   }
 ];
 
-const data = generateData(15);
+const data = generateData(2000);
 
 export const defaultStory = () => {
   return (
@@ -60,11 +60,10 @@ export const defaultStory = () => {
       loading={boolean('loading', false)}
       sortable={boolean('sortable', true)}
       filterable={boolean('filterable', true)}
-      stickyHeader={boolean('stickyHeader', true)}
-      minRows={number('minRows', 10)}
+      visibleRows={number('visibleRows', 15)}
       groupable={boolean('groupable', true)}
       selectable={boolean('selectable', true)}
-      style={{ height: '600px', overflowY: 'auto', paddingRight: '12px' }}
+      // style={{ height: '600px', overflowY: 'auto', paddingRight: '12px' }}
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
     />

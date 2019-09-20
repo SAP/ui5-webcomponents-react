@@ -7,20 +7,19 @@ const styles = ({ parameters }: JSSTheme) => ({
     height: 'calc(100% - 2.75rem)',
     minHeight: '3rem'
   },
-
   table: {
     position: 'relative',
     width: '100%',
     maxWidth: '100%',
     overflowX: 'auto'
   },
-
   tableHeaderRow: {
     boxShadow: 'none !important',
     height: '2.75rem',
-    display: 'grid'
+    display: 'grid',
+    zIndex: 1,
+    position: 'relative'
   },
-
   th: {
     backgroundColor: parameters.sapUiListHeaderBackground,
     height: '2.75rem',
@@ -37,32 +36,33 @@ const styles = ({ parameters }: JSSTheme) => ({
       borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
     }
   },
-
   tbody: {
-    display: 'grid',
-
-    '&$selectable $tr:hover $tableCell': {
+    position: 'relative',
+    zIndex: 0,
+    backgroundColor: parameters.sapUiListBackground,
+    '&$selectable $tr:hover': {
       backgroundColor: parameters.sapUiListHoverBackground
     },
-
-    '& $selectedRow $tableCell': {
+    '& $selectedRow': {
       backgroundColor: parameters.sapUiListSelectionBackgroundColor
     },
-
-    '& $selectedRow:hover $tableCell': {
+    '& $selectedRow:hover': {
       backgroundColor: `${parameters.sapUiListSelectionHoverBackground} !important`
     },
-    '&$selectable $tr:active:not($selectedRow) $tableCell': {
+    '&$selectable $tr:active:not($selectedRow):not($tableGroupHeader)': {
       backgroundColor: parameters.sapUiListActiveBackground,
-      color: parameters.sapUiListActiveTextColor,
+      color: parameters.sapUiListActiveTextColor
+    },
+    '&$selectable $tr:active:not($selectedRow):not($tableGroupHeader) $tableCell': {
       borderRight: `1px solid ${parameters.sapUiListActiveBackground}`
     }
   },
-
   tr: {
-    display: 'contents'
+    display: 'grid',
+    zIndex: 0,
+    backgroundColor: parameters.sapUiListBackground,
+    color: parameters.sapUiListTextColor
   },
-
   tableGroupHeader: {
     '&$tr': {
       backgroundColor: `${parameters.sapUiListTableGroupHeaderBackground} !important`,
@@ -73,24 +73,21 @@ const styles = ({ parameters }: JSSTheme) => ({
       }
     }
   },
-
   tableGroupExpandCollapseIcon: {
     color: parameters.sapUiContentIconColor,
     height: '2rem',
     width: '2rem',
     fontSize: '0.75rem'
   },
-
   selectable: {},
   selectedRow: {},
   tableCell: {
-    backgroundColor: parameters.sapUiListBackground,
     height: '2.75rem',
     fontFamily: fonts.sapUiFontFamily,
     fontSize: fonts.sapMFontMediumSize,
     fontWeight: 'normal',
-    color: parameters.sapUiListTextColor,
     borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
+    boxSizing: 'border-box',
     borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
     display: 'flex',
     padding: '0 0.5rem',

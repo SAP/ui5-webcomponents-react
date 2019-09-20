@@ -23,6 +23,7 @@ import { useTableStyling } from './hooks/useTableStyling';
 import { makeTemplateColumns } from './hooks/utils';
 import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './titleBar';
+import { VirtualTableBody } from './virtualization/VirtualTableBody';
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -72,13 +73,13 @@ export interface TableProps extends CommonProps {
   onRowSelected?: (e?: Event) => any;
   NoDataComponent?: ComponentType<any>;
   noDataText?: string;
-  stickyHeader?: boolean;
   onSort?: (e?: Event) => void;
   /**
    * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api.md#table-options)
    */
   reactTableOptions?: object;
   tableHooks?: Array<() => any>;
+  visibleRows?: number;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
@@ -112,7 +113,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     noDataText,
     selectable,
     onRowSelected,
-    stickyHeader,
     reactTableOptions,
     tableHooks
   } = props;
@@ -140,7 +140,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useSortBy,
     useExpanded,
     useTableStyling(classes),
-    useTableHeaderGroupStyling(classes, resizedColumns, stickyHeader),
+    useTableHeaderGroupStyling(classes, resizedColumns),
     useTableHeaderStyling(classes, onColumnSizeChanged, props),
     useTableRowStyling(classes, resizedColumns, selectable, selectedRow),
     useTableCellStyling(classes, cellHeight),
@@ -182,48 +182,17 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               ))}
             </header>
           ))}
-          <div className={tableBodyClasses.valueOf()} style={rowContainerStyling}>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
-                <div {...row.getRowProps()} onClick={onRowClicked(row)}>
-                  {row.cells.map((cell) => (
-                    <div {...cell.getCellProps()}>
-                      {cell.isGrouped ? (
-                        <>
-                          <span {...row.getExpandedToggleProps()}>
-                            <Icon
-                              src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
-                              className={classes.tableGroupExpandCollapseIcon}
-                            />
-                          </span>
-                          <span>
-                            {cell.render('Cell')} ({row.subRows.length})
-                          </span>
-                        </>
-                      ) : cell.isAggregated ? (
-                        // If the cell is aggregated, use the Aggregated
-                        // renderer for cell
-                        cell.render('Aggregated')
-                      ) : cell.isRepeatedValue ? null : ( // For cells with repeated values, render null
-                        // Otherwise, just render the regular cell
-                        <div className={classes.tableCellContent}>{cell.render('Cell')}</div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              );
-            })}
-            {minimumRows.map((minRow) => (
-              <div key={minRow.key} className={classes.tr}>
-                {columns.map((col, index) => (
-                  <div key={`${minRow.key}-${index}`} className={classes.tableCell} />
-                ))}
-              </div>
-            ))}
-            {loading && <LoadingComponent />}
-          </div>
+          <VirtualTableBody
+            {...props}
+            tableBodyClasses={tableBodyClasses}
+            rowContainerStyling={rowContainerStyling}
+            prepareRow={prepareRow}
+            rows={rows}
+            classes={classes}
+            onRowClicked={onRowClicked}
+          />
         </div>
+        {loading && <LoadingComponent />}
         {!loading && rows.length === 0 && (
           <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} />
         )}
@@ -247,9 +216,9 @@ AnalyticalTable.defaultProps = {
   pivotBy: [],
   NoDataComponent: DefaultNoDataComponent,
   noDataText: 'No Data',
-  stickyHeader: true,
   reactTableOptions: {},
-  tableHooks: []
+  tableHooks: [],
+  visibleRows: 15
 };
 
 export { AnalyticalTable };

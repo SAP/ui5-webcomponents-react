@@ -8,7 +8,7 @@ export const useTableRowStyling = (classes, resizedColumns, selectable, selected
         if (row.isAggregated) {
           className += ` ${classes.tableGroupHeader}`;
         }
-        if (selectable && row.index === selectedRow) {
+        if (!row.isAggregated && selectable && row.index === selectedRow) {
           className += ` ${classes.selectedRow}`;
         }
         return {
