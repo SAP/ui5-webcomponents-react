@@ -21,7 +21,6 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
-import { ListItemTypes } from '../..';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { sideNavigationListItemStyles } from './SideNavigationListItem.jss';

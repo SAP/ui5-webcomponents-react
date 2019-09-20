@@ -1,6 +1,5 @@
 import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
 import { List } from '@ui5/webcomponents-react/lib/List';
-import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import React, { Children, cloneElement, FC, forwardRef, ReactNode, Ref, useCallback, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -55,11 +54,6 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
     (e) => {
       const listItem = e.getParameter('item');
       if (listItem.dataset.hasChildren === 'true') {
-        if (openState === SideNavigationOpenState.Condensed) {
-          requestAnimationFrame(() => {
-            listItem.selected = false;
-          });
-        }
         return;
       }
 
@@ -75,7 +69,7 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
 
   return (
     <div ref={ref} className={sideNavigationClasses.valueOf()} style={style}>
-      <List mode={ListMode.SingleSelect} onItemClick={onListItemSelected}>
+      <List onItemClick={onListItemSelected}>
         {Children.map(children, (child: any) =>
           cloneElement(child, {
             openState: openState,
@@ -88,7 +82,7 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
       <span style={{ flexGrow: 1 }} />
       {footerItems.length && <span className={classes.footerItemsSeparator} />}
       {footerItems && (
-        <List mode={ListMode.SingleSelect} onItemClick={onListItemSelected}>
+        <List onItemClick={onListItemSelected}>
           {footerItems.map((item: any, index) =>
             cloneElement(item, {
               openState: openState,
