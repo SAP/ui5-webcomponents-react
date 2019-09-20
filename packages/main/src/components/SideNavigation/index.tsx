@@ -17,6 +17,7 @@ export interface SideNavigationProps extends CommonProps {
 }
 
 let lastFiredSelection = '';
+let lastParent = '';
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigationStyles>>(sideNavigationStyles, {
   name: 'SideNavigation'
@@ -57,12 +58,18 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
   const onListItemSelected = useCallback(
     (e) => {
       const listItem = e.getParameter('item');
-      if (listItem.dataset.hasChildren === 'true') {
-        return;
-      }
 
       if (lastFiredSelection === listItem.dataset.id) {
         return;
+      }
+
+      if (listItem.dataset.id === lastParent) {
+        lastParent = '';
+        return;
+      }
+
+      if (listItem.dataset.parentId) {
+        lastParent = listItem.dataset.parentId;
       }
 
       setInternalSelectedId(listItem.dataset.id);

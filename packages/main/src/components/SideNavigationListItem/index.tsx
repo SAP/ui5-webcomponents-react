@@ -92,7 +92,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
     return (
       <>
         <CustomListItem
-          selected={childCount > 0 ? hasSelectedChild : isSelfSelected}
+          selected={isSelfSelected || hasSelectedChild}
           ref={ref}
           className={listItemClasses.valueOf()}
           tooltip={tooltip}
@@ -107,18 +107,21 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
           )}
           {!isOpenStateExpanded && icon && childCount > 0 && !noIcons && (
             <Popover
-              headerText={text}
               open={isExpanded}
               verticalAlign={PopoverVerticalAlign.Top}
               openBy={<Icon src={icon} className={classes.icon} />}
             >
               <List>
+                <StandardListItem selected={isSelfSelected} data-id={id}>
+                  {text}
+                </StandardListItem>
                 {validChildren.map((child: any, index) => {
                   return (
                     <StandardListItem
                       selected={props['selectedId'] === child.props.id}
                       key={index}
                       data-id={child.props.id}
+                      data-parent-id={id}
                     >
                       {child.props.text}
                     </StandardListItem>

@@ -7,14 +7,14 @@ import React from 'react';
 
 export const defaultStory = () => (
   <SideNavigation
-    openState={select('openState', SideNavigationOpenState, SideNavigationOpenState.Expandend)}
+    openState={select('openState', SideNavigationOpenState, SideNavigationOpenState.Expanded)}
     selectedId={text('selectedId', 'sales-leads')}
     onItemSelect={action('onItemSelect')}
     noIcons={boolean('noIcons', false)}
     style={{ height: '900px' }}
     footerItems={[
-      <SideNavigationListItem text="Legal Information" icon="sap-icon://compare" />,
-      <SideNavigationListItem text="Useful Links" icon="sap-icon://chain-link" />
+      <SideNavigationListItem id="footer1" text="Legal Information" icon="sap-icon://compare" />,
+      <SideNavigationListItem id="footer2" text="Useful Links" icon="sap-icon://chain-link" />
     ]}
   >
     <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" />
