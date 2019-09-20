@@ -1,6 +1,6 @@
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
-import { Icon } from '../../../webComponents/Icon';
 
 const ROW_HEIGHT = 32;
 
