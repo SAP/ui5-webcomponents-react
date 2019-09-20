@@ -4,7 +4,7 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
   listItem: {
     '&:active': {
       '--sapUiBaseText': parameters.sapUiListActiveTextColor,
-      '& $icon': {
+      '& $icon, & $expandArrow': {
         '--sapUiContentNonInteractiveIconColor': parameters.sapUiListActiveTextColor
       }
     }
