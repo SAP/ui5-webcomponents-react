@@ -86,16 +86,6 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
       childCount > 0 &&
       !!validChildren.find((child: any) => child.props.id === props['selectedId']);
 
-    const onPopoverListItemSelect = useCallback(
-      (e) => {
-        props['onListItemSelected'](e);
-        e.getOriginalEvent().preventDefault();
-        e.getOriginalEvent().stopPropagation();
-        e.getOriginalEvent().stopImmediatePropagation();
-      },
-      [props['onListItemSelected']]
-    );
-
     return (
       <>
         <CustomListItem
@@ -119,7 +109,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
               verticalAlign={PopoverVerticalAlign.Top}
               openBy={<Icon src={icon} className={classes.icon} />}
             >
-              <List onItemClick={onPopoverListItemSelect}>
+              <List>
                 {validChildren.map((child: any, index) => {
                   return (
                     <StandardListItem

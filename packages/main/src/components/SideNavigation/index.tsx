@@ -16,6 +16,8 @@ export interface SideNavigationProps extends CommonProps {
   noIcons?: boolean;
 }
 
+let lastFiredSelection = '';
+
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigationStyles>>(sideNavigationStyles);
 
 const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigationProps, ref: Ref<HTMLDivElement>) => {
@@ -57,14 +59,19 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
         return;
       }
 
+      if (lastFiredSelection === listItem.dataset.id) {
+        return;
+      }
+
       setInternalSelectedId(listItem.dataset.id);
       onItemSelect(
         Event.of(null, e, {
           selectedItem: listItem
         })
       );
+      lastFiredSelection = listItem.dataset.id;
     },
-    [onItemSelect, setInternalSelectedId, openState]
+    [onItemSelect, setInternalSelectedId]
   );
 
   return (
@@ -74,7 +81,6 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
           cloneElement(child, {
             openState: openState,
             selectedId: internalSelectedId,
-            onListItemSelected,
             noIcons
           })
         )}
@@ -88,7 +94,6 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
               openState: openState,
               key: index,
               selectedId: internalSelectedId,
-              onListItemSelected,
               noIcons
             })
           )}
