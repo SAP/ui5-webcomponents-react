@@ -5,7 +5,7 @@ export const useRowSelection = (onRowSelected) => {
   const [selectedRow, setSelectedRow] = useState(null);
   const onRowClicked = useCallback(
     (row) => (e) => {
-      const newKey = row.getRowProps().key;
+      const newKey = row.index;
       setSelectedRow(selectedRow === newKey ? null : newKey);
       if (typeof onRowSelected === 'function') {
         onRowSelected(Event.of(null, e, { row }));

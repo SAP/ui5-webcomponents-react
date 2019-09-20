@@ -1,15 +1,16 @@
 import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
-import React, { ComponentType, CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref } from 'react';
-import { createUseStyles } from 'react-jss';
+import React, { ComponentType, CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref, useMemo } from 'react';
+import { createUseStyles, useTheme } from 'react-jss';
 import { useExpanded, useFilters, useGroupBy, useSortBy, useTable, useTableState } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
-import { ColumnHeader } from './columnHeader';
-import { DefaultFilterComponent } from './columnHeader/DefaultFilterComponent';
+import { ColumnHeader } from './ColumnHeader';
+import { DefaultFilterComponent } from './ColumnHeader/DefaultFilterComponent';
 import { DefaultNoDataComponent } from './DefaultNoDataComponent';
 import { useFillMissingRows } from './hooks/useFillMissingRows';
 import { useResizeColumns } from './hooks/useResizeColumns';
@@ -19,6 +20,7 @@ import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
 import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
 import { useTableRowStyling } from './hooks/useTableRowStyling';
 import { useTableStyling } from './hooks/useTableStyling';
+import { makeTemplateColumns } from './hooks/utils';
 import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './titleBar';
 
@@ -140,7 +142,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableStyling(classes),
     useTableHeaderGroupStyling(classes, resizedColumns, stickyHeader),
     useTableHeaderStyling(classes, onColumnSizeChanged, props),
-    useTableRowStyling(classes, resizedColumns),
+    useTableRowStyling(classes, resizedColumns, selectable, selectedRow),
     useTableCellStyling(classes, cellHeight),
     ...tableHooks
   );
@@ -152,12 +154,24 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     tableBodyClasses.put(classes.selectable);
   }
 
+  const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
+  const theme = useTheme() as JSSTheme;
+  if (theme.contentDensity === ContentDensity.Compact) {
+    tableContainerClasses.put(classes.compactSize);
+  }
+
+  const rowContainerStyling = useMemo(() => {
+    return {
+      gridTemplateColumns: makeTemplateColumns(headerGroups.map(({ headers }) => headers).flat(), resizedColumns)
+    };
+  }, [headerGroups, resizedColumns]);
+
   // Render the UI for your table
   return (
     <div className={className} style={style} title={tooltip} ref={ref}>
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
-      <div className={classes.tableContainer}>
+      <div className={tableContainerClasses.valueOf()}>
         <div {...getTableProps()}>
           {headerGroups.map((headerGroup) => (
             <header {...headerGroup.getHeaderGroupProps()}>
@@ -168,54 +182,44 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               ))}
             </header>
           ))}
-          <div className={tableBodyClasses.valueOf()}>
+          <div className={tableBodyClasses.valueOf()} style={rowContainerStyling}>
             {rows.map((row) => {
               prepareRow(row);
-              const rowProps = row.getRowProps();
-              const { className: rowClasses } = rowProps;
-              let finalRowClasses = rowClasses;
-              if (selectable && rowProps.key === selectedRow) {
-                finalRowClasses = `${finalRowClasses} ${classes.selectedRow}`;
-              }
               return (
-                <div {...rowProps} className={finalRowClasses} onClick={onRowClicked(row)}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <div {...cell.getCellProps()}>
-                        {cell.isGrouped ? (
-                          <>
-                            <span {...row.getExpandedToggleProps()}>
-                              <Icon
-                                src={`sap-icon://${
-                                  row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'
-                                }`}
-                                className={classes.tableGroupExpandCollapseIcon}
-                              />
-                            </span>
-                            <span>
-                              {cell.render('Cell')} ({row.subRows.length})
-                            </span>
-                          </>
-                        ) : cell.isAggregated ? (
-                          // If the cell is aggregated, use the Aggregated
-                          // renderer for cell
-                          cell.render('Aggregated')
-                        ) : cell.isRepeatedValue ? null : ( // For cells with repeated values, render null
-                          // Otherwise, just render the regular cell
-                          <div className={classes.tableCellContent}>{cell.render('Cell')}</div>
-                        )}
-                      </div>
-                    );
-                  })}
+                <div {...row.getRowProps()} onClick={onRowClicked(row)}>
+                  {row.cells.map((cell) => (
+                    <div {...cell.getCellProps()}>
+                      {cell.isGrouped ? (
+                        <>
+                          <span {...row.getExpandedToggleProps()}>
+                            <Icon
+                              src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
+                              className={classes.tableGroupExpandCollapseIcon}
+                            />
+                          </span>
+                          <span>
+                            {cell.render('Cell')} ({row.subRows.length})
+                          </span>
+                        </>
+                      ) : cell.isAggregated ? (
+                        // If the cell is aggregated, use the Aggregated
+                        // renderer for cell
+                        cell.render('Aggregated')
+                      ) : cell.isRepeatedValue ? null : ( // For cells with repeated values, render null
+                        // Otherwise, just render the regular cell
+                        <div className={classes.tableCellContent}>{cell.render('Cell')}</div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               );
             })}
             {minimumRows.map((minRow) => (
-              <tr key={minRow.key} className={classes.tr}>
+              <div key={minRow.key} className={classes.tr}>
                 {columns.map((col, index) => (
                   <div key={`${minRow.key}-${index}`} className={classes.tableCell} />
                 ))}
-              </tr>
+              </div>
             ))}
             {loading && <LoadingComponent />}
           </div>

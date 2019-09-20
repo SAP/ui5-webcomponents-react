@@ -1,28 +1,29 @@
 import { fonts } from '@ui5/webcomponents-react-base';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const styles = ({ parameters, contentDensity }: JSSTheme) => ({
+const styles = ({ parameters }: JSSTheme) => ({
   tableContainer: {
     width: '100%',
-    height: `${contentDensity === ContentDensity.Compact ? 'calc(100% - 2rem)' : 'calc(100% - 2.75rem)'}`,
+    height: 'calc(100% - 2.75rem)',
     minHeight: '3rem'
   },
 
   table: {
     position: 'relative',
-    width: '100%'
+    width: '100%',
+    maxWidth: '100%',
+    overflowX: 'auto'
   },
 
   tableHeaderRow: {
     boxShadow: 'none !important',
-    height: `${contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem'}`,
+    height: '2.75rem',
     display: 'grid'
   },
 
   th: {
     backgroundColor: parameters.sapUiListHeaderBackground,
-    height: `${contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem'}`,
+    height: '2.75rem',
     fontFamily: parameters.sapUiFontFamily,
     fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
@@ -38,32 +39,28 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
   },
 
   tbody: {
-    '&$selectable $tr': {
-      '&:hover': {
-        backgroundColor: parameters.sapUiListHoverBackground
-      },
-      '&:active:not($selectedRow)': {
-        backgroundColor: parameters.sapUiListActiveBackground,
-        '& $tableCell': {
-          color: parameters.sapUiListActiveTextColor,
-          borderRight: `1px solid ${parameters.sapUiListActiveBackground}`
-        }
-      },
-      '&$selectedRow': {
-        backgroundColor: parameters.sapUiListSelectionBackgroundColor,
-        color: parameters.sapUiListActiveTextColor,
-        '&:hover': {
-          backgroundColor: parameters.sapUiListSelectionHoverBackground
-        }
-      }
+    display: 'grid',
+
+    '&$selectable $tr:hover $tableCell': {
+      backgroundColor: parameters.sapUiListHoverBackground
     },
-    '& $tr': {
-      backgroundColor: parameters.sapUiListBackground
+
+    '& $selectedRow $tableCell': {
+      backgroundColor: parameters.sapUiListSelectionBackgroundColor
+    },
+
+    '& $selectedRow:hover $tableCell': {
+      backgroundColor: `${parameters.sapUiListSelectionHoverBackground} !important`
+    },
+    '&$selectable $tr:active:not($selectedRow) $tableCell': {
+      backgroundColor: parameters.sapUiListActiveBackground,
+      color: parameters.sapUiListActiveTextColor,
+      borderRight: `1px solid ${parameters.sapUiListActiveBackground}`
     }
   },
 
   tr: {
-    display: 'grid'
+    display: 'contents'
   },
 
   tableGroupHeader: {
@@ -87,7 +84,8 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
   selectable: {},
   selectedRow: {},
   tableCell: {
-    height: `${contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem'}`,
+    backgroundColor: parameters.sapUiListBackground,
+    height: '2.75rem',
     fontFamily: fonts.sapUiFontFamily,
     fontSize: fonts.sapMFontMediumSize,
     fontWeight: 'normal',
@@ -116,6 +114,21 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
     fontFamily: fonts.sapUiFontFamily,
     fontSize: fonts.sapMFontMediumSize,
     fontWeight: 'normal'
+  },
+
+  compactSize: {
+    '&$tableContainer': {
+      height: 'calc(100% - 2rem)'
+    },
+    '& $tableHeaderRow': {
+      height: '2rem'
+    },
+    '& $th': {
+      height: '2rem'
+    },
+    '& $tableCell': {
+      height: '2rem'
+    }
   }
 });
 

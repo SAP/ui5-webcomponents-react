@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
-import { makeTemplateColumns } from './utils';
 
-export const useTableRowStyling = (classes, resizedColumns) =>
+export const useTableRowStyling = (classes, resizedColumns, selectable, selectedRow) =>
   useCallback(
     (instance) => {
       instance.getRowProps.push((row, table) => {
@@ -9,14 +8,17 @@ export const useTableRowStyling = (classes, resizedColumns) =>
         if (row.isAggregated) {
           className += ` ${classes.tableGroupHeader}`;
         }
+        if (selectable && row.index === selectedRow) {
+          className += ` ${classes.selectedRow}`;
+        }
         return {
           className,
           style: {
-            gridTemplateColumns: makeTemplateColumns(table.columns, resizedColumns)
+            // gridTemplateColumns: makeTemplateColumns(table.columns, resizedColumns)
           }
         };
       });
       return instance;
     },
-    [classes.tr, classes.tableGroupHeader, resizedColumns]
+    [classes.tr, classes.tableGroupHeader, classes.selectedRow, resizedColumns, selectable, selectedRow]
   );
