@@ -1,7 +1,14 @@
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
-  listItem: {},
+  listItem: {
+    '&:active': {
+      '--sapUiBaseText': parameters.sapUiListActiveTextColor,
+      '& $icon': {
+        '--sapUiContentNonInteractiveIconColor': parameters.sapUiListActiveTextColor
+      }
+    }
+  },
 
   noIcons: {
     '& $text': {
