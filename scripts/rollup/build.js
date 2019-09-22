@@ -7,8 +7,6 @@ const replace = require('rollup-plugin-replace');
 const resolve = require('rollup-plugin-node-resolve');
 const closure = require('./plugins/closure-plugin');
 const sizes = require('./plugins/sizes-plugin');
-const typescriptPlugin = require('rollup-plugin-typescript');
-const typescript = require('typescript');
 const postcss = require('rollup-plugin-postcss');
 const stripUnusedImports = require('./plugins/strip-unused-imports');
 const Bundles = require('./bundles');
@@ -162,23 +160,15 @@ function getPlugins(
   const isES6Bundle = bundleType === NODE_ES;
   const shouldStayReadable = forcePrettyOutput;
   return [
-    resolve(),
+    resolve({
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
+    }),
     // Remove license headers from individual modules
     stripBanner({
       exclude: 'node_modules/**/*'
     }),
-    typescriptPlugin({
-      typescript,
-      importHelpers: true
-    }),
     // Compile to ES5.
     babel(getBabelConfig(updateBabelOptions, bundleType)),
-    // Remove 'use strict' from individual source files.
-    {
-      transform(source) {
-        return source.replace(/['"]use strict['"']/g, '');
-      }
-    },
     // Turn __DEV__ and process.env checks into constants.
     replace({
       exclude: 'node_modules/**',
@@ -263,33 +253,16 @@ function shouldSkipBundle(bundle, bundleType) {
 function getBabelConfig(updateBabelOptions, bundleType, filename) {
   let options = {
     exclude: '/**/node_modules/**',
-    presets: [],
+    presets: ['babel-preset-react-app/prod'],
     plugins: [],
-    runtimeHelpers: true
+    runtimeHelpers: true,
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   };
   if (updateBabelOptions) {
     options = updateBabelOptions(options);
   }
 
-  switch (bundleType) {
-    case UMD_DEV:
-    case UMD_PROD:
-    case NODE_DEV:
-    case NODE_PROD:
-    case NODE_ES:
-      return Object.assign({}, options, {
-        // plugins: options.plugins.concat([
-        //   // Use object-assign polyfill in open source
-        //   path.resolve('./scripts/babel/transform-object-assign-require'),
-        //   // Minify invariant messages
-        //   require('../error-codes/replace-invariant-error-codes'),
-        //   // Wrap warning() calls in a __DEV__ check so they are stripped from production.
-        //   require('../babel/wrap-warning-with-env-check'),
-        // ]),
-      });
-    default:
-      return options;
-  }
+  return options;
 }
 
 function getRollupOutputOptions(outputPath, format, globals, bundleType) {

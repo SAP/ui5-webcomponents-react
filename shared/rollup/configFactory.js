@@ -1,26 +1,26 @@
 const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
-const typescriptPlugin = require('rollup-plugin-typescript');
+const babel = require('rollup-plugin-babel');
 const jsonPlugin = require('rollup-plugin-json');
 const postcss = require('rollup-plugin-postcss');
-const typescript = require('typescript');
 const path = require('path');
 const fs = require('fs');
 const PATHS = require('../../config/paths');
 
-const rollupConfigFactory = (pkgName) => {
+const rollupConfigFactory = (pkgName, externals = []) => {
   const LIB_BASE_PATH = path.resolve(PATHS.packages, pkgName, 'src', 'lib');
 
   const allLibFiles = fs.readdirSync(LIB_BASE_PATH).filter((file) => fs.statSync(`${LIB_BASE_PATH}/${file}`).isFile());
 
   const plugins = [
-    typescriptPlugin({
-      typescript,
-      tsconfig: path.resolve(PATHS.root, 'tsconfig.json'),
-      importHelpers: true
+    resolve({
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
     }),
-    resolve(),
     jsonPlugin(),
+    babel({
+      presets: ['babel-preset-react-app/prod'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx']
+    }),
     postcss(),
     commonjs({
       namedExports: {
@@ -32,6 +32,7 @@ const rollupConfigFactory = (pkgName) => {
   const pkg = require(path.resolve(PATHS.packages, pkgName, 'package.json'));
   const EXTERNAL_MODULE_REGEX = new RegExp(
     `${Object.keys(pkg.dependencies)
+      .concat(externals)
       .map((item) => item.replace('/', '/'))
       .join('|')}|react$|react-jss|react-dom$`
   );
