@@ -5,7 +5,7 @@ import { useTheme } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
-import { withChartContainer } from '../../internal/withChartContainer';
+import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
 import { formatAxisCallback, formatTooltipLabel, useMergedConfig } from '../../util/Utils';
