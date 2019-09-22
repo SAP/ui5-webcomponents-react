@@ -28,5 +28,8 @@
     "lodash.merge": "^4.6.2",
     "react-chartjs-2": "^2.7.6",
     "react-content-loader": "^4.2.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
   }
 }
