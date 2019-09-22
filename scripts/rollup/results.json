@@ -18,15 +18,15 @@
       "filename": "base.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "base",
-      "size": 69257,
-      "gzip": 17103
+      "size": 68467,
+      "gzip": 16812
     },
     {
       "filename": "base.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "base",
-      "size": 69257,
-      "gzip": 17103
+      "size": 68467,
+      "gzip": 16812
     },
     {
       "filename": "main.development.js",
@@ -53,8 +53,8 @@
       "filename": "base.js",
       "bundleType": "NODE_ES",
       "packageName": "base",
-      "size": 147201,
-      "gzip": 29375
+      "size": 145389,
+      "gzip": 28954
     },
     {
       "filename": "charts.js",

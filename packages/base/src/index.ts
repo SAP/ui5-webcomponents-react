@@ -10,20 +10,17 @@ import { withStyles } from './withStyles';
 import { Device } from './Device';
 import { Event } from './Event';
 import { isNumeric } from './isNumeric';
-import KeyCodes from './KeyCodes';
 import { LOG_LEVEL, Logger } from './Logger';
 import Optional from './Optional';
 import StyleClassHelper from './StyleClassHelper';
-import { deprecationNotice, pushElementBackInScreen } from './Util';
+import { deprecationNotice } from './Util';
 import { createGenerateClassName } from './withStyles/createGenerateClassName';
 import { useConsolidatedRef } from './hooks/useConsolidatedRef';
 
 export {
   StyleClassHelper,
-  KeyCodes,
   Optional,
   deprecationNotice,
-  pushElementBackInScreen,
   Event,
   Logger,
   LOG_LEVEL,
