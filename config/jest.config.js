@@ -31,6 +31,7 @@ module.exports = {
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
     '^@ui5/webcomponents-react/lib/(.*)$': '<rootDir>/packages/main/src/lib/$1',
+    '^@ui5/webcomponents-react-charts/lib/(.*)$': '<rootDir>/packages/charts/src/lib/$1',
     '\\.(css|less)$': 'identity-obj-proxy'
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
