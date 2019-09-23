@@ -10,8 +10,8 @@ import { useExpanded, useFilters, useGroupBy, useSortBy, useTable, useTableState
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
-import { ColumnHeader } from './columnHeader';
-import { DefaultFilterComponent } from './columnHeader/DefaultFilterComponent';
+import { ColumnHeader } from './ColumnHeader';
+import { DefaultFilterComponent } from './ColumnHeader/DefaultFilterComponent';
 import { DefaultNoDataComponent } from './DefaultNoDataComponent';
 import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './titleBar';
