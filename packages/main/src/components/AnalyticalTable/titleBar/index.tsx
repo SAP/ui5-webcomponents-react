@@ -1,4 +1,4 @@
-import { withStyles } from '@ui5/webcomponents-react-base';
+import { withStyles } from '@ui5/webcomponents-react-base/lib/withStyles';
 import React, { FC, isValidElement, ReactNode, ReactText } from 'react';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 

@@ -1,4 +1,4 @@
-import { withStyles } from '@ui5/webcomponents-react-base';
+import { withStyles } from '@ui5/webcomponents-react-base/lib/withStyles';
 import { mount } from 'enzyme';
 import React from 'react';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';

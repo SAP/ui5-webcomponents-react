@@ -1,4 +1,5 @@
-import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React, { CSSProperties, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -101,7 +102,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     if (isResizable) {
       modifiedStyles.maxWidth = `calc(100% - 16px)`;
     }
-    return modifiedStyles;
+    return modifiedStyles as CSSProperties;
   }, [style, isResizable]);
 
   if (!column) return null;

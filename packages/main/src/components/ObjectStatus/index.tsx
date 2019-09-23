@@ -1,4 +1,5 @@
-import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
+import { withStyles } from '@ui5/webcomponents-react-base/lib/withStyles';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, { FC, ReactNode } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';

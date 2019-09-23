@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import '@ui5/webcomponents/dist/features/InputSuggestions';
 import UI5MultiComboBox from '@ui5/webcomponents/dist/MultiComboBox';
 import React, { FC, ReactNode } from 'react';

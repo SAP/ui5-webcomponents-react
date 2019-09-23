@@ -12,7 +12,7 @@
   },
   "author": "SAP SE (https://www.sap.com)",
   "scripts": {
-    "postbuild": "tsc ./src/polyfill/*.ts --outDir ../../build/node_modules/base/polyfill --skipLibCheck"
+    "postbuild": "rollup -c && tsc ./src/polyfill/*.ts --outDir ../../build/node_modules/base/polyfill --skipLibCheck"
   },
   "license": "Apache-2.0",
   "dependencies": {

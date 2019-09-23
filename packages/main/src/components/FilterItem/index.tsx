@@ -1,4 +1,5 @@
-import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, { FC, forwardRef, ReactNode, RefObject, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';

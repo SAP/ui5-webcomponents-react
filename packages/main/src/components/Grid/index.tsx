@@ -1,4 +1,6 @@
-import { Device, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
+import { withStyles } from '@ui5/webcomponents-react-base/lib/withStyles';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import React, { Children, Component, CSSProperties, ReactElement, ReactNode, ReactNodeArray } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';

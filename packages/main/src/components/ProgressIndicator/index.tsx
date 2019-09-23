@@ -1,4 +1,4 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React, { forwardRef, Ref, useMemo } from 'react';

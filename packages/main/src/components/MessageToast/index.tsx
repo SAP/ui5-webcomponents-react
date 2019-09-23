@@ -1,4 +1,4 @@
-import { withStyles } from '@ui5/webcomponents-react-base';
+import { withStyles } from '@ui5/webcomponents-react-base/';
 import React, { PureComponent } from 'react';
 import { createPortal } from 'react-dom';
 import { toast, ToastContainer } from 'react-toastify';

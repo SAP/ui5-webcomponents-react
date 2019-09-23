@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import UI5RadioButton from '@ui5/webcomponents/dist/RadioButton';
 import React, { FC } from 'react';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';

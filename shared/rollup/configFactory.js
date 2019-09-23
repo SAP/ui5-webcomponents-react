@@ -6,6 +6,7 @@ const postcss = require('rollup-plugin-postcss');
 const path = require('path');
 const fs = require('fs');
 const PATHS = require('../../config/paths');
+const { highlightLog } = require('../utils');
 
 const rollupConfigFactory = (pkgName, externals = []) => {
   const LIB_BASE_PATH = path.resolve(PATHS.packages, pkgName, 'src', 'lib');
@@ -33,9 +34,12 @@ const rollupConfigFactory = (pkgName, externals = []) => {
   const EXTERNAL_MODULE_REGEX = new RegExp(
     `${Object.keys(pkg.dependencies)
       .concat(externals)
+      .concat(pkg.peerDependencies ? Object.keys(pkg.peerDependencies) : [])
       .map((item) => item.replace('/', '/'))
       .join('|')}|react$|react-jss|react-dom$`
   );
+
+  highlightLog(`Build lib folder for ${pkgName}`);
 
   return allLibFiles.map((file) => ({
     input: `${LIB_BASE_PATH}/${file}`,

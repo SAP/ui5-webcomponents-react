@@ -1,4 +1,4 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import bestContrast from 'get-best-contrast-color';
 import React, { forwardRef, Ref, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';

@@ -24,4 +24,4 @@ const font72 = {
   ]
 };
 
-export default font72;
+export { font72 };

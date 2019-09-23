@@ -1,4 +1,4 @@
-import { spacing } from '@ui5/webcomponents-react-base';
+import * as spacing from '@ui5/webcomponents-react-base/lib/spacing';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({

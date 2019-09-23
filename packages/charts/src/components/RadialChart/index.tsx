@@ -1,4 +1,4 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ChartOptions } from 'chart.js';
 import React, { CSSProperties, forwardRef, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
