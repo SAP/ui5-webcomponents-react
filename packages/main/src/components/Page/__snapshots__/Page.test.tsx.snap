@@ -1,7 +1,121 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Page Basic Page 1`] = `"<div class=\\"Page--pageContainer--2-1 Page--pageWithHeader--2-9 Page--pageWithFooter--2-10 Page--backgroundStandard--2-2\\"><header class=\\"Page--pageHeader--2-7 Page--baseBar--2-6\\"><div data-bar-part=\\"Root\\" class=\\"Bar-bar--2-12\\"><div data-bar-part=\\"Left\\" class=\\"Bar-left--2-13\\"><ui5-button icon=\\"navigation-left-arrow\\" design=\\"Transparent\\" class></ui5-button></div><div data-bar-part=\\"Center\\" class=\\"Bar-center--2-14\\"><div class=\\"Bar-inner--2-15\\"><ui5-title level=\\"H5\\" class>Page Demo</ui5-title></div></div><div data-bar-part=\\"Right\\" class=\\"Bar-right--2-16\\"></div></div></header><section class=\\"Page--contentSection--2-8\\">Page Content</section><footer class=\\"Page--pageFooter--2-11 Page--baseBar--2-6\\"></footer></div>"`;
+exports[`Page Basic Page 1`] = `
+<div
+  style="height:100vh;width:100vw"
+>
+  <div
+    class="Page--pageContainer- Page--pageWithHeader- Page--pageWithFooter- Page--backgroundStandard-"
+  >
+    <header
+      class="Page--pageHeader- Page--baseBar-"
+    >
+      <div
+        class="Bar--bar-"
+        data-bar-part="Root"
+      >
+        <div
+          class="Bar--left-"
+          data-bar-part="Left"
+        >
+          <ui5-button
+            class=""
+            design="Transparent"
+            icon="navigation-left-arrow"
+          />
+        </div>
+        <div
+          class="Bar--center-"
+          data-bar-part="Center"
+        >
+          <div
+            class="Bar--inner-"
+          >
+            <ui5-title
+              class=""
+              level="H5"
+            >
+              Page Demo
+            </ui5-title>
+          </div>
+        </div>
+        <div
+          class="Bar--right-"
+          data-bar-part="Right"
+        />
+      </div>
+    </header>
+    <section
+      class="Page--contentSection-"
+    >
+      Page Content
+    </section>
+    <footer
+      class="Page--pageFooter- Page--baseBar-"
+    />
+  </div>
+</div>
+`;
 
-exports[`Page Basic Page w/o back button 1`] = `"<div class=\\"Page--pageContainer--2-17 Page--pageWithHeader--2-25 Page--pageWithFooter--2-26 Page--backgroundStandard--2-18\\"><header class=\\"Page--pageHeader--2-23 Page--baseBar--2-22\\"><div data-bar-part=\\"Root\\" class=\\"Bar-bar--2-28\\"><div data-bar-part=\\"Left\\" class=\\"Bar-left--2-29\\"></div><div data-bar-part=\\"Center\\" class=\\"Bar-center--2-30\\"><div class=\\"Bar-inner--2-31\\"><ui5-title level=\\"H5\\" class>Page Demo</ui5-title></div></div><div data-bar-part=\\"Right\\" class=\\"Bar-right--2-32\\"></div></div></header><section class=\\"Page--contentSection--2-24\\">Page Content</section><footer class=\\"Page--pageFooter--2-27 Page--baseBar--2-22\\"></footer></div>"`;
+exports[`Page Basic Page w/o back button 1`] = `
+<div
+  style="height:100vh;width:100vw"
+>
+  <div
+    class="Page--pageContainer- Page--pageWithHeader- Page--pageWithFooter- Page--backgroundStandard-"
+  >
+    <header
+      class="Page--pageHeader- Page--baseBar-"
+    >
+      <div
+        class="Bar--bar-"
+        data-bar-part="Root"
+      >
+        <div
+          class="Bar--left-"
+          data-bar-part="Left"
+        />
+        <div
+          class="Bar--center-"
+          data-bar-part="Center"
+        >
+          <div
+            class="Bar--inner-"
+          >
+            <ui5-title
+              class=""
+              level="H5"
+            >
+              Page Demo
+            </ui5-title>
+          </div>
+        </div>
+        <div
+          class="Bar--right-"
+          data-bar-part="Right"
+        />
+      </div>
+    </header>
+    <section
+      class="Page--contentSection-"
+    >
+      Page Content
+    </section>
+    <footer
+      class="Page--pageFooter- Page--baseBar-"
+    />
+  </div>
+</div>
+`;
 
-exports[`Page Without footer and Header 1`] = `"<section class=\\"Page--contentSection--2-40\\">Page Content</section>"`;
+exports[`Page Without footer and Header 1`] = `
+<div
+  class="Page--pageContainer- Page--backgroundStandard-"
+>
+  <section
+    class="Page--contentSection-"
+  >
+    Page Content
+  </section>
+</div>
+`;
