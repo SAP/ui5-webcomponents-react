@@ -1,4 +1,4 @@
-const PATHS = require('../config/paths');
+const PATHS = require('../../config/paths');
 const path = require('path');
 
 const tsLoader = {
