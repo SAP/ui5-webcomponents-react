@@ -18,7 +18,7 @@
   "dependencies": {
     "core-js": "^3.1.4",
     "hoist-non-react-statics": "^3.3.0",
-    "react-jss": "10.0.0-alpha.23"
+    "react-jss": "10.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0"

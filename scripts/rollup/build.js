@@ -11,7 +11,6 @@ const stripUnusedImports = require('./plugins/strip-unused-imports');
 const Bundles = require('./bundles');
 const Stats = require('./stats');
 const { asyncCopyTo, asyncRimRaf } = require('../utils');
-const argv = require('minimist')(process.argv.slice(2));
 const codeFrame = require('babel-code-frame');
 const chalk = require('chalk');
 const path = require('path');
@@ -19,6 +18,8 @@ const fs = require('fs');
 const Packaging = require('./packaging');
 const Modules = require('./modules');
 const { createDeclarationFiles } = require('./declarations');
+
+const argv = require('minimist')(process.argv.slice(2));
 const forcePrettyOutput = argv.pretty;
 const shouldExtractErrors = argv['extract-errors'];
 
