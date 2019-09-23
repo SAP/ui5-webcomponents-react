@@ -101,16 +101,18 @@ const styles = ({ parameters }: JSSTheme) => ({
     whiteSpace: 'nowrap'
   },
   noDataContainer: {
-    textAlign: 'center',
-    paddingTop: '0.5rem',
-    paddingBottom: '0.5rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
     backgroundColor: parameters.sapUiListBackground,
     width: '100%',
     boxSizing: 'border-box',
     color: parameters.sapUiListTextColor,
     fontFamily: fonts.sapUiFontFamily,
     fontSize: fonts.sapMFontMediumSize,
-    fontWeight: 'normal'
+    fontWeight: 'normal',
+    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`
   },
 
   compactSize: {

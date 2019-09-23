@@ -1,6 +1,5 @@
 import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import React, { ComponentType, CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref, useMemo } from 'react';
@@ -109,8 +108,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     loading,
     pivotBy,
     minRows,
-    NoDataComponent,
-    noDataText,
     selectable,
     onRowSelected,
     reactTableOptions,
@@ -194,9 +191,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           />
         </div>
         {loading && <LoadingComponent />}
-        {!loading && rows.length === 0 && (
-          <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} />
-        )}
+        {/*{!loading && rows.length === 0 && (*/}
+        {/*<NoDataComponent noDataText={noDataText} className={classes.noDataContainer} />*/}
+        {/*)}*/}
       </div>
     </div>
   );

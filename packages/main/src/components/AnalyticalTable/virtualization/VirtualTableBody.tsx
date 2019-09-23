@@ -18,7 +18,10 @@ export const VirtualTableBody = (props) => {
     rows,
     visibleRows,
     minRows,
-    columns
+    columns,
+    loading,
+    noDataText,
+    NoDataComponent
   } = props;
 
   const innerDivRef = useRef(null);
@@ -29,6 +32,14 @@ export const VirtualTableBody = (props) => {
       const { style, index } = itemProps;
 
       const row = rows[index];
+
+      if (rows.length === 0 && !loading && index === 0) {
+        return (
+          <div style={style}>
+            <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} />
+          </div>
+        );
+      }
 
       if (!row) {
         return (
@@ -103,7 +114,7 @@ export const VirtualTableBody = (props) => {
     const internalRowHeight = theme.contentDensity === ContentDensity.Compact ? ROW_HEIGHT_COMPACT : ROW_HEIGHT_COZY;
 
     return {
-      listHeight: internalRowHeight * visibleRows,
+      listHeight: internalRowHeight * Math.max(rows.length < visibleRows ? rows.length : visibleRows, minRows),
       itemCount: Math.max(minRows, rows.length),
       rowHeight: internalRowHeight
     };
