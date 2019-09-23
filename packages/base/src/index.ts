@@ -2,20 +2,20 @@
  * Created by d059190 at 16.03.18
  */
 import font72 from './72';
-import * as fonts from './fonts';
-import { HSLColor } from './HSLColor';
-import * as sap_fiori_3 from './sap_fiori_3';
-import * as spacing from './spacing';
-import { withStyles } from './withStyles';
 import { Device } from './Device';
 import { Event } from './Event';
+import * as fonts from './fonts';
+import { useConsolidatedRef } from './hooks/useConsolidatedRef';
 import { isNumeric } from './isNumeric';
+import { HSLColor } from './lib/HSLColor';
+import { StyleClassHelper } from './lib/StyleClassHelper';
 import { LOG_LEVEL, Logger } from './Logger';
 import Optional from './Optional';
-import StyleClassHelper from './StyleClassHelper';
+import * as sap_fiori_3 from './lib/sap_fiori_3';
+import * as spacing from './lib/spacing';
 import { deprecationNotice } from './Util';
+import { withStyles } from './withStyles';
 import { createGenerateClassName } from './withStyles/createGenerateClassName';
-import { useConsolidatedRef } from './hooks/useConsolidatedRef';
 
 export {
   StyleClassHelper,

@@ -28,4 +28,4 @@ class StyleClassHelper extends String {
   }
 }
 
-export default StyleClassHelper;
+export { StyleClassHelper };
