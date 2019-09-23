@@ -1,4 +1,3 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ZIndex } from '../../enums/ZIndex';
 
@@ -11,7 +10,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     flexDirection: 'column',
     isolation: 'isolate',
     whiteSpace: 'normal',
-    fontFamily: fonts.sapUiFontFamily,
+    fontFamily: parameters.sapUiFontFamily,
     backgroundColor: parameters.sapUiBaseBG,
     '& ::-webkit-scrollbar': {
       backgroundColor: '#ffffff',

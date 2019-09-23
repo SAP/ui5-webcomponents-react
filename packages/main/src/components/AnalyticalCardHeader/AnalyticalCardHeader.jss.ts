@@ -1,10 +1,9 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
   helpText: {
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize,
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
     color: parameters.sapUiBaseText
   },
@@ -14,7 +13,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     outlineOffset: '-0.125rem',
     borderBottom: `0.0625rem solid ${parameters.sapUiTileBackgroundDarken20}`,
     backgroundColor: parameters.sapUiTileBackground,
-    fontFamily: fonts.sapUiFontHeaderFamily,
+    fontFamily: parameters.sapUiFontHeaderFamily,
     '&:hover': {
       backgroundColor: parameters.sapUiListHoverBackground // TODO sapUiTileHoverBackground '#fafafa'
     },
@@ -56,9 +55,9 @@ const styles = ({ parameters }: JSSTheme) => ({
     wordWrap: 'break-word'
   },
   headerText: {
-    fontFamily: fonts.sapUiFontHeaderFamily,
-    fontWeight: fonts.sapUiFontHeaderWeight,
-    fontSize: fonts.sapMFontHeader5Size,
+    fontFamily: parameters.sapUiFontHeaderFamily,
+    fontWeight: parameters.sapUiFontHeaderWeight,
+    fontSize: parameters.sapMFontHeader5Size,
     color: parameters.sapUiTileTitleTextColor,
     overflow: 'hidden',
     display: '-webkit-box',
@@ -69,9 +68,9 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   subHeaderText: {
     overflow: 'hidden',
-    fontFamily: fonts.sapUiFontFamily,
+    fontFamily: parameters.sapUiFontFamily,
     fontWeight: 'normal',
-    fontSize: fonts.sapMFontMediumSize,
+    fontSize: parameters.sapMFontMediumSize,
     color: parameters.sapUiTileTextColor,
     textAlign: 'left',
     whiteSpace: 'normal',
@@ -86,7 +85,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     WebkitBoxOrient: 'vertical'
   },
   counter: {
-    fontSize: fonts.sapMFontSmallSize,
+    fontSize: parameters.sapMFontSmallSize,
     margin: '0.188rem 0  0 1rem',
     lineHeight: 'normal',
     textAlign: 'right'

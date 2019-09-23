@@ -4,7 +4,6 @@
 import font72 from './72';
 import { Device } from './Device';
 import { Event } from './Event';
-import * as fonts from './fonts';
 import { useConsolidatedRef } from './hooks/useConsolidatedRef';
 import { isNumeric } from './isNumeric';
 import { HSLColor } from './lib/HSLColor';
@@ -26,7 +25,6 @@ export {
   LOG_LEVEL,
   isNumeric,
   Device,
-  fonts,
   font72,
   spacing,
   HSLColor,

@@ -1,4 +1,3 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const size = (s) => ({
@@ -15,7 +14,7 @@ const styles = ({ theme, parameters }: JSSTheme) => ({
   avatar: {
     backgroundColor: parameters.sapAccentColor7,
     color: parameters.sapUiContentContrastTextColor,
-    fontFamily: fonts.sapUiFontFamily,
+    fontFamily: parameters.sapUiFontFamily,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,4 +1,3 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 
@@ -73,8 +72,8 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
   selectedRow: {},
   td: {
     height: `${contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem'}`,
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize,
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
     color: parameters.sapUiListTextColor,
     borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
@@ -109,8 +108,8 @@ const styles = ({ parameters, contentDensity }: JSSTheme) => ({
     width: '100%',
     boxSizing: 'border-box',
     color: parameters.sapUiListTextColor,
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize,
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal'
   }
 });
