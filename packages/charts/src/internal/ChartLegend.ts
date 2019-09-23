@@ -1,5 +1,5 @@
-import { Optional } from '@ui5/webcomponents-react-base';
-import { useEffect, Ref, RefObject, useCallback } from 'react';
+import { Optional } from '@ui5/webcomponents-react-base/lib/Optional';
+import { useEffect, RefObject, useCallback } from 'react';
 import '@ui5/webcomponents/dist/Label';
 
 const getSymbolForDataset = (type, dataset) => {

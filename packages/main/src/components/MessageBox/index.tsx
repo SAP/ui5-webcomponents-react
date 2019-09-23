@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';

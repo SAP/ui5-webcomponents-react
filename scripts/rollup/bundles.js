@@ -15,6 +15,7 @@ const bundles = [
       'react',
       'react-dom',
       'react-jss',
+      '@ui5/webcomponents-react',
       '@ui5/webcomponents-base',
       '@ui5/webcomponents-react-base',
       'react-table'
@@ -30,7 +31,7 @@ const bundles = [
     label: 'charts',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES],
     entry: 'charts',
-    externals: ['react', 'react-jss', '@ui5/webcomponents-base', '@ui5/webcomponents-react-base', '@ui5/webcomponents']
+    externals: ['react', 'react-jss', '@ui5/webcomponents', '@ui5/webcomponents-react-charts']
   }
 ];
 

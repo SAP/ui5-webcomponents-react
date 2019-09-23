@@ -1,4 +1,4 @@
-import { Event, fonts } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import React, { FC, useCallback, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -32,8 +32,8 @@ const anchorButtonStyles = ({ parameters }: JSSTheme) => ({
   },
   button: {
     color: parameters.sapUiContentLabelColor,
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize,
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
     cursor: 'pointer'
   },
   selected: {

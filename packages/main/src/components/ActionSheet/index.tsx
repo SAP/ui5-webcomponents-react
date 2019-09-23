@@ -1,4 +1,6 @@
-import { Device, StyleClassHelper, useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { Device } from '@ui5/webcomponents-react-base/lib/Device';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, { Children, cloneElement, forwardRef, ReactElement, ReactNode, RefObject, FC } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';

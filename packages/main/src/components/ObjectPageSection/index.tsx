@@ -1,4 +1,5 @@
-import { StyleClassHelper, useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, { forwardRef, ReactNode, ReactNodeArray, RefObject, FC } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';

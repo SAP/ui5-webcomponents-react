@@ -1,4 +1,5 @@
-import { Event, fonts, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React, { CSSProperties, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -31,8 +32,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     justifyContent: 'begin',
     alignItems: 'center',
     textAlign: 'left',
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize,
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
     color: parameters.sapUiListTextColor,
     background: parameters.sapUiListHeaderBackground,

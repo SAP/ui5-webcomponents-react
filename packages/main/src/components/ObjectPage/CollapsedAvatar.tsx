@@ -3,7 +3,7 @@ import { createUseStyles } from 'react-jss';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 
 const styles = {
   base: {

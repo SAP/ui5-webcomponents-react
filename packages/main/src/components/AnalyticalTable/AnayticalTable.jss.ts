@@ -1,4 +1,3 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -83,8 +82,8 @@ const styles = ({ parameters }: JSSTheme) => ({
   selectedRow: {},
   tableCell: {
     height: '2.75rem',
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize,
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
     borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
     boxSizing: 'border-box',
@@ -109,8 +108,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     width: '100%',
     boxSizing: 'border-box',
     color: parameters.sapUiListTextColor,
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize,
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
     borderBottom: `1px solid ${parameters.sapUiListBorderColor}`
   },

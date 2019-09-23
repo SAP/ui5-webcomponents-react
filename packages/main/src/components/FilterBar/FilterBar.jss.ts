@@ -1,4 +1,3 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
@@ -47,8 +46,8 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
     },
     // is being applied to the span which represents the InfoLabel Text
     label: {
-      fontSize: fonts.sapMFontSmallSize,
-      fontFamily: fonts.sapUiFontFamily,
+      fontSize: parameters.sapMFontSmallSize,
+      fontFamily: parameters.sapUiFontFamily,
       lineHeight: '1.125rem',
       fontWeight: 600,
       letterSpacing: '0.0125rem',

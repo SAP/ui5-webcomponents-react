@@ -12,14 +12,13 @@
   },
   "author": "SAP SE (https://www.sap.com)",
   "scripts": {
-    "postbuild": "tsc ./src/polyfill/*.ts --outDir ../../build/node_modules/base/polyfill --skipLibCheck"
+    "postbuild": "rollup -c && tsc ./src/polyfill/*.ts --outDir ../../build/node_modules/base/polyfill --skipLibCheck"
   },
   "license": "Apache-2.0",
   "dependencies": {
     "core-js": "^3.1.4",
     "hoist-non-react-statics": "^3.3.0",
-    "react-jss": "10.0.0-alpha.23",
-    "tslib": "^1.9.3"
+    "react-jss": "10.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0"

@@ -1,10 +1,9 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 
 const styles = ({ contentDensity, parameters }: JSSTheme) => ({
   segmentedButtonItem: {
-    fontFamily: fonts.sapUiFontFamily,
+    fontFamily: parameters.sapUiFontFamily,
     listStyle: 'none',
     overflow: 'hidden',
     WebkitTapHighlightColor: 'rgba(255, 255, 255, 0)',

@@ -1,4 +1,5 @@
-import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import React, { Children, cloneElement, FC, forwardRef, ReactNode, Ref, useCallback, useEffect, useState } from 'react';

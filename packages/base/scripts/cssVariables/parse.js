@@ -21,4 +21,4 @@ for (const variable of variables) {
   fileContent += `export const ${variable.replace('--', '')} = 'var(${variable})';\n`;
 }
 
-writeFileSync(path.join(PATHS.packages, 'base', 'src', 'sap_fiori_3.ts'), fileContent);
+writeFileSync(path.join(PATHS.packages, 'base', 'src', 'styling', 'sap_fiori_3.ts'), fileContent);

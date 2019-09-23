@@ -1,4 +1,3 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
@@ -47,8 +46,8 @@ const styles = ({ parameters }: JSSTheme) => {
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
-      fontFamily: fonts.sapUiFontFamily,
-      fontSize: fonts.sapMFontSmallSize,
+      fontFamily: parameters.sapUiFontFamily,
+      fontSize: parameters.sapMFontSmallSize,
       fontWeight: 'normal'
     },
     progressBarTextColorLow: {

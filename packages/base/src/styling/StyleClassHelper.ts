@@ -1,7 +1,6 @@
 /**
  * Created by d059190 at 16.03.18
  */
-import 'tslib';
 
 class StyleClassHelper extends String {
   private classes: string[] = [];
@@ -29,4 +28,4 @@ class StyleClassHelper extends String {
   }
 }
 
-export default StyleClassHelper;
+export { StyleClassHelper };

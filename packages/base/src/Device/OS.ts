@@ -1,4 +1,4 @@
-import { Logger } from '../Logger';
+import { Logger } from '../utils/Logger';
 
 export enum OSTypes {
   WINDOWS = 'win',

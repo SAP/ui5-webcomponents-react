@@ -1,4 +1,4 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, { forwardRef, Ref, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
@@ -6,7 +6,7 @@ import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
-import { withChartContainer } from '../../internal/withChartContainer';
+import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
 import { formatAxisCallback, formatDataLabel, formatTooltipLabel, useMergedConfig } from '../../util/Utils';

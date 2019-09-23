@@ -1,7 +1,8 @@
 import boot from '@ui5/webcomponents-base/src/boot';
 import { getCompactSize, getTheme } from '@ui5/webcomponents-base/src/Configuration';
-import { injectThemeProperties } from '@ui5/webcomponents-base/src/theming/StyleInjection';
-import { createGenerateClassName, sap_fiori_3, Device } from '@ui5/webcomponents-react-base';
+import { createGenerateClassName } from '@ui5/webcomponents-react-base/lib/createGenerateClassName';
+import * as sap_fiori_3 from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import fiori3Theme from '@ui5/webcomponents/dist/generated/themes/sap_fiori_3/parameters-bundle.css.js';
 import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
 import { JssProvider, ThemeProvider as ReactJssThemeProvider } from 'react-jss';

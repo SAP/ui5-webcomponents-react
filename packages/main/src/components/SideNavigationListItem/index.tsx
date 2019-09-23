@@ -1,4 +1,4 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';

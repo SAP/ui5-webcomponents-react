@@ -1,4 +1,6 @@
-import { Event, StyleClassHelper, useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import React, {
   Children,

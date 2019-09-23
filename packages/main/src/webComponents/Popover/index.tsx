@@ -1,4 +1,5 @@
-import { Event, useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import UI5Popover from '@ui5/webcomponents/dist/Popover';
 import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useRef } from 'react';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';

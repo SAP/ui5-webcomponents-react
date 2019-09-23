@@ -92,4 +92,4 @@ class Optional {
   }
 }
 
-export default Optional;
+export { Optional };

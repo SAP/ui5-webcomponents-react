@@ -1,4 +1,3 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -18,7 +17,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    fontFamily: fonts.sapUiFontFamily
+    fontFamily: parameters.sapUiFontFamily
   },
   uppercase: {
     textTransform: 'uppercase'
@@ -28,7 +27,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   sectionContentInner: {
     padding: '1rem 2rem 2rem 2.5rem',
-    fontFamily: fonts.sapUiFontFamily
+    fontFamily: parameters.sapUiFontFamily
   }
 });
 
