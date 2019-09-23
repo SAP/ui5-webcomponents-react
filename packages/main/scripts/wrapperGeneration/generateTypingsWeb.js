@@ -214,7 +214,7 @@ export function generateTypings(meta) {
     .forEach(([key]) => {
       typings[mapEventName(key)] = {
         tsType: '(event : Event) => void',
-        importStatement: "import { Event } from '@ui5/webcomponents-react-base';"
+        importStatement: "import { Event } from '@ui5/webcomponents-react-base/lib/Event';"
       };
     });
 
