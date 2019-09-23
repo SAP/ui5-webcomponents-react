@@ -32,8 +32,8 @@
     "@types/hoist-non-react-statics": "^3.3.1",
     "@types/jest": "^24.0.18",
     "@types/modernizr": "^3.5.3",
-    "@types/react": "^16.8.19",
-    "@types/react-dom": "^16.8.4",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "@types/sinon": "^7.0.12",
     "@types/storybook__react": "^4.0.1",
     "@webcomponents/webcomponentsjs": "^2.2.10",
@@ -108,7 +108,7 @@
     "webpack-dev-server": "^3.8.0"
   },
   "resolutions": {
-    "@types/react": "16.8.24"
+    "@types/react": "16.9.2"
   },
   "husky": {
     "hooks": {
