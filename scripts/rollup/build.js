@@ -1,7 +1,6 @@
 const { rollup } = require('rollup');
 const stripBanner = require('rollup-plugin-strip-banner');
 const babel = require('rollup-plugin-babel');
-const commonjs = require('rollup-plugin-commonjs');
 const prettier = require('rollup-plugin-prettier');
 const replace = require('rollup-plugin-replace');
 const resolve = require('rollup-plugin-node-resolve');
@@ -176,13 +175,6 @@ function getPlugins(
         __DEV__: isProduction ? 'false' : 'true',
         __UMD__: isUMDBundle ? 'true' : 'false',
         'process.env.NODE_ENV': isProduction ? "'production'" : "'development'"
-      }
-    }),
-    // We still need CommonJS for external deps like object-assign.
-    commonjs({
-      namedExports: {
-        'react-jss': ['ThemeProvider', 'jss', 'withTheme'],
-        'prop-types': ['array', 'arrayOf', 'func', 'number', 'object', 'oneOf', 'oneOfType', 'string']
       }
     }),
     postcss(),

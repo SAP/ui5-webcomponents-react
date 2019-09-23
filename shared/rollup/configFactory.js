@@ -1,7 +1,5 @@
 const resolve = require('rollup-plugin-node-resolve');
-const commonjs = require('rollup-plugin-commonjs');
 const babel = require('rollup-plugin-babel');
-const jsonPlugin = require('rollup-plugin-json');
 const postcss = require('rollup-plugin-postcss');
 const path = require('path');
 const fs = require('fs');
@@ -17,17 +15,11 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     resolve({
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
     }),
-    jsonPlugin(),
     babel({
       presets: ['babel-preset-react-app/prod'],
       extensions: ['.js', '.jsx', '.ts', '.tsx']
     }),
-    postcss(),
-    commonjs({
-      namedExports: {
-        'react-jss': ['ThemeProvider', 'jss', 'withTheme']
-      }
-    })
+    postcss()
   ];
 
   const pkg = require(path.resolve(PATHS.packages, pkgName, 'package.json'));
