@@ -23,7 +23,7 @@ exports[`Analytical Card Render without Crashing 1`] = `
             Title
           </div>
           <div
-            class="Component-objectStatus- AnalyticalCardHeader--counter-"
+            class="ObjectStatus--objectStatus- AnalyticalCardHeader--counter-"
           />
         </div>
         <div
