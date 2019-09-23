@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideNavigationListItem Basic 1`] = `
+<ui5-li-custom
+  class="SideNavigationListItem--listItem-"
+  data-has-children="false"
+  data-id="home"
+  type="Active"
+>
+  <ui5-icon
+    class="SideNavigationListItem--icon-"
+    src="sap-icon://home"
+  />
+</ui5-li-custom>
+`;
+
+exports[`SideNavigationListItem compact size 1`] = `
+<ui5-li-custom
+  class="SideNavigationListItem--listItem-"
+  data-has-children="false"
+  data-id="home"
+  type="Active"
+>
+  <ui5-icon
+    class="SideNavigationListItem--icon-"
+    src="sap-icon://home"
+  />
+</ui5-li-custom>
+`;
+
+exports[`SideNavigationListItem custom class name and style 1`] = `
+<ui5-li-custom
+  class="SideNavigationListItem--listItem- myClass"
+  data-has-children="false"
+  data-id="home"
+  style="background-color: pink;"
+  type="Active"
+>
+  <ui5-icon
+    class="SideNavigationListItem--icon-"
+    src="sap-icon://home"
+  />
+</ui5-li-custom>
+`;
