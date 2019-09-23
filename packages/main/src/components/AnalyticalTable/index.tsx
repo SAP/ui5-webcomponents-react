@@ -11,7 +11,6 @@ import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
 import { DefaultFilterComponent } from './ColumnHeader/DefaultFilterComponent';
 import { DefaultNoDataComponent } from './DefaultNoDataComponent';
-import { useFillMissingRows } from './hooks/useFillMissingRows';
 import { useResizeColumns } from './hooks/useResizeColumns';
 import { useRowSelection } from './hooks/useRowSelection';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
@@ -38,6 +37,7 @@ export interface ColumnConfiguration {
 export interface TableProps extends CommonProps {
   cellHeight?: CSSProperties['height'];
   loading?: boolean;
+  busyIndicatorEnabled?: boolean;
   filterable?: boolean;
   sortable?: boolean;
   groupable?: boolean;
@@ -107,11 +107,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     cellHeight,
     loading,
     pivotBy,
-    minRows,
     selectable,
     onRowSelected,
     reactTableOptions,
-    tableHooks
+    tableHooks,
+    busyIndicatorEnabled
   } = props;
 
   const classes = useStyles();
@@ -143,8 +143,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableCellStyling(classes, cellHeight),
     ...tableHooks
   );
-
-  const minimumRows = useFillMissingRows(rows, minRows);
 
   const tableBodyClasses = StyleClassHelper.of(classes.tbody);
   if (selectable) {
@@ -189,11 +187,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             onRowClicked={onRowClicked}
             columns={columns}
           />
+          {loading && busyIndicatorEnabled && <LoadingComponent />}
         </div>
-        {loading && <LoadingComponent />}
-        {/*{!loading && rows.length === 0 && (*/}
-        {/*<NoDataComponent noDataText={noDataText} className={classes.noDataContainer} />*/}
-        {/*)}*/}
       </div>
     </div>
   );
@@ -202,6 +197,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 AnalyticalTable.displayName = 'AnalyticalTable';
 AnalyticalTable.defaultProps = {
   loading: false,
+  busyIndicatorEnabled: true,
   sortable: true,
   filterable: false,
   groupable: false,

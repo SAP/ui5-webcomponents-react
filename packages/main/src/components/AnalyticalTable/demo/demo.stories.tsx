@@ -49,7 +49,7 @@ const columns = [
   }
 ];
 
-const data = generateData(2);
+const data = generateData(2000);
 
 export const defaultStory = () => {
   return (
@@ -58,6 +58,7 @@ export const defaultStory = () => {
       data={data}
       columns={columns}
       loading={boolean('loading', false)}
+      busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
       sortable={boolean('sortable', true)}
       filterable={boolean('filterable', true)}
       visibleRows={number('visibleRows', 15)}
