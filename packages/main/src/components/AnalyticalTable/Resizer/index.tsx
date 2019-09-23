@@ -7,16 +7,19 @@ const Resizer = (props) => {
   const parentWidth = useRef(0);
   const startX = useRef(0);
   const resizerRef: RefObject<HTMLDivElement> = useRef();
+  const onColumnSizeChanged = props['onColumnSizeChanged'];
 
   const onResize = useCallback(
     (e) => {
       e.stopPropagation();
-      const parentElement = resizerRef.current.parentElement;
       const pageX = e.pageX;
       const newWidth = Math.max(parentWidth.current + pageX - startX.current, column.minWidth);
-      parentElement.style.width = `${newWidth}px`;
+      onColumnSizeChanged({
+        column,
+        width: newWidth
+      });
     },
-    [column, parentWidth, key, startX, resizerRef]
+    [column, parentWidth, key, startX, onColumnSizeChanged]
   );
 
   const onEndResize = useCallback(
