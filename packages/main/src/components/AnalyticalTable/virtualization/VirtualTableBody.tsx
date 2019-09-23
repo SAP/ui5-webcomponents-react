@@ -1,19 +1,51 @@
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
+import { useTheme } from 'react-jss';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { JSSTheme } from '../../../interfaces/JSSTheme';
 
-const ROW_HEIGHT = 32;
+const ROW_HEIGHT_COMPACT = 32;
+const ROW_HEIGHT_COZY = 44;
 
 export const VirtualTableBody = (props) => {
-  const { classes, tableBodyClasses, rowContainerStyling, onRowClicked, prepareRow, rows, visibleRows } = props;
+  const {
+    classes,
+    tableBodyClasses,
+    rowContainerStyling,
+    onRowClicked,
+    prepareRow,
+    rows,
+    visibleRows,
+    minRows,
+    columns
+  } = props;
 
   const innerDivRef = useRef(null);
+  const theme: JSSTheme = useTheme() as JSSTheme;
 
   const VirtualTableItem = useCallback(
     (itemProps) => {
       const { style, index } = itemProps;
 
       const row = rows[index];
+
+      if (!row) {
+        return (
+          <div
+            key={`minRow-${index}`}
+            className={classes.tr}
+            style={{
+              ...style,
+              gridTemplateColumns: rowContainerStyling.gridTemplateColumns
+            }}
+          >
+            {columns.map((col, colIndex) => (
+              <div className={classes.tableCell} key={`minRow-${index}-${colIndex}`} />
+            ))}
+          </div>
+        );
+      }
 
       prepareRow(row);
 
@@ -56,7 +88,7 @@ export const VirtualTableBody = (props) => {
         </div>
       );
     },
-    [rows, prepareRow]
+    [classes, columns, rows, prepareRow]
   );
 
   useEffect(() => {
@@ -67,11 +99,21 @@ export const VirtualTableBody = (props) => {
     }
   }, [innerDivRef.current]);
 
+  const { listHeight, itemCount, rowHeight } = useMemo(() => {
+    const internalRowHeight = theme.contentDensity === ContentDensity.Compact ? ROW_HEIGHT_COMPACT : ROW_HEIGHT_COZY;
+
+    return {
+      listHeight: internalRowHeight * visibleRows,
+      itemCount: Math.max(minRows, rows.length),
+      rowHeight: internalRowHeight
+    };
+  }, [rows, visibleRows, minRows]);
+
   return (
     <FixedSizeList
-      height={ROW_HEIGHT * visibleRows}
-      itemCount={rows.length}
-      itemSize={ROW_HEIGHT}
+      height={listHeight}
+      itemCount={itemCount}
+      itemSize={rowHeight}
       innerRef={innerDivRef}
       overscanCount={5}
     >

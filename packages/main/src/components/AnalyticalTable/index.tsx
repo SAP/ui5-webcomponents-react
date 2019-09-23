@@ -190,6 +190,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             rows={rows}
             classes={classes}
             onRowClicked={onRowClicked}
+            columns={columns}
           />
         </div>
         {loading && <LoadingComponent />}
@@ -212,7 +213,7 @@ AnalyticalTable.defaultProps = {
   columns: [],
   title: null,
   cellHeight: null,
-  minRows: 10,
+  minRows: 5,
   pivotBy: [],
   NoDataComponent: DefaultNoDataComponent,
   noDataText: 'No Data',
