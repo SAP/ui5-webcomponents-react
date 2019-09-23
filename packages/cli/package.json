@@ -1,7 +1,7 @@
 {
   "name": "@ui5/webcomponents-react-cli",
   "private": true,
-  "version": "0.5.1-rc.16",
+  "version": "0.5.1-rc.17",
   "description": "CLI for creating React Components",
   "repository": {
     "type": "git",

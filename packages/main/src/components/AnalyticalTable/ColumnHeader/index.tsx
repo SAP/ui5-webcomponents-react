@@ -20,7 +20,6 @@ export interface ColumnHeaderProps {
   groupable: boolean;
   sortable: boolean;
   filterable: boolean;
-  sticky?: boolean;
   isLastColumn?: boolean;
   onSort?: (e: Event) => void;
 }
@@ -40,7 +39,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     background: parameters.sapUiListHeaderBackground,
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-    maxWidth: '100%'
+    maxWidth: '100%',
+    position: 'relative'
   },
   iconContainer: {
     display: 'inline-block',
@@ -51,19 +51,15 @@ const styles = ({ parameters }: JSSTheme) => ({
     '& :last-child': {
       marginLeft: '0.25rem'
     }
-  },
-  sticky: {
-    position: 'sticky',
-    top: 0
   }
 });
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles);
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'TableColumnHeader' });
 
 export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   const classes = useStyles(props);
 
-  const { children, column, className, style, groupable, sortable, filterable, sticky, isLastColumn, onSort } = props;
+  const { children, column, className, style, groupable, sortable, filterable, isLastColumn, onSort } = props;
 
   const openBy = useMemo(() => {
     if (!column) return null;
@@ -90,7 +86,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   }, [classes, column.filterValue, column.isSorted, column.isGrouped, column.isSortedDesc, children]);
 
   const isResizable = !isLastColumn && column.canResize;
-  const innerStyle = useMemo(() => {
+  const innerStyle: CSSProperties = useMemo(() => {
     const modifiedStyles = {
       ...style,
       width: '100%',
@@ -107,13 +103,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
 
   if (!column) return null;
 
-  let thClasses = className;
-  if (sticky) {
-    thClasses = `${thClasses} ${classes.sticky}`;
-  }
-
   return (
-    <th className={thClasses} style={style}>
+    <div className={className} style={style}>
       {groupable || sortable || filterable ? (
         <ColumnHeaderModal
           openBy={openBy}
@@ -128,6 +119,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
         openBy
       )}
       {isResizable && <Resizer {...props} />}
-    </th>
+    </div>
   );
 };

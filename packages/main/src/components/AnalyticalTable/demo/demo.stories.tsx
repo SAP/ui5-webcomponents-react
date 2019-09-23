@@ -49,7 +49,7 @@ const columns = [
   }
 ];
 
-const data = generateData(200);
+const data = generateData(2000);
 
 export const defaultStory = () => {
   return (
@@ -58,13 +58,13 @@ export const defaultStory = () => {
       data={data}
       columns={columns}
       loading={boolean('loading', false)}
+      busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
       sortable={boolean('sortable', true)}
       filterable={boolean('filterable', true)}
-      stickyHeader={boolean('stickyHeader', true)}
-      minRows={number('minRows', 10)}
+      visibleRows={number('visibleRows', 15)}
+      minRows={number('minRows', 5)}
       groupable={boolean('groupable', true)}
       selectable={boolean('selectable', true)}
-      style={{ height: '600px', overflowY: 'auto', paddingRight: '12px' }}
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
     />
@@ -86,7 +86,7 @@ export const withCroppedPopup = () => {
           loading={boolean('loading', false)}
           sortable={boolean('sortable', true)}
           filterable={boolean('filterable', true)}
-          minRows={number('minRows', 10)}
+          visibleRows={number('visibleRows', 15)}
           groupable={boolean('groupable', true)}
         />
       </div>
@@ -105,7 +105,7 @@ export const tableWithExtension = () => {
       loading={boolean('loading', false)}
       sortable={boolean('sortable', true)}
       filterable={boolean('filterable', true)}
-      minRows={number('minRows', 10)}
+      visibleRows={number('visibleRows', 15)}
       groupable={boolean('groupable', true)}
       renderExtension={() => <Button>Hello from the Table Extension!</Button>}
     />
@@ -124,7 +124,7 @@ export const tableWithCustomTitle = () => {
       loading={boolean('loading', false)}
       sortable={boolean('sortable', true)}
       filterable={boolean('filterable', true)}
-      minRows={number('minRows', 10)}
+      visibleRows={number('visibleRows', 15)}
       groupable={boolean('groupable', true)}
     />
   );
