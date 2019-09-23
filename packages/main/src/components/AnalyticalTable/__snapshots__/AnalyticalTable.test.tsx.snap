@@ -263,15 +263,15 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         </div>
       </header>
       <div
-        style="position: relative; height: 480px; overflow: auto; will-change: transform; direction: ltr;"
+        style="position: relative; height: 220px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
           class="AnalyticalTable--tbody-"
-          style="height: 64px; width: 100%;"
+          style="height: 220px; width: 100%;"
         >
           <div
             class="AnalyticalTable--tr-"
-            style="position: absolute; left: 0px; top: 0px; height: 32px; width: 100%; grid-template-columns: minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr);"
+            style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%; grid-template-columns: minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr);"
           >
             <div
               class="AnalyticalTable--tableCell-"
@@ -316,7 +316,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <div
             class="AnalyticalTable--tr-"
-            style="position: absolute; left: 0px; top: 32px; height: 32px; width: 100%; grid-template-columns: minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr);"
+            style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%; grid-template-columns: minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr);"
           >
             <div
               class="AnalyticalTable--tableCell-"
@@ -358,6 +358,57 @@ exports[`AnalyticalTable test Asc desc 1`] = `
                 50
               </div>
             </div>
+          </div>
+          <div
+            class="AnalyticalTable--tr-"
+            style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%; grid-template-columns: minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr);"
+          >
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
+          </div>
+          <div
+            class="AnalyticalTable--tr-"
+            style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%; grid-template-columns: minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr);"
+          >
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
+          </div>
+          <div
+            class="AnalyticalTable--tr-"
+            style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%; grid-template-columns: minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr);"
+          >
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+            />
           </div>
         </div>
       </div>
