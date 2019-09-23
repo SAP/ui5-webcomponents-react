@@ -3,7 +3,7 @@
 exports[`AnalyticalTable test Asc desc 1`] = `
 <div>
   <div
-    class="Component-bar-"
+    style="min-height: 1.5rem; display: flex; align-items: center;"
   >
     <ui5-title
       class=""

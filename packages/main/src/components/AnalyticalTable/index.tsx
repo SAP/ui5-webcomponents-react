@@ -21,7 +21,7 @@ import { useTableRowStyling } from './hooks/useTableRowStyling';
 import { useTableStyling } from './hooks/useTableStyling';
 import { makeTemplateColumns } from './hooks/utils';
 import { LoadingComponent } from './LoadingComponent';
-import { TitleBar } from './titleBar';
+import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 
 export interface ColumnConfiguration {
