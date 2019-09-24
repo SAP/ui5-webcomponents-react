@@ -1,10 +1,10 @@
-import { withStyles } from '@ui5/webcomponents-react-base/lib/withStyles';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import React, { FC, ReactNode } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
-import { CommonProps } from '../../interfaces/CommonProps';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React, { FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './ObjectStatus.jss';
 
 export interface ObjectStatusPropTypes extends CommonProps {
@@ -13,8 +13,6 @@ export interface ObjectStatusPropTypes extends CommonProps {
   state?: ValueState;
   showDefaultIcon?: boolean;
 }
-
-interface ObjectStatusPropTypesInternal extends ObjectStatusPropTypes, ClassProps {}
 
 const defaultIconStyle = {
   fontSize: '1rem'
@@ -35,21 +33,21 @@ const getDefaultIcon = (state) => {
   }
 };
 
-export const ObjectStatus: FC<ObjectStatusPropTypes> = withStyles(styles)((props: ObjectStatusPropTypes) => {
-  const {
-    state,
-    showDefaultIcon,
-    children,
-    icon,
-    classes,
-    className,
-    style,
-    tooltip,
-    innerRef,
-    slot
-  } = props as ObjectStatusPropTypesInternal;
-  const iconToRender = !icon && showDefaultIcon ? getDefaultIcon(state) : icon;
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectStatus' });
 
+const ObjectStatus: FC<ObjectStatusPropTypes> = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
+  const { state, showDefaultIcon, children, icon, className, style, tooltip, slot } = props;
+  const iconToRender = useMemo(() => {
+    if (icon) {
+      return icon;
+    }
+    if (showDefaultIcon) {
+      return getDefaultIcon(state);
+    }
+    return null;
+  }, [icon, showDefaultIcon, state]);
+
+  const classes = useStyles();
   const objStatusClasses = StyleClassHelper.of(classes.objectStatus);
 
   if (className) {
@@ -58,16 +56,17 @@ export const ObjectStatus: FC<ObjectStatusPropTypes> = withStyles(styles)((props
 
   const iconClasses = StyleClassHelper.of(classes.icon);
   iconClasses.put(classes[`icon${state}`]);
-
   const textClass = classes[`text${state}`];
 
   return (
-    <div ref={innerRef} className={objStatusClasses.valueOf()} style={style} title={tooltip} slot={slot}>
+    <div ref={ref} className={objStatusClasses.valueOf()} style={style} title={tooltip} slot={slot}>
       {iconToRender && <div className={iconClasses.valueOf()}>{iconToRender}</div>}
       {children !== null && children !== undefined && <span className={textClass}>{children}</span>}
     </div>
   );
 });
+
+ObjectStatus.displayName = 'ObjectStatus';
 
 ObjectStatus.defaultProps = {
   state: ValueState.None,
@@ -75,3 +74,5 @@ ObjectStatus.defaultProps = {
   icon: null,
   children: null
 };
+
+export { ObjectStatus };

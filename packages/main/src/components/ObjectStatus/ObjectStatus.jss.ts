@@ -47,7 +47,6 @@ const styles = ({ parameters }: JSSTheme) => ({
     color: parameters.sapUiCriticalText
   },
   textInformation: {
-    // @ts-ignore
     color: parameters.sapUiInformativeText
   },
   textNone: {
