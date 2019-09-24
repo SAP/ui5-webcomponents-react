@@ -11,6 +11,7 @@ import React, {
   Ref,
   useCallback,
   useEffect,
+  useMemo,
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -138,18 +139,21 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
     gridClasses.put(classes.gridPositionRight);
   }
 
-  const gridStyle: CSSProperties = {};
-  if (width !== '100%' && width !== 'auto' && width !== 'inherit') {
-    if (hSpacing === 0) {
-      gridStyle.width = width;
-    } else {
-      gridStyle.width = `calc(${width} - ${hSpacing}rem)`;
+  const gridStyle: CSSProperties = useMemo(() => {
+    const styles: CSSProperties = {};
+    if (width !== '100%' && width !== 'auto' && width !== 'inherit') {
+      if (hSpacing === 0) {
+        styles.width = width;
+      } else {
+        styles.width = `calc(${width} - ${hSpacing}rem)`;
+      }
     }
-  }
+    if (style) {
+      Object.assign(styles, style);
+    }
 
-  if (style) {
-    Object.assign(gridStyle, style);
-  }
+    return styles;
+  }, [width, hSpacing, style]);
 
   if (className) {
     gridClasses.put(className);
