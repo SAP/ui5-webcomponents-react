@@ -2,20 +2,21 @@ import React, { ComponentType, CSSProperties, forwardRef, Ref, useMemo, useRef }
 import { createUseStyles } from 'react-jss';
 import { ChartBaseProps } from '../interfaces/ChartBaseProps';
 import { getLoadingState } from './Placeholder';
+import { useSizeMonitor } from './useSizeMonitor';
 
-const chartHeight = (props) => {
-  if (props.noLegend) {
-    return `${props.height}px`;
-  }
-  return `${props.height - 60}px`;
-};
+// const calculateChartHeight = (props) => {
+//   if (props.noLegend) {
+//     return `${props.height}px`;
+//   }
+//   return `${props.height - 60}px`;
+// };
 
 const styles = {
   chart: {
-    '& svg': {
-      width: (props) => `${props.width}px`,
-      height: chartHeight
-    },
+    // '& svg': {
+    //   width: (props) => `${props.width}px`,
+    //   height: calculateChartHeight
+    // },
     '& .legend': {
       height: '55px',
       maxHeight: '55px',
@@ -33,7 +34,10 @@ const useStyles = createUseStyles(styles, { name: 'ChartContainer' });
 
 export const withChartContainer = (Component: ComponentType<any>) => {
   const ChartContainer = forwardRef((props: ChartBaseProps, ref: Ref<any>) => {
-    const { style, className, tooltip, loading, datasets, slot, noLegend, height, width, ...rest } = props;
+    const { style, className, tooltip, loading, datasets, slot, noLegend, ...rest } = props;
+
+    const outerContainer = useRef(null);
+    const legendRef = useRef(null);
 
     const classes = useStyles(props);
     let classNames = classes.chart;
@@ -45,16 +49,17 @@ export const withChartContainer = (Component: ComponentType<any>) => {
       return getLoadingState(loading, datasets, (Component as any).LoadingPlaceholder);
     }, [loading, datasets, Component]);
 
-    const inlineStyle: CSSProperties = useMemo(
-      () => ({
+    const { height, width } = useSizeMonitor(props.height, props.width, outerContainer);
+
+    const inlineStyle: CSSProperties = useMemo(() => {
+      return {
         position: 'relative',
         paddingTop: '6px',
-        width: `${width}px`,
-        height: `${height}px`,
+        width: typeof props.width === 'string' ? props.width : `${width}px`,
+        height: typeof props.height === 'string' ? props.height : `${height}px`,
         ...style
-      }),
-      [width, height, style]
-    );
+      };
+    }, [props.width, props.height, width, height, style]);
 
     const chartHeight = useMemo(() => (noLegend ? height : height - 60), [noLegend, height]);
 
@@ -63,11 +68,10 @@ export const withChartContainer = (Component: ComponentType<any>) => {
       [chartHeight, width]
     );
 
-    const legendRef = useRef(null);
     return (
-      <div className={classNames} style={inlineStyle} title={tooltip} slot={slot}>
+      <div ref={outerContainer} className={classNames} style={inlineStyle} title={tooltip} slot={slot}>
         {loadingIndicator}
-        {datasets.length > 0 && (
+        {height && datasets.length > 0 && (
           <div style={chartWrapperStyles}>
             <Component
               {...rest}
@@ -86,7 +90,11 @@ export const withChartContainer = (Component: ComponentType<any>) => {
     );
   });
 
-  ChartContainer.defaultProps = Component.defaultProps;
+  ChartContainer.defaultProps = {
+    width: 350,
+    height: 350,
+    ...(Component.defaultProps || {})
+  };
   ChartContainer.displayName = Component.displayName;
 
   return ChartContainer;
