@@ -17,11 +17,11 @@ describe('createGenerateClassName', () => {
         jss: {
           id: '1'
         },
-        classNamePrefix: 'WithStyles(Component)'
+        classNamePrefix: 'Component-'
       }
     };
     const className = generateClassName(rule, sheet);
-    expect(className.match(/Component-someKey--1-.*/).length > 0).toBe(true);
+    expect(className.match(/Component--someKey--1-.*/).length > 0).toBe(true);
   });
 
   test('with invalid jssId and invalid classNamePrefix', () => {
@@ -30,10 +30,10 @@ describe('createGenerateClassName', () => {
         jss: {
           id: null
         },
-        classNamePrefix: 'WithStyles-Component'
+        classNamePrefix: 'MyComponent-Component-'
       }
     };
     const className = generateClassName(rule, sheet);
-    expect(className.match(/WithStyles-Component-someKey--.*/).length > 0).toBe(true);
+    expect(className.match(/MyComponent-Component--someKey--.*/).length > 0).toBe(true);
   });
 });
