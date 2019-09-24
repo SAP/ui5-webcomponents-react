@@ -16,7 +16,8 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       background: parameters.sapUiObjectHeaderBackground,
       minHeight: '3rem',
       paddingBottom: '0.5rem',
-      boxShadow: 'none'
+      boxShadow: 'none',
+      flexWrap: 'wrap'
     },
     vLine: {
       borderLeft: '1px solid gray',
@@ -33,16 +34,18 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
     filterAreaClosed: {
       maxHeight: '0',
       opacity: 0,
-      padding: 0
+      padding: 0,
+      overflowY: 'scroll'
     },
     filterAreaOpen: {
       maxHeight: '500px',
-      opacity: 1
+      opacity: 1,
+      overflowY: 'scroll'
     },
     headerRowRight: {
       display: 'flex',
       justifyContent: 'flex-end',
-      width: '100%'
+      flexGrow: 1
     },
     // is being applied to the span which represents the InfoLabel Text
     label: {
