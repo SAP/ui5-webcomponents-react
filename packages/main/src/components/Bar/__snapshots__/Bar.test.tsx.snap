@@ -2,11 +2,11 @@
 
 exports[`Bar Render all content 1`] = `
 <div
-  class="Bar-bar-"
+  class="Bar--bar-"
   data-bar-part="Root"
 >
   <div
-    class="Bar-left-"
+    class="Bar--left-"
     data-bar-part="Left"
   >
     <div>
@@ -14,11 +14,11 @@ exports[`Bar Render all content 1`] = `
     </div>
   </div>
   <div
-    class="Bar-center-"
+    class="Bar--center-"
     data-bar-part="Center"
   >
     <div
-      class="Bar-inner-"
+      class="Bar--inner-"
     >
       <div>
         Content Middle
@@ -26,7 +26,7 @@ exports[`Bar Render all content 1`] = `
     </div>
   </div>
   <div
-    class="Bar-right-"
+    class="Bar--right-"
     data-bar-part="Right"
   >
     <div>
@@ -38,23 +38,23 @@ exports[`Bar Render all content 1`] = `
 
 exports[`Bar Renders with default Props 1`] = `
 <div
-  class="Bar-bar-"
+  class="Bar--bar-"
   data-bar-part="Root"
 >
   <div
-    class="Bar-left-"
+    class="Bar--left-"
     data-bar-part="Left"
   />
   <div
-    class="Bar-center-"
+    class="Bar--center-"
     data-bar-part="Center"
   >
     <div
-      class="Bar-inner-"
+      class="Bar--inner-"
     />
   </div>
   <div
-    class="Bar-right-"
+    class="Bar--right-"
     data-bar-part="Right"
   />
 </div>
