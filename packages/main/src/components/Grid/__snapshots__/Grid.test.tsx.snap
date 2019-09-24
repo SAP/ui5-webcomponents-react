@@ -2,11 +2,11 @@
 
 exports[`Grid Custom Class Names and Styling 1`] = `
 <div
-  class="WithStyles(Grid)-grid-0 WithStyles(Grid)-gridVSpace1-0 customClassName"
+  class="Grid--grid- Grid--gridVSpace1- customClassName"
   style="width: 60%; background-color: purple;"
 >
   <div
-    class="WithStyles(Grid)-gridSpan-0"
+    class="Grid--gridSpan-"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -26,10 +26,10 @@ exports[`Grid Custom Class Names and Styling 1`] = `
 
 exports[`Grid Grid Position Center 1`] = `
 <div
-  class="WithStyles(Grid)-grid-0 WithStyles(Grid)-gridHSpace1-0 WithStyles(Grid)-gridVSpace1-0 WithStyles(Grid)-gridPositionCenter-0"
+  class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1- Grid--gridPositionCenter-"
 >
   <div
-    class="WithStyles(Grid)-gridSpan-0"
+    class="Grid--gridSpan-"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -49,10 +49,10 @@ exports[`Grid Grid Position Center 1`] = `
 
 exports[`Grid Grid Position Right 1`] = `
 <div
-  class="WithStyles(Grid)-grid-0 WithStyles(Grid)-gridHSpace1-0 WithStyles(Grid)-gridVSpace1-0 WithStyles(Grid)-gridPositionRight-0"
+  class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1- Grid--gridPositionRight-"
 >
   <div
-    class="WithStyles(Grid)-gridSpan-0"
+    class="Grid--gridSpan-"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -72,10 +72,10 @@ exports[`Grid Grid Position Right 1`] = `
 
 exports[`Grid Renders Children 1`] = `
 <div
-  class="WithStyles(Grid)-grid-0 WithStyles(Grid)-gridHSpace1-0 WithStyles(Grid)-gridVSpace1-0"
+  class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
 >
   <div
-    class="WithStyles(Grid)-gridSpan-0"
+    class="Grid--gridSpan-"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -95,10 +95,10 @@ exports[`Grid Renders Children 1`] = `
 
 exports[`Grid Renders Children with custom layout data 1`] = `
 <div
-  class="WithStyles(Grid)-grid-0 WithStyles(Grid)-gridHSpace1-0 WithStyles(Grid)-gridVSpace1-0"
+  class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
 >
   <div
-    class="WithStyles(Grid)-gridSpan-0"
+    class="Grid--gridSpan-"
   >
     <div
       data-layout="[object Object]"
@@ -106,7 +106,7 @@ exports[`Grid Renders Children with custom layout data 1`] = `
     />
   </div>
   <div
-    class="WithStyles(Grid)-gridSpan-0"
+    class="Grid--gridSpan-"
   >
     <div
       data-layout="[object Object]"
