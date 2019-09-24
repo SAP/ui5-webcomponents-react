@@ -35,7 +35,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       maxHeight: '0',
       opacity: 0,
       padding: 0,
-      overflow: 'scroll'
+      overflowY: 'scroll'
     },
     filterAreaOpen: {
       maxHeight: '500px',
