@@ -107,8 +107,8 @@ const BarChartComponent = forwardRef((props: BarChartPropTypes, ref: Ref<any>) =
     <HorizontalBar
       ref={chartRef}
       data={data}
-      height={height}
-      width={width}
+      height={height as number}
+      width={width as number}
       options={mergedOptions}
       getDatasetAtEvent={getDatasetAtEvent}
       getElementAtEvent={getElementAtEvent}
