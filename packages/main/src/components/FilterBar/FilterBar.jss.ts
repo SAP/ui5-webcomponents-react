@@ -45,7 +45,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
     headerRowRight: {
       display: 'flex',
       justifyContent: 'flex-end',
-      width: '100%'
+      flexGrow: 1
     },
     // is being applied to the span which represents the InfoLabel Text
     label: {
