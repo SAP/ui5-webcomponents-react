@@ -28,5 +28,3 @@ export const ThemedComponent = (component, contextOverwrite = {}) => (
 
 export const renderThemedComponent = (component, contextOverwrite = {}) =>
   shallow(<ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>).render();
-
-export { mount };
