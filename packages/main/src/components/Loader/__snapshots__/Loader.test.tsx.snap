@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader large 1`] = `
+<div
+  aria-busy="true"
+  class="Loader--loader- Loader--loader-0- Loader--loaderDeterminate-"
+  data-component-name="Loader"
+  role="progressbar"
+  title="Please wait"
+/>
+`;
+
+exports[`Loader medium 1`] = `
+<div
+  aria-busy="true"
+  class="Loader--loader- Loader--loader-0- Loader--loaderDeterminate-"
+  data-component-name="Loader"
+  role="progressbar"
+  title="Please wait"
+/>
+`;
+
+exports[`Loader small 1`] = `
+<div
+  aria-busy="true"
+  class="Loader--loader- Loader--loader-0- Loader--loaderIndeterminate-"
+  data-component-name="Loader"
+  role="progressbar"
+  title="Please wait"
+/>
+`;
+
+exports[`Loader with custom class name 1`] = `
+<div
+  aria-busy="true"
+  class="Loader--loader- Loader--loader-0- Loader--loaderIndeterminate-"
+  data-component-name="Loader"
+  role="progressbar"
+  title="Please wait"
+/>
+`;
