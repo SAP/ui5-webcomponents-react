@@ -13,7 +13,6 @@ import * as spacing from './lib/spacing';
 import { StyleClassHelper } from './lib/StyleClassHelper';
 import { useConsolidatedRef } from './lib/useConsolidatedRef';
 import { deprecationNotice } from './lib/Utils';
-import { withStyles } from './lib/withStyles';
 
 export {
   StyleClassHelper,
@@ -27,7 +26,6 @@ export {
   spacing,
   HSLColor,
   sap_fiori_3,
-  withStyles,
   createGenerateClassName,
   useConsolidatedRef
 };

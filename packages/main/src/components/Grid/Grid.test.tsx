@@ -1,6 +1,7 @@
-import { mount } from '@shared/tests/utils';
+import { mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
-import { Grid, GridPosition } from './index';
+import { Grid } from '@ui5/webcomponents-react/lib/Grid';
+import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
 
 const GridContent = () => (
   <>
@@ -37,17 +38,16 @@ const GridContent = () => (
 
 describe('Grid', () => {
   test('Renders Children', () => {
-    const wrapper = mount(
+    const wrapper = mountThemedComponent(
       <Grid>
         <GridContent />
       </Grid>
     );
     expect(wrapper.render()).toMatchSnapshot();
-    wrapper.unmount();
   });
 
   test('Custom Class Names and Styling', () => {
-    const wrapper = mount(
+    const wrapper = mountThemedComponent(
       <Grid width="60%" style={{ backgroundColor: 'purple' }} className="customClassName" hSpacing={0}>
         <GridContent />
       </Grid>
@@ -56,7 +56,7 @@ describe('Grid', () => {
   });
 
   test('Renders Children with custom layout data', () => {
-    const wrapper = mount(
+    const wrapper = mountThemedComponent(
       <Grid>
         <div
           style={{
@@ -80,7 +80,7 @@ describe('Grid', () => {
   });
 
   test('Grid Position Center', () => {
-    const wrapper = mount(
+    const wrapper = mountThemedComponent(
       <Grid width="60%" position={GridPosition.Center}>
         <GridContent />
       </Grid>
@@ -88,7 +88,7 @@ describe('Grid', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
   test('Grid Position Right', () => {
-    const wrapper = mount(
+    const wrapper = mountThemedComponent(
       <Grid width="60%" position={GridPosition.Right}>
         <GridContent />
       </Grid>

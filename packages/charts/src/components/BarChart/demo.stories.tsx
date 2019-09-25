@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import { BarChart } from './index';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [
@@ -36,6 +37,50 @@ const options = {
 export default {
   title: 'Charts | BarChart',
   component: BarChart
+};
+
+function Demo() {
+  const [full, setFull] = useState(true);
+
+  return (
+    <div
+      style={{
+        display: 'flex'
+      }}
+    >
+      <div
+        style={{
+          width: full ? '600px' : '300px',
+          height: full ? '450px' : '225px'
+        }}
+      >
+        <BarChart
+          labels={labels}
+          datasets={datasets}
+          height="100%"
+          width="100%"
+          getElementAtEvent={action('getElementAtEvent')}
+          loading={boolean('loading', false)}
+          noLegend={boolean('noLegend', false)}
+        />
+      </div>
+      <Button
+        onClick={() => {
+          setFull(!full);
+        }}
+      >
+        Enable Full Width
+      </Button>
+    </div>
+  );
+}
+
+export const resizeDemo = () => {
+  return <Demo />;
+};
+
+resizeDemo.story = {
+  name: 'resizeDemo'
 };
 
 export const defaultStory = () => (
