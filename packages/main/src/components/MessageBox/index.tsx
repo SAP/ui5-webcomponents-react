@@ -5,7 +5,7 @@ import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import { Button } from '@ui5/webcomponents-react/src/lib/Button';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
 import React, { forwardRef, isValidElement, ReactNode, Ref, useCallback, useMemo } from 'react';
