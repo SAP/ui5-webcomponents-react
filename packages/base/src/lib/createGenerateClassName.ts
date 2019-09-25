@@ -1,3 +1,3 @@
-import { createGenerateClassName } from '../withStyles/createGenerateClassName';
+import { createGenerateClassName } from '../styling/createGenerateClassName';
 
 export { createGenerateClassName };
