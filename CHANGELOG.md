@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0-rc.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.6.0-rc.4...v0.6.0-rc.5) (2019-09-25)
+
+
+### Bug Fixes
+
+* **Charts:** dynamic chart size ([#154](https://github.com/SAP/ui5-webcomponents-react/issues/154)) ([1746a76](https://github.com/SAP/ui5-webcomponents-react/commit/1746a76))
+
+
+
+
+
 # [0.6.0-rc.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.6.0-rc.2...v0.6.0-rc.4) (2019-09-25)
 
 
