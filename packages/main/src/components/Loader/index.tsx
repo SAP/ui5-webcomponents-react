@@ -1,19 +1,20 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import React, { forwardRef, RefObject, FC, CSSProperties } from 'react';
+import React, { CSSProperties, FC, forwardRef, RefObject, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
 import { styles } from './Loader.jss';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export interface LoaderProps extends CommonProps {
   type?: LoaderType;
-  progressBarWidth?: CSSProperties['width'];
+  progress?: CSSProperties['width'];
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Loader' });
 
 const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<HTMLDivElement>) => {
-  const { className, type, progressBarWidth, tooltip, slot, style } = props;
+  const { className, type, progress, tooltip, slot, style } = props;
   const classes = useStyles(props);
 
   const loaderClasses = StyleClassHelper.of(classes.loader);
@@ -21,6 +22,10 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
     loaderClasses.put(className);
   }
   loaderClasses.put(classes[`loader${type}`]);
+
+  const backgroundSize = useMemo(() => {
+    return type !== LoaderType.Determinate ? '40%' : progress;
+  }, [progress]);
 
   return (
     <div
@@ -31,14 +36,14 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
       role="progressbar"
       title={tooltip || 'Please wait'}
       slot={slot}
-      style={style}
+      style={{ ...style, backgroundSize }}
     />
   );
 });
 
 Loader.defaultProps = {
   type: LoaderType.Indeterminate,
-  progressBarWidth: '0px'
+  progress: '0px'
 };
 
 Loader.displayName = 'Loader';
