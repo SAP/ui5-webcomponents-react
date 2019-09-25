@@ -10,7 +10,7 @@ export interface LoaderProps extends CommonProps {
   progressBarWidth?: CSSProperties['width'];
 }
 
-const useStyles = createUseStyles(styles, { name: 'Loader' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Loader' });
 
 const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<HTMLDivElement>) => {
   const { className, type, progressBarWidth, tooltip, slot, style } = props;
