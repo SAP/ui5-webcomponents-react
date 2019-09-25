@@ -4,19 +4,15 @@ import { ChartBaseProps } from '../interfaces/ChartBaseProps';
 import { getLoadingState } from './Placeholder';
 import { useSizeMonitor } from './useSizeMonitor';
 
-// const calculateChartHeight = (props) => {
-//   if (props.noLegend) {
-//     return `${props.height}px`;
-//   }
-//   return `${props.height - 60}px`;
-// };
+const calculateChartHeight = (props) => {
+  if (props.noLegend) {
+    return typeof props.height === 'string' ? props.height : `${props.height}px`;
+  }
+  return typeof props.height === 'string' ? `calc(${props.height} - 60px)` : `${props.height - 60}px`;
+};
 
 const styles = {
   chart: {
-    // '& svg': {
-    //   width: (props) => `${props.width}px`,
-    //   height: calculateChartHeight
-    // },
     '& .legend': {
       height: '55px',
       maxHeight: '55px',
@@ -26,6 +22,10 @@ const styles = {
       flexWrap: 'wrap',
       padding: '0 1rem',
       boxSizing: 'border-box'
+    },
+    '& svg': {
+      width: (props) => `${props.width}px`,
+      height: calculateChartHeight
     }
   }
 };
@@ -49,7 +49,7 @@ export const withChartContainer = (Component: ComponentType<any>) => {
       return getLoadingState(loading, datasets, (Component as any).LoadingPlaceholder);
     }, [loading, datasets, Component]);
 
-    const { height, width } = useSizeMonitor(props.height, props.width, outerContainer);
+    const { height, width } = useSizeMonitor(props, outerContainer);
 
     const inlineStyle: CSSProperties = useMemo(() => {
       return {
@@ -90,11 +90,7 @@ export const withChartContainer = (Component: ComponentType<any>) => {
     );
   });
 
-  ChartContainer.defaultProps = {
-    width: 350,
-    height: 350,
-    ...(Component.defaultProps || {})
-  };
+  ChartContainer.defaultProps = Component.defaultProps;
   ChartContainer.displayName = Component.displayName;
 
   return ChartContainer;
