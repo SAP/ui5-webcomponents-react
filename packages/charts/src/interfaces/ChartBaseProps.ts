@@ -8,6 +8,8 @@ export interface ChartBaseProps extends CommonProps {
   colors?: Array<CSSProperties['color']>;
   height?: number | string;
   width?: number | string;
+  minHeight?: number;
+  minWidth?: number;
   options?: ChartOptions;
   categoryAxisFormatter?: (value: any, currentDataset?: object, currentContext?: object) => string | number;
   valueAxisFormatter?: (value: any, currentDataset?: object, currentContext?: object) => string | number;
