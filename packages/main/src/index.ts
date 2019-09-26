@@ -107,6 +107,8 @@ import { Tokenizer } from './lib/Tokenizer';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
+import { Loader } from './lib/Loader';
+import { LoaderType } from './lib/LoaderType';
 
 export {
   ActionSheet,
@@ -213,5 +215,7 @@ export {
   Tokenizer,
   ValueState,
   VariantManagement,
-  VerticalAlign
+  VerticalAlign,
+  Loader,
+  LoaderType
 };

@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader default 1`] = `
+<div
+  aria-busy="true"
+  class="Loader--loader- Loader--loaderIndeterminate-"
+  data-component-name="Loader"
+  role="progressbar"
+  style="background-size:40%"
+  title="Please wait"
+/>
+`;
+
+exports[`Loader determinate 1`] = `
+<div
+  aria-busy="true"
+  class="Loader--loader- Loader--loaderDeterminate-"
+  data-component-name="Loader"
+  role="progressbar"
+  style="background-size:0px"
+  title="Please wait"
+/>
+`;
+
+exports[`Loader determinate with progress prop 1`] = `
+<div
+  aria-busy="true"
+  class="Loader--loader- Loader--loaderDeterminate-"
+  data-component-name="Loader"
+  role="progressbar"
+  style="background-size:42%"
+  title="Please wait"
+/>
+`;
+
+exports[`Loader indeterminate 1`] = `
+<div
+  aria-busy="true"
+  class="Loader--loader- Loader--loaderIndeterminate-"
+  data-component-name="Loader"
+  role="progressbar"
+  style="background-size:40%"
+  title="Please wait"
+/>
+`;
+
+exports[`Loader with Custom Class Name 1`] = `
+<div
+  aria-busy="true"
+  class="Loader--loader- myTestClass Loader--loaderIndeterminate-"
+  data-component-name="Loader"
+  role="progressbar"
+  style="background-size:40%"
+  title="Please wait"
+/>
+`;
