@@ -20,7 +20,7 @@ jobs:
     - stage: 'Test'
       script:
         - yarn test
-        - cat ${TRAVIS_BUILD_DIR}/coverage/lcov.info | ${TRAVIS_BUILD_DIR}/node_modules/.bin/coveralls
+        - ${TRAVIS_BUILD_DIR}/node_modules/.bin/codecov
     - stage: 'Build and Deploy'
       before_script:
         - git checkout ${TRAVIS_BRANCH}
