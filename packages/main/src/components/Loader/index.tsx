@@ -1,10 +1,10 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
 import React, { CSSProperties, FC, forwardRef, RefObject, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
-import { styles } from './Loader.jss';
 import { JSSTheme } from '../../interfaces/JSSTheme';
+import { styles } from './Loader.jss';
 
 export interface LoaderProps extends CommonProps {
   type?: LoaderType;
@@ -23,9 +23,13 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
   }
   loaderClasses.put(classes[`loader${type}`]);
 
-  const backgroundSize = useMemo(() => {
-    return type !== LoaderType.Determinate ? '40%' : progress;
-  }, [progress]);
+  const inlineStyles = useMemo(() => {
+    const backgroundSize = type !== LoaderType.Determinate ? '40%' : progress;
+    return {
+      ...style,
+      backgroundSize
+    };
+  }, [progress, style, type]);
 
   return (
     <div
@@ -36,7 +40,7 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
       role="progressbar"
       title={tooltip || 'Please wait'}
       slot={slot}
-      style={{ ...style, backgroundSize }}
+      style={inlineStyles}
     />
   );
 });
