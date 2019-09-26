@@ -91,11 +91,13 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
 
     return (
       <>
+        {/*
+          // @ts-ignore */}
         <CustomListItem
           selected={isSelfSelected || hasSelectedChild}
           ref={ref}
           className={listItemClasses.valueOf()}
-          tooltip={tooltip}
+          title={tooltip}
           slot={slot}
           style={style}
           data-id={id}
@@ -112,16 +114,20 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
               openBy={<Icon src={icon} className={classes.icon} />}
             >
               <List>
-                <StandardListItem selected={isSelfSelected} data-id={id}>
+                {/*
+                // @ts-ignore */}
+                <StandardListItem selected={isSelfSelected} data-id={id} title={tooltip}>
                   {text}
                 </StandardListItem>
                 {validChildren.map((child: any, index) => {
                   return (
+                    // @ts-ignore
                     <StandardListItem
                       selected={props['selectedId'] === child.props.id}
                       key={index}
                       data-id={child.props.id}
                       data-parent-id={id}
+                      title={child.props.tooltip || child.props.text}
                     >
                       {child.props.text}
                     </StandardListItem>

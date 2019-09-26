@@ -88,6 +88,7 @@ exports[`SideNavigation Collapsed 1`] = `
             data-id="sales-opportunities"
             data-parent-id="sales"
             info-state="None"
+            title="My Opportunities"
             type="Active"
           >
             My Opportunities
@@ -98,6 +99,7 @@ exports[`SideNavigation Collapsed 1`] = `
             data-parent-id="sales"
             info-state="None"
             selected="true"
+            title="My Leads"
             type="Active"
           >
             My Leads
@@ -107,6 +109,7 @@ exports[`SideNavigation Collapsed 1`] = `
             data-id="sales-cpqs"
             data-parent-id="sales"
             info-state="None"
+            title="My CPQS"
             type="Active"
           >
             My CPQS
@@ -255,6 +258,7 @@ exports[`SideNavigation Condensed 1`] = `
             data-id="sales-opportunities"
             data-parent-id="sales"
             info-state="None"
+            title="My Opportunities"
             type="Active"
           >
             My Opportunities
@@ -265,6 +269,7 @@ exports[`SideNavigation Condensed 1`] = `
             data-parent-id="sales"
             info-state="None"
             selected="true"
+            title="My Leads"
             type="Active"
           >
             My Leads
@@ -274,6 +279,7 @@ exports[`SideNavigation Condensed 1`] = `
             data-id="sales-cpqs"
             data-parent-id="sales"
             info-state="None"
+            title="My CPQS"
             type="Active"
           >
             My CPQS
@@ -350,6 +356,7 @@ exports[`SideNavigation Expanded 1`] = `
       class="SideNavigationListItem--listItem-"
       data-has-children="false"
       data-id="home"
+      title="Nav To Home Tooltip"
       type="Active"
     >
       <ui5-icon

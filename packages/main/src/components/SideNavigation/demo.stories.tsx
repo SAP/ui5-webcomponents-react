@@ -17,11 +17,16 @@ export const defaultStory = () => (
       <SideNavigationListItem id="footer2" text="Useful Links" icon="sap-icon://chain-link" />
     ]}
   >
-    <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" />
+    <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" tooltip="Nav To Home" />
     <SideNavigationListItem text="Calendar" icon="sap-icon://calendar" id="calendar" />
     <SideNavigationListItem text="Customers" icon="sap-icon://employee" id="customers" />
-    <SideNavigationListItem text="Sales" icon="sap-icon://lead" id="sales">
-      <SideNavigationListItem text="My Opportunities" icon="sap-icon://home" id="sales-opportunities" />
+    <SideNavigationListItem text="Sales" icon="sap-icon://lead" id="sales" tooltip="Sales">
+      <SideNavigationListItem
+        text="My Opportunities"
+        icon="sap-icon://home"
+        id="sales-opportunities"
+        tooltip="sales-opportunities"
+      />
       <SideNavigationListItem text="My Leads" icon="sap-icon://home" id="sales-leads" />
       <SideNavigationListItem text="My CPQS" icon="sap-icon://home" id="sales-cpqs" />
     </SideNavigationListItem>

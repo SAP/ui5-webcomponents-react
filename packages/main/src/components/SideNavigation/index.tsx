@@ -25,7 +25,7 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigati
 });
 
 const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigationProps, ref: Ref<HTMLDivElement>) => {
-  const { children, openState, footerItems, selectedId, onItemSelect, noIcons, style, className } = props;
+  const { children, openState, footerItems, selectedId, onItemSelect, noIcons, style, className, tooltip } = props;
 
   const classes = useStyles();
 
@@ -85,7 +85,7 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
   );
 
   return (
-    <div ref={ref} className={sideNavigationClasses.valueOf()} style={style}>
+    <div ref={ref} className={sideNavigationClasses.valueOf()} style={style} title={tooltip}>
       <List onItemClick={onListItemSelected}>
         {Children.map(children, (child: any) =>
           cloneElement(child, {
