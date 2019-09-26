@@ -23,4 +23,9 @@ describe('Loader', () => {
     const wrapper = renderThemedComponent(<Loader />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('with Custom Class Name', () => {
+    const wrapper = renderThemedComponent(<Loader className="myTestClass" />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

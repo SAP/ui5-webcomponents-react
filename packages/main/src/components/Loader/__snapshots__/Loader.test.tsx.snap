@@ -1,41 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Loader large 1`] = `
+exports[`Loader default 1`] = `
 <div
   aria-busy="true"
-  class="Loader--loader- Loader--loader-0- Loader--loaderDeterminate-"
+  class="Loader--loader- Loader--loaderIndeterminate-"
   data-component-name="Loader"
   role="progressbar"
+  style="background-size:40%"
   title="Please wait"
 />
 `;
 
-exports[`Loader medium 1`] = `
+exports[`Loader determinate 1`] = `
 <div
   aria-busy="true"
-  class="Loader--loader- Loader--loader-0- Loader--loaderDeterminate-"
+  class="Loader--loader- Loader--loaderDeterminate-"
   data-component-name="Loader"
   role="progressbar"
+  style="background-size:0px"
   title="Please wait"
 />
 `;
 
-exports[`Loader small 1`] = `
+exports[`Loader determinate with progress prop 1`] = `
 <div
   aria-busy="true"
-  class="Loader--loader- Loader--loader-0- Loader--loaderIndeterminate-"
+  class="Loader--loader- Loader--loaderDeterminate-"
   data-component-name="Loader"
   role="progressbar"
+  style="background-size:42%"
   title="Please wait"
 />
 `;
 
-exports[`Loader with custom class name 1`] = `
+exports[`Loader indeterminate 1`] = `
 <div
   aria-busy="true"
-  class="Loader--loader- Loader--loader-0- Loader--loaderIndeterminate-"
+  class="Loader--loader- Loader--loaderIndeterminate-"
   data-component-name="Loader"
   role="progressbar"
+  style="background-size:40%"
+  title="Please wait"
+/>
+`;
+
+exports[`Loader with Custom Class Name 1`] = `
+<div
+  aria-busy="true"
+  class="Loader--loader- myTestClass Loader--loaderIndeterminate-"
+  data-component-name="Loader"
+  role="progressbar"
+  style="background-size:40%"
   title="Please wait"
 />
 `;
