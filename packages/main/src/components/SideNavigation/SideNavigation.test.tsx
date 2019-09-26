@@ -15,7 +15,7 @@ describe('SideNavigation', () => {
           <SideNavigationListItem text="Useful Links" icon="sap-icon://chain-link" />
         ]}
       >
-        <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" />
+        <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" tooltip="Nav To Home Tooltip" />
         <SideNavigationListItem text="Calendar" icon="sap-icon://calendar" id="calendar" />
         <SideNavigationListItem text="Customers" icon="sap-icon://employee" id="customers" />
         <SideNavigationListItem text="Sales" icon="sap-icon://lead" id="sales">
