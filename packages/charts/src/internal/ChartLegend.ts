@@ -20,9 +20,9 @@ const getSymbolForDataset = (type, dataset) => {
 const getLegendEntry = (dataset, type, index) => {
   const symbol = getSymbolForDataset(type, dataset);
 
-  return `<li style="display: flex; align-items: center; margin-right: 24px; margin-bottom: 1rem; cursor:pointer;" data-datasetindex="${index}">
+  return `<li style="display: flex; align-items: center; margin-right: 24px; cursor:pointer;" data-datasetindex="${index}">
 ${symbol}
-<ui5-label style="font-size: 12px; user-select: none">${dataset.label}</ui5-label>
+<ui5-label style="font-size: 12px; user-select: none; cursor:pointer;">${dataset.label}</ui5-label>
 </li>`;
 };
 
