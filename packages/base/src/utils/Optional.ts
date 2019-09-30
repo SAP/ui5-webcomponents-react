@@ -36,7 +36,19 @@ class Optional {
    * @private
    */
   get() {
-    return this.path.split('.').reduce((accumulator: any, val: any) => accumulator[val], this.object);
+    return this.path.split('.').reduce((acc, val) => {
+      if (acc === undefined || acc === null) {
+        return acc;
+      }
+      if (acc.hasOwnProperty(val)) {
+        const newVal = acc[val];
+        if (newVal !== undefined && newVal !== null) {
+          return newVal;
+        }
+        return newVal;
+      }
+      return undefined;
+    }, this.object);
   }
 
   /**
@@ -75,19 +87,15 @@ class Optional {
 
   /**
    * Return the contained value, if present, otherwise throw an exception to be created by the provided supplier.
-   * @param {Exception} ex The supplier which will return the exception to be thrown
+   * @param {ExceptionSupplier} exceptionSupplier The supplier which will return the exception to be thrown
    * @returns {any} the present value
    * @throws {Exception} ex - if there is no value present
    *
    */
-  orElseThrow(ex: Error) {
+  orElseThrow(exceptionSupplier: () => Error) {
     if (!this.isPresent()) {
-      throw ex;
+      throw exceptionSupplier();
     }
-    return this.get();
-  }
-
-  valueOf() {
     return this.get();
   }
 }
