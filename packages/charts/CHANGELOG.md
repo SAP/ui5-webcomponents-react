@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0-rc.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.6.0-rc.7...v0.6.0-rc.8) (2019-09-30)
+
+
+### Bug Fixes
+
+* **charts:** Fix legend display ([#163](https://github.com/SAP/ui5-webcomponents-react/issues/163)) ([124dff4](https://github.com/SAP/ui5-webcomponents-react/commit/124dff4))
+
+
+
+
+
 # [0.6.0-rc.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.6.0-rc.6...v0.6.0-rc.7) (2019-09-26)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts
