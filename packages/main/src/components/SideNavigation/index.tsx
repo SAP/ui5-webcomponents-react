@@ -96,7 +96,7 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
         )}
       </List>
       <span style={{ flexGrow: 1 }} />
-      {footerItems.length && <span className={classes.footerItemsSeparator} />}
+      {footerItems.length > 0 && <span className={classes.footerItemsSeparator} />}
       {footerItems && (
         <List onItemClick={onListItemSelected}>
           {footerItems.map((item: any, index) =>
