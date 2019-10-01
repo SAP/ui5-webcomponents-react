@@ -211,9 +211,9 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
     // render
     const { regularProps: passedProps, slotProps: actualSlotProps } = getRegularProps();
 
-    const { children, ...rest } = passedProps as T & WithWebComponentPropTypes;
+    const { children, tooltip, ...rest } = passedProps as T & WithWebComponentPropTypes;
     return (
-      <CustomTag {...getBooleanProps()} ref={getWcRef()} {...rest} class={className}>
+      <CustomTag {...getBooleanProps()} ref={getWcRef()} {...rest} title={tooltip} class={className}>
         {Object.keys(slots).map((slot) => {
           if (actualSlotProps[slot]) {
             return Children.map(actualSlotProps[slot], (item: ReactElement<any>, index) =>
