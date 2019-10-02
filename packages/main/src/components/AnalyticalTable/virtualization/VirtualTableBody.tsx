@@ -99,7 +99,7 @@ export const VirtualTableBody = (props) => {
         </div>
       );
     },
-    [classes, columns, rows, prepareRow]
+    [classes, columns, rows, prepareRow, rowContainerStyling]
   );
 
   useEffect(() => {

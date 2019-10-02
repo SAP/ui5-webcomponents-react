@@ -83,16 +83,18 @@ export interface TableProps extends CommonProps {
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
+const defaultFilterMethod = (filter, row) => {
+  return new RegExp(filter.value, 'gi').test(String(row[filter.id]));
+};
 
 const defaultColumn = {
   Filter: DefaultFilterComponent,
   canResize: true,
   minWidth: 30,
+  width: '1fr',
   vAlign: VerticalAlign.Middle,
   Aggregated: () => null,
-  defaultFilter: (filter, row) => {
-    return new RegExp(filter.value, 'gi').test(String(row[filter.id]));
-  }
+  defaultFilter: defaultFilterMethod
 };
 
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
@@ -169,15 +171,21 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
       <div className={tableContainerClasses.valueOf()}>
         <div {...getTableProps()}>
-          {headerGroups.map((headerGroup) => (
-            <header {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column, index) => (
-                <ColumnHeader {...column.getHeaderProps()} isLastColumn={index === columns.length - 1}>
-                  {column.render('Header')}
-                </ColumnHeader>
-              ))}
-            </header>
-          ))}
+          {headerGroups.map((headerGroup) => {
+            let props = {};
+            if (headerGroup.getHeaderGroupProps) {
+              props = headerGroup.getHeaderGroupProps();
+            }
+            return (
+              <header {...props}>
+                {headerGroup.headers.map((column, index) => (
+                  <ColumnHeader {...column.getHeaderProps()} isLastColumn={index === columns.length - 1}>
+                    {column.render('Header')}
+                  </ColumnHeader>
+                ))}
+              </header>
+            );
+          })}
           <VirtualTableBody
             {...props}
             tableBodyClasses={tableBodyClasses}
