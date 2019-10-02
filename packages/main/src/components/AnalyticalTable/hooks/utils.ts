@@ -4,7 +4,15 @@ export const makeTemplateColumns = (columns, resizedColumns) => {
       if (resizedColumns[column.id]) {
         return `${resizedColumns[column.id]}px`;
       }
-      return `minmax(${column.minWidth}px, ${column.width || '1fr'})`;
+
+      let columnWidth = column.width;
+      if (typeof columnWidth === 'number') {
+        columnWidth = `${columnWidth}px`;
+      }
+      if (!columnWidth) {
+        columnWidth = '1fr';
+      }
+      return `minmax(${column.minWidth}px, ${columnWidth})`;
     })
     .join(' ');
 };
