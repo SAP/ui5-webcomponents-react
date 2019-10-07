@@ -109,6 +109,9 @@ import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
 import { Loader } from './lib/Loader';
 import { LoaderType } from './lib/LoaderType';
+import { Priority } from './lib/Priority';
+import { Notification } from './lib/Notification';
+import { NotificationGroup } from './lib/NotificationGroup';
 
 export {
   ActionSheet,
@@ -217,5 +220,8 @@ export {
   VariantManagement,
   VerticalAlign,
   Loader,
-  LoaderType
+  LoaderType,
+  Priority,
+  Notification,
+  NotificationGroup
 };
