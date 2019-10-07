@@ -43,7 +43,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <ui5-popover
             class=""
-            header-text=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -103,7 +102,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <ui5-popover
             class=""
-            header-text=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -163,7 +161,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <ui5-popover
             class=""
-            header-text=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -225,7 +222,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <ui5-popover
             class=""
-            header-text=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"

@@ -62,7 +62,6 @@ exports[`SideNavigation Collapsed 1`] = `
       </div>
       <ui5-popover
         class=""
-        header-text=""
         horizontal-align="Center"
         placement-type="Right"
         vertical-align="Top"
@@ -232,7 +231,6 @@ exports[`SideNavigation Condensed 1`] = `
       </div>
       <ui5-popover
         class=""
-        header-text=""
         horizontal-align="Center"
         placement-type="Right"
         vertical-align="Top"
