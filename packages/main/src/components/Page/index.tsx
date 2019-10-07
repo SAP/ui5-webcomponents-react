@@ -12,6 +12,7 @@ import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
+import '@ui5/webcomponents/dist/icons/navigation-left-arrow';
 
 export interface PagePropTypes extends CommonProps {
   title?: string;

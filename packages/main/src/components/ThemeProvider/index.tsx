@@ -1,16 +1,16 @@
 import boot from '@ui5/webcomponents-base/dist/boot';
-import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { getCompactSize } from '@ui5/webcomponents-base/dist/config/CompactSize';
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { createGenerateClassName } from '@ui5/webcomponents-react-base/lib/createGenerateClassName';
-import * as sap_fiori_3 from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { Device } from '@ui5/webcomponents-react-base/lib/Device';
-import fiori3Theme from '@ui5/webcomponents/dist/generated/themes/sap_fiori_3/parameters-bundle.css.js';
-import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
-import { JssProvider, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
+import * as sap_fiori_3 from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 import { Themes } from '@ui5/webcomponents-react/lib/Themes';
+import { _ as fiori3Theme } from '@ui5/webcomponents/dist/assets/themes/sap_fiori_3/parameters-bundle.css.json';
 import { Jss } from 'jss';
+import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
+import { JssProvider, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 
 export interface ThemeProviderProps {
   /*

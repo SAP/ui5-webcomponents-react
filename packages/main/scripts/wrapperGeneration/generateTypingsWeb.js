@@ -5,7 +5,7 @@ import UI5LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign';
 import UI5ListMode from '@ui5/webcomponents/dist/types/ListMode';
 import UI5ListItemTypes from '@ui5/webcomponents/dist/types/ListItemType';
 import UI5PopoverPlacementTypes from '@ui5/webcomponents/dist/types/PopoverPlacementType';
-import UI5BusyIndicatorType from '@ui5/webcomponents/dist/types/BusyIndicatorType';
+import UI5BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize';
 import UI5ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators';
 import UI5PanelAccessibleRoles from '@ui5/webcomponents/dist/types/PanelAccessibleRole';
 import UI5PopoverHorizontalAligns from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign';
@@ -30,9 +30,9 @@ const mappings = {
     tsType: 'PlacementType',
     isEnum: true
   },
-  [UI5BusyIndicatorType]: {
-    importStatement: "import { BusyIndicatorType } from '@ui5/webcomponents-react/lib/BusyIndicatorType';",
-    tsType: 'BusyIndicatorType',
+  [UI5BusyIndicatorSize]: {
+    importStatement: "import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';",
+    tsType: 'BusyIndicatorSize',
     isEnum: true
   },
   [UI5PopoverHorizontalAligns]: {

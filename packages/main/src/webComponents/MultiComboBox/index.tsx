@@ -9,7 +9,7 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 export interface MultiComboBoxPropTypes extends WithWebComponentPropTypes {
   value?: string; // @generated
   placeholder?: string; // @generated
-  validateInput?: boolean; // @generated
+  allowCustomValues?: boolean; // @generated
   disabled?: boolean; // @generated
   valueState?: ValueState; // @generated
   readonly?: boolean; // @generated

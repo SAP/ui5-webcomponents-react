@@ -13,6 +13,7 @@ import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import '@ui5/webcomponents/dist/icons/navigation-down-arrow';
 
 export interface VariantItem {
   key: string;
@@ -134,7 +135,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
           <Title level={level} className={textClasses}>
             {selectedItem.label}
           </Title>
-          <Button design={ButtonDesign.Transparent} icon={'navigation-down-arrow'} disabled={disabled} />
+          <Button design={ButtonDesign.Transparent} icon="sap-icon://navigation-down-arrow" disabled={disabled} />
         </div>
       );
     }, [classes, variantItems, level, selectedKey, disabled]);
