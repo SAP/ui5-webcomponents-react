@@ -19,7 +19,7 @@
     "postbuild": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.2",
+    "@ui5/webcomponents": "1.0.0-rc.3",
     "@ui5/webcomponents-react-base": "0.6.0-rc.10",
     "lodash.debounce": "^4.0.8",
     "react-table": "7.0.0-beta.5",

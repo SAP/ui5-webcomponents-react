@@ -1,5 +1,6 @@
-import boot from '@ui5/webcomponents-base/src/boot';
-import { getCompactSize, getTheme } from '@ui5/webcomponents-base/src/Configuration';
+import boot from '@ui5/webcomponents-base/dist/boot';
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import { getCompactSize } from '@ui5/webcomponents-base/dist/config/CompactSize';
 import { createGenerateClassName } from '@ui5/webcomponents-react-base/lib/createGenerateClassName';
 import * as sap_fiori_3 from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { Device } from '@ui5/webcomponents-react-base/lib/Device';

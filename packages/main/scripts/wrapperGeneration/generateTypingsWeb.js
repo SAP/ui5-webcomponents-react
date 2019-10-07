@@ -13,10 +13,10 @@ import UI5PopoverVerticalAligns from '@ui5/webcomponents/dist/types/PopoverVerti
 import UI5SemanticColors from '@ui5/webcomponents/dist/types/SemanticColor';
 import UI5TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel';
 import UI5MessageStripType from '@ui5/webcomponents/dist/types/MessageStripType';
-import CSSSize from '@ui5/webcomponents-base/src/types/CSSSize';
-import Integer from '@ui5/webcomponents-base/src/types/Integer';
-import UI5ValueState from '@ui5/webcomponents-base/src/types/ValueState';
-import UI5CalendarType from '@ui5/webcomponents-base/src/dates/CalendarType';
+import CSSSize from '@ui5/webcomponents-base/dist/types/CSSSize';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
+import UI5ValueState from '@ui5/webcomponents-base/dist/types/ValueState';
+import UI5CalendarType from '@ui5/webcomponents-base/dist/dates/CalendarType';
 import TimelineItem from '@ui5/webcomponents/dist/TimelineItem';
 
 const mappings = {
