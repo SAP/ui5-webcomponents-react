@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 export const useTableRowStyling = (classes, resizedColumns, selectable, selectedRow) =>
   useCallback(
     (instance) => {
-      instance.getRowProps.push((row, table) => {
+      instance.getRowProps.push((row) => {
         let className = classes.tr;
         if (row.isAggregated) {
           className += ` ${classes.tableGroupHeader}`;
@@ -12,10 +12,7 @@ export const useTableRowStyling = (classes, resizedColumns, selectable, selected
           className += ` ${classes.selectedRow}`;
         }
         return {
-          className,
-          style: {
-            // gridTemplateColumns: makeTemplateColumns(table.columns, resizedColumns)
-          }
+          className
         };
       });
       return instance;
