@@ -7,9 +7,10 @@ export const useRowSelection = (onRowSelected) => {
     (row) => (e) => {
       if (row.isAggregated) return;
       const newKey = row.index;
-      setSelectedRow(selectedRow === newKey ? null : newKey);
+      const newSelectedRow = selectedRow === newKey ? null : newKey;
+      setSelectedRow(newSelectedRow);
       if (typeof onRowSelected === 'function') {
-        onRowSelected(Event.of(null, e, { row }));
+        onRowSelected(Event.of(null, e, { row, isSelected: !!newSelectedRow || newSelectedRow === 0 }));
       }
     },
     [selectedRow, setSelectedRow]
