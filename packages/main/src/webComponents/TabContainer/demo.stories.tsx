@@ -4,6 +4,11 @@ import React from 'react';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Tab } from '@ui5/webcomponents-react/lib/Tab';
 import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
+import '@ui5/webcomponents/dist/icons/add';
+import '@ui5/webcomponents/dist/icons/home';
+import '@ui5/webcomponents/dist/icons/map';
+import '@ui5/webcomponents/dist/icons/world';
+import '@ui5/webcomponents/dist/icons/process';
 
 export default {
   title: 'UI5 Web Components | TabContainer',
