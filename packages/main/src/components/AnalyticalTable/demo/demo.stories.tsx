@@ -1,4 +1,4 @@
-import { boolean, number } from '@storybook/addon-knobs';
+import { boolean, number, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
@@ -50,6 +50,7 @@ const columns = [
 ];
 
 const data = generateData(2000);
+const dataTree = generateData(200, true);
 
 export const defaultStory = () => {
   return (
@@ -73,6 +74,29 @@ export const defaultStory = () => {
 
 defaultStory.story = {
   name: 'Default'
+};
+
+export const treeTable = () => {
+  return (
+    <AnalyticalTable
+      title="Table Title"
+      data={dataTree}
+      columns={columns}
+      loading={boolean('loading', false)}
+      busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
+      sortable={boolean('sortable', true)}
+      filterable={boolean('filterable', true)}
+      visibleRows={number('visibleRows', 15)}
+      minRows={number('minRows', 5)}
+      selectable={boolean('selectable', true)}
+      onRowSelected={action('onRowSelected')}
+      onSort={action('onSort')}
+      subRowsKey={text('subRowsKey', 'subRows')}
+    />
+  );
+};
+treeTable.story = {
+  name: 'Tree Table'
 };
 
 export const withCroppedPopup = () => {

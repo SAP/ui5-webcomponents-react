@@ -80,6 +80,7 @@ export interface TableProps extends CommonProps {
   reactTableOptions?: object;
   tableHooks?: Array<() => any>;
   visibleRows?: number;
+  subRowsKey?: string;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
@@ -114,7 +115,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     onRowSelected,
     reactTableOptions,
     tableHooks,
-    busyIndicatorEnabled
+    busyIndicatorEnabled,
+    subRowsKey
   } = props;
 
   const classes = useStyles();
@@ -126,6 +128,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     groupBy: groupable ? pivotBy : []
   });
 
+  const getSubRows = (row) => row[subRowsKey] || [];
+
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
       // @ts-ignore
@@ -133,6 +137,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       data,
       defaultColumn,
       state: tableState,
+      getSubRows,
       ...reactTableOptions
     },
     useFilters,
@@ -221,7 +226,8 @@ AnalyticalTable.defaultProps = {
   noDataText: 'No Data',
   reactTableOptions: {},
   tableHooks: [],
-  visibleRows: 15
+  visibleRows: 15,
+  subRowsKey: 'subRows'
 };
 
 export { AnalyticalTable };

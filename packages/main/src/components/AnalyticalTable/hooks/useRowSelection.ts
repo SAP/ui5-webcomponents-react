@@ -2,12 +2,14 @@ import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { useCallback, useState } from 'react';
 
 export const useRowSelection = (onRowSelected) => {
-  const [selectedRow, setSelectedRow] = useState(null);
+  const [selectedRow, setSelectedRow] = useState([]);
   const onRowClicked = useCallback(
     (row) => (e) => {
       if (row.isAggregated) return;
-      const newKey = row.index;
-      setSelectedRow(selectedRow === newKey ? null : newKey);
+      const newKey = row.path;
+      const pathsEqual =
+        row.path.length === selectedRow.length && row.path.filter((item, i) => item !== selectedRow[i]).length === 0;
+      setSelectedRow(pathsEqual ? [] : newKey);
       if (typeof onRowSelected === 'function') {
         onRowSelected(Event.of(null, e, { row }));
       }

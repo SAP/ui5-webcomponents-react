@@ -62,6 +62,22 @@ export const VirtualTableBody = (props) => {
 
       const rowProps = row.getRowProps();
 
+      const getPadding = (level) => {
+        const isCompact = theme.contentDensity === 'Compact';
+        switch (level) {
+          case 1:
+            return 0;
+          case 2:
+            return isCompact ? '1.5rem' : '1rem';
+          case 3:
+            return isCompact ? '2.25rem' : '1.5rem';
+          case 4:
+            return isCompact ? '2.75rem' : '2rem';
+          default:
+            return `${(isCompact ? 2.75 : 2) + (level - 4) * 0.5}rem`;
+        }
+      };
+
       return (
         <div
           key={rowProps.key}
@@ -72,30 +88,61 @@ export const VirtualTableBody = (props) => {
           }}
           onClick={onRowClicked(row)}
         >
-          {row.cells.map((cell) => (
-            <div {...cell.getCellProps()}>
-              {cell.isGrouped ? (
-                <>
-                  <span {...row.getExpandedToggleProps()}>
-                    <Icon
-                      src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
-                      className={classes.tableGroupExpandCollapseIcon}
-                    />
-                  </span>
-                  <span>
-                    {cell.render('Cell')} ({row.subRows.length})
-                  </span>
-                </>
-              ) : cell.isAggregated ? (
-                // If the cell is aggregated, use the Aggregated
-                // renderer for cell
-                cell.render('Aggregated')
-              ) : cell.isRepeatedValue ? null : ( // For cells with repeated values, render null
-                // Otherwise, just render the regular cell
-                <div className={classes.tableCellContent}>{cell.render('Cell')}</div>
-              )}
-            </div>
-          ))}
+          {row.cells.map((cell, i) => {
+            return (
+              <div {...cell.getCellProps()}>
+                {row.canExpand && !cell.isGrouped ? (
+                  <div className={classes.tableCellContent}>
+                    {i === 0 ? (
+                      <span
+                        {...row.getExpandedToggleProps({
+                          style: {
+                            paddingLeft: i === 0 ? getPadding(row.path.length) : 0
+                          },
+                          onClick: (e) => {
+                            e.stopPropagation();
+                            row.toggleExpanded();
+                          }
+                        })}
+                      >
+                        <Icon
+                          src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
+                          className={classes.tableGroupExpandCollapseIcon}
+                        />
+                      </span>
+                    ) : null}
+                    {cell.value && cell.render('Cell')}
+                  </div>
+                ) : cell.isGrouped ? (
+                  <>
+                    <span {...row.getExpandedToggleProps(row.isExpanded)}>
+                      <Icon
+                        src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
+                        className={classes.tableGroupExpandCollapseIcon}
+                      />
+                    </span>
+                    <div className={classes.tableCellContent} title={`${cell.value} (${row.subRows.length})`}>
+                      {cell.render('Cell')} ({row.subRows.length})
+                    </div>
+                  </>
+                ) : cell.isAggregated ? (
+                  // If the cell is aggregated, use the Aggregated
+                  // renderer for cell
+                  cell.render('Aggregated')
+                ) : cell.isRepeatedValue ? null : ( // For cells with repeated values, render null
+                  // Otherwise, just render the regular cell
+                  <div
+                    className={classes.tableCellContent}
+                    style={{
+                      paddingLeft: i === 0 ? `calc(${getPadding(row.path.length)} + 2rem)` : 0
+                    }}
+                  >
+                    {cell.render('Cell')}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       );
     },
