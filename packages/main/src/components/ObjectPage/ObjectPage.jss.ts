@@ -11,22 +11,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     isolation: 'isolate',
     whiteSpace: 'normal',
     fontFamily: parameters.sapUiFontFamily,
-    backgroundColor: parameters.sapUiBaseBG,
-    '& ::-webkit-scrollbar': {
-      backgroundColor: '#ffffff',
-      '&:vertical': {
-        width: '0.75rem'
-      }
-    },
-    '& ::-webkit-scrollbar-thumb': {
-      backgroundColor: '#949494',
-      '&:hover': {
-        backgroundColor: '#8c8c8c'
-      }
-    },
-    '& ::-webkit-scrollbar-corner': {
-      backgroundColor: '#ffffff'
-    }
+    backgroundColor: parameters.sapUiBaseBG
   },
   contentContainer: {
     overflow: 'hidden auto',
@@ -79,7 +64,22 @@ const styles = ({ parameters }: JSSTheme) => ({
     overflow: 'hidden',
     height: '100%',
     zIndex: ZIndex.ResponsivePopover,
-    backgroundColor: parameters.sapUiObjectHeaderBackground
+    backgroundColor: parameters.sapUiObjectHeaderBackground,
+    '& ::-webkit-scrollbar': {
+      backgroundColor: '#ffffff',
+      '&:vertical': {
+        width: '0.75rem'
+      }
+    },
+    '& ::-webkit-scrollbar-thumb': {
+      backgroundColor: '#949494',
+      '&:hover': {
+        backgroundColor: '#8c8c8c'
+      }
+    },
+    '& ::-webkit-scrollbar-corner': {
+      backgroundColor: '#ffffff'
+    }
   },
   innerScrollbar: {
     width: '24px',

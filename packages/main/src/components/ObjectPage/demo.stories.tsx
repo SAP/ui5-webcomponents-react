@@ -10,6 +10,7 @@ import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';
 import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { defaultStory as TableStory } from '../AnalyticalTable/demo/demo.stories';
 // @ts-ignore
 import SampleImage from './DemoImage.png';
 
@@ -46,7 +47,7 @@ export const renderDemo = () => {
         style={{ height: '700px' }}
       >
         <ObjectPageSection title="Test 1" id="1">
-          <div style={{ height: '20px' }}>My Content 1</div>
+          <TableStory />
         </ObjectPageSection>
         <ObjectPageSection title="Test 2" id="2">
           <div style={{ height: '800px' }}>Test2</div>
