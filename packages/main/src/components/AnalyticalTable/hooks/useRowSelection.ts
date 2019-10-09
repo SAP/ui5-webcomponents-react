@@ -6,7 +6,7 @@ export const useRowSelection = (onRowSelected) => {
   const onRowClicked = useCallback(
     (row) => (e) => {
       if (row.isAggregated) return;
-      const newKey = row.index;
+      const newKey = row.path;
       const pathsEqual =
         row.path.length === selectedRow.length && row.path.filter((item, i) => item !== selectedRow[i]).length === 0;
       const newSelectedRow = pathsEqual ? [] : newKey;

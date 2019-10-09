@@ -94,7 +94,7 @@ export const VirtualTableBody = (props) => {
             return (
               <div {...cell.getCellProps()}>
                 {row.canExpand && !cell.isGrouped ? (
-                  <div className={classes.tableCellContent}>
+                  <>
                     {i === 0 ? (
                       <span
                         {...row.getExpandedToggleProps({
@@ -107,21 +107,25 @@ export const VirtualTableBody = (props) => {
                           }
                         })}
                       >
+                        <div className={classes.tableGroupExpandCollapseContainer}>
+                          <Icon
+                            src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
+                            className={classes.tableGroupExpandCollapseIcon}
+                          />
+                        </div>
+                      </span>
+                    ) : null}
+                    <div className={classes.tableCellContent}>{cell.value && cell.render('Cell')}</div>
+                  </>
+                ) : cell.isGrouped ? (
+                  <>
+                    <span {...row.getExpandedToggleProps(row.isExpanded)}>
+                      <div className={classes.tableGroupExpandCollapseContainer}>
                         <Icon
                           src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
                           className={classes.tableGroupExpandCollapseIcon}
                         />
-                      </span>
-                    ) : null}
-                    {cell.value && cell.render('Cell')}
-                  </div>
-                ) : cell.isGrouped ? (
-                  <>
-                    <span {...row.getExpandedToggleProps(row.isExpanded)}>
-                      <Icon
-                        src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
-                        className={classes.tableGroupExpandCollapseIcon}
-                      />
+                      </div>
                     </span>
                     <div className={classes.tableCellContent} title={`${cell.value} (${row.subRows.length})`}>
                       {cell.render('Cell')} ({row.subRows.length})

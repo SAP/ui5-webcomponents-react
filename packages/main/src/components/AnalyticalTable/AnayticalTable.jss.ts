@@ -72,11 +72,17 @@ const styles = ({ parameters }: JSSTheme) => ({
       }
     }
   },
-  tableGroupExpandCollapseIcon: {
-    color: parameters.sapUiContentIconColor,
+  tableGroupExpandCollapseContainer: {
     height: '2rem',
     width: '2rem',
-    fontSize: '0.75rem'
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  tableGroupExpandCollapseIcon: {
+    color: parameters.sapUiContentIconColor,
+    height: '0.75rem',
+    width: '0.75rem'
   },
   selectable: {},
   selectedRow: {},
@@ -97,7 +103,8 @@ const styles = ({ parameters }: JSSTheme) => ({
   tableCellContent: {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    alignItems: 'center'
   },
   noDataContainer: {
     display: 'flex',
