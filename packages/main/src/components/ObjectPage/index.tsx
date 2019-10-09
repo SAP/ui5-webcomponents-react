@@ -42,6 +42,7 @@ export interface ObjectPagePropTypes extends CommonProps {
   selectedSectionId?: string;
   onSelectedSectionChanged?: (event: Event) => void;
   showHideHeaderButton?: boolean;
+  alwaysShowContentHeader?: boolean;
   noHeader?: boolean;
 }
 
@@ -74,7 +75,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     children,
     onSelectedSectionChanged,
     selectedSectionId,
-    noHeader
+    noHeader,
+    alwaysShowContentHeader
   } = props;
 
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(findSectionIndexById(children, selectedSectionId));
@@ -245,21 +247,21 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           {avatar}
           {renderHeaderContent && <span className={classes.headerCustomContent}>{renderHeaderContent()}</span>}
         </div>
-        {!expandHeaderActive && renderHideHeaderButton()}
+        {!expandHeaderActive && !alwaysShowContentHeader && renderHideHeaderButton()}
       </div>
     );
   };
 
   const renderTopHeader = () => {
-    if (noHeader) {
+    if (noHeader && !alwaysShowContentHeader) {
       return renderAnchorBar();
     }
 
     return (
       <>
         <header className={classes.titleBar}>
-          <div style={{ display: 'flex' }}>
-            {image && collapsedHeader && !expandHeaderActive && (
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            {image && collapsedHeader && !expandHeaderActive && !alwaysShowContentHeader && (
               <div style={{ marginRight: '1rem' }}>
                 <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
               </div>
@@ -270,16 +272,16 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             </span>
           </div>
           <span className={classes.actions}>{headerActions}</span>
-          {expandHeaderActive && renderContentHeader()}
-          {collapsedHeader && renderHideHeaderButton()}
+          {expandHeaderActive || (alwaysShowContentHeader && renderContentHeader())}
+          {collapsedHeader && !alwaysShowContentHeader && renderHideHeaderButton()}
         </header>
-        {collapsedHeader && renderAnchorBar()}
+        {(collapsedHeader || alwaysShowContentHeader) && renderAnchorBar()}
       </>
     );
   };
 
   const renderInnerHeader = () => {
-    if (noHeader || collapsedHeader || expandHeaderActive) return null;
+    if (noHeader || collapsedHeader || expandHeaderActive || alwaysShowContentHeader) return null;
     return (
       <>
         {renderContentHeader()}
@@ -330,7 +332,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const onScroll = (e) => {
     requestAnimationFrame(() => {
-      if (noHeader) {
+      if (noHeader || alwaysShowContentHeader) {
         scrollBar.current.scrollTop = getProportionateScrollTop(e.target.scrollTop);
         scroller.current.scroll(e);
         return;
@@ -431,6 +433,11 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     objectPageClasses.put(className);
   }
 
+  const headerClasses = StyleClassHelper.of(classes.header);
+  if (alwaysShowContentHeader) {
+    headerClasses.put(classes.alwaysVisibleHeader);
+  }
+
   return (
     <div
       data-component-name="ObjectPage"
@@ -446,7 +453,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             <div ref={innerScrollBar} className={classes.scrollbarContent} />
           </div>
         </div>
-        <header ref={topHeader} role="banner" aria-roledescription="Object page header" className={classes.header}>
+        <header
+          ref={topHeader}
+          role="banner"
+          aria-roledescription="Object page header"
+          className={headerClasses.valueOf()}
+        >
           {renderTopHeader()}
         </header>
         <div className={classes.outerContentContainer}>

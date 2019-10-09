@@ -44,7 +44,8 @@ export const renderDemo = () => {
         selectedSectionId={text('selectedSectionId', '1')}
         onSelectedSectionChanged={action('onSelectedSectionChanged')}
         noHeader={boolean('noHeader', false)}
-        style={{ height: '700px' }}
+        alwaysShowContentHeader={boolean('alwaysShowContentHeader', false)}
+        style={{ height: '1200px' }}
       >
         <ObjectPageSection title="Test 1" id="1">
           <TableStory />
