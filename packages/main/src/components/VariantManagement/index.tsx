@@ -1,8 +1,4 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import React, { FC, forwardRef, Ref, useCallback, useMemo, useState, useEffect } from 'react';
-import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/lib/List';
@@ -14,6 +10,10 @@ import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem'
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import '@ui5/webcomponents/dist/icons/navigation-down-arrow';
+import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useState } from 'react';
+import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export interface VariantItem {
   key: string;
@@ -59,8 +59,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   footer: {
-    float: 'right',
-    padding: '0.5rem'
+    margin: '0.4375rem 1rem 0.4325rem auto'
   }
 });
 
@@ -106,16 +105,11 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
     }, [setOpen]);
 
     const footerButtons = useMemo(() => {
-      return [
-        <Button
-          className={classes.footer}
-          key="btn-cancel"
-          onClick={handleCancelButtonClick}
-          design={ButtonDesign.Emphasized}
-        >
+      return (
+        <Button className={classes.footer} onClick={handleCancelButtonClick} design={ButtonDesign.Emphasized}>
           Cancel
         </Button>
-      ];
+      );
     }, [classes.footer]);
 
     const getItemByKey = (key) => {
