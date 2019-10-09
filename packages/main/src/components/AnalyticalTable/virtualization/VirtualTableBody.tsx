@@ -21,7 +21,9 @@ export const VirtualTableBody = (props) => {
     columns,
     loading,
     noDataText,
-    NoDataComponent
+    NoDataComponent,
+    selectedRow,
+    selectable
   } = props;
 
   const innerDivRef = useRef(null);
@@ -146,16 +148,17 @@ export const VirtualTableBody = (props) => {
         </div>
       );
     },
-    [classes, columns, rows, prepareRow, rowContainerStyling]
+    [classes, columns, rows, prepareRow, rowContainerStyling, selectedRow, selectable]
   );
 
   useEffect(() => {
     if (innerDivRef.current) {
+      innerDivRef.current.classList = '';
       tableBodyClasses.split(' ').forEach((cssClass) => {
         innerDivRef.current.classList.add(cssClass);
       });
     }
-  }, [innerDivRef.current]);
+  }, [innerDivRef.current, tableBodyClasses]);
 
   const { listHeight, itemCount, rowHeight } = useMemo(() => {
     const internalRowHeight = theme.contentDensity === ContentDensity.Compact ? ROW_HEIGHT_COMPACT : ROW_HEIGHT_COZY;

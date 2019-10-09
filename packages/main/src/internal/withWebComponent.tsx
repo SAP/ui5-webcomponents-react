@@ -42,10 +42,10 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
     }
 
     return {
-      getProperties() {
-        return {};
+      metadata: {
+        events: {}
       },
-      getEvents() {
+      getProperties() {
         return {};
       },
       getSlots() {
@@ -60,6 +60,10 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
       .map(([key]) => key);
   };
 
+  const getMetadataEvents = () => {
+    return Object.keys(getWebComponentMetadata().metadata.events || {});
+  };
+
   const createEventWrapperFor = (eventIdentifier, eventHandler) => (e) => {
     let payload = Object.keys(getWebComponentMetadata().getProperties()).reduce((acc, val) => {
       if (/^_/.test(val)) {
@@ -69,7 +73,7 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
       return acc;
     }, {});
 
-    payload = Object.keys(getWebComponentMetadata().getEvents()[eventIdentifier]).reduce((acc, val) => {
+    payload = Object.keys(getWebComponentMetadata().metadata.events[eventIdentifier]).reduce((acc, val) => {
       if (val === 'detail' && e[val]) {
         return {
           ...acc,
@@ -81,10 +85,6 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
     }, payload);
     // TODO: Pass Web Component Ref in here?
     eventHandler(Event.of(null, e, payload));
-  };
-
-  const getMetadataEvents = () => {
-    return Object.keys(getWebComponentMetadata().getEvents());
   };
 
   const getMetadataSlots = () => {

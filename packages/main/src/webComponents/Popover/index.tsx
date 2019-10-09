@@ -17,7 +17,6 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
   verticalAlign?: PopoverVerticalAlign; // @generated
   modal?: boolean; // @generated
   noArrow?: boolean; // @generated
-  stayOpenOnScroll?: boolean; // @generated
   allowTargetOverlap?: boolean; // @generated
   onBeforeOpen?: (event: Event) => void; // @generated
   onAfterOpen?: (event: Event) => void; // @generated
@@ -75,7 +74,7 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, givenRef: RefO
 
 Popover.defaultProps = {
   initialFocus: null, // @generated
-  headerText: '', // @generated
+  headerText: null, // @generated
   placementType: PlacementType.Right, // @generated
   horizontalAlign: PopoverHorizontalAlign.Center, // @generated
   verticalAlign: PopoverVerticalAlign.Center // @generated

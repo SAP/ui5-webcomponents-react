@@ -16,7 +16,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     >
       <ui5-icon
         class=""
-        src="question-mark"
+        src="sap-icon://question-mark"
       />
     </div>
     <ui5-title
@@ -60,6 +60,7 @@ exports[`MessageBox Confirm - OK 1`] = `
   class=""
   header-text=""
   open="true"
+  opened=""
 >
   <header
     class="MessageBox--header-"
@@ -71,7 +72,7 @@ exports[`MessageBox Confirm - OK 1`] = `
     >
       <ui5-icon
         class=""
-        src="question-mark"
+        src="sap-icon://question-mark"
       />
     </div>
     <ui5-title
@@ -126,7 +127,7 @@ exports[`MessageBox Error 1`] = `
     >
       <ui5-icon
         class=""
-        src="message-error"
+        src="sap-icon://message-error"
       />
     </div>
     <ui5-title
@@ -173,7 +174,7 @@ exports[`MessageBox Information 1`] = `
     >
       <ui5-icon
         class=""
-        src="message-information"
+        src="sap-icon://message-information"
       />
     </div>
     <ui5-title
@@ -209,6 +210,7 @@ exports[`MessageBox No Title 1`] = `
   class=""
   header-text=""
   open="true"
+  opened=""
 >
   <header
     class="MessageBox--header-"
@@ -220,7 +222,7 @@ exports[`MessageBox No Title 1`] = `
     >
       <ui5-icon
         class=""
-        src="question-mark"
+        src="sap-icon://question-mark"
       />
     </div>
     <ui5-title
@@ -275,7 +277,7 @@ exports[`MessageBox Not open 1`] = `
     >
       <ui5-icon
         class=""
-        src="message-success"
+        src="sap-icon://message-success"
       />
     </div>
     <ui5-title
@@ -322,7 +324,7 @@ exports[`MessageBox Show 1`] = `
     >
       <ui5-icon
         class=""
-        src="question-mark"
+        src="sap-icon://question-mark"
       />
     </div>
     <ui5-title
@@ -377,7 +379,7 @@ exports[`MessageBox Success 1`] = `
     >
       <ui5-icon
         class=""
-        src="message-success"
+        src="sap-icon://message-success"
       />
     </div>
     <ui5-title
@@ -424,7 +426,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
     >
       <ui5-icon
         class=""
-        src="message-success"
+        src="sap-icon://message-success"
       />
     </div>
     <ui5-title
@@ -471,7 +473,7 @@ exports[`MessageBox Warning 1`] = `
     >
       <ui5-icon
         class=""
-        src="message-warning"
+        src="sap-icon://message-warning"
       />
     </div>
     <ui5-title

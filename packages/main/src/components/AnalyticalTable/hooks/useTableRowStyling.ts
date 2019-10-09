@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 export const useTableRowStyling = (classes, resizedColumns, selectable, selectedRow) =>
   useCallback(
     (instance) => {
-      instance.getRowProps.push((row, table) => {
+      instance.getRowProps.push((row) => {
         const pathsEqual =
           row.path.length === selectedRow.length && row.path.filter((item, i) => item !== selectedRow[i]).length === 0;
 
@@ -15,10 +15,7 @@ export const useTableRowStyling = (classes, resizedColumns, selectable, selected
           className += ` ${classes.selectedRow}`;
         }
         return {
-          className,
-          style: {
-            // gridTemplateColumns: makeTemplateColumns(table.columns, resizedColumns)
-          }
+          className
         };
       });
       return instance;

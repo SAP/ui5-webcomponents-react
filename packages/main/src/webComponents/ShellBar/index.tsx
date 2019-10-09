@@ -13,6 +13,8 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   showNotifications?: boolean; // @generated
   showProductSwitch?: boolean; // @generated
   showCoPilot?: boolean; // @generated
+  breakpointSize?: string; // @generated
+  showBlockLayer?: boolean; // @generated
   onNotificationsClick?: (event: Event) => void; // @generated
   onProfileClick?: (event: Event) => void; // @generated
   onProductSwitchClick?: (event: Event) => void; // @generated

@@ -1,9 +1,10 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
-import React from 'react';
 import { Card } from '@ui5/webcomponents-react/lib/Card';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import '@ui5/webcomponents/dist/icons/order-status.js';
+import React from 'react';
 
 export default {
   title: 'UI5 Web Components | Card',

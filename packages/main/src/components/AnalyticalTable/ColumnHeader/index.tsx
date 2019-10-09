@@ -7,6 +7,10 @@ import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { Resizer } from '../Resizer';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
+import '@ui5/webcomponents/dist/icons/filter';
+import '@ui5/webcomponents/dist/icons/group-2';
+import '@ui5/webcomponents/dist/icons/sort-descending';
+import '@ui5/webcomponents/dist/icons/sort-ascending';
 
 export interface ColumnHeaderProps {
   defaultSortDesc: boolean;

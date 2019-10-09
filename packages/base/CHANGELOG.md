@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0-rc.12](https://github.com/SAP/ui5-webcomponents-react/compare/v0.6.0-rc.11...v0.6.0-rc.12) (2019-10-09)
+
+
+### Features
+
+* **WebComponents:** Update to v1.0.0-rc.3 ([#175](https://github.com/SAP/ui5-webcomponents-react/issues/175)) ([f294e67](https://github.com/SAP/ui5-webcomponents-react/commit/f294e67))
+
+
+### BREAKING CHANGES
+
+* **WebComponents:** Configuration Script is now identified via `data-ui5-config` instead of `data-id="sap-ui-config"`
+* **WebComponents:** `BusyIndicatorType` is renamed to `BusyIndicatorSize`
+* **WebComponents:** `Popover`: stayOpenOnScroll is now removed
+Popover will no longer close when the browser is scrolled
+and its parent (opener) is visible in the viewport.
+* **WebComponents:** `ListItem`: CSS variable --ui5-listitem-background-color is removed, set the desired background directly on the tag.
+* **WebComponents:** `TableColumn`: width property of the ui5-table-column has been removed, use CSS to give width to the columns.
+* **WebComponents:** `MultiComboBox`: property validateInput is removed,
+use the property allowCustomValues, note built in validation is enabled by default.
+* **WebComponents:** `Icon`: SVG icons have to imported, e.g. `import @ui5/webcomponents/dist/icons/add';`
+
+
+
+
+
+# [0.6.0-rc.11](https://github.com/SAP/ui5-webcomponents-react/compare/v0.6.0-rc.10...v0.6.0-rc.11) (2019-10-08)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-base
+
+
+
+
+
 # [0.6.0-rc.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.6.0-rc.9...v0.6.0-rc.10) (2019-10-02)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-base

@@ -18,7 +18,7 @@ const f4rEnums = {
   PopoverVerticalAlign: require(path.resolve(fiori3Enums, 'PopoverVerticalAlign.ts')).PopoverVerticalAlign,
   SemanticColor: require(path.resolve(fiori3Enums, 'SemanticColor.ts')).SemanticColor,
   TitleLevel: require(path.resolve(fiori3Enums, 'TitleLevel.ts')).TitleLevel,
-  BusyIndicatorType: require(path.resolve(fiori3Enums, 'BusyIndicatorType.ts')).BusyIndicatorType
+  BusyIndicatorSize: require(path.resolve(fiori3Enums, 'BusyIndicatorSize.ts')).BusyIndicatorSize
 };
 
 function getDefaultPropValue(meta) {

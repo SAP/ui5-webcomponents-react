@@ -200,6 +200,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             classes={classes}
             onRowClicked={onRowClicked}
             columns={columns}
+            selectedRow={selectedRow}
           />
           {loading && busyIndicatorEnabled && <LoadingComponent />}
         </div>

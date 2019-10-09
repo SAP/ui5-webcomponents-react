@@ -6,12 +6,13 @@ export const useRowSelection = (onRowSelected) => {
   const onRowClicked = useCallback(
     (row) => (e) => {
       if (row.isAggregated) return;
-      const newKey = row.path;
+      const newKey = row.index;
       const pathsEqual =
         row.path.length === selectedRow.length && row.path.filter((item, i) => item !== selectedRow[i]).length === 0;
-      setSelectedRow(pathsEqual ? [] : newKey);
+      const newSelectedRow = pathsEqual ? [] : newKey;
+      setSelectedRow(newSelectedRow);
       if (typeof onRowSelected === 'function') {
-        onRowSelected(Event.of(null, e, { row }));
+        onRowSelected(Event.of(null, e, { row, isSelected: newSelectedRow.length > 0 }));
       }
     },
     [selectedRow, setSelectedRow]

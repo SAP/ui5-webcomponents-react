@@ -1,8 +1,9 @@
-import React, { FC } from 'react';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5Button from '@ui5/webcomponents/dist/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import UI5Button from '@ui5/webcomponents/dist/Button';
+import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ButtonPropTypes extends WithWebComponentPropTypes {
@@ -14,6 +15,14 @@ export interface ButtonPropTypes extends WithWebComponentPropTypes {
   onClick?: (event: Event) => void; // @generated
   children?: string; // @generated
 }
+
+addCustomCSS(
+  'ui5-button',
+  `
+.ui5-button-root {
+ font-family: var(--sapUiFontFamily,var(--sapFontFamily,"72","72full",Arial,Helvetica,sans-serif));
+}`
+);
 
 const Button: FC<ButtonPropTypes> = withWebComponent<ButtonPropTypes>(UI5Button);
 

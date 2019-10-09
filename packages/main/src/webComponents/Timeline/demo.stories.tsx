@@ -1,6 +1,8 @@
-import React from 'react';
 import { Timeline } from '@ui5/webcomponents-react/lib/Timeline';
 import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';
+import '@ui5/webcomponents/dist/icons/calendar';
+import '@ui5/webcomponents/dist/icons/phone';
+import React from 'react';
 
 export default {
   title: 'UI5 Web Components | Timeline',

@@ -12,7 +12,7 @@ import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import styles from './FilterItem.jss';
-import { BusyIndicatorType } from '@ui5/webcomponents-react/lib/BusyIndicatorType';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 
 export interface FilterItemPropTypes extends CommonProps {
   placeholder?: string;
@@ -72,7 +72,7 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
         <div className={classes.loadingContainer}>
           <BusyIndicator
             active
-            size={BusyIndicatorType.Medium}
+            size={BusyIndicatorSize.Medium}
             style={{ backgroundColor: 'transparent', width: '80px' }}
           />
         </div>
