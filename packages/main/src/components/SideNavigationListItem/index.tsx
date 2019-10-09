@@ -24,6 +24,8 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { sideNavigationListItemStyles } from './SideNavigationListItem.jss';
+import '@ui5/webcomponents/dist/icons/navigation-down-arrow.js';
+import '@ui5/webcomponents/dist/icons/navigation-right-arrow.js';
 
 export interface SideNavigationListItemProps extends CommonProps {
   icon?: string;

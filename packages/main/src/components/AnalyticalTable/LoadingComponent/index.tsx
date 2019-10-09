@@ -1,5 +1,5 @@
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
-import { BusyIndicatorType } from '@ui5/webcomponents-react/lib/BusyIndicatorType';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import React from 'react';
 
 const LoadingComponent = () => {
@@ -17,7 +17,7 @@ const LoadingComponent = () => {
         backgroundColor: 'rgba(247,247,247,0.72)' // TODO is there a theming parameter available?
       }}
     >
-      <BusyIndicator size={BusyIndicatorType.Medium} active style={{ backgroundColor: 'transparent' }} />
+      <BusyIndicator size={BusyIndicatorSize.Medium} active style={{ backgroundColor: 'transparent' }} />
     </div>
   );
 };

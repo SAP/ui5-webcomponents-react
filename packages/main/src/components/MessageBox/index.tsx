@@ -14,6 +14,12 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import styles from './MessageBox.jss';
+import '@ui5/webcomponents/dist/icons/question-mark';
+import '@ui5/webcomponents/dist/icons/message-error';
+import '@ui5/webcomponents/dist/icons/message-information';
+import '@ui5/webcomponents/dist/icons/message-success';
+import '@ui5/webcomponents/dist/icons/message-warning';
+import '@ui5/webcomponents/dist/icons/hint';
 
 export interface MessageBoxPropTypes extends CommonProps {
   open?: boolean;
@@ -36,17 +42,17 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     if (isValidElement(icon)) return icon;
     switch (type) {
       case MessageBoxTypes.CONFIRM:
-        return <Icon src="question-mark" />;
+        return <Icon src="sap-icon://question-mark" />;
       case MessageBoxTypes.ERROR:
-        return <Icon src="message-error" />;
+        return <Icon src="sap-icon://message-error" />;
       case MessageBoxTypes.INFORMATION:
-        return <Icon src="message-information" />;
+        return <Icon src="sap-icon://message-information" />;
       case MessageBoxTypes.SUCCESS:
-        return <Icon src="message-success" />;
+        return <Icon src="sap-icon://message-success" />;
       case MessageBoxTypes.WARNING:
-        return <Icon src="message-warning" />;
+        return <Icon src="sap-icon://message-warning" />;
       case MessageBoxTypes.HIGHLIGHT:
-        return <Icon src="hint" />;
+        return <Icon src="sap-icon://hint" />;
     }
 
     return null;
