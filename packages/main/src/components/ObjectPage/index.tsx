@@ -293,8 +293,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       return renderAnchorBar();
     }
 
-    debugger;
-
     return (
       <>
         <header className={classes.titleBar}>
@@ -330,8 +328,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     ) {
       return null;
     }
-
-    debugger;
 
     return (
       <>
@@ -401,7 +397,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           scroller.current.scroll(e);
           return;
         }
-        // debugger;
+
         if (expandHeaderActive) {
           setExpandHeaderActive(false);
         }
