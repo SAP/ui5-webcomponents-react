@@ -10,17 +10,20 @@ import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';
 import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { defaultStory as TableStory } from '../AnalyticalTable/demo/demo.stories';
 // @ts-ignore
 import SampleImage from './DemoImage.png';
 
 const renderHeaderContent = () => (
-  <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <Link href="https://www.sap.com">www.myurl.com</Link>
-    <Text>Address 1</Text>
-    <Text>Address 2</Text>
-    <Text>Address 3</Text>
-  </div>
+  <>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Link href="https://www.sap.com">www.myurl.com</Link>
+      <Text>Address 1</Text>
+    </div>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Text>Address 2</Text>
+      <Text>Address 3</Text>
+    </div>
+  </>
 );
 export const renderDemo = () => {
   return (
@@ -45,10 +48,11 @@ export const renderDemo = () => {
         onSelectedSectionChanged={action('onSelectedSectionChanged')}
         noHeader={boolean('noHeader', false)}
         alwaysShowContentHeader={boolean('alwaysShowContentHeader', false)}
-        style={{ height: '1200px' }}
+        showTitleInHeaderContent={boolean('showTitleInHeaderContent', true)}
+        style={{ height: '700px' }}
       >
         <ObjectPageSection title="Test 1" id="1">
-          <TableStory />
+          <div style={{ height: '200px' }}>Test1</div>
         </ObjectPageSection>
         <ObjectPageSection title="Test 2" id="2">
           <div style={{ height: '800px' }}>Test2</div>

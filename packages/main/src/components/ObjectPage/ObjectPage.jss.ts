@@ -107,7 +107,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     paddingRight: '12px'
   },
   contentHeader: {
-    backgroundColor: parameters.sapUiObjectHeaderBackground
+    backgroundColor: parameters.sapUiObjectHeaderBackground,
+    position: 'relative'
   },
   titleBar: {
     padding: '0.5rem 2rem',
@@ -144,6 +145,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     position: 'absolute',
     top: '0',
     paddingTop: '0.75rem',
+    zIndex: 1,
     right: '1.25rem',
     display: 'inline-block',
     float: 'right',
@@ -169,6 +171,22 @@ const styles = ({ parameters }: JSSTheme) => ({
     overflow: 'hidden',
     paddingLeft: '2rem',
     position: 'relative'
+  },
+  titleInHeaderContent: {
+    '& $headerContent': {
+      paddingTop: 0,
+      '& > *': {
+        display: 'inline-block',
+        verticalAlign: 'top',
+        '&:not(:first-child)': {
+          marginRight: '2rem',
+          marginBottom: '1rem'
+        }
+      }
+    },
+    '& $actions': {
+      // paddingTop: 0
+    }
   },
   alwaysVisibleHeader: {
     '& $headerContent': {
