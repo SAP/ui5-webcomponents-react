@@ -121,7 +121,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const classes = useStyles();
 
-  const [selectedRow, onRowClicked] = useRowSelection(onRowSelected);
+  const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected);
   const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
 
   const tableState = useTableState({
@@ -147,7 +147,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableStyling(classes),
     useTableHeaderGroupStyling(classes, resizedColumns),
     useTableHeaderStyling(classes, onColumnSizeChanged, props),
-    useTableRowStyling(classes, resizedColumns, selectable, selectedRow),
+    useTableRowStyling(classes, resizedColumns, selectable, selectedRowPath),
     useTableCellStyling(classes, cellHeight),
     ...tableHooks
   );
@@ -200,7 +200,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             classes={classes}
             onRowClicked={onRowClicked}
             columns={columns}
-            selectedRow={selectedRow}
+            selectedRow={selectedRowPath}
           />
           {loading && busyIndicatorEnabled && <LoadingComponent />}
         </div>
