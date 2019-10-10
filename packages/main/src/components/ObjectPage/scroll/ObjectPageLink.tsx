@@ -23,7 +23,7 @@ export const ObjectPageLink = (props) => {
   }, [scrollToElementById, id]);
 
   useEffect(() => {
-    if (selectedElementId === id) {
+    if (selectedElementId === id && typeof onSetActive === 'function') {
       onSetActive(id);
     }
   }, [selectedElementId]);
