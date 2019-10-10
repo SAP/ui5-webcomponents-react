@@ -6,6 +6,11 @@ import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './ObjectStatus.jss';
+import '@ui5/webcomponents/dist/icons/status-negative';
+import '@ui5/webcomponents/dist/icons/status-positive';
+import '@ui5/webcomponents/dist/icons/status-critical';
+import '@ui5/webcomponents/dist/icons/status-inactive';
+import '@ui5/webcomponents/dist/icons/hint';
 
 export interface ObjectStatusPropTypes extends CommonProps {
   children?: string | number | ReactNode;
@@ -21,15 +26,15 @@ const defaultIconStyle = {
 const getDefaultIcon = (state) => {
   switch (state) {
     case ValueState.Error:
-      return <Icon src="status-negative" style={defaultIconStyle} />;
+      return <Icon src="sap-icon://status-negative" style={defaultIconStyle} />;
     case ValueState.Success:
-      return <Icon src="status-positive" style={defaultIconStyle} />;
+      return <Icon src="sap-icon://status-positive" style={defaultIconStyle} />;
     case ValueState.Warning:
-      return <Icon src="status-critical" style={defaultIconStyle} />;
+      return <Icon src="sap-icon://status-critical" style={defaultIconStyle} />;
     case ValueState.Information:
-      return <Icon src="hint" style={defaultIconStyle} />;
+      return <Icon src="sap-icon://hint" style={defaultIconStyle} />;
     default:
-      return <Icon src="status-inactive" style={defaultIconStyle} />;
+      return <Icon src="sap-icon://status-inactive" style={defaultIconStyle} />;
   }
 };
 

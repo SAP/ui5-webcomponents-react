@@ -7,6 +7,8 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import styles from './CarouselPagination.jss';
+import '@ui5/webcomponents/dist/icons/arrow-left';
+import '@ui5/webcomponents/dist/icons/arrow-right';
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'CarouselPagination' });
 

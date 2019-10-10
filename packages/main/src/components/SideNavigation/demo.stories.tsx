@@ -4,6 +4,13 @@ import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
 import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import React from 'react';
+import '@ui5/webcomponents/dist/icons/compare';
+import '@ui5/webcomponents/dist/icons/chain-link';
+import '@ui5/webcomponents/dist/icons/home';
+import '@ui5/webcomponents/dist/icons/calendar';
+import '@ui5/webcomponents/dist/icons/employee';
+import '@ui5/webcomponents/dist/icons/lead';
+import '@ui5/webcomponents/dist/icons/add-product';
 
 export const defaultStory = () => (
   <SideNavigation

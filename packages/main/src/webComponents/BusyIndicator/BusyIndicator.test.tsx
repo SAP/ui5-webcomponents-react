@@ -1,7 +1,7 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
-import { BusyIndicatorType } from '../..';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 
 describe('BusyIndicator', () => {
   test('Basic Test', () => {
@@ -15,12 +15,12 @@ describe('BusyIndicator', () => {
   });
 
   test('Size Medium', () => {
-    const wrapper = mountThemedComponent(<BusyIndicator active size={BusyIndicatorType.Medium} />);
+    const wrapper = mountThemedComponent(<BusyIndicator active size={BusyIndicatorSize.Medium} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Size Small', () => {
-    const wrapper = mountThemedComponent(<BusyIndicator active size={BusyIndicatorType.Small} />);
+    const wrapper = mountThemedComponent(<BusyIndicator active size={BusyIndicatorSize.Small} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

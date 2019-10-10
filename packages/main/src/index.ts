@@ -14,7 +14,7 @@ import { Bar } from './lib/Bar';
 import { Breadcrumbs } from './lib/Breadcrumbs';
 import { BreadcrumbsSeparatorStyle } from './lib/BreadcrumbsSeparatorStyle';
 import { BusyIndicator } from './lib/BusyIndicator';
-import { BusyIndicatorType } from './lib/BusyIndicatorType';
+import { BusyIndicatorSize } from './lib/BusyIndicatorSize';
 import { Button } from './lib/Button';
 import { ButtonDesign } from './lib/ButtonDesign';
 import { Calendar } from './lib/Calendar';
@@ -123,7 +123,7 @@ export {
   Breadcrumbs,
   BreadcrumbsSeparatorStyle,
   BusyIndicator,
-  BusyIndicatorType,
+  BusyIndicatorSize,
   Button,
   ButtonDesign,
   Calendar,

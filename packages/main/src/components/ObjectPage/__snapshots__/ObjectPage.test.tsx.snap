@@ -161,7 +161,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
               </div>
               <ui5-popover
                 class=""
-                header-text=""
                 horizontal-align="Center"
                 no-arrow="true"
                 placement-type="Bottom"
@@ -213,7 +212,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
               </div>
               <ui5-popover
                 class=""
-                header-text=""
                 horizontal-align="Center"
                 no-arrow="true"
                 placement-type="Bottom"
@@ -1274,7 +1272,6 @@ exports[`ObjectPage With Subsections 1`] = `
               </div>
               <ui5-popover
                 class=""
-                header-text=""
                 horizontal-align="Center"
                 no-arrow="true"
                 placement-type="Bottom"
@@ -1341,7 +1338,6 @@ exports[`ObjectPage With Subsections 1`] = `
               </div>
               <ui5-popover
                 class=""
-                header-text=""
                 horizontal-align="Center"
                 no-arrow="true"
                 placement-type="Bottom"

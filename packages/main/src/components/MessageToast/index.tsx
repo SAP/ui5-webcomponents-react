@@ -8,6 +8,9 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './MessageToast.jss';
+import '@ui5/webcomponents/dist/icons/message-error';
+import '@ui5/webcomponents/dist/icons/message-warning';
+import '@ui5/webcomponents/dist/icons/sys-enter';
 
 const coloredStyles = ({ parameters }: JSSTheme) => ({
   base: {
@@ -72,7 +75,7 @@ MessageToast.show = (text, options: CommonProps = {}) => {
 MessageToast.error = (text, options: CommonProps = {}) => {
   const toastContent = (
     <div style={mergeStyleWithDefault(options.style)} className={options.className}>
-      <ColoredIcon src="message-error" state={ValueState.Error} />
+      <ColoredIcon src="sap-icon://message-error" state={ValueState.Error} />
       <span style={{ marginLeft: '0.5rem' }}>{text}</span>
     </div>
   );
@@ -83,7 +86,7 @@ MessageToast.error = (text, options: CommonProps = {}) => {
 MessageToast.success = (text, options: CommonProps = {}) => {
   const toastContent = (
     <div style={mergeStyleWithDefault(options.style)} className={options.className}>
-      <ColoredIcon src="sys-enter" state={ValueState.Success} />
+      <ColoredIcon src="sap-icon://sys-enter" state={ValueState.Success} />
       <span style={{ marginLeft: '0.5rem' }}>{text}</span>
     </div>
   );
@@ -94,7 +97,7 @@ MessageToast.success = (text, options: CommonProps = {}) => {
 MessageToast.warning = (text, options: CommonProps = {}) => {
   const toastContent = (
     <div style={mergeStyleWithDefault(options.style)} className={options.className}>
-      <ColoredIcon src="message-warning" state={ValueState.Warning} />
+      <ColoredIcon src="sap-icon://message-warning" state={ValueState.Warning} />
       <span style={{ marginLeft: '0.5rem' }}>{text}</span>
     </div>
   );
