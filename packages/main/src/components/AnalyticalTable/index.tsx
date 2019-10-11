@@ -3,7 +3,17 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
-import React, { ComponentType, CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref, useMemo } from 'react';
+import React, {
+  ComponentType,
+  CSSProperties,
+  FC,
+  forwardRef,
+  ReactNode,
+  ReactText,
+  Ref,
+  useCallback,
+  useMemo
+} from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { useExpanded, useFilters, useGroupBy, useSortBy, useTable, useTableState } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -128,7 +138,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     groupBy: groupable ? pivotBy : []
   });
 
-  const getSubRows = (row) => row[subRowsKey] || [];
+  const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {

@@ -1,8 +1,10 @@
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
-import { FixedSizeList } from 'react-window';
-import { useTheme } from 'react-jss';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import '@ui5/webcomponents/dist/icons/navigation-down-arrow';
+import '@ui5/webcomponents/dist/icons/navigation-right-arrow';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useTheme } from 'react-jss';
+import { FixedSizeList } from 'react-window';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 
 const ROW_HEIGHT_COMPACT = 32;
