@@ -1,4 +1,4 @@
-import { boolean, number, text } from '@storybook/addon-knobs';
+import { boolean, number, text, array } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
@@ -68,6 +68,8 @@ export const defaultStory = () => {
       selectable={boolean('selectable', true)}
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
+      onGroup={action('onGroup')}
+      groupBy={array('groupBy', [])}
     />
   );
 };

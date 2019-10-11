@@ -21,10 +21,11 @@ export interface ColumnHeaderModalProperties {
   column: ColumnType;
   style: CSSProperties;
   onSort?: (e: Event) => void;
+  onGroupBy?: (e: Event) => void;
 }
 
 export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
-  const { showGroup, showSort, showFilter, column, style, openBy, onSort } = props;
+  const { showGroup, showSort, showFilter, column, style, openBy, onSort, onGroupBy } = props;
 
   const { Filter } = column;
 
@@ -58,14 +59,23 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
           }
           break;
         case 'group':
-          column.toggleGroupBy(!column.isGrouped);
+          const willGroup = !column.isGrouped;
+          column.toggleGroupBy(willGroup);
+          if (typeof onGroupBy === 'function') {
+            onGroupBy(
+              Event.of(null, e, {
+                column,
+                isGrouped: willGroup
+              })
+            );
+          }
           break;
       }
       if (popoverRef.current) {
         popoverRef.current.close();
       }
     },
-    [column, popoverRef]
+    [column, popoverRef, onGroupBy]
   );
 
   return (
