@@ -76,7 +76,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     color: parameters.sapUiContentIconColor,
     height: '0.75rem',
     width: '0.75rem',
-    padding: '0.625rem'
+    padding: '0.625rem',
+    display: 'block'
   },
   selectable: {},
   selectedRow: {},
@@ -92,7 +93,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     padding: '0 0.5rem',
     '&:first-child': {
       borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
-    }
+    },
+    overflow: 'hidden'
   },
   tableCellContent: {
     textOverflow: 'ellipsis',
