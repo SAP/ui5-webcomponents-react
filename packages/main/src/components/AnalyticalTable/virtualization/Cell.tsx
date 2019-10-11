@@ -5,22 +5,24 @@ import { useTheme } from 'react-jss';
 
 export const Cells = ({ row, cell, index, classes }) => {
   const theme: JSSTheme = useTheme() as JSSTheme;
-
-  const getPadding = (level) => {
-    const isCompact = theme.contentDensity === 'Compact';
-    switch (level) {
-      case 1:
-        return 0;
-      case 2:
-        return isCompact ? '1.5rem' : '1rem';
-      case 3:
-        return isCompact ? '2.25rem' : '1.5rem';
-      case 4:
-        return isCompact ? '2.75rem' : '2rem';
-      default:
-        return `${(isCompact ? 2.75 : 2) + (level - 4) * 0.5}rem`;
-    }
-  };
+  const isCompact = theme.contentDensity === 'Compact';
+  const getPadding = useCallback(
+    (level) => {
+      switch (level) {
+        case 1:
+          return 0;
+        case 2:
+          return isCompact ? '1.5rem' : '1rem';
+        case 3:
+          return isCompact ? '2.25rem' : '1.5rem';
+        case 4:
+          return isCompact ? '2.75rem' : '2rem';
+        default:
+          return `${(isCompact ? 2.75 : 2) + (level - 4) * 0.5}rem`;
+      }
+    },
+    [isCompact]
+  );
   const getExpandedToggleProps = useCallback(
     (param) => {
       return {
@@ -54,7 +56,7 @@ export const Cells = ({ row, cell, index, classes }) => {
         <div className={classes.tableCellContent}>{cell.value && cell.render('Cell')}</div>
       </>
     );
-  }, []);
+  }, [cell, classes, row, i]);
 
   const grouped = useMemo(() => {
     return (
@@ -70,11 +72,11 @@ export const Cells = ({ row, cell, index, classes }) => {
         </div>
       </>
     );
-  }, []);
+  }, [row, classes, cell]);
 
   const aggregated = useMemo(() => {
     return cell.render('Aggregated');
-  }, []);
+  }, [cell]);
 
   const repeatedValue = useMemo(() => {
     return null;
@@ -91,9 +93,9 @@ export const Cells = ({ row, cell, index, classes }) => {
         {cell.render('Cell')}
       </div>
     );
-  }, [cell, row.path, classes.tableCellContent]);
+  }, [cell, row, classes]);
 
-  const renderCells = () => {
+  const renderCells = useMemo(() => {
     if (row.canExpand && !cell.isGrouped) {
       return expandable;
     }
@@ -107,7 +109,7 @@ export const Cells = ({ row, cell, index, classes }) => {
       return repeatedValue;
     }
     return defaultCell;
-  };
+  }, [row, cell]);
 
   return <div {...cell.getCellProps()}>{renderCells()}</div>;
 };
