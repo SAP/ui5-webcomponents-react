@@ -72,17 +72,11 @@ const styles = ({ parameters }: JSSTheme) => ({
       }
     }
   },
-  tableGroupExpandCollapseContainer: {
-    height: '2rem',
-    width: '2rem',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
   tableGroupExpandCollapseIcon: {
     color: parameters.sapUiContentIconColor,
     height: '0.75rem',
-    width: '0.75rem'
+    width: '0.75rem',
+    padding: '0.625rem'
   },
   selectable: {},
   selectedRow: {},

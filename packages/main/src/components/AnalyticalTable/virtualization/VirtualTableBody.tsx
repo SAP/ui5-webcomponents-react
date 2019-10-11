@@ -109,12 +109,10 @@ export const VirtualTableBody = (props) => {
                           }
                         })}
                       >
-                        <div className={classes.tableGroupExpandCollapseContainer}>
-                          <Icon
-                            src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
-                            className={classes.tableGroupExpandCollapseIcon}
-                          />
-                        </div>
+                        <Icon
+                          src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
+                          className={classes.tableGroupExpandCollapseIcon}
+                        />
                       </span>
                     ) : null}
                     <div className={classes.tableCellContent}>{cell.value && cell.render('Cell')}</div>
@@ -122,12 +120,10 @@ export const VirtualTableBody = (props) => {
                 ) : cell.isGrouped ? (
                   <>
                     <span {...row.getExpandedToggleProps(row.isExpanded)}>
-                      <div className={classes.tableGroupExpandCollapseContainer}>
-                        <Icon
-                          src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
-                          className={classes.tableGroupExpandCollapseIcon}
-                        />
-                      </div>
+                      <Icon
+                        src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
+                        className={classes.tableGroupExpandCollapseIcon}
+                      />
                     </span>
                     <div className={classes.tableCellContent} title={`${cell.value} (${row.subRows.length})`}>
                       {cell.render('Cell')} ({row.subRows.length})
