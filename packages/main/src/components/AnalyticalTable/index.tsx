@@ -3,9 +3,21 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
-import React, { ComponentType, CSSProperties, FC, forwardRef, ReactNode, ReactText, Ref, useMemo } from 'react';
+import React, {
+  ComponentType,
+  CSSProperties,
+  FC,
+  forwardRef,
+  ReactNode,
+  ReactText,
+  Ref,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef
+} from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
-import { useExpanded, useFilters, useGroupBy, useSortBy, useTable, useTableState } from 'react-table';
+import { useExpanded, useFilters, useGroupBy, useSortBy, useTable } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
@@ -64,7 +76,7 @@ export interface TableProps extends CommonProps {
    * Pass in any react-table props you need
    */
   reactTableProps?: object;
-  pivotBy?: string[] | number[];
+  groupBy?: string[];
   getTableProps?: () => any;
   getHeaderGroupsProps?: () => any;
   getHeaderProps?: () => any;
@@ -73,7 +85,11 @@ export interface TableProps extends CommonProps {
   onRowSelected?: (e?: Event) => any;
   NoDataComponent?: ComponentType<any>;
   noDataText?: string;
+
+  // events
+
   onSort?: (e?: Event) => void;
+  onGroup?: (e?: Event) => void;
   /**
    * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api.md#table-options)
    */
@@ -87,7 +103,7 @@ const defaultFilterMethod = (filter, row) => {
   return new RegExp(filter.value, 'gi').test(String(row[filter.id]));
 };
 
-const defaultColumn = {
+const defaultColumn: any = {
   Filter: DefaultFilterComponent,
   canResize: true,
   minWidth: 30,
@@ -109,12 +125,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     renderExtension,
     cellHeight,
     loading,
-    pivotBy,
+    groupBy,
     selectable,
     onRowSelected,
     reactTableOptions,
     tableHooks,
-    busyIndicatorEnabled
+    busyIndicatorEnabled,
+    onGroup
   } = props;
 
   const classes = useStyles();
@@ -122,13 +139,16 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const [selectedRow, onRowClicked] = useRowSelection(onRowSelected);
   const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
 
-  const tableState = useTableState({
-    groupBy: groupable ? pivotBy : []
-  });
+  const internalGroupBy = useRef(groupBy);
 
-  const { getTableProps, headerGroups, rows, prepareRow } = useTable(
+  let tableState = useMemo(() => {
+    return {
+      groupBy: groupable ? internalGroupBy.current : []
+    };
+  }, [internalGroupBy.current, groupable]);
+
+  const { getTableProps, headerGroups, rows, prepareRow, setState } = useTable(
     {
-      // @ts-ignore
       columns,
       data,
       defaultColumn,
@@ -141,11 +161,21 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useExpanded,
     useTableStyling(classes),
     useTableHeaderGroupStyling(classes, resizedColumns),
-    useTableHeaderStyling(classes, onColumnSizeChanged, props),
+    useTableHeaderStyling(classes, onColumnSizeChanged),
     useTableRowStyling(classes, resizedColumns, selectable, selectedRow),
     useTableCellStyling(classes, cellHeight),
     ...tableHooks
   );
+
+  useEffect(() => {
+    internalGroupBy.current = groupBy;
+    setState((old) => {
+      return {
+        ...old,
+        groupBy
+      };
+    });
+  }, [groupBy, setState, internalGroupBy]);
 
   const tableBodyClasses = StyleClassHelper.of(classes.tbody);
   if (selectable) {
@@ -164,6 +194,33 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     };
   }, [headerGroups, resizedColumns]);
 
+  const onGroupByChanged = useCallback(
+    (e) => {
+      const { column, isGrouped } = e.getParameters();
+      let groupedColumns = [];
+      if (isGrouped) {
+        groupedColumns = [...internalGroupBy.current, column.id];
+      } else {
+        // @ts-ignore
+        groupedColumns = internalGroupBy.current.filter((group) => group !== column.id);
+      }
+      internalGroupBy.current = groupedColumns;
+      setState((old) => {
+        return {
+          ...old,
+          groupBy: internalGroupBy.current
+        };
+      });
+      onGroup(
+        Event.of(null, e.getOriginalEvent(), {
+          column,
+          groupedColumns
+        })
+      );
+    },
+    [internalGroupBy.current, onGroup]
+  );
+
   // Render the UI for your table
   return (
     <div className={className} style={style} title={tooltip} ref={ref}>
@@ -172,14 +229,22 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       <div className={tableContainerClasses.valueOf()}>
         <div {...getTableProps()}>
           {headerGroups.map((headerGroup) => {
-            let props = {};
+            let headerProps = {};
             if (headerGroup.getHeaderGroupProps) {
-              props = headerGroup.getHeaderGroupProps();
+              headerProps = headerGroup.getHeaderGroupProps();
             }
             return (
-              <header {...props}>
+              <header {...headerProps}>
                 {headerGroup.headers.map((column, index) => (
-                  <ColumnHeader {...column.getHeaderProps()} isLastColumn={index === columns.length - 1}>
+                  <ColumnHeader
+                    {...column.getHeaderProps()}
+                    isLastColumn={index === columns.length - 1}
+                    groupable={props.groupable}
+                    sortable={props.sortable}
+                    filterable={props.filterable}
+                    onSort={props.onSort}
+                    onGroupBy={onGroupByChanged}
+                  >
                     {column.render('Header')}
                   </ColumnHeader>
                 ))}
@@ -217,7 +282,7 @@ AnalyticalTable.defaultProps = {
   title: null,
   cellHeight: null,
   minRows: 5,
-  pivotBy: [],
+  groupBy: [],
   NoDataComponent: DefaultNoDataComponent,
   noDataText: 'No Data',
   reactTableOptions: {},

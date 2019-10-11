@@ -15,7 +15,6 @@ import '@ui5/webcomponents/dist/icons/sort-ascending';
 export interface ColumnHeaderProps {
   defaultSortDesc: boolean;
   onFilteredChange: (event: Event) => void;
-  onGroupBy: (strArr: string[]) => void;
   children: ReactNode | ReactNodeArray;
   grouping: string;
   className: string;
@@ -26,6 +25,7 @@ export interface ColumnHeaderProps {
   filterable: boolean;
   isLastColumn?: boolean;
   onSort?: (e: Event) => void;
+  onGroupBy?: (e: Event) => void;
 }
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -63,7 +63,18 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
 export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   const classes = useStyles(props);
 
-  const { children, column, className, style, groupable, sortable, filterable, isLastColumn, onSort } = props;
+  const {
+    children,
+    column,
+    className,
+    style,
+    groupable,
+    sortable,
+    filterable,
+    isLastColumn,
+    onSort,
+    onGroupBy
+  } = props;
 
   const openBy = useMemo(() => {
     if (!column) return null;
@@ -118,6 +129,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
           column={column}
           style={innerStyle}
           onSort={onSort}
+          onGroupBy={onGroupBy}
         />
       ) : (
         openBy

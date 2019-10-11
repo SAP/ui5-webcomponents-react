@@ -22,7 +22,7 @@
     "@ui5/webcomponents": "1.0.0-rc.3",
     "@ui5/webcomponents-react-base": "0.6.0-rc.14",
     "lodash.debounce": "^4.0.8",
-    "react-table": "7.0.0-beta.5",
+    "react-table": "7.0.0-beta.12",
     "react-toastify": "^5.0.1",
     "react-window": "^1.8.5",
     "resize-observer-polyfill": "^1.5.1"
