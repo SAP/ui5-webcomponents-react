@@ -1,5 +1,4 @@
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import '@ui5/webcomponents/dist/icons/navigation-down-arrow';
 import '@ui5/webcomponents/dist/icons/navigation-right-arrow';
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';

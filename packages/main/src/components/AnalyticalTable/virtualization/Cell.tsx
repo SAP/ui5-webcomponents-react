@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { Icon } from '../../../webComponents/Icon';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { useTheme } from 'react-jss';
 
