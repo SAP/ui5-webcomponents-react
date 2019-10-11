@@ -1,4 +1,3 @@
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
@@ -16,14 +15,6 @@ export interface ToggleButtonPropTypes extends WithWebComponentPropTypes {
   onClick?: (event: Event) => void; // @generated
   children?: string; // @generated
 }
-
-addCustomCSS(
-  'ui5-togglebutton',
-  `
-.ui5-button-root {
- font-family: var(--sapUiFontFamily,var(--sapFontFamily,"72","72full",Arial,Helvetica,sans-serif));
-}`
-);
 
 const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPropTypes>(UI5ToggleButton);
 

@@ -64,8 +64,8 @@ const styles = ({ contentDensity, parameters }: JSSTheme) => ({
     '&:focus': {
       outline: 'none'
     },
-    '& >*': {
-      verticalAlign: 'bottom'
+    '& > *': {
+      verticalAlign: 'middle'
     }
   },
   withText: {
