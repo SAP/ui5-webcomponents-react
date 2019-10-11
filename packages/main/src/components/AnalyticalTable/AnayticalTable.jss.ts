@@ -130,6 +130,21 @@ const styles = ({ parameters }: JSSTheme) => ({
     '& $tableCell': {
       height: '2rem'
     }
+  },
+
+  propRowHeight: {
+    '&$tableContainer': {
+      height: (props) => `calc(100% - ${props.rowHeight}px)`
+    },
+    '& $tableHeaderRow': {
+      height: (theme) => (theme.contentDensity === 'Compact' ? '2rem' : '2.75rem')
+    },
+    '& $th': {
+      height: (theme) => (theme.contentDensity === 'Compact' ? '2rem' : '2.75rem')
+    },
+    '& $tableCell': {
+      height: (props) => `${props.rowHeight}px`
+    }
   }
 });
 

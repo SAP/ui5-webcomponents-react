@@ -43,7 +43,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <ui5-popover
             class=""
-            header-text=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -89,13 +88,13 @@ exports[`AnalyticalTable Tree Table 1`] = `
                     src="sap-icon://filter"
                     style="padding-right: 1rem;"
                   />
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
                 </div>
-                <ui5-input
-                  class=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
               </ui5-li-custom>
             </ui5-list>
           </ui5-popover>
@@ -124,7 +123,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <ui5-popover
             class=""
-            header-text=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -170,13 +168,13 @@ exports[`AnalyticalTable Tree Table 1`] = `
                     src="sap-icon://filter"
                     style="padding-right: 1rem;"
                   />
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
                 </div>
-                <ui5-input
-                  class=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
               </ui5-li-custom>
             </ui5-list>
           </ui5-popover>
@@ -205,7 +203,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <ui5-popover
             class=""
-            header-text=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -251,13 +248,13 @@ exports[`AnalyticalTable Tree Table 1`] = `
                     src="sap-icon://filter"
                     style="padding-right: 1rem;"
                   />
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
                 </div>
-                <ui5-input
-                  class=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
               </ui5-li-custom>
             </ui5-list>
           </ui5-popover>
@@ -288,7 +285,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <ui5-popover
             class=""
-            header-text=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -334,13 +330,13 @@ exports[`AnalyticalTable Tree Table 1`] = `
                     src="sap-icon://filter"
                     style="padding-right: 1rem;"
                   />
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
                 </div>
-                <ui5-input
-                  class=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
               </ui5-li-custom>
             </ui5-list>
           </ui5-popover>
@@ -361,19 +357,19 @@ exports[`AnalyticalTable Tree Table 1`] = `
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
+              <span
+                class=""
+                style="cursor: pointer; padding-left: 0px;"
+                title="Toggle Expanded"
+              >
+                <ui5-icon
+                  class="AnalyticalTable--tableGroupExpandCollapseIcon-"
+                  src="sap-icon://navigation-right-arrow"
+                />
+              </span>
               <div
                 class="AnalyticalTable--tableCellContent-"
               >
-                <span
-                  class=""
-                  style="cursor: pointer; padding-left: 0px;"
-                  title="Toggle Expanded"
-                >
-                  <ui5-icon
-                    class="AnalyticalTable--tableGroupExpandCollapseIcon-"
-                    src="sap-icon://navigation-right-arrow"
-                  />
-                </span>
                 Fra
               </div>
             </div>

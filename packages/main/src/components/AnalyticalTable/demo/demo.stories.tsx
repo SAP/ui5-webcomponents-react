@@ -70,6 +70,7 @@ export const defaultStory = () => {
       onSort={action('onSort')}
       onGroup={action('onGroup')}
       groupBy={array('groupBy', [])}
+      rowHeight={number('rowHeight', 60)}
     />
   );
 };
