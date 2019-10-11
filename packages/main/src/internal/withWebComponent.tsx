@@ -132,6 +132,10 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
     };
 
     const getRegularProps = () => {
+      if (getWcRef().current) {
+        bindEvents();
+      }
+
       const regularProps = {};
       const slotProps = {};
 
