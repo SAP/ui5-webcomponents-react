@@ -45,16 +45,14 @@ export const VirtualTableBody = (props) => {
         );
       }
 
+      const rowStyle = {
+        ...style,
+        gridTemplateColumns: rowContainerStyling.gridTemplateColumns
+      };
+
       if (!row) {
         return (
-          <div
-            key={`minRow-${index}`}
-            className={classes.tr}
-            style={{
-              ...style,
-              gridTemplateColumns: rowContainerStyling.gridTemplateColumns
-            }}
-          >
+          <div key={`minRow-${index}`} className={classes.tr} style={rowStyle}>
             {columns.map((col, colIndex) => (
               <div className={classes.tableCell} key={`minRow-${index}-${colIndex}`} />
             ))}
@@ -81,17 +79,8 @@ export const VirtualTableBody = (props) => {
             return `${(isCompact ? 2.75 : 2) + (level - 4) * 0.5}rem`;
         }
       };
-
       return (
-        <div
-          key={rowProps.key}
-          className={rowProps.className}
-          style={{
-            ...style,
-            gridTemplateColumns: rowContainerStyling.gridTemplateColumns
-          }}
-          onClick={onRowClicked(row)}
-        >
+        <div key={rowProps.key} className={rowProps.className} style={rowStyle} onClick={onRowClicked(row)}>
           {row.cells.map((cell, i) => {
             return (
               <div {...cell.getCellProps()}>
