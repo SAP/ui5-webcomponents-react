@@ -95,7 +95,7 @@ export const Cells = ({ row, cell, index, classes }) => {
     );
   }, [cell, row, classes]);
 
-  const renderCells = useMemo(() => {
+  const renderCells = useCallback(() => {
     if (row.canExpand && !cell.isGrouped) {
       return expandable;
     }
