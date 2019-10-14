@@ -6,6 +6,7 @@ export interface Ui5WebComponentMetadata {
   getProperties?: () => DynamicObjectList<Ui5Property>;
   events?: DynamicObjectList<any>;
   getSlots?: () => DynamicObjectList<any>;
+  getEvents?: () => DynamicObjectList<any>;
   metadata: {
     events: DynamicObjectList<Ui5Property>;
   };
