@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useTheme } from 'react-jss';
 import { FixedSizeList } from 'react-window';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { Cells } from './Cell';
+import { Cell } from './Cell';
 
 const ROW_HEIGHT_COMPACT = 32;
 const ROW_HEIGHT_COZY = 44;
@@ -65,7 +65,9 @@ export const VirtualTableBody = (props) => {
       return (
         <div key={rowProps.key} className={rowProps.className} style={rowStyle} onClick={onRowClicked(row)}>
           {row.cells.map((cell, i) => {
-            return <Cells row={row} cell={cell} index={i} classes={classes} />;
+            const cellProps = cell.getCellProps();
+            const key = cellProps && cellProps.key ? cellProps.key : `cell-${i}`;
+            return <Cell key={key} row={row} cell={cell} index={i} classes={classes} />;
           })}
         </div>
       );
