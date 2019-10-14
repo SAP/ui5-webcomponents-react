@@ -95,7 +95,7 @@ const styles = ({ parameters }: JSSTheme) => ({
       borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
     },
     overflow: 'hidden',
-    position: 'realative'
+    position: 'relative'
   },
   tableCellContent: {
     textOverflow: 'ellipsis',
