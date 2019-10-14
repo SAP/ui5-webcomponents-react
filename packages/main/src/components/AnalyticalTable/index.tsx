@@ -96,6 +96,8 @@ export interface TableProps extends CommonProps {
   reactTableOptions?: object;
   tableHooks?: Array<() => any>;
   visibleRows?: number;
+  subRowsKey?: string;
+  rowHeight?: number;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
@@ -131,12 +133,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     reactTableOptions,
     tableHooks,
     busyIndicatorEnabled,
-    onGroup
+    subRowsKey,
+    onGroup,
+    rowHeight
   } = props;
+  const theme = useTheme() as JSSTheme;
+  const classes = useStyles({ ...props, ...theme });
 
-  const classes = useStyles();
-
-  const [selectedRow, onRowClicked] = useRowSelection(onRowSelected);
+  const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected);
   const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
 
   const internalGroupBy = useRef(groupBy);
@@ -147,12 +151,15 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     };
   }, [internalGroupBy.current, groupable]);
 
+  const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
+
   const { getTableProps, headerGroups, rows, prepareRow, setState } = useTable(
     {
       columns,
       data,
       defaultColumn,
       state: tableState,
+      getSubRows,
       ...reactTableOptions
     },
     useFilters,
@@ -162,7 +169,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableStyling(classes),
     useTableHeaderGroupStyling(classes, resizedColumns),
     useTableHeaderStyling(classes, onColumnSizeChanged),
-    useTableRowStyling(classes, resizedColumns, selectable, selectedRow),
+    useTableRowStyling(classes, resizedColumns, selectable, selectedRowPath),
     useTableCellStyling(classes, cellHeight),
     ...tableHooks
   );
@@ -183,9 +190,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }
 
   const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
-  const theme = useTheme() as JSSTheme;
-  if (theme.contentDensity === ContentDensity.Compact) {
+
+  if (theme.contentDensity === ContentDensity.Compact && !rowHeight) {
     tableContainerClasses.put(classes.compactSize);
+  }
+
+  if (!!rowHeight) {
+    tableContainerClasses.put(classes.propRowHeight);
   }
 
   const rowContainerStyling = useMemo(() => {
@@ -260,7 +271,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             classes={classes}
             onRowClicked={onRowClicked}
             columns={columns}
-            selectedRow={selectedRow}
+            selectedRow={selectedRowPath}
+            rowHeight={rowHeight}
           />
           {loading && busyIndicatorEnabled && <LoadingComponent />}
         </div>
@@ -287,7 +299,8 @@ AnalyticalTable.defaultProps = {
   noDataText: 'No Data',
   reactTableOptions: {},
   tableHooks: [],
-  visibleRows: 15
+  visibleRows: 15,
+  subRowsKey: 'subRows'
 };
 
 export { AnalyticalTable };

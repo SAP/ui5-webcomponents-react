@@ -74,9 +74,10 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   tableGroupExpandCollapseIcon: {
     color: parameters.sapUiContentIconColor,
-    padding: '0.625rem',
+    height: '0.75rem',
     width: '0.75rem',
-    height: '0.75rem'
+    padding: '0.625rem',
+    display: 'block'
   },
   selectable: {},
   selectedRow: {},
@@ -92,12 +93,15 @@ const styles = ({ parameters }: JSSTheme) => ({
     padding: '0 0.5rem',
     '&:first-child': {
       borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
-    }
+    },
+    overflow: 'hidden',
+    position: 'relative'
   },
   tableCellContent: {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    alignItems: 'center'
   },
   noDataContainer: {
     display: 'flex',
@@ -126,6 +130,21 @@ const styles = ({ parameters }: JSSTheme) => ({
     },
     '& $tableCell': {
       height: '2rem'
+    }
+  },
+
+  propRowHeight: {
+    '&$tableContainer': {
+      height: (props) => `calc(100% - ${props.rowHeight}px)`
+    },
+    '& $tableHeaderRow': {
+      height: (theme) => (theme.contentDensity === 'Compact' ? '2rem' : '2.75rem')
+    },
+    '& $th': {
+      height: (theme) => (theme.contentDensity === 'Compact' ? '2rem' : '2.75rem')
+    },
+    '& $tableCell': {
+      height: (props) => `${props.rowHeight}px`
     }
   }
 });
