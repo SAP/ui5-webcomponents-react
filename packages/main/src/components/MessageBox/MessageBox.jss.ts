@@ -73,7 +73,6 @@ const style = ({ parameters, contentDensity }: JSSTheme) => ({
   },
   footer: {
     height: ContentDensity.Compact === contentDensity ? '2.5rem' : '3rem',
-    lineHeight: ContentDensity.Compact === contentDensity ? '2.5rem' : '3rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',

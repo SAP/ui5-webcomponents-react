@@ -18,11 +18,6 @@ function capitalizeFirstLetter(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-function convertEventListenerPropToEventKey(s: string) {
-  const eventName = s.replace('on', '');
-  return eventName.charAt(0).toLowerCase() + eventName.slice(1);
-}
-
 function toKebabCase(s: string) {
   return s.replace(/([A-Z])/g, (a, b) => `-${b.toLowerCase()}`);
 }
@@ -51,6 +46,9 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
       },
       getSlots() {
         return {};
+      },
+      getEvents() {
+        return {};
       }
     };
   };
@@ -66,7 +64,7 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
   };
 
   const getEventsFromMetadata = () => {
-    return Object.keys(getWebComponentMetadata().metadata.events || {});
+    return Object.keys(getWebComponentMetadata().getEvents() || {});
   };
 
   const createEventWrapperFor = (eventIdentifier, eventHandler) => (e) => {
@@ -78,8 +76,7 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
       return acc;
     }, {});
 
-    const eventMeta =
-      (getWebComponentMetadata().metadata.events && getWebComponentMetadata().metadata.events[eventIdentifier]) || {};
+    const eventMeta = getWebComponentMetadata().getEvents()[eventIdentifier] || {};
 
     payload = Object.keys(eventMeta).reduce((acc, val) => {
       if (val === 'detail' && e[val]) {
@@ -132,33 +129,13 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
           getWcRef().current.removeEventListener(eventIdentifier, eventRegistryWrapped.current[alternativeKey]);
         }
       });
-
-      /*
-       * TODO Remove this after https://github.com/SAP/ui5-webcomponents/issues/833 has been fixed.
-       * This is a workaround for binding unknown event attributes
-       */
-      const unknownPassedEvents = Object.entries(props)
-        .filter(([prop, value]) => /^on/.test(prop) && !!value)
-        .map(([prop]) => prop)
-        .filter((prop) => !knownEvents.includes(`on${prop}`));
-
-      unknownPassedEvents.forEach((eventIdentifier) => {
-        const eventHandler = props[eventIdentifier];
-        const eventKey = convertEventListenerPropToEventKey(eventIdentifier);
-        if (typeof eventHandler === 'function' && eventRegistry.current[eventIdentifier] !== eventHandler) {
-          if (eventRegistry.current[eventIdentifier]) {
-            getWcRef().current.removeEventListener(eventKey, eventRegistryWrapped.current[eventIdentifier]);
-          }
-          eventRegistryWrapped.current[eventIdentifier] = createEventWrapperFor(eventKey, eventHandler);
-          getWcRef().current.addEventListener(eventKey, eventRegistryWrapped.current[eventIdentifier]);
-          eventRegistry.current[eventIdentifier] = eventHandler;
-        } else if (eventRegistry.current[eventIdentifier] && !eventHandler) {
-          getWcRef().current.removeEventListener(eventKey, eventRegistryWrapped.current[eventIdentifier]);
-        }
-      });
     };
 
     const getRegularProps = () => {
+      if (getWcRef().current) {
+        bindEvents();
+      }
+
       const regularProps = {};
       const slotProps = {};
 
