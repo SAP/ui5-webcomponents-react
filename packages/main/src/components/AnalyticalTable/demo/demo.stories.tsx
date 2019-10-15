@@ -1,6 +1,6 @@
 import { boolean, number, text, array } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import React from 'react';
+import React, { useState } from 'react';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
@@ -49,30 +49,46 @@ const columns = [
   }
 ];
 
-const data = generateData(2000);
+const data = generateData(200);
 const dataTree = generateData(200, true);
 
-export const defaultStory = () => {
+const Demo = () => {
+  const [selectedIndex, setSelectedIndex] = useState(5);
+
   return (
-    <AnalyticalTable
-      title="Table Title"
-      data={data}
-      columns={columns}
-      loading={boolean('loading', false)}
-      busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
-      sortable={boolean('sortable', true)}
-      filterable={boolean('filterable', true)}
-      visibleRows={number('visibleRows', 15)}
-      minRows={number('minRows', 5)}
-      groupable={boolean('groupable', true)}
-      selectable={boolean('selectable', true)}
-      onRowSelected={action('onRowSelected')}
-      onSort={action('onSort')}
-      onGroup={action('onGroup')}
-      groupBy={array('groupBy', [])}
-      rowHeight={number('rowHeight', 60)}
-    />
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Button
+        onClick={() => {
+          setSelectedIndex(selectedIndex + 1);
+        }}
+      >
+        Increment Selected Index
+      </Button>
+      <AnalyticalTable
+        title="Table Title"
+        data={data}
+        columns={columns}
+        loading={boolean('loading', false)}
+        busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
+        sortable={boolean('sortable', true)}
+        filterable={boolean('filterable', true)}
+        visibleRows={number('visibleRows', 15)}
+        minRows={number('minRows', 5)}
+        groupable={boolean('groupable', true)}
+        selectable={boolean('selectable', true)}
+        onRowSelected={action('onRowSelected')}
+        onSort={action('onSort')}
+        onGroup={action('onGroup')}
+        groupBy={array('groupBy', [])}
+        rowHeight={number('rowHeight', 60)}
+        selectedRowKey={`row_${selectedIndex}`}
+      />
+    </div>
   );
+};
+
+export const defaultStory = () => {
+  return <Demo />;
 };
 
 defaultStory.story = {
