@@ -25,7 +25,8 @@ export const VirtualTableBody = (props) => {
     noDataText,
     NoDataComponent,
     selectedRow,
-    selectable
+    selectable,
+    reactWindowRef
   } = props;
 
   const innerDivRef = useRef(null);
@@ -99,6 +100,7 @@ export const VirtualTableBody = (props) => {
 
   return (
     <FixedSizeList
+      ref={reactWindowRef}
       height={listHeight}
       itemCount={itemCount}
       itemSize={rowHeight}
