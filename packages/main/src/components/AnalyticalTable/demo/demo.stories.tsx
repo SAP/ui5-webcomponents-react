@@ -1,10 +1,10 @@
-import { boolean, number, text, array } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import React from 'react';
+import { array, boolean, number, text } from '@storybook/addon-knobs';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
+import React from 'react';
 import generateData from './generateData';
 
 const columns = [
@@ -49,30 +49,37 @@ const columns = [
   }
 ];
 
-const data = generateData(2000);
+const data = generateData(200);
 const dataTree = generateData(200, true);
 
-export const defaultStory = () => {
+const Demo = () => {
   return (
-    <AnalyticalTable
-      title="Table Title"
-      data={data}
-      columns={columns}
-      loading={boolean('loading', false)}
-      busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
-      sortable={boolean('sortable', true)}
-      filterable={boolean('filterable', true)}
-      visibleRows={number('visibleRows', 15)}
-      minRows={number('minRows', 5)}
-      groupable={boolean('groupable', true)}
-      selectable={boolean('selectable', true)}
-      onRowSelected={action('onRowSelected')}
-      onSort={action('onSort')}
-      onGroup={action('onGroup')}
-      groupBy={array('groupBy', [])}
-      rowHeight={number('rowHeight', 60)}
-    />
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <AnalyticalTable
+        title="Table Title"
+        data={data}
+        columns={columns}
+        loading={boolean('loading', false)}
+        busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
+        sortable={boolean('sortable', true)}
+        filterable={boolean('filterable', true)}
+        visibleRows={number('visibleRows', 15)}
+        minRows={number('minRows', 5)}
+        groupable={boolean('groupable', true)}
+        selectable={boolean('selectable', true)}
+        onRowSelected={action('onRowSelected')}
+        onSort={action('onSort')}
+        onGroup={action('onGroup')}
+        groupBy={array('groupBy', [])}
+        rowHeight={number('rowHeight', 60)}
+        selectedRowKey={text('selectedRowKey', `row_5`)}
+      />
+    </div>
   );
+};
+
+export const defaultStory = () => {
+  return <Demo />;
 };
 
 defaultStory.story = {
@@ -95,6 +102,7 @@ export const treeTable = () => {
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
       subRowsKey={text('subRowsKey', 'subRows')}
+      selectedRowKey={text('selectedRowKey', `row_5`)}
     />
   );
 };
