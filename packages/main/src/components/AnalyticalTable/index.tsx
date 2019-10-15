@@ -82,7 +82,6 @@ export interface TableProps extends CommonProps {
   getHeaderGroupsProps?: () => any;
   getHeaderProps?: () => any;
   getRowProps?: () => any;
-  getRowProps?: () => any;
   getCellProps?: () => any;
   onRowSelected?: (e?: Event) => any;
   NoDataComponent?: ComponentType<any>;
