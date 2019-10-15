@@ -5,11 +5,11 @@ export const useTableRowStyling = (classes, resizedColumns, selectable, selected
   const prevSelectedRowKey = useRef(null);
 
   const applySelectedRow = useMemo(() => {
-    if (selectedRow !== prevSelectedRow.current) {
-      return true;
-    }
     if (selectedRowKey !== prevSelectedRowKey.current) {
       return false;
+    }
+    if (selectedRow !== prevSelectedRow.current) {
+      return true;
     }
     return false;
   }, [selectedRow, selectedRowKey]);
@@ -29,8 +29,10 @@ export const useTableRowStyling = (classes, resizedColumns, selectable, selected
         let selected = false;
 
         if (!row.isAggregated && selectable) {
-          if (applySelectedRow && selectedRow.length && selectedRow.length > 0) {
-            selected = row.path.every((item, i) => item === selectedRow[i]);
+          if (applySelectedRow) {
+            if (selectedRow.length && selectedRow.length > 0) {
+              selected = row.path.every((item, i) => item === selectedRow[i]);
+            }
           } else if (selectedRowKey && rowKey === selectedRowKey) {
             selected = true;
           }

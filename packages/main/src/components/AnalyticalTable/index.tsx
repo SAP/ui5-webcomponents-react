@@ -98,6 +98,7 @@ export interface TableProps extends CommonProps {
   tableHooks?: Array<() => any>;
   visibleRows?: number;
   subRowsKey?: string;
+  selectedRowKey?: string;
   rowHeight?: number;
 }
 
@@ -142,7 +143,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const theme = useTheme() as JSSTheme;
   const classes = useStyles({ ...props, ...theme });
 
-  const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected);
+  const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected, selectedRowKey);
   const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
