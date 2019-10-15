@@ -1,10 +1,10 @@
-import { boolean, number, text, array } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import React, { useState } from 'react';
+import { array, boolean, number, text } from '@storybook/addon-knobs';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
+import React from 'react';
 import generateData from './generateData';
 
 const columns = [
@@ -53,17 +53,8 @@ const data = generateData(200);
 const dataTree = generateData(200, true);
 
 const Demo = () => {
-  const [selectedIndex, setSelectedIndex] = useState(5);
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Button
-        onClick={() => {
-          setSelectedIndex(selectedIndex + 1);
-        }}
-      >
-        Increment Selected Index
-      </Button>
       <AnalyticalTable
         title="Table Title"
         data={data}
@@ -81,7 +72,7 @@ const Demo = () => {
         onGroup={action('onGroup')}
         groupBy={array('groupBy', [])}
         rowHeight={number('rowHeight', 60)}
-        selectedRowKey={`row_${selectedIndex}`}
+        selectedRowKey={text('selectedRowKey', `row_5`)}
       />
     </div>
   );
@@ -111,6 +102,7 @@ export const treeTable = () => {
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
       subRowsKey={text('subRowsKey', 'subRows')}
+      selectedRowKey={text('selectedRowKey', `row_5`)}
     />
   );
 };

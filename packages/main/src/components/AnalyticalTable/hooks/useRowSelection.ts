@@ -3,7 +3,7 @@ import { useCallback, useState, useRef } from 'react';
 
 export const useRowSelection = (onRowSelected, selectedRowKeyProp) => {
   const [selectedRowPath, setSelectedRowPath] = useState([]);
-  const prevSelectedRowKeyProp = useRef(null);
+  const prevSelectedRowKeyProp = useRef(selectedRowKeyProp);
   const onRowClicked = useCallback(
     (row) => (e) => {
       if (row.isAggregated) return;
@@ -13,13 +13,13 @@ export const useRowSelection = (onRowSelected, selectedRowKeyProp) => {
 
       let newSelectedRow;
 
-      const selectedIndexProp = typeof selectedRowKeyProp === 'string' ? selectedRowKeyProp.split('_')[1] : null;
-      if (
-        newKey.length === 1 &&
-        prevSelectedRowKeyProp.current !== selectedRowKeyProp &&
-        newKey[0] == selectedIndexProp
-      ) {
-        newSelectedRow = [];
+      let selectedIndexProp = null;
+      if (typeof selectedRowKeyProp === 'string') {
+        const [_, ...path] = selectedRowKeyProp.split('_');
+        selectedIndexProp = path;
+      }
+      if (prevSelectedRowKeyProp.current !== selectedRowKeyProp) {
+        newSelectedRow = selectedIndexProp;
         prevSelectedRowKeyProp.current = selectedRowKeyProp;
       } else {
         newSelectedRow = pathsEqual ? [] : newKey;

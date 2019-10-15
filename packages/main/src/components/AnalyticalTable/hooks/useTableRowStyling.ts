@@ -25,13 +25,13 @@ export const useTableRowStyling = (classes, resizedColumns, selectable, selected
   return useCallback(
     (instance) => {
       instance.getRowProps.push((row) => {
-        const rowKey = `row_${row.index}`;
+        const rowKey = row.path.reduce((acc, val) => `${acc}_${val}`, 'row');
         let selected = false;
 
         if (!row.isAggregated && selectable) {
           if (applySelectedRow) {
             if (selectedRow.length && selectedRow.length > 0) {
-              selected = row.path.every((item, i) => item === selectedRow[i]);
+              selected = row.path.length === selectedRow.length && row.path.every((item, i) => item === selectedRow[i]);
             }
           } else if (selectedRowKey && rowKey === selectedRowKey) {
             selected = true;
