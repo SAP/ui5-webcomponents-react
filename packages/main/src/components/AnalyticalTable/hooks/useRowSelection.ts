@@ -1,6 +1,10 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { useCallback, useState, useRef } from 'react';
 
+const comparePaths = (path1, path2) => {
+  return path1.length === path2.length && path1.every((item, i) => item === path2[i]);
+};
+
 export const useRowSelection = (onRowSelected, selectedRowKeyProp) => {
   const [selectedRowPath, setSelectedRowPath] = useState([]);
   const prevSelectedRowKeyProp = useRef(selectedRowKeyProp);
@@ -8,8 +12,7 @@ export const useRowSelection = (onRowSelected, selectedRowKeyProp) => {
     (row) => (e) => {
       if (row.isAggregated) return;
       const newKey = row.path;
-      const pathsEqual =
-        row.path.length === selectedRowPath.length && row.path.every((item, i) => item === selectedRowPath[i]);
+      const pathsEqual = comparePaths(row.path, selectedRowPath);
 
       let newSelectedRow;
 
@@ -18,8 +21,9 @@ export const useRowSelection = (onRowSelected, selectedRowKeyProp) => {
         const [_, ...path] = selectedRowKeyProp.split('_');
         selectedIndexProp = path;
       }
-      if (prevSelectedRowKeyProp.current !== selectedRowKeyProp) {
-        newSelectedRow = selectedIndexProp;
+
+      if (prevSelectedRowKeyProp.current !== selectedRowKeyProp && comparePaths(selectedIndexProp, newKey)) {
+        newSelectedRow = [];
         prevSelectedRowKeyProp.current = selectedRowKeyProp;
       } else {
         newSelectedRow = pathsEqual ? [] : newKey;
