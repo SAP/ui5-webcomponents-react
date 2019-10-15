@@ -1,9 +1,9 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { FC, useCallback, useMemo } from 'react';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { useTheme } from 'react-jss';
 
-export const Cells = ({ row, cell, index, classes }) => {
+export const Cell: FC = ({ row, cell, index, classes }) => {
   const theme: JSSTheme = useTheme() as JSSTheme;
   const isCompact = theme.contentDensity === 'Compact';
   const getPadding = useCallback(

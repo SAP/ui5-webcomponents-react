@@ -6,6 +6,7 @@ import { ActionSheet } from './lib/ActionSheet';
 import { AnalyticalCard } from './lib/AnalyticalCard';
 import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';
 import { AnalyticalTable } from './lib/AnalyticalTable';
+import { AnalyticalTableScrollMode } from './lib/AnalyticalTableScrollMode';
 import { Avatar } from './lib/Avatar';
 import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
@@ -49,6 +50,8 @@ import { List } from './lib/List';
 import { ListItemTypes } from './lib/ListItemTypes';
 import { ListMode } from './lib/ListMode';
 import { ListSeparators } from './lib/ListSeparators';
+import { Loader } from './lib/Loader';
+import { LoaderType } from './lib/LoaderType';
 import { MessageBox } from './lib/MessageBox';
 import { MessageBoxActions } from './lib/MessageBoxActions';
 import { MessageBoxTypes } from './lib/MessageBoxTypes';
@@ -107,14 +110,13 @@ import { Tokenizer } from './lib/Tokenizer';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
-import { Loader } from './lib/Loader';
-import { LoaderType } from './lib/LoaderType';
 
 export {
   ActionSheet,
   AnalyticalCard,
   AnalyticalCardHeader,
   AnalyticalTable,
+  AnalyticalTableScrollMode,
   Avatar,
   AvatarShape,
   AvatarSize,
@@ -158,6 +160,8 @@ export {
   ListItemTypes,
   ListMode,
   ListSeparators,
+  Loader,
+  LoaderType,
   MessageBox,
   MessageBoxActions,
   MessageBoxTypes,
@@ -215,7 +219,5 @@ export {
   Tokenizer,
   ValueState,
   VariantManagement,
-  VerticalAlign,
-  Loader,
-  LoaderType
+  VerticalAlign
 };

@@ -35,6 +35,7 @@ import { makeTemplateColumns } from './hooks/utils';
 import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
+import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -144,6 +145,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected);
   const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
 
+  const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
+
   const internalGroupBy = useRef(groupBy);
 
   let tableState = useMemo(() => {
@@ -233,9 +236,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     [internalGroupBy.current, onGroup]
   );
 
-  // Render the UI for your table
   return (
-    <div className={className} style={style} title={tooltip} ref={ref}>
+    <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
       <div className={tableContainerClasses.valueOf()}>
@@ -274,6 +276,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             columns={columns}
             selectedRow={selectedRowPath}
             rowHeight={rowHeight}
+            reactWindowRef={reactWindowRef}
           />
           {loading && busyIndicatorEnabled && <LoadingComponent />}
         </div>
