@@ -59,7 +59,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   outerScrollbar: {
     position: 'absolute',
-    width: '12px',
     right: 0,
     overflow: 'hidden',
     height: '100%',
@@ -83,13 +82,9 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   innerScrollbar: {
     width: '24px',
-    marginLeft: '-12px',
     overflowY: 'scroll',
     overflowX: 'hidden',
     height: '100%'
-  },
-  scrollbarContent: {
-    width: '12px'
   },
   // header
   header: {
@@ -103,8 +98,7 @@ const styles = ({ parameters }: JSSTheme) => ({
         width: '3rem',
         margin: '0.25rem 1rem 0.25rem 0'
       }
-    },
-    paddingRight: '12px'
+    }
   },
   contentHeader: {
     backgroundColor: parameters.sapUiObjectHeaderBackground,
