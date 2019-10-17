@@ -8,7 +8,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
     class="FilterBar--filterBarHeader-"
   >
     <div
-      style="pointer-events: auto; display: inline-block;"
+      style="display: inline-block; pointer-events: auto;"
     >
       <div
         class="Variant-Management--VariantManagement-"
@@ -172,7 +172,7 @@ exports[`FilterBar Render without crashing 1`] = `
     class="FilterBar--filterBarHeader-"
   >
     <div
-      style="pointer-events: auto; display: inline-block;"
+      style="display: inline-block; pointer-events: auto;"
     >
       <div
         class="Variant-Management--VariantManagement-"
@@ -325,7 +325,7 @@ exports[`FilterBar Select Filter Item 1`] = `
     class="FilterBar--filterBarHeader-"
   >
     <div
-      style="pointer-events: auto; display: inline-block;"
+      style="display: inline-block; pointer-events: auto;"
     >
       <div
         class="Variant-Management--VariantManagement-"
