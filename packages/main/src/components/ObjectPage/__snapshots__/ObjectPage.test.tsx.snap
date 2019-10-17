@@ -7,12 +7,14 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
 >
   <div
     class="ObjectPage--outerScrollbar-"
+    style="width: 12px;"
   >
     <div
       class="ObjectPage--innerScrollbar-"
+      style="margin-left: -12px; width: 24px;"
     >
       <div
-        class="ObjectPage--scrollbarContent-"
+        style="width: 12px;"
       />
     </div>
   </div>
@@ -20,6 +22,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
     aria-roledescription="Object page header"
     class="ObjectPage--header-"
     role="banner"
+    style="padding-right: 12px;"
   >
     <span
       class="ObjectPage--actions-"
@@ -288,7 +291,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
 </div>
 `;
 
-exports[`ObjectPage Just Some Sections 1`] = `"<div class=\\"ObjectPage--outerScrollbar--2-116\\"><div class=\\"ObjectPage--innerScrollbar--2-117\\"><div class=\\"ObjectPage--scrollbarContent--2-118\\"></div></div></div><header role=\\"banner\\" aria-roledescription=\\"Object page header\\" class=\\"ObjectPage--header--2-119\\"><span class=\\"ObjectPage--actions--2-125\\"></span><header class=\\"ObjectPage--titleBar--2-121\\"><div style=\\"display:flex;align-items:center\\"><span class=\\"ObjectPage--container--2-122\\"><h1 class=\\"ObjectPage--title--2-123\\"></h1><span class=\\"ObjectPage--subTitle--2-124\\"></span></span></div></header></header><div class=\\"ObjectPage--outerContentContainer--2-111\\"><div id=\\"ObjectPageContent\\" class=\\"ObjectPage--contentContainer--2-110\\"><div class=\\"ObjectPage--contentScrollContainer--2-112\\"><div></div><div><div style=\\"position:relative\\" class=\\"ObjectPage--contentHeader--2-120\\"><div class=\\"ObjectPage--headerContent--2-128\\"></div></div><section class=\\"ObjectPage--anchorBar--2-113\\" role=\\"navigation\\"><li class=\\"ObjectPageAnchorButton--anchorButtonContainer--2-133\\"><span class=\\"ObjectPageAnchorButton--button--2-134 ObjectPageAnchorButton--selected--2-135\\"></span></li><li class=\\"ObjectPageAnchorButton--anchorButtonContainer--2-133\\"><span class=\\"ObjectPageAnchorButton--button--2-134\\"></span></li></section></div><section class=\\"ObjectPage--sectionsContainer--2-114\\"><section id=\\"ObjectPageSection-1\\" role=\\"region\\"><div role=\\"heading\\" class=\\"ObjectPageSection--header--2-136\\"><div class=\\"ObjectPageSection--title--2-137 ObjectPageSection--uppercase--2-138\\"></div></div><div class=\\"ObjectPageSection--sectionContent--2-139\\"><div class=\\"ObjectPageSection--sectionContentInner--2-140\\">Test</div></div></section></section><div class=\\"ObjectPage--fillerDiv--2-115\\"></div></div></div></div>"`;
+exports[`ObjectPage Just Some Sections 1`] = `"<div style=\\"width:12px\\" class=\\"ObjectPage--outerScrollbar--2-113\\"><div style=\\"margin-left:-12px;width:24px\\" class=\\"ObjectPage--innerScrollbar--2-114\\"><div style=\\"width:12px\\"></div></div></div><header role=\\"banner\\" aria-roledescription=\\"Object page header\\" style=\\"padding-right:12px\\" class=\\"ObjectPage--header--2-115\\"><span class=\\"ObjectPage--actions--2-121\\"></span><header class=\\"ObjectPage--titleBar--2-117\\"><div style=\\"display:flex;align-items:center\\"><span class=\\"ObjectPage--container--2-118\\"><h1 class=\\"ObjectPage--title--2-119\\"></h1><span class=\\"ObjectPage--subTitle--2-120\\"></span></span></div></header></header><div class=\\"ObjectPage--outerContentContainer--2-108\\"><div id=\\"ObjectPageContent\\" class=\\"ObjectPage--contentContainer--2-107\\"><div class=\\"ObjectPage--contentScrollContainer--2-109\\"><div></div><div><div style=\\"position:relative\\" class=\\"ObjectPage--contentHeader--2-116\\"><div class=\\"ObjectPage--headerContent--2-124\\"></div></div><section class=\\"ObjectPage--anchorBar--2-110\\" role=\\"navigation\\"><li class=\\"ObjectPageAnchorButton--anchorButtonContainer--2-129\\"><span class=\\"ObjectPageAnchorButton--button--2-130 ObjectPageAnchorButton--selected--2-131\\"></span></li><li class=\\"ObjectPageAnchorButton--anchorButtonContainer--2-129\\"><span class=\\"ObjectPageAnchorButton--button--2-130\\"></span></li></section></div><section class=\\"ObjectPage--sectionsContainer--2-111\\"><section id=\\"ObjectPageSection-1\\" role=\\"region\\"><div role=\\"heading\\" class=\\"ObjectPageSection--header--2-132\\"><div class=\\"ObjectPageSection--title--2-133 ObjectPageSection--uppercase--2-134\\"></div></div><div class=\\"ObjectPageSection--sectionContent--2-135\\"><div class=\\"ObjectPageSection--sectionContentInner--2-136\\">Test</div></div></section></section><div class=\\"ObjectPage--fillerDiv--2-112\\"></div></div></div></div>"`;
 
 exports[`ObjectPage No Header 1`] = `
 <div
@@ -297,12 +300,14 @@ exports[`ObjectPage No Header 1`] = `
 >
   <div
     class="ObjectPage--outerScrollbar-"
+    style="width: 12px;"
   >
     <div
       class="ObjectPage--innerScrollbar-"
+      style="margin-left: -12px; width: 24px;"
     >
       <div
-        class="ObjectPage--scrollbarContent-"
+        style="width: 12px;"
       />
     </div>
   </div>
@@ -310,6 +315,7 @@ exports[`ObjectPage No Header 1`] = `
     aria-roledescription="Object page header"
     class="ObjectPage--header-"
     role="banner"
+    style="padding-right: 12px;"
   >
     <span
       class="ObjectPage--actions-"
@@ -420,12 +426,14 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
 >
   <div
     class="ObjectPage--outerScrollbar-"
+    style="width: 12px;"
   >
     <div
       class="ObjectPage--innerScrollbar-"
+      style="margin-left: -12px; width: 24px;"
     >
       <div
-        class="ObjectPage--scrollbarContent-"
+        style="width: 12px;"
       />
     </div>
   </div>
@@ -433,6 +441,7 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
     aria-roledescription="Object page header"
     class="ObjectPage--header-"
     role="banner"
+    style="padding-right: 12px;"
   >
     <span
       class="ObjectPage--actions-"
@@ -500,12 +509,14 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
 >
   <div
     class="ObjectPage--outerScrollbar-"
+    style="width: 12px;"
   >
     <div
       class="ObjectPage--innerScrollbar-"
+      style="margin-left: -12px; width: 24px;"
     >
       <div
-        class="ObjectPage--scrollbarContent-"
+        style="width: 12px;"
       />
     </div>
   </div>
@@ -513,6 +524,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
     aria-roledescription="Object page header"
     class="ObjectPage--header-"
     role="banner"
+    style="padding-right: 12px;"
   >
     <span
       class="ObjectPage--actions-"
@@ -616,12 +628,14 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
 >
   <div
     class="ObjectPage--outerScrollbar-"
+    style="width: 12px;"
   >
     <div
       class="ObjectPage--innerScrollbar-"
+      style="margin-left: -12px; width: 24px;"
     >
       <div
-        class="ObjectPage--scrollbarContent-"
+        style="width: 12px;"
       />
     </div>
   </div>
@@ -629,6 +643,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
     aria-roledescription="Object page header"
     class="ObjectPage--header-"
     role="banner"
+    style="padding-right: 12px;"
   >
     <span
       class="ObjectPage--actions-"
@@ -727,12 +742,14 @@ exports[`ObjectPage Only Sections 1`] = `
 >
   <div
     class="ObjectPage--outerScrollbar-"
+    style="width: 12px;"
   >
     <div
       class="ObjectPage--innerScrollbar-"
+      style="margin-left: -12px; width: 24px;"
     >
       <div
-        class="ObjectPage--scrollbarContent-"
+        style="width: 12px;"
       />
     </div>
   </div>
@@ -740,6 +757,7 @@ exports[`ObjectPage Only Sections 1`] = `
     aria-roledescription="Object page header"
     class="ObjectPage--header-"
     role="banner"
+    style="padding-right: 12px;"
   >
     <span
       class="ObjectPage--actions-"
@@ -980,12 +998,14 @@ exports[`ObjectPage Set selected section id 1`] = `
 >
   <div
     class="ObjectPage--outerScrollbar-"
+    style="width: 12px;"
   >
     <div
       class="ObjectPage--innerScrollbar-"
+      style="margin-left: -12px; width: 24px;"
     >
       <div
-        class="ObjectPage--scrollbarContent-"
+        style="width: 12px;"
       />
     </div>
   </div>
@@ -993,6 +1013,7 @@ exports[`ObjectPage Set selected section id 1`] = `
     aria-roledescription="Object page header"
     class="ObjectPage--header-"
     role="banner"
+    style="padding-right: 12px;"
   >
     <span
       class="ObjectPage--actions-"
@@ -1098,12 +1119,14 @@ exports[`ObjectPage With Subsections 1`] = `
 >
   <div
     class="ObjectPage--outerScrollbar-"
+    style="width: 12px;"
   >
     <div
       class="ObjectPage--innerScrollbar-"
+      style="margin-left: -12px; width: 24px;"
     >
       <div
-        class="ObjectPage--scrollbarContent-"
+        style="width: 12px;"
       />
     </div>
   </div>
@@ -1111,6 +1134,7 @@ exports[`ObjectPage With Subsections 1`] = `
     aria-roledescription="Object page header"
     class="ObjectPage--header-"
     role="banner"
+    style="padding-right: 12px;"
   >
     <span
       class="ObjectPage--actions-"

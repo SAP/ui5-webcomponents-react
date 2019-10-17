@@ -59,17 +59,13 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   outerScrollbar: {
     position: 'absolute',
-    width: '12px',
     right: 0,
     overflow: 'hidden',
     height: '100%',
     zIndex: ZIndex.ResponsivePopover,
     backgroundColor: parameters.sapUiObjectHeaderBackground,
     '& ::-webkit-scrollbar': {
-      backgroundColor: '#ffffff',
-      '&:vertical': {
-        width: '0.75rem'
-      }
+      backgroundColor: '#ffffff'
     },
     '& ::-webkit-scrollbar-thumb': {
       backgroundColor: '#949494',
@@ -82,14 +78,10 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   innerScrollbar: {
-    width: '24px',
-    marginLeft: '-12px',
+    width: '34px',
     overflowY: 'scroll',
     overflowX: 'hidden',
     height: '100%'
-  },
-  scrollbarContent: {
-    width: '12px'
   },
   // header
   header: {
@@ -103,8 +95,7 @@ const styles = ({ parameters }: JSSTheme) => ({
         width: '3rem',
         margin: '0.25rem 1rem 0.25rem 0'
       }
-    },
-    paddingRight: '12px'
+    }
   },
   contentHeader: {
     backgroundColor: parameters.sapUiObjectHeaderBackground,

@@ -31,6 +31,7 @@ import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import '@ui5/webcomponents/dist/icons/navigation-up-arrow.js';
+import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
@@ -50,6 +51,7 @@ export interface ObjectPagePropTypes extends CommonProps {
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPage' });
+const defaultScrollbarWidth = 12;
 
 const findSectionIndexById = (sections, id) => {
   const index = Children.toArray(sections).findIndex(
@@ -103,6 +105,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const hideHeaderButtonPressed = useRef(false);
   const stableOnScrollRef = useRef(null);
   const scroller = useRef(null);
+  const [scrollbarWidth, setScrollbarWidth] = useState(defaultScrollbarWidth);
 
   const classes = useStyles();
 
@@ -491,6 +494,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   useEffect(() => {
     adjustDummyDivHeight();
+    requestAnimationFrame(() => {
+      const scrollbarWidth = getScrollBarWidth();
+      if (scrollbarWidth && scrollbarWidth !== 0 && scrollbarWidth !== defaultScrollbarWidth) {
+        setScrollbarWidth(scrollbarWidth);
+      }
+    });
     setIsMounted(true);
   }, []);
 
@@ -508,6 +517,14 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     headerClasses.put(classes.alwaysVisibleHeader);
   }
 
+  const [scrollBarWidthStyle, scrollBarWidthMargin, scrollBarWidthPadding] = useMemo(() => {
+    return [
+      { width: `${scrollbarWidth}px` },
+      { marginLeft: `-${scrollbarWidth}px`, width: `${2 * scrollbarWidth}px` },
+      { paddingRight: `${scrollbarWidth}px` }
+    ];
+  }, [scrollbarWidth]);
+
   return (
     <div
       data-component-name="ObjectPage"
@@ -518,15 +535,16 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       title={tooltip}
     >
       <ObjectPageScroller ref={scroller} scrollContainer={contentContainer}>
-        <div className={classes.outerScrollbar}>
-          <div ref={scrollBar} className={classes.innerScrollbar}>
-            <div ref={innerScrollBar} className={classes.scrollbarContent} />
+        <div style={scrollBarWidthStyle} className={classes.outerScrollbar}>
+          <div ref={scrollBar} style={scrollBarWidthMargin} className={classes.innerScrollbar}>
+            <div ref={innerScrollBar} style={scrollBarWidthStyle} />
           </div>
         </div>
         <header
           ref={topHeader}
           role="banner"
           aria-roledescription="Object page header"
+          style={scrollBarWidthPadding}
           className={headerClasses.valueOf()}
         >
           <span className={classes.actions}>{headerActions}</span>
