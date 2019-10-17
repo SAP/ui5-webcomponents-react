@@ -12,12 +12,13 @@ import * as sap_fiori_3 from './lib/sap_fiori_3';
 import * as spacing from './lib/spacing';
 import { StyleClassHelper } from './lib/StyleClassHelper';
 import { useConsolidatedRef } from './lib/useConsolidatedRef';
-import { deprecationNotice } from './lib/Utils';
+import { deprecationNotice, getScrollBarWidth } from './lib/Utils';
 
 export {
   StyleClassHelper,
   Optional,
   deprecationNotice,
+  getScrollBarWidth,
   Event,
   Logger,
   LOG_LEVEL,

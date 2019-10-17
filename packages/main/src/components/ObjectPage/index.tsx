@@ -31,7 +31,7 @@ import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import '@ui5/webcomponents/dist/icons/navigation-up-arrow.js';
-import { getScrollBarWidth } from '../../../../base/src/utils';
+import { getScrollBarWidth } from '@ui5/webcomponents-react-base';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
