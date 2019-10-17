@@ -65,10 +65,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     zIndex: ZIndex.ResponsivePopover,
     backgroundColor: parameters.sapUiObjectHeaderBackground,
     '& ::-webkit-scrollbar': {
-      backgroundColor: '#ffffff',
-      '&:vertical': {
-        width: '0.75rem'
-      }
+      backgroundColor: '#ffffff'
     },
     '& ::-webkit-scrollbar-thumb': {
       backgroundColor: '#949494',
@@ -81,7 +78,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   innerScrollbar: {
-    width: '24px',
+    width: '34px',
     overflowY: 'scroll',
     overflowX: 'hidden',
     height: '100%'

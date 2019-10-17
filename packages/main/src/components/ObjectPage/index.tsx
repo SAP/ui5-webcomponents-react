@@ -520,7 +520,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const [scrollBarWidthStyle, scrollBarWidthMargin, scrollBarWidthPadding] = useMemo(() => {
     return [
       { width: `${scrollbarWidth}px` },
-      { marginLeft: `-${scrollbarWidth}px` },
+      { marginLeft: `-${scrollbarWidth}px`, width: `${2 * scrollbarWidth}px` },
       { paddingRight: `${scrollbarWidth}px` }
     ];
   }, [scrollbarWidth]);
