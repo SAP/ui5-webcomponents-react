@@ -8,6 +8,8 @@ import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVertic
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
+import '@ui5/webcomponents/dist/icons/navigation-down-arrow.js';
+import '@ui5/webcomponents/dist/icons/navigation-right-arrow.js';
 import React, {
   Children,
   cloneElement,
@@ -24,8 +26,6 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { sideNavigationListItemStyles } from './SideNavigationListItem.jss';
-import '@ui5/webcomponents/dist/icons/navigation-down-arrow.js';
-import '@ui5/webcomponents/dist/icons/navigation-right-arrow.js';
 
 export interface SideNavigationListItemProps extends CommonProps {
   icon?: string;
