@@ -11,8 +11,8 @@ describe('SideNavigation', () => {
         openState={SideNavigationOpenState.Expandend}
         selectedId={'sales-leads'}
         footerItems={[
-          <SideNavigationListItem text="Legal Information" icon="sap-icon://compare" />,
-          <SideNavigationListItem text="Useful Links" icon="sap-icon://chain-link" />
+          <SideNavigationListItem id="1" text="Legal Information" icon="sap-icon://compare" />,
+          <SideNavigationListItem id="2" text="Useful Links" icon="sap-icon://chain-link" />
         ]}
       >
         <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" tooltip="Nav To Home Tooltip" />
@@ -36,8 +36,8 @@ describe('SideNavigation', () => {
         selectedId={'sales-leads'}
         noIcons
         footerItems={[
-          <SideNavigationListItem text="Legal Information" icon="sap-icon://compare" />,
-          <SideNavigationListItem text="Useful Links" icon="sap-icon://chain-link" />
+          <SideNavigationListItem id="1" text="Legal Information" icon="sap-icon://compare" />,
+          <SideNavigationListItem id="2" text="Useful Links" icon="sap-icon://chain-link" />
         ]}
       >
         <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" />
@@ -60,8 +60,8 @@ describe('SideNavigation', () => {
         openState={SideNavigationOpenState.Condensed}
         selectedId={'sales-leads'}
         footerItems={[
-          <SideNavigationListItem text="Legal Information" icon="sap-icon://compare" />,
-          <SideNavigationListItem text="Useful Links" icon="sap-icon://chain-link" />
+          <SideNavigationListItem id="1" text="Legal Information" icon="sap-icon://compare" />,
+          <SideNavigationListItem id="2" text="Useful Links" icon="sap-icon://chain-link" />
         ]}
       >
         <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" />
@@ -83,8 +83,8 @@ describe('SideNavigation', () => {
         openState={SideNavigationOpenState.Collapsed}
         selectedId={'sales-leads'}
         footerItems={[
-          <SideNavigationListItem text="Legal Information" icon="sap-icon://compare" />,
-          <SideNavigationListItem text="Useful Links" icon="sap-icon://chain-link" />
+          <SideNavigationListItem id="1" text="Legal Information" icon="sap-icon://compare" />,
+          <SideNavigationListItem id="2" text="Useful Links" icon="sap-icon://chain-link" />
         ]}
       >
         <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" />

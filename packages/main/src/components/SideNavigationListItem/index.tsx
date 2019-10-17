@@ -20,8 +20,11 @@ import React, {
   Ref,
   useCallback,
   useEffect,
+  useMemo,
+  useRef,
   useState
 } from 'react';
+import { createPortal } from 'react-dom';
 import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -91,76 +94,97 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
       childCount > 0 &&
       !!validChildren.find((child: any) => child.props.id === props['selectedId']);
 
+    const customListItemCommonProps = {
+      ref,
+      className: listItemClasses.valueOf(),
+      tooltip,
+      slot,
+      style,
+      'data-id': id,
+      'data-has-children': childCount > 0,
+      'data-is-child': props['isChild']
+    };
+
+    const popoverRef = useRef();
+
+    const displayedIcon = useMemo(() => {
+      return <Icon src={icon} className={classes.icon} />;
+    }, [classes.icon, icon]);
+
+    const handleOpenPopover = useCallback(
+      (e) => {
+        // @ts-ignore
+        popoverRef.current.openBy(e.target);
+      },
+      [popoverRef.current]
+    );
+
+    if (isOpenStateExpanded) {
+      return (
+        <>
+          <CustomListItem selected={isSelfSelected} {...customListItemCommonProps}>
+            {icon && !noIcons && displayedIcon}
+            {!icon && !noIcons && <span className={classes.icon} />}
+            <Text className={classes.text}>{text}</Text>
+            {childCount > 0 && (
+              <span onClick={handleToggleExpand} className={classes.expandArrow}>
+                <Icon src={isExpanded ? 'sap-icon://navigation-down-arrow' : 'sap-icon://navigation-right-arrow'} />
+              </span>
+            )}
+          </CustomListItem>
+          {isExpanded &&
+            validChildren.map((child: any, index: number) => {
+              const style = child.props.style || {};
+              if (index !== childCount - 1) {
+                style['--ui5-listitem-border-bottom'] = 'none';
+              }
+
+              return cloneElement(child, {
+                icon: null,
+                style,
+                openState: props['openState'],
+                selectedId: props['selectedId'],
+                noIcons,
+                isChild: true
+              });
+            })}
+        </>
+      );
+    }
+
     return (
       <>
-        <CustomListItem
-          selected={isSelfSelected || hasSelectedChild}
-          ref={ref}
-          className={listItemClasses.valueOf()}
-          tooltip={tooltip}
-          slot={slot}
-          style={style}
-          data-id={id}
-          data-has-children={childCount > 0}
-          data-is-child={props['isChild']}
-        >
-          {(isOpenStateExpanded || childCount === 0) && icon && !noIcons && (
-            <Icon src={icon} className={classes.icon} />
-          )}
-          {!isOpenStateExpanded && icon && childCount > 0 && !noIcons && (
-            <Popover
-              open={isExpanded}
-              verticalAlign={PopoverVerticalAlign.Top}
-              openBy={<Icon src={icon} className={classes.icon} />}
-            >
-              <List>
-                <StandardListItem selected={isSelfSelected} data-id={id} tooltip={tooltip}>
-                  {text}
-                </StandardListItem>
-                {validChildren.map((child: any, index) => {
-                  return (
-                    <StandardListItem
-                      selected={props['selectedId'] === child.props.id}
-                      key={index}
-                      data-id={child.props.id}
-                      data-parent-id={id}
-                      tooltip={child.props.tooltip || child.props.text}
-                    >
-                      {child.props.text}
+        <CustomListItem selected={isSelfSelected || hasSelectedChild} {...customListItemCommonProps}>
+          {childCount > 0 ? (
+            <span onClick={handleOpenPopover}>
+              {displayedIcon}
+              <div className={classes.condensedExpandTriangle} />
+              {createPortal(
+                <Popover ref={popoverRef} open={isExpanded} verticalAlign={PopoverVerticalAlign.Top}>
+                  <List onItemClick={props['onListItemSelected']}>
+                    <StandardListItem selected={isSelfSelected} data-id={id} tooltip={tooltip}>
+                      {text}
                     </StandardListItem>
-                  );
-                })}
-              </List>
-            </Popover>
-          )}
-          {!isOpenStateExpanded && icon && childCount > 0 && <div className={classes.condensedExpandTriangle} />}
-          {!icon && !noIcons && <span className={classes.icon} />}
-          {isOpenStateExpanded && <Text className={classes.text}>{text}</Text>}
-          {isOpenStateExpanded && childCount > 0 && (
-            <Icon
-              src={isExpanded ? 'sap-icon://navigation-down-arrow' : 'sap-icon://navigation-right-arrow'}
-              className={classes.expandArrow}
-              onPress={handleToggleExpand}
-            />
+                    {validChildren.map((child: any, index) => (
+                      <StandardListItem
+                        selected={props['selectedId'] === child.props.id}
+                        key={index}
+                        data-id={child.props.id}
+                        data-parent-id={id}
+                        tooltip={child.props.tooltip || child.props.text}
+                      >
+                        {child.props.text}
+                      </StandardListItem>
+                    ))}
+                  </List>
+                </Popover>,
+                document.body
+              )}
+            </span>
+          ) : (
+            displayedIcon
           )}
         </CustomListItem>
-        {isOpenStateExpanded &&
-          isExpanded &&
-          validChildren.map((child: any, index: number) => {
-            const style = child.props.style || {};
-            if (index !== childCount - 1) {
-              style['--ui5-listitem-border-bottom'] = 'none';
-            }
-
-            return cloneElement(child, {
-              icon: null,
-              style,
-              openState: props['openState'],
-              selectedId: props['selectedId'],
-              noIcons,
-              isChild: true
-            });
-          })}
       </>
     );
   }

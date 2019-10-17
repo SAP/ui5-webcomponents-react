@@ -24,7 +24,7 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
     '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentIconColor,
     width: '1.125rem',
     height: '1.125rem',
-    padding: '0.8125rem',
+    padding: '0.9375rem',
     pointerEvents: 'none'
   },
 
