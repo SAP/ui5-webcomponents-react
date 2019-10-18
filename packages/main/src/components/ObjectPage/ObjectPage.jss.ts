@@ -205,6 +205,10 @@ const styles = ({ parameters }: JSSTheme) => ({
     display: 'inline-block',
     marginRight: '2rem',
     marginBottom: '1rem'
+  },
+  image: {
+    width: '100%',
+    height: '100%'
   }
 });
 

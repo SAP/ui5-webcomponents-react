@@ -234,12 +234,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     if (image) {
       if (typeof image === 'string') {
         avatar = (
-          <Avatar
+          <span
             className={classes.headerImage}
-            image={image}
-            size={AvatarSize.L}
-            shape={imageShapeCircle ? AvatarShape.Circle : AvatarShape.Square}
-          />
+            style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
+          >
+            <img src={image} className={classes.image} alt="Company Logo" />
+          </span>
         );
       } else {
         // @ts-ignore
