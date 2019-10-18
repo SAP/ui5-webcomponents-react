@@ -1,11 +1,21 @@
-import React, { FC, useCallback, useMemo } from 'react';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { JSSTheme } from '../../../interfaces/JSSTheme';
+import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
+import React, { CSSProperties, FC, useCallback, useMemo } from 'react';
 import { useTheme } from 'react-jss';
+import { JSSTheme } from '../../../interfaces/JSSTheme';
 
-export const Cell: FC = ({ row, cell, index, classes }) => {
+interface Props {
+  row: any;
+  cell: any;
+  columnIndex: number;
+  isTreeTable: boolean;
+  classes: Record<string, string>;
+}
+
+export const Cell: FC<Props> = ({ row, cell, columnIndex, classes, isTreeTable }) => {
   const theme: JSSTheme = useTheme() as JSSTheme;
   const isCompact = theme.contentDensity === 'Compact';
+
   const getPadding = useCallback(
     (level) => {
       switch (level) {
@@ -23,24 +33,23 @@ export const Cell: FC = ({ row, cell, index, classes }) => {
     },
     [isCompact]
   );
-  const getExpandedToggleProps = useCallback(
-    (param) => {
-      return {
-        ...row.getExpandedToggleProps(param)
-      };
-    },
-    [row]
-  );
-  const i = index;
   const expandable = useMemo(() => {
+    let paddingLeft = null;
+    if (row.canExpand) {
+      paddingLeft = columnIndex === 0 ? getPadding(row.path.length) : 0;
+    } else {
+      paddingLeft = columnIndex === 0 ? `calc(${getPadding(row.path.length)} + 2rem)` : 0;
+    }
+    const styles: CSSProperties = {
+      paddingLeft
+    };
+
     return (
       <>
-        {i === 0 ? (
+        {columnIndex === 0 && row.canExpand ? (
           <span
-            {...getExpandedToggleProps({
-              style: {
-                paddingLeft: i === 0 ? getPadding(row.path.length) : 0
-              },
+            {...row.getExpandedToggleProps({
+              style: styles,
               onClick: (e) => {
                 e.stopPropagation();
                 row.toggleExpanded();
@@ -53,15 +62,21 @@ export const Cell: FC = ({ row, cell, index, classes }) => {
             />
           </span>
         ) : null}
-        <div className={classes.tableCellContent}>{cell.value && cell.render('Cell')}</div>
+        <div className={classes.tableCellContent} style={!row.canExpand ? { paddingLeft } : undefined}>
+          {cell.value && cell.render('Cell')}
+        </div>
       </>
     );
-  }, [cell, classes, row, i]);
+  }, [cell, classes, row, columnIndex]);
 
   const grouped = useMemo(() => {
+    const styles: CSSProperties = {};
+    if (cell.column.hAlign && (cell.column.hAlign !== TextAlign.Left || cell.column.hAlign !== TextAlign.Begin)) {
+      styles.marginRight = 'auto';
+    }
     return (
       <>
-        <span {...getExpandedToggleProps(row.isExpanded)}>
+        <span {...row.getExpandedToggleProps({ style: styles })}>
           <Icon
             src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
             className={classes.tableGroupExpandCollapseIcon}
@@ -74,42 +89,21 @@ export const Cell: FC = ({ row, cell, index, classes }) => {
     );
   }, [row, classes, cell]);
 
-  const aggregated = useMemo(() => {
-    return cell.render('Aggregated');
-  }, [cell]);
-
-  const repeatedValue = useMemo(() => {
-    return null;
-  }, []);
-
-  const defaultCell = useMemo(() => {
-    return (
-      <div
-        className={classes.tableCellContent}
-        style={{
-          paddingLeft: i === 0 ? `calc(${getPadding(row.path.length)} + 2rem)` : 0
-        }}
-      >
-        {cell.render('Cell')}
-      </div>
-    );
-  }, [cell, row, classes]);
-
-  const renderCells = useCallback(() => {
-    if (row.canExpand && !cell.isGrouped) {
+  const renderedCell = useMemo(() => {
+    if (isTreeTable) {
       return expandable;
     }
     if (cell.isGrouped) {
       return grouped;
     }
     if (cell.isAggregated) {
-      return aggregated;
+      return cell.render('Aggregated');
     }
     if (cell.isRepeatedValue) {
-      return repeatedValue;
+      return null;
     }
-    return defaultCell;
-  }, [row, cell]);
+    return <div className={classes.tableCellContent}>{cell.render('Cell')}</div>;
+  }, [cell, expandable, grouped, isTreeTable]);
 
-  return <div {...cell.getCellProps()}>{renderCells()}</div>;
+  return <div {...cell.getCellProps()}>{renderedCell}</div>;
 };

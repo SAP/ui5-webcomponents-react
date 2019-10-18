@@ -24,6 +24,7 @@ const columns = [
   {
     Header: () => <span>Friend Age</span>, // Custom header components!
     accessor: 'friend.age',
+    hAlign: TextAlign.End,
     filter: (rows, accessor, filterValue) => {
       if (filterValue === 'all') {
         return rows;
@@ -103,6 +104,7 @@ export const treeTable = () => {
       onSort={action('onSort')}
       subRowsKey={text('subRowsKey', 'subRows')}
       selectedRowKey={text('selectedRowKey', `row_5`)}
+      isTreeTable={boolean('isTreeTable', true)}
     />
   );
 };
