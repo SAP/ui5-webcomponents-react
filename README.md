@@ -89,7 +89,7 @@ import { Button } from '@ui5/webcomponents-react/lib/Button'; // loads ui5-butto
 Then, you can use the Button in your app:
 
 ```jsx
-<Button onPress={() => alert('Hello World!')}>Hello world!</Button>
+<Button onClick={() => alert('Hello World!')}>Hello world!</Button>
 ```
 
 You could import all components also from `@ui5/webcomponents-react` directly, but this will have a negative impact on your bundle size.
