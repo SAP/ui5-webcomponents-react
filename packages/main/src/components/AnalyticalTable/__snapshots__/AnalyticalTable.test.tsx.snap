@@ -26,7 +26,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           class="AnalyticalTable--th-"
         >
           <div
-            style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px); display: inline-block;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader--header-"
@@ -106,7 +106,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           class="AnalyticalTable--th-"
         >
           <div
-            style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px); display: inline-block;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader--header-"
@@ -186,7 +186,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           class="AnalyticalTable--th-"
         >
           <div
-            style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px); display: inline-block;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader--header-"
@@ -266,7 +266,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           class="AnalyticalTable--th-"
         >
           <div
-            style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; display: inline-block;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
           >
             <div
               class="TableColumnHeader--header-"
@@ -536,7 +536,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           class="AnalyticalTable--th-"
         >
           <div
-            style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px); display: inline-block;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader--header-"
@@ -595,7 +595,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           class="AnalyticalTable--th-"
         >
           <div
-            style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px); display: inline-block;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader--header-"
@@ -654,7 +654,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           class="AnalyticalTable--th-"
         >
           <div
-            style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px); display: inline-block;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader--header-"
@@ -713,7 +713,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           class="AnalyticalTable--th-"
         >
           <div
-            style="width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; display: inline-block;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
           >
             <div
               class="TableColumnHeader--header-"
