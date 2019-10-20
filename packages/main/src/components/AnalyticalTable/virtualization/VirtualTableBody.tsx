@@ -99,6 +99,19 @@ export const VirtualTableBody = (props) => {
     };
   }, [rows, visibleRows, minRows, props.rowHeight]);
 
+  const getItemKey = useCallback(
+    (index) => {
+      const row = rows[index];
+      if (!row.getRowProps) {
+        prepareRow(row);
+      }
+      const key = row.getRowProps ? row.getRowProps().key : index;
+      console.log(key);
+      return key;
+    },
+    [rows]
+  );
+
   return (
     <FixedSizeList
       ref={reactWindowRef}
@@ -107,6 +120,7 @@ export const VirtualTableBody = (props) => {
       itemSize={rowHeight}
       innerRef={innerDivRef}
       overscanCount={5}
+      itemKey={getItemKey}
     >
       {VirtualTableItem}
     </FixedSizeList>
