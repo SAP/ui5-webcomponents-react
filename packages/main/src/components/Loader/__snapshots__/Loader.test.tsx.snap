@@ -54,3 +54,5 @@ exports[`Loader with Custom Class Name 1`] = `
   title="Please wait"
 />
 `;
+
+exports[`Loader with delay 1`] = `null`;
