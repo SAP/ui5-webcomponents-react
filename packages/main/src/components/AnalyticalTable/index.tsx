@@ -252,7 +252,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     if (headerRef.current) {
       setTableWidth(headerRef.current.scrollWidth);
     }
-  }, [headerRef, setTableWidth]);
+  }, [headerRef, setTableWidth, resizedColumns]);
 
   return (
     <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
@@ -285,7 +285,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           })}
           <VirtualTableBody
             {...props}
+            isTreeTable={isTreeTable}
             defaultColumnWidth={DEFAULT_COLUMN_WIDTH}
+            resizedColumns={resizedColumns}
             tableWidth={tableWidth}
             tableBodyClasses={tableBodyClasses}
             rowContainerStyling={rowContainerStyling}

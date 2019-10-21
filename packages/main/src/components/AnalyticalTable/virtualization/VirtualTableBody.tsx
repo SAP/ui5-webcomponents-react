@@ -29,6 +29,7 @@ export const VirtualTableBody = (props) => {
     reactWindowRef,
     tableWidth,
     defaultColumnWidth,
+    resizedColumns,
     isTreeTable
   } = props;
 
@@ -104,11 +105,18 @@ export const VirtualTableBody = (props) => {
   const columnsWidth = useMemo(() => {
     const aggregatedWidth = columns
       .map((item) => {
+        if (
+          Object.entries(resizedColumns).length !== 0 &&
+          resizedColumns.constructor === Object &&
+          Object.keys(resizedColumns).includes(item.accessor)
+        ) {
+          return resizedColumns[item.accessor];
+        }
         return item.minWidth ? item.minWidth : defaultColumnWidth;
       })
       .reduce((el, acc) => el + acc);
     return tableWidth > aggregatedWidth ? null : aggregatedWidth;
-  }, [columns, tableWidth]);
+  }, [columns, tableWidth, resizedColumns]);
 
   return (
     <FixedSizeList
