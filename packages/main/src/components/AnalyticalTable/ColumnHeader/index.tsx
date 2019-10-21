@@ -124,7 +124,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
         <ColumnHeaderModal
           openBy={openBy}
           showFilter={filterable}
-          showGroup={groupable}
+          showGroup={groupable && column.disableGrouping !== true}
           showSort={sortable}
           column={column}
           style={innerStyle}

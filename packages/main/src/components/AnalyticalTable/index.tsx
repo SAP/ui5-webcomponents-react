@@ -178,15 +178,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   );
 
   useEffect(() => {
-    if (groupable) {
-      setState((old) => {
-        return {
-          ...old,
-          groupBy
-        };
-      });
-    }
-  }, [groupable, groupBy, setState]);
+    setState((old) => {
+      return {
+        ...old,
+        groupBy
+      };
+    });
+  }, [groupBy, setState]);
 
   const tableBodyClasses = StyleClassHelper.of(classes.tbody);
   if (selectable) {
