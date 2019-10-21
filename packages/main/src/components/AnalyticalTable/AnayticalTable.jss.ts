@@ -38,6 +38,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   tbody: {
     position: 'relative',
     zIndex: 0,
+    overflowX: 'auto',
     backgroundColor: parameters.sapUiListBackground,
     '&$selectable $tr:hover': {
       backgroundColor: parameters.sapUiListHoverBackground
