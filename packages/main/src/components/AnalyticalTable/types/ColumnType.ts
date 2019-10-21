@@ -14,4 +14,5 @@ export interface ColumnType {
   canSort: boolean;
   isSorted: boolean;
   isSortedDesc: boolean;
+  disableGrouping: boolean;
 }
