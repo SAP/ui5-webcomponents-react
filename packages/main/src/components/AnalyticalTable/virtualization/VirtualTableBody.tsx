@@ -26,7 +26,9 @@ export const VirtualTableBody = (props) => {
     NoDataComponent,
     selectedRow,
     selectable,
-    reactWindowRef
+    reactWindowRef,
+    tableWidth,
+    defaultColumnWidth
   } = props;
 
   const innerDivRef = useRef(null);
@@ -98,10 +100,20 @@ export const VirtualTableBody = (props) => {
     };
   }, [rows, visibleRows, minRows, props.rowHeight]);
 
+  const columnsWidth = useMemo(() => {
+    const aggregatedWidth = columns
+      .map((item) => {
+        return item.minWidth ? item.minWidth : defaultColumnWidth;
+      })
+      .reduce((el, acc) => el + acc);
+    return tableWidth > aggregatedWidth ? null : aggregatedWidth;
+  }, [columns, tableWidth]);
+
   return (
     <FixedSizeList
       ref={reactWindowRef}
       height={listHeight}
+      width={columnsWidth}
       itemCount={itemCount}
       itemSize={rowHeight}
       innerRef={innerDivRef}

@@ -14,7 +14,8 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef
+  useRef,
+  useState
 } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { useExpanded, useFilters, useGroupBy, useSortBy, useTable } from 'react-table';
@@ -36,6 +37,7 @@ import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
+import { Device } from '../../../../base/src/Device';
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -107,10 +109,12 @@ const defaultFilterMethod = (filter, row) => {
   return new RegExp(filter.value, 'gi').test(String(row[filter.id]));
 };
 
+const DEFAULT_COLUMN_WIDTH = 60;
+
 const defaultColumn: any = {
   Filter: DefaultFilterComponent,
   canResize: true,
-  minWidth: 30,
+  minWidth: DEFAULT_COLUMN_WIDTH,
   width: '1fr',
   vAlign: VerticalAlign.Middle,
   Aggregated: () => null,
@@ -142,6 +146,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   } = props;
   const theme = useTheme() as JSSTheme;
   const classes = useStyles({ ...props, ...theme });
+  const [tableWidth, setTableWidth] = useState(null);
 
   const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected, selectedRowKey);
   const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
@@ -158,7 +163,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
-  const { getTableProps, headerGroups, rows, prepareRow, setState } = useTable(
+  const { getTableProps, headerGroups, rows, prepareRow, setState, totalColumnsWidth } = useTable(
     {
       columns,
       data,
@@ -237,11 +242,31 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     [internalGroupBy.current, onGroup]
   );
 
+  const headerRef = useRef(null);
+  const onWindowResize = useCallback(() => {
+    if (headerRef.current) {
+      setTableWidth(headerRef.current.scrollWidth);
+    }
+  }, [setTableWidth, headerRef]);
+
+  useEffect(() => {
+    Device.resize.attachHandler(onWindowResize, null);
+    return () => {
+      Device.resize.detachHandler(onWindowResize, null);
+    };
+  }, [onWindowResize]);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      setTableWidth(headerRef.current.scrollWidth);
+    }
+  }, [headerRef, setTableWidth]);
+
   return (
     <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
-      <div className={tableContainerClasses.valueOf()}>
+      <div className={tableContainerClasses.valueOf()} ref={headerRef}>
         <div {...getTableProps()}>
           {headerGroups.map((headerGroup) => {
             let headerProps = {};
@@ -268,6 +293,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           })}
           <VirtualTableBody
             {...props}
+            defaultColumnWidth={DEFAULT_COLUMN_WIDTH}
+            tableWidth={tableWidth}
             tableBodyClasses={tableBodyClasses}
             rowContainerStyling={rowContainerStyling}
             prepareRow={prepareRow}
