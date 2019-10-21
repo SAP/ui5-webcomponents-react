@@ -3,7 +3,7 @@
 exports[`VariantManagement Render without crashing 1`] = `
 Array [
   <div
-    style="pointer-events: auto; display: inline-block;"
+    style="display: inline-block; pointer-events: auto;"
   >
     <div
       class="Variant-Management--VariantManagement-"

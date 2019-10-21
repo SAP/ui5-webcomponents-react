@@ -15,7 +15,7 @@ export const sideNavigationStyles = ({ parameters }: JSSTheme) => ({
   },
 
   condensed: {
-    width: '2.75rem',
+    width: '3rem',
     '& $footerItemsSeparator': {
       marginLeft: '0.5rem',
       marginRight: '0.5rem'

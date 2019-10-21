@@ -1,13 +1,13 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5Popover from '@ui5/webcomponents/dist/Popover';
-import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useRef } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import UI5Popover from '@ui5/webcomponents/dist/Popover';
+import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useMemo, useRef } from 'react';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated
@@ -55,10 +55,12 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, givenRef: RefO
     }
   }, [open]);
 
-  let style = { display: 'inline-block' };
-  if (openByStyle) {
-    style = Object.assign(openByStyle, style);
-  }
+  const style = useMemo(() => {
+    return {
+      display: 'inline-block',
+      ...openByStyle
+    };
+  }, [openByStyle]);
 
   return (
     <>

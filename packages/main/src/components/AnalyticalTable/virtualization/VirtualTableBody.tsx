@@ -28,7 +28,8 @@ export const VirtualTableBody = (props) => {
     selectable,
     reactWindowRef,
     tableWidth,
-    defaultColumnWidth
+    defaultColumnWidth,
+    isTreeTable
   } = props;
 
   const innerDivRef = useRef(null);
@@ -70,7 +71,7 @@ export const VirtualTableBody = (props) => {
           {row.cells.map((cell, i) => {
             const cellProps = cell.getCellProps();
             const key = cellProps && cellProps.key ? cellProps.key : `cell-${i}`;
-            return <Cell key={key} row={row} cell={cell} index={i} classes={classes} />;
+            return <Cell key={key} row={row} cell={cell} columnIndex={i} classes={classes} isTreeTable={isTreeTable} />;
           })}
         </div>
       );

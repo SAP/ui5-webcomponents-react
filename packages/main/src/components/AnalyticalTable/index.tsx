@@ -102,6 +102,7 @@ export interface TableProps extends CommonProps {
   subRowsKey?: string;
   selectedRowKey?: string;
   rowHeight?: number;
+  isTreeTable?: boolean;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
@@ -142,7 +143,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     subRowsKey,
     onGroup,
     rowHeight,
-    selectedRowKey
+    selectedRowKey,
+    isTreeTable
   } = props;
   const theme = useTheme() as JSSTheme;
   const classes = useStyles({ ...props, ...theme });
@@ -153,22 +155,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
 
-  const internalGroupBy = useRef(groupBy);
-
-  let tableState = useMemo(() => {
-    return {
-      groupBy: groupable ? internalGroupBy.current : []
-    };
-  }, [internalGroupBy.current, groupable]);
-
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
-  const { getTableProps, headerGroups, rows, prepareRow, setState, totalColumnsWidth } = useTable(
+  const { getTableProps, headerGroups, rows, prepareRow, setState, state: tableState } = useTable(
     {
       columns,
       data,
       defaultColumn,
-      state: tableState,
       getSubRows,
       ...reactTableOptions
     },
@@ -185,14 +178,15 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   );
 
   useEffect(() => {
-    internalGroupBy.current = groupBy;
-    setState((old) => {
-      return {
-        ...old,
-        groupBy
-      };
-    });
-  }, [groupBy, setState, internalGroupBy]);
+    if (groupable) {
+      setState((old) => {
+        return {
+          ...old,
+          groupBy
+        };
+      });
+    }
+  }, [groupable, groupBy, setState]);
 
   const tableBodyClasses = StyleClassHelper.of(classes.tbody);
   if (selectable) {
@@ -220,16 +214,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       const { column, isGrouped } = e.getParameters();
       let groupedColumns = [];
       if (isGrouped) {
-        groupedColumns = [...internalGroupBy.current, column.id];
+        groupedColumns = [...tableState.groupBy, column.id];
       } else {
-        // @ts-ignore
-        groupedColumns = internalGroupBy.current.filter((group) => group !== column.id);
+        groupedColumns = tableState.groupBy.filter((group) => group !== column.id);
       }
-      internalGroupBy.current = groupedColumns;
       setState((old) => {
         return {
           ...old,
-          groupBy: internalGroupBy.current
+          groupBy: groupedColumns
         };
       });
       onGroup(
@@ -239,7 +231,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         })
       );
     },
-    [internalGroupBy.current, onGroup]
+    [tableState.groupBy, onGroup]
   );
 
   const headerRef = useRef(null);
@@ -332,7 +324,9 @@ AnalyticalTable.defaultProps = {
   reactTableOptions: {},
   tableHooks: [],
   visibleRows: 15,
-  subRowsKey: 'subRows'
+  subRowsKey: 'subRows',
+  onGroup: () => {},
+  isTreeTable: false
 };
 
 export { AnalyticalTable };

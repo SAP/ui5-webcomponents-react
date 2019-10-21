@@ -1,9 +1,7 @@
 import { mountThemedComponent } from '@shared/tests/utils';
-import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';
-import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import React from 'react';
-import { ContentDensity } from '../..';
 
 describe('SideNavigationListItem', () => {
   test('Basic', () => {
