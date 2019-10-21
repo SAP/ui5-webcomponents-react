@@ -37,7 +37,7 @@ import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
-import { Device } from '../../../../base/src/Device';
+import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -237,7 +237,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     if (headerRef.current) {
       setTableWidth(headerRef.current.scrollWidth);
     }
-  }, [setTableWidth, headerRef]);
+  }, [setTableWidth, headerRef.current]);
 
   useEffect(() => {
     Device.resize.attachHandler(onWindowResize, null);

@@ -105,11 +105,7 @@ export const VirtualTableBody = (props) => {
   const columnsWidth = useMemo(() => {
     const aggregatedWidth = columns
       .map((item) => {
-        if (
-          Object.entries(resizedColumns).length !== 0 &&
-          resizedColumns.constructor === Object &&
-          Object.keys(resizedColumns).includes(item.accessor)
-        ) {
+        if (resizedColumns.hasOwnProperty(item.accessor)) {
           return resizedColumns[item.accessor];
         }
         return item.minWidth ? item.minWidth : defaultColumnWidth;
