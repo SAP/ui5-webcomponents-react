@@ -1,12 +1,16 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
-import React, { CSSProperties, FC, forwardRef, RefObject, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { styles } from './Loader.jss';
 
 export interface LoaderProps extends CommonProps {
+  /*
+   * Delay in ms until the Loader will be displayed
+   */
+  delay?: number;
   type?: LoaderType;
   progress?: CSSProperties['width'];
 }
@@ -14,8 +18,9 @@ export interface LoaderProps extends CommonProps {
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Loader' });
 
 const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<HTMLDivElement>) => {
-  const { className, type, progress, tooltip, slot, style } = props;
+  const { className, type, progress, tooltip, slot, style, delay } = props;
   const classes = useStyles(props);
+  const [isVisible, setIsVisible] = useState(delay === 0);
 
   const loaderClasses = StyleClassHelper.of(classes.loader);
   if (className) {
@@ -30,6 +35,18 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
       backgroundSize
     };
   }, [progress, style, type]);
+
+  useEffect(() => {
+    if (delay > 0) {
+      setTimeout(() => {
+        setIsVisible(true);
+      }, delay);
+    }
+  }, []);
+
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <div
@@ -47,7 +64,8 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
 
 Loader.defaultProps = {
   type: LoaderType.Indeterminate,
-  progress: '0px'
+  progress: '0px',
+  delay: 0
 };
 
 Loader.displayName = 'Loader';
