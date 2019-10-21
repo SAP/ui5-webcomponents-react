@@ -13,7 +13,9 @@ import React, {
   Ref,
   useCallback,
   useEffect,
-  useMemo
+  useMemo,
+  useRef,
+  useState
 } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { useExpanded, useFilters, useGroupBy, useSortBy, useTable } from 'react-table';
@@ -29,12 +31,13 @@ import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
 import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
 import { useTableRowStyling } from './hooks/useTableRowStyling';
-import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useTableStyling } from './hooks/useTableStyling';
 import { makeTemplateColumns } from './hooks/utils';
 import { LoadingComponent } from './LoadingComponent';
 import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
+import { useTableScrollHandles } from './hooks/useTableScrollHandles';
+import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -107,10 +110,12 @@ const defaultFilterMethod = (filter, row) => {
   return new RegExp(filter.value, 'gi').test(String(row[filter.id]));
 };
 
+const DEFAULT_COLUMN_WIDTH = 60;
+
 const defaultColumn: any = {
   Filter: DefaultFilterComponent,
   canResize: true,
-  minWidth: 30,
+  minWidth: DEFAULT_COLUMN_WIDTH,
   width: '1fr',
   vAlign: VerticalAlign.Middle,
   Aggregated: () => null,
@@ -143,6 +148,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   } = props;
   const theme = useTheme() as JSSTheme;
   const classes = useStyles({ ...props, ...theme });
+  const [tableWidth, setTableWidth] = useState(null);
 
   const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected, selectedRowKey);
   const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
@@ -204,7 +210,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const onGroupByChanged = useCallback(
     (e) => {
       const { column, isGrouped } = e.getParameters();
-
       let groupedColumns = [];
       if (isGrouped) {
         groupedColumns = [...tableState.groupBy, column.id];
@@ -227,11 +232,31 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     [tableState.groupBy, onGroup]
   );
 
+  const headerRef = useRef(null);
+  const onWindowResize = useCallback(() => {
+    if (headerRef.current) {
+      setTableWidth(headerRef.current.scrollWidth);
+    }
+  }, [setTableWidth, headerRef.current]);
+
+  useEffect(() => {
+    Device.resize.attachHandler(onWindowResize, null);
+    return () => {
+      Device.resize.detachHandler(onWindowResize, null);
+    };
+  }, [onWindowResize]);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      setTableWidth(headerRef.current.scrollWidth);
+    }
+  }, [headerRef, setTableWidth, resizedColumns]);
+
   return (
     <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
-      <div className={tableContainerClasses.valueOf()}>
+      <div className={tableContainerClasses.valueOf()} ref={headerRef}>
         <div {...getTableProps()}>
           {headerGroups.map((headerGroup) => {
             let headerProps = {};
@@ -258,6 +283,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           })}
           <VirtualTableBody
             {...props}
+            isTreeTable={isTreeTable}
+            defaultColumnWidth={DEFAULT_COLUMN_WIDTH}
+            resizedColumns={resizedColumns}
+            tableWidth={tableWidth}
             tableBodyClasses={tableBodyClasses}
             rowContainerStyling={rowContainerStyling}
             prepareRow={prepareRow}
