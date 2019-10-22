@@ -110,7 +110,7 @@ export const VirtualTableBody = (props) => {
         }
         return item.minWidth ? item.minWidth : defaultColumnWidth;
       })
-      .reduce((el, acc) => el + acc);
+      .reduce((acc, val) => acc + val, 0);
     return tableWidth > aggregatedWidth ? null : aggregatedWidth;
   }, [columns, tableWidth, resizedColumns]);
 
