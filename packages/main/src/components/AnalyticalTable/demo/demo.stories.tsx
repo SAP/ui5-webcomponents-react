@@ -54,7 +54,7 @@ const columns = [
 const data = generateData(200);
 const dataTree = generateData(200, true);
 
-const Demo = () => {
+export const defaultTable = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <AnalyticalTable
@@ -80,11 +80,7 @@ const Demo = () => {
   );
 };
 
-export const defaultStory = () => {
-  return <Demo />;
-};
-
-defaultStory.story = {
+defaultTable.story = {
   name: 'Default'
 };
 
