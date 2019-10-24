@@ -12,7 +12,8 @@ export FIORI_FOR_REACT_SNAPSHOT_BUILD='true'
 
 # trigger lerna release
 PACKAGE_VERSION=$(node -p -e "require('./lerna.json').version")
-${TRAVIS_BUILD_DIR}/node_modules/.bin/lerna version "${PACKAGE_VERSION}-${TRAVIS_COMMIT}" \
+BUILD_GIT_HASH=$(git rev-parse --short HEAD)
+${TRAVIS_BUILD_DIR}/node_modules/.bin/lerna version "${PACKAGE_VERSION}-${BUILD_GIT_HASH}" \
         --no-git-tag-version \
         --allow-branch ${TRAVIS_BRANCH} \
         --no-push
