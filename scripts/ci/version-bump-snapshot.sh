@@ -11,7 +11,6 @@ git config --global user.name "ui5-webcomponents-react-bot"
 export FIORI_FOR_REACT_SNAPSHOT_BUILD='true'
 
 # trigger lerna release
-${TRAVIS_BUILD_DIR}/node_modules/.bin/lerna version prerelease \
-        --conventional-prerelease \
-        --allow-branch ${TRAVIS_BRANCH} \
+PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
+${TRAVIS_BUILD_DIR}/node_modules/.bin/lerna version "${PACKAGE_VERSION}-${TRAVIS_COMMIT}" \
         --no-push
