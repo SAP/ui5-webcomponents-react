@@ -14,4 +14,5 @@ export FIORI_FOR_REACT_SNAPSHOT_BUILD='true'
 PACKAGE_VERSION=$(node -p -e "require('./lerna.json').version")
 ${TRAVIS_BUILD_DIR}/node_modules/.bin/lerna version "${PACKAGE_VERSION}-${TRAVIS_COMMIT}" \
         --no-git-tag-version \
+        --allow-branch ${TRAVIS_BRANCH} \
         --no-push
