@@ -1,5 +1,5 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import { useCallback, useState, useRef, useEffect } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 const comparePaths = (path1, path2) => {
   return path1.length === path2.length && path1.every((item, i) => item === path2[i]);
@@ -36,9 +36,5 @@ export const useRowSelection = (onRowSelected, selectedRowKeyProp) => {
     },
     [selectedRowPath, setSelectedRowPath, selectedRowKeyProp, prevSelectedRowKeyProp.current]
   );
-  useEffect(() => {
-    prevSelectedRowKeyProp.current = selectedRowKeyProp;
-    setSelectedRowPath(selectedRowPath);
-  }, [selectedRowKeyProp]);
   return [selectedRowPath, onRowClicked];
 };

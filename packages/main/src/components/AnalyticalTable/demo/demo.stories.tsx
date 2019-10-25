@@ -4,7 +4,7 @@ import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import generateData from './generateData';
 
 const columns = [
