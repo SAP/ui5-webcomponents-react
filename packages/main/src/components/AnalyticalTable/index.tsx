@@ -147,8 +147,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     isTreeTable
   } = props;
   const theme = useTheme() as JSSTheme;
-  const classes = useStyles({ ...props, ...theme });
-  const [tableWidth, setTableWidth] = useState(null);
+  const classes = useStyles({
+    ...props,
+    ...theme
+  });
+  const [tableWidth, setTableWidth] = useState(0);
 
   const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected, selectedRowKey);
   const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
@@ -246,18 +249,28 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     };
   }, [onWindowResize]);
 
+  const observer = useRef(new MutationObserver(onWindowResize));
+
   useEffect(() => {
     if (headerRef.current) {
-      setTableWidth(headerRef.current.scrollWidth);
+      observer.current.observe(headerRef.current, {
+        attributes: true,
+        subtree: true,
+        childList: true
+      });
     }
-  }, [headerRef.current, setTableWidth, resizedColumns]);
+
+    return () => {
+      observer.current.disconnect();
+    };
+  }, [headerRef.current, observer.current]);
 
   return (
     <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
-      <div className={tableContainerClasses.valueOf()} ref={headerRef}>
-        <div {...getTableProps()}>
+      <div className={tableContainerClasses.valueOf()}>
+        <div {...getTableProps()} ref={headerRef}>
           {headerGroups.map((headerGroup) => {
             let headerProps = {};
             if (headerGroup.getHeaderGroupProps) {
