@@ -5,6 +5,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useTheme } from 'react-jss';
 import { FixedSizeList } from 'react-window';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
+import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
 import { Cell } from './Cell';
 
 const ROW_HEIGHT_COMPACT = 32;
@@ -13,7 +14,6 @@ const ROW_HEIGHT_COZY = 44;
 export const VirtualTableBody = (props) => {
   const {
     classes,
-    tableBodyClasses,
     rowContainerStyling,
     onRowClicked,
     prepareRow,
@@ -28,9 +28,9 @@ export const VirtualTableBody = (props) => {
     selectable,
     reactWindowRef,
     tableWidth,
-    defaultColumnWidth,
     resizedColumns,
-    isTreeTable
+    isTreeTable,
+    onRowExpandChange
   } = props;
 
   const innerDivRef = useRef(null);
@@ -77,17 +77,18 @@ export const VirtualTableBody = (props) => {
         </div>
       );
     },
-    [classes, columns, rows, prepareRow, rowContainerStyling, selectedRow, selectable, theme, props]
+    [classes, columns, rows, prepareRow, rowContainerStyling, selectedRow, selectable, onRowExpandChange, isTreeTable]
   );
 
   useEffect(() => {
     if (innerDivRef.current) {
       innerDivRef.current.classList = '';
-      tableBodyClasses.split(' ').forEach((cssClass) => {
-        innerDivRef.current.classList.add(cssClass);
-      });
+      innerDivRef.current.classList.add(classes.tbody);
+      if (selectable) {
+        innerDivRef.current.classList.add(classes.selectable);
+      }
     }
-  }, [innerDivRef.current, tableBodyClasses]);
+  }, [innerDivRef.current, selectable, classes.tbody, classes.selectable]);
 
   const { listHeight, itemCount, rowHeight } = useMemo(() => {
     let internalRowHeight = theme.contentDensity === ContentDensity.Compact ? ROW_HEIGHT_COMPACT : ROW_HEIGHT_COZY;
@@ -100,7 +101,7 @@ export const VirtualTableBody = (props) => {
       itemCount: Math.max(minRows, rows.length),
       rowHeight: internalRowHeight
     };
-  }, [rows, visibleRows, minRows, props.rowHeight]);
+  }, [rows, visibleRows, minRows, props.rowHeight, theme.contentDensity]);
 
   const columnsWidth = useMemo(() => {
     const aggregatedWidth = columns
@@ -108,11 +109,15 @@ export const VirtualTableBody = (props) => {
         if (resizedColumns.hasOwnProperty(item.accessor)) {
           return resizedColumns[item.accessor];
         }
-        return item.minWidth ? item.minWidth : defaultColumnWidth;
+        return item.minWidth ? item.minWidth : DEFAULT_COLUMN_WIDTH;
       })
       .reduce((acc, val) => acc + val, 0);
     return tableWidth > aggregatedWidth ? null : aggregatedWidth;
   }, [columns, tableWidth, resizedColumns]);
+
+  const overscanCount = useMemo(() => {
+    return Math.floor(itemCount / 2);
+  }, [itemCount]);
 
   return (
     <FixedSizeList
@@ -122,7 +127,7 @@ export const VirtualTableBody = (props) => {
       itemCount={itemCount}
       itemSize={rowHeight}
       innerRef={innerDivRef}
-      overscanCount={5}
+      overscanCount={overscanCount}
     >
       {VirtualTableItem}
     </FixedSizeList>

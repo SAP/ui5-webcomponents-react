@@ -12,7 +12,7 @@ const TableRow: FC<{ columns: number; y: number; row: number; singleRowHeight: n
     <>
       {getArrayOfLength(columns).map((val, i) => {
         const el = (
-          <rect key={`row-${row}-column-${i}`} x={columnOffset + 2} y={y} rx="3" ry="3" width={61} height="6.4" />
+          <rect key={`row-${row}-column-${i}`} x={columnOffset + 2} y={y} rx="2" ry="8" width="61" height="16" />
         );
         columnOffset += 65;
         return el;
@@ -33,7 +33,7 @@ export const TablePlaceholder: FC<{ columns: number; rows: number }> = (props) =
 
   return (
     <ContentLoader
-      style={{ backgroundColor: parameters.sapUiListBackground }}
+      style={{ backgroundColor: parameters.sapUiListBackground, width: '100%', height: `${height}px` }}
       height={height}
       width={width}
       speed={2}
@@ -45,7 +45,7 @@ export const TablePlaceholder: FC<{ columns: number; rows: number }> = (props) =
         <TableRow
           key={index}
           columns={columns}
-          y={singleRowHeight * (index + 1)}
+          y={singleRowHeight * index + 8}
           row={index}
           singleRowHeight={singleRowHeight}
         />

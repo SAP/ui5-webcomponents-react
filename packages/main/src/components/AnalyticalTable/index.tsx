@@ -1,4 +1,3 @@
-import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
@@ -13,9 +12,7 @@ import React, {
   Ref,
   useCallback,
   useEffect,
-  useMemo,
-  useRef,
-  useState
+  useMemo
 } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { useExpanded, useFilters, useGroupBy, useSortBy, useTable } from 'react-table';
@@ -23,7 +20,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
-import { DEFAULT_COLUMN_WIDTH, DefaultColumn } from './defaults/Column';
+import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
@@ -35,6 +32,8 @@ import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
 import { useTableRowStyling } from './hooks/useTableRowStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useTableStyling } from './hooks/useTableStyling';
+import { useToggleRowExpand } from './hooks/useToggleRowExpand';
+import { useWindowResize } from './hooks/useWindowResize';
 import { makeTemplateColumns } from './hooks/utils';
 import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
@@ -51,11 +50,6 @@ export interface ColumnConfiguration {
 }
 
 export interface TableProps extends CommonProps {
-  filterable?: boolean;
-  sortable?: boolean;
-  groupable?: boolean;
-  selectable?: boolean;
-  data: object[];
   /**
    * In addition to the standard 'react-table' column config you can pass the properties 'hAlign' and 'vAlign'.
    * These will align the text inside the column accordingly.
@@ -63,6 +57,8 @@ export interface TableProps extends CommonProps {
    * values for vAlign: Bottom | Middle | Top | Inherit (default)
    */
   columns: ColumnConfiguration[];
+  data: object[];
+
   /**
    * Component or text of title section of the Table (if not set it will be hidden)
    */
@@ -71,7 +67,6 @@ export interface TableProps extends CommonProps {
    * Extension section of the Table. If not set, no extension area will be rendered
    */
   renderExtension?: () => ReactNode;
-  groupBy?: string[];
 
   // appearance
 
@@ -81,6 +76,14 @@ export interface TableProps extends CommonProps {
   busyIndicatorEnabled?: boolean;
   noDataText?: string;
   rowHeight?: number;
+
+  // features
+
+  filterable?: boolean;
+  sortable?: boolean;
+  groupable?: boolean;
+  groupBy?: string[];
+  selectable?: boolean;
 
   // events
 
@@ -125,12 +128,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     onGroup,
     rowHeight,
     selectedRowKey,
-    isTreeTable,
-    LoadingComponent
+    LoadingComponent,
+    onRowExpandChange
   } = props;
   const theme = useTheme() as JSSTheme;
   const classes = useStyles({ ...props, ...theme });
-  const [tableWidth, setTableWidth] = useState(null);
 
   const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected, selectedRowKey);
   const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
@@ -156,6 +158,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableHeaderStyling(classes, onColumnSizeChanged),
     useTableRowStyling(classes, resizedColumns, selectable, selectedRowPath, selectedRowKey),
     useTableCellStyling(classes, rowHeight),
+    useToggleRowExpand(onRowExpandChange),
     ...tableHooks
   );
 
@@ -167,11 +170,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       };
     });
   }, [groupBy, setState]);
-
-  const tableBodyClasses = StyleClassHelper.of(classes.tbody);
-  if (selectable) {
-    tableBodyClasses.put(classes.selectable);
-  }
 
   const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
 
@@ -214,25 +212,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     [tableState.groupBy, onGroup]
   );
 
-  const headerRef = useRef(null);
-  const onWindowResize = useCallback(() => {
-    if (headerRef.current) {
-      setTableWidth(headerRef.current.scrollWidth);
-    }
-  }, [setTableWidth, headerRef.current]);
-
-  useEffect(() => {
-    Device.resize.attachHandler(onWindowResize, null);
-    return () => {
-      Device.resize.detachHandler(onWindowResize, null);
-    };
-  }, [onWindowResize]);
-
-  useEffect(() => {
-    if (headerRef.current) {
-      setTableWidth(headerRef.current.scrollWidth);
-    }
-  }, [headerRef.current, setTableWidth, resizedColumns]);
+  const [headerRef, tableWidth] = useWindowResize(resizedColumns);
 
   return (
     <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
@@ -268,19 +248,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           {data.length > 0 && (
             <VirtualTableBody
               {...props}
-              isTreeTable={isTreeTable}
-              defaultColumnWidth={DEFAULT_COLUMN_WIDTH}
               resizedColumns={resizedColumns}
               tableWidth={tableWidth}
-              tableBodyClasses={tableBodyClasses}
               rowContainerStyling={rowContainerStyling}
               prepareRow={prepareRow}
               rows={rows}
               classes={classes}
               onRowClicked={onRowClicked}
-              columns={columns}
               selectedRow={selectedRowPath}
-              rowHeight={rowHeight}
               reactWindowRef={reactWindowRef}
             />
           )}
@@ -311,6 +286,7 @@ AnalyticalTable.defaultProps = {
   visibleRows: 15,
   subRowsKey: 'subRows',
   onGroup: () => {},
+  onRowExpandChange: () => {},
   isTreeTable: false
 };
 

@@ -4,7 +4,7 @@ import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import generateData from './generateData';
 
 const columns = [
@@ -59,7 +59,7 @@ export const defaultTable = () => {
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <AnalyticalTable
         title="Table Title"
-        data={[]}
+        data={data}
         columns={columns}
         loading={boolean('loading', false)}
         busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
@@ -72,6 +72,7 @@ export const defaultTable = () => {
         onRowSelected={action('onRowSelected')}
         onSort={action('onSort')}
         onGroup={action('onGroup')}
+        onRowExpandChange={action('onRowExpandChange')}
         groupBy={array('groupBy', [])}
         rowHeight={number('rowHeight', 60)}
         selectedRowKey={text('selectedRowKey', `row_5`)}
@@ -99,6 +100,7 @@ export const treeTable = () => {
       selectable={boolean('selectable', true)}
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
+      onRowExpandChange={action('onRowExpandChange')}
       subRowsKey={text('subRowsKey', 'subRows')}
       selectedRowKey={text('selectedRowKey', `row_5`)}
       isTreeTable={boolean('isTreeTable', true)}
