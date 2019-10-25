@@ -111,7 +111,7 @@ export const VirtualTableBody = (props) => {
         return item.minWidth ? item.minWidth : defaultColumnWidth;
       })
       .reduce((acc, val) => acc + val, 0);
-    return tableWidth > aggregatedWidth ? null : aggregatedWidth;
+    return tableWidth > aggregatedWidth || tableWidth === 0 ? null : aggregatedWidth;
   }, [columns, tableWidth, resizedColumns]);
 
   return (
