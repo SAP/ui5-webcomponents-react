@@ -16,7 +16,8 @@ const columns = [
     Header: 'Age',
     accessor: 'age',
     hAlign: TextAlign.End,
-    disableGrouping: true
+    disableGrouping: true,
+    className: 'superCustomClass'
   },
   {
     Header: 'Friend Name',

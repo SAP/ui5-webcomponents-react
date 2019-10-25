@@ -39,9 +39,13 @@ export const VirtualTableBody = (props) => {
       if (!row) {
         return (
           <div key={`minRow-${index}`} className={classes.tr} style={rowStyle}>
-            {columns.map((col, colIndex) => (
-              <div className={classes.tableCell} key={`minRow-${index}-${colIndex}`} />
-            ))}
+            {columns.map((col, colIndex) => {
+              let classNames = classes.tableCell;
+              if (col.className) {
+                classNames += ` ${col.className}`;
+              }
+              return <div className={classNames} key={`minRow-${index}-${colIndex}`} />;
+            })}
           </div>
         );
       }

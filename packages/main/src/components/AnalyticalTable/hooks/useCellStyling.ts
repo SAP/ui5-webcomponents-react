@@ -37,8 +37,12 @@ export const useCellStyling = ({ rowHeight }, classes) => ({ column }) => {
       break;
   }
 
+  let className = classes.tableCell;
+  if (column.className) {
+    className += ` ${column.className}`;
+  }
   return {
-    className: classes.tableCell,
+    className,
     style
   };
 };
