@@ -134,16 +134,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
 
-  propRowHeight: {
-    '&$tableContainer': {
-      height: (props) => `calc(100% - ${props.rowHeight}px)`
-    },
-    '& $tableHeaderRow': {
-      height: (theme) => (theme.contentDensity === 'Compact' ? '2rem' : '2.75rem')
-    },
-    '& $th': {
-      height: (theme) => (theme.contentDensity === 'Compact' ? '2rem' : '2.75rem')
-    },
+  modifiedRowHeight: {
     '& $tableCell': {
       height: (props) => `${props.rowHeight}px`
     }

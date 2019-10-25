@@ -1,11 +1,11 @@
 import { useCellStyling } from './useCellStyling';
 import { useCallback } from 'react';
 
-export const useTableCellStyling = (classes, cellHeight) =>
+export const useTableCellStyling = (classes, rowHeight) =>
   useCallback(
     (instance) => {
-      instance.getCellProps.push(useCellStyling({ cellHeight }, classes));
+      instance.getCellProps.push(useCellStyling({ rowHeight }, classes));
       return instance;
     },
-    [cellHeight, classes]
+    [rowHeight, classes]
   );

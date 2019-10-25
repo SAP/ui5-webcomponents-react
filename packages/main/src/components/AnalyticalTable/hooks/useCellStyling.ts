@@ -2,11 +2,11 @@ import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import { CSSProperties } from 'react';
 
-export const useCellStyling = ({ cellHeight }, classes) => ({ column }) => {
+export const useCellStyling = ({ rowHeight }, classes) => ({ column }) => {
   const style: CSSProperties = {};
 
-  if (cellHeight) {
-    style.height = cellHeight;
+  if (rowHeight) {
+    style.height = `${rowHeight}px`;
   }
   switch (column.hAlign) {
     case TextAlign.Begin:

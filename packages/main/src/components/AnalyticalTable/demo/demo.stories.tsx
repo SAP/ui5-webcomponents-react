@@ -59,7 +59,7 @@ export const defaultTable = () => {
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <AnalyticalTable
         title="Table Title"
-        data={data}
+        data={[]}
         columns={columns}
         loading={boolean('loading', false)}
         busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}

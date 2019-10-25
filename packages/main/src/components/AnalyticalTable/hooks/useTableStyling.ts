@@ -12,3 +12,5 @@ export const useTableStyling = (classes) =>
     },
     [classes.table]
   );
+
+useTableStyling.pluginName = 'useTableStyling';
