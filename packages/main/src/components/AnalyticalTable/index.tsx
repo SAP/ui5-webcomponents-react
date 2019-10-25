@@ -162,9 +162,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableStyling(classes),
     useTableHeaderGroupStyling(classes, resizedColumns),
     useTableHeaderStyling(classes, onColumnSizeChanged),
-    useTableRowStyling(classes, resizedColumns, selectable, selectedRowPath, selectedRowKey),
+    useTableRowStyling(classes, resizedColumns, selectable, selectedRowPath, selectedRowKey, onRowClicked),
     useTableCellStyling(classes, rowHeight),
-    useToggleRowExpand(onRowExpandChange),
+    useToggleRowExpand(onRowExpandChange, isTreeTable),
     ...tableHooks
   );
 
@@ -283,12 +283,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             <VirtualTableBody
               classes={classes}
               rowContainerStyling={rowContainerStyling}
-              onRowClicked={onRowClicked}
               prepareRow={prepareRow}
               rows={rows}
               minRows={minRows}
               columns={columns}
-              selectedRow={selectedRowPath}
+              selectedRow={selectedRowKey}
+              selectedRowPath={selectedRowPath}
               selectable={selectable}
               reactWindowRef={reactWindowRef}
               tableWidth={tableWidth}

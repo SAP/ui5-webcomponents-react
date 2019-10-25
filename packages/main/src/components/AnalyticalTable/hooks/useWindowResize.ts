@@ -3,7 +3,7 @@ import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 
 export const useWindowResize = () => {
   const headerRef = useRef(null);
-  const [tableWidth, setTableWidth] = useState(null);
+  const [tableWidth, setTableWidth] = useState(0);
   const onWindowResize = useCallback(() => {
     if (headerRef.current) {
       setTableWidth(headerRef.current.scrollWidth);

@@ -9,12 +9,12 @@ export const VirtualTableBody = (props) => {
   const {
     classes,
     rowContainerStyling,
-    onRowClicked,
     prepareRow,
     rows,
     minRows,
     columns,
     selectedRow,
+    selectedRowPath,
     selectable,
     reactWindowRef,
     tableWidth,
@@ -28,8 +28,8 @@ export const VirtualTableBody = (props) => {
 
   const VirtualTableItem = useCallback(
     (itemProps) => {
-      const { style, index } = itemProps;
-      const row = rows[index];
+      const { style, index, data } = itemProps;
+      const row = data[index];
 
       const rowStyle = {
         ...style,
@@ -48,10 +48,8 @@ export const VirtualTableBody = (props) => {
 
       prepareRow(row);
 
-      const rowProps = row.getRowProps();
-
       return (
-        <div key={rowProps.key} className={rowProps.className} style={rowStyle} onClick={onRowClicked(row)}>
+        <div {...row.getRowProps()} style={rowStyle}>
           {row.cells.map((cell, i) => {
             const cellProps = cell.getCellProps();
             const key = cellProps && cellProps.key ? cellProps.key : `cell-${i}`;
@@ -60,7 +58,7 @@ export const VirtualTableBody = (props) => {
         </div>
       );
     },
-    [classes, columns, rows, prepareRow, rowContainerStyling, selectedRow, selectable, isTreeTable]
+    [classes, rowContainerStyling, columns, prepareRow, isTreeTable, selectedRowPath, selectedRow]
   );
 
   useEffect(() => {
@@ -93,6 +91,7 @@ export const VirtualTableBody = (props) => {
       ref={reactWindowRef}
       height={tableBodyHeight}
       width={columnsWidth}
+      itemData={rows}
       itemCount={itemCount}
       itemSize={internalRowHeight}
       innerRef={innerDivRef}

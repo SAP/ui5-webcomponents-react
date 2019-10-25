@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 
-export const useTableRowStyling = (classes, resizedColumns, selectable, selectedRow, selectedRowKey) => {
+export const useTableRowStyling = (classes, resizedColumns, selectable, selectedRow, selectedRowKey, onRowClicked) => {
   const prevSelectedRow = useRef(null);
   const prevSelectedRowKey = useRef(null);
 
@@ -46,11 +46,21 @@ export const useTableRowStyling = (classes, resizedColumns, selectable, selected
           className += ` ${classes.selectedRow}`;
         }
         return {
-          className
+          className,
+          onClick: onRowClicked(row)
         };
       });
       return instance;
     },
-    [classes.tr, classes.tableGroupHeader, classes.selectedRow, resizedColumns, selectable, selectedRow, selectedRowKey]
+    [
+      classes.tr,
+      classes.tableGroupHeader,
+      classes.selectedRow,
+      resizedColumns,
+      selectable,
+      selectedRow,
+      selectedRowKey,
+      onRowClicked
+    ]
   );
 };
