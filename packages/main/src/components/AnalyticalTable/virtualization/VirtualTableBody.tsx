@@ -112,7 +112,7 @@ export const VirtualTableBody = (props) => {
         return item.minWidth ? item.minWidth : DEFAULT_COLUMN_WIDTH;
       })
       .reduce((acc, val) => acc + val, 0);
-    return tableWidth > aggregatedWidth ? null : aggregatedWidth;
+    return tableWidth > aggregatedWidth || tableWidth === 0 ? null : aggregatedWidth;
   }, [columns, tableWidth, resizedColumns]);
 
   const overscanCount = useMemo(() => {

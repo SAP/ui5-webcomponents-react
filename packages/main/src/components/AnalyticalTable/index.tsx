@@ -218,8 +218,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
-      <div className={tableContainerClasses.valueOf()} ref={headerRef}>
-        <div {...getTableProps()}>
+      <div className={tableContainerClasses.valueOf()}>
+        <div {...getTableProps()} ref={headerRef}>
           {headerGroups.map((headerGroup) => {
             let headerProps = {};
             if (headerGroup.getHeaderGroupProps) {
