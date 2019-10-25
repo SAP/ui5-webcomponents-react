@@ -13,9 +13,6 @@ before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
 
 jobs:
-  allow_failures:
-    - script: ./scripts/ci/setup-npm.sh
-    - script: ./scripts/ci/release-npm-next-tag.sh
   include:
     - stage: 'Test'
       script:
@@ -24,13 +21,13 @@ jobs:
     - stage: 'Build and Deploy'
       before_script:
         - git checkout ${TRAVIS_BRANCH}
-        - bash ./scripts/ci/version-bump-rc.sh
+        - bash ./scripts/ci/version-bump-snapshot.sh
       script: yarn build
       before_deploy:
         - bash ./scripts/ci/setup-npm.sh
       deploy:
         - provider: script
-          script: bash ./scripts/ci/release-npm-next-tag.sh
+          script: bash ./scripts/ci/release-snapshot.sh
           skip_cleanup: true
           on:
             branch: master
