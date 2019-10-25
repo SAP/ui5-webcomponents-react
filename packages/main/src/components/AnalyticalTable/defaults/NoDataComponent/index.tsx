@@ -7,6 +7,10 @@ import React from 'react';
 //   marginTop: '1rem'
 // };
 
-export const DefaultNoDataComponent = ({ noDataText, className }) => {
-  return <div className={className}>{noDataText}</div>;
+export const DefaultNoDataComponent = ({ noDataText, className, style }) => {
+  return (
+    <div className={className} style={style}>
+      {noDataText}
+    </div>
+  );
 };

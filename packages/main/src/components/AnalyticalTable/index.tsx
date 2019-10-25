@@ -107,6 +107,8 @@ export interface TableProps extends CommonProps {
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
+const ROW_HEIGHT_COMPACT = 32;
+const ROW_HEIGHT_COZY = 44;
 
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
   const {
@@ -129,14 +131,18 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     rowHeight,
     selectedRowKey,
     LoadingComponent,
-    onRowExpandChange
+    onRowExpandChange,
+    noDataText,
+    NoDataComponent,
+    visibleRows,
+    minRows,
+    isTreeTable
   } = props;
   const theme = useTheme() as JSSTheme;
-  const classes = useStyles({ ...props, ...theme });
+  const classes = useStyles({ rowHeight: props.rowHeight });
 
   const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected, selectedRowKey);
   const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
-
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
@@ -181,6 +187,24 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     tableContainerClasses.put(classes.modifiedRowHeight);
   }
 
+  const internalRowHeight = useMemo(() => {
+    let height = theme.contentDensity === ContentDensity.Compact ? ROW_HEIGHT_COMPACT : ROW_HEIGHT_COZY;
+    if (rowHeight) {
+      height = rowHeight;
+    }
+    return height;
+  }, [rowHeight, theme.contentDensity]);
+
+  const tableBodyHeight = useMemo(() => {
+    return internalRowHeight * Math.max(rows.length < visibleRows ? rows.length : visibleRows, minRows);
+  }, [internalRowHeight, rows.length, minRows]);
+
+  const noDataStyles = useMemo(() => {
+    return {
+      height: `${tableBodyHeight}px`
+    };
+  }, [tableBodyHeight]);
+
   const rowContainerStyling = useMemo(() => {
     return {
       gridTemplateColumns: makeTemplateColumns(headerGroups.map(({ headers }) => headers).flat(), resizedColumns)
@@ -212,7 +236,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     [tableState.groupBy, onGroup]
   );
 
-  const [headerRef, tableWidth] = useWindowResize(resizedColumns);
+  const [headerRef, tableWidth] = useWindowResize();
 
   return (
     <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
@@ -244,19 +268,34 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             );
           })}
           {loading && busyIndicatorEnabled && data.length > 0 && <LoadingComponent />}
-          {loading && data.length === 0 && <TablePlaceholder columns={columns.length} rows={props.minRows} />}
+          {loading && data.length === 0 && (
+            <TablePlaceholder
+              columns={columns.length}
+              rows={props.minRows}
+              style={noDataStyles}
+              rowHeight={internalRowHeight}
+            />
+          )}
+          {!loading && data.length === 0 && (
+            <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
+          )}
           {data.length > 0 && (
             <VirtualTableBody
-              {...props}
-              resizedColumns={resizedColumns}
-              tableWidth={tableWidth}
+              classes={classes}
               rowContainerStyling={rowContainerStyling}
+              onRowClicked={onRowClicked}
               prepareRow={prepareRow}
               rows={rows}
-              classes={classes}
-              onRowClicked={onRowClicked}
+              minRows={minRows}
+              columns={columns}
               selectedRow={selectedRowPath}
+              selectable={selectable}
               reactWindowRef={reactWindowRef}
+              tableWidth={tableWidth}
+              resizedColumns={resizedColumns}
+              isTreeTable={isTreeTable}
+              internalRowHeight={internalRowHeight}
+              tableBodyHeight={tableBodyHeight}
             />
           )}
         </div>

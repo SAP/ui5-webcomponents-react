@@ -1,15 +1,9 @@
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import '@ui5/webcomponents/dist/icons/navigation-down-arrow';
 import '@ui5/webcomponents/dist/icons/navigation-right-arrow';
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
-import { useTheme } from 'react-jss';
 import { FixedSizeList } from 'react-window';
-import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
 import { Cell } from './Cell';
-
-const ROW_HEIGHT_COMPACT = 32;
-const ROW_HEIGHT_COZY = 44;
 
 export const VirtualTableBody = (props) => {
   const {
@@ -18,35 +12,24 @@ export const VirtualTableBody = (props) => {
     onRowClicked,
     prepareRow,
     rows,
-    visibleRows,
     minRows,
     columns,
-    loading,
-    noDataText,
-    NoDataComponent,
     selectedRow,
     selectable,
     reactWindowRef,
     tableWidth,
     resizedColumns,
     isTreeTable,
-    onRowExpandChange
+    internalRowHeight,
+    tableBodyHeight
   } = props;
 
   const innerDivRef = useRef(null);
-  const theme: JSSTheme = useTheme() as JSSTheme;
 
   const VirtualTableItem = useCallback(
     (itemProps) => {
       const { style, index } = itemProps;
       const row = rows[index];
-      if (rows.length === 0 && !loading && index === 0) {
-        return (
-          <div style={style}>
-            <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} />
-          </div>
-        );
-      }
 
       const rowStyle = {
         ...style,
@@ -77,7 +60,7 @@ export const VirtualTableBody = (props) => {
         </div>
       );
     },
-    [classes, columns, rows, prepareRow, rowContainerStyling, selectedRow, selectable, onRowExpandChange, isTreeTable]
+    [classes, columns, rows, prepareRow, rowContainerStyling, selectedRow, selectable, isTreeTable]
   );
 
   useEffect(() => {
@@ -90,18 +73,8 @@ export const VirtualTableBody = (props) => {
     }
   }, [innerDivRef.current, selectable, classes.tbody, classes.selectable]);
 
-  const { listHeight, itemCount, rowHeight } = useMemo(() => {
-    let internalRowHeight = theme.contentDensity === ContentDensity.Compact ? ROW_HEIGHT_COMPACT : ROW_HEIGHT_COZY;
-    if (props.rowHeight) {
-      internalRowHeight = props.rowHeight;
-    }
-
-    return {
-      listHeight: internalRowHeight * Math.max(rows.length < visibleRows ? rows.length : visibleRows, minRows),
-      itemCount: Math.max(minRows, rows.length),
-      rowHeight: internalRowHeight
-    };
-  }, [rows, visibleRows, minRows, props.rowHeight, theme.contentDensity]);
+  const itemCount = Math.max(minRows, rows.length);
+  const overscanCount = Math.floor(itemCount / 2);
 
   const columnsWidth = useMemo(() => {
     const aggregatedWidth = columns
@@ -115,17 +88,13 @@ export const VirtualTableBody = (props) => {
     return tableWidth > aggregatedWidth || tableWidth === 0 ? null : aggregatedWidth;
   }, [columns, tableWidth, resizedColumns]);
 
-  const overscanCount = useMemo(() => {
-    return Math.floor(itemCount / 2);
-  }, [itemCount]);
-
   return (
     <FixedSizeList
       ref={reactWindowRef}
-      height={listHeight}
+      height={tableBodyHeight}
       width={columnsWidth}
       itemCount={itemCount}
-      itemSize={rowHeight}
+      itemSize={internalRowHeight}
       innerRef={innerDivRef}
       overscanCount={overscanCount}
     >

@@ -1,12 +1,11 @@
-import React, { FC } from 'react';
+import React, { CSSProperties, FC, useMemo } from 'react';
 import ContentLoader from 'react-content-loader';
 import { useTheme } from 'react-jss';
-import { ContentDensity } from '../../../..';
 import { JSSTheme } from '../../../../interfaces/JSSTheme';
 
 const getArrayOfLength = (len) => Array.from(Array(len).keys());
 
-const TableRow: FC<{ columns: number; y: number; row: number; singleRowHeight: number }> = ({ columns, y, row }) => {
+const TableRow: FC<{ columns: number; y: number; row: number }> = ({ columns, y, row }) => {
   let columnOffset = 0;
   return (
     <>
@@ -21,19 +20,27 @@ const TableRow: FC<{ columns: number; y: number; row: number; singleRowHeight: n
   );
 };
 
-export const TablePlaceholder: FC<{ columns: number; rows: number }> = (props) => {
-  const { columns, rows } = props;
+export const TablePlaceholder: FC<{ columns: number; rows: number; style: CSSProperties; rowHeight: number }> = (
+  props
+) => {
+  const { columns, rows, style, rowHeight } = props;
 
-  const { parameters, contentDensity } = useTheme() as JSSTheme;
+  const { parameters } = useTheme() as JSSTheme;
 
-  const singleRowHeight = (contentDensity === ContentDensity.Compact ? 2 : 2.75) * 16;
-
-  const height = rows * singleRowHeight;
+  const height = rows * rowHeight;
   const width = columns * 65;
+
+  const innerStyles = useMemo(() => {
+    return {
+      backgroundColor: parameters.sapUiListBackground,
+      width: '100%',
+      ...style
+    };
+  }, [style, parameters.sapUiListBackground]);
 
   return (
     <ContentLoader
-      style={{ backgroundColor: parameters.sapUiListBackground, width: '100%', height: `${height}px` }}
+      style={innerStyles}
       height={height}
       width={width}
       speed={2}
@@ -42,13 +49,7 @@ export const TablePlaceholder: FC<{ columns: number; rows: number }> = (props) =
       primaryOpacity={(parameters.sapUiContentDisabledOpacity as undefined) as number}
     >
       {getArrayOfLength(rows).map((_, index) => (
-        <TableRow
-          key={index}
-          columns={columns}
-          y={singleRowHeight * index + 8}
-          row={index}
-          singleRowHeight={singleRowHeight}
-        />
+        <TableRow key={index} columns={columns} y={rowHeight * index + rowHeight / 2} row={index} />
       ))}
     </ContentLoader>
   );

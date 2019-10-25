@@ -65,7 +65,7 @@ export const defaultTable = () => {
         busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
         sortable={boolean('sortable', true)}
         filterable={boolean('filterable', true)}
-        visibleRows={number('visibleRows', 15)}
+        visibleRows={number('visibleRows', 5)}
         minRows={number('minRows', 5)}
         groupable={boolean('groupable', true)}
         selectable={boolean('selectable', true)}

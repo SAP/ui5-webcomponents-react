@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 
-export const useWindowResize = (resizedColumns) => {
+export const useWindowResize = () => {
   const headerRef = useRef(null);
   const [tableWidth, setTableWidth] = useState(null);
-
   const onWindowResize = useCallback(() => {
     if (headerRef.current) {
       setTableWidth(headerRef.current.scrollWidth);
     }
   }, [setTableWidth, headerRef.current]);
+
+  const observer = useRef(new MutationObserver(onWindowResize));
 
   useEffect(() => {
     Device.resize.attachHandler(onWindowResize, null);
@@ -20,9 +21,17 @@ export const useWindowResize = (resizedColumns) => {
 
   useEffect(() => {
     if (headerRef.current) {
-      setTableWidth(headerRef.current.scrollWidth);
+      observer.current.observe(headerRef.current, {
+        attributes: true,
+        subtree: true,
+        childList: true
+      });
     }
-  }, [headerRef.current, setTableWidth, resizedColumns]);
+
+    return () => {
+      observer.current.disconnect();
+    };
+  }, [headerRef.current, observer.current]);
 
   return [headerRef, tableWidth];
 };
