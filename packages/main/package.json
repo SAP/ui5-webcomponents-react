@@ -22,6 +22,7 @@
     "@ui5/webcomponents": "1.0.0-rc.4",
     "@ui5/webcomponents-react-base": "0.6.0",
     "lodash.debounce": "^4.0.8",
+    "react-content-loader": "^4.3.2",
     "react-table": "7.0.0-beta.12",
     "react-toastify": "^5.0.1",
     "react-window": "^1.8.5",

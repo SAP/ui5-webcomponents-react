@@ -4,7 +4,7 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React, { CSSProperties, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { Resizer } from '../Resizer';
+import { Resizer } from './Resizer';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
 import '@ui5/webcomponents/dist/icons/filter';

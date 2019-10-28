@@ -40,22 +40,14 @@ export const Cell: FC<Props> = ({ row, cell, columnIndex, classes, isTreeTable }
     } else {
       paddingLeft = columnIndex === 0 ? `calc(${getPadding(row.path.length)} + 2rem)` : 0;
     }
-    const styles: CSSProperties = {
+    const style: CSSProperties = {
       paddingLeft
     };
 
     return (
       <>
         {columnIndex === 0 && row.canExpand ? (
-          <span
-            {...row.getExpandedToggleProps({
-              style: styles,
-              onClick: (e) => {
-                e.stopPropagation();
-                row.toggleExpanded();
-              }
-            })}
-          >
+          <span {...row.getExpandedToggleProps({ style })}>
             <Icon
               src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
               className={classes.tableGroupExpandCollapseIcon}
@@ -70,13 +62,13 @@ export const Cell: FC<Props> = ({ row, cell, columnIndex, classes, isTreeTable }
   }, [cell, classes, row, columnIndex]);
 
   const grouped = useMemo(() => {
-    const styles: CSSProperties = {};
+    const style: CSSProperties = {};
     if (cell.column.hAlign && (cell.column.hAlign !== TextAlign.Left || cell.column.hAlign !== TextAlign.Begin)) {
-      styles.marginRight = 'auto';
+      style.marginRight = 'auto';
     }
     return (
       <>
-        <span {...row.getExpandedToggleProps({ style: styles })}>
+        <span {...row.getExpandedToggleProps({ style })}>
           <Icon
             src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
             className={classes.tableGroupExpandCollapseIcon}

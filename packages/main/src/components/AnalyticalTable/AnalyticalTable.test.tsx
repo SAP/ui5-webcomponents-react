@@ -177,4 +177,20 @@ describe('AnalyticalTable', () => {
 
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  test('Loading - Placeholder', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={[]} columns={columns} loading visibleRows={15} minRows={5} />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Loading - Loader', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} loading visibleRows={15} minRows={5} />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
 });

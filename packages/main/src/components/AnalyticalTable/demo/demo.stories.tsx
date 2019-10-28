@@ -16,7 +16,8 @@ const columns = [
     Header: 'Age',
     accessor: 'age',
     hAlign: TextAlign.End,
-    disableGrouping: true
+    disableGrouping: true,
+    className: 'superCustomClass'
   },
   {
     Header: 'Friend Name',
@@ -65,13 +66,14 @@ export const defaultTable = () => {
         busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
         sortable={boolean('sortable', true)}
         filterable={boolean('filterable', true)}
-        visibleRows={number('visibleRows', 15)}
+        visibleRows={number('visibleRows', 5)}
         minRows={number('minRows', 5)}
         groupable={boolean('groupable', true)}
         selectable={boolean('selectable', true)}
         onRowSelected={action('onRowSelected')}
         onSort={action('onSort')}
         onGroup={action('onGroup')}
+        onRowExpandChange={action('onRowExpandChange')}
         groupBy={array('groupBy', [])}
         rowHeight={number('rowHeight', 60)}
         selectedRowKey={text('selectedRowKey', `row_5`)}
@@ -99,6 +101,7 @@ export const treeTable = () => {
       selectable={boolean('selectable', true)}
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
+      onRowExpandChange={action('onRowExpandChange')}
       subRowsKey={text('subRowsKey', 'subRows')}
       selectedRowKey={text('selectedRowKey', `row_5`)}
       isTreeTable={boolean('isTreeTable', true)}
