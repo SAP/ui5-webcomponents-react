@@ -21,7 +21,8 @@ export const VirtualTableBody = (props) => {
     resizedColumns,
     isTreeTable,
     internalRowHeight,
-    tableBodyHeight
+    tableBodyHeight,
+    visibleRows
   } = props;
 
   const innerDivRef = useRef(null);
@@ -76,7 +77,7 @@ export const VirtualTableBody = (props) => {
   }, [innerDivRef.current, selectable, classes.tbody, classes.selectable]);
 
   const itemCount = Math.max(minRows, rows.length);
-  const overscanCount = Math.floor(itemCount / 2);
+  const overscanCount = Math.floor(visibleRows / 2);
 
   const columnsWidth = useMemo(() => {
     const aggregatedWidth = columns

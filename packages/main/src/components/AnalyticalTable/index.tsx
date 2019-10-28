@@ -296,6 +296,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               isTreeTable={isTreeTable}
               internalRowHeight={internalRowHeight}
               tableBodyHeight={tableBodyHeight}
+              visibleRows={visibleRows}
             />
           )}
         </div>
