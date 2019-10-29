@@ -6,7 +6,7 @@ export const useWindowResize = () => {
   const [tableWidth, setTableWidth] = useState(0);
   const onWindowResize = useCallback(() => {
     if (headerRef.current) {
-      setTableWidth(headerRef.current.scrollWidth);
+      setTableWidth(headerRef.current.getBoundingClientRect().width);
     }
   }, [setTableWidth, headerRef.current]);
 
