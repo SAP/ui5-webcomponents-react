@@ -36,4 +36,15 @@ export const setupMatchMedia = () => {
   };
 };
 
+export const setupResizeObserver = () => {
+  // @ts-ignore
+  window.ResizeObserver = function ResizeObserver() {
+    // @ts-ignore
+    this.observe = () => {};
+    // @ts-ignore
+    this.disconnect = () => {};
+  };
+};
+
 setupMatchMedia();
+setupResizeObserver();
