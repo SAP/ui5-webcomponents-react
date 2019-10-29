@@ -3,6 +3,7 @@ import jssSerializer from '@shared/tests/serializer/jss-snapshot-serializer';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { createSerializer } from 'enzyme-to-json';
+import ResizeObserver from 'resize-observer-polyfill';
 
 process.env.NODE_ENV = 'test';
 process.env.BABEL_ENV = 'test';
@@ -38,12 +39,7 @@ export const setupMatchMedia = () => {
 
 export const setupResizeObserver = () => {
   // @ts-ignore
-  window.ResizeObserver = function ResizeObserver() {
-    // @ts-ignore
-    this.observe = () => {};
-    // @ts-ignore
-    this.disconnect = () => {};
-  };
+  window.ResizeObserver = ResizeObserver;
 };
 
 setupMatchMedia();
