@@ -45,9 +45,14 @@ export const useTableRowStyling = (classes, resizedColumns, selectable, selected
         if (selected) {
           className += ` ${classes.selectedRow}`;
         }
+        if (selectable) {
+          return {
+            className,
+            onClick: onRowClicked(row)
+          };
+        }
         return {
-          className,
-          onClick: onRowClicked(row)
+          className
         };
       });
       return instance;
