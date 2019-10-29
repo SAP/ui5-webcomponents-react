@@ -47,7 +47,7 @@ export const renderDemo = () => {
         selectedSectionId={text('selectedSectionId', '1')}
         onSelectedSectionChanged={action('onSelectedSectionChanged')}
         noHeader={boolean('noHeader', false)}
-        alwaysShowContentHeader={boolean('alwaysShowContentHeader', false)}
+        alwaysShowContentHeader={boolean('alwaysShowContentHeader', true)}
         showTitleInHeaderContent={boolean('showTitleInHeaderContent', true)}
         style={{ height: '700px' }}
       >

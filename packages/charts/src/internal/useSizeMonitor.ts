@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import ResizeObserver from 'resize-observer-polyfill';
 
 export const useSizeMonitor = (props, container) => {
   const { height: heightProp, width: widthProp, minHeight, minWidth } = props;
