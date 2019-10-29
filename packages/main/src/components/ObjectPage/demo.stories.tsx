@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
@@ -26,6 +26,15 @@ const renderHeaderContent = () => (
   </>
 );
 export const renderDemo = () => {
+  const [firstSectionHeight, setFirstSectionHeight] = useState('200px');
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('Height updated');
+      // setFirstSectionHeight('200px');
+    }, 5000);
+  }, []);
+
   return (
     <div style={{ width: 'calc(100% - 1rem)', height: 'calc(100% - 1rem)', position: 'relative', marginTop: '2rem' }}>
       <ObjectPage
@@ -47,12 +56,12 @@ export const renderDemo = () => {
         selectedSectionId={text('selectedSectionId', '1')}
         onSelectedSectionChanged={action('onSelectedSectionChanged')}
         noHeader={boolean('noHeader', false)}
-        alwaysShowContentHeader={boolean('alwaysShowContentHeader', false)}
+        alwaysShowContentHeader={boolean('alwaysShowContentHeader', true)}
         showTitleInHeaderContent={boolean('showTitleInHeaderContent', true)}
         style={{ height: '700px' }}
       >
         <ObjectPageSection title="Test 1" id="1">
-          <div style={{ height: '200px' }}>Test1</div>
+          <div style={{ height: firstSectionHeight }}>Test1</div>
         </ObjectPageSection>
         <ObjectPageSection title="Test 2" id="2">
           <div style={{ height: '800px' }}>Test2</div>

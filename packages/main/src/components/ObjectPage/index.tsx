@@ -30,7 +30,6 @@ import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import '@ui5/webcomponents/dist/icons/navigation-up-arrow.js';
 import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
-import ResizeObserver from 'resize-observer-polyfill';
 import '@ui5/webcomponents/dist/icons/navigation-down-arrow.js';
 
 export interface ObjectPagePropTypes extends CommonProps {
