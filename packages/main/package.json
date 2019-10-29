@@ -25,8 +25,7 @@
     "react-content-loader": "^4.3.2",
     "react-table": "7.0.0-beta.12",
     "react-toastify": "^5.0.1",
-    "react-window": "^1.8.5",
-    "resize-observer-polyfill": "^1.5.1"
+    "react-window": "^1.8.5"
   },
   "devDependencies": {
     "diff": "^4.0.1",

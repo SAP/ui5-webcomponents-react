@@ -23,15 +23,14 @@ import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
-import { Button } from '../../webComponents/Button';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { CollapsedAvatar } from './CollapsedAvatar';
 import { ObjectPageScroller } from './scroll/ObjectPageScroller';
-import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import '@ui5/webcomponents/dist/icons/navigation-up-arrow.js';
 import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
+import '@ui5/webcomponents/dist/icons/navigation-down-arrow.js';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
@@ -101,9 +100,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const innerScrollBar: RefObject<HTMLDivElement> = useRef();
   const contentScrollContainer: RefObject<HTMLDivElement> = useRef();
   const collapsedHeaderFiller: RefObject<HTMLDivElement> = useRef();
-  const expandedHeaderHeight = useRef(0);
+  const lastScrolledContainer = useRef();
   const hideHeaderButtonPressed = useRef(false);
-  const stableOnScrollRef = useRef(null);
+  const stableContentOnScrollRef = useRef(null);
+  const stableBarOnScrollRef = useRef(null);
   const scroller = useRef(null);
   const [scrollbarWidth, setScrollbarWidth] = useState(defaultScrollbarWidth);
 
@@ -139,7 +139,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       requestAnimationFrame(() => {
         if (!objectPage.current) {
           // in case componentWillUnmount didn´t fire
-          window.removeEventListener('resize', adjustDummyDivHeight);
+          observer.current.disconnect();
           return;
         }
 
@@ -167,6 +167,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     });
   };
 
+  const observer = useRef(new ResizeObserver(adjustDummyDivHeight));
+
   const renderAnchorBar = () => {
     return (
       <section className={classes.anchorBar} role="navigation">
@@ -190,7 +192,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const changeHeader = useCallback(() => {
     hideHeaderButtonPressed.current = true;
-    contentContainer.current.removeEventListener('scroll', onScroll);
 
     if (!expandHeaderActive && collapsedHeader) {
       setExpandHeaderActive(true);
@@ -342,9 +343,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   // register resize handler
   useEffect(() => {
-    window.addEventListener('resize', adjustDummyDivHeight);
-    return window.removeEventListener('resize', adjustDummyDivHeight);
-  }, []);
+    observer.current.observe(contentScrollContainer.current);
+    return () => observer.current.disconnect();
+  }, [adjustDummyDivHeight]);
 
   useLayoutEffect(() => {
     if (!isMounted) return;
@@ -376,65 +377,142 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     }
   }, [selectedSectionIndex]);
 
-  const getProportionateScrollTop = useCallback(
-    (base) => {
-      const contentContainerHeightFull = contentScrollContainer.current.getBoundingClientRect().height;
-      const scrollBarHeight = innerScrollBar.current.getBoundingClientRect().height;
+  const getProportionateScrollTop = useCallback((activeContainer, passiveContainer, base) => {
+    const activeHeight = activeContainer.current.getBoundingClientRect().height;
+    const passiveHeight = passiveContainer.current.getBoundingClientRect().height;
 
-      return (base / contentContainerHeightFull) * scrollBarHeight;
-    },
-    [contentScrollContainer.current, innerScrollBar.current]
-  );
+    return (base / activeHeight) * passiveHeight;
+  }, []);
 
-  const onScroll = useMemo(() => {
-    if (!contentContainer.current) return;
-
-    if (stableOnScrollRef.current) {
-      contentContainer.current.removeEventListener('scroll', stableOnScrollRef.current);
+  const bindScrollEvent = useCallback((scrollContainer, handler) => {
+    if (scrollContainer.current && handler.current) {
+      scrollContainer.current.addEventListener('scroll', handler.current, { passive: true });
     }
+  }, []);
 
-    stableOnScrollRef.current = function innerOnScroll(e) {
-      requestAnimationFrame(() => {
-        if (noHeader || alwaysShowContentHeader) {
-          scrollBar.current.scrollTop = getProportionateScrollTop(e.target.scrollTop);
-          scroller.current.scroll(e);
-          return;
-        }
+  const removeScrollEvent = useCallback((scrollContainer, handler) => {
+    if (scrollContainer.current && handler.current) {
+      scrollContainer.current.removeEventListener('scroll', handler.current);
+    }
+  }, []);
 
+  const checkForHeaderCollapse = useCallback(
+    // activeContainer contains the scrollContainer thats being actively scrolled
+    // passiveContainer contains the container that needs to reflect activeContainers scroll position
+    (activeContainer, activeInnerContainer, passiveContainer, passiveInnerContainer, e) => {
+      if (noHeader || alwaysShowContentHeader) {
+        passiveContainer.current.scrollTop = alwaysShowContentHeader
+          ? e.target.scrollTop
+          : getProportionateScrollTop(activeContainer, passiveContainer, e.target.scrollTop);
+        scroller.current.scroll(e);
+      } else {
         if (expandHeaderActive) {
           setExpandHeaderActive(false);
         }
-        const innerHeaderHeight = innerHeader.current.getBoundingClientRect().height;
-        const threshold = collapsedHeader ? expandedHeaderHeight.current + 4 : innerHeaderHeight - 45;
-        const shouldBeCollapsed = e.target.scrollTop > threshold;
+
+        const threshold = 64;
+        const baseScrollValue =
+          activeContainer.current === contentContainer.current
+            ? e.target.scrollTop
+            : getProportionateScrollTop(activeInnerContainer, passiveInnerContainer, e.target.scrollTop);
+
+        const shouldBeCollapsed = baseScrollValue > threshold;
         if (collapsedHeader !== shouldBeCollapsed) {
-          // contentContainer.current.removeEventListener('scroll', onScroll);
+          lastScrolledContainer.current = activeContainer.current;
           if (shouldBeCollapsed) {
-            expandedHeaderHeight.current = innerHeaderHeight - 45;
-            collapsedHeaderFiller.current.style.height = `${expandedHeaderHeight.current}px`;
+            collapsedHeaderFiller.current.style.height = `${64}px`;
           } else {
             collapsedHeaderFiller.current.style.height = `${0}px`;
           }
+          lastScrolledContainer.current = activeContainer.current;
+          removeScrollEvent(contentContainer, stableContentOnScrollRef);
+          removeScrollEvent(scrollBar, stableBarOnScrollRef);
           setCollapsedHeader(shouldBeCollapsed);
         } else {
-          scrollBar.current.scrollTop = collapsedHeader
-            ? e.target.scrollTop
-            : getProportionateScrollTop(e.target.scrollTop);
+          const newScrollValue =
+            collapsedHeader && e.target.scrollTop > threshold + 50
+              ? e.target.scrollTop
+              : getProportionateScrollTop(activeInnerContainer, passiveInnerContainer, e.target.scrollTop);
+
+          passiveContainer.current.scrollTop = newScrollValue;
           scroller.current.scroll(e);
         }
+      }
+    },
+    [
+      innerHeader.current,
+      collapsedHeader,
+      contentContainer.current,
+      collapsedHeaderFiller.current,
+      setCollapsedHeader,
+      scrollBar.current,
+      scroller.current
+    ]
+  );
+
+  useEffect(() => {
+    if (!isMounted) return;
+    adjustDummyDivHeight().then(() => {
+      if (!hideHeaderButtonPressed.current) {
+        removeScrollEvent(contentContainer, stableContentOnScrollRef);
+        removeScrollEvent(scrollBar, stableBarOnScrollRef);
+        if (lastScrolledContainer.current === contentContainer.current) {
+          contentContainer.current.scrollTop = collapsedHeader ? 64 + 2 : 64 - 2;
+        } else {
+          contentContainer.current.scrollTop = collapsedHeader ? 64 + 2 : 64 - 2;
+          scrollBar.current.scrollTop = getProportionateScrollTop(
+            contentScrollContainer,
+            innerScrollBar,
+            contentContainer.current.scrollTop
+          );
+        }
+        requestAnimationFrame(() => {
+          bindScrollEvent(contentContainer, stableContentOnScrollRef);
+          bindScrollEvent(scrollBar, stableBarOnScrollRef);
+        });
+      }
+      hideHeaderButtonPressed.current = false;
+    });
+  }, [collapsedHeader]);
+
+  useEffect(() => {
+    if (!contentContainer.current) return;
+
+    removeScrollEvent(contentContainer, stableContentOnScrollRef);
+    removeScrollEvent(scrollBar, stableBarOnScrollRef);
+
+    stableContentOnScrollRef.current = function innerOnScroll(e) {
+      requestAnimationFrame(() => {
+        removeScrollEvent(scrollBar, stableBarOnScrollRef);
+        checkForHeaderCollapse(contentContainer, contentScrollContainer, scrollBar, innerScrollBar, e);
+        requestAnimationFrame(() => {
+          bindScrollEvent(scrollBar, stableBarOnScrollRef);
+        });
       });
     };
 
-    contentContainer.current.addEventListener('scroll', stableOnScrollRef.current);
+    stableBarOnScrollRef.current = function innerBarOnScroll(e) {
+      requestAnimationFrame(() => {
+        removeScrollEvent(contentContainer, stableContentOnScrollRef);
+        checkForHeaderCollapse(scrollBar, innerScrollBar, contentContainer, contentScrollContainer, e);
 
-    return stableOnScrollRef.current;
+        requestAnimationFrame(() => {
+          bindScrollEvent(contentContainer, stableContentOnScrollRef);
+        });
+      });
+    };
+
+    bindScrollEvent(contentContainer, stableContentOnScrollRef);
+    bindScrollEvent(scrollBar, stableBarOnScrollRef);
   }, [
     noHeader,
+    checkForHeaderCollapse,
     alwaysShowContentHeader,
     scrollBar.current,
+    innerScrollBar.current,
     innerHeader.current,
     contentContainer.current,
-    expandedHeaderHeight.current,
+    contentScrollContainer.current,
     collapsedHeaderFiller.current,
     collapsedHeader,
     setCollapsedHeader,
@@ -442,20 +520,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     getProportionateScrollTop
   ]);
 
-  useLayoutEffect(() => {
-    if (!isMounted) return;
-    adjustDummyDivHeight().then(() => {
-      if (!hideHeaderButtonPressed.current) {
-        const innerHeaderHeight = innerHeader.current.getBoundingClientRect().height;
-        const base = collapsedHeader ? expandedHeaderHeight.current + 5 : innerHeaderHeight - 50;
-        contentContainer.current.scrollTop = base;
-        scrollBar.current.scrollTop = collapsedHeader ? base : getProportionateScrollTop(base);
-      }
-      hideHeaderButtonPressed.current = false;
-    });
-  }, [collapsedHeader]);
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!isMounted) return;
     adjustDummyDivHeight();
   }, [expandHeaderActive]);
