@@ -23,7 +23,7 @@ import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
-import { Button } from '../../webComponents/Button';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { CollapsedAvatar } from './CollapsedAvatar';
 import { ObjectPageScroller } from './scroll/ObjectPageScroller';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
@@ -31,6 +31,7 @@ import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import '@ui5/webcomponents/dist/icons/navigation-up-arrow.js';
 import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
 import ResizeObserver from 'resize-observer-polyfill';
+import '@ui5/webcomponents/dist/icons/navigation-down-arrow.js';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
@@ -475,7 +476,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     });
   }, [collapsedHeader]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (!contentContainer.current) return;
 
     removeScrollEvent(contentContainer, stableContentOnScrollRef);
