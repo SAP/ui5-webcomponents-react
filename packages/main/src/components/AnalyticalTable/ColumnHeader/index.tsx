@@ -132,7 +132,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
           onGroupBy={onGroupBy}
         />
       ) : (
-        openBy
+        <div style={{ ...innerStyle, display: 'inline-block', cursor: 'auto' }}>{openBy}</div>
       )}
       {isResizable && <Resizer {...props} />}
     </div>
