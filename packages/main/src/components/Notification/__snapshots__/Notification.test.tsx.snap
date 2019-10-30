@@ -15,10 +15,8 @@ exports[`Notification Default 1`] = `
     <div
       class="Notification--header-"
     >
-      <ui5-title
-        class="Notification--titleEllipsised-"
-        level="H6"
-        wrap="true"
+      <div
+        class="Notification--title- Notification--titleEllipsised-"
       />
       <ui5-button
         class="Notification--closeButton-"
@@ -89,14 +87,11 @@ exports[`Notification Long Title and Description 1`] = `
     <div
       class="Notification--header-"
     >
-      <ui5-title
-        class="Notification--titleEllipsised-"
-        level="H6"
-        title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        wrap="true"
+      <div
+        class="Notification--title- Notification--titleEllipsised-"
       >
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-      </ui5-title>
+      </div>
       <ui5-button
         class="Notification--closeButton-"
         design="Transparent"
@@ -167,14 +162,11 @@ exports[`Notification Long Title and Description w/o truncation 1`] = `
     <div
       class="Notification--header-"
     >
-      <ui5-title
+      <div
         class="Notification--title-"
-        level="H6"
-        title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        wrap="true"
       >
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-      </ui5-title>
+      </div>
       <ui5-button
         class="Notification--closeButton-"
         design="Transparent"
@@ -249,14 +241,11 @@ exports[`Notification w/ Props 1`] = `
         class="Notification--error- Notification--semanticIcon-"
         src="message-error"
       />
-      <ui5-title
-        class="Notification--titleEllipsised-"
-        level="H6"
-        title="title"
-        wrap="true"
+      <div
+        class="Notification--title- Notification--titleEllipsised-"
       >
         title
-      </ui5-title>
+      </div>
       <ui5-button
         class="Notification--closeButton-"
         design="Transparent"
@@ -360,10 +349,8 @@ exports[`Notification w/ custom Avatar 1`] = `
     <div
       class="Notification--header-"
     >
-      <ui5-title
-        class="Notification--titleEllipsised-"
-        level="H6"
-        wrap="true"
+      <div
+        class="Notification--title- Notification--titleEllipsised-"
       />
       <ui5-button
         class="Notification--closeButton-"

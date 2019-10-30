@@ -38,6 +38,10 @@ const style = ({ parameters }: JSSTheme) => ({
     paddingRight: '40px'
   },
   title: {
+    color: parameters.sapUiGroupTitleTextColor,
+    fontFamily: parameters.sapUiFontHeaderFamily,
+    textShadow: parameters.sapUiShadowText,
+    fontSize: '14px',
     paddingRight: '40px'
   },
   closeButton: {

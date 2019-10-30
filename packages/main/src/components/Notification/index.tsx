@@ -1,3 +1,7 @@
+import '@ui5/webcomponents/dist/icons/message-error';
+import '@ui5/webcomponents/dist/icons/message-warning';
+import '@ui5/webcomponents/dist/icons/message-success';
+import '@ui5/webcomponents/dist/icons/decline';
 import React, { FC, forwardRef, ReactNode, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -8,8 +12,6 @@ import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { Priority } from '@ui5/webcomponents-react/lib/Priority';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
@@ -39,6 +41,8 @@ export interface NotificationProptypes extends CommonProps {
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Notification' });
+
+const WEIGHT = { None: 0, Low: 1, Medium: 2, High: 3 };
 
 const Notification: FC<NotificationProptypes> = forwardRef(
   (props: NotificationProptypes, ref: RefObject<HTMLDivElement>) => {
@@ -99,11 +103,11 @@ const Notification: FC<NotificationProptypes> = forwardRef(
 
     const handleClose = useCallback(() => {
       toggleVisible(false);
-    }, [visibleState, visible]);
+    }, []);
 
     const handleNotificationClick = useCallback(
       (e) => {
-        if (e.target.nodeName !== 'UI5-BUTTON' && e.target.nodeName !== 'UI5-ICON' && !!onClick) {
+        if (e.target.nodeName !== 'UI5-BUTTON' && e.target.nodeName !== 'UI5-ICON' && typeof onClick === 'function') {
           onClick(e);
         }
       },
@@ -112,7 +116,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
 
     const handleShowNotificationGroup = useCallback(() => {
       toggleChildrenVisible(!showChildren);
-    }, [children, showChildren]);
+    }, [showChildren]);
 
     const handleShowMore = useCallback(() => {
       toggleShowMore(!showMore);
@@ -137,18 +141,17 @@ const Notification: FC<NotificationProptypes> = forwardRef(
         borderRadius: borderRadius(),
         cursor
       };
-    }, [onClick, children, showChildren, isChild, isLastChild]);
+    }, [onClick, children, showChildren, isChild, isLastChild, style]);
 
     const contentStyles = useMemo(() => {
       return { padding: footer ? '1rem 1rem 0.5rem 1.25rem' : '1rem 1rem 1rem 1.25rem' };
     }, [footer]);
 
     const setAutoPriority = useMemo(() => {
-      const weight = { None: 0, Low: 1, Medium: 2, High: 3 };
       if (priority === Priority.High) return priority;
       const priorityArray = React.Children.map(children, (item) => {
         if (!React.isValidElement(item)) return null;
-        return { weight: weight[item.props.priority], priority: item.props.priority };
+        return { weight: WEIGHT[item.props.priority], priority: item.props.priority };
       });
       if (Array.isArray(priorityArray)) {
         const highestPriority = priorityArray.reduce((prev, current) =>
@@ -210,7 +213,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
           className: `${item.props.className} ${classes.notificationContainerChild}`
         });
       });
-    }, [children]);
+    }, [children, classes.notificationContainerChild]);
 
     const indicatorStyles = useMemo(() => {
       const borderRadius = () => {
@@ -243,14 +246,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
           <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
             <div className={classes.header}>
               {renderSemanticIcon}
-              <Title
-                level={TitleLevel.H6}
-                className={truncate ? classes.titleEllipsised : classes.title}
-                tooltip={title}
-                wrap
-              >
-                {title}
-              </Title>
+              <div className={`${classes.title} ${truncate ? classes.titleEllipsised : ''}`}>{title}</div>
               {showCloseButton && (
                 <Button
                   className={classes.closeButton}
