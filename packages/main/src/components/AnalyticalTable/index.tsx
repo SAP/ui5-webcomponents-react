@@ -76,6 +76,7 @@ export interface TableProps extends CommonProps {
   busyIndicatorEnabled?: boolean;
   noDataText?: string;
   rowHeight?: number;
+  alternateRowColor?: boolean;
 
   // features
 
@@ -136,7 +137,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     NoDataComponent,
     visibleRows,
     minRows,
-    isTreeTable
+    isTreeTable,
+    alternateRowColor
   } = props;
   const theme = useTheme() as JSSTheme;
   const classes = useStyles({ rowHeight: props.rowHeight });
@@ -162,7 +164,15 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableStyling(classes),
     useTableHeaderGroupStyling(classes, resizedColumns),
     useTableHeaderStyling(classes, onColumnSizeChanged),
-    useTableRowStyling(classes, resizedColumns, selectable, selectedRowPath, selectedRowKey, onRowClicked),
+    useTableRowStyling(
+      classes,
+      resizedColumns,
+      selectable,
+      selectedRowPath,
+      selectedRowKey,
+      onRowClicked,
+      alternateRowColor
+    ),
     useTableCellStyling(classes, rowHeight),
     useToggleRowExpand(onRowExpandChange, isTreeTable),
     ...tableHooks
@@ -297,6 +307,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               internalRowHeight={internalRowHeight}
               tableBodyHeight={tableBodyHeight}
               visibleRows={visibleRows}
+              alternateRowColor={alternateRowColor}
             />
           )}
         </div>
@@ -327,7 +338,8 @@ AnalyticalTable.defaultProps = {
   subRowsKey: 'subRows',
   onGroup: () => {},
   onRowExpandChange: () => {},
-  isTreeTable: false
+  isTreeTable: false,
+  alternateRowColor: false
 };
 
 export { AnalyticalTable };
