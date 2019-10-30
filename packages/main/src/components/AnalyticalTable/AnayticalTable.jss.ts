@@ -63,6 +63,9 @@ const styles = ({ parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiListBackground,
     color: parameters.sapUiListTextColor
   },
+  alternateRowColor: {
+    backgroundColor: parameters.sapUiListHeaderBackground
+  },
   tableGroupHeader: {
     '&$tr': {
       backgroundColor: `${parameters.sapUiListTableGroupHeaderBackground} !important`,

@@ -1,6 +1,6 @@
 import { mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import React from 'react';
 
 const columns = [
   {
@@ -189,6 +189,22 @@ describe('AnalyticalTable', () => {
   test('Loading - Loader', () => {
     const wrapper = mountThemedComponent(
       <AnalyticalTable title="Table Title" data={data} columns={columns} loading visibleRows={15} minRows={5} />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Alternate Row Color', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('custom row height', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} rowHeight={60} />
     );
 
     expect(wrapper.render()).toMatchSnapshot();

@@ -22,7 +22,8 @@ export const VirtualTableBody = (props) => {
     isTreeTable,
     internalRowHeight,
     tableBodyHeight,
-    visibleRows
+    visibleRows,
+    alternateRowColor
   } = props;
 
   const innerDivRef = useRef(null);
@@ -63,7 +64,7 @@ export const VirtualTableBody = (props) => {
         </div>
       );
     },
-    [classes, rowContainerStyling, columns, prepareRow, isTreeTable, selectedRowPath, selectedRow]
+    [classes, rowContainerStyling, columns, prepareRow, isTreeTable, selectedRowPath, selectedRow, alternateRowColor]
   );
 
   useEffect(() => {

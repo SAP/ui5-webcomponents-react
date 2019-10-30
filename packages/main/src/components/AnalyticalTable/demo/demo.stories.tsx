@@ -64,6 +64,7 @@ export const defaultTable = () => {
         columns={columns}
         loading={boolean('loading', false)}
         busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
+        alternateRowColor={boolean('alternateRowColor', false)}
         sortable={boolean('sortable', true)}
         filterable={boolean('filterable', true)}
         visibleRows={number('visibleRows', 5)}

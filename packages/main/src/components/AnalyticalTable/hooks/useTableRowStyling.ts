@@ -1,6 +1,14 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 
-export const useTableRowStyling = (classes, resizedColumns, selectable, selectedRow, selectedRowKey, onRowClicked) => {
+export const useTableRowStyling = (
+  classes,
+  resizedColumns,
+  selectable,
+  selectedRow,
+  selectedRowKey,
+  onRowClicked,
+  alternateRowColor
+) => {
   const prevSelectedRow = useRef(null);
   const prevSelectedRowKey = useRef(null);
 
@@ -45,6 +53,13 @@ export const useTableRowStyling = (classes, resizedColumns, selectable, selected
         if (selected) {
           className += ` ${classes.selectedRow}`;
         }
+
+        if (alternateRowColor) {
+          if (row.index % 2 === 1) {
+            className += ` ${classes.alternateRowColor}`;
+          }
+        }
+
         if (selectable) {
           return {
             className,
@@ -61,11 +76,13 @@ export const useTableRowStyling = (classes, resizedColumns, selectable, selected
       classes.tr,
       classes.tableGroupHeader,
       classes.selectedRow,
+      classes.alternateRowColor,
       resizedColumns,
       selectable,
       selectedRow,
       selectedRowKey,
-      onRowClicked
+      onRowClicked,
+      alternateRowColor
     ]
   );
 };
