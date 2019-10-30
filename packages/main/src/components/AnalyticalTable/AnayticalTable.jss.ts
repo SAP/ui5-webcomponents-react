@@ -38,6 +38,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   tbody: {
     position: 'relative',
     zIndex: 0,
+    overflowX: 'auto',
     backgroundColor: parameters.sapUiListBackground,
     '&$selectable $tr:hover': {
       backgroundColor: parameters.sapUiListHoverBackground
@@ -62,6 +63,9 @@ const styles = ({ parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiListBackground,
     color: parameters.sapUiListTextColor
   },
+  alternateRowColor: {
+    backgroundColor: parameters.sapUiListHeaderBackground
+  },
   tableGroupHeader: {
     '&$tr': {
       backgroundColor: `${parameters.sapUiListTableGroupHeaderBackground} !important`,
@@ -74,9 +78,10 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   tableGroupExpandCollapseIcon: {
     color: parameters.sapUiContentIconColor,
-    height: '2rem',
-    width: '2rem',
-    fontSize: '0.75rem'
+    height: '0.75rem',
+    width: '0.75rem',
+    padding: '0.625rem',
+    display: 'block'
   },
   selectable: {},
   selectedRow: {},
@@ -92,12 +97,15 @@ const styles = ({ parameters }: JSSTheme) => ({
     padding: '0 0.5rem',
     '&:first-child': {
       borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
-    }
+    },
+    overflow: 'hidden',
+    position: 'relative'
   },
   tableCellContent: {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    alignItems: 'center'
   },
   noDataContainer: {
     display: 'flex',
@@ -126,6 +134,12 @@ const styles = ({ parameters }: JSSTheme) => ({
     },
     '& $tableCell': {
       height: '2rem'
+    }
+  },
+
+  modifiedRowHeight: {
+    '& $tableCell': {
+      height: (props) => `${props.rowHeight}px`
     }
   }
 });

@@ -4,14 +4,17 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React, { CSSProperties, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { Resizer } from '../Resizer';
+import { Resizer } from './Resizer';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
+import '@ui5/webcomponents/dist/icons/filter';
+import '@ui5/webcomponents/dist/icons/group-2';
+import '@ui5/webcomponents/dist/icons/sort-descending';
+import '@ui5/webcomponents/dist/icons/sort-ascending';
 
 export interface ColumnHeaderProps {
   defaultSortDesc: boolean;
   onFilteredChange: (event: Event) => void;
-  onGroupBy: (strArr: string[]) => void;
   children: ReactNode | ReactNodeArray;
   grouping: string;
   className: string;
@@ -22,6 +25,7 @@ export interface ColumnHeaderProps {
   filterable: boolean;
   isLastColumn?: boolean;
   onSort?: (e: Event) => void;
+  onGroupBy?: (e: Event) => void;
 }
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -59,7 +63,18 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
 export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   const classes = useStyles(props);
 
-  const { children, column, className, style, groupable, sortable, filterable, isLastColumn, onSort } = props;
+  const {
+    children,
+    column,
+    className,
+    style,
+    groupable,
+    sortable,
+    filterable,
+    isLastColumn,
+    onSort,
+    onGroupBy
+  } = props;
 
   const openBy = useMemo(() => {
     if (!column) return null;
@@ -109,14 +124,15 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
         <ColumnHeaderModal
           openBy={openBy}
           showFilter={filterable}
-          showGroup={groupable}
+          showGroup={groupable && column.disableGrouping !== true}
           showSort={sortable}
           column={column}
           style={innerStyle}
           onSort={onSort}
+          onGroupBy={onGroupBy}
         />
       ) : (
-        openBy
+        <div style={{ ...innerStyle, display: 'inline-block', cursor: 'auto' }}>{openBy}</div>
       )}
       {isResizable && <Resizer {...props} />}
     </div>

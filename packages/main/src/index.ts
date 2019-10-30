@@ -6,6 +6,7 @@ import { ActionSheet } from './lib/ActionSheet';
 import { AnalyticalCard } from './lib/AnalyticalCard';
 import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';
 import { AnalyticalTable } from './lib/AnalyticalTable';
+import { AnalyticalTableScrollMode } from './lib/AnalyticalTableScrollMode';
 import { Avatar } from './lib/Avatar';
 import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
@@ -14,7 +15,7 @@ import { Bar } from './lib/Bar';
 import { Breadcrumbs } from './lib/Breadcrumbs';
 import { BreadcrumbsSeparatorStyle } from './lib/BreadcrumbsSeparatorStyle';
 import { BusyIndicator } from './lib/BusyIndicator';
-import { BusyIndicatorType } from './lib/BusyIndicatorType';
+import { BusyIndicatorSize } from './lib/BusyIndicatorSize';
 import { Button } from './lib/Button';
 import { ButtonDesign } from './lib/ButtonDesign';
 import { Calendar } from './lib/Calendar';
@@ -49,6 +50,8 @@ import { List } from './lib/List';
 import { ListItemTypes } from './lib/ListItemTypes';
 import { ListMode } from './lib/ListMode';
 import { ListSeparators } from './lib/ListSeparators';
+import { Loader } from './lib/Loader';
+import { LoaderType } from './lib/LoaderType';
 import { MessageBox } from './lib/MessageBox';
 import { MessageBoxActions } from './lib/MessageBoxActions';
 import { MessageBoxTypes } from './lib/MessageBoxTypes';
@@ -107,8 +110,6 @@ import { Tokenizer } from './lib/Tokenizer';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
-import { Loader } from './lib/Loader';
-import { LoaderType } from './lib/LoaderType';
 import { Priority } from './lib/Priority';
 import { Notification } from './lib/Notification';
 import { NotificationGroup } from './lib/NotificationGroup';
@@ -118,6 +119,7 @@ export {
   AnalyticalCard,
   AnalyticalCardHeader,
   AnalyticalTable,
+  AnalyticalTableScrollMode,
   Avatar,
   AvatarShape,
   AvatarSize,
@@ -126,7 +128,7 @@ export {
   Breadcrumbs,
   BreadcrumbsSeparatorStyle,
   BusyIndicator,
-  BusyIndicatorType,
+  BusyIndicatorSize,
   Button,
   ButtonDesign,
   Calendar,
@@ -161,6 +163,8 @@ export {
   ListItemTypes,
   ListMode,
   ListSeparators,
+  Loader,
+  LoaderType,
   MessageBox,
   MessageBoxActions,
   MessageBoxTypes,
@@ -219,8 +223,6 @@ export {
   ValueState,
   VariantManagement,
   VerticalAlign,
-  Loader,
-  LoaderType,
   Priority,
   Notification,
   NotificationGroup

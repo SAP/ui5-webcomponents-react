@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.6.0-rc.10",
+  "version": "0.6.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "repository": {
     "type": "git",
@@ -19,13 +19,13 @@
     "postbuild": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.2",
-    "@ui5/webcomponents-react-base": "0.6.0-rc.10",
+    "@ui5/webcomponents": "1.0.0-rc.4",
+    "@ui5/webcomponents-react-base": "0.6.0",
     "lodash.debounce": "^4.0.8",
-    "react-table": "7.0.0-beta.5",
+    "react-content-loader": "^4.3.2",
+    "react-table": "7.0.0-beta.12",
     "react-toastify": "^5.0.1",
-    "react-window": "^1.8.5",
-    "resize-observer-polyfill": "^1.5.1"
+    "react-window": "^1.8.5"
   },
   "devDependencies": {
     "diff": "^4.0.1",

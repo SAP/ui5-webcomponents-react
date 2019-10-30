@@ -1,8 +1,6 @@
 import React, { ReactNode, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 
 const styles = {
@@ -16,6 +14,16 @@ const styles = {
   visible: {
     transition: 'opacity 0.5s',
     opacity: 1
+  },
+  imageContainer: {
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    maxWidth: '3rem',
+    maxHeight: '3rem'
+  },
+  image: {
+    width: '100%',
+    height: '100%'
   }
 };
 
@@ -39,11 +47,12 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
 
     if (typeof image === 'string') {
       return (
-        <Avatar
-          size={AvatarSize.S}
-          shape={imageShapeCircle ? AvatarShape.Circle : AvatarShape.Square}
-          image={image as string}
-        />
+        <span
+          className={classes.imageContainer}
+          style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
+        >
+          <img className={classes.image} src={image} alt="Company Logo" />
+        </span>
       );
     } else {
       // @ts-ignore

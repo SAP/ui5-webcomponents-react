@@ -13,7 +13,7 @@ const Resizer = (props) => {
     (e) => {
       e.stopPropagation();
       const pageX = e.pageX;
-      const newWidth = Math.max(parentWidth.current + pageX - startX.current, column.minWidth);
+      const newWidth = Math.round(Math.max(parentWidth.current + pageX - startX.current, column.minWidth));
       onColumnSizeChanged({
         column,
         width: newWidth

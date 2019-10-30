@@ -14,6 +14,10 @@ export interface SideNavigationProps extends CommonProps {
   footerItems?: ReactNode[];
   selectedId?: string | number;
   onItemSelect?: (event: Event) => void;
+  onItemClick?: (event: Event) => void;
+  /*
+   * Flag whether to show icons or not. Will only take effect in <code>openState: Expanded</code>
+   */
   noIcons?: boolean;
 }
 
@@ -25,7 +29,18 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigati
 });
 
 const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigationProps, ref: Ref<HTMLDivElement>) => {
-  const { children, openState, footerItems, selectedId, onItemSelect, noIcons, style, className, tooltip } = props;
+  const {
+    children,
+    openState,
+    footerItems,
+    selectedId,
+    onItemSelect,
+    onItemClick,
+    noIcons,
+    style,
+    className,
+    tooltip
+  } = props;
 
   const classes = useStyles();
 
@@ -59,29 +74,27 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
   const onListItemSelected = useCallback(
     (e) => {
       const listItem = e.getParameter('item');
+      onItemClick(
+        Event.of(null, e, {
+          selectedItem: listItem,
+          selectedId: listItem.dataset.id
+        })
+      );
 
       if (lastFiredSelection === listItem.dataset.id) {
         return;
       }
-
-      if (listItem.dataset.id === lastParent) {
-        lastParent = '';
-        return;
-      }
-
-      if (listItem.dataset.parentId) {
-        lastParent = listItem.dataset.parentId;
-      }
-
       setInternalSelectedId(listItem.dataset.id);
+
       onItemSelect(
         Event.of(null, e, {
-          selectedItem: listItem
+          selectedItem: listItem,
+          selectedId: listItem.dataset.id
         })
       );
       lastFiredSelection = listItem.dataset.id;
     },
-    [onItemSelect, setInternalSelectedId]
+    [onItemSelect, onItemClick, setInternalSelectedId]
   );
 
   return (
@@ -91,7 +104,8 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
           cloneElement(child, {
             openState: openState,
             selectedId: internalSelectedId,
-            noIcons
+            noIcons,
+            onListItemSelected
           })
         )}
       </List>
@@ -104,7 +118,8 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
               openState: openState,
               key: index,
               selectedId: internalSelectedId,
-              noIcons
+              noIcons,
+              onListItemSelected
             })
           )}
         </List>
@@ -118,7 +133,9 @@ SideNavigation.displayName = 'SideNavigation';
 SideNavigation.defaultProps = {
   openState: SideNavigationOpenState.Expanded,
   footerItems: [],
-  selectedId: null
+  selectedId: null,
+  onItemClick: () => {},
+  onItemSelect: () => {}
 };
 
 export { SideNavigation };

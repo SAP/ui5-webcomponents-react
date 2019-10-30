@@ -7,7 +7,6 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
   minWidth?: number; // @generated
   popinText?: string; // @generated
   demandPopin?: boolean; // @generated
-  width?: CSSProperties['width'] | CSSProperties['height']; // @generated
   children?: ReactNode; // @generated
 }
 
@@ -16,8 +15,7 @@ const TableColumn: FC<TableColumnPropTypes> = withWebComponent<TableColumnPropTy
 TableColumn.displayName = 'TableColumn';
 
 TableColumn.defaultProps = {
-  minWidth: Infinity, // @generated
-  width: '' // @generated
+  minWidth: null // @generated
 };
 
 export { TableColumn };

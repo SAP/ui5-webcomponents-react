@@ -1,6 +1,6 @@
 import { mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import React from 'react';
 
 const columns = [
   {
@@ -40,6 +40,101 @@ const data = [
   }
 ];
 
+const dataTree = [
+  {
+    name: 'Fra',
+    age: 40,
+    friend: {
+      name: 'MAR',
+      age: 28
+    },
+    subRows: [
+      {
+        name: 'asd',
+        age: 40,
+        friend: {
+          name: 'longlonglong',
+          age: 28
+        },
+        subRows: [
+          {
+            name: 'ABC',
+            age: 40,
+            friend: {
+              name: 'DEF',
+              age: 28
+            },
+            subRows: [
+              {
+                name: 'GHijkl',
+                age: 40,
+                friend: {
+                  name: 'mnop',
+                  age: 28
+                },
+                subRows: [
+                  {
+                    name: 'Fra',
+                    age: 40,
+                    friend: {
+                      name: 'MAR',
+                      age: 28
+                    },
+                    subRows: [
+                      {
+                        name: 'Fra',
+                        age: 40,
+                        friend: {
+                          name: 'MAR',
+                          age: 28
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'Fra',
+        age: 40,
+        friend: {
+          name: 'MAR',
+          age: 28
+        }
+      },
+      {
+        name: 'Fra',
+        age: 40,
+        friend: {
+          name: 'MAR',
+          age: 28
+        },
+        subRows: [
+          {
+            name: 'Peter',
+            age: 40,
+            friend: {
+              name: 'Retep',
+              age: 28
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'bla',
+    age: 20,
+    friend: {
+      name: 'Nei',
+      age: 50
+    }
+  }
+];
+
 describe('AnalyticalTable', () => {
   test('test Asc desc', () => {
     const wrapper = mountThemedComponent(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
@@ -59,6 +154,58 @@ describe('AnalyticalTable', () => {
       .instance();
     // @ts-ignore
     component.onclick({});
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Tree Table', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable
+        title="Table Title"
+        data={dataTree}
+        columns={columns}
+        loading={false}
+        busyIndicatorEnabled={true}
+        sortable={true}
+        filterable={true}
+        visibleRows={15}
+        minRows={5}
+        selectable={true}
+        subRowsKey="subRows"
+      />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Loading - Placeholder', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={[]} columns={columns} loading visibleRows={15} minRows={5} />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Loading - Loader', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} loading visibleRows={15} minRows={5} />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Alternate Row Color', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('custom row height', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} rowHeight={60} />
+    );
 
     expect(wrapper.render()).toMatchSnapshot();
   });

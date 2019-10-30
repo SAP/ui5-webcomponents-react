@@ -19,7 +19,7 @@ export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
 /**
  * In order to use the Radio Button in Compact Size, please add the following snippet to your `index.html`:
  * ```
- * <script data-id="sap-ui-config" type="application/json">
+ * <script data-ui5-config type="application/json">
  *  { "compactSize": true }
  * </script>
  * ```

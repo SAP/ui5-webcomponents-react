@@ -2,8 +2,6 @@ import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import React, {
   Children,
   cloneElement,
-  CSSProperties,
-  MutableRefObject,
   ReactElement,
   Ref,
   RefForwardingComponent,
@@ -25,14 +23,12 @@ function toKebabCase(s: string) {
 }
 
 const propBlacklist = {
-  className: true,
-  innerStyles: true
+  className: true
 };
 
 export interface WithWebComponentPropTypes extends CommonProps {
   ref?: Ref<any>;
   children?: any | void;
-  innerStyles?: CSSProperties;
 }
 
 export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5DomRef, T & WithWebComponentPropTypes> {
@@ -42,22 +38,33 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
     }
 
     return {
+      metadata: {
+        events: {}
+      },
       getProperties() {
         return {};
       },
-      getEvents() {
+      getSlots() {
         return {};
       },
-      getSlots() {
+      getEvents() {
         return {};
       }
     };
   };
 
-  const getMetadataBooleans = () => {
+  const getBooleanPropsFromMetadata = () => {
     return Object.entries(getWebComponentMetadata().getProperties())
       .filter(([key, value]) => value.type === Boolean)
       .map(([key]) => key);
+  };
+
+  const getSlotsFromMetadata = () => {
+    return Object.keys(getWebComponentMetadata().getSlots());
+  };
+
+  const getEventsFromMetadata = () => {
+    return Object.keys(getWebComponentMetadata().getEvents() || {});
   };
 
   const createEventWrapperFor = (eventIdentifier, eventHandler) => (e) => {
@@ -69,7 +76,9 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
       return acc;
     }, {});
 
-    payload = Object.keys(getWebComponentMetadata().getEvents()[eventIdentifier]).reduce((acc, val) => {
+    const eventMeta = getWebComponentMetadata().getEvents()[eventIdentifier] || {};
+
+    payload = Object.keys(eventMeta).reduce((acc, val) => {
       if (val === 'detail' && e[val]) {
         return {
           ...acc,
@@ -83,31 +92,20 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
     eventHandler(Event.of(null, e, payload));
   };
 
-  const getMetadataEvents = () => {
-    return Object.keys(getWebComponentMetadata().getEvents());
-  };
-
-  const getMetadataSlots = () => {
-    return Object.keys(getWebComponentMetadata().getSlots());
-  };
-
   const WithWebComponent = React.forwardRef((props: T & WithWebComponentPropTypes, wcRef: RefObject<Ui5DomRef>) => {
     const { className = '' } = props;
 
-    const [updateAfterMount, setUpdateAfterMount] = useState(false);
-    const prevInnerStylesProp = useRef(null);
-    const shadowRootRef: MutableRefObject<HTMLElement> = useRef();
+    const [_, setUpdateAfterMount] = useState(false);
     const eventRegistry = useRef({});
     const eventRegistryWrapped = useRef({});
     const localWcRef = useRef(null);
 
     const CustomTag = WebComponent.getMetadata().getTag();
-    const slots = WebComponent.getMetadata().getSlots();
 
     const getWcRef = () => wcRef || localWcRef;
 
     const getBooleanProps = () => {
-      return getMetadataBooleans().reduce((acc, key) => {
+      return getBooleanPropsFromMetadata().reduce((acc, key) => {
         if (props[key]) {
           acc[toKebabCase(key)] = true;
         }
@@ -116,7 +114,8 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
     };
 
     const bindEvents = () => {
-      getMetadataEvents().forEach((eventIdentifier) => {
+      const knownEvents = getEventsFromMetadata();
+      knownEvents.forEach((eventIdentifier) => {
         const alternativeKey = 'on' + capitalizeFirstLetter(eventIdentifier);
         const eventHandler = props[eventIdentifier] || props[alternativeKey];
         if (typeof eventHandler === 'function' && eventRegistry.current[alternativeKey] !== eventHandler) {
@@ -132,14 +131,6 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
       });
     };
 
-    const getShadowDomRef = () => {
-      if (shadowRootRef.current) {
-        return shadowRootRef.current;
-      }
-      return (shadowRootRef.current =
-        getWcRef().current && getWcRef().current.getDomRef ? getWcRef().current.getDomRef() : null);
-    };
-
     const getRegularProps = () => {
       if (getWcRef().current) {
         bindEvents();
@@ -149,14 +140,16 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
       const slotProps = {};
 
       Object.entries(props)
-        .filter(([key]) => !getMetadataBooleans().includes(key))
+        .filter(([key]) => !getBooleanPropsFromMetadata().includes(key))
         .filter(
           ([key]) =>
-            !getMetadataEvents().some((eventKey) => `on${capitalizeFirstLetter(eventKey)}` === key || key === eventKey)
+            !getEventsFromMetadata().some(
+              (eventKey) => `on${capitalizeFirstLetter(eventKey)}` === key || key === eventKey
+            )
         )
         .filter(([key]) => !propBlacklist[key])
         .forEach(([key, value]) => {
-          if (getMetadataSlots().includes(key)) {
+          if (getSlotsFromMetadata().includes(key)) {
             slotProps[key] = value;
           } else {
             regularProps[toKebabCase(key)] = value;
@@ -166,43 +159,9 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
       return { regularProps, slotProps };
     };
 
-    const applyInnerStyles = () => {
-      const { innerStyles } = props;
-      const shadowRef = getShadowDomRef();
-      if (!shadowRef) {
-        return;
-      }
-      if (innerStyles) {
-        Object.entries(innerStyles).forEach(([key, value]) => {
-          shadowRef.style[key] = value;
-        });
-      }
-    };
-
-    const removeOldStyles = (prevStyles) => {
-      if (prevStyles) {
-        Object.keys(prevStyles).forEach((key) => {
-          getShadowDomRef().style[key] = '';
-        });
-      }
-    };
-
-    // effects
-    useEffect(() => {
-      requestAnimationFrame(() => {
-        removeOldStyles(prevInnerStylesProp.current);
-        applyInnerStyles();
-      });
-
-      prevInnerStylesProp.current = props.innerStyles;
-    }, [props.innerStyles]);
-
     useEffect(() => {
       if (getWcRef().current) {
         bindEvents();
-        requestAnimationFrame(() => {
-          applyInnerStyles();
-        });
       } else {
         setUpdateAfterMount(true);
       }
@@ -214,7 +173,7 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
     const { children, tooltip, ...rest } = passedProps as T & WithWebComponentPropTypes;
     return (
       <CustomTag {...getBooleanProps()} ref={getWcRef()} {...rest} title={tooltip} class={className}>
-        {Object.keys(slots).map((slot) => {
+        {getSlotsFromMetadata().map((slot) => {
           if (actualSlotProps[slot]) {
             return Children.map(actualSlotProps[slot], (item: ReactElement<any>, index) =>
               cloneElement(item, {

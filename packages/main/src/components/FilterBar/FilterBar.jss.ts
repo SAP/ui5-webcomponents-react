@@ -35,12 +35,12 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       maxHeight: '0',
       opacity: 0,
       padding: 0,
-      overflowY: 'scroll'
+      overflowY: 'auto'
     },
     filterAreaOpen: {
       maxHeight: '500px',
       opacity: 1,
-      overflowY: 'scroll'
+      overflowY: 'auto'
     },
     headerRowRight: {
       display: 'flex',

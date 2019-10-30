@@ -52,73 +52,15 @@ exports[`SideNavigation Collapsed 1`] = `
       selected="true"
       type="Active"
     >
-      <div
-        style="display: inline-block;"
-      >
+      <span>
         <ui5-icon
           class="SideNavigationListItem--icon-"
           src="sap-icon://lead"
         />
-      </div>
-      <ui5-popover
-        class=""
-        header-text=""
-        horizontal-align="Center"
-        placement-type="Right"
-        vertical-align="Top"
-      >
-        <ui5-list
-          class=""
-          footer-text=""
-          header-text=""
-          mode="None"
-          no-data-text=""
-          separators="All"
-        >
-          <ui5-li
-            class=""
-            data-id="sales"
-            info-state="None"
-            type="Active"
-          >
-            Sales
-          </ui5-li>
-          <ui5-li
-            class=""
-            data-id="sales-opportunities"
-            data-parent-id="sales"
-            info-state="None"
-            title="My Opportunities"
-            type="Active"
-          >
-            My Opportunities
-          </ui5-li>
-          <ui5-li
-            class=""
-            data-id="sales-leads"
-            data-parent-id="sales"
-            info-state="None"
-            selected="true"
-            title="My Leads"
-            type="Active"
-          >
-            My Leads
-          </ui5-li>
-          <ui5-li
-            class=""
-            data-id="sales-cpqs"
-            data-parent-id="sales"
-            info-state="None"
-            title="My CPQS"
-            type="Active"
-          >
-            My CPQS
-          </ui5-li>
-        </ui5-list>
-      </ui5-popover>
-      <div
-        class="SideNavigationListItem--condensedExpandTriangle-"
-      />
+        <div
+          class="SideNavigationListItem--condensedExpandTriangle-"
+        />
+      </span>
     </ui5-li-custom>
     <ui5-li-custom
       class="SideNavigationListItem--listItem-"
@@ -149,6 +91,7 @@ exports[`SideNavigation Collapsed 1`] = `
     <ui5-li-custom
       class="SideNavigationListItem--listItem-"
       data-has-children="false"
+      data-id="1"
       type="Active"
     >
       <ui5-icon
@@ -159,6 +102,7 @@ exports[`SideNavigation Collapsed 1`] = `
     <ui5-li-custom
       class="SideNavigationListItem--listItem-"
       data-has-children="false"
+      data-id="2"
       type="Active"
     >
       <ui5-icon
@@ -222,73 +166,15 @@ exports[`SideNavigation Condensed 1`] = `
       selected="true"
       type="Active"
     >
-      <div
-        style="display: inline-block;"
-      >
+      <span>
         <ui5-icon
           class="SideNavigationListItem--icon-"
           src="sap-icon://lead"
         />
-      </div>
-      <ui5-popover
-        class=""
-        header-text=""
-        horizontal-align="Center"
-        placement-type="Right"
-        vertical-align="Top"
-      >
-        <ui5-list
-          class=""
-          footer-text=""
-          header-text=""
-          mode="None"
-          no-data-text=""
-          separators="All"
-        >
-          <ui5-li
-            class=""
-            data-id="sales"
-            info-state="None"
-            type="Active"
-          >
-            Sales
-          </ui5-li>
-          <ui5-li
-            class=""
-            data-id="sales-opportunities"
-            data-parent-id="sales"
-            info-state="None"
-            title="My Opportunities"
-            type="Active"
-          >
-            My Opportunities
-          </ui5-li>
-          <ui5-li
-            class=""
-            data-id="sales-leads"
-            data-parent-id="sales"
-            info-state="None"
-            selected="true"
-            title="My Leads"
-            type="Active"
-          >
-            My Leads
-          </ui5-li>
-          <ui5-li
-            class=""
-            data-id="sales-cpqs"
-            data-parent-id="sales"
-            info-state="None"
-            title="My CPQS"
-            type="Active"
-          >
-            My CPQS
-          </ui5-li>
-        </ui5-list>
-      </ui5-popover>
-      <div
-        class="SideNavigationListItem--condensedExpandTriangle-"
-      />
+        <div
+          class="SideNavigationListItem--condensedExpandTriangle-"
+        />
+      </span>
     </ui5-li-custom>
     <ui5-li-custom
       class="SideNavigationListItem--listItem-"
@@ -319,6 +205,7 @@ exports[`SideNavigation Condensed 1`] = `
     <ui5-li-custom
       class="SideNavigationListItem--listItem-"
       data-has-children="false"
+      data-id="1"
       type="Active"
     >
       <ui5-icon
@@ -329,6 +216,7 @@ exports[`SideNavigation Condensed 1`] = `
     <ui5-li-custom
       class="SideNavigationListItem--listItem-"
       data-has-children="false"
+      data-id="2"
       type="Active"
     >
       <ui5-icon
@@ -416,10 +304,14 @@ exports[`SideNavigation Expanded 1`] = `
       >
         Sales
       </span>
-      <ui5-icon
+      <span
         class="SideNavigationListItem--expandArrow-"
-        src="sap-icon://navigation-down-arrow"
-      />
+      >
+        <ui5-icon
+          class=""
+          src="sap-icon://navigation-down-arrow"
+        />
+      </span>
     </ui5-li-custom>
     <ui5-li-custom
       class="SideNavigationListItem--listItem-"
@@ -504,6 +396,7 @@ exports[`SideNavigation Expanded 1`] = `
     <ui5-li-custom
       class="SideNavigationListItem--listItem-"
       data-has-children="false"
+      data-id="1"
       type="Active"
     >
       <ui5-icon
@@ -519,6 +412,7 @@ exports[`SideNavigation Expanded 1`] = `
     <ui5-li-custom
       class="SideNavigationListItem--listItem-"
       data-has-children="false"
+      data-id="2"
       type="Active"
     >
       <ui5-icon
@@ -594,10 +488,14 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       >
         Sales
       </span>
-      <ui5-icon
+      <span
         class="SideNavigationListItem--expandArrow-"
-        src="sap-icon://navigation-down-arrow"
-      />
+      >
+        <ui5-icon
+          class=""
+          src="sap-icon://navigation-down-arrow"
+        />
+      </span>
     </ui5-li-custom>
     <ui5-li-custom
       class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
@@ -669,6 +567,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     <ui5-li-custom
       class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
       data-has-children="false"
+      data-id="1"
       type="Active"
     >
       <span
@@ -680,6 +579,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     <ui5-li-custom
       class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
       data-has-children="false"
+      data-id="2"
       type="Active"
     >
       <span

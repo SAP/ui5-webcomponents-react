@@ -30,17 +30,17 @@ You can play around with our components by visiting our [Storybook](https://sap.
 
 ### Package Overview
 
-#### [@ui5/webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main) - Fiori 3 Components [![](https://img.shields.io/npm/v/@ui5/webcomponents-react/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react.svg?label=size) --> 
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react.svg?label=gzip%20size) -->
+#### [@ui5/webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main) - Fiori 3 Components<br />
+[![](https://img.shields.io/npm/v/@ui5/webcomponents-react/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
+[![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react)](https://bundlephobia.com/result?p=@ui5/webcomponents-react)
 
-#### [@ui5/webcomponents-react-charts](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts) - Fiori Charts  [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts)
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react-charts.svg?label=size)  -->
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-charts.svg?label=gzip%20size) -->
+#### [@ui5/webcomponents-react-charts](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts) - Fiori Charts<br />
+[![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts)
+[![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-charts)](https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts)
 
-#### [@ui5/webcomponents-react-base](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base) - Utils [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base)
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-base](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react-base.svg?label=size) --> 
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-base](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-base.svg?label=gzip%20size) -->
+#### [@ui5/webcomponents-react-base](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base) - Utils<br />
+[![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base)
+[![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-base)](https://bundlephobia.com/result?p=@ui5/webcomponents-react-base)
 
 
 <!-- *********************************************************************** -->
@@ -89,7 +89,7 @@ import { Button } from '@ui5/webcomponents-react/lib/Button'; // loads ui5-butto
 Then, you can use the Button in your app:
 
 ```jsx
-<Button onPress={() => alert('Hello World!')}>Hello world!</Button>
+<Button onClick={() => alert('Hello World!')}>Hello world!</Button>
 ```
 
 You could import all components also from `@ui5/webcomponents-react` directly, but this will have a negative impact on your bundle size.
@@ -98,7 +98,7 @@ You could import all components also from `@ui5/webcomponents-react` directly, b
 UI5 Web Components supports ```Compact``` and ```Cozy``` mode. It is set to ```Cozy``` by default. To enable ```Compact``` globally, provide the option ```compactSize: true``` in the configuration ```script``` tag:
 
 ```html
-<script data-id="sap-ui-config" type="application/json">
+<script data-ui5-config type="application/json">
 {
   "compactSize": true
 }
@@ -110,7 +110,7 @@ UI5 Web Components supports ```Compact``` and ```Cozy``` mode. It is set to ```C
 If you want your application to run in IE11, you will have to polyfill some features by importing these polyfills as **first** imports in your `src/index.js`:
 ```js
 import 'react-app-polyfill/ie11';
-import '@ui5/webcomponents-base/src/features/browsersupport/IE11';
+import '@ui5/webcomponents-base/dist/features/browsersupport/IE11';
 import '@ui5/webcomponents-react-base/polyfill/IE11';
 import '@webcomponents/webcomponentsjs/webcomponents-bundle';
 ```

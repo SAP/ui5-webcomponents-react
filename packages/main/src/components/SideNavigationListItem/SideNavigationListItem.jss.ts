@@ -22,18 +22,19 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
 
   icon: {
     '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentIconColor,
-    fontSize: '1.125rem',
-    width: '2.75rem',
-    height: '2.75rem'
+    width: '1.125rem',
+    height: '1.125rem',
+    padding: '0.9375rem',
+    pointerEvents: 'none'
   },
 
   text: {},
 
   expandArrow: {
     '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentIconColor,
-    fontSize: '0.875rem',
-    width: '2.5rem',
-    height: '2.5rem',
+    width: '0.875rem',
+    height: '0.875rem',
+    padding: '0.8125rem',
     marginLeft: 'auto'
   },
 
@@ -43,11 +44,13 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
 
   compact: {
     '& $icon': {
-      fontSize: '1rem',
-      height: '2rem'
+      height: '1rem',
+      paddingTop: '0.5rem',
+      paddingBottom: '0.5rem'
     },
     '& $expandArrow': {
-      height: '2rem'
+      paddingTop: '0.125rem',
+      paddingBottom: '0.125rem'
     }
   },
 

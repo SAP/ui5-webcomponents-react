@@ -13,7 +13,7 @@ export default {
 export const defaultStory = () => (
   <MultiComboBox
     placeholder={text('placeholder', 'Placeholder...')}
-    validateInput={boolean('validateInput', false)}
+    allowCustomValues={boolean('allowCustomValues', false)}
     disabled={boolean('disabled', false)}
     valueState={select('valueState', ValueState, ValueState.None)}
     readonly={boolean('readonly', false)}

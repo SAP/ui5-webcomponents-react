@@ -14,6 +14,7 @@ const COMPONENT_DEMO_BLACKLIST = [
   'ListItem',
   'ListItemBase',
   'MonthPicker',
+  'Option',
   'Popup',
   'ShellBarItem',
   'StandardListItem',

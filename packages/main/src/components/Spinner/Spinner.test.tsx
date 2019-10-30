@@ -23,4 +23,9 @@ describe('Spinner', () => {
     const wrapper = renderThemedComponent(<Spinner size={Size.Large} className="testClassName1337" />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('with delay', () => {
+    const wrapper = renderThemedComponent(<Spinner size={Size.Large} delay={2000} />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

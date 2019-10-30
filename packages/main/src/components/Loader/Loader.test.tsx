@@ -28,4 +28,9 @@ describe('Loader', () => {
     const wrapper = renderThemedComponent(<Loader className="myTestClass" />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('with delay', () => {
+    const wrapper = renderThemedComponent(<Loader delay={1000} />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });
