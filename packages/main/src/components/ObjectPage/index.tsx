@@ -360,36 +360,35 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     }
   }, [selectedSubSectionId]);
 
-  // useEffect(() => {
-  //   setSelectedSubSectionId(props.selectedSubSectionId);
-  //   if (mode === ObjectPageMode.IconTabBar) {
-  //     // get section index
-  //
-  //     let index;
-  //     React.Children.toArray(children).forEach((section, sectionIndex) => {
-  //       if (React.isValidElement(section) && section.props && section.props.children) {
-  //         React.Children.toArray(section.props.children).forEach(
-  //           (subSection: ReactElement<ObjectPageSubSectionPropTypes>) => {
-  //             if (
-  //               React.isValidElement(subSection) &&
-  //               subSection.props &&
-  //               subSection.props.id === props.selectedSubSectionId
-  //             ) {
-  //               index = sectionIndex;
-  //             }
-  //           }
-  //         );
-  //       }
-  //     });
-  //
-  //     if (index) {
-  //       setSelectedSectionIndex(index);
-  //     }
-  //   }
-  //   // if(scroller.current) {
-  //   //   scroller.current.scrollToElementById(`ObjectPageSubSection-${props.selectedSubSectionId}`, collapsedHeader ? 45 : 0);
-  //   // }
-  // }, [props.selectedSubSectionId, scroller.current, setSelectedSectionIndex, setSelectedSubSectionId]);
+  useEffect(() => {
+    if (props.selectedSubSectionId) {
+      setSelectedSubSectionId(props.selectedSubSectionId);
+      if (mode === ObjectPageMode.IconTabBar) {
+        // get section index
+
+        let index;
+        React.Children.toArray(children).forEach((section, sectionIndex) => {
+          if (React.isValidElement(section) && section.props && section.props.children) {
+            React.Children.toArray(section.props.children).forEach(
+              (subSection: ReactElement<ObjectPageSubSectionPropTypes>) => {
+                if (
+                  React.isValidElement(subSection) &&
+                  subSection.props &&
+                  subSection.props.id === props.selectedSubSectionId
+                ) {
+                  index = sectionIndex;
+                }
+              }
+            );
+          }
+        });
+
+        if (index) {
+          setSelectedSectionIndex(index);
+        }
+      }
+    }
+  }, [props.selectedSubSectionId, scroller.current, setSelectedSectionIndex, setSelectedSubSectionId]);
 
   useEffect(() => {
     if (!isMounted && selectedSectionIndex < 1) return;
