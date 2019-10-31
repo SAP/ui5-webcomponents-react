@@ -78,7 +78,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
       const subSection = section.props.children
         .filter((item) => item.props && item.props.isSubSection)
         .find((item) => item.props.id === selectedId);
-      if (open && subSection) {
+      if (subSection) {
         onSubSectionSelected(Event.of(null, e.getOriginalEvent(), { section, subSection, sectionIndex: index }));
       }
       closeModal();
@@ -137,7 +137,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
         onSetActive={onScrollActive}
         activeClass={classes.selected}
         alwaysToTop={index === 0}
-        scrollOffset={collapsedHeader ? 45 : 0}
+        scrollOffset={45}
       >
         <span className={classes.button}>{section.props.title}</span>
       </ObjectPageLink>
@@ -159,6 +159,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
           placementType={PlacementType.Bottom}
           openBy={navigationIcon}
           onAfterClose={closeModal}
+          onBeforeOpen={openModal}
           noArrow
         >
           <List onItemClick={onSubSectionClick}>
