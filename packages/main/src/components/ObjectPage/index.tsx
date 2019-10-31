@@ -25,12 +25,13 @@ import styles from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { CollapsedAvatar } from './CollapsedAvatar';
-import { ObjectPageScroller } from './scroll/ObjectPageScroller';
+import { IScroller, ObjectPageScroller } from './scroll/ObjectPageScroller';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import '@ui5/webcomponents/dist/icons/navigation-up-arrow.js';
 import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
 import '@ui5/webcomponents/dist/icons/navigation-down-arrow.js';
+import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
@@ -42,11 +43,13 @@ export interface ObjectPagePropTypes extends CommonProps {
   children?: ReactNode | ReactNodeArray;
   mode?: ObjectPageMode;
   selectedSectionId?: string;
+  selectedSubSectionId?: string;
   onSelectedSectionChanged?: (event: Event) => void;
   showHideHeaderButton?: boolean;
   alwaysShowContentHeader?: boolean;
   noHeader?: boolean;
   showTitleInHeaderContent?: boolean;
+  scrollerRef?: RefObject<IScroller>;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPage' });
@@ -81,11 +84,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     selectedSectionId,
     noHeader,
     alwaysShowContentHeader,
-    showTitleInHeaderContent
+    showTitleInHeaderContent,
+    scrollerRef
   } = props;
 
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(findSectionIndexById(children, selectedSectionId));
-  const [selectedSubSectionId, setSelectedSubSectionId] = useState(null);
+  const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
   const [expandHeaderActive, setExpandHeaderActive] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [collapsedHeader, setCollapsedHeader] = useState(false);
@@ -104,7 +108,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const hideHeaderButtonPressed = useRef(false);
   const stableContentOnScrollRef = useRef(null);
   const stableBarOnScrollRef = useRef(null);
-  const scroller = useRef(null);
+  const scroller = useConsolidatedRef(scrollerRef);
   const [scrollbarWidth, setScrollbarWidth] = useState(defaultScrollbarWidth);
 
   const classes = useStyles();
@@ -353,10 +357,40 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   }, [noHeader, mode, alwaysShowContentHeader]);
 
   useEffect(() => {
-    if (selectedSubSectionId && mode === ObjectPageMode.IconTabBar && scroller.current) {
-      scroller.current.scrollToElementById(`ObjectPageSubSection-${selectedSubSectionId}`, collapsedHeader ? 45 : 0);
+    if (selectedSubSectionId && scroller.current) {
+      scroller.current.scrollToElementById(`ObjectPageSubSection-${selectedSubSectionId}`, 45);
     }
   }, [selectedSubSectionId]);
+
+  useEffect(() => {
+    if (props.selectedSubSectionId) {
+      setSelectedSubSectionId(props.selectedSubSectionId);
+      if (mode === ObjectPageMode.IconTabBar) {
+        // get section index
+
+        let index;
+        React.Children.toArray(children).forEach((section, sectionIndex) => {
+          if (React.isValidElement(section) && section.props && section.props.children) {
+            React.Children.toArray(section.props.children).forEach(
+              (subSection: ReactElement<ObjectPageSubSectionPropTypes>) => {
+                if (
+                  React.isValidElement(subSection) &&
+                  subSection.props &&
+                  subSection.props.id === props.selectedSubSectionId
+                ) {
+                  index = sectionIndex;
+                }
+              }
+            );
+          }
+        });
+
+        if (index) {
+          setSelectedSectionIndex(index);
+        }
+      }
+    }
+  }, [props.selectedSubSectionId, scroller.current, setSelectedSectionIndex, setSelectedSubSectionId, children, mode]);
 
   useEffect(() => {
     if (!isMounted && selectedSectionIndex < 1) return;
@@ -366,7 +400,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         // @ts-ignore
         const id = Children.toArray(children)[selectedSectionIndex].props.id;
         if (id) {
-          scroller.current.scrollToElementById(`ObjectPageSection-${id}`, collapsedHeader ? 45 : 0);
+          scroller.current.scrollToElementById(`ObjectPageSection-${id}`, 45);
         }
       } else {
         scroller.current.scrollToTop();
