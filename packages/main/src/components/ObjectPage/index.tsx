@@ -25,7 +25,7 @@ import styles from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { CollapsedAvatar } from './CollapsedAvatar';
-import { ObjectPageScroller } from './scroll/ObjectPageScroller';
+import { IScroller, ObjectPageScroller } from './scroll/ObjectPageScroller';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import '@ui5/webcomponents/dist/icons/navigation-up-arrow.js';
@@ -49,6 +49,7 @@ export interface ObjectPagePropTypes extends CommonProps {
   alwaysShowContentHeader?: boolean;
   noHeader?: boolean;
   showTitleInHeaderContent?: boolean;
+  scrollerRef?: RefObject<IScroller>;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPage' });
@@ -83,7 +84,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     selectedSectionId,
     noHeader,
     alwaysShowContentHeader,
-    showTitleInHeaderContent
+    showTitleInHeaderContent,
+    scrollerRef
   } = props;
 
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(findSectionIndexById(children, selectedSectionId));
@@ -106,7 +108,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const hideHeaderButtonPressed = useRef(false);
   const stableContentOnScrollRef = useRef(null);
   const stableBarOnScrollRef = useRef(null);
-  const scroller = useRef(null);
+  const scroller = useConsolidatedRef(scrollerRef);
   const [scrollbarWidth, setScrollbarWidth] = useState(defaultScrollbarWidth);
 
   const classes = useStyles();
