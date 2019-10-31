@@ -390,7 +390,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         }
       }
     }
-  }, [props.selectedSubSectionId, scroller.current, setSelectedSectionIndex, setSelectedSubSectionId]);
+  }, [props.selectedSubSectionId, scroller.current, setSelectedSectionIndex, setSelectedSubSectionId, children, mode]);
 
   useEffect(() => {
     if (!isMounted && selectedSectionIndex < 1) return;
