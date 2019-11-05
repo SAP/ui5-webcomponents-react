@@ -91,7 +91,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     return (
       <div className={classNames.valueOf()}>
         <span
-          title={children as string}
+          title={typeof children === 'string' ? children : null}
           style={{ textOverflow: 'ellipsis', overflowX: 'hidden', whiteSpace: 'nowrap' }}
         >
           {children}
