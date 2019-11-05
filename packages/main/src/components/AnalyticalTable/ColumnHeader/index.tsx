@@ -90,7 +90,12 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
 
     return (
       <div className={classNames.valueOf()}>
-        <span style={{ textOverflow: 'ellipsis', overflowX: 'hidden', whiteSpace: 'nowrap' }}>{children}</span>
+        <span
+          title={children as string}
+          style={{ textOverflow: 'ellipsis', overflowX: 'hidden', whiteSpace: 'nowrap' }}
+        >
+          {children}
+        </span>
         <div className={classes.iconContainer}>
           {filterIcon}
           {sortingIcon}
