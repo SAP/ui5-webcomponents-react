@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
 import { Cell } from './Cell';
+import { VirtualTableRow } from './VirtualTableRow';
 
 export const VirtualTableBody = (props) => {
   const {
@@ -27,45 +28,6 @@ export const VirtualTableBody = (props) => {
   } = props;
 
   const innerDivRef = useRef(null);
-
-  const VirtualTableItem = useCallback(
-    (itemProps) => {
-      const { style, index, data } = itemProps;
-      const row = data[index];
-
-      const rowStyle = {
-        ...style,
-        gridTemplateColumns: rowContainerStyling.gridTemplateColumns
-      };
-
-      if (!row) {
-        return (
-          <div key={`minRow-${index}`} className={classes.tr} style={rowStyle}>
-            {columns.map((col, colIndex) => {
-              let classNames = classes.tableCell;
-              if (col.className) {
-                classNames += ` ${col.className}`;
-              }
-              return <div className={classNames} key={`minRow-${index}-${colIndex}`} />;
-            })}
-          </div>
-        );
-      }
-
-      prepareRow(row);
-
-      return (
-        <div {...row.getRowProps()} style={rowStyle}>
-          {row.cells.map((cell, i) => {
-            const cellProps = cell.getCellProps();
-            const key = cellProps && cellProps.key ? cellProps.key : `cell-${i}`;
-            return <Cell key={key} row={row} cell={cell} columnIndex={i} classes={classes} isTreeTable={isTreeTable} />;
-          })}
-        </div>
-      );
-    },
-    [classes, rowContainerStyling, columns, prepareRow, isTreeTable, selectedRowPath, selectedRow, alternateRowColor]
-  );
 
   useEffect(() => {
     if (innerDivRef.current) {
@@ -92,18 +54,57 @@ export const VirtualTableBody = (props) => {
     return tableWidth > aggregatedWidth || tableWidth === 0 ? null : aggregatedWidth;
   }, [columns, tableWidth, resizedColumns]);
 
+  const tableData = useMemo(() => {
+    return {
+      rows,
+      additionalProps: {
+        isTreeTable,
+        classes,
+        columns,
+        rowContainerStyling
+      }
+    };
+  }, [
+    rows,
+    prepareRow,
+    isTreeTable,
+    classes,
+    columns,
+    rowContainerStyling,
+    alternateRowColor,
+    selectedRow,
+    selectedRowPath
+  ]);
+
+  const getItemKey = useCallback(
+    (index, data) => {
+      const row = data.rows[index];
+      if (row) {
+        if (!row.getRowProps) {
+          prepareRow(row);
+          if (row.getRowProps) {
+            return row.getRowProps().key;
+          }
+        }
+      }
+      return index;
+    },
+    [prepareRow]
+  );
+
   return (
     <FixedSizeList
       ref={reactWindowRef}
       height={tableBodyHeight}
       width={columnsWidth}
-      itemData={rows}
+      itemData={tableData}
       itemCount={itemCount}
       itemSize={internalRowHeight}
+      itemKey={getItemKey}
       innerRef={innerDivRef}
       overscanCount={overscanCount}
     >
-      {VirtualTableItem}
+      {VirtualTableRow}
     </FixedSizeList>
   );
 };
