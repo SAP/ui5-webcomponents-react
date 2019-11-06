@@ -3,7 +3,6 @@ import '@ui5/webcomponents/dist/icons/navigation-right-arrow';
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
-import { Cell } from './Cell';
 import { VirtualTableRow } from './VirtualTableRow';
 
 export const VirtualTableBody = (props) => {
