@@ -82,9 +82,9 @@ export const VirtualTableBody = (props) => {
       if (row) {
         if (!row.getRowProps) {
           prepareRow(row);
-          if (row.getRowProps) {
-            return row.getRowProps().key;
-          }
+        }
+        if (row.getRowProps) {
+          return row.getRowProps().key;
         }
       }
       return index;
