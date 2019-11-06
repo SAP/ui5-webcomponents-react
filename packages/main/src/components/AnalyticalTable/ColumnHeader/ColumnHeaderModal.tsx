@@ -24,6 +24,8 @@ export interface ColumnHeaderModalProperties {
   onGroupBy?: (e: Event) => void;
 }
 
+const staticStyle = { fontWeight: 'normal' };
+
 export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
   const { showGroup, showSort, showFilter, column, style, openBy, onSort, onGroupBy } = props;
 
@@ -86,7 +88,7 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
       horizontalAlign={PopoverHorizontalAlign.Left}
       placementType={PlacementType.Bottom}
       ref={popoverRef}
-      style={{ fontWeight: 'normal' }}
+      style={staticStyle as CSSProperties}
     >
       <List onItemClick={handleSort}>
         {showSort && (
