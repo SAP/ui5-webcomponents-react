@@ -33,6 +33,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -92,6 +93,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -151,6 +153,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
@@ -446,6 +449,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -505,6 +509,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -564,6 +569,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
@@ -859,6 +865,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -918,6 +925,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -977,6 +985,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
@@ -1350,6 +1359,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -1430,6 +1440,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -1510,6 +1521,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
@@ -1823,6 +1835,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -1882,6 +1895,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -1941,6 +1955,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
@@ -2236,6 +2251,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -2295,6 +2311,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -2354,6 +2371,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
