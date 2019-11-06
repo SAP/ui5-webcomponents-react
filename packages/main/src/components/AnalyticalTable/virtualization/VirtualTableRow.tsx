@@ -27,7 +27,7 @@ export const VirtualTableRow = (props) => {
   }
 
   return (
-    <div {...row.getRowProps()} style={rowStyle}>
+    <div {...row.getRowProps()} style={rowStyle} role="row" aria-rowindex={index}>
       {row.cells.map((cell, i) => {
         const cellProps = cell.getCellProps();
         const key = cellProps && cellProps.key ? cellProps.key : `cell-${i}`;

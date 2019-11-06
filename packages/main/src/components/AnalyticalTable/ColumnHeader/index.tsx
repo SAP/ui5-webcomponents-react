@@ -124,7 +124,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   if (!column) return null;
 
   return (
-    <div className={className} style={style}>
+    <div className={className} style={style} role="columnheader">
       {groupable || sortable || filterable ? (
         <ColumnHeaderModal
           openBy={openBy}
