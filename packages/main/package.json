@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.5.0",
+  "version": "0.6.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "repository": {
     "type": "git",
@@ -14,19 +14,18 @@
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
-    "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/generateWebComponentWrappers --onlyStopForMerge",
+    "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/index.js --onlyStopForMerge",
     "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
-    "postbuild": "rollup -c rollup.config.js",
-    "test:karma": "karma start ../../config/karma.conf.js",
-    "test:karma:update": "cross-env UPDATE=1 yarn run test:karma"
+    "postbuild": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.2",
-    "@ui5/webcomponents-react-base": "0.5.0",
+    "@ui5/webcomponents": "1.0.0-rc.4",
+    "@ui5/webcomponents-react-base": "0.6.0",
     "lodash.debounce": "^4.0.8",
-    "react-scroll": "^1.7.11",
-    "react-table": "6.10.0",
-    "react-toastify": "^5.0.1"
+    "react-content-loader": "^4.3.2",
+    "react-table": "7.0.0-beta.12",
+    "react-toastify": "^5.0.1",
+    "react-window": "^1.8.5"
   },
   "devDependencies": {
     "diff": "^4.0.1",

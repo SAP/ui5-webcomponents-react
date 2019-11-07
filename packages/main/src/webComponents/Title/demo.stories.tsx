@@ -1,11 +1,19 @@
 import { boolean, select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { Title } from '../../lib/Title';
-import { TitleLevel } from '../../lib/TitleLevel';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 
-storiesOf('UI5 Web Components | Title', module).add('Generated default story', () => (
+export default {
+  title: 'UI5 Web Components | Title',
+  component: Title
+};
+
+export const generatedDefaultStory = () => (
   <Title wrap={boolean('wrap', false)} level={select('level', TitleLevel, null)}>
     Some Content
   </Title>
-));
+);
+
+generatedDefaultStory.story = {
+  name: 'Generated default story'
+};

@@ -1,31 +1,7 @@
-import { fonts } from '@ui5/webcomponents-react-base';
-import { ZIndex } from '../../enums/ZIndex';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ContentDensity } from '../../lib/ContentDensity';
 
 const style = ({ parameters, contentDensity }: JSSTheme) => ({
-  overlay: {
-    background: 'rgba(0,0,0,0.6)',
-    position: 'fixed',
-    zIndex: ZIndex.MessageBox,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    outline: '0 none',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  messageBox: {
-    maxWidth: '90%',
-    minWidth: '20%',
-    borderRadius: '0.25rem',
-    boxSizing: 'content-box',
-    background: parameters.sapUiGroupContentBackground,
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: '0.875rem'
-  },
   header: {
     display: 'flex',
     height: ContentDensity.Compact === contentDensity ? '2.5rem' : '3rem',
@@ -41,59 +17,62 @@ const style = ({ parameters, contentDensity }: JSSTheme) => ({
     // justifyContent: 'center',
     padding: '0.25rem 1rem',
     boxSizing: 'border-box',
-    borderBottom: `0.125rem solid ${parameters.sapUiGroupContentBorderColor}`,
+    borderBottom: `1px solid var(--messageBoxBorderColor)`,
     color: parameters.sapUiContentLabelColor,
     fontSize: '1rem',
     '&[data-type="Error"]': {
-      borderBottomColor: parameters.sapUiErrorBorder,
+      '--sapUiPageFooterBorderColor': parameters.sapUiErrorBorder,
+      '--messageBoxBorderColor': parameters.sapUiErrorBorder,
       '& $icon': {
-        color: parameters.sapUiNegativeElement
+        '--sapUiContentNonInteractiveIconColor': parameters.sapUiNegativeElement
       }
     },
     '&[data-type="Warning"]': {
-      borderBottomColor: parameters.sapUiWarningBorder,
+      '--sapUiPageFooterBorderColor': parameters.sapUiWarningBorder,
+      '--messageBoxBorderColor': parameters.sapUiWarningBorder,
       '& $icon': {
-        color: parameters.sapUiCriticalElement
+        '--sapUiContentNonInteractiveIconColor': parameters.sapUiCriticalElement
       }
     },
     '&[data-type="Success"]': {
-      borderBottomColor: parameters.sapUiSuccessBorder,
+      '--sapUiPageFooterBorderColor': parameters.sapUiSuccessBorder,
+      '--messageBoxBorderColor': parameters.sapUiSuccessBorder,
       '& $icon': {
-        color: parameters.sapUiPositiveElement
+        '--sapUiContentNonInteractiveIconColor': parameters.sapUiPositiveElement
       }
     },
     '&[data-type="Confirm"]': {
-      borderBottomColor: parameters.sapUiNeutralBorder,
+      '--sapUiPageFooterBorderColor': parameters.sapUiNeutralBorder,
+      '--messageBoxBorderColor': parameters.sapUiNeutralBorder,
       '& $icon': {
-        color: parameters.sapUiNeutralElement
+        '--sapUiContentNonInteractiveIconColor': parameters.sapUiNeutralElement
       }
     },
     '&[data-type="Information"]': {
-      borderBottomColor: parameters.sapUiNeutralBorder,
+      '--sapUiPageFooterBorderColor': parameters.sapUiNeutralBorder,
+      '--messageBoxBorderColor': parameters.sapUiNeutralBorder,
       '& $icon': {
-        color: parameters.sapUiNeutralElement
+        '--sapUiContentNonInteractiveIconColor': parameters.sapUiNeutralElement
       }
     },
     '&[data-type="Highlight"]': {
-      // @ts-ignore
-      borderBottomColor: parameters.sapUiInformationBorder,
+      '--sapUiPageFooterBorderColor': parameters.sapUiInformationBorder,
+      '--messageBoxBorderColor': parameters.sapUiInformationBorder,
       '& $icon': {
-        color: parameters.sapUiInformativeElement
+        '--sapUiContentNonInteractiveIconColor': parameters.sapUiInformativeElement
       }
     }
-  },
-  content: {
-    padding: '1rem'
   },
   icon: {
     marginRight: '0.5rem',
     fontSize: '1rem',
     width: '1rem'
   },
+  content: {
+    padding: '1rem'
+  },
   footer: {
     height: ContentDensity.Compact === contentDensity ? '2.5rem' : '3rem',
-    lineHeight: ContentDensity.Compact === contentDensity ? '2.5rem' : '3rem',
-    borderTop: `1px solid ${parameters.sapUiGroupContentBorderColor}`,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',

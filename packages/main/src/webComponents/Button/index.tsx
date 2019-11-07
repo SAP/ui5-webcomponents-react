@@ -1,8 +1,9 @@
-import React, { FC } from 'react';
-import { ButtonDesign } from '../../lib/ButtonDesign';
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Button from '@ui5/webcomponents/dist/Button';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import React, { FC } from 'react';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ButtonPropTypes extends WithWebComponentPropTypes {
   design?: ButtonDesign; // @generated

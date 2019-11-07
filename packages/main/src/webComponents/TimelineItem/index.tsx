@@ -1,7 +1,8 @@
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import UI5TimelineItem from '@ui5/webcomponents/dist/TimelineItem';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   icon?: string; // @generated

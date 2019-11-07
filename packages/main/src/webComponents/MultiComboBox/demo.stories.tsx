@@ -1,15 +1,19 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { StandardListItem } from '../../lib/StandardListItem';
-import { ValueState } from '../../lib/ValueState';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { MultiComboBox } from './index';
 
-storiesOf('UI5 Web Components | MultiComboBox', module).add('Default story', () => (
+export default {
+  title: 'UI5 Web Components | MultiComboBox',
+  component: MultiComboBox
+};
+
+export const defaultStory = () => (
   <MultiComboBox
     placeholder={text('placeholder', 'Placeholder...')}
-    validateInput={boolean('validateInput', false)}
+    allowCustomValues={boolean('allowCustomValues', false)}
     disabled={boolean('disabled', false)}
     valueState={select('valueState', ValueState, ValueState.None)}
     readonly={boolean('readonly', false)}
@@ -23,4 +27,8 @@ storiesOf('UI5 Web Components | MultiComboBox', module).add('Default story', () 
     <StandardListItem>Selection 4</StandardListItem>
     <StandardListItem>Selection 5</StandardListItem>
   </MultiComboBox>
-));
+);
+
+defaultStory.story = {
+  name: 'Default story'
+};

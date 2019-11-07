@@ -1,11 +1,15 @@
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { Token } from '../../lib/Token';
+import { Token } from '@ui5/webcomponents-react/lib/Token';
 import { Tokenizer } from './index';
 
-storiesOf('UI5 Web Components | Tokenizer', module).add('Default story', () => (
+export default {
+  title: 'UI5 Web Components | Tokenizer',
+  component: Tokenizer
+};
+
+export const defaultStory = () => (
   <Tokenizer
     showMore={boolean('showMore', false)}
     disabled={boolean('disabled', false)}
@@ -16,4 +20,8 @@ storiesOf('UI5 Web Components | Tokenizer', module).add('Default story', () => (
     <Token>Token 2</Token>
     <Token>Token 3</Token>
   </Tokenizer>
-));
+);
+
+defaultStory.story = {
+  name: 'Default story'
+};

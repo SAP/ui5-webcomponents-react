@@ -1,14 +1,16 @@
-import { withStyles } from '@ui5/webcomponents-react-base';
-import React, { PureComponent } from 'react';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React from 'react';
 import { createPortal } from 'react-dom';
+import { createUseStyles } from 'react-jss';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { Icon } from '../../lib/Icon';
-import { ValueState } from '../../lib/ValueState';
 import styles from './MessageToast.jss';
+import '@ui5/webcomponents/dist/icons/message-error';
+import '@ui5/webcomponents/dist/icons/message-warning';
+import '@ui5/webcomponents/dist/icons/sys-enter';
 
 const coloredStyles = ({ parameters }: JSSTheme) => ({
   base: {
@@ -25,74 +27,84 @@ const coloredStyles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const ColoredIcon = withStyles(coloredStyles)(({ src, state, classes }) => (
-  <Icon src={src} className={`${classes.base} ${classes[state]}`} />
-));
+const useIconStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof coloredStyles>>(coloredStyles, {
+  name: 'MessageToastIcon'
+});
 
-@withStyles(styles)
-export class MessageToast extends PureComponent {
-  static CONTAINER_STYLE = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  };
+const ColoredIcon = ({ src, state }) => {
+  const classes = useIconStyles();
+  return <Icon src={src} className={`${classes.base} ${classes[state]}`} />;
+};
 
-  static mergeStyleWithDefault = (style) => {
-    return Object.assign({}, MessageToast.CONTAINER_STYLE, style);
-  };
+const useMessageToastStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, {
+  name: 'MessageToast'
+});
 
-  static show(text, options: CommonProps = {}) {
-    toast(text, options);
-  }
+const MessageToast = () => {
+  const classes = useMessageToastStyles();
 
-  static error(text, options: CommonProps = {}) {
-    const toastContent = (
-      <div style={MessageToast.mergeStyleWithDefault(options.style)} className={options.className}>
-        <ColoredIcon src="message-error" state={ValueState.Error} />
-        <span style={{ marginLeft: '0.5rem' }}>{text}</span>
-      </div>
-    );
+  return createPortal(
+    <ToastContainer
+      closeButton={false}
+      autoClose={3000}
+      hideProgressBar
+      closeOnClick={false}
+      position="bottom-center"
+      toastClassName={classes.messageToast}
+      bodyClassName={classes.messageToastBody}
+      className={classes.messageToastContainer}
+    />,
+    document.body
+  );
+};
 
-    MessageToast.show(toastContent, options);
-  }
+const CONTAINER_STYLE = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+};
 
-  static success(text, options: CommonProps = {}) {
-    const toastContent = (
-      <div style={MessageToast.mergeStyleWithDefault(options.style)} className={options.className}>
-        <ColoredIcon src="sys-enter" state={ValueState.Success} />
-        <span style={{ marginLeft: '0.5rem' }}>{text}</span>
-      </div>
-    );
+const mergeStyleWithDefault = (style) => {
+  return Object.assign({}, CONTAINER_STYLE, style);
+};
 
-    MessageToast.show(toastContent, options);
-  }
+MessageToast.show = (text, options: CommonProps = {}) => {
+  toast(text, options);
+};
 
-  static warning(text, options: CommonProps = {}) {
-    const toastContent = (
-      <div style={MessageToast.mergeStyleWithDefault(options.style)} className={options.className}>
-        <ColoredIcon src="message-warning" state={ValueState.Warning} />
-        <span style={{ marginLeft: '0.5rem' }}>{text}</span>
-      </div>
-    );
+MessageToast.error = (text, options: CommonProps = {}) => {
+  const toastContent = (
+    <div style={mergeStyleWithDefault(options.style)} className={options.className}>
+      <ColoredIcon src="sap-icon://message-error" state={ValueState.Error} />
+      <span style={{ marginLeft: '0.5rem' }}>{text}</span>
+    </div>
+  );
 
-    MessageToast.show(toastContent, options);
-  }
+  MessageToast.show(toastContent, options);
+};
 
-  render() {
-    const { classes } = this.props as ClassProps;
+MessageToast.success = (text, options: CommonProps = {}) => {
+  const toastContent = (
+    <div style={mergeStyleWithDefault(options.style)} className={options.className}>
+      <ColoredIcon src="sap-icon://sys-enter" state={ValueState.Success} />
+      <span style={{ marginLeft: '0.5rem' }}>{text}</span>
+    </div>
+  );
 
-    return createPortal(
-      <ToastContainer
-        closeButton={false}
-        autoClose={3000}
-        hideProgressBar
-        closeOnClick={false}
-        position="bottom-center"
-        toastClassName={classes.messageToast}
-        bodyClassName={classes.messageToastBody}
-        className={classes.messageToastContainer}
-      />,
-      document.body
-    );
-  }
-}
+  MessageToast.show(toastContent, options);
+};
+
+MessageToast.warning = (text, options: CommonProps = {}) => {
+  const toastContent = (
+    <div style={mergeStyleWithDefault(options.style)} className={options.className}>
+      <ColoredIcon src="sap-icon://message-warning" state={ValueState.Warning} />
+      <span style={{ marginLeft: '0.5rem' }}>{text}</span>
+    </div>
+  );
+
+  MessageToast.show(toastContent, options);
+};
+
+MessageToast.displayName = 'MessageToast';
+
+export { MessageToast };

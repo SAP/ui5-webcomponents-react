@@ -1,10 +1,9 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ContentDensity } from '../../lib/ContentDensity';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 
-const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
+const styles = ({ contentDensity, parameters }: JSSTheme) => ({
   segmentedButtonItem: {
-    fontFamily: fonts.sapUiFontFamily,
+    fontFamily: parameters.sapUiFontFamily,
     listStyle: 'none',
     overflow: 'hidden',
     WebkitTapHighlightColor: 'rgba(255, 255, 255, 0)',
@@ -41,6 +40,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     background: parameters.sapUiSegmentedButtonSelectedBackground,
     color: parameters.sapUiSegmentedButtonSelectedTextColor,
     borderColor: parameters.sapUiSegmentedButtonSelectedHoverBorderColor,
+    '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentContrastIconColor,
     '$:active': {
       background: parameters.sapUiButtonActiveBackground,
       color: parameters.sapUiButtonActiveTextColor
@@ -64,8 +64,8 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     '&:focus': {
       outline: 'none'
     },
-    '& >*': {
-      verticalAlign: 'bottom'
+    '& > *': {
+      verticalAlign: 'middle'
     }
   },
   withText: {

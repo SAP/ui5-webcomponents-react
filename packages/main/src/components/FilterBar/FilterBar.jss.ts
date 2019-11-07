@@ -1,4 +1,3 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
@@ -17,7 +16,8 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       background: parameters.sapUiObjectHeaderBackground,
       minHeight: '3rem',
       paddingBottom: '0.5rem',
-      boxShadow: 'none'
+      boxShadow: 'none',
+      flexWrap: 'wrap'
     },
     vLine: {
       borderLeft: '1px solid gray',
@@ -34,21 +34,23 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
     filterAreaClosed: {
       maxHeight: '0',
       opacity: 0,
-      padding: 0
+      padding: 0,
+      overflowY: 'auto'
     },
     filterAreaOpen: {
       maxHeight: '500px',
-      opacity: 1
+      opacity: 1,
+      overflowY: 'auto'
     },
     headerRowRight: {
       display: 'flex',
       justifyContent: 'flex-end',
-      width: '100%'
+      flexGrow: 1
     },
     // is being applied to the span which represents the InfoLabel Text
     label: {
-      fontSize: fonts.sapMFontSmallSize,
-      fontFamily: fonts.sapUiFontFamily,
+      fontSize: parameters.sapMFontSmallSize,
+      fontFamily: parameters.sapUiFontFamily,
       lineHeight: '1.125rem',
       fontWeight: 600,
       letterSpacing: '0.0125rem',

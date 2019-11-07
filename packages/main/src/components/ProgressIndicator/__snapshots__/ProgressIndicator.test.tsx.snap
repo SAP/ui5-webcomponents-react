@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressIndicator Custom 1`] = `
+<div
+  class="ProgressIndicator--wrapper-"
+  style="width: 50%; height: 50%;"
+>
+  <div
+    class="ProgressIndicator--progressbar- ProgressIndicator--stateNone-"
+    style="flex-basis: 40%;"
+  />
+  <div
+    class="ProgressIndicator--progressBarRemaining-"
+  >
+    <span
+      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+    >
+       sdf 
+    </span>
+  </div>
+</div>
+`;
+
+exports[`ProgressIndicator ProgressIndicator with state Error 1`] = `
+<div
+  class="ProgressIndicator--wrapper-"
+  style="width: auto;"
+>
+  <div
+    class="ProgressIndicator--progressbar- ProgressIndicator--stateError-"
+    style="flex-basis: 0%;"
+  />
+  <div
+    class="ProgressIndicator--progressBarRemaining-"
+  >
+    <span
+      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+    >
+        
+    </span>
+  </div>
+</div>
+`;
+
+exports[`ProgressIndicator ProgressIndicator with state Information 1`] = `
+<div
+  class="ProgressIndicator--wrapper-"
+  style="width: auto;"
+>
+  <div
+    class="ProgressIndicator--progressbar- ProgressIndicator--stateInformation-"
+    style="flex-basis: 0%;"
+  />
+  <div
+    class="ProgressIndicator--progressBarRemaining-"
+  >
+    <span
+      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+    >
+        
+    </span>
+  </div>
+</div>
+`;
+
+exports[`ProgressIndicator ProgressIndicator with state None 1`] = `
+<div
+  class="ProgressIndicator--wrapper-"
+  style="width: auto;"
+>
+  <div
+    class="ProgressIndicator--progressbar- ProgressIndicator--stateNone-"
+    style="flex-basis: 0%;"
+  />
+  <div
+    class="ProgressIndicator--progressBarRemaining-"
+  >
+    <span
+      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+    >
+        
+    </span>
+  </div>
+</div>
+`;
+
+exports[`ProgressIndicator ProgressIndicator with state Success 1`] = `
+<div
+  class="ProgressIndicator--wrapper-"
+  style="width: auto;"
+>
+  <div
+    class="ProgressIndicator--progressbar- ProgressIndicator--stateSuccess-"
+    style="flex-basis: 0%;"
+  />
+  <div
+    class="ProgressIndicator--progressBarRemaining-"
+  >
+    <span
+      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+    >
+        
+    </span>
+  </div>
+</div>
+`;
+
+exports[`ProgressIndicator ProgressIndicator with state Warning 1`] = `
+<div
+  class="ProgressIndicator--wrapper-"
+  style="width: auto;"
+>
+  <div
+    class="ProgressIndicator--progressbar- ProgressIndicator--stateWarning-"
+    style="flex-basis: 0%;"
+  />
+  <div
+    class="ProgressIndicator--progressBarRemaining-"
+  >
+    <span
+      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+    >
+        
+    </span>
+  </div>
+</div>
+`;
+
+exports[`ProgressIndicator State 1`] = `
+<div
+  class="ProgressIndicator--wrapper-"
+  style="width: auto;"
+>
+  <div
+    class="ProgressIndicator--progressbar- ProgressIndicator--stateError-"
+    style="flex-basis: 85%;"
+  >
+    <span
+      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorHigh- ProgressIndicator--progressBarTextLeft-"
+    >
+        
+    </span>
+  </div>
+  <div
+    class="ProgressIndicator--progressBarRemaining-"
+  />
+</div>
+`;

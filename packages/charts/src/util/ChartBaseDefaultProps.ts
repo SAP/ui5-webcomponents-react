@@ -5,6 +5,8 @@ export const ChartBaseDefaultProps: ChartBaseProps = {
   datasets: [],
   colors: [],
   height: 300,
+  minHeight: 300,
+  minWidth: 300,
   width: 300,
   options: {},
   categoryAxisFormatter: (d) => d,

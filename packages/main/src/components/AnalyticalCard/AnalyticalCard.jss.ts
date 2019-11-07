@@ -1,4 +1,4 @@
-import { fonts, spacing } from '@ui5/webcomponents-react-base';
+import * as spacing from '@ui5/webcomponents-react-base/lib/spacing';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -11,7 +11,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     textAlign: 'start',
     overflow: 'hidden',
     position: 'relative',
-    fontFamily: fonts.sapUiFontFamily,
+    fontFamily: parameters.sapUiFontFamily,
     boxSizing: 'border-box'
   },
   content: spacing.sapUiContentPadding

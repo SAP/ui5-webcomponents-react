@@ -1,14 +1,14 @@
 import { boolean, select, text } from '@storybook/addon-knobs/';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { FlexBox } from '../../lib/FlexBox';
-import { FlexBoxAlignItems } from '../../lib/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../lib/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '../../lib/FlexBoxJustifyContent';
-import { FlexBoxWrap } from '../../lib/FlexBoxWrap';
-import { Label } from '../../lib/Label';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
 
-storiesOf('Components | FlexBox', module).add('Default', () => (
+export const defaultStory = () => (
   <FlexBox
     justifyContent={select('justifyContent', FlexBoxJustifyContent, FlexBoxJustifyContent.Start)}
     alignItems={select('alignItems', FlexBoxAlignItems, FlexBoxAlignItems.Stretch)}
@@ -24,4 +24,12 @@ storiesOf('Components | FlexBox', module).add('Default', () => (
     <Label>Item 4</Label>
     <Label>Item 5</Label>
   </FlexBox>
-));
+);
+defaultStory.story = {
+  name: 'Default'
+};
+
+export default {
+  title: 'Components | FlexBox',
+  component: FlexBox
+};

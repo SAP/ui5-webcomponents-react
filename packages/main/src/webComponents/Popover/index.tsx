@@ -1,11 +1,13 @@
-import { Event, useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
+import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Popover from '@ui5/webcomponents/dist/Popover';
-import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useRef } from 'react';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { PlacementType } from '../../lib/PlacementType';
-import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
-import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
+import React, { CSSProperties, ReactNode, RefObject, useCallback, useEffect, useMemo, useRef } from 'react';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {
   initialFocus?: string; // @generated
@@ -15,7 +17,6 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
   verticalAlign?: PopoverVerticalAlign; // @generated
   modal?: boolean; // @generated
   noArrow?: boolean; // @generated
-  stayOpenOnScroll?: boolean; // @generated
   allowTargetOverlap?: boolean; // @generated
   onBeforeOpen?: (event: Event) => void; // @generated
   onAfterOpen?: (event: Event) => void; // @generated
@@ -27,20 +28,27 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
   openByStyle?: CSSProperties;
   openBy?: ReactNode;
   open?: boolean;
+  propagateOpenByClickEvent?: boolean;
 }
 
 const InternalPopover = withWebComponent<PopoverPropTypes>(UI5Popover);
 
 export const Popover = React.forwardRef((props: PopoverPropTypes, givenRef: RefObject<Ui5PopoverDomRef>) => {
-  const { openBy, openByStyle, open, ...rest } = props;
+  const { propagateOpenByClickEvent, openBy, openByStyle, open, ...rest } = props;
 
   const openByRef: RefObject<HTMLDivElement> = useRef(null);
 
   const internalPopoverRef = useConsolidatedRef<Ui5PopoverDomRef>(givenRef);
 
-  const handleOpenPopover = useCallback(() => {
-    internalPopoverRef.current.openBy && internalPopoverRef.current.openBy(openByRef.current);
-  }, [internalPopoverRef, openByRef]);
+  const handleOpenPopover = useCallback(
+    (e) => {
+      internalPopoverRef.current.openBy && internalPopoverRef.current.openBy(openByRef.current);
+      if (e && !propagateOpenByClickEvent) {
+        e.stopPropagation();
+      }
+    },
+    [internalPopoverRef, openByRef]
+  );
 
   const closePopover = useCallback(() => {
     internalPopoverRef.current.close && internalPopoverRef.current.close();
@@ -54,10 +62,12 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, givenRef: RefO
     }
   }, [open]);
 
-  let style = { display: 'inline-block' };
-  if (openByStyle) {
-    style = Object.assign(openByStyle, style);
-  }
+  const style = useMemo(() => {
+    return {
+      display: 'inline-block',
+      ...openByStyle
+    };
+  }, [openByStyle]);
 
   return (
     <>
@@ -73,9 +83,10 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, givenRef: RefO
 
 Popover.defaultProps = {
   initialFocus: null, // @generated
-  headerText: '', // @generated
+  headerText: null, // @generated
   placementType: PlacementType.Right, // @generated
   horizontalAlign: PopoverHorizontalAlign.Center, // @generated
-  verticalAlign: PopoverVerticalAlign.Center // @generated
+  verticalAlign: PopoverVerticalAlign.Center, // @generated
+  propagateOpenByClickEvent: true
 };
 Popover.displayName = 'Popover';

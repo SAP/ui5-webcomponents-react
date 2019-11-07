@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Analytical Card Render without Crashing 1`] = `
+<div
+  class="AnalyticalCard--card-"
+  style="width: 20rem;"
+>
+  <div
+    class="AnalyticalCardHeader--cardHeader-"
+  >
+    <div
+      class="AnalyticalCardHeader--headerContent-"
+    >
+      <div
+        class="AnalyticalCardHeader--headerTitles-"
+      >
+        <div
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentSpaceBetween- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+        >
+          <div
+            class="AnalyticalCardHeader--headerText-"
+          >
+            Title
+          </div>
+          <div
+            class="ObjectStatus--objectStatus- AnalyticalCardHeader--counter-"
+          />
+        </div>
+        <div
+          class="AnalyticalCardHeader--subHeaderText-"
+        >
+          Subtitle
+        </div>
+      </div>
+      <div
+        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap- AnalyticalCardHeader--kpiContent-"
+      >
+        <div
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+        >
+          <div
+            class="AnalyticalCardHeader--valueAndUnit- AnalyticalCardHeader--good-"
+          >
+            <div
+              class="AnalyticalCardHeader--value-"
+            >
+              Value
+            </div>
+            <div
+              class="AnalyticalCardHeader--indicatorAndUnit-"
+            >
+              <div
+                class="AnalyticalCardHeader--arrowIndicatorShape- AnalyticalCardHeader--arrowDown- AnalyticalCardHeader--good-"
+              />
+              <div
+                class="AnalyticalCardHeader--unit-"
+              >
+                Unit
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap- AnalyticalCardHeader--targetAndDeviation-"
+        >
+          <div
+            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap- AnalyticalCardHeader--targetAndDeviationColumn-"
+          >
+            <span>
+              Target
+            </span>
+            <span
+              class="AnalyticalCardHeader--targetAndDeviationValue-"
+            >
+              Target
+            </span>
+          </div>
+          <div
+            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap- AnalyticalCardHeader--targetAndDeviationColumn-"
+          >
+            <span>
+              Deviation
+            </span>
+            <span
+              class="AnalyticalCardHeader--targetAndDeviationValue-"
+            >
+              Deviation
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="AnalyticalCardHeader--description-"
+      >
+        Description
+      </div>
+    </div>
+  </div>
+  <div
+    class="AnalyticalCard--content-"
+  >
+    <span
+      class="Text--text-"
+    >
+      I'm a content!
+    </span>
+  </div>
+</div>
+`;

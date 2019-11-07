@@ -1,11 +1,15 @@
 import { boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { ButtonDesign } from '../../lib/ButtonDesign';
-import { ToggleButton } from '../../lib/ToggleButton';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 
-storiesOf('UI5 Web Components | ToggleButton', module).add('Generated default story', () => (
+export default {
+  title: 'UI5 Web Components | ToggleButton',
+  component: ToggleButton
+};
+
+export const generatedDefaultStory = () => (
   <ToggleButton
     design={select('design', ButtonDesign, null)}
     disabled={boolean('disabled', false)}
@@ -16,4 +20,8 @@ storiesOf('UI5 Web Components | ToggleButton', module).add('Generated default st
   >
     Some Content
   </ToggleButton>
-));
+);
+
+generatedDefaultStory.story = {
+  name: 'Generated default story'
+};

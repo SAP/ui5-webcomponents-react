@@ -12,12 +12,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiPageFooterBackground
   },
   paginationTop: {
-    borderBottom: `1px solid ${parameters.sapUiPageFooterBorderColor}`,
-    '&$paginationArrowContent': {
-      '& $paginationArrow': {
-        top: 'calc(50% + 2rem) !important'
-      }
-    }
+    borderBottom: `1px solid ${parameters.sapUiPageFooterBorderColor}`
   },
   paginationBottom: {
     borderTop: `1px solid ${parameters.sapUiPageFooterBorderColor}`
@@ -44,15 +39,14 @@ const styles = ({ parameters }: JSSTheme) => ({
     borderRadius: '50%',
     alignSelf: 'center',
     boxSizing: 'border-box',
-    backgroundColor: parameters.sapUiContentNonInteractiveIconColor,
-    '&$paginationIconActive': {
-      margin: '0 0.25rem',
-      width: '0.5rem',
-      height: '0.5rem',
-      backgroundColor: parameters.sapUiSelected
-    }
+    backgroundColor: parameters.sapUiContentNonInteractiveIconColor
   },
-  paginationIconActive: {},
+  paginationIconActive: {
+    margin: '0 0.25rem',
+    width: '0.5rem',
+    height: '0.5rem',
+    backgroundColor: parameters.sapUiSelected
+  },
   paginationArrow: {
     boxShadow: 'none',
     border: `1px solid ${parameters.sapUiButtonBorderColor}`,
@@ -71,22 +65,36 @@ const styles = ({ parameters }: JSSTheme) => ({
       color: parameters.sapUiButtonEmphasizedTextColor
     }
   },
+  '@global html[dir="rtl"] div[data-value="paginationArrow"] ui5-icon': {
+    transform: 'rotate(180deg)'
+  },
   paginationArrowContent: {
     '& $paginationArrow': {
       boxShadow: parameters.sapUiShadowLevel1,
       '&:first-child': {
         position: 'absolute',
-        top: 'calc(50% - 2rem)',
+        top: 'calc(50% - 2.75rem)',
         left: '0.5rem',
         opacity: 0,
         zIndex: ZIndex.InputModal
       },
       '&:last-child': {
         position: 'absolute',
-        top: 'calc(50% - 2rem)',
+        top: 'calc(50% - 2.75rem)',
         right: '0.5rem',
         opacity: 0,
         zIndex: ZIndex.InputModal
+      }
+    }
+  },
+  paginationArrowContentNoBar: {
+    composes: ['$paginationArrowContent'],
+    '& $paginationArrow': {
+      '&:first-child': {
+        top: 'calc(50% - 1rem)'
+      },
+      '&:last-child': {
+        top: 'calc(50% - 1rem)'
       }
     }
   }

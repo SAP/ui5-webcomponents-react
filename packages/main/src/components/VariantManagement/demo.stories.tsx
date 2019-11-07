@@ -1,26 +1,28 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text, select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { PlacementType } from '../../lib/PlacementType';
-import { TitleLevel } from '../../lib/TitleLevel';
-import { VariantManagement } from '../../lib/VariantManagement';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 
-function renderStory() {
-  const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
+const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
+export const renderStory = () => (
+  <VariantManagement
+    style={{ width: '300px', height: 'auto' }}
+    closeOnItemSelect={boolean('closeOnItemSelect', true)}
+    initialSelectedKey={text('initialSelectedKey', '2')}
+    variantItems={variantItems}
+    onSelect={action('onSelect')}
+    placement={select('Placement', PlacementType, PlacementType.Bottom)}
+    level={select('level', TitleLevel, TitleLevel.H4)}
+    disabled={boolean('disabled', false)}
+  />
+);
+renderStory.story = {
+  name: 'Default'
+};
 
-  return (
-    <VariantManagement
-      style={{ width: '300px', height: 'auto' }}
-      closeOnItemSelect={boolean('closeOnItemSelect', true)}
-      initialSelectedKey={text('initialSelectedKey', '2')}
-      variantItems={variantItems}
-      onSelect={action('onSelect')}
-      placement={select('Placement', PlacementType, PlacementType.Bottom)}
-      level={select('level', TitleLevel, TitleLevel.H4)}
-      disabled={boolean('disabled', false)}
-    />
-  );
-}
-
-storiesOf('Components | VariantManagement', module).add('Default', renderStory);
+export default {
+  title: 'Components | VariantManagement',
+  component: VariantManagement
+};

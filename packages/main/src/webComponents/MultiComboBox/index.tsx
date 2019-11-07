@@ -1,14 +1,15 @@
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import '@ui5/webcomponents/dist/features/InputSuggestions';
 import UI5MultiComboBox from '@ui5/webcomponents/dist/MultiComboBox';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { ValueState } from '../../lib/ValueState';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 export interface MultiComboBoxPropTypes extends WithWebComponentPropTypes {
   value?: string; // @generated
   placeholder?: string; // @generated
-  validateInput?: boolean; // @generated
+  allowCustomValues?: boolean; // @generated
   disabled?: boolean; // @generated
   valueState?: ValueState; // @generated
   readonly?: boolean; // @generated

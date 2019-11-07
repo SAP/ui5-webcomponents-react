@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page Basic Page 1`] = `
+<div
+  style="height:100vh;width:100vw"
+>
+  <div
+    class="Page--pageContainer- Page--pageWithHeader- Page--pageWithFooter- Page--backgroundStandard-"
+  >
+    <header
+      class="Page--pageHeader- Page--baseBar-"
+    >
+      <div
+        class="Bar--bar-"
+        data-bar-part="Root"
+      >
+        <div
+          class="Bar--left-"
+          data-bar-part="Left"
+        >
+          <ui5-button
+            class=""
+            design="Transparent"
+            icon="navigation-left-arrow"
+          />
+        </div>
+        <div
+          class="Bar--center-"
+          data-bar-part="Center"
+        >
+          <div
+            class="Bar--inner-"
+          >
+            <ui5-title
+              class=""
+              level="H5"
+            >
+              Page Demo
+            </ui5-title>
+          </div>
+        </div>
+        <div
+          class="Bar--right-"
+          data-bar-part="Right"
+        />
+      </div>
+    </header>
+    <section
+      class="Page--contentSection-"
+    >
+      Page Content
+    </section>
+    <footer
+      class="Page--pageFooter- Page--baseBar-"
+    />
+  </div>
+</div>
+`;
+
+exports[`Page Basic Page w/o back button 1`] = `
+<div
+  style="height:100vh;width:100vw"
+>
+  <div
+    class="Page--pageContainer- Page--pageWithHeader- Page--pageWithFooter- Page--backgroundStandard-"
+  >
+    <header
+      class="Page--pageHeader- Page--baseBar-"
+    >
+      <div
+        class="Bar--bar-"
+        data-bar-part="Root"
+      >
+        <div
+          class="Bar--left-"
+          data-bar-part="Left"
+        />
+        <div
+          class="Bar--center-"
+          data-bar-part="Center"
+        >
+          <div
+            class="Bar--inner-"
+          >
+            <ui5-title
+              class=""
+              level="H5"
+            >
+              Page Demo
+            </ui5-title>
+          </div>
+        </div>
+        <div
+          class="Bar--right-"
+          data-bar-part="Right"
+        />
+      </div>
+    </header>
+    <section
+      class="Page--contentSection-"
+    >
+      Page Content
+    </section>
+    <footer
+      class="Page--pageFooter- Page--baseBar-"
+    />
+  </div>
+</div>
+`;
+
+exports[`Page Without footer and Header 1`] = `
+<div
+  class="Page--pageContainer- Page--backgroundStandard-"
+>
+  <section
+    class="Page--contentSection-"
+  >
+    Page Content
+  </section>
+</div>
+`;

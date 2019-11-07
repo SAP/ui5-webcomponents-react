@@ -1,5 +1,7 @@
 const { writeFileSync } = require('fs');
-const { _: Fiori3ThemingVariables } = require('@ui5/webcomponents/dist/themes/sap_fiori_3/parameters-bundle.css.json');
+const {
+  _: Fiori3ThemingVariables
+} = require('@ui5/webcomponents/dist/assets/themes/sap_fiori_3/parameters-bundle.css.json');
 const PATHS = require('../../../../config/paths');
 const path = require('path');
 
@@ -21,4 +23,4 @@ for (const variable of variables) {
   fileContent += `export const ${variable.replace('--', '')} = 'var(${variable})';\n`;
 }
 
-writeFileSync(path.join(PATHS.packages, 'base', 'src', 'sap_fiori_3.ts'), fileContent);
+writeFileSync(path.join(PATHS.packages, 'base', 'src', 'styling', 'sap_fiori_3.ts'), fileContent);

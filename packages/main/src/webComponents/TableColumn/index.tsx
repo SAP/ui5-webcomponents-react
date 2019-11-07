@@ -1,12 +1,12 @@
 import UI5TableColumn from '@ui5/webcomponents/dist/TableColumn';
 import React, { CSSProperties, FC, ReactNode } from 'react';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TableColumnPropTypes extends WithWebComponentPropTypes {
   minWidth?: number; // @generated
   popinText?: string; // @generated
   demandPopin?: boolean; // @generated
-  width?: CSSProperties['width'] | CSSProperties['height']; // @generated
   children?: ReactNode; // @generated
 }
 
@@ -15,8 +15,7 @@ const TableColumn: FC<TableColumnPropTypes> = withWebComponent<TableColumnPropTy
 TableColumn.displayName = 'TableColumn';
 
 TableColumn.defaultProps = {
-  minWidth: Infinity, // @generated
-  width: '' // @generated
+  minWidth: null // @generated
 };
 
 export { TableColumn };

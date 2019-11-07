@@ -5,7 +5,7 @@ import UI5LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign';
 import UI5ListMode from '@ui5/webcomponents/dist/types/ListMode';
 import UI5ListItemTypes from '@ui5/webcomponents/dist/types/ListItemType';
 import UI5PopoverPlacementTypes from '@ui5/webcomponents/dist/types/PopoverPlacementType';
-import UI5BusyIndicatorType from '@ui5/webcomponents/dist/types/BusyIndicatorType';
+import UI5BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize';
 import UI5ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators';
 import UI5PanelAccessibleRoles from '@ui5/webcomponents/dist/types/PanelAccessibleRole';
 import UI5PopoverHorizontalAligns from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign';
@@ -13,75 +13,75 @@ import UI5PopoverVerticalAligns from '@ui5/webcomponents/dist/types/PopoverVerti
 import UI5SemanticColors from '@ui5/webcomponents/dist/types/SemanticColor';
 import UI5TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel';
 import UI5MessageStripType from '@ui5/webcomponents/dist/types/MessageStripType';
-import CSSSize from '@ui5/webcomponents-base/src/types/CSSSize';
-import Integer from '@ui5/webcomponents-base/src/types/Integer';
-import UI5ValueState from '@ui5/webcomponents-base/src/types/ValueState';
-import UI5CalendarType from '@ui5/webcomponents-base/src/dates/CalendarType';
+import CSSSize from '@ui5/webcomponents-base/dist/types/CSSSize';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
+import UI5ValueState from '@ui5/webcomponents-base/dist/types/ValueState';
+import UI5CalendarType from '@ui5/webcomponents-base/dist/dates/CalendarType';
 import TimelineItem from '@ui5/webcomponents/dist/TimelineItem';
 
 const mappings = {
   [UI5ButtonDesign]: {
-    importStatement: "import { ButtonDesign } from '../../lib/ButtonDesign';",
+    importStatement: "import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';",
     tsType: 'ButtonDesign',
     isEnum: true
   },
   [UI5PopoverPlacementTypes]: {
-    importStatement: "import { PlacementType } from '../../lib/PlacementType';",
+    importStatement: "import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';",
     tsType: 'PlacementType',
     isEnum: true
   },
-  [UI5BusyIndicatorType]: {
-    importStatement: "import { BusyIndicatorType } from '../../lib/BusyIndicatorType';",
-    tsType: 'BusyIndicatorType',
+  [UI5BusyIndicatorSize]: {
+    importStatement: "import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';",
+    tsType: 'BusyIndicatorSize',
     isEnum: true
   },
   [UI5PopoverHorizontalAligns]: {
-    importStatement: "import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';",
+    importStatement: "import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';",
     tsType: 'PopoverHorizontalAlign',
     isEnum: true
   },
   [UI5PopoverVerticalAligns]: {
-    importStatement: "import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';",
+    importStatement: "import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';",
     tsType: 'PopoverVerticalAlign',
     isEnum: true
   },
   [UI5LinkDesign]: {
-    importStatement: "import { LinkDesign } from '../../lib/LinkDesign';",
+    importStatement: "import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';",
     tsType: 'LinkDesign',
     isEnum: true
   },
   [UI5SemanticColors]: {
-    importStatement: "import { SemanticColor } from '../../lib/SemanticColor';",
+    importStatement: "import { SemanticColor } from '@ui5/webcomponents-react/lib/SemanticColor';",
     tsType: 'SemanticColor',
     isEnum: true
   },
   [UI5ListItemTypes]: {
-    importStatement: "import { ListItemTypes } from '../../lib/ListItemTypes';",
+    importStatement: "import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';",
     tsType: 'ListItemTypes',
     isEnum: true
   },
   [UI5PanelAccessibleRoles]: {
-    importStatement: "import { PanelAccessibleRoles } from '../../lib/PanelAccessibleRoles';",
+    importStatement: "import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';",
     tsType: 'PanelAccessibleRoles',
     isEnum: true
   },
   [UI5ListSeparators]: {
-    importStatement: "import { ListSeparators } from '../../lib/ListSeparators';",
+    importStatement: "import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';",
     tsType: 'ListSeparators',
     isEnum: true
   },
   [UI5ListMode]: {
-    importStatement: "import { ListMode } from '../../lib/ListMode';",
+    importStatement: "import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';",
     tsType: 'ListMode',
     isEnum: true
   },
   [UI5TitleLevel]: {
-    importStatement: "import { TitleLevel } from '../../lib/TitleLevel';",
+    importStatement: "import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';",
     tsType: 'TitleLevel',
     isEnum: true
   },
   [UI5InputType]: {
-    importStatement: "import { InputType } from '../../lib/InputType';",
+    importStatement: "import { InputType } from '@ui5/webcomponents-react/lib/InputType';",
     tsType: 'InputType',
     isEnum: true
   },
@@ -90,17 +90,17 @@ const mappings = {
     comment: 'UI5 Icon Web Component'
   },
   [UI5CalendarType]: {
-    importStatement: "import { CalendarType } from '../../lib/CalendarType';",
+    importStatement: "import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';",
     tsType: 'CalendarType',
     isEnum: true
   },
   [UI5ValueState]: {
-    importStatement: "import { ValueState } from '../../lib/ValueState';",
+    importStatement: "import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';",
     tsType: 'ValueState',
     isEnum: true
   },
   [UI5MessageStripType]: {
-    importStatement: "import { MessageStripType } from '../../lib/MessageStripType';",
+    importStatement: "import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';",
     tsType: 'MessageStripType',
     isEnum: true
   },
@@ -214,7 +214,7 @@ export function generateTypings(meta) {
     .forEach(([key]) => {
       typings[mapEventName(key)] = {
         tsType: '(event : Event) => void',
-        importStatement: "import { Event } from '@ui5/webcomponents-react-base';"
+        importStatement: "import { Event } from '@ui5/webcomponents-react-base/lib/Event';"
       };
     });
 

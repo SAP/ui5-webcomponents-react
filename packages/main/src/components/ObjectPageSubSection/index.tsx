@@ -1,9 +1,11 @@
-import { fonts, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, { forwardRef, ReactNode, ReactNodeArray, RefObject, FC } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
+import { useScrollElement } from '../ObjectPage/scroll/useScrollElement';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
   title?: string;
@@ -20,7 +22,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   objectPageSubSectionHeaderTitle: {
-    fontSize: fonts.sapMFontHeader5Size,
+    fontSize: parameters.sapMFontHeader5Size,
     color: parameters.sapUiGroupTitleTextColor,
     marginBottom: '0.5rem'
   },
@@ -39,6 +41,13 @@ const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
       throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
     }
 
+    const htmlRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
+    const htmlId = `ObjectPageSubSection-${id}`;
+
+    useScrollElement(htmlId, htmlRef, {
+      spy: false
+    });
+
     const classes = useStyles();
     const subSectionClassName = StyleClassHelper.of(classes.objectPageSubSection);
     if (className) {
@@ -47,9 +56,9 @@ const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
 
     return (
       <div
-        ref={ref}
+        ref={htmlRef}
         className={subSectionClassName.toString()}
-        id={`ObjectPageSubSection-${id}`}
+        id={htmlId}
         role="region"
         style={style}
         title={tooltip}

@@ -6,17 +6,19 @@ import { ActionSheet } from './lib/ActionSheet';
 import { AnalyticalCard } from './lib/AnalyticalCard';
 import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';
 import { AnalyticalTable } from './lib/AnalyticalTable';
+import { AnalyticalTableScrollMode } from './lib/AnalyticalTableScrollMode';
 import { Avatar } from './lib/Avatar';
 import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
 import { Badge } from './lib/Badge';
 import { Bar } from './lib/Bar';
+import { Breadcrumbs } from './lib/Breadcrumbs';
+import { BreadcrumbsSeparatorStyle } from './lib/BreadcrumbsSeparatorStyle';
 import { BusyIndicator } from './lib/BusyIndicator';
-import { BusyIndicatorType } from './lib/BusyIndicatorType';
+import { BusyIndicatorSize } from './lib/BusyIndicatorSize';
 import { Button } from './lib/Button';
 import { ButtonDesign } from './lib/ButtonDesign';
 import { Calendar } from './lib/Calendar';
-import { CalendarHeader } from './lib/CalendarHeader';
 import { CalendarType } from './lib/CalendarType';
 import { Card } from './lib/Card';
 import { Carousel } from './lib/Carousel';
@@ -25,7 +27,6 @@ import { CheckBox } from './lib/CheckBox';
 import { ContentDensity } from './lib/ContentDensity';
 import { CustomListItem } from './lib/CustomListItem';
 import { DatePicker } from './lib/DatePicker';
-import { DayPicker } from './lib/DayPicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
 import { Dialog } from './lib/Dialog';
 import { FilterBar } from './lib/FilterBar';
@@ -46,19 +47,17 @@ import { Label } from './lib/Label';
 import { Link } from './lib/Link';
 import { LinkDesign } from './lib/LinkDesign';
 import { List } from './lib/List';
-import { ListItem } from './lib/ListItem';
-import { ListItemBase } from './lib/ListItemBase';
 import { ListItemTypes } from './lib/ListItemTypes';
 import { ListMode } from './lib/ListMode';
 import { ListSeparators } from './lib/ListSeparators';
+import { Loader } from './lib/Loader';
+import { LoaderType } from './lib/LoaderType';
 import { MessageBox } from './lib/MessageBox';
 import { MessageBoxActions } from './lib/MessageBoxActions';
-import { MessageBoxButton } from './lib/MessageBoxButton';
 import { MessageBoxTypes } from './lib/MessageBoxTypes';
 import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
 import { MessageToast } from './lib/MessageToast';
-import { MonthPicker } from './lib/MonthPicker';
 import { MultiComboBox } from './lib/MultiComboBox';
 import { ObjectPage } from './lib/ObjectPage';
 import { ObjectPageMode } from './lib/ObjectPageMode';
@@ -74,7 +73,6 @@ import { PlacementType } from './lib/PlacementType';
 import { Popover } from './lib/Popover';
 import { PopoverHorizontalAlign } from './lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from './lib/PopoverVerticalAlign';
-import { Popup } from './lib/Popup';
 import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
 import { SegmentedButton } from './lib/SegmentedButton';
@@ -83,12 +81,14 @@ import { Select } from './lib/Select';
 import { SemanticColor } from './lib/SemanticColor';
 import { ShellBar } from './lib/ShellBar';
 import { ShellBarItem } from './lib/ShellBarItem';
+import { SideNavigation } from './lib/SideNavigation';
+import { SideNavigationListItem } from './lib/SideNavigationListItem';
+import { SideNavigationOpenState } from './lib/SideNavigationOpenState';
 import { Size } from './lib/Size';
 import { Spinner } from './lib/Spinner';
 import { StandardListItem } from './lib/StandardListItem';
 import { Switch } from './lib/Switch';
 import { Tab } from './lib/Tab';
-import { TabBase } from './lib/TabBase';
 import { TabContainer } from './lib/TabContainer';
 import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
@@ -110,24 +110,25 @@ import { Tokenizer } from './lib/Tokenizer';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
-import { YearPicker } from './lib/YearPicker';
 
 export {
   ActionSheet,
   AnalyticalCard,
   AnalyticalCardHeader,
   AnalyticalTable,
+  AnalyticalTableScrollMode,
   Avatar,
   AvatarShape,
   AvatarSize,
   Badge,
   Bar,
+  Breadcrumbs,
+  BreadcrumbsSeparatorStyle,
   BusyIndicator,
-  BusyIndicatorType,
+  BusyIndicatorSize,
   Button,
   ButtonDesign,
   Calendar,
-  CalendarHeader,
   CalendarType,
   Card,
   Carousel,
@@ -136,7 +137,6 @@ export {
   ContentDensity,
   CustomListItem,
   DatePicker,
-  DayPicker,
   DeviationIndicator,
   Dialog,
   FilterBar,
@@ -157,19 +157,17 @@ export {
   Link,
   LinkDesign,
   List,
-  ListItem,
-  ListItemBase,
   ListItemTypes,
   ListMode,
   ListSeparators,
+  Loader,
+  LoaderType,
   MessageBox,
   MessageBoxActions,
-  MessageBoxButton,
   MessageBoxTypes,
   MessageStrip,
   MessageStripType,
   MessageToast,
-  MonthPicker,
   MultiComboBox,
   ObjectPage,
   ObjectPageMode,
@@ -185,7 +183,6 @@ export {
   Popover,
   PopoverHorizontalAlign,
   PopoverVerticalAlign,
-  Popup,
   ProgressIndicator,
   RadioButton,
   SegmentedButton,
@@ -194,12 +191,14 @@ export {
   SemanticColor,
   ShellBar,
   ShellBarItem,
+  SideNavigation,
+  SideNavigationListItem,
+  SideNavigationOpenState,
   Size,
   Spinner,
   StandardListItem,
   Switch,
   Tab,
-  TabBase,
   TabContainer,
   TabSeparator,
   Table,
@@ -220,6 +219,5 @@ export {
   Tokenizer,
   ValueState,
   VariantManagement,
-  VerticalAlign,
-  YearPicker
+  VerticalAlign
 };

@@ -1,11 +1,11 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, { forwardRef, Ref, useMemo } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, usePieLegendItemClickHandler } from '../../internal/ChartLegend';
-import { withChartContainer } from '../../internal/withChartContainer';
+import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import { getCssVariableValue } from '../../themes/Utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
@@ -45,7 +45,9 @@ const PieChartComponent = forwardRef((props: PieChartPropTypes, ref: Ref<any>) =
           anchor: 'end',
           align: 'end',
           color: getCssVariableValue('--sapUiBaseText', '#32363a'),
-          formatter: valueAxisFormatter
+          formatter: (val, context) => {
+            return valueAxisFormatter(val, context.dataset, context);
+          }
         }
       }
     };

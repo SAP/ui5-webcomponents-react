@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel Basic Test (generated) 1`] = `
+<ui5-panel
+  accessible-role="Form"
+  class=""
+  header-text=""
+/>
+`;

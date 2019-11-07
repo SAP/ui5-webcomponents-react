@@ -1,11 +1,10 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export const TextStyles = ({ parameters }: JSSTheme) => ({
   // Text Style
   text: {
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize,
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
     color: parameters.sapUiBaseText,
     display: 'inline-block',

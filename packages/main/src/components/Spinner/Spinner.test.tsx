@@ -1,7 +1,7 @@
 import { renderThemedComponent } from '@shared/tests/utils';
 import React from 'react';
-import { Size } from '../../lib/Size';
-import { Spinner } from '../../lib/Spinner';
+import { Size } from '@ui5/webcomponents-react/lib/Size';
+import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
 
 describe('Spinner', () => {
   test('small', () => {
@@ -21,6 +21,11 @@ describe('Spinner', () => {
 
   test('with custom class name', () => {
     const wrapper = renderThemedComponent(<Spinner size={Size.Large} className="testClassName1337" />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('with delay', () => {
+    const wrapper = renderThemedComponent(<Spinner size={Size.Large} delay={2000} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

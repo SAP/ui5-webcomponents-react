@@ -1,9 +1,10 @@
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import UI5List from '@ui5/webcomponents/dist/List';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { ListMode } from '../../lib/ListMode';
-import { ListSeparators } from '../../lib/ListSeparators';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
+import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
 
 export interface ListPropTypes extends WithWebComponentPropTypes {
   headerText?: string;

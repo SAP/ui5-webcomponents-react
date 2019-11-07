@@ -1,21 +1,11 @@
-import { ContentDensity } from '../../lib/ContentDensity';
-
-/**
- * Style Class Generator Function
- *
- * @param {Object} themeContext - Current Theme Context by JSS Provider.
- * @param {string} obj.theme - Current Theme (sap_fiori_3)
- * @param {string} obj.contentDensity - Current Content Density (Cozy, Compact)
- * @param {object} obj.parameters - Theming parameters (e.g. LabelColor)
- */
-const styles = ({ theme, contentDensity }) => ({
+const styles = {
   // outer container, controlling height and width
   bar: {
     width: '100%',
     display: 'block',
     position: 'relative',
-    height: ContentDensity.Compact === contentDensity ? '2.5rem' : '2.75rem',
-    lineHeight: ContentDensity.Compact === contentDensity ? '2.5rem' : '2.75rem',
+    height: '2.75rem',
+    lineHeight: '2.75rem',
     '& ui5-button': {
       display: 'flex'
     }
@@ -43,7 +33,7 @@ const styles = ({ theme, contentDensity }) => ({
   inner: {
     display: 'inline-block',
     padding: '0 0.5rem 0 0.5rem',
-    height: ContentDensity.Compact === contentDensity ? '2.5rem' : '2.75rem'
+    height: '2.75rem'
   },
   // right container
   right: {
@@ -55,7 +45,17 @@ const styles = ({ theme, contentDensity }) => ({
     textAlign: 'right',
     display: 'flex',
     alignItems: 'center'
+  },
+
+  compact: {
+    '&$bar': {
+      height: '2.5rem',
+      lineHeight: '2.5rem'
+    },
+    '& $inner': {
+      height: '2.5rem'
+    }
   }
-});
+};
 
 export default styles;

@@ -1,17 +1,18 @@
-import { Event, StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, { FC, forwardRef, ReactNode, RefObject, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { BusyIndicator } from '../../lib/BusyIndicator';
-import { FilterType } from '../../lib/FilterType';
-import { Input } from '../../lib/Input';
-import { Label } from '../../lib/Label';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
+import { FilterType } from '@ui5/webcomponents-react/lib/FilterType';
+import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { createUseStyles } from 'react-jss';
-import { Select } from '../../lib/Select';
-import { MultiComboBox } from '../../lib/MultiComboBox';
-import { StandardListItem } from '../../lib/StandardListItem';
-import { Option } from '../../lib/Option';
+import { Select } from '@ui5/webcomponents-react/lib/Select';
+import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { Option } from '@ui5/webcomponents-react/lib/Option';
 import styles from './FilterItem.jss';
-import { BusyIndicatorType } from '../../lib/BusyIndicatorType';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 
 export interface FilterItemPropTypes extends CommonProps {
   placeholder?: string;
@@ -71,7 +72,7 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
         <div className={classes.loadingContainer}>
           <BusyIndicator
             active
-            size={BusyIndicatorType.Medium}
+            size={BusyIndicatorSize.Medium}
             style={{ backgroundColor: 'transparent', width: '80px' }}
           />
         </div>

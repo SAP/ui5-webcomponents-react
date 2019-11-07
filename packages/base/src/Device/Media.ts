@@ -1,6 +1,6 @@
 import { changeRootCSSClass, getQuery, matchLegacyBySize, windowSize } from './utils';
 import { EventRegistry } from './EventRegistry';
-import { Logger } from '../Logger';
+import { Logger } from '../utils/Logger';
 
 export enum RANGESETS {
   SAP_3STEPS = '3Step',

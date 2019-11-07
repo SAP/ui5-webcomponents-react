@@ -1,14 +1,18 @@
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { List } from '../../lib/List';
-import { ListMode } from '../../lib/ListMode';
-import { ListSeparators } from '../../lib/ListSeparators';
-import { StandardListItem } from '../../lib/StandardListItem';
-import { ValueState } from '../../lib/ValueState';
+import { List } from '@ui5/webcomponents-react/lib/List';
+import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
+import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
-storiesOf('UI5 Web Components | List', module).add('Generated default story', () => (
+export default {
+  title: 'UI5 Web Components | List',
+  component: List
+};
+
+export const generatedDefaultStory = () => (
   <List
     headerText={text('headerText', 'My List Header')}
     footerText={text('footerText', 'My Footer Test')}
@@ -27,4 +31,8 @@ storiesOf('UI5 Web Components | List', module).add('Generated default story', ()
     <StandardListItem>Item 2</StandardListItem>
     <StandardListItem>Item 3</StandardListItem>
   </List>
-));
+);
+
+generatedDefaultStory.story = {
+  name: 'Generated default story'
+};

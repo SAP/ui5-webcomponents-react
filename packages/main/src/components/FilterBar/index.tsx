@@ -1,12 +1,12 @@
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject, useCallback, useState } from 'react';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Button } from '../../lib/Button';
-import { ButtonDesign } from '../../lib/ButtonDesign';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import styles from './FilterBar.jss';
 import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 
 export interface FilterBarPropTypes extends CommonProps {
   renderVariants?: () => JSX.Element;

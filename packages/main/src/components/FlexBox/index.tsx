@@ -1,11 +1,11 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { FlexBoxAlignItems } from '../../lib/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../lib/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '../../lib/FlexBoxJustifyContent';
-import { FlexBoxWrap } from '../../lib/FlexBoxWrap';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
 import { styles } from './Flexbox.jss';
 
 const useStyles = createUseStyles(styles, { name: 'FlexBox' });

@@ -1,4 +1,3 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export default ({ parameters }: JSSTheme) => ({
@@ -15,8 +14,8 @@ export default ({ parameters }: JSSTheme) => ({
     maxWidth: '15rem !important'
   },
   messageToastBody: {
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize,
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
     textAlign: 'center',
     textOverflow: 'ellipsis',

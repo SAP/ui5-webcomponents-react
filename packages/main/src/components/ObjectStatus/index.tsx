@@ -1,10 +1,16 @@
-import { StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { FC, ReactNode } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React, { FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Icon } from '../../lib/Icon';
-import { ValueState } from '../../lib/ValueState';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './ObjectStatus.jss';
+import '@ui5/webcomponents/dist/icons/status-negative';
+import '@ui5/webcomponents/dist/icons/status-positive';
+import '@ui5/webcomponents/dist/icons/status-critical';
+import '@ui5/webcomponents/dist/icons/status-inactive';
+import '@ui5/webcomponents/dist/icons/hint';
 
 export interface ObjectStatusPropTypes extends CommonProps {
   children?: string | number | ReactNode;
@@ -13,8 +19,6 @@ export interface ObjectStatusPropTypes extends CommonProps {
   showDefaultIcon?: boolean;
 }
 
-interface ObjectStatusPropTypesInternal extends ObjectStatusPropTypes, ClassProps {}
-
 const defaultIconStyle = {
   fontSize: '1rem'
 };
@@ -22,33 +26,33 @@ const defaultIconStyle = {
 const getDefaultIcon = (state) => {
   switch (state) {
     case ValueState.Error:
-      return <Icon src="status-negative" style={defaultIconStyle} />;
+      return <Icon src="sap-icon://status-negative" style={defaultIconStyle} />;
     case ValueState.Success:
-      return <Icon src="status-positive" style={defaultIconStyle} />;
+      return <Icon src="sap-icon://status-positive" style={defaultIconStyle} />;
     case ValueState.Warning:
-      return <Icon src="status-critical" style={defaultIconStyle} />;
+      return <Icon src="sap-icon://status-critical" style={defaultIconStyle} />;
     case ValueState.Information:
-      return <Icon src="hint" style={defaultIconStyle} />;
+      return <Icon src="sap-icon://hint" style={defaultIconStyle} />;
     default:
-      return <Icon src="status-inactive" style={defaultIconStyle} />;
+      return <Icon src="sap-icon://status-inactive" style={defaultIconStyle} />;
   }
 };
 
-export const ObjectStatus: FC<ObjectStatusPropTypes> = withStyles(styles)((props: ObjectStatusPropTypes) => {
-  const {
-    state,
-    showDefaultIcon,
-    children,
-    icon,
-    classes,
-    className,
-    style,
-    tooltip,
-    innerRef,
-    slot
-  } = props as ObjectStatusPropTypesInternal;
-  const iconToRender = !icon && showDefaultIcon ? getDefaultIcon(state) : icon;
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectStatus' });
 
+const ObjectStatus: FC<ObjectStatusPropTypes> = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
+  const { state, showDefaultIcon, children, icon, className, style, tooltip, slot } = props;
+  const iconToRender = useMemo(() => {
+    if (icon) {
+      return icon;
+    }
+    if (showDefaultIcon) {
+      return getDefaultIcon(state);
+    }
+    return null;
+  }, [icon, showDefaultIcon, state]);
+
+  const classes = useStyles();
   const objStatusClasses = StyleClassHelper.of(classes.objectStatus);
 
   if (className) {
@@ -57,16 +61,17 @@ export const ObjectStatus: FC<ObjectStatusPropTypes> = withStyles(styles)((props
 
   const iconClasses = StyleClassHelper.of(classes.icon);
   iconClasses.put(classes[`icon${state}`]);
-
   const textClass = classes[`text${state}`];
 
   return (
-    <div ref={innerRef} className={objStatusClasses.valueOf()} style={style} title={tooltip} slot={slot}>
+    <div ref={ref} className={objStatusClasses.valueOf()} style={style} title={tooltip} slot={slot}>
       {iconToRender && <div className={iconClasses.valueOf()}>{iconToRender}</div>}
       {children !== null && children !== undefined && <span className={textClass}>{children}</span>}
     </div>
   );
 });
+
+ObjectStatus.displayName = 'ObjectStatus';
 
 ObjectStatus.defaultProps = {
   state: ValueState.None,
@@ -74,3 +79,5 @@ ObjectStatus.defaultProps = {
   icon: null,
   children: null
 };
+
+export { ObjectStatus };

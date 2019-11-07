@@ -1,4 +1,4 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, { forwardRef, Ref, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
@@ -6,10 +6,10 @@ import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
-import { withChartContainer } from '../../internal/withChartContainer';
+import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabel, useMergedConfig } from '../../util/Utils';
+import { formatAxisCallback, formatDataLabel, formatTooltipLabel, useMergedConfig } from '../../util/Utils';
 import { LineChartPlaceholder } from './Placeholder';
 
 export interface LineChartPropTypes extends ChartBaseProps {}
@@ -39,11 +39,18 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
             display: true,
             ticks: {
               ...DEFAULT_OPTIONS.scales.yAxes[0].ticks,
-              callback: valueAxisFormatter
+              callback: formatAxisCallback(valueAxisFormatter)
             }
           }
         ],
-        xAxes: DEFAULT_OPTIONS.scales.xAxes
+        xAxes: [
+          {
+            ...DEFAULT_OPTIONS.scales.xAxes[0],
+            ticks: {
+              callback: formatAxisCallback(categoryAxisFormatter)
+            }
+          }
+        ]
       },
       tooltips: {
         callbacks: {
@@ -52,7 +59,7 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
       },
       plugins: {
         datalabels: {
-          formatter: valueAxisFormatter
+          formatter: formatDataLabel(valueAxisFormatter)
         }
       }
     };

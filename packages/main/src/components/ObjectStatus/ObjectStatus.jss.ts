@@ -1,10 +1,9 @@
-import { fonts } from '@ui5/webcomponents-react-base';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
+const styles = ({ parameters }: JSSTheme) => ({
   objectStatus: {
-    fontFamily: fonts.sapUiFontFamily,
-    fontSize: fonts.sapMFontMediumSize,
+    fontFamily: parameters.sapUiFontFamily,
+    fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
     position: 'relative',
     display: 'flex'
@@ -48,7 +47,6 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => ({
     color: parameters.sapUiCriticalText
   },
   textInformation: {
-    // @ts-ignore
     color: parameters.sapUiInformativeText
   },
   textNone: {

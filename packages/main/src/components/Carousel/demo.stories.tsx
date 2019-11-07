@@ -1,15 +1,17 @@
 import { boolean, number, select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import React from 'react';
-import { Carousel } from '../../lib/Carousel';
-import { CarouselArrowsPlacement } from '../../lib/CarouselArrowsPlacement';
-import { Label } from '../../lib/Label';
-import { PlacementType } from '../../lib/PlacementType';
+import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
+import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 
-function renderCarousel() {
+export const renderCarousel = () => {
   return (
     <Carousel
+      width="90%"
       activePage={number('active', 0)}
+      onPageChanged={action('onPageChanged')}
       arrowsPlacement={select(
         'arrowsPlacement',
         Object.values(CarouselArrowsPlacement),
@@ -35,7 +37,10 @@ function renderCarousel() {
       <Label>Carousel 5</Label>
     </Carousel>
   );
-}
+};
+renderCarousel.story = {
+  name: 'Default'
+};
 
 const renderCarouselWithOneChild = () => {
   return (
@@ -58,7 +63,11 @@ const renderCarouselWithOneChild = () => {
     </Carousel>
   );
 };
+renderCarouselWithOneChild.story = {
+  name: 'with One Child'
+};
 
-storiesOf('Components | Carousel', module)
-  .add('Default', renderCarousel)
-  .add('with 1 Child', renderCarouselWithOneChild);
+export default {
+  title: 'Components | Carousel',
+  component: Carousel
+};

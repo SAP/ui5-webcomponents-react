@@ -1,9 +1,17 @@
 import { boolean, select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { BusyIndicator } from '../../lib/BusyIndicator';
-import { BusyIndicatorType } from '../../lib/BusyIndicatorType';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 
-storiesOf('UI5 Web Components | BusyIndicator', module).add('Default story', () => (
-  <BusyIndicator size={select('size', BusyIndicatorType, BusyIndicatorType.Large)} active={boolean('active', true)} />
-));
+export default {
+  title: 'UI5 Web Components | BusyIndicator',
+  component: BusyIndicator
+};
+
+export const defaultStory = () => (
+  <BusyIndicator size={select('size', BusyIndicatorSize, BusyIndicatorSize.Large)} active={boolean('active', true)} />
+);
+
+defaultStory.story = {
+  name: 'Default story'
+};

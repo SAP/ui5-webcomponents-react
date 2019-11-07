@@ -1,9 +1,7 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
-import { FlexBox } from '../../lib/FlexBox';
-import { FlexBoxJustifyContent } from '../../lib/FlexBoxJustifyContent';
-
-declare const expect: any;
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 
 describe('FlexBox', () => {
   test('JustifyContent: End', () => {

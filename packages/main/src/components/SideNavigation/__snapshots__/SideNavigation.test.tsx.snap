@@ -1,0 +1,593 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideNavigation Collapsed 1`] = `
+<div
+  class="SideNavigation--sideNavigation- SideNavigation--collapsed-"
+>
+  <ui5-list
+    class=""
+    footer-text=""
+    header-text=""
+    mode="None"
+    no-data-text=""
+    separators="All"
+  >
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="home"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://home"
+      />
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="calendar"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://calendar"
+      />
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="customers"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://employee"
+      />
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="true"
+      data-id="sales"
+      selected="true"
+      type="Active"
+    >
+      <span>
+        <ui5-icon
+          class="SideNavigationListItem--icon-"
+          src="sap-icon://lead"
+        />
+        <div
+          class="SideNavigationListItem--condensedExpandTriangle-"
+        />
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="delivieries"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://add-product"
+      />
+    </ui5-li-custom>
+  </ui5-list>
+  <span
+    style="flex-grow: 1;"
+  />
+  <span
+    class="SideNavigation--footerItemsSeparator-"
+  />
+  <ui5-list
+    class=""
+    footer-text=""
+    header-text=""
+    mode="None"
+    no-data-text=""
+    separators="All"
+  >
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="1"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://compare"
+      />
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="2"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://chain-link"
+      />
+    </ui5-li-custom>
+  </ui5-list>
+</div>
+`;
+
+exports[`SideNavigation Condensed 1`] = `
+<div
+  class="SideNavigation--sideNavigation- SideNavigation--condensed-"
+>
+  <ui5-list
+    class=""
+    footer-text=""
+    header-text=""
+    mode="None"
+    no-data-text=""
+    separators="All"
+  >
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="home"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://home"
+      />
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="calendar"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://calendar"
+      />
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="customers"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://employee"
+      />
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="true"
+      data-id="sales"
+      selected="true"
+      type="Active"
+    >
+      <span>
+        <ui5-icon
+          class="SideNavigationListItem--icon-"
+          src="sap-icon://lead"
+        />
+        <div
+          class="SideNavigationListItem--condensedExpandTriangle-"
+        />
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="delivieries"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://add-product"
+      />
+    </ui5-li-custom>
+  </ui5-list>
+  <span
+    style="flex-grow: 1;"
+  />
+  <span
+    class="SideNavigation--footerItemsSeparator-"
+  />
+  <ui5-list
+    class=""
+    footer-text=""
+    header-text=""
+    mode="None"
+    no-data-text=""
+    separators="All"
+  >
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="1"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://compare"
+      />
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="2"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://chain-link"
+      />
+    </ui5-li-custom>
+  </ui5-list>
+</div>
+`;
+
+exports[`SideNavigation Expanded 1`] = `
+<div
+  class="SideNavigation--sideNavigation- SideNavigation--expanded-"
+>
+  <ui5-list
+    class=""
+    footer-text=""
+    header-text=""
+    mode="None"
+    no-data-text=""
+    separators="All"
+  >
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="home"
+      title="Nav To Home Tooltip"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://home"
+      />
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Overview
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="calendar"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://calendar"
+      />
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Calendar
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="customers"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://employee"
+      />
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Customers
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem- SideNavigationListItem--expanded-"
+      data-has-children="true"
+      data-id="sales"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://lead"
+      />
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Sales
+      </span>
+      <span
+        class="SideNavigationListItem--expandArrow-"
+      >
+        <ui5-icon
+          class=""
+          src="sap-icon://navigation-down-arrow"
+        />
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="sales-opportunities"
+      data-is-child="true"
+      type="Active"
+    >
+      <span
+        class="SideNavigationListItem--icon-"
+      />
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        My Opportunities
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="sales-leads"
+      data-is-child="true"
+      selected="true"
+      type="Active"
+    >
+      <span
+        class="SideNavigationListItem--icon-"
+      />
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        My Leads
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="sales-cpqs"
+      data-is-child="true"
+      type="Active"
+    >
+      <span
+        class="SideNavigationListItem--icon-"
+      />
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        My CPQS
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="delivieries"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://add-product"
+      />
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Deliveries
+      </span>
+    </ui5-li-custom>
+  </ui5-list>
+  <span
+    style="flex-grow: 1;"
+  />
+  <span
+    class="SideNavigation--footerItemsSeparator-"
+  />
+  <ui5-list
+    class=""
+    footer-text=""
+    header-text=""
+    mode="None"
+    no-data-text=""
+    separators="All"
+  >
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="1"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://compare"
+      />
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Legal Information
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem-"
+      data-has-children="false"
+      data-id="2"
+      type="Active"
+    >
+      <ui5-icon
+        class="SideNavigationListItem--icon-"
+        src="sap-icon://chain-link"
+      />
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Useful Links
+      </span>
+    </ui5-li-custom>
+  </ui5-list>
+</div>
+`;
+
+exports[`SideNavigation Expanded without Icons 1`] = `
+<div
+  class="SideNavigation--sideNavigation- SideNavigation--expanded-"
+>
+  <ui5-list
+    class=""
+    footer-text=""
+    header-text=""
+    mode="None"
+    no-data-text=""
+    separators="All"
+  >
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      data-has-children="false"
+      data-id="home"
+      type="Active"
+    >
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Overview
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      data-has-children="false"
+      data-id="calendar"
+      type="Active"
+    >
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Calendar
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      data-has-children="false"
+      data-id="customers"
+      type="Active"
+    >
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Customers
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem- SideNavigationListItem--expanded- SideNavigationListItem--noIcons-"
+      data-has-children="true"
+      data-id="sales"
+      type="Active"
+    >
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Sales
+      </span>
+      <span
+        class="SideNavigationListItem--expandArrow-"
+      >
+        <ui5-icon
+          class=""
+          src="sap-icon://navigation-down-arrow"
+        />
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      data-has-children="false"
+      data-id="sales-opportunities"
+      data-is-child="true"
+      type="Active"
+    >
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        My Opportunities
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      data-has-children="false"
+      data-id="sales-leads"
+      data-is-child="true"
+      selected="true"
+      type="Active"
+    >
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        My Leads
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      data-has-children="false"
+      data-id="sales-cpqs"
+      data-is-child="true"
+      type="Active"
+    >
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        My CPQS
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      data-has-children="false"
+      data-id="delivieries"
+      type="Active"
+    >
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Deliveries
+      </span>
+    </ui5-li-custom>
+  </ui5-list>
+  <span
+    style="flex-grow: 1;"
+  />
+  <span
+    class="SideNavigation--footerItemsSeparator-"
+  />
+  <ui5-list
+    class=""
+    footer-text=""
+    header-text=""
+    mode="None"
+    no-data-text=""
+    separators="All"
+  >
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      data-has-children="false"
+      data-id="1"
+      type="Active"
+    >
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Legal Information
+      </span>
+    </ui5-li-custom>
+    <ui5-li-custom
+      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      data-has-children="false"
+      data-id="2"
+      type="Active"
+    >
+      <span
+        class="Text--text- SideNavigationListItem--text-"
+      >
+        Useful Links
+      </span>
+    </ui5-li-custom>
+  </ui5-list>
+</div>
+`;

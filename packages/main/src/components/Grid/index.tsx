@@ -1,7 +1,22 @@
-import { Device, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { Children, Component, CSSProperties, ReactElement, ReactNode, ReactNodeArray } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { Device } from '@ui5/webcomponents-react-base/lib/Device';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import React, {
+  Children,
+  CSSProperties,
+  FC,
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  ReactNodeArray,
+  Ref,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState
+} from 'react';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { styles } from './Grid.jss';
 
 export enum GridPosition {
@@ -49,92 +64,115 @@ export interface GridPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
 }
 
-interface GridPropsInternal extends GridPropTypes, ClassProps {}
+const INDENT_PATTERN = /^([X][L](?:[0-9]|1[0-1]))? ?([L](?:[0-9]|1[0-1]))? ?([M](?:[0-9]|1[0-1]))? ?([S](?:[0-9]|1[0-1]))?$/i;
+const SPAN_PATTERN = /^([X][L](?:[1-9]|1[0-2]))? ?([L](?:[1-9]|1[0-2]))? ?([M](?:[1-9]|1[0-2]))? ?([S](?:[1-9]|1[0-2]))?$/i;
 
-interface GridState {
-  update: boolean;
-}
+const getCurrentSpan = () => {
+  const classList = document.querySelector('html').classList;
+  const isXL = classList.contains('sapUiMedia-StdExt-LargeDesktop');
+  const isL = !isXL && classList.contains('sapUiMedia-Std-Desktop');
+  const isM = !isL && classList.contains('sapUiMedia-Std-Tablet');
+  const isS = !isM && classList.contains('sapUiMedia-Std-Phone');
+  return [false, isXL, isL, isM, isS].indexOf(true);
+};
 
-@withStyles(styles)
-export class Grid extends Component<GridPropTypes, GridState> {
-  private static INDENT_PATTERN = /^([X][L](?:[0-9]|1[0-1]))? ?([L](?:[0-9]|1[0-1]))? ?([M](?:[0-9]|1[0-1]))? ?([S](?:[0-9]|1[0-1]))?$/i;
-  private static SPAN_PATTERN = /^([X][L](?:[1-9]|1[0-2]))? ?([L](?:[1-9]|1[0-2]))? ?([M](?:[1-9]|1[0-2]))? ?([S](?:[1-9]|1[0-2]))?$/i;
+const getSpanFromString = (span) => {
+  const currentSpan = getCurrentSpan();
+  const spanConfig = SPAN_PATTERN.exec(span);
+  return spanConfig[currentSpan]
+    ? parseInt(spanConfig[currentSpan].replace(/[XLMS]{0,2}/g, ''), 10)
+    : [undefined, 3, 3, 6, 12][currentSpan];
+};
 
-  private resizeTimeout: number;
+const getIndentFromString = (indent) => {
+  const currentSpan = getCurrentSpan();
+  const indentConfig = INDENT_PATTERN.exec(indent);
+  return indentConfig[currentSpan]
+    ? parseInt(indentConfig[currentSpan].replace(/[XLMS]{0,2}/g, ''), 10)
+    : [undefined, 0, 0, 0, 0][currentSpan];
+};
 
-  static defaultProps = {
-    width: '100%',
-    vSpacing: 1,
-    hSpacing: 1,
-    position: 'Left',
-    defaultSpan: 'XL3 L3 M6 S12',
-    defaultIndent: 'XL0 L0 M0 S0',
-    containerQuery: false
-  };
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Grid' });
 
-  state = {
-    update: false
-  };
+const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
+  const {
+    children,
+    hSpacing,
+    vSpacing,
+    position,
+    width,
+    style,
+    className,
+    tooltip,
+    slot,
+    defaultIndent,
+    defaultSpan
+  } = props;
 
-  componentDidMount(): void {
-    Device.resize.attachHandler(this.handleResize, this);
-    this.handleResize();
+  const [currentRange, setCurrentRange] = useState(Device.media.getCurrentRange('StdExt', window.innerWidth).name);
+
+  const onWindowResize = useCallback(
+    ({ width }) => {
+      const { name: range } = Device.media.getCurrentRange('StdExt', width);
+      setCurrentRange(range);
+    },
+    [setCurrentRange]
+  );
+
+  useEffect(() => {
+    Device.resize.attachHandler(onWindowResize, null);
+    return () => {
+      Device.resize.detachHandler(onWindowResize, null);
+    };
+  }, [onWindowResize]);
+
+  const classes = useStyles();
+  const gridClasses = StyleClassHelper.of(classes.grid);
+  gridClasses.put(classes[`gridHSpace${hSpacing === 0.5 ? '05' : hSpacing}`]);
+  gridClasses.put(classes[`gridVSpace${vSpacing === 0.5 ? '05' : vSpacing}`]);
+
+  if (GridPosition.Center === position) {
+    gridClasses.put(classes.gridPositionCenter);
   }
 
-  componentWillUnmount(): void {
-    Device.resize.detachHandler(this.handleResize, this);
+  if (GridPosition.Right === position) {
+    gridClasses.put(classes.gridPositionRight);
   }
 
-  private handleResize = () => {
-    if (this.resizeTimeout) {
-      window.clearTimeout(this.resizeTimeout);
+  const gridStyle: CSSProperties = useMemo(() => {
+    const styles: CSSProperties = {};
+    if (width !== '100%' && width !== 'auto' && width !== 'inherit') {
+      if (hSpacing === 0) {
+        styles.width = width;
+      } else {
+        styles.width = `calc(${width} - ${hSpacing}rem)`;
+      }
     }
-    this.resizeTimeout = window.setTimeout(() => {
-      this.setState({ update: !this.state.update });
-    }, 50);
-  };
+    if (style) {
+      Object.assign(styles, style);
+    }
 
-  private static getCurrentSpan = () => {
-    const classList = document.querySelector('html').classList;
-    const isXL = classList.contains('sapUiMedia-StdExt-LargeDesktop');
-    const isL = !isXL && classList.contains('sapUiMedia-Std-Desktop');
-    const isM = !isL && classList.contains('sapUiMedia-Std-Tablet');
-    const isS = !isM && classList.contains('sapUiMedia-Std-Phone');
-    return [false, isXL, isL, isM, isS].indexOf(true);
-  };
+    return styles;
+  }, [width, hSpacing, style]);
 
-  private static getSpanFromString = (span) => {
-    const currentSpan = Grid.getCurrentSpan();
-    const spanConfig = Grid.SPAN_PATTERN.exec(span);
-    return spanConfig[currentSpan]
-      ? parseInt(spanConfig[currentSpan].replace(/[XLMS]{0,2}/g, ''), 10)
-      : [undefined, 3, 3, 6, 12][currentSpan];
-  };
+  if (className) {
+    gridClasses.put(className);
+  }
 
-  private static getIndentFromString = (indent) => {
-    const currentSpan = Grid.getCurrentSpan();
-    const indentConfig = Grid.INDENT_PATTERN.exec(indent);
-    return indentConfig[currentSpan]
-      ? parseInt(indentConfig[currentSpan].replace(/[XLMS]{0,2}/g, ''), 10)
-      : [undefined, 0, 0, 0, 0][currentSpan];
-  };
-
-  private renderGridElements = (child: ReactElement<any>) => {
-    const { defaultIndent, defaultSpan, classes } = this.props as GridPropsInternal;
-
-    const span = Grid.getSpanFromString(defaultSpan);
-    const indentSpan = Grid.getIndentFromString(defaultIndent);
+  const renderGridElements = (child: ReactElement<any>) => {
+    const span = getSpanFromString(defaultSpan);
+    const indentSpan = getIndentFromString(defaultIndent);
 
     const gridSpanClasses = StyleClassHelper.of(classes.gridSpan);
     if (child.props['data-layout'] && child.props['data-layout'].span) {
-      const childSpan = Grid.getSpanFromString(child.props['data-layout'].span);
+      const childSpan = getSpanFromString(child.props['data-layout'].span);
       gridSpanClasses.put(classes[`gridSpan${childSpan}`]);
     } else {
       gridSpanClasses.put(classes[`gridSpan${span}`]);
     }
 
     if (child.props['data-layout'] && child.props['data-layout'].indent) {
-      const childIndent = Grid.getIndentFromString(child.props['data-layout'].indent);
+      const childIndent = getIndentFromString(child.props['data-layout'].indent);
       if (childIndent && childIndent > 0) {
         gridSpanClasses.put(classes[`gridIndent${childIndent}`]);
       }
@@ -144,43 +182,22 @@ export class Grid extends Component<GridPropTypes, GridState> {
     return <div className={gridSpanClasses.valueOf()}>{child}</div>;
   };
 
-  render() {
-    const { children, classes, hSpacing, vSpacing, position, width, style, className, tooltip, innerRef, slot } = this
-      .props as GridPropsInternal;
+  return (
+    <div ref={ref} className={gridClasses.valueOf()} style={gridStyle} title={tooltip} slot={slot}>
+      {Children.map(children, renderGridElements)}
+    </div>
+  );
+});
 
-    const gridClasses = StyleClassHelper.of(classes.grid);
-    gridClasses.put(classes[`gridHSpace${hSpacing === 0.5 ? '05' : hSpacing}`]);
-    gridClasses.put(classes[`gridVSpace${vSpacing === 0.5 ? '05' : vSpacing}`]);
+Grid.displayName = 'Grid';
+Grid.defaultProps = {
+  width: '100%',
+  vSpacing: 1,
+  hSpacing: 1,
+  position: GridPosition.Left,
+  defaultSpan: 'XL3 L3 M6 S12',
+  defaultIndent: 'XL0 L0 M0 S0',
+  containerQuery: false
+};
 
-    if (GridPosition.Center === position) {
-      gridClasses.put(classes.gridPositionCenter);
-    }
-
-    if (GridPosition.Right === position) {
-      gridClasses.put(classes.gridPositionRight);
-    }
-
-    const gridStyle: CSSProperties = {};
-    if (width !== '100%' && width !== 'auto' && width !== 'inherit') {
-      if (hSpacing === 0) {
-        gridStyle.width = width;
-      } else {
-        gridStyle.width = `calc(${width} - ${hSpacing}rem)`;
-      }
-    }
-
-    if (style) {
-      Object.assign(gridStyle, style);
-    }
-
-    if (className) {
-      gridClasses.put(className);
-    }
-
-    return (
-      <div ref={innerRef} className={gridClasses.valueOf()} style={gridStyle} title={tooltip} slot={slot}>
-        {Children.map(children, this.renderGridElements)}
-      </div>
-    );
-  }
-}
+export { Grid };

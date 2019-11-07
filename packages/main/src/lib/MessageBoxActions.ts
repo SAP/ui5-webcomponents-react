@@ -1,3 +1,3 @@
-import { MessageBoxActions } from '../components/MessageBox';
+import { MessageBoxActions } from '../enums/MessageBoxActions';
 
 export { MessageBoxActions };

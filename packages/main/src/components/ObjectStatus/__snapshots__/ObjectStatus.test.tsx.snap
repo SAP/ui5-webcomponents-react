@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ObjectStatus ObjectStatus: state: Error 1`] = `
+<div
+  class="ObjectStatus--objectStatus-"
+>
+  <div
+    class="ObjectStatus--icon- ObjectStatus--iconError-"
+  >
+    <ui5-icon
+      class=""
+      src="sap-icon://status-negative"
+      style="font-size: 1rem;"
+    />
+  </div>
+</div>
+`;
+
+exports[`ObjectStatus ObjectStatus: state: Information 1`] = `
+<div
+  class="ObjectStatus--objectStatus-"
+>
+  <div
+    class="ObjectStatus--icon- ObjectStatus--iconInformation-"
+  >
+    <ui5-icon
+      class=""
+      src="sap-icon://hint"
+      style="font-size: 1rem;"
+    />
+  </div>
+</div>
+`;
+
+exports[`ObjectStatus ObjectStatus: state: None 1`] = `
+<div
+  class="ObjectStatus--objectStatus-"
+>
+  <div
+    class="ObjectStatus--icon- ObjectStatus--iconNone-"
+  >
+    <ui5-icon
+      class=""
+      src="sap-icon://status-inactive"
+      style="font-size: 1rem;"
+    />
+  </div>
+</div>
+`;
+
+exports[`ObjectStatus ObjectStatus: state: Success 1`] = `
+<div
+  class="ObjectStatus--objectStatus-"
+>
+  <div
+    class="ObjectStatus--icon- ObjectStatus--iconSuccess-"
+  >
+    <ui5-icon
+      class=""
+      src="sap-icon://status-positive"
+      style="font-size: 1rem;"
+    />
+  </div>
+</div>
+`;
+
+exports[`ObjectStatus ObjectStatus: state: Warning 1`] = `
+<div
+  class="ObjectStatus--objectStatus-"
+>
+  <div
+    class="ObjectStatus--icon- ObjectStatus--iconWarning-"
+  >
+    <ui5-icon
+      class=""
+      src="sap-icon://status-critical"
+      style="font-size: 1rem;"
+    />
+  </div>
+</div>
+`;
+
+exports[`ObjectStatus Render without Crashing 1`] = `
+<div
+  class="ObjectStatus--objectStatus-"
+>
+  <div
+    class="ObjectStatus--icon- ObjectStatus--iconError-"
+  >
+    <ui5-icon
+      class=""
+      src="sap-icon://status-negative"
+      style="font-size: 1rem;"
+    />
+  </div>
+  <span
+    class="ObjectStatus--textError-"
+  >
+    Hello
+  </span>
+</div>
+`;
+
+exports[`ObjectStatus Text Deprecation 1`] = `
+<div
+  class="ObjectStatus--objectStatus-"
+>
+  <div
+    class="ObjectStatus--icon- ObjectStatus--iconError-"
+  >
+    <ui5-icon
+      class=""
+      src="sap-icon://status-negative"
+      style="font-size: 1rem;"
+    />
+  </div>
+  <span
+    class="ObjectStatus--textError-"
+  >
+    Hello
+  </span>
+</div>
+`;

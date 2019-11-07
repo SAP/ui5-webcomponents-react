@@ -1,7 +1,8 @@
 import React, { FC, ReactNode } from 'react';
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import UI5ShellBar from '@ui5/webcomponents/dist/ShellBar';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   logo?: string; // @generated
@@ -12,6 +13,8 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   showNotifications?: boolean; // @generated
   showProductSwitch?: boolean; // @generated
   showCoPilot?: boolean; // @generated
+  breakpointSize?: string; // @generated
+  showBlockLayer?: boolean; // @generated
   onNotificationsClick?: (event: Event) => void; // @generated
   onProfileClick?: (event: Event) => void; // @generated
   onProductSwitchClick?: (event: Event) => void; // @generated

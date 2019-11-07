@@ -1,14 +1,23 @@
 import { select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { Badge } from '../../lib/Badge';
-import { Icon } from '../../lib/Icon';
+import { Badge } from '@ui5/webcomponents-react/lib/Badge';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import '@ui5/webcomponents/dist/icons/employee';
 
-storiesOf('UI5 Web Components | Badge', module).add('Default story', () => (
+export default {
+  title: 'UI5 Web Components | Badge',
+  component: Badge
+};
+
+export const defaultStory = () => (
   <Badge
     colorScheme={select('colorScheme', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], '4')}
     icon={<Icon src="sap-icon://employee" />}
   >
     Badge
   </Badge>
-));
+);
+
+defaultStory.story = {
+  name: 'Default story'
+};

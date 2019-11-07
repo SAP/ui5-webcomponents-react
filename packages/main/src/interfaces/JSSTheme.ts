@@ -1,4 +1,4 @@
-import { sap_fiori_3 } from '@ui5/webcomponents-react-base';
+import * as sap_fiori_3 from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { ContentDensity } from '../enums/ContentDensity';
 import { Themes } from '../enums/Themes';
 

@@ -1,5 +1,5 @@
-import { Optional } from '@ui5/webcomponents-react-base';
-import { useEffect, Ref, RefObject, useCallback } from 'react';
+import { Optional } from '@ui5/webcomponents-react-base/lib/Optional';
+import { useEffect, RefObject, useCallback } from 'react';
 import '@ui5/webcomponents/dist/Label';
 
 const getSymbolForDataset = (type, dataset) => {
@@ -20,9 +20,9 @@ const getSymbolForDataset = (type, dataset) => {
 const getLegendEntry = (dataset, type, index) => {
   const symbol = getSymbolForDataset(type, dataset);
 
-  return `<li style="display: flex; align-items: center; margin-right: 24px; margin-bottom: 1rem; cursor:pointer;" data-datasetindex="${index}">
+  return `<li style="display: flex; align-items: center; margin-right: 24px; cursor:pointer;" data-datasetindex="${index}">
 ${symbol}
-<ui5-label style="font-size: 12px; user-select: none">${dataset.label}</ui5-label>
+<ui5-label style="font-size: 12px; user-select: none; cursor:pointer;">${dataset.label}</ui5-label>
 </li>`;
 };
 

@@ -1,15 +1,14 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, number } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { Icon } from '../../lib/Icon';
-import { SegmentedButton } from '../../lib/SegmentedButton';
-import { SegmentedButtonItem } from '../../lib/SegmentedButtonItem';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
+import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';
 
-function renderStory() {
+export const renderStory = () => {
   return (
     <SegmentedButton
-      enabled={boolean('enabled', true)}
+      disabled={boolean('disabled', false)}
       onItemSelected={action('onItemSelected')}
       selectedKey={number('SelectedKey', 1)}
     >
@@ -17,9 +16,17 @@ function renderStory() {
       <SegmentedButtonItem id={2} icon={<Icon src="world" />}>
         Button 2
       </SegmentedButtonItem>
-      <SegmentedButtonItem id={3}>Button 3</SegmentedButtonItem>
+      <SegmentedButtonItem id={3} width="300px">
+        Button 3
+      </SegmentedButtonItem>
     </SegmentedButton>
   );
-}
+};
+renderStory.story = {
+  name: 'Default'
+};
 
-storiesOf('Components | SegmentedButton', module).add('Default', renderStory);
+export default {
+  title: 'Components | SegmentedButton',
+  component: SegmentedButton
+};

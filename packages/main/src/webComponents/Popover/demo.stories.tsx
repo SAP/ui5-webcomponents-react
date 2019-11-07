@@ -1,16 +1,20 @@
-import { boolean, select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
+import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import React from 'react';
-import { Button } from '../../lib/Button';
-import { PlacementType } from '../../lib/PlacementType';
-import { Popover } from '../../lib/Popover';
-import { PopoverHorizontalAlign } from '../../lib/PopoverHorizontalAlign';
-import { PopoverVerticalAlign } from '../../lib/PopoverVerticalAlign';
 
-storiesOf('UI5 Web Components | Popover', module).add('Default', () => (
+export default {
+  title: 'UI5 Web Components | Popover',
+  component: Popover
+};
+
+export const defaultStory = () => (
   <Popover
     initialFocus={'generatedString'}
-    headerText={'generatedString'}
+    headerText={text('headerText', 'Test Popover')}
     placementType={select('placementType', PlacementType)}
     horizontalAlign={select('horizontalAlign', PopoverHorizontalAlign, null)}
     verticalAlign={select('verticalAlign', PopoverVerticalAlign, null)}
@@ -22,9 +26,16 @@ storiesOf('UI5 Web Components | Popover', module).add('Default', () => (
     onBeforeClose={null}
     onAfterClose={null}
     content={<div>Test</div>}
-    header={<div>Test</div>}
     footer={
-      <div>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          width: 'calc(100% - 1rem)',
+          height: '2.5rem'
+        }}
+      >
         <Button>Button</Button>
       </div>
     }
@@ -34,4 +45,8 @@ storiesOf('UI5 Web Components | Popover', module).add('Default', () => (
     <div>Content</div>
     <div>Footer</div>
   </Popover>
-));
+);
+
+defaultStory.story = {
+  name: 'Default'
+};

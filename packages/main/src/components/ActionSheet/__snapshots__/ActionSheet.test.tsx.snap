@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionSheet Render without Crashing 1`] = `
+Array [
+  <div
+    style="display: inline-block;"
+  >
+    <ui5-button
+      class=""
+      design="Default"
+    />
+  </div>,
+  <ui5-popover
+    class=""
+    horizontal-align="Center"
+    placement-type="Bottom"
+    vertical-align="Center"
+  >
+    <ul
+      class="ActionSheet--actionSheet-"
+    />
+  </ui5-popover>,
+]
+`;

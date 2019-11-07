@@ -1,8 +1,9 @@
+import contentLoaderSerializer from '@shared/tests/serializer/content-loader-serializer.js';
+import jssSerializer from '@shared/tests/serializer/jss-snapshot-serializer';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { createSerializer } from 'enzyme-to-json';
-import jssSerializer from '@shared/tests/serializer/jss-snapshot-serializer';
-import contentLoaderSerializer from '@shared/tests/serializer/content-loader-serializer.js';
+import ResizeObserver from 'resize-observer-polyfill';
 
 process.env.NODE_ENV = 'test';
 process.env.BABEL_ENV = 'test';
@@ -36,4 +37,10 @@ export const setupMatchMedia = () => {
   };
 };
 
+export const setupResizeObserver = () => {
+  // @ts-ignore
+  window.ResizeObserver = ResizeObserver;
+};
+
 setupMatchMedia();
+setupResizeObserver();

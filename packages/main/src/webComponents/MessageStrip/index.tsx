@@ -1,8 +1,9 @@
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import UI5MessageStrip from '@ui5/webcomponents/dist/MessageStrip';
 import React, { FC } from 'react';
-import { withWebComponent, WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { MessageStripType } from '../../lib/MessageStripType';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
 
 export interface MessageStripPropTypes extends WithWebComponentPropTypes {
   type?: MessageStripType; // @generated

@@ -3,8 +3,6 @@ import React from 'react';
 import sinon from 'sinon';
 import { AutoCloseOnOutsideClick } from './index';
 
-declare const expect: any;
-
 describe('AutoCloseOnOutsideClick', () => {
   test('Loose Focus', () => {
     const callback = sinon.spy();

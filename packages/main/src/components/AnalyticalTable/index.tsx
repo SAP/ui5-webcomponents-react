@@ -1,36 +1,55 @@
-import { withStyles } from '@ui5/webcomponents-react-base';
-import React, { Component, CSSProperties, ReactNode, ReactText } from 'react';
-import ReactTable from 'react-table';
-import 'react-table/react-table.css';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
+import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
+import React, {
+  ComponentType,
+  FC,
+  forwardRef,
+  ReactNode,
+  ReactText,
+  Ref,
+  useCallback,
+  useEffect,
+  useMemo
+} from 'react';
+import { createUseStyles, useTheme } from 'react-jss';
+import { useExpanded, useFilters, useGroupBy, useSortBy, useTable } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { TextAlign } from '../../lib/TextAlign';
-import { VerticalAlign } from '../../lib/VerticalAlign';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
-import { ColumnHeader } from './columnHeader';
-import { LoadingComponent } from './LoadingComponent';
-import { Pagination } from './pagination';
-import { Resizer } from './Resizer';
-import { TitleBar } from './titleBar';
-import { FilterEntry } from './types/FilterEntry';
+import { ColumnHeader } from './ColumnHeader';
+import { DefaultColumn } from './defaults/Column';
+import { DefaultLoadingComponent } from './defaults/LoadingComponent';
+import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
+import { DefaultNoDataComponent } from './defaults/NoDataComponent';
+import { useResizeColumns } from './hooks/useResizeColumns';
+import { useRowSelection } from './hooks/useRowSelection';
+import { useTableCellStyling } from './hooks/useTableCellStyling';
+import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
+import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
+import { useTableRowStyling } from './hooks/useTableRowStyling';
+import { useTableScrollHandles } from './hooks/useTableScrollHandles';
+import { useTableStyling } from './hooks/useTableStyling';
+import { useToggleRowExpand } from './hooks/useToggleRowExpand';
+import { useWindowResize } from './hooks/useWindowResize';
+import { makeTemplateColumns } from './hooks/utils';
+import { TitleBar } from './TitleBar';
+import { VirtualTableBody } from './virtualization/VirtualTableBody';
 
 export interface ColumnConfiguration {
   accessor?: string;
   width?: number;
   hAlign?: TextAlign;
   vAlign?: VerticalAlign;
+  canResize?: boolean;
+  minWidth?: number;
 
   [key: string]: any;
 }
 
 export interface TableProps extends CommonProps {
-  alternateRowColors?: boolean;
-  cellHeight?: CSSProperties['height'];
-  loading?: boolean;
-  filterable?: boolean;
-  sortable?: boolean;
-  groupable?: boolean;
-  data: object[];
   /**
    * In addition to the standard 'react-table' column config you can pass the properties 'hAlign' and 'vAlign'.
    * These will align the text inside the column accordingly.
@@ -38,6 +57,8 @@ export interface TableProps extends CommonProps {
    * values for vAlign: Bottom | Middle | Top | Inherit (default)
    */
   columns: ColumnConfiguration[];
+  data: object[];
+
   /**
    * Component or text of title section of the Table (if not set it will be hidden)
    */
@@ -46,230 +67,279 @@ export interface TableProps extends CommonProps {
    * Extension section of the Table. If not set, no extension area will be rendered
    */
   renderExtension?: () => ReactNode;
-  showPagination?: boolean;
-  defaultPageSize?: number;
+
+  // appearance
+
   minRows?: number;
-  numItems?: number;
-  getTrProps?: (state?: object, rowInfo?: object, column?: object, instance?: object) => object;
-  /*
-   * Pass in any react-table props you need
+  visibleRows?: number;
+  loading?: boolean;
+  busyIndicatorEnabled?: boolean;
+  noDataText?: string;
+  rowHeight?: number;
+  alternateRowColor?: boolean;
+
+  // features
+
+  filterable?: boolean;
+  sortable?: boolean;
+  groupable?: boolean;
+  groupBy?: string[];
+  selectable?: boolean;
+
+  // events
+
+  onSort?: (e?: Event) => void;
+  onGroup?: (e?: Event) => void;
+  onRowSelected?: (e?: Event) => any;
+  onRowExpandChange?: (e?: Event) => any;
+  /**
+   * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api.md#table-options)
    */
-  reactTableProps?: object;
-  pivotBy?: string[] | number[];
+  reactTableOptions?: object;
+  tableHooks?: Array<() => any>;
+  subRowsKey?: string;
+  selectedRowKey?: string;
+  isTreeTable?: boolean;
+
+  // default components
+
+  NoDataComponent?: ComponentType<any>;
+  LoadingComponent?: ComponentType<any>;
 }
 
-interface TablePropsInternal extends TableProps, ClassProps {}
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
+const ROW_HEIGHT_COMPACT = 32;
+const ROW_HEIGHT_COZY = 44;
 
-interface TableState {
-  filtered: FilterEntry[];
-  pivot: string[] | number[];
-}
+const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
+  const {
+    columns,
+    data,
+    className,
+    style,
+    tooltip,
+    title,
+    renderExtension,
+    loading,
+    groupBy,
+    selectable,
+    onRowSelected,
+    reactTableOptions,
+    tableHooks,
+    busyIndicatorEnabled,
+    subRowsKey,
+    onGroup,
+    rowHeight,
+    selectedRowKey,
+    LoadingComponent,
+    onRowExpandChange,
+    noDataText,
+    NoDataComponent,
+    visibleRows,
+    minRows,
+    isTreeTable,
+    alternateRowColor
+  } = props;
+  const theme = useTheme() as JSSTheme;
+  const classes = useStyles({ rowHeight: props.rowHeight });
 
-@withStyles(styles)
-export class AnalyticalTable extends Component<TablePropsInternal, TableState> {
-  static defaultProps = {
-    alternateRowColors: false,
-    loading: false,
-    sortable: true,
-    filterable: false,
-    groupable: false,
-    data: [],
-    columns: [],
-    title: null,
-    cellHeight: null,
-    showPagination: true,
-    defaultPageSize: 10,
-    minRows: 10,
-    numItems: null,
-    pivotBy: [],
-    getTrProps: () => ({})
-  };
+  const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected, selectedRowKey);
+  const [resizedColumns, onColumnSizeChanged] = useResizeColumns();
+  const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
 
-  state = {
-    filtered: [],
-    pivot: []
-  };
+  const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
-  private static DEFAULT_FILTER_METHOD(filter, row) {
-    return new RegExp(filter.value, 'gi').test(String(row[filter.id]));
-  }
-
-  getTableProps = () => {
-    const { classes } = this.props;
-    return {
-      className: classes.table
-    };
-  };
-
-  getTheadProps = () => {
-    const { classes } = this.props;
-    return {
-      className: classes.tHead
-    };
-  };
-
-  getTheadThProps = (tableData, notNeededParam, column) => {
-    return {
-      filtered: tableData.filtered,
-      sorted: tableData.sorted,
-      filterable: tableData.filterable,
-      sortable: tableData.sortable,
-      groupable: tableData.groupable,
-      onGroupBy: this.onGroupBy,
-      grouping: this.state.pivot.join(),
-      defaultSortDesc: tableData.defaultSortDesc,
-      column,
-      firstColumn: tableData.allVisibleColumns.length > 0 ? tableData.allVisibleColumns[0].id === column.id : false,
-      onFilteredChange: this.onFilteredChange
-    };
-  };
-
-  getTrProps = (...args) => {
-    const { classes, getTrProps } = this.props;
-    return {
-      className: classes.tr,
-      ...getTrProps(...args)
-    };
-  };
-
-  getTrGroupProps = () => {
-    const { classes } = this.props;
-    return {
-      className: classes.trGroup
-    };
-  };
-
-  getTdProps = (state, rowInfo, column) => {
-    const { classes, cellHeight } = this.props;
-    const enhancedProps: {
-      className: string;
-      style: CSSProperties;
-    } = {
-      className: classes.td,
-      style: {}
-    };
-    if (cellHeight) {
-      (enhancedProps.style as CSSProperties).height = cellHeight;
-    }
-    switch (column.hAlign) {
-      case TextAlign.Begin:
-        enhancedProps.style.justifyContent = 'flex-start';
-        break;
-      case TextAlign.Center:
-        enhancedProps.style.justifyContent = 'center';
-        break;
-      case TextAlign.End:
-        enhancedProps.style.justifyContent = 'flex-end';
-        break;
-      case TextAlign.Left:
-        enhancedProps.style.justifyContent = 'left';
-        break;
-      case TextAlign.Right:
-        enhancedProps.style.justifyContent = 'right';
-        break;
-    }
-    switch (column.vAlign) {
-      case VerticalAlign.Bottom:
-        enhancedProps.style.alignItems = 'flex-end';
-        break;
-      case VerticalAlign.Middle:
-        enhancedProps.style.alignItems = 'center';
-        break;
-      case VerticalAlign.Top:
-        enhancedProps.style.alignItems = 'flex-start';
-        break;
-    }
-    return enhancedProps;
-  };
-
-  getTbodyProps = () => {
-    const { classes } = this.props;
-    return {
-      className: classes.tBody
-    };
-  };
-
-  getPaginationProps = (props) => {
-    const { numItems } = this.props;
-    return {
-      numItems: numItems || props.sortedData.length
-    };
-  };
-
-  render() {
-    const {
-      data,
+  const { getTableProps, headerGroups, rows, prepareRow, setState, state: tableState } = useTable(
+    {
       columns,
-      alternateRowColors,
-      loading,
-      title,
-      showPagination,
-      defaultPageSize,
-      minRows,
-      reactTableProps,
-      filterable,
-      sortable,
-      groupable,
-      className,
-      renderExtension,
-      style,
+      data,
+      defaultColumn: DefaultColumn,
+      getSubRows,
+      ...reactTableOptions
+    },
+    useFilters,
+    useGroupBy,
+    useSortBy,
+    useExpanded,
+    useTableStyling(classes),
+    useTableHeaderGroupStyling(classes, resizedColumns),
+    useTableHeaderStyling(classes, onColumnSizeChanged),
+    useTableRowStyling(
       classes,
-      tooltip,
-      innerRef
-    } = this.props;
+      resizedColumns,
+      selectable,
+      selectedRowPath,
+      selectedRowKey,
+      onRowClicked,
+      alternateRowColor
+    ),
+    useTableCellStyling(classes, rowHeight),
+    useToggleRowExpand(onRowExpandChange, isTreeTable),
+    ...tableHooks
+  );
 
-    let tableClassName = '';
-    if (alternateRowColors) {
-      tableClassName += '-striped';
-    }
+  useEffect(() => {
+    setState((old) => {
+      return {
+        ...old,
+        groupBy
+      };
+    });
+  }, [groupBy, setState]);
 
-    return (
-      <div className={className} style={style} title={tooltip}>
-        {title && <TitleBar>{title}</TitleBar>}
-        {typeof renderExtension === 'function' && <div className={classes.extension}>{renderExtension()}</div>}
-        <ReactTable
-          ref={innerRef}
-          data={data}
-          loading={loading}
-          columns={columns}
-          minRows={minRows}
-          defaultPageSize={defaultPageSize}
-          className={tableClassName}
-          showPagination={showPagination}
-          getTheadThProps={this.getTheadThProps}
-          getTheadProps={this.getTheadProps}
-          getTableProps={this.getTableProps}
-          getTrProps={this.getTrProps}
-          getTrGroupProps={this.getTrGroupProps}
-          getTdProps={this.getTdProps}
-          getTbodyProps={this.getTbodyProps}
-          getPaginationProps={this.getPaginationProps}
-          LoadingComponent={LoadingComponent}
-          PaginationComponent={Pagination}
-          PreviousComponent={undefined}
-          NextComponent={undefined}
-          ThComponent={ColumnHeader}
-          ResizerComponent={Resizer}
-          multiSort={false}
-          filterable={filterable}
-          filtered={this.state.filtered}
-          defaultFilterMethod={AnalyticalTable.DEFAULT_FILTER_METHOD}
-          onFilteredChange={this.onFilteredChange}
-          sortable={sortable}
-          pivotBy={this.state.pivot}
-          groupable={groupable}
-          {...reactTableProps}
-        />
-      </div>
-    );
+  const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
+
+  if (theme.contentDensity === ContentDensity.Compact) {
+    tableContainerClasses.put(classes.compactSize);
   }
 
-  private onFilteredChange = (event) => {
-    const filtered = event.getParameter('currentFilters');
-    this.setState({ filtered });
-  };
+  if (!!rowHeight) {
+    tableContainerClasses.put(classes.modifiedRowHeight);
+  }
 
-  private onGroupBy = (pivotBy) => {
-    this.setState({ pivot: pivotBy, filtered: [] });
-  };
-}
+  const internalRowHeight = useMemo(() => {
+    let height = theme.contentDensity === ContentDensity.Compact ? ROW_HEIGHT_COMPACT : ROW_HEIGHT_COZY;
+    if (rowHeight) {
+      height = rowHeight;
+    }
+    return height;
+  }, [rowHeight, theme.contentDensity]);
+
+  const tableBodyHeight = useMemo(() => {
+    return internalRowHeight * Math.max(rows.length < visibleRows ? rows.length : visibleRows, minRows);
+  }, [internalRowHeight, rows.length, minRows, visibleRows]);
+
+  const noDataStyles = useMemo(() => {
+    return {
+      height: `${tableBodyHeight}px`
+    };
+  }, [tableBodyHeight]);
+
+  const rowContainerStyling = useMemo(() => {
+    return {
+      gridTemplateColumns: makeTemplateColumns(headerGroups.map(({ headers }) => headers).flat(), resizedColumns)
+    };
+  }, [headerGroups, resizedColumns]);
+
+  const onGroupByChanged = useCallback(
+    (e) => {
+      const { column, isGrouped } = e.getParameters();
+      let groupedColumns = [];
+      if (isGrouped) {
+        groupedColumns = [...tableState.groupBy, column.id];
+      } else {
+        groupedColumns = tableState.groupBy.filter((group) => group !== column.id);
+      }
+      setState((old) => {
+        return {
+          ...old,
+          groupBy: groupedColumns
+        };
+      });
+      onGroup(
+        Event.of(null, e.getOriginalEvent(), {
+          column,
+          groupedColumns
+        })
+      );
+    },
+    [tableState.groupBy, onGroup]
+  );
+
+  const [headerRef, tableWidth] = useWindowResize();
+
+  return (
+    <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
+      {title && <TitleBar>{title}</TitleBar>}
+      {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
+      <div className={tableContainerClasses.valueOf()}>
+        <div {...getTableProps()} ref={headerRef} role="table" aria-rowcount={rows.length}>
+          {headerGroups.map((headerGroup) => {
+            let headerProps = {};
+            if (headerGroup.getHeaderGroupProps) {
+              headerProps = headerGroup.getHeaderGroupProps();
+            }
+            return (
+              <header {...headerProps} role="rowgroup">
+                {headerGroup.headers.map((column, index) => (
+                  <ColumnHeader
+                    {...column.getHeaderProps()}
+                    isLastColumn={index === columns.length - 1}
+                    groupable={props.groupable}
+                    sortable={props.sortable}
+                    filterable={props.filterable}
+                    onSort={props.onSort}
+                    onGroupBy={onGroupByChanged}
+                  >
+                    {column.render('Header')}
+                  </ColumnHeader>
+                ))}
+              </header>
+            );
+          })}
+          {loading && busyIndicatorEnabled && data.length > 0 && <LoadingComponent />}
+          {loading && data.length === 0 && (
+            <TablePlaceholder
+              columns={columns.length}
+              rows={props.minRows}
+              style={noDataStyles}
+              rowHeight={internalRowHeight}
+            />
+          )}
+          {!loading && data.length === 0 && (
+            <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
+          )}
+          {data.length > 0 && (
+            <VirtualTableBody
+              classes={classes}
+              rowContainerStyling={rowContainerStyling}
+              prepareRow={prepareRow}
+              rows={rows}
+              minRows={minRows}
+              columns={columns}
+              selectedRow={selectedRowKey}
+              selectedRowPath={selectedRowPath}
+              selectable={selectable}
+              reactWindowRef={reactWindowRef}
+              tableWidth={tableWidth}
+              resizedColumns={resizedColumns}
+              isTreeTable={isTreeTable}
+              internalRowHeight={internalRowHeight}
+              tableBodyHeight={tableBodyHeight}
+              visibleRows={visibleRows}
+              alternateRowColor={alternateRowColor}
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+});
+
+AnalyticalTable.displayName = 'AnalyticalTable';
+AnalyticalTable.defaultProps = {
+  loading: false,
+  busyIndicatorEnabled: true,
+  sortable: true,
+  filterable: false,
+  groupable: false,
+  selectable: false,
+  data: [],
+  columns: [],
+  title: null,
+  minRows: 5,
+  groupBy: [],
+  NoDataComponent: DefaultNoDataComponent,
+  LoadingComponent: DefaultLoadingComponent,
+  noDataText: 'No Data',
+  reactTableOptions: {},
+  tableHooks: [],
+  visibleRows: 15,
+  subRowsKey: 'subRows',
+  onGroup: () => {},
+  onRowExpandChange: () => {},
+  isTreeTable: false,
+  alternateRowColor: false
+};
+
+export { AnalyticalTable };

@@ -1,37 +1,28 @@
-import { Event, StyleClassHelper, withStyles } from '@ui5/webcomponents-react-base';
-import React, { isValidElement, PureComponent, ReactNode } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
+import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
+import React, { forwardRef, isValidElement, ReactNode, Ref, useCallback, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Icon } from '../../lib/Icon';
-import { MessageBoxButton } from '../../lib/MessageBoxButton';
-import { Text } from '../../lib/Text';
-import { Title } from '../../lib/Title';
-import { TitleLevel } from '../../lib/TitleLevel';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import styles from './MessageBox.jss';
-
-export enum MessageBoxActions {
-  ABORT = 'Abort',
-  CANCEL = 'Cancel',
-  CLOSE = 'Close',
-  DELETE = 'Delete',
-  IGNORE = 'Ignore',
-  NO = 'No',
-  OK = 'OK',
-  RETRY = 'Retry',
-  YES = 'Yes'
-}
-
-export enum MessageBoxTypes {
-  CONFIRM = 'Confirm',
-  ERROR = 'Error',
-  INFORMATION = 'Information',
-  SUCCESS = 'Success',
-  WARNING = 'Warning',
-  HIGHLIGHT = 'Highlight'
-}
+import '@ui5/webcomponents/dist/icons/question-mark';
+import '@ui5/webcomponents/dist/icons/message-error';
+import '@ui5/webcomponents/dist/icons/message-information';
+import '@ui5/webcomponents/dist/icons/message-success';
+import '@ui5/webcomponents/dist/icons/message-warning';
+import '@ui5/webcomponents/dist/icons/hint';
 
 export interface MessageBoxPropTypes extends CommonProps {
-  visible: boolean;
+  open?: boolean;
   title?: string;
   children: string;
   actions?: MessageBoxActions[];
@@ -40,23 +31,37 @@ export interface MessageBoxPropTypes extends CommonProps {
   onClose: (event: Event) => void;
 }
 
-interface MessageBoxInternalPropTypes extends MessageBoxPropTypes, ClassProps {}
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'MessageBox' });
 
-@withStyles(styles)
-export class MessageBox extends PureComponent<MessageBoxPropTypes> {
-  static defaultProps = {
-    title: null,
-    icon: null,
-    type: MessageBoxTypes.CONFIRM,
-    actions: []
-  };
+const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
+  const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
 
-  private getTitle = () => {
-    if (this.props.title) {
-      return this.props.title;
+  const classes = useStyles();
+
+  const iconToRender = useMemo(() => {
+    if (isValidElement(icon)) return icon;
+    switch (type) {
+      case MessageBoxTypes.CONFIRM:
+        return <Icon src="sap-icon://question-mark" />;
+      case MessageBoxTypes.ERROR:
+        return <Icon src="sap-icon://message-error" />;
+      case MessageBoxTypes.INFORMATION:
+        return <Icon src="sap-icon://message-information" />;
+      case MessageBoxTypes.SUCCESS:
+        return <Icon src="sap-icon://message-success" />;
+      case MessageBoxTypes.WARNING:
+        return <Icon src="sap-icon://message-warning" />;
+      case MessageBoxTypes.HIGHLIGHT:
+        return <Icon src="sap-icon://hint" />;
     }
-    const { type } = this.props;
 
+    return null;
+  }, [icon, type]);
+
+  const titleToRender = useMemo(() => {
+    if (title) {
+      return title;
+    }
     switch (type) {
       case MessageBoxTypes.CONFIRM:
         return 'Confirmation';
@@ -72,34 +77,12 @@ export class MessageBox extends PureComponent<MessageBoxPropTypes> {
         return 'Highlight';
     }
     return null;
-  };
+  }, [title, type]);
 
-  private getIcon = () => {
-    if (isValidElement(this.props.icon)) return this.props.icon;
-    const { type } = this.props;
-    switch (type) {
-      case MessageBoxTypes.CONFIRM:
-        return <Icon src="question-mark" />;
-      case MessageBoxTypes.ERROR:
-        return <Icon src="message-error" />;
-      case MessageBoxTypes.INFORMATION:
-        return <Icon src="message-information" />;
-      case MessageBoxTypes.SUCCESS:
-        return <Icon src="message-success" />;
-      case MessageBoxTypes.WARNING:
-        return <Icon src="message-warning" />;
-      case MessageBoxTypes.HIGHLIGHT:
-        return <Icon src="hint" />;
+  const actionsToRender = useMemo(() => {
+    if (actions && actions.length > 0) {
+      return actions;
     }
-
-    return null;
-  };
-
-  private getActions = () => {
-    if (this.props.actions && this.props.actions.length > 0) {
-      return this.props.actions;
-    }
-    const { type } = this.props;
     if (type === MessageBoxTypes.CONFIRM) {
       return [MessageBoxActions.OK, MessageBoxActions.CANCEL];
     }
@@ -107,44 +90,61 @@ export class MessageBox extends PureComponent<MessageBoxPropTypes> {
       return [MessageBoxActions.CLOSE];
     }
     return [MessageBoxActions.OK];
-  };
+  }, [actions, type]);
 
-  private handleOnClose = (e, action) => {
-    this.props.onClose(Event.of(this, e, { action }));
-  };
+  const handleOnClose = useCallback(
+    (e) => {
+      const action = e.getHtmlSourceElement().dataset.action;
+      onClose(Event.of(null, e, { action }));
+    },
+    [onClose]
+  );
 
-  render() {
-    const { visible, classes, type, children, className, style, tooltip, innerRef, slot } = this
-      .props as MessageBoxInternalPropTypes;
-    if (!visible) {
-      return null;
-    }
+  return (
+    <Dialog
+      open={open}
+      slot={slot}
+      ref={ref}
+      style={style}
+      tooltip={tooltip}
+      className={className}
+      header={
+        <header className={classes.header} data-type={type}>
+          {!!iconToRender && <div className={classes.icon}>{iconToRender}</div>}
+          <Title level={TitleLevel.H5}>{titleToRender}</Title>
+        </header>
+      }
+      footer={
+        <footer className={classes.footer}>
+          {actionsToRender.map((action, index) => (
+            <Button
+              style={{
+                minWidth: '4rem'
+              }}
+              key={action}
+              design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+              onClick={handleOnClose}
+              data-action={action}
+            >
+              {action}
+            </Button>
+          ))}
+        </footer>
+      }
+    >
+      <Text className={classes.content}>{children}</Text>
+    </Dialog>
+  );
+});
 
-    const messageBoxClasses = StyleClassHelper.of(classes.messageBox);
-    if (className) {
-      messageBoxClasses.put(className);
-    }
+MessageBox.displayName = 'MessageBox';
 
-    const icon = this.getIcon();
-    const title = this.getTitle();
+MessageBox.defaultProps = {
+  open: false,
+  title: null,
+  icon: null,
+  type: MessageBoxTypes.CONFIRM,
+  actions: []
+};
 
-    return (
-      <div ref={innerRef} className={classes.overlay} slot={slot}>
-        <div className={messageBoxClasses.toString()} style={style} title={tooltip}>
-          <header className={classes.header} data-type={type}>
-            {!!icon && <div className={classes.icon}>{icon}</div>}
-            <Title level={TitleLevel.H5}>{title}</Title>
-          </header>
-          <section className={classes.content}>
-            <Text>{children}</Text>
-          </section>
-          <footer className={classes.footer}>
-            {this.getActions().map((action, index) => (
-              <MessageBoxButton emphasize={index === 0} key={action} onClick={this.handleOnClose} action={action} />
-            ))}
-          </footer>
-        </div>
-      </div>
-    );
-  }
-}
+export { MessageBox };
