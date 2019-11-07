@@ -76,13 +76,16 @@ const SegmentedButton: FC<SegmentedButtonPropTypes> = forwardRef(
     }
 
     const handleSegmentedButtonItemSelected = useCallback(
-      (e) => {
+      (originalOnclick) => (e) => {
         const newSelectedKey = e.getParameter('selectedKey');
         if (newSelectedKey !== internalSelectedKey) {
           setSelectedKey(newSelectedKey);
           if (typeof onItemSelected === 'function') {
             onItemSelected(Event.of(null, e.getOriginalEvent(), e.getParameters()));
           }
+        }
+        if (typeof originalOnclick === 'function') {
+          originalOnclick(e);
         }
       },
       [internalSelectedKey, setSelectedKey, onItemSelected]
@@ -125,7 +128,7 @@ const SegmentedButton: FC<SegmentedButtonPropTypes> = forwardRef(
               key: item.props.id,
               selected: internalSelectedKey === item.props.id,
               disabled: disabled === true ? disabled : item.props.disabled,
-              onClick: handleSegmentedButtonItemSelected
+              onClick: handleSegmentedButtonItemSelected(item.props.onClick)
             })
           )}
       </ul>
