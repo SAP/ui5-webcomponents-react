@@ -59,6 +59,8 @@ import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
 import { MessageToast } from './lib/MessageToast';
 import { MultiComboBox } from './lib/MultiComboBox';
+import { Notification } from './lib/Notification';
+import { NotificationGroup } from './lib/NotificationGroup';
 import { ObjectPage } from './lib/ObjectPage';
 import { ObjectPageMode } from './lib/ObjectPageMode';
 import { ObjectPageSection } from './lib/ObjectPageSection';
@@ -73,6 +75,7 @@ import { PlacementType } from './lib/PlacementType';
 import { Popover } from './lib/Popover';
 import { PopoverHorizontalAlign } from './lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from './lib/PopoverVerticalAlign';
+import { Priority } from './lib/Priority';
 import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
 import { SegmentedButton } from './lib/SegmentedButton';
@@ -169,6 +172,8 @@ export {
   MessageStripType,
   MessageToast,
   MultiComboBox,
+  Notification,
+  NotificationGroup,
   ObjectPage,
   ObjectPageMode,
   ObjectPageSection,
@@ -183,6 +188,7 @@ export {
   Popover,
   PopoverHorizontalAlign,
   PopoverVerticalAlign,
+  Priority,
   ProgressIndicator,
   RadioButton,
   SegmentedButton,
