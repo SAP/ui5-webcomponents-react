@@ -90,7 +90,12 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
 
     return (
       <div className={classNames.valueOf()}>
-        <span style={{ textOverflow: 'ellipsis', overflowX: 'hidden', whiteSpace: 'nowrap' }}>{children}</span>
+        <span
+          title={typeof children === 'string' ? children : null}
+          style={{ textOverflow: 'ellipsis', overflowX: 'hidden', whiteSpace: 'nowrap' }}
+        >
+          {children}
+        </span>
         <div className={classes.iconContainer}>
           {filterIcon}
           {sortingIcon}
@@ -119,7 +124,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   if (!column) return null;
 
   return (
-    <div className={className} style={style}>
+    <div className={className} style={style} role="columnheader">
       {groupable || sortable || filterable ? (
         <ColumnHeaderModal
           openBy={openBy}

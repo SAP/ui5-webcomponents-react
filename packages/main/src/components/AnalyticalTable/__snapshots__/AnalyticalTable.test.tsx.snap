@@ -16,14 +16,18 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
     class="AnalyticalTable--tableContainer-"
   >
     <div
+      aria-rowcount="2"
       class="AnalyticalTable--table-"
+      role="table"
     >
       <header
         class="AnalyticalTable--tableHeaderRow-"
+        role="rowgroup"
         style="grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
       >
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -33,6 +37,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -83,6 +88,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -92,6 +98,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -142,6 +149,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -151,6 +159,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
@@ -201,6 +210,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
@@ -266,7 +276,9 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           style="height: 220px; width: 100%;"
         >
           <div
+            aria-rowindex="0"
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -311,7 +323,9 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </div>
           </div>
           <div
+            aria-rowindex="1"
             class="AnalyticalTable--tr- AnalyticalTable--alternateRowColor-"
+            role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -429,14 +443,18 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
     class="AnalyticalTable--tableContainer-"
   >
     <div
+      aria-rowcount="2"
       class="AnalyticalTable--table-"
+      role="table"
     >
       <header
         class="AnalyticalTable--tableHeaderRow-"
+        role="rowgroup"
         style="grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
       >
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -446,6 +464,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -496,6 +515,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -505,6 +525,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -555,6 +576,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -564,6 +586,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
@@ -614,6 +637,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
@@ -679,7 +703,9 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           style="height: 220px; width: 100%;"
         >
           <div
+            aria-rowindex="0"
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -724,7 +750,9 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </div>
           </div>
           <div
+            aria-rowindex="1"
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -842,14 +870,18 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
     class="AnalyticalTable--tableContainer-"
   >
     <div
+      aria-rowcount="0"
       class="AnalyticalTable--table-"
+      role="table"
     >
       <header
         class="AnalyticalTable--tableHeaderRow-"
+        role="rowgroup"
         style="grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
       >
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -859,6 +891,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -909,6 +942,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -918,6 +952,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -968,6 +1003,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -977,6 +1013,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
@@ -1027,6 +1064,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
@@ -1333,14 +1371,18 @@ exports[`AnalyticalTable Tree Table 1`] = `
     class="AnalyticalTable--tableContainer-"
   >
     <div
+      aria-rowcount="2"
       class="AnalyticalTable--table-"
+      role="table"
     >
       <header
         class="AnalyticalTable--tableHeaderRow-"
+        role="rowgroup"
         style="grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
       >
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -1350,6 +1392,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -1421,6 +1464,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -1430,6 +1474,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -1501,6 +1546,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -1510,6 +1556,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
@@ -1581,6 +1628,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
@@ -1667,7 +1715,9 @@ exports[`AnalyticalTable Tree Table 1`] = `
           style="height: 220px; width: 100%;"
         >
           <div
+            aria-rowindex="0"
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -1688,7 +1738,9 @@ exports[`AnalyticalTable Tree Table 1`] = `
             />
           </div>
           <div
+            aria-rowindex="1"
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -1806,14 +1858,18 @@ exports[`AnalyticalTable custom row height 1`] = `
     class="AnalyticalTable--tableContainer- AnalyticalTable--modifiedRowHeight- AnalyticalTable--modifiedRowHeight-0-"
   >
     <div
+      aria-rowcount="2"
       class="AnalyticalTable--table-"
+      role="table"
     >
       <header
         class="AnalyticalTable--tableHeaderRow-"
+        role="rowgroup"
         style="grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
       >
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -1823,6 +1879,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -1873,6 +1930,7 @@ exports[`AnalyticalTable custom row height 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -1882,6 +1940,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -1932,6 +1991,7 @@ exports[`AnalyticalTable custom row height 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -1941,6 +2001,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
@@ -1991,6 +2052,7 @@ exports[`AnalyticalTable custom row height 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
@@ -2056,7 +2118,9 @@ exports[`AnalyticalTable custom row height 1`] = `
           style="height: 300px; width: 100%;"
         >
           <div
+            aria-rowindex="0"
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 0px; height: 60px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -2101,7 +2165,9 @@ exports[`AnalyticalTable custom row height 1`] = `
             </div>
           </div>
           <div
+            aria-rowindex="1"
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 60px; height: 60px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -2219,14 +2285,18 @@ exports[`AnalyticalTable test Asc desc 1`] = `
     class="AnalyticalTable--tableContainer-"
   >
     <div
+      aria-rowcount="2"
       class="AnalyticalTable--table-"
+      role="table"
     >
       <header
         class="AnalyticalTable--tableHeaderRow-"
+        role="rowgroup"
         style="grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
       >
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -2236,6 +2306,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
               >
                 Name
               </span>
@@ -2286,6 +2357,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -2295,6 +2367,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
               >
                 Age
               </span>
@@ -2345,6 +2418,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
@@ -2354,6 +2428,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             >
               <span
                 style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
               >
                 Friend Name
               </span>
@@ -2404,6 +2479,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         </div>
         <div
           class="AnalyticalTable--th-"
+          role="columnheader"
         >
           <div
             style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
@@ -2469,7 +2545,9 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           style="height: 220px; width: 100%;"
         >
           <div
+            aria-rowindex="0"
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -2514,7 +2592,9 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </div>
           </div>
           <div
+            aria-rowindex="1"
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div

@@ -253,14 +253,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
       <div className={tableContainerClasses.valueOf()}>
-        <div {...getTableProps()} ref={headerRef}>
+        <div {...getTableProps()} ref={headerRef} role="table" aria-rowcount={rows.length}>
           {headerGroups.map((headerGroup) => {
             let headerProps = {};
             if (headerGroup.getHeaderGroupProps) {
               headerProps = headerGroup.getHeaderGroupProps();
             }
             return (
-              <header {...headerProps}>
+              <header {...headerProps} role="rowgroup">
                 {headerGroup.headers.map((column, index) => (
                   <ColumnHeader
                     {...column.getHeaderProps()}

@@ -45,6 +45,7 @@ export const renderDemo = () => {
         imageShapeCircle={boolean('imageShapeCircle', false)}
         showHideHeaderButton={boolean('showHideHeaderButton', true)}
         selectedSectionId={text('selectedSectionId', '1')}
+        selectedSubSectionId={text('selectedSubSectionId', undefined)}
         onSelectedSectionChanged={action('onSelectedSectionChanged')}
         noHeader={boolean('noHeader', false)}
         alwaysShowContentHeader={boolean('alwaysShowContentHeader', true)}
