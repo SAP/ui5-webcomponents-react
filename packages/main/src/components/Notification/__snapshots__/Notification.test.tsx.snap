@@ -237,10 +237,14 @@ exports[`Notification w/ Props 1`] = `
     <div
       class="Notification--header-"
     >
-      <ui5-icon
-        class="Notification--error- Notification--semanticIcon-"
-        src="message-error"
-      />
+      <div
+        class="Notification--semanticIcon-"
+      >
+        <ui5-icon
+          class="Notification--error-"
+          src="message-error"
+        />
+      </div>
       <div
         class="Notification--title- Notification--titleEllipsised-"
       >
