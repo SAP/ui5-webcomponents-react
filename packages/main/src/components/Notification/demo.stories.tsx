@@ -34,6 +34,7 @@ export const defaultStory = () => (
     hideShowMoreButton={boolean('hideShowMoreButton', false)}
     truncate={boolean('truncate', true)}
     showCloseButton={boolean('showCloseButton', true)}
+    onClose={action('Closed')}
   />
 );
 

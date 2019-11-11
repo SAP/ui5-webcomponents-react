@@ -16,6 +16,7 @@ import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 
 export interface NotificationProptypes extends CommonProps {
   footer?: ReactNode | ReactNode[];
@@ -31,6 +32,7 @@ export interface NotificationProptypes extends CommonProps {
   onClick?: (e: any) => any;
   hideShowMoreButton?: boolean;
   truncate?: boolean;
+  onClose?: (event: Event) => void;
 
   children?: React.ReactElement<NotificationProptypes> | React.ReactElement<NotificationProptypes>[];
   collapsed?: boolean;
@@ -66,7 +68,8 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       autoPriority,
       hideShowMoreButton,
       truncate,
-      showCloseButton
+      showCloseButton,
+      onClose
     } = props;
 
     const classes = useStyles(props);
@@ -101,14 +104,18 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       return null;
     }, [avatar]);
 
-    const handleClose = useCallback(() => {
-      toggleVisible(false);
-    }, []);
+    const handleClose = useCallback(
+      (e) => {
+        toggleVisible(false);
+        onClose(Event.of(null, e));
+      },
+      [toggleVisible, onClose]
+    );
 
     const handleNotificationClick = useCallback(
       (e) => {
         if (e.target.nodeName !== 'UI5-BUTTON' && e.target.nodeName !== 'UI5-ICON' && typeof onClick === 'function') {
-          onClick(e);
+          onClick(Event.of(null, e));
         }
       },
       [onClick]
@@ -169,11 +176,11 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       }
       switch (prio) {
         case Priority.High:
-          return <Icon src="message-error" className={`${classes.error} ${classes.semanticIcon}`} />;
+          return <Icon src="message-error" className={classes.error} />;
         case Priority.Medium:
-          return <Icon src="message-warning" className={`${classes.warning} ${classes.semanticIcon}`} />;
+          return <Icon src="message-warning" className={classes.warning} />;
         case Priority.Low:
-          return <Icon src="message-success" className={`${classes.success} ${classes.semanticIcon}`} />;
+          return <Icon src="message-success" className={classes.success} />;
         case Priority.None:
           return null;
         default:
@@ -245,7 +252,9 @@ const Notification: FC<NotificationProptypes> = forwardRef(
           <div className={`${classes.priorityIndicator} ${indicatorClass}`} style={indicatorStyles} />
           <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
             <div className={classes.header}>
-              {renderSemanticIcon}
+              {priority && priority !== Priority.None && (
+                <div className={classes.semanticIcon}>{renderSemanticIcon}</div>
+              )}
               <div className={`${classes.title} ${truncate ? classes.titleEllipsised : ''}`}>{title}</div>
               {showCloseButton && (
                 <Button

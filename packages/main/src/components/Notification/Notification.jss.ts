@@ -105,7 +105,9 @@ const style = ({ parameters }: JSSTheme) => ({
   low: { backgroundColor: parameters.sapUiSuccessBorder },
   none: { backgroundColor: parameters.sapUiNeutralBorder },
   semanticIcon: {
-    paddingRight: '0.375rem'
+    paddingRight: '0.375rem',
+    width: '1rem',
+    display: 'flex'
   },
   error: {
     color: parameters.sapUiNegativeElement

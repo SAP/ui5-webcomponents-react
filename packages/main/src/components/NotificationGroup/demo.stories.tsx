@@ -37,6 +37,7 @@ export const defaultStory = () => (
     collapsed={boolean('collapsed', false)}
     showCloseButton={boolean('showCloseButton', true)}
     truncate={boolean('truncate', true)}
+    onClose={action('Group closed')}
   >
     <Notification
       footer={ActionButtons}
