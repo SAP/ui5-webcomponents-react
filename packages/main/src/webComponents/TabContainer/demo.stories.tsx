@@ -9,10 +9,12 @@ import '@ui5/webcomponents/dist/icons/home';
 import '@ui5/webcomponents/dist/icons/map';
 import '@ui5/webcomponents/dist/icons/world';
 import '@ui5/webcomponents/dist/icons/process';
+import notes from './TabContainer.md';
 
 export default {
   title: 'UI5 Web Components | TabContainer',
-  component: TabContainer
+  component: TabContainer,
+  parameters: { notes }
 };
 
 export const defaultStory = () => (

@@ -3,10 +3,12 @@ import { boolean, select, text } from '@storybook/addon-knobs';
 import React from 'react';
 import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import notes from './RadioButton.md';
 
 export default {
   title: 'UI5 Web Components | RadioButton',
-  component: RadioButton
+  component: RadioButton,
+  parameters: { notes }
 };
 
 export const defaultStory = () => (

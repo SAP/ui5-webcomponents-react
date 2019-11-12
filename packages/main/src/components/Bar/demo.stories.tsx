@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
+import notes from './Bar.md';
 
 export const defaultStory = () => {
   return (
@@ -17,5 +18,6 @@ defaultStory.story = {
 
 export default {
   title: 'Components | Bar',
-  component: Bar
+  component: Bar,
+  parameters: { notes }
 };

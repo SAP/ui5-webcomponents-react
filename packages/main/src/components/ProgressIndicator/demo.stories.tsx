@@ -2,6 +2,7 @@ import React from 'react';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 import { number, text, select } from '@storybook/addon-knobs';
+import notes from './ProgressIndicator.md';
 
 export const renderStory = () => {
   return (
@@ -27,5 +28,6 @@ renderStory.story = {
 
 export default {
   title: 'Components | ProgressIndicator',
-  component: ProgressIndicator
+  component: ProgressIndicator,
+  parameters: { notes }
 };

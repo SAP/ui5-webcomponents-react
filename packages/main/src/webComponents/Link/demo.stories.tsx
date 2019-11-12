@@ -3,10 +3,12 @@ import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { Link } from '@ui5/webcomponents-react/lib/Link';
 import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
+import notes from './Link.md';
 
 export default {
   title: 'UI5 Web Components | Link',
-  component: Link
+  component: Link,
+  parameters: { notes }
 };
 
 export const generatedDefaultStory = () => (

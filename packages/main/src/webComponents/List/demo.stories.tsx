@@ -6,10 +6,12 @@ import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import notes from './List.md';
 
 export default {
   title: 'UI5 Web Components | List',
-  component: List
+  component: List,
+  parameters: { notes }
 };
 
 export const generatedDefaultStory = () => (

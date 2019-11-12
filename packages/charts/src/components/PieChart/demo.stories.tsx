@@ -1,13 +1,15 @@
 import React from 'react';
 import { boolean } from '@storybook/addon-knobs';
-import { PieChart } from './index';
+import { PieChart } from '@ui5/webcomponents-react-charts/lib/PieChart';
+import notes from './PieChart.md';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [{ data: [65, 59, 80, 81, 56, 55, 40] }];
 
 export default {
   title: 'Charts | PieChart',
-  component: PieChart
+  component: PieChart,
+  parameters: { notes }
 };
 
 export const defaultStory = () => <PieChart labels={labels} datasets={datasets} loading={boolean('loading', false)} />;

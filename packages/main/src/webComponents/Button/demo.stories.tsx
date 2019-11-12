@@ -3,6 +3,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 import React from 'react';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import notes from './Button.md';
 
 const customStyle1 = {
   color: 'red'
@@ -49,7 +50,10 @@ class DemoButton extends React.Component {
 
 export default {
   title: 'UI5 Web Components | Button',
-  component: Button
+  component: Button,
+  parameters: {
+    notes
+  }
 };
 
 export const generatedDefaultStory = () => (
