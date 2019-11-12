@@ -6,10 +6,12 @@ import { TableCell } from '@ui5/webcomponents-react/lib/TableCell';
 import { TableColumn } from '@ui5/webcomponents-react/lib/TableColumn';
 import { TableRow } from '@ui5/webcomponents-react/lib/TableRow';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
+import notes from './Table.md';
 
 export default {
   title: 'UI5 Web Components | Table',
-  component: Table
+  component: Table,
+  parameters: { notes }
 };
 
 export const defaultStory = () => (

@@ -3,10 +3,12 @@ import { boolean, number } from '@storybook/addon-knobs';
 import React from 'react';
 import { ShellBar } from '@ui5/webcomponents-react/lib/ShellBar';
 import { ShellBarItem } from '@ui5/webcomponents-react/lib/ShellBarItem';
+import notes from './ShellBar.md';
 
 export default {
   title: 'UI5 Web Components | ShellBar',
-  component: ShellBar
+  component: ShellBar,
+  parameters: { notes }
 };
 
 export const generatedDefaultStory = () => (

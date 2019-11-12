@@ -1,6 +1,7 @@
-import React from 'react';
 import { boolean } from '@storybook/addon-knobs';
-import { ColumnChart } from './index';
+import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/ColumnChart';
+import React from 'react';
+import notes from './ColumnChart.md';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [
@@ -69,7 +70,8 @@ const growthLineOptions = {
 
 export default {
   title: 'Charts | ColumnChart',
-  component: ColumnChart
+  component: ColumnChart,
+  parameters: { notes }
 };
 
 export const defaultStory = () => (

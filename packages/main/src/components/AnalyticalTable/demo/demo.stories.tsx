@@ -5,6 +5,7 @@ import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import React from 'react';
+import notes from '../AnalyticalTable.md';
 import generateData from './generateData';
 
 const columns = [
@@ -173,5 +174,6 @@ tableWithCustomTitle.story = {
 
 export default {
   title: 'Components | Analytical Table',
-  component: AnalyticalTable
+  component: AnalyticalTable,
+  parameters: { notes }
 };

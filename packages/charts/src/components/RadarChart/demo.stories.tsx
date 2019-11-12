@@ -1,5 +1,6 @@
+import { RadarChart } from '@ui5/webcomponents-react-charts/lib/RadarChart';
 import React from 'react';
-import { RadarChart } from './index';
+import notes from './RadarChart.md';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [
@@ -16,7 +17,8 @@ const datasets = [
 
 export default {
   title: 'Charts | RadarChart',
-  component: RadarChart
+  component: RadarChart,
+  parameters: { notes }
 };
 
 export const defaultStory = () => <RadarChart labels={labels} datasets={datasets} />;

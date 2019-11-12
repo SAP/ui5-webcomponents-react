@@ -3,10 +3,12 @@ import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';
 import '@ui5/webcomponents/dist/icons/calendar';
 import '@ui5/webcomponents/dist/icons/phone';
 import React from 'react';
+import notes from './Timeline.md';
 
 export default {
   title: 'UI5 Web Components | Timeline',
-  component: Timeline
+  component: Timeline,
+  parameters: { notes }
 };
 
 export const generatedDefaultStory = () => (

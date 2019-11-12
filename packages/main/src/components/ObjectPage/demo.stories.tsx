@@ -12,6 +12,7 @@ import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSub
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 // @ts-ignore
 import SampleImage from './DemoImage.png';
+import notes from './ObjectPage.md';
 
 const renderHeaderContent = () => (
   <>
@@ -148,5 +149,6 @@ renderShortContent.story = {
 
 export default {
   title: 'Components | ObjectPage',
-  component: ObjectPage
+  component: ObjectPage,
+  parameters: { notes }
 };

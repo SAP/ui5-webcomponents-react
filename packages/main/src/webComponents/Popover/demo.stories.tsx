@@ -5,10 +5,12 @@ import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import React from 'react';
+import notes from './Popover.md';
 
 export default {
   title: 'UI5 Web Components | Popover',
-  component: Popover
+  component: Popover,
+  parameters: { notes }
 };
 
 export const defaultStory = () => (

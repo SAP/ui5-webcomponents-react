@@ -4,6 +4,7 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import '@ui5/webcomponents/dist/icons/sys-cancel';
+import notes from './ObjectStatus.md';
 
 export const onlyText = () => (
   <ObjectStatus state={select('state', ValueState, ValueState.Success)}>Object Status</ObjectStatus>
@@ -42,5 +43,6 @@ withIconOnly.story = {
 
 export default {
   title: 'Components | ObjectStatus',
-  component: ObjectStatus
+  component: ObjectStatus,
+  parameters: { notes }
 };

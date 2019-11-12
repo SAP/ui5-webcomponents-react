@@ -4,10 +4,12 @@ import React from 'react';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import notes from './Input.md';
 
 export default {
   title: 'UI5 Web Components | Input',
-  component: Input
+  component: Input,
+  parameters: { notes }
 };
 
 export const generatedDefaultStory = () => (

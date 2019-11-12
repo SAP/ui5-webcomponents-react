@@ -1,6 +1,7 @@
-import React from 'react';
 import { boolean } from '@storybook/addon-knobs';
-import { LineChart } from './index';
+import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
+import React from 'react';
+import notes from './LineChart.md';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [
@@ -9,6 +10,7 @@ const datasets = [
     data: [65, 59, 80, 81, 56, 55, 40]
   }
 ];
+
 function renderStory() {
   return <LineChart labels={labels} datasets={datasets} loading={boolean('loading', false)} />;
 }
@@ -30,7 +32,8 @@ const renderStoryWithCustomColors = () => (
 
 export default {
   title: 'Charts | Line Chart',
-  component: LineChart
+  component: LineChart,
+  parameters: { notes }
 };
 
 export const defaultStory = renderStory;

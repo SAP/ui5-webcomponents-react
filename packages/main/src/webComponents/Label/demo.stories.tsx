@@ -1,10 +1,12 @@
 import { boolean, text } from '@storybook/addon-knobs';
 import React from 'react';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
+import notes from './Label.md';
 
 export default {
   title: 'UI5 Web Components | Label',
-  component: Label
+  component: Label,
+  parameters: { notes }
 };
 
 export const story = () => (
