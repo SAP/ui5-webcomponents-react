@@ -70,8 +70,6 @@ exports[`Notification Default 1`] = `
 </div>
 `;
 
-exports[`Notification Hidden 1`] = `null`;
-
 exports[`Notification Long Title and Description 1`] = `
 <div
   class="Notification--notificationContainer- undefined"
