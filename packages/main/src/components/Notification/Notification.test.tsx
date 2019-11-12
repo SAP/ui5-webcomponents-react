@@ -38,8 +38,6 @@ describe('Notification', () => {
         datetime="1337 Minutes ago"
         avatar="ME"
         priority={Priority.High}
-        noShowMoreButton={false}
-        noCloseButton={false}
         truncate
       />
     );
