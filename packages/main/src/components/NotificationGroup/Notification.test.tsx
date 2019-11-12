@@ -34,9 +34,8 @@ describe('NotificationGroup', () => {
           datetime="1337 Minutes ago"
           avatar="ME"
           priority={Priority.High}
-          visible
-          hideShowMoreButton={false}
-          showCloseButton
+          noShowMoreButton={false}
+          noCloseButton={false}
           truncate
         />
         <Notification avatar={<Avatar size={AvatarSize.XS} shape={AvatarShape.Circle} image={sampleAvatar} />} />
@@ -76,9 +75,8 @@ describe('NotificationGroup', () => {
           datetime="1337 Minutes ago"
           avatar="ME"
           priority={Priority.High}
-          visible
-          hideShowMoreButton={false}
-          showCloseButton
+          noShowMoreButton={false}
+          noCloseButton={false}
           truncate
         />
         <Notification avatar={<Avatar size={AvatarSize.XS} shape={AvatarShape.Circle} image={sampleAvatar} />} />
@@ -104,9 +102,8 @@ describe('NotificationGroup', () => {
           datetime="1337 Minutes ago"
           avatar="ME"
           priority={Priority.High}
-          visible
-          hideShowMoreButton={false}
-          showCloseButton
+          noShowMoreButton={false}
+          noCloseButton={false}
           truncate
         />
         <Notification avatar={<Avatar size={AvatarSize.XS} shape={AvatarShape.Circle} image={sampleAvatar} />} />
@@ -132,9 +129,8 @@ describe('NotificationGroup', () => {
         datetime="1337 Minutes ago"
         avatar="ME"
         priority={Priority.High}
-        visible
-        hideShowMoreButton={false}
-        showCloseButton
+        noShowMoreButton={false}
+        noCloseButton={false}
         truncate
       >
         <Notification description="description" title="title" />

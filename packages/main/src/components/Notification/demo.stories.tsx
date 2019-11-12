@@ -30,11 +30,10 @@ export const defaultStory = () => (
     datetime={text('datetime', 'Datetime')}
     avatar={<Avatar size={AvatarSize.XS} shape={AvatarShape.Circle} image={sampleAvatar} />}
     priority={select('priority', Priority, Priority.None)}
-    visible={boolean('visible', true)}
     onClick={action('Notification clicked')}
-    hideShowMoreButton={boolean('hideShowMoreButton', false)}
+    noShowMoreButton={boolean('noShowMoreButton', false)}
     truncate={boolean('truncate', true)}
-    showCloseButton={boolean('showCloseButton', true)}
+    noCloseButton={boolean('noCloseButton', false)}
     onClose={action('Closed')}
   />
 );

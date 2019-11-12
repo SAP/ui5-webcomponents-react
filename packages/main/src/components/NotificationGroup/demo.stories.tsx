@@ -31,12 +31,11 @@ export const defaultStory = () => (
     datetime={text('datetime', 'Datetime')}
     avatar={<Avatar size={AvatarSize.XS} shape={AvatarShape.Circle} image={sampleAvatar} />}
     priority={select('priority', Priority, Priority.None)}
-    visible={boolean('visible', true)}
     onClick={action('Notification clicked')}
-    hideShowMoreButton={boolean('hideShowMoreButton', false)}
+    noShowMoreButton={boolean('noShowMoreButton', false)}
     autoPriority={boolean('autoPriority', true)}
     collapsed={boolean('collapsed', false)}
-    showCloseButton={boolean('showCloseButton', true)}
+    noCloseButton={boolean('noCloseButton', false)}
     truncate={boolean('truncate', true)}
     onClose={action('Group closed')}
   >
@@ -47,8 +46,6 @@ export const defaultStory = () => (
       authorName="Author"
       avatar="LH"
       priority={Priority.Medium}
-      visible={true}
-      showCloseButton={false}
       truncate={boolean('truncate', true)}
     />
     <Notification
@@ -56,9 +53,8 @@ export const defaultStory = () => (
       title="Very long Title. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
       authorName="Author"
       priority={Priority.Low}
-      visible={true}
       onClick={action('Child Notification clicked')}
-      showCloseButton={false}
+      noCloseButton={true}
       truncate={boolean('truncate', true)}
     />
   </NotificationGroup>
