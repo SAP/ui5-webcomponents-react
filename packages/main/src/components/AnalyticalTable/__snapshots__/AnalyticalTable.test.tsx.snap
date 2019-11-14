@@ -285,41 +285,49 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="Fra"
               >
                 Fra
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="40"
               >
                 40
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="MAR"
               >
                 MAR
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="28"
               >
                 28
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -332,45 +340,54 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="bla"
               >
                 bla
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="20"
               >
                 20
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="Nei"
               >
                 Nei
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="50"
               >
                 50
-              </div>
+              </span>
             </div>
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -388,6 +405,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -405,6 +423,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -712,41 +731,49 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="Fra"
               >
                 Fra
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="40"
               >
                 40
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="MAR"
               >
                 MAR
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="28"
               >
                 28
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -759,45 +786,54 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="bla"
               >
                 bla
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="20"
               >
                 20
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="Nei"
               >
                 Nei
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="50"
               >
                 50
-              </div>
+              </span>
             </div>
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -815,6 +851,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -832,6 +869,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -1747,45 +1785,54 @@ exports[`AnalyticalTable Tree Table 1`] = `
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="bla"
               >
                 bla
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="20"
               >
                 20
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="Nei"
               >
                 Nei
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="50"
               >
                 50
-              </div>
+              </span>
             </div>
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -1803,6 +1850,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -1820,6 +1868,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -2127,41 +2176,49 @@ exports[`AnalyticalTable custom row height 1`] = `
               class="AnalyticalTable--tableCell-"
               style="height: 60px; align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="Fra"
               >
                 Fra
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="height: 60px; align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="40"
               >
                 40
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="height: 60px; align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="MAR"
               >
                 MAR
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="height: 60px; align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="28"
               >
                 28
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -2174,45 +2231,54 @@ exports[`AnalyticalTable custom row height 1`] = `
               class="AnalyticalTable--tableCell-"
               style="height: 60px; align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="bla"
               >
                 bla
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="height: 60px; align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="20"
               >
                 20
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="height: 60px; align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="Nei"
               >
                 Nei
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="height: 60px; align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="50"
               >
                 50
-              </div>
+              </span>
             </div>
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 120px; height: 60px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -2230,6 +2296,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 180px; height: 60px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -2247,6 +2314,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 240px; height: 60px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -2554,41 +2622,49 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="Fra"
               >
                 Fra
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="40"
               >
                 40
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="MAR"
               >
                 MAR
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="28"
               >
                 28
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -2601,45 +2677,54 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="bla"
               >
                 bla
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="20"
               >
                 20
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="Nei"
               >
                 Nei
-              </div>
+              </span>
             </div>
             <div
               class="AnalyticalTable--tableCell-"
               style="align-items: center;"
             >
-              <div
-                class="AnalyticalTable--tableCellContent-"
+              <span
+                class="Text--text- Text--noWrap-"
+                style="width: 100%;"
+                title="50"
               >
                 50
-              </div>
+              </span>
             </div>
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -2657,6 +2742,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
@@ -2674,6 +2760,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <div
             class="AnalyticalTable--tr-"
+            role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%; grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);"
           >
             <div
