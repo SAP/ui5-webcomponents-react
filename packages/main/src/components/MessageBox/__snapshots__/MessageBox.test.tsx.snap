@@ -49,6 +49,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
   </footer>
   <span
     class="Text--text- MessageBox--content-"
+    style="width: 100%;"
   >
     Confirm - Cancel
   </span>
@@ -105,6 +106,7 @@ exports[`MessageBox Confirm - OK 1`] = `
   </footer>
   <span
     class="Text--text- MessageBox--content-"
+    style="width: 100%;"
   >
     Confirm - OK
   </span>
@@ -152,6 +154,7 @@ exports[`MessageBox Error 1`] = `
   </footer>
   <span
     class="Text--text- MessageBox--content-"
+    style="width: 100%;"
   >
     Error
   </span>
@@ -199,6 +202,7 @@ exports[`MessageBox Information 1`] = `
   </footer>
   <span
     class="Text--text- MessageBox--content-"
+    style="width: 100%;"
   >
     Information
   </span>
@@ -255,6 +259,7 @@ exports[`MessageBox No Title 1`] = `
   </footer>
   <span
     class="Text--text- MessageBox--content-"
+    style="width: 100%;"
   >
     No Title
   </span>
@@ -302,6 +307,7 @@ exports[`MessageBox Not open 1`] = `
   </footer>
   <span
     class="Text--text- MessageBox--content-"
+    style="width: 100%;"
   >
     Custom Success
   </span>
@@ -357,6 +363,7 @@ exports[`MessageBox Show 1`] = `
   </footer>
   <span
     class="Text--text- MessageBox--content-"
+    style="width: 100%;"
   >
     Custom
   </span>
@@ -404,6 +411,7 @@ exports[`MessageBox Success 1`] = `
   </footer>
   <span
     class="Text--text- MessageBox--content-"
+    style="width: 100%;"
   >
     Success
   </span>
@@ -451,6 +459,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
   </footer>
   <span
     class="Text--text- MessageBox--content-"
+    style="width: 100%;"
   >
     Custom Success
   </span>
@@ -498,6 +507,7 @@ exports[`MessageBox Warning 1`] = `
   </footer>
   <span
     class="Text--text- MessageBox--content-"
+    style="width: 100%;"
   >
     Warning
   </span>

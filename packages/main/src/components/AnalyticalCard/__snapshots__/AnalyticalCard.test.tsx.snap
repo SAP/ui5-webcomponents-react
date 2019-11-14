@@ -101,6 +101,7 @@ exports[`Analytical Card Render without Crashing 1`] = `
   >
     <span
       class="Text--text-"
+      style="width: 100%;"
     >
       I'm a content!
     </span>

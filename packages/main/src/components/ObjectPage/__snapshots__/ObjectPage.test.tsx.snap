@@ -91,16 +91,19 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
                   </ui5-link>
                   <span
                     class="Text--text-"
+                    style="width: 100%;"
                   >
                     Address 1
                   </span>
                   <span
                     class="Text--text-"
+                    style="width: 100%;"
                   >
                     Address 2
                   </span>
                   <span
                     class="Text--text-"
+                    style="width: 100%;"
                   >
                     Address 3
                   </span>
@@ -826,16 +829,19 @@ exports[`ObjectPage Only Sections 1`] = `
                   </ui5-link>
                   <span
                     class="Text--text-"
+                    style="width: 100%;"
                   >
                     Address 1
                   </span>
                   <span
                     class="Text--text-"
+                    style="width: 100%;"
                   >
                     Address 2
                   </span>
                   <span
                     class="Text--text-"
+                    style="width: 100%;"
                   >
                     Address 3
                   </span>
@@ -1203,16 +1209,19 @@ exports[`ObjectPage With Subsections 1`] = `
                   </ui5-link>
                   <span
                     class="Text--text-"
+                    style="width: 100%;"
                   >
                     Address 1
                   </span>
                   <span
                     class="Text--text-"
+                    style="width: 100%;"
                   >
                     Address 2
                   </span>
                   <span
                     class="Text--text-"
+                    style="width: 100%;"
                   >
                     Address 3
                   </span>
