@@ -8,7 +8,7 @@ export const renderStory = () => {
     <Text
       wrapping={boolean('wrapping', true)}
       renderWhitespace={boolean('renderWhitespace', false)}
-      width={text('width', '100%')}
+      width={text('width', '')}
     >
       Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
       magna aliquyam erat, sed diam voluptua.

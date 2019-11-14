@@ -253,7 +253,6 @@ exports[`SideNavigation Expanded 1`] = `
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Overview
       </span>
@@ -270,7 +269,6 @@ exports[`SideNavigation Expanded 1`] = `
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Calendar
       </span>
@@ -287,7 +285,6 @@ exports[`SideNavigation Expanded 1`] = `
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Customers
       </span>
@@ -304,7 +301,6 @@ exports[`SideNavigation Expanded 1`] = `
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Sales
       </span>
@@ -329,7 +325,6 @@ exports[`SideNavigation Expanded 1`] = `
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         My Opportunities
       </span>
@@ -347,7 +342,6 @@ exports[`SideNavigation Expanded 1`] = `
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         My Leads
       </span>
@@ -364,7 +358,6 @@ exports[`SideNavigation Expanded 1`] = `
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         My CPQS
       </span>
@@ -381,7 +374,6 @@ exports[`SideNavigation Expanded 1`] = `
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Deliveries
       </span>
@@ -413,7 +405,6 @@ exports[`SideNavigation Expanded 1`] = `
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Legal Information
       </span>
@@ -430,7 +421,6 @@ exports[`SideNavigation Expanded 1`] = `
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Useful Links
       </span>
@@ -459,7 +449,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     >
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Overview
       </span>
@@ -472,7 +461,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     >
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Calendar
       </span>
@@ -485,7 +473,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     >
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Customers
       </span>
@@ -498,7 +485,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     >
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Sales
       </span>
@@ -520,7 +506,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     >
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         My Opportunities
       </span>
@@ -535,7 +520,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     >
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         My Leads
       </span>
@@ -549,7 +533,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     >
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         My CPQS
       </span>
@@ -562,7 +545,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     >
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Deliveries
       </span>
@@ -590,7 +572,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     >
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Legal Information
       </span>
@@ -603,7 +584,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     >
       <span
         class="Text--text- SideNavigationListItem--text-"
-        style="width: 100%;"
       >
         Useful Links
       </span>

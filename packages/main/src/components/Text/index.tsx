@@ -52,7 +52,7 @@ const Text: FC<TextProps> = forwardRef((props: TextProps, ref: Ref<HTMLSpanEleme
 Text.defaultProps = {
   renderWhitespace: false,
   wrapping: true,
-  width: '100%'
+  width: null
 };
 
 Text.displayName = 'Text';
