@@ -10,7 +10,8 @@ export const TextStyles = ({ parameters }: JSSTheme) => ({
     display: 'inline-block',
     boxSizing: 'border-box',
     whiteSpace: 'pre-line',
-    wordWrap: 'break-word'
+    wordWrap: 'break-word',
+    maxWidth: '100%'
   },
   renderWhitespace: {
     whiteSpace: 'pre-wrap'
