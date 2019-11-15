@@ -54,7 +54,7 @@ const columns = [
 ];
 
 const data = generateData(200);
-const dataTree = generateData(200, true);
+const dataTree = generateData(20, true);
 
 export const defaultTable = () => {
   return (

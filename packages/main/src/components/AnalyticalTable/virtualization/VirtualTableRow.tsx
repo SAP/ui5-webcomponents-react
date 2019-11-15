@@ -1,5 +1,4 @@
 import React from 'react';
-import { Cell } from './Cell';
 
 export const VirtualTableRow = (props) => {
   const { style, index, data } = props;
@@ -14,7 +13,7 @@ export const VirtualTableRow = (props) => {
 
   if (!row) {
     return (
-      <div key={`minRow-${index}`} className={classes.tr} style={rowStyle}>
+      <div key={`minRow-${index}`} className={classes.tr} style={rowStyle} role="row">
         {columns.map((col, colIndex) => {
           let classNames = classes.tableCell;
           if (col.className) {
@@ -29,9 +28,17 @@ export const VirtualTableRow = (props) => {
   return (
     <div {...row.getRowProps()} style={rowStyle} role="row" aria-rowindex={index}>
       {row.cells.map((cell, i) => {
-        const cellProps = cell.getCellProps();
-        const key = cellProps && cellProps.key ? cellProps.key : `cell-${i}`;
-        return <Cell key={key} row={row} cell={cell} columnIndex={i} classes={classes} isTreeTable={isTreeTable} />;
+        let contentToRender = 'Cell';
+        if (isTreeTable) {
+          contentToRender = 'Expandable';
+        } else if (cell.isGrouped) {
+          contentToRender = 'Grouped';
+        } else if (cell.isAggregated) {
+          contentToRender = 'Aggregated';
+        } else if (cell.isRepeatedValue) {
+          contentToRender = 'RepeatedValue';
+        }
+        return <div {...cell.getCellProps()}>{cell.render(contentToRender)}</div>;
       })}
     </div>
   );
