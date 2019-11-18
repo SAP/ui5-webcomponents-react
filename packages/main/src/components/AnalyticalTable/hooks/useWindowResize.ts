@@ -13,6 +13,12 @@ export const useWindowResize = () => {
   const observer = useRef(new MutationObserver(onWindowResize));
 
   useEffect(() => {
+    if (headerRef.current && headerRef.current.getBoundingClientRect().width !== 0) {
+      setTableWidth(headerRef.current.getBoundingClientRect().width);
+    }
+  }, [headerRef.current, setTableWidth]);
+
+  useEffect(() => {
     Device.resize.attachHandler(onWindowResize, null);
     return () => {
       Device.resize.detachHandler(onWindowResize, null);
