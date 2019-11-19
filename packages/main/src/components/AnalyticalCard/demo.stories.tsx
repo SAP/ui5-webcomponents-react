@@ -6,10 +6,12 @@ import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';
 import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';
 import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import notes from './AnalyticalCard.md';
 
 export default {
   title: 'Components | Analytical Card',
-  component: AnalyticalCard
+  component: AnalyticalCard,
+  parameters: { notes }
 };
 
 export const defaultStory = () => (

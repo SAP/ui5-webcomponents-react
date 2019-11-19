@@ -329,7 +329,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           {loading && busyIndicatorEnabled && data.length > 0 && <LoadingComponent />}
           {loading && data.length === 0 && (
             <TablePlaceholder
-              columns={cols.length}
+              columns={cols.filter((col) => col.show ?? true).length}
               rows={props.minRows}
               style={noDataStyles}
               rowHeight={internalRowHeight}

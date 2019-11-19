@@ -5,10 +5,12 @@ import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import '@ui5/webcomponents/dist/icons/order-status.js';
 import React from 'react';
+import notes from './Card.md';
 
 export default {
   title: 'UI5 Web Components | Card',
-  component: Card
+  component: Card,
+  parameters: { notes }
 };
 
 export const defaultStory = () => (

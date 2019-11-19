@@ -3,10 +3,12 @@ import React from 'react';
 import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import notes from './ActionSheet.md';
 
 export default {
   title: 'Components | ActionSheet',
-  component: ActionSheet
+  component: ActionSheet,
+  parameters: { notes }
 };
 
 export const defaultStory = () => (

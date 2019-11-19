@@ -1,6 +1,10 @@
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import { DefaultFilterComponent } from '../FilterComponent';
 import { Column } from 'react-table';
+import { Expandable } from './Expandable';
+import { Grouped } from './Grouped';
+import { Cell } from './Cell';
+import { RepeatedValue } from './RepeatedValue';
 
 export const DEFAULT_COLUMN_WIDTH = 60;
 
@@ -16,5 +20,9 @@ export const DefaultColumn: Column = {
   width: '1fr',
   vAlign: VerticalAlign.Middle,
   Aggregated: () => null,
-  defaultFilter: defaultFilterMethod
+  defaultFilter: defaultFilterMethod,
+  Grouped: Grouped,
+  Cell: Cell,
+  Expandable: Expandable,
+  RepeatedValue: RepeatedValue
 };

@@ -11,10 +11,8 @@ const NotificationGroup: FC<NotificationProptypes> = forwardRef(
 );
 
 NotificationGroup.defaultProps = {
-  visible: true,
   autoPriority: true,
-  truncate: true,
-  showCloseButton: true
+  truncate: true
 };
 
 NotificationGroup.displayName = 'Notification Group';

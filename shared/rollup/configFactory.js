@@ -17,6 +17,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     }),
     babel({
       presets: ['babel-preset-react-app/prod'],
+      plugins: ['@babel/plugin-proposal-nullish-coalescing-operator'],
       extensions: ['.js', '.jsx', '.ts', '.tsx']
     }),
     postcss()

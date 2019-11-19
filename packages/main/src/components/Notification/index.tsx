@@ -16,6 +16,7 @@ import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 
 export interface NotificationProptypes extends CommonProps {
   footer?: ReactNode | ReactNode[];
@@ -26,18 +27,15 @@ export interface NotificationProptypes extends CommonProps {
   loading?: boolean;
   datetime?: string;
   priority?: Priority;
-  showCloseButton?: boolean;
-  visible?: boolean;
+  noCloseButton?: boolean;
   onClick?: (e: any) => any;
-  hideShowMoreButton?: boolean;
+  noShowMoreButton?: boolean;
   truncate?: boolean;
+  onClose?: (event: Event) => void;
 
   children?: React.ReactElement<NotificationProptypes> | React.ReactElement<NotificationProptypes>[];
   collapsed?: boolean;
   autoPriority?: boolean;
-
-  isChild?: boolean;
-  isLastChild?: boolean;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Notification' });
@@ -54,29 +52,23 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       datetime,
       avatar,
       priority,
-      visible,
       onClick,
       children,
       collapsed,
       className,
       tooltip,
       style,
-      isChild,
-      isLastChild,
       autoPriority,
-      hideShowMoreButton,
+      noShowMoreButton,
       truncate,
-      showCloseButton
+      noCloseButton,
+      onClose
     } = props;
 
     const classes = useStyles(props);
-    const [visibleState, toggleVisible] = useState(visible);
+    const [visibleState, toggleVisible] = useState(true);
     const [showChildren, toggleChildrenVisible] = useState(!collapsed);
     const [showMore, toggleShowMore] = useState(!truncate);
-
-    useEffect(() => {
-      toggleVisible(visible);
-    }, [visible]);
 
     useEffect(() => {
       toggleChildrenVisible(!collapsed);
@@ -101,14 +93,18 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       return null;
     }, [avatar]);
 
-    const handleClose = useCallback(() => {
-      toggleVisible(false);
-    }, []);
+    const handleClose = useCallback(
+      (e) => {
+        toggleVisible(false);
+        onClose(Event.of(null, e));
+      },
+      [toggleVisible, onClose]
+    );
 
     const handleNotificationClick = useCallback(
       (e) => {
         if (e.target.nodeName !== 'UI5-BUTTON' && e.target.nodeName !== 'UI5-ICON' && typeof onClick === 'function') {
-          onClick(e);
+          onClick(Event.of(null, e));
         }
       },
       [onClick]
@@ -121,6 +117,9 @@ const Notification: FC<NotificationProptypes> = forwardRef(
     const handleShowMore = useCallback(() => {
       toggleShowMore(!showMore);
     }, [showMore]);
+
+    const isLastChild = props['isLastChild'];
+    const isChild = props['isChild'];
 
     const notificationContainerStyles = useMemo(() => {
       const borderRadius = () => {
@@ -169,11 +168,11 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       }
       switch (prio) {
         case Priority.High:
-          return <Icon src="message-error" className={`${classes.error} ${classes.semanticIcon}`} />;
+          return <Icon src="message-error" className={classes.error} />;
         case Priority.Medium:
-          return <Icon src="message-warning" className={`${classes.warning} ${classes.semanticIcon}`} />;
+          return <Icon src="message-warning" className={classes.warning} />;
         case Priority.Low:
-          return <Icon src="message-success" className={`${classes.success} ${classes.semanticIcon}`} />;
+          return <Icon src="message-success" className={classes.success} />;
         case Priority.None:
           return null;
         default:
@@ -204,11 +203,13 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       return React.Children.map(children, (item, index) => {
         if (React.Children.count(children) === index + 1) {
           return React.cloneElement(item, {
+            // @ts-ignore
             isLastChild: true,
             className: `${item.props.className} ${classes.notificationContainerChild}`
           });
         }
         return React.cloneElement(item, {
+          // @ts-ignore
           isChild: true,
           className: `${item.props.className} ${classes.notificationContainerChild}`
         });
@@ -245,9 +246,11 @@ const Notification: FC<NotificationProptypes> = forwardRef(
           <div className={`${classes.priorityIndicator} ${indicatorClass}`} style={indicatorStyles} />
           <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
             <div className={classes.header}>
-              {renderSemanticIcon}
+              {priority && priority !== Priority.None && (
+                <div className={classes.semanticIcon}>{renderSemanticIcon}</div>
+              )}
               <div className={`${classes.title} ${truncate ? classes.titleEllipsised : ''}`}>{title}</div>
-              {showCloseButton && (
+              {!noCloseButton && (
                 <Button
                   className={classes.closeButton}
                   design={ButtonDesign.Transparent}
@@ -275,7 +278,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
               </div>
               <div className={classes.footer}>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                  {!hideShowMoreButton && (
+                  {!noShowMoreButton && (
                     <Button design={ButtonDesign.Transparent} onClick={handleShowMore}>
                       {showMore ? 'Show Less' : 'Show More'}
                     </Button>
@@ -302,9 +305,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
 );
 
 Notification.defaultProps = {
-  visible: true,
-  truncate: true,
-  showCloseButton: true
+  truncate: true
 };
 
 Notification.displayName = 'Notification';

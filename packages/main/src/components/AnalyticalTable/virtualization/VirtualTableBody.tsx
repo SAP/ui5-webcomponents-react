@@ -47,6 +47,9 @@ export const VirtualTableBody = (props) => {
         if (resizedColumns.hasOwnProperty(item.accessor)) {
           return resizedColumns[item.accessor];
         }
+        if (item.hasOwnProperty('show') && !item.show) {
+          return 0;
+        }
         return item.minWidth ? item.minWidth : DEFAULT_COLUMN_WIDTH;
       })
       .reduce((acc, val) => acc + val, 0);

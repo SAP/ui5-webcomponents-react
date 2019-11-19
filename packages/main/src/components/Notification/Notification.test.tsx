@@ -38,17 +38,9 @@ describe('Notification', () => {
         datetime="1337 Minutes ago"
         avatar="ME"
         priority={Priority.High}
-        visible
-        hideShowMoreButton={false}
-        showCloseButton
         truncate
       />
     );
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  test('Hidden', () => {
-    const wrapper = renderThemedComponent(<Notification visible={false} />);
     expect(wrapper).toMatchSnapshot();
   });
 

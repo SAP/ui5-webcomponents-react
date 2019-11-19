@@ -11,6 +11,7 @@ import '@ui5/webcomponents/dist/icons/calendar';
 import '@ui5/webcomponents/dist/icons/employee';
 import '@ui5/webcomponents/dist/icons/lead';
 import '@ui5/webcomponents/dist/icons/add-product';
+import notes from './SideNavigation.md';
 
 export const defaultStory = () => (
   <SideNavigation
@@ -47,5 +48,6 @@ defaultStory.story = {
 
 export default {
   title: 'Components | SideNavigation',
-  component: SideNavigation
+  component: SideNavigation,
+  parameters: { notes }
 };

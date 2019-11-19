@@ -5,6 +5,7 @@ import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import notes from './Carousel.md';
 
 export const renderCarousel = () => {
   return (
@@ -69,5 +70,6 @@ renderCarouselWithOneChild.story = {
 
 export default {
   title: 'Components | Carousel',
-  component: Carousel
+  component: Carousel,
+  parameters: { notes }
 };
