@@ -1,7 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import React, { CSSProperties, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
+import React, { CSSProperties, DragEventHandler, FC, ReactNode, ReactNodeArray, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { Resizer } from './Resizer';
@@ -13,6 +13,7 @@ import '@ui5/webcomponents/dist/icons/sort-descending';
 import '@ui5/webcomponents/dist/icons/sort-ascending';
 
 export interface ColumnHeaderProps {
+  id: string;
   defaultSortDesc: boolean;
   onFilteredChange: (event: Event) => void;
   children: ReactNode | ReactNodeArray;
@@ -26,6 +27,14 @@ export interface ColumnHeaderProps {
   isLastColumn?: boolean;
   onSort?: (e: Event) => void;
   onGroupBy?: (e: Event) => void;
+  onDragStart: DragEventHandler<HTMLDivElement>;
+  onDragOver: DragEventHandler<HTMLDivElement>;
+  onDrop: DragEventHandler<HTMLDivElement>;
+  onDragEnter: DragEventHandler<HTMLDivElement>;
+  dragOver: boolean;
+  isResizing: boolean;
+  isDraggable: boolean;
+  isDroppable: boolean;
 }
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -64,6 +73,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   const classes = useStyles(props);
 
   const {
+    id,
     children,
     column,
     className,
@@ -73,7 +83,14 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     filterable,
     isLastColumn,
     onSort,
-    onGroupBy
+    onGroupBy,
+    onDragEnter,
+    onDragOver,
+    onDragStart,
+    onDrop,
+    isDraggable,
+    isDroppable,
+    dragOver
   } = props;
 
   const openBy = useMemo(() => {
@@ -118,13 +135,26 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     if (isResizable) {
       modifiedStyles.maxWidth = `calc(100% - 16px)`;
     }
+    if (dragOver) {
+      isDroppable ? (modifiedStyles.borderLeft = '3px solid blue') : (modifiedStyles.borderLeft = '3px solid red');
+    }
     return modifiedStyles as CSSProperties;
   }, [style, isResizable]);
 
   if (!column) return null;
 
   return (
-    <div className={className} style={style} role="columnheader">
+    <div
+      id={id}
+      className={className}
+      style={style}
+      role="columnheader"
+      draggable={isDraggable}
+      onDragEnter={onDragEnter}
+      onDragOver={onDragOver}
+      onDragStart={onDragStart}
+      onDrop={onDrop}
+    >
       {groupable || sortable || filterable ? (
         <ColumnHeaderModal
           openBy={openBy}

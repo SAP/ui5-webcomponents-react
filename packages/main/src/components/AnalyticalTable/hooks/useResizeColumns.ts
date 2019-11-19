@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 
 export const useResizeColumns = () => {
   const [resizedColumns, setResizedColumns] = useState({});
@@ -12,5 +12,13 @@ export const useResizeColumns = () => {
     [setResizedColumns, resizedColumns]
   );
 
-  return [resizedColumns, onColumnSizeChanged];
+  const [isBeingResized, setBeingResized] = useState(false);
+  const onColumnBeingResized = useCallback(
+    ({ value }) => {
+      setBeingResized(value);
+    },
+    [setBeingResized, isBeingResized]
+  );
+
+  return [resizedColumns, onColumnSizeChanged, isBeingResized, onColumnBeingResized];
 };
