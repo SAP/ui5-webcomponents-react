@@ -278,14 +278,18 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     const draggedColId = e.dataTransfer.getData('colId');
     if (id === draggedColId) return;
 
-    const droppedColIdx = cols.findIndex((col) => col.accessor === id);
-    const draggedColIdx = cols.findIndex((col) => col.accessor === draggedColId);
+    const getColumnId = (column) => {
+      return typeof column.accessor === 'string' ? column.accessor : column.id;
+    };
+
+    const droppedColIdx = cols.findIndex((col) => getColumnId(col) === id);
+    const draggedColIdx = cols.findIndex((col) => getColumnId(col) === draggedColId);
     const tempCols = [...cols];
 
     tempCols.splice(droppedColIdx, 0, tempCols.splice(draggedColIdx, 1)[0]);
     setCols(tempCols);
 
-    setColumnOrder(tempCols.map((column) => column.accessor));
+    setColumnOrder(tempCols.map((column) => getColumnId(column)));
   };
   // ------------------- DnD functions -------------------
 
