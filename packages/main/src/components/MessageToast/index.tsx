@@ -14,7 +14,10 @@ import '@ui5/webcomponents/dist/icons/sys-enter';
 
 const coloredStyles = ({ parameters }: JSSTheme) => ({
   base: {
-    fontSize: '1.375rem'
+    width: '1.375rem',
+    minWidth: '1.375rem',
+    height: '1.375rem',
+    minHeight: '1.375rem'
   },
   Success: {
     color: parameters.sapUiPositiveElement

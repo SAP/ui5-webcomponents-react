@@ -2,17 +2,18 @@
   "name": "@ui5/webcomponents-react",
   "version": "0.7.0-rc.1",
   "description": "React Wrapper for UI5 Web Components and additional components",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
+  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/SAP/ui5-webcomponents-react.git",
     "directory": "packages/main"
   },
-  "main": "index.cjs.js",
-  "module": "index.esm.js",
-  "types": "index.d.ts",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "private": false,
+  "sideEffects": false,
   "scripts": {
     "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/index.js --onlyStopForMerge",
     "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
@@ -23,13 +24,14 @@
     "@ui5/webcomponents-react-base": "0.7.0-rc.1",
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "^4.3.2",
+    "react-jss": "10.0.0",
     "react-table": "7.0.0-beta.12",
-    "react-toastify": "^5.0.1",
+    "react-toastify": "^5.4.1",
     "react-window": "^1.8.5"
   },
   "devDependencies": {
     "diff": "^4.0.1",
-    "inquirer": "^6.3.1"
+    "inquirer": "^7.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",

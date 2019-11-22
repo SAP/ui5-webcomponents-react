@@ -9,7 +9,7 @@ const bundleTypes = {
 const bundles = [
   {
     label: 'main',
-    bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES],
+    bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD],
     entry: 'main',
     externals: [
       'react',
@@ -23,13 +23,13 @@ const bundles = [
   },
   {
     label: 'base',
-    bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES],
+    bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD],
     entry: 'base',
     externals: ['react']
   },
   {
     label: 'charts',
-    bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD, bundleTypes.NODE_ES],
+    bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD],
     entry: 'charts',
     externals: ['react', 'react-jss', '@ui5/webcomponents', '@ui5/webcomponents-react-charts']
   }
