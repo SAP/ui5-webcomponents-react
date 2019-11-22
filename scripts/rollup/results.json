@@ -41,27 +41,6 @@
       "packageName": "main",
       "size": 135295,
       "gzip": 35738
-    },
-    {
-      "filename": "main.js",
-      "bundleType": "NODE_ES",
-      "packageName": "main",
-      "size": 254970,
-      "gzip": 49407
-    },
-    {
-      "filename": "base.js",
-      "bundleType": "NODE_ES",
-      "packageName": "base",
-      "size": 142784,
-      "gzip": 28415
-    },
-    {
-      "filename": "charts.js",
-      "bundleType": "NODE_ES",
-      "packageName": "charts",
-      "size": 36267,
-      "gzip": 6816
     }
   ]
 }
