@@ -13,11 +13,9 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "private": false,
+  "sideEffects": false,
   "scripts": {
     "postbuild": "rollup -c"
-  },
-  "devDependencies": {
-    "@types/chart.js": "^2.7.56"
   },
   "dependencies": {
     "@ui5/webcomponents-react": "0.7.0-rc.1",
@@ -29,6 +27,9 @@
     "react-chartjs-2": "^2.7.6",
     "react-content-loader": "^4.3.2",
     "react-jss": "10.0.0"
+  },
+  "devDependencies": {
+    "@types/chart.js": "^2.7.56"
   },
   "peerDependencies": {
     "react": "^16.8.0"
