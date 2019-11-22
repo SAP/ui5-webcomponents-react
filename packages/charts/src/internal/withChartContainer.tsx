@@ -23,7 +23,7 @@ const styles = {
       padding: '0 1rem',
       boxSizing: 'border-box'
     },
-    '& svg': {
+    '& > svg[role="img"]': {
       width: (props) => `${props.width}px`,
       height: calculateChartHeight
     }
