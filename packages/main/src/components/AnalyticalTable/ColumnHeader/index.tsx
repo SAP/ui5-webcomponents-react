@@ -35,7 +35,6 @@ export interface ColumnHeaderProps {
   dragOver: boolean;
   isResizing: boolean;
   isDraggable: boolean;
-  isDroppable: boolean;
 }
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -91,7 +90,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     onDrop,
     onDragEnd,
     isDraggable,
-    isDroppable,
     dragOver
   } = props;
 
@@ -139,9 +137,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
       modifiedStyles.maxWidth = `calc(100% - 16px)`;
     }
     if (dragOver) {
-      isDroppable
-        ? (modifiedStyles.borderLeft = '3px solid ' + theme.parameters.sapSelectedColor)
-        : (modifiedStyles.borderLeft = '3px solid ' + theme.parameters.sapWarningBorderColor);
+      modifiedStyles.borderLeft = '3px solid ' + theme.parameters.sapSelectedColor;
     }
     return modifiedStyles as CSSProperties;
   }, [style, isResizable]);

@@ -79,6 +79,7 @@ export const defaultTable = () => {
         groupBy={array('groupBy', [])}
         rowHeight={number('rowHeight', 60)}
         selectedRowKey={text('selectedRowKey', `row_5`)}
+        onColumnsReordered={action('onColumnsReordered')}
       />
     </div>
   );

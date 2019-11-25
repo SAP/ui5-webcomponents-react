@@ -37,7 +37,7 @@ import { useWindowResize } from './hooks/useWindowResize';
 import { makeTemplateColumns } from './hooks/utils';
 import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
-import { useDragAndDrop } from './hooks/useDranAndDrop';
+import { useDragAndDrop } from './hooks/useDragAndDrop';
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -94,6 +94,7 @@ export interface TableProps extends CommonProps {
   onGroup?: (e?: Event) => void;
   onRowSelected?: (e?: Event) => any;
   onRowExpandChange?: (e?: Event) => any;
+  onColumnsReordered?: (e?: Event) => void;
   /**
    * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api.md#table-options)
    */
@@ -136,6 +137,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     selectedRowKey,
     LoadingComponent,
     onRowExpandChange,
+    onColumnsReordered,
     noDataText,
     NoDataComponent,
     visibleRows,
@@ -251,12 +253,25 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     [tableState.groupBy, onGroup]
   );
 
+  const onColumnsOrderChanged = useCallback(
+    (target, column, columnsNewOrder) => {
+      onColumnsReordered(
+        Event.of(null, target, {
+          columnsNewOrder,
+          column
+        })
+      );
+    },
+    [tableState.columnOrder, onColumnsReordered]
+  );
+
   const [headerRef, tableWidth] = useWindowResize();
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
     props,
     setColumnOrder,
     tableState.columnOrder,
-    isBeingResized
+    isBeingResized,
+    onColumnsOrderChanged
   );
 
   return (
@@ -290,7 +305,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                     dragOver={column.id === dragOver}
                     column={column}
                     isDraggable={!isTreeTable}
-                    isDroppable={true}
                   >
                     {column.render('Header')}
                   </ColumnHeader>
@@ -360,6 +374,7 @@ AnalyticalTable.defaultProps = {
   subRowsKey: 'subRows',
   onGroup: () => {},
   onRowExpandChange: () => {},
+  onColumnsReordered: () => {},
   isTreeTable: false,
   alternateRowColor: false
 };
