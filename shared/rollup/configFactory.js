@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const PATHS = require('../../config/paths');
 const { highlightLog } = require('../utils');
+const { asyncCopyTo } = require('../../scripts/utils');
 
 const rollupConfigFactory = (pkgName, externals = []) => {
   const LIB_BASE_PATH = path.resolve(PATHS.packages, pkgName, 'src', 'lib');
@@ -33,6 +34,12 @@ const rollupConfigFactory = (pkgName, externals = []) => {
   );
 
   highlightLog(`Build lib folder for ${pkgName}`);
+
+  console.info('Copy index file');
+  asyncCopyTo(
+    path.resolve(PATHS.packages, pkgName, 'src', 'index.ts'),
+    path.resolve(PATHS.build, 'node_modules', pkgName, `index.esm.js`)
+  );
 
   return allLibFiles.map((file) => ({
     input: `${LIB_BASE_PATH}/${file}`,
