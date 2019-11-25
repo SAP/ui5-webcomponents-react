@@ -12,8 +12,7 @@ import React, {
   Ref,
   useCallback,
   useEffect,
-  useMemo,
-  useState
+  useMemo
 } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { useExpanded, useFilters, useGroupBy, useSortBy, useTable, useColumnOrder } from 'react-table';
@@ -38,6 +37,7 @@ import { useWindowResize } from './hooks/useWindowResize';
 import { makeTemplateColumns } from './hooks/utils';
 import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
+import { useDragAndDrop } from './hooks/useDranAndDrop';
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -250,48 +250,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   );
 
   const [headerRef, tableWidth] = useWindowResize();
-
-  const [cols, setCols] = useState(columns);
-  const [dragOver, setDragOver] = useState('');
-
-  // ------------------- DnD functions -------------------
-  const handleDragStart = (column, e) => {
-    if (isBeingResized) {
-      e.preventDefault();
-      return;
-    }
-    e.dataTransfer.setData('colId', column.id);
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-  };
-
-  const handleDragEnter = (column) => {
-    setDragOver(column.id);
-  };
-
-  const handleOnDrop = (column, e) => {
-    setDragOver('');
-
-    const { id } = column;
-    const draggedColId = e.dataTransfer.getData('colId');
-    if (id === draggedColId) return;
-
-    const getColumnId = (column) => {
-      return typeof column.accessor === 'string' ? column.accessor : column.id;
-    };
-
-    const droppedColIdx = cols.findIndex((col) => getColumnId(col) === id);
-    const draggedColIdx = cols.findIndex((col) => getColumnId(col) === draggedColId);
-    const tempCols = [...cols];
-
-    tempCols.splice(droppedColIdx, 0, tempCols.splice(draggedColIdx, 1)[0]);
-    setCols(tempCols);
-
-    setColumnOrder(tempCols.map((column) => getColumnId(column)));
-  };
-  // ------------------- DnD functions -------------------
+  const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
+    props,
+    setColumnOrder,
+    tableState.columnOrder,
+    isBeingResized
+  );
 
   return (
     <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
@@ -310,17 +274,19 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                   <ColumnHeader
                     id={column.id}
                     {...column.getHeaderProps()}
-                    isLastColumn={index === cols.length - 1}
+                    isLastColumn={index === columns.length - 1}
                     groupable={props.groupable}
                     sortable={props.sortable}
                     filterable={props.filterable}
                     onSort={props.onSort}
                     onGroupBy={onGroupByChanged}
-                    onDragStart={(e) => handleDragStart(column, e)}
+                    onDragStart={handleDragStart}
                     onDragOver={handleDragOver}
-                    onDrop={(e) => handleOnDrop(column, e)}
-                    onDragEnter={(e) => handleDragEnter(column, e)}
+                    onDrop={handleOnDrop}
+                    onDragEnter={handleDragEnter}
+                    onDragEnd={handleOnDragEnd}
                     dragOver={column.id === dragOver}
+                    column={column}
                     isDraggable={!isTreeTable}
                     isDroppable={true}
                   >
@@ -333,7 +299,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           {loading && busyIndicatorEnabled && data.length > 0 && <LoadingComponent />}
           {loading && data.length === 0 && (
             <TablePlaceholder
-              columns={cols.filter((col) => col.show ?? true).length}
+              columns={columns.filter((col) => col.show ?? true).length}
               rows={props.minRows}
               style={noDataStyles}
               rowHeight={internalRowHeight}
@@ -349,7 +315,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               prepareRow={prepareRow}
               rows={rows}
               minRows={minRows}
-              columns={cols}
+              columns={columns}
               selectedRow={selectedRowKey}
               selectedRowPath={selectedRowPath}
               selectable={selectable}

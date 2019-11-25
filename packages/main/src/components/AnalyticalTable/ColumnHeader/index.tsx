@@ -1,8 +1,8 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import React, { CSSProperties, DragEventHandler, FC, ReactNode, ReactNodeArray, useMemo, useState } from 'react';
-import { createUseStyles } from 'react-jss';
+import React, { CSSProperties, DragEventHandler, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
+import { createUseStyles, useTheme } from 'react-jss';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { Resizer } from './Resizer';
 import { ColumnType } from '../types/ColumnType';
@@ -31,6 +31,7 @@ export interface ColumnHeaderProps {
   onDragOver: DragEventHandler<HTMLDivElement>;
   onDrop: DragEventHandler<HTMLDivElement>;
   onDragEnter: DragEventHandler<HTMLDivElement>;
+  onDragEnd: DragEventHandler<HTMLDivElement>;
   dragOver: boolean;
   isResizing: boolean;
   isDraggable: boolean;
@@ -88,6 +89,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     onDragOver,
     onDragStart,
     onDrop,
+    onDragEnd,
     isDraggable,
     isDroppable,
     dragOver
@@ -123,6 +125,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   }, [classes, column.filterValue, column.isSorted, column.isGrouped, column.isSortedDesc, children]);
 
   const isResizable = !isLastColumn && column.canResize;
+  const theme = useTheme() as JSSTheme;
   const innerStyle: CSSProperties = useMemo(() => {
     const modifiedStyles = {
       ...style,
@@ -136,7 +139,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
       modifiedStyles.maxWidth = `calc(100% - 16px)`;
     }
     if (dragOver) {
-      isDroppable ? (modifiedStyles.borderLeft = '3px solid blue') : (modifiedStyles.borderLeft = '3px solid red');
+      isDroppable
+        ? (modifiedStyles.borderLeft = '3px solid ' + theme.parameters.sapSelectedColor)
+        : (modifiedStyles.borderLeft = '3px solid ' + theme.parameters.sapWarningBorderColor);
     }
     return modifiedStyles as CSSProperties;
   }, [style, isResizable]);
@@ -154,6 +159,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
       onDragOver={onDragOver}
       onDragStart={onDragStart}
       onDrop={onDrop}
+      onDragEnd={onDragEnd}
     >
       {groupable || sortable || filterable ? (
         <ColumnHeaderModal
