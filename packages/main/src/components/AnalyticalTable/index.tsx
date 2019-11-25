@@ -102,6 +102,7 @@ export interface TableProps extends CommonProps {
   subRowsKey?: string;
   selectedRowKey?: string;
   isTreeTable?: boolean;
+  overscanCount?: number;
 
   // default components
 
@@ -140,7 +141,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     visibleRows,
     minRows,
     isTreeTable,
-    alternateRowColor
+    alternateRowColor,
+    overscanCount
   } = props;
   const theme = useTheme() as JSSTheme;
   const classes = useStyles({ rowHeight: props.rowHeight });
@@ -327,6 +329,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               tableBodyHeight={tableBodyHeight}
               visibleRows={visibleRows}
               alternateRowColor={alternateRowColor}
+              overscanCount={overscanCount}
             />
           )}
         </div>
