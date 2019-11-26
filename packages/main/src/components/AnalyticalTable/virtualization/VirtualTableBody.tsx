@@ -23,7 +23,8 @@ export const VirtualTableBody = (props) => {
     internalRowHeight,
     tableBodyHeight,
     visibleRows,
-    alternateRowColor
+    alternateRowColor,
+    overscanCount
   } = props;
 
   const innerDivRef = useRef(null);
@@ -39,7 +40,7 @@ export const VirtualTableBody = (props) => {
   }, [innerDivRef.current, selectable, classes.tbody, classes.selectable]);
 
   const itemCount = Math.max(minRows, rows.length);
-  const overscanCount = Math.floor(visibleRows / 2);
+  const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
 
   const columnsWidth = useMemo(() => {
     const aggregatedWidth = columns
@@ -104,7 +105,7 @@ export const VirtualTableBody = (props) => {
       itemSize={internalRowHeight}
       itemKey={getItemKey}
       innerRef={innerDivRef}
-      overscanCount={overscanCount}
+      overscanCount={overscan}
     >
       {VirtualTableRow}
     </FixedSizeList>
