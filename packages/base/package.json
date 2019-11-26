@@ -12,9 +12,13 @@
   },
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
-  "sideEffects": false,
+  "sideEffects": [
+    "modernizr.js",
+    "core-js/**/*"
+  ],
   "scripts": {
-    "postbuild": "rollup -c && tsc ./src/polyfill/*.ts --outDir ../../build/node_modules/base/polyfill --skipLibCheck"
+    "build:copy-third-party": "ncp src/third-party/ ../../build/node_modules/base/third-party/",
+    "postbuild": "npm run build:copy-third-party && rollup -c && tsc ./src/polyfill/*.ts --outDir ../../build/node_modules/base/polyfill --skipLibCheck"
   },
   "dependencies": {
     "core-js": "3.1.4",

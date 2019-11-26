@@ -62,6 +62,7 @@ SKIP_DOC_GENERATION=true
     '@ui5/webcomponents-react/lib': path.join(PATHS.root, 'packages', 'main', 'src', 'lib'),
     '@ui5/webcomponents-react-charts/lib': path.join(PATHS.root, 'packages', 'charts', 'src', 'lib'),
     '@ui5/webcomponents-react-base/lib': path.join(PATHS.root, 'packages', 'base', 'src', 'lib'),
+    '@ui5/webcomponents-react-base/third-party': path.join(PATHS.root, 'packages', 'base', 'src', 'third-party'),
     '@ui5/webcomponents-react-base/polyfill': path.join(PATHS.root, 'packages', 'base', 'npm', 'polyfill')
   };
 
