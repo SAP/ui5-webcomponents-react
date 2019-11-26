@@ -4,7 +4,7 @@ const { existsSync, readdirSync, unlinkSync } = require('fs');
 const Bundles = require('./bundles');
 const { asyncCopyTo, asyncExecuteCommand, asyncExtractTar, asyncRimRaf } = require('../utils');
 
-const { UMD_DEV, UMD_PROD, NODE_DEV, NODE_PROD, NODE_ES } = Bundles.bundleTypes;
+const { NODE_DEV, NODE_PROD, NODE_ES } = Bundles.bundleTypes;
 
 function getPackageName(name) {
   return name;
@@ -17,9 +17,6 @@ function getBundleOutputPaths(bundleType, filename, packageName) {
       return [`build/node_modules/${packageName}/cjs/${filename}`];
     case NODE_ES:
       return [`build/node_modules/${packageName}/esm/${filename}`];
-    case UMD_DEV:
-    case UMD_PROD:
-      return [`build/node_modules/${packageName}/umd/${filename}`, `build/dist/${filename}`];
     default:
       throw new Error('Unknown bundle type.');
   }

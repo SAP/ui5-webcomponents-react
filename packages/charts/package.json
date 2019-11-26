@@ -13,7 +13,9 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "private": false,
-  "sideEffects": false,
+  "sideEffects": [
+    "@ui5/webcomponents/dist/Label"
+  ],
   "scripts": {
     "postbuild": "rollup -c"
   },

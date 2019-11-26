@@ -17,7 +17,8 @@
       "@shared/*": ["shared/*"],
       "@ui5/webcomponents-react/lib/*": ["node_modules/@ui5/webcomponents-react/src/lib/*"],
       "@ui5/webcomponents-react-base/lib/*": ["node_modules/@ui5/webcomponents-react-base/src/lib/*"],
-      "@ui5/webcomponents-react-charts/lib/*": ["node_modules/@ui5/webcomponents-react-charts/src/lib/*"]
+      "@ui5/webcomponents-react-charts/lib/*": ["node_modules/@ui5/webcomponents-react-charts/src/lib/*"],
+      "@ui5/webcomponents-react-base/third-party/": ["node_modules/@ui5/webcomponents-react-base/src/third-party/*"]
     },
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
