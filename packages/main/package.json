@@ -13,7 +13,9 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "private": false,
-  "sideEffects": false,
+  "sideEffects": [
+    "@ui5/webcomponents/dist/icons/*"
+  ],
   "scripts": {
     "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/index.js --onlyStopForMerge",
     "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
