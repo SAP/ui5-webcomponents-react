@@ -6,7 +6,10 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import notes from './VariantManagement.md';
 
-const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
+const variantItems = [
+  { label: 'Variant 1', key: '1' },
+  { label: 'Variant 2', key: '2' }
+];
 export const renderStory = () => (
   <VariantManagement
     style={{ width: '300px', height: 'auto' }}

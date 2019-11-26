@@ -8,6 +8,7 @@ const Resizer = (props) => {
   const startX = useRef(0);
   const resizerRef: RefObject<HTMLDivElement> = useRef();
   const onColumnSizeChanged = props['onColumnSizeChanged'];
+  const onColumnBeingResized = props['onColumnBeingResized'];
 
   const onResize = useCallback(
     (e) => {
@@ -30,8 +31,9 @@ const Resizer = (props) => {
       document.removeEventListener('mouseleave', onEndResize);
 
       delete resizerRef.current.parentElement.style.userSelect;
+      onColumnBeingResized({ value: false });
     },
-    [onResize, resizerRef]
+    [onResize, resizerRef, onColumnBeingResized]
   );
 
   const onStartResize = useCallback(
@@ -44,8 +46,9 @@ const Resizer = (props) => {
       document.addEventListener('mousemove', onResize);
       document.addEventListener('mouseup', onEndResize);
       document.addEventListener('mouseleave', onEndResize);
+      onColumnBeingResized({ value: true });
     },
-    [onResize, onEndResize, parentWidth, startX, resizerRef]
+    [onResize, onEndResize, parentWidth, startX, resizerRef, onColumnBeingResized]
   );
 
   return (

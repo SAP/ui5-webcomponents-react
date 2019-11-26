@@ -12,5 +12,13 @@ export const useResizeColumns = () => {
     [setResizedColumns, resizedColumns]
   );
 
-  return [resizedColumns, onColumnSizeChanged];
+  const [isBeingResized, setBeingResized] = useState(false);
+  const onColumnBeingResized = useCallback(
+    ({ value }) => {
+      setBeingResized(value);
+    },
+    [setBeingResized]
+  );
+
+  return [resizedColumns, onColumnSizeChanged, isBeingResized, onColumnBeingResized];
 };

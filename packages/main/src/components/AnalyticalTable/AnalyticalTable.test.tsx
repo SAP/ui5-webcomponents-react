@@ -1,6 +1,7 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 
 const columns = [
   {
@@ -146,6 +147,7 @@ describe('AnalyticalTable', () => {
       .instance();
     // @ts-ignore
     component.onclick({});
+    console.log(component);
 
     // test desc function inside the popover element
     component = wrapper
@@ -172,9 +174,19 @@ describe('AnalyticalTable', () => {
         minRows={5}
         selectable={true}
         subRowsKey="subRows"
+        isTreeTable={true}
       />
     );
 
+    let colInst = wrapper
+      .find({ role: 'columnheader' })
+      .at(0)
+      .instance();
+
+    // @ts-ignore
+    expect(colInst.draggable).toBeDefined();
+    // @ts-ignore
+    expect(colInst.draggable).toBeFalsy();
     expect(wrapper.render()).toMatchSnapshot();
   });
 
@@ -206,6 +218,35 @@ describe('AnalyticalTable', () => {
     const wrapper = mountThemedComponent(
       <AnalyticalTable title="Table Title" data={data} columns={columns} rowHeight={60} />
     );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('test drag and drop of a draggable column', () => {
+    const wrapper = mountThemedComponent(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+
+    // get first column of the table and simulate dragging of it
+    let componentDrag = wrapper.find({ role: 'columnheader' }).at(0);
+    let inst = componentDrag.instance();
+    // @ts-ignore
+    let dragColumnId = inst.id;
+
+    // @ts-ignore
+    expect(inst.draggable).toBeDefined();
+    // @ts-ignore
+    expect(inst.draggable).toBeTruthy();
+    // @ts-ignore
+    componentDrag.simulate('drag');
+
+    // get second column of the table and simulate dropping on it
+    let dataTransfer = {};
+    // @ts-ignore
+    dataTransfer.getData = () => {
+      return dragColumnId;
+    };
+    let componentDrop = wrapper.find({ role: 'columnheader' }).at(1);
+    // @ts-ignore
+    componentDrop.simulate('drop', { dataTransfer: dataTransfer });
 
     expect(wrapper.render()).toMatchSnapshot();
   });
