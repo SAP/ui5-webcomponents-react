@@ -137,7 +137,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     selectedRowKey,
     LoadingComponent,
     onRowExpandChange,
-    onColumnsReordered,
     noDataText,
     NoDataComponent,
     visibleRows,
@@ -253,25 +252,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     [tableState.groupBy, onGroup]
   );
 
-  const onColumnsOrderChanged = useCallback(
-    (target, column, columnsNewOrder) => {
-      onColumnsReordered(
-        Event.of(null, target, {
-          columnsNewOrder,
-          column
-        })
-      );
-    },
-    [tableState.columnOrder, onColumnsReordered]
-  );
-
   const [headerRef, tableWidth] = useWindowResize();
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
     props,
     setColumnOrder,
     tableState.columnOrder,
-    isBeingResized,
-    onColumnsOrderChanged
+    isBeingResized
   );
 
   return (
