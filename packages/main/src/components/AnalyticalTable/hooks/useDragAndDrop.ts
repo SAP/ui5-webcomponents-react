@@ -1,10 +1,13 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 
 const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
 };
 
-export const useDragAndDrop = (props, setColumnOrder, columnOrder, isBeingResized, onColumnsOrderChanged) => {
+export const useDragAndDrop = (props, setColumnOrder, columnOrder, isBeingResized) => {
+  const { onColumnsReordered } = props;
+
   const [dragOver, setDragOver] = useState('');
 
   const handleDragStart = useCallback(
@@ -42,9 +45,13 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, isBeingResize
       tempCols.splice(droppedColIdx, 0, tempCols.splice(draggedColIdx, 1)[0]);
       setColumnOrder(tempCols);
 
-      const newOrderedColumns = [...props.columns];
-      newOrderedColumns.splice(droppedColIdx, 0, newOrderedColumns.splice(draggedColIdx, 1)[0]);
-      onColumnsOrderChanged(e.currentTarget, props.columns[draggedColIdx], newOrderedColumns);
+      const columnsNewOrder = tempCols.map((tempColId) => props.columns.find((col) => getColumnId(col) === tempColId));
+      onColumnsReordered(
+        Event.of(null, e, {
+          columnsNewOrder,
+          column: props.columns[draggedColIdx]
+        })
+      );
     },
     [columnOrder]
   );
