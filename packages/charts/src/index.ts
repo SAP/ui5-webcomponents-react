@@ -7,5 +7,22 @@ import { MicroBarChart } from './lib/MicroBarChart';
 import { PieChart } from './lib/PieChart';
 import { RadarChart } from './lib/RadarChart';
 import { RadialChart } from './lib/RadialChart';
+import { BarChartPlaceholder } from './lib/BarChartPlaceholder';
+import { ColumnChartPlaceholder } from './lib/ColumnChartPlaceholder';
+import { LineChartPlaceholder } from './lib/LineChartPlaceholder';
+import { PieChartPlaceholder } from './lib/PieChartPlaceholder';
 
-export { ColumnChart, DonutChart, BarChart, LineChart, PieChart, RadarChart, RadialChart, MicroBarChart };
+export {
+  ColumnChart,
+  DonutChart,
+  BarChart,
+  LineChart,
+  PieChart,
+  RadarChart,
+  RadialChart,
+  MicroBarChart,
+  BarChartPlaceholder,
+  ColumnChartPlaceholder,
+  LineChartPlaceholder,
+  PieChartPlaceholder
+};
