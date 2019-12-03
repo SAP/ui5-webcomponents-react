@@ -38,6 +38,7 @@ import { makeTemplateColumns } from './hooks/utils';
 import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
+import { reducer } from './tableReducer/reducer';
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -154,12 +155,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
-  const { getTableProps, headerGroups, rows, prepareRow, setState, state: tableState, setColumnOrder } = useTable(
+  const { getTableProps, headerGroups, rows, prepareRow, state: tableState, setColumnOrder, dispatch } = useTable(
     {
       columns,
       data,
       defaultColumn: DefaultColumn,
       getSubRows,
+      reducer,
       ...reactTableOptions
     },
     useFilters,
@@ -185,13 +187,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   );
 
   useEffect(() => {
-    setState((old) => {
-      return {
-        ...old,
-        groupBy
-      };
-    });
-  }, [groupBy, setState]);
+    dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
+  }, [groupBy, dispatch]);
 
   const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
 
@@ -236,12 +233,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       } else {
         groupedColumns = tableState.groupBy.filter((group) => group !== column.id);
       }
-      setState((old) => {
-        return {
-          ...old,
-          groupBy: groupedColumns
-        };
-      });
+      dispatch({ type: 'SET_GROUP_BY', payload: groupedColumns });
       onGroup(
         Event.of(null, e.getOriginalEvent(), {
           column,
@@ -249,7 +241,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         })
       );
     },
-    [tableState.groupBy, onGroup]
+    [tableState.groupBy, onGroup, dispatch]
   );
 
   const [headerRef, tableWidth] = useWindowResize();
