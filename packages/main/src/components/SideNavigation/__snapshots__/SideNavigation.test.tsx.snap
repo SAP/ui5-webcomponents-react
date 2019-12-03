@@ -20,7 +20,7 @@ exports[`SideNavigation Collapsed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://home"
+        name="home"
       />
     </ui5-li-custom>
     <ui5-li-custom
@@ -31,7 +31,7 @@ exports[`SideNavigation Collapsed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://calendar"
+        name="calendar"
       />
     </ui5-li-custom>
     <ui5-li-custom
@@ -42,7 +42,7 @@ exports[`SideNavigation Collapsed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://employee"
+        name="employee"
       />
     </ui5-li-custom>
     <ui5-li-custom
@@ -55,7 +55,7 @@ exports[`SideNavigation Collapsed 1`] = `
       <span>
         <ui5-icon
           class="SideNavigationListItem--icon-"
-          src="sap-icon://lead"
+          name="lead"
         />
         <div
           class="SideNavigationListItem--condensedExpandTriangle-"
@@ -70,7 +70,7 @@ exports[`SideNavigation Collapsed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://add-product"
+        name="add-product"
       />
     </ui5-li-custom>
   </ui5-list>
@@ -96,7 +96,7 @@ exports[`SideNavigation Collapsed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://compare"
+        name="compare"
       />
     </ui5-li-custom>
     <ui5-li-custom
@@ -107,7 +107,7 @@ exports[`SideNavigation Collapsed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://chain-link"
+        name="chain-link"
       />
     </ui5-li-custom>
   </ui5-list>
@@ -134,7 +134,7 @@ exports[`SideNavigation Condensed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://home"
+        name="home"
       />
     </ui5-li-custom>
     <ui5-li-custom
@@ -145,7 +145,7 @@ exports[`SideNavigation Condensed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://calendar"
+        name="calendar"
       />
     </ui5-li-custom>
     <ui5-li-custom
@@ -156,7 +156,7 @@ exports[`SideNavigation Condensed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://employee"
+        name="employee"
       />
     </ui5-li-custom>
     <ui5-li-custom
@@ -169,7 +169,7 @@ exports[`SideNavigation Condensed 1`] = `
       <span>
         <ui5-icon
           class="SideNavigationListItem--icon-"
-          src="sap-icon://lead"
+          name="lead"
         />
         <div
           class="SideNavigationListItem--condensedExpandTriangle-"
@@ -184,7 +184,7 @@ exports[`SideNavigation Condensed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://add-product"
+        name="add-product"
       />
     </ui5-li-custom>
   </ui5-list>
@@ -210,7 +210,7 @@ exports[`SideNavigation Condensed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://compare"
+        name="compare"
       />
     </ui5-li-custom>
     <ui5-li-custom
@@ -221,7 +221,7 @@ exports[`SideNavigation Condensed 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://chain-link"
+        name="chain-link"
       />
     </ui5-li-custom>
   </ui5-list>
@@ -249,7 +249,7 @@ exports[`SideNavigation Expanded 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://home"
+        name="home"
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
@@ -265,7 +265,7 @@ exports[`SideNavigation Expanded 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://calendar"
+        name="calendar"
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
@@ -281,7 +281,7 @@ exports[`SideNavigation Expanded 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://employee"
+        name="employee"
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
@@ -297,7 +297,7 @@ exports[`SideNavigation Expanded 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://lead"
+        name="lead"
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
@@ -309,7 +309,7 @@ exports[`SideNavigation Expanded 1`] = `
       >
         <ui5-icon
           class=""
-          src="sap-icon://navigation-down-arrow"
+          name="navigation-down-arrow"
         />
       </span>
     </ui5-li-custom>
@@ -370,7 +370,7 @@ exports[`SideNavigation Expanded 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://add-product"
+        name="add-product"
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
@@ -401,7 +401,7 @@ exports[`SideNavigation Expanded 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://compare"
+        name="compare"
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
@@ -417,7 +417,7 @@ exports[`SideNavigation Expanded 1`] = `
     >
       <ui5-icon
         class="SideNavigationListItem--icon-"
-        src="sap-icon://chain-link"
+        name="chain-link"
       />
       <span
         class="Text--text- SideNavigationListItem--text-"
@@ -493,7 +493,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       >
         <ui5-icon
           class=""
-          src="sap-icon://navigation-down-arrow"
+          name="navigation-down-arrow"
         />
       </span>
     </ui5-li-custom>

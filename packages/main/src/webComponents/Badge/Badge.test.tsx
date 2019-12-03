@@ -10,7 +10,7 @@ describe('Badge', () => {
   });
 
   test('with Icon', () => {
-    const wrapper = mountThemedComponent(<Badge icon={<Icon src="sap-icon://employee" />}>My Badge</Badge>);
+    const wrapper = mountThemedComponent(<Badge icon={<Icon name="employee" />}>My Badge</Badge>);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

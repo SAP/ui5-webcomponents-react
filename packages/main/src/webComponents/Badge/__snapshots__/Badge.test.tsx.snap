@@ -16,8 +16,8 @@ exports[`Badge with Icon 1`] = `
 >
   <ui5-icon
     class=""
+    name="employee"
     slot="icon"
-    src="sap-icon://employee"
   />
   My Badge
 </ui5-badge>

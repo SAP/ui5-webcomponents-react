@@ -174,7 +174,7 @@ Array [
         >
           <ui5-icon
             class="Notification--error-"
-            src="message-error"
+            name="message-error"
           />
         </div>
         <div
@@ -440,7 +440,7 @@ Array [
         >
           <ui5-icon
             class="Notification--error-"
-            src="message-error"
+            name="message-error"
           />
         </div>
         <div
@@ -845,7 +845,7 @@ Array [
         >
           <ui5-icon
             class="Notification--error-"
-            src="message-error"
+            name="message-error"
           />
         </div>
         <div

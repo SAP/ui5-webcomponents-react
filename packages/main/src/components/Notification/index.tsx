@@ -1,7 +1,7 @@
-import '@ui5/webcomponents/dist/icons/message-error';
-import '@ui5/webcomponents/dist/icons/message-warning';
-import '@ui5/webcomponents/dist/icons/message-success';
-import '@ui5/webcomponents/dist/icons/decline';
+import '@ui5/webcomponents-icons/dist/icons/message-error';
+import '@ui5/webcomponents-icons/dist/icons/message-warning';
+import '@ui5/webcomponents-icons/dist/icons/message-success';
+import '@ui5/webcomponents-icons/dist/icons/decline';
 import React, { FC, forwardRef, ReactNode, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -168,11 +168,11 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       }
       switch (prio) {
         case Priority.High:
-          return <Icon src="message-error" className={classes.error} />;
+          return <Icon name="message-error" className={classes.error} />;
         case Priority.Medium:
-          return <Icon src="message-warning" className={classes.warning} />;
+          return <Icon name="message-warning" className={classes.warning} />;
         case Priority.Low:
-          return <Icon src="message-success" className={classes.success} />;
+          return <Icon name="message-success" className={classes.success} />;
         case Priority.None:
           return null;
         default:

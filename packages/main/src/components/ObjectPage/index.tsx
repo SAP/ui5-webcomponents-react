@@ -28,9 +28,9 @@ import { CollapsedAvatar } from './CollapsedAvatar';
 import { IScroller, ObjectPageScroller } from './scroll/ObjectPageScroller';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-import '@ui5/webcomponents/dist/icons/navigation-up-arrow.js';
+import '@ui5/webcomponents-icons/dist/icons/navigation-up-arrow.js';
 import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
-import '@ui5/webcomponents/dist/icons/navigation-down-arrow.js';
+import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow.js';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 
 export interface ObjectPagePropTypes extends CommonProps {
@@ -108,7 +108,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const hideHeaderButtonPressed = useRef(false);
   const stableContentOnScrollRef = useRef(null);
   const stableBarOnScrollRef = useRef(null);
-  const scroller = useConsolidatedRef(scrollerRef);
+  const scroller = useConsolidatedRef<IScroller>(scrollerRef);
   const [scrollbarWidth, setScrollbarWidth] = useState(defaultScrollbarWidth);
 
   const classes = useStyles();
@@ -171,6 +171,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     });
   };
 
+  // @ts-ignore
   const observer = useRef(new ResizeObserver(adjustDummyDivHeight));
 
   const renderAnchorBar = () => {
@@ -226,9 +227,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             left: 'calc(50% - 1rem)'
           } as any
         }
-        icon={
-          !collapsedHeader || expandHeaderActive ? 'sap-icon://navigation-up-arrow' : 'sap-icon://navigation-down-arrow'
-        }
+        icon={!collapsedHeader || expandHeaderActive ? 'navigation-up-arrow' : 'navigation-down-arrow'}
         onClick={changeHeader}
       />
     );

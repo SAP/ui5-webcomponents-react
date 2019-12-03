@@ -3,7 +3,7 @@ import React from 'react';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import '@ui5/webcomponents/dist/icons/sys-cancel';
+import '@ui5/webcomponents-icons/dist/icons/sys-cancel';
 import notes from './ObjectStatus.md';
 
 export const onlyText = () => (
@@ -14,7 +14,7 @@ onlyText.story = {
 };
 
 export const withIcon = () => (
-  <ObjectStatus state={select('state', ValueState, ValueState.Success)} icon={<Icon src="sys-cancel" />}>
+  <ObjectStatus state={select('state', ValueState, ValueState.Success)} icon={<Icon name="sys-cancel" />}>
     Object Status
   </ObjectStatus>
 );
@@ -35,7 +35,7 @@ withDefaultIcon.story = {
 };
 
 export const withIconOnly = () => (
-  <ObjectStatus icon={<Icon src="sys-cancel" />} state={select('state', ValueState, ValueState.Success)} />
+  <ObjectStatus icon={<Icon name="sys-cancel" />} state={select('state', ValueState, ValueState.Success)} />
 );
 withIconOnly.story = {
   name: 'with Icon only'

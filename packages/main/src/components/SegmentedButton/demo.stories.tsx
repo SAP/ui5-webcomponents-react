@@ -13,8 +13,8 @@ export const renderStory = () => {
       onItemSelected={action('onItemSelected')}
       selectedKey={number('SelectedKey', 1)}
     >
-      <SegmentedButtonItem id={1} icon={<Icon src="world" />} />
-      <SegmentedButtonItem id={2} icon={<Icon src="world" />}>
+      <SegmentedButtonItem id={1} icon={<Icon name="world" />} />
+      <SegmentedButtonItem id={2} icon={<Icon name="world" />}>
         Button 2
       </SegmentedButtonItem>
       <SegmentedButtonItem id={3} width="300px">

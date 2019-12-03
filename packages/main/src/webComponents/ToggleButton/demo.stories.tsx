@@ -15,7 +15,7 @@ export const generatedDefaultStory = () => (
   <ToggleButton
     design={select('design', ButtonDesign, null)}
     disabled={boolean('disabled', false)}
-    icon="sap-icon://add"
+    icon="add"
     iconEnd={boolean('iconEnd', false)}
     pressed={boolean('pressed', false)}
     onClick={action('onClick')}

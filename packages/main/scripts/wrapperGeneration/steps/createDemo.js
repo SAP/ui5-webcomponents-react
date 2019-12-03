@@ -42,7 +42,7 @@ function getKnownNumber(key, meta) {
 }
 
 const knownStrings = {
-  icon: "'sap-icon://add'"
+  icon: "'add'"
 };
 
 function getStringValue(key, meta) {
