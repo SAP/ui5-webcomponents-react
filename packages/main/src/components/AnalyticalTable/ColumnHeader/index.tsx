@@ -7,10 +7,10 @@ import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { Resizer } from './Resizer';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
-import '@ui5/webcomponents/dist/icons/filter';
-import '@ui5/webcomponents/dist/icons/group-2';
-import '@ui5/webcomponents/dist/icons/sort-descending';
-import '@ui5/webcomponents/dist/icons/sort-ascending';
+import '@ui5/webcomponents-icons/dist/icons/filter';
+import '@ui5/webcomponents-icons/dist/icons/group-2';
+import '@ui5/webcomponents-icons/dist/icons/sort-descending';
+import '@ui5/webcomponents-icons/dist/icons/sort-ascending';
 
 export interface ColumnHeaderProps {
   id: string;
@@ -101,9 +101,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
 
     const classNames = StyleClassHelper.of(classes.header);
 
-    const sortingIcon = column.isSorted ? <Icon src={desc ? 'sort-descending' : 'sort-ascending'} /> : null;
-    const filterIcon = isFiltered ? <Icon src="sap-icon://filter" /> : null;
-    const groupingIcon = column.isGrouped ? <Icon src="sap-icon://group-2" /> : null;
+    const sortingIcon = column.isSorted ? <Icon name={desc ? 'sort-descending' : 'sort-ascending'} /> : null;
+    const filterIcon = isFiltered ? <Icon name="filter" /> : null;
+    const groupingIcon = column.isGrouped ? <Icon name="group-2" /> : null;
 
     return (
       <div className={classNames.valueOf()}>

@@ -18,13 +18,13 @@ export const generatedDefaultStory = () => (
     valueState={select('valueState', ValueState, null)}
     onChange={action('onChange')}
   >
-    <Option selected icon="sap-icon://add">
+    <Option selected icon="add">
       Test 1
     </Option>
-    <Option icon="sap-icon://add">Test 2</Option>
-    <Option icon="sap-icon://add">Test 3</Option>
-    <Option icon="sap-icon://add">Test 4</Option>
-    <Option icon="sap-icon://add">Test 5</Option>
+    <Option icon="add">Test 2</Option>
+    <Option icon="add">Test 3</Option>
+    <Option icon="add">Test 4</Option>
+    <Option icon="add">Test 5</Option>
   </Select>
 );
 

@@ -22,7 +22,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
         <ui5-button
           class=""
           design="Transparent"
-          icon="sap-icon://navigation-down-arrow"
+          icon="navigation-down-arrow"
         />
       </div>
     </div>
@@ -186,7 +186,7 @@ exports[`FilterBar Render without crashing 1`] = `
         <ui5-button
           class=""
           design="Transparent"
-          icon="sap-icon://navigation-down-arrow"
+          icon="navigation-down-arrow"
         />
       </div>
     </div>
@@ -339,7 +339,7 @@ exports[`FilterBar Select Filter Item 1`] = `
         <ui5-button
           class=""
           design="Transparent"
-          icon="sap-icon://navigation-down-arrow"
+          icon="navigation-down-arrow"
         />
       </div>
     </div>

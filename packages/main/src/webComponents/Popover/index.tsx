@@ -56,7 +56,7 @@ export const Popover = React.forwardRef((props: PopoverPropTypes, givenRef: RefO
 
   useEffect(() => {
     if (open) {
-      handleOpenPopover();
+      handleOpenPopover(null);
     } else {
       closePopover();
     }

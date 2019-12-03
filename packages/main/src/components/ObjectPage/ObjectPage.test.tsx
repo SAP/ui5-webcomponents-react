@@ -94,14 +94,14 @@ describe('ObjectPage', () => {
   });
 
   test('Just Some Sections', () => {
-    const wrapper = renderThemedComponent(
+    const wrapper = mountThemedComponent(
       <ObjectPage mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>
     );
 
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Not crashing with 1 section - Default Mode', () => {

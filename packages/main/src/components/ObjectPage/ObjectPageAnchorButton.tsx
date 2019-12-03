@@ -88,8 +88,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
 
   const navigationIcon = (
     <Icon
-      src="sap-icon://slim-arrow-down"
-      onPress={openModal}
+      name="slim-arrow-down"
       style={{
         height: '1rem',
         width: '1rem',

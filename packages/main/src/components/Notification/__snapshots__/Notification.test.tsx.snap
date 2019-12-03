@@ -240,7 +240,7 @@ exports[`Notification w/ Props 1`] = `
       >
         <ui5-icon
           class="Notification--error-"
-          src="message-error"
+          name="message-error"
         />
       </div>
       <div

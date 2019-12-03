@@ -8,8 +8,8 @@ import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVertic
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
-import '@ui5/webcomponents/dist/icons/navigation-down-arrow.js';
-import '@ui5/webcomponents/dist/icons/navigation-right-arrow.js';
+import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow.js';
+import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow.js';
 import React, {
   Children,
   cloneElement,
@@ -108,7 +108,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
     const popoverRef = useRef();
 
     const displayedIcon = useMemo(() => {
-      return <Icon src={icon} className={classes.icon} />;
+      return <Icon name={icon} className={classes.icon} />;
     }, [classes.icon, icon]);
 
     const handleOpenPopover = useCallback(
@@ -128,7 +128,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
             <Text className={classes.text}>{text}</Text>
             {childCount > 0 && (
               <span onClick={handleToggleExpand} className={classes.expandArrow}>
-                <Icon src={isExpanded ? 'sap-icon://navigation-down-arrow' : 'sap-icon://navigation-right-arrow'} />
+                <Icon name={isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'} />
               </span>
             )}
           </CustomListItem>

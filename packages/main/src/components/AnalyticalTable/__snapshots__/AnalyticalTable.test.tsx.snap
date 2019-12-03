@@ -67,7 +67,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -76,7 +76,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -130,7 +130,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -139,7 +139,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -193,7 +193,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -202,7 +202,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -257,7 +257,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -266,7 +266,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -521,7 +521,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -530,7 +530,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -584,7 +584,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -593,7 +593,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -647,7 +647,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -656,7 +656,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -711,7 +711,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -720,7 +720,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -975,7 +975,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -984,7 +984,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -1038,7 +1038,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -1047,7 +1047,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -1101,7 +1101,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -1110,7 +1110,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -1165,7 +1165,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -1174,7 +1174,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -1484,7 +1484,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -1493,7 +1493,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -1509,7 +1509,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 >
                   <ui5-icon
                     class=""
-                    src="sap-icon://filter"
+                    name="filter"
                     style="padding-right: 1rem;"
                   />
                   <ui5-input
@@ -1568,7 +1568,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -1577,7 +1577,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -1593,7 +1593,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 >
                   <ui5-icon
                     class=""
-                    src="sap-icon://filter"
+                    name="filter"
                     style="padding-right: 1rem;"
                   />
                   <ui5-input
@@ -1652,7 +1652,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -1661,7 +1661,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -1677,7 +1677,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 >
                   <ui5-icon
                     class=""
-                    src="sap-icon://filter"
+                    name="filter"
                     style="padding-right: 1rem;"
                   />
                   <ui5-input
@@ -1737,7 +1737,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -1746,7 +1746,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -1762,7 +1762,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 >
                   <ui5-icon
                     class=""
-                    src="sap-icon://filter"
+                    name="filter"
                     style="padding-right: 1rem;"
                   />
                   <ui5-input
@@ -1801,7 +1801,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 <ui5-icon
                   class=""
-                  src="sap-icon://navigation-right-arrow"
+                  name="navigation-right-arrow"
                   style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
                 />
               </span>
@@ -2052,7 +2052,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -2061,7 +2061,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -2115,7 +2115,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -2124,7 +2124,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -2178,7 +2178,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -2187,7 +2187,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -2242,7 +2242,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -2251,7 +2251,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -2506,7 +2506,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -2515,7 +2515,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -2569,7 +2569,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -2578,7 +2578,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -2632,7 +2632,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -2641,7 +2641,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -2696,7 +2696,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -2705,7 +2705,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -2960,7 +2960,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -2969,7 +2969,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -3023,7 +3023,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -3032,7 +3032,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -3086,7 +3086,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -3095,7 +3095,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >
@@ -3150,7 +3150,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <ui5-li
                 class=""
                 data-sort="asc"
-                icon="sap-icon://sort-ascending"
+                icon="sort-ascending"
                 info-state="None"
                 type="Active"
               >
@@ -3159,7 +3159,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <ui5-li
                 class=""
                 data-sort="desc"
-                icon="sap-icon://sort-descending"
+                icon="sort-descending"
                 info-state="None"
                 type="Active"
               >

@@ -92,7 +92,7 @@ exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-left"
+        name="slim-arrow-left"
       />
     </div>
     <div
@@ -147,7 +147,7 @@ exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-right"
+        name="slim-arrow-right"
       />
     </div>
   </div>
@@ -246,7 +246,7 @@ exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-left"
+        name="slim-arrow-left"
       />
     </div>
     <div
@@ -301,7 +301,7 @@ exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-right"
+        name="slim-arrow-right"
       />
     </div>
   </div>
@@ -324,7 +324,7 @@ exports[`Carousel Page Indicator Placement: Top 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-left"
+        name="slim-arrow-left"
       />
     </div>
     <div
@@ -379,7 +379,7 @@ exports[`Carousel Page Indicator Placement: Top 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-right"
+        name="slim-arrow-right"
       />
     </div>
   </div>
@@ -478,7 +478,7 @@ exports[`Carousel Page Indicator Placement: Top 2`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-left"
+        name="slim-arrow-left"
       />
     </div>
     <div
@@ -533,7 +533,7 @@ exports[`Carousel Page Indicator Placement: Top 2`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-right"
+        name="slim-arrow-right"
       />
     </div>
   </div>
@@ -709,7 +709,7 @@ exports[`Carousel Renders without crashing 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-left"
+        name="slim-arrow-left"
       />
     </div>
     <div
@@ -764,7 +764,7 @@ exports[`Carousel Renders without crashing 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-right"
+        name="slim-arrow-right"
       />
     </div>
   </div>
@@ -893,7 +893,7 @@ exports[`Carousel Should render a text indicator 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-left"
+        name="slim-arrow-left"
       />
     </div>
     <div
@@ -912,7 +912,7 @@ exports[`Carousel Should render a text indicator 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-right"
+        name="slim-arrow-right"
       />
     </div>
   </div>
@@ -1011,7 +1011,7 @@ exports[`Carousel Update activePage via prop 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-left"
+        name="slim-arrow-left"
       />
     </div>
     <div
@@ -1066,7 +1066,7 @@ exports[`Carousel Update activePage via prop 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://slim-arrow-right"
+        name="slim-arrow-right"
       />
     </div>
   </div>

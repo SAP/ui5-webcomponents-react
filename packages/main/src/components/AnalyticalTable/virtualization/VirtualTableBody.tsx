@@ -1,5 +1,5 @@
-import '@ui5/webcomponents/dist/icons/navigation-down-arrow';
-import '@ui5/webcomponents/dist/icons/navigation-right-arrow';
+import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
+import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';

@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5ShellBar from '@ui5/webcomponents/dist/ShellBar';
+import UI5ShellBar from '@ui5/webcomponents-fiori/dist/ShellBar';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -24,7 +24,7 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode; // @generated
   menuItems?: ReactNode; // @generated
   searchField?: ReactNode; // @generated
-  icon?: ReactNode; // @generated
+  startButton?: ReactNode; // @generated
 }
 
 const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(UI5ShellBar);
