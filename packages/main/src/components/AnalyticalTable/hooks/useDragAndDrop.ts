@@ -5,20 +5,20 @@ const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
 };
 
-export const useDragAndDrop = (props, setColumnOrder, columnOrder, isBeingResized) => {
+export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo) => {
   const { onColumnsReordered } = props;
 
   const [dragOver, setDragOver] = useState('');
 
   const handleDragStart = useCallback(
     (e) => {
-      if (isBeingResized) {
+      if (resizeInfo.isResizingColumn === e.currentTarget.id) {
         e.preventDefault();
         return;
       }
       e.dataTransfer.setData('colId', e.currentTarget.id);
     },
-    [isBeingResized]
+    [resizeInfo.isResizingColumn]
   );
 
   const handleDragOver = useCallback((e) => {

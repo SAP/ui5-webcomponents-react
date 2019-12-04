@@ -2,13 +2,11 @@ import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
-import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
 import { VirtualTableRow } from './VirtualTableRow';
 
 export const VirtualTableBody = (props) => {
   const {
     classes,
-    rowContainerStyling,
     prepareRow,
     rows,
     minRows,
@@ -17,14 +15,13 @@ export const VirtualTableBody = (props) => {
     selectedRowPath,
     selectable,
     reactWindowRef,
-    tableWidth,
-    resizedColumns,
     isTreeTable,
     internalRowHeight,
     tableBodyHeight,
     visibleRows,
     alternateRowColor,
-    overscanCount
+    overscanCount,
+    totalColumnsWidth
   } = props;
 
   const innerDivRef = useRef(null);
@@ -42,42 +39,16 @@ export const VirtualTableBody = (props) => {
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
 
-  const columnsWidth = useMemo(() => {
-    const aggregatedWidth = columns
-      .map((item) => {
-        if (resizedColumns.hasOwnProperty(item.accessor)) {
-          return resizedColumns[item.accessor];
-        }
-        if (item.hasOwnProperty('show') && !item.show) {
-          return 0;
-        }
-        return item.minWidth ? item.minWidth : DEFAULT_COLUMN_WIDTH;
-      })
-      .reduce((acc, val) => acc + val, 0);
-    return tableWidth > aggregatedWidth || tableWidth === 0 ? null : aggregatedWidth;
-  }, [columns, tableWidth, resizedColumns]);
-
   const tableData = useMemo(() => {
     return {
       rows,
       additionalProps: {
         isTreeTable,
         classes,
-        columns,
-        rowContainerStyling
+        columns
       }
     };
-  }, [
-    rows,
-    prepareRow,
-    isTreeTable,
-    classes,
-    columns,
-    rowContainerStyling,
-    alternateRowColor,
-    selectedRow,
-    selectedRowPath
-  ]);
+  }, [rows, prepareRow, isTreeTable, classes, columns, alternateRowColor, selectedRow, selectedRowPath]);
 
   const getItemKey = useCallback(
     (index, data) => {
@@ -99,7 +70,7 @@ export const VirtualTableBody = (props) => {
     <FixedSizeList
       ref={reactWindowRef}
       height={tableBodyHeight}
-      width={columnsWidth}
+      width={totalColumnsWidth}
       itemData={tableData}
       itemCount={itemCount}
       itemSize={internalRowHeight}
