@@ -229,7 +229,7 @@ describe('AnalyticalTable', () => {
     let componentDrag = wrapper.find('div[role="columnheader"] div[draggable]').at(0);
     let inst = componentDrag.instance();
     // @ts-ignore
-    let dragColumnId = inst.id;
+    let dragColumnId = inst.dataset.columnId;
 
     // @ts-ignore
     expect(inst.draggable).toBeDefined();
@@ -244,7 +244,7 @@ describe('AnalyticalTable', () => {
     dataTransfer.getData = () => {
       return dragColumnId;
     };
-    let componentDrop = wrapper.find({ role: 'columnheader' }).at(1);
+    let componentDrop = wrapper.find('div[role="columnheader"] div[draggable]').at(1);
     // @ts-ignore
     componentDrop.simulate('drop', { dataTransfer: dataTransfer });
 
