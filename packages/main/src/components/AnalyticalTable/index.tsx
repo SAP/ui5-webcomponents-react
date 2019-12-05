@@ -179,7 +179,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   useEffect(() => {
     const visibleColumns = columns.filter(Boolean).filter(({ show }) => show ?? true).length;
-    if (visibleColumns > 0) {
+    if (visibleColumns > 0 && tableRef.current.clientWidth > 0) {
       setColumnWidth(tableRef.current.clientWidth / visibleColumns);
     } else {
       setColumnWidth(150);
