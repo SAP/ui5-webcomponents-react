@@ -12,11 +12,11 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo) =
 
   const handleDragStart = useCallback(
     (e) => {
-      if (resizeInfo.isResizingColumn === e.currentTarget.id) {
+      if (resizeInfo.isResizingColumn === e.currentTarget.dataset.columnId) {
         e.preventDefault();
         return;
       }
-      e.dataTransfer.setData('colId', e.currentTarget.id);
+      e.dataTransfer.setData('colId', e.currentTarget.dataset.columnId);
     },
     [resizeInfo.isResizingColumn]
   );
@@ -26,14 +26,14 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo) =
   }, []);
 
   const handleDragEnter = useCallback((e) => {
-    setDragOver(e.currentTarget.id);
+    setDragOver(e.currentTarget.dataset.columnId);
   }, []);
 
   const handleOnDrop = useCallback(
     (e) => {
       setDragOver('');
 
-      const droppedColId = e.currentTarget.id;
+      const droppedColId = e.currentTarget.dataset.columnId;
       const draggedColId = e.dataTransfer.getData('colId');
       if (droppedColId === draggedColId) return;
 

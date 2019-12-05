@@ -1,3 +1,4 @@
+import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
@@ -177,15 +178,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return DefaultColumn;
   }, [columnWidth]);
 
-  useEffect(() => {
-    const visibleColumns = columns.filter(Boolean).filter(({ show }) => show ?? true).length;
-    if (visibleColumns > 0 && tableRef.current.clientWidth > 0) {
-      setColumnWidth(tableRef.current.clientWidth / visibleColumns);
-    } else {
-      setColumnWidth(150);
-    }
-  }, []);
-
   const {
     getTableProps,
     headerGroups,
@@ -219,6 +211,25 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useToggleRowExpand(onRowExpandChange, isTreeTable),
     ...tableHooks
   );
+
+  const updateTableSizes = useCallback(() => {
+    const visibleColumns = columns.filter(Boolean).filter(({ show }) => show ?? true);
+    const columnsWithFixedWidth = columns.filter(({ width }) => width ?? false).map(({ width }) => width);
+    const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
+    if (visibleColumns.length > 0 && tableRef.current.clientWidth > 0) {
+      setColumnWidth(
+        (tableRef.current.clientWidth - fixedWidth) / (visibleColumns.length - columnsWithFixedWidth.length)
+      );
+    } else {
+      setColumnWidth(150);
+    }
+  }, []);
+
+  useEffect(() => {
+    updateTableSizes();
+    Device.resize.attachHandler(updateTableSizes, null);
+    return () => Device.resize.detachHandler(updateTableSizes, null);
+  }, [updateTableSizes]);
 
   useEffect(() => {
     dispatch({ type: 'SET_GROUP_BY', payload: groupBy });

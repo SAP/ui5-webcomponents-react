@@ -115,7 +115,16 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     const groupingIcon = column.isGrouped ? <Icon name="group-2" /> : null;
 
     return (
-      <div className={classNames.valueOf()}>
+      <div
+        className={classNames.valueOf()}
+        draggable={isDraggable}
+        onDragEnter={onDragEnter}
+        onDragOver={onDragOver}
+        onDragStart={onDragStart}
+        onDrop={onDrop}
+        onDragEnd={onDragEnd}
+        data-column-id={id}
+      >
         <span
           title={typeof children === 'string' ? children : null}
           style={{ textOverflow: 'ellipsis', overflowX: 'hidden', whiteSpace: 'nowrap' }}
@@ -129,7 +138,21 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
         </div>
       </div>
     );
-  }, [classes, column.filterValue, column.isSorted, column.isGrouped, column.isSortedDesc, children]);
+  }, [
+    classes,
+    column.filterValue,
+    column.isSorted,
+    column.isGrouped,
+    column.isSortedDesc,
+    children,
+    isDraggable,
+    onDragEnter,
+    onDragOver,
+    onDragStart,
+    onDrop,
+    onDragEnd,
+    id
+  ]);
 
   const isResizable = !isLastColumn && column.canResize;
   const theme = useTheme() as JSSTheme;
@@ -153,35 +176,22 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   if (!column) return null;
 
   return (
-    <div
-      id={id}
-      className={className}
-      style={style}
-      role="columnheader"
-      draggable={isDraggable}
-      onDragEnter={onDragEnter}
-      onDragOver={onDragOver}
-      onDragStart={onDragStart}
-      onDrop={onDrop}
-      onDragEnd={onDragEnd}
-    >
-      <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-        {groupable || sortable || filterable ? (
-          <ColumnHeaderModal
-            openBy={openBy}
-            showFilter={filterable}
-            showGroup={groupable && column.disableGrouping !== true}
-            showSort={sortable}
-            column={column}
-            style={innerStyle}
-            onSort={onSort}
-            onGroupBy={onGroupBy}
-          />
-        ) : (
-          <div style={{ ...innerStyle, display: 'inline-block', cursor: 'auto' }}>{openBy}</div>
-        )}
-        <div {...column.getResizerProps()} className={classes.resizer} />
-      </div>
+    <div id={id} className={className} style={style} role="columnheader">
+      {groupable || sortable || filterable ? (
+        <ColumnHeaderModal
+          openBy={openBy}
+          showFilter={filterable}
+          showGroup={groupable && column.disableGrouping !== true}
+          showSort={sortable}
+          column={column}
+          style={innerStyle}
+          onSort={onSort}
+          onGroupBy={onGroupBy}
+        />
+      ) : (
+        <div style={{ ...innerStyle, display: 'inline-block', cursor: 'auto' }}>{openBy}</div>
+      )}
+      <div {...column.getResizerProps()} className={classes.resizer} />
     </div>
   );
 };
