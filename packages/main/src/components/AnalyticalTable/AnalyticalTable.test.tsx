@@ -226,7 +226,7 @@ describe('AnalyticalTable', () => {
     const wrapper = mountThemedComponent(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
-    let componentDrag = wrapper.find({ role: 'columnheader' }).at(0);
+    let componentDrag = wrapper.find('div[role="columnheader"] div[draggable]').at(0);
     let inst = componentDrag.instance();
     // @ts-ignore
     let dragColumnId = inst.id;

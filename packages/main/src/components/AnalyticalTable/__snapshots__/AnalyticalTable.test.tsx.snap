@@ -27,284 +27,272 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
       >
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
+              >
+                Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Name"
-                >
-                  Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="age"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
+              >
+                Age
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Age"
-                >
-                  Age
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
+              >
+                Friend Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Friend Name"
-                >
-                  Friend Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.age"
+              draggable="true"
             >
-              <div
-                class="TableColumnHeader--header-"
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
               >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
       </header>
       <div
@@ -512,284 +500,272 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
       >
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
+              >
+                Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Name"
-                >
-                  Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="age"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
+              >
+                Age
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Age"
-                >
-                  Age
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
+              >
+                Friend Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Friend Name"
-                >
-                  Friend Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.age"
+              draggable="true"
             >
-              <div
-                class="TableColumnHeader--header-"
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
               >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
       </header>
       <div
@@ -997,284 +973,272 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
       >
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
+              >
+                Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Name"
-                >
-                  Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="age"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
+              >
+                Age
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Age"
-                >
-                  Age
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
+              >
+                Friend Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Friend Name"
-                >
-                  Friend Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.age"
+              draggable="true"
             >
-              <div
-                class="TableColumnHeader--header-"
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
               >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
       </header>
       <svg
@@ -1537,368 +1501,356 @@ exports[`AnalyticalTable Tree Table 1`] = `
       >
         <div
           class="AnalyticalTable--th-"
-          draggable="false"
           id="name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
-            >
-              <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Name"
-                >
-                  Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
-            </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-                <ui5-li-custom
-                  class=""
-                  type="Inactive"
-                >
-                  <div
-                    class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
-                    style="padding: 0px 1rem;"
-                  >
-                    <ui5-icon
-                      class=""
-                      name="filter"
-                      style="padding-right: 1rem;"
-                    />
-                    <ui5-input
-                      class=""
-                      type="Text"
-                      value=""
-                      value-state="None"
-                    />
-                  </div>
-                </ui5-li-custom>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
+              class="TableColumnHeader--header-"
+              data-column-id="name"
               draggable="false"
-              style="cursor: ew-resize;"
-            />
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
+              >
+                Name
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
+            </div>
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+              <ui5-li-custom
+                class=""
+                type="Inactive"
+              >
+                <div
+                  class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+                  style="padding: 0px 1rem;"
+                >
+                  <ui5-icon
+                    class=""
+                    name="filter"
+                    style="padding-right: 1rem;"
+                  />
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </ui5-li-custom>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="false"
           id="age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
-            >
-              <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Age"
-                >
-                  Age
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
-            </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-                <ui5-li-custom
-                  class=""
-                  type="Inactive"
-                >
-                  <div
-                    class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
-                    style="padding: 0px 1rem;"
-                  >
-                    <ui5-icon
-                      class=""
-                      name="filter"
-                      style="padding-right: 1rem;"
-                    />
-                    <ui5-input
-                      class=""
-                      type="Text"
-                      value=""
-                      value-state="None"
-                    />
-                  </div>
-                </ui5-li-custom>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
+              class="TableColumnHeader--header-"
+              data-column-id="age"
               draggable="false"
-              style="cursor: ew-resize;"
-            />
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
+              >
+                Age
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
+            </div>
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+              <ui5-li-custom
+                class=""
+                type="Inactive"
+              >
+                <div
+                  class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+                  style="padding: 0px 1rem;"
+                >
+                  <ui5-icon
+                    class=""
+                    name="filter"
+                    style="padding-right: 1rem;"
+                  />
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </ui5-li-custom>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="false"
           id="friend.name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
-            >
-              <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Friend Name"
-                >
-                  Friend Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
-            </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-                <ui5-li-custom
-                  class=""
-                  type="Inactive"
-                >
-                  <div
-                    class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
-                    style="padding: 0px 1rem;"
-                  >
-                    <ui5-icon
-                      class=""
-                      name="filter"
-                      style="padding-right: 1rem;"
-                    />
-                    <ui5-input
-                      class=""
-                      type="Text"
-                      value=""
-                      value-state="None"
-                    />
-                  </div>
-                </ui5-li-custom>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.name"
               draggable="false"
-              style="cursor: ew-resize;"
-            />
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
+              >
+                Friend Name
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
+            </div>
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+              <ui5-li-custom
+                class=""
+                type="Inactive"
+              >
+                <div
+                  class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+                  style="padding: 0px 1rem;"
+                >
+                  <ui5-icon
+                    class=""
+                    name="filter"
+                    style="padding-right: 1rem;"
+                  />
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </ui5-li-custom>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="false"
           id="friend.age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
-            >
-              <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                >
-                  <span>
-                    Friend Age
-                  </span>
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
-            </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-                <ui5-li-custom
-                  class=""
-                  type="Inactive"
-                >
-                  <div
-                    class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
-                    style="padding: 0px 1rem;"
-                  >
-                    <ui5-icon
-                      class=""
-                      name="filter"
-                      style="padding-right: 1rem;"
-                    />
-                    <ui5-input
-                      class=""
-                      type="Text"
-                      value=""
-                      value-state="None"
-                    />
-                  </div>
-                </ui5-li-custom>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.age"
               draggable="false"
-              style="cursor: ew-resize;"
-            />
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              >
+                <span>
+                  Friend Age
+                </span>
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
+            </div>
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+              <ui5-li-custom
+                class=""
+                type="Inactive"
+              >
+                <div
+                  class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+                  style="padding: 0px 1rem;"
+                >
+                  <ui5-icon
+                    class=""
+                    name="filter"
+                    style="padding-right: 1rem;"
+                  />
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </ui5-li-custom>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
       </header>
       <div
@@ -2135,284 +2087,272 @@ exports[`AnalyticalTable custom row height 1`] = `
       >
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
+              >
+                Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Name"
-                >
-                  Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="age"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
+              >
+                Age
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Age"
-                >
-                  Age
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
+              >
+                Friend Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Friend Name"
-                >
-                  Friend Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.age"
+              draggable="true"
             >
-              <div
-                class="TableColumnHeader--header-"
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
               >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
       </header>
       <div
@@ -2620,284 +2560,272 @@ exports[`AnalyticalTable test Asc desc 1`] = `
       >
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
+              >
+                Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Name"
-                >
-                  Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="age"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
+              >
+                Age
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Age"
-                >
-                  Age
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
+              >
+                Friend Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Friend Name"
-                >
-                  Friend Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.age"
+              draggable="true"
             >
-              <div
-                class="TableColumnHeader--header-"
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
               >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
       </header>
       <div
@@ -3105,284 +3033,272 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
       >
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
-          id="age"
+          id="name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
+              >
+                Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Age"
-                >
-                  Age
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
-          id="name"
+          id="age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="age"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
+              >
+                Age
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Name"
-                >
-                  Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.name"
           role="columnheader"
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.name"
+              draggable="true"
             >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
+              >
+                Friend Name
+              </span>
               <div
-                class="TableColumnHeader--header-"
-              >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                  title="Friend Name"
-                >
-                  Friend Name
-                </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
         <div
           class="AnalyticalTable--th-"
-          draggable="true"
           id="friend.age"
           role="columnheader"
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="position: relative; width: 100%; height: 100%;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
           >
             <div
-              style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+              class="TableColumnHeader--header-"
+              data-column-id="friend.age"
+              draggable="true"
             >
-              <div
-                class="TableColumnHeader--header-"
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
               >
-                <span
-                  style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
-                >
-                  <span>
-                    Friend Age
-                  </span>
+                <span>
+                  Friend Age
                 </span>
-                <div
-                  class="TableColumnHeader--iconContainer-"
-                />
-              </div>
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
             </div>
-            <ui5-popover
-              class=""
-              horizontal-align="Left"
-              no-arrow="true"
-              placement-type="Bottom"
-              style="font-weight: normal;"
-              vertical-align="Center"
-            >
-              <ui5-list
-                class=""
-                footer-text=""
-                header-text=""
-                mode="None"
-                no-data-text=""
-                separators="All"
-              >
-                <ui5-li
-                  class=""
-                  data-sort="asc"
-                  icon="sort-ascending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Ascending
-                </ui5-li>
-                <ui5-li
-                  class=""
-                  data-sort="desc"
-                  icon="sort-descending"
-                  info-state="None"
-                  type="Active"
-                >
-                  Sort Descending
-                </ui5-li>
-              </ui5-list>
-            </ui5-popover>
-            <div
-              class="TableColumnHeader--resizer-"
-              draggable="false"
-              style="cursor: ew-resize;"
-            />
           </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
         </div>
       </header>
       <div
@@ -3405,9 +3321,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <span
                 class="Text--text- Text--noWrap-"
                 style="width: 100%;"
-                title="40"
+                title="Fra"
               >
-                40
+                Fra
               </span>
             </div>
             <div
@@ -3417,9 +3333,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <span
                 class="Text--text- Text--noWrap-"
                 style="width: 100%;"
-                title="Fra"
+                title="40"
               >
-                Fra
+                40
               </span>
             </div>
             <div
@@ -3460,9 +3376,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <span
                 class="Text--text- Text--noWrap-"
                 style="width: 100%;"
-                title="20"
+                title="bla"
               >
-                20
+                bla
               </span>
             </div>
             <div
@@ -3472,9 +3388,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <span
                 class="Text--text- Text--noWrap-"
                 style="width: 100%;"
-                title="bla"
+                title="20"
               >
-                bla
+                20
               </span>
             </div>
             <div
