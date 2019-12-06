@@ -17,6 +17,8 @@ module.exports = {
     '!packages/*/index.ts',
     '!packages/docs/**/*',
     '!packages/**/demo/*',
+    '!packages/base/src/polyfill/*', // no polyfills
+    '!packages/main/src/components/AnalyticalTable/types/*', // no table enums
     '!**/npm/**/*'
   ],
   setupFiles: [
