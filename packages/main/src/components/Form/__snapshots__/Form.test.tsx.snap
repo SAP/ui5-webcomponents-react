@@ -9,7 +9,6 @@ Array [
   >
     Test form
   </ui5-title>,
-  " ",
   <div
     style="padding-bottom: 2em;"
   />,
@@ -21,61 +20,51 @@ Array [
     >
       <div>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+          style="align-items: center; display: flex;"
         >
-          <div
-            style="width: 100%; padding-top: 0.25em;"
+          <ui5-label
+            class=""
+            for=""
+            style="padding-right: 0.5em; width: 33%; text-align: end;"
           >
-            <div>
-              <div
-                style="align-items: center; display: flex;"
-              >
-                <ui5-label
-                  class=""
-                  for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
-                >
-                  item 1
-                </ui5-label>
-                <div
-                  style="display: block; width: 66%;"
-                >
-                  <ui5-input
-                    class=""
-                    type="Text"
-                    value=""
-                    value-state="None"
-                  />
-                </div>
-              </div>
-            </div>
+            item 1
+          </ui5-label>
+          <div
+            style="display: block; width: 66%;"
+          >
+            <ui5-input
+              class=""
+              type="Text"
+              value=""
+              value-state="None"
+            />
           </div>
-          <div
-            style="width: 100%; padding-top: 0.25em;"
+        </div>
+      </div>
+    </div>
+    <div
+      class="Grid--gridSpan-"
+    >
+      <div>
+        <div
+          style="align-items: center; display: flex;"
+        >
+          <ui5-label
+            class=""
+            for=""
+            style="padding-right: 0.5em; width: 33%; text-align: end;"
           >
-            <div>
-              <div
-                style="align-items: center; display: flex;"
-              >
-                <ui5-label
-                  class=""
-                  for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
-                >
-                  item 2
-                </ui5-label>
-                <div
-                  style="display: block; width: 66%;"
-                >
-                  <ui5-input
-                    class=""
-                    type="Number"
-                    value=""
-                    value-state="None"
-                  />
-                </div>
-              </div>
-            </div>
+            item 2
+          </ui5-label>
+          <div
+            style="display: block; width: 66%;"
+          >
+            <ui5-input
+              class=""
+              type="Number"
+              value=""
+              value-state="None"
+            />
           </div>
         </div>
       </div>
@@ -93,7 +82,6 @@ Array [
   >
     To be Form title
   </ui5-title>,
-  " ",
   <div
     style="padding-bottom: 2em;"
   />,
@@ -177,7 +165,6 @@ Array [
   >
     Test form
   </ui5-title>,
-  " ",
   <div
     style="padding-bottom: 2em;"
   />,
@@ -339,7 +326,6 @@ Array [
   >
     Test form
   </ui5-title>,
-  " ",
   <div
     style="padding-bottom: 2em;"
   />,
@@ -501,7 +487,6 @@ Array [
   >
     Test form
   </ui5-title>,
-  " ",
   <div
     style="padding-bottom: 2em;"
   />,
@@ -663,7 +648,6 @@ Array [
   >
     Test form
   </ui5-title>,
-  " ",
   <div
     style="padding-bottom: 2em;"
   />,

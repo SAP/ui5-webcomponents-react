@@ -1,5 +1,5 @@
 import { Grid } from '../Grid';
-import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
+import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, useMemo, useState } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Title, TitleLevel } from '../..';
 import { useRateChanged } from './hooks/useRateChanged';
@@ -21,10 +21,15 @@ export interface FormPropTypes extends CommonProps {
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
   const { title, children } = props;
 
+  const [currentRate, setCurrentRate] = useState('');
   const rateChanged = useRateChanged()[0];
   const onRateChanged = (e) => {
-    rateChanged(e.parameters.rate);
+    setCurrentRate(e.parameters.rate);
   };
+
+  useMemo(() => {
+    rateChanged(currentRate);
+  }, [currentRate]);
 
   // check if ungrouped FormItems exist amongst the Form's children and put them in an artificial FormGroup if any
   let updatedChildren, updatedTitle;

@@ -49,6 +49,7 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
       labelTextAlign = 'end',
       display = 'flex',
       elementWidth;
+
     switch (currentRate) {
       case 'S':
         labelWidth = '100%';

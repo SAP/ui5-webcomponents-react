@@ -5,12 +5,6 @@ import { FormItem } from './FormItem';
 import { FormGroup } from './FormGroup';
 import { CheckBox, Input, InputType, Select, Option } from '../..';
 
-const variantItems = [
-  { label: 'Germany', key: '1' },
-  { label: 'France', key: '2' },
-  { label: 'Italy', key: '3' }
-];
-
 export const defaultStory = () => {
   return (
     <Form title={'Test Form'}>
