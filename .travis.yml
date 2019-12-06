@@ -15,7 +15,9 @@ before_install:
 jobs:
   include:
     - stage: 'Test'
-      script: yarn test
+      script:
+        - yarn test
+        - ${TRAVIS_BUILD_DIR}/node_modules/.bin/codecov
     - stage: 'Build and Deploy'
       before_script:
         - git checkout ${TRAVIS_BRANCH}
