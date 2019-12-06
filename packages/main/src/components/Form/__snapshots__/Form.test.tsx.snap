@@ -1,0 +1,645 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create a Form size rate L; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
+Array [
+  <ui5-title
+    class=""
+    level="H3"
+    style="border-bottom: 1px solid grey;"
+  >
+    Test form
+  </ui5-title>,
+  <div
+    style="padding-bottom: 2em;"
+  />,
+  <div
+    class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
+  >
+    <div
+      class="Grid--gridSpan-"
+    >
+      <div>
+        <ui5-title
+          class=""
+          level="H5"
+          style="padding-bottom: 1em;"
+        >
+          Group 1
+        </ui5-title>
+        <div
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+        >
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 33%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 1
+                </ui5-label>
+                <div
+                  style="width: 66%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 33%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 2
+                </ui5-label>
+                <div
+                  style="width: 66%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Number"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="Grid--gridSpan-"
+    >
+      <div>
+        <ui5-title
+          class=""
+          level="H5"
+          style="padding-bottom: 1em;"
+        >
+          Group 2
+        </ui5-title>
+        <div
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+        >
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 33%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 1
+                </ui5-label>
+                <div
+                  style="width: 66%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 33%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 2
+                </ui5-label>
+                <div
+                  style="width: 66%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Number"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Create a Form size rate M; should create Label and Element with 16% and 83% width respectively and display: flex for top FormItem div 1`] = `
+Array [
+  <ui5-title
+    class=""
+    level="H3"
+    style="border-bottom: 1px solid grey;"
+  >
+    Test form
+  </ui5-title>,
+  <div
+    style="padding-bottom: 2em;"
+  />,
+  <div
+    class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
+  >
+    <div
+      class="Grid--gridSpan-"
+    >
+      <div>
+        <ui5-title
+          class=""
+          level="H5"
+          style="padding-bottom: 1em;"
+        >
+          Group 1
+        </ui5-title>
+        <div
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+        >
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 16%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 1
+                </ui5-label>
+                <div
+                  style="width: 83%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 16%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 2
+                </ui5-label>
+                <div
+                  style="width: 83%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Number"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="Grid--gridSpan-"
+    >
+      <div>
+        <ui5-title
+          class=""
+          level="H5"
+          style="padding-bottom: 1em;"
+        >
+          Group 2
+        </ui5-title>
+        <div
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+        >
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 16%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 1
+                </ui5-label>
+                <div
+                  style="width: 83%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 16%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 2
+                </ui5-label>
+                <div
+                  style="width: 83%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Number"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Create a Form size rate S; should create Label and Element with 100% width and display: block for top FormItem div 1`] = `
+Array [
+  <ui5-title
+    class=""
+    level="H3"
+    style="border-bottom: 1px solid grey;"
+  >
+    Test form
+  </ui5-title>,
+  <div
+    style="padding-bottom: 2em;"
+  />,
+  <div
+    class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
+  >
+    <div
+      class="Grid--gridSpan-"
+    >
+      <div>
+        <ui5-title
+          class=""
+          level="H5"
+          style="padding-bottom: 1em;"
+        >
+          Group 1
+        </ui5-title>
+        <div
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+        >
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: block; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 100%; text-align: start; padding-right: 0.4em;"
+                >
+                  item 1
+                </ui5-label>
+                <div
+                  style="width: 100%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: block; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 100%; text-align: start; padding-right: 0.4em;"
+                >
+                  item 2
+                </ui5-label>
+                <div
+                  style="width: 100%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Number"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="Grid--gridSpan-"
+    >
+      <div>
+        <ui5-title
+          class=""
+          level="H5"
+          style="padding-bottom: 1em;"
+        >
+          Group 2
+        </ui5-title>
+        <div
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+        >
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: block; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 100%; text-align: start; padding-right: 0.4em;"
+                >
+                  item 1
+                </ui5-label>
+                <div
+                  style="width: 100%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: block; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 100%; text-align: start; padding-right: 0.4em;"
+                >
+                  item 2
+                </ui5-label>
+                <div
+                  style="width: 100%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Number"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Create a Form size rate XL; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
+Array [
+  <ui5-title
+    class=""
+    level="H3"
+    style="border-bottom: 1px solid grey;"
+  >
+    Test form
+  </ui5-title>,
+  <div
+    style="padding-bottom: 2em;"
+  />,
+  <div
+    class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
+  >
+    <div
+      class="Grid--gridSpan-"
+    >
+      <div>
+        <ui5-title
+          class=""
+          level="H5"
+          style="padding-bottom: 1em;"
+        >
+          Group 1
+        </ui5-title>
+        <div
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+        >
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 33%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 1
+                </ui5-label>
+                <div
+                  style="width: 66%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 33%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 2
+                </ui5-label>
+                <div
+                  style="width: 66%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Number"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="Grid--gridSpan-"
+    >
+      <div>
+        <ui5-title
+          class=""
+          level="H5"
+          style="padding-bottom: 1em;"
+        >
+          Group 2
+        </ui5-title>
+        <div
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+        >
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 33%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 1
+                </ui5-label>
+                <div
+                  style="width: 66%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="width: 100%; padding-top: 0.25em;"
+          >
+            <div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="width: 33%; text-align: end; padding-right: 0.4em;"
+                >
+                  item 2
+                </ui5-label>
+                <div
+                  style="width: 66%; display: block;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Number"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
