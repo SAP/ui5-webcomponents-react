@@ -26,34 +26,36 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     rateChanged(e.parameters.rate);
   };
 
-  let ungroupedChildren = [],
-    updatedChildren,
-    newTitle;
+  // check if ungrouped FormItems exist amongst the Form's children and put them in an artificial FormGroup if any
+  let updatedChildren, updatedTitle;
   if (children.hasOwnProperty('length')) {
-    updatedChildren = [...children];
+    let updatedChildren = [...(children as ReactNodeArray)],
+      ungroupedChildren = [];
     for (let i = updatedChildren.length - 1; i >= 0; i--) {
-      if (updatedChildren[i].props.type === 'formItem') {
+      if ((updatedChildren[i] as ReactElement).props.type === 'formItem') {
         ungroupedChildren.push(updatedChildren.splice(i, 1)[0]);
       }
     }
     if (ungroupedChildren.length > 0) {
       updatedChildren.push(<FormGroup children={ungroupedChildren.reverse()} />);
     }
-    newTitle = title;
+    updatedTitle = title;
   } else {
-    if ((!title || title.length === 0) && children.props.title && children.props.title.length > 0) {
-      newTitle = children.props.title;
+    // check if a sole Form's group has a Title and take it as Form Title if one does not exist
+    let childProps = (children as ReactElement).props;
+    if ((!title || title.length === 0) && childProps.title && childProps.title.length > 0) {
+      updatedTitle = childProps.title;
       updatedChildren = React.cloneElement(children, { title: null });
-    } else newTitle = title;
+    } else updatedTitle = title;
   }
 
   return (
     <React.Fragment>
-      {newTitle ? (
+      {updatedTitle ? (
         <React.Fragment>
           <Title level={TitleLevel.H3} style={styles.formTitle}>
-            {newTitle}
-          </Title>{' '}
+            {updatedTitle}
+          </Title>
           <div style={styles.formTitlePaddingBottom} />
         </React.Fragment>
       ) : null}

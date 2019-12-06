@@ -7,7 +7,8 @@ import React, {
   ReactNode,
   useState,
   CSSProperties,
-  useCallback
+  useCallback,
+  ReactNodeArray
 } from 'react';
 import { useRateChanged } from '../hooks/useRateChanged';
 import { Label } from '../../..';
@@ -16,7 +17,7 @@ import { styles } from '../Form.jss';
 export interface FormItemProps {
   id?: string;
   labelText?: string;
-  children: ReactNode;
+  children: ReactNode | ReactNodeArray;
   type?: string;
 }
 

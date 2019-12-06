@@ -54,4 +54,36 @@ describe('Create a Form', () => {
     const wrapper = mountThemedComponent(component);
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  test('should create a FormGroup and put ungrouped FormItems into it', () => {
+    const ungroupedChildren = (
+      <Form title={'Test form'}>
+        <FormItem labelText={'item 1'}>
+          <Input type={InputType.Text}></Input>
+        </FormItem>
+        <FormItem labelText={'item 2'}>
+          <Input type={InputType.Number}></Input>
+        </FormItem>
+      </Form>
+    );
+    const wrapper = mountThemedComponent(ungroupedChildren);
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test("should use a single FormGroup's title as a Form title if one is not set", () => {
+    const ungroupedChildren = (
+      <Form>
+        <FormGroup title={'To be Form title'}>
+          <FormItem labelText={'item 1'}>
+            <Input type={InputType.Text}></Input>
+          </FormItem>
+          <FormItem labelText={'item 2'}>
+            <Input type={InputType.Number}></Input>
+          </FormItem>
+        </FormGroup>
+      </Form>
+    );
+    const wrapper = mountThemedComponent(ungroupedChildren);
+    expect(wrapper.render()).toMatchSnapshot();
+  });
 });
