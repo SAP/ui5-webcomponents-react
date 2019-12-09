@@ -4,7 +4,7 @@ import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import '@ui5/webcomponents/dist/icons/employee';
+import '@ui5/webcomponents-icons/dist/icons/employee';
 import React from 'react';
 import notes from './Avatar.md';
 
@@ -33,7 +33,7 @@ export const withIcon = () => (
     customFontSize={text('customFontSize', '1.125rem')}
     onClick={action('onClick')}
   >
-    <Icon src="employee" />
+    <Icon name="employee" />
   </Avatar>
 );
 withIcon.story = {

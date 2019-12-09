@@ -14,7 +14,7 @@
   "license": "Apache-2.0",
   "private": false,
   "sideEffects": [
-    "@ui5/webcomponents/dist/icons/*"
+    "@ui5/webcomponents-icons/dist/icons/*"
   ],
   "scripts": {
     "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/index.js --onlyStopForMerge",
@@ -22,12 +22,14 @@
     "postbuild": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.4",
+    "@ui5/webcomponents": "1.0.0-rc.5",
+    "@ui5/webcomponents-fiori": "^1.0.0-rc.5",
+    "@ui5/webcomponents-icons": "^1.0.0-rc.5",
     "@ui5/webcomponents-react-base": "0.7.0-rc.1",
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "^4.3.2",
     "react-jss": "10.0.0",
-    "react-table": "7.0.0-beta.12",
+    "react-table": "7.0.0-beta.27",
     "react-toastify": "^5.4.1",
     "react-window": "^1.8.5"
   },

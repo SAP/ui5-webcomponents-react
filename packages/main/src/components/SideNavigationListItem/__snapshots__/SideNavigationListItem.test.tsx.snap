@@ -9,7 +9,7 @@ exports[`SideNavigationListItem Basic 1`] = `
 >
   <ui5-icon
     class="SideNavigationListItem--icon-"
-    src="sap-icon://home"
+    name="home"
   />
 </ui5-li-custom>
 `;
@@ -23,7 +23,7 @@ exports[`SideNavigationListItem compact size 1`] = `
 >
   <ui5-icon
     class="SideNavigationListItem--icon-"
-    src="sap-icon://home"
+    name="home"
   />
 </ui5-li-custom>
 `;
@@ -38,7 +38,7 @@ exports[`SideNavigationListItem custom class name and style 1`] = `
 >
   <ui5-icon
     class="SideNavigationListItem--icon-"
-    src="sap-icon://home"
+    name="home"
   />
 </ui5-li-custom>
 `;

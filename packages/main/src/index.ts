@@ -97,6 +97,7 @@ import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
 import { TableCell } from './lib/TableCell';
 import { TableColumn } from './lib/TableColumn';
+import { TablePlaceholder } from './lib/TablePlaceholder';
 import { TableRow } from './lib/TableRow';
 import { Text } from './lib/Text';
 import { TextAlign } from './lib/TextAlign';
@@ -210,6 +211,7 @@ export {
   Table,
   TableCell,
   TableColumn,
+  TablePlaceholder,
   TableRow,
   Text,
   TextAlign,

@@ -14,12 +14,12 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import styles from './MessageBox.jss';
-import '@ui5/webcomponents/dist/icons/question-mark';
-import '@ui5/webcomponents/dist/icons/message-error';
-import '@ui5/webcomponents/dist/icons/message-information';
-import '@ui5/webcomponents/dist/icons/message-success';
-import '@ui5/webcomponents/dist/icons/message-warning';
-import '@ui5/webcomponents/dist/icons/hint';
+import '@ui5/webcomponents-icons/dist/icons/question-mark';
+import '@ui5/webcomponents-icons/dist/icons/message-error';
+import '@ui5/webcomponents-icons/dist/icons/message-information';
+import '@ui5/webcomponents-icons/dist/icons/message-success';
+import '@ui5/webcomponents-icons/dist/icons/message-warning';
+import '@ui5/webcomponents-icons/dist/icons/hint';
 
 export interface MessageBoxPropTypes extends CommonProps {
   open?: boolean;
@@ -42,17 +42,17 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDom
     if (isValidElement(icon)) return icon;
     switch (type) {
       case MessageBoxTypes.CONFIRM:
-        return <Icon src="sap-icon://question-mark" />;
+        return <Icon name="question-mark" />;
       case MessageBoxTypes.ERROR:
-        return <Icon src="sap-icon://message-error" />;
+        return <Icon name="message-error" />;
       case MessageBoxTypes.INFORMATION:
-        return <Icon src="sap-icon://message-information" />;
+        return <Icon name="message-information" />;
       case MessageBoxTypes.SUCCESS:
-        return <Icon src="sap-icon://message-success" />;
+        return <Icon name="message-success" />;
       case MessageBoxTypes.WARNING:
-        return <Icon src="sap-icon://message-warning" />;
+        return <Icon name="message-warning" />;
       case MessageBoxTypes.HIGHLIGHT:
-        return <Icon src="sap-icon://hint" />;
+        return <Icon name="hint" />;
     }
 
     return null;

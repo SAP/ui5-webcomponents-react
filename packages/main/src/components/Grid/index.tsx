@@ -97,7 +97,7 @@ const getIndentFromString = (indent) => {
     : [undefined, 0, 0, 0, 0][currentSpan];
 };
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Grid' });
+const useStyles = createUseStyles(styles, { name: 'Grid' });
 
 const conversionMap = new Map([
   ['Phone', 'S'],

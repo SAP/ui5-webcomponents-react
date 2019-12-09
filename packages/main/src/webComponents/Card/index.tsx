@@ -9,7 +9,7 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
   subtitle?: string; // @generated
   status?: string; // @generated
   headerInteractive?: boolean; // @generated
-  avatar?: string; // @generated
+  avatar?: ReactNode; // @generated
   onHeaderClick?: (event: Event) => void; // @generated
   children?: ReactNode | ReactNode[]; // @generated
 }

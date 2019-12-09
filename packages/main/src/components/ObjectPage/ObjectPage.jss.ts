@@ -147,13 +147,6 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   stickied: {},
-  image: {
-    height: '0',
-    width: '0',
-    opacity: '0',
-    display: 'inline-block',
-    verticalAlign: 'middle'
-  },
   headerContent: {
     paddingTop: '1.5rem',
     paddingBottom: '0.25rem',

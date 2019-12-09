@@ -1,6 +1,7 @@
 import { ComponentType } from 'react';
+import { Column } from 'react-table';
 
-export interface ColumnType {
+export interface ColumnType extends Column {
   show: boolean;
   id: string;
   Filter: ComponentType<{ column: ColumnType }>;
@@ -15,4 +16,6 @@ export interface ColumnType {
   isSorted: boolean;
   isSortedDesc: boolean;
   disableGrouping: boolean;
+  getResizerProps: () => any;
+  isResizing: boolean;
 }

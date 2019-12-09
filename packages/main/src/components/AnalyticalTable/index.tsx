@@ -1,3 +1,4 @@
+import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
@@ -10,12 +11,25 @@ import React, {
   ReactNode,
   ReactText,
   Ref,
+  RefObject,
   useCallback,
   useEffect,
-  useMemo
+  useMemo,
+  useRef,
+  useState
 } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
-import { useExpanded, useFilters, useGroupBy, useSortBy, useTable, useColumnOrder } from 'react-table';
+import {
+  PluginHook,
+  useAbsoluteLayout,
+  useColumnOrder,
+  useExpanded,
+  useFilters,
+  useGroupBy,
+  useResizeColumns,
+  useSortBy,
+  useTable
+} from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
@@ -24,7 +38,7 @@ import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
-import { useResizeColumns } from './hooks/useResizeColumns';
+import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useRowSelection } from './hooks/useRowSelection';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
@@ -33,11 +47,9 @@ import { useTableRowStyling } from './hooks/useTableRowStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useTableStyling } from './hooks/useTableStyling';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
-import { useWindowResize } from './hooks/useWindowResize';
-import { makeTemplateColumns } from './hooks/utils';
+import { reducer } from './tableReducer/reducer';
 import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
-import { useDragAndDrop } from './hooks/useDragAndDrop';
 
 export interface ColumnConfiguration {
   accessor?: string;
@@ -99,7 +111,7 @@ export interface TableProps extends CommonProps {
    * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api.md#table-options)
    */
   reactTableOptions?: object;
-  tableHooks?: Array<() => any>;
+  tableHooks?: Array<PluginHook<any>>;
   subRowsKey?: string;
   selectedRowKey?: string;
   isTreeTable?: boolean;
@@ -137,7 +149,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     selectedRowKey,
     LoadingComponent,
     onRowExpandChange,
-    onColumnsReordered,
     noDataText,
     NoDataComponent,
     visibleRows,
@@ -150,17 +161,39 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const classes = useStyles({ rowHeight: props.rowHeight });
 
   const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected, selectedRowKey);
-  const [resizedColumns, onColumnSizeChanged, isBeingResized, onColumnBeingResized] = useResizeColumns();
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
+  const tableRef: RefObject<HTMLDivElement> = useRef();
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
-  const { getTableProps, headerGroups, rows, prepareRow, setState, state: tableState, setColumnOrder } = useTable(
+  const [columnWidth, setColumnWidth] = useState(null);
+
+  const defaultColumn = useMemo(() => {
+    if (columnWidth) {
+      return {
+        width: columnWidth,
+        ...DefaultColumn
+      };
+    }
+    return DefaultColumn;
+  }, [columnWidth]);
+
+  const {
+    getTableProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    state: tableState,
+    setColumnOrder,
+    dispatch,
+    totalColumnsWidth
+  } = useTable(
     {
       columns,
       data,
-      defaultColumn: DefaultColumn,
+      defaultColumn,
       getSubRows,
+      reducer,
       ...reactTableOptions
     },
     useFilters,
@@ -168,31 +201,39 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useColumnOrder,
     useSortBy,
     useExpanded,
+    useAbsoluteLayout,
+    useResizeColumns,
     useTableStyling(classes),
-    useTableHeaderGroupStyling(classes, resizedColumns),
-    useTableHeaderStyling(classes, onColumnSizeChanged, onColumnBeingResized),
-    useTableRowStyling(
-      classes,
-      resizedColumns,
-      selectable,
-      selectedRowPath,
-      selectedRowKey,
-      onRowClicked,
-      alternateRowColor
-    ),
+    useTableHeaderGroupStyling(classes),
+    useTableHeaderStyling(classes),
+    useTableRowStyling(classes, selectable, selectedRowPath, selectedRowKey, onRowClicked, alternateRowColor),
     useTableCellStyling(classes, rowHeight),
     useToggleRowExpand(onRowExpandChange, isTreeTable),
     ...tableHooks
   );
 
+  const updateTableSizes = useCallback(() => {
+    const visibleColumns = columns.filter(Boolean).filter(({ show }) => show ?? true);
+    const columnsWithFixedWidth = columns.filter(({ width }) => width ?? false).map(({ width }) => width);
+    const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
+    if (visibleColumns.length > 0 && tableRef.current.clientWidth > 0) {
+      setColumnWidth(
+        (tableRef.current.clientWidth - fixedWidth) / (visibleColumns.length - columnsWithFixedWidth.length)
+      );
+    } else {
+      setColumnWidth(150);
+    }
+  }, []);
+
   useEffect(() => {
-    setState((old) => {
-      return {
-        ...old,
-        groupBy
-      };
-    });
-  }, [groupBy, setState]);
+    updateTableSizes();
+    Device.resize.attachHandler(updateTableSizes, null);
+    return () => Device.resize.detachHandler(updateTableSizes, null);
+  }, [updateTableSizes]);
+
+  useEffect(() => {
+    dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
+  }, [groupBy, dispatch]);
 
   const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
 
@@ -222,12 +263,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     };
   }, [tableBodyHeight]);
 
-  const rowContainerStyling = useMemo(() => {
-    return {
-      gridTemplateColumns: makeTemplateColumns(headerGroups.map(({ headers }) => headers).flat(), resizedColumns)
-    };
-  }, [headerGroups, resizedColumns]);
-
   const onGroupByChanged = useCallback(
     (e) => {
       const { column, isGrouped } = e.getParameters();
@@ -237,12 +272,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       } else {
         groupedColumns = tableState.groupBy.filter((group) => group !== column.id);
       }
-      setState((old) => {
-        return {
-          ...old,
-          groupBy: groupedColumns
-        };
-      });
+      dispatch({ type: 'SET_GROUP_BY', payload: groupedColumns });
       onGroup(
         Event.of(null, e.getOriginalEvent(), {
           column,
@@ -250,103 +280,89 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         })
       );
     },
-    [tableState.groupBy, onGroup]
+    [tableState.groupBy, onGroup, dispatch]
   );
 
-  const onColumnsOrderChanged = useCallback(
-    (target, column, columnsNewOrder) => {
-      onColumnsReordered(
-        Event.of(null, target, {
-          columnsNewOrder,
-          column
-        })
-      );
-    },
-    [tableState.columnOrder, onColumnsReordered]
-  );
-
-  const [headerRef, tableWidth] = useWindowResize();
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
     props,
     setColumnOrder,
     tableState.columnOrder,
-    isBeingResized,
-    onColumnsOrderChanged
+    tableState.columnResizing
   );
 
   return (
     <div className={className} style={style} title={tooltip} ref={analyticalTableRef}>
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
-      <div className={tableContainerClasses.valueOf()}>
-        <div {...getTableProps()} ref={headerRef} role="table" aria-rowcount={rows.length}>
-          {headerGroups.map((headerGroup) => {
-            let headerProps = {};
-            if (headerGroup.getHeaderGroupProps) {
-              headerProps = headerGroup.getHeaderGroupProps();
-            }
-            return (
-              <header {...headerProps} role="rowgroup">
-                {headerGroup.headers.map((column, index) => (
-                  <ColumnHeader
-                    id={column.id}
-                    {...column.getHeaderProps()}
-                    isLastColumn={index === columns.length - 1}
-                    groupable={props.groupable}
-                    sortable={props.sortable}
-                    filterable={props.filterable}
-                    onSort={props.onSort}
-                    onGroupBy={onGroupByChanged}
-                    onDragStart={handleDragStart}
-                    onDragOver={handleDragOver}
-                    onDrop={handleOnDrop}
-                    onDragEnter={handleDragEnter}
-                    onDragEnd={handleOnDragEnd}
-                    dragOver={column.id === dragOver}
-                    column={column}
-                    isDraggable={!isTreeTable}
-                  >
-                    {column.render('Header')}
-                  </ColumnHeader>
-                ))}
-              </header>
-            );
-          })}
-          {loading && busyIndicatorEnabled && data.length > 0 && <LoadingComponent />}
-          {loading && data.length === 0 && (
-            <TablePlaceholder
-              columns={columns.filter((col) => col.show ?? true).length}
-              rows={props.minRows}
-              style={noDataStyles}
-              rowHeight={internalRowHeight}
-            />
-          )}
-          {!loading && data.length === 0 && (
-            <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
-          )}
-          {data.length > 0 && (
-            <VirtualTableBody
-              classes={classes}
-              rowContainerStyling={rowContainerStyling}
-              prepareRow={prepareRow}
-              rows={rows}
-              minRows={minRows}
-              columns={columns}
-              selectedRow={selectedRowKey}
-              selectedRowPath={selectedRowPath}
-              selectable={selectable}
-              reactWindowRef={reactWindowRef}
-              tableWidth={tableWidth}
-              resizedColumns={resizedColumns}
-              isTreeTable={isTreeTable}
-              internalRowHeight={internalRowHeight}
-              tableBodyHeight={tableBodyHeight}
-              visibleRows={visibleRows}
-              alternateRowColor={alternateRowColor}
-              overscanCount={overscanCount}
-            />
-          )}
-        </div>
+      <div className={tableContainerClasses.valueOf()} ref={tableRef}>
+        {columnWidth && (
+          <div {...getTableProps()} role="table" aria-rowcount={rows.length}>
+            {headerGroups.map((headerGroup) => {
+              let headerProps = {};
+              if (headerGroup.getHeaderGroupProps) {
+                headerProps = headerGroup.getHeaderGroupProps();
+              }
+              return (
+                <header {...headerProps} role="rowgroup">
+                  {headerGroup.headers.map((column, index) => (
+                    <ColumnHeader
+                      id={column.id}
+                      {...column.getHeaderProps()}
+                      isLastColumn={index === columns.length - 1}
+                      groupable={props.groupable}
+                      sortable={props.sortable}
+                      filterable={props.filterable}
+                      onSort={props.onSort}
+                      onGroupBy={onGroupByChanged}
+                      onDragStart={handleDragStart}
+                      onDragOver={handleDragOver}
+                      onDrop={handleOnDrop}
+                      onDragEnter={handleDragEnter}
+                      onDragEnd={handleOnDragEnd}
+                      dragOver={column.id === dragOver}
+                      column={column}
+                      isDraggable={!isTreeTable}
+                    >
+                      {column.render('Header')}
+                    </ColumnHeader>
+                  ))}
+                </header>
+              );
+            })}
+            {loading && busyIndicatorEnabled && data.length > 0 && <LoadingComponent />}
+            {loading && data.length === 0 && (
+              <TablePlaceholder
+                columns={columns.filter((col) => col.show ?? true).length}
+                rows={props.minRows}
+                style={noDataStyles}
+                rowHeight={internalRowHeight}
+              />
+            )}
+            {!loading && data.length === 0 && (
+              <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
+            )}
+            {data.length > 0 && (
+              <VirtualTableBody
+                classes={classes}
+                prepareRow={prepareRow}
+                rows={rows}
+                minRows={minRows}
+                columns={columns}
+                selectedRow={selectedRowKey}
+                selectedRowPath={selectedRowPath}
+                selectable={selectable}
+                reactWindowRef={reactWindowRef}
+                isTreeTable={isTreeTable}
+                internalRowHeight={internalRowHeight}
+                tableBodyHeight={tableBodyHeight}
+                visibleRows={visibleRows}
+                alternateRowColor={alternateRowColor}
+                overscanCount={overscanCount}
+                totalColumnsWidth={totalColumnsWidth}
+              />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

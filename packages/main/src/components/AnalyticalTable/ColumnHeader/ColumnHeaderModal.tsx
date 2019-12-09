@@ -92,25 +92,25 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
     >
       <List onItemClick={handleSort}>
         {showSort && (
-          <StandardListItem type={ListItemTypes.Active} icon={'sap-icon://sort-ascending'} data-sort={'asc'}>
+          <StandardListItem type={ListItemTypes.Active} icon={'sort-ascending'} data-sort={'asc'}>
             Sort Ascending
           </StandardListItem>
         )}
         {showSort && (
-          <StandardListItem type={ListItemTypes.Active} icon={'sap-icon://sort-descending'} data-sort={'desc'}>
+          <StandardListItem type={ListItemTypes.Active} icon={'sort-descending'} data-sort={'desc'}>
             Sort Descending
           </StandardListItem>
         )}
         {showFilter && !column.isGrouped && (
           <CustomListItem type={ListItemTypes.Inactive}>
             <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ padding: '0px 1rem' }}>
-              <Icon src="sap-icon://filter" style={{ paddingRight: '1rem' }} />
+              <Icon name="filter" style={{ paddingRight: '1rem' }} />
               <Filter column={column} />
             </FlexBox>
           </CustomListItem>
         )}
         {showGroup && (
-          <StandardListItem type={ListItemTypes.Active} icon="sap-icon://group-2" data-sort={'group'}>
+          <StandardListItem type={ListItemTypes.Active} icon="group-2" data-sort={'group'}>
             {column.isGrouped ? 'Ungroup' : 'Group'}
           </StandardListItem>
         )}

@@ -10,30 +10,30 @@ export const useCellStyling = ({ rowHeight }, classes) => ({ column }) => {
   }
   switch (column.hAlign) {
     case TextAlign.Begin:
-      style.justifyContent = 'flex-start';
+      style.textAlign = 'start';
       break;
     case TextAlign.Center:
-      style.justifyContent = 'center';
+      style.textAlign = 'center';
       break;
     case TextAlign.End:
-      style.justifyContent = 'flex-end';
+      style.textAlign = 'end';
       break;
     case TextAlign.Left:
-      style.justifyContent = 'left';
+      style.textAlign = 'left';
       break;
     case TextAlign.Right:
-      style.justifyContent = 'right';
+      style.textAlign = 'right';
       break;
   }
   switch (column.vAlign) {
     case VerticalAlign.Bottom:
-      style.alignItems = 'flex-end';
+      style.verticalAlign = 'bottom';
       break;
     case VerticalAlign.Middle:
-      style.alignItems = 'center';
+      style.verticalAlign = 'middle';
       break;
     case VerticalAlign.Top:
-      style.alignItems = 'flex-start';
+      style.verticalAlign = 'top';
       break;
   }
 

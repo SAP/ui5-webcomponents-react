@@ -13,7 +13,7 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "sideEffects": [
-    "modernizr.js",
+    "**/modernizr.js",
     "core-js/**/*"
   ],
   "scripts": {
