@@ -17,8 +17,10 @@
     "core-js/**/*"
   ],
   "scripts": {
-    "build:copy-third-party": "ncp src/third-party/ ../../build/node_modules/base/third-party/",
-    "postbuild": "npm run build:copy-third-party && rollup -c && tsc ./src/polyfill/*.ts --outDir ../../build/node_modules/base/polyfill --skipLibCheck"
+    "build:copy-third-party": "ncp src/third-party/ ./third-party/",
+    "build:rollup": "rollup -c rollup.config.js",
+    "build:polyfills": "tsc ./src/polyfill/*.ts --outDir ./polyfill --skipLibCheck",
+    "postbuild": "npm-run-all -s build:copy-third-party build:rollup build:polyfills"
   },
   "dependencies": {
     "core-js": "3.1.4",

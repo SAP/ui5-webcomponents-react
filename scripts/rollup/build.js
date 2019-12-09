@@ -335,9 +335,6 @@ async function createBundle(bundle, bundleType) {
 }
 
 async function buildEverything() {
-  await asyncRimRaf('build');
-  await asyncRimRaf('packages/*/npm/**/*.d.ts');
-
   // highlightLog('Prettier');
   // await asyncExecuteCommand('node scripts/prettier/index.js check');
 
@@ -345,8 +342,6 @@ async function buildEverything() {
   // and to avoid any potential race conditions.
   // eslint-disable-next-line no-for-of-loops/no-for-of-loops
   for (const bundle of Bundles.bundles) {
-    await createBundle(bundle, UMD_DEV);
-    await createBundle(bundle, UMD_PROD);
     await createBundle(bundle, NODE_ES);
     await createBundle(bundle, NODE_DEV);
     await createBundle(bundle, NODE_PROD);
