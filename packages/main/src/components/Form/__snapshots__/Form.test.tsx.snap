@@ -20,51 +20,61 @@ Array [
     >
       <div>
         <div
-          style="align-items: center; display: flex;"
+          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
         >
-          <ui5-label
-            class=""
-            for=""
-            style="padding-right: 0.5em; width: 33%; text-align: end;"
-          >
-            item 1
-          </ui5-label>
           <div
-            style="display: block; width: 66%;"
+            style="width: 100%; padding-top: 0.25em;"
           >
-            <ui5-input
-              class=""
-              type="Text"
-              value=""
-              value-state="None"
-            />
+            <div>
+              <div
+                style="align-items: center; display: flex;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
+                >
+                  item 1
+                </ui5-label>
+                <div
+                  style="display: block; width: 66%;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Text"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="Grid--gridSpan-"
-    >
-      <div>
-        <div
-          style="align-items: center; display: flex;"
-        >
-          <ui5-label
-            class=""
-            for=""
-            style="padding-right: 0.5em; width: 33%; text-align: end;"
-          >
-            item 2
-          </ui5-label>
           <div
-            style="display: block; width: 66%;"
+            style="width: 100%; padding-top: 0.25em;"
           >
-            <ui5-input
-              class=""
-              type="Number"
-              value=""
-              value-state="None"
-            />
+            <div>
+              <div
+                style="align-items: center; display: flex;"
+              >
+                <ui5-label
+                  class=""
+                  for=""
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
+                >
+                  item 2
+                </ui5-label>
+                <div
+                  style="display: block; width: 66%;"
+                >
+                  <ui5-input
+                    class=""
+                    type="Number"
+                    value=""
+                    value-state="None"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -105,7 +115,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
                 >
                   item 1
                 </ui5-label>
@@ -132,7 +142,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
                 >
                   item 2
                 </ui5-label>
@@ -195,7 +205,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
                 >
                   item 1
                 </ui5-label>
@@ -222,7 +232,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
                 >
                   item 2
                 </ui5-label>
@@ -266,7 +276,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
                 >
                   item 1
                 </ui5-label>
@@ -293,7 +303,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
                 >
                   item 2
                 </ui5-label>
@@ -356,7 +366,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 16%; text-align: end;"
+                  style="padding-right: 0.5em; width: 16%; justify-content: flex-end;"
                 >
                   item 1
                 </ui5-label>
@@ -383,7 +393,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 16%; text-align: end;"
+                  style="padding-right: 0.5em; width: 16%; justify-content: flex-end;"
                 >
                   item 2
                 </ui5-label>
@@ -427,7 +437,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 16%; text-align: end;"
+                  style="padding-right: 0.5em; width: 16%; justify-content: flex-end;"
                 >
                   item 1
                 </ui5-label>
@@ -454,7 +464,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 16%; text-align: end;"
+                  style="padding-right: 0.5em; width: 16%; justify-content: flex-end;"
                 >
                   item 2
                 </ui5-label>
@@ -517,7 +527,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 100%; text-align: start;"
+                  style="padding-right: 0.5em; width: 100%; justify-content: flex-start;"
                 >
                   item 1
                 </ui5-label>
@@ -544,7 +554,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 100%; text-align: start;"
+                  style="padding-right: 0.5em; width: 100%; justify-content: flex-start;"
                 >
                   item 2
                 </ui5-label>
@@ -588,7 +598,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 100%; text-align: start;"
+                  style="padding-right: 0.5em; width: 100%; justify-content: flex-start;"
                 >
                   item 1
                 </ui5-label>
@@ -615,7 +625,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 100%; text-align: start;"
+                  style="padding-right: 0.5em; width: 100%; justify-content: flex-start;"
                 >
                   item 2
                 </ui5-label>
@@ -678,7 +688,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
                 >
                   item 1
                 </ui5-label>
@@ -705,7 +715,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
                 >
                   item 2
                 </ui5-label>
@@ -749,7 +759,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
                 >
                   item 1
                 </ui5-label>
@@ -776,7 +786,7 @@ Array [
                 <ui5-label
                   class=""
                   for=""
-                  style="padding-right: 0.5em; width: 33%; text-align: end;"
+                  style="padding-right: 0.5em; width: 33%; justify-content: flex-end;"
                 >
                   item 2
                 </ui5-label>
