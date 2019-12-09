@@ -8,7 +8,8 @@ import React, {
   useState,
   CSSProperties,
   useCallback,
-  ReactNodeArray
+  ReactNodeArray,
+  useMemo
 } from 'react';
 import { useRateChanged } from '../hooks/useRateChanged';
 import { Label } from '../../..';
@@ -37,11 +38,9 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
     [currentRate]
   );
 
-  const [initSubscribe, setInitSubscribe] = useState(true);
-  if (initSubscribe) {
+  useMemo(() => {
     subscribe(onRateChange);
-    setInitSubscribe(false);
-  }
+  }, []);
 
   const renderChildren = (child: ReactElement<any>) => {
     if (currentRate === '') return '';

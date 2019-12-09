@@ -32,8 +32,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     rateChanged(currentRate);
   }, [currentRate]);
 
-  const [initBuild, setInitBuild] = useState(true);
-  if (initBuild) {
+  useMemo(() => {
     // check if ungrouped FormItems exist amongst the Form's children and put them in an artificial FormGroup if any
     if (children.hasOwnProperty('length')) {
       updatedChildren = [...(children as ReactNodeArray)];
@@ -55,8 +54,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
         updatedChildren = React.cloneElement(children as ReactElement, { title: null });
       } else updatedTitle = title;
     }
-    setInitBuild(false);
-  }
+  }, []);
 
   return (
     <React.Fragment>
