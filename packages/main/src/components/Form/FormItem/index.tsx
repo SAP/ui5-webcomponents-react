@@ -46,7 +46,7 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
   const renderChildren = (child: ReactElement<any>) => {
     if (currentRate === '') return '';
     let labelWidth,
-      labelTextAlign = 'end',
+      labelTextAlign = 'flex-end',
       display = 'flex',
       elementWidth;
 
@@ -55,7 +55,7 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
         labelWidth = '100%';
         elementWidth = '100%';
         display = 'block';
-        labelTextAlign = 'start';
+        labelTextAlign = 'flex-start';
         break;
       case 'M':
         labelWidth = calculateWidth(2);
@@ -69,7 +69,7 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
     }
 
     const topDivStyle = { ...styles.formItemTopDiv, display: display } as CSSProperties;
-    const labelStyle = { ...styles.formLabel, width: labelWidth, textAlign: labelTextAlign } as CSSProperties;
+    const labelStyle = { ...styles.formLabel, width: labelWidth, justifyContent: labelTextAlign } as CSSProperties;
     const elementStyle = { ...styles.formElement, width: elementWidth } as CSSProperties;
 
     return (

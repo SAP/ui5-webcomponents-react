@@ -18,6 +18,7 @@ export interface FormPropTypes extends CommonProps {
   title?: string;
 }
 
+let updatedChildren, updatedTitle;
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
   const { title, children } = props;
 
@@ -31,27 +32,30 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     rateChanged(currentRate);
   }, [currentRate]);
 
-  // check if ungrouped FormItems exist amongst the Form's children and put them in an artificial FormGroup if any
-  let updatedChildren, updatedTitle;
-  if (children.hasOwnProperty('length')) {
-    let updatedChildren = [...(children as ReactNodeArray)],
-      ungroupedChildren = [];
-    for (let i = updatedChildren.length - 1; i >= 0; i--) {
-      if ((updatedChildren[i] as ReactElement).props.type === 'formItem') {
-        ungroupedChildren.push(updatedChildren.splice(i, 1)[0]);
+  const [initBuild, setInitBuild] = useState(true);
+  if (initBuild) {
+    // check if ungrouped FormItems exist amongst the Form's children and put them in an artificial FormGroup if any
+    if (children.hasOwnProperty('length')) {
+      updatedChildren = [...(children as ReactNodeArray)];
+      let ungroupedChildren = [];
+      for (let i = updatedChildren.length - 1; i >= 0; i--) {
+        if ((updatedChildren[i] as ReactElement).props.type === 'formItem') {
+          ungroupedChildren.push(updatedChildren.splice(i, 1)[0]);
+        }
       }
+      if (ungroupedChildren.length > 0) {
+        updatedChildren.push(<FormGroup children={ungroupedChildren.reverse()} />);
+      }
+      updatedTitle = title;
+    } else {
+      // check if a sole Form's group has a Title and take it as Form Title if one does not exist
+      let childProps = (children as ReactElement).props;
+      if ((!title || title.length === 0) && childProps.title && childProps.title.length > 0) {
+        updatedTitle = childProps.title;
+        updatedChildren = React.cloneElement(children as ReactElement, { title: null });
+      } else updatedTitle = title;
     }
-    if (ungroupedChildren.length > 0) {
-      updatedChildren.push(<FormGroup children={ungroupedChildren.reverse()} />);
-    }
-    updatedTitle = title;
-  } else {
-    // check if a sole Form's group has a Title and take it as Form Title if one does not exist
-    let childProps = (children as ReactElement).props;
-    if ((!title || title.length === 0) && childProps.title && childProps.title.length > 0) {
-      updatedTitle = childProps.title;
-      updatedChildren = React.cloneElement(children, { title: null });
-    } else updatedTitle = title;
+    setInitBuild(false);
   }
 
   return (
