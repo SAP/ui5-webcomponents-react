@@ -35,7 +35,7 @@ process.on('unhandledRejection', (err) => {
   throw err;
 });
 
-const { UMD_DEV, UMD_PROD, NODE_DEV, NODE_PROD, NODE_ES } = Bundles.bundleTypes;
+const { NODE_DEV, NODE_PROD, NODE_ES } = Bundles.bundleTypes;
 
 const closureOptions = {
   compilation_level: 'SIMPLE',
@@ -106,10 +106,6 @@ function getFilename(name, bundleType) {
   // we do this to replace / to -, for react-dom/server
   name = name.replace('/', '-');
   switch (bundleType) {
-    case UMD_DEV:
-      return `${name}.development.js`;
-    case UMD_PROD:
-      return `${name}.production.min.js`;
     case NODE_DEV:
       return `${name}.development.js`;
     case NODE_PROD:
@@ -121,9 +117,6 @@ function getFilename(name, bundleType) {
 
 function getFormat(bundleType) {
   switch (bundleType) {
-    case UMD_DEV:
-    case UMD_PROD:
-      return `umd`;
     case NODE_DEV:
     case NODE_PROD:
       return `cjs`;
@@ -134,9 +127,7 @@ function getFormat(bundleType) {
 
 function isProductionBundleType(bundleType) {
   switch (bundleType) {
-    case UMD_DEV:
     case NODE_DEV:
-    case UMD_PROD:
     case NODE_PROD:
     case NODE_ES:
       return true;
@@ -145,18 +136,8 @@ function isProductionBundleType(bundleType) {
   }
 }
 
-function getPlugins(
-  entry,
-  externals,
-  updateBabelOptions,
-  filename,
-  packageName,
-  bundleType,
-  moduleType,
-  modulesToStub
-) {
+function getPlugins(entry, externals, updateBabelOptions, filename, packageName, bundleType) {
   const isProduction = isProductionBundleType(bundleType);
-  const isUMDBundle = bundleType === UMD_DEV || bundleType === UMD_PROD;
   const isES6Bundle = bundleType === NODE_ES;
   const shouldStayReadable = forcePrettyOutput;
   return [
@@ -174,7 +155,6 @@ function getPlugins(
       exclude: 'node_modules/**',
       values: {
         __DEV__: isProduction ? 'false' : 'true',
-        __UMD__: isUMDBundle ? 'true' : 'false',
         'process.env.NODE_ENV': isProduction ? "'production'" : "'development'"
       }
     }),
@@ -186,7 +166,7 @@ function getPlugins(
         Object.assign({}, closureOptions, {
           // Don't let it create global variables in the browser.
           // https://github.com/facebook/react/issues/10909
-          assume_function_wrapper: !isUMDBundle,
+          assume_function_wrapper: true,
           // Works because `google-closure-compiler-js` is forked in Yarn lockfile.
           // We can remove this if GCC merges my PR:
           // https://github.com/google/closure-compiler/pull/2707
@@ -220,27 +200,7 @@ function getPlugins(
 }
 
 function shouldSkipBundle(bundle, bundleType) {
-  const shouldSkipBundleType = bundle.bundleTypes.indexOf(bundleType) === -1;
-  if (shouldSkipBundleType) {
-    return true;
-  }
-  // if (requestedBundleTypes.length > 0) {
-  //   const isAskingForDifferentType = requestedBundleTypes.every(
-  //     requestedType => bundleType.indexOf(requestedType) === -1
-  //   );
-  //   if (isAskingForDifferentType) {
-  //     return true;
-  //   }
-  // }
-  // if (requestedBundleNames.length > 0) {
-  //   const isAskingForDifferentNames = requestedBundleNames.every(
-  //     requestedName => bundle.label.indexOf(requestedName) === -1
-  //   );
-  //   if (isAskingForDifferentNames) {
-  //     return true;
-  //   }
-  // }
-  return false;
+  return bundle.bundleTypes.indexOf(bundleType) === -1;
 }
 
 function getBabelConfig(updateBabelOptions, bundleType, filename) {
@@ -286,20 +246,17 @@ async function createBundle(bundle, bundleType) {
 
   let resolvedEntry = path.resolve(__dirname, '..', '..', 'packages', bundle.entry, 'src', 'index.ts'); //require.resolve(bundle.entry);
 
-  const shouldBundleDependencies = bundleType === UMD_DEV || bundleType === UMD_PROD;
   const peerGlobals = Modules.getPeerGlobals(bundle.externals, bundleType);
   let externals = Object.keys(peerGlobals);
-  if (!shouldBundleDependencies) {
-    const deps = Modules.getDependencies(bundleType, bundle.entry);
-    externals = externals.concat(deps);
-  }
+  const deps = Modules.getDependencies(bundleType, bundle.entry);
+  externals = externals.concat(deps);
 
   const rollupConfig = {
     input: resolvedEntry,
     external(id) {
       const containsThisModule = (pkg) => id === pkg || id.startsWith(pkg + '/');
       const isProvidedByDependency = externals.some(containsThisModule);
-      if (!shouldBundleDependencies && isProvidedByDependency) {
+      if (isProvidedByDependency) {
         return true;
       }
       return !!peerGlobals[id];
@@ -316,7 +273,7 @@ async function createBundle(bundle, bundleType) {
       bundle.modulesToStub
     )
   };
-  const [mainOutputPath, ...otherOutputPaths] = Packaging.getBundleOutputPaths(bundleType, filename, packageName);
+  const mainOutputPath = Packaging.getBundleOutputPaths(bundleType, filename, packageName);
   const rollupOutputOptions = getRollupOutputOptions(mainOutputPath, format, peerGlobals, bundleType);
 
   console.log(`${chalk.bgYellow.black(' BUILDING ')} ${logKey}`);
@@ -327,9 +284,6 @@ async function createBundle(bundle, bundleType) {
     console.log(`${chalk.bgRed.black(' OH NOES! ')} ${logKey}\n`);
     handleRollupError(error);
     throw error;
-  }
-  for (let i = 0; i < otherOutputPaths.length; i++) {
-    await asyncCopyTo(mainOutputPath, otherOutputPaths[i]);
   }
   console.log(`${chalk.bgGreen.black(' COMPLETE ')} ${logKey}\n`);
 }
@@ -345,17 +299,10 @@ async function buildEverything() {
     await createBundle(bundle, NODE_ES);
     await createBundle(bundle, NODE_DEV);
     await createBundle(bundle, NODE_PROD);
-    createDeclarationFiles(bundle);
+    // createDeclarationFiles(bundle);
   }
 
-  // await Packaging.copyAllShims();
   await Packaging.prepareNpmPackages();
-
-  // if (syncFBSourcePath) {
-  //   await Sync.syncReactNative(syncFBSourcePath);
-  // } else if (syncWWWPath) {
-  //   await Sync.syncReactDom('build/facebook-www', syncWWWPath);
-  // }
 
   console.log(Stats.printResults());
   if (!forcePrettyOutput) {

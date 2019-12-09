@@ -17,10 +17,10 @@
     "core-js/**/*"
   ],
   "scripts": {
-    "build:copy-third-party": "ncp src/third-party/ ./third-party/",
+    "clean": "rimraf cjs lib polyfill index.esm.js",
     "build:rollup": "rollup -c rollup.config.js",
     "build:polyfills": "tsc ./src/polyfill/*.ts --outDir ./polyfill --skipLibCheck",
-    "postbuild": "npm-run-all -s build:copy-third-party build:rollup build:polyfills"
+    "postbuild": "npm-run-all -s build:rollup build:polyfills"
   },
   "dependencies": {
     "core-js": "3.1.4",

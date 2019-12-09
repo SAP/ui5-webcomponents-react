@@ -12,12 +12,12 @@
   },
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
-  "private": false,
   "sideEffects": [
     "@ui5/webcomponents/dist/Label"
   ],
   "scripts": {
-    "postbuild": "rollup -c"
+    "clean": "rimraf cjs lib index.esm.js",
+    "postbuild": "rollup -c rollup.config.js"
   },
   "dependencies": {
     "@ui5/webcomponents-react": "0.7.0-rc.1",

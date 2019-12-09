@@ -14,9 +14,9 @@ function getBundleOutputPaths(bundleType, filename, packageName) {
   switch (bundleType) {
     case NODE_DEV:
     case NODE_PROD:
-      return [`packages/${packageName}/cjs/${filename}`];
+      return `packages/${packageName}/cjs/${filename}`;
     case NODE_ES:
-      return [`packages/${packageName}/esm/${filename}`];
+      return `packages/${packageName}/esm/${filename}`;
     default:
       throw new Error('Unknown bundle type.');
   }

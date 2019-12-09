@@ -10,7 +10,7 @@
     "build:storybook": "build-storybook -c packages/docs/.storybook -o .out",
     "pretest": "node scripts/test/clean.js",
     "test": "jest --config=config/jest.config.js --coverage",
-    "clean": "lerna clean --yes && node scripts/clean.js",
+    "clean": "lerna run clean --stream && node scripts/clean.js",
     "postversion": "node ./scripts/postversion/index.js",
     "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\""
   },
