@@ -28,7 +28,8 @@ import {
   useGroupBy,
   useResizeColumns,
   useSortBy,
-  useTable
+  useTable,
+  Column
 } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -47,11 +48,11 @@ import { useTableRowStyling } from './hooks/useTableRowStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useTableStyling } from './hooks/useTableStyling';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
-import { reducer } from './tableReducer/reducer';
+import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 
-export interface ColumnConfiguration {
+export interface ColumnConfiguration extends Column {
   accessor?: string;
   width?: number;
   hAlign?: TextAlign;
@@ -193,7 +194,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       data,
       defaultColumn,
       getSubRows,
-      reducer,
+      stateReducer,
       ...reactTableOptions
     },
     useFilters,
