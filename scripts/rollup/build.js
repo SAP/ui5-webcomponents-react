@@ -289,9 +289,6 @@ async function createBundle(bundle, bundleType) {
 }
 
 async function buildEverything() {
-  // highlightLog('Prettier');
-  // await asyncExecuteCommand('node scripts/prettier/index.js check');
-
   // Run them serially for better console output
   // and to avoid any potential race conditions.
   // eslint-disable-next-line no-for-of-loops/no-for-of-loops
@@ -299,7 +296,7 @@ async function buildEverything() {
     await createBundle(bundle, NODE_ES);
     await createBundle(bundle, NODE_DEV);
     await createBundle(bundle, NODE_PROD);
-    // createDeclarationFiles(bundle);
+    createDeclarationFiles(bundle);
   }
 
   await Packaging.prepareNpmPackages();

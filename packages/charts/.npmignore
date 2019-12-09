@@ -1,5 +1,4 @@
 src
-api-extractor.json
 index.ts
 rollup.config.js
 tsconfig.json
