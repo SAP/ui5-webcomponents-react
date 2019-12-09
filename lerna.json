@@ -12,8 +12,7 @@
       "exact": true,
       "yes": true,
       "preid": "rc",
-      "message": "chore(release): publish %s [ci skip]",
-      "forcePublish": true
+      "message": "chore(release): publish %s [ci skip]"
     },
     "publish": {
       "allowBranch": "master",
