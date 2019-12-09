@@ -16,7 +16,7 @@
     "@ui5/webcomponents/dist/Label"
   ],
   "scripts": {
-    "clean": "rimraf cjs lib index.esm.js",
+    "clean": "rimraf cjs components interfaces internal lib themes util index.esm.js index.d.ts",
     "postbuild": "rollup -c rollup.config.js"
   },
   "dependencies": {

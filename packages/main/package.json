@@ -16,7 +16,7 @@
     "@ui5/webcomponents-icons/dist/icons/*"
   ],
   "scripts": {
-    "clean": "rimraf cjs lib index.esm.js",
+    "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts",
     "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/index.js --onlyStopForMerge",
     "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
     "postbuild": "rollup -c rollup.config.js"
