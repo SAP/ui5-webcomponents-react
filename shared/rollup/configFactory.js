@@ -48,7 +48,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
   console.info('Copy index file');
   asyncCopyTo(
     path.resolve(PATHS.packages, pkgName, 'src', 'index.ts'),
-    path.resolve(PATHS.build, 'node_modules', pkgName, `index.esm.js`)
+    path.resolve(PATHS.packages, pkgName, `index.esm.js`)
   );
 
   return allLibFiles.map((file) => ({
@@ -56,7 +56,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     external: (id) => EXTERNAL_MODULE_REGEX.test(id),
     output: [
       {
-        file: path.resolve(PATHS.build, 'node_modules', pkgName, 'lib', file.replace(/\.ts$/, '.js')),
+        file: path.resolve(PATHS.packages, pkgName, 'lib', file.replace(/\.ts$/, '.js')),
         format: 'es',
         sourcemap: true
       }

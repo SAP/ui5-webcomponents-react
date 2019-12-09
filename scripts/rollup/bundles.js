@@ -1,6 +1,4 @@
 const bundleTypes = {
-  UMD_DEV: 'UMD_DEV',
-  UMD_PROD: 'UMD_PROD',
   NODE_DEV: 'NODE_DEV',
   NODE_PROD: 'NODE_PROD',
   NODE_ES: 'NODE_ES'
