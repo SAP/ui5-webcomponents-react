@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@ui5/webcomponents-react": "^0.7.0-rc.0"
+  }
+}
