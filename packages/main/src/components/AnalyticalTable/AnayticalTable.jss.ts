@@ -15,7 +15,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   tableHeaderRow: {
     boxShadow: 'none !important',
     height: '2.75rem',
-    display: 'grid',
     zIndex: 1,
     position: 'relative'
   },
@@ -58,7 +57,6 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   tr: {
-    display: 'grid',
     zIndex: 0,
     backgroundColor: parameters.sapUiListBackground,
     color: parameters.sapUiListTextColor

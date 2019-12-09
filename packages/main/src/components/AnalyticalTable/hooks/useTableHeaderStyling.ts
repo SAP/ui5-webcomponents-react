@@ -1,17 +1,15 @@
-import { useCallback } from 'react';
+import { PluginHook } from 'react-table';
 
-export const useTableHeaderStyling = (classes, onColumnSizeChanged, onColumnBeingResized) =>
-  useCallback(
-    (instance) => {
-      instance.getHeaderProps.push((column) => {
-        return {
-          className: classes.th,
-          onColumnSizeChanged,
-          onColumnBeingResized,
-          column
-        };
-      });
-      return instance;
-    },
-    [classes.th, onColumnSizeChanged, onColumnBeingResized]
-  );
+export const useTableHeaderStyling = (classes) => {
+  const hook: PluginHook<{}> = (instance) => {
+    instance.getHeaderProps.push((column) => {
+      return {
+        className: classes.th,
+        column
+      };
+    });
+    return instance;
+  };
+  hook.pluginName = 'useTableHeaderStyling';
+  return hook;
+};

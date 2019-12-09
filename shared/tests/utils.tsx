@@ -25,11 +25,6 @@ export const mountThemedComponent = (
   contextOverwrite: { [key: string]: string } = {},
   enzymeOptions = {}
 ) => {
-  // const searchParams = Object.entries(contextOverwrite)
-  //   .map(([key, val]) => `sap-ui-${key}=${`${val}`.toLowerCase()}`)
-  //   .join('&');
-  // window.location.search = `?${searchParams}`;
-
   return mount(<ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>, enzymeOptions);
 };
 

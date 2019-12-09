@@ -1,7 +1,7 @@
 import { Input } from '@ui5/webcomponents-react/lib/Input';
-import React, { useCallback } from 'react';
+import React, { useCallback, FC } from 'react';
 
-export const DefaultFilterComponent = ({ column }) => {
+export const DefaultFilterComponent: FC<any> = ({ column }) => {
   const handleChange = useCallback(
     (e) => {
       column.setFilter(e.getParameter('value'));
