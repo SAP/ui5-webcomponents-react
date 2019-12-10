@@ -43,16 +43,24 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
         <span
           class="ObjectPage--container-"
         >
-          <h1
-            class="ObjectPage--title-"
+          <div
+            style="display: flex; flex-direction: column;"
           >
-            Fiori Object Page Title
-          </h1>
-          <span
-            class="ObjectPage--subTitle-"
-          >
-            Sub Title
-          </span>
+            <div
+              style="display: flex; flex-direction: row;"
+            >
+              <h1
+                class="ObjectPage--title-"
+              >
+                Fiori Object Page Title
+              </h1>
+              <span
+                class="ObjectPage--subTitle-"
+              >
+                Sub Title
+              </span>
+            </div>
+          </div>
         </span>
       </div>
     </header>
@@ -327,15 +335,42 @@ exports[`ObjectPage Just Some Sections 1`] = `
         <span
           class="ObjectPage--container-"
         >
-          <h1
-            class="ObjectPage--title-"
-          />
-          <span
-            class="ObjectPage--subTitle-"
-          />
+          <div
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              style="display: flex; flex-direction: row;"
+            >
+              <h1
+                class="ObjectPage--title-"
+              />
+              <span
+                class="ObjectPage--subTitle-"
+              />
+            </div>
+          </div>
         </span>
       </div>
     </header>
+    <section
+      class="ObjectPage--anchorBar-"
+      role="navigation"
+    >
+      <li
+        class="ObjectPageAnchorButton--anchorButtonContainer-"
+      >
+        <span
+          class="ObjectPageAnchorButton--button- ObjectPageAnchorButton--selected-"
+        />
+      </li>
+      <li
+        class="ObjectPageAnchorButton--anchorButtonContainer-"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        />
+      </li>
+    </section>
   </header>
   <div
     class="ObjectPage--outerContentContainer-"
@@ -348,35 +383,7 @@ exports[`ObjectPage Just Some Sections 1`] = `
         class="ObjectPage--contentScrollContainer-"
       >
         <div />
-        <div>
-          <div
-            class="ObjectPage--contentHeader-"
-            style="position: relative;"
-          >
-            <div
-              class="ObjectPage--headerContent-"
-            />
-          </div>
-          <section
-            class="ObjectPage--anchorBar-"
-            role="navigation"
-          >
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <span
-                class="ObjectPageAnchorButton--button- ObjectPageAnchorButton--selected-"
-              />
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <span
-                class="ObjectPageAnchorButton--button-"
-              />
-            </li>
-          </section>
-        </div>
+        <div />
         <section
           class="ObjectPage--sectionsContainer-"
         >
@@ -399,6 +406,206 @@ exports[`ObjectPage Just Some Sections 1`] = `
                 class="ObjectPageSection--sectionContentInner-"
               >
                 Test
+              </div>
+            </div>
+          </section>
+        </section>
+        <div
+          class="ObjectPage--fillerDiv-"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ObjectPage Key Infos 1`] = `
+<div
+  class="ObjectPage--objectPage-"
+  data-component-name="ObjectPage"
+>
+  <div
+    class="ObjectPage--outerScrollbar-"
+    style="width: 12px;"
+  >
+    <div
+      class="ObjectPage--innerScrollbar-"
+      style="margin-left: -12px; width: 24px;"
+    >
+      <div
+        style="width: 12px;"
+      />
+    </div>
+  </div>
+  <header
+    aria-roledescription="Object page header"
+    class="ObjectPage--header-"
+    role="banner"
+    style="padding-right: 12px;"
+  >
+    <span
+      class="ObjectPage--actions-"
+    />
+    <header
+      class="ObjectPage--titleBar-"
+    >
+      <div
+        style="display: flex; align-items: center;"
+      >
+        <span
+          class="ObjectPage--container-"
+        >
+          <div
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              style="display: flex; flex-direction: row;"
+            >
+              <h1
+                class="ObjectPage--title-"
+              />
+              <span
+                class="ObjectPage--subTitle-"
+              />
+              <span
+                class="ObjectPage--keyInfoItem-"
+              >
+                 
+                <ui5-title
+                  class=""
+                  level="H5"
+                >
+                  Key Info 1
+                </ui5-title>
+                <span
+                  class="Text--text-"
+                >
+                  Value 1
+                </span>
+              </span>
+              <span
+                class="ObjectPage--keyInfoItem-"
+              >
+                 
+                <ui5-title
+                  class=""
+                  level="H5"
+                >
+                  Key Info 2
+                </ui5-title>
+                <span
+                  class="Text--text-"
+                >
+                  Value 2
+                </span>
+              </span>
+              <span
+                class="ObjectPage--keyInfoItem-"
+              >
+                 
+                <ui5-title
+                  class=""
+                  level="H5"
+                >
+                  Key Info 3
+                </ui5-title>
+                <span
+                  class="Text--text-"
+                >
+                  Value 3
+                </span>
+              </span>
+            </div>
+          </div>
+        </span>
+      </div>
+    </header>
+    <section
+      class="ObjectPage--anchorBar-"
+      role="navigation"
+    >
+      <li
+        class="ObjectPageAnchorButton--anchorButtonContainer-"
+      >
+        <div
+          class=""
+          style="cursor: pointer;"
+        >
+          <span
+            class="ObjectPageAnchorButton--button-"
+          />
+        </div>
+      </li>
+      <li
+        class="ObjectPageAnchorButton--anchorButtonContainer-"
+      >
+        <div
+          class="ObjectPageAnchorButton--selected-"
+          style="cursor: pointer;"
+        >
+          <span
+            class="ObjectPageAnchorButton--button-"
+          />
+        </div>
+      </li>
+    </section>
+  </header>
+  <div
+    class="ObjectPage--outerContentContainer-"
+  >
+    <div
+      class="ObjectPage--contentContainer-"
+      id="ObjectPageContent"
+    >
+      <div
+        class="ObjectPage--contentScrollContainer-"
+      >
+        <div />
+        <div />
+        <section
+          class="ObjectPage--sectionsContainer-"
+        >
+          <section
+            id="ObjectPageSection-1"
+            role="region"
+          >
+            <div
+              class="ObjectPageSection--header-"
+              role="heading"
+            >
+              <div
+                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+              />
+            </div>
+            <div
+              class="ObjectPageSection--sectionContent-"
+            >
+              <div
+                class="ObjectPageSection--sectionContentInner-"
+              >
+                Test
+              </div>
+            </div>
+          </section>
+          <section
+            id="ObjectPageSection-2"
+            role="region"
+          >
+            <div
+              class="ObjectPageSection--header-"
+              role="heading"
+            >
+              <div
+                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+              />
+            </div>
+            <div
+              class="ObjectPageSection--sectionContent-"
+            >
+              <div
+                class="ObjectPageSection--sectionContentInner-"
+              >
+                Test 2
               </div>
             </div>
           </section>
@@ -574,15 +781,27 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
         <span
           class="ObjectPage--container-"
         >
-          <h1
-            class="ObjectPage--title-"
-          />
-          <span
-            class="ObjectPage--subTitle-"
-          />
+          <div
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              style="display: flex; flex-direction: row;"
+            >
+              <h1
+                class="ObjectPage--title-"
+              />
+              <span
+                class="ObjectPage--subTitle-"
+              />
+            </div>
+          </div>
         </span>
       </div>
     </header>
+    <section
+      class="ObjectPage--anchorBar-"
+      role="navigation"
+    />
   </header>
   <div
     class="ObjectPage--outerContentContainer-"
@@ -595,20 +814,7 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
         class="ObjectPage--contentScrollContainer-"
       >
         <div />
-        <div>
-          <div
-            class="ObjectPage--contentHeader-"
-            style="position: relative;"
-          >
-            <div
-              class="ObjectPage--headerContent-"
-            />
-          </div>
-          <section
-            class="ObjectPage--anchorBar-"
-            role="navigation"
-          />
-        </div>
+        <div />
         <section
           class="ObjectPage--sectionsContainer-"
         />
@@ -657,15 +863,40 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
         <span
           class="ObjectPage--container-"
         >
-          <h1
-            class="ObjectPage--title-"
-          />
-          <span
-            class="ObjectPage--subTitle-"
-          />
+          <div
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              style="display: flex; flex-direction: row;"
+            >
+              <h1
+                class="ObjectPage--title-"
+              />
+              <span
+                class="ObjectPage--subTitle-"
+              />
+            </div>
+          </div>
         </span>
       </div>
     </header>
+    <section
+      class="ObjectPage--anchorBar-"
+      role="navigation"
+    >
+      <li
+        class="ObjectPageAnchorButton--anchorButtonContainer-"
+      >
+        <div
+          class="ObjectPageAnchorButton--selected-"
+          style="cursor: pointer;"
+        >
+          <span
+            class="ObjectPageAnchorButton--button-"
+          />
+        </div>
+      </li>
+    </section>
   </header>
   <div
     class="ObjectPage--outerContentContainer-"
@@ -678,33 +909,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
         class="ObjectPage--contentScrollContainer-"
       >
         <div />
-        <div>
-          <div
-            class="ObjectPage--contentHeader-"
-            style="position: relative;"
-          >
-            <div
-              class="ObjectPage--headerContent-"
-            />
-          </div>
-          <section
-            class="ObjectPage--anchorBar-"
-            role="navigation"
-          >
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <div
-                class="ObjectPageAnchorButton--selected-"
-                style="cursor: pointer;"
-              >
-                <span
-                  class="ObjectPageAnchorButton--button-"
-                />
-              </div>
-            </li>
-          </section>
-        </div>
+        <div />
         <section
           class="ObjectPage--sectionsContainer-"
         >
@@ -776,15 +981,35 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
         <span
           class="ObjectPage--container-"
         >
-          <h1
-            class="ObjectPage--title-"
-          />
-          <span
-            class="ObjectPage--subTitle-"
-          />
+          <div
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              style="display: flex; flex-direction: row;"
+            >
+              <h1
+                class="ObjectPage--title-"
+              />
+              <span
+                class="ObjectPage--subTitle-"
+              />
+            </div>
+          </div>
         </span>
       </div>
     </header>
+    <section
+      class="ObjectPage--anchorBar-"
+      role="navigation"
+    >
+      <li
+        class="ObjectPageAnchorButton--anchorButtonContainer-"
+      >
+        <span
+          class="ObjectPageAnchorButton--button- ObjectPageAnchorButton--selected-"
+        />
+      </li>
+    </section>
   </header>
   <div
     class="ObjectPage--outerContentContainer-"
@@ -797,28 +1022,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
         class="ObjectPage--contentScrollContainer-"
       >
         <div />
-        <div>
-          <div
-            class="ObjectPage--contentHeader-"
-            style="position: relative;"
-          >
-            <div
-              class="ObjectPage--headerContent-"
-            />
-          </div>
-          <section
-            class="ObjectPage--anchorBar-"
-            role="navigation"
-          >
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <span
-                class="ObjectPageAnchorButton--button- ObjectPageAnchorButton--selected-"
-              />
-            </li>
-          </section>
-        </div>
+        <div />
         <section
           class="ObjectPage--sectionsContainer-"
         >
@@ -897,16 +1101,24 @@ exports[`ObjectPage Only Sections 1`] = `
         <span
           class="ObjectPage--container-"
         >
-          <h1
-            class="ObjectPage--title-"
+          <div
+            style="display: flex; flex-direction: column;"
           >
-            Fiori Object Page Title
-          </h1>
-          <span
-            class="ObjectPage--subTitle-"
-          >
-            Sub Title
-          </span>
+            <div
+              style="display: flex; flex-direction: row;"
+            >
+              <h1
+                class="ObjectPage--title-"
+              >
+                Fiori Object Page Title
+              </h1>
+              <span
+                class="ObjectPage--subTitle-"
+              >
+                Sub Title
+              </span>
+            </div>
+          </div>
         </span>
       </div>
     </header>
@@ -1146,15 +1358,42 @@ exports[`ObjectPage Set selected section id 1`] = `
         <span
           class="ObjectPage--container-"
         >
-          <h1
-            class="ObjectPage--title-"
-          />
-          <span
-            class="ObjectPage--subTitle-"
-          />
+          <div
+            style="display: flex; flex-direction: column;"
+          >
+            <div
+              style="display: flex; flex-direction: row;"
+            >
+              <h1
+                class="ObjectPage--title-"
+              />
+              <span
+                class="ObjectPage--subTitle-"
+              />
+            </div>
+          </div>
         </span>
       </div>
     </header>
+    <section
+      class="ObjectPage--anchorBar-"
+      role="navigation"
+    >
+      <li
+        class="ObjectPageAnchorButton--anchorButtonContainer-"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        />
+      </li>
+      <li
+        class="ObjectPageAnchorButton--anchorButtonContainer-"
+      >
+        <span
+          class="ObjectPageAnchorButton--button- ObjectPageAnchorButton--selected-"
+        />
+      </li>
+    </section>
   </header>
   <div
     class="ObjectPage--outerContentContainer-"
@@ -1167,35 +1406,7 @@ exports[`ObjectPage Set selected section id 1`] = `
         class="ObjectPage--contentScrollContainer-"
       >
         <div />
-        <div>
-          <div
-            class="ObjectPage--contentHeader-"
-            style="position: relative;"
-          >
-            <div
-              class="ObjectPage--headerContent-"
-            />
-          </div>
-          <section
-            class="ObjectPage--anchorBar-"
-            role="navigation"
-          >
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <span
-                class="ObjectPageAnchorButton--button-"
-              />
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <span
-                class="ObjectPageAnchorButton--button- ObjectPageAnchorButton--selected-"
-              />
-            </li>
-          </section>
-        </div>
+        <div />
         <section
           class="ObjectPage--sectionsContainer-"
         >
@@ -1274,16 +1485,24 @@ exports[`ObjectPage With Subsections 1`] = `
         <span
           class="ObjectPage--container-"
         >
-          <h1
-            class="ObjectPage--title-"
+          <div
+            style="display: flex; flex-direction: column;"
           >
-            Fiori Object Page Title
-          </h1>
-          <span
-            class="ObjectPage--subTitle-"
-          >
-            Sub Title
-          </span>
+            <div
+              style="display: flex; flex-direction: row;"
+            >
+              <h1
+                class="ObjectPage--title-"
+              >
+                Fiori Object Page Title
+              </h1>
+              <span
+                class="ObjectPage--subTitle-"
+              >
+                Sub Title
+              </span>
+            </div>
+          </div>
         </span>
       </div>
     </header>

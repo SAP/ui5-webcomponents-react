@@ -129,6 +129,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     wordBreak: 'break-word',
     verticalAlign: 'baseline',
     paddingTop: '0.5rem',
+    paddingBottom: '0.5rem',
     fontSize: '0.875rem',
     color: parameters.sapUiContentLabelColor
   },
@@ -148,7 +149,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   stickied: {},
   headerContent: {
-    paddingTop: '1.5rem',
+    //paddingTop: '1.5rem',
     paddingBottom: '0.25rem',
     transition: 'max-height 0.5s',
     maxHeight: '500px',
@@ -202,6 +203,9 @@ const styles = ({ parameters }: JSSTheme) => ({
   image: {
     width: '100%',
     height: '100%'
+  },
+  keyInfoItem: {
+    marginLeft: '1rem'
   }
 });
 

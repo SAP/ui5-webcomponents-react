@@ -9,6 +9,8 @@ import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';
 import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { Title } from '../../webComponents/Title';
+import { TitleLevel } from '../..';
 
 const renderHeaderContent = () => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -158,6 +160,31 @@ describe('ObjectPage', () => {
   test('No Header', () => {
     const wrapper = mountThemedComponent(
       <ObjectPage selectedSectionId={'2'} noHeader>
+        <ObjectPageSection id={'1'}>Test</ObjectPageSection>
+        <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
+      </ObjectPage>
+    );
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Key Infos', () => {
+    const wrapper = mountThemedComponent(
+      <ObjectPage
+        keyInfos={[
+          <>
+            <Title level={TitleLevel.H5}>Key Info 1</Title>
+            <Text>Value 1</Text>
+          </>,
+          <>
+            <Title level={TitleLevel.H5}>Key Info 2</Title>
+            <Text>Value 2</Text>
+          </>,
+          <>
+            <Title level={TitleLevel.H5}>Key Info 3</Title>
+            <Text>Value 3</Text>
+          </>
+        ]}
+      >
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>
