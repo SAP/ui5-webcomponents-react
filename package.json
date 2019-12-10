@@ -10,7 +10,7 @@
     "build:storybook": "build-storybook -c packages/docs/.storybook -o .out",
     "pretest": "node scripts/test/clean.js",
     "test": "jest --config=config/jest.config.js --coverage",
-    "clean": "lerna clean --yes && node scripts/clean.js",
+    "clean": "lerna run clean --stream && rimraf coverage",
     "postversion": "node ./scripts/postversion/index.js",
     "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\""
   },
@@ -64,7 +64,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "jest-canvas-mock": "^2.2.0",
-    "jest-environment-jsdom-fifteen": "^1.0.0",
+    "jest-environment-jsdom-fifteen": "^1.0.2",
     "jest-enzyme": "^7.1.2",
     "jss-snapshot-serializer": "^1.0.0",
     "lerna": "^3.19.0",

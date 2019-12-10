@@ -5,20 +5,20 @@ const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
 };
 
-export const useDragAndDrop = (props, setColumnOrder, columnOrder, isBeingResized) => {
+export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo) => {
   const { onColumnsReordered } = props;
 
   const [dragOver, setDragOver] = useState('');
 
   const handleDragStart = useCallback(
     (e) => {
-      if (isBeingResized) {
+      if (resizeInfo.isResizingColumn === e.currentTarget.dataset.columnId) {
         e.preventDefault();
         return;
       }
-      e.dataTransfer.setData('colId', e.currentTarget.id);
+      e.dataTransfer.setData('colId', e.currentTarget.dataset.columnId);
     },
-    [isBeingResized]
+    [resizeInfo.isResizingColumn]
   );
 
   const handleDragOver = useCallback((e) => {
@@ -26,14 +26,14 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, isBeingResize
   }, []);
 
   const handleDragEnter = useCallback((e) => {
-    setDragOver(e.currentTarget.id);
+    setDragOver(e.currentTarget.dataset.columnId);
   }, []);
 
   const handleOnDrop = useCallback(
     (e) => {
       setDragOver('');
 
-      const droppedColId = e.currentTarget.id;
+      const droppedColId = e.currentTarget.dataset.columnId;
       const draggedColId = e.dataTransfer.getData('colId');
       if (droppedColId === draggedColId) return;
 
