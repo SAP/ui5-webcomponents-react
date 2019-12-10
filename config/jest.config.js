@@ -16,6 +16,7 @@ module.exports = {
     '!packages/*/src/index.ts',
     '!packages/*/index.ts',
     '!packages/docs/**/*',
+    '!packages/cra-template/**/*',
     '!packages/**/demo/*',
     '!**/npm/**/*'
   ],
@@ -27,6 +28,7 @@ module.exports = {
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
   testEnvironment: 'jsdom-fifteen',
   testMatch: ['<rootDir>/packages/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/packages/cra-template/'],
   transformIgnorePatterns: ['node_modules/(?!(@ui5|lit-html))'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
