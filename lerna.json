@@ -10,15 +10,16 @@
       "allowBranch": "master",
       "conventionalCommits": true,
       "yes": true,
+      "exact": true,
       "preid": "rc",
-      "message": "chore(release): publish %s [ci skip]"
+      "message": "chore(release): publish new version [ci skip]"
     },
     "publish": {
       "allowBranch": "master",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
-      "message": "chore(release): publish %s [ci skip]"
+      "message": "chore(release): publish new version [ci skip]"
     }
   }
 }
