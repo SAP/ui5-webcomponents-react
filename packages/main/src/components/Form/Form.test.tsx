@@ -1,7 +1,8 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
-//import {Form, FormGroup, FormItem} from '@ui5/webcomponents-react/lib/Form';
-import { Form, FormGroup, FormItem } from '../Form';
+import { Form } from '@ui5/webcomponents-react/lib/Form';
+import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
+import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';
 import { Input } from '../../webComponents/Input';
 import { InputType } from '../..';
 
