@@ -1,4 +1,4 @@
-export const reducer = (newState, action, prevState) => {
+export const stateReducer = (newState, action, prevState) => {
   const { payload } = action;
   switch (action.type) {
     case 'SET_GROUP_BY':

@@ -21,7 +21,6 @@ jobs:
     - stage: 'Build and Deploy'
       before_script:
         - git checkout ${TRAVIS_BRANCH}
-        - bash ./scripts/ci/version-bump-snapshot.sh
       script: yarn build
       before_deploy:
         - bash ./scripts/ci/setup-npm.sh

@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.7.0-rc.1",
+  "version": "0.7.0-rc.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -12,11 +12,11 @@
   },
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
-  "private": false,
   "sideEffects": [
     "@ui5/webcomponents-icons/dist/icons/*"
   ],
   "scripts": {
+    "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts",
     "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/index.js --onlyStopForMerge",
     "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
     "postbuild": "rollup -c rollup.config.js"
@@ -25,11 +25,11 @@
     "@ui5/webcomponents": "1.0.0-rc.5",
     "@ui5/webcomponents-fiori": "^1.0.0-rc.5",
     "@ui5/webcomponents-icons": "^1.0.0-rc.5",
-    "@ui5/webcomponents-react-base": "0.7.0-rc.1",
+    "@ui5/webcomponents-react-base": "^0.7.0-rc.2",
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "^4.3.2",
     "react-jss": "10.0.0",
-    "react-table": "7.0.0-beta.27",
+    "react-table": "7.0.0-rc.5",
     "react-toastify": "^5.4.1",
     "react-window": "^1.8.5"
   },
@@ -40,5 +40,8 @@
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.7.0-rc.1",
+  "version": "0.7.0-rc.2",
   "description": "Base for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -17,8 +17,10 @@
     "core-js/**/*"
   ],
   "scripts": {
-    "build:copy-third-party": "ncp src/third-party/ ../../build/node_modules/base/third-party/",
-    "postbuild": "npm run build:copy-third-party && rollup -c && tsc ./src/polyfill/*.ts --outDir ../../build/node_modules/base/polyfill --skipLibCheck"
+    "clean": "rimraf cjs Device hooks lib polyfill styling types utils index.esm.js index.d.ts",
+    "build:rollup": "rollup -c rollup.config.js",
+    "build:polyfills": "tsc ./src/polyfill/*.ts --outDir ./polyfill --skipLibCheck",
+    "postbuild": "npm-run-all -s build:rollup build:polyfills"
   },
   "dependencies": {
     "core-js": "3.1.4",
@@ -26,5 +28,8 @@
   },
   "peerDependencies": {
     "react": "^16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
