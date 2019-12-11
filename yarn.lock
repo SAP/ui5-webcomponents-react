@@ -3440,7 +3440,7 @@
   resolved "https://registry.yarnpkg.com/@ui5/webcomponents-core/-/webcomponents-core-0.18.0.tgz#da0ed4ef2226c495e8572f6345abb7a25a1d1f2f"
   integrity sha512-YZlUIRuanRzpRVfG5v3lY8I2KoCzt7dnLlKmmpfK9JG7XTR9TDIdriz1I20dAA/0EXkPQqfom3BnMgk98OihLA==
 
-"@ui5/webcomponents-fiori@^1.0.0-rc.5":
+"@ui5/webcomponents-fiori@1.0.0-rc.5":
   version "1.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/@ui5/webcomponents-fiori/-/webcomponents-fiori-1.0.0-rc.5.tgz#2233985bd6a976fa7ce0d7426794b0f6cc9abf55"
   integrity sha512-4Q+ylXHuMAJBDUop7xgmVQv8Mnamik220Hgk7Ylr086kVpW7SU33Cs8KZqP5wRyv+pOu/Y1rE4d0nfPktGfoTw==
@@ -3451,7 +3451,7 @@
     "@ui5/webcomponents-icons" "1.0.0-rc.5"
     "@ui5/webcomponents-theme-base" "1.0.0-rc.5"
 
-"@ui5/webcomponents-icons@1.0.0-rc.5", "@ui5/webcomponents-icons@^1.0.0-rc.5":
+"@ui5/webcomponents-icons@1.0.0-rc.5":
   version "1.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/@ui5/webcomponents-icons/-/webcomponents-icons-1.0.0-rc.5.tgz#efd71be6eeae390261908f7b456faee2f4a17db4"
   integrity sha512-yLxz8sY5QYHwAOCIEPB6/sJmL4qu+bTytx42neNaHxtjARLFZ435QGlSTa3WGwc+cH0Y1IsOb6F37aGOJsJhmg==
