@@ -23,6 +23,8 @@
   },
   "files": [
     "template",
-    "template.json"
+    "template.json",
+    "NOTICE.txt",
+    "LICENSE"
   ]
 }
