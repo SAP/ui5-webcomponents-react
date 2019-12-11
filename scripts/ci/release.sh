@@ -28,6 +28,8 @@ yarn test
 
 # build the project with the new version after lerna version
 yarn build
+# reset potential changes in sizes
+git checkout scripts/rollup/results.json
 
 # if we came to that point we are ready for publish
 
