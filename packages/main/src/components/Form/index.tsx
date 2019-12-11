@@ -1,11 +1,14 @@
-import { Grid } from '../Grid';
-import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, useMemo, useState } from 'react';
+import { Grid } from '@ui5/webcomponents-react/lib/Grid';
+import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Title, TitleLevel } from '../..';
-import { useRateChanged } from './hooks/useRateChanged';
-import { styles } from './Form.jss';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import styles from './Form.jss';
+import { createUseStyles } from 'react-jss';
+import { useViewportRange } from '../../../../base/src/hooks/useViewportRange';
 import { FormGroup } from './FormGroup';
-import { FormItem } from './FormItem';
+import CurrentRange from './CurrentViewportRange';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export interface FormPropTypes extends CommonProps {
   /**
@@ -18,32 +21,34 @@ export interface FormPropTypes extends CommonProps {
   title?: string;
 }
 
-let updatedChildren, updatedTitle;
+let formGroups, updatedTitle;
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Form' });
+
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
   const { title, children } = props;
 
-  const [currentRate, setCurrentRate] = useState('');
-  const rateChanged = useRateChanged()[0];
-  const onRateChanged = (e) => {
-    setCurrentRate(e.parameters.rate);
-  };
+  const classes = useStyles();
+  const formTitleStyle = useStyles(classes).formTitle;
+  const formTitlePadding = useStyles(classes).formTitlePaddingBottom;
 
-  useMemo(() => {
-    rateChanged(currentRate);
-  }, [currentRate]);
+  const [currentRange] = useViewportRange();
 
   useMemo(() => {
     // check if ungrouped FormItems exist amongst the Form's children and put them in an artificial FormGroup if any
-    if (children.hasOwnProperty('length')) {
-      updatedChildren = [...(children as ReactNodeArray)];
-      let ungroupedChildren = [];
-      for (let i = updatedChildren.length - 1; i >= 0; i--) {
-        if ((updatedChildren[i] as ReactElement).props.type === 'formItem') {
-          ungroupedChildren.push(updatedChildren.splice(i, 1)[0]);
+    if (Array.isArray(children)) {
+      let ungroupedItems = [];
+      formGroups = [];
+
+      children.forEach((child) => {
+        if ((child as ReactElement).props.type === 'formItem') {
+          ungroupedItems.push(child);
+        } else if ((child as ReactElement).props.type === 'formGroup') {
+          formGroups.push(child);
         }
-      }
-      if (ungroupedChildren.length > 0) {
-        updatedChildren.push(<FormGroup children={ungroupedChildren.reverse()} />);
+      });
+
+      if (ungroupedItems.length > 0) {
+        formGroups.push(<FormGroup children={ungroupedItems} />);
       }
       updatedTitle = title;
     } else {
@@ -51,28 +56,26 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
       let childProps = (children as ReactElement).props;
       if ((!title || title.length === 0) && childProps.title && childProps.title.length > 0) {
         updatedTitle = childProps.title;
-        updatedChildren = React.cloneElement(children as ReactElement, { title: null });
-      } else updatedTitle = title;
+        formGroups = React.cloneElement(children as ReactElement, { title: null });
+      } else {
+        formGroups = children;
+        updatedTitle = title;
+      }
     }
-  }, []);
+  }, [children]);
 
   return (
-    <React.Fragment>
+    <CurrentRange.Provider value={currentRange}>
       {updatedTitle ? (
-        <React.Fragment>
-          <Title level={TitleLevel.H3} style={styles.formTitle}>
+        <>
+          <Title level={TitleLevel.H3} className={formTitleStyle}>
             {updatedTitle}
           </Title>
-          <div style={styles.formTitlePaddingBottom} />
-        </React.Fragment>
+          <div className={formTitlePadding} />
+        </>
       ) : null}
-      <Grid
-        ref={ref}
-        children={updatedChildren ? updatedChildren : children}
-        defaultSpan={'XL6 L12 M12 S12'}
-        onRateChanged={onRateChanged}
-      />
-    </React.Fragment>
+      <Grid ref={ref} children={formGroups} defaultSpan={'XL6 L12 M12 S12'} />
+    </CurrentRange.Provider>
   );
 });
 
@@ -82,4 +85,4 @@ Form.defaultProps = {
 };
 Form.displayName = 'Form';
 
-export { Form, FormGroup, FormItem };
+export { Form };

@@ -1,6 +1,8 @@
-export const styles = {
+import { JSSTheme } from '../../interfaces/JSSTheme';
+
+const styles = ({ parameters }: JSSTheme) => ({
   formTitle: {
-    borderBottom: '1px solid grey'
+    borderBottom: `1px solid ${parameters.sapUiGroupTitleBorderColor}`
   },
   formTitlePaddingBottom: {
     paddingBottom: '2em'
@@ -21,4 +23,6 @@ export const styles = {
   formElement: {
     display: 'block'
   }
-};
+});
+
+export default styles;

@@ -1,22 +1,11 @@
-import React, {
-  Children,
-  FC,
-  forwardRef,
-  Ref,
-  ReactElement,
-  ReactNode,
-  useState,
-  CSSProperties,
-  useCallback,
-  ReactNodeArray,
-  useMemo
-} from 'react';
-import { useRateChanged } from '../hooks/useRateChanged';
-import { Label } from '../../..';
-import { styles } from '../Form.jss';
+import React, { FC, forwardRef, Ref, ReactNode, ReactNodeArray, useMemo, useContext } from 'react';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import styles from '../Form.jss';
+import { createUseStyles } from 'react-jss';
+import CurrentRange from '../CurrentViewportRange';
+import { JSSTheme } from '../../../interfaces/JSSTheme';
 
 export interface FormItemProps {
-  id?: string;
   labelText?: string;
   children: ReactNode | ReactNodeArray;
   type?: string;
@@ -26,62 +15,65 @@ const calculateWidth = (rate) => {
   return Math.floor((100 / 12) * rate) + '%';
 };
 
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'FormItem' });
+
 const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<HTMLDivElement>) => {
-  const { id, labelText, children } = props;
+  const { labelText, children } = props;
 
-  const [currentRate, setCurrentRate] = useState('');
-  const subscribe = useRateChanged()[1];
-  const onRateChange = useCallback(
-    (rate) => {
-      setCurrentRate(rate);
-    },
-    [currentRate]
-  );
+  const currentRange = useContext(CurrentRange);
 
-  useMemo(() => {
-    subscribe(onRateChange);
-  }, []);
+  const topDivClass = useStyles().formItemTopDiv;
+  const labelClass = useStyles().formLabel;
+  const elementClass = useStyles().formElement;
 
-  const renderChildren = (child: ReactElement<any>) => {
-    if (currentRate === '') return '';
+  const memoizedStyles = useMemo(() => {
     let labelWidth,
       labelTextAlign = 'flex-end',
       display = 'flex',
       elementWidth;
 
-    switch (currentRate) {
-      case 'S':
+    switch (currentRange) {
+      case 'Phone':
         labelWidth = '100%';
         elementWidth = '100%';
         display = 'block';
         labelTextAlign = 'flex-start';
         break;
-      case 'M':
+      case 'Tablet':
         labelWidth = calculateWidth(2);
         elementWidth = calculateWidth(10);
         break;
-      case 'L':
-      case 'XL':
+      case 'Desktop':
+      case 'LargeDesktop':
         labelWidth = calculateWidth(4);
         elementWidth = calculateWidth(8);
         break;
     }
 
-    const topDivStyle = { ...styles.formItemTopDiv, display: display } as CSSProperties;
-    const labelStyle = { ...styles.formLabel, width: labelWidth, justifyContent: labelTextAlign } as CSSProperties;
-    const elementStyle = { ...styles.formElement, width: elementWidth } as CSSProperties;
-
-    return (
-      <div style={topDivStyle}>
-        <Label style={labelStyle}>{labelText ? labelText : ''}</Label>
-        <div style={elementStyle}>{child}</div>
-      </div>
-    );
-  };
+    return {
+      topDivStyle: {
+        display: display
+      },
+      labelStyle: {
+        width: labelWidth,
+        justifyContent: labelTextAlign
+      },
+      elementStyle: {
+        width: elementWidth
+      }
+    };
+  }, [children, currentRange]);
 
   return (
-    <div id={id} ref={ref}>
-      {Children.map(children, renderChildren)}
+    <div ref={ref}>
+      <div style={memoizedStyles.topDivStyle} className={topDivClass}>
+        <Label style={memoizedStyles.labelStyle} className={labelClass}>
+          {labelText ? labelText : ''}
+        </Label>
+        <div style={memoizedStyles.elementStyle} className={elementClass}>
+          {children}
+        </div>
+      </div>
     </div>
   );
 });

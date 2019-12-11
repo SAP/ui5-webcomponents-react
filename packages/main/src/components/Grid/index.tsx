@@ -16,9 +16,8 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { styles } from './Grid.jss';
-import { Event } from '../../../../base/src';
+import { useViewportRange } from '../../../../base/src/hooks/useViewportRange';
 
 export enum GridPosition {
   Left = 'Left',
@@ -63,10 +62,6 @@ export interface GridPropTypes extends CommonProps {
    * Components that are placed into Grid layout.
    */
   children: ReactNode | ReactNodeArray;
-  /**
-   * Event fired when the Grid size rate switched due to screen size change
-   */
-  onRateChanged?: (e?: Event) => void;
 }
 
 const INDENT_PATTERN = /^([X][L](?:[0-9]|1[0-1]))? ?([L](?:[0-9]|1[0-1]))? ?([M](?:[0-9]|1[0-1]))? ?([S](?:[0-9]|1[0-1]))?$/i;
@@ -99,13 +94,6 @@ const getIndentFromString = (indent) => {
 
 const useStyles = createUseStyles(styles, { name: 'Grid' });
 
-const conversionMap = new Map([
-  ['Phone', 'S'],
-  ['Tablet', 'M'],
-  ['Desktop', 'L'],
-  ['LargeDesktop', 'XL']
-]);
-
 const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,
@@ -118,37 +106,10 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
     tooltip,
     slot,
     defaultIndent,
-    defaultSpan,
-    onRateChanged
+    defaultSpan
   } = props;
 
-  const [currentRange, setCurrentRange] = useState(Device.media.getCurrentRange('StdExt', window.innerWidth).name);
-
-  const onWindowResize = useCallback(
-    ({ width }) => {
-      const { name: range } = Device.media.getCurrentRange('StdExt', width);
-      setCurrentRange(range);
-    },
-    [setCurrentRange]
-  );
-
-  useEffect(() => {
-    Device.resize.attachHandler(onWindowResize, null);
-    return () => {
-      Device.resize.detachHandler(onWindowResize, null);
-    };
-  }, [onWindowResize]);
-
-  useEffect(() => {
-    handleRateChanged(conversionMap.get(currentRange));
-  }, [currentRange]);
-
-  const handleRateChanged = useCallback(
-    (rate) => {
-      onRateChanged(Event.of(null, document.createEvent('CustomEvent'), { rate }));
-    },
-    [onRateChanged]
-  );
+  const [currentRange] = useViewportRange();
 
   const classes = useStyles();
   const gridClasses = StyleClassHelper.of(classes.grid);
@@ -221,8 +182,7 @@ Grid.defaultProps = {
   position: GridPosition.Left,
   defaultSpan: 'XL3 L3 M6 S12',
   defaultIndent: 'XL0 L0 M0 S0',
-  containerQuery: true,
-  onRateChanged: () => {}
+  containerQuery: false
 };
 
 export { Grid };
