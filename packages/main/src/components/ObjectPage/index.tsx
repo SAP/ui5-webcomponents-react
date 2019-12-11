@@ -155,14 +155,17 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         const lastSectionDomRef = sections[sections.length - 1];
         const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
 
-        let domRef = null;
+        let lastSubSectionHeight = null;
         if (subSections.length > 0) {
-          domRef = subSections[subSections.length - 1];
+          lastSubSectionHeight = (subSections[subSections.length - 1] as HTMLElement).offsetHeight;
         } else {
-          domRef = lastSectionDomRef;
+          lastSubSectionHeight =
+            (lastSectionDomRef as HTMLElement).offsetHeight -
+            (lastSectionDomRef.querySelector("[role='heading']") as HTMLElement).offsetHeight;
         }
 
-        let heightDiff = contentContainer.current.offsetHeight - domRef.offsetHeight;
+        let heightDiff = contentContainer.current.offsetHeight - lastSubSectionHeight;
+
         heightDiff = heightDiff > 0 ? heightDiff : 0;
         fillerDivDomRef.current.style.height = `${heightDiff}px`;
         setScrollbarHeight();
@@ -442,15 +445,17 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         if (expandHeaderActive) {
           setExpandHeaderActive(false);
         }
-
-        const threshold = 64;
+        const thresholdCollapse = 64;
+        const thresholdExpand = 52;
         const baseScrollValue =
           activeContainer.current === contentContainer.current
             ? e.target.scrollTop
             : getProportionateScrollTop(activeInnerContainer, passiveInnerContainer, e.target.scrollTop);
 
-        const shouldBeCollapsed = baseScrollValue > threshold;
-        if (collapsedHeader !== shouldBeCollapsed) {
+        let shouldBeCollapsed = !collapsedHeader && baseScrollValue > thresholdCollapse;
+        let shouldBeExpanded = collapsedHeader && baseScrollValue < thresholdExpand;
+
+        if (shouldBeCollapsed || shouldBeExpanded) {
           lastScrolledContainer.current = activeContainer.current;
           if (shouldBeCollapsed) {
             collapsedHeaderFiller.current.style.height = `${64}px`;
@@ -463,7 +468,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           setCollapsedHeader(shouldBeCollapsed);
         } else {
           const newScrollValue =
-            collapsedHeader && e.target.scrollTop > threshold + 50
+            collapsedHeader && e.target.scrollTop > thresholdCollapse + 50
               ? e.target.scrollTop
               : getProportionateScrollTop(activeInnerContainer, passiveInnerContainer, e.target.scrollTop);
 
