@@ -5,13 +5,9 @@ yarn-error.log
 .idea
 coverage
 /.env
-dist/
 @types
 .cache
-build
-/packages/*/npm/**/*.d.ts
 .out
 lerna-debug.log
 packages/main/scripts/wrapperGeneration/json
 .awcache
-.nyc_output
