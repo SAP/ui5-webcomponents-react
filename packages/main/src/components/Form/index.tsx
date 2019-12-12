@@ -8,6 +8,7 @@ import { createUseStyles } from 'react-jss';
 import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 import { FormGroup } from './FormGroup';
 import { JSSTheme } from '../../interfaces/JSSTheme';
+import { CurrentRange } from './CurrentViewportRangeContext';
 
 export interface FormPropTypes extends CommonProps {
   /**
@@ -20,7 +21,6 @@ export interface FormPropTypes extends CommonProps {
   title?: string;
 }
 
-const CurrentRange = React.createContext(null);
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Form' });
 
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
@@ -83,4 +83,4 @@ Form.defaultProps = {
 };
 Form.displayName = 'Form';
 
-export { Form, CurrentRange };
+export { Form };

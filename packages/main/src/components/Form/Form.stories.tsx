@@ -3,7 +3,11 @@ import React from 'react';
 import notes from './Form.md';
 import { FormItem } from './FormItem';
 import { FormGroup } from './FormGroup';
-import { CheckBox, Input, InputType, Option, Select } from '../..';
+import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
+import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { InputType } from '@ui5/webcomponents-react/lib/InputType';
+import { Option } from '@ui5/webcomponents-react/lib/Option';
+import { Select } from '@ui5/webcomponents-react/lib/Select';
 
 export const defaultStory = () => {
   return (

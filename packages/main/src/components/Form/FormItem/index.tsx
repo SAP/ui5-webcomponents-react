@@ -2,7 +2,7 @@ import React, { FC, forwardRef, Ref, ReactNode, ReactNodeArray, useMemo, useCont
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { styles } from '../Form.jss';
 import { createUseStyles } from 'react-jss';
-import { CurrentRange } from '../index';
+import { CurrentRange } from '../CurrentViewportRangeContext';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 
 export interface FormItemProps {
