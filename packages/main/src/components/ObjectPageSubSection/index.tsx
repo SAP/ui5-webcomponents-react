@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
-import { useScrollElement } from '../ObjectPage/scroll/useScrollElement';
+import { useScrollElement } from '@ui5/webcomponents-react-base/lib/useScrollElement';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
   title?: string;

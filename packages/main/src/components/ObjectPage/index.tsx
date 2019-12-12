@@ -25,7 +25,8 @@ import styles from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { CollapsedAvatar } from './CollapsedAvatar';
-import { IScroller, ObjectPageScroller } from './scroll/ObjectPageScroller';
+import { Scroller } from '@ui5/webcomponents-react-base/lib/Scroller';
+import { IScroller } from '@ui5/webcomponents-react-base/interfaces/IScroller';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import '@ui5/webcomponents-icons/dist/icons/navigation-up-arrow.js';
@@ -637,7 +638,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       ref={objectPage}
       title={tooltip}
     >
-      <ObjectPageScroller ref={scroller} scrollContainer={contentContainer}>
+      <Scroller ref={scroller} scrollContainer={contentContainer}>
         <div style={scrollBarWidthStyle} className={classes.outerScrollbar}>
           <div ref={scrollBar} style={scrollBarWidthMargin} className={classes.innerScrollbar}>
             <div ref={innerScrollBar} style={scrollBarWidthStyle} />
@@ -663,7 +664,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             </div>
           </div>
         </div>
-      </ObjectPageScroller>
+      </Scroller>
     </div>
   );
 });
