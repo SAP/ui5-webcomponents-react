@@ -32,15 +32,15 @@
       "filename": "main.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "main",
-      "size": 142087,
-      "gzip": 35949
+      "size": 136038,
+      "gzip": 34392
     },
     {
       "filename": "main.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "main",
-      "size": 142087,
-      "gzip": 35949
+      "size": 136038,
+      "gzip": 34392
     }
   ]
 }

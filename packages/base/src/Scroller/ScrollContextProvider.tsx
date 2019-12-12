@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { ScrollContext } from '@ui5/webcomponents-react/lib/ScrollContext';
+import { ScrollContext } from '@ui5/webcomponents-react-base/lib/ScrollContext';
 
 export const ScrollContentProvider = (props) => {
   const {

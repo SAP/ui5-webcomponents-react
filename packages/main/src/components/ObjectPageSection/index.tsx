@@ -6,7 +6,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';
-import { useScrollElement } from '../ObjectPage/scroll/useScrollElement';
+import { useScrollElement } from '@ui5/webcomponents-react-base/lib/useScrollElement';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
   title?: string;
