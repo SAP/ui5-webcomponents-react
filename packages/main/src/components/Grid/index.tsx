@@ -13,7 +13,7 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Grid.jss';
-import { useViewportRange } from '@ui5/webcomponents-react-base/src/hooks/useViewportRange';
+import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 
 export enum GridPosition {
   Left = 'Left',

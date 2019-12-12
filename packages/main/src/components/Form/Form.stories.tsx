@@ -3,7 +3,7 @@ import React from 'react';
 import notes from './Form.md';
 import { FormItem } from './FormItem';
 import { FormGroup } from './FormGroup';
-import { CheckBox, Input, InputType, Select, Option } from '../..';
+import { CheckBox, Input, InputType, Option, Select } from '../..';
 
 export const defaultStory = () => {
   return (
@@ -23,7 +23,7 @@ export const defaultStory = () => {
           </Select>
         </FormItem>
         <FormItem labelText={'Home address'}>
-          <CheckBox checked={true} />
+          <CheckBox checked />
         </FormItem>
       </FormGroup>
       <FormGroup title={'Business Data'}>
@@ -34,10 +34,10 @@ export const defaultStory = () => {
           <Input type={InputType.Text} />
         </FormItem>
         <FormItem labelText={'Wage'}>
-          <Input type={InputType.Number} value={'5000'} disabled={true} />
+          <Input type={InputType.Number} value={'5000'} disabled />
         </FormItem>
         <FormItem labelText={'Pilot license'}>
-          <CheckBox checked={true} />
+          <CheckBox checked />
         </FormItem>
       </FormGroup>
     </Form>

@@ -2,7 +2,7 @@ import React, { FC, forwardRef, Ref, ReactNode, ReactNodeArray, useMemo, useCont
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { styles } from '../Form.jss';
 import { createUseStyles } from 'react-jss';
-import { CurrentRange } from '../CurrentViewportRangeContext';
+import { CurrentRange } from '../index';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 
 export interface FormItemProps {
@@ -28,10 +28,10 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
   const elementClass = classes.formElement;
 
   const memoizedStyles = useMemo(() => {
-    let labelWidth,
-      labelTextAlign = 'flex-end',
-      display = 'flex',
-      elementWidth;
+    let labelWidth;
+    let labelTextAlign = 'flex-end';
+    let display = 'flex';
+    let elementWidth;
 
     switch (currentRange) {
       case 'Phone':

@@ -5,9 +5,8 @@ import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { styles } from './Form.jss';
 import { createUseStyles } from 'react-jss';
-import { useViewportRange } from '@ui5/webcomponents-react-base/src/hooks/useViewportRange';
+import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 import { FormGroup } from './FormGroup';
-import { CurrentRange } from './CurrentViewportRangeContext';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export interface FormPropTypes extends CommonProps {
@@ -21,6 +20,7 @@ export interface FormPropTypes extends CommonProps {
   title?: string;
 }
 
+const CurrentRange = React.createContext(null);
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Form' });
 
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
@@ -30,34 +30,32 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
   const currentRange = useViewportRange('StdExt');
 
   const [formGroups, updatedTitle] = useMemo(() => {
-    let ungroupedItems = [],
-      formGroups,
-      updatedTitle = '';
+    let formGroups: any;
+    let updatedTitle: string = title;
 
-    // check if ungrouped FormItems exist amongst the Form's children and put them in an artificial FormGroup if any
+    // check if ungrouped FormItems exist amongst the Form's children and put them into an artificial FormGroup
     if (Array.isArray(children)) {
+      const ungroupedItems = [];
       formGroups = [];
       children.forEach((child) => {
         if ((child as ReactElement).props.type === 'formItem') {
           ungroupedItems.push(child);
         } else if ((child as ReactElement).props.type === 'formGroup') {
-          formGroups.push(child);
+          formGroups.push(child as ReactElement);
         }
       });
 
       if (ungroupedItems.length > 0) {
         formGroups.push(<FormGroup children={ungroupedItems} />);
       }
-      updatedTitle = title;
     } else {
       // check if a sole Form's group has a Title and take it as Form Title if one does not exist
-      let childProps = (children as ReactElement).props;
+      const childProps = (children as ReactElement).props;
       if ((!title || title.length === 0) && childProps.title && childProps.title.length > 0) {
         updatedTitle = childProps.title;
         formGroups = React.cloneElement(children as ReactElement, { title: null });
       } else {
         formGroups = children;
-        updatedTitle = title;
       }
     }
 
@@ -85,4 +83,4 @@ Form.defaultProps = {
 };
 Form.displayName = 'Form';
 
-export { Form };
+export { Form, CurrentRange };

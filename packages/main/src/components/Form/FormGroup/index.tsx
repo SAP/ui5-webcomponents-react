@@ -32,7 +32,7 @@ const FormGroup: FC<FormGroupProps> = forwardRef((props: FormGroupProps, ref: Re
       <FlexBox
         justifyContent={FlexBoxJustifyContent.Start}
         alignItems={FlexBoxAlignItems.End}
-        fitContainer={true}
+        fitContainer
         direction={FlexBoxDirection.Column}
       >
         {Children.map(children, (child, index) => {
