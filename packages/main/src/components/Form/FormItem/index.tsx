@@ -1,8 +1,8 @@
 import React, { FC, forwardRef, Ref, ReactNode, ReactNodeArray, useMemo, useContext } from 'react';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
-import styles from '../Form.jss';
+import { styles } from '../Form.jss';
 import { createUseStyles } from 'react-jss';
-import CurrentRange from '../CurrentViewportRange';
+import { CurrentRange } from '../CurrentViewportRangeContext';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 
 export interface FormItemProps {
@@ -22,9 +22,10 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
 
   const currentRange = useContext(CurrentRange);
 
-  const topDivClass = useStyles().formItemTopDiv;
-  const labelClass = useStyles().formLabel;
-  const elementClass = useStyles().formElement;
+  const classes = useStyles();
+  const topDivClass = classes.formItemTopDiv;
+  const labelClass = classes.formLabel;
+  const elementClass = classes.formElement;
 
   const memoizedStyles = useMemo(() => {
     let labelWidth,

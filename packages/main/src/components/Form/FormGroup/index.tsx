@@ -1,6 +1,6 @@
 import React, { Children, FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import styles from '../Form.jss';
+import { styles } from '../Form.jss';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
@@ -21,15 +21,14 @@ const FormGroup: FC<FormGroupProps> = forwardRef((props: FormGroupProps, ref: Re
   const { title, children } = props;
 
   const classes = useStyles();
-  const formGroupStyle = useStyles(classes).formGroupStyle;
 
   return (
     <div ref={ref}>
-      {title ? (
-        <Title level={TitleLevel.H5} className={useStyles(classes).formPaddingBottom}>
+      {title && (
+        <Title level={TitleLevel.H5} className={classes.formPaddingBottom}>
           {title}
         </Title>
-      ) : null}
+      )}
       <FlexBox
         justifyContent={FlexBoxJustifyContent.Start}
         alignItems={FlexBoxAlignItems.End}
@@ -38,7 +37,7 @@ const FormGroup: FC<FormGroupProps> = forwardRef((props: FormGroupProps, ref: Re
       >
         {Children.map(children, (child, index) => {
           return (
-            <div key={index.toString()} className={formGroupStyle}>
+            <div key={index.toString()} className={classes.formGroupStyle}>
               {child}
             </div>
           );

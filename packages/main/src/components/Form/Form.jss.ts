@@ -25,4 +25,4 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-export default styles;
+export { styles };

@@ -3,11 +3,11 @@ import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, us
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import styles from './Form.jss';
+import { styles } from './Form.jss';
 import { createUseStyles } from 'react-jss';
-import { useViewportRange } from '../../../../base/src/hooks/useViewportRange';
+import { useViewportRange } from '@ui5/webcomponents-react-base/src/hooks/useViewportRange';
 import { FormGroup } from './FormGroup';
-import CurrentRange from './CurrentViewportRange';
+import { CurrentRange } from './CurrentViewportRangeContext';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export interface FormPropTypes extends CommonProps {
@@ -21,24 +21,22 @@ export interface FormPropTypes extends CommonProps {
   title?: string;
 }
 
-let formGroups, updatedTitle;
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Form' });
 
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
   const { title, children } = props;
 
   const classes = useStyles();
-  const formTitleStyle = useStyles(classes).formTitle;
-  const formTitlePadding = useStyles(classes).formTitlePaddingBottom;
+  const currentRange = useViewportRange('StdExt');
 
-  const [currentRange] = useViewportRange();
+  const [formGroups, updatedTitle] = useMemo(() => {
+    let ungroupedItems = [],
+      formGroups,
+      updatedTitle = '';
 
-  useMemo(() => {
     // check if ungrouped FormItems exist amongst the Form's children and put them in an artificial FormGroup if any
     if (Array.isArray(children)) {
-      let ungroupedItems = [];
       formGroups = [];
-
       children.forEach((child) => {
         if ((child as ReactElement).props.type === 'formItem') {
           ungroupedItems.push(child);
@@ -62,18 +60,20 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
         updatedTitle = title;
       }
     }
+
+    return [formGroups, updatedTitle];
   }, [children]);
 
   return (
     <CurrentRange.Provider value={currentRange}>
-      {updatedTitle ? (
+      {updatedTitle && (
         <>
-          <Title level={TitleLevel.H3} className={formTitleStyle}>
+          <Title level={TitleLevel.H3} className={classes.formTitle}>
             {updatedTitle}
           </Title>
-          <div className={formTitlePadding} />
+          <div className={classes.formTitlePaddingBottom} />
         </>
-      ) : null}
+      )}
       <Grid ref={ref} children={formGroups} defaultSpan={'XL6 L12 M12 S12'} />
     </CurrentRange.Provider>
   );

@@ -9,7 +9,7 @@ export const defaultStory = () => {
   return (
     <Form title={'Test Form'}>
       <FormGroup title={'Personal Data'}>
-        <FormItem labelText={'Name'} id={'name'}>
+        <FormItem labelText={'Name'}>
           <Input type={InputType.Text} />
         </FormItem>
         <FormItem labelText={'Address'}>
@@ -27,7 +27,7 @@ export const defaultStory = () => {
         </FormItem>
       </FormGroup>
       <FormGroup title={'Business Data'}>
-        <FormItem labelText={'Organization'} id={'name'}>
+        <FormItem labelText={'Organization'}>
           <Input type={InputType.Text} />
         </FormItem>
         <FormItem labelText={'Position'}>
