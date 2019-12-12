@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0-rc.3](https://github.com/SAP/ui5-webcomponents-react/compare/@ui5/webcomponents-react@0.7.0-rc.2...@ui5/webcomponents-react@0.7.0-rc.3) (2019-12-11)
+
+**Note:** Version bump only for package @ui5/webcomponents-react
+
+
+
+
+
 # 0.7.0-rc.2 (2019-12-11)
 
 
