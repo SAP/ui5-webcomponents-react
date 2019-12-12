@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect } from 'react';
-import { ScrollContext } from '@ui5/webcomponents-react/lib/ScrollContext';
+import { ScrollContext } from '@ui5/webcomponents-react-base/lib/ScrollContext';
 
-export const ObjectPageLink = (props) => {
+export const ScrollLink = (props) => {
   const {
     children,
     inactiveClass = '',

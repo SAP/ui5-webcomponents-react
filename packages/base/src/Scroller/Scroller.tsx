@@ -1,13 +1,8 @@
 import React, { forwardRef, RefObject, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+
 import { ScrollContentProvider } from './ScrollContextProvider';
 import { scrollTo } from './ScrollHelper';
-
-export interface IScroller {
-  scroll: (e: Event) => void;
-  scrollToElementById: (id: string, scrollOffset?: number) => void;
-  scrollToTop: () => void;
-}
+import { IScroller } from '@ui5/webcomponents-react-base/interfaces/IScroller';
 
 export interface Props {
   scrollContainer: RefObject<HTMLDivElement>;
@@ -15,7 +10,7 @@ export interface Props {
   forceSelection?: boolean;
 }
 
-export const ObjectPageScroller = forwardRef((props: Props, ref: RefObject<IScroller>) => {
+export const Scroller = forwardRef((props: Props, ref: RefObject<IScroller>) => {
   const { children, scrollContainer, forceSelection = true } = props;
 
   const [selectedElementId, setSelectedElementId] = useState(null);
