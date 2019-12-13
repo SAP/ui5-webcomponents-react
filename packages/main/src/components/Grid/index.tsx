@@ -1,4 +1,3 @@
-import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, {
   Children,
@@ -9,15 +8,12 @@ import React, {
   ReactNode,
   ReactNodeArray,
   Ref,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState
+  useMemo
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { styles } from './Grid.jss';
+import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 
 export enum GridPosition {
   Left = 'Left',
@@ -109,22 +105,7 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
     defaultSpan
   } = props;
 
-  const [currentRange, setCurrentRange] = useState(Device.media.getCurrentRange('StdExt', window.innerWidth).name);
-
-  const onWindowResize = useCallback(
-    ({ width }) => {
-      const { name: range } = Device.media.getCurrentRange('StdExt', width);
-      setCurrentRange(range);
-    },
-    [setCurrentRange]
-  );
-
-  useEffect(() => {
-    Device.resize.attachHandler(onWindowResize, null);
-    return () => {
-      Device.resize.detachHandler(onWindowResize, null);
-    };
-  }, [onWindowResize]);
+  const currentRange = useViewportRange('StdExt');
 
   const classes = useStyles();
   const gridClasses = StyleClassHelper.of(classes.grid);
