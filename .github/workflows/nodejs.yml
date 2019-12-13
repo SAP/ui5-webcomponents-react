@@ -32,6 +32,10 @@ jobs:
     name: publish
     if: github.ref == 'refs/heads/master'
     runs-on: [ubuntu-latest]
+    env:
+      NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
+      NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     steps:
       - uses: actions/checkout@v1
       - name: 'Setup npm'
