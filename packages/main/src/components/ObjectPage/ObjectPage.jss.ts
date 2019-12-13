@@ -204,8 +204,10 @@ const styles = ({ parameters }: JSSTheme) => ({
     width: '100%',
     height: '100%'
   },
-  keyInfoItem: {
-    marginLeft: '1rem'
+  keyInfos: {
+    '& > *': {
+      marginLeft: '1rem'
+    }
   }
 });
 

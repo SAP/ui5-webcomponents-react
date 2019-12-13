@@ -40,7 +40,7 @@ export interface ObjectPagePropTypes extends CommonProps {
   image?: string | ReactNode;
   imageShapeCircle?: boolean;
   headerActions?: Array<ReactElement<any>>;
-  renderHeaderContent?: () => JSX.Element | null;
+  renderHeaderContent?: () => JSX.Element;
   children?: ReactNode | ReactNodeArray;
   mode?: ObjectPageMode;
   selectedSectionId?: string;
@@ -51,8 +51,8 @@ export interface ObjectPagePropTypes extends CommonProps {
   noHeader?: boolean;
   showTitleInHeaderContent?: boolean;
   scrollerRef?: RefObject<IScroller>;
-  breadcrumbs?: ReactElement<JSX.Element>;
-  keyInfos?: Array<ReactElement<JSX.Element>>;
+  renderBreadcrumbs?: () => JSX.Element;
+  renderKeyInfos?: () => JSX.Element;
 }
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPage' });
@@ -89,8 +89,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     alwaysShowContentHeader,
     showTitleInHeaderContent,
     scrollerRef,
-    breadcrumbs,
-    keyInfos
+    renderBreadcrumbs,
+    renderKeyInfos
   } = props;
 
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(findSectionIndexById(children, selectedSectionId));
@@ -204,6 +204,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   };
 
   const changeHeader = useCallback(() => {
+    debugger;
     hideHeaderButtonPressed.current = true;
 
     if (!expandHeaderActive && collapsedHeader) {
@@ -278,30 +279,22 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div>{avatar}</div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div>{breadcrumbs}</div>
+                <div>{renderBreadcrumbs && renderBreadcrumbs()}</div>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <h1 className={classes.title}>{title}</h1>
                     <span className={classes.subTitle}>{subTitle}</span>
+                    <span> {firstElement}</span>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'row' }}>
-                    {firstElement}
                     {contents.map((c, index) => (
                       <div key={`customContent-${index}`} style={{ marginLeft: '1rem' }}>
                         {c}
                       </div>
                     ))}
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'row' }}>
-                    {keyInfos &&
-                      keyInfos.map((item, index) => {
-                        return (
-                          <span key={index} className={classes.keyInfoItem}>
-                            {' '}
-                            {item}
-                          </span>
-                        );
-                      })}
+                  <div className={classes.keyInfos} style={{ display: 'flex', flexDirection: 'row' }}>
+                    {renderKeyInfos && renderKeyInfos()}
                   </div>
                 </div>
               </div>
@@ -330,10 +323,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     if (noHeader && !alwaysShowContentHeader) {
       return renderAnchorBar();
     }
+    debugger;
     return (
       <>
         <header className={classes.titleBar}>
-          {(collapsedHeader || !showTitleInHeaderContent) && (
+          {/*!expandHeaderActive &&*/}
+          {((collapsedHeader && !expandHeaderActive) || !showTitleInHeaderContent) && (
             <div style={{ display: 'flex', alignItems: 'center' }}>
               {image && collapsedHeader && !expandHeaderActive && !alwaysShowContentHeader && (
                 <div style={{ marginRight: '1rem' }}>
@@ -342,25 +337,18 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
               )}
               <span className={classes.container}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  {breadcrumbs}
+                  {renderBreadcrumbs && renderBreadcrumbs()}
                   <div style={{ display: 'flex', flexDirection: 'row' }}>
                     <h1 className={classes.title}>{title}</h1>
                     <span className={classes.subTitle}>{subTitle}</span>
-                    {keyInfos &&
-                      keyInfos.map((item, index) => {
-                        return (
-                          <span key={index} className={classes.keyInfoItem}>
-                            {' '}
-                            {item}
-                          </span>
-                        );
-                      })}
+                    <div style={{ display: 'flex', flexDirection: 'row' }} className={classes.keyInfos}>
+                      {renderKeyInfos && renderKeyInfos()}
+                    </div>
                   </div>
                 </div>
               </span>
             </div>
           )}
-          {/*{(!showTitleInHeaderContent || collapsedHeader) && <span className={classes.actions}>{headerActions}</span>}*/}
           {(expandHeaderActive || alwaysShowContentHeader) && renderHeader()}
           {collapsedHeader && !alwaysShowContentHeader && renderHideHeaderButton()}
         </header>

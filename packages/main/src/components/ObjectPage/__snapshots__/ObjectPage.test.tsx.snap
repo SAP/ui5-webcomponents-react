@@ -59,6 +59,10 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
               >
                 Sub Title
               </span>
+              <div
+                class="ObjectPage--keyInfos-"
+                style="display: flex; flex-direction: row;"
+              />
             </div>
           </div>
         </span>
@@ -347,6 +351,10 @@ exports[`ObjectPage Just Some Sections 1`] = `
               <span
                 class="ObjectPage--subTitle-"
               />
+              <div
+                class="ObjectPage--keyInfos-"
+                style="display: flex; flex-direction: row;"
+              />
             </div>
           </div>
         </span>
@@ -458,6 +466,41 @@ exports[`ObjectPage Key Infos 1`] = `
           <div
             style="display: flex; flex-direction: column;"
           >
+            <div>
+              <ui5-link
+                class=""
+                design="Default"
+                href="PathSegment1"
+              >
+                Path1
+              </ui5-link>
+              <ui5-label
+                class=""
+                for=""
+                style="margin: 0px 0.25rem;"
+              >
+                /
+              </ui5-label>
+              <ui5-link
+                class=""
+                design="Default"
+                href="PathSegment2"
+              >
+                Path2
+              </ui5-link>
+              <ui5-label
+                class=""
+                for=""
+                style="margin: 0px 0.25rem;"
+              >
+                /
+              </ui5-label>
+              <ui5-link
+                class=""
+                design="Default"
+                href="PathSegment3"
+              />
+            </div>
             <div
               style="display: flex; flex-direction: row;"
             >
@@ -467,54 +510,50 @@ exports[`ObjectPage Key Infos 1`] = `
               <span
                 class="ObjectPage--subTitle-"
               />
-              <span
-                class="ObjectPage--keyInfoItem-"
+              <div
+                class="ObjectPage--keyInfos-"
+                style="display: flex; flex-direction: row;"
               >
-                 
-                <ui5-title
-                  class=""
-                  level="H5"
-                >
-                  Key Info 1
-                </ui5-title>
-                <span
-                  class="Text--text-"
-                >
-                  Value 1
-                </span>
-              </span>
-              <span
-                class="ObjectPage--keyInfoItem-"
-              >
-                 
-                <ui5-title
-                  class=""
-                  level="H5"
-                >
-                  Key Info 2
-                </ui5-title>
-                <span
-                  class="Text--text-"
-                >
-                  Value 2
-                </span>
-              </span>
-              <span
-                class="ObjectPage--keyInfoItem-"
-              >
-                 
-                <ui5-title
-                  class=""
-                  level="H5"
-                >
-                  Key Info 3
-                </ui5-title>
-                <span
-                  class="Text--text-"
-                >
-                  Value 3
-                </span>
-              </span>
+                <div>
+                  <ui5-title
+                    class=""
+                    level="H5"
+                  >
+                    Key Info 1
+                  </ui5-title>
+                  <span
+                    class="Text--text-"
+                  >
+                    Value 1
+                  </span>
+                </div>
+                <div>
+                  <ui5-title
+                    class=""
+                    level="H5"
+                  >
+                    Key Info 2
+                  </ui5-title>
+                  <span
+                    class="Text--text-"
+                  >
+                    Value 2
+                  </span>
+                </div>
+                <div>
+                  <ui5-title
+                    class=""
+                    level="H5"
+                  >
+                    Key Info 3
+                  </ui5-title>
+                  <span
+                    class="Text--text-"
+                  >
+                    Value 3
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </span>
@@ -793,6 +832,10 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
               <span
                 class="ObjectPage--subTitle-"
               />
+              <div
+                class="ObjectPage--keyInfos-"
+                style="display: flex; flex-direction: row;"
+              />
             </div>
           </div>
         </span>
@@ -874,6 +917,10 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
               />
               <span
                 class="ObjectPage--subTitle-"
+              />
+              <div
+                class="ObjectPage--keyInfos-"
+                style="display: flex; flex-direction: row;"
               />
             </div>
           </div>
@@ -992,6 +1039,10 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
               />
               <span
                 class="ObjectPage--subTitle-"
+              />
+              <div
+                class="ObjectPage--keyInfos-"
+                style="display: flex; flex-direction: row;"
               />
             </div>
           </div>
@@ -1117,6 +1168,10 @@ exports[`ObjectPage Only Sections 1`] = `
               >
                 Sub Title
               </span>
+              <div
+                class="ObjectPage--keyInfos-"
+                style="display: flex; flex-direction: row;"
+              />
             </div>
           </div>
         </span>
@@ -1370,6 +1425,10 @@ exports[`ObjectPage Set selected section id 1`] = `
               <span
                 class="ObjectPage--subTitle-"
               />
+              <div
+                class="ObjectPage--keyInfos-"
+                style="display: flex; flex-direction: row;"
+              />
             </div>
           </div>
         </span>
@@ -1501,6 +1560,10 @@ exports[`ObjectPage With Subsections 1`] = `
               >
                 Sub Title
               </span>
+              <div
+                class="ObjectPage--keyInfos-"
+                style="display: flex; flex-direction: row;"
+              />
             </div>
           </div>
         </span>

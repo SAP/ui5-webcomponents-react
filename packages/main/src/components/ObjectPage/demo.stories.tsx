@@ -31,6 +31,31 @@ const renderHeaderContent = () => (
   </>
 );
 
+const renderBreadcrumbs = () => (
+  <Breadcrumbs>
+    <Link href="PathSegment1">Path1</Link>
+    <Link href="PathSegment2">Path2</Link>
+    <Link href="PathSegment3"></Link>
+  </Breadcrumbs>
+);
+
+const renderKeyInfos = () => (
+  <>
+    <div>
+      <Title level={TitleLevel.H5}>Key Info 1</Title>
+      <Text>Value 1</Text>
+    </div>
+    <div>
+      <Title level={TitleLevel.H5}>Key Info 2</Title>
+      <Text>Value 2</Text>
+    </div>
+    <div>
+      <Title level={TitleLevel.H5}>Key Info 3</Title>
+      <Text>Value 3</Text>
+    </div>
+  </>
+);
+
 export const renderDemo = () => {
   return (
     <div style={{ width: 'calc(100% - 1rem)', height: 'calc(100% - 1rem)', position: 'relative', marginTop: '2rem' }}>
@@ -56,27 +81,8 @@ export const renderDemo = () => {
         noHeader={boolean('noHeader', false)}
         alwaysShowContentHeader={boolean('alwaysShowContentHeader', false)}
         showTitleInHeaderContent={boolean('showTitleInHeaderContent', true)}
-        breadcrumbs={
-          <Breadcrumbs>
-            <Link href="PathSegment1">Path1</Link>
-            <Link href="PathSegment2">Path2</Link>
-            <Link href="PathSegment3"></Link>
-          </Breadcrumbs>
-        }
-        keyInfos={[
-          <>
-            <Title level={TitleLevel.H5}>Key Info 1</Title>
-            <Text>Value 1</Text>
-          </>,
-          <>
-            <Title level={TitleLevel.H5}>Key Info 2</Title>
-            <Text>Value 2</Text>
-          </>,
-          <>
-            <Title level={TitleLevel.H5}>Key Info 3</Title>
-            <Text>Value 3</Text>
-          </>
-        ]}
+        renderBreadcrumbs={renderBreadcrumbs}
+        renderKeyInfos={renderKeyInfos}
         style={{ height: '700px' }}
       >
         <ObjectPageSection title="Test 1" id="1">
