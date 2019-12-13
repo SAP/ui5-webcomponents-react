@@ -18,15 +18,4 @@ jobs:
       script:
         - yarn test
         - ${TRAVIS_BUILD_DIR}/node_modules/.bin/codecov
-    - stage: 'Build and Deploy'
-      before_script:
-        - git checkout ${TRAVIS_BRANCH}
-      script: yarn build
-      before_deploy:
-        - bash ./scripts/ci/setup-npm.sh
-      deploy:
-        - provider: script
-          script: bash ./scripts/ci/release-snapshot.sh
-          skip_cleanup: true
-          on:
-            branch: master
+        - yarn build

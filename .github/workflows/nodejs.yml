@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-
+    name: 'Install, Test & Build'
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,3 +26,15 @@ jobs:
       run: yarn test
     - name: build project
       run: yarn build
+
+  publish:
+    needs: [build]
+    name: publish
+    if: github.ref == 'refs/heads/master'
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v1
+      - name: 'Setup npm'
+        run: bash ./scripts/ci/setup-npm.sh
+      - name: 'Publish npm dev tag'
+        run: bash ./scripts/ci/release-snapshot.sh
