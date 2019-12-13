@@ -1,6 +1,6 @@
 #! /bin/bash
 
-./node_modules/.bin/lerna publish prerelease \
+${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish prerelease \
   --canary \
   --conventional-prerelease \
   --dist-tag dev \
