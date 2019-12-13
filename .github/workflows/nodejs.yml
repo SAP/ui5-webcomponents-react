@@ -26,19 +26,12 @@ jobs:
       run: yarn test
     - name: build project
       run: yarn build
-
-  publish:
-    needs: [build]
-    name: publish
-    if: github.ref == 'refs/heads/master'
-    runs-on: [ubuntu-latest]
-    env:
-      NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
-      NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
-      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-    steps:
-      - uses: actions/checkout@v1
-      - name: 'Setup npm'
-        run: bash ./scripts/ci/setup-npm.sh
-      - name: 'Publish npm dev tag'
-        run: bash ./scripts/ci/release-snapshot.sh
+    - name: publish
+      if: github.ref == 'refs/heads/master'
+      env:
+        NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
+        NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      run: |
+        bash ./scripts/ci/setup-npm.sh
+        bash ./scripts/ci/release-snapshot.sh
