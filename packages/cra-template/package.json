@@ -26,5 +26,8 @@
     "template.json",
     "NOTICE.txt",
     "LICENSE"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
