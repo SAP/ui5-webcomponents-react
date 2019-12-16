@@ -11,14 +11,14 @@
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
-      "message": "chore(release): publish %s [ci skip]"
+      "message": "chore(release): publish %s\n\nskip-checks: true"
     },
     "publish": {
       "allowBranch": "master",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
-      "message": "chore(release): publish %s [ci skip]"
+      "message": "chore(release): publish %s\n\nskip-checks: true"
     }
   }
 }
