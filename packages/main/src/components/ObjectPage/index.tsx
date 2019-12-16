@@ -327,8 +327,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     return (
       <>
         <header className={classes.titleBar}>
-          {/*!expandHeaderActive &&*/}
-          {((collapsedHeader && !expandHeaderActive) || !showTitleInHeaderContent) && (
+          {((collapsedHeader && !expandHeaderActive && !alwaysShowContentHeader) || !showTitleInHeaderContent) && (
             <div style={{ display: 'flex', alignItems: 'center' }}>
               {image && collapsedHeader && !expandHeaderActive && !alwaysShowContentHeader && (
                 <div style={{ marginRight: '1rem' }}>
@@ -358,13 +357,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   };
 
   const renderInnerHeader = () => {
-    if (
-      noHeader ||
-      collapsedHeader ||
-      expandHeaderActive ||
-      alwaysShowContentHeader ||
-      (alwaysShowContentHeader && showTitleInHeaderContent)
-    ) {
+    if (noHeader || collapsedHeader || expandHeaderActive || alwaysShowContentHeader) {
       return null;
     }
 
