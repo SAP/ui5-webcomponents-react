@@ -2,7 +2,7 @@
   "packages": [
     "packages/*"
   ],
-  "version": "independent",
+  "version": "0.7.0-rc.4",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
@@ -10,16 +10,15 @@
       "allowBranch": "master",
       "conventionalCommits": true,
       "yes": true,
-      "exact": true,
       "preid": "rc",
-      "message": "chore(release): publish new version [ci skip]"
+      "message": "chore(release): publish %s [ci skip]"
     },
     "publish": {
       "allowBranch": "master",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
-      "message": "chore(release): publish new version [ci skip]"
+      "message": "chore(release): publish %s [ci skip]"
     }
   }
 }
