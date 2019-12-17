@@ -22,10 +22,7 @@ export const VirtualTableRow = (props) => {
 
   return (
     <div {...row.getRowProps()} style={style} aria-rowindex={index}>
-      {row.cells.map((cell, i) => {
-        if (index <= 3) {
-          console.log(cell);
-        }
+      {row.cells.map((cell) => {
         let contentToRender = 'Cell';
         if (isTreeTable) {
           contentToRender = 'Expandable';
