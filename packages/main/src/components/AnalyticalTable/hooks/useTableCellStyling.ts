@@ -5,12 +5,13 @@ import { PluginHook } from 'react-table';
 
 export const useTableCellStyling = (classes, rowHeight) => {
   const hook: PluginHook<{}> = (instance) => {
-    instance.getCellProps.push(({ column }) => {
+    instance.getCellProps.push((cellProps, instance, { column }) => {
       const style: CSSProperties = {};
 
       if (rowHeight) {
         style.height = `${rowHeight}px`;
       }
+
       switch (column.hAlign) {
         case TextAlign.Begin:
           style.textAlign = 'start';
@@ -44,9 +45,14 @@ export const useTableCellStyling = (classes, rowHeight) => {
       if (column.className) {
         className += ` ${column.className}`;
       }
+
       return {
+        ...cellProps,
         className,
-        style
+        style: {
+          ...cellProps.style,
+          style
+        }
       };
     });
   };

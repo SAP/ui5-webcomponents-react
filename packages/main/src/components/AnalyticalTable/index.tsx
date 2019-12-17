@@ -20,6 +20,7 @@ import React, {
 } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import {
+  Column,
   PluginHook,
   useAbsoluteLayout,
   useColumnOrder,
@@ -27,9 +28,9 @@ import {
   useFilters,
   useGroupBy,
   useResizeColumns,
+  useRowSelect,
   useSortBy,
-  useTable,
-  Column
+  useTable
 } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -40,7 +41,6 @@ import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
-import { useRowSelection } from './hooks/useRowSelection';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
 import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
@@ -114,7 +114,7 @@ export interface TableProps extends CommonProps {
   reactTableOptions?: object;
   tableHooks?: Array<PluginHook<any>>;
   subRowsKey?: string;
-  selectedRowKey?: string;
+  selectedRowIds?: { [key: string]: boolean };
   isTreeTable?: boolean;
   overscanCount?: number;
 
@@ -147,7 +147,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     subRowsKey,
     onGroup,
     rowHeight,
-    selectedRowKey,
+    selectedRowIds,
     LoadingComponent,
     onRowExpandChange,
     noDataText,
@@ -161,7 +161,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const theme = useTheme() as JSSTheme;
   const classes = useStyles({ rowHeight: props.rowHeight });
 
-  const [selectedRowPath, onRowClicked] = useRowSelection(onRowSelected, selectedRowKey);
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
 
@@ -187,7 +186,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     state: tableState,
     setColumnOrder,
     dispatch,
-    totalColumnsWidth
+    totalColumnsWidth,
+    selectedFlatRows
   } = useTable(
     {
       columns,
@@ -197,17 +197,18 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       stateReducer,
       ...reactTableOptions
     },
+    useAbsoluteLayout,
     useFilters,
     useGroupBy,
     useColumnOrder,
     useSortBy,
     useExpanded,
-    useAbsoluteLayout,
+    useRowSelect,
     useResizeColumns,
     useTableStyling(classes),
     useTableHeaderGroupStyling(classes),
     useTableHeaderStyling(classes),
-    useTableRowStyling(classes, selectable, selectedRowPath, selectedRowKey, onRowClicked, alternateRowColor),
+    useTableRowStyling(classes, selectable, onRowSelected),
     useTableCellStyling(classes, rowHeight),
     useToggleRowExpand(onRowExpandChange, isTreeTable),
     ...tableHooks
@@ -235,6 +236,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   useEffect(() => {
     dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
   }, [groupBy, dispatch]);
+
+  useEffect(() => {
+    dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: selectedRowIds });
+  }, [selectedRowIds, dispatch]);
 
   const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
 
@@ -349,8 +354,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 rows={rows}
                 minRows={minRows}
                 columns={columns}
-                selectedRow={selectedRowKey}
-                selectedRowPath={selectedRowPath}
                 selectable={selectable}
                 reactWindowRef={reactWindowRef}
                 isTreeTable={isTreeTable}
@@ -360,6 +363,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 alternateRowColor={alternateRowColor}
                 overscanCount={overscanCount}
                 totalColumnsWidth={totalColumnsWidth}
+                selectedFlatRows={selectedFlatRows}
               />
             )}
           </div>
@@ -389,6 +393,7 @@ AnalyticalTable.defaultProps = {
   tableHooks: [],
   visibleRows: 15,
   subRowsKey: 'subRows',
+  selectedRowIds: {},
   onGroup: () => {},
   onRowExpandChange: () => {},
   onColumnsReordered: () => {},
