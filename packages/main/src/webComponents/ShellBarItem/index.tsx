@@ -5,7 +5,7 @@ import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent'
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
-  name?: string; // @generated
+  icon?: string; // @generated
   text?: string; // @generated
   onItemClick?: (event: Event) => void; // @generated
 }
