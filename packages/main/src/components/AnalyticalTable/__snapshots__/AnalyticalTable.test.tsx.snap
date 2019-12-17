@@ -2533,6 +2533,312 @@ exports[`AnalyticalTable custom row height 1`] = `
 </div>
 `;
 
+exports[`AnalyticalTable render without data 1`] = `
+<div>
+  <div
+    style="min-height: 1.5rem; display: flex; align-items: center;"
+  >
+    <ui5-title
+      class=""
+      level="H2"
+    >
+      Table Title
+    </ui5-title>
+  </div>
+  <div
+    class="AnalyticalTable--tableContainer-"
+  >
+    <div
+      aria-rowcount="0"
+      class="AnalyticalTable--table-"
+      role="table"
+    >
+      <header
+        class="AnalyticalTable--tableHeaderRow-"
+        role="rowgroup"
+        style="position: relative; width: 600px;"
+      >
+        <div
+          class="AnalyticalTable--th-"
+          id="name"
+          role="columnheader"
+          style="position: absolute; top: 0px; left: 0px; width: 150px;"
+        >
+          <div
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+          >
+            <div
+              class="TableColumnHeader--header-"
+              data-column-id="name"
+              draggable="true"
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
+              >
+                Name
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
+            </div>
+          </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
+        </div>
+        <div
+          class="AnalyticalTable--th-"
+          id="age"
+          role="columnheader"
+          style="position: absolute; top: 0px; left: 150px; width: 150px;"
+        >
+          <div
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+          >
+            <div
+              class="TableColumnHeader--header-"
+              data-column-id="age"
+              draggable="true"
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
+              >
+                Age
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
+            </div>
+          </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
+        </div>
+        <div
+          class="AnalyticalTable--th-"
+          id="friend.name"
+          role="columnheader"
+          style="position: absolute; top: 0px; left: 300px; width: 150px;"
+        >
+          <div
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+          >
+            <div
+              class="TableColumnHeader--header-"
+              data-column-id="friend.name"
+              draggable="true"
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
+              >
+                Friend Name
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
+            </div>
+          </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
+        </div>
+        <div
+          class="AnalyticalTable--th-"
+          id="friend.age"
+          role="columnheader"
+          style="position: absolute; top: 0px; left: 450px; width: 150px;"
+        >
+          <div
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+          >
+            <div
+              class="TableColumnHeader--header-"
+              data-column-id="friend.age"
+              draggable="true"
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              >
+                <span>
+                  Friend Age
+                </span>
+              </span>
+              <div
+                class="TableColumnHeader--iconContainer-"
+              />
+            </div>
+          </div>
+          <ui5-popover
+            class=""
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              class=""
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                class=""
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                class=""
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader--resizer-"
+            draggable="false"
+            style="cursor: ew-resize;"
+          />
+        </div>
+      </header>
+      <div
+        class="AnalyticalTable--noDataContainer-"
+        style="height: 220px;"
+      >
+        No Data
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`AnalyticalTable test Asc desc 1`] = `
 <div>
   <div
