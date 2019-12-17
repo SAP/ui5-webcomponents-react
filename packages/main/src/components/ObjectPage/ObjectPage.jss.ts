@@ -1,5 +1,6 @@
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ZIndex } from '../../enums/ZIndex';
+import { CSSProperties } from 'react';
 
 const styles = ({ parameters }: JSSTheme) => ({
   objectPage: {
@@ -161,7 +162,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     '& $headerContent': {
       paddingTop: 0,
       '& > *': {
-        display: 'inline-block',
+        display: 'flex',
         verticalAlign: 'top',
         '&:not(:first-child)': {
           marginRight: '2rem',
@@ -193,6 +194,10 @@ const styles = ({ parameters }: JSSTheme) => ({
       lineHeight: '1.5rem'
     }
   },
+  headerCustomContentItem: {
+    marginLeft: '1rem'
+  },
+
   headerImage: {
     maxWidth: '5rem',
     maxHeight: '5rem',
@@ -207,7 +212,24 @@ const styles = ({ parameters }: JSSTheme) => ({
   keyInfos: {
     '& > *': {
       marginLeft: '1rem'
-    }
+    },
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  flexBoxRow: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  flexBoxColumn: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  flexBoxCenter: {
+    display: 'flex',
+    alignItems: 'center'
+  },
+  avatar: {
+    marginRight: '1rem'
   }
 });
 

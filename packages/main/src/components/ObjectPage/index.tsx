@@ -15,7 +15,8 @@ import React, {
   useLayoutEffect,
   useMemo,
   useRef,
-  useState
+  useState,
+  CSSProperties
 } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -68,13 +69,15 @@ const findSectionIndexById = (sections, id) => {
   return index;
 };
 
+const positionRelativStyle: CSSProperties = { position: 'relative' };
+
 const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     title,
     image,
     subTitle,
     headerActions,
-    renderHeaderContent: renderHeaderContentParam,
+    renderHeaderContent: renderHeaderContentProp,
     mode,
     imageShapeCircle,
     className,
@@ -97,7 +100,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
   const [expandHeaderActive, setExpandHeaderActive] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [collapsedHeader, setCollapsedHeader] = useState(renderHeaderContentParam === null);
+  const [collapsedHeader, setCollapsedHeader] = useState(renderHeaderContentProp === null);
   const theme = useTheme();
 
   const objectPage: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
@@ -221,7 +224,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   }, [collapsedHeader, expandHeaderActive]);
 
   const renderHideHeaderButton = () => {
-    if (!showHideHeaderButton || renderHeaderContentParam === null) return null;
+    if (!showHideHeaderButton || renderHeaderContentProp === null) return null;
 
     const { contentDensity } = theme as JSSTheme;
 
@@ -264,11 +267,11 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     }
 
     if (showTitleInHeaderContent) {
-      const headerContents = renderHeaderContentParam && renderHeaderContentParam();
+      const headerContents = renderHeaderContentProp && renderHeaderContentProp();
       let firstElement;
       let contents = [];
 
-      if (headerContents && headerContents.type === React.Fragment) {
+      if (headerContents?.type === React.Fragment) {
         [firstElement, ...contents] = React.Children.toArray(headerContents.props.children);
       } else {
         firstElement = headerContents;
@@ -276,26 +279,24 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       return (
         <div className={classes.contentHeader}>
           <div className={classes.headerContent}>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div className={classes.flexBoxRow}>
               <div>{avatar}</div>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div className={classes.flexBoxColumn}>
                 <div>{renderBreadcrumbs && renderBreadcrumbs()}</div>
-                <div style={{ display: 'flex', flexDirection: 'row' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className={classes.flexBoxRow}>
+                  <div className={classes.flexBoxColumn}>
                     <h1 className={classes.title}>{title}</h1>
                     <span className={classes.subTitle}>{subTitle}</span>
                     <span> {firstElement}</span>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'row' }}>
+                  <div className={classes.flexBoxRow}>
                     {contents.map((c, index) => (
-                      <div key={`customContent-${index}`} style={{ marginLeft: '1rem' }}>
+                      <div key={`customContent-${index}`} className={classes.headerCustomContentItem}>
                         {c}
                       </div>
                     ))}
                   </div>
-                  <div className={classes.keyInfos} style={{ display: 'flex', flexDirection: 'row' }}>
-                    {renderKeyInfos && renderKeyInfos()}
-                  </div>
+                  <div className={classes.keyInfos}>{renderKeyInfos && renderKeyInfos()}</div>
                 </div>
               </div>
             </div>
@@ -306,13 +307,11 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     }
 
     return (
-      <div style={{ position: 'relative' }} className={classes.contentHeader}>
+      <div style={positionRelativStyle} className={classes.contentHeader}>
         <div className={classes.headerContent}>
           {avatar}
           {}
-          {renderHeaderContentParam && (
-            <span className={classes.headerCustomContent}>{renderHeaderContentParam()}</span>
-          )}
+          {renderHeaderContentProp && <span className={classes.headerCustomContent}>{renderHeaderContentProp()}</span>}
         </div>
         {!expandHeaderActive && !alwaysShowContentHeader && renderHideHeaderButton()}
       </div>
@@ -328,21 +327,19 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       <>
         <header className={classes.titleBar}>
           {((collapsedHeader && !expandHeaderActive && !alwaysShowContentHeader) || !showTitleInHeaderContent) && (
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div className={classes.flexBoxCenter}>
               {image && collapsedHeader && !expandHeaderActive && !alwaysShowContentHeader && (
-                <div style={{ marginRight: '1rem' }}>
+                <div className={classes.avatar}>
                   <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
                 </div>
               )}
               <span className={classes.container}>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className={classes.flexBoxColumn}>
                   {renderBreadcrumbs && renderBreadcrumbs()}
-                  <div style={{ display: 'flex', flexDirection: 'row' }}>
+                  <div className={classes.flexBoxRow}>
                     <h1 className={classes.title}>{title}</h1>
                     <span className={classes.subTitle}>{subTitle}</span>
-                    <div style={{ display: 'flex', flexDirection: 'row' }} className={classes.keyInfos}>
-                      {renderKeyInfos && renderKeyInfos()}
-                    </div>
+                    <div className={classes.keyInfos}>{renderKeyInfos && renderKeyInfos()}</div>
                   </div>
                 </div>
               </span>
@@ -475,8 +472,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             : getProportionateScrollTop(activeInnerContainer, passiveInnerContainer, e.target.scrollTop);
 
         let shouldBeCollapsed = !collapsedHeader && baseScrollValue > thresholdCollapse;
-        let shouldBeExpanded =
-          collapsedHeader && baseScrollValue < thresholdExpand && renderHeaderContentParam !== null;
+        let shouldBeExpanded = collapsedHeader && baseScrollValue < thresholdExpand && renderHeaderContentProp !== null;
 
         if (shouldBeCollapsed || shouldBeExpanded) {
           lastScrolledContainer.current = activeContainer.current;
