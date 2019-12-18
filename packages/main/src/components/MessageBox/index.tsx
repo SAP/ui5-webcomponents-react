@@ -1,25 +1,25 @@
+import '@ui5/webcomponents-icons/dist/icons/hint';
+import '@ui5/webcomponents-icons/dist/icons/message-error';
+import '@ui5/webcomponents-icons/dist/icons/message-information';
+import '@ui5/webcomponents-icons/dist/icons/message-success';
+import '@ui5/webcomponents-icons/dist/icons/message-warning';
+import '@ui5/webcomponents-icons/dist/icons/question-mark';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
-import React, { forwardRef, isValidElement, ReactNode, Ref, useCallback, useMemo } from 'react';
+import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import styles from './MessageBox.jss';
-import '@ui5/webcomponents-icons/dist/icons/question-mark';
-import '@ui5/webcomponents-icons/dist/icons/message-error';
-import '@ui5/webcomponents-icons/dist/icons/message-information';
-import '@ui5/webcomponents-icons/dist/icons/message-success';
-import '@ui5/webcomponents-icons/dist/icons/message-warning';
-import '@ui5/webcomponents-icons/dist/icons/hint';
 
 export interface MessageBoxPropTypes extends CommonProps {
   open?: boolean;
@@ -33,7 +33,7 @@ export interface MessageBoxPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'MessageBox' });
 
-const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
+const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
   const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
 
   const classes = useStyles();
