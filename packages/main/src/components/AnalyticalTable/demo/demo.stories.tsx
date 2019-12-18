@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { array, boolean, number, text } from '@storybook/addon-knobs';
+import { array, boolean, number, text, object } from '@storybook/addon-knobs';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
@@ -78,7 +78,7 @@ export const defaultTable = () => {
         onRowExpandChange={action('onRowExpandChange')}
         groupBy={array('groupBy', [])}
         rowHeight={number('rowHeight', 60)}
-        selectedRowKey={text('selectedRowKey', `row_5`)}
+        selectedRowIds={object('selectedRowIds', { 3: true })}
         onColumnsReordered={action('onColumnsReordered')}
       />
     </div>
@@ -106,7 +106,7 @@ export const treeTable = () => {
       onSort={action('onSort')}
       onRowExpandChange={action('onRowExpandChange')}
       subRowsKey={text('subRowsKey', 'subRows')}
-      selectedRowKey={text('selectedRowKey', `row_5`)}
+      selectedRowIds={object('selectedRowIds', { 3: true })}
       isTreeTable={boolean('isTreeTable', true)}
     />
   );

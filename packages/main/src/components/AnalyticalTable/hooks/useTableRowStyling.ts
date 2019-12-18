@@ -1,74 +1,45 @@
-import { useEffect, useMemo, useRef } from 'react';
-import { PluginHook } from 'react-table';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 
-export const useTableRowStyling = (
-  classes,
-  selectable,
-  selectedRow,
-  selectedRowKey,
-  onRowClicked,
-  alternateRowColor
-) => {
-  const prevSelectedRow = useRef(null);
-  const prevSelectedRowKey = useRef(null);
+const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
-  const applySelectedRow = useMemo(() => {
-    if (selectedRowKey !== prevSelectedRowKey.current) {
-      return false;
-    }
-    if (selectedRow !== prevSelectedRow.current) {
-      return true;
-    }
-    return false;
-  }, [selectedRow, selectedRowKey]);
-
-  useEffect(() => {
-    prevSelectedRow.current = selectedRow;
-  }, [selectedRow]);
-
-  useEffect(() => {
-    prevSelectedRowKey.current = selectedRowKey;
-  }, [selectedRowKey]);
-
-  const hook: PluginHook<{}> = (instance) => {
-    instance.getRowProps.push((row) => {
-      const rowKey = row.path.reduce((acc, val) => `${acc}_${val}`, 'row');
-      let selected = false;
-
-      if (!row.isAggregated && selectable) {
-        if (applySelectedRow) {
-          if (selectedRow.length && selectedRow.length > 0) {
-            selected = row.path.length === selectedRow.length && row.path.every((item, i) => item === selectedRow[i]);
-          }
-        } else if (selectedRowKey && rowKey === selectedRowKey) {
-          selected = true;
-        }
-      }
-
+export const useTableRowStyling = (classes, selectable, onRowSelected) => {
+  const hook = (instance) => {
+    instance.getRowProps.push((passedRowProps, instance, row) => {
       let className = classes.tr;
-      if (row.isAggregated) {
+      if (row.isGrouped) {
         className += ` ${classes.tableGroupHeader}`;
       }
-      if (selected) {
-        className += ` ${classes.selectedRow}`;
-      }
 
-      if (alternateRowColor) {
-        if (row.index % 2 === 1) {
-          className += ` ${classes.alternateRowColor}`;
-        }
-      }
+      const rowProps: any = {
+        ...passedRowProps,
+        className,
+        role: 'row'
+      };
 
       if (selectable) {
-        return {
-          className,
-          onClick: onRowClicked(row)
+        rowProps.onClick = (e) => {
+          if (row.isGrouped) {
+            return;
+          }
+
+          row.toggleRowSelected();
+          if (typeof onRowSelected === 'function') {
+            onRowSelected(Event.of(null, e, { row, isSelected: !row.isSelected }));
+          }
+          const clickedRow = e.currentTarget as HTMLDivElement;
+          if (clickedRow.hasAttribute(ROW_SELECTION_ATTRIBUTE)) {
+            clickedRow.removeAttribute(ROW_SELECTION_ATTRIBUTE);
+          } else {
+            clickedRow.setAttribute(ROW_SELECTION_ATTRIBUTE, '');
+          }
         };
+        if (row.isSelected) {
+          rowProps['data-is-selected'] = '';
+        }
       }
-      return {
-        className
-      };
+      return rowProps;
     });
+
     return instance;
   };
 

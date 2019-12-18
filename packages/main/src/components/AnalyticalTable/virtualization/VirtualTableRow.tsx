@@ -21,16 +21,16 @@ export const VirtualTableRow = (props) => {
   }
 
   return (
-    <div {...row.getRowProps()} style={style} role="row" aria-rowindex={index}>
-      {row.cells.map((cell, i) => {
+    <div {...row.getRowProps()} style={style} aria-rowindex={index}>
+      {row.cells.map((cell) => {
         let contentToRender = 'Cell';
         if (isTreeTable) {
           contentToRender = 'Expandable';
         } else if (cell.isGrouped) {
           contentToRender = 'Grouped';
-        } else if (cell.isAggregated) {
+        } else if (row.isGrouped) {
           contentToRender = 'Aggregated';
-        } else if (cell.isRepeatedValue) {
+        } else if (cell.isRepeatedValue || cell.column.isGrouped) {
           contentToRender = 'RepeatedValue';
         }
         return <div {...cell.getCellProps()}>{cell.render(contentToRender)}</div>;

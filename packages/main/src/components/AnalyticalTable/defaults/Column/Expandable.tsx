@@ -20,24 +20,24 @@ export const Expandable = (props) => {
 
   const getPadding = (level) => {
     switch (level) {
-      case 1:
+      case 0:
         return 0;
-      case 2:
+      case 1:
         return isCompact ? '1.5rem' : '1rem';
-      case 3:
+      case 2:
         return isCompact ? '2.25rem' : '1.5rem';
-      case 4:
+      case 3:
         return isCompact ? '2.75rem' : '2rem';
       default:
-        return `${(isCompact ? 2.75 : 2) + (level - 4) * 0.5}rem`;
+        return `${(isCompact ? 2.75 : 2) + (level - 3) * 0.5}rem`;
     }
   };
 
-  let paddingLeft = null;
+  let paddingLeft = undefined;
   if (row.canExpand) {
-    paddingLeft = columnIndex === 0 ? getPadding(row.path.length) : 0;
+    paddingLeft = columnIndex === 0 ? getPadding(row.depth) : 0;
   } else {
-    paddingLeft = columnIndex === 0 ? `calc(${getPadding(row.path.length)} + 2rem)` : 0;
+    paddingLeft = columnIndex === 0 ? `calc(${getPadding(row.depth)} + 2rem)` : 0;
   }
   const style: CSSProperties = {
     paddingLeft

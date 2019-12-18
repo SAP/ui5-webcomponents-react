@@ -11,8 +11,6 @@ export const VirtualTableBody = (props) => {
     rows,
     minRows,
     columns,
-    selectedRow,
-    selectedRowPath,
     selectable,
     reactWindowRef,
     isTreeTable,
@@ -21,7 +19,8 @@ export const VirtualTableBody = (props) => {
     visibleRows,
     alternateRowColor,
     overscanCount,
-    totalColumnsWidth
+    totalColumnsWidth,
+    selectedFlatRows
   } = props;
 
   const innerDivRef = useRef(null);
@@ -33,8 +32,18 @@ export const VirtualTableBody = (props) => {
       if (selectable) {
         innerDivRef.current.classList.add(classes.selectable);
       }
+      if (alternateRowColor) {
+        innerDivRef.current.classList.add(classes.alternateRowColor);
+      }
     }
-  }, [innerDivRef.current, selectable, classes.tbody, classes.selectable]);
+  }, [
+    innerDivRef.current,
+    selectable,
+    classes.tbody,
+    classes.selectable,
+    alternateRowColor,
+    classes.alternateRowColor
+  ]);
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
@@ -48,7 +57,7 @@ export const VirtualTableBody = (props) => {
         columns
       }
     };
-  }, [rows, prepareRow, isTreeTable, classes, columns, alternateRowColor, selectedRow, selectedRowPath]);
+  }, [rows, prepareRow, isTreeTable, classes, columns, selectedFlatRows]);
 
   const getItemKey = useCallback(
     (index, data) => {

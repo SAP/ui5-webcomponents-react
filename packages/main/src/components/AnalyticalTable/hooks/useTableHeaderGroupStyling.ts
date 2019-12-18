@@ -1,10 +1,10 @@
 import { PluginHook } from 'react-table';
-import { makeTemplateColumns } from './utils';
 
 export const useTableHeaderGroupStyling = (classes) => {
   const hook: PluginHook<{}> = (instance) => {
-    instance.getHeaderGroupProps.push(() => {
+    instance.getHeaderGroupProps.push((headerGroupProps) => {
       return {
+        ...headerGroupProps,
         className: classes.tableHeaderRow
       };
     });

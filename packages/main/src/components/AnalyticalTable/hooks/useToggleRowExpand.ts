@@ -3,9 +3,9 @@ import { PluginHook } from 'react-table';
 
 export const useToggleRowExpand = (onRowExpandChange, isTreeTable) => {
   const hook: PluginHook<any> = (instance) => {
-    // @ts-ignore
-    instance.getExpandedToggleProps.push((row) => {
+    instance.getExpandedToggleProps.push((rowProps, instance, row) => {
       return {
+        ...rowProps,
         onClick: (e) => {
           e.stopPropagation();
           e.persist();

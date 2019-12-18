@@ -250,4 +250,13 @@ describe('AnalyticalTable', () => {
 
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  test('render without data', () => {
+    const data = [];
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
 });
