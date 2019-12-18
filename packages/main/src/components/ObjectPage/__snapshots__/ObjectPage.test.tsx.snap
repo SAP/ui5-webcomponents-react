@@ -38,16 +38,16 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        style="display: flex; align-items: center;"
+        class="ObjectPage--flexBoxCenter-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            style="display: flex; flex-direction: column;"
+            class="ObjectPage--flexBoxColumn-"
           >
             <div
-              style="display: flex; flex-direction: row;"
+              class="ObjectPage--flexBoxRow-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -61,7 +61,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
               </span>
               <div
                 class="ObjectPage--keyInfos-"
-                style="display: flex; flex-direction: row;"
               />
             </div>
           </div>
@@ -334,16 +333,16 @@ exports[`ObjectPage Just Some Sections 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        style="display: flex; align-items: center;"
+        class="ObjectPage--flexBoxCenter-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            style="display: flex; flex-direction: column;"
+            class="ObjectPage--flexBoxColumn-"
           >
             <div
-              style="display: flex; flex-direction: row;"
+              class="ObjectPage--flexBoxRow-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -353,7 +352,6 @@ exports[`ObjectPage Just Some Sections 1`] = `
               />
               <div
                 class="ObjectPage--keyInfos-"
-                style="display: flex; flex-direction: row;"
               />
             </div>
           </div>
@@ -458,13 +456,13 @@ exports[`ObjectPage Key Infos 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        style="display: flex; align-items: center;"
+        class="ObjectPage--flexBoxCenter-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            style="display: flex; flex-direction: column;"
+            class="ObjectPage--flexBoxColumn-"
           >
             <div>
               <ui5-link
@@ -502,7 +500,7 @@ exports[`ObjectPage Key Infos 1`] = `
               />
             </div>
             <div
-              style="display: flex; flex-direction: row;"
+              class="ObjectPage--flexBoxRow-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -512,7 +510,6 @@ exports[`ObjectPage Key Infos 1`] = `
               />
               <div
                 class="ObjectPage--keyInfos-"
-                style="display: flex; flex-direction: row;"
               >
                 <div>
                   <ui5-title
@@ -815,16 +812,16 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        style="display: flex; align-items: center;"
+        class="ObjectPage--flexBoxCenter-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            style="display: flex; flex-direction: column;"
+            class="ObjectPage--flexBoxColumn-"
           >
             <div
-              style="display: flex; flex-direction: row;"
+              class="ObjectPage--flexBoxRow-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -834,7 +831,6 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
               />
               <div
                 class="ObjectPage--keyInfos-"
-                style="display: flex; flex-direction: row;"
               />
             </div>
           </div>
@@ -901,16 +897,16 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        style="display: flex; align-items: center;"
+        class="ObjectPage--flexBoxCenter-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            style="display: flex; flex-direction: column;"
+            class="ObjectPage--flexBoxColumn-"
           >
             <div
-              style="display: flex; flex-direction: row;"
+              class="ObjectPage--flexBoxRow-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -920,7 +916,6 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
               />
               <div
                 class="ObjectPage--keyInfos-"
-                style="display: flex; flex-direction: row;"
               />
             </div>
           </div>
@@ -1023,16 +1018,16 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        style="display: flex; align-items: center;"
+        class="ObjectPage--flexBoxCenter-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            style="display: flex; flex-direction: column;"
+            class="ObjectPage--flexBoxColumn-"
           >
             <div
-              style="display: flex; flex-direction: row;"
+              class="ObjectPage--flexBoxRow-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -1042,7 +1037,6 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
               />
               <div
                 class="ObjectPage--keyInfos-"
-                style="display: flex; flex-direction: row;"
               />
             </div>
           </div>
@@ -1147,16 +1141,16 @@ exports[`ObjectPage Only Sections 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        style="display: flex; align-items: center;"
+        class="ObjectPage--flexBoxCenter-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            style="display: flex; flex-direction: column;"
+            class="ObjectPage--flexBoxColumn-"
           >
             <div
-              style="display: flex; flex-direction: row;"
+              class="ObjectPage--flexBoxRow-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -1170,7 +1164,6 @@ exports[`ObjectPage Only Sections 1`] = `
               </span>
               <div
                 class="ObjectPage--keyInfos-"
-                style="display: flex; flex-direction: row;"
               />
             </div>
           </div>
@@ -1408,16 +1401,16 @@ exports[`ObjectPage Set selected section id 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        style="display: flex; align-items: center;"
+        class="ObjectPage--flexBoxCenter-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            style="display: flex; flex-direction: column;"
+            class="ObjectPage--flexBoxColumn-"
           >
             <div
-              style="display: flex; flex-direction: row;"
+              class="ObjectPage--flexBoxRow-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -1427,7 +1420,6 @@ exports[`ObjectPage Set selected section id 1`] = `
               />
               <div
                 class="ObjectPage--keyInfos-"
-                style="display: flex; flex-direction: row;"
               />
             </div>
           </div>
@@ -1539,16 +1531,16 @@ exports[`ObjectPage With Subsections 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        style="display: flex; align-items: center;"
+        class="ObjectPage--flexBoxCenter-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            style="display: flex; flex-direction: column;"
+            class="ObjectPage--flexBoxColumn-"
           >
             <div
-              style="display: flex; flex-direction: row;"
+              class="ObjectPage--flexBoxRow-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -1562,7 +1554,6 @@ exports[`ObjectPage With Subsections 1`] = `
               </span>
               <div
                 class="ObjectPage--keyInfos-"
-                style="display: flex; flex-direction: row;"
               />
             </div>
           </div>
