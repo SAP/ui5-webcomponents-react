@@ -2,7 +2,7 @@ import { PluginHook } from 'react-table';
 
 export const useTableHeaderStyling = (classes) => {
   const hook: PluginHook<{}> = (instance) => {
-    instance.getHeaderProps.push((columnProps, instance, column) => {
+    instance.getHeaderProps.push((columnProps, { column }) => {
       return {
         ...columnProps,
         className: classes.th,

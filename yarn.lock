@@ -3151,15 +3151,6 @@
     react-lifecycles-compat "^3.0.4"
     react-select "^3.0.8"
 
-"@storybook/addon-options@5.3.0-beta.31":
-  version "5.3.0-beta.31"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-5.3.0-beta.31.tgz#cf9c179e3821f5102ed4236e4e22d8d2a0116f07"
-  integrity sha512-euNLOXNfaGx2owEIZEoI+f0s0AWf0/q2OoHY3xajv3izKhWDAYlXJYA8wKbS/1dbw1oKWgtXfh3mL4eORlZ2ug==
-  dependencies:
-    "@storybook/addons" "5.3.0-beta.31"
-    core-js "^3.0.1"
-    util-deprecate "^1.0.2"
-
 "@storybook/addons@5.3.0-beta.31":
   version "5.3.0-beta.31"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-5.3.0-beta.31.tgz#70842b66fbd5a922a90e0a5d72ac362cf7b78a1c"
@@ -15635,10 +15626,10 @@ react-syntax-highlighter@^11.0.2:
     prismjs "^1.8.4"
     refractor "^2.4.1"
 
-react-table@7.0.0-rc.12:
-  version "7.0.0-rc.12"
-  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.0.0-rc.12.tgz#28230d9077042cac3afbdad8f1d7b8c8fbddca11"
-  integrity sha512-myMnYvWKUu63oUIcPaSJ8WaJuiAlus7JLDtbaXMCrGBFHObm/8eyyVzx1uQW1dYFEhKLzxlWQH7v2g01Ottlzg==
+react-table@7.0.0-rc.15:
+  version "7.0.0-rc.15"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.0.0-rc.15.tgz#bb855e4e2abbb4aaf0ed2334404a41f3ada8e13a"
+  integrity sha512-ofMOlgrioHhhvHjvjsQkxvfQzU98cqwy6BjPGNwhLN1vhgXeWi0mUGreaCPvRenEbTiXsQbMl4k3Xmx3Mut8Rw==
 
 react-test-renderer@^16.0.0-0:
   version "16.8.6"

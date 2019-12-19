@@ -5,7 +5,7 @@ import { PluginHook } from 'react-table';
 
 export const useTableCellStyling = (classes, rowHeight) => {
   const hook: PluginHook<{}> = (instance) => {
-    instance.getCellProps.push((cellProps, instance, { column }) => {
+    instance.getCellProps.push((cellProps, { cell: { column } }) => {
       const style: CSSProperties = {};
 
       if (rowHeight) {
