@@ -4,7 +4,7 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 export const useTableRowStyling = (classes, selectable, onRowSelected) => {
   const hook = (instance) => {
-    instance.getRowProps.push((passedRowProps, instance, row) => {
+    instance.getRowProps.push((passedRowProps, { row }) => {
       let className = classes.tr;
       if (row.isGrouped) {
         className += ` ${classes.tableGroupHeader}`;
