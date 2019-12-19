@@ -1,18 +1,18 @@
+import '@ui5/webcomponents-icons/dist/icons/navigation-left-arrow';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import React, { forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import React, { FC, forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
-import '@ui5/webcomponents-icons/dist/icons/navigation-left-arrow';
 
 export interface PagePropTypes extends CommonProps {
   title?: string;
@@ -30,7 +30,7 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
   name: 'Page'
 });
 
-const Page = forwardRef((props: PagePropTypes, ref: Ref<HTMLDivElement>) => {
+const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,
     showFooter,

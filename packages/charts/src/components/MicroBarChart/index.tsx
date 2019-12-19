@@ -1,4 +1,4 @@
-import React, { CSSProperties, forwardRef, Ref } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { resolveColors } from '../../util/populateData';
@@ -59,48 +59,50 @@ export interface MicroBarChartPropTypes extends CommonProps {
   labelFormatter?: (value: any) => string | number;
 }
 
-const MicroBarChart = forwardRef((props: MicroBarChartPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { className, dataset, colors, maxWidth, visibleDatasetCount, valueFormatter, labelFormatter, style } = props;
-  const classes = useStyles();
-  const theme: any = useTheme();
-  const visibleDatasetArray = visibleDatasetCount ? dataset.slice(0, visibleDatasetCount) : dataset;
+const MicroBarChart: FC<MicroBarChartPropTypes> = forwardRef(
+  (props: MicroBarChartPropTypes, ref: Ref<HTMLDivElement>) => {
+    const { className, dataset, colors, maxWidth, visibleDatasetCount, valueFormatter, labelFormatter, style } = props;
+    const classes = useStyles();
+    const theme: any = useTheme();
+    const visibleDatasetArray = visibleDatasetCount ? dataset.slice(0, visibleDatasetCount) : dataset;
 
-  const colorPalette = resolveColors(colors, theme.theme);
+    const colorPalette = resolveColors(colors, theme.theme);
 
-  const maxValue = Math.max(...dataset.map((item) => item.value));
+    const maxValue = Math.max(...dataset.map((item) => item.value));
 
-  return (
-    <div className={`${classes.container} ${className}`} style={{ maxWidth, ...style }} ref={ref}>
-      {visibleDatasetArray.map((item, index) => {
-        return (
-          <div key={item.label}>
-            <div className={classes.labelContainer}>
-              <span className={classes.label}>{labelFormatter(item.label)}</span>
-              <span
-                className={classes.text}
-                style={{
-                  fontSize: '12px'
-                }}
-              >
-                {valueFormatter(item.value)}
-              </span>
+    return (
+      <div className={`${classes.container} ${className}`} style={{ maxWidth, ...style }} ref={ref}>
+        {visibleDatasetArray.map((item, index) => {
+          return (
+            <div key={item.label}>
+              <div className={classes.labelContainer}>
+                <span className={classes.label}>{labelFormatter(item.label)}</span>
+                <span
+                  className={classes.text}
+                  style={{
+                    fontSize: '12px'
+                  }}
+                >
+                  {valueFormatter(item.value)}
+                </span>
+              </div>
+              <div className={classes.valueContainer}>
+                <div
+                  className={classes.valueBar}
+                  style={{
+                    width: `${(item.value / maxValue) * 100}%`,
+                    backgroundColor: colorPalette[index]
+                  }}
+                />
+                <div className={classes.fillUp} />
+              </div>
             </div>
-            <div className={classes.valueContainer}>
-              <div
-                className={classes.valueBar}
-                style={{
-                  width: `${(item.value / maxValue) * 100}%`,
-                  backgroundColor: colorPalette[index]
-                }}
-              />
-              <div className={classes.fillUp} />
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-});
+          );
+        })}
+      </div>
+    );
+  }
+);
 
 MicroBarChart.displayName = 'MicroBarChart';
 MicroBarChart.defaultProps = {

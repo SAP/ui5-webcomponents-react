@@ -1,10 +1,10 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import React, { CSSProperties, forwardRef, Ref, useCallback } from 'react';
+import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
+import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
-import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import styles from './Avatar.jss';
 
 export interface AvatarPropTypes extends CommonProps {
@@ -20,7 +20,7 @@ export interface AvatarPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<JSSTheme, string>(styles);
 
-const Avatar = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) => {
+const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) => {
   const {
     initials,
     size,
