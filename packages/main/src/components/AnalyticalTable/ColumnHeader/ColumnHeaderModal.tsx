@@ -104,8 +104,8 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
         {showFilter && !column.isGrouped && (
           <CustomListItem type={ListItemTypes.Inactive}>
             <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ padding: '0px 1rem' }}>
-              <Icon name="filter" style={{ paddingRight: '1rem' }} />
-              <Filter column={column} />
+              <Icon name="filter" style={{ paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }} />
+              <Filter column={column} popoverRef={popoverRef} />
             </FlexBox>
           </CustomListItem>
         )}

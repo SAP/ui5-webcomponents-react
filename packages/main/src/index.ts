@@ -104,6 +104,7 @@ import { TableCell } from './lib/TableCell';
 import { TableColumn } from './lib/TableColumn';
 import { TablePlaceholder } from './lib/TablePlaceholder';
 import { TableRow } from './lib/TableRow';
+import { TableSelectionMode } from './lib/TableSelectionMode';
 import { Text } from './lib/Text';
 import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
@@ -223,6 +224,7 @@ export {
   TableColumn,
   TablePlaceholder,
   TableRow,
+  TableSelectionMode,
   Text,
   TextAlign,
   TextArea,

@@ -1569,7 +1569,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   <ui5-icon
                     class=""
                     name="filter"
-                    style="padding-right: 1rem;"
+                    style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                   />
                   <ui5-input
                     class=""
@@ -1657,7 +1657,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   <ui5-icon
                     class=""
                     name="filter"
-                    style="padding-right: 1rem;"
+                    style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                   />
                   <ui5-input
                     class=""
@@ -1745,7 +1745,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   <ui5-icon
                     class=""
                     name="filter"
-                    style="padding-right: 1rem;"
+                    style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                   />
                   <ui5-input
                     class=""
@@ -1834,7 +1834,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   <ui5-icon
                     class=""
                     name="filter"
-                    style="padding-right: 1rem;"
+                    style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                   />
                   <ui5-input
                     class=""

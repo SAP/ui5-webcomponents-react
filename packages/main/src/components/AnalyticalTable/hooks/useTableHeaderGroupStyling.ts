@@ -1,14 +1,12 @@
 import { PluginHook } from 'react-table';
 
-export const useTableHeaderGroupStyling = (classes) => {
-  const hook: PluginHook<{}> = (instance) => {
-    instance.getHeaderGroupProps.push((headerGroupProps) => {
-      return {
-        ...headerGroupProps,
-        className: classes.tableHeaderRow
-      };
-    });
-  };
-  hook.pluginName = 'useTableHeaderGroupStyling';
-  return hook;
+export const useTableHeaderGroupStyling: PluginHook<{}> = (hooks) => {
+  hooks.getHeaderGroupProps.push((headerGroupProps, { instance }) => {
+    const { classes } = instance.webComponentsReactProperties;
+    return {
+      ...headerGroupProps,
+      className: classes.tableHeaderRow
+    };
+  });
 };
+useTableHeaderGroupStyling.pluginName = 'useTableHeaderGroupStyling';
