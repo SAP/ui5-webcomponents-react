@@ -1,48 +1,47 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 
 const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
-export const useTableRowStyling = (classes, selectable, onRowSelected) => {
-  const hook = (instance) => {
-    instance.getRowProps.push((passedRowProps, { row }) => {
-      let className = classes.tr;
-      if (row.isGrouped) {
-        className += ` ${classes.tableGroupHeader}`;
-      }
+export const useTableRowStyling = (hooks) => {
+  hooks.getRowProps.push((passedRowProps, { instance, row }) => {
+    const { classes, selectionMode, onRowSelected } = instance.webComponentsReactProperties;
+    console.log('Outer', selectionMode);
+    let className = classes.tr;
+    if (row.isGrouped) {
+      className += ` ${classes.tableGroupHeader}`;
+    }
 
-      const rowProps: any = {
-        ...passedRowProps,
-        className,
-        role: 'row'
-      };
-
-      if (selectable) {
-        rowProps.onClick = (e) => {
-          if (row.isGrouped) {
-            return;
-          }
-
-          row.toggleRowSelected();
-          if (typeof onRowSelected === 'function') {
-            onRowSelected(Event.of(null, e, { row, isSelected: !row.isSelected }));
-          }
-          const clickedRow = e.currentTarget as HTMLDivElement;
-          if (clickedRow.hasAttribute(ROW_SELECTION_ATTRIBUTE)) {
-            clickedRow.removeAttribute(ROW_SELECTION_ATTRIBUTE);
-          } else {
-            clickedRow.setAttribute(ROW_SELECTION_ATTRIBUTE, '');
-          }
-        };
-        if (row.isSelected) {
-          rowProps['data-is-selected'] = '';
+    const rowProps: any = {
+      ...passedRowProps,
+      className,
+      role: 'row'
+    };
+    if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode)) {
+      rowProps.onClick = (e) => {
+        if (row.isGrouped) {
+          return;
         }
+
+        row.toggleRowSelected();
+
+        if (typeof onRowSelected === 'function') {
+          onRowSelected(Event.of(null, e, { row, isSelected: !row.isSelected }));
+        }
+
+        console.log('Inner', selectionMode);
+        if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
+          instance.selectedFlatRows.forEach(({ id }) => {
+            instance.toggleRowSelected(id, false);
+          });
+        }
+      };
+      if (row.isSelected) {
+        rowProps[ROW_SELECTION_ATTRIBUTE] = '';
       }
-      return rowProps;
-    });
-
-    return instance;
-  };
-
-  hook.pluginName = 'useTableRowStyling';
-  return hook;
+    }
+    return rowProps;
+  });
 };
+
+useTableRowStyling.pluginName = 'useTableRowStyling';

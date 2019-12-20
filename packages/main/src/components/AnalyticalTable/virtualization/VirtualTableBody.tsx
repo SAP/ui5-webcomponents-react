@@ -2,6 +2,7 @@ import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
+import { TableSelectionMode } from '../../../lib/TableSelectionMode';
 import { VirtualTableRow } from './VirtualTableRow';
 
 export const VirtualTableBody = (props) => {
@@ -11,7 +12,7 @@ export const VirtualTableBody = (props) => {
     rows,
     minRows,
     columns,
-    selectable,
+    selectionMode,
     reactWindowRef,
     isTreeTable,
     internalRowHeight,
@@ -26,10 +27,11 @@ export const VirtualTableBody = (props) => {
   const innerDivRef = useRef(null);
 
   useEffect(() => {
+    selectionMode;
     if (innerDivRef.current) {
       innerDivRef.current.classList = '';
       innerDivRef.current.classList.add(classes.tbody);
-      if (selectable) {
+      if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
         innerDivRef.current.classList.add(classes.selectable);
       }
       if (alternateRowColor) {
@@ -38,7 +40,7 @@ export const VirtualTableBody = (props) => {
     }
   }, [
     innerDivRef.current,
-    selectable,
+    selectionMode,
     classes.tbody,
     classes.selectable,
     alternateRowColor,
@@ -57,7 +59,7 @@ export const VirtualTableBody = (props) => {
         columns
       }
     };
-  }, [rows, prepareRow, isTreeTable, classes, columns, selectedFlatRows]);
+  }, [rows, prepareRow, isTreeTable, classes, columns, selectedFlatRows, selectionMode]);
 
   const getItemKey = useCallback(
     (index, data) => {

@@ -1,14 +1,10 @@
-import { PluginHook } from 'react-table';
-
-export const useTableStyling = (classes) => {
-  const hook: PluginHook<{}> = (tableHooks) => {
-    tableHooks.getTableProps.push((tableProps) => {
-      return {
-        ...tableProps,
-        className: classes.table
-      };
-    });
-  };
-  hook.pluginName = 'useTableStyling';
-  return hook;
+export const useTableStyling = (tableHooks) => {
+  tableHooks.getTableProps.push((tableProps, { instance }) => {
+    const { classes } = instance.webComponentsReactProperties;
+    return {
+      ...tableProps,
+      className: classes.table
+    };
+  });
 };
+useTableStyling.pluginName = 'useTableStyling';

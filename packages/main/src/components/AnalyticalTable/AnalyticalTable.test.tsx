@@ -1,7 +1,7 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 
 const columns = [
   {
@@ -172,7 +172,7 @@ describe('AnalyticalTable', () => {
         filterable={true}
         visibleRows={15}
         minRows={5}
-        selectable={true}
+        selectionMode={TableSelectionMode.SINGLE_SELECT}
         subRowsKey="subRows"
         isTreeTable={true}
       />
