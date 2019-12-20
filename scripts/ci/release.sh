@@ -16,31 +16,15 @@ yarn install --mutex network
 # run tests
 yarn test
 
-# trigger lerna release and create new storybook
-./node_modules/.bin/lerna version --conventional-graduate
-
-# These steps are only required in case we don't a user with admin privileges
-# get the new version number
-#RELEASE_VERSION=$(node -p "require('./lerna.json').version")
-# get the new version number
-#git checkout -b releases/${RELEASE_VERSION}
-#git push --set-upstream origin releases/${RELEASE_VERSION}
-
 # build the project with the new version after lerna version
 yarn build
-# reset potential changes in sizes
-git checkout scripts/rollup/results.json
-
-# if we came to that point we are ready for publish
 
 # create npmrc with auth
 bash ${WORKSPACE}/scripts/ci/setup-npm.sh
 
-# now start publishing each package
-cd ${WORKSPACE}/build/node_modules/charts && npm publish --access public
-cd ${WORKSPACE}/build/node_modules/main && npm publish --access public
-cd ${WORKSPACE}/build/node_modules/base && npm publish --access public
-
+# trigger lerna release and create new storybook
+${WORKSPACE}/node_modules/.bin/lerna publish --conventional-graduate \
+  --create-release github
 
 # all packages are now released, clear npm-session
 rm ~/.npmrc
