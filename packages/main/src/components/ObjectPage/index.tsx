@@ -207,7 +207,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   };
 
   const changeHeader = useCallback(() => {
-    debugger;
     hideHeaderButtonPressed.current = true;
 
     if (!expandHeaderActive && collapsedHeader) {
@@ -322,7 +321,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     if (noHeader && !alwaysShowContentHeader) {
       return renderAnchorBar();
     }
-    debugger;
     return (
       <>
         <header className={classes.titleBar}>
