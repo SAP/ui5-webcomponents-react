@@ -50,7 +50,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiListBackground,
     color: parameters.sapUiListTextColor,
     '&[data-is-selected]': {
-      backgroundColor: parameters.sapUiListSelectionBackgroundColor
+      backgroundColor: `${parameters.sapUiListSelectionBackgroundColor} !important`
     },
     '&[data-is-selected]:hover': {
       backgroundColor: `${parameters.sapUiListSelectionHoverBackground} !important`
