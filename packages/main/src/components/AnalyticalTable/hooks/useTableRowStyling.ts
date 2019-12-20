@@ -6,7 +6,6 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 export const useTableRowStyling = (hooks) => {
   hooks.getRowProps.push((passedRowProps, { instance, row }) => {
     const { classes, selectionMode, onRowSelected } = instance.webComponentsReactProperties;
-    console.log('Outer', selectionMode);
     let className = classes.tr;
     if (row.isGrouped) {
       className += ` ${classes.tableGroupHeader}`;
@@ -29,7 +28,6 @@ export const useTableRowStyling = (hooks) => {
           onRowSelected(Event.of(null, e, { row, isSelected: !row.isSelected }));
         }
 
-        console.log('Inner', selectionMode);
         if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
           instance.selectedFlatRows.forEach(({ id }) => {
             instance.toggleRowSelected(id, false);

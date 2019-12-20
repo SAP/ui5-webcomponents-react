@@ -1,6 +1,6 @@
+import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
 import { ComponentType, RefObject } from 'react';
 import { Column } from 'react-table';
-import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 
 export interface ColumnType extends Column {
   show: boolean;
