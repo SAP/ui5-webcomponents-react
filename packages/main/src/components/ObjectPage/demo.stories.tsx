@@ -10,9 +10,13 @@ import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';
 import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 // @ts-ignore
 import SampleImage from './DemoImage.png';
 import notes from './ObjectPage.md';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 
 const renderHeaderContent = () => (
   <>
@@ -26,6 +30,32 @@ const renderHeaderContent = () => (
     </div>
   </>
 );
+
+const renderBreadcrumbs = () => (
+  <Breadcrumbs>
+    <Link href="PathSegment1">Path1</Link>
+    <Link href="PathSegment2">Path2</Link>
+    <Link href="PathSegment3"></Link>
+  </Breadcrumbs>
+);
+
+const renderKeyInfos = () => (
+  <>
+    <div>
+      <Title level={TitleLevel.H5}>Key Info 1</Title>
+      <Text>Value 1</Text>
+    </div>
+    <div>
+      <Title level={TitleLevel.H5}>Key Info 2</Title>
+      <Text>Value 2</Text>
+    </div>
+    <div>
+      <Title level={TitleLevel.H5}>Key Info 3</Title>
+      <Text>Value 3</Text>
+    </div>
+  </>
+);
+
 export const renderDemo = () => {
   return (
     <div style={{ width: 'calc(100% - 1rem)', height: 'calc(100% - 1rem)', position: 'relative', marginTop: '2rem' }}>
@@ -49,8 +79,10 @@ export const renderDemo = () => {
         selectedSubSectionId={text('selectedSubSectionId', undefined)}
         onSelectedSectionChanged={action('onSelectedSectionChanged')}
         noHeader={boolean('noHeader', false)}
-        alwaysShowContentHeader={boolean('alwaysShowContentHeader', true)}
+        alwaysShowContentHeader={boolean('alwaysShowContentHeader', false)}
         showTitleInHeaderContent={boolean('showTitleInHeaderContent', true)}
+        renderBreadcrumbs={renderBreadcrumbs}
+        renderKeyInfos={renderKeyInfos}
         style={{ height: '700px' }}
       >
         <ObjectPageSection title="Test 1" id="1">
