@@ -289,7 +289,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader--resizer-"
+            class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
             style="cursor: ew-resize;"
           />
@@ -762,7 +762,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader--resizer-"
+            class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
             style="cursor: ew-resize;"
           />
@@ -1235,7 +1235,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader--resizer-"
+            class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
             style="cursor: ew-resize;"
           />
@@ -1847,7 +1847,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader--resizer-"
+            class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
             style="cursor: ew-resize;"
           />
@@ -2349,7 +2349,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader--resizer-"
+            class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
             style="cursor: ew-resize;"
           />
@@ -2822,7 +2822,7 @@ exports[`AnalyticalTable render without data 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader--resizer-"
+            class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
             style="cursor: ew-resize;"
           />
@@ -3128,7 +3128,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader--resizer-"
+            class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
             style="cursor: ew-resize;"
           />
@@ -3601,7 +3601,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader--resizer-"
+            class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
             style="cursor: ew-resize;"
           />

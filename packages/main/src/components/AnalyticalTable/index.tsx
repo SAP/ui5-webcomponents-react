@@ -225,7 +225,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const updateTableSizes = useCallback(() => {
     const visibleColumns = columns.filter(Boolean).filter(({ show }) => show ?? true);
-    const columnsWithFixedWidth = columns.filter(({ width }) => width ?? false).map(({ width }) => width);
+    const columnsWithFixedWidth = columns
+      .filter(({ width, minWidth }) => width ?? minWidth ?? false)
+      .map(({ width, minWidth }) => width ?? minWidth);
     const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
     if (visibleColumns.length > 0 && tableRef.current.clientWidth > 0) {
       setColumnWidth(
@@ -234,7 +236,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     } else {
       setColumnWidth(150);
     }
-  }, []);
+  }, [tableRef.current, columns]);
 
   useEffect(() => {
     updateTableSizes();
