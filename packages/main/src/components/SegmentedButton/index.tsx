@@ -93,6 +93,7 @@ const SegmentedButton: FC<SegmentedButtonPropTypes> = forwardRef(
 
     useEffect(() => {
       requestAnimationFrame(() => {
+        if (!listRef.current) return;
         let maxWidth = 0;
         for (let i = 0; i < listRef.current.childElementCount; i++) {
           const item = listRef.current.children.item(i) as HTMLLIElement;
