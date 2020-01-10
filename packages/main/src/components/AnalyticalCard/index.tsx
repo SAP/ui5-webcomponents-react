@@ -1,3 +1,4 @@
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -35,8 +36,17 @@ export const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef(
         ...style
       };
     }, [style, width]);
+
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     return (
-      <div ref={ref} className={classNameString.toString()} style={analyticalCardStyles} title={tooltip}>
+      <div
+        ref={ref}
+        className={classNameString.toString()}
+        style={analyticalCardStyles}
+        title={tooltip}
+        {...passThroughProps}
+      >
         {header}
         <div className={classes.content}>{children}</div>
       </div>

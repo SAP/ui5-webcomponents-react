@@ -1,4 +1,5 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
@@ -86,6 +87,8 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
     [onClick]
   );
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <span
       ref={ref}
@@ -96,6 +99,7 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
       onKeyDown={handleKeyDown}
       title={tooltip}
       slot={slot}
+      {...passThroughProps}
     >
       {initials ? initials : children}
     </span>

@@ -1,4 +1,4 @@
-import { renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import { Notification } from '@ui5/webcomponents-react/lib/Notification';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -71,4 +71,6 @@ describe('Notification', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(Notification);
 });

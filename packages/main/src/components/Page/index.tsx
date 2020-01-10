@@ -1,6 +1,7 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-left-arrow';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -95,8 +96,10 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
 
   pageContainer.put(classes[`background${backgroundDesign}`]);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
-    <div ref={ref} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot}>
+    <div ref={ref} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot} {...passThroughProps}>
       {showHeader && <header className={headerClasses.valueOf()}>{header}</header>}
       <section className={classes.contentSection}>{children}</section>
       {showFooter && <footer className={footerClasses.valueOf()}>{renderCustomFooter && renderCustomFooter()}</footer>}

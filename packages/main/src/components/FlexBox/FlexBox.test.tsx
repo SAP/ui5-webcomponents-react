@@ -1,7 +1,7 @@
-import { mountThemedComponent } from '@shared/tests/utils';
-import * as React from 'react';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+import * as React from 'react';
 
 describe('FlexBox', () => {
   test('JustifyContent: End', () => {
@@ -43,4 +43,6 @@ describe('FlexBox', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(FlexBox);
 });

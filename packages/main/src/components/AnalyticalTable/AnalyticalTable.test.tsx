@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React from 'react';
@@ -259,4 +259,6 @@ describe('AnalyticalTable', () => {
 
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(AnalyticalTable);
 });

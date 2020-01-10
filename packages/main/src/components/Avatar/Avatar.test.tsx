@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import sinon from 'sinon';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
@@ -72,4 +72,6 @@ describe('Avatar', () => {
     wrapper.find(Avatar).simulate('keyDown', { key: 'ArrowLeft' });
     expect(callback.called).toBe(false);
   });
+
+  createPassThroughPropsTest(Avatar);
 });

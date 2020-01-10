@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';
 import React from 'react';
@@ -28,4 +28,6 @@ describe('SideNavigationListItem', () => {
     });
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(SideNavigationListItem);
 });

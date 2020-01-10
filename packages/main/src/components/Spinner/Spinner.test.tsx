@@ -1,4 +1,4 @@
-import { renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import { Size } from '@ui5/webcomponents-react/lib/Size';
 import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
@@ -28,4 +28,6 @@ describe('Spinner', () => {
     const wrapper = renderThemedComponent(<Spinner size={Size.Large} delay={2000} />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(Spinner);
 });

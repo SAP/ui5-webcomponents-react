@@ -1,9 +1,20 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow.js';
+import '@ui5/webcomponents-icons/dist/icons/navigation-up-arrow.js';
+import { IScroller } from '@ui5/webcomponents-react-base/interfaces/IScroller';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { Scroller } from '@ui5/webcomponents-react-base/lib/Scroller';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
+import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import debounce from 'lodash.debounce';
 import React, {
   Children,
+  CSSProperties,
   FC,
   forwardRef,
   ReactElement,
@@ -15,25 +26,15 @@ import React, {
   useLayoutEffect,
   useMemo,
   useRef,
-  useState,
-  CSSProperties
+  useState
 } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
+import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
+import { CollapsedAvatar } from './CollapsedAvatar';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { CollapsedAvatar } from './CollapsedAvatar';
-import { Scroller } from '@ui5/webcomponents-react-base/lib/Scroller';
-import { IScroller } from '@ui5/webcomponents-react-base/interfaces/IScroller';
-import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-import '@ui5/webcomponents-icons/dist/icons/navigation-up-arrow.js';
-import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
-import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow.js';
-import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
@@ -645,6 +646,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     ];
   }, [scrollbarWidth]);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <div
       data-component-name="ObjectPage"
@@ -653,6 +656,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       style={style}
       ref={objectPage}
       title={tooltip}
+      {...passThroughProps}
     >
       <Scroller ref={scroller} scrollContainer={contentContainer}>
         <div style={scrollBarWidthStyle} className={classes.outerScrollbar}>

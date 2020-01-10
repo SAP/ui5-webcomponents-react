@@ -1,4 +1,6 @@
+import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/lib/List';
@@ -9,7 +11,6 @@ import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -83,7 +84,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [selectedKey, setSelectedKey] = useState(
-      initialSelectedKey ? initialSelectedKey : variantItems.length ? variantItems[0].key : null
+      initialSelectedKey ? initialSelectedKey : variantItems?.[0]?.key ?? null
     );
 
     if (!variantItems || variantItems.length < 1) {
@@ -146,6 +147,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
       },
       [handleCancelButtonClick, closeOnItemSelect, selectedKey, variantItems, setSelectedKey]
     );
+    const passThroughProps = usePassThroughHtmlProps(props);
 
     return (
       <Popover
@@ -160,6 +162,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
         className={className}
         style={style}
         tooltip={tooltip}
+        {...passThroughProps}
       >
         <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
           {variantItems.map((item) => (

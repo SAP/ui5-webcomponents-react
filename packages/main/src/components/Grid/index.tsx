@@ -1,4 +1,6 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 import React, {
   Children,
   CSSProperties,
@@ -13,7 +15,6 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Grid.jss';
-import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 
 export enum GridPosition {
   Left = 'Left',
@@ -163,8 +164,17 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
     return <div className={gridSpanClasses.valueOf()}>{child}</div>;
   };
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
-    <div ref={ref} className={gridClasses.valueOf()} style={gridStyle} title={tooltip} slot={slot}>
+    <div
+      ref={ref}
+      className={gridClasses.valueOf()}
+      style={gridStyle}
+      title={tooltip}
+      slot={slot}
+      {...passThroughProps}
+    >
       {Children.map(children, renderGridElements)}
     </div>
   );

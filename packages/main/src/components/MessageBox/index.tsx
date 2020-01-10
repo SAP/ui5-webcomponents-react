@@ -5,6 +5,7 @@ import '@ui5/webcomponents-icons/dist/icons/message-success';
 import '@ui5/webcomponents-icons/dist/icons/message-warning';
 import '@ui5/webcomponents-icons/dist/icons/question-mark';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
@@ -100,6 +101,8 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     [onClose]
   );
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <Dialog
       open={open}
@@ -131,6 +134,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
           ))}
         </footer>
       }
+      {...passThroughProps}
     >
       <Text className={classes.content}>{children}</Text>
     </Dialog>

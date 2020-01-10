@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
 import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
@@ -100,4 +100,6 @@ describe('SideNavigation', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(SideNavigation);
 });

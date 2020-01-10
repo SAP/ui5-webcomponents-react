@@ -1,4 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
 import React, { CSSProperties, FC, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -48,6 +49,8 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
     return null;
   }
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <div
       ref={ref}
@@ -58,6 +61,7 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
       title={tooltip || 'Please wait'}
       slot={slot}
       style={inlineStyles}
+      {...passThroughProps}
     />
   );
 });

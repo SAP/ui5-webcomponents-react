@@ -1,5 +1,6 @@
 import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, { Children, cloneElement, forwardRef, ReactElement, ReactNode, RefObject, FC } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -55,8 +56,17 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       }
     };
 
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     return (
-      <Popover ref={popoverRef} openBy={openBy} placementType={placement} style={style} slot={slot}>
+      <Popover
+        ref={popoverRef}
+        openBy={openBy}
+        placementType={placement}
+        style={style}
+        slot={slot}
+        {...passThroughProps}
+      >
         <ul className={actionSheetClasses.valueOf()}>{Children.map(children, renderActionSheetButton)}</ul>
       </Popover>
     );

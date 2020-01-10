@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';
 import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';
@@ -32,4 +32,6 @@ describe('Analytical Card', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(AnalyticalCard);
 });

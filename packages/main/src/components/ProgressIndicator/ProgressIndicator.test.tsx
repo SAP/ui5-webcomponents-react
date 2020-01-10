@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
@@ -29,4 +29,6 @@ describe('ProgressIndicator', () => {
   });
 
   testFactory();
+
+  createPassThroughPropsTest(ProgressIndicator);
 });

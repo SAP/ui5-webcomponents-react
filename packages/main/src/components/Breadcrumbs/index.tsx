@@ -1,3 +1,4 @@
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/lib/BreadcrumbsSeparatorStyle';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React, { Children, FC, forwardRef, Fragment, ReactNode, ReactNodeArray, Ref } from 'react';
@@ -33,8 +34,10 @@ const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsProp
   const { children, separatorStyle, currentLocationText, tooltip, style, className, slot } = props;
   const childrenArray = Children.toArray(children).filter(Boolean);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
-    <div ref={ref} title={tooltip} style={style} className={className} slot={slot}>
+    <div ref={ref} title={tooltip} style={style} className={className} slot={slot} {...passThroughProps}>
       {childrenArray.map((item, index) => {
         if (index === childrenArray.length - 1) {
           return item;

@@ -1,4 +1,4 @@
-import { renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import { Notification } from '@ui5/webcomponents-react/lib/Notification';
 import { NotificationGroup } from '@ui5/webcomponents-react/lib/NotificationGroup';
@@ -132,4 +132,6 @@ describe('NotificationGroup', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(NotificationGroup);
 });

@@ -1,6 +1,4 @@
 import React, { FC, forwardRef, RefObject } from 'react';
-
-// @ts-ignore
 import { NotificationProptypes } from '@ui5/webcomponents-react/components/Notification';
 import { Notification } from '@ui5/webcomponents-react/lib/Notification';
 

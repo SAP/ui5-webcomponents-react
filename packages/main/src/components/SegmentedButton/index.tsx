@@ -1,6 +1,7 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import React, {
   Children,
@@ -112,6 +113,8 @@ const SegmentedButton: FC<SegmentedButtonPropTypes> = forwardRef(
       });
     }, [children, listRef]);
 
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     return (
       <ul
         tabIndex={0}
@@ -121,6 +124,7 @@ const SegmentedButton: FC<SegmentedButtonPropTypes> = forwardRef(
         ref={listRef}
         title={tooltip}
         slot={slot}
+        {...passThroughProps}
       >
         {Children.toArray(children)
           .filter(Boolean)
