@@ -1,4 +1,4 @@
-import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 
@@ -48,4 +48,6 @@ describe('Bar', () => {
     const node = wrapper.getDOMNode();
     expect(window.getComputedStyle(node).paddingLeft).toEqual('0.5rem');
   });
+
+  createPassThroughPropsTest(Bar);
 });

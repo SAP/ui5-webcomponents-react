@@ -1,4 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { CSSProperties, FC, forwardRef, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -42,8 +43,18 @@ const Text: FC<TextProps> = forwardRef((props: TextProps, ref: Ref<HTMLSpanEleme
   if (style) {
     Object.assign(inlineStyles, style);
   }
+
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
-    <span ref={ref} style={inlineStyles} className={classNameString.toString()} title={tooltip} slot={slot}>
+    <span
+      ref={ref}
+      style={inlineStyles}
+      className={classNameString.toString()}
+      title={tooltip}
+      slot={slot}
+      {...passThroughProps}
+    >
       {children}
     </span>
   );

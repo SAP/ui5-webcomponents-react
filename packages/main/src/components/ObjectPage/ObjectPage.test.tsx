@@ -1,4 +1,9 @@
-import { getEventFromCallback, mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
+import {
+  createPassThroughPropsTest,
+  getEventFromCallback,
+  mountThemedComponent,
+  renderThemedComponent
+} from '@shared/tests/utils';
 import React from 'react';
 import * as sinon from 'sinon';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -202,4 +207,6 @@ describe('ObjectPage', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(ObjectPage);
 });

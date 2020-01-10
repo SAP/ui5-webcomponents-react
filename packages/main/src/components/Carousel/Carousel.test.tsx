@@ -1,4 +1,4 @@
-import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
 import React, { cloneElement } from 'react';
 import * as sinon from 'sinon';
 import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
@@ -166,4 +166,6 @@ describe('Carousel', () => {
       .simulate('keydown', { key: 'ArrowLeft' });
     expect(getEventFromCallback(callback).getParameter('selectedIndex')).toEqual(0);
   });
+
+  createPassThroughPropsTest(Carousel);
 });

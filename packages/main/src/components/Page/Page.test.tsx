@@ -1,4 +1,4 @@
-import { renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
 import { Page } from '@ui5/webcomponents-react/lib/Page';
 import React from 'react';
 
@@ -33,4 +33,6 @@ describe('Page', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(Page);
 });

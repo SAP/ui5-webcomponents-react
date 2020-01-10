@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
 import { Form } from '@ui5/webcomponents-react/lib/Form';
 import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
@@ -87,4 +87,6 @@ describe('Create a Form', () => {
     const wrapper = mountThemedComponent(ungroupedChildren);
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(Form);
 });

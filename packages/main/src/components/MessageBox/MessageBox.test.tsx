@@ -1,4 +1,4 @@
-import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import { spy } from 'sinon';
 import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
@@ -170,4 +170,6 @@ describe('MessageBox', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(MessageBox);
 });

@@ -1,4 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React, { FC, forwardRef, Ref, useMemo } from 'react';
@@ -73,8 +74,17 @@ const ProgressIndicator: FC<ProgressIndicatorPropTypes> = forwardRef(
 
     const progressBarContainerStyle = useMemo(() => ({ ...style, width, height }), [style, width, height]);
 
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     return (
-      <div ref={ref} className={wrapperClasses.valueOf()} style={progressBarContainerStyle} title={tooltip} slot={slot}>
+      <div
+        ref={ref}
+        className={wrapperClasses.valueOf()}
+        style={progressBarContainerStyle}
+        title={tooltip}
+        slot={slot}
+        {...passThroughProps}
+      >
         <div className={progressBarClasses.valueOf()} style={progressBarStyle}>
           {percentValue <= 50 ? null : progressBarTextSpan}
         </div>

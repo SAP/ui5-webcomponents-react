@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
@@ -38,4 +38,6 @@ describe('ObjectStatus', () => {
     const wrapper = mountThemedComponent(<ObjectStatus>{el}</ObjectStatus>);
     expect(wrapper.text()).toEqual(el);
   });
+
+  createPassThroughPropsTest(ObjectStatus);
 });

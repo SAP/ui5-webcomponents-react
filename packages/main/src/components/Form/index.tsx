@@ -1,14 +1,15 @@
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
-import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import { styles } from './Form.jss';
+import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
-import { FormGroup } from './FormGroup';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { CurrentRange } from './CurrentViewportRangeContext';
+import { styles } from './Form.jss';
+import { FormGroup } from './FormGroup';
 
 export interface FormPropTypes extends CommonProps {
   /**
@@ -62,6 +63,8 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     return [formGroups, updatedTitle];
   }, [children]);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <CurrentRange.Provider value={currentRange}>
       {updatedTitle && (
@@ -72,7 +75,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
           <div className={classes.formTitlePaddingBottom} />
         </>
       )}
-      <Grid ref={ref} children={formGroups} defaultSpan={'XL6 L12 M12 S12'} />
+      <Grid ref={ref} children={formGroups} defaultSpan={'XL6 L12 M12 S12'} {...passThroughProps} />
     </CurrentRange.Provider>
   );
 });

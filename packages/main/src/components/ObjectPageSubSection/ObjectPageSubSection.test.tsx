@@ -1,4 +1,4 @@
-import { renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
 import { shallow } from 'enzyme';
 import React from 'react';
 import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
@@ -15,4 +15,6 @@ describe('ObjectPageSubSection', () => {
     const renderer = () => shallow(<ObjectPageSubSection.InnerComponent title="test" classes={{}} />);
     expect(renderer).toThrow();
   });
+
+  createPassThroughPropsTest(ObjectPageSubSection);
 });

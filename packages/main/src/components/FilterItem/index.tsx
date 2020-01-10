@@ -1,18 +1,19 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import React, { FC, forwardRef, ReactNode, RefObject, useMemo } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { FilterType } from '@ui5/webcomponents-react/lib/FilterType';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
-import { createUseStyles } from 'react-jss';
-import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
-import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
+import { Select } from '@ui5/webcomponents-react/lib/Select';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import React, { FC, forwardRef, ReactNode, RefObject, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterItem.jss';
-import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 
 export interface FilterItemPropTypes extends CommonProps {
   placeholder?: string;
@@ -126,8 +127,10 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
 
   const filterItemClasses = StyleClassHelper.of(classes.filterItem);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
-    <div ref={ref} className={filterItemClasses.toString()} style={style} title={tooltip}>
+    <div ref={ref} className={filterItemClasses.toString()} style={style} title={tooltip} {...passThroughProps}>
       <div className={classes.innerFilterItemContainer}>
         <Label>{label}</Label>
         {filterComponent}

@@ -5,6 +5,7 @@ exports[`SideNavigationListItem Basic 1`] = `
   class="SideNavigationListItem--listItem-"
   data-has-children="false"
   data-id="home"
+  id="home"
   type="Active"
 >
   <ui5-icon
@@ -19,6 +20,7 @@ exports[`SideNavigationListItem compact size 1`] = `
   class="SideNavigationListItem--listItem-"
   data-has-children="false"
   data-id="home"
+  id="home"
   type="Active"
 >
   <ui5-icon
@@ -33,6 +35,7 @@ exports[`SideNavigationListItem custom class name and style 1`] = `
   class="SideNavigationListItem--listItem- myClass"
   data-has-children="false"
   data-id="home"
+  id="home"
   style="background-color: pink;"
   type="Active"
 >

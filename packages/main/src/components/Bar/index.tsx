@@ -1,4 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import React, { FC, forwardRef, Ref } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -29,8 +30,18 @@ const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivE
     cssClasses.put(classes.compact);
   }
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
-    <div data-bar-part="Root" className={cssClasses.toString()} style={style} title={tooltip} slot={slot} ref={ref}>
+    <div
+      data-bar-part="Root"
+      className={cssClasses.toString()}
+      style={style}
+      title={tooltip}
+      slot={slot}
+      ref={ref}
+      {...passThroughProps}
+    >
       <div data-bar-part="Left" className={classes.left}>
         {renderContentLeft()}
       </div>

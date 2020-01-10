@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import React from 'react';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
 import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';
@@ -7,8 +7,14 @@ import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 
-const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
-const filterItems = [{ text: 'Text 1', key: '1' }, { text: 'Text 2', key: '2' }];
+const variantItems = [
+  { label: 'Variant 1', key: '1' },
+  { label: 'Variant 2', key: '2' }
+];
+const filterItems = [
+  { text: 'Text 1', key: '1' },
+  { text: 'Text 2', key: '2' }
+];
 
 const renderVariants = () => <VariantManagement variantItems={variantItems} />;
 const renderSearch = () => <Input placeholder={'Search'} />;
@@ -120,4 +126,6 @@ describe('FilterBar', () => {
 
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(FilterBar);
 });

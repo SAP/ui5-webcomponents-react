@@ -1,8 +1,11 @@
-import { mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
+import React from 'react';
 
-const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
+const variantItems = [
+  { label: 'Variant 1', key: '1' },
+  { label: 'Variant 2', key: '2' }
+];
 
 describe('VariantManagement', () => {
   test('Render without crashing', () => {
@@ -36,4 +39,6 @@ describe('VariantManagement', () => {
   //
   //
   // });
+
+  createPassThroughPropsTest(VariantManagement, { variantItems });
 });
