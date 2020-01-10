@@ -224,8 +224,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   );
 
   const updateTableSizes = useCallback(() => {
-    const visibleColumns = columns.filter(Boolean).filter(({ show }) => show ?? true);
-    const columnsWithFixedWidth = columns
+    const visibleColumns = columns.filter(Boolean).filter((item) => {
+      return (item.isVisible ?? true) && !tableState.hiddenColumns.includes(item.accessor);
+    });
+    const columnsWithFixedWidth = visibleColumns
       .filter(({ width, minWidth }) => width ?? minWidth ?? false)
       .map(({ width, minWidth }) => width ?? minWidth);
     const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
@@ -236,7 +238,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     } else {
       setColumnWidth(150);
     }
-  }, [tableRef.current, columns]);
+  }, [tableRef.current, columns, tableState.hiddenColumns]);
 
   useEffect(() => {
     updateTableSizes();
@@ -349,7 +351,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             {loading && busyIndicatorEnabled && data.length > 0 && <LoadingComponent />}
             {loading && data.length === 0 && (
               <TablePlaceholder
-                columns={columns.filter((col) => col.show ?? true).length}
+                columns={
+                  columns.filter((col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor))
+                    .length
+                }
                 rows={props.minRows}
                 style={noDataStyles}
                 rowHeight={internalRowHeight}
