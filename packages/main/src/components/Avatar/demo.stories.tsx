@@ -55,7 +55,7 @@ withImage.story = {
 };
 
 export default {
-  title: 'Components | Avatar',
+  title: 'Components / Avatar',
   component: Avatar,
   parameters: { notes }
 };

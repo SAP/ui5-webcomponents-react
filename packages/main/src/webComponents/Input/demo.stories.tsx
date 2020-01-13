@@ -7,7 +7,7 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import notes from './Input.md';
 
 export default {
-  title: 'UI5 Web Components | Input',
+  title: 'UI5 Web Components / Input',
   component: Input,
   parameters: { notes }
 };

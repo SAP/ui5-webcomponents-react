@@ -16,14 +16,14 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
-    "@storybook/addon-actions": "5.3.0-beta.31",
-    "@storybook/addon-docs": "5.3.0-beta.31",
-    "@storybook/addon-info": "5.3.0-beta.31",
-    "@storybook/addon-knobs": "5.3.0-beta.31",
-    "@storybook/addons": "5.3.0-beta.31",
-    "@storybook/cli": "5.3.0-beta.31",
-    "@storybook/react": "5.3.0-beta.31",
-    "@storybook/theming": "5.3.0-beta.31",
+    "@storybook/addon-actions": "5.3.1",
+    "@storybook/addon-docs": "5.3.1",
+    "@storybook/addon-info": "5.3.1",
+    "@storybook/addon-knobs": "5.3.1",
+    "@storybook/addons": "5.3.1",
+    "@storybook/cli": "5.3.1",
+    "@storybook/react": "5.3.1",
+    "@storybook/theming": "5.3.1",
     "react-docgen-typescript-loader": "3.6.0"
   },
   "devDependencies": {

@@ -6,7 +6,7 @@ import '@ui5/webcomponents-icons/dist/icons/add.js';
 import notes from './Icon.md';
 
 export default {
-  title: 'UI5 Web Components | Icon',
+  title: 'UI5 Web Components / Icon',
   component: Icon,
   parameters: { notes }
 };

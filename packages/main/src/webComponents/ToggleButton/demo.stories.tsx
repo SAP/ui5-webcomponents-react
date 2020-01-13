@@ -6,7 +6,7 @@ import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import notes from './ToggleButton.md';
 
 export default {
-  title: 'UI5 Web Components | ToggleButton',
+  title: 'UI5 Web Components / ToggleButton',
   component: ToggleButton,
   parameters: { notes }
 };

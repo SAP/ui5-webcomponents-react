@@ -7,7 +7,7 @@ import { Option } from '@ui5/webcomponents-react/lib/Option';
 import notes from './Select.md';
 
 export default {
-  title: 'UI5 Web Components | Select',
+  title: 'UI5 Web Components / Select',
   component: Select,
   parameters: { notes }
 };

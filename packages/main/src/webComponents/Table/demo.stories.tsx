@@ -9,7 +9,7 @@ import { Text } from '@ui5/webcomponents-react/lib/Text';
 import notes from './Table.md';
 
 export default {
-  title: 'UI5 Web Components | Table',
+  title: 'UI5 Web Components / Table',
   component: Table,
   parameters: { notes }
 };

@@ -79,7 +79,7 @@ renderStory.story = {
 };
 
 export default {
-  title: 'Components | FilterBar',
+  title: 'Components / FilterBar',
   component: FilterBar,
   parameters: { notes }
 };

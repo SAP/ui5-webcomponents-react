@@ -47,7 +47,7 @@ defaultStory.story = {
 };
 
 export default {
-  title: 'Components | SideNavigation',
+  title: 'Components / SideNavigation',
   component: SideNavigation,
   parameters: { notes }
 };

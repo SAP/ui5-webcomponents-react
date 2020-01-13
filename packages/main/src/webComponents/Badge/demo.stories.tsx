@@ -6,7 +6,7 @@ import React from 'react';
 import notes from './Badge.md';
 
 export default {
-  title: 'UI5 Web Components | Badge',
+  title: 'UI5 Web Components / Badge',
   component: Badge,
   parameters: {
     notes

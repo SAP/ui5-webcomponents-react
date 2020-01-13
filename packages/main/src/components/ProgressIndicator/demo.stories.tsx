@@ -27,7 +27,7 @@ renderStory.story = {
 };
 
 export default {
-  title: 'Components | ProgressIndicator',
+  title: 'Components / ProgressIndicator',
   component: ProgressIndicator,
   parameters: { notes }
 };

@@ -49,7 +49,7 @@ export const defaultStory = () => {
 };
 
 export default {
-  title: 'Components | Form',
+  title: 'Components / Form',
   component: Form,
   parameters: { notes }
 };

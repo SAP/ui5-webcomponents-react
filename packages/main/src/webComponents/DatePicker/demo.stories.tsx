@@ -7,7 +7,7 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import notes from './DatePicker.md';
 
 export default {
-  title: 'UI5 Web Components | DatePicker',
+  title: 'UI5 Web Components / DatePicker',
   component: DatePicker,
   parameters: { notes }
 };

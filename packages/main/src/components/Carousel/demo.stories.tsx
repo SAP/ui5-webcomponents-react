@@ -69,7 +69,7 @@ renderCarouselWithOneChild.story = {
 };
 
 export default {
-  title: 'Components | Carousel',
+  title: 'Components / Carousel',
   component: Carousel,
   parameters: { notes }
 };

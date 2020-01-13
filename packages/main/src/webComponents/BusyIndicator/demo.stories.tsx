@@ -5,7 +5,7 @@ import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSiz
 import notes from './BusyIndicator.md';
 
 export default {
-  title: 'UI5 Web Components | BusyIndicator',
+  title: 'UI5 Web Components / BusyIndicator',
   component: BusyIndicator,
   parameters: {
     notes

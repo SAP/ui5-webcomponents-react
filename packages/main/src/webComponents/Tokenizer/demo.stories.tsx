@@ -6,7 +6,7 @@ import React from 'react';
 import notes from './Tokenizer.md';
 
 export default {
-  title: 'UI5 Web Components | Tokenizer',
+  title: 'UI5 Web Components / Tokenizer',
   component: Tokenizer,
   parameters: { notes }
 };

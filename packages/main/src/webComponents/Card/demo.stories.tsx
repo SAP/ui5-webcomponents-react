@@ -9,7 +9,7 @@ import React from 'react';
 import notes from './Card.md';
 
 export default {
-  title: 'UI5 Web Components | Card',
+  title: 'UI5 Web Components / Card',
   component: Card,
   parameters: { notes }
 };

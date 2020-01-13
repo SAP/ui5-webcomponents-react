@@ -25,7 +25,7 @@ renderStory.story = {
 };
 
 export default {
-  title: 'Components | Text',
+  title: 'Components / Text',
   component: Text,
   parameters: { notes }
 };

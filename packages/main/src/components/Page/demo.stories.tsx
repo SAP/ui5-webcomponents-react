@@ -28,7 +28,7 @@ renderPage.story = {
 };
 
 export default {
-  title: 'Components | Page',
+  title: 'Components / Page',
   component: Page,
   parameters: { notes }
 };

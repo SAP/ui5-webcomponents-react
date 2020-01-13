@@ -7,7 +7,7 @@ import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessib
 import notes from './Panel.md';
 
 export default {
-  title: 'UI5 Web Components | Panel',
+  title: 'UI5 Web Components / Panel',
   component: Panel,
   parameters: { notes }
 };

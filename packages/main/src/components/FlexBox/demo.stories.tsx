@@ -30,7 +30,7 @@ defaultStory.story = {
 };
 
 export default {
-  title: 'Components | FlexBox',
+  title: 'Components / FlexBox',
   component: FlexBox,
   parameters: { notes }
 };

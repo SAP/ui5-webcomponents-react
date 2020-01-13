@@ -4,7 +4,7 @@ import React from 'react';
 import notes from './RadialChart.md';
 
 export default {
-  title: 'Charts | RadialChart',
+  title: 'Charts / RadialChart',
   component: RadialChart,
   parameters: { notes }
 };

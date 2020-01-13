@@ -9,7 +9,7 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import notes from './List.md';
 
 export default {
-  title: 'UI5 Web Components | List',
+  title: 'UI5 Web Components / List',
   component: List,
   parameters: { notes }
 };

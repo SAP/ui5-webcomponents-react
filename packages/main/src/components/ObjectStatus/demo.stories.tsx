@@ -42,7 +42,7 @@ withIconOnly.story = {
 };
 
 export default {
-  title: 'Components | ObjectStatus',
+  title: 'Components / ObjectStatus',
   component: ObjectStatus,
   parameters: { notes }
 };

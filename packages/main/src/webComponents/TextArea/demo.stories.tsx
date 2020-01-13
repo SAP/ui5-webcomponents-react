@@ -4,7 +4,7 @@ import { TextArea } from '@ui5/webcomponents-react/lib/TextArea';
 import notes from './TextArea.md';
 
 export default {
-  title: 'UI5 Web Components | TextArea',
+  title: 'UI5 Web Components / TextArea',
   component: TextArea,
   parameters: { notes }
 };

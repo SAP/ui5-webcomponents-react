@@ -5,7 +5,7 @@ import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import notes from './Switch.md';
 
 export default {
-  title: 'UI5 Web Components | Switch',
+  title: 'UI5 Web Components / Switch',
   component: Switch,
   parameters: { notes }
 };

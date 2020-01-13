@@ -179,7 +179,7 @@ tableWithCustomTitle.story = {
 };
 
 export default {
-  title: 'Components | Analytical Table',
+  title: 'Components / Analytical Table',
   component: AnalyticalTable,
   parameters: { notes }
 };

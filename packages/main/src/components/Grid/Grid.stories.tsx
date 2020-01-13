@@ -17,7 +17,7 @@ export const defaultStory = () => {
 };
 
 export default {
-  title: 'Components | Grid',
+  title: 'Components / Grid',
   component: Grid,
   parameters: { notes }
 };

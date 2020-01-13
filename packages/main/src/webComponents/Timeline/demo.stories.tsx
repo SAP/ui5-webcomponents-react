@@ -6,7 +6,7 @@ import React from 'react';
 import notes from './Timeline.md';
 
 export default {
-  title: 'UI5 Web Components | Timeline',
+  title: 'UI5 Web Components / Timeline',
   component: Timeline,
   parameters: { notes }
 };

@@ -5,7 +5,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import notes from './Title.md';
 
 export default {
-  title: 'UI5 Web Components | Title',
+  title: 'UI5 Web Components / Title',
   component: Title,
   parameters: { notes }
 };

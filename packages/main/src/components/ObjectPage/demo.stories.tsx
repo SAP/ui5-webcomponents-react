@@ -180,7 +180,7 @@ renderShortContent.story = {
 };
 
 export default {
-  title: 'Components | ObjectPage',
+  title: 'Components / ObjectPage',
   component: ObjectPage,
   parameters: { notes }
 };

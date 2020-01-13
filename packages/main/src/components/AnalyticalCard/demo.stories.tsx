@@ -9,7 +9,7 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import notes from './AnalyticalCard.md';
 
 export default {
-  title: 'Components | Analytical Card',
+  title: 'Components / Analytical Card',
   component: AnalyticalCard,
   parameters: { notes }
 };

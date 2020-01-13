@@ -12,7 +12,7 @@ import '@ui5/webcomponents-icons/dist/icons/process';
 import notes from './TabContainer.md';
 
 export default {
-  title: 'UI5 Web Components | TabContainer',
+  title: 'UI5 Web Components / TabContainer',
   component: TabContainer,
   parameters: { notes }
 };
