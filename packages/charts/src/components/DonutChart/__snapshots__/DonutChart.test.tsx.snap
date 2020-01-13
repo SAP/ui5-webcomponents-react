@@ -2,7 +2,7 @@
 
 exports[`DonutChart loading placeholder 1`] = `
 <div
-  class="ChartContainer--chart- ChartContainer--chart-0-"
+  class="ChartContainer--chart- ChartContainer--chart-d0-"
   style="position: relative; padding-top: 6px; width: 300px; height: 300px;"
 >
   <svg
