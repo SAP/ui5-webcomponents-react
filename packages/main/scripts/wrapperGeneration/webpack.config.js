@@ -24,10 +24,6 @@ module.exports = {
         }
       },
       {
-        test: /\.properties$/,
-        loader: 'file-loader'
-      },
-      {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
         options: {
@@ -36,19 +32,12 @@ module.exports = {
         }
       },
       {
-        test: [/cldr\/.*\.json$/, /i18n\/.*\.json$/],
+        test: [/cldr\/.*\.json$/, /i18n\/.*\.json$/, /\.properties$/],
         loader: 'file-loader',
         options: {
           name: 'static/media/[name].[ext]'
         },
         type: 'javascript/auto'
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-        exclude: {
-          test: [/test-resources/]
-        }
       }
     ]
   }

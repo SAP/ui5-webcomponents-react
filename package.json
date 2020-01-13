@@ -42,7 +42,6 @@
     "chalk": "^3.0.0",
     "cli-table": "^0.3.1",
     "codecov": "^3.6.1",
-    "css-loader": "^3.2.0",
     "dedent": "^0.7.0",
     "document-register-element": "^1.14.3",
     "dotenv": "^8.2.0",
@@ -52,14 +51,13 @@
     "escape-string-regexp": "^2.0.0",
     "esm": "^3.2.22",
     "extract-comments": "^1.1.0",
-    "file-loader": "^4.3.0",
+    "file-loader": "^5.0.2",
     "file-url": "^3.0.0",
     "filesize": "^6.0.1",
     "glob": "^7.1.6",
     "global": "^4.4.0",
     "google-closure-compiler": "^20191111.0.0",
     "gzip-size": "^5.1.0",
-    "html-webpack-plugin": "^3.2.0",
     "husky": "^3.1.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
@@ -90,7 +88,6 @@
     "rollup-plugin-strip-banner": "^1.0.0",
     "shelljs": "^0.8.3",
     "sinon": "^7.5.0",
-    "style-loader": "^1.0.0",
     "targz": "^1.0.1",
     "tmp": "^0.1.0",
     "ts-node": "8.5.2",
@@ -99,9 +96,8 @@
     "tslint-react": "^4.1.0",
     "typescript": "^3.7.3",
     "util": "^0.12.0",
-    "webpack": "^4.41.3",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   },
   "resolutions": {
     "@types/react": "16.9.2"
