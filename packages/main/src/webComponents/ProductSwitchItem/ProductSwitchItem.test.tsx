@@ -1,6 +1,6 @@
 import { mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
 import { ProductSwitchItem } from '@ui5/webcomponents-react/lib/ProductSwitchItem';
+import React from 'react';
 
 describe('ProductSwitchItem', () => {
   test('Basic Test (generated)', () => {

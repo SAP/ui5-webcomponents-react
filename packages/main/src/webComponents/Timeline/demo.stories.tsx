@@ -1,7 +1,7 @@
-import { Timeline } from '@ui5/webcomponents-react/lib/Timeline';
-import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';
 import '@ui5/webcomponents-icons/dist/icons/calendar';
 import '@ui5/webcomponents-icons/dist/icons/phone';
+import { Timeline } from '@ui5/webcomponents-react/lib/Timeline';
+import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';
 import React from 'react';
 import notes from './Timeline.md';
 

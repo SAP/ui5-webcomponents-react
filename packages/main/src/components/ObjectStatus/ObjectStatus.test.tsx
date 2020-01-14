@@ -1,7 +1,7 @@
 import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React from 'react';
 
 const testFactory = () => {
   Object.values(ValueState).forEach((state) => {

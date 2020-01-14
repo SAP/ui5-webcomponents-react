@@ -1,5 +1,5 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ZIndex } from '../../enums/ZIndex';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
   objectPage: {

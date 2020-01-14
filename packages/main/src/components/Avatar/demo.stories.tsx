@@ -1,10 +1,10 @@
 import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
+import '@ui5/webcomponents-icons/dist/icons/employee';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import '@ui5/webcomponents-icons/dist/icons/employee';
 import React from 'react';
 import notes from './Avatar.md';
 

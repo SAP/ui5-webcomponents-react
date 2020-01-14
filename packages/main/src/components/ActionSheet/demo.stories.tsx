@@ -1,8 +1,8 @@
 import { select } from '@storybook/addon-knobs';
-import React from 'react';
 import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import React from 'react';
 import notes from './ActionSheet.md';
 
 export default {

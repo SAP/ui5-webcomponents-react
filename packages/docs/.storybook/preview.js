@@ -7,10 +7,10 @@ import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { Themes } from '@ui5/webcomponents-react/lib/Themes';
 import '@webcomponents/webcomponentsjs/webcomponents-bundle';
 import { window } from 'global';
+import 'highlight.js/styles/solarized-dark.css';
 import qs from 'qs';
 import React from 'react';
 import 'react-app-polyfill/ie11';
-import 'highlight.js/styles/solarized-dark.css';
 
 addParameters({
   options: {

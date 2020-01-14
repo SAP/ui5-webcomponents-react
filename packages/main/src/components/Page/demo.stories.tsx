@@ -1,11 +1,11 @@
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import React from 'react';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Page } from '@ui5/webcomponents-react/lib/Page';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
+import React from 'react';
 import notes from './Page.md';
 
 export const renderPage = () => (

@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { renderThemedComponent } from '@shared/tests/utils';
+import * as React from 'react';
 import { RadialChart } from './index';
 
 describe('RadialChart', () => {

@@ -1,6 +1,6 @@
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Table from '@ui5/webcomponents/dist/Table';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TablePropTypes extends WithWebComponentPropTypes {

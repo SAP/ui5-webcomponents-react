@@ -1,6 +1,6 @@
-import React from 'react';
 import { boolean } from '@storybook/addon-knobs';
 import { PieChart } from '@ui5/webcomponents-react-charts/lib/PieChart';
+import React from 'react';
 import notes from './PieChart.md';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];

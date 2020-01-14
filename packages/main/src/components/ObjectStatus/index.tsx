@@ -10,7 +10,6 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React, { FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './ObjectStatus.jss';
 
 export interface ObjectStatusPropTypes extends CommonProps {
@@ -39,7 +38,7 @@ const getDefaultIcon = (state) => {
   }
 };
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectStatus' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'ObjectStatus' });
 
 const ObjectStatus: FC<ObjectStatusPropTypes> = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
   const { state, showDefaultIcon, children, icon, className, style, tooltip, slot } = props;

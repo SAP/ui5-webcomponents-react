@@ -1,6 +1,6 @@
 import { boolean, text } from '@storybook/addon-knobs';
-import React from 'react';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
+import React from 'react';
 import notes from './Label.md';
 
 export default {

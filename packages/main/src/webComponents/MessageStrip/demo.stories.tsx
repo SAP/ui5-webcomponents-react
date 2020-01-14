@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import React from 'react';
 import { MessageStrip } from '@ui5/webcomponents-react/lib/MessageStrip';
 import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
+import React from 'react';
 import notes from './MessageStrip.md';
 
 export default {

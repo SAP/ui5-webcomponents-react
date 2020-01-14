@@ -1,6 +1,6 @@
+import UI5ProductSwitchItem from '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5ProductSwitchItem from '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 

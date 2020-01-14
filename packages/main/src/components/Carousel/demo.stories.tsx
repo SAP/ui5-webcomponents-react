@@ -1,10 +1,10 @@
-import { boolean, number, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import React from 'react';
+import { boolean, number, select } from '@storybook/addon-knobs';
 import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import React from 'react';
 import notes from './Carousel.md';
 
 export const renderCarousel = () => {

@@ -126,7 +126,7 @@ export interface TableProps extends CommonProps {
   LoadingComponent?: ComponentType<any>;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
 const ROW_HEIGHT_COMPACT = 32;
 const ROW_HEIGHT_COZY = 44;
 

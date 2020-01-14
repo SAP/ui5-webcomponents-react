@@ -1,8 +1,8 @@
 import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
-import sinon from 'sinon';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';
+import React from 'react';
+import sinon from 'sinon';
 
 describe('SegmentedButtonItem', () => {
   test('Basic SegmentedButtonItem', () => {

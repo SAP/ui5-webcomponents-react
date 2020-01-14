@@ -1,6 +1,6 @@
 import { createPassThroughPropsTest, mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
-import React from 'react';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import React from 'react';
 
 const createRenderLabel = (text) => () => {
   return <p>{text}</p>;

@@ -1,6 +1,6 @@
-import React, { FC, forwardRef, RefObject } from 'react';
 import { NotificationProptypes } from '@ui5/webcomponents-react/components/Notification';
 import { Notification } from '@ui5/webcomponents-react/lib/Notification';
+import React, { FC, forwardRef, RefObject } from 'react';
 
 const NotificationGroup: FC<NotificationProptypes> = forwardRef(
   (props: NotificationProptypes, ref: RefObject<HTMLDivElement>) => {

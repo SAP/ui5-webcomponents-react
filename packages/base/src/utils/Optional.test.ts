@@ -1,6 +1,6 @@
 import { getEventFromCallback } from '@shared/tests/utils';
-import { Optional } from './Optional';
 import sinon from 'sinon';
+import { Optional } from './Optional';
 
 describe('Optional', () => {
   test('get deep value', () => {

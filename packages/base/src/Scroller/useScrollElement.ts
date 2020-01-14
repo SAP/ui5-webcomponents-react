@@ -1,5 +1,5 @@
-import { useContext, useEffect } from 'react';
 import { ScrollContext } from '@ui5/webcomponents-react-base/lib/ScrollContext';
+import { useContext, useEffect } from 'react';
 
 export const useScrollElement = (id, htmlRef, options = {}) => {
   const { registerElement, unregisterElement } = useContext(ScrollContext);

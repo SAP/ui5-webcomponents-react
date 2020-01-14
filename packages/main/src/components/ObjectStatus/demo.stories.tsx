@@ -1,9 +1,9 @@
 import { boolean, select } from '@storybook/addon-knobs';
-import React from 'react';
+import '@ui5/webcomponents-icons/dist/icons/sys-cancel';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import '@ui5/webcomponents-icons/dist/icons/sys-cancel';
+import React from 'react';
 import notes from './ObjectStatus.md';
 
 export const onlyText = () => (

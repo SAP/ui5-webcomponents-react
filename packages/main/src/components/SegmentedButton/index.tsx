@@ -17,7 +17,6 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export type SelectedKey = string | number;
 
@@ -46,7 +45,7 @@ const styles = ({ contentDensity }) => ({
   }
 });
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'SegmentedButton' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'SegmentedButton' });
 
 const SegmentedButton: FC<SegmentedButtonPropTypes> = forwardRef(
   (props: SegmentedButtonPropTypes, ref: Ref<HTMLUListElement>) => {

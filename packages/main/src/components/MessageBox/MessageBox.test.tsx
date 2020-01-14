@@ -1,9 +1,9 @@
 import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
-import { spy } from 'sinon';
 import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
 import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
+import React from 'react';
+import { spy } from 'sinon';
 
 describe('MessageBox', () => {
   test('Confirm - OK', () => {

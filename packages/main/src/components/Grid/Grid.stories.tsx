@@ -1,7 +1,7 @@
+import { action } from '@storybook/addon-actions';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import React from 'react';
 import notes from './Grid.md';
-import { action } from '@storybook/addon-actions';
 
 export const defaultStory = () => {
   return (

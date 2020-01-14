@@ -1,13 +1,13 @@
+import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import React from 'react';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { Priority } from '@ui5/webcomponents-react/lib/Priority';
 import { Notification } from '@ui5/webcomponents-react/lib/Notification';
 import { NotificationGroup } from '@ui5/webcomponents-react/lib/NotificationGroup';
-import { action } from '@storybook/addon-actions';
+import { Priority } from '@ui5/webcomponents-react/lib/Priority';
+import React from 'react';
 import notes from './NotificationGroup.md';
 
 const sampleAvatar =

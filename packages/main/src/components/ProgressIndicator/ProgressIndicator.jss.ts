@@ -1,4 +1,3 @@
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => {

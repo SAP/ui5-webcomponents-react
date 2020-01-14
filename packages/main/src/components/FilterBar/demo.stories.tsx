@@ -1,5 +1,5 @@
+import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
-import React from 'react';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
 import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';
 import { FilterType } from '@ui5/webcomponents-react/lib/FilterType';
@@ -8,7 +8,7 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
-import { action } from '@storybook/addon-actions';
+import React from 'react';
 import notes from './FilterBar.md';
 
 const variantItems = [

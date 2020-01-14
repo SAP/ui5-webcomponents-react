@@ -57,7 +57,7 @@ export interface ObjectPagePropTypes extends CommonProps {
   renderKeyInfos?: () => JSX.Element;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPage' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPage' });
 const defaultScrollbarWidth = 12;
 
 const findSectionIndexById = (sections, id) => {

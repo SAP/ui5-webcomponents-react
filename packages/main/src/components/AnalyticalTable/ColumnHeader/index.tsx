@@ -79,7 +79,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'TableColumnHeader' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'TableColumnHeader' });
 
 export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   const classes = useStyles(props);

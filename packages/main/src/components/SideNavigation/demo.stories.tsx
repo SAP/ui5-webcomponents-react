@@ -1,16 +1,16 @@
 import { action } from '@storybook/addon-actions';
-import { select, text, boolean } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
+import '@ui5/webcomponents-icons/dist/icons/add-product';
+import '@ui5/webcomponents-icons/dist/icons/calendar';
+import '@ui5/webcomponents-icons/dist/icons/chain-link';
+import '@ui5/webcomponents-icons/dist/icons/compare';
+import '@ui5/webcomponents-icons/dist/icons/employee';
+import '@ui5/webcomponents-icons/dist/icons/home';
+import '@ui5/webcomponents-icons/dist/icons/lead';
 import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
 import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import React from 'react';
-import '@ui5/webcomponents-icons/dist/icons/compare';
-import '@ui5/webcomponents-icons/dist/icons/chain-link';
-import '@ui5/webcomponents-icons/dist/icons/home';
-import '@ui5/webcomponents-icons/dist/icons/calendar';
-import '@ui5/webcomponents-icons/dist/icons/employee';
-import '@ui5/webcomponents-icons/dist/icons/lead';
-import '@ui5/webcomponents-icons/dist/icons/add-product';
 import notes from './SideNavigation.md';
 
 export const defaultStory = () => (

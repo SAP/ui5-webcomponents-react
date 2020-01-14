@@ -1,7 +1,7 @@
 import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
-import React from 'react';
 import { Size } from '@ui5/webcomponents-react/lib/Size';
 import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
+import React from 'react';
 
 describe('Spinner', () => {
   test('small', () => {

@@ -1,8 +1,8 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { VirtualTableRow } from './VirtualTableRow';
 
 export const VirtualTableBody = (props) => {
