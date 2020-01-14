@@ -1,10 +1,10 @@
 import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
 import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';
 import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';
 import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React from 'react';
 
 const Header = (
   <AnalyticalCardHeader

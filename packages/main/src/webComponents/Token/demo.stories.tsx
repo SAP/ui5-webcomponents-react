@@ -5,7 +5,7 @@ import React from 'react';
 import notes from './Token.md';
 
 export default {
-  title: 'UI5 Web Components | Token',
+  title: 'UI5 Web Components / Token',
   component: Token,
   parameters: { notes }
 };

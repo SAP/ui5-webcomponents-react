@@ -21,7 +21,7 @@ defaultStory.story = {
 };
 
 export default {
-  title: 'Components | MessageBox',
+  title: 'Components / MessageBox',
   component: MessageBox,
   parameters: { notes }
 };

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Panel } from '@ui5/webcomponents-react/lib/Panel';
 import { mountThemedComponent } from '@shared/tests/utils';
+import { Panel } from '@ui5/webcomponents-react/lib/Panel';
+import React from 'react';
 
 describe('Panel', () => {
   test('Basic Test (generated)', () => {

@@ -1,4 +1,3 @@
-import { Media } from './Media';
 import { convertToPx, matchLegacyBySize } from './utils';
 
 describe('Device - Utils', () => {

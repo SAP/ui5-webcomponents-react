@@ -5,7 +5,7 @@ import React from 'react';
 import notes from './Dialog.md';
 
 export default {
-  title: 'UI5 Web Components | Dialog',
+  title: 'UI5 Web Components / Dialog',
   component: Dialog,
   parameters: { notes }
 };

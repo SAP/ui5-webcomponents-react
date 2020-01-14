@@ -1,8 +1,8 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { ChartOptions } from 'chart.js';
 import React, { CSSProperties, FC, forwardRef, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useMergedConfig } from '../../util/Utils';

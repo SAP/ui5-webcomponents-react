@@ -1,78 +1,28 @@
 import { select, withKnobs } from '@storybook/addon-knobs';
 import { makeDecorator } from '@storybook/addons';
-import { addDecorator, addParameters, configure } from '@storybook/react';
+import { addDecorator, addParameters } from '@storybook/react';
 import '@ui5/webcomponents-base/dist/features/browsersupport/IE11';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { Themes } from '@ui5/webcomponents-react/lib/Themes';
 import '@webcomponents/webcomponentsjs/webcomponents-bundle';
 import { window } from 'global';
+import 'highlight.js/styles/solarized-dark.css';
 import qs from 'qs';
 import React from 'react';
 import 'react-app-polyfill/ie11';
-import { Fiori4ReactTheme } from './theme';
-import 'highlight.js/styles/solarized-dark.css';
-
-addDecorator(withKnobs);
 
 addParameters({
   options: {
-    theme: Fiori4ReactTheme,
-    /**
-     * show story component as full screen
-     * @type {Boolean}
-     */
-    isFullscreen: false,
-    /**
-     * display left panel that shows a list of stories
-     * @type {Boolean}
-     */
-    showNav: true,
-    /**
-     * display horizontal panel that displays addon configurations
-     * @type {Boolean}
-     */
-    showPanel: true,
-    /**
-     * display floating search box to search through stories
-     * @type {Boolean}
-     */
-    showSearchBox: false,
-    /**
-     * show horizontal addons panel as a vertical panel on the right
-     * @type {Boolean}
-     */
-    panelPosition: 'right',
-    /**
-     * regex for finding the hierarchy separator
-     * @example:
-     *   null - turn off hierarchy
-     *   /\// - split by `/`
-     *   /\./ - split by `.`
-     *   /\/|\./ - split by `/` or `.`
-     * @type {Regex}
-     */
-    hierarchySeparator: /\/|\./,
-    /**
-     * regex for finding the hierarchy root separator
-     * @example:
-     *   null - turn off multiple hierarchy roots
-     *   /\|/ - split by `|`
-     * @type {Regex}
-     */
-    hierarchyRootSeparator: /\|/,
-
-    /**
-     * sidebar tree animations
-     * @type {Boolean}
-     */
-    sidebarAnimations: true,
-
     storySort: (a, b) => {
-      return a[1].kind.localeCompare(b[1].kind);
-    }
+      if (a[1].id.startsWith('welcome')) return -1;
+      return a[1].id.localeCompare(b[1].id);
+    },
+    showRoots: true
   }
 });
+
+addDecorator(withKnobs);
 
 class ThemeContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
@@ -135,8 +85,3 @@ const themr = makeDecorator({
 
 addDecorator(withQuery);
 addDecorator(themr);
-
-configure(
-  [require.context('../../', true, /\.stories\.mdx$/), require.context('../../', true, /\.stories\.[jt]sx$/)],
-  module
-);

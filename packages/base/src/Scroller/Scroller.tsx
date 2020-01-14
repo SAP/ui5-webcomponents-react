@@ -1,8 +1,8 @@
+import { IScroller } from '@ui5/webcomponents-react-base/interfaces/IScroller';
 import React, { forwardRef, RefObject, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 import { ScrollContentProvider } from './ScrollContextProvider';
 import { scrollTo } from './ScrollHelper';
-import { IScroller } from '@ui5/webcomponents-react-base/interfaces/IScroller';
 
 export interface Props {
   scrollContainer: RefObject<HTMLDivElement>;

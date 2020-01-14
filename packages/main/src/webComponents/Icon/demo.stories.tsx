@@ -1,12 +1,12 @@
-import React from 'react';
-import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { text } from '@storybook/addon-knobs';
 import '@ui5/webcomponents-icons/dist/icons/add.js';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import React from 'react';
 import notes from './Icon.md';
 
 export default {
-  title: 'UI5 Web Components | Icon',
+  title: 'UI5 Web Components / Icon',
   component: Icon,
   parameters: { notes }
 };

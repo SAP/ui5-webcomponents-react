@@ -1,12 +1,12 @@
+import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import React from 'react';
-import { Notification } from '@ui5/webcomponents-react/lib/Notification';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Notification } from '@ui5/webcomponents-react/lib/Notification';
 import { Priority } from '@ui5/webcomponents-react/lib/Priority';
-import { action } from '@storybook/addon-actions';
+import React from 'react';
 import notes from './Notification.md';
 
 const sampleAvatar =
@@ -43,7 +43,7 @@ defaultStory.story = {
 };
 
 export default {
-  title: 'Components | Notification',
+  title: 'Components / Notification',
   component: Notification,
   parameters: { notes }
 };

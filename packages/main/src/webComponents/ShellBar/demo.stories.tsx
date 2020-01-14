@@ -10,7 +10,7 @@ import React from 'react';
 import notes from './ShellBar.md';
 
 export default {
-  title: 'UI5 Web Components | ShellBar',
+  title: 'UI5 Web Components / ShellBar',
   component: ShellBar,
   parameters: { notes }
 };

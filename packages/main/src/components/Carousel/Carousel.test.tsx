@@ -1,10 +1,10 @@
 import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
-import React, { cloneElement } from 'react';
-import * as sinon from 'sinon';
 import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import React, { cloneElement } from 'react';
+import * as sinon from 'sinon';
 
 const renderCarousel = (props) => {
   return (

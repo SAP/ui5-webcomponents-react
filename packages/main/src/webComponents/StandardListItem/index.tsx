@@ -1,8 +1,8 @@
-import React, { FC, ReactNode } from 'react';
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import UI5StandardListItem from '@ui5/webcomponents/dist/StandardListItem';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import UI5StandardListItem from '@ui5/webcomponents/dist/StandardListItem';
+import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface StandardListItemPropTypes extends WithWebComponentPropTypes {

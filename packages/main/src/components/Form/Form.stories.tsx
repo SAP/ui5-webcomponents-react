@@ -1,13 +1,13 @@
-import { Form } from './index';
-import React from 'react';
-import notes from './Form.md';
-import { FormItem } from './FormItem';
-import { FormGroup } from './FormGroup';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
+import React from 'react';
+import notes from './Form.md';
+import { FormGroup } from './FormGroup';
+import { FormItem } from './FormItem';
+import { Form } from './index';
 
 export const defaultStory = () => {
   return (
@@ -49,7 +49,7 @@ export const defaultStory = () => {
 };
 
 export default {
-  title: 'Components | Form',
+  title: 'Components / Form',
   component: Form,
   parameters: { notes }
 };

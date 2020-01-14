@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useEffect } from 'react';
 import { ScrollContext } from '@ui5/webcomponents-react-base/lib/ScrollContext';
+import React, { useCallback, useContext, useEffect } from 'react';
 
 export const ScrollLink = (props) => {
   const {

@@ -1,7 +1,7 @@
-import * as React from 'react';
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
-import { DonutChart } from './index';
+import * as React from 'react';
 import { labels, singleDataset } from '../../test/resources/ChartProps';
+import { DonutChart } from './index';
 
 describe('DonutChart', () => {
   test('Renders with data', () => {

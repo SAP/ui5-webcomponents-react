@@ -1,11 +1,5 @@
-import {
-  createPassThroughPropsTest,
-  getEventFromCallback,
-  mountThemedComponent,
-  renderThemedComponent
-} from '@shared/tests/utils';
-import React from 'react';
-import * as sinon from 'sinon';
+import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
+import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Link } from '@ui5/webcomponents-react/lib/Link';
@@ -15,8 +9,9 @@ import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSectio
 import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import React from 'react';
+import * as sinon from 'sinon';
 
 const renderHeaderContent = () => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>

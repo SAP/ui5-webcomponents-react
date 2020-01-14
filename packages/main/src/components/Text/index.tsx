@@ -3,7 +3,6 @@ import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePa
 import React, { CSSProperties, FC, forwardRef, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ThemeOptions } from '../../interfaces/ThemeOptions';
 import { TextStyles } from './Text.jss';
 
@@ -24,7 +23,7 @@ export interface TextProps extends CommonProps {
   width?: CSSProperties['width'];
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof TextStyles>>(TextStyles, { name: 'Text' });
+const useStyles = createUseStyles<keyof ReturnType<typeof TextStyles>>(TextStyles, { name: 'Text' });
 
 const Text: FC<TextProps> = forwardRef((props: TextProps, ref: Ref<HTMLSpanElement>) => {
   const { children, renderWhitespace, wrapping, width, className, style, tooltip, slot } = props;

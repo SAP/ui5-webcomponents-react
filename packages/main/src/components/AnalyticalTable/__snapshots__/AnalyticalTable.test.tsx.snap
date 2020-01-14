@@ -2073,7 +2073,7 @@ exports[`AnalyticalTable custom row height 1`] = `
     </ui5-title>
   </div>
   <div
-    class="AnalyticalTable--tableContainer- AnalyticalTable--modifiedRowHeight- AnalyticalTable--modifiedRowHeight-0-"
+    class="AnalyticalTable--tableContainer- AnalyticalTable--modifiedRowHeight- AnalyticalTable--modifiedRowHeight-d0-"
   >
     <div
       aria-rowcount="2"

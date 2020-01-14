@@ -1,6 +1,6 @@
-import React from 'react';
-import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';
 import { mountThemedComponent } from '@shared/tests/utils';
+import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';
+import React from 'react';
 
 describe('RadioButton', () => {
   test('Basic Test (generated)', () => {

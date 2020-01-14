@@ -1,6 +1,6 @@
-import React from 'react';
-import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { mountThemedComponent } from '@shared/tests/utils';
+import { Switch } from '@ui5/webcomponents-react/lib/Switch';
+import React from 'react';
 
 describe('Switch', () => {
   test('Basic Test (generated)', () => {

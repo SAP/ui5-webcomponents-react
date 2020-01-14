@@ -34,7 +34,7 @@ export interface ProgressIndicatorPropTypes extends CommonProps {
   state?: ValueState;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ProgressIndicator' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'ProgressIndicator' });
 
 const ProgressIndicator: FC<ProgressIndicatorPropTypes> = forwardRef(
   (props: ProgressIndicatorPropTypes, ref: Ref<HTMLDivElement>) => {

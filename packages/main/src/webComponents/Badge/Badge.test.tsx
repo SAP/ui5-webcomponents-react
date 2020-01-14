@@ -1,7 +1,7 @@
 import { mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
 import { Badge } from '@ui5/webcomponents-react/lib/Badge';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import React from 'react';
 
 describe('Badge', () => {
   test('Basic Test', () => {

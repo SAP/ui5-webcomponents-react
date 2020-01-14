@@ -4,6 +4,7 @@
   function r(e, t) {
     return typeof e === t;
   }
+
   function o() {
     return 'function' != typeof t.createElement
       ? t.createElement(arguments[0])
@@ -11,10 +12,12 @@
       ? t.createElementNS.call(t, 'http://www.w3.org/2000/svg', arguments[0])
       : t.createElement.apply(t, arguments);
   }
+
   function i() {
     var e = t.body;
     return e || ((e = o(b ? 'svg' : 'body')), (e.fake = !0)), e;
   }
+
   function s(e, n, r, s) {
     var a,
       u,
@@ -43,9 +46,11 @@
       !!u
     );
   }
+
   function a(e, t) {
     return !!~('' + e).indexOf(t);
   }
+
   function u(e) {
     return e
       .replace(/([A-Z])/g, function(e, t) {
@@ -53,6 +58,7 @@
       })
       .replace(/^ms-/, '-ms-');
   }
+
   function l(t, n, r) {
     var o;
     if ('getComputedStyle' in e) {
@@ -66,6 +72,7 @@
     } else o = !n && t.currentStyle && t.currentStyle[r];
     return o;
   }
+
   function f(t, r) {
     var o = t.length;
     if ('CSS' in e && 'supports' in e.CSS) {
@@ -83,6 +90,7 @@
     }
     return n;
   }
+
   function c(e) {
     return e
       .replace(/([a-z])-([a-z])/g, function(e, t, n) {
@@ -90,10 +98,12 @@
       })
       .replace(/^-/, '');
   }
+
   function d(e, t, i, s) {
     function u() {
       d && (delete A.style, delete A.modElem);
     }
+
     if (((s = !r(s, 'undefined') && s), !r(i, 'undefined'))) {
       var l = f(e, i);
       if (!r(l, 'undefined')) return l;
@@ -110,16 +120,19 @@
       }
     return u(), !1;
   }
+
   function p(e, t) {
     return function() {
       return e.apply(t, arguments);
     };
   }
+
   function v(e, t, n) {
     var o;
     for (var i in e) if (e[i] in t) return !1 === n ? e[i] : ((o = t[e[i]]), r(o, 'function') ? p(o, n || t) : o);
     return !1;
   }
+
   function m(e, t, n, o, i) {
     var s = e.charAt(0).toUpperCase() + e.slice(1),
       a = (e + ' ' + P.join(s + ' ') + s).split(' ');
@@ -127,6 +140,7 @@
       ? d(a, t, o, i)
       : ((a = (e + ' ' + S.join(s + ' ') + s).split(' ')), v(a, t, n));
   }
+
   var h = [],
     y = {
       _version: '3.8.0',
@@ -173,6 +187,7 @@
           i)
         );
       }
+
       var t = !('onblur' in _);
       return e;
     })();

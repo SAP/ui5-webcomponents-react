@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
 import { Device } from '@ui5/webcomponents-react-base/lib/Device';
+import { useCallback, useEffect, useState } from 'react';
 
 export const useViewportRange = (rangeSet) => {
   const [currentRange, setCurrentRange] = useState(Device.media.getCurrentRange(rangeSet, window.innerWidth).name);

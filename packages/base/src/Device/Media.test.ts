@@ -1,7 +1,7 @@
-import { Media, RANGESETS } from './Media';
-import { EventRegistry } from './EventRegistry';
 import * as sinon from 'sinon';
 import { setupMatchMedia } from '../../../../config/jestsetup';
+import { EventRegistry } from './EventRegistry';
+import { Media, RANGESETS } from './Media';
 
 const defaultSupportInstance = {
   matchmedialistener: false,

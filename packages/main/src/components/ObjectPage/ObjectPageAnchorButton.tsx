@@ -1,14 +1,14 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import React, { FC, useCallback, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ScrollLink } from '@ui5/webcomponents-react-base/lib/ScrollLink';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import { ScrollLink } from '@ui5/webcomponents-react-base/lib/ScrollLink';
+import React, { FC, useCallback, useState } from 'react';
+import { createUseStyles } from 'react-jss';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 interface ObjectPageAnchorPropTypes {
   section: any;
@@ -50,7 +50,7 @@ const anchorButtonStyles = ({ parameters }: JSSTheme) => ({
     }
   }
 });
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof anchorButtonStyles>>(anchorButtonStyles, {
+const useStyles = createUseStyles<keyof ReturnType<typeof anchorButtonStyles>>(anchorButtonStyles, {
   name: 'ObjectPageAnchorButton'
 });
 

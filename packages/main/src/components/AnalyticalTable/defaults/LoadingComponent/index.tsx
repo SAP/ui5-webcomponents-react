@@ -1,5 +1,5 @@
-import { Loader } from '@ui5/webcomponents-react/lib/Loader';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { Loader } from '@ui5/webcomponents-react/lib/Loader';
 import React, { CSSProperties, useMemo } from 'react';
 import { useTheme } from 'react-jss';
 import { JSSTheme } from '../../../../interfaces/JSSTheme';

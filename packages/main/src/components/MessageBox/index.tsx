@@ -18,7 +18,6 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import styles from './MessageBox.jss';
 
@@ -32,7 +31,7 @@ export interface MessageBoxPropTypes extends CommonProps {
   onClose: (event: Event) => void;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'MessageBox' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'MessageBox' });
 
 const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
   const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
