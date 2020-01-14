@@ -1,6 +1,7 @@
 const { highlightLog } = require('../../../scripts/utils');
 const path = require('path');
 const PATHS = require('../../../config/paths');
+const dedent = require('dedent');
 require('dotenv').config({
   path: path.join(PATHS.root, '.env')
 });
@@ -26,21 +27,22 @@ module.exports = {
       ]
     };
 
-    if (!process.env.SKIP_DOC_GENERATION) {
+    if (process.env.UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD === 'true') {
       highlightLog('Warning: Prop Types Table Generation is active');
-      console.log(`
-    
-This is slowing down your build tremendously. 
-If you don't need the prop tables we strongly recommend to turn it off by adding a '.env' file to the root of the project with the following content:
-SKIP_DOC_GENERATION=true
-    
-`);
       tsLoader.use.push(require.resolve('react-docgen-typescript-loader'));
+    } else {
+      highlightLog('Info: Prop Types Table Generation is disabled');
+      console.log(dedent`
+          The Prop Table Generation is very expensive during build-time and therefore disabled by default. 
+          If you need Prop-Tables, you can activate it by adding a '.env' file to the root of the project with the following content:
+          
+          UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD=true\n\n 
+      `);
     }
 
     config.module.rules.push(tsLoader);
 
-    if (process.env.UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD === 'true') {
+    if (process.env.UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD === 'true' && configType === 'PRODUCTION') {
       config.module.rules.push({
         test: /\.(js|mjs)$/,
         include: /node_modules\/@ui5\/(webcomponents|webcomponents-base)\//,

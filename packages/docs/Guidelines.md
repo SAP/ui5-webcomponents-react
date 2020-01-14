@@ -30,9 +30,10 @@ Global Styles compliant to the Fiori 2.0 Design Guidelines are located in [ui5-w
 ## Speed up your local build
 Creating the documentation (PropTables and Styling Infos) in the Storybook is very expensive. 
 Thus, the initial compile time as well as the hot module replacement takes a long time.<br />
-You can speed up this process by adding a local `.env` file in the root directory with the following content:
+Due to this fact, we disabled the generation of the Prop-Tables by default. 
+In case you need these Prop-Tables, you can easily activate them by adding a local `.env` file in the root directory with the following content:
 ```env
-SKIP_DOC_GENERATION=true
+UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD=true
 ```
 
 You must follow the coding style as best you can when submitting code. Take note of naming conventions, separation of concerns, and formatting rules. You can use the code formatter [Prettier](https://prettier.io/) to handle some of this for you automatically.
