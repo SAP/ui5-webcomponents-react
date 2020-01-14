@@ -11,10 +11,10 @@ exports[`FilterBar Hide Filter Bar 1`] = `
       style="display: inline-block; pointer-events: auto;"
     >
       <div
-        class="Variant-Management--VariantManagement-"
+        class="VariantManagement--VariantManagement-"
       >
         <ui5-title
-          class="Variant-Management--VariantManagementText-"
+          class="VariantManagement--VariantManagementText-"
           level="H4"
         >
           Variant 1
@@ -34,7 +34,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
       vertical-align="Center"
     >
       <ui5-button
-        class="Variant-Management--footer-"
+        class="VariantManagement--footer-"
         design="Emphasized"
         slot="footer"
       >
@@ -175,10 +175,10 @@ exports[`FilterBar Render without crashing 1`] = `
       style="display: inline-block; pointer-events: auto;"
     >
       <div
-        class="Variant-Management--VariantManagement-"
+        class="VariantManagement--VariantManagement-"
       >
         <ui5-title
-          class="Variant-Management--VariantManagementText-"
+          class="VariantManagement--VariantManagementText-"
           level="H4"
         >
           Variant 1
@@ -198,7 +198,7 @@ exports[`FilterBar Render without crashing 1`] = `
       vertical-align="Center"
     >
       <ui5-button
-        class="Variant-Management--footer-"
+        class="VariantManagement--footer-"
         design="Emphasized"
         slot="footer"
       >
@@ -328,10 +328,10 @@ exports[`FilterBar Select Filter Item 1`] = `
       style="display: inline-block; pointer-events: auto;"
     >
       <div
-        class="Variant-Management--VariantManagement-"
+        class="VariantManagement--VariantManagement-"
       >
         <ui5-title
-          class="Variant-Management--VariantManagementText-"
+          class="VariantManagement--VariantManagementText-"
           level="H4"
         >
           Variant 1
@@ -351,7 +351,7 @@ exports[`FilterBar Select Filter Item 1`] = `
       vertical-align="Center"
     >
       <ui5-button
-        class="Variant-Management--footer-"
+        class="VariantManagement--footer-"
         design="Emphasized"
         slot="footer"
       >

@@ -6,10 +6,10 @@ Array [
     style="display: inline-block; pointer-events: auto;"
   >
     <div
-      class="Variant-Management--VariantManagement-"
+      class="VariantManagement--VariantManagement-"
     >
       <ui5-title
-        class="Variant-Management--VariantManagementText-"
+        class="VariantManagement--VariantManagementText-"
         level="H4"
       >
         Variant 1
@@ -29,7 +29,7 @@ Array [
     vertical-align="Center"
   >
     <ui5-button
-      class="Variant-Management--footer-"
+      class="VariantManagement--footer-"
       design="Emphasized"
       slot="footer"
     >
