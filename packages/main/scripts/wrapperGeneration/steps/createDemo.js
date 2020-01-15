@@ -42,7 +42,7 @@ function getKnownNumber(key, meta) {
 }
 
 const knownStrings = {
-  icon: "'sap-icon://add'"
+  icon: "'add'"
 };
 
 function getStringValue(key, meta) {
@@ -141,7 +141,7 @@ function createDemoForComponent(dto) {
   import notes from './${componentName}.md';
 
   export default {
-    title: 'UI5 Web Components | ${componentName}',
+    title: 'UI5 Web Components / ${componentName}',
     component: ${componentName},
     parameters: {
       notes

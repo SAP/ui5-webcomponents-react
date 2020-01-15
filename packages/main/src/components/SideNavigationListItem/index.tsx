@@ -1,4 +1,7 @@
+import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow.js';
+import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow.js';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
@@ -8,8 +11,6 @@ import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVertic
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
-import '@ui5/webcomponents/dist/icons/navigation-down-arrow.js';
-import '@ui5/webcomponents/dist/icons/navigation-right-arrow.js';
 import React, {
   Children,
   cloneElement,
@@ -37,12 +38,9 @@ export interface SideNavigationListItemProps extends CommonProps {
   children?: ReactNode | ReactNodeArray;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigationListItemStyles>>(
-  sideNavigationListItemStyles,
-  {
-    name: 'SideNavigationListItem'
-  }
-);
+const useStyles = createUseStyles<keyof ReturnType<typeof sideNavigationListItemStyles>>(sideNavigationListItemStyles, {
+  name: 'SideNavigationListItem'
+});
 const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
   (props: SideNavigationListItemProps, ref: Ref<HTMLDivElement>) => {
     const { icon, text, id, children, tooltip, slot, className, style } = props;
@@ -94,6 +92,8 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
       childCount > 0 &&
       !!validChildren.find((child: any) => child.props.id === props['selectedId']);
 
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     const customListItemCommonProps = {
       ref,
       className: listItemClasses.valueOf(),
@@ -102,13 +102,14 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
       style,
       'data-id': id,
       'data-has-children': childCount > 0,
-      'data-is-child': props['isChild']
+      'data-is-child': props['isChild'],
+      ...passThroughProps
     };
 
     const popoverRef = useRef();
 
     const displayedIcon = useMemo(() => {
-      return <Icon src={icon} className={classes.icon} />;
+      return <Icon name={icon} className={classes.icon} />;
     }, [classes.icon, icon]);
 
     const handleOpenPopover = useCallback(
@@ -128,7 +129,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
             <Text className={classes.text}>{text}</Text>
             {childCount > 0 && (
               <span onClick={handleToggleExpand} className={classes.expandArrow}>
-                <Icon src={isExpanded ? 'sap-icon://navigation-down-arrow' : 'sap-icon://navigation-right-arrow'} />
+                <Icon name={isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'} />
               </span>
             )}
           </CustomListItem>

@@ -1,4 +1,3 @@
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => {
@@ -56,19 +55,19 @@ const styles = ({ parameters }: JSSTheme) => {
     progressBarTextColorHigh: {
       color: parameters.sapUiContentContrastTextColor
     },
-    [`state${ValueState.None}`]: {
+    stateNone: {
       backgroundColor: parameters.sapUiNeutralElement
     },
-    [`state${ValueState.Success}`]: {
+    stateSuccess: {
       backgroundColor: parameters.sapUiPositiveElement
     },
-    [`state${ValueState.Warning}`]: {
+    stateWarning: {
       backgroundColor: parameters.sapUiCriticalElement
     },
-    [`state${ValueState.Error}`]: {
+    stateError: {
       backgroundColor: parameters.sapUiNegativeElement
     },
-    [`state${ValueState.Information}`]: {
+    stateInformation: {
       backgroundColor: parameters.sapUiInformativeElement
     }
   };

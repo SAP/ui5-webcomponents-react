@@ -1,6 +1,6 @@
-import { mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
+import React from 'react';
 
 describe('Text', () => {
   test('Render Basic Text', () => {
@@ -28,4 +28,6 @@ describe('Text', () => {
     const wrapper = mountThemedComponent(<Text width="300px">Test</Text>);
     expect(window.getComputedStyle(wrapper.getDOMNode()).width).toEqual('300px');
   });
+
+  createPassThroughPropsTest(Text);
 });

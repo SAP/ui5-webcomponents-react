@@ -15,7 +15,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   tableHeaderRow: {
     boxShadow: 'none !important',
     height: '2.75rem',
-    display: 'grid',
     zIndex: 1,
     position: 'relative'
   },
@@ -39,32 +38,23 @@ const styles = ({ parameters }: JSSTheme) => ({
     position: 'relative',
     zIndex: 0,
     overflowX: 'auto',
-    backgroundColor: parameters.sapUiListBackground,
-    '&$selectable $tr:hover': {
-      backgroundColor: parameters.sapUiListHoverBackground
-    },
-    '& $selectedRow': {
-      backgroundColor: parameters.sapUiListSelectionBackgroundColor
-    },
-    '& $selectedRow:hover': {
-      backgroundColor: `${parameters.sapUiListSelectionHoverBackground} !important`
-    },
-    '&$selectable $tr:active:not($selectedRow):not($tableGroupHeader)': {
-      backgroundColor: parameters.sapUiListActiveBackground,
-      color: parameters.sapUiListActiveTextColor
-    },
-    '&$selectable $tr:active:not($selectedRow):not($tableGroupHeader) $tableCell': {
-      borderRight: `1px solid ${parameters.sapUiListActiveBackground}`
+    backgroundColor: parameters.sapUiListBackground
+  },
+  alternateRowColor: {
+    '& $tr:nth-child(even)': {
+      backgroundColor: parameters.sapUiListHeaderBackground
     }
   },
   tr: {
-    display: 'grid',
     zIndex: 0,
     backgroundColor: parameters.sapUiListBackground,
-    color: parameters.sapUiListTextColor
-  },
-  alternateRowColor: {
-    backgroundColor: parameters.sapUiListHeaderBackground
+    color: parameters.sapUiListTextColor,
+    '&[data-is-selected]': {
+      backgroundColor: `${parameters.sapUiListSelectionBackgroundColor} !important`
+    },
+    '&[data-is-selected]:hover': {
+      backgroundColor: `${parameters.sapUiListSelectionHoverBackground} !important`
+    }
   },
   tableGroupHeader: {
     '&$tr': {
@@ -76,8 +66,20 @@ const styles = ({ parameters }: JSSTheme) => ({
       }
     }
   },
-  selectable: {},
-  selectedRow: {},
+  selectable: {
+    '& $tr:hover': {
+      backgroundColor: parameters.sapUiListHoverBackground,
+      cursor: 'pointer'
+    },
+    '& $tr:active:not([data-is-selected]):not($tableGroupHeader)': {
+      backgroundColor: parameters.sapUiListActiveBackground,
+      '& $tableCell': {
+        borderRight: `1px solid ${parameters.sapUiListActiveBackground}`,
+        color: `${parameters.sapUiListActiveTextColor}`,
+        '--sapUiBaseText': parameters.sapUiListActiveTextColor
+      }
+    }
+  },
   tableCell: {
     height: '2.75rem',
     fontFamily: parameters.sapUiFontFamily,

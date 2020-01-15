@@ -1,5 +1,5 @@
-import sinon from 'sinon';
 import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
+import sinon from 'sinon';
 
 describe('Message Toast', () => {
   test('Show Default', () => {

@@ -37,6 +37,9 @@ import { FlexBoxAlignItems } from './lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from './lib/FlexBoxDirection';
 import { FlexBoxJustifyContent } from './lib/FlexBoxJustifyContent';
 import { FlexBoxWrap } from './lib/FlexBoxWrap';
+import { Form } from './lib/Form';
+import { FormGroup } from './lib/FormGroup';
+import { FormItem } from './lib/FormItem';
 import { Grid } from './lib/Grid';
 import { GridPosition } from './lib/GridPosition';
 import { GroupHeaderListItem } from './lib/GroupHeaderListItem';
@@ -76,6 +79,8 @@ import { Popover } from './lib/Popover';
 import { PopoverHorizontalAlign } from './lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from './lib/PopoverVerticalAlign';
 import { Priority } from './lib/Priority';
+import { ProductSwitch } from './lib/ProductSwitch';
+import { ProductSwitchItem } from './lib/ProductSwitchItem';
 import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
 import { SegmentedButton } from './lib/SegmentedButton';
@@ -93,11 +98,13 @@ import { StandardListItem } from './lib/StandardListItem';
 import { Switch } from './lib/Switch';
 import { Tab } from './lib/Tab';
 import { TabContainer } from './lib/TabContainer';
-import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
 import { TableCell } from './lib/TableCell';
 import { TableColumn } from './lib/TableColumn';
+import { TablePlaceholder } from './lib/TablePlaceholder';
 import { TableRow } from './lib/TableRow';
+import { TableSelectionMode } from './lib/TableSelectionMode';
+import { TabSeparator } from './lib/TabSeparator';
 import { Text } from './lib/Text';
 import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
@@ -150,6 +157,9 @@ export {
   FlexBoxDirection,
   FlexBoxJustifyContent,
   FlexBoxWrap,
+  Form,
+  FormGroup,
+  FormItem,
   Grid,
   GridPosition,
   GroupHeaderListItem,
@@ -189,6 +199,8 @@ export {
   PopoverHorizontalAlign,
   PopoverVerticalAlign,
   Priority,
+  ProductSwitch,
+  ProductSwitchItem,
   ProgressIndicator,
   RadioButton,
   SegmentedButton,
@@ -210,7 +222,9 @@ export {
   Table,
   TableCell,
   TableColumn,
+  TablePlaceholder,
   TableRow,
+  TableSelectionMode,
   Text,
   TextAlign,
   TextArea,

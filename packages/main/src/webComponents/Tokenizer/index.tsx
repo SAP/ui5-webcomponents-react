@@ -1,7 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Tokenizer from '@ui5/webcomponents/dist/Tokenizer';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TokenizerPropTypes extends WithWebComponentPropTypes {

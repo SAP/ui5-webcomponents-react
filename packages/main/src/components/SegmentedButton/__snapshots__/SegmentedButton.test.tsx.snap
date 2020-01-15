@@ -9,12 +9,14 @@ exports[`SegmentedButton Update Selection via API 1`] = `
   <li
     class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem- SegmentedButtonItem--selected-"
     data-has-own-width="false"
+    id="btn-1"
   >
     Test
   </li>
   <li
     class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem-"
     data-has-own-width="false"
+    id="btn-2"
   >
     Test
   </li>
@@ -30,12 +32,14 @@ exports[`SegmentedButton Update Selection via API 2`] = `
   <li
     class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem-"
     data-has-own-width="false"
+    id="btn-1"
   >
     Test
   </li>
   <li
     class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem- SegmentedButtonItem--selected-"
     data-has-own-width="false"
+    id="btn-2"
   >
     Test
   </li>

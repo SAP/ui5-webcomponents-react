@@ -1,22 +1,22 @@
-import '@ui5/webcomponents/dist/icons/message-error';
-import '@ui5/webcomponents/dist/icons/message-warning';
-import '@ui5/webcomponents/dist/icons/message-success';
-import '@ui5/webcomponents/dist/icons/decline';
+import '@ui5/webcomponents-icons/dist/icons/decline';
+import '@ui5/webcomponents-icons/dist/icons/message-error';
+import '@ui5/webcomponents-icons/dist/icons/message-success';
+import '@ui5/webcomponents-icons/dist/icons/message-warning';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
+import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
+import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Priority } from '@ui5/webcomponents-react/lib/Priority';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React, { FC, forwardRef, ReactNode, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './Notification.jss';
-import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
-import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { Priority } from '@ui5/webcomponents-react/lib/Priority';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 
 export interface NotificationProptypes extends CommonProps {
   footer?: ReactNode | ReactNode[];
@@ -38,7 +38,7 @@ export interface NotificationProptypes extends CommonProps {
   autoPriority?: boolean;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Notification' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'Notification' });
 
 const WEIGHT = { None: 0, Low: 1, Medium: 2, High: 3 };
 
@@ -168,11 +168,11 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       }
       switch (prio) {
         case Priority.High:
-          return <Icon src="message-error" className={classes.error} />;
+          return <Icon name="message-error" className={classes.error} />;
         case Priority.Medium:
-          return <Icon src="message-warning" className={classes.warning} />;
+          return <Icon name="message-warning" className={classes.warning} />;
         case Priority.Low:
-          return <Icon src="message-success" className={classes.success} />;
+          return <Icon name="message-success" className={classes.success} />;
         case Priority.None:
           return null;
         default:
@@ -233,6 +233,8 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       return { borderRadius: borderRadius() };
     }, [isChild, isLastChild, children, showChildren]);
 
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     if (!visibleState) return null;
     return (
       <>
@@ -242,6 +244,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
           onClick={handleNotificationClick}
           title={tooltip}
           ref={ref}
+          {...passThroughProps}
         >
           <div className={`${classes.priorityIndicator} ${indicatorClass}`} style={indicatorStyles} />
           <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>

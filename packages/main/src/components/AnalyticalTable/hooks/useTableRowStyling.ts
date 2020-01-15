@@ -1,88 +1,45 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 
-export const useTableRowStyling = (
-  classes,
-  resizedColumns,
-  selectable,
-  selectedRow,
-  selectedRowKey,
-  onRowClicked,
-  alternateRowColor
-) => {
-  const prevSelectedRow = useRef(null);
-  const prevSelectedRowKey = useRef(null);
+const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
-  const applySelectedRow = useMemo(() => {
-    if (selectedRowKey !== prevSelectedRowKey.current) {
-      return false;
+export const useTableRowStyling = (hooks) => {
+  hooks.getRowProps.push((passedRowProps, { instance, row }) => {
+    const { classes, selectionMode, onRowSelected } = instance.webComponentsReactProperties;
+    let className = classes.tr;
+    if (row.isGrouped) {
+      className += ` ${classes.tableGroupHeader}`;
     }
-    if (selectedRow !== prevSelectedRow.current) {
-      return true;
+
+    const rowProps: any = {
+      ...passedRowProps,
+      className,
+      role: 'row'
+    };
+    if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode)) {
+      rowProps.onClick = (e) => {
+        if (row.isGrouped) {
+          return;
+        }
+
+        row.toggleRowSelected();
+
+        if (typeof onRowSelected === 'function') {
+          onRowSelected(Event.of(null, e, { row, isSelected: !row.isSelected }));
+        }
+
+        if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
+          instance.selectedFlatRows.forEach(({ id }) => {
+            instance.toggleRowSelected(id, false);
+          });
+        }
+      };
+      if (row.isSelected) {
+        rowProps[ROW_SELECTION_ATTRIBUTE] = '';
+      }
     }
-    return false;
-  }, [selectedRow, selectedRowKey]);
-
-  useEffect(() => {
-    prevSelectedRow.current = selectedRow;
-  }, [selectedRow]);
-
-  useEffect(() => {
-    prevSelectedRowKey.current = selectedRowKey;
-  }, [selectedRowKey]);
-
-  return useCallback(
-    (instance) => {
-      instance.getRowProps.push((row) => {
-        const rowKey = row.path.reduce((acc, val) => `${acc}_${val}`, 'row');
-        let selected = false;
-
-        if (!row.isAggregated && selectable) {
-          if (applySelectedRow) {
-            if (selectedRow.length && selectedRow.length > 0) {
-              selected = row.path.length === selectedRow.length && row.path.every((item, i) => item === selectedRow[i]);
-            }
-          } else if (selectedRowKey && rowKey === selectedRowKey) {
-            selected = true;
-          }
-        }
-
-        let className = classes.tr;
-        if (row.isAggregated) {
-          className += ` ${classes.tableGroupHeader}`;
-        }
-        if (selected) {
-          className += ` ${classes.selectedRow}`;
-        }
-
-        if (alternateRowColor) {
-          if (row.index % 2 === 1) {
-            className += ` ${classes.alternateRowColor}`;
-          }
-        }
-
-        if (selectable) {
-          return {
-            className,
-            onClick: onRowClicked(row)
-          };
-        }
-        return {
-          className
-        };
-      });
-      return instance;
-    },
-    [
-      classes.tr,
-      classes.tableGroupHeader,
-      classes.selectedRow,
-      classes.alternateRowColor,
-      resizedColumns,
-      selectable,
-      selectedRow,
-      selectedRowKey,
-      onRowClicked,
-      alternateRowColor
-    ]
-  );
+    return rowProps;
+  });
 };
+
+useTableRowStyling.pluginName = 'useTableRowStyling';

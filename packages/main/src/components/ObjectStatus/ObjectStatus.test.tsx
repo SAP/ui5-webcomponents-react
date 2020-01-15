@@ -1,7 +1,7 @@
-import { mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React from 'react';
 
 const testFactory = () => {
   Object.values(ValueState).forEach((state) => {
@@ -38,4 +38,6 @@ describe('ObjectStatus', () => {
     const wrapper = mountThemedComponent(<ObjectStatus>{el}</ObjectStatus>);
     expect(wrapper.text()).toEqual(el);
   });
+
+  createPassThroughPropsTest(ObjectStatus);
 });

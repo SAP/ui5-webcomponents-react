@@ -4,7 +4,7 @@ const { existsSync, readdirSync, unlinkSync } = require('fs');
 const Bundles = require('./bundles');
 const { asyncCopyTo, asyncExecuteCommand, asyncExtractTar, asyncRimRaf } = require('../utils');
 
-const { UMD_DEV, UMD_PROD, NODE_DEV, NODE_PROD, NODE_ES } = Bundles.bundleTypes;
+const { NODE_DEV, NODE_PROD, NODE_ES } = Bundles.bundleTypes;
 
 function getPackageName(name) {
   return name;
@@ -14,12 +14,9 @@ function getBundleOutputPaths(bundleType, filename, packageName) {
   switch (bundleType) {
     case NODE_DEV:
     case NODE_PROD:
-      return [`build/node_modules/${packageName}/cjs/${filename}`];
+      return `packages/${packageName}/cjs/${filename}`;
     case NODE_ES:
-      return [`build/node_modules/${packageName}/esm/${filename}`];
-    case UMD_DEV:
-    case UMD_PROD:
-      return [`build/node_modules/${packageName}/umd/${filename}`, `build/dist/${filename}`];
+      return `packages/${packageName}/esm/${filename}`;
     default:
       throw new Error('Unknown bundle type.');
   }
@@ -27,20 +24,13 @@ function getBundleOutputPaths(bundleType, filename, packageName) {
 
 async function prepareNpmPackage(name) {
   await Promise.all([
-    asyncCopyTo('LICENSE', `build/node_modules/${name}/LICENSE`),
-    asyncCopyTo('NOTICE.txt', `build/node_modules/${name}/NOTICE.txt`),
-    asyncCopyTo(`packages/${name}/package.json`, `build/node_modules/${name}/package.json`),
-    asyncCopyTo(`packages/${name}/README.md`, `build/node_modules/${name}/README.md`),
-    asyncCopyTo(`packages/${name}/npm`, `build/node_modules/${name}`)
+    asyncCopyTo('LICENSE', `packages/${name}/LICENSE`),
+    asyncCopyTo('NOTICE.txt', `packages/${name}/NOTICE.txt`)
   ]);
 }
 
 async function prepareNpmPackages() {
-  if (!existsSync('build/node_modules')) {
-    // We didn't build any npm packages.
-    return;
-  }
-  const builtPackageFolders = readdirSync('build/node_modules').filter((dir) => dir.charAt(0) !== '.');
+  const builtPackageFolders = readdirSync('packages').filter((dir) => dir.charAt(0) !== '.');
   await Promise.all(builtPackageFolders.map(prepareNpmPackage));
   // create main lib
   await asyncExecuteCommand(`node_modules/.bin/lerna run postbuild --stream`);

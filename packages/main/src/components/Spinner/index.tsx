@@ -1,4 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Size } from '@ui5/webcomponents-react/lib/Size';
 import React, { FC, forwardRef, RefObject, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -35,6 +36,8 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
     }
   }, []);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   if (!isVisible) {
     return null;
   }
@@ -52,6 +55,7 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
       title={tooltip || 'Please wait'}
       slot={slot}
       style={style}
+      {...passThroughProps}
     >
       Loading...
     </div>

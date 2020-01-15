@@ -1,5 +1,3 @@
-import React, { CSSProperties, FC, ReactNode, RefObject, useCallback, useRef } from 'react';
-import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
@@ -11,6 +9,8 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import React, { CSSProperties, FC, ReactNode, RefObject, useCallback, useRef } from 'react';
+import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { ColumnType } from '../types/ColumnType';
 
 export interface ColumnHeaderModalProperties {
@@ -92,25 +92,25 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
     >
       <List onItemClick={handleSort}>
         {showSort && (
-          <StandardListItem type={ListItemTypes.Active} icon={'sap-icon://sort-ascending'} data-sort={'asc'}>
+          <StandardListItem type={ListItemTypes.Active} icon={'sort-ascending'} data-sort={'asc'}>
             Sort Ascending
           </StandardListItem>
         )}
         {showSort && (
-          <StandardListItem type={ListItemTypes.Active} icon={'sap-icon://sort-descending'} data-sort={'desc'}>
+          <StandardListItem type={ListItemTypes.Active} icon={'sort-descending'} data-sort={'desc'}>
             Sort Descending
           </StandardListItem>
         )}
         {showFilter && !column.isGrouped && (
           <CustomListItem type={ListItemTypes.Inactive}>
             <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ padding: '0px 1rem' }}>
-              <Icon src="sap-icon://filter" style={{ paddingRight: '1rem' }} />
-              <Filter column={column} />
+              <Icon name="filter" style={{ paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }} />
+              <Filter column={column} popoverRef={popoverRef} />
             </FlexBox>
           </CustomListItem>
         )}
         {showGroup && (
-          <StandardListItem type={ListItemTypes.Active} icon="sap-icon://group-2" data-sort={'group'}>
+          <StandardListItem type={ListItemTypes.Active} icon="group-2" data-sort={'group'}>
             {column.isGrouped ? 'Ungroup' : 'Group'}
           </StandardListItem>
         )}

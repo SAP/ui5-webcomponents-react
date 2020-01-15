@@ -1,3 +1,6 @@
+import '@ui5/webcomponents-icons/dist/icons/message-error';
+import '@ui5/webcomponents-icons/dist/icons/message-warning';
+import '@ui5/webcomponents-icons/dist/icons/sys-enter';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
@@ -8,13 +11,13 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './MessageToast.jss';
-import '@ui5/webcomponents/dist/icons/message-error';
-import '@ui5/webcomponents/dist/icons/message-warning';
-import '@ui5/webcomponents/dist/icons/sys-enter';
 
 const coloredStyles = ({ parameters }: JSSTheme) => ({
   base: {
-    fontSize: '1.375rem'
+    width: '1.375rem',
+    minWidth: '1.375rem',
+    height: '1.375rem',
+    minHeight: '1.375rem'
   },
   Success: {
     color: parameters.sapUiPositiveElement
@@ -27,16 +30,16 @@ const coloredStyles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useIconStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof coloredStyles>>(coloredStyles, {
+const useIconStyles = createUseStyles<keyof ReturnType<typeof coloredStyles>>(coloredStyles, {
   name: 'MessageToastIcon'
 });
 
-const ColoredIcon = ({ src, state }) => {
+const ColoredIcon = ({ name, state }) => {
   const classes = useIconStyles();
-  return <Icon src={src} className={`${classes.base} ${classes[state]}`} />;
+  return <Icon name={name} className={`${classes.base} ${classes[state]}`} />;
 };
 
-const useMessageToastStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, {
+const useMessageToastStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, {
   name: 'MessageToast'
 });
 
@@ -75,7 +78,7 @@ MessageToast.show = (text, options: CommonProps = {}) => {
 MessageToast.error = (text, options: CommonProps = {}) => {
   const toastContent = (
     <div style={mergeStyleWithDefault(options.style)} className={options.className}>
-      <ColoredIcon src="sap-icon://message-error" state={ValueState.Error} />
+      <ColoredIcon name="message-error" state={ValueState.Error} />
       <span style={{ marginLeft: '0.5rem' }}>{text}</span>
     </div>
   );
@@ -86,7 +89,7 @@ MessageToast.error = (text, options: CommonProps = {}) => {
 MessageToast.success = (text, options: CommonProps = {}) => {
   const toastContent = (
     <div style={mergeStyleWithDefault(options.style)} className={options.className}>
-      <ColoredIcon src="sap-icon://sys-enter" state={ValueState.Success} />
+      <ColoredIcon name="sys-enter" state={ValueState.Success} />
       <span style={{ marginLeft: '0.5rem' }}>{text}</span>
     </div>
   );
@@ -97,7 +100,7 @@ MessageToast.success = (text, options: CommonProps = {}) => {
 MessageToast.warning = (text, options: CommonProps = {}) => {
   const toastContent = (
     <div style={mergeStyleWithDefault(options.style)} className={options.className}>
-      <ColoredIcon src="sap-icon://message-warning" state={ValueState.Warning} />
+      <ColoredIcon name="message-warning" state={ValueState.Warning} />
       <span style={{ marginLeft: '0.5rem' }}>{text}</span>
     </div>
   );

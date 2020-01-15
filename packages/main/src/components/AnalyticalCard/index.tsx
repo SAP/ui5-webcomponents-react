@@ -1,8 +1,8 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 
 import styles from './AnalyticalCard.jss';
 
@@ -18,7 +18,7 @@ export interface AnalyticalCardTypes extends CommonProps {
   width?: CSSProperties['width'];
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalCard' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalCard' });
 
 export const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef(
   (props: AnalyticalCardTypes, ref: Ref<HTMLDivElement>) => {
@@ -35,8 +35,17 @@ export const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef(
         ...style
       };
     }, [style, width]);
+
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     return (
-      <div ref={ref} className={classNameString.toString()} style={analyticalCardStyles} title={tooltip}>
+      <div
+        ref={ref}
+        className={classNameString.toString()}
+        style={analyticalCardStyles}
+        title={tooltip}
+        {...passThroughProps}
+      >
         {header}
         <div className={classes.content}>{children}</div>
       </div>

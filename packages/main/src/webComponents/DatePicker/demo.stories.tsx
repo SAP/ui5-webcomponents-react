@@ -1,13 +1,13 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
-import React from 'react';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React from 'react';
 import notes from './DatePicker.md';
 
 export default {
-  title: 'UI5 Web Components | DatePicker',
+  title: 'UI5 Web Components / DatePicker',
   component: DatePicker,
   parameters: { notes }
 };

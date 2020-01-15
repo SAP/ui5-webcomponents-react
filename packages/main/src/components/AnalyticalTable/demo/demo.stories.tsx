@@ -1,7 +1,8 @@
 import { action } from '@storybook/addon-actions';
-import { array, boolean, number, text } from '@storybook/addon-knobs';
+import { array, boolean, number, object, select, text } from '@storybook/addon-knobs';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import React from 'react';
@@ -71,14 +72,19 @@ export const defaultTable = () => {
         visibleRows={number('visibleRows', 5)}
         minRows={number('minRows', 5)}
         groupable={boolean('groupable', true)}
-        selectable={boolean('selectable', true)}
+        selectionMode={select<TableSelectionMode>(
+          'selectionMode',
+          TableSelectionMode,
+          TableSelectionMode.SINGLE_SELECT
+        )}
         onRowSelected={action('onRowSelected')}
         onSort={action('onSort')}
         onGroup={action('onGroup')}
         onRowExpandChange={action('onRowExpandChange')}
         groupBy={array('groupBy', [])}
         rowHeight={number('rowHeight', 60)}
-        selectedRowKey={text('selectedRowKey', `row_5`)}
+        selectedRowIds={object('selectedRowIds', { 3: true })}
+        onColumnsReordered={action('onColumnsReordered')}
       />
     </div>
   );
@@ -100,12 +106,12 @@ export const treeTable = () => {
       filterable={boolean('filterable', true)}
       visibleRows={number('visibleRows', 15)}
       minRows={number('minRows', 5)}
-      selectable={boolean('selectable', true)}
+      selectionMode={select<TableSelectionMode>('selectionMode', TableSelectionMode, TableSelectionMode.SINGLE_SELECT)}
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
       onRowExpandChange={action('onRowExpandChange')}
       subRowsKey={text('subRowsKey', 'subRows')}
-      selectedRowKey={text('selectedRowKey', `row_5`)}
+      selectedRowIds={object('selectedRowIds', { 3: true })}
       isTreeTable={boolean('isTreeTable', true)}
     />
   );
@@ -173,7 +179,7 @@ tableWithCustomTitle.story = {
 };
 
 export default {
-  title: 'Components | Analytical Table',
+  title: 'Components / Analytical Table',
   component: AnalyticalTable,
   parameters: { notes }
 };

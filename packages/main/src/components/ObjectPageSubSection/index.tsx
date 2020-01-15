@@ -1,11 +1,12 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import React, { forwardRef, ReactNode, ReactNodeArray, RefObject, FC } from 'react';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { useScrollElement } from '@ui5/webcomponents-react-base/lib/useScrollElement';
+import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
-import { useScrollElement } from '../ObjectPage/scroll/useScrollElement';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
   title?: string;
@@ -31,7 +32,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPageSubSection' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPageSubSection' });
 
 const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
   (props: ObjectPageSubSectionPropTypes, ref: RefObject<any>) => {
@@ -54,14 +55,17 @@ const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
       subSectionClassName.put(className);
     }
 
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     return (
       <div
         ref={htmlRef}
         className={subSectionClassName.toString()}
-        id={htmlId}
         role="region"
         style={style}
         title={tooltip}
+        {...passThroughProps}
+        id={htmlId}
       >
         <div className={classes.objectPageSubSectionHeaderTitle}>{title}</div>
         <div className={classes.subSectionContent}>{children}</div>

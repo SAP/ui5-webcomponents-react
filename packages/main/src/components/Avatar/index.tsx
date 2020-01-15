@@ -1,10 +1,10 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import React, { CSSProperties, forwardRef, Ref, useCallback } from 'react';
-import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
+import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './Avatar.jss';
 
 export interface AvatarPropTypes extends CommonProps {
@@ -18,9 +18,9 @@ export interface AvatarPropTypes extends CommonProps {
   customFontSize?: CSSProperties['width'];
 }
 
-const useStyles = createUseStyles<JSSTheme, string>(styles);
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'Avatar' });
 
-const Avatar = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) => {
+const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) => {
   const {
     initials,
     size,
@@ -86,6 +86,8 @@ const Avatar = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) =>
     [onClick]
   );
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <span
       ref={ref}
@@ -96,6 +98,7 @@ const Avatar = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) =>
       onKeyDown={handleKeyDown}
       title={tooltip}
       slot={slot}
+      {...passThroughProps}
     >
       {initials ? initials : children}
     </span>

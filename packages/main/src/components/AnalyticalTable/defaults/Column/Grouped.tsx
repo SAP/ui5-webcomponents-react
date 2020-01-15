@@ -21,7 +21,7 @@ export const Grouped = (props) => {
     <>
       <span {...row.getExpandedToggleProps({ style })}>
         <Icon
-          src={`sap-icon://${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
+          name={`${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
           style={tableGroupExpandCollapseIcon}
         />
       </span>

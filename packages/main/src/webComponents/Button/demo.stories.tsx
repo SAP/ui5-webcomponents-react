@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
-import React from 'react';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import React from 'react';
 import notes from './Button.md';
 
 const customStyle1 = {
@@ -36,7 +36,7 @@ class DemoButton extends React.Component {
         <Button
           design={select('design', ButtonDesign, ButtonDesign.Default)}
           disabled={boolean('disabled', false)}
-          icon={'sap-icon://add'}
+          icon={'add'}
           iconEnd={boolean('iconEnd', false)}
           onClick={action('Button clicked')}
           innerStyles={innerStyles}
@@ -49,7 +49,7 @@ class DemoButton extends React.Component {
 }
 
 export default {
-  title: 'UI5 Web Components | Button',
+  title: 'UI5 Web Components / Button',
   component: Button,
   parameters: {
     notes
@@ -60,7 +60,7 @@ export const generatedDefaultStory = () => (
   <Button
     design={select('design', ButtonDesign, ButtonDesign.Default)}
     disabled={boolean('disabled', false)}
-    icon={'sap-icon://add'}
+    icon={'add'}
     iconEnd={boolean('iconEnd', false)}
     onClick={action('onClick')}
   >

@@ -1,5 +1,5 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ZIndex } from '../../enums/ZIndex';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
   objectPage: {
@@ -129,6 +129,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     wordBreak: 'break-word',
     verticalAlign: 'baseline',
     paddingTop: '0.5rem',
+    paddingBottom: '0.5rem',
     fontSize: '0.875rem',
     color: parameters.sapUiContentLabelColor
   },
@@ -147,15 +148,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   stickied: {},
-  image: {
-    height: '0',
-    width: '0',
-    opacity: '0',
-    display: 'inline-block',
-    verticalAlign: 'middle'
-  },
   headerContent: {
-    paddingTop: '1.5rem',
+    //paddingTop: '1.5rem',
     paddingBottom: '0.25rem',
     transition: 'max-height 0.5s',
     maxHeight: '500px',
@@ -167,7 +161,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     '& $headerContent': {
       paddingTop: 0,
       '& > *': {
-        display: 'inline-block',
+        display: 'flex',
         verticalAlign: 'top',
         '&:not(:first-child)': {
           marginRight: '2rem',
@@ -199,6 +193,10 @@ const styles = ({ parameters }: JSSTheme) => ({
       lineHeight: '1.5rem'
     }
   },
+  headerCustomContentItem: {
+    marginLeft: '1rem'
+  },
+
   headerImage: {
     maxWidth: '5rem',
     maxHeight: '5rem',
@@ -209,6 +207,28 @@ const styles = ({ parameters }: JSSTheme) => ({
   image: {
     width: '100%',
     height: '100%'
+  },
+  keyInfos: {
+    '& > *': {
+      marginLeft: '1rem'
+    },
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  flexBoxRow: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  flexBoxColumn: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  flexBoxCenter: {
+    display: 'flex',
+    alignItems: 'center'
+  },
+  avatar: {
+    marginRight: '1rem'
   }
 });
 

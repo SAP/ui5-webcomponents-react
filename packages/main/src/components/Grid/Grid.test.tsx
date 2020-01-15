@@ -1,7 +1,7 @@
-import { mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
+import React from 'react';
 
 const GridContent = () => (
   <>
@@ -95,4 +95,6 @@ describe('Grid', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(Grid);
 });

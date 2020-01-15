@@ -1,14 +1,14 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import React, { FC, useCallback, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ScrollLink } from '@ui5/webcomponents-react-base/lib/ScrollLink';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import { ObjectPageLink } from './scroll/ObjectPageLink';
+import React, { FC, useCallback, useState } from 'react';
+import { createUseStyles } from 'react-jss';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 interface ObjectPageAnchorPropTypes {
   section: any;
@@ -50,7 +50,7 @@ const anchorButtonStyles = ({ parameters }: JSSTheme) => ({
     }
   }
 });
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof anchorButtonStyles>>(anchorButtonStyles, {
+const useStyles = createUseStyles<keyof ReturnType<typeof anchorButtonStyles>>(anchorButtonStyles, {
   name: 'ObjectPageAnchorButton'
 });
 
@@ -88,8 +88,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
 
   const navigationIcon = (
     <Icon
-      src="sap-icon://slim-arrow-down"
-      onPress={openModal}
+      name="slim-arrow-down"
       style={{
         height: '1rem',
         width: '1rem',
@@ -119,20 +118,20 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
     }
 
     return (
-      <ObjectPageLink
+      <ScrollLink
         key={item.props.id}
         id={`ObjectPageSubSection-${item.props.id}`}
         scrollOffset={collapsedHeader ? 45 : 0}
       >
         <StandardListItem data-key={item.props.id}>{item.props.title}</StandardListItem>
-      </ObjectPageLink>
+      </ScrollLink>
     );
   };
 
   let sectionSelector = null;
   if (mode === ObjectPageMode.Default) {
     sectionSelector = (
-      <ObjectPageLink
+      <ScrollLink
         id={`ObjectPageSection-${section.props.id}`}
         onSetActive={onScrollActive}
         activeClass={classes.selected}
@@ -140,7 +139,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
         scrollOffset={45}
       >
         <span className={classes.button}>{section.props.title}</span>
-      </ObjectPageLink>
+      </ScrollLink>
     );
   } else {
     sectionSelector = (

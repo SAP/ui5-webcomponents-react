@@ -4,13 +4,14 @@ exports[`SegmentedButtonItem Basic SegmentedButtonItem 1`] = `
 <li
   class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem-"
   data-has-own-width="false"
+  id="1"
 >
   <div
     class="SegmentedButtonItem--icon- SegmentedButtonItem--withText-"
   >
     <ui5-icon
       class=""
-      src="add"
+      name="add"
     />
   </div>
   My Item
@@ -21,13 +22,14 @@ exports[`SegmentedButtonItem SegmentedButtonItem Disabled 1`] = `
 <li
   class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--iconOnly- SegmentedButtonItem--disabled-"
   data-has-own-width="false"
+  id="1"
 >
   <div
     class="SegmentedButtonItem--icon-"
   >
     <ui5-icon
       class=""
-      src="add"
+      name="add"
     />
   </div>
 </li>
@@ -37,13 +39,14 @@ exports[`SegmentedButtonItem SegmentedButtonItem Icon Only 1`] = `
 <li
   class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--iconOnly- SegmentedButtonItem--focusableItem-"
   data-has-own-width="false"
+  id="1"
 >
   <div
     class="SegmentedButtonItem--icon-"
   >
     <ui5-icon
       class=""
-      src="add"
+      name="add"
     />
   </div>
 </li>
@@ -53,13 +56,14 @@ exports[`SegmentedButtonItem SegmentedButtonItem onClick 1`] = `
 <li
   class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--iconOnly- SegmentedButtonItem--focusableItem-"
   data-has-own-width="false"
+  id="1"
 >
   <div
     class="SegmentedButtonItem--icon-"
   >
     <ui5-icon
       class=""
-      src="add"
+      name="add"
     />
   </div>
 </li>
@@ -69,13 +73,14 @@ exports[`SegmentedButtonItem Selected SegmentedButtonItem 1`] = `
 <li
   class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem- SegmentedButtonItem--selected-"
   data-has-own-width="false"
+  id="1"
 >
   <div
     class="SegmentedButtonItem--icon- SegmentedButtonItem--withText-"
   >
     <ui5-icon
       class=""
-      src="add"
+      name="add"
     />
   </div>
   My Item

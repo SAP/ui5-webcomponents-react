@@ -1,6 +1,6 @@
 import { Optional } from '@ui5/webcomponents-react-base/lib/Optional';
-import { useEffect, RefObject, useCallback } from 'react';
 import '@ui5/webcomponents/dist/Label';
+import { RefObject, useCallback, useEffect } from 'react';
 
 const getSymbolForDataset = (type, dataset) => {
   const datasetMeta: any = dataset.hasOwnProperty('_meta') ? Object.values(dataset._meta)[0] : null;

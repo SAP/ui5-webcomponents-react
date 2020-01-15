@@ -1,18 +1,18 @@
+import '@ui5/webcomponents-icons/dist/icons/navigation-left-arrow';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import React, { forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import React, { FC, forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
-import '@ui5/webcomponents/dist/icons/navigation-left-arrow';
 
 export interface PagePropTypes extends CommonProps {
   title?: string;
@@ -26,11 +26,11 @@ export interface PagePropTypes extends CommonProps {
   children: ReactElement<any> | Array<ReactElement<any>> | ReactNode;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, {
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, {
   name: 'Page'
 });
 
-const Page = forwardRef((props: PagePropTypes, ref: Ref<HTMLDivElement>) => {
+const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,
     showFooter,
@@ -95,8 +95,10 @@ const Page = forwardRef((props: PagePropTypes, ref: Ref<HTMLDivElement>) => {
 
   pageContainer.put(classes[`background${backgroundDesign}`]);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
-    <div ref={ref} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot}>
+    <div ref={ref} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot} {...passThroughProps}>
       {showHeader && <header className={headerClasses.valueOf()}>{header}</header>}
       <section className={classes.contentSection}>{children}</section>
       {showFooter && <footer className={footerClasses.valueOf()}>{renderCustomFooter && renderCustomFooter()}</footer>}

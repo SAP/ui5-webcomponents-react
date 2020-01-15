@@ -12,6 +12,7 @@ import * as sap_fiori_3 from './lib/sap_fiori_3';
 import * as spacing from './lib/spacing';
 import { StyleClassHelper } from './lib/StyleClassHelper';
 import { useConsolidatedRef } from './lib/useConsolidatedRef';
+import { usePassThroughHtmlProps } from './lib/usePassThroughHtmlProps';
 import { deprecationNotice, getScrollBarWidth } from './lib/Utils';
 
 export {
@@ -28,5 +29,6 @@ export {
   HSLColor,
   sap_fiori_3,
   createGenerateClassName,
-  useConsolidatedRef
+  useConsolidatedRef,
+  usePassThroughHtmlProps
 };

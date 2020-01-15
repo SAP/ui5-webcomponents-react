@@ -1,10 +1,11 @@
+import { action } from '@storybook/addon-actions';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import React from 'react';
 import notes from './Grid.md';
 
 export const defaultStory = () => {
   return (
-    <Grid>
+    <Grid onRateChanged={action('rate changed')}>
       <div style={{ backgroundColor: 'lightgreen' }}>Div 1</div>
       <div style={{ backgroundColor: 'yellow' }}>Div 2</div>
       <div style={{ backgroundColor: 'cyan' }}>Div 3</div>
@@ -16,7 +17,7 @@ export const defaultStory = () => {
 };
 
 export default {
-  title: 'Components | Grid',
+  title: 'Components / Grid',
   component: Grid,
   parameters: { notes }
 };

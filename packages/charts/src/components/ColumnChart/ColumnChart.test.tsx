@@ -1,7 +1,7 @@
-import * as React from 'react';
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
-import { ColumnChart } from './index';
+import * as React from 'react';
 import { labels, singleDataset } from '../../test/resources/ChartProps';
+import { ColumnChart } from './index';
 
 describe('ColumnChart', () => {
   test('Renders with data', () => {

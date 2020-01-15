@@ -1,60 +1,54 @@
-import '@ui5/webcomponents/dist/icons/navigation-down-arrow';
-import '@ui5/webcomponents/dist/icons/navigation-right-arrow';
+import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
+import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
-import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
 import { VirtualTableRow } from './VirtualTableRow';
 
 export const VirtualTableBody = (props) => {
   const {
     classes,
-    rowContainerStyling,
     prepareRow,
     rows,
     minRows,
     columns,
-    selectedRow,
-    selectedRowPath,
-    selectable,
+    selectionMode,
     reactWindowRef,
-    tableWidth,
-    resizedColumns,
     isTreeTable,
     internalRowHeight,
     tableBodyHeight,
     visibleRows,
-    alternateRowColor
+    alternateRowColor,
+    overscanCount,
+    totalColumnsWidth,
+    selectedFlatRows
   } = props;
 
   const innerDivRef = useRef(null);
 
   useEffect(() => {
+    selectionMode;
     if (innerDivRef.current) {
       innerDivRef.current.classList = '';
       innerDivRef.current.classList.add(classes.tbody);
-      if (selectable) {
+      if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
         innerDivRef.current.classList.add(classes.selectable);
       }
+      if (alternateRowColor) {
+        innerDivRef.current.classList.add(classes.alternateRowColor);
+      }
     }
-  }, [innerDivRef.current, selectable, classes.tbody, classes.selectable]);
+  }, [
+    innerDivRef.current,
+    selectionMode,
+    classes.tbody,
+    classes.selectable,
+    alternateRowColor,
+    classes.alternateRowColor
+  ]);
 
   const itemCount = Math.max(minRows, rows.length);
-  const overscanCount = Math.floor(visibleRows / 2);
-
-  const columnsWidth = useMemo(() => {
-    const aggregatedWidth = columns
-      .map((item) => {
-        if (resizedColumns.hasOwnProperty(item.accessor)) {
-          return resizedColumns[item.accessor];
-        }
-        if (item.hasOwnProperty('show') && !item.show) {
-          return 0;
-        }
-        return item.minWidth ? item.minWidth : DEFAULT_COLUMN_WIDTH;
-      })
-      .reduce((acc, val) => acc + val, 0);
-    return tableWidth > aggregatedWidth || tableWidth === 0 ? null : aggregatedWidth;
-  }, [columns, tableWidth, resizedColumns]);
+  const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
 
   const tableData = useMemo(() => {
     return {
@@ -62,21 +56,10 @@ export const VirtualTableBody = (props) => {
       additionalProps: {
         isTreeTable,
         classes,
-        columns,
-        rowContainerStyling
+        columns
       }
     };
-  }, [
-    rows,
-    prepareRow,
-    isTreeTable,
-    classes,
-    columns,
-    rowContainerStyling,
-    alternateRowColor,
-    selectedRow,
-    selectedRowPath
-  ]);
+  }, [rows, prepareRow, isTreeTable, classes, columns, selectedFlatRows, selectionMode]);
 
   const getItemKey = useCallback(
     (index, data) => {
@@ -98,13 +81,13 @@ export const VirtualTableBody = (props) => {
     <FixedSizeList
       ref={reactWindowRef}
       height={tableBodyHeight}
-      width={columnsWidth}
+      width={totalColumnsWidth}
       itemData={tableData}
       itemCount={itemCount}
       itemSize={internalRowHeight}
       itemKey={getItemKey}
       innerRef={innerDivRef}
-      overscanCount={overscanCount}
+      overscanCount={overscan}
     >
       {VirtualTableRow}
     </FixedSizeList>

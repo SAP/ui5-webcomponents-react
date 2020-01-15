@@ -1,16 +1,15 @@
+import '@ui5/webcomponents-icons/dist/icons/slim-arrow-left';
+import '@ui5/webcomponents-icons/dist/icons/slim-arrow-right';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
-import '@ui5/webcomponents/dist/icons/slim-arrow-left';
-import '@ui5/webcomponents/dist/icons/slim-arrow-right';
 import React, { Children, FC, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './CarouselPagination.jss';
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'CarouselPagination' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'CarouselPagination' });
 
 export interface CarouselPaginationPropTypes {
   /**
@@ -66,10 +65,10 @@ const CarouselPagination: FC<CarouselPaginationPropTypes> = (props) => {
     return (
       <div className={classes.paginationArrowContentNoBar}>
         <div data-value="paginationArrow" className={classes.paginationArrow} onClick={goToPreviousPage}>
-          <Icon src="sap-icon://slim-arrow-left" />
+          <Icon name="slim-arrow-left" />
         </div>
         <div data-value="paginationArrow" className={classes.paginationArrow} onClick={goToNextPage}>
-          <Icon src="sap-icon://slim-arrow-right" />
+          <Icon name="slim-arrow-right" />
         </div>
       </div>
     );
@@ -89,7 +88,7 @@ const CarouselPagination: FC<CarouselPaginationPropTypes> = (props) => {
   return (
     <div className={paginationClasses.valueOf()}>
       <div data-value="paginationArrow" className={classes.paginationArrow} onClick={goToPreviousPage}>
-        <Icon src="sap-icon://slim-arrow-left" />
+        <Icon name="slim-arrow-left" />
       </div>
 
       <div className={classes.paginationIndicator}>
@@ -109,7 +108,7 @@ const CarouselPagination: FC<CarouselPaginationPropTypes> = (props) => {
       </div>
 
       <div data-value="paginationArrow" className={classes.paginationArrow} onClick={goToNextPage}>
-        <Icon src="sap-icon://slim-arrow-right" />
+        <Icon name="slim-arrow-right" />
       </div>
     </div>
   );

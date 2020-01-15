@@ -1,4 +1,4 @@
-import { getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
 import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
 import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';
 import React, { cloneElement } from 'react';
@@ -39,4 +39,6 @@ describe('SegmentedButton', () => {
     expect(wrapper.render()).toMatchSnapshot();
     expect(callback.called).toBe(false);
   });
+
+  createPassThroughPropsTest(SegmentedButton);
 });

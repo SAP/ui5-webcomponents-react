@@ -1,7 +1,7 @@
-import React, { FC, ReactNode } from 'react';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import UI5Card from '@ui5/webcomponents/dist/Card';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import UI5Card from '@ui5/webcomponents/dist/Card';
+import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface CardPropTypes extends WithWebComponentPropTypes {
@@ -9,7 +9,7 @@ export interface CardPropTypes extends WithWebComponentPropTypes {
   subtitle?: string; // @generated
   status?: string; // @generated
   headerInteractive?: boolean; // @generated
-  avatar?: string; // @generated
+  avatar?: ReactNode; // @generated
   onHeaderClick?: (event: Event) => void; // @generated
   children?: ReactNode | ReactNode[]; // @generated
 }

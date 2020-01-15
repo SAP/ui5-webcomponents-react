@@ -16,7 +16,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://question-mark"
+        name="question-mark"
       />
     </div>
     <ui5-title
@@ -72,7 +72,7 @@ exports[`MessageBox Confirm - OK 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://question-mark"
+        name="question-mark"
       />
     </div>
     <ui5-title
@@ -127,7 +127,7 @@ exports[`MessageBox Error 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://message-error"
+        name="message-error"
       />
     </div>
     <ui5-title
@@ -174,7 +174,7 @@ exports[`MessageBox Information 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://message-information"
+        name="message-information"
       />
     </div>
     <ui5-title
@@ -222,7 +222,7 @@ exports[`MessageBox No Title 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://question-mark"
+        name="question-mark"
       />
     </div>
     <ui5-title
@@ -277,7 +277,7 @@ exports[`MessageBox Not open 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://message-success"
+        name="message-success"
       />
     </div>
     <ui5-title
@@ -324,7 +324,7 @@ exports[`MessageBox Show 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://question-mark"
+        name="question-mark"
       />
     </div>
     <ui5-title
@@ -379,7 +379,7 @@ exports[`MessageBox Success 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://message-success"
+        name="message-success"
       />
     </div>
     <ui5-title
@@ -426,7 +426,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://message-success"
+        name="message-success"
       />
     </div>
     <ui5-title
@@ -473,7 +473,7 @@ exports[`MessageBox Warning 1`] = `
     >
       <ui5-icon
         class=""
-        src="sap-icon://message-warning"
+        name="message-warning"
       />
     </div>
     <ui5-title

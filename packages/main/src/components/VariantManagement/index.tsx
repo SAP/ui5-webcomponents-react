@@ -1,4 +1,6 @@
+import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/lib/List';
@@ -9,7 +11,6 @@ import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import '@ui5/webcomponents/dist/icons/navigation-down-arrow';
 import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -63,7 +64,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Variant Management' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'VariantManagement' });
 
 const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
   (props: VariantManagementPropTypes, ref: Ref<any>) => {
@@ -83,7 +84,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [selectedKey, setSelectedKey] = useState(
-      initialSelectedKey ? initialSelectedKey : variantItems.length ? variantItems[0].key : null
+      initialSelectedKey ? initialSelectedKey : variantItems?.[0]?.key ?? null
     );
 
     if (!variantItems || variantItems.length < 1) {
@@ -129,7 +130,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
           <Title level={level} className={textClasses}>
             {selectedItem.label}
           </Title>
-          <Button design={ButtonDesign.Transparent} icon="sap-icon://navigation-down-arrow" disabled={disabled} />
+          <Button design={ButtonDesign.Transparent} icon="navigation-down-arrow" disabled={disabled} />
         </div>
       );
     }, [classes, variantItems, level, selectedKey, disabled]);
@@ -146,6 +147,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
       },
       [handleCancelButtonClick, closeOnItemSelect, selectedKey, variantItems, setSelectedKey]
     );
+    const passThroughProps = usePassThroughHtmlProps(props);
 
     return (
       <Popover
@@ -158,8 +160,9 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
         openByStyle={{ pointerEvents: disabled ? 'none' : 'auto' }}
         footer={footerButtons}
         className={className}
-        innerStyles={style}
+        style={style}
         tooltip={tooltip}
+        {...passThroughProps}
       >
         <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
           {variantItems.map((item) => (

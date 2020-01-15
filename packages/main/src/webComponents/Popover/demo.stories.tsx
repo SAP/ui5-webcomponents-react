@@ -8,7 +8,7 @@ import React from 'react';
 import notes from './Popover.md';
 
 export default {
-  title: 'UI5 Web Components | Popover',
+  title: 'UI5 Web Components / Popover',
   component: Popover,
   parameters: { notes }
 };
