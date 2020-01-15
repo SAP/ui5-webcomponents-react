@@ -44,11 +44,11 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
     }
   }, []);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   if (!isVisible) {
     return null;
   }
-
-  const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
     <div
