@@ -5,7 +5,7 @@ import React from 'react';
 import notes from './ProductSwitch.md';
 
 export default {
-  title: 'UI5 Web Components | ProductSwitch',
+  title: 'UI5 Web Components / ProductSwitch',
   component: ProductSwitch,
   parameters: {
     notes

@@ -7,7 +7,7 @@ import React from 'react';
 import notes from './MultiComboBox.md';
 
 export default {
-  title: 'UI5 Web Components | MultiComboBox',
+  title: 'UI5 Web Components / MultiComboBox',
   component: MultiComboBox,
   parameters: { notes }
 };

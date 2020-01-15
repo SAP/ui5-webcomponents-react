@@ -1,16 +1,16 @@
 import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import React, { Children, cloneElement, forwardRef, ReactElement, ReactNode, RefObject, FC } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import React, { Children, cloneElement, FC, forwardRef, ReactElement, ReactNode, RefObject } from 'react';
+import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { ButtonPropTypes } from '../../webComponents/Button';
 import styles from './ActionSheet.jss';
-import { createUseStyles } from 'react-jss';
 
 export interface ActionSheetPropTypes extends CommonProps {
   openBy: ReactNode;

@@ -1,6 +1,6 @@
-import { LOG_LEVEL, Logger } from './Logger';
-import * as sinon from 'sinon';
 import { modifyObjectProperty } from '@shared/tests/utils';
+import * as sinon from 'sinon';
+import { LOG_LEVEL, Logger } from './Logger';
 
 describe('Logger', () => {
   test('fatal', () => {

@@ -1,7 +1,7 @@
-import React, { FC, ReactNode } from 'react';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import UI5ShellBar from '@ui5/webcomponents-fiori/dist/ShellBar';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {

@@ -23,7 +23,7 @@ renderSpinner.story = {
 };
 
 export default {
-  title: 'Components | Spinner',
+  title: 'Components / Spinner',
   component: Spinner,
   parameters: { notes }
 };

@@ -1,12 +1,12 @@
 import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
-import React from 'react';
-import { Notification } from '@ui5/webcomponents-react/lib/Notification';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { action } from '@storybook/addon-actions';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Notification } from '@ui5/webcomponents-react/lib/Notification';
 import { Priority } from '@ui5/webcomponents-react/lib/Priority';
-import { action } from '@storybook/addon-actions';
+import React from 'react';
 
 const ActionButtons = [
   <Button key="Btn1" onClick={action('Accept')} style={{ paddingRight: '0.5rem' }}>

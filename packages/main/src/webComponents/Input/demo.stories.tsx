@@ -1,13 +1,13 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
-import React from 'react';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React from 'react';
 import notes from './Input.md';
 
 export default {
-  title: 'UI5 Web Components | Input',
+  title: 'UI5 Web Components / Input',
   component: Input,
   parameters: { notes }
 };

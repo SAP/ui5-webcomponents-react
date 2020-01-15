@@ -1,6 +1,7 @@
+import { CSSProperties } from 'react';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const size = (s) => ({
+const size = (s): CSSProperties => ({
   height: s,
   width: s,
   minWidth: s,
@@ -9,7 +10,7 @@ const size = (s) => ({
   textAlign: 'center'
 });
 
-const styles = ({ theme, parameters }: JSSTheme) => ({
+const styles = ({ parameters }: JSSTheme) => ({
   // outer flexbox
   avatar: {
     backgroundColor: parameters.sapAccentColor7,

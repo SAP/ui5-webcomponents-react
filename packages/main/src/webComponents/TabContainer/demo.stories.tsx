@@ -1,18 +1,18 @@
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
-import React from 'react';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
-import { Tab } from '@ui5/webcomponents-react/lib/Tab';
-import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 import '@ui5/webcomponents-icons/dist/icons/add';
 import '@ui5/webcomponents-icons/dist/icons/home';
 import '@ui5/webcomponents-icons/dist/icons/map';
-import '@ui5/webcomponents-icons/dist/icons/world';
 import '@ui5/webcomponents-icons/dist/icons/process';
+import '@ui5/webcomponents-icons/dist/icons/world';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Tab } from '@ui5/webcomponents-react/lib/Tab';
+import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
+import React from 'react';
 import notes from './TabContainer.md';
 
 export default {
-  title: 'UI5 Web Components | TabContainer',
+  title: 'UI5 Web Components / TabContainer',
   component: TabContainer,
   parameters: { notes }
 };

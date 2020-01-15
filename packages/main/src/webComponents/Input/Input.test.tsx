@@ -1,6 +1,6 @@
-import React from 'react';
-import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { mountThemedComponent } from '@shared/tests/utils';
+import { Input } from '@ui5/webcomponents-react/lib/Input';
+import React from 'react';
 
 describe('Input', () => {
   test('Basic Test (generated)', () => {

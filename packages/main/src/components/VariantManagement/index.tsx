@@ -64,7 +64,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Variant Management' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'VariantManagement' });
 
 const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
   (props: VariantManagementPropTypes, ref: Ref<any>) => {

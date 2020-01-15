@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import React from 'react';
+import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
@@ -10,13 +10,12 @@ import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';
 import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import React from 'react';
 // @ts-ignore
 import SampleImage from './DemoImage.png';
 import notes from './ObjectPage.md';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 
 const renderHeaderContent = () => (
   <>
@@ -180,7 +179,7 @@ renderShortContent.story = {
 };
 
 export default {
-  title: 'Components | ObjectPage',
+  title: 'Components / ObjectPage',
   component: ObjectPage,
   parameters: { notes }
 };

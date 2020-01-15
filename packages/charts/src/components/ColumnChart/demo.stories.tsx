@@ -69,7 +69,7 @@ const growthLineOptions = {
 };
 
 export default {
-  title: 'Charts | ColumnChart',
+  title: 'Charts / ColumnChart',
   component: ColumnChart,
   parameters: { notes }
 };

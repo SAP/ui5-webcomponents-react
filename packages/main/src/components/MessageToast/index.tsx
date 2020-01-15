@@ -1,3 +1,6 @@
+import '@ui5/webcomponents-icons/dist/icons/message-error';
+import '@ui5/webcomponents-icons/dist/icons/message-warning';
+import '@ui5/webcomponents-icons/dist/icons/sys-enter';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
@@ -8,9 +11,6 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './MessageToast.jss';
-import '@ui5/webcomponents-icons/dist/icons/message-error';
-import '@ui5/webcomponents-icons/dist/icons/message-warning';
-import '@ui5/webcomponents-icons/dist/icons/sys-enter';
 
 const coloredStyles = ({ parameters }: JSSTheme) => ({
   base: {
@@ -30,7 +30,7 @@ const coloredStyles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useIconStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof coloredStyles>>(coloredStyles, {
+const useIconStyles = createUseStyles<keyof ReturnType<typeof coloredStyles>>(coloredStyles, {
   name: 'MessageToastIcon'
 });
 
@@ -39,7 +39,7 @@ const ColoredIcon = ({ name, state }) => {
   return <Icon name={name} className={`${classes.base} ${classes[state]}`} />;
 };
 
-const useMessageToastStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, {
+const useMessageToastStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, {
   name: 'MessageToast'
 });
 

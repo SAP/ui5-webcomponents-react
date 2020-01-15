@@ -1,6 +1,6 @@
-import { Orientation } from './Orientation';
 import * as sinon from 'sinon';
 import { EventRegistry } from './EventRegistry';
+import { Orientation } from './Orientation';
 
 describe('Device - Orientation', () => {
   test('Add and remove handler', () => {

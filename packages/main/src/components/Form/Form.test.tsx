@@ -1,10 +1,10 @@
 import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
-import * as React from 'react';
 import { Form } from '@ui5/webcomponents-react/lib/Form';
 import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
 import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';
-import { Input } from '../../webComponents/Input';
+import * as React from 'react';
 import { InputType } from '../..';
+import { Input } from '../../webComponents/Input';
 
 const SIZE_S = 200;
 const SIZE_M = 800;

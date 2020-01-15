@@ -32,7 +32,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPageSubSection' });
+const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPageSubSection' });
 
 const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
   (props: ObjectPageSubSectionPropTypes, ref: RefObject<any>) => {

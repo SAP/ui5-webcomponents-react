@@ -1,6 +1,6 @@
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Label from '@ui5/webcomponents/dist/Label';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface LabelPropTypes extends WithWebComponentPropTypes {

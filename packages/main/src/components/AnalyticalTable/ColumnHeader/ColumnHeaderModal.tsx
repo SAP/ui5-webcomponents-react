@@ -1,5 +1,3 @@
-import React, { CSSProperties, FC, ReactNode, RefObject, useCallback, useRef } from 'react';
-import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
@@ -11,6 +9,8 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import React, { CSSProperties, FC, ReactNode, RefObject, useCallback, useRef } from 'react';
+import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { ColumnType } from '../types/ColumnType';
 
 export interface ColumnHeaderModalProperties {

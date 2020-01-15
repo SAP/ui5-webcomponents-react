@@ -1,6 +1,6 @@
 import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
+import React from 'react';
 
 describe('Text', () => {
   test('Render Basic Text', () => {

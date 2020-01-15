@@ -31,7 +31,7 @@ const renderStoryWithCustomColors = () => (
 );
 
 export default {
-  title: 'Charts | Line Chart',
+  title: 'Charts / Line Chart',
   component: LineChart,
   parameters: { notes }
 };

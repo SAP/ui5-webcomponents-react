@@ -1,5 +1,5 @@
-import { useCallback, useState } from 'react';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { useCallback, useState } from 'react';
 
 const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
