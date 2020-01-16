@@ -116,46 +116,49 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
   const onLegendItemClick = useCallback((e) => {
     // TODO we used to hide the data set on legend click
   }, []);
+  console.log(internalData);
 
   return (
-    <ResponsiveContainer width={width} height={height}>
-      <LineChartLib
-        ref={chartRef}
-        data={internalData}
-        style={{ fontSize: parameters.sapUiFontSmallSize }}
-        onClick={onDataPointClick}
-      >
-        <CartesianGrid vertical={false} />
-        <XAxis
-          dataKey="xLabel"
-          tick={<CustomTick />}
-          tickFormatter={categoryAxisFormatter}
-          interval={'preserveStartEnd'}
-        />
-        <YAxis
-          tickFormatter={valueAxisFormatter}
-          tick={{
-            fontFamily: parameters.sapUiFontFamily,
-            fill: parameters.sapUiTextColor,
-            fontWeight: 'bold',
-            fontSize: parameters.sapUiFontSmallSize
-          }}
-        />
-        {datasets.map(({ label, color }, index) => (
-          <Line
-            type="monotone"
-            key={label}
-            name={label}
-            dataKey={`${label}.value`}
-            stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
-          >
-            <LabelList dataKey={`${label}.value`} content={CustomDataLabel} formatter={valueAxisFormatter} />
-          </Line>
-        ))}
-        <Tooltip formatter={(value, name) => [valueAxisFormatter(value), categoryAxisFormatter(name)]} />
-        {!noLegend && <Legend onClick={onLegendItemClick} />}
-      </LineChartLib>
-    </ResponsiveContainer>
+    <div style={{ width: width, height: height }}>
+      <ResponsiveContainer width={width} height={height}>
+        <LineChartLib
+          ref={chartRef}
+          data={internalData}
+          style={{ fontSize: parameters.sapUiFontSmallSize }}
+          onClick={onDataPointClick}
+        >
+          <CartesianGrid vertical={false} />
+          <XAxis
+            dataKey="xLabel"
+            tick={<CustomTick />}
+            tickFormatter={categoryAxisFormatter}
+            interval={'preserveStartEnd'}
+          />
+          <YAxis
+            tickFormatter={valueAxisFormatter}
+            tick={{
+              fontFamily: parameters.sapUiFontFamily,
+              fill: parameters.sapUiTextColor,
+              fontWeight: 'bold',
+              fontSize: parameters.sapUiFontSmallSize
+            }}
+          />
+          {datasets.map(({ label, color }, index) => (
+            <Line
+              type="monotone"
+              key={label}
+              name={label}
+              dataKey={`${label}.value`}
+              stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
+            >
+              <LabelList dataKey={`${label}.value`} content={CustomDataLabel} formatter={valueAxisFormatter} />
+            </Line>
+          ))}
+          <Tooltip formatter={(value, name) => [valueAxisFormatter(value), categoryAxisFormatter(name)]} />
+          {!noLegend && <Legend onClick={onLegendItemClick} />}
+        </LineChartLib>
+      </ResponsiveContainer>
+    </div>
   );
 });
 // @ts-ignore

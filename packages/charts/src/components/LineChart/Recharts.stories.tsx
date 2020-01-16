@@ -16,7 +16,7 @@ const datasets = [
 ];
 
 function renderStory() {
-  return <LineChart labels={labels} datasets={datasets} loading={boolean('loading', false)} />;
+  return <LineChart width={'100%'} labels={labels} datasets={datasets} loading={boolean('loading', false)} />;
 }
 
 const colors = ['#f0ab00'];
@@ -35,7 +35,7 @@ const renderStoryWithCustomColors = () => (
 );
 
 export default {
-  title: 'Charts | Line Chart (new)',
+  title: 'Recharts',
   component: LineChart,
   parameters: { notes }
 };

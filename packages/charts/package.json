@@ -29,6 +29,7 @@
     "recharts": "^1.8.5"
   },
   "devDependencies": {
+    "@types/recharts": "^1.8.5",
     "@types/chart.js": "^2.9.8"
   },
   "peerDependencies": {
