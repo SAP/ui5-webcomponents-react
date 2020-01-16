@@ -7,12 +7,13 @@ import { ProductSwitchItem } from '@ui5/webcomponents-react/lib/ProductSwitchIte
 import { ShellBar } from '@ui5/webcomponents-react/lib/ShellBar';
 import { ShellBarItem } from '@ui5/webcomponents-react/lib/ShellBarItem';
 import React from 'react';
-import notes from './ShellBar.md';
 
 export default {
   title: 'UI5 Web Components / ShellBar',
   component: ShellBar,
-  parameters: { notes }
+  parameters: {
+    subcomponents: { ShellBarItem }
+  }
 };
 
 export const generatedDefaultStory = () => (

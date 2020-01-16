@@ -1,13 +1,12 @@
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
+import { Form } from '@ui5/webcomponents-react/lib/Form';
+import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
+import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import React from 'react';
-import notes from './Form.md';
-import { FormGroup } from './FormGroup';
-import { FormItem } from './FormItem';
-import { Form } from './index';
 
 export const defaultStory = () => {
   return (
@@ -51,5 +50,7 @@ export const defaultStory = () => {
 export default {
   title: 'Components / Form',
   component: Form,
-  parameters: { notes }
+  parameters: {
+    subcomponents: { FormGroup, FormItem }
+  }
 };

@@ -74,7 +74,9 @@ const PieChartComponent = forwardRef((props: PieChartPropTypes, ref: Ref<any>) =
 });
 // @ts-ignore
 PieChartComponent.LoadingPlaceholder = PieChartPlaceholder;
-
+/**
+ * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/PieChart';</code>
+ */
 const PieChart: FC<PieChartPropTypes> = withChartContainer(PieChartComponent);
 
 PieChart.defaultProps = {

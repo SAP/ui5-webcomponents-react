@@ -33,6 +33,11 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
 
 const InternalPopover = withWebComponent<PopoverPropTypes>(UI5Popover);
 
+/**
+ * <code>import { Popover } from '@ui5/webcomponents-react/lib/Popover';</code>
+ * <br />
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Popover" target="_blank">UI5 Web Components Playground</a>
+ */
 export const Popover: FC<PopoverPropTypes> = React.forwardRef(
   (props: PopoverPropTypes, givenRef: RefObject<Ui5PopoverDomRef>) => {
     const { propagateOpenByClickEvent, openBy, openByStyle, open, ...rest } = props;

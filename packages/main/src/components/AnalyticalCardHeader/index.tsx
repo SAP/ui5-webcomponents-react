@@ -36,6 +36,9 @@ const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, {
   name: 'AnalyticalCardHeader'
 });
 
+/**
+ * <code>import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';</code>
+ */
 export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRef(
   (props: AnalyticalCardHeaderPropTypes, ref: Ref<HTMLDivElement>) => {
     const {

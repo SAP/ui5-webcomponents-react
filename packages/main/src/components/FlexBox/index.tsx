@@ -23,6 +23,9 @@ export interface FlexBoxPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
 }
 
+/**
+ * <code>import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';</code>
+ */
 const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,

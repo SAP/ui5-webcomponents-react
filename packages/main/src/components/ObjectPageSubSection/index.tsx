@@ -34,6 +34,9 @@ const styles = ({ parameters }: JSSTheme) => ({
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPageSubSection' });
 
+/**
+ * <code>import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';</code>
+ */
 const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
   (props: ObjectPageSubSectionPropTypes, ref: RefObject<any>) => {
     const { children, id, title, className, style, tooltip } = props;

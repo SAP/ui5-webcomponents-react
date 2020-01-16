@@ -30,6 +30,9 @@ const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, {
   name: 'Page'
 });
 
+/**
+ * <code>import { Page } from '@ui5/webcomponents-react/lib/Page';</code>
+ */
 const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,

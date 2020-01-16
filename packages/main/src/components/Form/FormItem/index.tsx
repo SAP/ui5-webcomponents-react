@@ -16,6 +16,9 @@ const calculateWidth = (rate) => {
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'FormItem' });
 
+/**
+ * <code>import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';</code>
+ */
 const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<HTMLDivElement>) => {
   const { labelText, children } = props;
 

@@ -42,6 +42,9 @@ const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { nam
 
 const WEIGHT = { None: 0, Low: 1, Medium: 2, High: 3 };
 
+/**
+ * <code>import { Notification } from '@ui5/webcomponents-react/lib/Notification';</code>
+ */
 const Notification: FC<NotificationProptypes> = forwardRef(
   (props: NotificationProptypes, ref: RefObject<HTMLDivElement>) => {
     const {

@@ -72,6 +72,9 @@ const findSectionIndexById = (sections, id) => {
 
 const positionRelativStyle: CSSProperties = { position: 'relative' };
 
+/**
+ * <code>import { ObjectPage } from '@ui5/webcomponents-react/lib/ObjectPage';</code>
+ */
 const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     title,
