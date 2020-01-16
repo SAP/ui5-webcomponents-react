@@ -3,7 +3,6 @@ const fileUrl = require('file-url');
 const { createWrapperForComponent } = require('./steps/createWrapper');
 const { createDemoForComponent } = require('./steps/createDemo');
 const { createTestForComponent } = require('./steps/createTest');
-const { createDocForComponent } = require('./steps/createDocs');
 
 let pattern;
 let onlyStopForMerge = false;
@@ -28,7 +27,6 @@ async function executeQueue() {
         await createWrapperForComponent(dto, { onlyStopForMerge });
         createTestForComponent(dto);
         createDemoForComponent(dto);
-        createDocForComponent(dto);
       }
     } catch (e) {
       console.error(e.message);
