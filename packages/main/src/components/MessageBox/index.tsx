@@ -33,6 +33,9 @@ export interface MessageBoxPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'MessageBox' });
 
+/**
+ * <code>import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';</code>
+ */
 const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
   const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
 

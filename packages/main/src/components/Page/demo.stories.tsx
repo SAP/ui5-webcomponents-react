@@ -6,8 +6,6 @@ import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Page } from '@ui5/webcomponents-react/lib/Page';
 import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroundDesign';
 import React from 'react';
-import notes from './Page.md';
-
 export const renderPage = () => (
   <div style={{ height: '400px', width: '100%' }}>
     <Page
@@ -29,6 +27,5 @@ renderPage.story = {
 
 export default {
   title: 'Components / Page',
-  component: Page,
-  parameters: { notes }
+  component: Page
 };

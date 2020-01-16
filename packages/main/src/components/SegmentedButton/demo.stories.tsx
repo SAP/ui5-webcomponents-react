@@ -4,8 +4,6 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
 import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';
 import React from 'react';
-import notes from './SegmentedButton.md';
-
 export const renderStory = () => {
   return (
     <SegmentedButton
@@ -30,5 +28,7 @@ renderStory.story = {
 export default {
   title: 'Components / SegmentedButton',
   component: SegmentedButton,
-  parameters: { notes }
+  parameters: {
+    subcomponents: { SegmentedButtonItem }
+  }
 };

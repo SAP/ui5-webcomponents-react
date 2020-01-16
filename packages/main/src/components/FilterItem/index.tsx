@@ -30,6 +30,9 @@ export interface FilterItemPropTypes extends CommonProps {
 
 const useStyles = createUseStyles(styles, { name: 'FilterItem' });
 
+/**
+ * <code>import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';</code>
+ */
 const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     filterItems,

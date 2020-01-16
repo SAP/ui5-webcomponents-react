@@ -9,12 +9,12 @@ import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Tab } from '@ui5/webcomponents-react/lib/Tab';
 import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 import React from 'react';
-import notes from './TabContainer.md';
-
 export default {
   title: 'UI5 Web Components / TabContainer',
   component: TabContainer,
-  parameters: { notes }
+  parameters: {
+    subcomponents: { Tab }
+  }
 };
 
 export const defaultStory = () => (

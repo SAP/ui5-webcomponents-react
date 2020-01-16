@@ -3,8 +3,6 @@ import { boolean } from '@storybook/addon-knobs';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import React, { useState } from 'react';
-import notes from './BarChart.md';
-
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [
   {
@@ -37,8 +35,7 @@ const options = {
 
 export default {
   title: 'Charts / BarChart',
-  component: BarChart,
-  parameters: { notes }
+  component: BarChart
 };
 
 function Demo() {

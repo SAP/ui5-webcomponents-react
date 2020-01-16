@@ -25,6 +25,9 @@ export interface TextProps extends CommonProps {
 
 const useStyles = createUseStyles<keyof ReturnType<typeof TextStyles>>(TextStyles, { name: 'Text' });
 
+/**
+ * <code>import { Text } from '@ui5/webcomponents-react/lib/Text';</code>
+ */
 const Text: FC<TextProps> = forwardRef((props: TextProps, ref: Ref<HTMLSpanElement>) => {
   const { children, renderWhitespace, wrapping, width, className, style, tooltip, slot } = props;
   const classes = useStyles();

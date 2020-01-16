@@ -1,12 +1,9 @@
 import { boolean } from '@storybook/addon-knobs';
 import { TextArea } from '@ui5/webcomponents-react/lib/TextArea';
 import React from 'react';
-import notes from './TextArea.md';
-
 export default {
   title: 'UI5 Web Components / TextArea',
-  component: TextArea,
-  parameters: { notes }
+  component: TextArea
 };
 
 export const generatedDefaultStory = () => (

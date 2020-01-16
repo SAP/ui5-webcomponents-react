@@ -12,6 +12,9 @@ export interface TokenizerPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode[]; // @generated
 }
 
+/**
+ * <code>import { Tokenizer } from '@ui5/webcomponents-react/lib/Tokenizer';</code>
+ */
 const Tokenizer: FC<TokenizerPropTypes> = withWebComponent<TokenizerPropTypes>(UI5Tokenizer);
 
 Tokenizer.displayName = 'Tokenizer';

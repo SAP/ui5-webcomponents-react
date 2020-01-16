@@ -23,6 +23,9 @@ export interface FormPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'Form' });
 
+/**
+ * <code>import { Form } from '@ui5/webcomponents-react/lib/Form';</code>
+ */
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
   const { title, children } = props;
 

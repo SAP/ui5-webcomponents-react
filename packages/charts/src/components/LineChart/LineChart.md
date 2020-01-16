@@ -1,3 +1,3 @@
 ```jsx
-import { LineChart } from '@ui5/webcomponents-react/lib/LineChart';
+import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
 ```

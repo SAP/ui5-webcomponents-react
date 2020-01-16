@@ -2,8 +2,6 @@ import { number, select, text } from '@storybook/addon-knobs';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
 import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
 import React from 'react';
-import notes from './Loader.md';
-
 export const renderLoader = () => (
   <Loader
     type={select('type', LoaderType, LoaderType.Indeterminate)}
@@ -17,6 +15,5 @@ renderLoader.story = {
 
 export default {
   title: 'Components / Loader',
-  component: Loader,
-  parameters: { notes }
+  component: Loader
 };

@@ -2,13 +2,12 @@ import { text } from '@storybook/addon-knobs';
 import { ProductSwitch } from '@ui5/webcomponents-react/lib/ProductSwitch';
 import { ProductSwitchItem } from '@ui5/webcomponents-react/lib/ProductSwitchItem';
 import React from 'react';
-import notes from './ProductSwitch.md';
 
 export default {
   title: 'UI5 Web Components / ProductSwitch',
   component: ProductSwitch,
   parameters: {
-    notes
+    subcomponents: { ProductSwitchItem }
   }
 };
 

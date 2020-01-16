@@ -1,3 +1,3 @@
 ```jsx
-import { DonutChart } from '@ui5/webcomponents-react/lib/DonutChart';
+import { DonutChart } from '@ui5/webcomponents-react-charts/lib/DonutChart';
 ```

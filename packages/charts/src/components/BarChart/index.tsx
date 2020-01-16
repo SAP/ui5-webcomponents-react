@@ -118,6 +118,9 @@ const BarChartComponent = forwardRef((props: BarChartPropTypes, ref: Ref<any>) =
 
 // @ts-ignore
 BarChartComponent.LoadingPlaceholder = BarChartPlaceholder;
+/**
+ * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';</code>
+ */
 const BarChart: FC<BarChartPropTypes> = withChartContainer(BarChartComponent);
 
 BarChart.defaultProps = {

@@ -7,6 +7,9 @@ export interface GroupHeaderListItemPropTypes extends WithWebComponentPropTypes 
   children?: string; // @generated
 }
 
+/**
+ * <code>import { GroupHeaderListItem } from '@ui5/webcomponents-react/lib/GroupHeaderListItem';</code>
+ */
 const GroupHeaderListItem: FC<GroupHeaderListItemPropTypes> = withWebComponent<GroupHeaderListItemPropTypes>(
   UI5GroupHeaderListItem
 );

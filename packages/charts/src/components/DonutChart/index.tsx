@@ -73,7 +73,9 @@ const DonutChartComponent = forwardRef((props: DonutChartPropTypes, ref: Ref<any
 });
 // @ts-ignore
 DonutChartComponent.LoadingPlaceholder = PieChartPlaceholder;
-
+/**
+ * <code>import { DonutChart } from '@ui5/webcomponents-react-charts/lib/DonutChart';</code>
+ */
 const DonutChart: FC<DonutChartPropTypes> = withChartContainer(DonutChartComponent);
 
 DonutChart.defaultProps = {

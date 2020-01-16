@@ -2,12 +2,9 @@ import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
 import React from 'react';
-import notes from './Dialog.md';
-
 export default {
   title: 'UI5 Web Components / Dialog',
-  component: Dialog,
-  parameters: { notes }
+  component: Dialog
 };
 
 export const generatedDefaultStory = () => (

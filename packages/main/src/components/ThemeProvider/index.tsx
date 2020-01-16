@@ -24,6 +24,9 @@ export interface ThemeProviderProps {
 
 const generateClassName = createGenerateClassName();
 
+/**
+ * <code>import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';</code>
+ */
 const ThemeProvider: FC<ThemeProviderProps> = (props) => {
   const { withToastContainer, children, jss } = props;
   const theme = getTheme();

@@ -3,12 +3,9 @@ import { boolean, select, text } from '@storybook/addon-knobs';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
-import notes from './CheckBox.md';
-
 export default {
   title: 'UI5 Web Components / CheckBox',
-  component: CheckBox,
-  parameters: { notes }
+  component: CheckBox
 };
 
 export const defaultStory = () => (

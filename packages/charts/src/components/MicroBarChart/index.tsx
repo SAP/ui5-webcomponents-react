@@ -59,6 +59,9 @@ export interface MicroBarChartPropTypes extends CommonProps {
   labelFormatter?: (value: any) => string | number;
 }
 
+/**
+ * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';</code>
+ */
 const MicroBarChart: FC<MicroBarChartPropTypes> = forwardRef(
   (props: MicroBarChartPropTypes, ref: Ref<HTMLDivElement>) => {
     const { className, dataset, colors, maxWidth, visibleDatasetCount, valueFormatter, labelFormatter, style } = props;

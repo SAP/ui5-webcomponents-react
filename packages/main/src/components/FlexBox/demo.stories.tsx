@@ -6,8 +6,6 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
 import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React from 'react';
-import notes from './FlexBox.md';
-
 export const defaultStory = () => (
   <FlexBox
     justifyContent={select('justifyContent', FlexBoxJustifyContent, FlexBoxJustifyContent.Start)}
@@ -31,6 +29,5 @@ defaultStory.story = {
 
 export default {
   title: 'Components / FlexBox',
-  component: FlexBox,
-  parameters: { notes }
+  component: FlexBox
 };

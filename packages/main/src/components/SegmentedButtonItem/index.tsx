@@ -17,6 +17,9 @@ export interface SegmentedButtonItemPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'SegmentedButtonItem' });
 
+/**
+ * <code>import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';</code>
+ */
 const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = forwardRef(
   (props: SegmentedButtonItemPropTypes, ref: Ref<HTMLLIElement>) => {
     const { disabled, children, icon, className, style, tooltip, onClick, id, width } = props;

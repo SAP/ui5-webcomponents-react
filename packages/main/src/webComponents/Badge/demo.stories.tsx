@@ -3,14 +3,10 @@ import '@ui5/webcomponents-icons/dist/icons/employee';
 import { Badge } from '@ui5/webcomponents-react/lib/Badge';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React from 'react';
-import notes from './Badge.md';
 
 export default {
   title: 'UI5 Web Components / Badge',
-  component: Badge,
-  parameters: {
-    notes
-  }
+  component: Badge
 };
 
 export const defaultStory = () => (
