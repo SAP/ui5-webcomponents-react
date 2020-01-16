@@ -330,7 +330,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                     <ColumnHeader
                       id={column.id}
                       {...column.getHeaderProps()}
-                      isLastColumn={index === columns.length - 1}
+                      isLastColumn={index === headerGroup.headers.length - 1}
                       groupable={column.groupable ?? props.groupable}
                       sortable={column.sortable ?? props.sortable}
                       filterable={column.filterable ?? props.filterable}
