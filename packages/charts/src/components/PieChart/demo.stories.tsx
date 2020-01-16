@@ -1,6 +1,7 @@
 import { boolean } from '@storybook/addon-knobs';
 import { PieChart } from '@ui5/webcomponents-react-charts/lib/PieChart';
 import React from 'react';
+
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [{ data: [65, 59, 80, 81, 56, 55, 40] }];
 

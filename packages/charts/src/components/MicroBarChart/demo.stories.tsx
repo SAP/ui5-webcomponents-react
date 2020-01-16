@@ -1,6 +1,7 @@
 import { array, number, text } from '@storybook/addon-knobs';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';
 import React from 'react';
+
 const dataset = [
   { value: 10, label: 'Bar Number One' },
   { value: 100, label: 'Bar Number Two' },

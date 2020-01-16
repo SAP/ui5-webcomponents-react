@@ -6,6 +6,7 @@ import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCar
 import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
+
 export default {
   title: 'Components / Analytical Card',
   component: AnalyticalCard,

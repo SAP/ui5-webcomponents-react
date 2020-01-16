@@ -5,6 +5,7 @@ import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselAr
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import React from 'react';
+
 export const renderCarousel = () => {
   return (
     <Carousel

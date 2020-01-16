@@ -15,6 +15,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React from 'react';
 // @ts-ignore
 import SampleImage from './DemoImage.png';
+
 const renderHeaderContent = () => (
   <>
     <div style={{ display: 'flex', flexDirection: 'column' }}>

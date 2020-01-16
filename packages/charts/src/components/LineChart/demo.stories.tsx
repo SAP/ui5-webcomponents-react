@@ -1,6 +1,7 @@
 import { boolean } from '@storybook/addon-knobs';
 import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
 import React from 'react';
+
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [
   {

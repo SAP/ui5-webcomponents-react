@@ -6,6 +6,7 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import React from 'react';
+
 export default {
   title: 'UI5 Web Components / Card',
   component: Card

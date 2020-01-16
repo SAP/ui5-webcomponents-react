@@ -1,6 +1,7 @@
 import { boolean, text } from '@storybook/addon-knobs';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React from 'react';
+
 export const renderStory = () => {
   return (
     <Text

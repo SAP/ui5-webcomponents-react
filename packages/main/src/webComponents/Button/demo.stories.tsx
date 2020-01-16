@@ -3,6 +3,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import React from 'react';
+
 const customStyle1 = {
   color: 'red'
 };

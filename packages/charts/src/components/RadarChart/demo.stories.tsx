@@ -1,5 +1,6 @@
 import { RadarChart } from '@ui5/webcomponents-react-charts/lib/RadarChart';
 import React from 'react';
+
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [
   {

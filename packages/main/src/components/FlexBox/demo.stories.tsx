@@ -6,6 +6,7 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
 import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React from 'react';
+
 export const defaultStory = () => (
   <FlexBox
     justifyContent={select('justifyContent', FlexBoxJustifyContent, FlexBoxJustifyContent.Start)}

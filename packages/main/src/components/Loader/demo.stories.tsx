@@ -2,6 +2,7 @@ import { number, select, text } from '@storybook/addon-knobs';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
 import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
 import React from 'react';
+
 export const renderLoader = () => (
   <Loader
     type={select('type', LoaderType, LoaderType.Indeterminate)}

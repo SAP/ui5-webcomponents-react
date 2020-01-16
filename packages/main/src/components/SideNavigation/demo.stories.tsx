@@ -11,6 +11,7 @@ import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
 import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import React from 'react';
+
 export const defaultStory = () => (
   <SideNavigation
     openState={select('openState', SideNavigationOpenState, SideNavigationOpenState.Expanded)}

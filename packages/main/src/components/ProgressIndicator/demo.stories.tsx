@@ -2,6 +2,7 @@ import { number, select, text } from '@storybook/addon-knobs';
 import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
+
 export const renderStory = () => {
   return (
     <div>

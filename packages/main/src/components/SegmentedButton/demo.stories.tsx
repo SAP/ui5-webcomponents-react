@@ -4,6 +4,7 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
 import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';
 import React from 'react';
+
 export const renderStory = () => {
   return (
     <SegmentedButton

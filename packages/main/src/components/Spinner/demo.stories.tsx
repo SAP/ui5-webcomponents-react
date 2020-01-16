@@ -2,6 +2,7 @@ import { number, select } from '@storybook/addon-knobs';
 import { Size } from '@ui5/webcomponents-react/lib/Size';
 import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
 import React, { useMemo } from 'react';
+
 let spinnerKey = 0;
 
 const Demo = (props) => {
