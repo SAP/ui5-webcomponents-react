@@ -14,6 +14,9 @@ export interface TabPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[];
 }
 
+/**
+ * <code>import { Tab } from '@ui5/webcomponents-react/lib/Tab';</code>
+ */
 const Tab: FC<TabPropTypes> = withWebComponent<TabPropTypes>(UI5Tab);
 
 Tab.displayName = 'Tab';

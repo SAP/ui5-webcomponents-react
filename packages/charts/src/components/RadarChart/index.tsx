@@ -66,6 +66,10 @@ const RadarChartComponent = forwardRef((props: RadarChartPropTypes, ref: Ref<any
     />
   );
 });
+
+/**
+ * <code>import { RadarChart } from '@ui5/webcomponents-react-charts/lib/RadarChart';</code>
+ */
 const RadarChart: FC<RadarChartPropTypes> = withChartContainer(RadarChartComponent);
 
 RadarChart.defaultProps = {

@@ -15,7 +15,6 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React from 'react';
 // @ts-ignore
 import SampleImage from './DemoImage.png';
-import notes from './ObjectPage.md';
 
 const renderHeaderContent = () => (
   <>
@@ -181,5 +180,7 @@ renderShortContent.story = {
 export default {
   title: 'Components / ObjectPage',
   component: ObjectPage,
-  parameters: { notes }
+  parameters: {
+    subcomponents: { ObjectPageSection, ObjectPageSubSection }
+  }
 };

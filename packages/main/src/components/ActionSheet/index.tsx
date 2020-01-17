@@ -20,6 +20,9 @@ export interface ActionSheetPropTypes extends CommonProps {
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 
+/**
+ * <code>import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';</code>
+ */
 const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
   (props: ActionSheetPropTypes, ref: RefObject<Ui5PopoverDomRef>) => {
     const { children, placement, openBy, style, slot } = props;

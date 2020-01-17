@@ -20,6 +20,9 @@ export interface AvatarPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'Avatar' });
 
+/**
+ * <code>import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';</code>
+ */
 const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) => {
   const {
     initials,

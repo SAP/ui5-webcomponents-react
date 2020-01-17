@@ -1,7 +1,6 @@
 import { boolean, text } from '@storybook/addon-knobs';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React from 'react';
-import notes from './Text.md';
 
 export const renderStory = () => {
   return (
@@ -26,6 +25,5 @@ renderStory.story = {
 
 export default {
   title: 'Components / Text',
-  component: Text,
-  parameters: { notes }
+  component: Text
 };

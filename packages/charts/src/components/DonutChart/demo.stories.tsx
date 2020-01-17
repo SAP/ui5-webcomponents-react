@@ -1,15 +1,13 @@
 import { boolean } from '@storybook/addon-knobs';
 import { DonutChart } from '@ui5/webcomponents-react-charts/lib/DonutChart';
 import React from 'react';
-import notes from './DonutChart.md';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const dataset = [{ data: [65, 59, 80, 81, 56, 55, 40] }];
 
 export default {
   title: 'Charts / DonutChart',
-  component: DonutChart,
-  parameters: { notes }
+  component: DonutChart
 };
 
 export const defaultStory = () => (

@@ -130,6 +130,9 @@ const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { nam
 const ROW_HEIGHT_COMPACT = 32;
 const ROW_HEIGHT_COZY = 44;
 
+/**
+ * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code>
+ */
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
   const {
     columns,

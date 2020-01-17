@@ -1,17 +1,19 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
+import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
-import notes from './List.md';
 
 export default {
   title: 'UI5 Web Components / List',
   component: List,
-  parameters: { notes }
+  parameters: {
+    subcomponents: { StandardListItem, CustomListItem }
+  }
 };
 
 export const generatedDefaultStory = () => (

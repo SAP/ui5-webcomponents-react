@@ -4,7 +4,6 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import React from 'react';
-import notes from './VariantManagement.md';
 
 const variantItems = [
   { label: 'Variant 1', key: '1' },
@@ -28,6 +27,5 @@ renderStory.story = {
 
 export default {
   title: 'Components / VariantManagement',
-  component: VariantManagement,
-  parameters: { notes }
+  component: VariantManagement
 };

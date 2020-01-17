@@ -18,6 +18,9 @@ interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'FilterBar' });
 
+/**
+ * <code>import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';</code>
+ */
 const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
   const { children, renderVariants, renderSearch } = props as FilterBarInternalProps;
   const [showFilters, setShowFilters] = useState(true);

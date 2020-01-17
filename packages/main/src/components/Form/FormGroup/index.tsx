@@ -16,6 +16,9 @@ export interface FormGroupProps {
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'FormGroup' });
 
+/**
+ * <code>import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';</code>
+ */
 const FormGroup: FC<FormGroupProps> = forwardRef((props: FormGroupProps, ref: Ref<HTMLDivElement>) => {
   const { title, children } = props;
 

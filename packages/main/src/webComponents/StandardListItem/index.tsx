@@ -17,6 +17,9 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[] | string;
 }
 
+/**
+ * <code>import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';</code>
+ */
 const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<StandardListItemPropTypes>(
   UI5StandardListItem
 );

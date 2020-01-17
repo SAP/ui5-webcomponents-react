@@ -26,12 +26,3 @@ jobs:
       run: yarn test
     - name: build project
       run: yarn build
-    - name: publish
-      if: github.ref == 'refs/heads/master'
-      env:
-        NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
-        NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      run: |
-        bash ./scripts/ci/setup-npm.sh
-        bash ./scripts/ci/release-snapshot.sh

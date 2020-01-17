@@ -24,6 +24,11 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
 
 const InnerDialog: RefForwardingComponent<Ui5DomRef, DialogPropTypes> = withWebComponent<DialogPropTypes>(UI5Dialog);
 
+/**
+ * <code>import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';</code>
+ * <br />
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Dialog" target="_blank">UI5 Web Components Playground</a>
+ */
 const Dialog: FC<DialogPropTypes> = React.forwardRef(
   (props: DialogPropTypes, dialogRef: RefObject<Ui5DialogDomRef>) => {
     const localDialogRef = useConsolidatedRef<Ui5DialogDomRef>(dialogRef);
