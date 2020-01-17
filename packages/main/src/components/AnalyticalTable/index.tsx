@@ -38,7 +38,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
-import { DefaultColumn } from './defaults/Column';
+import { DEFAULT_COLUMN_WIDTH, DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
@@ -228,18 +228,30 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     const visibleColumns = columns.filter(Boolean).filter((item) => {
       return (item.isVisible ?? true) && !tableState.hiddenColumns.includes(item.accessor);
     });
-    const columnsWithFixedWidth = visibleColumns
-      .filter(({ width, minWidth }) => width ?? minWidth ?? false)
-      .map(({ width, minWidth }) => width ?? minWidth);
+    const columnsWithFixedWidth = visibleColumns.filter(({ width }) => width ?? false).map(({ width }) => width);
     const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
-    if (visibleColumns.length > 0 && tableRef.current.clientWidth > 0) {
-      setColumnWidth(
-        (tableRef.current.clientWidth - fixedWidth) / (visibleColumns.length - columnsWithFixedWidth.length)
-      );
+
+    const tableClientWidth = tableRef.current.clientWidth;
+    const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth.length;
+
+    //check if columns are visible and table has width
+    if (visibleColumns.length > 0 && tableClientWidth > 0) {
+      //set fixedWidth as defaultWidth if visible columns have fixed value
+      if (visibleColumns.length === columnsWithFixedWidth.length) {
+        setColumnWidth(fixedWidth / visibleColumns.length);
+        return;
+      }
+      //spread default columns
+      if (tableClientWidth >= fixedWidth + defaultColumnsCount * DEFAULT_COLUMN_WIDTH) {
+        setColumnWidth((tableClientWidth - fixedWidth) / defaultColumnsCount);
+      } else {
+        //set defaultWidth for default columns if table is overflowing
+        setColumnWidth(DEFAULT_COLUMN_WIDTH);
+      }
     } else {
-      setColumnWidth(150);
+      setColumnWidth(DEFAULT_COLUMN_WIDTH);
     }
-  }, [tableRef.current, columns, tableState.hiddenColumns]);
+  }, [tableRef.current, columns, tableState.hiddenColumns, DEFAULT_COLUMN_WIDTH]);
 
   useEffect(() => {
     updateTableSizes();
