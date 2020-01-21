@@ -59,6 +59,13 @@ describe('Avatar', () => {
     expect(callback.called).toBe(true);
   });
 
+  test('do not crash onClick w/o handler (#272)', () => {
+    expect(() => {
+      const wrapper = mountThemedComponent(<Avatar size={AvatarSize.XL} initials="JD" />);
+      wrapper.find(Avatar).simulate('click');
+    }).not.toThrow();
+  });
+
   test('enter key down', () => {
     const callback = sinon.spy();
     const wrapper = mountThemedComponent(<Avatar size={AvatarSize.XL} initials="JD" onClick={callback} />);

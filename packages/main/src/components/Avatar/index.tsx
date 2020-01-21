@@ -76,7 +76,7 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === 'Enter') {
-        onClick(Event.of(null, e));
+        onClick?.(Event.of(null, e));
       }
     },
     [onClick]
@@ -84,7 +84,7 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
 
   const handleOnClick = useCallback(
     (e) => {
-      onClick(Event.of(null, e));
+      onClick?.(Event.of(null, e));
     },
     [onClick]
   );
