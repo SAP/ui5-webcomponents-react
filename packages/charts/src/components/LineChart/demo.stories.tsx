@@ -6,7 +6,7 @@ const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [
   {
     label: 'Stock Price',
-    data: [65, 59, 80, 81, 56, 55, 40]
+    data: [65, 59, 80, 100, 56, 55, 40]
   }
 ];
 
