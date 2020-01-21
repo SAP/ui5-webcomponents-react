@@ -15,7 +15,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   contentContainer: {
     overflow: 'hidden auto',
-    height: '100%',
     position: 'relative',
     flexGrow: 1
   },
