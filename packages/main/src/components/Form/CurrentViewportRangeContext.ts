@@ -1,5 +1,5 @@
-import React from 'react';
+import { createContext } from 'react';
 
-const CurrentRange = React.createContext(null);
+const CurrentViewportRangeContext = createContext(null);
 
-export { CurrentRange };
+export { CurrentViewportRangeContext };

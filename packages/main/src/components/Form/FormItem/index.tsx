@@ -1,7 +1,7 @@
+import { CurrentViewportRangeContext } from '@ui5/webcomponents-react/lib/CurrentViewportRangeContext';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref, useContext, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CurrentRange } from '../CurrentViewportRangeContext';
 import { styles } from '../Form.jss';
 
 export interface FormItemProps {
@@ -22,7 +22,7 @@ const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { nam
 const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<HTMLDivElement>) => {
   const { labelText, children } = props;
 
-  const currentRange = useContext(CurrentRange);
+  const currentRange = useContext(CurrentViewportRangeContext);
 
   const classes = useStyles();
   const topDivClass = classes.formItemTopDiv;
