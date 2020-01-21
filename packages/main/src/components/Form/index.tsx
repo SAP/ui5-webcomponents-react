@@ -1,12 +1,12 @@
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
+import { CurrentViewportRangeContext } from '@ui5/webcomponents-react/lib/CurrentViewportRangeContext';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { CurrentRange } from './CurrentViewportRangeContext';
 import { styles } from './Form.jss';
 import { FormGroup } from './FormGroup';
 
@@ -68,7 +68,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
   const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
-    <CurrentRange.Provider value={currentRange}>
+    <CurrentViewportRangeContext.Provider value={currentRange}>
       {updatedTitle && (
         <>
           <Title level={TitleLevel.H3} className={classes.formTitle}>
@@ -78,7 +78,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
         </>
       )}
       <Grid ref={ref} children={formGroups} defaultSpan={'XL6 L12 M12 S12'} {...passThroughProps} />
-    </CurrentRange.Provider>
+    </CurrentViewportRangeContext.Provider>
   );
 });
 
