@@ -39,7 +39,7 @@ import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
   subTitle?: string;
-  image?: string | ReactNode;
+  image?: string | ReactElement<any>;
   imageShapeCircle?: boolean;
   headerActions?: Array<ReactElement<any>>;
   renderHeaderContent?: () => JSX.Element;
@@ -262,9 +262,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           </span>
         );
       } else {
-        // @ts-ignore
         avatar = React.cloneElement(image, {
-          size: AvatarSize.L
+          size: AvatarSize.L,
+          className: image.props?.className ? `${classes.headerImage} ${image.props?.className}` : classes.headerImage
         });
       }
     }
@@ -283,7 +283,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         <div className={classes.contentHeader}>
           <div className={classes.headerContent}>
             <div className={classes.flexBoxRow}>
-              <div>{avatar}</div>
+              {avatar}
               <div className={classes.flexBoxColumn}>
                 <div>{renderBreadcrumbs && renderBreadcrumbs()}</div>
                 <div className={classes.flexBoxRow}>
