@@ -17,7 +17,6 @@ import { useTheme } from 'react-jss';
 import { JSSTheme } from '@ui5/webcomponents-react/src/interfaces/JSSTheme';
 import { LineChartPlaceholder } from './Placeholder';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { LineChart } from './LineRecharts';
 
 export interface LineChartProps extends RechartBaseProps {}
 
@@ -57,14 +56,21 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   useInitialize();
 
   const dataKeys = Object.keys(dataset[0]).filter((key) => key !== labelKey);
-
   const chartRef = useConsolidatedRef<any>(ref);
+
+  const onItemLegendClick = useCallback((e) => {
+    // TODO: clickHandler items legend
+  }, []);
+
+  const onDataPointClick = useCallback((e) => {
+    // TODO: Clickhandler items clicked
+  }, []);
 
   return (
     <div style={{ width, height }}>
       <ResponsiveContainer>
-        <LineChartLib ref={chartRef} data={dataset}>
-          <CartesianGrid horizontal={false} />
+        <LineChartLib ref={chartRef} data={dataset} onClick={onDataPointClick}>
+          <CartesianGrid vertical={false} />
           <XAxis dataKey={labelKey} />
           <YAxis />
           {dataKeys.map((key) => {
@@ -77,6 +83,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
           )
           <Legend />
           <Tooltip formatter={(value, name) => [valueAxisFormatter(value), categoryAxisFormatter(name)]} />
+          {!noLegend && <Legend onClick={onItemLegendClick} />}
         </LineChartLib>
       </ResponsiveContainer>
     </div>
@@ -85,6 +92,10 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
 
 // @ts-ignore
 LineRechart.LoadingPlaceholder = LineChartPlaceholder;
+
+LineRechart.defaultProps = {
+  ...ChartBaseDefaultProps
+};
 
 LineRechart.displayName = 'LineRechart';
 

@@ -1,6 +1,7 @@
 import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { LineRechart } from './RechartLine';
+import { LineChart } from './LineRecharts';
 
 const dataset = [
   {
@@ -30,10 +31,30 @@ const dataset = [
 ];
 
 export function renderStory() {
-  return <LineRechart labelKey={'test'} dataset={dataset} width={'95%'} height={'400px'} />;
+  return (
+    <LineRechart
+      labelKey={'test'}
+      dataset={dataset}
+      width={'95%'}
+      height={'400px'}
+      loading={boolean('loading', false)}
+    />
+  );
 }
 
 export default {
-  title: 'Julian | Test',
+  title: 'Rechart',
   component: LineRechart
+};
+
+export const defaultStory = renderStory();
+
+defaultStory.story = {
+  name: 'Default'
+};
+
+export const loadingPlaceholder = () => <LineRechart dataset={dataset} loading={boolean('loading', true)} />;
+
+loadingPlaceholder.story = {
+  name: 'Loading Placeholder'
 };

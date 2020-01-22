@@ -116,7 +116,6 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
   const onLegendItemClick = useCallback((e) => {
     // TODO we used to hide the data set on legend click
   }, []);
-  console.log(internalData);
 
   return (
     <div style={{ width: width, height: height }}>
