@@ -6,11 +6,11 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
   data-component-name="ObjectPage"
 >
   <div
-    class="ObjectPage--outerScrollbar-"
+    class="ObjectPageScrollBar--outerScrollbar-"
     style="width: 12px;"
   >
     <div
-      class="ObjectPage--innerScrollbar-"
+      class="ObjectPageScrollBar--innerScrollbar-"
       style="margin-left: -12px; width: 24px;"
     >
       <div
@@ -38,16 +38,16 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        class="ObjectPage--flexBoxCenter-"
+        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            class="ObjectPage--flexBoxColumn-"
+            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
           >
             <div
-              class="ObjectPage--flexBoxRow-"
+              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -119,12 +119,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
                 </div>
               </span>
             </div>
-            <ui5-button
-              class=""
-              design="Default"
-              icon="navigation-up-arrow"
-              style="position: absolute; line-height: 2.5rem;"
-            />
           </div>
           <section
             class="ObjectPage--anchorBar-"
@@ -259,6 +253,12 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
                 </ui5-list>
               </ui5-popover>
             </li>
+            <ui5-button
+              class=""
+              design="Default"
+              icon="navigation-up-arrow"
+              style="position: absolute; line-height: 2.5rem;"
+            />
           </section>
         </div>
         <section
@@ -309,11 +309,11 @@ exports[`ObjectPage Just Some Sections 1`] = `
   data-component-name="ObjectPage"
 >
   <div
-    class="ObjectPage--outerScrollbar-"
+    class="ObjectPageScrollBar--outerScrollbar-"
     style="width: 12px;"
   >
     <div
-      class="ObjectPage--innerScrollbar-"
+      class="ObjectPageScrollBar--innerScrollbar-"
       style="margin-left: -12px; width: 24px;"
     >
       <div
@@ -334,16 +334,16 @@ exports[`ObjectPage Just Some Sections 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        class="ObjectPage--flexBoxCenter-"
+        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            class="ObjectPage--flexBoxColumn-"
+            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
           >
             <div
-              class="ObjectPage--flexBoxRow-"
+              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -433,11 +433,11 @@ exports[`ObjectPage Key Infos 1`] = `
   data-component-name="ObjectPage"
 >
   <div
-    class="ObjectPage--outerScrollbar-"
+    class="ObjectPageScrollBar--outerScrollbar-"
     style="width: 12px;"
   >
     <div
-      class="ObjectPage--innerScrollbar-"
+      class="ObjectPageScrollBar--innerScrollbar-"
       style="margin-left: -12px; width: 24px;"
     >
       <div
@@ -458,13 +458,13 @@ exports[`ObjectPage Key Infos 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        class="ObjectPage--flexBoxCenter-"
+        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            class="ObjectPage--flexBoxColumn-"
+            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
           >
             <div>
               <ui5-link
@@ -502,7 +502,7 @@ exports[`ObjectPage Key Infos 1`] = `
               />
             </div>
             <div
-              class="ObjectPage--flexBoxRow-"
+              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -664,11 +664,11 @@ exports[`ObjectPage No Header 1`] = `
   data-component-name="ObjectPage"
 >
   <div
-    class="ObjectPage--outerScrollbar-"
+    class="ObjectPageScrollBar--outerScrollbar-"
     style="width: 12px;"
   >
     <div
-      class="ObjectPage--innerScrollbar-"
+      class="ObjectPageScrollBar--innerScrollbar-"
       style="margin-left: -12px; width: 24px;"
     >
       <div
@@ -791,11 +791,11 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
   data-component-name="ObjectPage"
 >
   <div
-    class="ObjectPage--outerScrollbar-"
+    class="ObjectPageScrollBar--outerScrollbar-"
     style="width: 12px;"
   >
     <div
-      class="ObjectPage--innerScrollbar-"
+      class="ObjectPageScrollBar--innerScrollbar-"
       style="margin-left: -12px; width: 24px;"
     >
       <div
@@ -816,16 +816,16 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        class="ObjectPage--flexBoxCenter-"
+        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            class="ObjectPage--flexBoxColumn-"
+            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
           >
             <div
-              class="ObjectPage--flexBoxRow-"
+              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -877,11 +877,11 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
   data-component-name="ObjectPage"
 >
   <div
-    class="ObjectPage--outerScrollbar-"
+    class="ObjectPageScrollBar--outerScrollbar-"
     style="width: 12px;"
   >
     <div
-      class="ObjectPage--innerScrollbar-"
+      class="ObjectPageScrollBar--innerScrollbar-"
       style="margin-left: -12px; width: 24px;"
     >
       <div
@@ -902,16 +902,16 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        class="ObjectPage--flexBoxCenter-"
+        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            class="ObjectPage--flexBoxColumn-"
+            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
           >
             <div
-              class="ObjectPage--flexBoxRow-"
+              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -999,11 +999,11 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
   data-component-name="ObjectPage"
 >
   <div
-    class="ObjectPage--outerScrollbar-"
+    class="ObjectPageScrollBar--outerScrollbar-"
     style="width: 12px;"
   >
     <div
-      class="ObjectPage--innerScrollbar-"
+      class="ObjectPageScrollBar--innerScrollbar-"
       style="margin-left: -12px; width: 24px;"
     >
       <div
@@ -1024,16 +1024,16 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        class="ObjectPage--flexBoxCenter-"
+        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            class="ObjectPage--flexBoxColumn-"
+            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
           >
             <div
-              class="ObjectPage--flexBoxRow-"
+              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -1116,11 +1116,11 @@ exports[`ObjectPage Only Sections 1`] = `
   data-component-name="ObjectPage"
 >
   <div
-    class="ObjectPage--outerScrollbar-"
+    class="ObjectPageScrollBar--outerScrollbar-"
     style="width: 12px;"
   >
     <div
-      class="ObjectPage--innerScrollbar-"
+      class="ObjectPageScrollBar--innerScrollbar-"
       style="margin-left: -12px; width: 24px;"
     >
       <div
@@ -1148,16 +1148,16 @@ exports[`ObjectPage Only Sections 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        class="ObjectPage--flexBoxCenter-"
+        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            class="ObjectPage--flexBoxColumn-"
+            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
           >
             <div
-              class="ObjectPage--flexBoxRow-"
+              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -1384,11 +1384,11 @@ exports[`ObjectPage Set selected section id 1`] = `
   data-component-name="ObjectPage"
 >
   <div
-    class="ObjectPage--outerScrollbar-"
+    class="ObjectPageScrollBar--outerScrollbar-"
     style="width: 12px;"
   >
     <div
-      class="ObjectPage--innerScrollbar-"
+      class="ObjectPageScrollBar--innerScrollbar-"
       style="margin-left: -12px; width: 24px;"
     >
       <div
@@ -1409,16 +1409,16 @@ exports[`ObjectPage Set selected section id 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        class="ObjectPage--flexBoxCenter-"
+        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            class="ObjectPage--flexBoxColumn-"
+            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
           >
             <div
-              class="ObjectPage--flexBoxRow-"
+              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -1508,11 +1508,11 @@ exports[`ObjectPage With Subsections 1`] = `
   data-component-name="ObjectPage"
 >
   <div
-    class="ObjectPage--outerScrollbar-"
+    class="ObjectPageScrollBar--outerScrollbar-"
     style="width: 12px;"
   >
     <div
-      class="ObjectPage--innerScrollbar-"
+      class="ObjectPageScrollBar--innerScrollbar-"
       style="margin-left: -12px; width: 24px;"
     >
       <div
@@ -1540,16 +1540,16 @@ exports[`ObjectPage With Subsections 1`] = `
       class="ObjectPage--titleBar-"
     >
       <div
-        class="ObjectPage--flexBoxCenter-"
+        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
       >
         <span
           class="ObjectPage--container-"
         >
           <div
-            class="ObjectPage--flexBoxColumn-"
+            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
           >
             <div
-              class="ObjectPage--flexBoxRow-"
+              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
             >
               <h1
                 class="ObjectPage--title-"
@@ -1621,12 +1621,6 @@ exports[`ObjectPage With Subsections 1`] = `
                 </div>
               </span>
             </div>
-            <ui5-button
-              class=""
-              design="Default"
-              icon="navigation-up-arrow"
-              style="position: absolute; line-height: 2.5rem;"
-            />
           </div>
           <section
             class="ObjectPage--anchorBar-"
@@ -1806,6 +1800,12 @@ exports[`ObjectPage With Subsections 1`] = `
                 </ui5-list>
               </ui5-popover>
             </li>
+            <ui5-button
+              class=""
+              design="Default"
+              icon="navigation-up-arrow"
+              style="position: absolute; line-height: 2.5rem;"
+            />
           </section>
         </div>
         <section

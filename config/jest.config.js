@@ -34,9 +34,10 @@ module.exports = {
   transformIgnorePatterns: ['node_modules/(?!(@ui5|lit-html))'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
-    '^@ui5/webcomponents-react/lib/(.*)$': '<rootDir>/packages/main/src/lib/$1',
-    '^@ui5/webcomponents-react-base/lib/(.*)$': '<rootDir>/packages/base/src/lib/$1',
-    '^@ui5/webcomponents-react-charts/lib/(.*)$': '<rootDir>/packages/charts/src/lib/$1',
+    '^@ui5/webcomponents-react/(.*)$': '<rootDir>/packages/main/src/$1',
+    '^@ui5/webcomponents-react-base/third-party/(.*)$': '<rootDir>/packages/base/third-party/$1',
+    '^@ui5/webcomponents-react-base/(.*)$': '<rootDir>/packages/base/src/$1',
+    '^@ui5/webcomponents-react-charts/(.*)$': '<rootDir>/packages/charts/src/$1',
     '\\.(css|less)$': 'identity-obj-proxy'
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],

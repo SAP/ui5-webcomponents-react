@@ -1,6 +1,6 @@
-import React, { RefObject, FC, useMemo } from 'react';
-import { ZIndex } from '../../enums/ZIndex';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ZIndex } from '@ui5/webcomponents-react/enums/ZIndex';
+import { JSSTheme } from '@ui5/webcomponents-react/interfaces/JSSTheme';
+import React, { FC, RefObject, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 
 interface Props {
@@ -38,7 +38,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useScrollBarStyles = createUseStyles(styles);
+const useScrollBarStyles = createUseStyles(styles, { name: 'ObjectPageScrollBar' });
 
 export const ObjectPageScrollBar: FC<Props> = (props) => {
   const { scrollBarRef, innerScrollBarRef, width } = props;

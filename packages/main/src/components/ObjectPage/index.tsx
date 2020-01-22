@@ -1,5 +1,5 @@
-import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow.js';
-import '@ui5/webcomponents-icons/dist/icons/navigation-up-arrow.js';
+import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
+import '@ui5/webcomponents-icons/dist/icons/navigation-up-arrow';
 import { IScroller } from '@ui5/webcomponents-react-base/interfaces/IScroller';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { Scroller } from '@ui5/webcomponents-react-base/lib/Scroller';
@@ -9,9 +9,10 @@ import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePa
 import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 import debounce from 'lodash.debounce';
 import React, {
   CSSProperties,
@@ -28,7 +29,6 @@ import React, {
 import { createUseStyles, useTheme } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { Button } from '../../webComponents/Button';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
 import styles from './ObjectPage.jss';
@@ -326,7 +326,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         // get section index
 
         let index;
-        safeGetChildrenArray(children).forEach((section, sectionIndex) => {
+        safeGetChildrenArray(children).forEach((section: ReactElement<any>, sectionIndex) => {
           if (React.isValidElement(section) && section.props && section.props.children) {
             safeGetChildrenArray(section.props.children).forEach(
               (subSection: ReactElement<ObjectPageSubSectionPropTypes>) => {

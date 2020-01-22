@@ -1,19 +1,19 @@
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import React, { CSSProperties, FC } from 'react';
+import React, { CSSProperties, FC, ReactElement } from 'react';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
 interface Props {
-  image: any;
+  image: string | ReactElement<unknown>;
+  imageShapeCircle: boolean;
   classes: any;
-  imageShapeCircle: any;
-  showTitleInHeaderContent: any;
-  renderHeaderContentProp: any;
-  renderBreadcrumbs: any;
-  renderKeyInfos: any;
-  title: any;
-  subTitle: any;
+  showTitleInHeaderContent: boolean;
+  renderHeaderContentProp: () => JSX.Element;
+  renderBreadcrumbs: () => JSX.Element;
+  renderKeyInfos: () => JSX.Element;
+  title: string;
+  subTitle: string;
 }
 
 const positionRelativeStyle: CSSProperties = { position: 'relative' };
