@@ -669,6 +669,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     ];
   }, [scrollbarWidth]);
 
+  const contentContainerStyles = useMemo(() => {
+    return {
+      marginRight: `-${scrollbarWidth}px`
+    }
+  }, [scrollbarWidth]);
+
   const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
@@ -698,7 +704,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           {renderTopHeader()}
         </header>
         <div ref={outerContentContainer} className={classes.outerContentContainer}>
-          <div id="ObjectPageContent" ref={contentContainer} className={classes.contentContainer}>
+          <div id="ObjectPageContent" ref={contentContainer} className={classes.contentContainer} style={contentContainerStyles}>
             <div ref={contentScrollContainer} className={classes.contentScrollContainer}>
               <div ref={collapsedHeaderFiller} />
               <div ref={innerHeader}>{renderInnerHeader()}</div>
