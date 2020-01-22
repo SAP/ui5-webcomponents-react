@@ -53,8 +53,6 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
     return null;
   }
 
-  const passThroughProps = usePassThroughHtmlProps(props);
-
   return (
     <div
       ref={ref}

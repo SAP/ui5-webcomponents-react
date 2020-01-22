@@ -3,7 +3,6 @@ import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
 import { useInitialize } from '../../lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import {
-  ResponsiveContainer,
   CartesianGrid,
   Line,
   LineChart as LineChartLib,
@@ -17,6 +16,7 @@ import { useTheme } from 'react-jss';
 import { JSSTheme } from '@ui5/webcomponents-react/src/interfaces/JSSTheme';
 import { LineChartPlaceholder } from './Placeholder';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
+import { ChartContainer } from '../../internal/ChartContainer';
 
 export interface LineChartProps extends RechartBaseProps {}
 
@@ -42,57 +42,94 @@ const CustomDataLabel = (props) => {
 
 const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
+    color,
+    loading,
     colors,
     labelKey = 'label',
     width = '300px',
     height = '300px',
     dataset,
-    loading,
-    noLegend,
+    noLegend = false,
     valueAxisFormatter,
-    categoryAxisFormatter
+    categoryAxisFormatter,
+    yAxisType
   } = props as LineChartProps;
 
   useInitialize();
 
-  const dataKeys = Object.keys(dataset[0]).filter((key) => key !== labelKey);
+  const dataKeys = dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : [];
+
+  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const onItemLegendClick = useCallback((e) => {
-    // TODO: clickHandler items legend
-  }, []);
+  const onItemLegendClick = useCallback(
+    (e) => {
+      return {
+        e,
+        label: e.dataKey,
+        chartType: e.type,
+        color: e.color
+      };
+    },
+    [dataset]
+  );
 
-  const onDataPointClick = useCallback((e) => {
-    // TODO: Clickhandler items clicked
-  }, []);
+  const onDataPointClick = useCallback(
+    (e) => {
+      console.log(e);
+      // Necessary because onItemLegendclick calls always onDataPointClick with e = null
+      return e
+        ? {
+            e,
+            index: e.activeTooltipIndex,
+            label: e.activeLabel,
+            values: e.activePayload
+          }
+        : e;
+    },
+    [dataset]
+  );
 
   return (
-    <div style={{ width, height }}>
-      <ResponsiveContainer>
-        <LineChartLib ref={chartRef} data={dataset} onClick={onDataPointClick}>
-          <CartesianGrid vertical={false} />
-          <XAxis dataKey={labelKey} />
-          <YAxis />
-          {dataKeys.map((key) => {
-            return (
-              <Line key={key} name={key} type="monotone" dataKey={key}>
-                <LabelList dataKey={key} content={CustomDataLabel} />
-              </Line>
-            );
-          })}
-          )
-          <Legend />
-          <Tooltip formatter={(value, name) => [valueAxisFormatter(value), categoryAxisFormatter(name)]} />
-          {!noLegend && <Legend onClick={onItemLegendClick} />}
-        </LineChartLib>
-      </ResponsiveContainer>
-    </div>
+    <ChartContainer
+      dataset={dataset}
+      loading={loading}
+      placeholder={LineChartPlaceholder}
+      width={width}
+      height={height}
+    >
+      <LineChartLib
+        margin={{ right: 15 }}
+        ref={chartRef}
+        data={dataset}
+        onClick={onDataPointClick}
+        style={{ fontSize: parameters.sapUiFontSmallSize }}
+      >
+        <CartesianGrid vertical={true} />
+        <XAxis dataKey={labelKey} />
+        <YAxis type={yAxisType} />
+        {dataKeys.map((key, index) => (
+          <Line
+            key={key}
+            name={key}
+            type="monotone"
+            dataKey={key}
+            stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
+          >
+            <LabelList dataKey={key} content={CustomDataLabel} />
+          </Line>
+        ))}
+        ){!noLegend && <Legend onClick={onItemLegendClick} />}
+        <Tooltip formatter={(value, name) => [valueAxisFormatter(value), categoryAxisFormatter(name)]} />
+      </LineChartLib>
+    </ChartContainer>
   );
 });
 
 // @ts-ignore
 LineRechart.LoadingPlaceholder = LineChartPlaceholder;
 
+// @ts-ignore
 LineRechart.defaultProps = {
   ...ChartBaseDefaultProps
 };

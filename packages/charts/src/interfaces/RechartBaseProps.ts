@@ -1,12 +1,11 @@
 import { CSSProperties } from 'react';
+import {ChartContainerProps} from "./ChartContainerProps";
 
-export interface RechartBaseProps {
+export interface RechartBaseProps extends ChartContainerProps {
+  yAxisType?: string;
   labelKey?: string;
-  width?: string;
-  height?: string;
-  dataset: Array<Object>;
-  loading?: boolean;
   noLegend?: boolean;
+  color?: string,
   colors?: Array<CSSProperties['color']>;
   valueAxisFormatter?: (value: any, currentDataset?: object, currentContext?: object) => string | number;
   categoryAxisFormatter?: (value: any, currentDataset?: object, currentContext?: object) => string | number;
