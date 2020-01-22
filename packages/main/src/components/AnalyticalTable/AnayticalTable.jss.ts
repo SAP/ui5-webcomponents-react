@@ -37,7 +37,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   tbody: {
     position: 'relative',
     zIndex: 0,
-    overflowX: 'auto',
     backgroundColor: parameters.sapUiListBackground
   },
   alternateRowColor: {
@@ -98,6 +97,10 @@ const styles = ({ parameters }: JSSTheme) => ({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     alignItems: 'center'
+  },
+  virtualTableBody: {
+    overflowX: 'hidden !important',
+    overflowY: 'auto !important'
   },
   noDataContainer: {
     display: 'flex',
