@@ -136,7 +136,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
         onSetActive={onScrollActive}
         activeClass={classes.selected}
         alwaysToTop={index === 0}
-        scrollOffset={45}
+        scrollOffset={collapsedHeader ? 45 : -45}
       >
         <span className={classes.button}>{section.props.title}</span>
       </ScrollLink>

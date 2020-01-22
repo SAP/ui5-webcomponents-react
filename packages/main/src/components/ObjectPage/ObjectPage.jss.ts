@@ -33,7 +33,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     boxShadow: `inset 0 -0.0625rem ${parameters.sapUiObjectHeaderBorderColor}, inset 0 0.0625rem ${parameters.sapUiObjectHeaderBorderColor}`,
     display: 'flex',
     height: '2.75rem',
-    minHeight: '2.75rem'
+    minHeight: '2.75rem',
+    position: 'relative'
   },
   sectionsContainer: {
     '&:before': {
@@ -57,32 +58,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   fillerDiv: {
     backgroundColor: parameters.sapUiBaseBG
-  },
-  outerScrollbar: {
-    position: 'absolute',
-    right: 0,
-    overflow: 'hidden',
-    height: '100%',
-    zIndex: ZIndex.ResponsivePopover,
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
-    '& ::-webkit-scrollbar': {
-      backgroundColor: '#ffffff'
-    },
-    '& ::-webkit-scrollbar-thumb': {
-      backgroundColor: '#949494',
-      '&:hover': {
-        backgroundColor: '#8c8c8c'
-      }
-    },
-    '& ::-webkit-scrollbar-corner': {
-      backgroundColor: '#ffffff'
-    }
-  },
-  innerScrollbar: {
-    width: '34px',
-    overflowY: 'scroll',
-    overflowX: 'hidden',
-    height: '100%'
   },
   // header
   header: {
@@ -215,18 +190,6 @@ const styles = ({ parameters }: JSSTheme) => ({
     },
     display: 'flex',
     flexDirection: 'row'
-  },
-  flexBoxRow: {
-    display: 'flex',
-    flexDirection: 'row'
-  },
-  flexBoxColumn: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  flexBoxCenter: {
-    display: 'flex',
-    alignItems: 'center'
   },
   avatar: {
     marginRight: '1rem'
