@@ -16,6 +16,9 @@ export interface SpinnerProps extends CommonProps {
 
 const useStyles = createUseStyles(styles, { name: 'Spinner' });
 
+/**
+ * <code>import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';</code>
+ */
 const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObject<HTMLDivElement>) => {
   const { className, size, tooltip, slot, style, delay } = props;
   const classes = useStyles();

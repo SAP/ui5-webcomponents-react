@@ -87,7 +87,9 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
 });
 // @ts-ignore
 LineChartComponent.LoadingPlaceholder = LineChartPlaceholder;
-
+/**
+ * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';</code>
+ */
 const LineChart: FC<LineChartPropTypes> = withChartContainer(LineChartComponent);
 
 LineChart.defaultProps = {

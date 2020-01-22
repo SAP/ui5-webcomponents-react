@@ -27,6 +27,9 @@ const useStyles = createUseStyles<keyof ReturnType<typeof sideNavigationStyles>>
   name: 'SideNavigation'
 });
 
+/**
+ * <code>import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';</code>
+ */
 const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigationProps, ref: Ref<HTMLDivElement>) => {
   const {
     children,

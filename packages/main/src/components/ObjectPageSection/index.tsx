@@ -17,6 +17,9 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPageSection' });
 
+/**
+ * <code>import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';</code>
+ */
 const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
   (props: ObjectPageSectionPropTypes, ref: RefObject<any>) => {
     const { title, id, children, titleUppercase, className, style, tooltip } = props;

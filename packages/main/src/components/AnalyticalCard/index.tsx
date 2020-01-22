@@ -20,6 +20,9 @@ export interface AnalyticalCardTypes extends CommonProps {
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalCard' });
 
+/**
+ * <code>import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';</code>
+ */
 export const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef(
   (props: AnalyticalCardTypes, ref: Ref<HTMLDivElement>) => {
     const { children, style, className, tooltip, header, width } = props;

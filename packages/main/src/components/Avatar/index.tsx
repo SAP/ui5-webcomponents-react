@@ -20,6 +20,9 @@ export interface AvatarPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'Avatar' });
 
+/**
+ * <code>import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';</code>
+ */
 const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) => {
   const {
     initials,
@@ -73,7 +76,7 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === 'Enter') {
-        onClick(Event.of(null, e));
+        onClick?.(Event.of(null, e));
       }
     },
     [onClick]
@@ -81,7 +84,7 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
 
   const handleOnClick = useCallback(
     (e) => {
-      onClick(Event.of(null, e));
+      onClick?.(Event.of(null, e));
     },
     [onClick]
   );

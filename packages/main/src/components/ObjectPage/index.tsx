@@ -39,7 +39,7 @@ import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
   subTitle?: string;
-  image?: string | ReactNode;
+  image?: string | ReactElement<any>;
   imageShapeCircle?: boolean;
   headerActions?: Array<ReactElement<any>>;
   renderHeaderContent?: () => JSX.Element;
@@ -70,8 +70,11 @@ const findSectionIndexById = (sections, id) => {
   return index;
 };
 
-const positionRelativStyle: CSSProperties = { position: 'relative' };
+const positionRelativeStyle: CSSProperties = { position: 'relative' };
 
+/**
+ * <code>import { ObjectPage } from '@ui5/webcomponents-react/lib/ObjectPage';</code>
+ */
 const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     title,
@@ -112,6 +115,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const innerHeader: RefObject<HTMLDivElement> = useRef();
   const innerScrollBar: RefObject<HTMLDivElement> = useRef();
   const contentScrollContainer: RefObject<HTMLDivElement> = useRef();
+  const outerContentContainer: RefObject<HTMLDivElement> = useRef();
   const collapsedHeaderFiller: RefObject<HTMLDivElement> = useRef();
   const lastScrolledContainer = useRef();
   const hideHeaderButtonPressed = useRef(false);
@@ -183,8 +187,15 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     });
   };
 
+  const adjustContentContainerHeight = useCallback(() => {
+    if (contentContainer.current && outerContentContainer.current) {
+      contentContainer.current.style.height = `${outerContentContainer.current.getBoundingClientRect().height}px`;
+    }
+  }, [outerContentContainer.current, contentContainer.current]);
+
   // @ts-ignore
   const observer = useRef(new ResizeObserver(adjustDummyDivHeight));
+  const outerContainerObserver = useRef(new ResizeObserver(adjustContentContainerHeight));
 
   const renderAnchorBar = () => {
     return (
@@ -259,9 +270,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           </span>
         );
       } else {
-        // @ts-ignore
         avatar = React.cloneElement(image, {
-          size: AvatarSize.L
+          size: AvatarSize.L,
+          className: image.props?.className ? `${classes.headerImage} ${image.props?.className}` : classes.headerImage
         });
       }
     }
@@ -280,7 +291,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         <div className={classes.contentHeader}>
           <div className={classes.headerContent}>
             <div className={classes.flexBoxRow}>
-              <div>{avatar}</div>
+              {avatar}
               <div className={classes.flexBoxColumn}>
                 <div>{renderBreadcrumbs && renderBreadcrumbs()}</div>
                 <div className={classes.flexBoxRow}>
@@ -307,7 +318,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     }
 
     return (
-      <div style={positionRelativStyle} className={classes.contentHeader}>
+      <div style={positionRelativeStyle} className={classes.contentHeader}>
         <div className={classes.headerContent}>
           {avatar}
           {}
@@ -370,6 +381,11 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     observer.current.observe(contentScrollContainer.current);
     return () => observer.current.disconnect();
   }, [adjustDummyDivHeight]);
+
+  useEffect(() => {
+    outerContainerObserver.current.observe(outerContentContainer.current);
+    return () => outerContainerObserver.current.disconnect();
+  }, [outerContainerObserver.current]);
 
   useLayoutEffect(() => {
     if (!isMounted) return;
@@ -624,6 +640,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     setIsMounted(true);
   }, []);
 
+  // useEffect(() => {
+  //   if (outerContentContainer.current && outerContentContainer.current) {
+  //     contentContainer.current.style.height = `${outerContentContainer.current.getBoundingClientRect().height}px`;
+  //   }
+  // }, [outerContentContainer.current, contentContainer.current]);
+
   const objectPageClasses = StyleClassHelper.of(classes.objectPage);
   if (className) {
     objectPageClasses.put(className);
@@ -644,6 +666,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       { marginLeft: `-${scrollbarWidth}px`, width: `${2 * scrollbarWidth}px` },
       { paddingRight: `${scrollbarWidth}px` }
     ];
+  }, [scrollbarWidth]);
+
+  const contentContainerStyles = useMemo(() => {
+    return {
+      marginRight: `-${scrollbarWidth}px`
+    };
   }, [scrollbarWidth]);
 
   const passThroughProps = usePassThroughHtmlProps(props);
@@ -674,8 +702,13 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           <span className={classes.actions}>{headerActions}</span>
           {renderTopHeader()}
         </header>
-        <div className={classes.outerContentContainer}>
-          <div id="ObjectPageContent" ref={contentContainer} className={classes.contentContainer}>
+        <div ref={outerContentContainer} className={classes.outerContentContainer}>
+          <div
+            id="ObjectPageContent"
+            ref={contentContainer}
+            className={classes.contentContainer}
+            style={contentContainerStyles}
+          >
             <div ref={contentScrollContainer} className={classes.contentScrollContainer}>
               <div ref={collapsedHeaderFiller} />
               <div ref={innerHeader}>{renderInnerHeader()}</div>

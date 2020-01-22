@@ -13,6 +13,9 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
   onSelectedDatesChange?: (event: Event) => void; // @generated
 }
 
+/**
+ * <code>import { Calendar } from '@ui5/webcomponents-react/lib/Calendar';</code>
+ */
 const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(UI5Calendar);
 
 Calendar.displayName = 'Calendar';

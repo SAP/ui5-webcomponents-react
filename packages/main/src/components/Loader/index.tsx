@@ -17,6 +17,9 @@ export interface LoaderProps extends CommonProps {
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'Loader' });
 
+/**
+ * <code>import { Loader } from '@ui5/webcomponents-react/lib/Loader';</code>
+ */
 const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<HTMLDivElement>) => {
   const { className, type, progress, tooltip, slot, style, delay } = props;
   const classes = useStyles(props);
@@ -43,6 +46,8 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
       }, delay);
     }
   }, []);
+
+  const passThroughProps = usePassThroughHtmlProps(props);
 
   if (!isVisible) {
     return null;

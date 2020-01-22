@@ -15,6 +15,11 @@ export interface LinkPropTypes extends WithWebComponentPropTypes {
   children?: string; // @generated
 }
 
+/**
+ * <code>import { Link } from '@ui5/webcomponents-react/lib/Link';</code>
+ * <br />
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Link" target="_blank">UI5 Web Components Playground</a>
+ */
 const Link: FC<LinkPropTypes> = withWebComponent<LinkPropTypes>(UI5Link);
 
 Link.displayName = 'Link';

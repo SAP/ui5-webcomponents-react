@@ -15,14 +15,14 @@
     "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "@storybook/addon-actions": "5.3.2",
-    "@storybook/addon-docs": "5.3.2",
-    "@storybook/addon-info": "5.3.2",
-    "@storybook/addon-knobs": "5.3.2",
-    "@storybook/addons": "5.3.2",
-    "@storybook/cli": "5.3.2",
-    "@storybook/react": "5.3.2",
-    "@storybook/theming": "5.3.2",
+    "@storybook/addon-actions": "5.3.4",
+    "@storybook/addon-docs": "5.3.4",
+    "@storybook/addon-info": "5.3.4",
+    "@storybook/addon-knobs": "5.3.4",
+    "@storybook/addons": "5.3.4",
+    "@storybook/cli": "5.3.4",
+    "@storybook/react": "5.3.4",
+    "@storybook/theming": "5.3.4",
     "react-docgen-typescript-loader": "3.6.0"
   },
   "devDependencies": {

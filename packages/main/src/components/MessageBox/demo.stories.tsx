@@ -3,7 +3,6 @@ import { boolean, select, text } from '@storybook/addon-knobs';
 import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 import React from 'react';
-import notes from './MessageBox.md';
 
 export const defaultStory = () => (
   <MessageBox
@@ -22,6 +21,5 @@ defaultStory.story = {
 
 export default {
   title: 'Components / MessageBox',
-  component: MessageBox,
-  parameters: { notes }
+  component: MessageBox
 };

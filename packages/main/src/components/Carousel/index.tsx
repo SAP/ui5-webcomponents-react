@@ -49,6 +49,9 @@ export interface CarouselPropTypes
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'Carousel' });
 
+/**
+ * <code>import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';</code>
+ */
 const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,

@@ -38,6 +38,9 @@ const styles = {
 
 const useStyles = createUseStyles(styles, { name: 'RadialChart' });
 
+/**
+ * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/RadialChart';</code>
+ */
 const RadialChart: FC<RadialChartPropTypes> = forwardRef((props: RadialChartPropTypes, ref: Ref<HTMLDivElement>) => {
   const { maxValue, value, displayValue, style, className, colors, options, width, height } = props;
 

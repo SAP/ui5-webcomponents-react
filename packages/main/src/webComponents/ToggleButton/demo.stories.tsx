@@ -3,12 +3,10 @@ import { boolean, select } from '@storybook/addon-knobs';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import React from 'react';
-import notes from './ToggleButton.md';
 
 export default {
   title: 'UI5 Web Components / ToggleButton',
-  component: ToggleButton,
-  parameters: { notes }
+  component: ToggleButton
 };
 
 export const generatedDefaultStory = () => (

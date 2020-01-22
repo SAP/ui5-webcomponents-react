@@ -5,6 +5,8 @@ export const stateReducer = (newState, action, prevState) => {
       return { ...prevState, groupBy: payload };
     case 'SET_SELECTED_ROWS':
       return { ...prevState, selectedRowIds: action.selectedIds };
+    case 'SET_HIDDEN_COLUMNS':
+      return { ...prevState, hiddenColumns: action.hiddenColumns };
     default:
       return newState;
   }

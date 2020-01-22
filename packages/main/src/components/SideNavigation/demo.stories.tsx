@@ -11,7 +11,6 @@ import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
 import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import React from 'react';
-import notes from './SideNavigation.md';
 
 export const defaultStory = () => (
   <SideNavigation
@@ -49,5 +48,7 @@ defaultStory.story = {
 export default {
   title: 'Components / SideNavigation',
   component: SideNavigation,
-  parameters: { notes }
+  parameters: {
+    subcomponents: { SideNavigationListItem }
+  }
 };

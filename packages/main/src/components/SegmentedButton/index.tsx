@@ -47,6 +47,9 @@ const styles = ({ contentDensity }) => ({
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'SegmentedButton' });
 
+/**
+ * <code>import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';</code>
+ */
 const SegmentedButton: FC<SegmentedButtonPropTypes> = forwardRef(
   (props: SegmentedButtonPropTypes, ref: Ref<HTMLUListElement>) => {
     const { children, disabled, className, style, tooltip, slot, onItemSelected, selectedKey } = props;

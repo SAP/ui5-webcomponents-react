@@ -122,6 +122,9 @@ const ColumnChartComponent = forwardRef((props: ColumnChartPropTypes, ref: Ref<a
 });
 // @ts-ignore
 ColumnChartComponent.LoadingPlaceholder = ColumnChartPlaceholder;
+/**
+ * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/ColumnChart';</code>
+ */
 const ColumnChart: FC<ColumnChartPropTypes> = withChartContainer(ColumnChartComponent);
 
 ColumnChart.defaultProps = {
