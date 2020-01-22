@@ -296,6 +296,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         </div>
       </header>
       <div
+        class="AnalyticalTable--virtualTableBody-"
         style="position: relative; height: 220px; width: 240px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
@@ -769,6 +770,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         </div>
       </header>
       <div
+        class="AnalyticalTable--virtualTableBody-"
         style="position: relative; height: 220px; width: 240px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
@@ -1854,6 +1856,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
         </div>
       </header>
       <div
+        class="AnalyticalTable--virtualTableBody-"
         style="position: relative; height: 220px; width: 240px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
@@ -2356,6 +2359,7 @@ exports[`AnalyticalTable custom row height 1`] = `
         </div>
       </header>
       <div
+        class="AnalyticalTable--virtualTableBody-"
         style="position: relative; height: 300px; width: 240px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
@@ -3135,6 +3139,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         </div>
       </header>
       <div
+        class="AnalyticalTable--virtualTableBody-"
         style="position: relative; height: 220px; width: 240px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
@@ -3608,6 +3613,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         </div>
       </header>
       <div
+        class="AnalyticalTable--virtualTableBody-"
         style="position: relative; height: 220px; width: 240px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div

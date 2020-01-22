@@ -79,6 +79,7 @@ export const VirtualTableBody = (props) => {
 
   return (
     <FixedSizeList
+      className={classes.virtualTableBody}
       ref={reactWindowRef}
       height={tableBodyHeight}
       width={totalColumnsWidth}
