@@ -35,7 +35,6 @@ import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
-import ResizeObserver from 'resize-observer-polyfill';
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
