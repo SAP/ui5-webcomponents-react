@@ -14,8 +14,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiBaseBG
   },
   contentContainer: {
-    overflow: 'hidden auto',
-    height: '100%',
+    overflowX: 'hidden',
+    overflowY: 'auto',
     position: 'relative',
     flexGrow: 1
   },
