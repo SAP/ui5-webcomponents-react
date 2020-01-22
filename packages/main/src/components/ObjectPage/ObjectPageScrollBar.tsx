@@ -1,7 +1,7 @@
-import { ZIndex } from '@ui5/webcomponents-react/enums/ZIndex';
 import { JSSTheme } from '@ui5/webcomponents-react/interfaces/JSSTheme';
 import React, { FC, RefObject, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
+import { ZIndex } from '../../enums/ZIndex';
 
 interface Props {
   scrollBarRef: RefObject<HTMLDivElement>;
