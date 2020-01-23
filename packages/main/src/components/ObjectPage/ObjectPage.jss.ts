@@ -163,9 +163,13 @@ const styles = ({ parameters }: JSSTheme) => ({
     display: 'inline-block',
     verticalAlign: 'top',
     '& > *': {
+      float: 'left',
       marginRight: '2rem',
       marginBottom: '1rem',
       lineHeight: '1.5rem'
+    },
+    '&:after': {
+      clear: 'both'
     }
   },
   headerCustomContentItem: {
