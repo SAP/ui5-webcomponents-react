@@ -10,7 +10,8 @@ import {
   YAxis,
   Tooltip,
   Legend,
-  LabelList
+  LabelList,
+  Brush
 } from 'recharts';
 import { useTheme } from 'react-jss';
 import { JSSTheme } from '@ui5/webcomponents-react/src/interfaces/JSSTheme';
@@ -51,8 +52,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
     dataset,
     noLegend = false,
     valueAxisFormatter,
-    categoryAxisFormatter,
-    yAxisType
+    categoryAxisFormatter
   } = props as LineChartProps;
 
   useInitialize();
@@ -76,7 +76,6 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
 
   const onDataPointClick = useCallback(
     (e) => {
-      console.log(e);
       // Necessary because onItemLegendclick calls always onDataPointClick with e = null
       return e
         ? {
@@ -107,7 +106,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       >
         <CartesianGrid vertical={true} />
         <XAxis dataKey={labelKey} />
-        <YAxis type={yAxisType} />
+        <YAxis />
         {dataKeys.map((key, index) => (
           <Line
             key={key}
@@ -120,7 +119,8 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
           </Line>
         ))}
         ){!noLegend && <Legend onClick={onItemLegendClick} />}
-        <Tooltip formatter={(value, name) => [valueAxisFormatter(value), categoryAxisFormatter(name)]} />
+        <Tooltip />
+        <Brush />
       </LineChartLib>
     </ChartContainer>
   );

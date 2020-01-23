@@ -19,9 +19,9 @@ const ChartContainer = forwardRef((props: ContainerProps, ref: Ref<any>) => {
           {dataset.length > 0 && <ResponsiveContainer>{props['children']}</ResponsiveContainer>}
         </div>
       ) : (
-        <ResponsiveContainer>
+        <div style={{ width, height }}>
           <PlaceholderComponent />
-        </ResponsiveContainer>
+        </div>
       )}
     </div>
   );
