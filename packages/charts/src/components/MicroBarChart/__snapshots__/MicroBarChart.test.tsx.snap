@@ -10,12 +10,14 @@ exports[`Micro Bar Chart Renders with data 1`] = `
     >
       <span
         class="MicroBarChart--label-"
+        title="Bar Number One"
       >
         Bar Number One
       </span>
       <span
         class="MicroBarChart--text-"
         style="font-size:12px"
+        title="10"
       >
         10
       </span>
@@ -38,12 +40,14 @@ exports[`Micro Bar Chart Renders with data 1`] = `
     >
       <span
         class="MicroBarChart--label-"
+        title="Bar Number Two"
       >
         Bar Number Two
       </span>
       <span
         class="MicroBarChart--text-"
         style="font-size:12px"
+        title="100"
       >
         100
       </span>
@@ -73,12 +77,14 @@ exports[`Micro Bar Chart custom colors 1`] = `
     >
       <span
         class="MicroBarChart--label-"
+        title="Bar Number One"
       >
         Bar Number One
       </span>
       <span
         class="MicroBarChart--text-"
         style="font-size:12px"
+        title="10"
       >
         10
       </span>
@@ -101,12 +107,14 @@ exports[`Micro Bar Chart custom colors 1`] = `
     >
       <span
         class="MicroBarChart--label-"
+        title="Bar Number Two"
       >
         Bar Number Two
       </span>
       <span
         class="MicroBarChart--text-"
         style="font-size:12px"
+        title="100"
       >
         100
       </span>
@@ -136,12 +144,14 @@ exports[`Micro Bar Chart element selection 1`] = `
     >
       <span
         class="MicroBarChart--label-"
+        title="Bar Number One"
       >
         Bar Number One
       </span>
       <span
         class="MicroBarChart--text-"
         style="font-size:12px"
+        title="10"
       >
         10
       </span>
@@ -172,12 +182,14 @@ exports[`Micro Bar Chart maxWidth selection 1`] = `
     >
       <span
         class="MicroBarChart--label-"
+        title="Bar Number One"
       >
         Bar Number One
       </span>
       <span
         class="MicroBarChart--text-"
         style="font-size:12px"
+        title="10"
       >
         10
       </span>
@@ -200,12 +212,14 @@ exports[`Micro Bar Chart maxWidth selection 1`] = `
     >
       <span
         class="MicroBarChart--label-"
+        title="Bar Number Two"
       >
         Bar Number Two
       </span>
       <span
         class="MicroBarChart--text-"
         style="font-size:12px"
+        title="100"
       >
         100
       </span>
