@@ -2,7 +2,7 @@
 # UI5 Web Components for React
 <p align="center">
   <a href="https://github.com/SAP/ui5-webcomponents-react/actions?query=workflow:%22build%22" target="_blank">
-    <img alt="Build Status" src="https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg?branch=master">
+    <img alt="Build Status" src="https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg">
   </a>
   <a href="https://codecov.io/gh/SAP/ui5-webcomponents-react">
     <img src="https://codecov.io/gh/SAP/ui5-webcomponents-react/branch/master/graph/badge.svg" />
