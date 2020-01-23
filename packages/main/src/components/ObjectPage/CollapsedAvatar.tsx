@@ -1,6 +1,6 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import React, { ReactNode, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useLayoutEffect, useMemo, useRef, useState, ReactElement } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const styles = {
@@ -32,7 +32,7 @@ const useStyles = createUseStyles(styles, {
 });
 
 export interface CollapsedAvatarPropTypes {
-  image?: string | ReactNode;
+  image?: string | ReactElement<unknown>;
   imageShapeCircle?: boolean;
 }
 
@@ -55,10 +55,13 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
         </span>
       );
     } else {
-      // @ts-ignore
       return React.cloneElement(image, {
-        size: AvatarSize.S
-      });
+        size: AvatarSize.S,
+        // @ts-ignore
+        className: image.props?.className
+          ? `${classes.imageContainer} ${image.props?.className}`
+          : classes.imageContainer
+      } as unknown);
     }
   }, [image, imageShapeCircle]);
 
