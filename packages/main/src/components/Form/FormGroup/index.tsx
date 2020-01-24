@@ -6,12 +6,12 @@ import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { Children, FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../../interfaces/CommonProps';
 import { styles } from '../Form.jss';
 
-export interface FormGroupProps {
+export interface FormGroupProps extends CommonProps {
   title?: string;
   children: ReactNode | ReactNodeArray;
-  type?: string;
 }
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'FormGroup' });
@@ -20,12 +20,12 @@ const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { nam
  * <code>import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';</code>
  */
 const FormGroup: FC<FormGroupProps> = forwardRef((props: FormGroupProps, ref: Ref<HTMLDivElement>) => {
-  const { title, children } = props;
+  const { title, children, tooltip, style, className, slot } = props;
 
   const classes = useStyles();
 
   return (
-    <div ref={ref}>
+    <div ref={ref} style={style} className={className} title={tooltip} slot={slot}>
       {title && (
         <Title level={TitleLevel.H5} className={classes.formPaddingBottom}>
           {title}
@@ -49,8 +49,6 @@ const FormGroup: FC<FormGroupProps> = forwardRef((props: FormGroupProps, ref: Re
   );
 });
 
-FormGroup.defaultProps = {
-  type: 'formGroup'
-};
+FormGroup.displayName = 'FormGroup';
 
 export { FormGroup };
