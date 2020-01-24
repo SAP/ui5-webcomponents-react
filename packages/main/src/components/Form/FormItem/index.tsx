@@ -2,12 +2,12 @@ import { CurrentViewportRangeContext } from '@ui5/webcomponents-react/lib/Curren
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref, useContext, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../../interfaces/CommonProps';
 import { styles } from '../Form.jss';
 
-export interface FormItemProps {
+export interface FormItemProps extends CommonProps {
   labelText?: string;
   children: ReactNode | ReactNodeArray;
-  type?: string;
 }
 
 const calculateWidth = (rate) => {
@@ -20,14 +20,11 @@ const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { nam
  * <code>import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';</code>
  */
 const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<HTMLDivElement>) => {
-  const { labelText, children } = props;
+  const { labelText, children, tooltip, style, className, slot } = props;
 
   const currentRange = useContext(CurrentViewportRangeContext);
 
   const classes = useStyles();
-  const topDivClass = classes.formItemTopDiv;
-  const labelClass = classes.formLabel;
-  const elementClass = classes.formElement;
 
   const memoizedStyles = useMemo(() => {
     let labelWidth;
@@ -68,12 +65,12 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
   }, [children, currentRange]);
 
   return (
-    <div ref={ref}>
-      <div style={memoizedStyles.topDivStyle} className={topDivClass}>
-        <Label style={memoizedStyles.labelStyle} className={labelClass}>
+    <div ref={ref} style={style} className={className} title={tooltip} slot={slot}>
+      <div style={memoizedStyles.topDivStyle} className={classes.formItemTopDiv}>
+        <Label style={memoizedStyles.labelStyle} className={classes.formLabel}>
           {labelText ? labelText : ''}
         </Label>
-        <div style={memoizedStyles.elementStyle} className={elementClass}>
+        <div style={memoizedStyles.elementStyle} className={classes.formElement}>
           {children}
         </div>
       </div>
@@ -81,8 +78,6 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
   );
 });
 
-FormItem.defaultProps = {
-  type: 'formItem'
-};
+FormItem.displayName = 'FormItem';
 
 export { FormItem };
