@@ -204,7 +204,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         selectionMode,
         classes,
         onRowSelected,
-        rowHeight,
         onRowExpandChange,
         isTreeTable
       },
