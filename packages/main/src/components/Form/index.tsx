@@ -41,7 +41,6 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
       const ungroupedItems = [];
       formGroups = [];
       children.forEach((child: any) => {
-        console.log(child);
         if (child.type.displayName === 'FormItem') {
           ungroupedItems.push(child);
         } else if (child.type.displayName === 'FormGroup') {
