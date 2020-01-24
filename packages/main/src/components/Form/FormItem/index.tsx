@@ -52,7 +52,8 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
 
     return {
       topDivStyle: {
-        display: display
+        display: display,
+        ...style
       },
       labelStyle: {
         width: labelWidth,
@@ -62,17 +63,20 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
         width: elementWidth
       }
     };
-  }, [children, currentRange]);
+  }, [children, currentRange, style]);
+
+  let classNames = `${classes.formItemTopDiv}`;
+  if (className) {
+    classNames += ` ${className}`;
+  }
 
   return (
-    <div ref={ref} style={style} className={className} title={tooltip} slot={slot}>
-      <div style={memoizedStyles.topDivStyle} className={classes.formItemTopDiv}>
-        <Label style={memoizedStyles.labelStyle} className={classes.formLabel}>
-          {labelText ? labelText : ''}
-        </Label>
-        <div style={memoizedStyles.elementStyle} className={classes.formElement}>
-          {children}
-        </div>
+    <div ref={ref} style={memoizedStyles.topDivStyle} className={classNames} title={tooltip} slot={slot}>
+      <Label style={memoizedStyles.labelStyle} className={classes.formLabel}>
+        {labelText ? labelText : ''}
+      </Label>
+      <div style={memoizedStyles.elementStyle} className={classes.formElement}>
+        {children}
       </div>
     </div>
   );
