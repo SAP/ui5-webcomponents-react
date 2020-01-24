@@ -88,5 +88,11 @@ describe('Create a Form', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(Form);
+  createPassThroughPropsTest(Form, {
+    children: (
+      <FormItem labelText={'item 1'}>
+        <Input type={InputType.Text}></Input>
+      </FormItem>
+    )
+  });
 });
