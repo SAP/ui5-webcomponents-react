@@ -254,10 +254,9 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
               </ui5-popover>
             </li>
             <ui5-button
-              class=""
+              class="ObjectPage--toggleHeaderButton-"
               design="Default"
               icon="navigation-up-arrow"
-              style="position: absolute; line-height: 2.5rem;"
             />
           </section>
         </div>
@@ -1801,10 +1800,9 @@ exports[`ObjectPage With Subsections 1`] = `
               </ui5-popover>
             </li>
             <ui5-button
-              class=""
+              class="ObjectPage--toggleHeaderButton-"
               design="Default"
               icon="navigation-up-arrow"
-              style="position: absolute; line-height: 2.5rem;"
             />
           </section>
         </div>
