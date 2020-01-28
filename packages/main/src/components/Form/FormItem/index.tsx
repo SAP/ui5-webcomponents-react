@@ -3,6 +3,7 @@ import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref, useContext, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../../interfaces/CommonProps';
+import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { styles } from '../Form.jss';
 
 export interface FormItemProps extends CommonProps {
@@ -14,7 +15,7 @@ const calculateWidth = (rate) => {
   return Math.floor((100 / 12) * rate) + '%';
 };
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'FormItem' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'FormItem' });
 
 /**
  * <code>import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';</code>

@@ -11,6 +11,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
 
@@ -26,7 +27,7 @@ export interface PagePropTypes extends CommonProps {
   children: ReactElement<any> | Array<ReactElement<any>> | ReactNode;
 }
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, {
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, {
   name: 'Page'
 });
 
