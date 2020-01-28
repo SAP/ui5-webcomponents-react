@@ -153,6 +153,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         heightDiff = heightDiff > 0 ? heightDiff : 0;
         fillerDivDomRef.current.style.height = `${heightDiff}px`;
         requestAnimationFrame(() => {
+          if(!contentScrollContainer.current || !topHeader.current) return;
           const scrollbarContainerHeight =
             contentScrollContainer.current.getBoundingClientRect().height +
             topHeader.current.getBoundingClientRect().height;
