@@ -117,8 +117,7 @@ describe('FilterBar', () => {
         />
       </FilterBar>
     );
-    // console.log(wrapper.render());
-    // console.log(wrapper.find('Select').render());
+
     wrapper
       .find('ui5-option')
       .at(1)

@@ -2,6 +2,7 @@
  * Created by d059190 at 16.03.18
  */
 import { createGenerateClassName } from './lib/createGenerateClassName';
+import { CssSizeVariables, CssSizeVariablesNames, cssVariablesStyles } from './lib/CssSizeVariables';
 import { Device } from './lib/Device';
 import { Event } from './lib/Event';
 import { font72 } from './lib/font72';
@@ -30,5 +31,8 @@ export {
   sap_fiori_3,
   createGenerateClassName,
   useConsolidatedRef,
-  usePassThroughHtmlProps
+  usePassThroughHtmlProps,
+  CssSizeVariablesNames,
+  CssSizeVariables,
+  cssVariablesStyles
 };

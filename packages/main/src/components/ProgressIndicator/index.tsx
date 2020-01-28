@@ -1,11 +1,9 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React, { FC, forwardRef, Ref, useMemo } from 'react';
-import { createUseStyles, useTheme } from 'react-jss';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './ProgressIndicator.jss';
 
 export interface ProgressIndicatorPropTypes extends CommonProps {
@@ -51,12 +49,6 @@ const ProgressIndicator: FC<ProgressIndicatorPropTypes> = forwardRef(
     const progressBarTextClasses = StyleClassHelper.of(classes.progressBarText);
 
     const progressBarStyle = { flexBasis: `${percentValue}%` };
-
-    // change content density
-    const theme = useTheme() as JSSTheme;
-    if (theme.contentDensity === ContentDensity.Compact) {
-      wrapperClasses.put(classes.compact);
-    }
 
     // change text color based on percent value
     if (percentValue <= 50) {

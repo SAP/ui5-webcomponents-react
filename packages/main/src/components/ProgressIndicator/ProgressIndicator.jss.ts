@@ -1,3 +1,4 @@
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => {
@@ -23,17 +24,14 @@ const styles = ({ parameters }: JSSTheme) => {
       outline: 'none',
       background: parameters.sapUiFieldBackground,
       width: '100%',
-      height: '1.5rem',
+      height: CssSizeVariables.sapWcrProgressIndicatorHeight,
       minWidth: '4rem',
       minHeight: '1rem',
       padding: '0',
-      margin: '0.5rem 0',
+      margin: CssSizeVariables.sapWcrProgressIndicatorMargin,
       border: `1px solid ${parameters.sapUiFieldBorderColor}`,
       borderRadius: '0.5rem',
       overflow: 'hidden'
-    },
-    compact: {
-      height: '1.125rem'
     },
     progressbar: {
       transition: 'flex-basis 1s',

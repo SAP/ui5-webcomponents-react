@@ -1,9 +1,10 @@
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
   tableContainer: {
     width: '100%',
-    height: 'calc(100% - 2.75rem)',
+    height: `calc(100% - ${CssSizeVariables.sapWcrAnalyticalTableRowHeight})`,
     minHeight: '3rem'
   },
   table: {
@@ -14,13 +15,13 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   tableHeaderRow: {
     boxShadow: 'none !important',
-    height: '2.75rem',
+    height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     zIndex: 1,
     position: 'relative'
   },
   th: {
     backgroundColor: parameters.sapUiListHeaderBackground,
-    height: '2.75rem',
+    height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     fontFamily: parameters.sapUiFontFamily,
     fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
@@ -80,7 +81,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   tableCell: {
-    height: '2.75rem',
+    height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     fontFamily: parameters.sapUiFontFamily,
     fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
@@ -116,21 +117,6 @@ const styles = ({ parameters }: JSSTheme) => ({
     fontWeight: 'normal',
     borderBottom: `1px solid ${parameters.sapUiListBorderColor}`
   },
-  compactSize: {
-    '&$tableContainer': {
-      height: 'calc(100% - 2rem)'
-    },
-    '& $tableHeaderRow': {
-      height: '2rem'
-    },
-    '& $th': {
-      height: '2rem'
-    },
-    '& $tableCell': {
-      height: '2rem'
-    }
-  },
-
   modifiedRowHeight: {
     '& $tableCell': {
       height: (props) => `${props.rowHeight}px`

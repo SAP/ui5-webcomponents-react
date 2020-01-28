@@ -1,7 +1,7 @@
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const styles = ({ contentDensity, parameters }: JSSTheme) => ({
+const styles = ({ parameters }: JSSTheme) => ({
   segmentedButtonItem: {
     fontFamily: parameters.sapUiFontFamily,
     listStyle: 'none',
@@ -18,8 +18,8 @@ const styles = ({ contentDensity, parameters }: JSSTheme) => ({
     '&:focus': {
       outline: `1px dotted ${parameters.sapUiContentFocusColor}`
     },
-    height: contentDensity === ContentDensity.Compact ? '1.625rem' : '2.25rem',
-    lineHeight: contentDensity === ContentDensity.Compact ? '1.5rem' : '2.25rem',
+    height: CssSizeVariables.sapWcrSegmentedButtonItemHeight,
+    lineHeight: CssSizeVariables.sapWcrSegmentedButtonItemLineHeight,
     textShadow: 'none',
     '&:not($iconOnly)': { paddingLeft: '0.625rem', paddingRight: '0.625rem', textOverflow: 'ellipsis' },
     '&:first-child': {
@@ -55,9 +55,6 @@ const styles = ({ contentDensity, parameters }: JSSTheme) => ({
   iconOnly: { paddingLeft: '0.625rem', paddingRight: '0.625rem' },
   icon: {
     fontSize: '1rem',
-    // width: contentDensity === ContentDensity.Compact ? '1.3rem' : '2.375rem',
-    // height: contentDensity === ContentDensity.Compact ? '1.3rem' : '100%',
-    // verticalAlign: contentDensity === ContentDensity.Compact ? 'top' : 'middle',
     textAlign: 'center',
     alignContent: 'center',
     display: 'inline-block',

@@ -7,7 +7,6 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
@@ -15,7 +14,6 @@ import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import debounce from 'lodash.debounce';
 import React, {
-  CSSProperties,
   FC,
   forwardRef,
   ReactElement,
@@ -26,9 +24,8 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { createUseStyles, useTheme } from 'react-jss';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
 import styles from './ObjectPage.jss';
@@ -177,24 +174,14 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   // @ts-ignore
   const outerContainerObserver = useRef(new ResizeObserver(adjustContentContainerHeight));
 
-  const { contentDensity } = useTheme() as JSSTheme;
-
   const renderHideHeaderButton = () => {
     if (!showHideHeaderButton || renderHeaderContentProp === null || noHeader) return null;
 
     return (
       <Button
-        style={
-          {
-            position: 'absolute',
-            '--_ui5_button_compact_height': '1rem',
-            lineHeight: '2.5rem',
-            top: contentDensity === ContentDensity.Cozy ? 'calc(-2.5rem / 2)' : 'calc(-0.5rem)',
-            left: 'calc(50% - 1rem)'
-          } as CSSProperties
-        }
         icon={!collapsedHeader || expandHeaderActive ? 'navigation-up-arrow' : 'navigation-down-arrow'}
         onClick={changeHeader}
+        className={classes.toggleHeaderButton}
       />
     );
   };

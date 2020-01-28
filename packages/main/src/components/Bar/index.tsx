@@ -1,10 +1,8 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import React, { FC, forwardRef, Ref } from 'react';
-import { createUseStyles, useTheme } from 'react-jss';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './Bar.jss';
 
 export interface BarPropTypes extends CommonProps {
@@ -26,11 +24,6 @@ const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivE
   const cssClasses = StyleClassHelper.of(classes.bar);
   if (className) {
     cssClasses.put(className);
-  }
-
-  const { contentDensity } = useTheme() as JSSTheme;
-  if (contentDensity === ContentDensity.Compact) {
-    cssClasses.put(classes.compact);
   }
 
   const passThroughProps = usePassThroughHtmlProps(props);

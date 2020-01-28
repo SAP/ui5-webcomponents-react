@@ -1,11 +1,13 @@
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
+
 const styles = {
   // outer container, controlling height and width
   bar: {
     width: '100%',
     display: 'block',
     position: 'relative',
-    height: '2.75rem',
-    lineHeight: '2.75rem',
+    height: CssSizeVariables.sapWcrBarHeight,
+    lineHeight: CssSizeVariables.sapWcrBarHeight,
     '& ui5-button': {
       display: 'flex'
     }
@@ -33,7 +35,7 @@ const styles = {
   inner: {
     display: 'inline-block',
     padding: '0 0.5rem 0 0.5rem',
-    height: '2.75rem'
+    height: CssSizeVariables.sapWcrBarHeight
   },
   // right container
   right: {
@@ -45,16 +47,6 @@ const styles = {
     textAlign: 'right',
     display: 'flex',
     alignItems: 'center'
-  },
-
-  compact: {
-    '&$bar': {
-      height: '2.5rem',
-      lineHeight: '2.5rem'
-    },
-    '& $inner': {
-      height: '2.5rem'
-    }
   }
 };
 
