@@ -4,6 +4,7 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React, { FC, forwardRef, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './ProgressIndicator.jss';
 
 export interface ProgressIndicatorPropTypes extends CommonProps {
@@ -32,7 +33,7 @@ export interface ProgressIndicatorPropTypes extends CommonProps {
   state?: ValueState;
 }
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'ProgressIndicator' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ProgressIndicator' });
 
 /**
  * <code>import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';</code>

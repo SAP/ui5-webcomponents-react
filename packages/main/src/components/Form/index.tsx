@@ -8,6 +8,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, ReactElement, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { styles } from './Form.jss';
 
 export interface FormPropTypes extends CommonProps {
@@ -21,7 +22,7 @@ export interface FormPropTypes extends CommonProps {
   title?: string;
 }
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'Form' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Form' });
 
 /**
  * <code>import { Form } from '@ui5/webcomponents-react/lib/Form';</code>

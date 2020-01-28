@@ -30,7 +30,7 @@ const coloredStyles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useIconStyles = createUseStyles<keyof ReturnType<typeof coloredStyles>>(coloredStyles, {
+const useIconStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof coloredStyles>>(coloredStyles, {
   name: 'MessageToastIcon'
 });
 
@@ -39,7 +39,7 @@ const ColoredIcon = ({ name, state }) => {
   return <Icon name={name} className={`${classes.base} ${classes[state]}`} />;
 };
 
-const useMessageToastStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, {
+const useMessageToastStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, {
   name: 'MessageToast'
 });
 
