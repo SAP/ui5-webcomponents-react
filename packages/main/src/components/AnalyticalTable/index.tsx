@@ -2,7 +2,6 @@ import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
@@ -20,7 +19,7 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { createUseStyles, useTheme } from 'react-jss';
+import { createUseStyles } from 'react-jss';
 import {
   Column,
   PluginHook,
@@ -127,8 +126,6 @@ export interface TableProps extends CommonProps {
 }
 
 const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
-const ROW_HEIGHT_COMPACT = 32;
-const ROW_HEIGHT_COZY = 44;
 
 /**
  * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code>
@@ -163,7 +160,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     alternateRowColor,
     overscanCount
   } = props;
-  const theme = useTheme() as JSSTheme;
+
   const classes = useStyles({ rowHeight: props.rowHeight });
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
@@ -285,21 +282,15 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
 
-  if (theme.contentDensity === ContentDensity.Compact) {
-    tableContainerClasses.put(classes.compactSize);
-  }
-
   if (!!rowHeight) {
     tableContainerClasses.put(classes.modifiedRowHeight);
   }
 
-  const internalRowHeight = useMemo(() => {
-    let height = theme.contentDensity === ContentDensity.Compact ? ROW_HEIGHT_COMPACT : ROW_HEIGHT_COZY;
-    if (rowHeight) {
-      height = rowHeight;
-    }
-    return height;
-  }, [rowHeight, theme.contentDensity]);
+  const calcRowHeight = parseInt(
+    getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight')
+  );
+
+  const internalRowHeight = rowHeight ?? calcRowHeight;
 
   const tableBodyHeight = useMemo(() => {
     return internalRowHeight * Math.max(rows.length < visibleRows ? rows.length : visibleRows, minRows);

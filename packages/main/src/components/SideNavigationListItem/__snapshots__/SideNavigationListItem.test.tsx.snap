@@ -15,21 +15,6 @@ exports[`SideNavigationListItem Basic 1`] = `
 </ui5-li-custom>
 `;
 
-exports[`SideNavigationListItem compact size 1`] = `
-<ui5-li-custom
-  class="SideNavigationListItem--listItem-"
-  data-has-children="false"
-  data-id="home"
-  id="home"
-  type="Active"
->
-  <ui5-icon
-    class="SideNavigationListItem--icon-"
-    name="home"
-  />
-</ui5-li-custom>
-`;
-
 exports[`SideNavigationListItem custom class name and style 1`] = `
 <ui5-li-custom
   class="SideNavigationListItem--listItem- myClass"

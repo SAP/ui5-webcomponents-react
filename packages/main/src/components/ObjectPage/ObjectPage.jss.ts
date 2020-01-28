@@ -196,6 +196,13 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   avatar: {
     marginRight: '1rem'
+  },
+  toggleHeaderButton: {
+    position: 'absolute',
+    '--_ui5_button_compact_height': '1.25rem',
+    '--_ui5_button_base_height': '1.25rem',
+    top: `-0.625rem`,
+    left: 'calc(50% - 1rem)'
   }
 });
 

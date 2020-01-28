@@ -1,3 +1,4 @@
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
@@ -22,9 +23,9 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
 
   icon: {
     '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentIconColor,
-    width: '1.125rem',
-    height: '1.125rem',
-    padding: '0.9375rem',
+    width: CssSizeVariables.sapWcrSideNavigationItemIconSize,
+    height: CssSizeVariables.sapWcrSideNavigationItemIconSize,
+    padding: CssSizeVariables.sapWcrSideNavigationItemIconPadding,
     pointerEvents: 'none'
   },
 
@@ -34,24 +35,12 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
     '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentIconColor,
     width: '0.875rem',
     height: '0.875rem',
-    padding: '0.8125rem',
+    padding: CssSizeVariables.sapWcrSideNavigationItemExpandedArrowPadding,
     marginLeft: 'auto'
   },
 
   expanded: {
     '--ui5-listitem-border-bottom': 'none'
-  },
-
-  compact: {
-    '& $icon': {
-      height: '1rem',
-      paddingTop: '0.5rem',
-      paddingBottom: '0.5rem'
-    },
-    '& $expandArrow': {
-      paddingTop: '0.125rem',
-      paddingBottom: '0.125rem'
-    }
   },
 
   condensedExpandTriangle: {

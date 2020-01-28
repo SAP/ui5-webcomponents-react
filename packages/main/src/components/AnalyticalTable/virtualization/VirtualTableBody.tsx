@@ -27,7 +27,6 @@ export const VirtualTableBody = (props) => {
   const innerDivRef = useRef(null);
 
   useEffect(() => {
-    selectionMode;
     if (innerDivRef.current) {
       innerDivRef.current.classList = '';
       innerDivRef.current.classList.add(classes.tbody);
