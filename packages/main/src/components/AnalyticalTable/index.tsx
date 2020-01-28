@@ -287,7 +287,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }
 
   const calcRowHeight = parseInt(
-    getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight')
+    getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
   );
 
   const internalRowHeight = rowHeight ?? calcRowHeight;
