@@ -24,7 +24,7 @@ addParameters({
 
 addDecorator(withKnobs);
 
-const ThemeContainer = ({ theme, contentDensity, children, setQueryParam }) => {
+const ThemeContainer = ({ contentDensity, children, setQueryParam }) => {
   useEffect(() => {
     if (contentDensity === ContentDensity.Compact) {
       document.body.classList.add('ui5-content-density-compact');
