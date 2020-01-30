@@ -105,6 +105,7 @@ import { TableCell } from './lib/TableCell';
 import { TableColumn } from './lib/TableColumn';
 import { TablePlaceholder } from './lib/TablePlaceholder';
 import { TableRow } from './lib/TableRow';
+import { TableScaleWidthMode } from './lib/TableScaleWidthMode';
 import { TableSelectionMode } from './lib/TableSelectionMode';
 import { Text } from './lib/Text';
 import { TextAlign } from './lib/TextAlign';
@@ -226,6 +227,7 @@ export {
   TableColumn,
   TablePlaceholder,
   TableRow,
+  TableScaleWidthMode,
   TableSelectionMode,
   Text,
   TextAlign,

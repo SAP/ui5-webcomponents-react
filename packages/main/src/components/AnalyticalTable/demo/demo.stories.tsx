@@ -7,11 +7,16 @@ import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import React from 'react';
 import generateData from './generateData';
+import { TableScaleWidthMode } from '../../../enums/TableScaleWidthMode';
 
 const columns = [
   {
     Header: 'Name',
     accessor: 'name' // String-based value accessors!
+  },
+  {
+    Header: 'Long Header Name and long Content',
+    accessor: 'longColumn'
   },
   {
     Header: 'Age',
@@ -25,7 +30,7 @@ const columns = [
     accessor: 'friend.name'
   },
   {
-    Header: () => <span>Friend Age</span>, // Custom header components!
+    Header: 'Friend Age',
     accessor: 'friend.age',
     hAlign: TextAlign.End,
     filter: (rows, accessor, filterValue) => {
@@ -56,37 +61,37 @@ const columns = [
 const data = generateData(200);
 const dataTree = generateData(20, true);
 
-export const defaultTable = () => {
+const renderTable = () => {
+  // const innerData = generateData(200);
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <AnalyticalTable
-        title="Table Title"
-        data={data}
-        columns={columns}
-        loading={boolean('loading', false)}
-        busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
-        alternateRowColor={boolean('alternateRowColor', false)}
-        sortable={boolean('sortable', true)}
-        filterable={boolean('filterable', true)}
-        visibleRows={number('visibleRows', 5)}
-        minRows={number('minRows', 5)}
-        groupable={boolean('groupable', true)}
-        selectionMode={select<TableSelectionMode>(
-          'selectionMode',
-          TableSelectionMode,
-          TableSelectionMode.SINGLE_SELECT
-        )}
-        onRowSelected={action('onRowSelected')}
-        onSort={action('onSort')}
-        onGroup={action('onGroup')}
-        onRowExpandChange={action('onRowExpandChange')}
-        groupBy={array('groupBy', [])}
-        rowHeight={number('rowHeight', 60)}
-        selectedRowIds={object('selectedRowIds', { 3: true })}
-        onColumnsReordered={action('onColumnsReordered')}
-      />
-    </div>
+    <AnalyticalTable
+      title="Table Title"
+      data={data}
+      columns={columns}
+      loading={boolean('loading', false)}
+      busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
+      alternateRowColor={boolean('alternateRowColor', false)}
+      sortable={boolean('sortable', true)}
+      filterable={boolean('filterable', true)}
+      visibleRows={number('visibleRows', 5)}
+      minRows={number('minRows', 5)}
+      groupable={boolean('groupable', true)}
+      selectionMode={select<TableSelectionMode>('selectionMode', TableSelectionMode, TableSelectionMode.SINGLE_SELECT)}
+      scaleWidthMode={select<TableScaleWidthMode>('scaleWidthMode', TableScaleWidthMode, TableScaleWidthMode.Grow)}
+      onRowSelected={action('onRowSelected')}
+      onSort={action('onSort')}
+      onGroup={action('onGroup')}
+      onRowExpandChange={action('onRowExpandChange')}
+      groupBy={array('groupBy', [])}
+      rowHeight={number('rowHeight', 44)}
+      selectedRowIds={object('selectedRowIds', { 3: true })}
+      onColumnsReordered={action('onColumnsReordered')}
+    />
   );
+};
+
+export const defaultTable = () => {
+  return <div style={{ display: 'flex', flexDirection: 'column' }}>{renderTable()}</div>;
 };
 
 defaultTable.story = {
