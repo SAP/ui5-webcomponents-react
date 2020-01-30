@@ -62,7 +62,6 @@ const data = generateData(200);
 const dataTree = generateData(20, true);
 
 const renderTable = () => {
-  // const innerData = generateData(200);
   return (
     <AnalyticalTable
       title="Table Title"
