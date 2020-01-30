@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { HTMLEvent } from '../types/HTMLEvent';
+import { HTMLEvent } from '../interfaces/HTMLEvent';
 
 export interface Parameters {
   [key: string]: number | string | object | boolean | Parameters;
