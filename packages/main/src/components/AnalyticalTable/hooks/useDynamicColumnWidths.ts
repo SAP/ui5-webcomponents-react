@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
-import { TableScaleWidthMode } from '../../../enums/TableScaleWidthMode';
+import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 
 const ROW_SAMPLE_SIZE = 20;
 const DEFAULT_HEADER_NUM_CHAR = 10;

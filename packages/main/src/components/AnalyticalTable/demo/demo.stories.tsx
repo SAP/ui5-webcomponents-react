@@ -77,7 +77,7 @@ const renderTable = () => {
       minRows={number('minRows', 5)}
       groupable={boolean('groupable', true)}
       selectionMode={select<TableSelectionMode>('selectionMode', TableSelectionMode, TableSelectionMode.SINGLE_SELECT)}
-      scaleWidthMode={select<TableScaleWidthMode>('scaleWidthMode', TableScaleWidthMode, TableScaleWidthMode.Grow)}
+      scaleWidthMode={select<TableScaleWidthMode>('scaleWidthMode', TableScaleWidthMode, TableScaleWidthMode.Default)}
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
       onGroup={action('onGroup')}
