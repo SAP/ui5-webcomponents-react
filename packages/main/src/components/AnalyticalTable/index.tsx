@@ -303,7 +303,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const internalRowHeight = rowHeight ?? calcRowHeight;
 
   const tableBodyHeight = useMemo(() => {
-    return internalRowHeight * Math.min(Math.max(rows.length, minRows), visibleRows);
+    const rowNum = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
+    return internalRowHeight * rowNum;
   }, [internalRowHeight, rows.length, visibleRows, minRows]);
 
   const noDataStyles = useMemo(() => {
