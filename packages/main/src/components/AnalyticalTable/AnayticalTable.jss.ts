@@ -45,6 +45,7 @@ const styles = ({ parameters }: JSSTheme) => ({
       backgroundColor: parameters.sapUiListHeaderBackground
     }
   },
+  emptyRow: {},
   tr: {
     zIndex: 0,
     backgroundColor: parameters.sapUiListBackground,
@@ -67,11 +68,11 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   selectable: {
-    '& $tr:hover': {
+    '& $tr:hover:not($emptyRow)': {
       backgroundColor: parameters.sapUiListHoverBackground,
       cursor: 'pointer'
     },
-    '& $tr:active:not([data-is-selected]):not($tableGroupHeader)': {
+    '& $tr:active:not([data-is-selected]):not($tableGroupHeader):not($emptyRow)': {
       backgroundColor: parameters.sapUiListActiveBackground,
       '& $tableCell': {
         borderRight: `1px solid ${parameters.sapUiListActiveBackground}`,

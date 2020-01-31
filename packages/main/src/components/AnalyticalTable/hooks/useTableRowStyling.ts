@@ -6,9 +6,14 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 export const useTableRowStyling = (hooks) => {
   hooks.getRowProps.push((passedRowProps, { instance, row }) => {
     const { classes, selectionMode, onRowSelected } = instance.webComponentsReactProperties;
+    const isEmptyRow = row.original?.emptyRow;
     let className = classes.tr;
     if (row.isGrouped) {
       className += ` ${classes.tableGroupHeader}`;
+    }
+
+    if(isEmptyRow) {
+      className += ` ${classes.emptyRow}`;
     }
 
     const rowProps: any = {
@@ -16,7 +21,7 @@ export const useTableRowStyling = (hooks) => {
       className,
       role: 'row'
     };
-    if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode)) {
+    if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode) && !isEmptyRow) {
       rowProps.onClick = (e) => {
         if (row.isGrouped) {
           return;
