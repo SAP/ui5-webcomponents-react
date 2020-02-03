@@ -134,7 +134,6 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
  */
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
   const {
-    data,
     className,
     style,
     tooltip,
@@ -193,6 +192,18 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     hiddenColumns,
     setColumnWidth
   );
+
+  const data = useMemo(() => {
+    if (minRows > props.data.length) {
+      const missingRows = minRows - props.data.length;
+      // @ts-ignore
+      const emptyRows = [...Array(missingRows).keys()].map(() => ({ emptyRow: true }));
+
+      return [...props.data, ...emptyRows];
+    }
+    return props.data;
+  }, [props.data, minRows]);
+
 
   const {
     getTableProps,
@@ -298,8 +309,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const internalRowHeight = rowHeight ?? calcRowHeight;
 
   const tableBodyHeight = useMemo(() => {
-    return internalRowHeight * Math.max(rows.length < visibleRows ? rows.length : visibleRows, minRows);
-  }, [internalRowHeight, rows.length, minRows, visibleRows]);
+    const rowNum = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
+    return internalRowHeight * rowNum;
+  }, [internalRowHeight, rows.length, visibleRows, minRows]);
 
   const noDataStyles = useMemo(() => {
     return {

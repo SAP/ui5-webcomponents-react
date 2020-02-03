@@ -7,11 +7,11 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
-import { Button } from '@ui5/webcomponents-react/lib/Button';
 import debounce from 'lodash.debounce';
 import React, {
   FC,
@@ -26,6 +26,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
 import styles from './ObjectPage.jss';
@@ -47,7 +48,7 @@ export interface ObjectPagePropTypes extends CommonProps {
   imageShapeCircle?: boolean;
   headerActions?: Array<ReactElement<unknown>>;
   renderHeaderContent?: () => JSX.Element;
-  children?: ReactElement<unknown> | Array<ReactElement<unknown>>;
+  children?: ReactElement<ObjectPageSectionPropTypes> | Array<ReactElement<ObjectPageSectionPropTypes>>;
   mode?: ObjectPageMode;
   selectedSectionId?: string;
   selectedSubSectionId?: string;
@@ -139,7 +140,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         const lastSectionDomRef = sections[sections.length - 1];
         const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
 
-        let lastSubSectionHeight = null;
+        let lastSubSectionHeight;
         if (subSections.length > 0) {
           lastSubSectionHeight = (subSections[subSections.length - 1] as HTMLElement).offsetHeight;
         } else {
@@ -153,7 +154,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         heightDiff = heightDiff > 0 ? heightDiff : 0;
         fillerDivDomRef.current.style.height = `${heightDiff}px`;
         requestAnimationFrame(() => {
-          if(!contentScrollContainer.current || !topHeader.current) return;
+          if (!contentScrollContainer.current || !topHeader.current) return;
           const scrollbarContainerHeight =
             contentScrollContainer.current.getBoundingClientRect().height +
             topHeader.current.getBoundingClientRect().height;
@@ -314,7 +315,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         // get section index
 
         let index;
-        safeGetChildrenArray(children).forEach((section: ReactElement<any>, sectionIndex) => {
+        safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children).forEach((section, sectionIndex) => {
           if (React.isValidElement(section) && section.props && section.props.children) {
             safeGetChildrenArray(section.props.children).forEach(
               (subSection: ReactElement<ObjectPageSubSectionPropTypes>) => {

@@ -1,6 +1,6 @@
 import { Children, ReactElement } from 'react';
 
-export const safeGetChildrenArray = (children) => Children.toArray(children).filter(Boolean);
+export const safeGetChildrenArray = <T = any>(children): Array<T> => Children.toArray(children).filter(Boolean);
 
 export const findSectionIndexById = (sections: ReactElement<any> | Array<ReactElement<any>>, id) => {
   const index = safeGetChildrenArray(sections).findIndex((objectPageSection) => objectPageSection.props?.id === id);
