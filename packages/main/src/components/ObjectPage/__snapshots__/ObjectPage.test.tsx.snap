@@ -28,7 +28,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       class="ObjectPage--actions-"
     >
       <ui5-button
-        class=""
         design="Default"
       >
         Action
@@ -95,7 +94,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
                   style="display: flex; flex-direction: column;"
                 >
                   <ui5-link
-                    class=""
                     design="Default"
                     href="https://www.sap.com"
                   >
@@ -163,20 +161,17 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
                 style="display: inline-block;"
               >
                 <ui5-icon
-                  class=""
                   name="slim-arrow-down"
                   style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
                 />
               </div>
               <ui5-popover
-                class=""
                 horizontal-align="Center"
                 no-arrow="true"
                 placement-type="Bottom"
                 vertical-align="Center"
               >
                 <ui5-list
-                  class=""
                   footer-text=""
                   header-text=""
                   mode="None"
@@ -184,7 +179,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
                   separators="All"
                 >
                   <ui5-li
-                    class=""
                     data-key="4.1"
                     info-state="None"
                     type="Active"
@@ -192,7 +186,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
                     SubSection 4.1
                   </ui5-li>
                   <ui5-li
-                    class=""
                     data-key="4.2"
                     info-state="None"
                     type="Active"
@@ -214,20 +207,17 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
                 style="display: inline-block;"
               >
                 <ui5-icon
-                  class=""
                   name="slim-arrow-down"
                   style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
                 />
               </div>
               <ui5-popover
-                class=""
                 horizontal-align="Center"
                 no-arrow="true"
                 placement-type="Bottom"
                 vertical-align="Center"
               >
                 <ui5-list
-                  class=""
                   footer-text=""
                   header-text=""
                   mode="None"
@@ -235,7 +225,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
                   separators="All"
                 >
                   <ui5-li
-                    class=""
                     data-key="5.1"
                     info-state="None"
                     type="Active"
@@ -243,7 +232,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
                     SubSection 5.1
                   </ui5-li>
                   <ui5-li
-                    class=""
                     data-key="5.2"
                     info-state="None"
                     type="Active"
@@ -284,7 +272,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
                 class="ObjectPageSection--sectionContentInner-"
               >
                 <ui5-label
-                  class=""
                   for=""
                 >
                   My Content 1
@@ -467,35 +454,30 @@ exports[`ObjectPage Key Infos 1`] = `
           >
             <div>
               <ui5-link
-                class=""
                 design="Default"
                 href="PathSegment1"
               >
                 Path1
               </ui5-link>
               <ui5-label
-                class=""
                 for=""
                 style="margin: 0px 0.25rem;"
               >
                 /
               </ui5-label>
               <ui5-link
-                class=""
                 design="Default"
                 href="PathSegment2"
               >
                 Path2
               </ui5-link>
               <ui5-label
-                class=""
                 for=""
                 style="margin: 0px 0.25rem;"
               >
                 /
               </ui5-label>
               <ui5-link
-                class=""
                 design="Default"
                 href="PathSegment3"
               />
@@ -514,7 +496,6 @@ exports[`ObjectPage Key Infos 1`] = `
               >
                 <div>
                   <ui5-title
-                    class=""
                     level="H5"
                   >
                     Key Info 1
@@ -527,7 +508,6 @@ exports[`ObjectPage Key Infos 1`] = `
                 </div>
                 <div>
                   <ui5-title
-                    class=""
                     level="H5"
                   >
                     Key Info 2
@@ -540,7 +520,6 @@ exports[`ObjectPage Key Infos 1`] = `
                 </div>
                 <div>
                   <ui5-title
-                    class=""
                     level="H5"
                   >
                     Key Info 3
@@ -1137,7 +1116,6 @@ exports[`ObjectPage Only Sections 1`] = `
       class="ObjectPage--actions-"
     >
       <ui5-button
-        class=""
         design="Default"
       >
         Action
@@ -1204,7 +1182,6 @@ exports[`ObjectPage Only Sections 1`] = `
                   style="display: flex; flex-direction: column;"
                 >
                   <ui5-link
-                    class=""
                     design="Default"
                     href="https://www.sap.com"
                   >
@@ -1301,7 +1278,6 @@ exports[`ObjectPage Only Sections 1`] = `
                 class="ObjectPageSection--sectionContentInner-"
               >
                 <ui5-label
-                  class=""
                   for=""
                 >
                   My Content 1
@@ -1330,7 +1306,6 @@ exports[`ObjectPage Only Sections 1`] = `
                 class="ObjectPageSection--sectionContentInner-"
               >
                 <ui5-label
-                  class=""
                   for=""
                 >
                   My Content 2
@@ -1359,7 +1334,6 @@ exports[`ObjectPage Only Sections 1`] = `
                 class="ObjectPageSection--sectionContentInner-"
               >
                 <ui5-label
-                  class=""
                   for=""
                 >
                   My Content 3
@@ -1529,7 +1503,6 @@ exports[`ObjectPage With Subsections 1`] = `
       class="ObjectPage--actions-"
     >
       <ui5-button
-        class=""
         design="Default"
       >
         Action
@@ -1596,7 +1569,6 @@ exports[`ObjectPage With Subsections 1`] = `
                   style="display: flex; flex-direction: column;"
                 >
                   <ui5-link
-                    class=""
                     design="Default"
                     href="https://www.sap.com"
                   >
@@ -1684,20 +1656,17 @@ exports[`ObjectPage With Subsections 1`] = `
                 style="display: inline-block;"
               >
                 <ui5-icon
-                  class=""
                   name="slim-arrow-down"
                   style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
                 />
               </div>
               <ui5-popover
-                class=""
                 horizontal-align="Center"
                 no-arrow="true"
                 placement-type="Bottom"
                 vertical-align="Center"
               >
                 <ui5-list
-                  class=""
                   footer-text=""
                   header-text=""
                   mode="None"
@@ -1709,7 +1678,6 @@ exports[`ObjectPage With Subsections 1`] = `
                     style="cursor: pointer;"
                   >
                     <ui5-li
-                      class=""
                       data-key="4.1"
                       info-state="None"
                       type="Active"
@@ -1722,7 +1690,6 @@ exports[`ObjectPage With Subsections 1`] = `
                     style="cursor: pointer;"
                   >
                     <ui5-li
-                      class=""
                       data-key="4.2"
                       info-state="None"
                       type="Active"
@@ -1750,20 +1717,17 @@ exports[`ObjectPage With Subsections 1`] = `
                 style="display: inline-block;"
               >
                 <ui5-icon
-                  class=""
                   name="slim-arrow-down"
                   style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
                 />
               </div>
               <ui5-popover
-                class=""
                 horizontal-align="Center"
                 no-arrow="true"
                 placement-type="Bottom"
                 vertical-align="Center"
               >
                 <ui5-list
-                  class=""
                   footer-text=""
                   header-text=""
                   mode="None"
@@ -1775,7 +1739,6 @@ exports[`ObjectPage With Subsections 1`] = `
                     style="cursor: pointer;"
                   >
                     <ui5-li
-                      class=""
                       data-key="5.1"
                       info-state="None"
                       type="Active"
@@ -1788,7 +1751,6 @@ exports[`ObjectPage With Subsections 1`] = `
                     style="cursor: pointer;"
                   >
                     <ui5-li
-                      class=""
                       data-key="5.2"
                       info-state="None"
                       type="Active"
@@ -1830,7 +1792,6 @@ exports[`ObjectPage With Subsections 1`] = `
                 class="ObjectPageSection--sectionContentInner-"
               >
                 <ui5-label
-                  class=""
                   for=""
                 >
                   My Content 1

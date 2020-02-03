@@ -8,7 +8,6 @@ exports[`ObjectStatus ObjectStatus: state: Error 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconError-"
   >
     <ui5-icon
-      class=""
       name="status-negative"
       style="font-size: 1rem;"
     />
@@ -24,7 +23,6 @@ exports[`ObjectStatus ObjectStatus: state: Information 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconInformation-"
   >
     <ui5-icon
-      class=""
       name="hint"
       style="font-size: 1rem;"
     />
@@ -40,7 +38,6 @@ exports[`ObjectStatus ObjectStatus: state: None 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconNone-"
   >
     <ui5-icon
-      class=""
       name="status-inactive"
       style="font-size: 1rem;"
     />
@@ -56,7 +53,6 @@ exports[`ObjectStatus ObjectStatus: state: Success 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconSuccess-"
   >
     <ui5-icon
-      class=""
       name="status-positive"
       style="font-size: 1rem;"
     />
@@ -72,7 +68,6 @@ exports[`ObjectStatus ObjectStatus: state: Warning 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconWarning-"
   >
     <ui5-icon
-      class=""
       name="status-critical"
       style="font-size: 1rem;"
     />
@@ -88,7 +83,6 @@ exports[`ObjectStatus Render without Crashing 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconError-"
   >
     <ui5-icon
-      class=""
       name="status-negative"
       style="font-size: 1rem;"
     />
@@ -109,7 +103,6 @@ exports[`ObjectStatus Text Deprecation 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconError-"
   >
     <ui5-icon
-      class=""
       name="status-negative"
       style="font-size: 1rem;"
     />

@@ -2,7 +2,6 @@
 
 exports[`MessageBox Confirm - Cancel 1`] = `
 <ui5-dialog
-  class=""
   header-text=""
   open="true"
 >
@@ -15,12 +14,10 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       class="MessageBox--icon-"
     >
       <ui5-icon
-        class=""
         name="question-mark"
       />
     </div>
     <ui5-title
-      class=""
       level="H5"
     >
       Confirmation
@@ -31,7 +28,6 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     slot="footer"
   >
     <ui5-button
-      class=""
       data-action="OK"
       design="Emphasized"
       style="min-width: 4rem;"
@@ -39,7 +35,6 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       OK
     </ui5-button>
     <ui5-button
-      class=""
       data-action="Cancel"
       design="Transparent"
       style="min-width: 4rem;"
@@ -57,7 +52,6 @@ exports[`MessageBox Confirm - Cancel 1`] = `
 
 exports[`MessageBox Confirm - OK 1`] = `
 <ui5-dialog
-  class=""
   header-text=""
   open="true"
   opened=""
@@ -71,12 +65,10 @@ exports[`MessageBox Confirm - OK 1`] = `
       class="MessageBox--icon-"
     >
       <ui5-icon
-        class=""
         name="question-mark"
       />
     </div>
     <ui5-title
-      class=""
       level="H5"
     >
       Confirmation
@@ -87,7 +79,6 @@ exports[`MessageBox Confirm - OK 1`] = `
     slot="footer"
   >
     <ui5-button
-      class=""
       data-action="OK"
       design="Emphasized"
       style="min-width: 4rem;"
@@ -95,7 +86,6 @@ exports[`MessageBox Confirm - OK 1`] = `
       OK
     </ui5-button>
     <ui5-button
-      class=""
       data-action="Cancel"
       design="Transparent"
       style="min-width: 4rem;"
@@ -113,7 +103,6 @@ exports[`MessageBox Confirm - OK 1`] = `
 
 exports[`MessageBox Error 1`] = `
 <ui5-dialog
-  class=""
   header-text=""
   open="true"
 >
@@ -126,12 +115,10 @@ exports[`MessageBox Error 1`] = `
       class="MessageBox--icon-"
     >
       <ui5-icon
-        class=""
         name="message-error"
       />
     </div>
     <ui5-title
-      class=""
       level="H5"
     >
       Error
@@ -142,7 +129,6 @@ exports[`MessageBox Error 1`] = `
     slot="footer"
   >
     <ui5-button
-      class=""
       data-action="Close"
       design="Emphasized"
       style="min-width: 4rem;"
@@ -160,7 +146,6 @@ exports[`MessageBox Error 1`] = `
 
 exports[`MessageBox Information 1`] = `
 <ui5-dialog
-  class=""
   header-text=""
   open="true"
 >
@@ -173,12 +158,10 @@ exports[`MessageBox Information 1`] = `
       class="MessageBox--icon-"
     >
       <ui5-icon
-        class=""
         name="message-information"
       />
     </div>
     <ui5-title
-      class=""
       level="H5"
     >
       Information
@@ -189,7 +172,6 @@ exports[`MessageBox Information 1`] = `
     slot="footer"
   >
     <ui5-button
-      class=""
       data-action="OK"
       design="Emphasized"
       style="min-width: 4rem;"
@@ -207,7 +189,6 @@ exports[`MessageBox Information 1`] = `
 
 exports[`MessageBox No Title 1`] = `
 <ui5-dialog
-  class=""
   header-text=""
   open="true"
   opened=""
@@ -221,12 +202,10 @@ exports[`MessageBox No Title 1`] = `
       class="MessageBox--icon-"
     >
       <ui5-icon
-        class=""
         name="question-mark"
       />
     </div>
     <ui5-title
-      class=""
       level="H5"
     >
       Confirmation
@@ -237,7 +216,6 @@ exports[`MessageBox No Title 1`] = `
     slot="footer"
   >
     <ui5-button
-      class=""
       data-action="OK"
       design="Emphasized"
       style="min-width: 4rem;"
@@ -245,7 +223,6 @@ exports[`MessageBox No Title 1`] = `
       OK
     </ui5-button>
     <ui5-button
-      class=""
       data-action="Cancel"
       design="Transparent"
       style="min-width: 4rem;"
@@ -263,7 +240,6 @@ exports[`MessageBox No Title 1`] = `
 
 exports[`MessageBox Not open 1`] = `
 <ui5-dialog
-  class=""
   header-text=""
   open="false"
 >
@@ -276,12 +252,10 @@ exports[`MessageBox Not open 1`] = `
       class="MessageBox--icon-"
     >
       <ui5-icon
-        class=""
         name="message-success"
       />
     </div>
     <ui5-title
-      class=""
       level="H5"
     >
       Custom Success
@@ -292,7 +266,6 @@ exports[`MessageBox Not open 1`] = `
     slot="footer"
   >
     <ui5-button
-      class=""
       data-action="OK"
       design="Emphasized"
       style="min-width: 4rem;"
@@ -310,7 +283,6 @@ exports[`MessageBox Not open 1`] = `
 
 exports[`MessageBox Show 1`] = `
 <ui5-dialog
-  class=""
   header-text=""
   open="true"
 >
@@ -323,12 +295,10 @@ exports[`MessageBox Show 1`] = `
       class="MessageBox--icon-"
     >
       <ui5-icon
-        class=""
         name="question-mark"
       />
     </div>
     <ui5-title
-      class=""
       level="H5"
     >
       Custom
@@ -339,7 +309,6 @@ exports[`MessageBox Show 1`] = `
     slot="footer"
   >
     <ui5-button
-      class=""
       data-action="Yes"
       design="Emphasized"
       style="min-width: 4rem;"
@@ -347,7 +316,6 @@ exports[`MessageBox Show 1`] = `
       Yes
     </ui5-button>
     <ui5-button
-      class=""
       data-action="No"
       design="Transparent"
       style="min-width: 4rem;"
@@ -365,7 +333,6 @@ exports[`MessageBox Show 1`] = `
 
 exports[`MessageBox Success 1`] = `
 <ui5-dialog
-  class=""
   header-text=""
   open="true"
 >
@@ -378,12 +345,10 @@ exports[`MessageBox Success 1`] = `
       class="MessageBox--icon-"
     >
       <ui5-icon
-        class=""
         name="message-success"
       />
     </div>
     <ui5-title
-      class=""
       level="H5"
     >
       Success
@@ -394,7 +359,6 @@ exports[`MessageBox Success 1`] = `
     slot="footer"
   >
     <ui5-button
-      class=""
       data-action="OK"
       design="Emphasized"
       style="min-width: 4rem;"
@@ -412,7 +376,6 @@ exports[`MessageBox Success 1`] = `
 
 exports[`MessageBox Success w/ custom title 1`] = `
 <ui5-dialog
-  class=""
   header-text=""
   open="true"
 >
@@ -425,12 +388,10 @@ exports[`MessageBox Success w/ custom title 1`] = `
       class="MessageBox--icon-"
     >
       <ui5-icon
-        class=""
         name="message-success"
       />
     </div>
     <ui5-title
-      class=""
       level="H5"
     >
       Custom Success
@@ -441,7 +402,6 @@ exports[`MessageBox Success w/ custom title 1`] = `
     slot="footer"
   >
     <ui5-button
-      class=""
       data-action="OK"
       design="Emphasized"
       style="min-width: 4rem;"
@@ -459,7 +419,6 @@ exports[`MessageBox Success w/ custom title 1`] = `
 
 exports[`MessageBox Warning 1`] = `
 <ui5-dialog
-  class=""
   header-text=""
   open="true"
 >
@@ -472,12 +431,10 @@ exports[`MessageBox Warning 1`] = `
       class="MessageBox--icon-"
     >
       <ui5-icon
-        class=""
         name="message-warning"
       />
     </div>
     <ui5-title
-      class=""
       level="H5"
     >
       Warning
@@ -488,7 +445,6 @@ exports[`MessageBox Warning 1`] = `
     slot="footer"
   >
     <ui5-button
-      class=""
       data-action="OK"
       design="Emphasized"
       style="min-width: 4rem;"

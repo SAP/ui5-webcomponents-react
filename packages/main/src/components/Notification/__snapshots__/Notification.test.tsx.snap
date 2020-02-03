@@ -41,11 +41,9 @@ exports[`Notification Default 1`] = `
             class="Notification--metadata-"
           >
             <ui5-label
-              class=""
               for=""
             />
             <ui5-label
-              class=""
               for=""
             />
           </div>
@@ -58,7 +56,6 @@ exports[`Notification Default 1`] = `
           style="display:flex;flex-direction:row;justify-content:space-between"
         >
           <ui5-button
-            class=""
             design="Transparent"
           >
             Show More
@@ -116,11 +113,9 @@ exports[`Notification Long Title and Description 1`] = `
             class="Notification--metadata-"
           >
             <ui5-label
-              class=""
               for=""
             />
             <ui5-label
-              class=""
               for=""
             />
           </div>
@@ -133,7 +128,6 @@ exports[`Notification Long Title and Description 1`] = `
           style="display:flex;flex-direction:row;justify-content:space-between"
         >
           <ui5-button
-            class=""
             design="Transparent"
           >
             Show More
@@ -191,11 +185,9 @@ exports[`Notification Long Title and Description w/o truncation 1`] = `
             class="Notification--metadata-"
           >
             <ui5-label
-              class=""
               for=""
             />
             <ui5-label
-              class=""
               for=""
             />
           </div>
@@ -208,7 +200,6 @@ exports[`Notification Long Title and Description w/o truncation 1`] = `
           style="display:flex;flex-direction:row;justify-content:space-between"
         >
           <ui5-button
-            class=""
             design="Transparent"
           >
             Show Less
@@ -285,7 +276,6 @@ exports[`Notification w/ Props 1`] = `
             class="Notification--metadata-"
           >
             <ui5-label
-              class=""
               for=""
             >
               NAME
@@ -296,7 +286,6 @@ exports[`Notification w/ Props 1`] = `
               •
             </div>
             <ui5-label
-              class=""
               for=""
             >
               1337 Minutes ago
@@ -311,20 +300,17 @@ exports[`Notification w/ Props 1`] = `
           style="display:flex;flex-direction:row;justify-content:space-between"
         >
           <ui5-button
-            class=""
             design="Transparent"
           >
             Show More
           </ui5-button>
           <ui5-button
-            class=""
             design="Default"
             style="padding-right:0.5rem"
           >
             Accept
           </ui5-button>
           <ui5-button
-            class=""
             design="Default"
           >
             Reject
@@ -386,11 +372,9 @@ exports[`Notification w/ custom Avatar 1`] = `
             class="Notification--metadata-"
           >
             <ui5-label
-              class=""
               for=""
             />
             <ui5-label
-              class=""
               for=""
             />
           </div>
@@ -403,7 +387,6 @@ exports[`Notification w/ custom Avatar 1`] = `
           style="display:flex;flex-direction:row;justify-content:space-between"
         >
           <ui5-button
-            class=""
             design="Transparent"
           >
             Show More

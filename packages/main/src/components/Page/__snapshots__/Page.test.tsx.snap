@@ -19,7 +19,6 @@ exports[`Page Basic Page 1`] = `
           data-bar-part="Left"
         >
           <ui5-button
-            class=""
             design="Transparent"
             icon="navigation-left-arrow"
           />
@@ -32,7 +31,6 @@ exports[`Page Basic Page 1`] = `
             class="Bar--inner-"
           >
             <ui5-title
-              class=""
               level="H5"
             >
               Page Demo
@@ -83,7 +81,6 @@ exports[`Page Basic Page w/o back button 1`] = `
             class="Bar--inner-"
           >
             <ui5-title
-              class=""
               level="H5"
             >
               Page Demo

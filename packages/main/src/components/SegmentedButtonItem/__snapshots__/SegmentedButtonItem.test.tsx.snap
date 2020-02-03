@@ -10,7 +10,6 @@ exports[`SegmentedButtonItem Basic SegmentedButtonItem 1`] = `
     class="SegmentedButtonItem--icon- SegmentedButtonItem--withText-"
   >
     <ui5-icon
-      class=""
       name="add"
     />
   </div>
@@ -28,7 +27,6 @@ exports[`SegmentedButtonItem SegmentedButtonItem Disabled 1`] = `
     class="SegmentedButtonItem--icon-"
   >
     <ui5-icon
-      class=""
       name="add"
     />
   </div>
@@ -45,7 +43,6 @@ exports[`SegmentedButtonItem SegmentedButtonItem Icon Only 1`] = `
     class="SegmentedButtonItem--icon-"
   >
     <ui5-icon
-      class=""
       name="add"
     />
   </div>
@@ -62,7 +59,6 @@ exports[`SegmentedButtonItem SegmentedButtonItem onClick 1`] = `
     class="SegmentedButtonItem--icon-"
   >
     <ui5-icon
-      class=""
       name="add"
     />
   </div>
@@ -79,7 +75,6 @@ exports[`SegmentedButtonItem Selected SegmentedButtonItem 1`] = `
     class="SegmentedButtonItem--icon- SegmentedButtonItem--withText-"
   >
     <ui5-icon
-      class=""
       name="add"
     />
   </div>
