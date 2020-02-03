@@ -22,6 +22,8 @@ function toKebabCase(s: string) {
   return s.replace(/([A-Z])/g, (a, b) => `-${b.toLowerCase()}`);
 }
 
+const REACT_SPECIFIC_ATTRIBUTES = ['className'];
+
 export interface WithWebComponentPropTypes extends CommonProps {
   ref?: Ref<any>;
   children?: any | void;
@@ -117,7 +119,7 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
             if (getSlotsFromMetadata().includes(key)) {
               acc.slotProps[key] = value;
             } else {
-              acc.regularProps[toKebabCase(key)] = value;
+              acc.regularProps[REACT_SPECIFIC_ATTRIBUTES.includes(key) ? key : toKebabCase(key)] = value;
             }
             return acc;
           },
