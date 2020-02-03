@@ -4,6 +4,7 @@ import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionM
 const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 export const useTableRowStyling = (hooks) => {
+
   hooks.getRowProps.push((passedRowProps, { instance, row }) => {
     const { classes, selectionMode, onRowSelected } = instance.webComponentsReactProperties;
     const isEmptyRow = row.original?.emptyRow;

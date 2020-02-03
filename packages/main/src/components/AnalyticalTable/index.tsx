@@ -15,8 +15,7 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
-  useState
+  useRef
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import {
@@ -53,6 +52,7 @@ import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
+import {useColumnsDependencies} from "./hooks/useColumnsDependencies";
 
 export interface ColumnConfiguration extends Column {
   accessor?: string;
@@ -134,6 +134,7 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
  */
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
   const {
+    columns,
     className,
     style,
     tooltip,
@@ -163,35 +164,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   } = props;
 
   const classes = useStyles({ rowHeight: props.rowHeight });
-  const [internalRows, setInternalRows] = useState([]);
-  const [hiddenColumns, setHiddenColumns] = useState([]);
-  const [tableClientHeight, setTableClientHeight] = useState(0);
+  // const [tableClientWidth, setTableClientWidth] = useState(0);
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
-
-  const [columnWidth, setColumnWidth] = useState(null);
-
-  const defaultColumn = useMemo(() => {
-    if (columnWidth && scaleWidthMode === TableScaleWidthMode.Default) {
-      return {
-        width: columnWidth,
-        ...DefaultColumn
-      };
-    }
-    return DefaultColumn;
-  }, [columnWidth]);
-
-  const columns = useDynamicColumnWidths(
-    scaleWidthMode,
-    props.columns,
-    internalRows,
-    tableClientHeight,
-    hiddenColumns,
-    setColumnWidth
-  );
 
   const data = useMemo(() => {
     if (minRows > props.data.length) {
@@ -219,7 +197,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     {
       columns,
       data,
-      defaultColumn,
+      defaultColumn: DefaultColumn,
       getSubRows,
       stateReducer,
       webComponentsReactProperties: {
@@ -227,7 +205,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         classes,
         onRowSelected,
         onRowExpandChange,
-        isTreeTable
+        isTreeTable,
+        // tableClientWidth,
+        scaleWidthMode
       },
       ...reactTableOptions
     },
@@ -243,19 +223,17 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableHeaderGroupStyling,
     useTableHeaderStyling,
     useTableRowStyling,
+    useDynamicColumnWidths,
+    useColumnsDependencies,
     useTableCellStyling,
     useToggleRowExpand,
     ...tableHooks
   );
 
-  useEffect(() => {
-    setInternalRows(rows);
-  }, [rows]);
-
   const updateTableClientWidth = useCallback(() => {
     requestAnimationFrame(() => {
       if (tableRef.current) {
-        setTableClientHeight(tableRef.current.clientWidth);
+        dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth }});
       }
     });
   }, []);
@@ -269,10 +247,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       tableWidthObserver.current.disconnect();
     };
   }, [tableWidthObserver.current, tableRef.current]);
-
-  useEffect(() => {
-    setHiddenColumns(tableState.hiddenColumns);
-  }, [tableState.hiddenColumns]);
 
   useEffect(() => {
     dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
@@ -353,8 +327,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
       <div className={tableContainerClasses.valueOf()} ref={tableRef}>
-        {((columnWidth && scaleWidthMode === TableScaleWidthMode.Default) ||
-          scaleWidthMode !== TableScaleWidthMode.Default) && (
+        {(
           <div {...getTableProps()} role="table" aria-rowcount={rows.length}>
             {headerGroups.map((headerGroup) => {
               let headerProps = {};

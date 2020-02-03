@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useMemo } from 'react';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 
@@ -11,47 +10,51 @@ const approximateHeaderPxFromCharLength = (charLength) =>
   charLength < 15 ? Math.sqrt(charLength * 1500) : 8 * charLength;
 const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 
-export const useDynamicColumnWidths = (scaleWidthMode, columns, rows, totalWidth, hiddenColumns, setColumnWidth) => {
-  const updateTableSizes = useCallback(() => {
+export const useDynamicColumnWidths = (hooks) => {
+  hooks.columns.push((columns, { instance }) => {
+    if(!instance.state || !instance.rows) {
+      return columns;
+    }
+
+    const { rows, state } = instance;
+
+    const { hiddenColumns, tableClientWidth: totalWidth } = state;
+    const { scaleWidthMode } = instance.webComponentsReactProperties;
+
     const visibleColumns = columns.filter(Boolean).filter((item) => {
       return (item.isVisible ?? true) && !hiddenColumns.includes(item.accessor);
     });
-    const columnsWithFixedWidth = visibleColumns.filter(({ width }) => width ?? false).map(({ width }) => width);
-    const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
 
-    const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth.length;
+    const calculateDefaultTableWidth = () => {
+      const columnsWithFixedWidth = visibleColumns.filter(({ width }) => width ?? false).map(({ width }) => width);
+      const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
 
-    //check if columns are visible and table has width
-    if (visibleColumns.length > 0 && totalWidth > 0) {
-      //set fixedWidth as defaultWidth if visible columns have fixed value
-      if (visibleColumns.length === columnsWithFixedWidth.length) {
-        setColumnWidth(fixedWidth / visibleColumns.length);
-        return;
-      }
-      //spread default columns
-      if (totalWidth >= fixedWidth + defaultColumnsCount * DEFAULT_COLUMN_WIDTH) {
-        setColumnWidth((totalWidth - fixedWidth) / defaultColumnsCount);
+      const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth.length;
+
+      //check if columns are visible and table has width
+      if (visibleColumns.length > 0 && totalWidth > 0) {
+        //set fixedWidth as defaultWidth if visible columns have fixed value
+        if (visibleColumns.length === columnsWithFixedWidth.length) {
+          return fixedWidth / visibleColumns.length;
+        }
+        //spread default columns
+        if (totalWidth >= fixedWidth + defaultColumnsCount * DEFAULT_COLUMN_WIDTH) {
+          return (totalWidth - fixedWidth) / defaultColumnsCount;
+        } else {
+          //set defaultWidth for default columns if table is overflowing
+          return DEFAULT_COLUMN_WIDTH;
+        }
       } else {
-        //set defaultWidth for default columns if table is overflowing
-        setColumnWidth(DEFAULT_COLUMN_WIDTH);
+        return DEFAULT_COLUMN_WIDTH;
       }
-    } else {
-      setColumnWidth(DEFAULT_COLUMN_WIDTH);
-    }
-  }, [totalWidth, columns, hiddenColumns.length]);
+    };
 
-  useEffect(() => {
+    if (columns.length === 0 || !totalWidth) return columns;
+
     if (scaleWidthMode === TableScaleWidthMode.Default) {
-      updateTableSizes();
+      const defaultWidth = calculateDefaultTableWidth();
+      return columns.map((column) => ({ ...column, width: column.width ?? defaultWidth }));
     }
-  }, [scaleWidthMode, updateTableSizes]);
-
-  return useMemo(() => {
-    if (columns.length === 0 || !totalWidth || scaleWidthMode === TableScaleWidthMode.Default) return columns;
-
-    const visibleColumns = columns.filter(Boolean).filter((item) => {
-      return (item.isVisible ?? true) && !hiddenColumns.includes(item.accessor);
-    });
 
     const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
 
@@ -121,6 +124,7 @@ export const useDynamicColumnWidths = (scaleWidthMode, columns, rows, totalWidth
         }, 0);
         availableWidth = totalWidth - reservedWidth;
       }
+
       return columns.map((column) => {
         const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.accessor);
         if (totalCharNum > 0 && isColumnVisible) {
@@ -151,5 +155,5 @@ export const useDynamicColumnWidths = (scaleWidthMode, columns, rows, totalWidth
       }
       return column;
     });
-  }, [scaleWidthMode, columns, rows.length, totalWidth, hiddenColumns.length]); // too expensive to check for reference equality on rows
+  });
 };
