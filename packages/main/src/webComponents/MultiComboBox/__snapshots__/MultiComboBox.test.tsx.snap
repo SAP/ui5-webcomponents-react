@@ -2,7 +2,6 @@
 
 exports[`MultiComboBox Basic Test (generated) 1`] = `
 <ui5-multi-combobox
-  class=""
   placeholder=""
   value=""
   value-state="None"

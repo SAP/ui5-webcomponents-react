@@ -2,7 +2,6 @@
 
 exports[`RadioButton Basic Test (generated) 1`] = `
 <ui5-radiobutton
-  class=""
   value-state="None"
 />
 `;
