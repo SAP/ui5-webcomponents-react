@@ -110,8 +110,10 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
       getEventsFromMetadata().map((eventName) => props[`on${capitalizeFirstLetter(eventName)}`])
     );
 
+    const { className, ...otherProps } = props;
+
     const getRegularProps = () => {
-      return Object.entries(props)
+      return Object.entries(otherProps)
         .filter(([key]) => !getBooleanPropsFromMetadata().includes(key))
         .filter(([key]) => !getEventsFromMetadata().some((eventKey) => `on${capitalizeFirstLetter(eventKey)}` === key))
         .reduce(
@@ -132,7 +134,7 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
 
     const { children, tooltip, ...rest } = passedProps as T & WithWebComponentPropTypes;
     return (
-      <CustomTag {...getBooleanProps()} ref={ref} {...rest} title={tooltip}>
+      <CustomTag {...getBooleanProps()} ref={ref} {...rest} className={className} title={tooltip}>
         {Object.entries(actualSlotProps).map(([slotName, slotValue]) => {
           return Children.map(slotValue, (item: ReactElement<any>, index) =>
             cloneElement(item, {
