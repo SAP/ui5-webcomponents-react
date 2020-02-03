@@ -15,10 +15,6 @@ const columns = [
     accessor: 'name' // String-based value accessors!
   },
   {
-    Header: 'Long Header Name and long Content',
-    accessor: 'longColumn'
-  },
-  {
     Header: 'Age',
     accessor: 'age',
     hAlign: TextAlign.End,
