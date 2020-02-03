@@ -5,7 +5,6 @@ exports[`SideNavigation Collapsed 1`] = `
   class="SideNavigation--sideNavigation- SideNavigation--collapsed-"
 >
   <ui5-list
-    class=""
     footer-text=""
     header-text=""
     mode="None"
@@ -86,7 +85,6 @@ exports[`SideNavigation Collapsed 1`] = `
     class="SideNavigation--footerItemsSeparator-"
   />
   <ui5-list
-    class=""
     footer-text=""
     header-text=""
     mode="None"
@@ -126,7 +124,6 @@ exports[`SideNavigation Condensed 1`] = `
   class="SideNavigation--sideNavigation- SideNavigation--condensed-"
 >
   <ui5-list
-    class=""
     footer-text=""
     header-text=""
     mode="None"
@@ -207,7 +204,6 @@ exports[`SideNavigation Condensed 1`] = `
     class="SideNavigation--footerItemsSeparator-"
   />
   <ui5-list
-    class=""
     footer-text=""
     header-text=""
     mode="None"
@@ -247,7 +243,6 @@ exports[`SideNavigation Expanded 1`] = `
   class="SideNavigation--sideNavigation- SideNavigation--expanded-"
 >
   <ui5-list
-    class=""
     footer-text=""
     header-text=""
     mode="None"
@@ -326,7 +321,6 @@ exports[`SideNavigation Expanded 1`] = `
         class="SideNavigationListItem--expandArrow-"
       >
         <ui5-icon
-          class=""
           name="navigation-down-arrow"
         />
       </span>
@@ -408,7 +402,6 @@ exports[`SideNavigation Expanded 1`] = `
     class="SideNavigation--footerItemsSeparator-"
   />
   <ui5-list
-    class=""
     footer-text=""
     header-text=""
     mode="None"
@@ -458,7 +451,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
   class="SideNavigation--sideNavigation- SideNavigation--expanded-"
 >
   <ui5-list
-    class=""
     footer-text=""
     header-text=""
     mode="None"
@@ -520,7 +512,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
         class="SideNavigationListItem--expandArrow-"
       >
         <ui5-icon
-          class=""
           name="navigation-down-arrow"
         />
       </span>
@@ -589,7 +580,6 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     class="SideNavigation--footerItemsSeparator-"
   />
   <ui5-list
-    class=""
     footer-text=""
     header-text=""
     mode="None"

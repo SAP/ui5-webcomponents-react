@@ -15,14 +15,12 @@ Array [
         Variant 1
       </ui5-title>
       <ui5-button
-        class=""
         design="Transparent"
         icon="navigation-down-arrow"
       />
     </div>
   </div>,
   <ui5-popover
-    class=""
     header-text="Variants"
     horizontal-align="Center"
     placement-type="Bottom"
@@ -36,7 +34,6 @@ Array [
       Cancel
     </ui5-button>
     <ui5-list
-      class=""
       footer-text=""
       header-text=""
       mode="SingleSelect"
@@ -44,7 +41,6 @@ Array [
       separators="All"
     >
       <ui5-li
-        class=""
         data-key="1"
         info-state="None"
         selected="true"
@@ -54,7 +50,6 @@ Array [
         Variant 1
       </ui5-li>
       <ui5-li
-        class=""
         data-key="2"
         info-state="None"
         style="width: 300px;"

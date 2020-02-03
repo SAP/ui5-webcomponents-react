@@ -134,7 +134,7 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
 
     const { children, tooltip, ...rest } = passedProps as T & WithWebComponentPropTypes;
     return (
-      <CustomTag {...getBooleanProps()} ref={ref} {...rest} className={className} title={tooltip}>
+      <CustomTag {...getBooleanProps()} ref={ref} {...rest} class={className} title={tooltip}>
         {Object.entries(actualSlotProps).map(([slotName, slotValue]) => {
           return Children.map(slotValue, (item: ReactElement<any>, index) =>
             cloneElement(item, {
