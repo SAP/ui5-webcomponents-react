@@ -30,7 +30,7 @@ const columns = [
     accessor: 'friend.name'
   },
   {
-    Header: 'Friend Age',
+    Header: () => <span>Friend Age</span>,
     accessor: 'friend.age',
     hAlign: TextAlign.End,
     filter: (rows, accessor, filterValue) => {
@@ -61,36 +61,39 @@ const columns = [
 const data = generateData(200);
 const dataTree = generateData(20, true);
 
-const renderTable = () => {
-  return (
-    <AnalyticalTable
-      title="Table Title"
-      data={data}
-      columns={columns}
-      loading={boolean('loading', false)}
-      busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
-      alternateRowColor={boolean('alternateRowColor', false)}
-      sortable={boolean('sortable', true)}
-      filterable={boolean('filterable', true)}
-      visibleRows={number('visibleRows', 5)}
-      minRows={number('minRows', 5)}
-      groupable={boolean('groupable', true)}
-      selectionMode={select<TableSelectionMode>('selectionMode', TableSelectionMode, TableSelectionMode.SINGLE_SELECT)}
-      scaleWidthMode={select<TableScaleWidthMode>('scaleWidthMode', TableScaleWidthMode, TableScaleWidthMode.Default)}
-      onRowSelected={action('onRowSelected')}
-      onSort={action('onSort')}
-      onGroup={action('onGroup')}
-      onRowExpandChange={action('onRowExpandChange')}
-      groupBy={array('groupBy', [])}
-      rowHeight={number('rowHeight', 44)}
-      selectedRowIds={object('selectedRowIds', { 3: true })}
-      onColumnsReordered={action('onColumnsReordered')}
-    />
-  );
-};
-
 export const defaultTable = () => {
-  return <div style={{ display: 'flex', flexDirection: 'column' }}>{renderTable()}</div>;
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      {' '}
+      <AnalyticalTable
+        title="Table Title"
+        data={data}
+        columns={columns}
+        loading={boolean('loading', false)}
+        busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
+        alternateRowColor={boolean('alternateRowColor', false)}
+        sortable={boolean('sortable', true)}
+        filterable={boolean('filterable', true)}
+        visibleRows={number('visibleRows', 5)}
+        minRows={number('minRows', 5)}
+        groupable={boolean('groupable', true)}
+        selectionMode={select<TableSelectionMode>(
+          'selectionMode',
+          TableSelectionMode,
+          TableSelectionMode.SINGLE_SELECT
+        )}
+        scaleWidthMode={select<TableScaleWidthMode>('scaleWidthMode', TableScaleWidthMode, TableScaleWidthMode.Default)}
+        onRowSelected={action('onRowSelected')}
+        onSort={action('onSort')}
+        onGroup={action('onGroup')}
+        onRowExpandChange={action('onRowExpandChange')}
+        groupBy={array('groupBy', [])}
+        rowHeight={number('rowHeight', 44)}
+        selectedRowIds={object('selectedRowIds', { 3: true })}
+        onColumnsReordered={action('onColumnsReordered')}
+      />
+    </div>
+  );
 };
 
 defaultTable.story = {
