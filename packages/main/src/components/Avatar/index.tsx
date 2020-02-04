@@ -53,8 +53,6 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
     cssClasses.push(classes[`size${size}`]);
   }
 
-  inlineStyle['--sapUiContentNonInteractiveIconColor'] = 'var(--sapContent_ContrastIconColor)';
-
   if (shape === AvatarShape.Circle) {
     cssClasses.push(classes.circle);
   }

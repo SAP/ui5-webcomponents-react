@@ -331,6 +331,7 @@ exports[`SideNavigation Expanded 1`] = `
       data-id="sales-opportunities"
       data-is-child="true"
       id="sales-opportunities"
+      style="--ui5-listitem-border-bottom: none;"
       type="Active"
     >
       <span
@@ -349,6 +350,7 @@ exports[`SideNavigation Expanded 1`] = `
       data-is-child="true"
       id="sales-leads"
       selected="true"
+      style="--ui5-listitem-border-bottom: none;"
       type="Active"
     >
       <span
@@ -522,6 +524,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       data-id="sales-opportunities"
       data-is-child="true"
       id="sales-opportunities"
+      style="--ui5-listitem-border-bottom: none;"
       type="Active"
     >
       <span
@@ -537,6 +540,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       data-is-child="true"
       id="sales-leads"
       selected="true"
+      style="--ui5-listitem-border-bottom: none;"
       type="Active"
     >
       <span
