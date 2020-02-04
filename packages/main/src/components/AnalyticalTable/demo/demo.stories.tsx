@@ -7,6 +7,7 @@ import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import React from 'react';
 import generateData from './generateData';
+import { TableScaleWidthMode } from '../../../enums/TableScaleWidthMode';
 
 const columns = [
   {
@@ -25,7 +26,7 @@ const columns = [
     accessor: 'friend.name'
   },
   {
-    Header: () => <span>Friend Age</span>, // Custom header components!
+    Header: () => <span>Friend Age</span>,
     accessor: 'friend.age',
     hAlign: TextAlign.End,
     filter: (rows, accessor, filterValue) => {
@@ -76,12 +77,13 @@ export const defaultTable = () => {
           TableSelectionMode,
           TableSelectionMode.SINGLE_SELECT
         )}
+        scaleWidthMode={select<TableScaleWidthMode>('scaleWidthMode', TableScaleWidthMode, TableScaleWidthMode.Default)}
         onRowSelected={action('onRowSelected')}
         onSort={action('onSort')}
         onGroup={action('onGroup')}
         onRowExpandChange={action('onRowExpandChange')}
         groupBy={array('groupBy', [])}
-        rowHeight={number('rowHeight', 60)}
+        rowHeight={number('rowHeight', 44)}
         selectedRowIds={object('selectedRowIds', { 3: true })}
         onColumnsReordered={action('onColumnsReordered')}
       />
