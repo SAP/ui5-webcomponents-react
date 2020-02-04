@@ -52,7 +52,7 @@ import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
-import {useColumnsDependencies} from "./hooks/useColumnsDependencies";
+import { useColumnsDependencies } from './hooks/useColumnsDependencies';
 
 export interface ColumnConfiguration extends Column {
   accessor?: string;
@@ -181,7 +181,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return props.data;
   }, [props.data, minRows]);
 
-
   const {
     getTableProps,
     headerGroups,
@@ -205,6 +204,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         onRowSelected,
         onRowExpandChange,
         isTreeTable,
+        alternateRowColor,
         // tableClientWidth,
         scaleWidthMode
       },
@@ -232,7 +232,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const updateTableClientWidth = useCallback(() => {
     requestAnimationFrame(() => {
       if (tableRef.current) {
-        dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth }});
+        dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
       }
     });
   }, []);
@@ -326,7 +326,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
       <div className={tableContainerClasses.valueOf()} ref={tableRef}>
-        {(
+        {
           <div {...getTableProps()} role="table" aria-rowcount={rows.length}>
             {headerGroups.map((headerGroup) => {
               let headerProps = {};
@@ -395,7 +395,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               />
             )}
           </div>
-        )}
+        }
       </div>
     </div>
   );

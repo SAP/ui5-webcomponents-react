@@ -41,9 +41,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiListBackground
   },
   alternateRowColor: {
-    '& $tr:nth-child(even)': {
-      backgroundColor: parameters.sapUiListHeaderBackground
-    }
+    backgroundColor: `${parameters.sapUiListHeaderBackground} !important`
   },
   emptyRow: {},
   tr: {
