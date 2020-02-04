@@ -6,7 +6,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
     <ui5-title
-      class=""
       level="H2"
     >
       Table Title
@@ -51,7 +50,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -59,7 +57,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -67,7 +64,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -76,7 +72,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -118,7 +113,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -126,7 +120,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -134,7 +127,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -143,7 +135,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -185,7 +176,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -193,7 +183,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -201,7 +190,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -210,7 +198,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -253,7 +240,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -261,7 +247,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -269,7 +254,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -278,7 +262,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -567,7 +550,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
     <ui5-title
-      class=""
       level="H2"
     >
       Table Title
@@ -612,7 +594,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -620,7 +601,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -628,7 +608,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -637,7 +616,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -679,7 +657,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -687,7 +664,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -695,7 +671,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -704,7 +679,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -746,7 +720,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -754,7 +727,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -762,7 +734,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -771,7 +742,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -814,7 +784,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -822,7 +791,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -830,7 +798,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -839,7 +806,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -1128,7 +1094,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
     <ui5-title
-      class=""
       level="H2"
     >
       Table Title
@@ -1173,7 +1138,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -1181,7 +1145,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -1189,7 +1152,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -1198,7 +1160,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -1240,7 +1201,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -1248,7 +1208,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -1256,7 +1215,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -1265,7 +1223,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -1307,7 +1264,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -1315,7 +1271,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -1323,7 +1278,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -1332,7 +1286,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -1375,7 +1328,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -1383,7 +1335,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -1391,7 +1342,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -1400,7 +1350,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -1673,7 +1622,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
     <ui5-title
-      class=""
       level="H2"
     >
       Table Title
@@ -1718,7 +1666,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -1726,7 +1673,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -1734,7 +1680,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -1743,7 +1688,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -1752,7 +1696,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 Sort Descending
               </ui5-li>
               <ui5-li-custom
-                class=""
                 type="Inactive"
               >
                 <div
@@ -1760,12 +1703,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   style="padding: 0px 1rem;"
                 >
                   <ui5-icon
-                    class=""
                     name="filter"
                     style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                   />
                   <ui5-input
-                    class=""
                     type="Text"
                     value=""
                     value-state="None"
@@ -1806,7 +1747,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -1814,7 +1754,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -1822,7 +1761,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -1831,7 +1769,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -1840,7 +1777,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 Sort Descending
               </ui5-li>
               <ui5-li-custom
-                class=""
                 type="Inactive"
               >
                 <div
@@ -1848,12 +1784,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   style="padding: 0px 1rem;"
                 >
                   <ui5-icon
-                    class=""
                     name="filter"
                     style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                   />
                   <ui5-input
-                    class=""
                     type="Text"
                     value=""
                     value-state="None"
@@ -1894,7 +1828,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -1902,7 +1835,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -1910,7 +1842,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -1919,7 +1850,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -1928,7 +1858,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 Sort Descending
               </ui5-li>
               <ui5-li-custom
-                class=""
                 type="Inactive"
               >
                 <div
@@ -1936,12 +1865,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   style="padding: 0px 1rem;"
                 >
                   <ui5-icon
-                    class=""
                     name="filter"
                     style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                   />
                   <ui5-input
-                    class=""
                     type="Text"
                     value=""
                     value-state="None"
@@ -1983,7 +1910,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -1991,7 +1917,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -1999,7 +1924,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -2008,7 +1932,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -2017,7 +1940,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 Sort Descending
               </ui5-li>
               <ui5-li-custom
-                class=""
                 type="Inactive"
               >
                 <div
@@ -2025,12 +1947,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   style="padding: 0px 1rem;"
                 >
                   <ui5-icon
-                    class=""
                     name="filter"
                     style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                   />
                   <ui5-input
-                    class=""
                     type="Text"
                     value=""
                     value-state="None"
@@ -2069,7 +1989,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 title="Toggle Expanded"
               >
                 <ui5-icon
-                  class=""
                   name="navigation-right-arrow"
                   style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
                 />
@@ -2317,7 +2236,6 @@ exports[`AnalyticalTable custom row height 1`] = `
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
     <ui5-title
-      class=""
       level="H2"
     >
       Table Title
@@ -2362,7 +2280,6 @@ exports[`AnalyticalTable custom row height 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -2370,7 +2287,6 @@ exports[`AnalyticalTable custom row height 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -2378,7 +2294,6 @@ exports[`AnalyticalTable custom row height 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -2387,7 +2302,6 @@ exports[`AnalyticalTable custom row height 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -2429,7 +2343,6 @@ exports[`AnalyticalTable custom row height 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -2437,7 +2350,6 @@ exports[`AnalyticalTable custom row height 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -2445,7 +2357,6 @@ exports[`AnalyticalTable custom row height 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -2454,7 +2365,6 @@ exports[`AnalyticalTable custom row height 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -2496,7 +2406,6 @@ exports[`AnalyticalTable custom row height 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -2504,7 +2413,6 @@ exports[`AnalyticalTable custom row height 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -2512,7 +2420,6 @@ exports[`AnalyticalTable custom row height 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -2521,7 +2428,6 @@ exports[`AnalyticalTable custom row height 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -2564,7 +2470,6 @@ exports[`AnalyticalTable custom row height 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -2572,7 +2477,6 @@ exports[`AnalyticalTable custom row height 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -2580,7 +2484,6 @@ exports[`AnalyticalTable custom row height 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -2589,7 +2492,6 @@ exports[`AnalyticalTable custom row height 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -2878,7 +2780,6 @@ exports[`AnalyticalTable render without data 1`] = `
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
     <ui5-title
-      class=""
       level="H2"
     >
       Table Title
@@ -2923,7 +2824,6 @@ exports[`AnalyticalTable render without data 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -2931,7 +2831,6 @@ exports[`AnalyticalTable render without data 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -2939,7 +2838,6 @@ exports[`AnalyticalTable render without data 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -2948,7 +2846,6 @@ exports[`AnalyticalTable render without data 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -2990,7 +2887,6 @@ exports[`AnalyticalTable render without data 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -2998,7 +2894,6 @@ exports[`AnalyticalTable render without data 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -3006,7 +2901,6 @@ exports[`AnalyticalTable render without data 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -3015,7 +2909,6 @@ exports[`AnalyticalTable render without data 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -3057,7 +2950,6 @@ exports[`AnalyticalTable render without data 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -3065,7 +2957,6 @@ exports[`AnalyticalTable render without data 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -3073,7 +2964,6 @@ exports[`AnalyticalTable render without data 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -3082,7 +2972,6 @@ exports[`AnalyticalTable render without data 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -3125,7 +3014,6 @@ exports[`AnalyticalTable render without data 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -3133,7 +3021,6 @@ exports[`AnalyticalTable render without data 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -3141,7 +3028,6 @@ exports[`AnalyticalTable render without data 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -3150,7 +3036,6 @@ exports[`AnalyticalTable render without data 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -3423,7 +3308,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
     <ui5-title
-      class=""
       level="H2"
     >
       Test
@@ -3468,7 +3352,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -3476,7 +3359,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -3484,7 +3366,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -3493,7 +3374,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -3535,7 +3415,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -3543,7 +3422,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -3551,7 +3429,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -3560,7 +3437,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -3602,7 +3478,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -3610,7 +3485,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -3618,7 +3492,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -3627,7 +3500,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -3670,7 +3542,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -3678,7 +3549,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -3686,7 +3556,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -3695,7 +3564,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -3984,7 +3852,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
     <ui5-title
-      class=""
       level="H2"
     >
       Test
@@ -4029,7 +3896,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -4037,7 +3903,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -4045,7 +3910,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -4054,7 +3918,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -4096,7 +3959,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -4104,7 +3966,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -4112,7 +3973,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -4121,7 +3981,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -4163,7 +4022,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -4171,7 +4029,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -4179,7 +4036,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -4188,7 +4044,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"
@@ -4231,7 +4086,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </div>
           </div>
           <ui5-popover
-            class=""
             horizontal-align="Left"
             no-arrow="true"
             placement-type="Bottom"
@@ -4239,7 +4093,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             vertical-align="Center"
           >
             <ui5-list
-              class=""
               footer-text=""
               header-text=""
               mode="None"
@@ -4247,7 +4100,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               separators="All"
             >
               <ui5-li
-                class=""
                 data-sort="asc"
                 icon="sort-ascending"
                 info-state="None"
@@ -4256,7 +4108,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                class=""
                 data-sort="desc"
                 icon="sort-descending"
                 info-state="None"

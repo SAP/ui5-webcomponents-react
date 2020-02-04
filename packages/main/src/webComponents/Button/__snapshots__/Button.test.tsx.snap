@@ -2,7 +2,6 @@
 
 exports[`Button Basic Test (generated) 1`] = `
 <ui5-button
-  class=""
   design="Default"
 />
 `;
