@@ -28,7 +28,7 @@ module.exports = {
     '<rootDir>/test/setupFiles/UI5WebComponentsSetup.js'
   ],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
-  testEnvironment: 'jsdom-fifteen',
+  testEnvironment: 'jsdom-sixteen',
   testMatch: ['<rootDir>/packages/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
   testPathIgnorePatterns: ['/node_modules/', '<rootDir>/packages/cra-template/'],
   transformIgnorePatterns: ['node_modules/(?!(@ui5|lit-html))'],
