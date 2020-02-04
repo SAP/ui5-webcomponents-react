@@ -60,7 +60,6 @@ const dataTree = generateData(20, true);
 export const defaultTable = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      {' '}
       <AnalyticalTable
         title="Table Title"
         data={data}

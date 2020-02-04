@@ -164,7 +164,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   } = props;
 
   const classes = useStyles({ rowHeight: props.rowHeight });
-  // const [tableClientWidth, setTableClientWidth] = useState(0);
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
