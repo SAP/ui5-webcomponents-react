@@ -53,7 +53,7 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo) =
         })
       );
     },
-    [columnOrder]
+    [columnOrder, onColumnsReordered]
   );
 
   const handleOnDragEnd = useCallback(() => {
