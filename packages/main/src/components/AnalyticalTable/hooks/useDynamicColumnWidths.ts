@@ -19,7 +19,7 @@ export const useDynamicColumnWidths = (hooks) => {
     const { rows, state } = instance;
 
     const { hiddenColumns, tableClientWidth: totalWidth } = state;
-    const { scaleWidthMode } = instance.webComponentsReactProperties;
+    const { scaleWidthMode, loading } = instance.webComponentsReactProperties;
 
     const visibleColumns = columns.filter(Boolean).filter((item) => {
       return (item.isVisible ?? true) && !hiddenColumns.includes(item.accessor);
@@ -51,7 +51,9 @@ export const useDynamicColumnWidths = (hooks) => {
 
     if (columns.length === 0 || !totalWidth) return columns;
 
-    if (scaleWidthMode === TableScaleWidthMode.Default) {
+    const hasData = rows.some(row => !row.original?.emptyRow);
+
+    if (scaleWidthMode === TableScaleWidthMode.Default || (!hasData && loading)) {
       const defaultWidth = calculateDefaultTableWidth();
       return columns.map((column) => ({ ...column, width: column.width ?? defaultWidth }));
     }
@@ -127,9 +129,11 @@ export const useDynamicColumnWidths = (hooks) => {
 
       return columns.map((column) => {
         const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.accessor);
-        if (totalCharNum > 0 && isColumnVisible) {
+        if (isColumnVisible) {
           const { minHeaderWidth, contentCharAvg } = columnMeta[column.accessor];
-          const targetWidth = (contentCharAvg / totalCharNum) * availableWidth + minHeaderWidth;
+          let additionalSpaceFactor = totalCharNum > 0 ? (contentCharAvg / totalCharNum) : 1 / visibleColumns.length;
+
+          const targetWidth = additionalSpaceFactor * availableWidth + minHeaderWidth;
 
           return {
             ...column,

@@ -205,8 +205,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         onRowExpandChange,
         isTreeTable,
         alternateRowColor,
-        // tableClientWidth,
-        scaleWidthMode
+        scaleWidthMode,
+        loading
       },
       ...reactTableOptions
     },
@@ -360,8 +360,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 </header>
               );
             })}
-            {loading && busyIndicatorEnabled && data.length > 0 && <LoadingComponent />}
-            {loading && data.length === 0 && (
+            {loading && busyIndicatorEnabled && props.data?.length > 0 && <LoadingComponent />}
+            {loading && props.data?.length === 0 && (
               <TablePlaceholder
                 columns={
                   columns.filter((col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor))
@@ -372,10 +372,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 rowHeight={internalRowHeight}
               />
             )}
-            {!loading && data.length === 0 && (
+            {!loading && props.data?.length === 0 && (
               <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
             )}
-            {data.length > 0 && (
+            {props.data?.length > 0 && (
               <VirtualTableBody
                 classes={classes}
                 prepareRow={prepareRow}
