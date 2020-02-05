@@ -33,9 +33,6 @@ export const VirtualTableBody = (props) => {
       if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
         innerDivRef.current.classList.add(classes.selectable);
       }
-      if (alternateRowColor) {
-        innerDivRef.current.classList.add(classes.alternateRowColor);
-      }
     }
   }, [
     innerDivRef.current,
