@@ -283,7 +283,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody- AnalyticalTable--alternateRowColor-"
+          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -343,7 +343,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable--tr-"
+            class="AnalyticalTable--tr- AnalyticalTable--alternateRowColor-"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -445,7 +445,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable--tr- AnalyticalTable--emptyRow-"
+            class="AnalyticalTable--tr- AnalyticalTable--emptyRow- AnalyticalTable--alternateRowColor-"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -3057,7 +3057,7 @@ exports[`AnalyticalTable render without data 1`] = `
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody- AnalyticalTable--alternateRowColor-"
+          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -3109,7 +3109,7 @@ exports[`AnalyticalTable render without data 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable--tr- AnalyticalTable--emptyRow-"
+            class="AnalyticalTable--tr- AnalyticalTable--emptyRow- AnalyticalTable--alternateRowColor-"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -3203,7 +3203,7 @@ exports[`AnalyticalTable render without data 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable--tr- AnalyticalTable--emptyRow-"
+            class="AnalyticalTable--tr- AnalyticalTable--emptyRow- AnalyticalTable--alternateRowColor-"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
