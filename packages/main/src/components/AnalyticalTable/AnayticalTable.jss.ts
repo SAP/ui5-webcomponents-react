@@ -41,12 +41,11 @@ const styles = ({ parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiListBackground
   },
   alternateRowColor: {
-    backgroundColor: `${parameters.sapUiListHeaderBackground} !important`
+    backgroundColor: parameters.sapUiListHeaderBackground
   },
   emptyRow: {},
   tr: {
     zIndex: 0,
-    backgroundColor: parameters.sapUiListBackground,
     color: parameters.sapUiListTextColor,
     '&[data-is-selected]': {
       backgroundColor: `${parameters.sapUiListSelectionBackgroundColor} !important`
