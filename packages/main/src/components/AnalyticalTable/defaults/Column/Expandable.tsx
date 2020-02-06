@@ -25,7 +25,7 @@ export const Expandable = (props) => {
       case 3:
         return CssSizeVariables.sapWcrAnalyticalTableTreePaddingLevel3;
       default:
-        return `${CssSizeVariables.sapWcrAnalyticalTableTreePaddingLevel3 + (level - 3) * 0.5}rem`;
+        return `calc(${CssSizeVariables.sapWcrAnalyticalTableTreePaddingLevel3} + ${level - 3}rem * 0.5)`;
     }
   };
 
