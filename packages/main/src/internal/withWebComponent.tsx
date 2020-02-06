@@ -31,7 +31,24 @@ export interface WithWebComponentPropTypes extends CommonProps {
 
 export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5DomRef, T & WithWebComponentPropTypes> {
   const getWebComponentMetadata = (): Ui5WebComponentMetadata => {
-    return WebComponent.getMetadata();
+    if (WebComponent) {
+      return WebComponent.getMetadata();
+    }
+
+    return {
+      metadata: {
+        events: {}
+      },
+      getProperties() {
+        return {};
+      },
+      getSlots() {
+        return {};
+      },
+      getEvents() {
+        return {};
+      }
+    };
   };
 
   const getBooleanPropsFromMetadata = (): Array<string> => {
