@@ -4,7 +4,8 @@ export interface ComposedBaseProps {
   dataSet: Array<Object>;
   dataLabel: string;
   loading?: boolean | false;
-
+  dataPointClickHandler?: (object) => void;
+  legendClickHandler?: (object) => void;
   chartConfig?: {
     yAxisVisible?: boolean;
     xAxisVisible?: boolean;
@@ -12,6 +13,6 @@ export interface ComposedBaseProps {
     gridStroke?: string;
     gridVertical?: boolean;
     gridHorizontal?: boolean;
-    verticalAlign?: string;
+    legendPosition?: string;
   };
 }

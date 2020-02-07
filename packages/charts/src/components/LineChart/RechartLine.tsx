@@ -22,7 +22,7 @@ import { ChartContainer } from '../../internal/ChartContainer';
 export interface LineChartProps extends RechartBaseProps {}
 
 const CustomDataLabel = (props) => {
-  const { x, y, stroke, value, formatter } = props;
+  const { x, y, value } = props;
   const { parameters } = useTheme() as JSSTheme;
   return (
     <text
@@ -45,18 +45,16 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
-    colors,
     labelKey = 'label',
     width = '300px',
     height = '300px',
     dataset,
     noLegend = false,
-    valueAxisFormatter,
-    categoryAxisFormatter
+    dataPointClickHandler,
+    legendClickHandler
   } = props as LineChartProps;
 
   useInitialize();
-
   const dataKeys = dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : [];
 
   const { parameters }: any = useTheme();
@@ -64,30 +62,37 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
 
   const onItemLegendClick = useCallback(
     (e) => {
-      return {
-        e,
-        label: e.dataKey,
+      legendClickHandler({
+        dataKey: e.dataKey,
+        value: e.value,
         chartType: e.type,
-        color: e.color
-      };
+        color: e.color,
+        payload: e.payload
+      });
     },
     [dataset]
   );
 
   const onDataPointClick = useCallback(
     (e) => {
-      // Necessary because onItemLegendclick calls always onDataPointClick with e = null
-      return e
-        ? {
-            e,
-            index: e.activeTooltipIndex,
-            label: e.activeLabel,
-            values: e.activePayload
-          }
-        : e;
+      if (e) {
+        const dataPoint = e.activePayload.filter((dataElement) => dataElement.dataKey === currentDataKey);
+        dataPoint.length > 0 &&
+          dataPointClickHandler({
+            xValue: dataPoint[0].payload.xValue,
+            name: dataPoint[0].name,
+            value: dataPoint[0].value,
+            payload: dataPoint[0].payload
+          });
+      }
     },
     [dataset]
   );
+
+  let currentDataKey;
+  const setDataKey = (e) => {
+    currentDataKey = e.dataKey;
+  };
 
   return (
     <ChartContainer
@@ -109,18 +114,20 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         <YAxis />
         {dataKeys.map((key, index) => (
           <Line
+            onClick={onDataPointClick}
             key={key}
             name={key}
             type="monotone"
             dataKey={key}
             stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
+            activeDot={{ onMouseOver: setDataKey }}
           >
             <LabelList dataKey={key} content={CustomDataLabel} />
           </Line>
         ))}
         ){!noLegend && <Legend onClick={onItemLegendClick} />}
         <Tooltip />
-        <Brush />
+        <Brush height={30} />
       </LineChartLib>
     </ChartContainer>
   );

@@ -103,9 +103,21 @@ export default {
   component: LineRechart
 };
 
+const dataPointCallback = (dataPoint) => {
+  alert(JSON.stringify(dataPoint));
+};
+
 function renderStory() {
   return (
-    <LineRechart labelKey={'xValue'} dataset={dataset} width={'95%'} height={'400px'} noLegend={false} loading={true} />
+    <LineRechart
+      dataPointClickHandler={dataPointCallback}
+      labelKey={'xValue'}
+      dataset={dataset}
+      width={'95%'}
+      height={'400px'}
+      noLegend={false}
+      loading={true}
+    />
   );
 }
 
@@ -133,6 +145,10 @@ loadingPlaceholder.story = {
   name: 'Loading Placeholder'
 };
 
+const logLegend = (legendData) => {
+  console.log(legendData);
+};
+
 const renderComposedChart = () => (
   <ComposedChartContainer
     width={'95%'}
@@ -140,17 +156,18 @@ const renderComposedChart = () => (
     dataSet={dataset}
     dataLabel={'xValue'}
     loading={true}
+    legendClickHandler={logLegend}
     chartConfig={{
       yAxisVisible: true,
       xAxisVisible: true,
       gridStroke: 'white',
       legendVisible: true,
       gridVertical: false,
-      gridHorizontal: true
+      gridHorizontal: true,
+      legendPosition: 'bottom'
     }}
   >
     <Bar dataKey={'sessions'} />
-
     <Line dataKey={'users'} stroke={'orange'} strokeWidth={2.5} />
     <Line dataKey={'volume'} strokg={'lightblue'} strokeWidth={1} />
   </ComposedChartContainer>

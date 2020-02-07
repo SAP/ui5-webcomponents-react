@@ -6,4 +6,5 @@ export interface ComposedLineProps {
   colors?: Array<CSSProperties['color']>;
   type?: string;
   strokeWidth?: number;
+  onDataClickHandler?: (object) => void;
 }

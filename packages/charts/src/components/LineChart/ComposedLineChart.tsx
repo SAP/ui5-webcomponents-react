@@ -1,4 +1,4 @@
-import React, { forwardRef, Ref } from 'react';
+import React, { forwardRef, Ref, useCallback } from 'react';
 import { useInitialize } from '../../lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { useTheme } from 'react-jss';
@@ -31,41 +31,44 @@ const CustomDataLabel = (props) => {
 };
 
 const ComposedLineChart = forwardRef((props: ComposedLineChartProps, ref: Ref<any>) => {
-  const { dataKey, color, colors, type } = props as ComposedLineChartProps;
+  const { dataKey, color, colors, type, onDataClickHandler } = props as ComposedLineChartProps;
 
   useInitialize();
 
-  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
-  // const onItemLegendClick = useCallback(
-  //   (e) => {
-  //     return {
-  //       e,
-  //       label: e.dataKey,
-  //       chartType: e.type,
-  //       color: e.color
-  //     };
-  //   },
-  //   [dataSet]
-  // );
-  //
-  // const onDataPointClick = useCallback(
-  //   (e) => {
-  //     // Necessary because onItemLegendclick calls always onDataPointClick with e = null
-  //     return e
-  //       ? {
-  //           e,
-  //           index: e.activeTooltipIndex,
-  //           label: e.activeLabel,
-  //           values: e.activePayload
-  //         }
-  //       : e;
-  //   },
-  //   [dataSet]
-  // );
+  const onDataPointClick = useCallback(
+    (e) => {
+      console.log(e);
+      if (e) {
+        console.log(e);
+        onDataClickHandler({
+          e,
+          index: e.activeTooltipIndex,
+          label: e.activeLabel,
+          values: e.activePayload
+        });
+      }
+      console.log(e);
+    },
+    [dataKey]
+  );
 
-  return <Line type={type ? type : 'monotone'} dataKey={dataKey} stroke={color ? color : colors[0]} />;
+  let currentDataKey;
+  const setDataKey = (e) => {
+    currentDataKey = e.dataKey;
+    console.log(currentDataKey);
+  };
+
+  return (
+    <Line
+      onClick={onDataPointClick}
+      type={type ? type : 'monotone'}
+      dataKey={dataKey}
+      stroke={color ? color : colors[0]}
+      activeDot={{ onMouseOver: setDataKey }}
+    />
+  );
 });
 
 // @ts-ignore
