@@ -1,10 +1,10 @@
 import { boolean, select } from '@storybook/addon-knobs';
-import React from 'react';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
+import React from 'react';
 
 export default {
-  title: 'UI5 Web Components | BusyIndicator',
+  title: 'UI5 Web Components / BusyIndicator',
   component: BusyIndicator
 };
 

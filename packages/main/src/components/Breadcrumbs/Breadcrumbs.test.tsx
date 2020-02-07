@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/lib/BreadcrumbsSeparatorStyle';
 import { Link } from '@ui5/webcomponents-react/lib/Link';
@@ -28,4 +28,6 @@ describe('Breadcrumbs', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(Breadcrumbs);
 });

@@ -5,6 +5,34 @@ const showOptions = require('../showOptions');
 const generateTypingStatements = require('../generateTypingStatements');
 const PATHS = require('../../../../../config/paths');
 
+const UI5_PLAYGROUND_WHITELIST = [
+  'Badge',
+  'BusyIndicator',
+  'Button',
+  'Card',
+  'CheckBox',
+  'DatePicker',
+  'Dialog',
+  'Icon',
+  'Input',
+  'Label',
+  'Link',
+  'List',
+  'MessageStrip',
+  'MultiComboBox',
+  'Panel',
+  'RadioButton',
+  'Select',
+  'ShellBar',
+  'Switch',
+  'TabContainer',
+  'Table',
+  'TextArea',
+  'Timeline',
+  'Title',
+  'ToggleButton'
+];
+
 const PKG_SRC = path.join(PATHS.packages, 'main', 'src');
 const WEB_COMPONENTS_ROOT_DIR = path.join(PKG_SRC, 'webComponents');
 
@@ -31,6 +59,13 @@ async function createWrapperForComponent(dto, options = {}) {
     '\n\n',
     tsTypings.interfaceStatement,
     '\n\n',
+    '/**\n',
+    ` * <code>import { BusyIndicator } from '@ui5/webcomponents-react/lib/${componentName}';</code>\n`,
+    UI5_PLAYGROUND_WHITELIST.includes(componentName) ? ` * <br />\n` : '',
+    UI5_PLAYGROUND_WHITELIST.includes(componentName)
+      ? ` * <a href="https://sap.github.io/ui5-webcomponents/playground/components/${componentName}" target="_blank">UI5 Web Components Playground</a>\n`
+      : '',
+    ' */\n',
     `const ${componentName}: FC<${tsTypings.interfaceName}> = withWebComponent<${tsTypings.interfaceName}>(${ui5ComponentName});`,
     '\n\n',
     `${componentName}.displayName = '${componentName}';`,

@@ -2,7 +2,10 @@ import { renderThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
 import { MicroBarChart } from './index';
 
-const dataset = [{ value: 10, label: 'Bar Number One' }, { value: 100, label: 'Bar Number Two' }];
+const dataset = [
+  { value: 10, label: 'Bar Number One' },
+  { value: 100, label: 'Bar Number Two' }
+];
 
 describe('Micro Bar Chart', () => {
   test('Renders with data', () => {

@@ -1,4 +1,4 @@
-import { create } from '@storybook/theming';
+import { create } from '@storybook/theming/create';
 
 const TEXT_COLOR = '#32363A';
 const PRIMARY_COLOR = '#0a6ed1';

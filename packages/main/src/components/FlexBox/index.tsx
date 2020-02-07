@@ -1,11 +1,12 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
+import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Flexbox.jss';
 
 const useStyles = createUseStyles(styles, { name: 'FlexBox' });
@@ -22,6 +23,9 @@ export interface FlexBoxPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
 }
 
+/**
+ * <code>import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';</code>
+ */
 const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,
@@ -71,8 +75,17 @@ const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: 
     return innerStyles;
   }, [height, width, style]);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
-    <div ref={ref} className={flexBoxClasses.valueOf()} style={memoizedStyles} title={tooltip} slot={slot}>
+    <div
+      ref={ref}
+      className={flexBoxClasses.valueOf()}
+      style={memoizedStyles}
+      title={tooltip}
+      slot={slot}
+      {...passThroughProps}
+    >
       {children}
     </div>
   );

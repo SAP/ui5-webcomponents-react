@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
-import { BarChart } from './index';
+import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import React, { useState } from 'react';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [
@@ -35,7 +35,7 @@ const options = {
 };
 
 export default {
-  title: 'Charts | BarChart',
+  title: 'Charts / BarChart',
   component: BarChart
 };
 

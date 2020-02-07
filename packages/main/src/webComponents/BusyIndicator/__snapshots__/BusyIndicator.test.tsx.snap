@@ -3,14 +3,12 @@
 exports[`BusyIndicator Basic Test 1`] = `
 <ui5-busyindicator
   active="true"
-  class=""
   size="Large"
 />
 `;
 
 exports[`BusyIndicator Inactive 1`] = `
 <ui5-busyindicator
-  class=""
   size="Large"
 />
 `;
@@ -18,7 +16,6 @@ exports[`BusyIndicator Inactive 1`] = `
 exports[`BusyIndicator Size Medium 1`] = `
 <ui5-busyindicator
   active="true"
-  class=""
   size="Medium"
 />
 `;
@@ -26,7 +23,6 @@ exports[`BusyIndicator Size Medium 1`] = `
 exports[`BusyIndicator Size Small 1`] = `
 <ui5-busyindicator
   active="true"
-  class=""
   size="Small"
 />
 `;

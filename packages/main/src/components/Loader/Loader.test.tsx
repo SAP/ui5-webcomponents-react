@@ -1,7 +1,7 @@
-import { renderThemedComponent } from '@shared/tests/utils';
-import React from 'react';
-import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
+import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
+import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
+import React from 'react';
 
 describe('Loader', () => {
   test('indeterminate', () => {
@@ -28,4 +28,11 @@ describe('Loader', () => {
     const wrapper = renderThemedComponent(<Loader className="myTestClass" />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('with delay', () => {
+    const wrapper = renderThemedComponent(<Loader delay={1000} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  createPassThroughPropsTest(Loader);
 });

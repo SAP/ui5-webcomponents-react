@@ -1,14 +1,20 @@
-import { mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
 import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';
 import { FilterType } from '@ui5/webcomponents-react/lib/FilterType';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
+import React from 'react';
 
-const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
-const filterItems = [{ text: 'Text 1', key: '1' }, { text: 'Text 2', key: '2' }];
+const variantItems = [
+  { label: 'Variant 1', key: '1' },
+  { label: 'Variant 2', key: '2' }
+];
+const filterItems = [
+  { text: 'Text 1', key: '1' },
+  { text: 'Text 2', key: '2' }
+];
 
 const renderVariants = () => <VariantManagement variantItems={variantItems} />;
 const renderSearch = () => <Input placeholder={'Search'} />;
@@ -111,8 +117,7 @@ describe('FilterBar', () => {
         />
       </FilterBar>
     );
-    // console.log(wrapper.render());
-    // console.log(wrapper.find('Select').render());
+
     wrapper
       .find('ui5-option')
       .at(1)
@@ -120,4 +125,6 @@ describe('FilterBar', () => {
 
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(FilterBar);
 });

@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.6.0-rc.22",
+  "version": "0.8.0",
   "description": "Base for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -11,16 +11,25 @@
     "directory": "packages/base"
   },
   "author": "SAP SE (https://www.sap.com)",
-  "scripts": {
-    "postbuild": "rollup -c && tsc ./src/polyfill/*.ts --outDir ../../build/node_modules/base/polyfill --skipLibCheck"
-  },
   "license": "Apache-2.0",
+  "sideEffects": [
+    "**/modernizr.js",
+    "core-js/**/*"
+  ],
+  "scripts": {
+    "clean": "rimraf cjs Device hooks lib polyfill styling types utils index.esm.js index.d.ts",
+    "build:rollup": "rollup -c rollup.config.js",
+    "build:polyfills": "tsc ./src/polyfill/*.ts --outDir ./polyfill --skipLibCheck",
+    "postbuild": "npm-run-all -s build:rollup build:polyfills"
+  },
   "dependencies": {
-    "core-js": "^3.1.4",
-    "hoist-non-react-statics": "^3.3.0",
-    "react-jss": "10.0.0"
+    "core-js": "3.6.4",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {
     "react": "^16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

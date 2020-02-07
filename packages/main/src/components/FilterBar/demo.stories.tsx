@@ -1,6 +1,5 @@
+import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
 import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';
 import { FilterType } from '@ui5/webcomponents-react/lib/FilterType';
@@ -9,10 +8,16 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
-import { action } from '@storybook/addon-actions';
+import React from 'react';
 
-const variantItems = [{ label: 'Variant 1', key: '1' }, { label: 'Variant 2', key: '2' }];
-const filterItems = [{ text: 'Text 1', key: '1' }, { text: 'Text 2', key: '2' }];
+const variantItems = [
+  { label: 'Variant 1', key: '1' },
+  { label: 'Variant 2', key: '2' }
+];
+const filterItems = [
+  { text: 'Text 1', key: '1' },
+  { text: 'Text 2', key: '2' }
+];
 
 const renderVariants = () => {
   return (
@@ -73,6 +78,9 @@ renderStory.story = {
 };
 
 export default {
-  title: 'Components | FilterBar',
-  component: FilterBar
+  title: 'Components / FilterBar',
+  component: FilterBar,
+  parameters: {
+    subcomponents: { FilterItem }
+  }
 };

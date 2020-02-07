@@ -1,12 +1,10 @@
-import { Support } from './Support';
-import { OS } from './OS';
-import { Browser } from './Browser';
-import { System } from './System';
+import { getBrowser, getOS, getSystem } from '@ui5/webcomponents-core/dist/sap/ui/Device';
+import { EventRegistry } from './EventRegistry';
 import { Media } from './Media';
 import { Orientation } from './Orientation';
 import { Resize } from './Resize';
+import { Support } from './Support';
 import { windowSize } from './utils';
-import { EventRegistry } from './EventRegistry';
 
 let iResizeTimeout;
 let bOrientationChange = false;
@@ -21,10 +19,10 @@ const rInputTagRegex = /INPUT|TEXTAREA|SELECT/;
 let bSkipFirstResize;
 
 class DeviceBuilder {
-  public os = new OS();
-  public browser = new Browser();
-  public support = new Support(this.browser);
-  public system = new System(this.os, this.browser, this.support);
+  public os = getOS();
+  public browser = getBrowser();
+  public support = new Support();
+  public system = getSystem();
   public media = new Media(this.support);
   public orientation = new Orientation();
   public resize = new Resize();

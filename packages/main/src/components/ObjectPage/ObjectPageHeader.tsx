@@ -1,171 +1,101 @@
-import { Button } from '@ui5/webcomponents-react/lib/Button';
-import '@ui5/webcomponents/dist/icons/navigation-down-arrow';
-import '@ui5/webcomponents/dist/icons/navigation-up-arrow.js';
-import React, { FC, ReactElement, useCallback, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import React, { CSSProperties, FC, ReactElement } from 'react';
+import { safeGetChildrenArray } from './ObjectPageUtils';
 
 interface Props {
-  title?: string;
-  subTitle?: string;
-  image?: string;
-  imageShapeCircle?: boolean;
-  headerActions?: Array<ReactElement<any>>;
-  renderHeaderContent?: () => JSX.Element;
-  showHideHeaderButton?: boolean;
+  image: string | ReactElement<unknown>;
+  imageShapeCircle: boolean;
+  classes: any;
+  showTitleInHeaderContent: boolean;
+  renderHeaderContentProp: () => JSX.Element;
+  renderBreadcrumbs: () => JSX.Element;
+  renderKeyInfos: () => JSX.Element;
+  title: string;
+  subTitle: string;
 }
 
-const objectPageHeaderStyles = ({ parameters }: JSSTheme) => ({
-  header: {
-    flexShrink: 0,
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
-    '&$stickied': {
-      '& $image': {
-        opacity: '1',
-        height: '3rem',
-        width: '3rem',
-        margin: '0.25rem 1rem 0.25rem 0'
-      }
-    }
-  },
-  titleBar: {
-    padding: '0.5rem 2rem',
-    display: 'block'
-  },
-  headerImage: {
-    maxWidth: '5rem',
-    maxHeight: '5rem',
-    display: 'inline-block',
-    marginRight: '2rem',
-    marginBottom: '1rem'
-  },
-  image: {
-    height: '0',
-    width: '0',
-    opacity: '0',
-    display: 'inline-block',
-    verticalAlign: 'middle'
-  },
-  container: {
-    display: 'inline-block',
-    lineHeight: 'normal',
-    verticalAlign: 'middle',
-    width: '70%',
-    boxSizing: 'border-box',
-    paddingTop: '1.5rem'
-  },
-  title: {
-    fontSize: '1.375rem',
-    paddingRight: '1rem',
-    verticalAlign: 'baseline',
-    lineHeight: 'normal',
-    display: 'inline-block',
-    margin: '0',
-    fontWeight: 'normal',
-    color: parameters.sapUiBaseText
-  },
-  subTitle: {
-    display: 'inline-block',
-    wordBreak: 'break-word',
-    verticalAlign: 'baseline',
-    paddingTop: '0.5rem',
-    fontSize: '0.875rem',
-    color: parameters.sapUiContentLabelColor
-  },
-  actions: {
-    position: 'absolute',
-    top: '0',
-    paddingTop: '0.75rem',
-    right: '1.25rem',
-    display: 'inline-block',
-    float: 'right',
-    verticalAlign: 'top',
-    '& > *': {
-      marginLeft: '0.5rem',
-      padding: 0
-    }
-  },
-  stickied: {},
-  headerContent: {
-    paddingTop: '1.5rem',
-    paddingBottom: '0.25rem',
-    transition: 'max-height 0.5s',
-    maxHeight: '500px',
-    overflow: 'hidden',
-    paddingLeft: '2rem',
-    position: 'relative'
-  },
-  headerCustomContent: {
-    display: 'inline-block',
-    verticalAlign: 'top',
-    '& > *': {
-      marginRight: '2rem',
-      marginBottom: '1rem',
-      lineHeight: '1.5rem'
-    }
-  }
-});
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof objectPageHeaderStyles>>(objectPageHeaderStyles, {
-  name: 'ObjectPageHeader'
-});
+const positionRelativeStyle: CSSProperties = { position: 'relative' };
 
 export const ObjectPageHeader: FC<Props> = (props) => {
-  const [showHeader, setShowHeader] = useState(true);
+  const {
+    image,
+    classes,
+    imageShapeCircle,
+    showTitleInHeaderContent,
+    renderHeaderContentProp,
+    renderBreadcrumbs,
+    title,
+    subTitle,
+    renderKeyInfos
+  } = props;
 
-  const changeHeader = useCallback(() => {
-    setShowHeader(!showHeader);
-  }, [showHeader]);
+  let avatar = null;
 
-  const { title, image, subTitle, headerActions, renderHeaderContent, imageShapeCircle, showHideHeaderButton } = props;
+  if (image) {
+    if (typeof image === 'string') {
+      avatar = (
+        <span
+          className={classes.headerImage}
+          style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
+        >
+          <img src={image} className={classes.image} alt="Company Logo" />
+        </span>
+      );
+    } else {
+      avatar = React.cloneElement(image, {
+        size: AvatarSize.L,
+        className: image.props?.className ? `${classes.headerImage} ${image.props?.className}` : classes.headerImage
+      } as unknown);
+    }
+  }
 
-  const classes = useStyles();
+  if (showTitleInHeaderContent) {
+    const headerContents = renderHeaderContentProp && renderHeaderContentProp();
+    let firstElement;
+    let contents = [];
+
+    if (headerContents?.type === React.Fragment) {
+      [firstElement, ...contents] = safeGetChildrenArray(headerContents.props.children);
+    } else {
+      firstElement = headerContents;
+    }
+    return (
+      <div className={classes.contentHeader}>
+        <div className={classes.headerContent}>
+          <FlexBox>
+            {avatar}
+            <FlexBox direction={FlexBoxDirection.Column}>
+              <div>{renderBreadcrumbs && renderBreadcrumbs()}</div>
+              <FlexBox>
+                <FlexBox direction={FlexBoxDirection.Column}>
+                  <h1 className={classes.title}>{title}</h1>
+                  <span className={classes.subTitle}>{subTitle}</span>
+                  <span> {firstElement}</span>
+                </FlexBox>
+                <FlexBox>
+                  {contents.map((c, index) => (
+                    <div key={`customContent-${index}`} className={classes.headerCustomContentItem}>
+                      {c}
+                    </div>
+                  ))}
+                </FlexBox>
+                <div className={classes.keyInfos}>{renderKeyInfos && renderKeyInfos()}</div>
+              </FlexBox>
+            </FlexBox>
+          </FlexBox>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <header className={classes.header}>
-      {/* Title Bar */}
-      <header className={classes.titleBar}>
-        {image && (
-          <span className={classes.image}>
-            <img src={image} />
-          </span>
-        )}
-        <span className={classes.container}>
-          <h1 className={classes.title}>{title}</h1>
-          <span className={classes.subTitle}>{subTitle}</span>
-        </span>
-        <span className={classes.actions}>{headerActions}</span>
-      </header>
-      {/* Header Content */}
-      <div style={{ position: 'relative' }}>
-        {showHeader && (
-          <div className={classes.headerContent}>
-            {image && (
-              <span
-                className={classes.headerImage}
-                style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
-              >
-                <img src={image} style={{ width: '100%', height: '100%' }} />
-              </span>
-            )}
-            {renderHeaderContent && <span className={classes.headerCustomContent}>{renderHeaderContent()}</span>}
-          </div>
-        )}
-        {showHideHeaderButton && (
-          <Button
-            style={
-              {
-                position: 'absolute',
-                '--_ui5_button_compact_height': '1rem',
-                lineHeight: '1.25rem',
-                bottom: 'calc(-1.25rem / 2)',
-                left: 'calc(50% - 1rem)'
-              } as any
-            }
-            icon={showHeader ? 'sap-icon://navigation-up-arrow' : 'sap-icon://navigation-down-arrow'}
-            onClick={changeHeader}
-          />
-        )}
+    <div style={positionRelativeStyle} className={classes.contentHeader}>
+      <div className={classes.headerContent}>
+        {avatar}
+        {renderHeaderContentProp && <span className={classes.headerCustomContent}>{renderHeaderContentProp()}</span>}
       </div>
-    </header>
+    </div>
   );
 };

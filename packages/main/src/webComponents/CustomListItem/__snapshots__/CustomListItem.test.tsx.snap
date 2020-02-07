@@ -2,7 +2,6 @@
 
 exports[`CustomListItem Basic Test (generated) 1`] = `
 <ui5-li-custom
-  class=""
   type="Active"
 />
 `;

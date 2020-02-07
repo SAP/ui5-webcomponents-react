@@ -1,9 +1,9 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Panel from '@ui5/webcomponents/dist/Panel';
 import React, { FC, ReactNode } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';
 
 export interface PanelPropTypes extends WithWebComponentPropTypes {
   headerText?: string; // @generated
@@ -15,6 +15,11 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[];
 }
 
+/**
+ * <code>import { Panel } from '@ui5/webcomponents-react/lib/Panel';</code>
+ * <br />
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Panel" target="_blank">UI5 Web Components Playground</a>
+ */
 const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(UI5Panel);
 
 Panel.displayName = 'Panel';

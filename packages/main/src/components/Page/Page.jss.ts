@@ -1,15 +1,13 @@
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 
 /**
  * Style Class Generator Function
  *
  * @param {Object} obj - Current Theme Context by JSS Provider.
- * @param {string} obj.theme - Current Theme (sap_fiori_3)
- * @param {string} obj.contentDensity - Current Content Density (Cozy, Compact)
  * @param {object} obj.parameters - Theming parameters (e.g. LabelColor)
  */
-const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
+const styles = ({ parameters }: JSSTheme) => {
   // const isS = '@media (max-width: 600px)';
   // const isM = '@media (min-width: 601px) and (max-width: 1024px)';
   // const isL = '@media (min-width: 1025px) and (max-width: 1440px)';
@@ -51,10 +49,6 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
   //       [isXXL]: {
   //         paddingRight: '3rem'
   //       }
-  //     },
-  //     '& [data-bar-part="Root"]': {
-  //       height: ContentDensity.Compact === contentDensity ? '3rem' : '4rem',
-  //       lineHeight: ContentDensity.Compact === contentDensity ? '3rem' : '4rem'
   //     }
   //   };
   // }
@@ -141,12 +135,12 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
     },
     pageWithHeader: {
       '& $contentSection': {
-        top: contentDensity === ContentDensity.Compact ? '2.5rem' : '2.75rem'
+        top: CssSizeVariables.sapWcrBarHeight
       }
     },
     pageWithFooter: {
       '& $contentSection': {
-        bottom: contentDensity === ContentDensity.Compact ? '2.5rem' : '2.75rem'
+        bottom: CssSizeVariables.sapWcrBarHeight
       }
     },
     pageFooter: {
@@ -156,7 +150,7 @@ const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
       width: '100%',
       borderTop: `1px solid ${parameters.sapUiPageFooterBorderColor}`,
       '& >*': {
-        height: contentDensity === ContentDensity.Compact ? '2.5rem' : '2.75rem',
+        height: CssSizeVariables.sapWcrBarHeight,
         background: parameters.sapUiPageFooterBackground,
         borderTop: `0.0625rem solid ${parameters.sapUiPageFooterBorderColor}`
       }

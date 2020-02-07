@@ -1,13 +1,16 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import React from 'react';
+import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { MultiComboBox } from './index';
+import React from 'react';
 
 export default {
-  title: 'UI5 Web Components | MultiComboBox',
-  component: MultiComboBox
+  title: 'UI5 Web Components / MultiComboBox',
+  component: MultiComboBox,
+  parameters: {
+    subcomponents: { StandardListItem }
+  }
 };
 
 export const defaultStory = () => (

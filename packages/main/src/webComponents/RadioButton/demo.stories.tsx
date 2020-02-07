@@ -1,11 +1,11 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import React from 'react';
 import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React from 'react';
 
 export default {
-  title: 'UI5 Web Components | RadioButton',
+  title: 'UI5 Web Components / RadioButton',
   component: RadioButton
 };
 

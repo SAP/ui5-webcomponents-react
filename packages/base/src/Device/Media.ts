@@ -1,6 +1,6 @@
-import { changeRootCSSClass, getQuery, matchLegacyBySize, windowSize } from './utils';
-import { EventRegistry } from './EventRegistry';
 import { Logger } from '../utils/Logger';
+import { EventRegistry } from './EventRegistry';
+import { changeRootCSSClass, getQuery, matchLegacyBySize, windowSize } from './utils';
 
 export enum RANGESETS {
   SAP_3STEPS = '3Step',
@@ -30,6 +30,7 @@ const refreshCSSClasses = (sSetName, sRangeName, bRemove?) => {
 export class Media {
   private readonly media_timeout;
   public matches;
+
   constructor(supportInstance) {
     support = supportInstance;
     this.media_timeout = support.matchmedialistener ? 0 : 100;

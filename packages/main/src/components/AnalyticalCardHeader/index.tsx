@@ -1,18 +1,19 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
-import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
-import styles from './AnalyticalCardHeader.jss';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   title?: string;
@@ -36,6 +37,9 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
   name: 'AnalyticalCardHeader'
 });
 
+/**
+ * <code>import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';</code>
+ */
 export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRef(
   (props: AnalyticalCardHeaderPropTypes, ref: Ref<HTMLDivElement>) => {
     const {
@@ -119,8 +123,18 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
       headerClasses.put(className);
     }
     const shouldRenderContent = [value, unit, deviation, target].some((v) => v !== null);
+
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     return (
-      <div ref={ref} onClick={onClick} className={headerClasses.valueOf()} title={tooltip} style={style}>
+      <div
+        ref={ref}
+        onClick={onClick}
+        className={headerClasses.valueOf()}
+        title={tooltip}
+        style={style}
+        {...passThroughProps}
+      >
         <div className={classes.headerContent}>
           <div className={classes.headerTitles}>
             <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>

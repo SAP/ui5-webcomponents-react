@@ -1,5 +1,8 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import React, {
   Children,
   CSSProperties,
@@ -15,8 +18,6 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
-import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import styles from './Carousel.jss';
 import { CarouselPagination, CarouselPaginationPropTypes } from './CarouselPagination';
 
@@ -49,6 +50,9 @@ export interface CarouselPropTypes
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Carousel' });
 
+/**
+ * <code>import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';</code>
+ */
 const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,
@@ -155,6 +159,9 @@ const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, re
   );
 
   const translateXPrefix = document.dir === 'rtl' ? '' : '-';
+
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
     <div
       className={classNameString.toString()}
@@ -165,6 +172,7 @@ const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, re
       role="list"
       tabIndex={0}
       onKeyDown={onKeyDown}
+      {...passThroughProps}
     >
       {childElementCount > 1 && pageIndicatorPlacement === PlacementType.Top && (
         <CarouselPagination

@@ -1,9 +1,11 @@
-import { ComponentType } from 'react';
+import { Ui5PopoverDomRef } from '@ui5/webcomponents-react/interfaces/Ui5PopoverDomRef';
+import { ComponentType, RefObject } from 'react';
+import { Column } from 'react-table';
 
-export interface ColumnType {
+export interface ColumnType extends Column {
   show: boolean;
   id: string;
-  Filter: ComponentType<{ column: ColumnType }>;
+  Filter: ComponentType<{ column: ColumnType; popoverRef?: RefObject<Ui5PopoverDomRef> }>;
   toggleSortBy: (descending: boolean, multi?: any) => void;
   toggleGroupBy: (set: boolean) => void;
   canFilter: boolean;
@@ -14,4 +16,7 @@ export interface ColumnType {
   canSort: boolean;
   isSorted: boolean;
   isSortedDesc: boolean;
+  disableGrouping: boolean;
+  getResizerProps: () => any;
+  isResizing: boolean;
 }

@@ -2,7 +2,7 @@
 
 exports[`Avatar Avatar - size: Custom shape: Circle 1`] = `
 <span
-  class="-avatar- -circle-"
+  class="Avatar--avatar- Avatar--circle-"
   style="font-size: 1.125rem; width: 3rem; height: 3rem; line-height: 3rem;"
   tabindex="0"
 />
@@ -10,7 +10,7 @@ exports[`Avatar Avatar - size: Custom shape: Circle 1`] = `
 
 exports[`Avatar Avatar - size: Custom shape: Square 1`] = `
 <span
-  class="-avatar-"
+  class="Avatar--avatar-"
   style="font-size: 1.125rem; width: 3rem; height: 3rem; line-height: 3rem;"
   tabindex="0"
 />
@@ -18,77 +18,77 @@ exports[`Avatar Avatar - size: Custom shape: Square 1`] = `
 
 exports[`Avatar Avatar - size: L shape: Circle 1`] = `
 <span
-  class="-avatar- -sizeL- -circle-"
+  class="Avatar--avatar- Avatar--sizeL- Avatar--circle-"
   tabindex="0"
 />
 `;
 
 exports[`Avatar Avatar - size: L shape: Square 1`] = `
 <span
-  class="-avatar- -sizeL-"
+  class="Avatar--avatar- Avatar--sizeL-"
   tabindex="0"
 />
 `;
 
 exports[`Avatar Avatar - size: M shape: Circle 1`] = `
 <span
-  class="-avatar- -sizeM- -circle-"
+  class="Avatar--avatar- Avatar--sizeM- Avatar--circle-"
   tabindex="0"
 />
 `;
 
 exports[`Avatar Avatar - size: M shape: Square 1`] = `
 <span
-  class="-avatar- -sizeM-"
+  class="Avatar--avatar- Avatar--sizeM-"
   tabindex="0"
 />
 `;
 
 exports[`Avatar Avatar - size: S shape: Circle 1`] = `
 <span
-  class="-avatar- -sizeS- -circle-"
+  class="Avatar--avatar- Avatar--sizeS- Avatar--circle-"
   tabindex="0"
 />
 `;
 
 exports[`Avatar Avatar - size: S shape: Square 1`] = `
 <span
-  class="-avatar- -sizeS-"
+  class="Avatar--avatar- Avatar--sizeS-"
   tabindex="0"
 />
 `;
 
 exports[`Avatar Avatar - size: XL shape: Circle 1`] = `
 <span
-  class="-avatar- -sizeXL- -circle-"
+  class="Avatar--avatar- Avatar--sizeXL- Avatar--circle-"
   tabindex="0"
 />
 `;
 
 exports[`Avatar Avatar - size: XL shape: Square 1`] = `
 <span
-  class="-avatar- -sizeXL-"
+  class="Avatar--avatar- Avatar--sizeXL-"
   tabindex="0"
 />
 `;
 
 exports[`Avatar Avatar - size: XS shape: Circle 1`] = `
 <span
-  class="-avatar- -sizeXS- -circle-"
+  class="Avatar--avatar- Avatar--sizeXS- Avatar--circle-"
   tabindex="0"
 />
 `;
 
 exports[`Avatar Avatar - size: XS shape: Square 1`] = `
 <span
-  class="-avatar- -sizeXS-"
+  class="Avatar--avatar- Avatar--sizeXS-"
   tabindex="0"
 />
 `;
 
 exports[`Avatar with Initials 1`] = `
 <span
-  class="-avatar- -sizeXL- -circle-"
+  class="Avatar--avatar- Avatar--sizeXL- Avatar--circle-"
   tabindex="0"
 >
   JD

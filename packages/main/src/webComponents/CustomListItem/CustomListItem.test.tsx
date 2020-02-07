@@ -1,6 +1,6 @@
-import React from 'react';
-import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { mountThemedComponent } from '@shared/tests/utils';
+import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
+import React from 'react';
 
 describe('CustomListItem', () => {
   test('Basic Test (generated)', () => {

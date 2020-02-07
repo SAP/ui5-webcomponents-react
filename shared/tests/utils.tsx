@@ -1,12 +1,13 @@
-import React from 'react';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { mount, shallow } from 'enzyme';
-import { ThemeProvider } from '../../packages/main/src/lib/ThemeProvider';
+import React, { ComponentType } from 'react';
 
 export const modifyObjectProperty = (object: any, attr: string, value: any) => {
   Object.defineProperty(object, attr, {
     value,
-    configurable: true
+    configurable: true,
+    writable: true
   });
 };
 export const getEventFromCallback = (callback, index = 0): Event => {
@@ -19,12 +20,36 @@ export const setUserAgentString = (userAgent) => {
   });
 };
 
-export const mountThemedComponent = (component, contextOverwrite = {}, enzymeOptions = {}) =>
-  mount(<ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>, enzymeOptions);
-
-export const ThemedComponent = (component, contextOverwrite = {}) => (
-  <ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>
-);
+export const mountThemedComponent = (
+  component,
+  contextOverwrite: { [key: string]: string } = {},
+  enzymeOptions = {}
+) => {
+  return mount(<ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>, enzymeOptions);
+};
 
 export const renderThemedComponent = (component, contextOverwrite = {}) =>
   shallow(<ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>).render();
+
+export const createPassThroughPropsTest = (Component: ComponentType<any>, props = {}) => {
+  test('Pass Through HTML Standard Props', () => {
+    const wrapper = mountThemedComponent(
+      <Component
+        data-special-test-prop="data-prop"
+        aria-labelledby="aria-prop"
+        id="element-id"
+        disabled-custom-prop
+        {...props}
+      />
+    );
+    const html = wrapper.html();
+
+    expect(html).toMatch(/data-special-test-prop="data-prop"/);
+    expect(html).toMatch(/aria-labelledby="aria-prop"/);
+    // special handling for ObjectPage Sections because of own ID handling...
+    if (Component.displayName !== 'ObjectPageSection' && Component.displayName !== 'ObjectPageSubSection') {
+      expect(html).toMatch(/id="element-id"/);
+    }
+    expect(html).not.toMatch(/disabled-custom-prop/);
+  });
+};

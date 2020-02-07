@@ -35,6 +35,9 @@ withCurrentLocation.story = {
 };
 
 export default {
-  title: 'Components | Breadcrumbs',
-  component: Breadcrumbs
+  title: 'Components / Breadcrumbs',
+  component: Breadcrumbs,
+  parameters: {
+    subcomponents: { Link }
+  }
 };

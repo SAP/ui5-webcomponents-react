@@ -1,7 +1,7 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5TextArea from '@ui5/webcomponents/dist/TextArea';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TextAreaPropTypes extends WithWebComponentPropTypes {
@@ -18,6 +18,11 @@ export interface TextAreaPropTypes extends WithWebComponentPropTypes {
   onChange?: (event: Event) => void; // @generated
 }
 
+/**
+ * <code>import { TextArea } from '@ui5/webcomponents-react/lib/TextArea';</code>
+ * <br />
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TextArea" target="_blank">UI5 Web Components Playground</a>
+ */
 const TextArea: FC<TextAreaPropTypes> = withWebComponent<TextAreaPropTypes>(UI5TextArea);
 
 TextArea.displayName = 'TextArea';

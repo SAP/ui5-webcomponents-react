@@ -1,9 +1,9 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5RadioButton from '@ui5/webcomponents/dist/RadioButton';
 import React, { FC } from 'react';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
   disabled?: boolean; // @generated
@@ -17,14 +17,9 @@ export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * In order to use the Radio Button in Compact Size, please add the following snippet to your `index.html`:
- * ```
- * <script data-ui5-config type="application/json">
- *  { "compactSize": true }
- * </script>
- * ```
- *
- * This Storybook is currently only working in ContentDensity=Cozy.
+ * <code>import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';</code>
+ * <br />
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/RadioButton" target="_blank">UI5 Web Components Playground</a>
  */
 const RadioButton: FC<RadioButtonPropTypes> = withWebComponent<RadioButtonPropTypes>(UI5RadioButton);
 

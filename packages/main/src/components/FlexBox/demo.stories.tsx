@@ -1,12 +1,11 @@
 import { boolean, select, text } from '@storybook/addon-knobs/';
-import { storiesOf } from '@storybook/react';
-import React from 'react';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
+import React from 'react';
 
 export const defaultStory = () => (
   <FlexBox
@@ -30,6 +29,6 @@ defaultStory.story = {
 };
 
 export default {
-  title: 'Components | FlexBox',
+  title: 'Components / FlexBox',
   component: FlexBox
 };

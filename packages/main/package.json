@@ -1,38 +1,47 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.6.0-rc.22",
+  "version": "0.8.1",
   "description": "React Wrapper for UI5 Web Components and additional components",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
+  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/SAP/ui5-webcomponents-react.git",
     "directory": "packages/main"
   },
-  "main": "index.cjs.js",
-  "module": "index.esm.js",
-  "types": "index.d.ts",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
-  "private": false,
+  "sideEffects": [
+    "@ui5/webcomponents-icons/dist/icons/*"
+  ],
   "scripts": {
+    "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts",
     "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/index.js --onlyStopForMerge",
     "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
     "postbuild": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.4",
-    "@ui5/webcomponents-react-base": "0.6.0-rc.22",
+    "@ui5/webcomponents": "1.0.0-rc.5",
+    "@ui5/webcomponents-fiori": "1.0.0-rc.5",
+    "@ui5/webcomponents-icons": "1.0.0-rc.5",
+    "@ui5/webcomponents-react-base": "^0.8.0",
     "lodash.debounce": "^4.0.8",
-    "react-table": "7.0.0-beta.12",
-    "react-toastify": "^5.0.1",
-    "react-window": "^1.8.5",
-    "resize-observer-polyfill": "^1.5.1"
+    "react-content-loader": "^4.3.4",
+    "react-jss": "10.0.4",
+    "react-table": "7.0.0-rc.15",
+    "react-toastify": "^5.5.0",
+    "react-window": "^1.8.5"
   },
   "devDependencies": {
     "diff": "^4.0.1",
-    "inquirer": "^6.3.1"
+    "inquirer": "^7.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

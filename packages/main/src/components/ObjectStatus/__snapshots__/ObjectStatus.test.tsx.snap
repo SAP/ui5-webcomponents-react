@@ -8,8 +8,7 @@ exports[`ObjectStatus ObjectStatus: state: Error 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconError-"
   >
     <ui5-icon
-      class=""
-      src="sap-icon://status-negative"
+      name="status-negative"
       style="font-size: 1rem;"
     />
   </div>
@@ -24,8 +23,7 @@ exports[`ObjectStatus ObjectStatus: state: Information 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconInformation-"
   >
     <ui5-icon
-      class=""
-      src="sap-icon://hint"
+      name="hint"
       style="font-size: 1rem;"
     />
   </div>
@@ -40,8 +38,7 @@ exports[`ObjectStatus ObjectStatus: state: None 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconNone-"
   >
     <ui5-icon
-      class=""
-      src="sap-icon://status-inactive"
+      name="status-inactive"
       style="font-size: 1rem;"
     />
   </div>
@@ -56,8 +53,7 @@ exports[`ObjectStatus ObjectStatus: state: Success 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconSuccess-"
   >
     <ui5-icon
-      class=""
-      src="sap-icon://status-positive"
+      name="status-positive"
       style="font-size: 1rem;"
     />
   </div>
@@ -72,8 +68,7 @@ exports[`ObjectStatus ObjectStatus: state: Warning 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconWarning-"
   >
     <ui5-icon
-      class=""
-      src="sap-icon://status-critical"
+      name="status-critical"
       style="font-size: 1rem;"
     />
   </div>
@@ -88,8 +83,7 @@ exports[`ObjectStatus Render without Crashing 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconError-"
   >
     <ui5-icon
-      class=""
-      src="sap-icon://status-negative"
+      name="status-negative"
       style="font-size: 1rem;"
     />
   </div>
@@ -109,8 +103,7 @@ exports[`ObjectStatus Text Deprecation 1`] = `
     class="ObjectStatus--icon- ObjectStatus--iconError-"
   >
     <ui5-icon
-      class=""
-      src="sap-icon://status-negative"
+      name="status-negative"
       style="font-size: 1rem;"
     />
   </div>

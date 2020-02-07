@@ -1,10 +1,10 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
-import React from 'react';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
+import React from 'react';
 
 export default {
-  title: 'UI5 Web Components | Switch',
+  title: 'UI5 Web Components / Switch',
   component: Switch
 };
 

@@ -1,11 +1,11 @@
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const style = ({ parameters, contentDensity }: JSSTheme) => ({
+const style = ({ parameters }: JSSTheme) => ({
   header: {
     display: 'flex',
-    height: ContentDensity.Compact === contentDensity ? '2.5rem' : '3rem',
-    lineHeight: ContentDensity.Compact === contentDensity ? '2.5rem' : '3rem',
+    height: CssSizeVariables.sapWcrBarHeight,
+    lineHeight: CssSizeVariables.sapWcrBarHeight,
     textAlign: 'center',
     width: 'auto',
     alignItems: 'center',
@@ -72,7 +72,7 @@ const style = ({ parameters, contentDensity }: JSSTheme) => ({
     padding: '1rem'
   },
   footer: {
-    height: ContentDensity.Compact === contentDensity ? '2.5rem' : '3rem',
+    height: CssSizeVariables.sapWcrBarHeight,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',

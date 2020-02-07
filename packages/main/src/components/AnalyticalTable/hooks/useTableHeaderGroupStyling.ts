@@ -1,18 +1,12 @@
-import { useCallback } from 'react';
-import { makeTemplateColumns } from './utils';
+import { PluginHook } from 'react-table';
 
-export const useTableHeaderGroupStyling = (classes, resizedColumns) =>
-  useCallback(
-    (instance) => {
-      instance.getHeaderGroupProps.push((table) => {
-        return {
-          className: classes.tableHeaderRow,
-          style: {
-            gridTemplateColumns: makeTemplateColumns(table.headers, resizedColumns)
-          }
-        };
-      });
-      return instance;
-    },
-    [resizedColumns, classes.tableHeaderRow]
-  );
+export const useTableHeaderGroupStyling: PluginHook<{}> = (hooks) => {
+  hooks.getHeaderGroupProps.push((headerGroupProps, { instance }) => {
+    const { classes } = instance.webComponentsReactProperties;
+    return {
+      ...headerGroupProps,
+      className: classes.tableHeaderRow
+    };
+  });
+};
+useTableHeaderGroupStyling.pluginName = 'useTableHeaderGroupStyling';

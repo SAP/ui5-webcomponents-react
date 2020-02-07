@@ -1,9 +1,8 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { FC, forwardRef, Ref } from 'react';
-import { createUseStyles, useTheme } from 'react-jss';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './Bar.jss';
 
 export interface BarPropTypes extends CommonProps {
@@ -14,6 +13,9 @@ export interface BarPropTypes extends CommonProps {
 
 const useStyles = createUseStyles(styles, { name: 'Bar' });
 
+/**
+ * <code>import { Bar } from '@ui5/webcomponents-react/lib/Bar';</code>
+ */
 const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivElement>) => {
   const { renderContentLeft, renderContentMiddle, renderContentRight, className, style, tooltip, slot } = props;
 
@@ -24,13 +26,18 @@ const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivE
     cssClasses.put(className);
   }
 
-  const { contentDensity } = useTheme() as JSSTheme;
-  if (contentDensity === ContentDensity.Compact) {
-    cssClasses.put(classes.compact);
-  }
+  const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
-    <div data-bar-part="Root" className={cssClasses.toString()} style={style} title={tooltip} slot={slot} ref={ref}>
+    <div
+      data-bar-part="Root"
+      className={cssClasses.toString()}
+      style={style}
+      title={tooltip}
+      slot={slot}
+      ref={ref}
+      {...passThroughProps}
+    >
       <div data-bar-part="Left" className={classes.left}>
         {renderContentLeft()}
       </div>

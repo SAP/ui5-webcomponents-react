@@ -25,6 +25,7 @@ import { Carousel } from './lib/Carousel';
 import { CarouselArrowsPlacement } from './lib/CarouselArrowsPlacement';
 import { CheckBox } from './lib/CheckBox';
 import { ContentDensity } from './lib/ContentDensity';
+import { CurrentViewportRangeContext } from './lib/CurrentViewportRangeContext';
 import { CustomListItem } from './lib/CustomListItem';
 import { DatePicker } from './lib/DatePicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
@@ -37,6 +38,9 @@ import { FlexBoxAlignItems } from './lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from './lib/FlexBoxDirection';
 import { FlexBoxJustifyContent } from './lib/FlexBoxJustifyContent';
 import { FlexBoxWrap } from './lib/FlexBoxWrap';
+import { Form } from './lib/Form';
+import { FormGroup } from './lib/FormGroup';
+import { FormItem } from './lib/FormItem';
 import { Grid } from './lib/Grid';
 import { GridPosition } from './lib/GridPosition';
 import { GroupHeaderListItem } from './lib/GroupHeaderListItem';
@@ -59,6 +63,8 @@ import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
 import { MessageToast } from './lib/MessageToast';
 import { MultiComboBox } from './lib/MultiComboBox';
+import { Notification } from './lib/Notification';
+import { NotificationGroup } from './lib/NotificationGroup';
 import { ObjectPage } from './lib/ObjectPage';
 import { ObjectPageMode } from './lib/ObjectPageMode';
 import { ObjectPageSection } from './lib/ObjectPageSection';
@@ -73,6 +79,9 @@ import { PlacementType } from './lib/PlacementType';
 import { Popover } from './lib/Popover';
 import { PopoverHorizontalAlign } from './lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from './lib/PopoverVerticalAlign';
+import { Priority } from './lib/Priority';
+import { ProductSwitch } from './lib/ProductSwitch';
+import { ProductSwitchItem } from './lib/ProductSwitchItem';
 import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
 import { SegmentedButton } from './lib/SegmentedButton';
@@ -94,7 +103,10 @@ import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
 import { TableCell } from './lib/TableCell';
 import { TableColumn } from './lib/TableColumn';
+import { TablePlaceholder } from './lib/TablePlaceholder';
 import { TableRow } from './lib/TableRow';
+import { TableScaleWidthMode } from './lib/TableScaleWidthMode';
+import { TableSelectionMode } from './lib/TableSelectionMode';
 import { Text } from './lib/Text';
 import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
@@ -135,6 +147,7 @@ export {
   CarouselArrowsPlacement,
   CheckBox,
   ContentDensity,
+  CurrentViewportRangeContext,
   CustomListItem,
   DatePicker,
   DeviationIndicator,
@@ -147,6 +160,9 @@ export {
   FlexBoxDirection,
   FlexBoxJustifyContent,
   FlexBoxWrap,
+  Form,
+  FormGroup,
+  FormItem,
   Grid,
   GridPosition,
   GroupHeaderListItem,
@@ -169,6 +185,8 @@ export {
   MessageStripType,
   MessageToast,
   MultiComboBox,
+  Notification,
+  NotificationGroup,
   ObjectPage,
   ObjectPageMode,
   ObjectPageSection,
@@ -183,6 +201,9 @@ export {
   Popover,
   PopoverHorizontalAlign,
   PopoverVerticalAlign,
+  Priority,
+  ProductSwitch,
+  ProductSwitchItem,
   ProgressIndicator,
   RadioButton,
   SegmentedButton,
@@ -204,7 +225,10 @@ export {
   Table,
   TableCell,
   TableColumn,
+  TablePlaceholder,
   TableRow,
+  TableScaleWidthMode,
+  TableSelectionMode,
   Text,
   TextAlign,
   TextArea,

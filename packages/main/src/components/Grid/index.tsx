@@ -1,5 +1,6 @@
-import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 import React, {
   Children,
   CSSProperties,
@@ -9,14 +10,10 @@ import React, {
   ReactNode,
   ReactNodeArray,
   Ref,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState
+  useMemo
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { styles } from './Grid.jss';
 
 export enum GridPosition {
@@ -92,8 +89,11 @@ const getIndentFromString = (indent) => {
     : [undefined, 0, 0, 0, 0][currentSpan];
 };
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Grid' });
+const useStyles = createUseStyles(styles, { name: 'Grid' });
 
+/**
+ * <code>import { Grid } from '@ui5/webcomponents-react/lib/Grid';</code>
+ */
 const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     children,
@@ -109,22 +109,7 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
     defaultSpan
   } = props;
 
-  const [currentRange, setCurrentRange] = useState(Device.media.getCurrentRange('StdExt', window.innerWidth).name);
-
-  const onWindowResize = useCallback(
-    ({ width }) => {
-      const { name: range } = Device.media.getCurrentRange('StdExt', width);
-      setCurrentRange(range);
-    },
-    [setCurrentRange]
-  );
-
-  useEffect(() => {
-    Device.resize.attachHandler(onWindowResize, null);
-    return () => {
-      Device.resize.detachHandler(onWindowResize, null);
-    };
-  }, [onWindowResize]);
+  const currentRange = useViewportRange('StdExt');
 
   const classes = useStyles();
   const gridClasses = StyleClassHelper.of(classes.grid);
@@ -182,8 +167,17 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
     return <div className={gridSpanClasses.valueOf()}>{child}</div>;
   };
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   return (
-    <div ref={ref} className={gridClasses.valueOf()} style={gridStyle} title={tooltip} slot={slot}>
+    <div
+      ref={ref}
+      className={gridClasses.valueOf()}
+      style={gridStyle}
+      title={tooltip}
+      slot={slot}
+      {...passThroughProps}
+    >
       {Children.map(children, renderGridElements)}
     </div>
   );

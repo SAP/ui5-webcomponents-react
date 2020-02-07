@@ -1,14 +1,15 @@
+import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import React, { FC, useCallback, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ScrollLink } from '@ui5/webcomponents-react-base/lib/ScrollLink';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import { ObjectPageLink } from './scroll/ObjectPageLink';
+import React, { FC, useCallback, useState } from 'react';
+import { createUseStyles } from 'react-jss';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 interface ObjectPageAnchorPropTypes {
   section: any;
@@ -50,7 +51,7 @@ const anchorButtonStyles = ({ parameters }: JSSTheme) => ({
     }
   }
 });
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof anchorButtonStyles>>(anchorButtonStyles, {
+const useStyles = createUseStyles(anchorButtonStyles, {
   name: 'ObjectPageAnchorButton'
 });
 
@@ -78,7 +79,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
       const subSection = section.props.children
         .filter((item) => item.props && item.props.isSubSection)
         .find((item) => item.props.id === selectedId);
-      if (open && subSection) {
+      if (subSection) {
         onSubSectionSelected(Event.of(null, e.getOriginalEvent(), { section, subSection, sectionIndex: index }));
       }
       closeModal();
@@ -88,8 +89,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
 
   const navigationIcon = (
     <Icon
-      src="sap-icon://slim-arrow-down"
-      onPress={openModal}
+      name="slim-arrow-down"
       style={{
         height: '1rem',
         width: '1rem',
@@ -119,28 +119,28 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
     }
 
     return (
-      <ObjectPageLink
+      <ScrollLink
         key={item.props.id}
         id={`ObjectPageSubSection-${item.props.id}`}
         scrollOffset={collapsedHeader ? 45 : 0}
       >
         <StandardListItem data-key={item.props.id}>{item.props.title}</StandardListItem>
-      </ObjectPageLink>
+      </ScrollLink>
     );
   };
 
   let sectionSelector = null;
   if (mode === ObjectPageMode.Default) {
     sectionSelector = (
-      <ObjectPageLink
+      <ScrollLink
         id={`ObjectPageSection-${section.props.id}`}
         onSetActive={onScrollActive}
         activeClass={classes.selected}
         alwaysToTop={index === 0}
-        scrollOffset={collapsedHeader ? 45 : 0}
+        scrollOffset={collapsedHeader ? 45 : -45}
       >
         <span className={classes.button}>{section.props.title}</span>
-      </ObjectPageLink>
+      </ScrollLink>
     );
   } else {
     sectionSelector = (
@@ -159,6 +159,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
           placementType={PlacementType.Bottom}
           openBy={navigationIcon}
           onAfterClose={closeModal}
+          onBeforeOpen={openModal}
           noArrow
         >
           <List onItemClick={onSubSectionClick}>

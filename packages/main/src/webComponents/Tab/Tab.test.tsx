@@ -1,6 +1,6 @@
-import React from 'react';
-import { Tab } from '@ui5/webcomponents-react/lib/Tab';
 import { mountThemedComponent } from '@shared/tests/utils';
+import { Tab } from '@ui5/webcomponents-react/lib/Tab';
+import React from 'react';
 
 describe('Tab', () => {
   test('Basic Test (generated)', () => {

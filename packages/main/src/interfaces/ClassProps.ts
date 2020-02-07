@@ -1,5 +1,5 @@
-import { ObjectWithVariableKeys } from './ObjectWithVariableKeys';
 import { RefObject } from 'react';
+import { ObjectWithVariableKeys } from './ObjectWithVariableKeys';
 
 export interface ClassProps {
   classes?: ObjectWithVariableKeys;

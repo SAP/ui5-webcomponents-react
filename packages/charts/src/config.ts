@@ -6,7 +6,12 @@ import { getCssVariableValue } from './themes/Utils';
 
 defaults.global.animation.duration = 0;
 defaults.scale.ticks.fontStyle = 'bold';
-defaults.global.layout.padding = 16;
+defaults.global.layout.padding = {
+  top: 32,
+  left: 16,
+  right: 16,
+  bottom: 16
+};
 
 defaults.global.maintainAspectRatio = false;
 

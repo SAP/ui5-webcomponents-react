@@ -1,10 +1,11 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import React, { CSSProperties, forwardRef, Ref, useCallback } from 'react';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
+import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
-import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import styles from './Avatar.jss';
 
 export interface AvatarPropTypes extends CommonProps {
@@ -18,9 +19,12 @@ export interface AvatarPropTypes extends CommonProps {
   customFontSize?: CSSProperties['width'];
 }
 
-const useStyles = createUseStyles<JSSTheme, string>(styles);
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Avatar' });
 
-const Avatar = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) => {
+/**
+ * <code>import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';</code>
+ */
+const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) => {
   const {
     initials,
     size,
@@ -49,8 +53,6 @@ const Avatar = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) =>
     cssClasses.push(classes[`size${size}`]);
   }
 
-  inlineStyle['--sapUiContentNonInteractiveIconColor'] = 'var(--sapContent_ContrastIconColor)';
-
   if (shape === AvatarShape.Circle) {
     cssClasses.push(classes.circle);
   }
@@ -73,7 +75,7 @@ const Avatar = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) =>
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === 'Enter') {
-        onClick(Event.of(null, e));
+        onClick?.(Event.of(null, e));
       }
     },
     [onClick]
@@ -81,10 +83,12 @@ const Avatar = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) =>
 
   const handleOnClick = useCallback(
     (e) => {
-      onClick(Event.of(null, e));
+      onClick?.(Event.of(null, e));
     },
     [onClick]
   );
+
+  const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
     <span
@@ -96,6 +100,7 @@ const Avatar = forwardRef((props: AvatarPropTypes, ref: Ref<HTMLSpanElement>) =>
       onKeyDown={handleKeyDown}
       title={tooltip}
       slot={slot}
+      {...passThroughProps}
     >
       {initials ? initials : children}
     </span>

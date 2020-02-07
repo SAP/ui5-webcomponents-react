@@ -1,19 +1,28 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import React, { forwardRef, RefObject, FC } from 'react';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { Size } from '@ui5/webcomponents-react/lib/Size';
+import React, { FC, forwardRef, RefObject, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Size } from '@ui5/webcomponents-react/lib/Size';
 import { styles } from './Spinner.jss';
 
 export interface SpinnerProps extends CommonProps {
+  /*
+   * Delay in ms until the Spinner will be displayed
+   */
+  delay?: number;
   size?: Size;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Spinner' });
 
+/**
+ * <code>import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';</code>
+ */
 const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObject<HTMLDivElement>) => {
-  const { className, size, tooltip, slot, style } = props;
+  const { className, size, tooltip, slot, style, delay } = props;
   const classes = useStyles();
+  const [isVisible, setIsVisible] = useState(delay === 0);
 
   const spinnerClasses = StyleClassHelper.of(classes.spinner);
   if (className) {
@@ -21,6 +30,20 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
   }
 
   spinnerClasses.put(classes[`spinner${size}`]);
+
+  useEffect(() => {
+    if (delay > 0) {
+      setTimeout(() => {
+        setIsVisible(true);
+      }, delay);
+    }
+  }, []);
+
+  const passThroughProps = usePassThroughHtmlProps(props);
+
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <div
@@ -35,6 +58,7 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
       title={tooltip || 'Please wait'}
       slot={slot}
       style={style}
+      {...passThroughProps}
     >
       Loading...
     </div>
@@ -42,6 +66,7 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
 });
 
 Spinner.defaultProps = {
+  delay: 0,
   size: Size.Medium
 };
 

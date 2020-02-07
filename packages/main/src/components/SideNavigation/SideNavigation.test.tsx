@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
 import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
@@ -11,19 +11,19 @@ describe('SideNavigation', () => {
         openState={SideNavigationOpenState.Expandend}
         selectedId={'sales-leads'}
         footerItems={[
-          <SideNavigationListItem id="1" text="Legal Information" icon="sap-icon://compare" />,
-          <SideNavigationListItem id="2" text="Useful Links" icon="sap-icon://chain-link" />
+          <SideNavigationListItem id="1" text="Legal Information" icon="compare" />,
+          <SideNavigationListItem id="2" text="Useful Links" icon="chain-link" />
         ]}
       >
-        <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" tooltip="Nav To Home Tooltip" />
-        <SideNavigationListItem text="Calendar" icon="sap-icon://calendar" id="calendar" />
-        <SideNavigationListItem text="Customers" icon="sap-icon://employee" id="customers" />
-        <SideNavigationListItem text="Sales" icon="sap-icon://lead" id="sales">
-          <SideNavigationListItem text="My Opportunities" icon="sap-icon://home" id="sales-opportunities" />
-          <SideNavigationListItem text="My Leads" icon="sap-icon://home" id="sales-leads" />
-          <SideNavigationListItem text="My CPQS" icon="sap-icon://home" id="sales-cpqs" />
+        <SideNavigationListItem text="Overview" icon="home" id="home" tooltip="Nav To Home Tooltip" />
+        <SideNavigationListItem text="Calendar" icon="calendar" id="calendar" />
+        <SideNavigationListItem text="Customers" icon="employee" id="customers" />
+        <SideNavigationListItem text="Sales" icon="lead" id="sales">
+          <SideNavigationListItem text="My Opportunities" icon="home" id="sales-opportunities" />
+          <SideNavigationListItem text="My Leads" icon="home" id="sales-leads" />
+          <SideNavigationListItem text="My CPQS" icon="home" id="sales-cpqs" />
         </SideNavigationListItem>
-        <SideNavigationListItem text="Deliveries" icon="sap-icon://add-product" id="delivieries" />
+        <SideNavigationListItem text="Deliveries" icon="add-product" id="delivieries" />
       </SideNavigation>
     );
     expect(wrapper.render()).toMatchSnapshot();
@@ -36,19 +36,19 @@ describe('SideNavigation', () => {
         selectedId={'sales-leads'}
         noIcons
         footerItems={[
-          <SideNavigationListItem id="1" text="Legal Information" icon="sap-icon://compare" />,
-          <SideNavigationListItem id="2" text="Useful Links" icon="sap-icon://chain-link" />
+          <SideNavigationListItem id="1" text="Legal Information" icon="compare" />,
+          <SideNavigationListItem id="2" text="Useful Links" icon="chain-link" />
         ]}
       >
-        <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" />
-        <SideNavigationListItem text="Calendar" icon="sap-icon://calendar" id="calendar" />
-        <SideNavigationListItem text="Customers" icon="sap-icon://employee" id="customers" />
-        <SideNavigationListItem text="Sales" icon="sap-icon://lead" id="sales">
-          <SideNavigationListItem text="My Opportunities" icon="sap-icon://home" id="sales-opportunities" />
-          <SideNavigationListItem text="My Leads" icon="sap-icon://home" id="sales-leads" />
-          <SideNavigationListItem text="My CPQS" icon="sap-icon://home" id="sales-cpqs" />
+        <SideNavigationListItem text="Overview" icon="home" id="home" />
+        <SideNavigationListItem text="Calendar" icon="calendar" id="calendar" />
+        <SideNavigationListItem text="Customers" icon="employee" id="customers" />
+        <SideNavigationListItem text="Sales" icon="lead" id="sales">
+          <SideNavigationListItem text="My Opportunities" icon="home" id="sales-opportunities" />
+          <SideNavigationListItem text="My Leads" icon="home" id="sales-leads" />
+          <SideNavigationListItem text="My CPQS" icon="home" id="sales-cpqs" />
         </SideNavigationListItem>
-        <SideNavigationListItem text="Deliveries" icon="sap-icon://add-product" id="delivieries" />
+        <SideNavigationListItem text="Deliveries" icon="add-product" id="delivieries" />
       </SideNavigation>
     );
     expect(wrapper.render()).toMatchSnapshot();
@@ -60,19 +60,19 @@ describe('SideNavigation', () => {
         openState={SideNavigationOpenState.Condensed}
         selectedId={'sales-leads'}
         footerItems={[
-          <SideNavigationListItem id="1" text="Legal Information" icon="sap-icon://compare" />,
-          <SideNavigationListItem id="2" text="Useful Links" icon="sap-icon://chain-link" />
+          <SideNavigationListItem id="1" text="Legal Information" icon="compare" />,
+          <SideNavigationListItem id="2" text="Useful Links" icon="chain-link" />
         ]}
       >
-        <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" />
-        <SideNavigationListItem text="Calendar" icon="sap-icon://calendar" id="calendar" />
-        <SideNavigationListItem text="Customers" icon="sap-icon://employee" id="customers" />
-        <SideNavigationListItem text="Sales" icon="sap-icon://lead" id="sales">
-          <SideNavigationListItem text="My Opportunities" icon="sap-icon://home" id="sales-opportunities" />
-          <SideNavigationListItem text="My Leads" icon="sap-icon://home" id="sales-leads" />
-          <SideNavigationListItem text="My CPQS" icon="sap-icon://home" id="sales-cpqs" />
+        <SideNavigationListItem text="Overview" icon="home" id="home" />
+        <SideNavigationListItem text="Calendar" icon="calendar" id="calendar" />
+        <SideNavigationListItem text="Customers" icon="employee" id="customers" />
+        <SideNavigationListItem text="Sales" icon="lead" id="sales">
+          <SideNavigationListItem text="My Opportunities" icon="home" id="sales-opportunities" />
+          <SideNavigationListItem text="My Leads" icon="home" id="sales-leads" />
+          <SideNavigationListItem text="My CPQS" icon="home" id="sales-cpqs" />
         </SideNavigationListItem>
-        <SideNavigationListItem text="Deliveries" icon="sap-icon://add-product" id="delivieries" />
+        <SideNavigationListItem text="Deliveries" icon="add-product" id="delivieries" />
       </SideNavigation>
     );
     expect(wrapper.render()).toMatchSnapshot();
@@ -83,21 +83,23 @@ describe('SideNavigation', () => {
         openState={SideNavigationOpenState.Collapsed}
         selectedId={'sales-leads'}
         footerItems={[
-          <SideNavigationListItem id="1" text="Legal Information" icon="sap-icon://compare" />,
-          <SideNavigationListItem id="2" text="Useful Links" icon="sap-icon://chain-link" />
+          <SideNavigationListItem id="1" text="Legal Information" icon="compare" />,
+          <SideNavigationListItem id="2" text="Useful Links" icon="chain-link" />
         ]}
       >
-        <SideNavigationListItem text="Overview" icon="sap-icon://home" id="home" />
-        <SideNavigationListItem text="Calendar" icon="sap-icon://calendar" id="calendar" />
-        <SideNavigationListItem text="Customers" icon="sap-icon://employee" id="customers" />
-        <SideNavigationListItem text="Sales" icon="sap-icon://lead" id="sales">
-          <SideNavigationListItem text="My Opportunities" icon="sap-icon://home" id="sales-opportunities" />
-          <SideNavigationListItem text="My Leads" icon="sap-icon://home" id="sales-leads" />
-          <SideNavigationListItem text="My CPQS" icon="sap-icon://home" id="sales-cpqs" />
+        <SideNavigationListItem text="Overview" icon="home" id="home" />
+        <SideNavigationListItem text="Calendar" icon="calendar" id="calendar" />
+        <SideNavigationListItem text="Customers" icon="employee" id="customers" />
+        <SideNavigationListItem text="Sales" icon="lead" id="sales">
+          <SideNavigationListItem text="My Opportunities" icon="home" id="sales-opportunities" />
+          <SideNavigationListItem text="My Leads" icon="home" id="sales-leads" />
+          <SideNavigationListItem text="My CPQS" icon="home" id="sales-cpqs" />
         </SideNavigationListItem>
-        <SideNavigationListItem text="Deliveries" icon="sap-icon://add-product" id="delivieries" />
+        <SideNavigationListItem text="Deliveries" icon="add-product" id="delivieries" />
       </SideNavigation>
     );
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  createPassThroughPropsTest(SideNavigation);
 });

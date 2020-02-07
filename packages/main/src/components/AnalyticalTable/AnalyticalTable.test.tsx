@@ -1,6 +1,7 @@
-import { mountThemedComponent } from '@shared/tests/utils';
-import React from 'react';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import React from 'react';
 
 const columns = [
   {
@@ -146,6 +147,7 @@ describe('AnalyticalTable', () => {
       .instance();
     // @ts-ignore
     component.onclick({});
+    console.log(component);
 
     // test desc function inside the popover element
     component = wrapper
@@ -170,11 +172,93 @@ describe('AnalyticalTable', () => {
         filterable={true}
         visibleRows={15}
         minRows={5}
-        selectable={true}
+        selectionMode={TableSelectionMode.SINGLE_SELECT}
         subRowsKey="subRows"
+        isTreeTable={true}
       />
+    );
+
+    let colInst = wrapper
+      .find({ role: 'columnheader' })
+      .at(0)
+      .instance();
+
+    // @ts-ignore
+    expect(colInst.draggable).toBeDefined();
+    // @ts-ignore
+    expect(colInst.draggable).toBeFalsy();
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Loading - Placeholder', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={[]} columns={columns} loading visibleRows={15} minRows={5} />
     );
 
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  test('Loading - Loader', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} loading visibleRows={15} minRows={5} />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Alternate Row Color', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('custom row height', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} rowHeight={60} />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('test drag and drop of a draggable column', () => {
+    const wrapper = mountThemedComponent(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+
+    // get first column of the table and simulate dragging of it
+    let componentDrag = wrapper.find('div[role="columnheader"] div[draggable]').at(0);
+    let inst = componentDrag.instance();
+    // @ts-ignore
+    let dragColumnId = inst.dataset.columnId;
+
+    // @ts-ignore
+    expect(inst.draggable).toBeDefined();
+    // @ts-ignore
+    expect(inst.draggable).toBeTruthy();
+    // @ts-ignore
+    componentDrag.simulate('drag');
+
+    // get second column of the table and simulate dropping on it
+    let dataTransfer = {};
+    // @ts-ignore
+    dataTransfer.getData = () => {
+      return dragColumnId;
+    };
+    let componentDrop = wrapper.find('div[role="columnheader"] div[draggable]').at(1);
+    // @ts-ignore
+    componentDrop.simulate('drop', { dataTransfer: dataTransfer });
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('render without data', () => {
+    const data = [];
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  createPassThroughPropsTest(AnalyticalTable);
 });

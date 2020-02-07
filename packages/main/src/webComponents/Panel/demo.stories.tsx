@@ -1,12 +1,12 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
-import React from 'react';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Panel } from '@ui5/webcomponents-react/lib/Panel';
 import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';
+import React from 'react';
 
 export default {
-  title: 'UI5 Web Components | Panel',
+  title: 'UI5 Web Components / Panel',
   component: Panel
 };
 

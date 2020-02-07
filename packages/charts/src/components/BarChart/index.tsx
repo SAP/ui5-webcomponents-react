@@ -1,13 +1,13 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import bestContrast from 'get-best-contrast-color';
-import React, { forwardRef, Ref, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useMemo } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
-import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import { getCssVariableValue } from '../../themes/Utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
@@ -118,7 +118,10 @@ const BarChartComponent = forwardRef((props: BarChartPropTypes, ref: Ref<any>) =
 
 // @ts-ignore
 BarChartComponent.LoadingPlaceholder = BarChartPlaceholder;
-const BarChart = withChartContainer(BarChartComponent);
+/**
+ * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';</code>
+ */
+const BarChart: FC<BarChartPropTypes> = withChartContainer(BarChartComponent);
 
 BarChart.defaultProps = {
   ...ChartBaseDefaultProps

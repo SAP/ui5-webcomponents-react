@@ -1,18 +1,18 @@
+import '@ui5/webcomponents-icons/dist/icons/filter';
+import '@ui5/webcomponents-icons/dist/icons/group-2';
+import '@ui5/webcomponents-icons/dist/icons/sort-ascending';
+import '@ui5/webcomponents-icons/dist/icons/sort-descending';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import React, { CSSProperties, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import React, { CSSProperties, DragEventHandler, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
+import { createUseStyles, useTheme } from 'react-jss';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { Resizer } from '../Resizer';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
-import '@ui5/webcomponents/dist/icons/filter';
-import '@ui5/webcomponents/dist/icons/group-2';
-import '@ui5/webcomponents/dist/icons/sort-descending';
-import '@ui5/webcomponents/dist/icons/sort-ascending';
 
 export interface ColumnHeaderProps {
+  id: string;
   defaultSortDesc: boolean;
   onFilteredChange: (event: Event) => void;
   children: ReactNode | ReactNodeArray;
@@ -26,6 +26,14 @@ export interface ColumnHeaderProps {
   isLastColumn?: boolean;
   onSort?: (e: Event) => void;
   onGroupBy?: (e: Event) => void;
+  onDragStart: DragEventHandler<HTMLDivElement>;
+  onDragOver: DragEventHandler<HTMLDivElement>;
+  onDrop: DragEventHandler<HTMLDivElement>;
+  onDragEnter: DragEventHandler<HTMLDivElement>;
+  onDragEnd: DragEventHandler<HTMLDivElement>;
+  dragOver: boolean;
+  isResizing: boolean;
+  isDraggable: boolean;
 }
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -55,15 +63,35 @@ const styles = ({ parameters }: JSSTheme) => ({
     '& :last-child': {
       marginLeft: '0.25rem'
     }
+  },
+  resizer: {
+    display: 'inline-block',
+    width: '16px',
+    height: '100%',
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    transform: 'translateX(50%)',
+    zIndex: 1
+  },
+  lastColumn: {
+    right: '8px'
   }
 });
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'TableColumnHeader' });
 
-export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
+export /**
+ * <code>import { ColumnHeader } from '@ui5/webcomponents-react/lib/ColumnHeader';</code>
+ */
+/**
+ * <code>import { ColumnHeader } from '@ui5/webcomponents-react/lib/ColumnHeader';</code>
+ */
+const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
   const classes = useStyles(props);
 
   const {
+    id,
     children,
     column,
     className,
@@ -73,7 +101,14 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     filterable,
     isLastColumn,
     onSort,
-    onGroupBy
+    onGroupBy,
+    onDragEnter,
+    onDragOver,
+    onDragStart,
+    onDrop,
+    onDragEnd,
+    isDraggable,
+    dragOver
   } = props;
 
   const openBy = useMemo(() => {
@@ -84,13 +119,27 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
 
     const classNames = StyleClassHelper.of(classes.header);
 
-    const sortingIcon = column.isSorted ? <Icon src={desc ? 'sort-descending' : 'sort-ascending'} /> : null;
-    const filterIcon = isFiltered ? <Icon src="sap-icon://filter" /> : null;
-    const groupingIcon = column.isGrouped ? <Icon src="sap-icon://group-2" /> : null;
+    const sortingIcon = column.isSorted ? <Icon name={desc ? 'sort-descending' : 'sort-ascending'} /> : null;
+    const filterIcon = isFiltered ? <Icon name="filter" /> : null;
+    const groupingIcon = column.isGrouped ? <Icon name="group-2" /> : null;
 
     return (
-      <div className={classNames.valueOf()}>
-        <span style={{ textOverflow: 'ellipsis', overflowX: 'hidden', whiteSpace: 'nowrap' }}>{children}</span>
+      <div
+        className={classNames.valueOf()}
+        draggable={isDraggable}
+        onDragEnter={onDragEnter}
+        onDragOver={onDragOver}
+        onDragStart={onDragStart}
+        onDrop={onDrop}
+        onDragEnd={onDragEnd}
+        data-column-id={id}
+      >
+        <span
+          title={typeof children === 'string' ? children : null}
+          style={{ textOverflow: 'ellipsis', overflowX: 'hidden', whiteSpace: 'nowrap' }}
+        >
+          {children}
+        </span>
         <div className={classes.iconContainer}>
           {filterIcon}
           {sortingIcon}
@@ -98,12 +147,26 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
         </div>
       </div>
     );
-  }, [classes, column.filterValue, column.isSorted, column.isGrouped, column.isSortedDesc, children]);
+  }, [
+    classes,
+    column.filterValue,
+    column.isSorted,
+    column.isGrouped,
+    column.isSortedDesc,
+    children,
+    isDraggable,
+    onDragEnter,
+    onDragOver,
+    onDragStart,
+    onDrop,
+    onDragEnd,
+    id
+  ]);
 
   const isResizable = !isLastColumn && column.canResize;
+  const theme = useTheme() as JSSTheme;
   const innerStyle: CSSProperties = useMemo(() => {
-    const modifiedStyles = {
-      ...style,
+    const modifiedStyles: CSSProperties = {
       width: '100%',
       fontWeight: 'normal',
       cursor: 'pointer',
@@ -113,18 +176,21 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
     if (isResizable) {
       modifiedStyles.maxWidth = `calc(100% - 16px)`;
     }
-    return modifiedStyles as CSSProperties;
-  }, [style, isResizable]);
+    if (dragOver) {
+      modifiedStyles.borderLeft = `3px solid ${theme.parameters.sapSelectedColor}`;
+    }
+    return modifiedStyles;
+  }, [isResizable, dragOver]);
 
   if (!column) return null;
 
   return (
-    <div className={className} style={style}>
+    <div id={id} className={className} style={style} role="columnheader">
       {groupable || sortable || filterable ? (
         <ColumnHeaderModal
           openBy={openBy}
           showFilter={filterable}
-          showGroup={groupable}
+          showGroup={groupable && column.disableGrouping !== true}
           showSort={sortable}
           column={column}
           style={innerStyle}
@@ -132,9 +198,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
           onGroupBy={onGroupBy}
         />
       ) : (
-        openBy
+        <div style={{ ...innerStyle, display: 'inline-block', cursor: 'auto' }}>{openBy}</div>
       )}
-      {isResizable && <Resizer {...props} />}
+      <div {...column.getResizerProps()} className={`${classes.resizer} ${isLastColumn ? classes.lastColumn : ''}`} />
     </div>
   );
 };

@@ -6,37 +6,34 @@ Array [
     style="display: inline-block; pointer-events: auto;"
   >
     <div
-      class="Variant-Management--VariantManagement-"
+      class="VariantManagement--VariantManagement-"
     >
       <ui5-title
-        class="Variant-Management--VariantManagementText-"
+        class="VariantManagement--VariantManagementText-"
         level="H4"
       >
         Variant 1
       </ui5-title>
       <ui5-button
-        class=""
         design="Transparent"
-        icon="sap-icon://navigation-down-arrow"
+        icon="navigation-down-arrow"
       />
     </div>
   </div>,
   <ui5-popover
-    class=""
     header-text="Variants"
     horizontal-align="Center"
     placement-type="Bottom"
     vertical-align="Center"
   >
     <ui5-button
-      class="Variant-Management--footer-"
+      class="VariantManagement--footer-"
       design="Emphasized"
       slot="footer"
     >
       Cancel
     </ui5-button>
     <ui5-list
-      class=""
       footer-text=""
       header-text=""
       mode="SingleSelect"
@@ -44,7 +41,6 @@ Array [
       separators="All"
     >
       <ui5-li
-        class=""
         data-key="1"
         info-state="None"
         selected="true"
@@ -54,7 +50,6 @@ Array [
         Variant 1
       </ui5-li>
       <ui5-li
-        class=""
         data-key="2"
         info-state="None"
         style="width: 300px;"

@@ -1,5 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
+import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
@@ -22,11 +21,11 @@ describe('ProgressIndicator', () => {
   });
 
   test('State', () => {
-    const wrapper = mountThemedComponent(<ProgressIndicator percentValue={85} state={ValueState.Error} />, {
-      contentDensity: ContentDensity.Cozy
-    });
+    const wrapper = mountThemedComponent(<ProgressIndicator percentValue={85} state={ValueState.Error} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   testFactory();
+
+  createPassThroughPropsTest(ProgressIndicator);
 });

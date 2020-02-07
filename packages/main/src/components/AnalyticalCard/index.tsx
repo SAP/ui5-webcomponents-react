@@ -1,4 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -20,6 +21,9 @@ export interface AnalyticalCardTypes extends CommonProps {
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalCard' });
 
+/**
+ * <code>import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';</code>
+ */
 export const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef(
   (props: AnalyticalCardTypes, ref: Ref<HTMLDivElement>) => {
     const { children, style, className, tooltip, header, width } = props;
@@ -35,8 +39,17 @@ export const AnalyticalCard: FC<AnalyticalCardTypes> = forwardRef(
         ...style
       };
     }, [style, width]);
+
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     return (
-      <div ref={ref} className={classNameString.toString()} style={analyticalCardStyles} title={tooltip}>
+      <div
+        ref={ref}
+        className={classNameString.toString()}
+        style={analyticalCardStyles}
+        title={tooltip}
+        {...passThroughProps}
+      >
         {header}
         <div className={classes.content}>{children}</div>
       </div>

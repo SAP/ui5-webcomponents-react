@@ -1,6 +1,6 @@
-import UI5TableColumn from '@ui5/webcomponents/dist/TableColumn';
-import React, { CSSProperties, FC, ReactNode } from 'react';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import UI5TableColumn from '@ui5/webcomponents/dist/TableColumn';
+import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TableColumnPropTypes extends WithWebComponentPropTypes {
@@ -10,6 +10,9 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode; // @generated
 }
 
+/**
+ * <code>import { TableColumn } from '@ui5/webcomponents-react/lib/TableColumn';</code>
+ */
 const TableColumn: FC<TableColumnPropTypes> = withWebComponent<TableColumnPropTypes>(UI5TableColumn);
 
 TableColumn.displayName = 'TableColumn';

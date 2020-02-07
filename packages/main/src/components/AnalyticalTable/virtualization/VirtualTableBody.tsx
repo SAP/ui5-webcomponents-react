@@ -1,128 +1,92 @@
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-import '@ui5/webcomponents/dist/icons/navigation-down-arrow';
-import '@ui5/webcomponents/dist/icons/navigation-right-arrow';
+import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
+import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
-import { useTheme } from 'react-jss';
 import { FixedSizeList } from 'react-window';
-import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { Cell } from './Cell';
-
-const ROW_HEIGHT_COMPACT = 32;
-const ROW_HEIGHT_COZY = 44;
+import { VirtualTableRow } from './VirtualTableRow';
 
 export const VirtualTableBody = (props) => {
   const {
     classes,
-    tableBodyClasses,
-    rowContainerStyling,
-    onRowClicked,
     prepareRow,
     rows,
-    visibleRows,
     minRows,
     columns,
-    loading,
-    noDataText,
-    NoDataComponent,
-    selectedRow,
-    selectable,
+    selectionMode,
     reactWindowRef,
-    isTreeTable
+    isTreeTable,
+    internalRowHeight,
+    tableBodyHeight,
+    visibleRows,
+    alternateRowColor,
+    overscanCount,
+    totalColumnsWidth,
+    selectedFlatRows
   } = props;
 
   const innerDivRef = useRef(null);
-  const theme: JSSTheme = useTheme() as JSSTheme;
-
-  const VirtualTableItem = useCallback(
-    (itemProps) => {
-      const { style, index } = itemProps;
-      const row = rows[index];
-      if (rows.length === 0 && !loading && index === 0) {
-        return (
-          <div style={style}>
-            <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} />
-          </div>
-        );
-      }
-
-      const rowStyle = {
-        ...style,
-        gridTemplateColumns: rowContainerStyling.gridTemplateColumns
-      };
-
-      if (!row) {
-        return (
-          <div key={`minRow-${index}`} className={classes.tr} style={rowStyle}>
-            {columns.map((col, colIndex) => (
-              <div className={classes.tableCell} key={`minRow-${index}-${colIndex}`} />
-            ))}
-          </div>
-        );
-      }
-
-      prepareRow(row);
-
-      const rowProps = row.getRowProps();
-
-      return (
-        <div key={rowProps.key} className={rowProps.className} style={rowStyle} onClick={onRowClicked(row)}>
-          {row.cells.map((cell, i) => {
-            const cellProps = cell.getCellProps();
-            const key = cellProps && cellProps.key ? cellProps.key : `cell-${i}`;
-            return <Cell key={key} row={row} cell={cell} columnIndex={i} classes={classes} isTreeTable={isTreeTable} />;
-          })}
-        </div>
-      );
-    },
-    [classes, columns, rows, prepareRow, rowContainerStyling, selectedRow, selectable, theme, props]
-  );
 
   useEffect(() => {
     if (innerDivRef.current) {
       innerDivRef.current.classList = '';
-      tableBodyClasses.split(' ').forEach((cssClass) => {
-        innerDivRef.current.classList.add(cssClass);
-      });
+      innerDivRef.current.classList.add(classes.tbody);
+      if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
+        innerDivRef.current.classList.add(classes.selectable);
+      }
     }
-  }, [innerDivRef.current, tableBodyClasses]);
+  }, [
+    innerDivRef.current,
+    selectionMode,
+    classes.tbody,
+    classes.selectable,
+    alternateRowColor,
+    classes.alternateRowColor
+  ]);
 
-  const { listHeight, itemCount, rowHeight } = useMemo(() => {
-    let internalRowHeight = theme.contentDensity === ContentDensity.Compact ? ROW_HEIGHT_COMPACT : ROW_HEIGHT_COZY;
-    if (props.rowHeight) {
-      internalRowHeight = props.rowHeight;
-    }
+  const itemCount = Math.max(minRows, rows.length);
+  const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
 
+  const tableData = useMemo(() => {
     return {
-      listHeight: internalRowHeight * Math.max(rows.length < visibleRows ? rows.length : visibleRows, minRows),
-      itemCount: Math.max(minRows, rows.length),
-      rowHeight: internalRowHeight
+      rows,
+      additionalProps: {
+        isTreeTable,
+        classes,
+        columns
+      }
     };
-  }, [rows, visibleRows, minRows, props.rowHeight]);
+  }, [rows, prepareRow, isTreeTable, classes, columns, selectedFlatRows, selectionMode]);
 
   const getItemKey = useCallback(
-    (index) => {
-      const row = rows[index];
-      if (!row.getRowProps) {
-        prepareRow(row);
+    (index, data) => {
+      const row = data.rows[index];
+      if (row) {
+        if (!row.getRowProps) {
+          prepareRow(row);
+        }
+        if (row.getRowProps) {
+          return row.getRowProps().key;
+        }
       }
-      const key = row.getRowProps ? row.getRowProps().key : index;
-      console.log(key);
-      return key;
+      return index;
     },
-    [rows]
+    [prepareRow]
   );
 
   return (
     <FixedSizeList
+      className={classes.virtualTableBody}
       ref={reactWindowRef}
-      height={listHeight}
+      height={tableBodyHeight}
+      width={totalColumnsWidth}
+      itemData={tableData}
       itemCount={itemCount}
-      itemSize={rowHeight}
-      innerRef={innerDivRef}
-      overscanCount={5}
+      itemSize={internalRowHeight}
       itemKey={getItemKey}
+      innerRef={innerDivRef}
+      overscanCount={overscan}
     >
-      {VirtualTableItem}
+      {VirtualTableRow}
     </FixedSizeList>
   );
 };

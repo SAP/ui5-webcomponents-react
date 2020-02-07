@@ -1,11 +1,13 @@
 import { action } from '@storybook/addon-actions';
-import { array, boolean, number, text } from '@storybook/addon-knobs';
+import { array, boolean, number, object, select, text } from '@storybook/addon-knobs';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import React from 'react';
 import generateData from './generateData';
+import { TableScaleWidthMode } from '../../../enums/TableScaleWidthMode';
 
 const columns = [
   {
@@ -15,14 +17,16 @@ const columns = [
   {
     Header: 'Age',
     accessor: 'age',
-    hAlign: TextAlign.End
+    hAlign: TextAlign.End,
+    disableGrouping: true,
+    className: 'superCustomClass'
   },
   {
     Header: 'Friend Name',
     accessor: 'friend.name'
   },
   {
-    Header: () => <span>Friend Age</span>, // Custom header components!
+    Header: () => <span>Friend Age</span>,
     accessor: 'friend.age',
     hAlign: TextAlign.End,
     filter: (rows, accessor, filterValue) => {
@@ -51,9 +55,9 @@ const columns = [
 ];
 
 const data = generateData(200);
-const dataTree = generateData(200, true);
+const dataTree = generateData(20, true);
 
-const Demo = () => {
+export const defaultTable = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <AnalyticalTable
@@ -62,28 +66,32 @@ const Demo = () => {
         columns={columns}
         loading={boolean('loading', false)}
         busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
+        alternateRowColor={boolean('alternateRowColor', false)}
         sortable={boolean('sortable', true)}
         filterable={boolean('filterable', true)}
-        visibleRows={number('visibleRows', 15)}
+        visibleRows={number('visibleRows', 5)}
         minRows={number('minRows', 5)}
         groupable={boolean('groupable', true)}
-        selectable={boolean('selectable', true)}
+        selectionMode={select<TableSelectionMode>(
+          'selectionMode',
+          TableSelectionMode,
+          TableSelectionMode.SINGLE_SELECT
+        )}
+        scaleWidthMode={select<TableScaleWidthMode>('scaleWidthMode', TableScaleWidthMode, TableScaleWidthMode.Default)}
         onRowSelected={action('onRowSelected')}
         onSort={action('onSort')}
         onGroup={action('onGroup')}
+        onRowExpandChange={action('onRowExpandChange')}
         groupBy={array('groupBy', [])}
-        rowHeight={number('rowHeight', 60)}
-        selectedRowKey={text('selectedRowKey', `row_5`)}
+        rowHeight={number('rowHeight', 44)}
+        selectedRowIds={object('selectedRowIds', { 3: true })}
+        onColumnsReordered={action('onColumnsReordered')}
       />
     </div>
   );
 };
 
-export const defaultStory = () => {
-  return <Demo />;
-};
-
-defaultStory.story = {
+defaultTable.story = {
   name: 'Default'
 };
 
@@ -99,11 +107,12 @@ export const treeTable = () => {
       filterable={boolean('filterable', true)}
       visibleRows={number('visibleRows', 15)}
       minRows={number('minRows', 5)}
-      selectable={boolean('selectable', true)}
+      selectionMode={select<TableSelectionMode>('selectionMode', TableSelectionMode, TableSelectionMode.SINGLE_SELECT)}
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
+      onRowExpandChange={action('onRowExpandChange')}
       subRowsKey={text('subRowsKey', 'subRows')}
-      selectedRowKey={text('selectedRowKey', `row_5`)}
+      selectedRowIds={object('selectedRowIds', { 3: true })}
       isTreeTable={boolean('isTreeTable', true)}
     />
   );
@@ -171,6 +180,6 @@ tableWithCustomTitle.story = {
 };
 
 export default {
-  title: 'Components | Analytical Table',
+  title: 'Components / Analytical Table',
   component: AnalyticalTable
 };

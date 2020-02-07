@@ -1,14 +1,10 @@
-import { useCallback } from 'react';
-
-export const useTableStyling = (classes) =>
-  useCallback(
-    (instance) => {
-      instance.getTableProps.push(() => {
-        return {
-          className: classes.table
-        };
-      });
-      return instance;
-    },
-    [classes.table]
-  );
+export const useTableStyling = (tableHooks) => {
+  tableHooks.getTableProps.push((tableProps, { instance }) => {
+    const { classes } = instance.webComponentsReactProperties;
+    return {
+      ...tableProps,
+      className: classes.table
+    };
+  });
+};
+useTableStyling.pluginName = 'useTableStyling';

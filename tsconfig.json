@@ -15,9 +15,9 @@
     "baseUrl": ".",
     "paths": {
       "@shared/*": ["shared/*"],
-      "@ui5/webcomponents-react/lib/*": ["node_modules/@ui5/webcomponents-react/src/lib/*"],
-      "@ui5/webcomponents-react-base/lib/*": ["node_modules/@ui5/webcomponents-react-base/src/lib/*"],
-      "@ui5/webcomponents-react-charts/lib/*": ["node_modules/@ui5/webcomponents-react-charts/src/lib/*"]
+      "@ui5/webcomponents-react/*": ["node_modules/@ui5/webcomponents-react/src/*"],
+      "@ui5/webcomponents-react-base/*": ["node_modules/@ui5/webcomponents-react-base/src/*"],
+      "@ui5/webcomponents-react-charts/*": ["node_modules/@ui5/webcomponents-react-charts/src/*"]
     },
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
@@ -38,5 +38,8 @@
   ],
   "exclude": [
     "node_modules"
+  ],
+  "files": [
+    "./packages/docs/typings.d.ts"
   ]
 }

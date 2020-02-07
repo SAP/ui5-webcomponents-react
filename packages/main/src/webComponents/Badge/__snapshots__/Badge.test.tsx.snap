@@ -2,7 +2,6 @@
 
 exports[`Badge Basic Test 1`] = `
 <ui5-badge
-  class=""
   color-scheme="1"
 >
   My Badge
@@ -11,13 +10,11 @@ exports[`Badge Basic Test 1`] = `
 
 exports[`Badge with Icon 1`] = `
 <ui5-badge
-  class=""
   color-scheme="1"
 >
   <ui5-icon
-    class=""
+    name="employee"
     slot="icon"
-    src="sap-icon://employee"
   />
   My Badge
 </ui5-badge>

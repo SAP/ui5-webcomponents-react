@@ -1,5 +1,4 @@
 import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ZIndex } from '../../enums/ZIndex';
 
 const styles = ({ parameters }: JSSTheme) => ({
   objectPage: {
@@ -14,13 +13,14 @@ const styles = ({ parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiBaseBG
   },
   contentContainer: {
-    overflow: 'hidden auto',
-    height: '100%',
+    overflowX: 'hidden',
+    overflowY: 'auto',
     position: 'relative',
     flexGrow: 1
   },
   outerContentContainer: {
     width: '100%',
+    height: '100%',
     overflow: 'hidden'
   },
   contentScrollContainer: {
@@ -32,7 +32,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     boxShadow: `inset 0 -0.0625rem ${parameters.sapUiObjectHeaderBorderColor}, inset 0 0.0625rem ${parameters.sapUiObjectHeaderBorderColor}`,
     display: 'flex',
     height: '2.75rem',
-    minHeight: '2.75rem'
+    minHeight: '2.75rem',
+    position: 'relative'
   },
   sectionsContainer: {
     '&:before': {
@@ -56,32 +57,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   fillerDiv: {
     backgroundColor: parameters.sapUiBaseBG
-  },
-  outerScrollbar: {
-    position: 'absolute',
-    right: 0,
-    overflow: 'hidden',
-    height: '100%',
-    zIndex: ZIndex.ResponsivePopover,
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
-    '& ::-webkit-scrollbar': {
-      backgroundColor: '#ffffff'
-    },
-    '& ::-webkit-scrollbar-thumb': {
-      backgroundColor: '#949494',
-      '&:hover': {
-        backgroundColor: '#8c8c8c'
-      }
-    },
-    '& ::-webkit-scrollbar-corner': {
-      backgroundColor: '#ffffff'
-    }
-  },
-  innerScrollbar: {
-    width: '34px',
-    overflowY: 'scroll',
-    overflowX: 'hidden',
-    height: '100%'
   },
   // header
   header: {
@@ -129,6 +104,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     wordBreak: 'break-word',
     verticalAlign: 'baseline',
     paddingTop: '0.5rem',
+    paddingBottom: '0.5rem',
     fontSize: '0.875rem',
     color: parameters.sapUiContentLabelColor
   },
@@ -147,15 +123,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   stickied: {},
-  image: {
-    height: '0',
-    width: '0',
-    opacity: '0',
-    display: 'inline-block',
-    verticalAlign: 'middle'
-  },
   headerContent: {
-    paddingTop: '1.5rem',
+    //paddingTop: '1.5rem',
     paddingBottom: '0.25rem',
     transition: 'max-height 0.5s',
     maxHeight: '500px',
@@ -167,7 +136,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     '& $headerContent': {
       paddingTop: 0,
       '& > *': {
-        display: 'inline-block',
+        display: 'flex',
         verticalAlign: 'top',
         '&:not(:first-child)': {
           marginRight: '2rem',
@@ -194,11 +163,19 @@ const styles = ({ parameters }: JSSTheme) => ({
     display: 'inline-block',
     verticalAlign: 'top',
     '& > *': {
+      float: 'left',
       marginRight: '2rem',
       marginBottom: '1rem',
       lineHeight: '1.5rem'
+    },
+    '&:after': {
+      clear: 'both'
     }
   },
+  headerCustomContentItem: {
+    marginLeft: '1rem'
+  },
+
   headerImage: {
     maxWidth: '5rem',
     maxHeight: '5rem',
@@ -209,6 +186,23 @@ const styles = ({ parameters }: JSSTheme) => ({
   image: {
     width: '100%',
     height: '100%'
+  },
+  keyInfos: {
+    '& > *': {
+      marginLeft: '1rem'
+    },
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  avatar: {
+    marginRight: '1rem'
+  },
+  toggleHeaderButton: {
+    position: 'absolute',
+    '--_ui5_button_compact_height': '1.25rem',
+    '--_ui5_button_base_height': '1.25rem',
+    top: `-0.625rem`,
+    left: 'calc(50% - 1rem)'
   }
 });
 

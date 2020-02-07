@@ -1,9 +1,9 @@
 import { number, text } from '@storybook/addon-knobs';
+import { RadialChart } from '@ui5/webcomponents-react-charts/lib/RadialChart';
 import React from 'react';
-import { RadialChart } from './index';
 
 export default {
-  title: 'Charts | RadialChart',
+  title: 'Charts / RadialChart',
   component: RadialChart
 };
 

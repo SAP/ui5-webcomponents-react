@@ -1,13 +1,14 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
+import '@ui5/webcomponents-icons/dist/icons/order-status.js';
 import { Card } from '@ui5/webcomponents-react/lib/Card';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import '@ui5/webcomponents/dist/icons/order-status.js';
 import React from 'react';
 
 export default {
-  title: 'UI5 Web Components | Card',
+  title: 'UI5 Web Components / Card',
   component: Card
 };
 
@@ -16,7 +17,7 @@ export const defaultStory = () => (
     heading={text('heading', 'My Orders')}
     subtitle={text('subtitle', 'Open')}
     status={text('status', '5 of 22')}
-    avatar={text('avatar', 'sap-icon://order-status')}
+    avatar={<Icon name="order-status" />}
     headerInteractive={boolean('headerInteractive', false)}
     onHeaderClick={action('onHeaderClick')}
   >

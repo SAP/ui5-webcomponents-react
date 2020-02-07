@@ -1,12 +1,13 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import React, { forwardRef, ReactNode, ReactNodeArray, RefObject, FC } from 'react';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { useScrollElement } from '@ui5/webcomponents-react-base/lib/useScrollElement';
+import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';
-import { useScrollElement } from '../ObjectPage/scroll/useScrollElement';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
   title?: string;
@@ -17,6 +18,9 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPageSection' });
 
+/**
+ * <code>import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';</code>
+ */
 const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
   (props: ObjectPageSectionPropTypes, ref: RefObject<any>) => {
     const { title, id, children, titleUppercase, className, style, tooltip } = props;
@@ -38,8 +42,18 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
       titleClasses.put(classes.uppercase);
     }
 
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     return (
-      <section ref={sectionRef} id={htmlId} role="region" className={className} style={style} title={tooltip}>
+      <section
+        ref={sectionRef}
+        role="region"
+        className={className}
+        style={style}
+        title={tooltip}
+        {...passThroughProps}
+        id={htmlId}
+      >
         <div role="heading" className={classes.header}>
           <div className={titleClasses.valueOf()}>{title}</div>
         </div>

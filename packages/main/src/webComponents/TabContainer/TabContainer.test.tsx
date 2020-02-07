@@ -1,6 +1,6 @@
-import React from 'react';
-import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 import { mountThemedComponent } from '@shared/tests/utils';
+import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
+import React from 'react';
 
 describe('TabContainer', () => {
   test('Basic Test (generated)', () => {

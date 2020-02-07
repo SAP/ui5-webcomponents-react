@@ -1,5 +1,6 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -17,6 +18,9 @@ export interface SegmentedButtonItemPropTypes extends CommonProps {
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'SegmentedButtonItem' });
 
+/**
+ * <code>import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';</code>
+ */
 const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = forwardRef(
   (props: SegmentedButtonItemPropTypes, ref: Ref<HTMLLIElement>) => {
     const { disabled, children, icon, className, style, tooltip, onClick, id, width } = props;
@@ -66,6 +70,8 @@ const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = forwardRef(
       };
     }, [style, width]);
 
+    const passThroughProps = usePassThroughHtmlProps(props);
+
     return (
       <li
         ref={ref}
@@ -74,6 +80,7 @@ const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = forwardRef(
         style={inlineStyles}
         title={tooltip}
         data-has-own-width={!!width}
+        {...passThroughProps}
       >
         {icon && <div className={iconClasses.valueOf()}>{icon}</div>}
         {children}

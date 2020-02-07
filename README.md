@@ -1,15 +1,15 @@
 <a name="top"></a>
 # UI5 Web Components for React
 <p align="center">
-  <a href="https://travis-ci.org/SAP/ui5-webcomponents-react" target="_blank">
-    <img alt="Build Status" src="https://img.shields.io/travis/SAP/ui5-webcomponents-react/master.svg">
+  <a href="https://github.com/SAP/ui5-webcomponents-react/actions?query=workflow:%22build%22" target="_blank">
+    <img alt="Build Status" src="https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg">
   </a>
-  <a href="https://codecov.io/gh/SAP/ui5-webcomponents-react">
-    <img src="https://codecov.io/gh/SAP/ui5-webcomponents-react/branch/master/graph/badge.svg" />
+  <a href='https://coveralls.io/github/SAP/ui5-webcomponents-react'>
+    <img src='https://coveralls.io/repos/github/SAP/ui5-webcomponents-react/badge.svg' alt='Coverage Status' />
   </a>
-  <!-- <a href="https://sap-ea.slack.com/messages/CEN48B210" target="_blank">
-    <img alt="Slack Badge" src="https://badgen.net/badge/slack/ui5-webcomponents-react/orange?icon=slack">
-  </a> -->
+  <a href="https://openui5.slack.com/archives/CSQEJ2J04" target="_blank">
+    <img alt="Slack Badge" src="https://badgen.net/badge/slack/webcomponents-react/orange?icon=slack">
+  </a>
   <a href="https://github.com/prettier/prettier" target="_blank">
     <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg"> 
   </a>
@@ -30,17 +30,17 @@ You can play around with our components by visiting our [Storybook](https://sap.
 
 ### Package Overview
 
-#### [@ui5/webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main) - Fiori 3 Components [![](https://img.shields.io/npm/v/@ui5/webcomponents-react/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react.svg?label=size) --> 
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react.svg?label=gzip%20size) -->
+#### [@ui5/webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main) - Fiori 3 Components<br />
+[![](https://img.shields.io/npm/v/@ui5/webcomponents-react/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
+[![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react)](https://bundlephobia.com/result?p=@ui5/webcomponents-react)
 
-#### [@ui5/webcomponents-react-charts](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts) - Fiori Charts  [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts)
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react-charts.svg?label=size)  -->
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-charts.svg?label=gzip%20size) -->
+#### [@ui5/webcomponents-react-charts](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts) - Fiori Charts<br />
+[![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-charts/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts)
+[![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-charts)](https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts)
 
-#### [@ui5/webcomponents-react-base](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base) - Utils [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base)
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-base](https://img.shields.io/bundlephobia/min/@ui5/webcomponents-react-base.svg?label=size) --> 
-<!-- ![https://bundlephobia.com/result?p=@ui5/webcomponents-react-base](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-base.svg?label=gzip%20size) -->
+#### [@ui5/webcomponents-react-base](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base) - Utils<br />
+[![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base) [![](https://img.shields.io/npm/v/@ui5/webcomponents-react-base/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react-base)
+[![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@ui5/webcomponents-react-base)](https://bundlephobia.com/result?p=@ui5/webcomponents-react-base)
 
 
 <!-- *********************************************************************** -->
@@ -159,7 +159,10 @@ Please look at our [GitHub Issues](https://github.com/SAP/ui5-webcomponents-reac
 <a name="support"></a>
 ## Support
 
-This project is provided "as-is": there is no guarantee that raised issues will be answered or addressed in future releases.
+We welcome all comments, suggestions, questions, and bug reports. Feel free to open issues or chat with us directly in the [`#webcomponents-react`](https://openui5.slack.com/archives/CSQEJ2J04) channel in the 
+[OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
+Please note that you have to join this Slack workspace via [this link](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/) if you are not part of it already.
+
 
 <!-- *********************************************************************** -->
 <a name="contributing"></a>
