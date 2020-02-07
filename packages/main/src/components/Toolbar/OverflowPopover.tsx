@@ -3,7 +3,7 @@ import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
-import '@ui5/webcomponents/dist/icons/overflow.js';
+import '@ui5/webcomponents-icons/dist/icons/overflow';
 
 const openByStyle = {
   display: 'flex'
