@@ -145,11 +145,11 @@ const renderComposedChart = () => (
       xAxisVisible: true,
       gridStroke: 'white',
       legendVisible: true,
-      gridVertical: true,
+      gridVertical: false,
       gridHorizontal: true
     }}
   >
-    <Bar dataKey={'sessions'} yAxisId="left" />
+    <Bar dataKey={'sessions'} />
 
     <Line dataKey={'users'} stroke={'orange'} strokeWidth={2.5} />
     <Line dataKey={'volume'} strokg={'lightblue'} strokeWidth={1} />
