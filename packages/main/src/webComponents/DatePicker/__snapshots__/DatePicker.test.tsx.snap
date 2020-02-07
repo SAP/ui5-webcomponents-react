@@ -2,7 +2,6 @@
 
 exports[`DatePicker Basic Test (generated) 1`] = `
 <ui5-datepicker
-  class=""
   value-state="None"
 />
 `;

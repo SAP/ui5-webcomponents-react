@@ -2,7 +2,6 @@
 
 exports[`MessageStrip Basic Test (generated) 1`] = `
 <ui5-messagestrip
-  class=""
   type="Information"
 />
 `;

@@ -2,10 +2,10 @@
 # UI5 Web Components for React
 <p align="center">
   <a href="https://github.com/SAP/ui5-webcomponents-react/actions?query=workflow:%22build%22" target="_blank">
-    <img alt="Build Status" src="https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg?branch=master">
+    <img alt="Build Status" src="https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg">
   </a>
-  <a href="https://codecov.io/gh/SAP/ui5-webcomponents-react">
-    <img src="https://codecov.io/gh/SAP/ui5-webcomponents-react/branch/master/graph/badge.svg" />
+  <a href='https://coveralls.io/github/SAP/ui5-webcomponents-react'>
+    <img src='https://coveralls.io/repos/github/SAP/ui5-webcomponents-react/badge.svg' alt='Coverage Status' />
   </a>
   <a href="https://openui5.slack.com/archives/CSQEJ2J04" target="_blank">
     <img alt="Slack Badge" src="https://badgen.net/badge/slack/webcomponents-react/orange?icon=slack">

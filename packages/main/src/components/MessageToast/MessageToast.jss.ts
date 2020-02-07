@@ -22,6 +22,9 @@ export default ({ parameters }: JSSTheme) => ({
     whiteSpace: 'pre-line',
     wordWrap: 'break-word',
     padding: '1rem !important',
-    color: `${parameters.sapUiListTextColor} !important`
+    color: `${parameters.sapUiListTextColor} !important`,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

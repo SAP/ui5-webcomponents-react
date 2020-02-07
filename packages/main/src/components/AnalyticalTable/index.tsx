@@ -1,8 +1,6 @@
-import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
@@ -17,10 +15,9 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
-  useState
+  useRef
 } from 'react';
-import { createUseStyles, useTheme } from 'react-jss';
+import { createUseStyles } from 'react-jss';
 import {
   Column,
   PluginHook,
@@ -38,7 +35,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
-import { DEFAULT_COLUMN_WIDTH, DefaultColumn } from './defaults/Column';
+import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
@@ -53,6 +50,9 @@ import { useToggleRowExpand } from './hooks/useToggleRowExpand';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
+import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
+import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
+import { useColumnsDependencies } from './hooks/useColumnsDependencies';
 
 export interface ColumnConfiguration extends Column {
   accessor?: string;
@@ -101,6 +101,7 @@ export interface TableProps extends CommonProps {
   groupable?: boolean;
   groupBy?: string[];
   selectionMode?: TableSelectionMode;
+  scaleWidthMode?: TableScaleWidthMode;
   columnOrder?: object[];
 
   // events
@@ -126,9 +127,7 @@ export interface TableProps extends CommonProps {
   LoadingComponent?: ComponentType<any>;
 }
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
-const ROW_HEIGHT_COMPACT = 32;
-const ROW_HEIGHT_COZY = 44;
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
 
 /**
  * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code>
@@ -136,7 +135,6 @@ const ROW_HEIGHT_COZY = 44;
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
   const {
     columns,
-    data,
     className,
     style,
     tooltip,
@@ -161,9 +159,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     minRows,
     isTreeTable,
     alternateRowColor,
-    overscanCount
+    overscanCount,
+    scaleWidthMode
   } = props;
-  const theme = useTheme() as JSSTheme;
+
   const classes = useStyles({ rowHeight: props.rowHeight });
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
@@ -171,17 +170,16 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
-  const [columnWidth, setColumnWidth] = useState(null);
+  const data = useMemo(() => {
+    if (minRows > props.data.length) {
+      const missingRows = minRows - props.data.length;
+      // @ts-ignore
+      const emptyRows = [...Array(missingRows).keys()].map(() => ({ emptyRow: true }));
 
-  const defaultColumn = useMemo(() => {
-    if (columnWidth) {
-      return {
-        width: columnWidth,
-        ...DefaultColumn
-      };
+      return [...props.data, ...emptyRows];
     }
-    return DefaultColumn;
-  }, [columnWidth]);
+    return props.data;
+  }, [props.data, minRows]);
 
   const {
     getTableProps,
@@ -197,16 +195,18 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     {
       columns,
       data,
-      defaultColumn,
+      defaultColumn: DefaultColumn,
       getSubRows,
       stateReducer,
       webComponentsReactProperties: {
         selectionMode,
         classes,
         onRowSelected,
-        rowHeight,
         onRowExpandChange,
-        isTreeTable
+        isTreeTable,
+        alternateRowColor,
+        scaleWidthMode,
+        loading
       },
       ...reactTableOptions
     },
@@ -222,45 +222,30 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableHeaderGroupStyling,
     useTableHeaderStyling,
     useTableRowStyling,
+    useDynamicColumnWidths,
+    useColumnsDependencies,
     useTableCellStyling,
     useToggleRowExpand,
     ...tableHooks
   );
 
-  const updateTableSizes = useCallback(() => {
-    const visibleColumns = columns.filter(Boolean).filter((item) => {
-      return (item.isVisible ?? true) && !tableState.hiddenColumns.includes(item.accessor);
+  const updateTableClientWidth = useCallback(() => {
+    requestAnimationFrame(() => {
+      if (tableRef.current) {
+        dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
+      }
     });
-    const columnsWithFixedWidth = visibleColumns.filter(({ width }) => width ?? false).map(({ width }) => width);
-    const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
+  }, []);
 
-    const tableClientWidth = tableRef.current.clientWidth;
-    const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth.length;
-
-    //check if columns are visible and table has width
-    if (visibleColumns.length > 0 && tableClientWidth > 0) {
-      //set fixedWidth as defaultWidth if visible columns have fixed value
-      if (visibleColumns.length === columnsWithFixedWidth.length) {
-        setColumnWidth(fixedWidth / visibleColumns.length);
-        return;
-      }
-      //spread default columns
-      if (tableClientWidth >= fixedWidth + defaultColumnsCount * DEFAULT_COLUMN_WIDTH) {
-        setColumnWidth((tableClientWidth - fixedWidth) / defaultColumnsCount);
-      } else {
-        //set defaultWidth for default columns if table is overflowing
-        setColumnWidth(DEFAULT_COLUMN_WIDTH);
-      }
-    } else {
-      setColumnWidth(DEFAULT_COLUMN_WIDTH);
-    }
-  }, [tableRef.current, columns, tableState.hiddenColumns, DEFAULT_COLUMN_WIDTH]);
+  // @ts-ignore
+  const tableWidthObserver = useRef(new ResizeObserver(updateTableClientWidth));
 
   useEffect(() => {
-    updateTableSizes();
-    Device.resize.attachHandler(updateTableSizes, null);
-    return () => Device.resize.detachHandler(updateTableSizes, null);
-  }, [updateTableSizes]);
+    tableWidthObserver.current.observe(tableRef.current);
+    return () => {
+      tableWidthObserver.current.disconnect();
+    };
+  }, [tableWidthObserver.current, tableRef.current]);
 
   useEffect(() => {
     dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
@@ -286,25 +271,20 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
 
-  if (theme.contentDensity === ContentDensity.Compact) {
-    tableContainerClasses.put(classes.compactSize);
-  }
-
   if (!!rowHeight) {
     tableContainerClasses.put(classes.modifiedRowHeight);
   }
 
-  const internalRowHeight = useMemo(() => {
-    let height = theme.contentDensity === ContentDensity.Compact ? ROW_HEIGHT_COMPACT : ROW_HEIGHT_COZY;
-    if (rowHeight) {
-      height = rowHeight;
-    }
-    return height;
-  }, [rowHeight, theme.contentDensity]);
+  const calcRowHeight = parseInt(
+    getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
+  );
+
+  const internalRowHeight = rowHeight ?? calcRowHeight;
 
   const tableBodyHeight = useMemo(() => {
-    return internalRowHeight * Math.max(rows.length < visibleRows ? rows.length : visibleRows, minRows);
-  }, [internalRowHeight, rows.length, minRows, visibleRows]);
+    const rowNum = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
+    return internalRowHeight * rowNum;
+  }, [internalRowHeight, rows.length, visibleRows, minRows]);
 
   const noDataStyles = useMemo(() => {
     return {
@@ -346,7 +326,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
       <div className={tableContainerClasses.valueOf()} ref={tableRef}>
-        {columnWidth && (
+        {
           <div {...getTableProps()} role="table" aria-rowcount={rows.length}>
             {headerGroups.map((headerGroup) => {
               let headerProps = {};
@@ -380,8 +360,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 </header>
               );
             })}
-            {loading && busyIndicatorEnabled && data.length > 0 && <LoadingComponent />}
-            {loading && data.length === 0 && (
+            {loading && busyIndicatorEnabled && props.data?.length > 0 && <LoadingComponent />}
+            {loading && props.data?.length === 0 && (
               <TablePlaceholder
                 columns={
                   columns.filter((col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor))
@@ -392,10 +372,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 rowHeight={internalRowHeight}
               />
             )}
-            {!loading && data.length === 0 && (
+            {!loading && props.data?.length === 0 && (
               <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
             )}
-            {data.length > 0 && (
+            {props.data?.length > 0 && (
               <VirtualTableBody
                 classes={classes}
                 prepareRow={prepareRow}
@@ -415,7 +395,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
               />
             )}
           </div>
-        )}
+        }
       </div>
     </div>
   );
@@ -429,6 +409,7 @@ AnalyticalTable.defaultProps = {
   filterable: false,
   groupable: false,
   selectionMode: TableSelectionMode.NONE,
+  scaleWidthMode: TableScaleWidthMode.Default,
   data: [],
   columns: [],
   title: null,

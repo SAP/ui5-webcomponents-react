@@ -1,3 +1,4 @@
+import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { ScrollLink } from '@ui5/webcomponents-react-base/lib/ScrollLink';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
@@ -50,7 +51,7 @@ const anchorButtonStyles = ({ parameters }: JSSTheme) => ({
     }
   }
 });
-const useStyles = createUseStyles<keyof ReturnType<typeof anchorButtonStyles>>(anchorButtonStyles, {
+const useStyles = createUseStyles(anchorButtonStyles, {
   name: 'ObjectPageAnchorButton'
 });
 
@@ -136,7 +137,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
         onSetActive={onScrollActive}
         activeClass={classes.selected}
         alwaysToTop={index === 0}
-        scrollOffset={45}
+        scrollOffset={collapsedHeader ? 45 : -45}
       >
         <span className={classes.button}>{section.props.title}</span>
       </ScrollLink>

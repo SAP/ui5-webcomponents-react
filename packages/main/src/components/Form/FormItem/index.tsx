@@ -2,32 +2,30 @@ import { CurrentViewportRangeContext } from '@ui5/webcomponents-react/lib/Curren
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref, useContext, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../../interfaces/CommonProps';
+import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { styles } from '../Form.jss';
 
-export interface FormItemProps {
+export interface FormItemProps extends CommonProps {
   labelText?: string;
   children: ReactNode | ReactNodeArray;
-  type?: string;
 }
 
 const calculateWidth = (rate) => {
   return Math.floor((100 / 12) * rate) + '%';
 };
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'FormItem' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'FormItem' });
 
 /**
  * <code>import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';</code>
  */
 const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<HTMLDivElement>) => {
-  const { labelText, children } = props;
+  const { labelText, children, tooltip, style, className, slot } = props;
 
   const currentRange = useContext(CurrentViewportRangeContext);
 
   const classes = useStyles();
-  const topDivClass = classes.formItemTopDiv;
-  const labelClass = classes.formLabel;
-  const elementClass = classes.formElement;
 
   const memoizedStyles = useMemo(() => {
     let labelWidth;
@@ -55,7 +53,8 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
 
     return {
       topDivStyle: {
-        display: display
+        display: display,
+        ...style
       },
       labelStyle: {
         width: labelWidth,
@@ -65,24 +64,25 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
         width: elementWidth
       }
     };
-  }, [children, currentRange]);
+  }, [children, currentRange, style]);
+
+  let classNames = `${classes.formItemTopDiv}`;
+  if (className) {
+    classNames += ` ${className}`;
+  }
 
   return (
-    <div ref={ref}>
-      <div style={memoizedStyles.topDivStyle} className={topDivClass}>
-        <Label style={memoizedStyles.labelStyle} className={labelClass}>
-          {labelText ? labelText : ''}
-        </Label>
-        <div style={memoizedStyles.elementStyle} className={elementClass}>
-          {children}
-        </div>
+    <div ref={ref} style={memoizedStyles.topDivStyle} className={classNames} title={tooltip} slot={slot}>
+      <Label style={memoizedStyles.labelStyle} className={classes.formLabel}>
+        {labelText ? labelText : ''}
+      </Label>
+      <div style={memoizedStyles.elementStyle} className={classes.formElement}>
+        {children}
       </div>
     </div>
   );
 });
 
-FormItem.defaultProps = {
-  type: 'formItem'
-};
+FormItem.displayName = 'FormItem';
 
 export { FormItem };

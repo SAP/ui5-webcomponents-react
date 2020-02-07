@@ -2,7 +2,6 @@
 
 exports[`Select Basic Test (generated) 1`] = `
 <ui5-select
-  class=""
   value-state="None"
 />
 `;

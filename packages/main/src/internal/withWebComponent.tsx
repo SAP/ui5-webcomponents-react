@@ -1,4 +1,5 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, {
   Children,
   cloneElement,
@@ -7,8 +8,7 @@ import React, {
   RefForwardingComponent,
   RefObject,
   useEffect,
-  useRef,
-  useState
+  useRef
 } from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
@@ -22,9 +22,7 @@ function toKebabCase(s: string) {
   return s.replace(/([A-Z])/g, (a, b) => `-${b.toLowerCase()}`);
 }
 
-const propBlacklist = {
-  className: true
-};
+const REACT_SPECIFIC_ATTRIBUTES = ['className'];
 
 export interface WithWebComponentPropTypes extends CommonProps {
   ref?: Ref<any>;
@@ -53,18 +51,18 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
     };
   };
 
-  const getBooleanPropsFromMetadata = () => {
+  const getBooleanPropsFromMetadata = (): Array<string> => {
     return Object.entries(getWebComponentMetadata().getProperties())
       .filter(([key, value]) => value.type === Boolean)
       .map(([key]) => key);
   };
 
-  const getSlotsFromMetadata = () => {
+  const getSlotsFromMetadata = (): Array<string> => {
     return Object.keys(getWebComponentMetadata().getSlots());
   };
 
-  const getEventsFromMetadata = () => {
-    return Object.keys(getWebComponentMetadata().getEvents() || {});
+  const getEventsFromMetadata = (): Array<string> => {
+    return Object.keys(getWebComponentMetadata().getEvents() || {}).filter((eventName) => !eventName.startsWith('_'));
   };
 
   const createEventWrapperFor = (eventIdentifier, eventHandler) => (e) => {
@@ -93,16 +91,11 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
   };
 
   const WithWebComponent = React.forwardRef((props: T & WithWebComponentPropTypes, wcRef: RefObject<Ui5DomRef>) => {
-    const { className = '' } = props;
-
-    const [_, setUpdateAfterMount] = useState(false);
     const eventRegistry = useRef({});
     const eventRegistryWrapped = useRef({});
-    const localWcRef = useRef(null);
 
     const CustomTag = WebComponent.getMetadata().getTag();
-
-    const getWcRef = () => wcRef || localWcRef;
+    const ref = useConsolidatedRef<HTMLDivElement>(wcRef);
 
     const getBooleanProps = () => {
       return getBooleanPropsFromMetadata().reduce((acc, key) => {
@@ -113,76 +106,59 @@ export function withWebComponent<T>(WebComponent): RefForwardingComponent<Ui5Dom
       }, {});
     };
 
-    const bindEvents = () => {
-      const knownEvents = getEventsFromMetadata();
-      knownEvents.forEach((eventIdentifier) => {
-        const alternativeKey = 'on' + capitalizeFirstLetter(eventIdentifier);
-        const eventHandler = props[eventIdentifier] || props[alternativeKey];
-        if (typeof eventHandler === 'function' && eventRegistry.current[alternativeKey] !== eventHandler) {
-          if (eventRegistry.current[alternativeKey]) {
-            getWcRef().current.removeEventListener(eventIdentifier, eventRegistryWrapped.current[alternativeKey]);
-          }
-          eventRegistryWrapped.current[alternativeKey] = createEventWrapperFor(eventIdentifier, eventHandler);
-          getWcRef().current.addEventListener(eventIdentifier, eventRegistryWrapped.current[alternativeKey]);
-          eventRegistry.current[alternativeKey] = eventHandler;
-        } else if (eventRegistry.current[alternativeKey] && !eventHandler) {
-          getWcRef().current.removeEventListener(eventIdentifier, eventRegistryWrapped.current[alternativeKey]);
-        }
-      });
-    };
+    useEffect(
+      () => {
+        getEventsFromMetadata().forEach((eventName) => {
+          const eventPropName = 'on' + capitalizeFirstLetter(eventName);
+          const eventHandler = props[eventPropName];
 
-    const getRegularProps = () => {
-      if (getWcRef().current) {
-        bindEvents();
-      }
-
-      const regularProps = {};
-      const slotProps = {};
-
-      Object.entries(props)
-        .filter(([key]) => !getBooleanPropsFromMetadata().includes(key))
-        .filter(
-          ([key]) =>
-            !getEventsFromMetadata().some(
-              (eventKey) => `on${capitalizeFirstLetter(eventKey)}` === key || key === eventKey
-            )
-        )
-        .filter(([key]) => !propBlacklist[key])
-        .forEach(([key, value]) => {
-          if (getSlotsFromMetadata().includes(key)) {
-            slotProps[key] = value;
-          } else {
-            regularProps[toKebabCase(key)] = value;
+          if (typeof eventHandler === 'function' && eventRegistry.current[eventPropName] !== eventHandler) {
+            if (eventRegistry.current[eventPropName]) {
+              ref.current.removeEventListener(eventName, eventRegistryWrapped.current[eventPropName]);
+            }
+            eventRegistryWrapped.current[eventPropName] = createEventWrapperFor(eventName, eventHandler);
+            ref.current.addEventListener(eventName, eventRegistryWrapped.current[eventPropName]);
+            eventRegistry.current[eventPropName] = eventHandler;
+          } else if (eventRegistry.current[eventPropName] && !eventHandler) {
+            ref.current.removeEventListener(eventName, eventRegistryWrapped.current[eventPropName]);
           }
         });
+      },
+      getEventsFromMetadata().map((eventName) => props[`on${capitalizeFirstLetter(eventName)}`])
+    );
 
-      return { regularProps, slotProps };
+    const { className, ...otherProps } = props;
+
+    const getRegularProps = () => {
+      return Object.entries(otherProps)
+        .filter(([key]) => !getBooleanPropsFromMetadata().includes(key))
+        .filter(([key]) => !getEventsFromMetadata().some((eventKey) => `on${capitalizeFirstLetter(eventKey)}` === key))
+        .reduce(
+          (acc, [key, value]) => {
+            if (getSlotsFromMetadata().includes(key)) {
+              acc.slotProps[key] = value;
+            } else {
+              acc.regularProps[REACT_SPECIFIC_ATTRIBUTES.includes(key) ? key : toKebabCase(key)] = value;
+            }
+            return acc;
+          },
+          { regularProps: {}, slotProps: {} }
+        );
     };
-
-    useEffect(() => {
-      if (getWcRef().current) {
-        bindEvents();
-      } else {
-        setUpdateAfterMount(true);
-      }
-    }, []);
 
     // render
     const { regularProps: passedProps, slotProps: actualSlotProps } = getRegularProps();
 
     const { children, tooltip, ...rest } = passedProps as T & WithWebComponentPropTypes;
     return (
-      <CustomTag {...getBooleanProps()} ref={getWcRef()} {...rest} title={tooltip} class={className}>
-        {getSlotsFromMetadata().map((slot) => {
-          if (actualSlotProps[slot]) {
-            return Children.map(actualSlotProps[slot], (item: ReactElement<any>, index) =>
-              cloneElement(item, {
-                key: `${slot}-${index}`,
-                slot: slot
-              })
-            );
-          }
-          return null;
+      <CustomTag {...getBooleanProps()} ref={ref} {...rest} class={className} title={tooltip}>
+        {Object.entries(actualSlotProps).map(([slotName, slotValue]) => {
+          return Children.map(slotValue, (item: ReactElement<any>, index) =>
+            cloneElement(item, {
+              key: `${slotName}-${index}`,
+              slot: slotName
+            })
+          );
         })}
         {children}
       </CustomTag>

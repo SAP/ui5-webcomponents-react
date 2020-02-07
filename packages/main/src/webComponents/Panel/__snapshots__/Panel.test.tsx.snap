@@ -3,7 +3,6 @@
 exports[`Panel Basic Test (generated) 1`] = `
 <ui5-panel
   accessible-role="Form"
-  class=""
   header-text=""
 />
 `;

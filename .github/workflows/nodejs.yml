@@ -24,5 +24,9 @@ jobs:
       run: yarn install
     - name: run tests
       run: yarn test
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: build project
       run: yarn build

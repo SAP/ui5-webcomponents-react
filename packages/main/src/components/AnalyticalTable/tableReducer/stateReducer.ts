@@ -7,6 +7,8 @@ export const stateReducer = (newState, action, prevState) => {
       return { ...prevState, selectedRowIds: action.selectedIds };
     case 'SET_HIDDEN_COLUMNS':
       return { ...prevState, hiddenColumns: action.hiddenColumns };
+    case 'TABLE_RESIZE':
+      return { ...prevState, tableClientWidth: payload.tableClientWidth };
     default:
       return newState;
   }

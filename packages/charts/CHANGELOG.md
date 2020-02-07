@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.7.3...v0.8.0) (2020-02-04)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+## [0.7.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.7.1...v0.7.2) (2020-01-23)
+
+
+### Bug Fixes
+
+* **charts:** add some top padding on charts to prevent cut off labels ([#279](https://github.com/SAP/ui5-webcomponents-react/issues/279)) ([0b38e18](https://github.com/SAP/ui5-webcomponents-react/commit/0b38e180496f8b6d167ecfe0950e1359a73ca7c3))
+* **MicroBarChart:** Add ellipsis and tooltip ([#289](https://github.com/SAP/ui5-webcomponents-react/issues/289)) ([41f6971](https://github.com/SAP/ui5-webcomponents-react/commit/41f69718a59d11b0ebbc77b3e493c2a69bd19629))
+
+
+
+
+
 # [0.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.7.0-rc.8...v0.7.0) (2020-01-17)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

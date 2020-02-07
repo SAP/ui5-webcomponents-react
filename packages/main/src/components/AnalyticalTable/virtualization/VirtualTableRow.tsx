@@ -3,26 +3,17 @@ import React from 'react';
 export const VirtualTableRow = (props) => {
   const { style, index, data } = props;
   const { additionalProps, rows } = data;
-  const { isTreeTable, classes, columns } = additionalProps;
+  const { isTreeTable } = additionalProps;
   const row = rows[index];
 
   if (!row) {
-    return (
-      <div key={`minRow-${index}`} className={classes.tr} style={style} role="row">
-        {columns.map((col, colIndex) => {
-          let classNames = classes.tableCell;
-          if (col.className) {
-            classNames += ` ${col.className}`;
-          }
-          return <div className={classNames} key={`minRow-${index}-${colIndex}`} />;
-        })}
-      </div>
-    );
+    return null;
   }
 
   return (
     <div {...row.getRowProps()} style={style} aria-rowindex={index}>
       {row.cells.map((cell) => {
+        if (row.original?.emptyRow) return <div {...cell.getCellProps()} />;
         let contentToRender = 'Cell';
         if (isTreeTable) {
           contentToRender = 'Expandable';

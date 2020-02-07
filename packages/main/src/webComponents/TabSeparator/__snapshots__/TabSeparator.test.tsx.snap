@@ -1,7 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TabSeparator Basic Test (generated) 1`] = `
-<ui5-tab-separator
-  class=""
-/>
-`;
+exports[`TabSeparator Basic Test (generated) 1`] = `<ui5-tab-separator />`;

@@ -2,7 +2,6 @@ import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow.js';
 import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow.js';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
@@ -26,7 +25,7 @@ import React, {
   useState
 } from 'react';
 import { createPortal } from 'react-dom';
-import { createUseStyles, useTheme } from 'react-jss';
+import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { sideNavigationListItemStyles } from './SideNavigationListItem.jss';
@@ -38,9 +37,12 @@ export interface SideNavigationListItemProps extends CommonProps {
   children?: ReactNode | ReactNodeArray;
 }
 
-const useStyles = createUseStyles<keyof ReturnType<typeof sideNavigationListItemStyles>>(sideNavigationListItemStyles, {
-  name: 'SideNavigationListItem'
-});
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigationListItemStyles>>(
+  sideNavigationListItemStyles,
+  {
+    name: 'SideNavigationListItem'
+  }
+);
 /**
  * <code>import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';</code>
  */
@@ -55,12 +57,8 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
     }, [isExpanded, setExpanded]);
 
     const classes = useStyles();
-    const theme = useTheme() as JSSTheme;
 
     const listItemClasses = StyleClassHelper.of(classes.listItem);
-    if (theme.contentDensity === ContentDensity.Compact) {
-      listItemClasses.put(classes.compact);
-    }
 
     if (className) {
       listItemClasses.put(className);

@@ -259,6 +259,7 @@ const makeTreeEntry = () => ({
 
 const makeEntry = () => ({
   name: getRandomName(),
+  longColumn: 'Really really long column content... don´t crop please',
   age: getRandomNumber(18, 65),
   friend: {
     name: getRandomName(),

@@ -1,4 +1,3 @@
-import { ZIndex } from '../../enums/ZIndex';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const styles = ({ parameters }: JSSTheme) => ({
@@ -21,6 +20,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   outerContentContainer: {
     width: '100%',
+    height: '100%',
     overflow: 'hidden'
   },
   contentScrollContainer: {
@@ -32,7 +32,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     boxShadow: `inset 0 -0.0625rem ${parameters.sapUiObjectHeaderBorderColor}, inset 0 0.0625rem ${parameters.sapUiObjectHeaderBorderColor}`,
     display: 'flex',
     height: '2.75rem',
-    minHeight: '2.75rem'
+    minHeight: '2.75rem',
+    position: 'relative'
   },
   sectionsContainer: {
     '&:before': {
@@ -56,32 +57,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   fillerDiv: {
     backgroundColor: parameters.sapUiBaseBG
-  },
-  outerScrollbar: {
-    position: 'absolute',
-    right: 0,
-    overflow: 'hidden',
-    height: '100%',
-    zIndex: ZIndex.ResponsivePopover,
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
-    '& ::-webkit-scrollbar': {
-      backgroundColor: '#ffffff'
-    },
-    '& ::-webkit-scrollbar-thumb': {
-      backgroundColor: '#949494',
-      '&:hover': {
-        backgroundColor: '#8c8c8c'
-      }
-    },
-    '& ::-webkit-scrollbar-corner': {
-      backgroundColor: '#ffffff'
-    }
-  },
-  innerScrollbar: {
-    width: '34px',
-    overflowY: 'scroll',
-    overflowX: 'hidden',
-    height: '100%'
   },
   // header
   header: {
@@ -188,9 +163,13 @@ const styles = ({ parameters }: JSSTheme) => ({
     display: 'inline-block',
     verticalAlign: 'top',
     '& > *': {
+      float: 'left',
       marginRight: '2rem',
       marginBottom: '1rem',
       lineHeight: '1.5rem'
+    },
+    '&:after': {
+      clear: 'both'
     }
   },
   headerCustomContentItem: {
@@ -215,20 +194,15 @@ const styles = ({ parameters }: JSSTheme) => ({
     display: 'flex',
     flexDirection: 'row'
   },
-  flexBoxRow: {
-    display: 'flex',
-    flexDirection: 'row'
-  },
-  flexBoxColumn: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  flexBoxCenter: {
-    display: 'flex',
-    alignItems: 'center'
-  },
   avatar: {
     marginRight: '1rem'
+  },
+  toggleHeaderButton: {
+    position: 'absolute',
+    '--_ui5_button_compact_height': '1.25rem',
+    '--_ui5_button_base_height': '1.25rem',
+    top: `-0.625rem`,
+    left: 'calc(50% - 1rem)'
   }
 });
 

@@ -1,33 +1,34 @@
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 import { CurrentViewportRangeContext } from '@ui5/webcomponents-react/lib/CurrentViewportRangeContext';
+import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
+import React, { FC, forwardRef, ReactElement, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { styles } from './Form.jss';
-import { FormGroup } from './FormGroup';
 
 export interface FormPropTypes extends CommonProps {
   /**
    * Components that are placed into Form.
    */
-  children: ReactNode | ReactNodeArray;
+  children: ReactElement<unknown> | Array<ReactElement<unknown>>;
   /**
    * Form title
    */
   title?: string;
 }
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'Form' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Form' });
 
 /**
  * <code>import { Form } from '@ui5/webcomponents-react/lib/Form';</code>
  */
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { title, children } = props;
+  const { title, children, className, slot, style, tooltip } = props;
 
   const classes = useStyles();
   const currentRange = useViewportRange('StdExt');
@@ -40,10 +41,10 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     if (Array.isArray(children)) {
       const ungroupedItems = [];
       formGroups = [];
-      children.forEach((child) => {
-        if ((child as ReactElement).props.type === 'formItem') {
+      children.forEach((child: any) => {
+        if (child.type.displayName === 'FormItem') {
           ungroupedItems.push(child);
-        } else if ((child as ReactElement).props.type === 'formGroup') {
+        } else if (child.type.displayName === 'FormGroup') {
           formGroups.push(child as ReactElement);
         }
       });
@@ -77,15 +78,20 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
           <div className={classes.formTitlePaddingBottom} />
         </>
       )}
-      <Grid ref={ref} children={formGroups} defaultSpan={'XL6 L12 M12 S12'} {...passThroughProps} />
+      <Grid
+        ref={ref}
+        children={formGroups}
+        defaultSpan={'XL6 L12 M12 S12'}
+        className={className}
+        slot={slot}
+        style={style}
+        tooltip={tooltip}
+        {...passThroughProps}
+      />
     </CurrentViewportRangeContext.Provider>
   );
 });
 
-Form.defaultProps = {
-  children: [],
-  title: null
-};
 Form.displayName = 'Form';
 
 export { Form };

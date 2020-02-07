@@ -1,8 +1,8 @@
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import React, {
   Children,
   cloneElement,
@@ -27,25 +27,25 @@ export interface SegmentedButtonPropTypes extends CommonProps {
   onItemSelected?: (event: Event) => void;
 }
 
-const styles = ({ contentDensity }) => ({
+const styles = {
   segmentedButton: {
     verticalAlign: 'top',
     position: 'relative',
     margin: '0',
-    padding: contentDensity === ContentDensity.Compact ? '0.1875rem 0' : '0.250rem 0',
+    padding: CssSizeVariables.sapWcrSegmentedButtonPadding,
     border: 'none',
     whiteSpace: 'nowrap',
     display: 'inline-block',
     boxSizing: 'border-box',
     maxWidth: '100%',
-    height: contentDensity === ContentDensity.Compact ? '2rem' : '3rem',
+    height: CssSizeVariables.sapWcrSegmentedButtonHeight,
     '&:focus': {
       outline: 'none'
     }
   }
-});
+};
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'SegmentedButton' });
+const useStyles = createUseStyles(styles, { name: 'SegmentedButton' });
 
 /**
  * <code>import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';</code>

@@ -27,15 +27,11 @@ export const VirtualTableBody = (props) => {
   const innerDivRef = useRef(null);
 
   useEffect(() => {
-    selectionMode;
     if (innerDivRef.current) {
       innerDivRef.current.classList = '';
       innerDivRef.current.classList.add(classes.tbody);
       if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
         innerDivRef.current.classList.add(classes.selectable);
-      }
-      if (alternateRowColor) {
-        innerDivRef.current.classList.add(classes.alternateRowColor);
       }
     }
   }, [
@@ -79,6 +75,7 @@ export const VirtualTableBody = (props) => {
 
   return (
     <FixedSizeList
+      className={classes.virtualTableBody}
       ref={reactWindowRef}
       height={tableBodyHeight}
       width={totalColumnsWidth}
