@@ -12,7 +12,7 @@ describe('Device - Media', () => {
   test('invoke constructor', () => {
     const media = new Media(defaultSupportInstance);
     // @ts-ignore
-    expect(media.media_timeout).toBe(100);
+    expect(media.mediaTimeout).toBe(100);
     expect(media.hasRangeSet(RANGESETS.SAP_STANDARD)).toBe(true);
     expect(media.hasRangeSet(RANGESETS.SAP_STANDARD_EXTENDED)).toBe(true);
   });
@@ -20,7 +20,7 @@ describe('Device - Media', () => {
   test('invoke constructor 2', () => {
     const media = new Media({ matchmedia: true, matchmedialistener: true });
     // @ts-ignore
-    expect(media.media_timeout).toBe(0);
+    expect(media.mediaTimeout).toBe(0);
     expect(media.hasRangeSet(RANGESETS.SAP_STANDARD)).toBe(true);
     expect(media.hasRangeSet(RANGESETS.SAP_STANDARD_EXTENDED)).toBe(true);
   });

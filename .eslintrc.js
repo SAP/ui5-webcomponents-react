@@ -124,7 +124,7 @@ module.exports = {
     'prefer-arrow/prefer-arrow-functions': 'error',
     'prefer-const': 'error',
     'quote-props': ['error', 'as-needed'],
-    radix: 'error',
+    radix: 'off',
     'react/jsx-no-bind': 'error',
     'react/jsx-key': 'error',
     'react/jsx-boolean-value': 'error',

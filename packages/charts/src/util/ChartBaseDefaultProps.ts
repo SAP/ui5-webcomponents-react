@@ -11,6 +11,10 @@ export const ChartBaseDefaultProps: ChartBaseProps = {
   options: {},
   categoryAxisFormatter: (d) => d,
   valueAxisFormatter: (d) => d,
-  getDatasetAtEvent: (d, e) => {},
-  getElementAtEvent: (d, e) => {}
+  getDatasetAtEvent: (d, e) => {
+    // do nothing
+  },
+  getElementAtEvent: (d, e) => {
+    // do nothing
+  }
 };

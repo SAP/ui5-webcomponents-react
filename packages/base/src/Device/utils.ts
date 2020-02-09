@@ -12,6 +12,7 @@ export const changeRootCSSClass = (sClassName, bRemove, sPrefix?) => {
     const aCurrentClasses = oRoot.className.split(' ');
     let sNewClasses = '';
     aCurrentClasses.forEach((currentClass) => {
+      // eslint-disable-next-line @typescript-eslint/prefer-string-starts-ends-with
       if ((sPrefix && currentClass.indexOf(sPrefix) !== 0) || (!sPrefix && currentClass !== sClassName)) {
         sNewClasses = `${sNewClasses + currentClass} `;
       }
