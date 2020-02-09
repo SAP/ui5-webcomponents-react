@@ -3,7 +3,7 @@ import '@ui5/webcomponents-icons/dist/icons/message-warning';
 import '@ui5/webcomponents-icons/dist/icons/sys-enter';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import React, { FC } from 'react';
+import React from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { toast, ToastContainer, ToastContent, ToastOptions } from 'react-toastify';
@@ -100,5 +100,3 @@ MessageToast.warning = (text, options?: ToastOptions) => {
 MessageToast.displayName = 'MessageToast';
 
 export { MessageToast };
-
-export const DocOnlyToastOptions: FC<ToastOptions> = () => null;
