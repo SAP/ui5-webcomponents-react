@@ -5,9 +5,9 @@ export class HSLColor {
   private hue: number;
   private saturation: number;
   private lightness: number;
-  private alpha: number = 1;
+  private alpha = 1;
 
-  constructor(hue: number, saturation: number, lightness: number, alpha: number = 1) {
+  constructor(hue: number, saturation: number, lightness: number, alpha = 1) {
     this.hue = hue;
     this.saturation = saturation;
     this.lightness = lightness;

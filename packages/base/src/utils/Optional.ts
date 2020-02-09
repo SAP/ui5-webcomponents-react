@@ -1,3 +1,4 @@
+/* eslint-disable id-blacklist */
 /**
  * Optionals for Javascript Objects
  * Inspired by Java Optionals
