@@ -116,7 +116,7 @@ export interface TableProps extends CommonProps {
    * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api.md#table-options)
    */
   reactTableOptions?: object;
-  tableHooks?: Array<PluginHook<any>>;
+  tableHooks?: PluginHook<any>[];
   subRowsKey?: string;
   selectedRowIds?: { [key: string]: boolean };
   isTreeTable?: boolean;

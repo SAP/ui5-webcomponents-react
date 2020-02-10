@@ -1,6 +1,6 @@
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import React, { useCallback } from 'react';
+import React from 'react';
 import { PluginHook } from 'react-table';
 
 const divStyle = { width: '100%', height: '100%' };
@@ -28,7 +28,8 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
     return [
       // Let's make a column for selection
       {
-        id: 'selection',
+        id: '__ui5wcr__internal_selection_column',
+        accessor: '__ui5wcr__internal_selection_column',
         sortable: false,
         groupable: false,
         filterable: false,
@@ -37,6 +38,7 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         minWidth: 36,
         // The header can use the table's getToggleAllRowsSelectedProps method
         // to render a checkbox
+        // eslint-disable-next-line react/prop-types,react/display-name
         Header: ({ getToggleAllRowsSelectedProps }) => {
           if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
             return null;
@@ -51,10 +53,13 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         },
         // The cell can use the individual row's getToggleRowSelectedProps method
         // to the render a checkbox
+        // eslint-disable-next-line react/prop-types,react/display-name
         Cell: ({ row }) => {
           if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
+            // eslint-disable-next-line react/prop-types
             return <div style={divStyle} onClick={row.toggleRowSelected} />;
           }
+          // eslint-disable-next-line react/prop-types
           return <CheckBox {...row.getToggleRowSelectedProps()} onChange={noop} style={customCheckBoxStyling} />;
         }
       },
