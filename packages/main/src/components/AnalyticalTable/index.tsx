@@ -40,6 +40,7 @@ import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
+import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
 import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
@@ -210,6 +211,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       },
       ...reactTableOptions
     },
+    useRowSelectionColumn,
     useAbsoluteLayout,
     useFilters,
     useGroupBy,

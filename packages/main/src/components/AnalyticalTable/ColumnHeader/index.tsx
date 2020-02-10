@@ -200,7 +200,9 @@ const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
       ) : (
         <div style={{ ...innerStyle, display: 'inline-block', cursor: 'auto' }}>{openBy}</div>
       )}
-      <div {...column.getResizerProps()} className={`${classes.resizer} ${isLastColumn ? classes.lastColumn : ''}`} />
+      {column.getResizerProps && (
+        <div {...column.getResizerProps()} className={`${classes.resizer} ${isLastColumn ? classes.lastColumn : ''}`} />
+      )}
     </div>
   );
 };
