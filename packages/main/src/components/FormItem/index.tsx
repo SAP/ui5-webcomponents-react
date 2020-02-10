@@ -1,13 +1,28 @@
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { CurrentViewportRangeContext } from '@ui5/webcomponents-react/lib/CurrentViewportRangeContext';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
-import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref, useContext, useMemo } from 'react';
+import React, {
+  cloneElement,
+  FC,
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  ReactNodeArray,
+  Ref,
+  useContext,
+  useMemo
+} from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../../interfaces/CommonProps';
-import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { styles } from '../Form.jss';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { styles } from '../Form/Form.jss';
 
 export interface FormItemProps extends CommonProps {
-  labelText?: string;
+  label?: string | ReactElement;
+  /**
+   * @deprecated use label instead
+   */
+  labelText?: string; // TODO remove on next major release
   children: ReactNode | ReactNodeArray;
 }
 
@@ -21,7 +36,7 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
  * <code>import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';</code>
  */
 const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<HTMLDivElement>) => {
-  const { labelText, children, tooltip, style, className, slot } = props;
+  const { label, labelText, children, tooltip, style, className, slot } = props;
 
   const currentRange = useContext(CurrentViewportRangeContext);
 
@@ -53,7 +68,7 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
 
     return {
       topDivStyle: {
-        display: display,
+        display,
         ...style
       },
       labelStyle: {
@@ -71,11 +86,28 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
     classNames += ` ${className}`;
   }
 
+  if (labelText) {
+    deprecationNotice(
+      'FormItem',
+      `prop 'labelText' is deprecated and will be removed in the next major release. Please use 'label' instead.`
+    );
+  }
+  const labelToRender = label ?? labelText;
+
   return (
     <div ref={ref} style={memoizedStyles.topDivStyle} className={classNames} title={tooltip} slot={slot}>
-      <Label style={memoizedStyles.labelStyle} className={classes.formLabel}>
-        {labelText ? labelText : ''}
-      </Label>
+      {typeof labelToRender === 'string' ? (
+        <Label style={memoizedStyles.labelStyle} className={classes.formLabel}>
+          {labelToRender ? `${labelToRender}:` : ''}
+        </Label>
+      ) : (
+        cloneElement(labelToRender, {
+          style: { ...memoizedStyles.labelStyle, ...(labelToRender.props.style || {}) },
+          className: `${classes.formLabel} ${labelToRender.props.className ?? ''}`,
+          children: labelToRender.props.children ? `${labelToRender.props.children}:` : ''
+        })
+      )}
+
       <div style={memoizedStyles.elementStyle} className={classes.formElement}>
         {children}
       </div>

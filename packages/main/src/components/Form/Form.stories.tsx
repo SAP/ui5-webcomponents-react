@@ -12,34 +12,34 @@ export const defaultStory = () => {
   return (
     <Form title={'Test Form'}>
       <FormGroup title={'Personal Data'}>
-        <FormItem labelText={'Name'}>
+        <FormItem label={'Name'}>
           <Input type={InputType.Text} />
         </FormItem>
-        <FormItem labelText={'Address'}>
+        <FormItem label={'Address'}>
           <Input type={InputType.Text} />
         </FormItem>
-        <FormItem labelText={'Country'}>
+        <FormItem label={'Country'}>
           <Select>
             <Option>Germany</Option>
             <Option>France</Option>
             <Option>Italy</Option>
           </Select>
         </FormItem>
-        <FormItem labelText={'Home address'}>
+        <FormItem label={'Home address'}>
           <CheckBox checked />
         </FormItem>
       </FormGroup>
       <FormGroup title={'Business Data'}>
-        <FormItem labelText={'Organization'}>
+        <FormItem label={'Organization'}>
           <Input type={InputType.Text} />
         </FormItem>
-        <FormItem labelText={'Position'}>
+        <FormItem label={'Position'}>
           <Input type={InputType.Text} />
         </FormItem>
-        <FormItem labelText={'Wage'}>
+        <FormItem label={'Wage'}>
           <Input type={InputType.Number} value={'5000'} disabled />
         </FormItem>
-        <FormItem labelText={'Pilot license'}>
+        <FormItem label={'Pilot license'}>
           <CheckBox checked />
         </FormItem>
       </FormGroup>
