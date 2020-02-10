@@ -40,6 +40,7 @@ import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
+import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
 import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
@@ -93,9 +94,9 @@ export interface TableProps extends CommonProps {
   noDataText?: string;
   rowHeight?: number;
   alternateRowColor?: boolean;
+  noSelectionColumn?: boolean;
 
   // features
-
   filterable?: boolean;
   sortable?: boolean;
   groupable?: boolean;
@@ -115,7 +116,7 @@ export interface TableProps extends CommonProps {
    * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api.md#table-options)
    */
   reactTableOptions?: object;
-  tableHooks?: Array<PluginHook<any>>;
+  tableHooks?: PluginHook<any>[];
   subRowsKey?: string;
   selectedRowIds?: { [key: string]: boolean };
   isTreeTable?: boolean;
@@ -160,7 +161,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     isTreeTable,
     alternateRowColor,
     overscanCount,
-    scaleWidthMode
+    scaleWidthMode,
+    noSelectionColumn
   } = props;
 
   const classes = useStyles({ rowHeight: props.rowHeight });
@@ -206,10 +208,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         isTreeTable,
         alternateRowColor,
         scaleWidthMode,
-        loading
+        loading,
+        noSelectionColumn
       },
       ...reactTableOptions
     },
+    useRowSelectionColumn,
     useAbsoluteLayout,
     useFilters,
     useGroupBy,
