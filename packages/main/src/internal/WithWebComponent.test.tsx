@@ -6,8 +6,9 @@ import { withWebComponent } from './withWebComponent';
 
 describe('withWebComponent', () => {
   test('Unmount Event Handlers correctly after prop update', () => {
-    let Button: FC<any> = withWebComponent(UI5Button);
+    const Button: FC<any> = withWebComponent(UI5Button);
     const callback = spy();
+    // eslint-disable-next-line react/jsx-no-bind
     const wrapper = mountThemedComponent(<Button onClick={(...args) => callback(...args)} />);
     const component = wrapper
       .find('ui5-button')
@@ -26,7 +27,7 @@ describe('withWebComponent', () => {
   });
 
   test('Bind new event handler', () => {
-    let Button: FC<any> = withWebComponent(UI5Button);
+    const Button: FC<any> = withWebComponent(UI5Button);
     const callback = spy();
     const wrapper = mountThemedComponent(<Button onClick={callback} />);
     const component = wrapper

@@ -12,6 +12,7 @@ export const changeRootCSSClass = (sClassName, bRemove, sPrefix?) => {
     const aCurrentClasses = oRoot.className.split(' ');
     let sNewClasses = '';
     aCurrentClasses.forEach((currentClass) => {
+      // eslint-disable-next-line @typescript-eslint/prefer-string-starts-ends-with
       if ((sPrefix && currentClass.indexOf(sPrefix) !== 0) || (!sPrefix && currentClass !== sClassName)) {
         sNewClasses = `${sNewClasses + currentClass} `;
       }
@@ -37,15 +38,9 @@ export const getQuery = (from, to, unit) => {
 
 export const convertToPx = (val, unit?) => {
   if (unit === 'em' || unit === 'rem') {
-    const s =
-      window.getComputedStyle ||
-      // tslint:disable-next-line
-      function(e: any) {
-        return e.currentStyle;
-      };
+    const s = window.getComputedStyle ?? ((element: any) => element.currentStyle);
     const x = s(document.documentElement).fontSize;
-    // @ts-ignore
-    const f = x && x.indexOf('px') >= 0 ? parseFloat(x, 10) : 16;
+    const f = x && x.indexOf('px') >= 0 ? parseFloat(x) : 16;
     return val * f;
   }
   return val;

@@ -159,3 +159,5 @@ export const Scroller = forwardRef((props: Props, ref: RefObject<IScroller>) => 
     </ScrollContentProvider>
   );
 });
+
+Scroller.displayName = 'Scroller';

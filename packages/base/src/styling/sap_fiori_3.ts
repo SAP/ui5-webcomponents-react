@@ -4,6 +4,8 @@
  * In order to recreate this file, please run 'node packages/base/scripts/cssVariables/parse.js'
  */
 
+/* eslint-disable camelcase */
+
 export const sapFontFamily = 'var(--sapFontFamily)';
 export const sapFontSize = 'var(--sapFontSize)';
 export const sapCompanyLogo = 'var(--sapCompanyLogo)';
