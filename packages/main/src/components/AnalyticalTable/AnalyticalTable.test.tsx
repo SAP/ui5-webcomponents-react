@@ -260,5 +260,19 @@ describe('AnalyticalTable', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
+  test('without selection Column', () => {
+    const wrapper = mountThemedComponent(
+      <AnalyticalTable
+        title="Table Title"
+        data={data}
+        columns={columns}
+        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        noSelectionColumn
+      />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
   createPassThroughPropsTest(AnalyticalTable);
 });
