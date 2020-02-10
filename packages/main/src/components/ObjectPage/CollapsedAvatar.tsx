@@ -32,7 +32,7 @@ const useStyles = createUseStyles(styles, {
 });
 
 export interface CollapsedAvatarPropTypes {
-  image?: string | ReactElement<unknown>;
+  image?: string | ReactElement;
   imageShapeCircle?: boolean;
 }
 

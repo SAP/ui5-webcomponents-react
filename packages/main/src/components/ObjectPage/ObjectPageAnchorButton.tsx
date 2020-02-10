@@ -55,7 +55,7 @@ const useStyles = createUseStyles(anchorButtonStyles, {
   name: 'ObjectPageAnchorButton'
 });
 
-export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => {
+export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: ObjectPageAnchorPropTypes) => {
   const classes = useStyles();
   const [open, setOpen] = useState();
   const { section, collapsedHeader, index, onSubSectionSelected, onSectionSelected, selected, mode } = props;

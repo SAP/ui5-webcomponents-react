@@ -7,7 +7,7 @@ interface Props {
   activeClass?: string;
   id: string | number;
   onSetActive?: (id: string | number) => void;
-  alwaysToTop?: false;
+  alwaysToTop?: boolean;
   scrollOffset?: number;
 }
 
