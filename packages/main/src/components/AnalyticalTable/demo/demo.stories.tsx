@@ -86,6 +86,7 @@ export const defaultTable = () => {
         rowHeight={number('rowHeight', 44)}
         selectedRowIds={object('selectedRowIds', { 3: true })}
         onColumnsReordered={action('onColumnsReordered')}
+        noSelectionColumn={boolean('noSelectionColumn', false)}
       />
     </div>
   );

@@ -15,9 +15,9 @@ const noop = () => {
 
 export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
   hooks.columns.push((columns, { instance }) => {
-    const { selectionMode } = instance.webComponentsReactProperties;
+    const { selectionMode, noSelectionColumn } = instance.webComponentsReactProperties;
 
-    if (selectionMode === TableSelectionMode.NONE) {
+    if (selectionMode === TableSelectionMode.NONE || noSelectionColumn) {
       return columns;
     }
 

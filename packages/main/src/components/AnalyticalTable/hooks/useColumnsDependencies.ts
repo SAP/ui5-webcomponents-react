@@ -5,7 +5,8 @@ export const useColumnsDependencies = (hooks) => {
       state.hiddenColumns,
       webComponentsReactProperties.scaleWidthMode,
       webComponentsReactProperties.loading,
-      webComponentsReactProperties.selectionMode
+      webComponentsReactProperties.selectionMode,
+      webComponentsReactProperties.noSelectionColumn
     ];
   });
 };

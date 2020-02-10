@@ -94,9 +94,9 @@ export interface TableProps extends CommonProps {
   noDataText?: string;
   rowHeight?: number;
   alternateRowColor?: boolean;
+  noSelectionColumn?: boolean;
 
   // features
-
   filterable?: boolean;
   sortable?: boolean;
   groupable?: boolean;
@@ -161,7 +161,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     isTreeTable,
     alternateRowColor,
     overscanCount,
-    scaleWidthMode
+    scaleWidthMode,
+    noSelectionColumn
   } = props;
 
   const classes = useStyles({ rowHeight: props.rowHeight });
@@ -207,7 +208,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         isTreeTable,
         alternateRowColor,
         scaleWidthMode,
-        loading
+        loading,
+        noSelectionColumn
       },
       ...reactTableOptions
     },
