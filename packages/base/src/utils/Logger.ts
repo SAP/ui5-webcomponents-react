@@ -1,8 +1,6 @@
-// tslint:disable no-console
+/* eslint-disable no-console,no-unused-expressions */
 
-function pad0(i: any, w: number) {
-  return `000${String(i)}`.slice(-w);
-}
+const pad0 = (i: any, w: number) => `000${String(i)}`.slice(-w);
 
 export enum LOG_LEVEL {
   FATAL = 0,

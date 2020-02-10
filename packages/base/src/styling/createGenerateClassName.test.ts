@@ -21,7 +21,7 @@ describe('createGenerateClassName', () => {
       }
     };
     const className = generateClassName(rule, sheet);
-    expect(className.match(/Component--someKey--1-.*/).length > 0).toBe(true);
+    expect(/Component--someKey--1-.*/.exec(className).length > 0).toBe(true);
   });
 
   test('with invalid jssId and invalid classNamePrefix', () => {
@@ -34,6 +34,6 @@ describe('createGenerateClassName', () => {
       }
     };
     const className = generateClassName(rule, sheet);
-    expect(className.match(/MyComponent-Component--someKey--.*/).length > 0).toBe(true);
+    expect(/MyComponent-Component--someKey--.*/.exec(className).length > 0).toBe(true);
   });
 });

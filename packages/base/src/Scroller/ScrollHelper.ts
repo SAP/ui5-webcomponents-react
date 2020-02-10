@@ -39,7 +39,7 @@ const makeData = () => ({
   delayTimeout: null
 });
 
-function animateScroll(easing, options, timestamp) {
+const animateScroll = (easing, options, timestamp) => {
   const data = options.data;
 
   // Cancel on specific events
@@ -89,9 +89,9 @@ function animateScroll(easing, options, timestamp) {
     // @ts-ignore
     events.registered.end(data.to, data.target, data.currentPositionY);
   }
-}
+};
 
-function animateTopScroll(y, options, to, target) {
+const animateTopScroll = (y, options, to, target) => {
   options.data = options.data || makeData();
   const { scrollContainer } = options;
 
@@ -128,8 +128,8 @@ function animateTopScroll(y, options, to, target) {
     events.registered.begin(options.data.to, options.data.target);
   }
   requestAnimationFrame(easedAnimate);
-}
+};
 
-export function scrollTo(toY, options, to, target) {
+export const scrollTo = (toY, options, to, target) => {
   animateTopScroll(toY, options, to, target);
-}
+};

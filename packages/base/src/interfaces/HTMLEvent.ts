@@ -1,1 +1,1 @@
-export interface HTMLEvent extends Event {}
+export type HTMLEvent = Event;
