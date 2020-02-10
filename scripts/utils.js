@@ -48,15 +48,7 @@ function asyncExtractTar(options) {
 }
 
 function asyncMkDirP(filepath) {
-  return new Promise((resolve, reject) =>
-    mkdirp(filepath, (error) => {
-      if (error) {
-        reject(error);
-        return;
-      }
-      resolve();
-    })
-  );
+  return mkdirp(filepath);
 }
 
 function asyncRimRaf(filepath) {

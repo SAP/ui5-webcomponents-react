@@ -18,29 +18,29 @@
       "filename": "base.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "base",
-      "size": 59996,
-      "gzip": 12922
+      "size": 59797,
+      "gzip": 12906
     },
     {
       "filename": "base.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "base",
-      "size": 59996,
-      "gzip": 12922
+      "size": 59797,
+      "gzip": 12906
     },
     {
       "filename": "main.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "main",
-      "size": 137165,
-      "gzip": 35758
+      "size": 139840,
+      "gzip": 36634
     },
     {
       "filename": "main.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "main",
-      "size": 137165,
-      "gzip": 35758
+      "size": 139840,
+      "gzip": 36634
     }
   ]
 }
