@@ -51,48 +51,64 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
     dataset,
     noLegend = false,
     dataPointClickHandler,
-    legendClickHandler
+    legendClickHandler,
+    chartConfig = {
+      yAxisVisible: true,
+      xAxisVisible: true,
+      legendVisible: true,
+      gridStroke: 'white',
+      gridHorizontal: true,
+      gridVertical: true,
+      yAxisColor: 'black',
+      legendPosition: 'bottom',
+      strokeWidth: 1,
+      secondYAxis: {
+        visible: false,
+        dataKey: '',
+        name: ''
+      }
+    }
   } = props as LineChartProps;
 
   useInitialize();
   const dataKeys = dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : [];
+
+  let colorSecondY = 0;
+  if (chartConfig.secondYAxis) {
+    colorSecondY = dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey);
+  }
 
   const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onItemLegendClick = useCallback(
     (e) => {
-      legendClickHandler({
-        dataKey: e.dataKey,
-        value: e.value,
-        chartType: e.type,
-        color: e.color,
-        payload: e.payload
-      });
+      if (legendClickHandler) {
+        legendClickHandler({
+          dataKey: e.dataKey,
+          value: e.value,
+          chartType: e.type,
+          color: e.color,
+          payload: e.payload
+        });
+      }
     },
     [dataset]
   );
 
   const onDataPointClick = useCallback(
     (e) => {
-      if (e) {
-        const dataPoint = e.activePayload.filter((dataElement) => dataElement.dataKey === currentDataKey);
-        dataPoint.length > 0 &&
-          dataPointClickHandler({
-            xValue: dataPoint[0].payload.xValue,
-            name: dataPoint[0].name,
-            value: dataPoint[0].value,
-            payload: dataPoint[0].payload
-          });
+      if (e && dataPointClickHandler && e.value) {
+        dataPointClickHandler({
+          value: e.value,
+          dataKey: e.dataKey,
+          index: e.index,
+          payload: e.payload
+        });
       }
     },
     [dataset]
   );
-
-  let currentDataKey;
-  const setDataKey = (e) => {
-    currentDataKey = e.dataKey;
-  };
 
   return (
     <ChartContainer
@@ -109,18 +125,27 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         onClick={onDataPointClick}
         style={{ fontSize: parameters.sapUiFontSmallSize }}
       >
-        <CartesianGrid vertical={true} />
-        <XAxis dataKey={labelKey} />
-        <YAxis />
+        <CartesianGrid vertical={true} stroke={chartConfig.gridStroke} />
+        {chartConfig.xAxisVisible && <XAxis dataKey={labelKey} yAxisId="left" />}
+        {chartConfig.yAxisVisible && <YAxis />}
+        {chartConfig.secondYAxis && (
+          <YAxis
+            dataKey={chartConfig.secondYAxis.dataKey}
+            stroke={`var(--sapUiChartAccent${(colorSecondY % 12) + 1})`}
+            label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'insideRight' }}
+            orientation="right"
+            yAxisId="right"
+          />
+        )}
         {dataKeys.map((key, index) => (
           <Line
-            onClick={onDataPointClick}
             key={key}
             name={key}
             type="monotone"
             dataKey={key}
             stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
-            activeDot={{ onMouseOver: setDataKey }}
+            strokeWidth={chartConfig.strokeWidth}
+            activeDot={{ onClick: onDataPointClick }}
           >
             <LabelList dataKey={key} content={CustomDataLabel} />
           </Line>

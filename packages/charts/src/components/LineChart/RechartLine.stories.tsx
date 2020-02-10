@@ -3,6 +3,7 @@ import { LineRechart } from './RechartLine';
 import { ComposedChartContainer } from '../../internal/ComposedChartContainer';
 import { Line } from '../../elements/Line';
 import { Bar } from '../../elements/Bar';
+import { LineRe } from './ComposedLineChart';
 
 const dataset = [
   {
@@ -103,26 +104,40 @@ export default {
   component: LineRechart
 };
 
-const dataPointCallback = (dataPoint) => {
-  alert(JSON.stringify(dataPoint));
+const clickHandler = (data) => {
+  console.log(data);
 };
 
 function renderStory() {
   return (
     <LineRechart
-      dataPointClickHandler={dataPointCallback}
+      dataPointClickHandler={clickHandler}
+      legendClickHandler={clickHandler}
       labelKey={'xValue'}
       dataset={dataset}
       width={'95%'}
       height={'400px'}
       noLegend={false}
       loading={true}
+      chartConfig={{
+        strokeWidth: 1.5,
+        xAxisVisible: false,
+        yAxisVisible: true,
+        secondYAxis: { dataKey: 'volume', name: 'USED DATA VOLUME' }
+      }}
     />
   );
 }
 
 const renderStoryWithCustomColor = () => (
-  <LineRechart labelKey={'xValue'} dataset={singleData} color={'red'} width={'95%'} height={'400px'} />
+  <LineRechart
+    dataPointClickHandler={clickHandler}
+    labelKey={'xValue'}
+    dataset={singleData}
+    color={'red'}
+    width={'95%'}
+    height={'400px'}
+  />
 );
 
 export const withCustomColor = renderStoryWithCustomColor();
@@ -145,18 +160,14 @@ loadingPlaceholder.story = {
   name: 'Loading Placeholder'
 };
 
-const logLegend = (legendData) => {
-  console.log(legendData);
-};
-
 const renderComposedChart = () => (
   <ComposedChartContainer
     width={'95%'}
     height={'400px'}
     dataSet={dataset}
     dataLabel={'xValue'}
-    loading={true}
-    legendClickHandler={logLegend}
+    loading={false}
+    legendClickHandler={clickHandler}
     chartConfig={{
       yAxisVisible: true,
       xAxisVisible: true,
@@ -168,8 +179,8 @@ const renderComposedChart = () => (
     }}
   >
     <Bar dataKey={'sessions'} />
-    <Line dataKey={'users'} stroke={'orange'} strokeWidth={2.5} />
-    <Line dataKey={'volume'} strokg={'lightblue'} strokeWidth={1} />
+    <Line dataPointClickHandler={clickHandler} dataKey={'users'} stroke={'orange'} strokeWidth={3.5} />
+    <Line dataKey={'volume'} stroke={'lightblue'} strokeWidth={1} />)
   </ComposedChartContainer>
 );
 

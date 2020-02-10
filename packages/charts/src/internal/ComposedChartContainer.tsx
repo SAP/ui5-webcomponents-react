@@ -5,7 +5,6 @@ import { LineChartPlaceholder } from '..';
 import { Loader } from '@ui5/webcomponents-react';
 import { useTheme } from 'react-jss';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import { Line } from '../elements/Line';
 
 export interface ComposedChartContainerProps extends ComposedBaseProps {
   children: ReactNode;
@@ -40,13 +39,15 @@ const ComposedChartContainer = forwardRef((props: ComposedChartContainerProps, r
 
   const onItemLegendClick = useCallback(
     (e) => {
-      legendClickHandler({
-        dataKey: e.dataKey,
-        value: e.value,
-        chartType: e.type,
-        color: e.color,
-        payload: e.payload
-      });
+      if (legendClickHandler) {
+        legendClickHandler({
+          dataKey: e.dataKey,
+          value: e.value,
+          chartType: e.type,
+          color: e.color,
+          payload: e.payload
+        });
+      }
     },
     [dataSet]
   );
