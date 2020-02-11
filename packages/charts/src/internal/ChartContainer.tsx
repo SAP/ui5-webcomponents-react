@@ -9,7 +9,7 @@ export interface ContainerProps extends ChartContainerProps {
 }
 
 const ChartContainer = forwardRef((props: ContainerProps, ref: Ref<any>) => {
-  const { height, width, placeholder: PlaceholderComponent, loading, dataset } = props;
+  const { height, width, placeholder: PlaceholderComponent, loading = false, dataset } = props;
 
   return (
     <div>

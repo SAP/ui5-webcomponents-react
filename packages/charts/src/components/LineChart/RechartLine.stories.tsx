@@ -152,9 +152,7 @@ defaultStory.story = {
   name: 'Default'
 };
 
-export const loadingPlaceholder = () => (
-  <LineRechart labelKey={'xValue'} color={'red'} width={'50%'} height={'400px'} />
-);
+export const loadingPlaceholder = () => <LineRechart labelKey={'xValue'} width={'50%'} height={'400px'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading Placeholder'
@@ -164,9 +162,8 @@ const renderComposedChart = () => (
   <ComposedChartContainer
     width={'95%'}
     height={'400px'}
-    dataSet={dataset}
-    dataLabel={'xValue'}
-    loading={false}
+    dataset={dataset}
+    labelKey={'xValue'}
     legendClickHandler={clickHandler}
     chartConfig={{
       yAxisVisible: true,
@@ -190,17 +187,7 @@ renderComposedChart.story = {
 export const composedChart = renderComposedChart();
 
 const renderComposedChartPlaceholder = () => (
-  <ComposedChartContainer
-    width={'30%'}
-    height={'400px'}
-    dataSet={[]}
-    dataLabel={'xValue'}
-    loading={true}
-    chartConfig={{ yAxisVisible: true }}
-  >
-    <Bar dataKey={'sessions'} />
-    <Line dataKey={'users'} />
-  </ComposedChartContainer>
+  <ComposedChartContainer width={'70%'} height={'400px'} labelKey={'xValue'}></ComposedChartContainer>
 );
 
 renderComposedChartPlaceholder.story = {

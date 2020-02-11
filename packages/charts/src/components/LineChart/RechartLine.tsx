@@ -63,7 +63,6 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       legendPosition: 'bottom',
       strokeWidth: 1,
       secondYAxis: {
-        visible: false,
         dataKey: '',
         name: ''
       }

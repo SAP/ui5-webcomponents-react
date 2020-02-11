@@ -1,12 +1,12 @@
-import { ComposedBaseProps } from '../interfaces/ComposedBaseProps';
 import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback } from 'react';
-import { ResponsiveContainer, ComposedChart, Legend, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
+import { ComposedChart, Legend, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
 import { LineChartPlaceholder } from '..';
-import { Loader } from '@ui5/webcomponents-react';
 import { useTheme } from 'react-jss';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { RechartBaseProps } from '../interfaces/RechartBaseProps';
+import { ChartContainer } from './ChartContainer';
 
-export interface ComposedChartContainerProps extends ComposedBaseProps {
+export interface ComposedChartContainerProps extends RechartBaseProps {
   children: ReactNode;
   placeHolder?: ComponentType<unknown>;
 }
@@ -15,10 +15,9 @@ const ComposedChartContainer = forwardRef((props: ComposedChartContainerProps, r
   const {
     height,
     width,
-    placeHolder: PlaceHolderComponent,
     loading,
-    dataSet,
-    dataLabel,
+    dataset,
+    labelKey,
     dataPointClickHandler,
     legendClickHandler,
     chartConfig = {
@@ -30,7 +29,11 @@ const ComposedChartContainer = forwardRef((props: ComposedChartContainerProps, r
       gridVertical: true,
       yAxisId: '',
       yAxisColor: 'red',
-      legendPosition: 'bottom'
+      legendPosition: 'bottom',
+      secondYAxis: {
+        name: '',
+        dataKey: ''
+      }
     }
   } = props;
 
@@ -49,57 +52,39 @@ const ComposedChartContainer = forwardRef((props: ComposedChartContainerProps, r
         });
       }
     },
-    [dataSet]
+    [dataset]
   );
 
   const onDataPointClick = useCallback(
     (e) => {
-      // Necessary because onItemLegendclick calls always onDataPointClick with e = null
-      return e
-        ? {
-            e,
-            index: e.activeTooltipIndex,
-            label: e.activeLabel,
-            values: e.activePayload
-          }
-        : e;
+      // TODO: Clickhandler datapoint click
     },
-    [dataSet]
+    [dataset]
   );
 
   return (
-    <div>
-      {dataSet ? (
-        <div style={{ width, height }}>
-          {loading && dataSet.length === 0 && <LineChartPlaceholder />}
-          {loading && dataSet.length > 0 && <Loader style={{ marginBottom: '1vh' }} />}
-          {dataSet.length > 0 && (
-            <ResponsiveContainer>
-              <ComposedChart style={{ fontSize: parameters.sapUiFontSmallSize }} data={dataSet}>
-                <CartesianGrid
-                  vertical={chartConfig.gridVertical}
-                  horizontal={chartConfig.gridHorizontal}
-                  stroke={chartConfig.gridStroke}
-                />
-                {chartConfig.xAxisVisible && <XAxis dataKey={dataLabel} />}
-                {chartConfig.yAxisVisible && <YAxis />}
-                {chartConfig.yAxisVisible && <YAxis type="number" orientation="right" yAxisId="left" />}
-                <Tooltip />
-                {chartConfig.legendVisible && (
-                  <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition} />
-                )}
-                {props['children']}
-                <Brush height={30} />
-              </ComposedChart>
-            </ResponsiveContainer>
-          )}
-        </div>
-      ) : (
-        <div style={{ width, height }}>
-          <LineChartPlaceholder />
-        </div>
-      )}
-    </div>
+    <ChartContainer
+      width={width}
+      height={height}
+      loading={loading}
+      dataset={dataset}
+      placeholder={LineChartPlaceholder}
+    >
+      <ComposedChart style={{ fontSize: parameters.sapUiFontSmallSize }} data={dataset}>
+        <CartesianGrid
+          vertical={chartConfig.gridVertical}
+          horizontal={chartConfig.gridHorizontal}
+          stroke={chartConfig.gridStroke}
+        />
+        {chartConfig.xAxisVisible && <XAxis dataKey={labelKey} />}
+        {chartConfig.yAxisVisible && <YAxis />}
+        {chartConfig.yAxisVisible && <YAxis type="number" orientation="right" yAxisId="left" />}
+        <Tooltip />
+        {chartConfig.legendVisible && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition} />}
+        {props['children']}
+        <Brush height={30} />
+      </ComposedChart>
+    </ChartContainer>
   );
 });
 

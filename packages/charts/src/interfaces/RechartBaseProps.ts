@@ -8,8 +8,7 @@ export interface RechartBaseProps extends ChartContainerProps {
   legendClickHandler?: (object) => void;
   color?: string;
   colors?: Array<CSSProperties['color']>;
-  valueAxisFormatter?: (value: any, currentDataset?: object, currentContext?: object) => string | number;
-  categoryAxisFormatter?: (value: any, currentDataset?: object, currentContext?: object) => string | number;
+
   chartConfig?: {
     yAxisVisible: boolean;
     xAxisVisible: boolean;
@@ -18,6 +17,7 @@ export interface RechartBaseProps extends ChartContainerProps {
     gridHorizontal?: boolean;
     legendPosition?: string;
     strokeWidth?: number;
+    legendVisible?: boolean;
     secondYAxis?: {
       dataKey: string;
       name?: string;
