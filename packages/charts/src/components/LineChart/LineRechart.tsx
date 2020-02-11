@@ -53,8 +53,8 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       strokeWidth: 1,
       zoomingTool: false,
       secondYAxis: {
-        dataKey: undefined,
-        name,
+        dataKey: '',
+        name: '',
         color: 'black'
       }
     }

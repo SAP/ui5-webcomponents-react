@@ -32,8 +32,8 @@ const RechartComposed = forwardRef((props: ComposedChartContainerProps, ref: Ref
       legendPosition: 'bottom',
       zoomingTool: false,
       secondYAxis: {
-        name,
-        dataKey: undefined,
+        name: '',
+        dataKey: '',
         color: 'black'
       }
     }
