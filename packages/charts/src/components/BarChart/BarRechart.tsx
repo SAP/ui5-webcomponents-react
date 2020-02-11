@@ -51,9 +51,10 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       yAxisColor: 'black',
       legendPosition: 'bottom',
       barSize: 50,
+      zoomingTool: false,
       secondYAxis: {
-        dataKey: '',
-        name: '',
+        dataKey: undefined,
+        name,
         color: 'black'
       }
     }
@@ -67,6 +68,22 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
 
   const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
+
+  let activeElement: {
+    xIndex: number;
+    dataKey: string;
+    value: number;
+    payload: object;
+  };
+
+  const setActiveElement = (e) => {
+    activeElement = {
+      xIndex: 0,
+      dataKey: Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
+      value: e.value,
+      payload: e.payload
+    };
+  };
 
   const onItemLegendClick = useCallback(
     (e) => {
@@ -85,13 +102,9 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
 
   const onDataPointClick = useCallback(
     (e) => {
-      if (e && dataPointClickHandler && e.value) {
-        dataPointClickHandler({
-          value: e.value,
-          dataKey: e.dataKey,
-          index: e.index,
-          payload: e.payload
-        });
+      if (e && dataPointClickHandler) {
+        activeElement.index = e.activeTooltipIndex;
+        dataPointClickHandler(activeElement);
       }
     },
     [dataset]
@@ -99,11 +112,20 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
 
   return (
     <ChartContainer dataset={dataset} loading={loading} placeholder={BarChartPlaceholder} width={width} height={height}>
-      <BarChartLib ref={chartRef} data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }}>
-        <CartesianGrid vertical={true} stroke={chartConfig.gridStroke} />
+      <BarChartLib
+        onClick={onDataPointClick}
+        ref={chartRef}
+        data={dataset}
+        style={{ fontSize: parameters.sapUiFontSmallSize }}
+      >
+        <CartesianGrid
+          vertical={chartConfig.gridVertical}
+          horizontal={chartConfig.gridHorizontal}
+          stroke={chartConfig.gridStroke}
+        />
         {chartConfig.xAxisVisible && <XAxis dataKey={labelKey} yAxisId="left" />}
         {chartConfig.yAxisVisible && <YAxis />}
-        {chartConfig.secondYAxis && (
+        {chartConfig.secondYAxis.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={
@@ -124,13 +146,13 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
             dataKey={key}
             fill={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
             stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
-            activeElement={{ onClick: onDataPointClick }}
             barSize={chartConfig.barSize}
+            onMouseEnter={setActiveElement}
           ></Bar>
         ))}
         ){!noLegend && <Legend onClick={onItemLegendClick} />}
         <Tooltip />
-        <Brush height={30} />
+        {chartConfig.zoomingTool && <Brush height={30} />}
       </BarChartLib>
     </ChartContainer>
   );

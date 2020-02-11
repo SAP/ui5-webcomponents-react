@@ -116,6 +116,7 @@ function renderStory() {
       noLegend={false}
       loading={true}
       chartConfig={{
+        zoomingTool: true,
         strokeWidth: 1.5,
         xAxisVisible: true,
         yAxisVisible: true,

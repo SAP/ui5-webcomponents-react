@@ -30,9 +30,10 @@ const RechartComposed = forwardRef((props: ComposedChartContainerProps, ref: Ref
       yAxisId: '',
       yAxisColor: 'red',
       legendPosition: 'bottom',
+      zoomingTool: false,
       secondYAxis: {
-        name: '',
-        dataKey: '',
+        name,
+        dataKey: undefined,
         color: 'black'
       }
     }
@@ -71,7 +72,7 @@ const RechartComposed = forwardRef((props: ComposedChartContainerProps, ref: Ref
       dataset={dataset}
       placeholder={LineChartPlaceholder}
     >
-      <ComposedChart style={{ fontSize: parameters.sapUiFontSmallSize }} data={dataset}>
+      <ComposedChart ref={chartRef} style={{ fontSize: parameters.sapUiFontSmallSize }} data={dataset}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
@@ -89,7 +90,7 @@ const RechartComposed = forwardRef((props: ComposedChartContainerProps, ref: Ref
         <Tooltip />
         {chartConfig.legendVisible && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition} />}
         {props['children']}
-        <Brush height={30} />
+        {chartConfig.zoomingTool && <Brush height={30} />}{' '}
       </ComposedChart>
     </ChartContainer>
   );

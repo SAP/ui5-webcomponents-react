@@ -51,9 +51,10 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       yAxisColor: 'black',
       legendPosition: 'bottom',
       strokeWidth: 1,
+      zoomingTool: false,
       secondYAxis: {
-        dataKey: '',
-        name: '',
+        dataKey: undefined,
+        name,
         color: 'black'
       }
     }
@@ -90,15 +91,13 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         dataPointClickHandler({
           value: e.value,
           dataKey: e.dataKey,
-          index: e.index,
+          xIndex: e.index,
           payload: e.payload
         });
       }
     },
     [dataset]
   );
-
-  console.log(chartConfig.secondYAxis.color);
 
   return (
     <ChartContainer
@@ -114,10 +113,14 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         onClick={onDataPointClick}
         style={{ fontSize: parameters.sapUiFontSmallSize }}
       >
-        <CartesianGrid vertical={true} stroke={chartConfig.gridStroke} />
+        <CartesianGrid
+          vertical={chartConfig.gridVertical}
+          horizontal={chartConfig.gridHorizontal}
+          stroke={chartConfig.gridStroke}
+        />
         {chartConfig.xAxisVisible && <XAxis dataKey={labelKey} yAxisId="left" />}
         {chartConfig.yAxisVisible && <YAxis />}
-        {chartConfig.secondYAxis && (
+        {chartConfig.secondYAxis.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={
@@ -144,7 +147,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         ))}
         ){!noLegend && <Legend onClick={onItemLegendClick} />}
         <Tooltip />
-        <Brush height={30} />
+        {chartConfig.zoomingTool && <Brush height={30} />}{' '}
       </LineChartLib>
     </ChartContainer>
   );
