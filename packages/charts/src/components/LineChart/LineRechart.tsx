@@ -4,31 +4,10 @@ import { useInitialize } from '../../lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { CartesianGrid, Line, LineChart as LineChartLib, XAxis, YAxis, Tooltip, Legend, Brush } from 'recharts';
 import { useTheme } from 'react-jss';
-import { JSSTheme } from '@ui5/webcomponents-react/src/interfaces/JSSTheme';
 import { LineChartPlaceholder } from './Placeholder';
 import { ChartContainer } from '../../internal/ChartContainer';
 
 export interface LineChartProps extends RechartBaseProps {}
-
-const CustomDataLabel = (props) => {
-  const { x, y, value } = props;
-  const { parameters } = useTheme() as JSSTheme;
-  return (
-    <text
-      x={x}
-      y={y}
-      dy={-8}
-      textAnchor="middle"
-      style={{
-        fontFamily: parameters.sapUiFontFamily,
-        fill: parameters.sapUiContentLabelColor,
-        fontSize: parameters.sapMFontSmallSize
-      }}
-    >
-      {value}
-    </text>
-  );
-};
 
 const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
@@ -52,6 +31,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       legendPosition: 'bottom',
       strokeWidth: 1,
       zoomingTool: false,
+      strokeOpacity: 0.4,
       secondYAxis: {
         dataKey: '',
         name: '',
@@ -128,7 +108,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
                 ? chartConfig.secondYAxis.color
                 : `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`
             }
-            label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'insideRight' }}
+            label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
             yAxisId="right"
           />
@@ -137,13 +117,14 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
           <Line
             key={key}
             name={key}
+            strokeOpacity={chartConfig.strokeOpacity}
             label={{ position: 'top', fontFamily: parameters.sapUiFontFamily }}
             type="monotone"
             dataKey={key}
             stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
             strokeWidth={chartConfig.strokeWidth}
             activeDot={{ onClick: onDataPointClick }}
-          ></Line>
+          />
         ))}
         ){!noLegend && <Legend onClick={onItemLegendClick} />}
         <Tooltip />

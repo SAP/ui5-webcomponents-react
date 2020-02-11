@@ -100,14 +100,16 @@ function renderStory() {
       labelKey={'xValue'}
       dataset={dataset}
       width={'97%'}
-      height={'40vh'}
-      noLegend={false}
-      loading={true}
       chartConfig={{
-        barSize: 100,
+        gridStroke: 'white',
+        gridVertical: false,
+        fillOpacity: 0.7,
+        strokeOpacity: 1,
+        barSize: 25,
         xAxisVisible: true,
         yAxisVisible: true,
-        secondYAxis: { dataKey: 'users' }
+        secondYAxis: { dataKey: 'users' },
+        zoomingTool: true
       }}
     />
   );

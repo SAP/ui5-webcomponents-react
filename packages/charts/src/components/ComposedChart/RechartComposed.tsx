@@ -80,17 +80,19 @@ const RechartComposed = forwardRef((props: ComposedChartContainerProps, ref: Ref
         />
         {chartConfig.xAxisVisible && <XAxis dataKey={labelKey} />}
         {chartConfig.yAxisVisible && <YAxis />}
-        <YAxis
-          dataKey={chartConfig.secondYAxis.dataKey}
-          stroke={chartConfig.secondYAxis.color}
-          label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'insideRight' }}
-          orientation="right"
-          yAxisId="right"
-        />
+        {chartConfig.secondYAxis && (
+          <YAxis
+            dataKey={chartConfig.secondYAxis.dataKey}
+            stroke={chartConfig.secondYAxis.color}
+            label={{ value: chartConfig.secondYAxis.name, angle: +90, position: 'center' }}
+            orientation="right"
+            yAxisId="right"
+          />
+        )}
         <Tooltip />
         {chartConfig.legendVisible && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition} />}
         {props['children']}
-        {chartConfig.zoomingTool && <Brush height={30} />}{' '}
+        {chartConfig.zoomingTool && <Brush height={30} />}
       </ComposedChart>
     </ChartContainer>
   );

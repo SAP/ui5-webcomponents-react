@@ -4,31 +4,10 @@ import { useInitialize } from '../../lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { CartesianGrid, Bar, BarChart as BarChartLib, XAxis, YAxis, Tooltip, Legend, Brush } from 'recharts';
 import { useTheme } from 'react-jss';
-import { JSSTheme } from '@ui5/webcomponents-react/src/interfaces/JSSTheme';
 import { BarChartPlaceholder } from './Placeholder';
 import { ChartContainer } from '../../internal/ChartContainer';
 
 export interface BarChartProps extends RechartBaseProps {}
-
-const CustomDataLabel = (props) => {
-  const { x, y, value } = props;
-  const { parameters } = useTheme() as JSSTheme;
-  return (
-    <text
-      x={x}
-      y={y}
-      dy={-8}
-      textAnchor="middle"
-      style={{
-        fontFamily: parameters.sapUiFontFamily,
-        fill: parameters.sapUiContentLabelColor,
-        fontSize: parameters.sapMFontSmallSize
-      }}
-    >
-      {value}
-    </text>
-  );
-};
 
 const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   const {
@@ -50,8 +29,11 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       gridVertical: true,
       yAxisColor: 'black',
       legendPosition: 'bottom',
-      barSize: 50,
+      barSize: 25,
+      barGap: 3,
       zoomingTool: false,
+      strokeOpacity: 1,
+      fillOpacity: 1,
       secondYAxis: {
         dataKey: '',
         name: '',
@@ -97,9 +79,20 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
     [dataset]
   );
 
+  let activeLegend;
+  const markLegend = (e) => {
+    activeLegend = e.dataKey;
+    console.log(activeLegend);
+  };
+
   return (
     <ChartContainer dataset={dataset} loading={loading} placeholder={BarChartPlaceholder} width={width} height={height}>
-      <BarChartLib ref={chartRef} data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }}>
+      <BarChartLib
+        ref={chartRef}
+        data={dataset}
+        style={{ fontSize: parameters.sapUiFontSmallSize }}
+        barGap={chartConfig.barGap}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
@@ -107,7 +100,7 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
         />
         {chartConfig.xAxisVisible && <XAxis dataKey={labelKey} yAxisId="left" />}
         {chartConfig.yAxisVisible && <YAxis />}
-        {chartConfig.secondYAxis.dataKey && (
+        {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={
@@ -115,13 +108,15 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
                 ? chartConfig.secondYAxis.color
                 : `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`
             }
-            label={{ value: chartConfig.secondYAxis.name, angle: +90, position: 'right' }}
+            label={{ value: chartConfig.secondYAxis.name, angle: +90, position: 'center' }}
             orientation="right"
             yAxisId="right"
           />
         )}
         {dataKeys.map((key, index) => (
           <Bar
+            strokeOpacity={chartConfig.strokeOpacity}
+            fillOpacity={chartConfig.fillOpacity}
             label={{ position: 'top', fontFamily: parameters.sapUiFontFamily }}
             key={key}
             name={key}
@@ -130,11 +125,13 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
             stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
             barSize={chartConfig.barSize}
             onClick={onDataPointClick}
-          ></Bar>
+          />
         ))}
         ){!noLegend && <Legend onClick={onItemLegendClick} />}
-        <Tooltip />
-        {chartConfig.zoomingTool && <Brush height={30} />}
+        <Tooltip cursor={{ fill: `var(--sapUiChartAccent${1})`, fillOpacity: 0.1 }} />
+        {chartConfig.zoomingTool && (
+          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent${6})`} travellerWidth={10} height={30} />
+        )}
       </BarChartLib>
     </ChartContainer>
   );

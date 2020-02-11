@@ -19,7 +19,10 @@ export interface RechartBaseProps extends ChartContainerProps {
     strokeWidth?: number;
     legendVisible?: boolean;
     barSize?: string | number;
+    barGap?: number;
     zoomingTool?: boolean;
+    strokeOpacity?: number;
+    fillOpacity?: number;
     secondYAxis?: {
       dataKey: string;
       name?: string;

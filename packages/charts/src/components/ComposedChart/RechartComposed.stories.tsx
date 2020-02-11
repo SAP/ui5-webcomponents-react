@@ -128,7 +128,7 @@ const renderComposedChart = () => (
       }
     }}
   >
-    <Bar dataKey={'sessions'} />
+    <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
     <Line dataPointClickHandler={clickHandler} dataKey={'users'} stroke={'orange'} strokeWidth={3.5} />
     <Line dataKey={'volume'} stroke={'lightblue'} strokeWidth={1} />)
   </RechartComposed>
