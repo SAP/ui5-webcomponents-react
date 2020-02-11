@@ -48,6 +48,7 @@ You can play around with our components by visiting our [Storybook](https://sap.
 ## Requirements
 
 - [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.8.0 or higher**)
+- [Node.js](https://nodejs.org/) (**version 12 or higher** ⚠️)
 
 <!-- *********************************************************************** -->
 <a name="download"></a>

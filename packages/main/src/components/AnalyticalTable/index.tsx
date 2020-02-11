@@ -189,6 +189,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     rows,
     prepareRow,
     state: tableState,
+    columns: tableInternalColumns,
     setColumnOrder,
     dispatch,
     totalColumnsWidth,
@@ -320,7 +321,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     props,
     setColumnOrder,
     tableState.columnOrder,
-    tableState.columnResizing
+    tableState.columnResizing,
+    tableInternalColumns
   );
 
   const passThroughProps = usePassThroughHtmlProps(props);
@@ -356,7 +358,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                       onDragEnd={handleOnDragEnd}
                       dragOver={column.id === dragOver}
                       column={column}
-                      isDraggable={!isTreeTable}
+                      isDraggable={!isTreeTable && column.canReorder}
                     >
                       {column.render('Header')}
                     </ColumnHeader>

@@ -1,3 +1,4 @@
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React from 'react';
@@ -15,14 +16,18 @@ const noop = () => {
 
 export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
   hooks.columns.push((columns, { instance }) => {
-    const { selectionMode, noSelectionColumn } = instance.webComponentsReactProperties;
+    const { selectionMode, noSelectionColumn, onRowSelected } = instance.webComponentsReactProperties;
 
     if (selectionMode === TableSelectionMode.NONE || noSelectionColumn) {
       return columns;
     }
 
     const toggleAllRowsSelected = (e) => {
-      instance.toggleAllRowsSelected(e.getParameter('checked'));
+      const allRowsSelected = e.getParameter('checked');
+      instance.toggleAllRowsSelected(allRowsSelected);
+      if (typeof onRowSelected === 'function') {
+        onRowSelected(Event.of(null, e, { allRowsSelected }));
+      }
     };
 
     return [
@@ -34,6 +39,7 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         groupable: false,
         filterable: false,
         disableResizing: true,
+        canReorder: false,
         width: 36,
         minWidth: 36,
         // The header can use the table's getToggleAllRowsSelectedProps method

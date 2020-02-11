@@ -81,13 +81,10 @@ const styles = ({ parameters }: JSSTheme) => ({
 
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'TableColumnHeader' });
 
-export /**
- * <code>import { ColumnHeader } from '@ui5/webcomponents-react/lib/ColumnHeader';</code>
- */
 /**
  * <code>import { ColumnHeader } from '@ui5/webcomponents-react/lib/ColumnHeader';</code>
  */
-const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
+export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) => {
   const classes = useStyles(props);
 
   const {
