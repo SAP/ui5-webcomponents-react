@@ -34,6 +34,7 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         groupable: false,
         filterable: false,
         disableResizing: true,
+        canReorder: false,
         width: 36,
         minWidth: 36,
         // The header can use the table's getToggleAllRowsSelectedProps method
