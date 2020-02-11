@@ -6,9 +6,9 @@ import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { Children, FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../../interfaces/CommonProps';
-import { JSSTheme } from '../../../interfaces/JSSTheme';
-import { styles } from '../Form.jss';
+import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { styles } from '../Form/Form.jss';
 
 export interface FormGroupProps extends CommonProps {
   title?: string;

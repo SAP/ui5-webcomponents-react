@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Optional } from '@ui5/webcomponents-react-base/lib/Optional';
 import '@ui5/webcomponents/dist/Label';
 import { RefObject, useCallback, useEffect } from 'react';
@@ -32,7 +33,7 @@ export const generateLegend = (chart) => {
 
   let itemsForLegend = datasets;
   if (['pie', 'doughnut'].includes(type)) {
-    let pieDataSet = Object.values(datasets[0]._meta)[0] as any;
+    const pieDataSet = Object.values(datasets[0]._meta)[0] as any;
     itemsForLegend = pieDataSet.data.map((meta) => meta._model);
   }
   return itemsForLegend.map((item, index) => getLegendEntry(item, type, index)).join(' ');

@@ -5,7 +5,7 @@ import { CommonProps } from './CommonProps';
 export interface ChartBaseProps extends CommonProps {
   labels?: string[];
   datasets?: ChartDataSets[];
-  colors?: Array<CSSProperties['color']>;
+  colors?: CSSProperties['color'][];
   height?: number | string;
   width?: number | string;
   minHeight?: number;

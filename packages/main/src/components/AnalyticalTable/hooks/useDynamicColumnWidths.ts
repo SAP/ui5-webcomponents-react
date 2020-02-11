@@ -1,5 +1,5 @@
-import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
+import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
 
 const ROW_SAMPLE_SIZE = 20;
 const DEFAULT_HEADER_NUM_CHAR = 10;
@@ -31,17 +31,17 @@ export const useDynamicColumnWidths = (hooks) => {
 
       const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth.length;
 
-      //check if columns are visible and table has width
+      // check if columns are visible and table has width
       if (visibleColumns.length > 0 && totalWidth > 0) {
-        //set fixedWidth as defaultWidth if visible columns have fixed value
+        // set fixedWidth as defaultWidth if visible columns have fixed value
         if (visibleColumns.length === columnsWithFixedWidth.length) {
           return fixedWidth / visibleColumns.length;
         }
-        //spread default columns
+        // spread default columns
         if (totalWidth >= fixedWidth + defaultColumnsCount * DEFAULT_COLUMN_WIDTH) {
           return (totalWidth - fixedWidth) / defaultColumnsCount;
         } else {
-          //set defaultWidth for default columns if table is overflowing
+          // set defaultWidth for default columns if table is overflowing
           return DEFAULT_COLUMN_WIDTH;
         }
       } else {
@@ -61,6 +61,15 @@ export const useDynamicColumnWidths = (hooks) => {
     const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
 
     const columnMeta = visibleColumns.reduce((acc, column) => {
+      if (column.id === '__ui5wcr__internal_selection_column') {
+        acc[column.accessor] = {
+          minHeaderWidth: column.width,
+          fullWidth: column.width,
+          contentCharAvg: 0
+        };
+        return acc;
+      }
+
       const headerLength = typeof column.Header === 'string' ? column.Header.length : DEFAULT_HEADER_NUM_CHAR;
 
       // max character length
@@ -131,7 +140,7 @@ export const useDynamicColumnWidths = (hooks) => {
         const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.accessor);
         if (isColumnVisible) {
           const { minHeaderWidth, contentCharAvg } = columnMeta[column.accessor];
-          let additionalSpaceFactor = totalCharNum > 0 ? contentCharAvg / totalCharNum : 1 / visibleColumns.length;
+          const additionalSpaceFactor = totalCharNum > 0 ? contentCharAvg / totalCharNum : 1 / visibleColumns.length;
 
           const targetWidth = additionalSpaceFactor * availableWidth + minHeaderWidth;
 

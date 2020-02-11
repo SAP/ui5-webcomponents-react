@@ -5,7 +5,7 @@ import React, { CSSProperties, FC, ReactElement } from 'react';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
 interface Props {
-  image: string | ReactElement<unknown>;
+  image: string | ReactElement;
   imageShapeCircle: boolean;
   classes: any;
   showTitleInHeaderContent: boolean;

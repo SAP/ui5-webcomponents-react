@@ -1,7 +1,17 @@
 import { ScrollContext } from '@ui5/webcomponents-react-base/lib/ScrollContext';
-import React, { useMemo } from 'react';
+import React, { FC, ReactNode, RefObject, useMemo } from 'react';
 
-export const ScrollContentProvider = (props) => {
+interface Props {
+  children: ReactNode;
+  scrollContainer: RefObject<any>;
+  registerElement: (id: string) => void;
+  unregisterElement: (id: string) => void;
+  scrollToElementById: (id: string) => void;
+  selectedElementId: string;
+  scrollToTop: () => void;
+}
+
+export const ScrollContentProvider: FC<Props> = (props: Props) => {
   const {
     children,
     scrollContainer,

@@ -4,7 +4,9 @@ export const useColumnsDependencies = (hooks) => {
       state.tableClientWidth,
       state.hiddenColumns,
       webComponentsReactProperties.scaleWidthMode,
-      webComponentsReactProperties.loading
+      webComponentsReactProperties.loading,
+      webComponentsReactProperties.selectionMode,
+      webComponentsReactProperties.noSelectionColumn
     ];
   });
 };

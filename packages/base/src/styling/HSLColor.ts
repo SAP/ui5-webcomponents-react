@@ -5,9 +5,9 @@ export class HSLColor {
   private hue: number;
   private saturation: number;
   private lightness: number;
-  private alpha: number = 1;
+  private alpha = 1;
 
-  constructor(hue: number, saturation: number, lightness: number, alpha: number = 1) {
+  constructor(hue: number, saturation: number, lightness: number, alpha = 1) {
     this.hue = hue;
     this.saturation = saturation;
     this.lightness = lightness;
@@ -34,7 +34,9 @@ export class HSLColor {
     let g = parseInt(''.padEnd(2, result[2]), 16);
     let b = parseInt(''.padEnd(2, result[3]), 16);
 
-    (r /= 255), (g /= 255), (b /= 255);
+    r /= 255;
+    g /= 255;
+    b /= 255;
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
     let hue;
@@ -167,10 +169,8 @@ export class HSLColor {
     const h = this.hue / 360;
     const s = this.saturation / 100;
     const l = this.lightness / 100;
-    let t1;
     let t2;
     let t3;
-    let rgb;
     let val;
 
     if (s === 0) {
@@ -184,9 +184,9 @@ export class HSLColor {
       t2 = l + s - l * s;
     }
 
-    t1 = 2 * l - t2;
+    const t1 = 2 * l - t2;
 
-    rgb = [0, 0, 0];
+    const rgb = [0, 0, 0];
     for (let i = 0; i < 3; i++) {
       t3 = h + (1 / 3) * -(i - 1);
       if (t3 < 0) {
