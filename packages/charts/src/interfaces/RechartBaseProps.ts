@@ -18,9 +18,11 @@ export interface RechartBaseProps extends ChartContainerProps {
     legendPosition?: string;
     strokeWidth?: number;
     legendVisible?: boolean;
+    barSize?: string | number;
     secondYAxis?: {
       dataKey: string;
       name?: string;
+      color?: string;
     };
   };
 }

@@ -1,9 +1,5 @@
 import React from 'react';
-import { LineRechart } from './RechartLine';
-import { ComposedChartContainer } from '../../internal/ComposedChartContainer';
-import { Line } from '../../elements/Line';
-import { Bar } from '../../elements/Bar';
-import { LineRe } from './ComposedLineChart';
+import { LineRechart } from './LineRechart';
 
 const dataset = [
   {
@@ -100,7 +96,7 @@ const singleData = [
 ];
 
 export default {
-  title: 'Rechart',
+  title: 'Rechart - LineChart',
   component: LineRechart
 };
 
@@ -116,12 +112,12 @@ function renderStory() {
       labelKey={'xValue'}
       dataset={dataset}
       width={'95%'}
-      height={'400px'}
+      height={'40vh'}
       noLegend={false}
       loading={true}
       chartConfig={{
         strokeWidth: 1.5,
-        xAxisVisible: false,
+        xAxisVisible: true,
         yAxisVisible: true,
         secondYAxis: { dataKey: 'volume', name: 'USED DATA VOLUME' }
       }}
@@ -136,7 +132,7 @@ const renderStoryWithCustomColor = () => (
     dataset={singleData}
     color={'red'}
     width={'95%'}
-    height={'400px'}
+    height={'40vh'}
   />
 );
 
@@ -152,45 +148,8 @@ defaultStory.story = {
   name: 'Default'
 };
 
-export const loadingPlaceholder = () => <LineRechart labelKey={'xValue'} width={'50%'} height={'400px'} />;
+export const loadingPlaceholder = () => <LineRechart labelKey={'xValue'} width={'50%'} height={'40vh'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading Placeholder'
 };
-
-const renderComposedChart = () => (
-  <ComposedChartContainer
-    width={'95%'}
-    height={'400px'}
-    dataset={dataset}
-    labelKey={'xValue'}
-    legendClickHandler={clickHandler}
-    chartConfig={{
-      yAxisVisible: true,
-      xAxisVisible: true,
-      gridStroke: 'white',
-      legendVisible: true,
-      gridVertical: false,
-      gridHorizontal: true,
-      legendPosition: 'bottom'
-    }}
-  >
-    <Bar dataKey={'sessions'} />
-    <Line dataPointClickHandler={clickHandler} dataKey={'users'} stroke={'orange'} strokeWidth={3.5} />
-    <Line dataKey={'volume'} stroke={'lightblue'} strokeWidth={1} />)
-  </ComposedChartContainer>
-);
-
-renderComposedChart.story = {
-  name: 'Composed Chart'
-};
-export const composedChart = renderComposedChart();
-
-const renderComposedChartPlaceholder = () => (
-  <ComposedChartContainer width={'70%'} height={'400px'} labelKey={'xValue'}></ComposedChartContainer>
-);
-
-renderComposedChartPlaceholder.story = {
-  name: 'Composed Chart Placeholder'
-};
-export const composedChartPlaceHolder = renderComposedChartPlaceholder();

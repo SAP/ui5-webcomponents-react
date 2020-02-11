@@ -1,17 +1,17 @@
 import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback } from 'react';
 import { ComposedChart, Legend, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
-import { LineChartPlaceholder } from '..';
+import { LineChartPlaceholder } from '../..';
 import { useTheme } from 'react-jss';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import { RechartBaseProps } from '../interfaces/RechartBaseProps';
-import { ChartContainer } from './ChartContainer';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { ChartContainer } from '../../internal/ChartContainer';
 
 export interface ComposedChartContainerProps extends RechartBaseProps {
   children: ReactNode;
   placeHolder?: ComponentType<unknown>;
 }
 
-const ComposedChartContainer = forwardRef((props: ComposedChartContainerProps, ref: Ref<any>) => {
+const RechartComposed = forwardRef((props: ComposedChartContainerProps, ref: Ref<any>) => {
   const {
     height,
     width,
@@ -32,7 +32,8 @@ const ComposedChartContainer = forwardRef((props: ComposedChartContainerProps, r
       legendPosition: 'bottom',
       secondYAxis: {
         name: '',
-        dataKey: ''
+        dataKey: '',
+        color: 'black'
       }
     }
   } = props;
@@ -78,7 +79,13 @@ const ComposedChartContainer = forwardRef((props: ComposedChartContainerProps, r
         />
         {chartConfig.xAxisVisible && <XAxis dataKey={labelKey} />}
         {chartConfig.yAxisVisible && <YAxis />}
-        {chartConfig.yAxisVisible && <YAxis type="number" orientation="right" yAxisId="left" />}
+        <YAxis
+          dataKey={chartConfig.secondYAxis.dataKey}
+          stroke={chartConfig.secondYAxis.color}
+          label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'insideRight' }}
+          orientation="right"
+          yAxisId="right"
+        />
         <Tooltip />
         {chartConfig.legendVisible && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition} />}
         {props['children']}
@@ -88,4 +95,4 @@ const ComposedChartContainer = forwardRef((props: ComposedChartContainerProps, r
   );
 });
 
-export { ComposedChartContainer };
+export { RechartComposed };

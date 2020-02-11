@@ -1,25 +1,14 @@
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
+import React, { forwardRef, Ref, useCallback } from 'react';
 import { useInitialize } from '../../lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import {
-  CartesianGrid,
-  Line,
-  LineChart as LineChartLib,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  LabelList,
-  Brush
-} from 'recharts';
+import { CartesianGrid, Bar, BarChart as BarChartLib, XAxis, YAxis, Tooltip, Legend, Brush } from 'recharts';
 import { useTheme } from 'react-jss';
 import { JSSTheme } from '@ui5/webcomponents-react/src/interfaces/JSSTheme';
-import { LineChartPlaceholder } from './Placeholder';
-import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
+import { BarChartPlaceholder } from './Placeholder';
 import { ChartContainer } from '../../internal/ChartContainer';
 
-export interface LineChartProps extends RechartBaseProps {}
+export interface BarChartProps extends RechartBaseProps {}
 
 const CustomDataLabel = (props) => {
   const { x, y, value } = props;
@@ -41,7 +30,7 @@ const CustomDataLabel = (props) => {
   );
 };
 
-const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
+const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
@@ -61,21 +50,20 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       gridVertical: true,
       yAxisColor: 'black',
       legendPosition: 'bottom',
-      strokeWidth: 1,
+      barSize: 50,
       secondYAxis: {
         dataKey: '',
-        name: ''
+        name: '',
+        color: 'black'
       }
     }
-  } = props as LineChartProps;
+  } = props as BarChartProps;
 
   useInitialize();
   const dataKeys = dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : [];
-
-  let colorSecondY = 0;
-  if (chartConfig.secondYAxis) {
-    colorSecondY = dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey);
-  }
+  const colorSecondY = chartConfig.secondYAxis
+    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey)
+    : 0;
 
   const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
@@ -110,61 +98,42 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   );
 
   return (
-    <ChartContainer
-      dataset={dataset}
-      loading={loading}
-      placeholder={LineChartPlaceholder}
-      width={width}
-      height={height}
-    >
-      <LineChartLib
-        margin={{ right: 15 }}
-        ref={chartRef}
-        data={dataset}
-        onClick={onDataPointClick}
-        style={{ fontSize: parameters.sapUiFontSmallSize }}
-      >
+    <ChartContainer dataset={dataset} loading={loading} placeholder={BarChartPlaceholder} width={width} height={height}>
+      <BarChartLib ref={chartRef} data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }}>
         <CartesianGrid vertical={true} stroke={chartConfig.gridStroke} />
         {chartConfig.xAxisVisible && <XAxis dataKey={labelKey} yAxisId="left" />}
         {chartConfig.yAxisVisible && <YAxis />}
         {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={`var(--sapUiChartAccent${(colorSecondY % 12) + 1})`}
-            label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'insideRight' }}
+            stroke={
+              chartConfig.secondYAxis.color
+                ? chartConfig.secondYAxis.color
+                : `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`
+            }
+            label={{ value: chartConfig.secondYAxis.name, angle: +90, position: 'right' }}
             orientation="right"
             yAxisId="right"
           />
         )}
         {dataKeys.map((key, index) => (
-          <Line
+          <Bar
+            label={{ position: 'top', fontFamily: parameters.sapUiFontFamily }}
             key={key}
             name={key}
-            type="monotone"
             dataKey={key}
+            fill={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
             stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
-            strokeWidth={chartConfig.strokeWidth}
-            activeDot={{ onClick: onDataPointClick }}
-          >
-            <LabelList dataKey={key} content={CustomDataLabel} />
-          </Line>
+            activeElement={{ onClick: onDataPointClick }}
+            barSize={chartConfig.barSize}
+          ></Bar>
         ))}
         ){!noLegend && <Legend onClick={onItemLegendClick} />}
         <Tooltip />
         <Brush height={30} />
-      </LineChartLib>
+      </BarChartLib>
     </ChartContainer>
   );
 });
 
-// @ts-ignore
-LineRechart.LoadingPlaceholder = LineChartPlaceholder;
-
-// @ts-ignore
-LineRechart.defaultProps = {
-  ...ChartBaseDefaultProps
-};
-
-LineRechart.displayName = 'LineRechart';
-
-export { LineRechart };
+export { BarRechart };
