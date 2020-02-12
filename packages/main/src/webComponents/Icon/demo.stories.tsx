@@ -9,7 +9,7 @@ export default {
   component: Icon
 };
 
-export const defaultStory = () => <Icon name={text('src', 'add')} onPress={action('onPress')} />;
+export const defaultStory = () => <Icon name={text('src', 'add')} />;
 
 defaultStory.story = {
   name: 'Default story'
