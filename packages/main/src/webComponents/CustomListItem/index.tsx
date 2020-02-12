@@ -10,6 +10,9 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNode[];
 }
 
+/**
+ * <code>import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';</code>
+ */
 const CustomListItem: FC<CustomListItemPropTypes> = withWebComponent<CustomListItemPropTypes>(UI5CustomListItem);
 
 CustomListItem.displayName = 'CustomListItem';

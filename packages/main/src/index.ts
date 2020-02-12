@@ -25,6 +25,7 @@ import { Carousel } from './lib/Carousel';
 import { CarouselArrowsPlacement } from './lib/CarouselArrowsPlacement';
 import { CheckBox } from './lib/CheckBox';
 import { ContentDensity } from './lib/ContentDensity';
+import { CurrentViewportRangeContext } from './lib/CurrentViewportRangeContext';
 import { CustomListItem } from './lib/CustomListItem';
 import { DatePicker } from './lib/DatePicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
@@ -98,13 +99,14 @@ import { StandardListItem } from './lib/StandardListItem';
 import { Switch } from './lib/Switch';
 import { Tab } from './lib/Tab';
 import { TabContainer } from './lib/TabContainer';
+import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
 import { TableCell } from './lib/TableCell';
 import { TableColumn } from './lib/TableColumn';
 import { TablePlaceholder } from './lib/TablePlaceholder';
 import { TableRow } from './lib/TableRow';
+import { TableScaleWidthMode } from './lib/TableScaleWidthMode';
 import { TableSelectionMode } from './lib/TableSelectionMode';
-import { TabSeparator } from './lib/TabSeparator';
 import { Text } from './lib/Text';
 import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
@@ -145,6 +147,7 @@ export {
   CarouselArrowsPlacement,
   CheckBox,
   ContentDensity,
+  CurrentViewportRangeContext,
   CustomListItem,
   DatePicker,
   DeviationIndicator,
@@ -224,6 +227,7 @@ export {
   TableColumn,
   TablePlaceholder,
   TableRow,
+  TableScaleWidthMode,
   TableSelectionMode,
   Text,
   TextAlign,

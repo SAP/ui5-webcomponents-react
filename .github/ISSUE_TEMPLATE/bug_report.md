@@ -23,16 +23,12 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+**UI5 Web Components for React Information**
+Operating System:
+`@ui5/webcomponents-react` version:
+Do you have a dependency to`@ui5/webcomponents` in your package.json? If yes, which version?:
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+*If you are not sure, you can find out by running `npm ls @ui5/webcomponents-react` or `yarn why @ui5/webcomponents-react`*
 
 **Additional context**
 Add any other context about the problem here.

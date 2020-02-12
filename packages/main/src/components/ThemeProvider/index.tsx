@@ -1,11 +1,12 @@
 import { getCompactSize } from '@ui5/webcomponents-base/dist/config/CompactSize';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { createGenerateClassName } from '@ui5/webcomponents-react-base/lib/createGenerateClassName';
+import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import * as sap_fiori_3 from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 import { Jss } from 'jss';
-import React, { FC, Fragment, ReactNode, useMemo } from 'react';
+import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
 import { JssProvider, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 
 export interface ThemeProviderProps {
@@ -24,6 +25,17 @@ export interface ThemeProviderProps {
 
 const generateClassName = createGenerateClassName();
 
+// inject the size variables first before the ThemeProvider Component is mounted, otherwise there will be some flickering
+if (!document.querySelector('style[data-ui5-webcomponents-react-sizes]')) {
+  const variables = document.createElement('style');
+  variables.setAttribute('data-ui5-webcomponents-react-sizes', '');
+  variables.innerHTML = cssVariablesStyles;
+  document.head.appendChild(variables);
+}
+
+/**
+ * <code>import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';</code>
+ */
 const ThemeProvider: FC<ThemeProviderProps> = (props) => {
   const { withToastContainer, children, jss } = props;
   const theme = getTheme();
@@ -36,6 +48,14 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
       parameters: sap_fiori_3
     };
   }, [theme, isCompactSize]);
+
+  useEffect(() => {
+    if (isCompactSize) {
+      document.body.classList.add('ui5-content-density-compact');
+    } else {
+      document.body.classList.remove('ui5-content-density-compact');
+    }
+  }, [isCompactSize]);
 
   return (
     <JssProvider generateId={generateClassName} jss={jss}>

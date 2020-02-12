@@ -2,14 +2,14 @@
 # UI5 Web Components for React
 <p align="center">
   <a href="https://github.com/SAP/ui5-webcomponents-react/actions?query=workflow:%22build%22" target="_blank">
-    <img alt="Build Status" src="https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg?branch=master">
+    <img alt="Build Status" src="https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg">
   </a>
-  <a href="https://codecov.io/gh/SAP/ui5-webcomponents-react">
-    <img src="https://codecov.io/gh/SAP/ui5-webcomponents-react/branch/master/graph/badge.svg" />
+  <a href='https://coveralls.io/github/SAP/ui5-webcomponents-react'>
+    <img src='https://coveralls.io/repos/github/SAP/ui5-webcomponents-react/badge.svg' alt='Coverage Status' />
   </a>
-  <!-- <a href="https://sap-ea.slack.com/messages/CEN48B210" target="_blank">
-    <img alt="Slack Badge" src="https://badgen.net/badge/slack/ui5-webcomponents-react/orange?icon=slack">
-  </a> -->
+  <a href="https://openui5.slack.com/archives/CSQEJ2J04" target="_blank">
+    <img alt="Slack Badge" src="https://badgen.net/badge/slack/webcomponents-react/orange?icon=slack">
+  </a>
   <a href="https://github.com/prettier/prettier" target="_blank">
     <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg"> 
   </a>
@@ -48,6 +48,7 @@ You can play around with our components by visiting our [Storybook](https://sap.
 ## Requirements
 
 - [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.8.0 or higher**)
+- [Node.js](https://nodejs.org/) (**version 12 or higher** ⚠️)
 
 <!-- *********************************************************************** -->
 <a name="download"></a>
@@ -159,7 +160,10 @@ Please look at our [GitHub Issues](https://github.com/SAP/ui5-webcomponents-reac
 <a name="support"></a>
 ## Support
 
-This project is provided "as-is": there is no guarantee that raised issues will be answered or addressed in future releases.
+We welcome all comments, suggestions, questions, and bug reports. Feel free to open issues or chat with us directly in the [`#webcomponents-react`](https://openui5.slack.com/archives/CSQEJ2J04) channel in the 
+[OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
+Please note that you have to join this Slack workspace via [this link](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/) if you are not part of it already.
+
 
 <!-- *********************************************************************** -->
 <a name="contributing"></a>

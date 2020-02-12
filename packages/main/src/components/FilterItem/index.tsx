@@ -30,6 +30,9 @@ export interface FilterItemPropTypes extends CommonProps {
 
 const useStyles = createUseStyles(styles, { name: 'FilterItem' });
 
+/**
+ * <code>import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';</code>
+ */
 const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     filterItems,
@@ -108,15 +111,14 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
           <div>
             {React.Children.map(children, (child) => {
               return React.cloneElement(child as React.ReactElement<any>, {
-                [changeEventName]: (event) => {
-                  onSelect(event);
-                  // @ts-ignore
-                  if (child.props.hasOwnProperty(changeEventName)) {
-                    // @ts-ignore
-                    child.props[changeEventName](event);
-                  }
-                },
-                valueParameter: valueParamName,
+                // [changeEventName]: (event) => {
+                //   onSelect(event);
+                //   // @ts-ignore
+                //   if (child.props.hasOwnProperty(changeEventName)) {
+                //     // @ts-ignore
+                //     child.props[changeEventName](event);
+                //   }
+                // },
                 style: { width: '100%' }
               });
             })}

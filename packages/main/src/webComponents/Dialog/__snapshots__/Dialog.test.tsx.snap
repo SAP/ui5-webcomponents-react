@@ -2,7 +2,6 @@
 
 exports[`Dialog Basic Test (generated) 1`] = `
 <ui5-dialog
-  class=""
   header-text=""
 />
 `;

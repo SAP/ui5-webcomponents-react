@@ -4,6 +4,7 @@ import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
 import React, { CSSProperties, FC, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { styles } from './Loader.jss';
 
 export interface LoaderProps extends CommonProps {
@@ -15,8 +16,11 @@ export interface LoaderProps extends CommonProps {
   progress?: CSSProperties['width'];
 }
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'Loader' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Loader' });
 
+/**
+ * <code>import { Loader } from '@ui5/webcomponents-react/lib/Loader';</code>
+ */
 const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<HTMLDivElement>) => {
   const { className, type, progress, tooltip, slot, style, delay } = props;
   const classes = useStyles(props);
@@ -44,11 +48,11 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
     }
   }, []);
 
+  const passThroughProps = usePassThroughHtmlProps(props);
+
   if (!isVisible) {
     return null;
   }
-
-  const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
     <div

@@ -30,6 +30,9 @@ export interface BreadcrumbsPropTypes extends CommonProps {
   currentLocationText?: string;
 }
 
+/**
+ * <code>import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';</code>
+ */
 const Breadcrumbs: FC<BreadcrumbsPropTypes> = forwardRef((props: BreadcrumbsPropTypes, ref: Ref<HTMLDivElement>) => {
   const { children, separatorStyle, currentLocationText, tooltip, style, className, slot } = props;
   const childrenArray = Children.toArray(children).filter(Boolean);

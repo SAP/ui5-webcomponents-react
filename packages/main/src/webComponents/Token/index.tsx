@@ -12,6 +12,9 @@ export interface TokenPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode | ReactNodeArray; // @generated
 }
 
+/**
+ * <code>import { Token } from '@ui5/webcomponents-react/lib/Token';</code>
+ */
 const Token: FC<TokenPropTypes> = withWebComponent<TokenPropTypes>(UI5Token);
 
 Token.displayName = 'Token';

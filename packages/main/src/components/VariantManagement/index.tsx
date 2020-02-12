@@ -64,8 +64,11 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'VariantManagement' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'VariantManagement' });
 
+/**
+ * <code>import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';</code>
+ */
 const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
   (props: VariantManagementPropTypes, ref: Ref<any>) => {
     const {

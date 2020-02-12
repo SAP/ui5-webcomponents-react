@@ -17,5 +17,4 @@ jobs:
     - stage: 'Test'
       script:
         - yarn test
-        - ${TRAVIS_BUILD_DIR}/node_modules/.bin/codecov
         - yarn build

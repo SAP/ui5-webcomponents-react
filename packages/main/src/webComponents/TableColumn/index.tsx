@@ -10,6 +10,9 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode; // @generated
 }
 
+/**
+ * <code>import { TableColumn } from '@ui5/webcomponents-react/lib/TableColumn';</code>
+ */
 const TableColumn: FC<TableColumnPropTypes> = withWebComponent<TableColumnPropTypes>(UI5TableColumn);
 
 TableColumn.displayName = 'TableColumn';

@@ -11,9 +11,17 @@ export interface IScrollContext {
 
 export const ScrollContext: Context<IScrollContext> = createContext({
   scrollContainer: { current: null },
-  registerElement: () => {},
-  unregisterElement: () => {},
-  scrollToElementById: () => {},
-  scrollToTop: () => {},
+  registerElement: () => {
+    // do nothing
+  },
+  unregisterElement: () => {
+    // do nothing
+  },
+  scrollToElementById: () => {
+    // do nothing
+  },
+  scrollToTop: () => {
+    // do nothing
+  },
   selectedElementId: null
 });

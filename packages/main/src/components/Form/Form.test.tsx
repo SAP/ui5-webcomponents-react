@@ -2,9 +2,10 @@ import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/
 import { Form } from '@ui5/webcomponents-react/lib/Form';
 import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
 import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';
+import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { InputType } from '@ui5/webcomponents-react/lib/InputType';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
 import * as React from 'react';
-import { InputType } from '../..';
-import { Input } from '../../webComponents/Input';
 
 const SIZE_S = 200;
 const SIZE_M = 800;
@@ -13,19 +14,19 @@ const SIZE_XL = 1600;
 const component = (
   <Form title={'Test form'}>
     <FormGroup title={'Group 1'}>
-      <FormItem labelText={'item 1'}>
-        <Input type={InputType.Text}></Input>
+      <FormItem label={'item 1'}>
+        <Input type={InputType.Text} />
       </FormItem>
-      <FormItem labelText={'item 2'}>
-        <Input type={InputType.Number}></Input>
+      <FormItem label={'item 2'}>
+        <Input type={InputType.Number} />
       </FormItem>
     </FormGroup>
     <FormGroup title={'Group 2'}>
-      <FormItem labelText={'item 1'}>
-        <Input type={InputType.Text}></Input>
+      <FormItem label={'item 1'}>
+        <Input type={InputType.Text} />
       </FormItem>
-      <FormItem labelText={'item 2'}>
-        <Input type={InputType.Number}></Input>
+      <FormItem label={'item 2'}>
+        <Input type={InputType.Number} />
       </FormItem>
     </FormGroup>
   </Form>
@@ -60,10 +61,10 @@ describe('Create a Form', () => {
     const ungroupedChildren = (
       <Form title={'Test form'}>
         <FormItem labelText={'item 1'}>
-          <Input type={InputType.Text}></Input>
+          <Input type={InputType.Text} />
         </FormItem>
         <FormItem labelText={'item 2'}>
-          <Input type={InputType.Number}></Input>
+          <Input type={InputType.Number} />
         </FormItem>
       </Form>
     );
@@ -75,11 +76,11 @@ describe('Create a Form', () => {
     const ungroupedChildren = (
       <Form>
         <FormGroup title={'To be Form title'}>
-          <FormItem labelText={'item 1'}>
-            <Input type={InputType.Text}></Input>
+          <FormItem label={'item 1'}>
+            <Input type={InputType.Text} />
           </FormItem>
-          <FormItem labelText={'item 2'}>
-            <Input type={InputType.Number}></Input>
+          <FormItem label={'item 2'}>
+            <Input type={InputType.Number} />
           </FormItem>
         </FormGroup>
       </Form>
@@ -88,5 +89,28 @@ describe('Create a Form', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(Form);
+  createPassThroughPropsTest(Form, {
+    children: (
+      <FormItem labelText={'item 1'}>
+        <Input type={InputType.Text} />
+      </FormItem>
+    )
+  });
+
+  it('accepts both label and labelText', () => {
+    const wrapper = mountThemedComponent(
+      <Form>
+        <FormItem labelText={'item 1'}>
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem label="Label Text">
+          <Input type={InputType.Number} />
+        </FormItem>
+        <FormItem label={<Label required>Label Component</Label>}>
+          <Input type={InputType.Number} />
+        </FormItem>
+      </Form>
+    );
+    expect(wrapper.render()).toMatchSnapshot();
+  });
 });

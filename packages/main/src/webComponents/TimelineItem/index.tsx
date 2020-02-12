@@ -14,6 +14,9 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   children?: ReactNode; // @generated
 }
 
+/**
+ * <code>import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';</code>
+ */
 const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPropTypes>(UI5TimelineItem);
 
 TimelineItem.displayName = 'TimelineItem';

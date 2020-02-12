@@ -9,7 +9,7 @@ import '@webcomponents/webcomponentsjs/webcomponents-bundle';
 import { window } from 'global';
 import 'highlight.js/styles/solarized-dark.css';
 import qs from 'qs';
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'react-app-polyfill/ie11';
 
 addParameters({
@@ -24,20 +24,17 @@ addParameters({
 
 addDecorator(withKnobs);
 
-class ThemeContainer extends React.PureComponent {
-  componentDidUpdate(prevProps) {
-    const { contentDensity, setQueryParam } = this.props;
-    if (contentDensity !== prevProps.contentDensity) {
-      setQueryParam({
-        'sap-ui-compactSize': contentDensity === ContentDensity.Compact
-      });
+const ThemeContainer = ({ contentDensity, children, setQueryParam }) => {
+  useEffect(() => {
+    if (contentDensity === ContentDensity.Compact) {
+      document.body.classList.add('ui5-content-density-compact');
+    } else {
+      document.body.classList.remove('ui5-content-density-compact');
     }
-  }
+  }, [contentDensity, setQueryParam]);
 
-  render() {
-    return this.props.children;
-  }
-}
+  return children;
+};
 
 const withQuery = makeDecorator({
   name: 'withQuery',
@@ -59,7 +56,7 @@ const withQuery = makeDecorator({
           ? ContentDensity.Compact
           : ContentDensity.Cozy;
     } catch (e) {
-      contentDensity = ContentDensity.Cozy;
+      contentDensity = ContentDensity.Compact;
     }
 
     return (

@@ -79,9 +79,12 @@ const styles = ({ parameters }: JSSTheme) => ({
   }
 });
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'TableColumnHeader' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'TableColumnHeader' });
 
-export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
+/**
+ * <code>import { ColumnHeader } from '@ui5/webcomponents-react/lib/ColumnHeader';</code>
+ */
+export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) => {
   const classes = useStyles(props);
 
   const {
@@ -194,7 +197,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props) => {
       ) : (
         <div style={{ ...innerStyle, display: 'inline-block', cursor: 'auto' }}>{openBy}</div>
       )}
-      <div {...column.getResizerProps()} className={`${classes.resizer} ${isLastColumn ? classes.lastColumn : ''}`} />
+      {column.getResizerProps && (
+        <div {...column.getResizerProps()} className={`${classes.resizer} ${isLastColumn ? classes.lastColumn : ''}`} />
+      )}
     </div>
   );
 };

@@ -6,12 +6,10 @@ Array [
     style="display: inline-block;"
   >
     <ui5-button
-      class=""
       design="Default"
     />
   </div>,
   <ui5-popover
-    class=""
     horizontal-align="Center"
     placement-type="Bottom"
     vertical-align="Center"

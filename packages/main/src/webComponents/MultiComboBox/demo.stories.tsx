@@ -4,12 +4,13 @@ import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
-import notes from './MultiComboBox.md';
 
 export default {
   title: 'UI5 Web Components / MultiComboBox',
   component: MultiComboBox,
-  parameters: { notes }
+  parameters: {
+    subcomponents: { StandardListItem }
+  }
 };
 
 export const defaultStory = () => (

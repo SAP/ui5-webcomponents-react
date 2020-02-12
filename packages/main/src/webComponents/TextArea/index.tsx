@@ -18,6 +18,11 @@ export interface TextAreaPropTypes extends WithWebComponentPropTypes {
   onChange?: (event: Event) => void; // @generated
 }
 
+/**
+ * <code>import { TextArea } from '@ui5/webcomponents-react/lib/TextArea';</code>
+ * <br />
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TextArea" target="_blank">UI5 Web Components Playground</a>
+ */
 const TextArea: FC<TextAreaPropTypes> = withWebComponent<TextAreaPropTypes>(UI5TextArea);
 
 TextArea.displayName = 'TextArea';

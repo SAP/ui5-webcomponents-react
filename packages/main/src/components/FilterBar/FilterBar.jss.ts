@@ -1,6 +1,6 @@
 import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const styles = ({ theme, contentDensity, parameters }: JSSTheme) => {
+const styles = ({ parameters }: JSSTheme) => {
   return {
     outerContainer: {
       paddingTop: '0.5rem',

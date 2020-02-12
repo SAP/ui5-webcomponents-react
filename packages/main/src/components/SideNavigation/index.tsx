@@ -6,6 +6,7 @@ import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNaviga
 import React, { Children, cloneElement, FC, forwardRef, ReactNode, Ref, useCallback, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import { sideNavigationStyles } from './SideNavigation.jss';
 
 export interface SideNavigationProps extends CommonProps {
@@ -23,10 +24,13 @@ export interface SideNavigationProps extends CommonProps {
 
 let lastFiredSelection = '';
 
-const useStyles = createUseStyles<keyof ReturnType<typeof sideNavigationStyles>>(sideNavigationStyles, {
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigationStyles>>(sideNavigationStyles, {
   name: 'SideNavigation'
 });
 
+/**
+ * <code>import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';</code>
+ */
 const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigationProps, ref: Ref<HTMLDivElement>) => {
   const {
     children,

@@ -1,10 +1,10 @@
 /cjs
 /Device
 /hooks
+/interfaces
 /lib
 /polyfill
 /styling
-/types
 /utils
 /LICENSE
 /NOTICE.txt

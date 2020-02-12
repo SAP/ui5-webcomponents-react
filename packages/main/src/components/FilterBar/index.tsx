@@ -6,6 +6,7 @@ import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject, useCallbac
 import { createUseStyles } from 'react-jss';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './FilterBar.jss';
 
 export interface FilterBarPropTypes extends CommonProps {
@@ -16,8 +17,11 @@ export interface FilterBarPropTypes extends CommonProps {
 
 interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles, { name: 'FilterBar' });
+const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'FilterBar' });
 
+/**
+ * <code>import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';</code>
+ */
 const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
   const { children, renderVariants, renderSearch } = props as FilterBarInternalProps;
   const [showFilters, setShowFilters] = useState(true);

@@ -6,7 +6,8 @@ import { resolveColors } from '../../util/populateData';
 const BarStyles = {
   container: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    overflow: 'hidden'
   },
   labelContainer: {
     display: 'flex',
@@ -29,17 +30,21 @@ const BarStyles = {
     fontWeight: 'normal',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    fontSize: '12px'
+    fontSize: '12px',
+    maxWidth: '70%'
   },
   text: {
+    paddingLeft: '6px',
     display: 'inline-block',
+    overflow: 'hidden',
     fontSize: '14px',
-    wordWrap: 'break-word',
     boxSizing: 'border-box',
     fontFamily: "'72', Arial, Helvetica, sans-serif",
     fontWeight: 'normal',
-    whiteSpace: 'pre-line',
-    color: '#333333'
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    color: '#333333',
+    textAlign: 'right'
   }
 };
 
@@ -59,6 +64,9 @@ export interface MicroBarChartPropTypes extends CommonProps {
   labelFormatter?: (value: any) => string | number;
 }
 
+/**
+ * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';</code>
+ */
 const MicroBarChart: FC<MicroBarChartPropTypes> = forwardRef(
   (props: MicroBarChartPropTypes, ref: Ref<HTMLDivElement>) => {
     const { className, dataset, colors, maxWidth, visibleDatasetCount, valueFormatter, labelFormatter, style } = props;
@@ -76,12 +84,15 @@ const MicroBarChart: FC<MicroBarChartPropTypes> = forwardRef(
           return (
             <div key={item.label}>
               <div className={classes.labelContainer}>
-                <span className={classes.label}>{labelFormatter(item.label)}</span>
+                <span className={classes.label} title={`${labelFormatter(item.label)}`}>
+                  {labelFormatter(item.label)}
+                </span>
                 <span
                   className={classes.text}
                   style={{
                     fontSize: '12px'
                   }}
+                  title={`${valueFormatter(item.value)}`}
                 >
                   {valueFormatter(item.value)}
                 </span>

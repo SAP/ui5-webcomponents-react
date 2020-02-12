@@ -4,12 +4,10 @@ import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
-import notes from './DatePicker.md';
 
 export default {
   title: 'UI5 Web Components / DatePicker',
-  component: DatePicker,
-  parameters: { notes }
+  component: DatePicker
 };
 
 export const generatedDefaultStory = () => (

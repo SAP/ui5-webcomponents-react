@@ -10,6 +10,11 @@ export interface TitlePropTypes extends WithWebComponentPropTypes {
   children?: string; // @generated
 }
 
+/**
+ * <code>import { Title } from '@ui5/webcomponents-react/lib/Title';</code>
+ * <br />
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Title" target="_blank">UI5 Web Components Playground</a>
+ */
 const Title: FC<TitlePropTypes> = withWebComponent<TitlePropTypes>(UI5Title);
 
 Title.displayName = 'Title';

@@ -9,6 +9,11 @@ export interface IconPropTypes extends WithWebComponentPropTypes {
   showTooltip?: boolean; // @generated
 }
 
+/**
+ * <code>import { Icon } from '@ui5/webcomponents-react/lib/Icon';</code>
+ * <br />
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Icon" target="_blank">UI5 Web Components Playground</a>
+ */
 const Icon: FC<IconPropTypes> = withWebComponent<IconPropTypes>(UI5Icon);
 
 Icon.defaultProps = {

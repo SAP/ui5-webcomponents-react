@@ -1,3 +1,3 @@
-import { FormItem } from '../components/Form/FormItem';
+import { FormItem } from '../components/FormItem';
 
 export { FormItem };

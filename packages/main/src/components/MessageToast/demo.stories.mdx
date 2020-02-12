@@ -4,32 +4,43 @@ import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 
-<Meta title="Components / MessageToast" component={MessageToast} />
+<Meta title="Components / MessageToast" 
+      component={MessageToast} />
 
 # MessageToast
 
+`import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';`
+
 <ThemeProvider withToastContainer />
 
+The MessageToast components provides an imperative API to open `MessageToast` programmatically from
+any place of the application.<br /><br />
+All methods accept a `string` as first parameter (you can pass any `ReactNode` into it as well, but use at your own risk 😊).<br />
+The optional second parameter is accepting an object of options from the underlying [react-toastify library](https://github.com/fkhadra/react-toastify).
+You can check all available options on the [bottom of the page](#messagetoast-options).
 
-
-## Success Message Toast:
+### Generic Message Toast
 ```js
-import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
-
-MessageToast.success('Hello Success Message Toast');
+MessageToast.show('Hello Generic Message Toast');
 ```
 <Button
         onClick={() => {
-          MessageToast.success('Hello World');
+          MessageToast.show('Hello World!');
         }}
       >
-        Click to trigger Success Toast
-      </Button>
+        Click to trigger Message Toast
+</Button>
 
-## Warning Message Toast:
+### Success Message Toast
 ```js
-import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
+MessageToast.success('Hello Success Message Toast');
+```
+<Button onClick={() => { MessageToast.success('Hello World')}}>
+  Click to trigger Success Toast
+</Button>
 
+### Warning Message Toast
+```js
 MessageToast.warning('Hello Warning Message Toast');
 ```
 <Button
@@ -40,10 +51,8 @@ MessageToast.warning('Hello Warning Message Toast');
         Click to trigger Warning Toast
       </Button>
 
-## Error Message Toast:
+### Error Message Toast
 ```js
-import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
-
 MessageToast.error('Hello Error Message Toast');
 ```
 <Button
@@ -55,16 +64,31 @@ MessageToast.error('Hello Error Message Toast');
       </Button>
 
 
-## Generic Message Toast:
-```js
-import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
+### MessageToast Options
 
-MessageToast.show('Hello Generic Message Toast');
-```
-<Button
-        onClick={() => {
-          MessageToast.show('Hello World');
-        }}
-      >
-        Click to trigger Message Toast
-</Button>
+| Props                | Type                   | Default     | Description                                                                                                                                |
+|----------------------|------------------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| `type`               | string                 | `default`   | Kind of notification. One of "default", "success", "info", "warning", "error". You can use `toast.TYPE.SUCCESS` and so on to avoid any typo. |
+| `onOpen`             | callback               | none        | Called inside componentDidMount |
+| `onClose`            | callback               | none        | Called inside componentWillUnmount |
+| `autoClose`          | false or number        | `5000`      | Delay in ms to close the toast. If set to false, the notification need to be closed manualy         |
+| `closeButton`        | React Element or false | -           | A React Component to replace the default close button or `false` to hide the button                 |
+| `transition`         | function               | -           | A reference to a valid react-transition-group/Transition component                                  |
+| `closeOnClick`       | bool                   | `true`      | Dismiss toast on click                                                                              |
+| `hideProgressBar`    | bool                   | `false`     | Display or not the progress bar below the toast(remaining time)                                     |
+| `position`           | string                 | `top-right` | One of top-right, top-center, top-left, bottom-right, bottom-center, bottom-left                    |
+| `pauseOnHover`       | bool                   | `true`      | Keep the timer running or not on hover                                                              |
+| `pauseOnFocusLoss`   | bool                   | `true`      | Pause the timer when the window loses focus                                                         |
+| `className`          | string\|object         | -           | Add optional classes to the container                                                               |
+| `bodyClassName`      | string\|object         | -           | Add optional classes to the toast body                                                              |
+| `progressClassName`  | string\|object         | -           | Add optional classes to the progress bar                                                            |
+| `draggable`          | bool                   | `true`      | Allow toast to be draggable                                                                         |
+| `draggablePercent`   | number                 | `80`        | The percentage of the toast's width it takes for a drag to dismiss a toast(value between 0 and 100) |
+| `role`               | string                 | `alert`     | Define the ARIA role for the toasts                                                                  |
+| `containerId`        | string\number          | -           | Container id used to match toast with the same containerId                                          |
+| `toastId`            | string                 | none        | optional integer or string to manually set a toastId. If an invalid type is provided a generated toastId will be used |
+| `progress`           | string                 | none        | a value between 0..1 to control the progress bar | 
+| `render`             | string                 | none        | string or React Element, only available when calling update |
+| `delay`              | string                 | none        | a number to let you delay the toast appearance |
+| `onClick`            | string                 | none        |  Called when click inside Toast notification |
+  
