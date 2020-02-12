@@ -2,16 +2,14 @@
 
 exports[`Avatar Avatar - size: Custom shape: Circle 1`] = `
 <span
-  class="Avatar--avatar- Avatar--circle-"
-  style="font-size: 1.125rem; width: 3rem; height: 3rem; line-height: 3rem;"
+  class="Avatar--avatar- Avatar--sizeCustom- Avatar--sizeCustom-d0- Avatar--circle-"
   tabindex="0"
 />
 `;
 
 exports[`Avatar Avatar - size: Custom shape: Square 1`] = `
 <span
-  class="Avatar--avatar-"
-  style="font-size: 1.125rem; width: 3rem; height: 3rem; line-height: 3rem;"
+  class="Avatar--avatar- Avatar--sizeCustom- Avatar--sizeCustom-d0-"
   tabindex="0"
 />
 `;
