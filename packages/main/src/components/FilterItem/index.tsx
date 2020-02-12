@@ -111,15 +111,14 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
           <div>
             {React.Children.map(children, (child) => {
               return React.cloneElement(child as React.ReactElement<any>, {
-                [changeEventName]: (event) => {
-                  onSelect(event);
-                  // @ts-ignore
-                  if (child.props.hasOwnProperty(changeEventName)) {
-                    // @ts-ignore
-                    child.props[changeEventName](event);
-                  }
-                },
-                valueParameter: valueParamName,
+                // [changeEventName]: (event) => {
+                //   onSelect(event);
+                //   // @ts-ignore
+                //   if (child.props.hasOwnProperty(changeEventName)) {
+                //     // @ts-ignore
+                //     child.props[changeEventName](event);
+                //   }
+                // },
                 style: { width: '100%' }
               });
             })}

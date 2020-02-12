@@ -18,8 +18,6 @@ const capitalizeFirstLetter = (s: string) => s.charAt(0).toUpperCase() + s.slice
 
 const toKebabCase = (s: string) => s.replace(/([A-Z])/g, (a, b) => `-${b.toLowerCase()}`);
 
-const REACT_SPECIFIC_ATTRIBUTES = ['className'];
-
 export interface WithWebComponentPropTypes extends CommonProps {
   ref?: Ref<any>;
   children?: any | void;
@@ -38,6 +36,7 @@ export const withWebComponent = <T extends any>(
         events: {}
       },
       getProperties: () => ({}),
+      getPropsList: () => [],
       getSlots: () => ({}),
       getEvents: () => ({})
     };
@@ -121,27 +120,27 @@ export const withWebComponent = <T extends any>(
 
     const { className, ...otherProps } = props;
 
-    const getRegularProps = () => {
-      return Object.entries(otherProps)
-        .filter(([key]) => !getBooleanPropsFromMetadata().includes(key))
-        .filter(([key]) => !getEventsFromMetadata().some((eventKey) => `on${capitalizeFirstLetter(eventKey)}` === key))
-        .reduce(
-          (acc, [key, value]) => {
-            if (getSlotsFromMetadata().includes(key)) {
-              acc.slotProps[key] = value;
-            } else {
-              acc.regularProps[REACT_SPECIFIC_ATTRIBUTES.includes(key) ? key : toKebabCase(key)] = value;
-            }
-            return acc;
-          },
-          { regularProps: {}, slotProps: {} }
-        );
-    };
+    const propsList = getWebComponentMetadata().getPropsList();
 
-    // render
-    const { regularProps: passedProps, slotProps: actualSlotProps } = getRegularProps();
+    const { regularProps: passedProps, slotProps: actualSlotProps } = Object.entries(otherProps)
+      .filter(([key]) => !getBooleanPropsFromMetadata().includes(key))
+      .filter(([key]) => !getEventsFromMetadata().some((eventKey) => `on${capitalizeFirstLetter(eventKey)}` === key))
+      .reduce(
+        (acc, [key, value]) => {
+          if (getSlotsFromMetadata().includes(key)) {
+            acc.slotProps[key] = value;
+          } else if (propsList.includes(key)) {
+            acc.regularProps[toKebabCase(key)] = value;
+          } else {
+            acc.regularProps[key] = value;
+          }
+          return acc;
+        },
+        { regularProps: {}, slotProps: {} }
+      );
 
     const { children, tooltip, ...rest } = passedProps as T & WithWebComponentPropTypes;
+
     return (
       <CustomTag {...getBooleanProps()} ref={ref} {...rest} class={className} title={tooltip}>
         {Object.entries(actualSlotProps).map(([slotName, slotValue]) => {
