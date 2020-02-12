@@ -2,7 +2,17 @@ import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  CSSProperties,
+  FC,
+  forwardRef,
+  Ref,
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -39,8 +49,8 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
     tooltip,
     slot
   } = props;
-
   const classes = useStyles();
+  const [icon, setIcon] = useState(null);
 
   const cssClasses = [classes.avatar];
   const inlineStyle: CSSProperties = {};
@@ -89,6 +99,15 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
   );
 
   const passThroughProps = usePassThroughHtmlProps(props);
+  useEffect(() => {
+    if (children && Children.only(children).type.displayName === 'Icon') {
+      const child = Children.only(children);
+      const childClassName = child.props.className
+        ? `${classes[`icon${size}`]} ${child.props.className}`
+        : classes[`icon${size}`];
+      setIcon(cloneElement(child, { className: childClassName }));
+    }
+  }, [children, classes[`icon${size}`]]);
 
   return (
     <span
@@ -102,7 +121,7 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
       slot={slot}
       {...passThroughProps}
     >
-      {initials ? initials : children}
+      {initials ? initials : icon}
     </span>
   );
 });

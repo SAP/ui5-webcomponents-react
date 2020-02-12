@@ -52,6 +52,26 @@ const styles = ({ parameters }: JSSTheme) => ({
   sizeXS: {
     ...size('2rem'),
     fontSize: '0.75rem'
+  },
+  iconXL: {
+    width: '3rem',
+    height: '3rem'
+  },
+  iconL: {
+    width: '2.25rem',
+    height: '2.25rem'
+  },
+  iconM: {
+    width: '1.5rem',
+    height: '1.5rem'
+  },
+  iconS: {
+    width: '1.125rem',
+    height: '1.125rem'
+  },
+  iconXS: {
+    width: '1rem',
+    height: '1rem'
   }
 });
 
