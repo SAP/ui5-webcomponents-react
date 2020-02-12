@@ -50,6 +50,7 @@ export const VirtualTableBody = (props) => {
     return {
       rows,
       additionalProps: {
+        alternateRowColor,
         isTreeTable,
         classes,
         columns
