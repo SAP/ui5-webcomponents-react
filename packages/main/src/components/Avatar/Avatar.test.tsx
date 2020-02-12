@@ -32,10 +32,11 @@ describe('Avatar', () => {
       <Avatar size={AvatarSize.Custom} customDisplaySize="5rem" customFontSize="2rem" initials="JD" />
     );
     const el = wrapper.find(Avatar).getDOMNode() as HTMLElement;
-    expect(el.style.fontSize).toEqual('2rem');
-    expect(el.style.width).toEqual('5rem');
-    expect(el.style.height).toEqual('5rem');
-    expect(el.style.lineHeight).toEqual('5rem');
+    const computedStyle = getComputedStyle(el);
+    expect(computedStyle.fontSize).toEqual('2rem');
+    expect(computedStyle.width).toEqual('5rem');
+    expect(computedStyle.height).toEqual('5rem');
+    expect(computedStyle.lineHeight).toEqual('5rem');
   });
 
   test('Custom Size Defined but wrong size prop', () => {
