@@ -56,8 +56,8 @@ const ComposedRechart = forwardRef((props: ComposedRechartProps, ref: Ref<any>) 
               stroke: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
               activeDot: { onClick: (e) => onDataPointClick(e, true) }
             }
-          : // @ts-ignore
-            {
+          : {
+              // @ts-ignore
               fill: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
               onClick: (e) => onDataPointClick(e, false)
             }
