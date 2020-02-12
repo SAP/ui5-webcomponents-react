@@ -8,7 +8,8 @@ import { OverflowPopover } from './OverflowPopover';
 const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Toolbar' });
 
 export function Toolbar(props) {
-  const { children, width = '100%' } = props;
+  //todo add style, design enum
+  const { children, width = '100%', style = 'auto', design = 'Transparent', active = true } = props;
   const classes = useStyles(styles);
   const outerContainer = useRef(null);
   const controlMetaData = useRef([]);
@@ -41,23 +42,26 @@ export function Toolbar(props) {
       let consumedWidth = 0;
       let lastIndex = null;
       let lastFitWidth = 0;
-
       controlMetaData.current.forEach((item, index) => {
         const currentMeta = controlMetaData.current[index];
         if (currentMeta && currentMeta.ref && currentMeta.ref.current) {
           let nextWidth = currentMeta.ref.current.getBoundingClientRect().width;
-          nextWidth += index === 0 || index === controlMetaData.current.length - 1 ? 4 : 8;
+          nextWidth += index === 0 || index === controlMetaData.current.length - 1 ? 4 : 8; //first element = padding: 4px
           if (consumedWidth + nextWidth <= availableWidth) {
             lastIndex = index;
             lastFitWidth = consumedWidth + nextWidth;
+          }
+          if (consumedWidth < availableWidth && consumedWidth + nextWidth >= availableWidth) {
+            lastIndex = index - 1;
+            lastFitWidth = 0;
           }
           consumedWidth += nextWidth;
         }
       });
 
-      console.log(availableWidth);
-      console.log(lastFitWidth);
-      console.log(lastIndex);
+      // console.log('availableWidth', availableWidth);
+      // console.log('lastFixedWidth', lastFitWidth);
+      // console.log('lastIndex', lastIndex);
       setBlockerWidth(Math.max(0, availableWidth - lastFitWidth + 18 + 32));
       setLastVisibleIndex(lastIndex);
     });
@@ -102,9 +106,26 @@ export function Toolbar(props) {
     );
   }, [classes.popoverContent, lastVisibleIndex, children]);
 
+  const getToolbarDesign = () => {
+    switch (design) {
+      case 'Info':
+        return classes.info;
+      case 'Solid':
+        return classes.solid;
+      case 'Transparent':
+        return classes.transparent;
+      default:
+        return '';
+    }
+  };
+
   return (
     <div style={inlineStyle} className={classes.outerContainer} ref={outerContainer}>
-      <div className={classes.toolbar}>
+      <div
+        className={`${classes.toolbar} ${getToolbarDesign()} ${style.clear ? classes.clear : ''} ${
+          active ? classes.active : ''
+        }`}
+      >
         {overflowNeeded &&
           React.Children.map(childrenWithRef, (item, index) => {
             if (index === lastVisibleIndex) {
@@ -112,6 +133,14 @@ export function Toolbar(props) {
                 <>
                   {item}
                   {renderBlocker()}
+                </>
+              );
+            }
+            if (lastVisibleIndex === -1) {
+              return (
+                <>
+                  {renderBlocker()}
+                  {item}
                 </>
               );
             }

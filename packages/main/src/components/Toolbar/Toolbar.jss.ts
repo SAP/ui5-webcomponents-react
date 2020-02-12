@@ -1,16 +1,60 @@
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 
-export const styles = ({ contentDensity }: JSSTheme) => ({
+export const styles = ({ contentDensity, parameters }: JSSTheme) => ({
   outerContainer: {
     height: contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem',
     position: 'relative',
-    border: '1px solid pink',
     overflow: 'hidden',
     display: 'flex',
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderBottom: `solid 0.0625rem ${parameters.sapUiGroupTitleBorderColor}`,
+    //todo hover color
+    '&:hover': { background: 'yellow' }
   },
+  active: {
+    '&:active': {
+      background: parameters.sapUiActive
+    }
+  },
+  clear: {
+    borderBottom: 'none'
+  },
+  info: {
+    //todo not active background color: darken(@sapUiBaseColor, 10);
+    borderBottom: 'none',
+    background: parameters.sapUiInfobarBackground,
+    '&:active': {
+      background: parameters.sapUiInfobarActiveBackground
+    },
+    '&:hover': {
+      background: parameters.sapUiInfobarHoverBackground
+    }
+  },
+  solid: {
+    borderBottom: 'none',
+    background: parameters.sapUiBaseBG,
+    '&:hover': {
+      //todo hover color
+      background: 'lightblue'
+    },
+    '&:active': {
+      background: parameters.sapUiActive
+    }
+  },
+  transparent: {
+    borderBottom: 'none',
+    background: parameters.sapUiToolbarBackground,
+    '&:hover': {
+      //todo hover color
+      background: 'lightgrey'
+    },
+    '&:active': {
+      background: parameters.sapUiActive
+    }
+  },
+  //todo apply styling here not on parent container
   toolbar: {
     padding: '0.5rem',
     '& >:first-child': {
@@ -24,6 +68,7 @@ export const styles = ({ contentDensity }: JSSTheme) => ({
     },
     display: 'flex',
     alignItems: 'center',
+    width: '100%',
     position: 'absolute',
     top: 0,
     left: 0,
