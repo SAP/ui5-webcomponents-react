@@ -5,7 +5,7 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 export const useTableRowStyling = (hooks) => {
   hooks.getRowProps.push((passedRowProps, { instance, row }) => {
-    const { classes, selectionMode, onRowSelected, alternateRowColor } = instance.webComponentsReactProperties;
+    const { classes, selectionMode, onRowSelected } = instance.webComponentsReactProperties;
     const isEmptyRow = row.original?.emptyRow;
     let className = classes.tr;
     if (row.isGrouped) {
@@ -14,10 +14,6 @@ export const useTableRowStyling = (hooks) => {
 
     if (isEmptyRow) {
       className += ` ${classes.emptyRow}`;
-    }
-
-    if (alternateRowColor && row.index % 2 !== 0) {
-      className += ` ${classes.alternateRowColor}`;
     }
 
     const rowProps: any = {
