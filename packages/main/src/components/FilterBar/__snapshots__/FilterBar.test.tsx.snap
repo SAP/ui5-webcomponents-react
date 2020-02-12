@@ -119,7 +119,6 @@ exports[`FilterBar Hide Filter Bar 1`] = `
         <div>
           <ui5-switch
             style="width: 100%;"
-            value-parameter="state"
           />
         </div>
       </div>
@@ -281,7 +280,6 @@ exports[`FilterBar Render without crashing 1`] = `
         <div>
           <ui5-switch
             style="width: 100%;"
-            value-parameter="state"
           />
         </div>
       </div>
