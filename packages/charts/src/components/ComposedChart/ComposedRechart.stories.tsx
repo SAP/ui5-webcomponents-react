@@ -1,7 +1,7 @@
 import React from 'react';
-import { RechartComposed } from './RechartComposed';
-import { Line } from '../../elements/Line';
-import { Bar } from '../../elements/Bar';
+import { ComposedRechart } from './ComposedRechart';
+import { Line } from 'recharts';
+import { Bar } from 'recharts';
 
 const dataset = [
   {
@@ -99,7 +99,7 @@ const singleData = [
 
 export default {
   title: 'Rechart - ComposedChart',
-  component: RechartComposed
+  component: ComposedRechart
 };
 
 const clickHandler = (data) => {
@@ -107,12 +107,13 @@ const clickHandler = (data) => {
 };
 
 const renderComposedChart = () => (
-  <RechartComposed
+  <ComposedRechart
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
     labelKey={'xValue'}
     legendClickHandler={clickHandler}
+    dataPointClickHandler={clickHandler}
     chartConfig={{
       yAxisVisible: true,
       xAxisVisible: true,
@@ -121,6 +122,7 @@ const renderComposedChart = () => (
       gridVertical: false,
       gridHorizontal: true,
       legendPosition: 'bottom',
+      zoomingTool: true,
       secondYAxis: {
         name: 'USER STATISTICS',
         dataKey: 'users',
@@ -129,9 +131,9 @@ const renderComposedChart = () => (
     }}
   >
     <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
-    <Line dataPointClickHandler={clickHandler} dataKey={'users'} stroke={'orange'} strokeWidth={3.5} />
-    <Line dataKey={'volume'} stroke={'lightblue'} strokeWidth={1} />)
-  </RechartComposed>
+    <Line dataKey={'users'} color={'orange'} strokeOpacity={0.7} strokeWidth={3.5} />
+    <Line dataKey={'volume'} color={'lightblue'} strokeWidth={2} />)
+  </ComposedRechart>
 );
 
 renderComposedChart.story = {
@@ -140,9 +142,9 @@ renderComposedChart.story = {
 export const composedChart = renderComposedChart();
 
 const renderComposedChartPlaceholder = () => (
-  <RechartComposed width={'30%'} height={'40vh'} labelKey={'xValue'}>
+  <ComposedRechart width={'30%'} height={'40vh'} labelKey={'xValue'}>
     <Line dataKey={'volume'} stroke={'lightblue'} strokeWidth={1} />)
-  </RechartComposed>
+  </ComposedRechart>
 );
 
 renderComposedChartPlaceholder.story = {

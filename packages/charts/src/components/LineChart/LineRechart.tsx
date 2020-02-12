@@ -31,7 +31,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       legendPosition: 'bottom',
       strokeWidth: 1,
       zoomingTool: false,
-      strokeOpacity: 0.4,
+      strokeOpacity: 1,
       secondYAxis: {
         dataKey: '',
         name: '',
@@ -128,7 +128,9 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         ))}
         ){!noLegend && <Legend onClick={onItemLegendClick} />}
         <Tooltip />
-        {chartConfig.zoomingTool && <Brush height={30} />}{' '}
+        {chartConfig.zoomingTool && (
+          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />
+        )}
       </LineChartLib>
     </ChartContainer>
   );

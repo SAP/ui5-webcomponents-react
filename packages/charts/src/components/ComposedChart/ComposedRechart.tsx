@@ -1,23 +1,24 @@
-import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback } from 'react';
-import { ComposedChart, Legend, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
+import React, { ComponentType, forwardRef, ReactElement, ReactNode, Ref, useCallback } from 'react';
+import { Bar, ComposedChart, Legend, Line, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
 import { LineChartPlaceholder } from '../..';
 import { useTheme } from 'react-jss';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../internal/ChartContainer';
 
-export interface ComposedChartContainerProps extends RechartBaseProps {
+export interface ComposedRechartProps extends RechartBaseProps {
   children: ReactNode;
   placeHolder?: ComponentType<unknown>;
 }
 
-const RechartComposed = forwardRef((props: ComposedChartContainerProps, ref: Ref<any>) => {
+const ComposedRechart = forwardRef((props: ComposedRechartProps, ref: Ref<any>) => {
   const {
     height,
     width,
     loading,
     dataset,
     labelKey,
+    children,
     dataPointClickHandler,
     legendClickHandler,
     chartConfig = {
@@ -42,6 +43,28 @@ const RechartComposed = forwardRef((props: ComposedChartContainerProps, ref: Ref
   const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
+  const childrenClone = React.Children.map(children, (child, index) => {
+    // @ts-ignore
+    if (child.props) {
+      // @ts-ignore
+      return React.cloneElement(
+        child,
+        child.props.legendType === 'line'
+          ? {
+              type: 'monotone',
+              // @ts-ignore
+              stroke: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
+              activeDot: { onClick: (e) => onDataPointClick(e, true) }
+            }
+          : // @ts-ignore
+            {
+              fill: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
+              onClick: (e) => onDataPointClick(e, false)
+            }
+      );
+    }
+  });
+
   const onItemLegendClick = useCallback(
     (e) => {
       if (legendClickHandler) {
@@ -58,8 +81,15 @@ const RechartComposed = forwardRef((props: ComposedChartContainerProps, ref: Ref
   );
 
   const onDataPointClick = useCallback(
-    (e) => {
-      // TODO: Clickhandler datapoint click
+    (e, line) => {
+      if (e && dataPointClickHandler) {
+        dataPointClickHandler({
+          value: e.value,
+          dataKey: line ? e.dataKey : Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
+          xIndex: e.index,
+          payload: e.payload
+        });
+      }
     },
     [dataset]
   );
@@ -91,11 +121,13 @@ const RechartComposed = forwardRef((props: ComposedChartContainerProps, ref: Ref
         )}
         <Tooltip />
         {chartConfig.legendVisible && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition} />}
-        {props['children']}
-        {chartConfig.zoomingTool && <Brush height={30} />}
+        {childrenClone}
+        {chartConfig.zoomingTool && (
+          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />
+        )}
       </ComposedChart>
     </ChartContainer>
   );
 });
 
-export { RechartComposed };
+export { ComposedRechart };

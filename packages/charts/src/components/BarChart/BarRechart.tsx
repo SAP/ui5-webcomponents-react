@@ -71,6 +71,7 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       if (e && dataPointClickHandler) {
         dataPointClickHandler({
           dataKey: Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
+          xIndex: e.index,
           value: e.value,
           payload: e.payload
         });
@@ -78,12 +79,6 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
     },
     [dataset]
   );
-
-  let activeLegend;
-  const markLegend = (e) => {
-    activeLegend = e.dataKey;
-    console.log(activeLegend);
-  };
 
   return (
     <ChartContainer dataset={dataset} loading={loading} placeholder={BarChartPlaceholder} width={width} height={height}>
@@ -128,9 +123,9 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
           />
         ))}
         ){!noLegend && <Legend onClick={onItemLegendClick} />}
-        <Tooltip cursor={{ fill: `var(--sapUiChartAccent${1})`, fillOpacity: 0.1 }} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} />
         {chartConfig.zoomingTool && (
-          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent${6})`} travellerWidth={10} height={30} />
+          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />
         )}
       </BarChartLib>
     </ChartContainer>
