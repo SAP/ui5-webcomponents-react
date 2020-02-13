@@ -9,7 +9,7 @@ const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(sty
 
 export function Toolbar(props) {
   //todo add style, design enum
-  const { children, width = '100%', style = 'auto', design = 'Transparent', active = true } = props;
+  const { children, width = '100%', toolbarStyle = 'Standard', design = 'Auto', active = true } = props;
   const classes = useStyles(styles);
   const outerContainer = useRef(null);
   const controlMetaData = useRef([]);
@@ -38,7 +38,7 @@ export function Toolbar(props) {
   const calculateVisibleItems = useCallback(() => {
     requestAnimationFrame(() => {
       if (!outerContainer.current) return;
-      const availableWidth = outerContainer.current.getBoundingClientRect().width - 18 - 32; // padding + border + overflow button
+      const availableWidth = outerContainer.current.getBoundingClientRect().width - 8 - 32; // padding  + overflow button
       let consumedWidth = 0;
       let lastIndex = null;
       let lastFitWidth = 0;
@@ -119,13 +119,25 @@ export function Toolbar(props) {
     }
   };
 
+  const getActiveDesign = () => {
+    if (active) {
+      if (design === 'Info') {
+        return classes.activeInfo;
+      }
+      return classes.active;
+    }
+    return '';
+  };
+
+  const toolbarStyleDesign = toolbarStyle === 'Clear' ? classes.clear : '';
+
   return (
-    <div style={inlineStyle} className={classes.outerContainer} ref={outerContainer}>
-      <div
-        className={`${classes.toolbar} ${getToolbarDesign()} ${style.clear ? classes.clear : ''} ${
-          active ? classes.active : ''
-        }`}
-      >
+    <div
+      style={inlineStyle}
+      className={`${classes.outerContainer} ${getToolbarDesign()} ${getActiveDesign()} ${toolbarStyleDesign} `}
+      ref={outerContainer}
+    >
+      <div className={classes.toolbar}>
         {overflowNeeded &&
           React.Children.map(childrenWithRef, (item, index) => {
             if (index === lastVisibleIndex) {

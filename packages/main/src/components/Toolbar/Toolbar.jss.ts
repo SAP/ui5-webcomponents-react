@@ -15,7 +15,12 @@ export const styles = ({ contentDensity, parameters }: JSSTheme) => ({
   },
   active: {
     '&:active': {
-      background: parameters.sapUiActive
+      background: `${parameters.sapUiActive} !important`
+    }
+  },
+  activeInfo: {
+    '&:active': {
+      background: `${parameters.sapUiInfobarActiveBackground} !important`
     }
   },
   clear: {
@@ -23,38 +28,28 @@ export const styles = ({ contentDensity, parameters }: JSSTheme) => ({
   },
   info: {
     //todo not active background color: darken(@sapUiBaseColor, 10);
-    borderBottom: 'none',
     background: parameters.sapUiInfobarBackground,
-    '&:active': {
-      background: parameters.sapUiInfobarActiveBackground
-    },
     '&:hover': {
       background: parameters.sapUiInfobarHoverBackground
     }
   },
   solid: {
-    borderBottom: 'none',
     background: parameters.sapUiBaseBG,
     '&:hover': {
-      //todo hover color
+      //todo hover color contrast(@sapUiBaseBG, darken(@sapUiBaseBG, 3), lighten(@sapUiBaseBG, 3));
       background: 'lightblue'
-    },
-    '&:active': {
-      background: parameters.sapUiActive
     }
   },
   transparent: {
-    borderBottom: 'none',
     background: parameters.sapUiToolbarBackground,
     '&:hover': {
-      //todo hover color
+      //todo hover color contrast(@sapUiToolbarBackground, darken(@sapUiToolbarBackground, 3), lighten(@sapUiToolbarBackground, 3));
       background: 'lightgrey'
     },
     '&:active': {
       background: parameters.sapUiActive
     }
   },
-  //todo apply styling here not on parent container
   toolbar: {
     padding: '0.5rem',
     '& >:first-child': {
@@ -68,7 +63,6 @@ export const styles = ({ contentDensity, parameters }: JSSTheme) => ({
     },
     display: 'flex',
     alignItems: 'center',
-    width: '100%',
     position: 'absolute',
     top: 0,
     left: 0,
