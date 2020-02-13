@@ -31,6 +31,8 @@ export interface RechartBaseProps extends ChartContainerProps {
     paddingAngle?: number;
     innerRadius?: string;
 
+    polarGridType?: string;
+
     secondYAxis?: {
       dataKey: string;
       name?: string;

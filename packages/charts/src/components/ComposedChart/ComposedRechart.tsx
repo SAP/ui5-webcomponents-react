@@ -63,6 +63,10 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
                   // @ts-ignore
                   stroke: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
                   label: chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily },
+                  yAxisId:
+                    chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
+                      ? 'right'
+                      : 'left',
                   activeDot: { onClick: (e) => onDataPointClick(e, true) }
                 }
               : {
@@ -70,6 +74,11 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
                   fill: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
                   label: chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily },
                   stackId: chartConfig.stacked ? 'A' : undefined,
+                  yAxisId:
+                    // @ts-ignore
+                    chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
+                      ? 'right'
+                      : 'left',
                   onClick: (e) => onDataPointClick(e, false)
                 }
           );
@@ -121,10 +130,8 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible === true || chartConfig.xAxisVisible === undefined) && (
-          <XAxis dataKey={labelKey} yAxisId="left" />
-        )}
-        {(chartConfig.yAxisVisible === true || chartConfig.yAxisVisible === undefined) && <YAxis />}
+        {(chartConfig.xAxisVisible === true || chartConfig.xAxisVisible === undefined) && <XAxis dataKey={labelKey} />}
+        {(chartConfig.yAxisVisible === true || chartConfig.yAxisVisible === undefined) && <YAxis yAxisId="left" />}
         {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}

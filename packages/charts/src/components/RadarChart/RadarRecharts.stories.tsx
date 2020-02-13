@@ -133,3 +133,21 @@ export const loadingPlaceholder = () => <RadarRechart width={'30%'} />;
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
 };
+
+function withPolygonStory() {
+  return (
+    <RadarRechart
+      dataPointClickHandler={clickHandler}
+      legendClickHandler={clickHandler}
+      dataset={dataset}
+      width={'50%'}
+      chartConfig={{ polarGridType: 'polygon' }}
+    />
+  );
+}
+
+export const polygonStory = withPolygonStory();
+
+polygonStory.story = {
+  name: 'Radar as polygon'
+};

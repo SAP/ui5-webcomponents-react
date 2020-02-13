@@ -42,7 +42,8 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
       strokeOpacity: 1,
       dataLabel: false,
       paddingAngle: 0,
-      innerRadius: undefined
+      innerRadius: undefined,
+      polarGridType: 'circle'
     }
   } = props as RadarChartProps;
 
@@ -93,7 +94,7 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
       height={height}
     >
       <RadarChartLib data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }}>
-        <PolarGrid />
+        <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis dataKey={labelKey} />
         <PolarRadiusAxis />
         {dataKeys.map((key, index) => (

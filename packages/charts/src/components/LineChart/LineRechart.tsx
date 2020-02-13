@@ -100,10 +100,8 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible === true || chartConfig.xAxisVisible === undefined) && (
-          <XAxis dataKey={labelKey} yAxisId="left" />
-        )}
-        {(chartConfig.yAxisVisible === true || chartConfig.yAxisVisible === undefined) && <YAxis />}
+        {(chartConfig.xAxisVisible === true || chartConfig.xAxisVisible === undefined) && <XAxis dataKey={labelKey} />}
+        {(chartConfig.yAxisVisible === true || chartConfig.yAxisVisible === undefined) && <YAxis yAxisId="left" />}
         {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
@@ -119,6 +117,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         )}
         {dataKeys.map((key, index) => (
           <Line
+            yAxisId={chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === key ? 'right' : 'left'}
             key={key}
             name={key}
             strokeOpacity={chartConfig.strokeOpacity}

@@ -109,7 +109,8 @@ function renderStory() {
         xAxisVisible: true,
         yAxisVisible: true,
         zoomingTool: true,
-        dataLabel: true
+        dataLabel: true,
+        secondYAxis: { dataKey: 'users' }
       }}
     />
   );
@@ -157,10 +158,9 @@ function renderStackedStory() {
         gridVertical: false,
         fillOpacity: 0.7,
         strokeOpacity: 1,
-        barSize: 25,
+        barSize: 35,
         xAxisVisible: true,
         yAxisVisible: true,
-        secondYAxis: { dataKey: 'users' },
         zoomingTool: true,
         stacked: true,
         dataLabel: true

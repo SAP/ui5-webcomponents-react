@@ -78,25 +78,6 @@ const dataset = [
   }
 ];
 
-const singleData = [
-  {
-    xValue: 'January',
-    data: 100
-  },
-  {
-    xValue: 'February',
-    data: 300
-  },
-  {
-    xValue: 'March',
-    data: 530
-  },
-  {
-    xValue: 'April',
-    data: 200
-  }
-];
-
 export default {
   title: 'Rechart - ComposedChart',
   component: ComposedRechart
@@ -122,12 +103,7 @@ const renderComposedChart = () => (
       gridVertical: false,
       gridHorizontal: true,
       legendPosition: 'bottom',
-      zoomingTool: true,
-      secondYAxis: {
-        name: 'USER STATISTICS',
-        dataKey: 'users',
-        color: 'orange'
-      }
+      zoomingTool: true
     }}
   >
     <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
@@ -182,7 +158,6 @@ const renderComposedStackedChart = () => (
     <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
     <Bar dataKey={'volume'} strokeWidth={2} />)
     <Line dataKey={'users'} color={'orange'} strokeOpacity={0.7} strokeWidth={3.5} />
-    <Line dataKey={'volume'} color={'grey'} strokeWidth={2} />)
   </ComposedRechart>
 );
 
@@ -212,14 +187,13 @@ const renderLabelComposedChart = () => (
       dataLabel: true,
       secondYAxis: {
         name: 'USER STATISTICS',
-        dataKey: 'users',
-        color: 'orange'
+        dataKey: 'volume',
+        color: 'lightblue'
       }
     }}
   >
     <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
-    <Line dataKey={'users'} color={'orange'} strokeOpacity={0.7} strokeWidth={3.5} />
-    <Line dataKey={'volume'} color={'lightblue'} strokeWidth={2} />)
+    <Line dataKey={'volume'} color={'lightblue'} strokeWidth={3} />)
   </ComposedRechart>
 );
 

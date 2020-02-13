@@ -141,8 +141,8 @@ const renderStoryWithCustomColor = () => (
     height={'40vh'}
     chartConfig={{
       dataLabel: true,
-      xAxisVisible: false,
-      yAxisVisible: true
+      strokeWidth: 2,
+      strokeOpacity: 0.5
     }}
   />
 );

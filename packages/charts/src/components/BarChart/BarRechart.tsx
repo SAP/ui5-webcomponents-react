@@ -96,10 +96,8 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible === true || chartConfig.xAxisVisible === undefined) && (
-          <XAxis dataKey={labelKey} yAxisId="left" />
-        )}
-        {(chartConfig.yAxisVisible === true || chartConfig.yAxisVisible === undefined) && <YAxis />}
+        {(chartConfig.xAxisVisible === true || chartConfig.xAxisVisible === undefined) && <XAxis dataKey={labelKey} />}
+        {(chartConfig.yAxisVisible === true || chartConfig.yAxisVisible === undefined) && <YAxis yAxisId="left" />}
         {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
@@ -115,6 +113,7 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
         )}
         {dataKeys.map((key, index) => (
           <Bar
+            yAxisId={chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === key ? 'right' : 'left'}
             stackId={chartConfig.stacked ? 'A' : undefined}
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
