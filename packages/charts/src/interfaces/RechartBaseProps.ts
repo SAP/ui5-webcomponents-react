@@ -10,8 +10,9 @@ export interface RechartBaseProps extends ChartContainerProps {
   colors?: Array<CSSProperties['color']>;
 
   chartConfig?: {
-    yAxisVisible: boolean;
-    xAxisVisible: boolean;
+    yAxisVisible?: boolean;
+    xAxisVisible?: boolean;
+    dataLabel?: boolean;
     gridStroke?: string;
     gridVertical?: boolean;
     gridHorizontal?: boolean;
@@ -23,6 +24,9 @@ export interface RechartBaseProps extends ChartContainerProps {
     fillOpacity?: number;
     strokeOpacity?: number;
     strokeWidth?: number;
+    stacked?: boolean;
+    paddingAngle?: number;
+    innerRadius?: string;
 
     secondYAxis?: {
       dataKey: string;

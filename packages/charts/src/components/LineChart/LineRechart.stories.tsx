@@ -116,7 +116,6 @@ function renderStory() {
       noLegend={false}
       loading={true}
       chartConfig={{
-        zoomingTool: true,
         strokeWidth: 1.5,
         xAxisVisible: true,
         yAxisVisible: true,
@@ -126,6 +125,12 @@ function renderStory() {
   );
 }
 
+export const defaultStory = renderStory();
+
+defaultStory.story = {
+  name: 'Default'
+};
+
 const renderStoryWithCustomColor = () => (
   <LineRechart
     dataPointClickHandler={clickHandler}
@@ -134,23 +139,48 @@ const renderStoryWithCustomColor = () => (
     color={'red'}
     width={'95%'}
     height={'40vh'}
+    chartConfig={{
+      dataLabel: true,
+      xAxisVisible: false,
+      yAxisVisible: true
+    }}
   />
 );
 
 export const withCustomColor = renderStoryWithCustomColor();
 
+function renderLabelStory() {
+  return (
+    <LineRechart
+      dataPointClickHandler={clickHandler}
+      legendClickHandler={clickHandler}
+      labelKey={'xValue'}
+      dataset={dataset}
+      width={'95%'}
+      height={'40vh'}
+      noLegend={false}
+      loading={true}
+      chartConfig={{
+        zoomingTool: true,
+        strokeWidth: 1.5,
+        dataLabel: true
+      }}
+    />
+  );
+}
+
+export const defaulLabeltStory = renderLabelStory();
+
+defaulLabeltStory.story = {
+  name: 'With data labels'
+};
+
 withCustomColor.story = {
-  name: 'With Custom Color'
+  name: 'With custom color'
 };
 
-export const defaultStory = renderStory();
-
-defaultStory.story = {
-  name: 'Default'
-};
-
-export const loadingPlaceholder = () => <LineRechart labelKey={'xValue'} width={'50%'} height={'40vh'} />;
+export const loadingPlaceholder = () => <LineRechart labelKey={'xValue'} width={'30%'} />;
 
 loadingPlaceholder.story = {
-  name: 'Loading Placeholder'
+  name: 'Loading placeholder'
 };

@@ -32,6 +32,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       strokeWidth: 1,
       zoomingTool: false,
       strokeOpacity: 1,
+      dataLabel: false,
       secondYAxis: {
         dataKey: '',
         name: '',
@@ -41,14 +42,15 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   } = props as LineChartProps;
 
   useInitialize();
-  const dataKeys = dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : [];
-
-  const colorSecondY = chartConfig.secondYAxis
-    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey)
-    : 0;
 
   const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
+
+  const dataKeys = useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+  const colorSecondY = useMemo(
+    () => (chartConfig.secondYAxis ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
+    [dataset]
+  );
 
   const onItemLegendClick = useCallback(
     (e) => {
@@ -98,9 +100,11 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {chartConfig.xAxisVisible && <XAxis dataKey={labelKey} yAxisId="left" />}
-        {chartConfig.yAxisVisible && <YAxis />}
-        {chartConfig.secondYAxis.dataKey && (
+        {(chartConfig.xAxisVisible === true || chartConfig.xAxisVisible === undefined) && (
+          <XAxis dataKey={labelKey} yAxisId="left" />
+        )}
+        {(chartConfig.yAxisVisible === true || chartConfig.yAxisVisible === undefined) && <YAxis />}
+        {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={
@@ -118,7 +122,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
             key={key}
             name={key}
             strokeOpacity={chartConfig.strokeOpacity}
-            label={{ position: 'top', fontFamily: parameters.sapUiFontFamily }}
+            label={chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily }}
             type="monotone"
             dataKey={key}
             stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
@@ -126,7 +130,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
             activeDot={{ onClick: onDataPointClick }}
           />
         ))}
-        ){!noLegend && <Legend onClick={onItemLegendClick} />}
+        {!noLegend && <Legend onClick={onItemLegendClick} />}
         <Tooltip />
         {chartConfig.zoomingTool && (
           <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />

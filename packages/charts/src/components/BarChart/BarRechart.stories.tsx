@@ -105,15 +105,21 @@ function renderStory() {
         gridVertical: false,
         fillOpacity: 0.7,
         strokeOpacity: 1,
-        barSize: 25,
+        barSize: 20,
         xAxisVisible: true,
         yAxisVisible: true,
-        secondYAxis: { dataKey: 'users' },
-        zoomingTool: true
+        zoomingTool: true,
+        dataLabel: true
       }}
     />
   );
 }
+
+export const defaultStory = renderStory();
+
+defaultStory.story = {
+  name: 'Default'
+};
 
 const renderStoryWithCustomColor = () => (
   <BarRechart
@@ -129,17 +135,42 @@ const renderStoryWithCustomColor = () => (
 export const withCustomColor = renderStoryWithCustomColor();
 
 withCustomColor.story = {
-  name: 'With Custom Color'
-};
-
-export const defaultStory = renderStory();
-
-defaultStory.story = {
-  name: 'Default'
+  name: 'With custom color'
 };
 
 export const loadingPlaceholder = () => <BarRechart labelKey={'xValue'} width={'30%'} />;
 
 loadingPlaceholder.story = {
-  name: 'Loading Placeholder'
+  name: 'Loading placeholder'
+};
+
+function renderStackedStory() {
+  return (
+    <BarRechart
+      dataPointClickHandler={clickHandler}
+      legendClickHandler={clickHandler}
+      labelKey={'xValue'}
+      dataset={dataset}
+      width={'97%'}
+      chartConfig={{
+        gridStroke: 'white',
+        gridVertical: false,
+        fillOpacity: 0.7,
+        strokeOpacity: 1,
+        barSize: 25,
+        xAxisVisible: true,
+        yAxisVisible: true,
+        secondYAxis: { dataKey: 'users' },
+        zoomingTool: true,
+        stacked: true,
+        dataLabel: true
+      }}
+    />
+  );
+}
+
+export const defaultStackedStory = renderStackedStory();
+
+defaultStackedStory.story = {
+  name: 'Stacked chart'
 };

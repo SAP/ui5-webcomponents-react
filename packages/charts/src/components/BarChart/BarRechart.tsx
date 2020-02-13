@@ -1,5 +1,5 @@
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import React, { forwardRef, Ref, useCallback } from 'react';
+import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
 import { useInitialize } from '../../lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { CartesianGrid, Bar, BarChart as BarChartLib, XAxis, YAxis, Tooltip, Legend, Brush } from 'recharts';
@@ -34,6 +34,8 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       zoomingTool: false,
       strokeOpacity: 1,
       fillOpacity: 1,
+      stacked: false,
+      dataLabel: false,
       secondYAxis: {
         dataKey: '',
         name: '',
@@ -43,13 +45,15 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   } = props as BarChartProps;
 
   useInitialize();
-  const dataKeys = dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : [];
-  const colorSecondY = chartConfig.secondYAxis
-    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey)
-    : 0;
 
   const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
+
+  const dataKeys = useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+  const colorSecondY = useMemo(
+    () => (chartConfig.secondYAxis ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
+    [dataset]
+  );
 
   const onItemLegendClick = useCallback(
     (e) => {
@@ -71,7 +75,6 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       if (e && dataPointClickHandler) {
         dataPointClickHandler({
           dataKey: Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
-          xIndex: e.index,
           value: e.value,
           payload: e.payload
         });
@@ -93,8 +96,10 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {chartConfig.xAxisVisible && <XAxis dataKey={labelKey} yAxisId="left" />}
-        {chartConfig.yAxisVisible && <YAxis />}
+        {(chartConfig.xAxisVisible === true || chartConfig.xAxisVisible === undefined) && (
+          <XAxis dataKey={labelKey} yAxisId="left" />
+        )}
+        {(chartConfig.yAxisVisible === true || chartConfig.yAxisVisible === undefined) && <YAxis />}
         {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
@@ -110,9 +115,10 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
         )}
         {dataKeys.map((key, index) => (
           <Bar
+            stackId={chartConfig.stacked ? 'A' : undefined}
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
-            label={{ position: 'top', fontFamily: parameters.sapUiFontFamily }}
+            label={chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily }}
             key={key}
             name={key}
             dataKey={key}

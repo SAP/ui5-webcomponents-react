@@ -136,10 +136,11 @@ const renderComposedChart = () => (
   </ComposedRechart>
 );
 
-renderComposedChart.story = {
+export const composedChart = renderComposedChart();
+
+composedChart.story = {
   name: 'Default'
 };
-export const composedChart = renderComposedChart();
 
 const renderComposedChartPlaceholder = () => (
   <ComposedRechart width={'30%'} height={'40vh'} labelKey={'xValue'}>
@@ -147,7 +148,83 @@ const renderComposedChartPlaceholder = () => (
   </ComposedRechart>
 );
 
-renderComposedChartPlaceholder.story = {
-  name: 'Loading Placeholder'
-};
 export const composedChartPlaceHolder = renderComposedChartPlaceholder();
+
+composedChartPlaceHolder.story = {
+  name: 'Loading placeholder'
+};
+
+const renderComposedStackedChart = () => (
+  <ComposedRechart
+    width={'95%'}
+    height={'40vh'}
+    dataset={dataset}
+    labelKey={'xValue'}
+    legendClickHandler={clickHandler}
+    dataPointClickHandler={clickHandler}
+    chartConfig={{
+      yAxisVisible: true,
+      xAxisVisible: true,
+      gridStroke: 'white',
+      legendVisible: true,
+      gridVertical: false,
+      gridHorizontal: true,
+      legendPosition: 'bottom',
+      zoomingTool: true,
+      stacked: true,
+      secondYAxis: {
+        name: 'USER STATISTICS',
+        dataKey: 'users',
+        color: 'orange'
+      }
+    }}
+  >
+    <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
+    <Bar dataKey={'volume'} strokeWidth={2} />)
+    <Line dataKey={'users'} color={'orange'} strokeOpacity={0.7} strokeWidth={3.5} />
+    <Line dataKey={'volume'} color={'grey'} strokeWidth={2} />)
+  </ComposedRechart>
+);
+
+export const composedStackedChart = renderComposedStackedChart();
+
+composedStackedChart.story = {
+  name: 'With stacked chart'
+};
+
+const renderLabelComposedChart = () => (
+  <ComposedRechart
+    width={'95%'}
+    height={'40vh'}
+    dataset={dataset}
+    labelKey={'xValue'}
+    legendClickHandler={clickHandler}
+    dataPointClickHandler={clickHandler}
+    chartConfig={{
+      yAxisVisible: true,
+      xAxisVisible: true,
+      gridStroke: 'white',
+      legendVisible: true,
+      gridVertical: false,
+      gridHorizontal: true,
+      legendPosition: 'bottom',
+      zoomingTool: true,
+      dataLabel: true,
+      secondYAxis: {
+        name: 'USER STATISTICS',
+        dataKey: 'users',
+        color: 'orange'
+      }
+    }}
+  >
+    <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
+    <Line dataKey={'users'} color={'orange'} strokeOpacity={0.7} strokeWidth={3.5} />
+    <Line dataKey={'volume'} color={'lightblue'} strokeWidth={2} />)
+  </ComposedRechart>
+);
+
+export const composedLabelChart = renderLabelComposedChart();
+
+composedLabelChart.story = {
+  name: 'With data label chart'
+};

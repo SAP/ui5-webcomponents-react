@@ -1,17 +1,18 @@
-import React, { ComponentType, forwardRef, ReactElement, ReactNode, Ref, useCallback } from 'react';
+import React, { ComponentType, forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
 import { Bar, ComposedChart, Legend, Line, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
 import { LineChartPlaceholder } from '../..';
 import { useTheme } from 'react-jss';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../internal/ChartContainer';
+import { useInitialize } from '../../lib/initialize';
 
-export interface ComposedRechartProps extends RechartBaseProps {
+export interface ComposedChartProps extends RechartBaseProps {
   children: ReactNode;
   placeHolder?: ComponentType<unknown>;
 }
 
-const ComposedRechart = forwardRef((props: ComposedRechartProps, ref: Ref<any>) => {
+const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
   const {
     height,
     width,
@@ -32,38 +33,50 @@ const ComposedRechart = forwardRef((props: ComposedRechartProps, ref: Ref<any>) 
       yAxisColor: 'red',
       legendPosition: 'bottom',
       zoomingTool: false,
+      stacked: false,
+      dataLabel: false,
       secondYAxis: {
         name: '',
         dataKey: '',
         color: 'black'
       }
     }
-  } = props;
+  } = props as ComposedChartProps;
+
+  useInitialize();
 
   const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const childrenClone = React.Children.map(children, (child, index) => {
-    // @ts-ignore
-    if (child.props) {
-      // @ts-ignore
-      return React.cloneElement(
-        child,
-        child.props.legendType === 'line'
-          ? {
-              type: 'monotone',
-              // @ts-ignore
-              stroke: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
-              activeDot: { onClick: (e) => onDataPointClick(e, true) }
-            }
-          : {
-              // @ts-ignore
-              fill: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
-              onClick: (e) => onDataPointClick(e, false)
-            }
-      );
-    }
-  });
+  const childrenClone = useMemo(
+    () =>
+      React.Children.map(children, (child, index) => {
+        // @ts-ignore
+        if (child.props) {
+          return React.cloneElement(
+            // @ts-ignore
+            child,
+            // @ts-ignore
+            child.props.legendType === 'line'
+              ? {
+                  type: 'monotone',
+                  // @ts-ignore
+                  stroke: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
+                  label: chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily },
+                  activeDot: { onClick: (e) => onDataPointClick(e, true) }
+                }
+              : {
+                  // @ts-ignore
+                  fill: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
+                  label: chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily },
+                  stackId: chartConfig.stacked ? 'A' : undefined,
+                  onClick: (e) => onDataPointClick(e, false)
+                }
+          );
+        }
+      }),
+    [React.Children]
+  );
 
   const onItemLegendClick = useCallback(
     (e) => {
@@ -108,8 +121,10 @@ const ComposedRechart = forwardRef((props: ComposedRechartProps, ref: Ref<any>) 
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {chartConfig.xAxisVisible && <XAxis dataKey={labelKey} />}
-        {chartConfig.yAxisVisible && <YAxis />}
+        {(chartConfig.xAxisVisible === true || chartConfig.xAxisVisible === undefined) && (
+          <XAxis dataKey={labelKey} yAxisId="left" />
+        )}
+        {(chartConfig.yAxisVisible === true || chartConfig.yAxisVisible === undefined) && <YAxis />}
         {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
