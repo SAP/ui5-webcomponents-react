@@ -64,6 +64,7 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
                   stroke: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
                   label: chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily },
                   yAxisId:
+                    // @ts-ignore
                     chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
                       ? 'right'
                       : 'left',
@@ -84,7 +85,7 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
           );
         }
       }),
-    [React.Children]
+    [children]
   );
 
   const onItemLegendClick = useCallback(
