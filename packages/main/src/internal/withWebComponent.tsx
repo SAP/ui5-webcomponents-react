@@ -52,7 +52,7 @@ export const withWebComponent = <T extends any>(
     return Object.keys(getWebComponentMetadata().getSlots());
   };
 
-  const getEventsFromMetadata = (otherProps: = {}): string[] => {
+  const getEventsFromMetadata = (otherProps = {}): string[] => {
     return Object.keys(getWebComponentMetadata().getEvents() || {})
       .filter((eventName) => !eventName.startsWith('_'))
       .concat(
