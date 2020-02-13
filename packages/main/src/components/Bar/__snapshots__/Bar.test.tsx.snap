@@ -17,12 +17,8 @@ exports[`Bar Render all content 1`] = `
     class="Bar--center-"
     data-bar-part="Center"
   >
-    <div
-      class="Bar--inner-"
-    >
-      <div>
-        Content Middle
-      </div>
+    <div>
+      Content Middle
     </div>
   </div>
   <div
@@ -48,11 +44,7 @@ exports[`Bar Renders with default Props 1`] = `
   <div
     class="Bar--center-"
     data-bar-part="Center"
-  >
-    <div
-      class="Bar--inner-"
-    />
-  </div>
+  />
   <div
     class="Bar--right-"
     data-bar-part="Right"
