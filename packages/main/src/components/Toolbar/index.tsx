@@ -34,11 +34,13 @@ export function Toolbar(props) {
       );
     });
   }, [children]);
+  const overflowNeeded =
+    (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
 
   const calculateVisibleItems = useCallback(() => {
     requestAnimationFrame(() => {
       if (!outerContainer.current) return;
-      const availableWidth = outerContainer.current.getBoundingClientRect().width - 8 - 32; // padding  + overflow button
+      const availableWidth = outerContainer.current.getBoundingClientRect().width /*- 32 - 8*/;
       let consumedWidth = 0;
       let lastIndex = null;
       let lastFitWidth = 0;
@@ -46,14 +48,21 @@ export function Toolbar(props) {
         const currentMeta = controlMetaData.current[index];
         if (currentMeta && currentMeta.ref && currentMeta.ref.current) {
           let nextWidth = currentMeta.ref.current.getBoundingClientRect().width;
-          nextWidth += index === 0 || index === controlMetaData.current.length - 1 ? 4 : 8; //first element = padding: 4px
-          if (consumedWidth + nextWidth <= availableWidth) {
-            lastIndex = index;
-            lastFitWidth = consumedWidth + nextWidth;
-          }
-          if (consumedWidth < availableWidth && consumedWidth + nextWidth >= availableWidth) {
-            lastIndex = index - 1;
-            lastFitWidth = 0;
+          nextWidth += index === 0 || index === controlMetaData.current.length - 1 ? 4 : 8; //first & last element = padding: 4px
+          if (index === controlMetaData.current.length - 1) {
+            if (consumedWidth + nextWidth <= availableWidth - 8) {
+              lastIndex = index;
+              lastFitWidth = consumedWidth + nextWidth;
+            }
+          } else {
+            if (consumedWidth + nextWidth <= availableWidth - 32 - 8) {
+              lastIndex = index;
+              lastFitWidth = consumedWidth + nextWidth;
+            }
+            if (consumedWidth < availableWidth - 32 - 8 && consumedWidth + nextWidth >= availableWidth - 32 - 8) {
+              lastIndex = index - 1;
+              lastFitWidth = 0;
+            }
           }
           consumedWidth += nextWidth;
         }
@@ -62,10 +71,10 @@ export function Toolbar(props) {
       // console.log('availableWidth', availableWidth);
       // console.log('lastFixedWidth', lastFitWidth);
       // console.log('lastIndex', lastIndex);
-      setBlockerWidth(Math.max(0, availableWidth - lastFitWidth + 18 + 32));
+      setBlockerWidth(Math.max(0, availableWidth - lastFitWidth));
       setLastVisibleIndex(lastIndex);
     });
-  }, [outerContainer.current, controlMetaData.current, setLastVisibleIndex, childrenWithRef]);
+  }, [outerContainer.current, controlMetaData.current, setLastVisibleIndex, childrenWithRef, overflowNeeded]);
 
   const renderBlocker = useCallback(() => <div data-toolbar-blocker style={{ width: `${blockerWidth}px` }} />, [
     blockerWidth
@@ -92,9 +101,6 @@ export function Toolbar(props) {
     }
     return {};
   }, [width]);
-
-  const overflowNeeded =
-    (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
 
   const renderOverflowPopover = useCallback(() => {
     return (
