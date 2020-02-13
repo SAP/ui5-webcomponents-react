@@ -15,6 +15,7 @@
   "sideEffects": [
     "**/modernizr.js",
     "core-js/**/*",
+    "./src/polyfill/*.ts",
     "./polyfill/*.js"
   ],
   "scripts": {
