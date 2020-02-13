@@ -2,7 +2,7 @@
 
 exports[`Bar Render all content 1`] = `
 <div
-  class="Bar--bar-"
+  class="Bar--bar- Bar--auto-"
   data-bar-part="Root"
 >
   <div
@@ -34,7 +34,7 @@ exports[`Bar Render all content 1`] = `
 
 exports[`Bar Renders with default Props 1`] = `
 <div
-  class="Bar--bar-"
+  class="Bar--bar- Bar--auto-"
   data-bar-part="Root"
 >
   <div

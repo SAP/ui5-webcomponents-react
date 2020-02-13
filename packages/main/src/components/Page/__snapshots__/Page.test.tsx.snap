@@ -11,7 +11,7 @@ exports[`Page Basic Page 1`] = `
       class="Page--pageHeader- Page--baseBar-"
     >
       <div
-        class="Bar--bar-"
+        class="Bar--bar- Bar--auto-"
         data-bar-part="Root"
       >
         <div
@@ -62,7 +62,7 @@ exports[`Page Basic Page w/o back button 1`] = `
       class="Page--pageHeader- Page--baseBar-"
     >
       <div
-        class="Bar--bar-"
+        class="Bar--bar- Bar--auto-"
         data-bar-part="Root"
       >
         <div
