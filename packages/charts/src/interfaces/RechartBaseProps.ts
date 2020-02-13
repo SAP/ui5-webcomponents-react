@@ -19,12 +19,15 @@ export interface RechartBaseProps extends ChartContainerProps {
     legendPosition?: string;
     legendVisible?: boolean;
     zoomingTool?: boolean;
-    barSize?: string | number;
-    barGap?: number;
-    fillOpacity?: number;
+
     strokeOpacity?: number;
     strokeWidth?: number;
     stacked?: boolean;
+
+    barSize?: string | number;
+    barGap?: number;
+    fillOpacity?: number;
+
     paddingAngle?: number;
     innerRadius?: string;
 
