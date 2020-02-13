@@ -35,7 +35,7 @@ const options = {
 };
 
 export default {
-  title: 'Charts / BarChart',
+  title: 'Charts - Deprecated / BarChart',
   component: BarChart
 };
 

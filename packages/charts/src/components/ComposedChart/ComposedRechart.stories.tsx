@@ -79,7 +79,7 @@ const dataset = [
 ];
 
 export default {
-  title: 'Rechart - ComposedChart',
+  title: 'Charts / ComposedChart',
   component: ComposedRechart
 };
 

@@ -1,11 +1,11 @@
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
-import { useInitialize } from '../../lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import { CartesianGrid, Bar, BarChart as BarChartLib, XAxis, YAxis, Tooltip, Legend, Brush } from 'recharts';
+import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
 import { useTheme } from 'react-jss';
-import { BarChartPlaceholder } from './Placeholder';
+import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../internal/ChartContainer';
+import { useInitialize } from '../../lib/initialize';
+import { BarChartPlaceholder } from './Placeholder';
 
 export interface BarChartProps extends RechartBaseProps {}
 
@@ -42,7 +42,7 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
         color: 'black'
       }
     }
-  } = props as BarChartProps;
+  } = props;
 
   useInitialize();
 

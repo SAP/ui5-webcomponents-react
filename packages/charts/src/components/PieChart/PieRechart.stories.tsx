@@ -53,7 +53,7 @@ const dataset = [
 ];
 
 export default {
-  title: 'Rechart - PieChart',
+  title: 'Charts / PieChart',
   component: PieRechart
 };
 

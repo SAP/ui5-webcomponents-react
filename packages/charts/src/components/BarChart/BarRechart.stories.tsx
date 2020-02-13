@@ -84,7 +84,7 @@ const singleData = [
 ];
 
 export default {
-  title: 'Rechart - BarChart',
+  title: 'Charts / BarChart',
   component: BarRechart
 };
 

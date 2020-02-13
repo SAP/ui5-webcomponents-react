@@ -1,5 +1,5 @@
-import { useTheme } from 'react-jss';
 import { getOrLoadTheme } from '../themes/themeMap';
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 
 const CSS_ELEMENT_ID = 'data-ui5-webcomponents-react-charts-theme-properties';
 
@@ -8,7 +8,7 @@ let domElementToInsert = document.querySelector(`#${CSS_ELEMENT_ID}`);
 let isInitialized = false;
 
 export const useInitialize = () => {
-  const { theme } = useTheme() as any;
+  const theme = getTheme();
   const themeMap = getOrLoadTheme(theme);
 
   if (isInitialized) return;

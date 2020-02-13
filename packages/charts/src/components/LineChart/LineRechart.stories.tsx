@@ -96,7 +96,7 @@ const singleData = [
 ];
 
 export default {
-  title: 'Rechart - LineChart',
+  title: 'Charts / LineChart',
   component: LineRechart
 };
 
