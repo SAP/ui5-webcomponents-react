@@ -52,8 +52,14 @@ export const withWebComponent = <T extends any>(
     return Object.keys(getWebComponentMetadata().getSlots());
   };
 
-  const getEventsFromMetadata = (): string[] => {
-    return Object.keys(getWebComponentMetadata().getEvents() || {}).filter((eventName) => !eventName.startsWith('_'));
+  const getEventsFromMetadata = (otherProps = {}): string[] => {
+    return Object.keys(getWebComponentMetadata().getEvents() || {})
+      .filter((eventName) => !eventName.startsWith('_'))
+      .concat(
+        Object.keys(otherProps)
+          .filter((key) => key.startsWith('on'))
+          .map((key) => key.replace('on', '').toLowerCase())
+      );
   };
 
   const createEventWrapperFor = (eventIdentifier, eventHandler) => (e) => {
@@ -97,9 +103,11 @@ export const withWebComponent = <T extends any>(
       }, {});
     };
 
+    const { className, ...otherProps } = props;
+
     useEffect(
       () => {
-        getEventsFromMetadata().forEach((eventName) => {
+        getEventsFromMetadata(otherProps).forEach((eventName) => {
           const eventPropName = 'on' + capitalizeFirstLetter(eventName);
           const eventHandler = props[eventPropName];
 
@@ -115,16 +123,16 @@ export const withWebComponent = <T extends any>(
           }
         });
       },
-      getEventsFromMetadata().map((eventName) => props[`on${capitalizeFirstLetter(eventName)}`])
+      getEventsFromMetadata(otherProps).map((eventName) => props[`on${capitalizeFirstLetter(eventName)}`])
     );
-
-    const { className, ...otherProps } = props;
 
     const propsList = getWebComponentMetadata().getPropsList();
 
     const { regularProps: passedProps, slotProps: actualSlotProps } = Object.entries(otherProps)
       .filter(([key]) => !getBooleanPropsFromMetadata().includes(key))
-      .filter(([key]) => !getEventsFromMetadata().some((eventKey) => `on${capitalizeFirstLetter(eventKey)}` === key))
+      .filter(
+        ([key]) => !getEventsFromMetadata(otherProps).some((eventKey) => `on${capitalizeFirstLetter(eventKey)}` === key)
+      )
       .reduce(
         (acc, [key, value]) => {
           if (getSlotsFromMetadata().includes(key)) {
