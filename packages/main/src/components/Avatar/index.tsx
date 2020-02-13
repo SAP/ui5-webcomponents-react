@@ -2,7 +2,7 @@ import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
@@ -39,37 +39,33 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
     tooltip,
     slot
   } = props;
+  const classes = useStyles({ customDisplaySize, customFontSize });
 
-  const classes = useStyles();
-
-  const cssClasses = [classes.avatar];
-  const inlineStyle: CSSProperties = {};
-  if (size === AvatarSize.Custom) {
-    inlineStyle.fontSize = customFontSize;
-    inlineStyle.width = customDisplaySize;
-    inlineStyle.height = customDisplaySize;
-    inlineStyle.lineHeight = customDisplaySize;
-  } else {
-    cssClasses.push(classes[`size${size}`]);
-  }
+  const cssClasses = [classes.avatar, classes[`size${size}`]];
 
   if (shape === AvatarShape.Circle) {
     cssClasses.push(classes.circle);
   }
 
-  if (image) {
-    inlineStyle.backgroundImage = `url(${image})`;
-  }
+  const inlineStyle = useMemo(() => {
+    const internalStyle: CSSProperties = {};
+    if (image) {
+      internalStyle.backgroundImage = `url(${image})`;
+    }
 
-  if (onClick) {
-    inlineStyle.cursor = 'pointer';
-  }
+    if (onClick) {
+      internalStyle.cursor = 'pointer';
+    }
+
+    if (style) {
+      Object.assign(internalStyle, style);
+    }
+
+    return internalStyle;
+  }, [image, onClick, style]);
 
   if (className) {
     cssClasses.push(className);
-  }
-  if (style) {
-    Object.assign(inlineStyle, style);
   }
 
   const handleKeyDown = useCallback(
