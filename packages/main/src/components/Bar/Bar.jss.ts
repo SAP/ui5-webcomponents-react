@@ -1,3 +1,5 @@
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
+
 const styles = ({ parameters }) => ({
   bar: {
     width: '100%',
@@ -5,7 +7,7 @@ const styles = ({ parameters }) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     overflow: 'hidden',
-    textOverflow:'ellipsis'
+    textOverflow: 'ellipsis'
   },
   left: {
     paddingLeft: '0.5rem',
@@ -20,23 +22,23 @@ const styles = ({ parameters }) => ({
     paddingRight: '0.5rem'
   },
   auto: {
-    height: '2.5rem',
+    height: CssSizeVariables.sapWcrBarHeight,
     background: parameters.sapUiPageHeaderBackground,
     boxShadow: parameters.sapUiShadowHeader
   },
   subHeader: {
-    height: '2.25rem',
+    height: CssSizeVariables.sapWcrSubHeaderBarHeight,
     background: parameters.sapUiPageHeaderBackground,
     boxShadow: parameters.sapUiShadowHeader,
     paddingBottom: ' 0.25rem'
   },
   footer: {
-    height: '2.5rem',
+    height: CssSizeVariables.sapWcrBarHeight,
     background: parameters.sapUiPageFooterBackground,
     borderTop: `0.0625rem solid ${parameters.sapUiPageFooterBorderColor}`
   },
   floatingFooter: {
-    height: '2.5rem',
+    height: CssSizeVariables.sapWcrBarHeight,
     background: parameters.sapUiPageFooterBackground,
     borderRadius: parameters.sapUiElementBorderCornerRadius,
     boxShadow: parameters.sapUiShadowLevel1,

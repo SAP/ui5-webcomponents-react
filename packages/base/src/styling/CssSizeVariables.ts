@@ -1,5 +1,6 @@
 export enum CssSizeVariablesNames {
   sapWcrBarHeight = 'sapWcrBarHeight',
+  sapWcrSubHeaderBarHeight = 'sapWcrSubHeaderBarHeight',
   sapWcrProgressIndicatorHeight = 'sapWcrProgressIndicatorHeight',
   sapWcrProgressIndicatorMargin = 'sapWcrProgressIndicatorMargin',
   sapWcrSegmentedButtonPadding = 'sapWcrSegmentedButtonPadding',
@@ -26,6 +27,7 @@ export const CssSizeVariables: Record<CssSizeVariablesNames, string> = Object.va
 export const cssVariablesStyles = `
 :root {
   --${CssSizeVariablesNames.sapWcrBarHeight}:2.75rem;
+  --${CssSizeVariablesNames.sapWcrSubHeaderBarHeight}:3rem;
   --${CssSizeVariablesNames.sapWcrProgressIndicatorHeight}:1rem;
   --${CssSizeVariablesNames.sapWcrProgressIndicatorMargin}:0.5rem 0;
   --${CssSizeVariablesNames.sapWcrSegmentedButtonPadding}:0.250rem 0;
@@ -45,6 +47,7 @@ export const cssVariablesStyles = `
 .ui5-content-density-compact,
 .sapUiSizeCompact {
   --${CssSizeVariablesNames.sapWcrBarHeight}:2.5rem;
+  --${CssSizeVariablesNames.sapWcrSubHeaderBarHeight}:2.25rem;
   --${CssSizeVariablesNames.sapWcrProgressIndicatorHeight}:1.125rem;
   --${CssSizeVariablesNames.sapWcrSegmentedButtonPadding}:0.1875rem 0;
   --${CssSizeVariablesNames.sapWcrSegmentedButtonHeight}:2rem;
