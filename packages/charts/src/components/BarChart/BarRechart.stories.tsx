@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { BarRechart } from './BarRechart';
 
@@ -88,43 +89,35 @@ export default {
   component: BarRechart
 };
 
-const clickHandler = (data) => {
-  console.log(data);
-};
-
-function renderStory() {
-  return (
-    <BarRechart
-      dataPointClickHandler={clickHandler}
-      legendClickHandler={clickHandler}
-      labelKey={'xValue'}
-      dataset={dataset}
-      width={'97%'}
-      chartConfig={{
-        gridStroke: 'white',
-        gridVertical: false,
-        fillOpacity: 0.7,
-        strokeOpacity: 1,
-        barSize: 20,
-        xAxisVisible: true,
-        yAxisVisible: true,
-        zoomingTool: true,
-        dataLabel: true,
-        secondYAxis: { dataKey: 'users' }
-      }}
-    />
-  );
-}
-
-export const defaultStory = renderStory();
+export const defaultStory = () => (
+  <BarRechart
+    dataPointClickHandler={action('dataPointClickHandler')}
+    legendClickHandler={action('legendClickHandler')}
+    labelKey={'xValue'}
+    dataset={dataset}
+    width={'97%'}
+    chartConfig={{
+      gridStroke: 'white',
+      gridVertical: false,
+      fillOpacity: 0.7,
+      strokeOpacity: 1,
+      barSize: 20,
+      xAxisVisible: true,
+      yAxisVisible: true,
+      zoomingTool: true,
+      dataLabel: true,
+      secondYAxis: { dataKey: 'users' }
+    }}
+  />
+);
 
 defaultStory.story = {
   name: 'Default'
 };
 
-const renderStoryWithCustomColor = () => (
+export const withCustomColor = () => (
   <BarRechart
-    dataPointClickHandler={clickHandler}
+    dataPointClickHandler={action('dataPointClickHandler')}
     labelKey={'xValue'}
     dataset={singleData}
     color={'red'}
@@ -132,8 +125,6 @@ const renderStoryWithCustomColor = () => (
     height={'40vh'}
   />
 );
-
-export const withCustomColor = renderStoryWithCustomColor();
 
 withCustomColor.story = {
   name: 'With custom color'
@@ -145,31 +136,27 @@ loadingPlaceholder.story = {
   name: 'Loading placeholder'
 };
 
-function renderStackedStory() {
-  return (
-    <BarRechart
-      dataPointClickHandler={clickHandler}
-      legendClickHandler={clickHandler}
-      labelKey={'xValue'}
-      dataset={dataset}
-      width={'97%'}
-      chartConfig={{
-        gridStroke: 'white',
-        gridVertical: false,
-        fillOpacity: 0.7,
-        strokeOpacity: 1,
-        barSize: 35,
-        xAxisVisible: true,
-        yAxisVisible: true,
-        zoomingTool: true,
-        stacked: true,
-        dataLabel: true
-      }}
-    />
-  );
-}
-
-export const defaultStackedStory = renderStackedStory();
+export const defaultStackedStory = () => (
+  <BarRechart
+    dataPointClickHandler={action('dataPointClickHandler')}
+    legendClickHandler={action('legendClickHandler')}
+    labelKey={'xValue'}
+    dataset={dataset}
+    width={'97%'}
+    chartConfig={{
+      gridStroke: 'white',
+      gridVertical: false,
+      fillOpacity: 0.7,
+      strokeOpacity: 1,
+      barSize: 35,
+      xAxisVisible: true,
+      yAxisVisible: true,
+      zoomingTool: true,
+      stacked: true,
+      dataLabel: true
+    }}
+  />
+);
 
 defaultStackedStory.story = {
   name: 'Stacked chart'
