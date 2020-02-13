@@ -56,7 +56,7 @@ export const withWebComponent = <T extends any>(
     return Object.keys(getWebComponentMetadata().getEvents() || {})
       .filter((eventName) => !eventName.startsWith('_'))
       .concat(
-        Object.keys(otherProps === undefined ? {} : otherProps)
+        Object.keys(otherProps)
           .filter((key) => key.startsWith('on'))
           .map((key) => key.replace('on', '').toLowerCase())
       );
