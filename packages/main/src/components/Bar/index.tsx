@@ -24,25 +24,23 @@ const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivE
   const classes = useStyles();
 
   const cssClasses = StyleClassHelper.of(classes.bar);
-  const barDesignClass = () => {
-    switch (design) {
-      case BarDesign.Footer:
-        return classes.footer;
-      case BarDesign.SubHeader:
-        return classes.subHeader;
-      case BarDesign.FloatingFooter:
-        return classes.floatingFooter;
-      case BarDesign.Header:
-      case BarDesign.Auto:
-      default:
-        return classes.auto;
-    }
-  };
+  switch (design) {
+    case BarDesign.Footer:
+      cssClasses.put(classes.footer);
+      break;
+    case BarDesign.SubHeader:
+      cssClasses.put(classes.subHeader);
+      break;
+    case BarDesign.FloatingFooter:
+      cssClasses.put(classes.floatingFooter);
+      break;
+    case BarDesign.Header:
+    case BarDesign.Auto:
+    default:
+      cssClasses.put(classes.auto);
+  }
   if (className) {
     cssClasses.put(className);
-  }
-  if (design) {
-    cssClasses.put(barDesignClass());
   }
 
   const passThroughProps = usePassThroughHtmlProps(props);
@@ -61,7 +59,7 @@ const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivE
         {renderContentLeft()}
       </div>
       <div data-bar-part="Center" className={classes.center}>
-        {renderContentMiddle()}
+        <div className={classes.inner}>{renderContentMiddle()}</div>
       </div>
       <div data-bar-part="Right" className={classes.right}>
         {renderContentRight()}
