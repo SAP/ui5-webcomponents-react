@@ -1,5 +1,5 @@
 import React from 'react';
-import { PieRechart } from './PieRechart';
+import DonutRechart from './DonutRechart';
 import { action } from '@storybook/addon-actions';
 
 const dataset = [
@@ -54,19 +54,19 @@ const dataset = [
 ];
 
 export default {
-  title: 'Charts / PieChart',
-  component: PieRechart
+  title: 'Charts / DonutChart',
+  component: DonutRechart
 };
 
 export const renderStory = () => {
   return (
-    <PieRechart
+    <DonutRechart
       onLegendClickHandler={action('onDataPointClickHandler')}
       onDataPointClickHandler={action('onLegendClickHandler')}
       width={'50%'}
       dataset={dataset}
       labelKey={'name'}
-      chartConfig={{ dataLabel: true }}
+      chartConfig={{ dataLabel: true, innerRadius: '50%' }}
     />
   );
 };
@@ -75,29 +75,14 @@ renderStory.story = {
   name: 'Default'
 };
 
-export const renderDonutStory = () => {
-  return (
-    <PieRechart
-      width={'50%'}
-      dataset={dataset}
-      labelKey={'name'}
-      chartConfig={{ dataLabel: true, paddingAngle: 3, innerRadius: '50%' }}
-    />
-  );
-};
-
-renderDonutStory.story = {
-  name: 'Donut'
-};
-
 export const renderCustomColorStory = () => {
   return (
-    <PieRechart
+    <DonutRechart
       width={'50%'}
       dataset={dataset}
       labelKey={'name'}
       color={'lightblue'}
-      chartConfig={{ dataLabel: true }}
+      chartConfig={{ dataLabel: true, innerRadius: '50%' }}
     />
   );
 };
@@ -106,7 +91,22 @@ renderCustomColorStory.story = {
   name: 'With custom color'
 };
 
-export const loadingPlaceholder = () => <PieRechart width={'30%'} />;
+export const withPaddingStory = () => {
+  return (
+    <DonutRechart
+      width={'50%'}
+      dataset={dataset}
+      labelKey={'name'}
+      chartConfig={{ dataLabel: true, innerRadius: '50%', paddingAngle: 5 }}
+    />
+  );
+};
+
+withPaddingStory.story = {
+  name: 'With padding angle'
+};
+
+export const loadingPlaceholder = () => <DonutRechart width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'

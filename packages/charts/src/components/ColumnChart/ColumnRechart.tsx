@@ -1,24 +1,32 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
 import { useTheme } from 'react-jss';
-import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
+import {
+  Bar as Column,
+  BarChart as ColumnChartLib,
+  Brush,
+  CartesianGrid,
+  Legend,
+  Tooltip,
+  XAxis,
+  YAxis
+} from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../internal/ChartContainer';
 import { useInitialize } from '../../lib/initialize';
-import { BarChartPlaceholder } from './Placeholder';
-import { ColumnChartPlaceholder } from '../..';
+import { ColumnChartPlaceholder } from './Placeholder';
 
-export interface BarChartProps extends RechartBaseProps {}
+export interface ColumnChartProps extends RechartBaseProps {}
 
-const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
+const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
     labelKey = 'label',
-    dataKeys,
     width = '100%',
     height = '300px',
     dataset,
+    dataKeys,
     noLegend = false,
     onDataPointClickHandler,
     onLegendClickHandler,
@@ -95,7 +103,7 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       width={width}
       height={height}
     >
-      <BarChartLib
+      <ColumnChartLib
         ref={chartRef}
         data={dataset}
         style={{ fontSize: parameters.sapUiFontSmallSize }}
@@ -118,7 +126,7 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
           />
         )}
         {currentDataKeys.map((key, index) => (
-          <Bar
+          <Column
             yAxisId={chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === key ? 'right' : 'left'}
             stackId={chartConfig.stacked ? 'A' : undefined}
             strokeOpacity={chartConfig.strokeOpacity}
@@ -138,9 +146,9 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
         {chartConfig.zoomingTool && (
           <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />
         )}
-      </BarChartLib>
+      </ColumnChartLib>
     </ChartContainer>
   );
 });
 
-export { BarRechart };
+export { ColumnRechart };

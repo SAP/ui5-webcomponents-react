@@ -10,11 +10,9 @@ const datasets = [
   }
 ];
 
-function renderStory() {
+export const renderStory = () => {
   return <LineChart labels={labels} datasets={datasets} loading={boolean('loading', false)} />;
-}
-
-const colors = ['#f0ab00'];
+};
 
 const renderStoryWithFormatter = () => (
   <LineChart

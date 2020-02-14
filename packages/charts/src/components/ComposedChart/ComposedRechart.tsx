@@ -15,13 +15,13 @@ export interface ComposedChartProps extends RechartBaseProps {
 const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
   const {
     height,
-    width,
+    width = '100%',
     loading,
     dataset,
     labelKey,
     children,
-    dataPointClickHandler,
-    legendClickHandler,
+    onDataPointClickHandler,
+    onLegendClickHandler,
     chartConfig = {
       yAxisVisible: true,
       xAxisVisible: true,
@@ -90,8 +90,8 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
 
   const onItemLegendClick = useCallback(
     (e) => {
-      if (legendClickHandler) {
-        legendClickHandler({
+      if (onLegendClickHandler) {
+        onLegendClickHandler({
           dataKey: e.dataKey,
           value: e.value,
           chartType: e.type,
@@ -100,13 +100,13 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
         });
       }
     },
-    [dataset]
+    [onLegendClickHandler]
   );
 
   const onDataPointClick = useCallback(
     (e, line) => {
-      if (e && dataPointClickHandler) {
-        dataPointClickHandler({
+      if (e && onDataPointClickHandler) {
+        onDataPointClickHandler({
           value: e.value,
           dataKey: line ? e.dataKey : Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
           xIndex: e.index,
@@ -114,7 +114,7 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
         });
       }
     },
-    [dataset]
+    [onDataPointClickHandler]
   );
 
   return (
@@ -131,8 +131,8 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible === true || chartConfig.xAxisVisible === undefined) && <XAxis dataKey={labelKey} />}
-        {(chartConfig.yAxisVisible === true || chartConfig.yAxisVisible === undefined) && <YAxis yAxisId="left" />}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} />}
+        {(chartConfig.yAxisVisible ?? true) && <YAxis yAxisId="left" />}
         {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}

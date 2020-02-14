@@ -22,12 +22,13 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
     color,
     loading,
     labelKey = 'label',
-    width = '50%',
+    width = '100%',
     height = '500px',
     dataset,
+    dataKeys,
     noLegend = false,
-    dataPointClickHandler,
-    legendClickHandler,
+    onDataPointClickHandler,
+    onLegendClickHandler,
     chartConfig = {
       yAxisVisible: true,
       xAxisVisible: true,
@@ -52,13 +53,14 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
   const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const dataKeys = useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+  const currentDataKeys =
+    dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
 
   const onItemLegendClick = useCallback(
     (e) => {
-      if (legendClickHandler) {
-        legendClickHandler({
-          dataKey: dataKeys[0],
+      if (onLegendClickHandler) {
+        onLegendClickHandler({
+          dataKey: currentDataKeys[0],
           value: e.value,
           chartType: e.type,
           color: e.color,
@@ -66,13 +68,13 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [dataset]
+    [onLegendClickHandler]
   );
 
   const onDataPointClick = useCallback(
     (e) => {
-      if (e && dataPointClickHandler && e.value) {
-        dataPointClickHandler({
+      if (e && onDataPointClickHandler && e.value) {
+        onDataPointClickHandler({
           value: e.value,
           dataKey: e.dataKey,
           xValue: e.payload.label,
@@ -81,7 +83,7 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [dataset]
+    [onDataPointClickHandler]
   );
 
   return (
@@ -97,18 +99,19 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
         <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis dataKey={labelKey} />
         <PolarRadiusAxis />
-        {dataKeys.map((key, index) => (
+        {currentDataKeys.map((key, index) => (
           <Radar
+            key={index}
             activeDot={{ onClick: onDataPointClick }}
             name={key}
             dataKey={key}
-            stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
-            fill={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
+            stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
+            fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             fillOpacity={0.5}
           />
         ))}
         <Tooltip />
-        {!noLegend && <Legend onClick={onItemLegendClick} />}{' '}
+        {!noLegend && <Legend onClick={onItemLegendClick} />}
       </RadarChartLib>
     </ChartContainer>
   );

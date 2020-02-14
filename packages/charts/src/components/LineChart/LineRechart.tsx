@@ -14,12 +14,13 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
     color,
     loading,
     labelKey = 'label',
-    width = '300px',
+    width = '100%',
     height = '300px',
     dataset,
+    dataKeys,
     noLegend = false,
-    dataPointClickHandler,
-    legendClickHandler,
+    onDataPointClickHandler,
+    onLegendClickHandler,
     chartConfig = {
       yAxisVisible: true,
       xAxisVisible: true,
@@ -46,16 +47,18 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const dataKeys = useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+  const currentDataKeys =
+    dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+
   const colorSecondY = useMemo(
-    () => (chartConfig.secondYAxis ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
-    [dataset]
+    () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
+    [chartConfig, currentDataKeys]
   );
 
   const onItemLegendClick = useCallback(
     (e) => {
-      if (legendClickHandler) {
-        legendClickHandler({
+      if (onLegendClickHandler) {
+        onLegendClickHandler({
           dataKey: e.dataKey,
           value: e.value,
           chartType: e.type,
@@ -64,13 +67,13 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [dataset]
+    [onLegendClickHandler]
   );
 
   const onDataPointClick = useCallback(
     (e) => {
-      if (e && dataPointClickHandler && e.value) {
-        dataPointClickHandler({
+      if (e && onDataPointClickHandler && e.value) {
+        onDataPointClickHandler({
           value: e.value,
           dataKey: e.dataKey,
           xIndex: e.index,
@@ -78,7 +81,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [dataset]
+    [onDataPointClickHandler]
   );
 
   return (
@@ -100,22 +103,18 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible === true || chartConfig.xAxisVisible === undefined) && <XAxis dataKey={labelKey} />}
-        {(chartConfig.yAxisVisible === true || chartConfig.yAxisVisible === undefined) && <YAxis yAxisId="left" />}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} />}
+        {(chartConfig.yAxisVisible ?? true) && <YAxis yAxisId="left" />}
         {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={
-              chartConfig.secondYAxis.color
-                ? chartConfig.secondYAxis.color
-                : `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`
-            }
+            stroke={chartConfig.secondYAxis.color ?? `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`}
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
             yAxisId="right"
           />
         )}
-        {dataKeys.map((key, index) => (
+        {currentDataKeys.map((key, index) => (
           <Line
             yAxisId={chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === key ? 'right' : 'left'}
             key={key}
@@ -124,7 +123,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
             label={chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily }}
             type="monotone"
             dataKey={key}
-            stroke={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`}
+            stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             strokeWidth={chartConfig.strokeWidth}
             activeDot={{ onClick: onDataPointClick }}
           />

@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
-import { BarRechart } from './BarRechart';
+import { ColumnRechart } from './ColumnRechart';
 
 const dataset = [
   {
@@ -85,12 +85,12 @@ const singleData = [
 ];
 
 export default {
-  title: 'Charts / BarChart',
-  component: BarRechart
+  title: 'Charts / ColumnChart',
+  component: ColumnRechart
 };
 
 export const defaultStory = () => (
-  <BarRechart
+  <ColumnRechart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     onLegendClickHandler={action('onLegendClickHandler')}
     labelKey={'xValue'}
@@ -102,6 +102,7 @@ export const defaultStory = () => (
       fillOpacity: 0.7,
       strokeOpacity: 1,
       barSize: 20,
+      xAxisVisible: true,
       yAxisVisible: true,
       zoomingTool: true,
       dataLabel: true,
@@ -115,7 +116,7 @@ defaultStory.story = {
 };
 
 export const withCustomColor = () => (
-  <BarRechart
+  <ColumnRechart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     labelKey={'xValue'}
     dataset={singleData}
@@ -129,14 +130,14 @@ withCustomColor.story = {
   name: 'With custom color'
 };
 
-export const loadingPlaceholder = () => <BarRechart labelKey={'xValue'} width={'30%'} />;
+export const loadingPlaceholder = () => <ColumnRechart labelKey={'xValue'} width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
 };
 
 export const defaultStackedStory = () => (
-  <BarRechart
+  <ColumnRechart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     onLegendClickHandler={action('onLegendClickHandler')}
     labelKey={'xValue'}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { RadarRechart } from './RadarRechart';
+import { action } from '@storybook/addon-actions';
 
 const dataset = [
   {
@@ -88,43 +89,35 @@ export default {
   component: RadarRechart
 };
 
-const clickHandler = (data) => {
-  console.log(data);
-};
-
-function renderStory() {
+export const renderStory = () => {
   return (
     <RadarRechart
-      dataPointClickHandler={clickHandler}
-      legendClickHandler={clickHandler}
+      onDataPointClickHandler={action('onDataPointClickHandler')}
+      onLegendClickHandler={action('onLegendClickHandler')}
       dataset={dataset}
       width={'50%'}
     />
   );
-}
+};
 
-export const defaultStory = renderStory();
-
-defaultStory.story = {
+renderStory.story = {
   name: 'Default'
 };
 
-function withCustomColorStory() {
+export const withCustomColorStory = () => {
   return (
     <RadarRechart
-      dataPointClickHandler={clickHandler}
-      legendClickHandler={clickHandler}
+      onDataPointClickHandler={action('onDataPointClickHandler')}
+      onLegendClickHandler={action('onLegendClickHandler')}
       color={'lightblue'}
       labelKey={'xValue'}
       dataset={singleData}
       width={'50%'}
     />
   );
-}
+};
 
-export const customColorStory = withCustomColorStory();
-
-customColorStory.story = {
+withCustomColorStory.story = {
   name: 'With custom color'
 };
 
@@ -134,20 +127,18 @@ loadingPlaceholder.story = {
   name: 'Loading placeholder'
 };
 
-function withPolygonStory() {
+export const withPolygonStory = () => {
   return (
     <RadarRechart
-      dataPointClickHandler={clickHandler}
-      legendClickHandler={clickHandler}
+      onDataPointClickHandler={action('onDataPointClickHandler')}
+      onLegendClickHandler={action('onLegendClickHandler')}
       dataset={dataset}
       width={'50%'}
       chartConfig={{ polarGridType: 'polygon' }}
     />
   );
-}
+};
 
-export const polygonStory = withPolygonStory();
-
-polygonStory.story = {
+withPolygonStory.story = {
   name: 'Radar as polygon'
 };

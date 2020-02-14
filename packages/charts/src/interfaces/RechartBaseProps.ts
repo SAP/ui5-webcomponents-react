@@ -3,9 +3,10 @@ import { ChartContainerProps } from './ChartContainerProps';
 
 export interface RechartBaseProps extends ChartContainerProps {
   labelKey?: string;
+  dataKeys?: Array<string>;
   noLegend?: boolean;
-  dataPointClickHandler?: (object) => void;
-  legendClickHandler?: (object) => void;
+  onDataPointClickHandler?: (object) => void;
+  onLegendClickHandler?: (object) => void;
   color?: string;
   colors?: Array<CSSProperties['color']>;
 

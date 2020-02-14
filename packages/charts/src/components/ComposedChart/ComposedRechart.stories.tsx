@@ -2,6 +2,7 @@ import React from 'react';
 import { ComposedRechart } from './ComposedRechart';
 import { Line } from 'recharts';
 import { Bar } from 'recharts';
+import { action } from '@storybook/addon-actions';
 
 const dataset = [
   {
@@ -83,18 +84,14 @@ export default {
   component: ComposedRechart
 };
 
-const clickHandler = (data) => {
-  console.log(data);
-};
-
-const renderComposedChart = () => (
+export const renderComposedChart = () => (
   <ComposedRechart
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
     labelKey={'xValue'}
-    legendClickHandler={clickHandler}
-    dataPointClickHandler={clickHandler}
+    onLegendClickHandler={action('onDataPointClickHandler')}
+    onDataPointClickHandler={action('onLegendClickHandler')}
     chartConfig={{
       yAxisVisible: true,
       xAxisVisible: true,
@@ -112,32 +109,28 @@ const renderComposedChart = () => (
   </ComposedRechart>
 );
 
-export const composedChart = renderComposedChart();
-
-composedChart.story = {
+renderComposedChart.story = {
   name: 'Default'
 };
 
-const renderComposedChartPlaceholder = () => (
+export const renderComposedChartPlaceholder = () => (
   <ComposedRechart width={'30%'} height={'40vh'} labelKey={'xValue'}>
     <Line dataKey={'volume'} stroke={'lightblue'} strokeWidth={1} />)
   </ComposedRechart>
 );
 
-export const composedChartPlaceHolder = renderComposedChartPlaceholder();
-
-composedChartPlaceHolder.story = {
+renderComposedChartPlaceholder.story = {
   name: 'Loading placeholder'
 };
 
-const renderComposedStackedChart = () => (
+export const renderComposedStackedChart = () => (
   <ComposedRechart
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
     labelKey={'xValue'}
-    legendClickHandler={clickHandler}
-    dataPointClickHandler={clickHandler}
+    onLegendClickHandler={action('onLegendClickHandler')}
+    onDataPointClickHandler={action('onDataPointClickHandler')}
     chartConfig={{
       yAxisVisible: true,
       xAxisVisible: true,
@@ -161,20 +154,18 @@ const renderComposedStackedChart = () => (
   </ComposedRechart>
 );
 
-export const composedStackedChart = renderComposedStackedChart();
-
-composedStackedChart.story = {
+renderComposedStackedChart.story = {
   name: 'With stacked chart'
 };
 
-const renderLabelComposedChart = () => (
+export const renderLabelComposedChart = () => (
   <ComposedRechart
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
     labelKey={'xValue'}
-    legendClickHandler={clickHandler}
-    dataPointClickHandler={clickHandler}
+    onLegendClickHandler={action('onLegendClickHandler')}
+    onDataPointClickHandler={action('onDataPointClickHandler')}
     chartConfig={{
       yAxisVisible: true,
       xAxisVisible: true,
@@ -197,8 +188,6 @@ const renderLabelComposedChart = () => (
   </ComposedRechart>
 );
 
-export const composedLabelChart = renderLabelComposedChart();
-
-composedLabelChart.story = {
+renderLabelComposedChart.story = {
   name: 'With data label chart'
 };

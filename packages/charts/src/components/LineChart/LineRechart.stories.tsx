@@ -1,5 +1,6 @@
 import React from 'react';
 import { LineRechart } from './LineRechart';
+import { action } from '@storybook/addon-actions';
 
 const dataset = [
   {
@@ -100,15 +101,11 @@ export default {
   component: LineRechart
 };
 
-const clickHandler = (data) => {
-  console.log(data);
-};
-
-function renderStory() {
+export const renderStory = () => {
   return (
     <LineRechart
-      dataPointClickHandler={clickHandler}
-      legendClickHandler={clickHandler}
+      onDataPointClickHandler={action('onDataPointClickHandler')}
+      onLegendClickHandler={action('onLegendPointClickHandler')}
       labelKey={'xValue'}
       dataset={dataset}
       width={'95%'}
@@ -123,17 +120,15 @@ function renderStory() {
       }}
     />
   );
-}
+};
 
-export const defaultStory = renderStory();
-
-defaultStory.story = {
+renderStory.story = {
   name: 'Default'
 };
 
-const renderStoryWithCustomColor = () => (
+export const renderStoryWithCustomColor = () => (
   <LineRechart
-    dataPointClickHandler={clickHandler}
+    onDataPointClickHandler={action('onDataPointClickHandler')}
     labelKey={'xValue'}
     dataset={singleData}
     color={'red'}
@@ -147,13 +142,15 @@ const renderStoryWithCustomColor = () => (
   />
 );
 
-export const withCustomColor = renderStoryWithCustomColor();
+renderStoryWithCustomColor.story = {
+  name: 'With custom color'
+};
 
-function renderLabelStory() {
+export const renderLabelStory = () => {
   return (
     <LineRechart
-      dataPointClickHandler={clickHandler}
-      legendClickHandler={clickHandler}
+      onDataPointClickHandler={action('onDataPointClickHandler')}
+      onLegendClickHandler={action('onLegendClickHandler')}
       labelKey={'xValue'}
       dataset={dataset}
       width={'95%'}
@@ -167,16 +164,10 @@ function renderLabelStory() {
       }}
     />
   );
-}
-
-export const defaulLabeltStory = renderLabelStory();
-
-defaulLabeltStory.story = {
-  name: 'With data labels'
 };
 
-withCustomColor.story = {
-  name: 'With custom color'
+renderLabelStory.story = {
+  name: 'With data labels'
 };
 
 export const loadingPlaceholder = () => <LineRechart labelKey={'xValue'} width={'30%'} />;

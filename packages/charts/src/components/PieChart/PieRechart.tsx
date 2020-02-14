@@ -14,12 +14,13 @@ const PieRechart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
     color,
     loading,
     labelKey = 'label',
-    width = '50%',
+    width = '100%',
     height = '500px',
     dataset,
+    dataKeys,
     noLegend = false,
-    dataPointClickHandler,
-    legendClickHandler,
+    onDataPointClickHandler,
+    onLegendClickHandler,
     chartConfig = {
       yAxisVisible: true,
       xAxisVisible: true,
@@ -43,13 +44,14 @@ const PieRechart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const dataKeys = useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+  const currentDataKeys =
+    dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
 
   const onItemLegendClick = useCallback(
     (e) => {
-      if (legendClickHandler) {
-        legendClickHandler({
-          dataKey: dataKeys[0],
+      if (onLegendClickHandler) {
+        onLegendClickHandler({
+          dataKey: currentDataKeys[0],
           value: e.value,
           chartType: e.type,
           color: e.color,
@@ -57,21 +59,21 @@ const PieRechart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [dataset]
+    [onLegendClickHandler]
   );
 
   const onDataPointClick = useCallback(
     (e) => {
-      if (e && dataPointClickHandler && e.value) {
-        dataPointClickHandler({
+      if (e && onDataPointClickHandler && e.value) {
+        onDataPointClickHandler({
           value: e.value,
-          dataKey: dataKeys[0],
+          dataKey: currentDataKeys[0],
           xValue: e.name,
           payload: e.payload
         });
       }
     },
-    [dataset]
+    [onDataPointClickHandler]
   );
 
   return (
@@ -87,15 +89,15 @@ const PieRechart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
         <Pie
           innerRadius={chartConfig.innerRadius}
           paddingAngle={chartConfig.paddingAngle}
-          dataKey={dataKeys[0]}
+          dataKey={currentDataKeys[0]}
           data={dataset}
-          label={chartConfig.dataLabel ? chartConfig.dataLabel : false}
+          label={chartConfig.dataLabel ?? false}
           onClick={onDataPointClick}
         >
-          {chartConfig.innerRadius && <Label position={'center'}>{dataKeys[0].toUpperCase()}</Label>}
+          {chartConfig.innerRadius && <Label position={'center'}>{currentDataKeys[0].toUpperCase()}</Label>}
           {dataset &&
             dataset.map((data, index) => (
-              <Cell key={index} fill={color ? color : `var(--sapUiChartAccent${(index % 12) + 1})`} />
+              <Cell key={index} fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`} />
             ))}
         </Pie>
         <Tooltip />
