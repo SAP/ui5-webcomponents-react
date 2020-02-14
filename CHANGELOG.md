@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.8.3...v0.8.4) (2020-02-13)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fire onRowSelected when header select all chechbox changes ([5910581](https://github.com/SAP/ui5-webcomponents-react/commit/59105811bc00c3eed4d55df147f872c4aff312c9))
+* **AnalyticalTable:** fixed alternateRowColor sort bug ([#316](https://github.com/SAP/ui5-webcomponents-react/issues/316)) ([ee37009](https://github.com/SAP/ui5-webcomponents-react/commit/ee3700957056ba188cf5c62699db485a70bcc98c))
+* **Avatar:** Adjust icon size in sync with Avatar Size  ([#317](https://github.com/SAP/ui5-webcomponents-react/issues/317)) ([a3af613](https://github.com/SAP/ui5-webcomponents-react/commit/a3af613c6431eec039a74ae20bb28ddd1e94f076))
+* **base:** Mark polyfills as sideEffects ([83963d1](https://github.com/SAP/ui5-webcomponents-react/commit/83963d1dd3a19324a0a83aece126adfa981b958d))
+* **withWebComponent:** Add handler of events those are not specified in metadata of ui5-webcomponents ([#315](https://github.com/SAP/ui5-webcomponents-react/issues/315)) ([978b126](https://github.com/SAP/ui5-webcomponents-react/commit/978b126e9c01213acaa3f0509deb2457e3b35122))
+
+
+
+
+
 ## [0.8.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.8.2...v0.8.3) (2020-02-11)
 
 
