@@ -1,4 +1,5 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 const styles = {
   // outer container, controlling height and width
@@ -6,11 +7,7 @@ const styles = {
     width: '100%',
     display: 'block',
     position: 'relative',
-    height: CssSizeVariables.sapWcrBarHeight,
-    lineHeight: CssSizeVariables.sapWcrBarHeight,
-    '& ui5-button': {
-      display: 'flex'
-    }
+    height: CssSizeVariables.sapWcrBarHeight
   },
   // left container
   left: {
@@ -33,9 +30,9 @@ const styles = {
   },
   // inner container around left, center, and right
   inner: {
-    display: 'inline-block',
+    display: 'inline-flex',
     padding: '0 0.5rem 0 0.5rem',
-    height: CssSizeVariables.sapWcrBarHeight
+    alignItems: 'center'
   },
   // right container
   right: {
@@ -47,6 +44,42 @@ const styles = {
     textAlign: 'right',
     display: 'flex',
     alignItems: 'center'
+  },
+  auto: {
+    height: CssSizeVariables.sapWcrBarHeight,
+    background: ThemingParameters.sapUiPageHeaderBackground,
+    boxShadow: ThemingParameters.sapUiShadowHeader,
+    '& $inner': {
+      height: CssSizeVariables.sapWcrBarHeight
+    }
+  },
+  subHeader: {
+    height: CssSizeVariables.sapWcrSubHeaderBarHeight,
+    background: ThemingParameters.sapUiPageHeaderBackground,
+    boxShadow: ThemingParameters.sapUiShadowHeader,
+    paddingBottom: ' 0.25rem',
+    '& $inner': {
+      height: CssSizeVariables.sapWcrSubHeaderBarHeight
+    }
+  },
+  footer: {
+    height: CssSizeVariables.sapWcrBarHeight,
+    background: ThemingParameters.sapUiPageFooterBackground,
+    borderTop: `0.0625rem solid ${ThemingParameters.sapUiPageFooterBorderColor}`,
+    '& $inner': {
+      height: CssSizeVariables.sapWcrBarHeight
+    }
+  },
+  floatingFooter: {
+    height: CssSizeVariables.sapWcrBarHeight,
+    background: ThemingParameters.sapUiPageFooterBackground,
+    // borderRadius: ThemingParameters.sapUiElementBorderCornerRadius,
+    boxShadow: ThemingParameters.sapUiShadowLevel1,
+    border: 'none',
+    opacity: 1,
+    '& $inner': {
+      height: CssSizeVariables.sapWcrBarHeight
+    }
   }
 };
 

@@ -3,12 +3,14 @@ import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePa
 import React, { FC, forwardRef, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { BarDesign } from '../../lib/BarDesign';
 import styles from './Bar.jss';
 
 export interface BarPropTypes extends CommonProps {
   renderContentLeft?: () => JSX.Element;
   renderContentMiddle?: () => JSX.Element;
   renderContentRight?: () => JSX.Element;
+  design?: BarDesign;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Bar' });
@@ -17,11 +19,26 @@ const useStyles = createUseStyles(styles, { name: 'Bar' });
  * <code>import { Bar } from '@ui5/webcomponents-react/lib/Bar';</code>
  */
 const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { renderContentLeft, renderContentMiddle, renderContentRight, className, style, tooltip, slot } = props;
+  const { renderContentLeft, renderContentMiddle, renderContentRight, className, style, tooltip, slot, design } = props;
 
   const classes = useStyles();
 
   const cssClasses = StyleClassHelper.of(classes.bar);
+  switch (design) {
+    case BarDesign.Footer:
+      cssClasses.put(classes.footer);
+      break;
+    case BarDesign.SubHeader:
+      cssClasses.put(classes.subHeader);
+      break;
+    case BarDesign.FloatingFooter:
+      cssClasses.put(classes.floatingFooter);
+      break;
+    case BarDesign.Header:
+    case BarDesign.Auto:
+    default:
+      cssClasses.put(classes.auto);
+  }
   if (className) {
     cssClasses.put(className);
   }
@@ -53,6 +70,7 @@ const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivE
 
 Bar.displayName = 'Bar';
 Bar.defaultProps = {
+  design: BarDesign.Auto,
   renderContentLeft: () => null,
   renderContentMiddle: () => null,
   renderContentRight: () => null
