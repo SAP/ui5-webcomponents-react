@@ -2,6 +2,7 @@ import { select, withKnobs } from '@storybook/addon-knobs';
 import { makeDecorator } from '@storybook/addons';
 import { addDecorator, addParameters } from '@storybook/react';
 import '@ui5/webcomponents-base/dist/features/browsersupport/IE11';
+import '@ui5/webcomponents-react-base/polyfill/IE11';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { Themes } from '@ui5/webcomponents-react/lib/Themes';
