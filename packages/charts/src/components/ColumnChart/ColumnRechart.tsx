@@ -102,13 +102,9 @@ const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
       placeholder={ColumnChartPlaceholder}
       width={width}
       height={height}
+      ref={chartRef}
     >
-      <ColumnChartLib
-        ref={chartRef}
-        data={dataset}
-        style={{ fontSize: parameters.sapUiFontSmallSize }}
-        barGap={chartConfig.barGap}
-      >
+      <ColumnChartLib data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }} barGap={chartConfig.barGap}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}

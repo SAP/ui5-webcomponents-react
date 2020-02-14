@@ -2,22 +2,14 @@ import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
 import { useInitialize } from '../../lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import {
-  Radar,
-  RadarChart as RadarChartLib,
-  PolarGrid,
-  Legend,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Tooltip
-} from 'recharts';
+import { Label, RadialBarChart as RadialBarChartLib, RadialBar, Tooltip, Legend, Cell } from 'recharts';
 import { useTheme } from 'react-jss';
-import { PieChartPlaceholder } from '../PieChart/Placeholder';
+import { PieChartPlaceholder } from '../../';
 import { ChartContainer } from '../../internal/ChartContainer';
 
-export interface RadarChartProps extends RechartBaseProps {}
+export interface RadialChartProps extends RechartBaseProps {}
 
-const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
+const RadialRechart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
@@ -43,10 +35,10 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
       strokeOpacity: 1,
       dataLabel: false,
       paddingAngle: 0,
-      innerRadius: undefined,
-      polarGridType: 'circle'
+      innerRadius: '20%',
+      barSize: 100
     }
-  } = props as RadarChartProps;
+  } = props as RadialChartProps;
 
   useInitialize();
 
@@ -56,29 +48,13 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
   const currentDataKeys =
     dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
 
-  const onItemLegendClick = useCallback(
-    (e) => {
-      if (onLegendClickHandler) {
-        onLegendClickHandler({
-          dataKey: currentDataKeys[0],
-          value: e.value,
-          chartType: e.type,
-          color: e.color,
-          payload: e.payload
-        });
-      }
-    },
-    [onLegendClickHandler]
-  );
-
   const onDataPointClick = useCallback(
     (e) => {
       if (e && onDataPointClickHandler && e.value) {
         onDataPointClickHandler({
           value: e.value,
-          dataKey: e.dataKey,
-          name: e.payload.label,
-          xIndex: e.index,
+          dataKey: currentDataKeys[0],
+          name: e.name,
           payload: e.payload
         });
       }
@@ -95,26 +71,26 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
       width={width}
       height={height}
     >
-      <RadarChartLib data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }}>
-        <PolarGrid gridType={chartConfig.polarGridType} />
-        <PolarAngleAxis dataKey={labelKey} />
-        <PolarRadiusAxis />
+      <RadialBarChartLib
+        innerRadius={chartConfig.innerRadius}
+        barSize={chartConfig.barSize}
+        data={dataset}
+        style={{ fontSize: parameters.sapUiFontSmallSize }}
+      >
         {currentDataKeys.map((key, index) => (
-          <Radar
-            key={index}
-            activeDot={{ onClick: onDataPointClick }}
-            name={key}
+          <RadialBar
+            background={{ fillOpacity: 0.05, fill: `var(--sapUiChartAccent${(index % 12) + 1})` }}
             dataKey={key}
-            stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
-            fillOpacity={0.5}
+            label={chartConfig.dataLabel ? { position: 'insideEnd' } : false}
+            onClick={onDataPointClick}
           />
         ))}
+
         <Tooltip />
-        {!noLegend && <Legend onClick={onItemLegendClick} />}
-      </RadarChartLib>
+      </RadialBarChartLib>
     </ChartContainer>
   );
 });
 
-export { RadarRechart };
+export { RadialRechart };

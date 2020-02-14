@@ -2,25 +2,25 @@ export const label = 'xValue';
 
 export const dataset = [
   {
-    xValue: 'January',
+    name: 'January',
     users: 100,
     sessions: 300,
     volume: 756
   },
   {
-    xValue: 'February',
+    name: 'February',
     users: 230,
     sessions: 330,
     volume: 880
   },
   {
-    xValue: 'March',
+    name: 'March',
     users: 240,
     sessions: 404,
     volume: 700
   },
   {
-    xValue: 'April',
+    name: 'April',
     users: 280,
     sessions: 80,
     volume: 604

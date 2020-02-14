@@ -119,6 +119,7 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
 
   return (
     <ChartContainer
+      ref={chartRef}
       width={width}
       height={height}
       loading={loading}

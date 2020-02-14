@@ -4,73 +4,73 @@ import { action } from '@storybook/addon-actions';
 
 const dataset = [
   {
-    xValue: 'January',
+    name: 'January',
     users: 100,
     sessions: 300,
     volume: 756
   },
   {
-    xValue: 'February',
+    name: 'February',
     users: 230,
     sessions: 330,
     volume: 880
   },
   {
-    xValue: 'March',
+    name: 'March',
     users: 240,
     sessions: 404,
     volume: 700
   },
   {
-    xValue: 'April',
+    name: 'April',
     users: 280,
     sessions: 80,
     volume: 604
   },
   {
-    xValue: 'May',
+    name: 'May',
     users: 100,
     sessions: 300,
     volume: 756
   },
   {
-    xValue: 'June',
+    name: 'June',
     users: 230,
     sessions: 330,
     volume: 880
   },
   {
-    xValue: 'July',
+    name: 'July',
     users: 20,
     sessions: 470,
     volume: 450
   },
   {
-    xValue: 'August',
+    name: 'August',
     users: 220,
     sessions: 180,
     volume: 104
   },
   {
-    xValue: 'September',
+    name: 'September',
     users: 200,
     sessions: 360,
     volume: 879
   },
   {
-    xValue: 'October',
+    name: 'October',
     users: 250,
     sessions: 500,
     volume: 200
   },
   {
-    xValue: 'November',
+    name: 'November',
     users: 240,
     sessions: 404,
     volume: 700
   },
   {
-    xValue: 'December',
+    name: 'December',
     users: 280,
     sessions: 80,
     volume: 604
@@ -79,19 +79,19 @@ const dataset = [
 
 const singleData = [
   {
-    xValue: 'January',
+    name: 'January',
     data: 100
   },
   {
-    xValue: 'February',
+    name: 'February',
     data: 300
   },
   {
-    xValue: 'March',
+    name: 'March',
     data: 530
   },
   {
-    xValue: 'April',
+    name: 'April',
     data: 200
   }
 ];

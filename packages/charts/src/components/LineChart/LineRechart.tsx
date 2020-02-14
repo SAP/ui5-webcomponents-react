@@ -91,13 +91,9 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       placeholder={LineChartPlaceholder}
       width={width}
       height={height}
+      ref={chartRef}
     >
-      <LineChartLib
-        ref={chartRef}
-        data={dataset}
-        onClick={onDataPointClick}
-        style={{ fontSize: parameters.sapUiFontSmallSize }}
-      >
+      <LineChartLib data={dataset} onClick={onDataPointClick} style={{ fontSize: parameters.sapUiFontSmallSize }}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}

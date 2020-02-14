@@ -68,7 +68,7 @@ const PieRechart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
         onDataPointClickHandler({
           value: e.value,
           dataKey: currentDataKeys[0],
-          xValue: e.name,
+          name: e.name,
           payload: e.payload
         });
       }
@@ -79,7 +79,7 @@ const PieRechart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   return (
     <ChartContainer
       dataset={dataset}
-      ref={ref}
+      ref={chartRef}
       loading={loading}
       placeholder={PieChartPlaceholder}
       width={width}

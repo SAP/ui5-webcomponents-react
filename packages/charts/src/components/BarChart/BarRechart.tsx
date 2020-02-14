@@ -94,13 +94,9 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       placeholder={ColumnChartPlaceholder}
       width={width}
       height={height}
+      ref={chartRef}
     >
-      <BarChartLib
-        ref={chartRef}
-        data={dataset}
-        style={{ fontSize: parameters.sapUiFontSmallSize }}
-        barGap={chartConfig.barGap}
-      >
+      <BarChartLib data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }} barGap={chartConfig.barGap}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}

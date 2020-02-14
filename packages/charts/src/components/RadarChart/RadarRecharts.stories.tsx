@@ -67,19 +67,19 @@ const dataset = [
 
 const singleData = [
   {
-    xValue: 'January',
+    name: 'January',
     data: 100
   },
   {
-    xValue: 'February',
+    name: 'February',
     data: 300
   },
   {
-    xValue: 'March',
+    name: 'March',
     data: 530
   },
   {
-    xValue: 'April',
+    name: 'April',
     data: 200
   }
 ];
