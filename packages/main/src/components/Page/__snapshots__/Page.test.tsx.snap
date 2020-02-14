@@ -27,11 +27,15 @@ exports[`Page Basic Page 1`] = `
           class="Bar--center-"
           data-bar-part="Center"
         >
-          <ui5-title
-            level="H5"
+          <div
+            class="Bar--inner-"
           >
-            Page Demo
-          </ui5-title>
+            <ui5-title
+              level="H5"
+            >
+              Page Demo
+            </ui5-title>
+          </div>
         </div>
         <div
           class="Bar--right-"
@@ -73,11 +77,15 @@ exports[`Page Basic Page w/o back button 1`] = `
           class="Bar--center-"
           data-bar-part="Center"
         >
-          <ui5-title
-            level="H5"
+          <div
+            class="Bar--inner-"
           >
-            Page Demo
-          </ui5-title>
+            <ui5-title
+              level="H5"
+            >
+              Page Demo
+            </ui5-title>
+          </div>
         </div>
         <div
           class="Bar--right-"
