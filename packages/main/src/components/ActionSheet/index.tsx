@@ -1,3 +1,4 @@
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
@@ -15,21 +16,33 @@ import styles from './ActionSheet.jss';
 export interface ActionSheetPropTypes extends CommonProps {
   openBy: ReactNode;
   placement?: PlacementType;
-  children?: ReactElement<ButtonPropTypes> | Array<ReactElement<ButtonPropTypes>>;
+  children?: ReactElement<ButtonPropTypes> | ReactElement<ButtonPropTypes>[];
 }
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
+
+addCustomCSS(
+  'ui5-button',
+  `
+  :host([data-is-action-sheet-button]) .ui5-button-root {
+    justify-content: flex-start;
+  }
+  `
+);
 
 /**
  * <code>import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';</code>
  */
 const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
   (props: ActionSheetPropTypes, ref: RefObject<Ui5PopoverDomRef>) => {
-    const { children, placement, openBy, style, slot } = props;
+    const { children, placement, openBy, style, slot, className } = props;
 
     const classes = useStyles();
 
     const actionSheetClasses = StyleClassHelper.of(classes.actionSheet);
+    if (className) {
+      actionSheetClasses.put(className);
+    }
     if (Device.system.tablet) {
       actionSheetClasses.put(classes.tablet);
     } else if (Device.system.phone) {
@@ -38,25 +51,20 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
 
     const popoverRef: RefObject<Ui5PopoverDomRef> = useConsolidatedRef(ref);
 
-    const renderActionSheetButton = (element) => {
-      if (element && element.props) {
-        return (
-          <div key={element.key} className={classes.actionButtonContainer}>
-            {cloneElement(element, {
-              design: ButtonDesign.Transparent,
-              onClick: onActionButtonClicked(element.props.onClick)
-            })}
-          </div>
-        );
-      }
-      return element;
-    };
-
-    const onActionButtonClicked = (handler) => () => {
+    const onActionButtonClicked = (handler) => (e) => {
       popoverRef.current.close();
       if (typeof handler === 'function') {
-        handler();
+        handler(e);
       }
+    };
+
+    const renderActionSheetButton = (element, index) => {
+      return cloneElement(element, {
+        key: index,
+        design: ButtonDesign.Transparent,
+        onClick: onActionButtonClicked(element.props.onClick),
+        'data-is-action-sheet-button': ''
+      });
     };
 
     const passThroughProps = usePassThroughHtmlProps(props);
@@ -68,9 +76,10 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
         placementType={placement}
         style={style}
         slot={slot}
+        className={actionSheetClasses.valueOf()}
         {...passThroughProps}
       >
-        <ul className={actionSheetClasses.valueOf()}>{Children.map(children, renderActionSheetButton)}</ul>
+        {Children.map(children, renderActionSheetButton)}
       </Popover>
     );
   }

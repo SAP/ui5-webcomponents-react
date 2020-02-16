@@ -19,8 +19,7 @@ module.exports = {
     '!packages/cra-template/**/*',
     '!packages/**/demo/*',
     '!packages/base/src/polyfill/*', // no polyfills
-    '!packages/main/src/components/AnalyticalTable/types/*', // no table enums
-    '!**/npm/**/*'
+    '!packages/main/src/components/AnalyticalTable/types/*' // no table enums
   ],
   setupFiles: [
     '<rootDir>/node_modules/document-register-element/build/document-register-element.node.js',

@@ -14,9 +14,9 @@ export const defaultStory = () => (
     openBy={<Button>Open ActionSheet</Button>}
     placement={select('placement', [PlacementType.Top, PlacementType.Bottom], PlacementType.Top)}
   >
-    <Button key={1}>Accept</Button>
-    <Button key={2}>Reject</Button>
-    <Button key={3}>This is my super long text!</Button>
+    <Button icon="add">Accept</Button>
+    <Button>Reject</Button>
+    <Button>This is my super long text!</Button>
   </ActionSheet>
 );
 

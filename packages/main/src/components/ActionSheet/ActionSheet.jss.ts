@@ -8,22 +8,13 @@ const styles = {
     padding: '0.1875rem 0.375rem',
     '&$tablet,&$phone': {
       padding: '0.25rem 0.5rem'
+    },
+    '& ui5-button': {
+      display: 'block'
     }
   },
-  tablet: {},
   phone: {},
-  // every actionButton inside the list has this class
-  actionButtonContainer: {
-    width: '100%',
-    '& ui5-button': {
-      width: '100%',
-      justifyContent: 'flex-start',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-      overflow: 'hidden'
-    },
-    display: 'block'
-  }
+  tablet: {}
 };
 
 export default styles;
