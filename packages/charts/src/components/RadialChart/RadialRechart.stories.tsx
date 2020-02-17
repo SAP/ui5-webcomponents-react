@@ -33,8 +33,8 @@ export default {
 export const renderStory = () => {
   return (
     <RadialRechart
-      onLegendClickHandler={action('onDataPointClickHandler')}
-      onDataPointClickHandler={action('onLegendClickHandler')}
+      onDataPointClickHandler={action('onDataPointClickHandler')}
+      onLegendClickHandler={action('onLegendClickHandler')}
       width={'100%'}
       labelKey={'xValue'}
       dataset={dataset}
@@ -49,8 +49,8 @@ renderStory.story = {
 export const customColorStory = () => {
   return (
     <RadialRechart
-      onLegendClickHandler={action('onDataPointClickHandler')}
-      onDataPointClickHandler={action('onLegendClickHandler')}
+      onDataPointClickHandler={action('onDataPointClickHandler')}
+      onLegendClickHandler={action('onLegendClickHandler')}
       color={'lightblue'}
       width={'100%'}
       labelKey={'xValue'}
