@@ -10,13 +10,56 @@ Array [
     />
   </div>,
   <ui5-popover
+    class="ActionSheet--actionSheet- myCustomClass"
     horizontal-align="Center"
     placement-type="Bottom"
     vertical-align="Center"
   >
-    <ul
-      class="ActionSheet--actionSheet-"
+    <ui5-button
+      data-is-action-sheet-button=""
+      design="Transparent"
+      icon="add"
+    >
+      Accept
+    </ui5-button>
+    <ui5-button
+      data-is-action-sheet-button=""
+      design="Transparent"
+    >
+      Reject
+    </ui5-button>
+    <ui5-button
+      data-is-action-sheet-button=""
+      design="Transparent"
+    >
+      This is my super long text!
+    </ui5-button>
+  </ui5-popover>,
+]
+`;
+
+exports[`ActionSheet does not crash with other component 1`] = `
+Array [
+  <div
+    style="display: inline-block;"
+  >
+    <ui5-button
+      design="Default"
     />
+  </div>,
+  <ui5-popover
+    class="ActionSheet--actionSheet-"
+    horizontal-align="Center"
+    placement-type="Bottom"
+    vertical-align="Center"
+  >
+    <ui5-label
+      data-is-action-sheet-button=""
+      design="Transparent"
+      for=""
+    >
+      I should not crash
+    </ui5-label>
   </ui5-popover>,
 ]
 `;
