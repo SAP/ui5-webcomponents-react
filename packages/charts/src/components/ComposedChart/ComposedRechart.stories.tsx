@@ -91,16 +91,6 @@ export const renderComposedChart = () => (
     dataset={dataset}
     onLegendClickHandler={action('onLegendClickHandler')}
     onDataPointClickHandler={action('onDataPointClickHandler')}
-    chartConfig={{
-      yAxisVisible: true,
-      xAxisVisible: true,
-      gridStroke: 'white',
-      legendVisible: true,
-      gridVertical: false,
-      gridHorizontal: true,
-      legendPosition: 'bottom',
-      zoomingTool: true
-    }}
   >
     <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
     <Line dataKey={'users'} color={'orange'} strokeOpacity={0.7} strokeWidth={3.5} />
@@ -133,7 +123,6 @@ export const renderComposedStackedChart = () => (
     chartConfig={{
       yAxisVisible: true,
       xAxisVisible: true,
-      gridStroke: 'white',
       legendVisible: true,
       gridVertical: false,
       gridHorizontal: true,

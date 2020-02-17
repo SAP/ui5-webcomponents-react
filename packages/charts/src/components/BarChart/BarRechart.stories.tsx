@@ -108,15 +108,6 @@ export const defaultStory = () => (
     dataset={dataset}
     width={'97%'}
     height={'95vh'}
-    chartConfig={{
-      gridStroke: 'white',
-      gridVertical: true,
-      fillOpacity: 0.7,
-      strokeOpacity: 1,
-      yAxisVisible: true,
-      zoomingTool: true,
-      dataLabel: true
-    }}
   />
 );
 

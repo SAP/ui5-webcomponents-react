@@ -111,12 +111,6 @@ export const renderStory = () => {
       height={'40vh'}
       noLegend={false}
       loading={true}
-      chartConfig={{
-        strokeWidth: 1.5,
-        xAxisVisible: true,
-        yAxisVisible: true,
-        secondYAxis: { dataKey: 'volume', name: 'USED DATA VOLUME' }
-      }}
     />
   );
 };

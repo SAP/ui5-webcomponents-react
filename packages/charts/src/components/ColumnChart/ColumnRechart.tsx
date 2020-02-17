@@ -15,6 +15,7 @@ import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../internal/ChartContainer';
 import { useInitialize } from '../../lib/initialize';
 import { ColumnChartPlaceholder } from './Placeholder';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export interface ColumnChartProps extends RechartBaseProps {}
 
@@ -31,13 +32,14 @@ const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
     onDataPointClickHandler,
     onLegendClickHandler,
     chartConfig = {
-      yAxisVisible: true,
+      yAxisVisible: false,
       xAxisVisible: true,
+      unit: '',
       legendVisible: true,
-      gridStroke: 'white',
+      gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
-      gridVertical: true,
-      yAxisColor: 'black',
+      gridVertical: false,
+      yAxisColor: ThemingParameters.sapNeutralBorderColor,
       legendPosition: 'bottom',
       barSize: 20,
       barGap: 3,
@@ -47,9 +49,9 @@ const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
       stacked: false,
       dataLabel: false,
       secondYAxis: {
-        dataKey: '',
-        name: '',
-        color: 'black'
+        dataKey: undefined,
+        name: undefined,
+        color: ThemingParameters.sapNeutralBorderColor
       }
     }
   } = props;
@@ -107,14 +109,19 @@ const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
       height={height}
       ref={chartRef}
     >
-      <ColumnChartLib data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }} barGap={chartConfig.barGap}>
+      <ColumnChartLib
+        margin={{ top: 15 }}
+        data={dataset}
+        style={{ fontSize: parameters.sapUiFontSmallSize }}
+        barGap={chartConfig.barGap}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} />}
-        {(chartConfig.yAxisVisible ?? true) && <YAxis yAxisId="left" />}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis unit={chartConfig.unit} dataKey={labelKey} />}
+        <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId={'left'} />
         {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}

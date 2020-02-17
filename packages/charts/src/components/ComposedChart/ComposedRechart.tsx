@@ -6,6 +6,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../internal/ChartContainer';
 import { useInitialize } from '../../lib/initialize';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export interface ComposedChartProps extends RechartBaseProps {
   children: ReactNode;
@@ -14,7 +15,7 @@ export interface ComposedChartProps extends RechartBaseProps {
 
 const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
   const {
-    height,
+    height = '500px',
     width = '100%',
     loading,
     dataset,
@@ -23,22 +24,22 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
     onDataPointClickHandler,
     onLegendClickHandler,
     chartConfig = {
-      yAxisVisible: true,
+      yAxisVisible: false,
       xAxisVisible: true,
       legendVisible: true,
-      gridStroke: 'white',
+      gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
-      gridVertical: true,
+      gridVertical: false,
       yAxisId: '',
-      yAxisColor: 'red',
+      yAxisColor: ThemingParameters.sapNeutralBorderColor,
       legendPosition: 'bottom',
       zoomingTool: false,
       stacked: false,
       dataLabel: false,
       secondYAxis: {
-        name: '',
-        dataKey: '',
-        color: 'black'
+        name: undefined,
+        dataKey: undefined,
+        color: ThemingParameters.sapNeutralBorderColor
       }
     }
   } = props;
@@ -117,7 +118,7 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
     },
     [onDataPointClickHandler]
   );
-
+  console.log(chartConfig);
   return (
     <ChartContainer
       ref={chartRef}
@@ -134,8 +135,8 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
           stroke={chartConfig.gridStroke}
         />
         {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} />}
-        {(chartConfig.yAxisVisible ?? true) && <YAxis yAxisId="left" />}
-        {chartConfig.secondYAxis && (
+        <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId="left" />
+        {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color}

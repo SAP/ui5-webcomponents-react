@@ -95,18 +95,7 @@ export const defaultStory = () => (
     onLegendClickHandler={action('onLegendClickHandler')}
     dataset={dataset}
     width={'97%'}
-    // chartConfig={{
-    //   gridStroke: 'white',
-    //   gridVertical: false,
-    //   fillOpacity: 0.7,
-    //   strokeOpacity: 1,
-    //   barSize: 20,
-    //   xAxisVisible: true,
-    //   yAxisVisible: true,
-    //   zoomingTool: true,
-    //   dataLabel: true,
-    //   secondYAxis: { dataKey: 'users' }
-    // }}
+    labelKey={'name'}
   />
 );
 
@@ -117,7 +106,6 @@ defaultStory.story = {
 export const withCustomColor = () => (
   <ColumnRechart
     onDataPointClickHandler={action('onDataPointClickHandler')}
-    labelKey={'xValue'}
     dataset={singleData}
     color={'red'}
     width={'95%'}

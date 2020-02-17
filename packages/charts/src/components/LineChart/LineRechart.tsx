@@ -6,6 +6,7 @@ import { CartesianGrid, Line, LineChart as LineChartLib, XAxis, YAxis, Tooltip, 
 import { useTheme } from 'react-jss';
 import { LineChartPlaceholder } from './Placeholder';
 import { ChartContainer } from '../../internal/ChartContainer';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export interface LineChartProps extends RechartBaseProps {}
 
@@ -15,29 +16,29 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
     loading,
     labelKey = 'name',
     width = '100%',
-    height = '300px',
+    height = '500px',
     dataset,
     dataKeys,
     noLegend = false,
     onDataPointClickHandler,
     onLegendClickHandler,
     chartConfig = {
-      yAxisVisible: true,
+      yAxisVisible: false,
       xAxisVisible: true,
       legendVisible: true,
-      gridStroke: 'white',
+      gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
-      gridVertical: true,
-      yAxisColor: 'black',
+      gridVertical: false,
+      yAxisColor: ThemingParameters.sapNeutralBorderColor,
       legendPosition: 'bottom',
       strokeWidth: 1,
       zoomingTool: false,
       strokeOpacity: 1,
       dataLabel: false,
       secondYAxis: {
-        dataKey: '',
-        name: '',
-        color: 'black'
+        dataKey: undefined,
+        name: undefined,
+        color: ThemingParameters.sapNeutralBorderColor
       }
     }
   } = props;
@@ -100,8 +101,8 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
           stroke={chartConfig.gridStroke}
         />
         {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} />}
-        {(chartConfig.yAxisVisible ?? true) && <YAxis yAxisId="left" />}
-        {chartConfig.secondYAxis && (
+        <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId="left" />
+        {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color ?? `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`}

@@ -6,6 +6,7 @@ import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../internal/ChartContainer';
 import { useInitialize } from '../../lib/initialize';
 import { BarChartPlaceholder } from './Placeholder';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export interface BarChartProps extends RechartBaseProps {}
 
@@ -22,13 +23,14 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
     onDataPointClickHandler,
     onLegendClickHandler,
     chartConfig = {
-      yAxisVisible: true,
+      yAxisVisible: false,
       xAxisVisible: true,
+      unit: '',
       legendVisible: true,
-      gridStroke: 'white',
+      gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
-      gridVertical: true,
-      yAxisColor: 'black',
+      gridVertical: false,
+      yAxisColor: ThemingParameters.sapNeutralBorderColor,
       legendPosition: 'bottom',
       barSize: 20,
       barGap: 3,
@@ -36,15 +38,9 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       strokeOpacity: 1,
       fillOpacity: 1,
       stacked: false,
-      dataLabel: false,
-      secondYAxis: {
-        dataKey: '',
-        name: '',
-        color: 'black'
-      }
+      dataLabel: false
     }
   } = props;
-
   useInitialize();
 
   const { parameters }: any = useTheme();
@@ -83,7 +79,6 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
     },
     [onDataPointClickHandler]
   );
-
   return (
     <ChartContainer
       dataset={dataset}
@@ -100,12 +95,12 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
         barGap={chartConfig.barGap}
       >
         <CartesianGrid
-          vertical={chartConfig.gridVertical}
+          vertical={chartConfig.gridVertical ?? false}
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis type="number" />}
-        {(chartConfig.yAxisVisible ?? true) && <YAxis type="category" dataKey={labelKey} />}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis unit={chartConfig.unit} type="number" />}
+        <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} type="category" dataKey={labelKey} />
         {currentDataKeys.map((key, index) => (
           <Bar
             stackId={chartConfig.stacked ? 'A' : undefined}
