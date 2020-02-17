@@ -6,7 +6,6 @@ import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../internal/ChartContainer';
 import { useInitialize } from '../../lib/initialize';
 import { BarChartPlaceholder } from './Placeholder';
-import { array } from '@storybook/addon-knobs';
 
 export interface BarChartProps extends RechartBaseProps {}
 

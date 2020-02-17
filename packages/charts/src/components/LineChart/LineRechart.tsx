@@ -40,7 +40,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         color: 'black'
       }
     }
-  } = props as LineChartProps;
+  } = props;
 
   useInitialize();
 

@@ -4,7 +4,7 @@ import React from 'react';
 
 export interface PieChartProps extends RechartBaseProps {}
 
-export function DonutRechart(props: PieChartProps) {
+export const DonutRechart = (props: PieChartProps) => {
   const {
     chartConfig = {
       legendVisible: true,
@@ -13,7 +13,7 @@ export function DonutRechart(props: PieChartProps) {
       paddingAngle: 0,
       innerRadius: undefined
     }
-  } = props as PieChartProps;
+  } = props;
 
   return (
     <PieRechart
@@ -27,4 +27,4 @@ export function DonutRechart(props: PieChartProps) {
       }}
     />
   );
-}
+};

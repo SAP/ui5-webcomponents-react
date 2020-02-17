@@ -37,7 +37,7 @@ const PieRechart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
       paddingAngle: 0,
       innerRadius: undefined
     }
-  } = props as PieChartProps;
+  } = props;
 
   useInitialize();
 

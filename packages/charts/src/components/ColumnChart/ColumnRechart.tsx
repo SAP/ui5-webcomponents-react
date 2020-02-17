@@ -132,7 +132,7 @@ const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
             fillOpacity={chartConfig.fillOpacity}
             label={
               chartConfig.dataLabel && {
-                position: chartConfig.stacked ? ' inside' : 'top',
+                position: chartConfig.stacked ? 'inside' : 'top',
                 fontFamily: parameters.sapUiFontFamily
               }
             }

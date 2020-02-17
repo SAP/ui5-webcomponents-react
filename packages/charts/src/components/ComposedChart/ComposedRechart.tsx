@@ -41,7 +41,7 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
         color: 'black'
       }
     }
-  } = props as ComposedChartProps;
+  } = props;
 
   useInitialize();
 

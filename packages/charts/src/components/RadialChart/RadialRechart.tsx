@@ -6,7 +6,6 @@ import { RadialBarChart as RadialBarChartLib, RadialBar, Tooltip, Legend } from 
 import { useTheme } from 'react-jss';
 import { PieChartPlaceholder } from '../../';
 import { ChartContainer } from '../../internal/ChartContainer';
-import { background } from '@storybook/theming';
 
 export interface RadialChartProps extends RechartBaseProps {}
 
@@ -38,7 +37,7 @@ const RadialRechart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
       innerRadius: '20%',
       barSize: 100
     }
-  } = props as RadialChartProps;
+  } = props;
 
   useInitialize();
 
@@ -79,6 +78,7 @@ const RadialRechart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
       >
         {currentDataKeys.map((key, index) => (
           <RadialBar
+            key={index}
             background={{ fillOpacity: 0.05, fill: `var(--sapUiChartAccent${(index % 12) + 1})` }}
             dataKey={key}
             fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
