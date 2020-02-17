@@ -89,12 +89,12 @@ const PieRechart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
         <Pie
           innerRadius={chartConfig.innerRadius}
           paddingAngle={chartConfig.paddingAngle}
-          dataKey={currentDataKeys[0]}
+          dataKey={currentDataKeys[0] ?? ''}
           data={dataset}
           label={chartConfig.dataLabel ?? false}
           onClick={onDataPointClick}
         >
-          {chartConfig.innerRadius && <Label position={'center'}>{currentDataKeys[0].toUpperCase()}</Label>}
+          {chartConfig.innerRadius && <Label position={'center'}>{currentDataKeys[0]}</Label>}
           {dataset &&
             dataset.map((data, index) => (
               <Cell key={index} fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`} />

@@ -22,7 +22,7 @@ const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
-    labelKey = 'label',
+    labelKey = 'name',
     width = '100%',
     height = '300px',
     dataset,
@@ -39,7 +39,7 @@ const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
       gridVertical: true,
       yAxisColor: 'black',
       legendPosition: 'bottom',
-      barSize: 25,
+      barSize: 20,
       barGap: 3,
       zoomingTool: false,
       strokeOpacity: 1,
@@ -83,11 +83,14 @@ const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
   );
 
   const onDataPointClick = useCallback(
-    (e) => {
+    (e, i) => {
       if (e && onDataPointClickHandler) {
         onDataPointClickHandler({
-          dataKey: Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
-          value: e.value,
+          dataKey: Object.keys(e).filter((key) =>
+            e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value && key !== 'value'
+          )[0],
+          value: e.value.length ? e.value[1] - e.value[0] : e.value,
+          xIndex: i,
           payload: e.payload
         });
       }
@@ -127,7 +130,12 @@ const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
             stackId={chartConfig.stacked ? 'A' : undefined}
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
-            label={chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily }}
+            label={
+              chartConfig.dataLabel && {
+                position: chartConfig.stacked ? ' inside' : 'top',
+                fontFamily: parameters.sapUiFontFamily
+              }
+            }
             key={key}
             name={key}
             dataKey={key}

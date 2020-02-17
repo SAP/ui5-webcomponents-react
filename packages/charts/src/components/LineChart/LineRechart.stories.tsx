@@ -106,7 +106,6 @@ export const renderStory = () => {
     <LineRechart
       onDataPointClickHandler={action('onDataPointClickHandler')}
       onLegendClickHandler={action('onLegendPointClickHandler')}
-      labelKey={'xValue'}
       dataset={dataset}
       width={'95%'}
       height={'40vh'}
@@ -129,7 +128,7 @@ renderStory.story = {
 export const renderStoryWithCustomColor = () => (
   <LineRechart
     onDataPointClickHandler={action('onDataPointClickHandler')}
-    labelKey={'xValue'}
+    labelKey={'name'}
     dataset={singleData}
     color={'red'}
     width={'95%'}
@@ -151,7 +150,7 @@ export const renderLabelStory = () => {
     <LineRechart
       onDataPointClickHandler={action('onDataPointClickHandler')}
       onLegendClickHandler={action('onLegendClickHandler')}
-      labelKey={'xValue'}
+      labelKey={'name'}
       dataset={dataset}
       width={'95%'}
       height={'40vh'}
@@ -170,7 +169,7 @@ renderLabelStory.story = {
   name: 'With data labels'
 };
 
-export const loadingPlaceholder = () => <LineRechart labelKey={'xValue'} width={'30%'} />;
+export const loadingPlaceholder = () => <LineRechart labelKey={'name'} width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'

@@ -2,10 +2,11 @@ import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
 import { useInitialize } from '../../lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
-import { Label, RadialBarChart as RadialBarChartLib, RadialBar, Tooltip, Legend, Cell } from 'recharts';
+import { RadialBarChart as RadialBarChartLib, RadialBar, Tooltip, Legend } from 'recharts';
 import { useTheme } from 'react-jss';
 import { PieChartPlaceholder } from '../../';
 import { ChartContainer } from '../../internal/ChartContainer';
+import { background } from '@storybook/theming';
 
 export interface RadialChartProps extends RechartBaseProps {}
 
@@ -20,7 +21,6 @@ const RadialRechart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
     dataKeys,
     noLegend = false,
     onDataPointClickHandler,
-    onLegendClickHandler,
     chartConfig = {
       yAxisVisible: true,
       xAxisVisible: true,
@@ -33,7 +33,7 @@ const RadialRechart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
       strokeWidth: 1,
       zoomingTool: false,
       strokeOpacity: 1,
-      dataLabel: false,
+      dataLabel: true,
       paddingAngle: 0,
       innerRadius: '20%',
       barSize: 100
@@ -53,7 +53,7 @@ const RadialRechart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
       if (e && onDataPointClickHandler && e.value) {
         onDataPointClickHandler({
           value: e.value,
-          dataKey: currentDataKeys[0],
+          dataKey: Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
           name: e.name,
           payload: e.payload
         });
@@ -86,7 +86,7 @@ const RadialRechart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
             onClick={onDataPointClick}
           />
         ))}
-
+        {noLegend && <Legend />}
         <Tooltip />
       </RadialBarChartLib>
     </ChartContainer>

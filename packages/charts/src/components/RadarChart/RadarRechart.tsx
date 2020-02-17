@@ -12,7 +12,7 @@ import {
   Tooltip
 } from 'recharts';
 import { useTheme } from 'react-jss';
-import { PieChartPlaceholder } from '../PieChart/Placeholder';
+import { PieChartPlaceholder } from '../..';
 import { ChartContainer } from '../../internal/ChartContainer';
 
 export interface RadarChartProps extends RechartBaseProps {}
@@ -95,7 +95,7 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
       width={width}
       height={height}
     >
-      <RadarChartLib data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }}>
+      <RadarChartLib data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }} outerRadius={width}>
         <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis dataKey={labelKey} />
         <PolarRadiusAxis />

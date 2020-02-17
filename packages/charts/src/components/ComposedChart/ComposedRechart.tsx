@@ -1,5 +1,5 @@
-import React, { ComponentType, forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
-import { Bar, ComposedChart, Legend, Line, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
+import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback, useMemo } from 'react';
+import { ComposedChart, Legend, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
 import { LineChartPlaceholder } from '../..';
 import { useTheme } from 'react-jss';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
@@ -18,7 +18,7 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
     width = '100%',
     loading,
     dataset,
-    labelKey,
+    labelKey = 'name',
     children,
     onDataPointClickHandler,
     onLegendClickHandler,
@@ -68,7 +68,7 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
                     chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
                       ? 'right'
                       : 'left',
-                  activeDot: { onClick: (e) => onDataPointClick(e, true) }
+                  activeDot: { onClick: (e, i) => onDataPointClick(e, i, true) }
                 }
               : {
                   // @ts-ignore
@@ -80,7 +80,7 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
                     chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
                       ? 'right'
                       : 'left',
-                  onClick: (e) => onDataPointClick(e, false)
+                  onClick: (e, i) => onDataPointClick(e, i, false)
                 }
           );
         }
@@ -89,10 +89,11 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
   );
 
   const onItemLegendClick = useCallback(
-    (e) => {
+    (e, i) => {
       if (onLegendClickHandler) {
         onLegendClickHandler({
           dataKey: e.dataKey,
+          index: i,
           value: e.value,
           chartType: e.type,
           color: e.color,
@@ -104,12 +105,12 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
   );
 
   const onDataPointClick = useCallback(
-    (e, line) => {
+    (e, i, line) => {
       if (e && onDataPointClickHandler) {
         onDataPointClickHandler({
           value: e.value,
+          xIndex: i,
           dataKey: line ? e.dataKey : Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
-          xIndex: e.index,
           payload: e.payload
         });
       }

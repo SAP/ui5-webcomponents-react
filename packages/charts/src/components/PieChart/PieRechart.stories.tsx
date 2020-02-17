@@ -75,21 +75,6 @@ renderStory.story = {
   name: 'Default'
 };
 
-export const renderDonutStory = () => {
-  return (
-    <PieRechart
-      width={'50%'}
-      dataset={dataset}
-      labelKey={'name'}
-      chartConfig={{ dataLabel: true, paddingAngle: 3, innerRadius: '50%' }}
-    />
-  );
-};
-
-renderDonutStory.story = {
-  name: 'Donut'
-};
-
 export const renderCustomColorStory = () => {
   return (
     <PieRechart

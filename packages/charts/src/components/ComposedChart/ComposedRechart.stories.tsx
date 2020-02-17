@@ -89,9 +89,8 @@ export const renderComposedChart = () => (
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
-    labelKey={'xValue'}
-    onLegendClickHandler={action('onDataPointClickHandler')}
-    onDataPointClickHandler={action('onLegendClickHandler')}
+    onLegendClickHandler={action('onLegendClickHandler')}
+    onDataPointClickHandler={action('onDataPointClickHandler')}
     chartConfig={{
       yAxisVisible: true,
       xAxisVisible: true,
@@ -114,7 +113,7 @@ renderComposedChart.story = {
 };
 
 export const renderComposedChartPlaceholder = () => (
-  <ComposedRechart width={'30%'} height={'40vh'} labelKey={'xValue'}>
+  <ComposedRechart width={'30%'} height={'40vh'} labelKey={'name'}>
     <Line dataKey={'volume'} stroke={'lightblue'} strokeWidth={1} />)
   </ComposedRechart>
 );
@@ -128,7 +127,7 @@ export const renderComposedStackedChart = () => (
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
-    labelKey={'xValue'}
+    labelKey={'name'}
     onLegendClickHandler={action('onLegendClickHandler')}
     onDataPointClickHandler={action('onDataPointClickHandler')}
     chartConfig={{
@@ -163,7 +162,6 @@ export const renderLabelComposedChart = () => (
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
-    labelKey={'xValue'}
     onLegendClickHandler={action('onLegendClickHandler')}
     onDataPointClickHandler={action('onDataPointClickHandler')}
     chartConfig={{

@@ -110,8 +110,8 @@ export const withCustomColorStory = () => {
       onDataPointClickHandler={action('onDataPointClickHandler')}
       onLegendClickHandler={action('onLegendClickHandler')}
       color={'lightblue'}
-      labelKey={'xValue'}
       dataset={singleData}
+      labelKey={'name'}
       width={'50%'}
     />
   );

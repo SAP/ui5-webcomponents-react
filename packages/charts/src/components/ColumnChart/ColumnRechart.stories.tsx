@@ -93,7 +93,6 @@ export const defaultStory = () => (
   <ColumnRechart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     onLegendClickHandler={action('onLegendClickHandler')}
-    labelKey={'xValue'}
     dataset={dataset}
     width={'97%'}
     chartConfig={{
@@ -123,6 +122,7 @@ export const withCustomColor = () => (
     color={'red'}
     width={'95%'}
     height={'40vh'}
+    chartConfig={{ dataLabel: true }}
   />
 );
 
@@ -140,7 +140,7 @@ export const defaultStackedStory = () => (
   <ColumnRechart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     onLegendClickHandler={action('onLegendClickHandler')}
-    labelKey={'xValue'}
+    labelKey={'name'}
     dataset={dataset}
     width={'97%'}
     chartConfig={{

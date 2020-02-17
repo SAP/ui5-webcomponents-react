@@ -13,7 +13,7 @@ const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
-    labelKey = 'label',
+    labelKey = 'name',
     width = '100%',
     height = '300px',
     dataset,

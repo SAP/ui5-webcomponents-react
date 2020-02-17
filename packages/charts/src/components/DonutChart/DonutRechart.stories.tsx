@@ -1,5 +1,5 @@
 import React from 'react';
-import DonutRechart from './DonutRechart';
+import { DonutRechart } from './DonutRechart';
 import { action } from '@storybook/addon-actions';
 
 const dataset = [
@@ -61,12 +61,12 @@ export default {
 export const renderStory = () => {
   return (
     <DonutRechart
-      onLegendClickHandler={action('onDataPointClickHandler')}
-      onDataPointClickHandler={action('onLegendClickHandler')}
+      onLegendClickHandler={action('onLegendClickHandler')}
+      onDataPointClickHandler={action('onDataPointClickHandler')}
       width={'50%'}
       dataset={dataset}
       labelKey={'name'}
-      chartConfig={{ dataLabel: true, innerRadius: '50%' }}
+      chartConfig={{ dataLabel: true }}
     />
   );
 };
@@ -78,11 +78,13 @@ renderStory.story = {
 export const renderCustomColorStory = () => {
   return (
     <DonutRechart
+      onLegendClickHandler={action('onLegendClickHandler')}
+      onDataPointClickHandler={action('onDataPointClickHandler')}
       width={'50%'}
       dataset={dataset}
       labelKey={'name'}
       color={'lightblue'}
-      chartConfig={{ dataLabel: true, innerRadius: '50%' }}
+      chartConfig={{ dataLabel: true }}
     />
   );
 };
@@ -94,16 +96,35 @@ renderCustomColorStory.story = {
 export const withPaddingStory = () => {
   return (
     <DonutRechart
+      onLegendClickHandler={action('onLegendClickHandler')}
+      onDataPointClickHandler={action('onDataPointClickHandler')}
       width={'50%'}
       dataset={dataset}
       labelKey={'name'}
-      chartConfig={{ dataLabel: true, innerRadius: '50%', paddingAngle: 5 }}
+      chartConfig={{ dataLabel: true, paddingAngle: 5 }}
     />
   );
 };
 
 withPaddingStory.story = {
   name: 'With padding angle'
+};
+
+export const withCustomnRadiusStory = () => {
+  return (
+    <DonutRechart
+      onLegendClickHandler={action('onLegendClickHandler')}
+      onDataPointClickHandler={action('onDataPointClickHandler')}
+      width={'50%'}
+      dataset={dataset}
+      labelKey={'name'}
+      chartConfig={{ dataLabel: true, innerRadius: '25%' }}
+    />
+  );
+};
+
+withCustomnRadiusStory.story = {
+  name: 'With custom inner radius'
 };
 
 export const loadingPlaceholder = () => <DonutRechart width={'30%'} />;

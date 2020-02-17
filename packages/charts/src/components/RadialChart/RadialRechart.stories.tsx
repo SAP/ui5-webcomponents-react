@@ -46,23 +46,6 @@ renderStory.story = {
   name: 'Default'
 };
 
-export const withLabelStory = () => {
-  return (
-    <RadialRechart
-      onLegendClickHandler={action('onDataPointClickHandler')}
-      onDataPointClickHandler={action('onLegendClickHandler')}
-      width={'100%'}
-      labelKey={'xValue'}
-      dataset={dataset}
-      chartConfig={{ dataLabel: true, innerRadius: '30%' }}
-    />
-  );
-};
-
-withLabelStory.story = {
-  name: 'With data label'
-};
-
 export const customColorStory = () => {
   return (
     <RadialRechart

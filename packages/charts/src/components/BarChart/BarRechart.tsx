@@ -6,7 +6,7 @@ import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../internal/ChartContainer';
 import { useInitialize } from '../../lib/initialize';
 import { BarChartPlaceholder } from './Placeholder';
-import { ColumnChartPlaceholder } from '../..';
+import { array } from '@storybook/addon-knobs';
 
 export interface BarChartProps extends RechartBaseProps {}
 
@@ -14,10 +14,10 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
-    labelKey = 'label',
+    labelKey = 'name',
     dataKeys,
     width = '100%',
-    height = '300px',
+    height = '500px',
     dataset,
     noLegend = false,
     onDataPointClickHandler,
@@ -31,7 +31,7 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       gridVertical: true,
       yAxisColor: 'black',
       legendPosition: 'bottom',
-      barSize: 25,
+      barSize: 20,
       barGap: 3,
       zoomingTool: false,
       strokeOpacity: 1,
@@ -54,11 +54,6 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   const currentDataKeys =
     dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
 
-  const colorSecondY = useMemo(
-    () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
-    [chartConfig, currentDataKeys]
-  );
-
   const onItemLegendClick = useCallback(
     (e) => {
       if (onLegendClickHandler) {
@@ -75,12 +70,15 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   );
 
   const onDataPointClick = useCallback(
-    (e) => {
+    (e, i) => {
       if (e && onDataPointClickHandler) {
         onDataPointClickHandler({
-          dataKey: Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
-          value: e.value,
-          payload: e.payload
+          dataKey: Object.keys(e).filter((key) =>
+            e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value && key !== 'value'
+          )[0],
+          value: e.value.length ? e.value[1] - e.value[0] : e.value,
+          payload: e.payload,
+          xIndex: i
         });
       }
     },
@@ -91,35 +89,35 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      placeholder={ColumnChartPlaceholder}
+      placeholder={BarChartPlaceholder}
       width={width}
       height={height}
       ref={chartRef}
     >
-      <BarChartLib data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }} barGap={chartConfig.barGap}>
+      <BarChartLib
+        layout={'vertical'}
+        data={dataset}
+        style={{ fontSize: parameters.sapUiFontSmallSize }}
+        barGap={chartConfig.barGap}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} />}
-        {(chartConfig.yAxisVisible ?? true) && <YAxis yAxisId="left" />}
-        {chartConfig.secondYAxis && (
-          <YAxis
-            dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={chartConfig.secondYAxis.color ?? `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`}
-            label={{ value: chartConfig.secondYAxis.name, angle: +90, position: 'center' }}
-            orientation="right"
-            yAxisId="right"
-          />
-        )}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis type="number" />}
+        {(chartConfig.yAxisVisible ?? true) && <YAxis type="category" dataKey={labelKey} />}
         {currentDataKeys.map((key, index) => (
           <Bar
-            yAxisId={chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === key ? 'right' : 'left'}
             stackId={chartConfig.stacked ? 'A' : undefined}
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
-            label={chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily }}
+            label={
+              chartConfig.dataLabel && {
+                position: chartConfig.stacked ? 'inside' : 'right',
+                fontFamily: parameters.sapUiFontFamily
+              }
+            }
             key={key}
             name={key}
             dataKey={key}
