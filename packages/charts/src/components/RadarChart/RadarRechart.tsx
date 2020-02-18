@@ -1,6 +1,6 @@
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
-import { useInitialize } from '../../lib/initialize';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import {
   Radar,
@@ -12,7 +12,7 @@ import {
   Tooltip
 } from 'recharts';
 import { useTheme } from 'react-jss';
-import { PieChartPlaceholder } from '../..';
+import { PieChartPlaceholder } from '../PieChart/Placeholder';
 import { ChartContainer } from '../../internal/ChartContainer';
 
 export interface RadarChartProps extends RechartBaseProps {}

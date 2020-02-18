@@ -1,6 +1,6 @@
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
-import { useInitialize } from '../../lib/initialize';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { Label, Pie, PieChart as PieChartLib, Tooltip, Legend, Cell } from 'recharts';
 import { useTheme } from 'react-jss';

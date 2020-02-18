@@ -5,7 +5,7 @@ import { useTheme } from 'react-jss';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../internal/ChartContainer';
-import { useInitialize } from '../../lib/initialize';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export interface ComposedChartProps extends RechartBaseProps {

@@ -4,7 +4,7 @@ import { useTheme } from 'react-jss';
 import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../internal/ChartContainer';
-import { useInitialize } from '../../lib/initialize';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { BarChartPlaceholder } from './Placeholder';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
