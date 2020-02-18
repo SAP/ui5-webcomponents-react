@@ -1,3 +1,3 @@
-import { LineRechart as LineChart } from '../components/LineChart/LineRechart';
+import { LineRechart } from '../components/LineChart/LineRechart';
 
-export { LineChart };
+export { LineRechart };
