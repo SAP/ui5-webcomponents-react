@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineRechart } from './index';
+import { LineRechart } from './LineRechart';
 import { action } from '@storybook/addon-actions';
 
 const dataset = [

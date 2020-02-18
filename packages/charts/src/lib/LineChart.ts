@@ -1,3 +1,3 @@
-import { LineChart } from '../components/LineChart/LineChart';
+import { LineChart } from '../components/LineChart';
 
 export { LineChart };

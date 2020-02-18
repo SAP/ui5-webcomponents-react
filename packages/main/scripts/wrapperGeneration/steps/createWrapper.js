@@ -49,7 +49,7 @@ async function createWrapperForComponent(dto, options = {}) {
   }
 
   const tsTypings = generateTypingStatements(dto.typings, dto.componentName);
-  const indexPath = path.resolve(folderName, 'LineChart.tsx');
+  const indexPath = path.resolve(folderName, 'index.tsx');
 
   const jsxContent = ''.concat(
     tsTypings.importStatements,
