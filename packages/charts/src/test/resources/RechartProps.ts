@@ -1,4 +1,4 @@
-export const label = 'xValue';
+export const label = 'name';
 
 export const dataset = [
   {

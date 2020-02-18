@@ -1,4 +1,4 @@
-import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback, useMemo } from 'react';
+import React, { Component, ComponentType, forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
 import { ComposedChart, Legend, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
 import { LineChartPlaceholder } from '../..';
 import { useTheme } from 'react-jss';
@@ -9,7 +9,7 @@ import { useInitialize } from '../../lib/initialize';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export interface ComposedChartProps extends RechartBaseProps {
-  children: ReactNode;
+  children?: ReactNode;
   placeHolder?: ComponentType<unknown>;
 }
 
@@ -49,35 +49,30 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
   const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
+  type ChildClone = ReactNode & { props: any };
   const childrenClone = useMemo(
     () =>
-      React.Children.map(children, (child, index) => {
-        // @ts-ignore
-        if (child.props) {
+      React.Children.map(children, (child: ChildClone, index) => {
+        if (child?.props) {
           return React.cloneElement(
             // @ts-ignore
             child,
-            // @ts-ignore
             child.props.legendType === 'line'
               ? {
                   type: 'monotone',
-                  // @ts-ignore
                   stroke: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
                   label: chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily },
                   yAxisId:
-                    // @ts-ignore
                     chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
                       ? 'right'
                       : 'left',
                   activeDot: { onClick: (e, i) => onDataPointClick(e, i, true) }
                 }
               : {
-                  // @ts-ignore
                   fill: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
                   label: chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily },
                   stackId: chartConfig.stacked ? 'A' : undefined,
                   yAxisId:
-                    // @ts-ignore
                     chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
                       ? 'right'
                       : 'left',

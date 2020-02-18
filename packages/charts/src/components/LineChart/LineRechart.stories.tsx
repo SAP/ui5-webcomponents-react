@@ -163,7 +163,7 @@ renderLabelStory.story = {
   name: 'With data labels'
 };
 
-export const loadingPlaceholder = () => <LineRechart labelKey={'name'} width={'30%'} />;
+export const loadingPlaceholder = () => <LineRechart width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
