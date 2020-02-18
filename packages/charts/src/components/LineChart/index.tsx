@@ -1,98 +1,138 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
-import React, { FC, forwardRef, Ref, useMemo } from 'react';
-import { Line } from 'react-chartjs-2';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
+import { useInitialize } from '../../lib/initialize';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { CartesianGrid, Line, LineChart as LineChartLib, XAxis, YAxis, Tooltip, Legend, Brush } from 'recharts';
 import { useTheme } from 'react-jss';
-import { DEFAULT_OPTIONS } from '../../config';
-import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
-import { InternalProps } from '../../interfaces/InternalProps';
-import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
-import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { useChartData } from '../../util/populateData';
-import { formatAxisCallback, formatDataLabel, formatTooltipLabel, useMergedConfig } from '../../util/Utils';
 import { LineChartPlaceholder } from './Placeholder';
+import { ChartContainer } from '../../internal/ChartContainer';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-export interface LineChartPropTypes extends ChartBaseProps {}
+export interface LineChartProps extends RechartBaseProps {}
 
-const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>) => {
+const LineRechart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
-    labels,
-    datasets,
-    colors,
-    options,
-    valueAxisFormatter,
-    categoryAxisFormatter,
-    getElementAtEvent,
-    getDatasetAtEvent,
-    width,
-    height,
-    noLegend,
-    legendRef
-  } = props as LineChartPropTypes & InternalProps;
-
-  const lineChartDefaultConfig = useMemo(() => {
-    return {
-      scales: {
-        yAxes: [
-          {
-            ...DEFAULT_OPTIONS.scales.yAxes[0],
-            display: true,
-            ticks: {
-              ...DEFAULT_OPTIONS.scales.yAxes[0].ticks,
-              callback: formatAxisCallback(valueAxisFormatter)
-            }
-          }
-        ],
-        xAxes: [
-          {
-            ...DEFAULT_OPTIONS.scales.xAxes[0],
-            ticks: {
-              callback: formatAxisCallback(categoryAxisFormatter)
-            }
-          }
-        ]
-      },
-      tooltips: {
-        callbacks: {
-          label: formatTooltipLabel(categoryAxisFormatter, valueAxisFormatter)
-        }
-      },
-      plugins: {
-        datalabels: {
-          formatter: formatDataLabel(valueAxisFormatter)
-        }
+    color,
+    loading,
+    labelKey = 'name',
+    width = '100%',
+    height = '500px',
+    dataset,
+    dataKeys,
+    noLegend = false,
+    onDataPointClickHandler,
+    onLegendClickHandler,
+    chartConfig = {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      legendVisible: true,
+      gridStroke: ThemingParameters.sapUiListTableFooterBorder,
+      gridHorizontal: true,
+      gridVertical: false,
+      yAxisColor: ThemingParameters.sapNeutralBorderColor,
+      legendPosition: 'bottom',
+      strokeWidth: 1,
+      zoomingTool: false,
+      strokeOpacity: 1,
+      dataLabel: false,
+      secondYAxis: {
+        dataKey: undefined,
+        name: undefined,
+        color: ThemingParameters.sapNeutralBorderColor
       }
-    };
-  }, [categoryAxisFormatter, valueAxisFormatter]);
-  const chartOptions = useMergedConfig(lineChartDefaultConfig, options);
+    }
+  } = props;
 
-  const theme: any = useTheme();
-  const data = useChartData(labels, datasets, colors, theme.theme);
+  useInitialize();
 
+  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
-  const handleLegendItemPress = useLegendItemClickHandler(chartRef, legendRef);
-  useLegend(chartRef, legendRef, noLegend, handleLegendItemPress);
+
+  const currentDataKeys =
+    dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+
+  const colorSecondY = useMemo(
+    () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
+    [chartConfig, currentDataKeys]
+  );
+
+  const onItemLegendClick = useCallback(
+    (e) => {
+      if (onLegendClickHandler) {
+        onLegendClickHandler({
+          dataKey: e.dataKey,
+          value: e.value,
+          chartType: e.type,
+          color: e.color,
+          payload: e.payload
+        });
+      }
+    },
+    [onLegendClickHandler]
+  );
+
+  const onDataPointClick = useCallback(
+    (e) => {
+      if (e && onDataPointClickHandler && e.value) {
+        onDataPointClickHandler({
+          value: e.value,
+          dataKey: e.dataKey,
+          xIndex: e.index,
+          payload: e.payload
+        });
+      }
+    },
+    [onDataPointClickHandler]
+  );
 
   return (
-    <Line
+    <ChartContainer
+      dataset={dataset}
+      loading={loading}
+      placeholder={LineChartPlaceholder}
+      width={width}
+      height={height}
       ref={chartRef}
-      data={data}
-      options={chartOptions}
-      getDatasetAtEvent={getDatasetAtEvent}
-      getElementAtEvent={getElementAtEvent}
-    />
+    >
+      <LineChartLib data={dataset} onClick={onDataPointClick} style={{ fontSize: parameters.sapUiFontSmallSize }}>
+        <CartesianGrid
+          vertical={chartConfig.gridVertical}
+          horizontal={chartConfig.gridHorizontal}
+          stroke={chartConfig.gridStroke}
+        />
+        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} />}
+        <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId="left" />
+        {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
+          <YAxis
+            dataKey={chartConfig.secondYAxis.dataKey}
+            stroke={chartConfig.secondYAxis.color ?? `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`}
+            label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
+            orientation="right"
+            yAxisId="right"
+          />
+        )}
+        {currentDataKeys.map((key, index) => (
+          <Line
+            yAxisId={chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === key ? 'right' : 'left'}
+            key={key}
+            name={key}
+            strokeOpacity={chartConfig.strokeOpacity}
+            label={chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily }}
+            type="monotone"
+            dataKey={key}
+            stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
+            strokeWidth={chartConfig.strokeWidth}
+            activeDot={{ onClick: onDataPointClick }}
+          />
+        ))}
+        {!noLegend && <Legend onClick={onItemLegendClick} />}
+        <Tooltip />
+        {chartConfig.zoomingTool && (
+          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />
+        )}
+      </LineChartLib>
+    </ChartContainer>
   );
 });
-// @ts-ignore
-LineChartComponent.LoadingPlaceholder = LineChartPlaceholder;
-/**
- * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';</code>
- */
-const LineChart: FC<LineChartPropTypes> = withChartContainer(LineChartComponent);
 
-LineChart.defaultProps = {
-  ...ChartBaseDefaultProps
-};
-LineChart.displayName = 'LineChart';
-
-export { LineChart };
+export { LineRechart };

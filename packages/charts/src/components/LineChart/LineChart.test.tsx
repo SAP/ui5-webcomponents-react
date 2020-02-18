@@ -1,7 +1,7 @@
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
 import { labels, singleDataset } from '../../test/resources/ChartProps';
-import { LineChart } from './index';
+import { LineChart } from './LineChart';
 
 describe('LineChart', () => {
   test('Renders with data', () => {
