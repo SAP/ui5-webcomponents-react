@@ -1,3 +1,3 @@
-import { RadialRechart } from '../../components/RadialChart/RadialRechart';
+import { RadialChart } from '../../components/RadialChart/RadialRechart';
 
-export { RadialRechart };
+export { RadialChart };

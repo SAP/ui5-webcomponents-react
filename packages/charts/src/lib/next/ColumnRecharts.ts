@@ -1,3 +1,3 @@
-import { ColumnRechart } from '../../components/ColumnChart/ColumnRechart';
+import { ColumnChart } from '../../components/ColumnChart/ColumnRechart';
 
-export { ColumnRechart };
+export { ColumnChart };

@@ -1,3 +1,3 @@
-import { BarRechart } from '../../components/BarChart/BarRechart';
+import { BarChart } from '../../components/BarChart/BarRechart';
 
-export { BarRechart };
+export { BarChart };
