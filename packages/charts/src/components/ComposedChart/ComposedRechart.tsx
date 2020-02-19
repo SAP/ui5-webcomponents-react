@@ -1,10 +1,10 @@
-import React, { Component, ComponentType, forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
-import { ComposedChart, Legend, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
+import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback, useMemo } from 'react';
+import { ComposedChart as ComposedChartLib, Legend, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
 import { LineChartPlaceholder } from '../..';
 import { useTheme } from 'react-jss';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/ChartContainer';
+import { ChartContainer } from '../../lib/next/ChartContainer';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
@@ -13,7 +13,7 @@ export interface ComposedChartProps extends RechartBaseProps {
   placeHolder?: ComponentType<unknown>;
 }
 
-const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
+const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
   const {
     height = '500px',
     width = '100%',
@@ -123,7 +123,7 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
       dataset={dataset}
       placeholder={LineChartPlaceholder}
     >
-      <ComposedChart ref={chartRef} style={{ fontSize: parameters.sapUiFontSmallSize }} data={dataset}>
+      <ComposedChartLib ref={chartRef} style={{ fontSize: parameters.sapUiFontSmallSize }} data={dataset}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
@@ -146,9 +146,9 @@ const ComposedRechart = forwardRef((props: ComposedChartProps, ref: Ref<any>) =>
         {chartConfig.zoomingTool && (
           <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />
         )}
-      </ComposedChart>
+      </ComposedChartLib>
     </ChartContainer>
   );
 });
 
-export { ComposedRechart };
+export { ComposedChart };

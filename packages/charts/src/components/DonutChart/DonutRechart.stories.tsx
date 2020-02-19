@@ -1,5 +1,5 @@
 import React from 'react';
-import { DonutRechart } from './DonutRechart';
+import { DonutChart } from './DonutRechart';
 import { action } from '@storybook/addon-actions';
 
 const dataset = [
@@ -55,12 +55,12 @@ const dataset = [
 
 export default {
   title: 'Charts / DonutChart',
-  component: DonutRechart
+  component: DonutChart
 };
 
 export const renderStory = () => {
   return (
-    <DonutRechart
+    <DonutChart
       onLegendClickHandler={action('onLegendClickHandler')}
       onDataPointClickHandler={action('onDataPointClickHandler')}
       width={'50%'}
@@ -77,7 +77,7 @@ renderStory.story = {
 
 export const renderCustomColorStory = () => {
   return (
-    <DonutRechart
+    <DonutChart
       onLegendClickHandler={action('onLegendClickHandler')}
       onDataPointClickHandler={action('onDataPointClickHandler')}
       width={'50%'}
@@ -95,7 +95,7 @@ renderCustomColorStory.story = {
 
 export const withPaddingStory = () => {
   return (
-    <DonutRechart
+    <DonutChart
       onLegendClickHandler={action('onLegendClickHandler')}
       onDataPointClickHandler={action('onDataPointClickHandler')}
       width={'50%'}
@@ -112,7 +112,7 @@ withPaddingStory.story = {
 
 export const withCustomnRadiusStory = () => {
   return (
-    <DonutRechart
+    <DonutChart
       onLegendClickHandler={action('onLegendClickHandler')}
       onDataPointClickHandler={action('onDataPointClickHandler')}
       width={'50%'}
@@ -127,7 +127,7 @@ withCustomnRadiusStory.story = {
   name: 'With custom inner radius'
 };
 
-export const loadingPlaceholder = () => <DonutRechart width={'30%'} />;
+export const loadingPlaceholder = () => <DonutChart width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'

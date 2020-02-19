@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
-import { ColumnRechart } from './ColumnRechart';
+import { ColumnChart } from './ColumnRechart';
 
 const dataset = [
   {
@@ -86,11 +86,11 @@ const singleData = [
 
 export default {
   title: 'Charts / ColumnChart',
-  component: ColumnRechart
+  component: ColumnChart
 };
 
 export const defaultStory = () => (
-  <ColumnRechart
+  <ColumnChart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     onLegendClickHandler={action('onLegendClickHandler')}
     dataset={dataset}
@@ -104,7 +104,7 @@ defaultStory.story = {
 };
 
 export const withCustomColor = () => (
-  <ColumnRechart
+  <ColumnChart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     dataset={singleData}
     color={'red'}
@@ -118,14 +118,14 @@ withCustomColor.story = {
   name: 'With custom color'
 };
 
-export const loadingPlaceholder = () => <ColumnRechart labelKey={'xValue'} width={'30%'} />;
+export const loadingPlaceholder = () => <ColumnChart labelKey={'xValue'} width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
 };
 
 export const defaultStackedStory = () => (
-  <ColumnRechart
+  <ColumnChart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     onLegendClickHandler={action('onLegendClickHandler')}
     labelKey={'name'}

@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
-import { BarRechart } from './BarRechart';
+import { BarChart } from './BarRechart';
 
 const dataset = [
   {
@@ -98,11 +98,11 @@ const singleData = [
 
 export default {
   title: 'Charts / BarChart',
-  component: BarRechart
+  component: BarChart
 };
 
 export const defaultStory = () => (
-  <BarRechart
+  <BarChart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     onLegendClickHandler={action('onLegendClickHandler')}
     dataset={dataset}
@@ -116,7 +116,7 @@ defaultStory.story = {
 };
 
 export const withCustomColor = () => (
-  <BarRechart
+  <BarChart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     dataset={singleData}
     labelKey={'name'}
@@ -131,14 +131,14 @@ withCustomColor.story = {
   name: 'With custom color'
 };
 
-export const loadingPlaceholder = () => <BarRechart labelKey={'name'} width={'30%'} />;
+export const loadingPlaceholder = () => <BarChart labelKey={'name'} width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
 };
 
 export const defaultStackedStory = () => (
-  <BarRechart
+  <BarChart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     onLegendClickHandler={action('onLegendClickHandler')}
     labelKey={'name'}

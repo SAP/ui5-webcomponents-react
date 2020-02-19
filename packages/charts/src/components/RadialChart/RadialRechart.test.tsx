@@ -1,15 +1,15 @@
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
 import { label, dataset } from '../../test/resources/RechartProps';
-import { RadialRechart } from './RadialRechart';
+import { RadialChart } from './RadialRechart';
 
-describe('RadialRechart', () => {
+describe('RadialChart', () => {
   test('Renders with data', () => {
-    renderThemedComponent(<RadialRechart width={'100%'} dataset={dataset} labelKey={label} />);
+    renderThemedComponent(<RadialChart width={'100%'} dataset={dataset} labelKey={label} />);
   });
 
   test('loading placeholder', () => {
-    const wrapper = mountThemedComponent(<RadialRechart width={'50%'} />);
+    const wrapper = mountThemedComponent(<RadialChart width={'50%'} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });
