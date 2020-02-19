@@ -133,7 +133,12 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color}
-            label={{ value: chartConfig.secondYAxis.name, angle: +90, position: 'center' }}
+            label={{
+              value: chartConfig.secondYAxis.name,
+              angle: +90,
+              position: 'center',
+              fill: ThemingParameters.sapContent_LabelColor
+            }}
             orientation="right"
             yAxisId="right"
           />

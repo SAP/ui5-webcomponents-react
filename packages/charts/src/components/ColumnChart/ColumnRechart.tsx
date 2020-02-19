@@ -138,7 +138,8 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
             label={
               chartConfig.dataLabel && {
                 position: chartConfig.stacked ? 'inside' : 'top',
-                fontFamily: ThemingParameters.sapUiFontFamily
+                fontFamily: ThemingParameters.sapUiFontFamily,
+                fill: ThemingParameters.sapContent_LabelColor
               }
             }
             key={key}

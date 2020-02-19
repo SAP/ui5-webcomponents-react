@@ -107,7 +107,8 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
             label={
               chartConfig.dataLabel && {
                 position: chartConfig.stacked ? 'inside' : 'right',
-                fontFamily: ThemingParameters.sapUiFontFamily
+                fontFamily: ThemingParameters.sapUiFontFamily,
+                fill: ThemingParameters.sapContent_LabelColor
               }
             }
             key={key}

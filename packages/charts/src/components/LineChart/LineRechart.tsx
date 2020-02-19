@@ -119,7 +119,13 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
             key={key}
             name={key}
             strokeOpacity={chartConfig.strokeOpacity}
-            label={chartConfig.dataLabel && { position: 'top', fontFamily: ThemingParameters.sapUiFontFamily }}
+            label={
+              chartConfig.dataLabel && {
+                position: 'top',
+                fontFamily: ThemingParameters.sapUiFontFamily,
+                fill: ThemingParameters.sapContent_LabelColor
+              }
+            }
             type="monotone"
             dataKey={key}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}

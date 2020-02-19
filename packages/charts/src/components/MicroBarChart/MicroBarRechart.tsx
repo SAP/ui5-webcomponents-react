@@ -104,7 +104,8 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
         label={
           chartConfig.dataLabel && {
             position: 'insideBottomRight',
-            fontFamily: ThemingParameters.sapUiFontFamily
+            fontFamily: ThemingParameters.sapUiFontFamily,
+            fill: ThemingParameters.sapContent_LabelColor
           }
         }
       >
