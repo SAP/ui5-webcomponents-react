@@ -1,11 +1,11 @@
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
-import { useTheme } from 'react-jss';
 import { Legend, RadialBar, RadialBarChart as RadialBarChartLib, Tooltip } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { PieChartPlaceholder } from '../PieChart/Placeholder';
 
 export interface RadialChartProps extends RechartBaseProps {}
 
@@ -39,7 +39,6 @@ const RadialChart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
 
   useInitialize();
 
-  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
   const currentDataKeys =
@@ -72,7 +71,7 @@ const RadialChart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
         innerRadius={chartConfig.innerRadius}
         barSize={chartConfig.barSize}
         data={dataset}
-        style={{ fontSize: parameters.sapUiFontSmallSize }}
+        style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}
       >
         {currentDataKeys.map((key, index) => (
           <RadialBar

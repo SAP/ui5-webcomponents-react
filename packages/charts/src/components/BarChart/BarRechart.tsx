@@ -1,12 +1,11 @@
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
-import { useTheme } from 'react-jss';
 import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { BarChartPlaceholder } from './Placeholder';
 
 export interface BarChartProps extends RechartBaseProps {}
 
@@ -43,7 +42,6 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   } = props;
   useInitialize();
 
-  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
   const currentDataKeys =
@@ -91,7 +89,7 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       <BarChartLib
         layout={'vertical'}
         data={dataset}
-        style={{ fontSize: parameters.sapUiFontSmallSize }}
+        style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}
         barGap={chartConfig.barGap}
       >
         <CartesianGrid
@@ -109,7 +107,7 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
             label={
               chartConfig.dataLabel && {
                 position: chartConfig.stacked ? 'inside' : 'right',
-                fontFamily: parameters.sapUiFontFamily
+                fontFamily: ThemingParameters.sapUiFontFamily
               }
             }
             key={key}

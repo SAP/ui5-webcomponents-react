@@ -1,11 +1,11 @@
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { Label, Pie, PieChart as PieChartLib, Tooltip, Legend, Cell } from 'recharts';
-import { useTheme } from 'react-jss';
-import { PieChartPlaceholder } from './Placeholder';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
+import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
+import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
 export interface PieChartProps extends RechartBaseProps {}
 
@@ -41,7 +41,6 @@ const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
 
   useInitialize();
 
-  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
   const currentDataKeys =
@@ -85,7 +84,7 @@ const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
       width={width}
       height={height}
     >
-      <PieChartLib style={{ fontSize: parameters.sapUiFontSmallSize }}>
+      <PieChartLib style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}>
         <Pie
           innerRadius={chartConfig.innerRadius}
           paddingAngle={chartConfig.paddingAngle}

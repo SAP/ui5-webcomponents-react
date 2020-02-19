@@ -1,12 +1,11 @@
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { CartesianGrid, Line, LineChart as LineChartLib, XAxis, YAxis, Tooltip, Legend, Brush } from 'recharts';
-import { useTheme } from 'react-jss';
-import { LineChartPlaceholder } from './Placeholder';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
+import { Brush, CartesianGrid, Legend, Line, LineChart as LineChartLib, Tooltip, XAxis, YAxis } from 'recharts';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
 export interface LineChartProps extends RechartBaseProps {}
 
@@ -45,7 +44,6 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
 
   useInitialize();
 
-  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
   const currentDataKeys =
@@ -97,7 +95,7 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       <LineChartLib
         data={dataset}
         onClick={onDataPointClickInternal}
-        style={{ fontSize: parameters.sapUiFontSmallSize }}
+        style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}
       >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
@@ -121,7 +119,7 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
             key={key}
             name={key}
             strokeOpacity={chartConfig.strokeOpacity}
-            label={chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily }}
+            label={chartConfig.dataLabel && { position: 'top', fontFamily: ThemingParameters.sapUiFontFamily }}
             type="monotone"
             dataKey={key}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}

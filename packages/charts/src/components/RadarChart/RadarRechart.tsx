@@ -1,19 +1,19 @@
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
+import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
-  Radar,
-  RadarChart as RadarChartLib,
-  PolarGrid,
   Legend,
   PolarAngleAxis,
+  PolarGrid,
   PolarRadiusAxis,
+  Radar,
+  RadarChart as RadarChartLib,
   Tooltip
 } from 'recharts';
-import { useTheme } from 'react-jss';
-import { PieChartPlaceholder } from '../PieChart/Placeholder';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
 export interface RadarChartProps extends RechartBaseProps {}
 
@@ -48,7 +48,6 @@ const RadarChart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
 
   useInitialize();
 
-  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
   const currentDataKeys =
@@ -93,7 +92,7 @@ const RadarChart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
       width={width}
       height={height}
     >
-      <RadarChartLib data={dataset} style={{ fontSize: parameters.sapUiFontSmallSize }}>
+      <RadarChartLib data={dataset} style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}>
         <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis dataKey={labelKey} />
         <PolarRadiusAxis />

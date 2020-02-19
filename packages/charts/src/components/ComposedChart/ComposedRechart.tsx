@@ -1,12 +1,11 @@
-import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback, useMemo } from 'react';
-import { ComposedChart as ComposedChartLib, Legend, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
-import { LineChartPlaceholder } from '../..';
-import { useTheme } from 'react-jss';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback, useMemo } from 'react';
+import { Brush, CartesianGrid, ComposedChart as ComposedChartLib, Legend, Tooltip, XAxis, YAxis } from 'recharts';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
 export interface ComposedChartProps extends RechartBaseProps {
   children?: ReactNode;
@@ -46,7 +45,6 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
 
   useInitialize();
 
-  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onDataPointClickInternal = useCallback(
@@ -75,7 +73,7 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
               ? {
                   type: 'monotone',
                   stroke: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
-                  label: chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily },
+                  label: chartConfig.dataLabel && { position: 'top', fontFamily: ThemingParameters.sapUiFontFamily },
                   yAxisId:
                     chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
                       ? 'right'
@@ -84,7 +82,7 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
                 }
               : {
                   fill: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
-                  label: chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily },
+                  label: chartConfig.dataLabel && { position: 'top', fontFamily: ThemingParameters.sapUiFontFamily },
                   stackId: chartConfig.stacked ? 'A' : undefined,
                   yAxisId:
                     chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
@@ -123,7 +121,7 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
       dataset={dataset}
       placeholder={LineChartPlaceholder}
     >
-      <ComposedChartLib ref={chartRef} style={{ fontSize: parameters.sapUiFontSmallSize }} data={dataset}>
+      <ComposedChartLib ref={chartRef} style={{ fontSize: ThemingParameters.sapUiFontSmallSize }} data={dataset}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
