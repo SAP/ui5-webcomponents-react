@@ -1,6 +1,6 @@
 import React, { ComponentType, forwardRef, ReactNode, Ref } from 'react';
 import { ChartContainerProps } from '../interfaces/ChartContainerProps';
-import { Loader } from '@ui5/webcomponents-react';
+import { Loader } from '@ui5/webcomponents-react/lib/Loader';
 import { ResponsiveContainer } from 'recharts';
 
 export interface ContainerProps extends ChartContainerProps {

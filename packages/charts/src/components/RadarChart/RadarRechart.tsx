@@ -13,7 +13,7 @@ import {
 } from 'recharts';
 import { useTheme } from 'react-jss';
 import { PieChartPlaceholder } from '../PieChart/Placeholder';
-import { ChartContainer } from '../../internal/ChartContainer';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/ChartContainer';
 
 export interface RadarChartProps extends RechartBaseProps {}
 

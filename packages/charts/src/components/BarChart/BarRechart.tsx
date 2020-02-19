@@ -3,7 +3,7 @@ import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
 import { useTheme } from 'react-jss';
 import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartContainer } from '../../internal/ChartContainer';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/ChartContainer';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { BarChartPlaceholder } from './Placeholder';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';

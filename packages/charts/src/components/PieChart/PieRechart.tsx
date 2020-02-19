@@ -5,7 +5,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { Label, Pie, PieChart as PieChartLib, Tooltip, Legend, Cell } from 'recharts';
 import { useTheme } from 'react-jss';
 import { PieChartPlaceholder } from './Placeholder';
-import { ChartContainer } from '../../internal/ChartContainer';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/ChartContainer';
 
 export interface PieChartProps extends RechartBaseProps {}
 

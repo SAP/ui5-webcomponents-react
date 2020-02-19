@@ -12,7 +12,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartContainer } from '../../internal/ChartContainer';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/ChartContainer';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ColumnChartPlaceholder } from './Placeholder';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
