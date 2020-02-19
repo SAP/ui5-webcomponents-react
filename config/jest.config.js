@@ -21,11 +21,7 @@ module.exports = {
     '!packages/base/src/polyfill/*', // no polyfills
     '!packages/main/src/components/AnalyticalTable/types/*' // no table enums
   ],
-  setupFiles: [
-    '<rootDir>/node_modules/document-register-element/build/document-register-element.node.js',
-    '<rootDir>/node_modules/jest-canvas-mock/lib/index.js',
-    '<rootDir>/test/setupFiles/UI5WebComponentsSetup.js'
-  ],
+  setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
   testEnvironment: 'jsdom-sixteen',
   testMatch: ['<rootDir>/packages/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
