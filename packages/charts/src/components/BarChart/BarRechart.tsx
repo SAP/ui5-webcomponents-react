@@ -99,7 +99,11 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis unit={chartConfig.unit} type="number" />}
+        <XAxis
+          hide={chartConfig.xAxisVisible ? !chartConfig.xAxisVisible : true}
+          unit={chartConfig.unit}
+          type="number"
+        />
         <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} type="category" dataKey={labelKey} />
         {currentDataKeys.map((key, index) => (
           <Bar
@@ -108,7 +112,7 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
             fillOpacity={chartConfig.fillOpacity}
             label={
               chartConfig.dataLabel && {
-                position: chartConfig.stacked ? 'inside' : 'right',
+                position: chartConfig.stacked ? 'inside' : 'insideRight',
                 fontFamily: parameters.sapUiFontFamily
               }
             }

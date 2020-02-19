@@ -1,10 +1,10 @@
 import { PieChart } from '../PieChart/PieRechart';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 export interface PieChartProps extends RechartBaseProps {}
 
-export const DonutChart = (props: PieChartProps) => {
+export const DonutChart = forwardRef((props: PieChartProps, ref) => {
   const {
     chartConfig = {
       legendVisible: true,
@@ -18,6 +18,7 @@ export const DonutChart = (props: PieChartProps) => {
   return (
     <PieChart
       {...props}
+      ref={ref}
       chartConfig={{
         legendVisible: chartConfig.legendVisible,
         legendPosition: chartConfig.legendPosition,
@@ -27,4 +28,4 @@ export const DonutChart = (props: PieChartProps) => {
       }}
     />
   );
-};
+});
