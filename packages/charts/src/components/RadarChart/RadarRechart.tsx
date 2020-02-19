@@ -1,7 +1,7 @@
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import {
   Radar,
   RadarChart as RadarChartLib,

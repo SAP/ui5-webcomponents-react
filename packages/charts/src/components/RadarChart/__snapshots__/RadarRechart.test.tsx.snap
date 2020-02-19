@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadarRechart loading placeholder 1`] = `
+<div>
+  <div
+    style="width: 50%; height: 500px;"
+  >
+    <svg
+      aria-label="Loading interface..."
+      preserveAspectRatio="none"
+      role="img"
+      viewBox="0 0 150 150"
+    >
+      <title>
+        Loading interface...
+      </title>
+      <rect
+        clip-path="CLIP-PATH-URL"
+        height="150"
+        style="fill: url(#STYLE-URL);"
+        width="150"
+        x="0"
+        y="0"
+      />
+      <defs>
+        <clipPath
+          id="CLIP-PATH-URL"
+        >
+          <circle
+            cx="85"
+            cy="75"
+            r="60"
+          />
+        </clipPath>
+        <linearGradient
+          id="STYLE-URL"
+        >
+          <stop
+            offset="0%"
+            stop-color="#6a6d70"
+            stop-opacity="0.2"
+          >
+            <animate
+              attributeName="offset"
+              dur="2s"
+              keyTimes="0; 0.25; 1"
+              repeatCount="indefinite"
+              values="-2; -2; 1"
+            />
+          </stop>
+          <stop
+            offset="50%"
+            stop-color="#d9d9d9"
+            stop-opacity="1"
+          >
+            <animate
+              attributeName="offset"
+              dur="2s"
+              keyTimes="0; 0.25; 1"
+              repeatCount="indefinite"
+              values="-1; -1; 2"
+            />
+          </stop>
+          <stop
+            offset="100%"
+            stop-color="#6a6d70"
+            stop-opacity="0.2"
+          >
+            <animate
+              attributeName="offset"
+              dur="2s"
+              keyTimes="0; 0.25; 1"
+              repeatCount="indefinite"
+              values="0; 0; 3"
+            />
+          </stop>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+</div>
+`;
