@@ -2,28 +2,7 @@ import React from 'react';
 import { RadialChart } from './RadialRechart';
 import { action } from '@storybook/addon-actions';
 
-const dataset = [
-  {
-    name: 'January',
-    data: 100,
-    users: 200
-  },
-  {
-    name: 'February',
-    data: 300,
-    users: 120
-  },
-  {
-    name: 'March',
-    data: 530,
-    users: 90
-  },
-  {
-    name: 'April',
-    data: 200,
-    users: 230
-  }
-];
+const dataset = [{ name: 'L1', value: 67 }];
 
 export default {
   title: 'Charts / RadialChart',
