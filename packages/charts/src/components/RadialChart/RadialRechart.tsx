@@ -1,11 +1,11 @@
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import React, { forwardRef, Ref, useMemo, useCallback } from 'react';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { RadialBarChart as RadialBarChartLib, RadialBar, Tooltip, Legend } from 'recharts';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
 import { useTheme } from 'react-jss';
+import { Legend, RadialBar, RadialBarChart as RadialBarChartLib, Tooltip } from 'recharts';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { PieChartPlaceholder } from '../PieChart/Placeholder';
-import { ChartContainer } from '../../lib/next/ChartContainer';
 
 export interface RadialChartProps extends RechartBaseProps {}
 
@@ -19,7 +19,7 @@ const RadialChart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
     dataset,
     dataKeys,
     noLegend = false,
-    onDataPointClickHandler,
+    onDataPointClick,
     chartConfig = {
       yAxisVisible: true,
       xAxisVisible: true,
@@ -45,10 +45,10 @@ const RadialChart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
   const currentDataKeys =
     dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
 
-  const onDataPointClick = useCallback(
+  const onDataPointClickInternal = useCallback(
     (e) => {
-      if (e && onDataPointClickHandler && e.value) {
-        onDataPointClickHandler({
+      if (e && onDataPointClick && e.value) {
+        onDataPointClick({
           value: e.value,
           dataKey: Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
           name: e.name,
@@ -56,7 +56,7 @@ const RadialChart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onDataPointClickHandler]
+    [onDataPointClick]
   );
 
   return (
@@ -81,7 +81,7 @@ const RadialChart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
             dataKey={key}
             fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             label={chartConfig.dataLabel ? { position: 'insideEnd' } : false}
-            onClick={onDataPointClick}
+            onClick={onDataPointClickInternal}
           />
         ))}
         {noLegend && <Legend />}
@@ -90,5 +90,7 @@ const RadialChart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
     </ChartContainer>
   );
 });
+
+RadialChart.displayName = 'RadialChart';
 
 export { RadialChart };

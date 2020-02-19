@@ -104,8 +104,8 @@ export default {
 export const renderStory = () => {
   return (
     <LineChart
-      onDataPointClickHandler={action('onDataPointClickHandler')}
-      onLegendClickHandler={action('onLegendPointClickHandler')}
+      onDataPointClick={action('onDataPointClick')}
+      onLegendClick={action('onLegendPointClickHandler')}
       dataset={dataset}
       width={'95%'}
       height={'40vh'}
@@ -121,7 +121,7 @@ renderStory.story = {
 
 export const renderStoryWithCustomColor = () => (
   <LineChart
-    onDataPointClickHandler={action('onDataPointClickHandler')}
+    onDataPointClick={action('onDataPointClick')}
     labelKey={'name'}
     dataset={singleData}
     color={'red'}
@@ -142,8 +142,8 @@ renderStoryWithCustomColor.story = {
 export const renderLabelStory = () => {
   return (
     <LineChart
-      onDataPointClickHandler={action('onDataPointClickHandler')}
-      onLegendClickHandler={action('onLegendClickHandler')}
+      onDataPointClick={action('onDataPointClick')}
+      onLegendClick={action('onLegendClick')}
       labelKey={'name'}
       dataset={dataset}
       width={'95%'}

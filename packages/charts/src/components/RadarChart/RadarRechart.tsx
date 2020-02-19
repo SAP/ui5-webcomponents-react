@@ -13,7 +13,7 @@ import {
 } from 'recharts';
 import { useTheme } from 'react-jss';
 import { PieChartPlaceholder } from '../PieChart/Placeholder';
-import { ChartContainer } from '../../lib/next/ChartContainer';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 
 export interface RadarChartProps extends RechartBaseProps {}
 
@@ -27,8 +27,8 @@ const RadarChart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
     dataset,
     dataKeys,
     noLegend = false,
-    onDataPointClickHandler,
-    onLegendClickHandler,
+    onDataPointClick,
+    onLegendClick,
     chartConfig = {
       yAxisVisible: true,
       xAxisVisible: true,
@@ -56,8 +56,8 @@ const RadarChart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
 
   const onItemLegendClick = useCallback(
     (e) => {
-      if (onLegendClickHandler) {
-        onLegendClickHandler({
+      if (onLegendClick) {
+        onLegendClick({
           dataKey: currentDataKeys[0],
           value: e.value,
           chartType: e.type,
@@ -66,13 +66,13 @@ const RadarChart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onLegendClickHandler]
+    [onLegendClick]
   );
 
-  const onDataPointClick = useCallback(
+  const onDataPointClickInternal = useCallback(
     (e) => {
-      if (e && onDataPointClickHandler && e.value) {
-        onDataPointClickHandler({
+      if (e && onDataPointClick && e.value) {
+        onDataPointClick({
           value: e.value,
           dataKey: e.dataKey,
           name: e.payload.label,
@@ -81,7 +81,7 @@ const RadarChart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onDataPointClickHandler]
+    [onDataPointClick]
   );
 
   return (
@@ -100,7 +100,7 @@ const RadarChart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
         {currentDataKeys.map((key, index) => (
           <Radar
             key={index}
-            activeDot={{ onClick: onDataPointClick }}
+            activeDot={{ onClick: onDataPointClickInternal }}
             name={key}
             dataKey={key}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
@@ -114,5 +114,7 @@ const RadarChart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
     </ChartContainer>
   );
 });
+
+RadarChart.displayName = 'RadarChart';
 
 export { RadarChart };

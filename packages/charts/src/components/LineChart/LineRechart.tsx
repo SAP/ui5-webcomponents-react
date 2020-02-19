@@ -5,7 +5,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { CartesianGrid, Line, LineChart as LineChartLib, XAxis, YAxis, Tooltip, Legend, Brush } from 'recharts';
 import { useTheme } from 'react-jss';
 import { LineChartPlaceholder } from './Placeholder';
-import { ChartContainer } from '../../lib/next/ChartContainer';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export interface LineChartProps extends RechartBaseProps {}
@@ -20,8 +20,8 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
     dataset,
     dataKeys,
     noLegend = false,
-    onDataPointClickHandler,
-    onLegendClickHandler,
+    onDataPointClick,
+    onLegendClick,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
@@ -58,8 +58,8 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
 
   const onItemLegendClick = useCallback(
     (e) => {
-      if (onLegendClickHandler) {
-        onLegendClickHandler({
+      if (onLegendClick) {
+        onLegendClick({
           dataKey: e.dataKey,
           value: e.value,
           chartType: e.type,
@@ -68,13 +68,13 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onLegendClickHandler]
+    [onLegendClick]
   );
 
-  const onDataPointClick = useCallback(
+  const onDataPointClickInternal = useCallback(
     (e) => {
-      if (e && onDataPointClickHandler && e.value) {
-        onDataPointClickHandler({
+      if (e && onDataPointClick && e.value) {
+        onDataPointClick({
           value: e.value,
           dataKey: e.dataKey,
           xIndex: e.index,
@@ -82,7 +82,7 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onDataPointClickHandler]
+    [onDataPointClick]
   );
 
   return (
@@ -94,7 +94,11 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       height={height}
       ref={chartRef}
     >
-      <LineChartLib data={dataset} onClick={onDataPointClick} style={{ fontSize: parameters.sapUiFontSmallSize }}>
+      <LineChartLib
+        data={dataset}
+        onClick={onDataPointClickInternal}
+        style={{ fontSize: parameters.sapUiFontSmallSize }}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
@@ -122,7 +126,7 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
             dataKey={key}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             strokeWidth={chartConfig.strokeWidth}
-            activeDot={{ onClick: onDataPointClick }}
+            activeDot={{ onClick: onDataPointClickInternal }}
           />
         ))}
         {!noLegend && <Legend onClick={onItemLegendClick} />}
@@ -134,5 +138,7 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
     </ChartContainer>
   );
 });
+
+LineChart.displayName = 'LineChart';
 
 export { LineChart };

@@ -28,3 +28,5 @@ export const DonutChart = (props: PieChartProps) => {
     />
   );
 };
+
+DonutChart.displayName = 'DonutChart';

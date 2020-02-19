@@ -5,7 +5,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { Label, Pie, PieChart as PieChartLib, Tooltip, Legend, Cell } from 'recharts';
 import { useTheme } from 'react-jss';
 import { PieChartPlaceholder } from './Placeholder';
-import { ChartContainer } from '../../lib/next/ChartContainer';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 
 export interface PieChartProps extends RechartBaseProps {}
 
@@ -19,8 +19,8 @@ const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
     dataset,
     dataKeys,
     noLegend = false,
-    onDataPointClickHandler,
-    onLegendClickHandler,
+    onDataPointClick,
+    onLegendClick,
     chartConfig = {
       yAxisVisible: true,
       xAxisVisible: true,
@@ -49,8 +49,8 @@ const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
 
   const onItemLegendClick = useCallback(
     (e) => {
-      if (onLegendClickHandler) {
-        onLegendClickHandler({
+      if (onLegendClick) {
+        onLegendClick({
           dataKey: currentDataKeys[0],
           value: e.value,
           chartType: e.type,
@@ -59,13 +59,13 @@ const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onLegendClickHandler]
+    [onLegendClick]
   );
 
-  const onDataPointClick = useCallback(
+  const onDataPointClickInternal = useCallback(
     (e) => {
-      if (e && onDataPointClickHandler && e.value) {
-        onDataPointClickHandler({
+      if (e && onDataPointClick && e.value) {
+        onDataPointClick({
           value: e.value,
           dataKey: currentDataKeys[0],
           name: e.name,
@@ -73,7 +73,7 @@ const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onDataPointClickHandler]
+    [onDataPointClick]
   );
 
   return (
@@ -92,7 +92,7 @@ const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
           dataKey={currentDataKeys[0] ?? ''}
           data={dataset}
           label={chartConfig.dataLabel ?? false}
-          onClick={onDataPointClick}
+          onClick={onDataPointClickInternal}
         >
           {chartConfig.innerRadius && <Label position={'center'}>{currentDataKeys[0]}</Label>}
           {dataset &&
@@ -106,5 +106,7 @@ const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
     </ChartContainer>
   );
 });
+
+PieChart.displayName = 'PieChart';
 
 export { PieChart };
