@@ -12,7 +12,7 @@ const ChartContainer = forwardRef((props: ContainerProps, ref: Ref<any>) => {
   const { height, width, placeholder: PlaceholderComponent, loading = false, dataset } = props;
 
   return (
-    <div>
+    <div ref={ref}>
       {dataset ? (
         <div style={{ width, height }}>
           {loading && dataset.length > 0 && <Loader style={{ marginBottom: '1vh' }} />}

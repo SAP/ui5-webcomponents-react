@@ -1,6 +1,6 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
-import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart as MicroBarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartContainer } from '../../lib/next/ChartContainer';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
@@ -16,11 +16,11 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
     labelKey = 'name',
     dataKeys,
     width = '100%',
-    height = '500px',
+    height = '17vh',
     dataset,
     noLegend = false,
-    onDataPointClickHandler,
-    onLegendClickHandler,
+    onDataPointClick,
+    onLegendClick,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: false,
@@ -31,13 +31,13 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
       gridVertical: false,
       yAxisColor: ThemingParameters.sapNeutralBorderColor,
       legendPosition: 'bottom',
-      barSize: 20,
+      barSize: 5,
       barGap: 3,
       zoomingTool: false,
       strokeOpacity: 1,
       fillOpacity: 1,
       stacked: false,
-      dataLabel: false
+      dataLabel: true
     }
   } = props;
   useInitialize();
@@ -47,25 +47,10 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
   const currentDataKeys =
     dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
 
-  const onItemLegendClick = useCallback(
-    (e) => {
-      if (onLegendClickHandler) {
-        onLegendClickHandler({
-          dataKey: e.dataKey,
-          value: e.value,
-          chartType: e.type,
-          color: e.color,
-          payload: e.payload
-        });
-      }
-    },
-    [onLegendClickHandler]
-  );
-
-  const onDataPointClick = useCallback(
+  const onDataPointClickInternal = useCallback(
     (e, i) => {
-      if (e && onDataPointClickHandler) {
-        onDataPointClickHandler({
+      if (e && onDataPointClick) {
+        onDataPointClick({
           dataKey: Object.keys(e).filter((key) =>
             e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value && key !== 'value'
           )[0],
@@ -75,8 +60,33 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onDataPointClickHandler]
+    [onDataPointClick]
   );
+
+  const TiltedAxisTick = (props) => {
+    const { x, y, payload } = props;
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <text x={7} y={-10} textAnchor="begin" fill={ThemingParameters.sapContent_LabelColor}>
+          {payload.value}
+        </text>
+      </g>
+    );
+  };
+
+  const CustomizedLabel = (props) => {
+    const { x, y, value } = props;
+
+    const xText = chartRef.current ? chartRef.current.querySelector('.recharts-bar-rectangles').getBBox().width : 0;
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <text y={-7} dx={`${xText}px`} textAnchor={'end'} fill={ThemingParameters.sapContent_LabelColor}>
+          {value}
+        </text>
+      </g>
+    );
+  };
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -86,45 +96,41 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
       height={height}
       ref={chartRef}
     >
-      <BarChartLib
+      <MicroBarChartLib
         layout={'vertical'}
         data={dataset}
         style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}
         barGap={chartConfig.barGap}
+        label={
+          chartConfig.dataLabel && {
+            position: 'insideBottomRight',
+            fontFamily: ThemingParameters.sapUiFontFamily
+          }
+        }
       >
-        <CartesianGrid
-          vertical={chartConfig.gridVertical ?? false}
-          horizontal={chartConfig.gridHorizontal}
-          stroke={chartConfig.gridStroke}
+        <XAxis hide={true} unit={chartConfig.unit} type="number" />}
+        <YAxis
+          axisLine={chartConfig.yAxisVisible ?? false}
+          tick={<TiltedAxisTick />}
+          tickLine={false}
+          type="category"
+          dataKey={labelKey}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis unit={chartConfig.unit} type="number" />}
-        <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} type="category" dataKey={labelKey} />
-        {currentDataKeys.map((key, index) => (
-          <Bar
-            stackId={chartConfig.stacked ? 'A' : undefined}
-            strokeOpacity={chartConfig.strokeOpacity}
-            fillOpacity={chartConfig.fillOpacity}
-            label={
-              chartConfig.dataLabel && {
-                position: chartConfig.stacked ? 'inside' : 'right',
-                fontFamily: ThemingParameters.sapUiFontFamily
-              }
-            }
-            key={key}
-            name={key}
-            dataKey={key}
-            fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
-            stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
-            barSize={chartConfig.barSize}
-            onClick={onDataPointClick}
-          />
-        ))}
-        {!noLegend && <Legend onClick={onItemLegendClick} />}
+        <Bar
+          background={{ fillOpacity: 0.1, fill: `var(--sapUiChartAccent${(0 % 12) + 1})` }}
+          strokeOpacity={chartConfig.strokeOpacity}
+          fillOpacity={chartConfig.fillOpacity}
+          label={{ content: <CustomizedLabel external={width} /> }}
+          key={currentDataKeys[0]}
+          name={currentDataKeys[0]}
+          dataKey={currentDataKeys[0]}
+          fill={color ?? `var(--sapUiChartAccent${(0 % 12) + 1})`}
+          stroke={color ?? `var(--sapUiChartAccent${(0 % 12) + 1})`}
+          barSize={chartConfig.barSize}
+          onClick={onDataPointClickInternal}
+        />
         <Tooltip cursor={{ fillOpacity: 0.3 }} />
-        {chartConfig.zoomingTool && (
-          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />
-        )}
-      </BarChartLib>
+      </MicroBarChartLib>
     </ChartContainer>
   );
 });
