@@ -7,11 +7,14 @@ const escapeStringRegexp = require('escape-string-regexp');
 const PATHS = require('../../config/paths');
 const { highlightLog } = require('../utils');
 const { asyncCopyTo } = require('../../scripts/utils');
+const glob = require('glob');
 
 const rollupConfigFactory = (pkgName, externals = []) => {
   const LIB_BASE_PATH = path.resolve(PATHS.packages, pkgName, 'src', 'lib');
 
-  const allLibFiles = fs.readdirSync(LIB_BASE_PATH).filter((file) => fs.statSync(`${LIB_BASE_PATH}/${file}`).isFile());
+  const allFilesAndFolders = glob.sync(`${LIB_BASE_PATH}/**/*`);
+
+  const allLibFiles = allFilesAndFolders.filter((file) => fs.statSync(file).isFile());
 
   const plugins = [
     resolve({
@@ -53,11 +56,16 @@ const rollupConfigFactory = (pkgName, externals = []) => {
   );
 
   return allLibFiles.map((file) => ({
-    input: `${LIB_BASE_PATH}/${file}`,
+    input: file,
     external: (id) => EXTERNAL_MODULE_REGEX.test(id),
     output: [
       {
-        file: path.resolve(PATHS.packages, pkgName, 'lib', file.replace(/\.ts$/, '.js')),
+        file: path.resolve(
+          PATHS.packages,
+          pkgName,
+          'lib',
+          file.replace(`${LIB_BASE_PATH}${path.sep}`, '').replace(/\.ts$/, '.js')
+        ),
         format: 'es',
         sourcemap: true
       }

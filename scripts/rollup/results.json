@@ -4,15 +4,15 @@
       "filename": "charts.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "charts",
-      "size": 32235,
-      "gzip": 7687
+      "size": 31893,
+      "gzip": 7555
     },
     {
       "filename": "charts.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "charts",
-      "size": 32235,
-      "gzip": 7687
+      "size": 31893,
+      "gzip": 7555
     },
     {
       "filename": "base.development.js",
