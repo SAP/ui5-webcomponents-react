@@ -54,6 +54,7 @@ import { VirtualTableBody } from './virtualization/VirtualTableBody';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
 import { useColumnsDependencies } from './hooks/useColumnsDependencies';
+import { orderByFn } from './util';
 
 export interface ColumnConfiguration extends Column {
   accessor?: string;
@@ -199,6 +200,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       columns,
       data,
       defaultColumn: DefaultColumn,
+      orderByFn,
       getSubRows,
       stateReducer,
       webComponentsReactProperties: {
