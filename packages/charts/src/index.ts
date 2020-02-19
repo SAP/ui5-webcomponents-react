@@ -11,29 +11,15 @@ import { PieChart } from './lib/PieChart';
 import { PieChartPlaceholder } from './lib/PieChartPlaceholder';
 import { RadarChart } from './lib/RadarChart';
 import { RadialChart } from './lib/RadialChart';
-import { ColumnRechart } from './lib/next/ColumnRecharts';
-import { DonutRechart } from './lib/next/DonutRecharts';
-import { BarRechart } from './lib/next/BarRecharts';
-import { LineRechart } from './lib/next/LineRecharts';
-import { PieRechart } from './lib/next/PieRecharts';
-import { RadarRechart } from './lib/next/RadarRecharts';
-import { RadialRechart } from './lib/next/RadialRecharts';
 
 export {
   ColumnChart,
-  ColumnRechart,
   DonutChart,
-  DonutRechart,
   BarChart,
-  BarRechart,
   LineChart,
-  LineRechart,
   PieChart,
-  PieRechart,
   RadarChart,
-  RadarRechart,
   RadialChart,
-  RadialRechart,
   MicroBarChart,
   BarChartPlaceholder,
   ColumnChartPlaceholder,
