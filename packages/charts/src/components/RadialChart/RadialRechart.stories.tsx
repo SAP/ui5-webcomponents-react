@@ -1,5 +1,5 @@
 import React from 'react';
-import { RadialRechart } from './RadialRechart';
+import { RadialChart } from './RadialRechart';
 import { action } from '@storybook/addon-actions';
 
 const dataset = [
@@ -27,12 +27,12 @@ const dataset = [
 
 export default {
   title: 'Charts / RadialChart',
-  component: RadialRechart
+  component: RadialChart
 };
 
 export const renderStory = () => {
   return (
-    <RadialRechart
+    <RadialChart
       onDataPointClickHandler={action('onDataPointClickHandler')}
       onLegendClickHandler={action('onLegendClickHandler')}
       width={'100%'}
@@ -48,7 +48,7 @@ renderStory.story = {
 
 export const customColorStory = () => {
   return (
-    <RadialRechart
+    <RadialChart
       onDataPointClickHandler={action('onDataPointClickHandler')}
       onLegendClickHandler={action('onLegendClickHandler')}
       color={'lightblue'}
@@ -64,7 +64,7 @@ customColorStory.story = {
   name: 'With custom color'
 };
 
-export const loadingPlaceholder = () => <RadialRechart width={'30%'} />;
+export const loadingPlaceholder = () => <RadialChart width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'

@@ -5,11 +5,11 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { RadialBarChart as RadialBarChartLib, RadialBar, Tooltip, Legend } from 'recharts';
 import { useTheme } from 'react-jss';
 import { PieChartPlaceholder } from '../PieChart/Placeholder';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/ChartContainer';
+import { ChartContainer } from '../../lib/next/ChartContainer';
 
 export interface RadialChartProps extends RechartBaseProps {}
 
-const RadialRechart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
+const RadialChart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
@@ -91,4 +91,4 @@ const RadialRechart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
   );
 });
 
-export { RadialRechart };
+export { RadialChart };

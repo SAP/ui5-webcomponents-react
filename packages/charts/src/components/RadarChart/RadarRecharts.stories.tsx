@@ -1,5 +1,5 @@
 import React from 'react';
-import { RadarRechart } from './RadarRechart';
+import { RadarChart } from './RadarRechart';
 import { action } from '@storybook/addon-actions';
 
 const dataset = [
@@ -86,12 +86,12 @@ const singleData = [
 
 export default {
   title: 'Charts / RadarRechart',
-  component: RadarRechart
+  component: RadarChart
 };
 
 export const renderStory = () => {
   return (
-    <RadarRechart
+    <RadarChart
       onDataPointClickHandler={action('onDataPointClickHandler')}
       onLegendClickHandler={action('onLegendClickHandler')}
       dataset={dataset}
@@ -106,7 +106,7 @@ renderStory.story = {
 
 export const withCustomColorStory = () => {
   return (
-    <RadarRechart
+    <RadarChart
       onDataPointClickHandler={action('onDataPointClickHandler')}
       onLegendClickHandler={action('onLegendClickHandler')}
       color={'lightblue'}
@@ -121,7 +121,7 @@ withCustomColorStory.story = {
   name: 'With custom color'
 };
 
-export const loadingPlaceholder = () => <RadarRechart width={'30%'} />;
+export const loadingPlaceholder = () => <RadarChart width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
@@ -129,7 +129,7 @@ loadingPlaceholder.story = {
 
 export const withPolygonStory = () => {
   return (
-    <RadarRechart
+    <RadarChart
       onDataPointClickHandler={action('onDataPointClickHandler')}
       onLegendClickHandler={action('onLegendClickHandler')}
       dataset={dataset}

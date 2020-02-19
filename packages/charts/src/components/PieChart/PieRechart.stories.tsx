@@ -1,5 +1,5 @@
 import React from 'react';
-import { PieRechart } from './PieRechart';
+import { PieChart } from './PieRechart';
 import { action } from '@storybook/addon-actions';
 
 const dataset = [
@@ -55,12 +55,12 @@ const dataset = [
 
 export default {
   title: 'Charts / PieChart',
-  component: PieRechart
+  component: PieChart
 };
 
 export const renderStory = () => {
   return (
-    <PieRechart
+    <PieChart
       onLegendClickHandler={action('onDataPointClickHandler')}
       onDataPointClickHandler={action('onLegendClickHandler')}
       width={'50%'}
@@ -77,13 +77,7 @@ renderStory.story = {
 
 export const renderCustomColorStory = () => {
   return (
-    <PieRechart
-      width={'50%'}
-      dataset={dataset}
-      labelKey={'name'}
-      color={'lightblue'}
-      chartConfig={{ dataLabel: true }}
-    />
+    <PieChart width={'50%'} dataset={dataset} labelKey={'name'} color={'lightblue'} chartConfig={{ dataLabel: true }} />
   );
 };
 
@@ -91,7 +85,7 @@ renderCustomColorStory.story = {
   name: 'With custom color'
 };
 
-export const loadingPlaceholder = () => <PieRechart width={'30%'} />;
+export const loadingPlaceholder = () => <PieChart width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'

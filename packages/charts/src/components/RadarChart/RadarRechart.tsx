@@ -13,11 +13,11 @@ import {
 } from 'recharts';
 import { useTheme } from 'react-jss';
 import { PieChartPlaceholder } from '../PieChart/Placeholder';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/ChartContainer';
+import { ChartContainer } from '../../lib/next/ChartContainer';
 
 export interface RadarChartProps extends RechartBaseProps {}
 
-const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
+const RadarChart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
@@ -115,4 +115,4 @@ const RadarRechart = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
   );
 });
 
-export { RadarRechart };
+export { RadarChart };

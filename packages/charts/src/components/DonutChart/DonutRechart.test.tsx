@@ -1,15 +1,15 @@
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
 import { label, dataset } from '../../test/resources/RechartProps';
-import { DonutRechart } from './DonutRechart';
+import { DonutChart } from './DonutRechart';
 
-describe('DonutRechart', () => {
+describe('DonutChart', () => {
   test('Renders with data', () => {
-    renderThemedComponent(<DonutRechart width={'100%'} dataset={dataset} labelKey={label} />);
+    renderThemedComponent(<DonutChart width={'100%'} dataset={dataset} labelKey={label} />);
   });
 
   test('loading placeholder', () => {
-    const wrapper = mountThemedComponent(<DonutRechart width={'50%'} />);
+    const wrapper = mountThemedComponent(<DonutChart width={'50%'} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComposedRechart } from './ComposedRechart';
+import { ComposedChart } from './ComposedRechart';
 import { Line } from 'recharts';
 import { Bar } from 'recharts';
 import { action } from '@storybook/addon-actions';
@@ -81,11 +81,11 @@ const dataset = [
 
 export default {
   title: 'Charts / ComposedChart',
-  component: ComposedRechart
+  component: ComposedChart
 };
 
 export const renderComposedChart = () => (
-  <ComposedRechart
+  <ComposedChart
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
@@ -95,7 +95,7 @@ export const renderComposedChart = () => (
     <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
     <Line dataKey={'users'} color={'orange'} strokeOpacity={0.7} strokeWidth={3.5} />
     <Line dataKey={'volume'} color={'lightblue'} strokeWidth={2} />)
-  </ComposedRechart>
+  </ComposedChart>
 );
 
 renderComposedChart.story = {
@@ -103,9 +103,9 @@ renderComposedChart.story = {
 };
 
 export const renderComposedChartPlaceholder = () => (
-  <ComposedRechart width={'30%'} height={'40vh'} labelKey={'name'}>
+  <ComposedChart width={'30%'} height={'40vh'} labelKey={'name'}>
     <Line dataKey={'volume'} stroke={'lightblue'} strokeWidth={1} />)
-  </ComposedRechart>
+  </ComposedChart>
 );
 
 renderComposedChartPlaceholder.story = {
@@ -113,7 +113,7 @@ renderComposedChartPlaceholder.story = {
 };
 
 export const renderComposedStackedChart = () => (
-  <ComposedRechart
+  <ComposedChart
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
@@ -139,7 +139,7 @@ export const renderComposedStackedChart = () => (
     <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
     <Bar dataKey={'volume'} strokeWidth={2} />)
     <Line dataKey={'users'} color={'orange'} strokeOpacity={0.7} strokeWidth={3.5} />
-  </ComposedRechart>
+  </ComposedChart>
 );
 
 renderComposedStackedChart.story = {
@@ -147,7 +147,7 @@ renderComposedStackedChart.story = {
 };
 
 export const renderLabelComposedChart = () => (
-  <ComposedRechart
+  <ComposedChart
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
@@ -172,7 +172,7 @@ export const renderLabelComposedChart = () => (
   >
     <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
     <Line dataKey={'volume'} color={'lightblue'} strokeWidth={3} />)
-  </ComposedRechart>
+  </ComposedChart>
 );
 
 renderLabelComposedChart.story = {

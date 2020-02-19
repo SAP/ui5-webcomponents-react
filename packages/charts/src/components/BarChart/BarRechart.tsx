@@ -3,14 +3,14 @@ import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
 import { useTheme } from 'react-jss';
 import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/ChartContainer';
+import { ChartContainer } from '../../lib/next/ChartContainer';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { BarChartPlaceholder } from './Placeholder';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export interface BarChartProps extends RechartBaseProps {}
 
-const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
+const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
@@ -131,4 +131,4 @@ const BarRechart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   );
 });
 
-export { BarRechart };
+export { BarChart };

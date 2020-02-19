@@ -12,14 +12,14 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/ChartContainer';
+import { ChartContainer } from '../../lib/next/ChartContainer';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ColumnChartPlaceholder } from './Placeholder';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export interface ColumnChartProps extends RechartBaseProps {}
 
-const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
+const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
@@ -162,4 +162,4 @@ const ColumnRechart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
   );
 });
 
-export { ColumnRechart };
+export { ColumnChart };

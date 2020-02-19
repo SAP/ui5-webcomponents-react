@@ -5,11 +5,11 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { Label, Pie, PieChart as PieChartLib, Tooltip, Legend, Cell } from 'recharts';
 import { useTheme } from 'react-jss';
 import { PieChartPlaceholder } from './Placeholder';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/ChartContainer';
+import { ChartContainer } from '../../lib/next/ChartContainer';
 
 export interface PieChartProps extends RechartBaseProps {}
 
-const PieRechart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
+const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
@@ -107,4 +107,4 @@ const PieRechart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   );
 });
 
-export { PieRechart };
+export { PieChart };

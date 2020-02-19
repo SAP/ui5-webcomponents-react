@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineRechart } from './LineRechart';
+import { LineChart } from './LineRechart';
 import { action } from '@storybook/addon-actions';
 
 const dataset = [
@@ -98,12 +98,12 @@ const singleData = [
 
 export default {
   title: 'Charts / LineChart',
-  component: LineRechart
+  component: LineChart
 };
 
 export const renderStory = () => {
   return (
-    <LineRechart
+    <LineChart
       onDataPointClickHandler={action('onDataPointClickHandler')}
       onLegendClickHandler={action('onLegendPointClickHandler')}
       dataset={dataset}
@@ -120,7 +120,7 @@ renderStory.story = {
 };
 
 export const renderStoryWithCustomColor = () => (
-  <LineRechart
+  <LineChart
     onDataPointClickHandler={action('onDataPointClickHandler')}
     labelKey={'name'}
     dataset={singleData}
@@ -141,7 +141,7 @@ renderStoryWithCustomColor.story = {
 
 export const renderLabelStory = () => {
   return (
-    <LineRechart
+    <LineChart
       onDataPointClickHandler={action('onDataPointClickHandler')}
       onLegendClickHandler={action('onLegendClickHandler')}
       labelKey={'name'}
@@ -163,7 +163,7 @@ renderLabelStory.story = {
   name: 'With data labels'
 };
 
-export const loadingPlaceholder = () => <LineRechart width={'30%'} />;
+export const loadingPlaceholder = () => <LineChart width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
