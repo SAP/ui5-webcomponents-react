@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RadarRechart loading placeholder 1`] = `
+exports[`RadarChart loading placeholder 1`] = `
 <div>
   <div
     style="width: 50%; height: 500px;"
