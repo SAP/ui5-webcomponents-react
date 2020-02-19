@@ -89,8 +89,8 @@ export const renderComposedChart = () => (
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
-    onLegendClickHandler={action('onLegendClickHandler')}
-    onDataPointClickHandler={action('onDataPointClickHandler')}
+    onLegendClick={action('onLegendClick')}
+    onDataPointClick={action('onDataPointClick')}
   >
     <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
     <Line dataKey={'users'} color={'orange'} strokeOpacity={0.7} strokeWidth={3.5} />
@@ -118,8 +118,8 @@ export const renderComposedStackedChart = () => (
     height={'40vh'}
     dataset={dataset}
     labelKey={'name'}
-    onLegendClickHandler={action('onLegendClickHandler')}
-    onDataPointClickHandler={action('onDataPointClickHandler')}
+    onLegendClick={action('onLegendClick')}
+    onDataPointClick={action('onDataPointClick')}
     chartConfig={{
       yAxisVisible: true,
       xAxisVisible: true,
@@ -151,8 +151,8 @@ export const renderLabelComposedChart = () => (
     width={'95%'}
     height={'40vh'}
     dataset={dataset}
-    onLegendClickHandler={action('onLegendClickHandler')}
-    onDataPointClickHandler={action('onDataPointClickHandler')}
+    onLegendClick={action('onLegendClick')}
+    onDataPointClick={action('onDataPointClick')}
     chartConfig={{
       yAxisVisible: true,
       xAxisVisible: true,

@@ -61,8 +61,8 @@ export default {
 export const renderStory = () => {
   return (
     <PieChart
-      onLegendClickHandler={action('onDataPointClickHandler')}
-      onDataPointClickHandler={action('onLegendClickHandler')}
+      onLegendClick={action('onDataPointClick')}
+      onDataPointClick={action('onLegendClick')}
       width={'50%'}
       dataset={dataset}
       labelKey={'name'}

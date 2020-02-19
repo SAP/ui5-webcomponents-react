@@ -91,8 +91,8 @@ export default {
 
 export const defaultStory = () => (
   <ColumnChart
-    onDataPointClickHandler={action('onDataPointClickHandler')}
-    onLegendClickHandler={action('onLegendClickHandler')}
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
     dataset={dataset}
     width={'97%'}
     labelKey={'name'}
@@ -105,7 +105,7 @@ defaultStory.story = {
 
 export const withCustomColor = () => (
   <ColumnChart
-    onDataPointClickHandler={action('onDataPointClickHandler')}
+    onDataPointClick={action('onDataPointClick')}
     dataset={singleData}
     color={'red'}
     width={'95%'}
@@ -126,8 +126,8 @@ loadingPlaceholder.story = {
 
 export const defaultStackedStory = () => (
   <ColumnChart
-    onDataPointClickHandler={action('onDataPointClickHandler')}
-    onLegendClickHandler={action('onLegendClickHandler')}
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
     labelKey={'name'}
     dataset={dataset}
     width={'97%'}

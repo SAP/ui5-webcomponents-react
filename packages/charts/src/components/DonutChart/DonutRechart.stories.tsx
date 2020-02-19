@@ -61,8 +61,8 @@ export default {
 export const renderStory = () => {
   return (
     <DonutChart
-      onLegendClickHandler={action('onLegendClickHandler')}
-      onDataPointClickHandler={action('onDataPointClickHandler')}
+      onLegendClick={action('onLegendClick')}
+      onDataPointClick={action('onDataPointClick')}
       width={'50%'}
       dataset={dataset}
       labelKey={'name'}
@@ -78,8 +78,8 @@ renderStory.story = {
 export const renderCustomColorStory = () => {
   return (
     <DonutChart
-      onLegendClickHandler={action('onLegendClickHandler')}
-      onDataPointClickHandler={action('onDataPointClickHandler')}
+      onLegendClick={action('onLegendClick')}
+      onDataPointClick={action('onDataPointClick')}
       width={'50%'}
       dataset={dataset}
       labelKey={'name'}
@@ -96,8 +96,8 @@ renderCustomColorStory.story = {
 export const withPaddingStory = () => {
   return (
     <DonutChart
-      onLegendClickHandler={action('onLegendClickHandler')}
-      onDataPointClickHandler={action('onDataPointClickHandler')}
+      onLegendClick={action('onLegendClick')}
+      onDataPointClick={action('onDataPointClick')}
       width={'50%'}
       dataset={dataset}
       labelKey={'name'}
@@ -113,8 +113,8 @@ withPaddingStory.story = {
 export const withCustomnRadiusStory = () => {
   return (
     <DonutChart
-      onLegendClickHandler={action('onLegendClickHandler')}
-      onDataPointClickHandler={action('onDataPointClickHandler')}
+      onLegendClick={action('onLegendClick')}
+      onDataPointClick={action('onDataPointClick')}
       width={'50%'}
       dataset={dataset}
       labelKey={'name'}

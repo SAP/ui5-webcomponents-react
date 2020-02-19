@@ -92,8 +92,8 @@ export default {
 export const renderStory = () => {
   return (
     <RadarChart
-      onDataPointClickHandler={action('onDataPointClickHandler')}
-      onLegendClickHandler={action('onLegendClickHandler')}
+      onDataPointClick={action('onDataPointClick')}
+      onLegendClick={action('onLegendClick')}
       dataset={dataset}
       width={'50%'}
     />
@@ -107,8 +107,8 @@ renderStory.story = {
 export const withCustomColorStory = () => {
   return (
     <RadarChart
-      onDataPointClickHandler={action('onDataPointClickHandler')}
-      onLegendClickHandler={action('onLegendClickHandler')}
+      onDataPointClick={action('onDataPointClick')}
+      onLegendClick={action('onLegendClick')}
       color={'lightblue'}
       dataset={singleData}
       labelKey={'name'}
@@ -130,8 +130,8 @@ loadingPlaceholder.story = {
 export const withPolygonStory = () => {
   return (
     <RadarChart
-      onDataPointClickHandler={action('onDataPointClickHandler')}
-      onLegendClickHandler={action('onLegendClickHandler')}
+      onDataPointClick={action('onDataPointClick')}
+      onLegendClick={action('onLegendClick')}
       dataset={dataset}
       width={'50%'}
       chartConfig={{ polarGridType: 'polygon' }}

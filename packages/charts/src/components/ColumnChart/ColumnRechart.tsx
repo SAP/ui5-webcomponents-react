@@ -1,6 +1,9 @@
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ColumnChartPlaceholder';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
-import { useTheme } from 'react-jss';
 import {
   Bar as Column,
   BarChart as ColumnChartLib,
@@ -12,10 +15,6 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartContainer } from '../../lib/next/ChartContainer';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
-import { ColumnChartPlaceholder } from './Placeholder';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export interface ColumnChartProps extends RechartBaseProps {}
 
@@ -29,8 +28,8 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
     dataset,
     dataKeys,
     noLegend = false,
-    onDataPointClickHandler,
-    onLegendClickHandler,
+    onDataPointClick,
+    onLegendClick,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
@@ -58,7 +57,6 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
 
   useInitialize();
 
-  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
   const currentDataKeys =
@@ -71,8 +69,8 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
 
   const onItemLegendClick = useCallback(
     (e) => {
-      if (onLegendClickHandler) {
-        onLegendClickHandler({
+      if (onLegendClick) {
+        onLegendClick({
           dataKey: e.dataKey,
           value: e.value,
           chartType: e.type,
@@ -81,13 +79,13 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onLegendClickHandler]
+    [onLegendClick]
   );
 
-  const onDataPointClick = useCallback(
+  const onDataPointClickInternal = useCallback(
     (e, i) => {
-      if (e && onDataPointClickHandler) {
-        onDataPointClickHandler({
+      if (e && onDataPointClick) {
+        onDataPointClick({
           dataKey: Object.keys(e).filter((key) =>
             e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value && key !== 'value'
           )[0],
@@ -97,7 +95,7 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onDataPointClickHandler]
+    [onDataPointClick]
   );
 
   return (
@@ -112,7 +110,7 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
       <ColumnChartLib
         margin={{ top: 15 }}
         data={dataset}
-        style={{ fontSize: parameters.sapUiFontSmallSize }}
+        style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}
         barGap={chartConfig.barGap}
       >
         <CartesianGrid
@@ -140,7 +138,7 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
             label={
               chartConfig.dataLabel && {
                 position: chartConfig.stacked ? 'inside' : 'top',
-                fontFamily: parameters.sapUiFontFamily
+                fontFamily: ThemingParameters.sapUiFontFamily
               }
             }
             key={key}
@@ -149,7 +147,7 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
             fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             barSize={chartConfig.barSize}
-            onClick={onDataPointClick}
+            onClick={onDataPointClickInternal}
           />
         ))}
         {!noLegend && <Legend onClick={onItemLegendClick} />}
@@ -161,5 +159,7 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
     </ChartContainer>
   );
 });
+
+ColumnChart.displayName = 'ColumnChart';
 
 export { ColumnChart };

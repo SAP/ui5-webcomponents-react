@@ -1,12 +1,11 @@
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
-import { useTheme } from 'react-jss';
 import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartContainer } from '../../lib/next/ChartContainer';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
-import { BarChartPlaceholder } from './Placeholder';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export interface BarChartProps extends RechartBaseProps {}
 
@@ -20,8 +19,8 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
     height = '500px',
     dataset,
     noLegend = false,
-    onDataPointClickHandler,
-    onLegendClickHandler,
+    onDataPointClick,
+    onLegendClick,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
@@ -43,7 +42,6 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   } = props;
   useInitialize();
 
-  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
 
   const currentDataKeys =
@@ -51,8 +49,8 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
 
   const onItemLegendClick = useCallback(
     (e) => {
-      if (onLegendClickHandler) {
-        onLegendClickHandler({
+      if (onLegendClick) {
+        onLegendClick({
           dataKey: e.dataKey,
           value: e.value,
           chartType: e.type,
@@ -61,13 +59,13 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onLegendClickHandler]
+    [onLegendClick]
   );
 
-  const onDataPointClick = useCallback(
+  const onDataPointClickInternal = useCallback(
     (e, i) => {
-      if (e && onDataPointClickHandler) {
-        onDataPointClickHandler({
+      if (e && onDataPointClick) {
+        onDataPointClick({
           dataKey: Object.keys(e).filter((key) =>
             e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value && key !== 'value'
           )[0],
@@ -77,7 +75,7 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onDataPointClickHandler]
+    [onDataPointClick]
   );
   return (
     <ChartContainer
@@ -91,7 +89,7 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       <BarChartLib
         layout={'vertical'}
         data={dataset}
-        style={{ fontSize: parameters.sapUiFontSmallSize }}
+        style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}
         barGap={chartConfig.barGap}
       >
         <CartesianGrid
@@ -99,11 +97,7 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        <XAxis
-          hide={chartConfig.xAxisVisible ? !chartConfig.xAxisVisible : true}
-          unit={chartConfig.unit}
-          type="number"
-        />
+        {(chartConfig.xAxisVisible ?? true) && <XAxis unit={chartConfig.unit} type="number" />}
         <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} type="category" dataKey={labelKey} />
         {currentDataKeys.map((key, index) => (
           <Bar
@@ -112,8 +106,8 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
             fillOpacity={chartConfig.fillOpacity}
             label={
               chartConfig.dataLabel && {
-                position: chartConfig.stacked ? 'inside' : 'insideRight',
-                fontFamily: parameters.sapUiFontFamily
+                position: chartConfig.stacked ? 'inside' : 'right',
+                fontFamily: ThemingParameters.sapUiFontFamily
               }
             }
             key={key}
@@ -122,7 +116,7 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
             fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             barSize={chartConfig.barSize}
-            onClick={onDataPointClick}
+            onClick={onDataPointClickInternal}
           />
         ))}
         {!noLegend && <Legend onClick={onItemLegendClick} />}
@@ -134,5 +128,7 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
     </ChartContainer>
   );
 });
+
+BarChart.displayName = 'BarChart';
 
 export { BarChart };

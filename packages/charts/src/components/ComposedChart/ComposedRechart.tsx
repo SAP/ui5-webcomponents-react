@@ -1,12 +1,11 @@
-import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback, useMemo } from 'react';
-import { ComposedChart as ComposedChartLib, Legend, Tooltip, YAxis, XAxis, CartesianGrid, Brush } from 'recharts';
-import { LineChartPlaceholder } from '../..';
-import { useTheme } from 'react-jss';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartContainer } from '../../lib/next/ChartContainer';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback, useMemo } from 'react';
+import { Brush, CartesianGrid, ComposedChart as ComposedChartLib, Legend, Tooltip, XAxis, YAxis } from 'recharts';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
 export interface ComposedChartProps extends RechartBaseProps {
   children?: ReactNode;
@@ -21,8 +20,8 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
     dataset,
     labelKey = 'name',
     children,
-    onDataPointClickHandler,
-    onLegendClickHandler,
+    onDataPointClick,
+    onLegendClick,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
@@ -46,8 +45,21 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
 
   useInitialize();
 
-  const { parameters }: any = useTheme();
   const chartRef = useConsolidatedRef<any>(ref);
+
+  const onDataPointClickInternal = useCallback(
+    (e, i, line) => {
+      if (e && onDataPointClick) {
+        onDataPointClick({
+          value: e.value,
+          xIndex: i,
+          dataKey: line ? e.dataKey : Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
+          payload: e.payload
+        });
+      }
+    },
+    [onDataPointClick]
+  );
 
   type ChildClone = ReactNode & { props: any };
   const childrenClone = useMemo(
@@ -61,22 +73,22 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
               ? {
                   type: 'monotone',
                   stroke: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
-                  label: chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily },
+                  label: chartConfig.dataLabel && { position: 'top', fontFamily: ThemingParameters.sapUiFontFamily },
                   yAxisId:
                     chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
                       ? 'right'
                       : 'left',
-                  activeDot: { onClick: (e, i) => onDataPointClick(e, i, true) }
+                  activeDot: { onClick: (e, i) => onDataPointClickInternal(e, i, true) }
                 }
               : {
                   fill: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
-                  label: chartConfig.dataLabel && { position: 'top', fontFamily: parameters.sapUiFontFamily },
+                  label: chartConfig.dataLabel && { position: 'top', fontFamily: ThemingParameters.sapUiFontFamily },
                   stackId: chartConfig.stacked ? 'A' : undefined,
                   yAxisId:
                     chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
                       ? 'right'
                       : 'left',
-                  onClick: (e, i) => onDataPointClick(e, i, false)
+                  onClick: (e, i) => onDataPointClickInternal(e, i, false)
                 }
           );
         }
@@ -86,8 +98,8 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
 
   const onItemLegendClick = useCallback(
     (e, i) => {
-      if (onLegendClickHandler) {
-        onLegendClickHandler({
+      if (onLegendClick) {
+        onLegendClick({
           dataKey: e.dataKey,
           index: i,
           value: e.value,
@@ -97,23 +109,9 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
         });
       }
     },
-    [onLegendClickHandler]
+    [onLegendClick]
   );
 
-  const onDataPointClick = useCallback(
-    (e, i, line) => {
-      if (e && onDataPointClickHandler) {
-        onDataPointClickHandler({
-          value: e.value,
-          xIndex: i,
-          dataKey: line ? e.dataKey : Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
-          payload: e.payload
-        });
-      }
-    },
-    [onDataPointClickHandler]
-  );
-  console.log(chartConfig);
   return (
     <ChartContainer
       ref={chartRef}
@@ -123,7 +121,7 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
       dataset={dataset}
       placeholder={LineChartPlaceholder}
     >
-      <ComposedChartLib ref={chartRef} style={{ fontSize: parameters.sapUiFontSmallSize }} data={dataset}>
+      <ComposedChartLib ref={chartRef} style={{ fontSize: ThemingParameters.sapUiFontSmallSize }} data={dataset}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
@@ -150,5 +148,7 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
     </ChartContainer>
   );
 });
+
+ComposedChart.displayName = 'ComposedChart';
 
 export { ComposedChart };

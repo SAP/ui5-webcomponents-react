@@ -3,12 +3,12 @@ import { ChartContainerProps } from './ChartContainerProps';
 
 export interface RechartBaseProps extends ChartContainerProps {
   labelKey?: string;
-  dataKeys?: Array<string>;
+  dataKeys?: string[];
   noLegend?: boolean;
-  onDataPointClickHandler?: (object) => void;
-  onLegendClickHandler?: (object) => void;
+  onDataPointClick?: (object) => void;
+  onLegendClick?: (object) => void;
   color?: string;
-  colors?: Array<CSSProperties['color']>;
+  colors?: CSSProperties['color'][];
 
   chartConfig?: {
     yAxisVisible?: boolean;

@@ -103,8 +103,8 @@ export default {
 
 export const defaultStory = () => (
   <BarChart
-    onDataPointClickHandler={action('onDataPointClickHandler')}
-    onLegendClickHandler={action('onLegendClickHandler')}
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
     dataset={dataset}
     width={'97%'}
     height={'95vh'}
@@ -117,7 +117,7 @@ defaultStory.story = {
 
 export const withCustomColor = () => (
   <BarChart
-    onDataPointClickHandler={action('onDataPointClickHandler')}
+    onDataPointClick={action('onDataPointClick')}
     dataset={singleData}
     labelKey={'name'}
     color={'red'}
@@ -139,8 +139,8 @@ loadingPlaceholder.story = {
 
 export const defaultStackedStory = () => (
   <BarChart
-    onDataPointClickHandler={action('onDataPointClickHandler')}
-    onLegendClickHandler={action('onLegendClickHandler')}
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
     labelKey={'name'}
     width={'91%'}
     dataset={dataset}
