@@ -1,6 +1,7 @@
 import { PieChart } from '../PieChart/PieRechart';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import React, { forwardRef } from 'react';
+import { LineChart } from '../LineChart/LineRechart';
 
 export interface PieChartProps extends RechartBaseProps {}
 
@@ -14,6 +15,8 @@ export const DonutChart = forwardRef((props: PieChartProps, ref) => {
       innerRadius: undefined
     }
   } = props;
+
+  DonutChart.displayName = 'DonutChart';
 
   return (
     <PieChart
