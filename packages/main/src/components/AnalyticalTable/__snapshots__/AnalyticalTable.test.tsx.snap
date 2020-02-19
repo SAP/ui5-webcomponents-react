@@ -4079,78 +4079,9 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable--tr- AnalyticalTable--emptyRow-"
-            role="row"
-            style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
-          >
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
-            />
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
-            />
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
-            />
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
-            />
-          </div>
-          <div
-            aria-rowindex="1"
-            class="AnalyticalTable--tr- AnalyticalTable--emptyRow-"
-            role="row"
-            style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
-          >
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
-            />
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
-            />
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
-            />
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
-            />
-          </div>
-          <div
-            aria-rowindex="2"
-            class="AnalyticalTable--tr- AnalyticalTable--emptyRow-"
-            role="row"
-            style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
-          >
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
-            />
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
-            />
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
-            />
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
-            />
-          </div>
-          <div
-            aria-rowindex="3"
             class="AnalyticalTable--tr-"
             role="row"
-            style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
+            style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
             <div
               class="AnalyticalTable--tableCell-"
@@ -4202,10 +4133,10 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </div>
           </div>
           <div
-            aria-rowindex="4"
+            aria-rowindex="1"
             class="AnalyticalTable--tr-"
             role="row"
-            style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
+            style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
             <div
               class="AnalyticalTable--tableCell-"
@@ -4255,6 +4186,75 @@ exports[`AnalyticalTable test Asc desc 3`] = `
                 50
               </span>
             </div>
+          </div>
+          <div
+            aria-rowindex="2"
+            class="AnalyticalTable--tr- AnalyticalTable--emptyRow-"
+            role="row"
+            style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
+          >
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
+            />
+          </div>
+          <div
+            aria-rowindex="3"
+            class="AnalyticalTable--tr- AnalyticalTable--emptyRow-"
+            role="row"
+            style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
+          >
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
+            />
+          </div>
+          <div
+            aria-rowindex="4"
+            class="AnalyticalTable--tr- AnalyticalTable--emptyRow-"
+            role="row"
+            style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
+          >
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable--tableCell-"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
+            />
           </div>
         </div>
       </div>
