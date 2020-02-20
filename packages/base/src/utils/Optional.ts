@@ -1,3 +1,5 @@
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
+
 /* eslint-disable id-blacklist */
 /**
  * Optionals for Javascript Objects
@@ -17,6 +19,11 @@ class Optional {
   constructor(object: object, path: string) {
     this.object = object;
     this.path = path;
+
+    deprecationNotice(
+      'Optional',
+      "'@ui5/webcomponents-react-base/lib/Optional' is deprecated and will be removed in the next major release.\n. Please use the Optional-Chaining-Operator instead."
+    );
   }
 
   /**

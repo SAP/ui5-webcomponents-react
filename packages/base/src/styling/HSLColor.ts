@@ -1,3 +1,5 @@
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
+
 export class HSLColor {
   private static HSL_REGEX = /(\d{0,3}\.?\d*?), ?(\d{0,3}\.?\d*?)%?, ?(\d{0,3}\.?\d*?)%?/;
   private static HEX_REGEX = /^#([a-f\d]{1,2})([a-f\d]{1,2})([a-f\d]{1,2})$/i;
@@ -12,6 +14,11 @@ export class HSLColor {
     this.saturation = saturation;
     this.lightness = lightness;
     this.alpha = alpha;
+
+    deprecationNotice(
+      'HSLColor',
+      "'@ui5/webcomponents-react-base/lib/HSLColor' is deprecated and will be removed in the next major release."
+    );
   }
 
   static of(hue: number | string | HSLColor, saturation?: number, lightness?: number, alpha?: number): HSLColor {
