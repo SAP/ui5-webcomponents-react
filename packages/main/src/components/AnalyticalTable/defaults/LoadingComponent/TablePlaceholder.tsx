@@ -1,11 +1,11 @@
+import * as parameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import React, { CSSProperties, FC, useMemo } from 'react';
 import ContentLoader from 'react-content-loader';
-import { useTheme } from 'react-jss';
-import { JSSTheme } from '../../../../interfaces/JSSTheme';
 
 const getArrayOfLength = (len) => Array.from(Array(len).keys());
 
-const TableRow: FC<{ columns: number; y: number; row: number }> = ({ columns, y, row }) => {
+type RowProps = { columns: number; y: number; row: number };
+const TableRow: FC<RowProps> = ({ columns, y, row }: RowProps) => {
   let columnOffset = 0;
   return (
     <>
@@ -20,12 +20,9 @@ const TableRow: FC<{ columns: number; y: number; row: number }> = ({ columns, y,
   );
 };
 
-export const TablePlaceholder: FC<{ columns: number; rows: number; style: CSSProperties; rowHeight: number }> = (
-  props
-) => {
-  const { columns, rows, style, rowHeight } = props;
-
-  const { parameters } = useTheme() as JSSTheme;
+type Props = { columns: number; rows: number; style: CSSProperties; rowHeight: number };
+export const TablePlaceholder: FC<Props> = (props: Props) => {
+  const { columns = 3, rows = 5, style, rowHeight } = props;
 
   const height = rows * rowHeight;
   const width = columns * 65;
@@ -44,18 +41,13 @@ export const TablePlaceholder: FC<{ columns: number; rows: number; style: CSSPro
       height={height}
       width={width}
       speed={2}
-      primaryColor={parameters.sapUiContentImagePlaceholderBackground}
-      secondaryColor={parameters.sapUiFieldPlaceholderTextColor}
-      primaryOpacity={(parameters.sapUiContentDisabledOpacity as undefined) as number}
+      backgroundColor={parameters.sapContent_ImagePlaceholderBackground}
+      foregroundColor={parameters.sapContent_ImagePlaceholderForegroundColor}
+      backgroundOpacity={parameters.sapContent_DisabledOpacity as any}
     >
       {getArrayOfLength(rows).map((_, index) => (
         <TableRow key={index} columns={columns} y={rowHeight * index + rowHeight / 2} row={index} />
       ))}
     </ContentLoader>
   );
-};
-
-TablePlaceholder.defaultProps = {
-  rows: 5,
-  columns: 3
 };
