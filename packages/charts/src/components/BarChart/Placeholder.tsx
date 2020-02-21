@@ -1,5 +1,6 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
+import * as parameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export const BarChartPlaceholder = () => {
   return (
@@ -7,9 +8,9 @@ export const BarChartPlaceholder = () => {
       height={145}
       width={165}
       speed={2}
-      primaryColor="#6a6d70"
-      secondaryColor="#d9d9d9"
-      primaryOpacity={0.3}
+      backgroundColor={parameters.sapContent_ImagePlaceholderBackground}
+      foregroundColor={parameters.sapContent_ImagePlaceholderForegroundColor}
+      backgroundOpacity={parameters.sapContent_DisabledOpacity as any}
     >
       <rect x="20" y="10" width="1" height="135" />
       <rect x="20" y="20" width="85" height="15" />
