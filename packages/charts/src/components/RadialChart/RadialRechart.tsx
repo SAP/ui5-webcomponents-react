@@ -3,100 +3,73 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
-import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
-import { Legend, RadialBar, RadialBarChart as RadialBarChartLib, Tooltip, PolarAngleAxis } from 'recharts';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import React, { CSSProperties, FC, forwardRef, Ref, useMemo } from 'react';
+import { PolarAngleAxis, RadialBar, RadialBarChart as RadialBarChartLib } from 'recharts';
 
-export interface RadialChartProps extends RechartBaseProps {}
+interface RadialChartProps extends CommonProps {
+  value: number;
+  maxValue?: number;
+  displayValue: number | string;
+  color?: CSSProperties['color'];
+  height?: number | string;
+  width?: number | string;
+}
 
-const RadialChart = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
-  const {
-    color,
-    loading,
-    labelKey = 'label',
-    width = '100%',
-    height = '500px',
-    dataset,
-    dataKeys,
-    noLegend = false,
-    onDataPointClick,
-    chartConfig = {
-      yAxisVisible: true,
-      xAxisVisible: true,
-      legendVisible: true,
-      gridHorizontal: true,
-      gridVertical: true,
-      legendPosition: 'bottom',
-      strokeWidth: 1,
-      zoomingTool: false,
-      strokeOpacity: 1,
-      dataLabel: true,
-      paddingAngle: 0,
-      innerRadius: '20%',
-      barSize: 100
-    }
-  } = props;
+/**
+ * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/next/RadialChart';</code>
+ */
+const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
+  const { maxValue = 100, value, displayValue, style, className, color, width = 300, height = 300, tooltip } = props;
 
   useInitialize();
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys =
-    dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+  const range = useMemo(() => {
+    return [0, maxValue];
+  }, [maxValue]);
 
-  const onDataPointClickInternal = useCallback(
-    (e) => {
-      if (e && onDataPointClick && e.value) {
-        onDataPointClick({
-          value: e.value,
-          dataKey: Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
-          name: e.name,
-          payload: e.payload
-        });
-      }
-    },
-    [onDataPointClick]
-  );
-
-  const circleSize = 300;
+  const dataset = useMemo(() => [{ value }], [value]);
 
   return (
     <ChartContainer
       dataset={dataset}
       ref={chartRef}
-      loading={loading}
       placeholder={PieChartPlaceholder}
-      width={width}
+      width={width as any}
       height={height}
+      style={style}
+      className={className}
+      tooltip={tooltip}
     >
       <RadialBarChartLib
-        innerRadius={chartConfig.innerRadius}
-        outerRadius={100}
+        innerRadius="90%"
+        outerRadius="100%"
         barSize={10}
         data={dataset}
-        style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}
-        cx={circleSize / 2}
-        cy={circleSize / 2}
+        cx="50%"
+        cy="50%"
         startAngle={90}
         endAngle={-270}
       >
-        <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
+        <PolarAngleAxis type="number" domain={range} tick={false} />
         <RadialBar
-          background={{ fillOpacity: 0.05, fill: `var(--sapUiChartAccent(1}}` }}
-          dataKey={'value'}
-          cornerRadius={circleSize / 2}
+          background={{ fill: ThemingParameters.sapContent_ImagePlaceholderBackground }}
+          dataKey="value"
+          cornerRadius="50%"
           fill={color ?? `var(--sapUiChartAccent${(0 % 12) + 1})`}
         />
         <text
-          x={circleSize / 2}
-          y={circleSize / 2}
+          x="50%"
+          y="50%"
           textAnchor="middle"
           dominantBaseline="middle"
           className="progress-label"
+          style={{ fontSize: ThemingParameters.sapMFontHeader3Size, fill: ThemingParameters.sapTextColor }}
         >
-          67%
+          {displayValue}
         </text>
-        <Tooltip />
       </RadialBarChartLib>
     </ChartContainer>
   );

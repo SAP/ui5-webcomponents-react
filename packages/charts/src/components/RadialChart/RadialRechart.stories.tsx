@@ -1,6 +1,6 @@
+import { number, text } from '@storybook/addon-knobs';
+import { RadialChart } from '@ui5/webcomponents-react-charts/lib/next/RadialChart';
 import React from 'react';
-import { RadialChart } from './RadialRechart';
-import { action } from '@storybook/addon-actions';
 
 const dataset = [{ name: 'L1', value: 67 }];
 
@@ -12,11 +12,10 @@ export default {
 export const renderStory = () => {
   return (
     <RadialChart
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
-      width={'100%'}
-      labelKey={'xValue'}
-      dataset={dataset}
+      value={number('value', 67)}
+      displayValue={text('displayValue', '67%')}
+      width={text('width', '300px')}
+      height={text('height', '300px')}
     />
   );
 };
@@ -28,23 +27,16 @@ renderStory.story = {
 export const customColorStory = () => {
   return (
     <RadialChart
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
-      color={'lightblue'}
-      width={'100%'}
-      labelKey={'xValue'}
-      dataset={dataset}
-      chartConfig={{ dataLabel: true, innerRadius: '30%' }}
+      value={number('value', 150)}
+      displayValue={text('displayValue', '150l')}
+      maxValue={number('maxValue', 250)}
+      width={text('width', '300px')}
+      height={text('height', '300px')}
+      color={text('color', '#f0ab00')}
     />
   );
 };
 
 customColorStory.story = {
-  name: 'With custom color'
-};
-
-export const loadingPlaceholder = () => <RadialChart width={'30%'} />;
-
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
+  name: 'with custom color'
 };
