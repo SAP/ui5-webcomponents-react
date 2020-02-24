@@ -4,7 +4,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
-import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback, useMemo } from 'react';
+import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback, useMemo, FC } from 'react';
 import { Brush, CartesianGrid, ComposedChart as ComposedChartLib, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
@@ -13,7 +13,10 @@ export interface ComposedChartProps extends RechartBaseProps {
   placeHolder?: ComponentType<unknown>;
 }
 
-const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
+/**
+ * <code>import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/next/ComposedChart';</code>
+ */
+const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
   const {
     height = '500px',
     width = '100%',
@@ -41,7 +44,11 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
         dataKey: undefined,
         color: ThemingParameters.sapNeutralBorderColor
       }
-    }
+    },
+    style,
+    className,
+    tooltip,
+    slot
   } = props;
 
   useInitialize();
@@ -125,6 +132,10 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
       loading={loading}
       dataset={dataset}
       placeholder={LineChartPlaceholder}
+      style={style}
+      className={className}
+      tooltip={tooltip}
+      slot={slot}
     >
       <ComposedChartLib ref={chartRef} data={dataset}>
         <CartesianGrid

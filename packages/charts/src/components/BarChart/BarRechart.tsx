@@ -4,14 +4,17 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
-import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
+import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
+import React, { forwardRef, Ref, useCallback, FC } from 'react';
 import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useResolveDataKeys } from '../../internal/useResolveDataKeys';
 
-export interface BarChartProps extends RechartBaseProps {}
+type BarChartProps = RechartBaseProps;
 
-const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
+/**
+ * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';</code>
+ */
+const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
@@ -40,7 +43,11 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       fillOpacity: 1,
       stacked: false,
       dataLabel: false
-    }
+    },
+    style,
+    className,
+    tooltip,
+    slot
   } = props;
   useInitialize();
 
@@ -90,6 +97,10 @@ const BarChart = forwardRef((props: BarChartProps, ref: Ref<any>) => {
       width={width}
       height={height}
       ref={chartRef}
+      style={style}
+      className={className}
+      tooltip={tooltip}
+      slot={slot}
     >
       <BarChartLib layout={'vertical'} data={dataset} barGap={chartConfig.barGap}>
         <CartesianGrid

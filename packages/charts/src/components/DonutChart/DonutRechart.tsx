@@ -2,8 +2,11 @@ import { PieChart } from '../PieChart/PieRechart';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import React, { forwardRef, FC } from 'react';
 
-export interface PieChartProps extends RechartBaseProps {}
+type PieChartProps = RechartBaseProps;
 
+/**
+ * <code>import { DonutChart } from '@ui5/webcomponents-react-charts/lib/next/DonutChart';</code>
+ */
 const DonutChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref) => {
   const {
     chartConfig = {

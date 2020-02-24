@@ -7,10 +7,13 @@ import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartCo
 import React, { forwardRef, Ref, useCallback, useMemo, FC } from 'react';
 import { Brush, CartesianGrid, Legend, Line, LineChart as LineChartLib, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useResolveDataKeys } from '../../internal/useResolveDataKeys';
+import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 
-export interface LineChartProps extends RechartBaseProps {}
+type LineChartProps = RechartBaseProps;
 
+/**
+ * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/next/LineChart';</code>
+ */
 const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
     color,
@@ -41,7 +44,11 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         name: undefined,
         color: ThemingParameters.sapNeutralBorderColor
       }
-    }
+    },
+    style,
+    className,
+    tooltip,
+    slot
   } = props;
 
   useInitialize();
@@ -96,6 +103,10 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       width={width}
       height={height}
       ref={chartRef}
+      style={style}
+      className={className}
+      tooltip={tooltip}
+      slot={slot}
     >
       <LineChartLib data={dataset} onClick={onDataPointClickInternal}>
         <CartesianGrid

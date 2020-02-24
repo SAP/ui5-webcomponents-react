@@ -6,10 +6,13 @@ import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChar
 import React, { forwardRef, Ref, useCallback, FC } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useResolveDataKeys } from '../../internal/useResolveDataKeys';
+import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 
-export interface PieChartProps extends RechartBaseProps {}
+type PieChartProps = RechartBaseProps;
 
+/**
+ * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';</code>
+ */
 const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   const {
     color,
@@ -37,7 +40,11 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       dataLabel: false,
       paddingAngle: 0,
       innerRadius: undefined
-    }
+    },
+    style,
+    className,
+    tooltip,
+    slot
   } = props;
 
   useInitialize();
@@ -87,6 +94,10 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       placeholder={PieChartPlaceholder}
       width={width}
       height={height}
+      style={style}
+      className={className}
+      tooltip={tooltip}
+      slot={slot}
     >
       <PieChartLib>
         <Pie

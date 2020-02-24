@@ -6,23 +6,28 @@ exports[`ColumnRechart loading placeholder 1`] = `
     style="width: 50%; height: 300px;"
   >
     <svg
-      aria-label="Loading interface..."
-      preserveAspectRatio="none"
+      aria-labelledby="ARIA-LABELLED-BY"
+      height="145"
       role="img"
-      viewBox="0 0 165 145"
+      width="165"
     >
-      <title>
-        Loading interface...
+      <title
+        id="TITLE_ARIA_ID"
+      >
+        Loading...
       </title>
       <rect
         clip-path="CLIP-PATH-URL"
-        height="145"
+        height="100%"
+        role="presentation"
         style="fill: url(#STYLE-URL);"
-        width="165"
+        width="100%"
         x="0"
         y="0"
       />
-      <defs>
+      <defs
+        role="presentation"
+      >
         <clipPath
           id="CLIP-PATH-URL"
         >
@@ -74,8 +79,8 @@ exports[`ColumnRechart loading placeholder 1`] = `
         >
           <stop
             offset="0%"
-            stop-color="#6a6d70"
-            stop-opacity="0.2"
+            stop-color="var(--sapContent_ImagePlaceholderBackground)"
+            stop-opacity="var(--sapContent_DisabledOpacity)"
           >
             <animate
               attributeName="offset"
@@ -87,7 +92,7 @@ exports[`ColumnRechart loading placeholder 1`] = `
           </stop>
           <stop
             offset="50%"
-            stop-color="#d9d9d9"
+            stop-color="var(--sapContent_ImagePlaceholderForegroundColor)"
             stop-opacity="1"
           >
             <animate
@@ -100,8 +105,8 @@ exports[`ColumnRechart loading placeholder 1`] = `
           </stop>
           <stop
             offset="100%"
-            stop-color="#6a6d70"
-            stop-opacity="0.2"
+            stop-color="var(--sapContent_ImagePlaceholderBackground)"
+            stop-opacity="var(--sapContent_DisabledOpacity)"
           >
             <animate
               attributeName="offset"

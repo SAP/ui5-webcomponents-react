@@ -20,7 +20,18 @@ interface RadialChartProps extends CommonProps {
  * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/next/RadialChart';</code>
  */
 const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
-  const { maxValue = 100, value, displayValue, style, className, color, width = 300, height = 300, tooltip } = props;
+  const {
+    maxValue = 100,
+    value,
+    displayValue,
+    color,
+    width = 300,
+    height = 300,
+    style,
+    className,
+    tooltip,
+    slot
+  } = props;
 
   useInitialize();
 
@@ -42,6 +53,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
       style={style}
       className={className}
       tooltip={tooltip}
+      slot={slot}
     >
       <RadialBarChartLib
         innerRadius="90%"

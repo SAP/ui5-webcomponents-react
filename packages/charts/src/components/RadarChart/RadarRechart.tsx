@@ -14,10 +14,13 @@ import {
   Tooltip
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useResolveDataKeys } from '../../internal/useResolveDataKeys';
+import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 
-export interface RadarChartProps extends RechartBaseProps {}
+type RadarChartProps = RechartBaseProps;
 
+/**
+ * <code>import { RadarChart } from '@ui5/webcomponents-react-charts/lib/next/RadarChart';</code>
+ */
 const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
   const {
     color,
@@ -44,7 +47,11 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       paddingAngle: 0,
       innerRadius: undefined,
       polarGridType: 'circle'
-    }
+    },
+    style,
+    className,
+    tooltip,
+    slot
   } = props;
 
   useInitialize();
@@ -95,6 +102,10 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       placeholder={PieChartPlaceholder}
       width={width}
       height={height}
+      style={style}
+      className={className}
+      tooltip={tooltip}
+      slot={slot}
     >
       <RadarChartLib data={dataset}>
         <PolarGrid gridType={chartConfig.polarGridType} />
