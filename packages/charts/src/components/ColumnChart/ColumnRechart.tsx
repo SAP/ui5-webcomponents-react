@@ -1,3 +1,4 @@
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ColumnChartPlaceholder';
@@ -15,6 +16,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { useResolveDataKeys } from '../../internal/useResolveDataKeys';
 
 export interface ColumnChartProps extends RechartBaseProps {}
 
@@ -59,8 +61,7 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys =
-    dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
 
   const colorSecondY = useMemo(
     () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
@@ -70,13 +71,15 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
   const onItemLegendClick = useCallback(
     (e) => {
       if (onLegendClick) {
-        onLegendClick({
-          dataKey: e.dataKey,
-          value: e.value,
-          chartType: e.type,
-          color: e.color,
-          payload: e.payload
-        });
+        onLegendClick(
+          Event.of(null, e, {
+            dataKey: e.dataKey,
+            value: e.value,
+            chartType: e.type,
+            color: e.color,
+            payload: e.payload
+          })
+        );
       }
     },
     [onLegendClick]
@@ -85,14 +88,16 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
   const onDataPointClickInternal = useCallback(
     (e, i) => {
       if (e && onDataPointClick) {
-        onDataPointClick({
-          dataKey: Object.keys(e).filter((key) =>
-            e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value && key !== 'value'
-          )[0],
-          value: e.value.length ? e.value[1] - e.value[0] : e.value,
-          xIndex: i,
-          payload: e.payload
-        });
+        onDataPointClick(
+          Event.of(null, e, {
+            dataKey: Object.keys(e).filter((key) =>
+              e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value && key !== 'value'
+            )[0],
+            value: e.value.length ? e.value[1] - e.value[0] : e.value,
+            xIndex: i,
+            payload: e.payload
+          })
+        );
       }
     },
     [onDataPointClick]
@@ -107,12 +112,7 @@ const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
       height={height}
       ref={chartRef}
     >
-      <ColumnChartLib
-        margin={{ top: 15 }}
-        data={dataset}
-        style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}
-        barGap={chartConfig.barGap}
-      >
+      <ColumnChartLib margin={{ top: 15 }} data={dataset} barGap={chartConfig.barGap}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}

@@ -1,11 +1,13 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
-import { Bar, BarChart as MicroBarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartContainer } from '../../lib/next/ChartContainer';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
-import { BarChartPlaceholder } from '../BarChart/Placeholder';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import React, { forwardRef, Ref, useCallback } from 'react';
+import { Bar, BarChart as MicroBarChartLib, Tooltip, XAxis, YAxis } from 'recharts';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { useResolveDataKeys } from '../../internal/useResolveDataKeys';
+import { BarChartPlaceholder } from '../BarChart/Placeholder';
 
 export interface MicroBarChartProps extends RechartBaseProps {}
 
@@ -44,20 +46,21 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys =
-    dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
 
   const onDataPointClickInternal = useCallback(
     (e, i) => {
       if (e && onDataPointClick) {
-        onDataPointClick({
-          dataKey: Object.keys(e).filter((key) =>
-            e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value && key !== 'value'
-          )[0],
-          value: e.value.length ? e.value[1] - e.value[0] : e.value,
-          payload: e.payload,
-          xIndex: i
-        });
+        onDataPointClick(
+          Event.of(null, e, {
+            dataKey: Object.keys(e).filter((key) =>
+              e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value && key !== 'value'
+            )[0],
+            value: e.value.length ? e.value[1] - e.value[0] : e.value,
+            payload: e.payload,
+            xIndex: i
+          })
+        );
       }
     },
     [onDataPointClick]
@@ -99,7 +102,6 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
       <MicroBarChartLib
         layout={'vertical'}
         data={dataset}
-        style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}
         barGap={chartConfig.barGap}
         label={
           chartConfig.dataLabel && {

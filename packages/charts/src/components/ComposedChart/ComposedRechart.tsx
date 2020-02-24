@@ -1,3 +1,4 @@
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
@@ -50,12 +51,14 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
   const onDataPointClickInternal = useCallback(
     (e, i, line) => {
       if (e && onDataPointClick) {
-        onDataPointClick({
-          value: e.value,
-          xIndex: i,
-          dataKey: line ? e.dataKey : Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
-          payload: e.payload
-        });
+        onDataPointClick(
+          Event.of(null, e, {
+            value: e.value,
+            xIndex: i,
+            dataKey: line ? e.dataKey : Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
+            payload: e.payload
+          })
+        );
       }
     },
     [onDataPointClick]
@@ -99,14 +102,16 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
   const onItemLegendClick = useCallback(
     (e, i) => {
       if (onLegendClick) {
-        onLegendClick({
-          dataKey: e.dataKey,
-          index: i,
-          value: e.value,
-          chartType: e.type,
-          color: e.color,
-          payload: e.payload
-        });
+        onLegendClick(
+          Event.of(null, e, {
+            dataKey: e.dataKey,
+            index: i,
+            value: e.value,
+            chartType: e.type,
+            color: e.color,
+            payload: e.payload
+          })
+        );
       }
     },
     [onLegendClick]
@@ -121,7 +126,7 @@ const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
       dataset={dataset}
       placeholder={LineChartPlaceholder}
     >
-      <ComposedChartLib ref={chartRef} style={{ fontSize: ThemingParameters.sapUiFontSmallSize }} data={dataset}>
+      <ComposedChartLib ref={chartRef} data={dataset}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}

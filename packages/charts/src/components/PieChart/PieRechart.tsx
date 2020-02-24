@@ -1,15 +1,16 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
-import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { forwardRef, Ref, useCallback, FC } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { useResolveDataKeys } from '../../internal/useResolveDataKeys';
 
 export interface PieChartProps extends RechartBaseProps {}
 
-const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
+const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
@@ -43,19 +44,20 @@ const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys =
-    dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
 
   const onItemLegendClick = useCallback(
     (e) => {
       if (onLegendClick) {
-        onLegendClick({
-          dataKey: currentDataKeys[0],
-          value: e.value,
-          chartType: e.type,
-          color: e.color,
-          payload: e.payload
-        });
+        onLegendClick(
+          Event.of(null, e, {
+            dataKey: currentDataKeys[0],
+            value: e.value,
+            chartType: e.type,
+            color: e.color,
+            payload: e.payload
+          })
+        );
       }
     },
     [onLegendClick]
@@ -64,12 +66,14 @@ const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   const onDataPointClickInternal = useCallback(
     (e) => {
       if (e && onDataPointClick && e.value) {
-        onDataPointClick({
-          value: e.value,
-          dataKey: currentDataKeys[0],
-          name: e.name,
-          payload: e.payload
-        });
+        onDataPointClick(
+          Event.of(null, e, {
+            value: e.value,
+            dataKey: currentDataKeys[0],
+            name: e.name,
+            payload: e.payload
+          })
+        );
       }
     },
     [onDataPointClick]
@@ -84,7 +88,7 @@ const PieChart = forwardRef((props: PieChartProps, ref: Ref<any>) => {
       width={width}
       height={height}
     >
-      <PieChartLib style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}>
+      <PieChartLib>
         <Pie
           innerRadius={chartConfig.innerRadius}
           paddingAngle={chartConfig.paddingAngle}

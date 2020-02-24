@@ -1,15 +1,17 @@
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
-import React, { forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { forwardRef, Ref, useCallback, useMemo, FC } from 'react';
 import { Brush, CartesianGrid, Legend, Line, LineChart as LineChartLib, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { useResolveDataKeys } from '../../internal/useResolveDataKeys';
 
 export interface LineChartProps extends RechartBaseProps {}
 
-const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
+const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
@@ -46,8 +48,7 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys =
-    dataKeys ?? useMemo(() => (dataset ? Object.keys(dataset[0]).filter((key) => key !== labelKey) : []), [dataset]);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
 
   const colorSecondY = useMemo(
     () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
@@ -57,13 +58,15 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const onItemLegendClick = useCallback(
     (e) => {
       if (onLegendClick) {
-        onLegendClick({
-          dataKey: e.dataKey,
-          value: e.value,
-          chartType: e.type,
-          color: e.color,
-          payload: e.payload
-        });
+        onLegendClick(
+          Event.of(null, e, {
+            dataKey: e.dataKey,
+            value: e.value,
+            chartType: e.type,
+            color: e.color,
+            payload: e.payload
+          })
+        );
       }
     },
     [onLegendClick]
@@ -72,12 +75,14 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const onDataPointClickInternal = useCallback(
     (e) => {
       if (e && onDataPointClick && e.value) {
-        onDataPointClick({
-          value: e.value,
-          dataKey: e.dataKey,
-          xIndex: e.index,
-          payload: e.payload
-        });
+        onDataPointClick(
+          Event.of(null, e, {
+            value: e.value,
+            dataKey: e.dataKey,
+            xIndex: e.index,
+            payload: e.payload
+          })
+        );
       }
     },
     [onDataPointClick]
@@ -92,11 +97,7 @@ const LineChart = forwardRef((props: LineChartProps, ref: Ref<any>) => {
       height={height}
       ref={chartRef}
     >
-      <LineChartLib
-        data={dataset}
-        onClick={onDataPointClickInternal}
-        style={{ fontSize: ThemingParameters.sapUiFontSmallSize }}
-      >
+      <LineChartLib data={dataset} onClick={onDataPointClickInternal}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
