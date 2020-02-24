@@ -1,6 +1,6 @@
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
-import { label, dataset } from '../../test/resources/RechartProps';
+import { dataset, label } from '../../test/resources/RechartProps';
 import { RadialChart } from './RadialRechart';
 
 describe('RadialChart', () => {

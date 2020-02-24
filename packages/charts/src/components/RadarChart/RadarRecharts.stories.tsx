@@ -1,6 +1,6 @@
+import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { RadarChart } from './RadarRechart';
-import { action } from '@storybook/addon-actions';
 
 const dataset = [
   {

@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
+import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/next/ColumnChart';
 import React from 'react';
-import { ColumnChart } from './ColumnRechart';
 
 const dataset = [
   {

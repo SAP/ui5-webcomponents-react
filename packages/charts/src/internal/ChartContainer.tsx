@@ -1,6 +1,6 @@
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
-import React, { ComponentType, forwardRef, ReactNode, Ref, useMemo, FC } from 'react';
+import React, { ComponentType, CSSProperties, FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { ResponsiveContainer } from 'recharts';
 import { ChartContainerProps } from '../interfaces/ChartContainerProps';
 
@@ -24,26 +24,33 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
   } = props;
 
   const internalStyles = useMemo(() => {
-    if (!style) {
-      return { fontSize: ThemingParameters.sapUiFontSmallSize };
+    const styles: CSSProperties = {};
+    styles.fontSize = ThemingParameters.sapUiFontSmallSize;
+
+    if (width) {
+      styles.width = width;
     }
-    return {
-      fontSize: ThemingParameters.sapUiFontSmallSize,
-      ...style
-    };
-  }, [style]);
+
+    if (height) {
+      styles.height = height;
+    }
+
+    if (style) {
+      Object.assign(styles, style);
+    }
+
+    return styles;
+  }, [style, width, height]);
 
   return (
     <div ref={ref} style={internalStyles} className={className} title={tooltip} slot={slot}>
       {dataset ? (
-        <div style={{ width, height }}>
+        <>
           {loading && dataset.length > 0 && <Loader style={{ marginBottom: '1vh' }} />}
           {dataset.length > 0 && <ResponsiveContainer>{children}</ResponsiveContainer>}
-        </div>
+        </>
       ) : (
-        <div style={{ width, height }}>
-          <PlaceholderComponent />
-        </div>
+        <PlaceholderComponent />
       )}
     </div>
   );

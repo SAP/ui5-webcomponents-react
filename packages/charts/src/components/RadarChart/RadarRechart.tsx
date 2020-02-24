@@ -3,6 +3,8 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
+import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
+import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Legend,
@@ -14,7 +16,6 @@ import {
   Tooltip
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 
 type RadarChartProps = RechartBaseProps;
 
@@ -60,33 +61,18 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
 
   const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
 
-  const onItemLegendClick = useCallback(
-    (e) => {
-      if (onLegendClick) {
-        onLegendClick(
-          Event.of(null, e, {
-            dataKey: currentDataKeys[0],
-            value: e.value,
-            chartType: e.type,
-            color: e.color,
-            payload: e.payload
-          })
-        );
-      }
-    },
-    [onLegendClick]
-  );
+  const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
-    (e) => {
-      if (e && onDataPointClick && e.value) {
+    (payload, event) => {
+      if (payload && onDataPointClick && payload.value) {
         onDataPointClick(
-          Event.of(null, e, {
-            value: e.value,
-            dataKey: e.dataKey,
-            name: e.payload.label,
-            xIndex: e.index,
-            payload: e.payload
+          Event.of(null, event, {
+            value: payload.value,
+            dataKey: payload.dataKey,
+            name: payload.payload.label,
+            xIndex: payload.index,
+            payload: payload.payload
           })
         );
       }

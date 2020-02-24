@@ -4,8 +4,9 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ColumnChartPlaceholder';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
-import React, { forwardRef, Ref, useCallback, useMemo, FC } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar as Column,
   BarChart as ColumnChartLib,
@@ -75,34 +76,21 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     [chartConfig, currentDataKeys]
   );
 
-  const onItemLegendClick = useCallback(
-    (e) => {
-      if (onLegendClick) {
-        onLegendClick(
-          Event.of(null, e, {
-            dataKey: e.dataKey,
-            value: e.value,
-            chartType: e.type,
-            color: e.color,
-            payload: e.payload
-          })
-        );
-      }
-    },
-    [onLegendClick]
-  );
+  const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
-    (e, i) => {
-      if (e && onDataPointClick) {
+    (payload, i, event) => {
+      if (payload && onDataPointClick) {
         onDataPointClick(
-          Event.of(null, e, {
-            dataKey: Object.keys(e).filter((key) =>
-              e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value && key !== 'value'
+          Event.of(null, event, {
+            dataKey: Object.keys(payload).filter((key) =>
+              payload.value.length
+                ? payload[key] === payload.value[1] - payload.value[0]
+                : payload[key] === payload.value && key !== 'value'
             )[0],
-            value: e.value.length ? e.value[1] - e.value[0] : e.value,
+            value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
             xIndex: i,
-            payload: e.payload
+            payload: payload.payload
           })
         );
       }
@@ -149,7 +137,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             label={
               chartConfig.dataLabel && {
                 position: chartConfig.stacked ? 'inside' : 'top',
-                fontFamily: ThemingParameters.sapUiFontFamily,
                 fill: ThemingParameters.sapContent_LabelColor
               }
             }

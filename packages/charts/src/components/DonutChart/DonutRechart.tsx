@@ -1,6 +1,6 @@
-import { PieChart } from '../PieChart/PieRechart';
+import React, { FC, forwardRef } from 'react';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import React, { forwardRef, FC } from 'react';
+import { PieChart } from '../PieChart/PieRechart';
 
 type PieChartProps = RechartBaseProps;
 

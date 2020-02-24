@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { MicroBarChart } from './MicroBarRechart';
-import { FlexBox, FlexBoxDirection } from '@ui5/webcomponents-react';
 
 const singleData = [
   {

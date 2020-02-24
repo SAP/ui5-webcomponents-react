@@ -4,8 +4,9 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
-import React, { forwardRef, Ref, useCallback, FC } from 'react';
+import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
@@ -55,33 +56,22 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
 
   const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
 
-  const onItemLegendClick = useCallback(
-    (e) => {
-      if (onLegendClick) {
-        onLegendClick(
-          Event.of(null, e, {
-            dataKey: e.dataKey,
-            value: e.value,
-            chartType: e.type,
-            color: e.color,
-            payload: e.payload
-          })
-        );
-      }
-    },
-    [onLegendClick]
-  );
+  const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
-    (e, i) => {
-      if (e && onDataPointClick) {
+    (payload, i, event) => {
+      if (payload && onDataPointClick) {
         onDataPointClick(
-          Event.of(null, e, {
-            dataKey: Object.keys(e)
+          Event.of(null, event, {
+            dataKey: Object.keys(payload)
               .filter((key) => key !== 'value')
-              .find((key) => (e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value)),
-            value: e.value.length ? e.value[1] - e.value[0] : e.value,
-            payload: e.payload,
+              .find((key) =>
+                payload.value.length
+                  ? payload[key] === payload.value[1] - payload.value[0]
+                  : payload[key] === payload.value
+              ),
+            value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
+            payload: payload.payload,
             xIndex: i
           })
         );
@@ -118,7 +108,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             label={
               chartConfig.dataLabel && {
                 position: chartConfig.stacked ? 'inside' : 'right',
-                fontFamily: ThemingParameters.sapUiFontFamily,
                 fill: ThemingParameters.sapContent_LabelColor
               }
             }

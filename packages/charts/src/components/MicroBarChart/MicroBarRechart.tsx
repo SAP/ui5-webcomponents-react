@@ -3,10 +3,10 @@ import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 import React, { forwardRef, Ref, useCallback } from 'react';
 import { Bar, BarChart as MicroBarChartLib, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 import { BarChartPlaceholder } from '../BarChart/Placeholder';
 
 export interface MicroBarChartProps extends RechartBaseProps {}
@@ -106,7 +106,6 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
         label={
           chartConfig.dataLabel && {
             position: 'insideBottomRight',
-            fontFamily: ThemingParameters.sapUiFontFamily,
             fill: ThemingParameters.sapContent_LabelColor
           }
         }

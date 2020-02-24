@@ -4,10 +4,11 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
-import React, { forwardRef, Ref, useCallback, useMemo, FC } from 'react';
+import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
+import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { Brush, CartesianGrid, Legend, Line, LineChart as LineChartLib, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 
 type LineChartProps = RechartBaseProps;
 
@@ -62,32 +63,17 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     [chartConfig, currentDataKeys]
   );
 
-  const onItemLegendClick = useCallback(
-    (e) => {
-      if (onLegendClick) {
-        onLegendClick(
-          Event.of(null, e, {
-            dataKey: e.dataKey,
-            value: e.value,
-            chartType: e.type,
-            color: e.color,
-            payload: e.payload
-          })
-        );
-      }
-    },
-    [onLegendClick]
-  );
+  const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
-    (e) => {
-      if (e && onDataPointClick && e.value) {
+    (payload, event) => {
+      if (payload && onDataPointClick && payload.value) {
         onDataPointClick(
-          Event.of(null, e, {
-            value: e.value,
-            dataKey: e.dataKey,
-            xIndex: e.index,
-            payload: e.payload
+          Event.of(null, event, {
+            value: payload.value,
+            dataKey: payload.dataKey,
+            xIndex: payload.index,
+            payload: payload.payload
           })
         );
       }
@@ -134,7 +120,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             label={
               chartConfig.dataLabel && {
                 position: 'top',
-                fontFamily: ThemingParameters.sapUiFontFamily,
                 fill: ThemingParameters.sapContent_LabelColor
               }
             }

@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
+import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
 import React from 'react';
-import { BarChart } from './BarRechart';
 
 const dataset = [
   {

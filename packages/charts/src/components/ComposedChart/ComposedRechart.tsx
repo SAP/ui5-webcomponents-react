@@ -4,7 +4,8 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
-import React, { ComponentType, forwardRef, ReactNode, Ref, useCallback, useMemo, FC } from 'react';
+import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
+import React, { ComponentType, FC, forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
 import { Brush, CartesianGrid, ComposedChart as ComposedChartLib, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
@@ -56,14 +57,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onDataPointClickInternal = useCallback(
-    (e, i, line) => {
-      if (e && onDataPointClick) {
+    (payload, eventOrIndex, event) => {
+      if (payload && onDataPointClick) {
         onDataPointClick(
-          Event.of(null, e, {
-            value: e.value,
-            xIndex: i,
-            dataKey: line ? e.dataKey : Object.keys(e).filter((key) => e[key] === e.value && key !== 'value')[0],
-            payload: e.payload
+          Event.of(null, event ?? eventOrIndex, {
+            value: payload.value,
+            xIndex: payload.index ?? eventOrIndex,
+            dataKey:
+              payload.dataKey ?? Object.keys(payload).find((key) => payload[key] === payload.value && key !== 'value'),
+            payload: payload.payload
           })
         );
       }
@@ -71,57 +73,42 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     [onDataPointClick]
   );
 
-  type ChildClone = ReactNode & { props: any };
+  const onItemLegendClick = useLegendItemClick(onLegendClick);
+
   const childrenClone = useMemo(
     () =>
-      React.Children.map(children, (child: ChildClone, index) => {
+      React.Children.map(children, (child: ReactElement, index) => {
         if (child?.props) {
           return React.cloneElement(
-            // @ts-ignore
             child,
             child.props.legendType === 'line'
               ? {
                   type: 'monotone',
                   stroke: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
-                  label: chartConfig.dataLabel && { position: 'top', fontFamily: ThemingParameters.sapUiFontFamily },
+                  label: chartConfig.dataLabel && { position: 'top' },
                   yAxisId:
                     chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
                       ? 'right'
                       : 'left',
-                  activeDot: { onClick: (e, i) => onDataPointClickInternal(e, i, true) }
+                  // activeDot: { onClick: (e, i) => onDataPointClickInternal(e, i, true) }
+                  activeDot: { onClick: onDataPointClickInternal }
                 }
               : {
                   fill: child.props.color ? child.props.color : `var(--sapUiChartAccent${(index % 12) + 1})`,
-                  label: chartConfig.dataLabel && { position: 'top', fontFamily: ThemingParameters.sapUiFontFamily },
+                  label: chartConfig.dataLabel && { position: 'top' },
                   stackId: chartConfig.stacked ? 'A' : undefined,
                   yAxisId:
                     chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === child.props.dataKey
                       ? 'right'
                       : 'left',
-                  onClick: (e, i) => onDataPointClickInternal(e, i, false)
+                  // onClick: (e, i) => onDataPointClickInternal(e, i, false)
+                  onClick: onDataPointClickInternal
                 }
           );
         }
+        return null;
       }),
     [children]
-  );
-
-  const onItemLegendClick = useCallback(
-    (e, i) => {
-      if (onLegendClick) {
-        onLegendClick(
-          Event.of(null, e, {
-            dataKey: e.dataKey,
-            index: i,
-            value: e.value,
-            chartType: e.type,
-            color: e.color,
-            payload: e.payload
-          })
-        );
-      }
-    },
-    [onLegendClick]
   );
 
   return (

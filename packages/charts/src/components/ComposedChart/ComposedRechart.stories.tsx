@@ -1,8 +1,7 @@
-import React from 'react';
-import { ComposedChart } from './ComposedRechart';
-import { Line } from 'recharts';
-import { Bar } from 'recharts';
 import { action } from '@storybook/addon-actions';
+import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/next/ComposedChart';
+import React from 'react';
+import { Bar, Line } from 'recharts';
 
 const dataset = [
   {

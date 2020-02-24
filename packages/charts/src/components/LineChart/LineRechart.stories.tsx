@@ -1,6 +1,6 @@
-import React from 'react';
-import { LineChart } from './LineRechart';
 import { action } from '@storybook/addon-actions';
+import { LineChart } from '@ui5/webcomponents-react-charts/lib/next/LineChart';
+import React from 'react';
 
 const dataset = [
   {
@@ -105,7 +105,7 @@ export const renderStory = () => {
   return (
     <LineChart
       onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendPointClickHandler')}
+      onLegendClick={action('onLegendClick')}
       dataset={dataset}
       width={'95%'}
       height={'40vh'}

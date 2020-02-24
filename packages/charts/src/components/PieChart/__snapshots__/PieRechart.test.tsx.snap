@@ -1,87 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PieChart loading placeholder 1`] = `
-<div>
-  <div
-    style="width: 50%; height: 500px;"
+<div
+  style="width: 50%; height: 500px;"
+>
+  <svg
+    aria-labelledby="ARIA-LABELLED-BY"
+    height="150"
+    role="img"
+    width="150"
   >
-    <svg
-      aria-labelledby="ARIA-LABELLED-BY"
-      height="150"
-      role="img"
-      width="150"
+    <title
+      id="TITLE_ARIA_ID"
     >
-      <title
-        id="TITLE_ARIA_ID"
+      Loading...
+    </title>
+    <rect
+      clip-path="CLIP-PATH-URL"
+      height="100%"
+      role="presentation"
+      style="fill: url(#STYLE-URL);"
+      width="100%"
+      x="0"
+      y="0"
+    />
+    <defs
+      role="presentation"
+    >
+      <clipPath
+        id="CLIP-PATH-URL"
       >
-        Loading...
-      </title>
-      <rect
-        clip-path="CLIP-PATH-URL"
-        height="100%"
-        role="presentation"
-        style="fill: url(#STYLE-URL);"
-        width="100%"
-        x="0"
-        y="0"
-      />
-      <defs
-        role="presentation"
+        <circle
+          cx="85"
+          cy="75"
+          r="60"
+        />
+      </clipPath>
+      <linearGradient
+        id="STYLE-URL"
       >
-        <clipPath
-          id="CLIP-PATH-URL"
+        <stop
+          offset="0%"
+          stop-color="var(--sapContent_ImagePlaceholderBackground)"
+          stop-opacity="var(--sapContent_DisabledOpacity)"
         >
-          <circle
-            cx="85"
-            cy="75"
-            r="60"
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="-2; -2; 1"
           />
-        </clipPath>
-        <linearGradient
-          id="STYLE-URL"
+        </stop>
+        <stop
+          offset="50%"
+          stop-color="var(--sapContent_ImagePlaceholderForegroundColor)"
+          stop-opacity="1"
         >
-          <stop
-            offset="0%"
-            stop-color="var(--sapContent_ImagePlaceholderBackground)"
-            stop-opacity="var(--sapContent_DisabledOpacity)"
-          >
-            <animate
-              attributeName="offset"
-              dur="2s"
-              keyTimes="0; 0.25; 1"
-              repeatCount="indefinite"
-              values="-2; -2; 1"
-            />
-          </stop>
-          <stop
-            offset="50%"
-            stop-color="var(--sapContent_ImagePlaceholderForegroundColor)"
-            stop-opacity="1"
-          >
-            <animate
-              attributeName="offset"
-              dur="2s"
-              keyTimes="0; 0.25; 1"
-              repeatCount="indefinite"
-              values="-1; -1; 2"
-            />
-          </stop>
-          <stop
-            offset="100%"
-            stop-color="var(--sapContent_ImagePlaceholderBackground)"
-            stop-opacity="var(--sapContent_DisabledOpacity)"
-          >
-            <animate
-              attributeName="offset"
-              dur="2s"
-              keyTimes="0; 0.25; 1"
-              repeatCount="indefinite"
-              values="0; 0; 3"
-            />
-          </stop>
-        </linearGradient>
-      </defs>
-    </svg>
-  </div>
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="-1; -1; 2"
+          />
+        </stop>
+        <stop
+          offset="100%"
+          stop-color="var(--sapContent_ImagePlaceholderBackground)"
+          stop-opacity="var(--sapContent_DisabledOpacity)"
+        >
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="0; 0; 3"
+          />
+        </stop>
+      </linearGradient>
+    </defs>
+  </svg>
 </div>
 `;

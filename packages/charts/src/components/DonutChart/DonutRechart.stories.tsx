@@ -1,6 +1,6 @@
-import React from 'react';
-import { DonutChart } from './DonutRechart';
 import { action } from '@storybook/addon-actions';
+import { DonutChart } from '@ui5/webcomponents-react-charts/lib/next/DonutChart';
+import React from 'react';
 
 const dataset = [
   {

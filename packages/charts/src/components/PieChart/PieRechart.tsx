@@ -3,10 +3,11 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
-import React, { forwardRef, Ref, useCallback, FC } from 'react';
+import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
+import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
+import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 
 type PieChartProps = RechartBaseProps;
 
@@ -53,32 +54,17 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
 
   const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
 
-  const onItemLegendClick = useCallback(
-    (e) => {
-      if (onLegendClick) {
-        onLegendClick(
-          Event.of(null, e, {
-            dataKey: currentDataKeys[0],
-            value: e.value,
-            chartType: e.type,
-            color: e.color,
-            payload: e.payload
-          })
-        );
-      }
-    },
-    [onLegendClick]
-  );
+  const onItemLegendClick = useLegendItemClick(onLegendClick, () => currentDataKeys[0]);
 
   const onDataPointClickInternal = useCallback(
-    (e) => {
-      if (e && onDataPointClick && e.value) {
+    (payload, index, event) => {
+      if (payload && onDataPointClick && payload.value) {
         onDataPointClick(
-          Event.of(null, e, {
-            value: e.value,
+          Event.of(null, event, {
+            value: payload.value,
             dataKey: currentDataKeys[0],
-            name: e.name,
-            payload: e.payload
+            name: payload.name,
+            payload: payload.payload
           })
         );
       }

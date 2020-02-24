@@ -1,6 +1,6 @@
-import React from 'react';
-import { PieChart } from './PieRechart';
 import { action } from '@storybook/addon-actions';
+import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';
+import React from 'react';
 
 const dataset = [
   {
