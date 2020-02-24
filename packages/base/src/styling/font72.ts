@@ -1,3 +1,10 @@
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
+
+deprecationNotice(
+  'font72',
+  "The global font face defined in '@ui5/webcomponents-react-base/lib/font72' is deprecated and will be removed in the next major release.\n. This font is now provided the the UI5 Web Components itself."
+);
+
 const font72 = {
   '@font-face': [
     {

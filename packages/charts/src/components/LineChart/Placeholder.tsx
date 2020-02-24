@@ -1,5 +1,6 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
+import * as parameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export const LineChartPlaceholder = (props) => {
   return (
@@ -7,9 +8,9 @@ export const LineChartPlaceholder = (props) => {
       height={300}
       width={300}
       speed={2}
-      primaryColor="#6a6d70"
-      secondaryColor="#d9d9d9"
-      primaryOpacity={0.2}
+      backgroundColor={parameters.sapContent_ImagePlaceholderBackground}
+      foregroundColor={parameters.sapContent_ImagePlaceholderForegroundColor}
+      backgroundOpacity={parameters.sapContent_DisabledOpacity as any}
       {...props}
     >
       {/*<line x1={30} x2={60} y1={260} y2={190} strokeWidth={3} />*/}

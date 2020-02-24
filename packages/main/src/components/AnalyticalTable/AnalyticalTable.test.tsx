@@ -140,6 +140,8 @@ describe('AnalyticalTable', () => {
   test('test Asc desc', () => {
     const wrapper = mountThemedComponent(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
 
+    expect(wrapper.render()).toMatchSnapshot();
+
     // test asc function inside the popover element
     let component = wrapper
       .find('ui5-li')
@@ -147,7 +149,8 @@ describe('AnalyticalTable', () => {
       .instance();
     // @ts-ignore
     component.onclick({});
-    console.log(component);
+
+    expect(wrapper.render()).toMatchSnapshot();
 
     // test desc function inside the popover element
     component = wrapper
