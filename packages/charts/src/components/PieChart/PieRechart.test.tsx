@@ -1,6 +1,6 @@
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
-import { dataset, label } from '../../test/resources/RechartProps';
+import { dataset, label } from '../../resources/RechartProps';
 import { PieChart } from './PieRechart';
 
 describe('PieChart', () => {
