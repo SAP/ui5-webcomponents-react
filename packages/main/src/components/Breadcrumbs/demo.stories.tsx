@@ -35,7 +35,7 @@ withCurrentLocation.story = {
 };
 
 export default {
-  title: 'Components / Breadcrumbs',
+  title: '3 Components / Breadcrumbs',
   component: Breadcrumbs,
   parameters: {
     subcomponents: { Link }

@@ -16,8 +16,9 @@ import 'react-app-polyfill/ie11';
 addParameters({
   options: {
     storySort: (a, b) => {
-      if (a[1].id.startsWith('welcome')) return -1;
-      return a[1].id.localeCompare(b[1].id);
+      return a[1].kind === b[1].kind
+        ? 0
+        : a[1].id.localeCompare(b[1].id, undefined, { numeric: true, caseFirst: 'upper' });
     },
     showRoots: true
   }

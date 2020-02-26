@@ -7,7 +7,7 @@ import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVertic
 import React from 'react';
 
 export default {
-  title: 'UI5 Web Components / Popover',
+  title: '4 UI5 Web Components / Popover',
   component: Popover
 };
 

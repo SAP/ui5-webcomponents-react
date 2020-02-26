@@ -48,7 +48,7 @@ class DemoButton extends React.Component {
 }
 
 export default {
-  title: 'UI5 Web Components / Button',
+  title: '4 UI5 Web Components / Button',
   component: Button
 };
 

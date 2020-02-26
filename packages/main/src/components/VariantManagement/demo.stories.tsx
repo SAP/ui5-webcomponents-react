@@ -26,6 +26,6 @@ renderStory.story = {
 };
 
 export default {
-  title: 'Components / VariantManagement',
+  title: '3 Components / VariantManagement',
   component: VariantManagement
 };

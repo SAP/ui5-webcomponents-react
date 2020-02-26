@@ -27,6 +27,6 @@ renderPage.story = {
 };
 
 export default {
-  title: 'Components / Page',
+  title: '3 Components / Page',
   component: Page
 };

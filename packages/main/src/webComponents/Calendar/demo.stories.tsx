@@ -6,7 +6,7 @@ import React from 'react';
 const now = new Date().getTime();
 
 export default {
-  title: 'UI5 Web Components / Calendar',
+  title: '4 UI5 Web Components / Calendar',
   component: Calendar
 };
 
