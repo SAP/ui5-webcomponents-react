@@ -16,14 +16,14 @@
     "lint": "eslint packages/*/src/**/*.{ts,tsx}"
   },
   "dependencies": {
-    "@storybook/addon-actions": "5.3.13",
-    "@storybook/addon-docs": "5.3.13",
-    "@storybook/addon-info": "5.3.13",
-    "@storybook/addon-knobs": "5.3.13",
-    "@storybook/addons": "5.3.13",
-    "@storybook/cli": "5.3.13",
-    "@storybook/react": "5.3.13",
-    "@storybook/theming": "5.3.13",
+    "@storybook/addon-actions": "5.3.14",
+    "@storybook/addon-docs": "5.3.14",
+    "@storybook/addon-info": "5.3.14",
+    "@storybook/addon-knobs": "5.3.14",
+    "@storybook/addons": "5.3.14",
+    "@storybook/cli": "5.3.14",
+    "@storybook/react": "5.3.14",
+    "@storybook/theming": "5.3.14",
     "react-docgen-typescript-loader": "3.6.0"
   },
   "devDependencies": {
