@@ -5,7 +5,7 @@ import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 import React from 'react';
 
 export default {
-  title: 'UI5 Web Components / Link',
+  title: '4 UI5 Web Components / Link',
   component: Link
 };
 

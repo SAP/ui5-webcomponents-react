@@ -5,7 +5,7 @@ import { Tokenizer } from '@ui5/webcomponents-react/lib/Tokenizer';
 import React from 'react';
 
 export default {
-  title: 'UI5 Web Components / Tokenizer',
+  title: '4 UI5 Web Components / Tokenizer',
   component: Tokenizer
 };
 

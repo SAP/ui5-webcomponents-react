@@ -19,6 +19,6 @@ defaultStory.story = {
 };
 
 export default {
-  title: 'Components / Bar',
+  title: '3 Components / Bar',
   component: Bar
 };
