@@ -1,100 +1,30 @@
 import { action } from '@storybook/addon-actions';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/next/ComposedChart';
 import React from 'react';
-import { Bar, Line } from 'recharts';
-
-const dataset = [
-  {
-    name: 'January',
-    users: 100,
-    sessions: 300,
-    volume: 756
-  },
-  {
-    name: 'February',
-    users: 230,
-    sessions: 330,
-    volume: 880
-  },
-  {
-    name: 'March',
-    users: 240,
-    sessions: 404,
-    volume: 700
-  },
-  {
-    name: 'April',
-    users: 280,
-    sessions: 80,
-    volume: 604
-  },
-  {
-    name: 'May',
-    users: 100,
-    sessions: 300,
-    volume: 756
-  },
-  {
-    name: 'June',
-    users: 230,
-    sessions: 330,
-    volume: 880
-  },
-  {
-    name: 'July',
-    users: 20,
-    sessions: 470,
-    volume: 450
-  },
-  {
-    name: 'August',
-    users: 220,
-    sessions: 180,
-    volume: 104
-  },
-  {
-    name: 'September',
-    users: 200,
-    sessions: 360,
-    volume: 879
-  },
-  {
-    name: 'October',
-    users: 250,
-    sessions: 500,
-    volume: 200
-  },
-  {
-    name: 'November',
-    users: 240,
-    sessions: 404,
-    volume: 700
-  },
-  {
-    name: 'December',
-    users: 280,
-    sessions: 80,
-    volume: 604
-  }
-];
-
-export default {
-  title: 'Charts / ComposedChart',
-  component: ComposedChart
-};
+import { complexDataSet } from '../../resources/DemoProps';
 
 export const renderComposedChart = () => (
   <ComposedChart
     width={'95%'}
     height={'40vh'}
-    dataset={dataset}
+    dataset={complexDataSet}
     onLegendClick={action('onLegendClick')}
     onDataPointClick={action('onDataPointClick')}
-  >
-    <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
-    <Line dataKey={'users'} color={'orange'} strokeOpacity={0.7} strokeWidth={3.5} />
-    <Line dataKey={'volume'} color={'lightblue'} strokeWidth={2} />)
-  </ComposedChart>
+    elements={[
+      {
+        type: 'bar',
+        accessor: 'sessions'
+      },
+      {
+        type: 'line',
+        accessor: 'users'
+      },
+      {
+        type: 'line',
+        accessor: 'volume'
+      }
+    ]}
+  />
 );
 
 renderComposedChart.story = {
@@ -102,9 +32,12 @@ renderComposedChart.story = {
 };
 
 export const renderComposedChartPlaceholder = () => (
-  <ComposedChart width={'30%'} height={'40vh'} labelKey={'name'}>
-    <Line dataKey={'volume'} stroke={'lightblue'} strokeWidth={1} />)
-  </ComposedChart>
+  <ComposedChart
+    width={'30%'}
+    height={'40vh'}
+    labelKey={'name'}
+    elements={[{ type: 'line', accessor: 'volume', strokeWidth: 1, color: 'lightblue' }]}
+  />
 );
 
 renderComposedChartPlaceholder.story = {
@@ -115,7 +48,7 @@ export const renderComposedStackedChart = () => (
   <ComposedChart
     width={'95%'}
     height={'40vh'}
-    dataset={dataset}
+    dataset={complexDataSet}
     labelKey={'name'}
     onLegendClick={action('onLegendClick')}
     onDataPointClick={action('onDataPointClick')}
@@ -134,11 +67,26 @@ export const renderComposedStackedChart = () => (
         color: 'orange'
       }
     }}
-  >
-    <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
-    <Bar dataKey={'volume'} strokeWidth={2} />)
-    <Line dataKey={'users'} color={'orange'} strokeOpacity={0.7} strokeWidth={3.5} />
-  </ComposedChart>
+    elements={[
+      {
+        type: 'bar',
+        accessor: 'sessions',
+        fillOpacity: 0.1
+      },
+      {
+        type: 'bar',
+        accessor: 'volume',
+        strokeWidth: 2
+      },
+      {
+        type: 'line',
+        accessor: 'users',
+        color: 'organge',
+        strokeOpacity: 0.7,
+        strokeWidth: 3.5
+      }
+    ]}
+  />
 );
 
 renderComposedStackedChart.story = {
@@ -149,7 +97,7 @@ export const renderLabelComposedChart = () => (
   <ComposedChart
     width={'95%'}
     height={'40vh'}
-    dataset={dataset}
+    dataset={complexDataSet}
     onLegendClick={action('onLegendClick')}
     onDataPointClick={action('onDataPointClick')}
     chartConfig={{
@@ -168,12 +116,27 @@ export const renderLabelComposedChart = () => (
         color: 'lightblue'
       }
     }}
-  >
-    <Bar dataKey={'sessions'} chartConfig={{ fillOpacity: 0.1 }} />
-    <Line dataKey={'volume'} color={'lightblue'} strokeWidth={3} />)
-  </ComposedChart>
+    elements={[
+      {
+        type: 'bar',
+        accessor: 'sessions',
+        fillOpacity: 0.1
+      },
+      {
+        type: 'line',
+        accessor: 'volume',
+        color: 'lightblue',
+        strokeWidth: 3
+      }
+    ]}
+  />
 );
 
 renderLabelComposedChart.story = {
   name: 'With data label chart'
+};
+
+export default {
+  title: 'Charts / ComposedChart',
+  component: ComposedChart
 };
