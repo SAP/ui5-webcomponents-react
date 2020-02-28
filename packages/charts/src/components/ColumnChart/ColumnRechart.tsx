@@ -81,7 +81,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex, event) => {
       if (payload && onDataPointClick) {
-        console.log(payload);
         onDataPointClick(
           Event.of(null, event, {
             dataKey: Object.keys(payload).filter((key) =>
