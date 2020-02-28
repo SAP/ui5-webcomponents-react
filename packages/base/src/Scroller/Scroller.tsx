@@ -17,6 +17,17 @@ export const Scroller = forwardRef((props: Props, ref: RefObject<IScroller>) => 
 
   const elements = useRef([]);
 
+  useEffect(() => {
+    if (scrollContainer.current) {
+      scrollContainer.current.addEventListener('scroll', scroll);
+    }
+    return () => {
+      if (scrollContainer.current) {
+        scrollContainer.current.removeEventListener('scroll', scroll);
+      }
+    };
+  }, [scrollContainer]);
+
   const unregisterElement = useCallback(
     (id) => {
       elements.current = elements.current.filter((item) => item.id !== id);

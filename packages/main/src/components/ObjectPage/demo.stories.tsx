@@ -78,10 +78,11 @@ export const renderDemo = () => {
         onSelectedSectionChanged={action('onSelectedSectionChanged')}
         noHeader={boolean('noHeader', false)}
         alwaysShowContentHeader={boolean('alwaysShowContentHeader', false)}
-        showTitleInHeaderContent={boolean('showTitleInHeaderContent', true)}
+        showTitleInHeaderContent={boolean('showTitleInHeaderContent', false)}
         renderBreadcrumbs={renderBreadcrumbs}
         renderKeyInfos={renderKeyInfos}
         style={{ height: '700px' }}
+        headerContentPinnable={boolean('headerContentPinnable', true)}
       >
         <ObjectPageSection title="Test 1" id="1">
           <div style={{ height: '200px' }}>Test1</div>

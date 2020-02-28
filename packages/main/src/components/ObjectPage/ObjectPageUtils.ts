@@ -10,6 +10,10 @@ export const findSectionIndexById = (sections: ReactElement<any> | Array<ReactEl
   return index;
 };
 
+export const getSectionById = (sections: ReactElement<any> | ReactElement<any>[], id) => {
+  return safeGetChildrenArray(sections).find((objectPageSection) => objectPageSection.props?.id === id);
+};
+
 export const getProportionateScrollTop = (activeContainer, passiveContainer, base) => {
   const activeHeight = activeContainer.current.getBoundingClientRect().height;
   const passiveHeight = passiveContainer.current.getBoundingClientRect().height;

@@ -1,7 +1,7 @@
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import React, { CSSProperties, FC, ReactElement } from 'react';
+import React, { CSSProperties, FC, ReactElement, useMemo, forwardRef } from 'react';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
 interface Props {
@@ -14,11 +14,11 @@ interface Props {
   renderKeyInfos: () => JSX.Element;
   title: string;
   subTitle: string;
+  headerPinned: boolean;
+  topHeaderHeight: number;
 }
 
-const positionRelativeStyle: CSSProperties = { position: 'relative' };
-
-export const ObjectPageHeader: FC<Props> = (props) => {
+export const ObjectPageHeader: FC<Props> = forwardRef((props: Props, ref: any) => {
   const {
     image,
     classes,
@@ -28,7 +28,9 @@ export const ObjectPageHeader: FC<Props> = (props) => {
     renderBreadcrumbs,
     title,
     subTitle,
-    renderKeyInfos
+    renderKeyInfos,
+    headerPinned,
+    topHeaderHeight
   } = props;
 
   let avatar = null;
@@ -51,6 +53,17 @@ export const ObjectPageHeader: FC<Props> = (props) => {
     }
   }
 
+  const headerStyles = useMemo<CSSProperties>(() => {
+    if (headerPinned) {
+      return {
+        position: 'sticky',
+        top: `${topHeaderHeight}px`,
+        zIndex: 1
+      };
+    }
+    return null;
+  }, [headerPinned, topHeaderHeight]);
+
   if (showTitleInHeaderContent) {
     const headerContents = renderHeaderContentProp && renderHeaderContentProp();
     let firstElement;
@@ -62,7 +75,7 @@ export const ObjectPageHeader: FC<Props> = (props) => {
       firstElement = headerContents;
     }
     return (
-      <div className={classes.contentHeader}>
+      <div style={headerStyles} className={classes.contentHeader} ref={ref}>
         <div className={classes.headerContent}>
           <FlexBox>
             {avatar}
@@ -91,11 +104,13 @@ export const ObjectPageHeader: FC<Props> = (props) => {
   }
 
   return (
-    <div style={positionRelativeStyle} className={classes.contentHeader}>
+    <div style={headerStyles} className={classes.contentHeader} ref={ref}>
       <div className={classes.headerContent}>
         {avatar}
         {renderHeaderContentProp && <span className={classes.headerCustomContent}>{renderHeaderContentProp()}</span>}
       </div>
     </div>
   );
-};
+});
+
+ObjectPageHeader.displayName = 'ObjectPageHeader';

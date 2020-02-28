@@ -5,16 +5,14 @@ const styles = ({ parameters }: JSSTheme) => ({
     width: '100%',
     height: '100%',
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    isolation: 'isolate',
     whiteSpace: 'normal',
     fontFamily: parameters.sapUiFontFamily,
-    backgroundColor: parameters.sapUiBaseBG
+    backgroundColor: parameters.sapUiBaseBG,
+    overflowY: 'auto'
   },
   contentContainer: {
     overflowX: 'hidden',
-    overflowY: 'auto',
+    overflowY: 'visible',
     position: 'relative',
     flexGrow: 1
   },
@@ -33,7 +31,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     display: 'flex',
     height: '2.75rem',
     minHeight: '2.75rem',
-    position: 'relative'
+    position: 'sticky',
+    zIndex: 1
   },
   sectionsContainer: {
     '&:before': {
@@ -47,7 +46,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     height: '100%',
     // overflowX: 'hidden',
     // overflowY: 'auto',
-    overflow: 'hidden',
+    // overflow: 'hidden',
     backgroundColor: parameters.sapUiBaseBG,
     '&:after': {
       clear: 'both',
@@ -61,16 +60,10 @@ const styles = ({ parameters }: JSSTheme) => ({
   // header
   header: {
     flexShrink: 0,
-    position: 'relative',
     backgroundColor: parameters.sapUiObjectHeaderBackground,
-    '&$stickied': {
-      '& $image': {
-        opacity: '1',
-        height: '3rem',
-        width: '3rem',
-        margin: '0.25rem 1rem 0.25rem 0'
-      }
-    }
+    position: 'sticky',
+    top: 0,
+    zIndex: 1
   },
   contentHeader: {
     backgroundColor: parameters.sapUiObjectHeaderBackground,
@@ -122,7 +115,6 @@ const styles = ({ parameters }: JSSTheme) => ({
       padding: 0
     }
   },
-  stickied: {},
   headerContent: {
     //paddingTop: '1.5rem',
     paddingBottom: '0.25rem',
@@ -197,12 +189,24 @@ const styles = ({ parameters }: JSSTheme) => ({
   avatar: {
     marginRight: '1rem'
   },
-  toggleHeaderButton: {
+  anchorBarActionButton: {
     position: 'absolute',
-    '--_ui5_button_compact_height': '1.25rem',
-    '--_ui5_button_base_height': '1.25rem',
-    top: `-0.625rem`,
-    left: 'calc(50% - 1rem)'
+    '--_ui5_button_compact_height': '1.375rem',
+    '--_ui5_button_base_height': '1.375rem',
+    '--_ui5_button_base_min_compact_width': '1.375rem',
+    top: `-0.6875rem`,
+    marginLeft: `-0.6875rem`,
+    left: '50%'
+  },
+  anchorBarActionButtonExpandable: {},
+  anchorBarActionButtonPinnable: {},
+  anchorBarActionPinnableAndExandable: {
+    '&$anchorBarActionButtonPinnable': {
+      marginLeft: '0.25rem'
+    },
+    '&$anchorBarActionButtonExpandable': {
+      marginLeft: '-1.75rem'
+    }
   }
 });
 
