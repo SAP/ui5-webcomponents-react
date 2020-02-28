@@ -81,6 +81,17 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     [onDataPointClick]
   );
 
+  const CustomizedAxisLabels = (props) => {
+    const { x, y, payload } = props;
+    return (
+      <g transform={`translate(${x},${y + 10})`}>
+        <text style={style} fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'middle'}>
+          {payload.value}
+        </text>
+      </g>
+    );
+  };
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -100,7 +111,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} />}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} tick={<CustomizedAxisLabels />} />}
         <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId="left" />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis

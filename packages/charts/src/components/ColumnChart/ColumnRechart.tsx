@@ -98,6 +98,17 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     [onDataPointClick]
   );
 
+  const CustomizedAxisLabels = (props) => {
+    const { x, y, payload } = props;
+    return (
+      <g transform={`translate(${x},${y + 10})`}>
+        <text style={style} fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'middle'}>
+          {payload.value}
+        </text>
+      </g>
+    );
+  };
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -117,7 +128,9 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis unit={chartConfig.unit} dataKey={labelKey} />}
+        {(chartConfig.xAxisVisible ?? true) && (
+          <XAxis tick={<CustomizedAxisLabels />} unit={chartConfig.unit} dataKey={labelKey} />
+        )}
         <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId={'left'} />
         {chartConfig.secondYAxis && (
           <YAxis

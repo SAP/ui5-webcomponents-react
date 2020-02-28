@@ -10,6 +10,7 @@ export interface RechartBaseProps extends ChartContainerProps {
   onLegendClick?: (event: Event) => void;
   color?: string;
   colors?: CSSProperties['color'][];
+  labelFormatter?: (d: object) => any;
 
   chartConfig?: {
     yAxisVisible?: boolean;
@@ -25,8 +26,8 @@ export interface RechartBaseProps extends ChartContainerProps {
 
     strokeOpacity?: number;
     strokeWidth?: number;
-    stacked?: boolean;
 
+    stacked?: boolean;
     barSize?: string | number;
     barGap?: number;
     fillOpacity?: number;

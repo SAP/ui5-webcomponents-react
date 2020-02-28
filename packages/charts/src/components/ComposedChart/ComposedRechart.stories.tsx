@@ -71,17 +71,20 @@ export const renderComposedStackedChart = () => (
       {
         type: 'bar',
         accessor: 'sessions',
-        fillOpacity: 0.1
+        fillOpacity: 0.1,
+        barSize: 25,
+        stackId: 'a'
       },
       {
         type: 'bar',
         accessor: 'volume',
-        strokeWidth: 2
+        strokeWidth: 2,
+        stackId: 'a'
       },
       {
         type: 'line',
         accessor: 'users',
-        color: 'organge',
+        color: 'orange',
         strokeOpacity: 0.7,
         strokeWidth: 3.5
       }

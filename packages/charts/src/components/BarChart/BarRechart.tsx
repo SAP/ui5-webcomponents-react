@@ -79,6 +79,18 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     },
     [onDataPointClick]
   );
+
+  const CustomizedAxisLabels = (props) => {
+    const { x, y, payload } = props;
+    return (
+      <g transform={`translate(${x},${y + 10})`}>
+        <text style={style} fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'middle'}>
+          {payload.value}
+        </text>
+      </g>
+    );
+  };
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -98,7 +110,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis unit={chartConfig.unit} type="number" />}
+        {(chartConfig.xAxisVisible ?? true) && (
+          <XAxis unit={chartConfig.unit} type="number" tick={<CustomizedAxisLabels />} />
+        )}
         <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} type="category" dataKey={labelKey} />
         {currentDataKeys.map((key, index) => (
           <Bar

@@ -19,6 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { LabelObject } from '../../interfaces/LabelObject';
 
 enum ChartTypes {
   line = Line,
@@ -29,10 +30,12 @@ enum ChartTypes {
 type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
 interface ChartElement {
-  color: CSSProperties['color'];
-  valueFormatter: (element: any) => unknown;
+  color?: CSSProperties['color'];
+  valueFormatter?: (element: any) => unknown;
   type: AvailableChartTypes;
   accessor: string;
+  stackId?: string;
+  [key: string]: unknown | number;
 }
 
 export interface ComposedChartProps extends RechartBaseProps {
@@ -59,9 +62,10 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     dataset,
     labelKey = 'name',
     onDataPointClick,
-    defaults = { barSize: 30, barGap: 5, lineType: 'monotone', label: { position: 'top' } },
+    defaults = { barSize: 20, barGap: 3, lineType: 'monotone', label: { position: 'top' }, stackId: undefined },
     elements,
     onLegendClick,
+    labelFormatter = (d: LabelObject) => d.value,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
@@ -73,8 +77,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       yAxisColor: ThemingParameters.sapNeutralBorderColor,
       legendPosition: 'bottom',
       zoomingTool: false,
-      stacked: false,
       dataLabel: false,
+      barSize: undefined,
+      barGap: undefined,
       secondYAxis: {
         name: undefined,
         dataKey: undefined,
@@ -93,15 +98,31 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex, event) => {
-      debugger;
-      if (payload && onDataPointClick) {
+      if (payload.name && onDataPointClick) {
         onDataPointClick(
           Event.of(null, event ?? eventOrIndex, {
-            value: payload.value,
+            value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
             xIndex: payload.index ?? eventOrIndex,
-            dataKey:
-              payload.dataKey ?? Object.keys(payload).find((key) => payload[key] === payload.value && key !== 'value'),
+            dataKey: payload.value.length
+              ? Object.keys(payload).filter((key) =>
+                  payload.value.length
+                    ? payload[key] === payload.value[1] - payload.value[0]
+                    : payload[key] === payload.value && key !== 'value'
+                )[0]
+              : payload.dataKey ??
+                Object.keys(payload).find((key) => payload[key] === payload.value && key !== 'value'),
             payload: payload.payload
+          })
+        );
+      } else {
+        onDataPointClick(
+          Event.of(null, event ?? eventOrIndex, {
+            value: eventOrIndex.value,
+            xIndex: eventOrIndex.index ?? eventOrIndex,
+            dataKey:
+              eventOrIndex.dataKey ??
+              Object.keys(eventOrIndex).find((key) => eventOrIndex[key] === eventOrIndex.value && key !== 'value'),
+            payload: eventOrIndex.payload
           })
         );
       }
@@ -110,6 +131,26 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   );
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
+
+  let paddingCharts = 20;
+  elements.forEach((chartElement) => {
+    chartElement.type === 'bar'
+      ? chartElement.barSize
+        ? (paddingCharts += chartElement.barSize as number)
+        : (paddingCharts += 20)
+      : 0;
+  });
+
+  const CustomizedAxisLabels = (props) => {
+    const { x, y, payload } = props;
+    return (
+      <g transform={`translate(${x},${y + 10})`}>
+        <text style={style} fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'middle'}>
+          {payload.value}
+        </text>
+      </g>
+    );
+  };
 
   return (
     <ChartContainer
@@ -130,18 +171,24 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} />}
+        {(chartConfig.xAxisVisible ?? true) && (
+          <XAxis
+            dataKey={labelKey}
+            tick={<CustomizedAxisLabels />}
+            padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
+          />
+        )}
         <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId="left" />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color}
-            label={{
-              value: chartConfig.secondYAxis.name,
-              angle: +90,
-              position: 'center',
-              fill: ThemingParameters.sapContent_LabelColor
-            }}
+            // label={{
+            //   value: chartConfig.secondYAxis.name,
+            //   angle: -90,
+            //   position: 'outside',
+            //   fill: ThemingParameters.sapContent_LabelColor
+            // }}
             orientation="right"
             yAxisId="right"
           />
@@ -164,6 +211,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.type = lineType;
               break;
             case 'bar':
+              chartElementProps.barSize = chartConfig.barSize ?? defaults.barSize;
+              chartElementProps.barGap = chartConfig.barGap ?? defaults.barGap;
+              chartElementProps.stackId = config.stackId ?? undefined;
+              chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
+              chartElementProps.onClick = onDataPointClickInternal;
+              break;
             case 'area':
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
@@ -174,7 +227,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           );
         })}
         {chartConfig.zoomingTool && (
-          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />
+          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}
       </ComposedChartLib>
     </ChartContainer>
