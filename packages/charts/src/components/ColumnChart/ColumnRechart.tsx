@@ -79,8 +79,9 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
-    (payload, i, event) => {
+    (payload, eventOrIndex, event) => {
       if (payload && onDataPointClick) {
+        console.log(payload);
         onDataPointClick(
           Event.of(null, event, {
             dataKey: Object.keys(payload).filter((key) =>
@@ -89,7 +90,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 : payload[key] === payload.value && key !== 'value'
             )[0],
             value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
-            xIndex: i,
+            xIndex: eventOrIndex,
             payload: payload.payload
           })
         );
