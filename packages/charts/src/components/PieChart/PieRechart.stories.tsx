@@ -11,8 +11,8 @@ export default {
 export const renderStory = () => {
   return (
     <PieChart
-      onLegendClick={action('onDataPointClick')}
-      onDataPointClick={action('onLegendClick')}
+      onDataPointClick={action('onDataPointClick')}
+      onLegendClick={action('onLegendClick')}
       width={'50%'}
       dataset={simpleDataSet}
       labelKey={'name'}
@@ -28,6 +28,8 @@ renderStory.story = {
 export const renderCustomColorStory = () => {
   return (
     <PieChart
+      onDataPointClick={action('onDataPointClick')}
+      onLegendClick={action('onLegendClick')}
       width={'50%'}
       dataset={simpleDataSet}
       labelKey={'name'}

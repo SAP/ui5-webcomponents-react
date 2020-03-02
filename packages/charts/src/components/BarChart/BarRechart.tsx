@@ -9,7 +9,7 @@ import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResol
 import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { AxisTicks } from '../../internal/AxisTicks';
+import { AxisTicks } from '../../internal/CustomElements';
 
 type BarChartProps = RechartBaseProps;
 

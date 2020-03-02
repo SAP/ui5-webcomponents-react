@@ -10,7 +10,8 @@ export interface RechartBaseProps extends ChartContainerProps {
   onLegendClick?: (event: Event) => void;
   color?: string;
   colors?: CSSProperties['color'][];
-  labelFormatter?: (d: object) => any;
+  dataLabelFormatter?: (d: number) => unknown;
+  dataLabelCustomElement?: JSX.Element;
 
   chartConfig?: {
     yAxisVisible?: boolean;
@@ -41,6 +42,12 @@ export interface RechartBaseProps extends ChartContainerProps {
       dataKey: string;
       name?: string;
       color?: string;
+    };
+
+    referenceLine?: {
+      label: string;
+      value: number;
+      color: string;
     };
   };
 }

@@ -18,7 +18,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { AxisTicks } from '../../internal/AxisTicks';
+import { AxisTicks } from '../../internal/CustomElements';
 
 type ColumnChartProps = RechartBaseProps;
 

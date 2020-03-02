@@ -7,9 +7,19 @@ import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartCo
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { Brush, CartesianGrid, Legend, Line, LineChart as LineChartLib, Tooltip, XAxis, YAxis } from 'recharts';
+import {
+  Brush,
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart as LineChartLib,
+  Tooltip,
+  XAxis,
+  YAxis,
+  ReferenceLine
+} from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { AxisTicks } from '../../internal/AxisTicks';
+import { AxisTicks, DataLabel } from '../../internal/CustomElements';
 
 type LineChartProps = RechartBaseProps;
 
@@ -28,6 +38,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     noLegend = false,
     onDataPointClick,
     onLegendClick,
+    dataLabelFormatter = (d) => d,
+    dataLabelCustomElement = undefined,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
@@ -45,6 +57,11 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         dataKey: undefined,
         name: undefined,
         color: undefined
+      },
+      referenceLine: {
+        label: undefined,
+        value: undefined,
+        color: undefined
       }
     },
     style,
@@ -52,7 +69,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     tooltip,
     slot
   } = props;
-
   useInitialize();
 
   const chartRef = useConsolidatedRef<any>(ref);
@@ -67,14 +83,14 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
-    (payload, event) => {
-      if (payload && onDataPointClick && payload.value) {
+    (payload, eventOrIndex) => {
+      if (eventOrIndex.dataKey && onDataPointClick) {
         onDataPointClick(
           Event.of(null, event, {
-            value: payload.value,
-            dataKey: payload.dataKey,
-            xIndex: payload.index,
-            payload: payload.payload
+            value: eventOrIndex.value,
+            dataKey: eventOrIndex.dataKey,
+            xIndex: eventOrIndex.index,
+            payload: eventOrIndex.payload
           })
         );
       }
@@ -123,10 +139,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             name={key}
             strokeOpacity={chartConfig.strokeOpacity}
             label={
-              chartConfig.dataLabel && {
-                position: 'top',
-                fill: ThemingParameters.sapContent_LabelColor
-              }
+              chartConfig.dataLabel ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement) : false
             }
             type="monotone"
             dataKey={key}
@@ -136,6 +149,15 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           />
         ))}
         {!noLegend && <Legend onClick={onItemLegendClick} />}
+        {chartConfig.referenceLine && (
+          <ReferenceLine
+            isFront={true}
+            stroke={chartConfig.referenceLine.color}
+            y={chartConfig.referenceLine.value}
+            label={chartConfig.referenceLine.label}
+            yAxisId={'left'}
+          />
+        )}
         <Tooltip />
         {chartConfig.zoomingTool && (
           <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />

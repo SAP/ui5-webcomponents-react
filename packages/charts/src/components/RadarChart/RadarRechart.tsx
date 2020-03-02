@@ -64,15 +64,15 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
-    (payload, event) => {
-      if (payload && onDataPointClick && payload.value) {
+    (payload, eventOrIndex) => {
+      if (eventOrIndex.value && onDataPointClick) {
         onDataPointClick(
           Event.of(null, event, {
-            value: payload.value,
-            dataKey: payload.dataKey,
-            name: payload.payload.label,
-            xIndex: payload.index,
-            payload: payload.payload
+            value: eventOrIndex.value,
+            dataKey: eventOrIndex.dataKey,
+            name: eventOrIndex.payload.label,
+            xIndex: eventOrIndex.index,
+            payload: eventOrIndex.payload
           })
         );
       }

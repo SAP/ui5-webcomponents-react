@@ -20,7 +20,7 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { LabelObject } from '../../interfaces/LabelObject';
-import { AxisTicks } from '../../internal/AxisTicks';
+import { AxisTicks } from '../../internal/CustomElements';
 
 enum ChartTypes {
   line = Line,
@@ -66,7 +66,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     defaults = { barSize: 20, barGap: 3, lineType: 'monotone', label: { position: 'top' }, stackId: undefined },
     elements,
     onLegendClick,
-    labelFormatter = (d: LabelObject) => d.value,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
