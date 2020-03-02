@@ -18,6 +18,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { AxisTicks } from '../../internal/AxisTicks';
 
 type ColumnChartProps = RechartBaseProps;
 
@@ -46,7 +47,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       gridVertical: false,
       yAxisColor: ThemingParameters.sapNeutralBorderColor,
       legendPosition: 'bottom',
-      barSize: 20,
+      barSize: 15,
       barGap: 3,
       zoomingTool: false,
       strokeOpacity: 1,
@@ -56,7 +57,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
-        color: ThemingParameters.sapNeutralBorderColor
+        color: undefined
       }
     },
     style,
@@ -98,17 +99,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     [onDataPointClick]
   );
 
-  const CustomizedAxisLabels = (props) => {
-    const { x, y, payload } = props;
-    return (
-      <g transform={`translate(${x},${y + 10})`}>
-        <text style={style} fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'middle'}>
-          {payload.value}
-        </text>
-      </g>
-    );
-  };
-
   return (
     <ChartContainer
       dataset={dataset}
@@ -122,14 +112,14 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       tooltip={tooltip}
       slot={slot}
     >
-      <ColumnChartLib margin={{ top: 15 }} data={dataset} barGap={chartConfig.barGap}>
+      <ColumnChartLib margin={{ left: 20, right: 20, top: 20, bottom: 20 }} data={dataset} barGap={3}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
         {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis tick={<CustomizedAxisLabels />} unit={chartConfig.unit} dataKey={labelKey} />
+          <XAxis tick={<AxisTicks />} unit={chartConfig.unit} dataKey={labelKey} />
         )}
         <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId={'left'} />
         {chartConfig.secondYAxis && (
@@ -165,7 +155,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         {!noLegend && <Legend onClick={onItemLegendClick} />}
         <Tooltip cursor={{ fillOpacity: 0.3 }} />
         {chartConfig.zoomingTool && (
-          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />
+          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}
       </ColumnChartLib>
     </ChartContainer>

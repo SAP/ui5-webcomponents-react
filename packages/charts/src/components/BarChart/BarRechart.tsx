@@ -9,6 +9,7 @@ import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResol
 import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { AxisTicks } from '../../internal/AxisTicks';
 
 type BarChartProps = RechartBaseProps;
 
@@ -37,7 +38,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       gridVertical: false,
       yAxisColor: ThemingParameters.sapNeutralBorderColor,
       legendPosition: 'bottom',
-      barSize: 20,
+      barSize: 10,
       barGap: 3,
       zoomingTool: false,
       strokeOpacity: 1,
@@ -80,17 +81,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     [onDataPointClick]
   );
 
-  const CustomizedAxisLabels = (props) => {
-    const { x, y, payload } = props;
-    return (
-      <g transform={`translate(${x},${y + 10})`}>
-        <text style={style} fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'middle'}>
-          {payload.value}
-        </text>
-      </g>
-    );
-  };
-
   return (
     <ChartContainer
       dataset={dataset}
@@ -104,15 +94,18 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       tooltip={tooltip}
       slot={slot}
     >
-      <BarChartLib layout={'vertical'} data={dataset} barGap={chartConfig.barGap}>
+      <BarChartLib
+        margin={{ left: 20, right: 20, top: 20, bottom: 20 }}
+        layout={'vertical'}
+        data={dataset}
+        barGap={chartConfig.barGap}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical ?? false}
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis unit={chartConfig.unit} type="number" tick={<CustomizedAxisLabels />} />
-        )}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis unit={chartConfig.unit} type="number" tick={<AxisTicks />} />}
         <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} type="category" dataKey={labelKey} />
         {currentDataKeys.map((key, index) => (
           <Bar
@@ -137,7 +130,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         {!noLegend && <Legend onClick={onItemLegendClick} />}
         <Tooltip cursor={{ fillOpacity: 0.3 }} />
         {chartConfig.zoomingTool && (
-          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />
+          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}
       </BarChartLib>
     </ChartContainer>

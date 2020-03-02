@@ -100,6 +100,7 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
       ref={chartRef}
     >
       <MicroBarChartLib
+        margin={{ left: 20, right: 20, top: 20, bottom: 20 }}
         layout={'vertical'}
         data={dataset}
         barGap={chartConfig.barGap}

@@ -9,6 +9,7 @@ import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResol
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { Brush, CartesianGrid, Legend, Line, LineChart as LineChartLib, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { AxisTicks } from '../../internal/AxisTicks';
 
 type LineChartProps = RechartBaseProps;
 
@@ -43,7 +44,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
-        color: ThemingParameters.sapNeutralBorderColor
+        color: undefined
       }
     },
     style,
@@ -81,17 +82,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     [onDataPointClick]
   );
 
-  const CustomizedAxisLabels = (props) => {
-    const { x, y, payload } = props;
-    return (
-      <g transform={`translate(${x},${y + 10})`}>
-        <text style={style} fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'middle'}>
-          {payload.value}
-        </text>
-      </g>
-    );
-  };
-
   return (
     <ChartContainer
       dataset={dataset}
@@ -105,13 +95,17 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       tooltip={tooltip}
       slot={slot}
     >
-      <LineChartLib data={dataset} onClick={onDataPointClickInternal}>
+      <LineChartLib
+        margin={{ left: 20, right: 20, top: 20, bottom: 20 }}
+        data={dataset}
+        onClick={onDataPointClickInternal}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} tick={<CustomizedAxisLabels />} />}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} tick={<AxisTicks />} />}
         <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId="left" />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
@@ -144,7 +138,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         {!noLegend && <Legend onClick={onItemLegendClick} />}
         <Tooltip />
         {chartConfig.zoomingTool && (
-          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={30} />
+          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}
       </LineChartLib>
     </ChartContainer>

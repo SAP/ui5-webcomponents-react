@@ -32,7 +32,7 @@ export const withCustomColor = () => (
     labelKey={'name'}
     color={'red'}
     width={text('width', '95%')}
-    height={text('height', '40vh')}
+    height={text('height', '70vh')}
     chartConfig={{ dataLabel: true, barSize: 20 }}
   />
 );
@@ -59,7 +59,7 @@ export const defaultStackedStory = () => (
       gridVertical: false,
       fillOpacity: 0.7,
       strokeOpacity: 1,
-      barSize: 35,
+      barSize: 20,
       xAxisVisible: true,
       yAxisVisible: true,
       zoomingTool: true,

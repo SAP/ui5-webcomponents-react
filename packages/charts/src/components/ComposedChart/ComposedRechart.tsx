@@ -20,6 +20,7 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { LabelObject } from '../../interfaces/LabelObject';
+import { AxisTicks } from '../../internal/AxisTicks';
 
 enum ChartTypes {
   line = Line,
@@ -83,7 +84,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       secondYAxis: {
         name: undefined,
         dataKey: undefined,
-        color: ThemingParameters.sapNeutralBorderColor
+        color: undefined
       }
     },
     style,
@@ -141,17 +142,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       : 0;
   });
 
-  const CustomizedAxisLabels = (props) => {
-    const { x, y, payload } = props;
-    return (
-      <g transform={`translate(${x},${y + 10})`}>
-        <text style={style} fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'middle'}>
-          {payload.value}
-        </text>
-      </g>
-    );
-  };
-
   return (
     <ChartContainer
       ref={chartRef}
@@ -165,7 +155,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       tooltip={tooltip}
       slot={slot}
     >
-      <ComposedChartLib ref={chartRef} data={dataset}>
+      <ComposedChartLib margin={{ left: 20, right: 20, top: 20, bottom: 20 }} ref={chartRef} data={dataset}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
@@ -174,7 +164,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         {(chartConfig.xAxisVisible ?? true) && (
           <XAxis
             dataKey={labelKey}
-            tick={<CustomizedAxisLabels />}
+            tick={<AxisTicks />}
             padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
           />
         )}

@@ -93,7 +93,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       tooltip={tooltip}
       slot={slot}
     >
-      <RadarChartLib data={dataset}>
+      <RadarChartLib data={dataset} margin={{ left: 20, right: 20, top: 20, bottom: 20 }}>
         <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis dataKey={labelKey} />
         <PolarRadiusAxis />
