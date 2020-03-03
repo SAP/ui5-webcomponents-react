@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { DonutChart } from '@ui5/webcomponents-react-charts/lib/next/DonutChart';
 import React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
+import { PieChart } from '../PieChart/PieRechart';
 
 export default {
   title: 'Charts / DonutChart',
@@ -81,4 +82,26 @@ export const loadingPlaceholder = () => <DonutChart width={'30%'} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
+};
+
+const customDataLabel = () => {
+  return <text fontSize={10}></text>;
+};
+
+export const withFormatedStory = () => {
+  return (
+    <DonutChart
+      onLegendClick={action('onLegendClick')}
+      onDataPointClick={action('onDataPointClick')}
+      width={'50%'}
+      dataset={simpleDataSet}
+      labelKey={'name'}
+      chartConfig={{ dataLabel: true, paddingAngle: 5 }}
+      dataLabelFormatter={(d) => (d > 200 ? 'Over 200' : 'too low')}
+    />
+  );
+};
+
+withFormatedStory.story = {
+  name: 'With formatted data labels'
 };

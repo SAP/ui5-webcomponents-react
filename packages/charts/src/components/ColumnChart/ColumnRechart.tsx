@@ -15,10 +15,11 @@ import {
   Legend,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
+  ReferenceLine
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { AxisTicks } from '../../internal/CustomElements';
+import { AxisTicks, DataLabel } from '../../internal/CustomElements';
 
 type ColumnChartProps = RechartBaseProps;
 
@@ -37,6 +38,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     noLegend = false,
     onDataPointClick,
     onLegendClick,
+    dataLabelFormatter = (d) => d,
+    dataLabelCustomElement = undefined,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
@@ -57,6 +60,11 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
+        color: undefined
+      },
+      referenceLine: {
+        label: undefined,
+        value: undefined,
         color: undefined
       }
     },
@@ -138,10 +146,15 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
             label={
-              chartConfig.dataLabel && {
-                position: chartConfig.stacked ? 'inside' : 'top',
-                fill: ThemingParameters.sapContent_LabelColor
-              }
+              chartConfig.dataLabel
+                ? dataLabelCustomElement
+                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+                  : {
+                      position: 'insideTop',
+                      content: (label) => dataLabelFormatter(label.value),
+                      fill: ThemingParameters.sapContent_LabelColor
+                    }
+                : false
             }
             key={key}
             name={key}
@@ -153,6 +166,14 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           />
         ))}
         {!noLegend && <Legend onClick={onItemLegendClick} />}
+        {chartConfig.referenceLine && (
+          <ReferenceLine
+            stroke={chartConfig.referenceLine.color}
+            y={chartConfig.referenceLine.value}
+            label={chartConfig.referenceLine.label}
+            yAxisId={'left'}
+          />
+        )}
         <Tooltip cursor={{ fillOpacity: 0.3 }} />
         {chartConfig.zoomingTool && (
           <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />

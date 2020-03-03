@@ -68,3 +68,62 @@ export const defaultStackedStory = () => (
 defaultStackedStory.story = {
   name: 'Stacked chart'
 };
+
+export const defaultFormatedStory = () => (
+  <ColumnChart
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
+    labelKey={'name'}
+    dataset={complexDataSet}
+    width={'97%'}
+    dataLabelFormatter={(d) => d / 100}
+    chartConfig={{
+      gridStroke: 'white',
+      gridVertical: false,
+      fillOpacity: 0.7,
+      strokeOpacity: 1,
+      barSize: 35,
+      xAxisVisible: true,
+      yAxisVisible: true,
+      zoomingTool: true,
+      stacked: true,
+      dataLabel: true
+    }}
+  />
+);
+
+defaultFormatedStory.story = {
+  name: 'With formated data labels'
+};
+
+export const defaultReferenceLineStory = () => (
+  <ColumnChart
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
+    labelKey={'name'}
+    dataset={complexDataSet}
+    width={'97%'}
+    dataLabelFormatter={(d) => d / 100}
+    chartConfig={{
+      gridStroke: 'white',
+      gridVertical: false,
+      fillOpacity: 0.7,
+      strokeOpacity: 1,
+      barSize: 35,
+      xAxisVisible: true,
+      yAxisVisible: true,
+      zoomingTool: true,
+      stacked: true,
+      dataLabel: true,
+      referenceLine: {
+        color: 'red',
+        label: 'MAX',
+        value: 1100
+      }
+    }}
+  />
+);
+
+defaultReferenceLineStory.story = {
+  name: 'With reference line'
+};

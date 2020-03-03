@@ -53,6 +53,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       zoomingTool: false,
       strokeOpacity: 1,
       dataLabel: false,
+      unit: '',
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
@@ -121,7 +122,9 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} tick={<AxisTicks />} />}
+        {(chartConfig.xAxisVisible ?? true) && (
+          <XAxis unit={chartConfig.unit} dataKey={labelKey} tick={<AxisTicks />} />
+        )}
         <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId="left" />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
@@ -139,7 +142,15 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             name={key}
             strokeOpacity={chartConfig.strokeOpacity}
             label={
-              chartConfig.dataLabel ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement) : false
+              chartConfig.dataLabel
+                ? dataLabelCustomElement
+                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+                  : {
+                      content: (d) => dataLabelFormatter(d.value),
+                      position: 'top',
+                      fill: ThemingParameters.sapContent_LabelColor
+                    }
+                : false
             }
             type="monotone"
             dataKey={key}
@@ -151,7 +162,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         {!noLegend && <Legend onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
-            isFront={true}
             stroke={chartConfig.referenceLine.color}
             y={chartConfig.referenceLine.value}
             label={chartConfig.referenceLine.label}

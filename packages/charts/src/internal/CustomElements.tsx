@@ -14,11 +14,12 @@ export const AxisTicks = (props) => {
 
 export const DataLabel = (props, formatter, customElement) => {
   const { x, y, value } = props;
+  console.log(formatter);
   const customElementClone =
     customElement && React.cloneElement(customElement, { children: formatter(value), textAnchor: 'middle' });
   return (
-    <g transform={`translate(${x},${y - 5})`} fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'middle'}>
-      {customElement ? customElementClone : <text>{formatter(value)}</text>}}
+    <g transform={`translate(${x},${y - 5})`} fill={ThemingParameters.sapNeutralBorderColor}>
+      {customElementClone}
     </g>
   );
 };

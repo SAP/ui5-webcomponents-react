@@ -48,3 +48,25 @@ export const loadingPlaceholder = () => <PieChart width={'30%'} />;
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
 };
+
+const customDataLabel = () => {
+  return <text fontSize={10}></text>;
+};
+
+export const renderFormatedStory = () => {
+  return (
+    <PieChart
+      onDataPointClick={action('onDataPointClick')}
+      onLegendClick={action('onLegendClick')}
+      dataLabelFormatter={(d) => (d > 200 ? 'over 200' : 'lower')}
+      width={'50%'}
+      dataset={simpleDataSet}
+      labelKey={'name'}
+      chartConfig={{ dataLabel: true }}
+    />
+  );
+};
+
+renderFormatedStory.story = {
+  name: 'With formatted data labels'
+};

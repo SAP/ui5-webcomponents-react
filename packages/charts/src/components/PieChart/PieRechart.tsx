@@ -8,6 +8,8 @@ import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResol
 import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { DataLabel } from '../../internal/CustomElements';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 type PieChartProps = RechartBaseProps;
 
@@ -26,6 +28,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     noLegend = false,
     onDataPointClick,
     onLegendClick,
+    dataLabelCustomElement = undefined,
+    dataLabelFormatter = (d) => d,
     chartConfig = {
       yAxisVisible: true,
       xAxisVisible: true,
@@ -92,7 +96,13 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
           paddingAngle={chartConfig.paddingAngle}
           dataKey={currentDataKeys[0] ?? ''}
           data={dataset}
-          label={chartConfig.dataLabel ?? false}
+          label={
+            chartConfig.dataLabel
+              ? dataLabelCustomElement
+                ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+                : (props) => dataLabelFormatter(props.value)
+              : false
+          }
           onClick={onDataPointClickInternal}
         >
           {chartConfig.innerRadius && <Label position={'center'}>{currentDataKeys[0]}</Label>}

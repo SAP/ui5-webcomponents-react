@@ -61,6 +61,7 @@ export const renderComposedStackedChart = () => (
       legendPosition: 'bottom',
       zoomingTool: true,
       stacked: true,
+      dataLabel: true,
       secondYAxis: {
         name: 'USER STATISTICS',
         dataKey: 'users',
@@ -142,4 +143,36 @@ renderLabelComposedChart.story = {
 export default {
   title: 'Charts / ComposedChart',
   component: ComposedChart
+};
+
+export const renderFormatedComposedChart = () => (
+  <ComposedChart
+    width={'95%'}
+    height={'40vh'}
+    dataset={complexDataSet}
+    onLegendClick={action('onLegendClick')}
+    onDataPointClick={action('onDataPointClick')}
+    chartConfig={{
+      dataLabel: true
+    }}
+    elements={[
+      {
+        type: 'bar',
+        accessor: 'sessions'
+      },
+      {
+        type: 'line',
+        accessor: 'users'
+      },
+      {
+        type: 'line',
+        dataLabelFormatter: (d) => `${d} per unit`,
+        accessor: 'volume'
+      }
+    ]}
+  />
+);
+
+renderFormatedComposedChart.story = {
+  name: 'With formatted data labels'
 };

@@ -72,3 +72,61 @@ export const defaultStackedStory = () => (
 defaultStackedStory.story = {
   name: 'Stacked chart'
 };
+
+export const defaultFormatterStory = () => (
+  <BarChart
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
+    labelKey={'name'}
+    width={'91%'}
+    height={'90vh'}
+    dataset={complexDataSet}
+    dataLabelFormatter={(d) => d / 100}
+    chartConfig={{
+      gridStroke: 'white',
+      gridVertical: false,
+      fillOpacity: 0.7,
+      strokeOpacity: 1,
+      barSize: 20,
+      xAxisVisible: true,
+      yAxisVisible: true,
+      zoomingTool: true,
+      dataLabel: true
+    }}
+  />
+);
+
+defaultFormatterStory.story = {
+  name: 'With formated data labels'
+};
+
+export const withReferenceLineStory = () => (
+  <BarChart
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
+    labelKey={'name'}
+    width={'91%'}
+    dataset={complexDataSet}
+    chartConfig={{
+      gridStroke: 'white',
+      gridVertical: false,
+      fillOpacity: 0.7,
+      strokeOpacity: 1,
+      barSize: 20,
+      xAxisVisible: true,
+      yAxisVisible: true,
+      zoomingTool: true,
+      stacked: true,
+      dataLabel: true,
+      referenceLine: {
+        color: 'red',
+        value: 1000,
+        label: 'MAX SUM'
+      }
+    }}
+  />
+);
+
+withReferenceLineStory.story = {
+  name: 'With reference line'
+};

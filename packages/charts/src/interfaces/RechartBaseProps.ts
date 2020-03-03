@@ -16,7 +16,7 @@ export interface RechartBaseProps extends ChartContainerProps {
   chartConfig?: {
     yAxisVisible?: boolean;
     xAxisVisible?: boolean;
-    unit?: 'string';
+    unit?: string;
     dataLabel?: boolean;
     gridStroke?: string;
     gridVertical?: boolean;

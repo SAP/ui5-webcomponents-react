@@ -19,8 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { LabelObject } from '../../interfaces/LabelObject';
-import { AxisTicks } from '../../internal/CustomElements';
+import { AxisTicks, DataLabel } from '../../internal/CustomElements';
 
 enum ChartTypes {
   line = Line,
@@ -32,7 +31,8 @@ type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
 interface ChartElement {
   color?: CSSProperties['color'];
-  valueFormatter?: (element: any) => unknown;
+  dataLabelFormatter?: (d: number) => unknown;
+  dataLabelCustomElement?: undefined;
   type: AvailableChartTypes;
   accessor: string;
   stackId?: string;
@@ -63,10 +63,19 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     dataset,
     labelKey = 'name',
     onDataPointClick,
-    defaults = { barSize: 20, barGap: 3, lineType: 'monotone', label: { position: 'top' }, stackId: undefined },
+    defaults = {
+      barSize: 20,
+      barGap: 3,
+      lineType: 'monotone',
+      dataLabelFormatter: (d) => d,
+      dataLabelCustomElement: undefined,
+      label: { position: 'top' },
+      stackId: undefined
+    },
     elements,
     onLegendClick,
     chartConfig = {
+      unit: '',
       yAxisVisible: false,
       xAxisVisible: true,
       legendVisible: true,
@@ -165,6 +174,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             dataKey={labelKey}
             tick={<AxisTicks />}
             padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
+            unit={chartConfig.unit}
           />
         )}
         <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId="left" />
@@ -185,7 +195,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         <Tooltip />
         {chartConfig.legendVisible && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition} />}
         {elements.map((config, index) => {
-          const { type, accessor, color, lineType, ...safeProps } = mergeWithDefaults(config, defaults);
+          const {
+            type,
+            accessor,
+            color,
+            lineType,
+            dataLabelFormatter,
+            dataLabelCustomElement,
+            ...safeProps
+          } = mergeWithDefaults(config, defaults);
           const ChartElement = (ChartTypes[type] as any) as FC<any>;
           const yAxisId = chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === accessor ? 'right' : 'left';
 
@@ -197,6 +215,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.activeDot = {
                 onClick: onDataPointClickInternal
               };
+              chartElementProps.label = chartConfig.dataLabel
+                ? dataLabelCustomElement
+                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+                  : {
+                      content: (d) => dataLabelFormatter(d.value),
+                      position: 'top',
+                      fill: ThemingParameters.sapContent_LabelColor
+                    }
+                : false;
               chartElementProps.type = lineType;
               break;
             case 'bar':
@@ -205,10 +232,28 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.stackId = config.stackId ?? undefined;
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
+              chartElementProps.label = chartConfig.dataLabel
+                ? dataLabelCustomElement
+                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+                  : {
+                      content: (d) => dataLabelFormatter(d.value),
+                      position: 'top',
+                      fill: ThemingParameters.sapContent_LabelColor
+                    }
+                : false;
               break;
             case 'area':
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
+              chartElementProps.label = chartConfig.dataLabel
+                ? dataLabelCustomElement
+                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+                  : {
+                      content: (d) => dataLabelFormatter(d.value),
+                      position: 'top',
+                      fill: ThemingParameters.sapContent_LabelColor
+                    }
+                : false;
               break;
           }
           return (

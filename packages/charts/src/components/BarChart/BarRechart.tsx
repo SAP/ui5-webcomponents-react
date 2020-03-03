@@ -7,9 +7,19 @@ import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartCo
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 import React, { FC, forwardRef, Ref, useCallback } from 'react';
-import { Bar, BarChart as BarChartLib, Brush, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
+import {
+  Bar,
+  BarChart as BarChartLib,
+  Brush,
+  CartesianGrid,
+  Legend,
+  Tooltip,
+  XAxis,
+  YAxis,
+  ReferenceLine
+} from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { AxisTicks } from '../../internal/CustomElements';
+import { AxisTicks, DataLabel } from '../../internal/CustomElements';
 
 type BarChartProps = RechartBaseProps;
 
@@ -28,6 +38,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     noLegend = false,
     onDataPointClick,
     onLegendClick,
+    dataLabelFormatter = (d) => d,
+    dataLabelCustomElement = undefined,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
@@ -44,7 +56,12 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       strokeOpacity: 1,
       fillOpacity: 1,
       stacked: false,
-      dataLabel: false
+      dataLabel: false,
+      referenceLine: {
+        label: undefined,
+        value: undefined,
+        color: undefined
+      }
     },
     style,
     className,
@@ -113,10 +130,15 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
             label={
-              chartConfig.dataLabel && {
-                position: chartConfig.stacked ? 'inside' : 'right',
-                fill: ThemingParameters.sapContent_LabelColor
-              }
+              chartConfig.dataLabel
+                ? dataLabelCustomElement
+                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+                  : {
+                      position: 'insideRight',
+                      content: (label) => dataLabelFormatter(label.value),
+                      fill: ThemingParameters.sapContent_LabelColor
+                    }
+                : false
             }
             key={key}
             name={key}
@@ -128,6 +150,13 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           />
         ))}
         {!noLegend && <Legend onClick={onItemLegendClick} />}
+        {chartConfig.referenceLine && (
+          <ReferenceLine
+            stroke={chartConfig.referenceLine.color}
+            x={chartConfig.referenceLine.value}
+            label={chartConfig.referenceLine.label}
+          />
+        )}
         <Tooltip cursor={{ fillOpacity: 0.3 }} />
         {chartConfig.zoomingTool && (
           <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
