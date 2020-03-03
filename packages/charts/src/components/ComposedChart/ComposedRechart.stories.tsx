@@ -150,9 +150,12 @@ export const renderFormatedComposedChart = () => (
     width={'95%'}
     height={'40vh'}
     dataset={complexDataSet}
+    xAxisFormatter={(el) => el.slice(0, 3)}
+    yAxisFormatter={(el) => el / 10}
     onLegendClick={action('onLegendClick')}
     onDataPointClick={action('onDataPointClick')}
     chartConfig={{
+      yAxisUnit: '%',
       dataLabel: true
     }}
     elements={[
@@ -162,11 +165,12 @@ export const renderFormatedComposedChart = () => (
       },
       {
         type: 'line',
-        accessor: 'users'
+        accessor: 'users',
+        dataLabelFormatter: (el) => ''
       },
       {
         type: 'line',
-        dataLabelFormatter: (d) => `${d} per unit`,
+        dataLabelFormatter: (d) => `${d}/unit`,
         accessor: 'volume'
       }
     ]}

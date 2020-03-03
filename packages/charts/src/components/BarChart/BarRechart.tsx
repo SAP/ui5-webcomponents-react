@@ -38,12 +38,15 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     noLegend = false,
     onDataPointClick,
     onLegendClick,
+    xAxisFormatter = (el) => el,
+    yAxisFormatter = (el) => el,
     dataLabelFormatter = (d) => d,
     dataLabelCustomElement = undefined,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
-      unit: '',
+      xAxisUnit: '',
+      yAxisUnit: '',
       legendVisible: true,
       gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
@@ -122,8 +125,17 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis unit={chartConfig.unit} type="number" tick={<AxisTicks />} />}
-        <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} type="category" dataKey={labelKey} />
+        {(chartConfig.xAxisVisible ?? true) && (
+          <XAxis type="number" tick={(props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)} />
+        )}
+        <YAxis
+          tickFormatter={(e) => yAxisFormatter(e)}
+          unit={chartConfig.yAxisUnit}
+          axisLine={chartConfig.yAxisVisible ?? false}
+          tickLine={false}
+          type="category"
+          dataKey={labelKey}
+        />
         {currentDataKeys.map((key, index) => (
           <Bar
             stackId={chartConfig.stacked ? 'A' : undefined}

@@ -4,14 +4,16 @@ import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import React, { CSSProperties, FC, forwardRef, Ref, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart as RadialBarChartLib } from 'recharts';
+import { Event } from '@ui5/webcomponents-react-base';
 
 interface RadialChartProps extends CommonProps {
-  value: number;
+  value?: number;
   maxValue?: number;
-  displayValue: number | string;
+  displayValue?: number | string;
   color?: CSSProperties['color'];
+  onDataPointClick?: (event: Event) => void;
   height?: number | string;
   width?: number | string;
 }
@@ -24,6 +26,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     maxValue = 100,
     value,
     displayValue,
+    onDataPointClick,
     color,
     width = 300,
     height = 300,
@@ -42,6 +45,21 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
   }, [maxValue]);
 
   const dataset = useMemo(() => [{ value }], [value]);
+
+  const onDataPointClickInternal = useCallback(
+    (payload, i, event) => {
+      if (payload && onDataPointClick) {
+        onDataPointClick(
+          Event.of(null, event, {
+            value: payload.value,
+            payload: payload.payload,
+            xIndex: i
+          })
+        );
+      }
+    },
+    [onDataPointClick]
+  );
 
   return (
     <ChartContainer
@@ -72,6 +90,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
           dataKey="value"
           cornerRadius="50%"
           fill={color ?? `var(--sapUiChartAccent${(0 % 12) + 1})`}
+          onClick={onDataPointClickInternal}
         />
         <text
           x="50%"

@@ -84,10 +84,6 @@ loadingPlaceholder.story = {
   name: 'Loading placeholder'
 };
 
-const customDataLabel = () => {
-  return <text fontSize={10}></text>;
-};
-
 export const withFormatedStory = () => {
   return (
     <DonutChart

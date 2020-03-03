@@ -5,7 +5,7 @@ import { RadialChart } from './RadialRechart';
 
 describe('RadialChart', () => {
   test('Renders with data', () => {
-    renderThemedComponent(<RadialChart width={'100%'} dataset={dataset} labelKey={label} />);
+    renderThemedComponent(<RadialChart width={'100%'} value={67} displayValue={'67%'} />);
   });
 
   test('loading placeholder', () => {

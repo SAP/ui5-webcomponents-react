@@ -20,13 +20,12 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
     width = '100%',
     height = '17vh',
     dataset,
-    noLegend = false,
     onDataPointClick,
-    onLegendClick,
     chartConfig = {
+      xAxisUnit: '',
+      yAxisUnit: '',
       yAxisVisible: false,
       xAxisVisible: false,
-      unit: '',
       legendVisible: true,
       gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
@@ -111,8 +110,9 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
           }
         }
       >
-        <XAxis hide={true} unit={chartConfig.unit} type="number" />}
+        <XAxis hide={true} unit={chartConfig.xAxisUnit} type="number" />
         <YAxis
+          unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
           tick={<TiltedAxisTick />}
           tickLine={false}

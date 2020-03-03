@@ -87,22 +87,20 @@ export const renderCustomDataLabelStory = () => {
       loading={true}
       dataLabelFormatter={(d) => (d > 500 ? '😍' : '🤔')}
       dataLabelCustomElement={customDataLabel()}
+      yAxisFormatter={(element: number) => `${element / 10}`}
+      xAxisFormatter={(element: string) => element.slice(0, 3)}
       chartConfig={{
         zoomingTool: true,
         strokeWidth: 1.5,
         dataLabel: true,
-        referenceLine: {
-          color: 'red',
-          label: 'MIN',
-          value: 600
-        }
+        yAxisUnit: '%'
       }}
     />
   );
 };
 
 renderCustomDataLabelStory.story = {
-  name: 'With formatted data labels'
+  name: 'With formatter'
 };
 
 export const loadingPlaceholder = () => <LineChart width={'30%'} />;

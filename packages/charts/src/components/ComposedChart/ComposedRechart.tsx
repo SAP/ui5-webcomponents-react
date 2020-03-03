@@ -63,6 +63,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     dataset,
     labelKey = 'name',
     onDataPointClick,
+    xAxisFormatter = (el) => el,
+    yAxisFormatter = (el) => el,
     defaults = {
       barSize: 20,
       barGap: 3,
@@ -75,7 +77,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     elements,
     onLegendClick,
     chartConfig = {
-      unit: '',
+      xAxisUnit: '',
+      yAxisUnit: '',
       yAxisVisible: false,
       xAxisVisible: true,
       legendVisible: true,
@@ -172,22 +175,22 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         {(chartConfig.xAxisVisible ?? true) && (
           <XAxis
             dataKey={labelKey}
-            tick={<AxisTicks />}
+            tick={(props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)}
             padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
-            unit={chartConfig.unit}
           />
         )}
-        <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId="left" />
+        <YAxis
+          axisLine={chartConfig.yAxisVisible ?? false}
+          unit={chartConfig.yAxisUnit}
+          tickLine={false}
+          yAxisId="left"
+          tickFormatter={(e) => yAxisFormatter(e)}
+        />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
+            unit={chartConfig.yAxisUnit}
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color}
-            // label={{
-            //   value: chartConfig.secondYAxis.name,
-            //   angle: -90,
-            //   position: 'outside',
-            //   fill: ThemingParameters.sapContent_LabelColor
-            // }}
             orientation="right"
             yAxisId="right"
           />

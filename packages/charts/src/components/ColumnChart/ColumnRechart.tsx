@@ -38,12 +38,15 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     noLegend = false,
     onDataPointClick,
     onLegendClick,
+    xAxisFormatter = (el) => el,
+    yAxisFormatter = (el) => el,
     dataLabelFormatter = (d) => d,
     dataLabelCustomElement = undefined,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
-      unit: '',
+      xAxisUnit: '',
+      yAxisUnit: '',
       legendVisible: true,
       gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
@@ -127,9 +130,15 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           stroke={chartConfig.gridStroke}
         />
         {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis tick={<AxisTicks />} unit={chartConfig.unit} dataKey={labelKey} />
+          <XAxis tick={(props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)} dataKey={labelKey} />
         )}
-        <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId={'left'} />
+        <YAxis
+          tickFormatter={(e) => yAxisFormatter(e)}
+          unit={chartConfig.yAxisUnit}
+          axisLine={chartConfig.yAxisVisible ?? false}
+          tickLine={false}
+          yAxisId={'left'}
+        />
         {chartConfig.secondYAxis && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}

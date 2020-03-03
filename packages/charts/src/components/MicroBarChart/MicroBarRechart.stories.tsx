@@ -50,6 +50,7 @@ export const withCustomColor = () => (
     dataset={singleData}
     labelKey={'name'}
     width={'50%'}
+    height={'25vh'}
     color={'red'}
     dataKeys={['users']}
   />

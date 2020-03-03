@@ -81,8 +81,10 @@ export const defaultFormatterStory = () => (
     width={'91%'}
     height={'90vh'}
     dataset={complexDataSet}
-    dataLabelFormatter={(d) => d / 100}
+    dataLabelFormatter={(d) => `${d / 10}%`}
+    xAxisFormatter={(el) => el / 10}
     chartConfig={{
+      xAxisUnit: '%',
       gridStroke: 'white',
       gridVertical: false,
       fillOpacity: 0.7,
@@ -97,7 +99,7 @@ export const defaultFormatterStory = () => (
 );
 
 defaultFormatterStory.story = {
-  name: 'With formated data labels'
+  name: 'With formatter'
 };
 
 export const withReferenceLineStory = () => (

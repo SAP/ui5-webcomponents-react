@@ -10,13 +10,18 @@ export interface RechartBaseProps extends ChartContainerProps {
   onLegendClick?: (event: Event) => void;
   color?: string;
   colors?: CSSProperties['color'][];
-  dataLabelFormatter?: (d: number) => unknown;
+
+  yAxisFormatter?: (el) => void;
+  xAxisFormatter?: (el) => void;
+  dataLabelFormatter?: (d: number) => void;
   dataLabelCustomElement?: JSX.Element;
 
   chartConfig?: {
     yAxisVisible?: boolean;
     xAxisVisible?: boolean;
-    unit?: string;
+    xAxisUnit?: string;
+    yAxisUnit?: string;
+
     dataLabel?: boolean;
     gridStroke?: string;
     gridVertical?: boolean;

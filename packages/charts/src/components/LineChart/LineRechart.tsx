@@ -38,6 +38,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     noLegend = false,
     onDataPointClick,
     onLegendClick,
+    yAxisFormatter = (el) => el,
+    xAxisFormatter = (el) => el,
     dataLabelFormatter = (d) => d,
     dataLabelCustomElement = undefined,
     chartConfig = {
@@ -53,7 +55,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       zoomingTool: false,
       strokeOpacity: 1,
       dataLabel: false,
-      unit: '',
+      xAxisUnit: '',
+      yAxisUnit: '',
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
@@ -123,9 +126,15 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           stroke={chartConfig.gridStroke}
         />
         {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis unit={chartConfig.unit} dataKey={labelKey} tick={<AxisTicks />} />
+          <XAxis dataKey={labelKey} tick={(props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)} />
         )}
-        <YAxis axisLine={chartConfig.yAxisVisible ?? false} tickLine={false} yAxisId="left" />
+        <YAxis
+          unit={chartConfig.yAxisUnit}
+          axisLine={chartConfig.yAxisVisible ?? false}
+          tickLine={false}
+          yAxisId="left"
+          tickFormatter={(e) => yAxisFormatter(e)}
+        />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
