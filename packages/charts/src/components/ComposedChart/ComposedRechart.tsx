@@ -41,7 +41,7 @@ interface ChartElement {
 
 export interface ComposedChartProps extends RechartBaseProps {
   placeHolder?: ComponentType<unknown>;
-  elements: ChartElement[];
+  elements?: ChartElement[];
   defaults?: ChartElement;
 }
 
@@ -142,7 +142,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   let paddingCharts = 20;
-  elements.forEach((chartElement) => {
+  elements?.forEach((chartElement) => {
     chartElement.type === 'bar'
       ? chartElement.barSize
         ? (paddingCharts += chartElement.barSize as number)
@@ -194,7 +194,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         )}
         <Tooltip />
         {chartConfig.legendVisible && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition} />}
-        {elements.map((config, index) => {
+        {elements?.map((config, index) => {
           const {
             type,
             accessor,
