@@ -159,7 +159,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 ? dataLabelCustomElement
                   ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
                   : {
-                      position: 'insideTop',
+                      position: chartConfig.stacked ? 'insideTop' : 'top',
                       content: (label) => dataLabelFormatter(label.value),
                       fill: ThemingParameters.sapContent_LabelColor
                     }

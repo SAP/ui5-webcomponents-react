@@ -146,7 +146,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
                 ? dataLabelCustomElement
                   ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
                   : {
-                      position: 'insideRight',
+                      position: chartConfig.stacked ? 'insideRight' : 'right',
                       content: (label) => dataLabelFormatter(label.value),
                       fill: ThemingParameters.sapContent_LabelColor
                     }

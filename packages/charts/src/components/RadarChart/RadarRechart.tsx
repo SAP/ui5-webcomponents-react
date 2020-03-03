@@ -16,6 +16,8 @@ import {
   Tooltip
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { AxisTicks, DataLabel } from '../../internal/CustomElements';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 type RadarChartProps = RechartBaseProps;
 
@@ -33,8 +35,14 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     dataKeys,
     noLegend = false,
     onDataPointClick,
+    xAxisFormatter = (el) => el,
+    yAxisFormatter = (el) => el,
+    dataLabelFormatter = (d) => d,
+    dataLabelCustomElement = undefined,
     onLegendClick,
     chartConfig = {
+      xAxisUnit: '',
+      yAxisUnit: '',
       yAxisVisible: true,
       xAxisVisible: true,
       legendVisible: true,
@@ -95,8 +103,8 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     >
       <RadarChartLib data={dataset} margin={{ left: 20, right: 20, top: 20, bottom: 20 }}>
         <PolarGrid gridType={chartConfig.polarGridType} />
-        <PolarAngleAxis dataKey={labelKey} />
-        <PolarRadiusAxis />
+        <PolarAngleAxis dataKey={labelKey} tick={(props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)} />
+        <PolarRadiusAxis tickFormatter={(e) => yAxisFormatter(e)} />
         {currentDataKeys.map((key, index) => (
           <Radar
             key={index}
@@ -106,6 +114,17 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             fillOpacity={0.5}
+            label={
+              chartConfig.dataLabel
+                ? dataLabelCustomElement
+                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+                  : {
+                      position: chartConfig.stacked ? 'insideTop' : 'top',
+                      content: (label) => dataLabelFormatter(label.value),
+                      fill: ThemingParameters.sapContent_LabelColor
+                    }
+                : false
+            }
           />
         ))}
         <Tooltip />

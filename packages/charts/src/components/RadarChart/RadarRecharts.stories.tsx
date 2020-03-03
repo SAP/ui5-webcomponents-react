@@ -142,3 +142,24 @@ export const withPolygonStory = () => {
 withPolygonStory.story = {
   name: 'Radar as polygon'
 };
+
+export const renderFormatterStory = () => {
+  return (
+    <RadarChart
+      onDataPointClick={action('onDataPointClick')}
+      onLegendClick={action('onLegendClick')}
+      xAxisFormatter={(el) => el.slice(0, 3)}
+      yAxisFormatter={(el) => el / 10}
+      dataLabelFormatter={(d) => d / 10}
+      dataset={dataset}
+      width={'50%'}
+      chartConfig={{
+        dataLabel: true
+      }}
+    />
+  );
+};
+
+renderFormatterStory.story = {
+  name: 'With formatter'
+};

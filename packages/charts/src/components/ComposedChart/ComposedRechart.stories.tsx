@@ -178,5 +178,5 @@ export const renderFormatedComposedChart = () => (
 );
 
 renderFormatedComposedChart.story = {
-  name: 'With formatted data labels'
+  name: 'With formatter'
 };
