@@ -5,7 +5,7 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 export default {
-  title: 'UI5 Web Components / RadioButton',
+  title: '4 UI5 Web Components / RadioButton',
   component: RadioButton
 };
 

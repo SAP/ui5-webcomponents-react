@@ -10,9 +10,11 @@ const datasets = [
   }
 ];
 
-export const renderStory = () => {
+function renderStory() {
   return <LineChart labels={labels} datasets={datasets} loading={boolean('loading', false)} />;
-};
+}
+
+const colors = ['#f0ab00'];
 
 const renderStoryWithFormatter = () => (
   <LineChart
@@ -28,7 +30,7 @@ const renderStoryWithCustomColors = () => (
 );
 
 export default {
-  title: 'Charts - Deprecated / Line Chart',
+  title: '2 Charts / Line Chart',
   component: LineChart
 };
 

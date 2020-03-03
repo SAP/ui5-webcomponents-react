@@ -8,7 +8,7 @@ import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem'
 import React from 'react';
 
 export default {
-  title: 'UI5 Web Components / Card',
+  title: '4 UI5 Web Components / Card',
   component: Card
 };
 

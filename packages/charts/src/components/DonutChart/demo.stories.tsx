@@ -6,7 +6,7 @@ const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const dataset = [{ data: [65, 59, 80, 81, 56, 55, 40] }];
 
 export default {
-  title: 'Charts - Deprecated / DonutChart',
+  title: '2 Charts / DonutChart',
   component: DonutChart
 };
 

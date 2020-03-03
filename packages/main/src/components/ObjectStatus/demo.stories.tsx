@@ -41,6 +41,6 @@ withIconOnly.story = {
 };
 
 export default {
-  title: 'Components / ObjectStatus',
+  title: '3 Components / ObjectStatus',
   component: ObjectStatus
 };
