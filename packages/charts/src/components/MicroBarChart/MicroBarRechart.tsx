@@ -22,6 +22,8 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
     dataset,
     onDataPointClick,
     chartConfig = {
+      xAxisUnit: '',
+      yAxisUnit: '',
       yAxisVisible: false,
       xAxisVisible: false,
       gridStroke: ThemingParameters.sapUiListTableFooterBorder,
