@@ -105,11 +105,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const [internalHeaderOpen, setInternalHeaderOpen] = useState(!noHeader);
 
   const objectPage: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
-  const contentContainer: RefObject<HTMLDivElement> = useRef();
   const topHeader: RefObject<HTMLDivElement> = useRef();
   const headerContentRef: RefObject<HTMLDivElement> = useRef();
-  const innerScrollBar: RefObject<HTMLDivElement> = useRef();
-  const contentScrollContainer: RefObject<HTMLDivElement> = useRef();
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
 
@@ -161,45 +158,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     setInternalSelectedSectionId(selectedSectionId);
   }, [selectedSectionId]);
 
-  const adjustDummyDivHeight = useCallback(() => {
-    return new Promise((resolve) => {
-      requestAnimationFrame(() => {
-        if (!objectPage.current) {
-          return;
-        }
-
-        const sections = objectPage.current.querySelectorAll('[id^="ObjectPageSection"]');
-        if (!sections || sections.length < 1) {
-          return;
-        }
-
-        const lastSectionDomRef = sections[sections.length - 1] as HTMLElement;
-        const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
-
-        let lastSubSectionHeight;
-        if (subSections.length > 0) {
-          lastSubSectionHeight = (subSections[subSections.length - 1] as HTMLElement).offsetHeight;
-        } else {
-          lastSubSectionHeight =
-            lastSectionDomRef.offsetHeight -
-            lastSectionDomRef.querySelector<HTMLElement>("[role='heading']").offsetHeight;
-        }
-
-        let heightDiff = contentContainer.current.offsetHeight - lastSubSectionHeight;
-
-        heightDiff = heightDiff > 0 ? heightDiff : 0;
-        requestAnimationFrame(() => {
-          if (!contentScrollContainer.current || !topHeader.current) return;
-          const scrollbarContainerHeight =
-            contentScrollContainer.current.getBoundingClientRect().height +
-            topHeader.current.getBoundingClientRect().height;
-          innerScrollBar.current.style.height = `${scrollbarContainerHeight}px`;
-        });
-        resolve();
-      });
-    });
-  }, [objectPage, contentContainer, contentScrollContainer, topHeader, innerScrollBar]);
-
   useEffect(() => {
     if (selectedSubSectionId && scroller.current) {
       scroller.current.scrollToElementById(`ObjectPageSubSection-${selectedSubSectionId}`, 45);
@@ -244,10 +202,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         scroller.current.scrollToElementById(`ObjectPageSection-${internalSelectedSectionId}`, 45);
       }
     }
-    if (mode === ObjectPageMode.IconTabBar) {
-      adjustDummyDivHeight();
-    }
-  }, [internalSelectedSectionId, isMounted, adjustDummyDivHeight, selectedSectionIsFirstChild]);
+  }, [internalSelectedSectionId, isMounted, selectedSectionIsFirstChild]);
 
   useEffect(() => {
     const ANCHOR_BAR_HEIGHT = 44;
@@ -284,7 +239,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     fillerDivObserver.observe(objectPage.current);
 
     return () => {
-      fillerDivObserver.disconnect(objectPage.current);
+      fillerDivObserver.disconnect();
     };
   }, [topHeaderHeight, headerContentRef, headerPinned, objectPage]);
 
@@ -295,6 +250,13 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           return;
         }
         setInternalHeaderOpen(record.isIntersecting);
+        if (!record.isIntersecting) {
+          headerContentRef.current.style.height = '0px';
+          headerContentRef.current.style.overflowY = 'hidden';
+        } else {
+          delete headerContentRef.current.style.height;
+          delete headerContentRef.current.style.overflowY;
+        }
       },
       { root: objectPage.current, rootMargin: `-${topHeaderHeight}px 0px 0px 0px` }
     );
@@ -450,7 +412,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           />
         )}
         <ObjectPageAnchorBar
-          classes={classes}
           sections={children}
           mode={mode}
           selectedSectionId={internalSelectedSectionId}
@@ -464,7 +425,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           style={{ top: noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight }}
           onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
         />
-        <section className={classes.sectionsContainer} ref={contentScrollContainer}>
+        <section className={classes.sectionsContainer}>
           {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
         </section>
       </div>

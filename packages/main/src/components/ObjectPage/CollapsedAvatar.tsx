@@ -1,6 +1,6 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import React, { useLayoutEffect, useMemo, useRef, useState, ReactElement } from 'react';
+import React, { useEffect, useMemo, useRef, useState, ReactElement } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const styles = {
@@ -51,7 +51,7 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
           className={classes.imageContainer}
           style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
         >
-          <img className={classes.image} src={image} alt="Company Logo" />
+          <img className={classes.image} src={image} alt="Object Page Image" />
         </span>
       );
     } else {
@@ -65,10 +65,8 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
     }
   }, [image, imageShapeCircle]);
 
-  useLayoutEffect(() => {
-    requestAnimationFrame(() => {
-      setIsMounted(true);
-    });
+  useEffect(() => {
+    setIsMounted(true);
   }, []);
 
   const containerClasses = StyleClassHelper.of(classes.base);

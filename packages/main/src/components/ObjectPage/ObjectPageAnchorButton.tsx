@@ -55,6 +55,19 @@ const useStyles = createUseStyles(anchorButtonStyles, {
   name: 'ObjectPageAnchorButton'
 });
 
+const navigationIcon = (
+  <Icon
+    name="slim-arrow-down"
+    style={{
+      height: '1rem',
+      width: '1rem',
+      cursor: 'pointer',
+      margin: '0 0.25rem 0 0.375rem',
+      fontSize: '0.875rem'
+    }}
+  />
+);
+
 export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: ObjectPageAnchorPropTypes) => {
   const classes = useStyles();
   const [open, setOpen] = useState();
@@ -85,19 +98,6 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
       closeModal();
     },
     [onSubSectionSelected, open]
-  );
-
-  const navigationIcon = (
-    <Icon
-      name="slim-arrow-down"
-      style={{
-        height: '1rem',
-        width: '1rem',
-        cursor: 'pointer',
-        margin: '0 0.25rem 0 0.375rem',
-        fontSize: '0.875rem'
-      }}
-    />
   );
 
   const onScrollActive = useCallback(() => {
