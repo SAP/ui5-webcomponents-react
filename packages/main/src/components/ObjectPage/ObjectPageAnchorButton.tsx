@@ -129,7 +129,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
     );
   };
 
-  let sectionSelector = null;
+  let sectionSelector;
   if (mode === ObjectPageMode.Default) {
     sectionSelector = (
       <ScrollLink

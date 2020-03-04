@@ -23,20 +23,6 @@ const styles = ({ parameters }: JSSTheme) => ({
       backgroundColor: '#ffffff'
     }
   },
-  contentContainer: {
-    overflowX: 'hidden',
-    overflowY: 'visible',
-    position: 'relative',
-    flexGrow: 1
-  },
-  outerContentContainer: {
-    width: '100%',
-    height: '100%',
-    overflow: 'hidden'
-  },
-  contentScrollContainer: {
-    position: 'relative'
-  },
   sectionsContainer: {
     '&:before': {
       display: 'table',
@@ -56,9 +42,6 @@ const styles = ({ parameters }: JSSTheme) => ({
       display: 'table',
       content: '""'
     }
-  },
-  fillerDiv: {
-    backgroundColor: parameters.sapUiBaseBG
   },
   // header
   header: {
