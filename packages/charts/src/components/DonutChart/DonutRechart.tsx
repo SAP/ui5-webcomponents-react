@@ -10,7 +10,6 @@ type PieChartProps = RechartBaseProps;
 const DonutChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref) => {
   const {
     chartConfig = {
-      legendVisible: true,
       legendPosition: 'bottom',
       dataLabel: false,
       paddingAngle: 0,

@@ -109,6 +109,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     [onDataPointClick]
   );
 
+  console.log(chartConfig.barSize);
   return (
     <ChartContainer
       dataset={dataset}
@@ -122,7 +123,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       tooltip={tooltip}
       slot={slot}
     >
-      <ColumnChartLib margin={{ left: 20, right: 20, top: 20, bottom: 20 }} data={dataset} barGap={3}>
+      <ColumnChartLib margin={{ left: 20, right: 20, top: 20, bottom: 20 }} data={dataset} barGap={chartConfig.barGap}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}

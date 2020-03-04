@@ -5,7 +5,7 @@ import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { ComponentType, CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
+import React, { ComponentType, CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Area,
   Bar,
@@ -145,13 +145,17 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   let paddingCharts = 20;
-  elements?.forEach((chartElement) => {
-    chartElement.type === 'bar'
-      ? chartElement.barSize
-        ? (paddingCharts += chartElement.barSize as number)
-        : (paddingCharts += 20)
-      : 0;
-  });
+  useMemo(
+    () =>
+      elements?.forEach((chartElement) => {
+        chartElement.type === 'bar'
+          ? chartElement.barSize
+            ? (paddingCharts += chartElement.barSize as number)
+            : (paddingCharts += 20)
+          : 0;
+      }),
+    [elements]
+  );
 
   return (
     <ChartContainer
@@ -166,7 +170,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       tooltip={tooltip}
       slot={slot}
     >
-      <ComposedChartLib margin={{ left: 20, right: 20, top: 20, bottom: 20 }} ref={chartRef} data={dataset}>
+      <ComposedChartLib margin={{ left: 20, right: 20, top: 20, bottom: 20 }} data={dataset}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
@@ -246,6 +250,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
                 : false;
               break;
             case 'area':
+              chartElementProps.type = 'monotone';
+              chartElementProps.fillOpacity = 0.3;
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.label = chartConfig.dataLabel

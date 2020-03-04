@@ -16,7 +16,7 @@ export const renderComposedChart = () => (
         accessor: 'sessions'
       },
       {
-        type: 'line',
+        type: 'area',
         accessor: 'users'
       },
       {
@@ -55,7 +55,6 @@ export const renderComposedStackedChart = () => (
     chartConfig={{
       yAxisVisible: true,
       xAxisVisible: true,
-      legendVisible: true,
       gridVertical: false,
       gridHorizontal: true,
       legendPosition: 'bottom',
