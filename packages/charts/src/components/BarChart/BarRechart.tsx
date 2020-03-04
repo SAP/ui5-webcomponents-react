@@ -47,11 +47,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       xAxisVisible: true,
       xAxisUnit: '',
       yAxisUnit: '',
-      legendVisible: true,
       gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
       gridVertical: false,
-      yAxisColor: ThemingParameters.sapNeutralBorderColor,
       legendPosition: 'bottom',
       barSize: 10,
       barGap: 3,
@@ -161,7 +159,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             onClick={onDataPointClickInternal}
           />
         ))}
-        {!noLegend && <Legend onClick={onItemLegendClick} />}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}

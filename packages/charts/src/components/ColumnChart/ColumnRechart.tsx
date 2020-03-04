@@ -47,7 +47,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       xAxisVisible: true,
       xAxisUnit: '',
       yAxisUnit: '',
-      legendVisible: true,
       gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
       gridVertical: false,
@@ -174,7 +173,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             onClick={onDataPointClickInternal}
           />
         ))}
-        {!noLegend && <Legend onClick={onItemLegendClick} />}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}

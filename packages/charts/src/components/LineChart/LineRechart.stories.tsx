@@ -16,7 +16,6 @@ export const renderStory = () => {
       dataset={complexDataSet}
       width={'95%'}
       height={'40vh'}
-      noLegend={false}
       loading={true}
     />
   );

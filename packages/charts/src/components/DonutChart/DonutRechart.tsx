@@ -23,7 +23,6 @@ const DonutChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref) => 
       {...props}
       ref={ref}
       chartConfig={{
-        legendVisible: chartConfig.legendVisible,
         legendPosition: chartConfig.legendPosition,
         dataLabel: chartConfig.dataLabel,
         paddingAngle: chartConfig.paddingAngle,

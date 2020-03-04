@@ -108,7 +108,6 @@ export const renderLabelComposedChart = () => (
       yAxisVisible: true,
       xAxisVisible: true,
       gridStroke: 'white',
-      legendVisible: true,
       gridVertical: false,
       gridHorizontal: true,
       legendPosition: 'bottom',

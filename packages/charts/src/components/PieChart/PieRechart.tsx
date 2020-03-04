@@ -33,7 +33,6 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     chartConfig = {
       yAxisVisible: true,
       xAxisVisible: true,
-      legendVisible: true,
       gridStroke: 'white',
       gridHorizontal: true,
       gridVertical: true,
@@ -112,7 +111,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
             ))}
         </Pie>
         <Tooltip />
-        {!noLegend && <Legend onClick={onItemLegendClick} />}{' '}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}{' '}
       </PieChartLib>
     </ChartContainer>
   );

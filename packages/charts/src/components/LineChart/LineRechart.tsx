@@ -45,7 +45,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
-      legendVisible: true,
       gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
       gridVertical: false,
@@ -168,7 +167,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             activeDot={{ onClick: onDataPointClickInternal }}
           />
         ))}
-        {!noLegend && <Legend onClick={onItemLegendClick} />}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}

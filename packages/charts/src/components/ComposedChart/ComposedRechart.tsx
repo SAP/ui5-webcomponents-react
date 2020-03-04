@@ -63,6 +63,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     dataset,
     labelKey = 'name',
     onDataPointClick,
+    noLegend = false,
     xAxisFormatter = (el) => el,
     yAxisFormatter = (el) => el,
     defaults = {
@@ -81,7 +82,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       yAxisUnit: '',
       yAxisVisible: false,
       xAxisVisible: true,
-      legendVisible: true,
       gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
       gridVertical: false,
@@ -196,7 +196,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           />
         )}
         <Tooltip />
-        {chartConfig.legendVisible && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition} />}
+        {!noLegend && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition} />}
         {elements?.map((config, index) => {
           const {
             type,

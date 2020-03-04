@@ -27,7 +27,6 @@ export interface RechartBaseProps extends ChartContainerProps {
     gridVertical?: boolean;
     gridHorizontal?: boolean;
     legendPosition?: string;
-    legendVisible?: boolean;
     zoomingTool?: boolean;
 
     strokeOpacity?: number;

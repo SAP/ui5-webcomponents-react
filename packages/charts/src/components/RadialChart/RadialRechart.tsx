@@ -6,7 +6,7 @@ import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChar
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart as RadialBarChartLib } from 'recharts';
-import { Event } from '@ui5/webcomponents-react-base';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 
 interface RadialChartProps extends CommonProps {
   value?: number;

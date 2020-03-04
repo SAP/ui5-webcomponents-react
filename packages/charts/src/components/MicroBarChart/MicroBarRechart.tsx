@@ -22,22 +22,14 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
     dataset,
     onDataPointClick,
     chartConfig = {
-      xAxisUnit: '',
-      yAxisUnit: '',
       yAxisVisible: false,
       xAxisVisible: false,
-      legendVisible: true,
       gridStroke: ThemingParameters.sapUiListTableFooterBorder,
-      gridHorizontal: true,
-      gridVertical: false,
       yAxisColor: ThemingParameters.sapNeutralBorderColor,
-      legendPosition: 'bottom',
       barSize: 5,
       barGap: 3,
-      zoomingTool: false,
       strokeOpacity: 1,
       fillOpacity: 1,
-      stacked: false,
       dataLabel: true
     }
   } = props;

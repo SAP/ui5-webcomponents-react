@@ -41,20 +41,8 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     dataLabelCustomElement = undefined,
     onLegendClick,
     chartConfig = {
-      xAxisUnit: '',
-      yAxisUnit: '',
-      yAxisVisible: true,
-      xAxisVisible: true,
-      legendVisible: true,
-      gridHorizontal: true,
-      gridVertical: true,
       legendPosition: 'bottom',
-      strokeWidth: 1,
-      zoomingTool: false,
-      strokeOpacity: 1,
       dataLabel: false,
-      paddingAngle: 0,
-      innerRadius: undefined,
       polarGridType: 'circle'
     },
     style,
@@ -128,7 +116,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
           />
         ))}
         <Tooltip />
-        {!noLegend && <Legend onClick={onItemLegendClick} />}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
       </RadarChartLib>
     </ChartContainer>
   );
