@@ -8,7 +8,20 @@ const styles = ({ parameters }: JSSTheme) => ({
     whiteSpace: 'normal',
     fontFamily: parameters.sapUiFontFamily,
     backgroundColor: parameters.sapUiBaseBG,
-    overflowY: 'auto'
+    overflowY: 'auto',
+    '&::-webkit-scrollbar': {
+      backgroundColor: '#ffffff',
+      width: '12px'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: '#949494',
+      '&:hover': {
+        backgroundColor: '#8c8c8c'
+      }
+    },
+    '&::-webkit-scrollbar-corner': {
+      backgroundColor: '#ffffff'
+    }
   },
   contentContainer: {
     overflowX: 'hidden',

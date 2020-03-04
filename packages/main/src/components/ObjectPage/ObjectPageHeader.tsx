@@ -1,7 +1,7 @@
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import React, { CSSProperties, FC, ReactElement, useMemo, forwardRef } from 'react';
+import React, { CSSProperties, FC, forwardRef, ReactElement, useMemo } from 'react';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
 interface Props {
@@ -15,6 +15,7 @@ interface Props {
   title: string;
   subTitle: string;
   headerPinned: boolean;
+  headerOpen: boolean;
   topHeaderHeight: number;
 }
 
@@ -30,7 +31,8 @@ export const ObjectPageHeader: FC<Props> = forwardRef((props: Props, ref: any) =
     subTitle,
     renderKeyInfos,
     headerPinned,
-    topHeaderHeight
+    topHeaderHeight,
+    headerOpen
   } = props;
 
   let avatar = null;
@@ -54,6 +56,13 @@ export const ObjectPageHeader: FC<Props> = forwardRef((props: Props, ref: any) =
   }
 
   const headerStyles = useMemo<CSSProperties>(() => {
+    if (headerOpen === false) {
+      return {
+        height: 0,
+        overflow: 'hidden'
+      };
+    }
+
     if (headerPinned) {
       return {
         position: 'sticky',
@@ -61,8 +70,9 @@ export const ObjectPageHeader: FC<Props> = forwardRef((props: Props, ref: any) =
         zIndex: 1
       };
     }
+
     return null;
-  }, [headerPinned, topHeaderHeight]);
+  }, [headerPinned, topHeaderHeight, headerOpen]);
 
   if (showTitleInHeaderContent) {
     const headerContents = renderHeaderContentProp && renderHeaderContentProp();

@@ -32,13 +32,12 @@ interface Props {
   handleOnSectionSelected: (e: unknown) => void;
   handleOnSubSectionSelected: (e: unknown) => void;
   showHideHeaderButton: boolean;
-  noHeader: boolean;
   headerContentPinnable: boolean;
-  changeHeader: () => void;
   headerPinned: boolean;
   showHeaderContent: boolean;
   setHeaderPinned: (payload: any) => void;
   style?: CSSProperties;
+  onToggleHeaderContentVisibility: (e: any) => void;
 }
 
 const ObjectPageAnchorBar: FC<Props> = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
@@ -50,16 +49,15 @@ const ObjectPageAnchorBar: FC<Props> = forwardRef((props: Props, ref: RefObject<
     handleOnSectionSelected,
     handleOnSubSectionSelected,
     showHideHeaderButton,
-    noHeader,
     headerContentPinnable,
-    changeHeader,
+    onToggleHeaderContentVisibility,
     headerPinned,
     setHeaderPinned,
     showHeaderContent,
     style
   } = props;
 
-  const shouldRenderHideHeaderButton = showHideHeaderButton && !noHeader;
+  const shouldRenderHideHeaderButton = showHideHeaderButton;
   const shouldRenderHeaderPinnableButton = headerContentPinnable && showHeaderContent;
   const showBothActions = shouldRenderHeaderPinnableButton && shouldRenderHideHeaderButton;
 
@@ -89,7 +87,7 @@ const ObjectPageAnchorBar: FC<Props> = forwardRef((props: Props, ref: RefObject<
       {shouldRenderHideHeaderButton && (
         <Button
           icon={showHeaderContent ? 'slim-arrow-up' : 'slim-arrow-down'}
-          onClick={changeHeader}
+          onClick={onToggleHeaderContentVisibility}
           className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonExpandable} ${
             showBothActions ? classes.anchorBarActionPinnableAndExandable : ''
           }`}
