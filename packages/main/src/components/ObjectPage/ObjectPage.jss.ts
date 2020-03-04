@@ -37,16 +37,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   contentScrollContainer: {
     position: 'relative'
   },
-  anchorBar: {
-    paddingLeft: '2rem',
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
-    boxShadow: `inset 0 -0.0625rem ${parameters.sapUiObjectHeaderBorderColor}, inset 0 0.0625rem ${parameters.sapUiObjectHeaderBorderColor}`,
-    display: 'flex',
-    height: '2.75rem',
-    minHeight: '2.75rem',
-    position: 'sticky',
-    zIndex: 1
-  },
   sectionsContainer: {
     '&:before': {
       display: 'table',
@@ -76,7 +66,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     backgroundColor: parameters.sapUiObjectHeaderBackground,
     position: 'sticky',
     top: 0,
-    zIndex: 1
+    zIndex: 2
   },
   contentHeader: {
     backgroundColor: parameters.sapUiObjectHeaderBackground,
@@ -201,25 +191,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   avatar: {
     marginRight: '1rem'
-  },
-  anchorBarActionButton: {
-    position: 'absolute',
-    '--_ui5_button_compact_height': '1.375rem',
-    '--_ui5_button_base_height': '1.375rem',
-    '--_ui5_button_base_min_compact_width': '1.375rem',
-    top: `-0.6875rem`,
-    marginLeft: `-0.6875rem`,
-    left: '50%'
-  },
-  anchorBarActionButtonExpandable: {},
-  anchorBarActionButtonPinnable: {},
-  anchorBarActionPinnableAndExandable: {
-    '&$anchorBarActionButtonPinnable': {
-      marginLeft: '0.25rem'
-    },
-    '&$anchorBarActionButtonExpandable': {
-      marginLeft: '-1.75rem'
-    }
   }
 });
 

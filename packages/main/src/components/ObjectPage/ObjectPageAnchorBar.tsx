@@ -2,10 +2,12 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import '@ui5/webcomponents-icons/dist/icons/pushpin-off';
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-up';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
-import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
-import React, { FC, ReactElement, useCallback, CSSProperties, forwardRef, RefObject } from 'react';
+import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
+import React, { CSSProperties, FC, forwardRef, ReactElement, RefObject, useCallback } from 'react';
+import { createUseStyles } from 'react-jss';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
@@ -24,8 +26,41 @@ addCustomCSS(
 }`
 );
 
+const anchorBarStyles = {
+  anchorBar: {
+    paddingLeft: '2rem',
+    backgroundColor: ThemingParameters.sapUiObjectHeaderBackground,
+    boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapUiObjectHeaderBorderColor}, inset 0 0.0625rem ${ThemingParameters.sapUiObjectHeaderBorderColor}`,
+    display: 'flex',
+    height: '2.75rem',
+    minHeight: '2.75rem',
+    position: 'sticky',
+    zIndex: 2
+  },
+  anchorBarActionButton: {
+    position: 'absolute',
+    '--_ui5_button_compact_height': '1.375rem',
+    '--_ui5_button_base_height': '1.375rem',
+    '--_ui5_button_base_min_compact_width': '1.375rem',
+    top: `-0.6875rem`,
+    marginLeft: `-0.6875rem`,
+    left: '50%'
+  },
+  anchorBarActionButtonExpandable: {},
+  anchorBarActionButtonPinnable: {},
+  anchorBarActionPinnableAndExandable: {
+    '&$anchorBarActionButtonPinnable': {
+      marginLeft: '0.25rem'
+    },
+    '&$anchorBarActionButtonExpandable': {
+      marginLeft: '-1.75rem'
+    }
+  }
+};
+
+const useStyles = createUseStyles(anchorBarStyles, { name: 'ObjectPageAnchorBar' });
+
 interface Props {
-  classes: Record<string, string>;
   sections: ReactElement | ReactElement[];
   mode: ObjectPageMode;
   selectedSectionId: string;
@@ -42,7 +77,6 @@ interface Props {
 
 const ObjectPageAnchorBar: FC<Props> = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
   const {
-    classes,
     sections,
     mode,
     selectedSectionId,
@@ -56,6 +90,8 @@ const ObjectPageAnchorBar: FC<Props> = forwardRef((props: Props, ref: RefObject<
     showHeaderContent,
     style
   } = props;
+
+  const classes = useStyles();
 
   const shouldRenderHideHeaderButton = showHideHeaderButton;
   const shouldRenderHeaderPinnableButton = headerContentPinnable && showHeaderContent;
