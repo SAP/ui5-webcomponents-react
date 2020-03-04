@@ -250,25 +250,18 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           return;
         }
         setInternalHeaderOpen(record.isIntersecting);
-        if (!record.isIntersecting) {
-          headerContentRef.current.style.height = '0px';
-          headerContentRef.current.style.overflowY = 'hidden';
-        } else {
-          delete headerContentRef.current.style.height;
-          delete headerContentRef.current.style.overflowY;
-        }
       },
       { root: objectPage.current, rootMargin: `-${topHeaderHeight}px 0px 0px 0px` }
     );
 
-    if (objectPage.current) {
+    if (headerContentRef.current) {
       intersectionObserver.observe(headerContentRef.current);
     }
 
     return () => {
       intersectionObserver.disconnect();
     };
-  }, [objectPage, topHeaderHeight, topHeader, setInternalHeaderOpen, hideHeaderButtonPressed]);
+  }, [objectPage, headerContentRef, topHeaderHeight, topHeader, setInternalHeaderOpen, hideHeaderButtonPressed]);
 
   const fireOnSelectedChangedEvent = debounce((e) => {
     onSelectedSectionChanged(

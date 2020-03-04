@@ -4,6 +4,7 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { createSerializer } from 'enzyme-to-json';
 import ResizeObserver from 'resize-observer-polyfill';
+import 'intersection-observer';
 
 process.env.NODE_ENV = 'test';
 process.env.BABEL_ENV = 'test';

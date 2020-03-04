@@ -5,22 +5,9 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
   class="ObjectPage--objectPage-"
   data-component-name="ObjectPage"
 >
-  <div
-    class="ObjectPageScrollBar--outerScrollbar-"
-    style="width: 12px;"
-  >
-    <div
-      class="ObjectPageScrollBar--innerScrollbar-"
-      style="margin-left: -12px; width: 24px;"
-    >
-      <div
-        style="width: 12px;"
-      />
-    </div>
-  </div>
   <header
-    aria-roledescription="Object page header"
-    class="ObjectPage--header-"
+    aria-roledescription="Object Page header"
+    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
     role="banner"
     style="padding-right: 12px;"
   >
@@ -68,224 +55,176 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--outerContentContainer-"
+    class="ObjectPage--contentHeader-"
   >
     <div
-      class="ObjectPage--contentContainer-"
-      id="ObjectPageContent"
-      style="margin-right: -12px;"
+      class="ObjectPage--headerContent-"
     >
-      <div
-        class="ObjectPage--contentScrollContainer-"
+      <span
+        class="ObjectPage--headerCustomContent-"
       >
-        <div />
-        <div>
-          <div
-            class="ObjectPage--contentHeader-"
-            style="position: relative;"
-          >
-            <div
-              class="ObjectPage--headerContent-"
-            >
-              <span
-                class="ObjectPage--headerCustomContent-"
-              >
-                <div
-                  style="display: flex; flex-direction: column;"
-                >
-                  <ui5-link
-                    design="Default"
-                    href="https://www.sap.com"
-                  >
-                    www.myurl.com
-                  </ui5-link>
-                  <span
-                    class="Text--text-"
-                  >
-                    Address 1
-                  </span>
-                  <span
-                    class="Text--text-"
-                  >
-                    Address 2
-                  </span>
-                  <span
-                    class="Text--text-"
-                  >
-                    Address 3
-                  </span>
-                </div>
-              </span>
-            </div>
-          </div>
-          <section
-            class="ObjectPage--anchorBar-"
-            role="navigation"
-          >
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <span
-                class="ObjectPageAnchorButton--button- ObjectPageAnchorButton--selected-"
-              >
-                Test 1
-              </span>
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <span
-                class="ObjectPageAnchorButton--button-"
-              >
-                Test 2
-              </span>
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <span
-                class="ObjectPageAnchorButton--button-"
-              >
-                Test 3
-              </span>
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <span
-                class="ObjectPageAnchorButton--button-"
-              >
-                Test 4
-              </span>
-              <div
-                style="display: inline-block;"
-              >
-                <ui5-icon
-                  name="slim-arrow-down"
-                  style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
-                />
-              </div>
-              <ui5-popover
-                horizontal-align="Center"
-                no-arrow="true"
-                placement-type="Bottom"
-                vertical-align="Center"
-              >
-                <ui5-list
-                  footer-text=""
-                  header-text=""
-                  mode="None"
-                  no-data-text=""
-                  separators="All"
-                >
-                  <ui5-li
-                    data-key="4.1"
-                    info-state="None"
-                    type="Active"
-                  >
-                    SubSection 4.1
-                  </ui5-li>
-                  <ui5-li
-                    data-key="4.2"
-                    info-state="None"
-                    type="Active"
-                  >
-                    SubSection 4.2
-                  </ui5-li>
-                </ui5-list>
-              </ui5-popover>
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <span
-                class="ObjectPageAnchorButton--button-"
-              >
-                Test 5
-              </span>
-              <div
-                style="display: inline-block;"
-              >
-                <ui5-icon
-                  name="slim-arrow-down"
-                  style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
-                />
-              </div>
-              <ui5-popover
-                horizontal-align="Center"
-                no-arrow="true"
-                placement-type="Bottom"
-                vertical-align="Center"
-              >
-                <ui5-list
-                  footer-text=""
-                  header-text=""
-                  mode="None"
-                  no-data-text=""
-                  separators="All"
-                >
-                  <ui5-li
-                    data-key="5.1"
-                    info-state="None"
-                    type="Active"
-                  >
-                    SubSection 5.1
-                  </ui5-li>
-                  <ui5-li
-                    data-key="5.2"
-                    info-state="None"
-                    type="Active"
-                  >
-                    SubSection 5.2
-                  </ui5-li>
-                </ui5-list>
-              </ui5-popover>
-            </li>
-            <ui5-button
-              class="ObjectPage--toggleHeaderButton-"
-              design="Default"
-              icon="navigation-up-arrow"
-            />
-          </section>
-        </div>
-        <section
-          class="ObjectPage--sectionsContainer-"
-        >
-          <section
-            id="ObjectPageSection-1"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              >
-                Test 1
-              </div>
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                <ui5-label
-                  for=""
-                >
-                  My Content 1
-                </ui5-label>
-              </div>
-            </div>
-          </section>
-        </section>
         <div
-          class="ObjectPage--fillerDiv-"
-        />
-      </div>
+          style="display: flex; flex-direction: column;"
+        >
+          <ui5-link
+            design="Default"
+            href="https://www.sap.com"
+          >
+            www.myurl.com
+          </ui5-link>
+          <span
+            class="Text--text-"
+          >
+            Address 1
+          </span>
+          <span
+            class="Text--text-"
+          >
+            Address 2
+          </span>
+          <span
+            class="Text--text-"
+          >
+            Address 3
+          </span>
+        </div>
+      </span>
     </div>
   </div>
+  <section
+    class="ObjectPageAnchorBar--anchorBar-"
+    role="navigation"
+    style="top: 0px;"
+  >
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <span
+        class="ObjectPageAnchorButton--button-"
+      >
+        Test 1
+      </span>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <span
+        class="ObjectPageAnchorButton--button-"
+      >
+        Test 2
+      </span>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <span
+        class="ObjectPageAnchorButton--button-"
+      >
+        Test 3
+      </span>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <span
+        class="ObjectPageAnchorButton--button-"
+      >
+        Test 4
+      </span>
+      <div
+        style="display: inline-block;"
+      >
+        <ui5-icon
+          name="slim-arrow-down"
+          style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
+        />
+      </div>
+      <ui5-popover
+        horizontal-align="Center"
+        no-arrow="true"
+        placement-type="Bottom"
+        vertical-align="Center"
+      >
+        <ui5-list
+          footer-text=""
+          header-text=""
+          mode="None"
+          no-data-text=""
+          separators="All"
+        >
+          <ui5-li
+            data-key="4.1"
+            info-state="None"
+            type="Active"
+          >
+            SubSection 4.1
+          </ui5-li>
+          <ui5-li
+            data-key="4.2"
+            info-state="None"
+            type="Active"
+          >
+            SubSection 4.2
+          </ui5-li>
+        </ui5-list>
+      </ui5-popover>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <span
+        class="ObjectPageAnchorButton--button-"
+      >
+        Test 5
+      </span>
+      <div
+        style="display: inline-block;"
+      >
+        <ui5-icon
+          name="slim-arrow-down"
+          style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
+        />
+      </div>
+      <ui5-popover
+        horizontal-align="Center"
+        no-arrow="true"
+        placement-type="Bottom"
+        vertical-align="Center"
+      >
+        <ui5-list
+          footer-text=""
+          header-text=""
+          mode="None"
+          no-data-text=""
+          separators="All"
+        >
+          <ui5-li
+            data-key="5.1"
+            info-state="None"
+            type="Active"
+          >
+            SubSection 5.1
+          </ui5-li>
+          <ui5-li
+            data-key="5.2"
+            info-state="None"
+            type="Active"
+          >
+            SubSection 5.2
+          </ui5-li>
+        </ui5-list>
+      </ui5-popover>
+    </li>
+    <ui5-button
+      class="ObjectPageAnchorBar--anchorBarActionButton- ObjectPageAnchorBar--anchorBarActionButtonExpandable-"
+      data-ui5wcr-object-page-header-action=""
+      design="Default"
+      icon="slim-arrow-up"
+    />
+  </section>
+  <section
+    class="ObjectPage--sectionsContainer-"
+  />
 </div>
 `;
 
@@ -294,22 +233,9 @@ exports[`ObjectPage Just Some Sections 1`] = `
   class="ObjectPage--objectPage-"
   data-component-name="ObjectPage"
 >
-  <div
-    class="ObjectPageScrollBar--outerScrollbar-"
-    style="width: 12px;"
-  >
-    <div
-      class="ObjectPageScrollBar--innerScrollbar-"
-      style="margin-left: -12px; width: 24px;"
-    >
-      <div
-        style="width: 12px;"
-      />
-    </div>
-  </div>
   <header
-    aria-roledescription="Object page header"
-    class="ObjectPage--header-"
+    aria-roledescription="Object Page header"
+    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
     role="banner"
     style="padding-right: 12px;"
   >
@@ -345,71 +271,37 @@ exports[`ObjectPage Just Some Sections 1`] = `
         </span>
       </div>
     </header>
-    <section
-      class="ObjectPage--anchorBar-"
-      role="navigation"
-    >
-      <li
-        class="ObjectPageAnchorButton--anchorButtonContainer-"
-      >
-        <span
-          class="ObjectPageAnchorButton--button- ObjectPageAnchorButton--selected-"
-        />
-      </li>
-      <li
-        class="ObjectPageAnchorButton--anchorButtonContainer-"
-      >
-        <span
-          class="ObjectPageAnchorButton--button-"
-        />
-      </li>
-    </section>
   </header>
   <div
-    class="ObjectPage--outerContentContainer-"
+    class="ObjectPage--contentHeader-"
   >
     <div
-      class="ObjectPage--contentContainer-"
-      id="ObjectPageContent"
-      style="margin-right: -12px;"
-    >
-      <div
-        class="ObjectPage--contentScrollContainer-"
-      >
-        <div />
-        <div />
-        <section
-          class="ObjectPage--sectionsContainer-"
-        >
-          <section
-            id="ObjectPageSection-1"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              />
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                Test
-              </div>
-            </div>
-          </section>
-        </section>
-        <div
-          class="ObjectPage--fillerDiv-"
-        />
-      </div>
-    </div>
+      class="ObjectPage--headerContent-"
+    />
   </div>
+  <section
+    class="ObjectPageAnchorBar--anchorBar-"
+    role="navigation"
+    style="top: 0px;"
+  >
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <span
+        class="ObjectPageAnchorButton--button-"
+      />
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <span
+        class="ObjectPageAnchorButton--button-"
+      />
+    </li>
+  </section>
+  <section
+    class="ObjectPage--sectionsContainer-"
+  />
 </div>
 `;
 
@@ -418,22 +310,9 @@ exports[`ObjectPage Key Infos 1`] = `
   class="ObjectPage--objectPage-"
   data-component-name="ObjectPage"
 >
-  <div
-    class="ObjectPageScrollBar--outerScrollbar-"
-    style="width: 12px;"
-  >
-    <div
-      class="ObjectPageScrollBar--innerScrollbar-"
-      style="margin-left: -12px; width: 24px;"
-    >
-      <div
-        style="width: 12px;"
-      />
-    </div>
-  </div>
   <header
-    aria-roledescription="Object page header"
-    class="ObjectPage--header-"
+    aria-roledescription="Object Page header"
+    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
     role="banner"
     style="padding-right: 12px;"
   >
@@ -536,103 +415,92 @@ exports[`ObjectPage Key Infos 1`] = `
         </span>
       </div>
     </header>
-    <section
-      class="ObjectPage--anchorBar-"
-      role="navigation"
-    >
-      <li
-        class="ObjectPageAnchorButton--anchorButtonContainer-"
-      >
-        <div
-          class=""
-          style="cursor: pointer;"
-        >
-          <span
-            class="ObjectPageAnchorButton--button-"
-          />
-        </div>
-      </li>
-      <li
-        class="ObjectPageAnchorButton--anchorButtonContainer-"
-      >
-        <div
-          class="ObjectPageAnchorButton--selected-"
-          style="cursor: pointer;"
-        >
-          <span
-            class="ObjectPageAnchorButton--button-"
-          />
-        </div>
-      </li>
-    </section>
   </header>
   <div
-    class="ObjectPage--outerContentContainer-"
+    class="ObjectPage--contentHeader-"
   >
     <div
-      class="ObjectPage--contentContainer-"
-      id="ObjectPageContent"
-      style="margin-right: -12px;"
+      class="ObjectPage--headerContent-"
+    />
+  </div>
+  <section
+    class="ObjectPageAnchorBar--anchorBar-"
+    role="navigation"
+    style="top: 0px;"
+  >
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
     >
       <div
-        class="ObjectPage--contentScrollContainer-"
+        class=""
+        style="cursor: pointer;"
       >
-        <div />
-        <div />
-        <section
-          class="ObjectPage--sectionsContainer-"
-        >
-          <section
-            id="ObjectPageSection-1"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              />
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                Test
-              </div>
-            </div>
-          </section>
-          <section
-            id="ObjectPageSection-2"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              />
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                Test 2
-              </div>
-            </div>
-          </section>
-        </section>
-        <div
-          class="ObjectPage--fillerDiv-"
+        <span
+          class="ObjectPageAnchorButton--button-"
         />
       </div>
-    </div>
-  </div>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <div
+        class="ObjectPageAnchorButton--selected-"
+        style="cursor: pointer;"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        />
+      </div>
+    </li>
+  </section>
+  <section
+    class="ObjectPage--sectionsContainer-"
+  >
+    <section
+      id="ObjectPageSection-1"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        />
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          Test
+        </div>
+      </div>
+    </section>
+    <section
+      id="ObjectPageSection-2"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        />
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          Test 2
+        </div>
+      </div>
+    </section>
+  </section>
 </div>
 `;
 
@@ -641,125 +509,84 @@ exports[`ObjectPage No Header 1`] = `
   class="ObjectPage--objectPage-"
   data-component-name="ObjectPage"
 >
-  <div
-    class="ObjectPageScrollBar--outerScrollbar-"
-    style="width: 12px;"
+  <section
+    class="ObjectPageAnchorBar--anchorBar-"
+    role="navigation"
+    style="top: 0px;"
   >
-    <div
-      class="ObjectPageScrollBar--innerScrollbar-"
-      style="margin-left: -12px; width: 24px;"
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
     >
       <div
-        style="width: 12px;"
-      />
-    </div>
-  </div>
-  <header
-    aria-roledescription="Object page header"
-    class="ObjectPage--header-"
-    role="banner"
-    style="padding-right: 12px;"
-  >
-    <span
-      class="ObjectPage--actions-"
-    />
-    <section
-      class="ObjectPage--anchorBar-"
-      role="navigation"
-    >
-      <li
-        class="ObjectPageAnchorButton--anchorButtonContainer-"
+        class=""
+        style="cursor: pointer;"
       >
-        <div
-          class=""
-          style="cursor: pointer;"
-        >
-          <span
-            class="ObjectPageAnchorButton--button-"
-          />
-        </div>
-      </li>
-      <li
-        class="ObjectPageAnchorButton--anchorButtonContainer-"
-      >
-        <div
-          class="ObjectPageAnchorButton--selected-"
-          style="cursor: pointer;"
-        >
-          <span
-            class="ObjectPageAnchorButton--button-"
-          />
-        </div>
-      </li>
-    </section>
-  </header>
-  <div
-    class="ObjectPage--outerContentContainer-"
-  >
-    <div
-      class="ObjectPage--contentContainer-"
-      id="ObjectPageContent"
-      style="margin-right: -12px;"
-    >
-      <div
-        class="ObjectPage--contentScrollContainer-"
-      >
-        <div />
-        <div />
-        <section
-          class="ObjectPage--sectionsContainer-"
-        >
-          <section
-            id="ObjectPageSection-1"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              />
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                Test
-              </div>
-            </div>
-          </section>
-          <section
-            id="ObjectPageSection-2"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              />
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                Test 2
-              </div>
-            </div>
-          </section>
-        </section>
-        <div
-          class="ObjectPage--fillerDiv-"
+        <span
+          class="ObjectPageAnchorButton--button-"
         />
       </div>
-    </div>
-  </div>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <div
+        class="ObjectPageAnchorButton--selected-"
+        style="cursor: pointer;"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        />
+      </div>
+    </li>
+  </section>
+  <section
+    class="ObjectPage--sectionsContainer-"
+  >
+    <section
+      id="ObjectPageSection-1"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        />
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          Test
+        </div>
+      </div>
+    </section>
+    <section
+      id="ObjectPageSection-2"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        />
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          Test 2
+        </div>
+      </div>
+    </section>
+  </section>
 </div>
 `;
 
@@ -768,22 +595,9 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
   class="ObjectPage--objectPage-"
   data-component-name="ObjectPage"
 >
-  <div
-    class="ObjectPageScrollBar--outerScrollbar-"
-    style="width: 12px;"
-  >
-    <div
-      class="ObjectPageScrollBar--innerScrollbar-"
-      style="margin-left: -12px; width: 24px;"
-    >
-      <div
-        style="width: 12px;"
-      />
-    </div>
-  </div>
   <header
-    aria-roledescription="Object page header"
-    class="ObjectPage--header-"
+    aria-roledescription="Object Page header"
+    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
     role="banner"
     style="padding-right: 12px;"
   >
@@ -819,33 +633,22 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
         </span>
       </div>
     </header>
-    <section
-      class="ObjectPage--anchorBar-"
-      role="navigation"
-    />
   </header>
   <div
-    class="ObjectPage--outerContentContainer-"
+    class="ObjectPage--contentHeader-"
   >
     <div
-      class="ObjectPage--contentContainer-"
-      id="ObjectPageContent"
-      style="margin-right: -12px;"
-    >
-      <div
-        class="ObjectPage--contentScrollContainer-"
-      >
-        <div />
-        <div />
-        <section
-          class="ObjectPage--sectionsContainer-"
-        />
-        <div
-          class="ObjectPage--fillerDiv-"
-        />
-      </div>
-    </div>
+      class="ObjectPage--headerContent-"
+    />
   </div>
+  <section
+    class="ObjectPageAnchorBar--anchorBar-"
+    role="navigation"
+    style="top: 0px;"
+  />
+  <section
+    class="ObjectPage--sectionsContainer-"
+  />
 </div>
 `;
 
@@ -854,22 +657,9 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
   class="ObjectPage--objectPage-"
   data-component-name="ObjectPage"
 >
-  <div
-    class="ObjectPageScrollBar--outerScrollbar-"
-    style="width: 12px;"
-  >
-    <div
-      class="ObjectPageScrollBar--innerScrollbar-"
-      style="margin-left: -12px; width: 24px;"
-    >
-      <div
-        style="width: 12px;"
-      />
-    </div>
-  </div>
   <header
-    aria-roledescription="Object page header"
-    class="ObjectPage--header-"
+    aria-roledescription="Object Page header"
+    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
     role="banner"
     style="padding-right: 12px;"
   >
@@ -905,69 +695,58 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
         </span>
       </div>
     </header>
-    <section
-      class="ObjectPage--anchorBar-"
-      role="navigation"
-    >
-      <li
-        class="ObjectPageAnchorButton--anchorButtonContainer-"
-      >
-        <div
-          class="ObjectPageAnchorButton--selected-"
-          style="cursor: pointer;"
-        >
-          <span
-            class="ObjectPageAnchorButton--button-"
-          />
-        </div>
-      </li>
-    </section>
   </header>
   <div
-    class="ObjectPage--outerContentContainer-"
+    class="ObjectPage--contentHeader-"
   >
     <div
-      class="ObjectPage--contentContainer-"
-      id="ObjectPageContent"
-      style="margin-right: -12px;"
+      class="ObjectPage--headerContent-"
+    />
+  </div>
+  <section
+    class="ObjectPageAnchorBar--anchorBar-"
+    role="navigation"
+    style="top: 0px;"
+  >
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
     >
       <div
-        class="ObjectPage--contentScrollContainer-"
+        class="ObjectPageAnchorButton--selected-"
+        style="cursor: pointer;"
       >
-        <div />
-        <div />
-        <section
-          class="ObjectPage--sectionsContainer-"
-        >
-          <section
-            id="ObjectPageSection-1"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              />
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                Test
-              </div>
-            </div>
-          </section>
-        </section>
-        <div
-          class="ObjectPage--fillerDiv-"
+        <span
+          class="ObjectPageAnchorButton--button-"
         />
       </div>
-    </div>
-  </div>
+    </li>
+  </section>
+  <section
+    class="ObjectPage--sectionsContainer-"
+  >
+    <section
+      id="ObjectPageSection-1"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        />
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          Test
+        </div>
+      </div>
+    </section>
+  </section>
 </div>
 `;
 
@@ -976,22 +755,9 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
   class="ObjectPage--objectPage-"
   data-component-name="ObjectPage"
 >
-  <div
-    class="ObjectPageScrollBar--outerScrollbar-"
-    style="width: 12px;"
-  >
-    <div
-      class="ObjectPageScrollBar--innerScrollbar-"
-      style="margin-left: -12px; width: 24px;"
-    >
-      <div
-        style="width: 12px;"
-      />
-    </div>
-  </div>
   <header
-    aria-roledescription="Object page header"
-    class="ObjectPage--header-"
+    aria-roledescription="Object Page header"
+    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
     role="banner"
     style="padding-right: 12px;"
   >
@@ -1027,64 +793,30 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
         </span>
       </div>
     </header>
-    <section
-      class="ObjectPage--anchorBar-"
-      role="navigation"
-    >
-      <li
-        class="ObjectPageAnchorButton--anchorButtonContainer-"
-      >
-        <span
-          class="ObjectPageAnchorButton--button- ObjectPageAnchorButton--selected-"
-        />
-      </li>
-    </section>
   </header>
   <div
-    class="ObjectPage--outerContentContainer-"
+    class="ObjectPage--contentHeader-"
   >
     <div
-      class="ObjectPage--contentContainer-"
-      id="ObjectPageContent"
-      style="margin-right: -12px;"
-    >
-      <div
-        class="ObjectPage--contentScrollContainer-"
-      >
-        <div />
-        <div />
-        <section
-          class="ObjectPage--sectionsContainer-"
-        >
-          <section
-            id="ObjectPageSection-1"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              />
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                Test
-              </div>
-            </div>
-          </section>
-        </section>
-        <div
-          class="ObjectPage--fillerDiv-"
-        />
-      </div>
-    </div>
+      class="ObjectPage--headerContent-"
+    />
   </div>
+  <section
+    class="ObjectPageAnchorBar--anchorBar-"
+    role="navigation"
+    style="top: 0px;"
+  >
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <span
+        class="ObjectPageAnchorButton--button-"
+      />
+    </li>
+  </section>
+  <section
+    class="ObjectPage--sectionsContainer-"
+  />
 </div>
 `;
 
@@ -1093,22 +825,9 @@ exports[`ObjectPage Only Sections 1`] = `
   class="ObjectPage--objectPage-"
   data-component-name="ObjectPage"
 >
-  <div
-    class="ObjectPageScrollBar--outerScrollbar-"
-    style="width: 12px;"
-  >
-    <div
-      class="ObjectPageScrollBar--innerScrollbar-"
-      style="margin-left: -12px; width: 24px;"
-    >
-      <div
-        style="width: 12px;"
-      />
-    </div>
-  </div>
   <header
-    aria-roledescription="Object page header"
-    class="ObjectPage--header-"
+    aria-roledescription="Object Page header"
+    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
     role="banner"
     style="padding-right: 12px;"
   >
@@ -1156,198 +875,178 @@ exports[`ObjectPage Only Sections 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--outerContentContainer-"
+    class="ObjectPage--contentHeader-"
   >
     <div
-      class="ObjectPage--contentContainer-"
-      id="ObjectPageContent"
-      style="margin-right: -12px;"
+      class="ObjectPage--headerContent-"
     >
-      <div
-        class="ObjectPage--contentScrollContainer-"
+      <span
+        class="ObjectPage--headerCustomContent-"
       >
-        <div />
-        <div>
-          <div
-            class="ObjectPage--contentHeader-"
-            style="position: relative;"
-          >
-            <div
-              class="ObjectPage--headerContent-"
-            >
-              <span
-                class="ObjectPage--headerCustomContent-"
-              >
-                <div
-                  style="display: flex; flex-direction: column;"
-                >
-                  <ui5-link
-                    design="Default"
-                    href="https://www.sap.com"
-                  >
-                    www.myurl.com
-                  </ui5-link>
-                  <span
-                    class="Text--text-"
-                  >
-                    Address 1
-                  </span>
-                  <span
-                    class="Text--text-"
-                  >
-                    Address 2
-                  </span>
-                  <span
-                    class="Text--text-"
-                  >
-                    Address 3
-                  </span>
-                </div>
-              </span>
-            </div>
-          </div>
-          <section
-            class="ObjectPage--anchorBar-"
-            role="navigation"
-          >
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <div
-                class=""
-                style="cursor: pointer;"
-              >
-                <span
-                  class="ObjectPageAnchorButton--button-"
-                >
-                  Test 1
-                </span>
-              </div>
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <div
-                class=""
-                style="cursor: pointer;"
-              >
-                <span
-                  class="ObjectPageAnchorButton--button-"
-                >
-                  Test 2
-                </span>
-              </div>
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <div
-                class="ObjectPageAnchorButton--selected-"
-                style="cursor: pointer;"
-              >
-                <span
-                  class="ObjectPageAnchorButton--button-"
-                >
-                  Test 3
-                </span>
-              </div>
-            </li>
-          </section>
-        </div>
-        <section
-          class="ObjectPage--sectionsContainer-"
-        >
-          <section
-            id="ObjectPageSection-1"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              >
-                Test 1
-              </div>
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                <ui5-label
-                  for=""
-                >
-                  My Content 1
-                </ui5-label>
-              </div>
-            </div>
-          </section>
-          <section
-            id="ObjectPageSection-2"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              >
-                Test 2
-              </div>
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                <ui5-label
-                  for=""
-                >
-                  My Content 2
-                </ui5-label>
-              </div>
-            </div>
-          </section>
-          <section
-            id="ObjectPageSection-3"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              >
-                Test 3
-              </div>
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                <ui5-label
-                  for=""
-                >
-                  My Content 3
-                </ui5-label>
-              </div>
-            </div>
-          </section>
-        </section>
         <div
-          class="ObjectPage--fillerDiv-"
-        />
-      </div>
+          style="display: flex; flex-direction: column;"
+        >
+          <ui5-link
+            design="Default"
+            href="https://www.sap.com"
+          >
+            www.myurl.com
+          </ui5-link>
+          <span
+            class="Text--text-"
+          >
+            Address 1
+          </span>
+          <span
+            class="Text--text-"
+          >
+            Address 2
+          </span>
+          <span
+            class="Text--text-"
+          >
+            Address 3
+          </span>
+        </div>
+      </span>
     </div>
   </div>
+  <section
+    class="ObjectPageAnchorBar--anchorBar-"
+    role="navigation"
+    style="top: 0px;"
+  >
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <div
+        class=""
+        style="cursor: pointer;"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        >
+          Test 1
+        </span>
+      </div>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <div
+        class=""
+        style="cursor: pointer;"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        >
+          Test 2
+        </span>
+      </div>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <div
+        class="ObjectPageAnchorButton--selected-"
+        style="cursor: pointer;"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        >
+          Test 3
+        </span>
+      </div>
+    </li>
+  </section>
+  <section
+    class="ObjectPage--sectionsContainer-"
+  >
+    <section
+      id="ObjectPageSection-1"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        >
+          Test 1
+        </div>
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          <ui5-label
+            for=""
+          >
+            My Content 1
+          </ui5-label>
+        </div>
+      </div>
+    </section>
+    <section
+      id="ObjectPageSection-2"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        >
+          Test 2
+        </div>
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          <ui5-label
+            for=""
+          >
+            My Content 2
+          </ui5-label>
+        </div>
+      </div>
+    </section>
+    <section
+      id="ObjectPageSection-3"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        >
+          Test 3
+        </div>
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          <ui5-label
+            for=""
+          >
+            My Content 3
+          </ui5-label>
+        </div>
+      </div>
+    </section>
+  </section>
 </div>
 `;
 
@@ -1356,22 +1055,9 @@ exports[`ObjectPage Set selected section id 1`] = `
   class="ObjectPage--objectPage-"
   data-component-name="ObjectPage"
 >
-  <div
-    class="ObjectPageScrollBar--outerScrollbar-"
-    style="width: 12px;"
-  >
-    <div
-      class="ObjectPageScrollBar--innerScrollbar-"
-      style="margin-left: -12px; width: 24px;"
-    >
-      <div
-        style="width: 12px;"
-      />
-    </div>
-  </div>
   <header
-    aria-roledescription="Object page header"
-    class="ObjectPage--header-"
+    aria-roledescription="Object Page header"
+    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
     role="banner"
     style="padding-right: 12px;"
   >
@@ -1407,71 +1093,60 @@ exports[`ObjectPage Set selected section id 1`] = `
         </span>
       </div>
     </header>
-    <section
-      class="ObjectPage--anchorBar-"
-      role="navigation"
-    >
-      <li
-        class="ObjectPageAnchorButton--anchorButtonContainer-"
-      >
-        <span
-          class="ObjectPageAnchorButton--button-"
-        />
-      </li>
-      <li
-        class="ObjectPageAnchorButton--anchorButtonContainer-"
-      >
-        <span
-          class="ObjectPageAnchorButton--button- ObjectPageAnchorButton--selected-"
-        />
-      </li>
-    </section>
   </header>
   <div
-    class="ObjectPage--outerContentContainer-"
+    class="ObjectPage--contentHeader-"
   >
     <div
-      class="ObjectPage--contentContainer-"
-      id="ObjectPageContent"
-      style="margin-right: -12px;"
+      class="ObjectPage--headerContent-"
+    />
+  </div>
+  <section
+    class="ObjectPageAnchorBar--anchorBar-"
+    role="navigation"
+    style="top: 0px;"
+  >
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <span
+        class="ObjectPageAnchorButton--button-"
+      />
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <span
+        class="ObjectPageAnchorButton--button- ObjectPageAnchorButton--selected-"
+      />
+    </li>
+  </section>
+  <section
+    class="ObjectPage--sectionsContainer-"
+  >
+    <section
+      id="ObjectPageSection-2"
+      role="region"
     >
       <div
-        class="ObjectPage--contentScrollContainer-"
+        class="ObjectPageSection--header-"
+        role="heading"
       >
-        <div />
-        <div />
-        <section
-          class="ObjectPage--sectionsContainer-"
-        >
-          <section
-            id="ObjectPageSection-2"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              />
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                Test 2
-              </div>
-            </div>
-          </section>
-        </section>
         <div
-          class="ObjectPage--fillerDiv-"
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
         />
       </div>
-    </div>
-  </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          Test 2
+        </div>
+      </div>
+    </section>
+  </section>
 </div>
 `;
 
@@ -1480,22 +1155,9 @@ exports[`ObjectPage With Subsections 1`] = `
   class="ObjectPage--objectPage-"
   data-component-name="ObjectPage"
 >
-  <div
-    class="ObjectPageScrollBar--outerScrollbar-"
-    style="width: 12px;"
-  >
-    <div
-      class="ObjectPageScrollBar--innerScrollbar-"
-      style="margin-left: -12px; width: 24px;"
-    >
-      <div
-        style="width: 12px;"
-      />
-    </div>
-  </div>
   <header
-    aria-roledescription="Object page header"
-    class="ObjectPage--header-"
+    aria-roledescription="Object Page header"
+    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
     role="banner"
     style="padding-right: 12px;"
   >
@@ -1543,433 +1205,414 @@ exports[`ObjectPage With Subsections 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--outerContentContainer-"
+    class="ObjectPage--contentHeader-"
   >
     <div
-      class="ObjectPage--contentContainer-"
-      id="ObjectPageContent"
-      style="margin-right: -12px;"
+      class="ObjectPage--headerContent-"
     >
-      <div
-        class="ObjectPage--contentScrollContainer-"
+      <span
+        class="ObjectPage--headerCustomContent-"
       >
-        <div />
-        <div>
-          <div
-            class="ObjectPage--contentHeader-"
-            style="position: relative;"
-          >
-            <div
-              class="ObjectPage--headerContent-"
-            >
-              <span
-                class="ObjectPage--headerCustomContent-"
-              >
-                <div
-                  style="display: flex; flex-direction: column;"
-                >
-                  <ui5-link
-                    design="Default"
-                    href="https://www.sap.com"
-                  >
-                    www.myurl.com
-                  </ui5-link>
-                  <span
-                    class="Text--text-"
-                  >
-                    Address 1
-                  </span>
-                  <span
-                    class="Text--text-"
-                  >
-                    Address 2
-                  </span>
-                  <span
-                    class="Text--text-"
-                  >
-                    Address 3
-                  </span>
-                </div>
-              </span>
-            </div>
-          </div>
-          <section
-            class="ObjectPage--anchorBar-"
-            role="navigation"
-          >
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <div
-                class=""
-                style="cursor: pointer;"
-              >
-                <span
-                  class="ObjectPageAnchorButton--button-"
-                >
-                  Test 1
-                </span>
-              </div>
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <div
-                class=""
-                style="cursor: pointer;"
-              >
-                <span
-                  class="ObjectPageAnchorButton--button-"
-                >
-                  Test 2
-                </span>
-              </div>
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <div
-                class=""
-                style="cursor: pointer;"
-              >
-                <span
-                  class="ObjectPageAnchorButton--button-"
-                >
-                  Test 3
-                </span>
-              </div>
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <div
-                class=""
-                style="cursor: pointer;"
-              >
-                <span
-                  class="ObjectPageAnchorButton--button-"
-                >
-                  Test 4
-                </span>
-              </div>
-              <div
-                style="display: inline-block;"
-              >
-                <ui5-icon
-                  name="slim-arrow-down"
-                  style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
-                />
-              </div>
-              <ui5-popover
-                horizontal-align="Center"
-                no-arrow="true"
-                placement-type="Bottom"
-                vertical-align="Center"
-              >
-                <ui5-list
-                  footer-text=""
-                  header-text=""
-                  mode="None"
-                  no-data-text=""
-                  separators="All"
-                >
-                  <div
-                    class=""
-                    style="cursor: pointer;"
-                  >
-                    <ui5-li
-                      data-key="4.1"
-                      info-state="None"
-                      type="Active"
-                    >
-                      SubSection 4.1
-                    </ui5-li>
-                  </div>
-                  <div
-                    class=""
-                    style="cursor: pointer;"
-                  >
-                    <ui5-li
-                      data-key="4.2"
-                      info-state="None"
-                      type="Active"
-                    >
-                      SubSection 4.2
-                    </ui5-li>
-                  </div>
-                </ui5-list>
-              </ui5-popover>
-            </li>
-            <li
-              class="ObjectPageAnchorButton--anchorButtonContainer-"
-            >
-              <div
-                class="ObjectPageAnchorButton--selected-"
-                style="cursor: pointer;"
-              >
-                <span
-                  class="ObjectPageAnchorButton--button-"
-                >
-                  Test 5
-                </span>
-              </div>
-              <div
-                style="display: inline-block;"
-              >
-                <ui5-icon
-                  name="slim-arrow-down"
-                  style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
-                />
-              </div>
-              <ui5-popover
-                horizontal-align="Center"
-                no-arrow="true"
-                placement-type="Bottom"
-                vertical-align="Center"
-              >
-                <ui5-list
-                  footer-text=""
-                  header-text=""
-                  mode="None"
-                  no-data-text=""
-                  separators="All"
-                >
-                  <div
-                    class=""
-                    style="cursor: pointer;"
-                  >
-                    <ui5-li
-                      data-key="5.1"
-                      info-state="None"
-                      type="Active"
-                    >
-                      SubSection 5.1
-                    </ui5-li>
-                  </div>
-                  <div
-                    class=""
-                    style="cursor: pointer;"
-                  >
-                    <ui5-li
-                      data-key="5.2"
-                      info-state="None"
-                      type="Active"
-                    >
-                      SubSection 5.2
-                    </ui5-li>
-                  </div>
-                </ui5-list>
-              </ui5-popover>
-            </li>
-            <ui5-button
-              class="ObjectPage--toggleHeaderButton-"
-              design="Default"
-              icon="navigation-up-arrow"
-            />
-          </section>
-        </div>
-        <section
-          class="ObjectPage--sectionsContainer-"
-        >
-          <section
-            id="ObjectPageSection-1"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              >
-                Test 1
-              </div>
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                <ui5-label
-                  for=""
-                >
-                  My Content 1
-                </ui5-label>
-              </div>
-            </div>
-          </section>
-          <section
-            id="ObjectPageSection-2"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              >
-                Test 2
-              </div>
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                <div
-                  style="height: 800px;"
-                >
-                  Test2
-                </div>
-              </div>
-            </div>
-          </section>
-          <section
-            id="ObjectPageSection-3"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              >
-                Test 3
-              </div>
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                Test1
-              </div>
-            </div>
-          </section>
-          <section
-            id="ObjectPageSection-4"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              >
-                Test 4
-              </div>
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                <h1>
-                  Section 4
-                </h1>
-                <div
-                  class="ObjectPageSubSection--objectPageSubSection-"
-                  id="ObjectPageSubSection-4.1"
-                  role="region"
-                >
-                  <div
-                    class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
-                  >
-                    SubSection 4.1
-                  </div>
-                  <div
-                    class="ObjectPageSubSection--subSectionContent-"
-                  >
-                    Test 4 SubSection 1
-                  </div>
-                </div>
-                <div
-                  class="ObjectPageSubSection--objectPageSubSection-"
-                  id="ObjectPageSubSection-4.2"
-                  role="region"
-                >
-                  <div
-                    class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
-                  >
-                    SubSection 4.2
-                  </div>
-                  <div
-                    class="ObjectPageSubSection--subSectionContent-"
-                  >
-                    Test 4 SubSection 2
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section
-            id="ObjectPageSection-5"
-            role="region"
-          >
-            <div
-              class="ObjectPageSection--header-"
-              role="heading"
-            >
-              <div
-                class="ObjectPageSection--title- ObjectPageSection--uppercase-"
-              >
-                Test 5
-              </div>
-            </div>
-            <div
-              class="ObjectPageSection--sectionContent-"
-            >
-              <div
-                class="ObjectPageSection--sectionContentInner-"
-              >
-                <div
-                  class="ObjectPageSubSection--objectPageSubSection-"
-                  id="ObjectPageSubSection-5.1"
-                  role="region"
-                >
-                  <div
-                    class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
-                  >
-                    SubSection 5.1
-                  </div>
-                  <div
-                    class="ObjectPageSubSection--subSectionContent-"
-                  >
-                    Content of SubSection 5.1
-                  </div>
-                </div>
-                <div
-                  class="ObjectPageSubSection--objectPageSubSection-"
-                  id="ObjectPageSubSection-5.2"
-                  role="region"
-                >
-                  <div
-                    class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
-                  >
-                    SubSection 5.2
-                  </div>
-                  <div
-                    class="ObjectPageSubSection--subSectionContent-"
-                  >
-                    Content of SubSection 5.2
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </section>
         <div
-          class="ObjectPage--fillerDiv-"
-        />
-      </div>
+          style="display: flex; flex-direction: column;"
+        >
+          <ui5-link
+            design="Default"
+            href="https://www.sap.com"
+          >
+            www.myurl.com
+          </ui5-link>
+          <span
+            class="Text--text-"
+          >
+            Address 1
+          </span>
+          <span
+            class="Text--text-"
+          >
+            Address 2
+          </span>
+          <span
+            class="Text--text-"
+          >
+            Address 3
+          </span>
+        </div>
+      </span>
     </div>
   </div>
+  <section
+    class="ObjectPageAnchorBar--anchorBar-"
+    role="navigation"
+    style="top: 0px;"
+  >
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <div
+        class=""
+        style="cursor: pointer;"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        >
+          Test 1
+        </span>
+      </div>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <div
+        class=""
+        style="cursor: pointer;"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        >
+          Test 2
+        </span>
+      </div>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <div
+        class=""
+        style="cursor: pointer;"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        >
+          Test 3
+        </span>
+      </div>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <div
+        class=""
+        style="cursor: pointer;"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        >
+          Test 4
+        </span>
+      </div>
+      <div
+        style="display: inline-block;"
+      >
+        <ui5-icon
+          name="slim-arrow-down"
+          style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
+        />
+      </div>
+      <ui5-popover
+        horizontal-align="Center"
+        no-arrow="true"
+        placement-type="Bottom"
+        vertical-align="Center"
+      >
+        <ui5-list
+          footer-text=""
+          header-text=""
+          mode="None"
+          no-data-text=""
+          separators="All"
+        >
+          <div
+            class=""
+            style="cursor: pointer;"
+          >
+            <ui5-li
+              data-key="4.1"
+              info-state="None"
+              type="Active"
+            >
+              SubSection 4.1
+            </ui5-li>
+          </div>
+          <div
+            class=""
+            style="cursor: pointer;"
+          >
+            <ui5-li
+              data-key="4.2"
+              info-state="None"
+              type="Active"
+            >
+              SubSection 4.2
+            </ui5-li>
+          </div>
+        </ui5-list>
+      </ui5-popover>
+    </li>
+    <li
+      class="ObjectPageAnchorButton--anchorButtonContainer-"
+    >
+      <div
+        class="ObjectPageAnchorButton--selected-"
+        style="cursor: pointer;"
+      >
+        <span
+          class="ObjectPageAnchorButton--button-"
+        >
+          Test 5
+        </span>
+      </div>
+      <div
+        style="display: inline-block;"
+      >
+        <ui5-icon
+          name="slim-arrow-down"
+          style="height: 1rem; width: 1rem; cursor: pointer; margin: 0px 0.25rem 0px 0.375rem; font-size: 0.875rem;"
+        />
+      </div>
+      <ui5-popover
+        horizontal-align="Center"
+        no-arrow="true"
+        placement-type="Bottom"
+        vertical-align="Center"
+      >
+        <ui5-list
+          footer-text=""
+          header-text=""
+          mode="None"
+          no-data-text=""
+          separators="All"
+        >
+          <div
+            class=""
+            style="cursor: pointer;"
+          >
+            <ui5-li
+              data-key="5.1"
+              info-state="None"
+              type="Active"
+            >
+              SubSection 5.1
+            </ui5-li>
+          </div>
+          <div
+            class=""
+            style="cursor: pointer;"
+          >
+            <ui5-li
+              data-key="5.2"
+              info-state="None"
+              type="Active"
+            >
+              SubSection 5.2
+            </ui5-li>
+          </div>
+        </ui5-list>
+      </ui5-popover>
+    </li>
+    <ui5-button
+      class="ObjectPageAnchorBar--anchorBarActionButton- ObjectPageAnchorBar--anchorBarActionButtonExpandable-"
+      data-ui5wcr-object-page-header-action=""
+      design="Default"
+      icon="slim-arrow-up"
+    />
+  </section>
+  <section
+    class="ObjectPage--sectionsContainer-"
+  >
+    <section
+      id="ObjectPageSection-1"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        >
+          Test 1
+        </div>
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          <ui5-label
+            for=""
+          >
+            My Content 1
+          </ui5-label>
+        </div>
+      </div>
+    </section>
+    <section
+      id="ObjectPageSection-2"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        >
+          Test 2
+        </div>
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          <div
+            style="height: 800px;"
+          >
+            Test2
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      id="ObjectPageSection-3"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        >
+          Test 3
+        </div>
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          Test1
+        </div>
+      </div>
+    </section>
+    <section
+      id="ObjectPageSection-4"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        >
+          Test 4
+        </div>
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          <h1>
+            Section 4
+          </h1>
+          <div
+            class="ObjectPageSubSection--objectPageSubSection-"
+            id="ObjectPageSubSection-4.1"
+            role="region"
+          >
+            <div
+              class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
+            >
+              SubSection 4.1
+            </div>
+            <div
+              class="ObjectPageSubSection--subSectionContent-"
+            >
+              Test 4 SubSection 1
+            </div>
+          </div>
+          <div
+            class="ObjectPageSubSection--objectPageSubSection-"
+            id="ObjectPageSubSection-4.2"
+            role="region"
+          >
+            <div
+              class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
+            >
+              SubSection 4.2
+            </div>
+            <div
+              class="ObjectPageSubSection--subSectionContent-"
+            >
+              Test 4 SubSection 2
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      id="ObjectPageSection-5"
+      role="region"
+    >
+      <div
+        class="ObjectPageSection--header-"
+        role="heading"
+      >
+        <div
+          class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        >
+          Test 5
+        </div>
+      </div>
+      <div
+        class="ObjectPageSection--sectionContent-"
+      >
+        <div
+          class="ObjectPageSection--sectionContentInner-"
+        >
+          <div
+            class="ObjectPageSubSection--objectPageSubSection-"
+            id="ObjectPageSubSection-5.1"
+            role="region"
+          >
+            <div
+              class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
+            >
+              SubSection 5.1
+            </div>
+            <div
+              class="ObjectPageSubSection--subSectionContent-"
+            >
+              Content of SubSection 5.1
+            </div>
+          </div>
+          <div
+            class="ObjectPageSubSection--objectPageSubSection-"
+            id="ObjectPageSubSection-5.2"
+            role="region"
+          >
+            <div
+              class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
+            >
+              SubSection 5.2
+            </div>
+            <div
+              class="ObjectPageSubSection--subSectionContent-"
+            >
+              Content of SubSection 5.2
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
 </div>
 `;
