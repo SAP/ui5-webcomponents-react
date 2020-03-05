@@ -35,7 +35,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     dataKeys,
     noLegend = false,
     onDataPointClick,
-    xAxisFormatter = (el) => el,
+    xAxisFormatter,
     yAxisFormatter = (el) => el,
     dataLabelFormatter = (d) => d,
     dataLabelCustomElement = undefined,
@@ -89,9 +89,20 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       tooltip={tooltip}
       slot={slot}
     >
-      <RadarChartLib data={dataset} margin={{ left: 20, right: 20, top: 20, bottom: 20 }}>
+      <RadarChartLib data={dataset} margin={{ left: 30, right: 30, top: 40, bottom: 30 }}>
         <PolarGrid gridType={chartConfig.polarGridType} />
-        <PolarAngleAxis dataKey={labelKey} tick={(props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)} />
+        <PolarAngleAxis
+          dataKey={labelKey}
+          tick={
+            xAxisFormatter
+              ? (props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit, false)
+              : {
+                  content: (label) => dataLabelFormatter(label.value),
+                  fontSize: ThemingParameters.sapUiFontSmallSize,
+                  fill: ThemingParameters.sapContent_LabelColor
+                }
+          }
+        />
         <PolarRadiusAxis tickFormatter={(e) => yAxisFormatter(e)} />
         {currentDataKeys.map((key, index) => (
           <Radar
@@ -107,8 +118,8 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
                 ? dataLabelCustomElement
                   ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
                   : {
-                      position: chartConfig.stacked ? 'insideTop' : 'top',
                       content: (label) => dataLabelFormatter(label.value),
+                      fontSize: ThemingParameters.sapUiFontSmallSize,
                       fill: ThemingParameters.sapContent_LabelColor
                     }
                 : false

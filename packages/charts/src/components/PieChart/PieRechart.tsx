@@ -90,7 +90,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     >
       <PieChartLib>
         <Pie
-          margin={{ left: 20, right: 20, top: 20, bottom: 20 }}
+          margin={{ right: 30, top: 40, bottom: 30 }}
           innerRadius={chartConfig.innerRadius}
           paddingAngle={chartConfig.paddingAngle}
           dataKey={currentDataKeys[0] ?? ''}

@@ -74,7 +74,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
       slot={slot}
     >
       <RadialBarChartLib
-        margin={{ left: 20, right: 20, top: 20, bottom: 20 }}
+        margin={{ right: 30, top: 40, bottom: 30 }}
         innerRadius="90%"
         outerRadius="100%"
         barSize={10}

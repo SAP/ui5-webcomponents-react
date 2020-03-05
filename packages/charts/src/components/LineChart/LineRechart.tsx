@@ -7,6 +7,7 @@ import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartCo
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import { renderAxisTicks } from '../../util/Utils';
 import {
   Brush,
   CartesianGrid,
@@ -19,7 +20,7 @@ import {
   ReferenceLine
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { AxisTicks, DataLabel } from '../../internal/CustomElements';
+import { DataLabel } from '../../internal/CustomElements';
 
 type LineChartProps = RechartBaseProps;
 
@@ -114,18 +115,18 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       tooltip={tooltip}
       slot={slot}
     >
-      <LineChartLib
-        margin={{ left: 20, right: 20, top: 20, bottom: 20 }}
-        data={dataset}
-        onClick={onDataPointClickInternal}
-      >
+      <LineChartLib margin={{ right: 30, top: 40, bottom: 30 }} data={dataset} onClick={onDataPointClickInternal}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
         {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis dataKey={labelKey} tick={(props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)} />
+          <XAxis
+            dataKey={labelKey}
+            interval={0}
+            tick={(props) => renderAxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)}
+          />
         )}
         <YAxis
           unit={chartConfig.yAxisUnit}
@@ -156,6 +157,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                   : {
                       content: (d) => dataLabelFormatter(d.value),
                       position: 'top',
+                      fontSize: ThemingParameters.sapUiFontSmallSize,
                       fill: ThemingParameters.sapContent_LabelColor
                     }
                 : false
@@ -167,7 +169,15 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             activeDot={{ onClick: onDataPointClickInternal }}
           />
         ))}
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
+        {!noLegend && (
+          <Legend
+            wrapperStyle={{
+              paddingTop: 20
+            }}
+            verticalAlign={chartConfig.legendPosition}
+            onClick={onItemLegendClick}
+          />
+        )}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -178,7 +188,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         )}
         <Tooltip />
         {chartConfig.zoomingTool && (
-          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
+          <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}
       </LineChartLib>
     </ChartContainer>

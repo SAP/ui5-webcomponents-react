@@ -19,7 +19,8 @@ import {
   ReferenceLine
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { AxisTicks, DataLabel } from '../../internal/CustomElements';
+import { DataLabel } from '../../internal/CustomElements';
+import { renderAxisTicks } from '../../util/Utils';
 
 type ColumnChartProps = RechartBaseProps;
 
@@ -109,7 +110,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     [onDataPointClick]
   );
 
-  console.log(chartConfig.barSize);
   return (
     <ChartContainer
       dataset={dataset}
@@ -123,14 +123,18 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       tooltip={tooltip}
       slot={slot}
     >
-      <ColumnChartLib margin={{ left: 20, right: 20, top: 20, bottom: 20 }} data={dataset} barGap={chartConfig.barGap}>
+      <ColumnChartLib margin={{ right: 30, top: 40, bottom: 30 }} data={dataset} barGap={chartConfig.barGap}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
         {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis tick={(props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)} dataKey={labelKey} />
+          <XAxis
+            interval={0}
+            tick={(props) => renderAxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)}
+            dataKey={labelKey}
+          />
         )}
         <YAxis
           tickFormatter={(e) => yAxisFormatter(e)}
@@ -174,7 +178,15 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             onClick={onDataPointClickInternal}
           />
         ))}
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
+        {!noLegend && (
+          <Legend
+            wrapperStyle={{
+              paddingTop: 20
+            }}
+            verticalAlign={chartConfig.legendPosition}
+            onClick={onItemLegendClick}
+          />
+        )}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -185,7 +197,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         )}
         <Tooltip cursor={{ fillOpacity: 0.3 }} />
         {chartConfig.zoomingTool && (
-          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
+          <Brush y={1} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}
       </ColumnChartLib>
     </ChartContainer>

@@ -20,6 +20,7 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { AxisTicks, DataLabel } from '../../internal/CustomElements';
+import { renderAxisTicks } from '../../util/Utils';
 
 type BarChartProps = RechartBaseProps;
 
@@ -113,7 +114,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       slot={slot}
     >
       <BarChartLib
-        margin={{ left: 20, right: 20, top: 20, bottom: 20 }}
+        margin={{ right: 30, top: 40, bottom: 30 }}
         layout={'vertical'}
         data={dataset}
         barGap={chartConfig.barGap}
@@ -124,7 +125,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           stroke={chartConfig.gridStroke}
         />
         {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis type="number" tick={(props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)} />
+          <XAxis type="number" tick={(props) => renderAxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)} />
         )}
         <YAxis
           tickFormatter={(e) => yAxisFormatter(e)}
@@ -159,7 +160,15 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             onClick={onDataPointClickInternal}
           />
         ))}
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
+        {!noLegend && (
+          <Legend
+            wrapperStyle={{
+              paddingTop: 20
+            }}
+            verticalAlign={chartConfig.legendPosition}
+            onClick={onItemLegendClick}
+          />
+        )}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -169,7 +178,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         )}
         <Tooltip cursor={{ fillOpacity: 0.3 }} />
         {chartConfig.zoomingTool && (
-          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
+          <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}
       </BarChartLib>
     </ChartContainer>

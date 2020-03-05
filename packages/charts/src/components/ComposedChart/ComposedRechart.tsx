@@ -19,7 +19,8 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { AxisTicks, DataLabel } from '../../internal/CustomElements';
+import { DataLabel } from '../../internal/CustomElements';
+import { renderAxisTicks } from '../../util/Utils';
 
 enum ChartTypes {
   line = Line,
@@ -170,7 +171,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       tooltip={tooltip}
       slot={slot}
     >
-      <ComposedChartLib margin={{ left: 20, right: 20, top: 20, bottom: 20 }} data={dataset}>
+      <ComposedChartLib margin={{ right: 30, top: 40, bottom: 30 }} data={dataset}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
@@ -178,8 +179,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         />
         {(chartConfig.xAxisVisible ?? true) && (
           <XAxis
+            interval={0}
             dataKey={labelKey}
-            tick={(props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)}
+            tick={(props) => renderAxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)}
             padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
           />
         )}
@@ -200,7 +202,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           />
         )}
         <Tooltip />
-        {!noLegend && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition} />}
+        {!noLegend && (
+          <Legend
+            onClick={onItemLegendClick}
+            verticalAlign={chartConfig.legendPosition}
+            wrapperStyle={{
+              paddingTop: 20
+            }}
+          />
+        )}
         {elements?.map((config, index) => {
           const {
             type,
@@ -228,6 +238,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
                   : {
                       content: (d) => dataLabelFormatter(d.value),
                       position: 'top',
+                      fontSize: ThemingParameters.sapUiFontSmallSize,
                       fill: ThemingParameters.sapContent_LabelColor
                     }
                 : false;
@@ -245,6 +256,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
                   : {
                       content: (d) => dataLabelFormatter(d.value),
                       position: 'top',
+                      fontSize: ThemingParameters.sapUiFontSmallSize,
                       fill: ThemingParameters.sapContent_LabelColor
                     }
                 : false;
@@ -260,6 +272,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
                   : {
                       content: (d) => dataLabelFormatter(d.value),
                       position: 'top',
+                      fontSize: ThemingParameters.sapUiFontSmallSize,
                       fill: ThemingParameters.sapContent_LabelColor
                     }
                 : false;
@@ -270,7 +283,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           );
         })}
         {chartConfig.zoomingTool && (
-          <Brush dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
+          <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}
       </ComposedChartLib>
     </ChartContainer>
