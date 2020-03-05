@@ -5,7 +5,7 @@ import { simpleDataSet } from '../../resources/DemoProps';
 import { PieChart } from '../PieChart/PieRechart';
 
 export default {
-  title: 'Charts / DonutChart',
+  title: '2 Charts /  DonutChart',
   component: DonutChart
 };
 

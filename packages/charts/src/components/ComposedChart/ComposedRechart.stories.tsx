@@ -6,7 +6,7 @@ import { complexDataSet } from '../../resources/DemoProps';
 export const renderComposedChart = () => (
   <ComposedChart
     width={'95%'}
-    height={'40vh'}
+    height={'300px'}
     dataset={complexDataSet}
     onLegendClick={action('onLegendClick')}
     onDataPointClick={action('onDataPointClick')}
@@ -139,7 +139,7 @@ renderLabelComposedChart.story = {
 };
 
 export default {
-  title: 'Charts / ComposedChart',
+  title: '2 Charts /  ComposedChart',
   component: ComposedChart
 };
 

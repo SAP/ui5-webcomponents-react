@@ -3,7 +3,7 @@ import { RadialChart } from '@ui5/webcomponents-react-charts/lib/RadialChart';
 import React from 'react';
 
 export default {
-  title: '2 Charts / RadialChart',
+  title: 'Charts - Deprecated / RadialChart',
   component: RadialChart
 };
 

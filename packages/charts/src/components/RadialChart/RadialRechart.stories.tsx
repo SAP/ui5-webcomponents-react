@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 const dataset = [{ name: 'L1', value: 67 }];
 
 export default {
-  title: 'Charts / RadialChart',
+  title: '2 Charts /  RadialChart',
   component: RadialChart
 };
 

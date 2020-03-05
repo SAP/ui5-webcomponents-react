@@ -26,7 +26,7 @@ const singleData = [
 ];
 
 export default {
-  title: 'Charts / MicroBarChart',
+  title: '2 Charts /  MicroBarChart',
   component: MicroBarChart
 };
 

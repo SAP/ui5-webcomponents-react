@@ -4,7 +4,7 @@ import React from 'react';
 import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
-  title: 'Charts / LineChart',
+  title: '2 Charts /  LineChart',
   component: LineChart
 };
 

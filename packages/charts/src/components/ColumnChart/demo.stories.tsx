@@ -68,7 +68,7 @@ const growthLineOptions = {
 };
 
 export default {
-  title: '2 Charts / ColumnChart',
+  title: 'Charts - Deprecated / ColumnChart',
   component: ColumnChart
 };
 
