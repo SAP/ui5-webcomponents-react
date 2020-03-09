@@ -13,7 +13,7 @@ const DEPENDENCY_REGEX = BUILD_FOR_IE11
   : /node_modules\/(@ui5\/webcomponents(-(base|core|fiori|icons|theme-base))?|lit-html)\//;
 
 module.exports = {
-  stories: ['../packages/**/*.stories.mdx', '../packages/**/*.stories.[tj]sx'],
+  stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.mdx', '../packages/**/*.stories.[tj]sx'],
   addons: ['@storybook/addon-knobs', '@storybook/addon-docs', '@storybook/addon-actions'],
   webpack: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
