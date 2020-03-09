@@ -1,13 +1,13 @@
-const { highlightLog } = require('../../../scripts/utils');
+const { highlightLog } = require('../scripts/utils');
 const path = require('path');
-const PATHS = require('../../../config/paths');
+const PATHS = require('../config/paths');
 const dedent = require('dedent');
 require('dotenv').config({
   path: path.join(PATHS.root, '.env')
 });
 
 module.exports = {
-  stories: ['../../**/*.stories.mdx', '../../**/*.stories.[tj]sx'],
+  stories: ['../packages/**/*.stories.mdx', '../packages/*.stories.[tj]sx'],
   addons: ['@storybook/addon-knobs', '@storybook/addon-docs', '@storybook/addon-actions'],
   webpack: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'

@@ -5,9 +5,9 @@
   "private": true,
   "license": "Apache-2.0",
   "scripts": {
-    "start": "start-storybook -p 6006 -c packages/docs/.storybook",
+    "start": "start-storybook -p 6006 -c .storybook",
     "build": "node ./scripts/rollup/build.js",
-    "build:storybook": "build-storybook -c packages/docs/.storybook -o .out",
+    "build:storybook": "build-storybook -c .storybook -o .out",
     "pretest": "node scripts/test/clean.js",
     "test": "jest --config=config/jest.config.js --coverage",
     "clean": "lerna run clean --stream && rimraf coverage",
