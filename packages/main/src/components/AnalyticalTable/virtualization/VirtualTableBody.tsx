@@ -1,7 +1,8 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
 import { VirtualTableRow } from './VirtualTableRow';
 
@@ -24,24 +25,7 @@ export const VirtualTableBody = (props) => {
     selectedFlatRows
   } = props;
 
-  const innerDivRef = useRef(null);
-
-  useEffect(() => {
-    if (innerDivRef.current) {
-      innerDivRef.current.classList = '';
-      innerDivRef.current.classList.add(classes.tbody);
-      if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
-        innerDivRef.current.classList.add(classes.selectable);
-      }
-    }
-  }, [
-    innerDivRef.current,
-    selectionMode,
-    classes.tbody,
-    classes.selectable,
-    alternateRowColor,
-    classes.alternateRowColor
-  ]);
+  const innerDivRef = useRef<HTMLElement>();
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
@@ -74,9 +58,14 @@ export const VirtualTableBody = (props) => {
     [prepareRow]
   );
 
+  const classNames = StyleClassHelper.of(classes.virtualTableBody, classes.tbody);
+  if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
+    classNames.put(classes.selectable);
+  }
+
   return (
     <FixedSizeList
-      className={classes.virtualTableBody}
+      className={classNames.valueOf()}
       ref={reactWindowRef}
       height={tableBodyHeight}
       width={totalColumnsWidth}
