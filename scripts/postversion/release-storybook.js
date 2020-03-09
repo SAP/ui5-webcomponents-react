@@ -6,8 +6,7 @@ module.exports = new Promise((resolve) => {
   if (process.env.UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD === 'true') {
     highlightLog('Prepare Storybook');
 
-    const storybooksGenerated =
-      shell.exec('node_modules/.bin/build-storybook -c packages/docs/.storybook -o .out').code === 0;
+    const storybooksGenerated = shell.exec('node_modules/.bin/build-storybook -c .storybook -o .out').code === 0;
     if (!storybooksGenerated) {
       console.error('Generating storybook failed!');
       process.exit(1);

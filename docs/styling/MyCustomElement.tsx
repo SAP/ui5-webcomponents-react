@@ -1,4 +1,4 @@
-import { JSSTheme } from '@ui5/webcomponents-react/interfaces/JSSTheme';
+import { JSSTheme } from '@ui5/webcomponents-react/src/interfaces/JSSTheme';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
