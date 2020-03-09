@@ -58,7 +58,7 @@ export const VirtualTableBody = (props) => {
     [prepareRow]
   );
 
-  const classNames = StyleClassHelper.of(classes.virtualTableBody, classes.tbody);
+  const classNames = StyleClassHelper.of(classes.tbody);
   if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
     classNames.put(classes.selectable);
   }
