@@ -1,30 +1,30 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-export default ({ parameters }: JSSTheme) => ({
+export default {
   messageToast: {
     padding: '0 !important',
     borderRadius: '0.25rem !important',
     textAlign: 'center !important',
-    boxShadow: parameters.sapUiShadowLevel2,
+    boxShadow: ThemingParameters.sapUiShadowLevel2,
     cursor: 'text',
     minHeight: 'auto !important',
-    background: `${parameters.sapUiListBackground} !important`
+    background: `${ThemingParameters.sapUiListBackground} !important`
   },
   messageToastContainer: {
     maxWidth: '15rem !important'
   },
   messageToastBody: {
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontSize: ThemingParameters.sapMFontMediumSize,
     fontWeight: 'normal',
     textAlign: 'center',
     textOverflow: 'ellipsis',
     whiteSpace: 'pre-line',
     wordWrap: 'break-word',
     padding: '1rem !important',
-    color: `${parameters.sapUiListTextColor} !important`,
+    color: `${ThemingParameters.sapUiListTextColor} !important`,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   }
-});
+};

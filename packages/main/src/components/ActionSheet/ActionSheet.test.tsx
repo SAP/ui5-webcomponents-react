@@ -1,10 +1,10 @@
 import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React, { createRef, RefObject } from 'react';
-import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import sinon from 'sinon';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 
 describe('ActionSheet', () => {
   test('Render without Crashing', () => {

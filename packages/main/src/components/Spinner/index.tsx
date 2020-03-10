@@ -2,7 +2,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Size } from '@ui5/webcomponents-react/lib/Size';
 import React, { FC, forwardRef, RefObject, useEffect, useState } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Spinner.jss';
 
@@ -14,7 +14,7 @@ export interface SpinnerProps extends CommonProps {
   size?: Size;
 }
 
-const useStyles = createUseStyles(styles, { name: 'Spinner' });
+const useStyles = createComponentStyles(styles, { name: 'Spinner' });
 
 /**
  * <code>import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';</code>

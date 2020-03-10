@@ -1,7 +1,7 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-const style = ({ parameters }: JSSTheme) => ({
+const style = {
   header: {
     display: 'flex',
     height: CssSizeVariables.sapWcrBarHeight,
@@ -18,48 +18,48 @@ const style = ({ parameters }: JSSTheme) => ({
     padding: '0.25rem 1rem',
     boxSizing: 'border-box',
     borderBottom: `1px solid var(--messageBoxBorderColor)`,
-    color: parameters.sapUiContentLabelColor,
+    color: ThemingParameters.sapUiContentLabelColor,
     fontSize: '1rem',
     '&[data-type="Error"]': {
-      '--sapUiPageFooterBorderColor': parameters.sapUiErrorBorder,
-      '--messageBoxBorderColor': parameters.sapUiErrorBorder,
+      '--sapUiPageFooterBorderColor': ThemingParameters.sapUiErrorBorder,
+      '--messageBoxBorderColor': ThemingParameters.sapUiErrorBorder,
       '& $icon': {
-        '--sapUiContentNonInteractiveIconColor': parameters.sapUiNegativeElement
+        '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapUiNegativeElement
       }
     },
     '&[data-type="Warning"]': {
-      '--sapUiPageFooterBorderColor': parameters.sapUiWarningBorder,
-      '--messageBoxBorderColor': parameters.sapUiWarningBorder,
+      '--sapUiPageFooterBorderColor': ThemingParameters.sapUiWarningBorder,
+      '--messageBoxBorderColor': ThemingParameters.sapUiWarningBorder,
       '& $icon': {
-        '--sapUiContentNonInteractiveIconColor': parameters.sapUiCriticalElement
+        '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapUiCriticalElement
       }
     },
     '&[data-type="Success"]': {
-      '--sapUiPageFooterBorderColor': parameters.sapUiSuccessBorder,
-      '--messageBoxBorderColor': parameters.sapUiSuccessBorder,
+      '--sapUiPageFooterBorderColor': ThemingParameters.sapUiSuccessBorder,
+      '--messageBoxBorderColor': ThemingParameters.sapUiSuccessBorder,
       '& $icon': {
-        '--sapUiContentNonInteractiveIconColor': parameters.sapUiPositiveElement
+        '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapUiPositiveElement
       }
     },
     '&[data-type="Confirm"]': {
-      '--sapUiPageFooterBorderColor': parameters.sapUiNeutralBorder,
-      '--messageBoxBorderColor': parameters.sapUiNeutralBorder,
+      '--sapUiPageFooterBorderColor': ThemingParameters.sapUiNeutralBorder,
+      '--messageBoxBorderColor': ThemingParameters.sapUiNeutralBorder,
       '& $icon': {
-        '--sapUiContentNonInteractiveIconColor': parameters.sapUiNeutralElement
+        '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapUiNeutralElement
       }
     },
     '&[data-type="Information"]': {
-      '--sapUiPageFooterBorderColor': parameters.sapUiNeutralBorder,
-      '--messageBoxBorderColor': parameters.sapUiNeutralBorder,
+      '--sapUiPageFooterBorderColor': ThemingParameters.sapUiNeutralBorder,
+      '--messageBoxBorderColor': ThemingParameters.sapUiNeutralBorder,
       '& $icon': {
-        '--sapUiContentNonInteractiveIconColor': parameters.sapUiNeutralElement
+        '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapUiNeutralElement
       }
     },
     '&[data-type="Highlight"]': {
-      '--sapUiPageFooterBorderColor': parameters.sapUiInformationBorder,
-      '--messageBoxBorderColor': parameters.sapUiInformationBorder,
+      '--sapUiPageFooterBorderColor': ThemingParameters.sapUiInformationBorder,
+      '--messageBoxBorderColor': ThemingParameters.sapUiInformationBorder,
       '& $icon': {
-        '--sapUiContentNonInteractiveIconColor': parameters.sapUiInformativeElement
+        '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapUiInformativeElement
       }
     }
   },
@@ -84,6 +84,6 @@ const style = ({ parameters }: JSSTheme) => ({
       display: 'flex'
     }
   }
-});
+};
 
 export default style;

@@ -3,10 +3,9 @@ import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePa
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject, useCallback, useState } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './FilterBar.jss';
 
 export interface FilterBarPropTypes extends CommonProps {
@@ -17,7 +16,7 @@ export interface FilterBarPropTypes extends CommonProps {
 
 interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'FilterBar' });
+const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
 
 /**
  * <code>import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';</code>

@@ -5,11 +5,11 @@ import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection'
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
 import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Flexbox.jss';
 
-const useStyles = createUseStyles(styles, { name: 'FlexBox' });
+const useStyles = createComponentStyles(styles, { name: 'FlexBox' });
 
 export interface FlexBoxPropTypes extends CommonProps {
   alignItems?: FlexBoxAlignItems;

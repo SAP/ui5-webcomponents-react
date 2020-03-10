@@ -2,9 +2,8 @@ import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './SegmentedButtonItem.jss';
 
 export interface SegmentedButtonItemPropTypes extends CommonProps {
@@ -16,7 +15,7 @@ export interface SegmentedButtonItemPropTypes extends CommonProps {
   onClick?: (e: Event) => void;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'SegmentedButtonItem' });
+const useStyles = createComponentStyles(styles, { name: 'SegmentedButtonItem' });
 
 /**
  * <code>import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';</code>

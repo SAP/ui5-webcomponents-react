@@ -2,6 +2,7 @@
  * Created by d059190 at 16.03.18
  */
 import { createGenerateClassName } from './lib/createGenerateClassName';
+import { createComponentStyles } from './lib/createComponentStyles';
 import { CssSizeVariables, CssSizeVariablesNames, cssVariablesStyles } from './lib/CssSizeVariables';
 import { Device } from './lib/Device';
 import { Event } from './lib/Event';
@@ -17,6 +18,7 @@ import { usePassThroughHtmlProps } from './lib/usePassThroughHtmlProps';
 import { deprecationNotice, getScrollBarWidth } from './lib/Utils';
 
 export {
+  createComponentStyles,
   StyleClassHelper,
   Optional,
   deprecationNotice,
