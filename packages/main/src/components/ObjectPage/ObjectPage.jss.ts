@@ -1,6 +1,6 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   objectPage: {
     width: '100%',
     height: '100%',
@@ -9,8 +9,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     flexDirection: 'column',
     isolation: 'isolate',
     whiteSpace: 'normal',
-    fontFamily: parameters.sapUiFontFamily,
-    backgroundColor: parameters.sapUiBaseBG
+    fontFamily: ThemingParameters.sapUiFontFamily,
+    backgroundColor: ThemingParameters.sapUiBaseBG
   },
   contentContainer: {
     overflowX: 'hidden',
@@ -28,8 +28,8 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   anchorBar: {
     paddingLeft: '2rem',
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
-    boxShadow: `inset 0 -0.0625rem ${parameters.sapUiObjectHeaderBorderColor}, inset 0 0.0625rem ${parameters.sapUiObjectHeaderBorderColor}`,
+    backgroundColor: ThemingParameters.sapUiObjectHeaderBackground,
+    boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapUiObjectHeaderBorderColor}, inset 0 0.0625rem ${ThemingParameters.sapUiObjectHeaderBorderColor}`,
     display: 'flex',
     height: '2.75rem',
     minHeight: '2.75rem',
@@ -48,7 +48,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     // overflowX: 'hidden',
     // overflowY: 'auto',
     overflow: 'hidden',
-    backgroundColor: parameters.sapUiBaseBG,
+    backgroundColor: ThemingParameters.sapUiBaseBG,
     '&:after': {
       clear: 'both',
       display: 'table',
@@ -56,13 +56,13 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   fillerDiv: {
-    backgroundColor: parameters.sapUiBaseBG
+    backgroundColor: ThemingParameters.sapUiBaseBG
   },
   // header
   header: {
     flexShrink: 0,
     position: 'relative',
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
+    backgroundColor: ThemingParameters.sapUiObjectHeaderBackground,
     '&$stickied': {
       '& $image': {
         opacity: '1',
@@ -73,7 +73,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     }
   },
   contentHeader: {
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
+    backgroundColor: ThemingParameters.sapUiObjectHeaderBackground,
     position: 'relative'
   },
   titleBar: {
@@ -97,7 +97,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     display: 'inline-block',
     margin: '0',
     fontWeight: 'normal',
-    color: parameters.sapUiBaseText
+    color: ThemingParameters.sapUiBaseText
   },
   subTitle: {
     display: 'inline-block',
@@ -106,7 +106,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     paddingTop: '0.5rem',
     paddingBottom: '0.5rem',
     fontSize: '0.875rem',
-    color: parameters.sapUiContentLabelColor
+    color: ThemingParameters.sapUiContentLabelColor
   },
   actions: {
     position: 'absolute',
@@ -204,6 +204,6 @@ const styles = ({ parameters }: JSSTheme) => ({
     top: `-0.625rem`,
     left: 'calc(50% - 1rem)'
   }
-});
+};
 
 export default styles;

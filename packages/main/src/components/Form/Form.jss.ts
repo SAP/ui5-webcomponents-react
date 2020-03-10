@@ -1,8 +1,8 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   formTitle: {
-    borderBottom: `1px solid ${parameters.sapUiGroupTitleBorderColor}`
+    borderBottom: `1px solid ${ThemingParameters.sapUiGroupTitleBorderColor}`
   },
   formTitlePaddingBottom: {
     paddingBottom: '2em'
@@ -23,6 +23,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   formElement: {
     display: 'block'
   }
-});
+};
 
 export { styles };

@@ -15,7 +15,7 @@ import React, {
   useEffect,
   useState
 } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 
 export type SelectedKey = string | number;
@@ -45,7 +45,7 @@ const styles = {
   }
 };
 
-const useStyles = createUseStyles(styles, { name: 'SegmentedButton' });
+const useStyles = createComponentStyles(styles, { name: 'SegmentedButton' });
 
 /**
  * <code>import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';</code>

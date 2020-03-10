@@ -9,9 +9,8 @@ import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroun
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
 
@@ -27,7 +26,7 @@ export interface PagePropTypes extends CommonProps {
   children: ReactElement<any> | Array<ReactElement<any>> | ReactNode;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, {
+const useStyles = createComponentStyles(styles, {
   name: 'Page'
 });
 

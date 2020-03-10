@@ -1,9 +1,9 @@
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './Avatar.jss';
@@ -19,7 +19,7 @@ export interface AvatarPropTypes extends CommonProps {
   customFontSize?: CSSProperties['width'];
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Avatar' });
+const useStyles = createComponentStyles(styles, { name: 'Avatar' });
 
 /**
  * <code>import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';</code>

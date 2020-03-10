@@ -1,4 +1,4 @@
-import * as parameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import React, { CSSProperties, FC, useMemo } from 'react';
 import ContentLoader from 'react-content-loader';
 
@@ -29,11 +29,11 @@ export const TablePlaceholder: FC<Props> = (props: Props) => {
 
   const innerStyles = useMemo(() => {
     return {
-      backgroundColor: parameters.sapUiListBackground,
+      backgroundColor: ThemingParameters.sapUiListBackground,
       width: '100%',
       ...style
     };
-  }, [style, parameters.sapUiListBackground]);
+  }, [style, ThemingParameters.sapUiListBackground]);
 
   return (
     <ContentLoader
@@ -41,9 +41,9 @@ export const TablePlaceholder: FC<Props> = (props: Props) => {
       height={height}
       width={width}
       speed={2}
-      backgroundColor={parameters.sapContent_ImagePlaceholderBackground}
-      foregroundColor={parameters.sapContent_ImagePlaceholderForegroundColor}
-      backgroundOpacity={parameters.sapContent_DisabledOpacity as any}
+      backgroundColor={ThemingParameters.sapContent_ImagePlaceholderBackground}
+      foregroundColor={ThemingParameters.sapContent_ImagePlaceholderForegroundColor}
+      backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as any}
     >
       {getArrayOfLength(rows).map((_, index) => (
         <TableRow key={index} columns={columns} y={rowHeight * index + rowHeight / 2} row={index} />

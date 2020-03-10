@@ -1,3 +1,4 @@
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -17,7 +18,6 @@ import React, {
   useMemo,
   useRef
 } from 'react';
-import { createUseStyles } from 'react-jss';
 import {
   Column,
   PluginHook,
@@ -31,6 +31,7 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
+import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
@@ -39,7 +40,9 @@ import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
+import { useColumnsDependencies } from './hooks/useColumnsDependencies';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
+import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
@@ -50,11 +53,8 @@ import { useTableStyling } from './hooks/useTableStyling';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
-import { VirtualTableBody } from './virtualization/VirtualTableBody';
-import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
-import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
-import { useColumnsDependencies } from './hooks/useColumnsDependencies';
 import { orderByFn } from './util';
+import { VirtualTableBody } from './virtualization/VirtualTableBody';
 
 export interface ColumnConfiguration extends Column {
   accessor?: string;
@@ -129,7 +129,7 @@ export interface TableProps extends CommonProps {
   LoadingComponent?: ComponentType<any>;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalTable' });
+const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
 
 /**
  * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code>

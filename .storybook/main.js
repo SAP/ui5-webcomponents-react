@@ -1,13 +1,19 @@
-const { highlightLog } = require('../../../scripts/utils');
+const { highlightLog } = require('../scripts/utils');
 const path = require('path');
-const PATHS = require('../../../config/paths');
+const PATHS = require('../config/paths');
 const dedent = require('dedent');
 require('dotenv').config({
   path: path.join(PATHS.root, '.env')
 });
 
+const BUILD_FOR_IE11 = process.env.UI5_WEBCOMPONENTS_FOR_REACT_BUILD_IE11 === 'true';
+
+const DEPENDENCY_REGEX = BUILD_FOR_IE11
+  ? /node_modules/
+  : /node_modules\/(@ui5\/webcomponents(-(base|core|fiori|icons|theme-base))?|lit-html)\//;
+
 module.exports = {
-  stories: ['../../**/*.stories.mdx', '../../**/*.stories.[tj]sx'],
+  stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.mdx', '../packages/**/*.stories.[tj]sx'],
   addons: ['@storybook/addon-knobs', '@storybook/addon-docs', '@storybook/addon-actions'],
   webpack: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -42,16 +48,19 @@ module.exports = {
 
     config.module.rules.push(tsLoader);
 
-    if (process.env.UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD === 'true' && configType === 'PRODUCTION') {
+    if (
+      (process.env.UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD === 'true' && configType === 'PRODUCTION') ||
+      BUILD_FOR_IE11 === true
+    ) {
       config.module.rules.push({
         test: /\.(js|mjs)$/,
-        include: /node_modules\/@ui5\/(webcomponents|webcomponents-base)\//,
-        loader: require.resolve('babel-loader'),
+        include: DEPENDENCY_REGEX,
+        loader: 'babel-loader',
         options: {
           babelrc: false,
           configFile: false,
           compact: false,
-          presets: [[require.resolve('babel-preset-react-app/dependencies'), { helpers: true }]],
+          presets: [['babel-preset-react-app/dependencies', { helpers: true }]],
           cacheDirectory: true,
           cacheCompression: false,
 
