@@ -6,7 +6,7 @@ export const useTableScrollHandles = (ref) => {
   const analyticalTableRef: RefObject<AnalyticalTableDomRef> = useConsolidatedRef(ref);
   const reactWindowRef = useRef(null);
 
-  analyticalTableRef.current &&
+  if (analyticalTableRef.current) {
     Object.assign(analyticalTableRef.current, {
       scrollTo: (...args) => {
         if (reactWindowRef.current) {
@@ -19,6 +19,7 @@ export const useTableScrollHandles = (ref) => {
         }
       }
     });
+  }
 
   return [analyticalTableRef, reactWindowRef];
 };
