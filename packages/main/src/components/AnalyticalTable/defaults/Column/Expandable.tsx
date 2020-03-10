@@ -42,7 +42,7 @@ export const Expandable = (props) => {
   return (
     <>
       {columnIndex === 0 && row.canExpand ? (
-        <span {...row.getExpandedToggleProps({ style })}>
+        <span {...row.getToggleRowExpandedProps({ style })}>
           <Icon
             name={`${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
             style={tableGroupExpandCollapseIcon}

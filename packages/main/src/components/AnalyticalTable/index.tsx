@@ -262,20 +262,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: selectedRowIds });
   }, [selectedRowIds, dispatch]);
 
-  useEffect(() => {
-    dispatch({
-      type: 'SET_HIDDEN_COLUMNS',
-      hiddenColumns: columns
-        .filter((col) => {
-          if (col.hasOwnProperty('isVisible')) {
-            return !col.isVisible;
-          }
-          return false;
-        })
-        .map((col) => col.accessor)
-    });
-  }, [columns]);
-
   const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
 
   if (!!rowHeight) {
