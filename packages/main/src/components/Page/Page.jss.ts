@@ -1,5 +1,5 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 /**
  * Style Class Generator Function
@@ -7,7 +7,7 @@ import { JSSTheme } from '../../interfaces/JSSTheme';
  * @param {Object} obj - Current Theme Context by JSS Provider.
  * @param {object} obj.parameters - Theming parameters (e.g. LabelColor)
  */
-const styles = ({ parameters }: JSSTheme) => {
+const styles = {
   // const isS = '@media (max-width: 600px)';
   // const isM = '@media (min-width: 601px) and (max-width: 1024px)';
   // const isL = '@media (min-width: 1025px) and (max-width: 1440px)';
@@ -53,109 +53,107 @@ const styles = ({ parameters }: JSSTheme) => {
   //   };
   // }
 
-  return {
-    pageContainer: {
-      width: '100%',
-      height: '100%',
-      overflow: 'hidden',
-      position: 'relative',
-      '& $pageHeader': {
-        // ...getHeaderAndFooterPaddings()
+  pageContainer: {
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+    position: 'relative',
+    '& $pageHeader': {
+      // ...getHeaderAndFooterPaddings()
+    },
+    '& $pageFooter': {
+      // ...getHeaderAndFooterPaddings()
+    },
+    '& $contentSection': {
+      // [isS]: {
+      //   padding: '1rem 1rem 0 1rem'
+      // },
+      // [isM]: {
+      //   padding: '1rem 2rem 0 2rem'
+      // },
+      // [isL]: {
+      //   padding: '1rem 2rem 0 2rem'
+      // },
+      // [isXL]: {
+      //   padding: '1rem 3rem 0 3rem'
+      // },
+      // [isXXL]: {
+      //   padding: '1rem 3rem 0 3rem'
+      // }
+    }
+  },
+  backgroundStandard: {
+    background: ThemingParameters.sapUiBaseBG
+  },
+  backgroundSolid: {
+    background: ThemingParameters.sapUiShellBackground
+  },
+  backgroundList: {
+    background: ThemingParameters.sapUiGroupContentBackground
+  },
+  backgroundTransparent: {
+    background: 'transparent'
+  },
+  baseBar: {
+    '& >*': {
+      paddingLeft: '0rem',
+      paddingRight: '0rem',
+      '& [data-bar-part="Left"]': {
+        paddingLeft: '0rem'
       },
-      '& $pageFooter': {
-        // ...getHeaderAndFooterPaddings()
-      },
-      '& $contentSection': {
-        // [isS]: {
-        //   padding: '1rem 1rem 0 1rem'
-        // },
-        // [isM]: {
-        //   padding: '1rem 2rem 0 2rem'
-        // },
-        // [isL]: {
-        //   padding: '1rem 2rem 0 2rem'
-        // },
-        // [isXL]: {
-        //   padding: '1rem 3rem 0 3rem'
-        // },
-        // [isXXL]: {
-        //   padding: '1rem 3rem 0 3rem'
-        // }
-      }
-    },
-    backgroundStandard: {
-      background: parameters.sapUiBaseBG
-    },
-    backgroundSolid: {
-      background: parameters.sapUiShellBackground
-    },
-    backgroundList: {
-      background: parameters.sapUiGroupContentBackground
-    },
-    backgroundTransparent: {
-      background: 'transparent'
-    },
-    baseBar: {
-      '& >*': {
-        paddingLeft: '0rem',
-        paddingRight: '0rem',
-        '& [data-bar-part="Left"]': {
-          paddingLeft: '0rem'
-        },
-        '& [data-bar-part="Right"]': {
-          paddingRight: '0rem'
-        }
-      }
-    },
-    pageHeader: {
-      top: 0,
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      textAlign: 'center',
-      background: parameters.sapUiPageHeaderBackground,
-      '& >*': {
-        background: parameters.sapUiPageHeaderBackground,
-        boxShadow: `inset 0 -0.0625rem ${parameters.sapUiPageHeaderBorderColor}`
-      }
-    },
-    contentSection: {
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      right: '0',
-      bottom: '0',
-      overflowY: 'auto',
-      overflowX: 'hidden',
-      // marginTop: '1px',
-      // marginBottom: '1px',
-      boxSizing: 'border-box'
-      // backgroundColor: parameters.sapUiBaseBG
-    },
-    pageWithHeader: {
-      '& $contentSection': {
-        top: CssSizeVariables.sapWcrBarHeight
-      }
-    },
-    pageWithFooter: {
-      '& $contentSection': {
-        bottom: CssSizeVariables.sapWcrBarHeight
-      }
-    },
-    pageFooter: {
-      position: 'absolute',
-      bottom: '0',
-      left: '0',
-      width: '100%',
-      borderTop: `1px solid ${parameters.sapUiPageFooterBorderColor}`,
-      '& >*': {
-        height: CssSizeVariables.sapWcrBarHeight,
-        background: parameters.sapUiPageFooterBackground,
-        borderTop: `0.0625rem solid ${parameters.sapUiPageFooterBorderColor}`
+      '& [data-bar-part="Right"]': {
+        paddingRight: '0rem'
       }
     }
-  };
+  },
+  pageHeader: {
+    top: 0,
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    background: ThemingParameters.sapUiPageHeaderBackground,
+    '& >*': {
+      background: ThemingParameters.sapUiPageHeaderBackground,
+      boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapUiPageHeaderBorderColor}`
+    }
+  },
+  contentSection: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    right: '0',
+    bottom: '0',
+    overflowY: 'auto',
+    overflowX: 'hidden',
+    // marginTop: '1px',
+    // marginBottom: '1px',
+    boxSizing: 'border-box'
+    // backgroundColor: ThemingParameters.sapUiBaseBG
+  },
+  pageWithHeader: {
+    '& $contentSection': {
+      top: CssSizeVariables.sapWcrBarHeight
+    }
+  },
+  pageWithFooter: {
+    '& $contentSection': {
+      bottom: CssSizeVariables.sapWcrBarHeight
+    }
+  },
+  pageFooter: {
+    position: 'absolute',
+    bottom: '0',
+    left: '0',
+    width: '100%',
+    borderTop: `1px solid ${ThemingParameters.sapUiPageFooterBorderColor}`,
+    '& >*': {
+      height: CssSizeVariables.sapWcrBarHeight,
+      background: ThemingParameters.sapUiPageFooterBackground,
+      borderTop: `0.0625rem solid ${ThemingParameters.sapUiPageFooterBorderColor}`
+    }
+  }
 };
 
 export default styles;

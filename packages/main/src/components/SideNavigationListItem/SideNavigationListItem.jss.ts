@@ -1,12 +1,12 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
+export const sideNavigationListItemStyles = {
   listItem: {
     '&:active': {
-      '--sapUiBaseText': parameters.sapUiListActiveTextColor,
+      '--sapUiBaseText': ThemingParameters.sapUiListActiveTextColor,
       '& $icon, & $expandArrow': {
-        '--sapUiContentNonInteractiveIconColor': parameters.sapUiListActiveTextColor
+        '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapUiListActiveTextColor
       }
     }
   },
@@ -22,7 +22,7 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
   },
 
   icon: {
-    '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentIconColor,
+    '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapUiContentIconColor,
     width: CssSizeVariables.sapWcrSideNavigationItemIconSize,
     height: CssSizeVariables.sapWcrSideNavigationItemIconSize,
     padding: CssSizeVariables.sapWcrSideNavigationItemIconPadding,
@@ -32,7 +32,7 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
   text: {},
 
   expandArrow: {
-    '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentIconColor,
+    '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapUiContentIconColor,
     width: '0.875rem',
     height: '0.875rem',
     padding: CssSizeVariables.sapWcrSideNavigationItemExpandedArrowPadding,
@@ -48,9 +48,9 @@ export const sideNavigationListItemStyles = ({ parameters }: JSSTheme) => ({
     height: '0',
     borderStyle: 'solid',
     borderWidth: '0 0 6px 6px',
-    borderColor: `transparent transparent ${parameters.sapUiContentIconColor} transparent`,
+    borderColor: `transparent transparent ${ThemingParameters.sapUiContentIconColor} transparent`,
     position: 'absolute',
     right: '0.125rem',
     bottom: '0.1875rem'
   }
-});
+};

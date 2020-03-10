@@ -1,6 +1,6 @@
-import { JSSTheme } from '@ui5/webcomponents-react/interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import React, { FC, RefObject, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ZIndex } from '../../enums/ZIndex';
 
 interface Props {
@@ -9,14 +9,14 @@ interface Props {
   width: number;
 }
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   outerScrollbar: {
     position: 'absolute',
     right: 0,
     overflow: 'hidden',
     height: '100%',
     zIndex: ZIndex.ResponsivePopover,
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
+    backgroundColor: ThemingParameters.sapUiObjectHeaderBackground,
     '& ::-webkit-scrollbar': {
       backgroundColor: '#ffffff'
     },
@@ -36,9 +36,9 @@ const styles = ({ parameters }: JSSTheme) => ({
     overflowX: 'hidden',
     height: '100%'
   }
-});
+};
 
-const useScrollBarStyles = createUseStyles(styles, { name: 'ObjectPageScrollBar' });
+const useScrollBarStyles = createComponentStyles(styles, { name: 'ObjectPageScrollBar' });
 
 export const ObjectPageScrollBar: FC<Props> = (props) => {
   const { scrollBarRef, innerScrollBarRef, width } = props;

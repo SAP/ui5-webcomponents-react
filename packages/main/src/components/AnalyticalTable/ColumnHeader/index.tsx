@@ -2,11 +2,12 @@ import '@ui5/webcomponents-icons/dist/icons/filter';
 import '@ui5/webcomponents-icons/dist/icons/group-2';
 import '@ui5/webcomponents-icons/dist/icons/sort-ascending';
 import '@ui5/webcomponents-icons/dist/icons/sort-descending';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React, { CSSProperties, DragEventHandler, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
-import { createUseStyles, useTheme } from 'react-jss';
 import { JSSTheme } from '../../../interfaces/JSSTheme';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';
@@ -36,7 +37,7 @@ export interface ColumnHeaderProps {
   isDraggable: boolean;
 }
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   header: {
     padding: `0 0.5rem`,
     height: '100%',
@@ -44,11 +45,11 @@ const styles = ({ parameters }: JSSTheme) => ({
     justifyContent: 'begin',
     alignItems: 'center',
     textAlign: 'left',
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontSize: ThemingParameters.sapMFontMediumSize,
     fontWeight: 'normal',
-    color: parameters.sapUiListTextColor,
-    background: parameters.sapUiListHeaderBackground,
+    color: ThemingParameters.sapUiListTextColor,
+    background: ThemingParameters.sapUiListHeaderBackground,
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     maxWidth: '100%',
@@ -57,7 +58,7 @@ const styles = ({ parameters }: JSSTheme) => ({
   iconContainer: {
     display: 'inline-block',
     position: 'absolute',
-    color: parameters.sapUiContentIconColor,
+    color: ThemingParameters.sapUiContentIconColor,
     right: '0',
     marginRight: '0.5rem',
     '& :last-child': {
@@ -77,9 +78,9 @@ const styles = ({ parameters }: JSSTheme) => ({
   lastColumn: {
     right: '8px'
   }
-});
+};
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'TableColumnHeader' });
+const useStyles = createComponentStyles(styles, { name: 'TableColumnHeader' });
 
 /**
  * <code>import { ColumnHeader } from '@ui5/webcomponents-react/lib/ColumnHeader';</code>
@@ -161,7 +162,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   ]);
 
   const isResizable = !isLastColumn && column.canResize;
-  const theme = useTheme() as JSSTheme;
   const innerStyle: CSSProperties = useMemo(() => {
     const modifiedStyles: CSSProperties = {
       width: '100%',
@@ -174,7 +174,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       modifiedStyles.maxWidth = `calc(100% - 16px)`;
     }
     if (dragOver) {
-      modifiedStyles.borderLeft = `3px solid ${theme.parameters.sapSelectedColor}`;
+      modifiedStyles.borderLeft = `3px solid ${ThemingParameters.sapSelectedColor}`;
     }
     return modifiedStyles;
   }, [isResizable, dragOver]);

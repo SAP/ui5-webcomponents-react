@@ -1,7 +1,7 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   tableContainer: {
     width: '100%',
     height: `calc(100% - ${CssSizeVariables.sapWcrAnalyticalTableRowHeight})`,
@@ -20,47 +20,47 @@ const styles = ({ parameters }: JSSTheme) => ({
     position: 'relative'
   },
   th: {
-    backgroundColor: parameters.sapUiListHeaderBackground,
+    backgroundColor: ThemingParameters.sapUiListHeaderBackground,
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontSize: ThemingParameters.sapMFontMediumSize,
     fontWeight: 'normal',
-    color: parameters.sapUiListHeaderTextColor,
-    borderTop: `1px solid ${parameters.sapUiListBorderColor}`,
-    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
-    borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
+    color: ThemingParameters.sapUiListHeaderTextColor,
+    borderTop: `1px solid ${ThemingParameters.sapUiListBorderColor}`,
+    borderBottom: `1px solid ${ThemingParameters.sapUiListBorderColor}`,
+    borderRight: `1px solid ${ThemingParameters.sapUiListVerticalBorderColor}`,
     textAlign: 'start',
     boxSizing: 'border-box',
     '&:first-child': {
-      borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
+      borderLeft: `1px solid ${ThemingParameters.sapUiListVerticalBorderColor}`
     }
   },
   tbody: {
     position: 'relative',
     zIndex: 0,
-    backgroundColor: parameters.sapUiListBackground,
+    backgroundColor: ThemingParameters.sapUiListBackground,
     overflowX: 'hidden !important',
     overflowY: 'auto !important'
   },
   alternateRowColor: {
-    backgroundColor: parameters.sapUiListHeaderBackground
+    backgroundColor: ThemingParameters.sapUiListHeaderBackground
   },
   emptyRow: {},
   tr: {
     zIndex: 0,
-    color: parameters.sapUiListTextColor,
+    color: ThemingParameters.sapUiListTextColor,
     '&[data-is-selected]': {
-      backgroundColor: `${parameters.sapUiListSelectionBackgroundColor} !important`
+      backgroundColor: `${ThemingParameters.sapUiListSelectionBackgroundColor} !important`
     },
     '&[data-is-selected]:hover': {
-      backgroundColor: `${parameters.sapUiListSelectionHoverBackground} !important`
+      backgroundColor: `${ThemingParameters.sapUiListSelectionHoverBackground} !important`
     }
   },
   tableGroupHeader: {
     '&$tr': {
-      backgroundColor: `${parameters.sapUiListTableGroupHeaderBackground} !important`,
-      border: `1px solid ${parameters.sapUiListTableGroupHeaderBorderColor}`,
-      color: parameters.sapUiListTextColor,
+      backgroundColor: `${ThemingParameters.sapUiListTableGroupHeaderBackground} !important`,
+      border: `1px solid ${ThemingParameters.sapUiListTableGroupHeaderBorderColor}`,
+      color: ThemingParameters.sapUiListTextColor,
       '& $tableCell': {
         borderRight: 'none'
       }
@@ -68,30 +68,30 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   selectable: {
     '& $tr:hover:not($emptyRow)': {
-      backgroundColor: parameters.sapUiListHoverBackground,
+      backgroundColor: ThemingParameters.sapUiListHoverBackground,
       cursor: 'pointer'
     },
     '& $tr:active:not([data-is-selected]):not($tableGroupHeader):not($emptyRow)': {
-      backgroundColor: parameters.sapUiListActiveBackground,
+      backgroundColor: ThemingParameters.sapUiListActiveBackground,
       '& $tableCell': {
-        borderRight: `1px solid ${parameters.sapUiListActiveBackground}`,
-        color: `${parameters.sapUiListActiveTextColor}`,
-        '--sapUiBaseText': parameters.sapUiListActiveTextColor
+        borderRight: `1px solid ${ThemingParameters.sapUiListActiveBackground}`,
+        color: `${ThemingParameters.sapUiListActiveTextColor}`,
+        '--sapUiBaseText': ThemingParameters.sapUiListActiveTextColor
       }
     }
   },
   tableCell: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontSize: ThemingParameters.sapMFontMediumSize,
     fontWeight: 'normal',
-    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
+    borderBottom: `1px solid ${ThemingParameters.sapUiListBorderColor}`,
     boxSizing: 'border-box',
-    borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
+    borderRight: `1px solid ${ThemingParameters.sapUiListVerticalBorderColor}`,
     display: 'flex',
     padding: '0 0.5rem',
     '&:first-child': {
-      borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
+      borderLeft: `1px solid ${ThemingParameters.sapUiListVerticalBorderColor}`
     },
     overflow: 'hidden',
     position: 'relative',
@@ -104,20 +104,20 @@ const styles = ({ parameters }: JSSTheme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
-    backgroundColor: parameters.sapUiListBackground,
+    backgroundColor: ThemingParameters.sapUiListBackground,
     width: '100%',
     boxSizing: 'border-box',
-    color: parameters.sapUiListTextColor,
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    color: ThemingParameters.sapUiListTextColor,
+    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontSize: ThemingParameters.sapMFontMediumSize,
     fontWeight: 'normal',
-    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`
+    borderBottom: `1px solid ${ThemingParameters.sapUiListBorderColor}`
   },
   modifiedRowHeight: {
     '& $tableCell': {
       height: (props) => `${props.rowHeight}px`
     }
   }
-});
+};
 
 export default styles;

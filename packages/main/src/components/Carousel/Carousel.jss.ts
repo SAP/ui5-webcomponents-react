@@ -1,6 +1,6 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   carousel: {
     position: 'relative',
     overflow: 'hidden',
@@ -8,8 +8,8 @@ const styles = ({ parameters }: JSSTheme) => ({
     border: '1px solid transparent',
     touchAction: 'pan-y',
     minWidth: '15.5rem',
-    fontFamily: parameters.sapUiFontFamily,
-    backgroundColor: parameters.sapUiBaseBG,
+    fontFamily: ThemingParameters.sapUiFontFamily,
+    backgroundColor: ThemingParameters.sapUiBaseBG,
     '&:focus': {
       outline: 'none',
       '&:before': {
@@ -68,6 +68,6 @@ const styles = ({ parameters }: JSSTheme) => ({
       width: 'calc(100% - 8rem)'
     }
   }
-});
+};
 
 export default styles;

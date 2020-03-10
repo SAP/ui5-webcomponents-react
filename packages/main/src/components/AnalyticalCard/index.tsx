@@ -1,9 +1,8 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 
 import styles from './AnalyticalCard.jss';
 
@@ -19,7 +18,7 @@ export interface AnalyticalCardTypes extends CommonProps {
   width?: CSSProperties['width'];
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'AnalyticalCard' });
+const useStyles = createComponentStyles(styles, { name: 'AnalyticalCard' });
 
 /**
  * <code>import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';</code>

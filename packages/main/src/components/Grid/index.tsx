@@ -12,7 +12,7 @@ import React, {
   Ref,
   useMemo
 } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Grid.jss';
 
@@ -89,7 +89,7 @@ const getIndentFromString = (indent) => {
     : [undefined, 0, 0, 0, 0][currentSpan];
 };
 
-const useStyles = createUseStyles(styles, { name: 'Grid' });
+const useStyles = createComponentStyles(styles, { name: 'Grid' });
 
 /**
  * <code>import { Grid } from '@ui5/webcomponents-react/lib/Grid';</code>

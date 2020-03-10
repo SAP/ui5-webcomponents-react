@@ -10,9 +10,8 @@ import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
@@ -33,7 +32,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   currency?: string;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, {
+const useStyles = createComponentStyles(styles, {
   name: 'AnalyticalCardHeader'
 });
 
