@@ -9,6 +9,16 @@ import { Jss } from 'jss';
 import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
 import { JssProvider, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 
+declare global {
+  interface Window {
+    CSSVarsPonyfill: {
+      cssVars: (options: any) => void;
+    };
+  }
+}
+
+const cssVarsPonyfillNeeded = () => !!window.CSSVarsPonyfill;
+
 export interface ThemeProviderProps {
   /*
    * If true, the Theme Provider will also inject the root node for message toasts.
@@ -56,6 +66,17 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
       document.body.classList.remove('ui5-content-density-compact');
     }
   }, [isCompactSize]);
+
+  useEffect(() => {
+    if (cssVarsPonyfillNeeded()) {
+      window.CSSVarsPonyfill.cssVars({
+        rootElement: document.head,
+        include: 'style[data-ui5-webcomponents-react-sizes],style[data-jss]',
+        watch: true,
+        silent: true
+      });
+    }
+  }, []);
 
   return (
     <JssProvider generateId={generateClassName} jss={jss}>

@@ -15,9 +15,8 @@ import React, {
   useEffect,
   useState
 } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './Carousel.jss';
 import { CarouselPagination, CarouselPaginationPropTypes } from './CarouselPagination';
 
@@ -48,7 +47,7 @@ export interface CarouselPropTypes
   loop?: boolean;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Carousel' });
+const useStyles = createComponentStyles(styles, { name: 'Carousel' });
 
 /**
  * <code>import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';</code>

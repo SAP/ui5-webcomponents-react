@@ -7,7 +7,7 @@ import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import React, { Children, cloneElement, FC, forwardRef, ReactElement, ReactNode, RefObject } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { ButtonPropTypes } from '../../webComponents/Button';
@@ -19,7 +19,7 @@ export interface ActionSheetPropTypes extends CommonProps {
   children?: ReactElement<ButtonPropTypes> | ReactElement<ButtonPropTypes>[];
 }
 
-const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
+const useStyles = createComponentStyles(styles, { name: 'ActionSheet' });
 
 addCustomCSS(
   'ui5-button',

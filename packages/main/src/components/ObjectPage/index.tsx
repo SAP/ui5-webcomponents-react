@@ -24,7 +24,7 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
@@ -62,7 +62,7 @@ export interface ObjectPagePropTypes extends CommonProps {
   renderKeyInfos?: () => JSX.Element;
 }
 
-const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
+const useStyles = createComponentStyles(styles, { name: 'ObjectPage' });
 const defaultScrollbarWidth = 12;
 
 /**

@@ -17,7 +17,7 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterBar.jss';
@@ -52,7 +52,7 @@ export interface FilterBarPropTypes extends CommonProps {
 
 interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
 
-const useStyles = createUseStyles(styles, { name: 'FilterBar' });
+const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
 
 /**
  * <code>import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';</code>

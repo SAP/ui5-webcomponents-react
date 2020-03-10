@@ -1,23 +1,23 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   header: {
     padding: '0 3rem 0 2.5rem',
-    borderBottom: `1px solid ${parameters.sapUiGroupTitleBorderColor}`,
+    borderBottom: `1px solid ${ThemingParameters.sapUiGroupTitleBorderColor}`,
     boxSizing: 'border-box',
     height: '2.75rem'
   },
   title: {
     height: '2.75rem',
-    color: parameters.sapUiBaseText,
-    fontSize: parameters.sapMFontHeader4Size,
-    borderBottom: `1px solid ${parameters.sapUiActive}`,
+    color: ThemingParameters.sapUiBaseText,
+    fontSize: ThemingParameters.sapMFontHeader4Size,
+    borderBottom: `1px solid ${ThemingParameters.sapUiActive}`,
     display: 'inline-block',
     maxWidth: '100%',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    fontFamily: parameters.sapUiFontFamily
+    fontFamily: ThemingParameters.sapUiFontFamily
   },
   uppercase: {
     textTransform: 'uppercase'
@@ -27,8 +27,8 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   sectionContentInner: {
     padding: '1rem 2rem 2rem 2.5rem',
-    fontFamily: parameters.sapUiFontFamily
+    fontFamily: ThemingParameters.sapUiFontFamily
   }
-});
+};
 
 export default styles;

@@ -1,12 +1,12 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-export const TextStyles = ({ parameters }: JSSTheme) => ({
+export const TextStyles = {
   // Text Style
   text: {
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontSize: ThemingParameters.sapMFontMediumSize,
     fontWeight: 'normal',
-    color: parameters.sapUiBaseText,
+    color: ThemingParameters.sapUiBaseText,
     display: 'inline-block',
     boxSizing: 'border-box',
     whiteSpace: 'pre-line',
@@ -25,4 +25,4 @@ export const TextStyles = ({ parameters }: JSSTheme) => ({
       whiteSpace: 'pre'
     }
   }
-});
+};

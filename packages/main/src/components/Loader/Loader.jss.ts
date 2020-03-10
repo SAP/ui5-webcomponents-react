@@ -1,7 +1,7 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 //todo use theme colors when available
-export const styles = ({ parameters }: JSSTheme) => ({
+export const styles = {
   '@keyframes scroll': {
     '0%': { backgroundPosition: '-100% 0' },
     '100%': { backgroundPosition: '200% 0' }
@@ -10,7 +10,7 @@ export const styles = ({ parameters }: JSSTheme) => ({
     height: '0.25rem',
     width: '100%',
     '&$loaderDeterminate': {
-      background: `linear-gradient(to right, ${parameters.sapUiContentIconColor}, ${parameters.sapUiContentIconColor})`,
+      background: `linear-gradient(to right, ${ThemingParameters.sapUiContentIconColor}, ${ThemingParameters.sapUiContentIconColor})`,
       backgroundColor: 'rgba(8, 84, 160, 0.15)',
       backgroundRepeat: 'repeat-y'
     },
@@ -19,8 +19,8 @@ export const styles = ({ parameters }: JSSTheme) => ({
       to right,
       rgba(8, 84, 160, 0) 0px,
       rgba(8, 84, 160, 1) calc(50% - 2rem),
-      ${parameters.sapUiContentIconColor} calc(50% - 2rem),
-      ${parameters.sapUiContentIconColor} calc(50% + 2rem),
+      ${ThemingParameters.sapUiContentIconColor} calc(50% - 2rem),
+      ${ThemingParameters.sapUiContentIconColor} calc(50% + 2rem),
       rgba(8, 84, 160, 1) calc(50% + 2rem),
       rgba(8, 84, 160, 0) 100%
     )`,
@@ -32,4 +32,4 @@ export const styles = ({ parameters }: JSSTheme) => ({
   },
   loaderDeterminate: {},
   loaderIndeterminate: {}
-});
+};
