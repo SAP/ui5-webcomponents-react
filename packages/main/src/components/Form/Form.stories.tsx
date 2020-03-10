@@ -48,7 +48,7 @@ export const defaultStory = () => {
 };
 
 export default {
-  title: 'Components / Form',
+  title: '3 Components / Form',
   component: Form,
   parameters: {
     subcomponents: { FormGroup, FormItem }

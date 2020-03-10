@@ -279,11 +279,10 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -751,11 +750,10 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -1834,11 +1832,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody- AnalyticalTable--selectable-"
         style="position: relative; height: 220px; width: 636px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody- AnalyticalTable--selectable-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -2362,11 +2359,10 @@ exports[`AnalyticalTable custom row height 1`] = `
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 300px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 300px; width: 100%;"
         >
           <div
@@ -3123,11 +3119,10 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -3599,11 +3594,10 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -4075,11 +4069,10 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -4547,11 +4540,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -5019,11 +5011,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody- AnalyticalTable--selectable-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody- AnalyticalTable--selectable-"
           style="height: 220px; width: 100%;"
         >
           <div

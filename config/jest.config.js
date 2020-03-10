@@ -15,7 +15,6 @@ module.exports = {
     '!**/node_modules/**',
     '!packages/*/src/index.ts',
     '!packages/*/index.ts',
-    '!packages/docs/**/*',
     '!packages/cra-template/**/*',
     '!packages/**/demo/*',
     '!packages/base/src/polyfill/*', // no polyfills

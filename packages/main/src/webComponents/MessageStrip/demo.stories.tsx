@@ -5,7 +5,7 @@ import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType'
 import React from 'react';
 
 export default {
-  title: 'UI5 Web Components / MessageStrip',
+  title: '4 UI5 Web Components / MessageStrip',
   component: MessageStrip
 };
 

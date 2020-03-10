@@ -181,6 +181,6 @@ tableWithCustomTitle.story = {
 };
 
 export default {
-  title: 'Components / Analytical Table',
+  title: '3 Components / Analytical Table',
   component: AnalyticalTable
 };

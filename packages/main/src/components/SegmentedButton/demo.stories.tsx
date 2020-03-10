@@ -27,7 +27,7 @@ renderStory.story = {
 };
 
 export default {
-  title: 'Components / SegmentedButton',
+  title: '3 Components / SegmentedButton',
   component: SegmentedButton,
   parameters: {
     subcomponents: { SegmentedButtonItem }

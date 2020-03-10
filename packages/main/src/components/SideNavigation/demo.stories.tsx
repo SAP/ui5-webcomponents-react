@@ -46,7 +46,7 @@ defaultStory.story = {
 };
 
 export default {
-  title: 'Components / SideNavigation',
+  title: '3 Components / SideNavigation',
   component: SideNavigation,
   parameters: {
     subcomponents: { SideNavigationListItem }

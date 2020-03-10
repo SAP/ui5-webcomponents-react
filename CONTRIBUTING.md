@@ -51,7 +51,7 @@ You are welcome to contribute code to `ui5-webcomponents-react` in order to fix 
 There are two important things to consider:
 
 1.  You must be aware of the Apache License (which describes contributions) and **agree to the Contributors License Agreement**. This is common practice in all major Open Source projects. If you are an individual contributor, use _[CLA assistant](https://cla-assistant.io/)_. CLA assistant is an open source tool that integrates with GitHub and enables a one-click-experience for accepting the CLA. If you are contributing on behalf of a company, see the [Company Contributors](#company-contributors) section below for details.
-2.  You must follow **code style, and quality requirements**. You can find more information on the [coding guidelines](/packages/docs/Guidelines.md).
+2.  You must follow **code style, and quality requirements**. You can find more information on the [coding guidelines](/docs/Guidelines.md).
 
 ### Contributor License Agreement
 
@@ -64,7 +64,7 @@ which can be [found here](https://gist.github.com/CLAassistant/bd1ea8ec8aa035741
 
 If employees of a company contribute code, in addition to the individual agreement above, there needs to be one company agreement submitted. This is mainly for the protection of the contributing employees.
 
-A company representative authorized to do so needs to download, fill, and print the [Corporate Contributor License Agreement](/packages/docs/SAP%20Corporate%20Contributor%20License%20Agreement.pdf) form. Then either:
+A company representative authorized to do so needs to download, fill, and print the [Corporate Contributor License Agreement](/docs/SAP%20Corporate%20Contributor%20License%20Agreement.pdf) form. Then either:
 
     * Scan it and e-mail it to opensource@sap.com
     * Fax it to: +49 6227 78-45813
@@ -77,7 +77,7 @@ The form contains a list of employees who are authorized to contribute on behalf
 1.  Make sure the issue you've filed in the [issue tracker](https://github.com/SAP/ui5-webcomponents-react/issues) has the label "contribution welcome" - otherwise, it is not ready to be worked on.
 2. Fork the `ui5-webcomponents-react` repository into your GitHub account, create a branch and apply your change. Please don't work directly on the `master` branch of your fork. This will help to update your fork in the future more easily.
 3. Commit and push your change on that branch.
-      Please follow our [Development Conventions and Guidelines](/packages/docs/Guidelines.md).
+      Please follow our [Development Conventions and Guidelines](/docs/Guidelines.md).
 4. Create a pull request from your branch into `ui5-webcomponents-react`-`master` branch.
 5. Follow the link posted by the CLA assistant to your pull request and accept it, as described above.
 6. Wait for our code review and approval, possibly enhancing your change on request.

@@ -5,7 +5,7 @@ import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import React from 'react';
 
 export default {
-  title: 'UI5 Web Components / ToggleButton',
+  title: '4 UI5 Web Components / ToggleButton',
   component: ToggleButton
 };
 

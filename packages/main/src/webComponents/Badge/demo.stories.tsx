@@ -5,7 +5,7 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React from 'react';
 
 export default {
-  title: 'UI5 Web Components / Badge',
+  title: '4 UI5 Web Components / Badge',
   component: Badge
 };
 
