@@ -108,7 +108,7 @@ export const treeTable = () => {
       filterable={boolean('filterable', true)}
       visibleRows={number('visibleRows', 15)}
       minRows={number('minRows', 5)}
-      selectionMode={select<TableSelectionMode>('selectionMode', TableSelectionMode, TableSelectionMode.SINGLE_SELECT)}
+      selectionMode={select<TableSelectionMode>('selectionMode', TableSelectionMode, TableSelectionMode.MULTI_SELECT)}
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
       onRowExpandChange={action('onRowExpandChange')}
