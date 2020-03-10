@@ -8,8 +8,18 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
-import React from 'react';
-import { CheckBox, CustomListItem, DatePicker, MultiComboBox, Option, Select, StandardListItem, Text } from '../..';
+import React, { useEffect, useState } from 'react';
+import {
+  CheckBox,
+  CustomListItem,
+  DatePicker,
+  MultiComboBox,
+  Option,
+  Select,
+  StandardListItem,
+  Text,
+  ValueState
+} from '../..';
 import { FilterGroupItem } from '../FilterGroupItem';
 
 const variantItems = [
@@ -49,6 +59,14 @@ const renderSearch = () => {
 };
 
 export const renderStory = () => {
+  const [delayedLoading, setDelayedLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDelayedLoading(false);
+    }, 2000);
+  }, []);
+
   return (
     <FilterBar
       renderSearch={renderSearch}
@@ -58,7 +76,7 @@ export const renderStory = () => {
       // filterContainerWidth={'200rem'}
       showClearOnFB
       showRestoreOnFB
-      showGo
+      // showGo
       showGoOnFB={true}
       showFilterConfiguration={true}
       showDialogSearch
@@ -71,7 +89,7 @@ export const renderStory = () => {
       <FilterGroupItem label="with group title" groupName="testgroup" mandatory visible={false}>
         <Switch />
       </FilterGroupItem>
-      <FilterGroupItem label="SELECT w/ selected">
+      <FilterGroupItem label="SELECT w/ selected" loading={delayedLoading}>
         <Select>
           <Option>Option 1</Option>
           <Option selected>Option 2</Option>
@@ -80,11 +98,26 @@ export const renderStory = () => {
         </Select>
       </FilterGroupItem>
       <FilterGroupItem label="SELECT w/o selected" groupName="testgroup">
-        <Select>
-          <Option>Option 1</Option>
-          <Option>Option 2</Option>
-          <Option>Option 3</Option>
-          <Option>Option 4</Option>
+        <Select
+          disabled={boolean('disabled', false)}
+          valueState={select('valueState', ValueState, null)}
+          onChange={(e) => console.log(e.parameters.selectedOption.dataset)}
+        >
+          <Option data-key="Test 1" selected icon="add">
+            Test 1
+          </Option>
+          <Option data-key="Test 2" icon="add">
+            Test 2
+          </Option>
+          <Option data-key="Test 3" icon="add">
+            Test 3
+          </Option>
+          <Option data-key="Test 4" icon="add">
+            Test 4
+          </Option>
+          <Option data-key="Test 5" icon="add">
+            Test 5
+          </Option>
         </Select>
       </FilterGroupItem>
       <FilterGroupItem label="MultBox w/ selected" groupName="testgroup">

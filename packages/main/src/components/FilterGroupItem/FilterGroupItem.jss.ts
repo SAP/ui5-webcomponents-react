@@ -6,7 +6,8 @@ const styles = {
     marginBottom: '1rem'
   },
   filterItemDialog: {
-    flexGrow: 1
+    flexGrow: 1,
+    overflow: 'hidden'
   },
   innerFilterItemContainer: {
     display: 'flex',
@@ -15,7 +16,7 @@ const styles = {
   },
   innerFilterItemContainerDialog: {
     display: 'grid',
-    gridTemplateColumns: '20% auto',
+    gridTemplateColumns: '20% calc(80% - 1rem)',
     '@media(max-width:700px)': {
       gridTemplateColumns: '100%'
     },
@@ -23,6 +24,7 @@ const styles = {
     gridRowGap: '0px',
     gridColumnGap: '1rem',
     '& :first-child': {
+      maxWidth: '100%',
       placeSelf: 'center end',
       '@media(max-width:700px)': {
         placeSelf: 'center start'
@@ -36,6 +38,7 @@ const styles = {
   loadingContainer: {
     display: 'flex',
     width: '100%',
+    height: '1.625rem',
     justifyContent: 'center'
   }
 };

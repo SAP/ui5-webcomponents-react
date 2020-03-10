@@ -20,7 +20,7 @@ const useStyles = createUseStyles(styles, { name: 'FilterBar' });
 export const FilterDialog = (props) => {
   const {
     open,
-    handleClose,
+    handleDialogClose,
     children,
     showClearButton,
     showRestoreButton,
@@ -32,12 +32,14 @@ export const FilterDialog = (props) => {
     handleRestoreFilters,
     handleDialogSave,
     searchValue,
-    handleSearchValueChange
+    handleSearchValueChange,
+    handleGo
   } = props;
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
   const [refs, setRefs] = useState([]);
   const searchRef = useRef(null);
+  const [activeFilters, setActiveFilters] = useState({});
 
   const initRefs = useCallback(() => {
     let refs = [];
@@ -68,14 +70,40 @@ export const FilterDialog = (props) => {
     [setSearchString]
   );
   const handleSave = useCallback(() => {
-    handleDialogSave(addRef(childrenWithNewRef, refs, 'dialogRef'));
-    handleSearchValueChange(searchRef.current?.children[1]._state.value);
-  }, [handleDialogSave, childrenWithNewRef, refs]);
+    //todo Event.of
+    handleDialogSave(
+      addRef(childrenWithNewRef, refs, 'dialogRef'),
+      Object.keys(activeFilters).length > 0 ? Object.keys(activeFilters).map((item) => activeFilters[item]) : undefined
+    );
+    if (showSearch) {
+      handleSearchValueChange(searchRef.current?.children[1]._state.value);
+    }
+  }, [
+    handleDialogSave,
+    childrenWithNewRef,
+    refs,
+    activeFilters,
+    handleToggleFilterVisible,
+    showSearch,
+    handleSearchValueChange,
+    searchRef
+  ]);
+
+  const handleClose = useCallback(() => {
+    if (!showGoButton) {
+      handleSave();
+    }
+    handleDialogClose();
+  }, [showGoButton, handleSave]);
 
   const renderFooter = useCallback(() => {
     return (
       <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
-        {showGoButton && <Button design={ButtonDesign.Emphasized}>Go</Button>}
+        {showGoButton && (
+          <Button onClick={handleGo} design={ButtonDesign.Emphasized}>
+            Go
+          </Button>
+        )}
         {showClearButton && <Button onClick={handleClearFilters}>Clear</Button>}
         {showRestoreButton && <Button onClick={handleRestore}>Restore</Button>}
         <Button onClick={handleSave}>Save</Button>
@@ -106,14 +134,9 @@ export const FilterDialog = (props) => {
   );
 
   const handleRestore = useCallback(() => {
-    console.log('restore');
-    //todo
-    setChildrenWithRef(setPropsOfChildren(childrenWithNewRef, 'filterBarRef'));
-  }, [childrenWithNewRef, setChildrenWithRef]);
-
-  useEffect(() => {
-    console.log(childrenWithNewRef);
-  }, [childrenWithNewRef]);
+    //todo Event.of
+    handleRestoreFilters('dialog');
+  }, [handleRestoreFilters]);
 
   const renderChildren = useCallback(() => {
     const currentChildren = childrenWithNewRef
@@ -127,10 +150,11 @@ export const FilterDialog = (props) => {
   }, [childrenWithNewRef, searchString]);
 
   const handleCheckBoxChange = useCallback(
-    (element) => (e) => {
-      handleToggleFilterVisible(e, element);
+    //todo Event.of
+    (element, activeFilters) => (e) => {
+      setActiveFilters({ ...activeFilters, [element.key]: { event: e, element } });
     },
-    [handleToggleFilterVisible]
+    [setActiveFilters]
   );
 
   const renderSearch = useCallback(() => {
@@ -156,7 +180,7 @@ export const FilterDialog = (props) => {
               {el}
               <CheckBox
                 checked={el.props.visibleInFilterBar || el.props.mandatory}
-                onChange={handleCheckBoxChange(el)}
+                onChange={handleCheckBoxChange(el, activeFilters)}
                 disabled={el.props.mandatory}
               />
             </div>
@@ -174,7 +198,7 @@ export const FilterDialog = (props) => {
           </div>
         );
       });
-  }, [renderChildren]);
+  }, [renderChildren, activeFilters]);
 
   return (
     <Dialog open={open} onAfterClose={handleClose} header={renderHeader()} footer={renderFooter()}>

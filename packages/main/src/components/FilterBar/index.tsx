@@ -13,6 +13,7 @@ import React, {
   ReactNodeArray,
   RefObject,
   useCallback,
+  useEffect,
   useRef,
   useState
 } from 'react';
@@ -75,6 +76,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     showDialogSearch
   } = props as FilterBarInternalProps;
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
+  const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [filterRefs, setFilterRefs] = useState([]);
   const [searchValue, setSearchValue] = useState('');
@@ -104,6 +106,10 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const [activeChildren, setActiveChildren] = useState(initRef);
 
+  useEffect(() => {
+    setActiveChildren(initRef);
+  }, [initRef, setActiveChildren]);
+
   const classes = useStyles();
 
   const handleHideFilterBar = useCallback(() => {
@@ -117,11 +123,17 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     filterAreaClasses.put(classes.filterAreaClosed);
   }
 
-  const handleDialogSave = (currentChildren) => {
+  const handleDialogSave = (currentChildren, visibleChildren) => {
     //todo Event.of
-    setActiveChildren(setPropsOfChildren(currentChildren, 'dialogRef'));
+    let childrenWithNewProps = setPropsOfChildren(currentChildren, 'dialogRef');
+    if (visibleChildren) {
+      childrenWithNewProps = handleToggleFilterVisible(visibleChildren, childrenWithNewProps);
+    }
+    setActiveChildren(childrenWithNewProps);
     setDialogOpen(false);
   };
+
+  useEffect(() => {}, []);
 
   const handleDialogOpen = () => {
     //todo Event.of
@@ -136,27 +148,22 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const handleClearFilters = useCallback(() => {
     //todo Event.of
-
   }, []);
-  const handleRestoreFilters = useCallback(() => {
+  const handleToggleFilterVisible = useCallback((elements, children) => {
     //todo Event.of
+    const newChildren = children.map((child) => {
+      const currentChild = elements.filter((item) => item.element.key === child.key)[0];
+      if (currentChild) {
+        return cloneElement(child as ReactElement<any>, {
+          visibleInFilterBar: currentChild.event.parameters.checked
+        });
+      }
+      return child;
+    });
+    // setActiveChildren(newChildren);
+    return newChildren;
   }, []);
-  const handleToggleFilterVisible = useCallback(
-    (e, element) => {
-      //todo Event.of
-      const checked = e.parameters.checked;
-      const newChildren = activeChildren.map((child) => {
-        if (child.key === element.key) {
-          return cloneElement(child as ReactElement<any>, {
-            visibleInFilterBar: checked
-          });
-        }
-        return child;
-      });
-      setActiveChildren(newChildren);
-    },
-    [activeChildren, setActiveChildren]
-  );
+
   const handleGo = useCallback(() => {
     //todo Event.of
   }, []);
@@ -175,31 +182,49 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const handleSearchValueChange = useCallback(
     (newVal) => {
-      console.log(newVal);
       setSearchValue(newVal);
     },
     [setSearchValue]
   );
 
+  const handleRestoreFilters = useCallback(
+    (source = 'filterBar') => {
+      //todo Event.of
+
+      //todo ?? disable default behavior ??
+      if (source === 'dialog' && showGo) {
+        setDialogOpen(false);
+        setDialogOpen(true);
+      } else if (source === 'filterBar' && showGoOnFB) {
+        setMountFilters(false);
+        setMountFilters(true);
+      }
+    },
+    [setDialogOpen]
+  );
+
   return (
     <>
-      <FilterDialog
-        handleClose={handleDialogClose}
-        searchValue={searchRef.current?.children[0]._state.value}
-        handleSearchValueChange={handleSearchValueChange}
-        open={dialogOpen}
-        showClearButton={showClearButton}
-        showRestoreButton={showRestoreButton}
-        showSearch={showDialogSearch}
-        renderFBSearch={renderSearch}
-        handleToggleFilterVisible={handleToggleFilterVisible}
-        handleClearFilters={handleClearFilters}
-        handleRestoreFilters={handleRestoreFilters}
-        handleDialogSave={handleDialogSave}
-        showGoButton={showGo}
-      >
-        {activeChildren}
-      </FilterDialog>
+      {dialogOpen && (
+        <FilterDialog
+          open={dialogOpen}
+          handleDialogClose={handleDialogClose}
+          handleGo={handleGo}
+          handleRestoreFilters={handleRestoreFilters}
+          searchValue={searchRef.current?.children[0]._state.value}
+          handleSearchValueChange={handleSearchValueChange}
+          showClearButton={showClearButton}
+          showRestoreButton={showRestoreButton}
+          showSearch={showDialogSearch}
+          renderFBSearch={renderSearch}
+          handleToggleFilterVisible={handleToggleFilterVisible}
+          handleClearFilters={handleClearFilters}
+          handleDialogSave={handleDialogSave}
+          showGoButton={showGo}
+        >
+          {activeChildren}
+        </FilterDialog>
+      )}
       <div ref={ref} className={classes.outerContainer} {...passThroughProps}>
         <div className={classes.filterBarHeader}>
           {renderVariants && renderVariants()}
@@ -220,15 +245,27 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                   Restore
                 </Button>
               )}
-              <Button onClick={handleHideFilterBar} design={ButtonDesign.Transparent}>
+              <Button
+                onClick={handleHideFilterBar}
+                design={ButtonDesign.Transparent}
+                className={classes.showFiltersBtn}
+              >
                 {showFilters ? 'Hide Filter Bar' : 'Show Filter Bar'}
               </Button>
-              {showFilterConfiguration && <Button onClick={handleDialogOpen}>Filters (X)</Button>}
-              {showGoOnFB && <Button design={ButtonDesign.Emphasized}>Go</Button>}
+              {showFilterConfiguration && (
+                <Button onClick={handleDialogOpen} className={classes.filterConfigurationBtn}>
+                  Adapt Filters
+                </Button>
+              )}
+              {showGoOnFB && (
+                <Button onClick={handleGo} design={ButtonDesign.Emphasized}>
+                  Go
+                </Button>
+              )}
             </div>
           )}
         </div>
-        <div className={filterAreaClasses.valueOf()}>{renderChildren()}</div>
+        {mountFilters && <div className={filterAreaClasses.valueOf()}>{renderChildren()}</div>}
       </div>
     </>
   );

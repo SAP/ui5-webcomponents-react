@@ -52,7 +52,7 @@ export const addRef = (children, refsArray, currentRef) =>
     const childrenAttributes = child.props.children;
     const childrenProps = child.props.children.props;
     return cloneElement(child as ReactElement<any>, {
-      children: { ...childrenAttributes, props: { ...childrenProps, [currentRef]: childRef[0].node } }
+      children: { ...childrenAttributes, props: { ...childrenProps, [currentRef]: childRef[0]?.node } }
     });
   });
 

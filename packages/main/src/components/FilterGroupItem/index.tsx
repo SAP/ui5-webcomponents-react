@@ -1,12 +1,12 @@
-import { Event, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, ReactElement, ReactNode, RefObject, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
-import { FilterType, FlexBox } from '../..';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { FilterItemPropTypes } from '../FilterItem';
-import styles from './FilterGroupItem.jss';
-const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
+import React, { forwardRef, ReactElement, RefObject } from 'react';
+import { createUseStyles } from 'react-jss';
+import { BusyIndicator, BusyIndicatorSize, FlexBox } from '../..';
+import { CommonProps } from '../../interfaces/CommonProps';
+import styles from './FilterGroupItem.jss';
+
+const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
 
 export interface FilterGroupItemPropTypes extends CommonProps {
   groupName?: string;
@@ -36,7 +36,8 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     visibleInFilterBar,
     children,
     inFB,
-    style
+    style,
+    loading
   } = props;
 
   const passThroughProps = usePassThroughHtmlProps(props);
@@ -57,7 +58,12 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
           ${label}`}
           </Label>
         </FlexBox>
-        {children}
+        {loading ? (
+          //todo busy indicator backgroundcolor, size
+          <BusyIndicator className={classes.loadingContainer} active size={BusyIndicatorSize.Small} />
+        ) : (
+          children
+        )}
       </div>
     </div>
   );
