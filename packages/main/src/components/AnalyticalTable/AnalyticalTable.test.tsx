@@ -1,7 +1,8 @@
 import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import React from 'react';
+import { AnalyticalTableScrollMode } from '@ui5/webcomponents-react/lib/AnalyticalTableScrollMode';
+import React, { useRef } from 'react';
 
 const columns = [
   {
@@ -275,6 +276,26 @@ describe('AnalyticalTable', () => {
     );
 
     expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Check for scrollTo and scrollToItem functions', () => {
+    let tableRef;
+    const UsingTable = (props) => {
+      tableRef = useRef(null);
+      return <AnalyticalTable ref={tableRef} title="Table Title" data={data} columns={columns} />;
+    };
+
+    mountThemedComponent(<UsingTable />);
+
+    // Check existence + type
+    expect(typeof tableRef.current.scrollTo).toBe('function');
+    expect(typeof tableRef.current.scrollToItem).toBe('function');
+
+    // call functions
+    const tableInnerRef = tableRef.current.querySelector("div[class^='AnalyticalTable--table'] > div > div");
+    tableRef.current.scrollToItem(2, AnalyticalTableScrollMode.end);
+    tableRef.current.scrollTo(2);
+    expect(tableInnerRef.scrollTop).toBe(2);
   });
 
   createPassThroughPropsTest(AnalyticalTable);

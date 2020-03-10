@@ -114,7 +114,7 @@ export interface TableProps extends CommonProps {
   onRowExpandChange?: (e?: Event) => any;
   onColumnsReordered?: (e?: Event) => void;
   /**
-   * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api.md#table-options)
+   * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api/useTable.md#table-options)
    */
   reactTableOptions?: object;
   tableHooks?: PluginHook<any>[];
