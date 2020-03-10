@@ -5,15 +5,15 @@ import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
-// import { Input } from '@ui5/webcomponents-react/lib/Input';
-
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
-import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CheckBox, FlexBoxAlignItems, Icon, TitleLevel, Input } from '../..';
+import { Bar, CheckBox, FlexBoxAlignItems, Icon, Input, TitleLevel } from '../..';
+import { BarDesign } from '../../enums/BarDesign';
 import styles from './FilterBarDialog.jss';
-import { addRef, renderSearchWithValue, setPropsOfChildren } from './utils';
+import { addRef, renderSearchWithValue } from './utils';
+// import { Input } from '@ui5/webcomponents-react/lib/Input';
 
 //todo check dependencies arrays
 const useStyles = createUseStyles(styles, { name: 'FilterBar' });
@@ -98,19 +98,25 @@ export const FilterDialog = (props) => {
 
   const renderFooter = useCallback(() => {
     return (
-      <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
-        {showGoButton && (
-          <Button onClick={handleGo} design={ButtonDesign.Emphasized}>
-            Go
-          </Button>
+      // <Bar justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
+      <Bar
+        design={BarDesign.Footer}
+        renderContentRight={() => (
+          <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
+            {showGoButton && (
+              <Button onClick={handleGo} design={ButtonDesign.Emphasized}>
+                Go
+              </Button>
+            )}
+            {showClearButton && <Button onClick={handleClearFilters}>Clear</Button>}
+            {showRestoreButton && <Button onClick={handleRestore}>Restore</Button>}
+            <Button onClick={handleSave}>Save</Button>
+            <Button design={ButtonDesign.Transparent} onClick={handleClose}>
+              Cancel
+            </Button>
+          </FlexBox>
         )}
-        {showClearButton && <Button onClick={handleClearFilters}>Clear</Button>}
-        {showRestoreButton && <Button onClick={handleRestore}>Restore</Button>}
-        <Button onClick={handleSave}>Save</Button>
-        <Button design={ButtonDesign.Transparent} onClick={handleClose}>
-          Cancel
-        </Button>
-      </FlexBox>
+      />
     );
   }, [
     showClearButton,

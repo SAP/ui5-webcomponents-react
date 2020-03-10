@@ -25,7 +25,7 @@ export interface FilterGroupItemPropTypes extends CommonProps {
 
 export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref: RefObject<HTMLDivElement>) => {
   const classes = useStyles();
-
+  //todo cozy
   const {
     groupName,
     considerGroupName,

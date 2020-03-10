@@ -1,6 +1,5 @@
 import { spacing } from '@ui5/webcomponents-react-base';
 
-//todo different parameter
 const styles = {
   dialog: {
     ...spacing.sapUiContentPadding,
@@ -17,7 +16,6 @@ const styles = {
     }
   },
   footer: {
-    padding: '0.5rem 0.5rem',
     '& :not(:last-child)': {
       marginRight: '0.25rem'
     }
@@ -65,5 +63,3 @@ const styles = {
 };
 
 export default styles;
-
-//todo wrap 700px

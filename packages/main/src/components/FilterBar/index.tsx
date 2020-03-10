@@ -38,6 +38,7 @@ export interface FilterBarPropTypes extends CommonProps {
   showClearButton?: boolean;
   showRestoreButton?: boolean;
   showGo?: boolean;
+  activeFiltersCount: number | string;
 
   //todo naming
   showDialogSearch?: boolean;
@@ -66,6 +67,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     filterBarExpanded,
     considerGroupName,
     filterContainerWidth,
+    activeFiltersCount,
     showClearOnFB,
     showGoOnFB,
     showGo,
@@ -82,7 +84,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [searchValue, setSearchValue] = useState('');
   const searchRef = useRef(null);
 
-  //todo change to useEffect
   const initRef = useCallback(() => {
     let filterRefs = [];
     const newChildren = Children.toArray(children)
@@ -132,8 +133,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     setActiveChildren(childrenWithNewProps);
     setDialogOpen(false);
   };
-
-  useEffect(() => {}, []);
 
   const handleDialogOpen = () => {
     //todo Event.of
@@ -188,10 +187,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   );
 
   const handleRestoreFilters = useCallback(
-    (source = 'filterBar') => {
+    (source) => {
       //todo Event.of
-
-      //todo ?? disable default behavior ??
       if (source === 'dialog' && showGo) {
         setDialogOpen(false);
         setDialogOpen(true);
@@ -200,8 +197,12 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         setMountFilters(true);
       }
     },
-    [setDialogOpen]
+    [setDialogOpen, showGo, showGoOnFB]
   );
+
+  const handleRestore = useCallback(() => {
+    handleRestoreFilters('filterBar');
+  }, [handleRestoreFilters]);
 
   return (
     <>
@@ -241,7 +242,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                 </Button>
               )}
               {showRestoreOnFB && (
-                <Button onClick={handleRestoreFilters} design={ButtonDesign.Transparent}>
+                <Button onClick={handleRestore} design={ButtonDesign.Transparent}>
                   Restore
                 </Button>
               )}
@@ -254,7 +255,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
               </Button>
               {showFilterConfiguration && (
                 <Button onClick={handleDialogOpen} className={classes.filterConfigurationBtn}>
-                  Adapt Filters
+                  {`Filters${activeFiltersCount ? ` (${activeFiltersCount})` : ''}`}
                 </Button>
               )}
               {showGoOnFB && (

@@ -74,9 +74,10 @@ export const renderStory = () => {
       useToolbar={boolean('useToolbar', true)}
       // considerGroupName
       // filterContainerWidth={'200rem'}
+      // activeFiltersCount={'X'}
       showClearOnFB
       showRestoreOnFB
-      // showGo
+      showGo
       showGoOnFB={true}
       showFilterConfiguration={true}
       showDialogSearch

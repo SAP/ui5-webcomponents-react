@@ -49,9 +49,6 @@ const styles = {
       marginLeft: '0.5rem'
     }
   },
-  filterConfigurationBtn: {
-    minWidth: '92px'
-  },
   showFiltersBtn: { minWidth: '108px' },
   // is being applied to the span which represents the InfoLabel Text
   label: {
