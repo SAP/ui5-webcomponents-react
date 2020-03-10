@@ -71,7 +71,9 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
     if (cssVarsPonyfillNeeded()) {
       window.CSSVarsPonyfill.cssVars({
         rootElement: document.head,
-        include: 'style[data-ui5-webcomponents-react-sizes],style[data-jss]'
+        include: 'style[data-ui5-webcomponents-react-sizes],style[data-jss]',
+        watch: true,
+        silent: true
       });
     }
   }, []);
