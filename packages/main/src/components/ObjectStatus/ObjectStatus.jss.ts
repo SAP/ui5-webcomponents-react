@@ -1,35 +1,35 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   objectStatus: {
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontSize: ThemingParameters.sapMFontMediumSize,
     fontWeight: 'normal',
     position: 'relative',
     display: 'flex'
   },
   iconSuccess: {
     '& ui5-icon': {
-      color: parameters.sapUiPositiveText
+      color: ThemingParameters.sapUiPositiveText
     }
   },
   iconWarning: {
     '& ui5-icon': {
-      color: parameters.sapUiCriticalText
+      color: ThemingParameters.sapUiCriticalText
     }
   },
   iconError: {
     '& ui5-icon': {
-      color: parameters.sapUiNegativeText
+      color: ThemingParameters.sapUiNegativeText
     }
   },
   iconNone: {
     '& ui5-icon': {
-      color: parameters.sapUiNeutralText
+      color: ThemingParameters.sapUiNeutralText
     }
   },
   iconInformation: {
-    color: parameters.sapUiInformativeElement
+    color: ThemingParameters.sapUiInformativeElement
   },
   icon: {
     marginRight: '0.5rem',
@@ -38,20 +38,20 @@ const styles = ({ parameters }: JSSTheme) => ({
     lineHeight: 'inherit'
   },
   textSuccess: {
-    color: parameters.sapUiPositiveText
+    color: ThemingParameters.sapUiPositiveText
   },
   textError: {
-    color: parameters.sapUiNegativeText
+    color: ThemingParameters.sapUiNegativeText
   },
   textWarning: {
-    color: parameters.sapUiCriticalText
+    color: ThemingParameters.sapUiCriticalText
   },
   textInformation: {
-    color: parameters.sapUiInformativeText
+    color: ThemingParameters.sapUiInformativeText
   },
   textNone: {
-    color: parameters.sapUiNeutralText
+    color: ThemingParameters.sapUiNeutralText
   }
-});
+};
 
 export default styles;

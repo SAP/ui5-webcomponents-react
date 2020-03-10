@@ -3,9 +3,8 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useScrollElement } from '@ui5/webcomponents-react-base/lib/useScrollElement';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';
 
@@ -16,7 +15,7 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectPageSection' });
+const useStyles = createComponentStyles(styles, { name: 'ObjectPageSection' });
 
 /**
  * <code>import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';</code>

@@ -6,9 +6,8 @@ import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, ReactElement, Ref, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { styles } from './Form.jss';
 
 export interface FormPropTypes extends CommonProps {
@@ -22,7 +21,7 @@ export interface FormPropTypes extends CommonProps {
   title?: string;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Form' });
+const useStyles = createComponentStyles(styles, { name: 'Form' });
 
 /**
  * <code>import { Form } from '@ui5/webcomponents-react/lib/Form';</code>

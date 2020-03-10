@@ -12,9 +12,8 @@ import React, {
   useContext,
   useMemo
 } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { styles } from '../Form/Form.jss';
 
 export interface FormItemProps extends CommonProps {
@@ -30,7 +29,7 @@ const calculateWidth = (rate) => {
   return Math.floor((100 / 12) * rate) + '%';
 };
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'FormItem' });
+const useStyles = createComponentStyles(styles, { name: 'FormItem' });
 
 /**
  * <code>import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';</code>
