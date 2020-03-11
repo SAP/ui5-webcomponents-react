@@ -26,6 +26,6 @@ renderStory.story = {
 };
 
 export default {
-  title: '3 Components / ProgressIndicator',
+  title: 'Components / ProgressIndicator',
   component: ProgressIndicator
 };

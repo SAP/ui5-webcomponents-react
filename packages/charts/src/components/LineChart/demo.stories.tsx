@@ -30,7 +30,7 @@ const renderStoryWithCustomColors = () => (
 );
 
 export default {
-  title: 'Charts - Deprecated / Line Chart',
+  title: 'Charts / Line Chart',
   component: LineChart
 };
 

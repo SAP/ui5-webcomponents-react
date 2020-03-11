@@ -5,7 +5,7 @@ import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';
 import React from 'react';
 
 export default {
-  title: '4 UI5 Web Components / Timeline',
+  title: 'UI5 Web Components / Timeline',
   component: Timeline,
   parameters: {
     subcomponents: { TimelineItem }

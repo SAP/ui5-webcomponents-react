@@ -5,7 +5,7 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import React from 'react';
 
 export default {
-  title: '3 Components / ActionSheet',
+  title: 'Components / ActionSheet',
   component: ActionSheet
 };
 

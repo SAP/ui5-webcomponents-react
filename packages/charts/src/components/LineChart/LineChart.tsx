@@ -26,6 +26,7 @@ type LineChartProps = RechartBaseProps;
 
 /**
  * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/next/LineChart';</code>
+ * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {

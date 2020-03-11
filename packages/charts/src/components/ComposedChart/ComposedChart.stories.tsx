@@ -139,7 +139,7 @@ renderLabelComposedChart.story = {
 };
 
 export default {
-  title: '2 Charts /  ComposedChart',
+  title: 'Charts - Unstable /  ComposedChart',
   component: ComposedChart
 };
 

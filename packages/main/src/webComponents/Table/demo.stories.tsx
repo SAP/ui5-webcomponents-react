@@ -8,7 +8,7 @@ import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React from 'react';
 
 export default {
-  title: '4 UI5 Web Components / Table',
+  title: 'UI5 Web Components / Table',
   component: Table,
   parameters: {
     subcomponents: { TableColumn, TableRow, TableCell }

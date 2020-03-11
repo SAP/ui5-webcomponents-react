@@ -26,6 +26,7 @@ type ColumnChartProps = RechartBaseProps;
 
 /**
  * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/next/ColumnChart';</code>
+ * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
   const {

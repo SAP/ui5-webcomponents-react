@@ -4,14 +4,18 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
-import React, { forwardRef, Ref, useCallback } from 'react';
+import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import { Bar, BarChart as MicroBarChartLib, Tooltip, XAxis, YAxis } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { BarChartPlaceholder } from '../BarChart/Placeholder';
 
 export interface MicroBarChartProps extends RechartBaseProps {}
 
-const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
+/**
+ * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/next/MicroBarChart';</code>
+ * **This component is under active development. The API is not stable yet and might change without further notice.**
+ */
+const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
@@ -131,5 +135,7 @@ const MicroBarChart = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
     </ChartContainer>
   );
 });
+
+MicroBarChart.displayName = 'MicroBarChart';
 
 export { MicroBarChart };

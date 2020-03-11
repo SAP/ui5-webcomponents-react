@@ -20,6 +20,7 @@ interface RadialChartProps extends CommonProps {
 
 /**
  * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/next/RadialChart';</code>
+ * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
   const {

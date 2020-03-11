@@ -85,7 +85,7 @@ const singleData = [
 ];
 
 export default {
-  title: '2 Charts /  RadarRechart',
+  title: 'Charts - Unstable /  RadarRechart',
   component: RadarChart
 };
 

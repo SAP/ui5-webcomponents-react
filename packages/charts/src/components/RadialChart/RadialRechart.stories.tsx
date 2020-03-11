@@ -6,7 +6,7 @@ import React from 'react';
 const dataset = [{ name: 'L1', value: 67 }];
 
 export default {
-  title: '2 Charts /  RadialChart',
+  title: 'Charts - Unstable /  RadialChart',
   component: RadialChart
 };
 

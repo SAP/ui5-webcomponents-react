@@ -24,6 +24,6 @@ renderStory.story = {
 };
 
 export default {
-  title: '3 Components / Text',
+  title: 'Components / Text',
   component: Text
 };
