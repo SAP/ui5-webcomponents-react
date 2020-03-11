@@ -28,6 +28,8 @@ enum ChartTypes {
   area = Area
 }
 
+const BAR_DEFAULT_PADDING = 20;
+
 type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
 interface ChartElement {
@@ -37,11 +39,12 @@ interface ChartElement {
   type: AvailableChartTypes;
   accessor: string;
   stackId?: string;
+
   [key: string]: unknown | number;
 }
 
 export interface ComposedChartProps extends RechartBaseProps {
-  placeHolder?: ComponentType<unknown>;
+  placeholder?: ComponentType<unknown>;
   elements?: ChartElement[];
   defaults?: ChartElement;
 }
@@ -145,16 +148,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
-  let paddingCharts = 20;
-  useMemo(
+  const paddingCharts = useMemo(
     () =>
-      elements?.forEach((chartElement) => {
-        chartElement.type === 'bar'
-          ? chartElement.barSize
-            ? (paddingCharts += chartElement.barSize as number)
-            : (paddingCharts += 20)
-          : 0;
-      }),
+      elements?.reduce((acc, chartElement) => {
+        if (chartElement.type === 'bar') {
+          // @ts-ignore
+          acc += chartElement?.barSize ?? 20;
+        }
+        return acc;
+      }, BAR_DEFAULT_PADDING),
     [elements]
   );
 
@@ -190,7 +192,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           unit={chartConfig.yAxisUnit}
           tickLine={false}
           yAxisId="left"
-          tickFormatter={(e) => yAxisFormatter(e)}
+          tickFormatter={yAxisFormatter}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis

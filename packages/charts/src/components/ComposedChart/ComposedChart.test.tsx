@@ -1,7 +1,7 @@
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
 import { dataset, label } from '../../resources/RechartProps';
-import { ComposedChart } from './ComposedRechart';
+import { ComposedChart } from './index';
 
 describe('ComposedChart', () => {
   test('Renders with data', () => {
