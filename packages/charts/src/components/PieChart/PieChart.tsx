@@ -9,7 +9,6 @@ import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { DataLabel } from '../../internal/CustomElements';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 type PieChartProps = RechartBaseProps;
 

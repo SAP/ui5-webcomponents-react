@@ -13,10 +13,10 @@ import {
   Brush,
   CartesianGrid,
   Legend,
+  ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis,
-  ReferenceLine
+  YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { DataLabel } from '../../internal/CustomElements';

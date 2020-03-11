@@ -1,3 +1,4 @@
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
@@ -6,7 +7,6 @@ import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChar
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart as RadialBarChartLib } from 'recharts';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 
 interface RadialChartProps extends CommonProps {
   value?: number;

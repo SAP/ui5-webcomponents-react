@@ -2,7 +2,6 @@ import { action } from '@storybook/addon-actions';
 import { DonutChart } from '@ui5/webcomponents-react-charts/lib/next/DonutChart';
 import React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
-import { PieChart } from '../PieChart/PieRechart';
 
 export default {
   title: '2 Charts /  DonutChart',

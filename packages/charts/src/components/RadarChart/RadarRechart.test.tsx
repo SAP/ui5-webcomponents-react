@@ -1,7 +1,7 @@
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
 import { dataset, label } from '../../resources/RechartProps';
-import { RadarChart } from './RadarRechart';
+import { RadarChart } from './RadarChart';
 
 describe('RadarChart', () => {
   test('Renders with data', () => {

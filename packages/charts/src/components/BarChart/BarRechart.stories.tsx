@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { text, boolean } from '@storybook/addon-knobs';
+import { boolean, text } from '@storybook/addon-knobs';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
 import React from 'react';
 import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
@@ -18,6 +18,8 @@ export const defaultStory = () => (
     height={text('height', '95vh')}
     loading={boolean('loading', false)}
     noLegend={boolean('noLegend', false)}
+    chartConfig={{ dataLabel: true }}
+    // dataLabelCustomElement={(el) => <text>{el}</text>}
   />
 );
 

@@ -1,3 +1,3 @@
-import { DonutChart } from '../../components/DonutChart/DonutRechart';
+import { DonutChart } from '../../components/DonutChart/DonutChart';
 
 export { DonutChart };

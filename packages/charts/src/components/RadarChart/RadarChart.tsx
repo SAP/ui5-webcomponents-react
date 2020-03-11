@@ -1,4 +1,5 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
@@ -17,7 +18,6 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { AxisTicks, DataLabel } from '../../internal/CustomElements';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 type RadarChartProps = RechartBaseProps;
 

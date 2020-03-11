@@ -1,3 +1,3 @@
-import { RadarChart } from '../../components/RadarChart/RadarRechart';
+import { RadarChart } from '../../components/RadarChart/RadarChart';
 
 export { RadarChart };

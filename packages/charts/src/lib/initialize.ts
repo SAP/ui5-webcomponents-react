@@ -1,5 +1,5 @@
-import { getOrLoadTheme } from '../themes/themeMap';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import { getOrLoadTheme } from '../themes/themeMap';
 
 const CSS_ELEMENT_ID = 'data-ui5-webcomponents-react-charts-theme-properties';
 

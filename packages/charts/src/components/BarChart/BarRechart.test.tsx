@@ -1,7 +1,7 @@
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
 import { dataset, label } from '../../resources/RechartProps';
-import { BarChart } from './BarRechart';
+import { BarChart } from './BarChart';
 
 describe('BarRechart', () => {
   test('Renders with data', () => {

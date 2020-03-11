@@ -1,7 +1,7 @@
+import { action } from '@storybook/addon-actions';
 import { number, text } from '@storybook/addon-knobs';
 import { RadialChart } from '@ui5/webcomponents-react-charts/lib/next/RadialChart';
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 
 const dataset = [{ name: 'L1', value: 67 }];
 

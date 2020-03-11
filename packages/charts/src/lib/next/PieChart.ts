@@ -1,3 +1,3 @@
-import { PieChart } from '../../components/PieChart/PieRechart';
+import { PieChart } from '../../components/PieChart/PieChart';
 
 export { PieChart };

@@ -1,64 +1,67 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
-import React, { FC, forwardRef, Ref, useCallback } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
-  Bar,
-  BarChart as BarChartLib,
   Brush,
   CartesianGrid,
   Legend,
+  Line,
+  LineChart as LineChartLib,
+  ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis,
-  ReferenceLine
+  YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { AxisTicks, DataLabel } from '../../internal/CustomElements';
+import { DataLabel } from '../../internal/CustomElements';
 import { renderAxisTicks } from '../../util/Utils';
 
-type BarChartProps = RechartBaseProps;
+type LineChartProps = RechartBaseProps;
 
 /**
- * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';</code>
+ * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/next/LineChart';</code>
  */
-const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<any>) => {
+const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
     color,
     loading,
     labelKey = 'name',
-    dataKeys,
     width = '100%',
     height = '500px',
     dataset,
+    dataKeys,
     noLegend = false,
     onDataPointClick,
     onLegendClick,
-    xAxisFormatter = (el) => el,
     yAxisFormatter = (el) => el,
+    xAxisFormatter = (el) => el,
     dataLabelFormatter = (d) => d,
     dataLabelCustomElement = undefined,
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
-      xAxisUnit: '',
-      yAxisUnit: '',
       gridStroke: ThemingParameters.sapUiListTableFooterBorder,
       gridHorizontal: true,
       gridVertical: false,
+      yAxisColor: ThemingParameters.sapNeutralBorderColor,
       legendPosition: 'bottom',
-      barSize: 10,
-      barGap: 3,
+      strokeWidth: 1,
       zoomingTool: false,
       strokeOpacity: 1,
-      fillOpacity: 1,
-      stacked: false,
       dataLabel: false,
+      xAxisUnit: '',
+      yAxisUnit: '',
+      secondYAxis: {
+        dataKey: undefined,
+        name: undefined,
+        color: undefined
+      },
       referenceLine: {
         label: undefined,
         value: undefined,
@@ -76,23 +79,22 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
 
   const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
 
+  const colorSecondY = useMemo(
+    () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
+    [chartConfig, currentDataKeys]
+  );
+
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
-    (payload, i, event) => {
-      if (payload && onDataPointClick) {
+    (payload, eventOrIndex) => {
+      if (eventOrIndex.dataKey && onDataPointClick) {
         onDataPointClick(
           Event.of(null, event, {
-            dataKey: Object.keys(payload)
-              .filter((key) => key !== 'value')
-              .find((key) =>
-                payload.value.length
-                  ? payload[key] === payload.value[1] - payload.value[0]
-                  : payload[key] === payload.value
-              ),
-            value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
-            payload: payload.payload,
-            xIndex: i
+            value: eventOrIndex.value,
+            dataKey: eventOrIndex.dataKey,
+            xIndex: eventOrIndex.index,
+            payload: eventOrIndex.payload
           })
         );
       }
@@ -104,7 +106,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      placeholder={BarChartPlaceholder}
+      placeholder={LineChartPlaceholder}
       width={width}
       height={height}
       ref={chartRef}
@@ -113,51 +115,58 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       tooltip={tooltip}
       slot={slot}
     >
-      <BarChartLib
-        margin={{ right: 30, top: 40, bottom: 30 }}
-        layout={'vertical'}
-        data={dataset}
-        barGap={chartConfig.barGap}
-      >
+      <LineChartLib margin={{ right: 30, top: 40, bottom: 30 }} data={dataset} onClick={onDataPointClickInternal}>
         <CartesianGrid
-          vertical={chartConfig.gridVertical ?? false}
+          vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
         {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis type="number" tick={(props) => renderAxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)} />
+          <XAxis
+            dataKey={labelKey}
+            interval={0}
+            tick={(props) => renderAxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)}
+          />
         )}
         <YAxis
-          tickFormatter={(e) => yAxisFormatter(e)}
           unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
-          type="category"
-          dataKey={labelKey}
+          yAxisId="left"
+          tickFormatter={(e) => yAxisFormatter(e)}
         />
+        {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
+          <YAxis
+            dataKey={chartConfig.secondYAxis.dataKey}
+            stroke={chartConfig.secondYAxis.color ?? `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`}
+            label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
+            orientation="right"
+            yAxisId="right"
+          />
+        )}
         {currentDataKeys.map((key, index) => (
-          <Bar
-            stackId={chartConfig.stacked ? 'A' : undefined}
+          <Line
+            yAxisId={chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === key ? 'right' : 'left'}
+            key={key}
+            name={key}
             strokeOpacity={chartConfig.strokeOpacity}
-            fillOpacity={chartConfig.fillOpacity}
             label={
               chartConfig.dataLabel
                 ? dataLabelCustomElement
                   ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
                   : {
-                      position: chartConfig.stacked ? 'insideRight' : 'right',
-                      content: (label) => dataLabelFormatter(label.value),
+                      content: (d) => dataLabelFormatter(d.value),
+                      position: 'top',
+                      fontSize: ThemingParameters.sapUiFontSmallSize,
                       fill: ThemingParameters.sapContent_LabelColor
                     }
                 : false
             }
-            key={key}
-            name={key}
+            type="monotone"
             dataKey={key}
-            fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
-            barSize={chartConfig.barSize}
-            onClick={onDataPointClickInternal}
+            strokeWidth={chartConfig.strokeWidth}
+            activeDot={{ onClick: onDataPointClickInternal }}
           />
         ))}
         {!noLegend && (
@@ -172,19 +181,20 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
-            x={chartConfig.referenceLine.value}
+            y={chartConfig.referenceLine.value}
             label={chartConfig.referenceLine.label}
+            yAxisId={'left'}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} />
+        <Tooltip />
         {chartConfig.zoomingTool && (
           <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}
-      </BarChartLib>
+      </LineChartLib>
     </ChartContainer>
   );
 });
 
-BarChart.displayName = 'BarChart';
+LineChart.displayName = 'LineChart';
 
-export { BarChart };
+export { LineChart };
