@@ -175,9 +175,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const data = useMemo(() => {
     if (minRows > props.data.length) {
-      const missingRows = minRows - props.data.length;
-      // @ts-ignore
-      const emptyRows = [...Array(missingRows).keys()].map(() => ({ emptyRow: true }));
+      const missingRows: number = minRows - props.data.length;
+      const emptyRows = Array.from({ length: missingRows }, (v, i) => i).map(() => ({ emptyRow: true }));
 
       return [...props.data, ...emptyRows];
     }
@@ -261,20 +260,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   useEffect(() => {
     dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: selectedRowIds });
   }, [selectedRowIds, dispatch]);
-
-  useEffect(() => {
-    dispatch({
-      type: 'SET_HIDDEN_COLUMNS',
-      hiddenColumns: columns
-        .filter((col) => {
-          if (col.hasOwnProperty('isVisible')) {
-            return !col.isVisible;
-          }
-          return false;
-        })
-        .map((col) => col.accessor)
-    });
-  }, [columns]);
 
   const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
 
