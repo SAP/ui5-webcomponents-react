@@ -1,9 +1,9 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   segmentedButtonItem: {
-    fontFamily: parameters.sapUiFontFamily,
+    fontFamily: ThemingParameters.sapUiFontFamily,
     listStyle: 'none',
     overflow: 'hidden',
     WebkitTapHighlightColor: 'rgba(255, 255, 255, 0)',
@@ -16,7 +16,7 @@ const styles = ({ parameters }: JSSTheme) => ({
     display: 'inline-block',
     fontSize: '0.875rem',
     '&:focus': {
-      outline: `1px dotted ${parameters.sapUiContentFocusColor}`
+      outline: `1px dotted ${ThemingParameters.sapUiContentFocusColor}`
     },
     height: CssSizeVariables.sapWcrSegmentedButtonItemHeight,
     lineHeight: CssSizeVariables.sapWcrSegmentedButtonItemLineHeight,
@@ -29,26 +29,26 @@ const styles = ({ parameters }: JSSTheme) => ({
     '&:last-child': {
       borderTopRightRadius: '0.25rem',
       borderBottomRightRadius: '0.25rem',
-      borderRightColor: parameters.sapUiSegmentedButtonBorderColor
+      borderRightColor: ThemingParameters.sapUiSegmentedButtonBorderColor
     },
-    color: parameters.sapUiSegmentedButtonTextColor,
-    border: `1px solid ${parameters.sapUiSegmentedButtonBorderColor}`,
+    color: ThemingParameters.sapUiSegmentedButtonTextColor,
+    border: `1px solid ${ThemingParameters.sapUiSegmentedButtonBorderColor}`,
     borderRightColor: 'transparent',
-    backgroundColor: parameters.sapUiSegmentedButtonBackground
+    backgroundColor: ThemingParameters.sapUiSegmentedButtonBackground
   },
   selected: {
-    background: parameters.sapUiSegmentedButtonSelectedBackground,
-    color: parameters.sapUiSegmentedButtonSelectedTextColor,
-    borderColor: parameters.sapUiSegmentedButtonSelectedHoverBorderColor,
-    '--sapUiContentNonInteractiveIconColor': parameters.sapUiContentContrastIconColor,
+    background: ThemingParameters.sapUiSegmentedButtonSelectedBackground,
+    color: ThemingParameters.sapUiSegmentedButtonSelectedTextColor,
+    borderColor: ThemingParameters.sapUiSegmentedButtonSelectedHoverBorderColor,
+    '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapUiContentContrastIconColor,
     '$:active': {
-      background: parameters.sapUiButtonActiveBackground,
-      color: parameters.sapUiButtonActiveTextColor
+      background: ThemingParameters.sapUiButtonActiveBackground,
+      color: ThemingParameters.sapUiButtonActiveTextColor
     }
   },
   focusableItem: {
     '&:not($selected):hover': {
-      background: parameters.sapUiSegmentedButtonHoverBackground
+      background: ThemingParameters.sapUiSegmentedButtonHoverBackground
     }
   },
   disabled: { textShadow: 'none', cursor: 'default', opacity: '0.4' },
@@ -68,6 +68,6 @@ const styles = ({ parameters }: JSSTheme) => ({
   withText: {
     marginRight: '0.5rem'
   }
-});
+};
 
 export default styles;

@@ -11,7 +11,7 @@ import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import React, { FC, forwardRef, ReactNode, RefObject, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterItem.jss';
 
@@ -28,7 +28,7 @@ export interface FilterItemPropTypes extends CommonProps {
   changeEventName?: string;
 }
 
-const useStyles = createUseStyles(styles, { name: 'FilterItem' });
+const useStyles = createComponentStyles(styles, { name: 'FilterItem' });
 
 /**
  * <code>import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';</code>

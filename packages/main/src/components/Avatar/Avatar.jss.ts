@@ -1,5 +1,5 @@
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { CSSProperties } from 'react';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 
 const size = (s): CSSProperties => ({
   height: s,
@@ -10,19 +10,19 @@ const size = (s): CSSProperties => ({
   textAlign: 'center'
 });
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   // outer flexbox
   avatar: {
-    backgroundColor: parameters.sapAccentColor7,
-    color: parameters.sapUiContentContrastTextColor,
-    fontFamily: parameters.sapUiFontFamily,
+    backgroundColor: ThemingParameters.sapAccentColor7,
+    color: ThemingParameters.sapUiContentContrastTextColor,
+    fontFamily: ThemingParameters.sapUiFontFamily,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     borderRadius: '0.25rem',
-    '--sapUiContentNonInteractiveIconColor': parameters.sapContent_ContrastIconColor
+    '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapContent_ContrastIconColor
   },
   // borderRadius 100%
   circle: {
@@ -81,6 +81,6 @@ const styles = ({ parameters }: JSSTheme) => ({
       height: customFontSize
     }
   })
-});
+};
 
 export default styles;

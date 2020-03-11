@@ -14,9 +14,8 @@ import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Priority } from '@ui5/webcomponents-react/lib/Priority';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React, { FC, forwardRef, ReactNode, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './Notification.jss';
 
 export interface NotificationProptypes extends CommonProps {
@@ -39,7 +38,7 @@ export interface NotificationProptypes extends CommonProps {
   autoPriority?: boolean;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Notification' });
+const useStyles = createComponentStyles(styles, { name: 'Notification' });
 
 const WEIGHT = { None: 0, Low: 1, Medium: 2, High: 3 };
 

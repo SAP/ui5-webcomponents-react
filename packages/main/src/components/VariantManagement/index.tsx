@@ -1,5 +1,6 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -12,9 +13,8 @@ import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem'
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useState } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 
 export interface VariantItem {
   key: string;
@@ -32,7 +32,7 @@ export interface VariantManagementPropTypes extends CommonProps {
   disabled?: boolean;
 }
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   VariantManagement: {
     display: 'flex',
     alignItems: 'center',
@@ -41,30 +41,30 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   VariantManagementText: {
     cursor: 'pointer',
-    color: parameters.sapUiButtonTextColor,
+    color: ThemingParameters.sapUiButtonTextColor,
     '&:hover': {
-      color: parameters.sapUiHighlight
+      color: ThemingParameters.sapUiHighlight
     },
     '&:active': {
-      color: parameters.sapUiHighlight
+      color: ThemingParameters.sapUiHighlight
     }
   },
   disabled: {
-    color: parameters.sapUiGroupTitleTextColor,
+    color: ThemingParameters.sapUiGroupTitleTextColor,
     cursor: 'default',
     '&:hover': {
-      color: parameters.sapUiGroupTitleTextColor
+      color: ThemingParameters.sapUiGroupTitleTextColor
     },
     '&:active': {
-      color: parameters.sapUiGroupTitleTextColor
+      color: ThemingParameters.sapUiGroupTitleTextColor
     }
   },
   footer: {
     margin: '0.4375rem 1rem 0.4325rem auto'
   }
-});
+};
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'VariantManagement' });
+const useStyles = createComponentStyles(styles, { name: 'VariantManagement' });
 
 /**
  * <code>import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';</code>

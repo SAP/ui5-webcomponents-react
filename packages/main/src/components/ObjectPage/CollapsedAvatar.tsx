@@ -1,7 +1,7 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import React, { useEffect, useMemo, useRef, useState, ReactElement } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 
 const styles = {
   base: {
@@ -27,7 +27,7 @@ const styles = {
   }
 };
 
-const useStyles = createUseStyles(styles, {
+const useStyles = createComponentStyles(styles, {
   name: 'CollapsedAvatar'
 });
 

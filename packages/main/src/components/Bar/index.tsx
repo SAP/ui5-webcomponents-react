@@ -1,7 +1,7 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { FC, forwardRef, Ref } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BarDesign } from '../../lib/BarDesign';
 import styles from './Bar.jss';
@@ -13,7 +13,7 @@ export interface BarPropTypes extends CommonProps {
   design?: BarDesign;
 }
 
-const useStyles = createUseStyles(styles, { name: 'Bar' });
+const useStyles = createComponentStyles(styles, { name: 'Bar' });
 
 /**
  * <code>import { Bar } from '@ui5/webcomponents-react/lib/Bar';</code>

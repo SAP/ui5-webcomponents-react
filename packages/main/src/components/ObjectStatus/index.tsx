@@ -8,9 +8,8 @@ import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePa
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React, { FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './ObjectStatus.jss';
 
 export interface ObjectStatusPropTypes extends CommonProps {
@@ -39,7 +38,7 @@ const getDefaultIcon = (state) => {
   }
 };
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ObjectStatus' });
+const useStyles = createComponentStyles(styles, { name: 'ObjectStatus' });
 
 /**
  * <code>import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';</code>

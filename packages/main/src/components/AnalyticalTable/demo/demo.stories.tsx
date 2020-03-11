@@ -6,8 +6,8 @@ import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionM
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import React from 'react';
-import generateData from './generateData';
 import { TableScaleWidthMode } from '../../../enums/TableScaleWidthMode';
+import generateData from './generateData';
 
 const columns = [
   {
@@ -19,7 +19,8 @@ const columns = [
     accessor: 'age',
     hAlign: TextAlign.End,
     disableGrouping: true,
-    className: 'superCustomClass'
+    className: 'superCustomClass',
+    isVisible: true
   },
   {
     Header: 'Friend Name',
@@ -108,7 +109,7 @@ export const treeTable = () => {
       filterable={boolean('filterable', true)}
       visibleRows={number('visibleRows', 15)}
       minRows={number('minRows', 5)}
-      selectionMode={select<TableSelectionMode>('selectionMode', TableSelectionMode, TableSelectionMode.SINGLE_SELECT)}
+      selectionMode={select<TableSelectionMode>('selectionMode', TableSelectionMode, TableSelectionMode.MULTI_SELECT)}
       onRowSelected={action('onRowSelected')}
       onSort={action('onSort')}
       onRowExpandChange={action('onRowExpandChange')}

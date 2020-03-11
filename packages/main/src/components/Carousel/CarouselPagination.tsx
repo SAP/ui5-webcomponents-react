@@ -6,11 +6,10 @@ import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import React, { Children, FC, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import styles from './CarouselPagination.jss';
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'CarouselPagination' });
+const useStyles = createComponentStyles(styles, { name: 'CarouselPagination' });
 
 export interface CarouselPaginationPropTypes {
   /**

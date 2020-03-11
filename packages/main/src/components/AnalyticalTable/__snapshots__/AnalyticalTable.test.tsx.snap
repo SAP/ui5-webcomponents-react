@@ -84,6 +84,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -147,6 +148,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -210,6 +212,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -274,16 +277,16 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           <div
             class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -294,6 +297,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -306,6 +310,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -318,6 +323,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -330,6 +336,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -349,6 +356,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -361,6 +369,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -373,6 +382,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -385,6 +395,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -404,18 +415,22 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -427,18 +442,22 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -450,18 +469,22 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -556,6 +579,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -619,6 +643,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -682,6 +707,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -746,16 +772,16 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           <div
             class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -766,6 +792,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -778,6 +805,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -790,6 +818,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -802,6 +831,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -821,6 +851,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -833,6 +864,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -845,6 +877,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -857,6 +890,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -876,18 +910,22 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -899,18 +937,22 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -922,18 +964,22 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -1028,6 +1074,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -1091,6 +1138,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -1154,6 +1202,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -1218,6 +1267,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           <div
             class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -1585,6 +1635,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -1666,6 +1717,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -1747,6 +1799,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -1829,16 +1882,16 @@ exports[`AnalyticalTable Tree Table 1`] = `
           <div
             class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody- AnalyticalTable--selectable-"
         style="position: relative; height: 220px; width: 636px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody- AnalyticalTable--selectable-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -1849,25 +1902,27 @@ exports[`AnalyticalTable Tree Table 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center;"
+            >
+              <div
+                style="width: 100%; height: 100%;"
+              />
+            </div>
+            <div
+              class="AnalyticalTable--tableCell-"
+              role="cell"
+              style="position: absolute; top: 0px; left: 36px; width: 150px; align-items: center;"
             >
               <span
                 style="cursor: pointer; padding-left: 0px;"
-                title="Toggle Expanded"
+                title="Toggle Row Expanded"
               >
                 <ui5-icon
                   name="navigation-right-arrow"
                   style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
                 />
               </span>
-            </div>
-            <div
-              class="AnalyticalTable--tableCell-"
-              style="position: absolute; top: 0px; left: 36px; width: 150px; align-items: center;"
-            >
-              <span
-                style="padding-left: 0px;"
-              />
               <span
                 class="Text--text- Text--noWrap-"
                 style="width: 100%;"
@@ -1878,6 +1933,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 186px; width: 150px; align-items: center;"
             >
               <span
@@ -1893,6 +1949,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 336px; width: 150px; align-items: center;"
             >
               <span
@@ -1908,6 +1965,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 486px; width: 150px; align-items: center;"
             >
               <span
@@ -1930,17 +1988,19 @@ exports[`AnalyticalTable Tree Table 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center;"
             >
-              <span />
+              <div
+                style="width: 100%; height: 100%;"
+              />
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 36px; width: 150px; align-items: center;"
             >
-              <span
-                style="padding-left: 0px;"
-              />
+              <span />
               <span
                 class="Text--text- Text--noWrap-"
                 style="width: 100%;"
@@ -1951,6 +2011,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 186px; width: 150px; align-items: center;"
             >
               <span
@@ -1966,6 +2027,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 336px; width: 150px; align-items: center;"
             >
               <span
@@ -1981,6 +2043,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 486px; width: 150px; align-items: center;"
             >
               <span
@@ -2003,22 +2066,27 @@ exports[`AnalyticalTable Tree Table 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 36px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 186px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 336px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 486px; width: 150px; align-items: center;"
             />
           </div>
@@ -2030,22 +2098,27 @@ exports[`AnalyticalTable Tree Table 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 36px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 186px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 336px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 486px; width: 150px; align-items: center;"
             />
           </div>
@@ -2057,22 +2130,27 @@ exports[`AnalyticalTable Tree Table 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 36px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 186px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 336px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 486px; width: 150px; align-items: center;"
             />
           </div>
@@ -2167,6 +2245,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -2230,6 +2309,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -2293,6 +2373,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -2357,16 +2438,16 @@ exports[`AnalyticalTable custom row height 1`] = `
           <div
             class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 300px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 300px; width: 100%;"
         >
           <div
@@ -2377,6 +2458,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -2389,6 +2471,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -2401,6 +2484,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -2413,6 +2497,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -2432,6 +2517,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -2444,6 +2530,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -2456,6 +2543,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -2468,6 +2556,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -2487,18 +2576,22 @@ exports[`AnalyticalTable custom row height 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -2510,18 +2603,22 @@ exports[`AnalyticalTable custom row height 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -2533,18 +2630,22 @@ exports[`AnalyticalTable custom row height 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -2639,6 +2740,7 @@ exports[`AnalyticalTable render without data 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -2702,6 +2804,7 @@ exports[`AnalyticalTable render without data 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -2765,6 +2868,7 @@ exports[`AnalyticalTable render without data 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -2829,6 +2933,7 @@ exports[`AnalyticalTable render without data 1`] = `
           <div
             class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -2928,6 +3033,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -2991,6 +3097,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -3054,6 +3161,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -3118,16 +3226,16 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           <div
             class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -3138,6 +3246,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -3150,6 +3259,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -3162,6 +3272,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -3174,6 +3285,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -3193,6 +3305,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -3205,6 +3318,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -3217,6 +3331,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -3229,6 +3344,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -3248,18 +3364,22 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -3271,18 +3391,22 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -3294,18 +3418,22 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -3404,6 +3532,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -3467,6 +3596,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -3530,6 +3660,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -3594,16 +3725,16 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           <div
             class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -3614,6 +3745,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -3626,6 +3758,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -3638,6 +3771,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -3650,6 +3784,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -3669,6 +3804,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -3681,6 +3817,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -3693,6 +3830,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -3705,6 +3843,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -3724,18 +3863,22 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -3747,18 +3890,22 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -3770,18 +3917,22 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -3880,6 +4031,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -3943,6 +4095,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -4006,6 +4159,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -4070,16 +4224,16 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           <div
             class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -4090,6 +4244,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -4102,6 +4257,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -4114,6 +4270,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -4126,6 +4283,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -4145,6 +4303,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -4157,6 +4316,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -4169,6 +4329,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -4181,6 +4342,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -4200,18 +4362,22 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -4223,18 +4389,22 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -4246,18 +4416,22 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -4352,6 +4526,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -4415,6 +4590,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -4478,6 +4654,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -4542,16 +4719,16 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           <div
             class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -4562,6 +4739,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -4574,6 +4752,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -4586,6 +4765,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -4598,6 +4778,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -4617,6 +4798,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -4629,6 +4811,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -4641,6 +4824,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -4653,6 +4837,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -4672,18 +4857,22 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -4695,18 +4884,22 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -4718,18 +4911,22 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -4824,6 +5021,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -4887,6 +5085,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -4950,6 +5149,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           <div
             class="TableColumnHeader--resizer-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
@@ -5014,16 +5214,16 @@ exports[`AnalyticalTable without selection Column 1`] = `
           <div
             class="TableColumnHeader--resizer- TableColumnHeader--lastColumn-"
             draggable="false"
+            role="separator"
             style="cursor: ew-resize;"
           />
         </div>
       </header>
       <div
-        class="AnalyticalTable--virtualTableBody-"
+        class="AnalyticalTable--tbody- AnalyticalTable--selectable-"
         style="position: relative; height: 220px; width: 600px; overflow: auto; will-change: transform; direction: ltr;"
       >
         <div
-          class="AnalyticalTable--tbody- AnalyticalTable--selectable-"
           style="height: 220px; width: 100%;"
         >
           <div
@@ -5034,6 +5234,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -5046,6 +5247,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -5058,6 +5260,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -5070,6 +5273,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -5089,6 +5293,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             >
               <span
@@ -5101,6 +5306,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             >
               <span
@@ -5113,6 +5319,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             >
               <span
@@ -5125,6 +5332,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             </div>
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             >
               <span
@@ -5144,18 +5352,22 @@ exports[`AnalyticalTable without selection Column 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -5167,18 +5379,22 @@ exports[`AnalyticalTable without selection Column 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>
@@ -5190,18 +5406,22 @@ exports[`AnalyticalTable without selection Column 1`] = `
           >
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 300px; width: 150px; align-items: center;"
             />
             <div
               class="AnalyticalTable--tableCell-"
+              role="cell"
               style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
             />
           </div>

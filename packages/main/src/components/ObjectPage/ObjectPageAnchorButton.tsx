@@ -1,5 +1,6 @@
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import { ScrollLink } from '@ui5/webcomponents-react-base/lib/ScrollLink';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
@@ -8,8 +9,7 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import React, { FC, useCallback, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 
 interface ObjectPageAnchorPropTypes {
   section: any;
@@ -21,7 +21,7 @@ interface ObjectPageAnchorPropTypes {
   mode: ObjectPageMode;
 }
 
-const anchorButtonStyles = ({ parameters }: JSSTheme) => ({
+const anchorButtonStyles = {
   anchorButtonContainer: {
     position: 'relative',
     display: 'inline-flex',
@@ -32,26 +32,26 @@ const anchorButtonStyles = ({ parameters }: JSSTheme) => ({
     }
   },
   button: {
-    color: parameters.sapUiContentLabelColor,
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    color: ThemingParameters.sapUiContentLabelColor,
+    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontSize: ThemingParameters.sapMFontMediumSize,
     cursor: 'pointer'
   },
   selected: {
-    color: parameters.sapUiSelected,
+    color: ThemingParameters.sapUiSelected,
     minWidth: '2rem',
     textAlign: 'center',
     '&:after': {
       content: '""',
-      borderBottom: `0.188rem solid ${parameters.sapUiSelected}`,
+      borderBottom: `0.188rem solid ${ThemingParameters.sapUiSelected}`,
       width: '100%',
       position: 'absolute',
       bottom: 0,
       left: 0
     }
   }
-});
-const useStyles = createUseStyles(anchorButtonStyles, {
+};
+const useStyles = createComponentStyles(anchorButtonStyles, {
   name: 'ObjectPageAnchorButton'
 });
 
