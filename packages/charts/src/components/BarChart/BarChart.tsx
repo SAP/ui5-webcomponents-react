@@ -6,7 +6,7 @@ import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
-import React, { FC, forwardRef, Ref, useCallback } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
@@ -107,6 +107,14 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     [dataLabelFormatter, dataLabelCustomElement]
   );
 
+  const DefaultDataLabel = useMemo(() => {
+    return {
+      position: chartConfig.stacked ? 'insideRight' : 'right',
+      content: (label) => dataLabelFormatter(label.value),
+      fill: ThemingParameters.sapContent_LabelColor
+    };
+  }, [chartConfig.stacked, dataLabelFormatter]);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -147,17 +155,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             stackId={chartConfig.stacked ? 'A' : undefined}
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
-            label={
-              chartConfig.dataLabel
-                ? dataLabelCustomElement
-                  ? BarDataLabel
-                  : {
-                      position: chartConfig.stacked ? 'insideRight' : 'right',
-                      content: (label) => dataLabelFormatter(label.value),
-                      fill: ThemingParameters.sapContent_LabelColor
-                    }
-                : false
-            }
+            label={chartConfig.dataLabel ? (dataLabelCustomElement ? BarDataLabel : DefaultDataLabel) : false}
             key={key}
             name={key}
             dataKey={key}
