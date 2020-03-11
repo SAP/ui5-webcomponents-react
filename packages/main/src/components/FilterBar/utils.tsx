@@ -32,7 +32,10 @@ export const setPropsOfChildren = (children, currentRef) => {
           }
         });
       }
-      if (child.props.children.props[currentRef]?.tagName === 'UI5-SWITCH') {
+      if (
+        child.props.children.props[currentRef]?.tagName === 'UI5-SWITCH' ||
+        child.props.children.props[currentRef]?.tagName === 'UI5-CHECKBOX'
+      ) {
         return cloneElement(child, {
           children: {
             ...childrenOfChild,

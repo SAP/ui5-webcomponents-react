@@ -24,8 +24,6 @@ import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
 import { addRef, renderSearchWithValue, setPropsOfChildren } from './utils';
-//add not supported warning for deprecated and not supported filter-items/elements
-//todo CheckBox doesn't work
 //todo add deprecated filter-items to basic group
 export interface FilterBarPropTypes extends CommonProps {
   renderVariants?: () => JSX.Element;
