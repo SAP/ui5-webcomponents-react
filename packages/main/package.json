@@ -29,7 +29,7 @@
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "^5.0.2",
     "react-jss": "10.0.4",
-    "react-table": "7.0.0-rc.16",
+    "react-table": "7.0.0",
     "react-toastify": "^5.5.0",
     "react-window": "^1.8.5"
   },

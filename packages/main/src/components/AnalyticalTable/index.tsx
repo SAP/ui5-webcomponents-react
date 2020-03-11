@@ -175,9 +175,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const data = useMemo(() => {
     if (minRows > props.data.length) {
-      const missingRows = minRows - props.data.length;
-      // @ts-ignore
-      const emptyRows = [...Array(missingRows).keys()].map(() => ({ emptyRow: true }));
+      const missingRows: number = minRows - props.data.length;
+      const emptyRows = Array.from({ length: missingRows }, (v, i) => i).map(() => ({ emptyRow: true }));
 
       return [...props.data, ...emptyRows];
     }
