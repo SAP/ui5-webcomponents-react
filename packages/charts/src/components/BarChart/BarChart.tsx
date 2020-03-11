@@ -102,7 +102,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
 
   const BarDataLabel = useCallback(
     (props) => {
-      debugger;
       return DataLabel(props, dataLabelFormatter, dataLabelCustomElement);
     },
     [dataLabelFormatter, dataLabelCustomElement]
