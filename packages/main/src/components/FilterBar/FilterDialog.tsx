@@ -98,7 +98,6 @@ export const FilterDialog = (props) => {
 
   const renderFooter = useCallback(() => {
     return (
-      // <Bar justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
       <Bar
         design={BarDesign.Footer}
         renderContentRight={() => (

@@ -35,14 +35,14 @@ const renderVariants = () => {
   return (
     <VariantManagement
       style={{ width: '300px', height: 'auto' }}
-      closeOnItemSelect={boolean('closeOnItemSelect', true)}
+      closeOnItemSelect={boolean('Variant: closeOnItemSelect', true)}
       initialSelectedKey={'2'}
       variantItems={variantItems}
       onSelect={(e) => {
         console.log(e.getParameter('selectedItem').key);
       }}
-      placement={select('Placement', PlacementType, PlacementType.Bottom)}
-      level={select('level', TitleLevel, TitleLevel.H6)}
+      placement={select('Variant: placement', PlacementType, PlacementType.Bottom)}
+      level={select('Variant: level', TitleLevel, TitleLevel.H6)}
     />
   );
 };
@@ -72,25 +72,26 @@ export const renderStory = () => {
       renderSearch={renderSearch}
       renderVariants={renderVariants}
       useToolbar={boolean('useToolbar', true)}
-      // considerGroupName
+      loading={boolean('loading', false)}
+      considerGroupName={boolean('considerGroupName', false)}
       // filterContainerWidth={'200rem'}
       // activeFiltersCount={'X'}
-      showClearOnFB
-      showRestoreOnFB
-      showGo
-      showGoOnFB={true}
-      showFilterConfiguration={true}
-      showDialogSearch
-      showClearButton
-      showRestoreButton
+      showClearOnFB={boolean('showClearOnFB', true)}
+      showRestoreOnFB={boolean('showRestoreOnFB', true)}
+      showGo={boolean('showGo', true)}
+      showGoOnFB={boolean('showGoOnFB', false)}
+      showFilterConfiguration={boolean('showFilterConfiguration', true)}
+      showSearchOnDialog={boolean('showSearchOnDialog', true)}
+      showClearButton={boolean('showClearButton', true)}
+      showRestoreButton={boolean('showRestoreButton', true)}
     >
-      <FilterGroupItem label="INPUT">
-        <Input placeholder="TESTTESTTEST" />
+      <FilterGroupItem label="Input">
+        <Input placeholder="Placeholder" />
       </FilterGroupItem>
-      <FilterGroupItem label="with group title" groupName="testgroup" mandatory visible={false}>
+      <FilterGroupItem label="Switch" groupName="Group 1" mandatory visible={false}>
         <Switch />
       </FilterGroupItem>
-      <FilterGroupItem label="SELECT w/ selected" loading={delayedLoading}>
+      <FilterGroupItem label="SELECT w/ initial selected" loading={delayedLoading}>
         <Select>
           <Option>Option 1</Option>
           <Option selected>Option 2</Option>
@@ -98,12 +99,8 @@ export const renderStory = () => {
           <Option>Option 4</Option>
         </Select>
       </FilterGroupItem>
-      <FilterGroupItem label="SELECT w/o selected" groupName="testgroup">
-        <Select
-          disabled={boolean('disabled', false)}
-          valueState={select('valueState', ValueState, null)}
-          onChange={(e) => console.log(e.parameters.selectedOption.dataset)}
-        >
+      <FilterGroupItem label="SELECT w/o initial selected" groupName="Group 1">
+        <Select onChange={(e) => console.log(e.parameters.selectedOption.dataset)}>
           <Option data-key="Test 1" selected icon="add">
             Test 1
           </Option>
@@ -121,7 +118,7 @@ export const renderStory = () => {
           </Option>
         </Select>
       </FilterGroupItem>
-      <FilterGroupItem label="MultBox w/ selected" groupName="testgroup">
+      <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1">
         <MultiComboBox>
           <Option>Option 1</Option>
           <Option selected>Option 2</Option>
@@ -129,7 +126,7 @@ export const renderStory = () => {
           <Option selected>Option 4</Option>
         </MultiComboBox>
       </FilterGroupItem>
-      <FilterGroupItem label="MultBox w/o selected" visibleInFilterBar={false} groupName="test group 2" mandatory>
+      <FilterGroupItem label="MultBox w/o initial selected" visibleInFilterBar={false} groupName="Group 2" mandatory>
         <MultiComboBox>
           <Option>
             <Text>asd</Text>
@@ -140,9 +137,9 @@ export const renderStory = () => {
         </MultiComboBox>
       </FilterGroupItem>
       <FilterGroupItem
-        label="MultBox StandardListItem w/ selected"
+        label="MultBox StandardListItem w/ initial selected"
         visibleInFilterBar={false}
-        groupName="test group 2"
+        groupName="Group 2"
         mandatory
       >
         <MultiComboBox>
@@ -154,9 +151,9 @@ export const renderStory = () => {
         </MultiComboBox>
       </FilterGroupItem>
       <FilterGroupItem
-        label="MultBox CustomListItem w/ selected"
+        label="MultBox CustomListItem w/ initial selected"
         visibleInFilterBar={false}
-        groupName="test group 2"
+        groupName="Group 2"
         mandatory
       >
         <MultiComboBox>
@@ -166,22 +163,52 @@ export const renderStory = () => {
           <CustomListItem>Selection 1</CustomListItem>
         </MultiComboBox>
       </FilterGroupItem>
-      <FilterGroupItem label="Date Picker" visibleInFilterBar={false} groupName="test group 2" mandatory>
+      <FilterGroupItem label="Date Picker" visibleInFilterBar={true} groupName="Group 2" mandatory>
         <DatePicker />
       </FilterGroupItem>
-      {/*<FilterGroupItem*/}
-      {/*  label="CheckBox"*/}
-      {/*  visibleInFilterBar={false}*/}
-      {/*  groupName="Check Group"*/}
-      {/*  mandatory*/}
-      {/*  style={{ width: '400px' }}*/}
-      {/*>*/}
-      {/*  <div style={{ display: 'flex' }}>*/}
-      {/*    <CheckBox text="Check this" />*/}
-      {/*    <CheckBox text="Check this" />*/}
-      {/*    <CheckBox text="Check this" />*/}
-      {/*  </div>*/}
-      {/*</FilterGroupItem>*/}
+      <FilterGroupItem label="Single Checkbox" groupName="Group 2">
+        <CheckBox text="Check this" />
+      </FilterGroupItem>
+      <FilterGroupItem
+        label="Not supported component example"
+        // visibleInFilterBar={false}
+        groupName="Check Group"
+        style={{ width: '400px' }}
+      >
+        <div style={{ display: 'flex' }}>
+          <CheckBox text="Check this" />
+          <CheckBox text="Check this" />
+          <CheckBox text="Check this" />
+        </div>
+      </FilterGroupItem>
+      <FilterItem
+        onChange={(e) => alert(e.getParameter('selectedItem').key)}
+        filterItems={filterItems}
+        label="Deprecated Filter Item Select"
+        key="classification"
+        type={FilterType.Select}
+        loading={boolean('loading', false)}
+      />
+      <FilterItem
+        key={'filter2'}
+        type={FilterType.Custom}
+        label="Deprecated Filter Item Custom"
+        changeEventName={'onClick'}
+        valueParamName={'state'}
+      >
+        <Switch />
+      </FilterItem>
+      <FilterItem
+        onChange={action('onChange')}
+        filterItems={filterItems}
+        style={{
+          maxWidth: '200px'
+        }}
+        label="Deprecated Filter Item MultiSelect"
+        key="Multi"
+        type={FilterType.MultiSelect}
+        loading={boolean('loading', false)}
+      />
     </FilterBar>
   );
 };

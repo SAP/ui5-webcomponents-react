@@ -1,6 +1,7 @@
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 const styles = {
+  //todo check these styles
   outerContainer: {
     paddingTop: '0.5rem',
     paddingLeft: '2rem',
@@ -51,26 +52,12 @@ const styles = {
   },
   showFiltersBtn: { minWidth: '108px' },
   // is being applied to the span which represents the InfoLabel Text
-  label: {
-    fontSize: ThemingParameters.sapMFontSmallSize,
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    lineHeight: '1.125rem',
-    fontWeight: 600,
-    letterSpacing: '0.0125rem',
-    textTransform: 'uppercase',
-    textAlign: 'center',
-    verticalAlign: 'top',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    display: 'inline-block',
-    color: ThemingParameters.sapUiBaseText
-  },
-  // specific padding needed for purely numeric input
-  numeric: {},
-  // specific padding needed for text input
-  text: {},
-  // displayOnly mode
-  displayOnly: {}
+  loadingContainer: {
+    marginBottom: '0.5rem',
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'center'
+  }
 };
 
 export default styles;
