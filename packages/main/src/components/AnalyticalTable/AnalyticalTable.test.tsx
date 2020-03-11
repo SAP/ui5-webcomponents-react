@@ -182,8 +182,8 @@ describe('AnalyticalTable', () => {
       />
     );
 
-    let colInst = wrapper
-      .find({ role: 'columnheader' })
+    const colInst = wrapper
+      .find('div[role="columnheader"]')
       .at(0)
       .instance();
 
