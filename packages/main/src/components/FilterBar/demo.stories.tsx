@@ -85,13 +85,13 @@ export const renderStory = () => {
       showClearButton={boolean('showClearButton', true)}
       showRestoreButton={boolean('showRestoreButton', true)}
     >
-      <FilterGroupItem label="Input">
+      <FilterGroupItem label="Input" visibleInFilterBar={false}>
         <Input placeholder="Placeholder" />
       </FilterGroupItem>
-      <FilterGroupItem label="Switch" groupName="Group 1" mandatory visible={false}>
+      <FilterGroupItem label="Switch" groupName="Group 1" visible={false}>
         <Switch />
       </FilterGroupItem>
-      <FilterGroupItem label="SELECT w/ initial selected" loading={delayedLoading}>
+      <FilterGroupItem label="SELECT w/ initial selected" loading={delayedLoading} visibleInFilterBar={false}>
         <Select>
           <Option>Option 1</Option>
           <Option selected>Option 2</Option>
@@ -99,7 +99,7 @@ export const renderStory = () => {
           <Option>Option 4</Option>
         </Select>
       </FilterGroupItem>
-      <FilterGroupItem label="SELECT w/o initial selected" groupName="Group 1">
+      <FilterGroupItem label="SELECT w/o initial selected" groupName="Group 1" visibleInFilterBar={false}>
         <Select onChange={(e) => console.log(e.parameters.selectedOption.dataset)}>
           <Option data-key="Test 1" selected icon="add">
             Test 1
@@ -118,7 +118,7 @@ export const renderStory = () => {
           </Option>
         </Select>
       </FilterGroupItem>
-      <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1">
+      <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1" visibleInFilterBar={false}>
         <MultiComboBox>
           <Option>Option 1</Option>
           <Option selected>Option 2</Option>
@@ -126,7 +126,7 @@ export const renderStory = () => {
           <Option selected>Option 4</Option>
         </MultiComboBox>
       </FilterGroupItem>
-      <FilterGroupItem label="MultBox w/o initial selected" visibleInFilterBar={false} groupName="Group 2" mandatory>
+      <FilterGroupItem label="MultBox w/o initial selected" visibleInFilterBar={false} groupName="Group 2">
         <MultiComboBox>
           <Option>
             <Text>asd</Text>
@@ -140,7 +140,6 @@ export const renderStory = () => {
         label="MultBox StandardListItem w/ initial selected"
         visibleInFilterBar={false}
         groupName="Group 2"
-        mandatory
       >
         <MultiComboBox>
           <StandardListItem selected>Selection 1</StandardListItem>
@@ -154,7 +153,6 @@ export const renderStory = () => {
         label="MultBox CustomListItem w/ initial selected"
         visibleInFilterBar={false}
         groupName="Group 2"
-        mandatory
       >
         <MultiComboBox>
           <CustomListItem>Selection 1</CustomListItem>
@@ -163,7 +161,7 @@ export const renderStory = () => {
           <CustomListItem>Selection 1</CustomListItem>
         </MultiComboBox>
       </FilterGroupItem>
-      <FilterGroupItem label="Date Picker" visibleInFilterBar={true} groupName="Group 2" mandatory>
+      <FilterGroupItem label="Date Picker" visibleInFilterBar={false} groupName="Group 2">
         <DatePicker />
       </FilterGroupItem>
       <FilterGroupItem label="Single Checkbox" groupName="Group 2">

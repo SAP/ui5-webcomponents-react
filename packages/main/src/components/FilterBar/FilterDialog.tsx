@@ -60,7 +60,8 @@ export const FilterDialog = (props) => {
   const [childrenWithNewRef, setChildrenWithRef] = useState(initRefs);
 
   useEffect(() => {
-    setChildrenWithRef(children);
+    const visibleChildren = children.filter((child) => child.props.visible !== false);
+    setChildrenWithRef(visibleChildren);
   }, [children]);
 
   const handleSearch = useCallback(
