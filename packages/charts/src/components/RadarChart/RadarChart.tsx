@@ -17,7 +17,8 @@ import {
   Tooltip
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { AxisTicks, DataLabel } from '../../internal/CustomElements';
+import { AxisTicks } from '../../internal/CustomElements';
+import { useDataLabel } from '../../hooks/useLabelElements';
 
 type RadarChartProps = RechartBaseProps;
 
@@ -77,6 +78,14 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     [onDataPointClick]
   );
 
+  const RadarDataLabel = useDataLabel(
+    chartConfig.dataLabel,
+    dataLabelCustomElement,
+    dataLabelFormatter,
+    chartConfig.stacked,
+    true
+  );
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -104,7 +113,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
                 }
           }
         />
-        <PolarRadiusAxis tickFormatter={(e) => yAxisFormatter(e)} />
+        <PolarRadiusAxis tickFormatter={yAxisFormatter} />
         {currentDataKeys.map((key, index) => (
           <Radar
             key={index}
@@ -114,17 +123,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             fillOpacity={0.5}
-            label={
-              chartConfig.dataLabel
-                ? dataLabelCustomElement
-                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
-                  : {
-                      content: (label) => dataLabelFormatter(label.value),
-                      fontSize: ThemingParameters.sapUiFontSmallSize,
-                      fill: ThemingParameters.sapContent_LabelColor
-                    }
-                : false
-            }
+            label={RadarDataLabel}
           />
         ))}
         <Tooltip />

@@ -19,8 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { DataLabel } from '../../internal/CustomElements';
-import { renderAxisTicks } from '../../util/Utils';
+import { useDataLabel, useXAxisLabel } from '../../hooks/useLabelElements';
 
 type LineChartProps = RechartBaseProps;
 
@@ -103,6 +102,10 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     [onDataPointClick]
   );
 
+  const LineDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter);
+
+  const XAxisLabel = useXAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -122,19 +125,13 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis
-            dataKey={labelKey}
-            interval={0}
-            tick={(props) => renderAxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)}
-          />
-        )}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} interval={0} tick={XAxisLabel} />}
         <YAxis
           unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
           yAxisId="left"
-          tickFormatter={(e) => yAxisFormatter(e)}
+          tickFormatter={yAxisFormatter}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
@@ -151,18 +148,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             key={key}
             name={key}
             strokeOpacity={chartConfig.strokeOpacity}
-            label={
-              chartConfig.dataLabel
-                ? dataLabelCustomElement
-                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
-                  : {
-                      content: (d) => dataLabelFormatter(d.value),
-                      position: 'top',
-                      fontSize: ThemingParameters.sapUiFontSmallSize,
-                      fill: ThemingParameters.sapContent_LabelColor
-                    }
-                : false
-            }
+            label={LineDataLabel}
             type="monotone"
             dataKey={key}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}

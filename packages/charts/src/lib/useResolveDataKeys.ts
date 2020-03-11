@@ -1,3 +1,3 @@
-import { useResolveDataKeys } from '../internal/useResolveDataKeys';
+import { useResolveDataKeys } from '../hooks/useResolveDataKeys';
 
 export { useResolveDataKeys };

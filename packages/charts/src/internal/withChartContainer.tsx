@@ -2,7 +2,7 @@ import React, { ComponentType, CSSProperties, forwardRef, Ref, useMemo, useRef }
 import { createUseStyles } from 'react-jss';
 import { ChartBaseProps } from '../interfaces/ChartBaseProps';
 import { getLoadingState } from './Placeholder';
-import { useSizeMonitor } from './useSizeMonitor';
+import { useSizeMonitor } from '../hooks/useSizeMonitor';
 
 const calculateChartHeight = (props) => {
   if (props.noLegend) {

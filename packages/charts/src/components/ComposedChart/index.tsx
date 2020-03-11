@@ -19,8 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { DataLabel } from '../../internal/CustomElements';
-import { renderAxisTicks } from '../../util/Utils';
+import { useDataLabel, useXAxisLabel } from '../../hooks/useLabelElements';
 
 enum ChartTypes {
   line = Line,
@@ -71,6 +70,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     noLegend = false,
     xAxisFormatter = (el) => el,
     yAxisFormatter = (el) => el,
+
     defaults = {
       barSize: 20,
       barGap: 3,
@@ -161,6 +161,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     [elements]
   );
 
+  const ComposedDataLabel = useDataLabel(
+    chartConfig.dataLabel,
+    defaults.dataLabelCustomElement,
+    defaults.dataLabelFormatter,
+    defaults.stackId
+  );
+
+  const XAxisLabel = useXAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+
   return (
     <ChartContainer
       ref={chartRef}
@@ -184,7 +193,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           <XAxis
             interval={0}
             dataKey={labelKey}
-            tick={(props) => renderAxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)}
+            tick={XAxisLabel}
             padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
           />
         )}
@@ -235,16 +244,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.activeDot = {
                 onClick: onDataPointClickInternal
               };
-              chartElementProps.label = chartConfig.dataLabel
-                ? dataLabelCustomElement
-                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
-                  : {
-                      content: (d) => dataLabelFormatter(d.value),
-                      position: 'top',
-                      fontSize: ThemingParameters.sapUiFontSmallSize,
-                      fill: ThemingParameters.sapContent_LabelColor
-                    }
-                : false;
+              chartElementProps.label = ComposedDataLabel;
               chartElementProps.type = lineType;
               break;
             case 'bar':
@@ -253,32 +253,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.stackId = config.stackId ?? undefined;
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = chartConfig.dataLabel
-                ? dataLabelCustomElement
-                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
-                  : {
-                      content: (d) => dataLabelFormatter(d.value),
-                      position: 'top',
-                      fontSize: ThemingParameters.sapUiFontSmallSize,
-                      fill: ThemingParameters.sapContent_LabelColor
-                    }
-                : false;
+              chartElementProps.label = ComposedDataLabel;
               break;
             case 'area':
               chartElementProps.type = 'monotone';
               chartElementProps.fillOpacity = 0.3;
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = chartConfig.dataLabel
-                ? dataLabelCustomElement
-                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
-                  : {
-                      content: (d) => dataLabelFormatter(d.value),
-                      position: 'top',
-                      fontSize: ThemingParameters.sapUiFontSmallSize,
-                      fill: ThemingParameters.sapContent_LabelColor
-                    }
-                : false;
+              chartElementProps.label = ComposedDataLabel;
               break;
           }
           return (

@@ -1,3 +1,3 @@
-import { useLegendItemClick } from '../internal/useLegendItemClick';
+import { useLegendItemClick } from '../hooks/useLegendItemClick';
 
 export { useLegendItemClick };

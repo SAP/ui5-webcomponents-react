@@ -6,7 +6,7 @@ import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
@@ -19,8 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { DataLabel } from '../../internal/CustomElements';
-import { renderAxisTicks } from '../../util/Utils';
+import { useDataLabel, useXAxisLabel } from '../../hooks/useLabelElements';
 
 type BarChartProps = RechartBaseProps;
 
@@ -82,16 +81,13 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const onDataPointClickInternal = useCallback(
     (payload, i, event) => {
       if (payload && onDataPointClick) {
+        const value = payload.value.length ? payload.value[1] - payload.value[0] : payload.value;
         onDataPointClick(
           Event.of(null, event, {
             dataKey: Object.keys(payload)
               .filter((key) => key !== 'value')
-              .find((key) =>
-                payload.value.length
-                  ? payload[key] === payload.value[1] - payload.value[0]
-                  : payload[key] === payload.value
-              ),
-            value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
+              .find((key) => payload[key] === value),
+            value,
             payload: payload.payload,
             xIndex: i
           })
@@ -101,20 +97,15 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     [onDataPointClick]
   );
 
-  const BarDataLabel = useCallback(
-    (props) => {
-      return DataLabel(props, dataLabelFormatter, dataLabelCustomElement);
-    },
-    [dataLabelFormatter, dataLabelCustomElement]
+  const BarDataLabel = useDataLabel(
+    chartConfig.dataLabel,
+    dataLabelCustomElement,
+    dataLabelFormatter,
+    chartConfig.stacked,
+    true
   );
 
-  const DefaultDataLabel = useMemo(() => {
-    return {
-      position: chartConfig.stacked ? 'insideRight' : 'right',
-      content: (label) => dataLabelFormatter(label.value),
-      fill: ThemingParameters.sapContent_LabelColor
-    };
-  }, [chartConfig.stacked, dataLabelFormatter]);
+  const XAxisLabel = useXAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
   return (
     <ChartContainer
@@ -140,9 +131,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis type="number" tick={(props) => renderAxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)} />
-        )}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis type="number" tick={XAxisLabel} />}
         <YAxis
           tickFormatter={yAxisFormatter}
           unit={chartConfig.yAxisUnit}
@@ -156,7 +145,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             stackId={chartConfig.stacked ? 'A' : undefined}
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
-            label={chartConfig.dataLabel ? (dataLabelCustomElement ? BarDataLabel : DefaultDataLabel) : false}
+            label={BarDataLabel}
             key={key}
             name={key}
             dataKey={key}

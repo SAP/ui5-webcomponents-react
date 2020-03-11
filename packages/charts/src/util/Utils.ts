@@ -74,7 +74,8 @@ let secondElementX = 0;
 export const renderAxisTicks = (axisProps, xAxisFormatter, xAxisUnit) => {
   const { payload } = axisProps;
   const prevX = previousX;
-  switch (payload.index) {
+  const index = payload.index ?? axisProps.index;
+  switch (index) {
     case 0:
       previousX = payload.coordinate;
       return AxisTicks(axisProps, xAxisFormatter, xAxisUnit, secondElementX - payload.coordinate <= 50);

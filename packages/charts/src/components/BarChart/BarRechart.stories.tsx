@@ -18,8 +18,6 @@ export const defaultStory = () => (
     height={text('height', '95vh')}
     loading={boolean('loading', false)}
     noLegend={boolean('noLegend', false)}
-    chartConfig={{ dataLabel: true }}
-    // dataLabelCustomElement={(el) => <text>{el}</text>}
   />
 );
 

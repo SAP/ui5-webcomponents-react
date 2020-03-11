@@ -19,8 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { DataLabel } from '../../internal/CustomElements';
-import { renderAxisTicks } from '../../util/Utils';
+import { useDataLabel, useXAxisLabel } from '../../hooks/useLabelElements';
 
 type ColumnChartProps = RechartBaseProps;
 
@@ -111,6 +110,16 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     [onDataPointClick]
   );
 
+  const ColumnDataLabel = useDataLabel(
+    chartConfig.dataLabel,
+    dataLabelCustomElement,
+    dataLabelFormatter,
+    chartConfig.stacked,
+    false
+  );
+
+  const XAxisLabel = useXAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -130,15 +139,9 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis
-            interval={0}
-            tick={(props) => renderAxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit)}
-            dataKey={labelKey}
-          />
-        )}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} tick={XAxisLabel} dataKey={labelKey} />}
         <YAxis
-          tickFormatter={(e) => yAxisFormatter(e)}
+          tickFormatter={yAxisFormatter}
           unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
@@ -159,17 +162,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             stackId={chartConfig.stacked ? 'A' : undefined}
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
-            label={
-              chartConfig.dataLabel
-                ? dataLabelCustomElement
-                  ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
-                  : {
-                      position: chartConfig.stacked ? 'insideTop' : 'top',
-                      content: (label) => dataLabelFormatter(label.value),
-                      fill: ThemingParameters.sapContent_LabelColor
-                    }
-                : false
-            }
+            label={ColumnDataLabel}
             key={key}
             name={key}
             dataKey={key}
