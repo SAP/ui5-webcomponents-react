@@ -6,7 +6,7 @@ const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const datasets = [{ data: [65, 59, 80, 81, 56, 55, 40] }];
 
 export default {
-  title: '2 Charts / PieChart',
+  title: 'Charts / PieChart',
   component: PieChart
 };
 

@@ -4,7 +4,7 @@ import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import React from 'react';
 
 export default {
-  title: '4 UI5 Web Components / Switch',
+  title: 'UI5 Web Components / Switch',
   component: Switch
 };
 

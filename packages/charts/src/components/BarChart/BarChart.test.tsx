@@ -1,6 +1,6 @@
 import { mountThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
-import { datasets, labels, singleDataset } from '../../test/resources/ChartProps';
+import { datasets, labels, singleDataset } from '../../resources/ChartProps';
 import { BarChart } from './index';
 
 describe('BarChart', () => {

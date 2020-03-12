@@ -3,7 +3,7 @@ import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React from 'react';
 
 export default {
-  title: '4 UI5 Web Components / Label',
+  title: 'UI5 Web Components / Label',
   component: Label
 };
 

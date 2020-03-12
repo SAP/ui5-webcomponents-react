@@ -194,7 +194,7 @@ renderStory.story = {
 };
 
 export default {
-  title: '3 Components / FilterBar',
+  title: 'Components / FilterBar',
   component: FilterBar,
   parameters: {
     subcomponents: { FilterGroupItem }
