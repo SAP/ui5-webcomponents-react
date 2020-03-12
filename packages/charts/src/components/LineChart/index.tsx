@@ -77,8 +77,6 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
     <Line
       ref={chartRef}
       data={data}
-      height={height}
-      width={width}
       options={chartOptions}
       getDatasetAtEvent={getDatasetAtEvent}
       getElementAtEvent={getElementAtEvent}

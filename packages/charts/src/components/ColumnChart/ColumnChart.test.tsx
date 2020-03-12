@@ -1,6 +1,6 @@
 import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
 import * as React from 'react';
-import { labels, singleDataset } from '../../test/resources/ChartProps';
+import { labels, singleDataset } from '../../resources/ChartProps';
 import { ColumnChart } from './index';
 
 describe('ColumnChart', () => {

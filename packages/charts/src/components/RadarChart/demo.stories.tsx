@@ -15,7 +15,7 @@ const datasets = [
 ];
 
 export default {
-  title: '2 Charts / RadarChart',
+  title: 'Charts / RadarChart',
   component: RadarChart
 };
 

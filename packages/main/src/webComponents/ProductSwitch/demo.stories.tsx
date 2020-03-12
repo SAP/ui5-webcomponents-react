@@ -4,7 +4,7 @@ import { ProductSwitchItem } from '@ui5/webcomponents-react/lib/ProductSwitchIte
 import React from 'react';
 
 export default {
-  title: '4 UI5 Web Components / ProductSwitch',
+  title: 'UI5 Web Components / ProductSwitch',
   component: ProductSwitch,
   parameters: {
     subcomponents: { ProductSwitchItem }

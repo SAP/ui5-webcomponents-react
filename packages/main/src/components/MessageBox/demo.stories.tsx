@@ -20,6 +20,6 @@ defaultStory.story = {
 };
 
 export default {
-  title: '3 Components / MessageBox',
+  title: 'Components / MessageBox',
   component: MessageBox
 };

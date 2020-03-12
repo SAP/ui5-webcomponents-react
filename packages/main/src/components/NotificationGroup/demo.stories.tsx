@@ -64,6 +64,6 @@ defaultStory.story = {
 };
 
 export default {
-  title: '3 Components / NotificationGroup',
+  title: 'Components / NotificationGroup',
   component: NotificationGroup
 };

@@ -25,7 +25,8 @@
     "get-best-contrast-color": "^0.3.1",
     "lodash.merge": "^4.6.2",
     "react-chartjs-2": "^2.8.0",
-    "react-content-loader": "^5.0.2"
+    "react-content-loader": "^5.0.2",
+    "recharts": "2.0.0-beta.1"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.8"

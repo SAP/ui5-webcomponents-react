@@ -1,6 +1,6 @@
+import * as parameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 import React from 'react';
 import ContentLoader from 'react-content-loader';
-import * as parameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 export const LineChartPlaceholder = (props) => {
   return (

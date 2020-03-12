@@ -4,7 +4,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React from 'react';
 
 export default {
-  title: '4 UI5 Web Components / Title',
+  title: 'UI5 Web Components / Title',
   component: Title
 };
 

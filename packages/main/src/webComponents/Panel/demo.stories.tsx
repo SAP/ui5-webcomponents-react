@@ -6,7 +6,7 @@ import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessib
 import React from 'react';
 
 export default {
-  title: '4 UI5 Web Components / Panel',
+  title: 'UI5 Web Components / Panel',
   component: Panel
 };
 

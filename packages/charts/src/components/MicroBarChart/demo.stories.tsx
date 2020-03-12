@@ -14,7 +14,7 @@ const valueFormatter = (value) => `${value}$`;
 const labelFormatter = (value) => `${value} in Dollar`;
 
 export default {
-  title: '2 Charts / Micro Bar Chart',
+  title: 'Charts / Micro Bar Chart',
   component: MicroBarChart
 };
 

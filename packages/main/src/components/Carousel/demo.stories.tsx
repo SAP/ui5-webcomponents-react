@@ -68,6 +68,6 @@ renderCarouselWithOneChild.story = {
 };
 
 export default {
-  title: '3 Components / Carousel',
+  title: 'Components / Carousel',
   component: Carousel
 };
