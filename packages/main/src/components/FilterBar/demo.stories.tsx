@@ -4,6 +4,7 @@ import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
+import { FilterGroupItem } from '@ui5/webcomponents-react/lib/FilterGroupItem';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
@@ -15,7 +16,6 @@ import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import React from 'react';
-import { FilterGroupItem } from '../FilterGroupItem';
 
 const variantItems = [
   { label: 'Variant 1', key: '1' },
