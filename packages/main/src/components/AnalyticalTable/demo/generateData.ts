@@ -20,242 +20,39 @@ const possibleLastNames = [
 
 const getRandomName = () => `${getRandomArrayEntry(possibleFirstNames)} ${getRandomArrayEntry(possibleLastNames)}`;
 
-const makeTreeEntry = () => ({
-  name: getRandomName(),
-  age: getRandomNumber(18, 65),
-  friend: {
+const range = (len) => {
+  const arr = [];
+  for (let i = 0; i < len; i++) {
+    arr.push(i);
+  }
+  return arr;
+};
+
+const newEntry = () => {
+  return {
     name: getRandomName(),
-    age: getRandomNumber(18, 65)
-  },
-  subRows: [
-    {
+    age: getRandomNumber(18, 65),
+    friend: {
       name: getRandomName(),
-      age: getRandomNumber(18, 65),
-      friend: {
-        name: getRandomName(),
-        age: getRandomNumber(18, 65)
-      },
-      subRows: [
-        {
-          name: getRandomName(),
-          age: getRandomNumber(18, 65),
-          friend: {
-            name: getRandomName(),
-            age: getRandomNumber(18, 65)
-          },
-          subRows: [
-            {
-              name: getRandomName(),
-              age: getRandomNumber(18, 65),
-              friend: {
-                name: getRandomName(),
-                age: getRandomNumber(18, 65)
-              },
-              subRows: [
-                {
-                  name: getRandomName(),
-                  age: getRandomNumber(18, 65),
-                  friend: {
-                    name: getRandomName(),
-                    age: getRandomNumber(18, 65)
-                  },
-                  subRows: [
-                    {
-                      name: getRandomName(),
-                      age: getRandomNumber(18, 65),
-                      friend: {
-                        name: getRandomName(),
-                        age: getRandomNumber(18, 65)
-                      },
-                      subRows: [
-                        {
-                          name: getRandomName(),
-                          age: getRandomNumber(18, 65),
-                          friend: {
-                            name: getRandomName(),
-                            age: getRandomNumber(18, 65)
-                          },
-                          subRows: [
-                            {
-                              name: getRandomName(),
-                              age: getRandomNumber(18, 65),
-                              friend: {
-                                name: getRandomName(),
-                                age: getRandomNumber(18, 65)
-                              },
-                              subRows: [
-                                {
-                                  name: getRandomName(),
-                                  age: getRandomNumber(18, 65),
-                                  friend: {
-                                    name: getRandomName(),
-                                    age: getRandomNumber(18, 65)
-                                  },
-                                  subRows: [
-                                    {
-                                      name: getRandomName(),
-                                      age: getRandomNumber(18, 65),
-                                      friend: {
-                                        name: getRandomName(),
-                                        age: getRandomNumber(18, 65)
-                                      },
-                                      subRows: [
-                                        {
-                                          name: getRandomName(),
-                                          age: getRandomNumber(18, 65),
-                                          friend: {
-                                            name: getRandomName(),
-                                            age: getRandomNumber(18, 65)
-                                          },
-                                          subRows: [
-                                            {
-                                              name: getRandomName(),
-                                              age: getRandomNumber(18, 65),
-                                              friend: {
-                                                name: getRandomName(),
-                                                age: getRandomNumber(18, 65)
-                                              },
-                                              subRows: [
-                                                {
-                                                  name: getRandomName(),
-                                                  age: getRandomNumber(18, 65),
-                                                  friend: {
-                                                    name: getRandomName(),
-                                                    age: getRandomNumber(18, 65)
-                                                  },
-                                                  subRows: [
-                                                    {
-                                                      name: getRandomName(),
-                                                      age: getRandomNumber(18, 65),
-                                                      friend: {
-                                                        name: getRandomName(),
-                                                        age: getRandomNumber(18, 65)
-                                                      },
-                                                      subRows: [
-                                                        {
-                                                          name: getRandomName(),
-                                                          age: getRandomNumber(18, 65),
-                                                          friend: {
-                                                            name: getRandomName(),
-                                                            age: getRandomNumber(18, 65)
-                                                          },
-                                                          subRows: [
-                                                            {
-                                                              name: getRandomName(),
-                                                              age: getRandomNumber(18, 65),
-                                                              friend: {
-                                                                name: getRandomName(),
-                                                                age: getRandomNumber(18, 65)
-                                                              }
-                                                            }
-                                                          ]
-                                                        }
-                                                      ]
-                                                    }
-                                                  ]
-                                                }
-                                              ]
-                                            }
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              name: getRandomName(),
-              age: getRandomNumber(18, 65),
-              friend: {
-                name: getRandomName(),
-                age: getRandomNumber(18, 65)
-              }
-            }
-          ]
-        },
-        {
-          name: getRandomName(),
-          age: getRandomNumber(18, 65),
-          friend: {
-            name: getRandomName(),
-            age: getRandomNumber(18, 65)
-          }
-        }
-      ]
-    },
-    {
-      name: getRandomName(),
-      age: getRandomNumber(18, 65),
-      friend: {
-        name: getRandomName(),
-        age: getRandomNumber(18, 65)
-      },
-      subRows: [
-        {
-          name: getRandomName(),
-          age: getRandomNumber(18, 65),
-          friend: {
-            name: getRandomName(),
-            age: getRandomNumber(18, 65)
-          },
-          subRows: [
-            {
-              name: getRandomName(),
-              age: getRandomNumber(18, 65),
-              friend: {
-                name: getRandomName(),
-                age: getRandomNumber(18, 65)
-              }
-            },
-            {
-              name: getRandomName(),
-              age: getRandomNumber(18, 65),
-              friend: {
-                name: getRandomName(),
-                age: getRandomNumber(18, 65)
-              },
-              subRows: [
-                {
-                  name: getRandomName(),
-                  age: getRandomNumber(18, 65),
-                  friend: {
-                    name: getRandomName(),
-                    age: getRandomNumber(18, 65)
-                  }
-                },
-                {
-                  name: getRandomName(),
-                  age: getRandomNumber(18, 65),
-                  friend: {
-                    name: getRandomName(),
-                    age: getRandomNumber(18, 65)
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          name: getRandomName(),
-          age: getRandomNumber(18, 65),
-          friend: {
-            name: getRandomName(),
-            age: getRandomNumber(18, 65)
-          }
-        }
-      ]
+      age: getRandomNumber(18, 65)
     }
-  ]
-});
+  };
+};
+
+const makeTreeEntry = (...lens) => {
+  const makeDataLevel = (depth = 0) => {
+    const len = lens[depth];
+    return range(len).map((d) => {
+      return {
+        ...newEntry(),
+        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined
+      };
+    });
+  };
+  return makeDataLevel();
+};
+
+
 
 const makeEntry = () => ({
   name: getRandomName(),
@@ -268,9 +65,12 @@ const makeEntry = () => ({
 });
 
 const generateData = (numEntries, isTree = false) => {
+  if (isTree) {
+    return makeTreeEntry(numEntries, 4, 4, 4);
+  }
   const data = [];
   for (let i = 0; i < numEntries; i++) {
-    isTree ? data.push(makeTreeEntry()) : data.push(makeEntry());
+    data.push(makeEntry());
   }
   return data;
 };
