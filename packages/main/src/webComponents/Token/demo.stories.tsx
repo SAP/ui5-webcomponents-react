@@ -4,7 +4,7 @@ import { Token } from '@ui5/webcomponents-react/lib/Token';
 import React from 'react';
 
 export default {
-  title: '4 UI5 Web Components / Token',
+  title: 'UI5 Web Components / Token',
   component: Token
 };
 

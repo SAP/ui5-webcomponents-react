@@ -29,6 +29,6 @@ defaultStory.story = {
 };
 
 export default {
-  title: '3 Components / FlexBox',
+  title: 'Components / FlexBox',
   component: FlexBox
 };

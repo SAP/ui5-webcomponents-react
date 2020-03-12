@@ -15,6 +15,6 @@ renderLoader.story = {
 };
 
 export default {
-  title: '3 Components / Loader',
+  title: 'Components / Loader',
   component: Loader
 };

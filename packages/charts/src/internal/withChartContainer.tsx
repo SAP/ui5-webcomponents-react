@@ -2,7 +2,7 @@ import React, { ComponentType, CSSProperties, forwardRef, Ref, useMemo, useRef }
 import { createUseStyles } from 'react-jss';
 import { ChartBaseProps } from '../interfaces/ChartBaseProps';
 import { getLoadingState } from './Placeholder';
-import { useSizeMonitor } from './useSizeMonitor';
+import { useSizeMonitor } from '../hooks/useSizeMonitor';
 
 const calculateChartHeight = (props) => {
   if (props.noLegend) {
@@ -23,7 +23,7 @@ const styles = {
       padding: '0 1rem',
       boxSizing: 'border-box'
     },
-    '& svg': {
+    '& > svg[role="img"]': {
       width: (props) => `${props.width}px`,
       height: calculateChartHeight
     }

@@ -11,7 +11,7 @@ import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 import React from 'react';
 
 export default {
-  title: '4 UI5 Web Components / TabContainer',
+  title: 'UI5 Web Components / TabContainer',
   component: TabContainer,
   parameters: {
     subcomponents: { Tab }

@@ -54,6 +54,6 @@ withImage.story = {
 };
 
 export default {
-  title: '3 Components / Avatar',
+  title: 'Components / Avatar',
   component: Avatar
 };

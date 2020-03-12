@@ -4,7 +4,7 @@ import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
 import React from 'react';
 
 export default {
-  title: '4 UI5 Web Components / Dialog',
+  title: 'UI5 Web Components / Dialog',
   component: Dialog
 };
 

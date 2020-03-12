@@ -179,7 +179,7 @@ renderShortContent.story = {
 };
 
 export default {
-  title: '3 Components / ObjectPage',
+  title: 'Components / ObjectPage',
   component: ObjectPage,
   parameters: {
     subcomponents: { ObjectPageSection, ObjectPageSubSection }
