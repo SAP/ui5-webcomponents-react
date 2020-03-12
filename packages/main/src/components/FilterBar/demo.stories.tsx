@@ -78,13 +78,24 @@ export const renderStory = () => {
       activeFiltersCount={number('activeFiltersCount', 0)}
       showClearOnFB={boolean('showClearOnFB', true)}
       showRestoreOnFB={boolean('showRestoreOnFB', true)}
-      showGo={boolean('showGo', false)}
-      showGoOnFB={boolean('showGoOnFB', false)}
+      showGo={boolean('showGo', true)}
+      showGoOnFB={boolean('showGoOnFB', true)}
       showFilterConfiguration={boolean('showFilterConfiguration', true)}
       showSearchOnDialog={boolean('showSearchOnDialog', true)}
       showClearButton={boolean('showClearButton', true)}
       showRestoreButton={boolean('showRestoreButton', true)}
       filterBarExpanded={boolean('filterBarExpanded', true)}
+      //todo check
+      handleToggleFilters={action('handleToggleFilters')}
+      handleFiltersDialogOpen={action('handleFiltersDialogOpen')}
+      handleFiltersDialogClose={action('handleFiltersDialogClose')}
+      handleFiltersDialogSave={action('handleFiltersDialogSave')}
+      handleFiltersDialogClear={action('handleFiltersDialogClear')}
+      handleClear={action('handleClear')}
+      handleFiltersDialogSelectionChange={action('handleFiltersDialogSelectionChange')}
+      handleFiltersDialogSearch={action('handleFiltersDialogSearch')}
+      handleGo={action('handleGo')}
+      handleRestore={action('handleRestore')}
     >
       <FilterGroupItem label="Input" visibleInFilterBar={true}>
         <Input placeholder="Placeholder" />

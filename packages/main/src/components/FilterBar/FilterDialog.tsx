@@ -13,6 +13,7 @@ import { Bar, CheckBox, FlexBoxAlignItems, Icon, Input, TitleLevel } from '../..
 import { BarDesign } from '../../enums/BarDesign';
 import styles from './FilterBarDialog.jss';
 import { addRef, renderSearchWithValue } from './utils';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 // import { Input } from '@ui5/webcomponents-react/lib/Input';
 
 //todo check dependencies arrays
@@ -27,15 +28,13 @@ export const FilterDialog = (props) => {
     showGoButton,
     showSearch,
     renderFBSearch,
-    handleToggleFilterVisible,
     handleClearFilters,
     handleRestoreFilters,
     handleDialogSave,
     searchValue,
     handleSearchValueChange,
     handleGo,
-
-    //todo
+    handleSelectionChange,
     handleDialogSearch
   } = props;
   const classes = useStyles();
@@ -58,48 +57,64 @@ export const FilterDialog = (props) => {
     });
     setRefs(refs);
     return newChildren;
-  }, []);
+  }, [children]);
 
   const [childrenWithNewRef, setChildrenWithRef] = useState(initRefs);
 
   useEffect(() => {
     const visibleChildren = children.filter((child) => child.props.visible !== false);
     setChildrenWithRef(visibleChildren);
-  }, [children]);
+  }, [children, setChildrenWithRef]);
 
   const handleSearch = useCallback(
     (e) => {
-      //todo Event.of
+      handleDialogSearch(Event.of(null, e.getOriginalEvent(), { value: e.parameters.value }));
       setSearchString(e.parameters.value);
     },
     [setSearchString]
   );
-  const handleSave = useCallback(() => {
-    //todo Event.of
-    handleDialogSave(
-      addRef(childrenWithNewRef, refs, 'dialogRef'),
-      Object.keys(activeFilters).length > 0 ? Object.keys(activeFilters).map((item) => activeFilters[item]) : undefined
-    );
-    if (showSearch) {
-      handleSearchValueChange(searchRef.current?.children[1]._state.value);
-    }
-  }, [
-    handleDialogSave,
-    childrenWithNewRef,
-    refs,
-    activeFilters,
-    handleToggleFilterVisible,
-    showSearch,
-    handleSearchValueChange,
-    searchRef
-  ]);
+  const handleSave = useCallback(
+    (e) => {
+      //todo Event.of
+      handleDialogSave(
+        e,
+        addRef(childrenWithNewRef, refs, 'dialogRef'),
+        Object.keys(activeFilters).length > 0
+          ? Object.keys(activeFilters).map((item) => activeFilters[item])
+          : undefined
+      );
+      if (showSearch) {
+        handleSearchValueChange(searchRef.current?.children[1]._state.value);
+      }
+    },
+    [handleDialogSave, childrenWithNewRef, refs, activeFilters, showSearch, handleSearchValueChange, searchRef]
+  );
 
-  const handleClose = useCallback(() => {
-    if (!showGoButton) {
-      handleSave();
-    }
-    handleDialogClose();
-  }, [showGoButton, handleSave, handleDialogClose]);
+  const handleClose = useCallback(
+    (e) => {
+      if (!showGoButton) {
+        handleSave(e);
+        return;
+      }
+      handleDialogClose(e);
+    },
+    [showGoButton, handleSave, handleDialogClose]
+  );
+
+  const handleDialogGo = useCallback(
+    (e) => {
+      handleGo(Event.of(null, e.getOriginalEvent()), {});
+      handleDialogClose(e);
+    },
+    [handleGo, handleDialogClose]
+  );
+
+  const handleRestore = useCallback(
+    (e) => {
+      handleRestoreFilters(e, 'dialog');
+    },
+    [handleRestoreFilters]
+  );
 
   const renderFooter = useCallback(() => {
     return (
@@ -108,7 +123,7 @@ export const FilterDialog = (props) => {
         renderContentRight={() => (
           <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
             {showGoButton && (
-              <Button onClick={handleGo} design={ButtonDesign.Emphasized}>
+              <Button onClick={handleDialogGo} design={ButtonDesign.Emphasized}>
                 Go
               </Button>
             )}
@@ -129,7 +144,7 @@ export const FilterDialog = (props) => {
     showGoButton,
     handleSave,
     handleClose,
-    handleRestoreFilters,
+    handleRestore,
     handleClearFilters
   ]);
 
@@ -143,11 +158,6 @@ export const FilterDialog = (props) => {
     [classes.header, showSearch, handleSearch]
   );
 
-  const handleRestore = useCallback(() => {
-    //todo Event.of
-    handleRestoreFilters('dialog');
-  }, [handleRestoreFilters]);
-
   const renderChildren = useCallback(() => {
     const currentChildren = childrenWithNewRef
       .map((child) => {
@@ -160,8 +170,10 @@ export const FilterDialog = (props) => {
   }, [childrenWithNewRef, searchString]);
 
   const handleCheckBoxChange = useCallback(
-    //todo Event.of
     (element, activeFilters) => (e) => {
+      handleSelectionChange(
+        Event.of(null, e.getOriginalEvent(), { element: { event: e, element }, checked: e.parameters.checked })
+      );
       setActiveFilters({ ...activeFilters, [element.key]: { event: e, element } });
     },
     [setActiveFilters]
