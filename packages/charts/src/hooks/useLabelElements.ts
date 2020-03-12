@@ -14,7 +14,16 @@ export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatt
             fill: ThemingParameters.sapContent_LabelColor
           }
       : false;
-  }, [stacked, dataLabelFormatter, dataLabelCustomElement]);
+  }, [stacked, bar, dataLabel, dataLabelFormatter, dataLabelCustomElement]);
+
+export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter) =>
+  useMemo(() => {
+    return dataLabel
+      ? dataLabelCustomElement
+        ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+        : (props) => dataLabelFormatter(props.value)
+      : false;
+  }, [dataLabelFormatter, dataLabelCustomElement, dataLabel]);
 
 export const useXAxisLabel = (xAxisFormatter, xAxisUnit) => {
   return useCallback(

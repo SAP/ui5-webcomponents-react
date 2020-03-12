@@ -17,7 +17,6 @@ import {
   Tooltip
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { AxisTicks } from '../../internal/CustomElements';
 import { useDataLabel } from '../../hooks/useLabelElements';
 
 type RadarChartProps = RechartBaseProps;
@@ -103,15 +102,10 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
         <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis
           dataKey={labelKey}
-          tick={
-            xAxisFormatter
-              ? (props) => AxisTicks(props, xAxisFormatter, chartConfig.xAxisUnit, false)
-              : {
-                  content: (label) => dataLabelFormatter(label.value),
-                  fontSize: ThemingParameters.sapUiFontSmallSize,
-                  fill: ThemingParameters.sapContent_LabelColor
-                }
-          }
+          tickFormatter={xAxisFormatter}
+          tick={{
+            fill: ThemingParameters.sapContent_LabelColor
+          }}
         />
         <PolarRadiusAxis tickFormatter={yAxisFormatter} />
         {currentDataKeys.map((key, index) => (
