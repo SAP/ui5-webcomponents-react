@@ -59,6 +59,6 @@ export const addRef = (children, refsArray, currentRef) =>
     });
   });
 
-export const renderSearchWithValue = (searchElement, searchValue) => {
-  return cloneElement(searchElement(), { value: searchValue });
+export const renderSearchWithValue = (renderSearchElement, searchValue) => {
+  return cloneElement(renderSearchElement(), { value: searchValue });
 };

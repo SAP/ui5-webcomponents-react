@@ -1,8 +1,10 @@
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import React, {
   Children,
   cloneElement,
@@ -18,10 +20,8 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
 import { addRef, renderSearchWithValue, setPropsOfChildren } from './utils';
@@ -42,23 +42,18 @@ export interface FilterBarPropTypes extends CommonProps {
   showGo?: boolean;
   activeFiltersCount: number | string;
   loading: boolean;
-  showSearchOnDialog?: boolean;
+  showSearchOnFiltersDialog?: boolean;
   showRestoreOnFB?: boolean;
-
-  //todo is implemented
-  handleToggleFilters?: (e) => {};
-  handleFiltersDialogSave?: (e) => {};
-  handleFiltersDialogClear?: (e) => {};
-  handleFiltersDialogOpen?: (e) => {};
-  handleFiltersDialogClose?: (e) => {};
-  handleFiltersDialogSelectionChange: (e) => {};
-  handleFiltersDialogSearch: (e) => {};
-  handleClear?: (e) => {};
-  handleGo?: (e) => {};
-  handleRestore?: (e) => {};
-  //todo
-
-
+  handleToggleFilters?: any;
+  handleFiltersDialogSave?: any;
+  handleFiltersDialogClear?: any;
+  handleFiltersDialogOpen?: any;
+  handleFiltersDialogClose?: any;
+  handleFiltersDialogSelectionChange: any;
+  handleFiltersDialogSearch: any;
+  handleClear?: any;
+  handleGo?: any;
+  handleRestore?: any;
 }
 
 interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
@@ -86,7 +81,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     showRestoreOnFB,
     showClearButton,
     showRestoreButton,
-    showSearchOnDialog,
+    showSearchOnFiltersDialog,
 
     handleToggleFilters,
     handleFiltersDialogOpen,
@@ -105,7 +100,11 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [filterRefs, setFilterRefs] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const searchRef = useRef(null);
-  //todo imports
+
+  useEffect(() => {
+    setShowFilters(useToolbar ? filterBarExpanded : true);
+  }, [setShowFilters, useToolbar, filterBarExpanded]);
+
   const initChildrenWithRef = useCallback(() => {
     let filterRefs = [];
     const newChildren = Children.toArray(children)
@@ -165,7 +164,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const handleDialogSave = useCallback(
     (e, currentChildren, toggledElements) => {
-      //todo Event.of
       let childrenWithNewProps = setPropsOfChildren(currentChildren, 'dialogRef');
       if (toggledElements) {
         childrenWithNewProps = handleToggleFilterVisible(toggledElements, childrenWithNewProps);
@@ -248,7 +246,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           handleSearchValueChange={handleSearchValueChange}
           showClearButton={showClearButton}
           showRestoreButton={showRestoreButton}
-          showSearch={showSearchOnDialog}
+          showSearch={showSearchOnFiltersDialog}
           renderFBSearch={renderSearch}
           handleToggleFilterVisible={handleToggleFilterVisible}
           handleClearFilters={handleFiltersDialogClear}
@@ -320,9 +318,19 @@ FilterBar.defaultProps = {
   showFilterConfiguration: false,
   showClearButton: false,
   showRestoreButton: false,
-  showDialogSearch: false,
+  showSearchOnFiltersDialog: false,
   considerGroupName: false,
-  loading: false
+  loading: false,
+  handleToggleFilters: () => {},
+  handleFiltersDialogOpen: () => {},
+  handleFiltersDialogClose: () => {},
+  handleFiltersDialogSave: () => {},
+  handleFiltersDialogClear: () => {},
+  handleClear: () => {},
+  handleFiltersDialogSelectionChange: () => {},
+  handleFiltersDialogSearch: () => {},
+  handleGo: () => {},
+  handleRestore: () => {}
 };
 
 FilterBar.displayName = 'FilterBar';

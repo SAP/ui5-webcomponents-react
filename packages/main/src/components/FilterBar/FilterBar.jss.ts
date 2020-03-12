@@ -1,7 +1,6 @@
 import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
 
 const styles = {
-  //todo check these styles
   outerContainer: {
     paddingTop: '0.5rem',
     paddingLeft: '2rem',

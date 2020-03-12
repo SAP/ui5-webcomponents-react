@@ -1,12 +1,14 @@
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React, { forwardRef, ReactElement, RefObject } from 'react';
-import { createUseStyles } from 'react-jss';
-import { BusyIndicator, BusyIndicatorSize, FlexBox } from '../..';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterGroupItem.jss';
 
-const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
+const useStyles = createComponentStyles(styles, { name: 'FilterGroupItem' });
 
 export interface FilterGroupItemPropTypes extends CommonProps {
   groupName?: string;
@@ -18,14 +20,10 @@ export interface FilterGroupItemPropTypes extends CommonProps {
   visibleInFilterBar?: boolean;
   children?: ReactElement;
   considerGroupName?: boolean;
-
-  //internal
-  inFB?: boolean;
 }
 
 export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref: RefObject<HTMLDivElement>) => {
   const classes = useStyles();
-  //todo cozy
   const {
     groupName,
     considerGroupName,
@@ -35,9 +33,10 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     visible,
     visibleInFilterBar,
     children,
-    inFB,
     style,
-    loading
+    loading,
+    // @ts-ignore
+    inFB
   } = props;
 
   const passThroughProps = usePassThroughHtmlProps(props);
@@ -52,14 +51,13 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     >
       <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
         <FlexBox>
-          {mandatory && <span style={{ color: 'red' }}>*</span>}
+          {mandatory && <span className={classes.mandatory}>*</span>}
           <Label tooltip={labelTooltip ?? label}>
             {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}
           ${label}`}
           </Label>
         </FlexBox>
         {loading ? (
-          //todo busy indicator backgroundcolor, size
           <BusyIndicator className={classes.loadingContainer} active size={BusyIndicatorSize.Small} />
         ) : (
           children
@@ -72,6 +70,5 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
 FilterGroupItem.defaultProps = {
   groupName: 'default',
   visible: true,
-  visibleInFilterBar: true,
-  inFB: false
+  visibleInFilterBar: true
 };

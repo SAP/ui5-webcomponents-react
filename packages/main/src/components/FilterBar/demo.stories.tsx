@@ -1,25 +1,20 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, number, select, text } from '@storybook/addon-knobs';
+import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
+import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
+import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
-import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';
-import { FilterType } from '@ui5/webcomponents-react/lib/FilterType';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
+import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { Select } from '@ui5/webcomponents-react/lib/Select';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
-import React, { CSSProperties, ReactElement, ReactNode, ReactNodeArray, useEffect, useState } from 'react';
-import {
-  CheckBox,
-  CustomListItem,
-  DatePicker,
-  MultiComboBox,
-  Option,
-  Select,
-  StandardListItem,
-  Text,
-  ValueState
-} from '../..';
+import React from 'react';
 import { FilterGroupItem } from '../FilterGroupItem';
 
 const variantItems = [
@@ -59,33 +54,24 @@ const renderSearch = () => {
 };
 
 export const renderStory = () => {
-  const [delayedLoading, setDelayedLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setDelayedLoading(false);
-    }, 4000);
-  }, []);
-
   return (
     <FilterBar
       renderSearch={renderSearch}
       renderVariants={renderVariants}
       useToolbar={boolean('useToolbar', true)}
       loading={boolean('loading', false)}
-      considerGroupName={boolean('considerGroupName', true)}
+      considerGroupName={boolean('considerGroupName', false)}
       filterContainerWidth={text('width', '12rem')}
       activeFiltersCount={number('activeFiltersCount', 0)}
-      showClearOnFB={boolean('showClearOnFB', true)}
-      showRestoreOnFB={boolean('showRestoreOnFB', true)}
-      showGo={boolean('showGo', true)}
-      showGoOnFB={boolean('showGoOnFB', true)}
-      showFilterConfiguration={boolean('showFilterConfiguration', true)}
-      showSearchOnDialog={boolean('showSearchOnDialog', true)}
-      showClearButton={boolean('showClearButton', true)}
-      showRestoreButton={boolean('showRestoreButton', true)}
+      showClearOnFB={boolean('showClearOnFB', false)}
+      showRestoreOnFB={boolean('showRestoreOnFB', false)}
+      showGo={boolean('showGo', false)}
+      showGoOnFB={boolean('showGoOnFB', false)}
+      showFilterConfiguration={boolean('showFilterConfiguration', false)}
+      showSearchOnFiltersDialog={boolean('showSearchOnFiltersDialog', false)}
+      showClearButton={boolean('showClearButton', false)}
+      showRestoreButton={boolean('showRestoreButton', false)}
       filterBarExpanded={boolean('filterBarExpanded', true)}
-      //todo check
       handleToggleFilters={action('handleToggleFilters')}
       handleFiltersDialogOpen={action('handleFiltersDialogOpen')}
       handleFiltersDialogClose={action('handleFiltersDialogClose')}
@@ -97,13 +83,26 @@ export const renderStory = () => {
       handleGo={action('handleGo')}
       handleRestore={action('handleRestore')}
     >
-      <FilterGroupItem label="Input" visibleInFilterBar={true}>
+      <FilterGroupItem
+        label="Input"
+        visibleInFilterBar={boolean('FilterGroupItem: visibleInFilterBar', true)}
+        loading={boolean('FilterGroupItem: loading', false)}
+      >
         <Input placeholder="Placeholder" />
       </FilterGroupItem>
-      <FilterGroupItem label="Switch" groupName="Group 1" visible={false}>
+      <FilterGroupItem
+        label="Switch"
+        groupName={text('FilterGroupItem: groupName', 'Custom Group')}
+        visible={boolean('FilterGroupItem: visible', true)}
+        loading={boolean('FilterGroupItem: loading', false)}
+      >
         <Switch />
       </FilterGroupItem>
-      <FilterGroupItem label="SELECT w/ initial selected" loading={delayedLoading} visibleInFilterBar={true}>
+      <FilterGroupItem
+        label="SELECT w/ initial selected"
+        loading={boolean('FilterGroupItem: loading', false)}
+        visibleInFilterBar={boolean('FilterGroupItem: visibleInFilterBar', true)}
+      >
         <Select>
           <Option>Option 1</Option>
           <Option selected>Option 2</Option>
@@ -111,7 +110,11 @@ export const renderStory = () => {
           <Option>Option 4</Option>
         </Select>
       </FilterGroupItem>
-      <FilterGroupItem label="SELECT w/o initial selected" groupName="Group 1" visibleInFilterBar={true}>
+      <FilterGroupItem
+        label="SELECT w/o initial selected"
+        groupName={text('FilterGroupItem: groupName', 'Custom Group')}
+        visibleInFilterBar={boolean('FilterGroupItem: visibleInFilterBar', true)}
+      >
         <Select onChange={(e) => console.log(e.parameters.selectedOption.dataset)}>
           <Option data-key="Test 1" selected icon="add">
             Test 1
@@ -130,7 +133,11 @@ export const renderStory = () => {
           </Option>
         </Select>
       </FilterGroupItem>
-      <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1" visibleInFilterBar={true}>
+      <FilterGroupItem
+        label="MultBox w/ initial selected"
+        groupName="Group 1"
+        loading={boolean('FilterGroupItem: loading', false)}
+      >
         <MultiComboBox>
           <Option>Option 1</Option>
           <Option selected>Option 2</Option>
@@ -138,7 +145,11 @@ export const renderStory = () => {
           <Option selected>Option 4</Option>
         </MultiComboBox>
       </FilterGroupItem>
-      <FilterGroupItem label="MultBox w/o initial selected" visibleInFilterBar={true} groupName="Group 2">
+      <FilterGroupItem
+        label="MultBox w/o initial selected"
+        groupName="Group 2"
+        mandatory={boolean('FilterGroupItem: mandatory', true)}
+      >
         <MultiComboBox>
           <Option>
             <Text>asd</Text>
@@ -148,11 +159,7 @@ export const renderStory = () => {
           <Option>Option 4</Option>
         </MultiComboBox>
       </FilterGroupItem>
-      <FilterGroupItem
-        label="MultBox StandardListItem w/ initial selected"
-        visibleInFilterBar={true}
-        groupName="Group 2"
-      >
+      <FilterGroupItem label="MultBox StandardListItem w/ initial selected" groupName="Group 1">
         <MultiComboBox>
           <StandardListItem selected>Selection 1</StandardListItem>
           <StandardListItem>Selection 2</StandardListItem>
@@ -161,7 +168,11 @@ export const renderStory = () => {
           <StandardListItem>Selection 5</StandardListItem>
         </MultiComboBox>
       </FilterGroupItem>
-      <FilterGroupItem label="MultBox CustomListItem w/ initial selected" visibleInFilterBar={true} groupName="Group 2">
+      <FilterGroupItem
+        label="MultBox CustomListItem w/ initial selected"
+        groupName="Group 2"
+        mandatory={boolean('FilterGroupItem: mandatory', true)}
+      >
         <MultiComboBox>
           <CustomListItem>Selection 1</CustomListItem>
           <CustomListItem selected>Selection 1</CustomListItem>
@@ -169,52 +180,12 @@ export const renderStory = () => {
           <CustomListItem>Selection 1</CustomListItem>
         </MultiComboBox>
       </FilterGroupItem>
-      <FilterGroupItem label="Date Picker" visibleInFilterBar={true} groupName="Group 2">
+      <FilterGroupItem label="Date Picker" groupName="Group 2" mandatory={boolean('FilterGroupItem: mandatory', true)}>
         <DatePicker />
       </FilterGroupItem>
       <FilterGroupItem label="Single Checkbox" groupName="Group 2">
         <CheckBox text="Check this" />
       </FilterGroupItem>
-      {/*  <FilterGroupItem*/}
-      {/*    label="Not supported component example"*/}
-      {/*    // visibleInFilterBar={true}*/}
-      {/*    groupName="Check Group"*/}
-      {/*    style={{ width: '400px' }}*/}
-      {/*  >*/}
-      {/*    <div style={{ display: 'flex' }}>*/}
-      {/*      <CheckBox text="Check this" />*/}
-      {/*      <CheckBox text="Check this" />*/}
-      {/*      <CheckBox text="Check this" />*/}
-      {/*    </div>*/}
-      {/*  </FilterGroupItem>*/}
-      {/*  <FilterItem*/}
-      {/*  onChange={(e) => alert(e.getParameter('selectedItem').key)}*/}
-      {/*  filterItems={filterItems}*/}
-      {/*  label="Deprecated Filter Item Select"*/}
-      {/*  key="classification"*/}
-      {/*  type={FilterType.Select}*/}
-      {/*  loading={boolean('loading', false)}*/}
-      {/*/>*/}
-      {/*  <FilterItem*/}
-      {/*    key={'filter2'}*/}
-      {/*    type={FilterType.Custom}*/}
-      {/*    label="Deprecated Filter Item Custom"*/}
-      {/*    changeEventName={'onClick'}*/}
-      {/*    valueParamName={'state'}*/}
-      {/*  >*/}
-      {/*    <Switch />*/}
-      {/*  </FilterItem>*/}
-      {/*  <FilterItem*/}
-      {/*    onChange={action('onChange')}*/}
-      {/*    filterItems={filterItems}*/}
-      {/*    style={{*/}
-      {/*      maxWidth: '200px'*/}
-      {/*    }}*/}
-      {/*    label="Deprecated Filter Item MultiSelect"*/}
-      {/*    key="Multi"*/}
-      {/*    type={FilterType.MultiSelect}*/}
-      {/*    loading={boolean('loading', false)}*/}
-      {/*  />*/}
     </FilterBar>
   );
 };
@@ -222,48 +193,10 @@ renderStory.story = {
   name: 'Default'
 };
 
-// export const renderStory = () => {
-//   return (
-//     <FilterBar renderSearch={renderSearch} renderVariants={renderVariants} useToolbar={boolean('useToolbar', true)}>
-//       <FilterItem
-//         onChange={(e) => alert(e.getParameter('selectedItem').key)}
-//         filterItems={filterItems}
-//         label="Classification"
-//         key="classification"
-//         type={FilterType.Select}
-//         loading={boolean('loading', false)}
-//       />
-//       <FilterItem
-//         key={'filter2'}
-//         type={FilterType.Custom}
-//         label={'Custom Filter 1'}
-//         changeEventName={'onClick'}
-//         valueParamName={'state'}
-//       >
-//         <Switch />
-//       </FilterItem>
-//       <FilterItem
-//         onChange={action('onChange')}
-//         filterItems={filterItems}
-//         style={{
-//           maxWidth: '200px'
-//         }}
-//         label="Multi"
-//         key="Multi"
-//         type={FilterType.MultiSelect}
-//         loading={boolean('loading', false)}
-//       />
-//     </FilterBar>
-//   );
-// };
-// renderStory.story = {
-//   name: 'Default'
-// };
-
 export default {
   title: '3 Components / FilterBar',
   component: FilterBar,
   parameters: {
-    subcomponents: { FilterItem }
+    subcomponents: { FilterGroupItem }
   }
 };

@@ -1,3 +1,5 @@
+import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+
 const styles = {
   filterItem: {
     width: '12rem',
@@ -34,6 +36,11 @@ const styles = {
       placeSelf: 'center auto',
       flexGrow: 1
     }
+  },
+  mandatory: {
+    fontSize: ThemingParameters.sapUiFontSize,
+    color: ThemingParameters.sapUiFieldRequiredColor,
+    height: '1rem'
   },
   loadingContainer: {
     display: 'flex',

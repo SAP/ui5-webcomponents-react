@@ -1,23 +1,26 @@
 import '@ui5/webcomponents-icons/dist/icons/search';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { Bar, CheckBox, FlexBoxAlignItems, Icon, Input, TitleLevel } from '../..';
-import { BarDesign } from '../../enums/BarDesign';
 import styles from './FilterBarDialog.jss';
 import { addRef, renderSearchWithValue } from './utils';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-// import { Input } from '@ui5/webcomponents-react/lib/Input';
 
-//todo check dependencies arrays
-const useStyles = createUseStyles(styles, { name: 'FilterBar' });
+const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
 export const FilterDialog = (props) => {
   const {
     open,
@@ -75,7 +78,9 @@ export const FilterDialog = (props) => {
   );
   const handleSave = useCallback(
     (e) => {
-      //todo Event.of
+      if (renderFBSearch) {
+        handleSearchValueChange(searchRef.current?.children[1]._state.value);
+      }
       handleDialogSave(
         e,
         addRef(childrenWithNewRef, refs, 'dialogRef'),
@@ -83,11 +88,8 @@ export const FilterDialog = (props) => {
           ? Object.keys(activeFilters).map((item) => activeFilters[item])
           : undefined
       );
-      if (showSearch) {
-        handleSearchValueChange(searchRef.current?.children[1]._state.value);
-      }
     },
-    [handleDialogSave, childrenWithNewRef, refs, activeFilters, showSearch, handleSearchValueChange, searchRef]
+    [renderFBSearch, handleSearchValueChange, searchRef, handleDialogSave, childrenWithNewRef, refs, activeFilters]
   );
 
   const handleClose = useCallback(
@@ -179,9 +181,9 @@ export const FilterDialog = (props) => {
     [setActiveFilters]
   );
 
-  const renderSearch = useCallback(() => {
-    return renderSearchWithValue(renderFBSearch, searchValue);
-  }, [renderFBSearch, searchValue]);
+  // const renderSearch = useCallback(() => {
+  //   return;
+  // }, [renderFBSearch, searchValue]);
 
   const renderGroups = useCallback(() => {
     let groups = {};
@@ -228,7 +230,7 @@ export const FilterDialog = (props) => {
         {renderFBSearch && (
           <div className={classes.fbSearch} ref={searchRef}>
             <span />
-            {renderSearch()}
+            {renderSearchWithValue(renderFBSearch, searchValue)}
           </div>
         )}
         {renderGroups()}
