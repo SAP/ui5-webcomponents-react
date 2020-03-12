@@ -33,7 +33,10 @@ export const FilterDialog = (props) => {
     handleDialogSave,
     searchValue,
     handleSearchValueChange,
-    handleGo
+    handleGo,
+
+    //todo
+    handleDialogSearch
   } = props;
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
@@ -66,6 +69,7 @@ export const FilterDialog = (props) => {
 
   const handleSearch = useCallback(
     (e) => {
+      //todo Event.of
       setSearchString(e.parameters.value);
     },
     [setSearchString]
@@ -95,7 +99,7 @@ export const FilterDialog = (props) => {
       handleSave();
     }
     handleDialogClose();
-  }, [showGoButton, handleSave]);
+  }, [showGoButton, handleSave, handleDialogClose]);
 
   const renderFooter = useCallback(() => {
     return (
@@ -170,7 +174,7 @@ export const FilterDialog = (props) => {
   const renderGroups = useCallback(() => {
     let groups = {};
     Children.forEach(renderChildren(), (child) => {
-      const childGroups = child.props.groupName;
+      const childGroups = child.props.groupName ?? 'default';
       if (groups[childGroups]) {
         groups[childGroups].push(child);
       } else {
@@ -182,7 +186,7 @@ export const FilterDialog = (props) => {
       .map((item, index) => {
         const filters = groups[item].map((el) => {
           return (
-            <div className={classes.singleFilter}>
+            <div className={classes.singleFilter} key={`${el.key}-container`}>
               {el}
               <CheckBox
                 checked={el.props.visibleInFilterBar || el.props.mandatory}
@@ -193,7 +197,7 @@ export const FilterDialog = (props) => {
           );
         });
         return (
-          <div className={classes.groupContainer}>
+          <div className={classes.groupContainer} key={item}>
             <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} alignItems={FlexBoxAlignItems.Center}>
               <Title level={TitleLevel.H5} className={index === 0 ? classes.groupTitle : ''}>
                 {item === 'default' ? 'Basic' : item}

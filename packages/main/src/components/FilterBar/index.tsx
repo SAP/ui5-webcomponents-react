@@ -24,7 +24,7 @@ import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
 import { addRef, renderSearchWithValue, setPropsOfChildren } from './utils';
-//todo add deprecated filter-items to basic group
+
 export interface FilterBarPropTypes extends CommonProps {
   renderVariants?: () => JSX.Element;
   renderSearch?: () => ReactElement;
@@ -42,13 +42,23 @@ export interface FilterBarPropTypes extends CommonProps {
   activeFiltersCount: number | string;
   loading: boolean;
   showSearchOnDialog?: boolean;
+  showRestoreOnFB?: boolean;
 
   //todo
-  showRestoreOnFB?: boolean;
   handleDialogOpen?: () => {};
   handleDialogClose?: () => {};
+  handleDialogSave?: () => {};
+  handleDialogClearFilters?: () => {};
+  handleDialogSearch: () => {};
+
+  handleClearFilters?: () => {};
   handleReset?: () => {};
+  handleToggleFilters?: () => {};
+
   handleRestore?: () => {};
+  handleGo?: () => {};
+  handleRestoreFilters?: () => {};
+  handleFilterVisibilityChange?: () => {};
 }
 
 interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
@@ -84,7 +94,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [filterRefs, setFilterRefs] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const searchRef = useRef(null);
-
+  //todo imports
   const initChildrenWithRef = useCallback(() => {
     let filterRefs = [];
     const newChildren = Children.toArray(children)
@@ -114,7 +124,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const classes = useStyles();
 
-  const handleHideFilterBar = useCallback(() => {
+  const handleToggleFilters = useCallback(() => {
+    //todo Event.of
     setShowFilters(!showFilters);
   }, [showFilters]);
 
@@ -149,8 +160,10 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const handleClearFilters = useCallback(() => {
     //todo Event.of
   }, []);
-  const handleToggleFilterVisible = useCallback((elements, children) => {
+  const handleDialogClearFilters = useCallback(() => {
     //todo Event.of
+  }, []);
+  const handleToggleFilterVisible = useCallback((elements, children) => {
     const newChildren = children.map((child) => {
       const currentChild = elements.filter((item) => item.element.key === child.key)[0];
       if (currentChild) {
@@ -220,7 +233,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           showSearch={showSearchOnDialog}
           renderFBSearch={renderSearch}
           handleToggleFilterVisible={handleToggleFilterVisible}
-          handleClearFilters={handleClearFilters}
+          handleClearFilters={handleDialogClearFilters}
           handleDialogSave={handleDialogSave}
           showGoButton={showGo}
         >
@@ -252,7 +265,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                     </Button>
                   )}
                   <Button
-                    onClick={handleHideFilterBar}
+                    onClick={handleToggleFilters}
                     design={ButtonDesign.Transparent}
                     className={classes.showFiltersBtn}
                   >
@@ -260,7 +273,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                   </Button>
                   {showFilterConfiguration && (
                     <Button onClick={handleDialogOpen}>
-                      {`Filters${activeFiltersCount ? ` (${activeFiltersCount})` : ''}`}
+                      {`Filters${
+                        activeFiltersCount && parseInt(activeFiltersCount) > 0 ? ` (${activeFiltersCount})` : ''
+                      }`}
                     </Button>
                   )}
                   {showGoOnFB && (
