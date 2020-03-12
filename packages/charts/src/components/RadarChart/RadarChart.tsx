@@ -77,13 +77,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     [onDataPointClick]
   );
 
-  const RadarDataLabel = useDataLabel(
-    chartConfig.dataLabel,
-    dataLabelCustomElement,
-    dataLabelFormatter,
-    chartConfig.stacked,
-    true
-  );
+  const RadarDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter, false, false);
 
   return (
     <ChartContainer
