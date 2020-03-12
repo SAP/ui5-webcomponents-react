@@ -57,7 +57,7 @@ export const FilterDialog = (props) => {
     });
     setRefs(refs);
     return newChildren;
-  }, [children]);
+  }, []);
 
   const [childrenWithNewRef, setChildrenWithRef] = useState(initRefs);
 
