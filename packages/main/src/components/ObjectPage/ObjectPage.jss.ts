@@ -7,9 +7,7 @@ const styles = {
     position: 'relative',
     whiteSpace: 'normal',
     fontFamily: ThemingParameters.sapFontFamily,
-    backgroundColor: ThemingParameters.sapBackgroundColor
-  },
-  contentContainer: {
+    backgroundColor: ThemingParameters.sapBackgroundColor,
     overflowX: 'hidden',
     overflowY: 'auto',
     '&::-webkit-scrollbar': {
