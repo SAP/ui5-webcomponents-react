@@ -4,7 +4,7 @@ import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionM
 import React, { CSSProperties } from 'react';
 
 const tableGroupExpandCollapseIcon = {
-  color: 'var(--sapUiContentIconColor)',
+  color: 'var(--sapContent_IconColor)',
   height: '0.75rem',
   width: '0.75rem',
   padding: '0.625rem',

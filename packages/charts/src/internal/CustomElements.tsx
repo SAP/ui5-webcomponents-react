@@ -1,4 +1,4 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React from 'react';
 
 export const AxisTicks = (props, formatter, unit = '', rotate) => {

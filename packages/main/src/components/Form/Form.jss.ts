@@ -1,8 +1,8 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   formTitle: {
-    borderBottom: `1px solid ${ThemingParameters.sapUiGroupTitleBorderColor}`
+    borderBottom: `1px solid ${ThemingParameters.sapGroup_TitleBorderColor}`
   },
   formTitlePaddingBottom: {
     paddingBottom: '2em'

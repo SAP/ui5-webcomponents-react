@@ -1,5 +1,5 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   progressBarRemaining: {
@@ -21,14 +21,14 @@ const styles = {
     WebkitFlexDirection: 'row',
     boxSizing: 'border-box',
     outline: 'none',
-    background: ThemingParameters.sapUiFieldBackground,
+    background: ThemingParameters.sapField_Background,
     width: '100%',
     height: CssSizeVariables.sapWcrProgressIndicatorHeight,
     minWidth: '4rem',
     minHeight: '1rem',
     padding: '0',
     margin: CssSizeVariables.sapWcrProgressIndicatorMargin,
-    border: `1px solid ${ThemingParameters.sapUiFieldBorderColor}`,
+    border: `1px solid ${ThemingParameters.sapField_BorderColor}`,
     borderRadius: '0.5rem',
     overflow: 'hidden'
   },
@@ -42,30 +42,30 @@ const styles = {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    fontSize: ThemingParameters.sapMFontSmallSize,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSmallSize,
     fontWeight: 'normal'
   },
   progressBarTextColorLow: {
-    color: ThemingParameters.sapUiBaseText
+    color: ThemingParameters.sapTextColor
   },
   progressBarTextColorHigh: {
-    color: ThemingParameters.sapUiContentContrastTextColor
+    color: ThemingParameters.sapContent_ContrastTextColor
   },
   stateNone: {
-    backgroundColor: ThemingParameters.sapUiNeutralElement
+    backgroundColor: ThemingParameters.sapNeutralElementColor
   },
   stateSuccess: {
-    backgroundColor: ThemingParameters.sapUiPositiveElement
+    backgroundColor: ThemingParameters.sapPositiveElementColor
   },
   stateWarning: {
-    backgroundColor: ThemingParameters.sapUiCriticalElement
+    backgroundColor: ThemingParameters.sapCriticalElementColor
   },
   stateError: {
-    backgroundColor: ThemingParameters.sapUiNegativeElement
+    backgroundColor: ThemingParameters.sapNegativeElementColor
   },
   stateInformation: {
-    backgroundColor: ThemingParameters.sapUiInformativeElement
+    backgroundColor: ThemingParameters.sapInformativeElementColor
   }
 };
 

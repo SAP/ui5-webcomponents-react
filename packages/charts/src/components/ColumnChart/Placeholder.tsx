@@ -1,4 +1,4 @@
-import * as parameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
@@ -8,9 +8,9 @@ export const ColumnChartPlaceholder = (props) => {
       height={145}
       width={165}
       speed={2}
-      backgroundColor={parameters.sapContent_ImagePlaceholderBackground}
-      foregroundColor={parameters.sapContent_ImagePlaceholderForegroundColor}
-      backgroundOpacity={parameters.sapContent_DisabledOpacity as any}
+      backgroundColor={ThemingParameters.sapContent_ImagePlaceholderBackground}
+      foregroundColor={ThemingParameters.sapContent_ImagePlaceholderForegroundColor}
+      backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as any}
       {...props}
     >
       <rect x="10" y="135" width="135" height="1" />

@@ -1,4 +1,4 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   outerContainer: {
@@ -6,13 +6,13 @@ const styles = {
     paddingLeft: '2rem',
     paddingRight: '2rem',
     paddingBottom: '1px',
-    background: ThemingParameters.sapUiObjectHeaderBackground,
-    boxShadow: ThemingParameters.sapUiShadowHeader
+    background: ThemingParameters.sapObjectHeader_Background,
+    boxShadow: ThemingParameters.sapContent_HeaderShadow
   },
   filterBarHeader: {
     alignItems: 'center',
     display: 'flex',
-    background: ThemingParameters.sapUiObjectHeaderBackground,
+    background: ThemingParameters.sapObjectHeader_Background,
     minHeight: '3rem',
     paddingBottom: '0.5rem',
     boxShadow: 'none',
@@ -27,7 +27,7 @@ const styles = {
     flexWrap: 'wrap',
     paddingTop: '1rem',
     paddingBottom: '1rem',
-    background: ThemingParameters.sapUiObjectHeaderBackground,
+    background: ThemingParameters.sapObjectHeader_Background,
     transition: 'max-height 0.2s ease-out, opacity 0.2s ease-in'
   },
   filterAreaClosed: {
@@ -48,8 +48,8 @@ const styles = {
   },
   // is being applied to the span which represents the InfoLabel Text
   label: {
-    fontSize: ThemingParameters.sapMFontSmallSize,
-    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontSize: ThemingParameters.sapFontSmallSize,
+    fontFamily: ThemingParameters.sapFontFamily,
     lineHeight: '1.125rem',
     fontWeight: 600,
     letterSpacing: '0.0125rem',
@@ -59,7 +59,7 @@ const styles = {
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     display: 'inline-block',
-    color: ThemingParameters.sapUiBaseText
+    color: ThemingParameters.sapTextColor
   },
   // specific padding needed for purely numeric input
   numeric: {},

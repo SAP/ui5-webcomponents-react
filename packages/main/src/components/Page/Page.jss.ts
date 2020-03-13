@@ -1,5 +1,5 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 /**
  * Style Class Generator Function
@@ -83,13 +83,13 @@ const styles = {
     }
   },
   backgroundStandard: {
-    background: ThemingParameters.sapUiBaseBG
+    background: ThemingParameters.sapBackgroundColor
   },
   backgroundSolid: {
-    background: ThemingParameters.sapUiShellBackground
+    background: ThemingParameters.sapShell_Background
   },
   backgroundList: {
-    background: ThemingParameters.sapUiGroupContentBackground
+    background: ThemingParameters.sapGroup_ContentBackground
   },
   backgroundTransparent: {
     background: 'transparent'
@@ -113,10 +113,10 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    background: ThemingParameters.sapUiPageHeaderBackground,
+    background: ThemingParameters.sapPageHeader_Background,
     '& >*': {
-      background: ThemingParameters.sapUiPageHeaderBackground,
-      boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapUiPageHeaderBorderColor}`
+      background: ThemingParameters.sapPageHeader_Background,
+      boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapPageHeader_BorderColor}`
     }
   },
   contentSection: {
@@ -130,7 +130,7 @@ const styles = {
     // marginTop: '1px',
     // marginBottom: '1px',
     boxSizing: 'border-box'
-    // backgroundColor: ThemingParameters.sapUiBaseBG
+    // backgroundColor: ThemingParameters.sapBackgroundColor
   },
   pageWithHeader: {
     '& $contentSection': {
@@ -147,11 +147,11 @@ const styles = {
     bottom: '0',
     left: '0',
     width: '100%',
-    borderTop: `1px solid ${ThemingParameters.sapUiPageFooterBorderColor}`,
+    borderTop: `1px solid ${ThemingParameters.sapPageFooter_BorderColor}`,
     '& >*': {
       height: CssSizeVariables.sapWcrBarHeight,
-      background: ThemingParameters.sapUiPageFooterBackground,
-      borderTop: `0.0625rem solid ${ThemingParameters.sapUiPageFooterBorderColor}`
+      background: ThemingParameters.sapPageFooter_Background,
+      borderTop: `0.0625rem solid ${ThemingParameters.sapPageFooter_BorderColor}`
     }
   }
 };

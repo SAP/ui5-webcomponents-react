@@ -1,5 +1,5 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ColumnChartPlaceholder';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
@@ -48,7 +48,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       xAxisVisible: true,
       xAxisUnit: '',
       yAxisUnit: '',
-      gridStroke: ThemingParameters.sapUiListTableFooterBorder,
+      gridStroke: ThemingParameters.sapList_TableFooterBorder,
       gridHorizontal: true,
       gridVertical: false,
       yAxisColor: ThemingParameters.sapNeutralBorderColor,

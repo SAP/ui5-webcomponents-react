@@ -1,4 +1,4 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React, { CSSProperties, FC, useMemo } from 'react';
 import ContentLoader from 'react-content-loader';
 
@@ -36,10 +36,10 @@ export const TablePlaceholder: FC<Props> = (props: Props) => {
 
   const innerStyles = useMemo(() => {
     return {
-      backgroundColor: ThemingParameters.sapUiListBackground,
+      backgroundColor: ThemingParameters.sapList_Background,
       ...style
     };
-  }, [style, ThemingParameters.sapUiListBackground]);
+  }, [style, ThemingParameters.sapList_Background]);
 
   return (
     <ContentLoader

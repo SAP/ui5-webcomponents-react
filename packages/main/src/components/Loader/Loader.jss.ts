@@ -1,4 +1,4 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 //todo use theme colors when available
 export const styles = {
@@ -10,7 +10,7 @@ export const styles = {
     height: '0.25rem',
     width: '100%',
     '&$loaderDeterminate': {
-      background: `linear-gradient(to right, ${ThemingParameters.sapUiContentIconColor}, ${ThemingParameters.sapUiContentIconColor})`,
+      background: `linear-gradient(to right, ${ThemingParameters.sapContent_IconColor}, ${ThemingParameters.sapContent_IconColor})`,
       backgroundColor: 'rgba(8, 84, 160, 0.15)',
       backgroundRepeat: 'repeat-y'
     },
@@ -19,8 +19,8 @@ export const styles = {
       to right,
       rgba(8, 84, 160, 0) 0px,
       rgba(8, 84, 160, 1) calc(50% - 2rem),
-      ${ThemingParameters.sapUiContentIconColor} calc(50% - 2rem),
-      ${ThemingParameters.sapUiContentIconColor} calc(50% + 2rem),
+      ${ThemingParameters.sapContent_IconColor} calc(50% - 2rem),
+      ${ThemingParameters.sapContent_IconColor} calc(50% + 2rem),
       rgba(8, 84, 160, 1) calc(50% + 2rem),
       rgba(8, 84, 160, 0) 100%
     )`,

@@ -1,5 +1,5 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   // outer container, controlling height and width
@@ -47,16 +47,16 @@ const styles = {
   },
   auto: {
     height: CssSizeVariables.sapWcrBarHeight,
-    background: ThemingParameters.sapUiPageHeaderBackground,
-    boxShadow: ThemingParameters.sapUiShadowHeader,
+    background: ThemingParameters.sapPageHeader_Background,
+    boxShadow: ThemingParameters.sapContent_HeaderShadow,
     '& $inner': {
       height: CssSizeVariables.sapWcrBarHeight
     }
   },
   subHeader: {
     height: CssSizeVariables.sapWcrSubHeaderBarHeight,
-    background: ThemingParameters.sapUiPageHeaderBackground,
-    boxShadow: ThemingParameters.sapUiShadowHeader,
+    background: ThemingParameters.sapPageHeader_Background,
+    boxShadow: ThemingParameters.sapContent_HeaderShadow,
     paddingBottom: ' 0.25rem',
     '& $inner': {
       height: CssSizeVariables.sapWcrSubHeaderBarHeight
@@ -64,17 +64,17 @@ const styles = {
   },
   footer: {
     height: CssSizeVariables.sapWcrBarHeight,
-    background: ThemingParameters.sapUiPageFooterBackground,
-    borderTop: `0.0625rem solid ${ThemingParameters.sapUiPageFooterBorderColor}`,
+    background: ThemingParameters.sapPageFooter_Background,
+    borderTop: `0.0625rem solid ${ThemingParameters.sapPageFooter_BorderColor}`,
     '& $inner': {
       height: CssSizeVariables.sapWcrBarHeight
     }
   },
   floatingFooter: {
     height: CssSizeVariables.sapWcrBarHeight,
-    background: ThemingParameters.sapUiPageFooterBackground,
-    // borderRadius: ThemingParameters.sapUiElementBorderCornerRadius,
-    boxShadow: ThemingParameters.sapUiShadowLevel1,
+    background: ThemingParameters.sapPageFooter_Background,
+    // borderRadius: ThemingParameters.sapElement_BorderCornerRadius,
+    boxShadow: ThemingParameters.sapContent_Shadow1,
     border: 'none',
     opacity: 1,
     '& $inner': {

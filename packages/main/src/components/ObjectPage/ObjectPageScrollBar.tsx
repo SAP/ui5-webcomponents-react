@@ -1,4 +1,4 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React, { FC, RefObject, useMemo } from 'react';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ZIndex } from '../../enums/ZIndex';
@@ -16,7 +16,7 @@ const styles = {
     overflow: 'hidden',
     height: '100%',
     zIndex: ZIndex.ResponsivePopover,
-    backgroundColor: ThemingParameters.sapUiObjectHeaderBackground,
+    backgroundColor: ThemingParameters.sapObjectHeader_Background,
     '& ::-webkit-scrollbar': {
       backgroundColor: '#ffffff'
     },
