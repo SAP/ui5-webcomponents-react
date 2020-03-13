@@ -6,7 +6,7 @@ module.exports = {
   coverageReporters: ['lcov', 'text'],
   collectCoverage: false,
   collectCoverageFrom: [
-    'packages/**/*.{ts,tsx}',
+    'packages/{base,charts,main}/src/**/*.{ts,tsx}',
     '!**/src/lib/*',
     '!**/src/interfaces/*',
     '!**/src/enums/*',
@@ -14,8 +14,6 @@ module.exports = {
     '!**/*.jss.ts',
     '!**/node_modules/**',
     '!packages/*/src/index.ts',
-    '!packages/*/index.ts',
-    '!packages/cra-template/**/*',
     '!packages/**/demo/*',
     '!packages/base/src/polyfill/*', // no polyfills
     '!packages/main/src/components/AnalyticalTable/types/*', // no table enums
