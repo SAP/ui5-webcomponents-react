@@ -19,7 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useXAxisLabel } from '../../hooks/useLabelElements';
+import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
 
 type LineChartProps = RechartBaseProps;
 
@@ -104,7 +104,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const LineDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter);
 
-  const XAxisLabel = useXAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
   return (
     <ChartContainer

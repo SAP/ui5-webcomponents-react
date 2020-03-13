@@ -25,7 +25,7 @@ export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelForm
       : false;
   }, [dataLabelFormatter, dataLabelCustomElement, dataLabel]);
 
-export const useXAxisLabel = (xAxisFormatter, xAxisUnit) => {
+export const useAxisLabel = (xAxisFormatter, xAxisUnit) => {
   return useCallback(
     (labelProps) => {
       return renderAxisTicks(labelProps, xAxisFormatter, xAxisUnit);
