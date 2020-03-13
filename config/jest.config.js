@@ -18,7 +18,10 @@ module.exports = {
     '!packages/cra-template/**/*',
     '!packages/**/demo/*',
     '!packages/base/src/polyfill/*', // no polyfills
-    '!packages/main/src/components/AnalyticalTable/types/*' // no table enums
+    '!packages/main/src/components/AnalyticalTable/types/*', // no table enums
+    '!packages/base/src/styling/sap_fiori_3.ts', // no old theming parameters
+    '!packages/base/src/styling/HSLColor.ts', // no deprecated HSL Util
+    '!packages/base/src/styling/font72.ts' // no deprecated font
   ],
   setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
