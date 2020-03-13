@@ -1276,8 +1276,8 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         aria-labelledby="ARIA-LABELLED-BY"
         height="220"
         role="img"
-        style="width: 100%; height: 220px;"
-        width="260"
+        style="height: 220px; width: 600px;"
+        width="600"
       >
         <title
           id="TITLE_ARIA_ID"
@@ -1303,7 +1303,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               height="16"
               rx="2"
               ry="8"
-              width="61"
+              width="146"
               x="2"
               y="22"
             />
@@ -1311,31 +1311,31 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="67"
+              width="146"
+              x="152"
               y="22"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="132"
+              width="146"
+              x="302"
               y="22"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="197"
+              width="146"
+              x="452"
               y="22"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
+              width="146"
               x="2"
               y="66"
             />
@@ -1343,31 +1343,31 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="67"
+              width="146"
+              x="152"
               y="66"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="132"
+              width="146"
+              x="302"
               y="66"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="197"
+              width="146"
+              x="452"
               y="66"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
+              width="146"
               x="2"
               y="110"
             />
@@ -1375,31 +1375,31 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="67"
+              width="146"
+              x="152"
               y="110"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="132"
+              width="146"
+              x="302"
               y="110"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="197"
+              width="146"
+              x="452"
               y="110"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
+              width="146"
               x="2"
               y="154"
             />
@@ -1407,31 +1407,31 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="67"
+              width="146"
+              x="152"
               y="154"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="132"
+              width="146"
+              x="302"
               y="154"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="197"
+              width="146"
+              x="452"
               y="154"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
+              width="146"
               x="2"
               y="198"
             />
@@ -1439,24 +1439,24 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="67"
+              width="146"
+              x="152"
               y="198"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="132"
+              width="146"
+              x="302"
               y="198"
             />
             <rect
               height="16"
               rx="2"
               ry="8"
-              width="61"
-              x="197"
+              width="146"
+              x="452"
               y="198"
             />
           </clipPath>
@@ -2940,7 +2940,7 @@ exports[`AnalyticalTable render without data 1`] = `
       </header>
       <div
         class="AnalyticalTable--noDataContainer-"
-        style="height: 220px;"
+        style="height: 220px; width: 600px;"
       >
         No Data
       </div>
