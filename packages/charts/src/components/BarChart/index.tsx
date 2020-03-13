@@ -90,8 +90,8 @@ const BarChartComponent = forwardRef((props: BarChartPropTypes, ref: Ref<any>) =
             const datasetMeta = context.chart.getDatasetMeta(context.datasetIndex);
             const dataMeta = datasetMeta.data[context.dataIndex];
             return bestContrast(dataMeta._view.backgroundColor, [
-              getCssVariableValue('--sapUiBaseText', '#32363a'),
-              getCssVariableValue('--sapUiContentContrastTextColor', '#fff')
+              getCssVariableValue('--sapTextColor', '#32363a'),
+              getCssVariableValue('--sapContent_ContrastTextColor', '#fff')
             ]);
           }
         }

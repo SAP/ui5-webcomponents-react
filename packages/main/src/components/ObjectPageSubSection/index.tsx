@@ -1,4 +1,4 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -18,13 +18,13 @@ const styles = {
   objectPageSubSection: {
     padding: '1rem 0',
     '&:focus': {
-      outline: `1px dotted ${ThemingParameters.sapUiContentFocusColor}`,
+      outline: `1px dotted ${ThemingParameters.sapContent_FocusColor}`,
       outlineOffset: '-1px'
     }
   },
   objectPageSubSectionHeaderTitle: {
-    fontSize: ThemingParameters.sapMFontHeader5Size,
-    color: ThemingParameters.sapUiGroupTitleTextColor,
+    fontSize: ThemingParameters.sapFontHeader5Size,
+    color: ThemingParameters.sapGroup_TitleTextColor,
     marginBottom: '0.5rem'
   },
   subSectionContent: {

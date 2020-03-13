@@ -1,4 +1,4 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ZIndex } from '../../enums/ZIndex';
 
 const styles = {
@@ -9,13 +9,13 @@ const styles = {
     alignItems: 'center',
     height: '3.5rem',
     padding: '0 1rem',
-    backgroundColor: ThemingParameters.sapUiPageFooterBackground
+    backgroundColor: ThemingParameters.sapPageFooter_Background
   },
   paginationTop: {
-    borderBottom: `1px solid ${ThemingParameters.sapUiPageFooterBorderColor}`
+    borderBottom: `1px solid ${ThemingParameters.sapPageFooter_BorderColor}`
   },
   paginationBottom: {
-    borderTop: `1px solid ${ThemingParameters.sapUiPageFooterBorderColor}`
+    borderTop: `1px solid ${ThemingParameters.sapPageFooter_BorderColor}`
   },
   paginationIndicator: {
     padding: '0rem 1rem',
@@ -39,19 +39,19 @@ const styles = {
     borderRadius: '50%',
     alignSelf: 'center',
     boxSizing: 'border-box',
-    backgroundColor: ThemingParameters.sapUiContentNonInteractiveIconColor
+    backgroundColor: ThemingParameters.sapContent_NonInteractiveIconColor
   },
   paginationIconActive: {
     margin: '0 0.25rem',
     width: '0.5rem',
     height: '0.5rem',
-    backgroundColor: ThemingParameters.sapUiSelected
+    backgroundColor: ThemingParameters.sapSelectedColor
   },
   paginationArrow: {
     boxShadow: 'none',
-    border: `1px solid ${ThemingParameters.sapUiButtonBorderColor}`,
-    backgroundColor: ThemingParameters.sapUiButtonBackground,
-    color: ThemingParameters.sapUiButtonBorderColor,
+    border: `1px solid ${ThemingParameters.sapButton_BorderColor}`,
+    backgroundColor: ThemingParameters.sapButton_Background,
+    color: ThemingParameters.sapButton_BorderColor,
     height: '2rem',
     width: '2rem',
     borderRadius: '50%',
@@ -60,9 +60,9 @@ const styles = {
     alignItems: 'center',
     cursor: 'pointer',
     '&:active': {
-      border: `1px solid ${ThemingParameters.sapUiButtonEmphasizedActiveBorderColor}`,
-      backgroundColor: ThemingParameters.sapUiButtonEmphasizedActiveBackground,
-      color: ThemingParameters.sapUiButtonEmphasizedTextColor
+      border: `1px solid ${ThemingParameters.sapButton_Emphasized_Active_BorderColor}`,
+      backgroundColor: ThemingParameters.sapButton_Emphasized_Active_Background,
+      color: ThemingParameters.sapButton_Emphasized_TextColor
     }
   },
   '@global html[dir="rtl"] div[data-value="paginationArrow"] ui5-icon': {
@@ -70,7 +70,7 @@ const styles = {
   },
   paginationArrowContent: {
     '& $paginationArrow': {
-      boxShadow: ThemingParameters.sapUiShadowLevel1,
+      boxShadow: ThemingParameters.sapContent_Shadow1,
       '&:first-child': {
         position: 'absolute',
         top: 'calc(50% - 2.75rem)',

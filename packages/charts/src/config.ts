@@ -54,8 +54,8 @@ export const DEFAULT_OPTIONS = {
         gridLines: {
           display: false,
           lineWidth: 2,
-          color: getCssVariableValue('--sapUiBaseText', '#32363a'),
-          fontColor: getCssVariableValue('--sapUiBaseText', '#32363a')
+          color: getCssVariableValue('--sapTextColor', '#32363a'),
+          fontColor: getCssVariableValue('--sapTextColor', '#32363a')
         }
       }
     ]

@@ -1,24 +1,24 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   helpText: {
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    fontSize: ThemingParameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
-    color: ThemingParameters.sapUiBaseText
+    color: ThemingParameters.sapTextColor
   },
   cardHeader: {
     paddingTop: '1rem',
     paddingBottom: '1rem',
     outlineOffset: '-0.125rem',
-    borderBottom: `0.0625rem solid ${ThemingParameters.sapUiTileBackgroundDarken20}`,
-    backgroundColor: ThemingParameters.sapUiTileBackground,
-    fontFamily: ThemingParameters.sapUiFontHeaderFamily,
+    borderBottom: `0.0625rem solid ${ThemingParameters.sapTile_BorderColor}`,
+    backgroundColor: ThemingParameters.sapTile_Background,
+    fontFamily: ThemingParameters.sapFontHeaderFamily,
     '&:hover': {
-      backgroundColor: ThemingParameters.sapUiListHoverBackground // TODO sapUiTileHoverBackground '#fafafa'
+      backgroundColor: ThemingParameters.sapList_Hover_Background
     },
     '&:active': {
-      backgroundColor: ThemingParameters.sapUiListHoverBackground // TODO sapUiTileHoverBackground '#fafafa'
+      backgroundColor: ThemingParameters.sapList_Hover_Background
     }
   },
   arrowIndicatorShape: {
@@ -55,10 +55,10 @@ const styles = {
     wordWrap: 'break-word'
   },
   headerText: {
-    fontFamily: ThemingParameters.sapUiFontHeaderFamily,
-    fontWeight: ThemingParameters.sapUiFontHeaderWeight,
-    fontSize: ThemingParameters.sapMFontHeader5Size,
-    color: ThemingParameters.sapUiTileTitleTextColor,
+    fontFamily: ThemingParameters.sapFontHeaderFamily,
+    fontWeight: 'normal', // was ThemingParameters.sapUiFontHeaderWeight
+    fontSize: ThemingParameters.sapFontHeader5Size,
+    color: ThemingParameters.sapTile_TitleTextColor,
     overflow: 'hidden',
     display: '-webkit-box',
     lineHeight: '18px',
@@ -68,10 +68,10 @@ const styles = {
   },
   subHeaderText: {
     overflow: 'hidden',
-    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontFamily: ThemingParameters.sapFontFamily,
     fontWeight: 'normal',
-    fontSize: ThemingParameters.sapMFontMediumSize,
-    color: ThemingParameters.sapUiTileTextColor,
+    fontSize: ThemingParameters.sapFontSize,
+    color: ThemingParameters.sapTile_TextColor,
     textAlign: 'left',
     whiteSpace: 'normal',
     wordWrap: 'break-word',
@@ -85,16 +85,16 @@ const styles = {
     WebkitBoxOrient: 'vertical'
   },
   counter: {
-    fontSize: ThemingParameters.sapMFontSmallSize,
+    fontSize: ThemingParameters.sapFontSmallSize,
     margin: '0.188rem 0  0 1rem',
     lineHeight: 'normal',
     textAlign: 'right'
   },
   currency: {
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    fontSize: ThemingParameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
-    color: ThemingParameters.sapUiTileTextColor,
+    color: ThemingParameters.sapTile_TextColor,
     overflow: 'hidden',
     marginLeft: '0.25rem',
     textAlign: 'right'
@@ -107,14 +107,14 @@ const styles = {
   kpiContent: {
     fontWeight: 'normal',
     marginTop: '0.5rem',
-    color: ThemingParameters.sapUiTileTextColor,
+    color: ThemingParameters.sapTile_TextColor,
     width: '100%',
     boxSizing: 'border-box'
   },
   valueAndUnit: {
     display: 'flex',
     alignItems: 'end',
-    color: ThemingParameters.sapUiNeutralText
+    color: ThemingParameters.sapNeutralTextColor
   },
   value: {
     fontSize: '2rem',
@@ -139,24 +139,24 @@ const styles = {
     width: '60%',
     paddingBottom: '0.25rem',
     textAlign: 'right',
-    fontSize: ThemingParameters.sapMFontSmallSize,
-    color: ThemingParameters.sapUiTileTextColor
+    fontSize: ThemingParameters.sapFontSmallSize,
+    color: ThemingParameters.sapTile_TextColor
   },
   targetAndDeviationColumn: {
     maxWidth: '45%',
     marginLeft: '1rem'
   },
   targetAndDeviationValue: {
-    color: ThemingParameters.sapUiTileTitleTextColor,
+    color: ThemingParameters.sapTile_TitleTextColor,
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
   },
   description: {
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    fontSize: ThemingParameters.sapMFontSmallSize,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSmallSize,
     fontWeight: 'normal',
-    color: ThemingParameters.sapUiTileTextColor,
+    color: ThemingParameters.sapTile_TextColor,
     whiteSpace: 'normal',
     overflow: 'hidden',
     textAlign: 'left',
@@ -170,16 +170,16 @@ const styles = {
     WebkitBoxOrient: 'vertical'
   },
   good: {
-    color: ThemingParameters.sapUiPositiveText
+    color: ThemingParameters.sapPositiveTextColor
   },
   error: {
-    color: ThemingParameters.sapUiNegativeText
+    color: ThemingParameters.sapNegativeTextColor
   },
   critical: {
-    color: ThemingParameters.sapUiCriticalText
+    color: ThemingParameters.sapCriticalTextColor
   },
   none: {
-    color: ThemingParameters.sapUiNeutralText
+    color: ThemingParameters.sapNeutralTextColor
   }
 };
 
