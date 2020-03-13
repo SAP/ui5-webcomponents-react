@@ -1,4 +1,4 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   carousel: {
@@ -8,8 +8,8 @@ const styles = {
     border: '1px solid transparent',
     touchAction: 'pan-y',
     minWidth: '15.5rem',
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    backgroundColor: ThemingParameters.sapUiBaseBG,
+    fontFamily: ThemingParameters.sapFontFamily,
+    backgroundColor: ThemingParameters.sapBackgroundColor,
     '&:focus': {
       outline: 'none',
       '&:before': {

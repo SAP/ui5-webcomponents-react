@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ScrollLink } from '@ui5/webcomponents-react-base/lib/ScrollLink';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
@@ -32,18 +32,18 @@ const anchorButtonStyles = {
     }
   },
   button: {
-    color: ThemingParameters.sapUiContentLabelColor,
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    fontSize: ThemingParameters.sapMFontMediumSize,
+    color: ThemingParameters.sapContent_LabelColor,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
     cursor: 'pointer'
   },
   selected: {
-    color: ThemingParameters.sapUiSelected,
+    color: ThemingParameters.sapSelectedColor,
     minWidth: '2rem',
     textAlign: 'center',
     '&:after': {
       content: '""',
-      borderBottom: `0.188rem solid ${ThemingParameters.sapUiSelected}`,
+      borderBottom: `0.188rem solid ${ThemingParameters.sapSelectedColor}`,
       width: '100%',
       position: 'absolute',
       bottom: 0,

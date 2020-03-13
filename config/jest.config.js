@@ -6,7 +6,7 @@ module.exports = {
   coverageReporters: ['lcov', 'text'],
   collectCoverage: false,
   collectCoverageFrom: [
-    'packages/**/*.{ts,tsx}',
+    'packages/{base,charts,main}/src/**/*.{ts,tsx}',
     '!**/src/lib/*',
     '!**/src/interfaces/*',
     '!**/src/enums/*',
@@ -14,11 +14,12 @@ module.exports = {
     '!**/*.jss.ts',
     '!**/node_modules/**',
     '!packages/*/src/index.ts',
-    '!packages/*/index.ts',
-    '!packages/cra-template/**/*',
     '!packages/**/demo/*',
     '!packages/base/src/polyfill/*', // no polyfills
-    '!packages/main/src/components/AnalyticalTable/types/*' // no table enums
+    '!packages/main/src/components/AnalyticalTable/types/*', // no table enums
+    '!packages/base/src/styling/sap_fiori_3.ts', // no old theming parameters
+    '!packages/base/src/styling/HSLColor.ts', // no deprecated HSL Util
+    '!packages/base/src/styling/font72.ts' // no deprecated font
   ],
   setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],

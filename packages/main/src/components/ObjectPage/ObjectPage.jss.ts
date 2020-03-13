@@ -1,4 +1,4 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   objectPage: {
@@ -6,8 +6,11 @@ const styles = {
     height: '100%',
     position: 'relative',
     whiteSpace: 'normal',
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    backgroundColor: ThemingParameters.sapUiBaseBG,
+    fontFamily: ThemingParameters.sapFontFamily,
+    backgroundColor: ThemingParameters.sapBackgroundColor
+  },
+  contentContainer: {
+    overflowX: 'hidden',
     overflowY: 'auto',
     '&::-webkit-scrollbar': {
       backgroundColor: '#ffffff',
@@ -23,6 +26,15 @@ const styles = {
       backgroundColor: '#ffffff'
     }
   },
+  anchorBar: {
+    paddingLeft: '2rem',
+    backgroundColor: ThemingParameters.sapObjectHeader_Background,
+    boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}, inset 0 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`,
+    display: 'flex',
+    height: '2.75rem',
+    minHeight: '2.75rem',
+    position: 'relative'
+  },
   sectionsContainer: {
     '&:before': {
       display: 'table',
@@ -36,7 +48,7 @@ const styles = {
     // overflowX: 'hidden',
     // overflowY: 'auto',
     // overflow: 'hidden',
-    backgroundColor: ThemingParameters.sapUiBaseBG,
+    backgroundColor: ThemingParameters.sapBackgroundColor,
     '&:after': {
       clear: 'both',
       display: 'table',
@@ -46,13 +58,13 @@ const styles = {
   // header
   header: {
     flexShrink: 0,
-    backgroundColor: ThemingParameters.sapUiObjectHeaderBackground,
+    backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'sticky',
     top: 0,
     zIndex: 2
   },
   contentHeader: {
-    backgroundColor: ThemingParameters.sapUiObjectHeaderBackground,
+    backgroundColor: ThemingParameters.sapObjectHeader_Background,
     position: 'relative'
   },
   titleBar: {
@@ -76,7 +88,7 @@ const styles = {
     display: 'inline-block',
     margin: '0',
     fontWeight: 'normal',
-    color: ThemingParameters.sapUiBaseText
+    color: ThemingParameters.sapTextColor
   },
   subTitle: {
     display: 'inline-block',
@@ -85,7 +97,7 @@ const styles = {
     paddingTop: '0.5rem',
     paddingBottom: '0.5rem',
     fontSize: '0.875rem',
-    color: ThemingParameters.sapUiContentLabelColor
+    color: ThemingParameters.sapContent_LabelColor
   },
   actions: {
     position: 'absolute',

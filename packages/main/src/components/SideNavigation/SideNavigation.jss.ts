@@ -1,10 +1,10 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 export const sideNavigationStyles = {
   sideNavigation: {
     height: '100%',
-    borderRight: `0.0625rem solid ${ThemingParameters.sapUiGroupContentBorderColor}`,
-    backgroundColor: ThemingParameters.sapUiListBackground,
+    borderRight: `0.0625rem solid ${ThemingParameters.sapGroup_ContentBorderColor}`,
+    backgroundColor: ThemingParameters.sapList_Background,
     display: 'flex',
     flexDirection: 'column',
     transition: 'width 500ms'
@@ -30,6 +30,6 @@ export const sideNavigationStyles = {
   footerItemsSeparator: {
     margin: '0.25rem 0.875rem',
     height: '0.125rem',
-    backgroundColor: ThemingParameters.sapUiListBorderColor
+    backgroundColor: ThemingParameters.sapList_BorderColor
   }
 };

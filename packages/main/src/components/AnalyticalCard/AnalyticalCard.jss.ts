@@ -1,17 +1,16 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import * as spacing from '@ui5/webcomponents-react-base/lib/spacing';
 
 const styles = {
   card: {
-    backgroundColor: ThemingParameters.sapUiTileBackground,
-    // TODO There is a border mentioned in the specs, but this one looks weird.
-    // border: `0.625rem solid ${ThemingParameters.sapUiTileBorderColor}`,
-    boxShadow: ThemingParameters.sapUiShadowLevel0,
-    borderRadius: '0.25rem',
+    backgroundColor: ThemingParameters.sapTile_Background,
+    border: `0.625rem solid ${ThemingParameters.sapTile_BorderColor}`,
+    boxShadow: ThemingParameters.sapContent_Shadow0,
+    borderRadius: '0.25rem', // ThemingParameters.sapElement_BorderCornerRadius,
     textAlign: 'start',
     overflow: 'hidden',
     position: 'relative',
-    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontFamily: ThemingParameters.sapFontFamily,
     boxSizing: 'border-box'
   },
   content: spacing.sapUiContentPadding

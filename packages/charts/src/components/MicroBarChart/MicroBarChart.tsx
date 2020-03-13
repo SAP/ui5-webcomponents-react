@@ -1,5 +1,5 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
@@ -30,7 +30,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       yAxisUnit: '',
       yAxisVisible: false,
       xAxisVisible: false,
-      gridStroke: ThemingParameters.sapUiListTableFooterBorder,
+      gridStroke: ThemingParameters.sapList_TableFooterBorder,
       yAxisColor: ThemingParameters.sapNeutralBorderColor,
       barSize: 5,
       barGap: 3,

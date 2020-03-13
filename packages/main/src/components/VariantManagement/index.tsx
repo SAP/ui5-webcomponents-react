@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -41,22 +41,22 @@ const styles = {
   },
   VariantManagementText: {
     cursor: 'pointer',
-    color: ThemingParameters.sapUiButtonTextColor,
+    color: ThemingParameters.sapButton_TextColor,
     '&:hover': {
-      color: ThemingParameters.sapUiHighlight
+      color: ThemingParameters.sapHighlightColor
     },
     '&:active': {
-      color: ThemingParameters.sapUiHighlight
+      color: ThemingParameters.sapHighlightColor
     }
   },
   disabled: {
-    color: ThemingParameters.sapUiGroupTitleTextColor,
+    color: ThemingParameters.sapGroup_TitleTextColor,
     cursor: 'default',
     '&:hover': {
-      color: ThemingParameters.sapUiGroupTitleTextColor
+      color: ThemingParameters.sapGroup_TitleTextColor
     },
     '&:active': {
-      color: ThemingParameters.sapUiGroupTitleTextColor
+      color: ThemingParameters.sapGroup_TitleTextColor
     }
   },
   footer: {
