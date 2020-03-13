@@ -40,20 +40,20 @@ export interface FilterBarPropTypes extends CommonProps {
   showClearButton?: boolean;
   showRestoreButton?: boolean;
   showGo?: boolean;
-  activeFiltersCount: number | string;
-  loading: boolean;
+  activeFiltersCount?: number | string;
+  loading?: boolean;
   showSearchOnFiltersDialog?: boolean;
   showRestoreOnFB?: boolean;
-  handleToggleFilters?: any;
-  handleFiltersDialogSave?: any;
-  handleFiltersDialogClear?: any;
-  handleFiltersDialogOpen?: any;
-  handleFiltersDialogClose?: any;
-  handleFiltersDialogSelectionChange: any;
-  handleFiltersDialogSearch: any;
-  handleClear?: any;
-  handleGo?: any;
-  handleRestore?: any;
+  onToggleFilters?: (event: Event) => void;
+  onFiltersDialogSave?: (event: Event) => void;
+  onFiltersDialogClear?: (event: Event) => void;
+  onFiltersDialogOpen?: (event: Event) => void;
+  onFiltersDialogClose?: (event: Event) => void;
+  onFiltersDialogSelectionChange?: (event: Event) => void;
+  onFiltersDialogSearch?: (event: Event) => void;
+  onClear?: (event: Event) => void;
+  onGo?: (event: Event) => void;
+  onRestore?: (event: Event) => void;
 }
 
 interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
@@ -83,16 +83,16 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     showRestoreButton,
     showSearchOnFiltersDialog,
 
-    handleToggleFilters,
-    handleFiltersDialogOpen,
-    handleFiltersDialogClose,
-    handleFiltersDialogSave,
-    handleFiltersDialogClear,
-    handleClear,
-    handleFiltersDialogSelectionChange,
-    handleFiltersDialogSearch,
-    handleGo,
-    handleRestore
+    onToggleFilters,
+    onFiltersDialogOpen,
+    onFiltersDialogClose,
+    onFiltersDialogSave,
+    onFiltersDialogClear,
+    onClear,
+    onFiltersDialogSelectionChange,
+    onFiltersDialogSearch,
+    onGo,
+    onRestore
   } = props as FilterBarInternalProps;
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
@@ -143,10 +143,10 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const handleToggle = useCallback(
     (e) => {
-      handleToggleFilters(Event.of(null, e.getOriginalEvent(), { visible: !showFilters }));
+      onToggleFilters(Event.of(null, e.getOriginalEvent(), { visible: !showFilters }));
       setShowFilters(!showFilters);
     },
-    [showFilters, handleToggleFilters, setShowFilters]
+    [showFilters, onToggleFilters, setShowFilters]
   );
 
   const handleToggleFilterVisible = useCallback((elements, children) => {
@@ -168,30 +168,28 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       if (toggledElements) {
         childrenWithNewProps = handleToggleFilterVisible(toggledElements, childrenWithNewProps);
       }
-      handleFiltersDialogSave(
-        Event.of(null, e.getOriginalEvent(), { elements: childrenWithNewProps, toggledElements })
-      );
+      onFiltersDialogSave(Event.of(null, e.getOriginalEvent(), { elements: childrenWithNewProps, toggledElements }));
       setChildrenWithRef(childrenWithNewProps);
       handleDialogClose(e);
     },
-    [setPropsOfChildren, handleToggleFilterVisible, setChildrenWithRef, setDialogOpen, handleFiltersDialogSave]
+    [setPropsOfChildren, handleToggleFilterVisible, setChildrenWithRef, setDialogOpen, onFiltersDialogSave]
   );
 
   const handleDialogOpen = useCallback(
     (e) => {
-      handleFiltersDialogOpen(Event.of(null, e.getOriginalEvent()));
+      onFiltersDialogOpen(Event.of(null, e.getOriginalEvent()));
       setChildrenWithRef(setPropsOfChildren(addRef(childrenWithRef, filterRefs, 'filterBarRef'), 'filterBarRef'));
       setDialogOpen(true);
     },
-    [handleFiltersDialogOpen, setPropsOfChildren, addRef, childrenWithRef, filterRefs, setDialogOpen]
+    [onFiltersDialogOpen, setPropsOfChildren, addRef, childrenWithRef, filterRefs, setDialogOpen]
   );
 
   const handleDialogClose = useCallback(
     (e) => {
-      handleFiltersDialogClose(Event.of(null, e.getOriginalEvent()));
+      onFiltersDialogClose(Event.of(null, e.getOriginalEvent()));
       setDialogOpen(false);
     },
-    [setDialogOpen, handleFiltersDialogClose]
+    [setDialogOpen, onFiltersDialogClose]
   );
 
   const passThroughProps = usePassThroughHtmlProps(props);
@@ -222,9 +220,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         setMountFilters(false);
         setMountFilters(true);
       }
-      handleRestore(Event.of(null, e.getOriginalEvent(), { source }));
+      onRestore(Event.of(null, e.getOriginalEvent(), { source }));
     },
-    [setDialogOpen, showGo, showGoOnFB, handleRestore]
+    [setDialogOpen, showGo, showGoOnFB, onRestore]
   );
 
   const handleFBRestore = useCallback(
@@ -240,7 +238,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         <FilterDialog
           open={dialogOpen}
           handleDialogClose={handleDialogClose}
-          handleGo={handleGo}
+          onGo={onGo}
           handleRestoreFilters={handleRestoreFilters}
           searchValue={searchRef.current?.children[0]._state.value}
           handleSearchValueChange={handleSearchValueChange}
@@ -249,11 +247,11 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           showSearch={showSearchOnFiltersDialog}
           renderFBSearch={renderSearch}
           handleToggleFilterVisible={handleToggleFilterVisible}
-          handleClearFilters={handleFiltersDialogClear}
-          handleSelectionChange={handleFiltersDialogSelectionChange}
+          handleClearFilters={onFiltersDialogClear}
+          handleSelectionChange={onFiltersDialogSelectionChange}
           handleDialogSave={handleDialogSave}
           showGoButton={showGo}
-          handleDialogSearch={handleFiltersDialogSearch}
+          handleDialogSearch={onFiltersDialogSearch}
         >
           {childrenWithRef}
         </FilterDialog>
@@ -273,7 +271,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
               {useToolbar && (
                 <div className={classes.headerRowRight}>
                   {showClearOnFB && (
-                    <Button onClick={handleClear} design={ButtonDesign.Transparent}>
+                    <Button onClick={onClear} design={ButtonDesign.Transparent}>
                       Clear
                     </Button>
                   )}
@@ -293,7 +291,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                     </Button>
                   )}
                   {showGoOnFB && (
-                    <Button onClick={handleGo} design={ButtonDesign.Emphasized}>
+                    <Button onClick={onGo} design={ButtonDesign.Emphasized}>
                       Go
                     </Button>
                   )}
@@ -321,16 +319,16 @@ FilterBar.defaultProps = {
   showSearchOnFiltersDialog: false,
   considerGroupName: false,
   loading: false,
-  handleToggleFilters: () => {},
-  handleFiltersDialogOpen: () => {},
-  handleFiltersDialogClose: () => {},
-  handleFiltersDialogSave: () => {},
-  handleFiltersDialogClear: () => {},
-  handleClear: () => {},
-  handleFiltersDialogSelectionChange: () => {},
-  handleFiltersDialogSearch: () => {},
-  handleGo: () => {},
-  handleRestore: () => {}
+  onToggleFilters: null,
+  onFiltersDialogOpen: null,
+  onFiltersDialogClose: null,
+  onFiltersDialogSave: null,
+  onFiltersDialogClear: null,
+  onClear: null,
+  onFiltersDialogSelectionChange: null,
+  onFiltersDialogSearch: null,
+  onGo: null,
+  onRestore: null
 };
 
 FilterBar.displayName = 'FilterBar';

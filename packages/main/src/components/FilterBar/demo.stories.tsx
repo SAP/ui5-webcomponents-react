@@ -72,16 +72,16 @@ export const renderStory = () => {
       showClearButton={boolean('showClearButton', false)}
       showRestoreButton={boolean('showRestoreButton', false)}
       filterBarExpanded={boolean('filterBarExpanded', true)}
-      handleToggleFilters={action('handleToggleFilters')}
-      handleFiltersDialogOpen={action('handleFiltersDialogOpen')}
-      handleFiltersDialogClose={action('handleFiltersDialogClose')}
-      handleFiltersDialogSave={action('handleFiltersDialogSave')}
-      handleFiltersDialogClear={action('handleFiltersDialogClear')}
-      handleClear={action('handleClear')}
-      handleFiltersDialogSelectionChange={action('handleFiltersDialogSelectionChange')}
-      handleFiltersDialogSearch={action('handleFiltersDialogSearch')}
-      handleGo={action('handleGo')}
-      handleRestore={action('handleRestore')}
+      onToggleFilters={action('onToggleFilters')}
+      onFiltersDialogOpen={action('onFiltersDialogOpen')}
+      onFiltersDialogClose={action('onFiltersDialogClose')}
+      onFiltersDialogSave={action('onFiltersDialogSave')}
+      onFiltersDialogClear={action('onFiltersDialogClear')}
+      onClear={action('onClear')}
+      onFiltersDialogSelectionChange={action('onFiltersDialogSelectionChange')}
+      onFiltersDialogSearch={action('onFiltersDialogSearch')}
+      onGo={action('onGo')}
+      onRestore={action('onRestore')}
     >
       <FilterGroupItem
         label="Input"
@@ -115,7 +115,7 @@ export const renderStory = () => {
         groupName={text('FilterGroupItem: groupName', 'Custom Group')}
         visibleInFilterBar={boolean('FilterGroupItem: visibleInFilterBar', true)}
       >
-        <Select onChange={(e) => console.log(e.parameters.selectedOption.dataset)}>
+        <Select>
           <Option data-key="Test 1" selected icon="add">
             Test 1
           </Option>
@@ -182,9 +182,6 @@ export const renderStory = () => {
       </FilterGroupItem>
       <FilterGroupItem label="Date Picker" groupName="Group 2" mandatory={boolean('FilterGroupItem: mandatory', true)}>
         <DatePicker />
-      </FilterGroupItem>
-      <FilterGroupItem label="Single Checkbox" groupName="Group 2">
-        <CheckBox text="Check this" />
       </FilterGroupItem>
     </FilterBar>
   );

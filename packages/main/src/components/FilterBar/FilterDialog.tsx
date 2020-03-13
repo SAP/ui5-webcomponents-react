@@ -36,7 +36,7 @@ export const FilterDialog = (props) => {
     handleDialogSave,
     searchValue,
     handleSearchValueChange,
-    handleGo,
+    onGo,
     handleSelectionChange,
     handleDialogSearch
   } = props;
@@ -46,7 +46,7 @@ export const FilterDialog = (props) => {
   const searchRef = useRef(null);
   const [activeFilters, setActiveFilters] = useState({});
 
-  const initRefs = useCallback(() => {
+  const initChildrenWithRef = useCallback(() => {
     let refs = [];
     const newChildren = children.map((child, index) => {
       const childrenRef = (node) => {
@@ -62,7 +62,7 @@ export const FilterDialog = (props) => {
     return newChildren;
   }, []);
 
-  const [childrenWithNewRef, setChildrenWithRef] = useState(initRefs);
+  const [childrenWithNewRef, setChildrenWithRef] = useState(initChildrenWithRef);
 
   useEffect(() => {
     const visibleChildren = children.filter((child) => child.props.visible !== false);
@@ -105,10 +105,10 @@ export const FilterDialog = (props) => {
 
   const handleDialogGo = useCallback(
     (e) => {
-      handleGo(Event.of(null, e.getOriginalEvent()), {});
+      onGo(Event.of(null, e.getOriginalEvent()));
       handleDialogClose(e);
     },
-    [handleGo, handleDialogClose]
+    [onGo, handleDialogClose]
   );
 
   const handleRestore = useCallback(

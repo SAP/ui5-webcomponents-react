@@ -12,6 +12,7 @@ import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
 import { Badge } from './lib/Badge';
 import { Bar } from './lib/Bar';
+import { BarDesign } from './lib/BarDesign';
 import { Breadcrumbs } from './lib/Breadcrumbs';
 import { BreadcrumbsSeparatorStyle } from './lib/BreadcrumbsSeparatorStyle';
 import { BusyIndicator } from './lib/BusyIndicator';
@@ -31,6 +32,7 @@ import { DatePicker } from './lib/DatePicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
 import { Dialog } from './lib/Dialog';
 import { FilterBar } from './lib/FilterBar';
+import { FilterGroupItem } from './lib/FilterGroupItem';
 import { FilterItem } from './lib/FilterItem';
 import { FilterType } from './lib/FilterType';
 import { FlexBox } from './lib/FlexBox';
@@ -134,6 +136,7 @@ export {
   AvatarSize,
   Badge,
   Bar,
+  BarDesign,
   Breadcrumbs,
   BreadcrumbsSeparatorStyle,
   BusyIndicator,
@@ -153,6 +156,7 @@ export {
   DeviationIndicator,
   Dialog,
   FilterBar,
+  FilterGroupItem,
   FilterItem,
   FilterType,
   FlexBox,
