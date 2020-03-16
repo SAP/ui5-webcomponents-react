@@ -2,7 +2,7 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import '@ui5/webcomponents-icons/dist/icons/pushpin-off';
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-up';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
@@ -29,8 +29,8 @@ addCustomCSS(
 const anchorBarStyles = {
   anchorBar: {
     paddingLeft: '2rem',
-    backgroundColor: ThemingParameters.sapUiObjectHeaderBackground,
-    boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapUiObjectHeaderBorderColor}, inset 0 0.0625rem ${ThemingParameters.sapUiObjectHeaderBorderColor}`,
+    backgroundColor: ThemingParameters.sapObjectHeader_Background,
+    boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}, inset 0 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`,
     display: 'flex',
     height: '2.75rem',
     minHeight: '2.75rem',

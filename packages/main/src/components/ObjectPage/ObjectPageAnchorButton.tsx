@@ -1,7 +1,8 @@
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ScrollLink } from '@ui5/webcomponents-react-base/lib/ScrollLink';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
@@ -9,7 +10,6 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import React, { FC, useCallback, useState } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 
 interface ObjectPageAnchorPropTypes {
   section: any;
@@ -129,26 +129,34 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
     );
   };
 
-  let sectionSelector;
-  if (mode === ObjectPageMode.Default) {
-    sectionSelector = (
-      <ScrollLink
-        id={`ObjectPageSection-${section.props.id}`}
-        onSetActive={onScrollActive}
-        activeClass={classes.selected}
-        alwaysToTop={index === 0}
-        scrollOffset={collapsedHeader ? 45 : -45}
-      >
-        <span className={classes.button}>{section.props.title}</span>
-      </ScrollLink>
-    );
-  } else {
-    sectionSelector = (
-      <span onClick={onScrollActive} className={`${classes.button}${selected ? ` ${classes.selected}` : ''}`}>
-        {section.props.title}
-      </span>
-    );
-  }
+  const sectionSelector = (
+    <span
+      onClick={onScrollActive}
+      className={`${classes.button}${selected ? ` ${classes.selected}` : ''}`}
+      tabIndex={0}
+    >
+      {section.props.title}
+    </span>
+  );
+  // if (mode === ObjectPageMode.Default) {
+  //   sectionSelector = (
+  //     <ScrollLink
+  //       id={`ObjectPageSection-${section.props.id}`}
+  //       onSetActive={onScrollActive}
+  //       activeClass={classes.selected}
+  //       alwaysToTop={index === 0}
+  //       scrollOffset={collapsedHeader ? 45 : -45}
+  //     >
+  //       <span className={classes.button}>{section.props.title}</span>
+  //     </ScrollLink>
+  //   );
+  // } else {
+  //   sectionSelector = (
+  //     <span onClick={onScrollActive} className={`${classes.button}${selected ? ` ${classes.selected}` : ''}`}>
+  //       {section.props.title}
+  //     </span>
+  //   );
+  // }
 
   return (
     <li className={classes.anchorButtonContainer}>

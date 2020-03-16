@@ -22,6 +22,9 @@ const styles = {
     },
     '&::-webkit-scrollbar-corner': {
       backgroundColor: '#ffffff'
+    },
+    '& section[id="ObjectPageSection-1"] > div[role="heading"]': {
+      display: 'none'
     }
   },
   anchorBar: {
@@ -33,26 +36,23 @@ const styles = {
     minHeight: '2.75rem',
     position: 'relative'
   },
-  sectionsContainer: {
-    '&:before': {
-      display: 'table',
-      content: '""'
-    },
-    '& :first-child > div[role="heading"]': {
-      display: 'none'
-    },
-    position: 'relative',
-    height: '100%',
-    // overflowX: 'hidden',
-    // overflowY: 'auto',
-    // overflow: 'hidden',
-    backgroundColor: ThemingParameters.sapBackgroundColor,
-    '&:after': {
-      clear: 'both',
-      display: 'table',
-      content: '""'
-    }
-  },
+  // sectionsContainer: {
+  //   '&:before': {
+  //     display: 'table',
+  //     content: '""'
+  //   },
+  //   '& section[data-component-name="ObjectPageSection"]:first-child > div[role="heading"]': {
+  //     display: 'none'
+  //   },
+  //   position: 'relative',
+  //   height: '100%',
+  //   backgroundColor: ThemingParameters.sapBackgroundColor,
+  //   '&:after': {
+  //     clear: 'both',
+  //     display: 'table',
+  //     content: '""'
+  //   }
+  // },
   // header
   header: {
     flexShrink: 0,
@@ -112,9 +112,7 @@ const styles = {
     }
   },
   headerContent: {
-    //paddingTop: '1.5rem',
     paddingBottom: '0.25rem',
-    transition: 'max-height 0.5s',
     maxHeight: '500px',
     overflow: 'hidden',
     paddingLeft: '2rem',

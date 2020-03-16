@@ -1,4 +1,6 @@
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { IScroller } from '@ui5/webcomponents-react-base/interfaces/IScroller';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { Scroller } from '@ui5/webcomponents-react-base/lib/Scroller';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
@@ -21,7 +23,6 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
@@ -29,15 +30,12 @@ import { CollapsedAvatar } from './CollapsedAvatar';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchorBar } from './ObjectPageAnchorBar';
 import { ObjectPageHeader } from './ObjectPageHeader';
-import {
-  bindScrollEvent,
-  getProportionateScrollTop,
-  getSectionById,
-  removeScrollEvent,
-  safeGetChildrenArray
-} from './ObjectPageUtils';
+import { getSectionById, safeGetChildrenArray } from './ObjectPageUtils';
 
 declare const ResizeObserver;
+
+// @ts-ignore
+window.ThemingParameters = ThemingParameters;
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
@@ -74,19 +72,21 @@ const defaultScrollbarWidth = 12;
 const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     title = '',
-    image,
+    image = null,
     subTitle = '',
-    headerActions,
-    renderHeaderContent,
-    mode,
-    imageShapeCircle,
+    headerActions = [],
+    renderHeaderContent = null,
+    mode = ObjectPageMode.Default,
+    imageShapeCircle = false,
     className,
     style,
     tooltip,
     slot,
-    showHideHeaderButton,
+    showHideHeaderButton = false,
     children,
-    onSelectedSectionChanged,
+    onSelectedSectionChanged = () => {
+      /* noop */
+    },
     selectedSectionId,
     noHeader = false,
     alwaysShowContentHeader,
@@ -103,6 +103,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
   const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
   const [internalHeaderOpen, setInternalHeaderOpen] = useState(!noHeader);
+  const isProgrammaticallyScrolled = useRef(false);
 
   const objectPage: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const topHeader: RefObject<HTMLDivElement> = useRef();
@@ -115,6 +116,41 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const [scrollbarWidth, setScrollbarWidth] = useState(defaultScrollbarWidth);
   const isMounted = useRef(false);
   const selectedSectionIsFirstChild = firstSectionId === internalSelectedSectionId;
+
+  // *****
+  // SECTION SELECTION
+  // ****
+  // change selected section when prop is changed (external change)
+  useEffect(() => {
+    isProgrammaticallyScrolled.current = true;
+    setInternalSelectedSectionId(selectedSectionId);
+  }, [selectedSectionId, isProgrammaticallyScrolled]);
+
+  // section was selected by clicking on the anchor bar buttons
+  const handleOnSectionSelected = useCallback(
+    (e) => {
+      isProgrammaticallyScrolled.current = true;
+      setInternalSelectedSectionId(e.getParameter('props')?.id);
+      fireOnSelectedChangedEvent(e);
+    },
+    [onSelectedSectionChanged, setInternalSelectedSectionId, isProgrammaticallyScrolled]
+  );
+
+  // do internal scrolling
+  useEffect(() => {
+    if (!isMounted.current) return;
+
+    if (mode === ObjectPageMode.Default && scroller.current) {
+      if (selectedSectionIsFirstChild) {
+        scroller.current.scrollToTop();
+      } else {
+        scroller.current.scrollToElementById(`ObjectPageSection-${internalSelectedSectionId}`, 45);
+      }
+      setTimeout(() => {
+        isProgrammaticallyScrolled.current = false;
+      }, 500);
+    }
+  }, [internalSelectedSectionId, isMounted, selectedSectionIsFirstChild, isProgrammaticallyScrolled]);
 
   useEffect(() => {
     setHeaderPinned(alwaysShowContentHeader);
@@ -155,10 +191,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const classes = useStyles();
 
   useEffect(() => {
-    setInternalSelectedSectionId(selectedSectionId);
-  }, [selectedSectionId]);
-
-  useEffect(() => {
     if (selectedSubSectionId && scroller.current) {
       scroller.current.scrollToElementById(`ObjectPageSubSection-${selectedSubSectionId}`, 45);
     }
@@ -191,18 +223,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       }
     }
   }, [props.selectedSubSectionId, setInternalSelectedSectionId, setSelectedSubSectionId, children, mode]);
-
-  useEffect(() => {
-    if (!isMounted.current) return;
-
-    if (mode === ObjectPageMode.Default && scroller.current) {
-      if (selectedSectionIsFirstChild) {
-        scroller.current.scrollToTop();
-      } else {
-        scroller.current.scrollToElementById(`ObjectPageSection-${internalSelectedSectionId}`, 45);
-      }
-    }
-  }, [internalSelectedSectionId, isMounted, selectedSectionIsFirstChild]);
+  //
 
   useEffect(() => {
     const ANCHOR_BAR_HEIGHT = 44;
@@ -273,17 +294,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     );
   }, 500);
 
-  const handleOnSectionSelected = useCallback(
-    (e) => {
-      if (mode === ObjectPageMode.IconTabBar) {
-        setInternalSelectedSectionId(e.getParameter('props')?.id);
-      }
-
-      fireOnSelectedChangedEvent(e);
-    },
-    [onSelectedSectionChanged, setInternalSelectedSectionId, mode]
-  );
-
   const handleOnSubSectionSelected = useCallback(
     (e) => {
       if (mode === ObjectPageMode.IconTabBar) {
@@ -342,6 +352,36 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   }, [scrollbarWidth]);
 
   const passThroughProps = usePassThroughHtmlProps(props);
+
+  const currentHeaderHeight =
+    (noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight) + 44;
+
+  useEffect(() => {
+    const objectPageHeight = objectPage.current?.offsetHeight ?? 1000;
+    const rootMargin = `${currentHeaderHeight}px 0px -${objectPageHeight - currentHeaderHeight}px 0px`;
+    const observer = new IntersectionObserver(
+      (elements) => {
+        elements.forEach((section) => {
+          if (section.isIntersecting && isProgrammaticallyScrolled.current === false) {
+            setInternalSelectedSectionId(section.target.id.replace(/^ObjectPageSection-/, ''));
+          }
+        });
+      },
+      {
+        root: objectPage.current,
+        rootMargin,
+        threshold: 0
+      }
+    );
+
+    objectPage.current.querySelectorAll('section[data-component-name="ObjectPageSection"]').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [objectPage, children, currentHeaderHeight, setInternalSelectedSectionId, isProgrammaticallyScrolled]);
 
   return (
     <Scroller ref={scroller} scrollContainer={objectPage}>
@@ -418,23 +458,11 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
           style={{ top: noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight }}
           onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
         />
-        <section className={classes.sectionsContainer}>
-          {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
-        </section>
+        {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
       </div>
     </Scroller>
   );
 });
-
-ObjectPage.defaultProps = {
-  image: null,
-  imageShapeCircle: false,
-  headerActions: [],
-  renderHeaderContent: null,
-  mode: ObjectPageMode.Default,
-  onSelectedSectionChanged: () => {},
-  showHideHeaderButton: false
-};
 
 ObjectPage.displayName = 'ObjectPage';
 
