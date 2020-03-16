@@ -6,7 +6,7 @@ const styles = {
     backgroundColor: ThemingParameters.sapTile_Background,
     border: `0.625rem solid ${ThemingParameters.sapTile_BorderColor}`,
     boxShadow: ThemingParameters.sapContent_Shadow0,
-    borderRadius: '0.25rem', // ThemingParameters.sapElement_BorderCornerRadius,
+    borderRadius: ThemingParameters.sapElement_BorderCornerRadius,
     textAlign: 'start',
     overflow: 'hidden',
     position: 'relative',
