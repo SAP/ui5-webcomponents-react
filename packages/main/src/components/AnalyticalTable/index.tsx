@@ -280,9 +280,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const noDataStyles = useMemo(() => {
     return {
-      height: `${tableBodyHeight}px`
+      height: `${tableBodyHeight}px`,
+      width: `${totalColumnsWidth}px`
     };
-  }, [tableBodyHeight]);
+  }, [tableBodyHeight, totalColumnsWidth]);
 
   const onGroupByChanged = useCallback(
     (e) => {
@@ -356,13 +357,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             {loading && busyIndicatorEnabled && props.data?.length > 0 && <LoadingComponent />}
             {loading && props.data?.length === 0 && (
               <TablePlaceholder
-                columns={
-                  columns.filter((col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor))
-                    .length
-                }
+                columns={tableInternalColumns.filter(
+                  (col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor)
+                )}
                 rows={props.minRows}
                 style={noDataStyles}
                 rowHeight={internalRowHeight}
+                tableWidth={totalColumnsWidth}
               />
             )}
             {!loading && props.data?.length === 0 && (

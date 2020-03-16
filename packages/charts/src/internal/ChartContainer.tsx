@@ -1,4 +1,4 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
 import React, { ComponentType, CSSProperties, FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { ResponsiveContainer } from 'recharts';
@@ -25,7 +25,7 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
 
   const internalStyles = useMemo(() => {
     const styles: CSSProperties = {};
-    styles.fontSize = ThemingParameters.sapUiFontSmallSize;
+    styles.fontSize = ThemingParameters.sapFontSmallSize;
 
     if (width) {
       styles.width = width;

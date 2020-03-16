@@ -2,7 +2,7 @@ import { getCompactSize } from '@ui5/webcomponents-base/dist/config/CompactSize'
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { createGenerateClassName } from '@ui5/webcomponents-react-base/lib/createGenerateClassName';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import * as sap_fiori_3 from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 import { Jss } from 'jss';
@@ -55,7 +55,7 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
     return {
       theme,
       contentDensity: isCompactSize ? ContentDensity.Compact : ContentDensity.Cozy,
-      parameters: sap_fiori_3
+      parameters: ThemingParameters
     };
   }, [theme, isCompactSize]);
 

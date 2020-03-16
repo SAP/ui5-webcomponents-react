@@ -1,12 +1,12 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 export const TextStyles = {
   // Text Style
   text: {
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    fontSize: ThemingParameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
-    color: ThemingParameters.sapUiBaseText,
+    color: ThemingParameters.sapTextColor,
     display: 'inline-block',
     boxSizing: 'border-box',
     whiteSpace: 'pre-line',

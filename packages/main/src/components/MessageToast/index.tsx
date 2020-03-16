@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-icons/dist/icons/message-error';
 import '@ui5/webcomponents-icons/dist/icons/message-warning';
 import '@ui5/webcomponents-icons/dist/icons/sys-enter';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
@@ -19,13 +19,13 @@ const coloredStyles = {
     minHeight: '1.375rem'
   },
   Success: {
-    color: ThemingParameters.sapUiPositiveElement
+    color: ThemingParameters.sapPositiveElementColor
   },
   Error: {
-    color: ThemingParameters.sapUiNegativeElement
+    color: ThemingParameters.sapNegativeElementColor
   },
   Warning: {
-    color: ThemingParameters.sapUiCriticalElement
+    color: ThemingParameters.sapCriticalElementColor
   }
 };
 
