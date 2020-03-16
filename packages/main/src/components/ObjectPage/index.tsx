@@ -1,4 +1,3 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { IScroller } from '@ui5/webcomponents-react-base/interfaces/IScroller';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
@@ -31,11 +30,11 @@ import styles from './ObjectPage.jss';
 import { ObjectPageAnchorBar } from './ObjectPageAnchorBar';
 import { ObjectPageHeader } from './ObjectPageHeader';
 import { getSectionById, safeGetChildrenArray } from './ObjectPageUtils';
+import { useObserveHeights } from './useObserveHeights';
 
 declare const ResizeObserver;
 
-// @ts-ignore
-window.ThemingParameters = ThemingParameters;
+const SCROLL_BAR_WIDTH = 12;
 
 export interface ObjectPagePropTypes extends CommonProps {
   title?: string;
@@ -64,7 +63,6 @@ export interface ObjectPagePropTypes extends CommonProps {
 }
 
 const useStyles = createComponentStyles(styles, { name: 'ObjectPage' });
-const defaultScrollbarWidth = 12;
 
 /**
  * <code>import { ObjectPage } from '@ui5/webcomponents-react/lib/ObjectPage';</code>
@@ -108,14 +106,20 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const objectPage: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const topHeader: RefObject<HTMLDivElement> = useRef();
   const headerContentRef: RefObject<HTMLDivElement> = useRef();
-  const [topHeaderHeight, setTopHeaderHeight] = useState(0);
-  const [headerContentHeight, setHeaderContentHeight] = useState(0);
 
   const hideHeaderButtonPressed = useRef(false);
   const scroller = useConsolidatedRef<IScroller>(scrollerRef);
-  const [scrollbarWidth, setScrollbarWidth] = useState(defaultScrollbarWidth);
+  const [scrollbarWidth, setScrollbarWidth] = useState(SCROLL_BAR_WIDTH);
   const isMounted = useRef(false);
   const selectedSectionIsFirstChild = firstSectionId === internalSelectedSectionId;
+
+  // observe heights of header parts
+  const { topHeaderHeight, headerContentHeight, totalHeaderHeight } = useObserveHeights(
+    objectPage,
+    topHeader,
+    headerContentRef,
+    { noHeader, internalHeaderOpen }
+  );
 
   // *****
   // SECTION SELECTION
@@ -138,6 +142,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   // do internal scrolling
   useEffect(() => {
+    setTimeout(() => {
+      isProgrammaticallyScrolled.current = false;
+    }, 500);
     if (!isMounted.current) return;
 
     if (mode === ObjectPageMode.Default && scroller.current) {
@@ -146,47 +153,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       } else {
         scroller.current.scrollToElementById(`ObjectPageSection-${internalSelectedSectionId}`, 45);
       }
-      setTimeout(() => {
-        isProgrammaticallyScrolled.current = false;
-      }, 500);
     }
   }, [internalSelectedSectionId, isMounted, selectedSectionIsFirstChild, isProgrammaticallyScrolled]);
 
   useEffect(() => {
     setHeaderPinned(alwaysShowContentHeader);
   }, [setHeaderPinned, alwaysShowContentHeader]);
-
-  useEffect(() => {
-    setHeaderPinned(headerPinned);
-  }, [setHeaderPinned, headerPinned]);
-
-  useEffect(() => {
-    if (topHeader.current) {
-      setTopHeaderHeight(topHeader.current.offsetHeight);
-      setHeaderContentHeight(headerContentRef.current?.offsetHeight ?? 0);
-    }
-  }, [topHeader.current, headerContentRef.current]);
-
-  useEffect(() => {
-    const headerContentResizeObserver = new ResizeObserver(([headerContent, header]) => {
-      if (headerContent?.contentRect?.height) {
-        setHeaderContentHeight(headerContent?.contentRect?.height);
-      }
-      if (header?.contentRect?.height) {
-        setTopHeaderHeight(header?.contentRect?.height);
-      }
-    });
-
-    if (headerContentRef.current) {
-      headerContentResizeObserver.observe(headerContentRef.current);
-    }
-    if (headerContentRef.current) {
-      headerContentResizeObserver.observe(topHeader.current);
-    }
-    return () => {
-      headerContentResizeObserver.disconnect();
-    };
-  }, [headerContentRef.current, topHeader.current, setHeaderContentHeight]);
 
   const classes = useStyles();
 
@@ -223,17 +195,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       }
     }
   }, [props.selectedSubSectionId, setInternalSelectedSectionId, setSelectedSubSectionId, children, mode]);
-  //
 
   useEffect(() => {
-    const ANCHOR_BAR_HEIGHT = 44;
-
     const fillerDivObserver = new ResizeObserver(() => {
-      const availableScrollHeight =
-        objectPage.current.clientHeight -
-        topHeaderHeight -
-        ANCHOR_BAR_HEIGHT -
-        (headerPinned ? headerContentRef.current?.clientHeight ?? 0 : 0);
+      const availableScrollHeight = objectPage.current.clientHeight - totalHeaderHeight;
       const sections = objectPage.current.querySelectorAll('[id^="ObjectPageSection"]');
       if (!sections || sections.length < 1) {
         return;
@@ -262,7 +227,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     return () => {
       fillerDivObserver.disconnect();
     };
-  }, [topHeaderHeight, headerContentRef, headerPinned, objectPage]);
+  }, [totalHeaderHeight, objectPage]);
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver(
@@ -320,11 +285,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   useEffect(() => {
     requestAnimationFrame(() => {
       const calculatedScrollBarWidth = getScrollBarWidth();
-      if (
-        calculatedScrollBarWidth &&
-        calculatedScrollBarWidth !== 0 &&
-        calculatedScrollBarWidth !== defaultScrollbarWidth
-      ) {
+      if (calculatedScrollBarWidth && calculatedScrollBarWidth !== 0 && calculatedScrollBarWidth !== SCROLL_BAR_WIDTH) {
         setScrollbarWidth(calculatedScrollBarWidth);
       }
     });
@@ -353,12 +314,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
-  const currentHeaderHeight =
-    (noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight) + 44;
-
   useEffect(() => {
     const objectPageHeight = objectPage.current?.offsetHeight ?? 1000;
-    const rootMargin = `${currentHeaderHeight}px 0px -${objectPageHeight - currentHeaderHeight}px 0px`;
+    const rootMargin = `-${totalHeaderHeight}px 0px -${objectPageHeight - totalHeaderHeight}px 0px`;
     const observer = new IntersectionObserver(
       (elements) => {
         elements.forEach((section) => {
@@ -370,7 +328,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       {
         root: objectPage.current,
         rootMargin,
-        threshold: 0
+        threshold: [0]
       }
     );
 
@@ -381,7 +339,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     return () => {
       observer.disconnect();
     };
-  }, [objectPage, children, currentHeaderHeight, setInternalSelectedSectionId, isProgrammaticallyScrolled]);
+  }, [objectPage, children, totalHeaderHeight, setInternalSelectedSectionId, isProgrammaticallyScrolled]);
 
   return (
     <Scroller ref={scroller} scrollContainer={objectPage}>
