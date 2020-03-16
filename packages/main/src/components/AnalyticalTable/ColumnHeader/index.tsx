@@ -4,7 +4,7 @@ import '@ui5/webcomponents-icons/dist/icons/sort-ascending';
 import '@ui5/webcomponents-icons/dist/icons/sort-descending';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React, { CSSProperties, DragEventHandler, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
@@ -45,11 +45,11 @@ const styles = {
     justifyContent: 'begin',
     alignItems: 'center',
     textAlign: 'left',
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    fontSize: ThemingParameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
-    color: ThemingParameters.sapUiListTextColor,
-    background: ThemingParameters.sapUiListHeaderBackground,
+    color: ThemingParameters.sapList_TextColor,
+    background: ThemingParameters.sapList_HeaderBackground,
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     maxWidth: '100%',
@@ -58,7 +58,7 @@ const styles = {
   iconContainer: {
     display: 'inline-block',
     position: 'absolute',
-    color: ThemingParameters.sapUiContentIconColor,
+    color: ThemingParameters.sapContent_IconColor,
     right: '0',
     marginRight: '0.5rem',
     '& :last-child': {

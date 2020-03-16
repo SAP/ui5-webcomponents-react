@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { DataLabel } from '../internal/CustomElements';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { renderAxisTicks } from '../util/Utils';
 
 export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter, stacked?, bar?) =>

@@ -1,23 +1,23 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   header: {
     padding: '0 3rem 0 2.5rem',
-    borderBottom: `1px solid ${ThemingParameters.sapUiGroupTitleBorderColor}`,
+    borderBottom: `1px solid ${ThemingParameters.sapGroup_TitleBorderColor}`,
     boxSizing: 'border-box',
     height: '2.75rem'
   },
   title: {
     height: '2.75rem',
-    color: ThemingParameters.sapUiBaseText,
-    fontSize: ThemingParameters.sapMFontHeader4Size,
-    borderBottom: `1px solid ${ThemingParameters.sapUiActive}`,
+    color: ThemingParameters.sapTextColor,
+    fontSize: ThemingParameters.sapFontHeader4Size,
+    borderBottom: `1px solid ${ThemingParameters.sapActiveColor}`,
     display: 'inline-block',
     maxWidth: '100%',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    fontFamily: ThemingParameters.sapUiFontFamily
+    fontFamily: ThemingParameters.sapFontFamily
   },
   uppercase: {
     textTransform: 'uppercase'
@@ -27,7 +27,7 @@ const styles = {
   },
   sectionContentInner: {
     padding: '1rem 2rem 2rem 2.5rem',
-    fontFamily: ThemingParameters.sapUiFontFamily
+    fontFamily: ThemingParameters.sapFontFamily
   }
 };
 

@@ -1,4 +1,4 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { CSSProperties } from 'react';
 
 const size = (s): CSSProperties => ({
@@ -14,15 +14,15 @@ const styles = {
   // outer flexbox
   avatar: {
     backgroundColor: ThemingParameters.sapAccentColor7,
-    color: ThemingParameters.sapUiContentContrastTextColor,
-    fontFamily: ThemingParameters.sapUiFontFamily,
+    color: ThemingParameters.sapContent_ContrastTextColor,
+    fontFamily: ThemingParameters.sapFontFamily,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     borderRadius: '0.25rem',
-    '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapContent_ContrastIconColor
+    '--sapContent_NonInteractiveIconColor': ThemingParameters.sapContent_ContrastIconColor
   },
   // borderRadius 100%
   circle: {

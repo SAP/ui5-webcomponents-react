@@ -11,6 +11,7 @@ import { HSLColor } from './lib/HSLColor';
 import { LOG_LEVEL, Logger } from './lib/Logger';
 import { Optional } from './lib/Optional';
 import * as sap_fiori_3 from './lib/sap_fiori_3';
+import { ThemingParameters } from './lib/ThemingParameters';
 import * as spacing from './lib/spacing';
 import { StyleClassHelper } from './lib/StyleClassHelper';
 import { useConsolidatedRef } from './lib/useConsolidatedRef';
@@ -36,5 +37,6 @@ export {
   usePassThroughHtmlProps,
   CssSizeVariablesNames,
   CssSizeVariables,
-  cssVariablesStyles
+  cssVariablesStyles,
+  ThemingParameters
 };

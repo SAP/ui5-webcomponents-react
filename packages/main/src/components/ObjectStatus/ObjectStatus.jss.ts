@@ -1,35 +1,35 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   objectStatus: {
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    fontSize: ThemingParameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
     position: 'relative',
     display: 'flex'
   },
   iconSuccess: {
     '& ui5-icon': {
-      color: ThemingParameters.sapUiPositiveText
+      color: ThemingParameters.sapPositiveTextColor
     }
   },
   iconWarning: {
     '& ui5-icon': {
-      color: ThemingParameters.sapUiCriticalText
+      color: ThemingParameters.sapCriticalTextColor
     }
   },
   iconError: {
     '& ui5-icon': {
-      color: ThemingParameters.sapUiNegativeText
+      color: ThemingParameters.sapNegativeTextColor
     }
   },
   iconNone: {
     '& ui5-icon': {
-      color: ThemingParameters.sapUiNeutralText
+      color: ThemingParameters.sapNeutralTextColor
     }
   },
   iconInformation: {
-    color: ThemingParameters.sapUiInformativeElement
+    color: ThemingParameters.sapInformativeElementColor
   },
   icon: {
     marginRight: '0.5rem',
@@ -38,19 +38,19 @@ const styles = {
     lineHeight: 'inherit'
   },
   textSuccess: {
-    color: ThemingParameters.sapUiPositiveText
+    color: ThemingParameters.sapPositiveTextColor
   },
   textError: {
-    color: ThemingParameters.sapUiNegativeText
+    color: ThemingParameters.sapNegativeTextColor
   },
   textWarning: {
-    color: ThemingParameters.sapUiCriticalText
+    color: ThemingParameters.sapCriticalTextColor
   },
   textInformation: {
-    color: ThemingParameters.sapUiInformativeText
+    color: ThemingParameters.sapInformativeTextColor
   },
   textNone: {
-    color: ThemingParameters.sapUiNeutralText
+    color: ThemingParameters.sapNeutralTextColor
   }
 };
 

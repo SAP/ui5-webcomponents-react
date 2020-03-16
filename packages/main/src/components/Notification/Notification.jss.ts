@@ -1,29 +1,29 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const style = {
   notificationContainer: {
     width: '100%',
     maxWidth: '60rem',
-    backgroundColor: ThemingParameters.sapUiListBackground,
-    boxShadow: ThemingParameters.sapUiShadowLevel0,
+    backgroundColor: ThemingParameters.sapList_Background,
+    boxShadow: ThemingParameters.sapContent_Shadow0,
     display: 'flex',
     flexDirection: 'row',
     position: 'relative',
     overflow: 'hidden',
     '&:hover': {
-      backgroundColor: ThemingParameters.sapUiListHoverBackground
+      backgroundColor: ThemingParameters.sapList_Hover_Background
     },
     '&:active': {
-      backgroundColor: ThemingParameters.sapUiListHoverBackground
+      backgroundColor: ThemingParameters.sapList_Hover_Background
     }
   },
   notificationContainerChild: {
-    backgroundColor: ThemingParameters.sapUiListHeaderBackground
+    backgroundColor: ThemingParameters.sapList_HeaderBackground
   },
   header: {
     display: 'flex',
     flexDirection: 'row',
-    boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapUiPageHeaderBorderColor}`,
+    boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapPageHeader_BorderColor}`,
     padding: '1rem 0 1rem 1.25rem',
     alignItems: 'center'
   },
@@ -38,9 +38,9 @@ const style = {
     paddingRight: '40px'
   },
   title: {
-    color: ThemingParameters.sapUiGroupTitleTextColor,
-    fontFamily: ThemingParameters.sapUiFontHeaderFamily,
-    textShadow: ThemingParameters.sapUiShadowText,
+    color: ThemingParameters.sapGroup_TitleTextColor,
+    fontFamily: ThemingParameters.sapFontHeaderFamily,
+    textShadow: ThemingParameters.sapContent_TextShadow,
     fontSize: '14px',
     paddingRight: '40px'
   },
@@ -69,7 +69,7 @@ const style = {
     paddingRight: '0.375rem'
   },
   descriptionEllipsised: {
-    color: ThemingParameters.sapUiContentLabelColor,
+    color: ThemingParameters.sapContent_LabelColor,
     overflow: 'hidden',
     textAlign: 'left',
     textOverflow: 'ellipsis',
@@ -80,13 +80,13 @@ const style = {
     WebkitBoxOrient: 'vertical'
   },
   descriptionFull: {
-    color: ThemingParameters.sapUiContentLabelColor
+    color: ThemingParameters.sapContent_LabelColor
   },
   metadata: {
     paddingTop: '0.375rem',
-    fontFamily: ThemingParameters.sapUiFontFamily,
-    fontSize: ThemingParameters.sapMFontMediumSize,
-    color: ThemingParameters.sapUiContentLabelColor,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
+    color: ThemingParameters.sapContent_LabelColor,
     fontWeight: 'normal',
     display: 'flex',
     flexWrap: 'wrap',
@@ -100,23 +100,23 @@ const style = {
     minWidth: '0.375rem',
     height: 'auto'
   },
-  high: { backgroundColor: ThemingParameters.sapUiErrorBorder },
-  medium: { backgroundColor: ThemingParameters.sapUiWarningBorder },
-  low: { backgroundColor: ThemingParameters.sapUiSuccessBorder },
-  none: { backgroundColor: ThemingParameters.sapUiNeutralBorder },
+  high: { backgroundColor: ThemingParameters.sapErrorBorderColor },
+  medium: { backgroundColor: ThemingParameters.sapWarningBorderColor },
+  low: { backgroundColor: ThemingParameters.sapSuccessBorderColor },
+  none: { backgroundColor: ThemingParameters.sapNeutralBorderColor },
   semanticIcon: {
     paddingRight: '0.375rem',
     width: '1rem',
     display: 'flex'
   },
   error: {
-    color: ThemingParameters.sapUiNegativeElement
+    color: ThemingParameters.sapNegativeElementColor
   },
   warning: {
-    color: ThemingParameters.sapUiCriticalElement
+    color: ThemingParameters.sapCriticalElementColor
   },
   success: {
-    color: ThemingParameters.sapUiPositiveElement
+    color: ThemingParameters.sapPositiveElementColor
   },
   contentAction: {
     display: 'flex',

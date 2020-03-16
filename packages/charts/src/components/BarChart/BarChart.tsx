@@ -1,5 +1,5 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
@@ -48,7 +48,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       xAxisVisible: true,
       xAxisUnit: '',
       yAxisUnit: '',
-      gridStroke: ThemingParameters.sapUiListTableFooterBorder,
+      gridStroke: ThemingParameters.sapList_TableFooterBorder,
       gridHorizontal: true,
       gridVertical: false,
       legendPosition: 'bottom',

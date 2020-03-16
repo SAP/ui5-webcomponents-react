@@ -1,5 +1,5 @@
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
@@ -87,7 +87,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       yAxisUnit: '',
       yAxisVisible: false,
       xAxisVisible: true,
-      gridStroke: ThemingParameters.sapUiListTableFooterBorder,
+      gridStroke: ThemingParameters.sapList_TableFooterBorder,
       gridHorizontal: true,
       gridVertical: false,
       yAxisId: '',

@@ -1,9 +1,9 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   segmentedButtonItem: {
-    fontFamily: ThemingParameters.sapUiFontFamily,
+    fontFamily: ThemingParameters.sapFontFamily,
     listStyle: 'none',
     overflow: 'hidden',
     WebkitTapHighlightColor: 'rgba(255, 255, 255, 0)',
@@ -16,7 +16,7 @@ const styles = {
     display: 'inline-block',
     fontSize: '0.875rem',
     '&:focus': {
-      outline: `1px dotted ${ThemingParameters.sapUiContentFocusColor}`
+      outline: `1px dotted ${ThemingParameters.sapContent_FocusColor}`
     },
     height: CssSizeVariables.sapWcrSegmentedButtonItemHeight,
     lineHeight: CssSizeVariables.sapWcrSegmentedButtonItemLineHeight,
@@ -29,26 +29,26 @@ const styles = {
     '&:last-child': {
       borderTopRightRadius: '0.25rem',
       borderBottomRightRadius: '0.25rem',
-      borderRightColor: ThemingParameters.sapUiSegmentedButtonBorderColor
+      borderRightColor: ThemingParameters.sapButton_BorderColor
     },
-    color: ThemingParameters.sapUiSegmentedButtonTextColor,
-    border: `1px solid ${ThemingParameters.sapUiSegmentedButtonBorderColor}`,
+    color: ThemingParameters.sapButton_TextColor,
+    border: `1px solid ${ThemingParameters.sapButton_BorderColor}`,
     borderRightColor: 'transparent',
-    backgroundColor: ThemingParameters.sapUiSegmentedButtonBackground
+    backgroundColor: ThemingParameters.sapButton_Background
   },
   selected: {
-    background: ThemingParameters.sapUiSegmentedButtonSelectedBackground,
-    color: ThemingParameters.sapUiSegmentedButtonSelectedTextColor,
-    borderColor: ThemingParameters.sapUiSegmentedButtonSelectedHoverBorderColor,
-    '--sapUiContentNonInteractiveIconColor': ThemingParameters.sapUiContentContrastIconColor,
+    background: ThemingParameters.sapButton_Selected_Background,
+    color: ThemingParameters.sapButton_Selected_TextColor,
+    borderColor: ThemingParameters.sapButton_Selected_BorderColor,
+    '--sapContent_NonInteractiveIconColor': ThemingParameters.sapContent_ContrastIconColor,
     '$:active': {
-      background: ThemingParameters.sapUiButtonActiveBackground,
-      color: ThemingParameters.sapUiButtonActiveTextColor
+      background: ThemingParameters.sapButton_Active_Background,
+      color: ThemingParameters.sapButton_Active_TextColor
     }
   },
   focusableItem: {
     '&:not($selected):hover': {
-      background: ThemingParameters.sapUiSegmentedButtonHoverBackground
+      background: ThemingParameters.sapButton_Hover_Background
     }
   },
   disabled: { textShadow: 'none', cursor: 'default', opacity: '0.4' },
