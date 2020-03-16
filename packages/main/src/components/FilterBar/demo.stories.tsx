@@ -1,6 +1,5 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, number, select, text } from '@storybook/addon-knobs';
-import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
@@ -15,7 +14,7 @@ import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
-import React from 'react';
+import React, { useState } from 'react';
 
 const variantItems = [
   { label: 'Variant 1', key: '1' },
@@ -54,23 +53,27 @@ const renderSearch = () => {
 };
 
 export const renderStory = () => {
+  const [add, setAdd] = useState(false);
+
+  setTimeout(() => setAdd(true), 10000);
+
   return (
     <FilterBar
       renderSearch={renderSearch}
       renderVariants={renderVariants}
       useToolbar={boolean('useToolbar', true)}
       loading={boolean('loading', false)}
-      considerGroupName={boolean('considerGroupName', false)}
+      considerGroupName={boolean('considerGroupName', true)}
       filterContainerWidth={text('width', '12rem')}
       activeFiltersCount={number('activeFiltersCount', 0)}
-      showClearOnFB={boolean('showClearOnFB', false)}
-      showRestoreOnFB={boolean('showRestoreOnFB', false)}
-      showGo={boolean('showGo', false)}
-      showGoOnFB={boolean('showGoOnFB', false)}
-      showFilterConfiguration={boolean('showFilterConfiguration', false)}
-      showSearchOnFiltersDialog={boolean('showSearchOnFiltersDialog', false)}
-      showClearButton={boolean('showClearButton', false)}
-      showRestoreButton={boolean('showRestoreButton', false)}
+      showClearOnFB={boolean('showClearOnFB', true)}
+      showRestoreOnFB={boolean('showRestoreOnFB', true)}
+      showGo={boolean('showGo', true)}
+      showGoOnFB={boolean('showGoOnFB', true)}
+      showFilterConfiguration={boolean('showFilterConfiguration', true)}
+      showSearchOnFiltersDialog={boolean('showSearchOnFiltersDialog', true)}
+      showClearButton={boolean('showClearButton', true)}
+      showRestoreButton={boolean('showRestoreButton', true)}
       filterBarExpanded={boolean('filterBarExpanded', true)}
       onToggleFilters={action('onToggleFilters')}
       onFiltersDialogOpen={action('onFiltersDialogOpen')}
@@ -94,13 +97,21 @@ export const renderStory = () => {
         label="Switch"
         groupName={text('FilterGroupItem: groupName', 'Custom Group')}
         visible={boolean('FilterGroupItem: visible', true)}
-        loading={boolean('FilterGroupItem: loading', false)}
+        loading={boolean('FilterGroupItem: loading', true)}
+      >
+        <Switch />
+      </FilterGroupItem>
+      <FilterGroupItem
+        label="Switch added"
+        groupName={text('FilterGroupItem: groupName', 'Custom Group')}
+        visible={add}
+        loading={boolean('FilterGroupItem: loading', true)}
       >
         <Switch />
       </FilterGroupItem>
       <FilterGroupItem
         label="SELECT w/ initial selected"
-        loading={boolean('FilterGroupItem: loading', false)}
+        loading={boolean('FilterGroupItem: loading', true)}
         visibleInFilterBar={boolean('FilterGroupItem: visibleInFilterBar', true)}
       >
         <Select>
@@ -136,7 +147,7 @@ export const renderStory = () => {
       <FilterGroupItem
         label="MultBox w/ initial selected"
         groupName="Group 1"
-        loading={boolean('FilterGroupItem: loading', false)}
+        loading={boolean('FilterGroupItem: loading', true)}
       >
         <MultiComboBox>
           <Option>Option 1</Option>

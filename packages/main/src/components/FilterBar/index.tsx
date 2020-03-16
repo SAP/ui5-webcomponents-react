@@ -106,12 +106,12 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   }, [setShowFilters, useToolbar, filterBarExpanded]);
 
   const initChildrenWithRef = useCallback(() => {
-    let filterRefs = [];
+    let innerFilterRefs = [];
     const newChildren = Children.toArray(children)
       .filter(Boolean)
-      .map((child) => {
+      .map((child, index) => {
         const childrenRef = (node) => {
-          filterRefs.push({ node, key: child.key });
+          innerFilterRefs.push({ node, key: child.key });
           return node;
         };
         const filterChildren = child.props.children;
@@ -122,15 +122,15 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           }
         });
       });
-    setFilterRefs(filterRefs);
+    setFilterRefs(innerFilterRefs);
     return newChildren;
-  }, [children, setFilterRefs]);
+  }, []);
 
   const [childrenWithRef, setChildrenWithRef] = useState(initChildrenWithRef);
 
   useEffect(() => {
-    setChildrenWithRef(initChildrenWithRef);
-  }, [initChildrenWithRef, setChildrenWithRef]);
+    setChildrenWithRef(Children.toArray(children).filter(Boolean));
+  }, [children, setChildrenWithRef]);
 
   const classes = useStyles();
 
@@ -177,11 +177,11 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const handleDialogOpen = useCallback(
     (e) => {
-      onFiltersDialogOpen(Event.of(null, e.getOriginalEvent()));
       setChildrenWithRef(setPropsOfChildren(addRef(childrenWithRef, filterRefs, 'filterBarRef'), 'filterBarRef'));
       setDialogOpen(true);
+      onFiltersDialogOpen(Event.of(null, e.getOriginalEvent()));
     },
-    [onFiltersDialogOpen, setPropsOfChildren, addRef, childrenWithRef, filterRefs, setDialogOpen]
+    [setChildrenWithRef, childrenWithRef, filterRefs, setDialogOpen, onFiltersDialogOpen]
   );
 
   const handleDialogClose = useCallback(
