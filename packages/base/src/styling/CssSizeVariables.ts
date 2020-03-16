@@ -41,6 +41,22 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel1}:1.5rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel2}:2.25rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel3}:2.75rem;
+  
+  // TODO Remove those mappers after Web Components Update rc.6
+  --sapFontHeaderFamily:var(--sapUiFontFamily);
+  --sapFontSmallSize:var(--sapMFontSmallSize);
+  --sapFontLargeSize:var(--sapMFontLargeSize);
+  --sapFontHeader1Size:var(--sapMFontHeader1Size);
+  --sapFontHeader2Size:var(--sapMFontHeader2Size);
+  --sapFontHeader3Size:var(--sapMFontHeader3Size);
+  --sapFontHeader4Size:var(--sapMFontHeader4Size);
+  --sapFontHeader5Size:var(--sapMFontHeader5Size);
+  --sapFontHeader6Size:var(--sapMFontHeader6Size);
+  --sapContent_Shadow0:var(--sapUiShadowLevel0);
+  --sapContent_Shadow1:var(--sapUiShadowLevel1);
+  --sapContent_Shadow2:var(--sapUiShadowLevel2);
+  --sapContent_Shadow3:var(--sapUiShadowLevel3);
+  --sapElement_BorderCornerRadius:0.25rem;
 }
 
 [data-ui5-compact-size],
