@@ -32,3 +32,7 @@ export const removeScrollEvent = (scrollContainer, handler) => {
     scrollContainer.current.removeEventListener('scroll', handler.current);
   }
 };
+
+export const extractSectionIdFromHtmlId = (id) => {
+  return id.replace(/^ObjectPageSection-/, '');
+};

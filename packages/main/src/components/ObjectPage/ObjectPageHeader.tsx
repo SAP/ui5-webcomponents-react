@@ -1,7 +1,7 @@
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import React, { CSSProperties, FC, forwardRef, ReactElement, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, ReactElement, useMemo, RefObject } from 'react';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
 interface Props {
@@ -19,7 +19,7 @@ interface Props {
   topHeaderHeight: number;
 }
 
-export const ObjectPageHeader: FC<Props> = forwardRef((props: Props, ref: any) => {
+export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDivElement>) => {
   const {
     image,
     classes,

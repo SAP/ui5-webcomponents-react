@@ -2,12 +2,18 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import '@ui5/webcomponents-icons/dist/icons/pushpin-off';
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-up';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { List } from '@ui5/webcomponents-react/lib/List';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
-import React, { CSSProperties, FC, forwardRef, ReactElement, RefObject, useCallback } from 'react';
+import React, { CSSProperties, FC, forwardRef, ReactElement, RefObject, useCallback, useState, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
+import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { StandardListItem } from '../../webComponents/StandardListItem';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
@@ -28,12 +34,6 @@ addCustomCSS(
 
 const anchorBarStyles = {
   anchorBar: {
-    paddingLeft: '2rem',
-    backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}, inset 0 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`,
-    display: 'flex',
-    height: '2.75rem',
-    minHeight: '2.75rem',
     position: 'sticky',
     zIndex: 2
   },
@@ -62,7 +62,6 @@ const useStyles = createUseStyles(anchorBarStyles, { name: 'ObjectPageAnchorBar'
 
 interface Props {
   sections: ReactElement | ReactElement[];
-  mode: ObjectPageMode;
   selectedSectionId: string;
   handleOnSectionSelected: (e: unknown) => void;
   handleOnSubSectionSelected: (e: unknown) => void;
@@ -75,10 +74,9 @@ interface Props {
   onToggleHeaderContentVisibility: (e: any) => void;
 }
 
-const ObjectPageAnchorBar: FC<Props> = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
+const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
   const {
     sections,
-    mode,
     selectedSectionId,
     handleOnSectionSelected,
     handleOnSubSectionSelected,
@@ -96,6 +94,8 @@ const ObjectPageAnchorBar: FC<Props> = forwardRef((props: Props, ref: RefObject<
   const shouldRenderHideHeaderButton = showHideHeaderButton;
   const shouldRenderHeaderPinnableButton = headerContentPinnable && showHeaderContent;
   const showBothActions = shouldRenderHeaderPinnableButton && shouldRenderHideHeaderButton;
+  const [popoverContent, setPopoverContent] = useState(null);
+  const popoverRef = useRef<Ui5PopoverDomRef>(null);
 
   const onPinHeader = useCallback(
     (e) => {
@@ -104,22 +104,55 @@ const ObjectPageAnchorBar: FC<Props> = forwardRef((props: Props, ref: RefObject<
     [setHeaderPinned]
   );
 
+  const onTabItemSelect = useCallback((event) => {
+    const { sectionId, index } = event.getParameter('item').dataset;
+    // eslint-disable-next-line eqeqeq
+    const section = safeGetChildrenArray(sections).find((el) => el.props.id == sectionId);
+    handleOnSectionSelected(
+      Event.of(null, {} as any, {
+        ...section,
+        index
+      })
+    );
+  }, []);
+
+  const onShowSubSectionPopover = useCallback(
+    (e, section) => {
+      setPopoverContent(section);
+      popoverRef.current.openBy(e.target.parentElement);
+    },
+    [setPopoverContent, popoverRef]
+  );
+
+  const onSubSectionClick = useCallback(
+    (e) => {
+      const selectedId = e.getParameter('item').dataset.key;
+      const subSection = popoverContent.props.children
+        .filter((item) => item.props && item.props.isSubSection)
+        .find((item) => item.props.id === selectedId);
+      if (subSection) {
+        handleOnSubSectionSelected(Event.of(null, e.getOriginalEvent(), { section: popoverContent, subSection }));
+      }
+      popoverRef.current.close();
+    },
+    [handleOnSubSectionSelected, popoverRef, popoverContent]
+  );
+
   return (
     <section className={classes.anchorBar} role="navigation" style={style} ref={ref}>
-      {safeGetChildrenArray(sections).map((section, index) => {
-        return (
-          <ObjectPageAnchorButton
-            key={`Anchor-${section.props?.id}`}
-            section={section}
-            index={index}
-            selected={selectedSectionId === section.props?.id}
-            mode={mode}
-            onSectionSelected={handleOnSectionSelected}
-            onSubSectionSelected={handleOnSubSectionSelected}
-            collapsedHeader={!showHeaderContent}
-          />
-        );
-      })}
+      <TabContainer collapsed fixed onItemSelect={onTabItemSelect} showOverflow>
+        {safeGetChildrenArray(sections).map((section, index) => {
+          return (
+            <ObjectPageAnchorButton
+              key={`Anchor-${section.props?.id}`}
+              section={section}
+              index={index}
+              selected={selectedSectionId === section.props?.id}
+              onShowSubSectionPopover={onShowSubSectionPopover}
+            />
+          );
+        })}
+      </TabContainer>
       {shouldRenderHideHeaderButton && (
         <Button
           icon={showHeaderContent ? 'slim-arrow-up' : 'slim-arrow-down'}
@@ -141,6 +174,17 @@ const ObjectPageAnchorBar: FC<Props> = forwardRef((props: Props, ref: RefObject<
           data-ui5wcr-object-page-header-action=""
         />
       )}
+      <Popover placementType={PlacementType.Bottom} noArrow ref={popoverRef}>
+        <List onItemClick={onSubSectionClick}>
+          {popoverContent?.props?.children
+            .filter((item) => item.props && item.props.isSubSection)
+            .map((item) => (
+              <StandardListItem key={item.props.id} data-key={item.props.id}>
+                {item.props.title}
+              </StandardListItem>
+            ))}
+        </List>
+      </Popover>
     </section>
   );
 });

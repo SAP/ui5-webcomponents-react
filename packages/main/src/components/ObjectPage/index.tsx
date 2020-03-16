@@ -29,7 +29,7 @@ import { CollapsedAvatar } from './CollapsedAvatar';
 import styles from './ObjectPage.jss';
 import { ObjectPageAnchorBar } from './ObjectPageAnchorBar';
 import { ObjectPageHeader } from './ObjectPageHeader';
-import { getSectionById, safeGetChildrenArray } from './ObjectPageUtils';
+import { extractSectionIdFromHtmlId, getSectionById, safeGetChildrenArray } from './ObjectPageUtils';
 import { useObserveHeights } from './useObserveHeights';
 
 declare const ResizeObserver;
@@ -103,8 +103,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const [internalHeaderOpen, setInternalHeaderOpen] = useState(!noHeader);
   const isProgrammaticallyScrolled = useRef(false);
 
-  const objectPage: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
-  const topHeader: RefObject<HTMLDivElement> = useRef();
+  const objectPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
+  const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   const headerContentRef: RefObject<HTMLDivElement> = useRef();
 
   const hideHeaderButtonPressed = useRef(false);
@@ -115,8 +115,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight, totalHeaderHeight } = useObserveHeights(
-    objectPage,
-    topHeader,
+    objectPageRef,
+    topHeaderRef,
     headerContentRef,
     { noHeader, internalHeaderOpen }
   );
@@ -149,24 +149,33 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
     if (mode === ObjectPageMode.Default && scroller.current) {
       if (selectedSectionIsFirstChild) {
-        scroller.current.scrollToTop();
+        objectPageRef.current.scroll({ top: 0, behavior: 'smooth' });
       } else {
-        scroller.current.scrollToElementById(`ObjectPageSection-${internalSelectedSectionId}`, 45);
+        const childOffset = objectPageRef.current.querySelector<HTMLElement>(
+          `#ObjectPageSection-${internalSelectedSectionId}`
+        ).offsetTop;
+        console.log('Child Offset', childOffset);
+        console.log('Header height', topHeaderHeight + 32);
+        objectPageRef.current.scrollTo({ top: childOffset - topHeaderHeight - 32 });
       }
     }
   }, [internalSelectedSectionId, isMounted, selectedSectionIsFirstChild, isProgrammaticallyScrolled]);
+
+  // Scrolling for Sub Section Selection
+  useEffect(() => {
+    if (selectedSubSectionId && scroller.current) {
+      scroller.current.scrollToElementById(`ObjectPageSubSection-${selectedSubSectionId}`, 45);
+      setTimeout(() => {
+        isProgrammaticallyScrolled.current = false;
+      }, 500);
+    }
+  }, [selectedSubSectionId, isProgrammaticallyScrolled]);
 
   useEffect(() => {
     setHeaderPinned(alwaysShowContentHeader);
   }, [setHeaderPinned, alwaysShowContentHeader]);
 
   const classes = useStyles();
-
-  useEffect(() => {
-    if (selectedSubSectionId && scroller.current) {
-      scroller.current.scrollToElementById(`ObjectPageSubSection-${selectedSubSectionId}`, 45);
-    }
-  }, [selectedSubSectionId]);
 
   useEffect(() => {
     if (props.selectedSubSectionId) {
@@ -198,8 +207,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   useEffect(() => {
     const fillerDivObserver = new ResizeObserver(() => {
-      const availableScrollHeight = objectPage.current.clientHeight - totalHeaderHeight;
-      const sections = objectPage.current.querySelectorAll('[id^="ObjectPageSection"]');
+      const availableScrollHeight = objectPageRef.current.clientHeight - totalHeaderHeight;
+      const sections = objectPageRef.current.querySelectorAll('[id^="ObjectPageSection"]');
       if (!sections || sections.length < 1) {
         return;
       }
@@ -222,12 +231,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       lastSectionDomRef.style.marginBottom = `${heightDiff}px`;
     });
 
-    fillerDivObserver.observe(objectPage.current);
+    fillerDivObserver.observe(objectPageRef.current);
 
     return () => {
       fillerDivObserver.disconnect();
     };
-  }, [totalHeaderHeight, objectPage]);
+  }, [totalHeaderHeight, objectPageRef]);
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver(
@@ -237,7 +246,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         }
         setInternalHeaderOpen(record.isIntersecting);
       },
-      { root: objectPage.current, rootMargin: `-${topHeaderHeight}px 0px 0px 0px` }
+      { root: objectPageRef.current, rootMargin: `-${topHeaderHeight}px 0px 0px 0px` }
     );
 
     if (headerContentRef.current) {
@@ -247,7 +256,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     return () => {
       intersectionObserver.disconnect();
     };
-  }, [objectPage, headerContentRef, topHeaderHeight, topHeader, setInternalHeaderOpen, hideHeaderButtonPressed]);
+  }, [objectPageRef, headerContentRef, topHeaderHeight, topHeaderRef, setInternalHeaderOpen, hideHeaderButtonPressed]);
 
   const fireOnSelectedChangedEvent = debounce((e) => {
     onSelectedSectionChanged(
@@ -261,14 +270,15 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const handleOnSubSectionSelected = useCallback(
     (e) => {
+      isProgrammaticallyScrolled.current = true;
       if (mode === ObjectPageMode.IconTabBar) {
         const sectionId = e.getParameter('section').props?.id;
-        const subSection = e.getParameter('subSection');
         setInternalSelectedSectionId(sectionId);
-        setSelectedSubSectionId(subSection.props.id);
       }
+      const subSection = e.getParameter('subSection');
+      setSelectedSubSectionId(subSection.props.id);
     },
-    [mode, setInternalSelectedSectionId, setSelectedSubSectionId]
+    [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled]
   );
 
   const onToggleHeaderContentVisibility = useCallback(
@@ -315,46 +325,46 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const passThroughProps = usePassThroughHtmlProps(props);
 
   useEffect(() => {
-    const objectPageHeight = objectPage.current?.offsetHeight ?? 1000;
+    const objectPageHeight = objectPageRef.current?.offsetHeight ?? 1000;
     const rootMargin = `-${totalHeaderHeight}px 0px -${objectPageHeight - totalHeaderHeight}px 0px`;
     const observer = new IntersectionObserver(
       (elements) => {
         elements.forEach((section) => {
           if (section.isIntersecting && isProgrammaticallyScrolled.current === false) {
-            setInternalSelectedSectionId(section.target.id.replace(/^ObjectPageSection-/, ''));
+            // setInternalSelectedSectionId(extractSectionIdFromHtmlId(section.target.id));
           }
         });
       },
       {
-        root: objectPage.current,
+        root: objectPageRef.current,
         rootMargin,
         threshold: [0]
       }
     );
 
-    objectPage.current.querySelectorAll('section[data-component-name="ObjectPageSection"]').forEach((el) => {
+    objectPageRef.current.querySelectorAll('section[data-component-name="ObjectPageSection"]').forEach((el) => {
       observer.observe(el);
     });
 
     return () => {
       observer.disconnect();
     };
-  }, [objectPage, children, totalHeaderHeight, setInternalSelectedSectionId, isProgrammaticallyScrolled]);
+  }, [objectPageRef, children, totalHeaderHeight, setInternalSelectedSectionId, isProgrammaticallyScrolled]);
 
   return (
-    <Scroller ref={scroller} scrollContainer={objectPage}>
+    <Scroller ref={scroller} scrollContainer={objectPageRef}>
       <div
         data-component-name="ObjectPage"
         slot={slot}
         className={objectPageClasses.toString()}
         style={style}
-        ref={objectPage}
+        ref={objectPageRef}
         title={tooltip}
         {...passThroughProps}
       >
         {!noHeader && (
           <header
-            ref={topHeader}
+            ref={topHeaderRef}
             role="banner"
             aria-roledescription="Object Page header"
             style={scrollBarWidthPadding}
@@ -398,13 +408,11 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
             headerPinned={headerPinned}
             topHeaderHeight={topHeaderHeight}
             headerOpen={internalHeaderOpen}
-            // @ts-ignore
             ref={headerContentRef}
           />
         )}
         <ObjectPageAnchorBar
           sections={children}
-          mode={mode}
           selectedSectionId={internalSelectedSectionId}
           handleOnSectionSelected={handleOnSectionSelected}
           handleOnSubSectionSelected={handleOnSubSectionSelected}
