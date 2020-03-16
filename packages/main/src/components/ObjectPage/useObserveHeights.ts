@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react';
 
-const ANCHOR_BAR_HEIGHT = 44;
 declare const ResizeObserver;
 
-export const useObserveHeights = (objectPage, topHeader, headerContentRef, { noHeader, internalHeaderOpen }) => {
+export const useObserveHeights = (
+  objectPage,
+  topHeader,
+  headerContentRef,
+  anchorBarRef,
+  { noHeader, internalHeaderOpen }
+) => {
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
 
   // top header
   useEffect(() => {
     const headerContentResizeObserver = new ResizeObserver(([header]) => {
-      if (header?.contentRect?.height) {
-        setTopHeaderHeight(header?.contentRect?.height);
-      }
+      setTopHeaderHeight(header?.contentRect?.height ?? 0);
     });
     if (topHeader.current) {
       headerContentResizeObserver.observe(topHeader.current);
@@ -25,9 +28,7 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, { noH
   // header content
   useEffect(() => {
     const headerContentResizeObserver = new ResizeObserver(([headerContent]) => {
-      if (headerContent?.contentRect?.height) {
-        setHeaderContentHeight(headerContent?.contentRect?.height);
-      }
+      setHeaderContentHeight(headerContent?.contentRect?.height ?? 0);
     });
 
     if (headerContentRef.current) {
@@ -38,8 +39,10 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, { noH
     };
   }, [headerContentRef.current, setHeaderContentHeight]);
 
-  const totalHeaderHeight =
-    (noHeader ? 0 : topHeaderHeight + (internalHeaderOpen ? headerContentHeight : 0)) + ANCHOR_BAR_HEIGHT;
+  const anchorBarHeight = anchorBarRef.current?.offsetHeight ?? 33;
 
-  return { topHeaderHeight, headerContentHeight, totalHeaderHeight };
+  const totalHeaderHeight =
+    (noHeader ? 0 : topHeaderHeight + (internalHeaderOpen ? headerContentHeight : 0)) + anchorBarHeight;
+
+  return { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight };
 };
