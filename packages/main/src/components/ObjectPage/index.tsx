@@ -115,7 +115,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     topHeaderRef,
     headerContentRef,
     anchorBarRef,
-    { noHeader, internalHeaderOpen }
+    { noHeader }
   );
 
   // *****
@@ -139,31 +139,21 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   // do internal scrolling
   useEffect(() => {
-    setTimeout(() => {
-      isProgrammaticallyScrolled.current = false;
-    }, 500);
     if (!isMounted.current) return;
 
-    if (mode === ObjectPageMode.Default) {
+    if (mode === ObjectPageMode.Default && isProgrammaticallyScrolled.current === true) {
       if (selectedSectionIsFirstChild) {
         objectPageRef.current.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const childToScrollTo = objectPageRef.current.querySelector<HTMLElement>(
+        const childOffset = objectPageRef.current.querySelector<HTMLElement>(
           `#ObjectPageSection-${internalSelectedSectionId}`
-        );
-        requestAnimationFrame(() => {
-          const currentScrollOffset = objectPageRef.current.scrollTop + headerContentHeight;
-          if (
-            currentScrollOffset < childToScrollTo.offsetTop ||
-            currentScrollOffset > childToScrollTo.offsetTop + childToScrollTo.offsetHeight
-          ) {
-            objectPageRef.current.scrollTo({
-              top: childToScrollTo.offsetTop - topHeaderHeight - headerContentHeight - anchorBarHeight + 45,
-              behavior: 'smooth'
-            });
-          }
+        ).offsetTop;
+        objectPageRef.current.scrollTo({
+          top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
+          behavior: 'smooth'
         });
       }
+      isProgrammaticallyScrolled.current = false;
     }
   }, [
     internalSelectedSectionId,
@@ -172,22 +162,31 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     isProgrammaticallyScrolled,
     objectPageRef,
     topHeaderHeight,
-    headerContentHeight,
-    anchorBarHeight
+    anchorBarHeight,
+    headerPinned,
+    headerContentHeight
   ]);
 
   // Scrolling for Sub Section Selection
   useEffect(() => {
-    if (selectedSubSectionId) {
+    if (selectedSubSectionId && isProgrammaticallyScrolled.current === true) {
       const childOffset = objectPageRef.current.querySelector<HTMLElement>(
         `div[id="ObjectPageSubSection-${selectedSubSectionId}"]`
       ).offsetTop;
-      objectPageRef.current.scrollTo({ top: childOffset - topHeaderHeight - 32 + 45, behavior: 'smooth' });
-      setTimeout(() => {
-        isProgrammaticallyScrolled.current = false;
-      }, 500);
+      objectPageRef.current.scrollTo({
+        top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
+        behavior: 'smooth'
+      });
+      isProgrammaticallyScrolled.current = false;
     }
-  }, [selectedSubSectionId, isProgrammaticallyScrolled]);
+  }, [
+    selectedSubSectionId,
+    isProgrammaticallyScrolled,
+    topHeaderHeight,
+    anchorBarHeight,
+    headerPinned,
+    headerContentHeight
+  ]);
 
   useEffect(() => {
     setHeaderPinned(alwaysShowContentHeader);
@@ -256,25 +255,25 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     };
   }, [totalHeaderHeight, objectPageRef]);
 
-  useEffect(() => {
-    const intersectionObserver = new IntersectionObserver(
-      ([record]) => {
-        if (hideHeaderButtonPressed.current === true) {
-          return;
-        }
-        setInternalHeaderOpen(record.isIntersecting);
-      },
-      { root: objectPageRef.current, rootMargin: `-${topHeaderHeight}px 0px 0px 0px` }
-    );
-
-    if (headerContentRef.current) {
-      intersectionObserver.observe(headerContentRef.current);
-    }
-
-    return () => {
-      intersectionObserver.disconnect();
-    };
-  }, [objectPageRef, headerContentRef, topHeaderHeight, topHeaderRef, setInternalHeaderOpen, hideHeaderButtonPressed]);
+  // useEffect(() => {
+  //   const intersectionObserver = new IntersectionObserver(
+  //     ([record]) => {
+  //       if (hideHeaderButtonPressed.current === true) {
+  //         return;
+  //       }
+  //       // setInternalHeaderOpen(record.isIntersecting);
+  //     },
+  //     { root: objectPageRef.current, rootMargin: `-${topHeaderHeight}px 0px 0px 0px` }
+  //   );
+  //
+  //   if (headerContentRef.current) {
+  //     intersectionObserver.observe(headerContentRef.current);
+  //   }
+  //
+  //   return () => {
+  //     intersectionObserver.disconnect();
+  //   };
+  // }, [objectPageRef, headerContentRef, topHeaderHeight, topHeaderRef, setInternalHeaderOpen, hideHeaderButtonPressed]);
 
   const fireOnSelectedChangedEvent = debounce((e) => {
     onSelectedSectionChanged(

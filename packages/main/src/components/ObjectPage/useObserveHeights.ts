@@ -2,15 +2,28 @@ import { useEffect, useState } from 'react';
 
 declare const ResizeObserver;
 
-export const useObserveHeights = (
-  objectPage,
-  topHeader,
-  headerContentRef,
-  anchorBarRef,
-  { noHeader, internalHeaderOpen }
-) => {
+export const useObserveHeights = (objectPage, topHeader, headerContentRef, anchorBarRef, { noHeader }) => {
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
+
+  useEffect(() => {
+    const headerIntersectionObserver = new IntersectionObserver(
+      ([header]) => {
+        if (header.isIntersecting) {
+          setHeaderContentHeight(header.target.offsetHeight);
+        } else {
+          setHeaderContentHeight(0);
+        }
+      },
+      { rootMargin: `-${topHeaderHeight}px 0px 0px 0px`, root: objectPage.current, threshold: 1 }
+    );
+
+    headerIntersectionObserver.observe(headerContentRef.current);
+
+    return () => {
+      headerIntersectionObserver.disconnect();
+    };
+  }, [topHeaderHeight]);
 
   // top header
   useEffect(() => {
@@ -41,8 +54,9 @@ export const useObserveHeights = (
 
   const anchorBarHeight = anchorBarRef.current?.offsetHeight ?? 33;
 
-  const totalHeaderHeight =
-    (noHeader ? 0 : topHeaderHeight + (internalHeaderOpen ? headerContentHeight : 0)) + anchorBarHeight;
+  // const totalHeaderHeight =
+  //   (noHeader ? 0 : topHeaderHeight + (internalHeaderOpen ? headerContentHeight : 0)) + anchorBarHeight;
+  const totalHeaderHeight = (noHeader ? 0 : topHeaderHeight + headerContentHeight) + anchorBarHeight;
 
   return { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight };
 };
