@@ -18,7 +18,7 @@ describe('withWebComponent', () => {
     component.fireEvent('click');
     expect(callback.callCount).toEqual(1);
     wrapper.setProps({
-      children: cloneElement(wrapper.prop('children'), { onClick: (...args) => callback(...args) })
+      onClick: (...args) => callback(...args)
     });
     wrapper.update();
     // @ts-ignore
@@ -40,7 +40,7 @@ describe('withWebComponent', () => {
 
     const anotherCallback = spy();
     wrapper.setProps({
-      children: cloneElement(wrapper.prop('children'), { onClick: anotherCallback })
+      onClick: anotherCallback
     });
     wrapper.update();
     // @ts-ignore

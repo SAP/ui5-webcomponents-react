@@ -34,7 +34,7 @@ describe('SegmentedButton', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.setProps({
-      children: cloneElement(wrapper.prop('children'), { selectedKey: 'btn-2' })
+      selectedKey: 'btn-2'
     });
     wrapper.update();
     expect(wrapper.render()).toMatchSnapshot();

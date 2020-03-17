@@ -64,7 +64,7 @@ describe('Carousel', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.setProps({
-      children: cloneElement(wrapper.props().children, { activePage: 1 })
+      activePage: 1
     });
     wrapper.update();
     expect(wrapper.render()).toMatchSnapshot();
