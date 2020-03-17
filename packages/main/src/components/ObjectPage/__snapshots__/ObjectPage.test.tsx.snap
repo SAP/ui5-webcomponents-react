@@ -2,17 +2,17 @@
 
 exports[`ObjectPage IconTabBar Mode 1`] = `
 <div
-  class="ObjectPage--objectPage- ObjectPage--iconTabBarMode-"
+  class="ObjectPage-objectPage-0 ObjectPage-iconTabBarMode-0"
   data-component-name="ObjectPage"
 >
   <header
     aria-roledescription="Object Page header"
-    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
+    class="ObjectPage-header-0 ObjectPage-alwaysVisibleHeader-0"
     role="banner"
     style="padding-right: 12px;"
   >
     <span
-      class="ObjectPage--actions-"
+      class="ObjectPage-actions-0"
     >
       <ui5-button
         design="Default"
@@ -21,32 +21,32 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       </ui5-button>
     </span>
     <header
-      class="ObjectPage--titleBar-"
+      class="ObjectPage-titleBar-0"
     >
       <div
-        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
         <span
-          class="ObjectPage--container-"
+          class="ObjectPage-container-0"
         >
           <div
-            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <div
-              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
             >
               <h1
-                class="ObjectPage--title-"
+                class="ObjectPage-title-0"
               >
                 Fiori Object Page Title
               </h1>
               <span
-                class="ObjectPage--subTitle-"
+                class="ObjectPage-subTitle-0"
               >
                 Sub Title
               </span>
               <div
-                class="ObjectPage--keyInfos-"
+                class="ObjectPage-keyInfos-0"
               />
             </div>
           </div>
@@ -55,13 +55,13 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--contentHeader-"
+    class="ObjectPage-contentHeader-0"
   >
     <div
-      class="ObjectPage--headerContent-"
+      class="ObjectPage-headerContent-0"
     >
       <span
-        class="ObjectPage--headerCustomContent-"
+        class="ObjectPage-headerCustomContent-0"
       >
         <div
           style="display: flex; flex-direction: column;"
@@ -73,17 +73,17 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             www.myurl.com
           </ui5-link>
           <span
-            class="Text--text-"
+            class="Text-text-0"
           >
             Address 1
           </span>
           <span
-            class="Text--text-"
+            class="Text-text-0"
           >
             Address 2
           </span>
           <span
-            class="Text--text-"
+            class="Text-text-0"
           >
             Address 3
           </span>
@@ -92,7 +92,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
     </div>
   </div>
   <section
-    class="ObjectPageAnchorBar--anchorBar-"
+    class="ObjectPageAnchorBar-anchorBar-0"
     role="navigation"
     style="top: 0px;"
   >
@@ -134,7 +134,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       />
     </ui5-tabcontainer>
     <ui5-button
-      class="ObjectPageAnchorBar--anchorBarActionButton- ObjectPageAnchorBar--anchorBarActionButtonExpandable-"
+      class="ObjectPageAnchorBar-anchorBarActionButton-0 ObjectPageAnchorBar-anchorBarActionButtonExpandable-0"
       data-ui5wcr-object-page-header-action=""
       design="Default"
       icon="slim-arrow-up"
@@ -160,20 +160,20 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       >
         Test 1
       </div>
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         <ui5-label
           for=""
@@ -188,41 +188,41 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
 
 exports[`ObjectPage Just Some Sections 1`] = `
 <div
-  class="ObjectPage--objectPage- ObjectPage--iconTabBarMode-"
+  class="ObjectPage-objectPage-0 ObjectPage-iconTabBarMode-0"
   data-component-name="ObjectPage"
 >
   <header
     aria-roledescription="Object Page header"
-    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
+    class="ObjectPage-header-0 ObjectPage-alwaysVisibleHeader-0"
     role="banner"
     style="padding-right: 12px;"
   >
     <span
-      class="ObjectPage--actions-"
+      class="ObjectPage-actions-0"
     />
     <header
-      class="ObjectPage--titleBar-"
+      class="ObjectPage-titleBar-0"
     >
       <div
-        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
         <span
-          class="ObjectPage--container-"
+          class="ObjectPage-container-0"
         >
           <div
-            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <div
-              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
             >
               <h1
-                class="ObjectPage--title-"
+                class="ObjectPage-title-0"
               />
               <span
-                class="ObjectPage--subTitle-"
+                class="ObjectPage-subTitle-0"
               />
               <div
-                class="ObjectPage--keyInfos-"
+                class="ObjectPage-keyInfos-0"
               />
             </div>
           </div>
@@ -231,14 +231,14 @@ exports[`ObjectPage Just Some Sections 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--contentHeader-"
+    class="ObjectPage-contentHeader-0"
   >
     <div
-      class="ObjectPage--headerContent-"
+      class="ObjectPage-headerContent-0"
     />
   </div>
   <section
-    class="ObjectPageAnchorBar--anchorBar-"
+    class="ObjectPageAnchorBar-anchorBar-0"
     role="navigation"
     style="top: 0px;"
   >
@@ -282,18 +282,18 @@ exports[`ObjectPage Just Some Sections 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       />
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         Test
       </div>
@@ -304,29 +304,29 @@ exports[`ObjectPage Just Some Sections 1`] = `
 
 exports[`ObjectPage Key Infos 1`] = `
 <div
-  class="ObjectPage--objectPage-"
+  class="ObjectPage-objectPage-0"
   data-component-name="ObjectPage"
 >
   <header
     aria-roledescription="Object Page header"
-    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
+    class="ObjectPage-header-0 ObjectPage-alwaysVisibleHeader-0"
     role="banner"
     style="padding-right: 12px;"
   >
     <span
-      class="ObjectPage--actions-"
+      class="ObjectPage-actions-0"
     />
     <header
-      class="ObjectPage--titleBar-"
+      class="ObjectPage-titleBar-0"
     >
       <div
-        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
         <span
-          class="ObjectPage--container-"
+          class="ObjectPage-container-0"
         >
           <div
-            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <div>
               <ui5-link
@@ -359,16 +359,16 @@ exports[`ObjectPage Key Infos 1`] = `
               />
             </div>
             <div
-              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
             >
               <h1
-                class="ObjectPage--title-"
+                class="ObjectPage-title-0"
               />
               <span
-                class="ObjectPage--subTitle-"
+                class="ObjectPage-subTitle-0"
               />
               <div
-                class="ObjectPage--keyInfos-"
+                class="ObjectPage-keyInfos-0"
               >
                 <div>
                   <ui5-title
@@ -377,7 +377,7 @@ exports[`ObjectPage Key Infos 1`] = `
                     Key Info 1
                   </ui5-title>
                   <span
-                    class="Text--text-"
+                    class="Text-text-0"
                   >
                     Value 1
                   </span>
@@ -389,7 +389,7 @@ exports[`ObjectPage Key Infos 1`] = `
                     Key Info 2
                   </ui5-title>
                   <span
-                    class="Text--text-"
+                    class="Text-text-0"
                   >
                     Value 2
                   </span>
@@ -401,7 +401,7 @@ exports[`ObjectPage Key Infos 1`] = `
                     Key Info 3
                   </ui5-title>
                   <span
-                    class="Text--text-"
+                    class="Text-text-0"
                   >
                     Value 3
                   </span>
@@ -414,14 +414,14 @@ exports[`ObjectPage Key Infos 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--contentHeader-"
+    class="ObjectPage-contentHeader-0"
   >
     <div
-      class="ObjectPage--headerContent-"
+      class="ObjectPage-headerContent-0"
     />
   </div>
   <section
-    class="ObjectPageAnchorBar--anchorBar-"
+    class="ObjectPageAnchorBar-anchorBar-0"
     role="navigation"
     style="top: 0px;"
   >
@@ -465,18 +465,18 @@ exports[`ObjectPage Key Infos 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       />
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         Test
       </div>
@@ -488,18 +488,18 @@ exports[`ObjectPage Key Infos 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       />
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         Test 2
       </div>
@@ -510,11 +510,11 @@ exports[`ObjectPage Key Infos 1`] = `
 
 exports[`ObjectPage No Header 1`] = `
 <div
-  class="ObjectPage--objectPage-"
+  class="ObjectPage-objectPage-0"
   data-component-name="ObjectPage"
 >
   <section
-    class="ObjectPageAnchorBar--anchorBar-"
+    class="ObjectPageAnchorBar-anchorBar-0"
     role="navigation"
     style="top: 0px;"
   >
@@ -558,18 +558,18 @@ exports[`ObjectPage No Header 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       />
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         Test
       </div>
@@ -581,18 +581,18 @@ exports[`ObjectPage No Header 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       />
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         Test 2
       </div>
@@ -603,41 +603,41 @@ exports[`ObjectPage No Header 1`] = `
 
 exports[`ObjectPage Not crashing with 0 sections 1`] = `
 <div
-  class="ObjectPage--objectPage- ObjectPage--iconTabBarMode-"
+  class="ObjectPage-objectPage-0 ObjectPage-iconTabBarMode-0"
   data-component-name="ObjectPage"
 >
   <header
     aria-roledescription="Object Page header"
-    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
+    class="ObjectPage-header-0 ObjectPage-alwaysVisibleHeader-0"
     role="banner"
     style="padding-right: 12px;"
   >
     <span
-      class="ObjectPage--actions-"
+      class="ObjectPage-actions-0"
     />
     <header
-      class="ObjectPage--titleBar-"
+      class="ObjectPage-titleBar-0"
     >
       <div
-        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
         <span
-          class="ObjectPage--container-"
+          class="ObjectPage-container-0"
         >
           <div
-            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <div
-              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
             >
               <h1
-                class="ObjectPage--title-"
+                class="ObjectPage-title-0"
               />
               <span
-                class="ObjectPage--subTitle-"
+                class="ObjectPage-subTitle-0"
               />
               <div
-                class="ObjectPage--keyInfos-"
+                class="ObjectPage-keyInfos-0"
               />
             </div>
           </div>
@@ -646,14 +646,14 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--contentHeader-"
+    class="ObjectPage-contentHeader-0"
   >
     <div
-      class="ObjectPage--headerContent-"
+      class="ObjectPage-headerContent-0"
     />
   </div>
   <section
-    class="ObjectPageAnchorBar--anchorBar-"
+    class="ObjectPageAnchorBar-anchorBar-0"
     role="navigation"
     style="top: 0px;"
   >
@@ -682,41 +682,41 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
 
 exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
 <div
-  class="ObjectPage--objectPage-"
+  class="ObjectPage-objectPage-0"
   data-component-name="ObjectPage"
 >
   <header
     aria-roledescription="Object Page header"
-    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
+    class="ObjectPage-header-0 ObjectPage-alwaysVisibleHeader-0"
     role="banner"
     style="padding-right: 12px;"
   >
     <span
-      class="ObjectPage--actions-"
+      class="ObjectPage-actions-0"
     />
     <header
-      class="ObjectPage--titleBar-"
+      class="ObjectPage-titleBar-0"
     >
       <div
-        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
         <span
-          class="ObjectPage--container-"
+          class="ObjectPage-container-0"
         >
           <div
-            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <div
-              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
             >
               <h1
-                class="ObjectPage--title-"
+                class="ObjectPage-title-0"
               />
               <span
-                class="ObjectPage--subTitle-"
+                class="ObjectPage-subTitle-0"
               />
               <div
-                class="ObjectPage--keyInfos-"
+                class="ObjectPage-keyInfos-0"
               />
             </div>
           </div>
@@ -725,14 +725,14 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--contentHeader-"
+    class="ObjectPage-contentHeader-0"
   >
     <div
-      class="ObjectPage--headerContent-"
+      class="ObjectPage-headerContent-0"
     />
   </div>
   <section
-    class="ObjectPageAnchorBar--anchorBar-"
+    class="ObjectPageAnchorBar-anchorBar-0"
     role="navigation"
     style="top: 0px;"
   >
@@ -770,18 +770,18 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       />
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         Test
       </div>
@@ -792,41 +792,41 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
 
 exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
 <div
-  class="ObjectPage--objectPage- ObjectPage--iconTabBarMode-"
+  class="ObjectPage-objectPage-0 ObjectPage-iconTabBarMode-0"
   data-component-name="ObjectPage"
 >
   <header
     aria-roledescription="Object Page header"
-    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
+    class="ObjectPage-header-0 ObjectPage-alwaysVisibleHeader-0"
     role="banner"
     style="padding-right: 12px;"
   >
     <span
-      class="ObjectPage--actions-"
+      class="ObjectPage-actions-0"
     />
     <header
-      class="ObjectPage--titleBar-"
+      class="ObjectPage-titleBar-0"
     >
       <div
-        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
         <span
-          class="ObjectPage--container-"
+          class="ObjectPage-container-0"
         >
           <div
-            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <div
-              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
             >
               <h1
-                class="ObjectPage--title-"
+                class="ObjectPage-title-0"
               />
               <span
-                class="ObjectPage--subTitle-"
+                class="ObjectPage-subTitle-0"
               />
               <div
-                class="ObjectPage--keyInfos-"
+                class="ObjectPage-keyInfos-0"
               />
             </div>
           </div>
@@ -835,14 +835,14 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--contentHeader-"
+    class="ObjectPage-contentHeader-0"
   >
     <div
-      class="ObjectPage--headerContent-"
+      class="ObjectPage-headerContent-0"
     />
   </div>
   <section
-    class="ObjectPageAnchorBar--anchorBar-"
+    class="ObjectPageAnchorBar-anchorBar-0"
     role="navigation"
     style="top: 0px;"
   >
@@ -880,18 +880,18 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       />
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         Test
       </div>
@@ -902,17 +902,17 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
 
 exports[`ObjectPage Only Sections 1`] = `
 <div
-  class="ObjectPage--objectPage-"
+  class="ObjectPage-objectPage-0"
   data-component-name="ObjectPage"
 >
   <header
     aria-roledescription="Object Page header"
-    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
+    class="ObjectPage-header-0 ObjectPage-alwaysVisibleHeader-0"
     role="banner"
     style="padding-right: 12px;"
   >
     <span
-      class="ObjectPage--actions-"
+      class="ObjectPage-actions-0"
     >
       <ui5-button
         design="Default"
@@ -921,32 +921,32 @@ exports[`ObjectPage Only Sections 1`] = `
       </ui5-button>
     </span>
     <header
-      class="ObjectPage--titleBar-"
+      class="ObjectPage-titleBar-0"
     >
       <div
-        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
         <span
-          class="ObjectPage--container-"
+          class="ObjectPage-container-0"
         >
           <div
-            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <div
-              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
             >
               <h1
-                class="ObjectPage--title-"
+                class="ObjectPage-title-0"
               >
                 Fiori Object Page Title
               </h1>
               <span
-                class="ObjectPage--subTitle-"
+                class="ObjectPage-subTitle-0"
               >
                 Sub Title
               </span>
               <div
-                class="ObjectPage--keyInfos-"
+                class="ObjectPage-keyInfos-0"
               />
             </div>
           </div>
@@ -955,13 +955,13 @@ exports[`ObjectPage Only Sections 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--contentHeader-"
+    class="ObjectPage-contentHeader-0"
   >
     <div
-      class="ObjectPage--headerContent-"
+      class="ObjectPage-headerContent-0"
     >
       <span
-        class="ObjectPage--headerCustomContent-"
+        class="ObjectPage-headerCustomContent-0"
       >
         <div
           style="display: flex; flex-direction: column;"
@@ -973,17 +973,17 @@ exports[`ObjectPage Only Sections 1`] = `
             www.myurl.com
           </ui5-link>
           <span
-            class="Text--text-"
+            class="Text-text-0"
           >
             Address 1
           </span>
           <span
-            class="Text--text-"
+            class="Text-text-0"
           >
             Address 2
           </span>
           <span
-            class="Text--text-"
+            class="Text-text-0"
           >
             Address 3
           </span>
@@ -992,7 +992,7 @@ exports[`ObjectPage Only Sections 1`] = `
     </div>
   </div>
   <section
-    class="ObjectPageAnchorBar--anchorBar-"
+    class="ObjectPageAnchorBar-anchorBar-0"
     role="navigation"
     style="top: 0px;"
   >
@@ -1042,20 +1042,20 @@ exports[`ObjectPage Only Sections 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       >
         Test 1
       </div>
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         <ui5-label
           for=""
@@ -1071,20 +1071,20 @@ exports[`ObjectPage Only Sections 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       >
         Test 2
       </div>
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         <ui5-label
           for=""
@@ -1100,20 +1100,20 @@ exports[`ObjectPage Only Sections 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       >
         Test 3
       </div>
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         <ui5-label
           for=""
@@ -1128,41 +1128,41 @@ exports[`ObjectPage Only Sections 1`] = `
 
 exports[`ObjectPage Set selected section id 1`] = `
 <div
-  class="ObjectPage--objectPage- ObjectPage--iconTabBarMode-"
+  class="ObjectPage-objectPage-0 ObjectPage-iconTabBarMode-0"
   data-component-name="ObjectPage"
 >
   <header
     aria-roledescription="Object Page header"
-    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
+    class="ObjectPage-header-0 ObjectPage-alwaysVisibleHeader-0"
     role="banner"
     style="padding-right: 12px;"
   >
     <span
-      class="ObjectPage--actions-"
+      class="ObjectPage-actions-0"
     />
     <header
-      class="ObjectPage--titleBar-"
+      class="ObjectPage-titleBar-0"
     >
       <div
-        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
         <span
-          class="ObjectPage--container-"
+          class="ObjectPage-container-0"
         >
           <div
-            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <div
-              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
             >
               <h1
-                class="ObjectPage--title-"
+                class="ObjectPage-title-0"
               />
               <span
-                class="ObjectPage--subTitle-"
+                class="ObjectPage-subTitle-0"
               />
               <div
-                class="ObjectPage--keyInfos-"
+                class="ObjectPage-keyInfos-0"
               />
             </div>
           </div>
@@ -1171,14 +1171,14 @@ exports[`ObjectPage Set selected section id 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--contentHeader-"
+    class="ObjectPage-contentHeader-0"
   >
     <div
-      class="ObjectPage--headerContent-"
+      class="ObjectPage-headerContent-0"
     />
   </div>
   <section
-    class="ObjectPageAnchorBar--anchorBar-"
+    class="ObjectPageAnchorBar-anchorBar-0"
     role="navigation"
     style="top: 0px;"
   >
@@ -1222,18 +1222,18 @@ exports[`ObjectPage Set selected section id 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       />
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         Test 2
       </div>
@@ -1244,17 +1244,17 @@ exports[`ObjectPage Set selected section id 1`] = `
 
 exports[`ObjectPage With Subsections 1`] = `
 <div
-  class="ObjectPage--objectPage-"
+  class="ObjectPage-objectPage-0"
   data-component-name="ObjectPage"
 >
   <header
     aria-roledescription="Object Page header"
-    class="ObjectPage--header- ObjectPage--alwaysVisibleHeader-"
+    class="ObjectPage-header-0 ObjectPage-alwaysVisibleHeader-0"
     role="banner"
     style="padding-right: 12px;"
   >
     <span
-      class="ObjectPage--actions-"
+      class="ObjectPage-actions-0"
     >
       <ui5-button
         design="Default"
@@ -1263,32 +1263,32 @@ exports[`ObjectPage With Subsections 1`] = `
       </ui5-button>
     </span>
     <header
-      class="ObjectPage--titleBar-"
+      class="ObjectPage-titleBar-0"
     >
       <div
-        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsCenter- FlexBox--flexWrapNoWrap-"
+        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
         <span
-          class="ObjectPage--container-"
+          class="ObjectPage-container-0"
         >
           <div
-            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <div
-              class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
             >
               <h1
-                class="ObjectPage--title-"
+                class="ObjectPage-title-0"
               >
                 Fiori Object Page Title
               </h1>
               <span
-                class="ObjectPage--subTitle-"
+                class="ObjectPage-subTitle-0"
               >
                 Sub Title
               </span>
               <div
-                class="ObjectPage--keyInfos-"
+                class="ObjectPage-keyInfos-0"
               />
             </div>
           </div>
@@ -1297,13 +1297,13 @@ exports[`ObjectPage With Subsections 1`] = `
     </header>
   </header>
   <div
-    class="ObjectPage--contentHeader-"
+    class="ObjectPage-contentHeader-0"
   >
     <div
-      class="ObjectPage--headerContent-"
+      class="ObjectPage-headerContent-0"
     >
       <span
-        class="ObjectPage--headerCustomContent-"
+        class="ObjectPage-headerCustomContent-0"
       >
         <div
           style="display: flex; flex-direction: column;"
@@ -1315,17 +1315,17 @@ exports[`ObjectPage With Subsections 1`] = `
             www.myurl.com
           </ui5-link>
           <span
-            class="Text--text-"
+            class="Text-text-0"
           >
             Address 1
           </span>
           <span
-            class="Text--text-"
+            class="Text-text-0"
           >
             Address 2
           </span>
           <span
-            class="Text--text-"
+            class="Text-text-0"
           >
             Address 3
           </span>
@@ -1334,7 +1334,7 @@ exports[`ObjectPage With Subsections 1`] = `
     </div>
   </div>
   <section
-    class="ObjectPageAnchorBar--anchorBar-"
+    class="ObjectPageAnchorBar-anchorBar-0"
     role="navigation"
     style="top: 0px;"
   >
@@ -1376,7 +1376,7 @@ exports[`ObjectPage With Subsections 1`] = `
       />
     </ui5-tabcontainer>
     <ui5-button
-      class="ObjectPageAnchorBar--anchorBarActionButton- ObjectPageAnchorBar--anchorBarActionButtonExpandable-"
+      class="ObjectPageAnchorBar-anchorBarActionButton-0 ObjectPageAnchorBar-anchorBarActionButtonExpandable-0"
       data-ui5wcr-object-page-header-action=""
       design="Default"
       icon="slim-arrow-up"
@@ -1402,20 +1402,20 @@ exports[`ObjectPage With Subsections 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       >
         Test 1
       </div>
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         <ui5-label
           for=""
@@ -1431,20 +1431,20 @@ exports[`ObjectPage With Subsections 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       >
         Test 2
       </div>
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         <div
           style="height: 800px;"
@@ -1460,20 +1460,20 @@ exports[`ObjectPage With Subsections 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       >
         Test 3
       </div>
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         Test1
       </div>
@@ -1485,54 +1485,54 @@ exports[`ObjectPage With Subsections 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       >
         Test 4
       </div>
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         <h1>
           Section 4
         </h1>
         <div
-          class="ObjectPageSubSection--objectPageSubSection-"
+          class="ObjectPageSubSection-objectPageSubSection-0"
           data-component-name="ObjectPageSubSection"
           id="ObjectPageSubSection-4.1"
           role="region"
         >
           <div
-            class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
+            class="ObjectPageSubSection-objectPageSubSectionHeaderTitle-0"
           >
             SubSection 4.1
           </div>
           <div
-            class="ObjectPageSubSection--subSectionContent-"
+            class="ObjectPageSubSection-subSectionContent-0"
           >
             Test 4 SubSection 1
           </div>
         </div>
         <div
-          class="ObjectPageSubSection--objectPageSubSection-"
+          class="ObjectPageSubSection-objectPageSubSection-0"
           data-component-name="ObjectPageSubSection"
           id="ObjectPageSubSection-4.2"
           role="region"
         >
           <div
-            class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
+            class="ObjectPageSubSection-objectPageSubSectionHeaderTitle-0"
           >
             SubSection 4.2
           </div>
           <div
-            class="ObjectPageSubSection--subSectionContent-"
+            class="ObjectPageSubSection-subSectionContent-0"
           >
             Test 4 SubSection 2
           </div>
@@ -1546,51 +1546,51 @@ exports[`ObjectPage With Subsections 1`] = `
     role="region"
   >
     <div
-      class="ObjectPageSection--header-"
+      class="ObjectPageSection-header-0"
       role="heading"
     >
       <div
-        class="ObjectPageSection--title- ObjectPageSection--uppercase-"
+        class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
       >
         Test 5
       </div>
     </div>
     <div
-      class="ObjectPageSection--sectionContent-"
+      class="ObjectPageSection-sectionContent-0"
     >
       <div
-        class="ObjectPageSection--sectionContentInner-"
+        class="ObjectPageSection-sectionContentInner-0"
       >
         <div
-          class="ObjectPageSubSection--objectPageSubSection-"
+          class="ObjectPageSubSection-objectPageSubSection-0"
           data-component-name="ObjectPageSubSection"
           id="ObjectPageSubSection-5.1"
           role="region"
         >
           <div
-            class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
+            class="ObjectPageSubSection-objectPageSubSectionHeaderTitle-0"
           >
             SubSection 5.1
           </div>
           <div
-            class="ObjectPageSubSection--subSectionContent-"
+            class="ObjectPageSubSection-subSectionContent-0"
           >
             Content of SubSection 5.1
           </div>
         </div>
         <div
-          class="ObjectPageSubSection--objectPageSubSection-"
+          class="ObjectPageSubSection-objectPageSubSection-0"
           data-component-name="ObjectPageSubSection"
           id="ObjectPageSubSection-5.2"
           role="region"
         >
           <div
-            class="ObjectPageSubSection--objectPageSubSectionHeaderTitle-"
+            class="ObjectPageSubSection-objectPageSubSectionHeaderTitle-0"
           >
             SubSection 5.2
           </div>
           <div
-            class="ObjectPageSubSection--subSectionContent-"
+            class="ObjectPageSubSection-subSectionContent-0"
           >
             Content of SubSection 5.2
           </div>

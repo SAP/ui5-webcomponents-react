@@ -3,6 +3,7 @@
 exports[`ObjectPageSubSection Render without Crashing 1`] = `
 <div
   class="ObjectPageSubSection-objectPageSubSection-0"
+  data-component-name="ObjectPageSubSection"
   id="ObjectPageSubSection-test"
   role="region"
 >
