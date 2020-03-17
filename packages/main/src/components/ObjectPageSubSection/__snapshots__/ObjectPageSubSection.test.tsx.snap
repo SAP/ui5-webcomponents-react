@@ -1,3 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ObjectPageSubSection Render without Crashing 1`] = `"<div class=\\"ObjectPageSubSection-objectPageSubSectionHeaderTitle-0-2-2\\"></div><div class=\\"ObjectPageSubSection-subSectionContent-0-2-3\\"></div>"`;
+exports[`ObjectPageSubSection Render without Crashing 1`] = `
+<div
+  class="ObjectPageSubSection-objectPageSubSection-0"
+  id="ObjectPageSubSection-test"
+  role="region"
+>
+  <div
+    class="ObjectPageSubSection-objectPageSubSectionHeaderTitle-0"
+  />
+  <div
+    class="ObjectPageSubSection-subSectionContent-0"
+  />
+</div>
+`;
