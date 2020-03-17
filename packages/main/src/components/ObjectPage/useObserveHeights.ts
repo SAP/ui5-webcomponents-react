@@ -10,7 +10,7 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
     const headerIntersectionObserver = new IntersectionObserver(
       ([header]) => {
         if (header.isIntersecting) {
-          setHeaderContentHeight(header.target.offsetHeight);
+          setHeaderContentHeight((header.target as HTMLElement).offsetHeight);
         } else {
           setHeaderContentHeight(0);
         }

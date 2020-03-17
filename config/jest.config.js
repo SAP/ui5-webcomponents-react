@@ -19,7 +19,8 @@ module.exports = {
     '!packages/main/src/components/AnalyticalTable/types/*', // no table enums
     '!packages/base/src/styling/sap_fiori_3.ts', // no old theming parameters
     '!packages/base/src/styling/HSLColor.ts', // no deprecated HSL Util
-    '!packages/base/src/styling/font72.ts' // no deprecated font
+    '!packages/base/src/styling/font72.ts', // no deprecated font
+    '!packages/base/src/Scroller/*' // no scroll lib as it is not longer used
   ],
   setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
