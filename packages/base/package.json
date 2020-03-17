@@ -28,7 +28,8 @@
   "dependencies": {
     "core-js": "3.6.4",
     "intersection-observer": "^0.7.0",
-    "resize-observer-polyfill": "^1.5.1"
+    "resize-observer-polyfill": "^1.5.1",
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "peerDependencies": {
     "react": "^16.8.0",

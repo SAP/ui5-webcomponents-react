@@ -4,6 +4,10 @@ import 'core-js/modules/es.object.values';
 import 'core-js/modules/es.array.from';
 import ResizeObserver from 'resize-observer-polyfill';
 import 'intersection-observer';
+import smoothscroll from 'smoothscroll-polyfill';
 
 // @ts-ignore
 window.ResizeObserver = ResizeObserver;
+
+// required for scrollTo methods
+smoothscroll.polyfill();

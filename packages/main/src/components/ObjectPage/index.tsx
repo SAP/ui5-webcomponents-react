@@ -333,6 +333,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     headerClasses.put(classes.alwaysVisibleHeader);
   }
 
+  if (mode === ObjectPageMode.IconTabBar) {
+    objectPageClasses.put(classes.iconTabBarMode);
+  }
+
   const scrollBarWidthPadding = useMemo(() => {
     return {
       paddingRight: `${scrollbarWidth}px`

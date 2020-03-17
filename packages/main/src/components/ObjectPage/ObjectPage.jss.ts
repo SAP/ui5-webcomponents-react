@@ -27,6 +27,11 @@ const styles = {
       display: 'none'
     }
   },
+  iconTabBarMode: {
+    '& section[data-component-name="ObjectPageSection"] > div[role="heading"]': {
+      display: 'none'
+    }
+  },
   anchorBar: {
     paddingLeft: '2rem',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
@@ -36,23 +41,6 @@ const styles = {
     minHeight: '2.75rem',
     position: 'relative'
   },
-  // sectionsContainer: {
-  //   '&:before': {
-  //     display: 'table',
-  //     content: '""'
-  //   },
-  //   '& section[data-component-name="ObjectPageSection"]:first-child > div[role="heading"]': {
-  //     display: 'none'
-  //   },
-  //   position: 'relative',
-  //   height: '100%',
-  //   backgroundColor: ThemingParameters.sapBackgroundColor,
-  //   '&:after': {
-  //     clear: 'both',
-  //     display: 'table',
-  //     content: '""'
-  //   }
-  // },
   // header
   header: {
     flexShrink: 0,
