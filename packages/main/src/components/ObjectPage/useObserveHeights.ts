@@ -18,12 +18,14 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
       { rootMargin: `-${topHeaderHeight}px 0px 0px 0px`, root: objectPage.current, threshold: 1 }
     );
 
-    headerIntersectionObserver.observe(headerContentRef.current);
+    if (headerContentRef.current) {
+      headerIntersectionObserver.observe(headerContentRef.current);
+    }
 
     return () => {
       headerIntersectionObserver.disconnect();
     };
-  }, [topHeaderHeight]);
+  }, [topHeaderHeight, setHeaderContentHeight, headerContentRef]);
 
   // top header
   useEffect(() => {
