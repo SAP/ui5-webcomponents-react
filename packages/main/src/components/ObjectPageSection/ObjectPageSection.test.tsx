@@ -1,25 +1,26 @@
-import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { ObjectPageSection } from '@ui5/webcomponents-react/lib/ObjectPageSection';
 import { shallow } from 'enzyme';
 import React from 'react';
 
 describe('ObjectPageSection', () => {
   test('Renders with children', () => {
-    const wrapper = renderThemedComponent(
+    const wrapper = mount(
       <ObjectPageSection id={'1'} title="Test" titleUppercase>
         This is my Text
       </ObjectPageSection>
     );
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('ObjectPage w/ lowercase title', () => {
-    const wrapper = renderThemedComponent(
+    const wrapper = mount(
       <ObjectPageSection id={'1'} title="Test" titleUppercase={false}>
         This is my Text
       </ObjectPageSection>
     );
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Empty Id Prop', () => {

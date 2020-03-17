@@ -1,11 +1,12 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import * as React from 'react';
 
 describe('FlexBox', () => {
   test('JustifyContent: End', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <FlexBox justifyContent={FlexBoxJustifyContent.End}>
         <span>Test 1</span>
       </FlexBox>
@@ -15,7 +16,7 @@ describe('FlexBox', () => {
   });
 
   test('Height and Width', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <FlexBox height="1337px" width="42px">
         <span>Test 1</span>
       </FlexBox>
@@ -26,7 +27,7 @@ describe('FlexBox', () => {
   });
 
   test('Display: Inline', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <FlexBox displayInline>
         <span>Test 1</span>
       </FlexBox>
@@ -36,7 +37,7 @@ describe('FlexBox', () => {
   });
 
   test('with Custom Class Names and Style', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <FlexBox className="testClass" style={{ backgroundColor: '#000' }}>
         <span>Test 1</span>
       </FlexBox>

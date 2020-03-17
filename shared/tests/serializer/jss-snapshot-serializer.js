@@ -1,6 +1,6 @@
 const MARKER = '__jss-snapshot-serializer-marker__';
 
-const jssClassNameRegexp = /([a-zA-Z0-9]*)-([a-zA-Z0-9]*)-([0-9]*)-([0-9]*)/;
+const jssClassNameRegexp = /([a-zA-Z0-9]*)-([a-zA-Z0-9]*)-([0-9]*)-([0-9]*)-([0-9]*)/;
 
 const collectElements = (element, elements = []) => {
   if (typeof element !== 'object') {

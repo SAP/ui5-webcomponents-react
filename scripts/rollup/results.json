@@ -4,43 +4,43 @@
       "filename": "charts.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "charts",
-      "size": 19312,
-      "gzip": 5337
+      "size": 19328,
+      "gzip": 5347
     },
     {
       "filename": "charts.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "charts",
-      "size": 19312,
-      "gzip": 5337
+      "size": 19328,
+      "gzip": 5347
     },
     {
       "filename": "base.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "base",
-      "size": 81287,
-      "gzip": 15323
+      "size": 80749,
+      "gzip": 15160
     },
     {
       "filename": "base.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "base",
-      "size": 81287,
-      "gzip": 15323
+      "size": 80749,
+      "gzip": 15160
     },
     {
       "filename": "main.development.js",
       "bundleType": "NODE_DEV",
       "packageName": "main",
-      "size": 147561,
-      "gzip": 37888
+      "size": 147368,
+      "gzip": 37834
     },
     {
       "filename": "main.production.min.js",
       "bundleType": "NODE_PROD",
       "packageName": "main",
-      "size": 147561,
-      "gzip": 37888
+      "size": 147368,
+      "gzip": 37834
     }
   ]
 }

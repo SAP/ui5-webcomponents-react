@@ -2,7 +2,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import React, { FC, forwardRef, Ref, useMemo } from 'react';
 import { Radar } from 'react-chartjs-2';
-import { useTheme } from 'react-jss';
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
@@ -28,8 +28,8 @@ const RadarChartComponent = forwardRef((props: RadarChartPropTypes, ref: Ref<any
     legendRef
   } = props as RadarChartPropTypes & InternalProps;
 
-  const theme: any = useTheme();
-  const data = useChartData(labels, datasets, colors, theme.theme);
+  const theme = getTheme();
+  const data = useChartData(labels, datasets, colors, theme);
 
   const radarChartDefaultConfig = useMemo(() => {
     return {
