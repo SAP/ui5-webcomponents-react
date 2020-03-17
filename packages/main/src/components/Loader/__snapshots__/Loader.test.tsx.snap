@@ -3,7 +3,7 @@
 exports[`Loader default 1`] = `
 <div
   aria-busy="true"
-  class="Loader--loader- Loader--loaderIndeterminate-"
+  class="Loader-loader-0 Loader-loaderIndeterminate-0"
   data-component-name="Loader"
   role="progressbar"
   style="background-size:40%"
@@ -14,7 +14,7 @@ exports[`Loader default 1`] = `
 exports[`Loader determinate 1`] = `
 <div
   aria-busy="true"
-  class="Loader--loader- Loader--loaderDeterminate-"
+  class="Loader-loader-0 Loader-loaderDeterminate-0"
   data-component-name="Loader"
   role="progressbar"
   style="background-size:0px"
@@ -25,7 +25,7 @@ exports[`Loader determinate 1`] = `
 exports[`Loader determinate with progress prop 1`] = `
 <div
   aria-busy="true"
-  class="Loader--loader- Loader--loaderDeterminate-"
+  class="Loader-loader-0 Loader-loaderDeterminate-0"
   data-component-name="Loader"
   role="progressbar"
   style="background-size:42%"
@@ -36,7 +36,7 @@ exports[`Loader determinate with progress prop 1`] = `
 exports[`Loader indeterminate 1`] = `
 <div
   aria-busy="true"
-  class="Loader--loader- Loader--loaderIndeterminate-"
+  class="Loader-loader-0 Loader-loaderIndeterminate-0"
   data-component-name="Loader"
   role="progressbar"
   style="background-size:40%"
@@ -47,7 +47,7 @@ exports[`Loader indeterminate 1`] = `
 exports[`Loader with Custom Class Name 1`] = `
 <div
   aria-busy="true"
-  class="Loader--loader- myTestClass Loader--loaderIndeterminate-"
+  class="Loader-loader-0 myTestClass Loader-loaderIndeterminate-0"
   data-component-name="Loader"
   role="progressbar"
   style="background-size:40%"

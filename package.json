@@ -69,7 +69,6 @@
     "jest-canvas-mock": "^2.2.0",
     "jest-environment-jsdom-sixteen": "^1.0.2",
     "jest-enzyme": "^7.1.2",
-    "jss-snapshot-serializer": "^1.0.0",
     "lerna": "^3.20.2",
     "lint-staged": "^9.5.0",
     "minimist": "^1.2.0",
