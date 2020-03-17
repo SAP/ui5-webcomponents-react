@@ -1,4 +1,4 @@
-import { renderThemedComponent } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import * as React from 'react';
 import { MicroBarChart } from './index';
 
@@ -9,18 +9,18 @@ const dataset = [
 
 describe('Micro Bar Chart', () => {
   test('Renders with data', () => {
-    expect(renderThemedComponent(<MicroBarChart dataset={dataset} />)).toMatchSnapshot();
+    expect(mount(<MicroBarChart dataset={dataset} />).render()).toMatchSnapshot();
   });
 
   test('custom colors', () => {
-    expect(renderThemedComponent(<MicroBarChart dataset={dataset} colors={['#f0ab00']} />)).toMatchSnapshot();
+    expect(mount(<MicroBarChart dataset={dataset} colors={['#f0ab00']} />)).toMatchSnapshot();
   });
 
   test('element selection', () => {
-    expect(renderThemedComponent(<MicroBarChart dataset={dataset} visibleDatasetCount={1} />)).toMatchSnapshot();
+    expect(mount(<MicroBarChart dataset={dataset} visibleDatasetCount={1} />)).toMatchSnapshot();
   });
 
   test('maxWidth selection', () => {
-    expect(renderThemedComponent(<MicroBarChart dataset={dataset} maxWidth={'200px'} />)).toMatchSnapshot();
+    expect(mount(<MicroBarChart dataset={dataset} maxWidth={'200px'} />)).toMatchSnapshot();
   });
 });

@@ -20,9 +20,6 @@ export const setUserAgentString = (userAgent) => {
   });
 };
 
-export const renderThemedComponent = (component, contextOverwrite = {}) =>
-  shallow(<ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>).render();
-
 export const createPassThroughPropsTest = (Component: ComponentType<any>, props = {}) => {
   test('Pass Through HTML Standard Props', () => {
     const wrapper = mount(

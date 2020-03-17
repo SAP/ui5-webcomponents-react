@@ -1,4 +1,4 @@
-import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { mount } from 'enzyme';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import React from 'react';
@@ -9,18 +9,18 @@ const createRenderLabel = (text) => () => {
 
 describe('Bar', () => {
   test('Renders with default Props', () => {
-    expect(renderThemedComponent(<Bar />)).toMatchSnapshot();
+    expect(mount(<Bar />).render()).toMatchSnapshot();
   });
 
   test('Render all content', () => {
-    const wrapper = renderThemedComponent(
+    const wrapper = mount(
       <Bar
         renderContentLeft={() => <div>Content Left</div>}
         renderContentMiddle={() => <div>Content Middle</div>}
         renderContentRight={() => <div>Content Right</div>}
       />
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Render all content', () => {

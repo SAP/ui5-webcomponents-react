@@ -6,7 +6,7 @@ exports[`Loader default 1`] = `
   class="Loader-loader-0 Loader-loaderIndeterminate-0"
   data-component-name="Loader"
   role="progressbar"
-  style="background-size:40%"
+  style="background-size: 40%;"
   title="Please wait"
 />
 `;
@@ -17,7 +17,7 @@ exports[`Loader determinate 1`] = `
   class="Loader-loader-0 Loader-loaderDeterminate-0"
   data-component-name="Loader"
   role="progressbar"
-  style="background-size:0px"
+  style="background-size: 0px;"
   title="Please wait"
 />
 `;
@@ -28,7 +28,7 @@ exports[`Loader determinate with progress prop 1`] = `
   class="Loader-loader-0 Loader-loaderDeterminate-0"
   data-component-name="Loader"
   role="progressbar"
-  style="background-size:42%"
+  style="background-size: 42%;"
   title="Please wait"
 />
 `;
@@ -39,7 +39,7 @@ exports[`Loader indeterminate 1`] = `
   class="Loader-loader-0 Loader-loaderIndeterminate-0"
   data-component-name="Loader"
   role="progressbar"
-  style="background-size:40%"
+  style="background-size: 40%;"
   title="Please wait"
 />
 `;
@@ -50,7 +50,7 @@ exports[`Loader with Custom Class Name 1`] = `
   class="Loader-loader-0 myTestClass Loader-loaderIndeterminate-0"
   data-component-name="Loader"
   role="progressbar"
-  style="background-size:40%"
+  style="background-size: 40%;"
   title="Please wait"
 />
 `;

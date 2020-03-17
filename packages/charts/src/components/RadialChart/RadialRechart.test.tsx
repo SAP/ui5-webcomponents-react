@@ -1,11 +1,10 @@
-import { renderThemedComponent } from '@shared/tests/utils';
 import { mount } from 'enzyme';
 import * as React from 'react';
 import { RadialChart } from './RadialChart';
 
 describe('RadialChart', () => {
   test('Renders with data', () => {
-    renderThemedComponent(<RadialChart width={'100%'} value={67} displayValue={'67%'} />);
+    expect(mount(<RadialChart width={'100%'} value={67} displayValue={'67%'} />).render()).toMatchSnapshot();
   });
 
   test('loading placeholder', () => {

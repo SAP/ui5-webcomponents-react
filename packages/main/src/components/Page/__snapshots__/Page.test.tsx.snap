@@ -2,7 +2,7 @@
 
 exports[`Page Basic Page 1`] = `
 <div
-  style="height:100vh;width:100vw"
+  style="height: 100vh; width: 100vw;"
 >
   <div
     class="Page-pageContainer-0 Page-pageWithHeader-0 Page-pageWithFooter-0 Page-backgroundStandard-0"
@@ -57,7 +57,7 @@ exports[`Page Basic Page 1`] = `
 
 exports[`Page Basic Page w/o back button 1`] = `
 <div
-  style="height:100vh;width:100vw"
+  style="height: 100vh; width: 100vw;"
 >
   <div
     class="Page-pageContainer-0 Page-pageWithHeader-0 Page-pageWithFooter-0 Page-backgroundStandard-0"
