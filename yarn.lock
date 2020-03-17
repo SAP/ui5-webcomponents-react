@@ -11316,11 +11316,6 @@ jss-preset-default@10.0.4:
     jss-plugin-template "10.0.4"
     jss-plugin-vendor-prefixer "10.0.4"
 
-jss-snapshot-serializer@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/jss-snapshot-serializer/-/jss-snapshot-serializer-1.0.0.tgz#963395f83dddc355964290393b05e734c69dde7b"
-  integrity sha512-BSnjcqVhR48WUjickNUSdNP8Hk7fkeW01l1vo9GDb+MaZBPILrIO9rSvyoriIXZwQRyYmwZNI91tlKMZmGQX5w==
-
 jss@10.0.4:
   version "10.0.4"
   resolved "https://registry.yarnpkg.com/jss/-/jss-10.0.4.tgz#46ebdde1c40c9a079d64f3334cb88ae28fd90bfd"

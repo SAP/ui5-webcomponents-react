@@ -2,7 +2,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import React, { FC, forwardRef, Ref, useMemo } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { useTheme } from 'react-jss';
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, usePieLegendItemClickHandler } from '../../internal/ChartLegend';
@@ -30,8 +30,8 @@ const PieChartComponent = forwardRef((props: PieChartPropTypes, ref: Ref<any>) =
     legendRef
   } = props as PieChartPropTypes & InternalProps;
 
-  const theme: any = useTheme();
-  const data = useChartData(labels, datasets, colors, theme.theme, true);
+  const theme = getTheme();
+  const data = useChartData(labels, datasets, colors, theme, true);
 
   const pieChartDefaultConfig = useMemo(() => {
     return {
