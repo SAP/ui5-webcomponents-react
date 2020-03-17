@@ -2,7 +2,7 @@
 
 exports[`Text No Wrap 1`] = `
 <span
-  class="Text--text- Text--noWrap-"
+  class="Text-text-0 Text-noWrap-0"
 >
   Lorem Ipsum dolor sit amed
 </span>
@@ -10,7 +10,7 @@ exports[`Text No Wrap 1`] = `
 
 exports[`Text Render Basic Text 1`] = `
 <span
-  class="Text--text-"
+  class="Text-text-0"
 >
   FioriText
 </span>
@@ -18,7 +18,7 @@ exports[`Text Render Basic Text 1`] = `
 
 exports[`Text Render Whitespace 1`] = `
 <span
-  class="Text--text- Text--renderWhitespace-"
+  class="Text-text-0 Text-renderWhitespace-0"
 >
   Lorem Ipsum dolor sit amed
 </span>

@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { action } from '@storybook/addon-actions';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
@@ -23,7 +24,7 @@ const sampleAvatar =
 
 describe('NotificationGroup', () => {
   test('Default', () => {
-    const wrapper = renderThemedComponent(
+    const wrapper = mount(
       <NotificationGroup title="Notification Group">
         <Notification
           footer={ActionButtons}
@@ -44,25 +45,21 @@ describe('NotificationGroup', () => {
         />
       </NotificationGroup>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('w/o children', () => {
-    const wrapper = renderThemedComponent(
-      <NotificationGroup title="Notification Group" autoPriority collapsed={false} />
-    );
-    expect(wrapper).toMatchSnapshot();
+    const wrapper = mount(<NotificationGroup title="Notification Group" autoPriority collapsed={false} />);
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('w/o children', () => {
-    const wrapper = renderThemedComponent(
-      <NotificationGroup title="Notification Group" autoPriority collapsed={false} />
-    );
-    expect(wrapper).toMatchSnapshot();
+    const wrapper = mount(<NotificationGroup title="Notification Group" autoPriority collapsed={false} />);
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Collapsed', () => {
-    const wrapper = renderThemedComponent(
+    const wrapper = mount(
       <NotificationGroup title="Notification Group" collapsed>
         <Notification
           footer={ActionButtons}
@@ -83,11 +80,11 @@ describe('NotificationGroup', () => {
         />
       </NotificationGroup>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('w/o autoPriority', () => {
-    const wrapper = renderThemedComponent(
+    const wrapper = mount(
       <NotificationGroup title="Notification Group" autoPriority={false}>
         <Notification
           footer={ActionButtons}
@@ -108,11 +105,11 @@ describe('NotificationGroup', () => {
         />
       </NotificationGroup>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('w/ Props', () => {
-    const wrapper = renderThemedComponent(
+    const wrapper = mount(
       <NotificationGroup
         title="Notification Group"
         autoPriority
@@ -130,7 +127,7 @@ describe('NotificationGroup', () => {
         <Notification />
       </NotificationGroup>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   createPassThroughPropsTest(NotificationGroup);

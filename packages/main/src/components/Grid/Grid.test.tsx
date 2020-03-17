@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
 import React from 'react';
@@ -38,7 +39,7 @@ const GridContent = () => (
 
 describe('Grid', () => {
   test('Renders Children', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Grid>
         <GridContent />
       </Grid>
@@ -47,7 +48,7 @@ describe('Grid', () => {
   });
 
   test('Custom Class Names and Styling', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Grid width="60%" style={{ backgroundColor: 'purple' }} className="customClassName" hSpacing={0}>
         <GridContent />
       </Grid>
@@ -56,7 +57,7 @@ describe('Grid', () => {
   });
 
   test('Renders Children with custom layout data', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Grid>
         <div
           style={{
@@ -80,7 +81,7 @@ describe('Grid', () => {
   });
 
   test('Grid Position Center', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Grid width="60%" position={GridPosition.Center}>
         <GridContent />
       </Grid>
@@ -88,7 +89,7 @@ describe('Grid', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
   test('Grid Position Right', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Grid width="60%" position={GridPosition.Right}>
         <GridContent />
       </Grid>

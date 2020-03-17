@@ -2,14 +2,14 @@
 
 exports[`SideNavigationListItem Basic 1`] = `
 <ui5-li-custom
-  class="SideNavigationListItem--listItem-"
+  class="SideNavigationListItem-listItem-0"
   data-has-children="false"
   data-id="home"
   id="home"
   type="Active"
 >
   <ui5-icon
-    class="SideNavigationListItem--icon-"
+    class="SideNavigationListItem-icon-0"
     name="home"
   />
 </ui5-li-custom>
@@ -17,7 +17,7 @@ exports[`SideNavigationListItem Basic 1`] = `
 
 exports[`SideNavigationListItem custom class name and style 1`] = `
 <ui5-li-custom
-  class="SideNavigationListItem--listItem- myClass"
+  class="SideNavigationListItem-listItem-0 myClass"
   data-has-children="false"
   data-id="home"
   id="home"
@@ -25,7 +25,7 @@ exports[`SideNavigationListItem custom class name and style 1`] = `
   type="Active"
 >
   <ui5-icon
-    class="SideNavigationListItem--icon-"
+    class="SideNavigationListItem-icon-0"
     name="home"
   />
 </ui5-li-custom>

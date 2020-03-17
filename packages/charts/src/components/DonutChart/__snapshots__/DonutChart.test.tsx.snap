@@ -1,8 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DonutChart Renders with data 1`] = `
+<div
+  class="ChartContainer-chart-0 ChartContainer-chart-d0-0"
+  style="position: relative; padding-top: 6px; width: 300px; height: 300px;"
+>
+  <div
+    style="position: relative; height: 240px; width: 300px;"
+  >
+    <canvas
+      class="chartjs-render-monitor"
+      height="0"
+      style="display: block;"
+      width="0"
+    />
+  </div>
+  <div
+    class="legend"
+  >
+    <li
+      data-datasetindex="0"
+      style="display: flex; align-items: center; margin-right: 24px; cursor:pointer;"
+    >
+      
+
+      <div
+        style="width: 14px; height: 14px; border-radius: 2px; background-color: #0f828f; margin-right: 8px"
+      />
+      
+
+      <ui5-label
+        style="font-size: 12px; user-select: none; cursor:pointer;"
+      >
+        Dataset 1
+      </ui5-label>
+      
+
+    </li>
+     
+    <li
+      data-datasetindex="1"
+      style="display: flex; align-items: center; margin-right: 24px; cursor:pointer;"
+    >
+      
+
+      <div
+        style="width: 14px; height: 14px; border-radius: 2px; background-color: #5ac2ce; margin-right: 8px"
+      />
+      
+
+      <ui5-label
+        style="font-size: 12px; user-select: none; cursor:pointer;"
+      >
+        Dataset 1
+      </ui5-label>
+      
+
+    </li>
+     
+    <li
+      data-datasetindex="2"
+      style="display: flex; align-items: center; margin-right: 24px; cursor:pointer;"
+    >
+      
+
+      <div
+        style="width: 14px; height: 14px; border-radius: 2px; background-color: #03734d; margin-right: 8px"
+      />
+      
+
+      <ui5-label
+        style="font-size: 12px; user-select: none; cursor:pointer;"
+      >
+        Dataset 1
+      </ui5-label>
+      
+
+    </li>
+  </div>
+</div>
+`;
+
 exports[`DonutChart loading placeholder 1`] = `
 <div
-  class="ChartContainer--chart- ChartContainer--chart-d0-"
+  class="ChartContainer-chart-0 ChartContainer-chart-d1-0"
   style="position: relative; padding-top: 6px; width: 300px; height: 300px;"
 >
   <svg

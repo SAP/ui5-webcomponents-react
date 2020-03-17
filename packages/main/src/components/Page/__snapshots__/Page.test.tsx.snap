@@ -2,20 +2,20 @@
 
 exports[`Page Basic Page 1`] = `
 <div
-  style="height:100vh;width:100vw"
+  style="height: 100vh; width: 100vw;"
 >
   <div
-    class="Page--pageContainer- Page--pageWithHeader- Page--pageWithFooter- Page--backgroundStandard-"
+    class="Page-pageContainer-0 Page-pageWithHeader-0 Page-pageWithFooter-0 Page-backgroundStandard-0"
   >
     <header
-      class="Page--pageHeader- Page--baseBar-"
+      class="Page-pageHeader-0 Page-baseBar-0"
     >
       <div
-        class="Bar--bar- Bar--auto-"
+        class="Bar-bar-0 Bar-auto-0"
         data-bar-part="Root"
       >
         <div
-          class="Bar--left-"
+          class="Bar-left-0"
           data-bar-part="Left"
         >
           <ui5-button
@@ -24,11 +24,11 @@ exports[`Page Basic Page 1`] = `
           />
         </div>
         <div
-          class="Bar--center-"
+          class="Bar-center-0"
           data-bar-part="Center"
         >
           <div
-            class="Bar--inner-"
+            class="Bar-inner-0"
           >
             <ui5-title
               level="H5"
@@ -38,18 +38,18 @@ exports[`Page Basic Page 1`] = `
           </div>
         </div>
         <div
-          class="Bar--right-"
+          class="Bar-right-0"
           data-bar-part="Right"
         />
       </div>
     </header>
     <section
-      class="Page--contentSection-"
+      class="Page-contentSection-0"
     >
       Page Content
     </section>
     <footer
-      class="Page--pageFooter- Page--baseBar-"
+      class="Page-pageFooter-0 Page-baseBar-0"
     />
   </div>
 </div>
@@ -57,28 +57,28 @@ exports[`Page Basic Page 1`] = `
 
 exports[`Page Basic Page w/o back button 1`] = `
 <div
-  style="height:100vh;width:100vw"
+  style="height: 100vh; width: 100vw;"
 >
   <div
-    class="Page--pageContainer- Page--pageWithHeader- Page--pageWithFooter- Page--backgroundStandard-"
+    class="Page-pageContainer-0 Page-pageWithHeader-0 Page-pageWithFooter-0 Page-backgroundStandard-0"
   >
     <header
-      class="Page--pageHeader- Page--baseBar-"
+      class="Page-pageHeader-0 Page-baseBar-0"
     >
       <div
-        class="Bar--bar- Bar--auto-"
+        class="Bar-bar-0 Bar-auto-0"
         data-bar-part="Root"
       >
         <div
-          class="Bar--left-"
+          class="Bar-left-0"
           data-bar-part="Left"
         />
         <div
-          class="Bar--center-"
+          class="Bar-center-0"
           data-bar-part="Center"
         >
           <div
-            class="Bar--inner-"
+            class="Bar-inner-0"
           >
             <ui5-title
               level="H5"
@@ -88,18 +88,18 @@ exports[`Page Basic Page w/o back button 1`] = `
           </div>
         </div>
         <div
-          class="Bar--right-"
+          class="Bar-right-0"
           data-bar-part="Right"
         />
       </div>
     </header>
     <section
-      class="Page--contentSection-"
+      class="Page-contentSection-0"
     >
       Page Content
     </section>
     <footer
-      class="Page--pageFooter- Page--baseBar-"
+      class="Page-pageFooter-0 Page-baseBar-0"
     />
   </div>
 </div>
@@ -107,10 +107,10 @@ exports[`Page Basic Page w/o back button 1`] = `
 
 exports[`Page Without footer and Header 1`] = `
 <div
-  class="Page--pageContainer- Page--backgroundStandard-"
+  class="Page-pageContainer-0 Page-backgroundStandard-0"
 >
   <section
-    class="Page--contentSection-"
+    class="Page-contentSection-0"
   >
     Page Content
   </section>

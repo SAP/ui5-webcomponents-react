@@ -2,19 +2,19 @@
 
 exports[`FilterBar Hide Filter Bar 1`] = `
 <div
-  class="FilterBar--outerContainer-"
+  class="FilterBar-outerContainer-0"
 >
   <div
-    class="FilterBar--filterBarHeader-"
+    class="FilterBar-filterBarHeader-0"
   >
     <div
       style="display: inline-block; pointer-events: auto;"
     >
       <div
-        class="VariantManagement--VariantManagement-"
+        class="VariantManagement-VariantManagement-0"
       >
         <ui5-title
-          class="VariantManagement--VariantManagementText-"
+          class="VariantManagement-VariantManagementText-0"
           level="H4"
         >
           Variant 1
@@ -32,7 +32,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
       vertical-align="Center"
     >
       <ui5-button
-        class="VariantManagement--footer-"
+        class="VariantManagement-footer-0"
         design="Emphasized"
         slot="footer"
       >
@@ -65,7 +65,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
       </ui5-list>
     </ui5-popover>
     <div
-      class="FilterBar--headerRowRight-"
+      class="FilterBar-headerRowRight-0"
     >
       <ui5-button
         design="Transparent"
@@ -75,13 +75,13 @@ exports[`FilterBar Hide Filter Bar 1`] = `
     </div>
   </div>
   <div
-    class="FilterBar--filterArea- FilterBar--filterAreaOpen-"
+    class="FilterBar-filterArea-0 FilterBar-filterAreaOpen-0"
   >
     <div
-      class="FilterItem--filterItem-"
+      class="FilterItem-filterItem-0"
     >
       <div
-        class="FilterItem--innerFilterItemContainer-"
+        class="FilterItem-innerFilterItemContainer-0"
       >
         <ui5-label
           for=""
@@ -106,10 +106,10 @@ exports[`FilterBar Hide Filter Bar 1`] = `
       </div>
     </div>
     <div
-      class="FilterItem--filterItem-"
+      class="FilterItem-filterItem-0"
     >
       <div
-        class="FilterItem--innerFilterItemContainer-"
+        class="FilterItem-innerFilterItemContainer-0"
       >
         <ui5-label
           for=""
@@ -124,10 +124,10 @@ exports[`FilterBar Hide Filter Bar 1`] = `
       </div>
     </div>
     <div
-      class="FilterItem--filterItem-"
+      class="FilterItem-filterItem-0"
     >
       <div
-        class="FilterItem--innerFilterItemContainer-"
+        class="FilterItem-innerFilterItemContainer-0"
       >
         <ui5-label
           for=""
@@ -135,7 +135,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
           Custom Filter 1
         </ui5-label>
         <div
-          class="FilterItem--loadingContainer-"
+          class="FilterItem-loadingContainer-0"
         >
           <ui5-busyindicator
             active="true"
@@ -151,19 +151,19 @@ exports[`FilterBar Hide Filter Bar 1`] = `
 
 exports[`FilterBar Render without crashing 1`] = `
 <div
-  class="FilterBar--outerContainer-"
+  class="FilterBar-outerContainer-0"
 >
   <div
-    class="FilterBar--filterBarHeader-"
+    class="FilterBar-filterBarHeader-0"
   >
     <div
       style="display: inline-block; pointer-events: auto;"
     >
       <div
-        class="VariantManagement--VariantManagement-"
+        class="VariantManagement-VariantManagement-0"
       >
         <ui5-title
-          class="VariantManagement--VariantManagementText-"
+          class="VariantManagement-VariantManagementText-0"
           level="H4"
         >
           Variant 1
@@ -181,7 +181,7 @@ exports[`FilterBar Render without crashing 1`] = `
       vertical-align="Center"
     >
       <ui5-button
-        class="VariantManagement--footer-"
+        class="VariantManagement-footer-0"
         design="Emphasized"
         slot="footer"
       >
@@ -214,7 +214,7 @@ exports[`FilterBar Render without crashing 1`] = `
       </ui5-list>
     </ui5-popover>
     <div
-      class="FilterBar--vLine-"
+      class="FilterBar-vLine-0"
     >
        
       <ui5-input
@@ -226,7 +226,7 @@ exports[`FilterBar Render without crashing 1`] = `
        
     </div>
     <div
-      class="FilterBar--headerRowRight-"
+      class="FilterBar-headerRowRight-0"
     >
       <ui5-button
         design="Transparent"
@@ -236,13 +236,13 @@ exports[`FilterBar Render without crashing 1`] = `
     </div>
   </div>
   <div
-    class="FilterBar--filterArea- FilterBar--filterAreaOpen-"
+    class="FilterBar-filterArea-0 FilterBar-filterAreaOpen-0"
   >
     <div
-      class="FilterItem--filterItem-"
+      class="FilterItem-filterItem-0"
     >
       <div
-        class="FilterItem--innerFilterItemContainer-"
+        class="FilterItem-innerFilterItemContainer-0"
       >
         <ui5-label
           for=""
@@ -267,10 +267,10 @@ exports[`FilterBar Render without crashing 1`] = `
       </div>
     </div>
     <div
-      class="FilterItem--filterItem-"
+      class="FilterItem-filterItem-0"
     >
       <div
-        class="FilterItem--innerFilterItemContainer-"
+        class="FilterItem-innerFilterItemContainer-0"
       >
         <ui5-label
           for=""
@@ -290,19 +290,19 @@ exports[`FilterBar Render without crashing 1`] = `
 
 exports[`FilterBar Select Filter Item 1`] = `
 <div
-  class="FilterBar--outerContainer-"
+  class="FilterBar-outerContainer-0"
 >
   <div
-    class="FilterBar--filterBarHeader-"
+    class="FilterBar-filterBarHeader-0"
   >
     <div
       style="display: inline-block; pointer-events: auto;"
     >
       <div
-        class="VariantManagement--VariantManagement-"
+        class="VariantManagement-VariantManagement-0"
       >
         <ui5-title
-          class="VariantManagement--VariantManagementText-"
+          class="VariantManagement-VariantManagementText-0"
           level="H4"
         >
           Variant 1
@@ -320,7 +320,7 @@ exports[`FilterBar Select Filter Item 1`] = `
       vertical-align="Center"
     >
       <ui5-button
-        class="VariantManagement--footer-"
+        class="VariantManagement-footer-0"
         design="Emphasized"
         slot="footer"
       >
@@ -353,7 +353,7 @@ exports[`FilterBar Select Filter Item 1`] = `
       </ui5-list>
     </ui5-popover>
     <div
-      class="FilterBar--headerRowRight-"
+      class="FilterBar-headerRowRight-0"
     >
       <ui5-button
         design="Transparent"
@@ -363,13 +363,13 @@ exports[`FilterBar Select Filter Item 1`] = `
     </div>
   </div>
   <div
-    class="FilterBar--filterArea- FilterBar--filterAreaOpen-"
+    class="FilterBar-filterArea-0 FilterBar-filterAreaOpen-0"
   >
     <div
-      class="FilterItem--filterItem-"
+      class="FilterItem-filterItem-0"
     >
       <div
-        class="FilterItem--innerFilterItemContainer-"
+        class="FilterItem-innerFilterItemContainer-0"
       >
         <ui5-label
           for=""
@@ -394,10 +394,10 @@ exports[`FilterBar Select Filter Item 1`] = `
       </div>
     </div>
     <div
-      class="FilterItem--filterItem-"
+      class="FilterItem-filterItem-0"
     >
       <div
-        class="FilterItem--innerFilterItemContainer-"
+        class="FilterItem-innerFilterItemContainer-0"
       >
         <ui5-label
           for=""
@@ -405,7 +405,7 @@ exports[`FilterBar Select Filter Item 1`] = `
           Classification
         </ui5-label>
         <div
-          class="FilterItem--loadingContainer-"
+          class="FilterItem-loadingContainer-0"
         >
           <ui5-busyindicator
             active="true"
@@ -416,10 +416,10 @@ exports[`FilterBar Select Filter Item 1`] = `
       </div>
     </div>
     <div
-      class="FilterItem--filterItem-"
+      class="FilterItem-filterItem-0"
     >
       <div
-        class="FilterItem--innerFilterItemContainer-"
+        class="FilterItem-innerFilterItemContainer-0"
       >
         <ui5-label
           for=""
@@ -436,10 +436,10 @@ exports[`FilterBar Select Filter Item 1`] = `
       </div>
     </div>
     <div
-      class="FilterItem--filterItem-"
+      class="FilterItem-filterItem-0"
     >
       <div
-        class="FilterItem--innerFilterItemContainer-"
+        class="FilterItem-innerFilterItemContainer-0"
       >
         <ui5-label
           for=""

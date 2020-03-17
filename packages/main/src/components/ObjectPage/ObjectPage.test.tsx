@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, getEventFromCallback } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
@@ -82,22 +83,22 @@ const renderComponentWithSections = () => (
 
 describe('ObjectPage', () => {
   test('With Subsections', () => {
-    const wrapper = mountThemedComponent(renderComponent());
+    const wrapper = mount(renderComponent());
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Only Sections', () => {
-    const wrapper = mountThemedComponent(renderComponentWithSections());
+    const wrapper = mount(renderComponentWithSections());
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('IconTabBar Mode', () => {
-    const wrapper = mountThemedComponent(renderComponent(ObjectPageMode.IconTabBar));
+    const wrapper = mount(renderComponent(ObjectPageMode.IconTabBar));
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Just Some Sections', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
@@ -108,7 +109,7 @@ describe('ObjectPage', () => {
   });
 
   test('Not crashing with 1 section - Default Mode', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
       </ObjectPage>
@@ -118,7 +119,7 @@ describe('ObjectPage', () => {
   });
 
   test('Not crashing with 1 section - IconTabBar Mode', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
       </ObjectPage>
@@ -128,13 +129,13 @@ describe('ObjectPage', () => {
   });
 
   test('Not crashing with 0 sections', () => {
-    const wrapper = mountThemedComponent(<ObjectPage mode={ObjectPageMode.IconTabBar} />);
+    const wrapper = mount(<ObjectPage mode={ObjectPageMode.IconTabBar} />);
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Set selected section id', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage selectedSectionId={'2'} mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
@@ -145,7 +146,7 @@ describe('ObjectPage', () => {
 
   test.skip('onSelectedSectionChangedHandler', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage selectedSectionId={'2'} mode={ObjectPageMode.IconTabBar} onSelectedSectionChanged={callback}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
@@ -159,7 +160,7 @@ describe('ObjectPage', () => {
   });
 
   test('No Header', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage selectedSectionId={'2'} noHeader>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
@@ -194,7 +195,7 @@ describe('ObjectPage', () => {
   );
 
   test('Key Infos', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage renderKeyInfos={renderKeyInfos} renderBreadcrumbs={renderBreadcrumbs}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>

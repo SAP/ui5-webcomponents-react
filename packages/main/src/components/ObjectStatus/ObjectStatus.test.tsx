@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
@@ -6,7 +7,7 @@ import React from 'react';
 const testFactory = () => {
   Object.values(ValueState).forEach((state) => {
     test(`ObjectStatus: state: ${state}`, () => {
-      const wrapper = mountThemedComponent(<ObjectStatus state={state} showDefaultIcon />);
+      const wrapper = mount(<ObjectStatus state={state} showDefaultIcon />);
       expect(wrapper.render()).toMatchSnapshot();
     });
   });
@@ -14,7 +15,7 @@ const testFactory = () => {
 
 describe('ObjectStatus', () => {
   test('Render without Crashing', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectStatus state={ValueState.Error} showDefaultIcon>
         Hello
       </ObjectStatus>
@@ -23,7 +24,7 @@ describe('ObjectStatus', () => {
   });
 
   test('Text Deprecation', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectStatus state={ValueState.Error} showDefaultIcon>
         Hello
       </ObjectStatus>
@@ -35,7 +36,7 @@ describe('ObjectStatus', () => {
 
   test('Renders correct ObjectStatus text', () => {
     const el = 'My Text';
-    const wrapper = mountThemedComponent(<ObjectStatus>{el}</ObjectStatus>);
+    const wrapper = mount(<ObjectStatus>{el}</ObjectStatus>);
     expect(wrapper.text()).toEqual(el);
   });
 
