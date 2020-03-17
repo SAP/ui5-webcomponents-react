@@ -1,4 +1,5 @@
-import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
+import { renderThemedComponent } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import * as React from 'react';
 import { labels, singleDataset } from '../../resources/ChartProps';
 import { LineChart } from './index';
@@ -9,7 +10,7 @@ describe('LineChart', () => {
   });
 
   test('loading placeholder', () => {
-    const wrapper = mountThemedComponent(<LineChart labels={labels} datasets={[]} loading />);
+    const wrapper = mount(<LineChart labels={labels} datasets={[]} loading />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

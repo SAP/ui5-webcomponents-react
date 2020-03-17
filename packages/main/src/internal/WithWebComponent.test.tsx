@@ -1,4 +1,4 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import UI5Button from '@ui5/webcomponents/dist/Button';
 import React, { cloneElement, FC } from 'react';
 import { spy } from 'sinon';
@@ -9,7 +9,7 @@ describe('withWebComponent', () => {
     const Button: FC<any> = withWebComponent(UI5Button);
     const callback = spy();
     // eslint-disable-next-line react/jsx-no-bind
-    const wrapper = mountThemedComponent(<Button onClick={(...args) => callback(...args)} />);
+    const wrapper = mount(<Button onClick={(...args) => callback(...args)} />);
     const component = wrapper
       .find('ui5-button')
       .first()
@@ -29,7 +29,7 @@ describe('withWebComponent', () => {
   test('Bind new event handler', () => {
     const Button: FC<any> = withWebComponent(UI5Button);
     const callback = spy();
-    const wrapper = mountThemedComponent(<Button onClick={callback} />);
+    const wrapper = mount(<Button onClick={callback} />);
     const component = wrapper
       .find('ui5-button')
       .first()

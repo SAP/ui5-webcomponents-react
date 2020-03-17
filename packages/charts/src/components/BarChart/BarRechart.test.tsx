@@ -1,4 +1,5 @@
-import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
+import { renderThemedComponent } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import * as React from 'react';
 import { dataset, label } from '../../resources/RechartProps';
 import { BarChart } from './BarChart';
@@ -9,7 +10,7 @@ describe('BarRechart', () => {
   });
 
   test('loading placeholder', () => {
-    const wrapper = mountThemedComponent(<BarChart width={'50%'} />);
+    const wrapper = mount(<BarChart width={'50%'} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

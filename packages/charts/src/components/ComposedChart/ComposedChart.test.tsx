@@ -1,4 +1,5 @@
-import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
+import { renderThemedComponent } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import * as React from 'react';
 import { dataset, label } from '../../resources/RechartProps';
 import { ComposedChart } from './index';
@@ -37,7 +38,7 @@ describe('ComposedChart', () => {
   });
 
   test('loading placeholder', () => {
-    const wrapper = mountThemedComponent(<ComposedChart width={'50%'} />);
+    const wrapper = mount(<ComposedChart width={'50%'} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

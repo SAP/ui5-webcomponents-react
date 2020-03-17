@@ -20,20 +20,12 @@ export const setUserAgentString = (userAgent) => {
   });
 };
 
-export const mountThemedComponent = (
-  component,
-  contextOverwrite: { [key: string]: string } = {},
-  enzymeOptions = {}
-) => {
-  return mount(<ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>, enzymeOptions);
-};
-
 export const renderThemedComponent = (component, contextOverwrite = {}) =>
   shallow(<ThemeProvider {...contextOverwrite}>{component}</ThemeProvider>).render();
 
 export const createPassThroughPropsTest = (Component: ComponentType<any>, props = {}) => {
   test('Pass Through HTML Standard Props', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Component
         data-special-test-prop="data-prop"
         aria-labelledby="aria-prop"

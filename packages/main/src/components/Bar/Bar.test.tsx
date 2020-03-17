@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import React from 'react';
 
@@ -27,7 +28,7 @@ describe('Bar', () => {
     const text2 = 'Content Middle';
     const text3 = 'Content Right';
 
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Bar
         renderContentLeft={() => <div>{text1}</div>}
         renderContentMiddle={() => <div>{text2}</div>}
@@ -40,7 +41,7 @@ describe('Bar', () => {
   });
 
   test('Has Fiori 3 padding', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Bar renderContentLeft={createRenderLabel('Test')} renderContentRight={createRenderLabel('Right')} />
     )
       .find('div')

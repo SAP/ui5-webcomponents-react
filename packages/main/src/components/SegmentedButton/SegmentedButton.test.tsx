@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, getEventFromCallback } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
 import { SegmentedButtonItem } from '@ui5/webcomponents-react/lib/SegmentedButtonItem';
 import React, { cloneElement } from 'react';
@@ -7,7 +8,7 @@ import sinon from 'sinon';
 describe('SegmentedButton', () => {
   test('Selection', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       // @ts-ignore
       <SegmentedButton onItemSelected={callback} selectedKey="btn-1">
         <SegmentedButtonItem id="btn-1">Test</SegmentedButtonItem>
@@ -25,7 +26,7 @@ describe('SegmentedButton', () => {
   test('Update Selection via API', () => {
     const callback = sinon.spy();
 
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <SegmentedButton onItemSelected={callback}>
         <SegmentedButtonItem id="btn-1">Test</SegmentedButtonItem>
         <SegmentedButtonItem id="btn-2">Test</SegmentedButtonItem>

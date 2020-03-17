@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, getEventFromCallback } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
@@ -22,12 +23,12 @@ const renderCarousel = (props) => {
 
 describe('Carousel', () => {
   test('Renders without crashing', () => {
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 0 }));
+    const wrapper = mount(renderCarousel({ activePage: 0 }));
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Should render a text indicator', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Carousel>
         <p>Carousel 1</p>
         <p>Carousel 2</p>
@@ -45,17 +46,17 @@ describe('Carousel', () => {
   });
 
   test('CarouselArrowsPlacement: Content', () => {
-    const wrapper = mountThemedComponent(renderCarousel({ arrowsPlacement: CarouselArrowsPlacement.Content }));
+    const wrapper = mount(renderCarousel({ arrowsPlacement: CarouselArrowsPlacement.Content }));
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('CarouselArrowsPlacement: PageIndicator', () => {
-    const wrapper = mountThemedComponent(renderCarousel({ arrowsPlacement: CarouselArrowsPlacement.PageIndicator }));
+    const wrapper = mount(renderCarousel({ arrowsPlacement: CarouselArrowsPlacement.PageIndicator }));
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Page Indicator Placement: Top', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       renderCarousel({
         arrowsPlacement: CarouselArrowsPlacement.PageIndicator,
         pageIndicatorPlacement: PlacementType.Top
@@ -70,7 +71,7 @@ describe('Carousel', () => {
   });
 
   test('Update activePage via prop', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       renderCarousel({
         activePage: 0
       })
@@ -80,7 +81,7 @@ describe('Carousel', () => {
 
   test('Navigation to next page', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 0, onPageChanged: callback }));
+    const wrapper = mount(renderCarousel({ activePage: 0, onPageChanged: callback }));
     wrapper
       .find(Icon)
       .last()
@@ -90,7 +91,7 @@ describe('Carousel', () => {
 
   test('Navigation to previous page', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 1, onPageChanged: callback }));
+    const wrapper = mount(renderCarousel({ activePage: 1, onPageChanged: callback }));
     wrapper
       .find(Icon)
       .first()
@@ -100,7 +101,7 @@ describe('Carousel', () => {
 
   test('Navigation to previous page - w/o Loop', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 0, onPageChanged: callback }));
+    const wrapper = mount(renderCarousel({ activePage: 0, onPageChanged: callback }));
     wrapper
       .find(Icon)
       .first()
@@ -110,7 +111,7 @@ describe('Carousel', () => {
 
   test('Navigation to previous page - w/ Loop', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 0, loop: true, onPageChanged: callback }));
+    const wrapper = mount(renderCarousel({ activePage: 0, loop: true, onPageChanged: callback }));
     wrapper
       .find(Icon)
       .first()
@@ -120,7 +121,7 @@ describe('Carousel', () => {
 
   test('Navigation to next page - w/o Loop', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 6, onPageChanged: callback }));
+    const wrapper = mount(renderCarousel({ activePage: 6, onPageChanged: callback }));
     wrapper
       .find(Icon)
       .last()
@@ -130,7 +131,7 @@ describe('Carousel', () => {
 
   test('Navigation to next page - w/ Loop', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 6, loop: true, onPageChanged: callback }));
+    const wrapper = mount(renderCarousel({ activePage: 6, loop: true, onPageChanged: callback }));
     wrapper
       .find(Icon)
       .last()
@@ -139,7 +140,7 @@ describe('Carousel', () => {
   });
 
   test('Carousel with 1 child', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Carousel arrowsPlacement={CarouselArrowsPlacement.Content}>
         <p>Carousel 1</p>
       </Carousel>
@@ -149,7 +150,7 @@ describe('Carousel', () => {
 
   test('Navigation to next page with Keyboard', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 0, onPageChanged: callback }));
+    const wrapper = mount(renderCarousel({ activePage: 0, onPageChanged: callback }));
     wrapper
       .find('div[role="list"]')
       .last()
@@ -159,7 +160,7 @@ describe('Carousel', () => {
 
   test('Navigation to previous page with Keyboard', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(renderCarousel({ activePage: 1, onPageChanged: callback }));
+    const wrapper = mount(renderCarousel({ activePage: 1, onPageChanged: callback }));
     wrapper
       .find('div[role="list"]')
       .first()

@@ -12,13 +12,13 @@ const createTestForComponent = (dto) => {
     return;
   }
   const jsxContent = `
-import { mountThemedComponent } from "@shared/tests/utils";
+import { mount } from 'enzyme';
 import React from 'react';
 import { ${component} } from '@ui5/webcomponents-react/lib/${component}';
 
 describe('${component}', () => {
   test('Basic Test (generated)', () => {
-    const wrapper = mountThemedComponent(<${component} />);
+    const wrapper = mount(<${component} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, getEventFromCallback } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
 import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
 import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
@@ -8,11 +9,10 @@ import { spy } from 'sinon';
 describe('MessageBox', () => {
   test('Confirm - OK', () => {
     const callback = spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <MessageBox type={MessageBoxTypes.CONFIRM} open onClose={callback}>
         Confirm - OK
-      </MessageBox>,
-      {}
+      </MessageBox>
     );
     expect(wrapper.render()).toMatchSnapshot();
 
@@ -27,7 +27,7 @@ describe('MessageBox', () => {
 
   test('Confirm - Cancel', () => {
     const callback = spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <MessageBox type={MessageBoxTypes.CONFIRM} open onClose={callback}>
         Confirm - Cancel
       </MessageBox>
@@ -44,7 +44,7 @@ describe('MessageBox', () => {
 
   test('Success', () => {
     const callback = spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <MessageBox type={MessageBoxTypes.SUCCESS} open onClose={callback}>
         Success
       </MessageBox>
@@ -61,7 +61,7 @@ describe('MessageBox', () => {
 
   test('Warning', () => {
     const callback = spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <MessageBox type={MessageBoxTypes.WARNING} open onClose={callback}>
         Warning
       </MessageBox>
@@ -78,7 +78,7 @@ describe('MessageBox', () => {
 
   test('Error', () => {
     const callback = spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <MessageBox type={MessageBoxTypes.ERROR} open onClose={callback}>
         Error
       </MessageBox>
@@ -95,7 +95,7 @@ describe('MessageBox', () => {
 
   test('Information', () => {
     const callback = spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <MessageBox type={MessageBoxTypes.INFORMATION} open onClose={callback}>
         Information
       </MessageBox>
@@ -112,7 +112,7 @@ describe('MessageBox', () => {
 
   test('Show', () => {
     const callback = spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <MessageBox open onClose={callback} title="Custom" actions={[MessageBoxActions.YES, MessageBoxActions.NO]}>
         Custom
       </MessageBox>
@@ -136,7 +136,7 @@ describe('MessageBox', () => {
 
   test('Success w/ custom title', () => {
     const callback = spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <MessageBox type={MessageBoxTypes.SUCCESS} open onClose={callback} title="Custom Success">
         Custom Success
       </MessageBox>
@@ -153,7 +153,7 @@ describe('MessageBox', () => {
 
   test('Not open', () => {
     const callback = spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <MessageBox type={MessageBoxTypes.SUCCESS} open={false} onClose={callback} title="Custom Success">
         Custom Success
       </MessageBox>
@@ -163,7 +163,7 @@ describe('MessageBox', () => {
 
   test('No Title', () => {
     const callback = spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <MessageBox open onClose={callback}>
         No Title
       </MessageBox>
