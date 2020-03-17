@@ -82,7 +82,7 @@ const renderComponentWithSections = () => (
 
 describe('ObjectPage', () => {
   test('With Subsections', () => {
-    const wrapper = mountThemedComponent(renderComponent(), {}, { attachTo: document.body });
+    const wrapper = mountThemedComponent(renderComponent());
     expect(wrapper.render()).toMatchSnapshot();
   });
 

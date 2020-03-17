@@ -344,7 +344,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   useEffect(() => {
     const objectPageHeight = objectPageRef.current?.clientHeight ?? 1000;
-    const rootMargin = `-${totalHeaderHeight}px 0px -${objectPageHeight - totalHeaderHeight}px 0px`;
+    const marginBottom = objectPageHeight - totalHeaderHeight;
+    const rootMargin = `-${totalHeaderHeight}px 0px -${marginBottom < 0 ? 0 : marginBottom}px 0px`;
     const observer = new IntersectionObserver(
       (elements) => {
         elements.forEach((section) => {

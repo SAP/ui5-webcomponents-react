@@ -25,7 +25,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
         `.ui5-tc__headerList li[aria-posinset="${index + 1}"] .ui5-tc__headerItemContent`
       );
 
-      if (!element.querySelector('ui5-icon')) {
+      if (element && !element.querySelector('ui5-icon')) {
         const icon = document.createElement('ui5-icon');
         (icon as any).name = 'slim-arrow-down';
         icon.style.verticalAlign = 'text-bottom';
