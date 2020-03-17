@@ -287,7 +287,7 @@ describe('AnalyticalTable', () => {
     expect(typeof tableRef.current.scrollToItem).toBe('function');
 
     // call functions
-    const tableInnerRef = tableRef.current.querySelector("div[class^='AnalyticalTable--table'] > div > div");
+    const tableInnerRef = tableRef.current.querySelector("div[class^='AnalyticalTable-table'] > div > div");
     tableRef.current.scrollToItem(2, AnalyticalTableScrollMode.end);
     tableRef.current.scrollTo(2);
     expect(tableInnerRef.scrollTop).toBe(2);
