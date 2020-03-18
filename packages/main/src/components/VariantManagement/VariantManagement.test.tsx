@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import React from 'react';
 
@@ -9,13 +10,13 @@ const variantItems = [
 
 describe('VariantManagement', () => {
   test('Render without crashing', () => {
-    const wrapper = mountThemedComponent(<VariantManagement variantItems={variantItems} />);
+    const wrapper = mount(<VariantManagement variantItems={variantItems} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   // it('With suggestions', () => {
   //   const callback = sinon.spy();
-  //   const wrapper = mountThemedComponent(<VariantManagement onSelect={callback} variantItems={variantItems} />);
+  //   const wrapper = mount(<VariantManagement onSelect={callback} variantItems={variantItems} />);
   //
   //   console.log('find button', wrapper.find(Button));
   //

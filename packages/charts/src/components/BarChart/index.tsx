@@ -3,7 +3,7 @@ import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChar
 import bestContrast from 'get-best-contrast-color';
 import React, { FC, forwardRef, Ref, useMemo } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
-import { useTheme } from 'react-jss';
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
@@ -38,8 +38,8 @@ const BarChartComponent = forwardRef((props: BarChartPropTypes, ref: Ref<any>) =
     legendRef
   } = props as BarChartPropTypes & InternalProps;
 
-  const theme: any = useTheme();
-  const data = useChartData(labels, datasets, colors, theme.theme);
+  const theme = getTheme();
+  const data = useChartData(labels, datasets, colors, theme);
 
   const chartRef = useConsolidatedRef<any>(ref);
 

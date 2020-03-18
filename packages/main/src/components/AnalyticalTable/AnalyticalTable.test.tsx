@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { AnalyticalTableScrollMode } from '@ui5/webcomponents-react/lib/AnalyticalTableScrollMode';
@@ -139,7 +140,7 @@ const dataTree = [
 
 describe('AnalyticalTable', () => {
   test('test Asc desc', () => {
-    const wrapper = mountThemedComponent(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+    const wrapper = mount(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
 
     expect(wrapper.render()).toMatchSnapshot();
 
@@ -165,7 +166,7 @@ describe('AnalyticalTable', () => {
   });
 
   test('Tree Table', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <AnalyticalTable
         title="Table Title"
         data={dataTree}
@@ -195,7 +196,7 @@ describe('AnalyticalTable', () => {
   });
 
   test('Loading - Placeholder', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <AnalyticalTable title="Table Title" data={[]} columns={columns} loading visibleRows={15} minRows={5} />
     );
 
@@ -203,7 +204,7 @@ describe('AnalyticalTable', () => {
   });
 
   test('Loading - Loader', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <AnalyticalTable title="Table Title" data={data} columns={columns} loading visibleRows={15} minRows={5} />
     );
 
@@ -211,23 +212,19 @@ describe('AnalyticalTable', () => {
   });
 
   test('Alternate Row Color', () => {
-    const wrapper = mountThemedComponent(
-      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
-    );
+    const wrapper = mount(<AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />);
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('custom row height', () => {
-    const wrapper = mountThemedComponent(
-      <AnalyticalTable title="Table Title" data={data} columns={columns} rowHeight={60} />
-    );
+    const wrapper = mount(<AnalyticalTable title="Table Title" data={data} columns={columns} rowHeight={60} />);
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('test drag and drop of a draggable column', () => {
-    const wrapper = mountThemedComponent(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+    const wrapper = mount(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
     let componentDrag = wrapper.find('div[role="columnheader"] div[draggable]').at(0);
@@ -257,15 +254,13 @@ describe('AnalyticalTable', () => {
 
   test('render without data', () => {
     const data = [];
-    const wrapper = mountThemedComponent(
-      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
-    );
+    const wrapper = mount(<AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />);
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('without selection Column', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <AnalyticalTable
         title="Table Title"
         data={data}
@@ -285,14 +280,14 @@ describe('AnalyticalTable', () => {
       return <AnalyticalTable ref={tableRef} title="Table Title" data={data} columns={columns} />;
     };
 
-    mountThemedComponent(<UsingTable />);
+    mount(<UsingTable />);
 
     // Check existence + type
     expect(typeof tableRef.current.scrollTo).toBe('function');
     expect(typeof tableRef.current.scrollToItem).toBe('function');
 
     // call functions
-    const tableInnerRef = tableRef.current.querySelector("div[class^='AnalyticalTable--table'] > div > div");
+    const tableInnerRef = tableRef.current.querySelector("div[class^='AnalyticalTable-table'] > div > div");
     tableRef.current.scrollToItem(2, AnalyticalTableScrollMode.end);
     tableRef.current.scrollTo(2);
     expect(tableInnerRef.scrollTop).toBe(2);

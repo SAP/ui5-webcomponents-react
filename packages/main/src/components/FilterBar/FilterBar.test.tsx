@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
 import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';
 import { FilterType } from '@ui5/webcomponents-react/lib/FilterType';
@@ -21,7 +22,7 @@ const renderSearch = () => <Input placeholder={'Search'} />;
 
 describe('FilterBar', () => {
   it('Render without crashing', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <FilterBar renderSearch={renderSearch} renderVariants={renderVariants}>
         <FilterItem
           // onChange={(e) => alert(e.getParameter('selectedItem').key)}
@@ -45,7 +46,7 @@ describe('FilterBar', () => {
   });
 
   it('Hide Filter Bar', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <FilterBar renderVariants={renderVariants}>
         <FilterItem
           // onChange={(e) => alert(e.getParameter('selectedItem').key)}
@@ -84,7 +85,7 @@ describe('FilterBar', () => {
   });
 
   it('Select Filter Item', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <FilterBar renderVariants={renderVariants}>
         <FilterItem
           // onChange={(e) => alert(e.getParameter('selectedItem').key)}

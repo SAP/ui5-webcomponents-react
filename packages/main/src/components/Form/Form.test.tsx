@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { Form } from '@ui5/webcomponents-react/lib/Form';
 import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';
 import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';
@@ -35,25 +36,25 @@ const component = (
 describe('Create a Form', () => {
   test('size rate S; should create Label and Element with 100% width and display: block for top FormItem div', () => {
     window = Object.assign(window, { innerWidth: SIZE_S });
-    const wrapper = mountThemedComponent(component);
+    const wrapper = mount(component);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('size rate M; should create Label and Element with 16% and 83% width respectively and display: flex for top FormItem div', () => {
     window = Object.assign(window, { innerWidth: SIZE_M });
-    const wrapper = mountThemedComponent(component);
+    const wrapper = mount(component);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('size rate L; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div', () => {
     window = Object.assign(window, { innerWidth: SIZE_L });
-    const wrapper = mountThemedComponent(component);
+    const wrapper = mount(component);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('size rate XL; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div', () => {
     window = Object.assign(window, { innerWidth: SIZE_XL });
-    const wrapper = mountThemedComponent(component);
+    const wrapper = mount(component);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
@@ -68,7 +69,7 @@ describe('Create a Form', () => {
         </FormItem>
       </Form>
     );
-    const wrapper = mountThemedComponent(ungroupedChildren);
+    const wrapper = mount(ungroupedChildren);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
@@ -85,7 +86,7 @@ describe('Create a Form', () => {
         </FormGroup>
       </Form>
     );
-    const wrapper = mountThemedComponent(ungroupedChildren);
+    const wrapper = mount(ungroupedChildren);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
@@ -98,7 +99,7 @@ describe('Create a Form', () => {
   });
 
   it('accepts both label and labelText', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Form>
         <FormItem labelText={'item 1'}>
           <Input type={InputType.Text} />
