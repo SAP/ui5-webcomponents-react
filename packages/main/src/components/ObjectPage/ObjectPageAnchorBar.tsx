@@ -68,7 +68,7 @@ interface Props {
   showHideHeaderButton: boolean;
   headerContentPinnable: boolean;
   headerPinned: boolean;
-  showHeaderContent: boolean;
+  headerContentHeight: number;
   setHeaderPinned: (payload: any) => void;
   style?: CSSProperties;
   onToggleHeaderContentVisibility: (e: any) => void;
@@ -85,14 +85,14 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
     onToggleHeaderContentVisibility,
     headerPinned,
     setHeaderPinned,
-    showHeaderContent,
+    headerContentHeight,
     style
   } = props;
 
   const classes = useStyles();
 
   const shouldRenderHideHeaderButton = showHideHeaderButton;
-  const shouldRenderHeaderPinnableButton = headerContentPinnable && showHeaderContent;
+  const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentHeight > 0;
   const showBothActions = shouldRenderHeaderPinnableButton && shouldRenderHideHeaderButton;
   const [popoverContent, setPopoverContent] = useState(null);
   const popoverRef = useRef<Ui5PopoverDomRef>(null);
@@ -155,7 +155,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
       </TabContainer>
       {shouldRenderHideHeaderButton && (
         <Button
-          icon={showHeaderContent ? 'slim-arrow-up' : 'slim-arrow-down'}
+          icon={headerContentHeight === 0 ? 'slim-arrow-down' : 'slim-arrow-up'}
           onClick={onToggleHeaderContentVisibility}
           className={`${classes.anchorBarActionButton} ${classes.anchorBarActionButtonExpandable} ${
             showBothActions ? classes.anchorBarActionPinnableAndExandable : ''

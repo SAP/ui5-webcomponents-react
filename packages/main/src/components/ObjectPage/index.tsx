@@ -118,6 +118,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     { noHeader }
   );
 
+  console.log(headerContentHeight);
+
   // *****
   // SECTION SELECTION
   // ****
@@ -421,7 +423,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         showHideHeaderButton={showHideHeaderButton && !noHeader}
         headerPinned={headerPinned}
         setHeaderPinned={setHeaderPinned}
-        showHeaderContent={internalHeaderOpen}
+        headerContentHeight={headerContentHeight}
         style={{ top: noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight }}
         onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
         ref={anchorBarRef}
