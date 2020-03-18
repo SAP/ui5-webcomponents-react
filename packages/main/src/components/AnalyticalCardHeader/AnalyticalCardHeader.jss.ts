@@ -1,4 +1,4 @@
-import { spacing } from '@ui5/webcomponents-react-base';
+import * as spacing from '@ui5/webcomponents-react-base/lib/spacing';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
