@@ -255,26 +255,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     };
   }, [totalHeaderHeight, objectPageRef]);
 
-  // useEffect(() => {
-  //   const intersectionObserver = new IntersectionObserver(
-  //     ([record]) => {
-  //       if (hideHeaderButtonPressed.current === true) {
-  //         return;
-  //       }
-  //       // setInternalHeaderOpen(record.isIntersecting);
-  //     },
-  //     { root: objectPageRef.current, rootMargin: `-${topHeaderHeight}px 0px 0px 0px` }
-  //   );
-  //
-  //   if (headerContentRef.current) {
-  //     intersectionObserver.observe(headerContentRef.current);
-  //   }
-  //
-  //   return () => {
-  //     intersectionObserver.disconnect();
-  //   };
-  // }, [objectPageRef, headerContentRef, topHeaderHeight, topHeaderRef, setInternalHeaderOpen, hideHeaderButtonPressed]);
-
   const fireOnSelectedChangedEvent = debounce((e) => {
     onSelectedSectionChanged(
       Event.of(null, e.getOriginalEvent(), {
@@ -393,9 +373,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         >
           <span className={classes.actions}>{headerActions}</span>
           <header className={classes.titleBar}>
-            {(!showTitleInHeaderContent || internalHeaderOpen === false) && (
+            {(!showTitleInHeaderContent || internalHeaderOpen === false || headerContentHeight === 0) && (
               <FlexBox alignItems={FlexBoxAlignItems.Center}>
-                {image && !internalHeaderOpen && (
+                {image && (!internalHeaderOpen || headerContentHeight === 0) && (
                   <div className={classes.avatar}>
                     <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
                   </div>

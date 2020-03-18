@@ -74,6 +74,13 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
     return null;
   }, [headerPinned, topHeaderHeight, headerOpen]);
 
+  let renderedHeaderContent = (
+    <div className={classes.headerContent}>
+      {avatar}
+      {renderHeaderContentProp && <span className={classes.headerCustomContent}>{renderHeaderContentProp()}</span>}
+    </div>
+  );
+
   if (showTitleInHeaderContent) {
     const headerContents = renderHeaderContentProp && renderHeaderContentProp();
     let firstElement;
@@ -84,41 +91,36 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
     } else {
       firstElement = headerContents;
     }
-    return (
-      <div style={headerStyles} className={classes.contentHeader} ref={ref}>
-        <div className={classes.headerContent}>
-          <FlexBox>
-            {avatar}
-            <FlexBox direction={FlexBoxDirection.Column}>
-              <div>{renderBreadcrumbs && renderBreadcrumbs()}</div>
-              <FlexBox>
-                <FlexBox direction={FlexBoxDirection.Column}>
-                  <h1 className={classes.title}>{title}</h1>
-                  <span className={classes.subTitle}>{subTitle}</span>
-                  <span> {firstElement}</span>
-                </FlexBox>
-                <FlexBox>
-                  {contents.map((c, index) => (
-                    <div key={`customContent-${index}`} className={classes.headerCustomContentItem}>
-                      {c}
-                    </div>
-                  ))}
-                </FlexBox>
-                <div className={classes.keyInfos}>{renderKeyInfos && renderKeyInfos()}</div>
+    renderedHeaderContent = (
+      <div className={classes.headerContent}>
+        <FlexBox>
+          {avatar}
+          <FlexBox direction={FlexBoxDirection.Column}>
+            <div>{renderBreadcrumbs && renderBreadcrumbs()}</div>
+            <FlexBox>
+              <FlexBox direction={FlexBoxDirection.Column}>
+                <h1 className={classes.title}>{title}</h1>
+                <span className={classes.subTitle}>{subTitle}</span>
+                <span> {firstElement}</span>
               </FlexBox>
+              <FlexBox>
+                {contents.map((c, index) => (
+                  <div key={`customContent-${index}`} className={classes.headerCustomContentItem}>
+                    {c}
+                  </div>
+                ))}
+              </FlexBox>
+              <div className={classes.keyInfos}>{renderKeyInfos && renderKeyInfos()}</div>
             </FlexBox>
           </FlexBox>
-        </div>
+        </FlexBox>
       </div>
     );
   }
 
   return (
     <div style={headerStyles} className={classes.contentHeader} ref={ref}>
-      <div className={classes.headerContent}>
-        {avatar}
-        {renderHeaderContentProp && <span className={classes.headerCustomContent}>{renderHeaderContentProp()}</span>}
-      </div>
+      {renderedHeaderContent}
     </div>
   );
 });
