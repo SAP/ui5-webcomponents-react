@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
@@ -9,7 +10,7 @@ import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 describe('ActionSheet', () => {
   test('Render without Crashing', () => {
     const button = <Button />;
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ActionSheet openBy={button} className="myCustomClass">
         <Button icon={'add'}>Accept</Button>
         <Button>Reject</Button>
@@ -22,7 +23,7 @@ describe('ActionSheet', () => {
   test('Button Click handler', () => {
     const callback = sinon.spy();
     const button = <Button />;
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ActionSheet openBy={button} className="myCustomClass">
         <Button icon={'add'} onClick={callback}>
           Accept
@@ -55,7 +56,7 @@ describe('ActionSheet', () => {
       legacyRef = el;
     };
     const button = <Button />;
-    mountThemedComponent(
+    mount(
       <ActionSheet ref={ref} openBy={button}>
         <Button icon={'add'}>Accept</Button>
         <Button>Reject</Button>
@@ -68,13 +69,13 @@ describe('ActionSheet', () => {
   test('Ref object', () => {
     const ref: RefObject<Ui5PopoverDomRef> = createRef();
     const button = <Button />;
-    mountThemedComponent(<ActionSheet ref={ref} openBy={button} />);
+    mount(<ActionSheet ref={ref} openBy={button} />);
     expect((ref.current as any).tagName).toEqual('UI5-POPOVER');
   });
 
   test('does not crash with other component', () => {
     const button = <Button />;
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ActionSheet openBy={button}>
         <Label>I should not crash</Label>
       </ActionSheet>

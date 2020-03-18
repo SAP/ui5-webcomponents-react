@@ -1,7 +1,6 @@
 /**
  * Created by d059190 at 16.03.18
  */
-import { createGenerateClassName } from './lib/createGenerateClassName';
 import { createComponentStyles } from './lib/createComponentStyles';
 import { CssSizeVariables, CssSizeVariablesNames, cssVariablesStyles } from './lib/CssSizeVariables';
 import { Device } from './lib/Device';
@@ -32,7 +31,6 @@ export {
   spacing,
   HSLColor,
   sap_fiori_3,
-  createGenerateClassName,
   useConsolidatedRef,
   usePassThroughHtmlProps,
   CssSizeVariablesNames,

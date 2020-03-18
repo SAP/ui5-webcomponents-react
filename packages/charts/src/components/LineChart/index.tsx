@@ -2,7 +2,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import React, { FC, forwardRef, Ref, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
-import { useTheme } from 'react-jss';
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
@@ -66,8 +66,8 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
   }, [categoryAxisFormatter, valueAxisFormatter]);
   const chartOptions = useMergedConfig(lineChartDefaultConfig, options);
 
-  const theme: any = useTheme();
-  const data = useChartData(labels, datasets, colors, theme.theme);
+  const theme = getTheme();
+  const data = useChartData(labels, datasets, colors, theme);
 
   const chartRef = useConsolidatedRef<any>(ref);
   const handleLegendItemPress = useLegendItemClickHandler(chartRef, legendRef);

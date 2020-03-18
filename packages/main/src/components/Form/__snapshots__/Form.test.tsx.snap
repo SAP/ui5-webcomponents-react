@@ -2,31 +2,31 @@
 
 exports[`Create a Form accepts both label and labelText 1`] = `
 <div
-  class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
+  class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
 >
   <div
-    class="Grid--gridSpan-"
+    class="Grid-gridSpan-0"
   >
     <div>
       <div
-        class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
       >
         <div
-          class="FormGroup--formGroupStyle-"
+          class="FormGroup-formGroupStyle-0"
         >
           <div
-            class="FormItem--formItemTopDiv-"
+            class="FormItem-formItemTopDiv-0"
             style="display: flex;"
           >
             <ui5-label
-              class="FormItem--formLabel-"
+              class="FormItem-formLabel-0"
               for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
             </ui5-label>
             <div
-              class="FormItem--formElement-"
+              class="FormItem-formElement-0"
               style="width: 66%;"
             >
               <ui5-input
@@ -38,21 +38,21 @@ exports[`Create a Form accepts both label and labelText 1`] = `
           </div>
         </div>
         <div
-          class="FormGroup--formGroupStyle-"
+          class="FormGroup-formGroupStyle-0"
         >
           <div
-            class="FormItem--formItemTopDiv-"
+            class="FormItem-formItemTopDiv-0"
             style="display: flex;"
           >
             <ui5-label
-              class="FormItem--formLabel-"
+              class="FormItem-formLabel-0"
               for=""
               style="width: 33%; justify-content: flex-end;"
             >
               Label Text:
             </ui5-label>
             <div
-              class="FormItem--formElement-"
+              class="FormItem-formElement-0"
               style="width: 66%;"
             >
               <ui5-input
@@ -64,14 +64,14 @@ exports[`Create a Form accepts both label and labelText 1`] = `
           </div>
         </div>
         <div
-          class="FormGroup--formGroupStyle-"
+          class="FormGroup-formGroupStyle-0"
         >
           <div
-            class="FormItem--formItemTopDiv-"
+            class="FormItem-formItemTopDiv-0"
             style="display: flex;"
           >
             <ui5-label
-              class="FormItem--formLabel-"
+              class="FormItem-formLabel-0"
               for=""
               required="true"
               style="width: 33%; justify-content: flex-end;"
@@ -79,7 +79,7 @@ exports[`Create a Form accepts both label and labelText 1`] = `
               Label Component:
             </ui5-label>
             <div
-              class="FormItem--formElement-"
+              class="FormItem-formElement-0"
               style="width: 66%;"
             >
               <ui5-input
@@ -99,40 +99,40 @@ exports[`Create a Form accepts both label and labelText 1`] = `
 exports[`Create a Form should create a FormGroup and put ungrouped FormItems into it 1`] = `
 Array [
   <ui5-title
-    class="Form--formTitle-"
+    class="Form-formTitle-0"
     level="H3"
   >
     Test form
   </ui5-title>,
   <div
-    class="Form--formTitlePaddingBottom-"
+    class="Form-formTitlePaddingBottom-0"
   />,
   <div
-    class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
+    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid--gridSpan-"
+      class="Grid-gridSpan-0"
     >
       <div>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 1:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input
@@ -144,21 +144,21 @@ Array [
             </div>
           </div>
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 2:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input
@@ -179,40 +179,40 @@ Array [
 exports[`Create a Form should use a single FormGroup's title as a Form title if one is not set 1`] = `
 Array [
   <ui5-title
-    class="Form--formTitle-"
+    class="Form-formTitle-0"
     level="H3"
   >
     To be Form title
   </ui5-title>,
   <div
-    class="Form--formTitlePaddingBottom-"
+    class="Form-formTitlePaddingBottom-0"
   />,
   <div
-    class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
+    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid--gridSpan-"
+      class="Grid-gridSpan-0"
     >
       <div>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 1:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input
@@ -224,21 +224,21 @@ Array [
             </div>
           </div>
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 2:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input
@@ -259,46 +259,46 @@ Array [
 exports[`Create a Form size rate L; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
 Array [
   <ui5-title
-    class="Form--formTitle-"
+    class="Form-formTitle-0"
     level="H3"
   >
     Test form
   </ui5-title>,
   <div
-    class="Form--formTitlePaddingBottom-"
+    class="Form-formTitlePaddingBottom-0"
   />,
   <div
-    class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
+    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid--gridSpan-"
+      class="Grid-gridSpan-0"
     >
       <div>
         <ui5-title
-          class="FormGroup--formPaddingBottom-"
+          class="FormGroup-formPaddingBottom-0"
           level="H5"
         >
           Group 1
         </ui5-title>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 1:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input
@@ -310,21 +310,21 @@ Array [
             </div>
           </div>
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 2:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input
@@ -339,34 +339,34 @@ Array [
       </div>
     </div>
     <div
-      class="Grid--gridSpan-"
+      class="Grid-gridSpan-0"
     >
       <div>
         <ui5-title
-          class="FormGroup--formPaddingBottom-"
+          class="FormGroup-formPaddingBottom-0"
           level="H5"
         >
           Group 2
         </ui5-title>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 1:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input
@@ -378,21 +378,21 @@ Array [
             </div>
           </div>
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 2:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input
@@ -413,46 +413,46 @@ Array [
 exports[`Create a Form size rate M; should create Label and Element with 16% and 83% width respectively and display: flex for top FormItem div 1`] = `
 Array [
   <ui5-title
-    class="Form--formTitle-"
+    class="Form-formTitle-0"
     level="H3"
   >
     Test form
   </ui5-title>,
   <div
-    class="Form--formTitlePaddingBottom-"
+    class="Form-formTitlePaddingBottom-0"
   />,
   <div
-    class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
+    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid--gridSpan-"
+      class="Grid-gridSpan-0"
     >
       <div>
         <ui5-title
-          class="FormGroup--formPaddingBottom-"
+          class="FormGroup-formPaddingBottom-0"
           level="H5"
         >
           Group 1
         </ui5-title>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 16%; justify-content: flex-end;"
               >
                 item 1:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 83%;"
               >
                 <ui5-input
@@ -464,21 +464,21 @@ Array [
             </div>
           </div>
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 16%; justify-content: flex-end;"
               >
                 item 2:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 83%;"
               >
                 <ui5-input
@@ -493,34 +493,34 @@ Array [
       </div>
     </div>
     <div
-      class="Grid--gridSpan-"
+      class="Grid-gridSpan-0"
     >
       <div>
         <ui5-title
-          class="FormGroup--formPaddingBottom-"
+          class="FormGroup-formPaddingBottom-0"
           level="H5"
         >
           Group 2
         </ui5-title>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 16%; justify-content: flex-end;"
               >
                 item 1:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 83%;"
               >
                 <ui5-input
@@ -532,21 +532,21 @@ Array [
             </div>
           </div>
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 16%; justify-content: flex-end;"
               >
                 item 2:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 83%;"
               >
                 <ui5-input
@@ -567,46 +567,46 @@ Array [
 exports[`Create a Form size rate S; should create Label and Element with 100% width and display: block for top FormItem div 1`] = `
 Array [
   <ui5-title
-    class="Form--formTitle-"
+    class="Form-formTitle-0"
     level="H3"
   >
     Test form
   </ui5-title>,
   <div
-    class="Form--formTitlePaddingBottom-"
+    class="Form-formTitlePaddingBottom-0"
   />,
   <div
-    class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
+    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid--gridSpan-"
+      class="Grid-gridSpan-0"
     >
       <div>
         <ui5-title
-          class="FormGroup--formPaddingBottom-"
+          class="FormGroup-formPaddingBottom-0"
           level="H5"
         >
           Group 1
         </ui5-title>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: block;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 100%; justify-content: flex-start;"
               >
                 item 1:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 100%;"
               >
                 <ui5-input
@@ -618,21 +618,21 @@ Array [
             </div>
           </div>
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: block;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 100%; justify-content: flex-start;"
               >
                 item 2:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 100%;"
               >
                 <ui5-input
@@ -647,34 +647,34 @@ Array [
       </div>
     </div>
     <div
-      class="Grid--gridSpan-"
+      class="Grid-gridSpan-0"
     >
       <div>
         <ui5-title
-          class="FormGroup--formPaddingBottom-"
+          class="FormGroup-formPaddingBottom-0"
           level="H5"
         >
           Group 2
         </ui5-title>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: block;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 100%; justify-content: flex-start;"
               >
                 item 1:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 100%;"
               >
                 <ui5-input
@@ -686,21 +686,21 @@ Array [
             </div>
           </div>
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: block;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 100%; justify-content: flex-start;"
               >
                 item 2:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 100%;"
               >
                 <ui5-input
@@ -721,46 +721,46 @@ Array [
 exports[`Create a Form size rate XL; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
 Array [
   <ui5-title
-    class="Form--formTitle-"
+    class="Form-formTitle-0"
     level="H3"
   >
     Test form
   </ui5-title>,
   <div
-    class="Form--formTitlePaddingBottom-"
+    class="Form-formTitlePaddingBottom-0"
   />,
   <div
-    class="Grid--grid- Grid--gridHSpace1- Grid--gridVSpace1-"
+    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid--gridSpan-"
+      class="Grid-gridSpan-0"
     >
       <div>
         <ui5-title
-          class="FormGroup--formPaddingBottom-"
+          class="FormGroup-formPaddingBottom-0"
           level="H5"
         >
           Group 1
         </ui5-title>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 1:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input
@@ -772,21 +772,21 @@ Array [
             </div>
           </div>
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 2:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input
@@ -801,34 +801,34 @@ Array [
       </div>
     </div>
     <div
-      class="Grid--gridSpan-"
+      class="Grid-gridSpan-0"
     >
       <div>
         <ui5-title
-          class="FormGroup--formPaddingBottom-"
+          class="FormGroup-formPaddingBottom-0"
           level="H5"
         >
           Group 2
         </ui5-title>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 1:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input
@@ -840,21 +840,21 @@ Array [
             </div>
           </div>
           <div
-            class="FormGroup--formGroupStyle-"
+            class="FormGroup-formGroupStyle-0"
           >
             <div
-              class="FormItem--formItemTopDiv-"
+              class="FormItem-formItemTopDiv-0"
               style="display: flex;"
             >
               <ui5-label
-                class="FormItem--formLabel-"
+                class="FormItem-formLabel-0"
                 for=""
                 style="width: 33%; justify-content: flex-end;"
               >
                 item 2:
               </ui5-label>
               <div
-                class="FormItem--formElement-"
+                class="FormItem-formElement-0"
                 style="width: 66%;"
               >
                 <ui5-input

@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DonutChart Renders with data 1`] = `
+<div
+  style="width: 100%; height: 500px;"
+>
+  <div
+    class="recharts-responsive-container"
+    id="undefined"
+    style="width: 100%; height: 100%;"
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`DonutChart loading placeholder 1`] = `
 <div
   style="width: 50%; height: 500px;"

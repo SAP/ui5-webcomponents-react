@@ -1,36 +1,37 @@
-import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
 import { LoaderType } from '@ui5/webcomponents-react/lib/LoaderType';
 import React from 'react';
 
 describe('Loader', () => {
   test('indeterminate', () => {
-    const wrapper = renderThemedComponent(<Loader type={LoaderType.Indeterminate} />);
+    const wrapper = mount(<Loader type={LoaderType.Indeterminate} />).render();
     expect(wrapper).toMatchSnapshot();
   });
 
   test('determinate', () => {
-    const wrapper = renderThemedComponent(<Loader type={LoaderType.Determinate} />);
+    const wrapper = mount(<Loader type={LoaderType.Determinate} />).render();
     expect(wrapper).toMatchSnapshot();
   });
 
   test('determinate with progress prop', () => {
-    const wrapper = renderThemedComponent(<Loader type={LoaderType.Determinate} progress="42%" />);
+    const wrapper = mount(<Loader type={LoaderType.Determinate} progress="42%" />).render();
     expect(wrapper).toMatchSnapshot();
   });
 
   test('default', () => {
-    const wrapper = renderThemedComponent(<Loader />);
+    const wrapper = mount(<Loader />).render();
     expect(wrapper).toMatchSnapshot();
   });
 
   test('with Custom Class Name', () => {
-    const wrapper = renderThemedComponent(<Loader className="myTestClass" />);
+    const wrapper = mount(<Loader className="myTestClass" />).render();
     expect(wrapper).toMatchSnapshot();
   });
 
   test('with delay', () => {
-    const wrapper = renderThemedComponent(<Loader delay={1000} />);
+    const wrapper = mount(<Loader delay={1000} />).render();
     expect(wrapper).toMatchSnapshot();
   });
 

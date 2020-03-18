@@ -1,29 +1,29 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import * as React from 'react';
 import { datasets, labels, singleDataset } from '../../resources/ChartProps';
 import { BarChart } from './index';
 
 describe('BarChart', () => {
   test('Renders with data', () => {
-    mountThemedComponent(<BarChart labels={labels} datasets={singleDataset} />);
+    mount(<BarChart labels={labels} datasets={singleDataset} />);
   });
 
   test('custom colors', () => {
-    mountThemedComponent(<BarChart labels={labels} datasets={singleDataset} colors={['#f0ab00']} />);
+    mount(<BarChart labels={labels} datasets={singleDataset} colors={['#f0ab00']} />);
   });
 
   test('valueAxisFormatter', () => {
-    mountThemedComponent(<BarChart labels={labels} datasets={singleDataset} valueAxisFormatter={(d) => `${d}%`} />);
+    mount(<BarChart labels={labels} datasets={singleDataset} valueAxisFormatter={(d) => `${d}%`} />);
   });
 
   test('with Ref', () => {
     const ref = React.createRef();
-    mountThemedComponent(<BarChart ref={ref} labels={labels} datasets={singleDataset} />);
+    mount(<BarChart ref={ref} labels={labels} datasets={singleDataset} />);
     expect(ref.current.hasOwnProperty('chartInstance')).toBe(true);
   });
 
   test('stacked', () => {
-    mountThemedComponent(
+    mount(
       <BarChart
         labels={labels}
         datasets={datasets}
@@ -33,7 +33,7 @@ describe('BarChart', () => {
   });
 
   test('loading placeholder', () => {
-    const wrapper = mountThemedComponent(<BarChart labels={labels} datasets={[]} loading />);
+    const wrapper = mount(<BarChart labels={labels} datasets={[]} loading />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

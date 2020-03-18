@@ -2,58 +2,58 @@
 
 exports[`Analytical Card Render without Crashing 1`] = `
 <div
-  class="AnalyticalCard--card-"
+  class="AnalyticalCard-card-0"
   style="width: 20rem;"
 >
   <div
-    class="AnalyticalCardHeader--cardHeader-"
+    class="AnalyticalCardHeader-cardHeader-0"
   >
     <div
-      class="AnalyticalCardHeader--headerContent-"
+      class="AnalyticalCardHeader-headerContent-0"
     >
       <div
-        class="AnalyticalCardHeader--headerTitles-"
+        class="AnalyticalCardHeader-headerTitles-0"
       >
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentSpaceBetween- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentSpaceBetween-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="AnalyticalCardHeader--headerText-"
+            class="AnalyticalCardHeader-headerText-0"
           >
             Title
           </div>
           <div
-            class="ObjectStatus--objectStatus- AnalyticalCardHeader--counter-"
+            class="ObjectStatus-objectStatus-0 AnalyticalCardHeader-counter-0"
           />
         </div>
         <div
-          class="AnalyticalCardHeader--subHeaderText-"
+          class="AnalyticalCardHeader-subHeaderText-0"
         >
           Subtitle
         </div>
       </div>
       <div
-        class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsEnd- FlexBox--flexWrapNoWrap- AnalyticalCardHeader--kpiContent-"
+        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0 AnalyticalCardHeader-kpiContent-0"
       >
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <div
-            class="AnalyticalCardHeader--valueAndUnit- AnalyticalCardHeader--good-"
+            class="AnalyticalCardHeader-valueAndUnit-0 AnalyticalCardHeader-good-0"
           >
             <div
-              class="AnalyticalCardHeader--value-"
+              class="AnalyticalCardHeader-value-0"
             >
               Value
             </div>
             <div
-              class="AnalyticalCardHeader--indicatorAndUnit-"
+              class="AnalyticalCardHeader-indicatorAndUnit-0"
             >
               <div
-                class="AnalyticalCardHeader--arrowIndicatorShape- AnalyticalCardHeader--arrowDown- AnalyticalCardHeader--good-"
+                class="AnalyticalCardHeader-arrowIndicatorShape-0 AnalyticalCardHeader-arrowDown-0 AnalyticalCardHeader-good-0"
               />
               <div
-                class="AnalyticalCardHeader--unit-"
+                class="AnalyticalCardHeader-unit-0"
               >
                 Unit
               </div>
@@ -61,28 +61,28 @@ exports[`Analytical Card Render without Crashing 1`] = `
           </div>
         </div>
         <div
-          class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap- AnalyticalCardHeader--targetAndDeviation-"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 AnalyticalCardHeader-targetAndDeviation-0"
         >
           <div
-            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap- AnalyticalCardHeader--targetAndDeviationColumn-"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 AnalyticalCardHeader-targetAndDeviationColumn-0"
           >
             <span>
               Target
             </span>
             <span
-              class="AnalyticalCardHeader--targetAndDeviationValue-"
+              class="AnalyticalCardHeader-targetAndDeviationValue-0"
             >
               Target
             </span>
           </div>
           <div
-            class="FlexBox--flexBox- FlexBox--flexBoxDirectionColumn- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap- AnalyticalCardHeader--targetAndDeviationColumn-"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 AnalyticalCardHeader-targetAndDeviationColumn-0"
           >
             <span>
               Deviation
             </span>
             <span
-              class="AnalyticalCardHeader--targetAndDeviationValue-"
+              class="AnalyticalCardHeader-targetAndDeviationValue-0"
             >
               Deviation
             </span>
@@ -90,17 +90,17 @@ exports[`Analytical Card Render without Crashing 1`] = `
         </div>
       </div>
       <div
-        class="AnalyticalCardHeader--description-"
+        class="AnalyticalCardHeader-description-0"
       >
         Description
       </div>
     </div>
   </div>
   <div
-    class="AnalyticalCard--content-"
+    class="AnalyticalCard-content-0"
   >
     <span
-      class="Text--text-"
+      class="Text-text-0"
     >
       I'm a content!
     </span>

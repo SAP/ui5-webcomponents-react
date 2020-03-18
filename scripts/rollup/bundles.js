@@ -21,7 +21,13 @@ const bundles = [
     label: 'charts',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD],
     entry: 'charts',
-    externals: ['react', 'react-jss', '@ui5/webcomponents', '@ui5/webcomponents-react-charts']
+    externals: [
+      'react',
+      'react-jss',
+      '@ui5/webcomponents',
+      '@ui5/webcomponents-base',
+      '@ui5/webcomponents-react-charts'
+    ]
   }
 ];
 

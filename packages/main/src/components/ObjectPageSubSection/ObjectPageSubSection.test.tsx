@@ -1,13 +1,13 @@
-import { createPassThroughPropsTest, renderThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSubSection';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 describe('ObjectPageSubSection', () => {
   test('Render without Crashing', () => {
     // @ts-ignore
-    const wrapper = renderThemedComponent(<ObjectPageSubSection id="test" />);
-    expect(wrapper.html()).toMatchSnapshot();
+    const wrapper = mount(<ObjectPageSubSection id="test" />);
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('No ID should throw', () => {
