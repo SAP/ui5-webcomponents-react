@@ -61,6 +61,9 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         // to the render a checkbox
         // eslint-disable-next-line react/prop-types,react/display-name
         Cell: ({ row }) => {
+          if (row.isGrouped && selectionMode === TableSelectionMode.SINGLE_SELECT) {
+            return null;
+          }
           if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
             // eslint-disable-next-line react/prop-types
             return <div style={divStyle} onClick={row.toggleRowSelected} />;
