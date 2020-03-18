@@ -72,5 +72,23 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
       ...columns
     ];
   });
+
+  hooks.visibleColumnsDeps.push((deps, { instance }) => [
+    ...deps,
+    instance.webComponentsReactProperties.noSelectionColumn,
+    instance.webComponentsReactProperties.selectionMode
+  ]);
+
+  hooks.visibleColumns.push((columns, { instance: { webComponentsReactProperties } }) => {
+    if (
+      webComponentsReactProperties.noSelectionColumn ||
+      webComponentsReactProperties.selectionMode === TableSelectionMode.NONE
+    ) {
+      return columns;
+    }
+
+    const selectionColumn = columns.find(({ id }) => id === '__ui5wcr__internal_selection_column');
+    return [selectionColumn, ...columns.filter(({ id }) => id !== '__ui5wcr__internal_selection_column')];
+  });
 };
 useRowSelectionColumn.pluginName = 'useRowSelectionColumn';
