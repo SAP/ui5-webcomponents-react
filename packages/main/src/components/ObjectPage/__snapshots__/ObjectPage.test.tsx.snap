@@ -137,7 +137,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       class="ObjectPageAnchorBar-anchorBarActionButton-0 ObjectPageAnchorBar-anchorBarActionButtonExpandable-0"
       data-ui5wcr-object-page-header-action=""
       design="Default"
-      icon="slim-arrow-up"
+      icon="slim-arrow-down"
     />
     <ui5-popover
       horizontal-align="Center"
@@ -1379,7 +1379,7 @@ exports[`ObjectPage With Subsections 1`] = `
       class="ObjectPageAnchorBar-anchorBarActionButton-0 ObjectPageAnchorBar-anchorBarActionButtonExpandable-0"
       data-ui5wcr-object-page-header-action=""
       design="Default"
-      icon="slim-arrow-up"
+      icon="slim-arrow-down"
     />
     <ui5-popover
       horizontal-align="Center"

@@ -15,7 +15,7 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
           setHeaderContentHeight(0);
         }
       },
-      { rootMargin: `-${topHeaderHeight}px 0px 0px 0px`, root: objectPage.current, threshold: 1 }
+      { rootMargin: `-${topHeaderHeight}px 0px 0px 0px`, root: objectPage.current, threshold: 0.5 }
     );
 
     if (headerContentRef.current) {

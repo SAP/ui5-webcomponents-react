@@ -96,7 +96,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState(selectedSectionId ?? firstSectionId);
   const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
   const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
-  const [internalHeaderOpen, setInternalHeaderOpen] = useState(!noHeader);
   const isProgrammaticallyScrolled = useRef(false);
 
   const objectPageRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
@@ -104,7 +103,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const headerContentRef: RefObject<HTMLDivElement> = useRef();
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
 
-  const hideHeaderButtonPressed = useRef(false);
   const [scrollbarWidth, setScrollbarWidth] = useState(SCROLL_BAR_WIDTH);
   const isMounted = useRef(false);
 
@@ -283,12 +281,39 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const onToggleHeaderContentVisibility = useCallback(
     (e) => {
       const srcElement = e.getHtmlSourceElement();
-      hideHeaderButtonPressed.current = srcElement.icon === 'slim-arrow-up';
-      setInternalHeaderOpen((oldVal) => {
-        return !oldVal;
+      const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
+      if (shouldHideHeader) {
+        objectPageRef.current.classList.add(classes.headerCollapsed);
+      } else {
+        objectPageRef.current.classList.remove(classes.headerCollapsed);
+      }
+
+      requestAnimationFrame(() => {
+        if (objectPageRef.current.scrollTop > 0 && !shouldHideHeader) {
+          const prevHeaderTop = headerContentRef.current.style.top;
+          headerContentRef.current.style.top = `${topHeaderHeight}px`;
+          const prevAnchorTop = anchorBarRef.current.style.top;
+          anchorBarRef.current.style.top = `${headerContentRef.current.offsetHeight + topHeaderHeight}px`;
+          objectPageRef.current.addEventListener(
+            'scroll',
+            (e) => {
+              if (prevHeaderTop ?? true) {
+                headerContentRef.current.style.top = prevHeaderTop;
+              } else {
+                headerContentRef.current.style.removeProperty('top');
+              }
+              if (prevAnchorTop ?? true) {
+                anchorBarRef.current.style.top = prevAnchorTop;
+              } else {
+                anchorBarRef.current.style.removeProperty('top');
+              }
+            },
+            { once: true }
+          );
+        }
       });
     },
-    [setInternalHeaderOpen, hideHeaderButtonPressed]
+    [objectPageRef, classes.headerCollapsed, headerContentHeight, topHeaderHeight]
   );
 
   useEffect(() => {
@@ -310,13 +335,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     objectPageClasses.put(classes.titleInHeaderContent);
   }
 
-  const headerClasses = StyleClassHelper.of(classes.header);
-  if (internalHeaderOpen) {
-    headerClasses.put(classes.alwaysVisibleHeader);
-  }
-
   if (mode === ObjectPageMode.IconTabBar) {
     objectPageClasses.put(classes.iconTabBarMode);
+  }
+
+  if (noHeader) {
+    objectPageClasses.put(classes.noHeader);
   }
 
   const scrollBarWidthPadding = useMemo(() => {
@@ -365,55 +389,50 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
       title={tooltip}
       {...passThroughProps}
     >
-      {!noHeader && (
-        <header
-          ref={topHeaderRef}
-          role="banner"
-          aria-roledescription="Object Page header"
-          style={scrollBarWidthPadding}
-          className={headerClasses.valueOf()}
-        >
-          <span className={classes.actions}>{headerActions}</span>
-          <header className={classes.titleBar}>
-            {(!showTitleInHeaderContent || internalHeaderOpen === false || headerContentHeight === 0) && (
-              <FlexBox alignItems={FlexBoxAlignItems.Center}>
-                {image && (!internalHeaderOpen || headerContentHeight === 0) && (
-                  <div className={classes.avatar}>
-                    <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
-                  </div>
-                )}
-                <span className={classes.container}>
-                  <FlexBox direction={FlexBoxDirection.Column}>
-                    {renderBreadcrumbs && renderBreadcrumbs()}
-                    <FlexBox>
-                      <h1 className={classes.title}>{title}</h1>
-                      <span className={classes.subTitle}>{subTitle}</span>
-                      <div className={classes.keyInfos}>{renderKeyInfos && renderKeyInfos()}</div>
-                    </FlexBox>
+      <header
+        ref={topHeaderRef}
+        role="banner"
+        aria-roledescription="Object Page header"
+        style={scrollBarWidthPadding}
+        className={classes.header}
+      >
+        <span className={classes.actions}>{headerActions}</span>
+        <header className={classes.titleBar}>
+          {(!showTitleInHeaderContent || headerContentHeight === 0) && (
+            <FlexBox alignItems={FlexBoxAlignItems.Center}>
+              {image && headerContentHeight === 0 && (
+                <div className={classes.avatar}>
+                  <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
+                </div>
+              )}
+              <span className={classes.container}>
+                <FlexBox direction={FlexBoxDirection.Column}>
+                  {renderBreadcrumbs && renderBreadcrumbs()}
+                  <FlexBox>
+                    <h1 className={classes.title}>{title}</h1>
+                    <span className={classes.subTitle}>{subTitle}</span>
+                    <div className={classes.keyInfos}>{renderKeyInfos && renderKeyInfos()}</div>
                   </FlexBox>
-                </span>
-              </FlexBox>
-            )}
-          </header>
+                </FlexBox>
+              </span>
+            </FlexBox>
+          )}
         </header>
-      )}
-      {!noHeader && (
-        <ObjectPageHeader
-          image={image}
-          classes={classes}
-          imageShapeCircle={imageShapeCircle}
-          showTitleInHeaderContent={showTitleInHeaderContent}
-          renderHeaderContentProp={renderHeaderContent}
-          renderBreadcrumbs={renderBreadcrumbs}
-          renderKeyInfos={renderKeyInfos}
-          title={title}
-          subTitle={subTitle}
-          headerPinned={headerPinned}
-          topHeaderHeight={topHeaderHeight}
-          headerOpen={internalHeaderOpen}
-          ref={headerContentRef}
-        />
-      )}
+      </header>
+      <ObjectPageHeader
+        image={image}
+        classes={classes}
+        imageShapeCircle={imageShapeCircle}
+        showTitleInHeaderContent={showTitleInHeaderContent}
+        renderHeaderContentProp={renderHeaderContent}
+        renderBreadcrumbs={renderBreadcrumbs}
+        renderKeyInfos={renderKeyInfos}
+        title={title}
+        subTitle={subTitle}
+        headerPinned={headerPinned}
+        topHeaderHeight={topHeaderHeight}
+        ref={headerContentRef}
+      />
       <ObjectPageAnchorBar
         sections={children}
         selectedSectionId={internalSelectedSectionId}
@@ -427,6 +446,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         style={{ top: noHeader ? 0 : headerPinned ? topHeaderHeight + headerContentHeight : topHeaderHeight }}
         onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
         ref={anchorBarRef}
+        className={classes.anchorBar}
       />
       {mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : children}
     </div>

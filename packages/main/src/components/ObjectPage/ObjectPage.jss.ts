@@ -32,14 +32,18 @@ const styles = {
       display: 'none'
     }
   },
-  anchorBar: {
-    paddingLeft: '2rem',
-    backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}, inset 0 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`,
-    display: 'flex',
-    height: '2.75rem',
-    minHeight: '2.75rem',
-    position: 'relative'
+  noHeader: {
+    '& $header': {
+      display: 'none'
+    },
+    '& $contentHeader': {
+      display: 'none'
+    }
+  },
+  headerCollapsed: {
+    '& $contentHeader': {
+      display: 'none'
+    }
   },
   // header
   header: {
@@ -51,7 +55,15 @@ const styles = {
   },
   contentHeader: {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    position: 'relative'
+    position: 'sticky',
+    paddingBottom: '0.25rem',
+    maxHeight: '500px',
+    overflow: 'hidden',
+    paddingLeft: '2rem'
+  },
+  anchorBar: {
+    position: 'sticky',
+    zIndex: 2
   },
   titleBar: {
     padding: '0.5rem 2rem',
@@ -99,15 +111,8 @@ const styles = {
       padding: 0
     }
   },
-  headerContent: {
-    paddingBottom: '0.25rem',
-    maxHeight: '500px',
-    overflow: 'hidden',
-    paddingLeft: '2rem',
-    position: 'relative'
-  },
   titleInHeaderContent: {
-    '& $headerContent': {
+    '& contentHeader': {
       paddingTop: 0,
       '& > *': {
         display: 'flex',
@@ -120,17 +125,6 @@ const styles = {
     },
     '& $actions': {
       // paddingTop: 0
-    }
-  },
-  alwaysVisibleHeader: {
-    '& $headerContent': {
-      paddingLeft: 0
-    },
-    '& $contentHeader': {
-      marginTop: '0.5rem'
-    },
-    '& $titleBar': {
-      paddingBottom: 0
     }
   },
   headerCustomContent: {

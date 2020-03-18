@@ -15,7 +15,6 @@ interface Props {
   title: string;
   subTitle: string;
   headerPinned: boolean;
-  headerOpen: boolean;
   topHeaderHeight: number;
 }
 
@@ -31,15 +30,16 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
     subTitle,
     renderKeyInfos,
     headerPinned,
-    topHeaderHeight,
-    headerOpen
+    topHeaderHeight
   } = props;
 
-  let avatar = null;
+  const avatar = useMemo(() => {
+    if (!image) {
+      return null;
+    }
 
-  if (image) {
     if (typeof image === 'string') {
-      avatar = (
+      return (
         <span
           className={classes.headerImage}
           style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
@@ -48,37 +48,29 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
         </span>
       );
     } else {
-      avatar = React.cloneElement(image, {
+      return React.cloneElement(image, {
         size: AvatarSize.L,
         className: image.props?.className ? `${classes.headerImage} ${image.props?.className}` : classes.headerImage
       } as unknown);
     }
-  }
+  }, [image, classes.headerImage, classes.image, imageShapeCircle]);
 
   const headerStyles = useMemo<CSSProperties>(() => {
-    if (headerOpen === false) {
-      return {
-        height: 0,
-        overflow: 'hidden'
-      };
-    }
-
     if (headerPinned) {
       return {
-        position: 'sticky',
         top: `${topHeaderHeight}px`,
         zIndex: 1
       };
     }
 
     return null;
-  }, [headerPinned, topHeaderHeight, headerOpen]);
+  }, [headerPinned, topHeaderHeight]);
 
   let renderedHeaderContent = (
-    <div className={classes.headerContent}>
+    <>
       {avatar}
       {renderHeaderContentProp && <span className={classes.headerCustomContent}>{renderHeaderContentProp()}</span>}
-    </div>
+    </>
   );
 
   if (showTitleInHeaderContent) {
@@ -92,7 +84,7 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
       firstElement = headerContents;
     }
     renderedHeaderContent = (
-      <div className={classes.headerContent}>
+      <>
         <FlexBox>
           {avatar}
           <FlexBox direction={FlexBoxDirection.Column}>
@@ -114,7 +106,7 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
             </FlexBox>
           </FlexBox>
         </FlexBox>
-      </div>
+      </>
     );
   }
 

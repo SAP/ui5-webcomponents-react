@@ -5,7 +5,6 @@ import '@ui5/webcomponents-icons/dist/icons/slim-arrow-up';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { List } from '@ui5/webcomponents-react/lib/List';
-import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
@@ -33,10 +32,6 @@ addCustomCSS(
 );
 
 const anchorBarStyles = {
-  anchorBar: {
-    position: 'sticky',
-    zIndex: 2
-  },
   anchorBarActionButton: {
     position: 'absolute',
     '--_ui5_button_compact_height': '1.375rem',
@@ -72,6 +67,7 @@ interface Props {
   setHeaderPinned: (payload: any) => void;
   style?: CSSProperties;
   onToggleHeaderContentVisibility: (e: any) => void;
+  className: string;
 }
 
 const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
@@ -86,7 +82,8 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
     headerPinned,
     setHeaderPinned,
     headerContentHeight,
-    style
+    style,
+    className
   } = props;
 
   const classes = useStyles();
@@ -139,7 +136,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
   );
 
   return (
-    <section className={classes.anchorBar} role="navigation" style={style} ref={ref}>
+    <section className={className} role="navigation" style={style} ref={ref}>
       <TabContainer collapsed fixed onItemSelect={onTabItemSelect} showOverflow>
         {safeGetChildrenArray(sections).map((section, index) => {
           return (
