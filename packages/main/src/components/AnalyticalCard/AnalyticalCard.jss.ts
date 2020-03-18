@@ -4,7 +4,7 @@ import * as spacing from '@ui5/webcomponents-react-base/lib/spacing';
 const styles = {
   card: {
     backgroundColor: ThemingParameters.sapTile_Background,
-    border: `0.625rem solid ${ThemingParameters.sapTile_BorderColor}`,
+    border: `0.0625rem solid ${ThemingParameters.sapTile_BorderColor}`,
     boxShadow: ThemingParameters.sapContent_Shadow0,
     borderRadius: ThemingParameters.sapElement_BorderCornerRadius,
     textAlign: 'start',
