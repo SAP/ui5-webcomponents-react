@@ -1,3 +1,4 @@
+import { spacing } from '@ui5/webcomponents-react-base';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
@@ -8,10 +9,11 @@ const styles = {
     color: ThemingParameters.sapTextColor
   },
   cardHeader: {
-    paddingTop: '1rem',
-    paddingBottom: '1rem',
+    ...spacing.sapUiContentPadding,
     outlineOffset: '-0.125rem',
-    borderBottom: `0.0625rem solid ${ThemingParameters.sapTile_BorderColor}`,
+    boxShadow: ThemingParameters.sapContent_HeaderShadow,
+    //TODO use @sapUiTileSeparatorColor when available
+    borderBottom: `0.0625rem solid ${ThemingParameters.sapToolbar_SeparatorColor}`,
     backgroundColor: ThemingParameters.sapTile_Background,
     fontFamily: ThemingParameters.sapFontHeaderFamily,
     '&:hover': {
