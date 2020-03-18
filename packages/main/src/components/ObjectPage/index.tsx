@@ -107,7 +107,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const hideHeaderButtonPressed = useRef(false);
   const [scrollbarWidth, setScrollbarWidth] = useState(SCROLL_BAR_WIDTH);
   const isMounted = useRef(false);
-  const selectedSectionIsFirstChild = firstSectionId === internalSelectedSectionId;
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight } = useObserveHeights(
@@ -118,11 +117,27 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     { noHeader }
   );
 
-  console.log(headerContentHeight);
-
   // *****
   // SECTION SELECTION
   // ****
+
+  const scrollToSection = useCallback(
+    (sectionId) => {
+      if (firstSectionId === sectionId) {
+        objectPageRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const childOffset = objectPageRef.current.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
+          .offsetTop;
+        objectPageRef.current.scrollTo({
+          top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
+          behavior: 'smooth'
+        });
+      }
+      isProgrammaticallyScrolled.current = false;
+    },
+    [firstSectionId, objectPageRef, topHeaderHeight, anchorBarHeight, headerPinned, headerContentHeight]
+  );
+
   // change selected section when prop is changed (external change)
   useEffect(() => {
     isProgrammaticallyScrolled.current = true;
@@ -133,10 +148,16 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const handleOnSectionSelected = useCallback(
     (e) => {
       isProgrammaticallyScrolled.current = true;
-      setInternalSelectedSectionId(e.getParameter('props')?.id);
+      const newSelectionSection = e.getParameter('props')?.id;
+      setInternalSelectedSectionId((oldSelectedSection) => {
+        if (oldSelectedSection === newSelectionSection) {
+          scrollToSection(newSelectionSection);
+        }
+        return newSelectionSection;
+      });
       fireOnSelectedChangedEvent(e);
     },
-    [onSelectedSectionChanged, setInternalSelectedSectionId, isProgrammaticallyScrolled]
+    [onSelectedSectionChanged, setInternalSelectedSectionId, isProgrammaticallyScrolled, scrollToSection]
   );
 
   // do internal scrolling
@@ -144,30 +165,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     if (!isMounted.current) return;
 
     if (mode === ObjectPageMode.Default && isProgrammaticallyScrolled.current === true) {
-      if (selectedSectionIsFirstChild) {
-        objectPageRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        const childOffset = objectPageRef.current.querySelector<HTMLElement>(
-          `#ObjectPageSection-${internalSelectedSectionId}`
-        ).offsetTop;
-        objectPageRef.current.scrollTo({
-          top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
-          behavior: 'smooth'
-        });
-      }
-      isProgrammaticallyScrolled.current = false;
+      scrollToSection(internalSelectedSectionId);
     }
-  }, [
-    internalSelectedSectionId,
-    isMounted,
-    selectedSectionIsFirstChild,
-    isProgrammaticallyScrolled,
-    objectPageRef,
-    topHeaderHeight,
-    anchorBarHeight,
-    headerPinned,
-    headerContentHeight
-  ]);
+  }, [internalSelectedSectionId, isMounted, mode, isProgrammaticallyScrolled, scrollToSection]);
 
   // Scrolling for Sub Section Selection
   useEffect(() => {
