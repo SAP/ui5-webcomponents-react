@@ -2,6 +2,7 @@
 
 exports[`ObjectPageSection ObjectPage w/ lowercase title 1`] = `
 <section
+  data-component-name="ObjectPageSection"
   id="ObjectPageSection-1"
   role="region"
 >
@@ -29,6 +30,7 @@ exports[`ObjectPageSection ObjectPage w/ lowercase title 1`] = `
 
 exports[`ObjectPageSection Renders with children 1`] = `
 <section
+  data-component-name="ObjectPageSection"
   id="ObjectPageSection-1"
   role="region"
 >
