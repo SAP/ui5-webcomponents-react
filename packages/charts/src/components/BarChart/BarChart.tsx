@@ -48,7 +48,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       xAxisVisible: true,
       xAxisUnit: '',
       yAxisUnit: '',
-      gridStroke: ThemingParameters.sapList_TableFooterBorder,
+      gridStroke: ThemingParameters.sapList_BorderColor,
       gridHorizontal: true,
       gridVertical: false,
       legendPosition: 'bottom',

@@ -46,10 +46,10 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     chartConfig = {
       yAxisVisible: false,
       xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_TableFooterBorder,
+      gridStroke: ThemingParameters.sapList_BorderColor,
       gridHorizontal: true,
       gridVertical: false,
-      yAxisColor: ThemingParameters.sapNeutralBorderColor,
+      yAxisColor: ThemingParameters.sapList_BorderColor,
       legendPosition: 'bottom',
       strokeWidth: 1,
       zoomingTool: false,
