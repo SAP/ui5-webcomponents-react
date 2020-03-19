@@ -55,9 +55,6 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
   }, [headerContentRef.current, setHeaderContentHeight]);
 
   const anchorBarHeight = anchorBarRef.current?.offsetHeight ?? 33;
-
-  // const totalHeaderHeight =
-  //   (noHeader ? 0 : topHeaderHeight + (internalHeaderOpen ? headerContentHeight : 0)) + anchorBarHeight;
   const totalHeaderHeight = (noHeader ? 0 : topHeaderHeight + headerContentHeight) + anchorBarHeight;
 
   return { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight };
