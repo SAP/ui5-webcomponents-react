@@ -1,6 +1,6 @@
 import { IScroller } from '@ui5/webcomponents-react-base/interfaces/IScroller';
 import React, { forwardRef, RefObject, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
-
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ScrollContentProvider } from './ScrollContextProvider';
 import { scrollTo } from './ScrollHelper';
 
@@ -10,23 +10,17 @@ export interface Props {
   forceSelection?: boolean;
 }
 
+deprecationNotice(
+  'Scroller',
+  "'@ui5/webcomponents-react-base/lib/Scroller' is deprecated and will be removed in the next major release."
+);
+
 export const Scroller = forwardRef((props: Props, ref: RefObject<IScroller>) => {
   const { children, scrollContainer, forceSelection = true } = props;
 
   const [selectedElementId, setSelectedElementId] = useState(null);
 
   const elements = useRef([]);
-
-  useEffect(() => {
-    if (scrollContainer.current) {
-      scrollContainer.current.addEventListener('scroll', scroll);
-    }
-    return () => {
-      if (scrollContainer.current) {
-        scrollContainer.current.removeEventListener('scroll', scroll);
-      }
-    };
-  }, [scrollContainer]);
 
   const unregisterElement = useCallback(
     (id) => {
