@@ -5,76 +5,66 @@ const styles = {
     width: '100%',
     height: '100%',
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    isolation: 'isolate',
     whiteSpace: 'normal',
     fontFamily: ThemingParameters.sapFontFamily,
-    backgroundColor: ThemingParameters.sapBackgroundColor
-  },
-  contentContainer: {
+    backgroundColor: ThemingParameters.sapBackgroundColor,
     overflowX: 'hidden',
     overflowY: 'auto',
-    position: 'relative',
-    flexGrow: 1
-  },
-  outerContentContainer: {
-    width: '100%',
-    height: '100%',
-    overflow: 'hidden'
-  },
-  contentScrollContainer: {
-    position: 'relative'
-  },
-  anchorBar: {
-    paddingLeft: '2rem',
-    backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}, inset 0 0.0625rem ${ThemingParameters.sapObjectHeader_BorderColor}`,
-    display: 'flex',
-    height: '2.75rem',
-    minHeight: '2.75rem',
-    position: 'relative'
-  },
-  sectionsContainer: {
-    '&:before': {
-      display: 'table',
-      content: '""'
+    '&::-webkit-scrollbar': {
+      backgroundColor: ThemingParameters.sapScrollBar_TrackColor,
+      width: ThemingParameters.sapScrollBar_Dimension
     },
-    '& :first-child > div[role="heading"]': {
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: ThemingParameters.sapScrollBar_BorderColor,
+      '&:hover': {
+        backgroundColor: ThemingParameters.sapScrollBar_Hover_FaceColor
+      }
+    },
+    '&::-webkit-scrollbar-corner': {
+      backgroundColor: ThemingParameters.sapScrollBar_TrackColor
+    },
+    '& section[id="ObjectPageSection-1"] > div[role="heading"]': {
       display: 'none'
-    },
-    position: 'relative',
-    height: '100%',
-    // overflowX: 'hidden',
-    // overflowY: 'auto',
-    overflow: 'hidden',
-    backgroundColor: ThemingParameters.sapBackgroundColor,
-    '&:after': {
-      clear: 'both',
-      display: 'table',
-      content: '""'
     }
   },
-  fillerDiv: {
-    backgroundColor: ThemingParameters.sapBackgroundColor
+  iconTabBarMode: {
+    '& section[data-component-name="ObjectPageSection"] > div[role="heading"]': {
+      display: 'none'
+    }
+  },
+  noHeader: {
+    '& $header': {
+      display: 'none'
+    },
+    '& $contentHeader': {
+      display: 'none'
+    }
+  },
+  headerCollapsed: {
+    '& $contentHeader': {
+      display: 'none'
+    }
   },
   // header
   header: {
     flexShrink: 0,
-    position: 'relative',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    '&$stickied': {
-      '& $image': {
-        opacity: '1',
-        height: '3rem',
-        width: '3rem',
-        margin: '0.25rem 1rem 0.25rem 0'
-      }
-    }
+    position: 'sticky',
+    top: 0,
+    zIndex: 2
   },
   contentHeader: {
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
-    position: 'relative'
+    position: 'sticky',
+    paddingBottom: '0.25rem',
+    maxHeight: '500px',
+    overflow: 'hidden',
+    paddingLeft: '2rem'
+  },
+  anchorBar: {
+    position: 'sticky',
+    zIndex: 2,
+    '--_ui5_tc_header_box_shadow': 'inset 0px -1px 0 0px rgba(0,0,0,0.15)'
   },
   titleBar: {
     padding: '0.5rem 2rem',
@@ -122,18 +112,8 @@ const styles = {
       padding: 0
     }
   },
-  stickied: {},
-  headerContent: {
-    //paddingTop: '1.5rem',
-    paddingBottom: '0.25rem',
-    transition: 'max-height 0.5s',
-    maxHeight: '500px',
-    overflow: 'hidden',
-    paddingLeft: '2rem',
-    position: 'relative'
-  },
   titleInHeaderContent: {
-    '& $headerContent': {
+    '& contentHeader': {
       paddingTop: 0,
       '& > *': {
         display: 'flex',
@@ -146,17 +126,6 @@ const styles = {
     },
     '& $actions': {
       // paddingTop: 0
-    }
-  },
-  alwaysVisibleHeader: {
-    '& $headerContent': {
-      paddingLeft: 0
-    },
-    '& $contentHeader': {
-      marginTop: '0.5rem'
-    },
-    '& $titleBar': {
-      paddingBottom: 0
     }
   },
   headerCustomContent: {
@@ -196,13 +165,6 @@ const styles = {
   },
   avatar: {
     marginRight: '1rem'
-  },
-  toggleHeaderButton: {
-    position: 'absolute',
-    '--_ui5_button_compact_height': '1.25rem',
-    '--_ui5_button_base_height': '1.25rem',
-    top: `-0.625rem`,
-    left: 'calc(50% - 1rem)'
   }
 };
 
