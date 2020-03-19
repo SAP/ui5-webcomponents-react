@@ -215,7 +215,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       },
       ...reactTableOptions
     },
-    useRowSelectionColumn,
     useAbsoluteLayout,
     useFilters,
     useGroupBy,
@@ -232,6 +231,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useColumnsDependencies,
     useTableCellStyling,
     useToggleRowExpand,
+    useRowSelectionColumn,
     ...tableHooks
   );
 
