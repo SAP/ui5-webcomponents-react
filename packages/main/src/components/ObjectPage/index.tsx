@@ -128,11 +128,13 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         objectPageRef.current.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         const childOffset = objectPageRef.current.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
-          .offsetTop;
-        objectPageRef.current.scrollTo({
-          top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
-          behavior: 'smooth'
-        });
+          ?.offsetTop;
+        if (!isNaN(childOffset)) {
+          objectPageRef.current.scrollTo({
+            top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
+            behavior: 'smooth'
+          });
+        }
       }
       isProgrammaticallyScrolled.current = false;
     },
@@ -175,11 +177,14 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     if (selectedSubSectionId && isProgrammaticallyScrolled.current === true) {
       const childOffset = objectPageRef.current.querySelector<HTMLElement>(
         `div[id="ObjectPageSubSection-${selectedSubSectionId}"]`
-      ).offsetTop;
-      objectPageRef.current.scrollTo({
-        top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
-        behavior: 'smooth'
-      });
+      )?.offsetTop;
+      if (!isNaN(childOffset)) {
+        objectPageRef.current.scrollTo({
+          top: childOffset - topHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0) + 45,
+          behavior: 'smooth'
+        });
+      }
+
       isProgrammaticallyScrolled.current = false;
     }
   }, [
@@ -199,6 +204,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   useEffect(() => {
     if (props.selectedSubSectionId) {
+      isProgrammaticallyScrolled.current = true;
       setSelectedSubSectionId(props.selectedSubSectionId);
       if (mode === ObjectPageMode.IconTabBar) {
         let sectionId;
@@ -223,7 +229,14 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         }
       }
     }
-  }, [props.selectedSubSectionId, setInternalSelectedSectionId, setSelectedSubSectionId, children, mode]);
+  }, [
+    props.selectedSubSectionId,
+    setInternalSelectedSectionId,
+    setSelectedSubSectionId,
+    children,
+    mode,
+    isProgrammaticallyScrolled
+  ]);
 
   useEffect(() => {
     const fillerDivObserver = new ResizeObserver(() => {
