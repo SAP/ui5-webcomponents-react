@@ -75,13 +75,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     [onDataPointClick]
   );
 
-  const PieDataLabel = usePieDataLabel(
-    chartConfig.dataLabel,
-    dataLabelCustomElement,
-    dataLabelFormatter,
-    chartConfig.stacked,
-    true
-  );
+  const PieDataLabel = usePieDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter);
 
   return (
     <ChartContainer

@@ -19,7 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useXAxisLabel } from '../../hooks/useLabelElements';
+import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
 
 type ColumnChartProps = RechartBaseProps;
 
@@ -48,10 +48,10 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       xAxisVisible: true,
       xAxisUnit: '',
       yAxisUnit: '',
-      gridStroke: ThemingParameters.sapList_TableFooterBorder,
+      gridStroke: ThemingParameters.sapList_BorderColor,
       gridHorizontal: true,
       gridVertical: false,
-      yAxisColor: ThemingParameters.sapNeutralBorderColor,
+      yAxisColor: ThemingParameters.sapList_BorderColor,
       legendPosition: 'bottom',
       barSize: 15,
       barGap: 3,
@@ -118,7 +118,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     false
   );
 
-  const XAxisLabel = useXAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
   return (
     <ChartContainer
