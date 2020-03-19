@@ -203,9 +203,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const classes = useStyles();
 
   useEffect(() => {
+    setSelectedSubSectionId(props.selectedSubSectionId);
     if (props.selectedSubSectionId) {
       isProgrammaticallyScrolled.current = true;
-      setSelectedSubSectionId(props.selectedSubSectionId);
       if (mode === ObjectPageMode.IconTabBar) {
         let sectionId;
         safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children).forEach((section) => {
