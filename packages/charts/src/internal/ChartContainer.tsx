@@ -44,7 +44,7 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
 
   return (
     <div ref={ref} style={internalStyles} className={className} title={tooltip} slot={slot}>
-      {dataset ? (
+      {dataset?.length !== 0 ? (
         <>
           {loading && dataset.length > 0 && <Loader style={{ marginBottom: '1vh' }} />}
           {dataset.length > 0 && <ResponsiveContainer>{children}</ResponsiveContainer>}
