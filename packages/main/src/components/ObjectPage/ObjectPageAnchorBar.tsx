@@ -2,6 +2,7 @@ import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
 import '@ui5/webcomponents-icons/dist/icons/pushpin-off';
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-up';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { List } from '@ui5/webcomponents-react/lib/List';
@@ -49,10 +50,10 @@ const anchorBarStyles = {
     },
     '&:before': {
       right: '100%',
-      backgroundImage: 'linear-gradient(to left, #0854a0, rgba(8,84,160,0))'
+      backgroundImage: `linear-gradient(to left, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
     },
     '&:after': {
-      backgroundImage: 'linear-gradient(to right, #0854a0, rgba(8,84,160,0))',
+      backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`,
       left: '100%'
     }
   },

@@ -121,6 +121,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const scrollToSection = useCallback(
     (sectionId) => {
+      if (!sectionId) {
+        return;
+      }
       if (firstSectionId === sectionId) {
         objectPageRef.current.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
