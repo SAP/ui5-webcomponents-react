@@ -11,17 +11,17 @@ const styles = {
     overflowX: 'hidden',
     overflowY: 'auto',
     '&::-webkit-scrollbar': {
-      backgroundColor: '#ffffff',
-      width: '12px'
+      backgroundColor: ThemingParameters.sapScrollBar_TrackColor,
+      width: ThemingParameters.sapScrollBar_Dimension
     },
     '&::-webkit-scrollbar-thumb': {
-      backgroundColor: '#949494',
+      backgroundColor: ThemingParameters.sapScrollBar_BorderColor,
       '&:hover': {
-        backgroundColor: '#8c8c8c'
+        backgroundColor: ThemingParameters.sapScrollBar_Hover_FaceColor
       }
     },
     '&::-webkit-scrollbar-corner': {
-      backgroundColor: '#ffffff'
+      backgroundColor: ThemingParameters.sapScrollBar_TrackColor
     },
     '& section[id="ObjectPageSection-1"] > div[role="heading"]': {
       display: 'none'
