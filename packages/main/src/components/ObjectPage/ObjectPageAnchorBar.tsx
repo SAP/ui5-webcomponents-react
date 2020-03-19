@@ -7,10 +7,10 @@ import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
-import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
-import React, { CSSProperties, FC, forwardRef, ReactElement, RefObject, useCallback, useState, useRef } from 'react';
-import { createUseStyles } from 'react-jss';
 import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
+import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
+import React, { CSSProperties, forwardRef, ReactElement, RefObject, useCallback, useRef, useState } from 'react';
+import { createUseStyles } from 'react-jss';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { StandardListItem } from '../../webComponents/StandardListItem';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
@@ -39,13 +39,31 @@ const anchorBarStyles = {
     '--_ui5_button_base_min_compact_width': '1.375rem',
     top: `-0.6875rem`,
     marginLeft: `-0.6875rem`,
-    left: '50%'
+    left: '50%',
+    '&:before, &:after': {
+      content: '""',
+      position: 'absolute',
+      width: '4rem',
+      top: '50%',
+      height: '0.0625rem'
+    },
+    '&:before': {
+      right: '100%',
+      backgroundImage: 'linear-gradient(to left, #0854a0, rgba(8,84,160,0))'
+    },
+    '&:after': {
+      backgroundImage: 'linear-gradient(to right, #0854a0, rgba(8,84,160,0))',
+      left: '100%'
+    }
   },
   anchorBarActionButtonExpandable: {},
   anchorBarActionButtonPinnable: {},
   anchorBarActionPinnableAndExandable: {
     '&$anchorBarActionButtonPinnable': {
-      marginLeft: '0.25rem'
+      marginLeft: '0.25rem',
+      '&:before': {
+        backgroundImage: 'none'
+      }
     },
     '&$anchorBarActionButtonExpandable': {
       marginLeft: '-1.75rem'

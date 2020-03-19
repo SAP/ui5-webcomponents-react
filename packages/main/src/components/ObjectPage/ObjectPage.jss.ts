@@ -63,7 +63,8 @@ const styles = {
   },
   anchorBar: {
     position: 'sticky',
-    zIndex: 2
+    zIndex: 2,
+    '--_ui5_tc_header_box_shadow': 'inset 0px -1px 0 0px rgba(0,0,0,0.15)'
   },
   titleBar: {
     padding: '0.5rem 2rem',
