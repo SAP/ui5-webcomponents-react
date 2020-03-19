@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.8.6",
+  "version": "0.9.0-rc.0",
   "description": "Base for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -16,7 +16,8 @@
     "**/modernizr.js",
     "core-js/**/*",
     "./src/polyfill/*.ts",
-    "./polyfill/*.js"
+    "./polyfill/*.js",
+    "intersection-observer"
   ],
   "scripts": {
     "clean": "rimraf cjs Device hooks lib polyfill styling types utils index.esm.js index.d.ts",
@@ -26,7 +27,9 @@
   },
   "dependencies": {
     "core-js": "3.6.4",
-    "resize-observer-polyfill": "^1.5.1"
+    "intersection-observer": "^0.7.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "peerDependencies": {
     "react": "^16.8.0",

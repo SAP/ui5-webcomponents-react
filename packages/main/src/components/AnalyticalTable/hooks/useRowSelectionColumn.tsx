@@ -61,6 +61,9 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         // to the render a checkbox
         // eslint-disable-next-line react/prop-types,react/display-name
         Cell: ({ row }) => {
+          if (row.isGrouped && selectionMode === TableSelectionMode.SINGLE_SELECT) {
+            return null;
+          }
           if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
             // eslint-disable-next-line react/prop-types
             return <div style={divStyle} onClick={row.toggleRowSelected} />;
@@ -71,6 +74,24 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
       },
       ...columns
     ];
+  });
+
+  hooks.visibleColumnsDeps.push((deps, { instance }) => [
+    ...deps,
+    instance.webComponentsReactProperties.noSelectionColumn,
+    instance.webComponentsReactProperties.selectionMode
+  ]);
+
+  hooks.visibleColumns.push((columns, { instance: { webComponentsReactProperties } }) => {
+    if (
+      webComponentsReactProperties.noSelectionColumn ||
+      webComponentsReactProperties.selectionMode === TableSelectionMode.NONE
+    ) {
+      return columns;
+    }
+
+    const selectionColumn = columns.find(({ id }) => id === '__ui5wcr__internal_selection_column');
+    return [selectionColumn, ...columns.filter(({ id }) => id !== '__ui5wcr__internal_selection_column')];
   });
 };
 useRowSelectionColumn.pluginName = 'useRowSelectionColumn';

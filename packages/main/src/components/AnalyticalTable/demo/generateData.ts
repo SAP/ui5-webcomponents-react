@@ -52,8 +52,6 @@ const makeTreeEntry = (...lens) => {
   return makeDataLevel();
 };
 
-
-
 const makeEntry = () => ({
   name: getRandomName(),
   longColumn: 'Really really long column content... don´t crop please',

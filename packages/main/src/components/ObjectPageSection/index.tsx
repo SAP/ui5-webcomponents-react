@@ -52,6 +52,7 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
         title={tooltip}
         {...passThroughProps}
         id={htmlId}
+        data-component-name="ObjectPageSection"
       >
         <div role="heading" className={classes.header}>
           <div className={titleClasses.valueOf()}>{title}</div>

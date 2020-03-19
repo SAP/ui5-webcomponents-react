@@ -69,6 +69,7 @@ const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
         title={tooltip}
         {...passThroughProps}
         id={htmlId}
+        data-component-name="ObjectPageSubSection"
       >
         <div className={classes.objectPageSubSectionHeaderTitle}>{title}</div>
         <div className={classes.subSectionContent}>{children}</div>

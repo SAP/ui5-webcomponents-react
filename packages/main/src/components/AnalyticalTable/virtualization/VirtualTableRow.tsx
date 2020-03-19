@@ -25,7 +25,7 @@ export const VirtualTableRow = (props) => {
           contentToRender = 'Expandable';
         } else if (cell.isGrouped) {
           contentToRender = 'Grouped';
-        } else if (row.isGrouped) {
+        } else if (cell.isAggregated) {
           contentToRender = 'Aggregated';
         } else if (cell.isPlaceholder || cell.column.isGrouped) {
           contentToRender = 'RepeatedValue';
