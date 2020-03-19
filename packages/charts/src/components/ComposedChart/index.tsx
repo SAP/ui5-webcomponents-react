@@ -19,7 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useXAxisLabel } from '../../hooks/useLabelElements';
+import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
 
 enum ChartTypes {
   line = Line,
@@ -87,11 +87,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       yAxisUnit: '',
       yAxisVisible: false,
       xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_TableFooterBorder,
+      gridStroke: ThemingParameters.sapList_BorderColor,
       gridHorizontal: true,
       gridVertical: false,
       yAxisId: '',
-      yAxisColor: ThemingParameters.sapNeutralBorderColor,
+      yAxisColor: ThemingParameters.sapList_BorderColor,
       legendPosition: 'bottom',
       zoomingTool: false,
       dataLabel: false,
@@ -168,7 +168,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     defaults.stackId
   );
 
-  const XAxisLabel = useXAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
   return (
     <ChartContainer

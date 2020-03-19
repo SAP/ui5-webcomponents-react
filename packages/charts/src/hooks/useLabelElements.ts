@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { JSXElementConstructor, useCallback, useMemo } from 'react';
 import { DataLabel } from '../internal/CustomElements';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { renderAxisTicks } from '../util/Utils';
@@ -20,12 +20,12 @@ export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelForm
   useMemo(() => {
     return dataLabel
       ? dataLabelCustomElement
-        ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
-        : (props) => dataLabelFormatter(props.value)
+        ? (props): SVGGElement => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+        : (props): number | string => dataLabelFormatter(props.value)
       : false;
   }, [dataLabelFormatter, dataLabelCustomElement, dataLabel]);
 
-export const useXAxisLabel = (xAxisFormatter, xAxisUnit) => {
+export const useAxisLabel = (xAxisFormatter, xAxisUnit) => {
   return useCallback(
     (labelProps) => {
       return renderAxisTicks(labelProps, xAxisFormatter, xAxisUnit);
