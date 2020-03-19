@@ -13,6 +13,9 @@ import 'highlight.js/styles/solarized-dark.css';
 import qs from 'qs';
 import React, { useEffect } from 'react';
 import 'react-app-polyfill/ie11';
+import '@ui5/webcomponents/dist/json-imports/Themes';
+import '@ui5/webcomponents-fiori/dist/json-imports/Themes';
+import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 
 addParameters({
   options: {
@@ -27,7 +30,7 @@ addParameters({
 
 addDecorator(withKnobs);
 
-const ThemeContainer = ({ contentDensity, children, setQueryParam }) => {
+const ThemeContainer = ({ theme, contentDensity, children, setQueryParam }) => {
   useEffect(() => {
     if (contentDensity === ContentDensity.Compact) {
       document.body.classList.add('ui5-content-density-compact');
@@ -35,6 +38,10 @@ const ThemeContainer = ({ contentDensity, children, setQueryParam }) => {
       document.body.classList.remove('ui5-content-density-compact');
     }
   }, [contentDensity, setQueryParam]);
+
+  useEffect(() => {
+    setTheme(theme);
+  }, [theme]);
 
   return children;
 };
@@ -64,7 +71,7 @@ const withQuery = makeDecorator({
 
     return (
       <ThemeContainer
-        theme={select('Theme', [Themes.sap_fiori_3], Themes.sap_fiori_3)}
+        theme={select('Theme', [Themes.sap_fiori_3, Themes.sap_fiori_3_dark], Themes.sap_fiori_3)}
         contentDensity={select('ContentDensity', ContentDensity, contentDensity)}
         setQueryParam={setQueryParam}
       >
