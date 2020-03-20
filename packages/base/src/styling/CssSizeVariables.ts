@@ -57,6 +57,11 @@ export const cssVariablesStyles = `
   --sapContent_Shadow2:var(--sapUiShadowLevel2);
   --sapContent_Shadow3:var(--sapUiShadowLevel3);
   --sapElement_BorderCornerRadius:0.25rem;
+  --sapLink_Visited_Color:var(--sapUiLinkVisited);
+  --sapLink_Hover_Color:var(--sapUiLinkHover);
+  --sapLink_InvertedColor:var(--sapUiLinkInverted);
+  --sapLink_Active_Color:var(--sapUiLinkActive);
+
 }
 
 [data-ui5-compact-size],
