@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-const PROP_WHITELIST = /^(aria-|data-|id$)/;
+const PROP_WHITELIST = /^(aria-|data-|id$|on[A-Z])/;
 
 export const usePassThroughHtmlProps = (props) => {
   const passThroughPropNames = Object.keys(props).filter((name) => PROP_WHITELIST.test(name));

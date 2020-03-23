@@ -244,10 +244,10 @@ const Notification: FC<NotificationProptypes> = forwardRef(
         <div
           style={notificationContainerStyles}
           className={`${classes.notificationContainer} ${className}`}
-          onClick={handleNotificationClick}
           title={tooltip}
           ref={ref}
           {...passThroughProps}
+          onClick={handleNotificationClick}
         >
           <div className={`${classes.priorityIndicator} ${indicatorClass}`} style={indicatorStyles} />
           <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>

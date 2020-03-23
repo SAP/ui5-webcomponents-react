@@ -128,11 +128,11 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     return (
       <div
         ref={ref}
-        onClick={onClick}
         className={headerClasses.valueOf()}
         title={tooltip}
         style={style}
         {...passThroughProps}
+        onClick={onClick}
       >
         <div className={classes.headerContent}>
           <div className={classes.headerTitles}>
