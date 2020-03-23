@@ -1,10 +1,10 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
 import React from 'react';
 
 describe('Dialog', () => {
   test('Basic Test (generated)', () => {
-    const wrapper = mountThemedComponent(<Dialog />);
+    const wrapper = mount(<Dialog />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

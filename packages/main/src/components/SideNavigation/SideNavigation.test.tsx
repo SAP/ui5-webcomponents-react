@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
 import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
@@ -6,7 +7,7 @@ import React from 'react';
 
 describe('SideNavigation', () => {
   test('Expanded', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <SideNavigation
         openState={SideNavigationOpenState.Expandend}
         selectedId={'sales-leads'}
@@ -30,7 +31,7 @@ describe('SideNavigation', () => {
   });
 
   test('Expanded without Icons', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <SideNavigation
         openState={SideNavigationOpenState.Expandend}
         selectedId={'sales-leads'}
@@ -55,7 +56,7 @@ describe('SideNavigation', () => {
   });
 
   test('Condensed', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <SideNavigation
         openState={SideNavigationOpenState.Condensed}
         selectedId={'sales-leads'}
@@ -78,7 +79,7 @@ describe('SideNavigation', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
   test('Collapsed', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <SideNavigation
         openState={SideNavigationOpenState.Collapsed}
         selectedId={'sales-leads'}

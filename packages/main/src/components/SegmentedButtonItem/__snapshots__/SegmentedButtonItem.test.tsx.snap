@@ -2,12 +2,12 @@
 
 exports[`SegmentedButtonItem Basic SegmentedButtonItem 1`] = `
 <li
-  class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem-"
+  class="SegmentedButtonItem-segmentedButtonItem-0 SegmentedButtonItem-focusableItem-0"
   data-has-own-width="false"
   id="1"
 >
   <div
-    class="SegmentedButtonItem--icon- SegmentedButtonItem--withText-"
+    class="SegmentedButtonItem-icon-0 SegmentedButtonItem-withText-0"
   >
     <ui5-icon
       name="add"
@@ -19,12 +19,12 @@ exports[`SegmentedButtonItem Basic SegmentedButtonItem 1`] = `
 
 exports[`SegmentedButtonItem SegmentedButtonItem Disabled 1`] = `
 <li
-  class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--iconOnly- SegmentedButtonItem--disabled-"
+  class="SegmentedButtonItem-segmentedButtonItem-0 SegmentedButtonItem-iconOnly-0 SegmentedButtonItem-disabled-0"
   data-has-own-width="false"
   id="1"
 >
   <div
-    class="SegmentedButtonItem--icon-"
+    class="SegmentedButtonItem-icon-0"
   >
     <ui5-icon
       name="add"
@@ -35,12 +35,12 @@ exports[`SegmentedButtonItem SegmentedButtonItem Disabled 1`] = `
 
 exports[`SegmentedButtonItem SegmentedButtonItem Icon Only 1`] = `
 <li
-  class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--iconOnly- SegmentedButtonItem--focusableItem-"
+  class="SegmentedButtonItem-segmentedButtonItem-0 SegmentedButtonItem-iconOnly-0 SegmentedButtonItem-focusableItem-0"
   data-has-own-width="false"
   id="1"
 >
   <div
-    class="SegmentedButtonItem--icon-"
+    class="SegmentedButtonItem-icon-0"
   >
     <ui5-icon
       name="add"
@@ -51,12 +51,12 @@ exports[`SegmentedButtonItem SegmentedButtonItem Icon Only 1`] = `
 
 exports[`SegmentedButtonItem SegmentedButtonItem onClick 1`] = `
 <li
-  class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--iconOnly- SegmentedButtonItem--focusableItem-"
+  class="SegmentedButtonItem-segmentedButtonItem-0 SegmentedButtonItem-iconOnly-0 SegmentedButtonItem-focusableItem-0"
   data-has-own-width="false"
   id="1"
 >
   <div
-    class="SegmentedButtonItem--icon-"
+    class="SegmentedButtonItem-icon-0"
   >
     <ui5-icon
       name="add"
@@ -67,12 +67,12 @@ exports[`SegmentedButtonItem SegmentedButtonItem onClick 1`] = `
 
 exports[`SegmentedButtonItem Selected SegmentedButtonItem 1`] = `
 <li
-  class="SegmentedButtonItem--segmentedButtonItem- SegmentedButtonItem--focusableItem- SegmentedButtonItem--selected-"
+  class="SegmentedButtonItem-segmentedButtonItem-0 SegmentedButtonItem-focusableItem-0 SegmentedButtonItem-selected-0"
   data-has-own-width="false"
   id="1"
 >
   <div
-    class="SegmentedButtonItem--icon- SegmentedButtonItem--withText-"
+    class="SegmentedButtonItem-icon-0 SegmentedButtonItem-withText-0"
   >
     <ui5-icon
       name="add"

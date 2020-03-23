@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
@@ -12,7 +13,7 @@ const testFactory = () => {
   Object.values(AvatarSize).forEach((size) => {
     Object.values(AvatarShape).forEach((shape) => {
       it(`Avatar - size: ${size} shape: ${shape}`, () => {
-        const wrapper = mountThemedComponent(<Avatar size={size} shape={shape} />);
+        const wrapper = mount(<Avatar size={size} shape={shape} />);
         expect(wrapper.render()).toMatchSnapshot();
       });
     });
@@ -23,12 +24,12 @@ describe('Avatar', () => {
   testFactory();
 
   test('with Initials', () => {
-    const wrapper = mountThemedComponent(<Avatar size={AvatarSize.XL} initials="JD" />);
+    const wrapper = mount(<Avatar size={AvatarSize.XL} initials="JD" />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Custom Size', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <Avatar size={AvatarSize.Custom} customDisplaySize="5rem" customFontSize="2rem" initials="JD" />
     );
     const el = wrapper.find(Avatar).getDOMNode() as HTMLElement;
@@ -40,43 +41,41 @@ describe('Avatar', () => {
   });
 
   test('Custom Size Defined but wrong size prop', () => {
-    const wrapper = mountThemedComponent(
-      <Avatar size={AvatarSize.XL} customDisplaySize="5rem" customFontSize="2rem" initials="JD" />
-    );
+    const wrapper = mount(<Avatar size={AvatarSize.XL} customDisplaySize="5rem" customFontSize="2rem" initials="JD" />);
     const el = wrapper.find(Avatar).getDOMNode() as HTMLElement;
     expect(el.style.fontSize).not.toEqual('2rem');
   });
 
   test('with Image', () => {
-    const wrapper = mountThemedComponent(<Avatar size={AvatarSize.XL} image={sampleAvatar} />);
+    const wrapper = mount(<Avatar size={AvatarSize.XL} image={sampleAvatar} />);
     const el = wrapper.find(Avatar).getDOMNode() as HTMLElement;
     expect(el.style.backgroundImage).toEqual(`url(${sampleAvatar})`);
   });
 
   test('with Click Handler', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(<Avatar size={AvatarSize.XL} initials="JD" onClick={callback} />);
+    const wrapper = mount(<Avatar size={AvatarSize.XL} initials="JD" onClick={callback} />);
     wrapper.find(Avatar).simulate('click');
     expect(callback.called).toBe(true);
   });
 
   test('do not crash onClick w/o handler (#272)', () => {
     expect(() => {
-      const wrapper = mountThemedComponent(<Avatar size={AvatarSize.XL} initials="JD" />);
+      const wrapper = mount(<Avatar size={AvatarSize.XL} initials="JD" />);
       wrapper.find(Avatar).simulate('click');
     }).not.toThrow();
   });
 
   test('enter key down', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(<Avatar size={AvatarSize.XL} initials="JD" onClick={callback} />);
+    const wrapper = mount(<Avatar size={AvatarSize.XL} initials="JD" onClick={callback} />);
     wrapper.find(Avatar).simulate('keyDown', { key: 'Enter' });
     expect(callback.called).toBe(true);
   });
 
   test('other key down', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(<Avatar size={AvatarSize.XL} initials="JD" onClick={callback} />);
+    const wrapper = mount(<Avatar size={AvatarSize.XL} initials="JD" onClick={callback} />);
     wrapper.find(Avatar).simulate('keyDown', { key: 'ArrowLeft' });
     expect(callback.called).toBe(false);
   });

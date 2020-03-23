@@ -2,19 +2,19 @@
 
 exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
 <div
-  class="Carousel--carousel- Carousel--carouselArrowPlacementContent-"
+  class="Carousel-carousel-0 Carousel-carouselArrowPlacementContent-0"
   role="list"
   style="width: 100%; height: 100%;"
   tabindex="0"
 >
   <div
-    class="Carousel--carouselInner-"
+    class="Carousel-carouselInner-0"
     style="transform: translateX(-0%);"
   >
     <div
       aria-posinset="0"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
       style="visibility: visible;"
     >
@@ -25,7 +25,7 @@ exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
     <div
       aria-posinset="1"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -35,7 +35,7 @@ exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
     <div
       aria-posinset="2"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -45,7 +45,7 @@ exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
     <div
       aria-posinset="3"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -55,7 +55,7 @@ exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
     <div
       aria-posinset="4"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -65,7 +65,7 @@ exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
     <div
       aria-posinset="5"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -75,7 +75,7 @@ exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
     <div
       aria-posinset="6"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -84,10 +84,10 @@ exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
     </div>
   </div>
   <div
-    class="CarouselPagination--pagination- CarouselPagination--paginationArrowContent- CarouselPagination--paginationBottom-"
+    class="CarouselPagination-pagination-0 CarouselPagination-paginationArrowContent-0 CarouselPagination-paginationBottom-0"
   >
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -95,53 +95,53 @@ exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
       />
     </div>
     <div
-      class="CarouselPagination--paginationIndicator-"
+      class="CarouselPagination-paginationIndicator-0"
     >
       <span
         aria-label="Item 1 of 7 displayed"
-        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+        class="CarouselPagination-paginationIcon-0 CarouselPagination-paginationIconActive-0"
       >
         1
       </span>
       <span
         aria-label="Item 2 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         2
       </span>
       <span
         aria-label="Item 3 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         3
       </span>
       <span
         aria-label="Item 4 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         4
       </span>
       <span
         aria-label="Item 5 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         5
       </span>
       <span
         aria-label="Item 6 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         6
       </span>
       <span
         aria-label="Item 7 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         7
       </span>
     </div>
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -154,19 +154,19 @@ exports[`Carousel CarouselArrowsPlacement: Content 1`] = `
 
 exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
 <div
-  class="Carousel--carousel-"
+  class="Carousel-carousel-0"
   role="list"
   style="width: 100%; height: 100%;"
   tabindex="0"
 >
   <div
-    class="Carousel--carouselInner-"
+    class="Carousel-carouselInner-0"
     style="transform: translateX(-0%);"
   >
     <div
       aria-posinset="0"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
       style="visibility: visible;"
     >
@@ -177,7 +177,7 @@ exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
     <div
       aria-posinset="1"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -187,7 +187,7 @@ exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
     <div
       aria-posinset="2"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -197,7 +197,7 @@ exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
     <div
       aria-posinset="3"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -207,7 +207,7 @@ exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
     <div
       aria-posinset="4"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -217,7 +217,7 @@ exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
     <div
       aria-posinset="5"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -227,7 +227,7 @@ exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
     <div
       aria-posinset="6"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -236,10 +236,10 @@ exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
     </div>
   </div>
   <div
-    class="CarouselPagination--pagination- CarouselPagination--paginationBottom-"
+    class="CarouselPagination-pagination-0 CarouselPagination-paginationBottom-0"
   >
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -247,53 +247,53 @@ exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
       />
     </div>
     <div
-      class="CarouselPagination--paginationIndicator-"
+      class="CarouselPagination-paginationIndicator-0"
     >
       <span
         aria-label="Item 1 of 7 displayed"
-        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+        class="CarouselPagination-paginationIcon-0 CarouselPagination-paginationIconActive-0"
       >
         1
       </span>
       <span
         aria-label="Item 2 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         2
       </span>
       <span
         aria-label="Item 3 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         3
       </span>
       <span
         aria-label="Item 4 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         4
       </span>
       <span
         aria-label="Item 5 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         5
       </span>
       <span
         aria-label="Item 6 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         6
       </span>
       <span
         aria-label="Item 7 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         7
       </span>
     </div>
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -306,16 +306,16 @@ exports[`Carousel CarouselArrowsPlacement: PageIndicator 1`] = `
 
 exports[`Carousel Page Indicator Placement: Top 1`] = `
 <div
-  class="Carousel--carousel-"
+  class="Carousel-carousel-0"
   role="list"
   style="width: 100%; height: 100%;"
   tabindex="0"
 >
   <div
-    class="CarouselPagination--pagination- CarouselPagination--paginationTop-"
+    class="CarouselPagination-pagination-0 CarouselPagination-paginationTop-0"
   >
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -323,53 +323,53 @@ exports[`Carousel Page Indicator Placement: Top 1`] = `
       />
     </div>
     <div
-      class="CarouselPagination--paginationIndicator-"
+      class="CarouselPagination-paginationIndicator-0"
     >
       <span
         aria-label="Item 1 of 7 displayed"
-        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+        class="CarouselPagination-paginationIcon-0 CarouselPagination-paginationIconActive-0"
       >
         1
       </span>
       <span
         aria-label="Item 2 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         2
       </span>
       <span
         aria-label="Item 3 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         3
       </span>
       <span
         aria-label="Item 4 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         4
       </span>
       <span
         aria-label="Item 5 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         5
       </span>
       <span
         aria-label="Item 6 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         6
       </span>
       <span
         aria-label="Item 7 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         7
       </span>
     </div>
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -378,13 +378,13 @@ exports[`Carousel Page Indicator Placement: Top 1`] = `
     </div>
   </div>
   <div
-    class="Carousel--carouselInner-"
+    class="Carousel-carouselInner-0"
     style="transform: translateX(-0%);"
   >
     <div
       aria-posinset="0"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
       style="visibility: visible;"
     >
@@ -395,7 +395,7 @@ exports[`Carousel Page Indicator Placement: Top 1`] = `
     <div
       aria-posinset="1"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -405,7 +405,7 @@ exports[`Carousel Page Indicator Placement: Top 1`] = `
     <div
       aria-posinset="2"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -415,7 +415,7 @@ exports[`Carousel Page Indicator Placement: Top 1`] = `
     <div
       aria-posinset="3"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -425,7 +425,7 @@ exports[`Carousel Page Indicator Placement: Top 1`] = `
     <div
       aria-posinset="4"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -435,7 +435,7 @@ exports[`Carousel Page Indicator Placement: Top 1`] = `
     <div
       aria-posinset="5"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -445,7 +445,7 @@ exports[`Carousel Page Indicator Placement: Top 1`] = `
     <div
       aria-posinset="6"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -458,16 +458,16 @@ exports[`Carousel Page Indicator Placement: Top 1`] = `
 
 exports[`Carousel Page Indicator Placement: Top 2`] = `
 <div
-  class="Carousel--carousel-"
+  class="Carousel-carousel-0"
   role="list"
   style="width: 100%; height: 100%;"
   tabindex="0"
 >
   <div
-    class="CarouselPagination--pagination- CarouselPagination--paginationTop-"
+    class="CarouselPagination-pagination-0 CarouselPagination-paginationTop-0"
   >
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -475,53 +475,53 @@ exports[`Carousel Page Indicator Placement: Top 2`] = `
       />
     </div>
     <div
-      class="CarouselPagination--paginationIndicator-"
+      class="CarouselPagination-paginationIndicator-0"
     >
       <span
         aria-label="Item 1 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         1
       </span>
       <span
         aria-label="Item 2 of 7 displayed"
-        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+        class="CarouselPagination-paginationIcon-0 CarouselPagination-paginationIconActive-0"
       >
         2
       </span>
       <span
         aria-label="Item 3 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         3
       </span>
       <span
         aria-label="Item 4 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         4
       </span>
       <span
         aria-label="Item 5 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         5
       </span>
       <span
         aria-label="Item 6 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         6
       </span>
       <span
         aria-label="Item 7 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         7
       </span>
     </div>
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -530,13 +530,13 @@ exports[`Carousel Page Indicator Placement: Top 2`] = `
     </div>
   </div>
   <div
-    class="Carousel--carouselInner-"
+    class="Carousel-carouselInner-0"
     style="transform: translateX(-100%);"
   >
     <div
       aria-posinset="0"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
       style=""
     >
@@ -547,7 +547,7 @@ exports[`Carousel Page Indicator Placement: Top 2`] = `
     <div
       aria-posinset="1"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
       style="visibility: visible;"
     >
@@ -558,7 +558,7 @@ exports[`Carousel Page Indicator Placement: Top 2`] = `
     <div
       aria-posinset="2"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -568,7 +568,7 @@ exports[`Carousel Page Indicator Placement: Top 2`] = `
     <div
       aria-posinset="3"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -578,7 +578,7 @@ exports[`Carousel Page Indicator Placement: Top 2`] = `
     <div
       aria-posinset="4"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -588,7 +588,7 @@ exports[`Carousel Page Indicator Placement: Top 2`] = `
     <div
       aria-posinset="5"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -598,7 +598,7 @@ exports[`Carousel Page Indicator Placement: Top 2`] = `
     <div
       aria-posinset="6"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -611,19 +611,19 @@ exports[`Carousel Page Indicator Placement: Top 2`] = `
 
 exports[`Carousel Renders without crashing 1`] = `
 <div
-  class="Carousel--carousel- Carousel--carouselArrowPlacementContent-"
+  class="Carousel-carousel-0 Carousel-carouselArrowPlacementContent-0"
   role="list"
   style="width: 100%; height: 100%;"
   tabindex="0"
 >
   <div
-    class="Carousel--carouselInner-"
+    class="Carousel-carouselInner-0"
     style="transform: translateX(-0%);"
   >
     <div
       aria-posinset="0"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
       style="visibility: visible;"
     >
@@ -634,7 +634,7 @@ exports[`Carousel Renders without crashing 1`] = `
     <div
       aria-posinset="1"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -644,7 +644,7 @@ exports[`Carousel Renders without crashing 1`] = `
     <div
       aria-posinset="2"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -654,7 +654,7 @@ exports[`Carousel Renders without crashing 1`] = `
     <div
       aria-posinset="3"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -664,7 +664,7 @@ exports[`Carousel Renders without crashing 1`] = `
     <div
       aria-posinset="4"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -674,7 +674,7 @@ exports[`Carousel Renders without crashing 1`] = `
     <div
       aria-posinset="5"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -684,7 +684,7 @@ exports[`Carousel Renders without crashing 1`] = `
     <div
       aria-posinset="6"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -693,10 +693,10 @@ exports[`Carousel Renders without crashing 1`] = `
     </div>
   </div>
   <div
-    class="CarouselPagination--pagination- CarouselPagination--paginationArrowContent- CarouselPagination--paginationBottom-"
+    class="CarouselPagination-pagination-0 CarouselPagination-paginationArrowContent-0 CarouselPagination-paginationBottom-0"
   >
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -704,53 +704,53 @@ exports[`Carousel Renders without crashing 1`] = `
       />
     </div>
     <div
-      class="CarouselPagination--paginationIndicator-"
+      class="CarouselPagination-paginationIndicator-0"
     >
       <span
         aria-label="Item 1 of 7 displayed"
-        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+        class="CarouselPagination-paginationIcon-0 CarouselPagination-paginationIconActive-0"
       >
         1
       </span>
       <span
         aria-label="Item 2 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         2
       </span>
       <span
         aria-label="Item 3 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         3
       </span>
       <span
         aria-label="Item 4 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         4
       </span>
       <span
         aria-label="Item 5 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         5
       </span>
       <span
         aria-label="Item 6 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         6
       </span>
       <span
         aria-label="Item 7 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         7
       </span>
     </div>
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -763,19 +763,19 @@ exports[`Carousel Renders without crashing 1`] = `
 
 exports[`Carousel Should render a text indicator 1`] = `
 <div
-  class="Carousel--carousel- Carousel--carouselArrowPlacementContent-"
+  class="Carousel-carousel-0 Carousel-carouselArrowPlacementContent-0"
   role="list"
   style="width: 100%; height: 100%;"
   tabindex="0"
 >
   <div
-    class="Carousel--carouselInner-"
+    class="Carousel-carouselInner-0"
     style="transform: translateX(-0%);"
   >
     <div
       aria-posinset="0"
       aria-setsize="10"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
       style="visibility: visible;"
     >
@@ -786,7 +786,7 @@ exports[`Carousel Should render a text indicator 1`] = `
     <div
       aria-posinset="1"
       aria-setsize="10"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -796,7 +796,7 @@ exports[`Carousel Should render a text indicator 1`] = `
     <div
       aria-posinset="2"
       aria-setsize="10"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -806,7 +806,7 @@ exports[`Carousel Should render a text indicator 1`] = `
     <div
       aria-posinset="3"
       aria-setsize="10"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -816,7 +816,7 @@ exports[`Carousel Should render a text indicator 1`] = `
     <div
       aria-posinset="4"
       aria-setsize="10"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -826,7 +826,7 @@ exports[`Carousel Should render a text indicator 1`] = `
     <div
       aria-posinset="5"
       aria-setsize="10"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -836,7 +836,7 @@ exports[`Carousel Should render a text indicator 1`] = `
     <div
       aria-posinset="6"
       aria-setsize="10"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -846,7 +846,7 @@ exports[`Carousel Should render a text indicator 1`] = `
     <div
       aria-posinset="7"
       aria-setsize="10"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -856,7 +856,7 @@ exports[`Carousel Should render a text indicator 1`] = `
     <div
       aria-posinset="8"
       aria-setsize="10"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -866,7 +866,7 @@ exports[`Carousel Should render a text indicator 1`] = `
     <div
       aria-posinset="9"
       aria-setsize="10"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -875,10 +875,10 @@ exports[`Carousel Should render a text indicator 1`] = `
     </div>
   </div>
   <div
-    class="CarouselPagination--pagination- CarouselPagination--paginationArrowContent- CarouselPagination--paginationBottom-"
+    class="CarouselPagination-pagination-0 CarouselPagination-paginationArrowContent-0 CarouselPagination-paginationBottom-0"
   >
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -886,7 +886,7 @@ exports[`Carousel Should render a text indicator 1`] = `
       />
     </div>
     <div
-      class="CarouselPagination--paginationIndicator-"
+      class="CarouselPagination-paginationIndicator-0"
     >
       <ui5-label
         for=""
@@ -895,7 +895,7 @@ exports[`Carousel Should render a text indicator 1`] = `
       </ui5-label>
     </div>
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -908,19 +908,19 @@ exports[`Carousel Should render a text indicator 1`] = `
 
 exports[`Carousel Update activePage via prop 1`] = `
 <div
-  class="Carousel--carousel- Carousel--carouselArrowPlacementContent-"
+  class="Carousel-carousel-0 Carousel-carouselArrowPlacementContent-0"
   role="list"
   style="width: 100%; height: 100%;"
   tabindex="0"
 >
   <div
-    class="Carousel--carouselInner-"
+    class="Carousel-carouselInner-0"
     style="transform: translateX(-0%);"
   >
     <div
       aria-posinset="0"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
       style="visibility: visible;"
     >
@@ -931,7 +931,7 @@ exports[`Carousel Update activePage via prop 1`] = `
     <div
       aria-posinset="1"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -941,7 +941,7 @@ exports[`Carousel Update activePage via prop 1`] = `
     <div
       aria-posinset="2"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -951,7 +951,7 @@ exports[`Carousel Update activePage via prop 1`] = `
     <div
       aria-posinset="3"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -961,7 +961,7 @@ exports[`Carousel Update activePage via prop 1`] = `
     <div
       aria-posinset="4"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -971,7 +971,7 @@ exports[`Carousel Update activePage via prop 1`] = `
     <div
       aria-posinset="5"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -981,7 +981,7 @@ exports[`Carousel Update activePage via prop 1`] = `
     <div
       aria-posinset="6"
       aria-setsize="7"
-      class="Carousel--carouselItem-"
+      class="Carousel-carouselItem-0"
       role="listitem"
     >
       <p>
@@ -990,10 +990,10 @@ exports[`Carousel Update activePage via prop 1`] = `
     </div>
   </div>
   <div
-    class="CarouselPagination--pagination- CarouselPagination--paginationArrowContent- CarouselPagination--paginationBottom-"
+    class="CarouselPagination-pagination-0 CarouselPagination-paginationArrowContent-0 CarouselPagination-paginationBottom-0"
   >
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon
@@ -1001,53 +1001,53 @@ exports[`Carousel Update activePage via prop 1`] = `
       />
     </div>
     <div
-      class="CarouselPagination--paginationIndicator-"
+      class="CarouselPagination-paginationIndicator-0"
     >
       <span
         aria-label="Item 1 of 7 displayed"
-        class="CarouselPagination--paginationIcon- CarouselPagination--paginationIconActive-"
+        class="CarouselPagination-paginationIcon-0 CarouselPagination-paginationIconActive-0"
       >
         1
       </span>
       <span
         aria-label="Item 2 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         2
       </span>
       <span
         aria-label="Item 3 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         3
       </span>
       <span
         aria-label="Item 4 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         4
       </span>
       <span
         aria-label="Item 5 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         5
       </span>
       <span
         aria-label="Item 6 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         6
       </span>
       <span
         aria-label="Item 7 of 7 displayed"
-        class="CarouselPagination--paginationIcon-"
+        class="CarouselPagination-paginationIcon-0"
       >
         7
       </span>
     </div>
     <div
-      class="CarouselPagination--paginationArrow-"
+      class="CarouselPagination-paginationArrow-0"
       data-value="paginationArrow"
     >
       <ui5-icon

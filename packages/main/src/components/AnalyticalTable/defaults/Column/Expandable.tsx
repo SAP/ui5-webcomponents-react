@@ -68,7 +68,7 @@ export const Expandable = (props) => {
       ) : (
         <span style={{ paddingLeft }} />
       )}
-      {cell.value && cell.render('Cell')}
+      {cell.render('Cell')}
     </>
   );
 };

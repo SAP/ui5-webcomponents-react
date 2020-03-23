@@ -1,5 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ObjectPageSection ObjectPage w/ lowercase title 1`] = `"<div role=\\"heading\\" class=\\"ObjectPageSection--header--2-6\\"><div class=\\"ObjectPageSection--title--2-7\\">Test</div></div><div class=\\"ObjectPageSection--sectionContent--2-9\\"><div class=\\"ObjectPageSection--sectionContentInner--2-10\\">This is my Text</div></div>"`;
+exports[`ObjectPageSection ObjectPage w/ lowercase title 1`] = `
+<section
+  data-component-name="ObjectPageSection"
+  id="ObjectPageSection-1"
+  role="region"
+>
+  <div
+    class="ObjectPageSection-header-0"
+    role="heading"
+  >
+    <div
+      class="ObjectPageSection-title-0"
+    >
+      Test
+    </div>
+  </div>
+  <div
+    class="ObjectPageSection-sectionContent-0"
+  >
+    <div
+      class="ObjectPageSection-sectionContentInner-0"
+    >
+      This is my Text
+    </div>
+  </div>
+</section>
+`;
 
-exports[`ObjectPageSection Renders with children 1`] = `"<div role=\\"heading\\" class=\\"ObjectPageSection--header--2-1\\"><div class=\\"ObjectPageSection--title--2-2 ObjectPageSection--uppercase--2-3\\">Test</div></div><div class=\\"ObjectPageSection--sectionContent--2-4\\"><div class=\\"ObjectPageSection--sectionContentInner--2-5\\">This is my Text</div></div>"`;
+exports[`ObjectPageSection Renders with children 1`] = `
+<section
+  data-component-name="ObjectPageSection"
+  id="ObjectPageSection-1"
+  role="region"
+>
+  <div
+    class="ObjectPageSection-header-0"
+    role="heading"
+  >
+    <div
+      class="ObjectPageSection-title-0 ObjectPageSection-uppercase-0"
+    >
+      Test
+    </div>
+  </div>
+  <div
+    class="ObjectPageSection-sectionContent-0"
+  >
+    <div
+      class="ObjectPageSection-sectionContentInner-0"
+    >
+      This is my Text
+    </div>
+  </div>
+</section>
+`;
