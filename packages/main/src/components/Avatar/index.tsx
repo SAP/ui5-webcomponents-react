@@ -91,12 +91,12 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
       ref={ref}
       className={cssClasses.join(' ')}
       style={inlineStyle}
-      onClick={handleOnClick}
       tabIndex={0}
-      onKeyDown={handleKeyDown}
       title={tooltip}
       slot={slot}
       {...passThroughProps}
+      onClick={handleOnClick}
+      onKeyDown={handleKeyDown}
     >
       {initials ? initials : children}
     </span>

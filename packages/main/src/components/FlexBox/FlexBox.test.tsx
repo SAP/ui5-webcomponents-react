@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import * as React from 'react';
+import sinon from 'sinon';
 
 describe('FlexBox', () => {
   test('JustifyContent: End', () => {
@@ -43,6 +44,18 @@ describe('FlexBox', () => {
       </FlexBox>
     );
     expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('pass through click handler', () => {
+    const callback = sinon.spy();
+    const wrapper = mount(
+      // @ts-ignore
+      <FlexBox onClick={callback}>
+        <span>Test 1</span>
+      </FlexBox>
+    );
+    wrapper.simulate('click');
+    expect(callback.called).toBe(true);
   });
 
   createPassThroughPropsTest(FlexBox);
