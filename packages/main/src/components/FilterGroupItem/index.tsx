@@ -11,6 +11,7 @@ import styles from './FilterGroupItem.jss';
 const useStyles = createComponentStyles(styles, { name: 'FilterGroupItem' });
 
 export interface FilterGroupItemPropTypes extends CommonProps {
+  children: ReactElement;
   groupName?: string;
   labelTooltip?: string;
   label?: string;
@@ -18,7 +19,6 @@ export interface FilterGroupItemPropTypes extends CommonProps {
   mandatory?: boolean;
   visible?: boolean;
   visibleInFilterBar?: boolean;
-  children?: ReactElement;
   considerGroupName?: boolean;
 }
 

@@ -7,36 +7,27 @@ import { FilterGroupItem } from '@ui5/webcomponents-react/lib/FilterGroupItem';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
-import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
-import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
-import React, { useState } from 'react';
+import React from 'react';
 
 const variantItems = [
   { label: 'Variant 1', key: '1' },
   { label: 'Variant 2', key: '2' }
-];
-const filterItems = [
-  { text: 'Text 1', key: '1' },
-  { text: 'Text 2', key: '2' }
 ];
 
 const renderVariants = () => {
   return (
     <VariantManagement
       style={{ width: '300px', height: 'auto' }}
-      closeOnItemSelect={boolean('Variant: closeOnItemSelect', true)}
-      initialSelectedKey={'2'}
+      initialSelectedKey="2"
       variantItems={variantItems}
       onSelect={(e) => {
         console.log(e.getParameter('selectedItem').key);
       }}
-      placement={select('Variant: placement', PlacementType, PlacementType.Bottom)}
-      level={select('Variant: level', TitleLevel, TitleLevel.H6)}
     />
   );
 };
@@ -52,16 +43,69 @@ const renderSearch = () => {
   );
 };
 
-export const renderStory = () => {
-  const [add, setAdd] = useState(false);
-
-  setTimeout(() => setAdd(true), 10000);
-
+export const renderDefaultStory = () => {
   return (
     <FilterBar
       renderSearch={renderSearch}
       renderVariants={renderVariants}
       useToolbar={boolean('useToolbar', true)}
+      filterBarExpanded={boolean('filterBarExpanded', true)}
+      loading={boolean('loading', false)}
+      considerGroupName={boolean('considerGroupName', false)}
+      filterContainerWidth={text('auto', undefined)}
+      activeFiltersCount={number('activeFiltersCount', undefined)}
+      showClearOnFB={boolean('showClearOnFB', false)}
+      showRestoreOnFB={boolean('showRestoreOnFB', false)}
+      showGo={boolean('showGo', false)}
+      showGoOnFB={boolean('showGoOnFB', false)}
+      showFilterConfiguration={boolean('showFilterConfiguration', false)}
+      showSearchOnFiltersDialog={boolean('showSearchOnFiltersDialog', false)}
+      showClearButton={boolean('showClearButton', false)}
+      showRestoreButton={boolean('showRestoreButton', false)}
+      onToggleFilters={action('onToggleFilters')}
+      onFiltersDialogOpen={action('onFiltersDialogOpen')}
+      onFiltersDialogClose={action('onFiltersDialogClose')}
+      onFiltersDialogSave={action('onFiltersDialogSave')}
+      onFiltersDialogClear={action('onFiltersDialogClear')}
+      onClear={action('onClear')}
+      onFiltersDialogSelectionChange={action('onFiltersDialogSelectionChange')}
+      onFiltersDialogSearch={action('onFiltersDialogSearch')}
+      onGo={action('onGo')}
+      onRestore={action('onRestore')}
+    >
+      <FilterGroupItem label="Classification" key="classification" loading={boolean('FilterGroupItem: loading', false)}>
+        <Select>
+          <Option>Option 1</Option>
+          <Option selected>Option 2</Option>
+          <Option>Option 3</Option>
+          <Option>Option 4</Option>
+        </Select>
+      </FilterGroupItem>
+      <FilterGroupItem key={'filter2'} label={'Custom Filter 1'} loading={boolean('FilterGroupItem: loading', false)}>
+        <Switch />
+      </FilterGroupItem>
+      <FilterGroupItem label="Multi" key="Multi" loading={boolean('FilterGroupItem: loading', false)}>
+        <MultiComboBox>
+          <Option>Option 1</Option>
+          <Option selected>Option 2</Option>
+          <Option>Option 3</Option>
+          <Option selected>Option 4</Option>
+        </MultiComboBox>
+      </FilterGroupItem>
+    </FilterBar>
+  );
+};
+renderDefaultStory.story = {
+  name: 'Default'
+};
+
+export const renderStoryWithFiltersDialog = () => {
+  return (
+    <FilterBar
+      renderSearch={renderSearch}
+      renderVariants={renderVariants}
+      useToolbar={boolean('useToolbar', true)}
+      filterBarExpanded={boolean('filterBarExpanded', true)}
       loading={boolean('loading', false)}
       considerGroupName={boolean('considerGroupName', true)}
       filterContainerWidth={text('width', '12rem')}
@@ -74,46 +118,28 @@ export const renderStory = () => {
       showSearchOnFiltersDialog={boolean('showSearchOnFiltersDialog', true)}
       showClearButton={boolean('showClearButton', true)}
       showRestoreButton={boolean('showRestoreButton', true)}
-      filterBarExpanded={boolean('filterBarExpanded', true)}
-      onToggleFilters={action('onToggleFilters')}
-      onFiltersDialogOpen={action('onFiltersDialogOpen')}
-      onFiltersDialogClose={action('onFiltersDialogClose')}
-      onFiltersDialogSave={action('onFiltersDialogSave')}
-      onFiltersDialogClear={action('onFiltersDialogClear')}
-      onClear={action('onClear')}
-      onFiltersDialogSelectionChange={action('onFiltersDialogSelectionChange')}
-      onFiltersDialogSearch={action('onFiltersDialogSearch')}
-      onGo={action('onGo')}
-      onRestore={action('onRestore')}
+      // onToggleFilters={action('onToggleFilters')}
+      // onFiltersDialogOpen={action('onFiltersDialogOpen')}
+      // onFiltersDialogClose={action('onFiltersDialogClose')}
+      // onFiltersDialogSave={action('onFiltersDialogSave')}
+      // onFiltersDialogClear={action('onFiltersDialogClear')}
+      // onClear={action('onClear')}
+      // onFiltersDialogSelectionChange={action('onFiltersDialogSelectionChange')}
+      // onFiltersDialogSearch={action('onFiltersDialogSearch')}
+      // onGo={action('onGo')}
+      // onRestore={action('onRestore')}
     >
-      <FilterGroupItem
-        label="Input"
-        visibleInFilterBar={boolean('FilterGroupItem: visibleInFilterBar', true)}
-        loading={boolean('FilterGroupItem: loading', false)}
-      >
+      <FilterGroupItem label="Input" loading={boolean('FilterGroupItem: loading', false)}>
         <Input placeholder="Placeholder" />
       </FilterGroupItem>
       <FilterGroupItem
         label="Switch"
         groupName={text('FilterGroupItem: groupName', 'Custom Group')}
-        visible={boolean('FilterGroupItem: visible', true)}
         loading={boolean('FilterGroupItem: loading', true)}
       >
         <Switch />
       </FilterGroupItem>
-      <FilterGroupItem
-        label="Switch added"
-        groupName={text('FilterGroupItem: groupName', 'Custom Group')}
-        visible={add}
-        loading={boolean('FilterGroupItem: loading', true)}
-      >
-        <Switch />
-      </FilterGroupItem>
-      <FilterGroupItem
-        label="SELECT w/ initial selected"
-        loading={boolean('FilterGroupItem: loading', true)}
-        visibleInFilterBar={boolean('FilterGroupItem: visibleInFilterBar', true)}
-      >
+      <FilterGroupItem label="SELECT w/ initial selected" loading={boolean('FilterGroupItem: loading', true)}>
         <Select>
           <Option>Option 1</Option>
           <Option selected>Option 2</Option>
@@ -124,7 +150,6 @@ export const renderStory = () => {
       <FilterGroupItem
         label="SELECT w/o initial selected"
         groupName={text('FilterGroupItem: groupName', 'Custom Group')}
-        visibleInFilterBar={boolean('FilterGroupItem: visibleInFilterBar', true)}
       >
         <Select>
           <Option data-key="Test 1" selected icon="add">
@@ -197,8 +222,8 @@ export const renderStory = () => {
     </FilterBar>
   );
 };
-renderStory.story = {
-  name: 'Default'
+renderStoryWithFiltersDialog.story = {
+  name: 'With Filters Dialog'
 };
 
 export default {

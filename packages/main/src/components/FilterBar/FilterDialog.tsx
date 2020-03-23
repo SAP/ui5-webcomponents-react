@@ -71,10 +71,12 @@ export const FilterDialog = (props) => {
 
   const handleSearch = useCallback(
     (e) => {
-      handleDialogSearch(Event.of(null, e.getOriginalEvent(), { value: e.parameters.value }));
+      if (handleDialogSearch) {
+        handleDialogSearch(Event.of(null, e.getOriginalEvent(), { value: e.parameters.value }));
+      }
       setSearchString(e.parameters.value);
     },
-    [setSearchString]
+    [setSearchString, handleDialogSearch]
   );
   const handleSave = useCallback(
     (e) => {
@@ -105,7 +107,9 @@ export const FilterDialog = (props) => {
 
   const handleDialogGo = useCallback(
     (e) => {
-      onGo(Event.of(null, e.getOriginalEvent()));
+      if (onGo) {
+        onGo(Event.of(null, e.getOriginalEvent()));
+      }
       handleDialogClose(e);
     },
     [onGo, handleDialogClose]
@@ -173,12 +177,14 @@ export const FilterDialog = (props) => {
 
   const handleCheckBoxChange = useCallback(
     (element, activeFilters) => (e) => {
-      handleSelectionChange(
-        Event.of(null, e.getOriginalEvent(), { element: { event: e, element }, checked: e.parameters.checked })
-      );
+      if (handleSelectionChange) {
+        handleSelectionChange(
+          Event.of(null, e.getOriginalEvent(), { element: { event: e, element }, checked: e.parameters.checked })
+        );
+      }
       setActiveFilters({ ...activeFilters, [element.key]: { event: e, element } });
     },
-    [setActiveFilters]
+    [setActiveFilters, handleSelectionChange]
   );
 
   // const renderSearch = useCallback(() => {

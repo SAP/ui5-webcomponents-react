@@ -27,11 +27,11 @@ import { FilterDialog } from './FilterDialog';
 import { addRef, renderSearchWithValue, setPropsOfChildren } from './utils';
 
 export interface FilterBarPropTypes extends CommonProps {
+  children: ReactNode | ReactNodeArray;
   renderVariants?: () => JSX.Element;
   renderSearch?: () => ReactElement;
   useToolbar?: boolean;
   filterBarExpanded?: boolean;
-  children: ReactNode | ReactNodeArray;
   filterContainerWidth?: CSSProperties['width'];
   considerGroupName?: boolean;
   showClearOnFB?: boolean;
@@ -143,7 +143,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const handleToggle = useCallback(
     (e) => {
-      onToggleFilters(Event.of(null, e.getOriginalEvent(), { visible: !showFilters }));
+      if (onToggleFilters) {
+        onToggleFilters(Event.of(null, e.getOriginalEvent(), { visible: !showFilters }));
+      }
       setShowFilters(!showFilters);
     },
     [showFilters, onToggleFilters, setShowFilters]
@@ -168,7 +170,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       if (toggledElements) {
         childrenWithNewProps = handleToggleFilterVisible(toggledElements, childrenWithNewProps);
       }
-      onFiltersDialogSave(Event.of(null, e.getOriginalEvent(), { elements: childrenWithNewProps, toggledElements }));
+      if (onFiltersDialogSave) {
+        onFiltersDialogSave(Event.of(null, e.getOriginalEvent(), { elements: childrenWithNewProps, toggledElements }));
+      }
       setChildrenWithRef(childrenWithNewProps);
       handleDialogClose(e);
     },
@@ -179,14 +183,18 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     (e) => {
       setChildrenWithRef(setPropsOfChildren(addRef(childrenWithRef, filterRefs, 'filterBarRef'), 'filterBarRef'));
       setDialogOpen(true);
-      onFiltersDialogOpen(Event.of(null, e.getOriginalEvent()));
+      if (onFiltersDialogOpen) {
+        onFiltersDialogOpen(Event.of(null, e.getOriginalEvent()));
+      }
     },
     [setChildrenWithRef, childrenWithRef, filterRefs, setDialogOpen, onFiltersDialogOpen]
   );
 
   const handleDialogClose = useCallback(
     (e) => {
-      onFiltersDialogClose(Event.of(null, e.getOriginalEvent()));
+      if (onFiltersDialogClose) {
+        onFiltersDialogClose(Event.of(null, e.getOriginalEvent()));
+      }
       setDialogOpen(false);
     },
     [setDialogOpen, onFiltersDialogClose]
@@ -220,7 +228,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         setMountFilters(false);
         setMountFilters(true);
       }
-      onRestore(Event.of(null, e.getOriginalEvent(), { source }));
+      if (onRestore) {
+        onRestore(Event.of(null, e.getOriginalEvent(), { source }));
+      }
     },
     [setDialogOpen, showGo, showGoOnFB, onRestore]
   );
