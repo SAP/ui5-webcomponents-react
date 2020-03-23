@@ -1,11 +1,11 @@
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import React, { useEffect, useMemo, useRef, useState, ReactElement } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import React, { ReactElement, useEffect, useMemo, useRef, useState } from 'react';
 
 const styles = {
   base: {
-    marginRight: '1rem',
+    margin: 'var(--_ui5wcr_ObjectPage_avatar_margin)', // defined in ObjectPage JSS
     opacity: 0
   },
   hidden: {
