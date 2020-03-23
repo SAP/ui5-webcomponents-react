@@ -1,5 +1,12 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
+const ObjectPageCssVariables = {
+  anchorFloat: '--_ui5wcr_ObjectPage_actions_float',
+  anchorLeft: '--_ui5wcr_ObjectPage_actions_left',
+  anchorRight: '--_ui5wcr_ObjectPage_actions_right',
+  avatarMargin: '--_ui5wcr_ObjectPage_avatar_margin'
+};
+
 const styles = {
   objectPage: {
     width: '100%',
@@ -26,6 +33,18 @@ const styles = {
     '& section[id="ObjectPageSection-1"] > div[role="heading"]': {
       display: 'none'
     }
+  },
+  '@global html': {
+    [ObjectPageCssVariables.anchorFloat]: 'right',
+    [ObjectPageCssVariables.anchorRight]: '1.25rem',
+    [ObjectPageCssVariables.anchorLeft]: 'unset',
+    [ObjectPageCssVariables.avatarMargin]: '0 1rem 0 0'
+  },
+  '@global [dir="rtl"]': {
+    [ObjectPageCssVariables.anchorFloat]: 'left',
+    [ObjectPageCssVariables.anchorRight]: 'unset',
+    [ObjectPageCssVariables.anchorLeft]: '1.25rem',
+    [ObjectPageCssVariables.avatarMargin]: '0 0 0 1rem'
   },
   iconTabBarMode: {
     '& section[data-component-name="ObjectPageSection"] > div[role="heading"]': {
@@ -103,9 +122,10 @@ const styles = {
     top: '0',
     paddingTop: '0.75rem',
     zIndex: 1,
-    right: '1.25rem',
+    right: `var(${ObjectPageCssVariables.anchorRight})`,
+    left: `var(${ObjectPageCssVariables.anchorLeft})`,
     display: 'inline-block',
-    float: 'right',
+    float: `var(${ObjectPageCssVariables.anchorFloat})`,
     verticalAlign: 'top',
     '& > *': {
       marginLeft: '0.5rem',
@@ -123,9 +143,6 @@ const styles = {
           marginBottom: '1rem'
         }
       }
-    },
-    '& $actions': {
-      // paddingTop: 0
     }
   },
   headerCustomContent: {
@@ -164,7 +181,7 @@ const styles = {
     flexDirection: 'row'
   },
   avatar: {
-    marginRight: '1rem'
+    margin: `var(${ObjectPageCssVariables.avatarMargin})`
   }
 };
 
