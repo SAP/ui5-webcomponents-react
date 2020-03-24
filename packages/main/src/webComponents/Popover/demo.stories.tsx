@@ -1,4 +1,5 @@
 import { boolean, select, text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
@@ -15,16 +16,16 @@ export const defaultStory = () => (
   <Popover
     initialFocus={'generatedString'}
     headerText={text('headerText', 'Test Popover')}
-    placementType={select('placementType', PlacementType)}
-    horizontalAlign={select('horizontalAlign', PopoverHorizontalAlign, null)}
-    verticalAlign={select('verticalAlign', PopoverVerticalAlign, null)}
+    placementType={select('placementType', PlacementType, PlacementType.Bottom)}
+    horizontalAlign={select('horizontalAlign', PopoverHorizontalAlign, PopoverHorizontalAlign.Center)}
+    verticalAlign={select('verticalAlign', PopoverVerticalAlign, PopoverVerticalAlign.Center)}
     modal={boolean('modal', false)}
     noArrow={boolean('noArrow', false)}
     open={boolean('open', false)}
-    onBeforeOpen={null}
-    onAfterOpen={null}
-    onBeforeClose={null}
-    onAfterClose={null}
+    onBeforeOpen={action('onBeforeOpen')}
+    onAfterOpen={action('onAfterOpen')}
+    onBeforeClose={action('onBeforeClose')}
+    onAfterClose={action('onAfterClose')}
     content={<div>Test</div>}
     footer={
       <div
