@@ -30,8 +30,11 @@ const styles = {
     '&::-webkit-scrollbar-corner': {
       backgroundColor: ThemingParameters.sapScrollBar_TrackColor
     },
-    '& section[id="ObjectPageSection-1"] > div[role="heading"]': {
+    '& section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'none'
+    },
+    '& section[id*="ObjectPageSection-"] ~ section[id*="ObjectPageSection-"] > div[role="heading"]': {
+      display: 'block'
     }
   },
   '@global html': {
