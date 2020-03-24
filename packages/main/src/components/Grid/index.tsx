@@ -1,5 +1,6 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { useViewportRange } from "@ui5/webcomponents-react-base/lib/useViewportRange";
 import React, {
   Children,
   CSSProperties,
@@ -140,6 +141,8 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
   if (className) {
     gridClasses.put(className);
   }
+
+  useViewportRange('StdExt');
 
   const renderGridElements = (child: ReactElement<any>) => {
     const span = getSpanFromString(defaultSpan);
