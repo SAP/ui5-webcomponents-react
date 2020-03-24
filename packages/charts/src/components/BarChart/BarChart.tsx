@@ -105,6 +105,19 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     true
   );
 
+  const marginLeft =
+    dataset
+      .map((data) => {
+        return data[labelKey].split(' ').length > 0
+          ? data[labelKey].split(' ').reduce((longest, current) => {
+              return current.length > longest.length ? current : longest;
+            })
+          : data[labelKey];
+      })
+      .reduce((longest, current) => {
+        return current.length > longest.length ? current : longest;
+      }).length * 4;
+
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
   return (
@@ -121,7 +134,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       slot={slot}
     >
       <BarChartLib
-        margin={{ right: 30, top: 40, bottom: 30 }}
+        margin={{ right: 30, top: 40, bottom: 30, left: marginLeft }}
         layout={'vertical'}
         data={dataset}
         barGap={chartConfig.barGap}
@@ -137,8 +150,10 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
+          // tick={getTick}
           type="category"
           dataKey={labelKey}
+          // width={labelWidth}
         />
         {currentDataKeys.map((key, index) => (
           <Bar
