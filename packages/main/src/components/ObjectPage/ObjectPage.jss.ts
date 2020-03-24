@@ -33,6 +33,8 @@ const styles = {
     '& section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'none'
     },
+    // explanation why first-child selector is not sufficient here:
+    // https://stackoverflow.com/questions/7128406/css-select-the-first-child-from-elements-with-particular-attribute
     '& section[id*="ObjectPageSection-"] ~ section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'block'
     }
