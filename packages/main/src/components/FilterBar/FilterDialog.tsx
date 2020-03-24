@@ -81,7 +81,7 @@ export const FilterDialog = (props) => {
   const handleSave = useCallback(
     (e) => {
       if (renderFBSearch) {
-        handleSearchValueChange(searchRef.current?.children[1]._state.value);
+        handleSearchValueChange(searchRef.current?.children[1]._state?.value);
       }
       handleDialogSave(
         e,

@@ -9,7 +9,7 @@ export const setPropsOfChildren = (children, currentRef) => {
         child.props.children.props[currentRef]?.tagName === 'UI5-MULTI-COMBOBOX'
       ) {
         const selectedIndices = Array.from(child.props.children.props[currentRef].children)
-          .map((item, index) => (item._state.selected ? index : false))
+          .map((item, index) => (item._state?.selected ? index : false))
           .filter((el) => el !== false);
         const options = child.props.children.props.children.map((item, index) => {
           if (selectedIndices.includes(index)) {
@@ -28,7 +28,7 @@ export const setPropsOfChildren = (children, currentRef) => {
         return cloneElement(child, {
           children: {
             ...childrenOfChild,
-            props: { ...childrenOfChild.props, value: child.props.children.props[currentRef]._state.value }
+            props: { ...childrenOfChild.props, value: child.props.children.props[currentRef]._state?.value }
           }
         });
       }
@@ -39,7 +39,7 @@ export const setPropsOfChildren = (children, currentRef) => {
         return cloneElement(child, {
           children: {
             ...childrenOfChild,
-            props: { ...childrenOfChild.props, checked: child.props.children.props[currentRef]._state.checked }
+            props: { ...childrenOfChild.props, checked: child.props.children.props[currentRef]._state?.checked }
           }
         });
       }

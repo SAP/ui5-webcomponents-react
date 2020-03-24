@@ -12,9 +12,9 @@ const useStyles = createComponentStyles(styles, { name: 'FilterGroupItem' });
 
 export interface FilterGroupItemPropTypes extends CommonProps {
   children: ReactElement;
+  label?: string;
   groupName?: string;
   labelTooltip?: string;
-  label?: string;
   loading?: boolean;
   mandatory?: boolean;
   visible?: boolean;

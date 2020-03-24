@@ -118,16 +118,16 @@ export const renderStoryWithFiltersDialog = () => {
       showSearchOnFiltersDialog={boolean('showSearchOnFiltersDialog', true)}
       showClearButton={boolean('showClearButton', true)}
       showRestoreButton={boolean('showRestoreButton', true)}
-      // onToggleFilters={action('onToggleFilters')}
-      // onFiltersDialogOpen={action('onFiltersDialogOpen')}
-      // onFiltersDialogClose={action('onFiltersDialogClose')}
-      // onFiltersDialogSave={action('onFiltersDialogSave')}
-      // onFiltersDialogClear={action('onFiltersDialogClear')}
-      // onClear={action('onClear')}
-      // onFiltersDialogSelectionChange={action('onFiltersDialogSelectionChange')}
-      // onFiltersDialogSearch={action('onFiltersDialogSearch')}
-      // onGo={action('onGo')}
-      // onRestore={action('onRestore')}
+      onToggleFilters={action('onToggleFilters')}
+      onFiltersDialogOpen={action('onFiltersDialogOpen')}
+      onFiltersDialogClose={action('onFiltersDialogClose')}
+      onFiltersDialogSave={action('onFiltersDialogSave')}
+      onFiltersDialogClear={action('onFiltersDialogClear')}
+      onClear={action('onClear')}
+      onFiltersDialogSelectionChange={action('onFiltersDialogSelectionChange')}
+      onFiltersDialogSearch={action('onFiltersDialogSearch')}
+      onGo={action('onGo')}
+      onRestore={action('onRestore')}
     >
       <FilterGroupItem label="Input" loading={boolean('FilterGroupItem: loading', false)}>
         <Input placeholder="Placeholder" />
