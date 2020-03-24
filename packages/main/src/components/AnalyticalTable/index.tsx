@@ -109,7 +109,7 @@ export interface TableProps extends CommonProps {
   // events
 
   onSort?: (e: CustomEvent<{column: unknown; sortDirection: string}>) => void;
-  onGroupBy?: (e: CustomEvent<{column: unknown; isGrouped: boolean}>) => void;
+  onGroup?: (e: CustomEvent<{column: unknown; groupedColumns: string[]}>) => void;
   onRowSelected?: (e?: CustomEvent<{allRowsSelected?: boolean; row?: unknown; isSelected?: boolean}>) => any;
   onRowExpandChange?: (e?: CustomEvent<{row: unknown; column: unknown}>) => any;
   onColumnsReordered?: (e?: CustomEvent<{columnsNewOrder: string[]; column: unknown}>) => void;
