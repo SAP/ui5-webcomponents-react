@@ -69,7 +69,7 @@ const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = forwardRef(
       };
     }, [style, width]);
 
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props, ['onClick']);
 
     return (
       <li

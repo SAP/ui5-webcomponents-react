@@ -98,7 +98,7 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
 
   pageContainer.put(classes[`background${backgroundDesign}`]);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onNavButtonPress']);
 
   return (
     <div ref={ref} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot} {...passThroughProps}>

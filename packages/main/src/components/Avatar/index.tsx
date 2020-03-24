@@ -83,7 +83,7 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
     [onClick]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onClick']);
 
   return (
     <span

@@ -150,7 +150,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
       },
       [handleCancelButtonClick, closeOnItemSelect, selectedKey, variantItems, setSelectedKey]
     );
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props, ['onSelect']);
 
     return (
       <Popover

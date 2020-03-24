@@ -94,7 +94,7 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
     [onItemSelect, onItemClick, setInternalSelectedId]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onItemSelect', 'onItemClick']);
 
   return (
     <div ref={ref} className={sideNavigationClasses.valueOf()} style={style} title={tooltip} {...passThroughProps}>

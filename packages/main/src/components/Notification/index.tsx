@@ -236,7 +236,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       return { borderRadius: borderRadius() };
     }, [isChild, isLastChild, children, showChildren]);
 
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props, ['onClick', 'onClose']);
 
     if (!visibleState) return null;
     return (

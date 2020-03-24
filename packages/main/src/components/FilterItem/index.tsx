@@ -129,7 +129,7 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
 
   const filterItemClasses = StyleClassHelper.of(classes.filterItem);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onChange']);
 
   return (
     <div ref={ref} className={filterItemClasses.toString()} style={style} title={tooltip} {...passThroughProps}>

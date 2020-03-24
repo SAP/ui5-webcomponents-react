@@ -41,7 +41,7 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
       titleClasses.put(classes.uppercase);
     }
 
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props, ['id']);
 
     return (
       <section

@@ -115,7 +115,7 @@ const SegmentedButton: FC<SegmentedButtonPropTypes> = forwardRef(
       });
     }, [children, listRef]);
 
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props, ['onItemSelected']);
 
     return (
       <ul

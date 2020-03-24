@@ -159,7 +159,7 @@ const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, re
 
   const translateXPrefix = document.dir === 'rtl' ? '' : '-';
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onPageChanged']);
 
   return (
     <div

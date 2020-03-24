@@ -368,7 +368,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     };
   }, [scrollbarWidth]);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onSelectedSectionChanged']);
 
   useEffect(() => {
     const objectPageHeight = objectPageRef.current?.clientHeight ?? 1000;

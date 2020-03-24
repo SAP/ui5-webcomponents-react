@@ -123,7 +123,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     }
     const shouldRenderContent = [value, unit, deviation, target].some((v) => v !== null);
 
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props, ['onHeaderPress']);
 
     return (
       <div
