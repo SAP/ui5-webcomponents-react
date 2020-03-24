@@ -41,6 +41,12 @@ const getIndentsForSpace = (hSpace) => ({
 });
 
 export const styles = {
+  '@global html': {
+    '--_ui5wcr_Grid_float': 'left'
+  },
+  '@global [dir="rtl"]': {
+    '--_ui5wcr_Grid_float': 'right'
+  },
   grid: {
     '& $gridSpan': { ...getSpansForSpace(0), ...getIndentsForSpace(0) },
     '&$gridHSpace05': {
@@ -77,7 +83,7 @@ export const styles = {
       marginBottom: '2rem'
     },
     '& > div': {
-      float: 'left',
+      float: 'var(--_ui5wcr_Grid_float)',
       overflow: 'hidden',
       minHeight: '1px'
     },
