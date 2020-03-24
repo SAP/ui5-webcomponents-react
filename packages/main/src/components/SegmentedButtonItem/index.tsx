@@ -75,11 +75,11 @@ const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = forwardRef(
       <li
         ref={ref}
         className={segmentedButtonItemClasses.valueOf()}
-        onClick={handleOnClick}
         style={inlineStyles}
         title={tooltip}
         data-has-own-width={!!width}
         {...passThroughProps}
+        onClick={handleOnClick}
       >
         {icon && <div className={iconClasses.valueOf()}>{icon}</div>}
         {children}

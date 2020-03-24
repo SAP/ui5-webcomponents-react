@@ -79,14 +79,15 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
       )}
       <Grid
         ref={ref}
-        children={formGroups}
         defaultSpan={'XL6 L12 M12 S12'}
         className={className}
         slot={slot}
         style={style}
         tooltip={tooltip}
         {...passThroughProps}
-      />
+      >
+        {formGroups}
+      </Grid>
     </CurrentViewportRangeContext.Provider>
   );
 });

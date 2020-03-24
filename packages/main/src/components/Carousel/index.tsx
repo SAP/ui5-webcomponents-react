@@ -170,8 +170,8 @@ const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, re
       ref={ref}
       role="list"
       tabIndex={0}
-      onKeyDown={onKeyDown}
       {...passThroughProps}
+      onKeyDown={onKeyDown}
     >
       {childElementCount > 1 && pageIndicatorPlacement === PlacementType.Top && (
         <CarouselPagination
@@ -179,10 +179,11 @@ const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, re
           showPageIndicator={showPageIndicator}
           pageIndicatorPlacement={pageIndicatorPlacement}
           activePage={currentlyActivePage}
-          children={children}
           goToPreviousPage={goToPreviousPage}
           goToNextPage={goToNextPage}
-        />
+        >
+          {children}
+        </CarouselPagination>
       )}
       <div
         className={classes.carouselInner}

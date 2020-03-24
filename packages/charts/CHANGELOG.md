@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-rc.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.1...v0.9.0-rc.2) (2020-03-23)
+
+
+### Bug Fixes
+
+* **ChartContainer - New:** data handling ([#363](https://github.com/SAP/ui5-webcomponents-react/issues/363)) ([fecef0d](https://github.com/SAP/ui5-webcomponents-react/commit/fecef0dcbed3c91187d03e95005cbdf6005aecf7))
+
+
+
+
+
 # [0.9.0-rc.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.8.7-rc.0...v0.9.0-rc.1) (2020-03-19)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

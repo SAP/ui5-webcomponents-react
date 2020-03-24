@@ -156,7 +156,6 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
       <Popover
         ref={ref}
         open={open}
-        onAfterOpen={handleAfterOpen}
         headerText={popupTitle}
         placementType={placement}
         openBy={variantManagementButton}
@@ -166,6 +165,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
         style={style}
         tooltip={tooltip}
         {...passThroughProps}
+        onAfterOpen={handleAfterOpen}
       >
         <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
           {variantItems.map((item) => (

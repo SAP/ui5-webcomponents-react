@@ -30,8 +30,13 @@ const styles = {
     '&::-webkit-scrollbar-corner': {
       backgroundColor: ThemingParameters.sapScrollBar_TrackColor
     },
-    '& section[id="ObjectPageSection-1"] > div[role="heading"]': {
+    '& section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'none'
+    },
+    // explanation why first-child selector is not sufficient here:
+    // https://stackoverflow.com/questions/7128406/css-select-the-first-child-from-elements-with-particular-attribute
+    '& section[id*="ObjectPageSection-"] ~ section[id*="ObjectPageSection-"] > div[role="heading"]': {
+      display: 'block'
     }
   },
   '@global html': {
