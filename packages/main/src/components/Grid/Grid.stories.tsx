@@ -4,7 +4,7 @@ import React from 'react';
 
 export const defaultStory = () => {
   return (
-    <Grid onRateChanged={action('rate changed')}>
+    <Grid>
       <div style={{ backgroundColor: 'lightgreen' }}>Div 1</div>
       <div style={{ backgroundColor: 'yellow' }}>Div 2</div>
       <div style={{ backgroundColor: 'cyan' }}>Div 3</div>
