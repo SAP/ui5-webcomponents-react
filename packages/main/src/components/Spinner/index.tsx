@@ -32,11 +32,15 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
   spinnerClasses.put(classes[`spinner${size}`]);
 
   useEffect(() => {
+    let timeout;
     if (delay > 0) {
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         setIsVisible(true);
       }, delay);
     }
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
 
   const passThroughProps = usePassThroughHtmlProps(props);

@@ -1,6 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 import React, {
   Children,
   CSSProperties,
@@ -14,7 +13,7 @@ import React, {
 } from 'react';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { styles } from './Grid.jss';
+import { GridClasses } from './Grid.jss';
 
 export enum GridPosition {
   Left = 'Left',
@@ -89,7 +88,7 @@ const getIndentFromString = (indent) => {
     : [undefined, 0, 0, 0, 0][currentSpan];
 };
 
-const useStyles = createComponentStyles(styles, { name: 'Grid' });
+const useStyles = createComponentStyles(GridClasses, { name: 'Grid' });
 
 /**
  * <code>import { Grid } from '@ui5/webcomponents-react/lib/Grid';</code>
@@ -108,8 +107,6 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
     defaultIndent,
     defaultSpan
   } = props;
-
-  const currentRange = useViewportRange('StdExt');
 
   const classes = useStyles();
   const gridClasses = StyleClassHelper.of(classes.grid);

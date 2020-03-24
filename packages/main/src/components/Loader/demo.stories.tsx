@@ -7,7 +7,7 @@ export const renderLoader = () => (
   <Loader
     type={select('type', LoaderType, LoaderType.Indeterminate)}
     progress={text('progress', '40%')}
-    delay={number('delay', 0)}
+    delay={number('delay', 1000)}
   />
 );
 renderLoader.story = {
