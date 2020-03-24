@@ -1,4 +1,4 @@
-import { ReactNode, UIEvent } from 'react';
+import { ReactNode } from 'react';
 import { HTMLEvent } from '../interfaces/HTMLEvent';
 import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 
@@ -23,6 +23,10 @@ export class Event {
     this.originalEvent = originalEvent;
     this.parameters = parameters;
     this.htmlSource = originalEvent.target;
+    deprecationNotice(
+      '@ui5/webcomponents-react-base/lib/Event',
+      'This class is deprecated and will be removed in future releases. We recommend working with CustomEvents from now on.'
+    );
   }
 
   /**
