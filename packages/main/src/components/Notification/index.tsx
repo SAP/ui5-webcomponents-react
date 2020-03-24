@@ -31,7 +31,7 @@ export interface NotificationProptypes extends CommonProps {
   onClick?: (e: any) => any;
   noShowMoreButton?: boolean;
   truncate?: boolean;
-  onClose?: (event: CustomEvent) => void;
+  onClose?: (event: CustomEvent<{}>) => void;
 
   children?: React.ReactElement<NotificationProptypes> | React.ReactElement<NotificationProptypes>[];
   collapsed?: boolean;

@@ -22,8 +22,8 @@ export interface PagePropTypes extends CommonProps {
   showBackButton?: boolean;
   showFooter?: boolean;
   showHeader?: boolean;
-  onNavButtonPress?: (e: CustomEvent) => void;
-  children: ReactElement<any> | Array<ReactElement<any>> | ReactNode;
+  onNavButtonPress?: (e: CustomEvent<{}>) => void;
+  children: ReactElement<any> | ReactElement<any>[] | ReactNode;
 }
 
 const useStyles = createComponentStyles(styles, {

@@ -28,7 +28,7 @@ export interface MessageBoxPropTypes extends CommonProps {
   actions?: MessageBoxActions[];
   icon?: ReactNode;
   type?: MessageBoxTypes;
-  onClose: (event: CustomEvent) => void;
+  onClose: (event: CustomEvent<{action: MessageBoxActions}>) => void;
 }
 
 const useStyles = createComponentStyles(styles, { name: 'MessageBox' });

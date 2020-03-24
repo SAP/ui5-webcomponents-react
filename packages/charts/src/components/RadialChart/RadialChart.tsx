@@ -13,7 +13,7 @@ interface RadialChartProps extends CommonProps {
   maxValue?: number;
   displayValue?: number | string;
   color?: CSSProperties['color'];
-  onDataPointClick?: (event: CustomEvent) => void;
+  onDataPointClick?: (event: CustomEvent<{value: unknown; payload: unknown; xIndex: number}>) => void;
   height?: number | string;
   width?: number | string;
 }
@@ -99,7 +99,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
           textAnchor="middle"
           dominantBaseline="middle"
           className="progress-label"
-          style={{ fontSize: ThemingParameters.sapMFontHeader3Size, fill: ThemingParameters.sapTextColor }}
+          style={{ fontSize: ThemingParameters.sapFontHeader3Size, fill: ThemingParameters.sapTextColor }}
         >
           {displayValue}
         </text>

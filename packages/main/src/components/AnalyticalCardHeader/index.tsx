@@ -25,7 +25,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   valueState?: ValueState;
   target?: string;
   deviation?: string;
-  onHeaderPress?: (event: CustomEvent) => void;
+  onHeaderPress?: (event: CustomEvent<{}>) => void;
   description?: string;
   counter?: string;
   counterState?: ValueState;

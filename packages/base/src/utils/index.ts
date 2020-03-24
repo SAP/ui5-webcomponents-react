@@ -40,6 +40,7 @@ export const polyfillDeprecatedEventAPI = (event: any) => {
   event.getOriginalEvent = () => {
     deprecationNotice(
       'Event',
+      // eslint-disable-next-line max-len
       "'event.getOriginalEvent' is deprecated and will be removed in the next major release. Please use the event object itself instead."
     );
     return event;
@@ -47,6 +48,7 @@ export const polyfillDeprecatedEventAPI = (event: any) => {
   event.getParameters = () => {
     deprecationNotice(
       'Event',
+      // eslint-disable-next-line max-len
       "'event.getParameters' is deprecated and will be removed in the next major release. Please use 'event.detail' instead."
     );
     return event.detail;
@@ -54,6 +56,7 @@ export const polyfillDeprecatedEventAPI = (event: any) => {
   event.getParameter = (parameter: keyof typeof event.detail) => {
     deprecationNotice(
       'Event',
+      // eslint-disable-next-line max-len
       "'event.getParameter' is deprecated and will be removed in the next major release. Please use 'event.detail[parameter]' instead."
     );
     return event.detail[parameter];
@@ -61,6 +64,7 @@ export const polyfillDeprecatedEventAPI = (event: any) => {
   event.getHtmlSourceElement = () => {
     deprecationNotice(
       'Event',
+      // eslint-disable-next-line max-len
       "'event.getHtmlSourceElement' is deprecated and will be removed in the next major release. Please use 'event.target' instead."
     );
     return event.target;
@@ -72,6 +76,7 @@ export const polyfillDeprecatedEventAPI = (event: any) => {
       get: (obj, prop) => {
         deprecationNotice(
           'Event',
+          // eslint-disable-next-line max-len
           "'event.parameters' is deprecated and will be removed in the next major release. Please use 'event.detail' instead."
         );
         return event.detail[prop];

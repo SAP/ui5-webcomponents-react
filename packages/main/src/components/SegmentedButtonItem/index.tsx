@@ -12,7 +12,7 @@ export interface SegmentedButtonItemPropTypes extends CommonProps {
   disabled?: boolean;
   children?: string;
   width?: CSSProperties['width'];
-  onClick?: (e: CustomEvent) => void;
+  onClick?: (e: CustomEvent<{ selectedKey: string | number }>) => void;
 }
 
 const useStyles = createComponentStyles(styles, { name: 'SegmentedButtonItem' });

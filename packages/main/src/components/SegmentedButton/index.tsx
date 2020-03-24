@@ -24,7 +24,7 @@ export interface SegmentedButtonPropTypes extends CommonProps {
   disabled?: boolean;
   selectedKey?: SelectedKey;
   children: ReactNode | ReactNode[];
-  onItemSelected?: (event: CustomEvent) => void;
+  onItemSelected?: (event: CustomEvent<{ selectedKey: string | number }>) => void;
 }
 
 const styles = {

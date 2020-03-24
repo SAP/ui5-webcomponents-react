@@ -21,7 +21,7 @@ export interface FilterItemPropTypes extends CommonProps {
   type?: FilterType;
   label?: string;
   filterItems?: any[];
-  onChange?: (event: CustomEvent) => void;
+  onChange?: (event: CustomEvent<{selectedItem?: unknown; selectedItems?: unknown}>) => void;
   loading?: boolean;
   children?: ReactNode;
   valueParamName?: string;

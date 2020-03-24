@@ -2,7 +2,7 @@ import { polyfillDeprecatedEventAPI } from '@ui5/webcomponents-react-base/lib/Ut
 import React, { PureComponent, ReactNode, RefObject } from 'react';
 
 export interface AutoCloseOnOutsideClickPropTypes {
-  onOutsideClick?: (e: CustomEvent) => void;
+  onOutsideClick?: (e: CustomEvent<{}>) => void;
   children?: ReactNode[] | ReactNode;
 }
 

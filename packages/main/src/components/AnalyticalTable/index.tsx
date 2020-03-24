@@ -108,11 +108,11 @@ export interface TableProps extends CommonProps {
 
   // events
 
-  onSort?: (e?: CustomEvent) => void;
-  onGroup?: (e?: CustomEvent) => void;
-  onRowSelected?: (e?: CustomEvent) => any;
-  onRowExpandChange?: (e?: CustomEvent) => any;
-  onColumnsReordered?: (e?: CustomEvent) => void;
+  onSort?: (e: CustomEvent<{column: unknown; sortDirection: string}>) => void;
+  onGroupBy?: (e: CustomEvent<{column: unknown; isGrouped: boolean}>) => void;
+  onRowSelected?: (e?: CustomEvent<{allRowsSelected?: boolean; row?: unknown; isSelected?: boolean}>) => any;
+  onRowExpandChange?: (e?: CustomEvent<{row: unknown; column: unknown}>) => any;
+  onColumnsReordered?: (e?: CustomEvent<{columnsNewOrder: string[]; column: unknown}>) => void;
   /**
    * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api/useTable.md#table-options)
    */

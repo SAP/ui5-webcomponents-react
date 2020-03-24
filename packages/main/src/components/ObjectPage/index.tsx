@@ -18,7 +18,8 @@ import React, {
   useEffect,
   useMemo,
   useRef,
-  useState
+  useState,
+  ComponentType
 } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
@@ -44,7 +45,9 @@ export interface ObjectPagePropTypes extends CommonProps {
 
   selectedSectionId?: string;
   selectedSubSectionId?: string;
-  onSelectedSectionChanged?: (event: CustomEvent) => void;
+  onSelectedSectionChanged?: (
+    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: ComponentType }>
+  ) => void;
 
   renderBreadcrumbs?: () => JSX.Element;
   renderKeyInfos?: () => JSX.Element;

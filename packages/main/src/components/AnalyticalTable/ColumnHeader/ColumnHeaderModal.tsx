@@ -20,8 +20,8 @@ export interface ColumnHeaderModalProperties {
   showGroup?: boolean;
   column: ColumnType;
   style: CSSProperties;
-  onSort?: (e: CustomEvent) => void;
-  onGroupBy?: (e: CustomEvent) => void;
+  onSort?: (e: CustomEvent<{column: unknown; sortDirection: string}>) => void;
+  onGroupBy?: (e: CustomEvent<{column: unknown; isGrouped: boolean}>) => void;
 }
 
 const staticStyle = { fontWeight: 'normal' };
