@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
+import { ReactNode, UIEvent } from 'react';
 import { HTMLEvent } from '../interfaces/HTMLEvent';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 
 export interface Parameters {
   [key: string]: number | string | object | boolean | Parameters;

@@ -1,5 +1,5 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -44,7 +44,7 @@ export interface ObjectPagePropTypes extends CommonProps {
 
   selectedSectionId?: string;
   selectedSubSectionId?: string;
-  onSelectedSectionChanged?: (event: Event) => void;
+  onSelectedSectionChanged?: (event: CustomEvent) => void;
 
   renderBreadcrumbs?: () => JSX.Element;
   renderKeyInfos?: () => JSX.Element;
@@ -151,7 +151,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
   const handleOnSectionSelected = useCallback(
     (e) => {
       isProgrammaticallyScrolled.current = true;
-      const newSelectionSection = e.getParameter('props')?.id;
+      const newSelectionSection = e.detail.props?.id;
       setInternalSelectedSectionId((oldSelectedSection) => {
         if (oldSelectedSection === newSelectionSection) {
           scrollToSection(newSelectionSection);
@@ -273,10 +273,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const fireOnSelectedChangedEvent = debounce((e) => {
     onSelectedSectionChanged(
-      Event.of(null, e.getOriginalEvent(), {
-        selectedSectionIndex: e.getParameter('index'),
-        selectedSectionId: e.getParameter('props').id,
-        section: e.getParameters()
+      enrichEventWithDetails(e, {
+        selectedSectionIndex: e.detail.index,
+        selectedSectionId: e.props.id,
+        section: e.detail
       })
     );
   }, 500);
@@ -285,10 +285,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     (e) => {
       isProgrammaticallyScrolled.current = true;
       if (mode === ObjectPageMode.IconTabBar) {
-        const sectionId = e.getParameter('section').props?.id;
+        const sectionId = e.detail.section.props?.id;
         setInternalSelectedSectionId(sectionId);
       }
-      const subSection = e.getParameter('subSection');
+      const subSection = e.detail.subSection;
       setSelectedSubSectionId(subSection.props.id);
     },
     [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled]
@@ -296,7 +296,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   const onToggleHeaderContentVisibility = useCallback(
     (e) => {
-      const srcElement = e.getHtmlSourceElement();
+      const srcElement = e.target;
       const shouldHideHeader = srcElement.icon === 'slim-arrow-up';
       if (shouldHideHeader) {
         objectPageRef.current.classList.add(classes.headerCollapsed);

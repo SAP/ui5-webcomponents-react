@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-left-arrow';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
@@ -22,7 +22,7 @@ export interface PagePropTypes extends CommonProps {
   showBackButton?: boolean;
   showFooter?: boolean;
   showHeader?: boolean;
-  onNavButtonPress?: (e: Event) => void;
+  onNavButtonPress?: (e: CustomEvent) => void;
   children: ReactElement<any> | Array<ReactElement<any>> | ReactNode;
 }
 
@@ -55,7 +55,7 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
   const handleNavBackButtonPress = useCallback(
     (e) => {
       if (typeof onNavButtonPress === 'function') {
-        onNavButtonPress(Event.of(null, e.getOriginalEvent()));
+        onNavButtonPress(enrichEventWithDetails(e));
       }
     },
     [onNavButtonPress]

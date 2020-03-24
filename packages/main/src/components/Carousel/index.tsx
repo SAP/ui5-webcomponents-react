@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
@@ -30,7 +30,7 @@ export interface CarouselPropTypes
   /**
    * This event is fired after a carousel swipe has been completed
    */
-  onPageChanged?: (event: Event) => void;
+  onPageChanged?: (event: CustomEvent) => void;
   /**
    * The height of the carousel. Note that when a percentage value is used, the height of the surrounding container
    * must be defined.
@@ -93,7 +93,7 @@ const Carousel: FC<CarouselPropTypes> = forwardRef((props: CarouselPropTypes, re
   const selectPageAtIndex = useCallback(
     (index, event) => {
       setCurrentlyActivePage(index);
-      onPageChanged(Event.of(null, event, { selectedIndex: index }));
+      onPageChanged(enrichEventWithDetails(event, { selectedIndex: index }));
     },
     [onPageChanged, setCurrentlyActivePage]
   );

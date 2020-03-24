@@ -34,7 +34,7 @@ export const generatedDefaultStory = () => (
       onProfileClick={action('onProfileClick')}
       onProductSwitchClick={(e) => {
         // @ts-ignore
-        document.getElementById('product-switch-popover').openBy(e.getParameter('targetRef'));
+        document.getElementById('product-switch-popover').openBy(e.detail.targetRef);
       }}
       searchField={null}
       startButton={null}

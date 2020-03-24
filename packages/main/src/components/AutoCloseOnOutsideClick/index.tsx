@@ -1,8 +1,8 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { polyfillDeprecatedEventAPI } from '@ui5/webcomponents-react-base/lib/Utils';
 import React, { PureComponent, ReactNode, RefObject } from 'react';
 
 export interface AutoCloseOnOutsideClickPropTypes {
-  onOutsideClick?: (e: Event) => void;
+  onOutsideClick?: (e: CustomEvent) => void;
   children?: ReactNode[] | ReactNode;
 }
 
@@ -36,7 +36,7 @@ export class AutoCloseOnOutsideClick extends PureComponent<
           isContentAreaOpen: !this.state.isContentAreaOpen
         });
         document.removeEventListener('mousedown', this.checkFocus);
-        this.props.onOutsideClick(Event.of(this, oEvent));
+        this.props.onOutsideClick(polyfillDeprecatedEventAPI(oEvent));
       }
     }
   };

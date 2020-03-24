@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
@@ -18,10 +18,10 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
   modal?: boolean; // @generated
   noArrow?: boolean; // @generated
   allowTargetOverlap?: boolean; // @generated
-  onBeforeOpen?: (event: Event) => void; // @generated
-  onAfterOpen?: (event: Event) => void; // @generated
-  onBeforeClose?: (event: Event) => void; // @generated
-  onAfterClose?: (event: Event) => void; // @generated
+  onBeforeOpen?: (event: CustomEvent) => void; // @generated
+  onAfterOpen?: (event: CustomEvent) => void; // @generated
+  onBeforeClose?: (event: CustomEvent) => void; // @generated
+  onAfterClose?: (event: CustomEvent) => void; // @generated
   header?: ReactNode; // @generated
   footer?: ReactNode; // @generated
   content?: ReactNode | ReactNode[];

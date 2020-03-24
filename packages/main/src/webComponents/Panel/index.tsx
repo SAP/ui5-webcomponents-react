@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Panel from '@ui5/webcomponents/dist/Panel';
@@ -10,7 +10,7 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
   fixed?: boolean; // @generated
   collapsed?: boolean; // @generated
   accessibleRole?: PanelAccessibleRoles; // @generated
-  onToggle?: (event: Event) => void; // @generated
+  onToggle?: (event: CustomEvent) => void; // @generated
   header?: ReactNode; // @generated
   children?: ReactNode | ReactNode[];
 }

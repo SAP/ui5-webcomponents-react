@@ -43,7 +43,7 @@ describe('SegmentedButtonItem', () => {
     const wrapper = mount(<SegmentedButtonItem id={1} icon={<Icon name="add" />} onClick={callback} />);
     wrapper.simulate('click');
     expect(wrapper.render()).toMatchSnapshot();
-    expect(getEventFromCallback(callback).getParameter('selectedKey')).toEqual(1);
+    expect(getEventFromCallback(callback).detail.selectedKey).toEqual(1);
   });
 
   createPassThroughPropsTest(SegmentedButtonItem);

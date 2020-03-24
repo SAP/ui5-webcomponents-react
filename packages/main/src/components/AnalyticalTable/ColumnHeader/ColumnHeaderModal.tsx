@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
@@ -20,8 +20,8 @@ export interface ColumnHeaderModalProperties {
   showGroup?: boolean;
   column: ColumnType;
   style: CSSProperties;
-  onSort?: (e: Event) => void;
-  onGroupBy?: (e: Event) => void;
+  onSort?: (e: CustomEvent) => void;
+  onGroupBy?: (e: CustomEvent) => void;
 }
 
 const staticStyle = { fontWeight: 'normal' };
@@ -35,14 +35,14 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
 
   const handleSort = useCallback(
     (e) => {
-      const sortType = e.getParameter('item').getAttribute('data-sort');
+      const sortType = e.detail.item.getAttribute('data-sort');
 
       switch (sortType) {
         case 'asc':
           column.toggleSortBy(false);
           if (typeof onSort === 'function') {
             onSort(
-              Event.of(null, e, {
+              enrichEventWithDetails(e, {
                 column,
                 sortDirection: sortType
               })
@@ -53,7 +53,7 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
           column.toggleSortBy(true);
           if (typeof onSort === 'function') {
             onSort(
-              Event.of(null, e, {
+              enrichEventWithDetails(e, {
                 column,
                 sortDirection: sortType
               })
@@ -65,7 +65,7 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
           column.toggleGroupBy(willGroup);
           if (typeof onGroupBy === 'function') {
             onGroupBy(
-              Event.of(null, e, {
+              enrichEventWithDetails(e, {
                 column,
                 isGrouped: willGroup
               })

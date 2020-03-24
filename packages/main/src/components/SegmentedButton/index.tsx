@@ -1,5 +1,5 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
@@ -24,7 +24,7 @@ export interface SegmentedButtonPropTypes extends CommonProps {
   disabled?: boolean;
   selectedKey?: SelectedKey;
   children: ReactNode | ReactNode[];
-  onItemSelected?: (event: Event) => void;
+  onItemSelected?: (event: CustomEvent) => void;
 }
 
 const styles = {
@@ -80,11 +80,11 @@ const SegmentedButton: FC<SegmentedButtonPropTypes> = forwardRef(
 
     const handleSegmentedButtonItemSelected = useCallback(
       (originalOnclick) => (e) => {
-        const newSelectedKey = e.getParameter('selectedKey');
+        const newSelectedKey = e.detail.selectedKey;
         if (newSelectedKey !== internalSelectedKey) {
           setSelectedKey(newSelectedKey);
           if (typeof onItemSelected === 'function') {
-            onItemSelected(Event.of(null, e.getOriginalEvent(), e.getParameters()));
+            onItemSelected(enrichEventWithDetails(e, e.detail));
           }
         }
         if (typeof originalOnclick === 'function') {

@@ -1,5 +1,5 @@
 import UI5ShellBarItem from '@ui5/webcomponents-fiori/dist/ShellBarItem';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
@@ -7,7 +7,7 @@ import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
   icon?: string; // @generated
   text?: string; // @generated
-  onItemClick?: (event: Event) => void; // @generated
+  onItemClick?: (event: CustomEvent) => void; // @generated
 }
 
 /**

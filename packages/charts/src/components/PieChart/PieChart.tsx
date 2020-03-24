@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
@@ -63,7 +63,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     (payload, index, event) => {
       if (payload && onDataPointClick && payload.value) {
         onDataPointClick(
-          Event.of(null, event, {
+          enrichEventWithDetails(event, {
             value: payload.value,
             dataKey: currentDataKeys[0],
             name: payload.name,

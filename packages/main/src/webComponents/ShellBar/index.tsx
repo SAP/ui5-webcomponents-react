@@ -1,5 +1,5 @@
 import UI5ShellBar from '@ui5/webcomponents-fiori/dist/ShellBar';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
@@ -13,12 +13,12 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   showNotifications?: boolean; // @generated
   showProductSwitch?: boolean; // @generated
   showCoPilot?: boolean; // @generated
-  onNotificationsClick?: (event: Event) => void; // @generated
-  onProfileClick?: (event: Event) => void; // @generated
-  onProductSwitchClick?: (event: Event) => void; // @generated
-  onLogoClick?: (event: Event) => void; // @generated
-  onCoPilotClick?: (event: Event) => void; // @generated
-  onMenuItemClick?: (event: Event) => void; // @generated
+  onNotificationsClick?: (event: CustomEvent) => void; // @generated
+  onProfileClick?: (event: CustomEvent) => void; // @generated
+  onProductSwitchClick?: (event: CustomEvent) => void; // @generated
+  onLogoClick?: (event: CustomEvent) => void; // @generated
+  onCoPilotClick?: (event: CustomEvent) => void; // @generated
+  onMenuItemClick?: (event: CustomEvent) => void; // @generated
   children?: ReactNode; // @generated
   menuItems?: ReactNode; // @generated
   searchField?: ReactNode; // @generated

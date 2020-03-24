@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5RadioButton from '@ui5/webcomponents/dist/RadioButton';
@@ -13,7 +13,7 @@ export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
   valueState?: ValueState; // @generated
   name?: string; // @generated
   value?: string; // @generated
-  onSelect?: (event: Event) => void; // @generated
+  onSelect?: (event: CustomEvent) => void; // @generated
 }
 
 /**

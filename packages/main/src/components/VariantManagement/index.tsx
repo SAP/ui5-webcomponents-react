@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from "@ui5/webcomponents-react-base/lib/Utils";
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -27,7 +27,7 @@ export interface VariantManagementPropTypes extends CommonProps {
   initialSelectedKey?: string;
   closeOnItemSelect?: boolean;
   variantItems: VariantItem[];
-  onSelect?: (event: Event) => void;
+  onSelect?: (event: CustomEvent<{item: HTMLElement; selectedItem: VariantItem}>) => void;
   level?: TitleLevel;
   disabled?: boolean;
 }
@@ -140,10 +140,10 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
 
     const handleVariantItemSelect = useCallback(
       (event) => {
-        const newSelectedKey = event.getParameter('item').dataset.key;
+        const newSelectedKey = event.detail.item.dataset.key;
         const selectedItem = getItemByKey(newSelectedKey) || variantItems[0];
         setSelectedKey(newSelectedKey);
-        onSelect(Event.of(null, event.getOriginalEvent(), { selectedItem }));
+        onSelect(enrichEventWithDetails(event, { ...event.details, selectedItem}));
         if (closeOnItemSelect) {
           handleCancelButtonClick();
         }

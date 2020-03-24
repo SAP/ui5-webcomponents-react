@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
@@ -15,8 +15,8 @@ export interface DatePickerPropTypes extends WithWebComponentPropTypes {
   readonly?: boolean; // @generated
   placeholder?: string; // @generated
   name?: string; // @generated
-  onChange?: (event: Event) => void; // @generated
-  onInput?: (event: Event) => void; // @generated
+  onChange?: (event: CustomEvent) => void; // @generated
+  onInput?: (event: CustomEvent) => void; // @generated
 }
 
 /**

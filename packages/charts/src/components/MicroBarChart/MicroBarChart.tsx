@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
@@ -49,7 +49,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     (e, i) => {
       if (e && onDataPointClick) {
         onDataPointClick(
-          Event.of(null, e, {
+          enrichEventWithDetails(e, {
             dataKey: Object.keys(e).filter((key) =>
               e.value.length ? e[key] === e.value[1] - e.value[0] : e[key] === e.value && key !== 'value'
             )[0],

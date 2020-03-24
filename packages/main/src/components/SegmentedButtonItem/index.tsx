@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
@@ -12,7 +12,7 @@ export interface SegmentedButtonItemPropTypes extends CommonProps {
   disabled?: boolean;
   children?: string;
   width?: CSSProperties['width'];
-  onClick?: (e: Event) => void;
+  onClick?: (e: CustomEvent) => void;
 }
 
 const useStyles = createComponentStyles(styles, { name: 'SegmentedButtonItem' });
@@ -52,7 +52,7 @@ const SegmentedButtonItem: FC<SegmentedButtonItemPropTypes> = forwardRef(
     const handleOnClick = useCallback(
       (e) => {
         if (!disabled && typeof onClick === 'function') {
-          onClick(Event.of(null, e, { selectedKey: id }));
+          onClick(enrichEventWithDetails(e, { selectedKey: id }));
         }
       },
       [onClick, disabled, id]

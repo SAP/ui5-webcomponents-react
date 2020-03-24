@@ -3,7 +3,7 @@ import '@ui5/webcomponents-icons/dist/icons/group-2';
 import '@ui5/webcomponents-icons/dist/icons/sort-ascending';
 import '@ui5/webcomponents-icons/dist/icons/sort-descending';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
@@ -15,7 +15,7 @@ import { ColumnHeaderModal } from './ColumnHeaderModal';
 export interface ColumnHeaderProps {
   id: string;
   defaultSortDesc: boolean;
-  onFilteredChange: (event: Event) => void;
+  onFilteredChange: (event: CustomEvent) => void;
   children: ReactNode | ReactNodeArray;
   grouping: string;
   className: string;
@@ -25,8 +25,8 @@ export interface ColumnHeaderProps {
   sortable: boolean;
   filterable: boolean;
   isLastColumn?: boolean;
-  onSort?: (e: Event) => void;
-  onGroupBy?: (e: Event) => void;
+  onSort?: (e: CustomEvent) => void;
+  onGroupBy?: (e: CustomEvent) => void;
   onDragStart: DragEventHandler<HTMLDivElement>;
   onDragOver: DragEventHandler<HTMLDivElement>;
   onDrop: DragEventHandler<HTMLDivElement>;
