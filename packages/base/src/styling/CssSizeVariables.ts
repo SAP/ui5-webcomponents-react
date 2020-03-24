@@ -61,6 +61,12 @@ export const cssVariablesStyles = `
   --sapLink_Hover_Color:var(--sapUiLinkHover);
   --sapLink_InvertedColor:var(--sapUiLinkInverted);
   --sapLink_Active_Color:var(--sapUiLinkActive);
+  --sapButton_Selected_Background:var(--sapUiSegmentedButtonSelectedBackground);
+  --sapButton_Selected_TextColor:var(--sapUiSegmentedButtonSelectedTextColor);
+  --sapButton_Selected_BorderColor:var(--sapUiSegmentedButtonSelectedHoverBorderColor);
+  --sapContent_ContrastIconColor:var(--sapUiContentContrastIconColor);
+  --sapButton_Active_Background:var(--sapUiSegmentedButtonActiveBackground);
+  --sapButton_Active_TextColor:var(--sapUiButtonActiveColor);
 
 }
 
