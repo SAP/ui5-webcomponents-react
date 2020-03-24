@@ -40,7 +40,8 @@ const styles = {
     background: ThemingParameters.sapButton_Selected_Background,
     color: ThemingParameters.sapButton_Selected_TextColor,
     borderColor: ThemingParameters.sapButton_Selected_BorderColor,
-    '--sapContent_NonInteractiveIconColor': ThemingParameters.sapContent_ContrastIconColor,
+    // TODO: replace with ThemingParameters.sapContent_ContrastIconColor after ui5-webcomponents upgrade to rc.6
+    '--sapContent_NonInteractiveIconColor': 'var(--sapUiContentContrastIconColor)',
     '$:active': {
       background: ThemingParameters.sapButton_Active_Background,
       color: ThemingParameters.sapButton_Active_TextColor
