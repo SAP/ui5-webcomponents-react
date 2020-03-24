@@ -1,4 +1,4 @@
-import { deprecationNotice } from '@ui5/webcomponents-react-base';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
