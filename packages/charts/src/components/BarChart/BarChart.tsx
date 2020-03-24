@@ -105,18 +105,19 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     true
   );
 
-  const marginLeft =
-    dataset
-      .map((data) => {
-        return data[labelKey].split(' ').length > 0
-          ? data[labelKey].split(' ').reduce((longest, current) => {
-              return current.length > longest.length ? current : longest;
-            })
-          : data[labelKey];
-      })
-      .reduce((longest, current) => {
-        return current.length > longest.length ? current : longest;
-      }).length * 4;
+  const marginLeft = dataset
+    ? dataset
+        .map((data) => {
+          return data[labelKey].split(' ').length > 0
+            ? data[labelKey].split(' ').reduce((longest, current) => {
+                return current.length > longest.length ? current : longest;
+              })
+            : data[labelKey];
+        })
+        .reduce((longest, current) => {
+          return current.length > longest.length ? current : longest;
+        }).length * 4
+    : 20;
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
