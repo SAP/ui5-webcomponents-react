@@ -1,9 +1,11 @@
 import { UIEvent } from 'react';
 
 export const deprecationNotice = (component: string, message: string) => {
-  const value = `*** ui5-webcomponents-react Deprecation Notice - ${component} ***\n`;
-  // eslint-disable-next-line no-console
-  console.warn(`${value}${message}`);
+  if (process.env.NODE_ENV === 'development') {
+    const value = `*** ui5-webcomponents-react Deprecation Notice - ${component} ***\n`;
+    // eslint-disable-next-line no-console
+    console.warn(`${value}${message}`);
+  }
 };
 
 export const getScrollBarWidth = () => {
