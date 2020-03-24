@@ -16,7 +16,6 @@ const styles = {
   tableHeaderRow: {
     boxShadow: 'none !important',
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    zIndex: 1,
     position: 'relative'
   },
   th: {
