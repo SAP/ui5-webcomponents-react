@@ -20,6 +20,7 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
+import { useChartMargin } from '../../hooks/useChartMargin';
 
 type LineChartProps = RechartBaseProps;
 
@@ -44,6 +45,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     dataLabelFormatter = (d) => d,
     dataLabelCustomElement = undefined,
     chartConfig = {
+      margin: {},
       yAxisVisible: false,
       xAxisVisible: true,
       gridStroke: ThemingParameters.sapList_BorderColor,
@@ -106,6 +108,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
+  const marginChart = useChartMargin(dataset, labelKey, chartConfig.margin);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -119,7 +123,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       tooltip={tooltip}
       slot={slot}
     >
-      <LineChartLib margin={{ right: 30, top: 40, bottom: 30 }} data={dataset} onClick={onDataPointClickInternal}>
+      <LineChartLib margin={marginChart} data={dataset} onClick={onDataPointClickInternal}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
@@ -132,6 +136,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           tickLine={false}
           yAxisId="left"
           tickFormatter={yAxisFormatter}
+          interval={0}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
@@ -140,6 +145,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
             yAxisId="right"
+            interval={0}
           />
         )}
         {currentDataKeys.map((key, index) => (
