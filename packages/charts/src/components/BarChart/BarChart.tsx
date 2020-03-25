@@ -130,7 +130,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis type="number" tick={XAxisLabel} />}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} type="number" tick={XAxisLabel} />}
         <YAxis
           tickFormatter={yAxisFormatter}
           unit={chartConfig.yAxisUnit}
