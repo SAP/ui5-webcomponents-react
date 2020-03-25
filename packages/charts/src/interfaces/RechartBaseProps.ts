@@ -17,6 +17,13 @@ export interface RechartBaseProps extends ChartContainerProps {
   dataLabelCustomElement?: JSX.Element;
 
   chartConfig?: {
+    margin?: {
+      right: number;
+      left: number;
+      top: number;
+      bottom: number;
+    };
+
     yAxisVisible?: boolean;
     xAxisVisible?: boolean;
     xAxisUnit?: string;

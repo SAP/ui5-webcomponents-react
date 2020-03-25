@@ -9,6 +9,7 @@ import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { usePieDataLabel } from '../../hooks/useLabelElements';
+import { useChartMargin } from '../../hooks/useChartMargin';
 
 type PieChartProps = RechartBaseProps;
 
@@ -31,6 +32,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     dataLabelCustomElement = undefined,
     dataLabelFormatter = (d) => d,
     chartConfig = {
+      margin: {},
       yAxisVisible: true,
       xAxisVisible: true,
       gridStroke: 'white',
@@ -77,6 +79,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
 
   const PieDataLabel = usePieDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter);
 
+  const marginChart = useChartMargin(dataset, labelKey, chartConfig.margin);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -92,7 +96,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     >
       <PieChartLib>
         <Pie
-          margin={{ right: 30, top: 40, bottom: 30 }}
+          margin={marginChart}
           innerRadius={chartConfig.innerRadius}
           paddingAngle={chartConfig.paddingAngle}
           dataKey={currentDataKeys[0] ?? ''}

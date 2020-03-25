@@ -18,6 +18,7 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel } from '../../hooks/useLabelElements';
+import { useChartMargin } from '../../hooks/useChartMargin';
 
 type RadarChartProps = RechartBaseProps;
 
@@ -42,6 +43,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     dataLabelCustomElement = undefined,
     onLegendClick,
     chartConfig = {
+      margin: {},
       legendPosition: 'bottom',
       dataLabel: false,
       polarGridType: 'circle'
@@ -79,6 +81,8 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
 
   const RadarDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter, false, false);
 
+  const marginChart = useChartMargin(dataset, labelKey, chartConfig.margin);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -92,7 +96,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       tooltip={tooltip}
       slot={slot}
     >
-      <RadarChartLib data={dataset} margin={{ left: 30, right: 30, top: 40, bottom: 30 }}>
+      <RadarChartLib data={dataset} margin={marginChart}>
         <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis
           dataKey={labelKey}

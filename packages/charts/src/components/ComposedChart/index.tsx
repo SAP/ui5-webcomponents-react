@@ -20,7 +20,7 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
-import { useSetMarginLeft } from '../../hooks/useSetMarginLeft';
+import { useChartMargin } from '../../hooks/useChartMargin';
 
 enum ChartTypes {
   line = Line,
@@ -84,6 +84,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     elements,
     onLegendClick,
     chartConfig = {
+      margin: {},
       xAxisUnit: '',
       yAxisUnit: '',
       yAxisVisible: false,
@@ -171,7 +172,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
-  const marginLeft = useSetMarginLeft(dataset, labelKey);
+  const marginChart = useChartMargin(dataset, labelKey, chartConfig.margin);
 
   return (
     <ChartContainer
@@ -186,7 +187,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       tooltip={tooltip}
       slot={slot}
     >
-      <ComposedChartLib margin={{ right: 30, top: 40, bottom: 30, left: marginLeft }} data={dataset}>
+      <ComposedChartLib margin={marginChart} data={dataset}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
@@ -206,6 +207,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           tickLine={false}
           yAxisId="left"
           tickFormatter={yAxisFormatter}
+          interval={0}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
@@ -214,6 +216,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             stroke={chartConfig.secondYAxis.color}
             orientation="right"
             yAxisId="right"
+            interval={0}
           />
         )}
         <Tooltip />
