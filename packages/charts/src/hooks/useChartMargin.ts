@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import { getTextWidth } from '../util/Utils';
 
-export const useChartMargin = (dataset, labelKey, margin, bar?) =>
+export const useChartMargin = (dataset, formatter, labelKey, margin, bar?) =>
   useMemo(() => {
     let marginLeft = 20;
     if (dataset && bar && typeof margin?.left !== 'number') {
       marginLeft = Math.max(
         ...dataset
-          .map((data) => data[labelKey].split(' '))
+          .map((data) => formatter(data[labelKey]).split(' '))
           .flat()
           .map(getTextWidth)
       );

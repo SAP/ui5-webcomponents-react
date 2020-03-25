@@ -108,7 +108,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
-  const marginChart = useChartMargin(dataset, labelKey, chartConfig.margin);
+  const marginChart = useChartMargin(dataset, yAxisFormatter, labelKey, chartConfig.margin);
 
   return (
     <ChartContainer
