@@ -243,7 +243,8 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
 
   useEffect(() => {
     const fillerDivObserver = new ResizeObserver(() => {
-      const availableScrollHeight = objectPageRef.current.clientHeight - totalHeaderHeight;
+      const maxHeight = Math.min(objectPageRef.current.clientHeight, window.innerHeight);
+      const availableScrollHeight = maxHeight - totalHeaderHeight;
       const sections = objectPageRef.current.querySelectorAll('[id^="ObjectPageSection"]');
       if (!sections || sections.length < 1) {
         return;

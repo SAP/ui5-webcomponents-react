@@ -11,6 +11,7 @@ const styles = {
   objectPage: {
     width: '100%',
     height: '100%',
+    maxHeight: '100vh',
     position: 'relative',
     whiteSpace: 'normal',
     fontFamily: ThemingParameters.sapFontFamily,
