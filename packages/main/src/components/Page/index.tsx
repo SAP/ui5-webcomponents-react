@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-left-arrow';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
@@ -22,8 +22,8 @@ export interface PagePropTypes extends CommonProps {
   showBackButton?: boolean;
   showFooter?: boolean;
   showHeader?: boolean;
-  onNavButtonPress?: (e: Event) => void;
-  children: ReactElement<any> | Array<ReactElement<any>> | ReactNode;
+  onNavButtonPress?: (e: CustomEvent<{}>) => void;
+  children: ReactElement<any> | ReactElement<any>[] | ReactNode;
 }
 
 const useStyles = createComponentStyles(styles, {
@@ -55,7 +55,7 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
   const handleNavBackButtonPress = useCallback(
     (e) => {
       if (typeof onNavButtonPress === 'function') {
-        onNavButtonPress(Event.of(null, e.getOriginalEvent()));
+        onNavButtonPress(enrichEventWithDetails(e));
       }
     },
     [onNavButtonPress]
@@ -98,7 +98,7 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
 
   pageContainer.put(classes[`background${backgroundDesign}`]);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onNavButtonPress']);
 
   return (
     <div ref={ref} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot} {...passThroughProps}>

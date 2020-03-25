@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ColumnChartPlaceholder';
@@ -94,7 +94,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     (payload, eventOrIndex, event) => {
       if (payload && onDataPointClick) {
         onDataPointClick(
-          Event.of(null, event, {
+          enrichEventWithDetails(event, {
             dataKey: Object.keys(payload).filter((key) =>
               payload.value.length
                 ? payload[key] === payload.value[1] - payload.value[0]

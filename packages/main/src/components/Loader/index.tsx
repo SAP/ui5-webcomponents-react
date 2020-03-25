@@ -40,11 +40,15 @@ const Loader: FC<LoaderProps> = forwardRef((props: LoaderProps, ref: RefObject<H
   }, [progress, style, type]);
 
   useEffect(() => {
+    let timeout;
     if (delay > 0) {
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         setIsVisible(true);
       }, delay);
     }
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
 
   const passThroughProps = usePassThroughHtmlProps(props);

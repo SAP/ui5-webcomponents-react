@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 
 const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
@@ -30,7 +30,7 @@ export const useTableRowStyling = (hooks) => {
         row.toggleRowSelected();
 
         if (typeof onRowSelected === 'function') {
-          onRowSelected(Event.of(null, e, { row, isSelected: !row.isSelected }));
+          onRowSelected(enrichEventWithDetails(e, { row, isSelected: !row.isSelected }));
         }
 
         if (selectionMode === TableSelectionMode.SINGLE_SELECT) {

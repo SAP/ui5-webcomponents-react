@@ -156,7 +156,7 @@ describe('ObjectPage', () => {
       .find('section[role="navigation"] ui5-button')
       .first()
       .simulate('click');
-    expect(getEventFromCallback(callback).getParameter('selectedSectionId')).toEqual('1');
+    expect(getEventFromCallback(callback).detail.selectedSectionId).toEqual('1');
   });
 
   test('No Header', () => {

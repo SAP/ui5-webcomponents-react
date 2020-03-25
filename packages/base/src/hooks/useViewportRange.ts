@@ -8,12 +8,14 @@ export const useViewportRange = (rangeSet) => {
     ({ name: range }) => {
       setCurrentRange(range);
     },
-    [currentRange, setCurrentRange]
+    [setCurrentRange]
   );
 
   useEffect(() => {
     Device.media.attachHandler(onWindowResize, null, 'StdExt');
-    return () => Device.resize.detachHandler(onWindowResize, null);
+    return () => {
+      Device.resize.detachHandler(onWindowResize, null);
+    };
   }, [onWindowResize]);
 
   return currentRange;

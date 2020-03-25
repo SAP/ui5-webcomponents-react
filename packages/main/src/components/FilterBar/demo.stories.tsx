@@ -25,9 +25,6 @@ const renderVariants = () => {
       style={{ width: '300px', height: 'auto' }}
       initialSelectedKey="2"
       variantItems={variantItems}
-      onSelect={(e) => {
-        console.log(e.getParameter('selectedItem').key);
-      }}
     />
   );
 };
@@ -36,9 +33,6 @@ const renderSearch = () => {
   return (
     <Input
       placeholder={'Search'}
-      onSubmit={() => {
-        console.log('search');
-      }}
     />
   );
 };

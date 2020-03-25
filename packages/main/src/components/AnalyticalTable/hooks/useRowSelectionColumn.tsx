@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React from 'react';
@@ -23,10 +23,10 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
     }
 
     const toggleAllRowsSelected = (e) => {
-      const allRowsSelected = e.getParameter('checked');
+      const allRowsSelected = e.detail.checked;
       instance.toggleAllRowsSelected(allRowsSelected);
       if (typeof onRowSelected === 'function') {
-        onRowSelected(Event.of(null, e, { allRowsSelected }));
+        onRowSelected(enrichEventWithDetails(e, { allRowsSelected }));
       }
     };
 

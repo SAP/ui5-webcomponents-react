@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { PluginHook } from 'react-table';
 
 export const useToggleRowExpand: PluginHook<any> = (hooks) => {
@@ -15,7 +15,7 @@ export const useToggleRowExpand: PluginHook<any> = (hooks) => {
           column = row.cells.find((cell) => cell.column.id === row.groupByID).column;
         }
 
-        onRowExpandChange(Event.of(null, e, { row, column }));
+        onRowExpandChange(enrichEventWithDetails(e, { row, column }));
       }
     };
   });

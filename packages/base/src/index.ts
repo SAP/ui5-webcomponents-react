@@ -15,7 +15,7 @@ import * as spacing from './lib/spacing';
 import { StyleClassHelper } from './lib/StyleClassHelper';
 import { useConsolidatedRef } from './lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from './lib/usePassThroughHtmlProps';
-import { deprecationNotice, getScrollBarWidth } from './lib/Utils';
+import { deprecationNotice, getScrollBarWidth, enrichEventWithDetails } from './lib/Utils';
 
 export {
   createComponentStyles,
@@ -36,5 +36,6 @@ export {
   CssSizeVariablesNames,
   CssSizeVariables,
   cssVariablesStyles,
-  ThemingParameters
+  ThemingParameters,
+  enrichEventWithDetails
 };

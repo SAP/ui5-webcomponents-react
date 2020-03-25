@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useCallback } from 'react';
 
 export const useLegendItemClick = (handler, dataKeyExtractor = (e?) => e.dataKey) => {
@@ -6,7 +6,7 @@ export const useLegendItemClick = (handler, dataKeyExtractor = (e?) => e.dataKey
     (payload, index, event) => {
       if (typeof handler === 'function') {
         handler(
-          Event.of(null, event, {
+          enrichEventWithDetails(event, {
             dataKey: dataKeyExtractor(payload),
             value: payload.value,
             chartType: payload.type,

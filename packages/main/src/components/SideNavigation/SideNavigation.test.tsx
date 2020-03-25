@@ -9,7 +9,7 @@ describe('SideNavigation', () => {
   test('Expanded', () => {
     const wrapper = mount(
       <SideNavigation
-        openState={SideNavigationOpenState.Expandend}
+        openState={SideNavigationOpenState.Expanded}
         selectedId={'sales-leads'}
         footerItems={[
           <SideNavigationListItem id="1" text="Legal Information" icon="compare" />,
@@ -33,7 +33,7 @@ describe('SideNavigation', () => {
   test('Expanded without Icons', () => {
     const wrapper = mount(
       <SideNavigation
-        openState={SideNavigationOpenState.Expandend}
+        openState={SideNavigationOpenState.Expanded}
         selectedId={'sales-leads'}
         noIcons
         footerItems={[

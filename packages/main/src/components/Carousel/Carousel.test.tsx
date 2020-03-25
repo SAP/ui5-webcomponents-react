@@ -86,7 +86,7 @@ describe('Carousel', () => {
       .find(Icon)
       .last()
       .simulate('click');
-    expect(getEventFromCallback(callback).getParameter('selectedIndex')).toEqual(1);
+    expect(getEventFromCallback(callback).detail.selectedIndex).toEqual(1);
   });
 
   test('Navigation to previous page', () => {
@@ -96,7 +96,7 @@ describe('Carousel', () => {
       .find(Icon)
       .first()
       .simulate('click');
-    expect(getEventFromCallback(callback).getParameter('selectedIndex')).toEqual(0);
+    expect(getEventFromCallback(callback).detail.selectedIndex).toEqual(0);
   });
 
   test('Navigation to previous page - w/o Loop', () => {
@@ -116,7 +116,7 @@ describe('Carousel', () => {
       .find(Icon)
       .first()
       .simulate('click');
-    expect(getEventFromCallback(callback).getParameter('selectedIndex')).toEqual(6);
+    expect(getEventFromCallback(callback).detail.selectedIndex).toEqual(6);
   });
 
   test('Navigation to next page - w/o Loop', () => {
@@ -136,7 +136,7 @@ describe('Carousel', () => {
       .find(Icon)
       .last()
       .simulate('click');
-    expect(getEventFromCallback(callback).getParameter('selectedIndex')).toEqual(0);
+    expect(getEventFromCallback(callback).detail.selectedIndex).toEqual(0);
   });
 
   test('Carousel with 1 child', () => {
@@ -155,7 +155,7 @@ describe('Carousel', () => {
       .find('div[role="list"]')
       .last()
       .simulate('keydown', { key: 'ArrowRight' });
-    expect(getEventFromCallback(callback).getParameter('selectedIndex')).toEqual(1);
+    expect(getEventFromCallback(callback).detail.selectedIndex).toEqual(1);
   });
 
   test('Navigation to previous page with Keyboard', () => {
@@ -165,7 +165,7 @@ describe('Carousel', () => {
       .find('div[role="list"]')
       .first()
       .simulate('keydown', { key: 'ArrowLeft' });
-    expect(getEventFromCallback(callback).getParameter('selectedIndex')).toEqual(0);
+    expect(getEventFromCallback(callback).detail.selectedIndex).toEqual(0);
   });
 
   createPassThroughPropsTest(Carousel);

@@ -1,6 +1,6 @@
 import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
@@ -22,7 +22,7 @@ export interface FilterItemPropTypes extends CommonProps {
   type?: FilterType;
   label?: string;
   filterItems?: any[];
-  onChange?: (event: Event) => void;
+  onChange?: (event: CustomEvent<{selectedItem?: unknown; selectedItems?: unknown}>) => void;
   loading?: boolean;
   children?: ReactNode;
   valueParamName?: string;
@@ -62,15 +62,15 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
   }
 
   function onSelect(e) {
-    const selectedKey = e.getParameter('selectedOption').getAttribute('data-key');
+    const selectedKey = e.detail.selectedOption.getAttribute('data-key');
     const item = getItemByKey(selectedKey) || filterItems[0];
-    onChange(Event.of(null, e.getOriginalEvent(), { selectedItem: item }));
+    onChange(enrichEventWithDetails(e, { selectedItem: item }));
   }
 
   function onMultiCbChange(e) {
-    const selectedItems = e.getParameter('items');
+    const selectedItems = e.detail.items;
     onChange(
-      Event.of(null, e.getOriginalEvent(), {
+      enrichEventWithDetails(e, {
         selectedItems: selectedItems.map((item) => {
           return getItemByKey(item.getAttribute('data-key'));
         })
@@ -137,7 +137,7 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
 
   const filterItemClasses = StyleClassHelper.of(classes.filterItem);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onChange']);
 
   return (
     <div ref={ref} className={filterItemClasses.toString()} style={style} title={tooltip} {...passThroughProps}>
