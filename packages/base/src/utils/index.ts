@@ -92,8 +92,11 @@ export const enrichEventWithDetails = <T = {}>(event: UIEvent, payload: T = {} a
     // if there is a persist method, it's an SyntheticEvent so we need to persist it
     event.persist();
   }
+
+  const shouldCreateNewDetails =
+    event.detail === null || event.detail === undefined || typeof event.detail !== 'object';
   Object.defineProperty(event, 'detail', {
-    value: typeof event.detail === 'object' ? event.detail : {},
+    value: shouldCreateNewDetails ? {} : event.detail,
     writable: true,
     configurable: true
   });
