@@ -75,51 +75,51 @@ export const complexDataSet = [
 
 export const simpleDataSet = [
   {
-    name: 'January',
+    name: 'January / Month',
     users: 100
   },
   {
-    name: 'February',
+    name: 'February / Month',
     users: 230
   },
   {
-    name: 'March',
+    name: 'March / Month',
     users: 240
   },
   {
-    name: 'April',
+    name: 'April / Month',
     users: 280
   },
   {
-    name: 'May',
+    name: 'May / Month',
     users: 100
   },
   {
-    name: 'June',
+    name: 'June / Month',
     users: 230
   },
   {
-    name: 'July',
+    name: 'July / Month',
     users: 20
   },
   {
-    name: 'August',
+    name: 'August / Month',
     users: 220
   },
   {
-    name: 'September',
+    name: 'September / Month',
     users: 200
   },
   {
-    name: 'October',
+    name: 'October / Month',
     users: 250
   },
   {
-    name: 'November',
+    name: 'November / Month',
     users: 240
   },
   {
-    name: 'December',
+    name: 'December / Month',
     users: 280
   }
 ];
