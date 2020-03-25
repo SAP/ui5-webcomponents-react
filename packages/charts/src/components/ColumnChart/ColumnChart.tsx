@@ -20,6 +20,7 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
+import { useChartMargin } from '../../hooks/useChartMargin';
 
 type ColumnChartProps = RechartBaseProps;
 
@@ -44,6 +45,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     dataLabelFormatter = (d) => d,
     dataLabelCustomElement = undefined,
     chartConfig = {
+      margin: {},
       yAxisVisible: false,
       xAxisVisible: true,
       xAxisUnit: '',
@@ -120,6 +122,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
+  const marginChart = useChartMargin(dataset, labelKey, chartConfig.margin);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -133,7 +137,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       tooltip={tooltip}
       slot={slot}
     >
-      <ColumnChartLib margin={{ right: 30, top: 40, bottom: 30 }} data={dataset} barGap={chartConfig.barGap}>
+      <ColumnChartLib margin={marginChart} data={dataset} barGap={chartConfig.barGap}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
@@ -146,6 +150,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
           yAxisId={'left'}
+          interval={0}
         />
         {chartConfig.secondYAxis && (
           <YAxis
@@ -154,6 +159,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             label={{ value: chartConfig.secondYAxis.name, angle: +90, position: 'center' }}
             orientation="right"
             yAxisId="right"
+            interval={0}
           />
         )}
         {currentDataKeys.map((key, index) => (

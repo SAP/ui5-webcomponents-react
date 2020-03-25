@@ -20,6 +20,7 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
+import { useChartMargin } from '../../hooks/useChartMargin';
 
 type BarChartProps = RechartBaseProps;
 
@@ -44,6 +45,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     dataLabelFormatter = (d) => d,
     dataLabelCustomElement = undefined,
     chartConfig = {
+      margin: {},
       yAxisVisible: false,
       xAxisVisible: true,
       xAxisUnit: '',
@@ -105,6 +107,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     true
   );
 
+  const marginChart = useChartMargin(dataset, labelKey, chartConfig.margin);
+
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
   return (
@@ -120,12 +124,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       tooltip={tooltip}
       slot={slot}
     >
-      <BarChartLib
-        margin={{ right: 30, top: 40, bottom: 30 }}
-        layout={'vertical'}
-        data={dataset}
-        barGap={chartConfig.barGap}
-      >
+      <BarChartLib margin={marginChart} layout={'vertical'} data={dataset} barGap={chartConfig.barGap}>
         <CartesianGrid
           vertical={chartConfig.gridVertical ?? false}
           horizontal={chartConfig.gridHorizontal}
@@ -139,6 +138,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           tickLine={false}
           type="category"
           dataKey={labelKey}
+          interval={0}
         />
         {currentDataKeys.map((key, index) => (
           <Bar
