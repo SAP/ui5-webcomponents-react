@@ -200,7 +200,18 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     [setDialogOpen, onFiltersDialogClose]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, [
+    'onToggleFilters',
+    'onFiltersDialogOpen',
+    'onFiltersDialogClose',
+    'onFiltersDialogSave',
+    'onFiltersDialogClear',
+    'onClear',
+    'onFiltersDialogSelectionChange',
+    'onFiltersDialogSearch',
+    'onGo',
+    'onRestore'
+  ]);
 
   const renderChildren = useCallback(() => {
     let childProps = { considerGroupName: considerGroupName, inFB: true };
