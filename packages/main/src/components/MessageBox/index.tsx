@@ -4,7 +4,7 @@ import '@ui5/webcomponents-icons/dist/icons/message-information';
 import '@ui5/webcomponents-icons/dist/icons/message-success';
 import '@ui5/webcomponents-icons/dist/icons/message-warning';
 import '@ui5/webcomponents-icons/dist/icons/question-mark';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -28,7 +28,7 @@ export interface MessageBoxPropTypes extends CommonProps {
   actions?: MessageBoxActions[];
   icon?: ReactNode;
   type?: MessageBoxTypes;
-  onClose: (event: Event) => void;
+  onClose: (event: CustomEvent<{action: MessageBoxActions}>) => void;
 }
 
 const useStyles = createComponentStyles(styles, { name: 'MessageBox' });
@@ -97,13 +97,13 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
 
   const handleOnClose = useCallback(
     (e) => {
-      const action = e.getHtmlSourceElement().dataset.action;
-      onClose(Event.of(null, e, { action }));
+      const { action } = e.target.dataset;
+      onClose(enrichEventWithDetails(e, { action }));
     },
     [onClose]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
 
   return (
     <Dialog

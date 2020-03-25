@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Select from '@ui5/webcomponents/dist/Select';
@@ -8,7 +8,7 @@ import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 export interface SelectPropTypes extends WithWebComponentPropTypes {
   disabled?: boolean; // @generated
   valueState?: ValueState; // @generated
-  onChange?: (event: Event) => void; // @generated
+  onChange?: (event: CustomEvent) => void; // @generated
   children?: ReactNode[]; // @generated
 }
 

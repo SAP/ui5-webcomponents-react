@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5TextArea from '@ui5/webcomponents/dist/TextArea';
 import React, { FC } from 'react';
@@ -15,7 +15,7 @@ export interface TextAreaPropTypes extends WithWebComponentPropTypes {
   growing?: boolean; // @generated
   growingMaxLines?: number; // @generated
   name?: string; // @generated
-  onChange?: (event: Event) => void; // @generated
+  onChange?: (event: CustomEvent) => void; // @generated
 }
 
 /**

@@ -2,7 +2,7 @@ import '@ui5/webcomponents-icons/dist/icons/decline';
 import '@ui5/webcomponents-icons/dist/icons/message-error';
 import '@ui5/webcomponents-icons/dist/icons/message-success';
 import '@ui5/webcomponents-icons/dist/icons/message-warning';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
@@ -31,7 +31,7 @@ export interface NotificationProptypes extends CommonProps {
   onClick?: (e: any) => any;
   noShowMoreButton?: boolean;
   truncate?: boolean;
-  onClose?: (event: Event) => void;
+  onClose?: (event: CustomEvent<{}>) => void;
 
   children?: React.ReactElement<NotificationProptypes> | React.ReactElement<NotificationProptypes>[];
   collapsed?: boolean;
@@ -99,7 +99,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
     const handleClose = useCallback(
       (e) => {
         toggleVisible(false);
-        onClose(Event.of(null, e));
+        onClose(enrichEventWithDetails(e));
       },
       [toggleVisible, onClose]
     );
@@ -107,7 +107,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
     const handleNotificationClick = useCallback(
       (e) => {
         if (e.target.nodeName !== 'UI5-BUTTON' && e.target.nodeName !== 'UI5-ICON' && typeof onClick === 'function') {
-          onClick(Event.of(null, e));
+          onClick(enrichEventWithDetails(e));
         }
       },
       [onClick]
@@ -236,7 +236,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
       return { borderRadius: borderRadius() };
     }, [isChild, isLastChild, children, showChildren]);
 
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props, ['onClick', 'onClose']);
 
     if (!visibleState) return null;
     return (

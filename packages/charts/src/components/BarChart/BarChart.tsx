@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
@@ -83,7 +83,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       if (payload && onDataPointClick) {
         const value = payload.value.length ? payload.value[1] - payload.value[0] : payload.value;
         onDataPointClick(
-          Event.of(null, event, {
+          enrichEventWithDetails(event, {
             dataKey: Object.keys(payload)
               .filter((key) => key !== 'value')
               .find((key) => payload[key] === value),

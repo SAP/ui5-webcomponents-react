@@ -1,7 +1,11 @@
+import { UIEvent } from 'react';
+
 export const deprecationNotice = (component: string, message: string) => {
-  const value = `*** ui5-webcomponents-react Deprecation Notice - ${component} ***\n`;
-  // eslint-disable-next-line no-console
-  console.warn(`${value}${message}`);
+  if (process.env.NODE_ENV === 'development') {
+    const value = `*** ui5-webcomponents-react Deprecation Notice - ${component} ***\n`;
+    // eslint-disable-next-line no-console
+    console.warn(`${value}${message}`);
+  }
 };
 
 export const getScrollBarWidth = () => {
@@ -30,4 +34,74 @@ export const getScrollBarWidth = () => {
 
   document.body.removeChild(outer);
   return w1 - w2;
+};
+
+export const polyfillDeprecatedEventAPI = (event: any) => {
+  event.getOriginalEvent = () => {
+    deprecationNotice(
+      'Event',
+      // eslint-disable-next-line max-len
+      "'event.getOriginalEvent' is deprecated and will be removed in the next major release. Please use the event object itself instead."
+    );
+    return event;
+  };
+  event.getParameters = () => {
+    deprecationNotice(
+      'Event',
+      // eslint-disable-next-line max-len
+      "'event.getParameters' is deprecated and will be removed in the next major release. Please use 'event.detail' instead."
+    );
+    return event.detail;
+  };
+  event.getParameter = (parameter: keyof typeof event.detail) => {
+    deprecationNotice(
+      'Event',
+      // eslint-disable-next-line max-len
+      "'event.getParameter' is deprecated and will be removed in the next major release. Please use 'event.detail[parameter]' instead."
+    );
+    return event.detail[parameter];
+  };
+  event.getHtmlSourceElement = () => {
+    deprecationNotice(
+      'Event',
+      // eslint-disable-next-line max-len
+      "'event.getHtmlSourceElement' is deprecated and will be removed in the next major release. Please use 'event.target' instead."
+    );
+    return event.target;
+  };
+
+  event.parameters = new Proxy(
+    {},
+    {
+      get: (obj, prop) => {
+        deprecationNotice(
+          'Event',
+          // eslint-disable-next-line max-len
+          "'event.parameters' is deprecated and will be removed in the next major release. Please use 'event.detail' instead."
+        );
+        return event.detail[prop];
+      }
+    }
+  );
+
+  return event;
+};
+
+export const enrichEventWithDetails = <T = {}>(event: UIEvent, payload: T = {} as any) => {
+  if (event.hasOwnProperty('persist')) {
+    // if there is a persist method, it's an SyntheticEvent so we need to persist it
+    event.persist();
+  }
+
+  const shouldCreateNewDetails =
+    event.detail === null || event.detail === undefined || typeof event.detail !== 'object';
+  Object.defineProperty(event, 'detail', {
+    value: shouldCreateNewDetails ? {} : event.detail,
+    writable: true,
+    configurable: true
+  });
+  Object.assign(event.detail, payload);
+  // "polyfill" old features
+  polyfillDeprecatedEventAPI(event);
+  return (event as unknown) as CustomEvent<T>;
 };

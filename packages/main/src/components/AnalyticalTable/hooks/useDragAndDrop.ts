@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useCallback, useState } from 'react';
 
 const getColumnId = (column) => {
@@ -47,7 +47,7 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo, c
 
       const columnsNewOrder = tempCols.map((tempColId) => columns.find((col) => getColumnId(col) === tempColId));
       onColumnsReordered(
-        Event.of(null, e, {
+        enrichEventWithDetails(e, {
           columnsNewOrder,
           column: columns[draggedColIdx]
         })

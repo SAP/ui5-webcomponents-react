@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5MessageStrip from '@ui5/webcomponents/dist/MessageStrip';
@@ -10,7 +10,7 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
   icon?: string; // @generated
   noIcon?: boolean; // @generated
   noCloseButton?: boolean; // @generated
-  onClose?: (event: Event) => void; // @generated
+  onClose?: (event: CustomEvent) => void; // @generated
   children?: string; // @generated
 }
 

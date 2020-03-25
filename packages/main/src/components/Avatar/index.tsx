@@ -1,11 +1,10 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './Avatar.jss';
 
 export interface AvatarPropTypes extends CommonProps {
@@ -13,7 +12,7 @@ export interface AvatarPropTypes extends CommonProps {
   shape?: AvatarShape;
   initials?: string;
   image?: string;
-  onClick?: (event: Event) => void;
+  onClick?: (event: CustomEvent<{}>) => void;
   children?: JSX.Element;
   customDisplaySize?: CSSProperties['width'];
   customFontSize?: CSSProperties['width'];
@@ -71,7 +70,7 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === 'Enter') {
-        onClick?.(Event.of(null, e));
+        onClick?.(enrichEventWithDetails(e));
       }
     },
     [onClick]
@@ -79,12 +78,12 @@ const Avatar: FC<AvatarPropTypes> = forwardRef((props: AvatarPropTypes, ref: Ref
 
   const handleOnClick = useCallback(
     (e) => {
-      onClick?.(Event.of(null, e));
+      onClick?.(enrichEventWithDetails(e));
     },
     [onClick]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onClick']);
 
   return (
     <span

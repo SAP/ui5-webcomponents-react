@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5ToggleButton from '@ui5/webcomponents/dist/ToggleButton';
@@ -12,7 +12,7 @@ export interface ToggleButtonPropTypes extends WithWebComponentPropTypes {
   iconEnd?: boolean; // @generated
   submits?: boolean; // @generated
   pressed?: boolean; // @generated
-  onClick?: (event: Event) => void; // @generated
+  onClick?: (event: CustomEvent) => void; // @generated
   children?: string; // @generated
 }
 

@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Link from '@ui5/webcomponents/dist/Link';
@@ -11,7 +11,7 @@ export interface LinkPropTypes extends WithWebComponentPropTypes {
   target?: string; // @generated
   design?: LinkDesign; // @generated
   wrap?: boolean; // @generated
-  onClick?: (event: Event) => void; // @generated
+  onClick?: (event: CustomEvent) => void; // @generated
   children?: string; // @generated
 }
 

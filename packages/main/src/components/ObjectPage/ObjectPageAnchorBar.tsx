@@ -3,7 +3,7 @@ import '@ui5/webcomponents-icons/dist/icons/pushpin-off';
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-up';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
@@ -115,17 +115,17 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
 
   const onPinHeader = useCallback(
     (e) => {
-      setHeaderPinned(e.getParameter('pressed'));
+      setHeaderPinned(e.detail.pressed);
     },
     [setHeaderPinned]
   );
 
   const onTabItemSelect = useCallback((event) => {
-    const { sectionId, index } = event.getParameter('item').dataset;
+    const { sectionId, index } = event.detail.item.dataset;
     // eslint-disable-next-line eqeqeq
     const section = safeGetChildrenArray(sections).find((el) => el.props.id == sectionId);
     handleOnSectionSelected(
-      Event.of(null, {} as any, {
+      enrichEventWithDetails({} as any, {
         ...section,
         index
       })
@@ -142,12 +142,12 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
 
   const onSubSectionClick = useCallback(
     (e) => {
-      const selectedId = e.getParameter('item').dataset.key;
+      const selectedId = e.detail.item.dataset.key;
       const subSection = popoverContent.props.children
         .filter((item) => item.props && item.props.isSubSection)
         .find((item) => item.props.id === selectedId);
       if (subSection) {
-        handleOnSubSectionSelected(Event.of(null, e.getOriginalEvent(), { section: popoverContent, subSection }));
+        handleOnSubSectionSelected(enrichEventWithDetails(e, { section: popoverContent, subSection }));
       }
       popoverRef.current.close();
     },

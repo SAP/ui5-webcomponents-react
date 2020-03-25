@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
@@ -90,7 +90,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     (payload, eventOrIndex) => {
       if (eventOrIndex.dataKey && onDataPointClick) {
         onDataPointClick(
-          Event.of(null, event, {
+          enrichEventWithDetails(event, {
             value: eventOrIndex.value,
             dataKey: eventOrIndex.dataKey,
             xIndex: eventOrIndex.index,

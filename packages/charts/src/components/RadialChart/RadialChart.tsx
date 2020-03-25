@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
@@ -13,7 +13,7 @@ interface RadialChartProps extends CommonProps {
   maxValue?: number;
   displayValue?: number | string;
   color?: CSSProperties['color'];
-  onDataPointClick?: (event: Event) => void;
+  onDataPointClick?: (event: CustomEvent<{value: unknown; payload: unknown; xIndex: number}>) => void;
   height?: number | string;
   width?: number | string;
 }
@@ -51,7 +51,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
     (payload, i, event) => {
       if (payload && onDataPointClick) {
         onDataPointClick(
-          Event.of(null, event, {
+          enrichEventWithDetails(event, {
             value: payload.value,
             payload: payload.payload,
             xIndex: i
@@ -99,7 +99,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
           textAnchor="middle"
           dominantBaseline="middle"
           className="progress-label"
-          style={{ fontSize: ThemingParameters.sapMFontHeader3Size, fill: ThemingParameters.sapTextColor }}
+          style={{ fontSize: ThemingParameters.sapFontHeader3Size, fill: ThemingParameters.sapTextColor }}
         >
           {displayValue}
         </text>
