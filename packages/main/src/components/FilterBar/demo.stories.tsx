@@ -26,9 +26,6 @@ const renderVariants = () => {
       closeOnItemSelect={boolean('closeOnItemSelect', true)}
       initialSelectedKey={'2'}
       variantItems={variantItems}
-      onSelect={(e) => {
-        console.log(e.getParameter('selectedItem').key);
-      }}
       placement={select('Placement', PlacementType, PlacementType.Bottom)}
       level={select('level', TitleLevel, TitleLevel.H6)}
     />
@@ -43,7 +40,6 @@ export const renderStory = () => {
   return (
     <FilterBar renderSearch={renderSearch} renderVariants={renderVariants}>
       <FilterItem
-        onChange={(e) => alert(e.getParameter('selectedItem').key)}
         filterItems={filterItems}
         label="Classification"
         key="classification"

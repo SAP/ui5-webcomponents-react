@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5TimelineItem from '@ui5/webcomponents/dist/TimelineItem';
 import React, { FC, ReactNode } from 'react';
@@ -10,7 +10,7 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   itemNameClickable?: boolean; // @generated
   titleText?: string; // @generated
   subtitleText?: string; // @generated
-  onItemNameClick?: (event: Event) => void; // @generated
+  onItemNameClick?: (event: CustomEvent) => void; // @generated
   children?: ReactNode; // @generated
 }
 

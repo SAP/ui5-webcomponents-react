@@ -17,7 +17,8 @@
     "core-js/**/*",
     "./src/polyfill/*.ts",
     "./polyfill/*.js",
-    "intersection-observer"
+    "intersection-observer",
+    "proxy-polyfill/*"
   ],
   "scripts": {
     "clean": "rimraf cjs Device hooks lib polyfill styling types utils index.esm.js index.d.ts",
@@ -28,6 +29,7 @@
   "dependencies": {
     "core-js": "3.6.4",
     "intersection-observer": "^0.7.0",
+    "proxy-polyfill": "^0.3.1",
     "resize-observer-polyfill": "^1.5.1",
     "smoothscroll-polyfill": "^0.4.4"
   },

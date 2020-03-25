@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/features/InputSuggestions';
@@ -13,9 +13,9 @@ export interface MultiComboBoxPropTypes extends WithWebComponentPropTypes {
   disabled?: boolean; // @generated
   valueState?: ValueState; // @generated
   readonly?: boolean; // @generated
-  onChange?: (event: Event) => void; // @generated
-  onInput?: (event: Event) => void; // @generated
-  onSelectionChange?: (event: Event) => void; // @generated
+  onChange?: (event: CustomEvent) => void; // @generated
+  onInput?: (event: CustomEvent) => void; // @generated
+  onSelectionChange?: (event: CustomEvent) => void; // @generated
   children?: ReactNode[]; // @generated
 }
 

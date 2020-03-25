@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
@@ -13,9 +13,9 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
   mode?: ListMode;
   noDataText?: string;
   separators?: ListSeparators;
-  onItemClick?: (event: Event) => void;
-  onItemDelete?: (event: Event) => void;
-  onSelectionChange?: (event: Event) => void;
+  onItemClick?: (event: CustomEvent) => void;
+  onItemDelete?: (event: CustomEvent) => void;
+  onSelectionChange?: (event: CustomEvent) => void;
   header?: ReactNode;
   children?: ReactNode | ReactNode[];
 }

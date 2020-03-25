@@ -13,8 +13,8 @@ export interface ChartBaseProps extends CommonProps {
   options?: ChartOptions;
   categoryAxisFormatter?: (value: any, currentDataset?: object, currentContext?: object) => string | number;
   valueAxisFormatter?: (value: any, currentDataset?: object, currentContext?: object) => string | number;
-  getDatasetAtEvent?: (dataset: ChartDataSets[], event?: Event) => void;
-  getElementAtEvent?: (dataset: ChartDataSets[], event?: Event) => void;
+  getDatasetAtEvent?: (dataset: ChartDataSets[], event?: CustomEvent) => void;
+  getElementAtEvent?: (dataset: ChartDataSets[], event?: CustomEvent) => void;
   loading?: boolean;
   noLegend?: boolean;
 }

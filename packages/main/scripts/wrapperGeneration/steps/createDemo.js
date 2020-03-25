@@ -84,7 +84,7 @@ function createDemoForComponent(dto) {
     } else if (meta.isEnum) {
       storyBookImports['select'] = true;
       return `select('${key}', ${meta.tsType}, ${checkForDefaultProp(meta, 'null')})`;
-    } else if (meta.tsType === '(event : Event) => void') {
+    } else if (meta.tsType === '(event : CustomEvent) => void') {
       importStorybookActions = true;
       return `action('${key}')`;
     } else {

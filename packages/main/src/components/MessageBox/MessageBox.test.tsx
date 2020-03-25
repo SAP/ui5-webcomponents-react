@@ -22,7 +22,7 @@ describe('MessageBox', () => {
       .instance() as any;
 
     component.fireEvent('click');
-    expect(getEventFromCallback(callback).getParameter('action')).toEqual(MessageBoxActions.OK);
+    expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.OK);
   });
 
   test('Confirm - Cancel', () => {
@@ -39,7 +39,7 @@ describe('MessageBox', () => {
       .last()
       .instance() as any;
     component.fireEvent('click');
-    expect(getEventFromCallback(callback).getParameter('action')).toEqual(MessageBoxActions.CANCEL);
+    expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.CANCEL);
   });
 
   test('Success', () => {
@@ -56,7 +56,7 @@ describe('MessageBox', () => {
       .first()
       .instance() as any;
     component.fireEvent('click');
-    expect(getEventFromCallback(callback).getParameter('action')).toEqual(MessageBoxActions.OK);
+    expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.OK);
   });
 
   test('Warning', () => {
@@ -73,7 +73,7 @@ describe('MessageBox', () => {
       .first()
       .instance() as any;
     component.fireEvent('click');
-    expect(getEventFromCallback(callback).getParameter('action')).toEqual(MessageBoxActions.OK);
+    expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.OK);
   });
 
   test('Error', () => {
@@ -90,7 +90,7 @@ describe('MessageBox', () => {
       .first()
       .instance() as any;
     component.fireEvent('click');
-    expect(getEventFromCallback(callback).getParameter('action')).toEqual(MessageBoxActions.CLOSE);
+    expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.CLOSE);
   });
 
   test('Information', () => {
@@ -107,7 +107,7 @@ describe('MessageBox', () => {
       .first()
       .instance() as any;
     component.fireEvent('click');
-    expect(getEventFromCallback(callback).getParameter('action')).toEqual(MessageBoxActions.OK);
+    expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.OK);
   });
 
   test('Show', () => {
@@ -124,14 +124,14 @@ describe('MessageBox', () => {
       .first()
       .instance() as any;
     component.fireEvent('click');
-    expect(getEventFromCallback(callback).getParameter('action')).toEqual(MessageBoxActions.YES);
+    expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.YES);
 
     component = wrapper
       .find('ui5-button')
       .last()
       .instance() as any;
     component.fireEvent('click');
-    expect(getEventFromCallback(callback, 1).getParameter('action')).toEqual(MessageBoxActions.NO);
+    expect(getEventFromCallback(callback, 1).detail.action).toEqual(MessageBoxActions.NO);
   });
 
   test('Success w/ custom title', () => {
@@ -148,7 +148,7 @@ describe('MessageBox', () => {
       .first()
       .instance() as any;
     component.fireEvent('click');
-    expect(getEventFromCallback(callback).getParameter('action')).toEqual(MessageBoxActions.OK);
+    expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.OK);
   });
 
   test('Not open', () => {

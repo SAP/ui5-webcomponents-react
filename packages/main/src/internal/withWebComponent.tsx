@@ -1,5 +1,5 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { polyfillDeprecatedEventAPI } from "@ui5/webcomponents-react-base/lib/Utils";
 import React, {
   Children,
   cloneElement,
@@ -62,29 +62,9 @@ export const withWebComponent = <T extends any>(
       );
   };
 
-  const createEventWrapperFor = (eventIdentifier, eventHandler) => (e) => {
-    let payload = Object.keys(getWebComponentMetadata().getProperties()).reduce((acc, val) => {
-      if (val.startsWith('_')) {
-        return acc;
-      }
-      acc[val] = e.target[toKebabCase(val)];
-      return acc;
-    }, {});
-
-    const eventMeta = getWebComponentMetadata().getEvents()[eventIdentifier] || {};
-
-    payload = Object.keys(eventMeta).reduce((acc, val) => {
-      if (val === 'detail' && e[val]) {
-        return {
-          ...acc,
-          ...e[val]
-        };
-      }
-      acc[val] = (e.detail && e.detail[val]) || e[val];
-      return acc;
-    }, payload);
-    // TODO: Pass Web Component Ref in here?
-    eventHandler(Event.of(null, e, payload));
+  const createEventWrapperFor = (eventIdentifier, eventHandler) => (event) => {
+    polyfillDeprecatedEventAPI(event);
+    return eventHandler(event);
   };
 
   const WithWebComponent = React.forwardRef((props: T & WithWebComponentPropTypes, wcRef: RefObject<Ui5DomRef>) => {

@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
@@ -25,7 +25,7 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   valueState?: ValueState;
   target?: string;
   deviation?: string;
-  onHeaderPress?: (event: Event) => void;
+  onHeaderPress?: (event: CustomEvent<{}>) => void;
   description?: string;
   counter?: string;
   counterState?: ValueState;
@@ -65,7 +65,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     const onClick = useCallback(
       (e) => {
         if (onHeaderPress) {
-          onHeaderPress(Event.of(null, e));
+          onHeaderPress(enrichEventWithDetails(e));
         }
       },
       [onHeaderPress]
@@ -123,7 +123,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     }
     const shouldRenderContent = [value, unit, deviation, target].some((v) => v !== null);
 
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props, ['onHeaderPress']);
 
     return (
       <div

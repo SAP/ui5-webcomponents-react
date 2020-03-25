@@ -20,7 +20,7 @@ describe('SegmentedButton', () => {
       .last()
       .simulate('click');
     wrapper.update();
-    expect(getEventFromCallback(callback).getParameter('selectedKey')).toEqual('btn-2');
+    expect(getEventFromCallback(callback).detail.selectedKey).toEqual('btn-2');
   });
 
   test('Update Selection via API', () => {

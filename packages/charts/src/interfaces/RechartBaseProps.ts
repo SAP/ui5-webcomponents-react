@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { CSSProperties } from 'react';
 import { ChartContainerProps } from './ChartContainerProps';
 
@@ -6,8 +6,8 @@ export interface RechartBaseProps extends ChartContainerProps {
   labelKey?: string;
   dataKeys?: string[];
   noLegend?: boolean;
-  onDataPointClick?: (event: Event) => void;
-  onLegendClick?: (event: Event) => void;
+  onDataPointClick?: (event: CustomEvent) => void;
+  onLegendClick?: (event: CustomEvent) => void;
   color?: string;
   colors?: CSSProperties['color'][];
 

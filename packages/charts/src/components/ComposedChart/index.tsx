@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
@@ -117,7 +117,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     (payload, eventOrIndex, event) => {
       if (payload.name && onDataPointClick) {
         onDataPointClick(
-          Event.of(null, event ?? eventOrIndex, {
+          enrichEventWithDetails(event ?? eventOrIndex, {
             value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
             xIndex: payload.index ?? eventOrIndex,
             dataKey: payload.value.length
@@ -133,7 +133,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         );
       } else {
         onDataPointClick(
-          Event.of(null, event ?? eventOrIndex, {
+          enrichEventWithDetails(event ?? eventOrIndex, {
             value: eventOrIndex.value,
             xIndex: eventOrIndex.index ?? eventOrIndex,
             dataKey:

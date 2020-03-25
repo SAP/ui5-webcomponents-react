@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5CheckBox from '@ui5/webcomponents/dist/CheckBox';
@@ -13,7 +13,7 @@ export interface CheckBoxPropTypes extends WithWebComponentPropTypes {
   valueState?: ValueState; // @generated
   wrap?: boolean; // @generated
   name?: string; // @generated
-  onChange?: (event: Event) => void; // @generated
+  onChange?: (event: CustomEvent) => void; // @generated
 }
 
 /**

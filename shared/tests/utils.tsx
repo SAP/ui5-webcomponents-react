@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { mount, shallow } from 'enzyme';
 import React, { ComponentType } from 'react';
@@ -10,7 +10,7 @@ export const modifyObjectProperty = (object: any, attr: string, value: any) => {
     writable: true
   });
 };
-export const getEventFromCallback = (callback, index = 0): Event => {
+export const getEventFromCallback = (callback, index = 0): CustomEvent<Record<string, unknown>> => {
   return callback.args[index][0];
 };
 export const setUserAgentString = (userAgent) => {

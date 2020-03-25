@@ -213,8 +213,8 @@ export function generateTypings(meta) {
     .filter(([key]) => !key.startsWith('_'))
     .forEach(([key]) => {
       typings[mapEventName(key)] = {
-        tsType: '(event : Event) => void',
-        importStatement: "import { Event } from '@ui5/webcomponents-react-base/lib/Event';"
+        tsType: '(event : CustomEvent) => void',
+        importStatement: "import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';"
       };
     });
 

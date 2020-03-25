@@ -1,5 +1,5 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
@@ -107,11 +107,11 @@ export interface TableProps extends CommonProps {
 
   // events
 
-  onSort?: (e?: Event) => void;
-  onGroup?: (e?: Event) => void;
-  onRowSelected?: (e?: Event) => any;
-  onRowExpandChange?: (e?: Event) => any;
-  onColumnsReordered?: (e?: Event) => void;
+  onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
+  onGroup?: (e: CustomEvent<{ column: unknown; groupedColumns: string[] }>) => void;
+  onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => any;
+  onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => any;
+  onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
   /**
    * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api/useTable.md#table-options)
    */
@@ -286,7 +286,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const onGroupByChanged = useCallback(
     (e) => {
-      const { column, isGrouped } = e.getParameters();
+      const { column, isGrouped } = e.detail;
       let groupedColumns = [];
       if (isGrouped) {
         groupedColumns = [...tableState.groupBy, column.id];
@@ -295,7 +295,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       }
       dispatch({ type: 'SET_GROUP_BY', payload: groupedColumns });
       onGroup(
-        Event.of(null, e.getOriginalEvent(), {
+        enrichEventWithDetails(e, {
           column,
           groupedColumns
         })
@@ -312,7 +312,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     tableInternalColumns
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, [
+    'onSort',
+    'onGroup',
+    'onRowSelected',
+    'onRowExpandChange',
+    'onColumnsReordered'
+  ]);
 
   return (
     <div className={className} style={style} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
