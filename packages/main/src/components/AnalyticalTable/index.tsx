@@ -33,7 +33,6 @@ import {
 } from 'react-table';
 import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
 import { DefaultColumn } from './defaults/Column';
@@ -227,11 +226,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableHeaderGroupStyling,
     useTableHeaderStyling,
     useTableRowStyling,
+    useRowSelectionColumn,
     useDynamicColumnWidths,
     useColumnsDependencies,
     useTableCellStyling,
     useToggleRowExpand,
-    useRowSelectionColumn,
     ...tableHooks
   );
 
