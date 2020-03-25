@@ -279,7 +279,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     onSelectedSectionChanged(
       enrichEventWithDetails(e, {
         selectedSectionIndex: e.detail.index,
-        selectedSectionId: e.props.id,
+        selectedSectionId: e.detail.props.id,
         section: e.detail
       })
     );
