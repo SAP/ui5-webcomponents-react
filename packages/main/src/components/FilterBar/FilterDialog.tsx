@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-icons/dist/icons/search';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -20,7 +20,7 @@ import React, { Children, cloneElement, ReactElement, useCallback, useEffect, us
 import styles from './FilterBarDialog.jss';
 import { addRef, renderSearchWithValue } from './utils';
 
-const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
+const useStyles = createComponentStyles(styles, { name: 'FilterBarDialog' });
 export const FilterDialog = (props) => {
   const {
     open,
@@ -72,7 +72,7 @@ export const FilterDialog = (props) => {
   const handleSearch = useCallback(
     (e) => {
       if (handleDialogSearch) {
-        handleDialogSearch(Event.of(null, e.getOriginalEvent(), { value: e.parameters.value }));
+        handleDialogSearch(enrichEventWithDetails(e, { value: e.parameters.value }));
       }
       setSearchString(e.parameters.value);
     },
@@ -108,7 +108,7 @@ export const FilterDialog = (props) => {
   const handleDialogGo = useCallback(
     (e) => {
       if (onGo) {
-        onGo(Event.of(null, e.getOriginalEvent()));
+        onGo(enrichEventWithDetails(e));
       }
       handleDialogClose(e);
     },
@@ -179,17 +179,13 @@ export const FilterDialog = (props) => {
     (element, activeFilters) => (e) => {
       if (handleSelectionChange) {
         handleSelectionChange(
-          Event.of(null, e.getOriginalEvent(), { element: { event: e, element }, checked: e.parameters.checked })
+          enrichEventWithDetails(e, { element: { event: e, element }, checked: e.parameters.checked })
         );
       }
       setActiveFilters({ ...activeFilters, [element.key]: { event: e, element } });
     },
     [setActiveFilters, handleSelectionChange]
   );
-
-  // const renderSearch = useCallback(() => {
-  //   return;
-  // }, [renderFBSearch, searchValue]);
 
   const renderGroups = useCallback(() => {
     let groups = {};

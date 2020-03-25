@@ -1,7 +1,7 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -44,16 +44,16 @@ export interface FilterBarPropTypes extends CommonProps {
   loading?: boolean;
   showSearchOnFiltersDialog?: boolean;
   showRestoreOnFB?: boolean;
-  onToggleFilters?: (event: Event) => void;
-  onFiltersDialogSave?: (event: Event) => void;
-  onFiltersDialogClear?: (event: Event) => void;
-  onFiltersDialogOpen?: (event: Event) => void;
-  onFiltersDialogClose?: (event: Event) => void;
-  onFiltersDialogSelectionChange?: (event: Event) => void;
-  onFiltersDialogSearch?: (event: Event) => void;
-  onClear?: (event: Event) => void;
-  onGo?: (event: Event) => void;
-  onRestore?: (event: Event) => void;
+  onToggleFilters?: (event: CustomEvent<{ visible?: boolean }>) => void;
+  onFiltersDialogSave?: (event: CustomEvent<{ elements?: unknown; toggledElements?: unknown }>) => void;
+  onFiltersDialogClear?: (event: CustomEvent) => void;
+  onFiltersDialogOpen?: (event: CustomEvent) => void;
+  onFiltersDialogClose?: (event: CustomEvent) => void;
+  onFiltersDialogSelectionChange?: (event: CustomEvent<{ element?: unknown; checked?: unknown }>) => void;
+  onFiltersDialogSearch?: (event: CustomEvent<{ value?: unknown }>) => void;
+  onClear?: (event: CustomEvent) => void;
+  onGo?: (event: CustomEvent) => void;
+  onRestore?: (event: CustomEvent<{ source?: unknown }>) => void;
 }
 
 interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
@@ -144,7 +144,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const handleToggle = useCallback(
     (e) => {
       if (onToggleFilters) {
-        onToggleFilters(Event.of(null, e.getOriginalEvent(), { visible: !showFilters }));
+        onToggleFilters(enrichEventWithDetails(e, { visible: !showFilters }));
       }
       setShowFilters(!showFilters);
     },
@@ -171,7 +171,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         childrenWithNewProps = handleToggleFilterVisible(toggledElements, childrenWithNewProps);
       }
       if (onFiltersDialogSave) {
-        onFiltersDialogSave(Event.of(null, e.getOriginalEvent(), { elements: childrenWithNewProps, toggledElements }));
+        onFiltersDialogSave(enrichEventWithDetails(e, { elements: childrenWithNewProps, toggledElements }));
       }
       setChildrenWithRef(childrenWithNewProps);
       handleDialogClose(e);
@@ -184,7 +184,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       setChildrenWithRef(setPropsOfChildren(addRef(childrenWithRef, filterRefs, 'filterBarRef'), 'filterBarRef'));
       setDialogOpen(true);
       if (onFiltersDialogOpen) {
-        onFiltersDialogOpen(Event.of(null, e.getOriginalEvent()));
+        onFiltersDialogOpen(enrichEventWithDetails(e));
       }
     },
     [setChildrenWithRef, childrenWithRef, filterRefs, setDialogOpen, onFiltersDialogOpen]
@@ -193,7 +193,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const handleDialogClose = useCallback(
     (e) => {
       if (onFiltersDialogClose) {
-        onFiltersDialogClose(Event.of(null, e.getOriginalEvent()));
+        onFiltersDialogClose(enrichEventWithDetails(e));
       }
       setDialogOpen(false);
     },
@@ -229,7 +229,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         setMountFilters(true);
       }
       if (onRestore) {
-        onRestore(Event.of(null, e.getOriginalEvent(), { source }));
+        onRestore(enrichEventWithDetails(e.getOriginalEvent(), { source }));
       }
     },
     [setDialogOpen, showGo, showGoOnFB, onRestore]

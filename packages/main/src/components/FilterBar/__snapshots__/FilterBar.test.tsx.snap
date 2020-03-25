@@ -605,7 +605,7 @@ Array [
     opened=""
   >
     <div
-      class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 FilterBar-header-0"
+      class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 FilterBarDialog-header-0"
       slot="header"
     >
       <ui5-title
@@ -647,7 +647,7 @@ Array [
         data-bar-part="Right"
       >
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentEnd-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 FilterBar-footer-0"
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentEnd-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 FilterBarDialog-footer-0"
         >
           <ui5-button
             design="Emphasized"
@@ -678,10 +678,10 @@ Array [
       </div>
     </div>
     <div
-      class="FilterBar-dialog-0"
+      class="FilterBarDialog-dialog-0"
     >
       <div
-        class="FilterBar-fbSearch-0"
+        class="FilterBarDialog-fbSearch-0"
       >
         <span />
         <ui5-input
@@ -692,13 +692,13 @@ Array [
         />
       </div>
       <div
-        class="FilterBar-groupContainer-0"
+        class="FilterBarDialog-groupContainer-0"
       >
         <div
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentSpaceBetween-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-title
-            class="FilterBar-groupTitle-0"
+            class="FilterBarDialog-groupTitle-0"
             level="H5"
           >
             Basic
@@ -710,10 +710,10 @@ Array [
           </span>
         </div>
         <div
-          class="FilterBar-filters-0"
+          class="FilterBarDialog-filters-0"
         >
           <div
-            class="FilterBar-singleFilter-0"
+            class="FilterBarDialog-singleFilter-0"
           >
             <div
               class="FilterGroupItem-filterItemDialog-0"
@@ -747,7 +747,7 @@ Array [
             />
           </div>
           <div
-            class="FilterBar-singleFilter-0"
+            class="FilterBarDialog-singleFilter-0"
           >
             <div
               class="FilterGroupItem-filterItemDialog-0"
@@ -777,7 +777,7 @@ Array [
             />
           </div>
           <div
-            class="FilterBar-singleFilter-0"
+            class="FilterBarDialog-singleFilter-0"
           >
             <div
               class="FilterGroupItem-filterItemDialog-0"
@@ -823,7 +823,7 @@ Array [
             />
           </div>
           <div
-            class="FilterBar-singleFilter-0"
+            class="FilterBarDialog-singleFilter-0"
           >
             <div
               class="FilterGroupItem-filterItemDialog-0"
@@ -888,7 +888,7 @@ Array [
         </div>
       </div>
       <div
-        class="FilterBar-groupContainer-0"
+        class="FilterBarDialog-groupContainer-0"
       >
         <div
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentSpaceBetween-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
@@ -901,10 +901,10 @@ Array [
           </ui5-title>
         </div>
         <div
-          class="FilterBar-filters-0"
+          class="FilterBarDialog-filters-0"
         >
           <div
-            class="FilterBar-singleFilter-0"
+            class="FilterBarDialog-singleFilter-0"
           >
             <div
               class="FilterGroupItem-filterItemDialog-0"
@@ -954,7 +954,7 @@ Array [
             />
           </div>
           <div
-            class="FilterBar-singleFilter-0"
+            class="FilterBarDialog-singleFilter-0"
           >
             <div
               class="FilterGroupItem-filterItemDialog-0"
@@ -1021,7 +1021,7 @@ Array [
         </div>
       </div>
       <div
-        class="FilterBar-groupContainer-0"
+        class="FilterBarDialog-groupContainer-0"
       >
         <div
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentSpaceBetween-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
@@ -1034,10 +1034,10 @@ Array [
           </ui5-title>
         </div>
         <div
-          class="FilterBar-filters-0"
+          class="FilterBarDialog-filters-0"
         >
           <div
-            class="FilterBar-singleFilter-0"
+            class="FilterBarDialog-singleFilter-0"
           >
             <div
               class="FilterGroupItem-filterItemDialog-0"
@@ -1087,7 +1087,7 @@ Array [
             />
           </div>
           <div
-            class="FilterBar-singleFilter-0"
+            class="FilterBarDialog-singleFilter-0"
           >
             <div
               class="FilterGroupItem-filterItemDialog-0"
@@ -1148,7 +1148,7 @@ Array [
             />
           </div>
           <div
-            class="FilterBar-singleFilter-0"
+            class="FilterBarDialog-singleFilter-0"
           >
             <div
               class="FilterGroupItem-filterItemDialog-0"
