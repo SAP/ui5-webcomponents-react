@@ -20,6 +20,7 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
+import { useSetMarginLeft } from '../../hooks/useSetMarginLeft';
 
 type LineChartProps = RechartBaseProps;
 
@@ -106,6 +107,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
+  const marginLeft = useSetMarginLeft(dataset, labelKey);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -119,7 +122,11 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       tooltip={tooltip}
       slot={slot}
     >
-      <LineChartLib margin={{ right: 30, top: 40, bottom: 30 }} data={dataset} onClick={onDataPointClickInternal}>
+      <LineChartLib
+        margin={{ right: 30, top: 40, bottom: 30, left: marginLeft }}
+        data={dataset}
+        onClick={onDataPointClickInternal}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}

@@ -20,6 +20,7 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
+import { useSetMarginLeft } from '../../hooks/useSetMarginLeft';
 
 type ColumnChartProps = RechartBaseProps;
 
@@ -120,6 +121,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
+  const marginLeft = useSetMarginLeft(dataset, labelKey);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -133,7 +136,11 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       tooltip={tooltip}
       slot={slot}
     >
-      <ColumnChartLib margin={{ right: 30, top: 40, bottom: 30 }} data={dataset} barGap={chartConfig.barGap}>
+      <ColumnChartLib
+        margin={{ right: 30, top: 40, bottom: 30, left: marginLeft }}
+        data={dataset}
+        barGap={chartConfig.barGap}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}

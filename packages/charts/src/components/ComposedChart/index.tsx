@@ -20,6 +20,7 @@ import {
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
+import { useSetMarginLeft } from '../../hooks/useSetMarginLeft';
 
 enum ChartTypes {
   line = Line,
@@ -170,6 +171,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
+  const marginLeft = useSetMarginLeft(dataset, labelKey);
+
   return (
     <ChartContainer
       ref={chartRef}
@@ -183,7 +186,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       tooltip={tooltip}
       slot={slot}
     >
-      <ComposedChartLib margin={{ right: 30, top: 40, bottom: 30 }} data={dataset}>
+      <ComposedChartLib margin={{ right: 30, top: 40, bottom: 30, left: marginLeft }} data={dataset}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
