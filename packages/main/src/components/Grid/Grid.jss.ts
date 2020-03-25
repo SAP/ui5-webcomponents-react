@@ -40,7 +40,7 @@ const getIndentsForSpace = (hSpace) => ({
   '&$gridIndent12': getIndentForSpan(12, hSpace)
 });
 
-export const styles = {
+export const GridClasses = {
   '@global html': {
     '--_ui5wcr_Grid_float': 'left'
   },
