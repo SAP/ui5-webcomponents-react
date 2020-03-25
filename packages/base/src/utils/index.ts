@@ -92,9 +92,11 @@ export const enrichEventWithDetails = <T = {}>(event: UIEvent, payload: T = {} a
     // if there is a persist method, it's an SyntheticEvent so we need to persist it
     event.persist();
   }
-  if (!event.hasOwnProperty('detail')) {
-    Object.defineProperty(event, 'detail', { value: {}, writable: true });
-  }
+  Object.defineProperty(event, 'detail', {
+    value: typeof event.detail === 'object' ? event.detail : {},
+    writable: true,
+    configurable: true
+  });
   Object.assign(event.detail, payload);
   // "polyfill" old features
   polyfillDeprecatedEventAPI(event);

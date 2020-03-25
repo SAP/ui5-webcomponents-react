@@ -59,10 +59,7 @@ const SegmentedButton: FC<SegmentedButtonPropTypes> = forwardRef(
     const [internalSelectedKey, setSelectedKey] = useState(() => {
       if (selectedKey) return selectedKey;
       const firstChild: any = Children.toArray(children)[0];
-      if (firstChild && firstChild.props) {
-        return firstChild.props.id;
-      }
-      return null;
+      return firstChild?.props?.id ?? null;
     });
 
     useEffect(() => {
