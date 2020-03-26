@@ -122,7 +122,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
-  const marginChart = useChartMargin(dataset, labelKey, chartConfig.margin);
+  const marginChart = useChartMargin(dataset, labelKey, yAxisFormatter, chartConfig.margin);
 
   return (
     <ChartContainer

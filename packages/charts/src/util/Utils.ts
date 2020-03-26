@@ -78,13 +78,13 @@ export const renderAxisTicks = (axisProps, xAxisFormatter, xAxisUnit) => {
   switch (index) {
     case 0:
       previousX = payload.coordinate;
-      return AxisTicks(axisProps, xAxisFormatter, xAxisUnit, secondElementX - payload.coordinate <= 50);
+      return AxisTicks(axisProps, xAxisFormatter, xAxisUnit, secondElementX - payload.coordinate <= 100);
     case 1:
       secondElementX = payload.coordinate;
       previousX = payload.coordinate;
-      return AxisTicks(axisProps, xAxisFormatter, xAxisUnit, payload.coordinate - prevX <= 50);
+      return AxisTicks(axisProps, xAxisFormatter, xAxisUnit, payload.coordinate - prevX <= 100);
     default:
       previousX = payload.coordinate;
-      return AxisTicks(axisProps, xAxisFormatter, xAxisUnit, payload.coordinate - prevX <= 50);
+      return AxisTicks(axisProps, xAxisFormatter, xAxisUnit, payload.coordinate - prevX <= 100);
   }
 };

@@ -172,7 +172,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
-  const marginChart = useChartMargin(dataset, labelKey, chartConfig.margin);
+  const marginChart = useChartMargin(dataset, yAxisFormatter, labelKey, chartConfig.margin);
 
   return (
     <ChartContainer

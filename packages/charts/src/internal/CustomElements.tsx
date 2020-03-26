@@ -5,6 +5,8 @@ type properties = { x: number; y: number; payload: object };
 
 export const AxisTicks = (props: properties, formatter, unit = '', rotate) => {
   const { x, y, payload } = props;
+  const tickValue =
+    formatter(payload.value).length > 9 ? formatter(payload.value).slice(0, 9) + '...' : formatter(payload.value);
   return (
     <g transform={`translate(${x},${y + 10})`}>
       <text
@@ -12,7 +14,7 @@ export const AxisTicks = (props: properties, formatter, unit = '', rotate) => {
         transform={rotate ? 'rotate(-45)' : ''}
         textAnchor={rotate ? 'end' : 'middle'}
       >
-        {`${formatter(payload.value)}${unit}`}
+        {`${tickValue}${unit}`}
       </text>
     </g>
   );
