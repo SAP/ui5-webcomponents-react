@@ -4937,6 +4937,615 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
 </div>
 `;
 
+exports[`AnalyticalTable with highlight row 1`] = `
+<div>
+  <div
+    style="min-height: 1.5rem; display: flex; align-items: center;"
+  >
+    <ui5-title
+      level="H2"
+    >
+      Table Title
+    </ui5-title>
+  </div>
+  <div
+    class="AnalyticalTable-tableContainer-0"
+  >
+    <div
+      aria-rowcount="5"
+      class="AnalyticalTable-table-0"
+      role="table"
+    >
+      <header
+        class="AnalyticalTable-tableHeaderRow-0"
+        role="rowgroup"
+        style="position: relative; width: 642px;"
+      >
+        <div
+          class="AnalyticalTable-th-0"
+          id="__ui5wcr__internal_highlight_column"
+          role="columnheader"
+          style="position: absolute; top: 0px; left: 0px; width: 6px;"
+        >
+          <div
+            style="width: 100%; font-weight: normal; cursor: auto; height: 100%; overflow-x: hidden; display: inline-block;"
+          >
+            <div
+              class="TableColumnHeader-header-0"
+              data-column-id="__ui5wcr__internal_highlight_column"
+              draggable="false"
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              >
+                <div
+                  style="width: 6px;"
+                />
+              </span>
+              <div
+                class="TableColumnHeader-iconContainer-0"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="AnalyticalTable-th-0"
+          id="__ui5wcr__internal_selection_column"
+          role="columnheader"
+          style="position: absolute; top: 0px; left: 6px; width: 36px;"
+        >
+          <div
+            style="width: 100%; font-weight: normal; cursor: auto; height: 100%; overflow-x: hidden; display: inline-block;"
+          >
+            <div
+              class="TableColumnHeader-header-0"
+              data-column-id="__ui5wcr__internal_selection_column"
+              draggable="false"
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              />
+              <div
+                class="TableColumnHeader-iconContainer-0"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="AnalyticalTable-th-0"
+          id="name"
+          role="columnheader"
+          style="position: absolute; top: 0px; left: 42px; width: 150px;"
+        >
+          <div
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+          >
+            <div
+              class="TableColumnHeader-header-0"
+              data-column-id="name"
+              draggable="true"
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Name"
+              >
+                Name
+              </span>
+              <div
+                class="TableColumnHeader-iconContainer-0"
+              />
+            </div>
+          </div>
+          <ui5-popover
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader-resizer-0"
+            draggable="false"
+            role="separator"
+            style="cursor: ew-resize;"
+          />
+        </div>
+        <div
+          class="AnalyticalTable-th-0"
+          id="age"
+          role="columnheader"
+          style="position: absolute; top: 0px; left: 192px; width: 150px;"
+        >
+          <div
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+          >
+            <div
+              class="TableColumnHeader-header-0"
+              data-column-id="age"
+              draggable="true"
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Age"
+              >
+                Age
+              </span>
+              <div
+                class="TableColumnHeader-iconContainer-0"
+              />
+            </div>
+          </div>
+          <ui5-popover
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader-resizer-0"
+            draggable="false"
+            role="separator"
+            style="cursor: ew-resize;"
+          />
+        </div>
+        <div
+          class="AnalyticalTable-th-0"
+          id="friend.name"
+          role="columnheader"
+          style="position: absolute; top: 0px; left: 342px; width: 150px;"
+        >
+          <div
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+          >
+            <div
+              class="TableColumnHeader-header-0"
+              data-column-id="friend.name"
+              draggable="true"
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+                title="Friend Name"
+              >
+                Friend Name
+              </span>
+              <div
+                class="TableColumnHeader-iconContainer-0"
+              />
+            </div>
+          </div>
+          <ui5-popover
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader-resizer-0"
+            draggable="false"
+            role="separator"
+            style="cursor: ew-resize;"
+          />
+        </div>
+        <div
+          class="AnalyticalTable-th-0"
+          id="friend.age"
+          role="columnheader"
+          style="position: absolute; top: 0px; left: 492px; width: 150px;"
+        >
+          <div
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+          >
+            <div
+              class="TableColumnHeader-header-0"
+              data-column-id="friend.age"
+              draggable="true"
+            >
+              <span
+                style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              >
+                <span>
+                  Friend Age
+                </span>
+              </span>
+              <div
+                class="TableColumnHeader-iconContainer-0"
+              />
+            </div>
+          </div>
+          <ui5-popover
+            horizontal-align="Left"
+            no-arrow="true"
+            placement-type="Bottom"
+            style="font-weight: normal;"
+            vertical-align="Center"
+          >
+            <ui5-list
+              footer-text=""
+              header-text=""
+              mode="None"
+              no-data-text=""
+              separators="All"
+            >
+              <ui5-li
+                data-sort="asc"
+                icon="sort-ascending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Ascending
+              </ui5-li>
+              <ui5-li
+                data-sort="desc"
+                icon="sort-descending"
+                info-state="None"
+                type="Active"
+              >
+                Sort Descending
+              </ui5-li>
+            </ui5-list>
+          </ui5-popover>
+          <div
+            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            draggable="false"
+            role="separator"
+            style="cursor: ew-resize;"
+          />
+        </div>
+      </header>
+      <div
+        class="AnalyticalTable-tbody-0 AnalyticalTable-selectable-0"
+        style="position: relative; height: 220px; width: 642px; overflow: auto; will-change: transform; direction: ltr;"
+      >
+        <div
+          style="height: 220px; width: 100%;"
+        >
+          <div
+            aria-rowindex="0"
+            class="AnalyticalTable-tr-0"
+            role="row"
+            style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
+          >
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 0px; width: 6px; align-items: center; padding: 0px;"
+            >
+              <div
+                style="width: 100%; height: 100%;"
+              />
+            </div>
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center;"
+            >
+              <div
+                style="width: 100%; height: 100%;"
+              />
+            </div>
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 42px; width: 150px; align-items: center;"
+            >
+              <span
+                class="Text-text-0 Text-noWrap-0"
+                style="width: 100%;"
+                title="Fra"
+              >
+                Fra
+              </span>
+            </div>
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 192px; width: 150px; align-items: center;"
+            >
+              <span
+                class="Text-text-0 Text-noWrap-0"
+                style="width: 100%;"
+                title="40"
+              >
+                40
+              </span>
+            </div>
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 342px; width: 150px; align-items: center;"
+            >
+              <span
+                class="Text-text-0 Text-noWrap-0"
+                style="width: 100%;"
+                title="MAR"
+              >
+                MAR
+              </span>
+            </div>
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 492px; width: 150px; align-items: center;"
+            >
+              <span
+                class="Text-text-0 Text-noWrap-0"
+                style="width: 100%;"
+                title="28"
+              >
+                28
+              </span>
+            </div>
+          </div>
+          <div
+            aria-rowindex="1"
+            class="AnalyticalTable-tr-0"
+            role="row"
+            style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
+          >
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 0px; width: 6px; align-items: center; padding: 0px;"
+            >
+              <div />
+            </div>
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center;"
+            >
+              <div
+                style="width: 100%; height: 100%;"
+              />
+            </div>
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 42px; width: 150px; align-items: center;"
+            >
+              <span
+                class="Text-text-0 Text-noWrap-0"
+                style="width: 100%;"
+                title="bla"
+              >
+                bla
+              </span>
+            </div>
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 192px; width: 150px; align-items: center;"
+            >
+              <span
+                class="Text-text-0 Text-noWrap-0"
+                style="width: 100%;"
+                title="20"
+              >
+                20
+              </span>
+            </div>
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 342px; width: 150px; align-items: center;"
+            >
+              <span
+                class="Text-text-0 Text-noWrap-0"
+                style="width: 100%;"
+                title="Nei"
+              >
+                Nei
+              </span>
+            </div>
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 492px; width: 150px; align-items: center;"
+            >
+              <span
+                class="Text-text-0 Text-noWrap-0"
+                style="width: 100%;"
+                title="50"
+              >
+                50
+              </span>
+            </div>
+          </div>
+          <div
+            aria-rowindex="2"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            role="row"
+            style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
+          >
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 0px; width: 6px; align-items: center; padding: 0px;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 42px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 192px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 342px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 492px; width: 150px; align-items: center;"
+            />
+          </div>
+          <div
+            aria-rowindex="3"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            role="row"
+            style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
+          >
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 0px; width: 6px; align-items: center; padding: 0px;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 42px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 192px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 342px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 492px; width: 150px; align-items: center;"
+            />
+          </div>
+          <div
+            aria-rowindex="4"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            role="row"
+            style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
+          >
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 0px; width: 6px; align-items: center; padding: 0px;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 42px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 192px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 342px; width: 150px; align-items: center;"
+            />
+            <div
+              class="AnalyticalTable-tableCell-0"
+              role="cell"
+              style="position: absolute; top: 0px; left: 492px; width: 150px; align-items: center;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`AnalyticalTable without selection Column 1`] = `
 <div>
   <div
