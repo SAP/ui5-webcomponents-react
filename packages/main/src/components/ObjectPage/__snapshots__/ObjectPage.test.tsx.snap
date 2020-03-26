@@ -26,31 +26,29 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       <div
         class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
-        <span
-          class="ObjectPage-container-0"
+        <div
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 ObjectPage-container-0"
         >
           <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsBaseline-0 FlexBox-flexWrapNoWrap-0"
           >
-            <div
-              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            <ui5-title
+              class="ObjectPage-title-0"
+              level="H3"
             >
-              <h1
-                class="ObjectPage-title-0"
-              >
-                Fiori Object Page Title
-              </h1>
-              <span
-                class="ObjectPage-subTitle-0"
-              >
-                Sub Title
-              </span>
-              <div
-                class="ObjectPage-keyInfos-0"
-              />
-            </div>
+              Fiori Object Page Title
+            </ui5-title>
+            <ui5-label
+              class="ObjectPage-subTitle-0"
+              for=""
+            >
+              Sub Title
+            </ui5-label>
+            <div
+              class="ObjectPage-keyInfos-0"
+            />
           </div>
-        </span>
+        </div>
       </div>
     </header>
   </header>
@@ -202,27 +200,25 @@ exports[`ObjectPage Just Some Sections 1`] = `
       <div
         class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
-        <span
-          class="ObjectPage-container-0"
+        <div
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 ObjectPage-container-0"
         >
           <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsBaseline-0 FlexBox-flexWrapNoWrap-0"
           >
+            <ui5-title
+              class="ObjectPage-title-0"
+              level="H3"
+            />
+            <ui5-label
+              class="ObjectPage-subTitle-0"
+              for=""
+            />
             <div
-              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
-            >
-              <h1
-                class="ObjectPage-title-0"
-              />
-              <span
-                class="ObjectPage-subTitle-0"
-              />
-              <div
-                class="ObjectPage-keyInfos-0"
-              />
-            </div>
+              class="ObjectPage-keyInfos-0"
+            />
           </div>
-        </span>
+        </div>
       </div>
     </header>
   </header>
@@ -314,94 +310,92 @@ exports[`ObjectPage Key Infos 1`] = `
       <div
         class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
-        <span
-          class="ObjectPage-container-0"
+        <div
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 ObjectPage-container-0"
         >
-          <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
-          >
-            <div>
-              <ui5-link
-                design="Default"
-                href="PathSegment1"
-              >
-                Path1
-              </ui5-link>
-              <ui5-label
-                for=""
-                style="margin: 0px 0.25rem;"
-              >
-                /
-              </ui5-label>
-              <ui5-link
-                design="Default"
-                href="PathSegment2"
-              >
-                Path2
-              </ui5-link>
-              <ui5-label
-                for=""
-                style="margin: 0px 0.25rem;"
-              >
-                /
-              </ui5-label>
-              <ui5-link
-                design="Default"
-                href="PathSegment3"
-              />
-            </div>
-            <div
-              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+          <div>
+            <ui5-link
+              design="Default"
+              href="PathSegment1"
             >
-              <h1
-                class="ObjectPage-title-0"
-              />
-              <span
-                class="ObjectPage-subTitle-0"
-              />
-              <div
-                class="ObjectPage-keyInfos-0"
-              >
-                <div>
-                  <ui5-title
-                    level="H5"
-                  >
-                    Key Info 1
-                  </ui5-title>
-                  <span
-                    class="Text-text-0"
-                  >
-                    Value 1
-                  </span>
-                </div>
-                <div>
-                  <ui5-title
-                    level="H5"
-                  >
-                    Key Info 2
-                  </ui5-title>
-                  <span
-                    class="Text-text-0"
-                  >
-                    Value 2
-                  </span>
-                </div>
-                <div>
-                  <ui5-title
-                    level="H5"
-                  >
-                    Key Info 3
-                  </ui5-title>
-                  <span
-                    class="Text-text-0"
-                  >
-                    Value 3
-                  </span>
-                </div>
+              Path1
+            </ui5-link>
+            <ui5-label
+              for=""
+              style="margin: 0px 0.25rem;"
+            >
+              /
+            </ui5-label>
+            <ui5-link
+              design="Default"
+              href="PathSegment2"
+            >
+              Path2
+            </ui5-link>
+            <ui5-label
+              for=""
+              style="margin: 0px 0.25rem;"
+            >
+              /
+            </ui5-label>
+            <ui5-link
+              design="Default"
+              href="PathSegment3"
+            />
+          </div>
+          <div
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsBaseline-0 FlexBox-flexWrapNoWrap-0"
+          >
+            <ui5-title
+              class="ObjectPage-title-0"
+              level="H3"
+            />
+            <ui5-label
+              class="ObjectPage-subTitle-0"
+              for=""
+            />
+            <div
+              class="ObjectPage-keyInfos-0"
+            >
+              <div>
+                <ui5-title
+                  level="H5"
+                >
+                  Key Info 1
+                </ui5-title>
+                <span
+                  class="Text-text-0"
+                >
+                  Value 1
+                </span>
+              </div>
+              <div>
+                <ui5-title
+                  level="H5"
+                >
+                  Key Info 2
+                </ui5-title>
+                <span
+                  class="Text-text-0"
+                >
+                  Value 2
+                </span>
+              </div>
+              <div>
+                <ui5-title
+                  level="H5"
+                >
+                  Key Info 3
+                </ui5-title>
+                <span
+                  class="Text-text-0"
+                >
+                  Value 3
+                </span>
               </div>
             </div>
           </div>
-        </span>
+        </div>
       </div>
     </header>
   </header>
@@ -516,27 +510,25 @@ exports[`ObjectPage No Header 1`] = `
       <div
         class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
-        <span
-          class="ObjectPage-container-0"
+        <div
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 ObjectPage-container-0"
         >
           <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsBaseline-0 FlexBox-flexWrapNoWrap-0"
           >
+            <ui5-title
+              class="ObjectPage-title-0"
+              level="H3"
+            />
+            <ui5-label
+              class="ObjectPage-subTitle-0"
+              for=""
+            />
             <div
-              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
-            >
-              <h1
-                class="ObjectPage-title-0"
-              />
-              <span
-                class="ObjectPage-subTitle-0"
-              />
-              <div
-                class="ObjectPage-keyInfos-0"
-              />
-            </div>
+              class="ObjectPage-keyInfos-0"
+            />
           </div>
-        </span>
+        </div>
       </div>
     </header>
   </header>
@@ -651,27 +643,25 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       <div
         class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
-        <span
-          class="ObjectPage-container-0"
+        <div
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 ObjectPage-container-0"
         >
           <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsBaseline-0 FlexBox-flexWrapNoWrap-0"
           >
+            <ui5-title
+              class="ObjectPage-title-0"
+              level="H3"
+            />
+            <ui5-label
+              class="ObjectPage-subTitle-0"
+              for=""
+            />
             <div
-              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
-            >
-              <h1
-                class="ObjectPage-title-0"
-              />
-              <span
-                class="ObjectPage-subTitle-0"
-              />
-              <div
-                class="ObjectPage-keyInfos-0"
-              />
-            </div>
+              class="ObjectPage-keyInfos-0"
+            />
           </div>
-        </span>
+        </div>
       </div>
     </header>
   </header>
@@ -726,27 +716,25 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       <div
         class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
-        <span
-          class="ObjectPage-container-0"
+        <div
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 ObjectPage-container-0"
         >
           <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsBaseline-0 FlexBox-flexWrapNoWrap-0"
           >
+            <ui5-title
+              class="ObjectPage-title-0"
+              level="H3"
+            />
+            <ui5-label
+              class="ObjectPage-subTitle-0"
+              for=""
+            />
             <div
-              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
-            >
-              <h1
-                class="ObjectPage-title-0"
-              />
-              <span
-                class="ObjectPage-subTitle-0"
-              />
-              <div
-                class="ObjectPage-keyInfos-0"
-              />
-            </div>
+              class="ObjectPage-keyInfos-0"
+            />
           </div>
-        </span>
+        </div>
       </div>
     </header>
   </header>
@@ -832,27 +820,25 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       <div
         class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
-        <span
-          class="ObjectPage-container-0"
+        <div
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 ObjectPage-container-0"
         >
           <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsBaseline-0 FlexBox-flexWrapNoWrap-0"
           >
+            <ui5-title
+              class="ObjectPage-title-0"
+              level="H3"
+            />
+            <ui5-label
+              class="ObjectPage-subTitle-0"
+              for=""
+            />
             <div
-              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
-            >
-              <h1
-                class="ObjectPage-title-0"
-              />
-              <span
-                class="ObjectPage-subTitle-0"
-              />
-              <div
-                class="ObjectPage-keyInfos-0"
-              />
-            </div>
+              class="ObjectPage-keyInfos-0"
+            />
           </div>
-        </span>
+        </div>
       </div>
     </header>
   </header>
@@ -944,31 +930,29 @@ exports[`ObjectPage Only Sections 1`] = `
       <div
         class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
-        <span
-          class="ObjectPage-container-0"
+        <div
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 ObjectPage-container-0"
         >
           <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsBaseline-0 FlexBox-flexWrapNoWrap-0"
           >
-            <div
-              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            <ui5-title
+              class="ObjectPage-title-0"
+              level="H3"
             >
-              <h1
-                class="ObjectPage-title-0"
-              >
-                Fiori Object Page Title
-              </h1>
-              <span
-                class="ObjectPage-subTitle-0"
-              >
-                Sub Title
-              </span>
-              <div
-                class="ObjectPage-keyInfos-0"
-              />
-            </div>
+              Fiori Object Page Title
+            </ui5-title>
+            <ui5-label
+              class="ObjectPage-subTitle-0"
+              for=""
+            >
+              Sub Title
+            </ui5-label>
+            <div
+              class="ObjectPage-keyInfos-0"
+            />
           </div>
-        </span>
+        </div>
       </div>
     </header>
   </header>
@@ -1160,27 +1144,25 @@ exports[`ObjectPage Set selected section id 1`] = `
       <div
         class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
-        <span
-          class="ObjectPage-container-0"
+        <div
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 ObjectPage-container-0"
         >
           <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsBaseline-0 FlexBox-flexWrapNoWrap-0"
           >
+            <ui5-title
+              class="ObjectPage-title-0"
+              level="H3"
+            />
+            <ui5-label
+              class="ObjectPage-subTitle-0"
+              for=""
+            />
             <div
-              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
-            >
-              <h1
-                class="ObjectPage-title-0"
-              />
-              <span
-                class="ObjectPage-subTitle-0"
-              />
-              <div
-                class="ObjectPage-keyInfos-0"
-              />
-            </div>
+              class="ObjectPage-keyInfos-0"
+            />
           </div>
-        </span>
+        </div>
       </div>
     </header>
   </header>
@@ -1278,31 +1260,29 @@ exports[`ObjectPage With Subsections 1`] = `
       <div
         class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
       >
-        <span
-          class="ObjectPage-container-0"
+        <div
+          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 ObjectPage-container-0"
         >
           <div
-            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsBaseline-0 FlexBox-flexWrapNoWrap-0"
           >
-            <div
-              class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
+            <ui5-title
+              class="ObjectPage-title-0"
+              level="H3"
             >
-              <h1
-                class="ObjectPage-title-0"
-              >
-                Fiori Object Page Title
-              </h1>
-              <span
-                class="ObjectPage-subTitle-0"
-              >
-                Sub Title
-              </span>
-              <div
-                class="ObjectPage-keyInfos-0"
-              />
-            </div>
+              Fiori Object Page Title
+            </ui5-title>
+            <ui5-label
+              class="ObjectPage-subTitle-0"
+              for=""
+            >
+              Sub Title
+            </ui5-label>
+            <div
+              class="ObjectPage-keyInfos-0"
+            />
           </div>
-        </span>
+        </div>
       </div>
     </header>
   </header>
