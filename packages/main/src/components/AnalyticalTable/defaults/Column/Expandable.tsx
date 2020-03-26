@@ -38,7 +38,7 @@ export const Expandable = (props) => {
   const tableColumns =
     selectionMode === TableSelectionMode.NONE || noSelectionColumn
       ? columns
-      : columns.filter(({ id }) => id !== '__ui5wcr__internal_selection_column');
+      : columns.filter(({ id }) => id !== '__ui5wcr__internal_selection_column' && id !== '__ui5wcr__internal_highlight_column');
 
   const columnIndex = tableColumns.findIndex((col) => col.id === column.id);
 
@@ -52,7 +52,7 @@ export const Expandable = (props) => {
     paddingLeft
   };
 
-  if (column.id === '__ui5wcr__internal_selection_column') {
+  if (column.id === '__ui5wcr__internal_selection_column' || column.id === '__ui5wcr__internal_highlight_column') {
     return cell.render('Cell');
   }
 
