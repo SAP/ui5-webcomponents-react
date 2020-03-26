@@ -20,7 +20,7 @@ export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelForm
   useMemo(() => {
     return dataLabel
       ? dataLabelCustomElement
-        ? (props): SVGGElement => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+        ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
         : (props): number | string => dataLabelFormatter(props.value)
       : false;
   }, [dataLabelFormatter, dataLabelCustomElement, dataLabel]);
