@@ -3,7 +3,7 @@ import { getTextWidth } from '../util/Utils';
 
 export const useChartMargin = (dataset, formatter, labelKey, margin, bar?) =>
   useMemo(() => {
-    let marginLeft = bar ? 60 : 0;
+    let marginLeft = 0;
     if (dataset && bar && typeof margin?.left !== 'number') {
       marginLeft = Math.max(
         ...dataset
