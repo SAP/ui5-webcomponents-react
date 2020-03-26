@@ -6,6 +6,7 @@ import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
 import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
+import { JSSTheme } from "../../interfaces/JSSTheme";
 
 declare global {
   interface Window {
@@ -37,12 +38,12 @@ if (!document.querySelector('style[data-ui5-webcomponents-react-sizes]')) {
 /**
  * <code>import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';</code>
  */
-const ThemeProvider: FC<ThemeProviderProps> = (props) => {
+const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
   const { withToastContainer = false, children } = props;
   const theme = getTheme();
   const isCompactSize = getCompactSize();
 
-  const themeContext = useMemo(() => {
+  const themeContext: JSSTheme = useMemo(() => {
     return {
       theme,
       contentDensity: isCompactSize ? ContentDensity.Compact : ContentDensity.Cozy,
