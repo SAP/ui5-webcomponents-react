@@ -79,7 +79,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
 
   const PieDataLabel = usePieDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter);
 
-  const marginChart = useChartMargin(dataset, (el) => el, labelKey, chartConfig.margin);
+  const marginChart = useChartMargin(dataset, (el) => el, labelKey, chartConfig.margin, true);
 
   return (
     <ChartContainer
@@ -94,9 +94,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       tooltip={tooltip}
       slot={slot}
     >
-      <PieChartLib>
+      <PieChartLib margin={marginChart}>
         <Pie
-          margin={marginChart}
           innerRadius={chartConfig.innerRadius}
           paddingAngle={chartConfig.paddingAngle}
           dataKey={currentDataKeys[0] ?? ''}
