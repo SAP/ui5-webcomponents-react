@@ -12,6 +12,7 @@ import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
 import { Badge } from './lib/Badge';
 import { Bar } from './lib/Bar';
+import { BarDesign } from './lib/BarDesign';
 import { Breadcrumbs } from './lib/Breadcrumbs';
 import { BreadcrumbsSeparatorStyle } from './lib/BreadcrumbsSeparatorStyle';
 import { BusyIndicator } from './lib/BusyIndicator';
@@ -24,12 +25,15 @@ import { Card } from './lib/Card';
 import { Carousel } from './lib/Carousel';
 import { CarouselArrowsPlacement } from './lib/CarouselArrowsPlacement';
 import { CheckBox } from './lib/CheckBox';
+import { ComboBox } from './lib/ComboBox';
+import { ComboBoxItem } from './lib/ComboBoxItem';
 import { ContentDensity } from './lib/ContentDensity';
 import { CurrentViewportRangeContext } from './lib/CurrentViewportRangeContext';
 import { CustomListItem } from './lib/CustomListItem';
 import { DatePicker } from './lib/DatePicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
 import { Dialog } from './lib/Dialog';
+import { FileUploader } from './lib/FileUploader';
 import { FilterBar } from './lib/FilterBar';
 import { FilterItem } from './lib/FilterItem';
 import { FilterType } from './lib/FilterType';
@@ -63,6 +67,7 @@ import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
 import { MessageToast } from './lib/MessageToast';
 import { MultiComboBox } from './lib/MultiComboBox';
+import { MultiComboBoxItem } from './lib/MultiComboBoxItem';
 import { Notification } from './lib/Notification';
 import { NotificationGroup } from './lib/NotificationGroup';
 import { ObjectPage } from './lib/ObjectPage';
@@ -84,8 +89,8 @@ import { ProductSwitch } from './lib/ProductSwitch';
 import { ProductSwitchItem } from './lib/ProductSwitchItem';
 import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
+import { ResponsivePopover } from './lib/ResponsivePopover';
 import { SegmentedButton } from './lib/SegmentedButton';
-import { SegmentedButtonItem } from './lib/SegmentedButtonItem';
 import { Select } from './lib/Select';
 import { SemanticColor } from './lib/SemanticColor';
 import { ShellBar } from './lib/ShellBar';
@@ -96,6 +101,7 @@ import { SideNavigationOpenState } from './lib/SideNavigationOpenState';
 import { Size } from './lib/Size';
 import { Spinner } from './lib/Spinner';
 import { StandardListItem } from './lib/StandardListItem';
+import { SuggestionItem } from './lib/SuggestionItem';
 import { Switch } from './lib/Switch';
 import { Tab } from './lib/Tab';
 import { TabContainer } from './lib/TabContainer';
@@ -112,10 +118,12 @@ import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
 import { ThemeProvider } from './lib/ThemeProvider';
 import { Themes } from './lib/Themes';
+import { TimePicker } from './lib/TimePicker';
 import { Timeline } from './lib/Timeline';
 import { TimelineItem } from './lib/TimelineItem';
 import { Title } from './lib/Title';
 import { TitleLevel } from './lib/TitleLevel';
+import { Toast } from './lib/Toast';
 import { ToggleButton } from './lib/ToggleButton';
 import { Token } from './lib/Token';
 import { Tokenizer } from './lib/Tokenizer';
@@ -134,6 +142,7 @@ export {
   AvatarSize,
   Badge,
   Bar,
+  BarDesign,
   Breadcrumbs,
   BreadcrumbsSeparatorStyle,
   BusyIndicator,
@@ -146,12 +155,15 @@ export {
   Carousel,
   CarouselArrowsPlacement,
   CheckBox,
+  ComboBox,
+  ComboBoxItem,
   ContentDensity,
   CurrentViewportRangeContext,
   CustomListItem,
   DatePicker,
   DeviationIndicator,
   Dialog,
+  FileUploader,
   FilterBar,
   FilterItem,
   FilterType,
@@ -185,6 +197,7 @@ export {
   MessageStripType,
   MessageToast,
   MultiComboBox,
+  MultiComboBoxItem,
   Notification,
   NotificationGroup,
   ObjectPage,
@@ -206,8 +219,8 @@ export {
   ProductSwitchItem,
   ProgressIndicator,
   RadioButton,
+  ResponsivePopover,
   SegmentedButton,
-  SegmentedButtonItem,
   Select,
   SemanticColor,
   ShellBar,
@@ -218,6 +231,7 @@ export {
   Size,
   Spinner,
   StandardListItem,
+  SuggestionItem,
   Switch,
   Tab,
   TabContainer,
@@ -234,10 +248,12 @@ export {
   TextArea,
   ThemeProvider,
   Themes,
+  TimePicker,
   Timeline,
   TimelineItem,
   Title,
   TitleLevel,
+  Toast,
   ToggleButton,
   Token,
   Tokenizer,
