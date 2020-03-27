@@ -416,11 +416,11 @@ allWebComponents.forEach((componentSpec) => {
   }
 
   // create demo
-  const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties);
-  // if (!fs.existsSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `${componentSpec.module}.stories.tsx`))) {
-  fs.writeFileSync(
-    path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `${componentSpec.module}.stories.tsx`),
-    webComponentDemo
-  );
-  // }
+  if (!fs.existsSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `demo.stories.tsx`))) {
+    const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties);
+    fs.writeFileSync(
+      path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `${componentSpec.module}.stories.tsx`),
+      webComponentDemo
+    );
+  }
 });
