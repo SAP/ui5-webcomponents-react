@@ -72,9 +72,9 @@ export const FilterDialog = (props) => {
   const handleSearch = useCallback(
     (e) => {
       if (handleDialogSearch) {
-        handleDialogSearch(enrichEventWithDetails(e, { value: e.parameters.value }));
+        handleDialogSearch(enrichEventWithDetails(e, { value: e.detail.value }));
       }
-      setSearchString(e.parameters.value);
+      setSearchString(e.detail.value);
     },
     [setSearchString, handleDialogSearch]
   );
@@ -178,9 +178,7 @@ export const FilterDialog = (props) => {
   const handleCheckBoxChange = useCallback(
     (element, activeFilters) => (e) => {
       if (handleSelectionChange) {
-        handleSelectionChange(
-          enrichEventWithDetails(e, { element: { event: e, element }, checked: e.parameters.checked })
-        );
+        handleSelectionChange(enrichEventWithDetails(e, { element: { event: e, element }, checked: e.target.checked }));
       }
       setActiveFilters({ ...activeFilters, [element.key]: { event: e, element } });
     },

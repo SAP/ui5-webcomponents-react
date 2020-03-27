@@ -156,7 +156,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       const currentChild = elements.filter((item) => item.element.key === child.key)[0];
       if (currentChild) {
         return cloneElement(child as ReactElement<any>, {
-          visibleInFilterBar: currentChild.event.parameters.checked
+          visibleInFilterBar: currentChild.event.detail.checked
         });
       }
       return child;
@@ -240,7 +240,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         setMountFilters(true);
       }
       if (onRestore) {
-        onRestore(enrichEventWithDetails(e.getOriginalEvent(), { source }));
+        onRestore(enrichEventWithDetails(e, { source }));
       }
     },
     [setDialogOpen, showGo, showGoOnFB, onRestore]
