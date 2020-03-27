@@ -451,7 +451,7 @@ allWebComponents.forEach((componentSpec) => {
 
   // create demo
   if (
-    !fs.existsSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `demo.stories.tsx`)) &&
+    !fs.existsSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `${componentSpec.module}.stories.tsx`)) &&
     !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module)
   ) {
     const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties);
