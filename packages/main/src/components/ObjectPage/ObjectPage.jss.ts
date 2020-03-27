@@ -97,31 +97,15 @@ const styles = {
     position: 'relative'
   },
   container: {
-    display: 'inline-block',
-    lineHeight: 'normal',
-    verticalAlign: 'middle',
     width: '70%',
     boxSizing: 'border-box'
-    // paddingTop: '1.5rem'
   },
   title: {
-    fontSize: '1.375rem',
-    paddingRight: '1rem',
-    verticalAlign: 'baseline',
-    lineHeight: 'normal',
-    display: 'inline-block',
-    margin: '0',
-    fontWeight: 'normal',
-    color: ThemingParameters.sapTextColor
+    padding: '0.3125rem 0 0 0'
   },
   subTitle: {
-    display: 'inline-block',
-    wordBreak: 'break-word',
     verticalAlign: 'baseline',
-    paddingTop: '0.5rem',
-    paddingBottom: '0.5rem',
-    fontSize: '0.875rem',
-    color: ThemingParameters.sapContent_LabelColor
+    padding: '0 0 0.5rem 0.5rem'
   },
   actions: {
     position: 'absolute',
@@ -139,6 +123,12 @@ const styles = {
     }
   },
   titleInHeaderContent: {
+    '& $subTitle': {
+      padding: '0.5rem 0'
+    },
+    '& $keyInfos': {
+      alignSelf: 'unset'
+    },
     '& contentHeader': {
       paddingTop: 0,
       '& > *': {
@@ -184,7 +174,8 @@ const styles = {
       marginLeft: '1rem'
     },
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignSelf: 'center'
   },
   avatar: {
     margin: `var(${ObjectPageCssVariables.avatarMargin})`
