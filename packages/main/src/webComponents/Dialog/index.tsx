@@ -1,4 +1,3 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Dialog from '@ui5/webcomponents/dist/Dialog';

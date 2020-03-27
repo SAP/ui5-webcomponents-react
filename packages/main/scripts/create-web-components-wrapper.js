@@ -322,7 +322,7 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
         storybookKnob += `number('${prop.name}', ${prop.defaultValue})`;
       } else if (prop.tsType === 'boolean') {
         storybookKnobImports.add('boolean');
-        storybookKnob += `boolean('${prop.name}', ${Boolean(prop.defaultValue)})`;
+        storybookKnob += `boolean('${prop.name}', ${prop.defaultValue === 'true'})`;
       } else if (prop.tsType === 'string') {
         storybookKnobImports.add('text');
         storybookKnob += `text('${prop.name}', ${prop.defaultValue})`;
@@ -401,7 +401,11 @@ allWebComponents.forEach((componentSpec) => {
     `);
 
       if (property.hasOwnProperty('defaultValue')) {
-        defaultProps.push(`${property.name}: ${property.defaultValue}`);
+        if (tsType.tsType === 'boolean') {
+          defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
+        } else {
+          defaultProps.push(`${property.name}: ${property.defaultValue}`);
+        }
       }
 
       return {

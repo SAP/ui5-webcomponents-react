@@ -1,6 +1,6 @@
+import { TimePicker } from '@ui5/webcomponents-react/lib/TimePicker';
 import { mount } from 'enzyme';
 import React from 'react';
-import { TimePicker } from '@ui5/webcomponents-react/lib/TimePicker';
 
 describe('TimePicker', () => {
   test('Basic Test (generated)', () => {

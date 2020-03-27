@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('DatePicker', () => {

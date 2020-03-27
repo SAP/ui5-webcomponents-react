@@ -1,7 +1,7 @@
-import React from 'react';
-import { Toast } from '@ui5/webcomponents-react/lib/Toast';
-
 import { number, text } from '@storybook/addon-knobs';
+import { Toast } from '@ui5/webcomponents-react/lib/Toast';
+import React from 'react';
+
 export default {
   title: 'UI5 Web Components / Toast',
   component: Toast

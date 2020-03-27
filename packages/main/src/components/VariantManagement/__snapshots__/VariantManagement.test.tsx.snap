@@ -29,6 +29,7 @@ Array [
     <ui5-button
       class="VariantManagement-footer-0"
       design="Emphasized"
+      icon=""
       slot="footer"
     >
       Cancel
@@ -42,7 +43,6 @@ Array [
     >
       <ui5-li
         data-key="1"
-        info-state="None"
         selected="true"
         style="width: 300px;"
         type="Active"
@@ -51,7 +51,6 @@ Array [
       </ui5-li>
       <ui5-li
         data-key="2"
-        info-state="None"
         style="width: 300px;"
         type="Active"
       >

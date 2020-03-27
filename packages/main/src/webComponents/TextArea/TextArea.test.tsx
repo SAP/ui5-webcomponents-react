@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { TextArea } from '@ui5/webcomponents-react/lib/TextArea';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('TextArea', () => {

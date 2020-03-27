@@ -37,6 +37,7 @@ const anchorBarStyles = {
     position: 'absolute',
     '--_ui5_button_compact_height': '1.375rem',
     '--_ui5_button_base_height': '1.375rem',
+    '--_ui5_button_base_min_width': '1.375rem',
     '--_ui5_button_base_min_compact_width': '1.375rem',
     top: `-0.6875rem`,
     marginLeft: `-0.6875rem`,

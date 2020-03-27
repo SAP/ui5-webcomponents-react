@@ -1,8 +1,8 @@
-import React from 'react';
+import { boolean, number, select } from '@storybook/addon-knobs';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
-
-import { select, boolean, number } from '@storybook/addon-knobs';
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
+import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Carousel',
@@ -12,12 +12,23 @@ export default {
 export const generatedDefaultStory = () => (
   <Carousel
     arrowsPlacement={select('arrowsPlacement', CarouselArrowsPlacement, CarouselArrowsPlacement['Content'])}
-    cycling={boolean('cycling', true)}
-    hideNavigation={boolean('hideNavigation', true)}
+    cycling={boolean('cycling', false)}
+    hideNavigation={boolean('hideNavigation', false)}
     itemsPerPage={number('itemsPerPage', 1)}
     selectedIndex={number('selectedIndex', 0)}
   >
-    Some Content
+    <div style={{ height: '300px', width: '100%', backgroundColor: ThemingParameters.sapInformationBackground }}>
+      Carousel Content 1
+    </div>
+    <div style={{ height: '300px', width: '100%', backgroundColor: ThemingParameters.sapInformationBackground }}>
+      Carousel Content 2
+    </div>
+    <div style={{ height: '300px', width: '100%', backgroundColor: ThemingParameters.sapInformationBackground }}>
+      Carousel Content 3
+    </div>
+    <div style={{ height: '300px', width: '100%', backgroundColor: ThemingParameters.sapInformationBackground }}>
+      Carousel Content 4
+    </div>
   </Carousel>
 );
 

@@ -1,19 +1,13 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5ToggleButton from '@ui5/webcomponents/dist/ToggleButton';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ToggleButtonPropTypes extends WithWebComponentPropTypes {
-  design?: ButtonDesign; // @generated
-  disabled?: boolean; // @generated
-  icon?: string; // @generated
-  iconEnd?: boolean; // @generated
-  submits?: boolean; // @generated
-  pressed?: boolean; // @generated
-  onClick?: (event: CustomEvent) => void; // @generated
-  children?: string; // @generated
+  /**
+   * Determines whether the <code>ui5-togglebutton</code> is displayed as pressed.
+   */
+  pressed?: boolean;
 }
 
 /**
@@ -26,7 +20,7 @@ const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPro
 ToggleButton.displayName = 'ToggleButton';
 
 ToggleButton.defaultProps = {
-  design: ButtonDesign.Default // @generated
+  pressed: false
 };
 
 export { ToggleButton };

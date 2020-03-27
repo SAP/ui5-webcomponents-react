@@ -1,28 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BusyIndicator Basic Test 1`] = `
-<ui5-busyindicator
-  active="true"
-  size="Large"
-/>
-`;
-
-exports[`BusyIndicator Inactive 1`] = `
+exports[`BusyIndicator Basic Test (generated) 1`] = `
 <ui5-busyindicator
   size="Large"
-/>
-`;
-
-exports[`BusyIndicator Size Medium 1`] = `
-<ui5-busyindicator
-  active="true"
-  size="Medium"
-/>
-`;
-
-exports[`BusyIndicator Size Small 1`] = `
-<ui5-busyindicator
-  active="true"
-  size="Small"
 />
 `;

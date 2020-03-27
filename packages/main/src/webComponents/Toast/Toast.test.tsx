@@ -1,6 +1,6 @@
+import { Toast } from '@ui5/webcomponents-react/lib/Toast';
 import { mount } from 'enzyme';
 import React from 'react';
-import { Toast } from '@ui5/webcomponents-react/lib/Toast';
 
 describe('Toast', () => {
   test('Basic Test (generated)', () => {

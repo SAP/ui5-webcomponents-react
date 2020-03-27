@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploader Basic Test (generated) 1`] = `
+<ui5-file-uploader
+  name=""
+  placeholder=""
+  value=""
+  value-state="None"
+/>
+`;

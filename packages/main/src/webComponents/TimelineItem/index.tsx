@@ -1,28 +1,56 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5TimelineItem from '@ui5/webcomponents/dist/TimelineItem';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
-  icon?: string; // @generated
-  itemName?: string; // @generated
-  itemNameClickable?: boolean; // @generated
-  titleText?: string; // @generated
-  subtitleText?: string; // @generated
-  onItemNameClick?: (event: CustomEvent) => void; // @generated
-  children?: ReactNode; // @generated
+  /**
+ * Defines the icon to be displayed as graphical element within the <code>ui5-timeline-item</code>. SAP-icons font provides numerous options. <br><br>
+
+See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+ */
+  icon?: string;
+  /**
+   * Defines the name of the item.
+   */
+  itemName?: string;
+  /**
+   * Defines whether the <code>itemName</code> is clickable.
+   */
+  itemNameClickable?: boolean;
+  /**
+   * Defines the subtitle text of the component.
+   */
+  subtitleText?: string;
+  /**
+   * Defines the title text of the component.
+   */
+  titleText?: string;
+  /**
+   * Determines the description of the <code>ui5-timeline-item</code>.
+   */
+  children?: ReactNode | ReactNode[];
+  /**
+   * Fired when the item name is pressed either with a click/tap or by using the Enter or Space key. <br><br> <b>Note:</b> The event will not be fired if the <code>item-name-clickable</code> attribute is not set.
+   */
+  onItemNameClick?: (event: CustomEvent<{}>) => void;
 }
 
 /**
  * <code>import { TimelineItem } from '@ui5/webcomponents-react/lib/TimelineItem';</code>
+ * <br />
+ * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</a>
  */
 const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPropTypes>(UI5TimelineItem);
 
 TimelineItem.displayName = 'TimelineItem';
 
 TimelineItem.defaultProps = {
-  icon: null // @generated
+  icon: '',
+  itemName: false,
+  itemNameClickable: false,
+  subtitleText: '',
+  titleText: ''
 };
 
 export { TimelineItem };

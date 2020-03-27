@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel Basic Test (generated) 1`] = `
+<ui5-carousel
+  arrows-placement="Content"
+  items-per-page="1"
+  selected-index="0"
+/>
+`;
