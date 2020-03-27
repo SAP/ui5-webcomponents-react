@@ -1,4 +1,3 @@
-import { getCompactSize } from '@ui5/webcomponents-base/dist/config/CompactSize';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
@@ -6,7 +5,7 @@ import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
 import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
-import { JSSTheme } from "../../interfaces/JSSTheme";
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 declare global {
   interface Window {
@@ -41,7 +40,7 @@ if (!document.querySelector('style[data-ui5-webcomponents-react-sizes]')) {
 const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
   const { withToastContainer = false, children } = props;
   const theme = getTheme();
-  const isCompactSize = getCompactSize();
+  const isCompactSize = document.body.classList.contains('ui5-content-density-compact');
 
   const themeContext: JSSTheme = useMemo(() => {
     return {
@@ -50,14 +49,6 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
       parameters: ThemingParameters
     };
   }, [theme, isCompactSize]);
-
-  useEffect(() => {
-    if (isCompactSize) {
-      document.body.classList.add('ui5-content-density-compact');
-    } else {
-      document.body.classList.remove('ui5-content-density-compact');
-    }
-  }, [isCompactSize]);
 
   useEffect(() => {
     if (cssVarsPonyfillNeeded()) {

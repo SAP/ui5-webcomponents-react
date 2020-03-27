@@ -1,9 +1,8 @@
+import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Carousel from '@ui5/webcomponents/dist/Carousel';
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
-import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
-import { ReactNode } from 'react';
 
 export interface CarouselPropTypes extends WithWebComponentPropTypes {
   /**
@@ -42,7 +41,7 @@ const Carousel: FC<CarouselPropTypes> = withWebComponent<CarouselPropTypes>(UI5C
 Carousel.displayName = 'Carousel';
 
 Carousel.defaultProps = {
-  arrowsPlacement: 'Content',
+  arrowsPlacement: CarouselArrowsPlacement.Content,
   cycling: false,
   hideNavigation: false,
   itemsPerPage: 1,

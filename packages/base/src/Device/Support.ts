@@ -1,4 +1,4 @@
-import { supportTouch } from '@ui5/webcomponents-core/dist/sap/ui/Device';
+import { supportTouch } from '@ui5/webcomponents-base/dist/Device';
 import '@ui5/webcomponents-react-base/third-party/modernizr';
 
 declare const Modernizr: {
