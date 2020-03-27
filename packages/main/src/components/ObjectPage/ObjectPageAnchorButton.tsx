@@ -21,23 +21,25 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
 
   useEffect(() => {
     if (subSectionsAvailable) {
-      const element = ref.current.parentElement.shadowRoot.querySelector(
-        `.ui5-tc__headerList li[aria-posinset="${index + 1}"] .ui5-tc__headerItemContent`
-      );
+      try {
+        const element = ref.current.parentElement.shadowRoot.querySelector(
+          `.ui5-tc__headerList li[aria-posinset="${index + 1}"] .ui5-tc__headerItemContent`
+        );
 
-      if (element && !element.querySelector('ui5-icon')) {
-        const icon = document.createElement('ui5-icon');
-        (icon as any).name = 'slim-arrow-down';
-        icon.style.verticalAlign = 'text-bottom';
-        icon.style.pointerEvents = 'all';
-        icon.addEventListener('click', (e) => {
-          e.stopImmediatePropagation();
-          e.preventDefault();
-          e.stopPropagation();
-          onShowSubSectionPopover(e, section);
-        });
-        element.appendChild(icon);
-      }
+        if (element && !element.querySelector('ui5-icon')) {
+          const icon = document.createElement('ui5-icon');
+          (icon as any).name = 'slim-arrow-down';
+          icon.style.verticalAlign = 'text-bottom';
+          icon.style.pointerEvents = 'all';
+          icon.addEventListener('click', (e) => {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+            e.stopPropagation();
+            onShowSubSectionPopover(e, section);
+          });
+          element.appendChild(icon);
+        }
+      } catch (e) {}
     }
   }, [subSectionsAvailable, ref, onShowSubSectionPopover, section]);
 

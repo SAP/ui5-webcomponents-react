@@ -10,7 +10,7 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
 
 See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
  */
-  icon?: string;
+  icon?: ReactNode;
   /**
    * Defines whether the MessageStrip renders close icon.
    */
@@ -43,7 +43,7 @@ const MessageStrip: FC<MessageStripPropTypes> = withWebComponent<MessageStripPro
 MessageStrip.displayName = 'MessageStrip';
 
 MessageStrip.defaultProps = {
-  icon: '',
+  icon: null,
   noCloseButton: false,
   noIcon: false,
   type: MessageStripType.Information
