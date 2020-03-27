@@ -9,6 +9,38 @@ const fs = require('fs');
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 
+const PRIVATE_COMPONENTS = new Set([
+  'CalendarHeader',
+  'DefaultTheme',
+  'DayPicker',
+  'ListItem',
+  'ListItemBase',
+  'MessageBundleAssets',
+  'MonthPicker',
+  'Popup',
+  'TabBase',
+  'ThemePropertiesProvider',
+  'YearPicker',
+  'WheelSlider'
+]);
+
+const COMPONENTS_WITHOUT_DEMOS = new Set(PRIVATE_COMPONENTS);
+COMPONENTS_WITHOUT_DEMOS.add('CustomListItem');
+COMPONENTS_WITHOUT_DEMOS.add('GroupHeaderListItem');
+COMPONENTS_WITHOUT_DEMOS.add('Option');
+COMPONENTS_WITHOUT_DEMOS.add('ShellBarItem');
+COMPONENTS_WITHOUT_DEMOS.add('StandardListItem');
+COMPONENTS_WITHOUT_DEMOS.add('Tab');
+COMPONENTS_WITHOUT_DEMOS.add('TableCell');
+COMPONENTS_WITHOUT_DEMOS.add('TableColumn');
+COMPONENTS_WITHOUT_DEMOS.add('TableRow');
+COMPONENTS_WITHOUT_DEMOS.add('TabSeparator');
+COMPONENTS_WITHOUT_DEMOS.add('TimelineItem');
+COMPONENTS_WITHOUT_DEMOS.add('ProductSwitchItem');
+COMPONENTS_WITHOUT_DEMOS.add('ComboBoxItem');
+COMPONENTS_WITHOUT_DEMOS.add('MultiComboBoxItem');
+COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
+
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const getTypeScriptTypeForProperty = (property) => {
@@ -231,7 +263,7 @@ const createWebComponentWrapper = (name, types, importStatements, defaultProps) 
     ${name}.displayName = '${name}';
     
     ${name}.defaultProps = {
-      ${defaultProps.join(', // @generated\n')}
+      ${defaultProps.join(',\n')}
     };
     
     export { ${name} };
@@ -341,7 +373,9 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
 const allWebComponents = [
   ...mainWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/')),
   ...fioriWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/'))
-].filter((spec) => spec.visibility === 'public');
+]
+  .filter((spec) => spec.visibility === 'public')
+  .filter((spec) => !PRIVATE_COMPONENTS.has(spec.module));
 
 allWebComponents.forEach((componentSpec) => {
   const propTypes = [];
@@ -416,7 +450,10 @@ allWebComponents.forEach((componentSpec) => {
   }
 
   // create demo
-  if (!fs.existsSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `demo.stories.tsx`))) {
+  if (
+    !fs.existsSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `demo.stories.tsx`)) &&
+    !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module)
+  ) {
     const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties);
     fs.writeFileSync(
       path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `${componentSpec.module}.stories.tsx`),
