@@ -1,11 +1,15 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, number, text } from '@storybook/addon-knobs';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { SuggestionItem } from '@ui5/webcomponents-react/lib/SuggestionItem';
 import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Input',
-  component: Input
+  component: Input,
+  parameters: {
+    subcomponents: { SuggestionItem }
+  }
 };
 
 export const generatedDefaultStory = () => (
