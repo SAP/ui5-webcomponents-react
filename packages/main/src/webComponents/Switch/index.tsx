@@ -15,16 +15,16 @@ export interface SwitchPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the <code>ui5-switch</code> type. <br><br> <b>Note:</b> If <code>graphical</code> type is set, positive and negative icons will replace the <code>textOn</code> and <code>textOff</code>.
    */
-  graphical?: string;
+  graphical?: boolean;
   /**
    * Defines the text of the <code>ui5-switch</code> when switched off. <br><br> <b>Note:</b> We recommend using short texts, up to 3 letters (larger texts would be cut off).
    */
   textOff?: string;
   /**
- * Defines the text of the <code>ui5-switch</code> when switched on.
-
-<br><br> <b>Note:</b> We recommend using short texts, up to 3 letters (larger texts would be cut off).
- */
+   * Defines the text of the <code>ui5-switch</code> when switched on.
+   *
+   * <br><br> <b>Note:</b> We recommend using short texts, up to 3 letters (larger texts would be cut off).
+   */
   textOn?: string;
   /**
    * Fired when the <code>ui5-switch</code> checked state changes.

@@ -30,7 +30,7 @@ BusyIndicator.displayName = 'BusyIndicator';
 
 BusyIndicator.defaultProps = {
   active: false,
-  size: 'Large'
+  size: BusyIndicatorSize.Medium
 };
 
 export { BusyIndicator };

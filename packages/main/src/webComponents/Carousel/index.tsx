@@ -41,7 +41,7 @@ const Carousel: FC<CarouselPropTypes> = withWebComponent<CarouselPropTypes>(UI5C
 Carousel.displayName = 'Carousel';
 
 Carousel.defaultProps = {
-  arrowsPlacement: 'Content',
+  arrowsPlacement: CarouselArrowsPlacement.Content,
   cycling: false,
   hideNavigation: false,
   itemsPerPage: 1,

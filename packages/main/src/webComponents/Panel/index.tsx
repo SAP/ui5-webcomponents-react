@@ -41,7 +41,7 @@ const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(UI5Panel);
 Panel.displayName = 'Panel';
 
 Panel.defaultProps = {
-  accessibleRole: 'Form',
+  accessibleRole: PanelAccessibleRoles.Form,
   collapsed: false,
   fixed: false,
   headerText: ''

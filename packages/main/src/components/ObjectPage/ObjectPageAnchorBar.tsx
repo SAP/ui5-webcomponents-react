@@ -122,7 +122,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
   );
 
   const onTabItemSelect = useCallback((event) => {
-    const { sectionId, index } = event.detail.item.dataset;
+    const { sectionId, index } = event.detail.tab.dataset;
     // eslint-disable-next-line eqeqeq
     const section = safeGetChildrenArray(sections).find((el) => el.props.id == sectionId);
     handleOnSectionSelected(
@@ -157,7 +157,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
 
   return (
     <section className={className} role="navigation" style={style} ref={ref}>
-      <TabContainer collapsed fixed onItemSelect={onTabItemSelect} showOverflow>
+      <TabContainer collapsed fixed onTabSelect={onTabItemSelect} showOverflow>
         {safeGetChildrenArray(sections).map((section, index) => {
           return (
             <ObjectPageAnchorButton

@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
-import { enrichEventWithDetails } from "@ui5/webcomponents-react-base/lib/Utils";
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -27,7 +27,7 @@ export interface VariantManagementPropTypes extends CommonProps {
   initialSelectedKey?: string;
   closeOnItemSelect?: boolean;
   variantItems: VariantItem[];
-  onSelect?: (event: CustomEvent<{item: HTMLElement; selectedItem: VariantItem}>) => void;
+  onSelect?: (event: CustomEvent<{ item: HTMLElement; selectedItem: VariantItem }>) => void;
   level?: TitleLevel;
   disabled?: boolean;
 }
@@ -143,7 +143,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
         const newSelectedKey = event.detail.item.dataset.key;
         const selectedItem = getItemByKey(newSelectedKey) || variantItems[0];
         setSelectedKey(newSelectedKey);
-        onSelect(enrichEventWithDetails(event, { ...event.details, selectedItem}));
+        onSelect(enrichEventWithDetails(event, { ...event.details, selectedItem }));
         if (closeOnItemSelect) {
           handleCancelButtonClick();
         }
@@ -165,6 +165,7 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
         style={style}
         tooltip={tooltip}
         {...passThroughProps}
+        // @ts-ignore
         onAfterOpen={handleAfterOpen}
       >
         <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
