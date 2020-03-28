@@ -307,6 +307,18 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
 
   const childrenProp = componentProps.find((prop) => prop.name === 'children');
 
+  const additionalComponentDocs = componentSpec.hasOwnProperty('appenddocs') ? componentSpec.appenddocs.split(' ') : [];
+  const additionalComponentImports = additionalComponentDocs.map(
+    (component) => `import { ${component} } from '@ui5/webcomponents-react/lib/${component}';`
+  );
+  let additionalComponentsParameters = '';
+  if (additionalComponentDocs.length > 0) {
+    additionalComponentsParameters = `,
+    parameters: {
+      subcomponents: { ${additionalComponentDocs.join(', ')} }
+    }`;
+  }
+
   componentProps
     .filter((prop) => prop.name !== 'children')
     .forEach((prop) => {
@@ -347,11 +359,11 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
      ${storybookImports.join('\n')}
      import { ${[...storybookKnobImports].join(', ')} } from '@storybook/addon-knobs';
      ${enumImports.join('\n')};
-     
+     ${additionalComponentImports.join('\n')}
      
      export default {
        title: 'UI5 Web Components / ${componentName}',
-       component: ${componentName}
+       component: ${componentName}${additionalComponentsParameters}
      };
      
      export const generatedDefaultStory = () => (
