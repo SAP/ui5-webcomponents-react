@@ -39,7 +39,9 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
           });
           element.appendChild(icon);
         }
-      } catch (e) {}
+      } catch (e) {
+        // empty catch block, mainly required for tests
+      }
     }
   }, [subSectionsAvailable, ref, onShowSubSectionPopover, section]);
 

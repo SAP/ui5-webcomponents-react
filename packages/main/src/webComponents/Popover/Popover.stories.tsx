@@ -15,7 +15,7 @@ export default {
 export const generatedDefaultStory = () => (
   <Popover
     allowTargetOverlap={boolean('allowTargetOverlap', true)}
-    headerText={text('headerText', undefined)}
+    headerText={text('headerText', '')}
     horizontalAlign={select('horizontalAlign', PopoverHorizontalAlign, PopoverHorizontalAlign['Center'])}
     initialFocus={text('initialFocus', '')}
     modal={boolean('modal', true)}

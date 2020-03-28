@@ -35,7 +35,7 @@ export const generatedDefaultStory = () => (
           <Label>Weight</Label>
         </TableColumn>
 
-        <TableColumn slot="columns">
+        <TableColumn>
           <Label>Price</Label>
         </TableColumn>
       </>
