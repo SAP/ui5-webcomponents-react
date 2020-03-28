@@ -19,8 +19,9 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
+import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useResolveDataSet } from '../../hooks/useResolveDataSet';
 
 type ColumnChartProps = RechartBaseProps;
 
@@ -35,7 +36,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     labelKey = 'name',
     width = '100%',
     height = '300px',
-    dataset,
+    dataset: dataSet,
     dataKeys,
     noLegend = false,
     onDataPointClick,
@@ -83,7 +84,10 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataSet);
+  const secondaryDimension = dataSet[0].hasOwnProperty('dimension');
+
+  const dataset = useResolveDataSet(dataSet);
 
   const colorSecondY = useMemo(
     () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
@@ -121,12 +125,13 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   );
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
-  const marginChart = useChartMargin(dataset, labelKey, yAxisFormatter, chartConfig.margin);
+  const marginChart = useChartMargin(dataset, labelKey, yAxisFormatter, chartConfig.margin, false, secondaryDimension);
 
   return (
     <ChartContainer
-      dataset={dataset}
+      dataset={dataSet}
       loading={loading}
       placeholder={ColumnChartPlaceholder}
       width={width}
@@ -137,13 +142,23 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       tooltip={tooltip}
       slot={slot}
     >
-      <ColumnChartLib margin={marginChart} data={dataset} barGap={chartConfig.barGap}>
+      <ColumnChartLib margin={marginChart} data={dataSet} barGap={chartConfig.barGap}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} tick={XAxisLabel} dataKey={labelKey} />}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} tick={XAxisLabel} dataKey={labelKey} yAxisId={0} />}
+        {secondaryDimension && (
+          <XAxis
+            interval={0}
+            dataKey={'dimension'}
+            tickLine={false}
+            tick={SecondaryDimensionLabel}
+            axisLine={false}
+            xAxisId={1}
+          />
+        )}
         <YAxis
           tickFormatter={yAxisFormatter}
           unit={chartConfig.yAxisUnit}

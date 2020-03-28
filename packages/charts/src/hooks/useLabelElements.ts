@@ -1,5 +1,5 @@
-import { JSXElementConstructor, useCallback, useMemo } from 'react';
-import { DataLabel } from '../internal/CustomElements';
+import { useCallback, useMemo } from 'react';
+import { DataLabel, SecondaryDimensionTicks } from '../internal/CustomElements';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { renderAxisTicks } from '../util/Utils';
 
@@ -32,4 +32,16 @@ export const useAxisLabel = (xAxisFormatter, xAxisUnit) => {
     },
     [xAxisFormatter, xAxisUnit]
   );
+};
+
+const dimensions = [''];
+export const useSecondaryDimensionLabel = () => {
+  return useCallback((labelProps) => {
+    if (dimensions.includes(labelProps.payload.value)) {
+      return undefined;
+    } else {
+      dimensions[0] = labelProps.payload.value;
+      return SecondaryDimensionTicks(labelProps);
+    }
+  }, []);
 };

@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/next/ColumnChart';
 import React from 'react';
-import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts - Unstable /  ColumnChart',
@@ -35,6 +35,21 @@ export const withCustomColor = () => (
 
 withCustomColor.story = {
   name: 'With custom color'
+};
+
+export const withSecondaryDimension = () => (
+  <ColumnChart
+    onDataPointClick={action('onDataPointClick')}
+    dataset={secondaryDimensionDataSet}
+    color={'red'}
+    width={'95%'}
+    height={'40vh'}
+    chartConfig={{ dataLabel: true }}
+  />
+);
+
+withSecondaryDimension.story = {
+  name: 'With secondary dimension'
 };
 
 export const loadingPlaceholder = () => <ColumnChart labelKey={'xValue'} width={'30%'} />;
