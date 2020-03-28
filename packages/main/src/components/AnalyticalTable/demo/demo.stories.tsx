@@ -88,6 +88,8 @@ export const defaultTable = () => {
         selectedRowIds={object('selectedRowIds', { 3: true })}
         onColumnsReordered={action('onColumnsReordered')}
         noSelectionColumn={boolean('noSelectionColumn', false)}
+        withRowHighlight={boolean('withRowHighlight', true)}
+        highlightField={text('highlightField', 'status')}
       />
     </div>
   );

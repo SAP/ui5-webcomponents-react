@@ -47,6 +47,10 @@ export const useTableCellStyling: PluginHook<{}> = (hooks) => {
       className += ` ${column.className}`;
     }
 
+    if (column.id === '__ui5wcr__internal_highlight_column') {
+      style.padding = 0;
+    }
+
     return {
       ...cellProps,
       className,
