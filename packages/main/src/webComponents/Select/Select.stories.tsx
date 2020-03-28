@@ -6,7 +6,10 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Select',
-  component: Select
+  component: Select,
+  parameters: {
+    subcomponents: { Option }
+  }
 };
 
 export const generatedDefaultStory = () => (

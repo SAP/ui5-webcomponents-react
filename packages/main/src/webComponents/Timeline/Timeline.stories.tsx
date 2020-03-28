@@ -6,7 +6,10 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Timeline',
-  component: Timeline
+  component: Timeline,
+  parameters: {
+    subcomponents: { TimelineItem }
+  }
 };
 
 export const generatedDefaultStory = () => (

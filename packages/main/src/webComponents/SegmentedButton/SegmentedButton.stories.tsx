@@ -5,7 +5,10 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / SegmentedButton',
-  component: SegmentedButton
+  component: SegmentedButton,
+  parameters: {
+    subcomponents: { ToggleButton }
+  }
 };
 
 export const generatedDefaultStory = () => (

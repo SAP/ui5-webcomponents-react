@@ -6,7 +6,10 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / MultiComboBox',
-  component: MultiComboBox
+  component: MultiComboBox,
+  parameters: {
+    subcomponents: { MultiComboBoxItem }
+  }
 };
 
 export const generatedDefaultStory = () => (

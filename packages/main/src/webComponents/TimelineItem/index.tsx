@@ -47,7 +47,7 @@ TimelineItem.displayName = 'TimelineItem';
 
 TimelineItem.defaultProps = {
   icon: '',
-  itemName: false,
+  itemName: '',
   itemNameClickable: false,
   subtitleText: '',
   titleText: ''

@@ -8,7 +8,10 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / ProductSwitch',
-  component: ProductSwitch
+  component: ProductSwitch,
+  parameters: {
+    subcomponents: { ProductSwitchItem }
+  }
 };
 
 export const generatedDefaultStory = () => (

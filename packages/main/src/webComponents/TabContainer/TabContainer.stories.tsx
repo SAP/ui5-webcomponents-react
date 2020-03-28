@@ -2,11 +2,15 @@ import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
 import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 import { Tab } from '@ui5/webcomponents-react/lib/Tab';
+import { TabSeparator } from '@ui5/webcomponents-react/lib/TabSeparator';
 import React from 'react';
 
 export default {
   title: 'UI5 Web Components / TabContainer',
-  component: TabContainer
+  component: TabContainer,
+  parameters: {
+    subcomponents: { Tab, TabSeparator }
+  }
 };
 
 export const generatedDefaultStory = () => (

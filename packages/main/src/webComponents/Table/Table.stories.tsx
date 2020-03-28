@@ -9,7 +9,10 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Table',
-  component: Table
+  component: Table,
+  parameters: {
+    subcomponents: { TableColumn, TableRow, TableCell }
+  }
 };
 
 export const generatedDefaultStory = () => (

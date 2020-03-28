@@ -6,7 +6,10 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / ShellBar',
-  component: ShellBar
+  component: ShellBar,
+  parameters: {
+    subcomponents: { ShellBarItem }
+  }
 };
 
 export const generatedDefaultStory = () => (
