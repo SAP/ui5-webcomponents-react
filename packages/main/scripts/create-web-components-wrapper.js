@@ -42,6 +42,8 @@ COMPONENTS_WITHOUT_DEMOS.add('ComboBoxItem');
 COMPONENTS_WITHOUT_DEMOS.add('MultiComboBoxItem');
 COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
 
+const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
+
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const getTypeScriptTypeForProperty = (property) => {
@@ -245,7 +247,7 @@ const createWebComponentWrapper = (name, types, importStatements, defaultProps) 
   return prettier.format(
     `
     import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-    import UI5${name} from '@ui5/webcomponents/dist/${name}';
+    import UI5${name} from '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
     import React, { FC } from 'react';
     import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
     ${importStatements.join('\n')}
