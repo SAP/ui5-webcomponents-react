@@ -408,7 +408,11 @@ const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, eve
 
 const recursivePropertyResolver = (componentSpec, { properties, slots, events }) => {
   assignComponentPropertiesToMaps(componentSpec, { properties, slots, events });
-  if (componentSpec.extends === 'UI5Element' || componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element') {
+  if (
+    componentSpec.extends === 'UI5Element' ||
+    componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element' ||
+    componentSpec.extends === 'TabBase' // not longer existing but wrong docs, treat as UI5 Element
+  ) {
     return { properties, slots, events };
   }
 
