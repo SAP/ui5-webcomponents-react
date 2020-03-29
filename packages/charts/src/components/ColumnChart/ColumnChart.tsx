@@ -21,7 +21,6 @@ import {
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { useResolveDataSet } from '../../hooks/useResolveDataSet';
 
 type ColumnChartProps = RechartBaseProps;
 
@@ -36,7 +35,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     labelKey = 'name',
     width = '100%',
     height = '300px',
-    dataset: dataSet,
+    dataset,
     dataKeys,
     noLegend = false,
     onDataPointClick,
@@ -84,10 +83,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataSet);
-  const secondaryDimension = dataSet[0].hasOwnProperty('dimension');
-
-  const dataset = useResolveDataSet(dataSet);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
+  const secondaryDimension = dataset && dataset[0].hasOwnProperty('dimension');
 
   const colorSecondY = useMemo(
     () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
@@ -131,7 +128,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   return (
     <ChartContainer
-      dataset={dataSet}
+      dataset={dataset}
       loading={loading}
       placeholder={ColumnChartPlaceholder}
       width={width}
@@ -142,7 +139,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       tooltip={tooltip}
       slot={slot}
     >
-      <ColumnChartLib margin={marginChart} data={dataSet} barGap={chartConfig.barGap}>
+      <ColumnChartLib margin={marginChart} data={dataset} barGap={chartConfig.barGap}>
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}

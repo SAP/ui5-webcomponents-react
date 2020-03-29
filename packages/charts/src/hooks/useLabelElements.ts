@@ -34,13 +34,13 @@ export const useAxisLabel = (xAxisFormatter, xAxisUnit) => {
   );
 };
 
-const dimensions = [''];
+let dimension = '';
 export const useSecondaryDimensionLabel = () => {
   return useCallback((labelProps) => {
-    if (dimensions.includes(labelProps.payload.value)) {
+    if (dimension === labelProps.payload.value) {
       return undefined;
     } else {
-      dimensions[0] = labelProps.payload.value;
+      dimension = labelProps.payload.value;
       return SecondaryDimensionTicks(labelProps);
     }
   }, []);

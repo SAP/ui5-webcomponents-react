@@ -11,7 +11,9 @@ export const AxisTicks = (props: properties, formatter, unit = '', rotate) => {
   globalRotate = !!rotate;
 
   const tickValue =
-    formatter(payload.value).length > 9 ? formatter(payload.value).slice(0, 9) + '...' : formatter(payload.value);
+    formatter(payload.value).length > 10 && rotate
+      ? formatter(payload.value).slice(0, 10) + '...'
+      : formatter(payload.value);
   return (
     <g transform={`translate(${x},${y + 10})`}>
       <text
@@ -28,14 +30,18 @@ export const AxisTicks = (props: properties, formatter, unit = '', rotate) => {
 export const SecondaryDimensionTicks = (props: properties) => {
   const { x, y, payload } = props;
 
-  const tickValue = payload.value.length > 10 && globalRotate ? payload.value.slice(0, 10) + '...' : payload.value;
+  const tickValue = payload.value.length > 12 && globalRotate ? payload.value.slice(0, 12) + '...' : payload.value;
+  const dy = globalRotate ? 40 : 10;
 
   return (
-    <g transform={`translate(${x},${y + 50})`}>
+    <g transform={`translate(${x},${y + dy})`}>
+      {' '}
+      <text fill={ThemingParameters.sapNeutralBorderColor}>|</text>
       <text
         fill={ThemingParameters.sapNeutralBorderColor}
         transform={globalRotate ? 'rotate(-45)' : ''}
         textAnchor={globalRotate ? 'end' : 'middle'}
+        y={15}
       >
         {`${tickValue}`}
       </text>
