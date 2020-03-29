@@ -16,6 +16,7 @@ exports[`SideNavigation Collapsed 1`] = `
       data-has-children="false"
       data-id="home"
       id="home"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -28,6 +29,7 @@ exports[`SideNavigation Collapsed 1`] = `
       data-has-children="false"
       data-id="calendar"
       id="calendar"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -40,6 +42,7 @@ exports[`SideNavigation Collapsed 1`] = `
       data-has-children="false"
       data-id="customers"
       id="customers"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -53,6 +56,7 @@ exports[`SideNavigation Collapsed 1`] = `
       data-id="sales"
       id="sales"
       selected="true"
+      type="Active"
     >
       <span>
         <ui5-icon
@@ -70,6 +74,7 @@ exports[`SideNavigation Collapsed 1`] = `
       data-has-children="false"
       data-id="delivieries"
       id="delivieries"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -96,6 +101,7 @@ exports[`SideNavigation Collapsed 1`] = `
       data-has-children="false"
       data-id="1"
       id="1"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -108,6 +114,7 @@ exports[`SideNavigation Collapsed 1`] = `
       data-has-children="false"
       data-id="2"
       id="2"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -135,6 +142,7 @@ exports[`SideNavigation Condensed 1`] = `
       data-has-children="false"
       data-id="home"
       id="home"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -147,6 +155,7 @@ exports[`SideNavigation Condensed 1`] = `
       data-has-children="false"
       data-id="calendar"
       id="calendar"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -159,6 +168,7 @@ exports[`SideNavigation Condensed 1`] = `
       data-has-children="false"
       data-id="customers"
       id="customers"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -172,6 +182,7 @@ exports[`SideNavigation Condensed 1`] = `
       data-id="sales"
       id="sales"
       selected="true"
+      type="Active"
     >
       <span>
         <ui5-icon
@@ -189,6 +200,7 @@ exports[`SideNavigation Condensed 1`] = `
       data-has-children="false"
       data-id="delivieries"
       id="delivieries"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -215,6 +227,7 @@ exports[`SideNavigation Condensed 1`] = `
       data-has-children="false"
       data-id="1"
       id="1"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -227,6 +240,7 @@ exports[`SideNavigation Condensed 1`] = `
       data-has-children="false"
       data-id="2"
       id="2"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -255,6 +269,7 @@ exports[`SideNavigation Expanded 1`] = `
       data-id="home"
       id="home"
       title="Nav To Home Tooltip"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -272,6 +287,7 @@ exports[`SideNavigation Expanded 1`] = `
       data-has-children="false"
       data-id="calendar"
       id="calendar"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -289,6 +305,7 @@ exports[`SideNavigation Expanded 1`] = `
       data-has-children="false"
       data-id="customers"
       id="customers"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -306,6 +323,7 @@ exports[`SideNavigation Expanded 1`] = `
       data-has-children="true"
       data-id="sales"
       id="sales"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -333,6 +351,7 @@ exports[`SideNavigation Expanded 1`] = `
       data-is-child="true"
       id="sales-opportunities"
       style="--ui5-listitem-border-bottom: none;"
+      type="Active"
     >
       <span
         class="SideNavigationListItem-icon-0"
@@ -351,6 +370,7 @@ exports[`SideNavigation Expanded 1`] = `
       id="sales-leads"
       selected="true"
       style="--ui5-listitem-border-bottom: none;"
+      type="Active"
     >
       <span
         class="SideNavigationListItem-icon-0"
@@ -367,6 +387,7 @@ exports[`SideNavigation Expanded 1`] = `
       data-id="sales-cpqs"
       data-is-child="true"
       id="sales-cpqs"
+      type="Active"
     >
       <span
         class="SideNavigationListItem-icon-0"
@@ -382,6 +403,7 @@ exports[`SideNavigation Expanded 1`] = `
       data-has-children="false"
       data-id="delivieries"
       id="delivieries"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -413,6 +435,7 @@ exports[`SideNavigation Expanded 1`] = `
       data-has-children="false"
       data-id="1"
       id="1"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -430,6 +453,7 @@ exports[`SideNavigation Expanded 1`] = `
       data-has-children="false"
       data-id="2"
       id="2"
+      type="Active"
     >
       <ui5-icon
         accessible-name=""
@@ -462,6 +486,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       data-has-children="false"
       data-id="home"
       id="home"
+      type="Active"
     >
       <span
         class="Text-text-0 SideNavigationListItem-text-0"
@@ -474,6 +499,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       data-has-children="false"
       data-id="calendar"
       id="calendar"
+      type="Active"
     >
       <span
         class="Text-text-0 SideNavigationListItem-text-0"
@@ -486,6 +512,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       data-has-children="false"
       data-id="customers"
       id="customers"
+      type="Active"
     >
       <span
         class="Text-text-0 SideNavigationListItem-text-0"
@@ -498,6 +525,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       data-has-children="true"
       data-id="sales"
       id="sales"
+      type="Active"
     >
       <span
         class="Text-text-0 SideNavigationListItem-text-0"
@@ -520,6 +548,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       data-is-child="true"
       id="sales-opportunities"
       style="--ui5-listitem-border-bottom: none;"
+      type="Active"
     >
       <span
         class="Text-text-0 SideNavigationListItem-text-0"
@@ -535,6 +564,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       id="sales-leads"
       selected="true"
       style="--ui5-listitem-border-bottom: none;"
+      type="Active"
     >
       <span
         class="Text-text-0 SideNavigationListItem-text-0"
@@ -548,6 +578,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       data-id="sales-cpqs"
       data-is-child="true"
       id="sales-cpqs"
+      type="Active"
     >
       <span
         class="Text-text-0 SideNavigationListItem-text-0"
@@ -560,6 +591,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       data-has-children="false"
       data-id="delivieries"
       id="delivieries"
+      type="Active"
     >
       <span
         class="Text-text-0 SideNavigationListItem-text-0"
@@ -586,6 +618,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       data-has-children="false"
       data-id="1"
       id="1"
+      type="Active"
     >
       <span
         class="Text-text-0 SideNavigationListItem-text-0"
@@ -598,6 +631,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       data-has-children="false"
       data-id="2"
       id="2"
+      type="Active"
     >
       <span
         class="Text-text-0 SideNavigationListItem-text-0"

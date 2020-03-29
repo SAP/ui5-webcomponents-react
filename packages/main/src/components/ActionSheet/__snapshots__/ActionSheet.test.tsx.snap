@@ -13,6 +13,7 @@ Array [
   <ui5-popover
     class="ActionSheet-actionSheet-0 myCustomClass"
     horizontal-align="Center"
+    initial-focus=""
     placement-type="Bottom"
     vertical-align="Center"
   >
@@ -54,6 +55,7 @@ Array [
   <ui5-popover
     class="ActionSheet-actionSheet-0"
     horizontal-align="Center"
+    initial-focus=""
     placement-type="Bottom"
     vertical-align="Center"
   >

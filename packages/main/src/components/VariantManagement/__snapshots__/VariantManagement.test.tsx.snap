@@ -23,6 +23,7 @@ Array [
   <ui5-popover
     header-text="Variants"
     horizontal-align="Center"
+    initial-focus=""
     placement-type="Bottom"
     vertical-align="Center"
   >

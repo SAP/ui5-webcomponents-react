@@ -148,6 +148,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
     />
     <ui5-popover
       horizontal-align="Center"
+      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
@@ -269,6 +270,7 @@ exports[`ObjectPage Just Some Sections 1`] = `
     </ui5-tabcontainer>
     <ui5-popover
       horizontal-align="Center"
+      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
@@ -454,6 +456,7 @@ exports[`ObjectPage Key Infos 1`] = `
     </ui5-tabcontainer>
     <ui5-popover
       horizontal-align="Center"
+      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
@@ -592,6 +595,7 @@ exports[`ObjectPage No Header 1`] = `
     </ui5-tabcontainer>
     <ui5-popover
       horizontal-align="Center"
+      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
@@ -712,6 +716,7 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
     />
     <ui5-popover
       horizontal-align="Center"
+      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
@@ -796,6 +801,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
     </ui5-tabcontainer>
     <ui5-popover
       horizontal-align="Center"
+      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
@@ -903,6 +909,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
     </ui5-tabcontainer>
     <ui5-popover
       horizontal-align="Center"
+      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
@@ -1068,6 +1075,7 @@ exports[`ObjectPage Only Sections 1`] = `
     </ui5-tabcontainer>
     <ui5-popover
       horizontal-align="Center"
+      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
@@ -1247,6 +1255,7 @@ exports[`ObjectPage Set selected section id 1`] = `
     </ui5-tabcontainer>
     <ui5-popover
       horizontal-align="Center"
+      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
@@ -1302,6 +1311,7 @@ exports[`ObjectPage With Subsections 1`] = `
     >
       <ui5-button
         design="Default"
+        icon=""
       >
         Action
       </ui5-button>
@@ -1350,6 +1360,7 @@ exports[`ObjectPage With Subsections 1`] = `
         <ui5-link
           design="Default"
           href="https://www.sap.com"
+          target=""
         >
           www.myurl.com
         </ui5-link>
@@ -1380,35 +1391,46 @@ exports[`ObjectPage With Subsections 1`] = `
       collapsed="true"
       fixed="true"
       show-overflow="true"
+      tab-layout="Standard"
     >
       <ui5-tab
+        additional-text=""
         data-index="0"
         data-section-id="1"
+        icon=""
         selected="true"
         semantic-color="Default"
         text="Test 1"
       />
       <ui5-tab
+        additional-text=""
         data-index="1"
         data-section-id="2"
+        icon=""
         semantic-color="Default"
         text="Test 2"
       />
       <ui5-tab
+        additional-text=""
         data-index="2"
         data-section-id="3"
+        icon=""
         semantic-color="Default"
         text="Test 3"
       />
       <ui5-tab
+        additional-text=""
         data-index="3"
         data-section-id="4"
+        icon=""
         semantic-color="Default"
         text="Test 4"
       />
       <ui5-tab
+        additional-text=""
         data-index="4"
         data-section-id="5"
+        icon=""
         semantic-color="Default"
         text="Test 5"
       />
@@ -1421,6 +1443,7 @@ exports[`ObjectPage With Subsections 1`] = `
     />
     <ui5-popover
       horizontal-align="Center"
+      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"

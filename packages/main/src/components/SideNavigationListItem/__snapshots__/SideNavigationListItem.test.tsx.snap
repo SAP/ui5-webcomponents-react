@@ -6,6 +6,7 @@ exports[`SideNavigationListItem Basic 1`] = `
   data-has-children="false"
   data-id="home"
   id="home"
+  type="Active"
 >
   <ui5-icon
     accessible-name=""
@@ -22,6 +23,7 @@ exports[`SideNavigationListItem custom class name and style 1`] = `
   data-id="home"
   id="home"
   style="background-color: pink;"
+  type="Active"
 >
   <ui5-icon
     accessible-name=""

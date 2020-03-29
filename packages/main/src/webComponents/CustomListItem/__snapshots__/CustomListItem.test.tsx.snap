@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CustomListItem Basic Test (generated) 1`] = `<ui5-li-custom />`;
+exports[`CustomListItem Basic Test (generated) 1`] = `
+<ui5-li-custom
+  type="Active"
+/>
+`;

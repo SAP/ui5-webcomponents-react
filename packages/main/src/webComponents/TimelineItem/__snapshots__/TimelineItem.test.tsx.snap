@@ -3,7 +3,7 @@
 exports[`TimelineItem Basic Test (generated) 1`] = `
 <ui5-timeline-item
   icon=""
-  item-name="false"
+  item-name=""
   subtitle-text=""
   title-text=""
 />

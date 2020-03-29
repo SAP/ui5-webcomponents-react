@@ -16,12 +16,12 @@ export const generatedDefaultStory = () => (
   <Popover
     allowTargetOverlap={boolean('allowTargetOverlap', true)}
     headerText={text('headerText', '')}
-    horizontalAlign={select('horizontalAlign', PopoverHorizontalAlign, PopoverHorizontalAlign['Center'])}
+    horizontalAlign={select('horizontalAlign', PopoverHorizontalAlign, PopoverHorizontalAlign.Center)}
     initialFocus={text('initialFocus', '')}
     modal={boolean('modal', true)}
     noArrow={boolean('noArrow', true)}
-    placementType={select('placementType', PlacementType, PlacementType['Right'])}
-    verticalAlign={select('verticalAlign', PopoverVerticalAlign, PopoverVerticalAlign['Center'])}
+    placementType={select('placementType', PlacementType, PlacementType.Right)}
+    verticalAlign={select('verticalAlign', PopoverVerticalAlign, PopoverVerticalAlign.Center)}
     footer={
       <div
         style={{

@@ -28,6 +28,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
     <ui5-popover
       header-text="Variants"
       horizontal-align="Center"
+      initial-focus=""
       placement-type="Bottom"
       vertical-align="Center"
     >
@@ -180,6 +181,7 @@ exports[`FilterBar Render without crashing 1`] = `
     <ui5-popover
       header-text="Variants"
       horizontal-align="Center"
+      initial-focus=""
       placement-type="Bottom"
       vertical-align="Center"
     >
@@ -323,6 +325,7 @@ exports[`FilterBar Select Filter Item 1`] = `
     <ui5-popover
       header-text="Variants"
       horizontal-align="Center"
+      initial-focus=""
       placement-type="Bottom"
       vertical-align="Center"
     >
@@ -462,11 +465,13 @@ exports[`FilterBar Select Filter Item 1`] = `
         >
           <ui5-li
             data-key="1"
+            type="Active"
           >
             Text 1
           </ui5-li>
           <ui5-li
             data-key="2"
+            type="Active"
           >
             Text 2
           </ui5-li>

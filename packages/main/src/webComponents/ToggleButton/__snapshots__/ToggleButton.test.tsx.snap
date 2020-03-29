@@ -1,3 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ToggleButton Basic Test (generated) 1`] = `<ui5-togglebutton />`;
+exports[`ToggleButton Basic Test (generated) 1`] = `
+<ui5-togglebutton
+  design="Default"
+  icon=""
+/>
+`;
