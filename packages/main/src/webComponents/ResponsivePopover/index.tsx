@@ -1,4 +1,4 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';

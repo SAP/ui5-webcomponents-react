@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const mainWebComponentsSpec = require('@ui5/webcomponents/dist/api.json');
 const fioriWebComponentsSpec = require('@ui5/webcomponents-fiori/dist/api.json');
 const dedent = require('dedent');
