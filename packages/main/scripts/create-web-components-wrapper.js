@@ -155,9 +155,6 @@ const getTypeScriptTypeForProperty = (property) => {
   //     tsType: 'ListItemTypes',
   //     isEnum: true
   //   },
-  //   [UI5PanelAccessibleRoles]: {
-
-  //   },
   //   [UI5ListSeparators]: {
   //     importStatement: "import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';",
   //     tsType: 'ListSeparators',
@@ -178,10 +175,6 @@ const getTypeScriptTypeForProperty = (property) => {
   //     tsType: 'InputType',
   //     isEnum: true
   //   },
-  //   [UI5Icon]: {
-  //     tsType: 'any',
-  //     comment: 'UI5 Icon Web Component'
-  //   },
   //   [UI5CalendarType]: {
   //     importStatement: "import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';",
   //     tsType: 'CalendarType',
@@ -192,31 +185,10 @@ const getTypeScriptTypeForProperty = (property) => {
   //     tsType: 'ValueState',
   //     isEnum: true
   //   },
-  //   [UI5MessageStripType]: {
-
-  //   },
-  //   [Boolean]: {
-  //     tsType: 'boolean',
-  //     defaultPropAsString: false
-  //   },
   //   [CSSSize]: {
   //     tsType: "CSSProperties['width'] | CSSProperties['height']",
   //     reactImport: 'CSSProperties'
   //   },
-  //   [String]: {
-  //     tsType: 'string'
-  //   },
-  //   [Integer]: {
-  //     tsType: 'number',
-  //     defaultPropAsString: false
-  //   },
-  //   [HTMLElement]: {
-  //     tsType: 'HTMLElement'
-  //   },
-  //   [TimelineItem]: {
-  //     tsType: 'ReactNode',
-  //     reactImport: 'ReactNode'
-  //   }
   // };
 };
 
@@ -331,7 +303,10 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
       let storybookKnob = `${prop.name}={`;
       if (prop.isEnum) {
         storybookKnobImports.add('select');
-        storybookKnob += `select('${prop.name}', ${prop.tsType}, ${prop.tsType}[${prop.defaultValue}])`;
+        storybookKnob += `select('${prop.name}', ${prop.tsType}, ${prop.tsType}.${prop.defaultValue.replace(
+          /['"]/g,
+          ''
+        )})`;
       } else if (prop.tsType === 'number') {
         storybookKnobImports.add('number');
         storybookKnob += `number('${prop.name}', ${prop.defaultValue})`;
@@ -474,6 +449,8 @@ resolvedWebComponents.forEach((componentSpec) => {
       if (property.hasOwnProperty('defaultValue')) {
         if (tsType.tsType === 'boolean') {
           defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
+        } else if (tsType.isEnum === true) {
+          defaultProps.push(`${property.name}: ${tsType.tsType}.${property.defaultValue.replace(/['"]/g, '')}`);
         } else {
           defaultProps.push(`${property.name}: ${property.defaultValue}`);
         }
