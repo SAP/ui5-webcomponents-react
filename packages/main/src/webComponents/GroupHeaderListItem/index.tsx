@@ -5,6 +5,10 @@ import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface GroupHeaderListItemPropTypes extends WithWebComponentPropTypes {
   /**
+   * Defines the selected state of the <code>ListItem</code>.
+   */
+  selected?: boolean;
+  /**
    * Defines the text of the <code>ui5-li-groupheader</code>. <br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
@@ -21,6 +25,8 @@ const GroupHeaderListItem: FC<GroupHeaderListItemPropTypes> = withWebComponent<G
 
 GroupHeaderListItem.displayName = 'GroupHeaderListItem';
 
-GroupHeaderListItem.defaultProps = {};
+GroupHeaderListItem.defaultProps = {
+  selected: false
+};
 
 export { GroupHeaderListItem };

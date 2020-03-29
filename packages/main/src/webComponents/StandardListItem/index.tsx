@@ -1,5 +1,5 @@
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
+import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5StandardListItem from '@ui5/webcomponents/dist/StandardListItem';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';

@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
-import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 import { Tab } from '@ui5/webcomponents-react/lib/Tab';
+import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 import { TabSeparator } from '@ui5/webcomponents-react/lib/TabSeparator';
 import React from 'react';
 

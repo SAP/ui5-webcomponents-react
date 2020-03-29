@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
-import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
+import { Select } from '@ui5/webcomponents-react/lib/Select';
 import React from 'react';
 
 export default {

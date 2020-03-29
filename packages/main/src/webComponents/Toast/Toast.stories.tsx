@@ -1,6 +1,6 @@
 import { number, text } from '@storybook/addon-knobs';
-import { Toast } from '@ui5/webcomponents-react/lib/Toast';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Toast } from '@ui5/webcomponents-react/lib/Toast';
 import React from 'react';
 
 export default {

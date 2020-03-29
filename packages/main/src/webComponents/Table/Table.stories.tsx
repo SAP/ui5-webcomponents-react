@@ -1,10 +1,10 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Table } from '@ui5/webcomponents-react/lib/Table';
+import { TableCell } from '@ui5/webcomponents-react/lib/TableCell';
 import { TableColumn } from '@ui5/webcomponents-react/lib/TableColumn';
 import { TableRow } from '@ui5/webcomponents-react/lib/TableRow';
-import { TableCell } from '@ui5/webcomponents-react/lib/TableCell';
-import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React from 'react';
 
 export default {

@@ -1,15 +1,16 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
+import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
+import { GroupHeaderListItem } from '@ui5/webcomponents-react/lib/GroupHeaderListItem';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import React from 'react';
 
 export default {
   title: 'UI5 Web Components / List',
   component: List,
   parameters: {
-    subcomponents: { StandardListItem, CustomListItem }
+    subcomponents: { StandardListItem, CustomListItem, GroupHeaderListItem }
   }
 };
 

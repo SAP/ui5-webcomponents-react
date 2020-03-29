@@ -1,7 +1,7 @@
 import { boolean, text } from '@storybook/addon-knobs';
+import '@ui5/webcomponents-icons/dist/icons/add';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React from 'react';
-import '@ui5/webcomponents-icons/dist/icons/add';
 
 export default {
   title: 'UI5 Web Components / Icon',
