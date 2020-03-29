@@ -386,11 +386,63 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
 const allWebComponents = [
   ...mainWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/')),
   ...fioriWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/'))
-]
-  .filter((spec) => spec.visibility === 'public')
-  .filter((spec) => !PRIVATE_COMPONENTS.has(spec.module));
+];
 
-allWebComponents.forEach((componentSpec) => {
+const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events }) => {
+  (componentSpec.properties || []).forEach((prop) => {
+    if (!properties.has(prop.name)) {
+      properties.set(prop.name, prop);
+    }
+  });
+  (componentSpec.slots || []).forEach((slot) => {
+    if (!slots.has(slot.name)) {
+      slots.set(slot.name, slot);
+    }
+  });
+  (componentSpec.events || []).forEach((event) => {
+    if (!events.has(event.name)) {
+      events.set(event.name, event);
+    }
+  });
+};
+
+const recursivePropertyResolver = (componentSpec, { properties, slots, events }) => {
+  assignComponentPropertiesToMaps(componentSpec, { properties, slots, events });
+  if (componentSpec.extends === 'UI5Element' || componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element') {
+    return { properties, slots, events };
+  }
+
+  const parentComponent = allWebComponents.find((c) => c.module === componentSpec.extends);
+  if (parentComponent) {
+    return recursivePropertyResolver(parentComponent, { properties, slots, events });
+  }
+  throw new Error('Unknown Parent Component!');
+};
+
+const resolveInheritedAttributes = (componentSpec) => {
+  if (componentSpec.extends === 'UI5Element' || componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element') {
+    // no inheritance, just return the component
+    return componentSpec;
+  }
+
+  const properties = new Map();
+  const slots = new Map();
+  const events = new Map();
+  recursivePropertyResolver(componentSpec, { properties, slots, events });
+
+  componentSpec.properties = Array.from(properties.values());
+  componentSpec.slots = Array.from(slots.values());
+  componentSpec.events = Array.from(events.values());
+
+  return componentSpec;
+};
+
+const resolvedWebComponents = allWebComponents
+  .filter((spec) => spec.visibility === 'public')
+  .filter((spec) => !PRIVATE_COMPONENTS.has(spec.module))
+  .map(resolveInheritedAttributes);
+
+resolvedWebComponents.forEach((componentSpec) => {
   const propTypes = [];
   const importStatements = [];
   const defaultProps = [];
@@ -450,31 +502,26 @@ allWebComponents.forEach((componentSpec) => {
   );
 
   // check if folder exists and create it if necessary
-  if (!fs.existsSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module))) {
-    fs.mkdirSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module));
+  const webComponentFolderPath = path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module);
+  if (!fs.existsSync(webComponentFolderPath)) {
+    fs.mkdirSync(webComponentFolderPath);
   }
-  if (!fs.existsSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, 'index.tsx'))) {
-    fs.writeFileSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, 'index.tsx'), webComponentWrapper);
+  if (!fs.existsSync(path.join(webComponentFolderPath, 'index.tsx'))) {
+    fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
   }
 
   // create test
-  if (!fs.existsSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `${componentSpec.module}.test.tsx`))) {
+  if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
     const webComponentTest = createWebComponentTest(componentSpec.module);
-    fs.writeFileSync(
-      path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `${componentSpec.module}.test.tsx`),
-      webComponentTest
-    );
+    fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
   }
 
   // create demo
   if (
-    !fs.existsSync(path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `${componentSpec.module}.stories.tsx`)) &&
+    !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)) &&
     !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module)
   ) {
     const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties);
-    fs.writeFileSync(
-      path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module, `${componentSpec.module}.stories.tsx`),
-      webComponentDemo
-    );
+    fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`), webComponentDemo);
   }
 });
