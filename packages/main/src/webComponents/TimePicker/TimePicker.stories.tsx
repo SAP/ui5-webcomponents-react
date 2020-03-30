@@ -12,7 +12,7 @@ export default {
 export const generatedDefaultStory = () => (
   <TimePicker
     disabled={boolean('disabled', false)}
-    formatPattern={text('formatPattern', '')}
+    formatPattern={text('formatPattern', 'hh:mm:ss a')}
     placeholder={text('placeholder', undefined)}
     readonly={boolean('readonly', false)}
     value={text('value', '')}

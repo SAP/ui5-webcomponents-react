@@ -12,6 +12,7 @@ import '@ui5/webcomponents/dist/generated/json-imports/Themes';
 import '@webcomponents/webcomponentsjs/webcomponents-bundle';
 import React, { useEffect } from 'react';
 import 'react-app-polyfill/ie11';
+import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 
 addParameters({
   options: {

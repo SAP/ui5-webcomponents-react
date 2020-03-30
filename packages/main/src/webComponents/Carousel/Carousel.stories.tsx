@@ -1,5 +1,5 @@
 import { boolean, number, select } from '@storybook/addon-knobs';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Carousel } from '@ui5/webcomponents-react/lib/Carousel';
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
 import React from 'react';

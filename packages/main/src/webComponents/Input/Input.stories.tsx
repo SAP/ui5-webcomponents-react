@@ -4,7 +4,6 @@ import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { SuggestionItem } from '@ui5/webcomponents-react/lib/SuggestionItem';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React from 'react';
 
 export default {
@@ -20,7 +19,7 @@ export const generatedDefaultStory = () => (
     disabled={boolean('disabled', false)}
     maxlength={number('maxlength', undefined)}
     name={text('name', '')}
-    placeholder={text('placeholder', '')}
+    placeholder={text('placeholder', 'Placeholder...')}
     readonly={boolean('readonly', false)}
     required={boolean('required', false)}
     showSuggestions={boolean('showSuggestions', false)}

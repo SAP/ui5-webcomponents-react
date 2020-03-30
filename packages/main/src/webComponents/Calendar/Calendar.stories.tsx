@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
-import { number, select, text } from '@storybook/addon-knobs';
+import { number, text } from '@storybook/addon-knobs';
 import { Calendar } from '@ui5/webcomponents-react/lib/Calendar';
-import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
+// import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import React from 'react';
 
 export default {
@@ -11,9 +11,9 @@ export default {
 
 export const generatedDefaultStory = () => (
   <Calendar
-    maxDate={text('maxDate', '')}
-    minDate={text('minDate', '')}
-    primaryCalendarType={select('primaryCalendarType', CalendarType, CalendarType.Gregorian)}
+    maxDate={text('maxDate', '2099-12-31')}
+    minDate={text('minDate', '2020-01-01')}
+    // primaryCalendarType={select('primaryCalendarType', CalendarType, CalendarType.Gregorian)}
     selectedDates={null}
     timestamp={number('timestamp', undefined)}
     onSelectedDatesChange={action('onSelectedDatesChange')}

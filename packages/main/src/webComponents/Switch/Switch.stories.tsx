@@ -12,7 +12,7 @@ export const generatedDefaultStory = () => (
   <Switch
     checked={boolean('checked', false)}
     disabled={boolean('disabled', false)}
-    graphical={text('graphical', false)}
+    graphical={boolean('graphical', false)}
     textOff={text('textOff', '')}
     textOn={text('textOn', '')}
     onChange={action('onChange')}
