@@ -14,7 +14,7 @@ export const generatedDefaultStory = () => (
     heading={text('heading', 'Heading')}
     status={text('status', '1 of 5')}
     subheading={text('subheading', 'Active Items')}
-    avatar={null}
+    avatar={<Avatar backgroundColor="Accent3" icon="person-placeholder" />}
     onHeaderClick={action('onHeaderClick')}
   >
     Some Content
