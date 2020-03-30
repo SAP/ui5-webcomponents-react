@@ -8,6 +8,8 @@ import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';
 import { AnalyticalTable } from './lib/AnalyticalTable';
 import { AnalyticalTableScrollMode } from './lib/AnalyticalTableScrollMode';
 import { Avatar } from './lib/Avatar';
+import { AvatarBackgroundColor } from './lib/AvatarBackgroundColor';
+import { AvatarFitType } from './lib/AvatarFitType';
 import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
 import { Badge } from './lib/Badge';
@@ -83,6 +85,7 @@ import { PanelAccessibleRoles } from './lib/PanelAccessibleRoles';
 import { PlacementType } from './lib/PlacementType';
 import { Popover } from './lib/Popover';
 import { PopoverHorizontalAlign } from './lib/PopoverHorizontalAlign';
+import { PopoverPlacementType } from './lib/PopoverPlacementType';
 import { PopoverVerticalAlign } from './lib/PopoverVerticalAlign';
 import { Priority } from './lib/Priority';
 import { ProductSwitch } from './lib/ProductSwitch';
@@ -105,6 +108,7 @@ import { SuggestionItem } from './lib/SuggestionItem';
 import { Switch } from './lib/Switch';
 import { Tab } from './lib/Tab';
 import { TabContainer } from './lib/TabContainer';
+import { TabLayout } from './lib/TabLayout';
 import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
 import { TableCell } from './lib/TableCell';
@@ -124,6 +128,7 @@ import { TimelineItem } from './lib/TimelineItem';
 import { Title } from './lib/Title';
 import { TitleLevel } from './lib/TitleLevel';
 import { Toast } from './lib/Toast';
+import { ToastPlacement } from './lib/ToastPlacement';
 import { ToggleButton } from './lib/ToggleButton';
 import { Token } from './lib/Token';
 import { Tokenizer } from './lib/Tokenizer';
@@ -138,6 +143,8 @@ export {
   AnalyticalTable,
   AnalyticalTableScrollMode,
   Avatar,
+  AvatarBackgroundColor,
+  AvatarFitType,
   AvatarShape,
   AvatarSize,
   Badge,
@@ -213,6 +220,7 @@ export {
   PlacementType,
   Popover,
   PopoverHorizontalAlign,
+  PopoverPlacementType,
   PopoverVerticalAlign,
   Priority,
   ProductSwitch,
@@ -235,6 +243,7 @@ export {
   Switch,
   Tab,
   TabContainer,
+  TabLayout,
   TabSeparator,
   Table,
   TableCell,
@@ -254,6 +263,7 @@ export {
   Title,
   TitleLevel,
   Toast,
+  ToastPlacement,
   ToggleButton,
   Token,
   Tokenizer,

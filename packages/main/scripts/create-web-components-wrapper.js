@@ -48,6 +48,7 @@ const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const getTypeScriptTypeForProperty = (property) => {
   switch (property.type) {
+    // native ts types
     case 'String':
     case 'string':
       return {
@@ -59,6 +60,24 @@ const getTypeScriptTypeForProperty = (property) => {
         importStatement: null,
         tsType: 'unknown'
       };
+    case 'Integer':
+    case 'number':
+      return {
+        importStatement: null,
+        tsType: 'number'
+      };
+    case 'boolean':
+    case 'Boolean':
+      return {
+        importStatement: null,
+        tsType: 'boolean'
+      };
+    case 'Array':
+      return {
+        importStatement: null,
+        tsType: 'unknown[]'
+      };
+    // react ts types
     case 'Node[]':
     case 'HTMLElement[]':
       return {
@@ -69,6 +88,31 @@ const getTypeScriptTypeForProperty = (property) => {
       return {
         tsType: 'ReactNode',
         importStatement: "import { ReactNode } from 'react';"
+      };
+    // UI5 Web Component Enums
+    case 'AvatarBackgroundColor':
+      return {
+        importStatement: "import { AvatarBackgroundColor } from '@ui5/webcomponents-react/lib/AvatarBackgroundColor';",
+        tsType: 'AvatarBackgroundColor',
+        isEnum: true
+      };
+    case 'AvatarFitType':
+      return {
+        importStatement: "import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarFitType';",
+        tsType: 'AvatarFitType',
+        isEnum: true
+      };
+    case 'AvatarShape':
+      return {
+        importStatement: "import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';",
+        tsType: 'AvatarShape',
+        isEnum: true
+      };
+    case 'AvatarSize':
+      return {
+        importStatement: "import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';",
+        tsType: 'AvatarSize',
+        isEnum: true
       };
     case 'BusyIndicatorSize':
       return {
@@ -82,16 +126,11 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'ButtonDesign',
         isEnum: true
       };
-    case 'Array':
+    case 'CalendarType':
       return {
-        importStatement: null,
-        tsType: 'unknown[]'
-      };
-    case 'Integer':
-    case 'number':
-      return {
-        importStatement: null,
-        tsType: 'number'
+        importStatement: "import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';",
+        tsType: 'CalendarType',
+        isEnum: true
       };
     case 'CarouselArrowsPlacement':
       return {
@@ -100,11 +139,38 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'CarouselArrowsPlacement',
         isEnum: true
       };
-    case 'boolean':
-    case 'Boolean':
+    case 'InputType':
       return {
-        importStatement: null,
-        tsType: 'boolean'
+        importStatement: "import { InputType } from '@ui5/webcomponents-react/lib/InputType';",
+        tsType: 'InputType',
+        isEnum: true
+      };
+    case 'LinkDesign':
+      return {
+        importStatement: "import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';",
+        tsType: 'LinkDesign',
+        isEnum: true
+      };
+    case 'ListItemType': {
+      // TODO Should we use the singular ListItemType here?
+      return {
+        importStatement: "import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';",
+        tsType: 'ListItemTypes',
+        isEnum: true
+      };
+    }
+    case 'ListMode': {
+      return {
+        importStatement: "import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';",
+        tsType: 'ListMode',
+        isEnum: true
+      };
+    }
+    case 'ListSeparators':
+      return {
+        importStatement: "import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';",
+        tsType: 'ListSeparators',
+        isEnum: true
       };
     case 'MessageStripType':
       return {
@@ -137,59 +203,37 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'PopoverVerticalAlign',
         isEnum: true
       };
+    case 'SemanticColor':
+      return {
+        importStatement: "import { SemanticColor } from '@ui5/webcomponents-react/lib/SemanticColor';",
+        tsType: 'SemanticColor',
+        isEnum: true
+      };
+    case 'TabLayout':
+      return {
+        importStatement: "import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';",
+        tsType: 'TabLayout',
+        isEnum: true
+      };
+    case 'TitleLevel':
+      return {
+        importStatement: "import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';",
+        tsType: 'TitleLevel',
+        isEnum: true
+      };
+    case 'ToastPlacement':
+      return {
+        importStatement: "import { ToastPlacement } from '@ui5/webcomponents-react/lib/ToastPlacement';",
+        tsType: 'ToastPlacement',
+        isEnum: true
+      };
+    case 'ValueState':
+      return {
+        importStatement: "import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';",
+        tsType: 'ValueState',
+        isEnum: true
+      };
   }
-  // const mappings = {
-
-  //   [UI5LinkDesign]: {
-  //     importStatement: "import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';",
-  //     tsType: 'LinkDesign',
-  //     isEnum: true
-  //   },
-  //   [UI5SemanticColors]: {
-  //     importStatement: "import { SemanticColor } from '@ui5/webcomponents-react/lib/SemanticColor';",
-  //     tsType: 'SemanticColor',
-  //     isEnum: true
-  //   },
-  //   [UI5ListItemTypes]: {
-  //     importStatement: "import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';",
-  //     tsType: 'ListItemTypes',
-  //     isEnum: true
-  //   },
-  //   [UI5ListSeparators]: {
-  //     importStatement: "import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';",
-  //     tsType: 'ListSeparators',
-  //     isEnum: true
-  //   },
-  //   [UI5ListMode]: {
-  //     importStatement: "import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';",
-  //     tsType: 'ListMode',
-  //     isEnum: true
-  //   },
-  //   [UI5TitleLevel]: {
-  //     importStatement: "import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';",
-  //     tsType: 'TitleLevel',
-  //     isEnum: true
-  //   },
-  //   [UI5InputType]: {
-  //     importStatement: "import { InputType } from '@ui5/webcomponents-react/lib/InputType';",
-  //     tsType: 'InputType',
-  //     isEnum: true
-  //   },
-  //   [UI5CalendarType]: {
-  //     importStatement: "import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';",
-  //     tsType: 'CalendarType',
-  //     isEnum: true
-  //   },
-  //   [UI5ValueState]: {
-  //     importStatement: "import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';",
-  //     tsType: 'ValueState',
-  //     isEnum: true
-  //   },
-  //   [CSSSize]: {
-  //     tsType: "CSSProperties['width'] | CSSProperties['height']",
-  //     reactImport: 'CSSProperties'
-  //   },
-  // };
 };
 
 const getEventParameters = (parameters) => {

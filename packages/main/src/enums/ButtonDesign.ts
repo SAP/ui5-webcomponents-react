@@ -1,7 +1,7 @@
 export enum ButtonDesign {
   Default = 'Default',
+  Positive = 'Positive',
+  Negative = 'Negative',
   Transparent = 'Transparent',
-  Accept = 'Positive',
-  Reject = 'Negative',
   Emphasized = 'Emphasized'
 }
