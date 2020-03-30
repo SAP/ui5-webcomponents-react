@@ -18,8 +18,8 @@ export const generatedDefaultStory = () => (
     headerText={text('headerText', 'Responsive Popover Header')}
     horizontalAlign={select('horizontalAlign', PopoverHorizontalAlign, PopoverHorizontalAlign['Center'])}
     initialFocus={text('initialFocus', '')}
-    modal={boolean('modal', true)}
-    noArrow={boolean('noArrow', true)}
+    modal={boolean('modal', false)}
+    noArrow={boolean('noArrow', false)}
     placementType={select('placementType', PlacementType, PlacementType['Right'])}
     verticalAlign={select('verticalAlign', PopoverVerticalAlign, PopoverVerticalAlign['Center'])}
     footer={

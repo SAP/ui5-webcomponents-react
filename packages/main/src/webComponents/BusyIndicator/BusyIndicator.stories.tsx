@@ -9,7 +9,7 @@ export default {
 };
 
 export const generatedDefaultStory = () => (
-  <BusyIndicator active={boolean('active', false)} size={select('size', BusyIndicatorSize, BusyIndicatorSize['Large'])}>
+  <BusyIndicator active={boolean('active', true)} size={select('size', BusyIndicatorSize, BusyIndicatorSize['Large'])}>
     Some Content
   </BusyIndicator>
 );
