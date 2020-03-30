@@ -1,6 +1,5 @@
 const resolve = require('rollup-plugin-node-resolve');
 const babel = require('rollup-plugin-babel');
-const postcss = require('rollup-plugin-postcss');
 const path = require('path');
 const fs = require('fs');
 const escapeStringRegexp = require('escape-string-regexp');
@@ -24,8 +23,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       presets: ['babel-preset-react-app/prod'],
       plugins: ['@babel/plugin-proposal-nullish-coalescing-operator'],
       extensions: ['.js', '.jsx', '.ts', '.tsx']
-    }),
-    postcss()
+    })
   ];
 
   const pkg = require(path.resolve(PATHS.packages, pkgName, 'package.json'));

@@ -6,7 +6,6 @@ const replace = require('rollup-plugin-replace');
 const resolve = require('rollup-plugin-node-resolve');
 const closure = require('./plugins/closure-plugin');
 const sizes = require('./plugins/sizes-plugin');
-const postcss = require('rollup-plugin-postcss');
 const stripUnusedImports = require('./plugins/strip-unused-imports');
 const Bundles = require('./bundles');
 const Stats = require('./stats');
@@ -158,7 +157,6 @@ function getPlugins(entry, externals, updateBabelOptions, filename, packageName,
         'process.env.NODE_ENV': isProduction ? "'production'" : "'development'"
       }
     }),
-    postcss(),
     // Apply dead code elimination and/or minification.
     isProduction &&
       !isES6Bundle &&

@@ -1,6 +1,6 @@
+import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Calendar from '@ui5/webcomponents/dist/Calendar';
-import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 

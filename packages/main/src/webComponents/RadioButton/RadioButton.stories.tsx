@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text, select } from '@storybook/addon-knobs';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 export default {

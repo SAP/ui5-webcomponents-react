@@ -3,6 +3,5 @@ export enum ZIndex {
   Dialog = 1000,
   MessageBox = 1100,
   ResponsivePopover = 1200,
-  InputModal = 1300,
-  MessageToast = 9999
+  InputModal = 1300
 }

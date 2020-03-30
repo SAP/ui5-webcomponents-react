@@ -67,7 +67,6 @@ import { MessageBoxActions } from './lib/MessageBoxActions';
 import { MessageBoxTypes } from './lib/MessageBoxTypes';
 import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
-import { MessageToast } from './lib/MessageToast';
 import { MultiComboBox } from './lib/MultiComboBox';
 import { MultiComboBoxItem } from './lib/MultiComboBoxItem';
 import { Notification } from './lib/Notification';
@@ -202,7 +201,6 @@ export {
   MessageBoxTypes,
   MessageStrip,
   MessageStripType,
-  MessageToast,
   MultiComboBox,
   MultiComboBoxItem,
   Notification,
