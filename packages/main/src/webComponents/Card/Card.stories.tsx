@@ -1,5 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
+import '@ui5/webcomponents-icons/dist/icons/person-placeholder.js';
+import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { Card } from '@ui5/webcomponents-react/lib/Card';
 import React from 'react';
 
