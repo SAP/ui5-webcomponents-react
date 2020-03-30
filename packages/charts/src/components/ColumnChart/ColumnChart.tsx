@@ -54,7 +54,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       gridHorizontal: true,
       gridVertical: false,
       yAxisColor: ThemingParameters.sapList_BorderColor,
-      legendPosition: 'bottom',
+      legendPosition: 'top',
       barSize: 15,
       barGap: 3,
       zoomingTool: false,
@@ -84,7 +84,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const chartRef = useConsolidatedRef<any>(ref);
 
   const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
-  const secondaryDimension = dataset && dataset[0].hasOwnProperty('dimension');
 
   const colorSecondY = useMemo(
     () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
@@ -122,7 +121,10 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   );
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
+
+  const secondaryDimension = dataset && dataset[0].hasOwnProperty('dimension');
 
   const marginChart = useChartMargin(dataset, labelKey, yAxisFormatter, chartConfig.margin, false, secondaryDimension);
 
@@ -141,11 +143,11 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     >
       <ColumnChartLib margin={marginChart} data={dataset} barGap={chartConfig.barGap}>
         <CartesianGrid
-          vertical={chartConfig.gridVertical}
+          vertical={chartConfig.gridVertical ?? false}
           horizontal={chartConfig.gridHorizontal}
-          stroke={chartConfig.gridStroke}
+          stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} tick={XAxisLabel} dataKey={labelKey} yAxisId={0} />}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} tick={XAxisLabel} dataKey={labelKey} xAxisId={0} />}
         {secondaryDimension && (
           <XAxis
             interval={0}
@@ -169,8 +171,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color ?? `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`}
             label={{ value: chartConfig.secondYAxis.name, angle: +90, position: 'center' }}
-            orientation="right"
-            yAxisId="right"
+            orientation={'right'}
+            yAxisId={'right'}
             interval={0}
           />
         )}
@@ -193,9 +195,9 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         {!noLegend && (
           <Legend
             wrapperStyle={{
-              paddingTop: 20
+              paddingBottom: 20
             }}
-            verticalAlign={chartConfig.legendPosition}
+            verticalAlign={chartConfig.legendPosition ?? 'top'}
             onClick={onItemLegendClick}
           />
         )}

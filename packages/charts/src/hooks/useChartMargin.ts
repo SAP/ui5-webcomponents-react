@@ -15,7 +15,7 @@ export const useChartMargin = (dataset, formatter, labelKey, margin, bar?, secon
     return {
       right: margin?.right ?? 30,
       top: margin?.top ?? 40,
-      bottom: margin?.bottom ?? secondaryDimension ? 60 : 30,
+      bottom: margin?.bottom ?? secondaryDimension ? 100 : 30,
       left: margin?.left ?? marginLeft / 2
     };
   }, [dataset, labelKey, margin]);

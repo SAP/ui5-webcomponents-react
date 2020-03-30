@@ -43,7 +43,6 @@ export const withSecondaryDimension = () => (
     dataset={secondaryDimensionDataSet}
     color={'red'}
     width={'95%'}
-    height={'40vh'}
     chartConfig={{ dataLabel: true }}
   />
 );

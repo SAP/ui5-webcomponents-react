@@ -5,14 +5,13 @@ type properties = { x: number; y: number; payload: object };
 
 let globalRotate = false;
 
-export const AxisTicks = (props: properties, formatter, unit = '', rotate) => {
+export const XAxisTicks = (props, formatter, unit = '', rotate) => {
   const { x, y, payload } = props;
-
   globalRotate = !!rotate;
 
   const tickValue =
     formatter(payload.value).length > 10 && rotate
-      ? formatter(payload.value).slice(0, 10) + '...'
+      ? `${formatter(payload.value).slice(0, 10)}...`
       : formatter(payload.value);
   return (
     <g transform={`translate(${x},${y + 10})`}>
@@ -27,7 +26,7 @@ export const AxisTicks = (props: properties, formatter, unit = '', rotate) => {
   );
 };
 
-export const SecondaryDimensionTicks = (props: properties) => {
+export const SecondaryDimensionTicksXAxis = (props) => {
   const { x, y, payload } = props;
 
   const tickValue = payload.value.length > 12 && globalRotate ? payload.value.slice(0, 12) + '...' : payload.value;
@@ -49,7 +48,22 @@ export const SecondaryDimensionTicks = (props: properties) => {
   );
 };
 
-export const DataLabel = (props: properties, formatter, customElement) => {
+export const SecondaryDimensionTicksYAxis = (props, yAxisFormatter) => {
+  const { x, y, payload } = props;
+
+  const tickValue = yAxisFormatter(payload.value);
+
+  return (
+    <g transform={`translate(${x - 90},${y})`}>
+      {' '}
+      <text fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'start'}>
+        {`${tickValue}`}
+      </text>
+    </g>
+  );
+};
+
+export const DataLabel = (props, formatter, customElement) => {
   const { x, y, value } = props;
   const customElementClone =
     customElement && React.cloneElement(customElement, { children: formatter(value), textAnchor: 'middle' });

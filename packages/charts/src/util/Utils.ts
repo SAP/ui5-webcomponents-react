@@ -1,7 +1,7 @@
 import merge from 'lodash.merge';
 import { useMemo } from 'react';
 import { defaultFont } from '../config';
-import { AxisTicks } from '../internal/CustomElements';
+import { XAxisTicks } from '../internal/CustomElements';
 
 export const useMergedConfig = (x, y) => {
   return useMemo(() => {
@@ -78,13 +78,13 @@ export const renderAxisTicks = (axisProps, xAxisFormatter, xAxisUnit) => {
   switch (index) {
     case 0:
       previousX = payload.coordinate;
-      return AxisTicks(axisProps, xAxisFormatter, xAxisUnit, secondElementX - payload.coordinate <= 100);
+      return XAxisTicks(axisProps, xAxisFormatter, xAxisUnit, secondElementX - payload.coordinate <= 100);
     case 1:
       secondElementX = payload.coordinate;
       previousX = payload.coordinate;
-      return AxisTicks(axisProps, xAxisFormatter, xAxisUnit, payload.coordinate - prevX <= 100);
+      return XAxisTicks(axisProps, xAxisFormatter, xAxisUnit, payload.coordinate - prevX <= 100);
     default:
       previousX = payload.coordinate;
-      return AxisTicks(axisProps, xAxisFormatter, xAxisUnit, payload.coordinate - prevX <= 100);
+      return XAxisTicks(axisProps, xAxisFormatter, xAxisUnit, payload.coordinate - prevX <= 100);
   }
 };
