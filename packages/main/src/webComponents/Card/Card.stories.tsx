@@ -1,5 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
+import '@ui5/webcomponents-icons/dist/icons/person-placeholder.js';
+import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
+import { AvatarBackgroundColor } from '@ui5/webcomponents-react/lib/AvatarBackgroundColor';
 import { Card } from '@ui5/webcomponents-react/lib/Card';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
@@ -16,7 +19,7 @@ export const generatedDefaultStory = () => (
     heading={text('heading', 'Team Space')}
     status={text('status', '3 of 5')}
     subheading={text('subheading', 'Direct Reports')}
-    avatar={null}
+    avatar={<Avatar backgroundColor={AvatarBackgroundColor.Accent3} icon="person-placeholder" />}
     onHeaderClick={action('onHeaderClick')}
     style={{ width: '300px' }}
   >
