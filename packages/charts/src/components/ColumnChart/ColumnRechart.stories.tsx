@@ -42,7 +42,8 @@ export const withSecondaryDimension = () => (
     onDataPointClick={action('onDataPointClick')}
     dataset={secondaryDimensionDataSet}
     color={'red'}
-    width={'95%'}
+    width={'100%'}
+    height={'50vh'}
     chartConfig={{ dataLabel: true }}
   />
 );

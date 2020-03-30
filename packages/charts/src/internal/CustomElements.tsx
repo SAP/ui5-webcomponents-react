@@ -1,23 +1,21 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React from 'react';
 
-type properties = { x: number; y: number; payload: object };
-
 let globalRotate = false;
 
 export const XAxisTicks = (props, formatter, unit = '', rotate) => {
   const { x, y, payload } = props;
   globalRotate = !!rotate;
-
-  const tickValue =
-    formatter(payload.value).length > 10 && rotate
-      ? `${formatter(payload.value).slice(0, 10)}...`
-      : formatter(payload.value);
+  const tickValue = rotate
+    ? formatter(payload.value).length > 10
+      ? `${formatter(payload.value).slice(0, 8)}...`
+      : formatter(payload.value)
+    : payload.value;
   return (
     <g transform={`translate(${x},${y + 10})`}>
       <text
         fill={ThemingParameters.sapNeutralBorderColor}
-        transform={rotate ? 'rotate(-45)' : ''}
+        transform={rotate ? 'rotate(-35)' : ''}
         textAnchor={rotate ? 'end' : 'middle'}
       >
         {`${tickValue}${unit}`}
@@ -38,7 +36,7 @@ export const SecondaryDimensionTicksXAxis = (props) => {
       <text fill={ThemingParameters.sapNeutralBorderColor}>|</text>
       <text
         fill={ThemingParameters.sapNeutralBorderColor}
-        transform={globalRotate ? 'rotate(-45)' : ''}
+        transform={globalRotate ? 'rotate(-35)' : ''}
         textAnchor={globalRotate ? 'end' : 'middle'}
         y={15}
       >

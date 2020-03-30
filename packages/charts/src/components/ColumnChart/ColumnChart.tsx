@@ -120,11 +120,11 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     false
   );
 
-  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
-
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
   const secondaryDimension = dataset && dataset[0].hasOwnProperty('dimension');
+
+  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit, secondaryDimension);
 
   const marginChart = useChartMargin(dataset, labelKey, yAxisFormatter, chartConfig.margin, false, secondaryDimension);
 
