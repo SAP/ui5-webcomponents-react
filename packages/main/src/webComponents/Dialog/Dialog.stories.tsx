@@ -11,14 +11,15 @@ export default {
 export const generatedDefaultStory = () => (
   <Dialog
     stretch={boolean('stretch', false)}
-    headerText={text('headerText', '')}
+    headerText={text('headerText', 'Dialog Header Text')}
     initialFocus={text('initialFocus', '')}
-    footer={null}
+    footer={<span>Footer</span>}
     header={null}
     onAfterClose={action('onAfterClose')}
     onAfterOpen={action('onAfterOpen')}
     onBeforeClose={action('onBeforeClose')}
     onBeforeOpen={action('onBeforeOpen')}
+    open={boolean('open', true)}
   >
     Some Content
   </Dialog>
