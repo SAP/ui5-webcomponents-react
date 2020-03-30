@@ -1,3 +1,4 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5ComboBox from '@ui5/webcomponents/dist/ComboBox';
 import React, { FC, ReactNode } from 'react';
@@ -41,7 +42,7 @@ export interface ComboBoxPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the value state of the <code>ui5-combobox</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
    */
-  valueState?: string;
+  valueState?: ValueState;
   /**
    * Defines the <code>ui5-combobox</code> items. <br><br> Example: <br> &lt;ui5-combobox><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #1&lt;/ui5-li><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-li>Item #2&lt;/ui5-li><br> &lt;/ui5-combobox> <br> <br>
    */
@@ -73,7 +74,7 @@ ComboBox.defaultProps = {
   readonly: false,
   required: false,
   value: '',
-  valueState: 'None'
+  valueState: ValueState.None
 };
 
 export { ComboBox };

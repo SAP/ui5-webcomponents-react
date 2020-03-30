@@ -1,3 +1,4 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5SuggestionItem from '@ui5/webcomponents/dist/SuggestionItem';
 import React, { FC } from 'react';
@@ -31,7 +32,7 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the state of the <code>info</code>. <br><br> Available options are: <code>"None"</code> (by default), <code>"Success"</code>, <code>"Warning"</code> and <code>"Erorr"</code>.
    */
-  infoState?: string;
+  infoState?: ValueState;
   /**
    * Defines the text of the <code>ui5-suggestion-item</code>.
    */

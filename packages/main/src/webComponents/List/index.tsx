@@ -1,3 +1,5 @@
+import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
+import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5List from '@ui5/webcomponents/dist/List';
 import React, { FC, ReactNode } from 'react';
@@ -27,7 +29,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the mode of the <code>ui5-list</code>. <br><br> <b>Note:</b> Avalaible options are <code>None</code>, <code>SingleSelect</code>, <code>MultiSelect</code>, and <code>Delete</code>.
    */
-  mode?: string;
+  mode?: ListMode;
   /**
    * Defines the text that is displayed when the <code>ui5-list</code> contains no items.
    */
@@ -35,7 +37,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the item separator style that is used. <br><br> <b>Notes:</b> <ul> <li>Avalaible options are <code>All</code>, <code>Inner</code>, and <code>None</code>.</li> <li>When set to <code>None</code>, none of the items are separated by horizontal lines.</li> <li>When set to <code>Inner</code>, the first item doesn't have a top separator and the last item doesn't have a bottom separator.</li> </ul>
    */
-  separators?: string;
+  separators?: ListSeparators;
   /**
    * Defines the items of the <code>ui5-list</code>. <br><br> <b>Note:</b> Use <code>ui5-li</code>, <code>ui5-li-custom</code>, and <code>ui5-li-groupheader</code> for the intended design.
    */
@@ -77,9 +79,9 @@ List.defaultProps = {
   headerText: '',
   infiniteScroll: false,
   inset: false,
-  mode: 'None',
+  mode: ListMode.None,
   noDataText: '',
-  separators: 'All'
+  separators: ListSeparators.All
 };
 
 export { List };

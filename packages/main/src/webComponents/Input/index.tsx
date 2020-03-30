@@ -1,3 +1,5 @@
+import { InputType } from '@ui5/webcomponents-react/lib/InputType';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Input from '@ui5/webcomponents/dist/Input';
 import React, { FC, ReactNode } from 'react';
@@ -13,12 +15,10 @@ export interface InputPropTypes extends WithWebComponentPropTypes {
    */
   maxlength?: number;
   /**
- * Determines the name with which the <code>ui5-input</code> will be submitted in an HTML form.
-
-<br><br> <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
-
-<br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-input</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
- */
+   * Determines the name with which the <code>ui5-input</code> will be submitted in an HTML form.
+   * <br><br> <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
+   * <br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-input</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   */
   name?: string;
   /**
    * Defines a short hint intended to aid the user with data entry when the <code>ui5-input</code> has no value.
@@ -47,7 +47,7 @@ export interface InputPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the value state of the <code>ui5-input</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
    */
-  valueState?: string;
+  valueState?: ValueState;
   /**
    * Defines the <code>ui5-input</code> suggestion items. <br><br> Example: <br><br> &lt;ui5-input show-suggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #1">&lt;/ui5-suggestion-item><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #2">&lt;/ui5-suggestion-item><br> &lt;/ui5-input> <br> <ui5-input show-suggestions> <ui5-suggestion-item text="Item #1"></ui5-suggestion-item> <ui5-suggestion-item text="Item #2"></ui5-suggestion-item> </ui5-input> <br><br> <b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;ui5-suggestion-item> is recommended to be used as a suggestion item. and you need to import the <code>"@ui5/webcomponents/dist/SuggestionItem"</code> module.
    */
@@ -94,9 +94,9 @@ Input.defaultProps = {
   readonly: false,
   required: false,
   showSuggestions: false,
-  type: 'Text',
+  type: InputType.Text,
   value: '',
-  valueState: 'None'
+  valueState: ValueState.None
 };
 
 export { Input };

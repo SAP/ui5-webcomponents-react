@@ -1,6 +1,7 @@
-import { number, text } from '@storybook/addon-knobs';
+import { number, select } from '@storybook/addon-knobs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Toast } from '@ui5/webcomponents-react/lib/Toast';
+import { ToastPlacement } from '@ui5/webcomponents-react/lib/ToastPlacement';
 import React from 'react';
 
 export default {
@@ -15,12 +16,11 @@ const showToast = () => {
 
 export const generatedDefaultStory = () => (
   <>
-    {/*
-    // @ts-ignore */}
     <Toast
+      // @ts-ignore
       id="web_components_react_toast_demo"
       duration={number('duration', 3000)}
-      placement={text('placement', 'BottomCenter')}
+      placement={select('placement', ToastPlacement, ToastPlacement.BottomCenter)}
     >
       Some Content
     </Toast>

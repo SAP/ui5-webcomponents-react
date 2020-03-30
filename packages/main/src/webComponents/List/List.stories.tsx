@@ -1,8 +1,10 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { GroupHeaderListItem } from '@ui5/webcomponents-react/lib/GroupHeaderListItem';
 import { List } from '@ui5/webcomponents-react/lib/List';
+import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
+import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import React from 'react';
 
@@ -21,9 +23,9 @@ export const generatedDefaultStory = () => (
     headerText={text('headerText', '')}
     infiniteScroll={boolean('infiniteScroll', false)}
     inset={boolean('inset', false)}
-    mode={text('mode', 'None')}
+    mode={select('mode', ListMode, ListMode.None)}
     noDataText={text('noDataText', '')}
-    separators={text('separators', 'All')}
+    separators={select('separators', ListSeparators, ListSeparators.All)}
     header={null}
     onItemClick={action('onItemClick')}
     onItemDelete={action('onItemDelete')}

@@ -6,10 +6,9 @@ import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface MessageStripPropTypes extends WithWebComponentPropTypes {
   /**
- * Defines the content to be displayed as graphical element within the <code>ui5-messagestrip</code>. <br><br> <b>Note:</b> If no icon is given, the default icon for the <code>ui5-messagestrip</code> type will be used. The SAP-icons font provides numerous options. <br><br>
-
-See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
- */
+   * Defines the content to be displayed as graphical element within the <code>ui5-messagestrip</code>. <br><br> <b>Note:</b> If no icon is given, the default icon for the <code>ui5-messagestrip</code> type will be used. The SAP-icons font provides numerous options. <br><br>
+   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   */
   icon?: ReactNode;
   /**
    * Defines whether the MessageStrip renders close icon.

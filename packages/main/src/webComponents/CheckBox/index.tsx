@@ -1,3 +1,4 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5CheckBox from '@ui5/webcomponents/dist/CheckBox';
 import React, { FC } from 'react';
@@ -13,12 +14,10 @@ export interface CheckBoxPropTypes extends WithWebComponentPropTypes {
    */
   disabled?: boolean;
   /**
- * Determines the name with which the <code>ui5-checkbox</code> will be submitted in an HTML form.
-
-<br><br> <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
-
-<br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-checkbox</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
- */
+   * Determines the name with which the <code>ui5-checkbox</code> will be submitted in an HTML form.
+   * <br><br> <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
+   * <br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-checkbox</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   */
   name?: string;
   /**
    * Defines whether the <code>ui5-checkbox</code> is read-only. <br><br> <b>Note:</b> A red-only <code>ui5-checkbox</code> is not editable, but still provides visual feedback upon user interaction.
@@ -31,7 +30,7 @@ export interface CheckBoxPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the value state of the <code>ui5-checkbox</code>. <br><br> <b>Note:</b> Available options are <code>Warning</code>, <code>Error</code>, and <code>None</code> (default).
    */
-  valueState?: string;
+  valueState?: ValueState;
   /**
    * Defines whether the <code>ui5-checkbox</code> text wraps when there is not enough space. <br><br> <b>Note:</b> By default, the text truncates when there is not enough space.
    */
@@ -57,7 +56,7 @@ CheckBox.defaultProps = {
   name: '',
   readonly: false,
   text: '',
-  valueState: 'None',
+  valueState: ValueState.None,
   wrap: false
 };
 

@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { TimePicker } from '@ui5/webcomponents-react/lib/TimePicker';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 export default {
@@ -15,7 +16,7 @@ export const generatedDefaultStory = () => (
     placeholder={text('placeholder', undefined)}
     readonly={boolean('readonly', false)}
     value={text('value', '')}
-    valueState={text('valueState', 'None')}
+    valueState={select('valueState', ValueState, ValueState.None)}
     onChange={action('onChange')}
     onInput={action('onInput')}
   />

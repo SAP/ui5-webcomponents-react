@@ -1,5 +1,6 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Calendar from '@ui5/webcomponents/dist/Calendar';
+import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -15,7 +16,7 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the calendar type used for display. If not defined, the calendar type of the global configuration is used. Available options are: "Gregorian", "Islamic", "Japanese", "Buddhist" and "Persian".
    */
-  primaryCalendarType?: string;
+  primaryCalendarType?: CalendarType;
   /**
    * Defines the selected dates as UTC timestamps.
    */

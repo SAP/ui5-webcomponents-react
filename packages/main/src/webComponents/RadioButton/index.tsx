@@ -1,3 +1,4 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5RadioButton from '@ui5/webcomponents/dist/RadioButton';
 import React, { FC } from 'react';
@@ -9,16 +10,12 @@ export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
    */
   disabled?: boolean;
   /**
- * Defines the name of the <code>ui5-radiobutton</code>. Radio buttons with the same <code>name</code> will form a radio button group.
-
-<br><br> <b>Note:</b> The selection can be changed with <code>ARROW_UP/DOWN</code> and <code>ARROW_LEFT/RIGHT</code> keys between radio buttons in same group.
-
-<br><br> <b>Note:</b> Only one radio button can be selected per group.
-
-<br><br> <b>Important:</b> For the <code>name</code> property to have effect when submitting forms, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
-
-<br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-radiobutton</code> so that it can be submitted as part of an HTML form.
- */
+   * Defines the name of the <code>ui5-radiobutton</code>. Radio buttons with the same <code>name</code> will form a radio button group.
+   * <br><br> <b>Note:</b> The selection can be changed with <code>ARROW_UP/DOWN</code> and <code>ARROW_LEFT/RIGHT</code> keys between radio buttons in same group.
+   * <br><br> <b>Note:</b> Only one radio button can be selected per group.
+   * <br><br> <b>Important:</b> For the <code>name</code> property to have effect when submitting forms, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
+   * <br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-radiobutton</code> so that it can be submitted as part of an HTML form.
+   */
   name?: string;
   /**
    * Determines whether the <code>ui5-radiobutton</code> is read-only. <br><br> <b>Note:</b> A read-only <code>ui5-radiobutton</code> is not editable, but still provides visual feedback upon user interaction.
@@ -39,7 +36,7 @@ export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the value state of the <code>ui5-radiobutton</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> </ul>
    */
-  valueState?: string;
+  valueState?: ValueState;
   /**
    * Defines whether the <code>ui5-radiobutton</code> text wraps when there is not enough space. <br><br> <b>Note:</b> By default, the text truncates when there is not enough space.
    */
@@ -65,7 +62,7 @@ RadioButton.defaultProps = {
   readonly: false,
   selected: false,
   text: '',
-  valueState: 'None',
+  valueState: ValueState.None,
   wrap: false
 };
 

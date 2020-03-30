@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { FileUploader } from '@ui5/webcomponents-react/lib/FileUploader';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 export default {
@@ -17,7 +18,7 @@ export const generatedDefaultStory = () => (
     name={text('name', '')}
     placeholder={text('placeholder', '')}
     value={text('value', '')}
-    valueState={text('valueState', 'None')}
+    valueState={select('valueState', ValueState, ValueState.None)}
     onChange={action('onChange')}
   />
 );

@@ -1,3 +1,4 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5TimePicker from '@ui5/webcomponents/dist/TimePicker';
 import React, { FC } from 'react';
@@ -9,16 +10,14 @@ export interface TimePickerPropTypes extends WithWebComponentPropTypes {
    */
   disabled?: boolean;
   /**
- * Determines the format, displayed in the input field.
-
-Example: HH:mm:ss -> 11:42:35 hh:mm:ss a -> 2:23:15 PM mm:ss -> 12:04 (only minutes and seconds)
- */
+   * Determines the format, displayed in the input field.
+   * Example: HH:mm:ss -> 11:42:35 hh:mm:ss a -> 2:23:15 PM mm:ss -> 12:04 (only minutes and seconds)
+   */
   formatPattern?: string;
   /**
- * Defines a short hint, intended to aid the user with data entry when the <code>ui5-timepicker</code> has no value.
-
-<br><br> <b>Note:</b> When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the <code>ui5-timepicker</code> appear empty - without placeholder or format pattern.
- */
+   * Defines a short hint, intended to aid the user with data entry when the <code>ui5-timepicker</code> has no value.
+   * <br><br> <b>Note:</b> When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the <code>ui5-timepicker</code> appear empty - without placeholder or format pattern.
+   */
   placeholder?: string;
   /**
    * Determines whether the <code>ui5-timepicker</code> is displayed as readonly.
@@ -31,7 +30,7 @@ Example: HH:mm:ss -> 11:42:35 hh:mm:ss a -> 2:23:15 PM mm:ss -> 12:04 (only minu
   /**
    * Defines the value state of the <code>ui5-timepicker</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
    */
-  valueState?: string;
+  valueState?: ValueState;
   /**
    * Fired when the input operation has finished by clicking the "OK" button or when the text in the input field has changed and the focus leaves the input field.
    */
@@ -57,7 +56,7 @@ TimePicker.defaultProps = {
   placeholder: undefined,
   readonly: false,
   value: '',
-  valueState: 'None'
+  valueState: ValueState.None
 };
 
 export { TimePicker };

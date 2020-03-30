@@ -1,4 +1,5 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5StandardListItem from '@ui5/webcomponents/dist/StandardListItem';
 import React, { FC, ReactNode } from 'react';
@@ -28,7 +29,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the state of the <code>info</code>. <br> Available options are: <code>"None"</code> (by default), <code>"Success"</code>, <code>"Warning"</code> and <code>"Erorr"</code>.
    */
-  infoState?: string;
+  infoState?: ValueState;
   /**
    * Defines the text of the <code>ui5-li</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */

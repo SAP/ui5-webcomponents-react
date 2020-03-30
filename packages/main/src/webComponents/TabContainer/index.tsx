@@ -1,3 +1,4 @@
+import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5TabContainer from '@ui5/webcomponents/dist/TabContainer';
 import React, { FC, ReactNode } from 'react';
@@ -23,7 +24,7 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
 
 <br><br> Available options are: <ul> <li><code>Standard</code></li> <li><code>Inline</code></li> <ul>
  */
-  tabLayout?: string;
+  tabLayout?: TabLayout;
   /**
    * Defines the tabs. <br><br> <b>Note:</b> Use <code>ui5-tab</code> and <code>ui5-tab-separator</code> for the intended design.
    */
@@ -47,7 +48,7 @@ TabContainer.defaultProps = {
   collapsed: false,
   fixed: false,
   showOverflow: false,
-  tabLayout: 'Standard'
+  tabLayout: TabLayout.Standard
 };
 
 export { TabContainer };

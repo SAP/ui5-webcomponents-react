@@ -1,3 +1,5 @@
+import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5DatePicker from '@ui5/webcomponents/dist/DatePicker';
 import React, { FC } from 'react';
@@ -37,7 +39,7 @@ export interface DatePickerPropTypes extends WithWebComponentPropTypes {
   /**
    * Determines the calendar type. The input value is formated according to the calendar type and the picker shows the months and years from the specified calendar. <br><br> Available options are: <ul> <li><code>Gregorian</code></li> <li><code>Islamic</code></li> <li><code>Japanese</code></li> <li><code>Buddhist</code></li> <li><code>Persian</code></li> </ul>
    */
-  primaryCalendarType?: string;
+  primaryCalendarType?: CalendarType;
   /**
    * Determines whether the <code>ui5-datepicker</code> is displayed as read-only.
    */
@@ -49,7 +51,7 @@ export interface DatePickerPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the value state of the <code>ui5-datepicker</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
    */
-  valueState?: string;
+  valueState?: ValueState;
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
@@ -76,10 +78,10 @@ DatePicker.defaultProps = {
   minDate: '',
   name: '',
   placeholder: undefined,
-  primaryCalendarType: 'Gregorian',
+  primaryCalendarType: CalendarType.Gregorian,
   readonly: false,
   value: '',
-  valueState: 'None'
+  valueState: ValueState.None
 };
 
 export { DatePicker };

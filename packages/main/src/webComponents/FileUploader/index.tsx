@@ -1,3 +1,4 @@
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5FileUploader from '@ui5/webcomponents/dist/FileUploader';
 import React, { FC, ReactNode } from 'react';
@@ -39,7 +40,7 @@ export interface FileUploaderPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the value state of the <code>ui5-file-uploader</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
    */
-  valueState?: string;
+  valueState?: ValueState;
   /**
    * By default the <code>ui5-file-uploader</code> contains a single input field. With this slot you can pass any content that you wish to add. See the samples for more information.
    */
@@ -66,7 +67,7 @@ FileUploader.defaultProps = {
   name: '',
   placeholder: '',
   value: '',
-  valueState: 'None'
+  valueState: ValueState.None
 };
 
 export { FileUploader };

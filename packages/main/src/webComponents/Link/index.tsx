@@ -1,3 +1,4 @@
+import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Link from '@ui5/webcomponents/dist/Link';
 import React, { FC, ReactNode } from 'react';
@@ -7,7 +8,7 @@ export interface LinkPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the <code>ui5-link</code> design. <br><br> <b>Note:</b> Avaialble options are <code>Default</code>, <code>Subtle</code>, and <code>Emphasized</code>.
    */
-  design?: string;
+  design?: LinkDesign;
   /**
    * Defines whether the <code>ui5-link</code> is disabled. <br><br> <b>Note:</b> When disabled, the <code>ui5-link</code> cannot be triggered by the user.
    */
@@ -44,7 +45,7 @@ const Link: FC<LinkPropTypes> = withWebComponent<LinkPropTypes>(UI5Link);
 Link.displayName = 'Link';
 
 Link.defaultProps = {
-  design: 'Default',
+  design: LinkDesign.Default,
   disabled: false,
   href: '',
   target: '',

@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 export default {
@@ -15,7 +16,7 @@ export const generatedDefaultStory = () => (
     name={text('name', '')}
     readonly={boolean('readonly', false)}
     text={text('text', 'My CheckBox Text')}
-    valueState={select('valueState', ['None', 'Warning', 'Error'], 'None')}
+    valueState={select('valueState', ValueState, ValueState.None)}
     wrap={boolean('wrap', false)}
     onChange={action('onChange')}
   />

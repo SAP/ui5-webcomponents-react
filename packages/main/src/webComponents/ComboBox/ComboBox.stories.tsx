@@ -1,7 +1,8 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { ComboBox } from '@ui5/webcomponents-react/lib/ComboBox';
 import { ComboBoxItem } from '@ui5/webcomponents-react/lib/ComboBoxItem';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 export default {
@@ -22,7 +23,7 @@ export const generatedDefaultStory = () => (
     readonly={boolean('readonly', false)}
     required={boolean('required', false)}
     value={text('value', '')}
-    valueState={text('valueState', 'None')}
+    valueState={select('valueState', ValueState, ValueState.None)}
     onChange={action('onChange')}
     onInput={action('onInput')}
   >

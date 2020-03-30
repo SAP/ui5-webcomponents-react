@@ -1,3 +1,4 @@
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Title from '@ui5/webcomponents/dist/Title';
 import React, { FC, ReactNode } from 'react';
@@ -7,7 +8,7 @@ export interface TitlePropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the <code>ui5-title</code> level. Available options are: <code>"H6"</code> to <code>"H1"</code>.
    */
-  level?: string;
+  level?: TitleLevel;
   /**
    * Defines whether the <code>ui5-title</code> would wrap.
    */
@@ -28,7 +29,7 @@ const Title: FC<TitlePropTypes> = withWebComponent<TitlePropTypes>(UI5Title);
 Title.displayName = 'Title';
 
 Title.defaultProps = {
-  level: 'H2',
+  level: TitleLevel.H2,
   wrap: false
 };
 

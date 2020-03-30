@@ -1,7 +1,8 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 export default {
@@ -16,7 +17,7 @@ export const generatedDefaultStory = () => (
   <Select
     disabled={boolean('disabled', false)}
     name={text('name', '')}
-    valueState={text('valueState', 'None')}
+    valueState={select('valueState', ValueState, ValueState.None)}
     onChange={action('onChange')}
   >
     <Option>Option 1</Option>

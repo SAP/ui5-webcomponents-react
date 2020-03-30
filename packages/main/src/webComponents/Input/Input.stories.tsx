@@ -1,7 +1,9 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, number, text } from '@storybook/addon-knobs';
+import { boolean, number, select, text } from '@storybook/addon-knobs';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { SuggestionItem } from '@ui5/webcomponents-react/lib/SuggestionItem';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 export default {
@@ -21,9 +23,9 @@ export const generatedDefaultStory = () => (
     readonly={boolean('readonly', false)}
     required={boolean('required', false)}
     showSuggestions={boolean('showSuggestions', false)}
-    type={text('type', 'Text')}
+    type={select('type', InputType, InputType.Text)}
     value={text('value', '')}
-    valueState={text('valueState', 'None')}
+    valueState={select('valueState', ValueState, ValueState.None)}
     icon={null}
     valueStateMessage={null}
     onChange={action('onChange')}

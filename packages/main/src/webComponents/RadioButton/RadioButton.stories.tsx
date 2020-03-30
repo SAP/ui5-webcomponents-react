@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, text, select } from '@storybook/addon-knobs';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';
 import React from 'react';
 
@@ -15,7 +16,7 @@ export const generatedDefaultStory = () => (
     readonly={boolean('readonly', false)}
     selected={boolean('selected', false)}
     text={text('text', 'Radio Button Text')}
-    value={text('value', undefined)}
+    value={select('value', ValueState, ValueState.None)}
     valueState={text('valueState', 'None')}
     wrap={boolean('wrap', false)}
     onSelect={action('onSelect')}

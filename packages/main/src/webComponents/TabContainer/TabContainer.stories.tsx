@@ -1,7 +1,8 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, select } from '@storybook/addon-knobs';
 import { Tab } from '@ui5/webcomponents-react/lib/Tab';
 import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
+import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';
 import { TabSeparator } from '@ui5/webcomponents-react/lib/TabSeparator';
 import React from 'react';
 
@@ -18,7 +19,7 @@ export const generatedDefaultStory = () => (
     collapsed={boolean('collapsed', false)}
     fixed={boolean('fixed', false)}
     showOverflow={boolean('showOverflow', false)}
-    tabLayout={text('tabLayout', 'Standard')}
+    tabLayout={select('tabLayout', TabLayout, TabLayout.Standard)}
     onTabSelect={action('onTabSelect')}
   >
     <Tab text="Tab 1">Content Tab 1</Tab>

@@ -1,5 +1,6 @@
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, select } from '@storybook/addon-knobs';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React from 'react';
 
 export default {
@@ -8,7 +9,7 @@ export default {
 };
 
 export const generatedDefaultStory = () => (
-  <Title level={text('level', 'H2')} wrap={boolean('wrap', false)}>
+  <Title level={select('level', TitleLevel, TitleLevel.H2)} wrap={boolean('wrap', false)}>
     Some Content
   </Title>
 );

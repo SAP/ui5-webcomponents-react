@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { Link } from '@ui5/webcomponents-react/lib/Link';
+import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 import React from 'react';
 
 export default {
@@ -10,7 +11,7 @@ export default {
 
 export const generatedDefaultStory = () => (
   <Link
-    design={text('design', 'Default')}
+    design={select('design', LinkDesign, LinkDesign.Default)}
     disabled={boolean('disabled', false)}
     href={text('href', '')}
     target={text('target', '')}
