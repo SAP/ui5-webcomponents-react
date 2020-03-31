@@ -34,12 +34,12 @@ const styles = {
     },
     '& :last-child': {
       placeSelf: 'center auto',
-      flexGrow: 1
+      width: '100%'
     }
   },
   mandatory: {
-    fontSize: ThemingParameters.sapUiFontSize,
-    color: ThemingParameters.sapUiFieldRequiredColor,
+    fontSize: ThemingParameters.sapFontSize,
+    color: ThemingParameters.sapField_RequiredColor,
     height: '1rem'
   },
   loadingContainer: {
