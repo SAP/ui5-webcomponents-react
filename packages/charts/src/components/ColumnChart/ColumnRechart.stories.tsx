@@ -41,6 +41,7 @@ export const withSecondaryDimension = () => (
   <ColumnChart
     onDataPointClick={action('onDataPointClick')}
     dataset={secondaryDimensionDataSet}
+    secondaryDimensionKey={'dimension'}
     color={'red'}
     width={'100%'}
     height={'50vh'}

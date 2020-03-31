@@ -1,5 +1,6 @@
 import { root as sap_fiori_3 } from '@sap-theming/theming-base-content/content/Base/baseLib/sap_fiori_3/variables.json';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
@@ -66,7 +67,8 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
     return {
       theme,
       contentDensity: isCompactSize ? ContentDensity.Compact : ContentDensity.Cozy,
-      parameters: ThemingParameters
+      parameters: ThemingParameters,
+      rtl: getRTL()
     };
   }, [theme, isCompactSize]);
 
@@ -78,6 +80,9 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
         watch: true,
         silent: true
       });
+    }
+    if (getRTL()) {
+      document.dir = 'rtl';
     }
   }, []);
 

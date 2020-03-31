@@ -67,6 +67,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     loading,
     dataset,
     labelKey = 'name',
+    secondaryDimensionKey,
     onDataPointClick,
     noLegend = false,
     xAxisFormatter = (el) => el,
@@ -173,9 +174,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
-  const secondaryDimension = dataset && dataset[0].hasOwnProperty('dimension');
-
-  const marginChart = useChartMargin(dataset, yAxisFormatter, labelKey, chartConfig.margin);
+  const marginChart = useChartMargin(
+    dataset,
+    yAxisFormatter,
+    labelKey,
+    chartConfig.margin,
+    false,
+    secondaryDimensionKey
+  );
 
   return (
     <ChartContainer
@@ -205,10 +211,10 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             xAxisId={0}
           />
         )}
-        {secondaryDimension && (
+        {secondaryDimensionKey && (
           <XAxis
             interval={0}
-            dataKey={'dimension'}
+            dataKey={secondaryDimensionKey}
             tickLine={false}
             tick={SecondaryDimensionLabel}
             axisLine={false}

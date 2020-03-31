@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-rc.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.6...v0.9.0-rc.7) (2020-03-31)
+
+
+### Bug Fixes
+
+* **Charts - New:** make secondary dimension configurable ([#395](https://github.com/SAP/ui5-webcomponents-react/issues/395)) ([0a57b51](https://github.com/SAP/ui5-webcomponents-react/commit/0a57b517f9aae6d7b883df6b36549513a5d08f07))
+* **RTL:** add dir="rtl" to html tag when running in RTL ([#394](https://github.com/SAP/ui5-webcomponents-react/issues/394)) ([78c1f93](https://github.com/SAP/ui5-webcomponents-react/commit/78c1f9368a4ad4f005ff65986938dd7a83e7a389)), closes [#366](https://github.com/SAP/ui5-webcomponents-react/issues/366)
+
+
+
+
+
 # [0.9.0-rc.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.5...v0.9.0-rc.6) (2020-03-31)
 
 
