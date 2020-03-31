@@ -121,6 +121,7 @@ import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
 import { ThemeProvider } from './lib/ThemeProvider';
 import { Themes } from './lib/Themes';
+import { ThemingSupport } from './lib/ThemingSupport';
 import { TimePicker } from './lib/TimePicker';
 import { Timeline } from './lib/Timeline';
 import { TimelineItem } from './lib/TimelineItem';
@@ -255,6 +256,7 @@ export {
   TextArea,
   ThemeProvider,
   Themes,
+  ThemingSupport,
   TimePicker,
   Timeline,
   TimelineItem,

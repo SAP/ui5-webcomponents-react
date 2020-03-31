@@ -3,16 +3,19 @@ import { makeDecorator } from '@storybook/addons';
 import { addDecorator, addParameters } from '@storybook/react';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import '@ui5/webcomponents-base/dist/features/browsersupport/IE11';
+import '@ui5/webcomponents-fiori/dist/generated/json-imports/Themes';
 import '@ui5/webcomponents-react-base/polyfill/IE11';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { Themes } from '@ui5/webcomponents-react/lib/Themes';
+import '@ui5/webcomponents-react/lib/ThemingSupport';
+import '@ui5/webcomponents-theme-base/dist/Assets';
+import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import '@ui5/webcomponents/dist/generated/json-imports/i18n';
 import '@ui5/webcomponents/dist/generated/json-imports/Themes';
 import '@webcomponents/webcomponentsjs/webcomponents-bundle';
 import React, { useEffect } from 'react';
 import 'react-app-polyfill/ie11';
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 
 addParameters({
   options: {
@@ -44,16 +47,16 @@ const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
     setTheme(theme);
   }, [theme]);
 
-  return children;
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 const withQuery = makeDecorator({
-  name: 'withQuery',
-  parameterName: 'query',
+  name: 'themr',
+  parameterName: 'themr',
   wrapper: (getStory, context) => {
     return (
       <ThemeContainer
-        theme={select('Theme', [Themes.sap_fiori_3, Themes.sap_fiori_3_dark], Themes.sap_fiori_3)}
+        theme={select('Theme', Themes, Themes.sap_fiori_3)}
         contentDensity={select('ContentDensity', ContentDensity, ContentDensity.Cozy)}
         direction={select('Text Direction', ['LTR', 'RTL'], 'LTR')}
       >
@@ -63,14 +66,4 @@ const withQuery = makeDecorator({
   }
 });
 
-const themr = makeDecorator({
-  name: 'themr',
-  parameterName: 'themr',
-  skipIfNoParametersOrOptions: false,
-  wrapper: (getStory, context) => {
-    return <ThemeProvider withToastContainer>{getStory(context)}</ThemeProvider>;
-  }
-});
-
 addDecorator(withQuery);
-addDecorator(themr);
