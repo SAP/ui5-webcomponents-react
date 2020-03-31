@@ -1,5 +1,10 @@
 import { useCallback, useMemo } from 'react';
-import { DataLabel, SecondaryDimensionTicksXAxis, SecondaryDimensionTicksYAxis } from '../internal/CustomElements';
+import {
+  DataLabel,
+  SecondaryDimensionTicksXAxis,
+  SecondaryDimensionTicksYAxis,
+  YAxisTicks
+} from '../internal/CustomElements';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { renderAxisTicks } from '../util/Utils';
 
@@ -25,10 +30,12 @@ export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelForm
       : false;
   }, [dataLabelFormatter, dataLabelCustomElement, dataLabel]);
 
-export const useAxisLabel = (AxisFormatter, AxisUnit) => {
+export const useAxisLabel = (AxisFormatter, AxisUnit, yAxis?) => {
   return useCallback(
     (labelProps) => {
-      return renderAxisTicks(labelProps, AxisFormatter, AxisUnit);
+      return yAxis
+        ? YAxisTicks(labelProps, AxisFormatter, AxisUnit)
+        : renderAxisTicks(labelProps, AxisFormatter, AxisUnit);
     },
     [AxisFormatter, AxisUnit]
   );

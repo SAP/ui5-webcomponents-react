@@ -117,9 +117,18 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     true
   );
 
-  const marginChart = useChartMargin(dataset, yAxisFormatter, labelKey, chartConfig.margin, true);
+  const marginChart = useChartMargin(
+    dataset,
+    yAxisFormatter,
+    labelKey,
+    chartConfig.margin,
+    true,
+    secondaryDimensionKey,
+    chartConfig.zoomingTool
+  );
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const YAxisLabel = useAxisLabel(yAxisFormatter, chartConfig.yAxisUnit, true);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel(true, yAxisFormatter);
 
   return (
@@ -143,10 +152,10 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         />
         {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} type="number" tick={XAxisLabel} />}
         <YAxis
-          tickFormatter={yAxisFormatter}
           unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
+          tick={YAxisLabel}
           type="category"
           dataKey={labelKey}
           interval={0}
@@ -178,15 +187,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             onClick={onDataPointClickInternal}
           />
         ))}
-        {!noLegend && (
-          <Legend
-            wrapperStyle={{
-              paddingBottom: 20
-            }}
-            verticalAlign={chartConfig.legendPosition ?? 'top'}
-            onClick={onItemLegendClick}
-          />
-        )}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}

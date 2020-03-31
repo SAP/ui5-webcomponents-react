@@ -131,7 +131,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     yAxisFormatter,
     chartConfig.margin,
     false,
-    secondaryDimensionKey
+    secondaryDimensionKey,
+    chartConfig.zoomingTool
   );
 
   return (
@@ -198,15 +199,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             onClick={onDataPointClickInternal}
           />
         ))}
-        {!noLegend && (
-          <Legend
-            wrapperStyle={{
-              paddingBottom: 20
-            }}
-            verticalAlign={chartConfig.legendPosition ?? 'top'}
-            onClick={onItemLegendClick}
-          />
-        )}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}

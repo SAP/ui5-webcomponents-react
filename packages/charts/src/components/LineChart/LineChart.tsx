@@ -116,7 +116,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     labelKey,
     chartConfig.margin,
     false,
-    secondaryDimensionKey
+    secondaryDimensionKey,
+    chartConfig.zoomingTool
   );
 
   return (
@@ -181,15 +182,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             activeDot={{ onClick: onDataPointClickInternal }}
           />
         ))}
-        {!noLegend && (
-          <Legend
-            wrapperStyle={{
-              paddingBottom: 20
-            }}
-            verticalAlign={chartConfig.legendPosition ?? 'top'}
-            onClick={onItemLegendClick}
-          />
-        )}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}

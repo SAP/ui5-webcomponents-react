@@ -180,7 +180,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     labelKey,
     chartConfig.margin,
     false,
-    secondaryDimensionKey
+    secondaryDimensionKey,
+    chartConfig.zoomingTool
   );
 
   return (
@@ -240,15 +241,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           />
         )}
         <Tooltip />
-        {!noLegend && (
-          <Legend
-            onClick={onItemLegendClick}
-            verticalAlign={chartConfig.legendPosition ?? 'top'}
-            wrapperStyle={{
-              paddingBottom: 20
-            }}
-          />
-        )}
+        {!noLegend && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition ?? 'top'} />}
         {elements?.map((config, index) => {
           const {
             type,
