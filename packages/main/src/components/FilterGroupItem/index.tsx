@@ -40,6 +40,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   } = props;
 
   const passThroughProps = usePassThroughHtmlProps(props);
+  console.log()
 
   if (!mandatory && (!visible || (inFB && !visibleInFilterBar))) return null;
   return (

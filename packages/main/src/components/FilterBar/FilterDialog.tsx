@@ -23,6 +23,7 @@ import { addRef, renderSearchWithValue } from './utils';
 const useStyles = createComponentStyles(styles, { name: 'FilterBarDialog' });
 export const FilterDialog = (props) => {
   const {
+    filterBarRefs,
     open,
     handleDialogClose,
     children,
@@ -42,35 +43,37 @@ export const FilterDialog = (props) => {
   } = props;
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
-  const [refs, setRefs] = useState([]);
+  // const [refs, setRefs] = useState([]);
   const searchRef = useRef(null);
   const [activeFilters, setActiveFilters] = useState({});
+  console.log(filterBarRefs.current);
 
-  const initChildrenWithRef = useCallback(() => {
-    let refs = [];
-    const newChildren = children.map((child, index) => {
-      const childrenRef = (node) => {
-        refs.push({ node, key: child.key });
-        return node;
-      };
-      const filterChildren = child.props.children;
-      return cloneElement(child as ReactElement<any>, {
-        children: { ...filterChildren, ref: childrenRef }
-      });
-    });
-    setRefs(refs);
-    return newChildren;
-  }, []);
+  // const initChildrenWithRef = useCallback(() => {
+  //   let refs = [];
+  //   const newChildren = children.map((child, index) => {
+  //     const childrenRef = (node) => {
+  //       refs.push({ node, key: child.key });
+  //       return node;
+  //     };
+  //     const filterChildren = child.props.children;
+  //     return cloneElement(child as ReactElement<any>, {
+  //       children: { ...filterChildren, ref: childrenRef }
+  //     });
+  //   });
+  //   setRefs(refs);
+  //   return newChildren;
+  // }, []);
 
-  const [childrenWithNewRef, setChildrenWithRef] = useState(initChildrenWithRef);
+  // const [childrenWithNewRef, setChildrenWithRef] = useState(initChildrenWithRef);
 
-  useEffect(() => {
-    const visibleChildren = children.filter((child) => child.props.visible !== false);
-    setChildrenWithRef(visibleChildren);
-  }, [children, setChildrenWithRef]);
+  // useEffect(() => {
+  //   const visibleChildren = children.filter((child) => child.props.visible !== false);
+  //   setChildrenWithRef(visibleChildren);
+  // }, [children, setChildrenWithRef]);
 
   const handleSearch = useCallback(
     (e) => {
+      console.log(e);
       if (handleDialogSearch) {
         handleDialogSearch(enrichEventWithDetails(e, { value: e.detail.value }));
       }
@@ -78,20 +81,27 @@ export const FilterDialog = (props) => {
     },
     [setSearchString, handleDialogSearch]
   );
+  console.log(searchString);
   const handleSave = useCallback(
     (e) => {
       if (renderFBSearch) {
         handleSearchValueChange(searchRef.current?.children[1]._state?.value);
       }
-      handleDialogSave(
-        e,
-        addRef(childrenWithNewRef, refs, 'dialogRef'),
-        Object.keys(activeFilters).length > 0
-          ? Object.keys(activeFilters).map((item) => activeFilters[item])
-          : undefined
-      );
+      // handleDialogSave(
+      //   e,
+      //   addRef(childrenWithNewRef, refs, 'dialogRef'),
+      //   Object.keys(activeFilters).length > 0
+      //     ? Object.keys(activeFilters).map((item) => activeFilters[item])
+      //     : undefined
+      // );
     },
-    [renderFBSearch, handleSearchValueChange, searchRef, handleDialogSave, childrenWithNewRef, refs, activeFilters]
+    [
+      renderFBSearch,
+      handleSearchValueChange,
+      searchRef,
+      handleDialogSave,
+      /*childrenWithNewRef,*/ /* refs,*/ activeFilters
+    ]
   );
 
   const handleClose = useCallback(
@@ -165,15 +175,24 @@ export const FilterDialog = (props) => {
   );
 
   const renderChildren = useCallback(() => {
-    const currentChildren = childrenWithNewRef
-      .map((child) => {
-        if (child.props.label?.toLowerCase().includes(searchString.toLowerCase()) || searchString.length === 0) {
-          return child;
-        }
+    const currentChildren = Children.toArray(children)
+      .filter((item) => {
+        return (
+          (!!item?.props &&
+            item.props?.visible &&
+            item.props?.label?.toLowerCase().includes(searchString.toLowerCase())) ||
+          searchString.length === 0
+        );
       })
-      .filter(Boolean);
+      .map((child) => {
+        // if (child.props.label?.toLowerCase().includes(searchString.toLowerCase()) || searchString.length === 0) {
+        //   return child;
+        // }
+        return child;
+      });
+
     return currentChildren;
-  }, [childrenWithNewRef, searchString]);
+  }, [/*childrenWithNewRef,*/ children, searchString]);
 
   const handleCheckBoxChange = useCallback(
     (element, activeFilters) => (e) => {
@@ -199,6 +218,7 @@ export const FilterDialog = (props) => {
       .sort((x, y) => (x === 'default' ? -1 : y === 'role' ? 1 : 0))
       .map((item, index) => {
         const filters = groups[item].map((el) => {
+          console.log(el);
           return (
             <div className={classes.singleFilter} key={`${el.key}-container`}>
               {el}

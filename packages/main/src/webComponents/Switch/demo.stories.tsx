@@ -15,7 +15,9 @@ export const generatedDefaultStory = () => (
     textOn={text('textOn', 'Yes')}
     textOff={text('textOff', 'No')}
     graphical={boolean('graphical', false)}
-    onChange={action('onChange')}
+    onChange={(e) => {
+      console.log(e.parameters.checked);
+    }}
   />
 );
 

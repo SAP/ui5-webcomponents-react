@@ -97,40 +97,40 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [filterRefs, setFilterRefs] = useState([]);
+  // const [filterRefs, setFilterRefs] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const searchRef = useRef(null);
-
+  const filterRefs = useRef({});
   useEffect(() => {
     setShowFilters(useToolbar ? filterBarExpanded : true);
   }, [setShowFilters, useToolbar, filterBarExpanded]);
 
-  const initChildrenWithRef = useCallback(() => {
-    let innerFilterRefs = [];
-    const newChildren = Children.toArray(children)
-      .filter(Boolean)
-      .map((child, index) => {
-        const childrenRef = (node) => {
-          innerFilterRefs.push({ node, key: child.key });
-          return node;
-        };
-        const filterChildren = child.props.children;
-        return cloneElement(child as ReactElement<any>, {
-          children: {
-            ...filterChildren,
-            ref: childrenRef
-          }
-        });
-      });
-    setFilterRefs(innerFilterRefs);
-    return newChildren;
-  }, []);
+  // const initChildrenWithRef = useCallback(() => {
+  //   let innerFilterRefs = [];
+  //   const newChildren = Children.toArray(children)
+  //     .filter(Boolean)
+  //     .map((child, index) => {
+  //       const childrenRef = (node) => {
+  //         innerFilterRefs.push({ node, key: child.key });
+  //         return node;
+  //       };
+  //       const filterChildren = child.props.children;
+  //       return cloneElement(child as ReactElement<any>, {
+  //         children: {
+  //           ...filterChildren,
+  //           ref: childrenRef
+  //         }
+  //       });
+  //     });
+  //   setFilterRefs(innerFilterRefs);
+  //   return newChildren;
+  // }, []);
 
-  const [childrenWithRef, setChildrenWithRef] = useState(initChildrenWithRef);
+  // const [childrenWithRef, setChildrenWithRef] = useState(initChildrenWithRef);
 
-  useEffect(() => {
-    setChildrenWithRef(Children.toArray(children).filter(Boolean));
-  }, [children, setChildrenWithRef]);
+  // useEffect(() => {
+  //   setChildrenWithRef(Children.toArray(children).filter(Boolean));
+  // }, [children, setChildrenWithRef]);
 
   const classes = useStyles();
 
@@ -173,21 +173,21 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       if (onFiltersDialogSave) {
         onFiltersDialogSave(enrichEventWithDetails(e, { elements: childrenWithNewProps, toggledElements }));
       }
-      setChildrenWithRef(childrenWithNewProps);
+      // setChildrenWithRef(childrenWithNewProps);
       handleDialogClose(e);
     },
-    [setPropsOfChildren, handleToggleFilterVisible, setChildrenWithRef, setDialogOpen, onFiltersDialogSave]
+    [setPropsOfChildren, handleToggleFilterVisible, /* setChildrenWithRef,*/ setDialogOpen, onFiltersDialogSave]
   );
 
   const handleDialogOpen = useCallback(
     (e) => {
-      setChildrenWithRef(setPropsOfChildren(addRef(childrenWithRef, filterRefs, 'filterBarRef'), 'filterBarRef'));
+      // setChildrenWithRef(setPropsOfChildren(addRef(childrenWithRef, filterRefs, 'filterBarRef'), 'filterBarRef'));
       setDialogOpen(true);
       if (onFiltersDialogOpen) {
         onFiltersDialogOpen(enrichEventWithDetails(e));
       }
     },
-    [setChildrenWithRef, childrenWithRef, filterRefs, setDialogOpen, onFiltersDialogOpen]
+    [, /*setChildrenWithRef, childrenWithRef,*/ /*filterRefs*/ setDialogOpen, onFiltersDialogOpen]
   );
 
   const handleDialogClose = useCallback(
@@ -214,14 +214,24 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   ]);
 
   const renderChildren = useCallback(() => {
+    // filterRefs.current = {};
     let childProps = { considerGroupName: considerGroupName, inFB: true };
-    return childrenWithRef.map((child) => {
-      if (filterContainerWidth) {
-        childProps.style = { width: filterContainerWidth, ...child.props.style };
-      }
-      return cloneElement(child as ReactElement<any>, childProps);
-    });
-  }, [filterContainerWidth, considerGroupName, childrenWithRef]);
+    return Children.toArray(children)
+      .filter((item) => {
+        return !!item?.props && item?.props.visible && item.props?.visibleInFilterBar;
+      })
+      .map((child) => {
+        if (filterContainerWidth) {
+          childProps.style = { width: filterContainerWidth, ...child.props.style };
+        }
+        return cloneElement(child as ReactElement<any>, {
+          ...childProps,
+          ref: (node) => {
+            filterRefs.current[child.key] = node;
+          }
+        });
+      });
+  }, [filterContainerWidth, considerGroupName /*, childrenWithRef*/, children]);
 
   const handleSearchValueChange = useCallback(
     (newVal) => {
@@ -257,6 +267,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     <>
       {dialogOpen && showFilterConfiguration && (
         <FilterDialog
+          filterBarRefs={filterRefs}
           open={dialogOpen}
           handleDialogClose={handleDialogClose}
           onGo={onGo}
@@ -274,7 +285,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           showGoButton={showGo}
           handleDialogSearch={onFiltersDialogSearch}
         >
-          {childrenWithRef}
+          {children}
         </FilterDialog>
       )}
       <div ref={ref} className={classes.outerContainer} {...passThroughProps}>

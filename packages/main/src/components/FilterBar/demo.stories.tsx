@@ -21,20 +21,12 @@ const variantItems = [
 
 const renderVariants = () => {
   return (
-    <VariantManagement
-      style={{ width: '300px', height: 'auto' }}
-      initialSelectedKey="2"
-      variantItems={variantItems}
-    />
+    <VariantManagement style={{ width: '300px', height: 'auto' }} initialSelectedKey="2" variantItems={variantItems} />
   );
 };
 
 const renderSearch = () => {
-  return (
-    <Input
-      placeholder={'Search'}
-    />
-  );
+  return <Input placeholder={'Search'} />;
 };
 
 export const renderDefaultStory = () => {
@@ -123,13 +115,18 @@ export const renderStoryWithFiltersDialog = () => {
       onGo={action('onGo')}
       onRestore={action('onRestore')}
     >
-      <FilterGroupItem label="Input" loading={boolean('FilterGroupItem: loading', false)}>
+      <FilterGroupItem
+        label="Input"
+        loading={boolean('FilterGroupItem: loading', false)}
+        visibleInFilterBar={boolean('FilterGroupItem: visibleInFilterBar', true)}
+      >
         <Input placeholder="Placeholder" />
       </FilterGroupItem>
       <FilterGroupItem
         label="Switch"
         groupName={text('FilterGroupItem: groupName', 'Custom Group')}
         loading={boolean('FilterGroupItem: loading', true)}
+        visible={boolean('FilterGroupItem: visible', true)}
       >
         <Switch />
       </FilterGroupItem>
