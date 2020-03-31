@@ -149,13 +149,16 @@ export const FilterDialog = (props) => {
 
   const renderChildren = useCallback(() => {
     const currentChildren = children
-      .filter(
-        (item) =>
+      .filter((item) => {
+        if (item.type.displayName !== 'FilterGroupItem') return true; //needed for deprecated FilterItem or custom elements
+        return (
           !!item?.props &&
           item.props?.visible &&
           (item.props?.label?.toLowerCase().includes(searchString.toLowerCase()) || searchString.length === 0)
-      )
+        );
+      })
       .map((child) => {
+        if (child.type.displayName !== 'FilterGroupItem') return child; //needed for deprecated FilterItem or custom elements
         const filterBarItemRef = filterBarRefs.current[child.key];
         let filterItemProps = {};
         if (filterBarItemRef) {
@@ -206,9 +209,9 @@ export const FilterDialog = (props) => {
             <div className={classes.singleFilter} key={`${el.key}-container`}>
               {el}
               <CheckBox
-                checked={el.props.visibleInFilterBar || el.props.mandatory}
+                checked={el.props.visibleInFilterBar || el.props.mandatory || el.type.displayName !== 'FilterGroupItem'}
                 onChange={handleCheckBoxChange(el, toggledFilters)}
-                disabled={el.props.mandatory}
+                disabled={el.props.mandatory || el.type.displayName !== 'FilterGroupItem'}
               />
             </div>
           );

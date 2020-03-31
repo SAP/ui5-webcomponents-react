@@ -40,7 +40,6 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   } = props;
 
   const passThroughProps = usePassThroughHtmlProps(props);
-  console.log()
 
   if (!mandatory && (!visible || (inFB && !visibleInFilterBar))) return null;
   return (
@@ -68,8 +67,11 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   );
 });
 
+FilterGroupItem.displayName = 'FilterGroupItem';
+
 FilterGroupItem.defaultProps = {
   groupName: 'default',
   visible: true,
-  visibleInFilterBar: true
+  visibleInFilterBar: true,
+  mandatory: false
 };
