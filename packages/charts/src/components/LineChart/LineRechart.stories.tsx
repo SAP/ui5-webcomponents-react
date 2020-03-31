@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { LineChart } from '@ui5/webcomponents-react-charts/lib/next/LineChart';
 import React from 'react';
-import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts - Unstable /  LineChart',
@@ -43,6 +43,27 @@ export const renderStoryWithCustomColor = () => (
 
 renderStoryWithCustomColor.story = {
   name: 'With custom color'
+};
+
+export const withSecondaryDimension = () => (
+  <LineChart
+    onDataPointClick={action('onDataPointClick')}
+    labelKey={'name'}
+    dataset={secondaryDimensionDataSet}
+    secondaryDimensionKey={'dimension'}
+    color={'red'}
+    width={'95%'}
+    height={'60vh'}
+    chartConfig={{
+      dataLabel: true,
+      strokeWidth: 2,
+      strokeOpacity: 0.5
+    }}
+  />
+);
+
+withSecondaryDimension.story = {
+  name: 'With secondary dimension'
 };
 
 export const renderLabelStory = () => {

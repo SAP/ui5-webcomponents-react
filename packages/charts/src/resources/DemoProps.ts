@@ -186,3 +186,90 @@ export const secondaryDimensionDataSet = [
     dimension: 'Pipeline Health Manager'
   }
 ];
+
+export const secondaryDimensionComposedDataSet = [
+  {
+    name: 'January',
+    users: 100,
+    sessions: 300,
+    volume: 756,
+    dimension: 'Harmnony Insight'
+  },
+  {
+    name: 'February',
+    users: 230,
+    sessions: 330,
+    volume: 880,
+    dimension: 'Harmnony Insight'
+  },
+  {
+    name: 'March',
+    users: 240,
+    sessions: 404,
+    volume: 700,
+    dimension: 'C4S Components'
+  },
+  {
+    name: 'April',
+    users: 280,
+    sessions: 80,
+    volume: 604,
+    dimension: 'C4S Components'
+  },
+  {
+    name: 'May',
+    users: 100,
+    sessions: 300,
+    volume: 756,
+    dimension: 'C4S Components'
+  },
+  {
+    name: 'June',
+    users: 230,
+    sessions: 330,
+    volume: 880,
+    dimension: 'Intelligent Workplace'
+  },
+  {
+    name: 'July',
+    users: 20,
+    sessions: 470,
+    volume: 450,
+    dimension: 'Intelligent Workplace'
+  },
+  {
+    name: 'August',
+    users: 220,
+    sessions: 180,
+    volume: 104,
+    dimension: 'Intelligent Workplace'
+  },
+  {
+    name: 'September',
+    users: 200,
+    sessions: 360,
+    volume: 879,
+    dimension: 'Intelligent Workplace'
+  },
+  {
+    name: 'October',
+    users: 250,
+    sessions: 500,
+    volume: 200,
+    dimension: 'Pipeline Health Manager'
+  },
+  {
+    name: 'November',
+    users: 240,
+    sessions: 404,
+    volume: 700,
+    dimension: 'Pipeline Health Manager'
+  },
+  {
+    name: 'December',
+    users: 280,
+    sessions: 80,
+    volume: 604,
+    dimension: 'Pipeline Health Manager'
+  }
+];

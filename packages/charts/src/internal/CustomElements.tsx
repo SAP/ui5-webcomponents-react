@@ -10,7 +10,7 @@ export const XAxisTicks = (props, formatter, unit = '', rotate) => {
     ? formatter(payload.value).length > 10
       ? `${formatter(payload.value).slice(0, 8)}...`
       : formatter(payload.value)
-    : payload.value;
+    : formatter(payload.value);
   return (
     <g transform={`translate(${x},${y + 10})`}>
       <text
