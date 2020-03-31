@@ -11,7 +11,7 @@ export default {
 
 export const generatedDefaultStory = () => (
   <Button
-    design={select('design', ButtonDesign, ButtonDesign['Default'])}
+    design={select('design', ButtonDesign, ButtonDesign.Default)}
     disabled={boolean('disabled', false)}
     icon={text('icon', 'add')}
     iconEnd={boolean('iconEnd', false)}
