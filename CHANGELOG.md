@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-rc.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.5...v0.9.0-rc.6) (2020-03-31)
+
+
+### Bug Fixes
+
+* **Charts - New:** Respect formatter for calculating label sizes ([#389](https://github.com/SAP/ui5-webcomponents-react/issues/389)) ([1acf528](https://github.com/SAP/ui5-webcomponents-react/commit/1acf52883bf44209ecbfe8bbe7eb21c0e201273b))
+* **ObjectPage:** Don't wrap title and subtitle ([#390](https://github.com/SAP/ui5-webcomponents-react/issues/390)) ([193e8ef](https://github.com/SAP/ui5-webcomponents-react/commit/193e8efd32ff2d995f7f9231f16e63b924f75cab)), closes [#372](https://github.com/SAP/ui5-webcomponents-react/issues/372)
+* **ThemeProvider:** Add Typing for JSSTheme ([98cb810](https://github.com/SAP/ui5-webcomponents-react/commit/98cb81080db1cb800b42af292023b4bd8581de17))
+
+
+### Features
+
+* **AnalyticalTable:** Add Highlight Column ([#391](https://github.com/SAP/ui5-webcomponents-react/issues/391)) ([69e648a](https://github.com/SAP/ui5-webcomponents-react/commit/69e648a3762f92f63108d04ffdc3af56194c4db4)), closes [#312](https://github.com/SAP/ui5-webcomponents-react/issues/312)
+* **Charts -New:** add secondary dimension in charts ([#393](https://github.com/SAP/ui5-webcomponents-react/issues/393)) ([64c5d79](https://github.com/SAP/ui5-webcomponents-react/commit/64c5d79ab7dec6219d0adf8a13ec231f21ebd28a))
+
+
+
+
+
 # [0.9.0-rc.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.4...v0.9.0-rc.5) (2020-03-25)
 
 
