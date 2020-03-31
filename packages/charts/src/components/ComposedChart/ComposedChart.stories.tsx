@@ -1,7 +1,11 @@
 import { action } from '@storybook/addon-actions';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/next/ComposedChart';
 import React from 'react';
-import { complexDataSet } from '../../resources/DemoProps';
+import {
+  complexDataSet,
+  secondaryDimensionComposedDataSet,
+  secondaryDimensionDataSet
+} from '../../resources/DemoProps';
 
 export const renderComposedChart = () => (
   <ComposedChart
@@ -29,6 +33,35 @@ export const renderComposedChart = () => (
 
 renderComposedChart.story = {
   name: 'Default'
+};
+
+export const withSecondaryDimension = () => (
+  <ComposedChart
+    width={'95%'}
+    height={'500px'}
+    secondaryDimensionKey={'dimension'}
+    dataset={secondaryDimensionComposedDataSet}
+    onLegendClick={action('onLegendClick')}
+    onDataPointClick={action('onDataPointClick')}
+    elements={[
+      {
+        type: 'bar',
+        accessor: 'sessions'
+      },
+      {
+        type: 'area',
+        accessor: 'users'
+      },
+      {
+        type: 'line',
+        accessor: 'volume'
+      }
+    ]}
+  />
+);
+
+withSecondaryDimension.story = {
+  name: 'With secondary dimension'
 };
 
 export const renderComposedChartPlaceholder = () => (

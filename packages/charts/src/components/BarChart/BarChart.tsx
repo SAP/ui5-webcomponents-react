@@ -33,6 +33,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     color,
     loading,
     labelKey = 'name',
+    secondaryDimensionKey,
     dataKeys,
     width = '100%',
     height = '500px',
@@ -76,7 +77,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, secondaryDimensionKey);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
@@ -121,8 +122,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel(true, yAxisFormatter);
 
-  const secondaryDimension = dataset && dataset[0].hasOwnProperty('dimension');
-
   return (
     <ChartContainer
       dataset={dataset}
@@ -153,7 +152,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           interval={0}
           yAxisId={0}
         />
-        {secondaryDimension && (
+        {secondaryDimensionKey && (
           <YAxis
             interval={0}
             type={'category'}

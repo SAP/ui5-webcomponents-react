@@ -139,7 +139,8 @@ export const withSecondardDimension = () => (
     onDataPointClick={action('onDataPointClick')}
     dataset={secondaryDimensionDataSet}
     labelKey={'name'}
-    color={'red'}
+    secondaryDimensionKey={'dimension'}
+    color={'lightblue'}
     width={text('width', '95%')}
     height={text('height', '70vh')}
     chartConfig={{ dataLabel: true, barSize: 20 }}

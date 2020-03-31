@@ -33,6 +33,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     color,
     loading,
     labelKey = 'name',
+    secondaryDimensionKey,
     width = '100%',
     height = '300px',
     dataset,
@@ -83,7 +84,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, secondaryDimensionKey);
 
   const colorSecondY = useMemo(
     () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
@@ -122,11 +123,16 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
-  const secondaryDimension = dataset && dataset[0].hasOwnProperty('dimension');
+  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
-  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit, secondaryDimension);
-
-  const marginChart = useChartMargin(dataset, labelKey, yAxisFormatter, chartConfig.margin, false, secondaryDimension);
+  const marginChart = useChartMargin(
+    dataset,
+    labelKey,
+    yAxisFormatter,
+    chartConfig.margin,
+    false,
+    secondaryDimensionKey
+  );
 
   return (
     <ChartContainer
@@ -148,7 +154,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
         {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} tick={XAxisLabel} dataKey={labelKey} xAxisId={0} />}
-        {secondaryDimension && (
+        {secondaryDimensionKey && (
           <XAxis
             interval={0}
             dataKey={'dimension'}

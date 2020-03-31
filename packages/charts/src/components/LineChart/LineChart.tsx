@@ -33,6 +33,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     color,
     loading,
     labelKey = 'name',
+    secondaryDimensionKey,
     width = '100%',
     height = '500px',
     dataset,
@@ -79,7 +80,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, secondaryDimensionKey);
 
   const colorSecondY = useMemo(
     () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
@@ -109,9 +110,14 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
-  const secondaryDimension = dataset && dataset[0].hasOwnProperty('dimension');
-
-  const marginChart = useChartMargin(dataset, yAxisFormatter, labelKey, chartConfig.margin);
+  const marginChart = useChartMargin(
+    dataset,
+    yAxisFormatter,
+    labelKey,
+    chartConfig.margin,
+    false,
+    secondaryDimensionKey
+  );
 
   return (
     <ChartContainer
@@ -133,10 +139,10 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
         {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} xAxisId={0} interval={0} tick={XAxisLabel} />}
-        {secondaryDimension && (
+        {secondaryDimensionKey && (
           <XAxis
             interval={0}
-            dataKey={'dimension'}
+            dataKey={secondaryDimensionKey}
             tickLine={false}
             tick={SecondaryDimensionLabel}
             axisLine={false}
