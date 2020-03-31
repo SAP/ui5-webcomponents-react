@@ -24,7 +24,7 @@ import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
-import { addRef, renderSearchWithValue, setPropsOfChildren } from './utils';
+import { filterValue, renderSearchWithValue } from './utils';
 
 export interface FilterBarPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
@@ -47,6 +47,7 @@ export interface FilterBarPropTypes extends CommonProps {
   onToggleFilters?: (event: CustomEvent<{ visible?: boolean }>) => void;
   onFiltersDialogSave?: (event: CustomEvent<{ elements?: unknown; toggledElements?: unknown }>) => void;
   onFiltersDialogClear?: (event: CustomEvent) => void;
+  onFiltersDialogCancel?: (event: CustomEvent) => void;
   onFiltersDialogOpen?: (event: CustomEvent) => void;
   onFiltersDialogClose?: (event: CustomEvent) => void;
   onFiltersDialogSelectionChange?: (event: CustomEvent<{ element?: unknown; checked?: unknown }>) => void;
@@ -85,6 +86,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
     onToggleFilters,
     onFiltersDialogOpen,
+    onFiltersDialogCancel,
     onFiltersDialogClose,
     onFiltersDialogSave,
     onFiltersDialogClear,
@@ -97,40 +99,15 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
-  // const [filterRefs, setFilterRefs] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const searchRef = useRef(null);
   const filterRefs = useRef({});
+  const [dialogRefs, setDialogRefs] = useState({});
+  const [toggledFilters, setToggledFilters] = useState({});
+
   useEffect(() => {
     setShowFilters(useToolbar ? filterBarExpanded : true);
   }, [setShowFilters, useToolbar, filterBarExpanded]);
-
-  // const initChildrenWithRef = useCallback(() => {
-  //   let innerFilterRefs = [];
-  //   const newChildren = Children.toArray(children)
-  //     .filter(Boolean)
-  //     .map((child, index) => {
-  //       const childrenRef = (node) => {
-  //         innerFilterRefs.push({ node, key: child.key });
-  //         return node;
-  //       };
-  //       const filterChildren = child.props.children;
-  //       return cloneElement(child as ReactElement<any>, {
-  //         children: {
-  //           ...filterChildren,
-  //           ref: childrenRef
-  //         }
-  //       });
-  //     });
-  //   setFilterRefs(innerFilterRefs);
-  //   return newChildren;
-  // }, []);
-
-  // const [childrenWithRef, setChildrenWithRef] = useState(initChildrenWithRef);
-
-  // useEffect(() => {
-  //   setChildrenWithRef(Children.toArray(children).filter(Boolean));
-  // }, [children, setChildrenWithRef]);
 
   const classes = useStyles();
 
@@ -151,43 +128,26 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     [showFilters, onToggleFilters, setShowFilters]
   );
 
-  const handleToggleFilterVisible = useCallback((elements, children) => {
-    const newChildren = children.map((child) => {
-      const currentChild = elements.filter((item) => item.element.key === child.key)[0];
-      if (currentChild) {
-        return cloneElement(child as ReactElement<any>, {
-          visibleInFilterBar: currentChild.event.detail.checked
-        });
-      }
-      return child;
-    });
-    return newChildren;
-  }, []);
-
   const handleDialogSave = useCallback(
-    (e, currentChildren, toggledElements) => {
-      let childrenWithNewProps = setPropsOfChildren(currentChildren, 'dialogRef');
-      if (toggledElements) {
-        childrenWithNewProps = handleToggleFilterVisible(toggledElements, childrenWithNewProps);
-      }
+    (e, dialogRefs, toggledFilters) => {
+      setDialogRefs(dialogRefs);
+      setToggledFilters(toggledFilters);
       if (onFiltersDialogSave) {
-        onFiltersDialogSave(enrichEventWithDetails(e, { elements: childrenWithNewProps, toggledElements }));
+        onFiltersDialogSave(enrichEventWithDetails(e));
       }
-      // setChildrenWithRef(childrenWithNewProps);
       handleDialogClose(e);
     },
-    [setPropsOfChildren, handleToggleFilterVisible, /* setChildrenWithRef,*/ setDialogOpen, onFiltersDialogSave]
+    [setDialogOpen, setDialogRefs, setToggledFilters, onFiltersDialogSave]
   );
 
   const handleDialogOpen = useCallback(
     (e) => {
-      // setChildrenWithRef(setPropsOfChildren(addRef(childrenWithRef, filterRefs, 'filterBarRef'), 'filterBarRef'));
       setDialogOpen(true);
       if (onFiltersDialogOpen) {
         onFiltersDialogOpen(enrichEventWithDetails(e));
       }
     },
-    [, /*setChildrenWithRef, childrenWithRef,*/ /*filterRefs*/ setDialogOpen, onFiltersDialogOpen]
+    [setDialogOpen, onFiltersDialogOpen]
   );
 
   const handleDialogClose = useCallback(
@@ -210,13 +170,26 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     'onFiltersDialogSelectionChange',
     'onFiltersDialogSearch',
     'onGo',
-    'onRestore'
+    'onRestore',
+    'onFiltersDialogCancel'
   ]);
 
+  const safeChildren = useCallback(() => {
+    if (Object.keys(toggledFilters).length > 0) {
+      return Children.toArray(children).map((child) => {
+        if (toggledFilters?.[child.key] !== undefined) {
+          return cloneElement(child, { visibleInFilterBar: toggledFilters[child.key] });
+        }
+        return child;
+      });
+    }
+    return Children.toArray(children);
+  }, [toggledFilters, children]);
+
   const renderChildren = useCallback(() => {
-    // filterRefs.current = {};
     let childProps = { considerGroupName: considerGroupName, inFB: true };
-    return Children.toArray(children)
+
+    return safeChildren()
       .filter((item) => {
         return !!item?.props && item?.props.visible && item.props?.visibleInFilterBar;
       })
@@ -224,14 +197,28 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         if (filterContainerWidth) {
           childProps.style = { width: filterContainerWidth, ...child.props.style };
         }
+        let filterItemProps = {};
+        if (Object.keys(dialogRefs).length > 0) {
+          const dialogItemRef = dialogRefs[child.key];
+          if (dialogItemRef) {
+            filterItemProps = filterValue(dialogItemRef, child);
+          }
+        }
         return cloneElement(child as ReactElement<any>, {
           ...childProps,
-          ref: (node) => {
-            filterRefs.current[child.key] = node;
+          children: {
+            ...child.props.children,
+            props: {
+              ...child.props.children.props,
+              ...filterItemProps
+            },
+            ref: (node) => {
+              filterRefs.current[child.key] = node;
+            }
           }
         });
       });
-  }, [filterContainerWidth, considerGroupName /*, childrenWithRef*/, children]);
+  }, [filterContainerWidth, considerGroupName, children, dialogRefs, toggledFilters]);
 
   const handleSearchValueChange = useCallback(
     (newVal) => {
@@ -262,7 +249,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     },
     [handleRestoreFilters]
   );
-
   return (
     <>
       {dialogOpen && showFilterConfiguration && (
@@ -278,14 +264,14 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           showRestoreButton={showRestoreButton}
           showSearch={showSearchOnFiltersDialog}
           renderFBSearch={renderSearch}
-          handleToggleFilterVisible={handleToggleFilterVisible}
           handleClearFilters={onFiltersDialogClear}
           handleSelectionChange={onFiltersDialogSelectionChange}
           handleDialogSave={handleDialogSave}
           showGoButton={showGo}
           handleDialogSearch={onFiltersDialogSearch}
+          handleDialogCancel={onFiltersDialogCancel}
         >
-          {children}
+          {safeChildren()}
         </FilterDialog>
       )}
       <div ref={ref} className={classes.outerContainer} {...passThroughProps}>
@@ -353,6 +339,7 @@ FilterBar.defaultProps = {
   loading: false,
   onToggleFilters: null,
   onFiltersDialogOpen: null,
+  onFiltersDialogCancel: null,
   onFiltersDialogClose: null,
   onFiltersDialogSave: null,
   onFiltersDialogClear: null,

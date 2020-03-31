@@ -16,9 +16,9 @@ import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import React, { Children, cloneElement, ReactElement, useCallback, useRef, useState } from 'react';
 import styles from './FilterBarDialog.jss';
-import { addRef, renderSearchWithValue } from './utils';
+import { filterValue, renderSearchWithValue } from './utils';
 
 const useStyles = createComponentStyles(styles, { name: 'FilterBarDialog' });
 export const FilterDialog = (props) => {
@@ -39,69 +39,32 @@ export const FilterDialog = (props) => {
     handleSearchValueChange,
     onGo,
     handleSelectionChange,
-    handleDialogSearch
+    handleDialogSearch,
+    handleDialogCancel
   } = props;
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
-  // const [refs, setRefs] = useState([]);
   const searchRef = useRef(null);
-  const [activeFilters, setActiveFilters] = useState({});
-  console.log(filterBarRefs.current);
-
-  // const initChildrenWithRef = useCallback(() => {
-  //   let refs = [];
-  //   const newChildren = children.map((child, index) => {
-  //     const childrenRef = (node) => {
-  //       refs.push({ node, key: child.key });
-  //       return node;
-  //     };
-  //     const filterChildren = child.props.children;
-  //     return cloneElement(child as ReactElement<any>, {
-  //       children: { ...filterChildren, ref: childrenRef }
-  //     });
-  //   });
-  //   setRefs(refs);
-  //   return newChildren;
-  // }, []);
-
-  // const [childrenWithNewRef, setChildrenWithRef] = useState(initChildrenWithRef);
-
-  // useEffect(() => {
-  //   const visibleChildren = children.filter((child) => child.props.visible !== false);
-  //   setChildrenWithRef(visibleChildren);
-  // }, [children, setChildrenWithRef]);
+  const [toggledFilters, setToggledFilters] = useState({});
+  const dialogRefs = useRef({});
 
   const handleSearch = useCallback(
     (e) => {
-      console.log(e);
       if (handleDialogSearch) {
-        handleDialogSearch(enrichEventWithDetails(e, { value: e.detail.value }));
+        handleDialogSearch(enrichEventWithDetails(e, { value: e.target.value }));
       }
-      setSearchString(e.detail.value);
+      setSearchString(e.target.value);
     },
     [setSearchString, handleDialogSearch]
   );
-  console.log(searchString);
   const handleSave = useCallback(
     (e) => {
       if (renderFBSearch) {
         handleSearchValueChange(searchRef.current?.children[1]._state?.value);
       }
-      // handleDialogSave(
-      //   e,
-      //   addRef(childrenWithNewRef, refs, 'dialogRef'),
-      //   Object.keys(activeFilters).length > 0
-      //     ? Object.keys(activeFilters).map((item) => activeFilters[item])
-      //     : undefined
-      // );
+      handleDialogSave(e, dialogRefs.current, toggledFilters);
     },
-    [
-      renderFBSearch,
-      handleSearchValueChange,
-      searchRef,
-      handleDialogSave,
-      /*childrenWithNewRef,*/ /* refs,*/ activeFilters
-    ]
+    [renderFBSearch, handleSearchValueChange, searchRef, handleDialogSave, toggledFilters]
   );
 
   const handleClose = useCallback(
@@ -132,6 +95,16 @@ export const FilterDialog = (props) => {
     [handleRestoreFilters]
   );
 
+  const handleCancel = useCallback(
+    (e) => {
+      if (handleDialogCancel) {
+        handleDialogCancel(enrichEventWithDetails(e));
+      }
+      handleDialogClose(e);
+    },
+    [handleDialogCancel]
+  );
+
   const renderFooter = useCallback(() => {
     return (
       <Bar
@@ -146,7 +119,7 @@ export const FilterDialog = (props) => {
             {showClearButton && <Button onClick={handleClearFilters}>Clear</Button>}
             {showRestoreButton && <Button onClick={handleRestore}>Restore</Button>}
             <Button onClick={handleSave}>Save</Button>
-            <Button design={ButtonDesign.Transparent} onClick={handleClose}>
+            <Button design={ButtonDesign.Transparent} onClick={handleCancel}>
               Cancel
             </Button>
           </FlexBox>
@@ -175,33 +148,44 @@ export const FilterDialog = (props) => {
   );
 
   const renderChildren = useCallback(() => {
-    const currentChildren = Children.toArray(children)
-      .filter((item) => {
-        return (
-          (!!item?.props &&
-            item.props?.visible &&
-            item.props?.label?.toLowerCase().includes(searchString.toLowerCase())) ||
-          searchString.length === 0
-        );
-      })
+    const currentChildren = children
+      .filter(
+        (item) =>
+          !!item?.props &&
+          item.props?.visible &&
+          (item.props?.label?.toLowerCase().includes(searchString.toLowerCase()) || searchString.length === 0)
+      )
       .map((child) => {
-        // if (child.props.label?.toLowerCase().includes(searchString.toLowerCase()) || searchString.length === 0) {
-        //   return child;
-        // }
-        return child;
+        const filterBarItemRef = filterBarRefs.current[child.key];
+        let filterItemProps = {};
+        if (filterBarItemRef) {
+          filterItemProps = filterValue(filterBarItemRef, child);
+        }
+        return cloneElement(child as ReactElement<any>, {
+          children: {
+            ...child.props.children,
+            props: {
+              ...child.props.children.props,
+              ...filterItemProps
+            },
+            ref: (node) => {
+              dialogRefs.current[child.key] = node;
+            }
+          }
+        });
       });
 
     return currentChildren;
-  }, [/*childrenWithNewRef,*/ children, searchString]);
+  }, [children, searchString, filterBarRefs]);
 
   const handleCheckBoxChange = useCallback(
-    (element, activeFilters) => (e) => {
+    (element, toggledFilters) => (e) => {
       if (handleSelectionChange) {
-        handleSelectionChange(enrichEventWithDetails(e, { element: { event: e, element }, checked: e.target.checked }));
+        handleSelectionChange(enrichEventWithDetails(e, { element, checked: e.target.checked }));
       }
-      setActiveFilters({ ...activeFilters, [element.key]: { event: e, element } });
+      setToggledFilters({ ...toggledFilters, [element.key]: e.target.checked });
     },
-    [setActiveFilters, handleSelectionChange]
+    [setToggledFilters, handleSelectionChange]
   );
 
   const renderGroups = useCallback(() => {
@@ -218,13 +202,12 @@ export const FilterDialog = (props) => {
       .sort((x, y) => (x === 'default' ? -1 : y === 'role' ? 1 : 0))
       .map((item, index) => {
         const filters = groups[item].map((el) => {
-          console.log(el);
           return (
             <div className={classes.singleFilter} key={`${el.key}-container`}>
               {el}
               <CheckBox
                 checked={el.props.visibleInFilterBar || el.props.mandatory}
-                onChange={handleCheckBoxChange(el, activeFilters)}
+                onChange={handleCheckBoxChange(el, toggledFilters)}
                 disabled={el.props.mandatory}
               />
             </div>
@@ -242,7 +225,7 @@ export const FilterDialog = (props) => {
           </div>
         );
       });
-  }, [renderChildren, activeFilters]);
+  }, [renderChildren, toggledFilters]);
 
   return (
     <Dialog open={open} onAfterClose={handleClose} header={renderHeader()} footer={renderFooter()}>
