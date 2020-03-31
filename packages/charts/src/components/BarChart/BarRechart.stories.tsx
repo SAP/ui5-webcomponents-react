@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
 import React from 'react';
-import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts - Unstable /  BarChart',
@@ -132,4 +132,20 @@ export const withReferenceLineStory = () => (
 
 withReferenceLineStory.story = {
   name: 'With reference line'
+};
+
+export const withSecondardDimension = () => (
+  <BarChart
+    onDataPointClick={action('onDataPointClick')}
+    dataset={secondaryDimensionDataSet}
+    labelKey={'name'}
+    color={'red'}
+    width={text('width', '95%')}
+    height={text('height', '70vh')}
+    chartConfig={{ dataLabel: true, barSize: 20 }}
+  />
+);
+
+withSecondardDimension.story = {
+  name: 'With secondary dimension'
 };

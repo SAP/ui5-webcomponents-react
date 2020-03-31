@@ -19,7 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
+import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
 
 type BarChartProps = RechartBaseProps;
@@ -41,7 +41,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     onDataPointClick,
     onLegendClick,
     xAxisFormatter = (el) => el,
-    yAxisFormatter = (el) => el,
+    yAxisFormatter = (el) => formatYAxisTicks(el),
     dataLabelFormatter = (d) => d,
     dataLabelCustomElement = undefined,
     chartConfig = {
@@ -53,7 +53,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       gridStroke: ThemingParameters.sapList_BorderColor,
       gridHorizontal: true,
       gridVertical: false,
-      legendPosition: 'bottom',
+      legendPosition: 'top',
       barSize: 10,
       barGap: 3,
       zoomingTool: false,
@@ -79,6 +79,15 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
+
+  const formatYAxisTicks = (tick) => {
+    const splitTick = tick.split(' ');
+    return splitTick.length > 3
+      ? `${splitTick.slice(0, 3).join(' ')}...`
+      : tick.length > 11
+      ? `${tick.slice(0, 12)}...`
+      : tick;
+  };
 
   const onDataPointClickInternal = useCallback(
     (payload, i, event) => {
@@ -110,6 +119,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const marginChart = useChartMargin(dataset, yAxisFormatter, labelKey, chartConfig.margin, true);
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const SecondaryDimensionLabel = useSecondaryDimensionLabel(true, yAxisFormatter);
+
+  const secondaryDimension = dataset && dataset[0].hasOwnProperty('dimension');
 
   return (
     <ChartContainer
@@ -128,7 +140,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         <CartesianGrid
           vertical={chartConfig.gridVertical ?? false}
           horizontal={chartConfig.gridHorizontal}
-          stroke={chartConfig.gridStroke}
+          stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
         {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} type="number" tick={XAxisLabel} />}
         <YAxis
@@ -139,7 +151,19 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           type="category"
           dataKey={labelKey}
           interval={0}
+          yAxisId={0}
         />
+        {secondaryDimension && (
+          <YAxis
+            interval={0}
+            type={'category'}
+            dataKey={'dimension'}
+            tickLine={false}
+            tick={SecondaryDimensionLabel}
+            axisLine={false}
+            yAxisId={1}
+          />
+        )}
         {currentDataKeys.map((key, index) => (
           <Bar
             stackId={chartConfig.stacked ? 'A' : undefined}
@@ -158,9 +182,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         {!noLegend && (
           <Legend
             wrapperStyle={{
-              paddingTop: 20
+              paddingBottom: 20
             }}
-            verticalAlign={chartConfig.legendPosition}
+            verticalAlign={chartConfig.legendPosition ?? 'top'}
             onClick={onItemLegendClick}
           />
         )}

@@ -57,7 +57,7 @@ export const renderComposedStackedChart = () => (
       xAxisVisible: true,
       gridVertical: false,
       gridHorizontal: true,
-      legendPosition: 'bottom',
+      legendPosition: 'top',
       zoomingTool: true,
       stacked: true,
       dataLabel: true,

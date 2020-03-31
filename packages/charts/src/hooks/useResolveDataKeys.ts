@@ -7,7 +7,7 @@ export const useResolveDataKeys = (dataKeys, labelKey, dataset): string[] => {
       return dataKeys;
     }
     if (dataset && dataset[0]) {
-      return Object.keys(dataset[0]).filter((key) => key !== labelKey);
+      return Object.keys(dataset[0]).filter((key) => key !== labelKey && key !== 'dimension');
     }
     return [];
   }, [dataKeys, labelKey, dataset]);
