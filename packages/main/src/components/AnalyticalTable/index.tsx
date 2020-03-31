@@ -42,6 +42,7 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useColumnsDependencies } from './hooks/useColumnsDependencies';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
+import { useRowHighlight } from "./hooks/useRowHighlight";
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
@@ -95,6 +96,8 @@ export interface TableProps extends CommonProps {
   rowHeight?: number;
   alternateRowColor?: boolean;
   noSelectionColumn?: boolean;
+  withRowHighlight?: boolean;
+  highlightField?: string;
 
   // features
   filterable?: boolean;
@@ -162,7 +165,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     alternateRowColor,
     overscanCount,
     scaleWidthMode,
-    noSelectionColumn
+    noSelectionColumn,
+    withRowHighlight,
+    highlightField = 'status'
   } = props;
 
   const classes = useStyles({ rowHeight: props.rowHeight });
@@ -210,7 +215,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         alternateRowColor,
         scaleWidthMode,
         loading,
-        noSelectionColumn
+        noSelectionColumn,
+        withRowHighlight,
+        highlightField
       },
       ...reactTableOptions
     },
@@ -227,6 +234,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableHeaderStyling,
     useTableRowStyling,
     useRowSelectionColumn,
+    useRowHighlight,
     useDynamicColumnWidths,
     useColumnsDependencies,
     useTableCellStyling,

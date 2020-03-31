@@ -19,7 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
+import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
 
 enum ChartTypes {
@@ -67,6 +67,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     loading,
     dataset,
     labelKey = 'name',
+    secondaryDimensionKey,
     onDataPointClick,
     noLegend = false,
     xAxisFormatter = (el) => el,
@@ -94,7 +95,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       gridVertical: false,
       yAxisId: '',
       yAxisColor: ThemingParameters.sapList_BorderColor,
-      legendPosition: 'bottom',
+      legendPosition: 'top',
       zoomingTool: false,
       dataLabel: false,
       barSize: undefined,
@@ -171,8 +172,16 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   );
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
-  const marginChart = useChartMargin(dataset, labelKey, chartConfig.margin);
+  const marginChart = useChartMargin(
+    dataset,
+    yAxisFormatter,
+    labelKey,
+    chartConfig.margin,
+    false,
+    secondaryDimensionKey
+  );
 
   return (
     <ChartContainer
@@ -189,9 +198,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     >
       <ComposedChartLib margin={marginChart} data={dataset}>
         <CartesianGrid
-          vertical={chartConfig.gridVertical}
+          vertical={chartConfig.gridVertical ?? false}
           horizontal={chartConfig.gridHorizontal}
-          stroke={chartConfig.gridStroke}
+          stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
         {(chartConfig.xAxisVisible ?? true) && (
           <XAxis
@@ -199,6 +208,17 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             dataKey={labelKey}
             tick={XAxisLabel}
             padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
+            xAxisId={0}
+          />
+        )}
+        {secondaryDimensionKey && (
+          <XAxis
+            interval={0}
+            dataKey={secondaryDimensionKey}
+            tickLine={false}
+            tick={SecondaryDimensionLabel}
+            axisLine={false}
+            xAxisId={1}
           />
         )}
         <YAxis
@@ -223,9 +243,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         {!noLegend && (
           <Legend
             onClick={onItemLegendClick}
-            verticalAlign={chartConfig.legendPosition}
+            verticalAlign={chartConfig.legendPosition ?? 'top'}
             wrapperStyle={{
-              paddingTop: 20
+              paddingBottom: 20
             }}
           />
         )}

@@ -19,7 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
+import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
 
 type ColumnChartProps = RechartBaseProps;
@@ -33,6 +33,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     color,
     loading,
     labelKey = 'name',
+    secondaryDimensionKey,
     width = '100%',
     height = '300px',
     dataset,
@@ -54,7 +55,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       gridHorizontal: true,
       gridVertical: false,
       yAxisColor: ThemingParameters.sapList_BorderColor,
-      legendPosition: 'bottom',
+      legendPosition: 'top',
       barSize: 15,
       barGap: 3,
       zoomingTool: false,
@@ -83,7 +84,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, secondaryDimensionKey);
 
   const colorSecondY = useMemo(
     () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
@@ -120,9 +121,18 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     false
   );
 
+  const SecondaryDimensionLabel = useSecondaryDimensionLabel();
+
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
 
-  const marginChart = useChartMargin(dataset, labelKey, chartConfig.margin);
+  const marginChart = useChartMargin(
+    dataset,
+    labelKey,
+    yAxisFormatter,
+    chartConfig.margin,
+    false,
+    secondaryDimensionKey
+  );
 
   return (
     <ChartContainer
@@ -139,11 +149,21 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     >
       <ColumnChartLib margin={marginChart} data={dataset} barGap={chartConfig.barGap}>
         <CartesianGrid
-          vertical={chartConfig.gridVertical}
+          vertical={chartConfig.gridVertical ?? false}
           horizontal={chartConfig.gridHorizontal}
-          stroke={chartConfig.gridStroke}
+          stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} tick={XAxisLabel} dataKey={labelKey} />}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} tick={XAxisLabel} dataKey={labelKey} xAxisId={0} />}
+        {secondaryDimensionKey && (
+          <XAxis
+            interval={0}
+            dataKey={'dimension'}
+            tickLine={false}
+            tick={SecondaryDimensionLabel}
+            axisLine={false}
+            xAxisId={1}
+          />
+        )}
         <YAxis
           tickFormatter={yAxisFormatter}
           unit={chartConfig.yAxisUnit}
@@ -157,8 +177,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color ?? `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`}
             label={{ value: chartConfig.secondYAxis.name, angle: +90, position: 'center' }}
-            orientation="right"
-            yAxisId="right"
+            orientation={'right'}
+            yAxisId={'right'}
             interval={0}
           />
         )}
@@ -181,9 +201,9 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         {!noLegend && (
           <Legend
             wrapperStyle={{
-              paddingTop: 20
+              paddingBottom: 20
             }}
-            verticalAlign={chartConfig.legendPosition}
+            verticalAlign={chartConfig.legendPosition ?? 'top'}
             onClick={onItemLegendClick}
           />
         )}

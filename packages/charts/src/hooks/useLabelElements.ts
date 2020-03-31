@@ -1,5 +1,5 @@
-import { JSXElementConstructor, useCallback, useMemo } from 'react';
-import { DataLabel } from '../internal/CustomElements';
+import { useCallback, useMemo } from 'react';
+import { DataLabel, SecondaryDimensionTicksXAxis, SecondaryDimensionTicksYAxis } from '../internal/CustomElements';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { renderAxisTicks } from '../util/Utils';
 
@@ -20,16 +20,30 @@ export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelForm
   useMemo(() => {
     return dataLabel
       ? dataLabelCustomElement
-        ? (props): SVGGElement => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
+        ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
         : (props): number | string => dataLabelFormatter(props.value)
       : false;
   }, [dataLabelFormatter, dataLabelCustomElement, dataLabel]);
 
-export const useAxisLabel = (xAxisFormatter, xAxisUnit) => {
+export const useAxisLabel = (AxisFormatter, AxisUnit) => {
   return useCallback(
     (labelProps) => {
-      return renderAxisTicks(labelProps, xAxisFormatter, xAxisUnit);
+      return renderAxisTicks(labelProps, AxisFormatter, AxisUnit);
     },
-    [xAxisFormatter, xAxisUnit]
+    [AxisFormatter, AxisUnit]
   );
+};
+
+let dimension = '';
+export const useSecondaryDimensionLabel = (yAxis?: boolean, yAxisFormatter?) => {
+  return useCallback((labelProps) => {
+    if (dimension === labelProps.payload.value) {
+      return undefined;
+    } else {
+      dimension = labelProps.payload.value;
+      return yAxis
+        ? SecondaryDimensionTicksYAxis(labelProps, yAxisFormatter)
+        : SecondaryDimensionTicksXAxis(labelProps);
+    }
+  }, []);
 };

@@ -61,7 +61,7 @@ export const useDynamicColumnWidths = (hooks) => {
     const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
 
     const columnMeta = visibleColumns.reduce((acc, column) => {
-      if (column.id === '__ui5wcr__internal_selection_column') {
+      if (column.id === '__ui5wcr__internal_selection_column' || column.id === '__ui5wcr__internal_highlight_column') {
         acc[column.accessor] = {
           minHeaderWidth: column.width,
           fullWidth: column.width,

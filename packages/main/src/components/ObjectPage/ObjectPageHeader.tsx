@@ -1,7 +1,10 @@
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import React, { CSSProperties, FC, forwardRef, ReactElement, useMemo, RefObject } from 'react';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import React, { CSSProperties, forwardRef, ReactElement, RefObject, useMemo } from 'react';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
 interface Props {
@@ -44,7 +47,7 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
           className={classes.headerImage}
           style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
         >
-          <img src={image} className={classes.image} alt="Company Logo" />
+          <img src={image} className={classes.image} alt="Company Logo"/>
         </span>
       );
     } else {
@@ -91,8 +94,10 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
             <div>{renderBreadcrumbs && renderBreadcrumbs()}</div>
             <FlexBox>
               <FlexBox direction={FlexBoxDirection.Column}>
-                <h1 className={classes.title}>{title}</h1>
-                <span className={classes.subTitle}>{subTitle}</span>
+                <Title level={TitleLevel.H3} className={classes.title}>
+                  {title}
+                </Title>
+                <Label className={classes.subTitle}>{subTitle}</Label>
                 <span> {firstElement}</span>
               </FlexBox>
               <FlexBox>

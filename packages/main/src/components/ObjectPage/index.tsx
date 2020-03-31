@@ -1,15 +1,18 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
+import { enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
+import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import debounce from 'lodash.debounce';
 import React, {
+  ComponentType,
   FC,
   forwardRef,
   ReactElement,
@@ -18,8 +21,7 @@ import React, {
   useEffect,
   useMemo,
   useRef,
-  useState,
-  ComponentType
+  useState
 } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
@@ -425,16 +427,16 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
                   <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
                 </div>
               )}
-              <span className={classes.container}>
-                <FlexBox direction={FlexBoxDirection.Column}>
-                  {renderBreadcrumbs && renderBreadcrumbs()}
-                  <FlexBox>
-                    <h1 className={classes.title}>{title}</h1>
-                    <span className={classes.subTitle}>{subTitle}</span>
-                    <div className={classes.keyInfos}>{renderKeyInfos && renderKeyInfos()}</div>
-                  </FlexBox>
+              <FlexBox direction={FlexBoxDirection.Column} className={classes.container}>
+                {renderBreadcrumbs && renderBreadcrumbs()}
+                <FlexBox alignItems={FlexBoxAlignItems.Baseline}>
+                  <Title level={TitleLevel.H3} className={classes.title}>
+                    {title}
+                  </Title>
+                  <Label className={classes.subTitle}>{subTitle}</Label>
+                  <div className={classes.keyInfos}>{renderKeyInfos && renderKeyInfos()}</div>
                 </FlexBox>
-              </span>
+              </FlexBox>
             </FlexBox>
           )}
         </header>

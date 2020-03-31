@@ -76,6 +76,14 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
     ];
   });
 
+  hooks.columnsDeps.push((deps, { instance: { state, webComponentsReactProperties } }) => {
+    return [
+      ...deps,
+      webComponentsReactProperties.selectionMode,
+      webComponentsReactProperties.noSelectionColumn
+    ];
+  });
+
   hooks.visibleColumnsDeps.push((deps, { instance }) => [
     ...deps,
     instance.webComponentsReactProperties.noSelectionColumn,

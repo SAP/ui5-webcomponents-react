@@ -4,6 +4,7 @@ import { ChartContainerProps } from './ChartContainerProps';
 
 export interface RechartBaseProps extends ChartContainerProps {
   labelKey?: string;
+  secondaryDimensionKey?: string;
   dataKeys?: string[];
   noLegend?: boolean;
   onDataPointClick?: (event: CustomEvent) => void;
