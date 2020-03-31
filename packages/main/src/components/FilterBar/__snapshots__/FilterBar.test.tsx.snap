@@ -733,7 +733,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-input
-                  filterbarref="[object HTMLElement]"
                   placeholder="Placeholder"
                   type="Text"
                   value=""
@@ -766,9 +765,7 @@ Array [
           Switch
                   </ui5-label>
                 </div>
-                <ui5-switch
-                  filterbarref="[object HTMLElement]"
-                />
+                <ui5-switch />
               </div>
             </div>
             <ui5-checkbox
@@ -797,7 +794,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-select
-                  filterbarref="[object HTMLElement]"
                   value-state="None"
                 >
                   <ui5-option>
@@ -843,7 +839,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-select
-                  filterbarref="[object HTMLElement]"
                   value-state="None"
                 >
                   <ui5-option
@@ -924,7 +919,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-multi-combobox
-                  filterbarref="[object HTMLElement]"
                   placeholder=""
                   value=""
                   value-state="None"
@@ -974,7 +968,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-multi-combobox
-                  filterbarref="[object HTMLElement]"
                   placeholder=""
                   value=""
                   value-state="None"
@@ -1057,7 +1050,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-multi-combobox
-                  filterbarref="[object HTMLElement]"
                   placeholder=""
                   value=""
                   value-state="None"
@@ -1112,7 +1104,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-multi-combobox
-                  filterbarref="[object HTMLElement]"
                   placeholder=""
                   value=""
                   value-state="None"
@@ -1173,7 +1164,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-datepicker
-                  filterbarref="[object HTMLElement]"
                   value-state="None"
                 />
               </div>
@@ -1314,7 +1304,6 @@ Array [
             </ui5-label>
           </div>
           <ui5-input
-            filterbarref="[object HTMLElement]"
             placeholder="Placeholder"
             type="Text"
             value=""
@@ -1340,9 +1329,7 @@ Array [
           Switch
             </ui5-label>
           </div>
-          <ui5-switch
-            filterbarref="[object HTMLElement]"
-          />
+          <ui5-switch />
         </div>
       </div>
       <div
@@ -1364,7 +1351,6 @@ Array [
             </ui5-label>
           </div>
           <ui5-select
-            filterbarref="[object HTMLElement]"
             value-state="None"
           >
             <ui5-option>
@@ -1403,7 +1389,6 @@ Array [
             </ui5-label>
           </div>
           <ui5-select
-            filterbarref="[object HTMLElement]"
             value-state="None"
           >
             <ui5-option
@@ -1459,7 +1444,6 @@ Array [
             </ui5-label>
           </div>
           <ui5-multi-combobox
-            filterbarref="[object HTMLElement]"
             placeholder=""
             value=""
             value-state="None"
@@ -1502,7 +1486,6 @@ Array [
             </ui5-label>
           </div>
           <ui5-multi-combobox
-            filterbarref="[object HTMLElement]"
             placeholder=""
             value=""
             value-state="None"
@@ -1545,7 +1528,6 @@ Array [
             </ui5-label>
           </div>
           <ui5-multi-combobox
-            filterbarref="[object HTMLElement]"
             placeholder=""
             value=""
             value-state="None"
@@ -1608,7 +1590,6 @@ Array [
             </ui5-label>
           </div>
           <ui5-multi-combobox
-            filterbarref="[object HTMLElement]"
             placeholder=""
             value=""
             value-state="None"
@@ -1661,7 +1642,6 @@ Array [
             </ui5-label>
           </div>
           <ui5-datepicker
-            filterbarref="[object HTMLElement]"
             value-state="None"
           />
         </div>
@@ -1798,7 +1778,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-input
-          filterbarref="[object HTMLElement]"
           placeholder="Placeholder"
           type="Text"
           value=""
@@ -1824,9 +1803,7 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           Switch
           </ui5-label>
         </div>
-        <ui5-switch
-          filterbarref="[object HTMLElement]"
-        />
+        <ui5-switch />
       </div>
     </div>
     <div
@@ -1848,7 +1825,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-select
-          filterbarref="[object HTMLElement]"
           value-state="None"
         >
           <ui5-option>
@@ -1887,7 +1863,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-select
-          filterbarref="[object HTMLElement]"
           value-state="None"
         >
           <ui5-option
@@ -1943,7 +1918,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-multi-combobox
-          filterbarref="[object HTMLElement]"
           placeholder=""
           value=""
           value-state="None"
@@ -1986,7 +1960,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-multi-combobox
-          filterbarref="[object HTMLElement]"
           placeholder=""
           value=""
           value-state="None"
@@ -2029,7 +2002,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-multi-combobox
-          filterbarref="[object HTMLElement]"
           placeholder=""
           value=""
           value-state="None"
@@ -2092,7 +2064,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-multi-combobox
-          filterbarref="[object HTMLElement]"
           placeholder=""
           value=""
           value-state="None"
@@ -2145,7 +2116,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-datepicker
-          filterbarref="[object HTMLElement]"
           value-state="None"
         />
       </div>
