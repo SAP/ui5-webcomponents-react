@@ -37,6 +37,7 @@ const anchorBarStyles = {
     position: 'absolute',
     '--_ui5_button_compact_height': '1.375rem',
     '--_ui5_button_base_height': '1.375rem',
+    '--_ui5_button_base_min_width': '1.375rem',
     '--_ui5_button_base_min_compact_width': '1.375rem',
     top: `-0.6875rem`,
     marginLeft: `-0.6875rem`,
@@ -121,7 +122,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
   );
 
   const onTabItemSelect = useCallback((event) => {
-    const { sectionId, index } = event.detail.item.dataset;
+    const { sectionId, index } = event.detail.tab.dataset;
     // eslint-disable-next-line eqeqeq
     const section = safeGetChildrenArray(sections).find((el) => el.props.id == sectionId);
     handleOnSectionSelected(
@@ -156,7 +157,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
 
   return (
     <section className={className} role="navigation" style={style} ref={ref}>
-      <TabContainer collapsed fixed onItemSelect={onTabItemSelect} showOverflow>
+      <TabContainer collapsed fixed onTabSelect={onTabItemSelect} showOverflow>
         {safeGetChildrenArray(sections).map((section, index) => {
           return (
             <ObjectPageAnchorButton

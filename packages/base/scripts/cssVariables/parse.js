@@ -1,7 +1,9 @@
 const { writeFileSync } = require('fs');
-const { root } = require('./themeDesignerVariables');
+const { root } = require('@sap-theming/theming-base-content/content/Base/baseLib/sap_fiori_3/variables.json');
 const PATHS = require('../../../../config/paths');
 const path = require('path');
+const prettier = require('prettier');
+const prettierConfig = require('../../../../prettier.config');
 
 const variables = Object.keys(root);
 
@@ -21,4 +23,7 @@ for (const variable of variables) {
 }
 fileContent += '}\n';
 
-writeFileSync(path.join(PATHS.packages, 'base', 'src', 'styling', 'ThemingParameters.ts'), fileContent);
+writeFileSync(
+  path.join(PATHS.packages, 'base', 'src', 'styling', 'ThemingParameters.ts'),
+  prettier.format(fileContent, prettierConfig)
+);

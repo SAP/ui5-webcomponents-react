@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('Input', () => {

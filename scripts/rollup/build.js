@@ -2,15 +2,14 @@ const { rollup } = require('rollup');
 const stripBanner = require('rollup-plugin-strip-banner');
 const babel = require('rollup-plugin-babel');
 const prettier = require('rollup-plugin-prettier');
-const replace = require('rollup-plugin-replace');
-const resolve = require('rollup-plugin-node-resolve');
+const replace = require('@rollup/plugin-replace');
+const resolve = require('@rollup/plugin-node-resolve');
+const json = require('@rollup/plugin-json');
 const closure = require('./plugins/closure-plugin');
 const sizes = require('./plugins/sizes-plugin');
-const postcss = require('rollup-plugin-postcss');
 const stripUnusedImports = require('./plugins/strip-unused-imports');
 const Bundles = require('./bundles');
 const Stats = require('./stats');
-const { asyncCopyTo, asyncRimRaf } = require('../utils');
 const codeFrame = require('babel-code-frame');
 const chalk = require('chalk');
 const path = require('path');
@@ -148,6 +147,7 @@ function getPlugins(entry, externals, updateBabelOptions, filename, packageName,
     stripBanner({
       exclude: 'node_modules/**/*'
     }),
+    json(),
     // Compile to ES5.
     babel(getBabelConfig(updateBabelOptions, bundleType)),
     // Turn __DEV__ and process.env checks into constants.
@@ -158,7 +158,6 @@ function getPlugins(entry, externals, updateBabelOptions, filename, packageName,
         'process.env.NODE_ENV': isProduction ? "'production'" : "'development'"
       }
     }),
-    postcss(),
     // Apply dead code elimination and/or minification.
     isProduction &&
       !isES6Bundle &&

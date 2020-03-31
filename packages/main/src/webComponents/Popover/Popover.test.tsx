@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('Popover', () => {

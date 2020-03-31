@@ -13,29 +13,23 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "sideEffects": [
-    "@ui5/webcomponents-icons/dist/icons/*"
+    "@ui5/webcomponents-icons/dist/icons/*",
+    "*/ThemingSupport.js"
   ],
   "scripts": {
     "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts",
-    "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/index.js --onlyStopForMerge",
-    "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
     "postbuild": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.5",
-    "@ui5/webcomponents-fiori": "1.0.0-rc.5",
-    "@ui5/webcomponents-icons": "1.0.0-rc.5",
+    "@ui5/webcomponents": "1.0.0-rc.6",
+    "@ui5/webcomponents-fiori": "1.0.0-rc.6",
+    "@ui5/webcomponents-icons": "1.0.0-rc.6",
     "@ui5/webcomponents-react-base": "^0.9.0-rc.5",
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "^5.0.2",
     "react-jss": "10.0.4",
     "react-table": "7.0.0",
-    "react-toastify": "^5.5.0",
     "react-window": "^1.8.5"
-  },
-  "devDependencies": {
-    "diff": "^4.0.1",
-    "inquirer": "^7.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",

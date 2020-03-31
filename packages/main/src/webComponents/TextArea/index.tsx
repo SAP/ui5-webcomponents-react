@@ -1,21 +1,65 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5TextArea from '@ui5/webcomponents/dist/TextArea';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TextAreaPropTypes extends WithWebComponentPropTypes {
-  value?: string; // @generated
-  disabled?: boolean; // @generated
-  readonly?: boolean; // @generated
-  placeholder?: string; // @generated
-  rows?: number; // @generated
-  maxLength?: number; // @generated
-  showExceededText?: boolean; // @generated
-  growing?: boolean; // @generated
-  growingMaxLines?: number; // @generated
-  name?: string; // @generated
-  onChange?: (event: CustomEvent) => void; // @generated
+  /**
+   * Indicates whether the user can interact with the component or not. <br><br> <b>Note:</b> Disabled components cannot be focused and they are out of the tab chain.
+   */
+  disabled?: boolean;
+  /**
+   * Enables the <code>ui5-textarea</code> to automatically grow and shrink dynamically with its content. <br><br> <b>Note:</b> If set to <code>true</code>, the CSS <code>height</code> property is ignored.
+   */
+  growing?: boolean;
+  /**
+   * Defines the maximum number of lines that the Web Component can grow.
+   */
+  growingMaxLines?: number;
+  /**
+   * Defines the maximum number of characters that the <code>value</code> can have.
+   */
+  maxlength?: number;
+  /**
+ * Determines the name with which the <code>ui5-textarea</code> will be submitted in an HTML form.
+
+<br><br> <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
+
+<br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-textarea</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+ */
+  name?: string;
+  /**
+   * Defines a short hint intended to aid the user with data entry when the component has no value.
+   */
+  placeholder?: string;
+  /**
+   * Defines whether the <code>ui5-textarea</code> is read-only. <br><br> <b>Note:</b> A read-only <code>ui5-textarea</code> is not editable, but still provides visual feedback upon user interaction.
+   */
+  readonly?: boolean;
+  /**
+   * Defines whether the <code>ui5-textarea</code> is required.
+   */
+  required?: boolean;
+  /**
+   * Defines the number of visible text lines for the component. <br><br> <b>Notes:</b> <ul> <li>If the <code>growing</code> property is enabled, this property defines the minimum rows to be displayed in the textarea.</li> <li>The CSS <code>height</code> property wins over the <code>rows</code> property, if both are set.</li> </ul>
+   */
+  rows?: number;
+  /**
+   * Determines whether the characters exceeding the maximum allowed character count are visible in the <code>ui5-textarea</code>. <br><br> If set to <code>false</code>, the user is not allowed to enter more characters than what is set in the <code>maxlength</code> property. If set to <code>true</code> the characters exceeding the <code>maxlength</code> value are selected on paste and the counter below the <code>ui5-textarea</code> displays their number.
+   */
+  showExceededText?: boolean;
+  /**
+   * Defines the value of the Web Component.
+   */
+  value?: string;
+  /**
+   * Fired when the text has changed and the focus leaves the <code>ui5-textarea</code>.
+   */
+  onChange?: (event: CustomEvent<{}>) => void;
+  /**
+   * Fired when the value of the <code>ui5-textarea</code> changes at each keystroke or when something is pasted.
+   */
+  onInput?: (event: CustomEvent<{}>) => void;
 }
 
 /**
@@ -28,9 +72,16 @@ const TextArea: FC<TextAreaPropTypes> = withWebComponent<TextAreaPropTypes>(UI5T
 TextArea.displayName = 'TextArea';
 
 TextArea.defaultProps = {
-  rows: 0, // @generated
-  maxLength: null, // @generated
-  growingMaxLines: 0 // @generated
+  disabled: false,
+  growing: false,
+  growingMaxLines: 0,
+  maxlength: null,
+  placeholder: '',
+  readonly: false,
+  required: false,
+  rows: 0,
+  showExceededText: false,
+  value: ''
 };
 
 export { TextArea };

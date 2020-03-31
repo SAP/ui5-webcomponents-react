@@ -2,6 +2,8 @@
 
 exports[`Input Basic Test (generated) 1`] = `
 <ui5-input
+  name=""
+  placeholder=""
   type="Text"
   value=""
   value-state="None"

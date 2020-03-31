@@ -32,5 +32,11 @@ addons.setConfig({
    * sidebar tree animations
    * @type {Boolean}
    */
-  sidebarAnimations: true
+  sidebarAnimations: true,
+
+  /**
+   * enable/disable shortcuts
+   * @type {Boolean}
+   */
+  enableShortcuts: false
 });

@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { ShellBarItem } from '@ui5/webcomponents-react/lib/ShellBarItem';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('ShellBarItem', () => {

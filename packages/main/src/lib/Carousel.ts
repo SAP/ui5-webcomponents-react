@@ -1,3 +1,3 @@
-import { Carousel } from '../components/Carousel';
+import { Carousel } from '../webComponents/Carousel';
 
 export { Carousel };
