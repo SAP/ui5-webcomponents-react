@@ -190,7 +190,6 @@ export const FilterDialog = (props) => {
     },
     [setToggledFilters, handleSelectionChange]
   );
-
   const renderGroups = useCallback(() => {
     let groups = {};
     Children.forEach(renderChildren(), (child) => {
@@ -228,7 +227,7 @@ export const FilterDialog = (props) => {
           </div>
         );
       });
-  }, [renderChildren, toggledFilters]);
+  }, [renderChildren, toggledFilters, handleCheckBoxChange]);
 
   return (
     <Dialog open={open} onAfterClose={handleClose} header={renderHeader()} footer={renderFooter()}>

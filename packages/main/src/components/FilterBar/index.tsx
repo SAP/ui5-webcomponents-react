@@ -104,6 +104,20 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const filterRefs = useRef({});
   const [dialogRefs, setDialogRefs] = useState({});
   const [toggledFilters, setToggledFilters] = useState({});
+  const prevVisibleInFilterBarProps = useRef({});
+
+  useEffect(() => {
+    Children.toArray(children).forEach((item) => {
+      if (
+        prevVisibleInFilterBarProps.current?.[item.key] !== undefined &&
+        prevVisibleInFilterBarProps.current?.[item.key] !== item.props.visibleInFilterBar
+      ) {
+        const updatedToggledFilters = toggledFilters;
+        delete updatedToggledFilters[item.key];
+        setToggledFilters(updatedToggledFilters);
+      }
+    });
+  }, [children, prevVisibleInFilterBarProps, setToggledFilters, toggledFilters]);
 
   useEffect(() => {
     setShowFilters(useToolbar ? filterBarExpanded : true);
@@ -129,15 +143,15 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   );
 
   const handleDialogSave = useCallback(
-    (e, dialogRefs, toggledFilters) => {
+    (e, dialogRefs, updatedToggledFilters) => {
       setDialogRefs(dialogRefs);
-      setToggledFilters(toggledFilters);
+      setToggledFilters({ ...toggledFilters, ...updatedToggledFilters });
       if (onFiltersDialogSave) {
         onFiltersDialogSave(enrichEventWithDetails(e));
       }
       handleDialogClose(e);
     },
-    [setDialogOpen, setDialogRefs, setToggledFilters, onFiltersDialogSave]
+    [setDialogOpen, setDialogRefs, setToggledFilters, onFiltersDialogSave, toggledFilters]
   );
 
   const handleDialogOpen = useCallback(
@@ -178,7 +192,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     if (Object.keys(toggledFilters).length > 0) {
       return Children.toArray(children).map((child) => {
         if (toggledFilters?.[child.key] !== undefined) {
-          return cloneElement(child, { visibleInFilterBar: toggledFilters[child.key] });
+          return cloneElement(child, {
+            visibleInFilterBar: toggledFilters[child.key]
+          });
         }
         return child;
       });
@@ -188,7 +204,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const renderChildren = useCallback(() => {
     let childProps = { considerGroupName: considerGroupName, inFB: true };
-
     return safeChildren()
       .filter((item) => {
         if (item.type.displayName !== 'FilterGroupItem') return true; //needed for deprecated FilterItem or custom elements
@@ -196,6 +211,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       })
       .map((child) => {
         if (child.type.displayName !== 'FilterGroupItem') return child; //needed for deprecated FilterItem or custom elements
+        prevVisibleInFilterBarProps.current[child.key] = child.props.visibleInFilterBar;
         if (filterContainerWidth) {
           childProps.style = { width: filterContainerWidth, ...child.props.style };
         }
@@ -220,7 +236,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           }
         });
       });
-  }, [filterContainerWidth, considerGroupName, children, dialogRefs, toggledFilters]);
+  }, [filterContainerWidth, considerGroupName, dialogRefs, safeChildren]);
 
   const handleSearchValueChange = useCallback(
     (newVal) => {
