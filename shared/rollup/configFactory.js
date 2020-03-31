@@ -1,7 +1,8 @@
-const resolve = require('rollup-plugin-node-resolve');
+const resolve = require('@rollup/plugin-node-resolve');
 const babel = require('rollup-plugin-babel');
 const path = require('path');
 const fs = require('fs');
+const json = require('@rollup/plugin-json');
 const escapeStringRegexp = require('escape-string-regexp');
 const PATHS = require('../../config/paths');
 const { highlightLog } = require('../utils');
@@ -19,6 +20,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     resolve({
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
     }),
+    json(),
     babel({
       presets: ['babel-preset-react-app/prod'],
       plugins: ['@babel/plugin-proposal-nullish-coalescing-operator'],
