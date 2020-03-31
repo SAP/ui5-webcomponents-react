@@ -1,12 +1,13 @@
 import { getCompactSize } from '@ui5/webcomponents-base/dist/config/CompactSize';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
 import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
 import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
-import { JSSTheme } from "../../interfaces/JSSTheme";
+import { JSSTheme } from '../../interfaces/JSSTheme';
 
 declare global {
   interface Window {
@@ -47,7 +48,8 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
     return {
       theme,
       contentDensity: isCompactSize ? ContentDensity.Compact : ContentDensity.Cozy,
-      parameters: ThemingParameters
+      parameters: ThemingParameters,
+      rtl: getRTL()
     };
   }, [theme, isCompactSize]);
 
@@ -67,6 +69,9 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
         watch: true,
         silent: true
       });
+    }
+    if (getRTL()) {
+      document.dir = 'rtl';
     }
   }, []);
 
