@@ -123,3 +123,66 @@ export const simpleDataSet = [
     users: 280
   }
 ];
+
+export const secondaryDimensionDataSet = [
+  {
+    name: 'January / Month',
+    users: 100,
+    dimension: 'C4S Components'
+  },
+  {
+    name: 'February / Month',
+    users: 230,
+    dimension: 'C4S Components'
+  },
+  {
+    name: 'March / Month',
+    users: 240,
+    dimension: 'C4S Components'
+  },
+  {
+    name: 'April / Month',
+    users: 280,
+    dimension: 'C4S Components'
+  },
+  {
+    name: 'May / Month',
+    users: 100,
+    dimension: 'C4S Components'
+  },
+  {
+    name: 'June / Month',
+    users: 230,
+    dimension: 'C4S Components'
+  },
+  {
+    name: 'July / Month',
+    users: 20,
+    dimension: 'Harmnony Insight'
+  },
+  {
+    name: 'August / Month',
+    users: 220,
+    dimension: 'Harmnony Insight'
+  },
+  {
+    name: 'September / Month',
+    users: 200,
+    dimension: 'Harmnony Insight'
+  },
+  {
+    name: 'October / Month',
+    users: 250,
+    dimension: 'Intelligent Workplace'
+  },
+  {
+    name: 'November / Month',
+    users: 240,
+    dimension: 'Intelligent Workplace'
+  },
+  {
+    name: 'December / Month',
+    users: 280,
+    dimension: 'Pipeline Health Manager'
+  }
+];

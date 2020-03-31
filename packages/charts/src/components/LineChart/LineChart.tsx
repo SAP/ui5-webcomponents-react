@@ -19,7 +19,7 @@ import {
   YAxis
 } from 'recharts';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useAxisLabel } from '../../hooks/useLabelElements';
+import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
 
 type LineChartProps = RechartBaseProps;
@@ -52,7 +52,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       gridHorizontal: true,
       gridVertical: false,
       yAxisColor: ThemingParameters.sapList_BorderColor,
-      legendPosition: 'bottom',
+      legendPosition: 'top',
       strokeWidth: 1,
       zoomingTool: false,
       strokeOpacity: 1,
@@ -107,6 +107,9 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const LineDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter);
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const SecondaryDimensionLabel = useSecondaryDimensionLabel();
+
+  const secondaryDimension = dataset && dataset[0].hasOwnProperty('dimension');
 
   const marginChart = useChartMargin(dataset, yAxisFormatter, labelKey, chartConfig.margin);
 
@@ -125,11 +128,21 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     >
       <LineChartLib margin={marginChart} data={dataset} onClick={onDataPointClickInternal}>
         <CartesianGrid
-          vertical={chartConfig.gridVertical}
+          vertical={chartConfig.gridVertical ?? false}
           horizontal={chartConfig.gridHorizontal}
-          stroke={chartConfig.gridStroke}
+          stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} interval={0} tick={XAxisLabel} />}
+        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} xAxisId={0} interval={0} tick={XAxisLabel} />}
+        {secondaryDimension && (
+          <XAxis
+            interval={0}
+            dataKey={'dimension'}
+            tickLine={false}
+            tick={SecondaryDimensionLabel}
+            axisLine={false}
+            xAxisId={1}
+          />
+        )}
         <YAxis
           unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
@@ -165,9 +178,9 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         {!noLegend && (
           <Legend
             wrapperStyle={{
-              paddingTop: 20
+              paddingBottom: 20
             }}
-            verticalAlign={chartConfig.legendPosition}
+            verticalAlign={chartConfig.legendPosition ?? 'top'}
             onClick={onItemLegendClick}
           />
         )}
