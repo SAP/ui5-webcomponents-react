@@ -24,15 +24,27 @@ export const XAxisTicks = (props, formatter, unit = '', rotate) => {
   );
 };
 
+export const YAxisTicks = (props, formatter, unit = '') => {
+  const { x, y, payload } = props;
+  const tickValue =
+    formatter(payload.value).length > 10 ? `${formatter(payload.value).slice(0, 13)}...` : formatter(payload.value);
+  return (
+    <g transform={`translate(${x},${y + 3})`}>
+      <text fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'end'}>
+        {`${tickValue}${unit}`}
+      </text>
+    </g>
+  );
+};
+
 export const SecondaryDimensionTicksXAxis = (props) => {
   const { x, y, payload } = props;
 
   const tickValue = payload.value.length > 12 && globalRotate ? payload.value.slice(0, 12) + '...' : payload.value;
-  const dy = globalRotate ? 40 : 10;
+  const dy = globalRotate ? 40 : 0;
 
   return (
     <g transform={`translate(${x},${y + dy})`}>
-      {' '}
       <text fill={ThemingParameters.sapNeutralBorderColor}>|</text>
       <text
         fill={ThemingParameters.sapNeutralBorderColor}
@@ -52,9 +64,8 @@ export const SecondaryDimensionTicksYAxis = (props, yAxisFormatter) => {
   const tickValue = yAxisFormatter(payload.value);
 
   return (
-    <g transform={`translate(${x - 90},${y})`}>
-      {' '}
-      <text fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'start'}>
+    <g transform={`translate(${x - 35},${y})`}>
+      <text fill={ThemingParameters.sapNeutralBorderColor} transform={'rotate(-35)'} textAnchor={'end'}>
         {`${tickValue}`}
       </text>
     </g>

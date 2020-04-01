@@ -12,7 +12,7 @@ const DonutChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref) => 
   const {
     chartConfig = {
       legendPosition: 'bottom',
-      dataLabel: false,
+      dataLabel: true,
       paddingAngle: 0,
       innerRadius: undefined
     }
