@@ -97,7 +97,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       yAxisColor: ThemingParameters.sapList_BorderColor,
       legendPosition: 'top',
       zoomingTool: false,
-      dataLabel: false,
+      dataLabel: true,
       barSize: undefined,
       barGap: undefined,
       secondYAxis: {

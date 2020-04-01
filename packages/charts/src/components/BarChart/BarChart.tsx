@@ -61,7 +61,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       strokeOpacity: 1,
       fillOpacity: 1,
       stacked: false,
-      dataLabel: false,
+      dataLabel: true,
       referenceLine: {
         label: undefined,
         value: undefined,

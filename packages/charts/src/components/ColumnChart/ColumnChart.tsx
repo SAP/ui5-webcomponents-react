@@ -62,7 +62,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       strokeOpacity: 1,
       fillOpacity: 1,
       stacked: false,
-      dataLabel: false,
+      dataLabel: true,
       secondYAxis: {
         dataKey: undefined,
         name: undefined,

@@ -57,7 +57,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       strokeWidth: 1,
       zoomingTool: false,
       strokeOpacity: 1,
-      dataLabel: false,
+      dataLabel: true,
       xAxisUnit: '',
       yAxisUnit: '',
       secondYAxis: {

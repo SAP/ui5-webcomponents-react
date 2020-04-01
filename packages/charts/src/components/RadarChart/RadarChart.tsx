@@ -45,7 +45,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     chartConfig = {
       margin: {},
       legendPosition: 'bottom',
-      dataLabel: false,
+      dataLabel: true,
       polarGridType: 'circle'
     },
     style,
@@ -58,7 +58,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, undefined);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
