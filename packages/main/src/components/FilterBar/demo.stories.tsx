@@ -179,7 +179,7 @@ export const renderStoryWithFiltersDialog = () => {
       >
         <MultiComboBox>
           <Option>
-            <Text>asd</Text>
+            <Text>Option 1</Text>
           </Option>
           <Option>Option 2</Option>
           <Option>Option 3</Option>

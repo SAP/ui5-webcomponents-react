@@ -20,7 +20,6 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
@@ -56,8 +55,6 @@ export interface FilterBarPropTypes extends CommonProps {
   onGo?: (event: CustomEvent) => void;
   onRestore?: (event: CustomEvent<{ source?: unknown }>) => void;
 }
-
-interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
 
 const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
 
@@ -95,7 +92,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     onFiltersDialogSearch,
     onGo,
     onRestore
-  } = props as FilterBarInternalProps;
+  } = props;
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -107,17 +104,20 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const prevVisibleInFilterBarProps = useRef({});
 
   useEffect(() => {
-    Children.toArray(children).forEach((item) => {
-      if (
-        prevVisibleInFilterBarProps.current?.[item.key] !== undefined &&
-        prevVisibleInFilterBarProps.current?.[item.key] !== item.props.visibleInFilterBar
-      ) {
-        const updatedToggledFilters = toggledFilters;
-        delete updatedToggledFilters[item.key];
-        setToggledFilters(updatedToggledFilters);
-      }
-    });
-  }, [children, prevVisibleInFilterBarProps, setToggledFilters, toggledFilters]);
+    if (showFilterConfiguration) {
+      console.log('with dialog');
+      Children.toArray(children).forEach((item) => {
+        if (
+          prevVisibleInFilterBarProps.current?.[item.key] !== undefined &&
+          prevVisibleInFilterBarProps.current?.[item.key] !== item.props.visibleInFilterBar
+        ) {
+          const updatedToggledFilters = toggledFilters;
+          delete updatedToggledFilters[item.key];
+          setToggledFilters(updatedToggledFilters);
+        }
+      });
+    }
+  }, [children, prevVisibleInFilterBarProps, setToggledFilters, toggledFilters, showFilterConfiguration]);
 
   useEffect(() => {
     setShowFilters(useToolbar ? filterBarExpanded : true);
@@ -189,7 +189,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   ]);
 
   const safeChildren = useCallback(() => {
-    if (Object.keys(toggledFilters).length > 0) {
+    if (showFilterConfiguration && Object.keys(toggledFilters).length > 0) {
+      console.log('with dialog');
       return Children.toArray(children).map((child) => {
         if (toggledFilters?.[child.key] !== undefined) {
           return cloneElement(child, {
@@ -211,10 +212,13 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       })
       .map((child) => {
         if (child.type.displayName !== 'FilterGroupItem') return child; //needed for deprecated FilterItem or custom elements
-        prevVisibleInFilterBarProps.current[child.key] = child.props.visibleInFilterBar;
         if (filterContainerWidth) {
           childProps.style = { width: filterContainerWidth, ...child.props.style };
         }
+        if (!showFilterConfiguration) {
+          return cloneElement(child as ReactElement<any>, { ...childProps });
+        }
+        prevVisibleInFilterBarProps.current[child.key] = child.props.visibleInFilterBar;
         let filterItemProps = {};
         if (Object.keys(dialogRefs).length > 0) {
           const dialogItemRef = dialogRefs[child.key];
@@ -236,7 +240,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           }
         });
       });
-  }, [filterContainerWidth, considerGroupName, dialogRefs, safeChildren]);
+  }, [filterContainerWidth, considerGroupName, dialogRefs, safeChildren, showFilterConfiguration]);
 
   const handleSearchValueChange = useCallback(
     (newVal) => {
@@ -276,7 +280,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           handleDialogClose={handleDialogClose}
           onGo={onGo}
           handleRestoreFilters={handleRestoreFilters}
-          searchValue={searchRef.current?.children[0]._state?.value}
+          searchValue={searchRef.current?.children[0].value}
           handleSearchValueChange={handleSearchValueChange}
           showClearButton={showClearButton}
           showRestoreButton={showRestoreButton}

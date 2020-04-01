@@ -4,11 +4,11 @@ export const filterValue = (ref, child) => {
   const tagName = ref.tagName;
   let filterItemProps = {};
   if (tagName === 'UI5-INPUT' || tagName === 'UI5-DATEPICKER') {
-    filterItemProps = { value: ref._state?.value };
+    filterItemProps = { value: ref.value };
   }
   if (tagName === 'UI5-SELECT' || tagName === 'UI5-MULTI-COMBOBOX') {
     const selectedIndices = Array.from(ref.children)
-      .map((item, index) => (item._state?.selected ? index : false))
+      .map((item, index) => (item.selected ? index : false))
       .filter((el) => el !== false);
     const options = child.props.children.props.children.map((item, index) => {
       if (selectedIndices.includes(index)) {
@@ -19,7 +19,7 @@ export const filterValue = (ref, child) => {
     filterItemProps = { children: options };
   }
   if (tagName === 'UI5-SWITCH' || tagName === 'UI5-CHECKBOX') {
-    filterItemProps = { checked: ref._state?.checked };
+    filterItemProps = { checked: ref.checked };
   }
   return filterItemProps;
 };

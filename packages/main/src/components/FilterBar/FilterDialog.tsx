@@ -60,11 +60,11 @@ export const FilterDialog = (props) => {
   const handleSave = useCallback(
     (e) => {
       if (renderFBSearch) {
-        handleSearchValueChange(searchRef.current?.children[1]._state?.value);
+        handleSearchValueChange(searchRef.current?.children[1].value);
       }
       handleDialogSave(e, dialogRefs.current, toggledFilters);
     },
-    [renderFBSearch, handleSearchValueChange, searchRef, handleDialogSave, toggledFilters]
+    [renderFBSearch, handleSearchValueChange, searchRef, handleDialogSave, toggledFilters, dialogRefs]
   );
 
   const handleClose = useCallback(
