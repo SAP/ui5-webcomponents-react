@@ -1,8 +1,8 @@
-import * as ThemingParameters from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
   filterItem: {
-    width: '12rem',
+    width: '13rem',
     height: 'fit-content',
     marginRight: '1rem',
     marginBottom: '1rem'

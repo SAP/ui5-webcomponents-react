@@ -3,6 +3,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import React, {
@@ -20,7 +21,6 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
@@ -56,8 +56,6 @@ export interface FilterBarPropTypes extends CommonProps {
   onGo?: (event: CustomEvent) => void;
   onRestore?: (event: CustomEvent<{ source?: unknown }>) => void;
 }
-
-interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
 
 const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
 
@@ -95,7 +93,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     onFiltersDialogSearch,
     onGo,
     onRestore
-  } = props as FilterBarInternalProps;
+  } = props;
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -294,7 +292,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       )}
       <div ref={ref} className={classes.outerContainer} {...passThroughProps}>
         {loading ? (
-          <BusyIndicator active className={classes.loadingContainer} />
+          <BusyIndicator active className={classes.loadingContainer} size={BusyIndicatorSize.Large} />
         ) : (
           <>
             <div className={classes.filterBarHeader}>
@@ -322,7 +320,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                   {showFilterConfiguration && (
                     <Button onClick={handleDialogOpen}>
                       {`Filters${
-                        activeFiltersCount && parseInt(activeFiltersCount) > 0 ? ` (${activeFiltersCount})` : ''
+                        activeFiltersCount && parseInt(activeFiltersCount as string) > 0 ? ` (${activeFiltersCount})` : ''
                       }`}
                     </Button>
                   )}

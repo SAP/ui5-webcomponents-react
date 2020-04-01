@@ -92,7 +92,7 @@ export const renderStoryWithFiltersDialog = () => {
       filterBarExpanded={boolean('filterBarExpanded', true)}
       loading={boolean('loading', false)}
       considerGroupName={boolean('considerGroupName', true)}
-      filterContainerWidth={text('filterContainerWidth', '12rem')}
+      filterContainerWidth={text('filterContainerWidth', '13rem')}
       activeFiltersCount={number('activeFiltersCount', 0)}
       showClearOnFB={boolean('showClearOnFB', true)}
       showRestoreOnFB={boolean('showRestoreOnFB', true)}
