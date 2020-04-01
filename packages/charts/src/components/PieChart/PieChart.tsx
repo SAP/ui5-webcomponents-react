@@ -43,7 +43,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       strokeWidth: 1,
       zoomingTool: false,
       strokeOpacity: 1,
-      dataLabel: false,
+      dataLabel: true,
       paddingAngle: 0,
       innerRadius: undefined
     },
@@ -57,7 +57,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, undefined);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => currentDataKeys[0]);
 
