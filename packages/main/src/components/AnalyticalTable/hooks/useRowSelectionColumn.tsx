@@ -35,9 +35,9 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
       {
         id: '__ui5wcr__internal_selection_column',
         accessor: '__ui5wcr__internal_selection_column',
-        sortable: false,
-        groupable: false,
-        filterable: false,
+        disableFilters: true,
+        disableSortBy: true,
+        disableGroupBy: true,
         disableResizing: true,
         canReorder: false,
         width: 36,
@@ -77,11 +77,7 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
   });
 
   hooks.columnsDeps.push((deps, { instance: { state, webComponentsReactProperties } }) => {
-    return [
-      ...deps,
-      webComponentsReactProperties.selectionMode,
-      webComponentsReactProperties.noSelectionColumn
-    ];
+    return [...deps, webComponentsReactProperties.selectionMode, webComponentsReactProperties.noSelectionColumn];
   });
 
   hooks.visibleColumnsDeps.push((deps, { instance }) => [

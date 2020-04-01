@@ -18,7 +18,9 @@ const columns = [
     Header: 'Age',
     accessor: 'age',
     hAlign: TextAlign.End,
-    disableGrouping: true,
+    disableGroupBy: true,
+    disableSortBy: false,
+    disableFilters: false,
     className: 'superCustomClass',
     isVisible: true
   },

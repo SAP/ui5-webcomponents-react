@@ -7,6 +7,7 @@ import { PluginHook } from 'react-table';
 export const useTableCellStyling: PluginHook<{}> = (hooks) => {
   hooks.getCellProps.push((cellProps, { cell: { column }, instance }) => {
     const lastColumnId = instance.columns[instance.columns.length - 1]?.id;
+    const columnIndex = instance.columns.findIndex(({ id }) => id === column.id);
     const { classes } = instance.webComponentsReactProperties;
     const style: CSSProperties = {};
 
@@ -64,7 +65,9 @@ export const useTableCellStyling: PluginHook<{}> = (hooks) => {
       style: {
         ...cellProps.style,
         ...style
-      }
+      },
+      tabIndex: 0,
+      'aria-colindex': columnIndex + 1 // aria index is 1 based, not 0
     };
   });
 };
