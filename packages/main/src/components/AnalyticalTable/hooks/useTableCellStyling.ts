@@ -1,3 +1,4 @@
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import { CSSProperties } from 'react';
@@ -5,6 +6,7 @@ import { PluginHook } from 'react-table';
 
 export const useTableCellStyling: PluginHook<{}> = (hooks) => {
   hooks.getCellProps.push((cellProps, { cell: { column }, instance }) => {
+    const lastColumnId = instance.columns[instance.columns.length - 1]?.id;
     const { classes } = instance.webComponentsReactProperties;
     const style: CSSProperties = {};
 
@@ -49,6 +51,11 @@ export const useTableCellStyling: PluginHook<{}> = (hooks) => {
 
     if (column.id === '__ui5wcr__internal_highlight_column') {
       style.padding = 0;
+    }
+
+    if (column.id === lastColumnId) {
+      style.paddingRight = `calc(${ThemingParameters.sapScrollBar_Dimension} + 0.5rem)`;
+      style.boxSizing = 'border-box';
     }
 
     return {
