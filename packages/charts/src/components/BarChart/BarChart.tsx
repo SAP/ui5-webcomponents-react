@@ -44,6 +44,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     xAxisFormatter = (el) => el,
     yAxisFormatter = (el) => formatYAxisTicks(el),
     dataLabelFormatter = (d) => d,
+    tooltipFormatter = (value, name) => [value, name],
+    tooltipLabelFormatter = (labelValue) => labelValue,
+    legendFormatter = (value) => value,
     dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
@@ -187,7 +190,13 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             onClick={onDataPointClickInternal}
           />
         ))}
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
+        {!noLegend && (
+          <Legend
+            verticalAlign={chartConfig.legendPosition ?? 'top'}
+            onClick={onItemLegendClick}
+            formatter={legendFormatter}
+          />
+        )}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -195,7 +204,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             label={chartConfig.referenceLine.label}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipFormatter} labelFormatter={tooltipLabelFormatter} />
         {chartConfig.zoomingTool && (
           <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}

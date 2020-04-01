@@ -40,6 +40,9 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     xAxisFormatter,
     yAxisFormatter = (el) => el,
     dataLabelFormatter = (d) => d,
+    tooltipFormatter = (value, name) => [value, name],
+    tooltipLabelFormatter = (labelValue) => labelValue,
+    legendFormatter = (value) => value,
     dataLabelCustomElement = undefined,
     onLegendClick,
     chartConfig = {
@@ -118,8 +121,10 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
             label={RadarDataLabel}
           />
         ))}
-        <Tooltip />
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={tooltipLabelFormatter} formatter={tooltipFormatter} />
+        {!noLegend && (
+          <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} formatter={legendFormatter} />
+        )}
       </RadarChartLib>
     </ChartContainer>
   );

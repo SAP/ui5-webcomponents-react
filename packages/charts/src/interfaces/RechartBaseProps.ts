@@ -12,6 +12,10 @@ export interface RechartBaseProps extends ChartContainerProps {
   color?: string;
   colors?: CSSProperties['color'][];
 
+  tooltipFormatter?: (value, name) => void;
+  tooltipLabelFormatter?: (labelValue) => void;
+  legendFormatter?: (value) => void;
+
   yAxisFormatter?: (el) => void;
   xAxisFormatter?: (el) => void;
   dataLabelFormatter?: (d: number) => void;

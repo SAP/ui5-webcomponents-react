@@ -72,7 +72,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     noLegend = false,
     xAxisFormatter = (el) => el,
     yAxisFormatter = (el) => el,
-
+    tooltipFormatter = (value, name) => [value, name],
+    tooltipLabelFormatter = (labelValue) => labelValue,
+    legendFormatter = (value) => value,
     defaults = {
       barSize: 20,
       barGap: 3,
@@ -240,8 +242,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             interval={0}
           />
         )}
-        <Tooltip />
-        {!noLegend && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition ?? 'top'} />}
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipFormatter} labelFormatter={tooltipLabelFormatter} />
+        {!noLegend && (
+          <Legend
+            onClick={onItemLegendClick}
+            verticalAlign={chartConfig.legendPosition ?? 'top'}
+            formatter={legendFormatter}
+          />
+        )}
         {elements?.map((config, index) => {
           const {
             type,

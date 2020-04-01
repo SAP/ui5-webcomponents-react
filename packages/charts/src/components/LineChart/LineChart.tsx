@@ -44,6 +44,9 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     yAxisFormatter = (el) => el,
     xAxisFormatter = (el) => el,
     dataLabelFormatter = (d) => d,
+    tooltipFormatter = (value, name) => [value, name],
+    tooltipLabelFormatter = (labelValue) => labelValue,
+    legendFormatter = (value) => value,
     dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
@@ -182,7 +185,13 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             activeDot={{ onClick: onDataPointClickInternal }}
           />
         ))}
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
+        {!noLegend && (
+          <Legend
+            formatter={legendFormatter}
+            verticalAlign={chartConfig.legendPosition ?? 'top'}
+            onClick={onItemLegendClick}
+          />
+        )}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -191,7 +200,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             yAxisId={'left'}
           />
         )}
-        <Tooltip />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={tooltipLabelFormatter} formatter={tooltipFormatter} />
         {chartConfig.zoomingTool && (
           <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}

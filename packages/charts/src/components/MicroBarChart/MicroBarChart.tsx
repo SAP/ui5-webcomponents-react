@@ -25,6 +25,8 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     height = '17vh',
     dataset,
     onDataPointClick,
+    tooltipFormatter = (value, name) => [value, name],
+    tooltipLabelFormatter = (labelValue) => labelValue,
     chartConfig = {
       xAxisUnit: '',
       yAxisUnit: '',
@@ -130,7 +132,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
           barSize={chartConfig.barSize}
           onClick={onDataPointClickInternal}
         />
-        <Tooltip cursor={{ fillOpacity: 0.3 }} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipFormatter} labelFormatter={tooltipLabelFormatter} />
       </MicroBarChartLib>
     </ChartContainer>
   );

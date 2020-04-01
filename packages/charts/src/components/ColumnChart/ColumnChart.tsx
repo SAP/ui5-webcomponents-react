@@ -44,6 +44,9 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     xAxisFormatter = (el) => el,
     yAxisFormatter = (el) => el,
     dataLabelFormatter = (d) => d,
+    tooltipFormatter = (value, name) => [value, name],
+    tooltipLabelFormatter = (labelValue) => labelValue,
+    legendFormatter = (value) => value,
     dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
@@ -199,7 +202,13 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             onClick={onDataPointClickInternal}
           />
         ))}
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
+        {!noLegend && (
+          <Legend
+            verticalAlign={chartConfig.legendPosition ?? 'top'}
+            onClick={onItemLegendClick}
+            formatter={legendFormatter}
+          />
+        )}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -208,7 +217,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             yAxisId={'left'}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipFormatter} labelFormatter={tooltipLabelFormatter} />
         {chartConfig.zoomingTool && (
           <Brush y={1} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}
