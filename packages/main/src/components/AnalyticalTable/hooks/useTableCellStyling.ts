@@ -57,6 +57,7 @@ export const useTableCellStyling: PluginHook<{}> = (hooks) => {
     if (column.id === lastColumnId) {
       style.paddingRight = `calc(${ThemingParameters.sapScrollBar_Dimension} + 0.5rem)`;
       style.boxSizing = 'border-box';
+      style.width = `calc(${cellProps.style.width} - ${ThemingParameters.sapScrollBar_Dimension})`;
     }
 
     return {
@@ -66,7 +67,7 @@ export const useTableCellStyling: PluginHook<{}> = (hooks) => {
         ...cellProps.style,
         ...style
       },
-      tabIndex: 0,
+      tabIndex: -1,
       'aria-colindex': columnIndex + 1 // aria index is 1 based, not 0
     };
   });
