@@ -92,6 +92,9 @@ export const defaultTable = () => {
         noSelectionColumn={boolean('noSelectionColumn', false)}
         withRowHighlight={boolean('withRowHighlight', true)}
         highlightField={text('highlightField', 'status')}
+        infiniteScroll={boolean('infiniteScroll', true)}
+        infiniteScrollThreshold={number('infiniteScrollThreshold', 20)}
+        onLoadMore={action('onLoadMore')}
       />
     </div>
   );

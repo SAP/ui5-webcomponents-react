@@ -88,6 +88,8 @@ export interface TableProps extends CommonProps {
   selectionMode?: TableSelectionMode;
   scaleWidthMode?: TableScaleWidthMode;
   columnOrder?: object[];
+  infiniteScroll?: boolean;
+  infiniteScrollThreshold?: number;
 
   // events
 
@@ -96,6 +98,7 @@ export interface TableProps extends CommonProps {
   onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => any;
   onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => any;
   onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
+  onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
   /**
    * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api/useTable.md#table-options)
    */
@@ -151,7 +154,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     highlightField = 'status',
     groupable,
     sortable,
-    filterable
+    filterable,
+    infiniteScroll,
+    infiniteScrollThreshold = 20,
+    onLoadMore
   } = props;
 
   const classes = useStyles({ rowHeight: props.rowHeight });
@@ -312,7 +318,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     'onGroup',
     'onRowSelected',
     'onRowExpandChange',
-    'onColumnsReordered'
+    'onColumnsReordered',
+    'onLoadMore'
   ]);
 
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
@@ -463,6 +470,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 overscanCount={overscanCount}
                 totalColumnsWidth={totalColumnsWidth}
                 selectedFlatRows={selectedFlatRows}
+                infiniteScroll={infiniteScroll}
+                infiniteScrollThreshold={infiniteScrollThreshold}
+                onLoadMore={onLoadMore}
               />
             )}
           </div>
