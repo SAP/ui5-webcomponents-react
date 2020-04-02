@@ -1,13 +1,31 @@
-import { getCompactSize } from '@ui5/webcomponents-base/dist/config/CompactSize';
+import { root as sap_fiori_3 } from '@sap-theming/theming-base-content/content/Base/baseLib/sap_fiori_3/variables.json';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
-import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
+import { Themes } from '@ui5/webcomponents-react/lib/Themes';
+import React, { FC, ReactNode, useEffect, useMemo } from 'react';
 import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { JSSTheme } from '../../interfaces/JSSTheme';
+
+const themeMap = window['@ui5/webcomponents-react-theming'] || (window['@ui5/webcomponents-react-theming'] = new Map());
+themeMap.set('sap_fiori_3', sap_fiori_3);
+
+const insertThemeDesignerParameters = (parameters = {}) => {
+  let element = document.querySelector('head #ui5wcr-theming-parameters');
+  if (!element) {
+    element = document.createElement('style');
+    element.id = 'ui5wcr-theming-parameters';
+    document.head.insertBefore(element, document.head.firstChild);
+  }
+  element.innerHTML = `
+:root {
+  ${Object.entries(parameters)
+    .map(([key, value]) => `--${key}:${value};`)
+    .join('\n')}
+}`;
+};
 
 declare global {
   interface Window {
@@ -20,11 +38,7 @@ declare global {
 const cssVarsPonyfillNeeded = () => !!window.CSSVarsPonyfill;
 
 export interface ThemeProviderProps {
-  /*
-   * If true, the Theme Provider will also inject the root node for message toasts.
-   * Required in case you want to use them.
-   */
-  withToastContainer?: boolean;
+  theme: Themes;
   children: ReactNode;
 }
 
@@ -40,9 +54,14 @@ if (!document.querySelector('style[data-ui5-webcomponents-react-sizes]')) {
  * <code>import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';</code>
  */
 const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
-  const { withToastContainer = false, children } = props;
-  const theme = getTheme();
-  const isCompactSize = getCompactSize();
+  const { children, theme = getTheme() } = props;
+  const isCompactSize = document.body.classList.contains('ui5-content-density-compact');
+
+  useEffect(() => {
+    if (themeMap) {
+      insertThemeDesignerParameters(themeMap.get(theme));
+    }
+  }, [theme]);
 
   const themeContext: JSSTheme = useMemo(() => {
     return {
@@ -52,14 +71,6 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
       rtl: getRTL()
     };
   }, [theme, isCompactSize]);
-
-  useEffect(() => {
-    if (isCompactSize) {
-      document.body.classList.add('ui5-content-density-compact');
-    } else {
-      document.body.classList.remove('ui5-content-density-compact');
-    }
-  }, [isCompactSize]);
 
   useEffect(() => {
     if (cssVarsPonyfillNeeded()) {
@@ -75,14 +86,7 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
     }
   }, []);
 
-  return (
-    <ReactJssThemeProvider theme={themeContext}>
-      <Fragment>
-        {children}
-        {withToastContainer && <MessageToast />}
-      </Fragment>
-    </ReactJssThemeProvider>
-  );
+  return <ReactJssThemeProvider theme={themeContext}>{children}</ReactJssThemeProvider>;
 };
 
 ThemeProvider.displayName = 'ThemeProvider';

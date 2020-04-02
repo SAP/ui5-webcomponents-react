@@ -1,3 +1,3 @@
-import { Avatar } from '../components/Avatar';
+import { Avatar } from '../webComponents/Avatar';
 
 export { Avatar };

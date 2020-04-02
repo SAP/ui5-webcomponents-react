@@ -8,10 +8,13 @@ import { AnalyticalCardHeader } from './lib/AnalyticalCardHeader';
 import { AnalyticalTable } from './lib/AnalyticalTable';
 import { AnalyticalTableScrollMode } from './lib/AnalyticalTableScrollMode';
 import { Avatar } from './lib/Avatar';
+import { AvatarBackgroundColor } from './lib/AvatarBackgroundColor';
+import { AvatarFitType } from './lib/AvatarFitType';
 import { AvatarShape } from './lib/AvatarShape';
 import { AvatarSize } from './lib/AvatarSize';
 import { Badge } from './lib/Badge';
 import { Bar } from './lib/Bar';
+import { BarDesign } from './lib/BarDesign';
 import { Breadcrumbs } from './lib/Breadcrumbs';
 import { BreadcrumbsSeparatorStyle } from './lib/BreadcrumbsSeparatorStyle';
 import { BusyIndicator } from './lib/BusyIndicator';
@@ -24,12 +27,15 @@ import { Card } from './lib/Card';
 import { Carousel } from './lib/Carousel';
 import { CarouselArrowsPlacement } from './lib/CarouselArrowsPlacement';
 import { CheckBox } from './lib/CheckBox';
+import { ComboBox } from './lib/ComboBox';
+import { ComboBoxItem } from './lib/ComboBoxItem';
 import { ContentDensity } from './lib/ContentDensity';
 import { CurrentViewportRangeContext } from './lib/CurrentViewportRangeContext';
 import { CustomListItem } from './lib/CustomListItem';
 import { DatePicker } from './lib/DatePicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
 import { Dialog } from './lib/Dialog';
+import { FileUploader } from './lib/FileUploader';
 import { FilterBar } from './lib/FilterBar';
 import { FilterItem } from './lib/FilterItem';
 import { FilterType } from './lib/FilterType';
@@ -61,8 +67,8 @@ import { MessageBoxActions } from './lib/MessageBoxActions';
 import { MessageBoxTypes } from './lib/MessageBoxTypes';
 import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
-import { MessageToast } from './lib/MessageToast';
 import { MultiComboBox } from './lib/MultiComboBox';
+import { MultiComboBoxItem } from './lib/MultiComboBoxItem';
 import { Notification } from './lib/Notification';
 import { NotificationGroup } from './lib/NotificationGroup';
 import { ObjectPage } from './lib/ObjectPage';
@@ -78,14 +84,15 @@ import { PanelAccessibleRoles } from './lib/PanelAccessibleRoles';
 import { PlacementType } from './lib/PlacementType';
 import { Popover } from './lib/Popover';
 import { PopoverHorizontalAlign } from './lib/PopoverHorizontalAlign';
+import { PopoverPlacementType } from './lib/PopoverPlacementType';
 import { PopoverVerticalAlign } from './lib/PopoverVerticalAlign';
 import { Priority } from './lib/Priority';
 import { ProductSwitch } from './lib/ProductSwitch';
 import { ProductSwitchItem } from './lib/ProductSwitchItem';
 import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
+import { ResponsivePopover } from './lib/ResponsivePopover';
 import { SegmentedButton } from './lib/SegmentedButton';
-import { SegmentedButtonItem } from './lib/SegmentedButtonItem';
 import { Select } from './lib/Select';
 import { SemanticColor } from './lib/SemanticColor';
 import { ShellBar } from './lib/ShellBar';
@@ -96,9 +103,11 @@ import { SideNavigationOpenState } from './lib/SideNavigationOpenState';
 import { Size } from './lib/Size';
 import { Spinner } from './lib/Spinner';
 import { StandardListItem } from './lib/StandardListItem';
+import { SuggestionItem } from './lib/SuggestionItem';
 import { Switch } from './lib/Switch';
 import { Tab } from './lib/Tab';
 import { TabContainer } from './lib/TabContainer';
+import { TabLayout } from './lib/TabLayout';
 import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
 import { TableCell } from './lib/TableCell';
@@ -112,10 +121,13 @@ import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
 import { ThemeProvider } from './lib/ThemeProvider';
 import { Themes } from './lib/Themes';
+import { TimePicker } from './lib/TimePicker';
 import { Timeline } from './lib/Timeline';
 import { TimelineItem } from './lib/TimelineItem';
 import { Title } from './lib/Title';
 import { TitleLevel } from './lib/TitleLevel';
+import { Toast } from './lib/Toast';
+import { ToastPlacement } from './lib/ToastPlacement';
 import { ToggleButton } from './lib/ToggleButton';
 import { Token } from './lib/Token';
 import { Tokenizer } from './lib/Tokenizer';
@@ -130,10 +142,13 @@ export {
   AnalyticalTable,
   AnalyticalTableScrollMode,
   Avatar,
+  AvatarBackgroundColor,
+  AvatarFitType,
   AvatarShape,
   AvatarSize,
   Badge,
   Bar,
+  BarDesign,
   Breadcrumbs,
   BreadcrumbsSeparatorStyle,
   BusyIndicator,
@@ -146,12 +161,15 @@ export {
   Carousel,
   CarouselArrowsPlacement,
   CheckBox,
+  ComboBox,
+  ComboBoxItem,
   ContentDensity,
   CurrentViewportRangeContext,
   CustomListItem,
   DatePicker,
   DeviationIndicator,
   Dialog,
+  FileUploader,
   FilterBar,
   FilterItem,
   FilterType,
@@ -183,8 +201,8 @@ export {
   MessageBoxTypes,
   MessageStrip,
   MessageStripType,
-  MessageToast,
   MultiComboBox,
+  MultiComboBoxItem,
   Notification,
   NotificationGroup,
   ObjectPage,
@@ -200,14 +218,15 @@ export {
   PlacementType,
   Popover,
   PopoverHorizontalAlign,
+  PopoverPlacementType,
   PopoverVerticalAlign,
   Priority,
   ProductSwitch,
   ProductSwitchItem,
   ProgressIndicator,
   RadioButton,
+  ResponsivePopover,
   SegmentedButton,
-  SegmentedButtonItem,
   Select,
   SemanticColor,
   ShellBar,
@@ -218,9 +237,11 @@ export {
   Size,
   Spinner,
   StandardListItem,
+  SuggestionItem,
   Switch,
   Tab,
   TabContainer,
+  TabLayout,
   TabSeparator,
   Table,
   TableCell,
@@ -234,10 +255,13 @@ export {
   TextArea,
   ThemeProvider,
   Themes,
+  TimePicker,
   Timeline,
   TimelineItem,
   Title,
   TitleLevel,
+  Toast,
+  ToastPlacement,
   ToggleButton,
   Token,
   Tokenizer,

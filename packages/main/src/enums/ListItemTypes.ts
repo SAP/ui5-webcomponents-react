@@ -1,4 +1,5 @@
 export enum ListItemTypes {
   Inactive = 'Inactive',
-  Active = 'Active'
+  Active = 'Active',
+  Detail = 'Detail'
 }

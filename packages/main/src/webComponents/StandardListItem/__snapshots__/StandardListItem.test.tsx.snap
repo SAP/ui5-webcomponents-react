@@ -2,7 +2,6 @@
 
 exports[`StandardListItem Basic Test (generated) 1`] = `
 <ui5-li
-  info-state="None"
   type="Active"
 />
 `;
