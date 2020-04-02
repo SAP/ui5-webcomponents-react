@@ -19,7 +19,7 @@ const noop = () => {
 
 export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
   hooks.columns.push((columns, { instance }) => {
-    const { webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows } = instance;
+    const { webComponentsReactProperties } = instance;
     const { selectionMode, onRowSelected, selectionBehavior } = webComponentsReactProperties;
 
     if (selectionMode === TableSelectionMode.NONE || selectionBehavior === TableSelectionBehavior.ROW_ONLY) {
@@ -67,7 +67,8 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         // The cell can use the individual row's getToggleRowSelectedProps method
         // to the render a checkbox
         // eslint-disable-next-line react/prop-types,react/display-name
-        Cell: ({ row }) => {
+        Cell: (instance) => {
+          const { row, webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows } = instance;
           const handleCellClick = (e) => {
             if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
               toggleSelected(e, row, webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows);
