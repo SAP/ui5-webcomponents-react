@@ -22,7 +22,8 @@ export const VirtualTableBody = (props) => {
     visibleRows,
     alternateRowColor,
     overscanCount,
-    totalColumnsWidth
+    totalColumnsWidth,
+    selectedFlatRows
   } = props;
 
   const innerDivRef = useRef<HTMLElement>();
@@ -40,7 +41,7 @@ export const VirtualTableBody = (props) => {
         columns
       }
     };
-  }, [rows, isTreeTable, classes, columns]);
+  }, [rows, prepareRow, isTreeTable, classes, columns, selectedFlatRows, selectionMode]);
 
   const getItemKey = useCallback(
     (index, data) => {

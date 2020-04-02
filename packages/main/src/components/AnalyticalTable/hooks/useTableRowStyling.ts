@@ -19,7 +19,7 @@ export const useTableRowStyling = (hooks) => {
     }
 
     if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
-      className += ` ${classes.selectableFirstCol}`;
+      className += ` ${classes.selectionModeRowSelector}`;
     }
 
     const rowProps: any = {

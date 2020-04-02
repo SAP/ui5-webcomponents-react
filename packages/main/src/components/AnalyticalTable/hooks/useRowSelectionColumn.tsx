@@ -14,9 +14,7 @@ const customCheckBoxStyling = {
   cursor: 'pointer',
   verticalAlign: 'middle'
 };
-const noop = () => {
-  // do nothing
-};
+
 export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
   hooks.columns.push((columns, { instance }) => {
     const { webComponentsReactProperties } = instance;
@@ -81,8 +79,6 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
           const handleCellClick = (e) => {
             if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
               toggleSelected(e, row, webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows);
-            } else {
-              noop();
             }
           };
           if (row.isGrouped && selectionMode === TableSelectionMode.SINGLE_SELECT) {

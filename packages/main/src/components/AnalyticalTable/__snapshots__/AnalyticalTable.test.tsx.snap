@@ -287,7 +287,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -346,7 +346,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0 AnalyticalTable-alternateRowColor-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-alternateRowColor-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -405,7 +405,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -432,7 +432,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0 AnalyticalTable-alternateRowColor-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-alternateRowColor-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -459,7 +459,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -778,7 +778,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -837,7 +837,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -896,7 +896,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -923,7 +923,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -950,7 +950,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -1892,7 +1892,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -1979,7 +1979,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -2057,7 +2057,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -2089,7 +2089,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -2121,7 +2121,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -2445,7 +2445,7 @@ exports[`AnalyticalTable custom row height 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 60px; width: 100%;"
           >
@@ -2504,7 +2504,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 60px; height: 60px; width: 100%;"
           >
@@ -2563,7 +2563,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 120px; height: 60px; width: 100%;"
           >
@@ -2590,7 +2590,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 180px; height: 60px; width: 100%;"
           >
@@ -2617,7 +2617,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 240px; height: 60px; width: 100%;"
           >
@@ -3225,7 +3225,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -3284,7 +3284,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -3343,7 +3343,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -3370,7 +3370,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -3397,7 +3397,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -3716,7 +3716,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -3775,7 +3775,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -3834,7 +3834,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -3861,7 +3861,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -3888,7 +3888,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -4207,7 +4207,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -4266,7 +4266,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -4325,7 +4325,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -4352,7 +4352,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -4379,7 +4379,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -4698,7 +4698,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -4757,7 +4757,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -4816,7 +4816,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -4843,7 +4843,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -4870,7 +4870,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -5239,7 +5239,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -5316,7 +5316,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -5391,7 +5391,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -5428,7 +5428,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -5465,7 +5465,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
