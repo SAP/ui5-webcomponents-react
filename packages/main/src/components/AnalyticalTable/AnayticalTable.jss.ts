@@ -39,22 +39,7 @@ const styles = {
     zIndex: 0,
     backgroundColor: ThemingParameters.sapList_Background,
     overflowX: 'hidden !important',
-    overflowY: 'auto !important',
-    '&::-webkit-scrollbar': {
-      backgroundColor: ThemingParameters.sapScrollBar_TrackColor,
-      width: ThemingParameters.sapScrollBar_Dimension
-    },
-    '&::-webkit-scrollbar-thumb': {
-      backgroundColor: ThemingParameters.sapScrollBar_FaceColor,
-      width: ThemingParameters.sapScrollBar_Dimension,
-      borderRadius: '0.25rem',
-      '&:hover': {
-        backgroundColor: ThemingParameters.sapScrollBar_Hover_FaceColor
-      }
-    },
-    '&::-webkit-scrollbar-corner': {
-      backgroundColor: ThemingParameters.sapScrollBar_TrackColor
-    }
+    overflowY: 'auto !important'
   },
   alternateRowColor: {
     backgroundColor: ThemingParameters.sapList_HeaderBackground
