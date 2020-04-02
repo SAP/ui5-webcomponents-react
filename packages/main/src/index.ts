@@ -47,6 +47,7 @@ import { FlexBoxWrap } from './lib/FlexBoxWrap';
 import { Form } from './lib/Form';
 import { FormGroup } from './lib/FormGroup';
 import { FormItem } from './lib/FormItem';
+import { GlobalStyleClasses } from './lib/GlobalStyleClasses';
 import { Grid } from './lib/Grid';
 import { GridPosition } from './lib/GridPosition';
 import { GroupHeaderListItem } from './lib/GroupHeaderListItem';
@@ -181,6 +182,7 @@ export {
   Form,
   FormGroup,
   FormItem,
+  GlobalStyleClasses,
   Grid,
   GridPosition,
   GroupHeaderListItem,
