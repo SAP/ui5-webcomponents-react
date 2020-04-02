@@ -14,7 +14,7 @@ export const defaultStory = () => (
     onDataPointClick={action('onDataPointClick')}
     onLegendClick={action('onLegendClick')}
     dataset={complexDataSet}
-    width={text('width', '97%')}
+    width={text('width', '100%')}
     height={text('height', '95vh')}
     loading={boolean('loading', false)}
     noLegend={boolean('noLegend', false)}
@@ -141,8 +141,8 @@ export const withSecondardDimension = () => (
     labelKey={'name'}
     secondaryDimensionKey={'dimension'}
     color={'lightblue'}
-    width={text('width', '95%')}
-    height={text('height', '70vh')}
+    width={'100%'}
+    height={'60vh'}
     chartConfig={{ dataLabel: true, barSize: 20 }}
   />
 );

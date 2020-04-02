@@ -14,9 +14,8 @@ export const renderStory = () => {
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
-      width={'95%'}
-      height={'40vh'}
-      loading={true}
+      width={'100%'}
+      height={'60vh'}
     />
   );
 };
