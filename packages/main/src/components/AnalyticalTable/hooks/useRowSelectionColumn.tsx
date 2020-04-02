@@ -6,10 +6,11 @@ import React from 'react';
 import { PluginHook } from 'react-table';
 import { toggleSelected } from '../util';
 
-const divStyle = { width: '100%', height: '100%' };
+const divStyle = { width: '100%', height: '100%', cursor: 'pointer' };
 const customCheckBoxStyling = {
   '--_ui5_checkbox_compact_width_height': 'var(--_ui5_checkbox_compact_inner_size)',
   '--_ui5_checkbox_width_height': 'var(--_ui5_checkbox_inner_width_height)',
+  cursor: 'pointer',
   verticalAlign: 'middle'
 };
 const noop = () => {

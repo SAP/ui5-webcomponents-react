@@ -57,7 +57,6 @@ export const useTableCellStyling: PluginHook<{}> = (hooks) => {
       style.paddingRight = `calc(${ThemingParameters.sapScrollBar_Dimension} + 0.5rem)`;
       style.boxSizing = 'border-box';
     }
-
     return {
       ...cellProps,
       className,

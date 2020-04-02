@@ -21,8 +21,7 @@ export const VirtualTableBody = (props) => {
     visibleRows,
     alternateRowColor,
     overscanCount,
-    totalColumnsWidth,
-    selectedFlatRows
+    totalColumnsWidth
   } = props;
 
   const innerDivRef = useRef<HTMLElement>();

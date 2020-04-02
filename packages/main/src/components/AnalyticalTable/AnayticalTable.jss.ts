@@ -83,9 +83,11 @@ const styles = {
   selectable: {
     '& $tr:hover:not($emptyRow)': {
       backgroundColor: ThemingParameters.sapList_Hover_Background,
-      cursor: 'pointer'
+      '&:not($selectableFirstCol)': {
+        cursor: 'pointer'
+      }
     },
-    '& $tr:active:not([data-is-selected]):not($tableGroupHeader):not($emptyRow)': {
+    '& $tr:active:not([data-is-selected]):not($tableGroupHeader):not($emptyRow):not($selectableFirstCol)': {
       backgroundColor: ThemingParameters.sapList_Active_Background,
       '& $tableCell': {
         borderRight: `1px solid ${ThemingParameters.sapList_Active_Background}`,
@@ -94,6 +96,7 @@ const styles = {
       }
     }
   },
+  selectableFirstCol: {},
   tableCell: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     fontFamily: ThemingParameters.sapFontFamily,

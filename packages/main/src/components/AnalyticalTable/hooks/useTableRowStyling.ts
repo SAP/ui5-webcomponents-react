@@ -6,11 +6,7 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 export const useTableRowStyling = (hooks) => {
   hooks.getRowProps.push((passedRowProps, { instance, row }) => {
-    const {
-      classes,
-      selectionMode,
-      selectionBehavior
-    } = instance.webComponentsReactProperties;
+    const { classes, selectionMode, selectionBehavior } = instance.webComponentsReactProperties;
     const isEmptyRow = row.original?.emptyRow;
     let className = classes.tr;
     if (row.isGrouped) {
@@ -19,6 +15,10 @@ export const useTableRowStyling = (hooks) => {
 
     if (isEmptyRow) {
       className += ` ${classes.emptyRow}`;
+    }
+
+    if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
+      className += ` ${classes.selectableFirstCol}`;
     }
 
     const rowProps: any = {
