@@ -6,6 +6,7 @@ import { enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-re
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
@@ -348,7 +349,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     isMounted.current = true;
   }, [isMounted, setScrollbarWidth]);
 
-  const objectPageClasses = StyleClassHelper.of(classes.objectPage);
+  const objectPageClasses = StyleClassHelper.of(classes.objectPage, GlobalStyleClasses.sapScrollBar);
   if (className) {
     objectPageClasses.put(className);
   }

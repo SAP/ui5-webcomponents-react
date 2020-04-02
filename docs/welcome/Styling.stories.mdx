@@ -8,7 +8,7 @@ import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 # How can I style my Web Components?
 [Open Github Project](https://github.com/SAP/ui5-webcomponents-react)
 
-## Change styles for exisiting components
+## Change styles for existing components
 You can easily change the appearance of the Web Components by using [CSS Variables](https://www.w3schools.com/Css/css3_variables.asp).
 Per default, we are injecting the Fiori 3 theme parameters as CSS Variables into the `document head`.
 If you want to change e.g. the color of all texts, you can do that by creating another `style` element with the following content:
@@ -22,6 +22,14 @@ You can change CSS Variables on any level - in the head, or on every single elem
 
 A full list of all supported CSS Variables can be found [here](https://github.com/SAP/ui5-webcomponents-react/blob/master/packages/base/src/styling/sap_fiori_3.ts) 
 or in the [SAPUI5 Theming Parameters Toolbox](https://sapui5.hana.ondemand.com/test-resources/sap/m/demokit/theming/webapp/index.html).
+
+## Reuse global style classes
+The `ThemeProvider` component is offering global css classes that can be reused in your applications code to help you to achieve a Fiori look-and-feel.
+All globally available style classes are tracked in the `GlobalStyleClasses` enum which can be imported from `import { GlobalStyleClasses } from "@ui5/webcomponents-react/lib/GlobalStyleClasses";`.
+
+|CSS Class|Description|
+|---------|-----------|
+|`sapScrollBar`|If added to an container that supports scrolling, the scrollbar will be styled according to the Fiori guidelines. |
 
 ## Style your own components
 It's quite likely that you have to create some custom components when you are building an app.

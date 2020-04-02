@@ -4,6 +4,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React, { useCallback, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { VirtualTableRow } from './VirtualTableRow';
 
 export const VirtualTableBody = (props) => {
@@ -58,7 +59,7 @@ export const VirtualTableBody = (props) => {
     [prepareRow]
   );
 
-  const classNames = StyleClassHelper.of(classes.tbody);
+  const classNames = StyleClassHelper.of(classes.tbody, GlobalStyleClasses.sapScrollBar);
   if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
     classNames.put(classes.selectable);
   }
