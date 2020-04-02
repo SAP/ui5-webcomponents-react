@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { Tokenizer } from '@ui5/webcomponents-react/lib/Tokenizer';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('Tokenizer', () => {

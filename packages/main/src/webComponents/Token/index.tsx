@@ -1,4 +1,3 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Token from '@ui5/webcomponents/dist/Token';
 import React, { FC, ReactNode, ReactNodeArray } from 'react';

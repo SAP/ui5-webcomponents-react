@@ -4,7 +4,10 @@ import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ProductSwitchPropTypes extends WithWebComponentPropTypes {
-  children?: ReactNode | ReactNode[]; // @generated
+  /**
+   * Defines the items of the <code>ui5-product-switch</code>.
+   */
+  children?: ReactNode | ReactNode[];
 }
 
 /**
@@ -15,5 +18,7 @@ export interface ProductSwitchPropTypes extends WithWebComponentPropTypes {
 const ProductSwitch: FC<ProductSwitchPropTypes> = withWebComponent<ProductSwitchPropTypes>(UI5ProductSwitch);
 
 ProductSwitch.displayName = 'ProductSwitch';
+
+ProductSwitch.defaultProps = {};
 
 export { ProductSwitch };

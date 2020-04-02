@@ -1,4 +1,4 @@
 export enum CarouselArrowsPlacement {
-  PageIndicator = 'PageIndicator',
+  Navigation = 'Navigation',
   Content = 'Content'
 }
