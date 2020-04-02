@@ -93,7 +93,7 @@ export const defaultTable = () => {
         selectionBehavior={select<TableSelectionBehavior>(
           'selectionBehavior',
           TableSelectionBehavior,
-          TableSelectionBehavior.ROW_SELECTOR
+        TableSelectionBehavior.ROW
         )}
       />
     </div>
