@@ -3501,11 +3501,11 @@ exports[`AnalyticalTable test Asc desc 2`] = `
                 Sort Ascending
               </ui5-li>
               <ui5-li
-                data-sort="clear"
-                icon="decline"
+                data-sort="desc"
+                icon="sort-descending"
                 type="Active"
               >
-                Clear Sorting
+                Sort Descending
               </ui5-li>
             </ui5-list>
           </ui5-popover>
@@ -3985,11 +3985,11 @@ exports[`AnalyticalTable test Asc desc 3`] = `
               separators="All"
             >
               <ui5-li
-                data-sort="clear"
-                icon="decline"
+                data-sort="asc"
+                icon="sort-ascending"
                 type="Active"
               >
-                Clear Sorting
+                Sort Ascending
               </ui5-li>
               <ui5-li
                 data-sort="desc"
