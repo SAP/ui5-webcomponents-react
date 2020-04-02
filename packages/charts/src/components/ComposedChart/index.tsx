@@ -70,16 +70,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     secondaryDimensionKey,
     onDataPointClick,
     noLegend = false,
+    labels,
     xAxisFormatter = (el) => el,
     yAxisFormatter = (el) => el,
-    tooltipFormatter = (value, name) => [value, name],
-    tooltipLabelFormatter = (labelValue) => labelValue,
-    legendFormatter = (value) => value,
     defaults = {
       barSize: 20,
       barGap: 3,
       lineType: 'monotone',
-      dataLabelFormatter: (d) => d,
+      xAxisFormatter: (d) => d,
+      yAxisFormatter: (d) => d,
       dataLabelCustomElement: undefined,
       label: { position: 'top' },
       stackId: undefined
@@ -169,7 +168,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const ComposedDataLabel = useDataLabel(
     chartConfig.dataLabel,
     defaults.dataLabelCustomElement,
-    defaults.dataLabelFormatter,
+    yAxisFormatter,
     defaults.stackId
   );
 
@@ -242,24 +241,13 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             interval={0}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipFormatter} labelFormatter={tooltipLabelFormatter} />
-        {!noLegend && (
-          <Legend
-            onClick={onItemLegendClick}
-            verticalAlign={chartConfig.legendPosition ?? 'top'}
-            formatter={legendFormatter}
-          />
-        )}
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={xAxisFormatter} />
+        {!noLegend && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition ?? 'top'} />}
         {elements?.map((config, index) => {
-          const {
-            type,
-            accessor,
-            color,
-            lineType,
-            dataLabelFormatter,
-            dataLabelCustomElement,
-            ...safeProps
-          } = mergeWithDefaults(config, defaults);
+          const { type, accessor, color, lineType, dataLabelCustomElement, ...safeProps } = mergeWithDefaults(
+            config,
+            defaults
+          );
           const ChartElement = (ChartTypes[type] as any) as FC<any>;
           const yAxisId = chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === accessor ? 'right' : 'left';
 
@@ -291,7 +279,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               break;
           }
           return (
-            <ChartElement key={index} dataKey={accessor} yAxisId={yAxisId} {...safeProps} {...chartElementProps} />
+            <ChartElement
+              key={accessor}
+              name={labels?.[accessor] || accessor}
+              dataKey={accessor}
+              yAxisId={yAxisId}
+              {...safeProps}
+              {...chartElementProps}
+            />
           );
         })}
         {chartConfig.zoomingTool && (

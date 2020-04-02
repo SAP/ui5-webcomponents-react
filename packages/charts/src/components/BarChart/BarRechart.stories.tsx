@@ -81,7 +81,6 @@ export const defaultFormatterStory = () => (
     width={'91%'}
     height={'90vh'}
     dataset={complexDataSet}
-    dataLabelFormatter={(d) => `${d / 10}%`}
     xAxisFormatter={(el) => el / 10}
     yAxisFormatter={(el) => el.slice(0, 3)}
     chartConfig={{

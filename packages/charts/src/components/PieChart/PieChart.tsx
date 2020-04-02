@@ -27,13 +27,12 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     dataset,
     dataKeys,
     noLegend = false,
+    labels,
     onDataPointClick,
     onLegendClick,
     dataLabelCustomElement = undefined,
-    dataLabelFormatter = (d) => d,
-    tooltipFormatter = (value, name) => [value, name],
-    tooltipLabelFormatter = (labelValue) => labelValue,
-    legendFormatter = (value) => value,
+    xAxisFormatter = (el) => el,
+    yAxisFormatter = (el) => el,
     chartConfig = {
       margin: { right: 30, left: 30, bottom: 30, top: 30 },
       yAxisVisible: true,
@@ -80,7 +79,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     [onDataPointClick]
   );
 
-  const PieDataLabel = usePieDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter);
+  const PieDataLabel = usePieDataLabel(chartConfig.dataLabel, dataLabelCustomElement, yAxisFormatter);
 
   const marginChart = chartConfig?.margin ?? { right: 30, left: 30, bottom: 30, top: 30 };
 
@@ -109,13 +108,15 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
           {chartConfig.innerRadius && <Label position={'center'}>{currentDataKeys[0]}</Label>}
           {dataset &&
             dataset.map((data, index) => (
-              <Cell key={index} fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`} />
+              <Cell
+                key={index}
+                name={xAxisFormatter(data[labelKey])}
+                fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
+              />
             ))}
         </Pie>
-        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={tooltipLabelFormatter} formatter={tooltipFormatter} />
-        {!noLegend && (
-          <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} formatter={legendFormatter} />
-        )}
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={xAxisFormatter} />
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
       </PieChartLib>
     </ChartContainer>
   );

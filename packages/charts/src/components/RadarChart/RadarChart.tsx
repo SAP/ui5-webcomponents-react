@@ -37,12 +37,9 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     dataKeys,
     noLegend = false,
     onDataPointClick,
-    xAxisFormatter,
+    labels,
+    xAxisFormatter = (el) => el,
     yAxisFormatter = (el) => el,
-    dataLabelFormatter = (d) => d,
-    tooltipFormatter = (value, name) => [value, name],
-    tooltipLabelFormatter = (labelValue) => labelValue,
-    legendFormatter = (value) => value,
     dataLabelCustomElement = undefined,
     onLegendClick,
     chartConfig = {
@@ -82,7 +79,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     [onDataPointClick]
   );
 
-  const RadarDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter, false, false);
+  const RadarDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, yAxisFormatter, false, false);
 
   const marginChart = useChartMargin(dataset, yAxisFormatter, labelKey, chartConfig.margin);
 
@@ -113,7 +110,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
           <Radar
             key={index}
             activeDot={{ onClick: onDataPointClickInternal }}
-            name={key}
+            name={labels?.[key] || key}
             dataKey={key}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
@@ -121,10 +118,8 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
             label={RadarDataLabel}
           />
         ))}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={tooltipLabelFormatter} formatter={tooltipFormatter} />
-        {!noLegend && (
-          <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} formatter={legendFormatter} />
-        )}
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={xAxisFormatter} />
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
       </RadarChartLib>
     </ChartContainer>
   );
