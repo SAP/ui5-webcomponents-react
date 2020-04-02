@@ -19,6 +19,7 @@ exports[`SideNavigation Collapsed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="home"
       />
@@ -31,6 +32,7 @@ exports[`SideNavigation Collapsed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="calendar"
       />
@@ -43,6 +45,7 @@ exports[`SideNavigation Collapsed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="employee"
       />
@@ -57,6 +60,7 @@ exports[`SideNavigation Collapsed 1`] = `
     >
       <span>
         <ui5-icon
+          accessible-name=""
           class="SideNavigationListItem-icon-0"
           name="lead"
         />
@@ -73,6 +77,7 @@ exports[`SideNavigation Collapsed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="add-product"
       />
@@ -99,6 +104,7 @@ exports[`SideNavigation Collapsed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="compare"
       />
@@ -111,6 +117,7 @@ exports[`SideNavigation Collapsed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="chain-link"
       />
@@ -138,6 +145,7 @@ exports[`SideNavigation Condensed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="home"
       />
@@ -150,6 +158,7 @@ exports[`SideNavigation Condensed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="calendar"
       />
@@ -162,6 +171,7 @@ exports[`SideNavigation Condensed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="employee"
       />
@@ -176,6 +186,7 @@ exports[`SideNavigation Condensed 1`] = `
     >
       <span>
         <ui5-icon
+          accessible-name=""
           class="SideNavigationListItem-icon-0"
           name="lead"
         />
@@ -192,6 +203,7 @@ exports[`SideNavigation Condensed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="add-product"
       />
@@ -218,6 +230,7 @@ exports[`SideNavigation Condensed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="compare"
       />
@@ -230,6 +243,7 @@ exports[`SideNavigation Condensed 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="chain-link"
       />
@@ -258,6 +272,7 @@ exports[`SideNavigation Expanded 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="home"
       />
@@ -275,6 +290,7 @@ exports[`SideNavigation Expanded 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="calendar"
       />
@@ -292,6 +308,7 @@ exports[`SideNavigation Expanded 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="employee"
       />
@@ -309,6 +326,7 @@ exports[`SideNavigation Expanded 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="lead"
       />
@@ -321,6 +339,7 @@ exports[`SideNavigation Expanded 1`] = `
         class="SideNavigationListItem-expandArrow-0"
       >
         <ui5-icon
+          accessible-name=""
           name="navigation-down-arrow"
         />
       </span>
@@ -387,6 +406,7 @@ exports[`SideNavigation Expanded 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="add-product"
       />
@@ -418,6 +438,7 @@ exports[`SideNavigation Expanded 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="compare"
       />
@@ -435,6 +456,7 @@ exports[`SideNavigation Expanded 1`] = `
       type="Active"
     >
       <ui5-icon
+        accessible-name=""
         class="SideNavigationListItem-icon-0"
         name="chain-link"
       />
@@ -514,6 +536,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
         class="SideNavigationListItem-expandArrow-0"
       >
         <ui5-icon
+          accessible-name=""
           name="navigation-down-arrow"
         />
       </span>

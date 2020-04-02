@@ -3,5 +3,7 @@
 exports[`Link Basic Test (generated) 1`] = `
 <ui5-link
   design="Default"
+  href=""
+  target=""
 />
 `;

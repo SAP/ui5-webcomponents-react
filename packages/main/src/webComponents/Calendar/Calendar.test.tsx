@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { Calendar } from '@ui5/webcomponents-react/lib/Calendar';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('Calendar', () => {

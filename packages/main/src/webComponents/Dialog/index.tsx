@@ -1,4 +1,3 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Dialog from '@ui5/webcomponents/dist/Dialog';
@@ -8,17 +7,46 @@ import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
-  initialFocus?: string; // @generated
-  hideHeader?: boolean; // @generated
-  headerText?: string; // @generated
-  stretch?: boolean; // @generated
-  onBeforeOpen?: (event: CustomEvent) => void; // @generated
-  onAfterOpen?: (event: CustomEvent) => void; // @generated
-  onBeforeClose?: (event: CustomEvent) => void; // @generated
-  onAfterClose?: (event: CustomEvent) => void; // @generated
-  header?: ReactNode; // @generated
-  footer?: ReactNode; // @generated
-  content?: ReactNode | ReactNode[];
+  /**
+   * Determines whether the <code>ui5-dialog</code> should be stretched to fullscreen. <br><br> <b>Note:</b> The <code>ui5-dialog</code> will be stretched to aproximetly 90% of the viewport.
+   */
+  stretch?: boolean;
+  /**
+   * Defines the header text. <br><br> <b>Note:</b> If <code>header</code> slot is provided, the <code>headerText</code> is ignored.
+   */
+  headerText?: string;
+  /**
+   * Defines the ID of the HTML Element, which will get the initial focus.
+   */
+  initialFocus?: string;
+  /**
+   * Defines the header HTML Element.
+   */
+  header?: ReactNode | ReactNode[];
+  /**
+   * Defines the footer HTML Element.
+   */
+  footer?: ReactNode | ReactNode[];
+  /**
+   * Defines the content of the Web Component.
+   */
+  children?: ReactNode | ReactNode[];
+  /**
+   * Fired after the component is closed.
+   */
+  onAfterClose?: (event: CustomEvent<{}>) => void;
+  /**
+   * Fired after the component is opened.
+   */
+  onAfterOpen?: (event: CustomEvent<{}>) => void;
+  /**
+   * Fired before the component is closed.
+   */
+  onBeforeClose?: (event: CustomEvent<{ escPressed: boolean }>) => void;
+  /**
+   * Fired before the component is opened.
+   */
+  onBeforeOpen?: (event: CustomEvent<{}>) => void;
   open?: boolean;
 }
 
@@ -49,8 +77,8 @@ const Dialog: FC<DialogPropTypes> = React.forwardRef(
 );
 
 Dialog.defaultProps = {
-  initialFocus: null, // @generated
-  headerText: '' // @generated
+  initialFocus: null,
+  headerText: ''
 };
 
 Dialog.displayName = 'Dialog';

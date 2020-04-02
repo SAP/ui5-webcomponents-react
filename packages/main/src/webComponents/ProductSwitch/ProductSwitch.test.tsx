@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { ProductSwitch } from '@ui5/webcomponents-react/lib/ProductSwitch';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('ProductSwitch', () => {
