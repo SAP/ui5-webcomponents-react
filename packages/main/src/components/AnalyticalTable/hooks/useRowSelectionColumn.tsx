@@ -1,5 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React from 'react';
 import { PluginHook } from 'react-table';
@@ -16,9 +17,9 @@ const noop = () => {
 
 export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
   hooks.columns.push((columns, { instance }) => {
-    const { selectionMode, noSelectionColumn, onRowSelected } = instance.webComponentsReactProperties;
+    const { selectionMode, onRowSelected, selectionBehavior } = instance.webComponentsReactProperties;
 
-    if (selectionMode === TableSelectionMode.NONE || noSelectionColumn) {
+    if (selectionMode === TableSelectionMode.NONE || selectionBehavior === TableSelectionBehavior.ROW_ONLY) {
       return columns;
     }
 
@@ -99,19 +100,19 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
   });
 
   hooks.columnsDeps.push((deps, { instance: { state, webComponentsReactProperties } }) => {
-    return [...deps, webComponentsReactProperties.selectionMode, webComponentsReactProperties.noSelectionColumn];
+    return [...deps, webComponentsReactProperties.selectionMode, webComponentsReactProperties.selectionBehavior];
   });
 
   hooks.visibleColumnsDeps.push((deps, { instance }) => [
     ...deps,
-    instance.webComponentsReactProperties.noSelectionColumn,
-    instance.webComponentsReactProperties.selectionMode
+    instance.webComponentsReactProperties.selectionMode,
+    instance.webComponentsReactProperties.selectionBehavior
   ]);
 
   hooks.visibleColumns.push((columns, { instance: { webComponentsReactProperties } }) => {
     if (
-      webComponentsReactProperties.noSelectionColumn ||
-      webComponentsReactProperties.selectionMode === TableSelectionMode.NONE
+      webComponentsReactProperties.selectionMode === TableSelectionMode.NONE ||
+      webComponentsReactProperties.selectionBehavior === TableSelectionBehavior.ROW_ONLY
     ) {
       return columns;
     }

@@ -1,8 +1,10 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import React, {
@@ -31,7 +33,6 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
@@ -95,7 +96,6 @@ export interface TableProps extends CommonProps {
   noDataText?: string;
   rowHeight?: number;
   alternateRowColor?: boolean;
-  noSelectionColumn?: boolean;
   withRowHighlight?: boolean;
   highlightField?: string;
 
@@ -104,6 +104,7 @@ export interface TableProps extends CommonProps {
   sortable?: boolean;
   groupable?: boolean;
   groupBy?: string[];
+  selectionBehavior?: TableSelectionBehavior;
   selectionMode?: TableSelectionMode;
   scaleWidthMode?: TableScaleWidthMode;
   columnOrder?: object[];
@@ -147,6 +148,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     loading,
     groupBy,
     selectionMode,
+    selectionBehavior,
     onRowSelected,
     reactTableOptions,
     tableHooks,
@@ -165,7 +167,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     alternateRowColor,
     overscanCount,
     scaleWidthMode,
-    noSelectionColumn,
     withRowHighlight,
     highlightField = 'status'
   } = props;
@@ -208,6 +209,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       stateReducer,
       webComponentsReactProperties: {
         selectionMode,
+        selectionBehavior,
         classes,
         onRowSelected,
         onRowExpandChange,
@@ -215,7 +217,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         alternateRowColor,
         scaleWidthMode,
         loading,
-        noSelectionColumn,
         withRowHighlight,
         highlightField
       },
@@ -416,6 +417,7 @@ AnalyticalTable.defaultProps = {
   filterable: false,
   groupable: false,
   selectionMode: TableSelectionMode.NONE,
+  selectionBehavior: TableSelectionBehavior.ROW_SELECTOR,
   scaleWidthMode: TableScaleWidthMode.Default,
   data: [],
   columns: [],

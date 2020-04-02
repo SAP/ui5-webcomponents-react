@@ -4,9 +4,10 @@ import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
+import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import React from 'react';
-import { TableScaleWidthMode } from '../../../enums/TableScaleWidthMode';
 import generateData from './generateData';
 
 const columns = [
@@ -87,9 +88,13 @@ export const defaultTable = () => {
         rowHeight={number('rowHeight', 44)}
         selectedRowIds={object('selectedRowIds', { 3: true })}
         onColumnsReordered={action('onColumnsReordered')}
-        noSelectionColumn={boolean('noSelectionColumn', false)}
         withRowHighlight={boolean('withRowHighlight', true)}
         highlightField={text('highlightField', 'status')}
+        selectionBehavior={select<TableSelectionBehavior>(
+          'selectionBehavior',
+          TableSelectionBehavior,
+          TableSelectionBehavior.ROW_SELECTOR
+        )}
       />
     </div>
   );
@@ -117,6 +122,11 @@ export const treeTable = () => {
       onRowExpandChange={action('onRowExpandChange')}
       subRowsKey={text('subRowsKey', 'subRows')}
       selectedRowIds={object('selectedRowIds', { 3: true })}
+      selectionBehavior={select<TableSelectionBehavior>(
+        'selectionBehavior',
+        TableSelectionBehavior,
+        TableSelectionBehavior.ROW_SELECTOR
+      )}
       isTreeTable={boolean('isTreeTable', true)}
     />
   );
