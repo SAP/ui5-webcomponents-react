@@ -418,7 +418,7 @@ AnalyticalTable.defaultProps = {
   filterable: false,
   groupable: false,
   selectionMode: TableSelectionMode.NONE,
-  selectionBehavior: TableSelectionBehavior.ROW_SELECTOR,
+  selectionBehavior: TableSelectionBehavior. ROW,
   scaleWidthMode: TableScaleWidthMode.Default,
   data: [],
   columns: [],
