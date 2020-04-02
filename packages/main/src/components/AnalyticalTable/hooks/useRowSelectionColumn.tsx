@@ -4,6 +4,7 @@ import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelect
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React from 'react';
 import { PluginHook } from 'react-table';
+import { toggleSelected } from '../util';
 
 const divStyle = { width: '100%', height: '100%' };
 const customCheckBoxStyling = {
@@ -65,34 +66,22 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         // to the render a checkbox
         // eslint-disable-next-line react/prop-types,react/display-name
         Cell: ({ row }) => {
+          const handleCellClick = (e) => {
+            if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
+              toggleSelected(e, row, instance);
+            } else {
+              noop();
+            }
+          };
           if (row.isGrouped && selectionMode === TableSelectionMode.SINGLE_SELECT) {
             return null;
           }
           if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
-            // if (instance.webComponentsReactProperties.isTreeTable) {
-            //   const selectRow = () => {
-            //     instance.dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: { [row.id]: !row.isSelected } });
-            //   };
-            //   return <div style={divStyle} onClick={selectRow} />;
-            // }
-            // eslint-disable-next-line react/prop-types
-            return <div style={divStyle} /*onClick={row.toggleRowSelected} */ />;
+            return <div style={divStyle} onClick={handleCellClick} />;
           }
-          // if (instance.webComponentsReactProperties.isTreeTable) {
-          //   const selectRow = () => {
-          //     instance.dispatch({
-          //       type: 'SET_SELECTED_ROWS',
-          //       selectedIds: Object.assign({}, ...instance.selectedFlatRows.map((item) => ({ [item.id]: true })), {
-          //         [row.id]: !row.isSelected
-          //       })
-          //     });
-          //   };
-          //   return (
-          //     <CheckBox /*{...row.getToggleRowSelectedProps()}*/ onChange={selectRow} style={customCheckBoxStyling} />
-          //   );
-          // }
-          // eslint-disable-next-line react/prop-types
-          return <CheckBox {...row.getToggleRowSelectedProps()} onChange={noop} style={customCheckBoxStyling} />;
+          return (
+            <CheckBox {...row.getToggleRowSelectedProps()} onChange={handleCellClick} style={customCheckBoxStyling} />
+          );
         }
       },
       ...columns
