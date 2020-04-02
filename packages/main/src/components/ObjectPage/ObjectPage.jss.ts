@@ -18,19 +18,6 @@ const styles = {
     backgroundColor: ThemingParameters.sapBackgroundColor,
     overflowX: 'hidden',
     overflowY: 'auto',
-    '&::-webkit-scrollbar': {
-      backgroundColor: ThemingParameters.sapScrollBar_TrackColor,
-      width: ThemingParameters.sapScrollBar_Dimension
-    },
-    '&::-webkit-scrollbar-thumb': {
-      backgroundColor: ThemingParameters.sapScrollBar_BorderColor,
-      '&:hover': {
-        backgroundColor: ThemingParameters.sapScrollBar_Hover_FaceColor
-      }
-    },
-    '&::-webkit-scrollbar-corner': {
-      backgroundColor: ThemingParameters.sapScrollBar_TrackColor
-    },
     '& section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'none'
     },
