@@ -19,7 +19,8 @@ const noop = () => {
 
 export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
   hooks.columns.push((columns, { instance }) => {
-    const { selectionMode, onRowSelected, selectionBehavior } = instance.webComponentsReactProperties;
+    const { webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows } = instance;
+    const { selectionMode, onRowSelected, selectionBehavior } = webComponentsReactProperties;
 
     if (selectionMode === TableSelectionMode.NONE || selectionBehavior === TableSelectionBehavior.ROW_ONLY) {
       return columns;
@@ -69,7 +70,7 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         Cell: ({ row }) => {
           const handleCellClick = (e) => {
             if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
-              toggleSelected(e, row, instance);
+              toggleSelected(e, row, webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows);
             } else {
               noop();
             }

@@ -6,7 +6,8 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 export const useTableRowStyling = (hooks) => {
   hooks.getRowProps.push((passedRowProps, { instance, row }) => {
-    const { classes, selectionMode, selectionBehavior } = instance.webComponentsReactProperties;
+    const { webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows } = instance;
+    const { classes, selectionBehavior, selectionMode } = webComponentsReactProperties;
     const isEmptyRow = row.original?.emptyRow;
     let className = classes.tr;
     if (row.isGrouped) {
@@ -32,7 +33,7 @@ export const useTableRowStyling = (hooks) => {
           if (row.isGrouped) {
             return;
           }
-          toggleSelected(e, instance, row);
+          toggleSelected(e, row, webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows);
         };
       }
       if (row.isSelected) {

@@ -25,18 +25,18 @@ export const orderByFn = (rows, functions, directions) => {
   return defaultOrderByFn(rows, wrappedSortfunctions, directions);
 };
 
-export const toggleSelected = (e, row, instance) => {
-  const { isTreeTable, selectionMode, onRowSelected } = instance.webComponentsReactProperties;
+export const toggleSelected = (e, row, webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows) => {
+  const { isTreeTable, selectionMode, onRowSelected } = webComponentsReactProperties;
   if (isTreeTable) {
     if (selectionMode === TableSelectionMode.MULTI_SELECT) {
-      instance.dispatch({
+      dispatch({
         type: 'SET_SELECTED_ROWS',
-        selectedIds: Object.assign({}, ...instance.selectedFlatRows.map((item) => ({ [item.id]: true })), {
+        selectedIds: Object.assign({}, ...selectedFlatRows.map((item) => ({ [item.id]: true })), {
           [row.id]: !row.isSelected
         })
       });
     } else {
-      instance.dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: { [row.id]: !row.isSelected } });
+      dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: { [row.id]: !row.isSelected } });
     }
   } else {
     row.toggleRowSelected();
@@ -49,16 +49,16 @@ export const toggleSelected = (e, row, instance) => {
     const payloadWithFlatRows = {
       ...payload,
       selectedFlatRows: !row.isSelected
-        ? [...instance.selectedFlatRows, row]
-        : instance.selectedFlatRows.filter((prevRow) => prevRow.id !== row.id)
+        ? [...selectedFlatRows, row]
+        : selectedFlatRows.filter((prevRow) => prevRow.id !== row.id)
     };
     onRowSelected(
       enrichEventWithDetails(e, TableSelectionMode.MULTI_SELECT === selectionMode ? payloadWithFlatRows : payload)
     );
   }
   if (selectionMode === TableSelectionMode.SINGLE_SELECT && !isTreeTable) {
-    instance.selectedFlatRows.forEach(({ id }) => {
-      instance.toggleRowSelected(id, false);
+    selectedFlatRows.forEach(({ id }) => {
+      toggleRowSelected(id, false);
     });
   }
 };
