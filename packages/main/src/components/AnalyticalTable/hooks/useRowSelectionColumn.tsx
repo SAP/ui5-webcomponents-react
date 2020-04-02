@@ -23,10 +23,13 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
     }
 
     const toggleAllRowsSelected = (e) => {
-      const allRowsSelected = e.detail.checked;
+      const allRowsSelected = e.target.checked;
       instance.toggleAllRowsSelected(allRowsSelected);
       if (typeof onRowSelected === 'function') {
-        onRowSelected(enrichEventWithDetails(e, { allRowsSelected }));
+        onRowSelected(
+          //cannot use instance.selectedFlatRows here as it only returns all rows on the first level
+          enrichEventWithDetails(e, { allRowsSelected, selectedFlatRows: allRowsSelected ? instance.flatRows : [] })
+        );
       }
     };
 
@@ -65,9 +68,28 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
             return null;
           }
           if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
+            // if (instance.webComponentsReactProperties.isTreeTable) {
+            //   const selectRow = () => {
+            //     instance.dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: { [row.id]: !row.isSelected } });
+            //   };
+            //   return <div style={divStyle} onClick={selectRow} />;
+            // }
             // eslint-disable-next-line react/prop-types
-            return <div style={divStyle} onClick={row.toggleRowSelected} />;
+            return <div style={divStyle} /*onClick={row.toggleRowSelected} */ />;
           }
+          // if (instance.webComponentsReactProperties.isTreeTable) {
+          //   const selectRow = () => {
+          //     instance.dispatch({
+          //       type: 'SET_SELECTED_ROWS',
+          //       selectedIds: Object.assign({}, ...instance.selectedFlatRows.map((item) => ({ [item.id]: true })), {
+          //         [row.id]: !row.isSelected
+          //       })
+          //     });
+          //   };
+          //   return (
+          //     <CheckBox /*{...row.getToggleRowSelectedProps()}*/ onChange={selectRow} style={customCheckBoxStyling} />
+          //   );
+          // }
           // eslint-disable-next-line react/prop-types
           return <CheckBox {...row.getToggleRowSelectedProps()} onChange={noop} style={customCheckBoxStyling} />;
         }
@@ -77,11 +99,7 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
   });
 
   hooks.columnsDeps.push((deps, { instance: { state, webComponentsReactProperties } }) => {
-    return [
-      ...deps,
-      webComponentsReactProperties.selectionMode,
-      webComponentsReactProperties.noSelectionColumn
-    ];
+    return [...deps, webComponentsReactProperties.selectionMode, webComponentsReactProperties.noSelectionColumn];
   });
 
   hooks.visibleColumnsDeps.push((deps, { instance }) => [

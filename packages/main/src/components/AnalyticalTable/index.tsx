@@ -42,7 +42,7 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useColumnsDependencies } from './hooks/useColumnsDependencies';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
-import { useRowHighlight } from "./hooks/useRowHighlight";
+import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';

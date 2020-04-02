@@ -5,7 +5,7 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 export const useTableRowStyling = (hooks) => {
   hooks.getRowProps.push((passedRowProps, { instance, row }) => {
-    const { classes, selectionMode, onRowSelected } = instance.webComponentsReactProperties;
+    const { classes, selectionMode, onRowSelected, isTreeTable } = instance.webComponentsReactProperties;
     const isEmptyRow = row.original?.emptyRow;
     let className = classes.tr;
     if (row.isGrouped) {
@@ -26,14 +26,38 @@ export const useTableRowStyling = (hooks) => {
         if (row.isGrouped) {
           return;
         }
-
-        row.toggleRowSelected();
-
-        if (typeof onRowSelected === 'function') {
-          onRowSelected(enrichEventWithDetails(e, { row, isSelected: !row.isSelected }));
+        if (isTreeTable) {
+          if (selectionMode === TableSelectionMode.MULTI_SELECT) {
+            instance.dispatch({
+              type: 'SET_SELECTED_ROWS',
+              selectedIds: Object.assign({}, ...instance.selectedFlatRows.map((item) => ({ [item.id]: true })), {
+                [row.id]: !row.isSelected
+              })
+            });
+          } else {
+            instance.dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: { [row.id]: !row.isSelected } });
+          }
+        } else {
+          row.toggleRowSelected();
         }
 
-        if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
+        if (typeof onRowSelected === 'function') {
+          const payload = {
+            row,
+            isSelected: !row.isSelected
+          };
+          const payloadWithFlatRows = {
+            ...payload,
+            selectedFlatRows: !row.isSelected
+              ? [...instance.selectedFlatRows, row]
+              : instance.selectedFlatRows.filter((prevRow) => prevRow.id !== row.id)
+          };
+          onRowSelected(
+            enrichEventWithDetails(e, TableSelectionMode.MULTI_SELECT === selectionMode ? payloadWithFlatRows : payload)
+          );
+        }
+
+        if (selectionMode === TableSelectionMode.SINGLE_SELECT && !isTreeTable) {
           instance.selectedFlatRows.forEach(({ id }) => {
             instance.toggleRowSelected(id, false);
           });

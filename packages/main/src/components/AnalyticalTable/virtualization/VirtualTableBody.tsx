@@ -40,7 +40,7 @@ export const VirtualTableBody = (props) => {
         columns
       }
     };
-  }, [rows, prepareRow, isTreeTable, classes, columns, selectedFlatRows, selectionMode]);
+  }, [rows, isTreeTable, classes, columns]);
 
   const getItemKey = useCallback(
     (index, data) => {
@@ -62,7 +62,6 @@ export const VirtualTableBody = (props) => {
   if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
     classNames.put(classes.selectable);
   }
-
   return (
     <FixedSizeList
       className={classNames.valueOf()}
