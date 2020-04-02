@@ -125,7 +125,7 @@ export const treeTable = () => {
       selectionBehavior={select<TableSelectionBehavior>(
         'selectionBehavior',
         TableSelectionBehavior,
-        TableSelectionBehavior.ROW_SELECTOR
+        TableSelectionBehavior.ROW
       )}
       isTreeTable={boolean('isTreeTable', true)}
     />
