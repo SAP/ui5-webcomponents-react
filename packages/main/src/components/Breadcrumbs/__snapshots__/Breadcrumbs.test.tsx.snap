@@ -4,6 +4,8 @@ exports[`Breadcrumbs separatorStyle: 'BackSlash' 1`] = `
 <div>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 1
   </ui5-link>
@@ -15,6 +17,8 @@ exports[`Breadcrumbs separatorStyle: 'BackSlash' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 2
   </ui5-link>
@@ -26,6 +30,8 @@ exports[`Breadcrumbs separatorStyle: 'BackSlash' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 3
   </ui5-link>
@@ -36,6 +42,8 @@ exports[`Breadcrumbs separatorStyle: 'DoubleBackSlash' 1`] = `
 <div>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 1
   </ui5-link>
@@ -47,6 +55,8 @@ exports[`Breadcrumbs separatorStyle: 'DoubleBackSlash' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 2
   </ui5-link>
@@ -58,6 +68,8 @@ exports[`Breadcrumbs separatorStyle: 'DoubleBackSlash' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 3
   </ui5-link>
@@ -68,6 +80,8 @@ exports[`Breadcrumbs separatorStyle: 'DoubleGreaterThan' 1`] = `
 <div>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 1
   </ui5-link>
@@ -79,6 +93,8 @@ exports[`Breadcrumbs separatorStyle: 'DoubleGreaterThan' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 2
   </ui5-link>
@@ -90,6 +106,8 @@ exports[`Breadcrumbs separatorStyle: 'DoubleGreaterThan' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 3
   </ui5-link>
@@ -100,6 +118,8 @@ exports[`Breadcrumbs separatorStyle: 'DoubleSlash' 1`] = `
 <div>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 1
   </ui5-link>
@@ -111,6 +131,8 @@ exports[`Breadcrumbs separatorStyle: 'DoubleSlash' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 2
   </ui5-link>
@@ -122,6 +144,8 @@ exports[`Breadcrumbs separatorStyle: 'DoubleSlash' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 3
   </ui5-link>
@@ -132,6 +156,8 @@ exports[`Breadcrumbs separatorStyle: 'GreaterThan' 1`] = `
 <div>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 1
   </ui5-link>
@@ -143,6 +169,8 @@ exports[`Breadcrumbs separatorStyle: 'GreaterThan' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 2
   </ui5-link>
@@ -154,6 +182,8 @@ exports[`Breadcrumbs separatorStyle: 'GreaterThan' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 3
   </ui5-link>
@@ -164,6 +194,8 @@ exports[`Breadcrumbs separatorStyle: 'Slash' 1`] = `
 <div>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 1
   </ui5-link>
@@ -175,6 +207,8 @@ exports[`Breadcrumbs separatorStyle: 'Slash' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 2
   </ui5-link>
@@ -186,6 +220,8 @@ exports[`Breadcrumbs separatorStyle: 'Slash' 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 3
   </ui5-link>
@@ -196,6 +232,8 @@ exports[`Breadcrumbs with currentLocationText 1`] = `
 <div>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 1
   </ui5-link>
@@ -207,6 +245,8 @@ exports[`Breadcrumbs with currentLocationText 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 2
   </ui5-link>
@@ -218,6 +258,8 @@ exports[`Breadcrumbs with currentLocationText 1`] = `
   </ui5-label>
   <ui5-link
     design="Default"
+    href=""
+    target=""
   >
     Link 3
   </ui5-link>

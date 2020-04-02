@@ -1,5 +1,5 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { polyfillDeprecatedEventAPI } from "@ui5/webcomponents-react-base/lib/Utils";
+import { polyfillDeprecatedEventAPI } from '@ui5/webcomponents-react-base/lib/Utils';
 import React, {
   Children,
   cloneElement,
@@ -36,7 +36,7 @@ export const withWebComponent = <T extends any>(
         events: {}
       },
       getProperties: () => ({}),
-      getPropsList: () => [],
+      getPropertiesList: () => [],
       getSlots: () => ({}),
       getEvents: () => ({})
     };
@@ -106,7 +106,7 @@ export const withWebComponent = <T extends any>(
       getEventsFromMetadata(otherProps).map((eventName) => props[`on${capitalizeFirstLetter(eventName)}`])
     );
 
-    const propsList = getWebComponentMetadata().getPropsList();
+    const propsList = getWebComponentMetadata().getPropertiesList();
 
     const { regularProps: passedProps, slotProps: actualSlotProps } = Object.entries(otherProps)
       .filter(([key]) => !getBooleanPropsFromMetadata().includes(key))

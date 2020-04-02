@@ -1,3 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Calendar Basic Test (generated) 1`] = `<ui5-calendar />`;
+exports[`Calendar Basic Test (generated) 1`] = `
+<ui5-calendar
+  max-date=""
+  min-date=""
+/>
+`;

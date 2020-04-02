@@ -4,6 +4,9 @@ import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TimelinePropTypes extends WithWebComponentPropTypes {
+  /**
+   * Determines the content of the <code>ui5-timeline</code>.
+   */
   children?: ReactNode | ReactNode[];
 }
 
@@ -15,5 +18,7 @@ export interface TimelinePropTypes extends WithWebComponentPropTypes {
 const Timeline: FC<TimelinePropTypes> = withWebComponent<TimelinePropTypes>(UI5Timeline);
 
 Timeline.displayName = 'Timeline';
+
+Timeline.defaultProps = {};
 
 export { Timeline };

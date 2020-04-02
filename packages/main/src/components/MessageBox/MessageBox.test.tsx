@@ -21,7 +21,7 @@ describe('MessageBox', () => {
       .first()
       .instance() as any;
 
-    component.fireEvent('click');
+    component.click();
     expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.OK);
   });
 

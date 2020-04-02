@@ -28,12 +28,14 @@ exports[`FilterBar Hide Filter Bar 1`] = `
     <ui5-popover
       header-text="Variants"
       horizontal-align="Center"
+      initial-focus=""
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-button
         class="VariantManagement-footer-0"
         design="Emphasized"
+        icon=""
         slot="footer"
       >
         Cancel
@@ -47,7 +49,6 @@ exports[`FilterBar Hide Filter Bar 1`] = `
       >
         <ui5-li
           data-key="1"
-          info-state="None"
           selected="true"
           style="width: 300px;"
           type="Active"
@@ -56,7 +57,6 @@ exports[`FilterBar Hide Filter Bar 1`] = `
         </ui5-li>
         <ui5-li
           data-key="2"
-          info-state="None"
           style="width: 300px;"
           type="Active"
         >
@@ -69,6 +69,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
     >
       <ui5-button
         design="Transparent"
+        icon=""
       >
         Hide Filter Bar
       </ui5-button>
@@ -89,6 +90,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
           Classification
         </ui5-label>
         <ui5-select
+          name=""
           style="width: 100%;"
           value-state="None"
         >
@@ -119,6 +121,8 @@ exports[`FilterBar Hide Filter Bar 1`] = `
         <div>
           <ui5-switch
             style="width: 100%;"
+            text-off=""
+            text-on=""
           />
         </div>
       </div>
@@ -177,12 +181,14 @@ exports[`FilterBar Render without crashing 1`] = `
     <ui5-popover
       header-text="Variants"
       horizontal-align="Center"
+      initial-focus=""
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-button
         class="VariantManagement-footer-0"
         design="Emphasized"
+        icon=""
         slot="footer"
       >
         Cancel
@@ -196,7 +202,6 @@ exports[`FilterBar Render without crashing 1`] = `
       >
         <ui5-li
           data-key="1"
-          info-state="None"
           selected="true"
           style="width: 300px;"
           type="Active"
@@ -205,7 +210,6 @@ exports[`FilterBar Render without crashing 1`] = `
         </ui5-li>
         <ui5-li
           data-key="2"
-          info-state="None"
           style="width: 300px;"
           type="Active"
         >
@@ -218,6 +222,7 @@ exports[`FilterBar Render without crashing 1`] = `
     >
        
       <ui5-input
+        name=""
         placeholder="Search"
         type="Text"
         value=""
@@ -230,6 +235,7 @@ exports[`FilterBar Render without crashing 1`] = `
     >
       <ui5-button
         design="Transparent"
+        icon=""
       >
         Hide Filter Bar
       </ui5-button>
@@ -250,6 +256,7 @@ exports[`FilterBar Render without crashing 1`] = `
           Classification
         </ui5-label>
         <ui5-select
+          name=""
           style="width: 100%;"
           value-state="None"
         >
@@ -280,6 +287,8 @@ exports[`FilterBar Render without crashing 1`] = `
         <div>
           <ui5-switch
             style="width: 100%;"
+            text-off=""
+            text-on=""
           />
         </div>
       </div>
@@ -316,12 +325,14 @@ exports[`FilterBar Select Filter Item 1`] = `
     <ui5-popover
       header-text="Variants"
       horizontal-align="Center"
+      initial-focus=""
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-button
         class="VariantManagement-footer-0"
         design="Emphasized"
+        icon=""
         slot="footer"
       >
         Cancel
@@ -335,7 +346,6 @@ exports[`FilterBar Select Filter Item 1`] = `
       >
         <ui5-li
           data-key="1"
-          info-state="None"
           selected="true"
           style="width: 300px;"
           type="Active"
@@ -344,7 +354,6 @@ exports[`FilterBar Select Filter Item 1`] = `
         </ui5-li>
         <ui5-li
           data-key="2"
-          info-state="None"
           style="width: 300px;"
           type="Active"
         >
@@ -357,6 +366,7 @@ exports[`FilterBar Select Filter Item 1`] = `
     >
       <ui5-button
         design="Transparent"
+        icon=""
       >
         Hide Filter Bar
       </ui5-button>
@@ -377,6 +387,7 @@ exports[`FilterBar Select Filter Item 1`] = `
           Classification
         </ui5-label>
         <ui5-select
+          name=""
           style="width: 100%;"
           value-state="None"
         >
@@ -427,6 +438,7 @@ exports[`FilterBar Select Filter Item 1`] = `
           Classification
         </ui5-label>
         <ui5-input
+          name=""
           placeholder=""
           style="width: 100%;"
           type="Text"
@@ -453,14 +465,12 @@ exports[`FilterBar Select Filter Item 1`] = `
         >
           <ui5-li
             data-key="1"
-            info-state="None"
             type="Active"
           >
             Text 1
           </ui5-li>
           <ui5-li
             data-key="2"
-            info-state="None"
             type="Active"
           >
             Text 2

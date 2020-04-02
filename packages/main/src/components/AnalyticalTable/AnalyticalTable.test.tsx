@@ -152,7 +152,7 @@ describe('AnalyticalTable', () => {
       .at(1)
       .instance();
     // @ts-ignore
-    component.onclick({});
+    component.click();
 
     expect(wrapper.render()).toMatchSnapshot();
 
@@ -162,7 +162,7 @@ describe('AnalyticalTable', () => {
       .at(0)
       .instance();
     // @ts-ignore
-    component.onclick({});
+    component.click();
 
     expect(wrapper.render()).toMatchSnapshot();
   });

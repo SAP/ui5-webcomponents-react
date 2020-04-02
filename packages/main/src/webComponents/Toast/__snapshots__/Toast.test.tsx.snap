@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toast Basic Test (generated) 1`] = `
+<ui5-toast
+  duration="3000"
+  placement="BottomCenter"
+/>
+`;

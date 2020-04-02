@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('StandardListItem', () => {

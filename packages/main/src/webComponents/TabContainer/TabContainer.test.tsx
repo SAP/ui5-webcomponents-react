@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('TabContainer', () => {
