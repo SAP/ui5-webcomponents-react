@@ -1,3 +1,4 @@
+import '@ui5/webcomponents-icons/dist/icons/decline';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
@@ -20,13 +21,13 @@ export interface ColumnHeaderModalProperties {
   showGroup?: boolean;
   column: ColumnType;
   style: CSSProperties;
-  onSort?: (e: CustomEvent<{column: unknown; sortDirection: string}>) => void;
-  onGroupBy?: (e: CustomEvent<{column: unknown; isGrouped: boolean}>) => void;
+  onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
+  onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
 }
 
 const staticStyle = { fontWeight: 'normal' };
 
-export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
+export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props: ColumnHeaderModalProperties) => {
   const { showGroup, showSort, showFilter, column, style, openBy, onSort, onGroupBy } = props;
 
   const { Filter } = column;
@@ -60,6 +61,17 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
             );
           }
           break;
+        case 'clear':
+          column.clearSortBy();
+          if (typeof onSort === 'function') {
+            onSort(
+              enrichEventWithDetails(e, {
+                column,
+                sortDirection: sortType
+              })
+            );
+          }
+          break;
         case 'group':
           const willGroup = !column.isGrouped;
           column.toggleGroupBy(willGroup);
@@ -77,8 +89,11 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
         popoverRef.current.close();
       }
     },
-    [column, popoverRef, onGroupBy]
+    [column, popoverRef, onGroupBy, onSort]
   );
+
+  const isSortedAscending = column.isSorted && column.isSortedDesc === false;
+  const isSortedDescending = column.isSorted && column.isSortedDesc === true;
 
   return (
     <Popover
@@ -91,14 +106,24 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
       style={staticStyle as CSSProperties}
     >
       <List onItemClick={handleSort}>
-        {showSort && (
-          <StandardListItem type={ListItemTypes.Active} icon={'sort-ascending'} data-sort={'asc'}>
+        {isSortedAscending && (
+          <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
+            Clear Sorting
+          </StandardListItem>
+        )}
+        {showSort && !isSortedAscending && (
+          <StandardListItem type={ListItemTypes.Active} icon="sort-ascending" data-sort="asc">
             Sort Ascending
           </StandardListItem>
         )}
-        {showSort && (
-          <StandardListItem type={ListItemTypes.Active} icon={'sort-descending'} data-sort={'desc'}>
+        {showSort && !isSortedDescending && (
+          <StandardListItem type={ListItemTypes.Active} icon="sort-descending" data-sort="desc">
             Sort Descending
+          </StandardListItem>
+        )}
+        {isSortedDescending && (
+          <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
+            Clear Sorting
           </StandardListItem>
         )}
         {showFilter && !column.isGrouped && (

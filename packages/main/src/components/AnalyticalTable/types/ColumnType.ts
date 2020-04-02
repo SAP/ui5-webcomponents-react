@@ -7,6 +7,7 @@ export interface ColumnType extends Column {
   id: string;
   Filter: ComponentType<{ column: ColumnType; popoverRef?: RefObject<Ui5PopoverDomRef> }>;
   toggleSortBy: (descending: boolean, multi?: any) => void;
+  clearSortBy: () => void;
   toggleGroupBy: (set: boolean) => void;
   canFilter: boolean;
   canResize: boolean;
