@@ -31,7 +31,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -95,7 +95,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -159,7 +159,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -223,7 +223,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -291,7 +291,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -350,7 +350,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0 AnalyticalTable-alternateRowColor-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0 AnalyticalTable-alternateRowColor-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -409,7 +409,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -436,7 +436,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-alternateRowColor-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0 AnalyticalTable-alternateRowColor-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -463,7 +463,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -526,7 +526,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -590,7 +590,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -654,7 +654,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -718,7 +718,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -786,7 +786,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -845,7 +845,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -904,7 +904,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -931,7 +931,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -958,7 +958,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -1021,7 +1021,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -1085,7 +1085,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -1149,7 +1149,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -1213,7 +1213,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -1541,7 +1541,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           style="position: absolute; top: 0px; left: 0px; width: 36px;"
         >
           <div
-            style="width: 100%; font-weight: normal; cursor: auto; height: 100%; overflow-x: hidden; display: inline-block;"
+            style="width: 100%; font-weight: normal; cursor: auto; height: 100%; overflow-x: hidden; padding: 0px; display: inline-block;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -1564,7 +1564,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           style="position: absolute; top: 0px; left: 36px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -1646,7 +1646,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           style="position: absolute; top: 0px; left: 186px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -1728,7 +1728,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           style="position: absolute; top: 0px; left: 336px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -1810,7 +1810,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           style="position: absolute; top: 0px; left: 486px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -1896,17 +1896,17 @@ exports[`AnalyticalTable Tree Table 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
             <div
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center;"
+              style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center; padding: 0px;"
             >
               <div
-                style="width: 100%; height: 100%;"
+                style="width: 100%; height: 100%; cursor: pointer;"
               />
             </div>
             <div
@@ -1982,17 +1982,17 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
             <div
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center;"
+              style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center; padding: 0px;"
             >
               <div
-                style="width: 100%; height: 100%;"
+                style="width: 100%; height: 100%; cursor: pointer;"
               />
             </div>
             <div
@@ -2060,14 +2060,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
             <div
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center;"
+              style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center; padding: 0px;"
             />
             <div
               class="AnalyticalTable-tableCell-0"
@@ -2092,14 +2092,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
             <div
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center;"
+              style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center; padding: 0px;"
             />
             <div
               class="AnalyticalTable-tableCell-0"
@@ -2124,14 +2124,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
             <div
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center;"
+              style="position: absolute; top: 0px; left: 0px; width: 36px; align-items: center; padding: 0px;"
             />
             <div
               class="AnalyticalTable-tableCell-0"
@@ -2192,7 +2192,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -2256,7 +2256,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -2320,7 +2320,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -2384,7 +2384,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -2452,7 +2452,7 @@ exports[`AnalyticalTable custom row height 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 60px; width: 100%;"
           >
@@ -2511,7 +2511,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 60px; height: 60px; width: 100%;"
           >
@@ -2570,7 +2570,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 120px; height: 60px; width: 100%;"
           >
@@ -2597,7 +2597,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 180px; height: 60px; width: 100%;"
           >
@@ -2624,7 +2624,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 240px; height: 60px; width: 100%;"
           >
@@ -2687,7 +2687,7 @@ exports[`AnalyticalTable render without data 1`] = `
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -2751,7 +2751,7 @@ exports[`AnalyticalTable render without data 1`] = `
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -2815,7 +2815,7 @@ exports[`AnalyticalTable render without data 1`] = `
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -2879,7 +2879,7 @@ exports[`AnalyticalTable render without data 1`] = `
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -2980,7 +2980,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -3044,7 +3044,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -3108,7 +3108,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -3172,7 +3172,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -3240,7 +3240,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -3299,7 +3299,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -3358,7 +3358,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -3385,7 +3385,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -3412,7 +3412,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -3475,7 +3475,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -3543,7 +3543,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -3607,7 +3607,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -3671,7 +3671,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -3739,7 +3739,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -3798,7 +3798,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -3857,7 +3857,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -3884,7 +3884,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -3911,7 +3911,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -3974,7 +3974,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -4042,7 +4042,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -4106,7 +4106,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -4170,7 +4170,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -4238,7 +4238,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -4297,7 +4297,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -4356,7 +4356,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -4383,7 +4383,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -4410,7 +4410,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -4473,7 +4473,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -4537,7 +4537,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -4601,7 +4601,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -4665,7 +4665,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -4733,7 +4733,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -4792,7 +4792,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -4851,7 +4851,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -4878,7 +4878,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -4905,7 +4905,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -4968,7 +4968,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           style="position: absolute; top: 0px; left: 0px; width: 6px;"
         >
           <div
-            style="width: 100%; font-weight: normal; cursor: auto; height: 100%; overflow-x: hidden; display: inline-block;"
+            style="width: 100%; font-weight: normal; cursor: auto; height: 100%; overflow-x: hidden; padding: 0px; display: inline-block;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -4995,7 +4995,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           style="position: absolute; top: 0px; left: 6px; width: 36px;"
         >
           <div
-            style="width: 100%; font-weight: normal; cursor: auto; height: 100%; overflow-x: hidden; display: inline-block;"
+            style="width: 100%; font-weight: normal; cursor: auto; height: 100%; overflow-x: hidden; padding: 0px; display: inline-block;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -5018,7 +5018,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           style="position: absolute; top: 0px; left: 42px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -5082,7 +5082,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           style="position: absolute; top: 0px; left: 192px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -5146,7 +5146,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           style="position: absolute; top: 0px; left: 342px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -5210,7 +5210,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           style="position: absolute; top: 0px; left: 492px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -5278,7 +5278,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
         >
           <div
             aria-rowindex="0"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
@@ -5294,10 +5294,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
             <div
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center;"
+              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center; padding: 0px;"
             >
               <div
-                style="width: 100%; height: 100%;"
+                style="width: 100%; height: 100%; cursor: pointer;"
               />
             </div>
             <div
@@ -5355,7 +5355,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </div>
           <div
             aria-rowindex="1"
-            class="AnalyticalTable-tr-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
@@ -5369,10 +5369,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
             <div
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center;"
+              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center; padding: 0px;"
             >
               <div
-                style="width: 100%; height: 100%;"
+                style="width: 100%; height: 100%; cursor: pointer;"
               />
             </div>
             <div
@@ -5430,7 +5430,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </div>
           <div
             aria-rowindex="2"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
@@ -5442,7 +5442,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             <div
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center;"
+              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center; padding: 0px;"
             />
             <div
               class="AnalyticalTable-tableCell-0"
@@ -5467,7 +5467,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </div>
           <div
             aria-rowindex="3"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
@@ -5479,7 +5479,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             <div
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center;"
+              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center; padding: 0px;"
             />
             <div
               class="AnalyticalTable-tableCell-0"
@@ -5504,7 +5504,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </div>
           <div
             aria-rowindex="4"
-            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0"
+            class="AnalyticalTable-tr-0 AnalyticalTable-emptyRow-0 AnalyticalTable-selectableFirstCol-0"
             role="row"
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
@@ -5516,7 +5516,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             <div
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center;"
+              style="position: absolute; top: 0px; left: 6px; width: 36px; align-items: center; padding: 0px;"
             />
             <div
               class="AnalyticalTable-tableCell-0"
@@ -5577,7 +5577,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -5641,7 +5641,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -5705,7 +5705,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; max-width: calc(100% - 16px);"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem; max-width: calc(100% - 16px);"
           >
             <div
               class="TableColumnHeader-header-0"
@@ -5769,7 +5769,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
-            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden;"
+            style="display: inline-block; width: 100%; font-weight: normal; cursor: pointer; height: 100%; overflow-x: hidden; padding: 0px 0.5rem;"
           >
             <div
               class="TableColumnHeader-header-0"
