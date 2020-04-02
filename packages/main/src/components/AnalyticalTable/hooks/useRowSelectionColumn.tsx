@@ -5,12 +5,9 @@ import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelect
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React from 'react';
 import { PluginHook } from 'react-table';
-import { toggleSelected } from '../util';
 
 const divStyle = { width: '100%', height: '100%', cursor: 'pointer' };
 const customCheckBoxStyling = {
-  '--_ui5_checkbox_compact_width_height': 'var(--_ui5_checkbox_compact_inner_size)',
-  '--_ui5_checkbox_width_height': 'var(--_ui5_checkbox_inner_width_height)',
   cursor: 'pointer',
   verticalAlign: 'middle'
 };
@@ -42,7 +39,7 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
           ),
           10
         )
-      : 42;
+      : 47;
     return [
       // Let's make a column for selection
       {
@@ -75,10 +72,10 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         // to the render a checkbox
         // eslint-disable-next-line react/prop-types,react/display-name
         Cell: (instance) => {
-          const { row, webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows } = instance;
+          const { row } = instance;
           const handleCellClick = (e) => {
             if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
-              toggleSelected(e, row, webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows);
+              row.getRowProps().onClick(e, true);
             }
           };
           if (row.isGrouped && selectionMode === TableSelectionMode.SINGLE_SELECT) {
