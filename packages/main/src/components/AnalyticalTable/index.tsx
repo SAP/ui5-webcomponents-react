@@ -208,6 +208,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       getSubRows,
       stateReducer,
       webComponentsReactProperties: {
+        tableRef,
         selectionMode,
         selectionBehavior,
         classes,

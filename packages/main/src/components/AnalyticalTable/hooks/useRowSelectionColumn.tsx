@@ -1,3 +1,4 @@
+import { CssSizeVariablesNames } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
@@ -16,11 +17,10 @@ const customCheckBoxStyling = {
 const noop = () => {
   // do nothing
 };
-
 export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
   hooks.columns.push((columns, { instance }) => {
     const { webComponentsReactProperties } = instance;
-    const { selectionMode, onRowSelected, selectionBehavior } = webComponentsReactProperties;
+    const { selectionMode, onRowSelected, selectionBehavior, tableRef } = webComponentsReactProperties;
 
     if (selectionMode === TableSelectionMode.NONE || selectionBehavior === TableSelectionBehavior.ROW_ONLY) {
       return columns;
@@ -37,6 +37,14 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
       }
     };
 
+    const selectionColumnWidth = tableRef.current
+      ? parseInt(
+          getComputedStyle(tableRef.current).getPropertyValue(
+            `--${CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth}`
+          ),
+          10
+        )
+      : 42;
     return [
       // Let's make a column for selection
       {
@@ -47,8 +55,9 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         filterable: false,
         disableResizing: true,
         canReorder: false,
-        width: 36,
-        minWidth: 36,
+        width: selectionColumnWidth,
+        minWidth: selectionColumnWidth,
+        maxWidth: selectionColumnWidth,
         // The header can use the table's getToggleAllRowsSelectedProps method
         // to render a checkbox
         // eslint-disable-next-line react/prop-types,react/display-name
