@@ -52,6 +52,7 @@ import { useTableRowStyling } from './hooks/useTableRowStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useTableStyling } from './hooks/useTableStyling';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
+import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
@@ -235,6 +236,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableHeaderGroupStyling,
     useTableHeaderStyling,
     useTableRowStyling,
+    useSingleRowStateSelection,
     useRowSelectionColumn,
     useRowHighlight,
     useDynamicColumnWidths,
@@ -418,7 +420,7 @@ AnalyticalTable.defaultProps = {
   filterable: false,
   groupable: false,
   selectionMode: TableSelectionMode.NONE,
-  selectionBehavior: TableSelectionBehavior. ROW,
+  selectionBehavior: TableSelectionBehavior.ROW,
   scaleWidthMode: TableScaleWidthMode.Default,
   data: [],
   columns: [],
