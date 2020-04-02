@@ -89,7 +89,7 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props: Column
         popoverRef.current.close();
       }
     },
-    [column, popoverRef, onGroupBy]
+    [column, popoverRef, onGroupBy, onSort]
   );
 
   const isSortedAscending = column.isSorted && column.isSortedDesc === false;
