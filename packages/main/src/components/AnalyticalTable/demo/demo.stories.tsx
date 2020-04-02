@@ -21,8 +21,7 @@ const columns = [
     disableGroupBy: true,
     disableSortBy: false,
     disableFilters: false,
-    className: 'superCustomClass',
-    isVisible: true
+    className: 'superCustomClass'
   },
   {
     Header: 'Friend Name',
