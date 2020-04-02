@@ -1,3 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Icon Basic Test (generated) 1`] = `<ui5-icon />`;
+exports[`Icon Basic Test (generated) 1`] = `
+<ui5-icon
+  accessible-name=""
+  name=""
+/>
+`;

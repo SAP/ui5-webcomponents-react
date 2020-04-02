@@ -9,6 +9,7 @@ exports[`SideNavigationListItem Basic 1`] = `
   type="Active"
 >
   <ui5-icon
+    accessible-name=""
     class="SideNavigationListItem-icon-0"
     name="home"
   />
@@ -25,6 +26,7 @@ exports[`SideNavigationListItem custom class name and style 1`] = `
   type="Active"
 >
   <ui5-icon
+    accessible-name=""
     class="SideNavigationListItem-icon-0"
     name="home"
   />

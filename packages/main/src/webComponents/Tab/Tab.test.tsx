@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { Tab } from '@ui5/webcomponents-react/lib/Tab';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('Tab', () => {

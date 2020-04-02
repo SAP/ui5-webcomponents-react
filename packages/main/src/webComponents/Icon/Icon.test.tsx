@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('Icon', () => {
