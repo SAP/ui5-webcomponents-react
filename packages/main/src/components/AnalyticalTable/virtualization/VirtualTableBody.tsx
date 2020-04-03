@@ -4,9 +4,18 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React, { useCallback, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { VirtualTableRow } from './VirtualTableRow';
 
-export const VirtualTableBody = (props) => {
+interface VirtualTableBodyProps {
+  infiniteScroll: boolean;
+  infiniteScrollThreshold: number;
+  onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
+
+  [key: string]: any;
+}
+
+export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const {
     classes,
     prepareRow,
@@ -22,10 +31,14 @@ export const VirtualTableBody = (props) => {
     alternateRowColor,
     overscanCount,
     totalColumnsWidth,
-    selectedFlatRows
+    selectedFlatRows,
+    infiniteScroll,
+    infiniteScrollThreshold,
+    onLoadMore
   } = props;
 
   const innerDivRef = useRef<HTMLElement>();
+  const firedInfiniteLoadEvents = useRef(new Set());
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
@@ -58,10 +71,29 @@ export const VirtualTableBody = (props) => {
     [prepareRow]
   );
 
-  const classNames = StyleClassHelper.of(classes.tbody);
+  const classNames = StyleClassHelper.of(classes.tbody, GlobalStyleClasses.sapScrollBar);
   if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
     classNames.put(classes.selectable);
   }
+
+  const onScroll = useCallback(
+    ({ scrollDirection, scrollOffset }) => {
+      if (scrollDirection === 'forward' && infiniteScroll) {
+        const currentTopRow = Math.floor(scrollOffset / internalRowHeight);
+        if (rows.length - currentTopRow < infiniteScrollThreshold) {
+          if (!firedInfiniteLoadEvents.current.has(rows.length)) {
+            onLoadMore({
+              detail: {
+                rowCount: rows.length
+              }
+            });
+          }
+          firedInfiniteLoadEvents.current.add(rows.length);
+        }
+      }
+    },
+    [infiniteScroll, infiniteScrollThreshold, onLoadMore, rows.length, internalRowHeight, firedInfiniteLoadEvents]
+  );
 
   return (
     <FixedSizeList
@@ -75,6 +107,7 @@ export const VirtualTableBody = (props) => {
       itemKey={getItemKey}
       innerRef={innerDivRef}
       overscanCount={overscan}
+      onScroll={onScroll}
     >
       {VirtualTableRow}
     </FixedSizeList>

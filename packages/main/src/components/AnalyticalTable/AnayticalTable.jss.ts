@@ -39,22 +39,7 @@ const styles = {
     zIndex: 0,
     backgroundColor: ThemingParameters.sapList_Background,
     overflowX: 'hidden !important',
-    overflowY: 'auto !important',
-    '&::-webkit-scrollbar': {
-      backgroundColor: ThemingParameters.sapScrollBar_TrackColor,
-      width: ThemingParameters.sapScrollBar_Dimension
-    },
-    '&::-webkit-scrollbar-thumb': {
-      backgroundColor: ThemingParameters.sapScrollBar_FaceColor,
-      width: ThemingParameters.sapScrollBar_Dimension,
-      borderRadius: '0.25rem',
-      '&:hover': {
-        backgroundColor: ThemingParameters.sapScrollBar_Hover_FaceColor
-      }
-    },
-    '&::-webkit-scrollbar-corner': {
-      backgroundColor: ThemingParameters.sapScrollBar_TrackColor
-    }
+    overflowY: 'auto !important'
   },
   alternateRowColor: {
     backgroundColor: ThemingParameters.sapList_HeaderBackground
@@ -83,9 +68,11 @@ const styles = {
   selectable: {
     '& $tr:hover:not($emptyRow)': {
       backgroundColor: ThemingParameters.sapList_Hover_Background,
-      cursor: 'pointer'
+      '&:not($selectionModeRowSelector)': {
+        cursor: 'pointer'
+      }
     },
-    '& $tr:active:not([data-is-selected]):not($tableGroupHeader):not($emptyRow)': {
+    '& $tr:active:not([data-is-selected]):not($tableGroupHeader):not($emptyRow):not($selectionModeRowSelector)': {
       backgroundColor: ThemingParameters.sapList_Active_Background,
       '& $tableCell': {
         borderRight: `1px solid ${ThemingParameters.sapList_Active_Background}`,
@@ -94,6 +81,7 @@ const styles = {
       }
     }
   },
+  selectionModeRowSelector: {},
   tableCell: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     fontFamily: ThemingParameters.sapFontFamily,
@@ -111,7 +99,11 @@ const styles = {
     position: 'relative',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-    alignItems: 'center'
+    alignItems: 'center',
+    '&:focus': {
+      outlineOffset: '-2px',
+      outline: `1px dotted ${ThemingParameters.sapContent_FocusColor}`
+    }
   },
   noDataContainer: {
     display: 'flex',
