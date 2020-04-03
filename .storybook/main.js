@@ -6,6 +6,7 @@ require('dotenv').config({
   path: path.join(PATHS.root, '.env')
 });
 
+const IS_RELEASE_BUILD = process.env.UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD === 'true';
 const BUILD_FOR_IE11 = process.env.UI5_WEBCOMPONENTS_FOR_REACT_BUILD_IE11 === 'true';
 
 const DEPENDENCY_REGEX = BUILD_FOR_IE11
@@ -33,7 +34,7 @@ module.exports = {
       ]
     };
 
-    if (process.env.UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD === 'true') {
+    if (IS_RELEASE_BUILD) {
       highlightLog('Warning: Prop Types Table Generation is active');
       tsLoader.use.push(require.resolve('react-docgen-typescript-loader'));
     } else {
@@ -48,10 +49,7 @@ module.exports = {
 
     config.module.rules.push(tsLoader);
 
-    if (
-      (process.env.UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD === 'true' && configType === 'PRODUCTION') ||
-      BUILD_FOR_IE11 === true
-    ) {
+    if ((IS_RELEASE_BUILD && configType === 'PRODUCTION') || BUILD_FOR_IE11) {
       config.module.rules.push({
         test: /\.(js|mjs)$/,
         include: DEPENDENCY_REGEX,
