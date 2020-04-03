@@ -3,8 +3,8 @@ import '@ui5/webcomponents-icons/dist/icons/group-2';
 import '@ui5/webcomponents-icons/dist/icons/sort-ascending';
 import '@ui5/webcomponents-icons/dist/icons/sort-descending';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React, { CSSProperties, DragEventHandler, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
 import { ColumnType } from '../types/ColumnType';
@@ -18,9 +18,6 @@ export interface ColumnHeaderProps {
   className: string;
   column: ColumnType;
   style: CSSProperties;
-  groupable: boolean;
-  sortable: boolean;
-  filterable: boolean;
   isLastColumn?: boolean;
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
@@ -32,6 +29,7 @@ export interface ColumnHeaderProps {
   dragOver: boolean;
   isResizing: boolean;
   isDraggable: boolean;
+  role: string;
 }
 
 const styles = {
@@ -90,9 +88,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     column,
     className,
     style,
-    groupable,
-    sortable,
-    filterable,
     isLastColumn,
     onSort,
     onGroupBy,
@@ -102,7 +97,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     onDrop,
     onDragEnd,
     isDraggable,
-    dragOver
+    dragOver,
+    role
   } = props;
 
   const openBy = useMemo(() => {
@@ -182,18 +178,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   if (!column) return null;
 
   return (
-    <div id={id} className={className} style={style} role="columnheader">
-      {groupable || sortable || filterable ? (
-        <ColumnHeaderModal
-          openBy={openBy}
-          showFilter={filterable}
-          showGroup={groupable && column.disableGrouping !== true}
-          showSort={sortable}
-          column={column}
-          style={innerStyle}
-          onSort={onSort}
-          onGroupBy={onGroupBy}
-        />
+    <div id={id} className={className} style={style} role={role}>
+      {column.canGroupBy || column.canSort || column.canFilter ? (
+        <ColumnHeaderModal openBy={openBy} column={column} style={innerStyle} onSort={onSort} onGroupBy={onGroupBy} />
       ) : (
         <div style={{ ...innerStyle, display: 'inline-block', cursor: 'auto' }}>{openBy}</div>
       )}

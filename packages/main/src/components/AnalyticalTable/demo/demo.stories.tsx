@@ -19,9 +19,10 @@ const columns = [
     Header: 'Age',
     accessor: 'age',
     hAlign: TextAlign.End,
-    disableGrouping: true,
-    className: 'superCustomClass',
-    isVisible: true
+    disableGroupBy: true,
+    disableSortBy: false,
+    disableFilters: false,
+    className: 'superCustomClass'
   },
   {
     Header: 'Friend Name',
@@ -90,10 +91,13 @@ export const defaultTable = () => {
         onColumnsReordered={action('onColumnsReordered')}
         withRowHighlight={boolean('withRowHighlight', true)}
         highlightField={text('highlightField', 'status')}
+        infiniteScroll={boolean('infiniteScroll', true)}
+        infiniteScrollThreshold={number('infiniteScrollThreshold', 20)}
+        onLoadMore={action('onLoadMore')}
         selectionBehavior={select<TableSelectionBehavior>(
           'selectionBehavior',
           TableSelectionBehavior,
-        TableSelectionBehavior.ROW
+          TableSelectionBehavior.ROW
         )}
       />
     </div>

@@ -99,7 +99,11 @@ const styles = {
     position: 'relative',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-    alignItems: 'center'
+    alignItems: 'center',
+    '&:focus': {
+      outlineOffset: '-2px',
+      outline: `1px dotted ${ThemingParameters.sapContent_FocusColor}`
+    }
   },
   noDataContainer: {
     display: 'flex',
