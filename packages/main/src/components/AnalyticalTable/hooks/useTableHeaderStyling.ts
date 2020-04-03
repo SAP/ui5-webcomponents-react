@@ -10,7 +10,8 @@ export const useTableHeaderStyling: PluginHook<{}> = (hooks) => {
       style: {
         ...columnProps.style,
         position: 'absolute' // TODO should be removed at some point in time
-      }
+      },
+      id: column.id
     };
   });
 };

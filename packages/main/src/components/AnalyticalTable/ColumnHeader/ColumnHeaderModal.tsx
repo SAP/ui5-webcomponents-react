@@ -16,9 +16,6 @@ import { ColumnType } from '../types/ColumnType';
 
 export interface ColumnHeaderModalProperties {
   openBy: ReactNode;
-  showSort?: boolean;
-  showFilter?: boolean;
-  showGroup?: boolean;
   column: ColumnType;
   style: CSSProperties;
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
@@ -28,7 +25,10 @@ export interface ColumnHeaderModalProperties {
 const staticStyle = { fontWeight: 'normal' };
 
 export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props: ColumnHeaderModalProperties) => {
-  const { showGroup, showSort, showFilter, column, style, openBy, onSort, onGroupBy } = props;
+  const { column, style, openBy, onSort, onGroupBy } = props;
+  const showFilter = column.canFilter;
+  const showGroup = column.canGroupBy;
+  const showSort = column.canSort;
 
   const { Filter } = column;
 
@@ -142,10 +142,4 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props: Column
       </List>
     </Popover>
   );
-};
-
-ColumnHeaderModal.defaultProps = {
-  showSort: true,
-  showFilter: false,
-  showGroup: false
 };

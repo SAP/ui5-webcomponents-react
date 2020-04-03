@@ -7,6 +7,7 @@ import { PluginHook } from 'react-table';
 export const useTableCellStyling: PluginHook<{}> = (hooks) => {
   hooks.getCellProps.push((cellProps, { cell: { column }, instance }) => {
     const lastColumnId = instance.columns[instance.columns.length - 1]?.id;
+    const columnIndex = instance.columns.findIndex(({ id }) => id === column.id);
     const { classes } = instance.webComponentsReactProperties;
     const style: CSSProperties = {};
 
@@ -49,22 +50,24 @@ export const useTableCellStyling: PluginHook<{}> = (hooks) => {
       className += ` ${column.className}`;
     }
 
-    if (column.id === '__ui5wcr__internal_highlight_column') {
+    if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
       style.padding = 0;
     }
 
     if (column.id === lastColumnId) {
       style.paddingRight = `calc(${ThemingParameters.sapScrollBar_Dimension} + 0.5rem)`;
       style.boxSizing = 'border-box';
+      style.width = `calc(${cellProps.style.width} - ${ThemingParameters.sapScrollBar_Dimension})`;
     }
-
     return {
       ...cellProps,
       className,
       style: {
         ...cellProps.style,
         ...style
-      }
+      },
+      tabIndex: -1,
+      'aria-colindex': columnIndex + 1 // aria index is 1 based, not 0
     };
   });
 };

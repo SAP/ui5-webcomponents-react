@@ -26,9 +26,9 @@ export const useRowHighlight = (hooks) => {
       {
         id: '__ui5wcr__internal_highlight_column',
         accessor: highlightField,
-        sortable: false,
-        groupable: false,
-        filterable: false,
+        disableFilters: true,
+        disableSortBy: true,
+        disableGroupBy: true,
         disableResizing: true,
         canReorder: false,
         width: 6,

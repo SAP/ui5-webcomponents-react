@@ -3,8 +3,8 @@ import '@ui5/webcomponents-icons/dist/icons/group-2';
 import '@ui5/webcomponents-icons/dist/icons/sort-ascending';
 import '@ui5/webcomponents-icons/dist/icons/sort-descending';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React, { CSSProperties, DragEventHandler, FC, ReactNode, ReactNodeArray, useMemo } from 'react';
 import { ColumnType } from '../types/ColumnType';
@@ -18,12 +18,9 @@ export interface ColumnHeaderProps {
   className: string;
   column: ColumnType;
   style: CSSProperties;
-  groupable: boolean;
-  sortable: boolean;
-  filterable: boolean;
   isLastColumn?: boolean;
-  onSort?: (e: CustomEvent<{column: unknown; sortDirection: string}>) => void;
-  onGroupBy?: (e: CustomEvent<{column: unknown; isGrouped: boolean}>) => void;
+  onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
+  onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
   onDragStart: DragEventHandler<HTMLDivElement>;
   onDragOver: DragEventHandler<HTMLDivElement>;
   onDrop: DragEventHandler<HTMLDivElement>;
@@ -32,11 +29,11 @@ export interface ColumnHeaderProps {
   dragOver: boolean;
   isResizing: boolean;
   isDraggable: boolean;
+  role: string;
 }
 
 const styles = {
   header: {
-    padding: `0 0.5rem`,
     height: '100%',
     display: 'flex',
     justifyContent: 'begin',
@@ -91,9 +88,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     column,
     className,
     style,
-    groupable,
-    sortable,
-    filterable,
     isLastColumn,
     onSort,
     onGroupBy,
@@ -103,7 +97,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     onDrop,
     onDragEnd,
     isDraggable,
-    dragOver
+    dragOver,
+    role
   } = props;
 
   const openBy = useMemo(() => {
@@ -165,7 +160,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       fontWeight: 'normal',
       cursor: 'pointer',
       height: '100%',
-      overflowX: 'hidden'
+      overflowX: 'hidden',
+      padding: `0 0.5rem`
     };
     if (isResizable) {
       modifiedStyles.maxWidth = `calc(100% - 16px)`;
@@ -173,24 +169,18 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     if (dragOver) {
       modifiedStyles.borderLeft = `3px solid ${ThemingParameters.sapSelectedColor}`;
     }
+    if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
+      modifiedStyles.padding = 0;
+    }
     return modifiedStyles;
   }, [isResizable, dragOver]);
 
   if (!column) return null;
 
   return (
-    <div id={id} className={className} style={style} role="columnheader">
-      {groupable || sortable || filterable ? (
-        <ColumnHeaderModal
-          openBy={openBy}
-          showFilter={filterable}
-          showGroup={groupable && column.disableGrouping !== true}
-          showSort={sortable}
-          column={column}
-          style={innerStyle}
-          onSort={onSort}
-          onGroupBy={onGroupBy}
-        />
+    <div id={id} className={className} style={style} role={role}>
+      {column.canGroupBy || column.canSort || column.canFilter ? (
+        <ColumnHeaderModal openBy={openBy} column={column} style={innerStyle} onSort={onSort} onGroupBy={onGroupBy} />
       ) : (
         <div style={{ ...innerStyle, display: 'inline-block', cursor: 'auto' }}>{openBy}</div>
       )}
