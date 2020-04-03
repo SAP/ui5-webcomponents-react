@@ -71,8 +71,7 @@ export const useRowSelectionColumn: PluginHook<{}> = (hooks) => {
         // The cell can use the individual row's getToggleRowSelectedProps method
         // to the render a checkbox
         // eslint-disable-next-line react/prop-types,react/display-name
-        Cell: (instance) => {
-          const { row } = instance;
+        Cell: ({ row }) => {
           const handleCellClick = (e) => {
             if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
               row.getRowProps().onClick(e, true);
