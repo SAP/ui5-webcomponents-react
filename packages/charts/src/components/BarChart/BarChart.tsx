@@ -42,6 +42,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     onDataPointClick,
     onLegendClick,
     labels,
+    axisInterval,
     yAxisFormatter = (el) => formatYAxisTicks(el),
     xAxisFormatter = (el) => el,
     dataLabelCustomElement = undefined,
@@ -130,6 +131,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
   const YAxisLabel = useAxisLabel(yAxisFormatter, chartConfig.yAxisUnit, true);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel(true, yAxisFormatter);
+  const bigDataSet = dataset?.length > 30 ?? false;
 
   return (
     <ChartContainer
@@ -158,7 +160,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           tick={YAxisLabel}
           type="category"
           dataKey={labelKey}
-          interval={0}
+          interval={axisInterval ?? bigDataSet ? 2 : 0}
           yAxisId={0}
         />
         {secondaryDimensionKey && (
@@ -177,7 +179,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             stackId={chartConfig.stacked ? 'A' : undefined}
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
-            label={BarDataLabel}
+            label={bigDataSet ? false : BarDataLabel}
             key={key}
             name={labels?.[key] || key}
             dataKey={key}

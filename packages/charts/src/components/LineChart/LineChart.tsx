@@ -42,6 +42,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     onDataPointClick,
     onLegendClick,
     labels,
+    axisInterval,
     xAxisFormatter = (el) => el,
     yAxisFormatter = (el) => el,
     dataLabelCustomElement = undefined,
@@ -110,6 +111,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
+  const bigDataSet = dataset?.length > 30 ?? false;
+
   const marginChart = useChartMargin(
     dataset,
     yAxisFormatter,
@@ -142,7 +145,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} xAxisId={0} interval={0} tick={XAxisLabel} />}
         {secondaryDimensionKey && (
           <XAxis
-            interval={0}
+            interval={axisInterval ?? bigDataSet ? 2 : 0}
             dataKey={secondaryDimensionKey}
             tickLine={false}
             tick={SecondaryDimensionLabel}
@@ -174,7 +177,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             key={key}
             name={labels?.[key] || key}
             strokeOpacity={chartConfig.strokeOpacity}
-            label={LineDataLabel}
+            label={bigDataSet ? false : LineDataLabel}
             type="monotone"
             dataKey={key}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}

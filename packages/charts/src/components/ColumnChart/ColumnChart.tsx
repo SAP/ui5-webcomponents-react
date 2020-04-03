@@ -42,6 +42,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     noLegend = false,
     onDataPointClick,
     onLegendClick,
+    axisInterval,
     xAxisFormatter = (el) => el,
     yAxisFormatter = (el) => el,
     dataLabelCustomElement = undefined,
@@ -121,6 +122,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     false
   );
 
+  const bigDataSet = dataset?.length > 30 ?? false;
+
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
   const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
@@ -154,11 +157,13 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} tick={XAxisLabel} dataKey={labelKey} xAxisId={0} />}
+        {(chartConfig.xAxisVisible ?? true) && (
+          <XAxis interval={axisInterval ?? bigDataSet ? 2 : 0} tick={XAxisLabel} dataKey={labelKey} xAxisId={0} />
+        )}
         {secondaryDimensionKey && (
           <XAxis
             interval={0}
-            dataKey={'dimension'}
+            dataKey={secondaryDimensionKey}
             tickLine={false}
             tick={SecondaryDimensionLabel}
             axisLine={false}
@@ -189,7 +194,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             stackId={chartConfig.stacked ? 'A' : undefined}
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
-            label={ColumnDataLabel}
+            label={bigDataSet ? false : ColumnDataLabel}
             key={key}
             name={labels?.[key] || key}
             dataKey={key}

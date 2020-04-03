@@ -10,7 +10,7 @@ import { renderAxisTicks } from '../util/Utils';
 
 export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter, stacked?, bar?) =>
   useMemo(() => {
-    return dataLabel
+    return dataLabel || typeof dataLabel === 'undefined'
       ? dataLabelCustomElement
         ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
         : {
@@ -23,7 +23,7 @@ export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatt
 
 export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter) =>
   useMemo(() => {
-    return dataLabel
+    return dataLabel || typeof dataLabel === 'undefined'
       ? dataLabelCustomElement
         ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
         : (props): number | string => dataLabelFormatter(props.value)

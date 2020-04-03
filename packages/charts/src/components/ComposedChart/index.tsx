@@ -71,6 +71,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     onDataPointClick,
     noLegend = false,
     labels,
+    axisInterval,
     xAxisFormatter = (el) => el,
     yAxisFormatter = (el) => el,
     defaults = {
@@ -185,6 +186,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     chartConfig.zoomingTool
   );
 
+  const bigDataSet = dataset?.length > 30 ?? false;
+
   return (
     <ChartContainer
       ref={chartRef}
@@ -206,7 +209,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         />
         {(chartConfig.xAxisVisible ?? true) && (
           <XAxis
-            interval={0}
+            interval={axisInterval ?? bigDataSet ? 2 : 0}
             dataKey={labelKey}
             tick={XAxisLabel}
             padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
@@ -259,7 +262,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.activeDot = {
                 onClick: onDataPointClickInternal
               };
-              chartElementProps.label = ComposedDataLabel;
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel;
               chartElementProps.type = lineType;
               break;
             case 'bar':
@@ -268,14 +271,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.stackId = config.stackId ?? undefined;
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = ComposedDataLabel;
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel;
               break;
             case 'area':
               chartElementProps.type = 'monotone';
               chartElementProps.fillOpacity = 0.3;
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = ComposedDataLabel;
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel;
               break;
           }
           return (
