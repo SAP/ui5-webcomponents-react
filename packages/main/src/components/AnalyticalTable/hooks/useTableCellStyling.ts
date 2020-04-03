@@ -50,7 +50,7 @@ export const useTableCellStyling: PluginHook<{}> = (hooks) => {
       className += ` ${column.className}`;
     }
 
-    if (column.id === '__ui5wcr__internal_highlight_column') {
+    if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
       style.padding = 0;
     }
 
@@ -59,7 +59,6 @@ export const useTableCellStyling: PluginHook<{}> = (hooks) => {
       style.boxSizing = 'border-box';
       style.width = `calc(${cellProps.style.width} - ${ThemingParameters.sapScrollBar_Dimension})`;
     }
-
     return {
       ...cellProps,
       className,

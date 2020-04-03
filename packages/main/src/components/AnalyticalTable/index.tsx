@@ -3,6 +3,8 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import React, {
   ComponentType,
   FC,
@@ -28,9 +30,8 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
-import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
 import { DefaultColumn } from './defaults/Column';
@@ -49,6 +50,7 @@ import { useTableRowStyling } from './hooks/useTableRowStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useTableStyling } from './hooks/useTableStyling';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
+import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
@@ -76,7 +78,6 @@ export interface TableProps extends CommonProps {
   noDataText?: string;
   rowHeight?: number;
   alternateRowColor?: boolean;
-  noSelectionColumn?: boolean;
   withRowHighlight?: boolean;
   highlightField?: string;
 
@@ -85,6 +86,7 @@ export interface TableProps extends CommonProps {
   sortable?: boolean;
   groupable?: boolean;
   groupBy?: string[];
+  selectionBehavior?: TableSelectionBehavior;
   selectionMode?: TableSelectionMode;
   scaleWidthMode?: TableScaleWidthMode;
   columnOrder?: object[];
@@ -130,6 +132,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     loading,
     groupBy,
     selectionMode,
+    selectionBehavior,
     onRowSelected,
     onSort,
     reactTableOptions,
@@ -149,7 +152,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     alternateRowColor,
     overscanCount,
     scaleWidthMode,
-    noSelectionColumn,
     withRowHighlight,
     highlightField = 'status',
     groupable,
@@ -200,7 +202,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       disableSortBy: !sortable,
       disableGroupBy: !groupable,
       webComponentsReactProperties: {
+        tableRef,
         selectionMode,
+        selectionBehavior,
         classes,
         onRowSelected,
         onRowExpandChange,
@@ -208,7 +212,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         alternateRowColor,
         scaleWidthMode,
         loading,
-        noSelectionColumn,
         withRowHighlight,
         highlightField
       },
@@ -227,6 +230,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableHeaderStyling,
     useTableRowStyling,
     useRowSelectionColumn,
+    useSingleRowStateSelection,
     useRowHighlight,
     useDynamicColumnWidths,
     useColumnsDependencies,
@@ -490,6 +494,7 @@ AnalyticalTable.defaultProps = {
   filterable: false,
   groupable: false,
   selectionMode: TableSelectionMode.NONE,
+  selectionBehavior: TableSelectionBehavior.ROW,
   scaleWidthMode: TableScaleWidthMode.Default,
   data: [],
   columns: [],

@@ -1,11 +1,12 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 
 const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 export const useTableRowStyling = (hooks) => {
   hooks.getRowProps.push((passedRowProps, { instance, row }) => {
-    const { classes, selectionMode, onRowSelected } = instance.webComponentsReactProperties;
+    const { webComponentsReactProperties } = instance;
+    const { classes, selectionBehavior, selectionMode } = webComponentsReactProperties;
     const isEmptyRow = row.original?.emptyRow;
     let className = classes.tr;
     if (row.isGrouped) {
@@ -16,29 +17,16 @@ export const useTableRowStyling = (hooks) => {
       className += ` ${classes.emptyRow}`;
     }
 
+    if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
+      className += ` ${classes.selectionModeRowSelector}`;
+    }
+
     const rowProps: any = {
       ...passedRowProps,
       className,
       role: 'row'
     };
     if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode) && !isEmptyRow) {
-      rowProps.onClick = (e) => {
-        if (row.isGrouped) {
-          return;
-        }
-
-        row.toggleRowSelected();
-
-        if (typeof onRowSelected === 'function') {
-          onRowSelected(enrichEventWithDetails(e, { row, isSelected: !row.isSelected }));
-        }
-
-        if (selectionMode === TableSelectionMode.SINGLE_SELECT) {
-          instance.selectedFlatRows.forEach(({ id }) => {
-            instance.toggleRowSelected(id, false);
-          });
-        }
-      };
       if (row.isSelected) {
         rowProps[ROW_SELECTION_ATTRIBUTE] = '';
       }

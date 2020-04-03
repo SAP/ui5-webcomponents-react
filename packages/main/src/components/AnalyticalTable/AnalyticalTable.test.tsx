@@ -1,9 +1,10 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { mount } from 'enzyme';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { AnalyticalTableScrollMode } from '@ui5/webcomponents-react/lib/AnalyticalTableScrollMode';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
+import { mount } from 'enzyme';
 import React, { useRef } from 'react';
 
 const columns = [
@@ -268,7 +269,7 @@ describe('AnalyticalTable', () => {
         data={data}
         columns={columns}
         selectionMode={TableSelectionMode.SINGLE_SELECT}
-        noSelectionColumn
+        selectionBehavior={TableSelectionBehavior.ROW_ONLY}
       />
     );
 

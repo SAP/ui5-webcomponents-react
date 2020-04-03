@@ -34,7 +34,6 @@ export interface ColumnHeaderProps {
 
 const styles = {
   header: {
-    padding: `0 0.5rem`,
     height: '100%',
     display: 'flex',
     justifyContent: 'begin',
@@ -161,13 +160,17 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       fontWeight: 'normal',
       cursor: 'pointer',
       height: '100%',
-      overflowX: 'hidden'
+      overflowX: 'hidden',
+      padding: `0 0.5rem`
     };
     if (isResizable) {
       modifiedStyles.maxWidth = `calc(100% - 16px)`;
     }
     if (dragOver) {
       modifiedStyles.borderLeft = `3px solid ${ThemingParameters.sapSelectedColor}`;
+    }
+    if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
+      modifiedStyles.padding = 0;
     }
     return modifiedStyles;
   }, [isResizable, dragOver]);
