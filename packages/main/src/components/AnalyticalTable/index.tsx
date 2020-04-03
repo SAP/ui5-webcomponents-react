@@ -2,9 +2,11 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
+import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import React, {
   ComponentType,
   FC,
@@ -31,7 +33,6 @@ import {
   useTable
 } from 'react-table';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
 import { DefaultColumn } from './defaults/Column';
@@ -43,6 +44,7 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
+import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
 import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
@@ -50,11 +52,53 @@ import { useTableRowStyling } from './hooks/useTableRowStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useTableStyling } from './hooks/useTableStyling';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
-import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
+
+interface AnalyticalTableColumnDefinition {
+  // base properties
+  accessor: string | ((row: any, rowIndex: number) => any);
+  /**
+   * Required if accessor is a function
+   */
+  id?: string;
+
+  Header?: string | ComponentType;
+  Cell?: string | ComponentType;
+  width?: number;
+  minWidth?: number;
+  maxWidth?: number;
+
+  // useFilters
+  Filter?: string | ComponentType;
+  disableFilters?: boolean;
+  defaultCanFilter?: boolean;
+  filter?: string | Function;
+
+  // useGroupBy
+  Aggregated?: string | ComponentType;
+  aggregate?: string | ((leafValues, aggregatedValues) => any);
+  aggregateValue?: string | ((values, row, column) => any);
+  disableGroupBy?: boolean;
+
+  // useSortBy
+  defaultCanSort?: boolean;
+  disableSortBy?: boolean;
+  sortDescFirst?: boolean;
+  sortInverted?: boolean;
+  sortType?: string | ((rowA, rowB, columnId: string, descending: boolean) => any);
+
+  // useResizeColumns
+  disableResizing?: boolean;
+
+  // ui5 web components react properties
+  hAlign?: TextAlign;
+  vAlign?: VerticalAlign;
+
+  [key: string]: any;
+}
 
 export interface TableProps extends CommonProps {
   columns: AnalyticalTableColumnDefinition[];
