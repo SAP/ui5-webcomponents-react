@@ -1,10 +1,8 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
-import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import React, {
   ComponentType,
   FC,
@@ -19,7 +17,6 @@ import React, {
   useRef
 } from 'react';
 import {
-  Column,
   PluginHook,
   useAbsoluteLayout,
   useColumnOrder,
@@ -32,6 +29,7 @@ import {
   useTable
 } from 'react-table';
 import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
+import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
@@ -42,7 +40,7 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 import { useColumnsDependencies } from './hooks/useColumnsDependencies';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
-import { useRowHighlight } from "./hooks/useRowHighlight";
+import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
@@ -56,25 +54,8 @@ import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 
-export interface ColumnConfiguration extends Column {
-  accessor?: string;
-  width?: number;
-  hAlign?: TextAlign;
-  vAlign?: VerticalAlign;
-  canResize?: boolean;
-  minWidth?: number;
-
-  [key: string]: any;
-}
-
 export interface TableProps extends CommonProps {
-  /**
-   * In addition to the standard 'react-table' column config you can pass the properties 'hAlign' and 'vAlign'.
-   * These will align the text inside the column accordingly.
-   * values for hAlign: Begin | End | Left | Right | Center | Initial (default)
-   * values for vAlign: Bottom | Middle | Top | Inherit (default)
-   */
-  columns: ColumnConfiguration[];
+  columns: AnalyticalTableColumnDefinition[];
   data: object[];
 
   /**
@@ -107,6 +88,8 @@ export interface TableProps extends CommonProps {
   selectionMode?: TableSelectionMode;
   scaleWidthMode?: TableScaleWidthMode;
   columnOrder?: object[];
+  infiniteScroll?: boolean;
+  infiniteScrollThreshold?: number;
 
   // events
 
@@ -115,6 +98,7 @@ export interface TableProps extends CommonProps {
   onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => any;
   onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => any;
   onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
+  onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
   /**
    * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api/useTable.md#table-options)
    */
@@ -126,7 +110,6 @@ export interface TableProps extends CommonProps {
   overscanCount?: number;
 
   // default components
-
   NoDataComponent?: ComponentType<any>;
   LoadingComponent?: ComponentType<any>;
 }
@@ -148,6 +131,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     groupBy,
     selectionMode,
     onRowSelected,
+    onSort,
     reactTableOptions,
     tableHooks,
     busyIndicatorEnabled,
@@ -167,7 +151,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     scaleWidthMode,
     noSelectionColumn,
     withRowHighlight,
-    highlightField = 'status'
+    highlightField = 'status',
+    groupable,
+    sortable,
+    filterable,
+    infiniteScroll,
+    infiniteScrollThreshold = 20,
+    onLoadMore
   } = props;
 
   const classes = useStyles({ rowHeight: props.rowHeight });
@@ -206,6 +196,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       orderByFn,
       getSubRows,
       stateReducer,
+      disableFilters: !filterable,
+      disableSortBy: !sortable,
+      disableGroupBy: !groupable,
       webComponentsReactProperties: {
         selectionMode,
         classes,
@@ -325,8 +318,80 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     'onGroup',
     'onRowSelected',
     'onRowExpandChange',
-    'onColumnsReordered'
+    'onColumnsReordered',
+    'onLoadMore'
   ]);
+
+  const currentlyFocusedCell = useRef<HTMLDivElement>(null);
+  const onTableFocus = useCallback(
+    (e) => {
+      if (e.target.getAttribute('role') === 'grid') {
+        const firstCell: HTMLDivElement = e.target.querySelector(
+          'div[role="row"]:first-child div[role="cell"]:first-child'
+        );
+        firstCell.tabIndex = 0;
+        firstCell.focus();
+        currentlyFocusedCell.current = firstCell;
+      }
+    },
+    [currentlyFocusedCell]
+  );
+
+  const onKeyboardNavigation = useCallback(
+    (e) => {
+      if (currentlyFocusedCell.current) {
+        switch (e.key) {
+          case 'ArrowRight': {
+            const newElement = currentlyFocusedCell.current.nextElementSibling as HTMLDivElement;
+            if (newElement) {
+              currentlyFocusedCell.current.tabIndex = -1;
+              newElement.tabIndex = 0;
+              newElement.focus();
+              currentlyFocusedCell.current = newElement;
+            }
+            break;
+          }
+          case 'ArrowLeft': {
+            const newElement = currentlyFocusedCell.current.previousElementSibling as HTMLDivElement;
+            if (newElement) {
+              currentlyFocusedCell.current.tabIndex = -1;
+              newElement.tabIndex = 0;
+              newElement.focus();
+              currentlyFocusedCell.current = newElement;
+            }
+            break;
+          }
+          case 'ArrowDown': {
+            const nextRow = currentlyFocusedCell.current.parentElement.nextElementSibling as HTMLDivElement;
+            if (nextRow) {
+              currentlyFocusedCell.current.tabIndex = -1;
+              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex');
+              const newElement: HTMLDivElement = nextRow.querySelector(`div[aria-colindex="${currentColumnIndex}"]`);
+              newElement.tabIndex = 0;
+              newElement.focus();
+              currentlyFocusedCell.current = newElement;
+            }
+            break;
+          }
+          case 'ArrowUp': {
+            const previousRow = currentlyFocusedCell.current.parentElement.previousElementSibling as HTMLDivElement;
+            if (previousRow) {
+              currentlyFocusedCell.current.tabIndex = -1;
+              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex');
+              const newElement: HTMLDivElement = previousRow.querySelector(
+                `div[aria-colindex="${currentColumnIndex}"]`
+              );
+              newElement.tabIndex = 0;
+              newElement.focus();
+              currentlyFocusedCell.current = newElement;
+            }
+            break;
+          }
+        }
+      }
+    },
+    [currentlyFocusedCell]
+  );
 
   return (
     <div className={className} style={style} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
@@ -334,23 +399,30 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
       <div className={tableContainerClasses.valueOf()} ref={tableRef}>
         {
-          <div {...getTableProps()} role="table" aria-rowcount={rows.length}>
+          <div
+            {...getTableProps()}
+            role="grid"
+            aria-rowcount={rows.length}
+            aria-colcount={tableInternalColumns.length}
+            data-per-page={visibleRows}
+            tabIndex={0}
+            onFocus={onTableFocus}
+            onKeyDown={onKeyboardNavigation}
+          >
             {headerGroups.map((headerGroup) => {
               let headerProps = {};
               if (headerGroup.getHeaderGroupProps) {
                 headerProps = headerGroup.getHeaderGroupProps();
               }
               return (
+                // eslint-disable-next-line react/jsx-key
                 <header {...headerProps} role="rowgroup">
                   {headerGroup.headers.map((column, index) => (
+                    // eslint-disable-next-line react/jsx-key
                     <ColumnHeader
-                      id={column.id}
                       {...column.getHeaderProps()}
                       isLastColumn={index === headerGroup.headers.length - 1}
-                      groupable={column.groupable ?? props.groupable}
-                      sortable={column.sortable ?? props.sortable}
-                      filterable={column.filterable ?? props.filterable}
-                      onSort={props.onSort}
+                      onSort={onSort}
                       onGroupBy={onGroupByChanged}
                       onDragStart={handleDragStart}
                       onDragOver={handleDragOver}
@@ -358,7 +430,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                       onDragEnter={handleDragEnter}
                       onDragEnd={handleOnDragEnd}
                       dragOver={column.id === dragOver}
-                      column={column}
                       isDraggable={!isTreeTable && column.canReorder}
                     >
                       {column.render('Header')}
@@ -399,6 +470,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 overscanCount={overscanCount}
                 totalColumnsWidth={totalColumnsWidth}
                 selectedFlatRows={selectedFlatRows}
+                infiniteScroll={infiniteScroll}
+                infiniteScrollThreshold={infiniteScrollThreshold}
+                onLoadMore={onLoadMore}
               />
             )}
           </div>
