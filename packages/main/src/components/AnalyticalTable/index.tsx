@@ -2,9 +2,9 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React, {
   ComponentType,
   FC,
@@ -30,8 +30,8 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { CommonProps } from '../../interfaces/CommonProps';
 import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
+import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
 import { DefaultColumn } from './defaults/Column';
@@ -43,6 +43,7 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
+import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
 import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
@@ -50,13 +51,15 @@ import { useTableRowStyling } from './hooks/useTableRowStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
 import { useTableStyling } from './hooks/useTableStyling';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
-import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 
 export interface TableProps extends CommonProps {
+  /**
+   * Please look at the [AnalyticalTableColumnDefinition interface](https://github.com/SAP/ui5-webcomponents-react/blob/master/packages/main/src/interfaces/AnalyticalTableColumnDefinition.ts) for a full list of options.
+   */
   columns: AnalyticalTableColumnDefinition[];
   data: object[];
 

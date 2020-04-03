@@ -49,13 +49,13 @@ const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(UI5Avatar)
 Avatar.displayName = 'Avatar';
 
 Avatar.defaultProps = {
-  backgroundColor: 'Accent6',
+  backgroundColor: AvatarBackgroundColor.Accent6,
   icon: '',
   image: '',
-  imageFitType: 'Cover',
+  imageFitType: AvatarFitType.Cover,
   initials: '',
-  shape: 'Circle',
-  size: 'S'
+  shape: AvatarShape.Circle,
+  size: AvatarSize.S
 };
 
 export { Avatar };
