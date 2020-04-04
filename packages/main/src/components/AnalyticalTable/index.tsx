@@ -400,8 +400,18 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     [currentlyFocusedCell]
   );
 
+  const inlineStyle = useMemo(() => {
+    if(tableState.tableClientWidth > 0) {
+      return style;
+    }
+    return {
+      ...style,
+      visibility: 'hidden' as 'hidden'
+    };
+  }, [tableState.tableClientWidth, style]);
+
   return (
-    <div className={className} style={style} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
+    <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
       <div className={tableContainerClasses.valueOf()} ref={tableRef}>
