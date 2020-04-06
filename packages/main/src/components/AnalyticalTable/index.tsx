@@ -38,7 +38,6 @@ import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
-import { useColumnsDependencies } from './hooks/useColumnsDependencies';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useRowHighlight } from './hooks/useRowHighlight';
@@ -236,7 +235,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useSingleRowStateSelection,
     useRowHighlight,
     useDynamicColumnWidths,
-    useColumnsDependencies,
     useTableCellStyling,
     useToggleRowExpand,
     ...tableHooks
