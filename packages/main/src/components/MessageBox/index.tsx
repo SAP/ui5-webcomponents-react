@@ -4,8 +4,10 @@ import '@ui5/webcomponents-icons/dist/icons/message-information';
 import '@ui5/webcomponents-icons/dist/icons/message-success';
 import '@ui5/webcomponents-icons/dist/icons/message-warning';
 import '@ui5/webcomponents-icons/dist/icons/question-mark';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
@@ -15,8 +17,7 @@ import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, useMemo } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, useEffect, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import styles from './MessageBox.jss';
@@ -28,7 +29,7 @@ export interface MessageBoxPropTypes extends CommonProps {
   actions?: MessageBoxActions[];
   icon?: ReactNode;
   type?: MessageBoxTypes;
-  onClose: (event: CustomEvent<{action: MessageBoxActions}>) => void;
+  onClose: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
 }
 
 const useStyles = createComponentStyles(styles, { name: 'MessageBox' });
@@ -103,13 +104,24 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     [onClose]
   );
 
+  const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
+
+  useEffect(() => {
+    if (dialogRef.current) {
+      if (open) {
+        dialogRef.current.open();
+      } else {
+        dialogRef.current.close();
+      }
+    }
+  }, [open, dialogRef]);
+
   const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
 
   return (
     <Dialog
-      open={open}
       slot={slot}
-      ref={ref}
+      ref={dialogRef}
       style={style}
       tooltip={tooltip}
       className={className}
