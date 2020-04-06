@@ -13,7 +13,7 @@ export interface RechartBaseProps extends ChartContainerProps {
   colors?: CSSProperties['color'][];
   labels?: { [key: string]: string };
 
-  axisInterval: number;
+  axisInterval?: number;
   labelFormatter?: (el) => void;
   valueFormatter?: (el) => void;
   dataLabelCustomElement?: JSX.Element;
