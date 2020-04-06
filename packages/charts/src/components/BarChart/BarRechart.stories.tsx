@@ -32,7 +32,7 @@ export const withCustomColor = () => (
     labelKey={'name'}
     color={'red'}
     width={'100%'}
-    height={'265px'}
+    height={'90vh'}
     chartConfig={{ dataLabel: true }}
   />
 );
@@ -52,7 +52,7 @@ export const defaultStackedStory = () => (
     onDataPointClick={action('onDataPointClick')}
     onLegendClick={action('onLegendClick')}
     labelKey={'name'}
-    width={'91%'}
+    width={'100%'}
     dataset={complexDataSet}
     chartConfig={{
       gridStroke: 'white',

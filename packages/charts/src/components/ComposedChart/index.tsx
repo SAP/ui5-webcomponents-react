@@ -166,12 +166,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     [elements]
   );
 
-  const ComposedDataLabel = useDataLabel(
-    chartConfig.dataLabel,
-    defaults.dataLabelCustomElement,
-    labelFormatter,
-    defaults.stackId
-  );
+  const ComposedDataLabel = (bar, noSizeCheck) =>
+    useDataLabel(
+      chartConfig.dataLabel,
+      defaults.dataLabelCustomElement,
+      labelFormatter,
+      defaults.stackId,
+      bar,
+      noSizeCheck
+    );
 
   const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
@@ -262,7 +265,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.activeDot = {
                 onClick: onDataPointClickInternal
               };
-              chartElementProps.label = bigDataSet ? false : ComposedDataLabel;
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel(false, true);
               chartElementProps.type = lineType;
               break;
             case 'bar':
@@ -271,14 +274,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.stackId = config.stackId ?? undefined;
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = bigDataSet ? false : ComposedDataLabel;
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel(false, false);
               break;
             case 'area':
               chartElementProps.type = 'monotone';
               chartElementProps.fillOpacity = 0.3;
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = bigDataSet ? false : ComposedDataLabel;
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel(false, true);
               break;
           }
           return (

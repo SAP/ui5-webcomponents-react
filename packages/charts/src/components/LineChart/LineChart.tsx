@@ -106,7 +106,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     [onDataPointClick]
   );
 
-  const LineDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, labelFormatter);
+  const LineDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, labelFormatter, false, false, true);
 
   const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();

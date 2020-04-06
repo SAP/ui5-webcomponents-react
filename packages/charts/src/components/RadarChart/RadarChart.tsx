@@ -79,7 +79,14 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     [onDataPointClick]
   );
 
-  const RadarDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, labelFormatter, false, false);
+  const RadarDataLabel = useDataLabel(
+    chartConfig.dataLabel,
+    dataLabelCustomElement,
+    labelFormatter,
+    false,
+    false,
+    true
+  );
 
   const marginChart = useChartMargin(dataset, labelFormatter, labelKey, chartConfig.margin);
 

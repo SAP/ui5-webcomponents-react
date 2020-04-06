@@ -57,7 +57,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       gridVertical: false,
       yAxisColor: ThemingParameters.sapList_BorderColor,
       legendPosition: 'top',
-      barSize: 100,
+      barSize: 50,
       barGap: 3,
       zoomingTool: false,
       strokeOpacity: 1,
@@ -119,6 +119,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     dataLabelCustomElement,
     labelFormatter,
     chartConfig.stacked,
+    false,
     false
   );
 

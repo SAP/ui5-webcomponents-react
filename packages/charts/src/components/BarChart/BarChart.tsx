@@ -56,7 +56,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       gridHorizontal: true,
       gridVertical: false,
       legendPosition: 'top',
-      barSize: 10,
+      barSize: 50,
       barGap: 3,
       zoomingTool: false,
       strokeOpacity: 1,

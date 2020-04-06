@@ -9,7 +9,7 @@ import {
 
 export const renderComposedChart = () => (
   <ComposedChart
-    width={'95%'}
+    width={'100%'}
     height={'300px'}
     dataset={complexDataSet}
     onLegendClick={action('onLegendClick')}
