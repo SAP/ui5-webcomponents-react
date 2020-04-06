@@ -1,17 +1,31 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import { PluginHook } from 'react-table';
+import { useCallback } from 'react';
 
-export const useSingleRowStateSelection: PluginHook<{}> = (hooks) => {
-  hooks.getRowProps.push((passedRowProps, { instance, row }) => {
-    const { webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows } = instance;
-    const { isTreeTable, selectionMode, onRowSelected, selectionBehavior } = webComponentsReactProperties;
-    const rowProps = { ...passedRowProps };
-    const isEmptyRow = row.original?.emptyRow;
+const prepareRow = (row, { instance }) => {
+  row.selectSingleRow = (event, selectionCellClick = false) => {
+    instance.selectSingleRow(row, event, selectionCellClick);
+  };
+};
 
-    if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode) && !isEmptyRow) {
-      rowProps.onClick = (e, selectionCellClick = false) => {
+const getRowProps = (rowProps, { row }) => {
+  return [
+    rowProps,
+    {
+      onClick: row.selectSingleRow
+    }
+  ];
+};
+
+const useInstance = (instance) => {
+  const { webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows } = instance;
+  const { isTreeTable, selectionMode, onRowSelected, selectionBehavior } = webComponentsReactProperties;
+
+  const selectSingleRow = useCallback(
+    (row, e, selectionCellClick = false) => {
+      const isEmptyRow = row.original?.emptyRow;
+      if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode) && !isEmptyRow) {
         if (row.isGrouped || (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior && !selectionCellClick)) {
           return;
         }
@@ -49,11 +63,17 @@ export const useSingleRowStateSelection: PluginHook<{}> = (hooks) => {
             toggleRowSelected(id, false);
           });
         }
-      };
-    }
+      }
+    },
+    [selectionMode, isTreeTable, dispatch, selectedFlatRows, onRowSelected, toggleRowSelected]
+  );
 
-    return rowProps;
-  });
+  Object.assign(instance, { selectSingleRow });
 };
 
+export const useSingleRowStateSelection = (hooks) => {
+  hooks.useInstance.push(useInstance);
+  hooks.prepareRow.push(prepareRow);
+  hooks.getRowProps.push(getRowProps);
+};
 useSingleRowStateSelection.pluginName = 'useSingleRowStateSelection';
