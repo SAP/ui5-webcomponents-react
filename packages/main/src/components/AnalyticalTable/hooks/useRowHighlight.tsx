@@ -30,20 +30,20 @@ const columnsDeps = (deps, { instance: { webComponentsReactProperties } }) => {
   return [...deps, webComponentsReactProperties.withRowHighlight, webComponentsReactProperties.highlightField];
 };
 const visibleColumnsDeps = (deps, { instance }) => [...deps, instance.webComponentsReactProperties.withRowHighlight];
-const visibleColumns = (columns, { instance: { webComponentsReactProperties } }) => {
+const visibleColumns = (currentVisibleColumns, { instance: { webComponentsReactProperties } }) => {
   if (!webComponentsReactProperties.withRowHighlight) {
-    return columns.filter(({ id }) => id !== '__ui5wcr__internal_highlight_column');
+    return currentVisibleColumns.filter(({ id }) => id !== '__ui5wcr__internal_highlight_column');
   }
 
-  const highlightColumn = columns.find(({ id }) => id === '__ui5wcr__internal_highlight_column');
-  return [highlightColumn, ...columns.filter(({ id }) => id !== '__ui5wcr__internal_highlight_column')];
+  const highlightColumn = currentVisibleColumns.find(({ id }) => id === '__ui5wcr__internal_highlight_column');
+  return [highlightColumn, ...currentVisibleColumns.filter(({ id }) => id !== '__ui5wcr__internal_highlight_column')];
 };
 
-const columns = (columns, { instance }) => {
+const columns = (currentColumns, { instance }) => {
   const { withRowHighlight, highlightField } = instance.webComponentsReactProperties;
 
   if (!withRowHighlight) {
-    return columns;
+    return currentColumns;
   }
   return [
     {
@@ -60,7 +60,7 @@ const columns = (columns, { instance }) => {
       Header,
       Cell
     },
-    ...columns
+    ...currentColumns
   ];
 };
 

@@ -3,12 +3,28 @@ import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelect
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { useCallback } from 'react';
 
-const getRowProps = (passedRowProps, { instance, row }) => {
+const prepareRow = (row, { instance }) => {
+  row.selectSingleRow = (event, selectionCellClick = false) => {
+    instance.selectSingleRow(row, event, selectionCellClick);
+  };
+};
+
+const getRowProps = (rowProps, { row }) => {
+  return [
+    rowProps,
+    {
+      onClick: row.selectSingleRow
+    }
+  ];
+};
+
+const useInstance = (instance) => {
   const { webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows } = instance;
   const { isTreeTable, selectionMode, onRowSelected, selectionBehavior } = webComponentsReactProperties;
-  const isEmptyRow = row.original?.emptyRow;
 
-  const onClick /*useCallback(*/ = (e, selectionCellClick = false) => {
+  const selectSingleRow = useCallback(
+    (row, e, selectionCellClick = false) => {
+      const isEmptyRow = row.original?.emptyRow;
       if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode) && !isEmptyRow) {
         if (row.isGrouped || (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior && !selectionCellClick)) {
           return;
@@ -48,25 +64,16 @@ const getRowProps = (passedRowProps, { instance, row }) => {
           });
         }
       }
-    } /*,
-    [
-      selectionMode,
-      isEmptyRow,
-      row.isGrouped,
-      isTreeTable,
-      dispatch,
-      selectedFlatRows,
-      row.toggleRowSelected,
-      onRowSelected,
-      row.isSelected,
-      toggleRowSelected
-    ]
-  )*/;
+    },
+    [selectionMode, isTreeTable, dispatch, selectedFlatRows, onRowSelected, toggleRowSelected]
+  );
 
-  return [passedRowProps, { onClick }];
+  Object.assign(instance, { selectSingleRow });
 };
 
 export const useSingleRowStateSelection = (hooks) => {
+  hooks.useInstance.push(useInstance);
+  hooks.prepareRow.push(prepareRow);
   hooks.getRowProps.push(getRowProps);
 };
 useSingleRowStateSelection.pluginName = 'useSingleRowStateSelection';

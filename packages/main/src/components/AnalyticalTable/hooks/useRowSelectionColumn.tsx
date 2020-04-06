@@ -73,23 +73,23 @@ const visibleColumnsDeps = (deps, { instance }) => [
   instance.webComponentsReactProperties.selectionBehavior
 ];
 
-const visibleColumns = (visibleColumns, { instance: { webComponentsReactProperties } }) => {
+const visibleColumns = (currentVisibleColumns, { instance: { webComponentsReactProperties } }) => {
   if (
     webComponentsReactProperties.selectionMode === TableSelectionMode.NONE ||
     webComponentsReactProperties.selectionBehavior === TableSelectionBehavior.ROW_ONLY
   ) {
-    return visibleColumns;
+    return currentVisibleColumns;
   }
 
-  const selectionColumn = visibleColumns.find(({ id }) => id === '__ui5wcr__internal_selection_column');
-  return [selectionColumn, ...visibleColumns.filter(({ id }) => id !== '__ui5wcr__internal_selection_column')];
+  const selectionColumn = currentVisibleColumns.find(({ id }) => id === '__ui5wcr__internal_selection_column');
+  return [selectionColumn, ...currentVisibleColumns.filter(({ id }) => id !== '__ui5wcr__internal_selection_column')];
 };
-const columns = (columns, { instance }) => {
+const columns = (currentColumns, { instance }) => {
   const { webComponentsReactProperties } = instance;
   const { selectionMode, selectionBehavior, tableRef } = webComponentsReactProperties;
 
   if (selectionMode === TableSelectionMode.NONE || selectionBehavior === TableSelectionBehavior.ROW_ONLY) {
-    return columns;
+    return currentColumns;
   }
 
   const selectionColumnWidth = tableRef.current
@@ -115,7 +115,7 @@ const columns = (columns, { instance }) => {
       Header,
       Cell
     },
-    ...columns
+    ...currentColumns
   ];
 };
 
