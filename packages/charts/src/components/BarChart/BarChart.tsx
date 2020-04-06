@@ -43,8 +43,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     onLegendClick,
     labels,
     axisInterval,
-    yAxisFormatter = (el) => formatYAxisTicks(el),
-    xAxisFormatter = (el) => el,
+    labelFormatter = (el) => formatYAxisTicks(el),
+    valueFormatter = (el) => el,
     dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
@@ -113,14 +113,14 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const BarDataLabel = useDataLabel(
     chartConfig.dataLabel,
     dataLabelCustomElement,
-    xAxisFormatter,
+    valueFormatter,
     chartConfig.stacked,
     true
   );
 
   const marginChart = useChartMargin(
     dataset,
-    yAxisFormatter,
+    labelFormatter,
     labelKey,
     chartConfig.margin,
     true,
@@ -128,9 +128,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     chartConfig.zoomingTool
   );
 
-  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
-  const YAxisLabel = useAxisLabel(yAxisFormatter, chartConfig.yAxisUnit, true);
-  const SecondaryDimensionLabel = useSecondaryDimensionLabel(true, yAxisFormatter);
+  const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
+  const YAxisLabel = useAxisLabel(labelFormatter, chartConfig.yAxisUnit, true);
+  const SecondaryDimensionLabel = useSecondaryDimensionLabel(true, labelFormatter);
   const bigDataSet = dataset?.length > 30 ?? false;
 
   return (
@@ -197,7 +197,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             label={chartConfig.referenceLine.label}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={xAxisFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}

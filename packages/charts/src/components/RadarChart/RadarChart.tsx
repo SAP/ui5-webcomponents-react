@@ -38,8 +38,8 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     noLegend = false,
     onDataPointClick,
     labels,
-    xAxisFormatter = (el) => el,
-    yAxisFormatter = (el) => el,
+    valueFormatter = (el) => el,
+    labelFormatter = (el) => el,
     dataLabelCustomElement = undefined,
     onLegendClick,
     chartConfig = {
@@ -79,9 +79,9 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     [onDataPointClick]
   );
 
-  const RadarDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, yAxisFormatter, false, false);
+  const RadarDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, labelFormatter, false, false);
 
-  const marginChart = useChartMargin(dataset, yAxisFormatter, labelKey, chartConfig.margin);
+  const marginChart = useChartMargin(dataset, labelFormatter, labelKey, chartConfig.margin);
 
   return (
     <ChartContainer
@@ -100,12 +100,12 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
         <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis
           dataKey={labelKey}
-          tickFormatter={xAxisFormatter}
+          tickFormatter={valueFormatter}
           tick={{
             fill: ThemingParameters.sapContent_LabelColor
           }}
         />
-        <PolarRadiusAxis tickFormatter={yAxisFormatter} />
+        <PolarRadiusAxis tickFormatter={labelFormatter} />
         {currentDataKeys.map((key, index) => (
           <Radar
             key={index}
@@ -118,7 +118,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
             label={RadarDataLabel}
           />
         ))}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={xAxisFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
       </RadarChartLib>
     </ChartContainer>

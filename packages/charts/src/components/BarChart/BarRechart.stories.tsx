@@ -31,9 +31,9 @@ export const withCustomColor = () => (
     dataset={simpleDataSet}
     labelKey={'name'}
     color={'red'}
-    width={text('width', '95%')}
-    height={text('height', '70vh')}
-    chartConfig={{ dataLabel: true, barSize: 20 }}
+    width={'100%'}
+    height={'265px'}
+    chartConfig={{ dataLabel: true }}
   />
 );
 

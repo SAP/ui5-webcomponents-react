@@ -14,10 +14,8 @@ export interface RechartBaseProps extends ChartContainerProps {
   labels?: { [key: string]: string };
 
   axisInterval: number;
-  yAxisFormatter?: (el) => void;
-  xAxisFormatter?: (el) => void;
-  dataValueFormatter?: (d: number) => void;
-  dataLabelFormatter?: (d: string) => void;
+  labelFormatter?: (el) => void;
+  valueFormatter?: (el) => void;
   dataLabelCustomElement?: JSX.Element;
 
   chartConfig?: {

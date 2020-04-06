@@ -72,8 +72,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     noLegend = false,
     labels,
     axisInterval,
-    xAxisFormatter = (el) => el,
-    yAxisFormatter = (el) => el,
+    valueFormatter = (el) => el,
+    labelFormatter = (el) => el,
     defaults = {
       barSize: 20,
       barGap: 3,
@@ -169,16 +169,16 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const ComposedDataLabel = useDataLabel(
     chartConfig.dataLabel,
     defaults.dataLabelCustomElement,
-    yAxisFormatter,
+    labelFormatter,
     defaults.stackId
   );
 
-  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
   const marginChart = useChartMargin(
     dataset,
-    yAxisFormatter,
+    labelFormatter,
     labelKey,
     chartConfig.margin,
     false,
@@ -231,7 +231,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           unit={chartConfig.yAxisUnit}
           tickLine={false}
           yAxisId="left"
-          tickFormatter={yAxisFormatter}
+          tickFormatter={labelFormatter}
           interval={0}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
@@ -244,7 +244,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             interval={0}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={xAxisFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
         {!noLegend && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition ?? 'top'} />}
         {elements?.map((config, index) => {
           const { type, accessor, color, lineType, dataLabelCustomElement, ...safeProps } = mergeWithDefaults(

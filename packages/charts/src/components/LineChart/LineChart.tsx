@@ -43,8 +43,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     onLegendClick,
     labels,
     axisInterval,
-    xAxisFormatter = (el) => el,
-    yAxisFormatter = (el) => el,
+    valueFormatter = (el) => el,
+    labelFormatter = (el) => el,
     dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
@@ -106,16 +106,16 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     [onDataPointClick]
   );
 
-  const LineDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, yAxisFormatter);
+  const LineDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, labelFormatter);
 
-  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
   const bigDataSet = dataset?.length > 30 ?? false;
 
   const marginChart = useChartMargin(
     dataset,
-    yAxisFormatter,
+    labelFormatter,
     labelKey,
     chartConfig.margin,
     false,
@@ -158,7 +158,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
           yAxisId="left"
-          tickFormatter={yAxisFormatter}
+          tickFormatter={labelFormatter}
           interval={0}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
@@ -194,7 +194,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             yAxisId={'left'}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={xAxisFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}

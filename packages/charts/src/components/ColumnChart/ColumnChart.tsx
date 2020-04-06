@@ -43,8 +43,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     onDataPointClick,
     onLegendClick,
     axisInterval,
-    xAxisFormatter = (el) => el,
-    yAxisFormatter = (el) => el,
+    valueFormatter = (el) => el,
+    labelFormatter = (el) => el,
     dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
@@ -57,7 +57,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       gridVertical: false,
       yAxisColor: ThemingParameters.sapList_BorderColor,
       legendPosition: 'top',
-      barSize: 15,
+      barSize: 100,
       barGap: 3,
       zoomingTool: false,
       strokeOpacity: 1,
@@ -117,7 +117,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const ColumnDataLabel = useDataLabel(
     chartConfig.dataLabel,
     dataLabelCustomElement,
-    yAxisFormatter,
+    labelFormatter,
     chartConfig.stacked,
     false
   );
@@ -126,12 +126,12 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
-  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
 
   const marginChart = useChartMargin(
     dataset,
     labelKey,
-    yAxisFormatter,
+    labelFormatter,
     chartConfig.margin,
     false,
     secondaryDimensionKey,
@@ -171,7 +171,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           />
         )}
         <YAxis
-          tickFormatter={yAxisFormatter}
+          tickFormatter={labelFormatter}
           unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
@@ -213,7 +213,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             yAxisId={'left'}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={xAxisFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush y={1} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}

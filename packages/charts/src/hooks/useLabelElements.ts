@@ -6,7 +6,7 @@ import {
   YAxisTicks
 } from '../internal/CustomElements';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { renderAxisTicks } from '../util/Utils';
+import { getTextWidth, renderAxisTicks } from '../util/Utils';
 
 export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter, stacked?, bar?) =>
   useMemo(() => {
@@ -15,7 +15,16 @@ export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatt
         ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
         : {
             position: bar ? (stacked ? 'insideRight' : 'right') : stacked ? 'inside' : 'top',
-            content: (props) => dataLabelFormatter(props.value),
+            content: (props) => {
+              const formattedDataValue = dataLabelFormatter(props.value);
+              if (props.viewBox.width < getTextWidth(formattedDataValue)) {
+                return null;
+              }
+              if (props.viewBox.height < 12) {
+                return null;
+              }
+              return formattedDataValue;
+            },
             fill: ThemingParameters.sapContent_LabelColor
           }
       : false;
