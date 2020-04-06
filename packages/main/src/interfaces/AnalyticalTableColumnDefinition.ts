@@ -10,20 +10,20 @@ export interface AnalyticalTableColumnDefinition {
    */
   id?: string;
 
-  Header?: string | ComponentType;
-  Cell?: string | ComponentType;
+  Header?: string | ComponentType<any>;
+  Cell?: string | ComponentType<any>;
   width?: number;
   minWidth?: number;
   maxWidth?: number;
 
   // useFilters
-  Filter?: string | ComponentType;
+  Filter?: string | ComponentType<any>;
   disableFilters?: boolean;
   defaultCanFilter?: boolean;
   filter?: string | Function;
 
   // useGroupBy
-  Aggregated?: string | ComponentType;
+  Aggregated?: string | ComponentType<any>;
   aggregate?: string | ((leafValues, aggregatedValues) => any);
   aggregateValue?: string | ((values, row, column) => any);
   disableGroupBy?: boolean;
