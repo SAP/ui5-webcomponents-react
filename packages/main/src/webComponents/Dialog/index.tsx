@@ -1,9 +1,6 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5Dialog from '@ui5/webcomponents/dist/Dialog';
-import React, { FC, ReactNode, RefForwardingComponent, RefObject, useEffect } from 'react';
-import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
@@ -20,17 +17,17 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
    */
   initialFocus?: string;
   /**
-   * Defines the header HTML Element.
+   * Defines the content of the Web Component.
    */
-  header?: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
   /**
    * Defines the footer HTML Element.
    */
   footer?: ReactNode | ReactNode[];
   /**
-   * Defines the content of the Web Component.
+   * Defines the header HTML Element.
    */
-  children?: ReactNode | ReactNode[];
+  header?: ReactNode | ReactNode[];
   /**
    * Fired after the component is closed.
    */
@@ -47,40 +44,21 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
    * Fired before the component is opened.
    */
   onBeforeOpen?: (event: CustomEvent<{}>) => void;
-  open?: boolean;
 }
-
-const InnerDialog: RefForwardingComponent<Ui5DomRef, DialogPropTypes> = withWebComponent<DialogPropTypes>(UI5Dialog);
 
 /**
  * <code>import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';</code>
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Dialog" target="_blank">UI5 Web Components Playground</a>
  */
-const Dialog: FC<DialogPropTypes> = React.forwardRef(
-  (props: DialogPropTypes, dialogRef: RefObject<Ui5DialogDomRef>) => {
-    const localDialogRef = useConsolidatedRef<Ui5DialogDomRef>(dialogRef);
-
-    const setDialogOpen = (open) => {
-      if (!localDialogRef.current || !localDialogRef.current.open) {
-        return;
-      }
-      return open ? localDialogRef.current.open() : localDialogRef.current.close();
-    };
-
-    useEffect(() => {
-      setDialogOpen(props.open);
-    }, [props.open]);
-
-    return <InnerDialog {...props} ref={localDialogRef} />;
-  }
-);
-
-Dialog.defaultProps = {
-  initialFocus: null,
-  headerText: ''
-};
+const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(UI5Dialog);
 
 Dialog.displayName = 'Dialog';
+
+Dialog.defaultProps = {
+  stretch: false,
+  headerText: '',
+  initialFocus: ''
+};
 
 export { Dialog };
