@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AnalyticalTable Alternate Row Color 1`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
@@ -535,7 +537,9 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
 `;
 
 exports[`AnalyticalTable Loading - Loader 1`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
@@ -1069,7 +1073,9 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
 `;
 
 exports[`AnalyticalTable Loading - Placeholder 1`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
@@ -1588,7 +1594,9 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
 `;
 
 exports[`AnalyticalTable Tree Table 1`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
@@ -2301,7 +2309,9 @@ exports[`AnalyticalTable Tree Table 1`] = `
 `;
 
 exports[`AnalyticalTable custom row height 1`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
@@ -2835,7 +2845,9 @@ exports[`AnalyticalTable custom row height 1`] = `
 `;
 
 exports[`AnalyticalTable render without data 1`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
@@ -3127,7 +3139,9 @@ exports[`AnalyticalTable render without data 1`] = `
 `;
 
 exports[`AnalyticalTable test Asc desc 1`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
@@ -3661,7 +3675,9 @@ exports[`AnalyticalTable test Asc desc 1`] = `
 `;
 
 exports[`AnalyticalTable test Asc desc 2`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
@@ -4195,7 +4211,9 @@ exports[`AnalyticalTable test Asc desc 2`] = `
 `;
 
 exports[`AnalyticalTable test Asc desc 3`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
@@ -4729,7 +4747,9 @@ exports[`AnalyticalTable test Asc desc 3`] = `
 `;
 
 exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
@@ -5263,7 +5283,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
 `;
 
 exports[`AnalyticalTable with highlight row 1`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
@@ -5931,7 +5953,9 @@ exports[`AnalyticalTable with highlight row 1`] = `
 `;
 
 exports[`AnalyticalTable without selection Column 1`] = `
-<div>
+<div
+  style="visibility: hidden;"
+>
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
   >
