@@ -78,7 +78,7 @@ describe('FilterBar', () => {
     );
     const component = wrapper
       .find('ui5-button')
-      .first()
+      .last()
       .instance() as any;
     component.fireEvent('click');
     expect(wrapper.render()).toMatchSnapshot();

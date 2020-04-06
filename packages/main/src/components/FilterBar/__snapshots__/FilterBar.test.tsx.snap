@@ -8,24 +8,20 @@ exports[`FilterBar Hide Filter Bar 1`] = `
     class="FilterBar-filterBarHeader-0"
   >
     <div
-      style="display: inline-block; pointer-events: auto;"
+      class="VariantManagement-VariantManagement-0"
     >
-      <div
-        class="VariantManagement-VariantManagement-0"
+      <ui5-title
+        class="VariantManagement-VariantManagementText-0"
+        level="H4"
       >
-        <ui5-title
-          class="VariantManagement-VariantManagementText-0"
-          level="H4"
-        >
-          Variant 1
-        </ui5-title>
-        <ui5-button
-          design="Transparent"
-          icon="navigation-down-arrow"
-        />
-      </div>
+        Variant 1
+      </ui5-title>
+      <ui5-button
+        design="Transparent"
+        icon="navigation-down-arrow"
+      />
     </div>
-    <ui5-popover
+    <ui5-responsive-popover
       header-text="Variants"
       horizontal-align="Center"
       initial-focus=""
@@ -63,7 +59,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
           Variant 2
         </ui5-li>
       </ui5-list>
-    </ui5-popover>
+    </ui5-responsive-popover>
     <div
       class="FilterBar-headerRowRight-0"
     >
@@ -71,12 +67,12 @@ exports[`FilterBar Hide Filter Bar 1`] = `
         design="Transparent"
         icon=""
       >
-        Hide Filter Bar
+        Show Filter Bar
       </ui5-button>
     </div>
   </div>
   <div
-    class="FilterBar-filterArea-0 FilterBar-filterAreaOpen-0"
+    class="FilterBar-filterArea-0 FilterBar-filterAreaClosed-0"
   >
     <div
       class="FilterItem-filterItem-0"
@@ -161,24 +157,20 @@ exports[`FilterBar Render without crashing 1`] = `
     class="FilterBar-filterBarHeader-0"
   >
     <div
-      style="display: inline-block; pointer-events: auto;"
+      class="VariantManagement-VariantManagement-0"
     >
-      <div
-        class="VariantManagement-VariantManagement-0"
+      <ui5-title
+        class="VariantManagement-VariantManagementText-0"
+        level="H4"
       >
-        <ui5-title
-          class="VariantManagement-VariantManagementText-0"
-          level="H4"
-        >
-          Variant 1
-        </ui5-title>
-        <ui5-button
-          design="Transparent"
-          icon="navigation-down-arrow"
-        />
-      </div>
+        Variant 1
+      </ui5-title>
+      <ui5-button
+        design="Transparent"
+        icon="navigation-down-arrow"
+      />
     </div>
-    <ui5-popover
+    <ui5-responsive-popover
       header-text="Variants"
       horizontal-align="Center"
       initial-focus=""
@@ -216,7 +208,7 @@ exports[`FilterBar Render without crashing 1`] = `
           Variant 2
         </ui5-li>
       </ui5-list>
-    </ui5-popover>
+    </ui5-responsive-popover>
     <div
       class="FilterBar-vLine-0"
     >
@@ -305,24 +297,20 @@ exports[`FilterBar Select Filter Item 1`] = `
     class="FilterBar-filterBarHeader-0"
   >
     <div
-      style="display: inline-block; pointer-events: auto;"
+      class="VariantManagement-VariantManagement-0"
     >
-      <div
-        class="VariantManagement-VariantManagement-0"
+      <ui5-title
+        class="VariantManagement-VariantManagementText-0"
+        level="H4"
       >
-        <ui5-title
-          class="VariantManagement-VariantManagementText-0"
-          level="H4"
-        >
-          Variant 1
-        </ui5-title>
-        <ui5-button
-          design="Transparent"
-          icon="navigation-down-arrow"
-        />
-      </div>
+        Variant 1
+      </ui5-title>
+      <ui5-button
+        design="Transparent"
+        icon="navigation-down-arrow"
+      />
     </div>
-    <ui5-popover
+    <ui5-responsive-popover
       header-text="Variants"
       horizontal-align="Center"
       initial-focus=""
@@ -360,7 +348,7 @@ exports[`FilterBar Select Filter Item 1`] = `
           Variant 2
         </ui5-li>
       </ui5-list>
-    </ui5-popover>
+    </ui5-responsive-popover>
     <div
       class="FilterBar-headerRowRight-0"
     >
