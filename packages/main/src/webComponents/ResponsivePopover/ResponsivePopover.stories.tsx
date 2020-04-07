@@ -17,7 +17,7 @@ export const generatedDefaultStory = () => {
   const onButtonClick = useCallback(
     (e) => {
       debugger;
-      popoverRef.current.openBy(e.target);
+      popoverRef.current.open(e.target);
     },
     [popoverRef]
   );
