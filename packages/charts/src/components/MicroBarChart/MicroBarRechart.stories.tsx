@@ -37,6 +37,7 @@ export const defaultStory = () => (
     dataset={singleData}
     width={'100%'}
     height={'25vh'}
+    valueFormatter={(el) => el.slice(0, 3)}
   />
 );
 

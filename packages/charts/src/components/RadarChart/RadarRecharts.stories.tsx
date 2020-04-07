@@ -150,7 +150,6 @@ export const renderFormatterStory = () => {
       onLegendClick={action('onLegendClick')}
       xAxisFormatter={(el) => el.slice(0, 3)}
       yAxisFormatter={(el) => el / 10}
-      dataLabelFormatter={(d) => d / 10}
       dataset={dataset}
       width={'50%'}
       chartConfig={{
