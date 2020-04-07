@@ -265,7 +265,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.activeDot = {
                 onClick: onDataPointClickInternal
               };
-              chartElementProps.label = ComposedDataLabel(true);
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel(true);
               chartElementProps.type = lineType;
               break;
             case 'bar':
@@ -281,7 +281,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.fillOpacity = 0.3;
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = ComposedDataLabel(true);
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel(true);
               break;
           }
           return (
