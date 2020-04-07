@@ -14,8 +14,7 @@ export enum CssSizeVariablesNames {
   sapWcrAnalyticalTableTreePaddingLevel1 = 'sapWcrAnalyticalTableTreePaddingLevel1',
   sapWcrAnalyticalTableTreePaddingLevel2 = 'sapWcrAnalyticalTableTreePaddingLevel2',
   sapWcrAnalyticalTableTreePaddingLevel3 = 'sapWcrAnalyticalTableTreePaddingLevel3',
-  sapWcrAnalyticalTableSelectionColumnWidth = 'sapWcrAnalyticalTableSelectionColumnWidth',
-  sapWcrListItemHeight = 'sapWcrListItemHeight'
+  sapWcrAnalyticalTableSelectionColumnWidth = 'sapWcrAnalyticalTableSelectionColumnWidth'
 }
 
 export const CssSizeVariables: Record<CssSizeVariablesNames, string> = Object.values(CssSizeVariablesNames).reduce(
@@ -44,7 +43,6 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel2}:2.25rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel3}:2.75rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth}:55px;
-  --${CssSizeVariablesNames.sapWcrListItemHeight}:3rem;
 
 }
 
@@ -66,6 +64,5 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel2}:1.5rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel3}:2rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth}:40px;
-  --${CssSizeVariablesNames.sapWcrListItemHeight}:2rem;
 }
 `;
