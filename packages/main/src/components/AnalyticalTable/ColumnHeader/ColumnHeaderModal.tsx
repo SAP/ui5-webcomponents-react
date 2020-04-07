@@ -1,7 +1,8 @@
 import '@ui5/webcomponents-icons/dist/icons/decline';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { List } from '@ui5/webcomponents-react/lib/List';
@@ -127,12 +128,17 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props: Column
           </StandardListItem>
         )}
         {showFilter && !column.isGrouped && (
-          <CustomListItem type={ListItemTypes.Inactive}>
-            <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ padding: '0px 1rem' }}>
-              <Icon name="filter" style={{ paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }} />
-              <Filter column={column} popoverRef={popoverRef} />
-            </FlexBox>
-          </CustomListItem>
+          <FlexBox
+            alignItems={FlexBoxAlignItems.Center}
+            style={{
+              padding: '0px 1rem',
+              height: CssSizeVariables.sapWcrListItemHeight,
+              borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
+            }}
+          >
+            <Icon name="filter" style={{ paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }} />
+            <Filter column={column} popoverRef={popoverRef} />
+          </FlexBox>
         )}
         {showGroup && (
           <StandardListItem type={ListItemTypes.Active} icon="group-2" data-sort={'group'}>
