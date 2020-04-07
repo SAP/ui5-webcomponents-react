@@ -1,4 +1,4 @@
-import UI5ProductSwitchItem from '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
+import '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
@@ -38,7 +38,11 @@ See all the available icons in the <ui5-link target="_blank" href="https://openu
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ProductSwitchItem" target="_blank">UI5 Web Components Playground</a>
  */
 const ProductSwitchItem: FC<ProductSwitchItemPropTypes> = withWebComponent<ProductSwitchItemPropTypes>(
-  UI5ProductSwitchItem
+  'ui5-product-switch-item',
+  ['heading', 'icon', 'subtitle', 'target', 'targetSrc'],
+  [],
+  [],
+  ['click']
 );
 
 ProductSwitchItem.displayName = 'ProductSwitchItem';

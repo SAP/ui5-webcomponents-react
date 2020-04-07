@@ -1,6 +1,6 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5TimePicker from '@ui5/webcomponents/dist/TimePicker';
+import '@ui5/webcomponents/dist/TimePicker';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -46,7 +46,13 @@ export interface TimePickerPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TimePicker" target="_blank">UI5 Web Components Playground</a>
  */
-const TimePicker: FC<TimePickerPropTypes> = withWebComponent<TimePickerPropTypes>(UI5TimePicker);
+const TimePicker: FC<TimePickerPropTypes> = withWebComponent<TimePickerPropTypes>(
+  'ui5-timepicker',
+  ['formatPattern', 'placeholder', 'value', 'valueState'],
+  ['disabled', 'readonly'],
+  [],
+  ['change', 'input']
+);
 
 TimePicker.displayName = 'TimePicker';
 

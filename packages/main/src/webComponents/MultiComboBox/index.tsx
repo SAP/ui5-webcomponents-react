@@ -1,6 +1,6 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5MultiComboBox from '@ui5/webcomponents/dist/MultiComboBox';
+import '@ui5/webcomponents/dist/MultiComboBox';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -64,7 +64,13 @@ export interface MultiComboBoxPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBox" target="_blank">UI5 Web Components Playground</a>
  */
-const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBoxPropTypes>(UI5MultiComboBox);
+const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBoxPropTypes>(
+  'ui5-multi-combobox',
+  ['placeholder', 'value', 'valueState'],
+  ['allowCustomValues', 'disabled', 'open', 'readonly', 'required'],
+  [],
+  ['change', 'input', 'openChange', 'selectionChange']
+);
 
 MultiComboBox.displayName = 'MultiComboBox';
 

@@ -1,6 +1,6 @@
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Calendar from '@ui5/webcomponents/dist/Calendar';
+import '@ui5/webcomponents/dist/Calendar';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -36,7 +36,13 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</a>
  */
-const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(UI5Calendar);
+const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(
+  'ui5-calendar',
+  ['maxDate', 'minDate', 'primaryCalendarType', 'selectedDates', 'timestamp'],
+  [],
+  [],
+  ['selectedDatesChange']
+);
 
 Calendar.displayName = 'Calendar';
 

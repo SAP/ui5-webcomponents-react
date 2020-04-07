@@ -1,6 +1,6 @@
 import { CarouselArrowsPlacement } from '@ui5/webcomponents-react/lib/CarouselArrowsPlacement';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Carousel from '@ui5/webcomponents/dist/Carousel';
+import '@ui5/webcomponents/dist/Carousel';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -36,7 +36,13 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Carousel" target="_blank">UI5 Web Components Playground</a>
  */
-const Carousel: FC<CarouselPropTypes> = withWebComponent<CarouselPropTypes>(UI5Carousel);
+const Carousel: FC<CarouselPropTypes> = withWebComponent<CarouselPropTypes>(
+  'ui5-carousel',
+  ['arrowsPlacement', 'itemsPerPage', 'selectedIndex'],
+  ['cycling', 'hideNavigation'],
+  [],
+  []
+);
 
 Carousel.displayName = 'Carousel';
 

@@ -1,5 +1,5 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Tokenizer from '@ui5/webcomponents/dist/Tokenizer';
+import '@ui5/webcomponents/dist/Tokenizer';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -14,7 +14,13 @@ export interface TokenizerPropTypes extends WithWebComponentPropTypes {
 /**
  * <code>import { Tokenizer } from '@ui5/webcomponents-react/lib/Tokenizer';</code>
  */
-const Tokenizer: FC<TokenizerPropTypes> = withWebComponent<TokenizerPropTypes>(UI5Tokenizer);
+const Tokenizer: FC<TokenizerPropTypes> = withWebComponent<TokenizerPropTypes>(
+  'ui5-tokenizer',
+  [],
+  ['showMore', 'disabled'],
+  [],
+  ['tokenDelete', 'showMoreItemsPress']
+);
 
 Tokenizer.displayName = 'Tokenizer';
 

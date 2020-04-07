@@ -1,7 +1,7 @@
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5DatePicker from '@ui5/webcomponents/dist/DatePicker';
+import '@ui5/webcomponents/dist/DatePicker';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -67,7 +67,13 @@ export interface DatePickerPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DatePicker" target="_blank">UI5 Web Components Playground</a>
  */
-const DatePicker: FC<DatePickerPropTypes> = withWebComponent<DatePickerPropTypes>(UI5DatePicker);
+const DatePicker: FC<DatePickerPropTypes> = withWebComponent<DatePickerPropTypes>(
+  'ui5-datepicker',
+  ['formatPattern', 'maxDate', 'minDate', 'name', 'placeholder', 'primaryCalendarType', 'value', 'valueState'],
+  ['disabled', 'readonly'],
+  [],
+  ['change', 'input']
+);
 
 DatePicker.displayName = 'DatePicker';
 

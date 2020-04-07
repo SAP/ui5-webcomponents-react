@@ -1,5 +1,5 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5TableColumn from '@ui5/webcomponents/dist/TableColumn';
+import '@ui5/webcomponents/dist/TableColumn';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -27,7 +27,13 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TableColumn" target="_blank">UI5 Web Components Playground</a>
  */
-const TableColumn: FC<TableColumnPropTypes> = withWebComponent<TableColumnPropTypes>(UI5TableColumn);
+const TableColumn: FC<TableColumnPropTypes> = withWebComponent<TableColumnPropTypes>(
+  'ui5-table-column',
+  ['minWidth', 'popinText'],
+  ['demandPopin'],
+  [],
+  []
+);
 
 TableColumn.displayName = 'TableColumn';
 

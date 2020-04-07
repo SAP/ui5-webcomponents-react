@@ -1,6 +1,6 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5ToggleButton from '@ui5/webcomponents/dist/ToggleButton';
+import '@ui5/webcomponents/dist/ToggleButton';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -46,7 +46,13 @@ See all the available icons in the <ui5-link target="_blank" href="https://openu
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ToggleButton" target="_blank">UI5 Web Components Playground</a>
  */
-const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPropTypes>(UI5ToggleButton);
+const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPropTypes>(
+  'ui5-togglebutton',
+  ['design', 'icon'],
+  ['pressed', 'disabled', 'iconEnd', 'submits'],
+  [],
+  ['click']
+);
 
 ToggleButton.displayName = 'ToggleButton';
 

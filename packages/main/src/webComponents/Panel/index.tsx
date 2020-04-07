@@ -1,6 +1,6 @@
 import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Panel from '@ui5/webcomponents/dist/Panel';
+import '@ui5/webcomponents/dist/Panel';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -36,7 +36,13 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Panel" target="_blank">UI5 Web Components Playground</a>
  */
-const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(UI5Panel);
+const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(
+  'ui5-panel',
+  ['accessibleRole', 'headerText'],
+  ['collapsed', 'fixed'],
+  ['header'],
+  []
+);
 
 Panel.displayName = 'Panel';
 
