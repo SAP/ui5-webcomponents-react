@@ -1,20 +1,18 @@
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
-import { Device } from '@ui5/webcomponents-react-base/lib/Device';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
-import { Popover } from '@ui5/webcomponents-react/lib/Popover';
-import React, { Children, cloneElement, FC, forwardRef, ReactElement, ReactNode, RefObject } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { ResponsivePopover } from '@ui5/webcomponents-react/lib/ResponsivePopover';
+import React, { Children, cloneElement, FC, forwardRef, ReactElement, RefObject } from 'react';
+import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';
 import { ButtonPropTypes } from '../../webComponents/Button';
+import { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
 import styles from './ActionSheet.jss';
 
-export interface ActionSheetPropTypes extends CommonProps {
-  openBy: ReactNode;
+export interface ActionSheetPropTypes extends ResponsivePopoverPropTypes {
   placement?: PlacementType;
   children?: ReactElement<ButtonPropTypes> | ReactElement<ButtonPropTypes>[];
 }
@@ -34,8 +32,27 @@ addCustomCSS(
  * <code>import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';</code>
  */
 const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
-  (props: ActionSheetPropTypes, ref: RefObject<Ui5PopoverDomRef>) => {
-    const { children, placement, openBy, style, slot, className } = props;
+  (props: ActionSheetPropTypes, ref: RefObject<Ui5ResponsivePopoverDomRef>) => {
+    const {
+      children,
+      style,
+      slot,
+      className,
+      allowTargetOverlap,
+      headerText,
+      horizontalAlign,
+      initialFocus,
+      modal,
+      noArrow,
+      placementType,
+      verticalAlign,
+      footer,
+      header,
+      onAfterClose,
+      onAfterOpen,
+      onBeforeClose,
+      onBeforeOpen
+    } = props;
 
     const classes = useStyles();
 
@@ -43,13 +60,8 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
     if (className) {
       actionSheetClasses.put(className);
     }
-    if (Device.system.tablet) {
-      actionSheetClasses.put(classes.tablet);
-    } else if (Device.system.phone) {
-      actionSheetClasses.put(classes.phone);
-    }
 
-    const popoverRef: RefObject<Ui5PopoverDomRef> = useConsolidatedRef(ref);
+    const popoverRef: RefObject<Ui5ResponsivePopoverDomRef> = useConsolidatedRef(ref);
 
     const onActionButtonClicked = (handler) => (e) => {
       popoverRef.current.close();
@@ -67,20 +79,37 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       });
     };
 
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props, [
+      'onAfterClose',
+      'onAfterOpen',
+      'onBeforeClose',
+      'onBeforeOpen'
+    ]);
 
     return (
-      <Popover
+      <ResponsivePopover
         ref={popoverRef}
-        openBy={openBy}
-        placementType={placement}
         style={style}
         slot={slot}
         className={actionSheetClasses.valueOf()}
+        allowTargetOverlap={allowTargetOverlap}
+        headerText={headerText}
+        horizontalAlign={horizontalAlign}
+        initialFocus={initialFocus}
+        modal={modal}
+        noArrow={noArrow}
+        placementType={placementType}
+        verticalAlign={verticalAlign}
+        footer={footer}
+        header={header}
+        onAfterClose={onAfterClose}
+        onAfterOpen={onAfterOpen}
+        onBeforeClose={onBeforeClose}
+        onBeforeOpen={onBeforeOpen}
         {...passThroughProps}
       >
         {Children.map(children, renderActionSheetButton)}
-      </Popover>
+      </ResponsivePopover>
     );
   }
 );

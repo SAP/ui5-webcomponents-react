@@ -1,10 +1,10 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
 import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import React, { useCallback, useMemo, useRef } from 'react';
-import { FixedSizeList } from 'react-window';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import { FixedSizeList } from 'react-window';
 import { VirtualTableRow } from './VirtualTableRow';
 
 interface VirtualTableBodyProps {
@@ -94,6 +94,86 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     },
     [infiniteScroll, infiniteScrollThreshold, onLoadMore, rows.length, internalRowHeight, firedInfiniteLoadEvents]
   );
+
+  const currentlyFocusedCell = useRef<HTMLDivElement>(null);
+  const onTableFocus = useCallback(
+    (e) => {
+      const firstCell: HTMLDivElement = e.target.querySelector(
+        'div[role="row"]:first-child div[role="cell"]:first-child'
+      );
+      firstCell.tabIndex = 0;
+      firstCell.focus();
+      currentlyFocusedCell.current = firstCell;
+    },
+    [currentlyFocusedCell]
+  );
+
+  const onKeyboardNavigation = useCallback(
+    (e) => {
+      if (currentlyFocusedCell.current) {
+        switch (e.key) {
+          case 'ArrowRight': {
+            const newElement = currentlyFocusedCell.current.nextElementSibling as HTMLDivElement;
+            if (newElement) {
+              currentlyFocusedCell.current.tabIndex = -1;
+              newElement.tabIndex = 0;
+              newElement.focus();
+              currentlyFocusedCell.current = newElement;
+            }
+            break;
+          }
+          case 'ArrowLeft': {
+            const newElement = currentlyFocusedCell.current.previousElementSibling as HTMLDivElement;
+            if (newElement) {
+              currentlyFocusedCell.current.tabIndex = -1;
+              newElement.tabIndex = 0;
+              newElement.focus();
+              currentlyFocusedCell.current = newElement;
+            }
+            break;
+          }
+          case 'ArrowDown': {
+            const nextRow = currentlyFocusedCell.current.parentElement.nextElementSibling as HTMLDivElement;
+            if (nextRow) {
+              currentlyFocusedCell.current.tabIndex = -1;
+              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex');
+              const newElement: HTMLDivElement = nextRow.querySelector(`div[aria-colindex="${currentColumnIndex}"]`);
+              newElement.tabIndex = 0;
+              newElement.focus();
+              currentlyFocusedCell.current = newElement;
+            }
+            break;
+          }
+          case 'ArrowUp': {
+            const previousRow = currentlyFocusedCell.current.parentElement.previousElementSibling as HTMLDivElement;
+            if (previousRow) {
+              currentlyFocusedCell.current.tabIndex = -1;
+              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex');
+              const newElement: HTMLDivElement = previousRow.querySelector(
+                `div[aria-colindex="${currentColumnIndex}"]`
+              );
+              newElement.tabIndex = 0;
+              newElement.focus();
+              currentlyFocusedCell.current = newElement;
+            }
+            break;
+          }
+        }
+      }
+    },
+    [currentlyFocusedCell]
+  );
+
+  useEffect(() => {
+    if (innerDivRef.current) {
+      innerDivRef.current.tabIndex = 0;
+      innerDivRef.current.addEventListener('keydown', onKeyboardNavigation);
+      innerDivRef.current.addEventListener('focus', onTableFocus);
+    }
+    return () => {
+      innerDivRef.current.removeEventListener('keydown', onKeyboardNavigation);
+    };
+  }, [onKeyboardNavigation, reactWindowRef, onTableFocus]);
 
   return (
     <FixedSizeList
