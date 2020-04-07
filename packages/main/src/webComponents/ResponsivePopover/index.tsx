@@ -1,12 +1,9 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import UI5ResponsivePopover from '@ui5/webcomponents/dist/ResponsivePopover';
-import React, { FC, ReactNode, RefObject, useCallback, useEffect, useMemo, useRef } from 'react';
-import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';
-import { UI5WebComponentsReactPopoverPropTypes } from '../../interfaces/UI5WebComponentsReactPopoverPropTypes';
+import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
@@ -43,17 +40,17 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    */
   verticalAlign?: PopoverVerticalAlign;
   /**
-   * Defines the header HTML Element.
+   * Defines the content of the Web Component.
    */
-  header?: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
   /**
    * Defines the footer HTML Element.
    */
   footer?: ReactNode | ReactNode[];
   /**
-   * Defines the content of the Web Component.
+   * Defines the header HTML Element.
    */
-  children?: ReactNode | ReactNode[];
+  header?: ReactNode | ReactNode[];
   /**
    * Fired after the component is closed.
    */
@@ -72,67 +69,13 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
   onBeforeOpen?: (event: CustomEvent<{}>) => void;
 }
 
-const ResponsivePopoverWebComponent = withWebComponent<ResponsivePopoverPropTypes>(UI5ResponsivePopover);
-
 /**
  * <code>import { ResponsivePopover } from '@ui5/webcomponents-react/lib/ResponsivePopover';</code>
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</a>
  */
-const ResponsivePopover: FC<ResponsivePopoverPropTypes & UI5WebComponentsReactPopoverPropTypes> = React.forwardRef(
-  (
-    props: ResponsivePopoverPropTypes & UI5WebComponentsReactPopoverPropTypes,
-    givenRef: RefObject<Ui5ResponsivePopoverDomRef>
-  ) => {
-    const { propagateOpenByClickEvent, openBy, openByStyle, open, ...rest } = props;
-    const openByRef: RefObject<HTMLDivElement> = useRef(null);
-
-    const internalPopoverRef = useConsolidatedRef<Ui5ResponsivePopoverDomRef>(givenRef);
-
-    const handleOpenPopover = useCallback(
-      (e) => {
-        if (internalPopoverRef.current) {
-          internalPopoverRef.current.open(openByRef.current);
-        }
-        if (e && !propagateOpenByClickEvent) {
-          e.stopPropagation();
-        }
-      },
-      [internalPopoverRef, openByRef]
-    );
-
-    const closePopover = useCallback(() => {
-      if (internalPopoverRef.current) {
-        internalPopoverRef.current.close();
-      }
-    }, [internalPopoverRef]);
-
-    useEffect(() => {
-      if (open) {
-        handleOpenPopover(null);
-      } else {
-        closePopover();
-      }
-    }, [open]);
-
-    const style = useMemo(() => {
-      return {
-        display: 'inline-block',
-        ...openByStyle
-      };
-    }, [openByStyle]);
-
-    return (
-      <>
-        {openBy && (
-          <div style={style} onClick={handleOpenPopover} ref={openByRef}>
-            {openBy}
-          </div>
-        )}
-        <ResponsivePopoverWebComponent {...rest} ref={internalPopoverRef} />
-      </>
-    );
-  }
+const ResponsivePopover: FC<ResponsivePopoverPropTypes> = withWebComponent<ResponsivePopoverPropTypes>(
+  UI5ResponsivePopover
 );
 
 ResponsivePopover.displayName = 'ResponsivePopover';
@@ -144,8 +87,7 @@ ResponsivePopover.defaultProps = {
   modal: false,
   noArrow: false,
   placementType: PlacementType.Right,
-  verticalAlign: PopoverVerticalAlign.Center,
-  propagateOpenByClickEvent: true
+  verticalAlign: PopoverVerticalAlign.Center
 };
 
 export { ResponsivePopover };
