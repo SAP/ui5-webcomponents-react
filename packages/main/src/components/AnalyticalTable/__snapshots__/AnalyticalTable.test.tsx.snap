@@ -1655,27 +1655,23 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 Sort Descending
               </ui5-li>
-              <ui5-li-custom
-                type="Inactive"
+              <div
+                class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
+                style="padding: 0px 1rem;"
               >
-                <div
-                  class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
-                  style="padding: 0px 1rem;"
-                >
-                  <ui5-icon
-                    accessible-name=""
-                    name="filter"
-                    style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
-                  />
-                  <ui5-input
-                    name=""
-                    placeholder=""
-                    type="Text"
-                    value=""
-                    value-state="None"
-                  />
-                </div>
-              </ui5-li-custom>
+                <ui5-icon
+                  accessible-name=""
+                  name="filter"
+                  style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
+                />
+                <ui5-input
+                  name=""
+                  placeholder=""
+                  type="Text"
+                  value=""
+                  value-state="None"
+                />
+              </div>
             </ui5-list>
           </ui5-popover>
           <div
@@ -1736,27 +1732,23 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 Sort Descending
               </ui5-li>
-              <ui5-li-custom
-                type="Inactive"
+              <div
+                class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
+                style="padding: 0px 1rem;"
               >
-                <div
-                  class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
-                  style="padding: 0px 1rem;"
-                >
-                  <ui5-icon
-                    accessible-name=""
-                    name="filter"
-                    style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
-                  />
-                  <ui5-input
-                    name=""
-                    placeholder=""
-                    type="Text"
-                    value=""
-                    value-state="None"
-                  />
-                </div>
-              </ui5-li-custom>
+                <ui5-icon
+                  accessible-name=""
+                  name="filter"
+                  style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
+                />
+                <ui5-input
+                  name=""
+                  placeholder=""
+                  type="Text"
+                  value=""
+                  value-state="None"
+                />
+              </div>
             </ui5-list>
           </ui5-popover>
           <div
@@ -1817,27 +1809,23 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 Sort Descending
               </ui5-li>
-              <ui5-li-custom
-                type="Inactive"
+              <div
+                class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
+                style="padding: 0px 1rem;"
               >
-                <div
-                  class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
-                  style="padding: 0px 1rem;"
-                >
-                  <ui5-icon
-                    accessible-name=""
-                    name="filter"
-                    style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
-                  />
-                  <ui5-input
-                    name=""
-                    placeholder=""
-                    type="Text"
-                    value=""
-                    value-state="None"
-                  />
-                </div>
-              </ui5-li-custom>
+                <ui5-icon
+                  accessible-name=""
+                  name="filter"
+                  style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
+                />
+                <ui5-input
+                  name=""
+                  placeholder=""
+                  type="Text"
+                  value=""
+                  value-state="None"
+                />
+              </div>
             </ui5-list>
           </ui5-popover>
           <div
@@ -1899,27 +1887,23 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 Sort Descending
               </ui5-li>
-              <ui5-li-custom
-                type="Inactive"
+              <div
+                class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
+                style="padding: 0px 1rem;"
               >
-                <div
-                  class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsCenter-0 FlexBox-flexWrapNoWrap-0"
-                  style="padding: 0px 1rem;"
-                >
-                  <ui5-icon
-                    accessible-name=""
-                    name="filter"
-                    style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
-                  />
-                  <ui5-input
-                    name=""
-                    placeholder=""
-                    type="Text"
-                    value=""
-                    value-state="None"
-                  />
-                </div>
-              </ui5-li-custom>
+                <ui5-icon
+                  accessible-name=""
+                  name="filter"
+                  style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
+                />
+                <ui5-input
+                  name=""
+                  placeholder=""
+                  type="Text"
+                  value=""
+                  value-state="None"
+                />
+              </div>
             </ui5-list>
           </ui5-popover>
           <div
