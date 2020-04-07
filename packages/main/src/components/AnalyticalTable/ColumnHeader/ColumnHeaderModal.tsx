@@ -126,7 +126,7 @@ export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties,
             alignItems={FlexBoxAlignItems.Center}
             style={{
               padding: '0px 1rem',
-              height: CssSizeVariables.sapWcrListItemHeight,
+              height: 'var(--_ui5_custom_list_item_height)',
               borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
             }}
           >
