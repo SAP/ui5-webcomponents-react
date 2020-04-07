@@ -17,10 +17,13 @@ export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatt
             position: bar ? (stacked ? 'insideRight' : 'right') : stacked ? 'inside' : 'top',
             content: (props) => {
               const formattedDataValue = dataLabelFormatter(props.value);
-              if (props.viewBox.width < getTextWidth(formattedDataValue) && !noSizeCheck) {
+              if (noSizeCheck) {
+                return formattedDataValue;
+              }
+              if (props.viewBox.width < getTextWidth(formattedDataValue)) {
                 return null;
               }
-              if (props.viewBox.height < 12 && !noSizeCheck) {
+              if (props.viewBox.height < 12) {
                 return null;
               }
               return formattedDataValue;

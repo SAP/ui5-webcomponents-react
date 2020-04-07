@@ -56,7 +56,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       gridHorizontal: true,
       gridVertical: false,
       legendPosition: 'top',
-      barSize: 50,
+      barSize: undefined,
       barGap: 3,
       zoomingTool: false,
       strokeOpacity: 1,
@@ -179,7 +179,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             stackId={chartConfig.stacked ? 'A' : undefined}
             strokeOpacity={chartConfig.strokeOpacity}
             fillOpacity={chartConfig.fillOpacity}
-            label={bigDataSet ? false : BarDataLabel}
+            label={BarDataLabel}
             key={key}
             name={labels?.[key] || key}
             dataKey={key}
