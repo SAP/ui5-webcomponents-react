@@ -57,7 +57,7 @@ export const withWebComponent = <T extends {}>(
       () => {
         return booleanProperties.reduce((acc, val) => {
           if (rest[val] === true || rest[val] === 'true') {
-            return { ...acc, [val]: true };
+            return { ...acc, [toKebabCase(val)]: true };
           }
           return acc;
         }, {});

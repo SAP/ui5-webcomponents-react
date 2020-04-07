@@ -20,7 +20,7 @@ export interface GroupHeaderListItemPropTypes extends WithWebComponentPropTypes 
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/GroupHeaderListItem" target="_blank">UI5 Web Components Playground</a>
  */
 const GroupHeaderListItem: FC<GroupHeaderListItemPropTypes> = withWebComponent<GroupHeaderListItemPropTypes>(
-  'ui5-li-group-header',
+  'ui5-li-groupheader',
   [],
   ['selected'],
   [],
