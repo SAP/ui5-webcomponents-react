@@ -3,7 +3,7 @@ import '@ui5/webcomponents/dist/TextArea';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface TextAreaPropTypes extends WithWebComponentPropTypes {
+export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
    * Indicates whether the user can interact with the component or not. <br><br> <b>Note:</b> Disabled components cannot be focused and they are out of the tab chain.
    */

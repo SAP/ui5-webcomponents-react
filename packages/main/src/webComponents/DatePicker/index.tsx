@@ -5,7 +5,7 @@ import '@ui5/webcomponents/dist/DatePicker';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface DatePickerPropTypes extends WithWebComponentPropTypes {
+export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
    * Determines whether the <code>ui5-datepicker</code> is displayed as disabled.
    */

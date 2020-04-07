@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/Select';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface SelectPropTypes extends WithWebComponentPropTypes {
+export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
    * Defines whether <code>ui5-select</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>ui5-select</code> is noninteractive.
    */

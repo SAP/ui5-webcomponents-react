@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/Link';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface LinkPropTypes extends WithWebComponentPropTypes {
+export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
    * Defines the <code>ui5-link</code> design. <br><br> <b>Note:</b> Avaialble options are <code>Default</code>, <code>Subtle</code>, and <code>Emphasized</code>.
    */

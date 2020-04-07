@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/ToggleButton';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface ToggleButtonPropTypes extends WithWebComponentPropTypes {
+export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
    * Determines whether the <code>ui5-togglebutton</code> is displayed as pressed.
    */

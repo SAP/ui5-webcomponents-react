@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/TimePicker';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface TimePickerPropTypes extends WithWebComponentPropTypes {
+export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
    * Determines whether the <code>ui5-timepicker</code> is displayed as disabled.
    */

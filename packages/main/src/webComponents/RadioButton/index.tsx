@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/RadioButton';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
+export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
   /**
    * Determines whether the <code>ui5-radiobutton</code> is disabled. <br><br> <b>Note:</b> A disabled <code>ui5-radiobutton</code> is completely noninteractive.
    */

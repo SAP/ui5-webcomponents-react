@@ -3,7 +3,7 @@ import '@ui5/webcomponents/dist/Token';
 import React, { FC, ReactNode, ReactNodeArray } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface TokenPropTypes extends WithWebComponentPropTypes {
+export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
   selected?: boolean; // @generated
   readonly?: boolean; // @generated
   onDelete?: (event: CustomEvent) => void; // @generated

@@ -94,6 +94,7 @@ export const withWebComponent = <T extends {}>(
       .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
 
     return (
+      // @ts-ignore
       <TagName
         ref={ref}
         {...booleanProps}

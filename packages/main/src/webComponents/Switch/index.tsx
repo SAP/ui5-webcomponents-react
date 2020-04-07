@@ -3,7 +3,7 @@ import '@ui5/webcomponents/dist/Switch';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface SwitchPropTypes extends WithWebComponentPropTypes {
+export interface SwitchPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
    * Defines if the <code>ui5-switch</code> is checked. <br><br> <b>Note:</b> The property can be changed with user interaction, either by cliking/tapping on the <code>ui5-switch</code>, or by pressing the <code>Enter</code> or <code>Space</code> key.
    */

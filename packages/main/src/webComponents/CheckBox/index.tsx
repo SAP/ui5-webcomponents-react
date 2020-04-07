@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/CheckBox';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface CheckBoxPropTypes extends WithWebComponentPropTypes {
+export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
    * Defines if the <code>ui5-checkbox</code> is checked. <br><br> <b>Note:</b> The property can be changed with user interaction, either by cliking/tapping on the <code>ui5-checkbox</code>, or by pressing the Enter or Space key.
    */

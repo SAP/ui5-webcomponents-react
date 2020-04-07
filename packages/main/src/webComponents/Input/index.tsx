@@ -5,7 +5,7 @@ import '@ui5/webcomponents/dist/Input';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface InputPropTypes extends WithWebComponentPropTypes {
+export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
   /**
    * Defines whether the <code>ui5-input</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>ui5-input</code> is completely noninteractive.
    */

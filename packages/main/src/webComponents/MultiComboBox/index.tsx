@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/MultiComboBox';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface MultiComboBoxPropTypes extends WithWebComponentPropTypes {
+export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
    * Defines if the user input will be prevented, if no matching item has been found
    */

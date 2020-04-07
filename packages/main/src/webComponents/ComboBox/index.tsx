@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/ComboBox';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface ComboBoxPropTypes extends WithWebComponentPropTypes {
+export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
    * Defines whether <code>ui5-combobox</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>ui5-combobox</code> is completely uninteractive.
    */
@@ -14,10 +14,9 @@ export interface ComboBoxPropTypes extends WithWebComponentPropTypes {
    */
   filter?: string;
   /**
- * Defines the "live" value of the <code>ui5-combobox</code>. <br><br> <b>Note:</b> The property is updated upon typing.
-
-<br><br> <b>Note:</b> Initially the filter value is synced with value.
- */
+   * Defines the "live" value of the <code>ui5-combobox</code>. <br><br> <b>Note:</b> The property is updated upon typing.
+   * <br><br> <b>Note:</b> Initially the filter value is synced with value.
+   */
   filterValue?: string;
   /**
    * Indicates whether a loading indicator should be shown in the picker.

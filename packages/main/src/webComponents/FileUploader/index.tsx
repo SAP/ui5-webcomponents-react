@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/FileUploader';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface FileUploaderPropTypes extends WithWebComponentPropTypes {
+export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
    * Comma-separated list of file types that the <code>ui5-file-uploader</code> should accept.
    */
@@ -22,12 +22,10 @@ export interface FileUploaderPropTypes extends WithWebComponentPropTypes {
    */
   multiple?: boolean;
   /**
- * Determines the name with which the <code>ui5-file-uploader</code> will be submitted in an HTML form.
-
-<br><br> <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
-
-<br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-file-uploader</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
- */
+   * Determines the name with which the <code>ui5-file-uploader</code> will be submitted in an HTML form.
+   * <br><br> <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
+   * <br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-file-uploader</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   */
   name?: string;
   /**
    * Defines a short hint intended to aid the user with data entry when the <code>ui5-file-uploader</code> has no value.
