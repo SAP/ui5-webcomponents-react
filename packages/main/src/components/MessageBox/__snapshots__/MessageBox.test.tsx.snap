@@ -6,6 +6,25 @@ exports[`MessageBox Confirm - Cancel 1`] = `
   initial-focus=""
   opened=""
 >
+  <header
+    class="MessageBox-header-0"
+    data-type="Confirm"
+    slot="header"
+  >
+    <div
+      class="MessageBox-icon-0"
+    >
+      <ui5-icon
+        accessible-name=""
+        name="question-mark"
+      />
+    </div>
+    <ui5-title
+      level="H5"
+    >
+      Confirmation
+    </ui5-title>
+  </header>
   <footer
     class="MessageBox-footer-0"
     slot="footer"
@@ -27,25 +46,6 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       Cancel
     </ui5-button>
   </footer>
-  <header
-    class="MessageBox-header-0"
-    data-type="Confirm"
-    slot="header"
-  >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        accessible-name=""
-        name="question-mark"
-      />
-    </div>
-    <ui5-title
-      level="H5"
-    >
-      Confirmation
-    </ui5-title>
-  </header>
   <span
     class="Text-text-0 MessageBox-content-0"
   >
@@ -60,6 +60,25 @@ exports[`MessageBox Confirm - OK 1`] = `
   initial-focus=""
   opened=""
 >
+  <header
+    class="MessageBox-header-0"
+    data-type="Confirm"
+    slot="header"
+  >
+    <div
+      class="MessageBox-icon-0"
+    >
+      <ui5-icon
+        accessible-name=""
+        name="question-mark"
+      />
+    </div>
+    <ui5-title
+      level="H5"
+    >
+      Confirmation
+    </ui5-title>
+  </header>
   <footer
     class="MessageBox-footer-0"
     slot="footer"
@@ -81,25 +100,6 @@ exports[`MessageBox Confirm - OK 1`] = `
       Cancel
     </ui5-button>
   </footer>
-  <header
-    class="MessageBox-header-0"
-    data-type="Confirm"
-    slot="header"
-  >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        accessible-name=""
-        name="question-mark"
-      />
-    </div>
-    <ui5-title
-      level="H5"
-    >
-      Confirmation
-    </ui5-title>
-  </header>
   <span
     class="Text-text-0 MessageBox-content-0"
   >
@@ -114,19 +114,6 @@ exports[`MessageBox Error 1`] = `
   initial-focus=""
   opened=""
 >
-  <footer
-    class="MessageBox-footer-0"
-    slot="footer"
-  >
-    <ui5-button
-      data-action="Close"
-      design="Emphasized"
-      icon=""
-      style="min-width: 4rem;"
-    >
-      Close
-    </ui5-button>
-  </footer>
   <header
     class="MessageBox-header-0"
     data-type="Error"
@@ -146,6 +133,19 @@ exports[`MessageBox Error 1`] = `
       Error
     </ui5-title>
   </header>
+  <footer
+    class="MessageBox-footer-0"
+    slot="footer"
+  >
+    <ui5-button
+      data-action="Close"
+      design="Emphasized"
+      icon=""
+      style="min-width: 4rem;"
+    >
+      Close
+    </ui5-button>
+  </footer>
   <span
     class="Text-text-0 MessageBox-content-0"
   >
@@ -160,19 +160,6 @@ exports[`MessageBox Information 1`] = `
   initial-focus=""
   opened=""
 >
-  <footer
-    class="MessageBox-footer-0"
-    slot="footer"
-  >
-    <ui5-button
-      data-action="OK"
-      design="Emphasized"
-      icon=""
-      style="min-width: 4rem;"
-    >
-      OK
-    </ui5-button>
-  </footer>
   <header
     class="MessageBox-header-0"
     data-type="Information"
@@ -192,6 +179,19 @@ exports[`MessageBox Information 1`] = `
       Information
     </ui5-title>
   </header>
+  <footer
+    class="MessageBox-footer-0"
+    slot="footer"
+  >
+    <ui5-button
+      data-action="OK"
+      design="Emphasized"
+      icon=""
+      style="min-width: 4rem;"
+    >
+      OK
+    </ui5-button>
+  </footer>
   <span
     class="Text-text-0 MessageBox-content-0"
   >
@@ -206,6 +206,25 @@ exports[`MessageBox No Title 1`] = `
   initial-focus=""
   opened=""
 >
+  <header
+    class="MessageBox-header-0"
+    data-type="Confirm"
+    slot="header"
+  >
+    <div
+      class="MessageBox-icon-0"
+    >
+      <ui5-icon
+        accessible-name=""
+        name="question-mark"
+      />
+    </div>
+    <ui5-title
+      level="H5"
+    >
+      Confirmation
+    </ui5-title>
+  </header>
   <footer
     class="MessageBox-footer-0"
     slot="footer"
@@ -227,25 +246,6 @@ exports[`MessageBox No Title 1`] = `
       Cancel
     </ui5-button>
   </footer>
-  <header
-    class="MessageBox-header-0"
-    data-type="Confirm"
-    slot="header"
-  >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        accessible-name=""
-        name="question-mark"
-      />
-    </div>
-    <ui5-title
-      level="H5"
-    >
-      Confirmation
-    </ui5-title>
-  </header>
   <span
     class="Text-text-0 MessageBox-content-0"
   >
@@ -259,19 +259,6 @@ exports[`MessageBox Not open 1`] = `
   header-text=""
   initial-focus=""
 >
-  <footer
-    class="MessageBox-footer-0"
-    slot="footer"
-  >
-    <ui5-button
-      data-action="OK"
-      design="Emphasized"
-      icon=""
-      style="min-width: 4rem;"
-    >
-      OK
-    </ui5-button>
-  </footer>
   <header
     class="MessageBox-header-0"
     data-type="Success"
@@ -291,6 +278,19 @@ exports[`MessageBox Not open 1`] = `
       Custom Success
     </ui5-title>
   </header>
+  <footer
+    class="MessageBox-footer-0"
+    slot="footer"
+  >
+    <ui5-button
+      data-action="OK"
+      design="Emphasized"
+      icon=""
+      style="min-width: 4rem;"
+    >
+      OK
+    </ui5-button>
+  </footer>
   <span
     class="Text-text-0 MessageBox-content-0"
   >
@@ -305,6 +305,25 @@ exports[`MessageBox Show 1`] = `
   initial-focus=""
   opened=""
 >
+  <header
+    class="MessageBox-header-0"
+    data-type="Confirm"
+    slot="header"
+  >
+    <div
+      class="MessageBox-icon-0"
+    >
+      <ui5-icon
+        accessible-name=""
+        name="question-mark"
+      />
+    </div>
+    <ui5-title
+      level="H5"
+    >
+      Custom
+    </ui5-title>
+  </header>
   <footer
     class="MessageBox-footer-0"
     slot="footer"
@@ -326,25 +345,6 @@ exports[`MessageBox Show 1`] = `
       No
     </ui5-button>
   </footer>
-  <header
-    class="MessageBox-header-0"
-    data-type="Confirm"
-    slot="header"
-  >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        accessible-name=""
-        name="question-mark"
-      />
-    </div>
-    <ui5-title
-      level="H5"
-    >
-      Custom
-    </ui5-title>
-  </header>
   <span
     class="Text-text-0 MessageBox-content-0"
   >
@@ -359,19 +359,6 @@ exports[`MessageBox Success 1`] = `
   initial-focus=""
   opened=""
 >
-  <footer
-    class="MessageBox-footer-0"
-    slot="footer"
-  >
-    <ui5-button
-      data-action="OK"
-      design="Emphasized"
-      icon=""
-      style="min-width: 4rem;"
-    >
-      OK
-    </ui5-button>
-  </footer>
   <header
     class="MessageBox-header-0"
     data-type="Success"
@@ -391,6 +378,19 @@ exports[`MessageBox Success 1`] = `
       Success
     </ui5-title>
   </header>
+  <footer
+    class="MessageBox-footer-0"
+    slot="footer"
+  >
+    <ui5-button
+      data-action="OK"
+      design="Emphasized"
+      icon=""
+      style="min-width: 4rem;"
+    >
+      OK
+    </ui5-button>
+  </footer>
   <span
     class="Text-text-0 MessageBox-content-0"
   >
@@ -405,19 +405,6 @@ exports[`MessageBox Success w/ custom title 1`] = `
   initial-focus=""
   opened=""
 >
-  <footer
-    class="MessageBox-footer-0"
-    slot="footer"
-  >
-    <ui5-button
-      data-action="OK"
-      design="Emphasized"
-      icon=""
-      style="min-width: 4rem;"
-    >
-      OK
-    </ui5-button>
-  </footer>
   <header
     class="MessageBox-header-0"
     data-type="Success"
@@ -437,6 +424,19 @@ exports[`MessageBox Success w/ custom title 1`] = `
       Custom Success
     </ui5-title>
   </header>
+  <footer
+    class="MessageBox-footer-0"
+    slot="footer"
+  >
+    <ui5-button
+      data-action="OK"
+      design="Emphasized"
+      icon=""
+      style="min-width: 4rem;"
+    >
+      OK
+    </ui5-button>
+  </footer>
   <span
     class="Text-text-0 MessageBox-content-0"
   >
@@ -451,19 +451,6 @@ exports[`MessageBox Warning 1`] = `
   initial-focus=""
   opened=""
 >
-  <footer
-    class="MessageBox-footer-0"
-    slot="footer"
-  >
-    <ui5-button
-      data-action="OK"
-      design="Emphasized"
-      icon=""
-      style="min-width: 4rem;"
-    >
-      OK
-    </ui5-button>
-  </footer>
   <header
     class="MessageBox-header-0"
     data-type="Warning"
@@ -483,6 +470,19 @@ exports[`MessageBox Warning 1`] = `
       Warning
     </ui5-title>
   </header>
+  <footer
+    class="MessageBox-footer-0"
+    slot="footer"
+  >
+    <ui5-button
+      data-action="OK"
+      design="Emphasized"
+      icon=""
+      style="min-width: 4rem;"
+    >
+      OK
+    </ui5-button>
+  </footer>
   <span
     class="Text-text-0 MessageBox-content-0"
   >
