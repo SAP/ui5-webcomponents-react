@@ -34,7 +34,7 @@ process.on('unhandledRejection', (err) => {
   throw err;
 });
 
-const { NODE_DEV, NODE_PROD, NODE_ES } = Bundles.bundleTypes;
+const { NODE_DEV, NODE_PROD } = Bundles.bundleTypes;
 
 const closureOptions = {
   compilation_level: 'SIMPLE',
@@ -109,8 +109,6 @@ function getFilename(name, bundleType) {
       return `${name}.development.js`;
     case NODE_PROD:
       return `${name}.production.min.js`;
-    case NODE_ES:
-      return `${name}.js`;
   }
 }
 
@@ -119,8 +117,6 @@ function getFormat(bundleType) {
     case NODE_DEV:
     case NODE_PROD:
       return `cjs`;
-    case NODE_ES:
-      return `es`;
   }
 }
 
@@ -128,7 +124,6 @@ function isProductionBundleType(bundleType) {
   switch (bundleType) {
     case NODE_DEV:
     case NODE_PROD:
-    case NODE_ES:
       return true;
     default:
       throw new Error(`Unknown type: ${bundleType}`);
@@ -137,7 +132,6 @@ function isProductionBundleType(bundleType) {
 
 function getPlugins(entry, externals, updateBabelOptions, filename, packageName, bundleType) {
   const isProduction = isProductionBundleType(bundleType);
-  const isES6Bundle = bundleType === NODE_ES;
   const shouldStayReadable = forcePrettyOutput;
   return [
     resolve({
@@ -160,7 +154,6 @@ function getPlugins(entry, externals, updateBabelOptions, filename, packageName,
     }),
     // Apply dead code elimination and/or minification.
     isProduction &&
-      !isES6Bundle &&
       closure(
         Object.assign({}, closureOptions, {
           // Don't let it create global variables in the browser.
@@ -292,7 +285,6 @@ async function buildEverything() {
   // and to avoid any potential race conditions.
   // eslint-disable-next-line no-for-of-loops/no-for-of-loops
   for (const bundle of Bundles.bundles) {
-    await createBundle(bundle, NODE_ES);
     await createBundle(bundle, NODE_DEV);
     await createBundle(bundle, NODE_PROD);
     createDeclarationFiles(bundle);
