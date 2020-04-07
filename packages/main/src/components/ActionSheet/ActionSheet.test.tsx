@@ -41,7 +41,7 @@ describe('ActionSheet', () => {
     wrapper.update();
 
     wrapper
-      .find('ui5-popover ui5-button')
+      .find('ui5-responsive-popover ui5-button')
       .first()
       .instance()
       // @ts-ignore
@@ -63,14 +63,14 @@ describe('ActionSheet', () => {
         <Button>This is my super long text!</Button>
       </ActionSheet>
     );
-    expect(legacyRef.tagName).toEqual('UI5-POPOVER');
+    expect(legacyRef.tagName).toEqual('UI5-RESPONSIVE-POPOVER');
   });
 
   test('Ref object', () => {
     const ref: RefObject<Ui5PopoverDomRef> = createRef();
     const button = <Button />;
     mount(<ActionSheet ref={ref} openBy={button} />);
-    expect((ref.current as any).tagName).toEqual('UI5-POPOVER');
+    expect((ref.current as any).tagName).toEqual('UI5-RESPONSIVE-POPOVER');
   });
 
   test('does not crash with other component', () => {

@@ -1,6 +1,4 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React, { ComponentType } from 'react';
 
 export const modifyObjectProperty = (object: any, attr: string, value: any) => {

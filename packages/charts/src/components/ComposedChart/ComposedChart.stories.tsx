@@ -9,7 +9,7 @@ import {
 
 export const renderComposedChart = () => (
   <ComposedChart
-    width={'95%'}
+    width={'100%'}
     height={'300px'}
     dataset={complexDataSet}
     onLegendClick={action('onLegendClick')}
@@ -181,6 +181,7 @@ export const renderFormatedComposedChart = () => (
     width={'95%'}
     height={'40vh'}
     dataset={complexDataSet}
+    labels={{ users: 'numbers of users' }}
     xAxisFormatter={(el) => el.slice(0, 3)}
     yAxisFormatter={(el) => el / 10}
     onLegendClick={action('onLegendClick')}
@@ -197,11 +198,11 @@ export const renderFormatedComposedChart = () => (
       {
         type: 'line',
         accessor: 'users',
-        dataLabelFormatter: (el) => ''
+        dataValueFormatter: (el) => ''
       },
       {
         type: 'line',
-        dataLabelFormatter: (d) => `${d}/unit`,
+        dataValueFormatter: (d) => `${d}/unit`,
         accessor: 'volume'
       }
     ]}

@@ -92,7 +92,8 @@ export const withFormatedStory = () => {
       dataset={simpleDataSet}
       labelKey={'name'}
       chartConfig={{ dataLabel: true, paddingAngle: 5 }}
-      dataLabelFormatter={(d) => (d > 200 ? 'Over 200' : 'too low')}
+      yAxisFormatter={(el) => el / 10}
+      xAxisFormatter={(el) => el.slice(0, 3)}
     />
   );
 };
