@@ -10,7 +10,8 @@ import React, {
   RefObject,
   useEffect,
   useMemo,
-  useRef
+  useRef,
+  HTMLAttributes
 } from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
@@ -19,7 +20,7 @@ const capitalizeFirstLetter = (s: string) => s.charAt(0).toUpperCase() + s.slice
 
 const toKebabCase = (s: string) => s.replace(/([A-Z])/g, (a, b) => `-${b.toLowerCase()}`);
 
-export interface WithWebComponentPropTypes extends CommonProps {
+export interface WithWebComponentPropTypes extends CommonProps, HTMLAttributes<HTMLElement> {
   ref?: Ref<any>;
   children?: any | void;
 }
