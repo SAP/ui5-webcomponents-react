@@ -1,7 +1,6 @@
 import '@ui5/webcomponents-icons/dist/icons/decline';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
