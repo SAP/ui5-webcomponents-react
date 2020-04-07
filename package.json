@@ -24,6 +24,9 @@
     "@storybook/cli": "5.3.18",
     "@storybook/react": "5.3.18",
     "@storybook/theming": "5.3.18",
+    "@ui5/webcomponents": "1.0.0-rc.6",
+    "@ui5/webcomponents-fiori": "1.0.0-rc.6",
+    "@ui5/webcomponents-icons": "1.0.0-rc.6",
     "react-docgen-typescript-loader": "3.7.2"
   },
   "devDependencies": {

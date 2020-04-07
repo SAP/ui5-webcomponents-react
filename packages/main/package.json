@@ -23,9 +23,6 @@
     "postbuild": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.6",
-    "@ui5/webcomponents-fiori": "1.0.0-rc.6",
-    "@ui5/webcomponents-icons": "1.0.0-rc.6",
     "@ui5/webcomponents-react-base": "^0.9.0-rc.9",
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "^5.0.2",
@@ -34,6 +31,9 @@
     "react-window": "^1.8.5"
   },
   "peerDependencies": {
+    "@ui5/webcomponents": "1.0.0-rc.6",
+    "@ui5/webcomponents-fiori": "1.0.0-rc.6",
+    "@ui5/webcomponents-icons": "1.0.0-rc.6",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },
