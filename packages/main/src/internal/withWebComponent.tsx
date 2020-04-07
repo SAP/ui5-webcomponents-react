@@ -4,14 +4,14 @@ import React, {
   Children,
   cloneElement,
   forwardRef,
+  HTMLAttributes,
   ReactElement,
   Ref,
   RefForwardingComponent,
   RefObject,
   useEffect,
   useMemo,
-  useRef,
-  HTMLAttributes
+  useRef
 } from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
@@ -65,6 +65,22 @@ export const withWebComponent = <T extends {}>(
       booleanProperties.map((name) => rest[name])
     );
 
+    const slots = useMemo(
+      () => {
+        return Object.entries(rest)
+          .filter(([slotName]) => slotProperties.includes(slotName))
+          .map(([slotName, slotValue]) => {
+            return Children.map(slotValue, (item: ReactElement, index) =>
+              cloneElement(item, {
+                key: `${slotName}-${index}`,
+                slot: slotName
+              })
+            );
+          });
+      },
+      slotProperties.map((name) => rest[name])
+    );
+
     // event binding
     useEffect(
       () => {
@@ -103,17 +119,7 @@ export const withWebComponent = <T extends {}>(
         class={className}
         title={tooltip}
       >
-        {slotProperties
-          .map((slot) => ({ key: slot, prop: rest[slot] }))
-          .filter(({ prop }) => !!prop)
-          .map(({ key, prop }) => {
-            return Children.map(prop, (item: ReactElement, index) =>
-              cloneElement(item, {
-                key: `${key}-${index}`,
-                slot: key
-              })
-            );
-          })}
+        {slots}
         {children}
       </TagName>
     );
