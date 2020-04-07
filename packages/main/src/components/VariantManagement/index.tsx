@@ -1,20 +1,21 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
-import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { ResponsivePopover } from '@ui5/webcomponents-react/lib/ResponsivePopover';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useState } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';
 
 export interface VariantItem {
   key: string;
@@ -84,8 +85,10 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
       closeOnItemSelect,
       disabled
     } = props;
+
     const classes = useStyles();
-    const [open, setOpen] = useState(false);
+    const popoverRef = useRef<Ui5ResponsivePopoverDomRef>(null);
+
     const [selectedKey, setSelectedKey] = useState(
       initialSelectedKey ? initialSelectedKey : variantItems?.[0]?.key ?? null
     );
@@ -101,12 +104,15 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
     }, [initialSelectedKey, setSelectedKey]);
 
     const handleCancelButtonClick = useCallback(() => {
-      setOpen(false);
-    }, [setOpen]);
+      popoverRef.current.close();
+    }, [popoverRef]);
 
-    const handleAfterOpen = useCallback(() => {
-      setOpen(true);
-    }, [setOpen]);
+    const handleOpenVariantManagement = useCallback(
+      (e) => {
+        popoverRef.current.open(e.target);
+      },
+      [popoverRef]
+    );
 
     const footerButtons = useMemo(() => {
       return (
@@ -120,23 +126,12 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
       return variantItems.find((item) => item.key === key);
     };
 
-    const variantManagementButton = useMemo(() => {
-      const selectedItem = getItemByKey(selectedKey) || variantItems[0];
+    const selectedItem = getItemByKey(selectedKey) || variantItems[0];
 
-      let textClasses = classes.VariantManagementText;
-      if (disabled) {
-        textClasses += ` ${classes.disabled}`;
-      }
-
-      return (
-        <div className={classes.VariantManagement}>
-          <Title level={level} className={textClasses}>
-            {selectedItem.label}
-          </Title>
-          <Button design={ButtonDesign.Transparent} icon="navigation-down-arrow" disabled={disabled} />
-        </div>
-      );
-    }, [classes, variantItems, level, selectedKey, disabled]);
+    let textClasses = classes.VariantManagementText;
+    if (disabled) {
+      textClasses += ` ${classes.disabled}`;
+    }
 
     const handleVariantItemSelect = useCallback(
       (event) => {
@@ -153,35 +148,43 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
     const passThroughProps = usePassThroughHtmlProps(props, ['onSelect']);
 
     return (
-      <Popover
-        ref={ref}
-        open={open}
-        headerText={popupTitle}
-        placementType={placement}
-        openBy={variantManagementButton}
-        openByStyle={{ pointerEvents: disabled ? 'none' : 'auto' }}
-        footer={footerButtons}
-        className={className}
-        style={style}
-        tooltip={tooltip}
-        {...passThroughProps}
-        // @ts-ignore
-        onAfterOpen={handleAfterOpen}
-      >
-        <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
-          {variantItems.map((item) => (
-            <StandardListItem
-              style={{ width: '300px' }}
-              data-key={item.key}
-              type={ListItemTypes.Active}
-              key={item.key}
-              selected={selectedKey === item.key}
-            >
-              {item.label}
-            </StandardListItem>
-          ))}
-        </List>
-      </Popover>
+      <>
+        <div className={classes.VariantManagement}>
+          <Title level={level} className={textClasses}>
+            {selectedItem.label}
+          </Title>
+          <Button
+            onClick={handleOpenVariantManagement}
+            design={ButtonDesign.Transparent}
+            icon="navigation-down-arrow"
+            disabled={disabled}
+          />
+        </div>
+        <ResponsivePopover
+          ref={popoverRef}
+          headerText={popupTitle}
+          placementType={placement}
+          footer={footerButtons}
+          className={className}
+          style={style}
+          tooltip={tooltip}
+          {...passThroughProps}
+        >
+          <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
+            {variantItems.map((item) => (
+              <StandardListItem
+                style={{ width: '300px' }}
+                data-key={item.key}
+                type={ListItemTypes.Active}
+                key={item.key}
+                selected={selectedKey === item.key}
+              >
+                {item.label}
+              </StandardListItem>
+            ))}
+          </List>
+        </ResponsivePopover>
+      </>
     );
   }
 );

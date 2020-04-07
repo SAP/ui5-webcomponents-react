@@ -230,7 +230,7 @@ describe('AnalyticalTable', () => {
     const wrapper = mount(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
-    let componentDrag = wrapper.find('div[role="columnheader"] div[draggable]').at(0);
+    let componentDrag = wrapper.find('div[role="columnheader"][draggable]').at(0);
     let inst = componentDrag.instance();
     // @ts-ignore
     let dragColumnId = inst.dataset.columnId;
@@ -248,7 +248,7 @@ describe('AnalyticalTable', () => {
     dataTransfer.getData = () => {
       return dragColumnId;
     };
-    let componentDrop = wrapper.find('div[role="columnheader"] div[draggable]').at(1);
+    let componentDrop = wrapper.find('div[role="columnheader"][draggable]').at(1);
     // @ts-ignore
     componentDrop.simulate('drop', { dataTransfer: dataTransfer });
 

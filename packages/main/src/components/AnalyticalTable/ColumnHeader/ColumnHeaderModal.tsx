@@ -11,29 +11,25 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import React, { CSSProperties, FC, ReactNode, RefObject, useCallback, useRef } from 'react';
+import React, { CSSProperties, forwardRef, RefObject, useCallback } from 'react';
 import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { ColumnType } from '../types/ColumnType';
 
 export interface ColumnHeaderModalProperties {
-  openBy: ReactNode;
   column: ColumnType;
-  style: CSSProperties;
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
 }
 
 const staticStyle = { fontWeight: 'normal' };
 
-export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props: ColumnHeaderModalProperties) => {
-  const { column, style, openBy, onSort, onGroupBy } = props;
+export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties, ref: RefObject<Ui5PopoverDomRef>) => {
+  const { column, onSort, onGroupBy } = props;
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
   const showSort = column.canSort;
 
   const { Filter } = column;
-
-  const popoverRef: RefObject<Ui5PopoverDomRef> = useRef();
 
   const handleSort = useCallback(
     (e) => {
@@ -86,11 +82,11 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props: Column
           }
           break;
       }
-      if (popoverRef.current) {
-        popoverRef.current.close();
+      if (ref.current) {
+        ref.current.close();
       }
     },
-    [column, popoverRef, onGroupBy, onSort]
+    [column, ref, onGroupBy, onSort]
   );
 
   const isSortedAscending = column.isSorted && column.isSortedDesc === false;
@@ -98,12 +94,10 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props: Column
 
   return (
     <Popover
-      openByStyle={style}
-      openBy={openBy}
       noArrow
       horizontalAlign={PopoverHorizontalAlign.Left}
       placementType={PlacementType.Bottom}
-      ref={popoverRef}
+      ref={ref}
       style={staticStyle as CSSProperties}
     >
       <List onItemClick={handleSort}>
@@ -137,7 +131,7 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props: Column
             }}
           >
             <Icon name="filter" style={{ paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }} />
-            <Filter column={column} popoverRef={popoverRef} />
+            <Filter column={column} popoverRef={ref} />
           </FlexBox>
         )}
         {showGroup && (
@@ -148,4 +142,5 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props: Column
       </List>
     </Popover>
   );
-};
+});
+ColumnHeaderModal.displayName = 'ColumnHeaderModal';

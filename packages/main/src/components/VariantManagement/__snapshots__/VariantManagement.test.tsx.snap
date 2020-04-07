@@ -3,24 +3,20 @@
 exports[`VariantManagement Render without crashing 1`] = `
 Array [
   <div
-    style="display: inline-block; pointer-events: auto;"
+    class="VariantManagement-VariantManagement-0"
   >
-    <div
-      class="VariantManagement-VariantManagement-0"
+    <ui5-title
+      class="VariantManagement-VariantManagementText-0"
+      level="H4"
     >
-      <ui5-title
-        class="VariantManagement-VariantManagementText-0"
-        level="H4"
-      >
-        Variant 1
-      </ui5-title>
-      <ui5-button
-        design="Transparent"
-        icon="navigation-down-arrow"
-      />
-    </div>
+      Variant 1
+    </ui5-title>
+    <ui5-button
+      design="Transparent"
+      icon="navigation-down-arrow"
+    />
   </div>,
-  <ui5-popover
+  <ui5-responsive-popover
     header-text="Variants"
     horizontal-align="Center"
     initial-focus=""
@@ -58,6 +54,6 @@ Array [
         Variant 2
       </ui5-li>
     </ui5-list>
-  </ui5-popover>,
+  </ui5-responsive-popover>,
 ]
 `;

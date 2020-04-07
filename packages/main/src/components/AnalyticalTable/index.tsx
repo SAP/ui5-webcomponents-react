@@ -327,77 +327,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     'onLoadMore'
   ]);
 
-  const currentlyFocusedCell = useRef<HTMLDivElement>(null);
-  const onTableFocus = useCallback(
-    (e) => {
-      if (e.target.getAttribute('role') === 'grid') {
-        const firstCell: HTMLDivElement = e.target.querySelector(
-          'div[role="row"]:first-child div[role="cell"]:first-child'
-        );
-        firstCell.tabIndex = 0;
-        firstCell.focus();
-        currentlyFocusedCell.current = firstCell;
-      }
-    },
-    [currentlyFocusedCell]
-  );
-
-  const onKeyboardNavigation = useCallback(
-    (e) => {
-      if (currentlyFocusedCell.current) {
-        switch (e.key) {
-          case 'ArrowRight': {
-            const newElement = currentlyFocusedCell.current.nextElementSibling as HTMLDivElement;
-            if (newElement) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              newElement.tabIndex = 0;
-              newElement.focus();
-              currentlyFocusedCell.current = newElement;
-            }
-            break;
-          }
-          case 'ArrowLeft': {
-            const newElement = currentlyFocusedCell.current.previousElementSibling as HTMLDivElement;
-            if (newElement) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              newElement.tabIndex = 0;
-              newElement.focus();
-              currentlyFocusedCell.current = newElement;
-            }
-            break;
-          }
-          case 'ArrowDown': {
-            const nextRow = currentlyFocusedCell.current.parentElement.nextElementSibling as HTMLDivElement;
-            if (nextRow) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex');
-              const newElement: HTMLDivElement = nextRow.querySelector(`div[aria-colindex="${currentColumnIndex}"]`);
-              newElement.tabIndex = 0;
-              newElement.focus();
-              currentlyFocusedCell.current = newElement;
-            }
-            break;
-          }
-          case 'ArrowUp': {
-            const previousRow = currentlyFocusedCell.current.parentElement.previousElementSibling as HTMLDivElement;
-            if (previousRow) {
-              currentlyFocusedCell.current.tabIndex = -1;
-              const currentColumnIndex = currentlyFocusedCell.current.getAttribute('aria-colindex');
-              const newElement: HTMLDivElement = previousRow.querySelector(
-                `div[aria-colindex="${currentColumnIndex}"]`
-              );
-              newElement.tabIndex = 0;
-              newElement.focus();
-              currentlyFocusedCell.current = newElement;
-            }
-            break;
-          }
-        }
-      }
-    },
-    [currentlyFocusedCell]
-  );
-
   const inlineStyle = useMemo(() => {
     if(tableState.tableClientWidth > 0) {
       return style;
@@ -407,7 +336,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       visibility: 'hidden' as 'hidden'
     };
   }, [tableState.tableClientWidth, style]);
-
+  
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
@@ -420,9 +349,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             aria-rowcount={rows.length}
             aria-colcount={tableInternalColumns.length}
             data-per-page={visibleRows}
-            tabIndex={0}
-            onFocus={onTableFocus}
-            onKeyDown={onKeyboardNavigation}
           >
             {headerGroups.map((headerGroup) => {
               let headerProps = {};
