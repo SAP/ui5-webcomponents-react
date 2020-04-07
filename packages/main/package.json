@@ -14,6 +14,8 @@
   "license": "Apache-2.0",
   "sideEffects": [
     "@ui5/webcomponents-icons/dist/icons/*",
+    "@ui5/webcomponents/dist/*",
+    "@ui5/webcomponents-fiori/dist/*",
     "*/ThemingSupport.js"
   ],
   "scripts": {
