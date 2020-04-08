@@ -4,8 +4,11 @@ export const useSizeMonitor = (props, container) => {
   const { height: heightProp, width: widthProp, minHeight, minWidth } = props;
   const [height, setHeight] = useState(null);
   const [width, setWidth] = useState(null);
+  const observer = useRef(null);
 
-  const enableSizeMonitor = typeof heightProp === 'string' || typeof widthProp === 'string';
+  const dynamicHeightProp = typeof heightProp === 'string';
+  const dynamicWidthProp = typeof heightProp === 'string';
+  const enableSizeMonitor = dynamicHeightProp || dynamicWidthProp;
 
   const recalculateSize = useCallback(
     (e?) => {
@@ -20,30 +23,33 @@ export const useSizeMonitor = (props, container) => {
         clientRectWidth = e[0].contentRect.width;
       }
 
-      // console.log(props);
-
-      setHeight(Math.max(minHeight, clientRectHeight));
+      if (dynamicHeightProp) setHeight(Math.max(minHeight, clientRectHeight));
       setWidth(Math.max(minWidth, clientRectWidth));
     },
-    [container.current, setHeight, setWidth]
+    [setHeight, setWidth, dynamicHeightProp, dynamicWidthProp]
   );
-
-  const observer = useRef(new ResizeObserver(recalculateSize));
 
   // @ts-ignore
   useEffect(() => {
     if (enableSizeMonitor && container.current) {
+      observer.current = new ResizeObserver(recalculateSize);
       observer.current.observe(container.current);
 
-      recalculateSize();
       return () => {
         observer.current.disconnect();
       };
     }
+  }, [recalculateSize]);
+
+  // call recalculateSize once on mount
+  useEffect(() => {
+    if (enableSizeMonitor && container.current) {
+      recalculateSize();
+    }
   }, []);
 
   return {
-    height: enableSizeMonitor ? height : heightProp,
-    width: enableSizeMonitor ? width : widthProp
+    height: dynamicHeightProp ? height : heightProp,
+    width: dynamicWidthProp ? width : widthProp
   };
 };
