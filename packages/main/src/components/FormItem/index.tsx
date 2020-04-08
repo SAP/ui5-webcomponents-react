@@ -1,3 +1,4 @@
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { CurrentViewportRangeContext } from '@ui5/webcomponents-react/lib/CurrentViewportRangeContext';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
@@ -12,9 +13,7 @@ import React, {
   useContext,
   useMemo
 } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { styles } from '../Form/Form.jss';
 
 export interface FormItemProps extends CommonProps {
   label?: string | ReactElement;
@@ -29,7 +28,20 @@ const calculateWidth = (rate) => {
   return Math.floor((100 / 12) * rate) + '%';
 };
 
-const useStyles = createComponentStyles(styles, { name: 'FormItem' });
+const useStyles = createComponentStyles(
+  {
+    formItem: {
+      alignItems: 'center'
+    },
+    label: {
+      paddingRight: '0.5em'
+    },
+    content: {
+      display: 'block'
+    }
+  },
+  { name: 'FormItem' }
+);
 
 /**
  * <code>import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';</code>
@@ -80,7 +92,7 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
     };
   }, [children, currentRange, style]);
 
-  let classNames = `${classes.formItemTopDiv}`;
+  let classNames = `${classes.formItem}`;
   if (className) {
     classNames += ` ${className}`;
   }
@@ -96,18 +108,18 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
   return (
     <div ref={ref} style={memoizedStyles.topDivStyle} className={classNames} title={tooltip} slot={slot}>
       {typeof labelToRender === 'string' ? (
-        <Label style={memoizedStyles.labelStyle} className={classes.formLabel}>
+        <Label style={memoizedStyles.labelStyle} className={classes.label}>
           {labelToRender ? `${labelToRender}:` : ''}
         </Label>
       ) : (
         cloneElement(labelToRender, {
           style: { ...memoizedStyles.labelStyle, ...(labelToRender.props.style || {}) },
-          className: `${classes.formLabel} ${labelToRender.props.className ?? ''}`,
+          className: `${classes.label} ${labelToRender.props.className ?? ''}`,
           children: labelToRender.props.children ? `${labelToRender.props.children}:` : ''
         })
       )}
 
-      <div style={memoizedStyles.elementStyle} className={classes.formElement}>
+      <div style={memoizedStyles.elementStyle} className={classes.content}>
         {children}
       </div>
     </div>

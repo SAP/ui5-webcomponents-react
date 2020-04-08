@@ -5,95 +5,91 @@ exports[`Create a Form accepts both label and labelText 1`] = `
   class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
 >
   <div
-    class="Grid-gridSpan-0"
+    class="Grid-gridSpan-0 Grid-gridSpan6-0"
   >
     <div>
       <div
-        class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
+        class="FormGroup-formGroup-0"
       >
         <div
-          class="FormGroup-formGroupStyle-0"
+          class="FormItem-formItem-0"
+          style="display: flex;"
         >
-          <div
-            class="FormItem-formItemTopDiv-0"
-            style="display: flex;"
+          <ui5-label
+            class="FormItem-label-0"
+            for=""
+            style="width: 33%; justify-content: flex-end;"
           >
-            <ui5-label
-              class="FormItem-formLabel-0"
-              for=""
-              style="width: 33%; justify-content: flex-end;"
-            >
-              item 1:
-            </ui5-label>
-            <div
-              class="FormItem-formElement-0"
-              style="width: 66%;"
-            >
-              <ui5-input
-                name=""
-                placeholder=""
-                type="Text"
-                value=""
-                value-state="None"
-              />
-            </div>
+            item 1:
+          </ui5-label>
+          <div
+            class="FormItem-content-0"
+            style="width: 66%;"
+          >
+            <ui5-input
+              name=""
+              placeholder=""
+              type="Text"
+              value=""
+              value-state="None"
+            />
           </div>
         </div>
+      </div>
+      <div
+        class="FormGroup-formGroup-0"
+      >
         <div
-          class="FormGroup-formGroupStyle-0"
+          class="FormItem-formItem-0"
+          style="display: flex;"
         >
-          <div
-            class="FormItem-formItemTopDiv-0"
-            style="display: flex;"
+          <ui5-label
+            class="FormItem-label-0"
+            for=""
+            style="width: 33%; justify-content: flex-end;"
           >
-            <ui5-label
-              class="FormItem-formLabel-0"
-              for=""
-              style="width: 33%; justify-content: flex-end;"
-            >
-              Label Text:
-            </ui5-label>
-            <div
-              class="FormItem-formElement-0"
-              style="width: 66%;"
-            >
-              <ui5-input
-                name=""
-                placeholder=""
-                type="Number"
-                value=""
-                value-state="None"
-              />
-            </div>
+            Label Text:
+          </ui5-label>
+          <div
+            class="FormItem-content-0"
+            style="width: 66%;"
+          >
+            <ui5-input
+              name=""
+              placeholder=""
+              type="Number"
+              value=""
+              value-state="None"
+            />
           </div>
         </div>
+      </div>
+      <div
+        class="FormGroup-formGroup-0"
+      >
         <div
-          class="FormGroup-formGroupStyle-0"
+          class="FormItem-formItem-0"
+          style="display: flex;"
         >
-          <div
-            class="FormItem-formItemTopDiv-0"
-            style="display: flex;"
+          <ui5-label
+            class="FormItem-label-0"
+            for=""
+            required="true"
+            style="width: 33%; justify-content: flex-end;"
           >
-            <ui5-label
-              class="FormItem-formLabel-0"
-              for=""
-              required="true"
-              style="width: 33%; justify-content: flex-end;"
-            >
-              Label Component:
-            </ui5-label>
-            <div
-              class="FormItem-formElement-0"
-              style="width: 66%;"
-            >
-              <ui5-input
-                name=""
-                placeholder=""
-                type="Number"
-                value=""
-                value-state="None"
-              />
-            </div>
+            Label Component:
+          </ui5-label>
+          <div
+            class="FormItem-content-0"
+            style="width: 66%;"
+          >
+            <ui5-input
+              name=""
+              placeholder=""
+              type="Number"
+              value=""
+              value-state="None"
+            />
           </div>
         </div>
       </div>
@@ -111,72 +107,65 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Form-formTitlePaddingBottom-0"
-  />,
-  <div
     class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid-gridSpan-0"
+      class="Grid-gridSpan-0 Grid-gridSpan6-0"
     >
       <div>
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
+          class="FormGroup-formGroup-0"
         >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 1:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 1:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Text"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
+        </div>
+        <div
+          class="FormGroup-formGroup-0"
+        >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 2:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Number"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 2:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Number"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
         </div>
@@ -195,72 +184,65 @@ Array [
     To be Form title
   </ui5-title>,
   <div
-    class="Form-formTitlePaddingBottom-0"
-  />,
-  <div
     class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid-gridSpan-0"
+      class="Grid-gridSpan-0 Grid-gridSpan6-0"
     >
       <div>
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
+          class="FormGroup-formGroup-0"
         >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 1:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 1:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Text"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
+        </div>
+        <div
+          class="FormGroup-formGroup-0"
+        >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 2:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Number"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 2:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Number"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
         </div>
@@ -279,150 +261,139 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Form-formTitlePaddingBottom-0"
-  />,
-  <div
     class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid-gridSpan-0"
+      class="Grid-gridSpan-0 Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
-          class="FormGroup-formPaddingBottom-0"
+          class="FormGroup-title-0"
           level="H5"
         >
           Group 1
         </ui5-title>
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
+          class="FormGroup-formGroup-0"
         >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 1:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 1:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Text"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
+        </div>
+        <div
+          class="FormGroup-formGroup-0"
+        >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 2:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Number"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 2:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Number"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0"
+      class="Grid-gridSpan-0 Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
-          class="FormGroup-formPaddingBottom-0"
+          class="FormGroup-title-0"
           level="H5"
         >
           Group 2
         </ui5-title>
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
+          class="FormGroup-formGroup-0"
         >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 1:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 1:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Text"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
+        </div>
+        <div
+          class="FormGroup-formGroup-0"
+        >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 2:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Number"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 2:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Number"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
         </div>
@@ -441,150 +412,139 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Form-formTitlePaddingBottom-0"
-  />,
-  <div
     class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid-gridSpan-0"
+      class="Grid-gridSpan-0 Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
-          class="FormGroup-formPaddingBottom-0"
+          class="FormGroup-title-0"
           level="H5"
         >
           Group 1
         </ui5-title>
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
+          class="FormGroup-formGroup-0"
         >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 16%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 16%; justify-content: flex-end;"
-              >
-                item 1:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 83%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 1:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 83%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Text"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
+        </div>
+        <div
+          class="FormGroup-formGroup-0"
+        >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 16%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 16%; justify-content: flex-end;"
-              >
-                item 2:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 83%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Number"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 2:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 83%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Number"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0"
+      class="Grid-gridSpan-0 Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
-          class="FormGroup-formPaddingBottom-0"
+          class="FormGroup-title-0"
           level="H5"
         >
           Group 2
         </ui5-title>
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
+          class="FormGroup-formGroup-0"
         >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 16%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 16%; justify-content: flex-end;"
-              >
-                item 1:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 83%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 1:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 83%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Text"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
+        </div>
+        <div
+          class="FormGroup-formGroup-0"
+        >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 16%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 16%; justify-content: flex-end;"
-              >
-                item 2:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 83%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Number"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 2:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 83%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Number"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
         </div>
@@ -603,150 +563,139 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Form-formTitlePaddingBottom-0"
-  />,
-  <div
     class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid-gridSpan-0"
+      class="Grid-gridSpan-0 Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
-          class="FormGroup-formPaddingBottom-0"
+          class="FormGroup-title-0"
           level="H5"
         >
           Group 1
         </ui5-title>
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
+          class="FormGroup-formGroup-0"
         >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: block;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: block;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 100%; justify-content: flex-start;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 100%; justify-content: flex-start;"
-              >
-                item 1:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 100%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 1:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 100%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Text"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
+        </div>
+        <div
+          class="FormGroup-formGroup-0"
+        >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: block;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: block;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 100%; justify-content: flex-start;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 100%; justify-content: flex-start;"
-              >
-                item 2:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 100%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Number"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 2:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 100%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Number"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0"
+      class="Grid-gridSpan-0 Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
-          class="FormGroup-formPaddingBottom-0"
+          class="FormGroup-title-0"
           level="H5"
         >
           Group 2
         </ui5-title>
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
+          class="FormGroup-formGroup-0"
         >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: block;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: block;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 100%; justify-content: flex-start;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 100%; justify-content: flex-start;"
-              >
-                item 1:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 100%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 1:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 100%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Text"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
+        </div>
+        <div
+          class="FormGroup-formGroup-0"
+        >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: block;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: block;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 100%; justify-content: flex-start;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 100%; justify-content: flex-start;"
-              >
-                item 2:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 100%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Number"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 2:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 100%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Number"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
         </div>
@@ -765,150 +714,139 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Form-formTitlePaddingBottom-0"
-  />,
-  <div
     class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
   >
     <div
-      class="Grid-gridSpan-0"
+      class="Grid-gridSpan-0 Grid-gridSpan6-0"
     >
       <div>
         <ui5-title
-          class="FormGroup-formPaddingBottom-0"
+          class="FormGroup-title-0"
           level="H5"
         >
           Group 1
         </ui5-title>
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
+          class="FormGroup-formGroup-0"
         >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 1:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 1:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Text"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
+        </div>
+        <div
+          class="FormGroup-formGroup-0"
+        >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 2:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Number"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 2:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Number"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0"
+      class="Grid-gridSpan-0 Grid-gridSpan6-0"
     >
       <div>
         <ui5-title
-          class="FormGroup-formPaddingBottom-0"
+          class="FormGroup-title-0"
           level="H5"
         >
           Group 2
         </ui5-title>
         <div
-          class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsEnd-0 FlexBox-flexWrapNoWrap-0"
+          class="FormGroup-formGroup-0"
         >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 1:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Text"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 1:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Text"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
+        </div>
+        <div
+          class="FormGroup-formGroup-0"
+        >
           <div
-            class="FormGroup-formGroupStyle-0"
+            class="FormItem-formItem-0"
+            style="display: flex;"
           >
-            <div
-              class="FormItem-formItemTopDiv-0"
-              style="display: flex;"
+            <ui5-label
+              class="FormItem-label-0"
+              for=""
+              style="width: 33%; justify-content: flex-end;"
             >
-              <ui5-label
-                class="FormItem-formLabel-0"
-                for=""
-                style="width: 33%; justify-content: flex-end;"
-              >
-                item 2:
-              </ui5-label>
-              <div
-                class="FormItem-formElement-0"
-                style="width: 66%;"
-              >
-                <ui5-input
-                  name=""
-                  placeholder=""
-                  type="Number"
-                  value=""
-                  value-state="None"
-                />
-              </div>
+              item 2:
+            </ui5-label>
+            <div
+              class="FormItem-content-0"
+              style="width: 66%;"
+            >
+              <ui5-input
+                name=""
+                placeholder=""
+                type="Number"
+                value=""
+                value-state="None"
+              />
             </div>
           </div>
         </div>
