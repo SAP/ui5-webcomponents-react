@@ -6,10 +6,8 @@ const replace = require('@rollup/plugin-replace');
 const resolve = require('@rollup/plugin-node-resolve');
 const json = require('@rollup/plugin-json');
 const closure = require('./plugins/closure-plugin');
-const sizes = require('./plugins/sizes-plugin');
 const stripUnusedImports = require('./plugins/strip-unused-imports');
 const Bundles = require('./bundles');
-const Stats = require('./stats');
 const codeFrame = require('babel-code-frame');
 const chalk = require('chalk');
 const path = require('path');
@@ -170,24 +168,7 @@ function getPlugins(entry, externals, updateBabelOptions, filename, packageName,
     // Note that this plugin must be called after closure applies DCE.
     isProduction && stripUnusedImports([]),
     // Add the whitespace back if necessary.
-    shouldStayReadable && prettier({ parser: 'babylon' }),
-    // Record bundle size.
-    sizes({
-      getSize: (size, gzip) => {
-        const currentSizes = Stats.currentBuildResults.bundleSizes;
-        const recordIndex = currentSizes.findIndex(
-          (record) => record.filename === filename && record.bundleType === bundleType
-        );
-        const index = recordIndex !== -1 ? recordIndex : currentSizes.length;
-        currentSizes[index] = {
-          filename,
-          bundleType,
-          packageName,
-          size,
-          gzip
-        };
-      }
-    })
+    shouldStayReadable && prettier({ parser: 'babylon' })
   ].filter(Boolean);
 }
 
@@ -291,11 +272,6 @@ async function buildEverything() {
   }
 
   await Packaging.prepareNpmPackages();
-
-  console.log(Stats.printResults());
-  if (!forcePrettyOutput) {
-    Stats.saveResults();
-  }
 
   if (shouldExtractErrors) {
     console.warn(

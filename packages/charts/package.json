@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "clean": "rimraf cjs components interfaces internal lib themes util index.esm.js index.d.ts config.d.ts hooks indexNew.d.ts",
-    "postbuild": "rollup -c rollup.config.js"
+    "build": "rollup -c rollup.config.js"
   },
   "dependencies": {
     "chart.js": "^2.9.3",
