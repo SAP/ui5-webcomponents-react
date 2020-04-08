@@ -23,25 +23,28 @@ export const useSizeMonitor = (props, container) => {
         clientRectWidth = e[0].contentRect.width;
       }
 
-      if (dynamicHeightProp) setHeight(Math.max(minHeight, clientRectHeight));
-      setWidth(Math.max(minWidth, clientRectWidth));
+      if (dynamicHeightProp) {
+        setHeight(Math.max(minHeight, clientRectHeight));
+      }
+      if (dynamicWidthProp) {
+        setWidth(Math.max(minWidth, clientRectWidth));
+      }
     },
     [setHeight, setWidth, dynamicHeightProp, dynamicWidthProp]
   );
 
-  // @ts-ignore
   useEffect(() => {
     if (enableSizeMonitor && container.current) {
       observer.current = new ResizeObserver(recalculateSize);
       observer.current.observe(container.current);
-
-      return () => {
-        observer.current.disconnect();
-      };
     }
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    };
   }, [recalculateSize]);
 
-  // call recalculateSize once on mount
   useEffect(() => {
     if (enableSizeMonitor && container.current) {
       recalculateSize();
