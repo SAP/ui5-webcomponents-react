@@ -30,8 +30,6 @@ async function prepareNpmPackage(name) {
 async function prepareNpmPackages() {
   const builtPackageFolders = readdirSync('packages').filter((dir) => dir.charAt(0) !== '.');
   await Promise.all(builtPackageFolders.map(prepareNpmPackage));
-  // create main lib
-  await asyncExecuteCommand(`node_modules/.bin/lerna run postbuild --stream`);
 }
 
 module.exports = {

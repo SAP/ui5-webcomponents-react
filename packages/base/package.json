@@ -24,7 +24,7 @@
     "clean": "rimraf cjs Device hooks lib polyfill styling types utils index.esm.js index.d.ts",
     "build:rollup": "rollup -c rollup.config.js",
     "build:polyfills": "tsc ./src/polyfill/*.ts --outDir ./polyfill --skipLibCheck",
-    "postbuild": "npm-run-all -s build:rollup build:polyfills"
+    "build": "npm-run-all -s build:rollup build:polyfills"
   },
   "dependencies": {
     "core-js": "3.6.4",
