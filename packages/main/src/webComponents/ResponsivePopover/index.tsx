@@ -2,7 +2,7 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5ResponsivePopover from '@ui5/webcomponents/dist/ResponsivePopover';
+import '@ui5/webcomponents/dist/ResponsivePopover';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -75,7 +75,11 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</a>
  */
 const ResponsivePopover: FC<ResponsivePopoverPropTypes> = withWebComponent<ResponsivePopoverPropTypes>(
-  UI5ResponsivePopover
+  'ui5-responsive-popover',
+  ['headerText', 'horizontalAlign', 'initialFocus', 'placementType', 'verticalAlign'],
+  ['allowTargetOverlap', 'modal', 'noArrow'],
+  ['footer', 'header'],
+  ['afterClose', 'afterOpen', 'beforeClose', 'beforeOpen']
 );
 
 ResponsivePopover.displayName = 'ResponsivePopover';

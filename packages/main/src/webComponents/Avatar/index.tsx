@@ -3,7 +3,7 @@ import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarFitType';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Avatar from '@ui5/webcomponents/dist/Avatar';
+import '@ui5/webcomponents/dist/Avatar';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -44,7 +44,13 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Avatar" target="_blank">UI5 Web Components Playground</a>
  */
-const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(UI5Avatar);
+const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(
+  'ui5-avatar',
+  ['backgroundColor', 'icon', 'image', 'imageFitType', 'initials', 'shape', 'size'],
+  [],
+  [],
+  []
+);
 
 Avatar.displayName = 'Avatar';
 

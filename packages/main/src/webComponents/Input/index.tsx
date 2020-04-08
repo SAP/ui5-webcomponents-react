@@ -1,11 +1,11 @@
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Input from '@ui5/webcomponents/dist/Input';
+import '@ui5/webcomponents/dist/Input';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface InputPropTypes extends WithWebComponentPropTypes {
+export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
   /**
    * Defines whether the <code>ui5-input</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>ui5-input</code> is completely noninteractive.
    */
@@ -39,7 +39,7 @@ export interface InputPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the HTML type of the <code>ui5-input</code>. Available options are: <code>Text</code>, <code>Email</code>, <code>Number</code>, <code>Password</code>, <code>Tel</code>, and <code>URL</code>. <br><br> <b>Notes:</b> <ul> <li>The particular effect of this property differs depending on the browser and the current language settings, especially for type <code>Number</code>.</li> <li>The property is mostly intended to be used with touch devices that use different soft keyboard layouts depending on the given input type.</li> </ul>
    */
-  type?: string;
+  type?: InputType;
   /**
    * Defines the value of the <code>ui5-input</code>. <br><br> <b>Note:</b> The property is updated upon typing.
    */
@@ -83,7 +83,13 @@ export interface InputPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Input" target="_blank">UI5 Web Components Playground</a>
  */
-const Input: FC<InputPropTypes> = withWebComponent<InputPropTypes>(UI5Input);
+const Input: FC<InputPropTypes> = withWebComponent<InputPropTypes>(
+  'ui5-input',
+  ['maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
+  ['disabled', 'readonly', 'required', 'showSuggestions'],
+  ['icon', 'valueStateMessage'],
+  ['change', 'input', 'submit', 'suggestionItemSelect']
+);
 
 Input.displayName = 'Input';
 

@@ -1,4 +1,4 @@
-import UI5ShellBar from '@ui5/webcomponents-fiori/dist/ShellBar';
+import '@ui5/webcomponents-fiori/dist/ShellBar';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
@@ -83,7 +83,13 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</a>
  */
-const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(UI5ShellBar);
+const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(
+  'ui5-shellbar',
+  ['logo', 'notificationCount', 'primaryTitle', 'secondaryTitle'],
+  ['showCoPilot', 'showNotifications', 'showProductSwitch'],
+  ['menuItems', 'profile', 'searchField', 'startButton'],
+  ['coPilotClick', 'logoClick', 'menuItemClick', 'notificationsClick', 'productSwitchClick', 'profileClick']
+);
 
 ShellBar.displayName = 'ShellBar';
 

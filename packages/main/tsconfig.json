@@ -1,8 +1,5 @@
 {
   "extends": "../../tsconfig.json",
-  "types": [
-    "chai"
-  ],
   "include": [
     "src/index.ts"
   ]

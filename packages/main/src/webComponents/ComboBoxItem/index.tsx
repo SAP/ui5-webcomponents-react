@@ -1,5 +1,5 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5ComboBoxItem from '@ui5/webcomponents/dist/ComboBoxItem';
+import '@ui5/webcomponents/dist/ComboBoxItem';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -15,7 +15,13 @@ export interface ComboBoxItemPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ComboBoxItem" target="_blank">UI5 Web Components Playground</a>
  */
-const ComboBoxItem: FC<ComboBoxItemPropTypes> = withWebComponent<ComboBoxItemPropTypes>(UI5ComboBoxItem);
+const ComboBoxItem: FC<ComboBoxItemPropTypes> = withWebComponent<ComboBoxItemPropTypes>(
+  'ui5-cb-item',
+  ['text'],
+  [],
+  [],
+  []
+);
 
 ComboBoxItem.displayName = 'ComboBoxItem';
 

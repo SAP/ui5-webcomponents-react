@@ -1,9 +1,9 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Switch from '@ui5/webcomponents/dist/Switch';
+import '@ui5/webcomponents/dist/Switch';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface SwitchPropTypes extends WithWebComponentPropTypes {
+export interface SwitchPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
    * Defines if the <code>ui5-switch</code> is checked. <br><br> <b>Note:</b> The property can be changed with user interaction, either by cliking/tapping on the <code>ui5-switch</code>, or by pressing the <code>Enter</code> or <code>Space</code> key.
    */
@@ -37,7 +37,13 @@ export interface SwitchPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Switch" target="_blank">UI5 Web Components Playground</a>
  */
-const Switch: FC<SwitchPropTypes> = withWebComponent<SwitchPropTypes>(UI5Switch);
+const Switch: FC<SwitchPropTypes> = withWebComponent<SwitchPropTypes>(
+  'ui5-switch',
+  ['textOff', 'textOn'],
+  ['checked', 'disabled', 'graphical'],
+  [],
+  ['change']
+);
 
 Switch.displayName = 'Switch';
 

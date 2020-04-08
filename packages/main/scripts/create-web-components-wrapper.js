@@ -42,9 +42,64 @@ COMPONENTS_WITHOUT_DEMOS.add('ComboBoxItem');
 COMPONENTS_WITHOUT_DEMOS.add('MultiComboBoxItem');
 COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
 
+const TagNames = new Map();
+TagNames.set('Avatar', 'ui5-avatar');
+TagNames.set('Badge', 'ui5-badge');
+TagNames.set('BusyIndicator', 'ui5-busyindicator');
+TagNames.set('Button', 'ui5-button');
+TagNames.set('Calendar', 'ui5-calendar');
+TagNames.set('Card', 'ui5-card');
+TagNames.set('Carousel', 'ui5-carousel');
+TagNames.set('CheckBox', 'ui5-checkbox');
+TagNames.set('ComboBox', 'ui5-combobox');
+TagNames.set('ComboBoxItem', 'ui5-cb-item');
+TagNames.set('CustomListItem', 'ui5-li-custom');
+TagNames.set('DatePicker', 'ui5-datepicker');
+TagNames.set('Dialog', 'ui5-dialog');
+TagNames.set('FileUploader', 'ui5-file-uploader');
+TagNames.set('GroupHeaderListItem', 'ui5-li-groupheader');
+TagNames.set('Icon', 'ui5-icon');
+TagNames.set('Input', 'ui5-input');
+TagNames.set('Label', 'ui5-label');
+TagNames.set('Link', 'ui5-link');
+TagNames.set('List', 'ui5-list');
+TagNames.set('MessageStrip', 'ui5-messagestrip');
+TagNames.set('MultiComboBox', 'ui5-multi-combobox');
+TagNames.set('MultiComboBoxItem', 'ui5-mcb-item');
+TagNames.set('Option', 'ui5-option');
+TagNames.set('Panel', 'ui5-panel');
+TagNames.set('Popover', 'ui5-popover');
+TagNames.set('ProductSwitch', 'ui5-product-switch');
+TagNames.set('ProductSwitchItem', 'ui5-product-switch-item');
+TagNames.set('RadioButton', 'ui5-radiobutton');
+TagNames.set('ResponsivePopover', 'ui5-responsive-popover');
+TagNames.set('SegmentedButton', 'ui5-segmentedbutton');
+TagNames.set('Select', 'ui5-select');
+TagNames.set('ShellBar', 'ui5-shellbar');
+TagNames.set('ShellBarItem', 'ui5-shellbar-item');
+TagNames.set('StandardListItem', 'ui5-li');
+TagNames.set('SuggestionItem', 'ui5-suggestion-item');
+TagNames.set('Switch', 'ui5-switch');
+TagNames.set('Tab', 'ui5-tab');
+TagNames.set('TabContainer', 'ui5-tabcontainer');
+TagNames.set('Table', 'ui5-table');
+TagNames.set('TableCell', 'ui5-table-cell');
+TagNames.set('TableColumn', 'ui5-table-column');
+TagNames.set('TableRow', 'ui5-table-row');
+TagNames.set('TabSeparator', 'ui5-tab-separator');
+TagNames.set('TextArea', 'ui5-textarea');
+TagNames.set('Timeline', 'ui5-timeline');
+TagNames.set('TimelineItem', 'ui5-timeline-item');
+TagNames.set('TimePicker', 'ui5-timepicker');
+TagNames.set('Title', 'ui5-title');
+TagNames.set('Toast', 'ui5-toast');
+TagNames.set('ToggleButton', 'ui5-togglebutton');
+
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+const filterNonPublicAttributes = (prop) =>
+  prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 
 const getTypeScriptTypeForProperty = (property) => {
   switch (property.type) {
@@ -259,11 +314,20 @@ const getEventParameters = (parameters) => {
   };
 };
 
-const createWebComponentWrapper = (name, types, importStatements, defaultProps) => {
+const createWebComponentWrapper = (
+  name,
+  types,
+  importStatements,
+  defaultProps,
+  regularProps,
+  booleanProps,
+  slotProps,
+  eventProps
+) => {
   return prettier.format(
     `
     import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-    import UI5${name} from '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
+    import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
     import React, { FC } from 'react';
     import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
     ${importStatements.join('\n')}
@@ -277,7 +341,16 @@ const createWebComponentWrapper = (name, types, importStatements, defaultProps) 
      * <br />
      * <a href="https://sap.github.io/ui5-webcomponents/playground/components/${name}" target="_blank">UI5 Web Components Playground</a>
      */
-    const ${name}: FC<${name}PropTypes> = withWebComponent<${name}PropTypes>(UI5${name});
+    const ${name}: FC<${name}PropTypes> = withWebComponent<${name}PropTypes>(
+      '${TagNames.get(name)}', 
+      [${regularProps.map((v) => `'${v}'`).join(', ')}], 
+      [${booleanProps.map((v) => `'${v}'`).join(', ')}],  
+      [${slotProps
+        .filter((name) => name !== 'children')
+        .map((v) => `'${v}'`)
+        .join(', ')}],
+      [${eventProps.map((v) => `'${v}'`).join(', ')}]
+    );
     
     ${name}.displayName = '${name}';
     
@@ -525,7 +598,17 @@ resolvedWebComponents.forEach((componentSpec) => {
     componentSpec.module,
     propTypes,
     uniqueAdditionalImports,
-    defaultProps
+    defaultProps,
+    (componentSpec.properties || [])
+      .filter(filterNonPublicAttributes)
+      .filter(({ type }) => type !== 'boolean' && type !== 'Boolean')
+      .map(({ name }) => name),
+    (componentSpec.properties || [])
+      .filter(filterNonPublicAttributes)
+      .filter(({ type }) => type === 'boolean' || type === 'Boolean')
+      .map(({ name }) => name),
+    (componentSpec.slots || []).filter(filterNonPublicAttributes).map(({ name }) => name),
+    (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
   );
 
   // check if folder exists and create it if necessary
@@ -533,9 +616,8 @@ resolvedWebComponents.forEach((componentSpec) => {
   if (!fs.existsSync(webComponentFolderPath)) {
     fs.mkdirSync(webComponentFolderPath);
   }
-  if (!fs.existsSync(path.join(webComponentFolderPath, 'index.tsx'))) {
-    fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
-  }
+
+  fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
 
   // create test
   if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {

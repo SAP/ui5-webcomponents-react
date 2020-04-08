@@ -2,8 +2,8 @@ import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { FileUploader } from '@ui5/webcomponents-react/lib/FileUploader';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import React from 'react';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
+import React from 'react';
 
 export default {
   title: 'UI5 Web Components / FileUploader',

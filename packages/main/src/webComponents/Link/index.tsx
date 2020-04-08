@@ -1,10 +1,10 @@
 import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Link from '@ui5/webcomponents/dist/Link';
+import '@ui5/webcomponents/dist/Link';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface LinkPropTypes extends WithWebComponentPropTypes {
+export interface LinkPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
    * Defines the <code>ui5-link</code> design. <br><br> <b>Note:</b> Avaialble options are <code>Default</code>, <code>Subtle</code>, and <code>Emphasized</code>.
    */
@@ -40,7 +40,13 @@ export interface LinkPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Link" target="_blank">UI5 Web Components Playground</a>
  */
-const Link: FC<LinkPropTypes> = withWebComponent<LinkPropTypes>(UI5Link);
+const Link: FC<LinkPropTypes> = withWebComponent<LinkPropTypes>(
+  'ui5-link',
+  ['design', 'href', 'target'],
+  ['disabled', 'wrap'],
+  [],
+  ['click']
+);
 
 Link.displayName = 'Link';
 

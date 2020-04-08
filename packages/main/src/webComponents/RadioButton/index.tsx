@@ -1,10 +1,10 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5RadioButton from '@ui5/webcomponents/dist/RadioButton';
+import '@ui5/webcomponents/dist/RadioButton';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
+export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
   /**
    * Determines whether the <code>ui5-radiobutton</code> is disabled. <br><br> <b>Note:</b> A disabled <code>ui5-radiobutton</code> is completely noninteractive.
    */
@@ -52,7 +52,13 @@ export interface RadioButtonPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/RadioButton" target="_blank">UI5 Web Components Playground</a>
  */
-const RadioButton: FC<RadioButtonPropTypes> = withWebComponent<RadioButtonPropTypes>(UI5RadioButton);
+const RadioButton: FC<RadioButtonPropTypes> = withWebComponent<RadioButtonPropTypes>(
+  'ui5-radiobutton',
+  ['name', 'text', 'value', 'valueState'],
+  ['disabled', 'readonly', 'selected', 'wrap'],
+  [],
+  ['select']
+);
 
 RadioButton.displayName = 'RadioButton';
 

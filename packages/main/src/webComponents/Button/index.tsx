@@ -1,10 +1,10 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Button from '@ui5/webcomponents/dist/Button';
+import '@ui5/webcomponents/dist/Button';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface ButtonPropTypes extends WithWebComponentPropTypes {
+export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
    * Defines the <code>ui5-button</code> design. <br><br> <b>Note:</b> Available options are "Default", "Emphasized", "Positive", "Negative", and "Transparent".
    */
@@ -15,8 +15,7 @@ export interface ButtonPropTypes extends WithWebComponentPropTypes {
   disabled?: boolean;
   /**
    * Defines the icon to be displayed as graphical element within the <code>ui5-button</code>. The SAP-icons font provides numerous options. <br><br> Example: <br> <pre>ui5-button icon="palette"</pre>
-
-   See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -42,7 +41,13 @@ export interface ButtonPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Button" target="_blank">UI5 Web Components Playground</a>
  */
-const Button: FC<ButtonPropTypes> = withWebComponent<ButtonPropTypes>(UI5Button);
+const Button: FC<ButtonPropTypes> = withWebComponent<ButtonPropTypes>(
+  'ui5-button',
+  ['design', 'icon'],
+  ['disabled', 'iconEnd', 'submits'],
+  [],
+  ['click']
+);
 
 Button.displayName = 'Button';
 
