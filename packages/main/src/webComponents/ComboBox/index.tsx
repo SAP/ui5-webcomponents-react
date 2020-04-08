@@ -21,7 +21,7 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
   /**
    * Indicates whether a loading indicator should be shown in the picker.
    */
-  loading?: unknown;
+  loading?: boolean;
   /**
    * Defines a short hint intended to aid the user with data entry when the <code>ui5-combobox</code> has no value.
    */
@@ -63,8 +63,8 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
  */
 const ComboBox: FC<ComboBoxPropTypes> = withWebComponent<ComboBoxPropTypes>(
   'ui5-combobox',
-  ['filter', 'filterValue', 'loading', 'placeholder', 'value', 'valueState'],
-  ['disabled', 'readonly', 'required'],
+  ['filter', 'filterValue', 'placeholder', 'value', 'valueState'],
+  ['disabled', 'loading', 'readonly', 'required'],
   [],
   ['change', 'input']
 );
