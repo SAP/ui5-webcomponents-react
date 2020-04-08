@@ -4,8 +4,8 @@ import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import { CSSProperties } from 'react';
 
 const getCellProps = (cellProps, { cell: { column }, instance }) => {
-  const lastColumnId = instance.columns[instance.columns.length - 1]?.id;
-  const columnIndex = instance.columns.findIndex(({ id }) => id === column.id);
+  const lastColumnId = instance.visibleColumns[instance.visibleColumns.length - 1]?.id;
+  const columnIndex = instance.visibleColumns.findIndex(({ id }) => id === column.id);
   const { classes } = instance.webComponentsReactProperties;
   const style: CSSProperties = {};
 

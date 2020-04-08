@@ -59,7 +59,8 @@ const styles = {
     position: 'relative',
     width: '100%',
     overflowX: 'hidden',
-    padding: `0 0.5rem`
+    padding: `0 0.5rem`,
+    boxSizing: 'border-box'
   },
   iconContainer: {
     display: 'inline-block',
