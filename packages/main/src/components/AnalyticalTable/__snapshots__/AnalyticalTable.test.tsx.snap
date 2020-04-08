@@ -4902,7 +4902,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             style="position: absolute; left: 0px; top: 0px; height: 44px; width: 100%;"
           >
             <div
-              aria-colindex="1"
+              aria-colindex="2"
               class="AnalyticalTable-tableCell-0"
               role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
@@ -4917,7 +4917,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               </span>
             </div>
             <div
-              aria-colindex="2"
+              aria-colindex="1"
               class="AnalyticalTable-tableCell-0"
               role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
@@ -4969,7 +4969,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             style="position: absolute; left: 0px; top: 44px; height: 44px; width: 100%;"
           >
             <div
-              aria-colindex="1"
+              aria-colindex="2"
               class="AnalyticalTable-tableCell-0"
               role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
@@ -4984,7 +4984,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               </span>
             </div>
             <div
-              aria-colindex="2"
+              aria-colindex="1"
               class="AnalyticalTable-tableCell-0"
               role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
@@ -5036,14 +5036,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             style="position: absolute; left: 0px; top: 88px; height: 44px; width: 100%;"
           >
             <div
-              aria-colindex="1"
+              aria-colindex="2"
               class="AnalyticalTable-tableCell-0"
               role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
               tabindex="-1"
             />
             <div
-              aria-colindex="2"
+              aria-colindex="1"
               class="AnalyticalTable-tableCell-0"
               role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
@@ -5071,14 +5071,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             style="position: absolute; left: 0px; top: 132px; height: 44px; width: 100%;"
           >
             <div
-              aria-colindex="1"
+              aria-colindex="2"
               class="AnalyticalTable-tableCell-0"
               role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
               tabindex="-1"
             />
             <div
-              aria-colindex="2"
+              aria-colindex="1"
               class="AnalyticalTable-tableCell-0"
               role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
@@ -5106,14 +5106,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             style="position: absolute; left: 0px; top: 176px; height: 44px; width: 100%;"
           >
             <div
-              aria-colindex="1"
+              aria-colindex="2"
               class="AnalyticalTable-tableCell-0"
               role="cell"
               style="position: absolute; top: 0px; left: 150px; width: 150px; align-items: center;"
               tabindex="-1"
             />
             <div
-              aria-colindex="2"
+              aria-colindex="1"
               class="AnalyticalTable-tableCell-0"
               role="cell"
               style="position: absolute; top: 0px; left: 0px; width: 150px; align-items: center;"
