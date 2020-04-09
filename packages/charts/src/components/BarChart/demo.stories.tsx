@@ -40,7 +40,7 @@ export default {
 };
 
 function Demo() {
-  const [full, setFull] = useState(true);
+  const [full, setFull] = useState(false);
 
   return (
     <div
