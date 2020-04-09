@@ -13,7 +13,7 @@ export const renderStory = () => (
   <VariantManagement
     style={{ width: '300px', height: 'auto' }}
     closeOnItemSelect={boolean('closeOnItemSelect', true)}
-    initialSelectedKey={text('initialSelectedKey', '2')}
+    selectedKey={text('selectedKey', '2')}
     variantItems={variantItems}
     onSelect={action('onSelect')}
     placement={select('Placement', PlacementType, PlacementType.Bottom)}

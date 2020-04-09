@@ -8,10 +8,10 @@ exports[`FilterBar Hide Filter Bar 1`] = `
     class="FilterBar-filterBarHeader-0"
   >
     <div
-      class="VariantManagement-VariantManagement-0"
+      class="VariantManagement-container-0"
     >
       <ui5-title
-        class="VariantManagement-VariantManagementText-0"
+        class="VariantManagement-title-0"
         level="H4"
       >
         Variant 1
@@ -20,46 +20,46 @@ exports[`FilterBar Hide Filter Bar 1`] = `
         design="Transparent"
         icon="navigation-down-arrow"
       />
+      <ui5-responsive-popover
+        header-text="Variants"
+        horizontal-align="Center"
+        initial-focus=""
+        placement-type="Bottom"
+        vertical-align="Center"
+      >
+        <ui5-button
+          class="VariantManagement-footer-0"
+          design="Emphasized"
+          icon=""
+          slot="footer"
+        >
+          Cancel
+        </ui5-button>
+        <ui5-list
+          footer-text=""
+          header-text=""
+          mode="SingleSelect"
+          no-data-text=""
+          separators="All"
+        >
+          <ui5-li
+            data-key="1"
+            selected="true"
+            style="width: 300px;"
+            type="Active"
+          >
+            Variant 1
+          </ui5-li>
+          <ui5-li
+            data-key="2"
+            style="width: 300px;"
+            type="Active"
+          >
+            Variant 2
+          </ui5-li>
+        </ui5-list>
+      </ui5-responsive-popover>
     </div>
-    <ui5-responsive-popover
-      header-text="Variants"
-      horizontal-align="Center"
-      initial-focus=""
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-button
-        class="VariantManagement-footer-0"
-        design="Emphasized"
-        icon=""
-        slot="footer"
-      >
-        Cancel
-      </ui5-button>
-      <ui5-list
-        footer-text=""
-        header-text=""
-        mode="SingleSelect"
-        no-data-text=""
-        separators="All"
-      >
-        <ui5-li
-          data-key="1"
-          selected="true"
-          style="width: 300px;"
-          type="Active"
-        >
-          Variant 1
-        </ui5-li>
-        <ui5-li
-          data-key="2"
-          style="width: 300px;"
-          type="Active"
-        >
-          Variant 2
-        </ui5-li>
-      </ui5-list>
-    </ui5-responsive-popover>
     <div
       class="FilterBar-headerRowRight-0"
     >
@@ -157,10 +157,10 @@ exports[`FilterBar Render without crashing 1`] = `
     class="FilterBar-filterBarHeader-0"
   >
     <div
-      class="VariantManagement-VariantManagement-0"
+      class="VariantManagement-container-0"
     >
       <ui5-title
-        class="VariantManagement-VariantManagementText-0"
+        class="VariantManagement-title-0"
         level="H4"
       >
         Variant 1
@@ -169,46 +169,46 @@ exports[`FilterBar Render without crashing 1`] = `
         design="Transparent"
         icon="navigation-down-arrow"
       />
+      <ui5-responsive-popover
+        header-text="Variants"
+        horizontal-align="Center"
+        initial-focus=""
+        placement-type="Bottom"
+        vertical-align="Center"
+      >
+        <ui5-button
+          class="VariantManagement-footer-0"
+          design="Emphasized"
+          icon=""
+          slot="footer"
+        >
+          Cancel
+        </ui5-button>
+        <ui5-list
+          footer-text=""
+          header-text=""
+          mode="SingleSelect"
+          no-data-text=""
+          separators="All"
+        >
+          <ui5-li
+            data-key="1"
+            selected="true"
+            style="width: 300px;"
+            type="Active"
+          >
+            Variant 1
+          </ui5-li>
+          <ui5-li
+            data-key="2"
+            style="width: 300px;"
+            type="Active"
+          >
+            Variant 2
+          </ui5-li>
+        </ui5-list>
+      </ui5-responsive-popover>
     </div>
-    <ui5-responsive-popover
-      header-text="Variants"
-      horizontal-align="Center"
-      initial-focus=""
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-button
-        class="VariantManagement-footer-0"
-        design="Emphasized"
-        icon=""
-        slot="footer"
-      >
-        Cancel
-      </ui5-button>
-      <ui5-list
-        footer-text=""
-        header-text=""
-        mode="SingleSelect"
-        no-data-text=""
-        separators="All"
-      >
-        <ui5-li
-          data-key="1"
-          selected="true"
-          style="width: 300px;"
-          type="Active"
-        >
-          Variant 1
-        </ui5-li>
-        <ui5-li
-          data-key="2"
-          style="width: 300px;"
-          type="Active"
-        >
-          Variant 2
-        </ui5-li>
-      </ui5-list>
-    </ui5-responsive-popover>
     <div
       class="FilterBar-vLine-0"
     >
@@ -297,10 +297,10 @@ exports[`FilterBar Select Filter Item 1`] = `
     class="FilterBar-filterBarHeader-0"
   >
     <div
-      class="VariantManagement-VariantManagement-0"
+      class="VariantManagement-container-0"
     >
       <ui5-title
-        class="VariantManagement-VariantManagementText-0"
+        class="VariantManagement-title-0"
         level="H4"
       >
         Variant 1
@@ -309,46 +309,46 @@ exports[`FilterBar Select Filter Item 1`] = `
         design="Transparent"
         icon="navigation-down-arrow"
       />
+      <ui5-responsive-popover
+        header-text="Variants"
+        horizontal-align="Center"
+        initial-focus=""
+        placement-type="Bottom"
+        vertical-align="Center"
+      >
+        <ui5-button
+          class="VariantManagement-footer-0"
+          design="Emphasized"
+          icon=""
+          slot="footer"
+        >
+          Cancel
+        </ui5-button>
+        <ui5-list
+          footer-text=""
+          header-text=""
+          mode="SingleSelect"
+          no-data-text=""
+          separators="All"
+        >
+          <ui5-li
+            data-key="1"
+            selected="true"
+            style="width: 300px;"
+            type="Active"
+          >
+            Variant 1
+          </ui5-li>
+          <ui5-li
+            data-key="2"
+            style="width: 300px;"
+            type="Active"
+          >
+            Variant 2
+          </ui5-li>
+        </ui5-list>
+      </ui5-responsive-popover>
     </div>
-    <ui5-responsive-popover
-      header-text="Variants"
-      horizontal-align="Center"
-      initial-focus=""
-      placement-type="Bottom"
-      vertical-align="Center"
-    >
-      <ui5-button
-        class="VariantManagement-footer-0"
-        design="Emphasized"
-        icon=""
-        slot="footer"
-      >
-        Cancel
-      </ui5-button>
-      <ui5-list
-        footer-text=""
-        header-text=""
-        mode="SingleSelect"
-        no-data-text=""
-        separators="All"
-      >
-        <ui5-li
-          data-key="1"
-          selected="true"
-          style="width: 300px;"
-          type="Active"
-        >
-          Variant 1
-        </ui5-li>
-        <ui5-li
-          data-key="2"
-          style="width: 300px;"
-          type="Active"
-        >
-          Variant 2
-        </ui5-li>
-      </ui5-list>
-    </ui5-responsive-popover>
     <div
       class="FilterBar-headerRowRight-0"
     >
