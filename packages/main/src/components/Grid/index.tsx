@@ -52,10 +52,6 @@ export interface GridPropTypes extends CommonProps {
    */
   defaultIndent?: string;
   /**
-   * If true then not the media Query ( device screen size), but the size of the container surrounding the grid defines the current range (large, medium or small).
-   */
-  containerQuery?: boolean;
-  /**
    * Components that are placed into Grid layout.
    */
   children: ReactNode | ReactNodeArray;
@@ -186,8 +182,7 @@ Grid.defaultProps = {
   hSpacing: 1,
   position: GridPosition.Left,
   defaultSpan: 'XL3 L3 M6 S12',
-  defaultIndent: 'XL0 L0 M0 S0',
-  containerQuery: false
+  defaultIndent: 'XL0 L0 M0 S0'
 };
 
 export { Grid };
