@@ -2,6 +2,7 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
+import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
 import React, {
   Children,
   CSSProperties,
@@ -15,12 +16,6 @@ import React, {
 } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { GridClasses } from './Grid.jss';
-
-export enum GridPosition {
-  Left = 'Left',
-  Center = 'Center',
-  Right = 'Right'
-}
 
 export interface GridPropTypes extends CommonProps {
   /**
