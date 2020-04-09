@@ -14,10 +14,9 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "sideEffects": [
-    "**/modernizr.js",
+    "**/modernizr",
     "core-js/**/*",
-    "./src/polyfill/*.ts",
-    "./polyfill/*.js",
+    "**/polyfill/*",
     "intersection-observer",
     "proxy-polyfill/*"
   ],

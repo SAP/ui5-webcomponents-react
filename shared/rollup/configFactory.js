@@ -55,11 +55,9 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       const containsThisModule = (pkg) => id === pkg || id.startsWith(pkg + '/');
       return externalModules.some(containsThisModule);
     },
-    treeshake: file.includes('Device')
-      ? false
-      : {
-          moduleSideEffects: (id) => micromatch.isMatch(id, packageJson.sideEffects)
-        },
+    treeshake: {
+      moduleSideEffects: (id) => micromatch.isMatch(id, packageJson.sideEffects)
+    },
     output: [
       {
         file: path.resolve(
