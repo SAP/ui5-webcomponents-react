@@ -6,7 +6,7 @@ exports[`Grid Custom Class Names and Styling 1`] = `
   style="width: 60%; background-color: purple;"
 >
   <div
-    class="Grid-gridSpan-0"
+    class="Grid-gridSpan-0 Grid-gridSpan3-0"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -29,7 +29,7 @@ exports[`Grid Grid Position Center 1`] = `
   class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0 Grid-gridPositionCenter-0"
 >
   <div
-    class="Grid-gridSpan-0"
+    class="Grid-gridSpan-0 Grid-gridSpan3-0"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -52,7 +52,7 @@ exports[`Grid Grid Position Right 1`] = `
   class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0 Grid-gridPositionRight-0"
 >
   <div
-    class="Grid-gridSpan-0"
+    class="Grid-gridSpan-0 Grid-gridSpan3-0"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -75,7 +75,7 @@ exports[`Grid Renders Children 1`] = `
   class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
 >
   <div
-    class="Grid-gridSpan-0"
+    class="Grid-gridSpan-0 Grid-gridSpan3-0"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -98,7 +98,7 @@ exports[`Grid Renders Children with custom layout data 1`] = `
   class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
 >
   <div
-    class="Grid-gridSpan-0"
+    class="Grid-gridSpan-0 Grid-gridSpan12-0"
   >
     <div
       data-layout="[object Object]"
@@ -106,7 +106,7 @@ exports[`Grid Renders Children with custom layout data 1`] = `
     />
   </div>
   <div
-    class="Grid-gridSpan-0"
+    class="Grid-gridSpan-0 Grid-gridSpan3-0 Grid-gridIndent1-0"
   >
     <div
       data-layout="[object Object]"
