@@ -248,15 +248,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     });
   }, []);
 
-  // @ts-ignore
-  const tableWidthObserver = useRef(new ResizeObserver(updateTableClientWidth));
-
   useEffect(() => {
-    tableWidthObserver.current.observe(tableRef.current);
+    // @ts-ignore
+    const tableWidthObserver = new ResizeObserver(updateTableClientWidth);
+    tableWidthObserver.observe(tableRef.current);
     return () => {
-      tableWidthObserver.current.disconnect();
+      tableWidthObserver.disconnect();
     };
-  }, [tableWidthObserver.current, tableRef.current]);
+  }, [updateTableClientWidth]);
 
   useEffect(() => {
     dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
