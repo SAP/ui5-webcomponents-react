@@ -23,23 +23,13 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
     children
   } = props;
 
-  const internalStyles = useMemo(() => {
-    const styles: CSSProperties = {};
-    styles.fontSize = ThemingParameters.sapFontSmallSize;
-
-    if (width) {
-      styles.width = width;
-    }
-
-    if (height) {
-      styles.height = height;
-    }
-
-    if (style) {
-      Object.assign(styles, style);
-    }
-
-    return styles;
+  const internalStyles: CSSProperties = useMemo(() => {
+    return {
+      fontSize: ThemingParameters.sapFontSmallSize,
+      width: '100%',
+      height: '400px',
+      ...(style ?? {})
+    };
   }, [style, width, height]);
 
   return (

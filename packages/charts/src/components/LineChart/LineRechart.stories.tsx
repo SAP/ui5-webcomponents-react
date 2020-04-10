@@ -14,8 +14,18 @@ export const renderStory = () => {
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
-      width={'100%'}
-      height={'60vh'}
+      style={{ height: '60vh' }}
+      elements={[
+        {
+          accessor: 'users'
+        },
+        {
+          accessor: 'sessions'
+        },
+        {
+          accessor: 'volume'
+        }
+      ]}
     />
   );
 };

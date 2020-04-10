@@ -18,11 +18,14 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import { ChartElement } from '../../interfaces/ChartElement';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
 
-type LineChartProps = RechartBaseProps;
+interface LineChartProps extends RechartBaseProps {
+  elements: ChartElement[];
+}
 
 /**
  * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/next/LineChart';</code>
@@ -30,21 +33,15 @@ type LineChartProps = RechartBaseProps;
  */
 const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
-    color,
+    elements,
+    dataset,
     loading,
     labelKey = 'name',
     secondaryDimensionKey,
-    width = '100%',
-    height = '500px',
-    dataset,
-    dataKeys,
     noLegend = false,
     onDataPointClick,
     onLegendClick,
-    labels,
     axisInterval,
-    valueFormatter = (el) => el,
-    labelFormatter = (el) => el,
     dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
@@ -81,6 +78,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const chartRef = useConsolidatedRef<any>(ref);
 
+  const dataKeys = elements.map(({ accessor }) => accessor);
   const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, secondaryDimensionKey);
 
   const colorSecondY = useMemo(
@@ -106,6 +104,9 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     [onDataPointClick]
   );
 
+  const labelFormatter = elements[0]?.labelFormatter ?? ((e) => e);
+  const valueFormatter = elements[0]?.valueFormatter ?? ((e) => e);
+
   const LineDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, labelFormatter, false, false, true);
 
   const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
@@ -128,8 +129,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       dataset={dataset}
       loading={loading}
       placeholder={LineChartPlaceholder}
-      width={width}
-      height={height}
       ref={chartRef}
       style={style}
       className={className}
@@ -171,16 +170,16 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             interval={0}
           />
         )}
-        {currentDataKeys.map((key, index) => (
+        {elements.map((element, index) => (
           <Line
-            yAxisId={chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === key ? 'right' : 'left'}
-            key={key}
-            name={labels?.[key] || key}
+            yAxisId={chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === element.accessor ? 'right' : 'left'}
+            key={element.accessor}
+            name={element.label ?? element.accessor}
             strokeOpacity={chartConfig.strokeOpacity}
             label={bigDataSet ? false : LineDataLabel}
             type="monotone"
-            dataKey={key}
-            stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
+            dataKey={element.accessor}
+            stroke={element.color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             strokeWidth={chartConfig.strokeWidth}
             activeDot={{ onClick: onDataPointClickInternal }}
           />
