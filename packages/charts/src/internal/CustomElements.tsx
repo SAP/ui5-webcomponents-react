@@ -6,11 +6,12 @@ let globalRotate = false;
 export const XAxisTicks = (props, formatter, unit = '', rotate) => {
   const { x, y, payload } = props;
   globalRotate = !!rotate;
+  const formattedValue = formatter(payload.value);
   const tickValue = rotate
-    ? formatter(payload.value).length > 10
-      ? `${formatter(payload.value).slice(0, 8)}...`
-      : formatter(payload.value)
-    : formatter(payload.value);
+    ? formattedValue.length > 10
+      ? `${formattedValue.slice(0, 8)}...`
+      : formattedValue
+    : formattedValue;
   return (
     <g transform={`translate(${x},${y + 10})`}>
       <text
@@ -26,8 +27,8 @@ export const XAxisTicks = (props, formatter, unit = '', rotate) => {
 
 export const YAxisTicks = (props, formatter, unit = '') => {
   const { x, y, payload } = props;
-  const tickValue =
-    formatter(payload.value).length > 10 ? `${formatter(payload.value).slice(0, 13)}...` : formatter(payload.value);
+  const formattedValue = formatter(payload.value);
+  const tickValue = formattedValue.length > 10 ? `${formattedValue.slice(0, 13)}...` : formattedValue;
   return (
     <g transform={`translate(${x},${y + 3})`}>
       <text fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'end'}>

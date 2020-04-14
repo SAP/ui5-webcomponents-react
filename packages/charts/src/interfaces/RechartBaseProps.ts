@@ -64,3 +64,54 @@ export interface RechartBaseProps extends ChartContainerProps {
     };
   };
 }
+
+export interface RechartBasePropsNew extends ChartContainerProps {
+  noLegend?: boolean;
+  onDataPointClick?: (event: CustomEvent) => void;
+  onLegendClick?: (event: CustomEvent) => void;
+
+  DataLabel?: JSX.Element;
+
+  chartConfig?: {
+    margin?: {
+      right: number;
+      left: number;
+      top: number;
+      bottom: number;
+    };
+
+    yAxisVisible?: boolean;
+    xAxisVisible?: boolean;
+
+    gridStroke?: string;
+    gridVertical?: boolean;
+    gridHorizontal?: boolean;
+    legendPosition?: string;
+    zoomingTool?: boolean;
+
+    strokeOpacity?: number;
+    strokeWidth?: number;
+
+    stacked?: boolean;
+    barSize?: string | number;
+    barGap?: number;
+    fillOpacity?: number;
+
+    paddingAngle?: number;
+    innerRadius?: string;
+
+    polarGridType?: string;
+
+    secondYAxis?: {
+      dataKey: string;
+      name?: string;
+      color?: string;
+    };
+
+    referenceLine?: {
+      label: string;
+      value: number;
+      color: string;
+    };
+  };
+}

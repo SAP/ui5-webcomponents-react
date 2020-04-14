@@ -1,4 +1,5 @@
 import { action } from '@storybook/addon-actions';
+import { boolean } from '@storybook/addon-knobs';
 import { LineChart } from '@ui5/webcomponents-react-charts/lib/next/LineChart';
 import React from 'react';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
@@ -11,16 +12,27 @@ export default {
 export const renderStory = () => {
   return (
     <LineChart
+      loading={boolean('loading', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
       style={{ height: '60vh' }}
-      elements={[
+      labels={[
         {
-          accessor: 'users'
+          accessor: 'name',
+          formatter: (d) => `${d} (label)`,
+          interval: 0
+        }
+      ]}
+      values={[
+        {
+          accessor: 'users',
+          formatter: (val) => `${val}🎉`,
+          color: 'pink'
         },
         {
-          accessor: 'sessions'
+          accessor: 'sessions',
+          hideDataLabel: true
         },
         {
           accessor: 'volume'
