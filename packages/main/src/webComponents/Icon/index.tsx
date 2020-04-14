@@ -33,6 +33,8 @@ const Icon: FC<IconPropTypes> = withWebComponent<IconPropTypes>(
 
 Icon.displayName = 'Icon';
 
+Icon.displayName = 'Icon';
+
 Icon.defaultProps = {
   accessibleName: '',
   name: '',

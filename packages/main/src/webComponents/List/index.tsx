@@ -79,6 +79,8 @@ const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
 
 List.displayName = 'List';
 
+List.displayName = 'List';
+
 List.defaultProps = {
   busy: false,
   footerText: '',
