@@ -1,16 +1,9 @@
-#! /bin/bash
+#!/bin/bash
 
-CURRENT_LERNA_VERSION=$(node -p -e "require('./lerna.json').version")
-IS_IN_RC_STATUS=$(echo "${CURRENT_LERNA_VERSION}" | awk '/rc\.[0-9]+$/')
+git_hash=$(git rev-parse --short "$GITHUB_SHA")
 
-if [ ! -z "${IS_IN_RC_STATUS}" ]
-then
-  echo "Current Version is already in release candidate status. Skipping snapshot release."
-  exit 0
-fi
-
-${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish prerelease \
-  --canary \
-  --conventional-prerelease \
+${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish "0.0.0-${git_hash}" \
+  --no-push \
+  --no-git-tag-version \
   --dist-tag dev \
-  --preid dev
+
