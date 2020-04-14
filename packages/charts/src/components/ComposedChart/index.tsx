@@ -70,14 +70,16 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     secondaryDimensionKey,
     onDataPointClick,
     noLegend = false,
-    xAxisFormatter = (el) => el,
-    yAxisFormatter = (el) => el,
-
+    labels,
+    axisInterval,
+    valueFormatter = (el) => el,
+    labelFormatter = (el) => el,
     defaults = {
-      barSize: 20,
+      barSize: undefined,
       barGap: 3,
       lineType: 'monotone',
-      dataLabelFormatter: (d) => d,
+      xAxisFormatter: (d) => d,
+      yAxisFormatter: (d) => d,
       dataLabelCustomElement: undefined,
       label: { position: 'top' },
       stackId: undefined
@@ -97,8 +99,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       yAxisColor: ThemingParameters.sapList_BorderColor,
       legendPosition: 'top',
       zoomingTool: false,
-      dataLabel: false,
-      barSize: undefined,
+      dataLabel: true,
+      barSize: 20,
       barGap: undefined,
       secondYAxis: {
         name: undefined,
@@ -164,24 +166,30 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     [elements]
   );
 
-  const ComposedDataLabel = useDataLabel(
-    chartConfig.dataLabel,
-    defaults.dataLabelCustomElement,
-    defaults.dataLabelFormatter,
-    defaults.stackId
-  );
+  const ComposedDataLabel = (noSizeCheck) =>
+    useDataLabel(
+      chartConfig.dataLabel,
+      defaults.dataLabelCustomElement,
+      labelFormatter,
+      defaults.stackId,
+      false,
+      noSizeCheck
+    );
 
-  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
   const marginChart = useChartMargin(
     dataset,
-    yAxisFormatter,
+    labelFormatter,
     labelKey,
     chartConfig.margin,
     false,
-    secondaryDimensionKey
+    secondaryDimensionKey,
+    chartConfig.zoomingTool
   );
+
+  const bigDataSet = dataset?.length > 30 ?? false;
 
   return (
     <ChartContainer
@@ -204,7 +212,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         />
         {(chartConfig.xAxisVisible ?? true) && (
           <XAxis
-            interval={0}
+            interval={axisInterval ?? bigDataSet ? 2 : 0}
             dataKey={labelKey}
             tick={XAxisLabel}
             padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
@@ -226,7 +234,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           unit={chartConfig.yAxisUnit}
           tickLine={false}
           yAxisId="left"
-          tickFormatter={yAxisFormatter}
+          tickFormatter={labelFormatter}
           interval={0}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
@@ -239,26 +247,13 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             interval={0}
           />
         )}
-        <Tooltip />
-        {!noLegend && (
-          <Legend
-            onClick={onItemLegendClick}
-            verticalAlign={chartConfig.legendPosition ?? 'top'}
-            wrapperStyle={{
-              paddingBottom: 20
-            }}
-          />
-        )}
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
+        {!noLegend && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition ?? 'top'} />}
         {elements?.map((config, index) => {
-          const {
-            type,
-            accessor,
-            color,
-            lineType,
-            dataLabelFormatter,
-            dataLabelCustomElement,
-            ...safeProps
-          } = mergeWithDefaults(config, defaults);
+          const { type, accessor, color, lineType, dataLabelCustomElement, ...safeProps } = mergeWithDefaults(
+            config,
+            defaults
+          );
           const ChartElement = (ChartTypes[type] as any) as FC<any>;
           const yAxisId = chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === accessor ? 'right' : 'left';
 
@@ -270,7 +265,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.activeDot = {
                 onClick: onDataPointClickInternal
               };
-              chartElementProps.label = ComposedDataLabel;
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel(true);
               chartElementProps.type = lineType;
               break;
             case 'bar':
@@ -279,18 +274,25 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.stackId = config.stackId ?? undefined;
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = ComposedDataLabel;
+              chartElementProps.label = ComposedDataLabel(false);
               break;
             case 'area':
               chartElementProps.type = 'monotone';
               chartElementProps.fillOpacity = 0.3;
               chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = ComposedDataLabel;
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel(true);
               break;
           }
           return (
-            <ChartElement key={index} dataKey={accessor} yAxisId={yAxisId} {...safeProps} {...chartElementProps} />
+            <ChartElement
+              key={accessor}
+              name={labels?.[accessor] || accessor}
+              dataKey={accessor}
+              yAxisId={yAxisId}
+              {...safeProps}
+              {...chartElementProps}
+            />
           );
         })}
         {chartConfig.zoomingTool && (

@@ -1,6 +1,6 @@
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5BusyIndicator from '@ui5/webcomponents/dist/BusyIndicator';
+import '@ui5/webcomponents/dist/BusyIndicator';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -24,7 +24,13 @@ export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/BusyIndicator" target="_blank">UI5 Web Components Playground</a>
  */
-const BusyIndicator: FC<BusyIndicatorPropTypes> = withWebComponent<BusyIndicatorPropTypes>(UI5BusyIndicator);
+const BusyIndicator: FC<BusyIndicatorPropTypes> = withWebComponent<BusyIndicatorPropTypes>(
+  'ui5-busyindicator',
+  ['size'],
+  ['active'],
+  [],
+  []
+);
 
 BusyIndicator.displayName = 'BusyIndicator';
 

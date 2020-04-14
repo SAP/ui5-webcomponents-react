@@ -1,14 +1,13 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5TimelineItem from '@ui5/webcomponents/dist/TimelineItem';
+import '@ui5/webcomponents/dist/TimelineItem';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   /**
- * Defines the icon to be displayed as graphical element within the <code>ui5-timeline-item</code>. SAP-icons font provides numerous options. <br><br>
-
-See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
- */
+   * Defines the icon to be displayed as graphical element within the <code>ui5-timeline-item</code>. SAP-icons font provides numerous options. <br><br>
+   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   */
   icon?: string;
   /**
    * Defines the name of the item.
@@ -41,7 +40,13 @@ See all the available icons in the <ui5-link target="_blank" href="https://openu
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</a>
  */
-const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPropTypes>(UI5TimelineItem);
+const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPropTypes>(
+  'ui5-timeline-item',
+  ['icon', 'itemName', 'subtitleText', 'titleText'],
+  ['itemNameClickable'],
+  [],
+  ['itemNameClick']
+);
 
 TimelineItem.displayName = 'TimelineItem';
 

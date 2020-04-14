@@ -1,7 +1,6 @@
 const bundleTypes = {
   NODE_DEV: 'NODE_DEV',
-  NODE_PROD: 'NODE_PROD',
-  NODE_ES: 'NODE_ES'
+  NODE_PROD: 'NODE_PROD'
 };
 
 const bundles = [

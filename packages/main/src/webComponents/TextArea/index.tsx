@@ -1,9 +1,9 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5TextArea from '@ui5/webcomponents/dist/TextArea';
+import '@ui5/webcomponents/dist/TextArea';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface TextAreaPropTypes extends WithWebComponentPropTypes {
+export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
    * Indicates whether the user can interact with the component or not. <br><br> <b>Note:</b> Disabled components cannot be focused and they are out of the tab chain.
    */
@@ -67,7 +67,13 @@ export interface TextAreaPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TextArea" target="_blank">UI5 Web Components Playground</a>
  */
-const TextArea: FC<TextAreaPropTypes> = withWebComponent<TextAreaPropTypes>(UI5TextArea);
+const TextArea: FC<TextAreaPropTypes> = withWebComponent<TextAreaPropTypes>(
+  'ui5-textarea',
+  ['growingMaxLines', 'maxlength', 'name', 'placeholder', 'rows', 'value'],
+  ['disabled', 'growing', 'readonly', 'required', 'showExceededText'],
+  [],
+  ['change', 'input']
+);
 
 TextArea.displayName = 'TextArea';
 

@@ -14,9 +14,8 @@ export const renderStory = () => {
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
-      width={'95%'}
-      height={'40vh'}
-      loading={true}
+      width={'100%'}
+      height={'60vh'}
     />
   );
 };
@@ -90,23 +89,17 @@ renderLabelStory.story = {
   name: 'With data labels'
 };
 
-const customDataLabel = () => {
-  return <text fontSize={20}></text>;
-};
-
 export const renderCustomDataLabelStory = () => {
   return (
     <LineChart
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       labelKey={'name'}
+      labels={{ users: 'number of users' }}
       dataset={complexDataSet}
       width={'95%'}
       height={'40vh'}
       noLegend={false}
-      loading={true}
-      dataLabelFormatter={(d) => (d > 500 ? '😍' : '🤔')}
-      dataLabelCustomElement={customDataLabel()}
       yAxisFormatter={(element: number) => `${element / 10}`}
       xAxisFormatter={(element: string) => element.slice(0, 3)}
       chartConfig={{

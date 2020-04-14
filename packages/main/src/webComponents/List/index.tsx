@@ -1,7 +1,7 @@
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5List from '@ui5/webcomponents/dist/List';
+import '@ui5/webcomponents/dist/List';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -69,7 +69,15 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</a>
  */
-const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(UI5List);
+const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
+  'ui5-list',
+  ['footerText', 'headerText', 'mode', 'noDataText', 'separators'],
+  ['busy', 'infiniteScroll', 'inset'],
+  ['header'],
+  ['itemClick', 'itemDelete', 'loadMore', 'selectionChange']
+);
+
+List.displayName = 'List';
 
 List.displayName = 'List';
 

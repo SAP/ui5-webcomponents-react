@@ -3,7 +3,7 @@ const babel = require('rollup-plugin-babel');
 const path = require('path');
 const fs = require('fs');
 const json = require('@rollup/plugin-json');
-const escapeStringRegexp = require('escape-string-regexp');
+const micromatch = require('micromatch');
 const PATHS = require('../../config/paths');
 const { highlightLog } = require('../utils');
 const { asyncCopyTo } = require('../../scripts/utils');
@@ -28,24 +28,18 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     })
   ];
 
-  const pkg = require(path.resolve(PATHS.packages, pkgName, 'package.json'));
-  const externalModules = [
-    ...new Set([
+  const packageJson = require(path.resolve(PATHS.packages, pkgName, 'package.json'));
+  const externalModules = Array.from(
+    new Set([
       'react',
       'react-dom',
       'react-jss',
-      pkg.name,
-      ...Object.keys(pkg.dependencies || {}),
-      ...Object.keys(pkg.peerDependencies || {}),
+      packageJson.name,
+      ...Object.keys(packageJson.dependencies || {}),
+      ...Object.keys(packageJson.peerDependencies || {}),
       ...externals
     ])
-  ];
-  const expression = externalModules
-    .map(escapeStringRegexp)
-    .map((str) => `^${str}`)
-    .join('|');
-  const EXTERNAL_MODULE_REGEX = new RegExp(expression);
-  console.log(EXTERNAL_MODULE_REGEX);
+  );
 
   highlightLog(`Build lib folder for ${pkgName}`);
 
@@ -57,7 +51,13 @@ const rollupConfigFactory = (pkgName, externals = []) => {
 
   return allLibFiles.map((file) => ({
     input: file,
-    external: (id) => EXTERNAL_MODULE_REGEX.test(id),
+    external: (id) => {
+      const containsThisModule = (pkg) => id === pkg || id.startsWith(pkg + '/');
+      return externalModules.some(containsThisModule);
+    },
+    treeshake: {
+      moduleSideEffects: (id) => micromatch.isMatch(id, packageJson.sideEffects)
+    },
     output: [
       {
         file: path.resolve(

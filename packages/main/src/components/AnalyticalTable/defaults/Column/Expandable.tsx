@@ -1,6 +1,7 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import React, { CSSProperties } from 'react';
 
 const tableGroupExpandCollapseIcon = {
@@ -32,13 +33,15 @@ export const Expandable = (props) => {
     row,
     column,
     columns,
-    webComponentsReactProperties: { selectionMode, noSelectionColumn }
+    webComponentsReactProperties: { selectionMode, selectionBehavior }
   } = props;
 
   const tableColumns =
-    selectionMode === TableSelectionMode.NONE || noSelectionColumn
+    selectionMode === TableSelectionMode.NONE || selectionBehavior === TableSelectionBehavior.ROW_ONLY
       ? columns
-      : columns.filter(({ id }) => id !== '__ui5wcr__internal_selection_column' && id !== '__ui5wcr__internal_highlight_column');
+      : columns.filter(
+          ({ id }) => id !== '__ui5wcr__internal_selection_column' && id !== '__ui5wcr__internal_highlight_column'
+        );
 
   const columnIndex = tableColumns.findIndex((col) => col.id === column.id);
 

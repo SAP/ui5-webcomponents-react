@@ -1,3 +1,3 @@
-import { GridPosition } from '../components/Grid';
+import { GridPosition } from '../enums/GridPosition';
 
 export { GridPosition };

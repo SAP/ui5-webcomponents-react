@@ -11,10 +11,11 @@ export interface RechartBaseProps extends ChartContainerProps {
   onLegendClick?: (event: CustomEvent) => void;
   color?: string;
   colors?: CSSProperties['color'][];
+  labels?: { [key: string]: string };
 
-  yAxisFormatter?: (el) => void;
-  xAxisFormatter?: (el) => void;
-  dataLabelFormatter?: (d: number) => void;
+  axisInterval?: number;
+  labelFormatter?: (el) => void;
+  valueFormatter?: (el) => void;
   dataLabelCustomElement?: JSX.Element;
 
   chartConfig?: {

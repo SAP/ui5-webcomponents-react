@@ -2,7 +2,7 @@
 
 exports[`ObjectPage IconTabBar Mode 1`] = `
 <div
-  class="ObjectPage-objectPage-0 ObjectPage-iconTabBarMode-0"
+  class="ObjectPage-objectPage-0 sapScrollBar ObjectPage-iconTabBarMode-0"
   data-component-name="ObjectPage"
 >
   <header
@@ -196,7 +196,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
 
 exports[`ObjectPage Just Some Sections 1`] = `
 <div
-  class="ObjectPage-objectPage-0 ObjectPage-iconTabBarMode-0"
+  class="ObjectPage-objectPage-0 sapScrollBar ObjectPage-iconTabBarMode-0"
   data-component-name="ObjectPage"
 >
   <header
@@ -312,7 +312,7 @@ exports[`ObjectPage Just Some Sections 1`] = `
 
 exports[`ObjectPage Key Infos 1`] = `
 <div
-  class="ObjectPage-objectPage-0"
+  class="ObjectPage-objectPage-0 sapScrollBar"
   data-component-name="ObjectPage"
 >
   <header
@@ -521,7 +521,7 @@ exports[`ObjectPage Key Infos 1`] = `
 
 exports[`ObjectPage No Header 1`] = `
 <div
-  class="ObjectPage-objectPage-0 ObjectPage-noHeader-0"
+  class="ObjectPage-objectPage-0 sapScrollBar ObjectPage-noHeader-0"
   data-component-name="ObjectPage"
 >
   <header
@@ -660,7 +660,7 @@ exports[`ObjectPage No Header 1`] = `
 
 exports[`ObjectPage Not crashing with 0 sections 1`] = `
 <div
-  class="ObjectPage-objectPage-0 ObjectPage-iconTabBarMode-0"
+  class="ObjectPage-objectPage-0 sapScrollBar ObjectPage-iconTabBarMode-0"
   data-component-name="ObjectPage"
 >
   <header
@@ -735,7 +735,7 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
 
 exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
 <div
-  class="ObjectPage-objectPage-0"
+  class="ObjectPage-objectPage-0 sapScrollBar"
   data-component-name="ObjectPage"
 >
   <header
@@ -843,7 +843,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
 
 exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
 <div
-  class="ObjectPage-objectPage-0 ObjectPage-iconTabBarMode-0"
+  class="ObjectPage-objectPage-0 sapScrollBar ObjectPage-iconTabBarMode-0"
   data-component-name="ObjectPage"
 >
   <header
@@ -951,7 +951,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
 
 exports[`ObjectPage Only Sections 1`] = `
 <div
-  class="ObjectPage-objectPage-0"
+  class="ObjectPage-objectPage-0 sapScrollBar"
   data-component-name="ObjectPage"
 >
   <header
@@ -1181,7 +1181,7 @@ exports[`ObjectPage Only Sections 1`] = `
 
 exports[`ObjectPage Set selected section id 1`] = `
 <div
-  class="ObjectPage-objectPage-0 ObjectPage-iconTabBarMode-0"
+  class="ObjectPage-objectPage-0 sapScrollBar ObjectPage-iconTabBarMode-0"
   data-component-name="ObjectPage"
 >
   <header
@@ -1297,7 +1297,7 @@ exports[`ObjectPage Set selected section id 1`] = `
 
 exports[`ObjectPage With Subsections 1`] = `
 <div
-  class="ObjectPage-objectPage-0"
+  class="ObjectPage-objectPage-0 sapScrollBar"
   data-component-name="ObjectPage"
 >
   <header

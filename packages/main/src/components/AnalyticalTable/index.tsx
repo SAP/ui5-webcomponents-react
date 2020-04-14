@@ -1,10 +1,10 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
-import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
 import React, {
   ComponentType,
   FC,
@@ -19,7 +19,6 @@ import React, {
   useRef
 } from 'react';
 import {
-  Column,
   PluginHook,
   useAbsoluteLayout,
   useColumnOrder,
@@ -31,7 +30,7 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
+import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
 import { ColumnHeader } from './ColumnHeader';
@@ -39,11 +38,11 @@ import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
-import { useColumnsDependencies } from './hooks/useColumnsDependencies';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
-import { useRowHighlight } from "./hooks/useRowHighlight";
+import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
+import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
 import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
@@ -56,25 +55,11 @@ import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
 
-export interface ColumnConfiguration extends Column {
-  accessor?: string;
-  width?: number;
-  hAlign?: TextAlign;
-  vAlign?: VerticalAlign;
-  canResize?: boolean;
-  minWidth?: number;
-
-  [key: string]: any;
-}
-
 export interface TableProps extends CommonProps {
   /**
-   * In addition to the standard 'react-table' column config you can pass the properties 'hAlign' and 'vAlign'.
-   * These will align the text inside the column accordingly.
-   * values for hAlign: Begin | End | Left | Right | Center | Initial (default)
-   * values for vAlign: Bottom | Middle | Top | Inherit (default)
+   * Please look at the [AnalyticalTableColumnDefinition interface](https://github.com/SAP/ui5-webcomponents-react/blob/master/packages/main/src/interfaces/AnalyticalTableColumnDefinition.ts) for a full list of options.
    */
-  columns: ColumnConfiguration[];
+  columns: AnalyticalTableColumnDefinition[];
   data: object[];
 
   /**
@@ -95,7 +80,6 @@ export interface TableProps extends CommonProps {
   noDataText?: string;
   rowHeight?: number;
   alternateRowColor?: boolean;
-  noSelectionColumn?: boolean;
   withRowHighlight?: boolean;
   highlightField?: string;
 
@@ -104,9 +88,12 @@ export interface TableProps extends CommonProps {
   sortable?: boolean;
   groupable?: boolean;
   groupBy?: string[];
+  selectionBehavior?: TableSelectionBehavior;
   selectionMode?: TableSelectionMode;
   scaleWidthMode?: TableScaleWidthMode;
   columnOrder?: object[];
+  infiniteScroll?: boolean;
+  infiniteScrollThreshold?: number;
 
   // events
 
@@ -115,6 +102,7 @@ export interface TableProps extends CommonProps {
   onRowSelected?: (e?: CustomEvent<{ allRowsSelected?: boolean; row?: unknown; isSelected?: boolean }>) => any;
   onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => any;
   onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
+  onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
   /**
    * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api/useTable.md#table-options)
    */
@@ -126,7 +114,6 @@ export interface TableProps extends CommonProps {
   overscanCount?: number;
 
   // default components
-
   NoDataComponent?: ComponentType<any>;
   LoadingComponent?: ComponentType<any>;
 }
@@ -147,7 +134,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     loading,
     groupBy,
     selectionMode,
+    selectionBehavior,
     onRowSelected,
+    onSort,
     reactTableOptions,
     tableHooks,
     busyIndicatorEnabled,
@@ -165,9 +154,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     alternateRowColor,
     overscanCount,
     scaleWidthMode,
-    noSelectionColumn,
     withRowHighlight,
-    highlightField = 'status'
+    highlightField = 'status',
+    groupable,
+    sortable,
+    filterable,
+    infiniteScroll,
+    infiniteScrollThreshold = 20,
+    onLoadMore
   } = props;
 
   const classes = useStyles({ rowHeight: props.rowHeight });
@@ -206,8 +200,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       orderByFn,
       getSubRows,
       stateReducer,
+      disableFilters: !filterable,
+      disableSortBy: !sortable,
+      disableGroupBy: !groupable,
       webComponentsReactProperties: {
+        tableRef,
         selectionMode,
+        selectionBehavior,
         classes,
         onRowSelected,
         onRowExpandChange,
@@ -215,7 +214,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         alternateRowColor,
         scaleWidthMode,
         loading,
-        noSelectionColumn,
         withRowHighlight,
         highlightField
       },
@@ -234,9 +232,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useTableHeaderStyling,
     useTableRowStyling,
     useRowSelectionColumn,
+    useSingleRowStateSelection,
     useRowHighlight,
     useDynamicColumnWidths,
-    useColumnsDependencies,
     useTableCellStyling,
     useToggleRowExpand,
     ...tableHooks
@@ -250,15 +248,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     });
   }, []);
 
-  // @ts-ignore
-  const tableWidthObserver = useRef(new ResizeObserver(updateTableClientWidth));
-
   useEffect(() => {
-    tableWidthObserver.current.observe(tableRef.current);
+    // @ts-ignore
+    const tableWidthObserver = new ResizeObserver(updateTableClientWidth);
+    tableWidthObserver.observe(tableRef.current);
     return () => {
-      tableWidthObserver.current.disconnect();
+      tableWidthObserver.disconnect();
     };
-  }, [tableWidthObserver.current, tableRef.current]);
+  }, [updateTableClientWidth]);
 
   useEffect(() => {
     dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
@@ -325,32 +322,47 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     'onGroup',
     'onRowSelected',
     'onRowExpandChange',
-    'onColumnsReordered'
+    'onColumnsReordered',
+    'onLoadMore'
   ]);
 
+  const inlineStyle = useMemo(() => {
+    if(tableState.tableClientWidth > 0) {
+      return style;
+    }
+    return {
+      ...style,
+      visibility: 'hidden' as 'hidden'
+    };
+  }, [tableState.tableClientWidth, style]);
+  
   return (
-    <div className={className} style={style} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
+    <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
       {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
       <div className={tableContainerClasses.valueOf()} ref={tableRef}>
         {
-          <div {...getTableProps()} role="table" aria-rowcount={rows.length}>
+          <div
+            {...getTableProps()}
+            role="grid"
+            aria-rowcount={rows.length}
+            aria-colcount={tableInternalColumns.length}
+            data-per-page={visibleRows}
+          >
             {headerGroups.map((headerGroup) => {
               let headerProps = {};
               if (headerGroup.getHeaderGroupProps) {
                 headerProps = headerGroup.getHeaderGroupProps();
               }
               return (
+                // eslint-disable-next-line react/jsx-key
                 <header {...headerProps} role="rowgroup">
                   {headerGroup.headers.map((column, index) => (
+                    // eslint-disable-next-line react/jsx-key
                     <ColumnHeader
-                      id={column.id}
                       {...column.getHeaderProps()}
                       isLastColumn={index === headerGroup.headers.length - 1}
-                      groupable={column.groupable ?? props.groupable}
-                      sortable={column.sortable ?? props.sortable}
-                      filterable={column.filterable ?? props.filterable}
-                      onSort={props.onSort}
+                      onSort={onSort}
                       onGroupBy={onGroupByChanged}
                       onDragStart={handleDragStart}
                       onDragOver={handleDragOver}
@@ -358,7 +370,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                       onDragEnter={handleDragEnter}
                       onDragEnd={handleOnDragEnd}
                       dragOver={column.id === dragOver}
-                      column={column}
                       isDraggable={!isTreeTable && column.canReorder}
                     >
                       {column.render('Header')}
@@ -399,6 +410,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                 overscanCount={overscanCount}
                 totalColumnsWidth={totalColumnsWidth}
                 selectedFlatRows={selectedFlatRows}
+                infiniteScroll={infiniteScroll}
+                infiniteScrollThreshold={infiniteScrollThreshold}
+                onLoadMore={onLoadMore}
               />
             )}
           </div>
@@ -416,6 +430,7 @@ AnalyticalTable.defaultProps = {
   filterable: false,
   groupable: false,
   selectionMode: TableSelectionMode.NONE,
+  selectionBehavior: TableSelectionBehavior.ROW,
   scaleWidthMode: TableScaleWidthMode.Default,
   data: [],
   columns: [],

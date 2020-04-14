@@ -1,8 +1,5 @@
 #! /bin/bash
 
-# reset potential changes in sizes
-git checkout scripts/rollup/results.json
-
 CURRENT_LERNA_VERSION=$(node -p -e "require('./lerna.json').version")
 IS_IN_RC_STATUS=$(echo "${CURRENT_LERNA_VERSION}" | awk '/rc\.[0-9]+$/')
 

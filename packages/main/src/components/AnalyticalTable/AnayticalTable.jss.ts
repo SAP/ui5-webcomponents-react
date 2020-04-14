@@ -68,9 +68,11 @@ const styles = {
   selectable: {
     '& $tr:hover:not($emptyRow)': {
       backgroundColor: ThemingParameters.sapList_Hover_Background,
-      cursor: 'pointer'
+      '&:not($selectionModeRowSelector)': {
+        cursor: 'pointer'
+      }
     },
-    '& $tr:active:not([data-is-selected]):not($tableGroupHeader):not($emptyRow)': {
+    '& $tr:active:not([data-is-selected]):not($tableGroupHeader):not($emptyRow):not($selectionModeRowSelector)': {
       backgroundColor: ThemingParameters.sapList_Active_Background,
       '& $tableCell': {
         borderRight: `1px solid ${ThemingParameters.sapList_Active_Background}`,
@@ -79,6 +81,7 @@ const styles = {
       }
     }
   },
+  selectionModeRowSelector: {},
   tableCell: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     fontFamily: ThemingParameters.sapFontFamily,
@@ -96,7 +99,11 @@ const styles = {
     position: 'relative',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-    alignItems: 'center'
+    alignItems: 'center',
+    '&:focus': {
+      outlineOffset: '-2px',
+      outline: `1px dotted ${ThemingParameters.sapContent_FocusColor}`
+    }
   },
   noDataContainer: {
     display: 'flex',

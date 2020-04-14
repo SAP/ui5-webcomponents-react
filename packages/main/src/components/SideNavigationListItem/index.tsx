@@ -158,7 +158,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
               {displayedIcon}
               <div className={classes.condensedExpandTriangle} />
               {createPortal(
-                <Popover ref={popoverRef} open={isExpanded} verticalAlign={PopoverVerticalAlign.Top}>
+                <Popover ref={popoverRef} verticalAlign={PopoverVerticalAlign.Top}>
                   <List onItemClick={props['onListItemSelected']}>
                     <StandardListItem selected={isSelfSelected} data-id={id} tooltip={tooltip}>
                       {text}

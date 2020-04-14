@@ -1,3 +1,4 @@
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 import { CurrentViewportRangeContext } from '@ui5/webcomponents-react/lib/CurrentViewportRangeContext';
@@ -6,7 +7,6 @@ import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, ReactElement, Ref, useMemo } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Form.jss';
 
@@ -49,7 +49,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
       });
 
       if (ungroupedItems.length > 0) {
-        formGroups.push(<FormGroup children={ungroupedItems} />);
+        formGroups.push(<FormGroup>{ungroupedItems}</FormGroup>);
       }
     } else {
       // check if a sole Form's group has a Title and take it as Form Title if one does not exist
@@ -70,12 +70,9 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
   return (
     <CurrentViewportRangeContext.Provider value={currentRange}>
       {updatedTitle && (
-        <>
-          <Title level={TitleLevel.H3} className={classes.formTitle}>
-            {updatedTitle}
-          </Title>
-          <div className={classes.formTitlePaddingBottom} />
-        </>
+        <Title level={TitleLevel.H3} className={classes.formTitle}>
+          {updatedTitle}
+        </Title>
       )}
       <Grid
         ref={ref}

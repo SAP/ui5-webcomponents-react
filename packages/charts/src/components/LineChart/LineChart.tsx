@@ -41,9 +41,10 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     noLegend = false,
     onDataPointClick,
     onLegendClick,
-    yAxisFormatter = (el) => el,
-    xAxisFormatter = (el) => el,
-    dataLabelFormatter = (d) => d,
+    labels,
+    axisInterval,
+    valueFormatter = (el) => el,
+    labelFormatter = (el) => el,
     dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
@@ -57,7 +58,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       strokeWidth: 1,
       zoomingTool: false,
       strokeOpacity: 1,
-      dataLabel: false,
+      dataLabel: true,
       xAxisUnit: '',
       yAxisUnit: '',
       secondYAxis: {
@@ -105,18 +106,21 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     [onDataPointClick]
   );
 
-  const LineDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter);
+  const LineDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, labelFormatter, false, false, true);
 
-  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
+
+  const bigDataSet = dataset?.length > 30 ?? false;
 
   const marginChart = useChartMargin(
     dataset,
-    yAxisFormatter,
+    labelFormatter,
     labelKey,
     chartConfig.margin,
     false,
-    secondaryDimensionKey
+    secondaryDimensionKey,
+    chartConfig.zoomingTool
   );
 
   return (
@@ -141,7 +145,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} xAxisId={0} interval={0} tick={XAxisLabel} />}
         {secondaryDimensionKey && (
           <XAxis
-            interval={0}
+            interval={axisInterval ?? bigDataSet ? 2 : 0}
             dataKey={secondaryDimensionKey}
             tickLine={false}
             tick={SecondaryDimensionLabel}
@@ -154,7 +158,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
           yAxisId="left"
-          tickFormatter={yAxisFormatter}
+          tickFormatter={labelFormatter}
           interval={0}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
@@ -171,9 +175,9 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           <Line
             yAxisId={chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === key ? 'right' : 'left'}
             key={key}
-            name={key}
+            name={labels?.[key] || key}
             strokeOpacity={chartConfig.strokeOpacity}
-            label={LineDataLabel}
+            label={bigDataSet ? false : LineDataLabel}
             type="monotone"
             dataKey={key}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
@@ -181,15 +185,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             activeDot={{ onClick: onDataPointClickInternal }}
           />
         ))}
-        {!noLegend && (
-          <Legend
-            wrapperStyle={{
-              paddingBottom: 20
-            }}
-            verticalAlign={chartConfig.legendPosition ?? 'top'}
-            onClick={onItemLegendClick}
-          />
-        )}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -198,7 +194,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             yAxisId={'left'}
           />
         )}
-        <Tooltip />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}

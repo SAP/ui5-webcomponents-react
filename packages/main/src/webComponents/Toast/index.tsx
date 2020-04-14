@@ -1,6 +1,6 @@
 import { ToastPlacement } from '@ui5/webcomponents-react/lib/ToastPlacement';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Toast from '@ui5/webcomponents/dist/Toast';
+import '@ui5/webcomponents/dist/Toast';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -24,7 +24,7 @@ export interface ToastPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Toast" target="_blank">UI5 Web Components Playground</a>
  */
-const Toast: FC<ToastPropTypes> = withWebComponent<ToastPropTypes>(UI5Toast);
+const Toast: FC<ToastPropTypes> = withWebComponent<ToastPropTypes>('ui5-toast', ['duration', 'placement'], [], [], []);
 
 Toast.displayName = 'Toast';
 

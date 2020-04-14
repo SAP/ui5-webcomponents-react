@@ -37,15 +37,15 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     dataKeys,
     noLegend = false,
     onDataPointClick,
-    xAxisFormatter,
-    yAxisFormatter = (el) => el,
-    dataLabelFormatter = (d) => d,
+    labels,
+    valueFormatter = (el) => el,
+    labelFormatter = (el) => el,
     dataLabelCustomElement = undefined,
     onLegendClick,
     chartConfig = {
       margin: {},
       legendPosition: 'bottom',
-      dataLabel: false,
+      dataLabel: true,
       polarGridType: 'circle'
     },
     style,
@@ -58,7 +58,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, undefined);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
@@ -79,9 +79,16 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     [onDataPointClick]
   );
 
-  const RadarDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter, false, false);
+  const RadarDataLabel = useDataLabel(
+    chartConfig.dataLabel,
+    dataLabelCustomElement,
+    labelFormatter,
+    false,
+    false,
+    true
+  );
 
-  const marginChart = useChartMargin(dataset, yAxisFormatter, labelKey, chartConfig.margin);
+  const marginChart = useChartMargin(dataset, labelFormatter, labelKey, chartConfig.margin);
 
   return (
     <ChartContainer
@@ -100,17 +107,17 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
         <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis
           dataKey={labelKey}
-          tickFormatter={xAxisFormatter}
+          tickFormatter={valueFormatter}
           tick={{
             fill: ThemingParameters.sapContent_LabelColor
           }}
         />
-        <PolarRadiusAxis tickFormatter={yAxisFormatter} />
+        <PolarRadiusAxis tickFormatter={labelFormatter} />
         {currentDataKeys.map((key, index) => (
           <Radar
             key={index}
             activeDot={{ onClick: onDataPointClickInternal }}
-            name={key}
+            name={labels?.[key] || key}
             dataKey={key}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
@@ -118,7 +125,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
             label={RadarDataLabel}
           />
         ))}
-        <Tooltip />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
       </RadarChartLib>
     </ChartContainer>

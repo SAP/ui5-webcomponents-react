@@ -1,8 +1,7 @@
-import { mount } from 'enzyme';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
-import React, { cloneElement, FC } from 'react';
+import { mount } from 'enzyme';
+import React from 'react';
 import { spy } from 'sinon';
-import { withWebComponent } from './withWebComponent';
 
 describe('withWebComponent', () => {
   test('Unmount Event Handlers correctly after prop update', () => {

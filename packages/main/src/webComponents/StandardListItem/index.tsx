@@ -1,7 +1,7 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5StandardListItem from '@ui5/webcomponents/dist/StandardListItem';
+import '@ui5/webcomponents/dist/StandardListItem';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -31,10 +31,6 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
    */
   infoState?: ValueState;
   /**
-   * Defines the text of the <code>ui5-li</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
-   */
-  children?: ReactNode | ReactNode[];
-  /**
    * Defines the visual indication and behavior of the list items.
    * Available options are <code>Active</code> (by default), <code>Inactive</code> and <code>Detail</code>.
    * <br><br>
@@ -46,6 +42,10 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
    * Defines the selected state of the <code>ListItem</code>.
    */
   selected?: boolean;
+  /**
+   * Defines the text of the <code>ui5-li</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   */
+  children?: ReactNode | ReactNode[];
 }
 
 /**
@@ -54,7 +54,11 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/StandardListItem" target="_blank">UI5 Web Components Playground</a>
  */
 const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<StandardListItemPropTypes>(
-  UI5StandardListItem
+  'ui5-li',
+  ['description', 'icon', 'image', 'info', 'infoState', 'type'],
+  ['iconEnd', 'selected'],
+  [],
+  []
 );
 
 StandardListItem.displayName = 'StandardListItem';

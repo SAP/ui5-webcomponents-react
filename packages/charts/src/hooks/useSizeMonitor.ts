@@ -2,10 +2,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const useSizeMonitor = (props, container) => {
   const { height: heightProp, width: widthProp, minHeight, minWidth } = props;
-  const [height, setHeight] = useState(null);
-  const [width, setWidth] = useState(null);
+  const [sizeState, setSizeState] = useState({
+    height: null,
+    width: null
+  });
+  const observer = useRef(null);
 
-  const enableSizeMonitor = typeof heightProp === 'string' || typeof widthProp === 'string';
+  const dynamicHeightProp = typeof heightProp === 'string';
+  const dynamicWidthProp = typeof heightProp === 'string';
+  const enableSizeMonitor = dynamicHeightProp || dynamicWidthProp;
 
   const recalculateSize = useCallback(
     (e?) => {
@@ -20,30 +25,32 @@ export const useSizeMonitor = (props, container) => {
         clientRectWidth = e[0].contentRect.width;
       }
 
-      // console.log(props);
-
-      setHeight(Math.max(minHeight, clientRectHeight));
-      setWidth(Math.max(minWidth, clientRectWidth));
+      if (dynamicHeightProp || dynamicWidthProp) {
+        setSizeState((state) => ({
+          ...state,
+          ...(dynamicHeightProp && { height: Math.max(minHeight, clientRectHeight) }),
+          ...(dynamicWidthProp && { width: Math.max(minWidth, clientRectWidth) })
+        }));
+      }
     },
-    [container.current, setHeight, setWidth]
+    [setSizeState, minWidth, minHeight, dynamicHeightProp, dynamicWidthProp]
   );
 
-  const observer = useRef(new ResizeObserver(recalculateSize));
-
-  // @ts-ignore
   useEffect(() => {
     if (enableSizeMonitor && container.current) {
+      // @ts-ignore
+      observer.current = new ResizeObserver(recalculateSize);
       observer.current.observe(container.current);
-
-      recalculateSize();
-      return () => {
-        observer.current.disconnect();
-      };
     }
-  }, []);
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    };
+  }, [recalculateSize]);
 
   return {
-    height: enableSizeMonitor ? height : heightProp,
-    width: enableSizeMonitor ? width : widthProp
+    height: dynamicHeightProp ? sizeState.height : heightProp,
+    width: dynamicWidthProp ? sizeState.width : widthProp
   };
 };

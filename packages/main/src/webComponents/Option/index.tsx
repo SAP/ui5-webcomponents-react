@@ -1,5 +1,5 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5Option from '@ui5/webcomponents/dist/Option';
+import '@ui5/webcomponents/dist/Option';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
@@ -23,7 +23,13 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Option" target="_blank">UI5 Web Components Playground</a>
  */
-const Option: FC<OptionPropTypes> = withWebComponent<OptionPropTypes>(UI5Option);
+const Option: FC<OptionPropTypes> = withWebComponent<OptionPropTypes>(
+  'ui5-option',
+  ['icon', 'value'],
+  ['selected'],
+  [],
+  []
+);
 
 Option.displayName = 'Option';
 

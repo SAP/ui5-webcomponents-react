@@ -1,10 +1,10 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import UI5CheckBox from '@ui5/webcomponents/dist/CheckBox';
+import '@ui5/webcomponents/dist/CheckBox';
 import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface CheckBoxPropTypes extends WithWebComponentPropTypes {
+export interface CheckBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
   /**
    * Defines if the <code>ui5-checkbox</code> is checked. <br><br> <b>Note:</b> The property can be changed with user interaction, either by cliking/tapping on the <code>ui5-checkbox</code>, or by pressing the Enter or Space key.
    */
@@ -46,7 +46,13 @@ export interface CheckBoxPropTypes extends WithWebComponentPropTypes {
  * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/CheckBox" target="_blank">UI5 Web Components Playground</a>
  */
-const CheckBox: FC<CheckBoxPropTypes> = withWebComponent<CheckBoxPropTypes>(UI5CheckBox);
+const CheckBox: FC<CheckBoxPropTypes> = withWebComponent<CheckBoxPropTypes>(
+  'ui5-checkbox',
+  ['name', 'text', 'valueState'],
+  ['checked', 'disabled', 'readonly', 'wrap'],
+  [],
+  ['change']
+);
 
 CheckBox.displayName = 'CheckBox';
 

@@ -38,12 +38,13 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     height = '300px',
     dataset,
     dataKeys,
+    labels,
     noLegend = false,
     onDataPointClick,
     onLegendClick,
-    xAxisFormatter = (el) => el,
-    yAxisFormatter = (el) => el,
-    dataLabelFormatter = (d) => d,
+    axisInterval,
+    valueFormatter = (el) => el,
+    labelFormatter = (el) => el,
     dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
@@ -56,13 +57,13 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       gridVertical: false,
       yAxisColor: ThemingParameters.sapList_BorderColor,
       legendPosition: 'top',
-      barSize: 15,
+      barSize: undefined,
       barGap: 3,
       zoomingTool: false,
       strokeOpacity: 1,
       fillOpacity: 1,
       stacked: false,
-      dataLabel: false,
+      dataLabel: true,
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
@@ -116,22 +117,26 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const ColumnDataLabel = useDataLabel(
     chartConfig.dataLabel,
     dataLabelCustomElement,
-    dataLabelFormatter,
+    labelFormatter,
     chartConfig.stacked,
+    false,
     false
   );
 
+  const bigDataSet = dataset?.length > 30 ?? false;
+
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
-  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
+  const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
 
   const marginChart = useChartMargin(
     dataset,
     labelKey,
-    yAxisFormatter,
+    labelFormatter,
     chartConfig.margin,
     false,
-    secondaryDimensionKey
+    secondaryDimensionKey,
+    chartConfig.zoomingTool
   );
 
   return (
@@ -153,11 +158,13 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} tick={XAxisLabel} dataKey={labelKey} xAxisId={0} />}
+        {(chartConfig.xAxisVisible ?? true) && (
+          <XAxis interval={axisInterval ?? bigDataSet ? 2 : 0} tick={XAxisLabel} dataKey={labelKey} xAxisId={0} />
+        )}
         {secondaryDimensionKey && (
           <XAxis
             interval={0}
-            dataKey={'dimension'}
+            dataKey={secondaryDimensionKey}
             tickLine={false}
             tick={SecondaryDimensionLabel}
             axisLine={false}
@@ -165,7 +172,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           />
         )}
         <YAxis
-          tickFormatter={yAxisFormatter}
+          tickFormatter={labelFormatter}
           unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
@@ -190,7 +197,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             fillOpacity={chartConfig.fillOpacity}
             label={ColumnDataLabel}
             key={key}
-            name={key}
+            name={labels?.[key] || key}
             dataKey={key}
             fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
@@ -198,15 +205,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             onClick={onDataPointClickInternal}
           />
         ))}
-        {!noLegend && (
-          <Legend
-            wrapperStyle={{
-              paddingBottom: 20
-            }}
-            verticalAlign={chartConfig.legendPosition ?? 'top'}
-            onClick={onItemLegendClick}
-          />
-        )}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -215,7 +214,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             yAxisId={'left'}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush y={1} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}

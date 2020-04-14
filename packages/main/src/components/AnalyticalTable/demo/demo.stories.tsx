@@ -2,11 +2,12 @@ import { action } from '@storybook/addon-actions';
 import { array, boolean, number, object, select, text } from '@storybook/addon-knobs';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import React from 'react';
-import { TableScaleWidthMode } from '../../../enums/TableScaleWidthMode';
 import generateData from './generateData';
 
 const columns = [
@@ -18,9 +19,10 @@ const columns = [
     Header: 'Age',
     accessor: 'age',
     hAlign: TextAlign.End,
-    disableGrouping: true,
-    className: 'superCustomClass',
-    isVisible: true
+    disableGroupBy: true,
+    disableSortBy: false,
+    disableFilters: false,
+    className: 'superCustomClass'
   },
   {
     Header: 'Friend Name',
@@ -87,9 +89,16 @@ export const defaultTable = () => {
         rowHeight={number('rowHeight', 44)}
         selectedRowIds={object('selectedRowIds', { 3: true })}
         onColumnsReordered={action('onColumnsReordered')}
-        noSelectionColumn={boolean('noSelectionColumn', false)}
         withRowHighlight={boolean('withRowHighlight', true)}
         highlightField={text('highlightField', 'status')}
+        infiniteScroll={boolean('infiniteScroll', true)}
+        infiniteScrollThreshold={number('infiniteScrollThreshold', 20)}
+        onLoadMore={action('onLoadMore')}
+        selectionBehavior={select<TableSelectionBehavior>(
+          'selectionBehavior',
+          TableSelectionBehavior,
+          TableSelectionBehavior.ROW
+        )}
       />
     </div>
   );
@@ -117,6 +126,11 @@ export const treeTable = () => {
       onRowExpandChange={action('onRowExpandChange')}
       subRowsKey={text('subRowsKey', 'subRows')}
       selectedRowIds={object('selectedRowIds', { 3: true })}
+      selectionBehavior={select<TableSelectionBehavior>(
+        'selectionBehavior',
+        TableSelectionBehavior,
+        TableSelectionBehavior.ROW
+      )}
       isTreeTable={boolean('isTreeTable', true)}
     />
   );

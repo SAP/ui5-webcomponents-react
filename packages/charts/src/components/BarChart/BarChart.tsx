@@ -41,9 +41,10 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     noLegend = false,
     onDataPointClick,
     onLegendClick,
-    xAxisFormatter = (el) => el,
-    yAxisFormatter = (el) => formatYAxisTicks(el),
-    dataLabelFormatter = (d) => d,
+    labels,
+    axisInterval,
+    labelFormatter = (el) => formatYAxisTicks(el),
+    valueFormatter = (el) => el,
     dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
@@ -55,13 +56,13 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       gridHorizontal: true,
       gridVertical: false,
       legendPosition: 'top',
-      barSize: 10,
+      barSize: undefined,
       barGap: 3,
       zoomingTool: false,
       strokeOpacity: 1,
       fillOpacity: 1,
       stacked: false,
-      dataLabel: false,
+      dataLabel: true,
       referenceLine: {
         label: undefined,
         value: undefined,
@@ -112,15 +113,25 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const BarDataLabel = useDataLabel(
     chartConfig.dataLabel,
     dataLabelCustomElement,
-    dataLabelFormatter,
+    valueFormatter,
     chartConfig.stacked,
     true
   );
 
-  const marginChart = useChartMargin(dataset, yAxisFormatter, labelKey, chartConfig.margin, true);
+  const marginChart = useChartMargin(
+    dataset,
+    labelFormatter,
+    labelKey,
+    chartConfig.margin,
+    true,
+    secondaryDimensionKey,
+    chartConfig.zoomingTool
+  );
 
-  const XAxisLabel = useAxisLabel(xAxisFormatter, chartConfig.xAxisUnit);
-  const SecondaryDimensionLabel = useSecondaryDimensionLabel(true, yAxisFormatter);
+  const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
+  const YAxisLabel = useAxisLabel(labelFormatter, chartConfig.yAxisUnit, true);
+  const SecondaryDimensionLabel = useSecondaryDimensionLabel(true, labelFormatter);
+  const bigDataSet = dataset?.length > 30 ?? false;
 
   return (
     <ChartContainer
@@ -143,13 +154,13 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         />
         {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} type="number" tick={XAxisLabel} />}
         <YAxis
-          tickFormatter={yAxisFormatter}
           unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
+          tick={YAxisLabel}
           type="category"
           dataKey={labelKey}
-          interval={0}
+          interval={axisInterval ?? bigDataSet ? 2 : 0}
           yAxisId={0}
         />
         {secondaryDimensionKey && (
@@ -170,7 +181,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             fillOpacity={chartConfig.fillOpacity}
             label={BarDataLabel}
             key={key}
-            name={key}
+            name={labels?.[key] || key}
             dataKey={key}
             fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
             stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
@@ -178,15 +189,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             onClick={onDataPointClickInternal}
           />
         ))}
-        {!noLegend && (
-          <Legend
-            wrapperStyle={{
-              paddingBottom: 20
-            }}
-            verticalAlign={chartConfig.legendPosition ?? 'top'}
-            onClick={onItemLegendClick}
-          />
-        )}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -194,7 +197,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             label={chartConfig.referenceLine.label}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
         )}

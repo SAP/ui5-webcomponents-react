@@ -3,7 +3,7 @@
 exports[`MessageBox Confirm - Cancel 1`] = `
 <ui5-dialog
   header-text=""
-  open="true"
+  initial-focus=""
   opened=""
 >
   <header
@@ -57,7 +57,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
 exports[`MessageBox Confirm - OK 1`] = `
 <ui5-dialog
   header-text=""
-  open="true"
+  initial-focus=""
   opened=""
 >
   <header
@@ -111,7 +111,7 @@ exports[`MessageBox Confirm - OK 1`] = `
 exports[`MessageBox Error 1`] = `
 <ui5-dialog
   header-text=""
-  open="true"
+  initial-focus=""
   opened=""
 >
   <header
@@ -157,7 +157,7 @@ exports[`MessageBox Error 1`] = `
 exports[`MessageBox Information 1`] = `
 <ui5-dialog
   header-text=""
-  open="true"
+  initial-focus=""
   opened=""
 >
   <header
@@ -203,7 +203,7 @@ exports[`MessageBox Information 1`] = `
 exports[`MessageBox No Title 1`] = `
 <ui5-dialog
   header-text=""
-  open="true"
+  initial-focus=""
   opened=""
 >
   <header
@@ -257,7 +257,7 @@ exports[`MessageBox No Title 1`] = `
 exports[`MessageBox Not open 1`] = `
 <ui5-dialog
   header-text=""
-  open="false"
+  initial-focus=""
 >
   <header
     class="MessageBox-header-0"
@@ -302,7 +302,7 @@ exports[`MessageBox Not open 1`] = `
 exports[`MessageBox Show 1`] = `
 <ui5-dialog
   header-text=""
-  open="true"
+  initial-focus=""
   opened=""
 >
   <header
@@ -356,7 +356,7 @@ exports[`MessageBox Show 1`] = `
 exports[`MessageBox Success 1`] = `
 <ui5-dialog
   header-text=""
-  open="true"
+  initial-focus=""
   opened=""
 >
   <header
@@ -402,7 +402,7 @@ exports[`MessageBox Success 1`] = `
 exports[`MessageBox Success w/ custom title 1`] = `
 <ui5-dialog
   header-text=""
-  open="true"
+  initial-focus=""
   opened=""
 >
   <header
@@ -448,7 +448,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
 exports[`MessageBox Warning 1`] = `
 <ui5-dialog
   header-text=""
-  open="true"
+  initial-focus=""
   opened=""
 >
   <header
