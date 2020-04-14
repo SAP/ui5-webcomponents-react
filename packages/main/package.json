@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.9.0-rc.13",
+  "version": "0.9.0-rc.14",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -17,14 +17,14 @@
     "@ui5/webcomponents-icons/dist/icons/*",
     "@ui5/webcomponents/dist/*",
     "@ui5/webcomponents-fiori/dist/*",
-    "**/ThemingSupport"
+    "./lib/ThemingSupport.js"
   ],
   "scripts": {
     "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts",
     "build": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "@ui5/webcomponents-react-base": "^0.9.0-rc.12",
+    "@ui5/webcomponents-react-base": "^0.9.0-rc.14",
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "^5.0.2",
     "react-jss": "10.0.4",

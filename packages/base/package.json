@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.9.0-rc.12",
+  "version": "0.9.0-rc.14",
   "description": "Base for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -14,9 +14,9 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "sideEffects": [
-    "**/modernizr",
+    "**/third-party/*",
+    "./polyfill/*",
     "core-js/**/*",
-    "**/polyfill/*",
     "intersection-observer",
     "proxy-polyfill/*"
   ],
