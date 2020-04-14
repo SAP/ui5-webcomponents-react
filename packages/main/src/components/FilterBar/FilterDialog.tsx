@@ -16,7 +16,7 @@ import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { Children, cloneElement, ReactElement, useCallback, useRef, useState } from 'react';
+import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue } from './utils';
 
@@ -47,6 +47,13 @@ export const FilterDialog = (props) => {
   const searchRef = useRef(null);
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});
+  const dialogRef = useRef();
+
+  useEffect(() => {
+    if (open) {
+      dialogRef.current.open();
+    }
+  }, [open]);
 
   const handleSearch = useCallback(
     (e) => {
@@ -230,7 +237,7 @@ export const FilterDialog = (props) => {
   }, [renderChildren, toggledFilters, handleCheckBoxChange]);
 
   return (
-    <Dialog open={open} onAfterClose={handleClose} header={renderHeader()} footer={renderFooter()}>
+    <Dialog ref={dialogRef} onAfterClose={handleClose} header={renderHeader()} footer={renderFooter()}>
       <div className={classes.dialog}>
         {renderFBSearch && (
           <div className={classes.fbSearch} ref={searchRef}>

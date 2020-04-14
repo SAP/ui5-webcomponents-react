@@ -1,3 +1,4 @@
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { sapUiContentPadding } from '@ui5/webcomponents-react-base/lib/spacing';
 
 const styles = {
@@ -13,6 +14,9 @@ const styles = {
     padding: '0.25rem 1rem 0 1rem',
     '& *': {
       margin: '0.25rem 0 0.25rem 0'
+    },
+    '& ui5-input': {
+      width: '100%'
     }
   },
   footer: {
@@ -33,17 +37,17 @@ const styles = {
   },
   singleFilter: {
     display: 'grid',
-    gridTemplateColumns: 'auto minmax(32px,7%)',
+    gridTemplateColumns: `auto minmax(${CssSizeVariables.sapWcrCheckBoxWidthHeight},7%)`,
     gridTemplateRows: 'auto',
     gridColumnGap: '0.5rem',
     '@media(max-width:700px)': {
       marginTop: '0.5rem'
     },
     '& ui5-checkbox': {
-      minWidth: '32px',
       placeSelf: 'center start',
       '@media(max-width:700px)': {
         marginTop: '0.8rem',
+        paddingLeft: 0,
         placeSelf: 'end start'
       }
     }
@@ -58,7 +62,10 @@ const styles = {
       gridColumnGap: '0.5rem'
     },
     paddingBottom: '2rem',
-    width: '100%'
+    width: '100%',
+    '& ui5-input': {
+      width: '100%'
+    }
   }
 };
 

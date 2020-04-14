@@ -14,6 +14,7 @@ export enum CssSizeVariablesNames {
   sapWcrAnalyticalTableTreePaddingLevel1 = 'sapWcrAnalyticalTableTreePaddingLevel1',
   sapWcrAnalyticalTableTreePaddingLevel2 = 'sapWcrAnalyticalTableTreePaddingLevel2',
   sapWcrAnalyticalTableTreePaddingLevel3 = 'sapWcrAnalyticalTableTreePaddingLevel3',
+  sapWcrCheckBoxWidthHeight = 'sapWcrCheckBoxWidthHeight',
   sapWcrAnalyticalTableSelectionColumnWidth = 'sapWcrAnalyticalTableSelectionColumnWidth'
 }
 
@@ -42,6 +43,7 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel1}:1.5rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel2}:2.25rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel3}:2.75rem;
+  --${CssSizeVariablesNames.sapWcrCheckBoxWidthHeight}:2.75rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth}:55px;
 
 }
@@ -63,6 +65,7 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel1}:1rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel2}:1.5rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel3}:2rem;
+  --${CssSizeVariablesNames.sapWcrCheckBoxWidthHeight}:2rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth}:40px;
 }
 `;

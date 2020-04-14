@@ -50,7 +50,6 @@ const styles = {
     }
   },
   showFiltersBtn: { minWidth: '108px' },
-  // is being applied to the span which represents the InfoLabel Text
   loadingContainer: {
     marginBottom: '0.5rem',
     display: 'flex',

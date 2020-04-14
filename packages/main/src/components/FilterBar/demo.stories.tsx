@@ -1,39 +1,27 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, number, text } from '@storybook/addon-knobs';
-import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
 import { FilterGroupItem } from '@ui5/webcomponents-react/lib/FilterGroupItem';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
+import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
-import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import React from 'react';
 
 const variantItems = [
   { label: 'Variant 1', key: '1' },
-  { label: 'Variant 2', key: '2' }
+  { label: 'Variant 2', key: '2' },
 ];
-
-const renderVariants = () => {
-  return (
-    <VariantManagement style={{ width: '300px', height: 'auto' }} initialSelectedKey="2" variantItems={variantItems} />
-  );
-};
-
-const renderSearch = () => {
-  return <Input placeholder={'Search'} />;
-};
 
 export const renderDefaultStory = () => {
   return (
     <FilterBar
-      renderSearch={renderSearch}
-      renderVariants={renderVariants}
+      renderSearch={() => <Input placeholder={'Search'} />}
+      renderVariants={() => <VariantManagement selectedKey="2" variantItems={variantItems} />}
       useToolbar={boolean('useToolbar', true)}
       filterBarExpanded={boolean('filterBarExpanded', true)}
       loading={boolean('loading', false)}
@@ -72,10 +60,10 @@ export const renderDefaultStory = () => {
       </FilterGroupItem>
       <FilterGroupItem label="Multi" key="Multi" loading={boolean('FilterGroupItem: loading', false)}>
         <MultiComboBox>
-          <Option>Option 1</Option>
-          <Option selected>Option 2</Option>
-          <Option>Option 3</Option>
-          <Option selected>Option 4</Option>
+          <MultiComboBoxItem text="MultiComboBoxItem 1" />
+          <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
+          <MultiComboBoxItem text="MultiComboBoxItem 3" />
+          <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
         </MultiComboBox>
       </FilterGroupItem>
     </FilterBar>
@@ -88,13 +76,17 @@ renderDefaultStory.story = {
 export const renderStoryWithFiltersDialog = () => {
   return (
     <FilterBar
-      renderSearch={renderSearch}
-      renderVariants={renderVariants}
+      renderSearch={() => {
+        return <Input placeholder={'Search'} />;
+      }}
+      renderVariants={() => {
+        return <VariantManagement selectedKey="2" variantItems={variantItems} />;
+      }}
       useToolbar={boolean('useToolbar', true)}
       filterBarExpanded={boolean('filterBarExpanded', true)}
       loading={boolean('loading', false)}
       considerGroupName={boolean('considerGroupName', true)}
-      filterContainerWidth={text('width', '12rem')}
+      filterContainerWidth={text('filterContainerWidth', '13rem')}
       activeFiltersCount={number('activeFiltersCount', 0)}
       showClearOnFB={boolean('showClearOnFB', true)}
       showRestoreOnFB={boolean('showRestoreOnFB', true)}
@@ -166,10 +158,10 @@ export const renderStoryWithFiltersDialog = () => {
         loading={boolean('FilterGroupItem: loading', true)}
       >
         <MultiComboBox>
-          <Option>Option 1</Option>
-          <Option selected>Option 2</Option>
-          <Option>Option 3</Option>
-          <Option selected>Option 4</Option>
+          <MultiComboBoxItem text="MultiComboBoxItem 1" />
+          <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
+          <MultiComboBoxItem text="MultiComboBoxItem 3" />
+          <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
         </MultiComboBox>
       </FilterGroupItem>
       <FilterGroupItem
@@ -178,33 +170,10 @@ export const renderStoryWithFiltersDialog = () => {
         mandatory={boolean('FilterGroupItem: mandatory', true)}
       >
         <MultiComboBox>
-          <Option>
-            <Text>Option 1</Text>
-          </Option>
-          <Option>Option 2</Option>
-          <Option>Option 3</Option>
-          <Option>Option 4</Option>
-        </MultiComboBox>
-      </FilterGroupItem>
-      <FilterGroupItem label="MultBox StandardListItem w/ initial selected" groupName="Group 1">
-        <MultiComboBox>
-          <StandardListItem selected>Selection 1</StandardListItem>
-          <StandardListItem>Selection 2</StandardListItem>
-          <StandardListItem>Selection 3</StandardListItem>
-          <StandardListItem>Selection 4</StandardListItem>
-          <StandardListItem>Selection 5</StandardListItem>
-        </MultiComboBox>
-      </FilterGroupItem>
-      <FilterGroupItem
-        label="MultBox CustomListItem w/ initial selected"
-        groupName="Group 2"
-        mandatory={boolean('FilterGroupItem: mandatory', true)}
-      >
-        <MultiComboBox>
-          <CustomListItem>Selection 1</CustomListItem>
-          <CustomListItem selected>Selection 1</CustomListItem>
-          <CustomListItem>Selection 1</CustomListItem>
-          <CustomListItem>Selection 1</CustomListItem>
+          <MultiComboBoxItem text="MultiComboBoxItem 1" />
+          <MultiComboBoxItem text="MultiComboBoxItem 2" />
+          <MultiComboBoxItem text="MultiComboBoxItem 3" />
+          <MultiComboBoxItem text="MultiComboBoxItem 4" />
         </MultiComboBox>
       </FilterGroupItem>
       <FilterGroupItem label="Date Picker" groupName="Group 2" mandatory={boolean('FilterGroupItem: mandatory', true)}>
@@ -214,13 +183,13 @@ export const renderStoryWithFiltersDialog = () => {
   );
 };
 renderStoryWithFiltersDialog.story = {
-  name: 'With Filters Dialog'
+  name: 'With Filters Dialog',
 };
 
 export default {
   title: 'Components / FilterBar',
   component: FilterBar,
   parameters: {
-    subcomponents: { FilterGroupItem }
-  }
+    subcomponents: { FilterGroupItem },
+  },
 };

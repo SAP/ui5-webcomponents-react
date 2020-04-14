@@ -3,6 +3,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import React, {
@@ -105,7 +106,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   useEffect(() => {
     if (showFilterConfiguration) {
-      console.log('with dialog');
       Children.toArray(children).forEach((item) => {
         if (
           prevVisibleInFilterBarProps.current?.[item.key] !== undefined &&
@@ -298,7 +298,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       )}
       <div ref={ref} className={classes.outerContainer} {...passThroughProps}>
         {loading ? (
-          <BusyIndicator active className={classes.loadingContainer} />
+          <BusyIndicator active className={classes.loadingContainer} size={BusyIndicatorSize.Large} />
         ) : (
           <>
             <div className={classes.filterBarHeader}>
@@ -326,7 +326,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                   {showFilterConfiguration && (
                     <Button onClick={handleDialogOpen}>
                       {`Filters${
-                        activeFiltersCount && parseInt(activeFiltersCount) > 0 ? ` (${activeFiltersCount})` : ''
+                        activeFiltersCount && parseInt(activeFiltersCount as string) > 0 ? ` (${activeFiltersCount})` : ''
                       }`}
                     </Button>
                   )}

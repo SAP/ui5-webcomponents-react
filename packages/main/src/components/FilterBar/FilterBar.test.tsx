@@ -2,7 +2,6 @@ import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
-import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';
 import { FilterGroupItem } from '@ui5/webcomponents-react/lib/FilterGroupItem';
@@ -10,10 +9,9 @@ import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
-import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
+import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
 import { mount } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
@@ -96,39 +94,12 @@ describe('FilterBar', () => {
             </Option>
           </Select>
         </FilterGroupItem>
-        <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1">
+        <FilterGroupItem label="MultBox" groupName="Group 2" mandatory>
           <MultiComboBox>
-            <Option>Option 1</Option>
-            <Option selected>Option 2</Option>
-            <Option>Option 3</Option>
-            <Option selected>Option 4</Option>
-          </MultiComboBox>
-        </FilterGroupItem>
-        <FilterGroupItem label="MultBox w/o initial selected" groupName="Group 2">
-          <MultiComboBox>
-            <Option>
-              <Text>asd</Text>
-            </Option>
-            <Option>Option 2</Option>
-            <Option>Option 3</Option>
-            <Option>Option 4</Option>
-          </MultiComboBox>
-        </FilterGroupItem>
-        <FilterGroupItem label="MultBox StandardListItem w/ initial selected" groupName="Group 1">
-          <MultiComboBox>
-            <StandardListItem selected>Selection 1</StandardListItem>
-            <StandardListItem>Selection 2</StandardListItem>
-            <StandardListItem>Selection 3</StandardListItem>
-            <StandardListItem>Selection 4</StandardListItem>
-            <StandardListItem>Selection 5</StandardListItem>
-          </MultiComboBox>
-        </FilterGroupItem>
-        <FilterGroupItem label="MultBox CustomListItem w/ initial selected" groupName="Group 2" mandatory>
-          <MultiComboBox>
-            <CustomListItem>Selection 1</CustomListItem>
-            <CustomListItem selected>Selection 1</CustomListItem>
-            <CustomListItem>Selection 1</CustomListItem>
-            <CustomListItem>Selection 1</CustomListItem>
+            <MultiComboBoxItem text="MultiComboBoxItem 1" />
+            <MultiComboBoxItem text="MultiComboBoxItem 2" />
+            <MultiComboBoxItem text="MultiComboBoxItem 3" />
+            <MultiComboBoxItem text="MultiComboBoxItem 4" />
           </MultiComboBox>
         </FilterGroupItem>
         <FilterGroupItem label="Date Picker" groupName="Group 2" mandatory>
@@ -214,39 +185,12 @@ describe('FilterBar', () => {
             </Option>
           </Select>
         </FilterGroupItem>
-        <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1">
+        <FilterGroupItem label="MultBox" groupName="Group 2" mandatory>
           <MultiComboBox>
-            <Option>Option 1</Option>
-            <Option selected>Option 2</Option>
-            <Option>Option 3</Option>
-            <Option selected>Option 4</Option>
-          </MultiComboBox>
-        </FilterGroupItem>
-        <FilterGroupItem label="MultBox w/o initial selected" groupName="Group 2">
-          <MultiComboBox>
-            <Option>
-              <Text>asd</Text>
-            </Option>
-            <Option>Option 2</Option>
-            <Option>Option 3</Option>
-            <Option>Option 4</Option>
-          </MultiComboBox>
-        </FilterGroupItem>
-        <FilterGroupItem label="MultBox StandardListItem w/ initial selected" groupName="Group 1">
-          <MultiComboBox>
-            <StandardListItem selected>Selection 1</StandardListItem>
-            <StandardListItem>Selection 2</StandardListItem>
-            <StandardListItem>Selection 3</StandardListItem>
-            <StandardListItem>Selection 4</StandardListItem>
-            <StandardListItem>Selection 5</StandardListItem>
-          </MultiComboBox>
-        </FilterGroupItem>
-        <FilterGroupItem label="MultBox CustomListItem w/ initial selected" groupName="Group 2" mandatory>
-          <MultiComboBox>
-            <CustomListItem>Selection 1</CustomListItem>
-            <CustomListItem selected>Selection 1</CustomListItem>
-            <CustomListItem>Selection 1</CustomListItem>
-            <CustomListItem>Selection 1</CustomListItem>
+            <MultiComboBoxItem text="MultiComboBoxItem 1" />
+            <MultiComboBoxItem text="MultiComboBoxItem 2" />
+            <MultiComboBoxItem text="MultiComboBoxItem 3" />
+            <MultiComboBoxItem text="MultiComboBoxItem 4" />
           </MultiComboBox>
         </FilterGroupItem>
         <FilterGroupItem label="Date Picker" groupName="Group 2" mandatory>
