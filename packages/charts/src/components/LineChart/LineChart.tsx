@@ -128,7 +128,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      placeholder={LineChartPlaceholder}
+      Placeholder={LineChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}

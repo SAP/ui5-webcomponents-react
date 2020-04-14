@@ -137,7 +137,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      placeholder={BarChartPlaceholder}
+      Placeholder={BarChartPlaceholder}
       width={width}
       height={height}
       ref={chartRef}

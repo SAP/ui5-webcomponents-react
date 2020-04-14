@@ -143,7 +143,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      placeholder={ColumnChartPlaceholder}
+      Placeholder={ColumnChartPlaceholder}
       width={width}
       height={height}
       ref={chartRef}

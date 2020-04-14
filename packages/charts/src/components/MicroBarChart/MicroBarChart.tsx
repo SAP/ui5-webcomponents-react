@@ -93,7 +93,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      placeholder={BarChartPlaceholder}
+      Placeholder={BarChartPlaceholder}
       width={width}
       height={height}
       ref={chartRef}
