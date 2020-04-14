@@ -1,34 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VariantManagement Render without crashing 1`] = `
-Array [
-  <div
-    style="display: inline-block; pointer-events: auto;"
+exports[`VariantManagement Render without crashing - disabled 1`] = `
+<div
+  class="VariantManagement-container-0 VariantManagement-disabled-0"
+>
+  <ui5-title
+    class="VariantManagement-title-0"
+    level="H4"
   >
-    <div
-      class="VariantManagement-VariantManagement-0"
-    >
-      <ui5-title
-        class="VariantManagement-VariantManagementText-0"
-        level="H4"
-      >
-        Variant 1
-      </ui5-title>
-      <ui5-button
-        design="Transparent"
-        icon="navigation-down-arrow"
-      />
-    </div>
-  </div>,
-  <ui5-popover
+    Variant 1
+  </ui5-title>
+  <ui5-button
+    design="Transparent"
+    disabled="true"
+    icon="navigation-down-arrow"
+  />
+  <ui5-responsive-popover
     header-text="Variants"
     horizontal-align="Center"
+    initial-focus=""
     placement-type="Bottom"
     vertical-align="Center"
   >
     <ui5-button
       class="VariantManagement-footer-0"
       design="Emphasized"
+      icon=""
       slot="footer"
     >
       Cancel
@@ -42,7 +39,6 @@ Array [
     >
       <ui5-li
         data-key="1"
-        info-state="None"
         selected="true"
         style="width: 300px;"
         type="Active"
@@ -51,13 +47,131 @@ Array [
       </ui5-li>
       <ui5-li
         data-key="2"
-        info-state="None"
         style="width: 300px;"
         type="Active"
       >
         Variant 2
       </ui5-li>
     </ui5-list>
-  </ui5-popover>,
-]
+  </ui5-responsive-popover>
+</div>
+`;
+
+exports[`VariantManagement Render without crashing 1`] = `
+<div
+  class="VariantManagement-container-0"
+>
+  <ui5-title
+    class="VariantManagement-title-0"
+    level="H4"
+  >
+    Variant 1
+  </ui5-title>
+  <ui5-button
+    design="Transparent"
+    icon="navigation-down-arrow"
+  />
+  <ui5-responsive-popover
+    header-text="Variants"
+    horizontal-align="Center"
+    initial-focus=""
+    placement-type="Bottom"
+    vertical-align="Center"
+  >
+    <ui5-button
+      class="VariantManagement-footer-0"
+      design="Emphasized"
+      icon=""
+      slot="footer"
+    >
+      Cancel
+    </ui5-button>
+    <ui5-list
+      footer-text=""
+      header-text=""
+      mode="SingleSelect"
+      no-data-text=""
+      separators="All"
+    >
+      <ui5-li
+        data-key="1"
+        selected="true"
+        style="width: 300px;"
+        type="Active"
+      >
+        Variant 1
+      </ui5-li>
+      <ui5-li
+        data-key="2"
+        style="width: 300px;"
+        type="Active"
+      >
+        Variant 2
+      </ui5-li>
+    </ui5-list>
+  </ui5-responsive-popover>
+</div>
+`;
+
+exports[`VariantManagement With suggestions 1`] = `
+<div
+  class="VariantManagement-container-0"
+>
+  <ui5-title
+    class="VariantManagement-title-0"
+    level="H4"
+  >
+    Variant 2
+  </ui5-title>
+  <ui5-button
+    design="Transparent"
+    icon="navigation-down-arrow"
+  />
+  <ui5-responsive-popover
+    _max-content-height="-8"
+    actual-placement-type="Bottom"
+    header-text="Variants"
+    horizontal-align="Center"
+    initial-focus=""
+    placement-type="Bottom"
+    style="z-index: 102; visibility: visible; display: none; left: 0px; top: 8px;"
+    vertical-align="Center"
+  >
+    <ui5-button
+      class="VariantManagement-footer-0"
+      design="Emphasized"
+      icon=""
+      slot="footer"
+    >
+      Cancel
+    </ui5-button>
+    <ui5-list
+      footer-text=""
+      header-text=""
+      mode="SingleSelect"
+      no-data-text=""
+      separators="All"
+    >
+      <ui5-li
+        actionable=""
+        data-key="1"
+        has-title=""
+        style="width: 300px;"
+        type="Active"
+      >
+        Variant 1
+      </ui5-li>
+      <ui5-li
+        actionable=""
+        data-key="2"
+        has-title=""
+        selected="true"
+        style="width: 300px;"
+        type="Active"
+      >
+        Variant 2
+      </ui5-li>
+    </ui5-list>
+  </ui5-responsive-popover>
+</div>
 `;

@@ -1,20 +1,27 @@
-import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
-import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
-import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { Children, FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { styles } from '../Form/Form.jss';
 
 export interface FormGroupProps extends CommonProps {
   title?: string;
   children: ReactNode | ReactNodeArray;
 }
 
-const useStyles = createComponentStyles(styles, { name: 'FormGroup' });
+const useStyles = createComponentStyles(
+  {
+    title: {
+      paddingBottom: '1em'
+    },
+    formGroup: {
+      width: '100%',
+      paddingTop: '0.25em',
+      display: 'block'
+    }
+  },
+  { name: 'FormGroup' }
+);
 
 /**
  * <code>import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';</code>
@@ -27,24 +34,17 @@ const FormGroup: FC<FormGroupProps> = forwardRef((props: FormGroupProps, ref: Re
   return (
     <div ref={ref} style={style} className={className} title={tooltip} slot={slot}>
       {title && (
-        <Title level={TitleLevel.H5} className={classes.formPaddingBottom}>
+        <Title level={TitleLevel.H5} className={classes.title}>
           {title}
         </Title>
       )}
-      <FlexBox
-        justifyContent={FlexBoxJustifyContent.Start}
-        alignItems={FlexBoxAlignItems.End}
-        fitContainer
-        direction={FlexBoxDirection.Column}
-      >
-        {Children.map(children, (child, index) => {
-          return (
-            <div key={index.toString()} className={classes.formGroupStyle}>
-              {child}
-            </div>
-          );
-        })}
-      </FlexBox>
+      {Children.map(children, (child, index) => {
+        return (
+          <div key={index} className={classes.formGroup}>
+            {child}
+          </div>
+        );
+      })}
     </div>
   );
 });

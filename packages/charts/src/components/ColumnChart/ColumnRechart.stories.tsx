@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/next/ColumnChart';
 import React from 'react';
-import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts - Unstable /  ColumnChart',
@@ -71,7 +71,6 @@ export const defaultStackedStory = () => (
       gridVertical: false,
       fillOpacity: 0.7,
       strokeOpacity: 1,
-      barSize: 35,
       xAxisVisible: true,
       yAxisVisible: true,
       zoomingTool: true,
@@ -92,21 +91,17 @@ export const defaultFormatedStory = () => (
     labelKey={'name'}
     dataset={complexDataSet}
     width={'97%'}
-    dataLabelFormatter={(d) => d / 100}
     xAxisFormatter={(el) => el.slice(0, 3)}
     yAxisFormatter={(el) => el / 100}
     chartConfig={{
       gridStroke: 'white',
       gridVertical: false,
-      yAxisUnit: '/100',
       fillOpacity: 0.7,
       strokeOpacity: 1,
-      barSize: 35,
       xAxisVisible: true,
       yAxisVisible: true,
       zoomingTool: true,
-      stacked: true,
-      dataLabel: true
+      stacked: true
     }}
   />
 );
@@ -120,20 +115,18 @@ export const defaultReferenceLineStory = () => (
     onDataPointClick={action('onDataPointClick')}
     onLegendClick={action('onLegendClick')}
     labelKey={'name'}
-    dataset={complexDataSet}
+    dataset={bigDataSet}
     width={'97%'}
-    dataLabelFormatter={(d) => d / 100}
     chartConfig={{
       gridStroke: 'white',
       gridVertical: false,
       fillOpacity: 0.7,
       strokeOpacity: 1,
-      barSize: 35,
       xAxisVisible: true,
       yAxisVisible: true,
       zoomingTool: true,
-      stacked: true,
       dataLabel: true,
+      stacked: true,
       referenceLine: {
         color: 'red',
         label: 'MAX',

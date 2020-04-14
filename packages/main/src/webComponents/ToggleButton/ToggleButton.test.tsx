@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('ToggleButton', () => {

@@ -1,17 +1,21 @@
 import { PluginHook } from 'react-table';
 
-export const useTableHeaderStyling: PluginHook<{}> = (hooks) => {
-  hooks.getHeaderProps.push((columnProps, { instance, column }) => {
-    const { classes } = instance.webComponentsReactProperties;
-    return {
-      ...columnProps,
+const getHeaderProps = (columnProps, { instance, column }) => {
+  const { classes } = instance.webComponentsReactProperties;
+  return [
+    columnProps,
+    {
       className: classes.th,
       column,
       style: {
-        ...columnProps.style,
-        position: 'absolute' // TODO should be removed at some point in time
-      }
-    };
-  });
+        position: 'absolute'
+      },
+      id: column.id
+    }
+  ];
+};
+
+export const useTableHeaderStyling: PluginHook<{}> = (hooks) => {
+  hooks.getHeaderProps.push(getHeaderProps);
 };
 useTableHeaderStyling.pluginName = 'useTableHeaderStyling';

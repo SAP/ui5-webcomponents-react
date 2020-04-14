@@ -6,16 +6,28 @@ import {
   YAxisTicks
 } from '../internal/CustomElements';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { renderAxisTicks } from '../util/Utils';
+import { getTextWidth, renderAxisTicks } from '../util/Utils';
 
-export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter, stacked?, bar?) =>
+export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter, stacked?, bar?, noSizeCheck?) =>
   useMemo(() => {
-    return dataLabel
+    return dataLabel || typeof dataLabel === 'undefined'
       ? dataLabelCustomElement
         ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
         : {
             position: bar ? (stacked ? 'insideRight' : 'right') : stacked ? 'inside' : 'top',
-            content: (props) => dataLabelFormatter(props.value),
+            content: (props) => {
+              const formattedDataValue = dataLabelFormatter(props.value);
+              if (noSizeCheck) {
+                return formattedDataValue;
+              }
+              if (props.viewBox.width < getTextWidth(formattedDataValue)) {
+                return null;
+              }
+              if (props.viewBox.height < 12) {
+                return null;
+              }
+              return formattedDataValue;
+            },
             fill: ThemingParameters.sapContent_LabelColor
           }
       : false;
@@ -23,7 +35,7 @@ export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatt
 
 export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter) =>
   useMemo(() => {
-    return dataLabel
+    return dataLabel || typeof dataLabel === 'undefined'
       ? dataLabelCustomElement
         ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
         : (props): number | string => dataLabelFormatter(props.value)

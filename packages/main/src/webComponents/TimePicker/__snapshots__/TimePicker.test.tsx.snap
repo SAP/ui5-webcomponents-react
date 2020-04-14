@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimePicker Basic Test (generated) 1`] = `
+<ui5-timepicker
+  format-pattern=""
+  value=""
+  value-state="None"
+/>
+`;

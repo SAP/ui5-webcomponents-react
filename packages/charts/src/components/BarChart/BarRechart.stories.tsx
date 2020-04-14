@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
 import React from 'react';
-import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts - Unstable /  BarChart',
@@ -31,9 +31,9 @@ export const withCustomColor = () => (
     dataset={simpleDataSet}
     labelKey={'name'}
     color={'red'}
-    width={text('width', '95%')}
-    height={text('height', '70vh')}
-    chartConfig={{ dataLabel: true, barSize: 20 }}
+    width={'100%'}
+    height={'90vh'}
+    chartConfig={{ dataLabel: true }}
   />
 );
 
@@ -52,7 +52,7 @@ export const defaultStackedStory = () => (
     onDataPointClick={action('onDataPointClick')}
     onLegendClick={action('onLegendClick')}
     labelKey={'name'}
-    width={'91%'}
+    width={'100%'}
     dataset={complexDataSet}
     chartConfig={{
       gridStroke: 'white',
@@ -81,7 +81,6 @@ export const defaultFormatterStory = () => (
     width={'91%'}
     height={'90vh'}
     dataset={complexDataSet}
-    dataLabelFormatter={(d) => `${d / 10}%`}
     xAxisFormatter={(el) => el / 10}
     yAxisFormatter={(el) => el.slice(0, 3)}
     chartConfig={{
@@ -109,13 +108,13 @@ export const withReferenceLineStory = () => (
     onLegendClick={action('onLegendClick')}
     labelKey={'name'}
     width={'91%'}
-    dataset={complexDataSet}
+    height={'100vh'}
+    dataset={bigDataSet}
     chartConfig={{
       gridStroke: 'white',
       gridVertical: false,
       fillOpacity: 0.7,
       strokeOpacity: 1,
-      barSize: 20,
       xAxisVisible: true,
       yAxisVisible: true,
       zoomingTool: true,
@@ -143,7 +142,6 @@ export const withSecondardDimension = () => (
     color={'lightblue'}
     width={'100%'}
     height={'60vh'}
-    chartConfig={{ dataLabel: true, barSize: 20 }}
   />
 );
 

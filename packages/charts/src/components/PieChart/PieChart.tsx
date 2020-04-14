@@ -27,10 +27,12 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     dataset,
     dataKeys,
     noLegend = false,
+    labels,
     onDataPointClick,
     onLegendClick,
     dataLabelCustomElement = undefined,
-    dataLabelFormatter = (d) => d,
+    valueFormatter = (el) => el,
+    labelFormatter = (el) => el,
     chartConfig = {
       margin: { right: 30, left: 30, bottom: 30, top: 30 },
       yAxisVisible: true,
@@ -77,7 +79,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     [onDataPointClick]
   );
 
-  const PieDataLabel = usePieDataLabel(chartConfig.dataLabel, dataLabelCustomElement, dataLabelFormatter);
+  const PieDataLabel = usePieDataLabel(chartConfig.dataLabel, dataLabelCustomElement, labelFormatter);
 
   const marginChart = chartConfig?.margin ?? { right: 30, left: 30, bottom: 30, top: 30 };
 
@@ -106,11 +108,15 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
           {chartConfig.innerRadius && <Label position={'center'}>{currentDataKeys[0]}</Label>}
           {dataset &&
             dataset.map((data, index) => (
-              <Cell key={index} fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`} />
+              <Cell
+                key={index}
+                name={valueFormatter(data[labelKey])}
+                fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
+              />
             ))}
         </Pie>
-        <Tooltip />
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}{' '}
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
       </PieChartLib>
     </ChartContainer>
   );

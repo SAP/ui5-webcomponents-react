@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('MultiComboBox', () => {

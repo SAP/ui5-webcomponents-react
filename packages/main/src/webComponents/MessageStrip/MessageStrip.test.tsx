@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { MessageStrip } from '@ui5/webcomponents-react/lib/MessageStrip';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('MessageStrip', () => {

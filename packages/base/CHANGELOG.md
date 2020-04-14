@@ -3,6 +3,82 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-rc.14](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.13...v0.9.0-rc.14) (2020-04-10)
+
+
+### Bug Fixes
+
+* **Framework:** fix sideEffect-full files in react production build ([f5c02b1](https://github.com/SAP/ui5-webcomponents-react/commit/f5c02b18e56e7b1f72e89a095c737c83de626eab))
+
+
+
+
+
+# [0.9.0-rc.12](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.11...v0.9.0-rc.12) (2020-04-09)
+
+
+### Bug Fixes
+
+* **Device:** avoid modernizr to be treeshaked ([#419](https://github.com/SAP/ui5-webcomponents-react/issues/419)) ([3c8a1e2](https://github.com/SAP/ui5-webcomponents-react/commit/3c8a1e2ed92270d1af220331a49e267f095b9f46))
+
+
+
+
+
+# [0.9.0-rc.11](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.10...v0.9.0-rc.11) (2020-04-09)
+
+
+### Bug Fixes
+
+* **Framework:** fix side-effects in rollup build ([#414](https://github.com/SAP/ui5-webcomponents-react/issues/414)) ([b64fc5f](https://github.com/SAP/ui5-webcomponents-react/commit/b64fc5f568160b22294f94f5e2fe2e6702e88be0))
+
+
+
+
+
+# [0.9.0-rc.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.8...v0.9.0-rc.9) (2020-04-03)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix tree-table selection, add selectionBehavior prop + enum ([#401](https://github.com/SAP/ui5-webcomponents-react/issues/401)) ([7aab047](https://github.com/SAP/ui5-webcomponents-react/commit/7aab047ba2b66f49be06cb92f068ac96950aff20))
+* **useViewportRange:** don't update state after unmount ([#402](https://github.com/SAP/ui5-webcomponents-react/issues/402)) ([6b8daef](https://github.com/SAP/ui5-webcomponents-react/commit/6b8daef07adf446fe31167530ff7e68fdcaa45a2))
+
+
+### Features
+
+* **Framework:** update to ui5-webcomponents-rc.6 ([#392](https://github.com/SAP/ui5-webcomponents-react/issues/392)) ([84a3f90](https://github.com/SAP/ui5-webcomponents-react/commit/84a3f905f48e5ef12526a026b68a3c8faf4b5fe0)), closes [/github.com/SAP/ui5-webcomponents/blob/master/CHANGELOG.md#100-rc6-2020-03-27](https://github.com//github.com/SAP/ui5-webcomponents/blob/master/CHANGELOG.md/issues/100-rc6-2020-03-27) [#349](https://github.com/SAP/ui5-webcomponents-react/issues/349)
+
+
+### BREAKING CHANGES
+
+* **AnalyticalTable:** replace `noSelectionColumn` prop with `selectionBehavior` enum
+* **Framework:** Replace Avatar Component with `Avatar` UI5 Web Component
+* **Framework:** Replace Carousel Component with `Carousel` UI5 Web Component
+* **Framework:** Replace SegmentedButton Component with `SegmentedButton` UI5 Web Component
+* **Framework:** Deleted SegmentedButtonItem, replaced by ToggleButton
+* **Framework:** Remove MessageToast Component, replaced by `Toast` UI5 Web Component
+* **Framework:** **ThemeProvider**: Remove prop `withToastContainer` 
+* **Framework:** **AvatarSize**: Remove value `Custom`
+* **Framework:** **ButtonDesign**: Rename`Accept` to `Positive`
+* **Framework:** **ButtonDesign**: Rename`Reject` to `Negative`
+* **Framework:** **InputType**: Rename `Url` to `URL`
+* **Framework:** **CarouselArrowsPlacement**: Rename `PageIndicator` to `Navigation`
+* **Framework:** **BusyIndicator** : change default size of busy dots to `Medium`
+* **Framework:** **Icon** : `src` property is removed in favor of `name`
+* **Framework:** **MessageStrip** : replace icon property with icon slot to allow setting arbitrary content by the user
+* **Framework:** **MultiComboBox** : Does not longer accept `StandardListItem` as child, use `MultiComboBoxItem` instead
+* **Framework:** **ShellBar** : profile property is removed in favour of profile slot
+* **Framework:** **TabContainer** : `onItemSelect` event is renamed to `onTabSelect` and the item event parameter is renamed to tab.
+* **Framework:** **Card** : the property `subtitle` has been renamed to `subheading`
+* **Framework:** **TextArea** : the property `maxLength` has been renamed to `maxlength`
+* **Framework:** **ThemeProvider** : new prop `theme` is required for correct theming in addition to importing `import '@ui5/webcomponents-react/lib/ThemingSupport'`
+* **Framework:** configuring of compact size is removed, use the `ui5-content-density-compact` CSS class to apply compact size.
+
+
+
+
+
 # [0.9.0-rc.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.4...v0.9.0-rc.5) (2020-03-25)
 
 

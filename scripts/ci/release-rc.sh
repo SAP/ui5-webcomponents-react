@@ -17,9 +17,6 @@ yarn test
 # build the project
 yarn build
 
-# reset potential changes in sizes
-git checkout scripts/rollup/results.json
-
 # create npmrc with auth
 bash ${WORKSPACE}/scripts/ci/setup-npm.sh
 

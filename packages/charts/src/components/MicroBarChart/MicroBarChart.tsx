@@ -25,6 +25,8 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     height = '17vh',
     dataset,
     onDataPointClick,
+    labels,
+    valueFormatter = (el) => el,
     chartConfig = {
       xAxisUnit: '',
       yAxisUnit: '',
@@ -43,7 +45,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset);
+  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, undefined);
 
   const onDataPointClickInternal = useCallback(
     (e, i) => {
@@ -97,7 +99,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       ref={chartRef}
     >
       <MicroBarChartLib
-        margin={{ right: 30, top: 40, bottom: 30 }}
+        margin={{ left: -30, right: 30, top: 40, bottom: 30 }}
         layout={'vertical'}
         data={dataset}
         barGap={chartConfig.barGap}
@@ -123,14 +125,14 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
           fillOpacity={chartConfig.fillOpacity}
           label={{ content: <CustomizedLabel external={width} /> }}
           key={currentDataKeys[0]}
-          name={currentDataKeys[0]}
+          name={labels?.[currentDataKeys[0]] || currentDataKeys[0]}
           dataKey={currentDataKeys[0]}
           fill={color ?? `var(--sapUiChartAccent${(0 % 12) + 1})`}
           stroke={color ?? `var(--sapUiChartAccent${(0 % 12) + 1})`}
           barSize={chartConfig.barSize}
           onClick={onDataPointClickInternal}
         />
-        <Tooltip cursor={{ fillOpacity: 0.3 }} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
       </MicroBarChartLib>
     </ChartContainer>
   );

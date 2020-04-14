@@ -13,7 +13,8 @@ export enum CssSizeVariablesNames {
   sapWcrAnalyticalTableRowHeight = 'sapWcrAnalyticalTableRowHeight',
   sapWcrAnalyticalTableTreePaddingLevel1 = 'sapWcrAnalyticalTableTreePaddingLevel1',
   sapWcrAnalyticalTableTreePaddingLevel2 = 'sapWcrAnalyticalTableTreePaddingLevel2',
-  sapWcrAnalyticalTableTreePaddingLevel3 = 'sapWcrAnalyticalTableTreePaddingLevel3'
+  sapWcrAnalyticalTableTreePaddingLevel3 = 'sapWcrAnalyticalTableTreePaddingLevel3',
+  sapWcrAnalyticalTableSelectionColumnWidth = 'sapWcrAnalyticalTableSelectionColumnWidth'
 }
 
 export const CssSizeVariables: Record<CssSizeVariablesNames, string> = Object.values(CssSizeVariablesNames).reduce(
@@ -41,32 +42,7 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel1}:1.5rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel2}:2.25rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel3}:2.75rem;
-  
-  // TODO Remove those mappers after Web Components Update rc.6
-  --sapFontHeaderFamily:var(--sapUiFontFamily);
-  --sapFontSmallSize:var(--sapMFontSmallSize);
-  --sapFontLargeSize:var(--sapMFontLargeSize);
-  --sapFontHeader1Size:var(--sapMFontHeader1Size);
-  --sapFontHeader2Size:var(--sapMFontHeader2Size);
-  --sapFontHeader3Size:var(--sapMFontHeader3Size);
-  --sapFontHeader4Size:var(--sapMFontHeader4Size);
-  --sapFontHeader5Size:var(--sapMFontHeader5Size);
-  --sapFontHeader6Size:var(--sapMFontHeader6Size);
-  --sapContent_Shadow0:var(--sapUiShadowLevel0);
-  --sapContent_Shadow1:var(--sapUiShadowLevel1);
-  --sapContent_Shadow2:var(--sapUiShadowLevel2);
-  --sapContent_Shadow3:var(--sapUiShadowLevel3);
-  --sapElement_BorderCornerRadius:0.25rem;
-  --sapLink_Visited_Color:var(--sapUiLinkVisited);
-  --sapLink_Hover_Color:var(--sapUiLinkHover);
-  --sapLink_InvertedColor:var(--sapUiLinkInverted);
-  --sapLink_Active_Color:var(--sapUiLinkActive);
-  --sapButton_Selected_Background:var(--sapUiSegmentedButtonSelectedBackground);
-  --sapButton_Selected_TextColor:var(--sapUiSegmentedButtonSelectedTextColor);
-  --sapButton_Selected_BorderColor:var(--sapUiSegmentedButtonSelectedHoverBorderColor);
-  --sapContent_ContrastIconColor:var(--sapUiContentContrastIconColor);
-  --sapButton_Active_Background:var(--sapUiSegmentedButtonActiveBackground);
-  --sapButton_Active_TextColor:var(--sapUiButtonActiveColor);
+  --${CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth}:55px;
 
 }
 
@@ -87,5 +63,6 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel1}:1rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel2}:1.5rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel3}:2rem;
+  --${CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth}:40px;
 }
 `;

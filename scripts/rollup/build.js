@@ -2,15 +2,12 @@ const { rollup } = require('rollup');
 const stripBanner = require('rollup-plugin-strip-banner');
 const babel = require('rollup-plugin-babel');
 const prettier = require('rollup-plugin-prettier');
-const replace = require('rollup-plugin-replace');
-const resolve = require('rollup-plugin-node-resolve');
+const replace = require('@rollup/plugin-replace');
+const resolve = require('@rollup/plugin-node-resolve');
+const json = require('@rollup/plugin-json');
 const closure = require('./plugins/closure-plugin');
-const sizes = require('./plugins/sizes-plugin');
-const postcss = require('rollup-plugin-postcss');
 const stripUnusedImports = require('./plugins/strip-unused-imports');
 const Bundles = require('./bundles');
-const Stats = require('./stats');
-const { asyncCopyTo, asyncRimRaf } = require('../utils');
 const codeFrame = require('babel-code-frame');
 const chalk = require('chalk');
 const path = require('path');
@@ -35,7 +32,7 @@ process.on('unhandledRejection', (err) => {
   throw err;
 });
 
-const { NODE_DEV, NODE_PROD, NODE_ES } = Bundles.bundleTypes;
+const { NODE_DEV, NODE_PROD } = Bundles.bundleTypes;
 
 const closureOptions = {
   compilation_level: 'SIMPLE',
@@ -110,8 +107,6 @@ function getFilename(name, bundleType) {
       return `${name}.development.js`;
     case NODE_PROD:
       return `${name}.production.min.js`;
-    case NODE_ES:
-      return `${name}.js`;
   }
 }
 
@@ -120,8 +115,6 @@ function getFormat(bundleType) {
     case NODE_DEV:
     case NODE_PROD:
       return `cjs`;
-    case NODE_ES:
-      return `es`;
   }
 }
 
@@ -129,7 +122,6 @@ function isProductionBundleType(bundleType) {
   switch (bundleType) {
     case NODE_DEV:
     case NODE_PROD:
-    case NODE_ES:
       return true;
     default:
       throw new Error(`Unknown type: ${bundleType}`);
@@ -138,7 +130,6 @@ function isProductionBundleType(bundleType) {
 
 function getPlugins(entry, externals, updateBabelOptions, filename, packageName, bundleType) {
   const isProduction = isProductionBundleType(bundleType);
-  const isES6Bundle = bundleType === NODE_ES;
   const shouldStayReadable = forcePrettyOutput;
   return [
     resolve({
@@ -148,6 +139,7 @@ function getPlugins(entry, externals, updateBabelOptions, filename, packageName,
     stripBanner({
       exclude: 'node_modules/**/*'
     }),
+    json(),
     // Compile to ES5.
     babel(getBabelConfig(updateBabelOptions, bundleType)),
     // Turn __DEV__ and process.env checks into constants.
@@ -158,10 +150,8 @@ function getPlugins(entry, externals, updateBabelOptions, filename, packageName,
         'process.env.NODE_ENV': isProduction ? "'production'" : "'development'"
       }
     }),
-    postcss(),
     // Apply dead code elimination and/or minification.
     isProduction &&
-      !isES6Bundle &&
       closure(
         Object.assign({}, closureOptions, {
           // Don't let it create global variables in the browser.
@@ -178,24 +168,7 @@ function getPlugins(entry, externals, updateBabelOptions, filename, packageName,
     // Note that this plugin must be called after closure applies DCE.
     isProduction && stripUnusedImports([]),
     // Add the whitespace back if necessary.
-    shouldStayReadable && prettier({ parser: 'babylon' }),
-    // Record bundle size.
-    sizes({
-      getSize: (size, gzip) => {
-        const currentSizes = Stats.currentBuildResults.bundleSizes;
-        const recordIndex = currentSizes.findIndex(
-          (record) => record.filename === filename && record.bundleType === bundleType
-        );
-        const index = recordIndex !== -1 ? recordIndex : currentSizes.length;
-        currentSizes[index] = {
-          filename,
-          bundleType,
-          packageName,
-          size,
-          gzip
-        };
-      }
-    })
+    shouldStayReadable && prettier({ parser: 'babylon' })
   ].filter(Boolean);
 }
 
@@ -293,18 +266,12 @@ async function buildEverything() {
   // and to avoid any potential race conditions.
   // eslint-disable-next-line no-for-of-loops/no-for-of-loops
   for (const bundle of Bundles.bundles) {
-    await createBundle(bundle, NODE_ES);
     await createBundle(bundle, NODE_DEV);
     await createBundle(bundle, NODE_PROD);
     createDeclarationFiles(bundle);
   }
 
   await Packaging.prepareNpmPackages();
-
-  console.log(Stats.printResults());
-  if (!forcePrettyOutput) {
-    Stats.saveResults();
-  }
 
   if (shouldExtractErrors) {
     console.warn(

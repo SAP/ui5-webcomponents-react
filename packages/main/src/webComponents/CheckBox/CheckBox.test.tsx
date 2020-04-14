@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('CheckBox', () => {

@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { GroupHeaderListItem } from '@ui5/webcomponents-react/lib/GroupHeaderListItem';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('GroupHeaderListItem', () => {

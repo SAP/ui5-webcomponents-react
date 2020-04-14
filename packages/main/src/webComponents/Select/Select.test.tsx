@@ -1,5 +1,5 @@
-import { mount } from 'enzyme';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('Select', () => {
