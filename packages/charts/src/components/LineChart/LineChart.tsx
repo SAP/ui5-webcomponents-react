@@ -15,7 +15,7 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
@@ -69,18 +69,18 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
-        color: undefined
+        color: undefined,
       },
       referenceLine: {
         label: undefined,
         value: undefined,
-        color: undefined
-      }
+        color: undefined,
+      },
     },
     style,
     className,
     tooltip,
-    slot
+    slot,
   } = props;
   useInitialize();
 
@@ -88,7 +88,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     return labels.map((label) => {
       return {
         formatter: (d) => d,
-        ...label
+        ...label,
       };
     });
   }, [labels]);
@@ -97,7 +97,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     return values.map((value) => {
       return {
         formatter: (d) => d,
-        ...value
+        ...value,
       };
     });
   }, [values]);
@@ -135,7 +135,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
               value: eventOrIndex.value,
               dataKey: eventOrIndex.dataKey,
               xIndex: eventOrIndex.index,
-              payload: eventOrIndex.payload
+              payload: eventOrIndex.payload,
             }
           )
         );
@@ -179,6 +179,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         {(chartConfig.xAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
             const XAxisLabel = useAxisLabel(dimension.formatter);
+            console.log(dimension);
             return (
               <XAxis
                 key={dimension.accessor}
@@ -186,8 +187,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                 xAxisId={index}
                 interval={dimension.interval ?? isBigDataSet ? 2 : 0}
                 tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
-                tickLine={index > 0}
-                axisLine={index > 0}
+                tickLine={index >= 0}
+                axisLine={index >= 0}
               />
             );
           })}
