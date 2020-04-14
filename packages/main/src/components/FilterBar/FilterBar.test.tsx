@@ -94,7 +94,7 @@ describe('FilterBar', () => {
             </Option>
           </Select>
         </FilterGroupItem>
-        <FilterGroupItem label="MultBox" groupName="Group 2" mandatory>
+        <FilterGroupItem label="MultBox" groupName="Group 2" required>
           <MultiComboBox>
             <MultiComboBoxItem text="MultiComboBoxItem 1" />
             <MultiComboBoxItem text="MultiComboBoxItem 2" />
@@ -102,7 +102,7 @@ describe('FilterBar', () => {
             <MultiComboBoxItem text="MultiComboBoxItem 4" />
           </MultiComboBox>
         </FilterGroupItem>
-        <FilterGroupItem label="Date Picker" groupName="Group 2" mandatory>
+        <FilterGroupItem label="Date Picker" groupName="Group 2" required>
           <DatePicker />
         </FilterGroupItem>
       </FilterBar>
@@ -185,7 +185,7 @@ describe('FilterBar', () => {
             </Option>
           </Select>
         </FilterGroupItem>
-        <FilterGroupItem label="MultBox" groupName="Group 2" mandatory>
+        <FilterGroupItem label="MultBox" groupName="Group 2" required>
           <MultiComboBox>
             <MultiComboBoxItem text="MultiComboBoxItem 1" />
             <MultiComboBoxItem text="MultiComboBoxItem 2" />
@@ -193,7 +193,7 @@ describe('FilterBar', () => {
             <MultiComboBoxItem text="MultiComboBoxItem 4" />
           </MultiComboBox>
         </FilterGroupItem>
-        <FilterGroupItem label="Date Picker" groupName="Group 2" mandatory>
+        <FilterGroupItem label="Date Picker" groupName="Group 2" required>
           <DatePicker />
         </FilterGroupItem>
       </FilterBar>
@@ -258,7 +258,7 @@ describe('FilterBar', () => {
         <FilterGroupItem label="SWITCH">
           <Switch checked={true} />
         </FilterGroupItem>
-        <FilterGroupItem label="SELECT" mandatory>
+        <FilterGroupItem label="SELECT" required>
           <Select>
             <Option selected={true}>Option 1</Option>
             <Option>Option 2</Option>
@@ -283,7 +283,7 @@ describe('FilterBar', () => {
     // @ts-ignore
     expect(filterItemsDialogString).toEqual(filterItemsFBString);
     const filterItemMandatory = filterItemsDialog.at(2);
-    expect(filterItemMandatory.prop('mandatory')).toBeTruthy();
+    expect(filterItemMandatory.prop('required')).toBeTruthy();
     const checkbox = filterItemMandatory
       .parents()
       .find(CheckBox)

@@ -19,7 +19,7 @@ import React, {
   useCallback,
   useEffect,
   useRef,
-  useState
+  useState,
 } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterBar.jss';
@@ -81,6 +81,10 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     showClearButton,
     showRestoreButton,
     showSearchOnFiltersDialog,
+    style,
+    className,
+    tooltip,
+    slot,
 
     onToggleFilters,
     onFiltersDialogOpen,
@@ -92,7 +96,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     onFiltersDialogSelectionChange,
     onFiltersDialogSearch,
     onGo,
-    onRestore
+    onRestore,
   } = props;
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
@@ -185,7 +189,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     'onFiltersDialogSearch',
     'onGo',
     'onRestore',
-    'onFiltersDialogCancel'
+    'onFiltersDialogCancel',
   ]);
 
   const safeChildren = useCallback(() => {
@@ -194,7 +198,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
       return Children.toArray(children).map((child) => {
         if (toggledFilters?.[child.key] !== undefined) {
           return cloneElement(child, {
-            visibleInFilterBar: toggledFilters[child.key]
+            visibleInFilterBar: toggledFilters[child.key],
           });
         }
         return child;
@@ -232,12 +236,12 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
             ...child.props.children,
             props: {
               ...child.props.children.props,
-              ...filterItemProps
+              ...filterItemProps,
             },
             ref: (node) => {
               filterRefs.current[child.key] = node;
-            }
-          }
+            },
+          },
         });
       });
   }, [filterContainerWidth, considerGroupName, dialogRefs, safeChildren, showFilterConfiguration]);
@@ -271,6 +275,12 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     },
     [handleRestoreFilters]
   );
+
+  const cssClasses = StyleClassHelper.of(classes.outerContainer);
+  if (className) {
+    cssClasses.put(className);
+  }
+
   return (
     <>
       {dialogOpen && showFilterConfiguration && (
@@ -296,7 +306,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           {safeChildren()}
         </FilterDialog>
       )}
-      <div ref={ref} className={classes.outerContainer} {...passThroughProps}>
+      <div ref={ref} className={cssClasses.toString()} style={style} title={tooltip} slot={slot} {...passThroughProps}>
         {loading ? (
           <BusyIndicator active className={classes.loadingContainer} size={BusyIndicatorSize.Large} />
         ) : (
@@ -326,7 +336,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                   {showFilterConfiguration && (
                     <Button onClick={handleDialogOpen}>
                       {`Filters${
-                        activeFiltersCount && parseInt(activeFiltersCount as string) > 0 ? ` (${activeFiltersCount})` : ''
+                        activeFiltersCount && parseInt(activeFiltersCount as string) > 0
+                          ? ` (${activeFiltersCount})`
+                          : ''
                       }`}
                     </Button>
                   )}
@@ -369,7 +381,7 @@ FilterBar.defaultProps = {
   onFiltersDialogSelectionChange: null,
   onFiltersDialogSearch: null,
   onGo: null,
-  onRestore: null
+  onRestore: null,
 };
 
 FilterBar.displayName = 'FilterBar';

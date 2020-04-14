@@ -40,7 +40,7 @@ export const FilterDialog = (props) => {
     onGo,
     handleSelectionChange,
     handleDialogSearch,
-    handleDialogCancel
+    handleDialogCancel,
   } = props;
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
@@ -112,37 +112,38 @@ export const FilterDialog = (props) => {
     [handleDialogCancel]
   );
 
-  const renderFooter = useCallback(() => {
-    return (
-      <Bar
-        design={BarDesign.Footer}
-        renderContentRight={() => (
-          <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
-            {showGoButton && (
-              <Button onClick={handleDialogGo} design={ButtonDesign.Emphasized}>
-                Go
-              </Button>
-            )}
-            {showClearButton && <Button onClick={handleClearFilters}>Clear</Button>}
-            {showRestoreButton && <Button onClick={handleRestore}>Restore</Button>}
-            <Button onClick={handleSave}>Save</Button>
-            <Button design={ButtonDesign.Transparent} onClick={handleCancel}>
-              Cancel
-            </Button>
-          </FlexBox>
+  const renderFooterContentRight = useCallback(
+    () => (
+      <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
+        {showGoButton && (
+          <Button onClick={handleDialogGo} design={ButtonDesign.Emphasized}>
+            Go
+          </Button>
         )}
-      />
-    );
-  }, [
-    showClearButton,
-    showRestoreButton,
-    classes.footer,
-    showGoButton,
-    handleSave,
-    handleClose,
-    handleRestore,
-    handleClearFilters
-  ]);
+        {showClearButton && <Button onClick={handleClearFilters}>Clear</Button>}
+        {showRestoreButton && <Button onClick={handleRestore}>Restore</Button>}
+        <Button onClick={handleSave}>Save</Button>
+        <Button design={ButtonDesign.Transparent} onClick={handleCancel}>
+          Cancel
+        </Button>
+      </FlexBox>
+    ),
+    [
+      showGoButton,
+      classes.footer,
+      handleDialogGo,
+      showClearButton,
+      handleClearFilters,
+      showRestoreButton,
+      handleRestore,
+      handleSave,
+      handleCancel,
+    ]
+  );
+
+  const renderFooter = useCallback(() => {
+    return <Bar design={BarDesign.Footer} renderContentRight={renderFooterContentRight} />;
+  }, [renderFooterContentRight]);
 
   const renderHeader = useCallback(
     () => (
@@ -176,12 +177,12 @@ export const FilterDialog = (props) => {
             ...child.props.children,
             props: {
               ...child.props.children.props,
-              ...filterItemProps
+              ...filterItemProps,
             },
             ref: (node) => {
               dialogRefs.current[child.key] = node;
-            }
-          }
+            },
+          },
         });
       });
 
@@ -215,9 +216,9 @@ export const FilterDialog = (props) => {
             <div className={classes.singleFilter} key={`${el.key}-container`}>
               {el}
               <CheckBox
-                checked={el.props.visibleInFilterBar || el.props.mandatory || el.type.displayName !== 'FilterGroupItem'}
+                checked={el.props.visibleInFilterBar || el.props.required || el.type.displayName !== 'FilterGroupItem'}
                 onChange={handleCheckBoxChange(el, toggledFilters)}
-                disabled={el.props.mandatory || el.type.displayName !== 'FilterGroupItem'}
+                disabled={el.props.required || el.type.displayName !== 'FilterGroupItem'}
               />
             </div>
           );

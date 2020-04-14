@@ -167,7 +167,7 @@ export const renderStoryWithFiltersDialog = () => {
       <FilterGroupItem
         label="MultBox w/o initial selected"
         groupName="Group 2"
-        mandatory={boolean('FilterGroupItem: mandatory', true)}
+        required={boolean('FilterGroupItem: required', true)}
       >
         <MultiComboBox>
           <MultiComboBoxItem text="MultiComboBoxItem 1" />
@@ -176,7 +176,7 @@ export const renderStoryWithFiltersDialog = () => {
           <MultiComboBoxItem text="MultiComboBoxItem 4" />
         </MultiComboBox>
       </FilterGroupItem>
-      <FilterGroupItem label="Date Picker" groupName="Group 2" mandatory={boolean('FilterGroupItem: mandatory', true)}>
+      <FilterGroupItem label="Date Picker" groupName="Group 2" required={boolean('FilterGroupItem: required', true)}>
         <DatePicker />
       </FilterGroupItem>
     </FilterBar>

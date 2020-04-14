@@ -53,7 +53,7 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
   useEffect(() => {
     deprecationNotice(
       'FilterItem',
-      "'@ui5/webcomponents-react/lib/FilterItem' is deprecated.\nPlease use '@ui5/webcomponents-react/lib/FilterGroupItem' instead."
+      "'@ui5/webcomponents-react/lib/FilterItem' is deprecated and will be removed in the next major release.\nPlease use '@ui5/webcomponents-react/lib/FilterGroupItem' instead."
     );
   }, []);
 
