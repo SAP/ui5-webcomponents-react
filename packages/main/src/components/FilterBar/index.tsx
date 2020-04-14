@@ -106,7 +106,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   useEffect(() => {
     if (showFilterConfiguration) {
-      console.log('with dialog');
       Children.toArray(children).forEach((item) => {
         if (
           prevVisibleInFilterBarProps.current?.[item.key] !== undefined &&

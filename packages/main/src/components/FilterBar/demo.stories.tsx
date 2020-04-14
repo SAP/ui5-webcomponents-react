@@ -14,24 +14,14 @@ import React from 'react';
 
 const variantItems = [
   { label: 'Variant 1', key: '1' },
-  { label: 'Variant 2', key: '2' }
+  { label: 'Variant 2', key: '2' },
 ];
-
-const renderVariants = () => {
-  return (
-    <VariantManagement style={{ width: '300px', height: 'auto' }} initialSelectedKey="2" variantItems={variantItems} />
-  );
-};
-
-const renderSearch = () => {
-  return <Input placeholder={'Search'} />;
-};
 
 export const renderDefaultStory = () => {
   return (
     <FilterBar
-      renderSearch={renderSearch}
-      renderVariants={renderVariants}
+      renderSearch={() => <Input placeholder={'Search'} />}
+      renderVariants={() => <VariantManagement selectedKey="2" variantItems={variantItems} />}
       useToolbar={boolean('useToolbar', true)}
       filterBarExpanded={boolean('filterBarExpanded', true)}
       loading={boolean('loading', false)}
@@ -80,14 +70,18 @@ export const renderDefaultStory = () => {
   );
 };
 renderDefaultStory.story = {
-  name: 'Default'
+  name: 'Default',
 };
 
 export const renderStoryWithFiltersDialog = () => {
   return (
     <FilterBar
-      renderSearch={renderSearch}
-      renderVariants={renderVariants}
+      renderSearch={() => {
+        return <Input placeholder={'Search'} />;
+      }}
+      renderVariants={() => {
+        return <VariantManagement selectedKey="2" variantItems={variantItems} />;
+      }}
       useToolbar={boolean('useToolbar', true)}
       filterBarExpanded={boolean('filterBarExpanded', true)}
       loading={boolean('loading', false)}
@@ -189,13 +183,13 @@ export const renderStoryWithFiltersDialog = () => {
   );
 };
 renderStoryWithFiltersDialog.story = {
-  name: 'With Filters Dialog'
+  name: 'With Filters Dialog',
 };
 
 export default {
   title: 'Components / FilterBar',
   component: FilterBar,
   parameters: {
-    subcomponents: { FilterGroupItem }
-  }
+    subcomponents: { FilterGroupItem },
+  },
 };
