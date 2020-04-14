@@ -7,7 +7,7 @@ const styles = {
     paddingRight: '2rem',
     paddingBottom: '1px',
     background: ThemingParameters.sapObjectHeader_Background,
-    boxShadow: ThemingParameters.sapContent_HeaderShadow
+    boxShadow: ThemingParameters.sapContent_HeaderShadow,
   },
   filterBarHeader: {
     alignItems: 'center',
@@ -16,11 +16,11 @@ const styles = {
     minHeight: '3rem',
     paddingBottom: '0.5rem',
     boxShadow: 'none',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   vLine: {
     borderLeft: '1px solid gray',
-    paddingLeft: '0.5rem'
+    paddingLeft: '0.5rem',
   },
   filterArea: {
     display: 'flex',
@@ -28,35 +28,34 @@ const styles = {
     paddingTop: '1rem',
     paddingBottom: '1rem',
     background: ThemingParameters.sapObjectHeader_Background,
-    transition: 'max-height 0.2s ease-out, opacity 0.2s ease-in'
+    transition: 'max-height 0.2s ease-out, opacity 0.2s ease-in',
   },
   filterAreaClosed: {
     maxHeight: '0',
     opacity: 0,
     padding: 0,
-    overflowY: 'auto'
+    overflowY: 'auto',
   },
   filterAreaOpen: {
     maxHeight: '500px',
     opacity: 1,
-    overflowY: 'auto'
+    overflowY: 'auto',
   },
   headerRowRight: {
     display: 'flex',
     justifyContent: 'flex-end',
     flexGrow: 1,
     '& ui5-button': {
-      marginLeft: '0.5rem'
-    }
+      marginLeft: '0.5rem',
+    },
   },
   showFiltersBtn: { minWidth: '108px' },
-  // is being applied to the span which represents the InfoLabel Text
   loadingContainer: {
     marginBottom: '0.5rem',
     display: 'flex',
     width: '100%',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 };
 
 export default styles;
