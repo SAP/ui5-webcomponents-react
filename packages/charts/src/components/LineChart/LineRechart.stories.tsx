@@ -49,13 +49,11 @@ renderStory.story = {
 export const renderStoryWithCustomColor = () => (
   <LineChart
     onDataPointClick={action('onDataPointClick')}
-    labelKey={'name'}
+    labels={[{ accessor: 'name' }]}
+    values={[{ accessor: 'users', color: 'red' }]}
     dataset={simpleDataSet}
-    color={'red'}
-    width={'95%'}
-    height={'40vh'}
+    style={{ width: '95%', height: '40vh' }}
     chartConfig={{
-      dataLabel: true,
       strokeWidth: 2,
       strokeOpacity: 0.5
     }}
@@ -69,14 +67,11 @@ renderStoryWithCustomColor.story = {
 export const withSecondaryDimension = () => (
   <LineChart
     onDataPointClick={action('onDataPointClick')}
-    labelKey={'name'}
+    labels={[{ accessor: 'name' }, { accessor: 'dimension' }]}
+    values={[{ accessor: 'users', color: 'red' }]}
     dataset={secondaryDimensionDataSet}
-    secondaryDimensionKey={'dimension'}
-    color={'red'}
-    width={'95%'}
-    height={'60vh'}
+    style={{ width: '95%', height: '60vh' }}
     chartConfig={{
-      dataLabel: true,
       strokeWidth: 2,
       strokeOpacity: 0.5
     }}
@@ -92,12 +87,20 @@ export const renderLabelStory = () => {
     <LineChart
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
-      labelKey={'name'}
+      labels={[{ accessor: 'name' }]}
+      values={[
+        {
+          accessor: 'users'
+        },
+        {
+          accessor: 'sessions'
+        },
+        {
+          accessor: 'volume'
+        }
+      ]}
       dataset={complexDataSet}
-      width={'95%'}
-      height={'40vh'}
-      noLegend={false}
-      loading={true}
+      style={{ width: '95%', height: '40vh' }}
       chartConfig={{
         zoomingTool: true,
         strokeWidth: 1.5,
@@ -116,19 +119,24 @@ export const renderCustomDataLabelStory = () => {
     <LineChart
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
-      labelKey={'name'}
-      labels={{ users: 'number of users' }}
       dataset={complexDataSet}
-      width={'95%'}
-      height={'40vh'}
-      noLegend={false}
-      yAxisFormatter={(element: number) => `${element / 10}`}
-      xAxisFormatter={(element: string) => element.slice(0, 3)}
+      labels={[{ accessor: 'name', label: 'number of users', formatter: (element: string) => element.slice(0, 3) }]}
+      values={[
+        {
+          accessor: 'users',
+          formatter: (element: number) => `${element / 10}`
+        },
+        {
+          accessor: 'sessions'
+        },
+        {
+          accessor: 'volume'
+        }
+      ]}
+      style={{ width: '95%', height: '40vh' }}
       chartConfig={{
         zoomingTool: true,
-        strokeWidth: 1.5,
-        dataLabel: true,
-        yAxisUnit: '%'
+        strokeWidth: 1.5
       }}
     />
   );
@@ -138,7 +146,7 @@ renderCustomDataLabelStory.story = {
   name: 'With formatter'
 };
 
-export const loadingPlaceholder = () => <LineChart width={'30%'} />;
+export const loadingPlaceholder = () => <LineChart width={'30%'} labels={[]} values={[]} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
@@ -150,10 +158,21 @@ export const withReferenceLineStory = () => {
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
-      width={'95%'}
-      height={'40vh'}
+      labels={[{ accessor: 'name' }]}
+      values={[
+        {
+          accessor: 'users'
+        },
+        {
+          accessor: 'sessions'
+        },
+        {
+          accessor: 'volume'
+        }
+      ]}
+      style={{ width: '95%', height: '40vh' }}
       noLegend={false}
-      loading={true}
+      loading
       chartConfig={{
         referenceLine: {
           color: 'red',
