@@ -2,11 +2,13 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingPara
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
 import React, { ComponentType, CSSProperties, FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { ResponsiveContainer } from 'recharts';
-import { ChartContainerProps } from '../interfaces/ChartContainerProps';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
-export interface ContainerProps extends ChartContainerProps {
+export interface ContainerProps extends CommonProps {
   children: ReactNode;
   Placeholder?: ComponentType<unknown>;
+  dataset: unknown[];
+  loading?: boolean;
 }
 
 const loaderStyles: CSSProperties = {
@@ -17,7 +19,7 @@ const loaderStyles: CSSProperties = {
 };
 
 const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, ref: Ref<any>) => {
-  const { height, width, Placeholder, loading = false, dataset, style, className, tooltip, slot, children } = props;
+  const { Placeholder, loading = false, dataset, style, className, tooltip, slot, children } = props;
 
   const internalStyles: CSSProperties = useMemo(() => {
     return {
@@ -27,7 +29,7 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
       position: 'relative',
       ...(style ?? {})
     };
-  }, [style, width, height]);
+  }, [style]);
 
   return (
     <div ref={ref} style={internalStyles} className={className} title={tooltip} slot={slot}>

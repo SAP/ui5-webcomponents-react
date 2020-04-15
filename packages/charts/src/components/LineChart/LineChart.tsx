@@ -5,7 +5,7 @@ import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { ComponentType, CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Brush,
   CartesianGrid,
@@ -15,10 +15,11 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis,
+  YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 
 export interface LabelElement {
@@ -33,6 +34,7 @@ export interface ValueElement {
   label?: string;
   formatter?: (value: any) => string;
   hideDataLabel?: boolean;
+  DataLabel?: ComponentType<any>;
 }
 
 interface LineChartProps extends RechartBasePropsNew {
@@ -53,7 +55,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     noLegend = false,
     onDataPointClick,
     onLegendClick,
-    DataLabel = undefined,
     chartConfig = {
       margin: {},
       yAxisVisible: false,
@@ -69,49 +70,44 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
-        color: undefined,
+        color: undefined
       },
       referenceLine: {
         label: undefined,
         value: undefined,
-        color: undefined,
-      },
+        color: undefined
+      }
     },
     style,
     className,
     tooltip,
-    slot,
+    slot
   } = props;
   useInitialize();
 
-  const dimensions = useMemo(() => {
-    return labels.map((label) => {
-      return {
-        formatter: (d) => d,
-        ...label,
-      };
-    });
-  }, [labels]);
-
-  const measures = useMemo(() => {
-    return values.map((value) => {
-      return {
-        formatter: (d) => d,
-        ...value,
-      };
-    });
-  }, [values]);
-
-  const tooltipValueFormatter = useCallback(
-    (value, name) => {
-      const { formatter } = measures.find(({ accessor }) => accessor === name);
-      if (formatter && typeof formatter === 'function') {
-        return formatter(value);
-      }
-      return value;
-    },
-    [measures]
+  const dimensions = useMemo(
+    () =>
+      labels.map((label) => {
+        return {
+          formatter: (d) => d,
+          ...label
+        };
+      }),
+    [labels]
   );
+
+  const measures = useMemo(
+    () =>
+      values.map((value) => {
+        return {
+          formatter: (d) => d,
+          ...value
+        };
+      }),
+    [values]
+  );
+
+  const tooltipValueFormatter = useTooltipFormatter(measures);
 
   const primaryDimension = dimensions[0];
   const primaryMeasure = measures[0];
@@ -135,7 +131,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
               value: eventOrIndex.value,
               dataKey: eventOrIndex.dataKey,
               xIndex: eventOrIndex.index,
-              payload: eventOrIndex.payload,
+              payload: eventOrIndex.payload
             }
           )
         );
@@ -179,7 +175,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         {(chartConfig.xAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
             const XAxisLabel = useAxisLabel(dimension.formatter);
-            console.log(dimension);
             return (
               <XAxis
                 key={dimension.accessor}
@@ -202,7 +197,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={chartConfig.secondYAxis.color ?? `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`}
+            stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
             yAxisId="right"
@@ -210,19 +205,24 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           />
         )}
         {measures.map((element, index) => {
-          const LineDataLabel = useDataLabel(!element.hideDataLabel, DataLabel, element.formatter, false, false, true);
+          const LineDataLabel = useDataLabel(
+            !element.hideDataLabel,
+            element.DataLabel,
+            element.formatter,
+            false,
+            false,
+            true
+          );
           return (
             <Line
-              yAxisId={
-                chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === element.accessor ? 'right' : 'left'
-              }
+              yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={chartConfig.strokeOpacity}
               label={isBigDataSet ? false : LineDataLabel}
               type="monotone"
               dataKey={element.accessor}
-              stroke={element.color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
+              stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               strokeWidth={chartConfig.strokeWidth}
               activeDot={{ onClick: onDataPointClickInternal }}
             />

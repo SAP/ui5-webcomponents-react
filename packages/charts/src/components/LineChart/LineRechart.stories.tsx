@@ -27,8 +27,7 @@ export const renderStory = () => {
       values={[
         {
           accessor: 'users',
-          formatter: (val) => `${val}🎉`,
-          color: 'pink'
+          formatter: (val) => `${val}🎉`
         },
         {
           accessor: 'sessions',

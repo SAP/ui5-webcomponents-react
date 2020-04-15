@@ -70,8 +70,6 @@ export interface RechartBasePropsNew extends ChartContainerProps {
   onDataPointClick?: (event: CustomEvent) => void;
   onLegendClick?: (event: CustomEvent) => void;
 
-  DataLabel?: JSX.Element;
-
   chartConfig?: {
     margin?: {
       right: number;
