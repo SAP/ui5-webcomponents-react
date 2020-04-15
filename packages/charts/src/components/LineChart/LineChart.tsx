@@ -1,7 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
@@ -23,23 +22,49 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 
 export interface LabelElement {
-  accessor: string;
+  accessor: string | Function;
   formatter?: (value: any) => string;
   interval?: number;
 }
 
 export interface ValueElement {
   color?: CSSProperties['color'];
-  accessor: string;
+  /**
+   * A string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   * Can also be a getter.
+   */
+  accessor: string | Function;
+  /**
+   * The Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
+   */
   label?: string;
+  /**
+   * This function will be called for each data label and allows you to format it according to your needs.
+   */
   formatter?: (value: any) => string;
+  /**
+   * Flag whether the data labels should be hidden in the chart for this line.
+   */
   hideDataLabel?: boolean;
+  /**
+   * Use a custom component for the Data Label
+   */
   DataLabel?: ComponentType<any>;
+  /**
+   * Line Width
+   * @default 1
+   */
+  lineWidth?: number;
+  /**
+   * Line Opacity
+   * @default 1
+   */
+  opacity?: number;
 }
 
 interface LineChartProps extends RechartBasePropsNew {
-  labels: LabelElement[];
-  values: ValueElement[];
+  dimensions: LabelElement[];
+  measures: ValueElement[];
 }
 
 /**
@@ -48,8 +73,6 @@ interface LineChartProps extends RechartBasePropsNew {
  */
 const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
-    values,
-    labels,
     dataset,
     loading,
     noLegend = false,
@@ -64,9 +87,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       gridVertical: false,
       yAxisColor: ThemingParameters.sapList_BorderColor,
       legendPosition: 'top',
-      strokeWidth: 1,
       zoomingTool: false,
-      strokeOpacity: 1,
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
@@ -83,28 +104,29 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     tooltip,
     slot
   } = props;
-  useInitialize();
 
   const dimensions = useMemo(
     () =>
-      labels.map((label) => {
+      props.dimensions.map((label) => {
         return {
           formatter: (d) => d,
           ...label
         };
       }),
-    [labels]
+    [props.dimensions]
   );
 
   const measures = useMemo(
     () =>
-      values.map((value) => {
+      props.measures.map((value) => {
         return {
           formatter: (d) => d,
+          lineWidth: 1,
+          opacity: 1,
           ...value
         };
       }),
-    [values]
+    [props.measures]
   );
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
@@ -218,12 +240,12 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
               yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
               key={element.accessor}
               name={element.label ?? element.accessor}
-              strokeOpacity={chartConfig.strokeOpacity}
+              strokeOpacity={element.opacity}
               label={isBigDataSet ? false : LineDataLabel}
               type="monotone"
               dataKey={element.accessor}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-              strokeWidth={chartConfig.strokeWidth}
+              strokeWidth={element.lineWidth}
               activeDot={{ onClick: onDataPointClickInternal }}
             />
           );
@@ -242,7 +264,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           <Brush
             y={0}
             dataKey={primaryDimensionAccessor}
-            stroke={`var(--sapUiChartAccent6)`}
+            stroke={ThemingParameters.sapContent_Selected_Background}
             travellerWidth={10}
             height={20}
           />
