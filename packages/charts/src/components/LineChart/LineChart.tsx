@@ -21,12 +21,6 @@ import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../ho
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 
-export interface LabelElement {
-  accessor: string | Function;
-  formatter?: (value: any) => string;
-  interval?: number;
-}
-
 type MeasureConfig = {
   /**
    * A string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.

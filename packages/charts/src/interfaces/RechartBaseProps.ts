@@ -1,4 +1,4 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { CSSProperties } from 'react';
 import { ChartContainerProps } from './ChartContainerProps';
 
@@ -65,7 +65,10 @@ export interface RechartBaseProps extends ChartContainerProps {
   };
 }
 
-export interface RechartBasePropsNew extends Omit<ChartContainerProps, 'width' | 'height'> {
+export interface RechartBasePropsNew extends CommonProps {
+  loading?: boolean;
+  dataset?: Record<string, any>[];
+
   noLegend?: boolean;
   onDataPointClick?: (event: CustomEvent) => void;
   onLegendClick?: (event: CustomEvent) => void;
