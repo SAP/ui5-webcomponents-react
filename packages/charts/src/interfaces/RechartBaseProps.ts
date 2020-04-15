@@ -65,7 +65,7 @@ export interface RechartBaseProps extends ChartContainerProps {
   };
 }
 
-export interface RechartBasePropsNew extends ChartContainerProps {
+export interface RechartBasePropsNew extends Omit<ChartContainerProps, 'width' | 'height'> {
   noLegend?: boolean;
   onDataPointClick?: (event: CustomEvent) => void;
   onLegendClick?: (event: CustomEvent) => void;

@@ -27,13 +27,13 @@ export interface LabelElement {
   interval?: number;
 }
 
-export interface ValueElement {
-  color?: CSSProperties['color'];
+type MeasureConfig = {
   /**
    * A string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
    * Can also be a getter.
    */
   accessor: string | Function;
+  color?: CSSProperties['color'];
   /**
    * The Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    */
@@ -60,11 +60,35 @@ export interface ValueElement {
    * @default 1
    */
   opacity?: number;
-}
+};
+
+type DimensionConfig = {
+  accessor: string | Function;
+  formatter?: (value: any) => string;
+  interval?: number;
+};
 
 interface LineChartProps extends RechartBasePropsNew {
-  dimensions: LabelElement[];
-  measures: ValueElement[];
+  dimensions: DimensionConfig[];
+  /**
+   * An array of config objects. Each object is defining one line in the chart.
+   *
+   * <h4>Required properties</h4>
+   * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * <h4>Optional properties</h4>
+   *
+   * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
+   * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
+   * - `DataLabel`: a custom component to be used for the data label
+   * - `lineWidth`: line width, defaults to `1`
+   * - `opacity`: line opacity, defaults to `1`
+   *
+   */
+  measures: MeasureConfig[];
 }
 
 /**
