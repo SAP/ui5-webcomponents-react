@@ -18,12 +18,34 @@ const getRowProps = (rowProps, { row }) => {
   ];
 };
 
+const tagNamesWhichShouldNotSelectARow = new Set([
+  'UI5-INPUT',
+  'UI5-LINK',
+  'UI5-BUTTON',
+  'UI5-CHECKBOX',
+  'UI5-COMBOBOX',
+  'UI5-DATEPICKER',
+  'UI5-MULTI-COMBOBOX',
+  'UI5-SELECT',
+  'UI5-RADIOBUTTON',
+  'UI5-SEGMENTEDBUTTON',
+  'UI5-SWITCH',
+  'UI5-TOGGLEBUTTON'
+]);
+
 const useInstance = (instance) => {
   const { webComponentsReactProperties, dispatch, toggleRowSelected, selectedFlatRows } = instance;
   const { isTreeTable, selectionMode, onRowSelected, selectionBehavior } = webComponentsReactProperties;
 
   const selectSingleRow = useCallback(
     (row, e, selectionCellClick = false) => {
+      if (
+        tagNamesWhichShouldNotSelectARow.has(e.target.tagName) &&
+        !(e.markerAllowTableRowSelection === true || e.nativeEvent?.markerAllowTableRowSelection === true)
+      ) {
+        return;
+      }
+
       const isEmptyRow = row.original?.emptyRow;
       if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode) && !isEmptyRow) {
         if (row.isGrouped || (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior && !selectionCellClick)) {
