@@ -222,8 +222,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                 xAxisId={index}
                 interval={dimension.interval ?? isBigDataSet ? 2 : 0}
                 tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
-                tickLine={index >= 0}
-                axisLine={index >= 0}
+                tickLine={index < 1}
+                axisLine={index < 1}
               />
             );
           })}
@@ -282,7 +282,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           <Brush
             y={0}
             dataKey={primaryDimensionAccessor}
-            stroke={ThemingParameters.sapContent_Selected_Background}
+            stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}
             height={20}
           />

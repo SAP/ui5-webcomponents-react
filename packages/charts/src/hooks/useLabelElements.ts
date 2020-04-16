@@ -45,14 +45,12 @@ export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelForm
       : false;
   }, [dataLabelFormatter, dataLabelCustomElement, dataLabel]);
 
-export const useAxisLabel = (AxisFormatter, AxisUnit = '', yAxis?) => {
+export const useAxisLabel = (AxisFormatter, yAxis?) => {
   return useCallback(
     (labelProps) => {
-      return yAxis
-        ? YAxisTicks(labelProps, AxisFormatter, AxisUnit)
-        : renderAxisTicks(labelProps, AxisFormatter, AxisUnit);
+      return yAxis ? YAxisTicks(labelProps, AxisFormatter) : renderAxisTicks(labelProps, AxisFormatter);
     },
-    [AxisFormatter, AxisUnit]
+    [AxisFormatter]
   );
 };
 

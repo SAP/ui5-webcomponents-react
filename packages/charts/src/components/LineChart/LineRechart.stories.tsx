@@ -53,7 +53,7 @@ export const renderStoryWithCustomColor = () => (
   <LineChart
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }]}
-    measures={[{ accessor: 'users.current', color: 'red' }]}
+    measures={[{ accessor: 'users', color: 'red' }]}
     dataset={simpleDataSet}
     style={{ width: '95%', height: '40vh' }}
     chartConfig={{
