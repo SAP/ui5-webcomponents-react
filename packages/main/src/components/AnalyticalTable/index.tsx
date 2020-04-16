@@ -168,6 +168,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
+  const resizeObserverInitialized = useRef(false);
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
@@ -241,21 +242,28 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   );
 
   const updateTableClientWidth = useCallback(() => {
-    requestAnimationFrame(() => {
-      if (tableRef.current) {
-        dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
-      }
-    });
+    if (tableRef.current) {
+      dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
+    }
   }, []);
 
   useEffect(() => {
     // @ts-ignore
-    const tableWidthObserver = new ResizeObserver(updateTableClientWidth);
+    const tableWidthObserver = new ResizeObserver(() => {
+      if(resizeObserverInitialized.current) {
+        updateTableClientWidth();
+      }
+      resizeObserverInitialized.current = true;
+    });
     tableWidthObserver.observe(tableRef.current);
     return () => {
       tableWidthObserver.disconnect();
     };
-  }, [updateTableClientWidth]);
+  }, []);
+
+  useEffect(() => {
+    updateTableClientWidth();
+  }, []);
 
   useEffect(() => {
     dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
@@ -335,7 +343,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       visibility: 'hidden' as 'hidden'
     };
   }, [tableState.tableClientWidth, style]);
-  
+
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
