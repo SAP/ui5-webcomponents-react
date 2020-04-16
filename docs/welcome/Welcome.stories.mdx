@@ -5,12 +5,13 @@ import { Button } from '@ui5/webcomponents-react/lib/Button';
 <Meta title="1 Welcome / Getting Started" />
 
 # UI5 Web Components for React
-[![](https://img.shields.io/travis/SAP/ui5-webcomponents-react/master.svg)](https://travis-ci.org/SAP/ui5-webcomponents-react)
-[![Coverage Status](https://coveralls.io/repos/github/SAP/ui5-webcomponents-react/badge.svg)](https://coveralls.io/github/SAP/ui5-webcomponents-react)
-[![](https://img.shields.io/npm/v/@ui5/webcomponents-react/latest.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
-[![](https://img.shields.io/npm/v/@ui5/webcomponents-react/next.svg)](https://www.npmjs.com/package/@ui5/webcomponents-react)
+[![](https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg)](https://github.com/SAP/ui5-webcomponents-react/actions?query=workflow:%22build%22)
+[![](https://coveralls.io/repos/github/SAP/ui5-webcomponents-react/badge.svg)](https://coveralls.io/github/SAP/ui5-web)
+[![](https://badgen.net/badge/slack/Join%20OpenUI5%20Slack%20workspace/blue?icon=slack)](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/)
 [![](https://badgen.net/badge/slack/webcomponents-react/orange?icon=slack)](https://openui5.slack.com/archives/CSQEJ2J04)
-[![GitHub stars](https://img.shields.io/github/stars/SAP/ui5-webcomponents-react?style=social)](https://github.com/SAP/ui5-webcomponents-react/stargazers)
+[![](https://badgen.net/badge/code%20style/prettier?color=pink)](https://github.com/prettier/prettier)
+[![](https://badgen.net/badge/maintained%20with/lerna?color=purple)](https://lernajs.io/)
+[![](https://badgen.net/github/stars/SAP/ui5-webcomponents-react?icon=github&color=black)](https://github.com/SAP/ui5-webcomponents-react/stargazers)
 
 [Open Github Project](https://github.com/SAP/ui5-webcomponents-react)
 
@@ -26,16 +27,34 @@ In addition to that, UI5 Web Components for React is providing complex component
 
 ## Getting Started
 
-**Prerequisite: You have a React app.** In case you don't, we recommend to create one using [create-react-app](https://facebook.github.io/create-react-app/).<br/>
-In order to use `ui5-webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
-You will find this component most likely in `src/App.js`:
+### Creating a new React app
+
+You can create a new react app by using [create-react-app](https://facebook.github.io/create-react-app/) with our template.
+This template is installing all required dependencies for you and is setting up the `App.js` file for you:
+```sh
+npx create-react-app my-app --template @ui5/webcomponents-react
+# or if you want to use yarn
+yarn create react-app my-app --template @ui5/webcomponents-react
+```
+
+### Add `@ui5/webcomponents-react` to an existing app
+
+First of all, you need to add the `@ui5/webcomponents-react` dependency to your project. Please also keep in mind installing the required peer dependencies:
+```sh
+npm install @ui5/webcomponents @ui5/webcomponents-react --save
+# if you want to use the ShellBar or the ProductSwitcher component, you also need to install this package as well
+npm install @ui5/webcomponents-fiori
+```
+
+In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
+You will find this component most likely in `src/App.js`: 
 ```jsx
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 ...
 render() {
   return (
     <div>
-      <ThemeProvider withToastContainer>
+      <ThemeProvider>
         <MyApp />
       </ThemeProvider>
     </div>
@@ -43,11 +62,11 @@ render() {
 }
 ```
 
-Then, you are ready to use `ui5-webcomponents-react` and you can import the desired component(s) in your app:<br />
-For example, to use ```Button``` you need to import it:
+Then, you are ready to use `@ui5/webcomponents-react` and you can import the desired component(s) in your app:<br />
+For example, to use the `Button` component you need to import it:
 
 ```jsx
-import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Button } from '@ui5/webcomponents-react/lib/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react component
 ```
 
 Then, you can use the Button in your app:
@@ -55,9 +74,6 @@ Then, you can use the Button in your app:
 ```jsx
 <Button onClick={() => alert('Hello World!')}>Hello world!</Button>
 ```
-<Button onClick={() => alert('Hello World!')}>Hello World</Button>
-
-You could import all components also from `@ui5/webcomponents-react` directly, but this will have a negative impact on your bundle size.
 
 ### Theming
 
@@ -81,14 +97,12 @@ Available Themes:
 - `sap_belize_hcw`
 
 ### Configure Compact/Cozy setting
-UI5 Web Components supports ```Compact``` and ```Cozy``` mode. It is set to ```Cozy``` by default. To enable ```Compact``` globally, provide the option ```compactSize: true``` in the configuration ```script``` tag:
+UI5 Web Components supports ```Compact``` and ```Cozy``` mode. It is set to ```Cozy``` by default. To enable ```Compact```, provide the css class ```ui5-content-density-compact``` to any of your HTML elements and it apply compact size to all of its children.
 
 ```html
-<script data-ui5-config type="application/json">
-{
-  "compactSize": true
-}
-</script>
+  <body class="ui5-content-density-compact">
+    ...
+  </body>
 ```
 
 ### Support
