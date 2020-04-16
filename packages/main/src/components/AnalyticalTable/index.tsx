@@ -122,7 +122,13 @@ export interface TableProps extends CommonProps {
 const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
 
 /**
- * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code>
+ * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code><br />
+ * <br />
+ * ### Usage Notes
+ * By default, the `AnalyticalTable` will not select any rows after clicking on active elements like a `Button`, `Link`,
+ * etc. <br />
+ * In case you want to select the row anyways, you can "mark" the event to allow such a behaviour. <br />
+ * Example: `<Link onClick={(e) => {e.markerAllowTableRowSelection = true;}>My Link Text</Link>`
  */
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
   const {
@@ -169,6 +175,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
+  const resizeObserverInitialized = useRef(false);
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
@@ -241,19 +248,28 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     ...tableHooks
   );
 
+  const updateTableClientWidth = useCallback(() => {
+    if (tableRef.current) {
+      dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
+    }
+  }, []);
+
   useEffect(() => {
     // @ts-ignore
     const tableWidthObserver = new ResizeObserver(() => {
-      requestAnimationFrame(() => {
-        if (tableRef.current) {
-          dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
-        }
-      });
+      if(resizeObserverInitialized.current) {
+        updateTableClientWidth();
+      }
+      resizeObserverInitialized.current = true;
     });
     tableWidthObserver.observe(tableRef.current);
     return () => {
       tableWidthObserver.disconnect();
     };
+  }, [updateTableClientWidth, resizeObserverInitialized]);
+
+  useEffect(() => {
+    updateTableClientWidth();
   }, []);
 
   useEffect(() => {
