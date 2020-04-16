@@ -16,7 +16,8 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef
+  useRef,
+  CSSProperties
 } from 'react';
 import {
   PluginHook,
@@ -164,7 +165,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     onLoadMore
   } = props;
 
-  const classes = useStyles({ rowHeight: props.rowHeight });
+  const classes = useStyles();
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
@@ -259,7 +260,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return () => {
       tableWidthObserver.disconnect();
     };
-  }, []);
+  }, [updateTableClientWidth, resizeObserverInitialized]);
 
   useEffect(() => {
     updateTableClientWidth();
@@ -274,10 +275,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [selectedRowIds, dispatch]);
 
   const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
-
-  if (!!rowHeight) {
-    tableContainerClasses.put(classes.modifiedRowHeight);
-  }
 
   const calcRowHeight = parseInt(
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
@@ -335,14 +332,23 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   ]);
 
   const inlineStyle = useMemo(() => {
-    if(tableState.tableClientWidth > 0) {
-      return style;
+    const tableStyles = {};
+    if (!!rowHeight) {
+      tableStyles['--sapWcrAnalyticalTableRowHeight'] = `${rowHeight}px`;
+    }
+
+    if (tableState.tableClientWidth > 0) {
+      return {
+        ...tableStyles,
+        style
+      } as CSSProperties;
     }
     return {
+      ...tableStyles,
       ...style,
       visibility: 'hidden' as 'hidden'
-    };
-  }, [tableState.tableClientWidth, style]);
+    } as CSSProperties;
+  }, [tableState.tableClientWidth, style, rowHeight]);
 
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
