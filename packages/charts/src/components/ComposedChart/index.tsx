@@ -18,9 +18,78 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+
+type MeasureConfig = {
+  /**
+   * A string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   * Can also be a getter.
+   */
+  accessor: string | Function;
+  color?: CSSProperties['color'];
+  /**
+   * The Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
+   */
+  label?: string;
+  /**
+   * This function will be called for each data label and allows you to format it according to your needs.
+   */
+  formatter?: (value: any) => string;
+  /**
+   * Flag whether the data labels should be hidden in the chart for this line.
+   */
+  hideDataLabel?: boolean;
+  /**
+   * Use a custom component for the Data Label
+   */
+  DataLabel?: ComponentType<any>;
+  /**
+   * Line Width
+   * @default 1
+   */
+  lineWidth?: number;
+  /**
+   * Line Opacity
+   * @default 1
+   */
+  opacity?: number;
+  /**
+   * Chart type
+   */
+  type: AvailableChartTypes;
+};
+
+type DimensionConfig = {
+  accessor: string | Function;
+  formatter?: (value: any) => string;
+  interval?: number;
+};
+
+interface ComposedChartProps extends RechartBasePropsNew {
+  dimensions: DimensionConfig[];
+  /**
+   * An array of config objects. Each object is defining one line in the chart.
+   *
+   * <h4>Required properties</h4>
+   * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * <h4>Optional properties</h4>
+   *
+   * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
+   * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
+   * - `DataLabel`: a custom component to be used for the data label
+   * - `lineWidth`: line width, defaults to `1`
+   * - `opacity`: line opacity, defaults to `1`
+   *
+   */
+  measures: MeasureConfig[];
+}
 
 enum ChartTypes {
   line = Line,
@@ -32,59 +101,24 @@ const BAR_DEFAULT_PADDING = 20;
 
 type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
-interface ChartElement {
-  color?: CSSProperties['color'];
-  dataLabelFormatter?: (d: number) => unknown;
-  dataLabelCustomElement?: undefined;
-  type: AvailableChartTypes;
-  accessor: string;
-  stackId?: string;
-
-  [key: string]: unknown | number;
-}
-
-export interface ComposedChartProps extends RechartBaseProps {
-  placeholder?: ComponentType<unknown>;
-  elements?: ChartElement[];
-  defaults?: ChartElement;
-}
-
-const mergeWithDefaults = (config, defaults) => {
-  return {
-    ...defaults,
-    ...config
-  };
-};
-
 /**
  * <code>import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/next/ComposedChart';</code>
  * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
   const {
-    height = '500px',
-    width = '100%',
     loading,
     dataset,
-    labelKey = 'name',
-    secondaryDimensionKey,
     onDataPointClick,
     noLegend = false,
-    labels,
-    axisInterval,
-    valueFormatter = (el) => el,
-    labelFormatter = (el) => el,
     defaults = {
-      barSize: undefined,
+      barSize: 20,
       barGap: 3,
       lineType: 'monotone',
-      xAxisFormatter: (d) => d,
-      yAxisFormatter: (d) => d,
       dataLabelCustomElement: undefined,
       label: { position: 'top' },
       stackId: undefined
     },
-    elements,
     onLegendClick,
     chartConfig = {
       margin: {},
@@ -102,6 +136,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       dataLabel: true,
       barSize: 20,
       barGap: undefined,
+      stacked: false,
       secondYAxis: {
         name: undefined,
         dataKey: undefined,
@@ -114,9 +149,48 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     slot
   } = props;
 
-  useInitialize();
-
   const chartRef = useConsolidatedRef<any>(ref);
+
+  const mergeWithDefaults = (element) => {
+    return {
+      ...defaults,
+      ...element
+    };
+  };
+
+  const dimensions = useMemo(
+    () =>
+      props.dimensions.map((label) => {
+        return {
+          formatter: (d) => d,
+          ...label
+        };
+      }),
+    [props.dimensions]
+  );
+
+  const measures = useMemo(
+    () =>
+      props.measures.map((value) => {
+        return {
+          formatter: (d) => d,
+          lineWidth: 1,
+          opacity: 1,
+          ...value
+        };
+      }),
+    [props.measures]
+  );
+
+  const tooltipValueFormatter = useTooltipFormatter(measures);
+
+  const primaryDimension = dimensions[0];
+  const primaryMeasure = measures[0];
+
+  const dataKeys = measures.map(({ accessor }) => accessor);
+  const colorSecondY = chartConfig.secondYAxis
+    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey)
+    : 0;
 
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex, event) => {
@@ -156,36 +230,28 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const paddingCharts = useMemo(
     () =>
-      elements?.reduce((acc, chartElement) => {
+      measures?.reduce((acc, chartElement) => {
         if (chartElement.type === 'bar') {
           // @ts-ignore
           acc += chartElement?.barSize ?? 20;
         }
         return acc;
       }, BAR_DEFAULT_PADDING),
-    [elements]
+    [measures]
   );
 
-  const ComposedDataLabel = (noSizeCheck) =>
-    useDataLabel(
-      chartConfig.dataLabel,
-      defaults.dataLabelCustomElement,
-      labelFormatter,
-      defaults.stackId,
-      false,
-      noSizeCheck
-    );
-
-  const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
+
+  const isBigDataSet = dataset?.length > 30 ?? false;
+  const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const marginChart = useChartMargin(
     dataset,
-    labelFormatter,
-    labelKey,
+    (d) => d,
+    primaryDimensionAccessor,
     chartConfig.margin,
     false,
-    secondaryDimensionKey,
+    dimensions.length > 1,
     chartConfig.zoomingTool
   );
 
@@ -194,8 +260,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   return (
     <ChartContainer
       ref={chartRef}
-      width={width}
-      height={height}
       loading={loading}
       dataset={dataset}
       Placeholder={LineChartPlaceholder}
@@ -210,93 +274,97 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
-        {(chartConfig.xAxisVisible ?? true) && (
-          <XAxis
-            interval={axisInterval ?? bigDataSet ? 2 : 0}
-            dataKey={labelKey}
-            tick={XAxisLabel}
-            padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
-            xAxisId={0}
-          />
-        )}
-        {secondaryDimensionKey && (
-          <XAxis
-            interval={0}
-            dataKey={secondaryDimensionKey}
-            tickLine={false}
-            tick={SecondaryDimensionLabel}
-            axisLine={false}
-            xAxisId={1}
-          />
-        )}
+        {(chartConfig.xAxisVisible ?? true) &&
+          dimensions.map((dimension, index) => {
+            const XAxisLabel = useAxisLabel(dimension.formatter);
+            return (
+              <XAxis
+                key={dimension.accessor}
+                dataKey={dimension.accessor}
+                xAxisId={index}
+                interval={dimension.interval ?? isBigDataSet ? 2 : 0}
+                tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
+                tickLine={index < 1}
+                axisLine={index < 1}
+                padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
+              />
+            );
+          })}
         <YAxis
           axisLine={chartConfig.yAxisVisible ?? false}
-          unit={chartConfig.yAxisUnit}
           tickLine={false}
           yAxisId="left"
-          tickFormatter={labelFormatter}
+          tickFormatter={primaryMeasure?.formatter}
           interval={0}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
-            unit={chartConfig.yAxisUnit}
             dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={chartConfig.secondYAxis.color}
+            stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
+            label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
             yAxisId="right"
             interval={0}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
-        {!noLegend && <Legend onClick={onItemLegendClick} verticalAlign={chartConfig.legendPosition ?? 'top'} />}
-        {elements?.map((config, index) => {
-          const { type, accessor, color, lineType, dataLabelCustomElement, ...safeProps } = mergeWithDefaults(
-            config,
-            defaults
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
+        {measures?.map((element, index) => {
+          const ComposedDataLabel = useDataLabel(
+            !element.hideDataLabel,
+            element.DataLabel,
+            element.formatter,
+            element.type === 'bar' ? chartConfig.stacked : false,
+            false,
+            element.type === 'line' || element.type === 'area'
           );
-          const ChartElement = (ChartTypes[type] as any) as FC<any>;
-          const yAxisId = chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === accessor ? 'right' : 'left';
+          const ChartElement = (ChartTypes[element.type] as any) as FC<any>;
 
           const chartElementProps: any = {};
 
-          switch (config.type) {
+          switch (element.type) {
             case 'line':
-              chartElementProps.stroke = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.activeDot = {
                 onClick: onDataPointClickInternal
               };
-              chartElementProps.label = bigDataSet ? false : ComposedDataLabel(true);
-              chartElementProps.type = lineType;
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel;
+              chartElementProps.strokeWidth = element.lineWidth;
               break;
             case 'bar':
               chartElementProps.barSize = chartConfig.barSize ?? defaults.barSize;
               chartElementProps.barGap = chartConfig.barGap ?? defaults.barGap;
-              chartElementProps.stackId = config.stackId ?? undefined;
-              chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = ComposedDataLabel(false);
+              chartElementProps.label = ComposedDataLabel;
               break;
             case 'area':
-              chartElementProps.type = 'monotone';
               chartElementProps.fillOpacity = 0.3;
-              chartElementProps.fill = color ?? `var(--sapUiChartAccent${(index % 12) + 1})`;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = bigDataSet ? false : ComposedDataLabel(true);
+              chartElementProps.label = bigDataSet ? false : ComposedDataLabel;
               break;
           }
           return (
             <ChartElement
-              key={accessor}
-              name={labels?.[accessor] || accessor}
-              dataKey={accessor}
-              yAxisId={yAxisId}
-              {...safeProps}
+              yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
+              stackId={chartConfig.stacked ? 'A' : undefined}
+              key={element.accessor}
+              name={element.label ?? element.accessor}
+              label={isBigDataSet ? false : ComposedDataLabel}
+              stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              type="monotone"
+              dataKey={element.accessor}
               {...chartElementProps}
             />
           );
         })}
         {chartConfig.zoomingTool && (
-          <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
+          <Brush
+            y={0}
+            dataKey={primaryDimensionAccessor}
+            stroke={ThemingParameters.sapObjectHeader_BorderColor}
+            travellerWidth={10}
+            height={20}
+          />
         )}
       </ComposedChartLib>
     </ChartContainer>

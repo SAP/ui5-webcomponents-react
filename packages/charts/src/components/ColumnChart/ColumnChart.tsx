@@ -257,8 +257,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             !element.hideDataLabel,
             element.DataLabel,
             element.formatter,
-            false,
-            false,
+            chartConfig.stacked,
             false
           );
           return (

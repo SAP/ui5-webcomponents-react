@@ -105,6 +105,7 @@ export const renderLabelStory = () => {
       dataset={complexDataSet}
       style={{ width: '95%', height: '40vh' }}
       chartConfig={{
+        stacked: true,
         zoomingTool: true,
         strokeWidth: 1.5
       }}
@@ -148,7 +149,7 @@ renderCustomDataLabelStory.story = {
   name: 'With formatter'
 };
 
-export const loadingPlaceholder = () => <ColumnChart width={'30%'} dimensions={[]} measures={[]} />;
+export const loadingPlaceholder = () => <ColumnChart style={{ width: '30%' }} dimensions={[]} measures={[]} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
