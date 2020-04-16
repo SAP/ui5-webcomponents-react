@@ -1,12 +1,20 @@
-export const stateReducer = (newState, action, prevState) => {
+import { deepCompare } from '../util/deepCompare';
+
+export const stateReducer = (newState, action) => {
   const { payload } = action;
   switch (action.type) {
     case 'SET_GROUP_BY':
-      return { ...prevState, groupBy: payload };
+      if (deepCompare(newState.groupBy, payload)) {
+        return newState;
+      }
+      return { ...newState, groupBy: payload };
     case 'SET_SELECTED_ROWS':
-      return { ...prevState, selectedRowIds: action.selectedIds };
+      if (deepCompare(newState.selectedRowIds, action.selectedIds)) {
+        return newState;
+      }
+      return { ...newState, selectedRowIds: action.selectedIds };
     case 'TABLE_RESIZE':
-      return { ...prevState, tableClientWidth: payload.tableClientWidth };
+      return { ...newState, tableClientWidth: payload.tableClientWidth };
     default:
       return newState;
   }
