@@ -2242,7 +2242,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
 
 exports[`AnalyticalTable custom row height 1`] = `
 <div
-  style="visibility: hidden;"
+  style="--sapWcrAnalyticalTableRowHeight: 60px; visibility: hidden;"
 >
   <div
     style="min-height: 1.5rem; display: flex; align-items: center;"
@@ -2254,7 +2254,7 @@ exports[`AnalyticalTable custom row height 1`] = `
     </ui5-title>
   </div>
   <div
-    class="AnalyticalTable-tableContainer-0 AnalyticalTable-modifiedRowHeight-0 AnalyticalTable-modifiedRowHeight-d5-0"
+    class="AnalyticalTable-tableContainer-0"
   >
     <div
       aria-colcount="4"
