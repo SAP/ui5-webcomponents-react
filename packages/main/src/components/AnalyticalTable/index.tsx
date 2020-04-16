@@ -16,7 +16,8 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef
+  useRef,
+  CSSProperties
 } from 'react';
 import {
   PluginHook,
@@ -121,7 +122,13 @@ export interface TableProps extends CommonProps {
 const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
 
 /**
- * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code>
+ * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code><br />
+ * <br />
+ * ### Usage Notes
+ * By default, the `AnalyticalTable` will not select any rows after clicking on active elements like a `Button`, `Link`,
+ * etc. <br />
+ * In case you want to select the row anyways, you can "mark" the event to allow such a behaviour. <br />
+ * Example: `<Link onClick={(e) => {e.markerAllowTableRowSelection = true;}>My Link Text</Link>`
  */
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
   const {
@@ -164,7 +171,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     onLoadMore
   } = props;
 
-  const classes = useStyles({ rowHeight: props.rowHeight });
+  const classes = useStyles();
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
@@ -240,22 +247,20 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     ...tableHooks
   );
 
-  const updateTableClientWidth = useCallback(() => {
-    requestAnimationFrame(() => {
-      if (tableRef.current) {
-        dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
-      }
-    });
-  }, []);
-
   useEffect(() => {
     // @ts-ignore
-    const tableWidthObserver = new ResizeObserver(updateTableClientWidth);
+    const tableWidthObserver = new ResizeObserver(() => {
+      requestAnimationFrame(() => {
+        if (tableRef.current) {
+          dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
+        }
+      });
+    });
     tableWidthObserver.observe(tableRef.current);
     return () => {
       tableWidthObserver.disconnect();
     };
-  }, [updateTableClientWidth]);
+  }, []);
 
   useEffect(() => {
     dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
@@ -266,10 +271,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [selectedRowIds, dispatch]);
 
   const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
-
-  if (!!rowHeight) {
-    tableContainerClasses.put(classes.modifiedRowHeight);
-  }
 
   const calcRowHeight = parseInt(
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
@@ -327,15 +328,24 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   ]);
 
   const inlineStyle = useMemo(() => {
-    if(tableState.tableClientWidth > 0) {
-      return style;
+    const tableStyles = {};
+    if (!!rowHeight) {
+      tableStyles['--sapWcrAnalyticalTableRowHeight'] = `${rowHeight}px`;
+    }
+
+    if (tableState.tableClientWidth > 0) {
+      return {
+        ...tableStyles,
+        style
+      } as CSSProperties;
     }
     return {
+      ...tableStyles,
       ...style,
       visibility: 'hidden' as 'hidden'
-    };
-  }, [tableState.tableClientWidth, style]);
-  
+    } as CSSProperties;
+  }, [tableState.tableClientWidth, style, rowHeight]);
+
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}

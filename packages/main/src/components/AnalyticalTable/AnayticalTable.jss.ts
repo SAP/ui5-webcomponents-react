@@ -48,8 +48,12 @@ const styles = {
   tr: {
     zIndex: 0,
     color: ThemingParameters.sapList_TextColor,
+    boxSizing: 'border-box',
     '&[data-is-selected]': {
-      backgroundColor: `${ThemingParameters.sapList_SelectionBackgroundColor} !important`
+      backgroundColor: `${ThemingParameters.sapList_SelectionBackgroundColor} !important`,
+      '& $tableCell': {
+        borderBottom: `1px solid ${ThemingParameters.sapList_SelectionBorderColor}`
+      }
     },
     '&[data-is-selected]:hover': {
       backgroundColor: `${ThemingParameters.sapList_Hover_SelectionBackground} !important`
@@ -118,11 +122,6 @@ const styles = {
     fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
     borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
-  },
-  modifiedRowHeight: {
-    '& $tableCell': {
-      height: (props) => `${props.rowHeight}px`
-    }
   }
 };
 

@@ -2,5 +2,6 @@ module.exports = {
   printWidth: 120,
   parser: 'typescript',
   singleQuote: true,
-  arrowParens: 'always'
+  arrowParens: 'always',
+  trailingComma: 'none'
 };
