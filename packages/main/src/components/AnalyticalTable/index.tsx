@@ -122,7 +122,13 @@ export interface TableProps extends CommonProps {
 const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
 
 /**
- * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code>
+ * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code><br />
+ * <br />
+ * ### Usage Notes
+ * By default, the `AnalyticalTable` will not select any rows after clicking on active elements like a `Button`, `Link`,
+ * etc. <br />
+ * In case you want to select the row anyways, you can "mark" the event to allow such a behaviour. <br />
+ * Example: `<Link onClick={(e) => {e.markerAllowTableRowSelection = true;}>My Link Text</Link>`
  */
 const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<HTMLDivElement>) => {
   const {

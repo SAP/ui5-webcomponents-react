@@ -39,7 +39,10 @@ const useInstance = (instance) => {
 
   const selectSingleRow = useCallback(
     (row, e, selectionCellClick = false) => {
-      if (tagNamesWhichShouldNotSelectARow.has(e.target.tagName)) {
+      if (
+        tagNamesWhichShouldNotSelectARow.has(e.target.tagName) &&
+        !(e.markerAllowTableRowSelection === true || e.nativeEvent?.markerAllowTableRowSelection === true)
+      ) {
         return;
       }
 
