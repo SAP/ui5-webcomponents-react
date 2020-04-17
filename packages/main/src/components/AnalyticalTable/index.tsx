@@ -175,6 +175,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
+  const resizeObserverInitialized = useRef(false);
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
@@ -247,19 +248,28 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     ...tableHooks
   );
 
+  const updateTableClientWidth = useCallback(() => {
+    if (tableRef.current) {
+      dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
+    }
+  }, []);
+
   useEffect(() => {
     // @ts-ignore
     const tableWidthObserver = new ResizeObserver(() => {
-      requestAnimationFrame(() => {
-        if (tableRef.current) {
-          dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
-        }
-      });
+      if(resizeObserverInitialized.current) {
+        updateTableClientWidth();
+      }
+      resizeObserverInitialized.current = true;
     });
     tableWidthObserver.observe(tableRef.current);
     return () => {
       tableWidthObserver.disconnect();
     };
+  }, [updateTableClientWidth, resizeObserverInitialized]);
+
+  useEffect(() => {
+    updateTableClientWidth();
   }, []);
 
   useEffect(() => {

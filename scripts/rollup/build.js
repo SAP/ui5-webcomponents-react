@@ -1,7 +1,6 @@
 const { rollup } = require('rollup');
 const stripBanner = require('rollup-plugin-strip-banner');
 const babel = require('rollup-plugin-babel');
-const prettier = require('rollup-plugin-prettier');
 const replace = require('@rollup/plugin-replace');
 const resolve = require('@rollup/plugin-node-resolve');
 const json = require('@rollup/plugin-json');
@@ -166,9 +165,7 @@ function getPlugins(entry, externals, updateBabelOptions, filename, packageName,
       ),
     // HACK to work around the fact that Rollup isn't removing unused, pure-module imports.
     // Note that this plugin must be called after closure applies DCE.
-    isProduction && stripUnusedImports([]),
-    // Add the whitespace back if necessary.
-    shouldStayReadable && prettier({ parser: 'babylon' })
+    isProduction && stripUnusedImports([])
   ].filter(Boolean);
 }
 

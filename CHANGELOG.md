@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-rc.15](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.14...v0.9.0-rc.15) (2020-04-16)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** don't select row when an actionable element was clicked ([#432](https://github.com/SAP/ui5-webcomponents-react/issues/432)) ([8c31818](https://github.com/SAP/ui5-webcomponents-react/commit/8c318187de5eb70b6412caaffd090adc65f5703f)), closes [#428](https://github.com/SAP/ui5-webcomponents-react/issues/428)
+* **AnalyticalTable:** use correct border-bottom for selected row ([e65d8da](https://github.com/SAP/ui5-webcomponents-react/commit/e65d8da6b064bac53a36c3634f711b18984eadf8))
+
+
+### Features
+
+* **cra-template:** add test setup and use latest version + docs ([#433](https://github.com/SAP/ui5-webcomponents-react/issues/433)) ([961dec7](https://github.com/SAP/ui5-webcomponents-react/commit/961dec781e379da8e76ab02b4103c59c1adafcf6))
+
+
+
+
+
 # [0.9.0-rc.14](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.13...v0.9.0-rc.14) (2020-04-10)
 
 

@@ -18,6 +18,7 @@ const columnsDeps = (deps, { instance: { state, webComponentsReactProperties } }
 ];
 
 const columns = (columns, { instance }) => {
+
   if (!instance.state || !instance.rows) {
     return columns;
   }
@@ -26,6 +27,8 @@ const columns = (columns, { instance }) => {
 
   const { hiddenColumns, tableClientWidth: totalWidth } = state;
   const { scaleWidthMode, loading } = instance.webComponentsReactProperties;
+
+  if (columns.length === 0 || !totalWidth) return columns;
 
   const visibleColumns = columns.filter(Boolean).filter((item) => {
     return (item.isVisible ?? true) && !hiddenColumns.includes(item.accessor);
@@ -50,8 +53,6 @@ const columns = (columns, { instance }) => {
     }
     return DEFAULT_COLUMN_WIDTH;
   };
-
-  if (columns.length === 0 || !totalWidth) return columns;
 
   const hasData = rows.some((row) => !row.original?.emptyRow);
 

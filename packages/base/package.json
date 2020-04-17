@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.9.0-rc.14",
+  "version": "0.9.0-rc.15",
   "description": "Base for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -27,11 +27,11 @@
     "build": "npm-run-all -s build:rollup build:polyfills"
   },
   "dependencies": {
-    "core-js": "3.6.4",
-    "intersection-observer": "^0.7.0",
-    "proxy-polyfill": "^0.3.1",
-    "resize-observer-polyfill": "^1.5.1",
-    "smoothscroll-polyfill": "^0.4.4"
+    "core-js": "3.6.5",
+    "intersection-observer": "0.8.0",
+    "proxy-polyfill": "0.3.1",
+    "resize-observer-polyfill": "1.5.1",
+    "smoothscroll-polyfill": "0.4.4"
   },
   "devDependencies": {
     "@sap-theming/theming-base-content": "11.1.18"
