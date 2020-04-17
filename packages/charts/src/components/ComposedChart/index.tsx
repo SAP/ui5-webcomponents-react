@@ -122,8 +122,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     onLegendClick,
     chartConfig = {
       margin: {},
-      xAxisUnit: '',
-      yAxisUnit: '',
       yAxisVisible: false,
       xAxisVisible: true,
       gridStroke: ThemingParameters.sapList_BorderColor,

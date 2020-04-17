@@ -1,12 +1,10 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
-import React, { ComponentType, CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
@@ -18,34 +16,14 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
-import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { IChartDimension } from '../../interfaces/IChartDimension';
+import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 
-type MeasureConfig = {
-  /**
-   * A string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
-   * Can also be a getter.
-   */
-  accessor: string | Function;
-  color?: CSSProperties['color'];
-  /**
-   * The Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
-   */
-  label?: string;
-  /**
-   * This function will be called for each data label and allows you to format it according to your needs.
-   */
-  formatter?: (value: any) => string;
-  /**
-   * Flag whether the data labels should be hidden in the chart for this line.
-   */
-  hideDataLabel?: boolean;
-  /**
-   * Use a custom component for the Data Label
-   */
-  DataLabel?: ComponentType<any>;
+interface MeasureConfig extends IChartMeasure {
   /**
    * Line Width
    * @default 1
@@ -56,13 +34,11 @@ type MeasureConfig = {
    * @default 1
    */
   opacity?: number;
-};
+}
 
-type DimensionConfig = {
-  accessor: string | Function;
-  formatter?: (value: any) => string;
+interface DimensionConfig extends IChartDimension {
   interval?: number;
-};
+}
 
 interface BarChartProps extends RechartBasePropsNew {
   dimensions: DimensionConfig[];
@@ -76,7 +52,7 @@ interface BarChartProps extends RechartBasePropsNew {
    * <h4>Optional properties</h4>
    *
    * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
-   * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
+   * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
    * - `DataLabel`: a custom component to be used for the data label
@@ -102,8 +78,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       margin: {},
       yAxisVisible: true,
       xAxisVisible: true,
-      xAxisUnit: '',
-      yAxisUnit: '',
       gridStroke: ThemingParameters.sapList_BorderColor,
       gridHorizontal: true,
       gridVertical: false,

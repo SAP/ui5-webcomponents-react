@@ -16,34 +16,14 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import { IChartDimension } from '../../interfaces/IChartDimension';
+import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 
-type MeasureConfig = {
-  /**
-   * A string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
-   * Can also be a getter.
-   */
-  accessor: string | Function;
-  color?: CSSProperties['color'];
-  /**
-   * The Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
-   */
-  label?: string;
-  /**
-   * This function will be called for each data label and allows you to format it according to your needs.
-   */
-  formatter?: (value: any) => string;
-  /**
-   * Flag whether the data labels should be hidden in the chart for this line.
-   */
-  hideDataLabel?: boolean;
-  /**
-   * Use a custom component for the Data Label
-   */
-  DataLabel?: ComponentType<any>;
+interface MeasureConfig extends IChartMeasure {
   /**
    * Line Width
    * @default 1
@@ -54,13 +34,11 @@ type MeasureConfig = {
    * @default 1
    */
   opacity?: number;
-};
+}
 
-type DimensionConfig = {
-  accessor: string | Function;
-  formatter?: (value: any) => string;
+interface DimensionConfig extends IChartDimension {
   interval?: number;
-};
+}
 
 interface ColumnChartProps extends RechartBasePropsNew {
   dimensions: DimensionConfig[];
@@ -100,8 +78,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       margin: {},
       yAxisVisible: false,
       xAxisVisible: true,
-      xAxisUnit: '',
-      yAxisUnit: '',
       gridStroke: ThemingParameters.sapList_BorderColor,
       gridHorizontal: true,
       gridVertical: false,

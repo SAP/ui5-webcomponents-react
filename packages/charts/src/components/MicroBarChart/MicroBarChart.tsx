@@ -28,8 +28,6 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
     labels,
     valueFormatter = (el) => el,
     chartConfig = {
-      xAxisUnit: '',
-      yAxisUnit: '',
       yAxisVisible: false,
       xAxisVisible: false,
       gridStroke: ThemingParameters.sapList_TableFooterBorder,
@@ -110,7 +108,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
           }
         }
       >
-        <XAxis hide={true} unit={chartConfig.xAxisUnit} type="number" />
+        <XAxis hide type="number" />
         <YAxis
           unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
