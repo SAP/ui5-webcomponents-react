@@ -25,10 +25,10 @@ const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
  * <code>import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';</code>
  */
 const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { children, renderVariants, renderSearch } = props as FilterBarInternalProps;
+  const { children } = props as FilterBarInternalProps;
   const [showFilters, setShowFilters] = useState(true);
-  const search = useDeprecateRenderMethods(renderSearch, 'renderSearch', props.search, 'search');
-  const variants = useDeprecateRenderMethods(renderVariants, 'renderVariants', props.variants, 'variants');
+  const search = useDeprecateRenderMethods(props, 'renderSearch', 'search');
+  const variants = useDeprecateRenderMethods(props, 'renderVariants', 'variants');
 
   const classes = useStyles();
 

@@ -81,7 +81,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     image = null,
     subTitle = '',
     headerActions = [],
-    renderHeaderContent = null,
     mode = ObjectPageMode.Default,
     imageShapeCircle = false,
     className,
@@ -97,24 +96,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     noHeader = false,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
-    renderBreadcrumbs,
-    renderKeyInfos,
     headerContentPinnable
   } = props;
 
-  const headerContent = useDeprecateRenderMethods(
-    renderHeaderContent,
-    'renderHeaderContent',
-    props.headerContent,
-    'headerContent'
-  );
-  const breadcrumbs = useDeprecateRenderMethods(
-    renderBreadcrumbs,
-    'renderBreadcrumbs',
-    props.breadcrumbs,
-    'breadcrumbs'
-  );
-  const keyInfos = useDeprecateRenderMethods(renderKeyInfos, 'renderKeyInfos', props.keyInfos, 'keyInfos');
+  const headerContent = useDeprecateRenderMethods(props, 'renderHeaderContent', 'headerContent');
+  const breadcrumbs = useDeprecateRenderMethods(props, 'renderBreadcrumbs', 'breadcrumbs');
+  const keyInfos = useDeprecateRenderMethods(props, 'renderKeyInfos', 'keyInfos');
 
   const firstSectionId = safeGetChildrenArray(children)[0]?.props?.id;
 

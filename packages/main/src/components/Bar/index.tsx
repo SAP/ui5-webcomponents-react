@@ -23,25 +23,10 @@ const useStyles = createComponentStyles(styles, { name: 'Bar' });
  * <code>import { Bar } from '@ui5/webcomponents-react/lib/Bar';</code>
  */
 const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { renderContentLeft, renderContentMiddle, renderContentRight, className, style, tooltip, slot, design } = props;
-  const contentLeft = useDeprecateRenderMethods(
-    renderContentLeft,
-    'renderContentLeft',
-    props.contentLeft,
-    'contentLeft'
-  );
-  const contentMiddle = useDeprecateRenderMethods(
-    renderContentMiddle,
-    'renderContentMiddle',
-    props.contentMiddle,
-    'contentMiddle'
-  );
-  const contentRight = useDeprecateRenderMethods(
-    renderContentRight,
-    'renderContentRight',
-    props.contentRight,
-    'contentRight'
-  );
+  const { className, style, tooltip, slot, design } = props;
+  const contentLeft = useDeprecateRenderMethods(props, 'renderContentLeft', 'contentLeft');
+  const contentMiddle = useDeprecateRenderMethods(props, 'renderContentMiddle', 'contentMiddle');
+  const contentRight = useDeprecateRenderMethods(props, 'renderContentRight', 'contentRight');
 
   const classes = useStyles();
 

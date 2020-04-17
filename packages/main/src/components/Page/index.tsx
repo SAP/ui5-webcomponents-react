@@ -44,8 +44,6 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
     showBackButton,
     className,
     style,
-    renderCustomHeader,
-    renderCustomFooter,
     backgroundDesign,
     tooltip,
     slot,
@@ -53,18 +51,8 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
     title
   } = props;
 
-  const customHeader = useDeprecateRenderMethods(
-    renderCustomHeader,
-    'renderCustomHeader',
-    props.customHeader,
-    'customHeader'
-  );
-  const customFooter = useDeprecateRenderMethods(
-    renderCustomFooter,
-    'renderCustomFooter',
-    props.customFooter,
-    'customFooter'
-  );
+  const customHeader = useDeprecateRenderMethods(props, 'renderCustomHeader', 'customHeader');
+  const customFooter = useDeprecateRenderMethods(props, 'renderCustomFooter', 'customFooter');
 
   const classes = useStyles();
 

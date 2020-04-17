@@ -139,7 +139,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     style,
     tooltip,
     title,
-    renderExtension,
     loading,
     groupBy,
     selectionMode,
@@ -178,7 +177,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
   const resizeObserverInitialized = useRef(false);
-  const extension = useDeprecateRenderMethods(renderExtension, 'renderExtension', props.extension, 'extension');
+  const extension = useDeprecateRenderMethods(props, 'renderExtension', 'extension');
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
