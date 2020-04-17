@@ -194,7 +194,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             const YAxisLabel =
               index > 0
                 ? useSecondaryDimensionLabel(true, dimension.formatter)
-                : useAxisLabel(dimension.formatter, _, true);
+                : useAxisLabel(dimension.formatter, true);
             return (
               <YAxis
                 type="category"

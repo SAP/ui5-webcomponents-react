@@ -2,35 +2,45 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 import { dataset, label } from '../../resources/RechartProps';
 import { ComposedChart } from './index';
+import { boolean } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { complexDataSet } from '../../resources/DemoProps';
+import { ColumnChart } from '../ColumnChart/ColumnChart';
 
 describe('ComposedChart', () => {
   test('Renders with data', () => {
     expect(
       mount(
         <ComposedChart
-          width={'100%'}
-          dataset={dataset}
-          labelKey={label}
-          elements={[
+          loading={boolean('loading', false)}
+          onDataPointClick={action('onDataPointClick')}
+          onLegendClick={action('onLegendClick')}
+          dataset={complexDataSet}
+          style={{ height: '60vh' }}
+          dimensions={[
             {
-              type: 'bar',
+              accessor: 'name',
+              formatter: (d) => `${d} 2019`,
+              interval: 0
+            }
+          ]}
+          measures={[
+            {
               accessor: 'sessions',
-              fillOpacity: 0.1,
-              barSize: 25,
-              stackId: 'a'
+              label: 'Active Sessions',
+              type: 'bar'
             },
             {
-              type: 'bar',
-              accessor: 'volume',
-              strokeWidth: 2,
-              stackId: 'a'
-            },
-            {
-              type: 'line',
               accessor: 'users',
-              color: 'orange',
-              strokeOpacity: 0.7,
-              strokeWidth: 3.5
+              label: 'Users',
+              formatter: (val) => val.toLocaleString(),
+              type: 'line'
+            },
+            {
+              accessor: 'volume',
+              label: 'Vol.',
+              formatter: (val) => `${val} sessions`,
+              type: 'line'
             }
           ]}
         />
@@ -39,7 +49,7 @@ describe('ComposedChart', () => {
   });
 
   test('loading placeholder', () => {
-    const wrapper = mount(<ComposedChart width={'50%'} />);
+    const wrapper = mount(<ColumnChart style={{ width: '50%' }} dimensions={[]} measures={[]} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

@@ -148,7 +148,7 @@ renderCustomDataLabelStory.story = {
   name: 'With formatter'
 };
 
-export const loadingPlaceholder = () => <ColumnChart width={'30%'} dimensions={[]} measures={[]} />;
+export const loadingPlaceholder = () => <BarChart style={{ width: '30%' }} dimensions={[]} measures={[]} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'

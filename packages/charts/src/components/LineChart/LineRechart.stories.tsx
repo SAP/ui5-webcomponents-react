@@ -16,7 +16,7 @@ export const renderStory = () => {
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
-      style={{ height: '60vh' }}
+      style={{ width: '100%' }}
       dimensions={[
         {
           accessor: 'name',
@@ -148,7 +148,7 @@ renderCustomDataLabelStory.story = {
   name: 'With formatter'
 };
 
-export const loadingPlaceholder = () => <LineChart width={'30%'} dimensions={[]} measures={[]} />;
+export const loadingPlaceholder = () => <LineChart style={{ width: '100%' }} dimensions={[]} measures={[]} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
