@@ -16,10 +16,7 @@ describe('MessageBox', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
 
-    const component = wrapper
-      .find('ui5-button')
-      .first()
-      .instance() as any;
+    const component = wrapper.find('ui5-button').first().instance() as any;
 
     component.click();
     expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.OK);
@@ -34,10 +31,7 @@ describe('MessageBox', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
 
-    const component = wrapper
-      .find('ui5-button')
-      .last()
-      .instance() as any;
+    const component = wrapper.find('ui5-button').last().instance() as any;
     component.fireEvent('click');
     expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.CANCEL);
   });
@@ -51,10 +45,7 @@ describe('MessageBox', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
 
-    const component = wrapper
-      .find('ui5-button')
-      .first()
-      .instance() as any;
+    const component = wrapper.find('ui5-button').first().instance() as any;
     component.fireEvent('click');
     expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.OK);
   });
@@ -68,10 +59,7 @@ describe('MessageBox', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
 
-    const component = wrapper
-      .find('ui5-button')
-      .first()
-      .instance() as any;
+    const component = wrapper.find('ui5-button').first().instance() as any;
     component.fireEvent('click');
     expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.OK);
   });
@@ -85,10 +73,7 @@ describe('MessageBox', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
 
-    const component = wrapper
-      .find('ui5-button')
-      .first()
-      .instance() as any;
+    const component = wrapper.find('ui5-button').first().instance() as any;
     component.fireEvent('click');
     expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.CLOSE);
   });
@@ -102,10 +87,7 @@ describe('MessageBox', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
 
-    const component = wrapper
-      .find('ui5-button')
-      .first()
-      .instance() as any;
+    const component = wrapper.find('ui5-button').first().instance() as any;
     component.fireEvent('click');
     expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.OK);
   });
@@ -119,17 +101,11 @@ describe('MessageBox', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
 
-    let component = wrapper
-      .find('ui5-button')
-      .first()
-      .instance() as any;
+    let component = wrapper.find('ui5-button').first().instance() as any;
     component.fireEvent('click');
     expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.YES);
 
-    component = wrapper
-      .find('ui5-button')
-      .last()
-      .instance() as any;
+    component = wrapper.find('ui5-button').last().instance() as any;
     component.fireEvent('click');
     expect(getEventFromCallback(callback, 1).detail.action).toEqual(MessageBoxActions.NO);
   });
@@ -143,10 +119,7 @@ describe('MessageBox', () => {
     );
     expect(wrapper.render()).toMatchSnapshot();
 
-    const component = wrapper
-      .find('ui5-button')
-      .first()
-      .instance() as any;
+    const component = wrapper.find('ui5-button').first().instance() as any;
     component.fireEvent('click');
     expect(getEventFromCallback(callback).detail.action).toEqual(MessageBoxActions.OK);
   });

@@ -8,9 +8,9 @@ export const defaultStory = () => {
   return (
     <Bar
       design={select('design', BarDesign, BarDesign.Auto)}
-      renderContentLeft={() => <Label>Content Left</Label>}
-      renderContentMiddle={() => <Label>Content Middle</Label>}
-      renderContentRight={() => <Label>Content Right</Label>}
+      contentLeft={<Label>Content Left</Label>}
+      contentMiddle={<Label>Content Middle</Label>}
+      contentRight={<Label>Content Right</Label>}
     />
   );
 };

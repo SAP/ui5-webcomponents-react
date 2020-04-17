@@ -14,7 +14,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React from 'react';
 import * as sinon from 'sinon';
 
-const renderHeaderContent = () => (
+const headerContent = (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
     <Link href="https://www.sap.com">www.myurl.com</Link>
     <Text>Address 1</Text>
@@ -28,7 +28,7 @@ const renderComponent = (mode = ObjectPageMode.Default) => (
     title="Fiori Object Page Title"
     subTitle="Sub Title"
     headerActions={[<Button key="Actions">Action</Button>]}
-    renderHeaderContent={renderHeaderContent}
+    headerContent={headerContent}
     showHideHeaderButton
     mode={mode}
   >
@@ -66,7 +66,7 @@ const renderComponentWithSections = () => (
     title="Fiori Object Page Title"
     subTitle="Sub Title"
     headerActions={[<Button key="Actions">Action</Button>]}
-    renderHeaderContent={renderHeaderContent}
+    headerContent={headerContent}
     mode={ObjectPageMode.Default}
   >
     <ObjectPageSection title="Test 1" id="1">
@@ -152,10 +152,7 @@ describe('ObjectPage', () => {
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>
     );
-    wrapper
-      .find('section[role="navigation"] ui5-button')
-      .first()
-      .simulate('click');
+    wrapper.find('section[role="navigation"] ui5-button').first().simulate('click');
     expect(getEventFromCallback(callback).detail.selectedSectionId).toEqual('1');
   });
 
@@ -169,7 +166,7 @@ describe('ObjectPage', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  const renderKeyInfos = () => (
+  const keyInfos = (
     <>
       <div>
         <Title level={TitleLevel.H5}>Key Info 1</Title>
@@ -186,7 +183,7 @@ describe('ObjectPage', () => {
     </>
   );
 
-  const renderBreadcrumbs = () => (
+  const breadcrumbs = (
     <Breadcrumbs>
       <Link href="PathSegment1">Path1</Link>
       <Link href="PathSegment2">Path2</Link>
@@ -196,7 +193,7 @@ describe('ObjectPage', () => {
 
   test('Key Infos', () => {
     const wrapper = mount(
-      <ObjectPage renderKeyInfos={renderKeyInfos} renderBreadcrumbs={renderBreadcrumbs}>
+      <ObjectPage keyInfos={keyInfos} breadcrumbs={breadcrumbs}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>

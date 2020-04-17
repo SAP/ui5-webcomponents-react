@@ -4,7 +4,7 @@ import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection'
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { CSSProperties, forwardRef, ReactElement, RefObject, useMemo } from 'react';
+import React, { CSSProperties, forwardRef, ReactElement, ReactNode, RefObject, useMemo } from 'react';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
 interface Props {
@@ -12,9 +12,9 @@ interface Props {
   imageShapeCircle: boolean;
   classes: any;
   showTitleInHeaderContent: boolean;
-  renderHeaderContentProp: () => JSX.Element;
-  renderBreadcrumbs: () => JSX.Element;
-  renderKeyInfos: () => JSX.Element;
+  headerContentProp: ReactNode;
+  breadcrumbs: ReactNode;
+  keyInfos: ReactNode;
   title: string;
   subTitle: string;
   headerPinned: boolean;
@@ -27,11 +27,11 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
     classes,
     imageShapeCircle,
     showTitleInHeaderContent,
-    renderHeaderContentProp,
-    renderBreadcrumbs,
+    headerContentProp,
+    breadcrumbs,
     title,
     subTitle,
-    renderKeyInfos,
+    keyInfos,
     headerPinned,
     topHeaderHeight
   } = props;
@@ -47,7 +47,7 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
           className={classes.headerImage}
           style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
         >
-          <img src={image} className={classes.image} alt="Company Logo"/>
+          <img src={image} className={classes.image} alt="Company Logo" />
         </span>
       );
     } else {
@@ -72,26 +72,25 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
   let renderedHeaderContent = (
     <>
       {avatar}
-      {renderHeaderContentProp && <span className={classes.headerCustomContent}>{renderHeaderContentProp()}</span>}
+      {headerContentProp && <span className={classes.headerCustomContent}>{headerContentProp}</span>}
     </>
   );
 
   if (showTitleInHeaderContent) {
-    const headerContents = renderHeaderContentProp && renderHeaderContentProp();
     let firstElement;
     let contents = [];
 
-    if (headerContents?.type === React.Fragment) {
-      [firstElement, ...contents] = safeGetChildrenArray(headerContents.props.children);
+    if (headerContentProp?.type === React.Fragment) {
+      [firstElement, ...contents] = safeGetChildrenArray(headerContentProp.props.children);
     } else {
-      firstElement = headerContents;
+      firstElement = headerContentProp;
     }
     renderedHeaderContent = (
       <>
         <FlexBox>
           {avatar}
           <FlexBox direction={FlexBoxDirection.Column}>
-            <div>{renderBreadcrumbs && renderBreadcrumbs()}</div>
+            <div>{breadcrumbs}</div>
             <FlexBox>
               <FlexBox direction={FlexBoxDirection.Column}>
                 <Title level={TitleLevel.H3} className={classes.title}>
@@ -107,7 +106,7 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
                   </div>
                 ))}
               </FlexBox>
-              <div className={classes.keyInfos}>{renderKeyInfos && renderKeyInfos()}</div>
+              <div className={classes.keyInfos}>{keyInfos}</div>
             </FlexBox>
           </FlexBox>
         </FlexBox>

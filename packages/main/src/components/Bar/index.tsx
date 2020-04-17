@@ -1,6 +1,7 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import React, { FC, forwardRef, Ref } from 'react';
+import { useDeprecateRenderMethods } from '@ui5/webcomponents-react-base/lib/hooks';
+import React, { FC, forwardRef, ReactNode, Ref } from 'react';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BarDesign } from '../../lib/BarDesign';
@@ -10,6 +11,9 @@ export interface BarPropTypes extends CommonProps {
   renderContentLeft?: () => JSX.Element;
   renderContentMiddle?: () => JSX.Element;
   renderContentRight?: () => JSX.Element;
+  contentLeft: ReactNode | ReactNode[];
+  contentMiddle: ReactNode | ReactNode[];
+  contentRight: ReactNode | ReactNode[];
   design?: BarDesign;
 }
 
@@ -19,7 +23,10 @@ const useStyles = createComponentStyles(styles, { name: 'Bar' });
  * <code>import { Bar } from '@ui5/webcomponents-react/lib/Bar';</code>
  */
 const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { renderContentLeft, renderContentMiddle, renderContentRight, className, style, tooltip, slot, design } = props;
+  const { className, style, tooltip, slot, design } = props;
+  const contentLeft = useDeprecateRenderMethods(props, 'renderContentLeft', 'contentLeft');
+  const contentMiddle = useDeprecateRenderMethods(props, 'renderContentMiddle', 'contentMiddle');
+  const contentRight = useDeprecateRenderMethods(props, 'renderContentRight', 'contentRight');
 
   const classes = useStyles();
 
@@ -56,13 +63,13 @@ const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivE
       {...passThroughProps}
     >
       <div data-bar-part="Left" className={classes.left}>
-        {renderContentLeft()}
+        {contentLeft}
       </div>
       <div data-bar-part="Center" className={classes.center}>
-        <div className={classes.inner}>{renderContentMiddle()}</div>
+        <div className={classes.inner}>{contentMiddle}</div>
       </div>
       <div data-bar-part="Right" className={classes.right}>
-        {renderContentRight()}
+        {contentRight}
       </div>
     </div>
   );
@@ -70,10 +77,7 @@ const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivE
 
 Bar.displayName = 'Bar';
 Bar.defaultProps = {
-  design: BarDesign.Auto,
-  renderContentLeft: () => null,
-  renderContentMiddle: () => null,
-  renderContentRight: () => null
+  design: BarDesign.Auto
 };
 
 export { Bar };
