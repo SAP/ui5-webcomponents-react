@@ -2,6 +2,7 @@ import '@ui5/webcomponents-icons/dist/icons/navigation-left-arrow';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { useDeprecateRenderMethods } from '@ui5/webcomponents-react-base/lib/hooks';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -19,6 +20,8 @@ export interface PagePropTypes extends CommonProps {
   backgroundDesign?: PageBackgroundDesign;
   renderCustomHeader?: () => ReactElement<BarPropTypes>;
   renderCustomFooter?: () => ReactElement<BarPropTypes>;
+  customHeader?: ReactNode;
+  customFooter?: ReactNode;
   showBackButton?: boolean;
   showFooter?: boolean;
   showHeader?: boolean;
@@ -41,14 +44,15 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
     showBackButton,
     className,
     style,
-    renderCustomHeader,
-    renderCustomFooter,
     backgroundDesign,
     tooltip,
     slot,
     onNavButtonPress,
     title
   } = props;
+
+  const customHeader = useDeprecateRenderMethods(props, 'renderCustomHeader', 'customHeader');
+  const customFooter = useDeprecateRenderMethods(props, 'renderCustomFooter', 'customFooter');
 
   const classes = useStyles();
 
@@ -71,14 +75,11 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
   }, [showBackButton]);
 
   const renderTitle = useCallback(() => <Title level={TitleLevel.H5}>{title}</Title>, [title]);
-
-  const header = useMemo(() => {
-    if (renderCustomHeader) {
-      return renderCustomHeader();
-    }
-
-    return <Bar renderContentLeft={renderBackButton} renderContentMiddle={renderTitle} />;
-  }, [renderCustomHeader, renderTitle, renderBackButton]);
+  const header = useMemo(() => customHeader ?? <Bar contentLeft={renderBackButton()} contentMiddle={renderTitle()} />, [
+    customHeader,
+    renderTitle,
+    renderBackButton
+  ]);
 
   const pageContainer = StyleClassHelper.of(classes.pageContainer);
   const headerClasses = StyleClassHelper.of(classes.pageHeader, classes.baseBar);
@@ -104,7 +105,7 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
     <div ref={ref} className={pageContainer.valueOf()} style={style} title={tooltip} slot={slot} {...passThroughProps}>
       {showHeader && <header className={headerClasses.valueOf()}>{header}</header>}
       <section className={classes.contentSection}>{children}</section>
-      {showFooter && <footer className={footerClasses.valueOf()}>{renderCustomFooter && renderCustomFooter()}</footer>}
+      {showFooter && <footer className={footerClasses.valueOf()}>{customFooter}</footer>}
     </div>
   );
 });

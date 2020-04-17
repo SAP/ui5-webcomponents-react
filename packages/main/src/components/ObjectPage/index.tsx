@@ -3,6 +3,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
+import { useDeprecateRenderMethods } from '@ui5/webcomponents-react-base/lib/hooks';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
@@ -17,6 +18,7 @@ import React, {
   FC,
   forwardRef,
   ReactElement,
+  ReactNode,
   RefObject,
   useCallback,
   useEffect,
@@ -44,6 +46,7 @@ export interface ObjectPagePropTypes extends CommonProps {
   image?: string | ReactElement<unknown>;
   headerActions?: ReactElement<unknown>[];
   renderHeaderContent?: () => JSX.Element;
+  headerContent?: ReactNode;
   children?: ReactElement<ObjectPageSectionPropTypes> | ReactElement<ObjectPageSectionPropTypes>[];
 
   selectedSectionId?: string;
@@ -54,6 +57,8 @@ export interface ObjectPagePropTypes extends CommonProps {
 
   renderBreadcrumbs?: () => JSX.Element;
   renderKeyInfos?: () => JSX.Element;
+  breadcrumbs?: ReactNode;
+  keyInfos?: ReactNode;
 
   // appearance
   alwaysShowContentHeader?: boolean;
@@ -76,7 +81,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     image = null,
     subTitle = '',
     headerActions = [],
-    renderHeaderContent = null,
     mode = ObjectPageMode.Default,
     imageShapeCircle = false,
     className,
@@ -92,10 +96,12 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     noHeader = false,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
-    renderBreadcrumbs,
-    renderKeyInfos,
     headerContentPinnable
   } = props;
+
+  const headerContent = useDeprecateRenderMethods(props, 'renderHeaderContent', 'headerContent');
+  const breadcrumbs = useDeprecateRenderMethods(props, 'renderBreadcrumbs', 'breadcrumbs');
+  const keyInfos = useDeprecateRenderMethods(props, 'renderKeyInfos', 'keyInfos');
 
   const firstSectionId = safeGetChildrenArray(children)[0]?.props?.id;
 
@@ -429,13 +435,13 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
                 </div>
               )}
               <FlexBox direction={FlexBoxDirection.Column} className={classes.container}>
-                {renderBreadcrumbs && renderBreadcrumbs()}
+                {breadcrumbs}
                 <FlexBox alignItems={FlexBoxAlignItems.Baseline}>
                   <Title level={TitleLevel.H3} className={classes.title}>
                     {title}
                   </Title>
                   <Label className={classes.subTitle}>{subTitle}</Label>
-                  <div className={classes.keyInfos}>{renderKeyInfos && renderKeyInfos()}</div>
+                  <div className={classes.keyInfos}>{keyInfos}</div>
                 </FlexBox>
               </FlexBox>
             </FlexBox>
@@ -447,9 +453,9 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         classes={classes}
         imageShapeCircle={imageShapeCircle}
         showTitleInHeaderContent={showTitleInHeaderContent}
-        renderHeaderContentProp={renderHeaderContent}
-        renderBreadcrumbs={renderBreadcrumbs}
-        renderKeyInfos={renderKeyInfos}
+        headerContentProp={headerContent}
+        breadcrumbs={breadcrumbs}
+        keyInfos={keyInfos}
         title={title}
         subTitle={subTitle}
         headerPinned={headerPinned}

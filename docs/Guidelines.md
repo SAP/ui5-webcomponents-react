@@ -22,8 +22,7 @@ Global Styles compliant to the Fiori 2.0 Design Guidelines are located in [ui5-w
 - All Event handlers **must** start with `on`.<br />
    e.g. `onClick`, `onSelect`, `onSelectionChange`, .etc<br />
    All Events must pass a instance of the `Event`-Class as single parameter.
-- When passing additional elements into a component, a render function should be used. This prop must start with `render`<br />
-   e.g. `renderExtension`, `renderHeaderContent`, .etc
+- When passing additional elements into a component, a slot should be used. This prop should contain a `ReactNode` or an array of ReactNodes (`ReactNode[]` or `ReactNodeArray`)
 - If you have a stateful component and use `getDerivedStateFromProps`, please store the previous props in a `prevProps` object in the state.<br />
    e.g. `state = { selectedKey: 1, prevProps: { selectedKey: 2 } }`
 

@@ -15,9 +15,9 @@ describe('Bar', () => {
   test('Render all content', () => {
     const wrapper = mount(
       <Bar
-        renderContentLeft={() => <div>Content Left</div>}
-        renderContentMiddle={() => <div>Content Middle</div>}
-        renderContentRight={() => <div>Content Right</div>}
+        contentLeft={<div>Content Left</div>}
+        contentMiddle={<div>Content Middle</div>}
+        contentRight={<div>Content Right</div>}
       />
     );
     expect(wrapper.render()).toMatchSnapshot();
@@ -29,11 +29,7 @@ describe('Bar', () => {
     const text3 = 'Content Right';
 
     const wrapper = mount(
-      <Bar
-        renderContentLeft={() => <div>{text1}</div>}
-        renderContentMiddle={() => <div>{text2}</div>}
-        renderContentRight={() => <div>{text3}</div>}
-      />
+      <Bar contentLeft={<div>{text1}</div>} contentMiddle={<div>{text2}</div>} contentRight={<div>{text3}</div>} />
     );
     expect(wrapper.text()).toContain(text1);
     expect(wrapper.text()).toContain(text2);

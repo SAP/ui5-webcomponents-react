@@ -28,18 +28,10 @@ describe('VariantManagement', () => {
       attachTo: container
     });
 
-    wrapper
-      .find('ui5-button')
-      .first()
-      .instance()
-      .fireEvent('click');
+    wrapper.find('ui5-button').first().instance().fireEvent('click');
 
     act(() => {
-      wrapper
-        .find('ui5-li')
-        .last()
-        .instance()
-        .fireItemPress({});
+      wrapper.find('ui5-li').last().instance().fireItemPress({});
     });
 
     expect(wrapper.render()).toMatchSnapshot();

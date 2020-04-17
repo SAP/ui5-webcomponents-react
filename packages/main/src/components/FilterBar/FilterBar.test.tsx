@@ -17,13 +17,13 @@ const filterItems = [
   { text: 'Text 2', key: '2' }
 ];
 
-const renderVariants = () => <VariantManagement variantItems={variantItems} />;
-const renderSearch = () => <Input placeholder={'Search'} />;
+const variants = <VariantManagement variantItems={variantItems} />;
+const search = <Input placeholder={'Search'} />;
 
 describe('FilterBar', () => {
   it('Render without crashing', () => {
     const wrapper = mount(
-      <FilterBar renderSearch={renderSearch} renderVariants={renderVariants}>
+      <FilterBar search={search} variants={variants}>
         <FilterItem
           // onChange={(e) => alert(e.getParameter('selectedItem').key)}
           filterItems={filterItems}
@@ -47,7 +47,7 @@ describe('FilterBar', () => {
 
   it('Hide Filter Bar', () => {
     const wrapper = mount(
-      <FilterBar renderVariants={renderVariants}>
+      <FilterBar variants={variants}>
         <FilterItem
           // onChange={(e) => alert(e.getParameter('selectedItem').key)}
           filterItems={filterItems}
@@ -76,17 +76,14 @@ describe('FilterBar', () => {
         </FilterItem>
       </FilterBar>
     );
-    const component = wrapper
-      .find('ui5-button')
-      .last()
-      .instance() as any;
+    const component = wrapper.find('ui5-button').last().instance() as any;
     component.fireEvent('click');
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   it('Select Filter Item', () => {
     const wrapper = mount(
-      <FilterBar renderVariants={renderVariants}>
+      <FilterBar variants={variants}>
         <FilterItem
           // onChange={(e) => alert(e.getParameter('selectedItem').key)}
           filterItems={filterItems}
@@ -119,10 +116,7 @@ describe('FilterBar', () => {
       </FilterBar>
     );
 
-    wrapper
-      .find('ui5-option')
-      .at(1)
-      .simulate('change');
+    wrapper.find('ui5-option').at(1).simulate('change');
 
     expect(wrapper.render()).toMatchSnapshot();
   });

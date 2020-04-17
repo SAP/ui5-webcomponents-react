@@ -15,7 +15,8 @@ export const renderPage = () => (
       showHeader={boolean('showHeader', true)}
       showBackButton={boolean('showBackButton', true)}
       backgroundDesign={select('backgroundDesign', PageBackgroundDesign, PageBackgroundDesign.Standard)}
-      renderCustomFooter={() => <Bar renderContentRight={() => <Button>Button</Button>} />}
+      customFooter={<Bar contentRight={<Button>Button</Button>} />}
+      customHeader={null}
       onNavButtonPress={action('onNavButtonPress')}
     >
       <Label>Page Content</Label>

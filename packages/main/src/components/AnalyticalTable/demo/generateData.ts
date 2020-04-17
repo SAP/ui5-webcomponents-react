@@ -1,4 +1,4 @@
-import { ValueState } from "@ui5/webcomponents-react/lib/ValueState";
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 
 const getRandomArrayEntry = (array) => array[Math.floor(Math.random() * array.length)];
 
@@ -38,7 +38,9 @@ const newEntry = () => {
       name: getRandomName(),
       age: getRandomNumber(18, 65)
     },
-    status: [ValueState.None, ValueState.Information, ValueState.Success, ValueState.Warning, ValueState.Error][Math.floor(Math.random() * 4)]
+    status: [ValueState.None, ValueState.Information, ValueState.Success, ValueState.Warning, ValueState.Error][
+      Math.floor(Math.random() * 4)
+    ]
   };
 };
 
@@ -63,7 +65,9 @@ const makeEntry = () => ({
     name: getRandomName(),
     age: getRandomNumber(18, 65)
   },
-  status: [ValueState.None, ValueState.Information, ValueState.Success, ValueState.Warning, ValueState.Error][Math.floor(Math.random() * 4)]
+  status: [ValueState.None, ValueState.Information, ValueState.Success, ValueState.Warning, ValueState.Error][
+    Math.floor(Math.random() * 4)
+  ]
 });
 
 const generateData = (numEntries, isTree = false) => {
