@@ -1,9 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { RadarChart } from './RadarChart';
-import { ColumnChart } from '../ColumnChart/ColumnChart';
 import { boolean } from '@storybook/addon-knobs';
-import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts - Unstable /  RadarRechart',
@@ -17,7 +16,7 @@ export const renderStory = () => {
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
-      style={{ width: '50%' }}
+      style={{ width: '100%' }}
       dimensions={[
         {
           accessor: 'name',
@@ -56,7 +55,7 @@ export const renderStoryWithCustomColor = () => (
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
     dataset={simpleDataSet}
-    style={{ width: '50%' }}
+    style={{ width: '100%' }}
   />
 );
 
@@ -82,7 +81,7 @@ export const renderLabelStory = () => {
         }
       ]}
       dataset={complexDataSet}
-      style={{ width: '50%' }}
+      style={{ width: '100%' }}
     />
   );
 };
@@ -111,7 +110,7 @@ export const renderCustomDataLabelStory = () => {
           accessor: 'volume'
         }
       ]}
-      style={{ width: '50%' }}
+      style={{ width: '100%' }}
     />
   );
 };
@@ -120,7 +119,7 @@ renderCustomDataLabelStory.story = {
   name: 'As polygon'
 };
 
-export const loadingPlaceholder = () => <RadarChart style={{ width: '30%' }} dimensions={[]} measures={[]} />;
+export const loadingPlaceholder = () => <RadarChart style={{ width: '100%' }} dimensions={[]} measures={[]} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'

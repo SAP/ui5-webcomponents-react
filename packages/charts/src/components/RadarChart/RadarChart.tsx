@@ -127,7 +127,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     [onDataPointClick]
   );
 
-  const marginChart = useChartMargin(dataset, (d) => d, primaryDimensionAccessor, chartConfig.margin);
+  const marginChart = useChartMargin(dataset, (d) => d, primaryDimensionAccessor, chartConfig.margin, true, true, true);
 
   return (
     <ChartContainer
@@ -140,7 +140,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       tooltip={tooltip}
       slot={slot}
     >
-      <RadarChartLib data={dataset} margin={marginChart}>
+      <RadarChartLib data={dataset} margin={{ left: marginChart.left + 100 }}>
         <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis
           dataKey={primaryDimensionAccessor}
@@ -174,7 +174,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
         })}
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {!noLegend && (
-          <Legend wrapperStyle={{ left: 30 }} verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />
+          <Legend wrapperStyle={{ left: 100 }} verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />
         )}
       </RadarChartLib>
     </ChartContainer>
