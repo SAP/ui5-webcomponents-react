@@ -14,7 +14,7 @@ import React from 'react';
 
 const variantItems = [
   { label: 'Variant 1', key: '1' },
-  { label: 'Variant 2', key: '2' },
+  { label: 'Variant 2', key: '2' }
 ];
 
 export const renderDefaultStory = () => {
@@ -82,6 +82,8 @@ export const renderStoryWithFiltersDialog = () => {
       renderVariants={() => {
         return <VariantManagement selectedKey="2" variantItems={variantItems} />;
       }}
+      search={<Input placeholder={'Search'} />}
+      variants={<VariantManagement selectedKey="2" variantItems={variantItems} />}
       useToolbar={boolean('useToolbar', true)}
       filterBarExpanded={boolean('filterBarExpanded', true)}
       loading={boolean('loading', false)}
@@ -183,13 +185,13 @@ export const renderStoryWithFiltersDialog = () => {
   );
 };
 renderStoryWithFiltersDialog.story = {
-  name: 'With Filters Dialog',
+  name: 'With Filters Dialog'
 };
 
 export default {
   title: 'Components / FilterBar',
   component: FilterBar,
   parameters: {
-    subcomponents: { FilterGroupItem },
-  },
+    subcomponents: { FilterGroupItem }
+  }
 };

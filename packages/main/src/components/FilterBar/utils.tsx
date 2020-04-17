@@ -25,5 +25,5 @@ export const filterValue = (ref, child) => {
 };
 
 export const renderSearchWithValue = (renderSearchElement, searchValue) => {
-  return cloneElement(renderSearchElement(), { value: searchValue });
+  return cloneElement(renderSearchElement, { value: searchValue });
 };

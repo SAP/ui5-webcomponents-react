@@ -2,6 +2,7 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { useDeprecateRenderMethods } from '@ui5/webcomponents-react-base/lib/hooks';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -19,7 +20,7 @@ import React, {
   useCallback,
   useEffect,
   useRef,
-  useState,
+  useState
 } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterBar.jss';
@@ -30,6 +31,8 @@ export interface FilterBarPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
   renderVariants?: () => JSX.Element;
   renderSearch?: () => ReactElement;
+  search?: ReactNode;
+  variants?: ReactNode;
   useToolbar?: boolean;
   filterBarExpanded?: boolean;
   filterContainerWidth?: CSSProperties['width'];
@@ -96,7 +99,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     onFiltersDialogSelectionChange,
     onFiltersDialogSearch,
     onGo,
-    onRestore,
+    onRestore
   } = props;
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
@@ -107,6 +110,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [dialogRefs, setDialogRefs] = useState({});
   const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});
+
+  const search = useDeprecateRenderMethods(renderSearch, props.search, 'search');
+  const variants = useDeprecateRenderMethods(renderVariants, props.variants, 'variants');
 
   useEffect(() => {
     if (showFilterConfiguration) {
@@ -189,16 +195,15 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     'onFiltersDialogSearch',
     'onGo',
     'onRestore',
-    'onFiltersDialogCancel',
+    'onFiltersDialogCancel'
   ]);
 
   const safeChildren = useCallback(() => {
     if (showFilterConfiguration && Object.keys(toggledFilters).length > 0) {
-      console.log('with dialog');
       return Children.toArray(children).map((child) => {
         if (toggledFilters?.[child.key] !== undefined) {
           return cloneElement(child, {
-            visibleInFilterBar: toggledFilters[child.key],
+            visibleInFilterBar: toggledFilters[child.key]
           });
         }
         return child;
@@ -236,12 +241,12 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
             ...child.props.children,
             props: {
               ...child.props.children.props,
-              ...filterItemProps,
+              ...filterItemProps
             },
             ref: (node) => {
               filterRefs.current[child.key] = node;
-            },
-          },
+            }
+          }
         });
       });
   }, [filterContainerWidth, considerGroupName, dialogRefs, safeChildren, showFilterConfiguration]);
@@ -295,7 +300,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           showClearButton={showClearButton}
           showRestoreButton={showRestoreButton}
           showSearch={showSearchOnFiltersDialog}
-          renderFBSearch={renderSearch}
+          renderFBSearch={search}
           handleClearFilters={onFiltersDialogClear}
           handleSelectionChange={onFiltersDialogSelectionChange}
           handleDialogSave={handleDialogSave}
@@ -312,10 +317,10 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         ) : (
           <>
             <div className={classes.filterBarHeader}>
-              {renderVariants && renderVariants()}
-              {renderSearch && (
+              {variants}
+              {search && (
                 <div className={classes.vLine} ref={searchRef}>
-                  {renderSearchWithValue(renderSearch, searchValue)}
+                  {renderSearchWithValue(search, searchValue)}
                 </div>
               )}
               {useToolbar && (
@@ -381,7 +386,7 @@ FilterBar.defaultProps = {
   onFiltersDialogSelectionChange: null,
   onFiltersDialogSearch: null,
   onGo: null,
-  onRestore: null,
+  onRestore: null
 };
 
 FilterBar.displayName = 'FilterBar';
