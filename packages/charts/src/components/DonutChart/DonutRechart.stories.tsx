@@ -99,7 +99,7 @@ withCustomRadiusStory.story = {
   name: 'With custom inner radius'
 };
 
-export const loadingPlaceholder = () => <DonutChart width={'30%'} />;
+export const loadingPlaceholder = () => <DonutChart style />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
