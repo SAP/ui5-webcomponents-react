@@ -16,6 +16,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
@@ -25,13 +26,11 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 
 interface MeasureConfig extends IChartMeasure {
   /**
-   * Line Width
-   * @default 1
+   * Column Width
    */
-  lineWidth?: number;
+  width?: number;
   /**
    * Line Opacity
-   * @default 1
    */
   opacity?: number;
 }
@@ -56,12 +55,21 @@ interface ColumnChartProps extends RechartBasePropsNew {
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
    * - `DataLabel`: a custom component to be used for the data label
-   * - `lineWidth`: line width, defaults to `1`
-   * - `opacity`: line opacity, defaults to `1`
+   * - `width`: column width, defaults to `auto`
+   * - `opacity`: column opacity, defaults to `1`
    *
    */
   measures: MeasureConfig[];
 }
+
+const dimensionDefaults = {
+  formatter: (d) => d
+};
+
+const measureDefaults = {
+  formatter: (d) => d,
+  opacity: 1
+};
 
 /**
  * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/next/ColumnChart';</code>
@@ -83,13 +91,9 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       gridVertical: false,
       yAxisColor: ThemingParameters.sapList_BorderColor,
       legendPosition: 'top',
-      barSize: undefined,
       barGap: 3,
       zoomingTool: false,
-      strokeOpacity: 1,
-      fillOpacity: 1,
       stacked: false,
-      dataLabel: true,
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
@@ -107,28 +111,11 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     slot
   } = props;
 
-  const dimensions = useMemo(
-    () =>
-      props.dimensions.map((label) => {
-        return {
-          formatter: (d) => d,
-          ...label
-        };
-      }),
-    [props.dimensions]
-  );
-
-  const measures = useMemo(
-    () =>
-      props.measures.map((value) => {
-        return {
-          formatter: (d) => d,
-          lineWidth: 1,
-          opacity: 1,
-          ...value
-        };
-      }),
-    [props.measures]
+  const { dimensions, measures } = usePrepareDimensionsAndMeasures(
+    props.dimensions,
+    props.measures,
+    dimensionDefaults,
+    measureDefaults
   );
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
@@ -249,7 +236,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-              barSize={chartConfig.barSize}
+              barSize={element.width}
               onClick={onDataPointClickInternal}
             />
           );

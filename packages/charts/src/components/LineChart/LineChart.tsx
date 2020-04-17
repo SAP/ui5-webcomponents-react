@@ -4,7 +4,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils'
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { ComponentType, CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { ComponentType, CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Brush,
   CartesianGrid,
@@ -18,6 +18,7 @@ import {
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 
@@ -48,7 +49,7 @@ type MeasureConfig = {
    * Line Width
    * @default 1
    */
-  lineWidth?: number;
+  width?: number;
   /**
    * Line Opacity
    * @default 1
@@ -78,12 +79,22 @@ interface LineChartProps extends RechartBasePropsNew {
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
    * - `DataLabel`: a custom component to be used for the data label
-   * - `lineWidth`: line width, defaults to `1`
+   * - `width`: line width, defaults to `1`
    * - `opacity`: line opacity, defaults to `1`
    *
    */
   measures: MeasureConfig[];
 }
+
+const dimensionDefaults = {
+  formatter: (d) => d
+};
+
+const measureDefaults = {
+  formatter: (d) => d,
+  width: 1,
+  opacity: 1
+};
 
 /**
  * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/next/LineChart';</code>
@@ -123,28 +134,11 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     slot
   } = props;
 
-  const dimensions = useMemo(
-    () =>
-      props.dimensions.map((label) => {
-        return {
-          formatter: (d) => d,
-          ...label
-        };
-      }),
-    [props.dimensions]
-  );
-
-  const measures = useMemo(
-    () =>
-      props.measures.map((value) => {
-        return {
-          formatter: (d) => d,
-          lineWidth: 1,
-          opacity: 1,
-          ...value
-        };
-      }),
-    [props.measures]
+  const { dimensions, measures } = usePrepareDimensionsAndMeasures(
+    props.dimensions,
+    props.measures,
+    dimensionDefaults,
+    measureDefaults
   );
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
@@ -263,7 +257,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
               type="monotone"
               dataKey={element.accessor}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-              strokeWidth={element.lineWidth}
+              strokeWidth={element.width}
               activeDot={{ onClick: onDataPointClickInternal }}
             />
           );

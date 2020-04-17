@@ -4,7 +4,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils'
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
@@ -18,17 +18,36 @@ import {
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
+
+const formatYAxisTicks = (tick) => {
+  const splitTick = tick.split(' ');
+  return splitTick.length > 3
+    ? `${splitTick.slice(0, 3).join(' ')}...`
+    : tick.length > 11
+    ? `${tick.slice(0, 12)}...`
+    : tick;
+};
+
+const dimensionDefaults = {
+  formatter: formatYAxisTicks
+};
+
+const measureDefaults = {
+  formatter: (d) => d,
+  opacity: 1
+};
 
 interface MeasureConfig extends IChartMeasure {
   /**
    * Line Width
    * @default 1
    */
-  lineWidth?: number;
+  width?: number;
   /**
    * Line Opacity
    * @default 1
@@ -56,8 +75,8 @@ interface BarChartProps extends RechartBasePropsNew {
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
    * - `DataLabel`: a custom component to be used for the data label
-   * - `lineWidth`: line width, defaults to `1`
-   * - `opacity`: line opacity, defaults to `1`
+   * - `width`: bar width, defaults to `auto`
+   * - `opacity`: bar opacity, defaults to `1`
    *
    */
   measures: MeasureConfig[];
@@ -82,13 +101,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       gridHorizontal: true,
       gridVertical: false,
       legendPosition: 'top',
-      barSize: undefined,
       barGap: 3,
       zoomingTool: false,
-      strokeOpacity: 1,
-      fillOpacity: 1,
       stacked: false,
-      dataLabel: true,
       referenceLine: {
         label: undefined,
         value: undefined,
@@ -101,28 +116,11 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     slot
   } = props;
 
-  const dimensions = useMemo(
-    () =>
-      props.dimensions.map((label) => {
-        return {
-          formatter: (d) => formatYAxisTicks(d),
-          ...label
-        };
-      }),
-    [props.dimensions]
-  );
-
-  const measures = useMemo(
-    () =>
-      props.measures.map((value) => {
-        return {
-          formatter: (d) => d,
-          lineWidth: 1,
-          opacity: 1,
-          ...value
-        };
-      }),
-    [props.measures]
+  const { dimensions, measures } = usePrepareDimensionsAndMeasures(
+    props.dimensions,
+    props.measures,
+    dimensionDefaults,
+    measureDefaults
   );
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
@@ -152,15 +150,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     },
     [onDataPointClick]
   );
-
-  const formatYAxisTicks = (tick) => {
-    const splitTick = tick.split(' ');
-    return splitTick.length > 3
-      ? `${splitTick.slice(0, 3).join(' ')}...`
-      : tick.length > 11
-      ? `${tick.slice(0, 12)}...`
-      : tick;
-  };
 
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
@@ -241,7 +230,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-              barSize={chartConfig.barSize}
+              barSize={element.width}
               onClick={onDataPointClickInternal}
             />
           );

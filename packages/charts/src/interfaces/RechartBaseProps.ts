@@ -91,9 +91,7 @@ export interface RechartBasePropsNew extends CommonProps {
     zoomingTool?: boolean;
 
     stacked?: boolean;
-    barSize?: string | number;
     barGap?: number;
-    fillOpacity?: number;
 
     paddingAngle?: number;
     innerRadius?: string;
