@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { deprecationNotice } from '../utils';
 
-export const useDeprecateRenderMethods = (renderMethod, renderMethodName, slot, slotName) => {
+export const useDeprecateRenderMethods = (props, renderMethodName, slotName) => {
   useEffect(() => {
     if (renderMethod) {
       deprecationNotice(
