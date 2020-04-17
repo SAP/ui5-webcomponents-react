@@ -1,17 +1,67 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
-import React, { FC, forwardRef, Ref, useCallback } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo, ComponentType, CSSProperties } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { usePieDataLabel } from '../../hooks/useLabelElements';
-import { useChartMargin } from '../../hooks/useChartMargin';
+import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 
-type PieChartProps = RechartBaseProps;
+interface MeasureConfig {
+  /**
+   * A string containing the path to the dataset key this line should display.
+   * Supports object structures by using '`parent.child'`. Can also be a getter.
+   */
+  accessor: string;
+  /**
+   * This function will be called for each data label and allows you to format it according to your needs.
+   */
+  formatter?: (value: any) => string;
+  /**
+   * Flag whether the data labels should be hidden in the chart for this line.
+   */
+  hideDataLabel?: boolean;
+  /**
+   * Use a custom component for the Data Label
+   */
+  DataLabel?: ComponentType<any>;
+  /**
+   * array of any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
+   */
+  colors?: CSSProperties['color'][];
+}
+
+interface DimensionConfig {
+  /**
+   * A string containing the path to the dataset key this line should display.
+   * Supports object structures by using `'parent.child'`. Can also be a getter.
+   */
+  accessor: string;
+  /**
+   * function will be called for each data label and allows you to format it according to your needs
+   */
+  formatter?: (value: any) => string;
+}
+
+interface PieChartProps extends RechartBasePropsNew {
+  centerLabel?: string;
+  dimension: DimensionConfig;
+  /**
+   * An array of config objects. Each object is defining one line in the chart.
+   *
+   * <h4>Required properties</h4>
+   * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   *
+   * <h4>Optional properties</h4>
+   *
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
+   * - `DataLabel`: a custom component to be used for the data label
+   * - `colors`: array of any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
+   */
+  measure: MeasureConfig;
+}
 
 /**
  * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';</code>
@@ -19,33 +69,14 @@ type PieChartProps = RechartBaseProps;
  */
 const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   const {
-    color,
     loading,
-    labelKey = 'label',
-    width = '100%',
-    height = '500px',
     dataset,
-    dataKeys,
     noLegend = false,
-    labels,
     onDataPointClick,
     onLegendClick,
-    dataLabelCustomElement = undefined,
-    valueFormatter = (el) => el,
-    labelFormatter = (el) => el,
+    centerLabel,
     chartConfig = {
-      margin: { right: 30, left: 30, bottom: 30, top: 30 },
-      yAxisVisible: true,
-      xAxisVisible: true,
-      gridStroke: 'white',
-      gridHorizontal: true,
-      gridVertical: true,
-      yAxisColor: 'black',
       legendPosition: 'bottom',
-      strokeWidth: 1,
-      zoomingTool: false,
-      strokeOpacity: 1,
-      dataLabel: true,
       paddingAngle: 0,
       innerRadius: undefined
     },
@@ -54,14 +85,25 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     tooltip,
     slot
   } = props;
+  const dimension: DimensionConfig = useMemo(
+    () => ({
+      formatter: (d) => d,
+      ...props.dimension
+    }),
+    [props.dimension]
+  );
+  const measure: MeasureConfig = useMemo(
+    () => ({
+      formatter: (d) => d,
+      ...props.measure
+    }),
+    [props.measure]
+  );
 
-  useInitialize();
-
+  const tooltipValueFormatter = useCallback((value) => measure.formatter(value), [measure.formatter]);
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, undefined);
-
-  const onItemLegendClick = useLegendItemClick(onLegendClick, () => currentDataKeys[0]);
+  const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
 
   const onDataPointClickInternal = useCallback(
     (payload, index, event) => {
@@ -69,7 +111,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
         onDataPointClick(
           enrichEventWithDetails(event, {
             value: payload.value,
-            dataKey: currentDataKeys[0],
+            dataKey: measure.accessor,
             name: payload.name,
             payload: payload.payload
           })
@@ -79,7 +121,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     [onDataPointClick]
   );
 
-  const PieDataLabel = usePieDataLabel(chartConfig.dataLabel, dataLabelCustomElement, labelFormatter);
+  const PieDataLabel = usePieDataLabel(!measure.hideDataLabel, measure.DataLabel, measure.formatter);
 
   const marginChart = chartConfig?.margin ?? { right: 30, left: 30, bottom: 30, top: 30 };
 
@@ -89,8 +131,6 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       ref={chartRef}
       loading={loading}
       Placeholder={PieChartPlaceholder}
-      width={width}
-      height={height}
       style={style}
       className={className}
       tooltip={tooltip}
@@ -100,22 +140,23 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
         <Pie
           innerRadius={chartConfig.innerRadius}
           paddingAngle={chartConfig.paddingAngle}
-          dataKey={currentDataKeys[0] ?? ''}
+          nameKey={dimension.accessor}
+          dataKey={measure.accessor}
           data={dataset}
           label={PieDataLabel}
           onClick={onDataPointClickInternal}
         >
-          {chartConfig.innerRadius && <Label position={'center'}>{currentDataKeys[0]}</Label>}
+          {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&
             dataset.map((data, index) => (
               <Cell
                 key={index}
-                name={valueFormatter(data[labelKey])}
-                fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
+                name={dimension.formatter(data[dimension.accessor])}
+                fill={measure.colors?.[index] ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               />
             ))}
         </Pie>
-        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
       </PieChartLib>
     </ChartContainer>

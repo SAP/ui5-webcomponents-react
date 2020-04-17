@@ -1,4 +1,5 @@
 import { action } from '@storybook/addon-actions';
+import { text } from '@storybook/addon-knobs';
 import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';
 import React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
@@ -13,10 +14,17 @@ export const renderStory = () => {
     <PieChart
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
-      width={'50%'}
+      style={{ width: '50%' }}
       dataset={simpleDataSet}
-      labelKey={'name'}
-      chartConfig={{ dataLabel: true }}
+      chartConfig={{
+        innerRadius: text('innerRadius', '0%')
+      }}
+      dimension={{
+        accessor: 'name'
+      }}
+      measure={{
+        accessor: 'users'
+      }}
     />
   );
 };
@@ -30,11 +38,15 @@ export const renderCustomColorStory = () => {
     <PieChart
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
-      width={'50%'}
+      style={{ width: '50%' }}
       dataset={simpleDataSet}
-      labelKey={'name'}
-      color={'lightblue'}
-      chartConfig={{ dataLabel: true }}
+      dimension={{
+        accessor: 'name'
+      }}
+      measure={{
+        accessor: 'users',
+        colors: ['#f00', 'green', 'var(--sapNegativeColor)']
+      }}
     />
   );
 };
@@ -43,7 +55,7 @@ renderCustomColorStory.story = {
   name: 'With custom color'
 };
 
-export const loadingPlaceholder = () => <PieChart width={'30%'} />;
+export const loadingPlaceholder = () => <PieChart style={{ width: '50%' }} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
@@ -54,11 +66,15 @@ export const renderFormatedStory = () => {
     <PieChart
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
-      dataValueFormatter={(d) => (d > 200 ? 'over 200' : 'lower')}
-      width={'50%'}
+      style={{ width: '50%' }}
       dataset={simpleDataSet}
-      labelKey={'name'}
-      chartConfig={{ dataLabel: true }}
+      dimension={{
+        accessor: 'name'
+      }}
+      measure={{
+        accessor: 'users',
+        formatter: (d) => (d > 200 ? 'over 200' : 'lower')
+      }}
     />
   );
 };

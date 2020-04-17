@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 
-export const usePrepareDimensionsAndMeasures = (
+export const usePrepareDimensionsAndMeasures = <DimensionConfig = any, MeasureConfig = any>(
   rawDimensions,
   rawMeasures,
   dimensionDefaults = {},
   measureDefaults = {}
 ) => {
-  const dimensions = useMemo(
+  const dimensions: DimensionConfig = useMemo(
     () =>
       rawDimensions.map((label) => ({
         ...dimensionDefaults,
@@ -15,7 +15,7 @@ export const usePrepareDimensionsAndMeasures = (
     [rawDimensions, dimensionDefaults]
   );
 
-  const measures = useMemo(
+  const measures: MeasureConfig = useMemo(
     () =>
       rawMeasures.map((value) => ({
         ...measureDefaults,

@@ -1,4 +1,5 @@
 import { action } from '@storybook/addon-actions';
+import { text } from '@storybook/addon-knobs';
 import { DonutChart } from '@ui5/webcomponents-react-charts/lib/next/DonutChart';
 import React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
@@ -13,10 +14,15 @@ export const renderStory = () => {
     <DonutChart
       onLegendClick={action('onLegendClick')}
       onDataPointClick={action('onDataPointClick')}
-      width={'50%'}
+      style={{ width: '50%' }}
       dataset={simpleDataSet}
-      labelKey={'name'}
-      chartConfig={{ dataLabel: true }}
+      dimension={{
+        accessor: 'name'
+      }}
+      measure={{
+        accessor: 'users',
+        label: 'Number of Users'
+      }}
     />
   );
 };
@@ -30,11 +36,15 @@ export const renderCustomColorStory = () => {
     <DonutChart
       onLegendClick={action('onLegendClick')}
       onDataPointClick={action('onDataPointClick')}
-      width={'50%'}
+      style={{ width: '50%' }}
       dataset={simpleDataSet}
-      labelKey={'name'}
-      color={'lightblue'}
-      chartConfig={{ dataLabel: true }}
+      dimension={{
+        accessor: 'name'
+      }}
+      measure={{
+        accessor: 'users',
+        colors: ['#f00', 'green', 'var(--sapNegativeColor)']
+      }}
     />
   );
 };
@@ -48,10 +58,15 @@ export const withPaddingStory = () => {
     <DonutChart
       onLegendClick={action('onLegendClick')}
       onDataPointClick={action('onDataPointClick')}
-      width={'50%'}
+      style={{ width: '50%' }}
       dataset={simpleDataSet}
-      labelKey={'name'}
-      chartConfig={{ dataLabel: true, paddingAngle: 5 }}
+      dimension={{
+        accessor: 'name'
+      }}
+      measure={{
+        accessor: 'users'
+      }}
+      chartConfig={{ paddingAngle: 5 }}
     />
   );
 };
@@ -60,20 +75,27 @@ withPaddingStory.story = {
   name: 'With padding angle'
 };
 
-export const withCustomnRadiusStory = () => {
+export const withCustomRadiusStory = () => {
   return (
     <DonutChart
       onLegendClick={action('onLegendClick')}
       onDataPointClick={action('onDataPointClick')}
-      width={'50%'}
+      style={{ width: '50%' }}
       dataset={simpleDataSet}
-      labelKey={'name'}
-      chartConfig={{ dataLabel: true, innerRadius: '25%' }}
+      chartConfig={{
+        innerRadius: text('innerRadius', '20%')
+      }}
+      dimension={{
+        accessor: 'name'
+      }}
+      measure={{
+        accessor: 'users'
+      }}
     />
   );
 };
 
-withCustomnRadiusStory.story = {
+withCustomRadiusStory.story = {
   name: 'With custom inner radius'
 };
 
@@ -88,12 +110,16 @@ export const withFormatedStory = () => {
     <DonutChart
       onLegendClick={action('onLegendClick')}
       onDataPointClick={action('onDataPointClick')}
-      width={'50%'}
+      style={{ width: '50%' }}
       dataset={simpleDataSet}
-      labelKey={'name'}
-      chartConfig={{ dataLabel: true, paddingAngle: 5 }}
-      yAxisFormatter={(el) => el / 10}
-      xAxisFormatter={(el) => el.slice(0, 3)}
+      dimension={{
+        accessor: 'name',
+        formatter: (el) => el.slice(0, 3)
+      }}
+      measure={{
+        accessor: 'users',
+        formatter: (el) => el / 10
+      }}
     />
   );
 };

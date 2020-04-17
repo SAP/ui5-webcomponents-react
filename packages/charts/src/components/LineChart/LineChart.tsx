@@ -4,7 +4,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils'
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { ComponentType, CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
+import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Brush,
   CartesianGrid,
@@ -20,31 +20,11 @@ import { useChartMargin } from '../../hooks/useChartMargin';
 import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { IChartDimension } from '../../interfaces/IChartDimension';
+import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 
-type MeasureConfig = {
-  /**
-   * A string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
-   * Can also be a getter.
-   */
-  accessor: string | Function;
-  color?: CSSProperties['color'];
-  /**
-   * The Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
-   */
-  label?: string;
-  /**
-   * This function will be called for each data label and allows you to format it according to your needs.
-   */
-  formatter?: (value: any) => string;
-  /**
-   * Flag whether the data labels should be hidden in the chart for this line.
-   */
-  hideDataLabel?: boolean;
-  /**
-   * Use a custom component for the Data Label
-   */
-  DataLabel?: ComponentType<any>;
+interface MeasureConfig extends IChartMeasure {
   /**
    * Line Width
    * @default 1
@@ -55,13 +35,11 @@ type MeasureConfig = {
    * @default 1
    */
   opacity?: number;
-};
+}
 
-type DimensionConfig = {
-  accessor: string | Function;
-  formatter?: (value: any) => string;
+interface DimensionConfig extends IChartDimension {
   interval?: number;
-};
+}
 
 interface LineChartProps extends RechartBasePropsNew {
   dimensions: DimensionConfig[];
