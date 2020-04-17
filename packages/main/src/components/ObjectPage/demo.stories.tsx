@@ -13,51 +13,47 @@ import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React from 'react';
-// @ts-ignore
 import SampleImage from './DemoImage.png';
-
-const renderHeaderContent = () => (
-  <>
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Link href="https://www.sap.com">www.myurl.com</Link>
-      <Text>Address 1</Text>
-    </div>
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Text>Address 2</Text>
-      <Text>Address 3</Text>
-    </div>
-  </>
-);
-
-const renderBreadcrumbs = () => (
-  <Breadcrumbs>
-    <Link href="PathSegment1">Path1</Link>
-    <Link href="PathSegment2">Path2</Link>
-    <Link href="PathSegment3"></Link>
-  </Breadcrumbs>
-);
-
-const renderKeyInfos = () => (
-  <>
-    <div>
-      <Title level={TitleLevel.H5}>Key Info 1</Title>
-      <Text>Value 1</Text>
-    </div>
-    <div>
-      <Title level={TitleLevel.H5}>Key Info 2</Title>
-      <Text>Value 2</Text>
-    </div>
-    <div>
-      <Title level={TitleLevel.H5}>Key Info 3</Title>
-      <Text>Value 3</Text>
-    </div>
-  </>
-);
 
 export const renderDemo = () => {
   return (
     <div style={{ width: 'calc(100% - 1rem)', height: 'calc(100% - 1rem)', position: 'relative', marginTop: '2rem' }}>
       <ObjectPage
+        headerContent={
+          <>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <Link href="https://www.sap.com">www.myurl.com</Link>
+              <Text>Address 1</Text>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <Text>Address 2</Text>
+              <Text>Address 3</Text>
+            </div>
+          </>
+        }
+        breadcrumbs={
+          <Breadcrumbs>
+            <Link href="PathSegment1">Path1</Link>
+            <Link href="PathSegment2">Path2</Link>
+            <Link href="PathSegment3"></Link>
+          </Breadcrumbs>
+        }
+        keyInfos={
+          <>
+            <div>
+              <Title level={TitleLevel.H5}>Key Info 1</Title>
+              <Text>Value 1</Text>
+            </div>
+            <div>
+              <Title level={TitleLevel.H5}>Key Info 2</Title>
+              <Text>Value 2</Text>
+            </div>
+            <div>
+              <Title level={TitleLevel.H5}>Key Info 3</Title>
+              <Text>Value 3</Text>
+            </div>
+          </>
+        }
         title={text('title', 'Object Page Title')}
         subTitle={text('subTitle', 'Object Page Sub Title')}
         headerActions={[
@@ -69,7 +65,6 @@ export const renderDemo = () => {
           </Button>
         ]}
         image={SampleImage}
-        renderHeaderContent={renderHeaderContent}
         mode={select('mode', ObjectPageMode, ObjectPageMode.Default)}
         imageShapeCircle={boolean('imageShapeCircle', false)}
         showHideHeaderButton={boolean('showHideHeaderButton', true)}
@@ -79,8 +74,6 @@ export const renderDemo = () => {
         noHeader={boolean('noHeader', false)}
         alwaysShowContentHeader={boolean('alwaysShowContentHeader', false)}
         showTitleInHeaderContent={boolean('showTitleInHeaderContent', false)}
-        renderBreadcrumbs={renderBreadcrumbs}
-        renderKeyInfos={renderKeyInfos}
         style={{ height: '700px' }}
         headerContentPinnable={boolean('headerContentPinnable', true)}
       >
@@ -124,7 +117,18 @@ export const renderComponentWithSections = () => (
     subTitle="Sub Title"
     headerActions={[<Button>Action</Button>]}
     image={SampleImage}
-    renderHeaderContent={renderHeaderContent}
+    headerContent={
+      <>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Link href="https://www.sap.com">www.myurl.com</Link>
+          <Text>Address 1</Text>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Text>Address 2</Text>
+          <Text>Address 3</Text>
+        </div>
+      </>
+    }
     mode={select('mode', ObjectPageMode, ObjectPageMode.Default)}
     style={{ height: '700px' }}
   >
@@ -158,7 +162,18 @@ export const renderShortContent = () => {
           </Button>
         ]}
         image={SampleImage}
-        renderHeaderContent={renderHeaderContent}
+        headerContent={
+          <>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <Link href="https://www.sap.com">www.myurl.com</Link>
+              <Text>Address 1</Text>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <Text>Address 2</Text>
+              <Text>Address 3</Text>
+            </div>
+          </>
+        }
         mode={select('mode', ObjectPageMode, ObjectPageMode.IconTabBar)}
         imageShapeCircle={boolean('imageShapeCircle', false)}
         showHideHeaderButton={boolean('showHideHeaderButton', true)}

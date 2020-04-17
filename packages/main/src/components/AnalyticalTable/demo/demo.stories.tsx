@@ -171,7 +171,7 @@ export const tableWithExtension = () => {
       filterable={boolean('filterable', true)}
       visibleRows={number('visibleRows', 15)}
       groupable={boolean('groupable', true)}
-      renderExtension={() => <Button>Hello from the Table Extension!</Button>}
+      extension={<Button>Hello from the Table Extension!</Button>}
     />
   );
 };

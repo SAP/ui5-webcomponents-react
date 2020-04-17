@@ -13,7 +13,7 @@ interface RadialChartProps extends CommonProps {
   maxValue?: number;
   displayValue?: number | string;
   color?: CSSProperties['color'];
-  onDataPointClick?: (event: CustomEvent<{value: unknown; payload: unknown; xIndex: number}>) => void;
+  onDataPointClick?: (event: CustomEvent<{ value: unknown; payload: unknown; xIndex: number }>) => void;
   height?: number | string;
   width?: number | string;
 }

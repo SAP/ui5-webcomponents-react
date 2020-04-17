@@ -19,26 +19,20 @@ const filterItems = [
   { text: 'Text 2', key: '2' }
 ];
 
-const renderVariants = () => {
-  return (
-    <VariantManagement
-      style={{ width: '300px', height: 'auto' }}
-      closeOnItemSelect={boolean('closeOnItemSelect', true)}
-      initialSelectedKey={'2'}
-      variantItems={variantItems}
-      placement={select('Placement', PlacementType, PlacementType.Bottom)}
-      level={select('level', TitleLevel, TitleLevel.H6)}
-    />
-  );
-};
-
-const renderSearch = () => {
-  return <Input placeholder={'Search'} />;
-};
-
 export const renderStory = () => {
   return (
-    <FilterBar renderSearch={renderSearch} renderVariants={renderVariants}>
+    <FilterBar
+      search={<Input placeholder={'Search'} />}
+      variants={
+        <VariantManagement
+          closeOnItemSelect={boolean('closeOnItemSelect', true)}
+          selectedKey={'2'}
+          variantItems={variantItems}
+          placement={select('Placement', PlacementType, PlacementType.Bottom)}
+          level={select('level', TitleLevel, TitleLevel.H6)}
+        />
+      }
+    >
       <FilterItem
         filterItems={filterItems}
         label="Classification"
