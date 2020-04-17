@@ -12,6 +12,6 @@ export const useDeprecateRenderMethods = (props, renderMethodName, slotName) => 
   }, []);
 
   return useMemo(() => {
-    return slot ?? (typeof renderMethod === 'function' ? renderMethod() : null);
-  }, [renderMethod, slot]);
+    return slot ?? (typeof props[renderMethodName] === 'function' ? props[renderMethodName]() : null);
+  }, [ props[renderMethodName],  props[slot]]);
 };
