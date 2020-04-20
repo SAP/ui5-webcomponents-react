@@ -133,18 +133,19 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
-    (payload, eventOrIndex) => {
-      if (eventOrIndex.dataKey && onDataPointClick) {
+    (payload, eventOrIndex, event) => {
+      if (payload && onDataPointClick) {
         onDataPointClick(
-          enrichEventWithDetails(
-            {},
-            {
-              value: eventOrIndex.value,
-              dataKey: eventOrIndex.dataKey,
-              xIndex: eventOrIndex.index,
-              payload: eventOrIndex.payload
-            }
-          )
+          enrichEventWithDetails(event, {
+            dataKey: Object.keys(payload).filter((key) =>
+              payload.value.length
+                ? payload[key] === payload.value[1] - payload.value[0]
+                : payload[key] === payload.value && key !== 'value'
+            )[0],
+            value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
+            xIndex: eventOrIndex,
+            payload: payload.payload
+          })
         );
       }
     },

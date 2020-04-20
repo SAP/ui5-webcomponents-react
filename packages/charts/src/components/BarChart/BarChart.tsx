@@ -133,18 +133,18 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
-    (payload, eventOrIndex) => {
-      if (eventOrIndex.dataKey && onDataPointClick) {
+    (payload, i, event) => {
+      if (payload && onDataPointClick) {
+        const value = payload.value.length ? payload.value[1] - payload.value[0] : payload.value;
         onDataPointClick(
-          enrichEventWithDetails(
-            {},
-            {
-              value: eventOrIndex.value,
-              dataKey: eventOrIndex.dataKey,
-              xIndex: eventOrIndex.index,
-              payload: eventOrIndex.payload
-            }
-          )
+          enrichEventWithDetails(event, {
+            dataKey: Object.keys(payload)
+              .filter((key) => key !== 'value')
+              .find((key) => payload[key] === value),
+            value,
+            payload: payload.payload,
+            xIndex: i
+          })
         );
       }
     },

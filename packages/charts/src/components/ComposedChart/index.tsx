@@ -210,14 +210,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         );
       } else {
         onDataPointClick(
-          enrichEventWithDetails(event ?? eventOrIndex, {
-            value: eventOrIndex.value,
-            xIndex: eventOrIndex.index ?? eventOrIndex,
-            dataKey:
-              eventOrIndex.dataKey ??
-              Object.keys(eventOrIndex).find((key) => eventOrIndex[key] === eventOrIndex.value && key !== 'value'),
-            payload: eventOrIndex.payload
-          })
+          enrichEventWithDetails(
+            {},
+            {
+              value: eventOrIndex.value,
+              dataKey: eventOrIndex.dataKey,
+              xIndex: eventOrIndex.index,
+              payload: eventOrIndex.payload
+            }
+          )
         );
       }
     },

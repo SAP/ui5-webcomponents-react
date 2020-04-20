@@ -3,7 +3,6 @@ import { boolean, text } from '@storybook/addon-knobs';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
 import React from 'react';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
-import { ColumnChart } from '../ColumnChart/ColumnChart';
 
 export default {
   title: 'Charts - Unstable /  BarChart',
