@@ -1,7 +1,5 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
@@ -14,8 +12,6 @@ interface RadialChartProps extends CommonProps {
   displayValue?: number | string;
   color?: CSSProperties['color'];
   onDataPointClick?: (event: CustomEvent<{ value: unknown; payload: unknown; xIndex: number }>) => void;
-  height?: number | string;
-  width?: number | string;
 }
 
 /**
@@ -23,23 +19,7 @@ interface RadialChartProps extends CommonProps {
  * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
-  const {
-    maxValue = 100,
-    value,
-    displayValue,
-    onDataPointClick,
-    color,
-    width = 300,
-    height = 300,
-    style,
-    className,
-    tooltip,
-    slot
-  } = props;
-
-  useInitialize();
-
-  const chartRef = useConsolidatedRef<any>(ref);
+  const { maxValue = 100, value, displayValue, onDataPointClick, color, style, className, tooltip, slot } = props;
 
   const range = useMemo(() => {
     return [0, maxValue];
@@ -65,17 +45,15 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
   return (
     <ChartContainer
       dataset={dataset}
-      ref={chartRef}
+      ref={ref}
       Placeholder={PieChartPlaceholder}
-      width={width as any}
-      height={height}
       style={style}
       className={className}
       tooltip={tooltip}
       slot={slot}
     >
       <RadialBarChartLib
-        margin={{ right: 30, top: 40, bottom: 30 }}
+        margin={{ right: 30, left: 30, top: 30, bottom: 30 }}
         innerRadius="90%"
         outerRadius="100%"
         barSize={10}
@@ -90,7 +68,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
           background={{ fill: ThemingParameters.sapContent_ImagePlaceholderBackground }}
           dataKey="value"
           cornerRadius="50%"
-          fill={color ?? `var(--sapUiChartAccent${(0 % 12) + 1})`}
+          fill={color ?? `var(--sapChart_OrderedColor_${(0 % 12) + 1})`}
           onClick={onDataPointClickInternal}
         />
         <text

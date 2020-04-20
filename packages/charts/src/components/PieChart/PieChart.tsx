@@ -44,7 +44,7 @@ interface DimensionConfig {
   formatter?: (value: any) => string;
 }
 
-interface PieChartProps extends RechartBasePropsNew {
+export interface PieChartProps extends RechartBasePropsNew {
   centerLabel?: string;
   dimension: DimensionConfig;
   /**
