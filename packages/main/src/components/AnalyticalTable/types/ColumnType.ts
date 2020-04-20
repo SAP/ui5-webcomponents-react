@@ -20,4 +20,5 @@ export interface ColumnType extends Column {
   disableGrouping: boolean;
   getResizerProps: () => any;
   isResizing: boolean;
+  hAlign: string;
 }
