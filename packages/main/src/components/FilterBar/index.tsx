@@ -68,8 +68,6 @@ const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
 const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     children,
-    renderVariants,
-    renderSearch,
     useToolbar,
     loading,
     filterBarExpanded,
@@ -111,8 +109,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});
 
-  const search = useDeprecateRenderMethods(renderSearch, props.search, 'search');
-  const variants = useDeprecateRenderMethods(renderVariants, props.variants, 'variants');
+  const search = useDeprecateRenderMethods(props, 'renderSearch', 'search');
+  const variants = useDeprecateRenderMethods(props, 'renderVariants', 'variants');
 
   useEffect(() => {
     if (showFilterConfiguration) {

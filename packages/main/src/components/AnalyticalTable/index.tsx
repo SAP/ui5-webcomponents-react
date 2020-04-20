@@ -2,6 +2,7 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { useDeprecateRenderMethods } from '@ui5/webcomponents-react-base/lib/hooks';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
@@ -71,6 +72,7 @@ export interface TableProps extends CommonProps {
    * Extension section of the Table. If not set, no extension area will be rendered
    */
   renderExtension?: () => ReactNode;
+  extension?: ReactNode;
 
   // appearance
 
@@ -137,7 +139,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     style,
     tooltip,
     title,
-    renderExtension,
     loading,
     groupBy,
     selectionMode,
@@ -176,6 +177,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
   const resizeObserverInitialized = useRef(false);
+  const extension = useDeprecateRenderMethods(props, 'renderExtension', 'extension');
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
@@ -257,7 +259,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   useEffect(() => {
     // @ts-ignore
     const tableWidthObserver = new ResizeObserver(() => {
-      if(resizeObserverInitialized.current) {
+      if (resizeObserverInitialized.current) {
         updateTableClientWidth();
       }
       resizeObserverInitialized.current = true;
@@ -359,7 +361,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
-      {typeof renderExtension === 'function' && <div>{renderExtension()}</div>}
+      {extension && <div>{extension}</div>}
       <div className={tableContainerClasses.valueOf()} ref={tableRef}>
         {
           <div

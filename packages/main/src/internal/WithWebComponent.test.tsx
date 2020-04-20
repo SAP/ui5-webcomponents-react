@@ -8,10 +8,7 @@ describe('withWebComponent', () => {
     const callback = spy();
     // eslint-disable-next-line react/jsx-no-bind
     const wrapper = mount(<Button onClick={(...args) => callback(...args)} />);
-    const component = wrapper
-      .find('ui5-button')
-      .first()
-      .instance();
+    const component = wrapper.find('ui5-button').first().instance();
 
     // @ts-ignore
     component.click();
@@ -28,10 +25,7 @@ describe('withWebComponent', () => {
   test('Bind new event handler', () => {
     const callback = spy();
     const wrapper = mount(<Button onClick={callback} />);
-    const component = wrapper
-      .find('ui5-button')
-      .first()
-      .instance();
+    const component = wrapper.find('ui5-button').first().instance();
     // @ts-ignore
     component.fireEvent('click');
     expect(callback.callCount).toEqual(1);

@@ -84,33 +84,23 @@ export class HSLColor {
   }
 
   static lighten(color: HSLColor | string, amount: number) {
-    return HSLColor.of(color)
-      .clone()
-      .lighten(amount);
+    return HSLColor.of(color).clone().lighten(amount);
   }
 
   static darken(color: HSLColor | string, amount: number) {
-    return HSLColor.of(color)
-      .clone()
-      .darken(amount);
+    return HSLColor.of(color).clone().darken(amount);
   }
 
   static saturate(color: HSLColor | string, amount: number) {
-    return HSLColor.of(color)
-      .clone()
-      .saturate(amount);
+    return HSLColor.of(color).clone().saturate(amount);
   }
 
   static desaturate(color: HSLColor | string, amount: number) {
-    return HSLColor.of(color)
-      .clone()
-      .desaturate(amount);
+    return HSLColor.of(color).clone().desaturate(amount);
   }
 
   static hsla(color: HSLColor | string, amount: number) {
-    return HSLColor.of(color)
-      .clone()
-      .setAlpha(amount);
+    return HSLColor.of(color).clone().setAlpha(amount);
   }
 
   getHue() {

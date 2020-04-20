@@ -63,18 +63,15 @@ export const withChartContainer = (Component: ComponentType<any>) => {
 
     const chartHeight = useMemo(() => (noLegend ? height : height - 60), [noLegend, height]);
 
-    const chartWrapperStyles: CSSProperties = useMemo(
-      () => {
-        let innerChartWrapperStyles : CSSProperties = {
-          position: 'relative',
-          height: chartHeight >= 0 ? `${chartHeight}px` : 'auto',
-          width: width ? `${width}px` : 'auto'
-        };
+    const chartWrapperStyles: CSSProperties = useMemo(() => {
+      let innerChartWrapperStyles: CSSProperties = {
+        position: 'relative',
+        height: chartHeight >= 0 ? `${chartHeight}px` : 'auto',
+        width: width ? `${width}px` : 'auto'
+      };
 
-        return innerChartWrapperStyles
-      },
-      [chartHeight, width]
-    );
+      return innerChartWrapperStyles;
+    }, [chartHeight, width]);
 
     return (
       <div ref={outerContainer} className={classNames} style={inlineStyle} title={tooltip} slot={slot}>

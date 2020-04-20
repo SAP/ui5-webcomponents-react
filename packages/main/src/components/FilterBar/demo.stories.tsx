@@ -20,8 +20,8 @@ const variantItems = [
 export const renderDefaultStory = () => {
   return (
     <FilterBar
-      renderSearch={() => <Input placeholder={'Search'} />}
-      renderVariants={() => <VariantManagement selectedKey="2" variantItems={variantItems} />}
+      search={<Input placeholder={'Search'} />}
+      variants={<VariantManagement selectedKey="2" variantItems={variantItems} />}
       useToolbar={boolean('useToolbar', true)}
       filterBarExpanded={boolean('filterBarExpanded', true)}
       loading={boolean('loading', false)}
@@ -76,12 +76,6 @@ renderDefaultStory.story = {
 export const renderStoryWithFiltersDialog = () => {
   return (
     <FilterBar
-      renderSearch={() => {
-        return <Input placeholder={'Search'} />;
-      }}
-      renderVariants={() => {
-        return <VariantManagement selectedKey="2" variantItems={variantItems} />;
-      }}
       search={<Input placeholder={'Search'} />}
       variants={<VariantManagement selectedKey="2" variantItems={variantItems} />}
       useToolbar={boolean('useToolbar', true)}

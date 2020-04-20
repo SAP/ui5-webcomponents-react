@@ -148,20 +148,14 @@ describe('AnalyticalTable', () => {
     expect(wrapper.render()).toMatchSnapshot();
 
     // test asc function inside the popover element
-    let component = wrapper
-      .find('ui5-li')
-      .at(1)
-      .instance();
+    let component = wrapper.find('ui5-li').at(1).instance();
     // @ts-ignore
     component.click();
 
     expect(wrapper.render()).toMatchSnapshot();
 
     // test desc function inside the popover element
-    component = wrapper
-      .find('ui5-li')
-      .at(0)
-      .instance();
+    component = wrapper.find('ui5-li').at(0).instance();
     // @ts-ignore
     component.click();
 
@@ -186,10 +180,7 @@ describe('AnalyticalTable', () => {
       />
     );
 
-    const colInst = wrapper
-      .find('div[role="columnheader"]')
-      .at(0)
-      .instance();
+    const colInst = wrapper.find('div[role="columnheader"]').at(0).instance();
 
     // @ts-ignore
     expect(colInst.draggable).toBeDefined();

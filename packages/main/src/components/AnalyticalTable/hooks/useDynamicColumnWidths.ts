@@ -18,7 +18,6 @@ const columnsDeps = (deps, { instance: { state, webComponentsReactProperties } }
 ];
 
 const columns = (columns, { instance }) => {
-
   if (!instance.state || !instance.rows) {
     return columns;
   }

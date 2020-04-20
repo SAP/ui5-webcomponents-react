@@ -11,7 +11,7 @@ export const useMergedConfig = (x, y) => {
 
 // this needs to be a function as we need the `this` of the chart;
 export const formatAxisCallback = (formatter) =>
-  function(value) {
+  function (value) {
     // @ts-ignore
     const currentDataset = this.chart.data.datasets[0];
     return formatter(value, currentDataset);

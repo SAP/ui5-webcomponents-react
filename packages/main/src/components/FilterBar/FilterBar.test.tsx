@@ -21,8 +21,8 @@ const variantItems = [
   { label: 'Variant 2', key: '2' }
 ];
 
-const renderVariants = () => <VariantManagement variantItems={variantItems} />;
-const renderSearch = () => <Input placeholder={'Search'} />;
+const variants = <VariantManagement variantItems={variantItems} />;
+const search = <Input placeholder={'Search'} />;
 
 describe('FilterBar', () => {
   it('Render without crashing - default props', () => {
@@ -44,8 +44,8 @@ describe('FilterBar', () => {
   it('Render without crashing - w/ filter dialog', () => {
     const wrapper = mount(
       <FilterBar
-        renderSearch={renderSearch}
-        renderVariants={renderVariants}
+        search={search}
+        variants={variants}
         useToolbar={true}
         filterBarExpanded={true}
         loading={false}
@@ -135,8 +135,8 @@ describe('FilterBar', () => {
   it('Toggle Filters Dialog', () => {
     const wrapper = mount(
       <FilterBar
-        renderSearch={renderSearch}
-        renderVariants={renderVariants}
+        search={search}
+        variants={variants}
         useToolbar={true}
         filterBarExpanded={true}
         loading={false}
@@ -205,11 +205,7 @@ describe('FilterBar', () => {
     wrapper.update();
     expect(wrapper.find('ui5-dialog').exists()).toBeTruthy();
     expect(wrapper.render()).toMatchSnapshot();
-    const filtersDialogBtns = (index) =>
-      wrapper
-        .find(Bar)
-        .find(Button)
-        .at(index);
+    const filtersDialogBtns = (index) => wrapper.find(Bar).find(Button).at(index);
     act(() => {
       //@ts-ignore
       filtersDialogBtns(0).prop('onClick')();
@@ -244,7 +240,7 @@ describe('FilterBar', () => {
   it('Group Filter Items mounted in Dialog', () => {
     const wrapper = mount(
       <FilterBar
-        renderSearch={renderSearch}
+        search={search}
         showClearOnFB={true}
         showRestoreOnFB={true}
         showFilterConfiguration={true}
@@ -284,10 +280,7 @@ describe('FilterBar', () => {
     expect(filterItemsDialogString).toEqual(filterItemsFBString);
     const filterItemMandatory = filterItemsDialog.at(2);
     expect(filterItemMandatory.prop('required')).toBeTruthy();
-    const checkbox = filterItemMandatory
-      .parents()
-      .find(CheckBox)
-      .at(0);
+    const checkbox = filterItemMandatory.parents().find(CheckBox).at(0);
     expect(checkbox.prop('disabled')).toBeTruthy();
   });
 
