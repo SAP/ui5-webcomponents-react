@@ -96,12 +96,13 @@ export const renderCustomDataLabelStory = () => {
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
-      dimensions={[{ accessor: 'name', label: 'number of users', formatter: (element: string) => element.slice(0, 3) }]}
+      dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
       chartConfig={{ polarGridType: 'polygon' }}
       measures={[
         {
           accessor: 'users',
-          formatter: (element: number) => `${element / 10}`
+          formatter: (element: number) => `${element / 10}`,
+          label: 'number of users'
         },
         {
           accessor: 'sessions'

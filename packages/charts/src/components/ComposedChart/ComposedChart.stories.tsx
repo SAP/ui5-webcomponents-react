@@ -69,7 +69,7 @@ export const withSecondaryDimension = () => (
   <ComposedChart
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
-    measures={[{ accessor: 'users', type: 'area', color: 'red', lineWidth: 2, opacity: 0.5 }]}
+    measures={[{ accessor: 'users', type: 'area', color: 'red', width: 2, opacity: 0.5 }]}
     dataset={secondaryDimensionDataSet}
     style={{ width: '95%', height: '60vh' }}
   />
@@ -145,8 +145,7 @@ export const renderCustomDataLabelStory = () => {
       ]}
       style={{ width: '95%', height: '40vh' }}
       chartConfig={{
-        zoomingTool: true,
-        stacked: true
+        zoomingTool: true
       }}
     />
   );

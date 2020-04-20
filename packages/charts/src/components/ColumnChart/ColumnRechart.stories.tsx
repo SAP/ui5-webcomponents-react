@@ -115,11 +115,12 @@ export const renderCustomDataLabelStory = () => {
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
-      dimensions={[{ accessor: 'name', label: 'number of users', formatter: (element: string) => element.slice(0, 3) }]}
+      dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
       measures={[
         {
           accessor: 'users',
-          formatter: (element: number) => `${element / 10}`
+          formatter: (element: number) => `${element / 10}`,
+          label: 'number of users'
         },
         {
           accessor: 'sessions'
@@ -130,8 +131,7 @@ export const renderCustomDataLabelStory = () => {
       ]}
       style={{ width: '95%', height: '40vh' }}
       chartConfig={{
-        zoomingTool: true,
-        strokeWidth: 1.5
+        zoomingTool: true
       }}
     />
   );

@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { MicroBarChart } from './MicroBarChart';
+import { LineChart } from '../LineChart/LineChart';
 
 const singleData = [
   {
