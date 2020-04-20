@@ -19,7 +19,7 @@ import {
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
@@ -39,7 +39,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface ColumnChartProps extends RechartBasePropsNew {
+interface ColumnChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one column in the chart.

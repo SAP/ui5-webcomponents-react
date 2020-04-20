@@ -22,7 +22,7 @@ import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimension
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
 const formatYAxisTicks = (tick) => {
   const splitTick = tick.split(' ');
@@ -53,13 +53,18 @@ interface MeasureConfig extends IChartMeasure {
    * @default 1
    */
   opacity?: number;
+  /**
+   * Bar Stack ID
+   * @default undefined
+   */
+  stackId?: string;
 }
 
 interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface BarChartProps extends RechartBasePropsNew {
+interface BarChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one bar in the chart.
@@ -77,6 +82,7 @@ interface BarChartProps extends RechartBasePropsNew {
    * - `DataLabel`: a custom component to be used for the data label
    * - `width`: bar width, defaults to `auto`
    * - `opacity`: bar opacity, defaults to `1`
+   * - `stackId`: bars with the same stackId will be stacked
    *
    */
   measures: MeasureConfig[];

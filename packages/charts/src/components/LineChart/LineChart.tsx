@@ -22,7 +22,7 @@ import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimension
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -41,7 +41,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface LineChartProps extends RechartBasePropsNew {
+interface LineChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one line in the chart.

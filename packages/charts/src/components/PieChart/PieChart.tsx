@@ -7,7 +7,7 @@ import React, { FC, forwardRef, Ref, useCallback, useMemo, ComponentType, CSSPro
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { usePieDataLabel } from '../../hooks/useLabelElements';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color'> {
   /**
@@ -33,7 +33,7 @@ interface DimensionConfig {
   formatter?: (value: any) => string;
 }
 
-export interface PieChartProps extends RechartBasePropsNew {
+export interface PieChartProps extends RechartBaseProps {
   centerLabel?: string;
   dimension: DimensionConfig;
   /**

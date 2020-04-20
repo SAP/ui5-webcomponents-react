@@ -23,7 +23,7 @@ import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimension
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
 const dimensionDefaults = {
   formatter: (d) => d
@@ -37,15 +37,9 @@ const measureDefaults = {
 
 interface MeasureConfig extends IChartMeasure {
   /**
-   * Line Width
-   * @default 1
+   * width of the current chart element, defaults to `1` for `lines` and `20` for bars
    */
-  lineWidth?: number;
-  /**
-   * Bar Width
-   * @default 1
-   */
-  barWidth?: number;
+  width?: number;
   /**
    * Opacity
    * @default 1
@@ -61,7 +55,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface ComposedChartProps extends RechartBasePropsNew {
+interface ComposedChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one element in the chart.
@@ -294,13 +288,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.barSize = element.width ?? 20;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = ComposedDataLabel;
               break;
             case 'area':
               chartElementProps.fillOpacity = 0.3;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.label = bigDataSet ? false : ComposedDataLabel;
               chartElementProps.strokeWidth = element.width ?? 1;
               break;
           }

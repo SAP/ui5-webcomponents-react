@@ -14,7 +14,7 @@ import {
   RadarChart as RadarChartLib,
   Tooltip
 } from 'recharts';
-import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { useDataLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
@@ -33,7 +33,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface RadarChartProps extends RechartBasePropsNew {
+interface RadarChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one radar in the chart.
