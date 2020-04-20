@@ -45,7 +45,7 @@ const measureDefaults = {
 interface MeasureConfig extends IChartMeasure {
   /**
    * Bar Width
-   * @default 30
+   * @default auto
    */
   width?: number;
   /**

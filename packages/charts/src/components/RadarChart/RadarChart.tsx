@@ -49,7 +49,7 @@ interface RadarChartProps extends RechartBasePropsNew {
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this radar.
    * - `DataLabel`: a custom component to be used for the data label
-   * - `opacity`: radar opacity, defaults to `1`
+   * - `opacity`: radar opacity, defaults to `0.5`
    *
    */
   measures: MeasureConfig[];

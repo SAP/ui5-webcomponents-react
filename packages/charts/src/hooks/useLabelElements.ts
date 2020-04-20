@@ -8,9 +8,9 @@ import {
 } from '../internal/CustomElements';
 import { getTextWidth, renderAxisTicks } from '../util/Utils';
 
-export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter, stacked?, bar?, noSizeCheck?) =>
+export const useDataLabel = (showDataLabel, dataLabelCustomElement, dataLabelFormatter, stacked?, bar?, noSizeCheck?) =>
   useMemo(() => {
-    if (dataLabel ?? true) {
+    if (showDataLabel ?? true) {
       if (dataLabelCustomElement) {
         return (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement);
       } else {
@@ -34,7 +34,7 @@ export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatt
       }
     }
     return false;
-  }, [stacked, bar, dataLabel, dataLabelFormatter, dataLabelCustomElement]);
+  }, [stacked, bar, showDataLabel, dataLabelFormatter, dataLabelCustomElement]);
 
 export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter) =>
   useMemo(() => {

@@ -6,26 +6,15 @@ import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegen
 import React, { FC, forwardRef, Ref, useCallback, useMemo, ComponentType, CSSProperties } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { usePieDataLabel } from '../../hooks/useLabelElements';
+import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 
-interface MeasureConfig {
+interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color'> {
   /**
    * A string containing the path to the dataset key this pie should display.
-   * Supports object structures by using '`parent.child'`. Can also be a getter.
+   * Supports object structures by using `'parent.child'`. Can also be a getter.
    */
   accessor: string;
-  /**
-   * This function will be called for each data label and allows you to format it according to your needs.
-   */
-  formatter?: (value: any) => string;
-  /**
-   * Flag whether the data labels should be hidden in the chart for this pie.
-   */
-  hideDataLabel?: boolean;
-  /**
-   * Use a custom component for the Data Label
-   */
-  DataLabel?: ComponentType<any>;
   /**
    * array of any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
    */

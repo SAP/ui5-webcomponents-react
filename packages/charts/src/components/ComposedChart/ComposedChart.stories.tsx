@@ -2,7 +2,6 @@ import { action } from '@storybook/addon-actions';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/next/ComposedChart';
 import React from 'react';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
-import { ColumnChart } from '../ColumnChart/ColumnChart';
 import { boolean } from '@storybook/addon-knobs';
 
 export default {
@@ -154,12 +153,6 @@ export const renderCustomDataLabelStory = () => {
 
 renderCustomDataLabelStory.story = {
   name: 'With formatter'
-};
-
-export const loadingPlaceholder = () => <ColumnChart style={{ width: '50%' }} dimensions={[]} measures={[]} />;
-
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
 };
 
 export const withReferenceLineStory = () => {
