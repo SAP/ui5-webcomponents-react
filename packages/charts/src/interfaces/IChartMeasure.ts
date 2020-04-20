@@ -1,3 +1,5 @@
+import { CSSProperties, ComponentType } from 'react';
+
 export interface IChartMeasure {
   /**
    * A string containing the path to the dataset key this line should display.
