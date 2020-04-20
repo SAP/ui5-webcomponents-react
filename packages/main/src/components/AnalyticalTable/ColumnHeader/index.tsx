@@ -5,6 +5,7 @@ import '@ui5/webcomponents-icons/dist/icons/sort-descending';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
+import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import React, {
   CSSProperties,
   DragEventHandler,
@@ -136,6 +137,13 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
       modifiedStyles.padding = 0;
     }
+    if (column.hAlign === TextAlign.End) {
+      modifiedStyles.justifyContent = 'flex-end';
+      modifiedStyles.maxWidth = '';
+      if (isLastColumn) {
+        modifiedStyles.paddingRight = `calc(${ThemingParameters.sapScrollBar_Dimension} + 1rem)`;
+      }
+    }
     return modifiedStyles;
   }, [isResizable, dragOver, hasPopover]);
 
@@ -165,6 +173,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       onDrop={onDrop}
       onDragEnd={onDragEnd}
       data-column-id={id}
+      onClick={onOpenPopover}
     >
       <div style={innerStyle} onClick={onOpenPopover} className={classes.header}>
         <span
