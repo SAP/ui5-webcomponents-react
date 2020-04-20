@@ -1,9 +1,5 @@
 import React, { FC, forwardRef } from 'react';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { PieChart } from '../PieChart/PieChart';
-
-type PieChartProps = RechartBaseProps;
-
+import { PieChart, PieChartProps } from '../PieChart/PieChart';
 /**
  * <code>import { DonutChart } from '@ui5/webcomponents-react-charts/lib/next/DonutChart';</code>
  * **This component is under active development. The API is not stable yet and might change without further notice.**
