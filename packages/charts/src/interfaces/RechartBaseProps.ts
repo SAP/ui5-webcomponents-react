@@ -27,7 +27,6 @@ export interface RechartBaseProps extends CommonProps {
     legendPosition?: string;
     zoomingTool?: boolean;
 
-    stacked?: boolean;
     barGap?: number;
 
     paddingAngle?: number;

@@ -109,7 +109,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       legendPosition: 'top',
       barGap: 3,
       zoomingTool: false,
-      stacked: false,
       referenceLine: {
         label: undefined,
         value: undefined,
@@ -226,7 +225,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           );
           return (
             <Bar
-              stackId={chartConfig.stacked ? 'A' : undefined}
+              stackId={element.stackId ?? undefined}
               fillOpacity={element.opacity}
               key={element.accessor}
               name={element.label ?? element.accessor}

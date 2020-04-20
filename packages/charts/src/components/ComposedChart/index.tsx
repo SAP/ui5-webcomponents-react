@@ -49,6 +49,11 @@ interface MeasureConfig extends IChartMeasure {
    * Chart type
    */
   type: AvailableChartTypes;
+  /**
+   * Bar Stack ID
+   * @default undefined
+   */
+  stackId?: string;
 }
 
 interface DimensionConfig extends IChartDimension {
@@ -112,7 +117,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       legendPosition: 'top',
       zoomingTool: false,
       barGap: undefined,
-      stacked: false,
       secondYAxis: {
         name: undefined,
         dataKey: undefined,
@@ -208,8 +212,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     chartConfig.zoomingTool
   );
 
-  const bigDataSet = dataset?.length > 30 ?? false;
-
   return (
     <ChartContainer
       ref={chartRef}
@@ -267,7 +269,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             !element.hideDataLabel,
             element.DataLabel,
             element.formatter,
-            element.type === 'bar' ? chartConfig.stacked : false,
+            !!(element.type === 'bar' && element.stackId),
             false,
             element.type === 'line' || element.type === 'area'
           );
@@ -286,8 +288,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             case 'bar':
               chartElementProps.fillOpacity = element.opacity;
               chartElementProps.strokeOpacity = element.opacity;
-              chartElementProps.barSize = element.width ?? 20;
+              chartElementProps.barSize = element.width === 1 ? 20 : element.width;
               chartElementProps.onClick = onDataPointClickInternal;
+              chartElementProps.stackId = element.stackId ?? undefined;
               break;
             case 'area':
               chartElementProps.fillOpacity = 0.3;
@@ -299,7 +302,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           return (
             <ChartElement
               yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
-              stackId={chartConfig.stacked ? 'A' : undefined}
               key={element.accessor}
               name={element.label ?? element.accessor}
               label={isBigDataSet ? false : ComposedDataLabel}

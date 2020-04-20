@@ -58,9 +58,6 @@ export const renderStoryWithCustomColor = () => (
     measures={[{ accessor: 'users', color: 'red', type: 'bar' }]}
     dataset={simpleDataSet}
     style={{ width: '95%', height: '40vh' }}
-    chartConfig={{
-      barSize: 40
-    }}
   />
 );
 
@@ -131,11 +128,15 @@ export const renderCustomDataLabelStory = () => {
           accessor: 'users',
           formatter: (element: number) => `${element / 10}`,
           type: 'bar',
-          label: 'number of users'
+          label: 'number of users',
+          stackId: 'A',
+          width: 30
         },
         {
           accessor: 'sessions',
-          type: 'bar'
+          type: 'bar',
+          stackId: 'A',
+          width: 30
         },
         {
           accessor: 'volume',

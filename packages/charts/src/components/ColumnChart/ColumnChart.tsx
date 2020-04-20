@@ -33,6 +33,11 @@ interface MeasureConfig extends IChartMeasure {
    * Column Opacity
    */
   opacity?: number;
+  /**
+   * Bar Stack ID
+   * @default undefined
+   */
+  stackId?: string;
 }
 
 interface DimensionConfig extends IChartDimension {
@@ -93,7 +98,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       legendPosition: 'top',
       barGap: 3,
       zoomingTool: false,
-      stacked: false,
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
@@ -221,13 +225,13 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             !element.hideDataLabel,
             element.DataLabel,
             element.formatter,
-            chartConfig.stacked,
+            !!element.stackId,
             false
           );
           return (
             <Column
               yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
-              stackId={chartConfig.stacked ? 'A' : undefined}
+              stackId={element.stackId ?? undefined}
               fillOpacity={element.opacity}
               key={element.accessor}
               name={element.label ?? element.accessor}

@@ -75,10 +75,6 @@ export const withSecondaryDimension = () => (
     measures={[{ accessor: 'users', color: 'red' }]}
     dataset={secondaryDimensionDataSet}
     style={{ width: '95%', height: '60vh' }}
-    chartConfig={{
-      strokeWidth: 2,
-      strokeOpacity: 0.5
-    }}
   />
 );
 
@@ -106,8 +102,7 @@ export const renderLabelStory = () => {
       dataset={complexDataSet}
       style={{ width: '95%', height: '40vh' }}
       chartConfig={{
-        zoomingTool: true,
-        strokeWidth: 1.5
+        zoomingTool: true
       }}
     />
   );
@@ -164,16 +159,18 @@ export const withReferenceLineStory = () => {
       dimensions={[{ accessor: 'name' }]}
       measures={[
         {
-          accessor: 'users'
+          accessor: 'users',
+          stackId: 'A'
         },
         {
-          accessor: 'sessions'
+          accessor: 'sessions',
+          stackId: 'A'
         },
         {
           accessor: 'volume'
         }
       ]}
-      style={{ width: '95%', height: '40vh' }}
+      style={{ width: '95%', height: '70vh' }}
       noLegend={false}
       loading
       chartConfig={{
