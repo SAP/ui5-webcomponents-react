@@ -173,7 +173,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       onDrop={onDrop}
       onDragEnd={onDragEnd}
       data-column-id={id}
-      onClick={onOpenPopover}
     >
       <div style={innerStyle} onClick={onOpenPopover} className={classes.header}>
         <span
