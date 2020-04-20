@@ -44,12 +44,12 @@ const measureDefaults = {
 
 interface MeasureConfig extends IChartMeasure {
   /**
-   * Line Width
-   * @default 1
+   * Bar Width
+   * @default 30
    */
   width?: number;
   /**
-   * Line Opacity
+   * Bar Opacity
    * @default 1
    */
   opacity?: number;
@@ -62,10 +62,10 @@ interface DimensionConfig extends IChartDimension {
 interface BarChartProps extends RechartBasePropsNew {
   dimensions: DimensionConfig[];
   /**
-   * An array of config objects. Each object is defining one line in the chart.
+   * An array of config objects. Each object is defining one bar in the chart.
    *
    * <h4>Required properties</h4>
-   * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   * - `accessor`: string containing the path to the dataset key this bar should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
    * <h4>Optional properties</h4>
@@ -73,7 +73,7 @@ interface BarChartProps extends RechartBasePropsNew {
    * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
-   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this bar.
    * - `DataLabel`: a custom component to be used for the data label
    * - `width`: bar width, defaults to `auto`
    * - `opacity`: bar opacity, defaults to `1`
@@ -221,7 +221,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           return (
             <Bar
               stackId={chartConfig.stacked ? 'A' : undefined}
-              fillOpacity={chartConfig.fillOpacity}
+              fillOpacity={element.opacity}
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}

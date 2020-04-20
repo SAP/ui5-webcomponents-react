@@ -73,13 +73,9 @@ export const withSecondaryDimension = () => (
   <ComposedChart
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
-    measures={[{ accessor: 'users', type: 'area', color: 'red' }]}
+    measures={[{ accessor: 'users', type: 'area', color: 'red', lineWidth: 2, opacity: 0.5 }]}
     dataset={secondaryDimensionDataSet}
     style={{ width: '95%', height: '60vh' }}
-    chartConfig={{
-      strokeWidth: 2,
-      strokeOpacity: 0.5
-    }}
   />
 );
 
@@ -100,7 +96,8 @@ export const renderLabelStory = () => {
         },
         {
           accessor: 'sessions',
-          type: 'bar'
+          type: 'bar',
+          opacity: 0.6
         },
         {
           accessor: 'volume',
@@ -129,12 +126,13 @@ export const renderCustomDataLabelStory = () => {
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
-      dimensions={[{ accessor: 'name', label: 'number of users', formatter: (element: string) => element.slice(0, 3) }]}
+      dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
       measures={[
         {
           accessor: 'users',
           formatter: (element: number) => `${element / 10}`,
-          type: 'bar'
+          type: 'bar',
+          label: 'number of users'
         },
         {
           accessor: 'sessions',
@@ -148,7 +146,6 @@ export const renderCustomDataLabelStory = () => {
       style={{ width: '95%', height: '40vh' }}
       chartConfig={{
         zoomingTool: true,
-        strokeWidth: 1.5,
         stacked: true
       }}
     />

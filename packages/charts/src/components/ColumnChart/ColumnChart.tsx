@@ -4,7 +4,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ColumnChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { ComponentType, CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Bar as Column,
   BarChart as ColumnChartLib,
@@ -30,7 +30,7 @@ interface MeasureConfig extends IChartMeasure {
    */
   width?: number;
   /**
-   * Line Opacity
+   * Column Opacity
    */
   opacity?: number;
 }
@@ -42,10 +42,10 @@ interface DimensionConfig extends IChartDimension {
 interface ColumnChartProps extends RechartBasePropsNew {
   dimensions: DimensionConfig[];
   /**
-   * An array of config objects. Each object is defining one line in the chart.
+   * An array of config objects. Each object is defining one column in the chart.
    *
    * <h4>Required properties</h4>
-   * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   * - `accessor`: string containing the path to the dataset key this column should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
    * <h4>Optional properties</h4>
@@ -53,7 +53,7 @@ interface ColumnChartProps extends RechartBasePropsNew {
    * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
-   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this column.
    * - `DataLabel`: a custom component to be used for the data label
    * - `width`: column width, defaults to `auto`
    * - `opacity`: column opacity, defaults to `1`
@@ -228,7 +228,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             <Column
               yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
               stackId={chartConfig.stacked ? 'A' : undefined}
-              fillOpacity={chartConfig.fillOpacity}
+              fillOpacity={element.opacity}
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}

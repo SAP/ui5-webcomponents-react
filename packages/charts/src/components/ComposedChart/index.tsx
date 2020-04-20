@@ -1,7 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
@@ -22,10 +21,22 @@ import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
+
+const dimensionDefaults = {
+  formatter: (d) => d
+};
+
+const measureDefaults = {
+  formatter: (d) => d,
+  opacity: 1,
+  lineWidth: 1,
+  barWidth: 20
+};
 
 type MeasureConfig = {
   /**
-   * A string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   * A string containing the path to the dataset key this element should display. Supports object structures by using <code>'parent.child'</code>.
    * Can also be a getter.
    */
   accessor: string | Function;
@@ -39,7 +50,7 @@ type MeasureConfig = {
    */
   formatter?: (value: any) => string;
   /**
-   * Flag whether the data labels should be hidden in the chart for this line.
+   * Flag whether the data labels should be hidden in the chart for this charts.
    */
   hideDataLabel?: boolean;
   /**
@@ -52,7 +63,12 @@ type MeasureConfig = {
    */
   lineWidth?: number;
   /**
-   * Line Opacity
+   * Bar Width
+   * @default 1
+   */
+  barWidth?: number;
+  /**
+   * Opacity
    * @default 1
    */
   opacity?: number;
@@ -71,10 +87,10 @@ type DimensionConfig = {
 interface ComposedChartProps extends RechartBasePropsNew {
   dimensions: DimensionConfig[];
   /**
-   * An array of config objects. Each object is defining one line in the chart.
+   * An array of config objects. Each object is defining one element in the chart.
    *
    * <h4>Required properties</h4>
-   * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   * - `accessor`: string containing the path to the dataset key this element should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
    * <h4>Optional properties</h4>
@@ -82,10 +98,11 @@ interface ComposedChartProps extends RechartBasePropsNew {
    * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
-   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this element.
    * - `DataLabel`: a custom component to be used for the data label
-   * - `lineWidth`: line width, defaults to `1`
-   * - `opacity`: line opacity, defaults to `1`
+   * - `lineWidth`: lineWidth, defaults to `1`
+   * - `barWidth`: barWidth, defaults to `20`
+   * - `opacity`: element opacity, defaults to `1`
    *
    */
   measures: MeasureConfig[];
@@ -111,14 +128,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     dataset,
     onDataPointClick,
     noLegend = false,
-    defaults = {
-      barSize: 20,
-      barGap: 3,
-      lineType: 'monotone',
-      dataLabelCustomElement: undefined,
-      label: { position: 'top' },
-      stackId: undefined
-    },
     onLegendClick,
     chartConfig = {
       margin: {},
@@ -149,35 +158,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const mergeWithDefaults = (element) => {
-    return {
-      ...defaults,
-      ...element
-    };
-  };
-
-  const dimensions = useMemo(
-    () =>
-      props.dimensions.map((label) => {
-        return {
-          formatter: (d) => d,
-          ...label
-        };
-      }),
-    [props.dimensions]
-  );
-
-  const measures = useMemo(
-    () =>
-      props.measures.map((value) => {
-        return {
-          formatter: (d) => d,
-          lineWidth: 1,
-          opacity: 1,
-          ...value
-        };
-      }),
-    [props.measures]
+  const { dimensions, measures } = usePrepareDimensionsAndMeasures(
+    props.dimensions,
+    props.measures,
+    dimensionDefaults,
+    measureDefaults
   );
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
@@ -328,17 +313,24 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               };
               chartElementProps.label = bigDataSet ? false : ComposedDataLabel;
               chartElementProps.strokeWidth = element.lineWidth;
+              chartElementProps.strokeOpacity = element.opacity;
+              chartElementProps.name = element.label ?? element.accessor;
               break;
             case 'bar':
-              chartElementProps.barSize = chartConfig.barSize ?? defaults.barSize;
-              chartElementProps.barGap = chartConfig.barGap ?? defaults.barGap;
+              chartElementProps.fillOpacity = element.opacity;
+              chartElementProps.strokeOpacity = element.opacity;
+              chartElementProps.barSize = element.barWidth;
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.label = ComposedDataLabel;
+              chartElementProps.name = element.label ?? element.accessor;
               break;
             case 'area':
               chartElementProps.fillOpacity = 0.3;
+              chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.label = bigDataSet ? false : ComposedDataLabel;
+              chartElementProps.strokeWidth = element.lineWidth;
+              chartElementProps.name = element.label ?? element.accessor;
               break;
           }
           return (

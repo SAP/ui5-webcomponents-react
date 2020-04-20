@@ -4,7 +4,6 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Legend,
@@ -25,11 +24,7 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 
 interface MeasureConfig extends IChartMeasure {
   /**
-   * Column Width
-   */
-  width?: number;
-  /**
-   * Line Opacity
+   * Opacity
    */
   opacity?: number;
 }
@@ -41,10 +36,10 @@ interface DimensionConfig extends IChartDimension {
 interface RadarChartProps extends RechartBasePropsNew {
   dimensions: DimensionConfig[];
   /**
-   * An array of config objects. Each object is defining one line in the chart.
+   * An array of config objects. Each object is defining one radar in the chart.
    *
    * <h4>Required properties</h4>
-   * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   * - `accessor`: string containing the path to the dataset key this radar should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
    * <h4>Optional properties</h4>
@@ -52,10 +47,9 @@ interface RadarChartProps extends RechartBasePropsNew {
    * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
-   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this radar.
    * - `DataLabel`: a custom component to be used for the data label
-   * - `width`: column width, defaults to `auto`
-   * - `opacity`: column opacity, defaults to `1`
+   * - `opacity`: radar opacity, defaults to `1`
    *
    */
   measures: MeasureConfig[];
@@ -67,7 +61,7 @@ const dimensionDefaults = {
 
 const measureDefaults = {
   formatter: (d) => d,
-  opacity: 1
+  opacity: 0.5
 };
 
 /**
@@ -167,7 +161,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
               dataKey={element.accessor}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-              fillOpacity={0.5}
+              fillOpacity={element.opacity}
               label={RadarDataLabel}
             />
           );

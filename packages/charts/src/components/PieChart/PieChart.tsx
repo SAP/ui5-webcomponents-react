@@ -10,7 +10,7 @@ import { RechartBasePropsNew } from '../../interfaces/RechartBaseProps';
 
 interface MeasureConfig {
   /**
-   * A string containing the path to the dataset key this line should display.
+   * A string containing the path to the dataset key this pie should display.
    * Supports object structures by using '`parent.child'`. Can also be a getter.
    */
   accessor: string;
@@ -19,7 +19,7 @@ interface MeasureConfig {
    */
   formatter?: (value: any) => string;
   /**
-   * Flag whether the data labels should be hidden in the chart for this line.
+   * Flag whether the data labels should be hidden in the chart for this pie.
    */
   hideDataLabel?: boolean;
   /**
@@ -34,7 +34,7 @@ interface MeasureConfig {
 
 interface DimensionConfig {
   /**
-   * A string containing the path to the dataset key this line should display.
+   * A string containing the path to the dataset key this pie should display.
    * Supports object structures by using `'parent.child'`. Can also be a getter.
    */
   accessor: string;
@@ -48,15 +48,15 @@ interface PieChartProps extends RechartBasePropsNew {
   centerLabel?: string;
   dimension: DimensionConfig;
   /**
-   * An array of config objects. Each object is defining one line in the chart.
+   * An array of config objects. Each object is defining one pie in the chart.
    *
    * <h4>Required properties</h4>
-   * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   * - `accessor`: string containing the path to the dataset key this pie should display. Supports object structures by using <code>'parent.child'</code>.
    *
    * <h4>Optional properties</h4>
    *
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
-   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this pie.
    * - `DataLabel`: a custom component to be used for the data label
    * - `colors`: array of any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
    */

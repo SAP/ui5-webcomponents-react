@@ -17,6 +17,7 @@ export const renderStory = () => {
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
       style={{ height: '60vh' }}
+      chartConfig={{}}
       dimensions={[
         {
           accessor: 'name',
@@ -27,7 +28,8 @@ export const renderStory = () => {
         {
           accessor: 'users',
           label: 'Users',
-          formatter: (val) => val.toLocaleString()
+          formatter: (val) => val.toLocaleString(),
+          opacity: 0.6
         },
         {
           accessor: 'sessions',
