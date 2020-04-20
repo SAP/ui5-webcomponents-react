@@ -22,6 +22,8 @@ import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../ho
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
+import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { IChartDimension } from '../../interfaces/IChartDimension';
 
 const dimensionDefaults = {
   formatter: (d) => d
@@ -34,29 +36,7 @@ const measureDefaults = {
   barWidth: 20
 };
 
-type MeasureConfig = {
-  /**
-   * A string containing the path to the dataset key this element should display. Supports object structures by using <code>'parent.child'</code>.
-   * Can also be a getter.
-   */
-  accessor: string | Function;
-  color?: CSSProperties['color'];
-  /**
-   * The Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
-   */
-  label?: string;
-  /**
-   * This function will be called for each data label and allows you to format it according to your needs.
-   */
-  formatter?: (value: any) => string;
-  /**
-   * Flag whether the data labels should be hidden in the chart for this charts.
-   */
-  hideDataLabel?: boolean;
-  /**
-   * Use a custom component for the Data Label
-   */
-  DataLabel?: ComponentType<any>;
+interface MeasureConfig extends IChartMeasure {
   /**
    * Line Width
    * @default 1
@@ -76,13 +56,11 @@ type MeasureConfig = {
    * Chart type
    */
   type: AvailableChartTypes;
-};
+}
 
-type DimensionConfig = {
-  accessor: string | Function;
-  formatter?: (value: any) => string;
+interface DimensionConfig extends IChartDimension {
   interval?: number;
-};
+}
 
 interface ComposedChartProps extends RechartBasePropsNew {
   dimensions: DimensionConfig[];
