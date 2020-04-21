@@ -1,3 +1,4 @@
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useCallback, useMemo } from 'react';
 import {
   DataLabel,
@@ -5,33 +6,35 @@ import {
   SecondaryDimensionTicksYAxis,
   YAxisTicks
 } from '../internal/CustomElements';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { getTextWidth, renderAxisTicks } from '../util/Utils';
 
-export const useDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter, stacked?, bar?, noSizeCheck?) =>
+export const useDataLabel = (showDataLabel, dataLabelCustomElement, dataLabelFormatter, stacked?, bar?, noSizeCheck?) =>
   useMemo(() => {
-    return dataLabel || typeof dataLabel === 'undefined'
-      ? dataLabelCustomElement
-        ? (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement)
-        : {
-            position: bar ? (stacked ? 'insideRight' : 'right') : stacked ? 'inside' : 'top',
-            content: (props) => {
-              const formattedDataValue = dataLabelFormatter(props.value);
-              if (noSizeCheck) {
-                return formattedDataValue;
-              }
-              if (props.viewBox.width < getTextWidth(formattedDataValue)) {
-                return null;
-              }
-              if (props.viewBox.height < 12) {
-                return null;
-              }
+    if (showDataLabel ?? true) {
+      if (dataLabelCustomElement) {
+        return (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement);
+      } else {
+        return {
+          position: bar ? (stacked ? 'insideRight' : 'right') : stacked ? 'inside' : 'top',
+          content: (props) => {
+            const formattedDataValue = dataLabelFormatter(props.value);
+            if (noSizeCheck) {
               return formattedDataValue;
-            },
-            fill: ThemingParameters.sapContent_LabelColor
-          }
-      : false;
-  }, [stacked, bar, dataLabel, dataLabelFormatter, dataLabelCustomElement]);
+            }
+            if (props.viewBox.width < getTextWidth(formattedDataValue)) {
+              return null;
+            }
+            if (props.viewBox.height < 12) {
+              return null;
+            }
+            return formattedDataValue;
+          },
+          fill: ThemingParameters.sapContent_LabelColor
+        };
+      }
+    }
+    return false;
+  }, [stacked, bar, showDataLabel, dataLabelFormatter, dataLabelCustomElement]);
 
 export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter) =>
   useMemo(() => {
@@ -42,14 +45,12 @@ export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelForm
       : false;
   }, [dataLabelFormatter, dataLabelCustomElement, dataLabel]);
 
-export const useAxisLabel = (AxisFormatter, AxisUnit, yAxis?) => {
+export const useAxisLabel = (AxisFormatter, yAxis?) => {
   return useCallback(
     (labelProps) => {
-      return yAxis
-        ? YAxisTicks(labelProps, AxisFormatter, AxisUnit)
-        : renderAxisTicks(labelProps, AxisFormatter, AxisUnit);
+      return yAxis ? YAxisTicks(labelProps, AxisFormatter) : renderAxisTicks(labelProps, AxisFormatter);
     },
-    [AxisFormatter, AxisUnit]
+    [AxisFormatter]
   );
 };
 

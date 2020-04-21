@@ -2,7 +2,7 @@
 
 exports[`ComposedChart Renders with data 1`] = `
 <div
-  style="width: 100%; height: 500px;"
+  style="width: 100%; height: 60vh; position: relative;"
 >
   <div
     class="recharts-responsive-container"
@@ -16,13 +16,13 @@ exports[`ComposedChart Renders with data 1`] = `
 
 exports[`ComposedChart loading placeholder 1`] = `
 <div
-  style="width: 50%; height: 500px;"
+  style="width: 50%; height: 400px; position: relative;"
 >
   <svg
     aria-labelledby="ARIA-LABELLED-BY"
-    height="300"
+    height="145"
     role="img"
-    width="300"
+    width="165"
   >
     <title
       id="TITLE_ARIA_ID"
@@ -44,10 +44,47 @@ exports[`ComposedChart loading placeholder 1`] = `
       <clipPath
         id="CLIP-PATH-URL"
       >
-        <path
-          d="M30 260 L60 190 L90 150 L120 90 L150 140 L180 110 L210 80 L240 150 L270 130 L270 135 L240 155 L210 85 L180 115 L150 145 L120 95 L90 155 L60 195 L30 265 Z"
-          fill="transparent"
-          stroke-width="5"
+        <rect
+          height="1"
+          width="135"
+          x="10"
+          y="135"
+        />
+        <rect
+          height="85"
+          width="15"
+          x="20"
+          y="50"
+        />
+        <rect
+          height="117"
+          width="15"
+          x="40"
+          y="18"
+        />
+        <rect
+          height="67"
+          width="15"
+          x="60"
+          y="68"
+        />
+        <rect
+          height="75"
+          width="15"
+          x="80"
+          y="60"
+        />
+        <rect
+          height="125"
+          width="15"
+          x="100"
+          y="10"
+        />
+        <rect
+          height="60"
+          width="15"
+          x="120"
+          y="75"
         />
       </clipPath>
       <linearGradient
