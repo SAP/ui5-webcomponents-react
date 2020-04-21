@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import { LineChart } from '@ui5/webcomponents-react-charts/lib/next/LineChart';
 import React from 'react';
-import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts - Unstable /  LineChart',
@@ -150,7 +150,7 @@ export const withReferenceLineStory = () => {
     <LineChart
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
-      dataset={complexDataSet}
+      dataset={bigDataSet}
       dimensions={[{ accessor: 'name' }]}
       measures={[
         {

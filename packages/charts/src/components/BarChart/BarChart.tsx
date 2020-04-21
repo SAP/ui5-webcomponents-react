@@ -23,6 +23,7 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 
 const formatYAxisTicks = (tick) => {
   const splitTick = tick.split(' ');
@@ -191,7 +192,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         />
         {(chartConfig.xAxisVisible ?? true) && (
           <XAxis
-            interval={primaryDimension?.interval ?? isBigDataSet ? 2 : 0}
+            interval={primaryDimension?.interval ?? isBigDataSet ? 'preserveStart' : 0}
             type="number"
             tick={XAxisLabel}
             axisLine={chartConfig.xAxisVisible ?? true}
@@ -206,7 +207,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
                 : useAxisLabel(dimension.formatter, true);
             return (
               <YAxis
-                interval={0}
+                interval={'preserveStartEnd'}
                 type="category"
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
@@ -219,7 +220,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             );
           })}
         {measures.map((element, index) => {
-          const ColumnDataLabel = useDataLabel(
+          const BarDataLabel = useDataLabel(
             !element.hideDataLabel,
             element.DataLabel,
             element.formatter,
@@ -234,8 +235,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              // ????? label ????
-              label={isBigDataSet ? false : ColumnDataLabel}
+              label={BarDataLabel}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
