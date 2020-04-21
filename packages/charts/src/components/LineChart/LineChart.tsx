@@ -1,12 +1,10 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Brush,
   CartesianGrid,
@@ -18,11 +16,63 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
+import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { IChartDimension } from '../../interfaces/IChartDimension';
+import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
-type LineChartProps = RechartBaseProps;
+interface MeasureConfig extends IChartMeasure {
+  /**
+   * Line Width
+   * @default 1
+   */
+  width?: number;
+  /**
+   * Line Opacity
+   * @default 1
+   */
+  opacity?: number;
+}
+
+interface DimensionConfig extends IChartDimension {
+  interval?: number;
+}
+
+interface LineChartProps extends RechartBaseProps {
+  dimensions: DimensionConfig[];
+  /**
+   * An array of config objects. Each object is defining one line in the chart.
+   *
+   * <h4>Required properties</h4>
+   * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * <h4>Optional properties</h4>
+   *
+   * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
+   * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
+   * - `DataLabel`: a custom component to be used for the data label
+   * - `width`: line width, defaults to `1`
+   * - `opacity`: line opacity, defaults to `1`
+   *
+   */
+  measures: MeasureConfig[];
+}
+
+const dimensionDefaults = {
+  formatter: (d) => d
+};
+
+const measureDefaults = {
+  formatter: (d) => d,
+  width: 1,
+  opacity: 1
+};
 
 /**
  * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/next/LineChart';</code>
@@ -30,22 +80,11 @@ type LineChartProps = RechartBaseProps;
  */
 const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
-    color,
-    loading,
-    labelKey = 'name',
-    secondaryDimensionKey,
-    width = '100%',
-    height = '500px',
     dataset,
-    dataKeys,
+    loading,
     noLegend = false,
     onDataPointClick,
     onLegendClick,
-    labels,
-    axisInterval,
-    valueFormatter = (el) => el,
-    labelFormatter = (el) => el,
-    dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
       yAxisVisible: false,
@@ -55,12 +94,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       gridVertical: false,
       yAxisColor: ThemingParameters.sapList_BorderColor,
       legendPosition: 'top',
-      strokeWidth: 1,
       zoomingTool: false,
-      strokeOpacity: 1,
-      dataLabel: true,
-      xAxisUnit: '',
-      yAxisUnit: '',
       secondYAxis: {
         dataKey: undefined,
         name: undefined,
@@ -77,16 +111,25 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     tooltip,
     slot
   } = props;
-  useInitialize();
+
+  const { dimensions, measures } = usePrepareDimensionsAndMeasures(
+    props.dimensions,
+    props.measures,
+    dimensionDefaults,
+    measureDefaults
+  );
+
+  const tooltipValueFormatter = useTooltipFormatter(measures);
+
+  const primaryDimension = dimensions[0];
+  const primaryMeasure = measures[0];
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, secondaryDimensionKey);
-
-  const colorSecondY = useMemo(
-    () => (chartConfig.secondYAxis ? currentDataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey) : 0),
-    [chartConfig, currentDataKeys]
-  );
+  const dataKeys = measures.map(({ accessor }) => accessor);
+  const colorSecondY = chartConfig.secondYAxis
+    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey)
+    : 0;
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
@@ -94,32 +137,33 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     (payload, eventOrIndex) => {
       if (eventOrIndex.dataKey && onDataPointClick) {
         onDataPointClick(
-          enrichEventWithDetails(event, {
-            value: eventOrIndex.value,
-            dataKey: eventOrIndex.dataKey,
-            xIndex: eventOrIndex.index,
-            payload: eventOrIndex.payload
-          })
+          enrichEventWithDetails(
+            {},
+            {
+              value: eventOrIndex.value,
+              dataKey: eventOrIndex.dataKey,
+              xIndex: eventOrIndex.index,
+              payload: eventOrIndex.payload
+            }
+          )
         );
       }
     },
     [onDataPointClick]
   );
 
-  const LineDataLabel = useDataLabel(chartConfig.dataLabel, dataLabelCustomElement, labelFormatter, false, false, true);
-
-  const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
-  const bigDataSet = dataset?.length > 30 ?? false;
+  const isBigDataSet = dataset?.length > 30 ?? false;
+  const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const marginChart = useChartMargin(
     dataset,
-    labelFormatter,
-    labelKey,
+    (d) => d,
+    primaryDimensionAccessor,
     chartConfig.margin,
     false,
-    secondaryDimensionKey,
+    dimensions.length > 1,
     chartConfig.zoomingTool
   );
 
@@ -127,9 +171,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      placeholder={LineChartPlaceholder}
-      width={width}
-      height={height}
+      Placeholder={LineChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}
@@ -142,49 +184,62 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis dataKey={labelKey} xAxisId={0} interval={0} tick={XAxisLabel} />}
-        {secondaryDimensionKey && (
-          <XAxis
-            interval={axisInterval ?? bigDataSet ? 2 : 0}
-            dataKey={secondaryDimensionKey}
-            tickLine={false}
-            tick={SecondaryDimensionLabel}
-            axisLine={false}
-            xAxisId={1}
-          />
-        )}
+        {(chartConfig.xAxisVisible ?? true) &&
+          dimensions.map((dimension, index) => {
+            const XAxisLabel = useAxisLabel(dimension.formatter);
+            return (
+              <XAxis
+                key={dimension.accessor}
+                dataKey={dimension.accessor}
+                xAxisId={index}
+                interval={dimension.interval ?? isBigDataSet ? 2 : 0}
+                tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
+                tickLine={index < 1}
+                axisLine={index < 1}
+              />
+            );
+          })}
         <YAxis
-          unit={chartConfig.yAxisUnit}
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
           yAxisId="left"
-          tickFormatter={labelFormatter}
+          tickFormatter={primaryMeasure?.formatter}
           interval={0}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={chartConfig.secondYAxis.color ?? `var(--sapUiChartAccent${(colorSecondY % 12) + 1})`}
+            stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
             yAxisId="right"
             interval={0}
           />
         )}
-        {currentDataKeys.map((key, index) => (
-          <Line
-            yAxisId={chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey === key ? 'right' : 'left'}
-            key={key}
-            name={labels?.[key] || key}
-            strokeOpacity={chartConfig.strokeOpacity}
-            label={bigDataSet ? false : LineDataLabel}
-            type="monotone"
-            dataKey={key}
-            stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
-            strokeWidth={chartConfig.strokeWidth}
-            activeDot={{ onClick: onDataPointClickInternal }}
-          />
-        ))}
+        {measures.map((element, index) => {
+          const LineDataLabel = useDataLabel(
+            !element.hideDataLabel,
+            element.DataLabel,
+            element.formatter,
+            false,
+            false,
+            true
+          );
+          return (
+            <Line
+              yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
+              key={element.accessor}
+              name={element.label ?? element.accessor}
+              strokeOpacity={element.opacity}
+              label={isBigDataSet ? false : LineDataLabel}
+              type="monotone"
+              dataKey={element.accessor}
+              stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              strokeWidth={element.width}
+              activeDot={{ onClick: onDataPointClickInternal }}
+            />
+          );
+        })}
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
@@ -194,9 +249,15 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             yAxisId={'left'}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {chartConfig.zoomingTool && (
-          <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
+          <Brush
+            y={0}
+            dataKey={primaryDimensionAccessor}
+            stroke={ThemingParameters.sapObjectHeader_BorderColor}
+            travellerWidth={10}
+            height={20}
+          />
         )}
       </LineChartLib>
     </ChartContainer>

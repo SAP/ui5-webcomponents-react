@@ -71,20 +71,20 @@ export const getTextHeight = (text = 'M', font = `normal ${defaultFont.size}pt $
 
 let previousX = 0;
 let secondElementX = 0;
-export const renderAxisTicks = (axisProps, xAxisFormatter, xAxisUnit) => {
+export const renderAxisTicks = (axisProps, xAxisFormatter) => {
   const { payload } = axisProps;
   const prevX = previousX;
   const index = payload.index ?? axisProps.index;
   switch (index) {
     case 0:
       previousX = payload.coordinate;
-      return XAxisTicks(axisProps, xAxisFormatter, xAxisUnit, secondElementX - payload.coordinate <= 100);
+      return XAxisTicks(axisProps, xAxisFormatter, secondElementX - payload.coordinate <= 100);
     case 1:
       secondElementX = payload.coordinate;
       previousX = payload.coordinate;
-      return XAxisTicks(axisProps, xAxisFormatter, xAxisUnit, payload.coordinate - prevX <= 100);
+      return XAxisTicks(axisProps, xAxisFormatter, payload.coordinate - prevX <= 100);
     default:
       previousX = payload.coordinate;
-      return XAxisTicks(axisProps, xAxisFormatter, xAxisUnit, payload.coordinate - prevX <= 100);
+      return XAxisTicks(axisProps, xAxisFormatter, payload.coordinate - prevX <= 100);
   }
 };
