@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { MicroBarChart } from './MicroBarChart';
+import { LineChart } from '../LineChart/LineChart';
 
 const singleData = [
   {
@@ -35,9 +36,13 @@ export const defaultStory = () => (
     onDataPointClick={action('onDataPointClickHandler')}
     onLegendClick={action('onLegendClickHandler')}
     dataset={singleData}
-    width={'100%'}
-    height={'25vh'}
-    valueFormatter={(el) => el.slice(0, 3)}
+    style={{ width: '100%', height: '30vh' }}
+    dimension={{
+      accessor: 'name'
+    }}
+    measure={{
+      accessor: 'users'
+    }}
   />
 );
 
@@ -48,12 +53,17 @@ defaultStory.story = {
 export const withCustomColor = () => (
   <MicroBarChart
     onDataPointClick={action('onDataPointClickHandler')}
+    onLegendClick={action('onLegendClickHandler')}
     dataset={singleData}
-    labelKey={'name'}
-    width={'50%'}
-    height={'25vh'}
-    color={'red'}
-    dataKeys={['users']}
+    style={{ width: '100%', height: '30vh' }}
+    dimension={{
+      accessor: 'name'
+    }}
+    measure={{
+      accessor: 'users',
+      colors: ['#f0ab00', 'var(--sapHighlightColor)'],
+      formatter: (d) => (d > 200 ? 'over 200' : 'lower')
+    }}
   />
 );
 
@@ -61,7 +71,7 @@ withCustomColor.story = {
   name: 'With custom color'
 };
 
-export const loadingPlaceholder = () => <MicroBarChart labelKey={'name'} width={'20%'} />;
+export const loadingPlaceholder = () => <MicroBarChart style={{ width: '20%' }} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'

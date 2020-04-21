@@ -1,11 +1,9 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
-import { useInitialize } from '@ui5/webcomponents-react-charts/lib/initialize';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import { useResolveDataKeys } from '@ui5/webcomponents-react-charts/lib/useResolveDataKeys';
 import React, { FC, forwardRef, Ref, useCallback } from 'react';
 import {
   Bar,
@@ -18,11 +16,77 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
+import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { IChartDimension } from '../../interfaces/IChartDimension';
+import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
-type BarChartProps = RechartBaseProps;
+const formatYAxisTicks = (tick) => {
+  const splitTick = tick.split(' ');
+  return splitTick.length > 3
+    ? `${splitTick.slice(0, 3).join(' ')}...`
+    : tick.length > 11
+    ? `${tick.slice(0, 12)}...`
+    : tick;
+};
+
+const dimensionDefaults = {
+  formatter: formatYAxisTicks
+};
+
+const measureDefaults = {
+  formatter: (d) => d,
+  opacity: 1
+};
+
+interface MeasureConfig extends IChartMeasure {
+  /**
+   * Bar Width
+   * @default auto
+   */
+  width?: number;
+  /**
+   * Bar Opacity
+   * @default 1
+   */
+  opacity?: number;
+  /**
+   * Bar Stack ID
+   * @default undefined
+   */
+  stackId?: string;
+}
+
+interface DimensionConfig extends IChartDimension {
+  interval?: number;
+}
+
+interface BarChartProps extends RechartBaseProps {
+  dimensions: DimensionConfig[];
+  /**
+   * An array of config objects. Each object is defining one bar in the chart.
+   *
+   * <h4>Required properties</h4>
+   * - `accessor`: string containing the path to the dataset key this bar should display. Supports object structures by using <code>'parent.child'</code>.
+   *   Can also be a getter.
+   *
+   * <h4>Optional properties</h4>
+   *
+   * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
+   * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
+   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this bar.
+   * - `DataLabel`: a custom component to be used for the data label
+   * - `width`: bar width, defaults to `auto`
+   * - `opacity`: bar opacity, defaults to `1`
+   * - `stackId`: bars with the same stackId will be stacked
+   *
+   */
+  measures: MeasureConfig[];
+}
 
 /**
  * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';</code>
@@ -30,39 +94,21 @@ type BarChartProps = RechartBaseProps;
  */
 const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   const {
-    color,
     loading,
-    labelKey = 'name',
-    secondaryDimensionKey,
-    dataKeys,
-    width = '100%',
-    height = '500px',
     dataset,
     noLegend = false,
     onDataPointClick,
     onLegendClick,
-    labels,
-    axisInterval,
-    labelFormatter = (el) => formatYAxisTicks(el),
-    valueFormatter = (el) => el,
-    dataLabelCustomElement = undefined,
     chartConfig = {
       margin: {},
-      yAxisVisible: false,
+      yAxisVisible: true,
       xAxisVisible: true,
-      xAxisUnit: '',
-      yAxisUnit: '',
       gridStroke: ThemingParameters.sapList_BorderColor,
       gridHorizontal: true,
       gridVertical: false,
       legendPosition: 'top',
-      barSize: undefined,
       barGap: 3,
       zoomingTool: false,
-      strokeOpacity: 1,
-      fillOpacity: 1,
-      stacked: false,
-      dataLabel: true,
       referenceLine: {
         label: undefined,
         value: undefined,
@@ -74,22 +120,22 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     tooltip,
     slot
   } = props;
-  useInitialize();
+
+  const { dimensions, measures } = usePrepareDimensionsAndMeasures(
+    props.dimensions,
+    props.measures,
+    dimensionDefaults,
+    measureDefaults
+  );
+
+  const tooltipValueFormatter = useTooltipFormatter(measures);
+
+  const primaryDimension = dimensions[0];
+  const primaryMeasure = measures[0];
 
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const currentDataKeys = useResolveDataKeys(dataKeys, labelKey, dataset, secondaryDimensionKey);
-
   const onItemLegendClick = useLegendItemClick(onLegendClick);
-
-  const formatYAxisTicks = (tick) => {
-    const splitTick = tick.split(' ');
-    return splitTick.length > 3
-      ? `${splitTick.slice(0, 3).join(' ')}...`
-      : tick.length > 11
-      ? `${tick.slice(0, 12)}...`
-      : tick;
-  };
 
   const onDataPointClickInternal = useCallback(
     (payload, i, event) => {
@@ -110,36 +156,24 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     [onDataPointClick]
   );
 
-  const BarDataLabel = useDataLabel(
-    chartConfig.dataLabel,
-    dataLabelCustomElement,
-    valueFormatter,
-    chartConfig.stacked,
-    true
-  );
+  const isBigDataSet = dataset?.length > 30 ?? false;
+  const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const marginChart = useChartMargin(
     dataset,
-    labelFormatter,
-    labelKey,
+    (d) => d,
+    primaryDimensionAccessor,
     chartConfig.margin,
     true,
-    secondaryDimensionKey,
+    dimensions.length > 1,
     chartConfig.zoomingTool
   );
-
-  const XAxisLabel = useAxisLabel(valueFormatter, chartConfig.xAxisUnit);
-  const YAxisLabel = useAxisLabel(labelFormatter, chartConfig.yAxisUnit, true);
-  const SecondaryDimensionLabel = useSecondaryDimensionLabel(true, labelFormatter);
-  const bigDataSet = dataset?.length > 30 ?? false;
 
   return (
     <ChartContainer
       dataset={dataset}
       loading={loading}
-      placeholder={BarChartPlaceholder}
-      width={width}
-      height={height}
+      Placeholder={BarChartPlaceholder}
       ref={chartRef}
       style={style}
       className={className}
@@ -152,43 +186,60 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
         />
-        {(chartConfig.xAxisVisible ?? true) && <XAxis interval={0} type="number" tick={XAxisLabel} />}
-        <YAxis
-          unit={chartConfig.yAxisUnit}
-          axisLine={chartConfig.yAxisVisible ?? false}
-          tickLine={false}
-          tick={YAxisLabel}
-          type="category"
-          dataKey={labelKey}
-          interval={axisInterval ?? bigDataSet ? 2 : 0}
-          yAxisId={0}
-        />
-        {secondaryDimensionKey && (
-          <YAxis
+        {(chartConfig.xAxisVisible ?? true) && (
+          <XAxis
             interval={0}
-            type={'category'}
-            dataKey={'dimension'}
-            tickLine={false}
-            tick={SecondaryDimensionLabel}
-            axisLine={false}
-            yAxisId={1}
+            type="number"
+            axisLine={chartConfig.xAxisVisible ?? true}
+            tickFormatter={primaryMeasure?.formatter}
           />
         )}
-        {currentDataKeys.map((key, index) => (
-          <Bar
-            stackId={chartConfig.stacked ? 'A' : undefined}
-            strokeOpacity={chartConfig.strokeOpacity}
-            fillOpacity={chartConfig.fillOpacity}
-            label={BarDataLabel}
-            key={key}
-            name={labels?.[key] || key}
-            dataKey={key}
-            fill={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
-            stroke={color ?? `var(--sapUiChartAccent${(index % 12) + 1})`}
-            barSize={chartConfig.barSize}
-            onClick={onDataPointClickInternal}
-          />
-        ))}
+        {(chartConfig.yAxisVisible ?? true) &&
+          dimensions.map((dimension, index) => {
+            const YAxisLabel =
+              index > 0
+                ? useSecondaryDimensionLabel(true, dimension.formatter)
+                : useAxisLabel(dimension.formatter, true);
+            return (
+              <YAxis
+                type="category"
+                key={dimension.accessor}
+                dataKey={dimension.accessor}
+                xAxisId={index}
+                interval={dimension.interval ?? isBigDataSet ? 2 : 0}
+                tick={YAxisLabel}
+                tickLine={index < 1}
+                axisLine={index < 1}
+                yAxisId={index}
+              />
+            );
+          })}
+        {measures.map((element, index) => {
+          const ColumnDataLabel = useDataLabel(
+            !element.hideDataLabel,
+            element.DataLabel,
+            element.formatter,
+            false,
+            true,
+            false
+          );
+          return (
+            <Bar
+              stackId={element.stackId}
+              fillOpacity={element.opacity}
+              key={element.accessor}
+              name={element.label ?? element.accessor}
+              strokeOpacity={element.opacity}
+              label={isBigDataSet ? false : ColumnDataLabel}
+              type="monotone"
+              dataKey={element.accessor}
+              fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              barSize={element.width}
+              onClick={onDataPointClickInternal}
+            />
+          );
+        })}
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
@@ -197,9 +248,15 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             label={chartConfig.referenceLine.label}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} labelFormatter={valueFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {chartConfig.zoomingTool && (
-          <Brush y={0} dataKey={labelKey} stroke={`var(--sapUiChartAccent6)`} travellerWidth={10} height={20} />
+          <Brush
+            y={0}
+            dataKey={primaryDimensionAccessor}
+            stroke={ThemingParameters.sapObjectHeader_BorderColor}
+            travellerWidth={10}
+            height={20}
+          />
         )}
       </BarChartLib>
     </ChartContainer>

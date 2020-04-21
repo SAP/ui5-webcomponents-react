@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { getTextWidth } from '../util/Utils';
 
-export const useChartMargin = (dataset, formatter, labelKey, margin, bar?, secondaryDimension?, zoomingTool?) =>
+export const useChartMargin = (dataset, formatter, labelKey, margin, isBar?, hasSecondaryDimension?, hasZoomingTool?) =>
   useMemo(() => {
     let marginLeft = 0;
-    if (dataset && bar && typeof margin?.left !== 'number') {
+    if (dataset && isBar && typeof margin?.left !== 'number') {
       marginLeft = Math.max(
         ...dataset
           .map((data) => formatter(data[labelKey]).split(' '))
@@ -14,8 +14,9 @@ export const useChartMargin = (dataset, formatter, labelKey, margin, bar?, secon
     }
     return {
       right: margin?.right ?? 60,
-      top: margin?.top ?? zoomingTool ? 40 : 10,
-      bottom: margin?.bottom ?? (!bar && secondaryDimension) ? 100 : 30,
-      left: margin?.left ?? bar ? (secondaryDimension ? marginLeft : marginLeft / 2) : secondaryDimension ? 20 : 0
+      top: margin?.top ?? hasZoomingTool ? 40 : 10,
+      bottom: margin?.bottom ?? (!isBar && hasSecondaryDimension) ? 100 : 30,
+      left:
+        margin?.left ?? isBar ? (hasSecondaryDimension ? marginLeft : marginLeft / 2) : hasSecondaryDimension ? 20 : 0
     };
   }, [dataset, labelKey, margin]);

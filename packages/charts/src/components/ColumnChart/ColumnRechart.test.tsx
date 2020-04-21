@@ -1,15 +1,51 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import { dataset, label } from '../../resources/RechartProps';
 import { ColumnChart } from './ColumnChart';
+import { action } from '@storybook/addon-actions';
+import { complexDataSet } from '../../resources/DemoProps';
+import { boolean } from '@storybook/addon-knobs';
 
 describe('ColumnRechart', () => {
   test('Renders with data', () => {
-    expect(mount(<ColumnChart width={'100%'} dataset={dataset} labelKey={label} />).render()).toMatchSnapshot();
+    expect(
+      mount(
+        <ColumnChart
+          loading={boolean('loading', false)}
+          onDataPointClick={action('onDataPointClick')}
+          onLegendClick={action('onLegendClick')}
+          dataset={complexDataSet}
+          style={{ height: '60vh' }}
+          dimensions={[
+            {
+              accessor: 'name',
+              formatter: (d) => `${d} 2019`,
+              interval: 0
+            }
+          ]}
+          measures={[
+            {
+              accessor: 'users',
+              label: 'Users',
+              formatter: (val) => val.toLocaleString()
+            },
+            {
+              accessor: 'sessions',
+              label: 'Active Sessions',
+              formatter: (val) => `${val} sessions`,
+              hideDataLabel: true
+            },
+            {
+              accessor: 'volume',
+              label: 'Vol.'
+            }
+          ]}
+        />
+      ).render()
+    ).toMatchSnapshot();
   });
 
   test('loading placeholder', () => {
-    const wrapper = mount(<ColumnChart width={'50%'} />);
+    const wrapper = mount(<ColumnChart style={{ width: '30%' }} dimensions={[]} measures={[]} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

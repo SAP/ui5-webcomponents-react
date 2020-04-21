@@ -27,7 +27,7 @@
     "build": "npm-run-all -s build:rollup build:polyfills"
   },
   "dependencies": {
-    "core-js": "3.6.5",
+    "core-js": "3.6.4",
     "intersection-observer": "0.8.0",
     "proxy-polyfill": "0.3.1",
     "resize-observer-polyfill": "1.5.1",

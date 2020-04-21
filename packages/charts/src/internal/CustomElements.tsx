@@ -3,14 +3,15 @@ import React from 'react';
 
 let globalRotate = false;
 
-export const XAxisTicks = (props, formatter, unit = '', rotate) => {
+export const XAxisTicks = (props, formatter, rotate) => {
   const { x, y, payload } = props;
   globalRotate = !!rotate;
+  const formattedValue = formatter(payload.value);
   const tickValue = rotate
-    ? formatter(payload.value).length > 10
-      ? `${formatter(payload.value).slice(0, 8)}...`
-      : formatter(payload.value)
-    : formatter(payload.value);
+    ? formattedValue.length > 10
+      ? `${formattedValue.slice(0, 8)}...`
+      : formattedValue
+    : formattedValue;
   return (
     <g transform={`translate(${x},${y + 10})`}>
       <text
@@ -18,20 +19,20 @@ export const XAxisTicks = (props, formatter, unit = '', rotate) => {
         transform={rotate ? 'rotate(-35)' : ''}
         textAnchor={rotate ? 'end' : 'middle'}
       >
-        {`${tickValue}${unit}`}
+        {`${tickValue}`}
       </text>
     </g>
   );
 };
 
-export const YAxisTicks = (props, formatter, unit = '') => {
+export const YAxisTicks = (props, formatter) => {
   const { x, y, payload } = props;
-  const tickValue =
-    formatter(payload.value).length > 10 ? `${formatter(payload.value).slice(0, 13)}...` : formatter(payload.value);
+  const formattedValue = formatter(payload.value);
+  const tickValue = formattedValue.length > 10 ? `${formattedValue.slice(0, 13)}...` : formattedValue;
   return (
     <g transform={`translate(${x},${y + 3})`}>
       <text fill={ThemingParameters.sapNeutralBorderColor} textAnchor={'end'}>
-        {`${tickValue}${unit}`}
+        {`${tickValue}`}
       </text>
     </g>
   );
@@ -39,7 +40,6 @@ export const YAxisTicks = (props, formatter, unit = '') => {
 
 export const SecondaryDimensionTicksXAxis = (props) => {
   const { x, y, payload } = props;
-
   const tickValue = payload.value.length > 12 && globalRotate ? payload.value.slice(0, 12) + '...' : payload.value;
   const dy = globalRotate ? 40 : 0;
 
@@ -60,7 +60,6 @@ export const SecondaryDimensionTicksXAxis = (props) => {
 
 export const SecondaryDimensionTicksYAxis = (props, yAxisFormatter) => {
   const { x, y, payload } = props;
-
   const tickValue = yAxisFormatter(payload.value);
 
   return (
