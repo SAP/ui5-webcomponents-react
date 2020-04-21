@@ -1,3 +1,4 @@
+//todo add links to components
 # Migration Guide
 
 ## Migrating from 0.8.X to 0.9.0
@@ -78,7 +79,7 @@ and then call the corresponding `open` method:
       );
     };
     ```
-* ResponsivePopover - `open(event.target)`:
+* ResponsivePopover - `.open(event.target)`:
     ```JSX
     const ResponsivePopoverComponent = () => {
       const popoverRef = useRef();
@@ -96,5 +97,107 @@ and then call the corresponding `open` method:
       );
     };
     ```
+  
+## Event System
+The custom API for events was removed as it's incompatible with the UI5 Web Components API.
 
+Now, all event handlers are called with an Object which is compatible with the `CustomEvent` API.
+Sometimes a UI5 Custom Event is passed, sometimes a React SyntheticEvent and all details are in the `detail` object.
+
+Examples:
+
+* Access selected option in `Select` component:
+    ```JSX
+    export const SelectComponent = () => {
+      const handleSelect = (event) => {
+        const selectedOption = event.detail.selectedOption; //new
+        const selectedOption = event.parameters.selectedOption; //deprecated
+      };
+      return (
+        <Select onChange={handleSelect}>
+          <Option>Option 1</Option>
+          <Option>Option 2</Option>
+        </Select>
+      );
+    };
+    ```
+  
+* Get state of `CheckBox`:
+    ```JSX
+    export const CheckBoxComponent = () => {
+      const handleChange = (event) => {
+        const isChecked = event.target.checked; //new
+        const isChecked = event.parameters.checked; //deprecated
+      };
+      return <CheckBox onChange={handleChange} />;
+    };
+    ```
+
+## Replace render props with slots
+UI5 Web Components for React used to have `renderXYZ` props for adding custom content into components, e.g. `renderCustomHeader`.
+For providing a unified API, these props have been deprecated and corresponding slots have been added.
+ Slots can be passed a `ReactNode` and depending on the case also a `ReactNodeArray`.
+ 
+```JSX
+export const BarComponent = () => {
+  return (
+    <Bar
+      contentLeft={<Label>Content Left</Label>} //new
+      contentMiddle={<Label>Content Middle</Label>} //new
+      contentRight={<Label>Content Right</Label>} //new
+      renderContentLeft={() => <Label>Content Left</Label>} //deprecated
+      renderContentMiddle={() => <Label>Content Middle</Label>} //deprecated
+      renderContentRight={() => <Label>Content Right</Label>} //deprecated
+    />
+  );
+};
+```
+
+## Theming
+The `Themeprovider` now requires a `theme` prop to apply the correct theming.
+ Additionally, `ThemingSupport` has to be manually imported:
+```typescript jsx
+import '@ui5/webcomponents-react/lib/ThemingSupport'
+```
+
+## New components with different API
+Avatar:
+* props:
+    * `onClick`: Has been removed.
+    * `customDisplaySize` and `customFontSize`: Has been replaced by `size`. Uses `AvatarSize` enum.
+    * `backgroundColor`: Defines the background color. Uses `AvatarBackgroundColor` enum.
+    * `icon`: Defines the name of the UI5 Icon as string. _Remember that icons have to be imported first._
+    * `imageFitType`: Defines the fit type of the desired image. Uses `AvatarFitType` enum.
+    
+Carousel:
+* props:
+    * `onPageChanged`: Has been removed.
+    * `width`: Has been removed.
+    * `height`: Has been removed.
+    * `showPageIndicator`: Has been removed. _To hide the navigation-bar use `hideNavigation`._
+    * `pageIndicatorPlacement`: Has been removed.
+    * `loop`: Has been replaced by `cycling`.
+    * `activePage`: Has been replaced by `selectedIndex`.
+    
+MessageToast:
+* Has been replaced by the `Toast` component.
+
+MultiComboBox:
+* Does not accept `StandardListItem` as children anymore. Use `MultiComboBoxItem` instead.
+
+SegmentedButton:
+* `SegementedButtonItem` has been replaced by `ToggleButton`
+* props:
+    * `disabled`: Has been removed.
+    * `selectedKey`: Has been removed. _To initially select a button set the `pressed` prop of the `ToggleButton` to `true`._
+    * `onItemSelected`: Has been replaced by `onSelectionChange` and is fired when the button selection changes. To get the selected button you can use the following function:
+    ```JSX
+    const onSelectionChange = (event) => {
+        const selectedButton = event.detail.selectedButton;
+    };
+    ```
+    
+ShellBar:
+* props:
+    * `profile`: Is now a slot where you should use the `Avatar` component.
 
