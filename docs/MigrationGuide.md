@@ -173,7 +173,23 @@ Available Themes:
 - `sap_belize_hcb`
 - `sap_belize_hcw`
 
-//todo
+Example for applying the `sap_fiori_3_dark` theme:
+```JSX
+const App = () => {
+  useEffect(() => {
+    setTheme(Themes.sap_fiori_3_dark);
+  }, []);
+  return (
+    <ThemeProvider theme={Themes.sap_fiori_3_dark}>
+      <ShellBar />
+      <Page showHeader={false}>
+        <Text>Some Content</Text>
+      </Page>
+    </ThemeProvider>
+  );
+};
+```
+
 ## New components with different API
 Avatar:
 * props:
