@@ -153,7 +153,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
           dataKey={dimension.accessor}
         />
         <Bar
-          background={{ fillOpacity: 0.1, fill: `var(--sapUiChartAccent${(0 % 12) + 1})` }}
+          background={{ fill: ThemingParameters.sapNeutralBackground }}
           strokeOpacity={measure.opacity}
           fillOpacity={measure.opacity}
           label={{ content: <CustomizedLabel external={style.width} /> }}

@@ -225,7 +225,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           );
           return (
             <Bar
-              stackId={element.stackId ?? undefined}
+              stackId={element.stackId}
               fillOpacity={element.opacity}
               key={element.accessor}
               name={element.label ?? element.accessor}

@@ -50,7 +50,7 @@ interface MeasureConfig extends IChartMeasure {
    */
   type: AvailableChartTypes;
   /**
-   * Bar Stack ID
+   * bar Stack ID
    * @default undefined
    */
   stackId?: string;
@@ -79,6 +79,7 @@ interface ComposedChartProps extends RechartBaseProps {
    * - `DataLabel`: a custom component to be used for the data label
    * - `width`: width of the current chart element, defaults to `1` for `lines` and `20` for bars
    * - `opacity`: element opacity, defaults to `1`
+   * - `stackId`: bars with the same stackId will be stacked
    *
    */
   measures: MeasureConfig[];

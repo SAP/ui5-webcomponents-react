@@ -20,8 +20,7 @@ export const renderStory = () => {
         accessor: 'name'
       }}
       measure={{
-        accessor: 'users',
-        label: 'Number of Users'
+        accessor: 'users'
       }}
     />
   );

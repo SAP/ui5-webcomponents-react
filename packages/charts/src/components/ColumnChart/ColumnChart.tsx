@@ -34,7 +34,7 @@ interface MeasureConfig extends IChartMeasure {
    */
   opacity?: number;
   /**
-   * Bar Stack ID
+   * column Stack ID
    * @default undefined
    */
   stackId?: string;
@@ -62,6 +62,7 @@ interface ColumnChartProps extends RechartBaseProps {
    * - `DataLabel`: a custom component to be used for the data label
    * - `width`: column width, defaults to `auto`
    * - `opacity`: column opacity, defaults to `1`
+   * - `stackId`: columns with the same stackId will be stacked
    *
    */
   measures: MeasureConfig[];
@@ -231,7 +232,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           return (
             <Column
               yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
-              stackId={element.stackId ?? undefined}
+              stackId={element.stackId}
               fillOpacity={element.opacity}
               key={element.accessor}
               name={element.label ?? element.accessor}
