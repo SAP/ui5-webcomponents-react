@@ -154,12 +154,26 @@ export const BarComponent = () => {
 ```
 
 ## Theming
-The `Themeprovider` now requires a `theme` prop to apply the correct theming.
- Additionally, `ThemingSupport` has to be manually imported:
-```typescript jsx
-import '@ui5/webcomponents-react/lib/ThemingSupport'
+UI5 Web Components and UI5 Web Components for React are both coming with the `sap_fiori_3` a.k.a. `Quartz` Theme built in.
+In case you want to change your applications' theme, you have to import a couple of modules:
+```js
+import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import '@ui5/webcomponents-theme-base/dist/Assets';
+import '@ui5/webcomponents/dist/generated/json-imports/Themes';
+import '@ui5/webcomponents-fiori/dist/generated/json-imports/Themes'; // only if you are using the ShellBar or the Product Switch
+import '@ui5/webcomponents-react/lib/ThemingSupport';
 ```
 
+In addition to call `setTheme` with a string parameter of the new theme, you must pass the new `theme` as a prop into the `ThemeProvider` component.
+Passing the prop is a temporary solution until the UI5 Web Components are providing [all Theming Parameters](https://github.com/SAP/ui5-webcomponents/issues/1396).<br />
+Available Themes:
+- `sap_fiori_3` (default)
+- `sap_fiori_dark`
+- `sap_belize`
+- `sap_belize_hcb`
+- `sap_belize_hcw`
+
+//todo
 ## New components with different API
 Avatar:
 * props:
