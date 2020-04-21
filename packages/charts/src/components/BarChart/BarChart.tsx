@@ -34,7 +34,8 @@ const formatYAxisTicks = (tick) => {
 };
 
 const dimensionDefaults = {
-  formatter: formatYAxisTicks
+  formatter: formatYAxisTicks,
+  interval: 0
 };
 
 const measureDefaults = {
@@ -169,6 +170,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     chartConfig.zoomingTool
   );
 
+  const XAxisLabel = useAxisLabel(primaryMeasure?.formatter);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -188,8 +191,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         />
         {(chartConfig.xAxisVisible ?? true) && (
           <XAxis
-            interval={0}
+            interval={primaryDimension?.interval ?? isBigDataSet ? 2 : 0}
             type="number"
+            tick={XAxisLabel}
             axisLine={chartConfig.xAxisVisible ?? true}
             tickFormatter={primaryMeasure?.formatter}
           />
@@ -202,11 +206,11 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
                 : useAxisLabel(dimension.formatter, true);
             return (
               <YAxis
+                interval={0}
                 type="category"
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                interval={dimension.interval ?? isBigDataSet ? 2 : 0}
                 tick={YAxisLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
@@ -230,6 +234,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
+              // ????? label ????
               label={isBigDataSet ? false : ColumnDataLabel}
               type="monotone"
               dataKey={element.accessor}
