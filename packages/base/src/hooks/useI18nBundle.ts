@@ -2,7 +2,7 @@ import { fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18
 import { useEffect, useState } from 'react';
 
 export const useI18nBundle = (bundleName) => {
-  const [bundle, setBundle] = useState(null);
+  const [bundle, setBundle] = useState(getI18nBundle(bundleName));
 
   useEffect(() => {
     const fetchAndLoadBundle = async () => {
@@ -10,7 +10,7 @@ export const useI18nBundle = (bundleName) => {
       setBundle(getI18nBundle(bundleName));
     };
     fetchAndLoadBundle();
-
-    return bundle;
   }, []);
+
+  return bundle;
 };

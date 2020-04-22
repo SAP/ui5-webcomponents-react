@@ -4,10 +4,21 @@ import '@ui5/webcomponents-icons/dist/icons/message-information';
 import '@ui5/webcomponents-icons/dist/icons/message-success';
 import '@ui5/webcomponents-icons/dist/icons/message-warning';
 import '@ui5/webcomponents-icons/dist/icons/question-mark';
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+
+import {
+  MESSAGEBOX_ACTION_ABORT,
+  MESSAGEBOX_ACTION_CANCEL,
+  MESSAGEBOX_ACTION_CLOSE,
+  MESSAGEBOX_ACTION_DELETE,
+  MESSAGEBOX_ACTION_IGNORE,
+  MESSAGEBOX_ACTION_NO,
+  MESSAGEBOX_ACTION_OK,
+  MESSAGEBOX_ACTION_RETRY,
+  MESSAGEBOX_ACTION_YES
+} from '@ui5/webcomponents-react/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
@@ -21,6 +32,17 @@ import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, use
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import styles from './MessageBox.jss';
+
+const actionTextMap = new Map();
+actionTextMap.set(MessageBoxActions.ABORT, MESSAGEBOX_ACTION_ABORT);
+actionTextMap.set(MessageBoxActions.CANCEL, MESSAGEBOX_ACTION_CANCEL);
+actionTextMap.set(MessageBoxActions.CLOSE, MESSAGEBOX_ACTION_CLOSE);
+actionTextMap.set(MessageBoxActions.DELETE, MESSAGEBOX_ACTION_DELETE);
+actionTextMap.set(MessageBoxActions.IGNORE, MESSAGEBOX_ACTION_IGNORE);
+actionTextMap.set(MessageBoxActions.NO, MESSAGEBOX_ACTION_NO);
+actionTextMap.set(MessageBoxActions.OK, MESSAGEBOX_ACTION_OK);
+actionTextMap.set(MessageBoxActions.RETRY, MESSAGEBOX_ACTION_RETRY);
+actionTextMap.set(MessageBoxActions.YES, MESSAGEBOX_ACTION_YES);
 
 export interface MessageBoxPropTypes extends CommonProps {
   open?: boolean;
@@ -39,6 +61,8 @@ const useStyles = createComponentStyles(styles, { name: 'MessageBox' });
  */
 const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
   const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
+
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const classes = useStyles();
 
@@ -133,19 +157,22 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       }
       footer={
         <footer className={classes.footer}>
-          {actionsToRender.map((action, index) => (
-            <Button
-              style={{
-                minWidth: '4rem'
-              }}
-              key={action}
-              design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
-              onClick={handleOnClose}
-              data-action={action}
-            >
-              {action}
-            </Button>
-          ))}
+          {actionsToRender.map((action, index) => {
+            const text = i18nBundle.getText(actionTextMap.get(action));
+            return (
+              <Button
+                style={{
+                  minWidth: '4rem'
+                }}
+                key={action}
+                design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+                onClick={handleOnClose}
+                data-action={action}
+              >
+                {text}
+              </Button>
+            );
+          })}
         </footer>
       }
       {...passThroughProps}
