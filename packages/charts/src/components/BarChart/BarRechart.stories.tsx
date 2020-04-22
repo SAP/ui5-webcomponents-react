@@ -113,7 +113,7 @@ export const renderCustomDataLabelStory = () => {
     <BarChart
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
-      dataset={bigDataSet}
+      dataset={complexDataSet}
       dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
       measures={[
         {
