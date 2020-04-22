@@ -60,7 +60,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface ComposedChartProps extends RechartBaseProps {
+export interface ComposedChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one element in the chart.
@@ -238,7 +238,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                interval={dimension.interval ?? isBigDataSet ? 2 : 0}
+                interval={primaryDimension?.interval ?? isBigDataSet ? 'preserveStart' : 0}
                 tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
@@ -251,7 +251,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           tickLine={false}
           yAxisId="left"
           tickFormatter={primaryMeasure?.formatter}
-          interval={0}
+          interval={'preserveStart'}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
@@ -285,6 +285,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               };
               chartElementProps.strokeWidth = element.width ?? 1;
               chartElementProps.strokeOpacity = element.opacity;
+              chartElementProps.dot = !isBigDataSet;
               break;
             case 'bar':
               chartElementProps.fillOpacity = element.opacity;
@@ -294,6 +295,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.stackId = element.stackId ?? undefined;
               break;
             case 'area':
+              chartElementProps.dot = !isBigDataSet;
               chartElementProps.fillOpacity = 0.3;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.onClick = onDataPointClickInternal;
@@ -316,7 +318,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         })}
         {chartConfig.zoomingTool && (
           <Brush
-            y={0}
+            y={10}
             dataKey={primaryDimensionAccessor}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}

@@ -34,7 +34,8 @@ const formatYAxisTicks = (tick) => {
 };
 
 const dimensionDefaults = {
-  formatter: formatYAxisTicks
+  formatter: formatYAxisTicks,
+  interval: 0
 };
 
 const measureDefaults = {
@@ -64,7 +65,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface BarChartProps extends RechartBaseProps {
+export interface BarChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one bar in the chart.
@@ -169,6 +170,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     chartConfig.zoomingTool
   );
 
+  const XAxisLabel = useAxisLabel(primaryMeasure?.formatter);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -188,8 +191,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         />
         {(chartConfig.xAxisVisible ?? true) && (
           <XAxis
-            interval={0}
+            interval={primaryDimension?.interval ?? isBigDataSet ? 'preserveStart' : 0}
             type="number"
+            tick={XAxisLabel}
             axisLine={chartConfig.xAxisVisible ?? true}
             tickFormatter={primaryMeasure?.formatter}
           />
@@ -202,11 +206,11 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
                 : useAxisLabel(dimension.formatter, true);
             return (
               <YAxis
+                interval={'preserveStartEnd'}
                 type="category"
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                interval={dimension.interval ?? isBigDataSet ? 2 : 0}
                 tick={YAxisLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
@@ -215,7 +219,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             );
           })}
         {measures.map((element, index) => {
-          const ColumnDataLabel = useDataLabel(
+          const BarDataLabel = useDataLabel(
             !element.hideDataLabel,
             element.DataLabel,
             element.formatter,
@@ -230,7 +234,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={isBigDataSet ? false : ColumnDataLabel}
+              label={BarDataLabel}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
@@ -251,7 +255,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush
-            y={0}
+            y={10}
             dataKey={primaryDimensionAccessor}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}

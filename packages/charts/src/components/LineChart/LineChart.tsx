@@ -41,7 +41,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface LineChartProps extends RechartBaseProps {
+export interface LineChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one line in the chart.
@@ -192,7 +192,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                interval={dimension.interval ?? isBigDataSet ? 2 : 0}
+                interval={primaryDimension?.interval ?? isBigDataSet ? 'preserveStart' : 0}
                 tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
@@ -227,6 +227,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           );
           return (
             <Line
+              dot={!isBigDataSet}
               yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
               key={element.accessor}
               name={element.label ?? element.accessor}
@@ -252,7 +253,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush
-            y={0}
+            y={10}
             dataKey={primaryDimensionAccessor}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}
