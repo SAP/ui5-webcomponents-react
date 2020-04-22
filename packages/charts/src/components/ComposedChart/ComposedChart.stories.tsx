@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/next/ComposedChart';
 import React from 'react';
-import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 import { boolean } from '@storybook/addon-knobs';
 
 export default {
@@ -160,12 +160,13 @@ export const withReferenceLineStory = () => {
     <ComposedChart
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
-      dataset={complexDataSet}
+      dataset={bigDataSet}
       dimensions={[{ accessor: 'name' }]}
       measures={[
         {
           accessor: 'users',
-          type: 'bar'
+          type: 'bar',
+          width: 2
         },
         {
           accessor: 'sessions',
