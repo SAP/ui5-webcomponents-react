@@ -80,11 +80,44 @@ const App = () => {
 ```
 
 ## Style custom components
-If you want to use our central styling approach with your custom components you now can hook into our theming with the `createComponentStyles` hook.
-Therefore it's not necessary to install `react-jss` on your own anymore.
+If you want to use our central styling approach with your custom components you can now use the `ThemingParameters`. With these parameters you get all CSS Variables as styling parameters.
+Therefore it's not necessary to import `react-jss` anymore. If you still want to use the JSS syntax, you can import the `createComponentStyles` hook and pass your style object as parameter.
+
+> :warning: The `jss` styling function (`createUseStyles`) is not supported anymore.
+
+
+```JSX
+import React from 'react';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+
+const styles = {
+  container: {
+    backgroundColor: ThemingParameters.sapBackgroundColor,
+    fontFamily: ThemingParameters.sapFontFamily,
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+};
+
+const useStyles = createComponentStyles(styles);
+
+const MyCustomElement = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.container}>
+      <span style={{ color: ThemingParameters.sapNegativeColor, fontSize: ThemingParameters.sapFontLargeSize }}>
+        My Text
+      </span>
+    </div>
+  );
+};
+```
 
 Now it's as easy as this to add parameters to your jss styles object:
-
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 ```JSX
 const styles = ({ parameters }) => ({
     container: {
@@ -101,7 +134,7 @@ const styles = ({ parameters }) => ({
     }
 })
 ```
-//todo
+
 
 ## Opening Popovers
 Popovers like the `Dialog`, `Popover` and `ResponsivePopover` now only can be opened by attaching a `ref` to the component
