@@ -7,7 +7,6 @@ import {
   YAxisTicks
 } from '../internal/CustomElements';
 import { getTextWidth, renderAxisTicks } from '../util/Utils';
-import { dataset } from '../resources/RechartProps';
 
 export const useDataLabel = (showDataLabel, dataLabelCustomElement, dataLabelFormatter, stacked?, bar?, noSizeCheck?) =>
   useMemo(() => {
