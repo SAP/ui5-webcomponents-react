@@ -116,26 +116,6 @@ const MyCustomElement = () => {
 };
 ```
 
-Now it's as easy as this to add parameters to your jss styles object:
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-```JSX
-const styles = ({ parameters }) => ({
-    container: {
-        backgroundColor: parameters.sapBackgroundColor,
-        fontFamily: parameters.sapFontFamily,
-        height: '50px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    text: {
-        color: parameters.sapNegativeTextColor,
-        fontSize: parameters.sapFontLargeSize
-    }
-})
-```
-
-
 ## Opening Popovers
 Popovers like the `Dialog`, `Popover` and `ResponsivePopover` now only can be opened by attaching a `ref` to the component
 and then call the corresponding `open` method:
