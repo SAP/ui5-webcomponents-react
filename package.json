@@ -5,7 +5,7 @@
   "private": true,
   "license": "Apache-2.0",
   "scripts": {
-    "start": "start-storybook -p 6006 -c .storybook",
+    "start": "lerna run build:i18n && start-storybook -p 6006 -c .storybook",
     "build": "yarn clean && lerna run build --stream && node ./scripts/rollup/build.js",
     "build:storybook": "build-storybook -c .storybook -o .out",
     "pretest": "node scripts/test/clean.js",

@@ -21,8 +21,9 @@
   ],
   "scripts": {
     "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts assets json-imports",
-    "build": "rollup -c rollup.config.js",
-    "build:i18n": "npm-run-all build:i18n-bundles build:i18n-default build:i18n-imports",
+    "build": "npm-run-all -s build:i18n build:rollup",
+    "build:rollup": "rollup -c rollup.config.js",
+    "build:i18n": "npm-run-all -s build:i18n-bundles build:i18n-default build:i18n-imports",
     "build:i18n-bundles": "mkdirp assets/i18n && node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/toJSON.js src/i18n assets/i18n",
     "build:i18n-default": "mkdirp assets/i18n && node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/defaults.js src/i18n assets/i18n",
     "build:i18n-imports": "mkdirp json-imports && node ../../scripts/generate-json-imports/i18n.js"
