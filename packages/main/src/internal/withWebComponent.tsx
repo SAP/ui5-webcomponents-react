@@ -70,19 +70,13 @@ export const withWebComponent = <T extends {}>(
         return Object.entries(rest)
           .filter(([slotName]) => slotProperties.includes(slotName))
           .map(([slotName, slotValue]) => {
-            if (slotValue?.type === React.Fragment) {
-              return Children.map(slotValue.props.children, (item: ReactElement, index) =>
+            return Children.map(
+              slotValue?.type === React.Fragment ? slotValue.props.children : slotValue,
+              (item: ReactElement, index) =>
                 cloneElement(item, {
                   key: `${slotName}-${index}`,
                   slot: slotName
                 })
-              );
-            }
-            return Children.map(slotValue, (item: ReactElement, index) =>
-              cloneElement(item, {
-                key: `${slotName}-${index}`,
-                slot: slotName
-              })
             );
           });
       },
