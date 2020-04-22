@@ -44,7 +44,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface ColumnChartProps extends RechartBaseProps {
+export interface ColumnChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one column in the chart.

@@ -23,7 +23,6 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 
 const formatYAxisTicks = (tick) => {
   const splitTick = tick.split(' ');
@@ -66,7 +65,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface BarChartProps extends RechartBaseProps {
+export interface BarChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one bar in the chart.

@@ -41,7 +41,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface LineChartProps extends RechartBaseProps {
+export interface LineChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one line in the chart.

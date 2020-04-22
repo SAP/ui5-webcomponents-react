@@ -60,7 +60,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface ComposedChartProps extends RechartBaseProps {
+export interface ComposedChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one element in the chart.

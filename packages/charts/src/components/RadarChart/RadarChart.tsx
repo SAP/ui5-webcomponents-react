@@ -33,7 +33,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface RadarChartProps extends RechartBaseProps {
+export interface RadarChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one radar in the chart.
