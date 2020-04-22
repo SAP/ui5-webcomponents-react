@@ -33,71 +33,40 @@ All globally available style classes are tracked in the `GlobalStyleClasses` enu
 
 ## Style your own components
 It's quite likely that you have to create some custom components when you are building an app.
-In order to reuse our central styling approach, you can easily hook into our theming by using [`react-jss`](https://cssinjs.org/react-jss/?v=v10.0.0).
+In order to reuse our central styling approach, you can import the `ThemingParameters` that contain the various CSS variables used in our theming. If you want to style your components with the `react-jss` syntax, you can use our custom `jss` styling hook.
 
-`react-jss` comes already as an dependency of `@ui5/webcomponents-react` to your project - but we would recommend to add it to your `package.json` as well.
-**Please make sure you are installing `"react-jss": "^10.0.0"`**. Previous versions of this library won't work correctly together with our library.
-
-When using the `jss` styling functions, the function will be called with an object with three properties:
-```js
-{
-  theme: 'the current theme as string, e.g. "sap_fiori_3"',
-  parameters: "object with all styling parameters, please check the CSS Variables link.",
-  contentDensity: 'Current Content Density mode, either "Compact" or "Cozy".'
-}
-```
 
 You can then create a custom component by following this recipe:
 ```jsx
 import React from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
-const styles = ({ parameters }) => ({
-    container: {
-        backgroundColor: parameters.sapBackgroundColor,
-        fontFamily: parameters.sapFontFamily,
-        height: '50px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    text: {
-        color: parameters.sapNegativeTextColor,
-        fontSize: parameters.sapFontLargeSize
-    }
-})
+const styles = {
+  container: {
+    backgroundColor: ThemingParameters.sapBackgroundColor,
+    fontFamily: ThemingParameters.sapFontFamily,
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+};
 
-const useStyles = createUseStyles(styles);
+const useStyles = createComponentStyles(styles);
 
-export const MyCustomElement = () => {
-    const classes = useStyles();
-    
-    return (
-        <div className={classes.container}>
-            <span className={classes.text}>My Text</span>
-        </div>
-    );
-}
+const MyCustomElement = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.container}>
+      <span style={{ color: ThemingParameters.sapNegativeColor, fontSize: ThemingParameters.sapFontLargeSize }}>
+        My Text
+      </span>
+    </div>
+  );
+};
 ``` 
 This would then be the result:
 <ThemeProvider>
     <MyCustomElement />
 </ThemeProvider>
-
-*Hint for TypeScript Users:*
-
-For a better code completion, you can import the our `JSSTheme` interface from `@ui5/webcomponents-react/interfaces/JSSTheme` and modify your custom components like this:
-```jsx
-import React from 'react';
-import { createUseStyles } from 'react-jss';
-import { JSSTheme } from '@ui5/webcomponents-react/interfaces/JSSTheme';
-
-const styles = ({ parameters }: JSSTheme) => ({
-    ...
-})
-
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles);
-...
-```
-The template for `jsx` can be found [here](https://github.com/SAP/ui5-webcomponents-react/blob/master/packages/docs/styling/MyCustomElement.jsx), the TypesScript version can be found [here](https://github.com/SAP/ui5-webcomponents-react/blob/master/packages/docs/styling/MyCustomElement.tsx).
-

@@ -1,30 +1,27 @@
-import { JSSTheme } from '@ui5/webcomponents-react/interfaces/JSSTheme';
 import React from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   container: {
-    backgroundColor: parameters.sapBackgroundColor,
-    fontFamily: parameters.sapFontFamily,
+    backgroundColor: ThemingParameters.sapBackgroundColor,
+    fontFamily: ThemingParameters.sapFontFamily,
     height: '50px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  text: {
-    color: parameters.sapNegativeTextColor,
-    fontSize: parameters.sapFontLargeSize
   }
-});
+};
 
-const useStyles = createUseStyles<keyof ReturnType<typeof styles>>(styles);
+const useStyles = createComponentStyles(styles);
 
 export const MyCustomElement = () => {
   const classes = useStyles();
-
   return (
     <div className={classes.container}>
-      <span className={classes.text}>My Text</span>
+      <span style={{ color: ThemingParameters.sapNegativeColor, fontSize: ThemingParameters.sapFontLargeSize }}>
+        My Text
+      </span>
     </div>
   );
 };
