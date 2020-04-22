@@ -285,6 +285,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               };
               chartElementProps.strokeWidth = element.width ?? 1;
               chartElementProps.strokeOpacity = element.opacity;
+              chartElementProps.dot = !isBigDataSet;
               break;
             case 'bar':
               chartElementProps.fillOpacity = element.opacity;
@@ -294,6 +295,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.stackId = element.stackId ?? undefined;
               break;
             case 'area':
+              chartElementProps.dot = !isBigDataSet;
               chartElementProps.fillOpacity = 0.3;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.onClick = onDataPointClickInternal;

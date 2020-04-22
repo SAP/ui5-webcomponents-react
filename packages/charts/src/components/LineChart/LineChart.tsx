@@ -227,6 +227,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           );
           return (
             <Line
+              dot={!isBigDataSet}
               yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
               key={element.accessor}
               name={element.label ?? element.accessor}
