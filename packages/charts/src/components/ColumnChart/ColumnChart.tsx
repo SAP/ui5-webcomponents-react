@@ -44,7 +44,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface ColumnChartProps extends RechartBaseProps {
+export interface ColumnChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one column in the chart.
@@ -197,7 +197,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                interval={dimension.interval ?? isBigDataSet ? 2 : 0}
+                interval={primaryDimension?.interval ?? isBigDataSet ? 'preserveStart' : 0}
                 tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
@@ -209,7 +209,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           tickLine={false}
           yAxisId="left"
           tickFormatter={primaryMeasure?.formatter}
-          interval={0}
+          interval={'preserveStart'}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
@@ -237,7 +237,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={isBigDataSet ? false : ColumnDataLabel}
+              label={ColumnDataLabel}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
@@ -259,7 +259,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush
-            y={0}
+            y={10}
             dataKey={primaryDimensionAccessor}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}

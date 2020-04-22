@@ -6,7 +6,7 @@ import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart as RadialBarChartLib } from 'recharts';
 
-interface RadialChartProps extends CommonProps {
+export interface RadialChartProps extends CommonProps {
   value?: number;
   maxValue?: number;
   displayValue?: number | string;

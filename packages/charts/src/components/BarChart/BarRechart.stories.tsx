@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
 import React from 'react';
-import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts - Unstable /  BarChart',
@@ -128,7 +128,7 @@ export const renderCustomDataLabelStory = () => {
           accessor: 'volume'
         }
       ]}
-      style={{ width: '95%', height: '40vh' }}
+      style={{ width: '95%', height: '100vh' }}
       chartConfig={{
         zoomingTool: true
       }}
