@@ -265,6 +265,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [updateTableClientWidth]);
 
   useEffect(() => {
+    updateTableClientWidth();
+  }, [updateTableClientWidth]);
+
+  useEffect(() => {
     dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
   }, [groupBy, dispatch]);
 
