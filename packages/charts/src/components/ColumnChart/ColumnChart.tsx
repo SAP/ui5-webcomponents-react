@@ -259,7 +259,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush
-            y={0}
+            y={10}
             dataKey={primaryDimensionAccessor}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}

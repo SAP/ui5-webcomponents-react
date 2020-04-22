@@ -181,6 +181,7 @@ export const withReferenceLineStory = () => {
       noLegend={false}
       loading
       chartConfig={{
+        zoomingTool: true,
         referenceLine: {
           color: 'red',
           label: 'MAX',

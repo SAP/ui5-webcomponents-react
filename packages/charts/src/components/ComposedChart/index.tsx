@@ -318,7 +318,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         })}
         {chartConfig.zoomingTool && (
           <Brush
-            y={0}
+            y={10}
             dataKey={primaryDimensionAccessor}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}

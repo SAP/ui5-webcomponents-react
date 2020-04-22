@@ -96,6 +96,7 @@ export const renderLabelStory = () => {
       ]}
       dataset={complexDataSet}
       style={{ width: '95%', height: '40vh' }}
+      loading={true}
       chartConfig={{
         zoomingTool: true
       }}
