@@ -192,7 +192,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                interval={primaryDimension?.interval ?? isBigDataSet ? 'preserveStart' : 0}
+                interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
                 tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}

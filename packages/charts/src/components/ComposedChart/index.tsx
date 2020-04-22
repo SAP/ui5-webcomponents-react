@@ -238,7 +238,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                interval={primaryDimension?.interval ?? isBigDataSet ? 'preserveStart' : 0}
+                interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
                 tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
@@ -251,7 +251,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           tickLine={false}
           yAxisId="left"
           tickFormatter={primaryMeasure?.formatter}
-          interval={'preserveStart'}
+          interval={0}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis

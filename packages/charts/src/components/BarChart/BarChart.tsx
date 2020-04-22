@@ -34,8 +34,7 @@ const formatYAxisTicks = (tick) => {
 };
 
 const dimensionDefaults = {
-  formatter: formatYAxisTicks,
-  interval: 0
+  formatter: formatYAxisTicks
 };
 
 const measureDefaults = {
@@ -62,6 +61,10 @@ interface MeasureConfig extends IChartMeasure {
 }
 
 interface DimensionConfig extends IChartDimension {
+  /**
+   * Interval of dimension axis labels
+   * @default 0
+   */
   interval?: number;
 }
 
@@ -133,7 +136,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
 
   const primaryDimension = dimensions[0];
   const primaryMeasure = measures[0];
-
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
@@ -157,7 +159,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     [onDataPointClick]
   );
 
-  const isBigDataSet = dataset?.length > 30 ?? false;
+  const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const marginChart = useChartMargin(
@@ -191,7 +193,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         />
         {(chartConfig.xAxisVisible ?? true) && (
           <XAxis
-            interval={primaryDimension?.interval ?? isBigDataSet ? 'preserveStart' : 0}
+            interval={0}
             type="number"
             tick={XAxisLabel}
             axisLine={chartConfig.xAxisVisible ?? true}
@@ -206,7 +208,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
                 : useAxisLabel(dimension.formatter, true);
             return (
               <YAxis
-                interval={'preserveStartEnd'}
+                interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
                 type="category"
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
