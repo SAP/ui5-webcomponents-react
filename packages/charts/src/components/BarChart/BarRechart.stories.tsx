@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean } from '@storybook/addon-knobs';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
 import React from 'react';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
@@ -20,8 +20,7 @@ export const renderStory = () => {
       chartConfig={{}}
       dimensions={[
         {
-          accessor: 'name',
-          interval: 0
+          accessor: 'name'
         }
       ]}
       measures={[
