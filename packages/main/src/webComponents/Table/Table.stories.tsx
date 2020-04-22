@@ -25,19 +25,15 @@ export const generatedDefaultStory = () => (
         <TableColumn style={{ width: '12rem' }}>
           <Label>Product</Label>
         </TableColumn>
-
         <TableColumn minWidth={800} popinText="Supplier">
           <Label>Supplier</Label>
         </TableColumn>
-
         <TableColumn minWidth={600} popinText="Dimensions" demandPopin>
           <Label>Dimensions</Label>
         </TableColumn>
-
         <TableColumn minWidth={600} popinText="Weight" demandPopin>
           <Label>Weight</Label>
         </TableColumn>
-
         <TableColumn>
           <Label>Price</Label>
         </TableColumn>
