@@ -38,11 +38,6 @@ interface MeasureConfig extends IChartMeasure {
    * @default undefined
    */
   stackId?: string;
-  /**
-   * Interval of axis label
-   * @default 0
-   */
-  interval?: number;
 }
 
 interface DimensionConfig extends IChartDimension {
