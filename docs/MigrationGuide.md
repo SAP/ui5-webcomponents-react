@@ -42,6 +42,67 @@ Or just to a single container or component:
 <Button className="ui5-content-density-compact">Compact Button</Button>
 ```
 
+## Theming
+UI5 Web Components and UI5 Web Components for React are both coming with the `sap_fiori_3` a.k.a. `Quartz` Theme built in.
+In case you want to change your applications' theme, you have to import a couple of modules:
+```js
+import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import '@ui5/webcomponents-theme-base/dist/Assets';
+import '@ui5/webcomponents/dist/generated/json-imports/Themes';
+import '@ui5/webcomponents-fiori/dist/generated/json-imports/Themes'; // only if you are using the ShellBar or the Product Switch
+import '@ui5/webcomponents-react/lib/ThemingSupport';
+```
+
+In addition to call `setTheme` with a string parameter of the new theme, you must pass the new `theme` as a prop into the `ThemeProvider` component.
+Passing the prop is a temporary solution until the UI5 Web Components are providing [all Theming Parameters](https://github.com/SAP/ui5-webcomponents/issues/1396).<br />
+Available Themes:
+- `sap_fiori_3` (default)
+- `sap_fiori_dark`
+- `sap_belize`
+- `sap_belize_hcb`
+- `sap_belize_hcw`
+
+Example for applying the `sap_fiori_3_dark` theme:
+```JSX
+const App = () => {
+  useEffect(() => {
+    setTheme(Themes.sap_fiori_3_dark);
+  }, []);
+  return (
+    <ThemeProvider theme={Themes.sap_fiori_3_dark}>
+      <ShellBar />
+      <Page showHeader={false}>
+        <Text>Some Content</Text>
+      </Page>
+    </ThemeProvider>
+  );
+};
+```
+
+## Style custom components
+If you want to use our central styling approach with your custom components you now can hook into our theming with the `createComponentStyles` hook.
+Therefore it's not necessary to install `react-jss` on your own anymore.
+
+Now it's as easy as this to add parameters to your jss styles object:
+
+```JSX
+const styles = ({ parameters }) => ({
+    container: {
+        backgroundColor: parameters.sapBackgroundColor,
+        fontFamily: parameters.sapFontFamily,
+        height: '50px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    text: {
+        color: parameters.sapNegativeTextColor,
+        fontSize: parameters.sapFontLargeSize
+    }
+})
+```
+//todo
+
 ## Opening Popovers
 Popovers like the `Dialog`, `Popover` and `ResponsivePopover` now only can be opened by attaching a `ref` to the component
 and then call the corresponding `open` method:
@@ -149,43 +210,6 @@ export const BarComponent = () => {
       renderContentMiddle={() => <Label>Content Middle</Label>} //deprecated
       renderContentRight={() => <Label>Content Right</Label>} //deprecated
     />
-  );
-};
-```
-
-## Theming
-UI5 Web Components and UI5 Web Components for React are both coming with the `sap_fiori_3` a.k.a. `Quartz` Theme built in.
-In case you want to change your applications' theme, you have to import a couple of modules:
-```js
-import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
-import '@ui5/webcomponents-theme-base/dist/Assets';
-import '@ui5/webcomponents/dist/generated/json-imports/Themes';
-import '@ui5/webcomponents-fiori/dist/generated/json-imports/Themes'; // only if you are using the ShellBar or the Product Switch
-import '@ui5/webcomponents-react/lib/ThemingSupport';
-```
-
-In addition to call `setTheme` with a string parameter of the new theme, you must pass the new `theme` as a prop into the `ThemeProvider` component.
-Passing the prop is a temporary solution until the UI5 Web Components are providing [all Theming Parameters](https://github.com/SAP/ui5-webcomponents/issues/1396).<br />
-Available Themes:
-- `sap_fiori_3` (default)
-- `sap_fiori_dark`
-- `sap_belize`
-- `sap_belize_hcb`
-- `sap_belize_hcw`
-
-Example for applying the `sap_fiori_3_dark` theme:
-```JSX
-const App = () => {
-  useEffect(() => {
-    setTheme(Themes.sap_fiori_3_dark);
-  }, []);
-  return (
-    <ThemeProvider theme={Themes.sap_fiori_3_dark}>
-      <ShellBar />
-      <Page showHeader={false}>
-        <Text>Some Content</Text>
-      </Page>
-    </ThemeProvider>
   );
 };
 ```
