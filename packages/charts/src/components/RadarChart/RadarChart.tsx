@@ -142,14 +142,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
         />
         <PolarRadiusAxis />
         {measures.map((element, index) => {
-          const RadarDataLabel = useDataLabel(
-            !element.hideDataLabel,
-            element.DataLabel,
-            element.formatter,
-            false,
-            false,
-            true
-          );
+          const RadarDataLabel = useDataLabel(element, false, false, true);
           return (
             <Radar
               key={element.accessor}

@@ -168,7 +168,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const marginChart = useChartMargin(
     dataset,
-    (d) => d,
+    primaryDimension?.formatter ?? ((d) => d),
     primaryDimensionAccessor,
     chartConfig.margin,
     false,
@@ -226,13 +226,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           />
         )}
         {measures.map((element, index) => {
-          const ColumnDataLabel = useDataLabel(
-            !element.hideDataLabel,
-            element.DataLabel,
-            element.formatter,
-            !!element.stackId,
-            false
-          );
+          const ColumnDataLabel = useDataLabel(element, !!element.stackId, false);
           return (
             <Column
               yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}

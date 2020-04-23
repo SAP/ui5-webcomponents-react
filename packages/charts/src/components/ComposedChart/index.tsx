@@ -205,7 +205,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const marginChart = useChartMargin(
     dataset,
-    (d) => d,
+    primaryDimension?.formatter ?? ((d) => d),
     primaryDimensionAccessor,
     chartConfig.margin,
     false,
@@ -267,9 +267,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {measures?.map((element, index) => {
           const ComposedDataLabel = useDataLabel(
-            !element.hideDataLabel,
-            element.DataLabel,
-            element.formatter,
+            element,
             !!(element.type === 'bar' && element.stackId),
             false,
             element.type === 'line' || element.type === 'area'

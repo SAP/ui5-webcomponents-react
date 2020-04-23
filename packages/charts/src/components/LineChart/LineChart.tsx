@@ -159,7 +159,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const marginChart = useChartMargin(
     dataset,
-    (d) => d,
+    primaryDimension?.formatter ?? ((d) => d),
     primaryDimensionAccessor,
     chartConfig.margin,
     false,
@@ -217,14 +217,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           />
         )}
         {measures.map((element, index) => {
-          const LineDataLabel = useDataLabel(
-            !element.hideDataLabel,
-            element.DataLabel,
-            element.formatter,
-            false,
-            false,
-            true
-          );
+          const LineDataLabel = useDataLabel(element, false, false, true);
           return (
             <Line
               dot={!isBigDataSet}

@@ -24,7 +24,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 
-const formatYAxisTicks = (tick) => {
+const formatYAxisTicks = (tick = '') => {
   const splitTick = tick.split(' ');
   return splitTick.length > 3
     ? `${splitTick.slice(0, 3).join(' ')}...`
@@ -164,7 +164,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
 
   const marginChart = useChartMargin(
     dataset,
-    (d) => d,
+    primaryDimension?.formatter ?? ((d) => d),
     primaryDimensionAccessor,
     chartConfig.margin,
     true,
@@ -221,14 +221,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             );
           })}
         {measures.map((element, index) => {
-          const BarDataLabel = useDataLabel(
-            !element.hideDataLabel,
-            element.DataLabel,
-            element.formatter,
-            false,
-            true,
-            false
-          );
+          const BarDataLabel = useDataLabel(element, !!element.stackId, true);
           return (
             <Bar
               stackId={element.stackId}
