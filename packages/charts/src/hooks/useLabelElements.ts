@@ -8,33 +8,34 @@ import {
 } from '../internal/CustomElements';
 import { getTextWidth, renderAxisTicks } from '../util/Utils';
 
-export const useDataLabel = (showDataLabel, dataLabelCustomElement, dataLabelFormatter, stacked?, bar?, noSizeCheck?) =>
-  useMemo(() => {
-    if (showDataLabel ?? true) {
-      if (dataLabelCustomElement) {
-        return (props) => DataLabel(props, dataLabelFormatter, dataLabelCustomElement);
-      } else {
-        return {
-          position: bar ? (stacked ? 'insideRight' : 'right') : stacked ? 'inside' : 'top',
-          content: (props) => {
-            const formattedDataValue = dataLabelFormatter(props.value);
-            if (noSizeCheck) {
-              return formattedDataValue;
-            }
-            if (props.viewBox.width < getTextWidth(formattedDataValue)) {
-              return null;
-            }
-            if (props.viewBox.height < 12) {
-              return null;
-            }
-            return formattedDataValue;
-          },
-          fill: ThemingParameters.sapContent_LabelColor
-        };
-      }
-    }
+export const useDataLabel = (elementConfig, stacked?, bar?, noSizeCheck?) => {
+  const { hideDataLabel, DataLabel: DataLabelCustomComponent, formatter } = elementConfig;
+
+  if (hideDataLabel) {
     return false;
-  }, [stacked, bar, showDataLabel, dataLabelFormatter, dataLabelCustomElement]);
+  }
+
+  if (DataLabelCustomComponent) {
+    return (props) => DataLabel(props, formatter, DataLabelCustomComponent);
+  }
+  return {
+    position: bar ? (stacked ? 'insideRight' : 'right') : stacked ? 'inside' : 'top',
+    content: (props) => {
+      const formattedDataValue = formatter(props.value);
+      if (noSizeCheck) {
+        return formattedDataValue;
+      }
+      if (props.viewBox.width < getTextWidth(formattedDataValue)) {
+        return null;
+      }
+      if (props.viewBox.height < 12) {
+        return null;
+      }
+      return formattedDataValue;
+    },
+    fill: ThemingParameters.sapContent_LabelColor
+  };
+};
 
 export const usePieDataLabel = (dataLabel, dataLabelCustomElement, dataLabelFormatter) =>
   useMemo(() => {
