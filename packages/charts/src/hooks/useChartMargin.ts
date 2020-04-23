@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { getTextWidth } from '../util/Utils';
 
 export const useChartMargin = (dataset, formatter, labelKey, margin, isBar?, hasSecondaryDimension?, hasZoomingTool?) =>
@@ -7,7 +8,7 @@ export const useChartMargin = (dataset, formatter, labelKey, margin, isBar?, has
     if (dataset && isBar && typeof margin?.left !== 'number') {
       marginLeft = Math.max(
         ...dataset
-          .map((data) => formatter(data[labelKey]).split(' '))
+          .map((data) => formatter(getValueByDataKey(data, labelKey, '')).split(' '))
           .flat()
           .map(getTextWidth)
       );
