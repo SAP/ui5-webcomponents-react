@@ -24,6 +24,8 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
   const internalStyles: CSSProperties = useMemo(() => {
     return {
       fontSize: ThemingParameters.sapFontSmallSize,
+      color: ThemingParameters.sapTextColor,
+      fontFamily: ThemingParameters.sapFontFamily,
       width: '100%',
       height: '400px',
       position: 'relative',
