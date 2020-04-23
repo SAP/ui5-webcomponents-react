@@ -259,7 +259,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const updateTableClientWidthDebounced = useCallback(
     debounce(() => {
       updateTableClientWidth();
-    }, 1000),
+    }, 500),
     []
   );
 
