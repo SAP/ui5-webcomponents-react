@@ -56,6 +56,7 @@ import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
+import debounce from 'lodash.debounce';
 
 export interface TableProps extends CommonProps {
   /**
@@ -255,14 +256,21 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     }
   }, []);
 
+  const updateTableClientWidthDebounced = useCallback(
+    debounce(() => {
+      updateTableClientWidth();
+    }, 1000),
+    []
+  );
+
   useEffect(() => {
     // @ts-ignore
-    const tableWidthObserver = new ResizeObserver(updateTableClientWidth);
+    const tableWidthObserver = new ResizeObserver(updateTableClientWidthDebounced);
     tableWidthObserver.observe(tableRef.current);
     return () => {
       tableWidthObserver.disconnect();
     };
-  }, [updateTableClientWidth]);
+  }, [updateTableClientWidthDebounced]);
 
   useEffect(() => {
     updateTableClientWidth();
