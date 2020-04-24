@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import debounce from 'lodash.debounce';
 
 export const useSizeMonitor = (props, container) => {
   const { height: heightProp, width: widthProp, minHeight, minWidth } = props;
@@ -39,7 +40,7 @@ export const useSizeMonitor = (props, container) => {
   useEffect(() => {
     if (enableSizeMonitor && container.current) {
       // @ts-ignore
-      observer.current = new ResizeObserver(recalculateSize);
+      observer.current = new ResizeObserver(debounce(recalculateSize, 500));
       observer.current.observe(container.current);
     }
     return () => {
