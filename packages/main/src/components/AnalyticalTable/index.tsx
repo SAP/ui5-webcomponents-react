@@ -347,7 +347,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     if (tableState.tableClientWidth > 0) {
       return {
         ...tableStyles,
-        style
+        ...style
       } as CSSProperties;
     }
     return {
