@@ -258,11 +258,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   useEffect(() => {
     // @ts-ignore
-    const tableWidthObserver = new ResizeObserver(
-      debounce(() => {
-        updateTableClientWidth();
-      }, 500)
-    );
+    const tableWidthObserver = new ResizeObserver(debounce(updateTableClientWidth, 500));
     tableWidthObserver.observe(tableRef.current);
     return () => {
       tableWidthObserver.disconnect();
