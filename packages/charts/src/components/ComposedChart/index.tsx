@@ -254,7 +254,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
                 tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
-                padding={{ left: paddingCharts, right: paddingCharts }}
+                padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
               />
             );
           })}
@@ -312,6 +312,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.stackId = element.stackId ?? undefined;
               chartElementProps.labelPosition = element.stackId ? 'insideTop' : 'top';
+              chartElementProps.maxBarSize = 40;
               break;
             case 'area':
               chartElementProps.dot = !isBigDataSet;
