@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/next/ComposedChart';
 import React from 'react';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
-import { boolean } from '@storybook/addon-knobs';
+import { boolean, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Charts - Unstable /  ComposedChart',
@@ -17,6 +17,7 @@ export const renderStory = () => {
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
       style={{ height: '60vh' }}
+      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
       dimensions={[
         {
           accessor: 'name',
@@ -34,7 +35,7 @@ export const renderStory = () => {
           accessor: 'users',
           label: 'Users',
           formatter: (val) => val.toLocaleString(),
-          type: 'line'
+          type: 'area'
         },
         {
           accessor: 'volume',

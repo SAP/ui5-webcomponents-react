@@ -18,7 +18,7 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { CustomDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
@@ -31,8 +31,7 @@ const dimensionDefaults = {
 
 const measureDefaults = {
   formatter: (d) => d,
-  opacity: 1,
-  width: 1
+  opacity: 1
 };
 
 interface MeasureConfig extends IChartMeasure {
@@ -83,6 +82,11 @@ export interface ComposedChartProps extends RechartBaseProps {
    *
    */
   measures: MeasureConfig[];
+  /**
+   * layout for showing measures. `horizontal` bars would equal the column chart, `vertical` would be a bar chart.
+   * Default Value: `horizontal`
+   */
+  // layout?: 'horizontal' | 'vertical';
 }
 
 enum ChartTypes {
@@ -106,6 +110,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     onDataPointClick,
     noLegend = false,
     onLegendClick,
+    layout = 'horizontal',
     chartConfig = {
       margin: {},
       yAxisVisible: false,
@@ -224,7 +229,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       tooltip={tooltip}
       slot={slot}
     >
-      <ComposedChartLib margin={marginChart} data={dataset}>
+      <ComposedChartLib margin={marginChart} data={dataset} layout={layout}>
         <CartesianGrid
           vertical={chartConfig.gridVertical ?? false}
           horizontal={chartConfig.gridHorizontal}
@@ -266,38 +271,34 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {measures?.map((element, index) => {
-          const ComposedDataLabel = useDataLabel(
-            element,
-            !!(element.type === 'bar' && element.stackId),
-            false,
-            element.type === 'line' || element.type === 'area'
-          );
           const ChartElement = (ChartTypes[element.type] as any) as FC<any>;
 
           const chartElementProps: any = {};
+          let labelPosition = 'top';
 
           switch (element.type) {
             case 'line':
               chartElementProps.activeDot = {
                 onClick: onDataPointClickInternal
               };
-              chartElementProps.strokeWidth = element.width ?? 1;
+              chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.dot = !isBigDataSet;
               break;
             case 'bar':
               chartElementProps.fillOpacity = element.opacity;
               chartElementProps.strokeOpacity = element.opacity;
-              chartElementProps.barSize = element.width === 1 ? 20 : element.width;
+              chartElementProps.barSize = element.width;
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.stackId = element.stackId ?? undefined;
+              labelPosition = element.stackId ? 'insideRight' : 'right';
               break;
             case 'area':
               chartElementProps.dot = !isBigDataSet;
               chartElementProps.fillOpacity = 0.3;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.onClick = onDataPointClickInternal;
-              chartElementProps.strokeWidth = element.width ?? 1;
+              chartElementProps.strokeWidth = element.width;
               break;
           }
           return (
@@ -305,7 +306,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
               key={element.accessor}
               name={element.label ?? element.accessor}
-              label={isBigDataSet ? false : ComposedDataLabel}
+              label={<CustomDataLabel config={element} chartType={element.type} position={labelPosition} />}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               type="monotone"

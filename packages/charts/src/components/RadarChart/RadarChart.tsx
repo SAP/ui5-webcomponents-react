@@ -14,7 +14,7 @@ import {
   RadarChart as RadarChartLib,
   Tooltip
 } from 'recharts';
-import { useDataLabel } from '../../hooks/useLabelElements';
+import { CustomDataLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
@@ -142,7 +142,6 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
         />
         <PolarRadiusAxis />
         {measures.map((element, index) => {
-          const RadarDataLabel = useDataLabel(element, false, false, true);
           return (
             <Radar
               key={element.accessor}
@@ -152,7 +151,13 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fillOpacity={element.opacity}
-              label={RadarDataLabel}
+              label={
+                <CustomDataLabel
+                  config={element}
+                  chartType="radar"
+                  position={element.stackId ? 'insideRight' : 'right'}
+                />
+              }
             />
           );
         })}
