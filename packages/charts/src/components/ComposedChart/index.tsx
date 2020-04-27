@@ -248,7 +248,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
                 tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
-                padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
+                padding={{ left: paddingCharts, right: paddingCharts }}
               />
             );
           })}
@@ -285,6 +285,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.dot = !isBigDataSet;
+              chartElementProps.label = isBigDataSet ? (
+                false
+              ) : (
+                <CustomDataLabel config={element} chartType="line" position="top" />
+              );
               break;
             case 'bar':
               chartElementProps.fillOpacity = element.opacity;
@@ -292,7 +297,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.barSize = element.width;
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.stackId = element.stackId ?? undefined;
-              labelPosition = element.stackId ? 'insideTop' : 'top';
+              chartElementProps.labelPosition = element.stackId ? 'insideTop' : 'top';
               break;
             case 'area':
               chartElementProps.dot = !isBigDataSet;
@@ -300,6 +305,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.strokeWidth = element.width;
+              chartElementProps.label = isBigDataSet ? (
+                false
+              ) : (
+                <CustomDataLabel config={element} chartType="line" position="top" />
+              );
               break;
           }
           return (
