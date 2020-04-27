@@ -27,6 +27,7 @@ import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartDataLabel } from '../../internal/ChartDataLabel';
 import { XAxisTicks } from '../../internal/XAxisTicks';
+import { YAxisTicks } from '../../internal/YAxisTicks';
 
 const dimensionDefaults = {
   formatter: (d) => d
@@ -227,6 +228,13 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     chartConfig.zoomingTool
   );
 
+  const measureAxisProps = {
+    axisLine: chartConfig.yAxisVisible ?? false,
+    tickLine: false,
+    tickFormatter: primaryMeasure?.formatter,
+    interval: 0
+  };
+
   return (
     <ChartContainer
       ref={chartRef}
@@ -268,23 +276,10 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             return <AxisComponent {...axisProps} />;
           })}
         {layout === 'horizontal' && (
-          <YAxis
-            axisLine={chartConfig.yAxisVisible ?? false}
-            tickLine={false}
-            yAxisId="primary"
-            tickFormatter={primaryMeasure?.formatter}
-            interval={0}
-          />
+          <YAxis {...measureAxisProps} yAxisId="primary" tick={<YAxisTicks config={primaryMeasure} />} />
         )}
         {layout === 'vertical' && (
-          <XAxis
-            axisLine={chartConfig.yAxisVisible ?? false}
-            tickLine={false}
-            xAxisId="primary"
-            tickFormatter={primaryMeasure?.formatter}
-            interval={0}
-            type="number"
-          />
+          <XAxis {...measureAxisProps} xAxisId="primary" type="number" tick={<XAxisTicks config={primaryMeasure} />} />
         )}
 
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && layout === 'horizontal' && (
@@ -293,8 +288,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
-            yAxisId="secondary"
             interval={0}
+            yAxisId="secondary"
           />
         )}
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && layout === 'vertical' && (
@@ -303,8 +298,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="top"
-            xAxisId="secondary"
             interval={0}
+            xAxisId="secondary"
             type="number"
           />
         )}
@@ -334,11 +329,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.dot = !isBigDataSet;
-              chartElementProps.label = isBigDataSet ? (
-                false
-              ) : (
-                <ChartDataLabel config={element} chartType="line" position="top" />
-              );
               break;
             case 'bar':
               chartElementProps.fillOpacity = element.opacity;
@@ -348,7 +338,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.stackId = element.stackId ?? undefined;
               chartElementProps.labelPosition = element.stackId ? 'insideTop' : 'top';
               if (layout === 'vertical') {
-                labelPosition = element.stackId ? 'insideRight' : 'right';
+                labelPosition = 'insideRight';
+              } else {
+                labelPosition = 'insideTop';
               }
               break;
             case 'area':
@@ -357,11 +349,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.strokeWidth = element.width;
-              chartElementProps.label = isBigDataSet ? (
-                false
-              ) : (
-                <ChartDataLabel config={element} chartType="line" position="top" />
-              );
               break;
           }
 
@@ -376,7 +363,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             <ChartElement
               key={element.accessor}
               name={element.label ?? element.accessor}
-              label={<ChartDataLabel config={element} chartType={element.type} position={labelPosition} />}
+              label={
+                isBigDataSet ? null : (
+                  <ChartDataLabel config={element} chartType={element.type} position={labelPosition} />
+                )
+              }
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               type="monotone"

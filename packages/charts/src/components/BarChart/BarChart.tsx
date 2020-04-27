@@ -24,8 +24,8 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartDataLabel } from '../../internal/ChartDataLabel';
-import { YAxisTicks } from '../../internal/CustomElements';
 import { XAxisTicks } from '../../internal/XAxisTicks';
+import { YAxisTicks } from '../../internal/YAxisTicks';
 
 const formatYAxisTicks = (tick = '') => {
   const splitTick = tick.split(' ');
@@ -228,9 +228,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={
-                <ChartDataLabel config={element} chartType="bar" position={element.stackId ? 'insideRight' : 'right'} />
-              }
+              label={<ChartDataLabel config={element} chartType="bar" position="insideRight" />}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}

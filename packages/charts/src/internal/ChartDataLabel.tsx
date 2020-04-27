@@ -7,7 +7,7 @@ import Label from './ChartLabel';
 interface CustomDataLabelProps {
   config: IChartMeasure;
   viewBox?: any;
-  chartType: 'bar' | 'column' | 'line' | 'radar' | 'pie';
+  chartType: 'bar' | 'column' | 'line' | 'radar' | 'pie' | 'area';
   position?: string;
   value?: any;
   children?: any;
@@ -36,13 +36,10 @@ export const ChartDataLabel: FC<CustomDataLabelProps> = (props: CustomDataLabelP
     }
   }
 
-  return (
-    <Label
-      fill={ThemingParameters.sapContent_LabelColor}
-      viewBox={viewBox}
-      {...(props as any)}
-      content={undefined}
-      value={formattedLabel}
-    />
-  );
+  let fill = ThemingParameters.sapContent_ContrastTextColor;
+  if (['area', 'line', 'radar'].includes(chartType)) {
+    fill = ThemingParameters.sapTextColor; // label is displayed outside of the colored element
+  }
+
+  return <Label fill={fill} viewBox={viewBox} {...(props as any)} content={undefined} value={formattedLabel} />;
 };

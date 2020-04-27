@@ -14,7 +14,7 @@ export const XAxisTicksInternal = (props, rotate) => {
   return (
     <g transform={`translate(${x},${y + 10})`}>
       <text
-        fill={ThemingParameters.sapNeutralBorderColor}
+        fill={ThemingParameters.sapContent_LabelColor}
         transform={rotate ? 'rotate(-35)' : ''}
         textAnchor={rotate ? 'end' : 'middle'}
       >

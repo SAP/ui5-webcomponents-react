@@ -1,8 +1,8 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
 import React, { ComponentType, CSSProperties, FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { ResponsiveContainer } from 'recharts';
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 
 export interface ContainerProps extends CommonProps {
   children: ReactNode;

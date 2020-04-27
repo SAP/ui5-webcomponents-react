@@ -25,6 +25,7 @@ import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartDataLabel } from '../../internal/ChartDataLabel';
 import { XAxisTicks } from '../../internal/XAxisTicks';
+import { YAxisTicks } from '../../internal/YAxisTicks';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -207,6 +208,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           yAxisId="left"
           tickFormatter={primaryMeasure?.formatter}
           interval={0}
+          tick={<YAxisTicks config={primaryMeasure} />}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis

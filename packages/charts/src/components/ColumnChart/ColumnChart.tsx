@@ -25,6 +25,7 @@ import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartDataLabel } from '../../internal/ChartDataLabel';
 import { XAxisTicks } from '../../internal/XAxisTicks';
+import { YAxisTicks } from '../../internal/YAxisTicks';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -214,8 +215,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
           yAxisId="left"
-          tickFormatter={primaryMeasure?.formatter}
           interval={0}
+          tick={<YAxisTicks config={primaryMeasure} />}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
@@ -236,9 +237,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={
-                <ChartDataLabel config={element} chartType="column" position={element.stackId ? 'inside' : 'top'} />
-              }
+              label={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
