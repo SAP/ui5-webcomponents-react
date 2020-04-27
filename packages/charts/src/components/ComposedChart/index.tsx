@@ -13,6 +13,7 @@ import {
   ComposedChart as ComposedChartLib,
   Legend,
   Line,
+  ReferenceLine,
   Tooltip,
   XAxis,
   YAxis
@@ -123,6 +124,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       legendPosition: 'top',
       zoomingTool: false,
       barGap: undefined,
+      referenceLine: {
+        label: undefined,
+        value: undefined,
+        color: undefined
+      },
       secondYAxis: {
         name: undefined,
         dataKey: undefined,
@@ -267,6 +273,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             orientation="right"
             yAxisId="right"
             interval={0}
+          />
+        )}
+        {chartConfig.referenceLine && (
+          <ReferenceLine
+            stroke={chartConfig.referenceLine.color}
+            y={chartConfig.referenceLine.value}
+            label={chartConfig.referenceLine.label}
+            yAxisId={'left'}
           />
         )}
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
