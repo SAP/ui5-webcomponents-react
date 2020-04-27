@@ -2,7 +2,7 @@
 
 exports[`ColumnRechart Renders with data 1`] = `
 <div
-  style="width: 100%; height: 60vh; position: relative;"
+  style="font-family: var(--sapFontFamily); width: 100%; height: 60vh; position: relative;"
 >
   <div
     class="recharts-responsive-container"
@@ -16,7 +16,7 @@ exports[`ColumnRechart Renders with data 1`] = `
 
 exports[`ColumnRechart loading placeholder 1`] = `
 <div
-  style="width: 30%; height: 400px; position: relative;"
+  style="font-family: var(--sapFontFamily); width: 30%; height: 400px; position: relative;"
 >
   <svg
     aria-labelledby="ARIA-LABELLED-BY"

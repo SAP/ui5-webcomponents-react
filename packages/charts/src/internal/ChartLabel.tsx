@@ -2,10 +2,10 @@ import React, { cloneElement, isValidElement, ReactNode, ReactElement, createEle
 import _ from 'lodash';
 import classNames from 'classnames';
 import { Text } from 'recharts';
-import { findAllByType } from 'recharts/es6/util/ReactUtils';
-import { isNumOrStr, isNumber, isPercent, getPercentValue, uniqueId, mathSign } from 'recharts/es6/util/DataUtils';
-import { polarToCartesian } from 'recharts/es6/util/PolarUtils';
-import { PresentationAttributes, filterProps } from 'recharts/es6/util/types';
+import { findAllByType } from 'recharts/lib/util/ReactUtils';
+import { isNumOrStr, isNumber, isPercent, getPercentValue, uniqueId, mathSign } from 'recharts/lib/util/DataUtils';
+import { polarToCartesian } from 'recharts/lib/util/PolarUtils';
+import { PresentationAttributes, filterProps } from 'recharts/lib/util/types';
 
 interface CartesianViewBox {
   x?: number;
