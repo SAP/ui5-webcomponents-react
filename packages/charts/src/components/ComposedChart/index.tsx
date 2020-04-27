@@ -239,34 +239,66 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         {(chartConfig.xAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
             const XAxisLabel = useAxisLabel(dimension.formatter);
-            return (
-              <XAxis
-                key={dimension.accessor}
-                dataKey={dimension.accessor}
-                xAxisId={index}
-                interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-                tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
-                tickLine={index < 1}
-                axisLine={index < 1}
-                padding={{ left: paddingCharts / 2, right: paddingCharts / 2 }}
-              />
-            );
+            let AxisComponent;
+            const axisProps = {
+              key: dimension.accessor,
+              dataKey: dimension.accessor,
+              interval: dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0),
+              tick: index === 0 ? XAxisLabel : SecondaryDimensionLabel,
+              tickLine: index < 1,
+              axisLine: index < 1,
+              padding: { left: paddingCharts / 2, right: paddingCharts / 2 }
+            };
+
+            if (layout === 'vertical') {
+              axisProps.type = 'category';
+              AxisComponent = YAxis;
+            } else {
+              axisProps.dataKey = dimension.accessor;
+              AxisComponent = XAxis;
+            }
+
+            return <AxisComponent {...axisProps} />;
           })}
-        <YAxis
-          axisLine={chartConfig.yAxisVisible ?? false}
-          tickLine={false}
-          yAxisId="left"
-          tickFormatter={primaryMeasure?.formatter}
-          interval={0}
-        />
-        {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
+        {layout === 'horizontal' && (
+          <YAxis
+            axisLine={chartConfig.yAxisVisible ?? false}
+            tickLine={false}
+            yAxisId="primary"
+            tickFormatter={primaryMeasure?.formatter}
+            interval={0}
+          />
+        )}
+        {layout === 'vertical' && (
+          <XAxis
+            axisLine={chartConfig.yAxisVisible ?? false}
+            tickLine={false}
+            xAxisId="primary"
+            tickFormatter={primaryMeasure?.formatter}
+            interval={0}
+            type="number"
+          />
+        )}
+
+        {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && layout === 'horizontal' && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
-            yAxisId="right"
+            yAxisId="secondary"
             interval={0}
+          />
+        )}
+        {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && layout === 'vertical' && (
+          <XAxis
+            dataKey={chartConfig.secondYAxis.dataKey}
+            stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
+            label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
+            orientation="top"
+            xAxisId="secondary"
+            interval={0}
+            type="number"
           />
         )}
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
@@ -293,6 +325,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.stackId = element.stackId ?? undefined;
               labelPosition = element.stackId ? 'insideTop' : 'top';
+              if (layout === 'vertical') {
+                labelPosition = element.stackId ? 'insideRight' : 'right';
+              }
               break;
             case 'area':
               chartElementProps.dot = !isBigDataSet;
@@ -302,9 +337,16 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.strokeWidth = element.width;
               break;
           }
+
+          if (layout === 'vertical') {
+            chartElementProps.xAxisId =
+              chartConfig?.secondYAxis?.dataKey === element.accessor ? 'secondary' : 'primary';
+          } else {
+            chartElementProps.yAxisId =
+              chartConfig?.secondYAxis?.dataKey === element.accessor ? 'secondary' : 'primary';
+          }
           return (
             <ChartElement
-              yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
               key={element.accessor}
               name={element.label ?? element.accessor}
               label={<CustomDataLabel config={element} chartType={element.type} position={labelPosition} />}
