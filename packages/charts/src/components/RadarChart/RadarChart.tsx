@@ -107,13 +107,16 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     (payload, eventOrIndex) => {
       if (eventOrIndex.value && onDataPointClick) {
         onDataPointClick(
-          enrichEventWithDetails(event, {
-            value: eventOrIndex.value,
-            dataKey: eventOrIndex.dataKey,
-            name: eventOrIndex.payload.label,
-            xIndex: eventOrIndex.index,
-            payload: eventOrIndex.payload
-          })
+          enrichEventWithDetails(
+            {},
+            {
+              value: eventOrIndex.value,
+              dataKey: eventOrIndex.dataKey,
+              name: eventOrIndex.payload.label,
+              xIndex: eventOrIndex.index,
+              payload: eventOrIndex.payload
+            }
+          )
         );
       }
     },
