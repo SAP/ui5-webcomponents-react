@@ -13,6 +13,7 @@ import {
   ComposedChart as ComposedChartLib,
   Legend,
   Line,
+  ReferenceLine,
   Tooltip,
   XAxis,
   YAxis
@@ -123,6 +124,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       legendPosition: 'top',
       zoomingTool: false,
       barGap: undefined,
+      referenceLine: {
+        label: undefined,
+        value: undefined,
+        color: undefined
+      },
       secondYAxis: {
         name: undefined,
         dataKey: undefined,
@@ -247,7 +253,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               tick: index === 0 ? XAxisLabel : SecondaryDimensionLabel,
               tickLine: index < 1,
               axisLine: index < 1,
-              padding: { left: paddingCharts / 2, right: paddingCharts / 2 }
+              padding: { left: paddingCharts, right: paddingCharts }
             };
 
             if (layout === 'vertical') {
@@ -301,6 +307,14 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             type="number"
           />
         )}
+        {chartConfig.referenceLine && (
+          <ReferenceLine
+            stroke={chartConfig.referenceLine.color}
+            y={chartConfig.referenceLine.value}
+            label={chartConfig.referenceLine.label}
+            yAxisId={'left'}
+          />
+        )}
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {measures?.map((element, index) => {
@@ -317,6 +331,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.dot = !isBigDataSet;
+              chartElementProps.label = isBigDataSet ? (
+                false
+              ) : (
+                <CustomDataLabel config={element} chartType="line" position="top" />
+              );
               break;
             case 'bar':
               chartElementProps.fillOpacity = element.opacity;
@@ -324,7 +343,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.barSize = element.width;
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.stackId = element.stackId ?? undefined;
-              labelPosition = element.stackId ? 'insideTop' : 'top';
+              chartElementProps.labelPosition = element.stackId ? 'insideTop' : 'top';
               if (layout === 'vertical') {
                 labelPosition = element.stackId ? 'insideRight' : 'right';
               }
@@ -335,6 +354,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.strokeWidth = element.width;
+              chartElementProps.label = isBigDataSet ? (
+                false
+              ) : (
+                <CustomDataLabel config={element} chartType="line" position="top" />
+              );
               break;
           }
 
