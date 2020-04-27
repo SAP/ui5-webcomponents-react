@@ -164,6 +164,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
 
   const marginChart = useChartMargin(
     dataset,
+    measures,
     primaryDimension?.formatter ?? ((d) => d),
     primaryDimensionAccessor,
     chartConfig.margin,
