@@ -86,7 +86,7 @@ export interface ComposedChartProps extends RechartBaseProps {
    * layout for showing measures. `horizontal` bars would equal the column chart, `vertical` would be a bar chart.
    * Default Value: `horizontal`
    */
-  // layout?: 'horizontal' | 'vertical';
+  layout?: 'horizontal' | 'vertical';
 }
 
 enum ChartTypes {
@@ -292,7 +292,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.barSize = element.width;
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.stackId = element.stackId ?? undefined;
-              labelPosition = element.stackId ? 'insideRight' : 'right';
+              labelPosition = element.stackId ? 'insideTop' : 'top';
               break;
             case 'area':
               chartElementProps.dot = !isBigDataSet;
