@@ -17,12 +17,14 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { CustomDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { ChartDataLabel } from '../../internal/ChartDataLabel';
+import { XAxisTicks } from '../../internal/XAxisTicks';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -187,14 +189,13 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         />
         {(chartConfig.xAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
-            const XAxisLabel = useAxisLabel(dimension.formatter);
             return (
               <XAxis
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-                tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
+                tick={index === 0 ? <XAxisTicks config={dimension} /> : SecondaryDimensionLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
               />
@@ -225,7 +226,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={isBigDataSet ? false : <CustomDataLabel config={element} chartType="line" position="top" />}
+              label={isBigDataSet ? false : <ChartDataLabel config={element} chartType="line" position="top" />}
               type="monotone"
               dataKey={element.accessor}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}

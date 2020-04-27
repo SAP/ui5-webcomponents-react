@@ -163,6 +163,7 @@ export const withReferenceLineStory = () => {
       onLegendClick={action('onLegendClick')}
       dataset={bigDataSet}
       dimensions={[{ accessor: 'name' }]}
+      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
       measures={[
         {
           accessor: 'users',

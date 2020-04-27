@@ -17,12 +17,14 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { CustomDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { ChartDataLabel } from '../../internal/ChartDataLabel';
+import { XAxisTicks } from '../../internal/XAxisTicks';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -196,14 +198,13 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         />
         {(chartConfig.xAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
-            const XAxisLabel = useAxisLabel(dimension.formatter);
             return (
               <XAxis
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-                tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
+                tick={index === 0 ? <XAxisTicks config={dimension} /> : SecondaryDimensionLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
               />
@@ -236,7 +237,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
               label={
-                <CustomDataLabel config={element} chartType="column" position={element.stackId ? 'inside' : 'top'} />
+                <ChartDataLabel config={element} chartType="column" position={element.stackId ? 'inside' : 'top'} />
               }
               type="monotone"
               dataKey={element.accessor}

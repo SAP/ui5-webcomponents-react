@@ -14,12 +14,12 @@ import {
   RadarChart as RadarChartLib,
   Tooltip
 } from 'recharts';
-import { CustomDataLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { ChartDataLabel } from '../../internal/ChartDataLabel';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -155,7 +155,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fillOpacity={element.opacity}
               label={
-                <CustomDataLabel
+                <ChartDataLabel
                   config={element}
                   chartType="radar"
                   position={element.stackId ? 'insideRight' : 'right'}

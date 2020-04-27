@@ -17,12 +17,15 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { CustomDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { ChartDataLabel } from '../../internal/ChartDataLabel';
+import { YAxisTicks } from '../../internal/CustomElements';
+import { XAxisTicks } from '../../internal/XAxisTicks';
 
 const formatYAxisTicks = (tick = '') => {
   const splitTick = tick.split(' ');
@@ -173,8 +176,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     chartConfig.zoomingTool
   );
 
-  const XAxisLabel = useAxisLabel(primaryMeasure?.formatter);
-
   return (
     <ChartContainer
       dataset={dataset}
@@ -196,7 +197,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           <XAxis
             interval={0}
             type="number"
-            tick={XAxisLabel}
+            tick={<XAxisTicks config={primaryMeasure} />}
             axisLine={chartConfig.xAxisVisible ?? true}
             tickFormatter={primaryMeasure?.formatter}
           />
@@ -204,9 +205,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         {(chartConfig.yAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
             const YAxisLabel =
-              index > 0
-                ? useSecondaryDimensionLabel(true, dimension.formatter)
-                : useAxisLabel(dimension.formatter, true);
+              index > 0 ? useSecondaryDimensionLabel(true, dimension.formatter) : <YAxisTicks config={dimension} />;
             return (
               <YAxis
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
@@ -230,11 +229,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
               label={
-                <CustomDataLabel
-                  config={element}
-                  chartType="bar"
-                  position={element.stackId ? 'insideRight' : 'right'}
-                />
+                <ChartDataLabel config={element} chartType="bar" position={element.stackId ? 'insideRight' : 'right'} />
               }
               type="monotone"
               dataKey={element.accessor}

@@ -19,12 +19,14 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { CustomDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { ChartDataLabel } from '../../internal/ChartDataLabel';
+import { XAxisTicks } from '../../internal/XAxisTicks';
 
 const dimensionDefaults = {
   formatter: (d) => d
@@ -244,13 +246,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         />
         {(chartConfig.xAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
-            const XAxisLabel = useAxisLabel(dimension.formatter);
             let AxisComponent;
             const axisProps = {
               key: dimension.accessor,
               dataKey: dimension.accessor,
               interval: dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0),
-              tick: index === 0 ? XAxisLabel : SecondaryDimensionLabel,
+              tick: index === 0 ? <XAxisTicks config={dimension} /> : SecondaryDimensionLabel,
               tickLine: index < 1,
               axisLine: index < 1,
               padding: { left: paddingCharts, right: paddingCharts }
@@ -310,9 +311,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
-            y={chartConfig.referenceLine.value}
+            y={layout === 'horizontal' ? chartConfig.referenceLine.value : undefined}
+            x={layout === 'vertical' ? chartConfig.referenceLine.value : undefined}
             label={chartConfig.referenceLine.label}
-            yAxisId={'left'}
+            yAxisId={layout === 'horizontal' ? 'primary' : undefined}
+            xAxisId={layout === 'vertical' ? 'primary' : undefined}
           />
         )}
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
@@ -334,7 +337,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.label = isBigDataSet ? (
                 false
               ) : (
-                <CustomDataLabel config={element} chartType="line" position="top" />
+                <ChartDataLabel config={element} chartType="line" position="top" />
               );
               break;
             case 'bar':
@@ -357,7 +360,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.label = isBigDataSet ? (
                 false
               ) : (
-                <CustomDataLabel config={element} chartType="line" position="top" />
+                <ChartDataLabel config={element} chartType="line" position="top" />
               );
               break;
           }
@@ -373,7 +376,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             <ChartElement
               key={element.accessor}
               name={element.label ?? element.accessor}
-              label={<CustomDataLabel config={element} chartType={element.type} position={labelPosition} />}
+              label={<ChartDataLabel config={element} chartType={element.type} position={labelPosition} />}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               type="monotone"

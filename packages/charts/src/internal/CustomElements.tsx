@@ -3,31 +3,9 @@ import React from 'react';
 
 let globalRotate = false;
 
-export const XAxisTicks = (props, formatter, rotate) => {
-  const { x, y, payload } = props;
-  globalRotate = !!rotate;
-  const formattedValue = formatter(payload.value);
-  const tickValue = rotate
-    ? formattedValue.length > 10
-      ? `${formattedValue.slice(0, 8)}...`
-      : formattedValue
-    : formattedValue;
-  return (
-    <g transform={`translate(${x},${y + 10})`}>
-      <text
-        fill={ThemingParameters.sapNeutralBorderColor}
-        transform={rotate ? 'rotate(-35)' : ''}
-        textAnchor={rotate ? 'end' : 'middle'}
-      >
-        {`${tickValue}`}
-      </text>
-    </g>
-  );
-};
-
-export const YAxisTicks = (props, formatter) => {
-  const { x, y, payload } = props;
-  const formattedValue = formatter(payload.value);
+export const YAxisTicks = (props) => {
+  const { x, y, payload, config } = props;
+  const formattedValue = config.formatter(payload.value);
   const tickValue = formattedValue.length > 10 ? `${formattedValue.slice(0, 13)}...` : formattedValue;
   return (
     <g transform={`translate(${x},${y + 3})`}>
