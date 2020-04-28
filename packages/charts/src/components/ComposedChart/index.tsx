@@ -208,7 +208,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         acc += chartElement?.width ?? BAR_DEFAULT_PADDING;
       }
       return acc;
-    }, 0);
+    }, 5);
   }, [measures]);
 
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
