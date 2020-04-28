@@ -194,7 +194,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           <XAxis
             interval={0}
             type="number"
-            tick={<XAxisTicks config={primaryMeasure} />}
+            tick={<XAxisTicks config={primaryMeasure} chartRef={chartRef} />}
             axisLine={chartConfig.xAxisVisible ?? true}
             tickFormatter={primaryMeasure?.formatter}
           />

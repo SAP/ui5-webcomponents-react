@@ -1,45 +1,44 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import React from 'react';
+import React, { FC, RefObject } from 'react';
+import { IChartMeasure } from '../interfaces/IChartMeasure';
+import { truncateLongLabel } from '../util/Utils';
+import { SecondaryDimensionTicksXAxis } from './SecondaryDimensionXAxisTick';
 
-let globalRotate = false;
-export const XAxisTicksInternal = (props, rotate) => {
-  const { x, y, payload, config } = props;
-  globalRotate = !!rotate;
+interface XAxisTicksProps {
+  x?: number;
+  y?: number;
+  payload?: any;
+  config: IChartMeasure;
+  level: number;
+  chartRef: RefObject<HTMLDivElement>;
+}
+
+export const XAxisTicks: FC<XAxisTicksProps> = (props: XAxisTicksProps) => {
+  const { chartRef, x, y, payload, config, level = 0 } = props;
+  let shouldRotate = false;
+  if (chartRef.current) {
+    const [firstLine, secondLine] = chartRef.current.querySelectorAll('.xAxis .recharts-cartesian-axis-ticks line');
+    if (firstLine && secondLine) {
+      const firstLineX = firstLine.getBoundingClientRect().x;
+      const secondLineX = secondLine.getBoundingClientRect().x;
+      shouldRotate = secondLineX - firstLineX <= 100;
+    }
+  }
+
+  if (level > 0) {
+    return <SecondaryDimensionTicksXAxis {...props} rotate={shouldRotate} />;
+  }
+
   const formattedValue = config.formatter(payload.value);
-  const tickValue = rotate
-    ? formattedValue.length > 10
-      ? `${formattedValue.slice(0, 8)}...`
-      : formattedValue
-    : formattedValue;
   return (
     <g transform={`translate(${x},${y + 10})`}>
       <text
         fill={ThemingParameters.sapContent_LabelColor}
-        transform={rotate ? 'rotate(-35)' : ''}
-        textAnchor={rotate ? 'end' : 'middle'}
+        transform={shouldRotate ? 'rotate(-35)' : undefined}
+        textAnchor={shouldRotate ? 'end' : 'middle'}
       >
-        {`${tickValue}`}
+        {truncateLongLabel(formattedValue, 11)}
       </text>
     </g>
   );
-};
-
-let previousX = 0;
-let secondElementX = 0;
-export const XAxisTicks = (props) => {
-  const { payload } = props;
-  const prevX = previousX;
-  const index = payload.index ?? props.index;
-  switch (index) {
-    case 0:
-      previousX = payload.coordinate;
-      return XAxisTicksInternal(props, secondElementX - payload.coordinate <= 100);
-    case 1:
-      secondElementX = payload.coordinate;
-      previousX = payload.coordinate;
-      return XAxisTicksInternal(props, payload.coordinate - prevX <= 100);
-    default:
-      previousX = payload.coordinate;
-      return XAxisTicksInternal(props, payload.coordinate - prevX <= 100);
-  }
 };

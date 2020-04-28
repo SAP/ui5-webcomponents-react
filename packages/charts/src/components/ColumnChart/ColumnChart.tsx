@@ -25,7 +25,6 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { SecondaryDimensionTicksXAxis } from '../../internal/SecondaryDimensionXAxisTick';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -201,9 +200,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-                tick={
-                  index === 0 ? <XAxisTicks config={dimension} /> : <SecondaryDimensionTicksXAxis config={dimension} />
-                }
+                tick={<XAxisTicks config={dimension} chartRef={chartRef} level={index} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
               />

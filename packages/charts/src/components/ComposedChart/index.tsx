@@ -27,7 +27,6 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { SecondaryDimensionTicksXAxis } from '../../internal/SecondaryDimensionXAxisTick';
 
 const dimensionDefaults = {
   formatter: (d) => d
@@ -269,8 +268,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               AxisComponent = YAxis;
             } else {
               axisProps.dataKey = dimension.accessor;
-              axisProps.tick =
-                index === 0 ? <XAxisTicks config={dimension} /> : <SecondaryDimensionTicksXAxis config={dimension} />;
+              axisProps.tick = <XAxisTicks config={dimension} chartRef={chartRef} level={index} />;
               AxisComponent = XAxis;
             }
 
