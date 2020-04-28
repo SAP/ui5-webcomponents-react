@@ -17,7 +17,6 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
@@ -202,8 +201,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         )}
         {(chartConfig.yAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
-            const YAxisLabel =
-              index > 0 ? useSecondaryDimensionLabel(true, dimension.formatter) : <YAxisTicks config={dimension} />;
             return (
               <YAxis
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
@@ -211,7 +208,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                tick={YAxisLabel}
+                tick={<YAxisTicks config={dimension} level={index} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
                 yAxisId={index}

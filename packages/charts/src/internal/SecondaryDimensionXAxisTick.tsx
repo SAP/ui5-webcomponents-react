@@ -2,10 +2,17 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingPara
 import React from 'react';
 
 let globalRotate = false;
-
+let lastRenderedTickValue = '';
 export const SecondaryDimensionTicksXAxis = (props) => {
-  const { x, y, payload } = props;
-  const tickValue = payload.value.length > 12 && globalRotate ? payload.value.slice(0, 12) + '...' : payload.value;
+  const { x, y, payload, config } = props;
+  let tickValue = config.formatter(payload.value);
+  if (tickValue.length > 12) {
+    // tickValue = `${payload.value.slice(0, 12)}...`;
+  }
+  if (lastRenderedTickValue === tickValue && payload.index !== 0) {
+    return null;
+  }
+  lastRenderedTickValue = tickValue;
   const dy = globalRotate ? 40 : 0;
 
   return (
@@ -17,19 +24,6 @@ export const SecondaryDimensionTicksXAxis = (props) => {
         textAnchor={globalRotate ? 'end' : 'middle'}
         y={15}
       >
-        {`${tickValue}`}
-      </text>
-    </g>
-  );
-};
-
-export const SecondaryDimensionTicksYAxis = (props, yAxisFormatter) => {
-  const { x, y, payload } = props;
-  const tickValue = yAxisFormatter(payload.value);
-
-  return (
-    <g transform={`translate(${x - 35},${y})`}>
-      <text fill={ThemingParameters.sapNeutralBorderColor} transform={'rotate(-35)'} textAnchor={'end'}>
         {`${tickValue}`}
       </text>
     </g>
