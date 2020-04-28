@@ -219,9 +219,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const marginChart = useChartMargin(
     dataset,
-    measures,
-    primaryDimension?.formatter ?? ((d) => d),
-    primaryDimensionAccessor,
+    layout === 'vertical' ? dimensions : measures,
     chartConfig.margin,
     false,
     dimensions.length > 1,

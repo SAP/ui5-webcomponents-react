@@ -163,8 +163,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const marginChart = useChartMargin(
     dataset,
     measures,
-    primaryDimension?.formatter ?? ((d) => d),
-    primaryDimensionAccessor,
     chartConfig.margin,
     false,
     dimensions.length > 1,

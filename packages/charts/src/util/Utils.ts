@@ -67,3 +67,10 @@ export const getTextHeight = (text = 'M', font = `normal ${defaultFont.size}pt $
   const metrics = context.measureText(text); // should be around 90% accurate...
   return textHeight || (textHeight = metrics.width);
 };
+
+export const truncateLongLabel = (value: string, length = 13) => {
+  if (value.length > length) {
+    return `${value.slice(0, length)}...`;
+  }
+  return value;
+};

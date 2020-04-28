@@ -172,8 +172,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const marginChart = useChartMargin(
     dataset,
     measures,
-    primaryDimension?.formatter ?? ((d) => d),
-    primaryDimensionAccessor,
     chartConfig.margin,
     false,
     dimensions.length > 1,
