@@ -200,17 +200,22 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
+  let stackId = '';
   const paddingCharts = useMemo(
     () =>
       measures?.reduce((acc, chartElement) => {
-        if (chartElement.type === 'bar') {
+        console.log(chartElement.type === 'bar' && stackId !== chartElement.stackId);
+
+        if (chartElement.type === 'bar' && stackId !== chartElement.stackId) {
+          stackId = chartElement.stackId ?? '';
           // @ts-ignore
-          acc += chartElement?.width ?? 20;
+          acc += chartElement?.width ?? BAR_DEFAULT_PADDING;
         }
         return acc;
-      }, BAR_DEFAULT_PADDING),
+      }, 0),
     [measures]
   );
+  console.log(paddingCharts);
 
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
@@ -344,6 +349,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               } else {
                 labelPosition = 'insideTop';
               }
+              chartElementProps.maxBarSize = 40;
               break;
             case 'area':
               chartElementProps.dot = !isBigDataSet;

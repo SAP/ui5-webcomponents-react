@@ -141,7 +141,8 @@ export const renderCustomDataLabelStory = () => {
         },
         {
           accessor: 'volume',
-          type: 'line'
+          type: 'line',
+          width: 2
         }
       ]}
       style={{ width: '95%', height: '40vh' }}
