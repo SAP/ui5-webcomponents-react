@@ -197,3 +197,46 @@ export const withReferenceLineStory = () => {
 withReferenceLineStory.story = {
   name: 'With reference line'
 };
+
+export const loadingPlaceholder = () => {
+  return (
+    <ComposedChart
+      loading={boolean('loading', true)}
+      onDataPointClick={action('onDataPointClick')}
+      onLegendClick={action('onLegendClick')}
+      dataset={[]}
+      style={{ height: '60vh' }}
+      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
+      dimensions={[
+        {
+          accessor: 'name',
+          formatter: (d) => `${d} 2019`,
+          interval: 0
+        }
+      ]}
+      measures={[
+        {
+          accessor: 'sessions',
+          label: 'Active Sessions',
+          type: 'bar'
+        },
+        {
+          accessor: 'users',
+          label: 'Users',
+          formatter: (val) => val.toLocaleString(),
+          type: 'area'
+        },
+        {
+          accessor: 'volume',
+          label: 'Vol.',
+          formatter: (val) => `${val} sessions`,
+          type: 'line'
+        }
+      ]}
+    />
+  );
+};
+
+loadingPlaceholder.story = {
+  name: 'with Loading Placeholder'
+};

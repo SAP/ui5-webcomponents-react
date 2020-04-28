@@ -1,7 +1,10 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
+import { ComposedChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/components/ComposedChartPlaceholder';
+import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
+import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
@@ -25,9 +28,6 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
-import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
-import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 
 const dimensionDefaults = {
   formatter: (d) => d
@@ -233,12 +233,16 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     interval: 0
   };
 
+  const Placeholder = useCallback(() => {
+    return <ComposedChartPlaceholder layout={layout} measures={measures} />;
+  }, [layout, measures]);
+
   return (
     <ChartContainer
       ref={chartRef}
       loading={loading}
       dataset={dataset}
-      Placeholder={LineChartPlaceholder}
+      Placeholder={Placeholder}
       style={style}
       className={className}
       tooltip={tooltip}
