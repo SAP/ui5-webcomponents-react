@@ -7,7 +7,7 @@ module.exports = {
   collectCoverage: false,
   collectCoverageFrom: [
     'packages/{base,charts,main}/src/**/*.{ts,tsx}',
-    '!**/src/lib/*',
+    '!**/src/lib/**/*',
     '!**/src/interfaces/*',
     '!**/src/enums/*',
     '!**/*.stories.tsx',
