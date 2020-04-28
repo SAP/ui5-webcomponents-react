@@ -200,21 +200,16 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
-  let stackId = '';
-  const paddingCharts = useMemo(
-    () =>
-      measures?.reduce((acc, chartElement) => {
-        console.log(chartElement.type === 'bar' && stackId !== chartElement.stackId);
-
-        if (chartElement.type === 'bar' && stackId !== chartElement.stackId) {
-          stackId = chartElement.stackId ?? '';
-          // @ts-ignore
-          acc += chartElement?.width ?? BAR_DEFAULT_PADDING;
-        }
-        return acc;
-      }, 0),
-    [measures]
-  );
+  const paddingCharts = useMemo(() => {
+    let stackId = '';
+    return measures?.reduce((acc, chartElement) => {
+      if (chartElement.type === 'bar' && stackId !== chartElement.stackId) {
+        stackId = chartElement.stackId ?? '';
+        acc += chartElement?.width ?? BAR_DEFAULT_PADDING;
+      }
+      return acc;
+    }, 0);
+  }, [measures]);
 
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
