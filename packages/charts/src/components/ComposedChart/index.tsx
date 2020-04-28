@@ -215,7 +215,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       }, 0),
     [measures]
   );
-  console.log(paddingCharts);
 
   const SecondaryDimensionLabel = useSecondaryDimensionLabel();
 
