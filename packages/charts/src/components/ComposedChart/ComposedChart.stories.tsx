@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/next/ComposedChart';
 import React from 'react';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
-import { boolean } from '@storybook/addon-knobs';
+import { boolean, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Charts - Unstable /  ComposedChart',
@@ -17,6 +17,7 @@ export const renderStory = () => {
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
       style={{ height: '60vh' }}
+      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
       dimensions={[
         {
           accessor: 'name',
@@ -34,7 +35,7 @@ export const renderStory = () => {
           accessor: 'users',
           label: 'Users',
           formatter: (val) => val.toLocaleString(),
-          type: 'line'
+          type: 'area'
         },
         {
           accessor: 'volume',
@@ -140,7 +141,8 @@ export const renderCustomDataLabelStory = () => {
         },
         {
           accessor: 'volume',
-          type: 'line'
+          type: 'line',
+          width: 2
         }
       ]}
       style={{ width: '95%', height: '40vh' }}
@@ -162,6 +164,7 @@ export const withReferenceLineStory = () => {
       onLegendClick={action('onLegendClick')}
       dataset={bigDataSet}
       dimensions={[{ accessor: 'name' }]}
+      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
       measures={[
         {
           accessor: 'users',
@@ -194,4 +197,47 @@ export const withReferenceLineStory = () => {
 
 withReferenceLineStory.story = {
   name: 'With reference line'
+};
+
+export const loadingPlaceholder = () => {
+  return (
+    <ComposedChart
+      loading={boolean('loading', true)}
+      onDataPointClick={action('onDataPointClick')}
+      onLegendClick={action('onLegendClick')}
+      dataset={[]}
+      style={{ height: '60vh' }}
+      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
+      dimensions={[
+        {
+          accessor: 'name',
+          formatter: (d) => `${d} 2019`,
+          interval: 0
+        }
+      ]}
+      measures={[
+        {
+          accessor: 'sessions',
+          label: 'Active Sessions',
+          type: 'bar'
+        },
+        {
+          accessor: 'users',
+          label: 'Users',
+          formatter: (val) => val.toLocaleString(),
+          type: 'area'
+        },
+        {
+          accessor: 'volume',
+          label: 'Vol.',
+          formatter: (val) => `${val} sessions`,
+          type: 'line'
+        }
+      ]}
+    />
+  );
+};
+
+loadingPlaceholder.story = {
+  name: 'with Loading Placeholder'
 };
