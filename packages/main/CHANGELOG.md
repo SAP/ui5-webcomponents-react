@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-rc.17](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.16...v0.9.0-rc.17) (2020-04-28)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** debounce resize handler ([#454](https://github.com/SAP/ui5-webcomponents-react/issues/454)) ([f1a5a6e](https://github.com/SAP/ui5-webcomponents-react/commit/f1a5a6e882647e071f0ab2cb29c3d6b5395d7456))
+* **AnalyticalTable:** fix passing styles object to AnalyticalTable ([#449](https://github.com/SAP/ui5-webcomponents-react/issues/449)) ([e3499ee](https://github.com/SAP/ui5-webcomponents-react/commit/e3499ee1ea8b58de269f95087ba583b1e8f90d7d))
+* **Bar:** make slot props optional ([#450](https://github.com/SAP/ui5-webcomponents-react/issues/450)) ([5e490d8](https://github.com/SAP/ui5-webcomponents-react/commit/5e490d8072876c42d10f90d9b2843e5102e8e3be))
+
+
+
+
+
 # [0.9.0-rc.16](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.15...v0.9.0-rc.16) (2020-04-22)
 
 
