@@ -23,9 +23,9 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartDataLabel } from '../../internal/ChartDataLabel';
-import { XAxisTicks } from '../../internal/XAxisTicks';
-import { YAxisTicks } from '../../internal/YAxisTicks';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
+import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
+import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 
 interface MeasureConfig extends IChartMeasure {
   /**

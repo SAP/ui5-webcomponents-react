@@ -19,7 +19,7 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartDataLabel } from '../../internal/ChartDataLabel';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
 
 interface MeasureConfig extends IChartMeasure {
   /**
