@@ -20,9 +20,11 @@ exports[`RadarChart loading placeholder 1`] = `
 >
   <svg
     aria-labelledby="ARIA-LABELLED-BY"
-    height="150"
+    height="100%"
+    preserveAspectRatio="xMidYMid meet"
     role="img"
-    width="150"
+    viewBox="0 0 165 145"
+    width="100%"
   >
     <title
       id="TITLE_ARIA_ID"
