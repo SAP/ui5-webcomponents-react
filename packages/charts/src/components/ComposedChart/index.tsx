@@ -278,7 +278,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           <YAxis {...measureAxisProps} yAxisId="primary" tick={<YAxisTicks config={primaryMeasure} />} />
         )}
         {layout === 'vertical' && (
-          <XAxis {...measureAxisProps} xAxisId="primary" type="number" tick={<XAxisTicks config={primaryMeasure} />} />
+          <XAxis
+            {...measureAxisProps}
+            xAxisId="primary"
+            type="number"
+            tick={<XAxisTicks config={primaryMeasure} chartRef={chartRef} />}
+          />
         )}
 
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && layout === 'horizontal' && (
