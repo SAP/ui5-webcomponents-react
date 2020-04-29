@@ -20,8 +20,7 @@ export const renderStory = () => {
       dimensions={[
         {
           accessor: 'name',
-          formatter: (d) => `${d} 2019`,
-          interval: 0
+          formatter: (d) => `${d} 2019`
         }
       ]}
       measures={[

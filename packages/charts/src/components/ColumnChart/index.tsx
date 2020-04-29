@@ -11,14 +11,8 @@ import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend
 import { getCssVariableValue } from '../../themes/Utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import {
-  formatAxisCallback,
-  formatDataLabel,
-  formatTooltipLabel,
-  getTextHeight,
-  getTextWidth,
-  useMergedConfig
-} from '../../util/Utils';
+import { getTextHeight, getTextWidth } from '../../util/Utils';
+import { formatAxisCallback, formatDataLabel, formatTooltipLabel, useMergedConfig } from '../../util/utils_deprecated';
 import { ColumnChartPlaceholder } from './Placeholder';
 
 export interface ColumnChartPropTypes extends ChartBaseProps {}

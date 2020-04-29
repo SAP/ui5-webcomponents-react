@@ -5,7 +5,7 @@ import React, { CSSProperties, FC, forwardRef, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
-import { useMergedConfig } from '../../util/Utils';
+import { useMergedConfig } from '../../util/utils_deprecated';
 import { DonutChart } from '../DonutChart';
 
 export interface RadialChartPropTypes extends CommonProps {

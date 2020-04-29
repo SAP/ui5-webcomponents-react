@@ -17,12 +17,15 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
+import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
+import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -159,8 +162,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const marginChart = useChartMargin(
     dataset,
-    (d) => d,
-    primaryDimensionAccessor,
+    measures,
     chartConfig.margin,
     false,
     dimensions.length > 1,
@@ -186,14 +188,13 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         />
         {(chartConfig.xAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
-            const XAxisLabel = useAxisLabel(dimension.formatter);
             return (
               <XAxis
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                interval={primaryDimension?.interval ?? isBigDataSet ? 'preserveStart' : 0}
-                tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
+                interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
+                tick={index === 0 ? <XAxisTicks config={dimension} /> : SecondaryDimensionLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
               />
@@ -205,6 +206,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           yAxisId="left"
           tickFormatter={primaryMeasure?.formatter}
           interval={0}
+          tick={<YAxisTicks config={primaryMeasure} />}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
@@ -217,14 +219,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           />
         )}
         {measures.map((element, index) => {
-          const LineDataLabel = useDataLabel(
-            !element.hideDataLabel,
-            element.DataLabel,
-            element.formatter,
-            false,
-            false,
-            true
-          );
           return (
             <Line
               dot={!isBigDataSet}
@@ -232,7 +226,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={isBigDataSet ? false : LineDataLabel}
+              label={isBigDataSet ? false : <ChartDataLabel config={element} chartType="line" position="top" />}
               type="monotone"
               dataKey={element.accessor}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}

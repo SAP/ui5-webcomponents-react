@@ -11,9 +11,9 @@ export interface BarPropTypes extends CommonProps {
   renderContentLeft?: () => JSX.Element;
   renderContentMiddle?: () => JSX.Element;
   renderContentRight?: () => JSX.Element;
-  contentLeft: ReactNode | ReactNode[];
-  contentMiddle: ReactNode | ReactNode[];
-  contentRight: ReactNode | ReactNode[];
+  contentLeft?: ReactNode | ReactNode[];
+  contentMiddle?: ReactNode | ReactNode[];
+  contentRight?: ReactNode | ReactNode[];
   design?: BarDesign;
 }
 
