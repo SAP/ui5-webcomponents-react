@@ -25,6 +25,7 @@ import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
+import { tickLineConfig } from '../../internal/MeasureAxisProps';
 
 const formatYAxisTicks = (tick = '') => {
   const splitTick = tick.split(' ');
@@ -195,7 +196,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             interval={0}
             type="number"
             tick={<XAxisTicks config={primaryMeasure} chartRef={chartRef} />}
-            axisLine={chartConfig.xAxisVisible ?? true}
+            axisLine={chartConfig.xAxisVisible ?? false}
+            tickLine={tickLineConfig}
             tickFormatter={primaryMeasure?.formatter}
           />
         )}
