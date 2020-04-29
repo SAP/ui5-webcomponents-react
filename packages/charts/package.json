@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-charts",
-  "version": "0.9.0-rc.16",
+  "version": "0.9.0-rc.17",
   "description": "Charts for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -23,12 +23,12 @@
   "dependencies": {
     "chart.js": "^2.9.3",
     "chartjs-plugin-datalabels": "^0.7.0",
-    "lodash.debounce": "^4.0.8",
     "get-best-contrast-color": "^0.3.1",
+    "lodash.debounce": "^4.0.8",
     "lodash.merge": "^4.6.2",
     "react-chartjs-2": "^2.8.0",
     "react-content-loader": "^5.0.4",
-    "recharts": "2.0.0-beta.1"
+    "recharts": "2.0.0-beta.5"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.8"

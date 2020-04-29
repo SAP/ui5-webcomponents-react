@@ -18,65 +18,28 @@ exports[`PieChart Renders with data 1`] = `
   <div
     class="legend"
   >
-    <li
-      data-datasetindex="0"
-      style="display: flex; align-items: center; margin-right: 24px; cursor:pointer;"
+    <ul
+      class="0-legend"
     >
-      
-
-      <div
-        style="width: 14px; height: 14px; border-radius: 2px; background-color: #0f828f; margin-right: 8px"
-      />
-      
-
-      <ui5-label
-        style="font-size: 12px; user-select: none; cursor:pointer;"
-      >
-        Dataset 1
-      </ui5-label>
-      
-
-    </li>
-     
-    <li
-      data-datasetindex="1"
-      style="display: flex; align-items: center; margin-right: 24px; cursor:pointer;"
-    >
-      
-
-      <div
-        style="width: 14px; height: 14px; border-radius: 2px; background-color: #5ac2ce; margin-right: 8px"
-      />
-      
-
-      <ui5-label
-        style="font-size: 12px; user-select: none; cursor:pointer;"
-      >
-        Dataset 1
-      </ui5-label>
-      
-
-    </li>
-     
-    <li
-      data-datasetindex="2"
-      style="display: flex; align-items: center; margin-right: 24px; cursor:pointer;"
-    >
-      
-
-      <div
-        style="width: 14px; height: 14px; border-radius: 2px; background-color: #03734d; margin-right: 8px"
-      />
-      
-
-      <ui5-label
-        style="font-size: 12px; user-select: none; cursor:pointer;"
-      >
-        Dataset 1
-      </ui5-label>
-      
-
-    </li>
+      <li>
+        <span
+          style="background-color: rgb(15, 130, 143);"
+        />
+        Label 1
+      </li>
+      <li>
+        <span
+          style="background-color: rgb(90, 194, 206);"
+        />
+        Label 2
+      </li>
+      <li>
+        <span
+          style="background-color: rgb(3, 115, 77);"
+        />
+        Label 3
+      </li>
+    </ul>
   </div>
 </div>
 `;
@@ -88,9 +51,11 @@ exports[`PieChart loading placeholder 1`] = `
 >
   <svg
     aria-labelledby="ARIA-LABELLED-BY"
-    height="150"
+    height="100%"
+    preserveAspectRatio="xMidYMid meet"
     role="img"
-    width="150"
+    viewBox="0 0 165 145"
+    width="100%"
   >
     <title
       id="TITLE_ARIA_ID"

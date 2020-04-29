@@ -9,7 +9,7 @@ import { useLegend, usePieLegendItemClickHandler } from '../../internal/ChartLeg
 import { getCssVariableValue } from '../../themes/Utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatDataLabel, formatTooltipLabelForPieCharts, useMergedConfig } from '../../util/Utils';
+import { formatDataLabel, formatTooltipLabelForPieCharts, useMergedConfig } from '../../util/utils_deprecated';
 import { PieChartPlaceholder } from '../PieChart/Placeholder';
 
 export interface DonutChartPropTypes extends ChartBaseProps {}
