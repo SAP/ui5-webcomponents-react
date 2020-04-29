@@ -8,6 +8,7 @@ import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'rech
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { tooltipContentStyle } from '../../internal/staticProps';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color'> {
   /**
@@ -150,7 +151,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
               />
             ))}
         </Pie>
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
       </PieChartLib>
     </ChartContainer>

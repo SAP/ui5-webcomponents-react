@@ -25,7 +25,7 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { tickLineConfig } from '../../internal/MeasureAxisProps';
+import { tickLineConfig, tooltipContentStyle } from '../../internal/staticProps';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -242,7 +242,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             yAxisId={'left'}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
         {chartConfig.zoomingTool && (
           <Brush
             y={10}
