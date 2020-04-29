@@ -7,7 +7,7 @@ import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxis
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo, useState } from 'react';
 import {
   Area,
   Bar,
@@ -27,6 +27,7 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { tickLineConfig } from '../../internal/MeasureAxisProps';
 
 const dimensionDefaults = {
   formatter: (d) => d
@@ -144,6 +145,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   } = props;
 
   const chartRef = useConsolidatedRef<any>(ref);
+  const [currentBarWidth, setCurrentBarWidth] = useState(
+    dataset.some(({ type }) => type === 'bar') ? BAR_DEFAULT_PADDING : 0
+  );
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -199,17 +203,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
-  const paddingCharts = useMemo(() => {
-    let stackId = '';
-    return measures?.reduce((acc, chartElement) => {
-      if (chartElement.type === 'bar' && stackId !== chartElement.stackId) {
-        stackId = chartElement.stackId ?? '';
-        acc += chartElement?.width ?? BAR_DEFAULT_PADDING;
-      }
-      return acc;
-    }, 5);
-  }, [measures]);
-
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
@@ -224,7 +217,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const measureAxisProps = {
     axisLine: chartConfig.yAxisVisible ?? false,
-    tickLine: false,
+    tickLine: tickLineConfig,
     tickFormatter: primaryMeasure?.formatter,
     interval: 0
   };
@@ -232,6 +225,22 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const Placeholder = useCallback(() => {
     return <ComposedChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
+
+  const updateChartPadding = useCallback(() => {
+    if (chartRef.current) {
+      const bars = chartRef.current.querySelectorAll(
+        '.recharts-bar-rectangles .recharts-bar-rectangle:first-child path'
+      );
+      if (bars.length) {
+        let totalBarWidth = 0;
+        bars.forEach((bar) => {
+          const bBox = bar.getBBox();
+          totalBarWidth += layout === 'vertical' ? bBox.height : bBox.width;
+        });
+        setCurrentBarWidth(totalBarWidth);
+      }
+    }
+  }, [chartRef, setCurrentBarWidth, layout]);
 
   return (
     <ChartContainer
@@ -258,19 +267,20 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               dataKey: dimension.accessor,
               interval: dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0),
               tickLine: index < 1,
-              axisLine: index < 1,
-              padding: { left: paddingCharts, right: paddingCharts }
+              axisLine: index < 1
             };
 
             if (layout === 'vertical') {
               axisProps.type = 'category';
               axisProps.tick = <YAxisTicks config={dimension} level={index} />;
               axisProps.yAxisId = index;
+              axisProps.padding = { top: currentBarWidth, bottom: currentBarWidth };
               AxisComponent = YAxis;
             } else {
               axisProps.dataKey = dimension.accessor;
               axisProps.tick = <XAxisTicks config={dimension} chartRef={chartRef} level={index} />;
               axisProps.xAxisId = index;
+              axisProps.padding = { left: currentBarWidth, right: currentBarWidth };
               AxisComponent = XAxis;
             }
 
@@ -337,6 +347,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.dot = !isBigDataSet;
               break;
             case 'bar':
+              chartElementProps.onAnimationEnd = updateChartPadding;
               chartElementProps.fillOpacity = element.opacity;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.barSize = element.width;
