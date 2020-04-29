@@ -28,7 +28,7 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { tickLineConfig } from '../../internal/MeasureAxisProps';
+import { tickLineConfig, tooltipContentStyle } from '../../internal/staticProps';
 
 const dimensionDefaults = {
   formatter: (d) => d
@@ -333,7 +333,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             xAxisId={layout === 'vertical' ? 'primary' : undefined}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
         {measures?.map((element, index) => {
           const ChartElement = (ChartTypes[element.type] as any) as FC<any>;
