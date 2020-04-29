@@ -17,14 +17,17 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { useAxisLabel, useDataLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
+import { useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
+import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
+import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 
-const formatYAxisTicks = (tick) => {
+const formatYAxisTicks = (tick = '') => {
   const splitTick = tick.split(' ');
   return splitTick.length > 3
     ? `${splitTick.slice(0, 3).join(' ')}...`
@@ -61,10 +64,14 @@ interface MeasureConfig extends IChartMeasure {
 }
 
 interface DimensionConfig extends IChartDimension {
+  /**
+   * Interval of dimension axis labels
+   * @default 0
+   */
   interval?: number;
 }
 
-interface BarChartProps extends RechartBaseProps {
+export interface BarChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one bar in the chart.
@@ -132,7 +139,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
 
   const primaryDimension = dimensions[0];
   const primaryMeasure = measures[0];
-
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
@@ -156,13 +162,12 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
     [onDataPointClick]
   );
 
-  const isBigDataSet = dataset?.length > 30 ?? false;
+  const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const marginChart = useChartMargin(
     dataset,
-    (d) => d,
-    primaryDimensionAccessor,
+    dimensions,
     chartConfig.margin,
     true,
     dimensions.length > 1,
@@ -180,7 +185,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       tooltip={tooltip}
       slot={slot}
     >
-      <BarChartLib margin={marginChart} layout={'vertical'} data={dataset} barGap={chartConfig.barGap}>
+      <BarChartLib margin={marginChart} layout="vertical" data={dataset} barGap={chartConfig.barGap}>
         <CartesianGrid
           vertical={chartConfig.gridVertical ?? false}
           horizontal={chartConfig.gridHorizontal}
@@ -190,6 +195,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           <XAxis
             interval={0}
             type="number"
+            tick={<XAxisTicks config={primaryMeasure} />}
             axisLine={chartConfig.xAxisVisible ?? true}
             tickFormatter={primaryMeasure?.formatter}
           />
@@ -197,16 +203,14 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         {(chartConfig.yAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
             const YAxisLabel =
-              index > 0
-                ? useSecondaryDimensionLabel(true, dimension.formatter)
-                : useAxisLabel(dimension.formatter, true);
+              index > 0 ? useSecondaryDimensionLabel(true, dimension.formatter) : <YAxisTicks config={dimension} />;
             return (
               <YAxis
+                interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
                 type="category"
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                interval={dimension.interval ?? isBigDataSet ? 2 : 0}
                 tick={YAxisLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
@@ -215,14 +219,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             );
           })}
         {measures.map((element, index) => {
-          const ColumnDataLabel = useDataLabel(
-            !element.hideDataLabel,
-            element.DataLabel,
-            element.formatter,
-            false,
-            true,
-            false
-          );
           return (
             <Bar
               stackId={element.stackId}
@@ -230,7 +226,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={isBigDataSet ? false : ColumnDataLabel}
+              label={<ChartDataLabel config={element} chartType="bar" position="insideRight" />}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
@@ -251,7 +247,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush
-            y={0}
+            y={10}
             dataKey={primaryDimensionAccessor}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}

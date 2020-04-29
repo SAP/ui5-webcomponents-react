@@ -1,6 +1,6 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
@@ -14,13 +14,12 @@ import {
   RadarChart as RadarChartLib,
   Tooltip
 } from 'recharts';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel } from '../../hooks/useLabelElements';
-import { useChartMargin } from '../../hooks/useChartMargin';
-import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { IChartDimension } from '../../interfaces/IChartDimension';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { IChartDimension } from '../../interfaces/IChartDimension';
+import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -33,7 +32,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-interface RadarChartProps extends RechartBaseProps {
+export interface RadarChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one radar in the chart.
@@ -108,20 +107,21 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     (payload, eventOrIndex) => {
       if (eventOrIndex.value && onDataPointClick) {
         onDataPointClick(
-          enrichEventWithDetails(event, {
-            value: eventOrIndex.value,
-            dataKey: eventOrIndex.dataKey,
-            name: eventOrIndex.payload.label,
-            xIndex: eventOrIndex.index,
-            payload: eventOrIndex.payload
-          })
+          enrichEventWithDetails(
+            {},
+            {
+              value: eventOrIndex.value,
+              dataKey: eventOrIndex.dataKey,
+              name: eventOrIndex.payload.label,
+              xIndex: eventOrIndex.index,
+              payload: eventOrIndex.payload
+            }
+          )
         );
       }
     },
     [onDataPointClick]
   );
-
-  const marginChart = useChartMargin(dataset, (d) => d, primaryDimensionAccessor, chartConfig.margin, true, true, true);
 
   return (
     <ChartContainer
@@ -134,7 +134,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       tooltip={tooltip}
       slot={slot}
     >
-      <RadarChartLib data={dataset} margin={{ left: marginChart.left + 100 }}>
+      <RadarChartLib data={dataset} margin={chartConfig.margin}>
         <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis
           dataKey={primaryDimensionAccessor}
@@ -145,14 +145,6 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
         />
         <PolarRadiusAxis />
         {measures.map((element, index) => {
-          const RadarDataLabel = useDataLabel(
-            !element.hideDataLabel,
-            element.DataLabel,
-            element.formatter,
-            false,
-            false,
-            true
-          );
           return (
             <Radar
               key={element.accessor}
@@ -162,14 +154,12 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fillOpacity={element.opacity}
-              label={RadarDataLabel}
+              label={<ChartDataLabel config={element} chartType="radar" position={'outside'} />}
             />
           );
         })}
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
-        {!noLegend && (
-          <Legend wrapperStyle={{ left: 100 }} verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />
-        )}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
       </RadarChartLib>
     </ChartContainer>
   );

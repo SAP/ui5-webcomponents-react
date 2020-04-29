@@ -1,6 +1,6 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ColumnChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
@@ -16,13 +16,16 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import { useChartMargin } from '../../hooks/useChartMargin';
+import { useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
+import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { useDataLabel, useAxisLabel, useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
-import { useChartMargin } from '../../hooks/useChartMargin';
-import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
+import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
+import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -41,10 +44,14 @@ interface MeasureConfig extends IChartMeasure {
 }
 
 interface DimensionConfig extends IChartDimension {
+  /**
+   * Interval of axis label
+   * @default 0
+   */
   interval?: number;
 }
 
-interface ColumnChartProps extends RechartBaseProps {
+export interface ColumnChartProps extends RechartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one column in the chart.
@@ -164,8 +171,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const marginChart = useChartMargin(
     dataset,
-    (d) => d,
-    primaryDimensionAccessor,
+    measures,
     chartConfig.margin,
     false,
     dimensions.length > 1,
@@ -191,14 +197,13 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         />
         {(chartConfig.xAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
-            const XAxisLabel = useAxisLabel(dimension.formatter);
             return (
               <XAxis
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                interval={dimension.interval ?? isBigDataSet ? 2 : 0}
-                tick={index === 0 ? XAxisLabel : SecondaryDimensionLabel}
+                interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
+                tick={index === 0 ? <XAxisTicks config={dimension} /> : SecondaryDimensionLabel}
                 tickLine={index < 1}
                 axisLine={index < 1}
               />
@@ -208,8 +213,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           axisLine={chartConfig.yAxisVisible ?? false}
           tickLine={false}
           yAxisId="left"
-          tickFormatter={primaryMeasure?.formatter}
           interval={0}
+          tick={<YAxisTicks config={primaryMeasure} />}
         />
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
           <YAxis
@@ -222,13 +227,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           />
         )}
         {measures.map((element, index) => {
-          const ColumnDataLabel = useDataLabel(
-            !element.hideDataLabel,
-            element.DataLabel,
-            element.formatter,
-            !!element.stackId,
-            false
-          );
           return (
             <Column
               yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
@@ -237,7 +235,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={isBigDataSet ? false : ColumnDataLabel}
+              label={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
@@ -259,7 +257,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
         {chartConfig.zoomingTool && (
           <Brush
-            y={0}
+            y={10}
             dataKey={primaryDimensionAccessor}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}

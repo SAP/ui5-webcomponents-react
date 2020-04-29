@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean } from '@storybook/addon-knobs';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
 import React from 'react';
-import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts - Unstable /  BarChart',
@@ -20,8 +20,7 @@ export const renderStory = () => {
       chartConfig={{}}
       dimensions={[
         {
-          accessor: 'name',
-          interval: 0
+          accessor: 'name'
         }
       ]}
       measures={[
@@ -128,7 +127,7 @@ export const renderCustomDataLabelStory = () => {
           accessor: 'volume'
         }
       ]}
-      style={{ width: '95%', height: '40vh' }}
+      style={{ width: '95%', height: '100vh' }}
       chartConfig={{
         zoomingTool: true
       }}
@@ -166,7 +165,21 @@ export const withReferenceLineStory = () => {
           accessor: 'volume'
         }
       ]}
-      style={{ width: '95%', height: '70vh' }}
+      style={{
+        width: '95%',
+        height: '70vh',
+        '--sapChart_OrderedColor_1': '#0f828f',
+        '--sapChart_OrderedColor_2': '#5ac2ce',
+        '--sapChart_OrderedColor_3': '#03734d',
+        '--sapChart_OrderedColor_4': '#66c2a3',
+        '--sapChart_OrderedColor_5': '#3c6372',
+        '--sapChart_OrderedColor_6': '#adbcc3',
+        '--sapChart_OrderedColor_7': '#144b7f',
+        '--sapChart_OrderedColor_8': '#698caf',
+        '--sapChart_OrderedColor_9': '#d62f2f',
+        '--sapChart_OrderedColor_10': '#f8a6a6',
+        '--sapChart_OrderedColor_11': '#921473'
+      }}
       noLegend={false}
       loading
       chartConfig={{

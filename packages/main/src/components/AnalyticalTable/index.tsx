@@ -56,6 +56,7 @@ import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
+import debounce from 'lodash.debounce';
 
 export interface TableProps extends CommonProps {
   /**
@@ -176,7 +177,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
-  const resizeObserverInitialized = useRef(false);
   const extension = useDeprecateRenderMethods(props, 'renderExtension', 'extension');
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
@@ -258,21 +258,16 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   useEffect(() => {
     // @ts-ignore
-    const tableWidthObserver = new ResizeObserver(() => {
-      if (resizeObserverInitialized.current) {
-        updateTableClientWidth();
-      }
-      resizeObserverInitialized.current = true;
-    });
+    const tableWidthObserver = new ResizeObserver(debounce(updateTableClientWidth, 500));
     tableWidthObserver.observe(tableRef.current);
     return () => {
       tableWidthObserver.disconnect();
     };
-  }, [updateTableClientWidth, resizeObserverInitialized]);
+  }, [updateTableClientWidth]);
 
   useEffect(() => {
     updateTableClientWidth();
-  }, []);
+  }, [updateTableClientWidth]);
 
   useEffect(() => {
     dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
@@ -348,7 +343,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     if (tableState.tableClientWidth > 0) {
       return {
         ...tableStyles,
-        style
+        ...style
       } as CSSProperties;
     }
     return {

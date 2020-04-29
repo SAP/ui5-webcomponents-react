@@ -9,7 +9,7 @@ import { useLegend, usePieLegendItemClickHandler } from '../../internal/ChartLeg
 import { getCssVariableValue } from '../../themes/Utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatTooltipLabelForPieCharts, useMergedConfig } from '../../util/Utils';
+import { formatTooltipLabelForPieCharts, useMergedConfig } from '../../util/utils_deprecated';
 import { PieChartPlaceholder } from './Placeholder';
 
 export interface PieChartPropTypes extends ChartBaseProps {}
