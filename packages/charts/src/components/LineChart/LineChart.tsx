@@ -25,6 +25,7 @@ import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { tickLineConfig } from '../../internal/MeasureAxisProps';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -199,7 +200,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           })}
         <YAxis
           axisLine={chartConfig.yAxisVisible ?? false}
-          tickLine={false}
+          tickLine={tickLineConfig}
           yAxisId="left"
           tickFormatter={primaryMeasure?.formatter}
           interval={0}
