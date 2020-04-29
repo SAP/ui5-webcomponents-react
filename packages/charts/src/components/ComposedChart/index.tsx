@@ -7,7 +7,7 @@ import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxis
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo, useState } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useState } from 'react';
 import {
   Area,
   Bar,
@@ -21,6 +21,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import debounce from 'lodash.debounce';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
@@ -226,21 +227,24 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     return <ComposedChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
 
-  const updateChartPadding = useCallback(() => {
-    if (chartRef.current) {
-      const bars = chartRef.current.querySelectorAll(
-        '.recharts-bar-rectangles .recharts-bar-rectangle:first-child path'
-      );
-      if (bars.length) {
-        let totalBarWidth = 0;
-        bars.forEach((bar) => {
-          const bBox = bar.getBBox();
-          totalBarWidth += layout === 'vertical' ? bBox.height : bBox.width;
-        });
-        setCurrentBarWidth(totalBarWidth);
+  const updateChartPadding = useCallback(
+    debounce(() => {
+      if (chartRef.current) {
+        const bars = chartRef.current.querySelectorAll(
+          '.recharts-bar-rectangles .recharts-bar-rectangle:first-child path'
+        );
+        if (bars.length) {
+          let totalBarWidth = 0;
+          bars.forEach((bar) => {
+            const bBox = bar.getBBox();
+            totalBarWidth += layout === 'vertical' ? bBox.height : bBox.width;
+          });
+          setCurrentBarWidth(totalBarWidth);
+        }
       }
-    }
-  }, [chartRef, setCurrentBarWidth, layout]);
+    }, 50),
+    [chartRef, setCurrentBarWidth, layout]
+  );
 
   return (
     <ChartContainer
