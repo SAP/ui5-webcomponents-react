@@ -141,49 +141,34 @@ export const secondaryDimensionDataSet = [
     dimension: 'C4S Components'
   },
   {
-    name: 'April / Month',
-    users: 280,
-    dimension: 'C4S Components'
-  },
-  {
-    name: 'May / Month',
-    users: 100,
-    dimension: 'C4S Components'
-  },
-  {
-    name: 'June / Month',
-    users: 230,
-    dimension: 'C4S Components'
-  },
-  {
-    name: 'July / Month',
+    name: 'January / Month',
     users: 20,
     dimension: 'Harmnony Insight'
   },
   {
-    name: 'August / Month',
+    name: 'Februar / Month',
     users: 220,
     dimension: 'Harmnony Insight'
   },
   {
-    name: 'September / Month',
+    name: 'March / Month',
     users: 200,
     dimension: 'Harmnony Insight'
   },
   {
-    name: 'October / Month',
+    name: 'January / Month',
     users: 250,
     dimension: 'Intelligent Workplace'
   },
   {
-    name: 'November / Month',
+    name: 'February / Month',
     users: 240,
     dimension: 'Intelligent Workplace'
   },
   {
-    name: 'December / Month',
+    name: 'March / Month',
     users: 280,
-    dimension: 'Pipeline Health Manager'
+    dimension: 'Intelligent Workplace'
   }
 ];
 

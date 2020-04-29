@@ -22,7 +22,6 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
@@ -211,8 +210,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     }, 5);
   }, [measures]);
 
-  const SecondaryDimensionLabel = useSecondaryDimensionLabel();
-
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
@@ -260,7 +257,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               key: dimension.accessor,
               dataKey: dimension.accessor,
               interval: dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0),
-              tick: index === 0 ? <XAxisTicks config={dimension} /> : SecondaryDimensionLabel,
               tickLine: index < 1,
               axisLine: index < 1,
               padding: { left: paddingCharts, right: paddingCharts }
@@ -268,9 +264,13 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
             if (layout === 'vertical') {
               axisProps.type = 'category';
+              axisProps.tick = <YAxisTicks config={dimension} level={index} />;
+              axisProps.yAxisId = index;
               AxisComponent = YAxis;
             } else {
               axisProps.dataKey = dimension.accessor;
+              axisProps.tick = <XAxisTicks config={dimension} chartRef={chartRef} level={index} />;
+              axisProps.xAxisId = index;
               AxisComponent = XAxis;
             }
 
@@ -280,7 +280,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           <YAxis {...measureAxisProps} yAxisId="primary" tick={<YAxisTicks config={primaryMeasure} />} />
         )}
         {layout === 'vertical' && (
-          <XAxis {...measureAxisProps} xAxisId="primary" type="number" tick={<XAxisTicks config={primaryMeasure} />} />
+          <XAxis
+            {...measureAxisProps}
+            xAxisId="primary"
+            type="number"
+            tick={<XAxisTicks config={primaryMeasure} chartRef={chartRef} />}
+          />
         )}
 
         {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && layout === 'horizontal' && (
