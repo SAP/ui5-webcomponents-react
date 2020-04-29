@@ -9,7 +9,7 @@ interface XAxisTicksProps {
   y?: number;
   payload?: any;
   config: IChartMeasure;
-  level: number;
+  level?: number;
   chartRef: RefObject<HTMLDivElement>;
 }
 

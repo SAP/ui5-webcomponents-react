@@ -265,10 +265,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             if (layout === 'vertical') {
               axisProps.type = 'category';
               axisProps.tick = <YAxisTicks config={dimension} level={index} />;
+              axisProps.yAxisId = index;
               AxisComponent = YAxis;
             } else {
               axisProps.dataKey = dimension.accessor;
               axisProps.tick = <XAxisTicks config={dimension} chartRef={chartRef} level={index} />;
+              axisProps.xAxisId = index;
               AxisComponent = XAxis;
             }
 
