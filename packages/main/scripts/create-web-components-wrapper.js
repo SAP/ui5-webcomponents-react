@@ -9,6 +9,7 @@ const PATHS = require('../../../config/paths');
 const fs = require('fs');
 
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
+const LIB_DIR = path.join(PATHS.packages, 'main', 'src', 'lib');
 
 const PRIVATE_COMPONENTS = new Set([
   'CalendarHeader',
@@ -41,6 +42,7 @@ COMPONENTS_WITHOUT_DEMOS.add('ProductSwitchItem');
 COMPONENTS_WITHOUT_DEMOS.add('ComboBoxItem');
 COMPONENTS_WITHOUT_DEMOS.add('MultiComboBoxItem');
 COMPONENTS_WITHOUT_DEMOS.add('SuggestionItem');
+COMPONENTS_WITHOUT_DEMOS.add('UploadCollectionItem');
 
 const TagNames = new Map();
 TagNames.set('Avatar', 'ui5-avatar');
@@ -93,6 +95,8 @@ TagNames.set('TimelineItem', 'ui5-timeline-item');
 TagNames.set('TimePicker', 'ui5-timepicker');
 TagNames.set('Title', 'ui5-title');
 TagNames.set('Toast', 'ui5-toast');
+TagNames.set('UploadCollection', 'ui5-upload-collection');
+TagNames.set('UploadCollectionItem', 'ui5-upload-collection-item');
 TagNames.set('ToggleButton', 'ui5-togglebutton');
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
@@ -104,8 +108,8 @@ const filterNonPublicAttributes = (prop) =>
 const getTypeScriptTypeForProperty = (property) => {
   switch (property.type) {
     // native ts types
-    case 'String':
     case 'string':
+    case 'String':
       return {
         importStatement: null,
         tsType: 'string'
@@ -115,8 +119,9 @@ const getTypeScriptTypeForProperty = (property) => {
         importStatement: null,
         tsType: 'unknown'
       };
-    case 'Integer':
     case 'number':
+    case 'Number':
+    case 'Integer':
       return {
         importStatement: null,
         tsType: 'number'
@@ -128,10 +133,17 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'boolean'
       };
     case 'Array':
+    case 'FileList':
       return {
         importStatement: null,
         tsType: 'unknown[]'
       };
+    case 'File': {
+      return {
+        importStatement: null,
+        tsType: 'unknown'
+      };
+    }
     // react ts types
     case 'Node[]':
     case 'HTMLElement[]':
@@ -270,6 +282,13 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'TabLayout',
         isEnum: true
       };
+    case 'TabContainerTabsPlacement':
+      return {
+        importStatement:
+          "import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabContainerTabsPlacement';",
+        tsType: 'TabContainerTabsPlacement',
+        isEnum: true
+      };
     case 'TitleLevel':
       return {
         importStatement: "import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';",
@@ -282,12 +301,20 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'ToastPlacement',
         isEnum: true
       };
+    case 'UploadState':
+      return {
+        importStatement: "import { UploadState } from '@ui5/webcomponents-react/lib/UploadState';",
+        tsType: 'UploadState',
+        isEnum: true
+      };
     case 'ValueState':
       return {
         importStatement: "import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';",
         tsType: 'ValueState',
         isEnum: true
       };
+    default:
+      throw new Error(`Unknown type ${JSON.stringify(property)}`);
   }
 };
 
@@ -618,6 +645,18 @@ resolvedWebComponents.forEach((componentSpec) => {
   }
 
   fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
+
+  // create lib export
+  if (!fs.existsSync(path.join(LIB_DIR, `${componentSpec.module}.ts`))) {
+    const libContent = prettier.format(
+      `
+import { ${componentSpec.module} } from '../webComponents/${componentSpec.module}';
+
+export { ${componentSpec.module} };`,
+      prettierConfig
+    );
+    fs.writeFileSync(path.join(LIB_DIR, `${componentSpec.module}.ts`), libContent);
+  }
 
   // create test
   if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
