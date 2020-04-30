@@ -32,10 +32,10 @@
     "react-window": "^1.8.5"
   },
   "peerDependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.6",
+    "@ui5/webcomponents": "0.0.0-dc606098a",
     "@ui5/webcomponents-base": "0.19.0",
-    "@ui5/webcomponents-fiori": "1.0.0-rc.6",
-    "@ui5/webcomponents-icons": "1.0.0-rc.6",
+    "@ui5/webcomponents-fiori": "0.0.0-dc606098a",
+    "@ui5/webcomponents-icons": "0.0.0-dc606098a",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },
