@@ -38,7 +38,9 @@ const ShellBarItem: FC<ShellBarItemPropTypes> = withWebComponent<ShellBarItemPro
 ShellBarItem.displayName = 'ShellBarItem';
 
 ShellBarItem.defaultProps = {
-  count: ''
+  count: '',
+  icon: '',
+  text: ''
 };
 
 export { ShellBarItem };

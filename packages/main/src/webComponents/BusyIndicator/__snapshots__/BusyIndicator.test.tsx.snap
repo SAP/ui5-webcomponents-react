@@ -3,5 +3,6 @@
 exports[`BusyIndicator Basic Test (generated) 1`] = `
 <ui5-busyindicator
   size="Medium"
+  text=""
 />
 `;

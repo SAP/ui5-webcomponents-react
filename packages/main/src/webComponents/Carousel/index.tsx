@@ -12,23 +12,35 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines whether the carousel should loop, i.e show the first page after the last page is reached and vice versa.
    */
-  cycling?: boolean;
+  cyclic?: boolean;
   /**
    * If set to true the navigation is hidden.
    */
   hideNavigation?: boolean;
   /**
-   * Sets the amount of items per page. If this property is set, on mobile devices it will always fallback to 1.
+   * Sets the number of items per page on large size (more than 1024px). One item per page shown by default.
    */
-  itemsPerPage?: number;
+  itemsPerPageL?: number;
   /**
-   * Defines the index of the initially selected page.
+   * Sets the number of items per page on medium size (from 640px to 1024px). One item per page shown by default.
+   */
+  itemsPerPageM?: number;
+  /**
+   * Sets the number of items per page on small size (up to 640px). One item per page shown by default.
+   */
+  itemsPerPageS?: number;
+  /**
+   * Defines the index of the initially selected item.
    */
   selectedIndex?: number;
   /**
    * Defines the content of the <code>ui5-carousel</code>.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired whenever the <code>selectedIndex</code> changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the <code>items-per-page-l</code>, <code>items-per-page-m</code> and <code>items-per-page-s</code> properties.
+   */
+  onNavigate?: (event: CustomEvent<{ selectedIndex: number }>) => void;
 }
 
 /**
@@ -38,19 +50,21 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
  */
 const Carousel: FC<CarouselPropTypes> = withWebComponent<CarouselPropTypes>(
   'ui5-carousel',
-  ['arrowsPlacement', 'itemsPerPage', 'selectedIndex'],
-  ['cycling', 'hideNavigation'],
+  ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS', 'selectedIndex'],
+  ['cyclic', 'hideNavigation'],
   [],
-  []
+  ['navigate']
 );
 
 Carousel.displayName = 'Carousel';
 
 Carousel.defaultProps = {
   arrowsPlacement: CarouselArrowsPlacement.Content,
-  cycling: false,
+  cyclic: false,
   hideNavigation: false,
-  itemsPerPage: 1,
+  itemsPerPageL: 1,
+  itemsPerPageM: 1,
+  itemsPerPageS: 1,
   selectedIndex: 0
 };
 

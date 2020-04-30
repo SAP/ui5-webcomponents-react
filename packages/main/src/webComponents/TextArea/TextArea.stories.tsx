@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, number, text } from '@storybook/addon-knobs';
+import { boolean, number, select, text } from '@storybook/addon-knobs';
 import { TextArea } from '@ui5/webcomponents-react/lib/TextArea';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 export default {
@@ -21,6 +22,8 @@ export const generatedDefaultStory = () => (
     rows={number('rows', 0)}
     showExceededText={boolean('showExceededText', false)}
     value={text('value', '')}
+    valueState={select('valueState', ValueState, ValueState.None)}
+    valueStateMessage={<span>Value State Message</span>}
     onChange={action('onChange')}
     onInput={action('onInput')}
   />

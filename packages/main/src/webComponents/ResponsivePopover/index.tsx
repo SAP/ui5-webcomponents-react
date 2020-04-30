@@ -86,6 +86,7 @@ ResponsivePopover.displayName = 'ResponsivePopover';
 
 ResponsivePopover.defaultProps = {
   allowTargetOverlap: false,
+  headerText: '',
   horizontalAlign: PopoverHorizontalAlign.Center,
   initialFocus: '',
   modal: false,

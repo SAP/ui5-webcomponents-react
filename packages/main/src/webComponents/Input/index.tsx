@@ -49,7 +49,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>ui5-input</code> suggestion items. <br><br> Example: <br><br> &lt;ui5-input show-suggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #1">&lt;/ui5-suggestion-item><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #2">&lt;/ui5-suggestion-item><br> &lt;/ui5-input> <br> <ui5-input show-suggestions> <ui5-suggestion-item text="Item #1"></ui5-suggestion-item> <ui5-suggestion-item text="Item #2"></ui5-suggestion-item> </ui5-input> <br><br> <b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;ui5-suggestion-item> is recommended to be used as a suggestion item. and you need to import the <code>"@ui5/webcomponents/dist/SuggestionItem"</code> module.
+   * Defines the <code>ui5-input</code> suggestion items. <br><br> Example: <br><br> &lt;ui5-input show-suggestions><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #1">&lt;/ui5-suggestion-item><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-suggestion-item text="Item #2">&lt;/ui5-suggestion-item><br> &lt;/ui5-input> <br> <ui5-input show-suggestions> <ui5-suggestion-item text="Item #1"></ui5-suggestion-item> <ui5-suggestion-item text="Item #2"></ui5-suggestion-item> </ui5-input> <br><br> <b>Note:</b> The suggestion would be displayed only if the <code>showSuggestions</code> property is set to <code>true</code>. <br><br> <b>Note:</b> The &lt;ui5-suggestion-item> is recommended to be used as a suggestion item. Importing the Input Suggestions Support feature: <br> <code>import "@ui5/webcomponents/dist/features/InputSuggestions.js";</code> <br> also automatically imports the &lt;ui5-suggestion-item> for your convenience.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -57,7 +57,8 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    */
   icon?: ReactNode | ReactNode[];
   /**
-   * The slot is used in order to display a valueStateMessage. <br><br> <b>Note:</b> The valueStateMessage would be displayed only if the <code>ui5-input</code> has a valueState of type <code>Information</code>, <code>Warning</code> or <code>Error</code>.
+   * Defines the value state message that will be displayed as pop up under the <code>ui5-input</code>. <br><br>
+   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-input</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state. <br> <b>Note:</b> If the <code>ui5-input</code> has <code>suggestionItems</code>, the <code>valueStateMessage</code> would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
