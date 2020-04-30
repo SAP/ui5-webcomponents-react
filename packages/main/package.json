@@ -16,8 +16,7 @@
   "sideEffects": [
     "@ui5/webcomponents-icons/dist/icons/*",
     "@ui5/webcomponents/dist/*",
-    "@ui5/webcomponents-fiori/dist/*",
-    "./lib/ThemingSupport.js"
+    "@ui5/webcomponents-fiori/dist/*"
   ],
   "scripts": {
     "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts",
