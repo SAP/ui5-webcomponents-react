@@ -1,3 +1,4 @@
+import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabContainerTabsPlacement';
 import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/TabContainer';
@@ -18,13 +19,15 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
    */
   showOverflow?: boolean;
   /**
- * Defines the alignment of the <code>main text</code> and the <code>additionalText</code> of a tab.
-
-<br><br> <b>Note:</b> The <code>main text</code> and the <code>additionalText</code> would be displayed vertically by defualt, but when set to <code>Inline</code>, they would be displayed horizontally.
-
-<br><br> Available options are: <ul> <li><code>Standard</code></li> <li><code>Inline</code></li> <ul>
- */
+   * Defines the alignment of the <code>main text</code> and the <code>additionalText</code> of a tab.
+   * <br><br> <b>Note:</b> The <code>main text</code> and the <code>additionalText</code> would be displayed vertically by defualt, but when set to <code>Inline</code>, they would be displayed horizontally.
+   * <br><br> Available options are: <ul> <li><code>Standard</code></li> <li><code>Inline</code></li> <ul>
+   */
   tabLayout?: TabLayout;
+  /**
+   * Defines the placement of the tab strip (tab buttons area) relative to the actual tabs' content. <br><br> <b>Note:</b> By default the tab strip is displayed above the tabs' content area and this is the recommended layout for most scenarios. Set to <code>Bottom</code> only when the <code>ui5-tabcontainer</code> is at the bottom of the page and you want the tab strip to act as a menu.
+   */
+  tabsPlacement?: TabContainerTabsPlacement;
   /**
    * Defines the tabs. <br><br> <b>Note:</b> Use <code>ui5-tab</code> and <code>ui5-tab-separator</code> for the intended design.
    */
@@ -32,7 +35,7 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
   /**
    * Fired when a tab is selected.
    */
-  onTabSelect?: (event: CustomEvent<{ tab: ReactNode; tabIndex: undefined }>) => void;
+  onTabSelect?: (event: CustomEvent<{ tab: ReactNode; tabIndex: number }>) => void;
 }
 
 /**
@@ -42,7 +45,7 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
  */
 const TabContainer: FC<TabContainerPropTypes> = withWebComponent<TabContainerPropTypes>(
   'ui5-tabcontainer',
-  ['tabLayout'],
+  ['tabLayout', 'tabsPlacement'],
   ['collapsed', 'fixed', 'showOverflow'],
   [],
   ['tabSelect']
@@ -54,7 +57,8 @@ TabContainer.defaultProps = {
   collapsed: false,
   fixed: false,
   showOverflow: false,
-  tabLayout: TabLayout.Standard
+  tabLayout: TabLayout.Standard,
+  tabsPlacement: TabContainerTabsPlacement.Top
 };
 
 export { TabContainer };
