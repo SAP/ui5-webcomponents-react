@@ -59,6 +59,7 @@ TagNames.set('CustomListItem', 'ui5-li-custom');
 TagNames.set('DatePicker', 'ui5-datepicker');
 TagNames.set('DateTimePicker', 'ui5-datetime-picker');
 TagNames.set('Dialog', 'ui5-dialog');
+TagNames.set('DurationPicker', 'ui5-duration-picker');
 TagNames.set('FileUploader', 'ui5-file-uploader');
 TagNames.set('GroupHeaderListItem', 'ui5-li-groupheader');
 TagNames.set('Icon', 'ui5-icon');
