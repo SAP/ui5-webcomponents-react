@@ -28,7 +28,6 @@ export interface ColumnHeaderProps {
   className: string;
   column: ColumnType;
   style: CSSProperties;
-  isLastColumn?: boolean;
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
   onDragStart: DragEventHandler<HTMLDivElement>;
@@ -102,7 +101,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     column,
     className,
     style,
-    isLastColumn,
     onSort,
     onGroupBy,
     onDragEnter,
@@ -122,13 +120,12 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   const filterIcon = isFiltered ? <Icon name="filter" /> : null;
   const groupingIcon = column.isGrouped ? <Icon name="group-2" /> : null;
 
-  const isResizable = !isLastColumn && column.canResize;
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
   const innerStyle: CSSProperties = useMemo(() => {
     const modifiedStyles: CSSProperties = {
       cursor: hasPopover ? 'pointer' : 'auto'
     };
-    if (isResizable) {
+    if (column.canResize) {
       modifiedStyles.maxWidth = `calc(100% - 16px)`;
     }
     if (dragOver) {
@@ -140,12 +137,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     if (column.hAlign === TextAlign.End) {
       modifiedStyles.justifyContent = 'flex-end';
       modifiedStyles.maxWidth = '';
-      if (isLastColumn) {
-        modifiedStyles.paddingRight = `calc(${ThemingParameters.sapScrollBar_Dimension} + 1rem)`;
-      }
     }
     return modifiedStyles;
-  }, [isResizable, dragOver, hasPopover]);
+  }, [column.canResize, dragOver, hasPopover]);
 
   const popoverRef = useRef<Ui5PopoverDomRef>(null);
 
@@ -188,8 +182,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         </div>
       </div>
       {hasPopover && <ColumnHeaderModal column={column} onSort={onSort} onGroupBy={onGroupBy} ref={popoverRef} />}
-      {column.getResizerProps && (
-        <div {...column.getResizerProps()} className={`${classes.resizer} ${isLastColumn ? classes.lastColumn : ''}`} />
+      {column.canResize && column.getResizerProps && (
+        <div {...column.getResizerProps()} className={`${classes.resizer}`} />
       )}
     </div>
   );

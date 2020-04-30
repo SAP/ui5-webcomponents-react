@@ -22,6 +22,6 @@ export const useChartMargin = (dataset: unknown[], elements, margin, isBar?, has
       right: margin?.right ?? 60,
       top: margin?.top ?? hasZoomingTool ? 40 : 10,
       bottom: margin?.bottom ?? (!isBar && hasSecondaryDimension) ? 100 : 30,
-      left: margin?.left ?? (isBar && hasSecondaryDimension) ? marginLeft : marginLeft / 2
+      left: margin?.left ?? marginLeft / 2
     };
   }, [dataset, elements, margin, hasSecondaryDimension, hasZoomingTool]);

@@ -1,6 +1,9 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
+import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
+import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
@@ -17,15 +20,12 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
-import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
-import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
+import { tickLineConfig, tooltipContentStyle } from '../../internal/staticProps';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -155,8 +155,6 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     [onDataPointClick]
   );
 
-  const SecondaryDimensionLabel = useSecondaryDimensionLabel();
-
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
@@ -194,7 +192,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-                tick={index === 0 ? <XAxisTicks config={dimension} /> : SecondaryDimensionLabel}
+                tick={<XAxisTicks config={dimension} chartRef={chartRef} level={index} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
               />
@@ -202,7 +200,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           })}
         <YAxis
           axisLine={chartConfig.yAxisVisible ?? false}
-          tickLine={false}
+          tickLine={tickLineConfig}
           yAxisId="left"
           tickFormatter={primaryMeasure?.formatter}
           interval={0}
@@ -244,7 +242,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             yAxisId={'left'}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
         {chartConfig.zoomingTool && (
           <Brush
             y={10}
