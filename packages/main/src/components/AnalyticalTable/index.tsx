@@ -44,6 +44,7 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
+import { useRTL } from './hooks/useRTL';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
@@ -56,6 +57,7 @@ import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
+import debounce from 'lodash.debounce';
 
 export interface TableProps extends CommonProps {
   /**
@@ -246,7 +248,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useDynamicColumnWidths,
     useTableCellStyling,
     useToggleRowExpand,
-    ...tableHooks
+    ...tableHooks,
+    useRTL
   );
 
   const updateTableClientWidth = useCallback(() => {
@@ -257,7 +260,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   useEffect(() => {
     // @ts-ignore
-    const tableWidthObserver = new ResizeObserver(updateTableClientWidth);
+    const tableWidthObserver = new ResizeObserver(debounce(updateTableClientWidth, 500));
     tableWidthObserver.observe(tableRef.current);
     return () => {
       tableWidthObserver.disconnect();
@@ -377,7 +380,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                     // eslint-disable-next-line react/jsx-key
                     <ColumnHeader
                       {...column.getHeaderProps()}
-                      isLastColumn={index === headerGroup.headers.length - 1}
                       onSort={onSort}
                       onGroupBy={onGroupByChanged}
                       onDragStart={handleDragStart}

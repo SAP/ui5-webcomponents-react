@@ -8,7 +8,7 @@ import { InternalProps } from '../../interfaces/InternalProps';
 import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { formatAxisCallback, formatTooltipLabel, useMergedConfig } from '../../util/Utils';
+import { formatAxisCallback, formatTooltipLabel, useMergedConfig } from '../../util/utils_deprecated';
 
 export interface RadarChartPropTypes extends ChartBaseProps {}
 

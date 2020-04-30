@@ -18,25 +18,16 @@ exports[`RadarChart Renders with data 1`] = `
   <div
     class="legend"
   >
-    <li
-      data-datasetindex="0"
-      style="display: flex; align-items: center; margin-right: 24px; cursor:pointer;"
+    <ul
+      class="0-legend"
     >
-      
-
-      <div
-        style="width: 14px; height: 14px; border-radius: 2px; background-color: #0f828f; margin-right: 8px"
-      />
-      
-
-      <ui5-label
-        style="font-size: 12px; user-select: none; cursor:pointer;"
-      >
+      <li>
+        <span
+          style="background-color: rgb(15, 130, 143);"
+        />
         Dataset 1
-      </ui5-label>
-      
-
-    </li>
+      </li>
+    </ul>
   </div>
 </div>
 `;

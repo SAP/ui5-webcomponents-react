@@ -34,7 +34,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -94,7 +94,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -154,7 +154,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -214,11 +214,11 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -263,7 +263,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -333,7 +333,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -400,7 +400,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -443,7 +443,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -478,7 +478,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -513,7 +513,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -558,7 +558,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -618,7 +618,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -678,7 +678,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -738,11 +738,11 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -787,7 +787,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -857,7 +857,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -924,7 +924,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -967,7 +967,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -1002,7 +1002,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -1037,7 +1037,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -1082,7 +1082,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1142,7 +1142,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1202,7 +1202,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1262,11 +1262,11 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -1311,7 +1311,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -1590,7 +1590,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           draggable="false"
           id="__ui5wcr__internal_selection_column"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 47px;"
+          style="position: absolute; top: 0px; left: 0px; width: 47px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1610,7 +1610,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           draggable="false"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 47px; width: 150px;"
+          style="position: absolute; top: 0px; left: 47px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1687,7 +1687,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           draggable="false"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 197px; width: 150px;"
+          style="position: absolute; top: 0px; left: 197px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1764,7 +1764,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           draggable="false"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 347px; width: 150px;"
+          style="position: absolute; top: 0px; left: 347px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1841,11 +1841,11 @@ exports[`AnalyticalTable Tree Table 1`] = `
           draggable="false"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 497px; width: 150px;"
+          style="position: absolute; top: 0px; left: 497px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -1907,7 +1907,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -2004,7 +2004,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 497px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 497px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -2092,7 +2092,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 497px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 497px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -2145,7 +2145,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 497px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 497px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2187,7 +2187,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 497px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 497px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2229,7 +2229,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 497px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 497px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2274,7 +2274,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2334,7 +2334,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2394,7 +2394,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2454,11 +2454,11 @@ exports[`AnalyticalTable custom row height 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -2503,7 +2503,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -2573,7 +2573,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -2640,7 +2640,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -2683,7 +2683,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2718,7 +2718,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2753,7 +2753,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2798,7 +2798,7 @@ exports[`AnalyticalTable render without data 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2858,7 +2858,7 @@ exports[`AnalyticalTable render without data 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2918,7 +2918,7 @@ exports[`AnalyticalTable render without data 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2978,11 +2978,11 @@ exports[`AnalyticalTable render without data 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -3027,7 +3027,7 @@ exports[`AnalyticalTable render without data 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -3079,7 +3079,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3139,7 +3139,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3199,7 +3199,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3259,11 +3259,11 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -3308,7 +3308,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -3378,7 +3378,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -3445,7 +3445,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -3488,7 +3488,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -3523,7 +3523,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -3558,7 +3558,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -3603,7 +3603,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3663,7 +3663,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3723,7 +3723,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3783,11 +3783,11 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -3832,7 +3832,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -3902,7 +3902,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -3969,7 +3969,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -4012,7 +4012,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4047,7 +4047,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4082,7 +4082,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4127,7 +4127,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4187,7 +4187,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4247,7 +4247,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4307,11 +4307,11 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -4356,7 +4356,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -4426,7 +4426,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -4493,7 +4493,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -4536,7 +4536,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4571,7 +4571,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4606,7 +4606,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4651,7 +4651,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4711,7 +4711,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4771,7 +4771,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4831,11 +4831,11 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -4880,7 +4880,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -4950,7 +4950,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -5017,7 +5017,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -5060,7 +5060,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5095,7 +5095,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5130,7 +5130,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5175,7 +5175,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="false"
           id="__ui5wcr__internal_highlight_column"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 6px;"
+          style="position: absolute; top: 0px; left: 0px; width: 6px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5199,7 +5199,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="false"
           id="__ui5wcr__internal_selection_column"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 6px; width: 47px;"
+          style="position: absolute; top: 0px; left: 6px; width: 47px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5219,7 +5219,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 53px; width: 150px;"
+          style="position: absolute; top: 0px; left: 53px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5279,7 +5279,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 203px; width: 150px;"
+          style="position: absolute; top: 0px; left: 203px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5339,7 +5339,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 353px; width: 150px;"
+          style="position: absolute; top: 0px; left: 353px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5399,11 +5399,11 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 503px; width: 150px;"
+          style="position: absolute; top: 0px; left: 503px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -5448,7 +5448,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -5540,7 +5540,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               aria-colindex="6"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 503px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 503px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -5627,7 +5627,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               aria-colindex="6"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 503px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 503px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -5684,7 +5684,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               aria-colindex="6"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 503px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 503px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5733,7 +5733,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               aria-colindex="6"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 503px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 503px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5782,7 +5782,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               aria-colindex="6"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 503px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 503px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5827,7 +5827,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5887,7 +5887,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5947,7 +5947,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -6007,11 +6007,11 @@ exports[`AnalyticalTable without selection Column 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer;"
+            style="cursor: pointer; max-width: calc(100% - 16px);"
           >
             <span
               style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
@@ -6056,7 +6056,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             </ui5-list>
           </ui5-popover>
           <div
-            class="TableColumnHeader-resizer-0 TableColumnHeader-lastColumn-0"
+            class="TableColumnHeader-resizer-0"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -6126,7 +6126,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -6193,7 +6193,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -6236,7 +6236,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -6271,7 +6271,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -6306,7 +6306,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center; box-sizing: border-box;"
+              style="position: absolute; top: 0px; left: 450px; align-items: center;"
               tabindex="-1"
             />
           </div>

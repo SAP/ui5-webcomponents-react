@@ -149,6 +149,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       style={style}
       tooltip={tooltip}
       className={className}
+      onAfterClose={open ? handleOnClose : null}
       header={
         <header className={classes.header} data-type={type}>
           {!!iconToRender && <div className={classes.icon}>{iconToRender}</div>}
