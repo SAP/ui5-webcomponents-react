@@ -1,8 +1,10 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
+import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { ShellBar } from '@ui5/webcomponents-react/lib/ShellBar';
 import { ShellBarItem } from '@ui5/webcomponents-react/lib/ShellBarItem';
 import React from 'react';
+import image from '../../components/ObjectPage/DemoImage.png';
 
 export default {
   title: 'UI5 Web Components / ShellBar',
@@ -22,7 +24,7 @@ export const generatedDefaultStory = () => (
     showNotifications={boolean('showNotifications', true)}
     showProductSwitch={boolean('showProductSwitch', true)}
     menuItems={null}
-    profile={null}
+    profile={<Avatar image={image} />}
     searchField={null}
     startButton={null}
     onCoPilotClick={action('onCoPilotClick')}
