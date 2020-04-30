@@ -240,7 +240,7 @@ Carousel:
     * `height`: Has been removed.
     * `showPageIndicator`: Has been removed. _To hide the navigation-bar use `hideNavigation`._
     * `pageIndicatorPlacement`: Has been removed.
-    * `loop`: Has been replaced by `cycling`.
+    * `loop`: Has been replaced by `cyclic`.
     * `activePage`: Has been replaced by `selectedIndex`.
     
 MessageToast:
