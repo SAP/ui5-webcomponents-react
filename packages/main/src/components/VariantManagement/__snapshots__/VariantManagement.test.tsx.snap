@@ -39,6 +39,7 @@ exports[`VariantManagement Render without crashing - disabled 1`] = `
     >
       <ui5-li
         data-key="1"
+        info-state="None"
         selected="true"
         style="width: 300px;"
         type="Active"
@@ -47,6 +48,7 @@ exports[`VariantManagement Render without crashing - disabled 1`] = `
       </ui5-li>
       <ui5-li
         data-key="2"
+        info-state="None"
         style="width: 300px;"
         type="Active"
       >
@@ -95,6 +97,7 @@ exports[`VariantManagement Render without crashing 1`] = `
     >
       <ui5-li
         data-key="1"
+        info-state="None"
         selected="true"
         style="width: 300px;"
         type="Active"
@@ -103,6 +106,7 @@ exports[`VariantManagement Render without crashing 1`] = `
       </ui5-li>
       <ui5-li
         data-key="2"
+        info-state="None"
         style="width: 300px;"
         type="Active"
       >
@@ -156,6 +160,7 @@ exports[`VariantManagement With suggestions 1`] = `
         actionable=""
         data-key="1"
         has-title=""
+        info-state="None"
         style="width: 300px;"
         type="Active"
       >
@@ -165,6 +170,7 @@ exports[`VariantManagement With suggestions 1`] = `
         actionable=""
         data-key="2"
         has-title=""
+        info-state="None"
         selected="true"
         style="width: 300px;"
         type="Active"

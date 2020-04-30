@@ -20,7 +20,7 @@ export const generatedDefaultStory = () => (
     noDataDescription={text('noDataDescription', '')}
     noDataText={text('noDataText', '')}
     noDnd={boolean('noDnd', false)}
-    header={<Title>Attatchments</Title>}
+    header={<Title>Attachments</Title>}
     onFileDeleted={action('onFileDeleted')}
     onSelectionChange={action('onSelectionChange')}
     style={{ height: '20rem' }}
