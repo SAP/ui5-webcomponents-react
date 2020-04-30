@@ -1,12 +1,10 @@
-//todo add links to components
 # Migration Guide
 
 ## Migrating from 0.8.X to 0.9.0
-Migrating your app from 0.8.X to 0.9.0 requires a few updates to the API properties,
-//todo
+Migrating your app from 0.8.X to 0.9.0 requires a few updates to the API properties, this includes dependencies, theming, event handling and prop changes.
 
 ### Breaking changes
-For a complete list of breaking changes from 0.8.X to 0.9.0, please refer to //todo
+For a complete list of breaking changes from 0.8.X to 0.9.0, please refer to [the list of releases](https://github.com/SAP/ui5-webcomponents-react/releases) or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CHANGELOG.md).
 
 ## Dependencies
 The dependencies `@ui5/webcomponents`, `@ui5/webcomponents-fiori` and `@ui5/webcomponents-icons` are now  `peerDependencies` and have to be installed next to `@ui5/webcomponents-react`.
@@ -53,8 +51,7 @@ import '@ui5/webcomponents-fiori/dist/generated/json-imports/Themes'; // only if
 import '@ui5/webcomponents-react/lib/ThemingSupport';
 ```
 
-In addition to call `setTheme` with a string parameter of the new theme, you must pass the new `theme` as a prop into the `ThemeProvider` component.
-Passing the prop is a temporary solution until the UI5 Web Components are providing [all Theming Parameters](https://github.com/SAP/ui5-webcomponents/issues/1396).<br />
+Now you can call `setTheme` with a string parameter of the new theme.  
 Available Themes:
 - `sap_fiori_3` (default)
 - `sap_fiori_dark`
