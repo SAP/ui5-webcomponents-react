@@ -8,7 +8,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
   /**
    * Holds <code>File</code>, associated with this item.
    */
-  file?: unknown;
+  file?: File;
   /**
    * The name of the file.
    */

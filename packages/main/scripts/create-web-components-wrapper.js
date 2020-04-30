@@ -135,7 +135,6 @@ const getTypeScriptTypeForProperty = (property) => {
         tsType: 'boolean'
       };
     case 'Array':
-    case 'FileList':
       return {
         importStatement: null,
         tsType: 'unknown[]'
@@ -143,9 +142,16 @@ const getTypeScriptTypeForProperty = (property) => {
     case 'File': {
       return {
         importStatement: null,
-        tsType: 'unknown'
+        tsType: 'File'
       };
     }
+    case 'FileList': {
+      return {
+        importStatement: null,
+        tsType: 'FileList'
+      };
+    }
+
     // react ts types
     case 'Node[]':
     case 'HTMLElement[]':
