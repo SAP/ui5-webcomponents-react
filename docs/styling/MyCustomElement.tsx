@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
@@ -13,7 +13,7 @@ const styles = {
   }
 };
 
-const useStyles = createComponentStyles(styles);
+const useStyles = createUseStyles(styles);
 
 export const MyCustomElement = () => {
   const classes = useStyles();

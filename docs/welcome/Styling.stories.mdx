@@ -33,13 +33,16 @@ All globally available style classes are tracked in the `GlobalStyleClasses` enu
 
 ## Style your own components
 It's quite likely that you have to create some custom components when you are building an app.
-In order to reuse our central styling approach, you can import the `ThemingParameters` that contain the various CSS variables used in our theming. If you want to style your components with the `react-jss` syntax, you can use our custom `jss` styling hook.
+In order to reuse our central styling approach, you can import the `ThemingParameters` that contain the various CSS variables used in our theming. 
+If you want to style your components with the `react-jss` syntax, you can use our custom `jss` styling hook.
 
+`react-jss` comes already as a dependency of `@ui5/webcomponents-react` to your project - but we recommend adding it to your `package.json` as well.
+**Please make sure you are installing `"react-jss": "^10.0.0"`**. Previous versions of this library won't work correctly together with our library.
 
 You can then create a custom component by following this recipe:
 ```jsx
 import React from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
@@ -53,7 +56,7 @@ const styles = {
   }
 };
 
-const useStyles = createComponentStyles(styles);
+const useStyles = createUseStyles(styles);
 
 const MyCustomElement = () => {
   const classes = useStyles();
