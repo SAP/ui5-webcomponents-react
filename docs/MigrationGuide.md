@@ -66,7 +66,7 @@ const App = () => {
     setTheme(Themes.sap_fiori_3_dark);
   }, []);
   return (
-    <ThemeProvider theme={Themes.sap_fiori_3_dark}>
+    <ThemeProvider>
       <ShellBar />
       <Page showHeader={false}>
         <Text>Some Content</Text>
