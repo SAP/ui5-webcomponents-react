@@ -1,8 +1,9 @@
-import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/BusyIndicator';
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
+import { ReactNode } from 'react';
 
 export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
   /**
@@ -13,6 +14,10 @@ export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
    * Defines the size of the <code>ui5-busyindicator</code>. <br><br> <b>Note:</b> Available options are "Small", "Medium", and "Large".
    */
   size?: BusyIndicatorSize;
+  /**
+   * Defines text to be displayed below the busy indicator. It can be used to inform the user of the current operation.
+   */
+  text?: string;
   /**
    * Determines the content over which the <code>ui5-busyindicator</code> will appear.
    */
@@ -26,7 +31,7 @@ export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
  */
 const BusyIndicator: FC<BusyIndicatorPropTypes> = withWebComponent<BusyIndicatorPropTypes>(
   'ui5-busyindicator',
-  ['size'],
+  ['size', 'text'],
   ['active'],
   [],
   []
@@ -36,7 +41,8 @@ BusyIndicator.displayName = 'BusyIndicator';
 
 BusyIndicator.defaultProps = {
   active: false,
-  size: BusyIndicatorSize.Medium
+  size: BusyIndicatorSize.Medium,
+  text: ''
 };
 
 export { BusyIndicator };
