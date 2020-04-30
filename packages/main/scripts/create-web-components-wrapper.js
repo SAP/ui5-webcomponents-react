@@ -57,6 +57,7 @@ TagNames.set('ComboBox', 'ui5-combobox');
 TagNames.set('ComboBoxItem', 'ui5-cb-item');
 TagNames.set('CustomListItem', 'ui5-li-custom');
 TagNames.set('DatePicker', 'ui5-datepicker');
+TagNames.set('DateTimePicker', 'ui5-datetime-picker');
 TagNames.set('Dialog', 'ui5-dialog');
 TagNames.set('FileUploader', 'ui5-file-uploader');
 TagNames.set('GroupHeaderListItem', 'ui5-li-groupheader');
