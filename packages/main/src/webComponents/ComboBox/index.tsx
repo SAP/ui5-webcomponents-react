@@ -75,6 +75,7 @@ ComboBox.defaultProps = {
   disabled: false,
   filter: 'StartsWithPerTerm',
   filterValue: '',
+  loading: false,
   placeholder: '',
   readonly: false,
   required: false,
