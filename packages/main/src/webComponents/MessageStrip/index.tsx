@@ -6,11 +6,6 @@ import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface MessageStripPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the content to be displayed as graphical element within the <code>ui5-messagestrip</code>. <br><br> <b>Note:</b> If no icon is given, the default icon for the <code>ui5-messagestrip</code> type will be used. The SAP-icons font provides numerous options. <br><br>
-   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
-   */
-  icon?: ReactNode;
-  /**
    * Defines whether the MessageStrip renders close icon.
    */
   noCloseButton?: boolean;
@@ -26,6 +21,11 @@ export interface MessageStripPropTypes extends WithWebComponentPropTypes {
    * Defines the text of the <code>ui5-messagestrip</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Defines the content to be displayed as graphical element within the <code>ui5-messagestrip</code>. <br><br> <b>Note:</b> If no icon is given, the default icon for the <code>ui5-messagestrip</code> type will be used. The SAP-icons font provides numerous options. <br><br>
+   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   */
+  icon?: ReactNode;
   /**
    * Fired when the close button is pressed either with a click/tap or by using the Enter or Space key.
    */
@@ -48,7 +48,6 @@ const MessageStrip: FC<MessageStripPropTypes> = withWebComponent<MessageStripPro
 MessageStrip.displayName = 'MessageStrip';
 
 MessageStrip.defaultProps = {
-  icon: null,
   noCloseButton: false,
   noIcon: false,
   type: MessageStripType.Information
