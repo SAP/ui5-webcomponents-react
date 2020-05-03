@@ -17,7 +17,6 @@ exports[`Create a Form accepts both label and labelText 1`] = `
         >
           <ui5-label
             class="FormItem-label-0"
-            for=""
             style="width: 33%; justify-content: flex-end;"
           >
             item 1:
@@ -27,8 +26,6 @@ exports[`Create a Form accepts both label and labelText 1`] = `
             style="width: 66%;"
           >
             <ui5-input
-              name=""
-              placeholder=""
               type="Text"
               value=""
               value-state="None"
@@ -45,7 +42,6 @@ exports[`Create a Form accepts both label and labelText 1`] = `
         >
           <ui5-label
             class="FormItem-label-0"
-            for=""
             style="width: 33%; justify-content: flex-end;"
           >
             Label Text:
@@ -55,8 +51,6 @@ exports[`Create a Form accepts both label and labelText 1`] = `
             style="width: 66%;"
           >
             <ui5-input
-              name=""
-              placeholder=""
               type="Number"
               value=""
               value-state="None"
@@ -73,7 +67,6 @@ exports[`Create a Form accepts both label and labelText 1`] = `
         >
           <ui5-label
             class="FormItem-label-0"
-            for=""
             required="true"
             style="width: 33%; justify-content: flex-end;"
           >
@@ -84,8 +77,6 @@ exports[`Create a Form accepts both label and labelText 1`] = `
             style="width: 66%;"
           >
             <ui5-input
-              name=""
-              placeholder=""
               type="Number"
               value=""
               value-state="None"
@@ -122,7 +113,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -132,8 +122,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
                 value=""
                 value-state="None"
@@ -150,7 +138,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -160,8 +147,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
                 value=""
                 value-state="None"
@@ -199,7 +184,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -209,8 +193,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
                 value=""
                 value-state="None"
@@ -227,7 +209,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -237,8 +218,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
                 value=""
                 value-state="None"
@@ -282,7 +261,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -292,8 +270,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
                 value=""
                 value-state="None"
@@ -310,7 +286,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -320,8 +295,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
                 value=""
                 value-state="None"
@@ -350,7 +323,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -360,8 +332,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
                 value=""
                 value-state="None"
@@ -378,7 +348,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -388,8 +357,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
                 value=""
                 value-state="None"
@@ -433,7 +400,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 16%; justify-content: flex-end;"
             >
               item 1:
@@ -443,8 +409,6 @@ Array [
               style="width: 83%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
                 value=""
                 value-state="None"
@@ -461,7 +425,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 16%; justify-content: flex-end;"
             >
               item 2:
@@ -471,8 +434,6 @@ Array [
               style="width: 83%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
                 value=""
                 value-state="None"
@@ -501,7 +462,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 16%; justify-content: flex-end;"
             >
               item 1:
@@ -511,8 +471,6 @@ Array [
               style="width: 83%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
                 value=""
                 value-state="None"
@@ -529,7 +487,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 16%; justify-content: flex-end;"
             >
               item 2:
@@ -539,8 +496,6 @@ Array [
               style="width: 83%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
                 value=""
                 value-state="None"
@@ -584,7 +539,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 100%; justify-content: flex-start;"
             >
               item 1:
@@ -594,8 +548,6 @@ Array [
               style="width: 100%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
                 value=""
                 value-state="None"
@@ -612,7 +564,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 100%; justify-content: flex-start;"
             >
               item 2:
@@ -622,8 +573,6 @@ Array [
               style="width: 100%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
                 value=""
                 value-state="None"
@@ -652,7 +601,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 100%; justify-content: flex-start;"
             >
               item 1:
@@ -662,8 +610,6 @@ Array [
               style="width: 100%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
                 value=""
                 value-state="None"
@@ -680,7 +626,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 100%; justify-content: flex-start;"
             >
               item 2:
@@ -690,8 +635,6 @@ Array [
               style="width: 100%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
                 value=""
                 value-state="None"
@@ -735,7 +678,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -745,8 +687,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
                 value=""
                 value-state="None"
@@ -763,7 +703,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -773,8 +712,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
                 value=""
                 value-state="None"
@@ -803,7 +740,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -813,8 +749,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
                 value=""
                 value-state="None"
@@ -831,7 +765,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -841,8 +774,6 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
                 value=""
                 value-state="None"

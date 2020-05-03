@@ -3,7 +3,5 @@
 exports[`UploadCollection Basic Test (generated) 1`] = `
 <ui5-upload-collection
   mode="None"
-  no-data-description=""
-  no-data-text=""
 />
 `;

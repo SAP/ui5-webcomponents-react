@@ -2,10 +2,6 @@
 
 exports[`DateTimePicker Basic Test (generated) 1`] = `
 <ui5-datetime-picker
-  format-pattern=""
-  max-date=""
-  min-date=""
-  name=""
   primary-calendar-type="Gregorian"
   value=""
   value-state="None"

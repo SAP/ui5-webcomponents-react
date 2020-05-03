@@ -47,7 +47,12 @@ export const withWebComponent = <T extends {}>(
     // regular props (no booleans, no slots and no events)
     const regularProps = useMemo(
       () => {
-        return regularProperties.reduce((acc, val) => ({ ...acc, [toKebabCase(val)]: rest[val] }), {});
+        return regularProperties.reduce((acc, val) => {
+          if (!!rest[val] || typeof rest[val] !== 'string' || val === 'value') {
+            return { ...acc, [toKebabCase(val)]: rest[val] };
+          }
+          return acc;
+        }, {});
       },
       regularProperties.map((name) => rest[name])
     );
