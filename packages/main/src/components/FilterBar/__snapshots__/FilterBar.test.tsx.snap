@@ -44,6 +44,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
         >
           <ui5-li
             data-key="1"
+            info-state="None"
             selected="true"
             style="width: 300px;"
             type="Active"
@@ -52,6 +53,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
           </ui5-li>
           <ui5-li
             data-key="2"
+            info-state="None"
             style="width: 300px;"
             type="Active"
           >
@@ -141,6 +143,7 @@ exports[`FilterBar Hide Filter Bar 1`] = `
             active="true"
             size="Medium"
             style="background-color: transparent; width: 80px;"
+            text=""
           />
         </div>
       </div>
@@ -193,6 +196,7 @@ exports[`FilterBar Render without crashing 1`] = `
         >
           <ui5-li
             data-key="1"
+            info-state="None"
             selected="true"
             style="width: 300px;"
             type="Active"
@@ -201,6 +205,7 @@ exports[`FilterBar Render without crashing 1`] = `
           </ui5-li>
           <ui5-li
             data-key="2"
+            info-state="None"
             style="width: 300px;"
             type="Active"
           >
@@ -333,6 +338,7 @@ exports[`FilterBar Select Filter Item 1`] = `
         >
           <ui5-li
             data-key="1"
+            info-state="None"
             selected="true"
             style="width: 300px;"
             type="Active"
@@ -341,6 +347,7 @@ exports[`FilterBar Select Filter Item 1`] = `
           </ui5-li>
           <ui5-li
             data-key="2"
+            info-state="None"
             style="width: 300px;"
             type="Active"
           >
@@ -410,6 +417,7 @@ exports[`FilterBar Select Filter Item 1`] = `
             active="true"
             size="Medium"
             style="background-color: transparent; width: 80px;"
+            text=""
           />
         </div>
       </div>
@@ -453,12 +461,14 @@ exports[`FilterBar Select Filter Item 1`] = `
         >
           <ui5-li
             data-key="1"
+            info-state="None"
             type="Active"
           >
             Text 1
           </ui5-li>
           <ui5-li
             data-key="2"
+            info-state="None"
             type="Active"
           >
             Text 2

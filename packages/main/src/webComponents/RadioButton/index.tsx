@@ -68,6 +68,7 @@ RadioButton.defaultProps = {
   readonly: false,
   selected: false,
   text: '',
+  value: '',
   valueState: ValueState.None,
   wrap: false
 };

@@ -9,7 +9,6 @@ import '@ui5/webcomponents-react/json-imports/i18n';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { Themes } from '@ui5/webcomponents-react/lib/Themes';
-import '@ui5/webcomponents-react/lib/ThemingSupport';
 import '@ui5/webcomponents-theme-base/dist/Assets';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import '@ui5/webcomponents/dist/generated/json-imports/i18n';
@@ -47,7 +46,7 @@ const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
     setTheme(theme);
   }, [theme]);
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return <ThemeProvider>{children}</ThemeProvider>;
 };
 
 const withQuery = makeDecorator({

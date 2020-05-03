@@ -2,6 +2,7 @@
 
 exports[`FileUploader Basic Test (generated) 1`] = `
 <ui5-file-uploader
+  accept=""
   name=""
   placeholder=""
   value=""

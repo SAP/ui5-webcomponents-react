@@ -20,6 +20,7 @@ export const generatedDefaultStory = () => (
     initials={text('initials', '')}
     shape={select('shape', AvatarShape, AvatarShape.Circle)}
     size={select('size', AvatarSize, AvatarSize.S)}
+    accessibleName={text('accessibleName', '')}
   />
 );
 

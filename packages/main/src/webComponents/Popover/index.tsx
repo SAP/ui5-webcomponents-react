@@ -86,6 +86,7 @@ Popover.displayName = 'Popover';
 
 Popover.defaultProps = {
   allowTargetOverlap: false,
+  headerText: '',
   horizontalAlign: PopoverHorizontalAlign.Center,
   initialFocus: '',
   modal: false,

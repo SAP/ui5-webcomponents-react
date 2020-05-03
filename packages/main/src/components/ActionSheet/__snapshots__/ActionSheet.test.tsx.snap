@@ -3,6 +3,7 @@
 exports[`ActionSheet Render without Crashing 1`] = `
 <ui5-responsive-popover
   class="ActionSheet-actionSheet-0 myCustomClass"
+  header-text=""
   horizontal-align="Center"
   initial-focus=""
   placement-type="Right"
@@ -35,6 +36,7 @@ exports[`ActionSheet Render without Crashing 1`] = `
 exports[`ActionSheet does not crash with other component 1`] = `
 <ui5-responsive-popover
   class="ActionSheet-actionSheet-0"
+  header-text=""
   horizontal-align="Center"
   initial-focus=""
   placement-type="Right"

@@ -3,5 +3,7 @@
 exports[`ShellBarItem Basic Test (generated) 1`] = `
 <ui5-shellbar-item
   count=""
+  icon=""
+  text=""
 />
 `;

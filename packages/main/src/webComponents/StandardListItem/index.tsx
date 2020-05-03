@@ -31,11 +31,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
    */
   infoState?: ValueState;
   /**
-   * Defines the visual indication and behavior of the list items.
-   * Available options are <code>Active</code> (by default), <code>Inactive</code> and <code>Detail</code>.
-   * <br><br>
-   * <b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press and hover,
-   * while with type <code>Inactive</code> and <code>Detail</code> - will not.
+   * Defines the visual indication and behavior of the list items. Available options are <code>Active</code> (by default), <code>Inactive</code> and <code>Detail</code>. <br><br> <b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press and hover, while with type <code>Inactive</code> and <code>Detail</code> - will not.
    */
   type?: ListItemTypes;
   /**
@@ -65,8 +61,9 @@ StandardListItem.displayName = 'StandardListItem';
 
 StandardListItem.defaultProps = {
   iconEnd: false,
-  selected: false,
-  type: ListItemTypes.Active
+  infoState: ValueState.None,
+  type: ListItemTypes.Active,
+  selected: false
 };
 
 export { StandardListItem };

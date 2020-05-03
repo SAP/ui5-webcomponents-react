@@ -14,6 +14,10 @@ export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
    */
   size?: BusyIndicatorSize;
   /**
+   * Defines text to be displayed below the busy indicator. It can be used to inform the user of the current operation.
+   */
+  text?: string;
+  /**
    * Determines the content over which the <code>ui5-busyindicator</code> will appear.
    */
   children?: ReactNode | ReactNode[];
@@ -26,7 +30,7 @@ export interface BusyIndicatorPropTypes extends WithWebComponentPropTypes {
  */
 const BusyIndicator: FC<BusyIndicatorPropTypes> = withWebComponent<BusyIndicatorPropTypes>(
   'ui5-busyindicator',
-  ['size'],
+  ['size', 'text'],
   ['active'],
   [],
   []
@@ -36,7 +40,8 @@ BusyIndicator.displayName = 'BusyIndicator';
 
 BusyIndicator.defaultProps = {
   active: false,
-  size: BusyIndicatorSize.Medium
+  size: BusyIndicatorSize.Medium,
+  text: ''
 };
 
 export { BusyIndicator };

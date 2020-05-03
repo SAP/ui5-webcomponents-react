@@ -1,20 +1,21 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
-const styles = ({ parameters }) => ({
+const styles = {
   container: {
-    backgroundColor: parameters.sapBackgroundColor,
-    fontFamily: parameters.sapFontFamily,
+    backgroundColor: ThemingParameters.sapBackgroundColor,
+    fontFamily: ThemingParameters.sapFontFamily,
     height: '50px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   },
   text: {
-    color: parameters.sapNegativeTextColor,
-    fontSize: parameters.sapFontLargeSize
+    color: ThemingParameters.sapNegativeTextColor,
+    fontSize: ThemingParameters.sapFontLargeSize
   }
-});
+};
 
 const useStyles = createUseStyles(styles);
 
