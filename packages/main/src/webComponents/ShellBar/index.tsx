@@ -94,10 +94,6 @@ const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(
 ShellBar.displayName = 'ShellBar';
 
 ShellBar.defaultProps = {
-  logo: '',
-  notificationCount: '',
-  primaryTitle: '',
-  secondaryTitle: '',
   showCoPilot: false,
   showNotifications: false,
   showProductSwitch: false

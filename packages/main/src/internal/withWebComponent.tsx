@@ -48,7 +48,7 @@ export const withWebComponent = <T extends {}>(
     const regularProps = useMemo(
       () => {
         return regularProperties.reduce((acc, val) => {
-          if (!!rest[val] || typeof rest[val] !== 'string' || val === 'value') {
+          if (rest.hasOwnProperty(val)) {
             return { ...acc, [toKebabCase(val)]: rest[val] };
           }
           return acc;

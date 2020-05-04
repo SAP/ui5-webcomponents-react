@@ -56,8 +56,6 @@ UploadCollection.displayName = 'UploadCollection';
 
 UploadCollection.defaultProps = {
   mode: ListMode.None,
-  noDataDescription: '',
-  noDataText: '',
   noDnd: false
 };
 

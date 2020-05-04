@@ -50,10 +50,7 @@ const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>(
 Card.displayName = 'Card';
 
 Card.defaultProps = {
-  headerInteractive: false,
-  heading: '',
-  status: '',
-  subheading: ''
+  headerInteractive: false
 };
 
 export { Card };

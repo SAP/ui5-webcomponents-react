@@ -17,9 +17,9 @@ export interface AvatarPropTypes extends WithWebComponentPropTypes {
    */
   backgroundColor?: AvatarBackgroundColor;
   /**
-   * Defines the name of the UI5 Icon, that would be displayed. <br> <b>Note:</b> If <code>image</code> is set, the property would be ignored. <br> <b>Note:</b> You should import the desired icon first, then use its name as "icon". <br><br> import "@ui5/webcomponents-icons/dist/icons/{icon_name}.js" <br> <pre>&lt;ui5-avatar icon-src="employee"></pre>
-
-   See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * Defines the name of the UI5 Icon, that would be displayed. <br> <b>Note:</b> If <code>image</code> is set, the property would be ignored. <br> <b>Note:</b> You should import the desired icon first, then use its name as "icon". <br><br> import "@ui5/webcomponents-icons/dist/icons/{icon_name}.js" <br> <pre>&lt;ui5-avatar icon-src="employee"></pre><br/><br/>
+   *
+   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -60,12 +60,8 @@ const Avatar: FC<AvatarPropTypes> = withWebComponent<AvatarPropTypes>(
 Avatar.displayName = 'Avatar';
 
 Avatar.defaultProps = {
-  accessibleName: '',
   backgroundColor: AvatarBackgroundColor.Accent6,
-  icon: '',
-  image: '',
   imageFitType: AvatarFitType.Cover,
-  initials: '',
   shape: AvatarShape.Circle,
   size: AvatarSize.S
 };

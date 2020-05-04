@@ -39,8 +39,7 @@ TableColumn.displayName = 'TableColumn';
 
 TableColumn.defaultProps = {
   demandPopin: false,
-  minWidth: Infinity,
-  popinText: ''
+  minWidth: Infinity
 };
 
 export { TableColumn };

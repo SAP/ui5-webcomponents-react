@@ -57,8 +57,7 @@ SuggestionItem.displayName = 'SuggestionItem';
 SuggestionItem.defaultProps = {
   group: false,
   iconEnd: false,
-  infoState: ValueState.None,
-  text: ''
+  infoState: ValueState.None
 };
 
 export { SuggestionItem };
