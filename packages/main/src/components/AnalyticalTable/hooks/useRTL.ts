@@ -8,7 +8,7 @@ const visibleColumns = (currentVisibleColumns) => {
   return currentVisibleColumns;
 };
 const getHeaderProps = (props, { column, instance }) => {
-  if (!instance.webComponentsReactProperties.tableContentIsScrollable) {
+  if (!instance.state.isScrollable) {
     return props;
   }
   const isRTL = getRTL();
@@ -26,7 +26,7 @@ const getHeaderProps = (props, { column, instance }) => {
 };
 
 const getCellProps = (props, { cell, instance }) => {
-  if (!instance.webComponentsReactProperties.tableContentIsScrollable) {
+  if (!instance.state.isScrollable) {
     return props;
   }
   const isRTL = getRTL();

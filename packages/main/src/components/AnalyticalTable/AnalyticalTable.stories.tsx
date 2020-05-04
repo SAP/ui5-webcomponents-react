@@ -8,7 +8,7 @@ import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionM
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import React from 'react';
-import generateData from './generateData';
+import generateData from './demo/generateData';
 
 const columns = [
   {

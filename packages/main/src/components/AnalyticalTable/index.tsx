@@ -192,11 +192,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return props.data;
   }, [props.data, minRows]);
 
-  const rowCount = props.data.length;
-  const visibleRowCount = minRows >= visibleRows ? minRows : visibleRows;
-  const tableContentIsScrollable = rowCount > visibleRowCount;
-  console.log(visibleRowCount, tableContentIsScrollable);
-
   const {
     getTableProps,
     headerGroups,
@@ -231,8 +226,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         scaleWidthMode,
         loading,
         withRowHighlight,
-        highlightField,
-        tableContentIsScrollable
+        highlightField
       },
       ...reactTableOptions
     },
@@ -257,6 +251,12 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     ...tableHooks,
     useRTL
   );
+
+  // scroll bar detection
+  useEffect(() => {
+    const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
+    dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: data.length > visibleRowCount } });
+  }, [rows.length, minRows, visibleRows]);
 
   const updateTableClientWidth = useCallback(() => {
     if (tableRef.current) {
