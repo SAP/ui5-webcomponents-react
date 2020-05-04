@@ -8,7 +8,7 @@
     "start": "lerna run build:i18n && start-storybook -p 6006 -c .storybook",
     "build": "yarn clean && lerna run build --stream && node ./scripts/rollup/build.js",
     "build:storybook": "build-storybook -c .storybook -o .out",
-    "pretest": "node scripts/test/clean.js",
+    "pretest": "node scripts/test/clean.js && lerna run build:i18n",
     "test": "jest --config=config/jest.config.js --coverage",
     "clean": "lerna run clean --stream && rimraf coverage",
     "postversion": "node ./scripts/postversion/index.js",
@@ -31,7 +31,7 @@
     "react-docgen-typescript-loader": "3.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.0",
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@rollup/plugin-json": "^4.0.2",
@@ -63,7 +63,7 @@
     "google-closure-compiler": "^20200406.0.0",
     "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^25.3.0",
+    "jest": "^25.5.4",
     "jest-canvas-mock": "^2.2.0",
     "jest-environment-jsdom-sixteen": "^1.0.2",
     "jest-enzyme": "^7.1.2",
