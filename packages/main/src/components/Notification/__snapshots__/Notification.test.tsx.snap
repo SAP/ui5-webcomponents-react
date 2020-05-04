@@ -54,7 +54,7 @@ exports[`Notification Default 1`] = `
           <ui5-button
             design="Transparent"
           >
-            Show More
+            Show more
           </ui5-button>
         </div>
       </div>
@@ -122,7 +122,7 @@ exports[`Notification Long Title and Description 1`] = `
           <ui5-button
             design="Transparent"
           >
-            Show More
+            Show more
           </ui5-button>
         </div>
       </div>
@@ -190,7 +190,7 @@ exports[`Notification Long Title and Description w/o truncation 1`] = `
           <ui5-button
             design="Transparent"
           >
-            Show Less
+            Show less
           </ui5-button>
         </div>
       </div>
@@ -286,7 +286,7 @@ exports[`Notification w/ Props 1`] = `
           <ui5-button
             design="Transparent"
           >
-            Show More
+            Show more
           </ui5-button>
           <ui5-button
             design="Default"
@@ -371,7 +371,7 @@ exports[`Notification w/ custom Avatar 1`] = `
           <ui5-button
             design="Transparent"
           >
-            Show More
+            Show more
           </ui5-button>
         </div>
       </div>
