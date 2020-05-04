@@ -15,6 +15,8 @@ export const stateReducer = (newState, action) => {
       return { ...newState, selectedRowIds: action.selectedIds };
     case 'TABLE_RESIZE':
       return { ...newState, tableClientWidth: payload.tableClientWidth };
+    case 'TABLE_SCROLLING_ENABLED':
+      return { ...newState, isScrollable: payload.isScrollable };
     default:
       return newState;
   }

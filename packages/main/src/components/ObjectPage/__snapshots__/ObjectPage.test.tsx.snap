@@ -16,7 +16,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
     >
       <ui5-button
         design="Default"
-        icon=""
       >
         Action
       </ui5-button>
@@ -41,7 +40,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             </ui5-title>
             <ui5-label
               class="ObjectPage-subTitle-0"
-              for=""
             >
               Sub Title
             </ui5-label>
@@ -65,7 +63,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
         <ui5-link
           design="Default"
           href="https://www.sap.com"
-          target=""
         >
           www.myurl.com
         </ui5-link>
@@ -100,43 +97,33 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       tabs-placement="Top"
     >
       <ui5-tab
-        additional-text=""
         data-index="0"
         data-section-id="1"
-        icon=""
         selected="true"
         semantic-color="Default"
         text="Test 1"
       />
       <ui5-tab
-        additional-text=""
         data-index="1"
         data-section-id="2"
-        icon=""
         semantic-color="Default"
         text="Test 2"
       />
       <ui5-tab
-        additional-text=""
         data-index="2"
         data-section-id="3"
-        icon=""
         semantic-color="Default"
         text="Test 3"
       />
       <ui5-tab
-        additional-text=""
         data-index="3"
         data-section-id="4"
-        icon=""
         semantic-color="Default"
         text="Test 4"
       />
       <ui5-tab
-        additional-text=""
         data-index="4"
         data-section-id="5"
-        icon=""
         semantic-color="Default"
         text="Test 5"
       />
@@ -148,18 +135,13 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       icon="slim-arrow-down"
     />
     <ui5-popover
-      header-text=""
       horizontal-align="Center"
-      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-list
-        footer-text=""
-        header-text=""
         mode="None"
-        no-data-text=""
         separators="All"
       />
     </ui5-popover>
@@ -185,9 +167,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       <div
         class="ObjectPageSection-sectionContentInner-0"
       >
-        <ui5-label
-          for=""
-        >
+        <ui5-label>
           My Content 1
         </ui5-label>
       </div>
@@ -228,7 +208,6 @@ exports[`ObjectPage Just Some Sections 1`] = `
             />
             <ui5-label
               class="ObjectPage-subTitle-0"
-              for=""
             />
             <div
               class="ObjectPage-keyInfos-0"
@@ -254,36 +233,27 @@ exports[`ObjectPage Just Some Sections 1`] = `
       tabs-placement="Top"
     >
       <ui5-tab
-        additional-text=""
         data-index="0"
         data-section-id="1"
-        icon=""
         selected="true"
         semantic-color="Default"
         text=""
       />
       <ui5-tab
-        additional-text=""
         data-index="1"
         data-section-id="2"
-        icon=""
         semantic-color="Default"
         text=""
       />
     </ui5-tabcontainer>
     <ui5-popover
-      header-text=""
       horizontal-align="Center"
-      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-list
-        footer-text=""
-        header-text=""
         mode="None"
-        no-data-text=""
         separators="All"
       />
     </ui5-popover>
@@ -341,12 +311,10 @@ exports[`ObjectPage Key Infos 1`] = `
             <ui5-link
               design="Default"
               href="PathSegment1"
-              target=""
             >
               Path1
             </ui5-link>
             <ui5-label
-              for=""
               style="margin: 0px 0.25rem;"
             >
               /
@@ -354,12 +322,10 @@ exports[`ObjectPage Key Infos 1`] = `
             <ui5-link
               design="Default"
               href="PathSegment2"
-              target=""
             >
               Path2
             </ui5-link>
             <ui5-label
-              for=""
               style="margin: 0px 0.25rem;"
             >
               /
@@ -367,7 +333,6 @@ exports[`ObjectPage Key Infos 1`] = `
             <ui5-link
               design="Default"
               href="PathSegment3"
-              target=""
             />
           </div>
           <div
@@ -379,7 +344,6 @@ exports[`ObjectPage Key Infos 1`] = `
             />
             <ui5-label
               class="ObjectPage-subTitle-0"
-              for=""
             />
             <div
               class="ObjectPage-keyInfos-0"
@@ -442,36 +406,27 @@ exports[`ObjectPage Key Infos 1`] = `
       tabs-placement="Top"
     >
       <ui5-tab
-        additional-text=""
         data-index="0"
         data-section-id="1"
-        icon=""
         selected="true"
         semantic-color="Default"
         text=""
       />
       <ui5-tab
-        additional-text=""
         data-index="1"
         data-section-id="2"
-        icon=""
         semantic-color="Default"
         text=""
       />
     </ui5-tabcontainer>
     <ui5-popover
-      header-text=""
       horizontal-align="Center"
-      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-list
-        footer-text=""
-        header-text=""
         mode="None"
-        no-data-text=""
         separators="All"
       />
     </ui5-popover>
@@ -557,7 +512,6 @@ exports[`ObjectPage No Header 1`] = `
             />
             <ui5-label
               class="ObjectPage-subTitle-0"
-              for=""
             />
             <div
               class="ObjectPage-keyInfos-0"
@@ -583,36 +537,27 @@ exports[`ObjectPage No Header 1`] = `
       tabs-placement="Top"
     >
       <ui5-tab
-        additional-text=""
         data-index="0"
         data-section-id="1"
-        icon=""
         semantic-color="Default"
         text=""
       />
       <ui5-tab
-        additional-text=""
         data-index="1"
         data-section-id="2"
-        icon=""
         selected="true"
         semantic-color="Default"
         text=""
       />
     </ui5-tabcontainer>
     <ui5-popover
-      header-text=""
       horizontal-align="Center"
-      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-list
-        footer-text=""
-        header-text=""
         mode="None"
-        no-data-text=""
         separators="All"
       />
     </ui5-popover>
@@ -698,7 +643,6 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
             />
             <ui5-label
               class="ObjectPage-subTitle-0"
-              for=""
             />
             <div
               class="ObjectPage-keyInfos-0"
@@ -724,18 +668,13 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       tabs-placement="Top"
     />
     <ui5-popover
-      header-text=""
       horizontal-align="Center"
-      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-list
-        footer-text=""
-        header-text=""
         mode="None"
-        no-data-text=""
         separators="All"
       />
     </ui5-popover>
@@ -775,7 +714,6 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
             />
             <ui5-label
               class="ObjectPage-subTitle-0"
-              for=""
             />
             <div
               class="ObjectPage-keyInfos-0"
@@ -801,28 +739,21 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       tabs-placement="Top"
     >
       <ui5-tab
-        additional-text=""
         data-index="0"
         data-section-id="1"
-        icon=""
         selected="true"
         semantic-color="Default"
         text=""
       />
     </ui5-tabcontainer>
     <ui5-popover
-      header-text=""
       horizontal-align="Center"
-      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-list
-        footer-text=""
-        header-text=""
         mode="None"
-        no-data-text=""
         separators="All"
       />
     </ui5-popover>
@@ -885,7 +816,6 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
             />
             <ui5-label
               class="ObjectPage-subTitle-0"
-              for=""
             />
             <div
               class="ObjectPage-keyInfos-0"
@@ -911,28 +841,21 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       tabs-placement="Top"
     >
       <ui5-tab
-        additional-text=""
         data-index="0"
         data-section-id="1"
-        icon=""
         selected="true"
         semantic-color="Default"
         text=""
       />
     </ui5-tabcontainer>
     <ui5-popover
-      header-text=""
       horizontal-align="Center"
-      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-list
-        footer-text=""
-        header-text=""
         mode="None"
-        no-data-text=""
         separators="All"
       />
     </ui5-popover>
@@ -979,7 +902,6 @@ exports[`ObjectPage Only Sections 1`] = `
     >
       <ui5-button
         design="Default"
-        icon=""
       >
         Action
       </ui5-button>
@@ -1004,7 +926,6 @@ exports[`ObjectPage Only Sections 1`] = `
             </ui5-title>
             <ui5-label
               class="ObjectPage-subTitle-0"
-              for=""
             >
               Sub Title
             </ui5-label>
@@ -1028,7 +949,6 @@ exports[`ObjectPage Only Sections 1`] = `
         <ui5-link
           design="Default"
           href="https://www.sap.com"
-          target=""
         >
           www.myurl.com
         </ui5-link>
@@ -1063,44 +983,33 @@ exports[`ObjectPage Only Sections 1`] = `
       tabs-placement="Top"
     >
       <ui5-tab
-        additional-text=""
         data-index="0"
         data-section-id="1"
-        icon=""
         selected="true"
         semantic-color="Default"
         text="Test 1"
       />
       <ui5-tab
-        additional-text=""
         data-index="1"
         data-section-id="2"
-        icon=""
         semantic-color="Default"
         text="Test 2"
       />
       <ui5-tab
-        additional-text=""
         data-index="2"
         data-section-id="3"
-        icon=""
         semantic-color="Default"
         text="Test 3"
       />
     </ui5-tabcontainer>
     <ui5-popover
-      header-text=""
       horizontal-align="Center"
-      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-list
-        footer-text=""
-        header-text=""
         mode="None"
-        no-data-text=""
         separators="All"
       />
     </ui5-popover>
@@ -1126,9 +1035,7 @@ exports[`ObjectPage Only Sections 1`] = `
       <div
         class="ObjectPageSection-sectionContentInner-0"
       >
-        <ui5-label
-          for=""
-        >
+        <ui5-label>
           My Content 1
         </ui5-label>
       </div>
@@ -1155,9 +1062,7 @@ exports[`ObjectPage Only Sections 1`] = `
       <div
         class="ObjectPageSection-sectionContentInner-0"
       >
-        <ui5-label
-          for=""
-        >
+        <ui5-label>
           My Content 2
         </ui5-label>
       </div>
@@ -1184,9 +1089,7 @@ exports[`ObjectPage Only Sections 1`] = `
       <div
         class="ObjectPageSection-sectionContentInner-0"
       >
-        <ui5-label
-          for=""
-        >
+        <ui5-label>
           My Content 3
         </ui5-label>
       </div>
@@ -1227,7 +1130,6 @@ exports[`ObjectPage Set selected section id 1`] = `
             />
             <ui5-label
               class="ObjectPage-subTitle-0"
-              for=""
             />
             <div
               class="ObjectPage-keyInfos-0"
@@ -1253,36 +1155,27 @@ exports[`ObjectPage Set selected section id 1`] = `
       tabs-placement="Top"
     >
       <ui5-tab
-        additional-text=""
         data-index="0"
         data-section-id="1"
-        icon=""
         semantic-color="Default"
         text=""
       />
       <ui5-tab
-        additional-text=""
         data-index="1"
         data-section-id="2"
-        icon=""
         selected="true"
         semantic-color="Default"
         text=""
       />
     </ui5-tabcontainer>
     <ui5-popover
-      header-text=""
       horizontal-align="Center"
-      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-list
-        footer-text=""
-        header-text=""
         mode="None"
-        no-data-text=""
         separators="All"
       />
     </ui5-popover>
@@ -1329,7 +1222,6 @@ exports[`ObjectPage With Subsections 1`] = `
     >
       <ui5-button
         design="Default"
-        icon=""
       >
         Action
       </ui5-button>
@@ -1354,7 +1246,6 @@ exports[`ObjectPage With Subsections 1`] = `
             </ui5-title>
             <ui5-label
               class="ObjectPage-subTitle-0"
-              for=""
             >
               Sub Title
             </ui5-label>
@@ -1378,7 +1269,6 @@ exports[`ObjectPage With Subsections 1`] = `
         <ui5-link
           design="Default"
           href="https://www.sap.com"
-          target=""
         >
           www.myurl.com
         </ui5-link>
@@ -1413,43 +1303,33 @@ exports[`ObjectPage With Subsections 1`] = `
       tabs-placement="Top"
     >
       <ui5-tab
-        additional-text=""
         data-index="0"
         data-section-id="1"
-        icon=""
         selected="true"
         semantic-color="Default"
         text="Test 1"
       />
       <ui5-tab
-        additional-text=""
         data-index="1"
         data-section-id="2"
-        icon=""
         semantic-color="Default"
         text="Test 2"
       />
       <ui5-tab
-        additional-text=""
         data-index="2"
         data-section-id="3"
-        icon=""
         semantic-color="Default"
         text="Test 3"
       />
       <ui5-tab
-        additional-text=""
         data-index="3"
         data-section-id="4"
-        icon=""
         semantic-color="Default"
         text="Test 4"
       />
       <ui5-tab
-        additional-text=""
         data-index="4"
         data-section-id="5"
-        icon=""
         semantic-color="Default"
         text="Test 5"
       />
@@ -1461,18 +1341,13 @@ exports[`ObjectPage With Subsections 1`] = `
       icon="slim-arrow-down"
     />
     <ui5-popover
-      header-text=""
       horizontal-align="Center"
-      initial-focus=""
       no-arrow="true"
       placement-type="Bottom"
       vertical-align="Center"
     >
       <ui5-list
-        footer-text=""
-        header-text=""
         mode="None"
-        no-data-text=""
         separators="All"
       />
     </ui5-popover>
@@ -1498,9 +1373,7 @@ exports[`ObjectPage With Subsections 1`] = `
       <div
         class="ObjectPageSection-sectionContentInner-0"
       >
-        <ui5-label
-          for=""
-        >
+        <ui5-label>
           My Content 1
         </ui5-label>
       </div>

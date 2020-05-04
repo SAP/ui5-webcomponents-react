@@ -3,6 +3,5 @@
 exports[`TableColumn Basic Test (generated) 1`] = `
 <ui5-table-column
   min-width="Infinity"
-  popin-text=""
 />
 `;

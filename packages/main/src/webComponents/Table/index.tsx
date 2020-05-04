@@ -50,7 +50,6 @@ const Table: FC<TablePropTypes> = withWebComponent<TablePropTypes>(
 Table.displayName = 'Table';
 
 Table.defaultProps = {
-  noDataText: '',
   showNoData: false,
   stickyColumnHeader: false
 };

@@ -30,8 +30,7 @@ const MultiComboBoxItem: FC<MultiComboBoxItemPropTypes> = withWebComponent<Multi
 MultiComboBoxItem.displayName = 'MultiComboBoxItem';
 
 MultiComboBoxItem.defaultProps = {
-  selected: false,
-  text: ''
+  selected: false
 };
 
 export { MultiComboBoxItem };

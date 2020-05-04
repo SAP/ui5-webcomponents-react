@@ -34,7 +34,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -51,19 +51,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -97,7 +92,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -114,19 +109,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -160,7 +150,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -177,19 +167,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -223,7 +208,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -241,19 +226,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -345,7 +325,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -412,7 +392,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -455,7 +435,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -490,7 +470,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -525,7 +505,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -570,7 +550,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -587,19 +567,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -633,7 +608,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -650,19 +625,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -696,7 +666,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -713,19 +683,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -759,7 +724,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -777,19 +742,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -881,7 +841,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -948,7 +908,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -991,7 +951,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -1026,7 +986,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -1061,7 +1021,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -1106,7 +1066,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1123,19 +1083,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1169,7 +1124,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1186,19 +1141,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1232,7 +1182,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1249,19 +1199,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1295,7 +1240,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1313,19 +1258,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1626,7 +1566,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           draggable="false"
           id="__ui5wcr__internal_selection_column"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 47px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 47px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1646,7 +1586,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           draggable="false"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 47px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 47px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1663,19 +1603,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1699,15 +1634,11 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 style="padding: 0px 1rem;"
               >
                 <ui5-icon
-                  accessible-name=""
                   name="filter"
                   style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                 />
                 <ui5-input
-                  name=""
-                  placeholder=""
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -1726,7 +1657,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           draggable="false"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 197px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 197px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1743,19 +1674,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1779,15 +1705,11 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 style="padding: 0px 1rem;"
               >
                 <ui5-icon
-                  accessible-name=""
                   name="filter"
                   style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                 />
                 <ui5-input
-                  name=""
-                  placeholder=""
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -1806,7 +1728,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           draggable="false"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 347px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 347px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1823,19 +1745,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1859,15 +1776,11 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 style="padding: 0px 1rem;"
               >
                 <ui5-icon
-                  accessible-name=""
                   name="filter"
                   style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                 />
                 <ui5-input
-                  name=""
-                  placeholder=""
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -1886,7 +1799,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           draggable="false"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 497px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 497px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -1904,19 +1817,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1940,15 +1848,11 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 style="padding: 0px 1rem;"
               >
                 <ui5-icon
-                  accessible-name=""
                   name="filter"
                   style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                 />
                 <ui5-input
-                  name=""
-                  placeholder=""
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -1999,7 +1903,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 title="Toggle Row Expanded"
               >
                 <ui5-icon
-                  accessible-name=""
                   name="navigation-right-arrow"
                   style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
                 />
@@ -2052,7 +1955,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 497px; align-items: center;"
+              style="position: absolute; top: 0px; left: 497px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -2140,7 +2043,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 497px; align-items: center;"
+              style="position: absolute; top: 0px; left: 497px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -2193,7 +2096,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 497px; align-items: center;"
+              style="position: absolute; top: 0px; left: 497px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2235,7 +2138,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 497px; align-items: center;"
+              style="position: absolute; top: 0px; left: 497px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2277,7 +2180,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               aria-colindex="5"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 497px; align-items: center;"
+              style="position: absolute; top: 0px; left: 497px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2322,7 +2225,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2339,19 +2242,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -2385,7 +2283,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2402,19 +2300,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -2448,7 +2341,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2465,19 +2358,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -2511,7 +2399,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2529,19 +2417,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -2633,7 +2516,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -2700,7 +2583,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -2743,7 +2626,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2778,7 +2661,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2813,7 +2696,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -2858,7 +2741,7 @@ exports[`AnalyticalTable render without data 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2875,19 +2758,14 @@ exports[`AnalyticalTable render without data 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -2921,7 +2799,7 @@ exports[`AnalyticalTable render without data 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -2938,19 +2816,14 @@ exports[`AnalyticalTable render without data 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -2984,7 +2857,7 @@ exports[`AnalyticalTable render without data 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3001,19 +2874,14 @@ exports[`AnalyticalTable render without data 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3047,7 +2915,7 @@ exports[`AnalyticalTable render without data 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3065,19 +2933,14 @@ exports[`AnalyticalTable render without data 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3151,7 +3014,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3168,19 +3031,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3214,7 +3072,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3231,19 +3089,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3277,7 +3130,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3294,19 +3147,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3340,7 +3188,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3358,19 +3206,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3462,7 +3305,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -3529,7 +3372,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -3572,7 +3415,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -3607,7 +3450,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -3642,7 +3485,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -3687,7 +3530,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3704,19 +3547,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3750,7 +3588,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3767,19 +3605,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3813,7 +3646,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3830,19 +3663,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3876,7 +3704,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -3894,19 +3722,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3998,7 +3821,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -4065,7 +3888,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -4108,7 +3931,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4143,7 +3966,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4178,7 +4001,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4223,7 +4046,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4240,19 +4063,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4286,7 +4104,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4303,19 +4121,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4349,7 +4162,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4366,19 +4179,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4412,7 +4220,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4430,19 +4238,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4534,7 +4337,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -4601,7 +4404,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -4644,7 +4447,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4679,7 +4482,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4714,7 +4517,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -4759,7 +4562,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4776,19 +4579,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4822,7 +4620,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4839,19 +4637,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4885,7 +4678,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4902,19 +4695,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4948,7 +4736,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -4966,19 +4754,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -5070,7 +4853,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -5137,7 +4920,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -5180,7 +4963,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5215,7 +4998,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5250,7 +5033,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5295,7 +5078,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="false"
           id="__ui5wcr__internal_highlight_column"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 6px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 6px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5319,7 +5102,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="false"
           id="__ui5wcr__internal_selection_column"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 6px; width: 47px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 6px; width: 47px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5339,7 +5122,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 53px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 53px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5356,19 +5139,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -5402,7 +5180,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 203px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 203px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5419,19 +5197,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -5465,7 +5238,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 353px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 353px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5482,19 +5255,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -5528,7 +5296,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 503px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 503px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5546,19 +5314,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -5672,7 +5435,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               aria-colindex="6"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 503px; align-items: center;"
+              style="position: absolute; top: 0px; left: 503px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -5759,7 +5522,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               aria-colindex="6"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 503px; align-items: center;"
+              style="position: absolute; top: 0px; left: 503px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -5816,7 +5579,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               aria-colindex="6"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 503px; align-items: center;"
+              style="position: absolute; top: 0px; left: 503px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5865,7 +5628,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               aria-colindex="6"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 503px; align-items: center;"
+              style="position: absolute; top: 0px; left: 503px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5914,7 +5677,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               aria-colindex="6"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 503px; align-items: center;"
+              style="position: absolute; top: 0px; left: 503px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -5959,7 +5722,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           draggable="true"
           id="name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 0px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 0px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -5976,19 +5739,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -6022,7 +5780,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           draggable="true"
           id="age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 150px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 150px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -6039,19 +5797,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -6085,7 +5838,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           draggable="true"
           id="friend.name"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 300px; width: 150px; padding-left: 0px; padding-right: 0px;"
+          style="position: absolute; top: 0px; left: 300px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -6102,19 +5855,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -6148,7 +5896,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           draggable="true"
           id="friend.age"
           role="columnheader"
-          style="position: absolute; top: 0px; left: 450px; width: 150px; padding-left: 0px;"
+          style="position: absolute; top: 0px; left: 450px; width: 150px;"
         >
           <div
             class="TableColumnHeader-header-0"
@@ -6166,19 +5914,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -6270,7 +6013,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -6337,7 +6080,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             >
               <span
@@ -6380,7 +6123,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -6415,7 +6158,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>
@@ -6450,7 +6193,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               aria-colindex="4"
               class="AnalyticalTable-tableCell-0"
               role="cell"
-              style="position: absolute; top: 0px; left: 450px; align-items: center;"
+              style="position: absolute; top: 0px; left: 450px; width: 150px; align-items: center;"
               tabindex="-1"
             />
           </div>

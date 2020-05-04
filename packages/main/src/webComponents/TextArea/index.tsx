@@ -22,9 +22,11 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   maxlength?: number;
   /**
-   * Determines the name with which the <code>ui5-textarea</code> will be submitted in an HTML form.
-   * <br><br> <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
-   * <br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-textarea</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * Determines the name with which the <code>ui5-textarea</code> will be submitted in an HTML form.<br/><br/>
+   *
+   * <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
+   *
+   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-textarea</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
@@ -56,9 +58,11 @@ export interface TextAreaPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   valueState?: ValueState;
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>ui5-textarea</code>.
-   * <br><br> <b>Note:</b> If not specified, a default text (in the respective language) will be displayed.
-   * <br><br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed if the <code>ui5-textarea</code> has <code>valueState</code> of type <code>Information</code>, <code>Warning</code> or <code>Error</code>.
+   * Defines the value state message that will be displayed as pop up under the <code>ui5-textarea</code>.<br/><br/>
+   *
+   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed.<br/><br/>
+   *
+   * <b>Note:</b> The <code>valueStateMessage</code> would be displayed if the <code>ui5-textarea</code> has <code>valueState</code> of type <code>Information</code>, <code>Warning</code> or <code>Error</code>.
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
@@ -91,13 +95,10 @@ TextArea.defaultProps = {
   growing: false,
   growingMaxLines: 0,
   maxlength: null,
-  name: '',
-  placeholder: '',
   readonly: false,
   required: false,
   rows: 0,
   showExceededText: false,
-  value: '',
   valueState: ValueState.None
 };
 

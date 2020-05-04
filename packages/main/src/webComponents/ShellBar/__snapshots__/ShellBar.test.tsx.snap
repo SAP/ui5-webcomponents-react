@@ -1,10 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ShellBar Basic Test (generated) 1`] = `
-<ui5-shellbar
-  logo=""
-  notification-count=""
-  primary-title=""
-  secondary-title=""
-/>
-`;
+exports[`ShellBar Basic Test (generated) 1`] = `<ui5-shellbar />`;

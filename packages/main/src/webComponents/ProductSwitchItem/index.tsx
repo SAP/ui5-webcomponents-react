@@ -9,7 +9,8 @@ export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTyp
    */
   heading?: string;
   /**
-   * Defines the icon to be displayed as a graphical element within the <code>ui5-product-switch-item</code>. <br><br> Example: <br> <pre>ui5-product-switch-item icon="palette"</pre>
+   * Defines the icon to be displayed as a graphical element within the <code>ui5-product-switch-item</code>. <br><br> Example: <br> <pre>ui5-product-switch-item icon="palette"</pre><br/><br/>
+   *
    * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
@@ -47,11 +48,7 @@ const ProductSwitchItem: FC<ProductSwitchItemPropTypes> = withWebComponent<Produ
 ProductSwitchItem.displayName = 'ProductSwitchItem';
 
 ProductSwitchItem.defaultProps = {
-  heading: '',
-  icon: '',
-  subtitle: '',
-  target: '_self',
-  targetSrc: ''
+  target: '_self'
 };
 
 export { ProductSwitchItem };
