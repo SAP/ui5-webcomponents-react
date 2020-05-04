@@ -2,9 +2,6 @@
 
 exports[`Tab Basic Test (generated) 1`] = `
 <ui5-tab
-  additional-text=""
-  icon=""
   semantic-color="Default"
-  text=""
 />
 `;

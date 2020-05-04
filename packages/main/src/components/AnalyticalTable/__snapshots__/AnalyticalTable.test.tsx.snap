@@ -51,19 +51,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -114,19 +109,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -177,19 +167,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -241,19 +226,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -587,19 +567,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -650,19 +625,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -713,19 +683,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -777,19 +742,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1123,19 +1083,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1186,19 +1141,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1249,19 +1199,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1313,19 +1258,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1663,19 +1603,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1699,15 +1634,11 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 style="padding: 0px 1rem;"
               >
                 <ui5-icon
-                  accessible-name=""
                   name="filter"
                   style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                 />
                 <ui5-input
-                  name=""
-                  placeholder=""
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -1743,19 +1674,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1779,15 +1705,11 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 style="padding: 0px 1rem;"
               >
                 <ui5-icon
-                  accessible-name=""
                   name="filter"
                   style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                 />
                 <ui5-input
-                  name=""
-                  placeholder=""
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -1823,19 +1745,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1859,15 +1776,11 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 style="padding: 0px 1rem;"
               >
                 <ui5-icon
-                  accessible-name=""
                   name="filter"
                   style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                 />
                 <ui5-input
-                  name=""
-                  placeholder=""
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -1904,19 +1817,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -1940,15 +1848,11 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 style="padding: 0px 1rem;"
               >
                 <ui5-icon
-                  accessible-name=""
                   name="filter"
                   style="padding-right: 0.5rem; min-width: 1rem; min-height: 1rem;"
                 />
                 <ui5-input
-                  name=""
-                  placeholder=""
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -1999,7 +1903,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 title="Toggle Row Expanded"
               >
                 <ui5-icon
-                  accessible-name=""
                   name="navigation-right-arrow"
                   style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
                 />
@@ -2339,19 +2242,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -2402,19 +2300,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -2465,19 +2358,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -2529,19 +2417,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -2875,19 +2758,14 @@ exports[`AnalyticalTable render without data 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -2938,19 +2816,14 @@ exports[`AnalyticalTable render without data 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3001,19 +2874,14 @@ exports[`AnalyticalTable render without data 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3065,19 +2933,14 @@ exports[`AnalyticalTable render without data 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3168,19 +3031,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3231,19 +3089,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3294,19 +3147,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3358,19 +3206,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3704,19 +3547,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3767,19 +3605,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3830,19 +3663,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -3894,19 +3722,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4240,19 +4063,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4303,19 +4121,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4366,19 +4179,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4430,19 +4238,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4776,19 +4579,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4839,19 +4637,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4902,19 +4695,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -4966,19 +4754,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -5356,19 +5139,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -5419,19 +5197,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -5482,19 +5255,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -5546,19 +5314,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -5976,19 +5739,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -6039,19 +5797,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -6102,19 +5855,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li
@@ -6166,19 +5914,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             />
           </div>
           <ui5-popover
-            header-text=""
             horizontal-align="Left"
-            initial-focus=""
             no-arrow="true"
             placement-type="Bottom"
             style="font-weight: normal;"
             vertical-align="Center"
           >
             <ui5-list
-              footer-text=""
-              header-text=""
               mode="None"
-              no-data-text=""
               separators="All"
             >
               <ui5-li

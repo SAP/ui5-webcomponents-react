@@ -21,9 +21,9 @@ export interface SwitchPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   textOff?: string;
   /**
-   * Defines the text of the <code>ui5-switch</code> when switched on.
+   * Defines the text of the <code>ui5-switch</code> when switched on.<br/><br/>
    *
-   * <br><br> <b>Note:</b> We recommend using short texts, up to 3 letters (larger texts would be cut off).
+   * <b>Note:</b> We recommend using short texts, up to 3 letters (larger texts would be cut off).
    */
   textOn?: string;
   /**
@@ -50,9 +50,7 @@ Switch.displayName = 'Switch';
 Switch.defaultProps = {
   checked: false,
   disabled: false,
-  graphical: false,
-  textOff: '',
-  textOn: ''
+  graphical: false
 };
 
 export { Switch };

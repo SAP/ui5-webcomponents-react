@@ -2,8 +2,6 @@
 
 exports[`MessageBox Confirm - Cancel 1`] = `
 <ui5-dialog
-  header-text=""
-  initial-focus=""
   opened=""
 >
   <header
@@ -15,7 +13,6 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       class="MessageBox-icon-0"
     >
       <ui5-icon
-        accessible-name=""
         name="question-mark"
       />
     </div>
@@ -32,7 +29,6 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      icon=""
       style="min-width: 4rem;"
     >
       OK
@@ -40,7 +36,6 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     <ui5-button
       data-action="Cancel"
       design="Transparent"
-      icon=""
       style="min-width: 4rem;"
     >
       Cancel
@@ -56,8 +51,6 @@ exports[`MessageBox Confirm - Cancel 1`] = `
 
 exports[`MessageBox Confirm - OK 1`] = `
 <ui5-dialog
-  header-text=""
-  initial-focus=""
   opened=""
 >
   <header
@@ -69,7 +62,6 @@ exports[`MessageBox Confirm - OK 1`] = `
       class="MessageBox-icon-0"
     >
       <ui5-icon
-        accessible-name=""
         name="question-mark"
       />
     </div>
@@ -86,7 +78,6 @@ exports[`MessageBox Confirm - OK 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      icon=""
       style="min-width: 4rem;"
     >
       OK
@@ -94,7 +85,6 @@ exports[`MessageBox Confirm - OK 1`] = `
     <ui5-button
       data-action="Cancel"
       design="Transparent"
-      icon=""
       style="min-width: 4rem;"
     >
       Cancel
@@ -110,8 +100,6 @@ exports[`MessageBox Confirm - OK 1`] = `
 
 exports[`MessageBox Error 1`] = `
 <ui5-dialog
-  header-text=""
-  initial-focus=""
   opened=""
 >
   <header
@@ -123,7 +111,6 @@ exports[`MessageBox Error 1`] = `
       class="MessageBox-icon-0"
     >
       <ui5-icon
-        accessible-name=""
         name="message-error"
       />
     </div>
@@ -140,7 +127,6 @@ exports[`MessageBox Error 1`] = `
     <ui5-button
       data-action="Close"
       design="Emphasized"
-      icon=""
       style="min-width: 4rem;"
     >
       Close
@@ -156,8 +142,6 @@ exports[`MessageBox Error 1`] = `
 
 exports[`MessageBox Information 1`] = `
 <ui5-dialog
-  header-text=""
-  initial-focus=""
   opened=""
 >
   <header
@@ -169,7 +153,6 @@ exports[`MessageBox Information 1`] = `
       class="MessageBox-icon-0"
     >
       <ui5-icon
-        accessible-name=""
         name="message-information"
       />
     </div>
@@ -186,7 +169,6 @@ exports[`MessageBox Information 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      icon=""
       style="min-width: 4rem;"
     >
       OK
@@ -202,8 +184,6 @@ exports[`MessageBox Information 1`] = `
 
 exports[`MessageBox No Title 1`] = `
 <ui5-dialog
-  header-text=""
-  initial-focus=""
   opened=""
 >
   <header
@@ -215,7 +195,6 @@ exports[`MessageBox No Title 1`] = `
       class="MessageBox-icon-0"
     >
       <ui5-icon
-        accessible-name=""
         name="question-mark"
       />
     </div>
@@ -232,7 +211,6 @@ exports[`MessageBox No Title 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      icon=""
       style="min-width: 4rem;"
     >
       OK
@@ -240,7 +218,6 @@ exports[`MessageBox No Title 1`] = `
     <ui5-button
       data-action="Cancel"
       design="Transparent"
-      icon=""
       style="min-width: 4rem;"
     >
       Cancel
@@ -255,10 +232,7 @@ exports[`MessageBox No Title 1`] = `
 `;
 
 exports[`MessageBox Not open 1`] = `
-<ui5-dialog
-  header-text=""
-  initial-focus=""
->
+<ui5-dialog>
   <header
     class="MessageBox-header-0"
     data-type="Success"
@@ -268,7 +242,6 @@ exports[`MessageBox Not open 1`] = `
       class="MessageBox-icon-0"
     >
       <ui5-icon
-        accessible-name=""
         name="message-success"
       />
     </div>
@@ -285,7 +258,6 @@ exports[`MessageBox Not open 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      icon=""
       style="min-width: 4rem;"
     >
       OK
@@ -301,8 +273,6 @@ exports[`MessageBox Not open 1`] = `
 
 exports[`MessageBox Show 1`] = `
 <ui5-dialog
-  header-text=""
-  initial-focus=""
   opened=""
 >
   <header
@@ -314,7 +284,6 @@ exports[`MessageBox Show 1`] = `
       class="MessageBox-icon-0"
     >
       <ui5-icon
-        accessible-name=""
         name="question-mark"
       />
     </div>
@@ -331,7 +300,6 @@ exports[`MessageBox Show 1`] = `
     <ui5-button
       data-action="Yes"
       design="Emphasized"
-      icon=""
       style="min-width: 4rem;"
     >
       Yes
@@ -339,7 +307,6 @@ exports[`MessageBox Show 1`] = `
     <ui5-button
       data-action="No"
       design="Transparent"
-      icon=""
       style="min-width: 4rem;"
     >
       No
@@ -355,8 +322,6 @@ exports[`MessageBox Show 1`] = `
 
 exports[`MessageBox Success 1`] = `
 <ui5-dialog
-  header-text=""
-  initial-focus=""
   opened=""
 >
   <header
@@ -368,7 +333,6 @@ exports[`MessageBox Success 1`] = `
       class="MessageBox-icon-0"
     >
       <ui5-icon
-        accessible-name=""
         name="message-success"
       />
     </div>
@@ -385,7 +349,6 @@ exports[`MessageBox Success 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      icon=""
       style="min-width: 4rem;"
     >
       OK
@@ -401,8 +364,6 @@ exports[`MessageBox Success 1`] = `
 
 exports[`MessageBox Success w/ custom title 1`] = `
 <ui5-dialog
-  header-text=""
-  initial-focus=""
   opened=""
 >
   <header
@@ -414,7 +375,6 @@ exports[`MessageBox Success w/ custom title 1`] = `
       class="MessageBox-icon-0"
     >
       <ui5-icon
-        accessible-name=""
         name="message-success"
       />
     </div>
@@ -431,7 +391,6 @@ exports[`MessageBox Success w/ custom title 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      icon=""
       style="min-width: 4rem;"
     >
       OK
@@ -447,8 +406,6 @@ exports[`MessageBox Success w/ custom title 1`] = `
 
 exports[`MessageBox Warning 1`] = `
 <ui5-dialog
-  header-text=""
-  initial-focus=""
   opened=""
 >
   <header
@@ -460,7 +417,6 @@ exports[`MessageBox Warning 1`] = `
       class="MessageBox-icon-0"
     >
       <ui5-icon
-        accessible-name=""
         name="message-warning"
       />
     </div>
@@ -477,7 +433,6 @@ exports[`MessageBox Warning 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      icon=""
       style="min-width: 4rem;"
     >
       OK

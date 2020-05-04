@@ -40,8 +40,7 @@ BusyIndicator.displayName = 'BusyIndicator';
 
 BusyIndicator.defaultProps = {
   active: false,
-  size: BusyIndicatorSize.Medium,
-  text: ''
+  size: BusyIndicatorSize.Medium
 };
 
 export { BusyIndicator };
