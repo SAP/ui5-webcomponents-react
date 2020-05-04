@@ -13,7 +13,8 @@
     "clean": "lerna run clean --stream && rimraf coverage",
     "postversion": "node ./scripts/postversion/index.js",
     "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\"",
-    "lint": "eslint packages/*/src/**/*.{ts,tsx}"
+    "lint": "eslint packages/*/src/**/*.{ts,tsx}",
+    "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push"
   },
   "dependencies": {
     "@storybook/addon-actions": "5.3.18",

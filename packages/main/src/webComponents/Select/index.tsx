@@ -10,9 +10,11 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   disabled?: boolean;
   /**
-   * Determines the name with which the <code>ui5-select</code> will be submitted in an HTML form. The value of the <code>ui5-select</code> will be the value of the currently selected <code>ui5-option</code>.
-   * <br><br> <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
-   * <br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-select</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * Determines the name with which the <code>ui5-select</code> will be submitted in an HTML form. The value of the <code>ui5-select</code> will be the value of the currently selected <code>ui5-option</code>.<br/><br/>
+   *
+   * <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
+   *
+   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-select</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
@@ -20,9 +22,11 @@ export interface SelectPropTypes extends Omit<WithWebComponentPropTypes, 'onChan
    */
   valueState?: ValueState;
   /**
-   * Defines the <code>ui5-select</code> options.
-   * <br><br> <b>Note:</b> Only one selected option is allowed. If more than one option is defined as selected, the last one would be considered as the selected one.
-   * <br><br> <b>Note:</b> Use the <code>ui5-option</code> component to define the desired options.
+   * Defines the <code>ui5-select</code> options.<br/><br/>
+   *
+   * <b>Note:</b> Only one selected option is allowed. If more than one option is defined as selected, the last one would be considered as the selected one.<br/><br/>
+   *
+   * <b>Note:</b> Use the <code>ui5-option</code> component to define the desired options.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -48,7 +52,6 @@ Select.displayName = 'Select';
 
 Select.defaultProps = {
   disabled: false,
-  name: '',
   valueState: ValueState.None
 };
 

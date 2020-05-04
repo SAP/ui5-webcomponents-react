@@ -81,12 +81,9 @@ List.displayName = 'List';
 
 List.defaultProps = {
   busy: false,
-  footerText: '',
-  headerText: '',
   infiniteScroll: false,
   inset: false,
   mode: ListMode.None,
-  noDataText: '',
   separators: ListSeparators.All
 };
 

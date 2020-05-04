@@ -18,23 +18,18 @@ exports[`VariantManagement Render without crashing - disabled 1`] = `
   <ui5-responsive-popover
     header-text="Variants"
     horizontal-align="Center"
-    initial-focus=""
     placement-type="Bottom"
     vertical-align="Center"
   >
     <ui5-button
       class="VariantManagement-footer-0"
       design="Emphasized"
-      icon=""
       slot="footer"
     >
       Cancel
     </ui5-button>
     <ui5-list
-      footer-text=""
-      header-text=""
       mode="SingleSelect"
-      no-data-text=""
       separators="All"
     >
       <ui5-li
@@ -76,23 +71,18 @@ exports[`VariantManagement Render without crashing 1`] = `
   <ui5-responsive-popover
     header-text="Variants"
     horizontal-align="Center"
-    initial-focus=""
     placement-type="Bottom"
     vertical-align="Center"
   >
     <ui5-button
       class="VariantManagement-footer-0"
       design="Emphasized"
-      icon=""
       slot="footer"
     >
       Cancel
     </ui5-button>
     <ui5-list
-      footer-text=""
-      header-text=""
       mode="SingleSelect"
-      no-data-text=""
       separators="All"
     >
       <ui5-li
@@ -136,7 +126,6 @@ exports[`VariantManagement With suggestions 1`] = `
     actual-placement-type="Bottom"
     header-text="Variants"
     horizontal-align="Center"
-    initial-focus=""
     placement-type="Bottom"
     style="z-index: 102; visibility: visible; display: none; left: 0px; top: 8px;"
     vertical-align="Center"
@@ -144,16 +133,12 @@ exports[`VariantManagement With suggestions 1`] = `
     <ui5-button
       class="VariantManagement-footer-0"
       design="Emphasized"
-      icon=""
       slot="footer"
     >
       Cancel
     </ui5-button>
     <ui5-list
-      footer-text=""
-      header-text=""
       mode="SingleSelect"
-      no-data-text=""
       separators="All"
     >
       <ui5-li

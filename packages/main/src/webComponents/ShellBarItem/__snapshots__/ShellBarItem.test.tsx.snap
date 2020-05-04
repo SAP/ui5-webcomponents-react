@@ -1,9 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ShellBarItem Basic Test (generated) 1`] = `
-<ui5-shellbar-item
-  count=""
-  icon=""
-  text=""
-/>
-`;
+exports[`ShellBarItem Basic Test (generated) 1`] = `<ui5-shellbar-item />`;
