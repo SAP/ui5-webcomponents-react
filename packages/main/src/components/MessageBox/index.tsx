@@ -9,6 +9,10 @@ import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 
 import {
+  CONFIRMATION,
+  ERROR,
+  HIGHLIGHT,
+  INFORMATION,
   MESSAGEBOX_ACTION_ABORT,
   MESSAGEBOX_ACTION_CANCEL,
   MESSAGEBOX_ACTION_CLOSE,
@@ -17,7 +21,9 @@ import {
   MESSAGEBOX_ACTION_NO,
   MESSAGEBOX_ACTION_OK,
   MESSAGEBOX_ACTION_RETRY,
-  MESSAGEBOX_ACTION_YES
+  MESSAGEBOX_ACTION_YES,
+  SUCCESS,
+  WARNING
 } from '@ui5/webcomponents-react/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -92,20 +98,20 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     }
     switch (type) {
       case MessageBoxTypes.CONFIRM:
-        return 'Confirmation';
+        return i18nBundle.getText(CONFIRMATION);
       case MessageBoxTypes.ERROR:
-        return 'Error';
+        return i18nBundle.getText(ERROR);
       case MessageBoxTypes.INFORMATION:
-        return 'Information';
+        return i18nBundle.getText(INFORMATION);
       case MessageBoxTypes.SUCCESS:
-        return 'Success';
+        return i18nBundle.getText(SUCCESS);
       case MessageBoxTypes.WARNING:
-        return 'Warning';
+        return i18nBundle.getText(WARNING);
       case MessageBoxTypes.HIGHLIGHT:
-        return 'Highlight';
+        return i18nBundle.getText(HIGHLIGHT);
     }
     return null;
-  }, [title, type]);
+  }, [title, type, i18nBundle]);
 
   const actionsToRender = useMemo(() => {
     if (actions && actions.length > 0) {
