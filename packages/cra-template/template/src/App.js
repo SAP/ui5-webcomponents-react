@@ -5,7 +5,7 @@ import logo from './logo.svg';
 
 function App() {
   return (
-    <ThemeProvider withToastContainer>
+    <ThemeProvider>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />

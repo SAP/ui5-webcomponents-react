@@ -33,8 +33,10 @@ import { ContentDensity } from './lib/ContentDensity';
 import { CurrentViewportRangeContext } from './lib/CurrentViewportRangeContext';
 import { CustomListItem } from './lib/CustomListItem';
 import { DatePicker } from './lib/DatePicker';
+import { DateTimePicker } from './lib/DateTimePicker';
 import { DeviationIndicator } from './lib/DeviationIndicator';
 import { Dialog } from './lib/Dialog';
+import { DurationPicker } from './lib/DurationPicker';
 import { FileUploader } from './lib/FileUploader';
 import { FilterBar } from './lib/FilterBar';
 import { FilterGroupItem } from './lib/FilterGroupItem';
@@ -109,6 +111,7 @@ import { SuggestionItem } from './lib/SuggestionItem';
 import { Switch } from './lib/Switch';
 import { Tab } from './lib/Tab';
 import { TabContainer } from './lib/TabContainer';
+import { TabContainerTabsPlacement } from './lib/TabContainerTabsPlacement';
 import { TabLayout } from './lib/TabLayout';
 import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
@@ -117,6 +120,7 @@ import { TableColumn } from './lib/TableColumn';
 import { TablePlaceholder } from './lib/TablePlaceholder';
 import { TableRow } from './lib/TableRow';
 import { TableScaleWidthMode } from './lib/TableScaleWidthMode';
+import { TableSelectionBehavior } from './lib/TableSelectionBehavior';
 import { TableSelectionMode } from './lib/TableSelectionMode';
 import { Text } from './lib/Text';
 import { TextAlign } from './lib/TextAlign';
@@ -133,6 +137,9 @@ import { ToastPlacement } from './lib/ToastPlacement';
 import { ToggleButton } from './lib/ToggleButton';
 import { Token } from './lib/Token';
 import { Tokenizer } from './lib/Tokenizer';
+import { UploadCollection } from './lib/UploadCollection';
+import { UploadCollectionItem } from './lib/UploadCollectionItem';
+import { UploadState } from './lib/UploadState';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
@@ -169,8 +176,10 @@ export {
   CurrentViewportRangeContext,
   CustomListItem,
   DatePicker,
+  DateTimePicker,
   DeviationIndicator,
   Dialog,
+  DurationPicker,
   FileUploader,
   FilterBar,
   FilterGroupItem,
@@ -245,6 +254,7 @@ export {
   Switch,
   Tab,
   TabContainer,
+  TabContainerTabsPlacement,
   TabLayout,
   TabSeparator,
   Table,
@@ -253,6 +263,7 @@ export {
   TablePlaceholder,
   TableRow,
   TableScaleWidthMode,
+  TableSelectionBehavior,
   TableSelectionMode,
   Text,
   TextAlign,
@@ -269,6 +280,9 @@ export {
   ToggleButton,
   Token,
   Tokenizer,
+  UploadCollection,
+  UploadCollectionItem,
+  UploadState,
   ValueState,
   VariantManagement,
   VerticalAlign

@@ -1,4 +1,4 @@
-import { boolean, select } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import React from 'react';
@@ -9,7 +9,11 @@ export default {
 };
 
 export const generatedDefaultStory = () => (
-  <BusyIndicator active={boolean('active', true)} size={select('size', BusyIndicatorSize, BusyIndicatorSize['Large'])}>
+  <BusyIndicator
+    active={boolean('active', true)}
+    size={select('size', BusyIndicatorSize, BusyIndicatorSize.Medium)}
+    text={text('text', 'Loading...')}
+  >
     Some Content
   </BusyIndicator>
 );

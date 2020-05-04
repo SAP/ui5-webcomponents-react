@@ -2,6 +2,7 @@
 
 exports[`Popover Basic Test (generated) 1`] = `
 <ui5-popover
+  header-text=""
   horizontal-align="Center"
   initial-focus=""
   placement-type="Right"

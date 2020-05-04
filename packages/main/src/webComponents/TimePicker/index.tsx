@@ -61,7 +61,7 @@ TimePicker.defaultProps = {
   formatPattern: '',
   placeholder: undefined,
   readonly: false,
-  value: '',
+  value: undefined,
   valueState: ValueState.None
 };
 
