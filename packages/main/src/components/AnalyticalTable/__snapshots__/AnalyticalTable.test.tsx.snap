@@ -1639,7 +1639,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 />
                 <ui5-input
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -1711,7 +1710,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 />
                 <ui5-input
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -1783,7 +1781,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 />
                 <ui5-input
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -1856,7 +1853,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 />
                 <ui5-input
                   type="Text"
-                  value=""
                   value-state="None"
                 />
               </div>

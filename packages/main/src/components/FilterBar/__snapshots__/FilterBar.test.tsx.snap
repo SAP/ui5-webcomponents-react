@@ -200,7 +200,6 @@ exports[`FilterBar Render without crashing 1`] = `
       <ui5-input
         placeholder="Search"
         type="Text"
-        value=""
         value-state="None"
       />
        
@@ -390,9 +389,9 @@ exports[`FilterBar Select Filter Item 1`] = `
           Classification
         </ui5-label>
         <ui5-input
+          placeholder=""
           style="width: 100%;"
           type="Text"
-          value=""
           value-state="None"
         />
       </div>
@@ -407,7 +406,6 @@ exports[`FilterBar Select Filter Item 1`] = `
           Classification
         </ui5-label>
         <ui5-multi-combobox
-          value=""
           value-state="None"
         >
           <ui5-li

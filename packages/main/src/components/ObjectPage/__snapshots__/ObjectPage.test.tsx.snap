@@ -237,11 +237,13 @@ exports[`ObjectPage Just Some Sections 1`] = `
         data-section-id="1"
         selected="true"
         semantic-color="Default"
+        text=""
       />
       <ui5-tab
         data-index="1"
         data-section-id="2"
         semantic-color="Default"
+        text=""
       />
     </ui5-tabcontainer>
     <ui5-popover
@@ -408,11 +410,13 @@ exports[`ObjectPage Key Infos 1`] = `
         data-section-id="1"
         selected="true"
         semantic-color="Default"
+        text=""
       />
       <ui5-tab
         data-index="1"
         data-section-id="2"
         semantic-color="Default"
+        text=""
       />
     </ui5-tabcontainer>
     <ui5-popover
@@ -536,12 +540,14 @@ exports[`ObjectPage No Header 1`] = `
         data-index="0"
         data-section-id="1"
         semantic-color="Default"
+        text=""
       />
       <ui5-tab
         data-index="1"
         data-section-id="2"
         selected="true"
         semantic-color="Default"
+        text=""
       />
     </ui5-tabcontainer>
     <ui5-popover
@@ -737,6 +743,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
         data-section-id="1"
         selected="true"
         semantic-color="Default"
+        text=""
       />
     </ui5-tabcontainer>
     <ui5-popover
@@ -838,6 +845,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
         data-section-id="1"
         selected="true"
         semantic-color="Default"
+        text=""
       />
     </ui5-tabcontainer>
     <ui5-popover
@@ -1150,12 +1158,14 @@ exports[`ObjectPage Set selected section id 1`] = `
         data-index="0"
         data-section-id="1"
         semantic-color="Default"
+        text=""
       />
       <ui5-tab
         data-index="1"
         data-section-id="2"
         selected="true"
         semantic-color="Default"
+        text=""
       />
     </ui5-tabcontainer>
     <ui5-popover

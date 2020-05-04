@@ -27,7 +27,6 @@ exports[`Create a Form accepts both label and labelText 1`] = `
           >
             <ui5-input
               type="Text"
-              value=""
               value-state="None"
             />
           </div>
@@ -52,7 +51,6 @@ exports[`Create a Form accepts both label and labelText 1`] = `
           >
             <ui5-input
               type="Number"
-              value=""
               value-state="None"
             />
           </div>
@@ -78,7 +76,6 @@ exports[`Create a Form accepts both label and labelText 1`] = `
           >
             <ui5-input
               type="Number"
-              value=""
               value-state="None"
             />
           </div>
@@ -123,7 +120,6 @@ Array [
             >
               <ui5-input
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -148,7 +144,6 @@ Array [
             >
               <ui5-input
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -194,7 +189,6 @@ Array [
             >
               <ui5-input
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -219,7 +213,6 @@ Array [
             >
               <ui5-input
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -271,7 +264,6 @@ Array [
             >
               <ui5-input
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -296,7 +288,6 @@ Array [
             >
               <ui5-input
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -333,7 +324,6 @@ Array [
             >
               <ui5-input
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -358,7 +348,6 @@ Array [
             >
               <ui5-input
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -410,7 +399,6 @@ Array [
             >
               <ui5-input
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -435,7 +423,6 @@ Array [
             >
               <ui5-input
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -472,7 +459,6 @@ Array [
             >
               <ui5-input
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -497,7 +483,6 @@ Array [
             >
               <ui5-input
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -549,7 +534,6 @@ Array [
             >
               <ui5-input
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -574,7 +558,6 @@ Array [
             >
               <ui5-input
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -611,7 +594,6 @@ Array [
             >
               <ui5-input
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -636,7 +618,6 @@ Array [
             >
               <ui5-input
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -688,7 +669,6 @@ Array [
             >
               <ui5-input
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -713,7 +693,6 @@ Array [
             >
               <ui5-input
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -750,7 +729,6 @@ Array [
             >
               <ui5-input
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -775,7 +753,6 @@ Array [
             >
               <ui5-input
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>

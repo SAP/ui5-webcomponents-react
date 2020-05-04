@@ -2,7 +2,6 @@
 
 exports[`FileUploader Basic Test (generated) 1`] = `
 <ui5-file-uploader
-  value=""
   value-state="None"
 />
 `;
