@@ -1,6 +1,6 @@
+import { getTextWidth, truncateLongLabel } from '@ui5/webcomponents-react-charts/lib/Utils';
 import { useMemo } from 'react';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
-import { getTextWidth, truncateLongLabel } from '../util/Utils';
 
 export const useChartMargin = (dataset: unknown[], elements, margin, isBar?, hasSecondaryDimension?, hasZoomingTool?) =>
   useMemo(() => {
