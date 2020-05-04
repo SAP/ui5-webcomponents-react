@@ -13,15 +13,15 @@ import {
   ERROR,
   HIGHLIGHT,
   INFORMATION,
-  MESSAGEBOX_ACTION_ABORT,
-  MESSAGEBOX_ACTION_CANCEL,
-  MESSAGEBOX_ACTION_CLOSE,
-  MESSAGEBOX_ACTION_DELETE,
-  MESSAGEBOX_ACTION_IGNORE,
-  MESSAGEBOX_ACTION_NO,
-  MESSAGEBOX_ACTION_OK,
-  MESSAGEBOX_ACTION_RETRY,
-  MESSAGEBOX_ACTION_YES,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
   SUCCESS,
   WARNING
 } from '@ui5/webcomponents-react/assets/i18n/i18n-defaults';
@@ -40,15 +40,15 @@ import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import styles from './MessageBox.jss';
 
 const actionTextMap = new Map();
-actionTextMap.set(MessageBoxActions.ABORT, MESSAGEBOX_ACTION_ABORT);
-actionTextMap.set(MessageBoxActions.CANCEL, MESSAGEBOX_ACTION_CANCEL);
-actionTextMap.set(MessageBoxActions.CLOSE, MESSAGEBOX_ACTION_CLOSE);
-actionTextMap.set(MessageBoxActions.DELETE, MESSAGEBOX_ACTION_DELETE);
-actionTextMap.set(MessageBoxActions.IGNORE, MESSAGEBOX_ACTION_IGNORE);
-actionTextMap.set(MessageBoxActions.NO, MESSAGEBOX_ACTION_NO);
-actionTextMap.set(MessageBoxActions.OK, MESSAGEBOX_ACTION_OK);
-actionTextMap.set(MessageBoxActions.RETRY, MESSAGEBOX_ACTION_RETRY);
-actionTextMap.set(MessageBoxActions.YES, MESSAGEBOX_ACTION_YES);
+actionTextMap.set(MessageBoxActions.ABORT, ABORT);
+actionTextMap.set(MessageBoxActions.CANCEL, CANCEL);
+actionTextMap.set(MessageBoxActions.CLOSE, CLOSE);
+actionTextMap.set(MessageBoxActions.DELETE, DELETE);
+actionTextMap.set(MessageBoxActions.IGNORE, IGNORE);
+actionTextMap.set(MessageBoxActions.NO, NO);
+actionTextMap.set(MessageBoxActions.OK, OK);
+actionTextMap.set(MessageBoxActions.RETRY, RETRY);
+actionTextMap.set(MessageBoxActions.YES, YES);
 
 export interface MessageBoxPropTypes extends CommonProps {
   open?: boolean;
