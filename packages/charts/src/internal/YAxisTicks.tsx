@@ -1,7 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { truncateLongLabel } from '@ui5/webcomponents-react-charts/lib/Utils';
 import React, { FC } from 'react';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
-import { truncateLongLabel } from '../util/Utils';
 import { SecondaryDimensionTicksYAxis } from './SecondaryDimensionYAxisTick';
 
 interface YAxisTicksProps {

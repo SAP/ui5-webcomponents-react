@@ -1,9 +1,10 @@
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { getTextHeight, getTextWidth } from '@ui5/webcomponents-react-charts/lib/Utils';
 import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import bestContrast from 'get-best-contrast-color';
 import React, { FC, forwardRef, Ref, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
@@ -11,7 +12,6 @@ import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend
 import { getCssVariableValue } from '../../themes/Utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { getTextHeight, getTextWidth } from '../../util/Utils';
 import { formatAxisCallback, formatDataLabel, formatTooltipLabel, useMergedConfig } from '../../util/utils_deprecated';
 import { ColumnChartPlaceholder } from './Placeholder';
 
