@@ -8,6 +8,9 @@ const visibleColumns = (currentVisibleColumns) => {
   return currentVisibleColumns;
 };
 const getHeaderProps = (props, { column, instance }) => {
+  if (!instance.state.isScrollable) {
+    return props;
+  }
   const isRTL = getRTL();
   const lastColumnId = instance.visibleColumns[isRTL ? 0 : instance.visibleColumns.length - 1].id;
   const isLastColumn = column.id === lastColumnId;
@@ -23,6 +26,9 @@ const getHeaderProps = (props, { column, instance }) => {
 };
 
 const getCellProps = (props, { cell, instance }) => {
+  if (!instance.state.isScrollable) {
+    return props;
+  }
   const isRTL = getRTL();
   const lastColumnId = instance.visibleColumns[isRTL ? 0 : instance.visibleColumns.length - 1].id;
   const isLastColumn = cell.column.id === lastColumnId;
