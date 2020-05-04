@@ -255,7 +255,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   // scroll bar detection
   useEffect(() => {
     const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
-    dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: data.length > visibleRowCount } });
+    dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
   }, [rows.length, minRows, visibleRows]);
 
   const updateTableClientWidth = useCallback(() => {
