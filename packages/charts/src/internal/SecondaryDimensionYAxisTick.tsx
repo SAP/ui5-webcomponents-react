@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { truncateLongLabel } from '@ui5/webcomponents-react-charts/lib/Utils';
 import React from 'react';
-import { truncateLongLabel } from '../util/Utils';
 
 let lastRenderedTickValue = '';
 export const SecondaryDimensionTicksYAxis = (props) => {

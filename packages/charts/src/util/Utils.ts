@@ -21,7 +21,7 @@ export const getTextHeight = (text = 'M', font = `normal 12pt "72","72full",Aria
 };
 
 export const truncateLongLabel = (value: string, length = 13) => {
-  if (value.length > length) {
+  if (value?.length > length) {
     return `${value.slice(0, length - 2)}...`;
   }
   return value;
