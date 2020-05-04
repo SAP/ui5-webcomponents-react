@@ -192,6 +192,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return props.data;
   }, [props.data, minRows]);
 
+  const rowCount = props.data.length;
+  const visibleRowCount = minRows >= visibleRows ? minRows : visibleRows;
+  const tableContentIsScrollable = rowCount > visibleRowCount;
+  console.log(visibleRowCount, tableContentIsScrollable);
+
   const {
     getTableProps,
     headerGroups,
@@ -226,7 +231,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         scaleWidthMode,
         loading,
         withRowHighlight,
-        highlightField
+        highlightField,
+        tableContentIsScrollable
       },
       ...reactTableOptions
     },
