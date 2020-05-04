@@ -18,10 +18,10 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
    */
   disabled?: boolean;
   /**
- * Defines the icon to be displayed as graphical element within the <code>ui5-button</code>. The SAP-icons font provides numerous options. <br><br> Example: <br> <pre>ui5-button icon="palette"</pre>
-
-See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
- */
+   * Defines the icon to be displayed as graphical element within the <code>ui5-button</code>. The SAP-icons font provides numerous options. <br><br> Example: <br> <pre>ui5-button icon="palette"</pre><br/><br/>
+   *
+   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   */
   icon?: string;
   /**
    * Defines whether the icon should be displayed after the <code>ui5-button</code> text.
@@ -60,7 +60,6 @@ ToggleButton.defaultProps = {
   pressed: false,
   design: ButtonDesign.Default,
   disabled: false,
-  icon: '',
   iconEnd: false,
   submits: false
 };

@@ -55,8 +55,7 @@ Panel.defaultProps = {
   accessibleRole: PanelAccessibleRoles.Form,
   collapsed: false,
   fixed: false,
-  headerLevel: TitleLevel.H2,
-  headerText: ''
+  headerLevel: TitleLevel.H2
 };
 
 export { Panel };

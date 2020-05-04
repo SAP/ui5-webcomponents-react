@@ -2,8 +2,6 @@
 
 exports[`CheckBox Basic Test (generated) 1`] = `
 <ui5-checkbox
-  name=""
-  text=""
   value-state="None"
 />
 `;

@@ -23,14 +23,17 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
    */
   minDate?: string;
   /**
-   * Determines the name with which the <code>ui5-datepicker</code> will be submitted in an HTML form.
-   * <br><br> <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
-   * <br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-datepicker</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * Determines the name with which the <code>ui5-datepicker</code> will be submitted in an HTML form.<br/><br/>
+   *
+   * <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
+   *
+   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-datepicker</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
-   * Defines a short hint, intended to aid the user with data entry when the <code>ui5-datepicker</code> has no value.
-   * <br><br> <b>Note:</b> When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the <code>ui5-datepicker</code> appear empty - without placeholder or format pattern.
+   * Defines a short hint, intended to aid the user with data entry when the <code>ui5-datepicker</code> has no value.<br/><br/>
+   *
+   * <b>Note:</b> When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the <code>ui5-datepicker</code> appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
   /**
@@ -76,14 +79,9 @@ DateTimePicker.displayName = 'DateTimePicker';
 
 DateTimePicker.defaultProps = {
   disabled: false,
-  formatPattern: '',
-  maxDate: '',
-  minDate: '',
-  name: '',
   placeholder: undefined,
   primaryCalendarType: CalendarType.Gregorian,
   readonly: false,
-  value: '',
   valueState: ValueState.None
 };
 

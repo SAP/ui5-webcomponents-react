@@ -42,7 +42,6 @@ const Label: FC<LabelPropTypes> = withWebComponent<LabelPropTypes>(
 Label.displayName = 'Label';
 
 Label.defaultProps = {
-  for: '',
   required: false,
   showColon: false,
   wrap: false

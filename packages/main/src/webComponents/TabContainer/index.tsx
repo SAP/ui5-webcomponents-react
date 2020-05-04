@@ -19,9 +19,11 @@ export interface TabContainerPropTypes extends WithWebComponentPropTypes {
    */
   showOverflow?: boolean;
   /**
-   * Defines the alignment of the <code>main text</code> and the <code>additionalText</code> of a tab.
-   * <br><br> <b>Note:</b> The <code>main text</code> and the <code>additionalText</code> would be displayed vertically by defualt, but when set to <code>Inline</code>, they would be displayed horizontally.
-   * <br><br> Available options are: <ul> <li><code>Standard</code></li> <li><code>Inline</code></li> <ul>
+   * Defines the alignment of the <code>main text</code> and the <code>additionalText</code> of a tab.<br/><br/>
+   *
+   * <b>Note:</b> The <code>main text</code> and the <code>additionalText</code> would be displayed vertically by defualt, but when set to <code>Inline</code>, they would be displayed horizontally.<br/><br/>
+   *
+   * Available options are: <ul> <li><code>Standard</code></li> <li><code>Inline</code></li> <ul>
    */
   tabLayout?: TabLayout;
   /**

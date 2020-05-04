@@ -62,9 +62,7 @@ const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
 Dialog.displayName = 'Dialog';
 
 Dialog.defaultProps = {
-  stretch: false,
-  headerText: '',
-  initialFocus: ''
+  stretch: false
 };
 
 export { Dialog };

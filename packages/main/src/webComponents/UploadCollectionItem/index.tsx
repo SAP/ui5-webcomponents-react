@@ -80,7 +80,6 @@ UploadCollectionItem.displayName = 'UploadCollectionItem';
 
 UploadCollectionItem.defaultProps = {
   file: null,
-  fileName: '',
   fileNameClickable: false,
   noDelete: false,
   noRetry: false,

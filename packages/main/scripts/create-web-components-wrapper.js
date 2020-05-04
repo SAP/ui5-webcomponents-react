@@ -593,7 +593,9 @@ resolvedWebComponents.forEach((componentSpec) => {
 
       propTypes.push(dedent`
     /**
-     * ${property.description}
+     * ${property.description
+       .replace(/\n\n<br><br> /g, '<br/><br/>\n  *\n  * ')
+       .replace(/\n\n/g, '<br/><br/>\n  *\n  * ')}
      */
      ${property.name}?: ${tsType.tsType};
     `);
@@ -603,7 +605,7 @@ resolvedWebComponents.forEach((componentSpec) => {
           defaultProps.push(`${property.name}: ${property.defaultValue === 'true'}`);
         } else if (tsType.isEnum === true) {
           defaultProps.push(`${property.name}: ${tsType.tsType}.${property.defaultValue.replace(/['"]/g, '')}`);
-        } else {
+        } else if (tsType.tsType !== 'string' || (tsType.tsType === 'string' && property.defaultValue !== '""')) {
           defaultProps.push(`${property.name}: ${property.defaultValue}`);
         }
       }
