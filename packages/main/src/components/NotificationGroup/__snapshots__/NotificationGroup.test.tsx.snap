@@ -56,7 +56,7 @@ exports[`NotificationGroup Collapsed 1`] = `
           <ui5-button
             design="Transparent"
           >
-            Show More
+            Show more
           </ui5-button>
         </div>
       </div>
@@ -128,7 +128,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show More
+              Show more
             </ui5-button>
           </div>
         </div>
@@ -227,7 +227,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show More
+              Show more
             </ui5-button>
             <ui5-button
               design="Default"
@@ -309,7 +309,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show More
+              Show more
             </ui5-button>
           </div>
         </div>
@@ -374,7 +374,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show Less
+              Show less
             </ui5-button>
           </div>
         </div>
@@ -472,7 +472,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show More
+              Show more
             </ui5-button>
             <ui5-button
               design="Default"
@@ -554,7 +554,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show More
+              Show more
             </ui5-button>
           </div>
         </div>
@@ -614,7 +614,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show More
+              Show more
             </ui5-button>
           </div>
         </div>
@@ -674,7 +674,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show More
+              Show more
             </ui5-button>
           </div>
         </div>
@@ -741,7 +741,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show More
+              Show more
             </ui5-button>
           </div>
         </div>
@@ -840,7 +840,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show More
+              Show more
             </ui5-button>
             <ui5-button
               design="Default"
@@ -922,7 +922,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show More
+              Show more
             </ui5-button>
           </div>
         </div>
@@ -987,7 +987,7 @@ Array [
             <ui5-button
               design="Transparent"
             >
-              Show Less
+              Show less
             </ui5-button>
           </div>
         </div>
@@ -1053,7 +1053,7 @@ exports[`NotificationGroup w/o children 1`] = `
           <ui5-button
             design="Transparent"
           >
-            Show More
+            Show more
           </ui5-button>
         </div>
       </div>
@@ -1118,7 +1118,7 @@ exports[`NotificationGroup w/o children 2`] = `
           <ui5-button
             design="Transparent"
           >
-            Show More
+            Show more
           </ui5-button>
         </div>
       </div>
