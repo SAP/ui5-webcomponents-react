@@ -107,7 +107,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
             )[0],
             value: e.value.length ? e.value[1] - e.value[0] : e.value,
             payload: e.payload,
-            xIndex: i
+            dataIndex: i
           })
         );
       }

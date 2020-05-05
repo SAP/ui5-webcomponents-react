@@ -145,7 +145,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             {
               value: eventOrIndex.value,
               dataKey: eventOrIndex.dataKey,
-              xIndex: eventOrIndex.index,
+              dataIndex: eventOrIndex.index,
               payload: eventOrIndex.payload
             }
           )
