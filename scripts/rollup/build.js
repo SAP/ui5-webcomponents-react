@@ -1,6 +1,6 @@
 const { rollup } = require('rollup');
 const stripBanner = require('rollup-plugin-strip-banner');
-const babel = require('rollup-plugin-babel');
+const { babel } = require('@rollup/plugin-babel');
 const replace = require('@rollup/plugin-replace');
 const resolve = require('@rollup/plugin-node-resolve');
 const json = require('@rollup/plugin-json');
@@ -176,9 +176,9 @@ function shouldSkipBundle(bundle, bundleType) {
 function getBabelConfig(updateBabelOptions, bundleType, filename) {
   let options = {
     exclude: '/**/node_modules/**',
-    presets: ['babel-preset-react-app/prod'],
+    presets: [['babel-preset-react-app/prod', { absoluteRuntime: false }]],
     plugins: [],
-    runtimeHelpers: true,
+    babelHelpers: 'runtime',
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   };
   if (updateBabelOptions) {

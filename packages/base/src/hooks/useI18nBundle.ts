@@ -2,7 +2,7 @@ import { fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18
 import { useEffect, useState } from 'react';
 
 interface I18nBundle {
-  getText: (key: string, ...args: any) => string;
+  getText: (textObj: { key: string; defaultText: string }, ...args: any) => string;
 }
 
 export const useI18nBundle = (bundleName): I18nBundle => {
