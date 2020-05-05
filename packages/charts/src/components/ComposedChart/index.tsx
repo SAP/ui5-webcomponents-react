@@ -7,7 +7,7 @@ import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxis
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useState } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useState, useMemo } from 'react';
 import {
   Area,
   Bar,
@@ -116,29 +116,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     noLegend = false,
     onLegendClick,
     layout = 'horizontal',
-    chartConfig = {
-      margin: {},
-      yAxisVisible: false,
-      xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_BorderColor,
-      gridHorizontal: true,
-      gridVertical: false,
-      yAxisId: '',
-      yAxisColor: ThemingParameters.sapList_BorderColor,
-      legendPosition: 'top',
-      zoomingTool: false,
-      barGap: undefined,
-      referenceLine: {
-        label: undefined,
-        value: undefined,
-        color: undefined
-      },
-      secondYAxis: {
-        name: undefined,
-        dataKey: undefined,
-        color: undefined
-      }
-    },
     style,
     className,
     tooltip,
@@ -149,6 +126,19 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const [currentBarWidth, setCurrentBarWidth] = useState(
     dataset.some(({ type }) => type === 'bar') ? BAR_DEFAULT_PADDING : 0
   );
+
+  const chartConfig = useMemo(() => {
+    return {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'top',
+      zoomingTool: false,
+      ...props.chartConfig
+    };
+  }, [props.chartConfig]);
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -164,7 +154,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const dataKeys = measures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
-    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey)
+    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
     : 0;
 
   const onDataPointClickInternal = useCallback(
@@ -217,7 +207,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   );
 
   const measureAxisProps = {
-    axisLine: chartConfig.yAxisVisible ?? false,
+    axisLine: chartConfig.yAxisVisible,
     tickLine: tickLineConfig,
     tickFormatter: primaryMeasure?.formatter,
     interval: 0
@@ -259,11 +249,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     >
       <ComposedChartLib margin={marginChart} data={dataset} layout={layout}>
         <CartesianGrid
-          vertical={chartConfig.gridVertical ?? false}
+          vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
-          stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
+          stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) &&
+        {chartConfig.xAxisVisible &&
           dimensions.map((dimension, index) => {
             let AxisComponent;
             const axisProps = {
@@ -302,7 +292,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           />
         )}
 
-        {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && layout === 'horizontal' && (
+        {chartConfig.secondYAxis?.dataKey && layout === 'horizontal' && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
@@ -312,7 +302,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             yAxisId="secondary"
           />
         )}
-        {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && layout === 'vertical' && (
+        {chartConfig.secondYAxis?.dataKey && layout === 'vertical' && (
           <XAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
@@ -334,7 +324,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           />
         )}
         <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
         {measures?.map((element, index) => {
           const ChartElement = (ChartTypes[element.type] as any) as FC<any>;
 
@@ -375,11 +365,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           }
 
           if (layout === 'vertical') {
-            chartElementProps.xAxisId =
-              chartConfig?.secondYAxis?.dataKey === element.accessor ? 'secondary' : 'primary';
+            chartElementProps.xAxisId = chartConfig.secondYAxis?.dataKey === element.accessor ? 'secondary' : 'primary';
           } else {
-            chartElementProps.yAxisId =
-              chartConfig?.secondYAxis?.dataKey === element.accessor ? 'secondary' : 'primary';
+            chartElementProps.yAxisId = chartConfig.secondYAxis?.dataKey === element.accessor ? 'secondary' : 'primary';
           }
           return (
             <ChartElement
