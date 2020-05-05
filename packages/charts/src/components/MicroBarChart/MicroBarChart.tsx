@@ -7,7 +7,7 @@ import { Bar, BarChart as MicroBarChartLib, Cell, Tooltip, XAxis, YAxis } from '
 import { BarChartPlaceholder } from '../BarChart/Placeholder';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { tooltipContentStyle } from '../../internal/staticProps';
+import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'color'> {
   /**
@@ -171,7 +171,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
               />
             ))}
         </Bar>
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
       </MicroBarChartLib>
     </ChartContainer>
   );
