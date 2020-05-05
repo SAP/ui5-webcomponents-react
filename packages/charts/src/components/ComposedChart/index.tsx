@@ -173,7 +173,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         onDataPointClick(
           enrichEventWithDetails(event ?? eventOrIndex, {
             value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
-            xIndex: payload.index ?? eventOrIndex,
+            dataIndex: payload.index ?? eventOrIndex,
             dataKey: payload.value.length
               ? Object.keys(payload).filter((key) =>
                   payload.value.length
@@ -192,7 +192,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             {
               value: eventOrIndex.value,
               dataKey: eventOrIndex.dataKey,
-              xIndex: eventOrIndex.index,
+              dataIndex: eventOrIndex.index,
               payload: eventOrIndex.payload
             }
           )
