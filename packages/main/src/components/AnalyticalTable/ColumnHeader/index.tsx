@@ -1,3 +1,4 @@
+import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import '@ui5/webcomponents-icons/dist/icons/filter';
 import '@ui5/webcomponents-icons/dist/icons/group-2';
 import '@ui5/webcomponents-icons/dist/icons/sort-ascending';
@@ -5,7 +6,7 @@ import '@ui5/webcomponents-icons/dist/icons/sort-descending';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React, {
   CSSProperties,
   DragEventHandler,
@@ -60,17 +61,23 @@ const styles = {
     width: '100%',
     overflowX: 'hidden',
     padding: `0 0.5rem`,
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    '&[data-h-align="End"]': {
+      '& $text': {
+        textAlign: 'end'
+      }
+    }
+  },
+  text: {
+    width: '100%',
+    textAlign: 'start'
   },
   iconContainer: {
     display: 'inline-block',
     position: 'absolute',
     color: ThemingParameters.sapContent_IconColor,
-    right: '0',
-    marginRight: '0.5rem',
-    '& :last-child': {
-      marginLeft: '0.25rem'
-    }
+    right: getRTL() === false ? '0.5rem' : undefined,
+    left: getRTL() === true ? '0.5rem' : undefined
   },
   resizer: {
     display: 'inline-block',
@@ -81,9 +88,6 @@ const styles = {
     top: 0,
     transform: 'translateX(50%)',
     zIndex: 1
-  },
-  lastColumn: {
-    right: '8px'
   }
 };
 
@@ -114,32 +118,48 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
-  const desc = column.isSortedDesc;
-
-  const sortingIcon = column.isSorted ? <Icon name={desc ? 'sort-descending' : 'sort-ascending'} /> : null;
+  const sortingIcon = column.isSorted ? (
+    <Icon name={column.isSortedDesc ? 'sort-descending' : 'sort-ascending'} />
+  ) : null;
   const filterIcon = isFiltered ? <Icon name="filter" /> : null;
   const groupingIcon = column.isGrouped ? <Icon name="group-2" /> : null;
+
+  const textStyle = useMemo(() => {
+    let margin = 0;
+
+    if (column.isSorted) margin++;
+    if (column.isGrouped) margin++;
+    if (isFiltered) margin++;
+
+    if (margin === 0) {
+      return {};
+    }
+
+    if (margin > 0) margin += 0.5;
+
+    if (getRTL()) {
+      return {
+        marginLeft: `${margin}rem`
+      };
+    }
+    return {
+      marginRight: `${margin}rem`
+    };
+  }, [column.isSorted, column.isGrouped, isFiltered]);
 
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
   const innerStyle: CSSProperties = useMemo(() => {
     const modifiedStyles: CSSProperties = {
       cursor: hasPopover ? 'pointer' : 'auto'
     };
-    if (column.canResize) {
-      modifiedStyles.maxWidth = `calc(100% - 16px)`;
-    }
     if (dragOver) {
       modifiedStyles.borderLeft = `3px solid ${ThemingParameters.sapSelectedColor}`;
     }
     if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
       modifiedStyles.padding = 0;
     }
-    if (column.hAlign === TextAlign.End) {
-      modifiedStyles.justifyContent = 'flex-end';
-      modifiedStyles.maxWidth = '';
-    }
     return modifiedStyles;
-  }, [column.canResize, dragOver, hasPopover]);
+  }, [dragOver, hasPopover]);
 
   const popoverRef = useRef<Ui5PopoverDomRef>(null);
 
@@ -168,13 +188,15 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       onDragEnd={onDragEnd}
       data-column-id={id}
     >
-      <div style={innerStyle} onClick={onOpenPopover} className={classes.header}>
-        <span
-          title={typeof children === 'string' ? children : null}
-          style={{ textOverflow: 'ellipsis', overflowX: 'hidden', whiteSpace: 'nowrap' }}
+      <div style={innerStyle} onClick={onOpenPopover} className={classes.header} data-h-align={column.hAlign}>
+        <Text
+          tooltip={typeof children === 'string' ? children : null}
+          wrapping={false}
+          style={textStyle}
+          className={classes.text}
         >
           {children}
-        </span>
+        </Text>
         <div className={classes.iconContainer}>
           {filterIcon}
           {sortingIcon}
@@ -183,7 +205,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       </div>
       {hasPopover && <ColumnHeaderModal column={column} onSort={onSort} onGroupBy={onGroupBy} ref={popoverRef} />}
       {column.canResize && column.getResizerProps && (
-        <div {...column.getResizerProps()} className={`${classes.resizer}`} />
+        <div {...column.getResizerProps()} data-resizer className={`${classes.resizer}`} />
       )}
     </div>
   );

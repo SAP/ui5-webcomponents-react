@@ -32,6 +32,11 @@ const styles = {
     boxSizing: 'border-box',
     '&:first-child': {
       borderLeft: `1px solid ${ThemingParameters.sapList_BorderColor}`
+    },
+    '&:last-child': {
+      '& [data-resizer]': {
+        transform: 'translateX(0px)'
+      }
     }
   },
   tbody: {
