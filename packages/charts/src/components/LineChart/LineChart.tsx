@@ -7,7 +7,7 @@ import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxis
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Brush,
   CartesianGrid,
@@ -88,32 +88,24 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     noLegend = false,
     onDataPointClick,
     onLegendClick,
-    chartConfig = {
-      margin: {},
-      yAxisVisible: false,
-      xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_BorderColor,
-      gridHorizontal: true,
-      gridVertical: false,
-      yAxisColor: ThemingParameters.sapList_BorderColor,
-      legendPosition: 'top',
-      zoomingTool: false,
-      secondYAxis: {
-        dataKey: undefined,
-        name: undefined,
-        color: undefined
-      },
-      referenceLine: {
-        label: undefined,
-        value: undefined,
-        color: undefined
-      }
-    },
     style,
     className,
     tooltip,
     slot
   } = props;
+
+  const chartConfig = useMemo(() => {
+    return {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'top',
+      zoomingTool: false,
+      ...props.chartConfig
+    };
+  }, [props.chartConfig]);
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -131,7 +123,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const dataKeys = measures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
-    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey)
+    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
     : 0;
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
@@ -180,11 +172,11 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     >
       <LineChartLib margin={marginChart} data={dataset} onClick={onDataPointClickInternal}>
         <CartesianGrid
-          vertical={chartConfig.gridVertical ?? false}
+          vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
-          stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
+          stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) &&
+        {chartConfig.xAxisVisible &&
           dimensions.map((dimension, index) => {
             return (
               <XAxis
@@ -199,14 +191,14 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             );
           })}
         <YAxis
-          axisLine={chartConfig.yAxisVisible ?? false}
+          axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
           yAxisId="left"
           tickFormatter={primaryMeasure?.formatter}
           interval={0}
           tick={<YAxisTicks config={primaryMeasure} />}
         />
-        {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
+        {chartConfig.secondYAxis?.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
@@ -220,7 +212,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           return (
             <Line
               dot={!isBigDataSet}
-              yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
+              yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
@@ -233,7 +225,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             />
           );
         })}
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
