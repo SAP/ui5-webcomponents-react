@@ -145,7 +145,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     return {
       marginRight: `${margin}rem`
     };
-  }, [column.isSorted, column.isGrouped, isFiltered, column.hAlign]);
+  }, [column.isSorted, column.isGrouped, isFiltered]);
 
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
   const innerStyle: CSSProperties = useMemo(() => {
@@ -159,7 +159,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       modifiedStyles.padding = 0;
     }
     return modifiedStyles;
-  }, [column.canResize, dragOver, hasPopover]);
+  }, [dragOver, hasPopover]);
 
   const popoverRef = useRef<Ui5PopoverDomRef>(null);
 
