@@ -73,6 +73,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
 
   const chartConfig = useMemo(() => {
     return {
+      margin: { right: 30, left: 30, bottom: 30, top: 30, ...(props.chartConfig?.margin ?? {}) },
       legendPosition: 'bottom',
       paddingAngle: 0,
       ...props.chartConfig
@@ -116,7 +117,6 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     [onDataPointClick]
   );
 
-  const marginChart = chartConfig?.margin ?? { right: 30, left: 30, bottom: 30, top: 30 };
   const label = useMemo(() => {
     return {
       position: 'outside',
@@ -136,7 +136,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       tooltip={tooltip}
       slot={slot}
     >
-      <PieChartLib margin={marginChart}>
+      <PieChartLib margin={chartConfig.margin}>
         <Pie
           innerRadius={chartConfig.innerRadius}
           paddingAngle={chartConfig.paddingAngle}
@@ -148,16 +148,16 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&
-            dataset.map((data, index) => (
-              <Cell
-                key={index}
-                name={dimension.formatter(getValueByDataKey(data, dimension.accessor, ''))}
-                fill={measure.colors?.[index] ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-              />
-            ))}
+          dataset.map((data, index) => (
+            <Cell
+              key={index}
+              name={dimension.formatter(getValueByDataKey(data, dimension.accessor, ''))}
+              fill={measure.colors?.[index] ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+            />
+          ))}
         </Pie>
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
+        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle}/>
+        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick}/>}
       </PieChartLib>
     </ChartContainer>
   );
