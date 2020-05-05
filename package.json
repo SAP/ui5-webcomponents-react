@@ -7,7 +7,7 @@
   "scripts": {
     "start": "lerna run build:i18n && start-storybook -p 6006 -c .storybook",
     "build": "yarn clean && lerna run build --stream && node ./scripts/rollup/build.js",
-    "build:storybook": "build-storybook -c .storybook -o .out",
+    "build:storybook": "lerna run build:i18n && build-storybook -c .storybook -o .out",
     "pretest": "node scripts/test/clean.js && lerna run build:i18n",
     "test": "jest --config=config/jest.config.js --coverage",
     "clean": "lerna run clean --stream && rimraf coverage",
