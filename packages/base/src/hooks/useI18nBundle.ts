@@ -1,4 +1,4 @@
-import { fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
+import { fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle';
 import { useEffect, useState } from 'react';
 
 interface I18nBundle {
