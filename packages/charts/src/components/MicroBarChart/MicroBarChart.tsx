@@ -7,7 +7,7 @@ import { Bar, BarChart as MicroBarChartLib, Cell, Tooltip, XAxis, YAxis } from '
 import { BarChartPlaceholder } from '../BarChart/Placeholder';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { tooltipContentStyle } from '../../internal/staticProps';
+import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'color'> {
   /**
@@ -70,6 +70,9 @@ const TiltedAxisTick = (props) => {
     </g>
   );
 };
+
+const microBarChartLabel = { position: 'insideBottomRight', fill: ThemingParameters.sapContent_LabelColor };
+const microBarChartMargin = { left: -30, right: 30, top: 40, bottom: 30 };
 
 /**
  * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/next/MicroBarChart';</code>
@@ -140,10 +143,10 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       slot={slot}
     >
       <MicroBarChartLib
-        margin={{ left: -30, right: 30, top: 40, bottom: 30 }}
-        layout={'vertical'}
+        margin={microBarChartMargin}
+        layout='vertical'
         data={dataset}
-        label={{ position: 'insideBottomRight', fill: ThemingParameters.sapContent_LabelColor }}
+        label={microBarChartLabel}
       >
         <XAxis hide type="number" />
         <YAxis
@@ -171,7 +174,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
               />
             ))}
         </Bar>
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
       </MicroBarChartLib>
     </ChartContainer>
   );

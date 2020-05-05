@@ -4,7 +4,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils'
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Legend,
   PolarAngleAxis,
@@ -20,7 +20,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
-import { tooltipContentStyle } from '../../internal/staticProps';
+import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -75,17 +75,20 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     noLegend = false,
     onDataPointClick,
     onLegendClick,
-    chartConfig = {
-      margin: {},
-      legendPosition: 'bottom',
-      dataLabel: true,
-      polarGridType: 'circle'
-    },
     style,
     className,
     tooltip,
     slot
   } = props;
+
+  const chartConfig = useMemo(() => {
+    return {
+      legendPosition: 'bottom',
+      dataLabel: true,
+      polarGridType: 'circle',
+      ...props.chartConfig
+    };
+  }, [props.chartConfig]);
 
   const chartRef = useConsolidatedRef<any>(ref);
 
@@ -159,7 +162,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
             />
           );
         })}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
       </RadarChartLib>
     </ChartContainer>
