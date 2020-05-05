@@ -71,6 +71,9 @@ const TiltedAxisTick = (props) => {
   );
 };
 
+const microBarChartLabel = { position: 'insideBottomRight', fill: ThemingParameters.sapContent_LabelColor };
+const microBarChartMargin = { left: -30, right: 30, top: 40, bottom: 30 };
+
 /**
  * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/next/MicroBarChart';</code>
  * **This component is under active development. The API is not stable yet and might change without further notice.**
@@ -140,10 +143,10 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       slot={slot}
     >
       <MicroBarChartLib
-        margin={{ left: -30, right: 30, top: 40, bottom: 30 }}
-        layout={'vertical'}
+        margin={microBarChartMargin}
+        layout='vertical'
         data={dataset}
-        label={{ position: 'insideBottomRight', fill: ThemingParameters.sapContent_LabelColor }}
+        label={microBarChartLabel}
       >
         <XAxis hide type="number" />
         <YAxis
