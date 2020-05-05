@@ -6,6 +6,7 @@ import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionM
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
 import { VirtualTableRow } from './VirtualTableRow';
+import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 
 interface VirtualTableBodyProps {
   infiniteScroll: boolean;
@@ -188,6 +189,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       innerRef={innerDivRef}
       overscanCount={overscan}
       onScroll={onScroll}
+      direction={getRTL() ? 'rtl' : 'ltr'}
     >
       {VirtualTableRow}
     </FixedSizeList>

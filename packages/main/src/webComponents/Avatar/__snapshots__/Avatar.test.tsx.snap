@@ -3,10 +3,7 @@
 exports[`Avatar Basic Test (generated) 1`] = `
 <ui5-avatar
   background-color="Accent6"
-  icon=""
-  image=""
   image-fit-type="Cover"
-  initials=""
   shape="Circle"
   size="S"
 />

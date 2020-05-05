@@ -5,8 +5,10 @@ import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChar
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { tooltipContentStyle } from '../../internal/staticProps';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color'> {
   /**
@@ -144,12 +146,12 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
             dataset.map((data, index) => (
               <Cell
                 key={index}
-                name={dimension.formatter(data[dimension.accessor])}
+                name={dimension.formatter(getValueByDataKey(data, dimension.accessor, ''))}
                 fill={measure.colors?.[index] ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               />
             ))}
         </Pie>
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
         {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
       </PieChartLib>
     </ChartContainer>

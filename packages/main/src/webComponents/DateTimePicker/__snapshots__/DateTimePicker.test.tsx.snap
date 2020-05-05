@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateTimePicker Basic Test (generated) 1`] = `
+<ui5-datetime-picker
+  primary-calendar-type="Gregorian"
+  value-state="None"
+/>
+`;

@@ -3,8 +3,7 @@
 exports[`TextArea Basic Test (generated) 1`] = `
 <ui5-textarea
   growing-max-lines="0"
-  placeholder=""
   rows="0"
-  value=""
+  value-state="None"
 />
 `;

@@ -10,13 +10,15 @@ export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   disabled?: boolean;
   /**
-   * Determines the format, displayed in the input field.
+   * Determines the format, displayed in the input field.<br/><br/>
+   *
    * Example: HH:mm:ss -> 11:42:35 hh:mm:ss a -> 2:23:15 PM mm:ss -> 12:04 (only minutes and seconds)
    */
   formatPattern?: string;
   /**
-   * Defines a short hint, intended to aid the user with data entry when the <code>ui5-timepicker</code> has no value.
-   * <br><br> <b>Note:</b> When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the <code>ui5-timepicker</code> appear empty - without placeholder or format pattern.
+   * Defines a short hint, intended to aid the user with data entry when the <code>ui5-timepicker</code> has no value.<br/><br/>
+   *
+   * <b>Note:</b> When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the <code>ui5-timepicker</code> appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
   /**
@@ -58,10 +60,9 @@ TimePicker.displayName = 'TimePicker';
 
 TimePicker.defaultProps = {
   disabled: false,
-  formatPattern: '',
   placeholder: undefined,
   readonly: false,
-  value: '',
+  value: undefined,
   valueState: ValueState.None
 };
 

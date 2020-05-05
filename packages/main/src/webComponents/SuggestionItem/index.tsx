@@ -12,7 +12,7 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the item to be displayed as a group item. <br><br> <b>Note:</b> When set, the other properties, such as <code>image</code>, <code>icon</code>, <code>description</code>, etc. will be omitted and only the <code>text</code> will be displayed.
    */
-  group?: string;
+  group?: boolean;
   /**
    * Defines the <code>icon</code> source URI. <br><br> <b>Note:</b> SAP-icons font provides numerous buil-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
@@ -46,8 +46,8 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
  */
 const SuggestionItem: FC<SuggestionItemPropTypes> = withWebComponent<SuggestionItemPropTypes>(
   'ui5-suggestion-item',
-  ['description', 'group', 'icon', 'image', 'info', 'infoState', 'text'],
-  ['iconEnd'],
+  ['description', 'icon', 'image', 'info', 'infoState', 'text'],
+  ['group', 'iconEnd'],
   [],
   []
 );
@@ -55,8 +55,9 @@ const SuggestionItem: FC<SuggestionItemPropTypes> = withWebComponent<SuggestionI
 SuggestionItem.displayName = 'SuggestionItem';
 
 SuggestionItem.defaultProps = {
+  group: false,
   iconEnd: false,
-  text: ''
+  infoState: ValueState.None
 };
 
 export { SuggestionItem };

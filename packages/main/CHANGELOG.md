@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0...v0.9.1) (2020-05-04)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** calculate scrollbar width only if table is scrollable ([#470](https://github.com/SAP/ui5-webcomponents-react/issues/470)) ([ddd19fe](https://github.com/SAP/ui5-webcomponents-react/commit/ddd19fe662c8f633ebc597b286faf8c201551d05)), closes [#467](https://github.com/SAP/ui5-webcomponents-react/issues/467)
+* **web-components-wrapper:** don't generate default props for empty strings ([#469](https://github.com/SAP/ui5-webcomponents-react/issues/469)) ([48505d9](https://github.com/SAP/ui5-webcomponents-react/commit/48505d9e2e375f640a2ed282f97bab1dd650676f))
+
+
+
+
+
+# [0.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.0...v0.9.0) (2020-04-30)
+
+**Note:** Version bump only for package @ui5/webcomponents-react
+
+
+
+
+
+# [1.0.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.18...v1.0.0) (2020-04-30)
+
+
+### Features
+
+* update to @ui5/webcomponents 1.0.0-rc.7 ([#468](https://github.com/SAP/ui5-webcomponents-react/issues/468)) ([3b14676](https://github.com/SAP/ui5-webcomponents-react/commit/3b14676100659f602e08e571c0a63b400b274c82))
+
+
+### BREAKING CHANGES
+
+* *Carousel*: rename prop `cycling` to `cyclic`
+* *Carousel*: replace prop `itemsPerPage` with `itemsPerPageL`, `itemsPerPageM`, `itemsPerPageS`
+* *ThemeProvider*: remove `theme` prop as the UI5 Web Components are now provding all CSS Variables and we rely completely on the Web Components Theme
+* Delete `@ui5/webcomponents-react/lib/ThemingSupport` as it is not needed anymore
+
+
+
+
+
+# [0.9.0-rc.18](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.17...v0.9.0-rc.18) (2020-04-29)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** support RTL ([#466](https://github.com/SAP/ui5-webcomponents-react/issues/466)) ([a99b183](https://github.com/SAP/ui5-webcomponents-react/commit/a99b183fbe8009f65b5b8af825cb85f159db4162)), closes [#460](https://github.com/SAP/ui5-webcomponents-react/issues/460)
+* **MessageBox:** enable closing with esc key ([#463](https://github.com/SAP/ui5-webcomponents-react/issues/463)) ([3377b75](https://github.com/SAP/ui5-webcomponents-react/commit/3377b75c5fbae24db8f599afc72e2b18974ad7cc))
+
+
+
+
+
 # [0.9.0-rc.17](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.16...v0.9.0-rc.17) (2020-04-28)
 
 

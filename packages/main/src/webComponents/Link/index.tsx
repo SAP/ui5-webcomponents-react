@@ -53,8 +53,6 @@ Link.displayName = 'Link';
 Link.defaultProps = {
   design: LinkDesign.Default,
   disabled: false,
-  href: '',
-  target: '',
   wrap: false
 };
 

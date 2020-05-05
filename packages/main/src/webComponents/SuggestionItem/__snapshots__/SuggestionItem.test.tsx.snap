@@ -2,6 +2,6 @@
 
 exports[`SuggestionItem Basic Test (generated) 1`] = `
 <ui5-suggestion-item
-  text=""
+  info-state="None"
 />
 `;

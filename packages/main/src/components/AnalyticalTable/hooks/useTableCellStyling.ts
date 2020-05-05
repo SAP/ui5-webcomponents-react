@@ -1,10 +1,9 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
+
 import { CSSProperties } from 'react';
 
 const getCellProps = (cellProps, { cell: { column }, instance }) => {
-  const lastColumnId = instance.visibleColumns[instance.visibleColumns.length - 1]?.id;
   const columnIndex = instance.visibleColumns.findIndex(({ id }) => id === column.id);
   const { classes } = instance.webComponentsReactProperties;
   const style: CSSProperties = {};
@@ -52,11 +51,6 @@ const getCellProps = (cellProps, { cell: { column }, instance }) => {
     style.padding = 0;
   }
 
-  if (column.id === lastColumnId) {
-    style.paddingRight = `calc(${ThemingParameters.sapScrollBar_Dimension} + 0.5rem)`;
-    style.boxSizing = 'border-box';
-    style.width = `calc(${cellProps.style.width} - ${ThemingParameters.sapScrollBar_Dimension})`;
-  }
   return [
     cellProps,
     {

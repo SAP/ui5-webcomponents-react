@@ -1,5 +1,3 @@
-import { PluginHook } from 'react-table';
-
 const getHeaderProps = (columnProps, { instance, column }) => {
   const { classes } = instance.webComponentsReactProperties;
   return [
@@ -15,7 +13,7 @@ const getHeaderProps = (columnProps, { instance, column }) => {
   ];
 };
 
-export const useTableHeaderStyling: PluginHook<{}> = (hooks) => {
+export const useTableHeaderStyling = (hooks) => {
   hooks.getHeaderProps.push(getHeaderProps);
 };
 useTableHeaderStyling.pluginName = 'useTableHeaderStyling';

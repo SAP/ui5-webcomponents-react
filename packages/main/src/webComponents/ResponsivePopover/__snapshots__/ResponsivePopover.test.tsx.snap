@@ -3,7 +3,6 @@
 exports[`ResponsivePopover Basic Test (generated) 1`] = `
 <ui5-responsive-popover
   horizontal-align="Center"
-  initial-focus=""
   placement-type="Right"
   vertical-align="Center"
 />

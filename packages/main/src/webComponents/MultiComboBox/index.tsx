@@ -78,10 +78,8 @@ MultiComboBox.defaultProps = {
   allowCustomValues: false,
   disabled: false,
   open: false,
-  placeholder: '',
   readonly: false,
   required: false,
-  value: '',
   valueState: ValueState.None
 };
 

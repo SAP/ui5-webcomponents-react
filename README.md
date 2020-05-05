@@ -30,6 +30,9 @@ You can find our documentation under the following links:
 - [Stable Release Documentation](https://sap.github.io/ui5-webcomponents-react/)
 - [Next Release Documentation](https://ui5-webcomponents-react.netlify.app/)
 
+## Migration Guide
+Migrating your app from `v0.8.X` to `v0.9.0` requires a few updates. You can find the most important changes and how to adapt your code to migrate to `v0.9.0` in our [Migration Guide](https://github.com/SAP/ui5-webcomponents-react/blob/master/docs/MigrationGuide.md).
+
 
 ## Package Overview
 

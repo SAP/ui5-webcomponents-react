@@ -1,5 +1,6 @@
 const resolve = require('@rollup/plugin-node-resolve');
-const babel = require('rollup-plugin-babel');
+const commonjs = require('@rollup/plugin-commonjs');
+const { babel } = require('@rollup/plugin-babel');
 const path = require('path');
 const fs = require('fs');
 const json = require('@rollup/plugin-json');
@@ -9,6 +10,9 @@ const { highlightLog } = require('../utils');
 const { asyncCopyTo } = require('../../scripts/utils');
 const glob = require('glob');
 
+process.env.BABEL_ENV = 'production';
+process.env.NODE_ENV = 'production';
+
 const rollupConfigFactory = (pkgName, externals = []) => {
   const LIB_BASE_PATH = path.resolve(PATHS.packages, pkgName, 'src', 'lib');
 
@@ -16,15 +20,19 @@ const rollupConfigFactory = (pkgName, externals = []) => {
 
   const allLibFiles = allFilesAndFolders.filter((file) => fs.statSync(file).isFile());
 
+  console.log(require('@babel/runtime/package.json').version);
+
   const plugins = [
     resolve({
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
+      extensions: ['.mjs', '.js', '.json', '.node', '.jsx', '.ts', '.tsx']
     }),
+    commonjs(),
     json(),
     babel({
-      presets: ['babel-preset-react-app/prod'],
-      plugins: ['@babel/plugin-proposal-nullish-coalescing-operator'],
-      extensions: ['.js', '.jsx', '.ts', '.tsx']
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      babelHelpers: 'runtime',
+      configFile: path.resolve(PATHS.root, 'babel.config.json')
+
     })
   ];
 
@@ -34,6 +42,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       'react',
       'react-dom',
       'react-jss',
+      '@babel/runtime',
       packageJson.name,
       ...Object.keys(packageJson.dependencies || {}),
       ...Object.keys(packageJson.peerDependencies || {}),

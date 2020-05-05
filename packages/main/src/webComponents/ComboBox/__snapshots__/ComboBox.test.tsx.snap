@@ -3,9 +3,6 @@
 exports[`ComboBox Basic Test (generated) 1`] = `
 <ui5-combobox
   filter="StartsWithPerTerm"
-  filter-value=""
-  placeholder=""
-  value=""
   value-state="None"
 />
 `;

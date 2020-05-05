@@ -22,9 +22,11 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
    */
   multiple?: boolean;
   /**
-   * Determines the name with which the <code>ui5-file-uploader</code> will be submitted in an HTML form.
-   * <br><br> <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code>
-   * <br><br> <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-file-uploader</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * Determines the name with which the <code>ui5-file-uploader</code> will be submitted in an HTML form.<br/><br/>
+   *
+   * <b>Important:</b> For the <code>name</code> property to have effect, you must add the following import to your project: <code>import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";</code><br/><br/>
+   *
+   * <b>Note:</b> When set, a native <code>input</code> HTML element will be created inside the <code>ui5-file-uploader</code> so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
   /**
@@ -46,7 +48,7 @@ export interface FileUploaderPropTypes extends Omit<WithWebComponentPropTypes, '
   /**
    * Event is fired when the value of the file path has been changed. <b>Note:</b> Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
    */
-  onChange?: (event: CustomEvent<{ files: undefined }>) => void;
+  onChange?: (event: CustomEvent<{ files: FileList }>) => void;
 }
 
 /**
@@ -68,9 +70,6 @@ FileUploader.defaultProps = {
   disabled: false,
   hideInput: false,
   multiple: false,
-  name: '',
-  placeholder: '',
-  value: '',
   valueState: ValueState.None
 };
 

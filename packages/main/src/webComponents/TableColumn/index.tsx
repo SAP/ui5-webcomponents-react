@@ -38,7 +38,8 @@ const TableColumn: FC<TableColumnPropTypes> = withWebComponent<TableColumnPropTy
 TableColumn.displayName = 'TableColumn';
 
 TableColumn.defaultProps = {
-  demandPopin: false
+  demandPopin: false,
+  minWidth: Infinity
 };
 
 export { TableColumn };

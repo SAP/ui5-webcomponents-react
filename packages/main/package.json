@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.9.0-rc.17",
+  "version": "0.9.1",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -16,15 +16,19 @@
   "sideEffects": [
     "@ui5/webcomponents-icons/dist/icons/*",
     "@ui5/webcomponents/dist/*",
-    "@ui5/webcomponents-fiori/dist/*",
-    "./lib/ThemingSupport.js"
+    "@ui5/webcomponents-fiori/dist/*"
   ],
   "scripts": {
-    "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts",
-    "build": "rollup -c rollup.config.js"
+    "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts assets json-imports",
+    "build": "npm-run-all -s build:i18n build:rollup",
+    "build:rollup": "rollup -c rollup.config.js",
+    "build:i18n": "npm-run-all -s build:i18n-bundles build:i18n-default build:i18n-imports",
+    "build:i18n-bundles": "mkdirp assets/i18n && node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/toJSON.js src/i18n assets/i18n",
+    "build:i18n-default": "mkdirp assets/i18n && node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/defaults.js src/i18n assets/i18n && tsc assets/i18n/i18n-defaults.js --allowJs --declaration --emitDeclarationOnly --declarationDir assets/i18n",
+    "build:i18n-imports": "mkdirp json-imports && node ../../scripts/generate-json-imports/i18n.js"
   },
   "dependencies": {
-    "@ui5/webcomponents-react-base": "^0.9.0-rc.16",
+    "@ui5/webcomponents-react-base": "^0.9.0",
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "^5.0.4",
     "react-jss": "10.1.1",
@@ -32,10 +36,10 @@
     "react-window": "^1.8.5"
   },
   "peerDependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.6",
-    "@ui5/webcomponents-base": "0.19.0",
-    "@ui5/webcomponents-fiori": "1.0.0-rc.6",
-    "@ui5/webcomponents-icons": "1.0.0-rc.6",
+    "@ui5/webcomponents": "1.0.0-rc.7",
+    "@ui5/webcomponents-base": "0.20.0",
+    "@ui5/webcomponents-fiori": "1.0.0-rc.7",
+    "@ui5/webcomponents-icons": "1.0.0-rc.7",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },

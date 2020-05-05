@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.0...v0.9.0) (2020-04-30)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+# [1.0.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.18...v1.0.0) (2020-04-30)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+# [0.9.0-rc.18](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.17...v0.9.0-rc.18) (2020-04-29)
+
+
+### Bug Fixes
+
+* **Charts - New:** fix rendering of x and y axis ticks ([#462](https://github.com/SAP/ui5-webcomponents-react/issues/462)) ([e94b663](https://github.com/SAP/ui5-webcomponents-react/commit/e94b663f729483cf0ab7c97d422617315b4b3e4c))
+* **Charts - New:** tooltip supports dark theme ([#465](https://github.com/SAP/ui5-webcomponents-react/issues/465)) ([e66ff58](https://github.com/SAP/ui5-webcomponents-react/commit/e66ff58318156e0ba8ece08aaf4d679ac3a9dd28))
+* **ComposedChart:** fix padding calculation for vertical layout ([#464](https://github.com/SAP/ui5-webcomponents-react/issues/464)) ([9347f16](https://github.com/SAP/ui5-webcomponents-react/commit/9347f161462715cd99ec84b64ce5376257ab4443))
+
+
+
+
+
 # [0.9.0-rc.17](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.16...v0.9.0-rc.17) (2020-04-28)
 
 

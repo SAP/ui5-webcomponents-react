@@ -1,4 +1,5 @@
 import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';
+import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Panel';
 import React, { FC, ReactNode } from 'react';
@@ -17,6 +18,10 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
    * Determines whether the <code>ui5-panel</code> is in a fixed state that is not expandable/collapsible by user interaction.
    */
   fixed?: boolean;
+  /**
+   * Defines the "aria-level" of <code>ui5-panel</code> heading, set by the <code>headerText</code>. <br><br> Available options are: <code>"H6"</code> to <code>"H1"</code>.
+   */
+  headerLevel?: TitleLevel;
   /**
    * This property is used to set the header text of the <code>ui5-panel</code>. The text is visible in both expanded and collapsed states. <br><br> <b>Note:</b> This property is overridden by the <code>header</code> slot.
    */
@@ -38,7 +43,7 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
  */
 const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(
   'ui5-panel',
-  ['accessibleRole', 'headerText'],
+  ['accessibleRole', 'headerLevel', 'headerText'],
   ['collapsed', 'fixed'],
   ['header'],
   []
@@ -50,7 +55,7 @@ Panel.defaultProps = {
   accessibleRole: PanelAccessibleRoles.Form,
   collapsed: false,
   fixed: false,
-  headerText: ''
+  headerLevel: TitleLevel.H2
 };
 
 export { Panel };

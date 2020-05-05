@@ -2,8 +2,11 @@ import '@ui5/webcomponents-icons/dist/icons/decline';
 import '@ui5/webcomponents-icons/dist/icons/message-error';
 import '@ui5/webcomponents-icons/dist/icons/message-success';
 import '@ui5/webcomponents-icons/dist/icons/message-warning';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { COLLAPSE_GROUP, EXPAND_GROUP, SHOW_LESS, SHOW_MORE } from '@ui5/webcomponents-react/assets/i18n/i18n-defaults';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
@@ -14,7 +17,6 @@ import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Priority } from '@ui5/webcomponents-react/lib/Priority';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React, { FC, forwardRef, ReactNode, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './Notification.jss';
 
@@ -238,6 +240,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
 
     const passThroughProps = usePassThroughHtmlProps(props, ['onClick', 'onClose']);
 
+    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     if (!visibleState) return null;
     return (
       <>
@@ -286,7 +289,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                   {!noShowMoreButton && (
                     <Button design={ButtonDesign.Transparent} onClick={handleShowMore}>
-                      {showMore ? 'Show Less' : 'Show More'}
+                      {i18nBundle.getText(showMore ? SHOW_LESS : SHOW_MORE)}
                     </Button>
                   )}
                   {footer}
@@ -299,7 +302,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
                 onClick={handleShowNotificationGroup}
                 className={classes.showGroup}
               >
-                {showChildren ? 'Collapse Group' : 'Expand Group'}
+                {i18nBundle.getText(showChildren ? COLLAPSE_GROUP : EXPAND_GROUP)}
               </Button>
             )}
           </div>

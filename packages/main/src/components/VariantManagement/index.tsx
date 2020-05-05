@@ -1,9 +1,11 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { CANCEL } from '@ui5/webcomponents-react/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/lib/List';
@@ -104,13 +106,14 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
       [popoverRef]
     );
 
+    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const footerButtons = useMemo(() => {
       return (
         <Button className={classes.footer} onClick={handleCancelButtonClick} design={ButtonDesign.Emphasized}>
-          Cancel
+          {i18nBundle.getText(CANCEL)}
         </Button>
       );
-    }, [classes.footer, handleCancelButtonClick]);
+    }, [classes.footer, handleCancelButtonClick, i18nBundle]);
 
     const getItemByKey = (key) => {
       return variantItems?.find((item) => item.key === key);

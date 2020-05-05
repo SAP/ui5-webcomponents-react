@@ -17,7 +17,6 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
-import { useSecondaryDimensionLabel } from '../../hooks/useLabelElements';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
@@ -26,6 +25,7 @@ import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
+import { tickLineConfig, tooltipContentStyle } from '../../internal/staticProps';
 
 const formatYAxisTicks = (tick = '') => {
   const splitTick = tick.split(' ');
@@ -195,15 +195,14 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           <XAxis
             interval={0}
             type="number"
-            tick={<XAxisTicks config={primaryMeasure} />}
-            axisLine={chartConfig.xAxisVisible ?? true}
+            tick={<XAxisTicks config={primaryMeasure} chartRef={chartRef} />}
+            axisLine={chartConfig.xAxisVisible ?? false}
+            tickLine={tickLineConfig}
             tickFormatter={primaryMeasure?.formatter}
           />
         )}
         {(chartConfig.yAxisVisible ?? true) &&
           dimensions.map((dimension, index) => {
-            const YAxisLabel =
-              index > 0 ? useSecondaryDimensionLabel(true, dimension.formatter) : <YAxisTicks config={dimension} />;
             return (
               <YAxis
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
@@ -211,7 +210,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                tick={YAxisLabel}
+                tick={<YAxisTicks config={dimension} level={index} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
                 yAxisId={index}
@@ -244,7 +243,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             label={chartConfig.referenceLine.label}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} />
+        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
         {chartConfig.zoomingTool && (
           <Brush
             y={10}

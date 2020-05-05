@@ -14,8 +14,9 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
    */
   filter?: string;
   /**
-   * Defines the "live" value of the <code>ui5-combobox</code>. <br><br> <b>Note:</b> The property is updated upon typing.
-   * <br><br> <b>Note:</b> Initially the filter value is synced with value.
+   * Defines the "live" value of the <code>ui5-combobox</code>. <br><br> <b>Note:</b> The property is updated upon typing.<br/><br/>
+   *
+   * <b>Note:</b> Initially the filter value is synced with value.
    */
   filterValue?: string;
   /**
@@ -74,11 +75,9 @@ ComboBox.displayName = 'ComboBox';
 ComboBox.defaultProps = {
   disabled: false,
   filter: 'StartsWithPerTerm',
-  filterValue: '',
-  placeholder: '',
+  loading: false,
   readonly: false,
   required: false,
-  value: '',
   valueState: ValueState.None
 };
 

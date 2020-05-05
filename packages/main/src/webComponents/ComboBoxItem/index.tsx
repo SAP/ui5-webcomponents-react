@@ -25,8 +25,6 @@ const ComboBoxItem: FC<ComboBoxItemPropTypes> = withWebComponent<ComboBoxItemPro
 
 ComboBoxItem.displayName = 'ComboBoxItem';
 
-ComboBoxItem.defaultProps = {
-  text: ''
-};
+ComboBoxItem.defaultProps = {};
 
 export { ComboBoxItem };

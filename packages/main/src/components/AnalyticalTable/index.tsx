@@ -44,6 +44,7 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
+import { useRTL } from './hooks/useRTL';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { useTableCellStyling } from './hooks/useTableCellStyling';
 import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
@@ -247,8 +248,15 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useDynamicColumnWidths,
     useTableCellStyling,
     useToggleRowExpand,
-    ...tableHooks
+    ...tableHooks,
+    useRTL
   );
+
+  // scroll bar detection
+  useEffect(() => {
+    const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
+    dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
+  }, [rows.length, minRows, visibleRows]);
 
   const updateTableClientWidth = useCallback(() => {
     if (tableRef.current) {
@@ -378,7 +386,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                     // eslint-disable-next-line react/jsx-key
                     <ColumnHeader
                       {...column.getHeaderProps()}
-                      isLastColumn={index === headerGroup.headers.length - 1}
                       onSort={onSort}
                       onGroupBy={onGroupByChanged}
                       onDragStart={handleDragStart}
