@@ -154,7 +154,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               .find((key) => payload[key] === value),
             value,
             payload: payload.payload,
-            xIndex: i
+            dataIndex: i
           })
         );
       }

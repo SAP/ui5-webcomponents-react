@@ -155,7 +155,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 : payload[key] === payload.value && key !== 'value'
             )[0],
             value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
-            xIndex: eventOrIndex,
+            dataIndex: eventOrIndex,
             payload: payload.payload
           })
         );

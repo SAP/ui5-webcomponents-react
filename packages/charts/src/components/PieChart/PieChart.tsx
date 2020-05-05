@@ -103,7 +103,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
             value: payload.value,
             dataKey: measure.accessor,
             name: payload.name,
-            payload: payload.payload
+            payload: payload.payload,
+            dataIndex: index
           })
         );
       }

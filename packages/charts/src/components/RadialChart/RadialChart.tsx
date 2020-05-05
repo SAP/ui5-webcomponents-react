@@ -11,7 +11,7 @@ export interface RadialChartProps extends CommonProps {
   maxValue?: number;
   displayValue?: number | string;
   color?: CSSProperties['color'];
-  onDataPointClick?: (event: CustomEvent<{ value: unknown; payload: unknown; xIndex: number }>) => void;
+  onDataPointClick?: (event: CustomEvent<{ value: unknown; payload: unknown; dataIndex: number }>) => void;
 }
 
 /**
@@ -34,7 +34,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
           enrichEventWithDetails(event, {
             value: payload.value,
             payload: payload.payload,
-            xIndex: i
+            dataIndex: i
           })
         );
       }

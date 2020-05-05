@@ -114,7 +114,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
               value: eventOrIndex.value,
               dataKey: eventOrIndex.dataKey,
               name: eventOrIndex.payload.label,
-              xIndex: eventOrIndex.index,
+              dataIndex: eventOrIndex.index,
               payload: eventOrIndex.payload
             }
           )
