@@ -65,16 +65,20 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     onDataPointClick,
     onLegendClick,
     centerLabel,
-    chartConfig = {
-      legendPosition: 'bottom',
-      paddingAngle: 0,
-      innerRadius: undefined
-    },
     style,
     className,
     tooltip,
     slot
   } = props;
+
+  const chartConfig = useMemo(() => {
+    return {
+      legendPosition: 'bottom',
+      paddingAngle: 0,
+      ...props.chartConfig
+    };
+  }, [props.chartConfig]);
+
   const dimension: DimensionConfig = useMemo(
     () => ({
       formatter: (d) => d,
