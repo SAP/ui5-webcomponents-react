@@ -131,6 +131,10 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     if (column.isGrouped) margin++;
     if (isFiltered) margin++;
 
+    if (margin === 0) {
+      return {};
+    }
+
     if (margin > 0) margin += 0.5;
 
     if (getRTL()) {
@@ -184,12 +188,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       onDragEnd={onDragEnd}
       data-column-id={id}
     >
-      <div
-        style={innerStyle}
-        onClick={onOpenPopover}
-        className={classes.header}
-        data-h-align={column.hAlign}
-      >
+      <div style={innerStyle} onClick={onOpenPopover} className={classes.header} data-h-align={column.hAlign}>
         <Text
           tooltip={typeof children === 'string' ? children : null}
           wrapping={false}

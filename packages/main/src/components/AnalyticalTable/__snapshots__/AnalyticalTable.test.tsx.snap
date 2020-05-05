@@ -38,10 +38,10 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -81,6 +81,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -96,10 +97,10 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -139,6 +140,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -154,10 +156,10 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -197,6 +199,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -212,10 +215,10 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -256,6 +259,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -554,10 +558,10 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -597,6 +601,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -612,10 +617,10 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -655,6 +660,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -670,10 +676,10 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -713,6 +719,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -728,10 +735,10 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -772,6 +779,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -1070,10 +1078,10 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -1113,6 +1121,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -1128,10 +1137,10 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -1171,6 +1180,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -1186,10 +1196,10 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -1229,6 +1239,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -1244,10 +1255,10 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -1288,6 +1299,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -1573,7 +1585,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             style="cursor: auto; padding: 0px;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             />
             <div
               class="TableColumnHeader-iconContainer-0"
@@ -1590,10 +1602,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -1646,6 +1658,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -1661,10 +1674,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -1717,6 +1730,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -1732,10 +1746,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -1788,6 +1802,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -1803,10 +1818,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -1860,6 +1875,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -2229,10 +2245,10 @@ exports[`AnalyticalTable custom row height 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -2272,6 +2288,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -2287,10 +2304,10 @@ exports[`AnalyticalTable custom row height 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -2330,6 +2347,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -2345,10 +2363,10 @@ exports[`AnalyticalTable custom row height 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -2388,6 +2406,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -2403,10 +2422,10 @@ exports[`AnalyticalTable custom row height 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -2447,6 +2466,7 @@ exports[`AnalyticalTable custom row height 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -2745,10 +2765,10 @@ exports[`AnalyticalTable render without data 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -2788,6 +2808,7 @@ exports[`AnalyticalTable render without data 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -2803,10 +2824,10 @@ exports[`AnalyticalTable render without data 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -2846,6 +2867,7 @@ exports[`AnalyticalTable render without data 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -2861,10 +2883,10 @@ exports[`AnalyticalTable render without data 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -2904,6 +2926,7 @@ exports[`AnalyticalTable render without data 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -2919,10 +2942,10 @@ exports[`AnalyticalTable render without data 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -2963,6 +2986,7 @@ exports[`AnalyticalTable render without data 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -3018,10 +3042,10 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -3061,6 +3085,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -3076,10 +3101,10 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -3119,6 +3144,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -3134,10 +3160,10 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -3177,6 +3203,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -3192,10 +3219,10 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -3236,6 +3263,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -3534,10 +3562,10 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -3577,6 +3605,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -3592,10 +3621,10 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -3635,6 +3664,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -3650,10 +3680,10 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -3693,6 +3723,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -3708,10 +3739,10 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -3752,6 +3783,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -4050,10 +4082,10 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -4093,6 +4125,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -4108,10 +4141,10 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -4151,6 +4184,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -4166,10 +4200,10 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -4209,6 +4243,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -4224,10 +4259,10 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -4268,6 +4303,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -4566,10 +4602,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -4609,6 +4645,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -4624,10 +4661,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -4667,6 +4704,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -4682,10 +4720,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -4725,6 +4763,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -4740,10 +4779,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -4784,6 +4823,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -5085,7 +5125,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             style="cursor: auto; padding: 0px;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <div
                 style="width: 6px;"
@@ -5109,7 +5149,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             style="cursor: auto; padding: 0px;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             />
             <div
               class="TableColumnHeader-iconContainer-0"
@@ -5126,10 +5166,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -5169,6 +5209,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -5184,10 +5225,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -5227,6 +5268,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -5242,10 +5284,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -5285,6 +5327,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -5300,10 +5343,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -5344,6 +5387,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -5726,10 +5770,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Name"
             >
               Name
@@ -5769,6 +5813,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -5784,10 +5829,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Age"
             >
               Age
@@ -5827,6 +5872,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -5842,10 +5888,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
               title="Friend Name"
             >
               Friend Name
@@ -5885,6 +5931,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
@@ -5900,10 +5947,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
         >
           <div
             class="TableColumnHeader-header-0"
-            style="cursor: pointer; max-width: calc(100% - 16px);"
+            style="cursor: pointer;"
           >
             <span
-              style="text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap;"
+              class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
             >
               <span>
                 Friend Age
@@ -5944,6 +5991,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
           </ui5-popover>
           <div
             class="TableColumnHeader-resizer-0"
+            data-resizer="true"
             draggable="false"
             role="separator"
             style="cursor: ew-resize;"
