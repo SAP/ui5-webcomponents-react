@@ -72,7 +72,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
           background={radialBarBackground}
           dataKey="value"
           cornerRadius="50%"
-          fill={color ?? `var(--sapChart_OrderedColor_${(0 % 12) + 1})`}
+          fill={color ?? ThemingParameters.sapChart_OrderedColor_1}
           onClick={onDataPointClickInternal}
         />
         <text
