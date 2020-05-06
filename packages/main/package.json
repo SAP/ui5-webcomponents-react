@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -28,7 +28,7 @@
     "build:i18n-imports": "mkdirp json-imports && node ../../scripts/generate-json-imports/i18n.js"
   },
   "dependencies": {
-    "@ui5/webcomponents-react-base": "^0.9.0",
+    "@ui5/webcomponents-react-base": "^0.9.2",
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "^5.0.4",
     "react-jss": "10.1.1",
