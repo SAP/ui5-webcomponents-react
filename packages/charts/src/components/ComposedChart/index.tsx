@@ -159,8 +159,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex, event) => {
-      if (payload.name && onDataPointClick) {
-        onDataPointClick(
+      if (payload.name) {
+        typeof onDataPointClick === 'function' && onDataPointClick(
           enrichEventWithDetails(event ?? eventOrIndex, {
             value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
             dataIndex: payload.index ?? eventOrIndex,
@@ -176,7 +176,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           })
         );
       } else {
-        onDataPointClick(
+        typeof onDataPointClick === 'function' && onDataPointClick(
           enrichEventWithDetails(
             {},
             {
