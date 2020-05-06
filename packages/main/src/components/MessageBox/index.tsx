@@ -24,7 +24,7 @@ import {
   YES,
   SUCCESS,
   WARNING
-} from '@ui5/webcomponents-react/assets/i18n/i18n-defaults';
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';

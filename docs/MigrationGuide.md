@@ -76,9 +76,8 @@ UI5 Web Components and UI5 Web Components for React are both coming with the `sa
 In case you want to change your applications' theme, you have to import a couple of modules:
 ```js
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
-import '@ui5/webcomponents-theme-base/dist/Assets';
-import '@ui5/webcomponents/dist/generated/json-imports/Themes';
-import '@ui5/webcomponents-fiori/dist/generated/json-imports/Themes'; // only if you are using the ShellBar, Product Switch or UploadCollection
+import '@ui5/webcomponents/dist/Assets';
+import '@ui5/webcomponents-fiori/dist/Assets'; // only if you are using the ShellBar, Product Switch or UploadCollection
 ```
 
 Now you can call `setTheme` with a string parameter of the new theme.  
