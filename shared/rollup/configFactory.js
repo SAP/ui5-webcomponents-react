@@ -32,7 +32,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       babelHelpers: 'runtime',
       configFile: path.resolve(PATHS.root, 'babel.config.json')
-
     })
   ];
 
@@ -42,7 +41,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       'react',
       'react-dom',
       'react-jss',
-      '@babel/runtime',
       packageJson.name,
       ...Object.keys(packageJson.dependencies || {}),
       ...Object.keys(packageJson.peerDependencies || {}),
