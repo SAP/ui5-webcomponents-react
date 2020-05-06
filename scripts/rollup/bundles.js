@@ -8,19 +8,19 @@ const bundles = [
     label: 'main',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD],
     entry: 'main',
-    externals: ['@ui5/webcomponents-react', '@ui5/webcomponents-base', '@babel/runtime']
+    externals: ['@ui5/webcomponents-react', '@ui5/webcomponents-base']
   },
   {
     label: 'base',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD],
     entry: 'base',
-    externals: ['@ui5/webcomponents-react-base', '@ui5/webcomponents-base', '@babel/runtime']
+    externals: ['@ui5/webcomponents-react-base', '@ui5/webcomponents-base']
   },
   {
     label: 'charts',
     bundleTypes: [bundleTypes.NODE_DEV, bundleTypes.NODE_PROD],
     entry: 'charts',
-    externals: ['@ui5/webcomponents-react-charts', '@ui5/webcomponents', '@ui5/webcomponents-base', '@babel/runtime']
+    externals: ['@ui5/webcomponents-react-charts', '@ui5/webcomponents', '@ui5/webcomponents-base']
   }
 ];
 
@@ -28,7 +28,7 @@ const bundles = [
 // Based on deep-freeze by substack (public domain)
 function deepFreeze(o) {
   Object.freeze(o);
-  Object.getOwnPropertyNames(o).forEach(function(prop) {
+  Object.getOwnPropertyNames(o).forEach(function (prop) {
     if (
       o[prop] !== null &&
       (typeof o[prop] === 'object' || typeof o[prop] === 'function') &&
