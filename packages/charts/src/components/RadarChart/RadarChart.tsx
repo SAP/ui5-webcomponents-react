@@ -84,6 +84,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
   const chartConfig = useMemo(() => {
     return {
       legendPosition: 'bottom',
+      legendHorizontalAlign: 'center',
       dataLabel: true,
       polarGridType: 'circle',
       ...props.chartConfig
@@ -163,7 +164,13 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
           );
         })}
         <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
+        {!noLegend && (
+          <Legend
+            verticalAlign={chartConfig.legendPosition}
+            align={chartConfig.legendHorizontalAlign}
+            onClick={onItemLegendClick}
+          />
+        )}
       </RadarChartLib>
     </ChartContainer>
   );
