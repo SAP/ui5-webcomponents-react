@@ -21,6 +21,7 @@ import {
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
+import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
@@ -162,6 +163,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
 
+  const [xAxisHeight] = useObserveXAxisHeights(chartRef, 1);
+
   return (
     <ChartContainer
       dataset={dataset}
@@ -187,6 +190,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             axisLine={chartConfig.xAxisVisible}
             tickLine={tickLineConfig}
             tickFormatter={primaryMeasure?.formatter}
+            height={xAxisHeight}
           />
         )}
         {chartConfig.yAxisVisible &&

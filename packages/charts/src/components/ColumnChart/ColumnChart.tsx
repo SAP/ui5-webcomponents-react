@@ -21,6 +21,7 @@ import {
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
+import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
@@ -165,6 +166,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
+  const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
 
   return (
     <ChartContainer
@@ -194,6 +196,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 tick={<XAxisTicks config={dimension} level={index} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
+                height={xAxisHeights[index]}
               />
             );
           })}

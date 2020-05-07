@@ -24,6 +24,7 @@ import {
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
+import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
@@ -129,8 +130,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     dataset.some(({ type }) => type === 'bar') ? BAR_DEFAULT_PADDING : 0
   );
 
-  const [xAxisHeights, setXAxisHeights] = useState(props.dimensions.map(() => 20));
-
   const chartConfig = useMemo(() => {
     return {
       yAxisVisible: false,
@@ -207,6 +206,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, layout === 'vertical' ? dimensions : measures);
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
+  const xAxisHeights = useObserveXAxisHeights(chartRef, layout === 'vertical' ? 1 : props.dimensions.length);
 
   const measureAxisProps = {
     axisLine: chartConfig.yAxisVisible,
@@ -233,12 +233,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           });
           setCurrentBarWidth(totalBarWidth);
         }
-        const calculatedXAxisHeights = props.dimensions.map(() => 20);
-        chartRef.current?.querySelectorAll('.xAxis').forEach((xAxis, index) => {
-          calculatedXAxisHeights[index] = xAxis?.getBBox()?.height;
-        });
-        console.log(calculatedXAxisHeights);
-        setXAxisHeights(calculatedXAxisHeights);
       }
     }, 50),
     [chartRef, setCurrentBarWidth, layout, props.dimensions]

@@ -21,6 +21,7 @@ import {
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
+import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
@@ -155,6 +156,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
+  const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
 
   return (
     <ChartContainer
@@ -184,6 +186,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                 tick={<XAxisTicks config={dimension} level={index} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
+                height={xAxisHeights[index]}
               />
             );
           })}
