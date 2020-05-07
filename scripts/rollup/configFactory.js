@@ -6,8 +6,7 @@ const fs = require('fs');
 const json = require('@rollup/plugin-json');
 const micromatch = require('micromatch');
 const PATHS = require('../../config/paths');
-const { highlightLog } = require('../utils');
-const { asyncCopyTo } = require('../../scripts/utils');
+const { asyncCopyTo, highlightLog } = require('../utils');
 const glob = require('glob');
 
 process.env.BABEL_ENV = 'production';
