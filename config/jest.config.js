@@ -32,8 +32,7 @@ module.exports = {
   transformIgnorePatterns: ['node_modules/(?!(@ui5|lit-html))'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
-    '^@ui5/webcomponents-react/assets/(.*)$': '<rootDir>/packages/main/assets/$1',
-    '^@ui5/webcomponents-react/json-imports/(.*)$': '<rootDir>/packages/main/json-imports/$1',
+    '^@ui5/webcomponents-react/dist/(.*)$': '<rootDir>/packages/main/dist/$1',
     '^@ui5/webcomponents-react/(.*)$': '<rootDir>/packages/main/src/$1',
     '^@ui5/webcomponents-react-base/third-party/(.*)$': '<rootDir>/packages/base/third-party/$1',
     '^@ui5/webcomponents-react-base/(.*)$': '<rootDir>/packages/base/src/$1',
