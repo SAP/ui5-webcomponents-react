@@ -20,28 +20,21 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
-const formatYAxisTicks = (tick = '') => {
-  const splitTick = tick.split(' ');
-  return splitTick.length > 3
-    ? `${splitTick.slice(0, 3).join(' ')}...`
-    : tick.length > 11
-    ? `${tick.slice(0, 12)}...`
-    : tick;
-};
-
 const dimensionDefaults = {
-  formatter: formatYAxisTicks
+  formatter: defaultFormatter
 };
 
 const measureDefaults = {
-  formatter: (d) => d,
+  formatter: defaultFormatter,
   opacity: 1
 };
 
@@ -120,7 +113,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       gridStroke: ThemingParameters.sapList_BorderColor,
       gridHorizontal: true,
       gridVertical: false,
-      legendPosition: 'top',
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
       barGap: 3,
       zoomingTool: false,
       ...props.chartConfig
@@ -164,14 +158,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const marginChart = useChartMargin(
-    dataset,
-    dimensions,
-    chartConfig.margin,
-    true,
-    dimensions.length > 1,
-    chartConfig.zoomingTool
-  );
+  const [width, legendPosition] = useLongestYAxisLabel(dataset, dimensions);
+
+  const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
 
   return (
     <ChartContainer
@@ -194,13 +183,13 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
           <XAxis
             interval={0}
             type="number"
-            tick={<XAxisTicks config={primaryMeasure} chartRef={chartRef} />}
+            tick={<XAxisTicks config={primaryMeasure} />}
             axisLine={chartConfig.xAxisVisible}
             tickLine={tickLineConfig}
             tickFormatter={primaryMeasure?.formatter}
           />
         )}
-        {(chartConfig.yAxisVisible) &&
+        {chartConfig.yAxisVisible &&
           dimensions.map((dimension, index) => {
             return (
               <YAxis
@@ -213,6 +202,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
                 tickLine={index < 1}
                 axisLine={index < 1}
                 yAxisId={index}
+                width={width}
               />
             );
           })}
@@ -234,7 +224,14 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             />
           );
         })}
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
+        {!noLegend && (
+          <Legend
+            verticalAlign={chartConfig.legendPosition}
+            align={chartConfig.legendHorizontalAlign}
+            onClick={onItemLegendClick}
+            wrapperStyle={legendPosition}
+          />
+        )}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}

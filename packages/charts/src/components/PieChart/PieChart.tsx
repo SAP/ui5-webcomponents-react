@@ -8,6 +8,7 @@ import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'rech
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color'> {
@@ -83,14 +84,14 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
 
   const dimension: DimensionConfig = useMemo(
     () => ({
-      formatter: (d) => d,
+      formatter: defaultFormatter,
       ...props.dimension
     }),
     [props.dimension]
   );
   const measure: MeasureConfig = useMemo(
     () => ({
-      formatter: (d) => d,
+      formatter: defaultFormatter,
       ...props.measure
     }),
     [props.measure]
