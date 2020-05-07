@@ -21,16 +21,14 @@ export const XAxisTicks: FC<XAxisTicksProps> = (props: XAxisTicksProps) => {
   const shouldRotate = bandWidth <= 100;
 
   if (level > 0) {
-    return <SecondaryDimensionTicksXAxis {...props} rotate={shouldRotate} />;
+    return <SecondaryDimensionTicksXAxis {...props} />;
   }
 
   const formattedValue = config.formatter(payload.value);
-  let textToDisplay;
+  let textToDisplay = formattedValue;
   if (shouldRotate) {
     textToDisplay = truncateLongLabel(formattedValue, 11);
-  } else if (getTextWidth(formattedValue) <= bandWidth) {
-    textToDisplay = formattedValue;
-  } else {
+  } else if (getTextWidth(formattedValue) > bandWidth) {
     for (let i = `${formattedValue}`.length; i > 0; i--) {
       textToDisplay = truncateLongLabel(formattedValue, i);
       if (getTextWidth(textToDisplay) <= bandWidth) {
