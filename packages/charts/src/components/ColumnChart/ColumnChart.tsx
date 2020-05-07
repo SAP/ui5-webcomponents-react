@@ -20,11 +20,14 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
+import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
 interface MeasureConfig extends IChartMeasure {
@@ -76,11 +79,11 @@ export interface ColumnChartProps extends RechartBaseProps {
 }
 
 const dimensionDefaults = {
-  formatter: (d) => d
+  formatter: defaultFormatter
 };
 
 const measureDefaults = {
-  formatter: (d) => d,
+  formatter: defaultFormatter,
   opacity: 1
 };
 
@@ -108,7 +111,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       gridStroke: ThemingParameters.sapList_BorderColor,
       gridHorizontal: true,
       gridVertical: false,
-      legendPosition: 'top',
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
       barGap: 3,
       zoomingTool: false,
       ...props.chartConfig
@@ -123,6 +127,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   );
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
+
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
 
   const primaryDimension = dimensions[0];
   const primaryMeasure = measures[0];
@@ -159,14 +165,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const marginChart = useChartMargin(
-    dataset,
-    measures,
-    chartConfig.margin,
-    false,
-    dimensions.length > 1,
-    chartConfig.zoomingTool
-  );
+  const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
+  const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
 
   return (
     <ChartContainer
@@ -193,9 +193,10 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-                tick={<XAxisTicks config={dimension} chartRef={chartRef} level={index} />}
+                tick={<XAxisTicks config={dimension} level={index} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
+                height={xAxisHeights[index]}
               />
             );
           })}
@@ -205,6 +206,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           yAxisId="left"
           interval={0}
           tick={<YAxisTicks config={primaryMeasure} />}
+          width={yAxisWidth}
         />
         {chartConfig.secondYAxis?.dataKey && (
           <YAxis
@@ -235,7 +237,14 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             />
           );
         })}
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
+        {!noLegend && (
+          <Legend
+            verticalAlign={chartConfig.legendPosition}
+            align={chartConfig.legendHorizontalAlign}
+            onClick={onItemLegendClick}
+            wrapperStyle={legendPosition}
+          />
+        )}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
