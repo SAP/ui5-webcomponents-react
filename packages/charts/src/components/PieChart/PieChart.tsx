@@ -8,6 +8,7 @@ import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'rech
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color'> {
@@ -75,6 +76,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     return {
       margin: { right: 30, left: 30, bottom: 30, top: 30, ...(props.chartConfig?.margin ?? {}) },
       legendPosition: 'bottom',
+      legendHorizontalAlign: 'center',
       paddingAngle: 0,
       ...props.chartConfig
     };
@@ -82,14 +84,14 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
 
   const dimension: DimensionConfig = useMemo(
     () => ({
-      formatter: (d) => d,
+      formatter: defaultFormatter,
       ...props.dimension
     }),
     [props.dimension]
   );
   const measure: MeasureConfig = useMemo(
     () => ({
-      formatter: (d) => d,
+      formatter: defaultFormatter,
       ...props.measure
     }),
     [props.measure]
@@ -148,16 +150,22 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&
-          dataset.map((data, index) => (
-            <Cell
-              key={index}
-              name={dimension.formatter(getValueByDataKey(data, dimension.accessor, ''))}
-              fill={measure.colors?.[index] ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-            />
-          ))}
+            dataset.map((data, index) => (
+              <Cell
+                key={index}
+                name={dimension.formatter(getValueByDataKey(data, dimension.accessor, ''))}
+                fill={measure.colors?.[index] ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              />
+            ))}
         </Pie>
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle}/>
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick}/>}
+        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        {!noLegend && (
+          <Legend
+            verticalAlign={chartConfig.legendPosition}
+            align={chartConfig.legendHorizontalAlign}
+            onClick={onItemLegendClick}
+          />
+        )}
       </PieChartLib>
     </ChartContainer>
   );

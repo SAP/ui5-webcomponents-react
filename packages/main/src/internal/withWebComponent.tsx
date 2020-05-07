@@ -134,5 +134,5 @@ export const withWebComponent = <T extends {}>(
 
   WithWebComponent.displayName = `WithWebComponent(${TagName})`;
 
-  return WithWebComponent as RefForwardingComponent<Ui5DomRef, T & WithWebComponentPropTypes>;
+  return (WithWebComponent as unknown) as RefForwardingComponent<Ui5DomRef, T & WithWebComponentPropTypes>;
 };
