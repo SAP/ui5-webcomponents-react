@@ -6,7 +6,12 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { COLLAPSE_GROUP, EXPAND_GROUP, SHOW_LESS, SHOW_MORE } from '@ui5/webcomponents-react/assets/i18n/i18n-defaults';
+import {
+  COLLAPSE_GROUP,
+  EXPAND_GROUP,
+  SHOW_LESS,
+  SHOW_MORE
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';

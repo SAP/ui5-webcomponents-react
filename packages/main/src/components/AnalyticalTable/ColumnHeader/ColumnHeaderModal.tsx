@@ -8,7 +8,7 @@ import {
   SORT_ASCENDING,
   SORT_DESCENDING,
   UNGROUP
-} from '@ui5/webcomponents-react/assets/i18n/i18n-defaults';
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';

@@ -5,7 +5,7 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { CANCEL } from '@ui5/webcomponents-react/assets/i18n/i18n-defaults';
+import { CANCEL } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/lib/List';
