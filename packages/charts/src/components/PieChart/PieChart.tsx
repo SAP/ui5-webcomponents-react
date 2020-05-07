@@ -3,7 +3,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils'
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo, useState } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
@@ -103,29 +103,21 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
 
   const onDataPointClickInternal = useCallback(
-    (payload, index, event) => {
-      if (payload && onDataPointClick && payload.value) {
+    (event) => {
+      if (event?.activePayload?.[0].payload && onDataPointClick) {
         onDataPointClick(
           enrichEventWithDetails(event, {
-            value: payload.value,
+            value: event.activePayload[0].value,
             dataKey: measure.accessor,
-            name: payload.name,
-            payload: payload.payload,
-            dataIndex: index
+            name: event.activePayload[0].payload.name,
+            payload: event.activePayload[0].payload,
+            dataIndex: event.activeTooltipIndex
           })
         );
       }
     },
     [onDataPointClick]
   );
-
-  const label = useMemo(() => {
-    return {
-      position: 'outside',
-      content: measure.hideDataLabel ?? measure.DataLabel,
-      formatter: measure.formatter
-    };
-  }, [measure]);
 
   return (
     <ChartContainer
@@ -138,15 +130,14 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       tooltip={tooltip}
       slot={slot}
     >
-      <PieChartLib margin={chartConfig.margin}>
+      <PieChartLib onClick={onDataPointClickInternal} margin={chartConfig.margin}>
         <Pie
           innerRadius={chartConfig.innerRadius}
           paddingAngle={chartConfig.paddingAngle}
           nameKey={dimension.accessor}
           dataKey={measure.accessor}
           data={dataset}
-          label={label}
-          onClick={onDataPointClickInternal}
+          label={true}
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&

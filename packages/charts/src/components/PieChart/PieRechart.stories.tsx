@@ -1,8 +1,10 @@
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
+import { Spinner } from '@ui5/webcomponents-react';
+import { dataset } from '../../resources/RechartProps';
 
 export default {
   title: 'Charts - Unstable /  PieChart',
@@ -81,4 +83,48 @@ export const renderFormatedStory = () => {
 
 renderFormatedStory.story = {
   name: 'With formatted data labels'
+};
+
+export const LoadingDonutChart = ({ loadingTime = 1200 }) => {
+  const [loading, setLoading] = useState('initial');
+  let dataset = [];
+  useEffect(() => {
+    if (loading === 'initial') {
+      setTimeout(() => {
+        setLoading('spinner');
+      }, loadingTime);
+    }
+    if (loading === 'spinner') {
+      setTimeout(() => {
+        setLoading('loading');
+        // setData(simpleDataSet);
+      }, loadingTime);
+    }
+    if (loading === 'loading') {
+      setTimeout(() => {
+        setLoading('done');
+      }, loadingTime);
+    }
+  }, [loading, setLoading, loadingTime]);
+  if (loading === 'initial') return null;
+  if (loading === 'spinner') return <Spinner />;
+  return (
+    <PieChart
+      onLegendClick={action('onLegendClick')}
+      onDataPointClick={action('onDataPointClick')}
+      style={{ width: '100%', height: '350px' }}
+      dataset={simpleDataSet}
+      loading={loading === 'loading'}
+      dimension={{
+        accessor: 'name'
+      }}
+      measure={{
+        accessor: 'users'
+      }}
+    />
+  );
+};
+
+LoadingDonutChart.story = {
+  name: 'RENDERS WITH TIME'
 };

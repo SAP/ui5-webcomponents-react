@@ -203,7 +203,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, layout === 'vertical' ? dimensions : measures);
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(
+    dataset,
+    layout === 'vertical' ? dimensions : measures,
+    dimensions.length > 1
+  );
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, layout === 'vertical' ? 1 : props.dimensions.length);

@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { defaultMaxYAxisWidth } from '../internal/defaults';
 
-export const useLongestYAxisLabel = (dataset: unknown[], elements): [number, object] =>
+export const useLongestYAxisLabel = (dataset: unknown[], elements, horizontalLayout = false): [number, object] =>
   useMemo(() => {
     let labelLength = 0;
     const primaryElement = elements[0];
@@ -15,7 +15,7 @@ export const useLongestYAxisLabel = (dataset: unknown[], elements): [number, obj
         );
       };
       labelLength = Math.max(...dataset.map(resolveAllMeasureLabels).flat().map(getTextWidth));
-      labelLength += 8;
+      labelLength += horizontalLayout ? 20 : 8;
     }
 
     labelLength = Math.min(labelLength, defaultMaxYAxisWidth);
