@@ -19,5 +19,6 @@ export const useLongestYAxisLabel = (dataset: unknown[], elements): [number, obj
     }
 
     labelLength = Math.min(labelLength, defaultMaxYAxisWidth);
+
     return [labelLength, { marginLeft: labelLength, maxWidth: `calc(100% - ${labelLength + 10}px)` }];
   }, [dataset, elements]);

@@ -193,10 +193,11 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-                tick={<XAxisTicks config={dimension} level={index} />}
+                tick={<XAxisTicks config={dimension} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
                 height={xAxisHeights[index]}
+                allowDuplicatedCategory={index === 0}
               />
             );
           })}

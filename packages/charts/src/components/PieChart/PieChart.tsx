@@ -89,6 +89,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     }),
     [props.dimension]
   );
+
   const measure: MeasureConfig = useMemo(
     () => ({
       formatter: defaultFormatter,
@@ -97,36 +98,35 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     [props.measure]
   );
 
-  const tooltipValueFormatter = useCallback((value) => measure.formatter(value), [measure.formatter]);
-  const chartRef = useConsolidatedRef<any>(ref);
-
-  const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
-
-  const onDataPointClickInternal = useCallback(
-    (payload, index, event) => {
-      if (payload && onDataPointClick && payload.value) {
-        onDataPointClick(
-          enrichEventWithDetails(event, {
-            value: payload.value,
-            dataKey: measure.accessor,
-            name: payload.name,
-            payload: payload.payload,
-            dataIndex: index
-          })
-        );
-      }
-    },
-    [onDataPointClick]
-  );
-
   const label = useMemo(() => {
-    if(measure.hideDataLabel) return null;
     return {
       position: 'outside',
       content: measure.DataLabel,
       formatter: measure.formatter
     };
   }, [measure]);
+
+  const tooltipValueFormatter = useCallback((value) => measure.formatter(value), [measure.formatter]);
+  const chartRef = useConsolidatedRef<any>(ref);
+
+  const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
+
+  const onDataPointClickInternal = useCallback(
+    (payload, event) => {
+      if (payload && payload?.activePayload && onDataPointClick) {
+        onDataPointClick(
+          enrichEventWithDetails(event, {
+            value: payload.activePayload[0].value,
+            dataKey: payload.activePayload[0].dataKey,
+            name: payload.activePayload[0].payload.name,
+            payload: payload.activePayload[0].payload,
+            dataIndex: payload.activeTooltipIndex
+          })
+        );
+      }
+    },
+    [onDataPointClick]
+  );
 
   return (
     <ChartContainer
@@ -139,15 +139,16 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       tooltip={tooltip}
       slot={slot}
     >
-      <PieChartLib margin={chartConfig.margin}>
+      <PieChartLib onClick={onDataPointClickInternal} margin={chartConfig.margin}>
         <Pie
           innerRadius={chartConfig.innerRadius}
           paddingAngle={chartConfig.paddingAngle}
           nameKey={dimension.accessor}
           dataKey={measure.accessor}
           data={dataset}
+          animationBegin={0}
+          isAnimationActive={false}
           label={label}
-          onClick={onDataPointClickInternal}
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&
