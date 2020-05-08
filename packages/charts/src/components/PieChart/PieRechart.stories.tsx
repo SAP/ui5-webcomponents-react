@@ -1,10 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
-import { Spinner } from '@ui5/webcomponents-react';
-import { dataset } from '../../resources/RechartProps';
 
 export default {
   title: 'Charts - Unstable /  PieChart',

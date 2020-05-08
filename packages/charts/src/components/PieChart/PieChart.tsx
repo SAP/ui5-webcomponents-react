@@ -3,7 +3,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils'
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo, useState } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
