@@ -39,12 +39,5 @@ module.exports = {
     '^@ui5/webcomponents-react-charts/(.*)$': '<rootDir>/packages/charts/src/$1',
     '\\.(css|less)$': 'identity-obj-proxy'
   },
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
-  globals: {
-    'ts-jest': {
-      diagnostics: {
-        ignoreCodes: [2307]
-      }
-    }
-  }
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx']
 };

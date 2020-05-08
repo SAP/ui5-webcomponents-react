@@ -30,7 +30,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     babel({
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       babelHelpers: 'runtime',
-      configFile: path.resolve(PATHS.root, 'babel.config.json')
+      configFile: path.resolve(PATHS.root, 'babel.config.js')
     })
   ];
 
