@@ -103,15 +103,15 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
 
   const onDataPointClickInternal = useCallback(
-    (event) => {
-      if (event?.activePayload?.[0].payload && onDataPointClick) {
+    (payload, event) => {
+      if (payload && payload?.activePayload && onDataPointClick) {
         onDataPointClick(
           enrichEventWithDetails(event, {
-            value: event.activePayload[0].value,
-            dataKey: measure.accessor,
-            name: event.activePayload[0].payload.name,
-            payload: event.activePayload[0].payload,
-            dataIndex: event.activeTooltipIndex
+            value: payload.activePayload[0].value,
+            dataKey: payload.activePayload[0].dataKey,
+            name: payload.activePayload[0].payload.name,
+            payload: payload.activePayload[0].payload,
+            dataIndex: payload.activeTooltipIndex
           })
         );
       }
