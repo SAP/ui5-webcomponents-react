@@ -31,7 +31,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { defaultFormatter } from '../../internal/defaults';
-import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps';
 
 const dimensionDefaults = {
   formatter: defaultFormatter
@@ -203,11 +203,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(
-    dataset,
-    layout === 'vertical' ? dimensions : measures,
-    dimensions.length > 1
-  );
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, layout === 'vertical' ? dimensions : measures);
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, layout === 'vertical' ? 1 : props.dimensions.length);
@@ -241,6 +237,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     }, 50),
     [chartRef, setCurrentBarWidth, layout, props.dimensions]
   );
+
+  const chartDoesNotContainAnyBars = !props.measures.some((measure) => measure.type === 'bar');
 
   return (
     <ChartContainer
@@ -281,7 +279,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               axisProps.dataKey = dimension.accessor;
               axisProps.tick = <XAxisTicks config={dimension} level={index} />;
               axisProps.xAxisId = index;
-              axisProps.padding = { left: currentBarWidth, right: currentBarWidth };
+              if (chartDoesNotContainAnyBars) {
+                axisProps.padding = xAxisPadding;
+              } else {
+                axisProps.padding = { left: currentBarWidth, right: currentBarWidth };
+              }
+
               axisProps.height = xAxisHeights[index];
               // axisProps.height = 100
               AxisComponent = XAxis;
