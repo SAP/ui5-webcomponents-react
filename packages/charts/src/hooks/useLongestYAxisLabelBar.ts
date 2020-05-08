@@ -7,6 +7,7 @@ export const useLongestYAxisLabelBar = (dataset: unknown[], elements): [number, 
   useMemo(() => {
     let labelLength;
     let labelElementsLength = [[], []];
+    let marginLeft = 0;
 
     if (dataset instanceof Array && elements) {
       const resolveAllMeasureLabels = (item): string[] => {
@@ -24,14 +25,13 @@ export const useLongestYAxisLabelBar = (dataset: unknown[], elements): [number, 
             : labelElementsLength[1].push(getTextWidth(item) - 20);
         });
       labelLength = labelElementsLength.map((items) => Math.max(...items));
+      marginLeft = labelLength?.[0];
 
       if (elements.length > 1) {
-        labelLength[0] = labelLength[0] / 2;
+        labelLength[0] = labelLength?.[0] / 2;
+        marginLeft = labelLength?.[1] + labelLength?.[0];
       }
     }
 
-    return [
-      labelLength,
-      { marginLeft: labelLength?.[0] + labelLength?.[1], maxWidth: `calc(100% - ${labelLength + 10}px)` }
-    ];
+    return [labelLength, { marginLeft: marginLeft, maxWidth: `calc(100% - 100px)` }];
   }, [dataset, elements]);
