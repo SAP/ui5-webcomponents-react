@@ -29,6 +29,7 @@ import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { useLongestYAxisLabelBar } from '../../hooks/useLongestYAxisLabelBar';
 
 const dimensionDefaults = {
   formatter: defaultFormatter
@@ -159,10 +160,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const [width, legendPosition] = useLongestYAxisLabel(dataset, dimensions);
-
+  const [width, legendPosition] = useLongestYAxisLabelBar(dataset, dimensions);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
-
   const [xAxisHeight] = useObserveXAxisHeights(chartRef, 1);
 
   return (
@@ -206,7 +205,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
                 tickLine={index < 1}
                 axisLine={index < 1}
                 yAxisId={index}
-                width={width}
+                width={width[index]}
               />
             );
           })}
