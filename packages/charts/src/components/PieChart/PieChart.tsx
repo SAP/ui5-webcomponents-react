@@ -89,6 +89,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     }),
     [props.dimension]
   );
+
   const measure: MeasureConfig = useMemo(
     () => ({
       formatter: defaultFormatter,
@@ -96,6 +97,14 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     }),
     [props.measure]
   );
+
+  const label = useMemo(() => {
+    return {
+      position: 'outside',
+      content: measure.hideDataLabel ?? measure.DataLabel,
+      formatter: measure.formatter
+    };
+  }, [measure]);
 
   const tooltipValueFormatter = useCallback((value) => measure.formatter(value), [measure.formatter]);
   const chartRef = useConsolidatedRef<any>(ref);
@@ -137,7 +146,9 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
           nameKey={dimension.accessor}
           dataKey={measure.accessor}
           data={dataset}
-          label={true}
+          animationBegin={0}
+          isAnimationActive={false}
+          label={label}
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&
