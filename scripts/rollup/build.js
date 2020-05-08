@@ -14,6 +14,7 @@ const fs = require('fs');
 const Packaging = require('./packaging');
 const Modules = require('./modules');
 const { createDeclarationFiles } = require('./declarations');
+const PATHS = require('../../config/paths');
 
 const argv = require('minimist')(process.argv.slice(2));
 const forcePrettyOutput = argv.pretty;
@@ -175,9 +176,7 @@ function shouldSkipBundle(bundle, bundleType) {
 
 function getBabelConfig(updateBabelOptions, bundleType, filename) {
   let options = {
-    exclude: '/**/node_modules/**',
-    presets: [['babel-preset-react-app/prod', { absoluteRuntime: false }]],
-    plugins: [],
+    configFile: path.resolve(PATHS.root, 'babel.config.js'),
     babelHelpers: 'runtime',
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   };

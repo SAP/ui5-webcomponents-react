@@ -21,7 +21,7 @@
     "build": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "@babel/runtime": "7.9.0",
+    "@babel/runtime": "7.9.6",
     "chart.js": "^2.9.3",
     "chartjs-plugin-datalabels": "^0.7.0",
     "get-best-contrast-color": "^0.3.1",
