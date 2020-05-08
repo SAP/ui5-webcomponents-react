@@ -5,7 +5,6 @@ import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject, useCallback, useState } from 'react';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { ClassProps } from '../../interfaces/ClassProps';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterBar.jss';
 
@@ -17,7 +16,7 @@ export interface FilterBarPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
 }
 
-interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
+interface FilterBarInternalProps extends FilterBarPropTypes {}
 
 const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
 
