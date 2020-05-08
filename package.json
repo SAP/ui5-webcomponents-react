@@ -6,7 +6,10 @@
   "license": "Apache-2.0",
   "scripts": {
     "start": "lerna run build:i18n && start-storybook -p 6006 -c .storybook",
-    "build": "yarn clean && lerna run build --stream && node ./scripts/rollup/build.js",
+    "build": "npm-run-all -s build:clean build:esm build:cjs",
+    "build:clean": "yarn clean",
+    "build:esm": "lerna run build --stream",
+    "build:cjs": "node ./scripts/rollup/build.js",
     "build:storybook": "lerna run build:i18n && build-storybook -c .storybook -o .out",
     "pretest": "rimraf coverage && lerna run build:i18n",
     "test": "jest --config=config/jest.config.js --coverage",
@@ -32,8 +35,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.8.3",
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-json": "^4.0.3",
@@ -51,7 +61,6 @@
     "@ui5/webcomponents-tools": "^1.0.0-rc.6",
     "babel-code-frame": "^6.26.0",
     "babel-loader": "^8.1.0",
-    "babel-preset-react-app": "^9.1.2",
     "chalk": "^4.0.0",
     "dedent": "^0.7.0",
     "dotenv": "^8.2.0",
@@ -93,7 +102,8 @@
     "typescript": "^3.8.3"
   },
   "resolutions": {
-    "@types/react": "16.9.34"
+    "@types/react": "16.9.34",
+    "@babel/runtime": "7.9.6"
   },
   "husky": {
     "hooks": {

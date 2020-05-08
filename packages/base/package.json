@@ -27,7 +27,7 @@
     "build": "npm-run-all -s build:rollup build:polyfills"
   },
   "dependencies": {
-    "@babel/runtime": "7.9.0",
+    "@babel/runtime": "7.9.6",
     "core-js": "3.6.4",
     "intersection-observer": "0.8.0",
     "proxy-polyfill": "0.3.1",

@@ -28,7 +28,8 @@ module.exports = {
         {
           loader: require.resolve('babel-loader'),
           options: {
-            presets: [[require.resolve('babel-preset-react-app'), { flow: false, typescript: true }]]
+            envName: 'esm',
+            configFile: path.resolve(PATHS.root, 'babel.config.js')
           }
         }
       ]
@@ -55,10 +56,35 @@ module.exports = {
         include: DEPENDENCY_REGEX,
         loader: 'babel-loader',
         options: {
+          sourceType: 'unambiguous',
           babelrc: false,
           configFile: false,
           compact: false,
-          presets: [['babel-preset-react-app/dependencies', { helpers: true }]],
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                // Allow importing core-js in entrypoint and use browserlist to select polyfills
+                useBuiltIns: 'entry',
+                // Set the corejs version we are using to avoid warnings in console
+                // This will need to change once we upgrade to corejs@3
+                corejs: 3,
+                // Do not transform modules to CJS
+                modules: false,
+                // Exclude transforms that make all code slower
+                exclude: ['transform-typeof-symbol']
+              }
+            ]
+          ],
+          plugins: [
+            [
+              '@babel/plugin-transform-runtime',
+              {
+                version: require('@babel/runtime/package.json').version,
+                useESModules: true
+              }
+            ]
+          ],
           cacheDirectory: true,
           cacheCompression: false,
 
