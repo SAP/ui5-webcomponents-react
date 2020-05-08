@@ -26,5 +26,5 @@ export const useLongestYAxisLabelBar = (dataset: unknown[], elements): [number[]
       marginLeft = axisWidths.reduce((acc, val) => acc + val, 0);
     }
 
-    return [axisWidths, { marginLeft, maxWidth: `calc(100% - 100px)` }];
+    return [axisWidths, { marginLeft, maxWidth: `calc(100% - ${marginLeft + 8}px)` }];
   }, [dataset, elements]);
