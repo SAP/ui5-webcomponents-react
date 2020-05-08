@@ -28,7 +28,7 @@ import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { defaultFormatter } from '../../internal/defaults';
-import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -154,7 +154,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures, true);
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
 
@@ -187,6 +187,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                 tickLine={index < 1}
                 axisLine={index < 1}
                 height={xAxisHeights[index]}
+                padding={xAxisPadding}
               />
             );
           })}
