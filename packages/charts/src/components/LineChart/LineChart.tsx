@@ -183,11 +183,12 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-                tick={<XAxisTicks config={dimension} level={index} />}
+                tick={<XAxisTicks config={dimension} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
                 height={xAxisHeights[index]}
                 padding={xAxisPadding}
+                allowDuplicatedCategory={index === 0}
               />
             );
           })}

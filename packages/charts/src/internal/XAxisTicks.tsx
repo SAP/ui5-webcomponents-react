@@ -2,7 +2,6 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingPara
 import { getTextWidth, truncateLongLabel } from '@ui5/webcomponents-react-charts/lib/Utils';
 import React, { FC } from 'react';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
-import { SecondaryDimensionTicksXAxis } from './SecondaryDimensionXAxisTick';
 
 interface XAxisTicksProps {
   visibleTicksCount?: number;
@@ -11,18 +10,13 @@ interface XAxisTicksProps {
   y?: number;
   payload?: any;
   config: IChartMeasure;
-  level?: number;
 }
 
 export const XAxisTicks: FC<XAxisTicksProps> = (props: XAxisTicksProps) => {
-  const { x, y, payload, config, level = 0, visibleTicksCount, width } = props;
+  const { x, y, payload, config, visibleTicksCount, width } = props;
 
   const bandWidth = width / visibleTicksCount;
   const shouldRotate = bandWidth <= 100;
-
-  if (level > 0) {
-    return <SecondaryDimensionTicksXAxis {...props} />;
-  }
 
   const formattedValue = config.formatter(payload.value);
   let textToDisplay = formattedValue;

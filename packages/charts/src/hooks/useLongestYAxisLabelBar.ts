@@ -3,10 +3,9 @@ import { useMemo } from 'react';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { defaultMaxYAxisWidth } from '../internal/defaults';
 
-export const useLongestYAxisLabelBar = (dataset: unknown[], elements): [number, object] =>
+export const useLongestYAxisLabelBar = (dataset: unknown[], elements): [number[], object] =>
   useMemo(() => {
-    let labelLength;
-    let labelElementsLength = [[], []];
+    let axisWidths = Array(elements.length).fill(0);
     let marginLeft = 0;
 
     if (dataset instanceof Array && elements) {
@@ -16,22 +15,16 @@ export const useLongestYAxisLabelBar = (dataset: unknown[], elements): [number, 
         );
       };
 
-      dataset
-        .map(resolveAllMeasureLabels)
-        .flat()
-        .forEach((item, index) => {
-          return index % 2 === 0
-            ? labelElementsLength[0].push(getTextWidth(item))
-            : labelElementsLength[1].push(getTextWidth(item) - 20);
+      const allFormattedDataLabels = dataset.map(resolveAllMeasureLabels);
+      allFormattedDataLabels.forEach((dimensionLabels) => {
+        dimensionLabels.forEach((label, dimensionIndex) => {
+          axisWidths[dimensionIndex] = Math.max(getTextWidth(label), axisWidths[dimensionIndex]);
         });
-      labelLength = labelElementsLength.map((items) => Math.max(...items));
-      marginLeft = labelLength?.[0];
+      });
 
-      if (elements.length > 1) {
-        labelLength[0] = labelLength?.[0] / 2;
-        marginLeft = labelLength?.[1] + labelLength?.[0];
-      }
+      axisWidths = axisWidths.map((length) => Math.min(defaultMaxYAxisWidth, length));
+      marginLeft = axisWidths.reduce((acc, val) => acc + val, 0);
     }
 
-    return [labelLength, { marginLeft, maxWidth: `calc(100% - 100px)` }];
+    return [axisWidths, { marginLeft, maxWidth: `calc(100% - 100px)` }];
   }, [dataset, elements]);

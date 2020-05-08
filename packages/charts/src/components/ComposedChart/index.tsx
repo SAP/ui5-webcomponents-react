@@ -265,19 +265,20 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               dataKey: dimension.accessor,
               interval: dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0),
               tickLine: index < 1,
-              axisLine: index < 1
+              axisLine: index < 1,
+              allowDuplicatedCategory: index === 0
             };
 
             if (layout === 'vertical') {
               axisProps.type = 'category';
-              axisProps.tick = <YAxisTicks config={dimension} level={index} />;
+              axisProps.tick = <YAxisTicks config={dimension} />;
               axisProps.yAxisId = index;
               axisProps.padding = { top: currentBarWidth, bottom: currentBarWidth };
               axisProps.width = yAxisWidth;
               AxisComponent = YAxis;
             } else {
               axisProps.dataKey = dimension.accessor;
-              axisProps.tick = <XAxisTicks config={dimension} level={index} />;
+              axisProps.tick = <XAxisTicks config={dimension} />;
               axisProps.xAxisId = index;
               if (chartDoesNotContainAnyBars) {
                 axisProps.padding = xAxisPadding;

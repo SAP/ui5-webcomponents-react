@@ -3,22 +3,17 @@ import { getTextWidth, truncateLongLabel } from '@ui5/webcomponents-react-charts
 import React, { FC } from 'react';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
 import { defaultMaxYAxisWidth } from './defaults';
-import { SecondaryDimensionTicksYAxis } from './SecondaryDimensionYAxisTick';
 
 interface YAxisTicksProps {
   x?: number;
   y?: number;
   payload?: any;
   config: IChartMeasure;
-  level?: number;
 }
 
 export const YAxisTicks: FC<YAxisTicksProps> = (props: YAxisTicksProps) => {
-  const { x, y, payload, config, level = 0 } = props;
+  const { x, y, payload, config } = props;
 
-  if (level > 0) {
-    return <SecondaryDimensionTicksYAxis {...props} />;
-  }
   const formattedValue = config.formatter(payload.value);
   let textToDisplay = formattedValue;
   if (getTextWidth(formattedValue) > defaultMaxYAxisWidth) {

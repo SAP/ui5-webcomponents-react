@@ -200,11 +200,12 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                tick={<YAxisTicks config={dimension} level={index} />}
+                tick={<YAxisTicks config={dimension} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
                 yAxisId={index}
                 width={width[index]}
+                allowDuplicatedCategory={index === 0}
               />
             );
           })}
