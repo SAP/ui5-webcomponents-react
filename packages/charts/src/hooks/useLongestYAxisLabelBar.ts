@@ -33,5 +33,5 @@ export const useLongestYAxisLabelBar = (dataset: unknown[], elements): [number, 
       }
     }
 
-    return [labelLength, { marginLeft: marginLeft, maxWidth: `calc(100% - 100px)` }];
+    return [labelLength, { marginLeft, maxWidth: `calc(100% - 100px)` }];
   }, [dataset, elements]);
