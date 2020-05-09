@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { CSSProperties, FC } from 'react';
 
-export const VirtualTableRow = (props) => {
-  const { style, index, data } = props;
-  const { additionalProps, rows } = data;
-  const { isTreeTable, classes, alternateRowColor } = additionalProps;
-  const row = rows[index];
+interface VirtualTableRowProps {
+  style: CSSProperties;
+  index: number;
+  row: any;
+  classes: Record<string, string>;
+  alternateRowColor: boolean;
+  isTreeTable: boolean;
+}
+
+export const VirtualTableRow: FC<VirtualTableRowProps> = (props: VirtualTableRowProps) => {
+  const { style, index, row, classes, alternateRowColor, isTreeTable } = props;
 
   if (!row) {
     return null;

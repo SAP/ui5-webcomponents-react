@@ -3,10 +3,9 @@ import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
-import { FixedSizeList } from 'react-window';
+import React, { useCallback, useRef } from 'react';
+import { useVirtual } from 'react-virtual';
 import { VirtualTableRow } from './VirtualTableRow';
-import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 
 interface VirtualTableBodyProps {
   infiniteScroll: boolean;
@@ -22,7 +21,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     prepareRow,
     rows,
     minRows,
-    columns,
     selectionMode,
     reactWindowRef,
     isTreeTable,
@@ -32,54 +30,44 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     alternateRowColor,
     overscanCount,
     totalColumnsWidth,
-    selectedFlatRows,
     infiniteScroll,
     infiniteScrollThreshold,
     onLoadMore
   } = props;
 
-  const innerDivRef = useRef<HTMLElement>();
+  const innerDivRef = useRef<HTMLDivElement>();
   const firedInfiniteLoadEvents = useRef(new Set());
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
 
-  const tableData = useMemo(() => {
-    return {
-      rows,
-      additionalProps: {
-        alternateRowColor,
-        isTreeTable,
-        classes,
-        columns
-      }
-    };
-  }, [rows, prepareRow, isTreeTable, classes, columns, selectedFlatRows, selectionMode]);
+  const parentRef = useRef();
 
-  const getItemKey = useCallback(
-    (index, data) => {
-      const row = data.rows[index];
-      if (row) {
-        if (!row.getRowProps) {
-          prepareRow(row);
-        }
-        if (row.getRowProps) {
-          return row.getRowProps().key;
-        }
-      }
-      return index;
-    },
-    [prepareRow]
-  );
+  const rowVirtualizer = useVirtual({
+    size: itemCount,
+    parentRef,
+    estimateSize: React.useCallback(() => internalRowHeight, []),
+    overscan
+  });
+
+  reactWindowRef.current = {
+    scrollToOffset: rowVirtualizer.scrollToOffset,
+    scrollToIndex: rowVirtualizer.scrollToIndex
+  };
 
   const classNames = StyleClassHelper.of(classes.tbody, GlobalStyleClasses.sapScrollBar);
   if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
     classNames.put(classes.selectable);
   }
 
+  const lastScrollTop = useRef(0);
+
   const onScroll = useCallback(
-    ({ scrollDirection, scrollOffset }) => {
-      if (scrollDirection === 'forward' && infiniteScroll) {
+    (event) => {
+      const scrollOffset = event.target.scrollTop;
+      const isScrollingDown = lastScrollTop.current < scrollOffset;
+      if (isScrollingDown && infiniteScroll) {
+        lastScrollTop.current = scrollOffset;
         const currentTopRow = Math.floor(scrollOffset / internalRowHeight);
         if (rows.length - currentTopRow < infiniteScrollThreshold) {
           if (!firedInfiniteLoadEvents.current.has(rows.length)) {
@@ -93,7 +81,15 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         }
       }
     },
-    [infiniteScroll, infiniteScrollThreshold, onLoadMore, rows.length, internalRowHeight, firedInfiniteLoadEvents]
+    [
+      infiniteScroll,
+      infiniteScrollThreshold,
+      onLoadMore,
+      rows.length,
+      internalRowHeight,
+      firedInfiniteLoadEvents,
+      lastScrollTop
+    ]
   );
 
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
@@ -165,33 +161,48 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     [currentlyFocusedCell]
   );
 
-  useEffect(() => {
-    if (innerDivRef.current) {
-      innerDivRef.current.tabIndex = 0;
-      innerDivRef.current.addEventListener('keydown', onKeyboardNavigation);
-      innerDivRef.current.addEventListener('focus', onTableFocus);
-    }
-    return () => {
-      innerDivRef.current.removeEventListener('keydown', onKeyboardNavigation);
-    };
-  }, [onKeyboardNavigation, reactWindowRef, onTableFocus]);
-
   return (
-    <FixedSizeList
+    <div
       className={classNames.valueOf()}
-      ref={reactWindowRef}
-      height={tableBodyHeight}
-      width={totalColumnsWidth}
-      itemData={tableData}
-      itemCount={itemCount}
-      itemSize={internalRowHeight}
-      itemKey={getItemKey}
-      innerRef={innerDivRef}
-      overscanCount={overscan}
+      ref={parentRef}
       onScroll={onScroll}
-      direction={getRTL() ? 'rtl' : 'ltr'}
+      style={{
+        height: `${tableBodyHeight}px`,
+        width: `${totalColumnsWidth}px`
+      }}
     >
-      {VirtualTableRow}
-    </FixedSizeList>
+      <div
+        ref={innerDivRef}
+        tabIndex={0}
+        onFocus={onTableFocus}
+        onKeyDown={onKeyboardNavigation}
+        style={{
+          height: `${rowVirtualizer.totalSize}px`,
+          width: '100%',
+          position: 'relative'
+        }}
+      >
+        {rowVirtualizer.virtualItems.map((virtualRow) => {
+          const row = rows[virtualRow.index];
+          if (!row.getRowProps) {
+            prepareRow(row);
+          }
+          return (
+            <VirtualTableRow
+              key={virtualRow.index}
+              index={virtualRow.index}
+              row={row}
+              classes={classes}
+              alternateRowColor={alternateRowColor}
+              isTreeTable={isTreeTable}
+              style={{
+                height: `${virtualRow.size}px`,
+                transform: `translateY(${virtualRow.start}px)`
+              }}
+            />
+          );
+        })}
+      </div>
+    </div>
   );
 };

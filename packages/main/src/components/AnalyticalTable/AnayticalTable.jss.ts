@@ -51,6 +51,10 @@ const styles = {
   },
   emptyRow: {},
   tr: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
     zIndex: 0,
     color: ThemingParameters.sapList_TextColor,
     boxSizing: 'border-box',

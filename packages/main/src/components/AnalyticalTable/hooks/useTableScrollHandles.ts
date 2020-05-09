@@ -10,12 +10,12 @@ export const useTableScrollHandles = (ref) => {
     Object.assign(analyticalTableRef.current, {
       scrollTo: (...args) => {
         if (reactWindowRef.current) {
-          reactWindowRef.current.scrollTo(...args);
+          reactWindowRef.current.scrollToOffset(...args);
         }
       },
       scrollToItem: (...args) => {
         if (reactWindowRef.current) {
-          reactWindowRef.current.scrollToItem(...args);
+          reactWindowRef.current.scrollToIndex(...args);
         }
       }
     });
