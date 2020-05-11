@@ -9,10 +9,12 @@ export default {
   component: LineChart
 };
 
-export const renderStory = () => {
-  return (
+export const renderStory = () =>
+  (
     <LineChart
       loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
@@ -43,7 +45,6 @@ export const renderStory = () => {
       ]}
     />
   );
-};
 
 renderStory.story = {
   name: 'Default'
@@ -51,6 +52,9 @@ renderStory.story = {
 
 export const renderStoryWithCustomColor = () => (
   <LineChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
@@ -65,6 +69,9 @@ renderStoryWithCustomColor.story = {
 
 export const withSecondaryDimension = () => (
   <LineChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
@@ -80,6 +87,9 @@ withSecondaryDimension.story = {
 export const renderLabelStory = () => {
   return (
     <LineChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dimensions={[{ accessor: 'name' }]}
@@ -96,7 +106,6 @@ export const renderLabelStory = () => {
       ]}
       dataset={complexDataSet}
       style={{ width: '95%', height: '40vh' }}
-      loading={true}
       chartConfig={{
         zoomingTool: true
       }}
@@ -111,6 +120,9 @@ renderLabelStory.story = {
 export const renderCustomDataLabelStory = () => {
   return (
     <LineChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
@@ -149,6 +161,9 @@ loadingPlaceholder.story = {
 export const withReferenceLineStory = () => {
   return (
     <LineChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={bigDataSet}
@@ -165,8 +180,6 @@ export const withReferenceLineStory = () => {
         }
       ]}
       style={{ width: '95%', height: '40vh' }}
-      noLegend={false}
-      loading
       chartConfig={{
         referenceLine: {
           color: 'red',

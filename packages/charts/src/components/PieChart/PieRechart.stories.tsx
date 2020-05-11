@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
 import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';
 import React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
@@ -12,6 +12,9 @@ export default {
 export const renderStory = () => {
   return (
     <PieChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       style={{ width: '50%' }}
@@ -36,6 +39,9 @@ renderStory.story = {
 export const renderCustomColorStory = () => {
   return (
     <PieChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       style={{ width: '50%' }}
@@ -64,6 +70,9 @@ loadingPlaceholder.story = {
 export const renderFormatedStory = () => {
   return (
     <PieChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       style={{ width: '50%' }}

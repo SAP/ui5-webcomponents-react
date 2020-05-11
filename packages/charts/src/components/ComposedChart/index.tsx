@@ -117,6 +117,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     dataset,
     onDataPointClick,
     noLegend = false,
+    noAnimation = false,
     onLegendClick,
     layout = 'horizontal',
     style,
@@ -349,7 +350,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           const ChartElement = (ChartTypes[element.type] as any) as FC<any>;
 
           const chartElementProps: any = {
-            onAnimationEnd: updateChartPadding
+            onAnimationEnd: updateChartPadding,
+            isAnimationActive: noAnimation === false
           };
           let labelPosition = 'top';
 

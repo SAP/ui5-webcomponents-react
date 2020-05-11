@@ -10,6 +10,8 @@ export interface RechartBaseProps extends CommonProps {
   onDataPointClick?: (event: CustomEvent) => void;
   onLegendClick?: (event: CustomEvent) => void;
 
+  noAnimation?: boolean;
+
   chartConfig?: {
     margin?: {
       right: number;

@@ -74,6 +74,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     loading,
     dataset,
     noLegend = false,
+    noAnimation = false,
     onDataPointClick,
     onLegendClick,
     style,
@@ -161,6 +162,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fillOpacity={element.opacity}
               label={<ChartDataLabel config={element} chartType="radar" position={'outside'} />}
+              isAnimationActive={noAnimation === false}
             />
           );
         })}

@@ -12,7 +12,7 @@ export interface RadialChartPropTypes extends CommonProps {
   value: number;
   maxValue?: number;
   displayValue: number | string;
-  colors?: Array<CSSProperties['color']>;
+  colors?: CSSProperties['color'][];
   options?: ChartOptions;
   height?: number;
   width?: number;
