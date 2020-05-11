@@ -13,6 +13,8 @@ export const renderStory = () => {
   return (
     <ComposedChart
       loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
@@ -54,6 +56,9 @@ renderStory.story = {
 
 export const renderStoryWithCustomColor = () => (
   <ComposedChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red', type: 'bar' }]}
@@ -68,6 +73,9 @@ renderStoryWithCustomColor.story = {
 
 export const withSecondaryDimension = () => (
   <ComposedChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
     measures={[{ accessor: 'users', type: 'area', color: 'red', width: 2, opacity: 0.5 }]}
@@ -83,6 +91,9 @@ withSecondaryDimension.story = {
 export const renderLabelStory = () => {
   return (
     <ComposedChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dimensions={[{ accessor: 'name' }]}
@@ -120,6 +131,9 @@ renderLabelStory.story = {
 export const renderCustomDataLabelStory = () => {
   return (
     <ComposedChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
@@ -160,6 +174,9 @@ renderCustomDataLabelStory.story = {
 export const withReferenceLineStory = () => {
   return (
     <ComposedChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={bigDataSet}
@@ -181,8 +198,6 @@ export const withReferenceLineStory = () => {
         }
       ]}
       style={{ width: '95%', height: '40vh' }}
-      noLegend={false}
-      loading
       chartConfig={{
         zoomingTool: true,
         referenceLine: {

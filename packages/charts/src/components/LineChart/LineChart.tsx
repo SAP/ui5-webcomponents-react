@@ -89,6 +89,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     dataset,
     loading,
     noLegend = false,
+    noAnimation = false,
     onDataPointClick,
     onLegendClick,
     style,
@@ -225,6 +226,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               strokeWidth={element.width}
               activeDot={{ onClick: onDataPointClickInternal }}
+              isAnimationActive={noAnimation === false}
             />
           );
         })}
