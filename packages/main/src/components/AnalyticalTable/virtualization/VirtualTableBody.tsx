@@ -3,16 +3,26 @@ import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import React, { useCallback, useRef } from 'react';
+import React, { MutableRefObject, useCallback, useRef } from 'react';
 import { useVirtual } from 'react-virtual';
-import { VirtualTableRow } from './VirtualTableRow';
 
 interface VirtualTableBodyProps {
+  classes: Record<string, string>;
+  prepareRow: (row: unknown) => void;
+  rows: any[];
+  minRows: number;
+  selectionMode: TableSelectionMode;
+  reactWindowRef: MutableRefObject<any>;
+  isTreeTable: boolean;
+  internalRowHeight: number;
+  tableBodyHeight: number;
+  visibleRows: number;
+  alternateRowColor: boolean;
+  overscanCount: number;
+  totalColumnsWidth: number;
   infiniteScroll: boolean;
   infiniteScrollThreshold: number;
   onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
-
-  [key: string]: any;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -27,7 +37,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     internalRowHeight,
     tableBodyHeight,
     visibleRows,
-    alternateRowColor,
     overscanCount,
     totalColumnsWidth,
     infiniteScroll,
@@ -35,7 +44,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     onLoadMore
   } = props;
 
-  const innerDivRef = useRef<HTMLDivElement>();
   const firedInfiniteLoadEvents = useRef(new Set());
 
   const itemCount = Math.max(minRows, rows.length);
@@ -46,7 +54,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const rowVirtualizer = useVirtual({
     size: itemCount,
     parentRef,
-    estimateSize: React.useCallback(() => internalRowHeight, []),
+    estimateSize: React.useCallback(() => internalRowHeight, [internalRowHeight]),
     overscan
   });
 
@@ -98,11 +106,13 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       const firstCell: HTMLDivElement = e.target.querySelector(
         'div[role="row"]:first-child div[role="cell"]:first-child'
       );
-      firstCell.tabIndex = 0;
-      firstCell.focus();
-      currentlyFocusedCell.current = firstCell;
+      if (firstCell) {
+        firstCell.tabIndex = 0;
+        firstCell.focus();
+        currentlyFocusedCell.current = firstCell;
+      }
     },
-    [currentlyFocusedCell]
+    [currentlyFocusedCell, parentRef]
   );
 
   const onKeyboardNavigation = useCallback(
@@ -172,34 +182,49 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       }}
     >
       <div
-        ref={innerDivRef}
         tabIndex={0}
         onFocus={onTableFocus}
         onKeyDown={onKeyboardNavigation}
         style={{
           height: `${rowVirtualizer.totalSize}px`,
-          width: '100%',
+          width: `${totalColumnsWidth}px`,
           position: 'relative'
         }}
       >
         {rowVirtualizer.virtualItems.map((virtualRow) => {
           const row = rows[virtualRow.index];
-          if (!row.getRowProps) {
-            prepareRow(row);
-          }
+          prepareRow(row);
+          const rowProps = row.getRowProps();
+
           return (
-            <VirtualTableRow
+            <div
+              {...rowProps}
               key={virtualRow.index}
-              index={virtualRow.index}
-              row={row}
-              classes={classes}
-              alternateRowColor={alternateRowColor}
-              isTreeTable={isTreeTable}
               style={{
                 height: `${virtualRow.size}px`,
                 transform: `translateY(${virtualRow.start}px)`
               }}
-            />
+            >
+              {row.cells.map((cell) => {
+                const cellProps = cell.getCellProps();
+                if (row.original?.emptyRow) {
+                  return <div {...cellProps} />;
+                }
+
+                let contentToRender = 'Cell';
+                if (isTreeTable) {
+                  contentToRender = 'Expandable';
+                } else if (cell.isGrouped) {
+                  contentToRender = 'Grouped';
+                } else if (cell.isAggregated) {
+                  contentToRender = 'Aggregated';
+                } else if (cell.isPlaceholder || cell.column.isGrouped) {
+                  contentToRender = 'RepeatedValue';
+                }
+                // eslint-disable-next-line react/jsx-key
+                return <div {...cellProps}>{cell.render(contentToRender)}</div>;
+              })}
+            </div>
           );
         })}
       </div>

@@ -6,7 +6,7 @@ const getHeaderProps = (columnProps, { instance, column }) => {
       className: classes.th,
       column,
       style: {
-        position: 'absolute'
+        width: column.width
       },
       id: column.id
     }

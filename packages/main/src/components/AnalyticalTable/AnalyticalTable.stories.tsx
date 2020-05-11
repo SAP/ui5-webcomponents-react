@@ -7,7 +7,7 @@ import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelect
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
-import React from 'react';
+import React, { useRef } from 'react';
 import generateData from './demo/generateData';
 
 const columns = [
@@ -57,7 +57,7 @@ const columns = [
   }
 ];
 
-const data = generateData(200);
+const data = generateData(10_000);
 const dataTree = generateData(20, true);
 
 export const defaultTable = () => {
@@ -72,7 +72,7 @@ export const defaultTable = () => {
         alternateRowColor={boolean('alternateRowColor', false)}
         sortable={boolean('sortable', true)}
         filterable={boolean('filterable', true)}
-        visibleRows={number('visibleRows', 5)}
+        visibleRows={number('visibleRows', 15)}
         minRows={number('minRows', 5)}
         groupable={boolean('groupable', true)}
         selectionMode={select<TableSelectionMode>(

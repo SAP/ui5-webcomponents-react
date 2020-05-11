@@ -8,14 +8,14 @@ export const useTableScrollHandles = (ref) => {
 
   if (analyticalTableRef.current) {
     Object.assign(analyticalTableRef.current, {
-      scrollTo: (...args) => {
+      scrollTo: (offset, align) => {
         if (reactWindowRef.current) {
-          reactWindowRef.current.scrollToOffset(...args);
+          reactWindowRef.current.scrollToOffset(offset, { align });
         }
       },
-      scrollToItem: (...args) => {
+      scrollToItem: (index, align) => {
         if (reactWindowRef.current) {
-          reactWindowRef.current.scrollToIndex(...args);
+          reactWindowRef.current.scrollToIndex(index, { align });
         }
       }
     });

@@ -5,7 +5,7 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 const getRowProps = (rowProps, { instance, row }) => {
   const { webComponentsReactProperties } = instance;
-  const { classes, selectionBehavior, selectionMode } = webComponentsReactProperties;
+  const { classes, selectionBehavior, selectionMode, alternateRowColor } = webComponentsReactProperties;
   const isEmptyRow = row.original?.emptyRow;
   let className = classes.tr;
 
@@ -17,13 +17,18 @@ const getRowProps = (rowProps, { instance, row }) => {
     className += ` ${classes.emptyRow}`;
   }
 
+  if (alternateRowColor && row.index % 2 !== 0) {
+    className += ` ${classes.alternateRowColor}`;
+  }
+
   if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
     className += ` ${classes.selectionModeRowSelector}`;
   }
 
   const newRowProps = {
     className,
-    role: 'row'
+    role: 'row',
+    'aria-rowindex': row.index
   };
 
   if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode) && !isEmptyRow) {

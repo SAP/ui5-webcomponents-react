@@ -10,6 +10,7 @@ import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
 import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';
 import { Themes } from '@ui5/webcomponents-react/lib/Themes';
 import '@ui5/webcomponents/dist/Assets';
+import '@ui5/webcomponents-react/dist/Assets';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React, { useEffect } from 'react';
 import 'react-app-polyfill/ie11';

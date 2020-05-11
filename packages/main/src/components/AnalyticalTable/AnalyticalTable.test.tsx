@@ -5,6 +5,7 @@ import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionM
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { mount } from 'enzyme';
+import { render, fireEvent, waitFor, screen, act } from '@testing-library/react';
 import React, { useRef } from 'react';
 
 const columns = [
@@ -271,20 +272,32 @@ describe('AnalyticalTable', () => {
     let tableRef;
     const UsingTable = (props) => {
       tableRef = useRef(null);
-      return <AnalyticalTable ref={tableRef} title="Table Title" data={data} columns={columns} />;
+      return (
+        <AnalyticalTable ref={tableRef} title="Table Title" data={data} columns={columns} visibleRows={1} minRows={1} />
+      );
     };
 
-    mount(<UsingTable />);
+    const utils = render(<UsingTable />);
 
     // Check existence + type
     expect(typeof tableRef.current.scrollTo).toBe('function');
     expect(typeof tableRef.current.scrollToItem).toBe('function');
 
     // call functions
-    const tableInnerRef = tableRef.current.querySelector("div[class^='AnalyticalTable-table'] > div > div");
-    tableRef.current.scrollToItem(2, AnalyticalTableScrollMode.end);
-    tableRef.current.scrollTo(2);
+    const tableInnerRef = tableRef.current.querySelector("div[class^='AnalyticalTable-table'] > div");
+    act(() => {
+      tableRef.current.scrollToItem(1, 'start');
+    });
+
+    expect(tableInnerRef.scrollTop).toBe(44);
+
+    act(() => {
+      tableRef.current.scrollTo(2);
+    });
+
     expect(tableInnerRef.scrollTop).toBe(2);
+
+    expect(utils.asFragment()).toMatchSnapshot();
   });
 
   test('with highlight row', () => {
