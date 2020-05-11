@@ -63,6 +63,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     loading,
     dataset,
     noLegend = false,
+    noAnimation = false,
     onDataPointClick,
     onLegendClick,
     centerLabel,
@@ -99,6 +100,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
   );
 
   const label = useMemo(() => {
+    if(measure.hideDataLabel) return null;
     return {
       position: 'outside',
       content: measure.DataLabel,
@@ -147,7 +149,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
           dataKey={measure.accessor}
           data={dataset}
           animationBegin={0}
-          isAnimationActive={false}
+          isAnimationActive={noAnimation === false}
           label={label}
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}

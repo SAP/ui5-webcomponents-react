@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
 import { DonutChart } from '@ui5/webcomponents-react-charts/lib/next/DonutChart';
 import React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
@@ -12,6 +12,9 @@ export default {
 export const renderStory = () => {
   return (
     <DonutChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onLegendClick={action('onLegendClick')}
       onDataPointClick={action('onDataPointClick')}
       style={{ width: '50%' }}
@@ -30,9 +33,12 @@ renderStory.story = {
   name: 'Default'
 };
 
-export const renderCustomColorStory = () => {
-  return (
+export const renderCustomColorStory = () =>
+  (
     <DonutChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onLegendClick={action('onLegendClick')}
       onDataPointClick={action('onDataPointClick')}
       style={{ width: '50%' }}
@@ -46,15 +52,17 @@ export const renderCustomColorStory = () => {
       }}
     />
   );
-};
 
 renderCustomColorStory.story = {
   name: 'With custom color'
 };
 
-export const withPaddingStory = () => {
-  return (
+export const withPaddingStory = () =>
+  (
     <DonutChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onLegendClick={action('onLegendClick')}
       onDataPointClick={action('onDataPointClick')}
       style={{ width: '50%' }}
@@ -68,15 +76,17 @@ export const withPaddingStory = () => {
       chartConfig={{ paddingAngle: 5 }}
     />
   );
-};
 
 withPaddingStory.story = {
   name: 'With padding angle'
 };
 
-export const withCustomRadiusStory = () => {
-  return (
+export const withCustomRadiusStory = () =>
+  (
     <DonutChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onLegendClick={action('onLegendClick')}
       onDataPointClick={action('onDataPointClick')}
       style={{ width: '50%' }}
@@ -92,7 +102,6 @@ export const withCustomRadiusStory = () => {
       }}
     />
   );
-};
 
 withCustomRadiusStory.story = {
   name: 'With custom inner radius'
@@ -104,9 +113,12 @@ loadingPlaceholder.story = {
   name: 'Loading placeholder'
 };
 
-export const withFormatedStory = () => {
-  return (
+export const withFormatter = () =>
+  (
     <DonutChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onLegendClick={action('onLegendClick')}
       onDataPointClick={action('onDataPointClick')}
       style={{ width: '50%' }}
@@ -121,8 +133,7 @@ export const withFormatedStory = () => {
       }}
     />
   );
-};
 
-withFormatedStory.story = {
+withFormatter.story = {
   name: 'With formatter'
 };
