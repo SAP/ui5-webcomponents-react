@@ -99,6 +99,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
   );
 
   const label = useMemo(() => {
+    if(measure.hideDataLabel) return null;
     return {
       position: 'outside',
       content: measure.DataLabel,
