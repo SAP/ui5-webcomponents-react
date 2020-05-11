@@ -20,7 +20,8 @@ export const renderStory = () => {
       style={{ width: '50%' }}
       dataset={simpleDataSet}
       chartConfig={{
-        innerRadius: text('innerRadius', '0%')
+        innerRadius: text('innerRadius', '0%'),
+        outerRadius: text('outerRadius', '80%')
       }}
       dimension={{
         accessor: 'name'
