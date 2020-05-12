@@ -107,7 +107,6 @@ const styles = {
     whiteSpace: 'nowrap',
     alignItems: 'center',
     position: 'relative',
-    // display: 'inline-flex',
     '&:focus': {
       outlineOffset: '-2px',
       outline: `1px dotted ${ThemingParameters.sapContent_FocusColor}`
