@@ -7,6 +7,7 @@ import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { IPolarChartConfig } from "../../interfaces/IPolarChartConfig";
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
@@ -35,7 +36,7 @@ interface DimensionConfig {
   formatter?: (value: any) => string;
 }
 
-export interface PieChartProps extends RechartBaseProps {
+export interface PieChartProps extends RechartBaseProps<IPolarChartConfig> {
   centerLabel?: string;
   dimension: DimensionConfig;
   /**
@@ -79,6 +80,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       legendPosition: 'bottom',
       legendHorizontalAlign: 'center',
       paddingAngle: 0,
+      outerRadius: '80%',
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -144,6 +146,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       <PieChartLib onClick={onDataPointClickInternal} margin={chartConfig.margin}>
         <Pie
           innerRadius={chartConfig.innerRadius}
+          outerRadius={chartConfig.outerRadius}
           paddingAngle={chartConfig.paddingAngle}
           nameKey={dimension.accessor}
           dataKey={measure.accessor}

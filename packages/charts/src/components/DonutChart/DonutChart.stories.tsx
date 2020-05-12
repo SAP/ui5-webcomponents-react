@@ -92,7 +92,8 @@ export const withCustomRadiusStory = () =>
       style={{ width: '50%' }}
       dataset={simpleDataSet}
       chartConfig={{
-        innerRadius: text('innerRadius', '20%')
+        innerRadius: text('innerRadius', '20%'),
+        outerRadius: text('outerRadius', '90%'),
       }}
       dimension={{
         accessor: 'name'
