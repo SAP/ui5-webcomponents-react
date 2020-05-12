@@ -1,4 +1,4 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
