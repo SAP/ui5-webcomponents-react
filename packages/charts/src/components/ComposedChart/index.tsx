@@ -160,34 +160,34 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     (payload, eventOrIndex, event) => {
       if (payload.name) {
         typeof onDataPointClick === 'function' &&
-        onDataPointClick(
-          enrichEventWithDetails(event ?? eventOrIndex, {
-            value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
-            dataIndex: payload.index ?? eventOrIndex,
-            dataKey: payload.value.length
-              ? Object.keys(payload).filter((key) =>
-                payload.value.length
-                  ? payload[key] === payload.value[1] - payload.value[0]
-                  : payload[key] === payload.value && key !== 'value'
-              )[0]
-              : payload.dataKey ??
-              Object.keys(payload).find((key) => payload[key] === payload.value && key !== 'value'),
-            payload: payload.payload
-          })
-        );
+          onDataPointClick(
+            enrichEventWithDetails(event ?? eventOrIndex, {
+              value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
+              dataIndex: payload.index ?? eventOrIndex,
+              dataKey: payload.value.length
+                ? Object.keys(payload).filter((key) =>
+                    payload.value.length
+                      ? payload[key] === payload.value[1] - payload.value[0]
+                      : payload[key] === payload.value && key !== 'value'
+                  )[0]
+                : payload.dataKey ??
+                  Object.keys(payload).find((key) => payload[key] === payload.value && key !== 'value'),
+              payload: payload.payload
+            })
+          );
       } else {
         typeof onDataPointClick === 'function' &&
-        onDataPointClick(
-          enrichEventWithDetails(
-            {},
-            {
-              value: eventOrIndex.value,
-              dataKey: eventOrIndex.dataKey,
-              dataIndex: eventOrIndex.index,
-              payload: eventOrIndex.payload
-            }
-          )
-        );
+          onDataPointClick(
+            enrichEventWithDetails(
+              {},
+              {
+                value: eventOrIndex.value,
+                dataKey: eventOrIndex.dataKey,
+                dataIndex: eventOrIndex.index,
+                payload: eventOrIndex.payload
+              }
+            )
+          );
       }
     },
     [onDataPointClick]
@@ -211,7 +211,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
   };
 
   const Placeholder = useCallback(() => {
-    return <ComposedChartPlaceholder layout={layout} measures={measures}/>;
+    return <ComposedChartPlaceholder layout={layout} measures={measures} />;
   }, [layout, measures]);
   return (
     <ChartContainer
@@ -224,50 +224,55 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       tooltip={tooltip}
       slot={slot}
     >
-      <ComposedChartLib margin={marginChart} data={dataset} layout={layout}>
+      <ComposedChartLib
+        margin={marginChart}
+        data={dataset}
+        layout={layout}
+        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
           stroke={chartConfig.gridStroke}
         />
         {chartConfig.xAxisVisible &&
-        dimensions.map((dimension, index) => {
-          let AxisComponent;
-          const axisProps: any = {
-            dataKey: dimension.accessor,
-            interval: dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0),
-            tickLine: index < 1,
-            axisLine: index < 1,
-            allowDuplicatedCategory: index === 0,
-            scale: dimensions.length === 1 ? 'band' : 'auto'
-          };
+          dimensions.map((dimension, index) => {
+            let AxisComponent;
+            const axisProps: any = {
+              dataKey: dimension.accessor,
+              interval: dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0),
+              tickLine: index < 1,
+              axisLine: index < 1,
+              allowDuplicatedCategory: index === 0,
+              scale: dimensions.length === 1 ? 'band' : 'auto'
+            };
 
-          if (layout === 'vertical') {
-            axisProps.type = 'category';
-            axisProps.tick = <YAxisTicks config={dimension}/>;
-            axisProps.yAxisId = index;
-            axisProps.width = yAxisWidth;
-            AxisComponent = YAxis;
-          } else {
-            axisProps.dataKey = dimension.accessor;
-            axisProps.tick = <XAxisTicks config={dimension}/>;
-            axisProps.xAxisId = index;
-            axisProps.height = xAxisHeights[index];
-            AxisComponent = XAxis;
-          }
+            if (layout === 'vertical') {
+              axisProps.type = 'category';
+              axisProps.tick = <YAxisTicks config={dimension} />;
+              axisProps.yAxisId = index;
+              axisProps.width = yAxisWidth;
+              AxisComponent = YAxis;
+            } else {
+              axisProps.dataKey = dimension.accessor;
+              axisProps.tick = <XAxisTicks config={dimension} />;
+              axisProps.xAxisId = index;
+              axisProps.height = xAxisHeights[index];
+              AxisComponent = XAxis;
+            }
 
-          return <AxisComponent key={dimension.accessor} {...axisProps} />;
-        })}
+            return <AxisComponent key={dimension.accessor} {...axisProps} />;
+          })}
         {layout === 'horizontal' && (
           <YAxis
             {...measureAxisProps}
             yAxisId="primary"
             width={yAxisWidth}
-            tick={<YAxisTicks config={primaryMeasure}/>}
+            tick={<YAxisTicks config={primaryMeasure} />}
           />
         )}
         {layout === 'vertical' && (
-          <XAxis {...measureAxisProps} xAxisId="primary" type="number" tick={<XAxisTicks config={primaryMeasure}/>}/>
+          <XAxis {...measureAxisProps} xAxisId="primary" type="number" tick={<XAxisTicks config={primaryMeasure} />} />
         )}
 
         {chartConfig.secondYAxis?.dataKey && layout === 'horizontal' && (
@@ -301,7 +306,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             xAxisId={layout === 'vertical' ? 'primary' : undefined}
           />
         )}
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle}/>
+        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
         {!noLegend && (
           <Legend
             verticalAlign={chartConfig.legendPosition}
@@ -360,7 +365,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               name={element.label ?? element.accessor}
               label={
                 isBigDataSet ? null : (
-                  <ChartDataLabel config={element} chartType={element.type} position={labelPosition}/>
+                  <ChartDataLabel config={element} chartType={element.type} position={labelPosition} />
                 )
               }
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
