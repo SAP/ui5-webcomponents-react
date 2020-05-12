@@ -7,7 +7,7 @@ import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { IPolarChartConfig } from "../../interfaces/IPolarChartConfig";
+import { IPolarChartConfig } from '../../interfaces/IPolarChartConfig';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
@@ -102,7 +102,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
   );
 
   const label = useMemo(() => {
-    if(measure.hideDataLabel) return null;
+    if (measure.hideDataLabel) return null;
     return {
       position: 'outside',
       content: measure.DataLabel,
@@ -117,6 +117,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
 
   const onDataPointClickInternal = useCallback(
     (payload, event) => {
+      debugger;
       if (payload && payload?.activePayload && onDataPointClick) {
         onDataPointClick(
           enrichEventWithDetails(event, {
@@ -143,7 +144,11 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       tooltip={tooltip}
       slot={slot}
     >
-      <PieChartLib onClick={onDataPointClickInternal} margin={chartConfig.margin}>
+      <PieChartLib
+        onClick={onDataPointClickInternal}
+        margin={chartConfig.margin}
+        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+      >
         <Pie
           innerRadius={chartConfig.innerRadius}
           outerRadius={chartConfig.outerRadius}
@@ -154,6 +159,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
           animationBegin={0}
           isAnimationActive={noAnimation === false}
           label={label}
+          className={'test'}
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&

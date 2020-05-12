@@ -20,6 +20,7 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLongestYAxisLabelBar } from '../../hooks/useLongestYAxisLabelBar';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
@@ -28,7 +29,6 @@ import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { useLongestYAxisLabelBar } from '../../hooks/useLongestYAxisLabelBar';
 
 const dimensionDefaults = {
   formatter: defaultFormatter
@@ -175,7 +175,13 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       tooltip={tooltip}
       slot={slot}
     >
-      <BarChartLib margin={marginChart} layout="vertical" data={dataset} barGap={chartConfig.barGap}>
+      <BarChartLib
+        margin={marginChart}
+        layout="vertical"
+        data={dataset}
+        barGap={chartConfig.barGap}
+        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}

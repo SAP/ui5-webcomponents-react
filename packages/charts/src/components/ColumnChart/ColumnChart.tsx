@@ -180,7 +180,12 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       tooltip={tooltip}
       slot={slot}
     >
-      <ColumnChartLib margin={marginChart} data={dataset} barGap={chartConfig.barGap}>
+      <ColumnChartLib
+        margin={marginChart}
+        data={dataset}
+        barGap={chartConfig.barGap}
+        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
