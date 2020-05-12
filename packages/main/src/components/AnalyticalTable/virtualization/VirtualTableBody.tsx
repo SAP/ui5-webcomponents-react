@@ -223,15 +223,22 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                   return <div {...cellProps} />;
                 }
 
-                let contentToRender = 'Cell';
-                if (isTreeTable) {
+                let contentToRender;
+                if (
+                  cell.column.id == '__ui5wcr__internal_highlight_column' ||
+                  cell.column.id === '__ui5wcr__internal_selection_column'
+                ) {
+                  contentToRender = 'Cell';
+                } else if (isTreeTable) {
                   contentToRender = 'Expandable';
                 } else if (cell.isGrouped) {
                   contentToRender = 'Grouped';
                 } else if (cell.isAggregated) {
                   contentToRender = 'Aggregated';
-                } else if (cell.isPlaceholder || cell.column.isGrouped) {
+                } else if (cell.isPlaceholder) {
                   contentToRender = 'RepeatedValue';
+                } else {
+                  contentToRender = 'Cell';
                 }
                 // eslint-disable-next-line react/jsx-key
                 return <div {...cellProps}>{cell.render(contentToRender)}</div>;
