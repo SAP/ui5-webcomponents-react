@@ -1,11 +1,10 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { act, render } from '@testing-library/react';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
-import { AnalyticalTableScrollMode } from '@ui5/webcomponents-react/lib/AnalyticalTableScrollMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { mount } from 'enzyme';
-import { render, fireEvent, waitFor, screen, act } from '@testing-library/react';
 import React, { useRef } from 'react';
 
 const columns = [
@@ -277,7 +276,7 @@ describe('AnalyticalTable', () => {
       );
     };
 
-    const utils = render(<UsingTable />);
+    render(<UsingTable />);
 
     // Check existence + type
     expect(typeof tableRef.current.scrollTo).toBe('function');
@@ -296,8 +295,6 @@ describe('AnalyticalTable', () => {
     });
 
     expect(tableInnerRef.scrollTop).toBe(2);
-
-    expect(utils.asFragment()).toMatchSnapshot();
   });
 
   test('with highlight row', () => {
