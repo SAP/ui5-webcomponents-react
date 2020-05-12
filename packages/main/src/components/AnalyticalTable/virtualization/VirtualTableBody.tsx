@@ -112,7 +112,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         currentlyFocusedCell.current = firstCell;
       }
     },
-    [currentlyFocusedCell, parentRef]
+    [currentlyFocusedCell]
   );
 
   const onKeyboardNavigation = useCallback(
