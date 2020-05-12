@@ -117,7 +117,6 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
 
   const onDataPointClickInternal = useCallback(
     (payload, event) => {
-      debugger;
       if (payload && payload?.activePayload && onDataPointClick) {
         onDataPointClick(
           enrichEventWithDetails(event, {
@@ -159,7 +158,6 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
           animationBegin={0}
           isAnimationActive={noAnimation === false}
           label={label}
-          className={'test'}
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&
