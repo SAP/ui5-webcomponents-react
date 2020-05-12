@@ -1,8 +1,8 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { getTextWidth } from '@ui5/webcomponents-react-charts/lib/Utils';
-import React, { FC } from 'react';
+import React, { FC, createElement } from 'react';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
-import Label from './ChartLabel';
+import { Label } from 'recharts';
 
 interface CustomDataLabelProps {
   config: IChartMeasure;
@@ -14,16 +14,14 @@ interface CustomDataLabelProps {
 }
 
 export const ChartDataLabel: FC<CustomDataLabelProps> = (props: CustomDataLabelProps) => {
-  const { config, chartType } = props;
-
-  const viewBox = Label.parseViewBox(props);
+  const { config, chartType, viewBox } = props;
 
   if (config.hideDataLabel) {
     return null;
   }
 
   if (config.DataLabel) {
-    return config.DataLabel(props);
+    return createElement(config.DataLabel, props);
   }
 
   const formattedLabel = config.formatter(props.value ?? props.children);
