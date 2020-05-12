@@ -1,7 +1,6 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { mount } from 'enzyme';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
-import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
 import React from 'react';
 
 const GridContent = () => (
@@ -75,23 +74,6 @@ describe('Grid', () => {
           }}
           data-layout={{ indent: 'XL1 L1 M1 S1' }}
         />
-      </Grid>
-    );
-    expect(wrapper.render()).toMatchSnapshot();
-  });
-
-  test('Grid Position Center', () => {
-    const wrapper = mount(
-      <Grid width="60%" position={GridPosition.Center}>
-        <GridContent />
-      </Grid>
-    );
-    expect(wrapper.render()).toMatchSnapshot();
-  });
-  test('Grid Position Right', () => {
-    const wrapper = mount(
-      <Grid width="60%" position={GridPosition.Right}>
-        <GridContent />
       </Grid>
     );
     expect(wrapper.render()).toMatchSnapshot();

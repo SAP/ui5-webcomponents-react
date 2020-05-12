@@ -51,7 +51,6 @@ import { FormGroup } from './lib/FormGroup';
 import { FormItem } from './lib/FormItem';
 import { GlobalStyleClasses } from './lib/GlobalStyleClasses';
 import { Grid } from './lib/Grid';
-import { GridPosition } from './lib/GridPosition';
 import { GroupHeaderListItem } from './lib/GroupHeaderListItem';
 import { Icon } from './lib/Icon';
 import { Input } from './lib/Input';
@@ -193,7 +192,6 @@ export {
   FormItem,
   GlobalStyleClasses,
   Grid,
-  GridPosition,
   GroupHeaderListItem,
   Icon,
   Input,
