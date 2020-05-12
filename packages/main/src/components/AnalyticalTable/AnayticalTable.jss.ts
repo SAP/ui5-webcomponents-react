@@ -55,13 +55,12 @@ const styles = {
     width: '100%',
     zIndex: 0,
     color: ThemingParameters.sapList_TextColor,
+    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     boxSizing: 'border-box',
     display: 'flex',
     '&[data-is-selected]': {
-      backgroundColor: `${ThemingParameters.sapList_SelectionBackgroundColor} !important`,
-      '& $tableCell': {
-        borderBottom: `1px solid ${ThemingParameters.sapList_SelectionBorderColor}`
-      }
+      borderBottom: `1px solid ${ThemingParameters.sapList_SelectionBorderColor}`,
+      backgroundColor: `${ThemingParameters.sapList_SelectionBackgroundColor} !important`
     },
     '&[data-is-selected]:hover': {
       backgroundColor: `${ThemingParameters.sapList_Hover_SelectionBackground} !important`
@@ -96,7 +95,6 @@ const styles = {
   selectionModeRowSelector: {},
   tableCell: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     boxSizing: 'border-box',
     borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     display: 'inline-flex',

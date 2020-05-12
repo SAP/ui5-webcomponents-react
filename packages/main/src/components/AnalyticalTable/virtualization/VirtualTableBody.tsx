@@ -193,6 +193,18 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       >
         {rowVirtualizer.virtualItems.map((virtualRow) => {
           const row = rows[virtualRow.index];
+          if (!row) {
+            return (
+              <div
+                key={virtualRow.index}
+                className={classes.tr}
+                style={{
+                  height: `${virtualRow.size}px`,
+                  transform: `translateY(${virtualRow.start}px)`
+                }}
+              />
+            );
+          }
           prepareRow(row);
           const rowProps = row.getRowProps();
 
