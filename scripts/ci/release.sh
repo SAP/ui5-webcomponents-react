@@ -23,7 +23,7 @@ yarn build
 bash ${WORKSPACE}/scripts/ci/setup-npm.sh
 
 # trigger lerna release and create new storybook
-${WORKSPACE}/node_modules/.bin/lerna publish patch --conventional-graduate \
+${WORKSPACE}/node_modules/.bin/lerna publish minor --conventional-graduate \
   --create-release github
 
 # all packages are now released, clear npm-session
