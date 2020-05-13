@@ -1,9 +1,9 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { act, render } from '@testing-library/react';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
-import { AnalyticalTableScrollMode } from '@ui5/webcomponents-react/lib/AnalyticalTableScrollMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { mount } from 'enzyme';
 import React, { useRef } from 'react';
 
@@ -271,19 +271,29 @@ describe('AnalyticalTable', () => {
     let tableRef;
     const UsingTable = (props) => {
       tableRef = useRef(null);
-      return <AnalyticalTable ref={tableRef} title="Table Title" data={data} columns={columns} />;
+      return (
+        <AnalyticalTable ref={tableRef} title="Table Title" data={data} columns={columns} visibleRows={1} minRows={1} />
+      );
     };
 
-    mount(<UsingTable />);
+    render(<UsingTable />);
 
     // Check existence + type
     expect(typeof tableRef.current.scrollTo).toBe('function');
     expect(typeof tableRef.current.scrollToItem).toBe('function');
 
     // call functions
-    const tableInnerRef = tableRef.current.querySelector("div[class^='AnalyticalTable-table'] > div > div");
-    tableRef.current.scrollToItem(2, AnalyticalTableScrollMode.end);
-    tableRef.current.scrollTo(2);
+    const tableInnerRef = tableRef.current.querySelector("div[class^='AnalyticalTable-table'] > div");
+    act(() => {
+      tableRef.current.scrollToItem(1, 'start');
+    });
+
+    expect(tableInnerRef.scrollTop).toBe(44);
+
+    act(() => {
+      tableRef.current.scrollTo(2);
+    });
+
     expect(tableInnerRef.scrollTop).toBe(2);
   });
 

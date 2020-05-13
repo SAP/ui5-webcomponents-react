@@ -155,9 +155,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     if (dragOver) {
       modifiedStyles.borderLeft = `3px solid ${ThemingParameters.sapSelectedColor}`;
     }
-    if (column.id === '__ui5wcr__internal_highlight_column' || column.id === '__ui5wcr__internal_selection_column') {
-      modifiedStyles.padding = 0;
-    }
     return modifiedStyles;
   }, [dragOver, hasPopover]);
 
