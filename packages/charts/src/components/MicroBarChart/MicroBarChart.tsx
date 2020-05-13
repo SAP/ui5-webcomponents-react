@@ -142,6 +142,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={250}
     >
       <MicroBarChartLib margin={microBarChartMargin} layout="vertical" data={dataset} label={microBarChartLabel}>
         <XAxis hide type="number" />

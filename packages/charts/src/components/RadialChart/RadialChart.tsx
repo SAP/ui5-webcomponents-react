@@ -55,6 +55,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={250}
     >
       <RadialBarChart
         margin={radialChartMargin}
