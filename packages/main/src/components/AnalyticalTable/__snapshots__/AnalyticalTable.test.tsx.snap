@@ -280,7 +280,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -294,7 +294,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -308,7 +308,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -322,7 +322,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -343,7 +343,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -357,7 +357,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -371,7 +371,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -385,7 +385,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -406,28 +406,28 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -441,28 +441,28 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -476,28 +476,28 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -787,7 +787,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -801,7 +801,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -815,7 +815,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -829,7 +829,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -850,7 +850,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -864,7 +864,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -878,7 +878,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -892,7 +892,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -913,28 +913,28 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -948,28 +948,28 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -983,28 +983,28 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -1543,11 +1543,11 @@ exports[`AnalyticalTable Tree Table 1`] = `
         draggable="false"
         id="__ui5wcr__internal_selection_column"
         role="columnheader"
-        style="position: relative; width: 47px;"
+        style="position: relative; width: 47px; padding: 0px;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: auto; padding: 0px;"
+          style="cursor: auto;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -1865,7 +1865,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 47px;"
             tabindex="-1"
           >
             <div
@@ -1876,7 +1876,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -1899,7 +1899,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -1916,7 +1916,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -1933,7 +1933,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="5"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -1957,7 +1957,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 47px;"
             tabindex="-1"
           >
             <div
@@ -1968,7 +1968,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span />
@@ -1983,7 +1983,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -2000,7 +2000,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -2017,7 +2017,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="5"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -2041,35 +2041,35 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 47px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="5"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -2083,35 +2083,35 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 47px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="5"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -2125,35 +2125,35 @@ exports[`AnalyticalTable Tree Table 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 47px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="5"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -2443,7 +2443,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -2457,7 +2457,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -2471,7 +2471,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -2485,7 +2485,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -2506,7 +2506,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -2520,7 +2520,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -2534,7 +2534,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -2548,7 +2548,7 @@ exports[`AnalyticalTable custom row height 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -2569,28 +2569,28 @@ exports[`AnalyticalTable custom row height 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -2604,28 +2604,28 @@ exports[`AnalyticalTable custom row height 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -2639,28 +2639,28 @@ exports[`AnalyticalTable custom row height 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -3222,7 +3222,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3236,7 +3236,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3250,7 +3250,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3264,7 +3264,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3285,7 +3285,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3299,7 +3299,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3313,7 +3313,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3327,7 +3327,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3348,28 +3348,28 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -3383,28 +3383,28 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -3418,28 +3418,28 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -3729,7 +3729,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3743,7 +3743,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3757,7 +3757,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3771,7 +3771,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3792,7 +3792,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3806,7 +3806,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3820,7 +3820,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3834,7 +3834,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -3855,28 +3855,28 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -3890,28 +3890,28 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -3925,28 +3925,28 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -4236,7 +4236,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4250,7 +4250,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4264,7 +4264,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4278,7 +4278,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4299,7 +4299,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4313,7 +4313,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4327,7 +4327,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4341,7 +4341,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4362,28 +4362,28 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -4397,28 +4397,28 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -4432,28 +4432,28 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -4743,7 +4743,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4757,7 +4757,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4771,7 +4771,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4785,7 +4785,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4806,7 +4806,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4820,7 +4820,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4834,7 +4834,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4848,7 +4848,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -4869,28 +4869,28 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -4904,28 +4904,28 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -4939,28 +4939,28 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -5000,11 +5000,11 @@ exports[`AnalyticalTable with highlight row 1`] = `
         draggable="false"
         id="__ui5wcr__internal_highlight_column"
         role="columnheader"
-        style="position: relative; width: 6px;"
+        style="position: relative; width: 6px; padding: 0px;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: auto; padding: 0px;"
+          style="cursor: auto;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5024,11 +5024,11 @@ exports[`AnalyticalTable with highlight row 1`] = `
         draggable="false"
         id="__ui5wcr__internal_selection_column"
         role="columnheader"
-        style="position: relative; width: 47px;"
+        style="position: relative; width: 47px; padding: 0px;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: auto; padding: 0px;"
+          style="cursor: auto;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5294,7 +5294,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 6px;"
             tabindex="-1"
           >
             <div
@@ -5305,7 +5305,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 47px;"
             tabindex="-1"
           >
             <div
@@ -5316,7 +5316,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5330,7 +5330,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5344,7 +5344,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="5"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5358,7 +5358,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="6"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5379,7 +5379,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 6px;"
             tabindex="-1"
           >
             <div />
@@ -5388,7 +5388,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 47px;"
             tabindex="-1"
           >
             <div
@@ -5399,7 +5399,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5413,7 +5413,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5427,7 +5427,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="5"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5441,7 +5441,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="6"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5462,42 +5462,42 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 6px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 47px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="5"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="6"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -5511,42 +5511,42 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 6px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 47px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="5"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="6"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -5560,42 +5560,42 @@ exports[`AnalyticalTable with highlight row 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 6px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center; padding: 0px;"
+            style="align-items: center; padding: 0px; width: 47px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="5"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="6"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -5885,7 +5885,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5899,7 +5899,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5913,7 +5913,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5927,7 +5927,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5948,7 +5948,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5962,7 +5962,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5976,7 +5976,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -5990,7 +5990,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           >
             <span
@@ -6011,28 +6011,28 @@ exports[`AnalyticalTable without selection Column 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -6046,28 +6046,28 @@ exports[`AnalyticalTable without selection Column 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
@@ -6081,28 +6081,28 @@ exports[`AnalyticalTable without selection Column 1`] = `
             aria-colindex="1"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="2"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="3"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
           <div
             aria-colindex="4"
             class="AnalyticalTable-tableCell-0"
             role="cell"
-            style="align-items: center;"
+            style="align-items: center; width: 150px;"
             tabindex="-1"
           />
         </div>
