@@ -65,8 +65,7 @@ const MyComponent = () => {
         {
           month: 'January',
           existingCustomers: 65,
-          newCustomers: 5,
-          data: [65, 59, 80]
+          newCustomers: 5
         },
         {
           month: 'February',
