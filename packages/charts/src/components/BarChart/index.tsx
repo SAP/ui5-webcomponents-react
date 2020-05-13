@@ -1,9 +1,11 @@
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
+import { getTextWidth } from '@ui5/webcomponents-react-charts/lib/Utils';
 import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import bestContrast from 'get-best-contrast-color';
-import React, { FC, forwardRef, Ref, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useEffect, useMemo } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
-import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
 import { InternalProps } from '../../interfaces/InternalProps';
@@ -11,7 +13,6 @@ import { useLegend, useLegendItemClickHandler } from '../../internal/ChartLegend
 import { getCssVariableValue } from '../../themes/Utils';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
 import { useChartData } from '../../util/populateData';
-import { getTextWidth } from '@ui5/webcomponents-react-charts/lib/Utils';
 import { formatAxisCallback, formatDataLabel, formatTooltipLabel, useMergedConfig } from '../../util/utils_deprecated';
 import { BarChartPlaceholder } from './Placeholder';
 
@@ -32,6 +33,13 @@ const BarChartComponent = forwardRef((props: BarChartPropTypes, ref: Ref<any>) =
     noLegend,
     legendRef
   } = props as BarChartPropTypes & InternalProps;
+
+  useEffect(() => {
+    deprecationNotice(
+      'BarChart',
+      "This component is deprecated and will be removed with v0.10.0. Please use '@ui5/webcomponents-react-charts/lib/next/BarChart' instead."
+    );
+  }, []);
 
   const theme = getTheme();
   const data = useChartData(labels, datasets, colors, theme);
@@ -115,6 +123,8 @@ const BarChartComponent = forwardRef((props: BarChartPropTypes, ref: Ref<any>) =
 BarChartComponent.LoadingPlaceholder = BarChartPlaceholder;
 /**
  * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';</code>
+ * <br />
+ * <b>This component is deprecated and will be removed with v0.10.0. Please use [this component](https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-barchart) instead.</b>
  */
 const BarChart: FC<BarChartPropTypes> = withChartContainer(BarChartComponent);
 

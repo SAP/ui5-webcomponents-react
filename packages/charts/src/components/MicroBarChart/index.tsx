@@ -1,8 +1,9 @@
-import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
+import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
+import React, { CSSProperties, FC, forwardRef, Ref, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { resolveColors } from '../../util/populateData';
-import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 
 const BarStyles = {
   container: {
@@ -67,6 +68,8 @@ export interface MicroBarChartPropTypes extends CommonProps {
 
 /**
  * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';</code>
+ * <br />
+ * <b>This component is deprecated and will be removed with v0.10.0. Please use [this component](https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-microbarchart) instead.</b>
  */
 const MicroBarChart: FC<MicroBarChartPropTypes> = forwardRef(
   (props: MicroBarChartPropTypes, ref: Ref<HTMLDivElement>) => {
@@ -78,6 +81,13 @@ const MicroBarChart: FC<MicroBarChartPropTypes> = forwardRef(
     const colorPalette = resolveColors(colors, theme);
 
     const maxValue = Math.max(...dataset.map((item) => item.value));
+
+    useEffect(() => {
+      deprecationNotice(
+        'MicroBarChart',
+        "This component is deprecated and will be removed with v0.10.0. Please use '@ui5/webcomponents-react-charts/lib/next/MicroBarChart' instead."
+      );
+    }, []);
 
     return (
       <div className={`${classes.container} ${className}`} style={{ maxWidth, ...style }} ref={ref}>

@@ -89,7 +89,6 @@ const measureDefaults = {
 
 /**
  * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/next/ColumnChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
   const {
@@ -116,6 +115,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       legendHorizontalAlign: 'left',
       barGap: 3,
       zoomingTool: false,
+      resizeDebounce: 250,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -179,6 +179,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={chartConfig.resizeDebounce}
     >
       <ColumnChartLib
         margin={marginChart}

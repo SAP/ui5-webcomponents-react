@@ -82,7 +82,6 @@ const measureDefaults = {
 
 /**
  * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/next/LineChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<any>) => {
   const {
@@ -108,6 +107,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       legendPosition: 'bottom',
       legendHorizontalAlign: 'left',
       zoomingTool: false,
+      resizeDebounce: 250,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -169,6 +169,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={chartConfig.resizeDebounce}
     >
       <LineChartLib
         margin={marginChart}

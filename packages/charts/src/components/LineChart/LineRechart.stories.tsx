@@ -5,46 +5,45 @@ import React from 'react';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
-  title: 'Charts - Unstable /  LineChart',
+  title: 'Charts /  LineChart',
   component: LineChart
 };
 
-export const renderStory = () =>
-  (
-    <LineChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
-      dataset={complexDataSet}
-      style={{ width: '100%' }}
-      dimensions={[
-        {
-          accessor: 'name',
-          formatter: (d) => `${d} 2019`,
-          interval: 0
-        }
-      ]}
-      measures={[
-        {
-          accessor: 'users',
-          label: 'Users',
-          formatter: (val) => val.toLocaleString()
-        },
-        {
-          accessor: 'sessions',
-          label: 'Active Sessions',
-          formatter: (val) => `${val} sessions`,
-          hideDataLabel: true
-        },
-        {
-          accessor: 'volume',
-          label: 'Vol.'
-        }
-      ]}
-    />
-  );
+export const renderStory = () => (
+  <LineChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
+    dataset={complexDataSet}
+    style={{ width: '100%' }}
+    dimensions={[
+      {
+        accessor: 'name',
+        formatter: (d) => `${d} 2019`,
+        interval: 0
+      }
+    ]}
+    measures={[
+      {
+        accessor: 'users',
+        label: 'Users',
+        formatter: (val) => val.toLocaleString()
+      },
+      {
+        accessor: 'sessions',
+        label: 'Active Sessions',
+        formatter: (val) => `${val} sessions`,
+        hideDataLabel: true
+      },
+      {
+        accessor: 'volume',
+        label: 'Vol.'
+      }
+    ]}
+  />
+);
 
 renderStory.story = {
   name: 'Default'

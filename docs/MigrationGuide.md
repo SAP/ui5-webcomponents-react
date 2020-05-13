@@ -1,5 +1,88 @@
 # Migration Guide
 
+## 0.9.5 - Charts Migration
+With version v0.9.5 of `@ui5/webcomponents-react-charts` we replace the canvas based charts with SVG based charts and 
+streamlined the ChartAPI to work similar to the `AnalyticalTable` API.
+This requires a couple of changes on your side:
+
+1. Change the import from `@ui5/webcomponents-react-charts/lib/[ChartType]` to `@ui5/webcomponents-react-charts/lib/[ChartType]`
+2. Don't split the dataset into labels and single dataset entries as before, you can pass your dataset "as-is" to the chart.
+3. Your labels are now part of the dataset, but you need to tell the chart which element of the data is your dimension
+   Use the `dimensions` prop for that.
+4. Instead of passing multiple datasets with their own data into the datasets prop, define your `measures` by specifying at least the `accessor`.
+
+To illustrate the required changes, you can find the migration of a bar chart with two bars per dimension below:
+
+Old Bar Chart:
+```jsx
+import React from 'react';
+import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';
+
+const MyComponent = () => {
+  return (
+    <BarChart
+      labels={['January', 'February', 'March']}
+      datasets={[
+        {
+          label: 'Existing Customers',
+          data: [65, 59, 80]
+        },
+
+        {
+          label: 'New Customers',
+          data: [5, 9, 8]
+        }
+      ]}
+    />
+  );
+};
+```
+
+New Bar Chart:
+```jsx
+import React from 'react';
+import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
+
+const MyComponent = () => {
+  return (
+    <BarChart
+      dimensions={[
+        {
+          accessor: 'month'
+        }
+      ]}
+      measures={[
+        {
+          accessor: 'existingCustomers',
+          label: 'Existing Customers'
+        },
+        {
+          accessor: 'newCustomers',
+          label: 'New Customers'
+        }
+      ]}
+      dataset={[
+        {
+          month: 'January',
+          existingCustomers: 65,
+          newCustomers: 5
+        },
+        {
+          month: 'February',
+          existingCustomers: 59,
+          newCustomers: 9
+        },
+        {
+          month: 'March',
+          existingCustomers: 80,
+          newCustomers: 8
+        }
+      ]}
+    />
+  );
+};
+```
+
 ## Migrating from 0.8.X to 0.9.0
 Migrating your app from 0.8.X to 0.9.0 requires a few updates to the API properties, this includes dependencies, theming, event handling and prop changes.
 

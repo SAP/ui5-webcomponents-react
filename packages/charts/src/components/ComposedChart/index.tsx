@@ -106,7 +106,6 @@ type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
 /**
  * <code>import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/next/ComposedChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
   const {
@@ -135,6 +134,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       legendPosition: 'bottom',
       legendHorizontalAlign: 'left',
       zoomingTool: false,
+      resizeDebounce: 250,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -223,6 +223,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={chartConfig.resizeDebounce}
     >
       <ComposedChartLib
         margin={marginChart}

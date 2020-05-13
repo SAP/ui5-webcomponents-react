@@ -1,6 +1,7 @@
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
-import React, { FC, forwardRef, Ref, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useEffect, useMemo } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
@@ -29,6 +30,13 @@ const DonutChartComponent = forwardRef((props: DonutChartPropTypes, ref: Ref<any
     noLegend,
     legendRef
   } = props as DonutChartPropTypes & InternalProps;
+
+  useEffect(() => {
+    deprecationNotice(
+      'DonutChart',
+      "This component is deprecated and will be removed with v0.10.0. Please use '@ui5/webcomponents-react-charts/lib/next/DonutChart' instead."
+    );
+  }, []);
 
   const theme = getTheme();
   const data = useChartData(labels, datasets, colors, theme, true);
@@ -75,6 +83,8 @@ const DonutChartComponent = forwardRef((props: DonutChartPropTypes, ref: Ref<any
 DonutChartComponent.LoadingPlaceholder = PieChartPlaceholder;
 /**
  * <code>import { DonutChart } from '@ui5/webcomponents-react-charts/lib/DonutChart';</code>
+ * <br />
+ * <b>This component is deprecated and will be removed with v0.10.0. Please use [this component](https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-donutchart) instead.</b>
  */
 const DonutChart: FC<DonutChartPropTypes> = withChartContainer(DonutChartComponent);
 
