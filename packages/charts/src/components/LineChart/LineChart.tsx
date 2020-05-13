@@ -170,7 +170,12 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
       tooltip={tooltip}
       slot={slot}
     >
-      <LineChartLib margin={marginChart} data={dataset} onClick={onDataPointClickInternal}>
+      <LineChartLib
+        margin={marginChart}
+        data={dataset}
+        onClick={onDataPointClickInternal}
+        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+      >
         <CartesianGrid
           vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}

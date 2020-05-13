@@ -21,8 +21,7 @@ module.exports = {
     '!packages/base/src/styling/HSLColor.ts', // no deprecated HSL Util
     '!packages/base/src/styling/font72.ts', // no deprecated font
     '!packages/base/src/Scroller/*', // no scroll lib as it is not longer used
-    '!packages/base/src/utils/Event.ts', // event is deprecated
-    '!packages/charts/src/internal/ChartLabel.tsx' // temp copy of recharts label
+    '!packages/base/src/utils/Event.ts' // event is deprecated
   ],
   setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],
