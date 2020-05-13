@@ -57,7 +57,6 @@ export interface PieChartProps extends RechartBaseProps<IPolarChartConfig> {
 
 /**
  * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   const {

@@ -91,7 +91,6 @@ export interface BarChartProps extends RechartBaseProps {
 
 /**
  * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   const {

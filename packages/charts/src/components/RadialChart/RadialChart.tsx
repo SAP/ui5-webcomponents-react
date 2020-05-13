@@ -20,7 +20,6 @@ const radialBarLabelStyle = { fontSize: ThemingParameters.sapFontHeader3Size, fi
 
 /**
  * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/next/RadialChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
   const { maxValue = 100, value, displayValue, onDataPointClick, color, style, className, tooltip, slot } = props;

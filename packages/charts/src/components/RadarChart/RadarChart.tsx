@@ -67,7 +67,6 @@ const measureDefaults = {
 
 /**
  * <code>import { RadarChart } from '@ui5/webcomponents-react-charts/lib/next/RadarChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
   const {

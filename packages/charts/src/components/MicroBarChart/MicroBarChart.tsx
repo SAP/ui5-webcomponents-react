@@ -77,7 +77,6 @@ const microBarChartMargin = { left: -30, right: 30, top: 40, bottom: 30 };
 
 /**
  * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/next/MicroBarChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
   const { loading, dataset, onDataPointClick, style, className, tooltip, slot } = props;

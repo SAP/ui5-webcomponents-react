@@ -1,6 +1,7 @@
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
-import React, { FC, forwardRef, Ref, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useEffect, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { DEFAULT_OPTIONS } from '../../config';
@@ -29,6 +30,13 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
     noLegend,
     legendRef
   } = props as LineChartPropTypes & InternalProps;
+
+  useEffect(() => {
+    deprecationNotice(
+      'LineChart',
+      "This component is deprecated and will be removed with v0.10.0. Please use '@ui5/webcomponents-react-charts/lib/next/LineChart' instead."
+    );
+  }, []);
 
   const lineChartDefaultConfig = useMemo(() => {
     return {
@@ -87,6 +95,8 @@ const LineChartComponent = forwardRef((props: LineChartPropTypes, ref: Ref<any>)
 LineChartComponent.LoadingPlaceholder = LineChartPlaceholder;
 /**
  * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';</code>
+ * <br />
+ * <b>This component is deprecated and will be removed with v0.10.0. Please use [this component](https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-linechart) instead.</b>
  */
 const LineChart: FC<LineChartPropTypes> = withChartContainer(LineChartComponent);
 

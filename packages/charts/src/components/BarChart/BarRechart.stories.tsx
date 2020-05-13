@@ -5,7 +5,7 @@ import React from 'react';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
-  title: 'Charts - Unstable /  BarChart',
+  title: 'Charts /  BarChart',
   component: BarChart
 };
 

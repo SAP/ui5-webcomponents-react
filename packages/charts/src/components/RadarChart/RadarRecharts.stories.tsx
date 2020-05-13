@@ -5,7 +5,7 @@ import { boolean } from '@storybook/addon-knobs';
 import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
-  title: 'Charts - Unstable /  RadarChart',
+  title: 'Charts /  RadarChart',
   component: RadarChart
 };
 

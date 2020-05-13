@@ -5,7 +5,7 @@ import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } 
 import { boolean, select } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Charts - Unstable /  ComposedChart',
+  title: 'Charts /  ComposedChart',
   component: ComposedChart
 };
 
