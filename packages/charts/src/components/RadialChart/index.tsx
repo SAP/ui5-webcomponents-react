@@ -1,7 +1,8 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { ChartOptions } from 'chart.js';
-import React, { CSSProperties, FC, forwardRef, Ref, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useEffect, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ChartBaseDefaultProps } from '../../util/ChartBaseDefaultProps';
@@ -12,7 +13,7 @@ export interface RadialChartPropTypes extends CommonProps {
   value: number;
   maxValue?: number;
   displayValue: number | string;
-  colors?: Array<CSSProperties['color']>;
+  colors?: CSSProperties['color'][];
   options?: ChartOptions;
   height?: number;
   width?: number;
@@ -40,9 +41,18 @@ const useStyles = createUseStyles(styles, { name: 'RadialChart' });
 
 /**
  * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/RadialChart';</code>
+ * <br />
+ * <b>This component is deprecated and will be removed with v0.10.0. Please use [this component](https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-radialchart) instead.</b>
  */
 const RadialChart: FC<RadialChartPropTypes> = forwardRef((props: RadialChartPropTypes, ref: Ref<HTMLDivElement>) => {
   const { maxValue, value, displayValue, style, className, colors, options, width, height } = props;
+
+  useEffect(() => {
+    deprecationNotice(
+      'RadialChart',
+      "This component is deprecated and will be removed with v0.10.0. Please use '@ui5/webcomponents-react-charts/lib/next/RadialChart' instead."
+    );
+  }, []);
 
   const data = [value, maxValue - value];
   const radialChartDefaultConfig = useMemo(() => {

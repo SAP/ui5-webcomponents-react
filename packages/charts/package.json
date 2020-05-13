@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-charts",
-  "version": "0.9.0",
+  "version": "0.9.5",
   "description": "Charts for ui5-webcomponents-react",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -21,6 +21,7 @@
     "build": "rollup -c rollup.config.js"
   },
   "dependencies": {
+    "@babel/runtime": "7.9.6",
     "chart.js": "^2.9.3",
     "chartjs-plugin-datalabels": "^0.7.0",
     "get-best-contrast-color": "^0.3.1",
@@ -28,7 +29,7 @@
     "lodash.merge": "^4.6.2",
     "react-chartjs-2": "^2.8.0",
     "react-content-loader": "^5.0.4",
-    "recharts": "2.0.0-beta.5"
+    "recharts": "2.0.0-beta.6"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.8"

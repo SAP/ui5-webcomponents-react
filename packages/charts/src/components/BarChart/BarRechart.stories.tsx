@@ -2,10 +2,10 @@ import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
 import React from 'react';
-import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
-  title: 'Charts - Unstable /  BarChart',
+  title: 'Charts /  BarChart',
   component: BarChart
 };
 
@@ -13,6 +13,8 @@ export const renderStory = () => {
   return (
     <BarChart
       loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
@@ -51,6 +53,9 @@ renderStory.story = {
 
 export const renderStoryWithCustomColor = () => (
   <BarChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
@@ -65,6 +70,9 @@ renderStoryWithCustomColor.story = {
 
 export const withSecondaryDimension = () => (
   <BarChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
@@ -77,63 +85,65 @@ withSecondaryDimension.story = {
   name: 'With secondary dimension'
 };
 
-export const renderLabelStory = () => {
-  return (
-    <BarChart
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
-      dimensions={[{ accessor: 'name' }]}
-      measures={[
-        {
-          accessor: 'users'
-        },
-        {
-          accessor: 'sessions'
-        },
-        {
-          accessor: 'volume'
-        }
-      ]}
-      dataset={complexDataSet}
-      style={{ width: '95%', height: '40vh' }}
-      chartConfig={{
-        zoomingTool: true
-      }}
-    />
-  );
-};
+export const renderLabelStory = () => (
+  <BarChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
+    dimensions={[{ accessor: 'name' }]}
+    measures={[
+      {
+        accessor: 'users'
+      },
+      {
+        accessor: 'sessions'
+      },
+      {
+        accessor: 'volume'
+      }
+    ]}
+    dataset={complexDataSet}
+    style={{ width: '95%', height: '40vh' }}
+    chartConfig={{
+      zoomingTool: true
+    }}
+  />
+);
 
 renderLabelStory.story = {
   name: 'With data labels'
 };
 
-export const renderCustomDataLabelStory = () => {
-  return (
-    <BarChart
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
-      dataset={complexDataSet}
-      dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
-      measures={[
-        {
-          accessor: 'users',
-          formatter: (element: number) => `${element / 10}`,
-          label: 'number of users'
-        },
-        {
-          accessor: 'sessions'
-        },
-        {
-          accessor: 'volume'
-        }
-      ]}
-      style={{ width: '95%', height: '100vh' }}
-      chartConfig={{
-        zoomingTool: true
-      }}
-    />
-  );
-};
+export const renderCustomDataLabelStory = () => (
+  <BarChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
+    dataset={complexDataSet}
+    dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
+    measures={[
+      {
+        accessor: 'users',
+        formatter: (element: number) => `${element / 10}`,
+        label: 'number of users'
+      },
+      {
+        accessor: 'sessions'
+      },
+      {
+        accessor: 'volume'
+      }
+    ]}
+    style={{ width: '95%', height: '100vh' }}
+    chartConfig={{
+      zoomingTool: true
+    }}
+  />
+);
 
 renderCustomDataLabelStory.story = {
   name: 'With formatter'
@@ -145,53 +155,53 @@ loadingPlaceholder.story = {
   name: 'Loading placeholder'
 };
 
-export const withReferenceLineStory = () => {
-  return (
-    <BarChart
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
-      dataset={complexDataSet}
-      dimensions={[{ accessor: 'name' }]}
-      measures={[
-        {
-          accessor: 'users',
-          stackId: 'A'
-        },
-        {
-          accessor: 'sessions',
-          stackId: 'A'
-        },
-        {
-          accessor: 'volume'
-        }
-      ]}
-      style={{
-        width: '95%',
-        height: '70vh',
-        '--sapChart_OrderedColor_1': '#0f828f',
-        '--sapChart_OrderedColor_2': '#5ac2ce',
-        '--sapChart_OrderedColor_3': '#03734d',
-        '--sapChart_OrderedColor_4': '#66c2a3',
-        '--sapChart_OrderedColor_5': '#3c6372',
-        '--sapChart_OrderedColor_6': '#adbcc3',
-        '--sapChart_OrderedColor_7': '#144b7f',
-        '--sapChart_OrderedColor_8': '#698caf',
-        '--sapChart_OrderedColor_9': '#d62f2f',
-        '--sapChart_OrderedColor_10': '#f8a6a6',
-        '--sapChart_OrderedColor_11': '#921473'
-      }}
-      noLegend={false}
-      loading
-      chartConfig={{
-        referenceLine: {
-          color: 'red',
-          label: 'MAX',
-          value: 650
-        }
-      }}
-    />
-  );
-};
+export const withReferenceLineStory = () => (
+  <BarChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
+    dataset={complexDataSet}
+    dimensions={[{ accessor: 'name' }]}
+    measures={[
+      {
+        accessor: 'users',
+        stackId: 'A'
+      },
+      {
+        accessor: 'sessions',
+        stackId: 'A'
+      },
+      {
+        accessor: 'volume'
+      }
+    ]}
+    style={{
+      width: '95%',
+      height: '70vh',
+      '--sapChart_OrderedColor_1': '#0f828f',
+      '--sapChart_OrderedColor_2': '#5ac2ce',
+      '--sapChart_OrderedColor_3': '#03734d',
+      '--sapChart_OrderedColor_4': '#66c2a3',
+      '--sapChart_OrderedColor_5': '#3c6372',
+      '--sapChart_OrderedColor_6': '#adbcc3',
+      '--sapChart_OrderedColor_7': '#144b7f',
+      '--sapChart_OrderedColor_8': '#698caf',
+      '--sapChart_OrderedColor_9': '#d62f2f',
+      '--sapChart_OrderedColor_10': '#f8a6a6',
+      '--sapChart_OrderedColor_11': '#921473'
+    }}
+    loading
+    chartConfig={{
+      referenceLine: {
+        color: 'red',
+        label: 'MAX',
+        value: 650
+      }
+    }}
+  />
+);
 
 withReferenceLineStory.story = {
   name: 'With reference line'

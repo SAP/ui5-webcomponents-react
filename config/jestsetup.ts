@@ -7,9 +7,6 @@ import ResizeObserver from 'resize-observer-polyfill';
 import 'intersection-observer';
 import '@ui5/webcomponents/dist/generated/json-imports/i18n';
 
-process.env.NODE_ENV = 'test';
-process.env.BABEL_ENV = 'test';
-
 // React 16 Enzyme adapter
 Enzyme.configure({ adapter: new Adapter() });
 

@@ -1,9 +1,10 @@
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { getTextHeight, getTextWidth } from '@ui5/webcomponents-react-charts/lib/Utils';
 import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
 import bestContrast from 'get-best-contrast-color';
-import React, { FC, forwardRef, Ref, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useEffect, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { DEFAULT_OPTIONS } from '../../config';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
@@ -32,6 +33,13 @@ const ColumnChartComponent = forwardRef((props: ColumnChartPropTypes, ref: Ref<a
     noLegend,
     legendRef
   } = props as ColumnChartPropTypes & InternalProps;
+
+  useEffect(() => {
+    deprecationNotice(
+      'ColumnChart',
+      "This component is deprecated and will be removed with v0.10.0. Please use '@ui5/webcomponents-react-charts/lib/next/ColumnChart' instead."
+    );
+  }, []);
 
   const theme = getTheme();
   const data = useChartData(labels, datasets, colors, theme);
@@ -118,6 +126,8 @@ const ColumnChartComponent = forwardRef((props: ColumnChartPropTypes, ref: Ref<a
 ColumnChartComponent.LoadingPlaceholder = ColumnChartPlaceholder;
 /**
  * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/ColumnChart';</code>
+ * <br />
+ * <b>This component is deprecated and will be removed with v0.10.0. Please use [this component](https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-columnchart) instead.</b>
  */
 const ColumnChart: FC<ColumnChartPropTypes> = withChartContainer(ColumnChartComponent);
 

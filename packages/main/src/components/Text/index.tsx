@@ -1,9 +1,9 @@
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import React, { CSSProperties, FC, forwardRef, ReactNode, Ref } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import React, { CSSProperties, FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { ThemeOptions } from '../../interfaces/ThemeOptions';
 import { TextStyles } from './Text.jss';
 
 export interface TextProps extends CommonProps {
@@ -11,10 +11,6 @@ export interface TextProps extends CommonProps {
    * Pass the text as direct child of Text
    */
   children: string | JSX.Element | ReactNode;
-  /**
-   * An optional theme override to be passed. Will win against the theme provided by the ThemeProvider
-   */
-  theme?: ThemeOptions;
 
   renderWhitespace?: boolean;
 
@@ -41,10 +37,19 @@ const Text: FC<TextProps> = forwardRef((props: TextProps, ref: Ref<HTMLSpanEleme
   if (className) {
     classNameString.put(className);
   }
-  const inlineStyles = { width };
-  if (style) {
-    Object.assign(inlineStyles, style);
-  }
+
+  const inlineStyles = useMemo(() => {
+    if (width !== null && width !== undefined) {
+      deprecationNotice(
+        'Text',
+        'The prop `width` is deprecated and will be removed in the v0.10.0. Please use the `style` object instead.'
+      );
+    }
+    return {
+      width,
+      ...style
+    };
+  }, [style, width]);
 
   const passThroughProps = usePassThroughHtmlProps(props);
 

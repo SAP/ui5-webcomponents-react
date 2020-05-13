@@ -2,7 +2,7 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { PLEASE_WAIT } from '@ui5/webcomponents-react/assets/i18n/i18n-defaults';
+import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Size } from '@ui5/webcomponents-react/lib/Size';
 import React, { FC, forwardRef, RefObject, useEffect, useState } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';

@@ -1,8 +1,7 @@
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
-import { CSSProperties } from 'react';
-import { ChartContainerProps } from './ChartContainerProps';
+import { ICartesianChartConfig } from './ICartesianChartConfig';
 
-export interface RechartBaseProps extends CommonProps {
+export interface RechartBaseProps<T = ICartesianChartConfig> extends CommonProps {
   loading?: boolean;
   dataset?: Record<string, any>[];
 
@@ -10,7 +9,9 @@ export interface RechartBaseProps extends CommonProps {
   onDataPointClick?: (event: CustomEvent) => void;
   onLegendClick?: (event: CustomEvent) => void;
 
-  chartConfig?: {
+  noAnimation?: boolean;
+
+  chartConfig?: T & {
     margin?: {
       right: number;
       left: number;
@@ -18,32 +19,9 @@ export interface RechartBaseProps extends CommonProps {
       bottom: number;
     };
 
-    yAxisVisible?: boolean;
-    xAxisVisible?: boolean;
-
-    gridStroke?: string;
-    gridVertical?: boolean;
-    gridHorizontal?: boolean;
     legendPosition?: string;
-    zoomingTool?: boolean;
+    legendHorizontalAlign?: string;
 
-    barGap?: number;
-
-    paddingAngle?: number;
-    innerRadius?: string;
-
-    polarGridType?: string;
-
-    secondYAxis?: {
-      dataKey: string;
-      name?: string;
-      color?: string;
-    };
-
-    referenceLine?: {
-      label: string;
-      value: number;
-      color: string;
-    };
+    resizeDebounce?: number;
   };
 }

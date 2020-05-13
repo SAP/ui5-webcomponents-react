@@ -4,6 +4,7 @@ import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsoli
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { Bar, BarChart as MicroBarChartLib, Cell, Tooltip, XAxis, YAxis } from 'recharts';
+import { defaultFormatter } from '../../internal/defaults';
 import { BarChartPlaceholder } from '../BarChart/Placeholder';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
@@ -76,7 +77,6 @@ const microBarChartMargin = { left: -30, right: 30, top: 40, bottom: 30 };
 
 /**
  * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/next/MicroBarChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
   const { loading, dataset, onDataPointClick, style, className, tooltip, slot } = props;
@@ -85,14 +85,14 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
 
   const dimension: DimensionConfig = useMemo(
     () => ({
-      formatter: (d) => d,
+      formatter: defaultFormatter,
       ...props.dimension
     }),
     [props.dimension]
   );
   const measure: MeasureConfig = useMemo(
     () => ({
-      formatter: (d) => d,
+      formatter: defaultFormatter,
       ...props.measure
     }),
     [props.measure]
@@ -141,13 +141,9 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={250}
     >
-      <MicroBarChartLib
-        margin={microBarChartMargin}
-        layout='vertical'
-        data={dataset}
-        label={microBarChartLabel}
-      >
+      <MicroBarChartLib margin={microBarChartMargin} layout="vertical" data={dataset} label={microBarChartLabel}>
         <XAxis hide type="number" />
         <YAxis
           axisLine={false}

@@ -5,45 +5,45 @@ import React from 'react';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
-  title: 'Charts - Unstable /  LineChart',
+  title: 'Charts /  LineChart',
   component: LineChart
 };
 
-export const renderStory = () => {
-  return (
-    <LineChart
-      loading={boolean('loading', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
-      dataset={complexDataSet}
-      style={{ width: '100%' }}
-      dimensions={[
-        {
-          accessor: 'name',
-          formatter: (d) => `${d} 2019`,
-          interval: 0
-        }
-      ]}
-      measures={[
-        {
-          accessor: 'users',
-          label: 'Users',
-          formatter: (val) => val.toLocaleString()
-        },
-        {
-          accessor: 'sessions',
-          label: 'Active Sessions',
-          formatter: (val) => `${val} sessions`,
-          hideDataLabel: true
-        },
-        {
-          accessor: 'volume',
-          label: 'Vol.'
-        }
-      ]}
-    />
-  );
-};
+export const renderStory = () => (
+  <LineChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
+    onDataPointClick={action('onDataPointClick')}
+    onLegendClick={action('onLegendClick')}
+    dataset={complexDataSet}
+    style={{ width: '100%' }}
+    dimensions={[
+      {
+        accessor: 'name',
+        formatter: (d) => `${d} 2019`,
+        interval: 0
+      }
+    ]}
+    measures={[
+      {
+        accessor: 'users',
+        label: 'Users',
+        formatter: (val) => val.toLocaleString()
+      },
+      {
+        accessor: 'sessions',
+        label: 'Active Sessions',
+        formatter: (val) => `${val} sessions`,
+        hideDataLabel: true
+      },
+      {
+        accessor: 'volume',
+        label: 'Vol.'
+      }
+    ]}
+  />
+);
 
 renderStory.story = {
   name: 'Default'
@@ -51,6 +51,9 @@ renderStory.story = {
 
 export const renderStoryWithCustomColor = () => (
   <LineChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
@@ -65,6 +68,9 @@ renderStoryWithCustomColor.story = {
 
 export const withSecondaryDimension = () => (
   <LineChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
@@ -80,6 +86,9 @@ withSecondaryDimension.story = {
 export const renderLabelStory = () => {
   return (
     <LineChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dimensions={[{ accessor: 'name' }]}
@@ -96,7 +105,6 @@ export const renderLabelStory = () => {
       ]}
       dataset={complexDataSet}
       style={{ width: '95%', height: '40vh' }}
-      loading={true}
       chartConfig={{
         zoomingTool: true
       }}
@@ -111,6 +119,9 @@ renderLabelStory.story = {
 export const renderCustomDataLabelStory = () => {
   return (
     <LineChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
@@ -149,6 +160,9 @@ loadingPlaceholder.story = {
 export const withReferenceLineStory = () => {
   return (
     <LineChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={bigDataSet}
@@ -165,8 +179,6 @@ export const withReferenceLineStory = () => {
         }
       ]}
       style={{ width: '95%', height: '40vh' }}
-      noLegend={false}
-      loading
       chartConfig={{
         referenceLine: {
           color: 'red',

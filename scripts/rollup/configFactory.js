@@ -6,8 +6,7 @@ const fs = require('fs');
 const json = require('@rollup/plugin-json');
 const micromatch = require('micromatch');
 const PATHS = require('../../config/paths');
-const { highlightLog } = require('../utils');
-const { asyncCopyTo } = require('../../scripts/utils');
+const { asyncCopyTo, highlightLog } = require('../utils');
 const glob = require('glob');
 
 process.env.BABEL_ENV = 'production';
@@ -31,8 +30,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
     babel({
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       babelHelpers: 'runtime',
-      configFile: path.resolve(PATHS.root, 'babel.config.json')
-
+      configFile: path.resolve(PATHS.root, 'babel.config.js')
     })
   ];
 
@@ -42,7 +40,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       'react',
       'react-dom',
       'react-jss',
-      '@babel/runtime',
       packageJson.name,
       ...Object.keys(packageJson.dependencies || {}),
       ...Object.keys(packageJson.peerDependencies || {}),

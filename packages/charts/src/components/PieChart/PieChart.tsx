@@ -7,7 +7,9 @@ import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { IPolarChartConfig } from '../../interfaces/IPolarChartConfig';
 import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color'> {
@@ -34,7 +36,7 @@ interface DimensionConfig {
   formatter?: (value: any) => string;
 }
 
-export interface PieChartProps extends RechartBaseProps {
+export interface PieChartProps extends RechartBaseProps<IPolarChartConfig> {
   centerLabel?: string;
   dimension: DimensionConfig;
   /**
@@ -55,13 +57,13 @@ export interface PieChartProps extends RechartBaseProps {
 
 /**
  * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   const {
     loading,
     dataset,
     noLegend = false,
+    noAnimation = false,
     onDataPointClick,
     onLegendClick,
     centerLabel,
@@ -75,25 +77,38 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     return {
       margin: { right: 30, left: 30, bottom: 30, top: 30, ...(props.chartConfig?.margin ?? {}) },
       legendPosition: 'bottom',
+      legendHorizontalAlign: 'center',
       paddingAngle: 0,
+      outerRadius: '80%',
+      resizeDebounce: 250,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
 
   const dimension: DimensionConfig = useMemo(
     () => ({
-      formatter: (d) => d,
+      formatter: defaultFormatter,
       ...props.dimension
     }),
     [props.dimension]
   );
+
   const measure: MeasureConfig = useMemo(
     () => ({
-      formatter: (d) => d,
+      formatter: defaultFormatter,
       ...props.measure
     }),
     [props.measure]
   );
+
+  const label = useMemo(() => {
+    if (measure.hideDataLabel) return null;
+    return {
+      position: 'outside',
+      content: measure.DataLabel,
+      formatter: measure.formatter
+    };
+  }, [measure]);
 
   const tooltipValueFormatter = useCallback((value) => measure.formatter(value), [measure.formatter]);
   const chartRef = useConsolidatedRef<any>(ref);
@@ -101,29 +116,21 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
 
   const onDataPointClickInternal = useCallback(
-    (payload, index, event) => {
-      if (payload && onDataPointClick && payload.value) {
+    (payload, event) => {
+      if (payload && payload?.activePayload && onDataPointClick) {
         onDataPointClick(
           enrichEventWithDetails(event, {
-            value: payload.value,
-            dataKey: measure.accessor,
-            name: payload.name,
-            payload: payload.payload,
-            dataIndex: index
+            value: payload.activePayload[0].value,
+            dataKey: payload.activePayload[0].dataKey,
+            name: payload.activePayload[0].payload.name,
+            payload: payload.activePayload[0].payload,
+            dataIndex: payload.activeTooltipIndex
           })
         );
       }
     },
     [onDataPointClick]
   );
-
-  const label = useMemo(() => {
-    return {
-      position: 'outside',
-      content: measure.hideDataLabel ?? measure.DataLabel,
-      formatter: measure.formatter
-    };
-  }, [measure]);
 
   return (
     <ChartContainer
@@ -135,29 +142,42 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={chartConfig.resizeDebounce}
     >
-      <PieChartLib margin={chartConfig.margin}>
+      <PieChartLib
+        onClick={onDataPointClickInternal}
+        margin={chartConfig.margin}
+        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+      >
         <Pie
           innerRadius={chartConfig.innerRadius}
+          outerRadius={chartConfig.outerRadius}
           paddingAngle={chartConfig.paddingAngle}
           nameKey={dimension.accessor}
           dataKey={measure.accessor}
           data={dataset}
+          animationBegin={0}
+          isAnimationActive={noAnimation === false}
           label={label}
-          onClick={onDataPointClickInternal}
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&
-          dataset.map((data, index) => (
-            <Cell
-              key={index}
-              name={dimension.formatter(getValueByDataKey(data, dimension.accessor, ''))}
-              fill={measure.colors?.[index] ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-            />
-          ))}
+            dataset.map((data, index) => (
+              <Cell
+                key={index}
+                name={dimension.formatter(getValueByDataKey(data, dimension.accessor, ''))}
+                fill={measure.colors?.[index] ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              />
+            ))}
         </Pie>
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle}/>
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick}/>}
+        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        {!noLegend && (
+          <Legend
+            verticalAlign={chartConfig.legendPosition}
+            align={chartConfig.legendHorizontalAlign}
+            onClick={onItemLegendClick}
+          />
+        )}
       </PieChartLib>
     </ChartContainer>
   );

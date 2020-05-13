@@ -1,6 +1,7 @@
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { withChartContainer } from '@ui5/webcomponents-react-charts/lib/withChartContainer';
-import React, { FC, forwardRef, Ref, useMemo } from 'react';
+import React, { FC, forwardRef, Ref, useEffect, useMemo } from 'react';
 import { Radar } from 'react-chartjs-2';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import { ChartBaseProps } from '../../interfaces/ChartBaseProps';
@@ -27,6 +28,13 @@ const RadarChartComponent = forwardRef((props: RadarChartPropTypes, ref: Ref<any
     noLegend,
     legendRef
   } = props as RadarChartPropTypes & InternalProps;
+
+  useEffect(() => {
+    deprecationNotice(
+      'RadarChart',
+      "This component is deprecated and will be removed with v0.10.0. Please use '@ui5/webcomponents-react-charts/lib/next/RadarChart' instead."
+    );
+  }, []);
 
   const theme = getTheme();
   const data = useChartData(labels, datasets, colors, theme);
@@ -69,6 +77,8 @@ const RadarChartComponent = forwardRef((props: RadarChartPropTypes, ref: Ref<any
 
 /**
  * <code>import { RadarChart } from '@ui5/webcomponents-react-charts/lib/RadarChart';</code>
+ * <br />
+ * <b>This component is deprecated and will be removed with v0.10.0. Please use [this component](https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-radarchart) instead.</b>
  */
 const RadarChart: FC<RadarChartPropTypes> = withChartContainer(RadarChartComponent);
 

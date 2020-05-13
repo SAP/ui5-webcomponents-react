@@ -4,7 +4,7 @@ import { RadialChart } from '@ui5/webcomponents-react-charts/lib/next/RadialChar
 import React from 'react';
 
 export default {
-  title: 'Charts - Unstable /  RadialChart',
+  title: 'Charts /  RadialChart',
   component: RadialChart
 };
 

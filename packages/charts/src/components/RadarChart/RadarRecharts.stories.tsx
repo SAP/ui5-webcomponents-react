@@ -5,7 +5,7 @@ import { boolean } from '@storybook/addon-knobs';
 import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
-  title: 'Charts - Unstable /  RadarRechart',
+  title: 'Charts /  RadarChart',
   component: RadarChart
 };
 
@@ -13,6 +13,8 @@ export const renderStory = () => {
   return (
     <RadarChart
       loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
@@ -51,6 +53,9 @@ renderStory.story = {
 
 export const renderStoryWithCustomColor = () => (
   <RadarChart
+    loading={boolean('loading', false)}
+    noLegend={boolean('noLegend', false)}
+    noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
@@ -66,6 +71,9 @@ renderStoryWithCustomColor.story = {
 export const renderLabelStory = () => {
   return (
     <RadarChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dimensions={[{ accessor: 'name' }]}
@@ -93,6 +101,9 @@ renderLabelStory.story = {
 export const renderCustomDataLabelStory = () => {
   return (
     <RadarChart
+      loading={boolean('loading', false)}
+      noLegend={boolean('noLegend', false)}
+      noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
       dataset={complexDataSet}
