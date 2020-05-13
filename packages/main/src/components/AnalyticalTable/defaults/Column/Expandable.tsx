@@ -1,7 +1,5 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import React, { CSSProperties } from 'react';
 
 const tableGroupExpandCollapseIcon = {
@@ -28,20 +26,11 @@ const getPadding = (level) => {
 };
 
 export const Expandable = (props) => {
-  const {
-    cell,
-    row,
-    column,
-    columns,
-    webComponentsReactProperties: { selectionMode, selectionBehavior }
-  } = props;
+  const { cell, row, column, columns } = props;
 
-  const tableColumns =
-    selectionMode === TableSelectionMode.NONE || selectionBehavior === TableSelectionBehavior.ROW_ONLY
-      ? columns
-      : columns.filter(
-          ({ id }) => id !== '__ui5wcr__internal_selection_column' && id !== '__ui5wcr__internal_highlight_column'
-        );
+  const tableColumns = columns.filter(
+    ({ id }) => id !== '__ui5wcr__internal_selection_column' && id !== '__ui5wcr__internal_highlight_column'
+  );
 
   const columnIndex = tableColumns.findIndex((col) => col.id === column.id);
 
@@ -55,10 +44,6 @@ export const Expandable = (props) => {
     paddingLeft
   };
 
-  if (column.id === '__ui5wcr__internal_selection_column' || column.id === '__ui5wcr__internal_highlight_column') {
-    return cell.render('Cell');
-  }
-
   return (
     <>
       {columnIndex === 0 && row.canExpand ? (
@@ -69,7 +54,7 @@ export const Expandable = (props) => {
           />
         </span>
       ) : (
-        <span style={{ paddingLeft }} />
+        <span style={style} />
       )}
       {cell.render('Cell')}
     </>
