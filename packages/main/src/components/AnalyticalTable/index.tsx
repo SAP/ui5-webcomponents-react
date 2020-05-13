@@ -43,14 +43,9 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
-import { useRTL } from './hooks/useRTL';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
-import { useTableCellStyling } from './hooks/useTableCellStyling';
-import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
-import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
-import { useTableRowStyling } from './hooks/useTableRowStyling';
+import { useStyling } from './hooks/useStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
-import { useTableStyling } from './hooks/useTableStyling';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
@@ -235,18 +230,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useExpanded,
     useRowSelect,
     useResizeColumns,
-    useTableStyling,
-    useTableHeaderGroupStyling,
-    useTableHeaderStyling,
-    useTableRowStyling,
     useRowSelectionColumn,
     useSingleRowStateSelection,
     useRowHighlight,
     useDynamicColumnWidths,
-    useTableCellStyling,
+    useStyling,
     useToggleRowExpand,
-    ...tableHooks,
-    useRTL
+    ...tableHooks
   );
   // scroll bar detection
   useEffect(() => {
@@ -354,7 +344,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return {
       ...tableStyles,
       ...style,
-      visibility: 'hidden' as 'hidden'
+      visibility: 'hidden'
     } as CSSProperties;
   }, [tableState.tableClientWidth, style, rowHeight]);
 

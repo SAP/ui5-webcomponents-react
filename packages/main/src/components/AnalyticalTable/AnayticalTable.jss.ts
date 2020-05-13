@@ -58,6 +58,7 @@ const styles = {
     borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     boxSizing: 'border-box',
     display: 'flex',
+    height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     '&[data-is-selected]': {
       borderBottom: `1px solid ${ThemingParameters.sapList_SelectionBorderColor}`,
       backgroundColor: `${ThemingParameters.sapList_SelectionBackgroundColor} !important`

@@ -33,7 +33,6 @@ export const Expandable = (props) => {
   );
 
   const columnIndex = tableColumns.findIndex((col) => col.id === column.id);
-  console.log(cell.value, columnIndex, row.canExpand);
 
   let paddingLeft;
   if (row.canExpand) {

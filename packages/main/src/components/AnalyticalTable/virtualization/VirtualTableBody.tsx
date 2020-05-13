@@ -3,6 +3,7 @@ import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React, { MutableRefObject, useCallback, useRef } from 'react';
 import { useVirtual } from 'react-virtual';
 
@@ -196,7 +197,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           if (!row) {
             return (
               <div
-                key={virtualRow.index}
+                key={`empty_row_${virtualRow.index}`}
                 className={classes.tr}
                 style={{
                   height: `${virtualRow.size}px`,
@@ -211,7 +212,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           return (
             <div
               {...rowProps}
-              key={virtualRow.index}
               style={{
                 height: `${virtualRow.size}px`,
                 transform: `translateY(${virtualRow.start}px)`
@@ -240,6 +240,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 } else {
                   contentToRender = 'Cell';
                 }
+
                 // eslint-disable-next-line react/jsx-key
                 return <div {...cellProps}>{cell.render(contentToRender)}</div>;
               })}
