@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.5...v0.9.6) (2020-05-14)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** use 100% of the parent height ([#512](https://github.com/SAP/ui5-webcomponents-react/issues/512)) ([c5111ec](https://github.com/SAP/ui5-webcomponents-react/commit/c5111ec578864c1c7f68cded61857526f9e9aac7))
+
+
+
+
+
 ## [0.9.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.4...v0.9.5) (2020-05-13)
 
 
