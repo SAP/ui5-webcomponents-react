@@ -7,7 +7,7 @@ const styles = {
     width: '100%',
     maxWidth: '100%',
     overflowX: 'auto',
-    height: `calc(100% - ${CssSizeVariables.sapWcrAnalyticalTableRowHeight})`,
+    height: '100%',
     minHeight: '3rem',
     fontFamily: ThemingParameters.sapFontFamily,
     fontSize: ThemingParameters.sapFontSize,
