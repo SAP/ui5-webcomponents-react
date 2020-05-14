@@ -2,10 +2,10 @@
 
 exports[`Create a Form accepts both label and labelText 1`] = `
 <div
-  class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+  class="Grid-grid-0"
 >
   <div
-    class="Grid-gridSpan-0 Grid-gridSpan6-0"
+    class="Grid-gridSpan6-0"
   >
     <div>
       <div
@@ -95,10 +95,10 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan6-0"
+      class="Grid-gridSpan6-0"
     >
       <div>
         <div
@@ -164,10 +164,10 @@ Array [
     To be Form title
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan6-0"
+      class="Grid-gridSpan6-0"
     >
       <div>
         <div
@@ -233,10 +233,10 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -296,7 +296,7 @@ Array [
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -368,10 +368,10 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -431,7 +431,7 @@ Array [
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -503,10 +503,10 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -566,7 +566,7 @@ Array [
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -638,10 +638,10 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan6-0"
+      class="Grid-gridSpan6-0"
     >
       <div>
         <ui5-title
@@ -701,7 +701,7 @@ Array [
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan6-0"
+      class="Grid-gridSpan6-0"
     >
       <div>
         <ui5-title
