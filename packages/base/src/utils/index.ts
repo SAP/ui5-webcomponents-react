@@ -36,62 +36,6 @@ export const getScrollBarWidth = () => {
   return w1 - w2;
 };
 
-export const polyfillDeprecatedEventAPI = (event: any) => {
-  event.getOriginalEvent = () => {
-    deprecationNotice(
-      'Event',
-      // eslint-disable-next-line max-len
-      "'event.getOriginalEvent' is deprecated and will be removed in the next major release. Please use the event object itself instead."
-    );
-    return event;
-  };
-  event.getParameters = () => {
-    deprecationNotice(
-      'Event',
-      // eslint-disable-next-line max-len
-      "'event.getParameters' is deprecated and will be removed in the next major release. Please use 'event.detail' instead."
-    );
-    return event.parameters;
-  };
-  event.getParameter = (parameter: keyof typeof event.detail) => {
-    deprecationNotice(
-      'Event',
-      // eslint-disable-next-line max-len
-      "'event.getParameter' is deprecated and will be removed in the next major release. Please use 'event.detail[parameter]' instead."
-    );
-    return event.parameters[parameter];
-  };
-  event.getHtmlSourceElement = () => {
-    deprecationNotice(
-      'Event',
-      // eslint-disable-next-line max-len
-      "'event.getHtmlSourceElement' is deprecated and will be removed in the next major release. Please use 'event.target' instead."
-    );
-    return event.target;
-  };
-
-  event.parameters = new Proxy(
-    {},
-    {
-      get: (obj, prop) => {
-        deprecationNotice(
-          'Event',
-          // eslint-disable-next-line max-len
-          "'event.parameters' is deprecated and will be removed in the next major release. Please use 'event.detail' instead."
-        );
-        if (event.detail && event.detail.hasOwnProperty(prop)) {
-          return event.detail[prop];
-        }
-
-        // really dirty fallback to e.target
-        return event.target[prop];
-      }
-    }
-  );
-
-  return event;
-};
-
 export const enrichEventWithDetails = <T = {}>(event: UIEvent, payload: T = {} as any) => {
   if (event.hasOwnProperty('persist')) {
     // if there is a persist method, it's an SyntheticEvent so we need to persist it
@@ -106,7 +50,5 @@ export const enrichEventWithDetails = <T = {}>(event: UIEvent, payload: T = {} a
     configurable: true
   });
   Object.assign(event.detail, payload);
-  // "polyfill" old features
-  polyfillDeprecatedEventAPI(event);
   return (event as unknown) as CustomEvent<T>;
 };
