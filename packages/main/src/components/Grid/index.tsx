@@ -23,7 +23,7 @@ export interface GridPropTypes extends CommonProps {
   /**
    * Horizontal spacing between the content in the Grid. If not specified, then 1rem.
    */
-  hSpacing?: CSSProperties['width'];
+  hSpacing?: CSSProperties['height'];
   /**
    * A string type that represents Grid's default span values for very large, large, medium and small screens for the whole Grid.
    * Allowed values are separated by space Letters XL, L, M or S followed by number of columns from 1 to 12 that the container has to take, for example: "L2 M4 S6", "M12", "s10" or "l4 m4".
