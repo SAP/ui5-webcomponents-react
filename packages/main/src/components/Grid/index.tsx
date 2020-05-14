@@ -115,7 +115,7 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
   return (
     <div
       ref={ref}
-      className={`${classes.grid} ${className}`.trim()}
+      className={`${classes.grid} ${className ?? ''}`.trim()}
       style={{ gridRowGap: vSpacing, gridColumnGap: hSpacing, ...style }}
       title={tooltip}
       slot={slot}

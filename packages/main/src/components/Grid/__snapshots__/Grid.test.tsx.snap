@@ -2,7 +2,7 @@
 
 exports[`Grid Custom Class Names and Styling 1`] = `
 <div
-  class="customClassName Grid-grid-0"
+  class="Grid-grid-0 customClassName"
   style="background-color: purple;"
 >
   <div
@@ -55,20 +55,20 @@ exports[`Grid Renders Children with custom layout data 1`] = `
     class="Grid-gridSpan12-0"
   >
     <div
-      data-layout="[object Object]"
-      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
-    />
-  </div>
-  <div
-    class="Grid-gridSpan3-0"
-  >
-    <div
-      data-layout="[object Object]"
+      data-layout-span="XL12 L12 M12 S12"
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
     />
   </div>
   <span
     class="Grid-gridSpan1-0"
   />
+  <div
+    class="Grid-gridSpan3-0"
+  >
+    <div
+      data-layout-indent="XL1 L1 M1 S1"
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+  </div>
 </div>
 `;
