@@ -21,11 +21,11 @@ export interface GridPropTypes extends CommonProps {
   /**
    * Vertical spacing between the rows in the Grid. If not specified, then 1rem.
    */
-  vSpacing?: CSSProperties['width'];
+  vSpacing?: CSSProperties['height'];
   /**
    * Horizontal spacing between the content in the Grid. If not specified, then 1rem.
    */
-  hSpacing?: CSSProperties['height'];
+  hSpacing?: CSSProperties['width'];
   /**
    * Position of the Grid in the window or surrounding container. Possible values are "Center", "Left" and "Right".
    */
