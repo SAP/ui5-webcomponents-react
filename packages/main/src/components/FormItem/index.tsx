@@ -94,17 +94,18 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
 
   return (
     <div ref={ref} style={memoizedStyles.topDivStyle} className={classNames} title={tooltip} slot={slot}>
-      {typeof label === 'string' ? (
+      {label != null && typeof label === 'string' && (
         <Label style={memoizedStyles.labelStyle} className={classes.label}>
           {label ? `${label}:` : ''}
         </Label>
-      ) : (
+      )}
+      {label != null &&
+        typeof label !== 'string' &&
         cloneElement(label, {
           style: { ...memoizedStyles.labelStyle, ...(label.props.style || {}) },
           className: `${classes.label} ${label.props.className ?? ''}`,
           children: label.props.children ? `${label.props.children}:` : ''
-        })
-      )}
+        })}
 
       <div style={memoizedStyles.elementStyle} className={classes.content}>
         {children}
