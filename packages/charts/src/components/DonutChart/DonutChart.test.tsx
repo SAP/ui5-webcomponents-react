@@ -1,8 +1,8 @@
+import { action } from '@storybook/addon-actions';
 import { mount } from 'enzyme';
 import * as React from 'react';
-import { DonutChart } from './DonutChart';
-import { action } from '@storybook/addon-actions';
 import { simpleDataSet } from '../../resources/DemoProps';
+import { DonutChart } from './DonutChart';
 
 describe('DonutChart', () => {
   test('Renders with data', () => {

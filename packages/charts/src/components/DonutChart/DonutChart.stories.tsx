@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
-import { text, boolean } from '@storybook/addon-knobs';
-import { DonutChart } from '../../lib/DonutChart';
+import { boolean, text } from '@storybook/addon-knobs';
 import React from 'react';
+import { DonutChart } from '../../lib/DonutChart';
 import { simpleDataSet } from '../../resources/DemoProps';
 
 export default {

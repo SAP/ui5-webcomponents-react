@@ -1,6 +1,6 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { ChartContainer } from '../../lib/ChartContainer';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';

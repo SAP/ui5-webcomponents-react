@@ -1,9 +1,9 @@
+import { action } from '@storybook/addon-actions';
+import { text } from '@storybook/addon-knobs';
 import { mount } from 'enzyme';
 import * as React from 'react';
-import { PieChart } from './PieChart';
-import { action } from '@storybook/addon-actions';
 import { simpleDataSet } from '../../resources/DemoProps';
-import { text } from '@storybook/addon-knobs';
+import { PieChart } from './PieChart';
 
 describe('PieChart', () => {
   test('Renders with data', () => {

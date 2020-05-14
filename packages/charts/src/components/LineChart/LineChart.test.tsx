@@ -1,9 +1,9 @@
+import { action } from '@storybook/addon-actions';
+import { boolean } from '@storybook/addon-knobs';
 import { mount } from 'enzyme';
 import * as React from 'react';
-import { LineChart } from './LineChart';
-import { boolean } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
 import { complexDataSet } from '../../resources/DemoProps';
+import { LineChart } from './LineChart';
 
 describe('LineChart', () => {
   test('Renders with data', () => {

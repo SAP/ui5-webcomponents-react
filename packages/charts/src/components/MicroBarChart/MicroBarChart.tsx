@@ -1,14 +1,14 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { ChartContainer } from '../../lib/ChartContainer';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { Bar, BarChart as MicroBarChartLib, Cell, Tooltip, XAxis, YAxis } from 'recharts';
-import { defaultFormatter } from '../../internal/defaults';
-import { BarChartPlaceholder } from '../BarChart/Placeholder';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { BarChartPlaceholder } from '../BarChart/Placeholder';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'color'> {
   /**

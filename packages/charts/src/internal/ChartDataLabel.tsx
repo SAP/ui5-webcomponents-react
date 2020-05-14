@@ -1,8 +1,8 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { getTextWidth } from '@ui5/webcomponents-react-charts/lib/Utils';
-import React, { FC, createElement } from 'react';
-import { IChartMeasure } from '../interfaces/IChartMeasure';
+import React, { createElement, FC } from 'react';
 import { Label } from 'recharts';
+import { IChartMeasure } from '../interfaces/IChartMeasure';
 
 interface CustomDataLabelProps {
   config: IChartMeasure;
