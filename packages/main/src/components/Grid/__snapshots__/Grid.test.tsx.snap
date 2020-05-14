@@ -24,6 +24,54 @@ exports[`Grid Custom Class Names and Styling 1`] = `
 </div>
 `;
 
+exports[`Grid Grid Position Center 1`] = `
+<div
+  class="Grid-grid-0 Grid-positionCenter-0"
+  style="width: 60%;"
+>
+  <div
+    class="Grid-gridSpan3-0"
+  >
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+  </div>
+</div>
+`;
+
+exports[`Grid Grid Position Right 1`] = `
+<div
+  class="Grid-grid-0 Grid-positionRight-0"
+  style="width: 60%;"
+>
+  <div
+    class="Grid-gridSpan3-0"
+  >
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+    <div
+      style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
+    />
+  </div>
+</div>
+`;
+
 exports[`Grid Renders Children 1`] = `
 <div
   class="Grid-grid-0"

@@ -1,6 +1,8 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
+import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, {
   Children,
   CSSProperties,
@@ -24,6 +26,10 @@ export interface GridPropTypes extends CommonProps {
    * Horizontal spacing between the content in the Grid. If not specified, then 1rem.
    */
   hSpacing?: CSSProperties['height'];
+  /**
+   * Position of the Grid in the window or surrounding container. Possible values are "Center", "Left" and "Right".
+   */
+  position?: GridPosition;
   /**
    * A string type that represents Grid's default span values for very large, large, medium and small screens for the whole Grid.
    * Allowed values are separated by space Letters XL, L, M or S followed by number of columns from 1 to 12 that the container has to take, for example: "L2 M4 S6", "M12", "s10" or "l4 m4".
@@ -78,6 +84,7 @@ const useStyles = createComponentStyles(styles, { name: 'Grid' });
  */
 const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
+    position,
     children,
     hSpacing = '1rem',
     vSpacing = '1rem',
@@ -90,6 +97,19 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
   } = props;
   const classes = useStyles();
   const currentRange = useViewportRange('StdExt');
+  const gridClasses = StyleClassHelper.of(classes.grid);
+
+  if (GridPosition.Center === position) {
+    gridClasses.put(classes.positionCenter);
+  }
+
+  if (GridPosition.Right === position) {
+    gridClasses.put(classes.positionRight);
+  }
+
+  if (className) {
+    gridClasses.put(className);
+  }
 
   const renderGridElements = useCallback(
     (child: ReactElement<any>) => {
@@ -115,7 +135,7 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
   return (
     <div
       ref={ref}
-      className={`${classes.grid} ${className ?? ''}`.trim()}
+      className={gridClasses.valueOf()}
       style={{ gridRowGap: vSpacing, gridColumnGap: hSpacing, ...style }}
       title={tooltip}
       slot={slot}

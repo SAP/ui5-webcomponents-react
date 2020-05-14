@@ -2,6 +2,7 @@ import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { mount } from 'enzyme';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import React from 'react';
+import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
 
 const GridContent = () => (
   <>
@@ -48,7 +49,7 @@ describe('Grid', () => {
 
   test('Custom Class Names and Styling', () => {
     const wrapper = mount(
-      <Grid width="60%" style={{ backgroundColor: 'purple' }} className="customClassName" hSpacing={0}>
+      <Grid style={{ backgroundColor: 'purple' }} className="customClassName" hSpacing={0}>
         <GridContent />
       </Grid>
     );
@@ -74,6 +75,23 @@ describe('Grid', () => {
           }}
           data-layout-indent="XL1 L1 M1 S1"
         />
+      </Grid>
+    );
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Grid Position Center', () => {
+    const wrapper = mount(
+      <Grid style={{ width: '60%' }} position={GridPosition.Center}>
+        <GridContent />
+      </Grid>
+    );
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+  test('Grid Position Right', () => {
+    const wrapper = mount(
+      <Grid style={{ width: '60%' }} position={GridPosition.Right}>
+        <GridContent />
       </Grid>
     );
     expect(wrapper.render()).toMatchSnapshot();

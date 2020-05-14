@@ -14,5 +14,13 @@ export const styles = {
   gridSpan9: { gridColumn: 'span 9' },
   gridSpan10: { gridColumn: 'span 10' },
   gridSpan11: { gridColumn: 'span 11' },
-  gridSpan12: { gridColumn: 'span 12' }
+  gridSpan12: { gridColumn: 'span 12' },
+  positionCenter: {
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  },
+  positionRight: {
+    marginLeft: 'auto',
+    marginRight: 0
+  }
 };
