@@ -1,5 +1,4 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { CurrentViewportRangeContext } from '@ui5/webcomponents-react/lib/CurrentViewportRangeContext';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React, {
@@ -17,10 +16,6 @@ import { CommonProps } from '../../interfaces/CommonProps';
 
 export interface FormItemProps extends CommonProps {
   label?: string | ReactElement;
-  /**
-   * @deprecated use label instead
-   */
-  labelText?: string; // TODO remove on next major release
   children: ReactNode | ReactNodeArray;
 }
 
@@ -47,7 +42,7 @@ const useStyles = createComponentStyles(
  * <code>import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';</code>
  */
 const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<HTMLDivElement>) => {
-  const { label, labelText, children, tooltip, style, className, slot } = props;
+  const { label, children, tooltip, style, className, slot } = props;
 
   const currentRange = useContext(CurrentViewportRangeContext);
 
@@ -97,25 +92,17 @@ const FormItem: FC<FormItemProps> = forwardRef((props: FormItemProps, ref: Ref<H
     classNames += ` ${className}`;
   }
 
-  if (labelText) {
-    deprecationNotice(
-      'FormItem',
-      `prop 'labelText' is deprecated and will be removed in the next major release. Please use 'label' instead.`
-    );
-  }
-  const labelToRender = label ?? labelText;
-
   return (
     <div ref={ref} style={memoizedStyles.topDivStyle} className={classNames} title={tooltip} slot={slot}>
-      {typeof labelToRender === 'string' ? (
+      {typeof label === 'string' ? (
         <Label style={memoizedStyles.labelStyle} className={classes.label}>
-          {labelToRender ? `${labelToRender}:` : ''}
+          {label ? `${label}:` : ''}
         </Label>
       ) : (
-        cloneElement(labelToRender, {
-          style: { ...memoizedStyles.labelStyle, ...(labelToRender.props.style || {}) },
-          className: `${classes.label} ${labelToRender.props.className ?? ''}`,
-          children: labelToRender.props.children ? `${labelToRender.props.children}:` : ''
+        cloneElement(label, {
+          style: { ...memoizedStyles.labelStyle, ...(label.props.style || {}) },
+          className: `${classes.label} ${label.props.className ?? ''}`,
+          children: label.props.children ? `${label.props.children}:` : ''
         })
       )}
 
