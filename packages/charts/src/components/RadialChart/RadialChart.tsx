@@ -1,6 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { ChartContainer } from '../../lib/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
@@ -19,7 +19,7 @@ const radialBarBackground = { fill: ThemingParameters.sapContent_ImagePlaceholde
 const radialBarLabelStyle = { fontSize: ThemingParameters.sapFontHeader3Size, fill: ThemingParameters.sapTextColor };
 
 /**
- * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/next/RadialChart';</code>
+ * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/RadialChart';</code>
  */
 const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
   const { maxValue = 100, value, displayValue, onDataPointClick, color, style, className, tooltip, slot } = props;

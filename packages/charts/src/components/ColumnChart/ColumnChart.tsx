@@ -5,7 +5,7 @@ import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/Colu
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { ChartContainer } from '../../lib/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
@@ -26,7 +26,7 @@ import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimension
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
@@ -54,7 +54,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-export interface ColumnChartProps extends RechartBaseProps {
+export interface ColumnChartProps extends IChartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one column in the chart.
@@ -88,7 +88,7 @@ const measureDefaults = {
 };
 
 /**
- * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/next/ColumnChart';</code>
+ * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/ColumnChart';</code>
  */
 const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
   const {

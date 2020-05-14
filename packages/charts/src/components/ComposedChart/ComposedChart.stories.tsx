@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/next/ComposedChart';
+import { ComposedChart } from '../../lib/ComposedChart';
 import React from 'react';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 import { boolean, select } from '@storybook/addon-knobs';

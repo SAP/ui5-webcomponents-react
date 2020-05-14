@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { number, text } from '@storybook/addon-knobs';
-import { RadialChart } from '@ui5/webcomponents-react-charts/lib/next/RadialChart';
+import { RadialChart } from '../../lib/RadialChart';
 import React from 'react';
 
 export default {

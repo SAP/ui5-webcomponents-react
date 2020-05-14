@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { text, boolean } from '@storybook/addon-knobs';
-import { DonutChart } from '@ui5/webcomponents-react-charts/lib/next/DonutChart';
+import { DonutChart } from '../../lib/DonutChart';
 import React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
 

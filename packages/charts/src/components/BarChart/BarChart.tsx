@@ -5,7 +5,7 @@ import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChar
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { ChartContainer } from '../../lib/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
@@ -26,7 +26,7 @@ import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimension
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
@@ -65,7 +65,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-export interface BarChartProps extends RechartBaseProps {
+export interface BarChartProps extends IChartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one bar in the chart.
@@ -90,7 +90,7 @@ export interface BarChartProps extends RechartBaseProps {
 }
 
 /**
- * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';</code>
+ * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';</code>
  */
 const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   const {

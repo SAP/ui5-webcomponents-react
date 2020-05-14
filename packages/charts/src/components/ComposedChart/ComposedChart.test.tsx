@@ -1,6 +1,5 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import { dataset, label } from '../../resources/RechartProps';
 import { ComposedChart } from './index';
 import { boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';

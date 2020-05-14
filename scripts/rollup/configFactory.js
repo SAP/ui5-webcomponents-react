@@ -62,7 +62,8 @@ const rollupConfigFactory = (pkgName, externals = []) => {
       return externalModules.some(containsThisModule);
     },
     treeshake: {
-      moduleSideEffects: (id) => micromatch.isMatch(id, packageJson.sideEffects)
+      moduleSideEffects:
+        packageJson.sideEffects === false ? false : (id) => micromatch.isMatch(id, packageJson.sideEffects)
     },
     output: [
       {

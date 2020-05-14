@@ -1,6 +1,6 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { ChartContainer } from '../../lib/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
@@ -8,7 +8,7 @@ import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'rech
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { IPolarChartConfig } from '../../interfaces/IPolarChartConfig';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
@@ -36,7 +36,7 @@ interface DimensionConfig {
   formatter?: (value: any) => string;
 }
 
-export interface PieChartProps extends RechartBaseProps<IPolarChartConfig> {
+export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
   centerLabel?: string;
   dimension: DimensionConfig;
   /**
@@ -56,7 +56,7 @@ export interface PieChartProps extends RechartBaseProps<IPolarChartConfig> {
 }
 
 /**
- * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';</code>
+ * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/PieChart';</code>
  */
 const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   const {

@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { text, boolean } from '@storybook/addon-knobs';
-import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';
+import { PieChart } from '../../lib/PieChart';
 import React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
 

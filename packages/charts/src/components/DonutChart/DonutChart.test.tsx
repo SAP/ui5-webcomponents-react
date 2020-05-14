@@ -1,15 +1,32 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import { labels, singleDataset } from '../../resources/ChartProps';
-import { DonutChart } from './index';
+import { DonutChart } from './DonutChart';
+import { action } from '@storybook/addon-actions';
+import { simpleDataSet } from '../../resources/DemoProps';
 
 describe('DonutChart', () => {
   test('Renders with data', () => {
-    expect(mount(<DonutChart labels={labels} datasets={singleDataset} />).render()).toMatchSnapshot();
+    expect(
+      mount(
+        <DonutChart
+          onLegendClick={action('onLegendClick')}
+          onDataPointClick={action('onDataPointClick')}
+          style={{ width: '50%' }}
+          dataset={simpleDataSet}
+          dimension={{
+            accessor: 'name'
+          }}
+          measure={{
+            accessor: 'users',
+            label: 'Number of Users'
+          }}
+        />
+      ).render()
+    ).toMatchSnapshot();
   });
 
   test('loading placeholder', () => {
-    const wrapper = mount(<DonutChart labels={labels} datasets={[]} loading />);
+    const wrapper = mount(<DonutChart style={{ width: '30%' }} dimensions={[]} measures={[]} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });
