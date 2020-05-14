@@ -64,7 +64,7 @@ describe('Grid', () => {
             width: '100%',
             backgroundColor: '#A9EAFF'
           }}
-          data-layout={{ span: 'XL12 L12 M12 S12' }}
+          data-layout-span="XL12 L12 M12 S12"
         />
         <div
           style={{
@@ -72,7 +72,7 @@ describe('Grid', () => {
             width: '100%',
             backgroundColor: '#A9EAFF'
           }}
-          data-layout={{ indent: 'XL1 L1 M1 S1' }}
+          data-layout-indent="XL1 L1 M1 S1"
         />
       </Grid>
     );

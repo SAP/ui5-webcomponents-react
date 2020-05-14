@@ -10,8 +10,8 @@ export const defaultStory = () => {
       vSpacing={text('vSpacing', '1rem')}
       hSpacing={text('hSpacing', '1rem')}
     >
-      <div style={{ backgroundColor: 'lightgreen' }} data-layout={{ span: 'XL8 L8 M8 S12', indent: 'XL1 L1 M1 S0' }}>
-        {`Div 1 with prop: data-layout={{ span: 'XL8 L8 M8 S12', indent: 'XL1 L1 M1 S0' }}`}
+      <div style={{ backgroundColor: 'lightgreen' }} data-layout-span="XL8 L8 M8 S12" data-layout-indent="XL1 L1 M1 S0">
+        {`Div 1 with prop: data-layout-span="XL8 L8 M8 S12" and data-layout-indent="XL1 L1 M1 S0"`}
       </div>
       <div style={{ backgroundColor: 'yellow' }}>Div 2</div>
       <div style={{ backgroundColor: 'cyan' }}>Div 3</div>

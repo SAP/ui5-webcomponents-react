@@ -3,9 +3,7 @@ export const styles = {
     display: 'grid',
     gridTemplateColumns: `repeat(12, 1fr)`
   },
-  gridSpan1: {
-    gridColumn: 'span 1'
-  },
+  gridSpan1: { gridColumn: 'span 1' },
   gridSpan2: { gridColumn: 'span 2' },
   gridSpan3: { gridColumn: 'span 3' },
   gridSpan4: { gridColumn: 'span 4' },

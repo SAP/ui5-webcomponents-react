@@ -28,12 +28,16 @@ export interface GridPropTypes extends CommonProps {
    * A string type that represents Grid's default span values for very large, large, medium and small screens for the whole Grid.
    * Allowed values are separated by space Letters XL, L, M or S followed by number of columns from 1 to 12 that the container has to take, for example: "L2 M4 S6", "M12", "s10" or "l4 m4".
    * Note that the parameters has to be provided in the order very large, large, medium, small.
+   * <br />
+   * You can override this default span on each child element by setting the prop `data-layout-span`.
    */
   defaultSpan?: string;
   /**
    * Defines default for the whole Grid numbers of empty columns before the current span begins. It can be defined for very large, large, medium and small screens.
    * Allowed values are separated by space Letters XL, L, M or S followed by number of columns from 0 to 12 that the container has to take, for example: "L2 M4 S6", "M11", "s10" or "l4 m4".
    * Note that the parameters has to be provided in the order very-large, large, medium, small.
+   * <br />
+   * You can override this default indent on each child element by setting the prop `data-layout-indent`.
    */
   defaultIndent?: string;
   /**
@@ -73,35 +77,32 @@ const useStyles = createComponentStyles(styles, { name: 'Grid' });
  * <code>import { Grid } from '@ui5/webcomponents-react/lib/Grid';</code>
  */
 const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { children, hSpacing, vSpacing, style, className, tooltip, slot, defaultIndent, defaultSpan } = props;
+  const {
+    children,
+    hSpacing = '1rem',
+    vSpacing = '1rem',
+    style,
+    className,
+    tooltip,
+    slot,
+    defaultIndent = 'XL0 L0 M0 S0',
+    defaultSpan = 'XL3 L3 M6 S12'
+  } = props;
   const classes = useStyles();
   const currentRange = useViewportRange('StdExt');
 
   const renderGridElements = useCallback(
     (child: ReactElement<any>) => {
-      let childClass = '';
-      if (child.props['data-layout'] && child.props['data-layout'].span) {
-        const childSpan = getSpanFromString(child.props['data-layout'].span, currentRange);
-        childClass = classes[`gridSpan${childSpan}`];
-      } else {
-        const span = getSpanFromString(defaultSpan, currentRange);
-        childClass = classes[`gridSpan${span}`];
-      }
+      if (!child) return null;
+
+      const childSpan = getSpanFromString(child.props['data-layout-span'] ?? defaultSpan, currentRange);
+      let childClass = classes[`gridSpan${childSpan}`];
 
       const childrenWithGridLayout = [<div className={childClass}>{child}</div>];
 
-      const indentSpan = getIndentFromString(defaultIndent, currentRange);
-      let indentClass = '';
-      if (child.props['data-layout'] && child.props['data-layout'].indent) {
-        const childIndent = getIndentFromString(child.props['data-layout'].indent, currentRange);
-        if (childIndent && childIndent > 0) {
-          indentClass = classes[`gridSpan${childIndent}`];
-        }
-      } else if (indentSpan && indentSpan > 0) {
-        indentClass = classes[`gridSpan${indentSpan}`];
-      }
-      if (indentClass) {
-        childrenWithGridLayout.push(<span className={indentClass} />);
+      const indentSpan = getIndentFromString(child.props['data-layout-indent'] ?? defaultIndent, currentRange);
+      if (indentSpan && indentSpan > 0) {
+        childrenWithGridLayout.unshift(<span className={classes[`gridSpan${indentSpan}`]} />);
       }
 
       return childrenWithGridLayout;
@@ -110,12 +111,12 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
   );
 
   const passThroughProps = usePassThroughHtmlProps(props);
-  const withClassName = className ? `${className} ${classes.grid}` : classes.grid;
+
   return (
     <div
       ref={ref}
-      className={withClassName}
-      style={{ ...style, gridRowGap: vSpacing, gridColumnGap: hSpacing }}
+      className={`${classes.grid} ${className}`.trim()}
+      style={{ gridRowGap: vSpacing, gridColumnGap: hSpacing, ...style }}
       title={tooltip}
       slot={slot}
       {...passThroughProps}
@@ -126,11 +127,5 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
 });
 
 Grid.displayName = 'Grid';
-Grid.defaultProps = {
-  vSpacing: '1rem',
-  hSpacing: '1rem',
-  defaultSpan: 'XL3 L3 M6 S12',
-  defaultIndent: 'XL0 L0 M0 S0'
-};
 
 export { Grid };
