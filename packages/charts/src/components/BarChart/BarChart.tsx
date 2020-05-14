@@ -91,7 +91,6 @@ export interface BarChartProps extends RechartBaseProps {
 
 /**
  * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   const {
@@ -119,6 +118,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       legendHorizontalAlign: 'left',
       barGap: 3,
       zoomingTool: false,
+      resizeDebounce: 250,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -174,6 +174,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={chartConfig.resizeDebounce}
     >
       <BarChartLib
         margin={marginChart}

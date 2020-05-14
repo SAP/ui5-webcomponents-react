@@ -5,7 +5,7 @@ import React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
 
 export default {
-  title: 'Charts - Unstable /  PieChart',
+  title: 'Charts /  PieChart',
   component: PieChart
 };
 

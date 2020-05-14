@@ -5,7 +5,7 @@ import React from 'react';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
-  title: 'Charts - Unstable /  ColumnChart',
+  title: 'Charts /  ColumnChart',
   component: ColumnChart
 };
 
@@ -148,7 +148,7 @@ renderCustomDataLabelStory.story = {
   name: 'With formatter'
 };
 
-export const loadingPlaceholder = () => <ColumnChart style={{ width: '30%' }} dimensions={[]} measures={[]}/>;
+export const loadingPlaceholder = () => <ColumnChart style={{ width: '30%' }} dimensions={[]} measures={[]} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'

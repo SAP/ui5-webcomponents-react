@@ -7,7 +7,7 @@ export const Cell = ({ cell: { value = '', isGrouped }, row }) => {
     cellContent += ` (${row.subRows.length})`;
   }
   return (
-    <Text wrapping={false} width="100%" tooltip={cellContent}>
+    <Text wrapping={false} tooltip={cellContent}>
       {cellContent}
     </Text>
   );

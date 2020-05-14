@@ -2,14 +2,15 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { Loader } from '@ui5/webcomponents-react/lib/Loader';
-import React, { ComponentType, CSSProperties, FC, forwardRef, ReactNode, Ref, useMemo } from 'react';
+import React, { ComponentType, CSSProperties, FC, forwardRef, ReactElement, Ref, useMemo } from 'react';
 import { ResponsiveContainer } from 'recharts';
 
 export interface ContainerProps extends CommonProps {
-  children: ReactNode;
+  children: ReactElement;
   Placeholder?: ComponentType<unknown>;
   dataset: unknown[];
   loading?: boolean;
+  resizeDebounce: number;
 }
 
 const loaderStyles: CSSProperties = {
@@ -32,7 +33,7 @@ const chartContainerStyles = {
 const useStyles = createComponentStyles(chartContainerStyles, { name: 'ChartContainer' });
 
 const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, ref: Ref<any>) => {
-  const { Placeholder, loading = false, dataset, style, className, tooltip, slot, children } = props;
+  const { Placeholder, loading = false, dataset, style, className, tooltip, slot, children, resizeDebounce } = props;
   useStyles();
 
   const internalStyles: CSSProperties = useMemo(() => {
@@ -52,7 +53,7 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
       {dataset?.length > 0 ? (
         <>
           {loading && dataset.length > 0 && <Loader style={loaderStyles} />}
-          {dataset.length > 0 && <ResponsiveContainer>{children}</ResponsiveContainer>}
+          {dataset.length > 0 && <ResponsiveContainer debounce={resizeDebounce}>{children}</ResponsiveContainer>}
         </>
       ) : (
         <Placeholder />

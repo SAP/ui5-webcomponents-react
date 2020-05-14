@@ -57,7 +57,6 @@ export interface PieChartProps extends RechartBaseProps<IPolarChartConfig> {
 
 /**
  * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/next/PieChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
  */
 const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<any>) => {
   const {
@@ -81,6 +80,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       legendHorizontalAlign: 'center',
       paddingAngle: 0,
       outerRadius: '80%',
+      resizeDebounce: 250,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -142,6 +142,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={chartConfig.resizeDebounce}
     >
       <PieChartLib
         onClick={onDataPointClickInternal}

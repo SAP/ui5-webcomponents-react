@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.4...v0.9.5) (2020-05-13)
+
+
+### Bug Fixes
+
+* **Charts - New:** configurable animation and rendering improvements ([#501](https://github.com/SAP/ui5-webcomponents-react/issues/501)) ([06f58b9](https://github.com/SAP/ui5-webcomponents-react/commit/06f58b9e8850dc9c1b0dc9f4734586df556bd6ef))
+
+
+### Features
+
+* **Charts:** stabilize new charts and deprecate old charts ([#507](https://github.com/SAP/ui5-webcomponents-react/issues/507)) ([4dbb17e](https://github.com/SAP/ui5-webcomponents-react/commit/4dbb17eb6fcd70e68ac025a303b008468e468b76))
+* **PieChart/DonutChart - New:** expose innerRadius and outerRadius in chartConfig prop ([#503](https://github.com/SAP/ui5-webcomponents-react/issues/503)) ([8390186](https://github.com/SAP/ui5-webcomponents-react/commit/8390186199ca973759a56992298ebc8d48d32b1b))
+
+
+
+
+
 ## [0.9.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.3...v0.9.4) (2020-05-08)
 
 

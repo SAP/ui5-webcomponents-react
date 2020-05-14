@@ -21,5 +21,7 @@ export interface RechartBaseProps<T = ICartesianChartConfig> extends CommonProps
 
     legendPosition?: string;
     legendHorizontalAlign?: string;
+
+    resizeDebounce?: number;
   };
 }
