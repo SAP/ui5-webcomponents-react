@@ -11,7 +11,8 @@ const styles = {
     overflow: 'hidden',
     position: 'relative',
     fontFamily: ThemingParameters.sapFontFamily,
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    width: '20rem'
   },
   content: spacing.sapUiContentPadding
 };
