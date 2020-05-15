@@ -3,7 +3,6 @@
 exports[`Analytical Card Render without Crashing 1`] = `
 <div
   class="AnalyticalCard-card-0"
-  style="width: 20rem;"
 >
   <div
     class="AnalyticalCardHeader-cardHeader-0"
