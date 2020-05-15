@@ -1,12 +1,134 @@
-
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 
 <Meta title="1 Welcome / Migration Guide" />
 
 # Migration Guide
+<br />
+<br />
 
-## Migrating from 0.8.X to 0.9.0
-Migrating your app from 0.8.X to 0.9.0 requires a few updates to the API properties, this includes dependencies, theming, event handling and prop changes.
+## Table of Contents
+- [0.9.x to 0.10.0](#migrating-from-09x-to-0100)
+- [0.8.x to 0.9.0](#migrating-from-08x-to-090)
+
+## Migrating from 0.9.x to 0.10.0
+<br />
+
+### API Consolidation (unified styling)
+Some components had special props like `width` and `height` to change their size. In order to unify how the size of a
+component can be changed, these special props where dropped and all components can now be styles by using the `style`
+and/or the `className` prop.
+This affects the following components:
+- AnalyticalCard
+- Text
+- ProgressIndicator
+- FlexBox
+- Grid
+
+### Removal of deprecated props and components
+With version `0.9.0` we have deprecated a couple of props like the render-props (please check the [Migration Guide for 0.9.0](#replace-render-props-with-slots)).
+This affects the following components:
+
+|Component      |old prop|new prop|
+|---------------|---|---|
+|AnalyticalTable|`renderExtension`| `extension`|
+|Bar            |`renderContentLeft`, `renderContentMiddle`, `renderContentRight`|`contentLeft`, `contentMiddle`, `contentRight`|
+|FormItem       |`labelText`|`label`|
+|FilterBar      |`renderSearch`, `renderVariants`|`search`, `variants`|
+|ObjectPage     |`renderHeaderContent`, `renderBreadcrumbs`, `renderKeyInfos`| `headerContent`, `breadcrumbs`, `keyInfos`|
+|Page           |`renderCustomHeader`, `renderCustomFooter`|`customHeader`, `customFooter`|
+
+In addition to that, we have cleaned up our base package (deletion of `Event`, `font72`, `HSLColor`, `Optional`, `Scroller`, and `sap_fiori_3` exports).
+As those components were most probably only used internally this should not affect your upgrade.
+
+### Removal of old event-api
+The [event-system](#event-system) that was deprecated in `0.9.0` is now removed.
+
+### Charts
+
+With version v0.9.5 of `@ui5/webcomponents-react-charts` we replace the canvas based charts with SVG based charts and 
+streamlined the ChartAPI to work similar to the `AnalyticalTable` API.
+This requires a couple of changes on your side:
+
+1. Change the import from `@ui5/webcomponents-react-charts/lib/[ChartType]` to `@ui5/webcomponents-react-charts/lib/[ChartType]`
+2. Don't split the dataset into labels and single dataset entries as before, you can pass your dataset "as-is" to the chart.
+3. Your labels are now part of the dataset, but you need to tell the chart which element of the data is your dimension
+   Use the `dimensions` prop for that.
+4. Instead of passing multiple datasets with their own data into the datasets prop, define your `measures` by specifying at least the `accessor`.
+
+To illustrate the required changes, you can find the migration of a bar chart with two bars per dimension below:
+
+Old Bar Chart:
+```jsx
+import React from 'react';
+import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';
+
+const MyComponent = () => {
+  return (
+    <BarChart
+      labels={['January', 'February', 'March']}
+      datasets={[
+        {
+          label: 'Existing Customers',
+          data: [65, 59, 80]
+        },
+
+        {
+          label: 'New Customers',
+          data: [5, 9, 8]
+        }
+      ]}
+    />
+  );
+};
+```
+
+New Bar Chart:
+```jsx
+import React from 'react';
+import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
+
+const MyComponent = () => {
+  return (
+    <BarChart
+      dimensions={[
+        {
+          accessor: 'month'
+        }
+      ]}
+      measures={[
+        {
+          accessor: 'existingCustomers',
+          label: 'Existing Customers'
+        },
+        {
+          accessor: 'newCustomers',
+          label: 'New Customers'
+        }
+      ]}
+      dataset={[
+        {
+          month: 'January',
+          existingCustomers: 65,
+          newCustomers: 5
+        },
+        {
+          month: 'February',
+          existingCustomers: 59,
+          newCustomers: 9
+        },
+        {
+          month: 'March',
+          existingCustomers: 80,
+          newCustomers: 8
+        }
+      ]}
+    />
+  );
+};
+```
+
+## Migrating from 0.8.x to 0.9.0
+Migrating your app from 0.8.x to 0.9.0 requires a few updates to the API properties, this includes dependencies, theming, event handling and prop changes.
 
 ### Breaking changes
 For a complete list of breaking changes from 0.8.X to 0.9.0, please refer to [the list of releases](https://github.com/SAP/ui5-webcomponents-react/releases) or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CHANGELOG.md).
