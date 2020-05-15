@@ -1,6 +1,5 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { useDeprecateRenderMethods } from '@ui5/webcomponents-react-base/lib/hooks';
 import React, { FC, forwardRef, ReactNode, Ref } from 'react';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -8,9 +7,6 @@ import { BarDesign } from '../../lib/BarDesign';
 import styles from './Bar.jss';
 
 export interface BarPropTypes extends CommonProps {
-  renderContentLeft?: () => JSX.Element;
-  renderContentMiddle?: () => JSX.Element;
-  renderContentRight?: () => JSX.Element;
   contentLeft?: ReactNode | ReactNode[];
   contentMiddle?: ReactNode | ReactNode[];
   contentRight?: ReactNode | ReactNode[];
@@ -23,10 +19,7 @@ const useStyles = createComponentStyles(styles, { name: 'Bar' });
  * <code>import { Bar } from '@ui5/webcomponents-react/lib/Bar';</code>
  */
 const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivElement>) => {
-  const { className, style, tooltip, slot, design } = props;
-  const contentLeft = useDeprecateRenderMethods(props, 'renderContentLeft', 'contentLeft');
-  const contentMiddle = useDeprecateRenderMethods(props, 'renderContentMiddle', 'contentMiddle');
-  const contentRight = useDeprecateRenderMethods(props, 'renderContentRight', 'contentRight');
+  const { className, style, tooltip, slot, design, contentLeft, contentMiddle, contentRight } = props;
 
   const classes = useStyles();
 

@@ -61,10 +61,10 @@ describe('Create a Form', () => {
   test('should create a FormGroup and put ungrouped FormItems into it', () => {
     const ungroupedChildren = (
       <Form title={'Test form'}>
-        <FormItem labelText={'item 1'}>
+        <FormItem label={'item 1'}>
           <Input type={InputType.Text} />
         </FormItem>
-        <FormItem labelText={'item 2'}>
+        <FormItem label={'item 2'}>
           <Input type={InputType.Number} />
         </FormItem>
       </Form>
@@ -92,26 +92,9 @@ describe('Create a Form', () => {
 
   createPassThroughPropsTest(Form, {
     children: (
-      <FormItem labelText={'item 1'}>
+      <FormItem>
         <Input type={InputType.Text} />
       </FormItem>
     )
-  });
-
-  it('accepts both label and labelText', () => {
-    const wrapper = mount(
-      <Form>
-        <FormItem labelText={'item 1'}>
-          <Input type={InputType.Text} />
-        </FormItem>
-        <FormItem label="Label Text">
-          <Input type={InputType.Number} />
-        </FormItem>
-        <FormItem label={<Label required>Label Component</Label>}>
-          <Input type={InputType.Number} />
-        </FormItem>
-      </Form>
-    );
-    expect(wrapper.render()).toMatchSnapshot();
   });
 });
