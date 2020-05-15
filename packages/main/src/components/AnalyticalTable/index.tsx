@@ -1,5 +1,4 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { useDeprecateRenderMethods } from '@ui5/webcomponents-react-base/lib/hooks';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
@@ -66,7 +65,6 @@ export interface TableProps extends CommonProps {
   /**
    * Extension section of the Table. If not set, no extension area will be rendered
    */
-  renderExtension?: () => ReactNode;
   extension?: ReactNode;
 
   // appearance
@@ -164,14 +162,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     filterable,
     infiniteScroll,
     infiniteScrollThreshold = 20,
-    onLoadMore
+    onLoadMore,
+    extension
   } = props;
 
   const classes = useStyles();
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
-  const extension = useDeprecateRenderMethods(props, 'renderExtension', 'extension');
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
