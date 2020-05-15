@@ -172,7 +172,7 @@ export const secondaryDimensionDataSet = [
   }
 ];
 
-const concatYear = (array, year) => array.map((item) => ({...item,  name: `${item.name} ${year}` }));
+const concatYear = (array, year) => array.map((item) => ({ ...item, name: `${item.name} ${year}` }));
 
 export const bigDataSet = [
   ...concatYear(complexDataSet, 2016),

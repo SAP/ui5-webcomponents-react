@@ -10,7 +10,6 @@ export interface ICartesianChartConfig {
 
   barGap?: number;
 
-
   secondYAxis?: {
     dataKey: string;
     name?: string;

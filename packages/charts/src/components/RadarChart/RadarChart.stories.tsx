@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
-import React from 'react';
-import { RadarChart } from './RadarChart';
 import { boolean } from '@storybook/addon-knobs';
+import React from 'react';
 import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { RadarChart } from './RadarChart';
 
 export default {
   title: 'Charts /  RadarChart',

@@ -2,52 +2,21 @@
 
 exports[`PieChart Renders with data 1`] = `
 <div
-  class="ChartContainer-chart-0 ChartContainer-chart-d0-0"
-  style="position: relative; padding-top: 6px; width: 300px; height: 300px;"
+  style="font-family: var(--sapFontFamily); width: 50%; height: 400px; position: relative;"
 >
   <div
-    style="position: relative; height: 240px; width: 300px;"
+    class="recharts-responsive-container"
+    id="undefined"
+    style="width: 100%; height: 100%;"
   >
-    <canvas
-      class="chartjs-render-monitor"
-      height="0"
-      style="display: block;"
-      width="0"
-    />
-  </div>
-  <div
-    class="legend"
-  >
-    <ul
-      class="0-legend"
-    >
-      <li>
-        <span
-          style="background-color: rgb(15, 130, 143);"
-        />
-        Label 1
-      </li>
-      <li>
-        <span
-          style="background-color: rgb(90, 194, 206);"
-        />
-        Label 2
-      </li>
-      <li>
-        <span
-          style="background-color: rgb(3, 115, 77);"
-        />
-        Label 3
-      </li>
-    </ul>
+    <div />
   </div>
 </div>
 `;
 
 exports[`PieChart loading placeholder 1`] = `
 <div
-  class="ChartContainer-chart-0 ChartContainer-chart-d1-0"
-  style="position: relative; padding-top: 6px; width: 300px; height: 300px;"
+  style="font-family: var(--sapFontFamily); width: 50%; height: 400px; position: relative;"
 >
   <svg
     aria-labelledby="ARIA-LABELLED-BY"
@@ -128,8 +97,5 @@ exports[`PieChart loading placeholder 1`] = `
       </linearGradient>
     </defs>
   </svg>
-  <div
-    class="legend"
-  />
 </div>
 `;

@@ -1,14 +1,14 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { Bar, BarChart as MicroBarChartLib, Cell, Tooltip, XAxis, YAxis } from 'recharts';
-import { defaultFormatter } from '../../internal/defaults';
-import { BarChartPlaceholder } from '../BarChart/Placeholder';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
+import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { BarChartPlaceholder } from '../BarChart/Placeholder';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'color'> {
   /**
@@ -44,7 +44,7 @@ interface DimensionConfig {
   formatter?: (value: any) => string;
 }
 
-export interface MicroBarChartProps extends RechartBaseProps {
+export interface MicroBarChartProps extends IChartBaseProps {
   centerLabel?: string;
   dimension: DimensionConfig;
   /**
@@ -76,7 +76,7 @@ const microBarChartLabel = { position: 'insideBottomRight', fill: ThemingParamet
 const microBarChartMargin = { left: -30, right: 30, top: 40, bottom: 30 };
 
 /**
- * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/next/MicroBarChart';</code>
+ * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';</code>
  */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
   const { loading, dataset, onDataPointClick, style, className, tooltip, slot } = props;

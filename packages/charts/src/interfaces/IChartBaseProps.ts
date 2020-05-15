@@ -1,7 +1,7 @@
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ICartesianChartConfig } from './ICartesianChartConfig';
 
-export interface RechartBaseProps<T = ICartesianChartConfig> extends CommonProps {
+export interface IChartBaseProps<T = ICartesianChartConfig> extends CommonProps {
   loading?: boolean;
   dataset?: Record<string, any>[];
 

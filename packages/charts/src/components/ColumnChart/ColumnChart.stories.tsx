@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
-import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/next/ColumnChart';
 import React from 'react';
+import { ColumnChart } from '../../lib/ColumnChart';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 
 export default {
