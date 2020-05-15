@@ -3,7 +3,6 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails, getScrollBarWidth } from '@ui5/webcomponents-react-base/lib/Utils';
-import { useDeprecateRenderMethods } from '@ui5/webcomponents-react-base/lib/hooks';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
@@ -45,7 +44,6 @@ export interface ObjectPagePropTypes extends CommonProps {
   subTitle?: string;
   image?: string | ReactElement<unknown>;
   headerActions?: ReactElement<unknown>[];
-  renderHeaderContent?: () => JSX.Element;
   headerContent?: ReactNode;
   children?: ReactElement<ObjectPageSectionPropTypes> | ReactElement<ObjectPageSectionPropTypes>[];
 
@@ -55,8 +53,6 @@ export interface ObjectPagePropTypes extends CommonProps {
     event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: ComponentType }>
   ) => void;
 
-  renderBreadcrumbs?: () => JSX.Element;
-  renderKeyInfos?: () => JSX.Element;
   breadcrumbs?: ReactNode;
   keyInfos?: ReactNode;
 
@@ -96,12 +92,11 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     noHeader = false,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
-    headerContentPinnable
+    headerContentPinnable,
+    headerContent,
+    breadcrumbs,
+    keyInfos
   } = props;
-
-  const headerContent = useDeprecateRenderMethods(props, 'renderHeaderContent', 'headerContent');
-  const breadcrumbs = useDeprecateRenderMethods(props, 'renderBreadcrumbs', 'breadcrumbs');
-  const keyInfos = useDeprecateRenderMethods(props, 'renderKeyInfos', 'keyInfos');
 
   const firstSectionId = safeGetChildrenArray(children)[0]?.props?.id;
 

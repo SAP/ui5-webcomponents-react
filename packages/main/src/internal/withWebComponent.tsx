@@ -1,13 +1,12 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { polyfillDeprecatedEventAPI } from '@ui5/webcomponents-react-base/lib/Utils';
 import React, {
   Children,
   cloneElement,
   forwardRef,
+  ForwardRefRenderFunction,
   HTMLAttributes,
   ReactElement,
   Ref,
-  RefForwardingComponent,
   RefObject,
   useEffect,
   useMemo,
@@ -26,7 +25,6 @@ export interface WithWebComponentPropTypes extends CommonProps, HTMLAttributes<H
 }
 
 const createEventWrapperFor = (eventIdentifier, eventHandler) => (event) => {
-  polyfillDeprecatedEventAPI(event);
   return eventHandler(event);
 };
 
@@ -134,5 +132,5 @@ export const withWebComponent = <T extends {}>(
 
   WithWebComponent.displayName = `WithWebComponent(${TagName})`;
 
-  return (WithWebComponent as unknown) as RefForwardingComponent<Ui5DomRef, T & WithWebComponentPropTypes>;
+  return (WithWebComponent as unknown) as ForwardRefRenderFunction<Ui5DomRef, T & WithWebComponentPropTypes>;
 };
