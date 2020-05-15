@@ -26,7 +26,7 @@ describe('Text', () => {
   });
 
   test('custom width', () => {
-    const wrapper = mount(<Text width="300px">Test</Text>);
+    const wrapper = mount(<Text style={{ width: '300px' }}>Test</Text>);
     expect(window.getComputedStyle(wrapper.getDOMNode()).width).toEqual('300px');
   });
 
