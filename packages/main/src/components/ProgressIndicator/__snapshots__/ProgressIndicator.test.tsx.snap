@@ -24,7 +24,6 @@ exports[`ProgressIndicator Custom 1`] = `
 exports[`ProgressIndicator ProgressIndicator with state Error 1`] = `
 <div
   class="ProgressIndicator-wrapper-0"
-  style="width: auto;"
 >
   <div
     class="ProgressIndicator-progressbar-0 ProgressIndicator-stateError-0"
@@ -45,7 +44,6 @@ exports[`ProgressIndicator ProgressIndicator with state Error 1`] = `
 exports[`ProgressIndicator ProgressIndicator with state Information 1`] = `
 <div
   class="ProgressIndicator-wrapper-0"
-  style="width: auto;"
 >
   <div
     class="ProgressIndicator-progressbar-0 ProgressIndicator-stateInformation-0"
@@ -66,7 +64,6 @@ exports[`ProgressIndicator ProgressIndicator with state Information 1`] = `
 exports[`ProgressIndicator ProgressIndicator with state None 1`] = `
 <div
   class="ProgressIndicator-wrapper-0"
-  style="width: auto;"
 >
   <div
     class="ProgressIndicator-progressbar-0 ProgressIndicator-stateNone-0"
@@ -87,7 +84,6 @@ exports[`ProgressIndicator ProgressIndicator with state None 1`] = `
 exports[`ProgressIndicator ProgressIndicator with state Success 1`] = `
 <div
   class="ProgressIndicator-wrapper-0"
-  style="width: auto;"
 >
   <div
     class="ProgressIndicator-progressbar-0 ProgressIndicator-stateSuccess-0"
@@ -108,7 +104,6 @@ exports[`ProgressIndicator ProgressIndicator with state Success 1`] = `
 exports[`ProgressIndicator ProgressIndicator with state Warning 1`] = `
 <div
   class="ProgressIndicator-wrapper-0"
-  style="width: auto;"
 >
   <div
     class="ProgressIndicator-progressbar-0 ProgressIndicator-stateWarning-0"
@@ -129,7 +124,6 @@ exports[`ProgressIndicator ProgressIndicator with state Warning 1`] = `
 exports[`ProgressIndicator State 1`] = `
 <div
   class="ProgressIndicator-wrapper-0"
-  style="width: auto;"
 >
   <div
     class="ProgressIndicator-progressbar-0 ProgressIndicator-stateError-0"
