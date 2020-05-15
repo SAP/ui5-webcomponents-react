@@ -4,11 +4,7 @@ import React from 'react';
 
 export const renderStory = () => {
   return (
-    <Text
-      wrapping={boolean('wrapping', true)}
-      renderWhitespace={boolean('renderWhitespace', false)}
-      width={text('width', '')}
-    >
+    <Text wrapping={boolean('wrapping', true)} renderWhitespace={boolean('renderWhitespace', false)}>
       Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
       magna aliquyam erat, sed diam voluptua.
       {'\n\n'}
