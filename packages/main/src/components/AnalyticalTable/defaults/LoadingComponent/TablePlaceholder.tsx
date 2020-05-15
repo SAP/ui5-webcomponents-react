@@ -4,12 +4,24 @@ import ContentLoader from 'react-content-loader';
 
 const getArrayOfLength = (len) => Array.from(Array(len).keys());
 
+const getColumnWidth = (column) => {
+  let updatedColumnWidth = column.width;
+  if (updatedColumnWidth < column.minWidth) {
+    updatedColumnWidth = column.minWidth;
+  }
+  if (updatedColumnWidth > column.maxWidth) {
+    updatedColumnWidth = column.maxWidth;
+  }
+  return updatedColumnWidth;
+};
+
 type RowProps = { columns: any[]; y: number; row: number };
 const TableRow: FC<RowProps> = ({ columns, y, row }: RowProps) => {
   let columnOffset = 0;
   return (
     <>
       {columns.map((column, i) => {
+        const columnWidth = getColumnWidth(column);
         const el = (
           <rect
             key={`column-${i}-row-${row}`}
@@ -17,11 +29,11 @@ const TableRow: FC<RowProps> = ({ columns, y, row }: RowProps) => {
             y={y}
             rx="2"
             ry="8"
-            width={column.width - 4}
+            width={columnWidth - 4}
             height="16"
           />
         );
-        columnOffset += column.width;
+        columnOffset += columnWidth;
         return el;
       })}
     </>
