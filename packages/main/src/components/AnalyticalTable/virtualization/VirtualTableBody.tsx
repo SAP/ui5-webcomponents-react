@@ -3,7 +3,6 @@ import '@ui5/webcomponents-icons/dist/icons/navigation-right-arrow';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React, { MutableRefObject, useCallback, useRef } from 'react';
 import { useVirtual } from 'react-virtual';
 
