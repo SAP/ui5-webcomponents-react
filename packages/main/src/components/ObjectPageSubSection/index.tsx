@@ -2,7 +2,6 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingPara
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { useScrollElement } from '@ui5/webcomponents-react-base/lib/useScrollElement';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -47,10 +46,6 @@ const ObjectPageSubSection: FC<ObjectPageSubSectionPropTypes> = forwardRef(
 
     const htmlRef: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
     const htmlId = `ObjectPageSubSection-${id}`;
-
-    useScrollElement(htmlId, htmlRef, {
-      spy: false
-    });
 
     const classes = useStyles();
     const subSectionClassName = StyleClassHelper.of(classes.objectPageSubSection);
