@@ -17,7 +17,6 @@ import styles from './FilterItem.jss';
 
 export interface FilterItemPropTypes extends CommonProps {
   placeholder?: string;
-  renderText?: (item?: any) => JSX.Element;
   type?: FilterType;
   label?: string;
   filterItems?: any[];
@@ -143,7 +142,6 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
 
 FilterItem.defaultProps = {
   placeholder: '',
-  renderText: (item) => (item && item.text) || '',
   type: FilterType.Default,
   filterItems: [],
   label: '',
