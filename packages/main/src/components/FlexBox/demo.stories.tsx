@@ -13,8 +13,6 @@ export const defaultStory = () => (
     alignItems={select('alignItems', FlexBoxAlignItems, FlexBoxAlignItems.Stretch)}
     direction={select('direction', FlexBoxDirection, FlexBoxDirection.Row)}
     wrap={select('wrap', FlexBoxWrap, FlexBoxWrap.NoWrap)}
-    height={text('height', 'auto')}
-    width={text('width', '500px')}
     displayInline={boolean('displayInline', false)}
   >
     <Label>Item 1</Label>
