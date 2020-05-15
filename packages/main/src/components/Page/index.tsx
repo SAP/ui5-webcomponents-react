@@ -109,8 +109,6 @@ Page.defaultProps = {
   showHeader: true,
   showFooter: false,
   showBackButton: true,
-  renderCustomHeader: null,
-  renderCustomFooter: null,
   title: '',
   backgroundDesign: PageBackgroundDesign.Standard
 };
