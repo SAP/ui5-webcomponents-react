@@ -53,7 +53,7 @@ import { VirtualTableBody } from './virtualization/VirtualTableBody';
 
 export interface TableProps extends CommonProps {
   /**
-   * Please look at the [AnalyticalTableColumnDefinition interface](https://github.com/SAP/ui5-webcomponents-react/blob/master/packages/main/src/interfaces/AnalyticalTableColumnDefinition.ts) for a full list of options.
+   * Please look at the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.
    */
   columns: AnalyticalTableColumnDefinition[];
   data: object[];
