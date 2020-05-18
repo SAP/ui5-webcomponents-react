@@ -156,7 +156,7 @@ export const FilterDialog = (props) => {
   );
 
   const renderChildren = useCallback(() => {
-    const currentChildren = children
+    return children
       .filter((item) => {
         if (item.type.displayName !== 'FilterGroupItem') return true; //needed for deprecated FilterItem or custom elements
         return (
@@ -186,7 +186,6 @@ export const FilterDialog = (props) => {
         });
       });
 
-    return currentChildren;
   }, [children, searchString, filterBarRefs]);
 
   const handleCheckBoxChange = useCallback(
