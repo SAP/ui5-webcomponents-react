@@ -10,6 +10,9 @@ assignees: ''
 **Describe the bug**
 A clear and concise description of what the bug is.
 
+**Isolated Example**
+*Please provide an isolated example if possible by forking [this codesandbox](https://codesandbox.io/s/ui5-webcomponents-react-template-29l34).*
+
 **To Reproduce**
 Steps to reproduce the behavior:
 1. Go to '...'
@@ -24,11 +27,10 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **UI5 Web Components for React Information**
-Operating System:
+`@ui5/webcomponents` version:
 `@ui5/webcomponents-react` version:
-Do you have a dependency to`@ui5/webcomponents` in your package.json? If yes, which version?:
-
-*If you are not sure, you can find out by running `npm ls @ui5/webcomponents-react` or `yarn why @ui5/webcomponents-react`*
+Operating System:
+Browser:
 
 **Additional context**
 Add any other context about the problem here.
