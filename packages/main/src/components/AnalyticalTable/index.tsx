@@ -386,7 +386,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             </header>
           );
         })}
-        {loading && busyIndicatorEnabled && props.data?.length > 0 && <LoadingComponent />}
+        {loading && busyIndicatorEnabled && props.data?.length > 0 && (
+          <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />
+        )}
         {loading && props.data?.length === 0 && (
           <TablePlaceholder
             columns={tableInternalColumns.filter(
