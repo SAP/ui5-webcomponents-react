@@ -6,6 +6,7 @@ const styles = {
     position: 'relative',
     width: '100%',
     maxWidth: '100%',
+    overflowY: 'hidden',
     overflowX: 'auto',
     height: '100%',
     minHeight: '3rem',
