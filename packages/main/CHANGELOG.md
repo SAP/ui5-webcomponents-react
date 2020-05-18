@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.6...v0.9.7) (2020-05-18)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** don't crash if scrollTo methods are not defined ([#515](https://github.com/SAP/ui5-webcomponents-react/issues/515)) ([70321bf](https://github.com/SAP/ui5-webcomponents-react/commit/70321bf006119ad7e58b57e1f15eef3e983dfd10))
+* **AnalyticalTable:** enable minWidth/maxWidth column option, disable dragging while resizing ([#518](https://github.com/SAP/ui5-webcomponents-react/issues/518)) ([1e22139](https://github.com/SAP/ui5-webcomponents-react/commit/1e22139e49b7285cb970e73e17196b5cd91a0eff))
+* **AnalyticalTable:** prevent overflow y on parent container ([#521](https://github.com/SAP/ui5-webcomponents-react/issues/521)) ([5f444e4](https://github.com/SAP/ui5-webcomponents-react/commit/5f444e46391f56a33be081f5f62c06753b62dd16))
+* **ObjectPage:** make anchor bar more resilient ([#522](https://github.com/SAP/ui5-webcomponents-react/issues/522)) ([3faea30](https://github.com/SAP/ui5-webcomponents-react/commit/3faea30272569c8389d38cc6617c13869423557f))
+
+
+
+
+
 ## [0.9.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.5...v0.9.6) (2020-05-14)
 
 
