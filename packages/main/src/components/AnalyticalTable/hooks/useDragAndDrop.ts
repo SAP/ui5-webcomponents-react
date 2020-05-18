@@ -12,7 +12,7 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo, c
 
   const handleDragStart = useCallback(
     (e) => {
-      if (resizeInfo.isResizingColumn === e.currentTarget.dataset.columnId) {
+      if (resizeInfo.isResizingColumn) {
         e.preventDefault();
         return;
       }
