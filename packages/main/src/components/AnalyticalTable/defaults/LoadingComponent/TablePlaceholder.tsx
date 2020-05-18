@@ -17,11 +17,11 @@ const TableRow: FC<RowProps> = ({ columns, y, row }: RowProps) => {
             y={y}
             rx="2"
             ry="8"
-            width={column.width - 4}
+            width={column.totalWidth - 4}
             height="16"
           />
         );
-        columnOffset += column.width;
+        columnOffset += column.totalWidth;
         return el;
       })}
     </>

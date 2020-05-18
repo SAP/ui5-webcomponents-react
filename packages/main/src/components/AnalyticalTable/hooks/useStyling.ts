@@ -32,7 +32,7 @@ const getHeaderProps = (columnProps, { instance, column }) => {
   const lastColumnId = instance.visibleColumns[instance.visibleColumns.length - 1].id;
   const isLastColumn = column.id === lastColumnId;
   const style: CSSProperties = {
-    width: column.width
+    width: column.totalWidth
   };
 
   if (instance.state.isScrollable && isLastColumn) {
