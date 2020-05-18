@@ -22,7 +22,7 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: Obj
   useEffect(() => {
     if (subSectionsAvailable) {
       try {
-        const element = ref.current.parentElement.shadowRoot.querySelector(
+        const element = ref.current?.parentElement?.shadowRoot?.querySelector(
           `.ui5-tc__headerList li[aria-posinset="${index + 1}"] .ui5-tc__headerItemContent`
         );
 
