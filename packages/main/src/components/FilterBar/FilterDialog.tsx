@@ -16,7 +16,7 @@ import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue } from './utils';
 
@@ -112,7 +112,7 @@ export const FilterDialog = (props) => {
     [handleDialogCancel]
   );
 
-  const renderFooterContentRight = useCallback(
+  const footerContentRight = useMemo(
     () => (
       <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
         {showGoButton && (
@@ -142,8 +142,8 @@ export const FilterDialog = (props) => {
   );
 
   const renderFooter = useCallback(() => {
-    return <Bar design={BarDesign.Footer} contentRight={renderFooterContentRight()} />;
-  }, [renderFooterContentRight]);
+    return <Bar design={BarDesign.Footer} contentRight={footerContentRight} />;
+  }, [footerContentRight]);
 
   const renderHeader = useCallback(
     () => (
