@@ -13,7 +13,6 @@ exports[`FilterBar Hide FilterBar 1`] = `
       <ui5-button
         class="FilterBar-showFiltersBtn-0"
         design="Transparent"
-        icon=""
       >
         Show Filter Bar
       </ui5-button>
@@ -32,7 +31,6 @@ exports[`FilterBar Hide FilterBar 1`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             title="Classification"
           >
             
@@ -40,7 +38,6 @@ exports[`FilterBar Hide FilterBar 1`] = `
           </ui5-label>
         </div>
         <ui5-select
-          name=""
           value-state="None"
         >
           <ui5-option>
@@ -77,7 +74,6 @@ exports[`FilterBar Render without crashing - default props 1`] = `
       <ui5-button
         class="FilterBar-showFiltersBtn-0"
         design="Transparent"
-        icon=""
       >
         Hide Filter Bar
       </ui5-button>
@@ -96,7 +92,6 @@ exports[`FilterBar Render without crashing - default props 1`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             title="Classification"
           >
             
@@ -104,7 +99,6 @@ exports[`FilterBar Render without crashing - default props 1`] = `
           </ui5-label>
         </div>
         <ui5-select
-          name=""
           value-state="None"
         >
           <ui5-option>
@@ -151,23 +145,18 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
       <ui5-responsive-popover
         header-text="Variants"
         horizontal-align="Center"
-        initial-focus=""
         placement-type="Bottom"
         vertical-align="Center"
       >
         <ui5-button
           class="VariantManagement-footer-0"
           design="Emphasized"
-          icon=""
           slot="footer"
         >
           Cancel
         </ui5-button>
         <ui5-list
-          footer-text=""
-          header-text=""
           mode="SingleSelect"
-          no-data-text=""
           separators="All"
         >
           <ui5-li
@@ -194,7 +183,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
       class="FilterBar-vLine-0"
     >
       <ui5-input
-        name=""
         placeholder="Search"
         type="Text"
         value=""
@@ -206,32 +194,27 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
     >
       <ui5-button
         design="Transparent"
-        icon=""
       >
         Clear
       </ui5-button>
       <ui5-button
         design="Transparent"
-        icon=""
       >
         Restore
       </ui5-button>
       <ui5-button
         class="FilterBar-showFiltersBtn-0"
         design="Transparent"
-        icon=""
       >
         Hide Filter Bar
       </ui5-button>
       <ui5-button
         design="Default"
-        icon=""
       >
         Filters (1337)
       </ui5-button>
       <ui5-button
         design="Emphasized"
-        icon=""
       >
         Go
       </ui5-button>
@@ -251,7 +234,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             title="Input"
           >
             
@@ -259,10 +241,8 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           </ui5-label>
         </div>
         <ui5-input
-          name=""
           placeholder="Placeholder"
           type="Text"
-          value=""
           value-state="None"
         />
       </div>
@@ -278,17 +258,13 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             title="Switch"
           >
             
           Switch
           </ui5-label>
         </div>
-        <ui5-switch
-          text-off=""
-          text-on=""
-        />
+        <ui5-switch />
       </div>
     </div>
     <div
@@ -302,7 +278,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             title="SELECT w/ initial selected"
           >
             
@@ -310,7 +285,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           </ui5-label>
         </div>
         <ui5-select
-          name=""
           value-state="None"
         >
           <ui5-option>
@@ -341,7 +315,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             title="SELECT w/o initial selected"
           >
             
@@ -349,7 +322,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           </ui5-label>
         </div>
         <ui5-select
-          name=""
           value-state="None"
         >
           <ui5-option
@@ -397,7 +369,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             required="true"
             title="MultBox"
           >
@@ -406,8 +377,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           </ui5-label>
         </div>
         <ui5-multi-combobox
-          placeholder=""
-          value=""
           value-state="None"
         >
           <ui5-mcb-item
@@ -436,7 +405,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             required="true"
             title="Date Picker"
           >
@@ -445,12 +413,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           </ui5-label>
         </div>
         <ui5-datepicker
-          format-pattern=""
-          max-date=""
-          min-date=""
-          name=""
           primary-calendar-type="Gregorian"
-          value=""
           value-state="None"
         />
       </div>
@@ -462,8 +425,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
 exports[`FilterBar Toggle Filters Dialog 1`] = `
 Array [
   <ui5-dialog
-    header-text=""
-    initial-focus=""
     opened=""
   >
     <div
@@ -476,14 +437,11 @@ Array [
         Filters
       </ui5-title>
       <ui5-input
-        name=""
         placeholder="Search for Filters"
         type="Text"
-        value=""
         value-state="None"
       >
         <ui5-icon
-          accessible-name=""
           name="search"
           slot="icon"
         />
@@ -515,31 +473,26 @@ Array [
         >
           <ui5-button
             design="Emphasized"
-            icon=""
           >
             Go
           </ui5-button>
           <ui5-button
             design="Default"
-            icon=""
           >
             Clear
           </ui5-button>
           <ui5-button
             design="Default"
-            icon=""
           >
             Restore
           </ui5-button>
           <ui5-button
             design="Default"
-            icon=""
           >
             Save
           </ui5-button>
           <ui5-button
             design="Transparent"
-            icon=""
           >
             Cancel
           </ui5-button>
@@ -554,7 +507,6 @@ Array [
       >
         <span />
         <ui5-input
-          name=""
           placeholder="Search"
           type="Text"
           value=""
@@ -595,7 +547,6 @@ Array [
                   class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
                 >
                   <ui5-label
-                    for=""
                     title="Input"
                   >
                     
@@ -603,7 +554,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-input
-                  name=""
                   placeholder="Placeholder"
                   type="Text"
                   value=""
@@ -613,8 +563,6 @@ Array [
             </div>
             <ui5-checkbox
               checked="true"
-              name=""
-              text=""
               value-state="None"
             />
           </div>
@@ -631,23 +579,17 @@ Array [
                   class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
                 >
                   <ui5-label
-                    for=""
                     title="Switch"
                   >
                     
           Switch
                   </ui5-label>
                 </div>
-                <ui5-switch
-                  text-off=""
-                  text-on=""
-                />
+                <ui5-switch />
               </div>
             </div>
             <ui5-checkbox
               checked="true"
-              name=""
-              text=""
               value-state="None"
             />
           </div>
@@ -664,7 +606,6 @@ Array [
                   class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
                 >
                   <ui5-label
-                    for=""
                     title="SELECT w/ initial selected"
                   >
                     
@@ -672,7 +613,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-select
-                  name=""
                   value-state="None"
                 >
                   <ui5-option>
@@ -694,8 +634,6 @@ Array [
             </div>
             <ui5-checkbox
               checked="true"
-              name=""
-              text=""
               value-state="None"
             />
           </div>
@@ -712,7 +650,6 @@ Array [
                   class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
                 >
                   <ui5-label
-                    for=""
                     title="SELECT w/o initial selected"
                   >
                     
@@ -720,7 +657,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-select
-                  name=""
                   value-state="None"
                 >
                   <ui5-option
@@ -759,8 +695,6 @@ Array [
             </div>
             <ui5-checkbox
               checked="true"
-              name=""
-              text=""
               value-state="None"
             />
           </div>
@@ -795,7 +729,6 @@ Array [
                   class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
                 >
                   <ui5-label
-                    for=""
                     required="true"
                     title="MultBox"
                   >
@@ -804,8 +737,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-multi-combobox
-                  placeholder=""
-                  value=""
                   value-state="None"
                 >
                   <ui5-mcb-item
@@ -826,8 +757,6 @@ Array [
             <ui5-checkbox
               checked="true"
               disabled="true"
-              name=""
-              text=""
               value-state="None"
             />
           </div>
@@ -844,7 +773,6 @@ Array [
                   class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
                 >
                   <ui5-label
-                    for=""
                     required="true"
                     title="Date Picker"
                   >
@@ -853,10 +781,6 @@ Array [
                   </ui5-label>
                 </div>
                 <ui5-datepicker
-                  format-pattern=""
-                  max-date=""
-                  min-date=""
-                  name=""
                   primary-calendar-type="Gregorian"
                   value-state="None"
                 />
@@ -865,8 +789,6 @@ Array [
             <ui5-checkbox
               checked="true"
               disabled="true"
-              name=""
-              text=""
               value-state="None"
             />
           </div>
@@ -896,23 +818,18 @@ Array [
         <ui5-responsive-popover
           header-text="Variants"
           horizontal-align="Center"
-          initial-focus=""
           placement-type="Bottom"
           vertical-align="Center"
         >
           <ui5-button
             class="VariantManagement-footer-0"
             design="Emphasized"
-            icon=""
             slot="footer"
           >
             Cancel
           </ui5-button>
           <ui5-list
-            footer-text=""
-            header-text=""
             mode="SingleSelect"
-            no-data-text=""
             separators="All"
           >
             <ui5-li
@@ -939,7 +856,6 @@ Array [
         class="FilterBar-vLine-0"
       >
         <ui5-input
-          name=""
           placeholder="Search"
           type="Text"
           value=""
@@ -951,32 +867,27 @@ Array [
       >
         <ui5-button
           design="Transparent"
-          icon=""
         >
           Clear
         </ui5-button>
         <ui5-button
           design="Transparent"
-          icon=""
         >
           Restore
         </ui5-button>
         <ui5-button
           class="FilterBar-showFiltersBtn-0"
           design="Transparent"
-          icon=""
         >
           Hide Filter Bar
         </ui5-button>
         <ui5-button
           design="Default"
-          icon=""
         >
           Filters (1337)
         </ui5-button>
         <ui5-button
           design="Emphasized"
-          icon=""
         >
           Go
         </ui5-button>
@@ -996,7 +907,6 @@ Array [
             class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <ui5-label
-              for=""
               title="Input"
             >
               
@@ -1004,10 +914,8 @@ Array [
             </ui5-label>
           </div>
           <ui5-input
-            name=""
             placeholder="Placeholder"
             type="Text"
-            value=""
             value-state="None"
           />
         </div>
@@ -1023,17 +931,13 @@ Array [
             class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <ui5-label
-              for=""
               title="Switch"
             >
               
           Switch
             </ui5-label>
           </div>
-          <ui5-switch
-            text-off=""
-            text-on=""
-          />
+          <ui5-switch />
         </div>
       </div>
       <div
@@ -1047,7 +951,6 @@ Array [
             class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <ui5-label
-              for=""
               title="SELECT w/ initial selected"
             >
               
@@ -1055,7 +958,6 @@ Array [
             </ui5-label>
           </div>
           <ui5-select
-            name=""
             value-state="None"
           >
             <ui5-option>
@@ -1086,7 +988,6 @@ Array [
             class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <ui5-label
-              for=""
               title="SELECT w/o initial selected"
             >
               
@@ -1094,7 +995,6 @@ Array [
             </ui5-label>
           </div>
           <ui5-select
-            name=""
             value-state="None"
           >
             <ui5-option
@@ -1142,7 +1042,6 @@ Array [
             class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <ui5-label
-              for=""
               required="true"
               title="MultBox"
             >
@@ -1151,8 +1050,6 @@ Array [
             </ui5-label>
           </div>
           <ui5-multi-combobox
-            placeholder=""
-            value=""
             value-state="None"
           >
             <ui5-mcb-item
@@ -1181,7 +1078,6 @@ Array [
             class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
           >
             <ui5-label
-              for=""
               required="true"
               title="Date Picker"
             >
@@ -1190,12 +1086,7 @@ Array [
             </ui5-label>
           </div>
           <ui5-datepicker
-            format-pattern=""
-            max-date=""
-            min-date=""
-            name=""
             primary-calendar-type="Gregorian"
-            value=""
             value-state="None"
           />
         </div>
@@ -1228,23 +1119,18 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
       <ui5-responsive-popover
         header-text="Variants"
         horizontal-align="Center"
-        initial-focus=""
         placement-type="Bottom"
         vertical-align="Center"
       >
         <ui5-button
           class="VariantManagement-footer-0"
           design="Emphasized"
-          icon=""
           slot="footer"
         >
           Cancel
         </ui5-button>
         <ui5-list
-          footer-text=""
-          header-text=""
           mode="SingleSelect"
-          no-data-text=""
           separators="All"
         >
           <ui5-li
@@ -1271,7 +1157,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
       class="FilterBar-vLine-0"
     >
       <ui5-input
-        name=""
         placeholder="Search"
         type="Text"
         value=""
@@ -1283,32 +1168,27 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
     >
       <ui5-button
         design="Transparent"
-        icon=""
       >
         Clear
       </ui5-button>
       <ui5-button
         design="Transparent"
-        icon=""
       >
         Restore
       </ui5-button>
       <ui5-button
         class="FilterBar-showFiltersBtn-0"
         design="Transparent"
-        icon=""
       >
         Hide Filter Bar
       </ui5-button>
       <ui5-button
         design="Default"
-        icon=""
       >
         Filters (1337)
       </ui5-button>
       <ui5-button
         design="Emphasized"
-        icon=""
       >
         Go
       </ui5-button>
@@ -1328,7 +1208,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             title="Input"
           >
             
@@ -1336,10 +1215,8 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-input
-          name=""
           placeholder="Placeholder"
           type="Text"
-          value=""
           value-state="None"
         />
       </div>
@@ -1355,17 +1232,13 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             title="Switch"
           >
             
           Switch
           </ui5-label>
         </div>
-        <ui5-switch
-          text-off=""
-          text-on=""
-        />
+        <ui5-switch />
       </div>
     </div>
     <div
@@ -1379,7 +1252,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             title="SELECT w/ initial selected"
           >
             
@@ -1387,7 +1259,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-select
-          name=""
           value-state="None"
         >
           <ui5-option>
@@ -1418,7 +1289,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             title="SELECT w/o initial selected"
           >
             
@@ -1426,7 +1296,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-select
-          name=""
           value-state="None"
         >
           <ui5-option
@@ -1474,7 +1343,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             required="true"
             title="MultBox"
           >
@@ -1483,8 +1351,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-multi-combobox
-          placeholder=""
-          value=""
           value-state="None"
         >
           <ui5-mcb-item
@@ -1513,7 +1379,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0"
         >
           <ui5-label
-            for=""
             required="true"
             title="Date Picker"
           >
@@ -1522,12 +1387,7 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           </ui5-label>
         </div>
         <ui5-datepicker
-          format-pattern=""
-          max-date=""
-          min-date=""
-          name=""
           primary-calendar-type="Gregorian"
-          value=""
           value-state="None"
         />
       </div>
