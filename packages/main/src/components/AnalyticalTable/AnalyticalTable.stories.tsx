@@ -1,14 +1,21 @@
 import { action } from '@storybook/addon-actions';
 import { array, boolean, number, object, select, text } from '@storybook/addon-knobs';
+import '@ui5/webcomponents-icons/dist/icons/delete';
+import '@ui5/webcomponents-icons/dist/icons/edit';
+import '@ui5/webcomponents-icons/dist/icons/settings';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
-import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import React from 'react';
 import generateData from './demo/generateData';
+import mdx from './AnalyticalTable.mdx';
 
 const columns = [
   {
@@ -54,6 +61,22 @@ const columns = [
         </select>
       );
     }
+  },
+  {
+    id: 'actions',
+    Header: 'Actions',
+    accessor: '.',
+    width: 100,
+    canResize: false,
+    Cell: ({ cell, row }) => {
+      // console.log('This is your row data', row.original);
+      return (
+        <FlexBox>
+          <Button icon="edit" />
+          <Button icon="delete" />
+        </FlexBox>
+      );
+    }
   }
 ];
 
@@ -65,6 +88,11 @@ export const defaultTable = () => {
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <AnalyticalTable
         title="Table Title"
+        extension={
+          <FlexBox justifyContent={FlexBoxJustifyContent.End} alignItems={FlexBoxAlignItems.Center}>
+            <Text>Table Extension:</Text> <Button icon="settings" />
+          </FlexBox>
+        }
         data={data}
         columns={columns}
         loading={boolean('loading', false)}
@@ -139,65 +167,12 @@ treeTable.story = {
   name: 'Tree Table'
 };
 
-export const withCroppedPopup = () => {
-  return (
-    <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-      <div style={{ width: '400px' }}>
-        <AnalyticalTable
-          title="Table Title"
-          data={data}
-          columns={columns}
-          loading={boolean('loading', false)}
-          sortable={boolean('sortable', true)}
-          filterable={boolean('filterable', true)}
-          visibleRows={number('visibleRows', 15)}
-          groupable={boolean('groupable', true)}
-        />
-      </div>
-    </div>
-  );
-};
-withCroppedPopup.story = {
-  name: 'with Cropped Popup'
-};
-
-export const tableWithExtension = () => {
-  return (
-    <AnalyticalTable
-      data={data}
-      columns={columns}
-      loading={boolean('loading', false)}
-      sortable={boolean('sortable', true)}
-      filterable={boolean('filterable', true)}
-      visibleRows={number('visibleRows', 15)}
-      groupable={boolean('groupable', true)}
-      extension={<Button>Hello from the Table Extension!</Button>}
-    />
-  );
-};
-tableWithExtension.story = {
-  name: 'with Table Extension'
-};
-
-export const tableWithCustomTitle = () => {
-  return (
-    <AnalyticalTable
-      title={<Title>Test 123</Title>}
-      data={data}
-      columns={columns}
-      loading={boolean('loading', false)}
-      sortable={boolean('sortable', true)}
-      filterable={boolean('filterable', true)}
-      visibleRows={number('visibleRows', 15)}
-      groupable={boolean('groupable', true)}
-    />
-  );
-};
-tableWithCustomTitle.story = {
-  name: 'with Custom Title'
-};
-
 export default {
   title: 'Components / Analytical Table',
-  component: AnalyticalTable
+  component: AnalyticalTable,
+  parameters: {
+    docs: {
+      page: mdx
+    }
+  }
 };
