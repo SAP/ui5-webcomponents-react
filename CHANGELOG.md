@@ -3,7 +3,77 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.4...v0.9.5) (2020-05-13)
+
+
+### Bug Fixes
+
+* **Charts - New:** configurable animation and rendering improvements ([#501](https://github.com/SAP/ui5-webcomponents-react/issues/501)) ([06f58b9](https://github.com/SAP/ui5-webcomponents-react/commit/06f58b9e8850dc9c1b0dc9f4734586df556bd6ef))
+
+
+### Features
+
+* **Charts:** stabilize new charts and deprecate old charts ([#507](https://github.com/SAP/ui5-webcomponents-react/issues/507)) ([4dbb17e](https://github.com/SAP/ui5-webcomponents-react/commit/4dbb17eb6fcd70e68ac025a303b008468e468b76))
+* **PieChart/DonutChart - New:** expose innerRadius and outerRadius in chartConfig prop ([#503](https://github.com/SAP/ui5-webcomponents-react/issues/503)) ([8390186](https://github.com/SAP/ui5-webcomponents-react/commit/8390186199ca973759a56992298ebc8d48d32b1b))
+
+
+
+
+
+## [0.9.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.3...v0.9.4) (2020-05-08)
+
+
+### Bug Fixes
+
+* **Charts:** fix crash in ComposedChart on click when onDataPointClick is not set ([#483](https://github.com/SAP/ui5-webcomponents-react/issues/483)) ([c318ca2](https://github.com/SAP/ui5-webcomponents-react/commit/c318ca2122beb667b80d20e501510b6e269dd4bd))
+* **Charts - New:** layouting fixes ([#488](https://github.com/SAP/ui5-webcomponents-react/issues/488)) ([4a47e1d](https://github.com/SAP/ui5-webcomponents-react/commit/4a47e1d520f1a99426bcf481d13ceb6b71a22d89))
+* **Charts-New:** fix labels of donut chart and yAxis width calculation of bar chart ([#498](https://github.com/SAP/ui5-webcomponents-react/issues/498)) ([db3a5b7](https://github.com/SAP/ui5-webcomponents-react/commit/db3a5b7ca2de8dbbdb160cd95ecdd35225b5c34f))
+* **cra-template:** fix test to be successful ([#497](https://github.com/SAP/ui5-webcomponents-react/issues/497)) ([f5932fa](https://github.com/SAP/ui5-webcomponents-react/commit/f5932fa0e2aa9cf236b718cf18a6bee49cf189af))
+* **PieChart:** fix hideDataLabel on measure not hiding data labels ([#499](https://github.com/SAP/ui5-webcomponents-react/issues/499)) ([2c73460](https://github.com/SAP/ui5-webcomponents-react/commit/2c73460f32aa36928cc8d5c4a6c6e0667f7c6665))
+* fix cjs build ([#496](https://github.com/SAP/ui5-webcomponents-react/issues/496)) ([b1900cb](https://github.com/SAP/ui5-webcomponents-react/commit/b1900cbc96f1de4cbcbed7c86dbb4f6ec3f38fd5))
+
+
+
+
+
+## [0.9.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.2...v0.9.3) (2020-05-06)
+
+
+### Bug Fixes
+
+* add babel/runtime as dependency to all packages ([#482](https://github.com/SAP/ui5-webcomponents-react/issues/482)) ([c7475b4](https://github.com/SAP/ui5-webcomponents-react/commit/c7475b40c393643f79e2ddc3993e53b36e8438ec))
+
+
+
+
+
+## [0.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.1...v0.9.2) (2020-05-06)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix header text collision with sort/group/filter icons ([#478](https://github.com/SAP/ui5-webcomponents-react/issues/478)) ([eb36865](https://github.com/SAP/ui5-webcomponents-react/commit/eb368655ca85bff73059def88cd875a6ca986492))
+* **Charts - New:** fix crash in label truncation if value is null or undefined ([#476](https://github.com/SAP/ui5-webcomponents-react/issues/476)) ([9628ae0](https://github.com/SAP/ui5-webcomponents-react/commit/9628ae083b6625aa5a0bdfda1bc8363d32bc4e57))
+
+
+
+
+
+## [0.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0...v0.9.1) (2020-05-04)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** calculate scrollbar width only if table is scrollable ([#470](https://github.com/SAP/ui5-webcomponents-react/issues/470)) ([ddd19fe](https://github.com/SAP/ui5-webcomponents-react/commit/ddd19fe662c8f633ebc597b286faf8c201551d05)), closes [#467](https://github.com/SAP/ui5-webcomponents-react/issues/467)
+* **web-components-wrapper:** don't generate default props for empty strings ([#469](https://github.com/SAP/ui5-webcomponents-react/issues/469)) ([48505d9](https://github.com/SAP/ui5-webcomponents-react/commit/48505d9e2e375f640a2ed282f97bab1dd650676f))
+
+
+
+
+
 # [0.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.0...v0.9.0) (2020-04-30)
+
+You can find the most important changes and how to migrate to `v0.9.0` in our [Migration Guide](https://github.com/SAP/ui5-webcomponents-react/blob/master/docs/MigrationGuide.stories.mdx).  
 
 **Note:** Version bump only for package ui5-webcomponents-react-release
 

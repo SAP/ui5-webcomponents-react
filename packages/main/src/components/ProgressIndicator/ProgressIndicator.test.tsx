@@ -15,7 +15,9 @@ const testFactory = () => {
 
 describe('ProgressIndicator', () => {
   test('Custom', () => {
-    const wrapper = mount(<ProgressIndicator displayValue="sdf" width="50%" height="50%" percentValue={40} />);
+    const wrapper = mount(
+      <ProgressIndicator displayValue="sdf" style={{ width: '50%', height: '50%' }} percentValue={40} />
+    );
     expect(wrapper.render()).toMatchSnapshot();
   });
 

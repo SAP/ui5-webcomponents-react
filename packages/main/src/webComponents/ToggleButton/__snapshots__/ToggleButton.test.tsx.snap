@@ -3,6 +3,5 @@
 exports[`ToggleButton Basic Test (generated) 1`] = `
 <ui5-togglebutton
   design="Default"
-  icon=""
 />
 `;

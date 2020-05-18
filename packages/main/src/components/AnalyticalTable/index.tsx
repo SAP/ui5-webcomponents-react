@@ -1,13 +1,13 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { useDeprecateRenderMethods } from '@ui5/webcomponents-react-base/lib/hooks';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import debounce from 'lodash.debounce';
 import React, {
   ComponentType,
+  CSSProperties,
   FC,
   forwardRef,
   ReactNode,
@@ -17,12 +17,10 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
-  CSSProperties
+  useRef
 } from 'react';
 import {
   PluginHook,
-  useAbsoluteLayout,
   useColumnOrder,
   useExpanded,
   useFilters,
@@ -44,20 +42,14 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
-import { useRTL } from './hooks/useRTL';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
-import { useTableCellStyling } from './hooks/useTableCellStyling';
-import { useTableHeaderGroupStyling } from './hooks/useTableHeaderGroupStyling';
-import { useTableHeaderStyling } from './hooks/useTableHeaderStyling';
-import { useTableRowStyling } from './hooks/useTableRowStyling';
+import { useStyling } from './hooks/useStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
-import { useTableStyling } from './hooks/useTableStyling';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
 import { orderByFn } from './util';
 import { VirtualTableBody } from './virtualization/VirtualTableBody';
-import debounce from 'lodash.debounce';
 
 export interface TableProps extends CommonProps {
   /**
@@ -73,7 +65,6 @@ export interface TableProps extends CommonProps {
   /**
    * Extension section of the Table. If not set, no extension area will be rendered
    */
-  renderExtension?: () => ReactNode;
   extension?: ReactNode;
 
   // appearance
@@ -171,14 +162,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     filterable,
     infiniteScroll,
     infiniteScrollThreshold = 20,
-    onLoadMore
+    onLoadMore,
+    extension
   } = props;
 
   const classes = useStyles();
 
   const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<HTMLDivElement> = useRef();
-  const extension = useDeprecateRenderMethods(props, 'renderExtension', 'extension');
 
   const getSubRows = useCallback((row) => row[subRowsKey] || [], [subRowsKey]);
 
@@ -230,7 +221,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       },
       ...reactTableOptions
     },
-    useAbsoluteLayout,
     useFilters,
     useGroupBy,
     useColumnOrder,
@@ -238,19 +228,19 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useExpanded,
     useRowSelect,
     useResizeColumns,
-    useTableStyling,
-    useTableHeaderGroupStyling,
-    useTableHeaderStyling,
-    useTableRowStyling,
     useRowSelectionColumn,
     useSingleRowStateSelection,
     useRowHighlight,
     useDynamicColumnWidths,
-    useTableCellStyling,
+    useStyling,
     useToggleRowExpand,
-    ...tableHooks,
-    useRTL
+    ...tableHooks
   );
+  // scroll bar detection
+  useEffect(() => {
+    const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
+    dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
+  }, [rows.length, minRows, visibleRows]);
 
   const updateTableClientWidth = useCallback(() => {
     if (tableRef.current) {
@@ -278,8 +268,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   useEffect(() => {
     dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: selectedRowIds });
   }, [selectedRowIds, dispatch]);
-
-  const tableContainerClasses = StyleClassHelper.of(classes.tableContainer);
 
   const calcRowHeight = parseInt(
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
@@ -337,7 +325,10 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   ]);
 
   const inlineStyle = useMemo(() => {
-    const tableStyles = {};
+    const tableStyles = {
+      maxWidth: '100%',
+      overflowX: 'auto'
+    };
     if (!!rowHeight) {
       tableStyles['--sapWcrAnalyticalTableRowHeight'] = `${rowHeight}px`;
     }
@@ -351,7 +342,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     return {
       ...tableStyles,
       ...style,
-      visibility: 'hidden' as 'hidden'
+      visibility: 'hidden'
     } as CSSProperties;
   }, [tableState.tableClientWidth, style, rowHeight]);
 
@@ -359,82 +350,79 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
       {extension && <div>{extension}</div>}
-      <div className={tableContainerClasses.valueOf()} ref={tableRef}>
-        {
-          <div
-            {...getTableProps()}
-            role="grid"
-            aria-rowcount={rows.length}
-            aria-colcount={tableInternalColumns.length}
-            data-per-page={visibleRows}
-          >
-            {headerGroups.map((headerGroup) => {
-              let headerProps = {};
-              if (headerGroup.getHeaderGroupProps) {
-                headerProps = headerGroup.getHeaderGroupProps();
-              }
-              return (
+      <div
+        {...getTableProps()}
+        role="grid"
+        aria-rowcount={rows.length}
+        aria-colcount={tableInternalColumns.length}
+        data-per-page={visibleRows}
+        ref={tableRef}
+      >
+        {headerGroups.map((headerGroup) => {
+          let headerProps = {};
+          if (headerGroup.getHeaderGroupProps) {
+            headerProps = headerGroup.getHeaderGroupProps();
+          }
+          return (
+            // eslint-disable-next-line react/jsx-key
+            <header {...headerProps} role="rowgroup">
+              {headerGroup.headers.map((column, index) => (
                 // eslint-disable-next-line react/jsx-key
-                <header {...headerProps} role="rowgroup">
-                  {headerGroup.headers.map((column, index) => (
-                    // eslint-disable-next-line react/jsx-key
-                    <ColumnHeader
-                      {...column.getHeaderProps()}
-                      onSort={onSort}
-                      onGroupBy={onGroupByChanged}
-                      onDragStart={handleDragStart}
-                      onDragOver={handleDragOver}
-                      onDrop={handleOnDrop}
-                      onDragEnter={handleDragEnter}
-                      onDragEnd={handleOnDragEnd}
-                      dragOver={column.id === dragOver}
-                      isDraggable={!isTreeTable && column.canReorder}
-                    >
-                      {column.render('Header')}
-                    </ColumnHeader>
-                  ))}
-                </header>
-              );
-            })}
-            {loading && busyIndicatorEnabled && props.data?.length > 0 && <LoadingComponent />}
-            {loading && props.data?.length === 0 && (
-              <TablePlaceholder
-                columns={tableInternalColumns.filter(
-                  (col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor)
-                )}
-                rows={props.minRows}
-                style={noDataStyles}
-                rowHeight={internalRowHeight}
-                tableWidth={totalColumnsWidth}
-              />
+                <ColumnHeader
+                  {...column.getHeaderProps()}
+                  onSort={onSort}
+                  onGroupBy={onGroupByChanged}
+                  onDragStart={handleDragStart}
+                  onDragOver={handleDragOver}
+                  onDrop={handleOnDrop}
+                  onDragEnter={handleDragEnter}
+                  onDragEnd={handleOnDragEnd}
+                  dragOver={column.id === dragOver}
+                  isDraggable={!isTreeTable && column.canReorder}
+                >
+                  {column.render('Header')}
+                </ColumnHeader>
+              ))}
+            </header>
+          );
+        })}
+        {loading && busyIndicatorEnabled && props.data?.length > 0 && (
+          <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />
+        )}
+        {loading && props.data?.length === 0 && (
+          <TablePlaceholder
+            columns={tableInternalColumns.filter(
+              (col) => (col.isVisible ?? true) && !tableState.hiddenColumns.includes(col.accessor)
             )}
-            {!loading && props.data?.length === 0 && (
-              <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
-            )}
-            {props.data?.length > 0 && (
-              <VirtualTableBody
-                classes={classes}
-                prepareRow={prepareRow}
-                rows={rows}
-                minRows={minRows}
-                columns={columns}
-                selectionMode={selectionMode}
-                reactWindowRef={reactWindowRef}
-                isTreeTable={isTreeTable}
-                internalRowHeight={internalRowHeight}
-                tableBodyHeight={tableBodyHeight}
-                visibleRows={visibleRows}
-                alternateRowColor={alternateRowColor}
-                overscanCount={overscanCount}
-                totalColumnsWidth={totalColumnsWidth}
-                selectedFlatRows={selectedFlatRows}
-                infiniteScroll={infiniteScroll}
-                infiniteScrollThreshold={infiniteScrollThreshold}
-                onLoadMore={onLoadMore}
-              />
-            )}
-          </div>
-        }
+            rows={props.minRows}
+            style={noDataStyles}
+            rowHeight={internalRowHeight}
+            tableWidth={totalColumnsWidth}
+          />
+        )}
+        {!loading && props.data?.length === 0 && (
+          <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
+        )}
+        {props.data?.length > 0 && (
+          <VirtualTableBody
+            classes={classes}
+            prepareRow={prepareRow}
+            rows={rows}
+            minRows={minRows}
+            selectionMode={selectionMode}
+            reactWindowRef={reactWindowRef}
+            isTreeTable={isTreeTable}
+            internalRowHeight={internalRowHeight}
+            tableBodyHeight={tableBodyHeight}
+            visibleRows={visibleRows}
+            alternateRowColor={alternateRowColor}
+            overscanCount={overscanCount}
+            totalColumnsWidth={totalColumnsWidth}
+            infiniteScroll={infiniteScroll}
+            infiniteScrollThreshold={infiniteScrollThreshold}
+            onLoadMore={onLoadMore}
+          />
+        )}
       </div>
     </div>
   );

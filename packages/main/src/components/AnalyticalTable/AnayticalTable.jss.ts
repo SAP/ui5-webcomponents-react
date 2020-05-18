@@ -2,27 +2,26 @@ import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVaria
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const styles = {
-  tableContainer: {
-    width: '100%',
-    height: `calc(100% - ${CssSizeVariables.sapWcrAnalyticalTableRowHeight})`,
-    minHeight: '3rem'
-  },
   table: {
     position: 'relative',
     width: '100%',
     maxWidth: '100%',
-    overflowX: 'auto'
+    overflowY: 'hidden',
+    overflowX: 'auto',
+    height: '100%',
+    minHeight: '3rem',
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
+    fontWeight: 'normal'
   },
   tableHeaderRow: {
-    boxShadow: 'none !important',
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    position: 'relative'
+    position: 'relative',
+    display: 'inline-flex'
   },
   th: {
     backgroundColor: ThemingParameters.sapList_HeaderBackground,
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    fontFamily: ThemingParameters.sapFontFamily,
-    fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
     color: ThemingParameters.sapList_HeaderTextColor,
     borderTop: `1px solid ${ThemingParameters.sapList_BorderColor}`,
@@ -32,28 +31,38 @@ const styles = {
     boxSizing: 'border-box',
     '&:first-child': {
       borderLeft: `1px solid ${ThemingParameters.sapList_BorderColor}`
+    },
+    '&:last-child': {
+      '& [data-resizer]': {
+        transform: 'translateX(0px)'
+      }
     }
   },
   tbody: {
     position: 'relative',
     zIndex: 0,
     backgroundColor: ThemingParameters.sapList_Background,
-    overflowX: 'hidden !important',
-    overflowY: 'auto !important'
+    overflowX: 'hidden',
+    overflowY: 'auto'
   },
   alternateRowColor: {
     backgroundColor: ThemingParameters.sapList_HeaderBackground
   },
   emptyRow: {},
   tr: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
     zIndex: 0,
     color: ThemingParameters.sapList_TextColor,
+    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     boxSizing: 'border-box',
+    display: 'flex',
+    height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     '&[data-is-selected]': {
-      backgroundColor: `${ThemingParameters.sapList_SelectionBackgroundColor} !important`,
-      '& $tableCell': {
-        borderBottom: `1px solid ${ThemingParameters.sapList_SelectionBorderColor}`
-      }
+      borderBottom: `1px solid ${ThemingParameters.sapList_SelectionBorderColor}`,
+      backgroundColor: `${ThemingParameters.sapList_SelectionBackgroundColor} !important`
     },
     '&[data-is-selected]:hover': {
       backgroundColor: `${ThemingParameters.sapList_Hover_SelectionBackground} !important`
@@ -88,22 +97,18 @@ const styles = {
   selectionModeRowSelector: {},
   tableCell: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    fontFamily: ThemingParameters.sapFontFamily,
-    fontSize: ThemingParameters.sapFontSize,
-    fontWeight: 'normal',
-    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     boxSizing: 'border-box',
     borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    display: 'flex',
+    display: 'inline-flex',
     padding: '0 0.5rem',
     '&:first-child': {
       borderLeft: `1px solid ${ThemingParameters.sapList_BorderColor}`
     },
     overflow: 'hidden',
-    position: 'relative',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     alignItems: 'center',
+    position: 'relative',
     '&:focus': {
       outlineOffset: '-2px',
       outline: `1px dotted ${ThemingParameters.sapContent_FocusColor}`

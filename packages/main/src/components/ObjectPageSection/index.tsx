@@ -1,7 +1,6 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { useScrollElement } from '@ui5/webcomponents-react-base/lib/useScrollElement';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject } from 'react';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -31,10 +30,6 @@ const ObjectPageSection: FC<ObjectPageSectionPropTypes> = forwardRef(
 
     const sectionRef: RefObject<HTMLElement> = useConsolidatedRef(ref);
     const htmlId = `ObjectPageSection-${id}`;
-
-    useScrollElement(htmlId, sectionRef, {
-      spy: true
-    });
 
     const titleClasses = StyleClassHelper.of(classes.title);
     if (titleUppercase) {

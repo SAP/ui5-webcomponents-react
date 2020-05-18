@@ -1,6 +1,6 @@
 const { rollup } = require('rollup');
 const stripBanner = require('rollup-plugin-strip-banner');
-const babel = require('rollup-plugin-babel');
+const { babel } = require('@rollup/plugin-babel');
 const replace = require('@rollup/plugin-replace');
 const resolve = require('@rollup/plugin-node-resolve');
 const json = require('@rollup/plugin-json');
@@ -14,6 +14,7 @@ const fs = require('fs');
 const Packaging = require('./packaging');
 const Modules = require('./modules');
 const { createDeclarationFiles } = require('./declarations');
+const PATHS = require('../../config/paths');
 
 const argv = require('minimist')(process.argv.slice(2));
 const forcePrettyOutput = argv.pretty;
@@ -175,10 +176,8 @@ function shouldSkipBundle(bundle, bundleType) {
 
 function getBabelConfig(updateBabelOptions, bundleType, filename) {
   let options = {
-    exclude: '/**/node_modules/**',
-    presets: ['babel-preset-react-app/prod'],
-    plugins: [],
-    runtimeHelpers: true,
+    configFile: path.resolve(PATHS.root, 'babel.config.js'),
+    babelHelpers: 'runtime',
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   };
   if (updateBabelOptions) {

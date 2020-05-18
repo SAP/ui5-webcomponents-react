@@ -1,22 +1,25 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { PolarAngleAxis, RadialBar, RadialBarChart as RadialBarChartLib } from 'recharts';
+import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 
 export interface RadialChartProps extends CommonProps {
   value?: number;
   maxValue?: number;
   displayValue?: number | string;
   color?: CSSProperties['color'];
-  onDataPointClick?: (event: CustomEvent<{ value: unknown; payload: unknown; xIndex: number }>) => void;
+  onDataPointClick?: (event: CustomEvent<{ value: unknown; payload: unknown; dataIndex: number }>) => void;
 }
 
+const radialChartMargin = { right: 30, left: 30, top: 30, bottom: 30 };
+const radialBarBackground = { fill: ThemingParameters.sapContent_ImagePlaceholderBackground };
+const radialBarLabelStyle = { fontSize: ThemingParameters.sapFontHeader3Size, fill: ThemingParameters.sapTextColor };
+
 /**
- * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/next/RadialChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
+ * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/RadialChart';</code>
  */
 const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
   const { maxValue = 100, value, displayValue, onDataPointClick, color, style, className, tooltip, slot } = props;
@@ -34,7 +37,7 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
           enrichEventWithDetails(event, {
             value: payload.value,
             payload: payload.payload,
-            xIndex: i
+            dataIndex: i
           })
         );
       }
@@ -51,9 +54,10 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={250}
     >
-      <RadialBarChartLib
-        margin={{ right: 30, left: 30, top: 30, bottom: 30 }}
+      <RadialBarChart
+        margin={radialChartMargin}
         innerRadius="90%"
         outerRadius="100%"
         barSize={10}
@@ -65,10 +69,10 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
       >
         <PolarAngleAxis type="number" domain={range} tick={false} />
         <RadialBar
-          background={{ fill: ThemingParameters.sapContent_ImagePlaceholderBackground }}
+          background={radialBarBackground}
           dataKey="value"
           cornerRadius="50%"
-          fill={color ?? `var(--sapChart_OrderedColor_${(0 % 12) + 1})`}
+          fill={color ?? ThemingParameters.sapChart_OrderedColor_1}
           onClick={onDataPointClickInternal}
         />
         <text
@@ -77,11 +81,11 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
           textAnchor="middle"
           dominantBaseline="middle"
           className="progress-label"
-          style={{ fontSize: ThemingParameters.sapFontHeader3Size, fill: ThemingParameters.sapTextColor }}
+          style={radialBarLabelStyle}
         >
           {displayValue}
         </text>
-      </RadialBarChartLib>
+      </RadialBarChart>
     </ChartContainer>
   );
 });

@@ -1,13 +1,14 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import { Bar, BarChart as MicroBarChartLib, Cell, Tooltip, XAxis, YAxis } from 'recharts';
-import { BarChartPlaceholder } from '../BarChart/Placeholder';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
+import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { tooltipContentStyle } from '../../internal/staticProps';
+import { defaultFormatter } from '../../internal/defaults';
+import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
+import { BarChartPlaceholder } from '../BarChart/Placeholder';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'color'> {
   /**
@@ -43,7 +44,7 @@ interface DimensionConfig {
   formatter?: (value: any) => string;
 }
 
-export interface MicroBarChartProps extends RechartBaseProps {
+export interface MicroBarChartProps extends IChartBaseProps {
   centerLabel?: string;
   dimension: DimensionConfig;
   /**
@@ -71,9 +72,11 @@ const TiltedAxisTick = (props) => {
   );
 };
 
+const microBarChartLabel = { position: 'insideBottomRight', fill: ThemingParameters.sapContent_LabelColor };
+const microBarChartMargin = { left: -30, right: 30, top: 40, bottom: 30 };
+
 /**
- * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/next/MicroBarChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
+ * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';</code>
  */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
   const { loading, dataset, onDataPointClick, style, className, tooltip, slot } = props;
@@ -82,14 +85,14 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
 
   const dimension: DimensionConfig = useMemo(
     () => ({
-      formatter: (d) => d,
+      formatter: defaultFormatter,
       ...props.dimension
     }),
     [props.dimension]
   );
   const measure: MeasureConfig = useMemo(
     () => ({
-      formatter: (d) => d,
+      formatter: defaultFormatter,
       ...props.measure
     }),
     [props.measure]
@@ -107,7 +110,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
             )[0],
             value: e.value.length ? e.value[1] - e.value[0] : e.value,
             payload: e.payload,
-            xIndex: i
+            dataIndex: i
           })
         );
       }
@@ -138,13 +141,9 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={250}
     >
-      <MicroBarChartLib
-        margin={{ left: -30, right: 30, top: 40, bottom: 30 }}
-        layout={'vertical'}
-        data={dataset}
-        label={{ position: 'insideBottomRight', fill: ThemingParameters.sapContent_LabelColor }}
-      >
+      <MicroBarChartLib margin={microBarChartMargin} layout="vertical" data={dataset} label={microBarChartLabel}>
         <XAxis hide type="number" />
         <YAxis
           axisLine={false}
@@ -171,7 +170,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
               />
             ))}
         </Bar>
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
       </MicroBarChartLib>
     </ChartContainer>
   );

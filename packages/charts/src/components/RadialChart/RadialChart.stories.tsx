@@ -1,10 +1,10 @@
 import { action } from '@storybook/addon-actions';
 import { number, text } from '@storybook/addon-knobs';
-import { RadialChart } from '@ui5/webcomponents-react-charts/lib/next/RadialChart';
 import React from 'react';
+import { RadialChart } from '../../lib/RadialChart';
 
 export default {
-  title: 'Charts - Unstable /  RadialChart',
+  title: 'Charts /  RadialChart',
   component: RadialChart
 };
 

@@ -40,7 +40,7 @@ export const FilterDialog = (props) => {
     onGo,
     handleSelectionChange,
     handleDialogSearch,
-    handleDialogCancel,
+    handleDialogCancel
   } = props;
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
@@ -137,12 +137,12 @@ export const FilterDialog = (props) => {
       showRestoreButton,
       handleRestore,
       handleSave,
-      handleCancel,
+      handleCancel
     ]
   );
 
   const renderFooter = useCallback(() => {
-    return <Bar design={BarDesign.Footer} renderContentRight={renderFooterContentRight} />;
+    return <Bar design={BarDesign.Footer} contentRight={renderFooterContentRight()} />;
   }, [renderFooterContentRight]);
 
   const renderHeader = useCallback(
@@ -177,12 +177,12 @@ export const FilterDialog = (props) => {
             ...child.props.children,
             props: {
               ...child.props.children.props,
-              ...filterItemProps,
+              ...filterItemProps
             },
             ref: (node) => {
               dialogRefs.current[child.key] = node;
-            },
-          },
+            }
+          }
         });
       });
 

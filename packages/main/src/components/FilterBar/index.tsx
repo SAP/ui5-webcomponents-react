@@ -2,7 +2,6 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { useDeprecateRenderMethods } from '@ui5/webcomponents-react-base/lib/hooks';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -29,8 +28,6 @@ import { filterValue, renderSearchWithValue } from './utils';
 
 export interface FilterBarPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
-  renderVariants?: () => JSX.Element;
-  renderSearch?: () => ReactElement;
   search?: ReactNode;
   variants?: ReactNode;
   useToolbar?: boolean;
@@ -86,6 +83,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     className,
     tooltip,
     slot,
+    search,
+    variants,
 
     onToggleFilters,
     onFiltersDialogOpen,
@@ -108,9 +107,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [dialogRefs, setDialogRefs] = useState({});
   const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});
-
-  const search = useDeprecateRenderMethods(props, 'renderSearch', 'search');
-  const variants = useDeprecateRenderMethods(props, 'renderVariants', 'variants');
 
   useEffect(() => {
     if (showFilterConfiguration) {

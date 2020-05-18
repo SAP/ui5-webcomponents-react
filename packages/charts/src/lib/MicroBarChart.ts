@@ -1,3 +1,3 @@
-import { MicroBarChart } from '../components/MicroBarChart';
+import { MicroBarChart } from '../components/MicroBarChart/MicroBarChart';
 
 export { MicroBarChart };

@@ -5,14 +5,15 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'prettier'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',
     sourceType: 'module'
   },
-  plugins: ['@typescript-eslint', '@typescript-eslint/tslint', 'prefer-arrow'],
+  plugins: ['@typescript-eslint', '@typescript-eslint/tslint', 'prefer-arrow', 'react-hooks'],
   settings: {
     react: {
       version: 'detect'
@@ -64,33 +65,21 @@ module.exports = {
     '@typescript-eslint/triple-slash-reference': 'error',
     '@typescript-eslint/type-annotation-spacing': 'off',
     '@typescript-eslint/unified-signatures': 'error',
-    'arrow-parens': ['off', 'as-needed'],
+    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
     camelcase: [
       'error',
       {
         allow: ['sap_fiori_3', 'sap_fiori_3_dark', 'sap_belize', 'sap_belize_hcb', 'sap_belize_hcw']
       }
     ],
-    'comma-dangle': 'error',
     complexity: 'off',
     'constructor-super': 'error',
-    curly: ['error', 'multi-line'],
     'dot-notation': 'error',
-    'eol-last': 'off',
     eqeqeq: ['error', 'smart'],
     'guard-for-in': 'error',
     'id-match': 'error',
-    'linebreak-style': 'off',
     'max-classes-per-file': ['error', 1],
-    'max-len': [
-      'warn',
-      {
-        ignorePattern: '^//',
-        code: 120
-      }
-    ],
-    'new-parens': 'off',
-    'newline-per-chained-call': 'off',
     'no-bitwise': 'error',
     'no-caller': 'error',
     'no-cond-assign': 'error',
@@ -98,11 +87,9 @@ module.exports = {
     'no-debugger': 'error',
     'no-empty': 'error',
     'no-eval': 'error',
-    'no-extra-semi': 'off',
     'no-fallthrough': 'off',
     'no-invalid-this': 'off',
     'no-irregular-whitespace': 'off',
-    'no-multiple-empty-lines': 'off',
     'no-new-wrappers': 'error',
     'no-shadow': [
       'error',
@@ -111,7 +98,6 @@ module.exports = {
       }
     ],
     'no-throw-literal': 'error',
-    'no-trailing-spaces': 'off',
     'no-undef-init': 'error',
     'no-underscore-dangle': 'error',
     'no-unsafe-finally': 'error',
@@ -122,14 +108,12 @@ module.exports = {
     'one-var': ['error', 'never'],
     'prefer-arrow/prefer-arrow-functions': 'error',
     'prefer-const': 'error',
-    'quote-props': ['error', 'as-needed'],
     radix: 'off',
     'react/jsx-no-bind': 'error',
     'react/jsx-key': 'error',
     'react/jsx-boolean-value': 'error',
     'react/no-string-refs': 'error',
     'react/self-closing-comp': 'error',
-    'space-before-function-paren': 'off',
     'spaced-comment': 'error',
     'use-isnan': 'error',
     'valid-typeof': 'off',

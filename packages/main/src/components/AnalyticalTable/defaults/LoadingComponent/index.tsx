@@ -10,8 +10,8 @@ const styles: CSSProperties = {
   zIndex: 1
 };
 
-const DefaultLoadingComponent = () => {
-  return <Loader delay={500} style={styles} />;
+const DefaultLoadingComponent = ({ style }) => {
+  return <Loader delay={500} style={{ ...styles, ...style }} />;
 };
 
 DefaultLoadingComponent.displayName = 'DefaultLoadingComponent';

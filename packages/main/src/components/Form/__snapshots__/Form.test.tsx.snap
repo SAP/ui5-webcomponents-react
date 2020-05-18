@@ -1,103 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Create a Form accepts both label and labelText 1`] = `
-<div
-  class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
->
-  <div
-    class="Grid-gridSpan-0 Grid-gridSpan6-0"
-  >
-    <div>
-      <div
-        class="FormGroup-formGroup-0"
-      >
-        <div
-          class="FormItem-formItem-0"
-          style="display: flex;"
-        >
-          <ui5-label
-            class="FormItem-label-0"
-            for=""
-            style="width: 33%; justify-content: flex-end;"
-          >
-            item 1:
-          </ui5-label>
-          <div
-            class="FormItem-content-0"
-            style="width: 66%;"
-          >
-            <ui5-input
-              name=""
-              placeholder=""
-              type="Text"
-              value=""
-              value-state="None"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        class="FormGroup-formGroup-0"
-      >
-        <div
-          class="FormItem-formItem-0"
-          style="display: flex;"
-        >
-          <ui5-label
-            class="FormItem-label-0"
-            for=""
-            style="width: 33%; justify-content: flex-end;"
-          >
-            Label Text:
-          </ui5-label>
-          <div
-            class="FormItem-content-0"
-            style="width: 66%;"
-          >
-            <ui5-input
-              name=""
-              placeholder=""
-              type="Number"
-              value=""
-              value-state="None"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        class="FormGroup-formGroup-0"
-      >
-        <div
-          class="FormItem-formItem-0"
-          style="display: flex;"
-        >
-          <ui5-label
-            class="FormItem-label-0"
-            for=""
-            required="true"
-            style="width: 33%; justify-content: flex-end;"
-          >
-            Label Component:
-          </ui5-label>
-          <div
-            class="FormItem-content-0"
-            style="width: 66%;"
-          >
-            <ui5-input
-              name=""
-              placeholder=""
-              type="Number"
-              value=""
-              value-state="None"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Create a Form should create a FormGroup and put ungrouped FormItems into it 1`] = `
 Array [
   <ui5-title
@@ -107,10 +9,10 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan6-0"
+      class="Grid-gridSpan6-0"
     >
       <div>
         <div
@@ -122,7 +24,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -132,10 +33,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -150,7 +48,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -160,10 +57,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -184,10 +78,10 @@ Array [
     To be Form title
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan6-0"
+      class="Grid-gridSpan6-0"
     >
       <div>
         <div
@@ -199,7 +93,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -209,10 +102,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -227,7 +117,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -237,10 +126,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -261,10 +147,10 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -282,7 +168,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -292,10 +177,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -310,7 +192,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -320,10 +201,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -332,7 +210,7 @@ Array [
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -350,7 +228,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -360,10 +237,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -378,7 +252,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -388,10 +261,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -412,10 +282,10 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -433,7 +303,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 16%; justify-content: flex-end;"
             >
               item 1:
@@ -443,10 +312,7 @@ Array [
               style="width: 83%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -461,7 +327,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 16%; justify-content: flex-end;"
             >
               item 2:
@@ -471,10 +336,7 @@ Array [
               style="width: 83%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -483,7 +345,7 @@ Array [
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -501,7 +363,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 16%; justify-content: flex-end;"
             >
               item 1:
@@ -511,10 +372,7 @@ Array [
               style="width: 83%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -529,7 +387,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 16%; justify-content: flex-end;"
             >
               item 2:
@@ -539,10 +396,7 @@ Array [
               style="width: 83%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -563,10 +417,10 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -584,7 +438,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 100%; justify-content: flex-start;"
             >
               item 1:
@@ -594,10 +447,7 @@ Array [
               style="width: 100%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -612,7 +462,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 100%; justify-content: flex-start;"
             >
               item 2:
@@ -622,10 +471,7 @@ Array [
               style="width: 100%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -634,7 +480,7 @@ Array [
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan12-0"
+      class="Grid-gridSpan12-0"
     >
       <div>
         <ui5-title
@@ -652,7 +498,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 100%; justify-content: flex-start;"
             >
               item 1:
@@ -662,10 +507,7 @@ Array [
               style="width: 100%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -680,7 +522,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 100%; justify-content: flex-start;"
             >
               item 2:
@@ -690,10 +531,7 @@ Array [
               style="width: 100%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -714,10 +552,10 @@ Array [
     Test form
   </ui5-title>,
   <div
-    class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+    class="Grid-grid-0"
   >
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan6-0"
+      class="Grid-gridSpan6-0"
     >
       <div>
         <ui5-title
@@ -735,7 +573,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -745,10 +582,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -763,7 +597,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -773,10 +606,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>
@@ -785,7 +615,7 @@ Array [
       </div>
     </div>
     <div
-      class="Grid-gridSpan-0 Grid-gridSpan6-0"
+      class="Grid-gridSpan6-0"
     >
       <div>
         <ui5-title
@@ -803,7 +633,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 1:
@@ -813,10 +642,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Text"
-                value=""
                 value-state="None"
               />
             </div>
@@ -831,7 +657,6 @@ Array [
           >
             <ui5-label
               class="FormItem-label-0"
-              for=""
               style="width: 33%; justify-content: flex-end;"
             >
               item 2:
@@ -841,10 +666,7 @@ Array [
               style="width: 66%;"
             >
               <ui5-input
-                name=""
-                placeholder=""
                 type="Number"
-                value=""
                 value-state="None"
               />
             </div>

@@ -1,8 +1,8 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-left-arrow';
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { useDeprecateRenderMethods } from '@ui5/webcomponents-react-base/lib/hooks';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -10,16 +10,12 @@ import { PageBackgroundDesign } from '@ui5/webcomponents-react/lib/PageBackgroun
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, ReactElement, ReactNode, Ref, useCallback, useMemo } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { BarPropTypes } from '../Bar';
 import styles from './Page.jss';
 
 export interface PagePropTypes extends CommonProps {
   title?: string;
   backgroundDesign?: PageBackgroundDesign;
-  renderCustomHeader?: () => ReactElement<BarPropTypes>;
-  renderCustomFooter?: () => ReactElement<BarPropTypes>;
   customHeader?: ReactNode;
   customFooter?: ReactNode;
   showBackButton?: boolean;
@@ -48,11 +44,10 @@ const Page: FC<PagePropTypes> = forwardRef((props: PagePropTypes, ref: Ref<HTMLD
     tooltip,
     slot,
     onNavButtonPress,
-    title
+    title,
+    customFooter,
+    customHeader
   } = props;
-
-  const customHeader = useDeprecateRenderMethods(props, 'renderCustomHeader', 'customHeader');
-  const customFooter = useDeprecateRenderMethods(props, 'renderCustomFooter', 'customFooter');
 
   const classes = useStyles();
 
@@ -114,8 +109,6 @@ Page.defaultProps = {
   showHeader: true,
   showFooter: false,
   showBackButton: true,
-  renderCustomHeader: null,
-  renderCustomFooter: null,
   title: '',
   backgroundDesign: PageBackgroundDesign.Standard
 };

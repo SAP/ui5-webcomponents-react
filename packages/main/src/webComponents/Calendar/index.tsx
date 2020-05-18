@@ -46,9 +46,6 @@ const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(
 
 Calendar.displayName = 'Calendar';
 
-Calendar.defaultProps = {
-  maxDate: '',
-  minDate: ''
-};
+Calendar.defaultProps = {};
 
 export { Calendar };

@@ -2,9 +2,12 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingPara
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
+import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
+import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
@@ -17,31 +20,22 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLongestYAxisLabelBar } from '../../hooks/useLongestYAxisLabelBar';
+import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
-import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
-import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
-import { tickLineConfig, tooltipContentStyle } from '../../internal/staticProps';
-
-const formatYAxisTicks = (tick = '') => {
-  const splitTick = tick.split(' ');
-  return splitTick.length > 3
-    ? `${splitTick.slice(0, 3).join(' ')}...`
-    : tick.length > 11
-    ? `${tick.slice(0, 12)}...`
-    : tick;
-};
+import { defaultFormatter } from '../../internal/defaults';
+import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
 const dimensionDefaults = {
-  formatter: formatYAxisTicks
+  formatter: defaultFormatter
 };
 
 const measureDefaults = {
-  formatter: (d) => d,
+  formatter: defaultFormatter,
   opacity: 1
 };
 
@@ -71,7 +65,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-export interface BarChartProps extends RechartBaseProps {
+export interface BarChartProps extends IChartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one bar in the chart.
@@ -96,37 +90,38 @@ export interface BarChartProps extends RechartBaseProps {
 }
 
 /**
- * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
+ * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';</code>
  */
 const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<any>) => {
   const {
     loading,
     dataset,
     noLegend = false,
+    noAnimation = false,
     onDataPointClick,
     onLegendClick,
-    chartConfig = {
+    style,
+    className,
+    tooltip,
+    slot
+  } = props;
+
+  const chartConfig = useMemo(() => {
+    return {
       margin: {},
       yAxisVisible: true,
       xAxisVisible: true,
       gridStroke: ThemingParameters.sapList_BorderColor,
       gridHorizontal: true,
       gridVertical: false,
-      legendPosition: 'top',
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
       barGap: 3,
       zoomingTool: false,
-      referenceLine: {
-        label: undefined,
-        value: undefined,
-        color: undefined
-      }
-    },
-    style,
-    className,
-    tooltip,
-    slot
-  } = props;
+      resizeDebounce: 250,
+      ...props.chartConfig
+    };
+  }, [props.chartConfig]);
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -154,7 +149,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               .find((key) => payload[key] === value),
             value,
             payload: payload.payload,
-            xIndex: i
+            dataIndex: i
           })
         );
       }
@@ -165,14 +160,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const marginChart = useChartMargin(
-    dataset,
-    dimensions,
-    chartConfig.margin,
-    true,
-    dimensions.length > 1,
-    chartConfig.zoomingTool
-  );
+  const [width, legendPosition] = useLongestYAxisLabelBar(dataset, dimensions);
+  const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
+  const [xAxisHeight] = useObserveXAxisHeights(chartRef, 1);
 
   return (
     <ChartContainer
@@ -184,24 +174,32 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={chartConfig.resizeDebounce}
     >
-      <BarChartLib margin={marginChart} layout="vertical" data={dataset} barGap={chartConfig.barGap}>
+      <BarChartLib
+        margin={marginChart}
+        layout="vertical"
+        data={dataset}
+        barGap={chartConfig.barGap}
+        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+      >
         <CartesianGrid
-          vertical={chartConfig.gridVertical ?? false}
+          vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
-          stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
+          stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) && (
+        {chartConfig.xAxisVisible && (
           <XAxis
             interval={0}
             type="number"
-            tick={<XAxisTicks config={primaryMeasure} chartRef={chartRef} />}
-            axisLine={chartConfig.xAxisVisible ?? false}
+            tick={<XAxisTicks config={primaryMeasure} />}
+            axisLine={chartConfig.xAxisVisible}
             tickLine={tickLineConfig}
             tickFormatter={primaryMeasure?.formatter}
+            height={xAxisHeight}
           />
         )}
-        {(chartConfig.yAxisVisible ?? true) &&
+        {chartConfig.yAxisVisible &&
           dimensions.map((dimension, index) => {
             return (
               <YAxis
@@ -210,10 +208,12 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
                 xAxisId={index}
-                tick={<YAxisTicks config={dimension} level={index} />}
+                tick={<YAxisTicks config={dimension} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
                 yAxisId={index}
+                width={width[index]}
+                allowDuplicatedCategory={index === 0}
               />
             );
           })}
@@ -232,10 +232,18 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               barSize={element.width}
               onClick={onDataPointClickInternal}
+              isAnimationActive={noAnimation === false}
             />
           );
         })}
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
+        {!noLegend && (
+          <Legend
+            verticalAlign={chartConfig.legendPosition}
+            align={chartConfig.legendHorizontalAlign}
+            onClick={onItemLegendClick}
+            wrapperStyle={legendPosition}
+          />
+        )}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -243,7 +251,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
             label={chartConfig.referenceLine.label}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
         {chartConfig.zoomingTool && (
           <Brush
             y={10}

@@ -1,10 +1,11 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
+import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Legend,
   PolarAngleAxis,
@@ -16,11 +17,11 @@ import {
 } from 'recharts';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
-import { tooltipContentStyle } from '../../internal/staticProps';
+import { defaultFormatter } from '../../internal/defaults';
+import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -33,7 +34,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-export interface RadarChartProps extends RechartBaseProps {
+export interface RadarChartProps extends IChartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one radar in the chart.
@@ -60,32 +61,37 @@ const dimensionDefaults = {
 };
 
 const measureDefaults = {
-  formatter: (d) => d,
+  formatter: defaultFormatter,
   opacity: 0.5
 };
 
 /**
- * <code>import { RadarChart } from '@ui5/webcomponents-react-charts/lib/next/RadarChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
+ * <code>import { RadarChart } from '@ui5/webcomponents-react-charts/lib/RadarChart';</code>
  */
 const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
   const {
     loading,
     dataset,
     noLegend = false,
+    noAnimation = false,
     onDataPointClick,
     onLegendClick,
-    chartConfig = {
-      margin: {},
-      legendPosition: 'bottom',
-      dataLabel: true,
-      polarGridType: 'circle'
-    },
     style,
     className,
     tooltip,
     slot
   } = props;
+
+  const chartConfig = useMemo(() => {
+    return {
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'center',
+      dataLabel: true,
+      polarGridType: 'circle',
+      resizeDebounce: 250,
+      ...props.chartConfig
+    };
+  }, [props.chartConfig]);
 
   const chartRef = useConsolidatedRef<any>(ref);
 
@@ -114,7 +120,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
               value: eventOrIndex.value,
               dataKey: eventOrIndex.dataKey,
               name: eventOrIndex.payload.label,
-              xIndex: eventOrIndex.index,
+              dataIndex: eventOrIndex.index,
               payload: eventOrIndex.payload
             }
           )
@@ -134,8 +140,13 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={chartConfig.resizeDebounce}
     >
-      <RadarChartLib data={dataset} margin={chartConfig.margin}>
+      <RadarChartLib
+        data={dataset}
+        margin={chartConfig.margin}
+        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+      >
         <PolarGrid gridType={chartConfig.polarGridType} />
         <PolarAngleAxis
           dataKey={primaryDimensionAccessor}
@@ -156,11 +167,18 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fillOpacity={element.opacity}
               label={<ChartDataLabel config={element} chartType="radar" position={'outside'} />}
+              isAnimationActive={noAnimation === false}
             />
           );
         })}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition} onClick={onItemLegendClick} />}
+        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        {!noLegend && (
+          <Legend
+            verticalAlign={chartConfig.legendPosition}
+            align={chartConfig.legendHorizontalAlign}
+            onClick={onItemLegendClick}
+          />
+        )}
       </RadarChartLib>
     </ChartContainer>
   );

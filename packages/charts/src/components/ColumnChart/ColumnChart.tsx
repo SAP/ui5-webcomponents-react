@@ -2,12 +2,12 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingPara
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ColumnChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/ColumnChartPlaceholder';
+import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
-import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/next/ChartContainer';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback } from 'react';
+import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   Bar as Column,
   BarChart as ColumnChartLib,
@@ -20,12 +20,15 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
+import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { RechartBaseProps } from '../../interfaces/RechartBaseProps';
-import { tickLineConfig, tooltipContentStyle } from '../../internal/staticProps';
+import { defaultFormatter } from '../../internal/defaults';
+import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -51,7 +54,7 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-export interface ColumnChartProps extends RechartBaseProps {
+export interface ColumnChartProps extends IChartBaseProps {
   dimensions: DimensionConfig[];
   /**
    * An array of config objects. Each object is defining one column in the chart.
@@ -76,52 +79,46 @@ export interface ColumnChartProps extends RechartBaseProps {
 }
 
 const dimensionDefaults = {
-  formatter: (d) => d
+  formatter: defaultFormatter
 };
 
 const measureDefaults = {
-  formatter: (d) => d,
+  formatter: defaultFormatter,
   opacity: 1
 };
 
 /**
- * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/next/ColumnChart';</code>
- * **This component is under active development. The API is not stable yet and might change without further notice.**
+ * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/ColumnChart';</code>
  */
 const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
   const {
     loading,
     dataset,
     noLegend = false,
+    noAnimation = false,
     onDataPointClick,
     onLegendClick,
-    chartConfig = {
-      margin: {},
-      yAxisVisible: false,
-      xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_BorderColor,
-      gridHorizontal: true,
-      gridVertical: false,
-      yAxisColor: ThemingParameters.sapList_BorderColor,
-      legendPosition: 'top',
-      barGap: 3,
-      zoomingTool: false,
-      secondYAxis: {
-        dataKey: undefined,
-        name: undefined,
-        color: undefined
-      },
-      referenceLine: {
-        label: undefined,
-        value: undefined,
-        color: undefined
-      }
-    },
     style,
     className,
     tooltip,
     slot
   } = props;
+
+  const chartConfig = useMemo(() => {
+    return {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      barGap: 3,
+      zoomingTool: false,
+      resizeDebounce: 250,
+      ...props.chartConfig
+    };
+  }, [props.chartConfig]);
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -132,6 +129,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
 
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
+
   const primaryDimension = dimensions[0];
   const primaryMeasure = measures[0];
 
@@ -139,7 +138,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const dataKeys = measures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
-    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis.dataKey)
+    ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
     : 0;
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
@@ -155,7 +154,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 : payload[key] === payload.value && key !== 'value'
             )[0],
             value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
-            xIndex: eventOrIndex,
+            dataIndex: eventOrIndex,
             payload: payload.payload
           })
         );
@@ -167,14 +166,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const marginChart = useChartMargin(
-    dataset,
-    measures,
-    chartConfig.margin,
-    false,
-    dimensions.length > 1,
-    chartConfig.zoomingTool
-  );
+  const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
+  const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
 
   return (
     <ChartContainer
@@ -186,14 +179,20 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
       className={className}
       tooltip={tooltip}
       slot={slot}
+      resizeDebounce={chartConfig.resizeDebounce}
     >
-      <ColumnChartLib margin={marginChart} data={dataset} barGap={chartConfig.barGap}>
+      <ColumnChartLib
+        margin={marginChart}
+        data={dataset}
+        barGap={chartConfig.barGap}
+        className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+      >
         <CartesianGrid
-          vertical={chartConfig.gridVertical ?? false}
+          vertical={chartConfig.gridVertical}
           horizontal={chartConfig.gridHorizontal}
-          stroke={chartConfig.gridStroke ?? ThemingParameters.sapList_BorderColor}
+          stroke={chartConfig.gridStroke}
         />
-        {(chartConfig.xAxisVisible ?? true) &&
+        {chartConfig.xAxisVisible &&
           dimensions.map((dimension, index) => {
             return (
               <XAxis
@@ -201,20 +200,23 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-                tick={<XAxisTicks config={dimension} chartRef={chartRef} level={index} />}
+                tick={<XAxisTicks config={dimension} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
+                height={xAxisHeights[index]}
+                allowDuplicatedCategory={index === 0}
               />
             );
           })}
         <YAxis
-          axisLine={chartConfig.yAxisVisible ?? false}
+          axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
           yAxisId="left"
           interval={0}
           tick={<YAxisTicks config={primaryMeasure} />}
+          width={yAxisWidth}
         />
-        {chartConfig.secondYAxis && chartConfig.secondYAxis.dataKey && (
+        {chartConfig.secondYAxis?.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
@@ -227,7 +229,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         {measures.map((element, index) => {
           return (
             <Column
-              yAxisId={chartConfig?.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
+              yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
               stackId={element.stackId}
               fillOpacity={element.opacity}
               key={element.accessor}
@@ -240,10 +242,18 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               barSize={element.width}
               onClick={onDataPointClickInternal}
+              isAnimationActive={noAnimation === false}
             />
           );
         })}
-        {!noLegend && <Legend verticalAlign={chartConfig.legendPosition ?? 'top'} onClick={onItemLegendClick} />}
+        {!noLegend && (
+          <Legend
+            verticalAlign={chartConfig.legendPosition}
+            align={chartConfig.legendHorizontalAlign}
+            onClick={onItemLegendClick}
+            wrapperStyle={legendPosition}
+          />
+        )}
         {chartConfig.referenceLine && (
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
@@ -252,7 +262,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             yAxisId={'left'}
           />
         )}
-        <Tooltip cursor={{ fillOpacity: 0.3 }} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
         {chartConfig.zoomingTool && (
           <Brush
             y={10}

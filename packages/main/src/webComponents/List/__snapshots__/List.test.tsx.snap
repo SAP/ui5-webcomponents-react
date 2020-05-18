@@ -2,10 +2,7 @@
 
 exports[`List Basic Test (generated) 1`] = `
 <ui5-list
-  footer-text=""
-  header-text=""
   mode="None"
-  no-data-text=""
   separators="All"
 />
 `;

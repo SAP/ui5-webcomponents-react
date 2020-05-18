@@ -1,4 +1,4 @@
-import { CSSProperties, ComponentType } from 'react';
+import { ComponentType, CSSProperties } from 'react';
 
 export interface IChartMeasure {
   /**

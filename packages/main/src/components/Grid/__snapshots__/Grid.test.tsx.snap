@@ -2,11 +2,11 @@
 
 exports[`Grid Custom Class Names and Styling 1`] = `
 <div
-  class="Grid-grid-0 Grid-gridVSpace1-0 customClassName"
-  style="width: 60%; background-color: purple;"
+  class="Grid-grid-0 customClassName"
+  style="background-color: purple;"
 >
   <div
-    class="Grid-gridSpan-0 Grid-gridSpan3-0"
+    class="Grid-gridSpan3-0"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -26,10 +26,11 @@ exports[`Grid Custom Class Names and Styling 1`] = `
 
 exports[`Grid Grid Position Center 1`] = `
 <div
-  class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0 Grid-gridPositionCenter-0"
+  class="Grid-grid-0 Grid-positionCenter-0"
+  style="width: 60%;"
 >
   <div
-    class="Grid-gridSpan-0 Grid-gridSpan3-0"
+    class="Grid-gridSpan3-0"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -49,10 +50,11 @@ exports[`Grid Grid Position Center 1`] = `
 
 exports[`Grid Grid Position Right 1`] = `
 <div
-  class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0 Grid-gridPositionRight-0"
+  class="Grid-grid-0 Grid-positionRight-0"
+  style="width: 60%;"
 >
   <div
-    class="Grid-gridSpan-0 Grid-gridSpan3-0"
+    class="Grid-gridSpan3-0"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -72,10 +74,10 @@ exports[`Grid Grid Position Right 1`] = `
 
 exports[`Grid Renders Children 1`] = `
 <div
-  class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+  class="Grid-grid-0"
 >
   <div
-    class="Grid-gridSpan-0 Grid-gridSpan3-0"
+    class="Grid-gridSpan3-0"
   >
     <div
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
@@ -95,21 +97,24 @@ exports[`Grid Renders Children 1`] = `
 
 exports[`Grid Renders Children with custom layout data 1`] = `
 <div
-  class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0"
+  class="Grid-grid-0"
 >
   <div
-    class="Grid-gridSpan-0 Grid-gridSpan12-0"
+    class="Grid-gridSpan12-0"
   >
     <div
-      data-layout="[object Object]"
+      data-layout-span="XL12 L12 M12 S12"
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
     />
   </div>
+  <span
+    class="Grid-gridSpan1-0"
+  />
   <div
-    class="Grid-gridSpan-0 Grid-gridSpan3-0 Grid-gridIndent1-0"
+    class="Grid-gridSpan3-0"
   >
     <div
-      data-layout="[object Object]"
+      data-layout-indent="XL1 L1 M1 S1"
       style="height: 6rem; width: 100%; background-color: rgb(169, 234, 255);"
     />
   </div>

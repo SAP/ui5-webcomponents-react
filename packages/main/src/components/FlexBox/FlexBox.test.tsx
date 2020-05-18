@@ -18,7 +18,7 @@ describe('FlexBox', () => {
 
   test('Height and Width', () => {
     const wrapper = mount(
-      <FlexBox height="1337px" width="42px">
+      <FlexBox style={{ height: '1337px', width: '42px' }}>
         <span>Test 1</span>
       </FlexBox>
     );

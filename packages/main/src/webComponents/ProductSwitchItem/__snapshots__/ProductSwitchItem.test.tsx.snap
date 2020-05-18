@@ -2,10 +2,6 @@
 
 exports[`ProductSwitchItem Basic Test (generated) 1`] = `
 <ui5-product-switch-item
-  heading=""
-  icon=""
-  subtitle=""
   target="_self"
-  target-src=""
 />
 `;
