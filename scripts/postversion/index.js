@@ -1,9 +1,9 @@
 const { highlightLog } = require('../utils');
 
-const postversion = async () => {
-  highlightLog('Postversion task');
+// const postversion = async () => {
+//   highlightLog('Postversion task');
+//
+//   await require('./release-storybook');
+// };
 
-  await require('./release-storybook');
-};
-
-postversion();
+// postversion();
