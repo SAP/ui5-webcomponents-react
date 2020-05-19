@@ -3,13 +3,17 @@ import { cloneElement } from 'react';
 export const filterValue = (ref, child) => {
   const tagName = ref.tagName;
   let filterItemProps = {};
-  if (tagName === 'UI5-INPUT' || tagName === 'UI5-DATEPICKER') {
+  if (
+    tagName === 'UI5-INPUT' ||
+    tagName === 'UI5-DATEPICKER' ||
+    tagName === 'UI5-DATETIME-PICKER' ||
+    tagName === 'UI5-DURATION-PICKER'
+  ) {
     filterItemProps = { value: ref.value };
   }
   if (tagName === 'UI5-COMBOBOX') {
     filterItemProps = { value: ref.value, filterValue: ref.filterValue };
   }
-  //todo set
   if (tagName === 'UI5-SELECT' || tagName === 'UI5-MULTI-COMBOBOX') {
     const selectedIndices = Array.from(ref.children)
       .map((item, index) => (item.selected ? index : false))
