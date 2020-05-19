@@ -116,15 +116,15 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
 
   const onDataPointClickInternal = useCallback(
-    (payload, event) => {
-      if (payload && payload?.activePayload && onDataPointClick) {
+    (payload, dataIndex, event) => {
+      if (payload && payload && typeof onDataPointClick === 'function') {
         onDataPointClick(
           enrichEventWithDetails(event, {
-            value: payload.activePayload[0].value,
-            dataKey: payload.activePayload[0].dataKey,
-            name: payload.activePayload[0].payload.name,
-            payload: payload.activePayload[0].payload,
-            dataIndex: payload.activeTooltipIndex
+            value: payload.value,
+            dataKey: payload.tooltipPayload?.[0]?.dataKey,
+            name: payload.name,
+            payload: payload.payload,
+            dataIndex
           })
         );
       }
@@ -145,11 +145,11 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       resizeDebounce={chartConfig.resizeDebounce}
     >
       <PieChartLib
-        onClick={onDataPointClickInternal}
         margin={chartConfig.margin}
         className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
       >
         <Pie
+          onClick={onDataPointClickInternal}
           innerRadius={chartConfig.innerRadius}
           outerRadius={chartConfig.outerRadius}
           paddingAngle={chartConfig.paddingAngle}
