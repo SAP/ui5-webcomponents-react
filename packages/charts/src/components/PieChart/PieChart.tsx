@@ -3,8 +3,8 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils'
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo, isValidElement, cloneElement } from 'react';
+import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip, Text } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
@@ -101,14 +101,22 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     [props.measure]
   );
 
-  const label = useMemo(() => {
-    if (measure.hideDataLabel) return null;
-    return {
-      position: 'outside',
-      content: measure.DataLabel,
-      formatter: measure.formatter
-    };
-  }, [measure]);
+  const dataLabel = useCallback(
+    (props) => {
+      if (measure.hideDataLabel) return null;
+
+      if (isValidElement(measure.DataLabel)) {
+        return cloneElement(measure.DataLabel, { ...props, config: measure });
+      }
+
+      return (
+        <Text {...props} alignmentBaseline="middle" className="recharts-pie-label-text">
+          {measure.formatter(props.value)}
+        </Text>
+      );
+    },
+    [measure]
+  );
 
   const tooltipValueFormatter = useCallback((value) => measure.formatter(value), [measure.formatter]);
   const chartRef = useConsolidatedRef<any>(ref);
@@ -158,7 +166,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
           data={dataset}
           animationBegin={0}
           isAnimationActive={noAnimation === false}
-          label={label}
+          labelLine={measure.hideDataLabel !== true}
+          label={dataLabel}
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&
