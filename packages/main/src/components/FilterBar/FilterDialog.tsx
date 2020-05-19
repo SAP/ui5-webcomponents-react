@@ -172,6 +172,7 @@ export const FilterDialog = (props) => {
         if (filterBarItemRef) {
           filterItemProps = filterValue(filterBarItemRef, child);
         }
+        if (!child.props.children) return child;
         return cloneElement(child as ReactElement<any>, {
           children: {
             ...child.props.children,
@@ -185,7 +186,6 @@ export const FilterDialog = (props) => {
           }
         });
       });
-
   }, [children, searchString, filterBarRefs]);
 
   const handleCheckBoxChange = useCallback(

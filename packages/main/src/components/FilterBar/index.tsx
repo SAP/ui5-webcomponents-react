@@ -211,6 +211,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     return safeChildren()
       .filter((item) => {
         if (item.type.displayName !== 'FilterGroupItem') return true; //needed for deprecated FilterItem or custom elements
+
         return !!item?.props && item?.props.visible && item.props?.visibleInFilterBar;
       })
       .map((child) => {
@@ -229,6 +230,10 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
             filterItemProps = filterValue(dialogItemRef, child);
           }
         }
+        if (!child.props.children)
+          return cloneElement(child as ReactElement<any>, {
+            ...childProps
+          });
         return cloneElement(child as ReactElement<any>, {
           ...childProps,
           children: {
