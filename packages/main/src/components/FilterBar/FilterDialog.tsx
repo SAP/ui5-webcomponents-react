@@ -1,6 +1,16 @@
 import '@ui5/webcomponents-icons/dist/icons/search';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import {
+  BASIC,
+  CANCEL,
+  CLEAR,
+  RESTORE,
+  SAVE,
+  SEARCH_FOR_FILTERS,
+  SHOW_ON_FILTER_BAR
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -48,6 +58,8 @@ export const FilterDialog = (props) => {
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});
   const dialogRef = useRef();
+
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   useEffect(() => {
     if (open) {
@@ -120,11 +132,11 @@ export const FilterDialog = (props) => {
             Go
           </Button>
         )}
-        {showClearButton && <Button onClick={handleClearFilters}>Clear</Button>}
-        {showRestoreButton && <Button onClick={handleRestore}>Restore</Button>}
-        <Button onClick={handleSave}>Save</Button>
+        {showClearButton && <Button onClick={handleClearFilters}>{i18nBundle.getText(CLEAR)}</Button>}
+        {showRestoreButton && <Button onClick={handleRestore}>{i18nBundle.getText(RESTORE)}</Button>}
+        <Button onClick={handleSave}>{i18nBundle.getText(SAVE)}</Button>
         <Button design={ButtonDesign.Transparent} onClick={handleCancel}>
-          Cancel
+          {i18nBundle.getText(CANCEL)}
         </Button>
       </FlexBox>
     ),
@@ -149,7 +161,13 @@ export const FilterDialog = (props) => {
     () => (
       <FlexBox direction={FlexBoxDirection.Column} className={classes.header}>
         <Title level={TitleLevel.H4}>Filters</Title>
-        {showSearch && <Input placeholder="Search for Filters" onInput={handleSearch} icon={<Icon name="search" />} />}
+        {showSearch && (
+          <Input
+            placeholder={i18nBundle.getText(SEARCH_FOR_FILTERS)}
+            onInput={handleSearch}
+            icon={<Icon name="search" />}
+          />
+        )}
       </FlexBox>
     ),
     [classes.header, showSearch, handleSearch]
@@ -226,9 +244,9 @@ export const FilterDialog = (props) => {
           <div className={classes.groupContainer} key={item}>
             <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} alignItems={FlexBoxAlignItems.Center}>
               <Title level={TitleLevel.H5} className={index === 0 ? classes.groupTitle : ''}>
-                {item === 'default' ? 'Basic' : item}
+                {item === 'default' ? i18nBundle.getText(BASIC) : item}
               </Title>
-              {index === 0 && <Text wrapping={false}>Show on Filter Bar</Text>}
+              {index === 0 && <Text wrapping={false}>{i18nBundle.getText(SHOW_ON_FILTER_BAR)}</Text>}
             </FlexBox>
             <div className={classes.filters}>{filters}</div>
           </div>

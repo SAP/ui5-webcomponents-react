@@ -1,7 +1,16 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import {
+  CLEAR,
+  FILTERS,
+  GO,
+  HIDE_FILTER_BAR,
+  RESTORE,
+  SHOW_FILTER_BAR
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -107,6 +116,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [dialogRefs, setDialogRefs] = useState({});
   const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});
+
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   useEffect(() => {
     if (showFilterConfiguration) {
@@ -326,20 +337,20 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                 <div className={classes.headerRowRight}>
                   {showClearOnFB && (
                     <Button onClick={onClear} design={ButtonDesign.Transparent}>
-                      Clear
+                      {i18nBundle.getText(CLEAR)}
                     </Button>
                   )}
                   {showRestoreOnFB && (
                     <Button onClick={handleFBRestore} design={ButtonDesign.Transparent}>
-                      Restore
+                      {i18nBundle.getText(RESTORE)}
                     </Button>
                   )}
                   <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
-                    {showFilters ? 'Hide Filter Bar' : 'Show Filter Bar'}
+                    {showFilters ? i18nBundle.getText(HIDE_FILTER_BAR) : i18nBundle.getText(SHOW_FILTER_BAR)}
                   </Button>
                   {showFilterConfiguration && (
                     <Button onClick={handleDialogOpen}>
-                      {`Filters${
+                      {`${i18nBundle.getText(FILTERS)}${
                         activeFiltersCount && parseInt(activeFiltersCount as string) > 0
                           ? ` (${activeFiltersCount})`
                           : ''
@@ -348,7 +359,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                   )}
                   {showGoOnFB && (
                     <Button onClick={onGo} design={ButtonDesign.Emphasized}>
-                      Go
+                      {i18nBundle.getText(GO)}
                     </Button>
                   )}
                 </div>
