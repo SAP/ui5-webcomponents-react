@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.5...v0.10.0-rc.0) (2020-05-19)
+
+
+### Bug Fixes
+
+* **Charts:** fix onDataPointClick event not firing or firing for wrong segment on Donut/PieChart ([#524](https://github.com/SAP/ui5-webcomponents-react/issues/524)) ([c68b162](https://github.com/SAP/ui5-webcomponents-react/commit/c68b16241f70b2d17ce8a570dec9c1fb9e297528))
+* **Pie/DonutChart:** respect measure formatter and custom data label ([#525](https://github.com/SAP/ui5-webcomponents-react/issues/525)) ([e49eddc](https://github.com/SAP/ui5-webcomponents-react/commit/e49eddc4761661f59e4b7850d36b44dfc104e732))
+
+
+### chore
+
+* **charts:** remove deprecated charts ([#510](https://github.com/SAP/ui5-webcomponents-react/issues/510)) ([0aafca0](https://github.com/SAP/ui5-webcomponents-react/commit/0aafca0b82877e472b89ffe601d17ef71dcd79d9))
+
+
+### BREAKING CHANGES
+
+* **charts:** replace deprecated charts with new implementation. In case your imports contain a `next` path segment, please remove this segment. Example: `import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';` becomes `import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';`. For further details please take a look into our [Migration Guide](https://github.com/SAP/ui5-webcomponents-react/blob/master/docs/MigrationGuide.md#095---charts-migration).
+
+
+
+
+
 ## [0.9.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.4...v0.9.5) (2020-05-13)
 
 

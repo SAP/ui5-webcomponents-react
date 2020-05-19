@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.5...v0.10.0-rc.0) (2020-05-19)
+
+
+### chore
+
+* **base:** remove deprecated components ([#508](https://github.com/SAP/ui5-webcomponents-react/issues/508)) ([781fe4e](https://github.com/SAP/ui5-webcomponents-react/commit/781fe4ebac7e10e431f8cd1925ec48ba941172e8))
+* **main:** remove deprecated render methods ([#511](https://github.com/SAP/ui5-webcomponents-react/issues/511)) ([030473c](https://github.com/SAP/ui5-webcomponents-react/commit/030473c9a38d2bcaa3069925c9efd5ec75d0f909))
+
+
+### BREAKING CHANGES
+
+* **base:** remove deprecated `Event`
+* **base:** remove deprecated `font72` (comes with UI5 Web Components)
+* **base:** remove deprecated `HSLColor`
+* **base:** remove deprecated `Optional` (use JS optional-chaining instead)
+* **base:** remove deprecated `Scroller` library
+* **base:** remove deprecated `sap_fiori_3` theming parameters, use `ThemingParameters` instead
+* **base:** remove polyfill of old event API
+* **main:** **AnalyticalTable**: remove deprecated prop `renderExtension`, please use `extension` instead
+* **main:** **Bar**: remove deprecated prop `renderContentLeft`, `renderContentMiddle`, `renderContentRight`, please use `contentLeft`, `contentMiddle`, `contentRight` instead
+* **main:** **FormItem**: remove deprecated prop `labelText`, please use `label` instead
+* **main:** **FilterBar**: remove deprecated prop `renderSearch`, `renderVariants`, please use `search`, `variants` instead
+* **main:** **ObjectPage**: remove deprecated prop `renderHeaderContent`, `renderBreadcrumbs`, `renderKeyInfos`, please use `headerContent`, `breadcrumbs`, `keyInfos` instead
+* **main:** **Page**: remove deprecated prop `renderCustomHeader`, `renderCustomFooter`, please use `customHeader`, `customFooter` instead
+
+
+
+
+
 ## [0.9.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.3...v0.9.4) (2020-05-08)
 
 
