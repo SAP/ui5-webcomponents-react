@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.7...v0.9.8) (2020-05-19)
+
+
+### Bug Fixes
+
+* **Charts:** fix onDataPointClick event not firing or firing for wrong segment on Donut/PieChart ([#524](https://github.com/SAP/ui5-webcomponents-react/issues/524)) ([e3475e0](https://github.com/SAP/ui5-webcomponents-react/commit/e3475e061263d571e5a865523f0c4a643568892f))
+* **Pie/DonutChart:** respect measure formatter and custom data label ([#525](https://github.com/SAP/ui5-webcomponents-react/issues/525)) ([c23b379](https://github.com/SAP/ui5-webcomponents-react/commit/c23b3791a059b1e7609645b9657a8e51841fa756))
+
+
+
+
+
 ## [0.9.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.4...v0.9.5) (2020-05-13)
 
 
