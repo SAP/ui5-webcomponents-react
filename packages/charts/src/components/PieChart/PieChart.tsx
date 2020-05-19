@@ -129,7 +129,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
         onDataPointClick(
           enrichEventWithDetails(event, {
             value: payload.value,
-            dataKey: payload.tooltipPayload?.[0].dataKey,
+            dataKey: payload.tooltipPayload?.[0]?.dataKey,
             name: payload.name,
             payload: payload.payload,
             dataIndex
