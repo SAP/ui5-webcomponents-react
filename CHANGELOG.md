@@ -33,16 +33,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* **charts:** replace deprecated charts with new implementation. In case your imports contain a `next` path segment, please remove this segment. Example: `import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';` becomes `import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';`. For further details please take a look into our [Migration Guide](https://github.com/SAP/ui5-webcomponents-react/blob/master/docs/MigrationGuide.md#095---charts-migration).
+* **charts:** replace deprecated charts with new implementation. In case your imports contain a `next` path segment, please remove this segment. Example: `import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';` becomes `import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';`. For further details please take a look into our [Migration Guide](https://github.com/SAP/ui5-webcomponents-react/blob/master/docs/MigrationGuide.stories.mdx#charts).
 * **AnalyticalCard**: remove prop `width`, please use `style` or `className` instead
 * **Text**: remove prop `width`, please use `style` or `className` instead
 * **ProgressIndicator**: remove props `width` and `height`, please use `style` or `className` instead
 * **FlexBox**: remove props `width` and `height`, please use `style` or `className` instead
-* **base:** remove deprecated `Event`
-* **base:** remove deprecated `font72` (comes with UI5 Web Components)
-* **base:** remove deprecated `HSLColor`
-* **base:** remove deprecated `Optional` (use JS optional-chaining instead)
-* **base:** remove deprecated `Scroller` library
 * **base:** remove deprecated `sap_fiori_3` theming parameters, use `ThemingParameters` instead
 * **base:** remove polyfill of old event API
 * **main:** **AnalyticalTable**: remove deprecated prop `renderExtension`, please use `extension` instead
@@ -55,6 +50,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **Grid:** prop `vSpacing` accepts now a CSS height instead of a number in `rem`
 * **Grid:** prop `hSpacing` accepts now a CSS width instead of a number in `rem`
 * **Grid:** change prop `data-layout` (object) on child elements to `data-layout-span` and `data-layout-indent`
+
+### BREAKING CHANGES (undocumented classes, internal framework cleanup) 
+* **base:** remove deprecated `Event`
+* **base:** remove deprecated `font72` (comes with UI5 Web Components)
+* **base:** remove deprecated `HSLColor`
+* **base:** remove deprecated `Optional` (use JS optional-chaining instead)
+* **base:** remove deprecated `Scroller` library
 
 
 
