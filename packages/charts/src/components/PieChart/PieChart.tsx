@@ -3,8 +3,8 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils'
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import { PieChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/PieChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip } from 'recharts';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo, isValidElement, cloneElement } from 'react';
+import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Tooltip, Text } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
@@ -101,14 +101,22 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     [props.measure]
   );
 
-  const label = useMemo(() => {
-    if (measure.hideDataLabel) return null;
-    return {
-      position: 'outside',
-      content: measure.DataLabel,
-      formatter: measure.formatter
-    };
-  }, [measure]);
+  const dataLabel = useCallback(
+    (props) => {
+      if (measure.hideDataLabel) return null;
+
+      if (isValidElement(measure.DataLabel)) {
+        return cloneElement(measure.DataLabel, { ...props, config: measure });
+      }
+
+      return (
+        <Text {...props} alignmentBaseline="middle" className="recharts-pie-label-text">
+          {measure.formatter(props.value)}
+        </Text>
+      );
+    },
+    [measure]
+  );
 
   const tooltipValueFormatter = useCallback((value) => measure.formatter(value), [measure.formatter]);
   const chartRef = useConsolidatedRef<any>(ref);
@@ -116,15 +124,15 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
 
   const onDataPointClickInternal = useCallback(
-    (payload, event) => {
-      if (payload && payload?.activePayload && onDataPointClick) {
+    (payload, dataIndex, event) => {
+      if (payload && payload && typeof onDataPointClick === 'function') {
         onDataPointClick(
           enrichEventWithDetails(event, {
-            value: payload.activePayload[0].value,
-            dataKey: payload.activePayload[0].dataKey,
-            name: payload.activePayload[0].payload.name,
-            payload: payload.activePayload[0].payload,
-            dataIndex: payload.activeTooltipIndex
+            value: payload.value,
+            dataKey: payload.tooltipPayload?.[0]?.dataKey,
+            name: payload.name,
+            payload: payload.payload,
+            dataIndex
           })
         );
       }
@@ -145,11 +153,11 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       resizeDebounce={chartConfig.resizeDebounce}
     >
       <PieChartLib
-        onClick={onDataPointClickInternal}
         margin={chartConfig.margin}
         className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
       >
         <Pie
+          onClick={onDataPointClickInternal}
           innerRadius={chartConfig.innerRadius}
           outerRadius={chartConfig.outerRadius}
           paddingAngle={chartConfig.paddingAngle}
@@ -158,7 +166,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
           data={dataset}
           animationBegin={0}
           isAnimationActive={noAnimation === false}
-          label={label}
+          labelLine={measure.hideDataLabel !== true}
+          label={dataLabel}
         >
           {centerLabel && <Label position={'center'}>{centerLabel}</Label>}
           {dataset &&
