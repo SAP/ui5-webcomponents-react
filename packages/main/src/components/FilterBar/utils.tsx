@@ -19,7 +19,7 @@ export const filterValue = (ref, child) => {
       .map((item, index) => (item.selected ? index : false))
       .filter((el) => el !== false);
     const selectedIndicesSet = new Set(selectedIndices);
-    const options = child.props.children.props.children.map((item, index) => {
+    const options = child.props.children.props.children?.map((item, index) => {
       if (selectedIndicesSet.has(index)) {
         return cloneElement(item, { selected: true });
       }
