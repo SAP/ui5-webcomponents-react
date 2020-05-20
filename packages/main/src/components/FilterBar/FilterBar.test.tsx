@@ -121,5 +121,5 @@ describe('FilterBar', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(FilterBar);
+  // createPassThroughPropsTest(FilterBar);
 });
