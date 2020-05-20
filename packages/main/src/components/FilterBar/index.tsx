@@ -121,7 +121,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   useEffect(() => {
     if (showFilterConfiguration) {
-      Children.toArray(children).forEach((item) => {
+      Children.toArray(children).forEach((item: ReactElement<any>) => {
         if (
           prevVisibleInFilterBarProps.current?.[item.key] !== undefined &&
           prevVisibleInFilterBarProps.current?.[item.key] !== item.props.visibleInFilterBar
@@ -205,7 +205,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const safeChildren = useCallback(() => {
     if (showFilterConfiguration && Object.keys(toggledFilters).length > 0) {
-      return Children.toArray(children).map((child) => {
+      return Children.toArray(children).map((child: ReactElement) => {
         if (toggledFilters?.[child.key] !== undefined) {
           return cloneElement(child, {
             visibleInFilterBar: toggledFilters[child.key]
@@ -214,11 +214,11 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         return child;
       });
     }
-    return Children.toArray(children);
+    return Children.toArray(children) as any;
   }, [toggledFilters, children]);
 
   const renderChildren = useCallback(() => {
-    let childProps = { considerGroupName: considerGroupName, inFB: true };
+    let childProps = { considerGroupName: considerGroupName, inFB: true } as any;
     return safeChildren()
       .filter((item) => {
         if (item.type.displayName !== 'FilterGroupItem') return true; //needed for deprecated FilterItem or custom elements

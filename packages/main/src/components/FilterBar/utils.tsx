@@ -15,7 +15,7 @@ export const filterValue = (ref, child) => {
     filterItemProps = { value: ref.value, filterValue: ref.filterValue };
   }
   if (tagName === 'UI5-SELECT' || tagName === 'UI5-MULTI-COMBOBOX') {
-    const selectedIndices = Array.from(ref.children)
+    const selectedIndices = Array.from(ref.children as HTMLCollectionOf<any>)
       .map((item, index) => (item.selected ? index : false))
       .filter((el) => el !== false);
     const selectedIndicesSet = new Set(selectedIndices);
