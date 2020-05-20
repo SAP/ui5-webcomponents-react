@@ -11,7 +11,7 @@ export default {
 export const generatedDefaultStory = () => (
   <DurationPicker
     disabled={boolean('disabled', false)}
-    maxValue={text('maxValue', '00:00:00')}
+    maxValue={text('maxValue', '23:59:59')}
     readonly={boolean('readonly', false)}
     showSeconds={boolean('showSeconds', false)}
     value={text('value', '00:00:00')}

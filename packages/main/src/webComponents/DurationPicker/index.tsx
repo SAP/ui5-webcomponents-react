@@ -53,7 +53,6 @@ DurationPicker.displayName = 'DurationPicker';
 
 DurationPicker.defaultProps = {
   disabled: false,
-  maxValue: '00:00:00',
   readonly: false,
   showSeconds: false,
   value: '00:00:00',
