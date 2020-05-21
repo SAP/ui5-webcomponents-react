@@ -1,4 +1,3 @@
-import { select, withKnobs } from '@storybook/addon-knobs';
 import { makeDecorator } from '@storybook/addons';
 import { addDecorator, addParameters } from '@storybook/react';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
@@ -26,8 +25,6 @@ addParameters({
   }
 });
 
-addDecorator(withKnobs);
-
 const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
   useEffect(() => {
     if (contentDensity === ContentDensity.Compact) {
@@ -38,7 +35,7 @@ const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
   }, [contentDensity]);
 
   useEffect(() => {
-    document.querySelector('html').setAttribute('dir', direction.toLowerCase());
+    document.querySelector('html').setAttribute('dir', direction);
   }, [direction]);
 
   useEffect(() => {
@@ -54,9 +51,9 @@ const withQuery = makeDecorator({
   wrapper: (getStory, context) => {
     return (
       <ThemeContainer
-        theme={select('Theme', Themes, Themes.sap_fiori_3)}
-        contentDensity={select('ContentDensity', ContentDensity, ContentDensity.Cozy)}
-        direction={select('Text Direction', ['LTR', 'RTL'], 'LTR')}
+        theme={context.globalArgs.theme || Themes.sap_fiori_3}
+        contentDensity={context.globalArgs.contentDensity}
+        direction={context.globalArgs.direction}
       >
         {getStory(context)}
       </ThemeContainer>
@@ -65,3 +62,74 @@ const withQuery = makeDecorator({
 });
 
 addDecorator(withQuery);
+
+export const globalArgTypes = {
+  theme: {
+    name: 'Theme',
+    description: 'Fiori Theme',
+    defaultValue: Themes.sap_fiori_3,
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        {
+          value: Themes.sap_fiori_3,
+          title: Themes.sap_fiori_3
+        },
+        {
+          value: Themes.sap_fiori_3_dark,
+          title: Themes.sap_fiori_3_dark
+        },
+        {
+          value: Themes.sap_belize,
+          title: Themes.sap_belize
+        },
+        {
+          value: Themes.sap_belize_hcb,
+          title: Themes.sap_belize_hcb
+        },
+        {
+          value: Themes.sap_belize_hcw,
+          title: Themes.sap_belize_hcw
+        }
+      ]
+    }
+  },
+  contentDensity: {
+    name: 'Content Density',
+    description: 'Content Density',
+    defaultValue: ContentDensity.Cozy,
+    toolbar: {
+      icon: 'component',
+      items: [
+        {
+          value: ContentDensity.Cozy,
+          title: ContentDensity.Cozy
+        },
+        {
+          value: ContentDensity.Compact,
+          title: ContentDensity.Compact
+        }
+      ]
+    }
+  },
+  direction: {
+    name: 'Direction',
+    description: 'Text Direction',
+    defaultValue: 'ltr',
+    toolbar: {
+      icon: 'transfer',
+      items: [
+        {
+          value: 'ltr',
+          title: 'LTR',
+          icon: 'arrowrightalt'
+        },
+        {
+          value: 'rtl',
+          title: 'RTL',
+          icon: 'arrowleftalt'
+        }
+      ]
+    }
+  }
+};
