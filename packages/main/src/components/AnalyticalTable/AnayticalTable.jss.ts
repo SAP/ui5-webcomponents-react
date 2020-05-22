@@ -27,6 +27,7 @@ const styles = {
     borderTop: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    padding: `0 0.5rem`,
     textAlign: 'start',
     boxSizing: 'border-box',
     '&:first-child': {
