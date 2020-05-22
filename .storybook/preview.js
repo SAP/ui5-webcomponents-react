@@ -22,7 +22,9 @@ addParameters({
         : a[1].id.localeCompare(b[1].id, undefined, { numeric: true, caseFirst: 'upper' });
     },
     showRoots: true
-  }
+  },
+  passArgsFirst: true,
+  actions: { argTypesRegex: '^on.*' }
 });
 
 const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
