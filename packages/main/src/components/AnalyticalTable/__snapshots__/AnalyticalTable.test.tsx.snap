@@ -1547,7 +1547,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: auto;"
+          style="cursor: auto; padding: 0px; overflow-y: hidden;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5028,7 +5028,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: auto;"
+          style="cursor: auto; padding: 0px; overflow-y: hidden;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"

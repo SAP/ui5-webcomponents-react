@@ -366,7 +366,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           return (
             // eslint-disable-next-line react/jsx-key
             <header {...headerProps} role="rowgroup">
-              {headerGroup.headers.map((column, index) => (
+              {headerGroup.headers.map((column) => (
                 // eslint-disable-next-line react/jsx-key
                 <ColumnHeader
                   {...column.getHeaderProps()}
