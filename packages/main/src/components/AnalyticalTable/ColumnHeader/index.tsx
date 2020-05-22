@@ -60,7 +60,7 @@ const styles = {
     position: 'relative',
     width: '100%',
     overflowX: 'hidden',
-    padding: `0 0.5rem`,
+    overflowY: 'hidden',
     boxSizing: 'border-box',
     '&[data-h-align="End"]': {
       '& $text': {
@@ -152,10 +152,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     const modifiedStyles: CSSProperties = {
       cursor: hasPopover ? 'pointer' : 'auto'
     };
-    if (column.id === '__ui5wcr__internal_selection_column') {
-      modifiedStyles.padding = 0;
-      modifiedStyles.overflowY = 'hidden';
-    }
     if (dragOver) {
       modifiedStyles.borderLeft = `3px solid ${ThemingParameters.sapSelectedColor}`;
     }
