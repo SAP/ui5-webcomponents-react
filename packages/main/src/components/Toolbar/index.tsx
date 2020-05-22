@@ -19,7 +19,6 @@ export function Toolbar(props) {
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
 
-    // TODO: check if children is a function which needs to be executed first
     return React.Children.toArray(children).map((item, index) => {
       const itemRef: RefObject<HTMLDivElement> = createRef();
 
@@ -68,9 +67,6 @@ export function Toolbar(props) {
         }
       });
 
-      // console.log('availableWidth', availableWidth);
-      // console.log('lastFixedWidth', lastFitWidth);
-      // console.log('lastIndex', lastIndex);
       setBlockerWidth(Math.max(0, availableWidth - lastFitWidth));
       setLastVisibleIndex(lastIndex);
     });

@@ -1,26 +1,24 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
-import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-
-export const styles = ({ contentDensity, parameters }: JSSTheme) => ({
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
+export const styles = {
   outerContainer: {
-    height: contentDensity === ContentDensity.Compact ? '2rem' : '2.75rem',
+    height: CssSizeVariables.sapWcrToolbarHeight,
     position: 'relative',
     overflow: 'hidden',
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    borderBottom: `solid 0.0625rem ${parameters.sapUiGroupTitleBorderColor}`,
-    //todo hover color
-    '&:hover': { background: 'yellow' }
+    borderBottom: `solid 0.0625rem ${ThemingParameters.sapGroup_TitleBorderColor}`
   },
+  //todo do this in index.tsx
   active: {
     '&:active': {
-      background: `${parameters.sapUiActive} !important`
+      background: `${ThemingParameters.sapActiveColor}`
     }
   },
   activeInfo: {
     '&:active': {
-      background: `${parameters.sapUiInfobarActiveBackground} !important`
+      background: `${ThemingParameters.sapInfobar_Active_Background}`
     }
   },
   clear: {
@@ -28,26 +26,26 @@ export const styles = ({ contentDensity, parameters }: JSSTheme) => ({
   },
   info: {
     //todo not active background color: darken(@sapUiBaseColor, 10);
-    background: parameters.sapUiInfobarBackground,
+    background: ThemingParameters.sapInfobar_Background,
     '&:hover': {
-      background: parameters.sapUiInfobarHoverBackground
+      background: ThemingParameters.sapInfobar_Hover_Background
     }
   },
   solid: {
-    background: parameters.sapUiBaseBG,
+    background: ThemingParameters.sapBackgroundColor,
     '&:hover': {
       //todo hover color contrast(@sapUiBaseBG, darken(@sapUiBaseBG, 3), lighten(@sapUiBaseBG, 3));
       background: 'lightblue'
     }
   },
   transparent: {
-    background: parameters.sapUiToolbarBackground,
+    background: ThemingParameters.sapToolbar_Background,
     '&:hover': {
       //todo hover color contrast(@sapUiToolbarBackground, darken(@sapUiToolbarBackground, 3), lighten(@sapUiToolbarBackground, 3));
       background: 'lightgrey'
     },
     '&:active': {
-      background: parameters.sapUiActive
+      background: ThemingParameters.sapActiveColor
     }
   },
   toolbar: {
@@ -73,8 +71,8 @@ export const styles = ({ contentDensity, parameters }: JSSTheme) => ({
   },
   popoverContent: {
     maxWidth: '20rem',
-    padding: contentDensity === ContentDensity.Compact ? '0.1875rem 0.375rem' : '0.25rem 0.5rem',
+    padding: CssSizeVariables.sapWcrToolbarPopoverContentPadding,
     display: 'flex',
     flexDirection: 'column'
   }
-});
+};
