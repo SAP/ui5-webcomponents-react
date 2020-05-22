@@ -64,11 +64,9 @@ export const FilterGroupItem: FC<FilterGroupItemPropTypes> = forwardRef(
           ${label}`}
             </Label>
           </FlexBox>
-          {loading ? (
-            <BusyIndicator className={classes.loadingContainer} active size={BusyIndicatorSize.Small} />
-          ) : (
-            children
-          )}
+          <BusyIndicator className={classes.loadingContainer} active={loading} size={BusyIndicatorSize.Small}>
+            {children}
+          </BusyIndicator />
         </div>
       </div>
     );
