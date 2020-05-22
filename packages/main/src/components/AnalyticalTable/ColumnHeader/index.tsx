@@ -60,7 +60,7 @@ const styles = {
     position: 'relative',
     width: '100%',
     overflowX: 'hidden',
-    padding: `0 0.5rem`,
+    overflowY: 'hidden',
     boxSizing: 'border-box',
     '&[data-h-align="End"]': {
       '& $text': {
