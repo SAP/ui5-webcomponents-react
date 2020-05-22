@@ -1,5 +1,6 @@
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
@@ -42,10 +43,15 @@ export const FilterGroupItem: FC<FilterGroupItemPropTypes> = forwardRef(
       tooltip,
       slot,
       // @ts-ignore
-      inFB,
+      inFB
     } = props;
 
     const passThroughProps = usePassThroughHtmlProps(props);
+
+    const styleClasses = StyleClassHelper.of(inFB ? classes.filterItem : classes.filterItemDialog);
+    if (className) {
+      styleClasses.put(className);
+    }
 
     if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
     return (
@@ -54,7 +60,7 @@ export const FilterGroupItem: FC<FilterGroupItemPropTypes> = forwardRef(
         title={tooltip}
         slot={slot}
         {...passThroughProps}
-        className={`${className} ${inFB ? classes.filterItem : classes.filterItemDialog}`}
+        className={styleClasses.valueOf()}
         style={inFB ? style : emptyObject}
       >
         <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
@@ -64,9 +70,11 @@ export const FilterGroupItem: FC<FilterGroupItemPropTypes> = forwardRef(
           ${label}`}
             </Label>
           </FlexBox>
-          <BusyIndicator className={classes.loadingContainer} active={loading} size={BusyIndicatorSize.Small}>
-            {children}
-          </BusyIndicator />
+          {loading ? (
+            <BusyIndicator className={classes.loadingContainer} active size={BusyIndicatorSize.Small} />
+          ) : (
+            children
+          )}
         </div>
       </div>
     );
@@ -79,5 +87,5 @@ FilterGroupItem.defaultProps = {
   groupName: 'default',
   visible: true,
   visibleInFilterBar: true,
-  required: false,
+  required: false
 };
