@@ -76,7 +76,6 @@ export const FilterGroupItem: FC<FilterGroupItemPropTypes> = forwardRef(
 FilterGroupItem.displayName = 'FilterGroupItem';
 
 FilterGroupItem.defaultProps = {
-  className: '',
   groupName: 'default',
   visible: true,
   visibleInFilterBar: true,
