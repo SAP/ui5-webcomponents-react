@@ -3,7 +3,7 @@ import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import React, { CSSProperties } from 'react';
 
 const tableGroupExpandCollapseIcon = {
-  color: 'var(--sapUiContentIconColor)',
+  color: 'var(--sapContent_IconColor)',
   height: '0.75rem',
   width: '0.75rem',
   padding: '0.625rem',
@@ -19,7 +19,7 @@ export const Grouped = (props) => {
   }
   return (
     <>
-      <span {...row.getExpandedToggleProps({ style })}>
+      <span {...row.getToggleRowExpandedProps({ style })}>
         <Icon
           name={`${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
           style={tableGroupExpandCollapseIcon}

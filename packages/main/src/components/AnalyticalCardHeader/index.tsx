@@ -1,6 +1,8 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { DEVIATION, TARGET } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
@@ -10,9 +12,7 @@ import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
 import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
@@ -26,14 +26,14 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   valueState?: ValueState;
   target?: string;
   deviation?: string;
-  onHeaderPress?: (event: Event) => void;
+  onHeaderPress?: (event: CustomEvent<{}>) => void;
   description?: string;
   counter?: string;
   counterState?: ValueState;
   currency?: string;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, {
+const useStyles = createComponentStyles(styles, {
   name: 'AnalyticalCardHeader'
 });
 
@@ -66,7 +66,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     const onClick = useCallback(
       (e) => {
         if (onHeaderPress) {
-          onHeaderPress(Event.of(null, e));
+          onHeaderPress(enrichEventWithDetails(e));
         }
       },
       [onHeaderPress]
@@ -124,16 +124,18 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
     }
     const shouldRenderContent = [value, unit, deviation, target].some((v) => v !== null);
 
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const passThroughProps = usePassThroughHtmlProps(props, ['onHeaderPress']);
+
+    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
     return (
       <div
         ref={ref}
-        onClick={onClick}
         className={headerClasses.valueOf()}
         title={tooltip}
         style={style}
         {...passThroughProps}
+        onClick={onClick}
       >
         <div className={classes.headerContent}>
           <div className={classes.headerTitles}>
@@ -170,7 +172,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
                     className={classes.targetAndDeviationColumn}
                     wrap={FlexBoxWrap.NoWrap}
                   >
-                    <span>Target</span>
+                    <span>{i18nBundle.getText(TARGET)}</span>
                     <span className={classes.targetAndDeviationValue}>{target}</span>
                   </FlexBox>
                 )}
@@ -180,7 +182,7 @@ export const AnalyticalCardHeader: FC<AnalyticalCardHeaderPropTypes> = forwardRe
                     className={classes.targetAndDeviationColumn}
                     wrap={FlexBoxWrap.NoWrap}
                   >
-                    <span>Deviation</span>
+                    <span>{i18nBundle.getText(DEVIATION)}</span>
                     <span className={classes.targetAndDeviationValue}>{deviation}</span>
                   </FlexBox>
                 )}

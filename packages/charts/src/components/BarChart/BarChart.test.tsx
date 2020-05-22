@@ -1,39 +1,50 @@
-import { mountThemedComponent } from '@shared/tests/utils';
+import { action } from '@storybook/addon-actions';
+import { boolean } from '@storybook/addon-knobs';
+import { mount } from 'enzyme';
 import * as React from 'react';
-import { datasets, labels, singleDataset } from '../../test/resources/ChartProps';
-import { BarChart } from './index';
+import { complexDataSet } from '../../resources/DemoProps';
+import { BarChart } from './BarChart';
 
-describe('BarChart', () => {
+describe('BarRechart', () => {
   test('Renders with data', () => {
-    mountThemedComponent(<BarChart labels={labels} datasets={singleDataset} />);
-  });
-
-  test('custom colors', () => {
-    mountThemedComponent(<BarChart labels={labels} datasets={singleDataset} colors={['#f0ab00']} />);
-  });
-
-  test('valueAxisFormatter', () => {
-    mountThemedComponent(<BarChart labels={labels} datasets={singleDataset} valueAxisFormatter={(d) => `${d}%`} />);
-  });
-
-  test('with Ref', () => {
-    const ref = React.createRef();
-    mountThemedComponent(<BarChart ref={ref} labels={labels} datasets={singleDataset} />);
-    expect(ref.current.hasOwnProperty('chartInstance')).toBe(true);
-  });
-
-  test('stacked', () => {
-    mountThemedComponent(
-      <BarChart
-        labels={labels}
-        datasets={datasets}
-        options={{ scales: { yAxes: [{ stacked: true }], xAxes: [{ stacked: true }] } }}
-      />
-    );
+    expect(
+      mount(
+        <BarChart
+          loading={boolean('loading', false)}
+          onDataPointClick={action('onDataPointClick')}
+          onLegendClick={action('onLegendClick')}
+          dataset={complexDataSet}
+          style={{ height: '60vh' }}
+          dimensions={[
+            {
+              accessor: 'name',
+              interval: 0
+            }
+          ]}
+          measures={[
+            {
+              accessor: 'users',
+              label: 'Users',
+              formatter: (val) => val.toLocaleString()
+            },
+            {
+              accessor: 'sessions',
+              label: 'Active Sessions',
+              formatter: (val) => `${val} sessions`,
+              hideDataLabel: true
+            },
+            {
+              accessor: 'volume',
+              label: 'Vol.'
+            }
+          ]}
+        />
+      ).render()
+    ).toMatchSnapshot();
   });
 
   test('loading placeholder', () => {
-    const wrapper = mountThemedComponent(<BarChart labels={labels} datasets={[]} loading />);
+    const wrapper = mount(<BarChart style={{ width: '30%' }} dimensions={[]} measures={[]} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

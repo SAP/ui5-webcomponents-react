@@ -2,53 +2,50 @@
 
 exports[`SideNavigation Collapsed 1`] = `
 <div
-  class="SideNavigation--sideNavigation- SideNavigation--collapsed-"
+  class="SideNavigation-sideNavigation-0 SideNavigation-collapsed-0"
 >
   <ui5-list
-    footer-text=""
-    header-text=""
     mode="None"
-    no-data-text=""
     separators="All"
   >
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="home"
       id="home"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="home"
       />
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="calendar"
       id="calendar"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="calendar"
       />
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="customers"
       id="customers"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="employee"
       />
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="true"
       data-id="sales"
       id="sales"
@@ -57,23 +54,23 @@ exports[`SideNavigation Collapsed 1`] = `
     >
       <span>
         <ui5-icon
-          class="SideNavigationListItem--icon-"
+          class="SideNavigationListItem-icon-0"
           name="lead"
         />
         <div
-          class="SideNavigationListItem--condensedExpandTriangle-"
+          class="SideNavigationListItem-condensedExpandTriangle-0"
         />
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="delivieries"
       id="delivieries"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="add-product"
       />
     </ui5-li-custom>
@@ -82,36 +79,33 @@ exports[`SideNavigation Collapsed 1`] = `
     style="flex-grow: 1;"
   />
   <span
-    class="SideNavigation--footerItemsSeparator-"
+    class="SideNavigation-footerItemsSeparator-0"
   />
   <ui5-list
-    footer-text=""
-    header-text=""
     mode="None"
-    no-data-text=""
     separators="All"
   >
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="1"
       id="1"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="compare"
       />
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="2"
       id="2"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="chain-link"
       />
     </ui5-li-custom>
@@ -121,53 +115,50 @@ exports[`SideNavigation Collapsed 1`] = `
 
 exports[`SideNavigation Condensed 1`] = `
 <div
-  class="SideNavigation--sideNavigation- SideNavigation--condensed-"
+  class="SideNavigation-sideNavigation-0 SideNavigation-condensed-0"
 >
   <ui5-list
-    footer-text=""
-    header-text=""
     mode="None"
-    no-data-text=""
     separators="All"
   >
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="home"
       id="home"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="home"
       />
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="calendar"
       id="calendar"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="calendar"
       />
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="customers"
       id="customers"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="employee"
       />
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="true"
       data-id="sales"
       id="sales"
@@ -176,23 +167,23 @@ exports[`SideNavigation Condensed 1`] = `
     >
       <span>
         <ui5-icon
-          class="SideNavigationListItem--icon-"
+          class="SideNavigationListItem-icon-0"
           name="lead"
         />
         <div
-          class="SideNavigationListItem--condensedExpandTriangle-"
+          class="SideNavigationListItem-condensedExpandTriangle-0"
         />
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="delivieries"
       id="delivieries"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="add-product"
       />
     </ui5-li-custom>
@@ -201,36 +192,33 @@ exports[`SideNavigation Condensed 1`] = `
     style="flex-grow: 1;"
   />
   <span
-    class="SideNavigation--footerItemsSeparator-"
+    class="SideNavigation-footerItemsSeparator-0"
   />
   <ui5-list
-    footer-text=""
-    header-text=""
     mode="None"
-    no-data-text=""
     separators="All"
   >
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="1"
       id="1"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="compare"
       />
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="2"
       id="2"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="chain-link"
       />
     </ui5-li-custom>
@@ -240,17 +228,14 @@ exports[`SideNavigation Condensed 1`] = `
 
 exports[`SideNavigation Expanded 1`] = `
 <div
-  class="SideNavigation--sideNavigation- SideNavigation--expanded-"
+  class="SideNavigation-sideNavigation-0 SideNavigation-expanded-0"
 >
   <ui5-list
-    footer-text=""
-    header-text=""
     mode="None"
-    no-data-text=""
     separators="All"
   >
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="home"
       id="home"
@@ -258,67 +243,67 @@ exports[`SideNavigation Expanded 1`] = `
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="home"
       />
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Overview
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="calendar"
       id="calendar"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="calendar"
       />
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Calendar
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="customers"
       id="customers"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="employee"
       />
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Customers
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem- SideNavigationListItem--expanded-"
+      class="SideNavigationListItem-listItem-0 SideNavigationListItem-expanded-0"
       data-has-children="true"
       data-id="sales"
       id="sales"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="lead"
       />
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Sales
       </span>
       <span
-        class="SideNavigationListItem--expandArrow-"
+        class="SideNavigationListItem-expandArrow-0"
       >
         <ui5-icon
           name="navigation-down-arrow"
@@ -326,7 +311,7 @@ exports[`SideNavigation Expanded 1`] = `
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="sales-opportunities"
       data-is-child="true"
@@ -335,16 +320,16 @@ exports[`SideNavigation Expanded 1`] = `
       type="Active"
     >
       <span
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
       />
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         My Opportunities
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="sales-leads"
       data-is-child="true"
@@ -354,16 +339,16 @@ exports[`SideNavigation Expanded 1`] = `
       type="Active"
     >
       <span
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
       />
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         My Leads
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="sales-cpqs"
       data-is-child="true"
@@ -371,27 +356,27 @@ exports[`SideNavigation Expanded 1`] = `
       type="Active"
     >
       <span
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
       />
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         My CPQS
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="delivieries"
       id="delivieries"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="add-product"
       />
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Deliveries
       </span>
@@ -401,45 +386,42 @@ exports[`SideNavigation Expanded 1`] = `
     style="flex-grow: 1;"
   />
   <span
-    class="SideNavigation--footerItemsSeparator-"
+    class="SideNavigation-footerItemsSeparator-0"
   />
   <ui5-list
-    footer-text=""
-    header-text=""
     mode="None"
-    no-data-text=""
     separators="All"
   >
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="1"
       id="1"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="compare"
       />
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Legal Information
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem-"
+      class="SideNavigationListItem-listItem-0"
       data-has-children="false"
       data-id="2"
       id="2"
       type="Active"
     >
       <ui5-icon
-        class="SideNavigationListItem--icon-"
+        class="SideNavigationListItem-icon-0"
         name="chain-link"
       />
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Useful Links
       </span>
@@ -450,68 +432,65 @@ exports[`SideNavigation Expanded 1`] = `
 
 exports[`SideNavigation Expanded without Icons 1`] = `
 <div
-  class="SideNavigation--sideNavigation- SideNavigation--expanded-"
+  class="SideNavigation-sideNavigation-0 SideNavigation-expanded-0"
 >
   <ui5-list
-    footer-text=""
-    header-text=""
     mode="None"
-    no-data-text=""
     separators="All"
   >
     <ui5-li-custom
-      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      class="SideNavigationListItem-listItem-0 SideNavigationListItem-noIcons-0"
       data-has-children="false"
       data-id="home"
       id="home"
       type="Active"
     >
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Overview
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      class="SideNavigationListItem-listItem-0 SideNavigationListItem-noIcons-0"
       data-has-children="false"
       data-id="calendar"
       id="calendar"
       type="Active"
     >
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Calendar
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      class="SideNavigationListItem-listItem-0 SideNavigationListItem-noIcons-0"
       data-has-children="false"
       data-id="customers"
       id="customers"
       type="Active"
     >
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Customers
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem- SideNavigationListItem--expanded- SideNavigationListItem--noIcons-"
+      class="SideNavigationListItem-listItem-0 SideNavigationListItem-expanded-0 SideNavigationListItem-noIcons-0"
       data-has-children="true"
       data-id="sales"
       id="sales"
       type="Active"
     >
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Sales
       </span>
       <span
-        class="SideNavigationListItem--expandArrow-"
+        class="SideNavigationListItem-expandArrow-0"
       >
         <ui5-icon
           name="navigation-down-arrow"
@@ -519,7 +498,7 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      class="SideNavigationListItem-listItem-0 SideNavigationListItem-noIcons-0"
       data-has-children="false"
       data-id="sales-opportunities"
       data-is-child="true"
@@ -528,13 +507,13 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       type="Active"
     >
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         My Opportunities
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      class="SideNavigationListItem-listItem-0 SideNavigationListItem-noIcons-0"
       data-has-children="false"
       data-id="sales-leads"
       data-is-child="true"
@@ -544,13 +523,13 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       type="Active"
     >
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         My Leads
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      class="SideNavigationListItem-listItem-0 SideNavigationListItem-noIcons-0"
       data-has-children="false"
       data-id="sales-cpqs"
       data-is-child="true"
@@ -558,20 +537,20 @@ exports[`SideNavigation Expanded without Icons 1`] = `
       type="Active"
     >
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         My CPQS
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      class="SideNavigationListItem-listItem-0 SideNavigationListItem-noIcons-0"
       data-has-children="false"
       data-id="delivieries"
       id="delivieries"
       type="Active"
     >
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Deliveries
       </span>
@@ -581,37 +560,34 @@ exports[`SideNavigation Expanded without Icons 1`] = `
     style="flex-grow: 1;"
   />
   <span
-    class="SideNavigation--footerItemsSeparator-"
+    class="SideNavigation-footerItemsSeparator-0"
   />
   <ui5-list
-    footer-text=""
-    header-text=""
     mode="None"
-    no-data-text=""
     separators="All"
   >
     <ui5-li-custom
-      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      class="SideNavigationListItem-listItem-0 SideNavigationListItem-noIcons-0"
       data-has-children="false"
       data-id="1"
       id="1"
       type="Active"
     >
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Legal Information
       </span>
     </ui5-li-custom>
     <ui5-li-custom
-      class="SideNavigationListItem--listItem- SideNavigationListItem--noIcons-"
+      class="SideNavigationListItem-listItem-0 SideNavigationListItem-noIcons-0"
       data-has-children="false"
       data-id="2"
       id="2"
       type="Active"
     >
       <span
-        class="Text--text- SideNavigationListItem--text-"
+        class="Text-text-0 SideNavigationListItem-text-0"
       >
         Useful Links
       </span>

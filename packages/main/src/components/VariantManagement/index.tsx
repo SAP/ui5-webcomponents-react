@@ -1,20 +1,24 @@
 import '@ui5/webcomponents-icons/dist/icons/navigation-down-arrow';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { CANCEL } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
-import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { ResponsivePopover } from '@ui5/webcomponents-react/lib/ResponsivePopover';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useState } from 'react';
-import { createUseStyles } from 'react-jss';
+import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';
 
 export interface VariantItem {
   key: string;
@@ -24,53 +28,49 @@ export interface VariantItem {
 export interface VariantManagementPropTypes extends CommonProps {
   placement?: PlacementType;
   popupTitle?: string;
-  initialSelectedKey?: string;
+  selectedKey?: string;
   closeOnItemSelect?: boolean;
   variantItems: VariantItem[];
-  onSelect?: (event: Event) => void;
+  onSelect?: (event: CustomEvent<{ item: HTMLElement; selectedItem: VariantItem }>) => void;
   level?: TitleLevel;
   disabled?: boolean;
 }
 
-const styles = ({ parameters }: JSSTheme) => ({
-  VariantManagement: {
+const styles = {
+  container: {
     display: 'flex',
     alignItems: 'center',
     textAlign: 'center',
     cursor: 'pointer'
   },
-  VariantManagementText: {
+  title: {
     cursor: 'pointer',
-    color: parameters.sapUiButtonTextColor,
+    color: ThemingParameters.sapButton_TextColor,
     '&:hover': {
-      color: parameters.sapUiHighlight
-    },
-    '&:active': {
-      color: parameters.sapUiHighlight
+      color: ThemingParameters.sapButton_Hover_TextColor
     }
   },
   disabled: {
-    color: parameters.sapUiGroupTitleTextColor,
-    cursor: 'default',
-    '&:hover': {
-      color: parameters.sapUiGroupTitleTextColor
-    },
-    '&:active': {
-      color: parameters.sapUiGroupTitleTextColor
+    '& $title': {
+      color: ThemingParameters.sapGroup_TitleTextColor,
+      cursor: 'default',
+      '&:hover': {
+        color: 'ThemingParameters.sapGroup_TitleTextColor'
+      }
     }
   },
   footer: {
     margin: '0.4375rem 1rem 0.4325rem auto'
   }
-});
+};
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'VariantManagement' });
+const useStyles = createComponentStyles(styles, { name: 'VariantManagement' });
 
 /**
  * <code>import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';</code>
  */
 const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
-  (props: VariantManagementPropTypes, ref: Ref<any>) => {
+  (props: VariantManagementPropTypes, ref: Ref<HTMLDivElement>) => {
     const {
       variantItems,
       popupTitle,
@@ -79,120 +79,121 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
       tooltip,
       placement,
       level,
-      initialSelectedKey,
       onSelect,
       closeOnItemSelect,
       disabled
     } = props;
-    const classes = useStyles();
-    const [open, setOpen] = useState(false);
-    const [selectedKey, setSelectedKey] = useState(
-      initialSelectedKey ? initialSelectedKey : variantItems?.[0]?.key ?? null
-    );
 
-    if (!variantItems || variantItems.length < 1) {
-      return null;
-    }
+    const classes = useStyles();
+    const popoverRef = useRef<Ui5ResponsivePopoverDomRef>(null);
+
+    const [selectedKey, setSelectedKey] = useState(props.selectedKey ?? variantItems?.[0]?.key ?? null);
 
     useEffect(() => {
-      if (initialSelectedKey) {
-        setSelectedKey(initialSelectedKey);
+      if (props.selectedKey) {
+        setSelectedKey(props.selectedKey);
       }
-    }, [initialSelectedKey, setSelectedKey]);
+    }, [props.selectedKey, setSelectedKey]);
 
     const handleCancelButtonClick = useCallback(() => {
-      setOpen(false);
-    }, [setOpen]);
+      popoverRef.current.close();
+    }, [popoverRef]);
 
-    const handleAfterOpen = useCallback(() => {
-      setOpen(true);
-    }, [setOpen]);
+    const handleOpenVariantManagement = useCallback(
+      (e) => {
+        popoverRef.current.open(e.target);
+      },
+      [popoverRef]
+    );
 
+    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const footerButtons = useMemo(() => {
       return (
         <Button className={classes.footer} onClick={handleCancelButtonClick} design={ButtonDesign.Emphasized}>
-          Cancel
+          {i18nBundle.getText(CANCEL)}
         </Button>
       );
-    }, [classes.footer]);
+    }, [classes.footer, handleCancelButtonClick, i18nBundle]);
 
     const getItemByKey = (key) => {
-      return variantItems.find((item) => item.key === key);
+      return variantItems?.find((item) => item.key === key);
     };
 
-    const variantManagementButton = useMemo(() => {
-      const selectedItem = getItemByKey(selectedKey) || variantItems[0];
+    const selectedItem = getItemByKey(selectedKey) || variantItems[0];
 
-      let textClasses = classes.VariantManagementText;
-      if (disabled) {
-        textClasses += ` ${classes.disabled}`;
-      }
+    const variantManagementClasses = StyleClassHelper.of(classes.container);
 
-      return (
-        <div className={classes.VariantManagement}>
-          <Title level={level} className={textClasses}>
-            {selectedItem.label}
-          </Title>
-          <Button design={ButtonDesign.Transparent} icon="navigation-down-arrow" disabled={disabled} />
-        </div>
-      );
-    }, [classes, variantItems, level, selectedKey, disabled]);
+    if (disabled) {
+      variantManagementClasses.put(classes.disabled);
+    }
+
+    if (className) {
+      variantManagementClasses.put(className);
+    }
 
     const handleVariantItemSelect = useCallback(
       (event) => {
-        const newSelectedKey = event.getParameter('item').dataset.key;
-        const selectedItem = getItemByKey(newSelectedKey) || variantItems[0];
+        const newSelectedKey = event.detail.item.dataset.key;
         setSelectedKey(newSelectedKey);
-        onSelect(Event.of(null, event.getOriginalEvent(), { selectedItem }));
+        onSelect(
+          enrichEventWithDetails(event, {
+            ...event.details,
+            selectedItem: getItemByKey(newSelectedKey) || variantItems[0]
+          })
+        );
         if (closeOnItemSelect) {
           handleCancelButtonClick();
         }
       },
       [handleCancelButtonClick, closeOnItemSelect, selectedKey, variantItems, setSelectedKey]
     );
-    const passThroughProps = usePassThroughHtmlProps(props);
+
+    const passThroughProps = usePassThroughHtmlProps(props, ['onSelect']);
+
+    if (!variantItems || variantItems.length < 1) {
+      return null;
+    }
 
     return (
-      <Popover
-        ref={ref}
-        open={open}
-        onAfterOpen={handleAfterOpen}
-        headerText={popupTitle}
-        placementType={placement}
-        openBy={variantManagementButton}
-        openByStyle={{ pointerEvents: disabled ? 'none' : 'auto' }}
-        footer={footerButtons}
-        className={className}
-        style={style}
-        tooltip={tooltip}
-        {...passThroughProps}
-      >
-        <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
-          {variantItems.map((item) => (
-            <StandardListItem
-              style={{ width: '300px' }}
-              data-key={item.key}
-              type={ListItemTypes.Active}
-              key={item.key}
-              selected={selectedKey === item.key}
-            >
-              {item.label}
-            </StandardListItem>
-          ))}
-        </List>
-      </Popover>
+      <div className={variantManagementClasses.valueOf()} style={style} title={tooltip} {...passThroughProps} ref={ref}>
+        <Title level={level} className={classes.title}>
+          {selectedItem.label}
+        </Title>
+        <Button
+          onClick={handleOpenVariantManagement}
+          design={ButtonDesign.Transparent}
+          icon="navigation-down-arrow"
+          disabled={disabled}
+        />
+        <ResponsivePopover ref={popoverRef} headerText={popupTitle} placementType={placement} footer={footerButtons}>
+          <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
+            {variantItems.map((item) => (
+              <StandardListItem
+                style={{ width: '300px' }}
+                data-key={item.key}
+                type={ListItemTypes.Active}
+                key={item.key}
+                selected={selectedKey === item.key}
+              >
+                {item.label}
+              </StandardListItem>
+            ))}
+          </List>
+        </ResponsivePopover>
+      </div>
     );
   }
 );
 
 VariantManagement.defaultProps = {
   popupTitle: 'Variants',
-  initialSelectedKey: null,
+  selectedKey: null,
   onSelect: () => {},
   closeOnItemSelect: true,
   placement: PlacementType.Bottom,
   level: TitleLevel.H4,
-  disabled: false
+  disabled: false,
+  variantItems: []
 };
 VariantManagement.displayName = 'Variant Management';
 

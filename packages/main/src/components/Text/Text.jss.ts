@@ -1,12 +1,12 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
-export const TextStyles = ({ parameters }: JSSTheme) => ({
+export const TextStyles = {
   // Text Style
   text: {
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
-    color: parameters.sapUiBaseText,
+    color: ThemingParameters.sapTextColor,
     display: 'inline-block',
     boxSizing: 'border-box',
     whiteSpace: 'pre-line',
@@ -25,4 +25,4 @@ export const TextStyles = ({ parameters }: JSSTheme) => ({
       whiteSpace: 'pre'
     }
   }
-});
+};

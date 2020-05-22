@@ -3,27 +3,25 @@ import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePa
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import React, { FC, forwardRef, ReactNode, ReactNodeArray, RefObject, useCallback, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { ClassProps } from '../../interfaces/ClassProps';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './FilterBar.jss';
 
 export interface FilterBarPropTypes extends CommonProps {
-  renderVariants?: () => JSX.Element;
-  renderSearch?: () => JSX.Element;
+  variants?: ReactNode;
+  search?: ReactNode;
   children: ReactNode | ReactNodeArray;
 }
 
-interface FilterBarInternalProps extends FilterBarPropTypes, ClassProps {}
+interface FilterBarInternalProps extends FilterBarPropTypes {}
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'FilterBar' });
+const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
 
 /**
  * <code>import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';</code>
  */
 const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { children, renderVariants, renderSearch } = props as FilterBarInternalProps;
+  const { children, search, variants, className, style, tooltip, slot } = props as FilterBarInternalProps;
   const [showFilters, setShowFilters] = useState(true);
 
   const classes = useStyles();
@@ -41,11 +39,23 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
+  const filterBarClasses = StyleClassHelper.of(classes.outerContainer);
+  if (className) {
+    filterBarClasses.put(className);
+  }
+
   return (
-    <div ref={ref} className={classes.outerContainer} {...passThroughProps}>
+    <div
+      ref={ref}
+      className={filterBarClasses.valueOf()}
+      style={style}
+      title={tooltip}
+      slot={slot}
+      {...passThroughProps}
+    >
       <div className={classes.filterBarHeader}>
-        {renderVariants && renderVariants()}
-        {renderSearch && <div className={classes.vLine}> {renderSearch()} </div>}
+        {variants}
+        {search && <div className={classes.vLine}> {search} </div>}
         <div className={classes.headerRowRight}>
           <Button onClick={handleHideFilterBar} design={ButtonDesign.Transparent}>
             {showFilters ? 'Hide Filter Bar' : 'Show Filter Bar'}
@@ -56,10 +66,6 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     </div>
   );
 });
-
-FilterBar.defaultProps = {
-  children: ''
-};
 
 FilterBar.displayName = 'FilterBar';
 export { FilterBar };

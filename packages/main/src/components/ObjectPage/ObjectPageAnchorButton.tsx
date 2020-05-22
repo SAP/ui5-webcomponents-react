@@ -1,71 +1,17 @@
 import '@ui5/webcomponents-icons/dist/icons/slim-arrow-down';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import { ScrollLink } from '@ui5/webcomponents-react-base/lib/ScrollLink';
-import { Icon } from '@ui5/webcomponents-react/lib/Icon';
-import { List } from '@ui5/webcomponents-react/lib/List';
-import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
-import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
-import { Popover } from '@ui5/webcomponents-react/lib/Popover';
-import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import React, { FC, useCallback, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { Tab } from '@ui5/webcomponents-react/lib/Tab';
+import React, { FC, useEffect, useRef } from 'react';
 
 interface ObjectPageAnchorPropTypes {
   section: any;
-  onSectionSelected: (event: Event) => void;
-  onSubSectionSelected?: (event: Event) => void;
+  onShowSubSectionPopover: (event: any, section: any) => void;
   index: number;
   selected: boolean;
-  collapsedHeader: boolean;
-  mode: ObjectPageMode;
 }
 
-const anchorButtonStyles = ({ parameters }: JSSTheme) => ({
-  anchorButtonContainer: {
-    position: 'relative',
-    display: 'inline-flex',
-    alignItems: 'center',
-    cursor: 'pointer',
-    '&:not(:first-child)': {
-      marginLeft: '2rem'
-    }
-  },
-  button: {
-    color: parameters.sapUiContentLabelColor,
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
-    cursor: 'pointer'
-  },
-  selected: {
-    color: parameters.sapUiSelected,
-    minWidth: '2rem',
-    textAlign: 'center',
-    '&:after': {
-      content: '""',
-      borderBottom: `0.188rem solid ${parameters.sapUiSelected}`,
-      width: '100%',
-      position: 'absolute',
-      bottom: 0,
-      left: 0
-    }
-  }
-});
-const useStyles = createUseStyles(anchorButtonStyles, {
-  name: 'ObjectPageAnchorButton'
-});
-
-export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => {
-  const classes = useStyles();
-  const [open, setOpen] = useState();
-  const { section, collapsedHeader, index, onSubSectionSelected, onSectionSelected, selected, mode } = props;
-
-  const openModal = useCallback(() => {
-    setOpen(true);
-  }, []);
-  const closeModal = useCallback(() => {
-    setOpen(false);
-  }, []);
+export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props: ObjectPageAnchorPropTypes) => {
+  const ref = useRef<HTMLElement>();
+  const { section, index, selected, onShowSubSectionPopover } = props;
 
   let subSectionsAvailable = false;
   if (section.props.children && section.props.children.filter) {
@@ -73,102 +19,39 @@ export const ObjectPageAnchorButton: FC<ObjectPageAnchorPropTypes> = (props) => 
     subSectionsAvailable = subSections.length > 0;
   }
 
-  const onSubSectionClick = useCallback(
-    (e) => {
-      const selectedId = e.getParameter('item').dataset.key;
-      const subSection = section.props.children
-        .filter((item) => item.props && item.props.isSubSection)
-        .find((item) => item.props.id === selectedId);
-      if (subSection) {
-        onSubSectionSelected(Event.of(null, e.getOriginalEvent(), { section, subSection, sectionIndex: index }));
+  useEffect(() => {
+    if (subSectionsAvailable) {
+      try {
+        const element = ref.current?.parentElement?.shadowRoot?.querySelector(
+          `.ui5-tc__headerList li[aria-posinset="${index + 1}"] .ui5-tc__headerItemContent`
+        );
+
+        if (element && !element.querySelector('ui5-icon')) {
+          const icon = document.createElement('ui5-icon');
+          (icon as any).name = 'slim-arrow-down';
+          icon.style.verticalAlign = 'text-bottom';
+          icon.style.pointerEvents = 'all';
+          icon.addEventListener('click', (e) => {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+            e.stopPropagation();
+            onShowSubSectionPopover(e, section);
+          });
+          element.appendChild(icon);
+        }
+      } catch (e) {
+        // empty catch block, mainly required for tests
       }
-      closeModal();
-    },
-    [onSubSectionSelected, open]
-  );
-
-  const navigationIcon = (
-    <Icon
-      name="slim-arrow-down"
-      style={{
-        height: '1rem',
-        width: '1rem',
-        cursor: 'pointer',
-        margin: '0 0.25rem 0 0.375rem',
-        fontSize: '0.875rem'
-      }}
-    />
-  );
-
-  const onScrollActive = useCallback(() => {
-    onSectionSelected(
-      Event.of(null, {} as any, {
-        ...section,
-        index
-      })
-    );
-  }, [onSectionSelected]);
-
-  const renderSubSectionListItem = (item) => {
-    if (mode === ObjectPageMode.IconTabBar) {
-      return (
-        <StandardListItem key={item.props.id} data-key={item.props.id}>
-          {item.props.title}
-        </StandardListItem>
-      );
     }
-
-    return (
-      <ScrollLink
-        key={item.props.id}
-        id={`ObjectPageSubSection-${item.props.id}`}
-        scrollOffset={collapsedHeader ? 45 : 0}
-      >
-        <StandardListItem data-key={item.props.id}>{item.props.title}</StandardListItem>
-      </ScrollLink>
-    );
-  };
-
-  let sectionSelector = null;
-  if (mode === ObjectPageMode.Default) {
-    sectionSelector = (
-      <ScrollLink
-        id={`ObjectPageSection-${section.props.id}`}
-        onSetActive={onScrollActive}
-        activeClass={classes.selected}
-        alwaysToTop={index === 0}
-        scrollOffset={collapsedHeader ? 45 : -45}
-      >
-        <span className={classes.button}>{section.props.title}</span>
-      </ScrollLink>
-    );
-  } else {
-    sectionSelector = (
-      <span onClick={onScrollActive} className={`${classes.button}${selected ? ` ${classes.selected}` : ''}`}>
-        {section.props.title}
-      </span>
-    );
-  }
+  }, [subSectionsAvailable, ref, onShowSubSectionPopover, section]);
 
   return (
-    <li className={classes.anchorButtonContainer}>
-      {sectionSelector}
-      {subSectionsAvailable && (
-        <Popover
-          open={open}
-          placementType={PlacementType.Bottom}
-          openBy={navigationIcon}
-          onAfterClose={closeModal}
-          onBeforeOpen={openModal}
-          noArrow
-        >
-          <List onItemClick={onSubSectionClick}>
-            {section.props.children
-              .filter((item) => item.props && item.props.isSubSection)
-              .map(renderSubSectionListItem)}
-          </List>
-        </Popover>
-      )}
-    </li>
+    <Tab
+      ref={ref}
+      data-index={index}
+      data-section-id={section.props.id}
+      text={section.props.title}
+      selected={selected}
+    />
   );
 };

@@ -1,5 +1,14 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
+import '@ui5/webcomponents-icons/dist/icons/decline';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import {
+  CLEAR_SORTING,
+  GROUP,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  UNGROUP
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
@@ -9,40 +18,38 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import React, { CSSProperties, FC, ReactNode, RefObject, useCallback, useRef } from 'react';
+import React, { CSSProperties, forwardRef, RefObject, useCallback } from 'react';
 import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { ColumnType } from '../types/ColumnType';
 
 export interface ColumnHeaderModalProperties {
-  openBy: ReactNode;
-  showSort?: boolean;
-  showFilter?: boolean;
-  showGroup?: boolean;
   column: ColumnType;
-  style: CSSProperties;
-  onSort?: (e: Event) => void;
-  onGroupBy?: (e: Event) => void;
+  onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
+  onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
 }
 
 const staticStyle = { fontWeight: 'normal' };
 
-export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
-  const { showGroup, showSort, showFilter, column, style, openBy, onSort, onGroupBy } = props;
+export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties, ref: RefObject<Ui5PopoverDomRef>) => {
+  const { column, onSort, onGroupBy } = props;
+  const showFilter = column.canFilter;
+  const showGroup = column.canGroupBy;
+  const showSort = column.canSort;
 
   const { Filter } = column;
 
-  const popoverRef: RefObject<Ui5PopoverDomRef> = useRef();
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const handleSort = useCallback(
     (e) => {
-      const sortType = e.getParameter('item').getAttribute('data-sort');
+      const sortType = e.detail.item.getAttribute('data-sort');
 
       switch (sortType) {
         case 'asc':
           column.toggleSortBy(false);
           if (typeof onSort === 'function') {
             onSort(
-              Event.of(null, e, {
+              enrichEventWithDetails(e, {
                 column,
                 sortDirection: sortType
               })
@@ -53,7 +60,18 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
           column.toggleSortBy(true);
           if (typeof onSort === 'function') {
             onSort(
-              Event.of(null, e, {
+              enrichEventWithDetails(e, {
+                column,
+                sortDirection: sortType
+              })
+            );
+          }
+          break;
+        case 'clear':
+          column.clearSortBy();
+          if (typeof onSort === 'function') {
+            onSort(
+              enrichEventWithDetails(e, {
                 column,
                 sortDirection: sortType
               })
@@ -65,7 +83,7 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
           column.toggleGroupBy(willGroup);
           if (typeof onGroupBy === 'function') {
             onGroupBy(
-              Event.of(null, e, {
+              enrichEventWithDetails(e, {
                 column,
                 isGrouped: willGroup
               })
@@ -73,54 +91,65 @@ export const ColumnHeaderModal: FC<ColumnHeaderModalProperties> = (props) => {
           }
           break;
       }
-      if (popoverRef.current) {
-        popoverRef.current.close();
+      if (ref.current) {
+        ref.current.close();
       }
     },
-    [column, popoverRef, onGroupBy]
+    [column, ref, onGroupBy, onSort]
   );
+
+  const isSortedAscending = column.isSorted && column.isSortedDesc === false;
+  const isSortedDescending = column.isSorted && column.isSortedDesc === true;
 
   return (
     <Popover
-      openByStyle={style}
-      openBy={openBy}
       noArrow
       horizontalAlign={PopoverHorizontalAlign.Left}
       placementType={PlacementType.Bottom}
-      ref={popoverRef}
+      ref={ref}
       style={staticStyle as CSSProperties}
     >
       <List onItemClick={handleSort}>
-        {showSort && (
-          <StandardListItem type={ListItemTypes.Active} icon={'sort-ascending'} data-sort={'asc'}>
-            Sort Ascending
+        {isSortedAscending && (
+          <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
+            {i18nBundle.getText(CLEAR_SORTING)}
           </StandardListItem>
         )}
-        {showSort && (
-          <StandardListItem type={ListItemTypes.Active} icon={'sort-descending'} data-sort={'desc'}>
-            Sort Descending
+        {showSort && !isSortedAscending && (
+          <StandardListItem type={ListItemTypes.Active} icon="sort-ascending" data-sort="asc">
+            {i18nBundle.getText(SORT_ASCENDING)}
+          </StandardListItem>
+        )}
+        {showSort && !isSortedDescending && (
+          <StandardListItem type={ListItemTypes.Active} icon="sort-descending" data-sort="desc">
+            {i18nBundle.getText(SORT_DESCENDING)}
+          </StandardListItem>
+        )}
+        {isSortedDescending && (
+          <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
+            {i18nBundle.getText(CLEAR_SORTING)}
           </StandardListItem>
         )}
         {showFilter && !column.isGrouped && (
-          <CustomListItem type={ListItemTypes.Inactive}>
-            <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ padding: '0px 1rem' }}>
-              <Icon name="filter" style={{ paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }} />
-              <Filter column={column} popoverRef={popoverRef} />
-            </FlexBox>
-          </CustomListItem>
+          <FlexBox
+            alignItems={FlexBoxAlignItems.Center}
+            style={{
+              padding: '0px 1rem',
+              height: 'var(--_ui5_custom_list_item_height)',
+              borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
+            }}
+          >
+            <Icon name="filter" style={{ paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }} />
+            <Filter column={column} popoverRef={ref} />
+          </FlexBox>
         )}
         {showGroup && (
           <StandardListItem type={ListItemTypes.Active} icon="group-2" data-sort={'group'}>
-            {column.isGrouped ? 'Ungroup' : 'Group'}
+            {i18nBundle.getText(column.isGrouped ? UNGROUP : GROUP)}
           </StandardListItem>
         )}
       </List>
     </Popover>
   );
-};
-
-ColumnHeaderModal.defaultProps = {
-  showSort: true,
-  showFilter: false,
-  showGroup: false
-};
+});
+ColumnHeaderModal.displayName = 'ColumnHeaderModal';

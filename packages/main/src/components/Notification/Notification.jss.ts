@@ -1,29 +1,29 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
-const style = ({ parameters }: JSSTheme) => ({
+const style = {
   notificationContainer: {
     width: '100%',
     maxWidth: '60rem',
-    backgroundColor: parameters.sapUiListBackground,
-    boxShadow: parameters.sapUiShadowLevel0,
+    backgroundColor: ThemingParameters.sapList_Background,
+    boxShadow: ThemingParameters.sapContent_Shadow0,
     display: 'flex',
     flexDirection: 'row',
     position: 'relative',
     overflow: 'hidden',
     '&:hover': {
-      backgroundColor: parameters.sapUiListHoverBackground
+      backgroundColor: ThemingParameters.sapList_Hover_Background
     },
     '&:active': {
-      backgroundColor: parameters.sapUiListHoverBackground
+      backgroundColor: ThemingParameters.sapList_Hover_Background
     }
   },
   notificationContainerChild: {
-    backgroundColor: parameters.sapUiListHeaderBackground
+    backgroundColor: ThemingParameters.sapList_HeaderBackground
   },
   header: {
     display: 'flex',
     flexDirection: 'row',
-    boxShadow: `inset 0 -0.0625rem ${parameters.sapUiPageHeaderBorderColor}`,
+    boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapPageHeader_BorderColor}`,
     padding: '1rem 0 1rem 1.25rem',
     alignItems: 'center'
   },
@@ -38,9 +38,9 @@ const style = ({ parameters }: JSSTheme) => ({
     paddingRight: '40px'
   },
   title: {
-    color: parameters.sapUiGroupTitleTextColor,
-    fontFamily: parameters.sapUiFontHeaderFamily,
-    textShadow: parameters.sapUiShadowText,
+    color: ThemingParameters.sapGroup_TitleTextColor,
+    fontFamily: ThemingParameters.sapFontHeaderFamily,
+    textShadow: ThemingParameters.sapContent_TextShadow,
     fontSize: '14px',
     paddingRight: '40px'
   },
@@ -69,7 +69,7 @@ const style = ({ parameters }: JSSTheme) => ({
     paddingRight: '0.375rem'
   },
   descriptionEllipsised: {
-    color: parameters.sapUiContentLabelColor,
+    color: ThemingParameters.sapContent_LabelColor,
     overflow: 'hidden',
     textAlign: 'left',
     textOverflow: 'ellipsis',
@@ -80,13 +80,13 @@ const style = ({ parameters }: JSSTheme) => ({
     WebkitBoxOrient: 'vertical'
   },
   descriptionFull: {
-    color: parameters.sapUiContentLabelColor
+    color: ThemingParameters.sapContent_LabelColor
   },
   metadata: {
     paddingTop: '0.375rem',
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
-    color: parameters.sapUiContentLabelColor,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
+    color: ThemingParameters.sapContent_LabelColor,
     fontWeight: 'normal',
     display: 'flex',
     flexWrap: 'wrap',
@@ -100,23 +100,23 @@ const style = ({ parameters }: JSSTheme) => ({
     minWidth: '0.375rem',
     height: 'auto'
   },
-  high: { backgroundColor: parameters.sapUiErrorBorder },
-  medium: { backgroundColor: parameters.sapUiWarningBorder },
-  low: { backgroundColor: parameters.sapUiSuccessBorder },
-  none: { backgroundColor: parameters.sapUiNeutralBorder },
+  high: { backgroundColor: ThemingParameters.sapErrorBorderColor },
+  medium: { backgroundColor: ThemingParameters.sapWarningBorderColor },
+  low: { backgroundColor: ThemingParameters.sapSuccessBorderColor },
+  none: { backgroundColor: ThemingParameters.sapNeutralBorderColor },
   semanticIcon: {
     paddingRight: '0.375rem',
     width: '1rem',
     display: 'flex'
   },
   error: {
-    color: parameters.sapUiNegativeElement
+    color: ThemingParameters.sapNegativeElementColor
   },
   warning: {
-    color: parameters.sapUiCriticalElement
+    color: ThemingParameters.sapCriticalElementColor
   },
   success: {
-    color: parameters.sapUiPositiveElement
+    color: ThemingParameters.sapPositiveElementColor
   },
   contentAction: {
     display: 'flex',
@@ -139,6 +139,6 @@ const style = ({ parameters }: JSSTheme) => ({
     paddingLeft: '1rem',
     alignSelf: 'flex-start'
   }
-});
+};
 
 export default style;

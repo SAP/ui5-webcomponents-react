@@ -1,12 +1,11 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import React, { Children, cloneElement, FC, forwardRef, ReactNode, Ref, useCallback, useEffect, useState } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { sideNavigationStyles } from './SideNavigation.jss';
 
 export interface SideNavigationProps extends CommonProps {
@@ -14,8 +13,8 @@ export interface SideNavigationProps extends CommonProps {
   children?: ReactNode;
   footerItems?: ReactNode[];
   selectedId?: string | number;
-  onItemSelect?: (event: Event) => void;
-  onItemClick?: (event: Event) => void;
+  onItemSelect?: (event: CustomEvent<{ selectedItem: HTMLElement; selectedId: string | number }>) => void;
+  onItemClick?: (event: CustomEvent<{ selectedItem: HTMLElement; selectedId: string | number }>) => void;
   /*
    * Flag whether to show icons or not. Will only take effect in <code>openState: Expanded</code>
    */
@@ -24,7 +23,7 @@ export interface SideNavigationProps extends CommonProps {
 
 let lastFiredSelection = '';
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigationStyles>>(sideNavigationStyles, {
+const useStyles = createComponentStyles(sideNavigationStyles, {
   name: 'SideNavigation'
 });
 
@@ -76,13 +75,8 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
 
   const onListItemSelected = useCallback(
     (e) => {
-      const listItem = e.getParameter('item');
-      onItemClick(
-        Event.of(null, e, {
-          selectedItem: listItem,
-          selectedId: listItem.dataset.id
-        })
-      );
+      const listItem = e.detail.item;
+      onItemClick(enrichEventWithDetails(e, { selectedItem: listItem, selectedId: listItem.dataset.id }));
 
       if (lastFiredSelection === listItem.dataset.id) {
         return;
@@ -90,7 +84,7 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
       setInternalSelectedId(listItem.dataset.id);
 
       onItemSelect(
-        Event.of(null, e, {
+        enrichEventWithDetails(e, {
           selectedItem: listItem,
           selectedId: listItem.dataset.id
         })
@@ -100,7 +94,7 @@ const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigatio
     [onItemSelect, onItemClick, setInternalSelectedId]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onItemSelect', 'onItemClick']);
 
   return (
     <div ref={ref} className={sideNavigationClasses.valueOf()} style={style} title={tooltip} {...passThroughProps}>

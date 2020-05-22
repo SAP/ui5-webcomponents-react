@@ -1,3 +1,4 @@
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 import { CurrentViewportRangeContext } from '@ui5/webcomponents-react/lib/CurrentViewportRangeContext';
@@ -6,9 +7,7 @@ import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, ReactElement, Ref, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { styles } from './Form.jss';
 
 export interface FormPropTypes extends CommonProps {
@@ -22,7 +21,7 @@ export interface FormPropTypes extends CommonProps {
   title?: string;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Form' });
+const useStyles = createComponentStyles(styles, { name: 'Form' });
 
 /**
  * <code>import { Form } from '@ui5/webcomponents-react/lib/Form';</code>
@@ -50,7 +49,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
       });
 
       if (ungroupedItems.length > 0) {
-        formGroups.push(<FormGroup children={ungroupedItems} />);
+        formGroups.push(<FormGroup>{ungroupedItems}</FormGroup>);
       }
     } else {
       // check if a sole Form's group has a Title and take it as Form Title if one does not exist
@@ -71,23 +70,21 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
   return (
     <CurrentViewportRangeContext.Provider value={currentRange}>
       {updatedTitle && (
-        <>
-          <Title level={TitleLevel.H3} className={classes.formTitle}>
-            {updatedTitle}
-          </Title>
-          <div className={classes.formTitlePaddingBottom} />
-        </>
+        <Title level={TitleLevel.H3} className={classes.formTitle}>
+          {updatedTitle}
+        </Title>
       )}
       <Grid
         ref={ref}
-        children={formGroups}
         defaultSpan={'XL6 L12 M12 S12'}
         className={className}
         slot={slot}
         style={style}
         tooltip={tooltip}
         {...passThroughProps}
-      />
+      >
+        {formGroups}
+      </Grid>
     </CurrentViewportRangeContext.Provider>
   );
 });

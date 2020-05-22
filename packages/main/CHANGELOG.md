@@ -3,6 +3,522 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.5...v0.10.0-rc.0) (2020-05-19)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** don't crash if scrollTo methods are not defined ([#515](https://github.com/SAP/ui5-webcomponents-react/issues/515)) ([636d507](https://github.com/SAP/ui5-webcomponents-react/commit/636d50741deaebacd518f05c52ea4528dfce99fa))
+* **AnalyticalTable:** enable minWidth/maxWidth column option, disable dragging while resizing ([#518](https://github.com/SAP/ui5-webcomponents-react/issues/518)) ([0b59899](https://github.com/SAP/ui5-webcomponents-react/commit/0b59899efe4d6c59c5c4774a4b4d463d394136a0))
+* **AnalyticalTable:** prevent overflow y on parent container ([#521](https://github.com/SAP/ui5-webcomponents-react/issues/521)) ([c8e98ff](https://github.com/SAP/ui5-webcomponents-react/commit/c8e98ff56055b10d0d6b9d5fc45d1bcfdd2867a5))
+* **AnalyticalTable:** remove deprecated AnalyticalTableScrollMode smart ([#526](https://github.com/SAP/ui5-webcomponents-react/issues/526)) ([64f7e64](https://github.com/SAP/ui5-webcomponents-react/commit/64f7e6481a7a6164bce8973e8c3337cc52b45831))
+* **AnalyticalTable:** use 100% of the parent height ([#512](https://github.com/SAP/ui5-webcomponents-react/issues/512)) ([e033f85](https://github.com/SAP/ui5-webcomponents-react/commit/e033f85ae73289b89b6ffe2354da7e44d672df2c))
+* **ObjectPage:** make anchor bar more resilient ([#522](https://github.com/SAP/ui5-webcomponents-react/issues/522)) ([a6adefc](https://github.com/SAP/ui5-webcomponents-react/commit/a6adefc47040ca5167a586f939cfac54e16c6579))
+
+
+### chore
+
+* consolidate APIs ([#514](https://github.com/SAP/ui5-webcomponents-react/issues/514)) ([bea48ae](https://github.com/SAP/ui5-webcomponents-react/commit/bea48aec79949bc7148f7d8ea7a7fbe72f573608))
+* **base:** remove deprecated components ([#508](https://github.com/SAP/ui5-webcomponents-react/issues/508)) ([781fe4e](https://github.com/SAP/ui5-webcomponents-react/commit/781fe4ebac7e10e431f8cd1925ec48ba941172e8))
+* **main:** remove deprecated render methods ([#511](https://github.com/SAP/ui5-webcomponents-react/issues/511)) ([030473c](https://github.com/SAP/ui5-webcomponents-react/commit/030473c9a38d2bcaa3069925c9efd5ec75d0f909))
+
+
+### Code Refactoring
+
+* **Grid:** use CSS Grid layout ([#504](https://github.com/SAP/ui5-webcomponents-react/issues/504)) ([fcc449a](https://github.com/SAP/ui5-webcomponents-react/commit/fcc449a9682952c697a1e13c82cce19cd4070f5f))
+
+
+### BREAKING CHANGES
+
+* **AnalyticalCard**: remove prop `width`, please use `style` or `className` instead
+* **Text**: remove prop `width`, please use `style` or `className` instead
+* **ProgressIndicator**: remove props `width` and `height`, please use `style` or `className` instead
+* **FlexBox**: remove props `width` and `height`, please use `style` or `className` instead
+* **base:** remove deprecated `Event`
+* **base:** remove deprecated `font72` (comes with UI5 Web Components)
+* **base:** remove deprecated `HSLColor`
+* **base:** remove deprecated `Optional` (use JS optional-chaining instead)
+* **base:** remove deprecated `Scroller` library
+* **base:** remove deprecated `sap_fiori_3` theming parameters, use `ThemingParameters` instead
+* **base:** remove polyfill of old event API
+* **main:** **AnalyticalTable**: remove deprecated prop `renderExtension`, please use `extension` instead
+* **main:** **Bar**: remove deprecated prop `renderContentLeft`, `renderContentMiddle`, `renderContentRight`, please use `contentLeft`, `contentMiddle`, `contentRight` instead
+* **main:** **FormItem**: remove deprecated prop `labelText`, please use `label` instead
+* **main:** **FilterBar**: remove deprecated prop `renderSearch`, `renderVariants`, please use `search`, `variants` instead
+* **main:** **ObjectPage**: remove deprecated prop `renderHeaderContent`, `renderBreadcrumbs`, `renderKeyInfos`, please use `headerContent`, `breadcrumbs`, `keyInfos` instead
+* **main:** **Page**: remove deprecated prop `renderCustomHeader`, `renderCustomFooter`, please use `customHeader`, `customFooter` instead
+* **Grid:** remove prop `width`, width can now be set via `style` or `className`
+* **Grid:** prop `vSpacing` accepts now a CSS height instead of a number in `rem`
+* **Grid:** prop `hSpacing` accepts now a CSS width instead of a number in `rem`
+* **Grid:** change prop `data-layout` (object) on child elements to `data-layout-span` and `data-layout-indent`
+
+
+
+
+
+## [0.9.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.4...v0.9.5) (2020-05-13)
+
+**Note:** Version bump only for package @ui5/webcomponents-react
+
+
+
+
+
+## [0.9.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.3...v0.9.4) (2020-05-08)
+
+
+### Bug Fixes
+
+* fix cjs build ([#496](https://github.com/SAP/ui5-webcomponents-react/issues/496)) ([b1900cb](https://github.com/SAP/ui5-webcomponents-react/commit/b1900cbc96f1de4cbcbed7c86dbb4f6ec3f38fd5))
+
+
+
+
+
+## [0.9.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.2...v0.9.3) (2020-05-06)
+
+
+### Bug Fixes
+
+* add babel/runtime as dependency to all packages ([#482](https://github.com/SAP/ui5-webcomponents-react/issues/482)) ([c7475b4](https://github.com/SAP/ui5-webcomponents-react/commit/c7475b40c393643f79e2ddc3993e53b36e8438ec))
+
+
+
+
+
+## [0.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.1...v0.9.2) (2020-05-06)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix header text collision with sort/group/filter icons ([#478](https://github.com/SAP/ui5-webcomponents-react/issues/478)) ([eb36865](https://github.com/SAP/ui5-webcomponents-react/commit/eb368655ca85bff73059def88cd875a6ca986492))
+
+
+
+
+
+## [0.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0...v0.9.1) (2020-05-04)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** calculate scrollbar width only if table is scrollable ([#470](https://github.com/SAP/ui5-webcomponents-react/issues/470)) ([ddd19fe](https://github.com/SAP/ui5-webcomponents-react/commit/ddd19fe662c8f633ebc597b286faf8c201551d05)), closes [#467](https://github.com/SAP/ui5-webcomponents-react/issues/467)
+* **web-components-wrapper:** don't generate default props for empty strings ([#469](https://github.com/SAP/ui5-webcomponents-react/issues/469)) ([48505d9](https://github.com/SAP/ui5-webcomponents-react/commit/48505d9e2e375f640a2ed282f97bab1dd650676f))
+
+
+
+
+
+# [0.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.0...v0.9.0) (2020-04-30)
+
+**Note:** Version bump only for package @ui5/webcomponents-react
+
+
+
+
+
+# [1.0.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.18...v1.0.0) (2020-04-30)
+
+
+### Features
+
+* update to @ui5/webcomponents 1.0.0-rc.7 ([#468](https://github.com/SAP/ui5-webcomponents-react/issues/468)) ([3b14676](https://github.com/SAP/ui5-webcomponents-react/commit/3b14676100659f602e08e571c0a63b400b274c82))
+
+
+### BREAKING CHANGES
+
+* *Carousel*: rename prop `cycling` to `cyclic`
+* *Carousel*: replace prop `itemsPerPage` with `itemsPerPageL`, `itemsPerPageM`, `itemsPerPageS`
+* *ThemeProvider*: remove `theme` prop as the UI5 Web Components are now provding all CSS Variables and we rely completely on the Web Components Theme
+* Delete `@ui5/webcomponents-react/lib/ThemingSupport` as it is not needed anymore
+
+
+
+
+
+# [0.9.0-rc.18](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.17...v0.9.0-rc.18) (2020-04-29)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** support RTL ([#466](https://github.com/SAP/ui5-webcomponents-react/issues/466)) ([a99b183](https://github.com/SAP/ui5-webcomponents-react/commit/a99b183fbe8009f65b5b8af825cb85f159db4162)), closes [#460](https://github.com/SAP/ui5-webcomponents-react/issues/460)
+* **MessageBox:** enable closing with esc key ([#463](https://github.com/SAP/ui5-webcomponents-react/issues/463)) ([3377b75](https://github.com/SAP/ui5-webcomponents-react/commit/3377b75c5fbae24db8f599afc72e2b18974ad7cc))
+
+
+
+
+
+# [0.9.0-rc.17](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.16...v0.9.0-rc.17) (2020-04-28)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** debounce resize handler ([#454](https://github.com/SAP/ui5-webcomponents-react/issues/454)) ([f1a5a6e](https://github.com/SAP/ui5-webcomponents-react/commit/f1a5a6e882647e071f0ab2cb29c3d6b5395d7456))
+* **AnalyticalTable:** fix passing styles object to AnalyticalTable ([#449](https://github.com/SAP/ui5-webcomponents-react/issues/449)) ([e3499ee](https://github.com/SAP/ui5-webcomponents-react/commit/e3499ee1ea8b58de269f95087ba583b1e8f90d7d))
+* **Bar:** make slot props optional ([#450](https://github.com/SAP/ui5-webcomponents-react/issues/450)) ([5e490d8](https://github.com/SAP/ui5-webcomponents-react/commit/5e490d8072876c42d10f90d9b2843e5102e8e3be))
+
+
+
+
+
+# [0.9.0-rc.16](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.15...v0.9.0-rc.16) (2020-04-22)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix multi-select checkbox ([#445](https://github.com/SAP/ui5-webcomponents-react/issues/445)) ([2ed6a98](https://github.com/SAP/ui5-webcomponents-react/commit/2ed6a9817bc6c5dd8d349a15db8b8d39a2391ea7))
+* **AnalyticalTable:** header should respect hAlign as well ([#438](https://github.com/SAP/ui5-webcomponents-react/issues/438)) ([79c9f3f](https://github.com/SAP/ui5-webcomponents-react/commit/79c9f3f1e77399c0c5edf23b498e80bc1bc37246))
+* **AnalyticalTable:** remove ResizeObserver condition to avoid race conditions ([#444](https://github.com/SAP/ui5-webcomponents-react/issues/444)) ([830ab14](https://github.com/SAP/ui5-webcomponents-react/commit/830ab146ef30affdb46659442b7904b16f34e3c3))
+* **withWebComponent:** fix handling of react fragments as slots ([#446](https://github.com/SAP/ui5-webcomponents-react/issues/446)) ([66a8344](https://github.com/SAP/ui5-webcomponents-react/commit/66a8344a26a84f8be7037353062a24981b0268b4))
+
+
+### Features
+
+* add slot props and deprecated render methods  ([#436](https://github.com/SAP/ui5-webcomponents-react/issues/436)) ([018337f](https://github.com/SAP/ui5-webcomponents-react/commit/018337f6252a2bf9291a66e415d38226645ad932))
+
+
+
+
+
+# [0.9.0-rc.15](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.14...v0.9.0-rc.15) (2020-04-16)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** don't select row when an actionable element was clicked ([#432](https://github.com/SAP/ui5-webcomponents-react/issues/432)) ([8c31818](https://github.com/SAP/ui5-webcomponents-react/commit/8c318187de5eb70b6412caaffd090adc65f5703f)), closes [#428](https://github.com/SAP/ui5-webcomponents-react/issues/428)
+* **AnalyticalTable:** use correct border-bottom for selected row ([e65d8da](https://github.com/SAP/ui5-webcomponents-react/commit/e65d8da6b064bac53a36c3634f711b18984eadf8))
+
+
+
+
+
+# [0.9.0-rc.14](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.13...v0.9.0-rc.14) (2020-04-10)
+
+
+### Bug Fixes
+
+* **Framework:** fix sideEffect-full files in react production build ([f5c02b1](https://github.com/SAP/ui5-webcomponents-react/commit/f5c02b18e56e7b1f72e89a095c737c83de626eab))
+
+
+
+
+
+# [0.9.0-rc.13](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.12...v0.9.0-rc.13) (2020-04-09)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** move ResizeObserver creation into effect to avoid blank tables on second mount ([#420](https://github.com/SAP/ui5-webcomponents-react/issues/420)) ([a237d51](https://github.com/SAP/ui5-webcomponents-react/commit/a237d511c7a7c246ed549c59f582b1c076989879))
+* **VariantManagement:** fix invalid hook calls ([#421](https://github.com/SAP/ui5-webcomponents-react/issues/421)) ([820d28d](https://github.com/SAP/ui5-webcomponents-react/commit/820d28def6316b3cff0e7b115e827e28d2765f8c))
+
+
+### BREAKING CHANGES
+
+* **VariantManagement:** rename prop `initialSelectedKey` to `selectedKey`
+
+
+
+
+
+# [0.9.0-rc.12](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.11...v0.9.0-rc.12) (2020-04-09)
+
+**Note:** Version bump only for package @ui5/webcomponents-react
+
+
+
+
+
+# [0.9.0-rc.11](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.10...v0.9.0-rc.11) (2020-04-09)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix scrollbar issue on column reorder & initial horizontal scrolling ([#413](https://github.com/SAP/ui5-webcomponents-react/issues/413)) ([4665db7](https://github.com/SAP/ui5-webcomponents-react/commit/4665db7b06ccddff4a62dfa4712e07b1bd68de30))
+* **Framework:** fix side-effects in rollup build ([#414](https://github.com/SAP/ui5-webcomponents-react/issues/414)) ([b64fc5f](https://github.com/SAP/ui5-webcomponents-react/commit/b64fc5f568160b22294f94f5e2fe2e6702e88be0))
+* **Grid:** fix incorrect layout when rendered before Device was initialized ([#418](https://github.com/SAP/ui5-webcomponents-react/issues/418)) ([cb62961](https://github.com/SAP/ui5-webcomponents-react/commit/cb629618a13a17b416005f88ee98238692c4dcea))
+* **ThemingSupport:** don't load fiori_3 parameters twice ([#416](https://github.com/SAP/ui5-webcomponents-react/issues/416)) ([b5421a6](https://github.com/SAP/ui5-webcomponents-react/commit/b5421a639527519bdeefe8e6dfe2a3824901db49))
+
+
+### Code Refactoring
+
+* **withWebComponent:** new static wrapper & web components as peer dependency ([#412](https://github.com/SAP/ui5-webcomponents-react/issues/412)) ([dca9b9a](https://github.com/SAP/ui5-webcomponents-react/commit/dca9b9aa0f4820ab08710156710fb30a10a0b304))
+
+
+### BREAKING CHANGES
+
+* **withWebComponent:** the dependencies `@ui5/webcomponents`, `@ui5/webcomponents-fiori` and `@ui5/webcomponents-icons` are now  `peerDependencies` and have to be installed next to `@ui5/webcomponents-react`
+
+
+
+
+
+# [0.9.0-rc.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.9...v0.9.0-rc.10) (2020-04-07)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix column filter and allow spaces as input ([#411](https://github.com/SAP/ui5-webcomponents-react/issues/411)) ([4003065](https://github.com/SAP/ui5-webcomponents-react/commit/40030659428e90679fd153f622c3c1aa544684d8))
+* **AnalyticalTable:** skip first table paint as long as column width has not been calculated ([#406](https://github.com/SAP/ui5-webcomponents-react/issues/406)) ([528d048](https://github.com/SAP/ui5-webcomponents-react/commit/528d048705d162112d173e66d0a726873e397328))
+* **AnalyticalTableColumnDefinition:** Add props typing to ComponenType ([#409](https://github.com/SAP/ui5-webcomponents-react/issues/409)) ([6e3d549](https://github.com/SAP/ui5-webcomponents-react/commit/6e3d549ade2359ddeadd7c5860b0c2ca51ac7d18))
+
+
+### Code Refactoring
+
+* **Popovers:** Remove custom logic ([#408](https://github.com/SAP/ui5-webcomponents-react/issues/408)) ([856df0b](https://github.com/SAP/ui5-webcomponents-react/commit/856df0b1cd2d349bcc8f607c87901906616027f8))
+
+
+### BREAKING CHANGES
+
+* **Popovers:** **Dialog**: Remove property `open`. You can now open a dialog by attaching a ref to the dialog and call the method `open()`.
+* **Popovers:** **Popover**: Removed props `openBy`, `openByStyle`, `open` and `propagateOpenByClickEvent`. For opening a popover after e.g. a button click attach a ref to the popover and use the button click hander for calling `.openBy(event.target)` on the popover ref.
+* **Popovers:** **ResponsivePopover**: Removed props `openBy`, `openByStyle`, `open` and `propagateOpenByClickEvent`. For opening a responsive popover after e.g. a button click attach a ref to the responsive popover and use the Button click hander for calling `.open(event.target)` on the responsive popover ref.
+
+
+
+
+
+# [0.9.0-rc.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.8...v0.9.0-rc.9) (2020-04-03)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix tree-table selection, add selectionBehavior prop + enum ([#401](https://github.com/SAP/ui5-webcomponents-react/issues/401)) ([7aab047](https://github.com/SAP/ui5-webcomponents-react/commit/7aab047ba2b66f49be06cb92f068ac96950aff20))
+
+
+### Features
+
+* **AnalyticalTable:** add infiniteScroll and keyboard navigation for cells ([#397](https://github.com/SAP/ui5-webcomponents-react/issues/397)) ([c6b64ba](https://github.com/SAP/ui5-webcomponents-react/commit/c6b64ba2256f7e238d48e1dd72f244c24c96e396))
+* **AnalyticalTable:** add possibility to clear sorting in column header ([#399](https://github.com/SAP/ui5-webcomponents-react/issues/399)) ([137da3f](https://github.com/SAP/ui5-webcomponents-react/commit/137da3fea2d390595afe18c13858166f2adc5461))
+* **Framework:** update to ui5-webcomponents-rc.6 ([#392](https://github.com/SAP/ui5-webcomponents-react/issues/392)) ([84a3f90](https://github.com/SAP/ui5-webcomponents-react/commit/84a3f905f48e5ef12526a026b68a3c8faf4b5fe0)), closes [/github.com/SAP/ui5-webcomponents/blob/master/CHANGELOG.md#100-rc6-2020-03-27](https://github.com//github.com/SAP/ui5-webcomponents/blob/master/CHANGELOG.md/issues/100-rc6-2020-03-27) [#349](https://github.com/SAP/ui5-webcomponents-react/issues/349)
+* **ThemeProvider:** add global css classes ([#400](https://github.com/SAP/ui5-webcomponents-react/issues/400)) ([d0c811d](https://github.com/SAP/ui5-webcomponents-react/commit/d0c811d981dce2684776de19e90b3c31fec84636))
+
+
+### BREAKING CHANGES
+
+* **AnalyticalTable:** replace `noSelectionColumn` prop with `selectionBehavior` enum
+* **AnalyticalTable:** column option `groupable` replaced by `disableGroupBy: boolean`
+* **AnalyticalTable:** column option `sortable` replaced by `disableSortBy: boolean`
+* **AnalyticalTable:** column option `filterable` replaced by `disableFilters: boolean`
+* **AnalyticalTable:** Enabling grouping, sorting or filtering on column level by e.g `disableGroupBy: false` will not overwrite the table overall setting in case e.g. `groupable={false}`
+* **Framework:** Replace Avatar Component with `Avatar` UI5 Web Component
+* **Framework:** Replace Carousel Component with `Carousel` UI5 Web Component
+* **Framework:** Replace SegmentedButton Component with `SegmentedButton` UI5 Web Component
+* **Framework:** Deleted SegmentedButtonItem, replaced by ToggleButton
+* **Framework:** Remove MessageToast Component, replaced by `Toast` UI5 Web Component
+* **Framework:** **ThemeProvider**: Remove prop `withToastContainer` 
+* **Framework:** **AvatarSize**: Remove value `Custom`
+* **Framework:** **ButtonDesign**: Rename`Accept` to `Positive`
+* **Framework:** **ButtonDesign**: Rename`Reject` to `Negative`
+* **Framework:** **InputType**: Rename `Url` to `URL`
+* **Framework:** **CarouselArrowsPlacement**: Rename `PageIndicator` to `Navigation`
+* **Framework:** **BusyIndicator** : change default size of busy dots to `Medium`
+* **Framework:** **Icon** : `src` property is removed in favor of `name`
+* **Framework:** **MessageStrip** : replace icon property with icon slot to allow setting arbitrary content by the user
+* **Framework:** **MultiComboBox** : Does not longer accept `StandardListItem` as child, use `MultiComboBoxItem` instead
+* **Framework:** **ShellBar** : profile property is removed in favour of profile slot
+* **Framework:** **TabContainer** : `onItemSelect` event is renamed to `onTabSelect` and the item event parameter is renamed to tab.
+* **Framework:** **Card** : the property `subtitle` has been renamed to `subheading`
+* **Framework:** **TextArea** : the property `maxLength` has been renamed to `maxlength`
+* **Framework:** **ThemeProvider** : new prop `theme` is required for correct theming in addition to importing `import '@ui5/webcomponents-react/lib/ThemingSupport'`
+* **Framework:** configuring of compact size is removed, use the `ui5-content-density-compact` CSS class to apply compact size.
+
+
+
+
+
+# [0.9.0-rc.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.7...v0.9.0-rc.8) (2020-04-01)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** avoid scrollbar overlaying last column ([#396](https://github.com/SAP/ui5-webcomponents-react/issues/396)) ([fb282c7](https://github.com/SAP/ui5-webcomponents-react/commit/fb282c7e453fdf3edfab23053e59bfc8879b7ad5))
+
+
+
+
+
+# [0.9.0-rc.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.6...v0.9.0-rc.7) (2020-03-31)
+
+
+### Bug Fixes
+
+* **RTL:** add dir="rtl" to html tag when running in RTL ([#394](https://github.com/SAP/ui5-webcomponents-react/issues/394)) ([78c1f93](https://github.com/SAP/ui5-webcomponents-react/commit/78c1f9368a4ad4f005ff65986938dd7a83e7a389)), closes [#366](https://github.com/SAP/ui5-webcomponents-react/issues/366)
+
+
+
+
+
+# [0.9.0-rc.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.5...v0.9.0-rc.6) (2020-03-31)
+
+
+### Bug Fixes
+
+* **ObjectPage:** Don't wrap title and subtitle ([#390](https://github.com/SAP/ui5-webcomponents-react/issues/390)) ([193e8ef](https://github.com/SAP/ui5-webcomponents-react/commit/193e8efd32ff2d995f7f9231f16e63b924f75cab)), closes [#372](https://github.com/SAP/ui5-webcomponents-react/issues/372)
+* **ThemeProvider:** Add Typing for JSSTheme ([98cb810](https://github.com/SAP/ui5-webcomponents-react/commit/98cb81080db1cb800b42af292023b4bd8581de17))
+
+
+### Features
+
+* **AnalyticalTable:** Add Highlight Column ([#391](https://github.com/SAP/ui5-webcomponents-react/issues/391)) ([69e648a](https://github.com/SAP/ui5-webcomponents-react/commit/69e648a3762f92f63108d04ffdc3af56194c4db4)), closes [#312](https://github.com/SAP/ui5-webcomponents-react/issues/312)
+
+
+
+
+
+# [0.9.0-rc.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.4...v0.9.0-rc.5) (2020-03-25)
+
+
+### Bug Fixes
+
+* **ObjectPage:** Fix event for changing selected section ([#386](https://github.com/SAP/ui5-webcomponents-react/issues/386)) ([034f8b9](https://github.com/SAP/ui5-webcomponents-react/commit/034f8b949adadea412a5ebad3d92f315fa0c2839)), closes [#384](https://github.com/SAP/ui5-webcomponents-react/issues/384)
+* **ObjectPage:** Prevent infinite grow ([#383](https://github.com/SAP/ui5-webcomponents-react/issues/383)) ([9393af4](https://github.com/SAP/ui5-webcomponents-react/commit/9393af4b73929975c15eb980b3a68e35bec3cea9)), closes [#373](https://github.com/SAP/ui5-webcomponents-react/issues/373)
+
+
+
+
+
+# [0.9.0-rc.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.3...v0.9.0-rc.4) (2020-03-25)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** prevent overflow if rows are selectable ([#381](https://github.com/SAP/ui5-webcomponents-react/issues/381)) ([95d81b7](https://github.com/SAP/ui5-webcomponents-react/commit/95d81b7c9c02a69692183f8d4b70d4e3be4143f2)), closes [#380](https://github.com/SAP/ui5-webcomponents-react/issues/380)
+* **Loader/Spinner/Grid:** Fix memory leaks by cleanup effects ([#379](https://github.com/SAP/ui5-webcomponents-react/issues/379)) ([058cae7](https://github.com/SAP/ui5-webcomponents-react/commit/058cae7f1f60705f4d2eb9ab8df91a74c2d044e0)), closes [#335](https://github.com/SAP/ui5-webcomponents-react/issues/335)
+
+
+
+
+
+# [0.9.0-rc.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.2...v0.9.0-rc.3) (2020-03-24)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** remove z-index from Table Header which caused issues when using table in an ObjectPage ([#377](https://github.com/SAP/ui5-webcomponents-react/issues/377)) ([3f545c1](https://github.com/SAP/ui5-webcomponents-react/commit/3f545c1f1392944547285b5225037e8a4d67925e))
+* **Grid:** Float items correctly in RTL mode ([#378](https://github.com/SAP/ui5-webcomponents-react/issues/378)) ([cdb1a14](https://github.com/SAP/ui5-webcomponents-react/commit/cdb1a14044d4b8eed5cf28119db4b6217ad4a92a)), closes [#371](https://github.com/SAP/ui5-webcomponents-react/issues/371)
+* **ObjectPage:** hide first section Header ([#374](https://github.com/SAP/ui5-webcomponents-react/issues/374)) ([7b05ab9](https://github.com/SAP/ui5-webcomponents-react/commit/7b05ab9d95226c593eef027942de4a4cb65b860d))
+* **SegmentedButton:** add intermediate css variable mappings in order to fix styling ([#375](https://github.com/SAP/ui5-webcomponents-react/issues/375)) ([86e962e](https://github.com/SAP/ui5-webcomponents-react/commit/86e962eb315381a1442b94b37baffeecff8638ca))
+
+
+
+
+
+# [0.9.0-rc.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.0-rc.1...v0.9.0-rc.2) (2020-03-23)
+
+
+### Bug Fixes
+
+* **ObjectPage:** RTL support for Header ([#369](https://github.com/SAP/ui5-webcomponents-react/issues/369)) ([338b8b3](https://github.com/SAP/ui5-webcomponents-react/commit/338b8b35ab4f24cc1f0afa8f24b365ee62860d60)), closes [#366](https://github.com/SAP/ui5-webcomponents-react/issues/366)
+
+
+### Features
+
+* **All Components:** Allow all HTML events to be passed ([#370](https://github.com/SAP/ui5-webcomponents-react/issues/370)) ([376f9c1](https://github.com/SAP/ui5-webcomponents-react/commit/376f9c1a2893f2c46dfff85583c7756f4b6651cc))
+
+
+
+
+
+# [0.9.0-rc.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.8.7-rc.0...v0.9.0-rc.1) (2020-03-19)
+
+**Note:** Version bump only for package @ui5/webcomponents-react
+
+
+
+
+
+## [0.8.7-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.8.6...v0.8.7-rc.0) (2020-03-19)
+
+
+### Bug Fixes
+
+* **AnalyticalCard:** fix styling ([#360](https://github.com/SAP/ui5-webcomponents-react/issues/360)) ([d19c256](https://github.com/SAP/ui5-webcomponents-react/commit/d19c2561b9148d13637b3711164bacb45fb85cd2))
+* **AnalyticalTable:** Always respect Cell option ([#359](https://github.com/SAP/ui5-webcomponents-react/issues/359)) ([8db97c3](https://github.com/SAP/ui5-webcomponents-react/commit/8db97c39d551cdba3be70ec0f49e03675853c746)), closes [#358](https://github.com/SAP/ui5-webcomponents-react/issues/358)
+* **AnalyticalTable:** Expose React Table Container ref ([#341](https://github.com/SAP/ui5-webcomponents-react/issues/341)) ([5e8c32d](https://github.com/SAP/ui5-webcomponents-react/commit/5e8c32dba85d0be822005d9c8f8f3dbb31506d82))
+* **AnalyticalTable:** Fix Loading Shimmer to take full table width ([#347](https://github.com/SAP/ui5-webcomponents-react/issues/347)) ([d31cf5c](https://github.com/SAP/ui5-webcomponents-react/commit/d31cf5cb4752facbc15789c60b087a6c61e3c96c)), closes [#346](https://github.com/SAP/ui5-webcomponents-react/issues/346)
+* **AnalyticalTable:** Update react-table and fix TreeTable selection columns ([#344](https://github.com/SAP/ui5-webcomponents-react/issues/344)) ([7a46d2d](https://github.com/SAP/ui5-webcomponents-react/commit/7a46d2d845d145e5cfb6ccdac396d58b10f775a3)), closes [#333](https://github.com/SAP/ui5-webcomponents-react/issues/333) [#336](https://github.com/SAP/ui5-webcomponents-react/issues/336)
+* **ThemingParameters:** Add temporary quick fix for missing variables ([#350](https://github.com/SAP/ui5-webcomponents-react/issues/350)) ([ef1934a](https://github.com/SAP/ui5-webcomponents-react/commit/ef1934a9d27ccb6168a345236729bdbdddb29cce))
+
+
+### Code Refactoring
+
+* **ThemeProvider:** Remove JSSProvider and simplify all tests ([#355](https://github.com/SAP/ui5-webcomponents-react/issues/355)) ([db50f30](https://github.com/SAP/ui5-webcomponents-react/commit/db50f3060096b801654fc64f7ea9dc532f1d3778))
+
+
+### Features
+
+* **Charts:** Create new SVG based charts ([#325](https://github.com/SAP/ui5-webcomponents-react/issues/325)) ([0e4fb72](https://github.com/SAP/ui5-webcomponents-react/commit/0e4fb72753772a5e09d51fd852fdfad6b01d9b4b)), closes [#280](https://github.com/SAP/ui5-webcomponents-react/issues/280)
+* **ObjectPage:** Add 'Pin-Header' button ([#354](https://github.com/SAP/ui5-webcomponents-react/issues/354)) ([0e5e9b6](https://github.com/SAP/ui5-webcomponents-react/commit/0e5e9b658fc0aff0304dae952284d337e89e9d2c)), closes [#345](https://github.com/SAP/ui5-webcomponents-react/issues/345) [#334](https://github.com/SAP/ui5-webcomponents-react/issues/334) [#248](https://github.com/SAP/ui5-webcomponents-react/issues/248)
+* **ThemingParameters:** Switch to offical Theme Designer Parameters ([#348](https://github.com/SAP/ui5-webcomponents-react/issues/348)) ([dc6f94e](https://github.com/SAP/ui5-webcomponents-react/commit/dc6f94e73fe0dd9c2828fdf222a5b8135f5721e4)), closes [#240](https://github.com/SAP/ui5-webcomponents-react/issues/240)
+
+
+### BREAKING CHANGES
+
+* **ThemeProvider:** ThemeProvider does not longer render a JSSProvider and the `jss`-prop is removed. If you need a custom JSS setup, please render your own JSSProvider.
+
+
+
+
+
+## [0.8.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.8.5...v0.8.6) (2020-03-09)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** Don't modify read-only classList ([#339](https://github.com/SAP/ui5-webcomponents-react/issues/339)) ([65f3876](https://github.com/SAP/ui5-webcomponents-react/commit/65f3876ea64d92dc4551f1f4f7cd76b7453af3fe))
+
+
+
+
+
+## [0.8.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.8.4...v0.8.5) (2020-02-20)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix sorting with minRows ([#327](https://github.com/SAP/ui5-webcomponents-react/issues/327)) ([11b6321](https://github.com/SAP/ui5-webcomponents-react/commit/11b63214c24c5e72ee9dee75da9e915de18c19a8))
+* **Bar:** Adjust alignment and add Bar design  ([#320](https://github.com/SAP/ui5-webcomponents-react/issues/320)) ([117c9f3](https://github.com/SAP/ui5-webcomponents-react/commit/117c9f350a238ea950335dabfa8b9a0e47201dec))
+
+
+
+
+
+## [0.8.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.8.3...v0.8.4) (2020-02-13)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fire onRowSelected when header select all chechbox changes ([5910581](https://github.com/SAP/ui5-webcomponents-react/commit/59105811bc00c3eed4d55df147f872c4aff312c9))
+* **AnalyticalTable:** fixed alternateRowColor sort bug ([#316](https://github.com/SAP/ui5-webcomponents-react/issues/316)) ([ee37009](https://github.com/SAP/ui5-webcomponents-react/commit/ee3700957056ba188cf5c62699db485a70bcc98c))
+* **Avatar:** Adjust icon size in sync with Avatar Size  ([#317](https://github.com/SAP/ui5-webcomponents-react/issues/317)) ([a3af613](https://github.com/SAP/ui5-webcomponents-react/commit/a3af613c6431eec039a74ae20bb28ddd1e94f076))
+* **withWebComponent:** Add handler of events those are not specified in metadata of ui5-webcomponents ([#315](https://github.com/SAP/ui5-webcomponents-react/issues/315)) ([978b126](https://github.com/SAP/ui5-webcomponents-react/commit/978b126e9c01213acaa3f0509deb2457e3b35122))
+
+
+
+
+
+## [0.8.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.8.2...v0.8.3) (2020-02-11)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** Always render selection column as first column ([75a43a3](https://github.com/SAP/ui5-webcomponents-react/commit/75a43a3f55034ec00b7ba321f9e6abaa63187bb7)), closes [#311](https://github.com/SAP/ui5-webcomponents-react/issues/311)
+
+
+
+
+
+## [0.8.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.8.1...v0.8.2) (2020-02-10)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** Show selection column with select all in header ([#310](https://github.com/SAP/ui5-webcomponents-react/issues/310)) ([b60842c](https://github.com/SAP/ui5-webcomponents-react/commit/b60842c4790a29a6aa817509834905c1e59d03d4))
+
+
+
+
+
 ## [0.8.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.8.0...v0.8.1) (2020-02-06)
 
 

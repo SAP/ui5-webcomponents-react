@@ -1,7 +1,11 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { act, render } from '@testing-library/react';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
-import React from 'react';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+import { mount } from 'enzyme';
+import React, { useRef } from 'react';
 
 const columns = [
   {
@@ -29,7 +33,8 @@ const data = [
     friend: {
       name: 'MAR',
       age: 28
-    }
+    },
+    status: ValueState.Success
   },
   {
     name: 'bla',
@@ -138,30 +143,27 @@ const dataTree = [
 
 describe('AnalyticalTable', () => {
   test('test Asc desc', () => {
-    const wrapper = mountThemedComponent(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+    const wrapper = mount(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+
+    expect(wrapper.render()).toMatchSnapshot();
 
     // test asc function inside the popover element
-    let component = wrapper
-      .find('ui5-li')
-      .at(1)
-      .instance();
+    let component = wrapper.find('ui5-li').at(1).instance();
     // @ts-ignore
-    component.onclick({});
-    console.log(component);
+    component.click();
+
+    expect(wrapper.render()).toMatchSnapshot();
 
     // test desc function inside the popover element
-    component = wrapper
-      .find('ui5-li')
-      .at(0)
-      .instance();
+    component = wrapper.find('ui5-li').at(0).instance();
     // @ts-ignore
-    component.onclick({});
+    component.click();
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Tree Table', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <AnalyticalTable
         title="Table Title"
         data={dataTree}
@@ -178,10 +180,7 @@ describe('AnalyticalTable', () => {
       />
     );
 
-    let colInst = wrapper
-      .find({ role: 'columnheader' })
-      .at(0)
-      .instance();
+    const colInst = wrapper.find('div[role="columnheader"]').at(0).instance();
 
     // @ts-ignore
     expect(colInst.draggable).toBeDefined();
@@ -191,7 +190,7 @@ describe('AnalyticalTable', () => {
   });
 
   test('Loading - Placeholder', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <AnalyticalTable title="Table Title" data={[]} columns={columns} loading visibleRows={15} minRows={5} />
     );
 
@@ -199,7 +198,7 @@ describe('AnalyticalTable', () => {
   });
 
   test('Loading - Loader', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <AnalyticalTable title="Table Title" data={data} columns={columns} loading visibleRows={15} minRows={5} />
     );
 
@@ -207,26 +206,22 @@ describe('AnalyticalTable', () => {
   });
 
   test('Alternate Row Color', () => {
-    const wrapper = mountThemedComponent(
-      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
-    );
+    const wrapper = mount(<AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />);
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('custom row height', () => {
-    const wrapper = mountThemedComponent(
-      <AnalyticalTable title="Table Title" data={data} columns={columns} rowHeight={60} />
-    );
+    const wrapper = mount(<AnalyticalTable title="Table Title" data={data} columns={columns} rowHeight={60} />);
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('test drag and drop of a draggable column', () => {
-    const wrapper = mountThemedComponent(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+    const wrapper = mount(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
-    let componentDrag = wrapper.find('div[role="columnheader"] div[draggable]').at(0);
+    let componentDrag = wrapper.find('div[role="columnheader"][draggable]').at(0);
     let inst = componentDrag.instance();
     // @ts-ignore
     let dragColumnId = inst.dataset.columnId;
@@ -244,7 +239,7 @@ describe('AnalyticalTable', () => {
     dataTransfer.getData = () => {
       return dragColumnId;
     };
-    let componentDrop = wrapper.find('div[role="columnheader"] div[draggable]').at(1);
+    let componentDrop = wrapper.find('div[role="columnheader"][draggable]').at(1);
     // @ts-ignore
     componentDrop.simulate('drop', { dataTransfer: dataTransfer });
 
@@ -253,8 +248,64 @@ describe('AnalyticalTable', () => {
 
   test('render without data', () => {
     const data = [];
-    const wrapper = mountThemedComponent(
-      <AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />
+    const wrapper = mount(<AnalyticalTable title="Table Title" data={data} columns={columns} alternateRowColor />);
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('without selection Column', () => {
+    const wrapper = mount(
+      <AnalyticalTable
+        title="Table Title"
+        data={data}
+        columns={columns}
+        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        selectionBehavior={TableSelectionBehavior.ROW_ONLY}
+      />
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Check for scrollTo and scrollToItem functions', () => {
+    let tableRef;
+    const UsingTable = (props) => {
+      tableRef = useRef(null);
+      return (
+        <AnalyticalTable ref={tableRef} title="Table Title" data={data} columns={columns} visibleRows={1} minRows={1} />
+      );
+    };
+
+    render(<UsingTable />);
+
+    // Check existence + type
+    expect(typeof tableRef.current.scrollTo).toBe('function');
+    expect(typeof tableRef.current.scrollToItem).toBe('function');
+
+    // call functions
+    const tableInnerRef = tableRef.current.querySelector("div[class^='AnalyticalTable-table'] > div");
+    act(() => {
+      tableRef.current.scrollToItem(1, 'start');
+    });
+
+    expect(tableInnerRef.scrollTop).toBe(44);
+
+    act(() => {
+      tableRef.current.scrollTo(2);
+    });
+
+    expect(tableInnerRef.scrollTop).toBe(2);
+  });
+
+  test('with highlight row', () => {
+    const wrapper = mount(
+      <AnalyticalTable
+        title="Table Title"
+        data={data}
+        columns={columns}
+        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        withRowHighlight
+      />
     );
 
     expect(wrapper.render()).toMatchSnapshot();

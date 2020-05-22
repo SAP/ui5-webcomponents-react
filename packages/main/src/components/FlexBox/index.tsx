@@ -1,24 +1,22 @@
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '@ui5/webcomponents-react/lib/FlexBoxWrap';
-import React, { CSSProperties, FC, forwardRef, ReactNode, ReactNodeArray, Ref, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import React, { FC, forwardRef, ReactNode, ReactNodeArray, Ref } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Flexbox.jss';
 
-const useStyles = createUseStyles(styles, { name: 'FlexBox' });
+const useStyles = createComponentStyles(styles, { name: 'FlexBox' });
 
 export interface FlexBoxPropTypes extends CommonProps {
   alignItems?: FlexBoxAlignItems;
   direction?: FlexBoxDirection;
   displayInline?: boolean;
   fitContainer?: boolean;
-  height?: CSSProperties['height'];
   justifyContent?: FlexBoxJustifyContent;
-  width?: CSSProperties['width'];
   wrap?: FlexBoxWrap;
   children: ReactNode | ReactNodeArray;
 }
@@ -32,8 +30,6 @@ const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: 
     justifyContent,
     direction,
     alignItems,
-    height,
-    width,
     displayInline,
     wrap,
     style,
@@ -61,31 +57,10 @@ const FlexBox: FC<FlexBoxPropTypes> = forwardRef((props: FlexBoxPropTypes, ref: 
     flexBoxClasses.put(className);
   }
 
-  const memoizedStyles = useMemo(() => {
-    const innerStyles: CSSProperties = {};
-    if (height) {
-      innerStyles.height = height;
-    }
-    if (width) {
-      innerStyles.width = width;
-    }
-    if (style) {
-      Object.assign(innerStyles, style);
-    }
-    return innerStyles;
-  }, [height, width, style]);
-
   const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
-    <div
-      ref={ref}
-      className={flexBoxClasses.valueOf()}
-      style={memoizedStyles}
-      title={tooltip}
-      slot={slot}
-      {...passThroughProps}
-    >
+    <div ref={ref} className={flexBoxClasses.valueOf()} style={style} title={tooltip} slot={slot} {...passThroughProps}>
       {children}
     </div>
   );
@@ -95,9 +70,7 @@ FlexBox.defaultProps = {
   alignItems: FlexBoxAlignItems.Stretch,
   direction: FlexBoxDirection.Row,
   displayInline: false,
-  height: '',
   justifyContent: FlexBoxJustifyContent.Start,
-  width: '',
   wrap: FlexBoxWrap.NoWrap
 };
 FlexBox.displayName = 'FlexBox';

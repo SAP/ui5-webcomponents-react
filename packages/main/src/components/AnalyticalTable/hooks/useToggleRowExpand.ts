@@ -1,23 +1,31 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import { PluginHook } from 'react-table';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { useCallback } from 'react';
 
-export const useToggleRowExpand: PluginHook<any> = (hooks) => {
-  hooks.getExpandedToggleProps.push((rowProps, { row, instance }) => {
-    const { onRowExpandChange, isTreeTable } = instance.webComponentsReactProperties;
-    return {
-      ...rowProps,
-      onClick: (e) => {
-        e.stopPropagation();
-        e.persist();
-        row.toggleExpanded();
-        let column = null;
-        if (!isTreeTable) {
-          column = row.cells.find((cell) => cell.column.id === row.groupByID).column;
-        }
-
-        onRowExpandChange(Event.of(null, e, { row, column }));
+const getToggleRowExpandedProps = (rowProps, { row, instance }) => {
+  const { onRowExpandChange, isTreeTable } = instance.webComponentsReactProperties;
+  const onClick = useCallback(
+    (e) => {
+      e.stopPropagation();
+      e.persist();
+      row.toggleRowExpanded();
+      let column = null;
+      if (!isTreeTable) {
+        column = row.cells.find((cell) => cell.column.id === row.groupByID).column;
       }
-    };
-  });
+
+      onRowExpandChange(enrichEventWithDetails(e, { row, column }));
+    },
+    [row, isTreeTable, onRowExpandChange]
+  );
+  return [
+    rowProps,
+    {
+      onClick
+    }
+  ];
+};
+
+export const useToggleRowExpand = (hooks) => {
+  hooks.getToggleRowExpandedProps.push(getToggleRowExpandedProps);
 };
 useToggleRowExpand.pluginName = 'useToggleRowExpand';

@@ -1,10 +1,10 @@
-import { mountThemedComponent } from '@shared/tests/utils';
 import { Card } from '@ui5/webcomponents-react/lib/Card';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('Card', () => {
   test('Basic Test (generated)', () => {
-    const wrapper = mountThemedComponent(<Card />);
+    const wrapper = mount(<Card />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

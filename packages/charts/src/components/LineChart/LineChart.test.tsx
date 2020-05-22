@@ -1,15 +1,51 @@
-import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
+import { action } from '@storybook/addon-actions';
+import { boolean } from '@storybook/addon-knobs';
+import { mount } from 'enzyme';
 import * as React from 'react';
-import { labels, singleDataset } from '../../test/resources/ChartProps';
-import { LineChart } from './index';
+import { complexDataSet } from '../../resources/DemoProps';
+import { LineChart } from './LineChart';
 
 describe('LineChart', () => {
   test('Renders with data', () => {
-    renderThemedComponent(<LineChart labels={labels} datasets={singleDataset} />);
+    expect(
+      mount(
+        <LineChart
+          loading={boolean('loading', false)}
+          onDataPointClick={action('onDataPointClick')}
+          onLegendClick={action('onLegendClick')}
+          dataset={complexDataSet}
+          style={{ width: '100%' }}
+          dimensions={[
+            {
+              accessor: 'name',
+              formatter: (d) => `${d} 2019`,
+              interval: 0
+            }
+          ]}
+          measures={[
+            {
+              accessor: 'users',
+              label: 'Users',
+              formatter: (val) => val.toLocaleString()
+            },
+            {
+              accessor: 'sessions',
+              label: 'Active Sessions',
+              formatter: (val) => `${val} sessions`,
+              hideDataLabel: true
+            },
+            {
+              accessor: 'volume',
+              label: 'Vol.'
+            }
+          ]}
+        />
+      ).render()
+    ).toMatchSnapshot();
   });
 
   test('loading placeholder', () => {
-    const wrapper = mountThemedComponent(<LineChart labels={labels} datasets={[]} loading />);
+    const wrapper = mount(<LineChart style={{ width: '30%' }} dimensions={[]} measures={[]} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

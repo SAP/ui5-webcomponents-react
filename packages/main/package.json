@@ -1,10 +1,11 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.8.1",
+  "version": "0.10.0-rc.0",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "types": "index.d.ts",
+  "homepage": "https://sap.github.io/ui5-webcomponents-react",
   "repository": {
     "type": "git",
     "url": "https://github.com/SAP/ui5-webcomponents-react.git",
@@ -13,31 +14,36 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "sideEffects": [
-    "@ui5/webcomponents-icons/dist/icons/*"
+    "@ui5/webcomponents-icons/dist/icons/*",
+    "@ui5/webcomponents/dist/*",
+    "@ui5/webcomponents-fiori/dist/*",
+    "./dist/Assets.js",
+    "./dist/json-imports/*"
   ],
   "scripts": {
-    "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts",
-    "generateWebComponents": "ts-node -O '{\"module\": \"commonjs\"}' -r esm ./scripts/wrapperGeneration/index.js --onlyStopForMerge",
-    "build": "webpack --config ./scripts/wrapperGeneration/webpack.config.js",
-    "postbuild": "rollup -c rollup.config.js"
+    "clean": "rimraf cjs components enums interfaces internal lib webComponents index.esm.js index.d.ts dist",
+    "build": "npm-run-all -s build:i18n build:rollup",
+    "build:rollup": "rollup -c rollup.config.js",
+    "build:i18n": "npm-run-all -s build:i18n-bundles build:i18n-default build:i18n-imports build:assets",
+    "build:i18n-bundles": "mkdirp dist/assets/i18n && node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/toJSON.js src/i18n dist/assets/i18n",
+    "build:i18n-default": "node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/defaults.js src/i18n dist/assets/i18n && tsc dist/assets/i18n/i18n-defaults.js --allowJs --declaration --emitDeclarationOnly --declarationDir dist/assets/i18n",
+    "build:i18n-imports": "mkdirp dist/json-imports && node ../../node_modules/@ui5/webcomponents-tools/lib/generate-json-imports/i18n.js dist/assets/i18n dist/json-imports/",
+    "build:assets": "node ../../scripts/generate-assets/index.js"
   },
   "dependencies": {
-    "@ui5/webcomponents": "1.0.0-rc.5",
-    "@ui5/webcomponents-fiori": "1.0.0-rc.5",
-    "@ui5/webcomponents-icons": "1.0.0-rc.5",
-    "@ui5/webcomponents-react-base": "^0.8.0",
+    "@babel/runtime": "7.9.6",
+    "@ui5/webcomponents-react-base": "^0.10.0-rc.0",
     "lodash.debounce": "^4.0.8",
-    "react-content-loader": "^4.3.4",
-    "react-jss": "10.0.4",
-    "react-table": "7.0.0-rc.15",
-    "react-toastify": "^5.5.0",
-    "react-window": "^1.8.5"
-  },
-  "devDependencies": {
-    "diff": "^4.0.1",
-    "inquirer": "^7.0.0"
+    "react-content-loader": "^5.0.4",
+    "react-jss": "10.1.1",
+    "react-table": "7.0.4",
+    "react-virtual": "2.1.7"
   },
   "peerDependencies": {
+    "@ui5/webcomponents": "1.0.0-rc.7",
+    "@ui5/webcomponents-base": "0.20.0",
+    "@ui5/webcomponents-fiori": "1.0.0-rc.7",
+    "@ui5/webcomponents-icons": "1.0.0-rc.7",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },

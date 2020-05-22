@@ -2,10 +2,10 @@
 
 exports[`ObjectStatus ObjectStatus: state: Error 1`] = `
 <div
-  class="ObjectStatus--objectStatus-"
+  class="ObjectStatus-objectStatus-0"
 >
   <div
-    class="ObjectStatus--icon- ObjectStatus--iconError-"
+    class="ObjectStatus-icon-0 ObjectStatus-iconError-0"
   >
     <ui5-icon
       name="status-negative"
@@ -17,10 +17,10 @@ exports[`ObjectStatus ObjectStatus: state: Error 1`] = `
 
 exports[`ObjectStatus ObjectStatus: state: Information 1`] = `
 <div
-  class="ObjectStatus--objectStatus-"
+  class="ObjectStatus-objectStatus-0"
 >
   <div
-    class="ObjectStatus--icon- ObjectStatus--iconInformation-"
+    class="ObjectStatus-icon-0 ObjectStatus-iconInformation-0"
   >
     <ui5-icon
       name="hint"
@@ -32,10 +32,10 @@ exports[`ObjectStatus ObjectStatus: state: Information 1`] = `
 
 exports[`ObjectStatus ObjectStatus: state: None 1`] = `
 <div
-  class="ObjectStatus--objectStatus-"
+  class="ObjectStatus-objectStatus-0"
 >
   <div
-    class="ObjectStatus--icon- ObjectStatus--iconNone-"
+    class="ObjectStatus-icon-0 ObjectStatus-iconNone-0"
   >
     <ui5-icon
       name="status-inactive"
@@ -47,10 +47,10 @@ exports[`ObjectStatus ObjectStatus: state: None 1`] = `
 
 exports[`ObjectStatus ObjectStatus: state: Success 1`] = `
 <div
-  class="ObjectStatus--objectStatus-"
+  class="ObjectStatus-objectStatus-0"
 >
   <div
-    class="ObjectStatus--icon- ObjectStatus--iconSuccess-"
+    class="ObjectStatus-icon-0 ObjectStatus-iconSuccess-0"
   >
     <ui5-icon
       name="status-positive"
@@ -62,10 +62,10 @@ exports[`ObjectStatus ObjectStatus: state: Success 1`] = `
 
 exports[`ObjectStatus ObjectStatus: state: Warning 1`] = `
 <div
-  class="ObjectStatus--objectStatus-"
+  class="ObjectStatus-objectStatus-0"
 >
   <div
-    class="ObjectStatus--icon- ObjectStatus--iconWarning-"
+    class="ObjectStatus-icon-0 ObjectStatus-iconWarning-0"
   >
     <ui5-icon
       name="status-critical"
@@ -77,10 +77,10 @@ exports[`ObjectStatus ObjectStatus: state: Warning 1`] = `
 
 exports[`ObjectStatus Render without Crashing 1`] = `
 <div
-  class="ObjectStatus--objectStatus-"
+  class="ObjectStatus-objectStatus-0"
 >
   <div
-    class="ObjectStatus--icon- ObjectStatus--iconError-"
+    class="ObjectStatus-icon-0 ObjectStatus-iconError-0"
   >
     <ui5-icon
       name="status-negative"
@@ -88,7 +88,7 @@ exports[`ObjectStatus Render without Crashing 1`] = `
     />
   </div>
   <span
-    class="ObjectStatus--textError-"
+    class="ObjectStatus-textError-0"
   >
     Hello
   </span>
@@ -97,10 +97,10 @@ exports[`ObjectStatus Render without Crashing 1`] = `
 
 exports[`ObjectStatus Text Deprecation 1`] = `
 <div
-  class="ObjectStatus--objectStatus-"
+  class="ObjectStatus-objectStatus-0"
 >
   <div
-    class="ObjectStatus--icon- ObjectStatus--iconError-"
+    class="ObjectStatus-icon-0 ObjectStatus-iconError-0"
   >
     <ui5-icon
       name="status-negative"
@@ -108,7 +108,7 @@ exports[`ObjectStatus Text Deprecation 1`] = `
     />
   </div>
   <span
-    class="ObjectStatus--textError-"
+    class="ObjectStatus-textError-0"
   >
     Hello
   </span>

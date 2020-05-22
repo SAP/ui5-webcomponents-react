@@ -28,12 +28,12 @@ const refreshCSSClasses = (sSetName, sRangeName, bRemove?) => {
 };
 
 export class Media {
-  private readonly media_timeout;
+  private readonly mediaTimeout;
   public matches;
 
   constructor(supportInstance) {
     support = supportInstance;
-    this.media_timeout = support.matchmedialistener ? 0 : 100;
+    this.mediaTimeout = support.matchmedialistener ? 0 : 100;
     this.matches = support.matchmedia ? match : matchLegacy;
     this.initRangeSet();
     this.initRangeSet(RANGESETS.SAP_STANDARD_EXTENDED);
@@ -124,7 +124,7 @@ export class Media {
       if (mParams) {
         EventRegistry.fireEvent(`media_${name}`, mParams);
       }
-    }, this.media_timeout);
+    }, this.mediaTimeout);
   }
 
   public attachHandler(fnFunction, oListener, sName) {
@@ -164,7 +164,9 @@ export class Media {
     oConfig.currentquery = null;
     oConfig.listener = () => this.handleChange(sName);
 
-    let from, to, query;
+    let from;
+    let to;
+    let query;
     const aPoints = oConfig.points;
     for (let i = 0, len = aPoints.length; i <= len; i++) {
       from = i === 0 ? 0 : aPoints[i - 1];
@@ -186,8 +188,7 @@ export class Media {
     if (support.matchmedialistener) {
       // FF, Safari, Chrome, IE10?
       const queries = oConfig.queries;
-      for (let i = 0; i < queries.length; i++) {
-        const q = queries[i];
+      for (const q of queries) {
         q.media = window.matchMedia(q.query);
         q.media.addListener(oConfig.listener);
       }
@@ -232,8 +233,8 @@ export class Media {
     if (support.matchmedialistener) {
       // FF, Safari, Chrome, IE10?
       const queries = oConfig.queries;
-      for (let i = 0; i < queries.length; i++) {
-        queries[i].media.removeListener(oConfig.listener);
+      for (const q of queries) {
+        q.media.removeListener(oConfig.listener);
       }
     } else {
       // IE, Safari (<6?)

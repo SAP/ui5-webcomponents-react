@@ -1,8 +1,10 @@
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Size } from '@ui5/webcomponents-react/lib/Size';
 import React, { FC, forwardRef, RefObject, useEffect, useState } from 'react';
-import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Spinner.jss';
 
@@ -14,7 +16,7 @@ export interface SpinnerProps extends CommonProps {
   size?: Size;
 }
 
-const useStyles = createUseStyles(styles, { name: 'Spinner' });
+const useStyles = createComponentStyles(styles, { name: 'Spinner' });
 
 /**
  * <code>import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';</code>
@@ -32,14 +34,20 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
   spinnerClasses.put(classes[`spinner${size}`]);
 
   useEffect(() => {
+    let timeout;
     if (delay > 0) {
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         setIsVisible(true);
       }, delay);
     }
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
 
   const passThroughProps = usePassThroughHtmlProps(props);
+
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   if (!isVisible) {
     return null;
@@ -55,7 +63,7 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
       tabIndex={0}
       aria-valuemin={0}
       aria-valuemax={100}
-      title={tooltip || 'Please wait'}
+      title={tooltip || i18nBundle.getText(PLEASE_WAIT)}
       slot={slot}
       style={style}
       {...passThroughProps}

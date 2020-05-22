@@ -1,80 +1,82 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
-const styles = ({ parameters }: JSSTheme) => ({
+const ObjectPageCssVariables = {
+  anchorFloat: '--_ui5wcr_ObjectPage_actions_float',
+  anchorLeft: '--_ui5wcr_ObjectPage_actions_left',
+  anchorRight: '--_ui5wcr_ObjectPage_actions_right',
+  avatarMargin: '--_ui5wcr_ObjectPage_avatar_margin'
+};
+
+const styles = {
   objectPage: {
     width: '100%',
     height: '100%',
+    maxHeight: '100vh',
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    isolation: 'isolate',
     whiteSpace: 'normal',
-    fontFamily: parameters.sapUiFontFamily,
-    backgroundColor: parameters.sapUiBaseBG
-  },
-  contentContainer: {
+    fontFamily: ThemingParameters.sapFontFamily,
+    backgroundColor: ThemingParameters.sapBackgroundColor,
     overflowX: 'hidden',
     overflowY: 'auto',
-    position: 'relative',
-    flexGrow: 1
-  },
-  outerContentContainer: {
-    width: '100%',
-    height: '100%',
-    overflow: 'hidden'
-  },
-  contentScrollContainer: {
-    position: 'relative'
-  },
-  anchorBar: {
-    paddingLeft: '2rem',
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
-    boxShadow: `inset 0 -0.0625rem ${parameters.sapUiObjectHeaderBorderColor}, inset 0 0.0625rem ${parameters.sapUiObjectHeaderBorderColor}`,
-    display: 'flex',
-    height: '2.75rem',
-    minHeight: '2.75rem',
-    position: 'relative'
-  },
-  sectionsContainer: {
-    '&:before': {
-      display: 'table',
-      content: '""'
-    },
-    '& :first-child > div[role="heading"]': {
+    '& section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'none'
     },
-    position: 'relative',
-    height: '100%',
-    // overflowX: 'hidden',
-    // overflowY: 'auto',
-    overflow: 'hidden',
-    backgroundColor: parameters.sapUiBaseBG,
-    '&:after': {
-      clear: 'both',
-      display: 'table',
-      content: '""'
+    // explanation why first-child selector is not sufficient here:
+    // https://stackoverflow.com/questions/7128406/css-select-the-first-child-from-elements-with-particular-attribute
+    '& section[id*="ObjectPageSection-"] ~ section[id*="ObjectPageSection-"] > div[role="heading"]': {
+      display: 'block'
     }
   },
-  fillerDiv: {
-    backgroundColor: parameters.sapUiBaseBG
+  '@global html': {
+    [ObjectPageCssVariables.anchorFloat]: 'right',
+    [ObjectPageCssVariables.anchorRight]: '1.25rem',
+    [ObjectPageCssVariables.anchorLeft]: 'unset',
+    [ObjectPageCssVariables.avatarMargin]: '0 1rem 0 0'
+  },
+  '@global [dir="rtl"]': {
+    [ObjectPageCssVariables.anchorFloat]: 'left',
+    [ObjectPageCssVariables.anchorRight]: 'unset',
+    [ObjectPageCssVariables.anchorLeft]: '1.25rem',
+    [ObjectPageCssVariables.avatarMargin]: '0 0 0 1rem'
+  },
+  iconTabBarMode: {
+    '& section[data-component-name="ObjectPageSection"] > div[role="heading"]': {
+      display: 'none'
+    }
+  },
+  noHeader: {
+    '& $header': {
+      display: 'none'
+    },
+    '& $contentHeader': {
+      display: 'none'
+    }
+  },
+  headerCollapsed: {
+    '& $contentHeader': {
+      display: 'none'
+    }
   },
   // header
   header: {
     flexShrink: 0,
-    position: 'relative',
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
-    '&$stickied': {
-      '& $image': {
-        opacity: '1',
-        height: '3rem',
-        width: '3rem',
-        margin: '0.25rem 1rem 0.25rem 0'
-      }
-    }
+    backgroundColor: ThemingParameters.sapObjectHeader_Background,
+    position: 'sticky',
+    top: 0,
+    zIndex: 2
   },
   contentHeader: {
-    backgroundColor: parameters.sapUiObjectHeaderBackground,
-    position: 'relative'
+    backgroundColor: ThemingParameters.sapObjectHeader_Background,
+    position: 'sticky',
+    paddingBottom: '0.25rem',
+    maxHeight: '500px',
+    overflow: 'hidden',
+    paddingLeft: '2rem'
+  },
+  anchorBar: {
+    position: 'sticky',
+    zIndex: 2,
+    '--_ui5_tc_header_box_shadow': 'inset 0px -1px 0 0px rgba(0,0,0,0.15)'
   },
   titleBar: {
     padding: '0.5rem 2rem',
@@ -82,58 +84,39 @@ const styles = ({ parameters }: JSSTheme) => ({
     position: 'relative'
   },
   container: {
-    display: 'inline-block',
-    lineHeight: 'normal',
-    verticalAlign: 'middle',
     width: '70%',
     boxSizing: 'border-box'
-    // paddingTop: '1.5rem'
   },
   title: {
-    fontSize: '1.375rem',
-    paddingRight: '1rem',
-    verticalAlign: 'baseline',
-    lineHeight: 'normal',
-    display: 'inline-block',
-    margin: '0',
-    fontWeight: 'normal',
-    color: parameters.sapUiBaseText
+    padding: '0.3125rem 0 0 0'
   },
   subTitle: {
-    display: 'inline-block',
-    wordBreak: 'break-word',
     verticalAlign: 'baseline',
-    paddingTop: '0.5rem',
-    paddingBottom: '0.5rem',
-    fontSize: '0.875rem',
-    color: parameters.sapUiContentLabelColor
+    padding: '0 0 0.5rem 0.5rem'
   },
   actions: {
     position: 'absolute',
     top: '0',
     paddingTop: '0.75rem',
     zIndex: 1,
-    right: '1.25rem',
+    right: `var(${ObjectPageCssVariables.anchorRight})`,
+    left: `var(${ObjectPageCssVariables.anchorLeft})`,
     display: 'inline-block',
-    float: 'right',
+    float: `var(${ObjectPageCssVariables.anchorFloat})`,
     verticalAlign: 'top',
     '& > *': {
       marginLeft: '0.5rem',
       padding: 0
     }
   },
-  stickied: {},
-  headerContent: {
-    //paddingTop: '1.5rem',
-    paddingBottom: '0.25rem',
-    transition: 'max-height 0.5s',
-    maxHeight: '500px',
-    overflow: 'hidden',
-    paddingLeft: '2rem',
-    position: 'relative'
-  },
   titleInHeaderContent: {
-    '& $headerContent': {
+    '& $subTitle': {
+      padding: '0.5rem 0'
+    },
+    '& $keyInfos': {
+      alignSelf: 'unset'
+    },
+    '& contentHeader': {
       paddingTop: 0,
       '& > *': {
         display: 'flex',
@@ -143,20 +126,6 @@ const styles = ({ parameters }: JSSTheme) => ({
           marginBottom: '1rem'
         }
       }
-    },
-    '& $actions': {
-      // paddingTop: 0
-    }
-  },
-  alwaysVisibleHeader: {
-    '& $headerContent': {
-      paddingLeft: 0
-    },
-    '& $contentHeader': {
-      marginTop: '0.5rem'
-    },
-    '& $titleBar': {
-      paddingBottom: 0
     }
   },
   headerCustomContent: {
@@ -192,18 +161,12 @@ const styles = ({ parameters }: JSSTheme) => ({
       marginLeft: '1rem'
     },
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignSelf: 'center'
   },
   avatar: {
-    marginRight: '1rem'
-  },
-  toggleHeaderButton: {
-    position: 'absolute',
-    '--_ui5_button_compact_height': '1.25rem',
-    '--_ui5_button_base_height': '1.25rem',
-    top: `-0.625rem`,
-    left: 'calc(50% - 1rem)'
+    margin: `var(${ObjectPageCssVariables.avatarMargin})`
   }
-});
+};
 
 export default styles;

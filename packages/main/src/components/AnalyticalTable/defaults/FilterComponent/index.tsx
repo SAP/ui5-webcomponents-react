@@ -7,7 +7,7 @@ export /**
 const DefaultFilterComponent: FC<any> = ({ column }) => {
   const handleChange = useCallback(
     (e) => {
-      column.setFilter(e.getParameter('value'));
+      column.setFilter(e.target.value || undefined);
     },
     [column.setFilter]
   );

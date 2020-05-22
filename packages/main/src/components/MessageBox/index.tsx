@@ -4,8 +4,27 @@ import '@ui5/webcomponents-icons/dist/icons/message-information';
 import '@ui5/webcomponents-icons/dist/icons/message-success';
 import '@ui5/webcomponents-icons/dist/icons/message-warning';
 import '@ui5/webcomponents-icons/dist/icons/question-mark';
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+
+import {
+  CONFIRMATION,
+  ERROR,
+  HIGHLIGHT,
+  INFORMATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  SUCCESS,
+  WARNING
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
@@ -15,12 +34,21 @@ import { MessageBoxTypes } from '@ui5/webcomponents-react/lib/MessageBoxTypes';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, useEffect, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import styles from './MessageBox.jss';
+
+const actionTextMap = new Map();
+actionTextMap.set(MessageBoxActions.ABORT, ABORT);
+actionTextMap.set(MessageBoxActions.CANCEL, CANCEL);
+actionTextMap.set(MessageBoxActions.CLOSE, CLOSE);
+actionTextMap.set(MessageBoxActions.DELETE, DELETE);
+actionTextMap.set(MessageBoxActions.IGNORE, IGNORE);
+actionTextMap.set(MessageBoxActions.NO, NO);
+actionTextMap.set(MessageBoxActions.OK, OK);
+actionTextMap.set(MessageBoxActions.RETRY, RETRY);
+actionTextMap.set(MessageBoxActions.YES, YES);
 
 export interface MessageBoxPropTypes extends CommonProps {
   open?: boolean;
@@ -29,16 +57,18 @@ export interface MessageBoxPropTypes extends CommonProps {
   actions?: MessageBoxActions[];
   icon?: ReactNode;
   type?: MessageBoxTypes;
-  onClose: (event: Event) => void;
+  onClose: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'MessageBox' });
+const useStyles = createComponentStyles(styles, { name: 'MessageBox' });
 
 /**
  * <code>import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';</code>
  */
 const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
   const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
+
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const classes = useStyles();
 
@@ -68,20 +98,20 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     }
     switch (type) {
       case MessageBoxTypes.CONFIRM:
-        return 'Confirmation';
+        return i18nBundle.getText(CONFIRMATION);
       case MessageBoxTypes.ERROR:
-        return 'Error';
+        return i18nBundle.getText(ERROR);
       case MessageBoxTypes.INFORMATION:
-        return 'Information';
+        return i18nBundle.getText(INFORMATION);
       case MessageBoxTypes.SUCCESS:
-        return 'Success';
+        return i18nBundle.getText(SUCCESS);
       case MessageBoxTypes.WARNING:
-        return 'Warning';
+        return i18nBundle.getText(WARNING);
       case MessageBoxTypes.HIGHLIGHT:
-        return 'Highlight';
+        return i18nBundle.getText(HIGHLIGHT);
     }
     return null;
-  }, [title, type]);
+  }, [title, type, i18nBundle]);
 
   const actionsToRender = useMemo(() => {
     if (actions && actions.length > 0) {
@@ -98,22 +128,34 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
 
   const handleOnClose = useCallback(
     (e) => {
-      const action = e.getHtmlSourceElement().dataset.action;
-      onClose(Event.of(null, e, { action }));
+      const { action } = e.target.dataset;
+      onClose(enrichEventWithDetails(e, { action }));
     },
     [onClose]
   );
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const dialogRef = useConsolidatedRef<Ui5DialogDomRef>(ref);
+
+  useEffect(() => {
+    if (dialogRef.current) {
+      if (open) {
+        dialogRef.current.open();
+      } else {
+        dialogRef.current.close();
+      }
+    }
+  }, [open, dialogRef]);
+
+  const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
 
   return (
     <Dialog
-      open={open}
       slot={slot}
-      ref={ref}
+      ref={dialogRef}
       style={style}
       tooltip={tooltip}
       className={className}
+      onAfterClose={open ? handleOnClose : null}
       header={
         <header className={classes.header} data-type={type}>
           {!!iconToRender && <div className={classes.icon}>{iconToRender}</div>}
@@ -122,19 +164,22 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       }
       footer={
         <footer className={classes.footer}>
-          {actionsToRender.map((action, index) => (
-            <Button
-              style={{
-                minWidth: '4rem'
-              }}
-              key={action}
-              design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
-              onClick={handleOnClose}
-              data-action={action}
-            >
-              {action}
-            </Button>
-          ))}
+          {actionsToRender.map((action, index) => {
+            const text = i18nBundle.getText(actionTextMap.get(action));
+            return (
+              <Button
+                style={{
+                  minWidth: '4rem'
+                }}
+                key={action}
+                design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+                onClick={handleOnClose}
+                data-action={action}
+              >
+                {text}
+              </Button>
+            );
+          })}
         </footer>
       }
       {...passThroughProps}

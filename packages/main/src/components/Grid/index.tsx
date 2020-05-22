@@ -1,6 +1,8 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
+import { GridPosition } from '@ui5/webcomponents-react/lib/GridPosition';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import React, {
   Children,
   CSSProperties,
@@ -10,162 +12,123 @@ import React, {
   ReactNode,
   ReactNodeArray,
   Ref,
-  useMemo
+  useCallback
 } from 'react';
-import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Grid.jss';
 
-export enum GridPosition {
-  Left = 'Left',
-  Center = 'Center',
-  Right = 'Right'
-}
-
 export interface GridPropTypes extends CommonProps {
   /**
-   * Width of the Grid. If not specified, then 100%.
+   * Vertical spacing between the rows in the Grid. If not specified, then 1rem.
    */
-  width?: CSSProperties['width'];
+  vSpacing?: CSSProperties['height'];
   /**
-   * Vertical spacing between the rows in the Grid. In rem, allowed values are 0, 0.5, 1 and 2.
+   * Horizontal spacing between the content in the Grid. If not specified, then 1rem.
    */
-  vSpacing?: 0 | 0.5 | 1 | 2;
-  /**
-   * Horizontal spacing between the content in the Grid. In rem, allowed values are 0, 0.5 , 1 or 2.
-   */
-  hSpacing?: 0 | 0.5 | 1 | 2;
+  hSpacing?: CSSProperties['width'];
   /**
    * Position of the Grid in the window or surrounding container. Possible values are "Center", "Left" and "Right".
    */
   position?: GridPosition;
   /**
-   * A string type that represents Grid's default span values for large, medium and small screens for the whole Grid.
-   * Allowed values are separated by space Letters L, M or S followed by number of columns from 1 to 12 that the container has to take, for example: "L2 M4 S6", "M12", "s10" or "l4 m4".
-   * Note that the parameters has to be provided in the order large medium small.
+   * A string type that represents Grid's default span values for very large, large, medium and small screens for the whole Grid.
+   * Allowed values are separated by space Letters XL, L, M or S followed by number of columns from 1 to 12 that the container has to take, for example: "L2 M4 S6", "M12", "s10" or "l4 m4".
+   * Note that the parameters has to be provided in the order very large, large, medium, small.
+   * <br />
+   * You can override this default span on each child element by setting the prop `data-layout-span`.
    */
   defaultSpan?: string;
   /**
-   * Defines default for the whole Grid numbers of empty columns before the current span begins. It can be defined for large, medium and small screens.
-   * Allowed values are separated by space Letters L, M or S followed by number of columns from 0 to 11 that the container has to take, for example: "L2 M4 S6", "M11", "s10" or "l4 m4".
-   * Note that the parameters has to be provided in the order large medium small.
+   * Defines default for the whole Grid numbers of empty columns before the current span begins. It can be defined for very large, large, medium and small screens.
+   * Allowed values are separated by space Letters XL, L, M or S followed by number of columns from 0 to 12 that the container has to take, for example: "L2 M4 S6", "M11", "s10" or "l4 m4".
+   * Note that the parameters has to be provided in the order very-large, large, medium, small.
+   * <br />
+   * You can override this default indent on each child element by setting the prop `data-layout-indent`.
    */
   defaultIndent?: string;
-  /**
-   * If true then not the media Query ( device screen size), but the size of the container surrounding the grid defines the current range (large, medium or small).
-   */
-  containerQuery?: boolean;
   /**
    * Components that are placed into Grid layout.
    */
   children: ReactNode | ReactNodeArray;
 }
 
-const INDENT_PATTERN = /^([X][L](?:[0-9]|1[0-1]))? ?([L](?:[0-9]|1[0-1]))? ?([M](?:[0-9]|1[0-1]))? ?([S](?:[0-9]|1[0-1]))?$/i;
-const SPAN_PATTERN = /^([X][L](?:[1-9]|1[0-2]))? ?([L](?:[1-9]|1[0-2]))? ?([M](?:[1-9]|1[0-2]))? ?([S](?:[1-9]|1[0-2]))?$/i;
+const INDENT_PATTERN = /^([X][L](?<LargeDesktop>[0-9]|1[0-2]))? ?([L](?<Desktop>[0-9]|1[0-2]))? ?([M](?<Tablet>[0-9]|1[0-2]))? ?([S](?<Phone>[0-9]|1[0-2]))?$/i;
+const SPAN_PATTERN = /^([X][L](?<LargeDesktop>[1-9]|1[0-2]))? ?([L](?<Desktop>[1-9]|1[0-2]))? ?([M](?<Tablet>[1-9]|1[0-2]))? ?([S](?<Phone>[1-9]|1[0-2]))?$/i;
 
-const getCurrentSpan = () => {
-  const classList = document.querySelector('html').classList;
-  const isXL = classList.contains('sapUiMedia-StdExt-LargeDesktop');
-  const isL = !isXL && classList.contains('sapUiMedia-Std-Desktop');
-  const isM = !isL && classList.contains('sapUiMedia-Std-Tablet');
-  const isS = !isM && classList.contains('sapUiMedia-Std-Phone');
-  return [false, isXL, isL, isM, isS].indexOf(true);
-};
+const DefaultSpanMap = new Map();
+DefaultSpanMap.set('Phone', 1);
+DefaultSpanMap.set('Tablet', 2);
+DefaultSpanMap.set('Desktop', 4);
+DefaultSpanMap.set('LargeDesktop', 4);
 
-const getSpanFromString = (span) => {
-  const currentSpan = getCurrentSpan();
+const DefaultIndentMap = new Map();
+DefaultIndentMap.set('Phone', 0);
+DefaultIndentMap.set('Tablet', 0);
+DefaultIndentMap.set('Desktop', 0);
+DefaultIndentMap.set('LargeDesktop', 0);
+
+const getSpanFromString = (span, currentRange) => {
   const spanConfig = SPAN_PATTERN.exec(span);
-  return spanConfig[currentSpan]
-    ? parseInt(spanConfig[currentSpan].replace(/[XLMS]{0,2}/g, ''), 10)
-    : [undefined, 3, 3, 6, 12][currentSpan];
+  return spanConfig?.groups[currentRange] ?? DefaultSpanMap.get(currentRange);
 };
 
-const getIndentFromString = (indent) => {
-  const currentSpan = getCurrentSpan();
+const getIndentFromString = (indent, currentRange) => {
   const indentConfig = INDENT_PATTERN.exec(indent);
-  return indentConfig[currentSpan]
-    ? parseInt(indentConfig[currentSpan].replace(/[XLMS]{0,2}/g, ''), 10)
-    : [undefined, 0, 0, 0, 0][currentSpan];
+  return indentConfig?.groups[currentRange] ?? DefaultIndentMap.get(currentRange);
 };
 
-const useStyles = createUseStyles(styles, { name: 'Grid' });
+const useStyles = createComponentStyles(styles, { name: 'Grid' });
 
 /**
  * <code>import { Grid } from '@ui5/webcomponents-react/lib/Grid';</code>
  */
 const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
-    children,
-    hSpacing,
-    vSpacing,
     position,
-    width,
+    children,
+    hSpacing = '1rem',
+    vSpacing = '1rem',
     style,
     className,
     tooltip,
     slot,
-    defaultIndent,
-    defaultSpan
+    defaultIndent = 'XL0 L0 M0 S0',
+    defaultSpan = 'XL3 L3 M6 S12'
   } = props;
-
-  const currentRange = useViewportRange('StdExt');
-
   const classes = useStyles();
+  const currentRange = useViewportRange('StdExt');
   const gridClasses = StyleClassHelper.of(classes.grid);
-  gridClasses.put(classes[`gridHSpace${hSpacing === 0.5 ? '05' : hSpacing}`]);
-  gridClasses.put(classes[`gridVSpace${vSpacing === 0.5 ? '05' : vSpacing}`]);
 
   if (GridPosition.Center === position) {
-    gridClasses.put(classes.gridPositionCenter);
+    gridClasses.put(classes.positionCenter);
   }
 
   if (GridPosition.Right === position) {
-    gridClasses.put(classes.gridPositionRight);
+    gridClasses.put(classes.positionRight);
   }
-
-  const gridStyle: CSSProperties = useMemo(() => {
-    const styles: CSSProperties = {};
-    if (width !== '100%' && width !== 'auto' && width !== 'inherit') {
-      if (hSpacing === 0) {
-        styles.width = width;
-      } else {
-        styles.width = `calc(${width} - ${hSpacing}rem)`;
-      }
-    }
-    if (style) {
-      Object.assign(styles, style);
-    }
-
-    return styles;
-  }, [width, hSpacing, style]);
 
   if (className) {
     gridClasses.put(className);
   }
 
-  const renderGridElements = (child: ReactElement<any>) => {
-    const span = getSpanFromString(defaultSpan);
-    const indentSpan = getIndentFromString(defaultIndent);
+  const renderGridElements = useCallback(
+    (child: ReactElement<any>) => {
+      if (!child) return null;
 
-    const gridSpanClasses = StyleClassHelper.of(classes.gridSpan);
-    if (child.props['data-layout'] && child.props['data-layout'].span) {
-      const childSpan = getSpanFromString(child.props['data-layout'].span);
-      gridSpanClasses.put(classes[`gridSpan${childSpan}`]);
-    } else {
-      gridSpanClasses.put(classes[`gridSpan${span}`]);
-    }
+      const childSpan = getSpanFromString(child.props['data-layout-span'] ?? defaultSpan, currentRange);
+      let childClass = classes[`gridSpan${childSpan}`];
 
-    if (child.props['data-layout'] && child.props['data-layout'].indent) {
-      const childIndent = getIndentFromString(child.props['data-layout'].indent);
-      if (childIndent && childIndent > 0) {
-        gridSpanClasses.put(classes[`gridIndent${childIndent}`]);
+      const childrenWithGridLayout = [<div className={childClass}>{child}</div>];
+
+      const indentSpan = getIndentFromString(child.props['data-layout-indent'] ?? defaultIndent, currentRange);
+      if (indentSpan && indentSpan > 0) {
+        childrenWithGridLayout.unshift(<span className={classes[`gridSpan${indentSpan}`]} />);
       }
-    } else if (indentSpan && indentSpan > 0) {
-      gridSpanClasses.put(classes[`gridIndent${indentSpan}`]);
-    }
-    return <div className={gridSpanClasses.valueOf()}>{child}</div>;
-  };
+
+      return childrenWithGridLayout;
+    },
+    [currentRange, defaultSpan, defaultIndent, classes]
+  );
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
@@ -173,7 +136,7 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
     <div
       ref={ref}
       className={gridClasses.valueOf()}
-      style={gridStyle}
+      style={{ gridRowGap: vSpacing, gridColumnGap: hSpacing, ...style }}
       title={tooltip}
       slot={slot}
       {...passThroughProps}
@@ -184,14 +147,5 @@ const Grid: FC<GridPropTypes> = forwardRef((props: GridPropTypes, ref: Ref<HTMLD
 });
 
 Grid.displayName = 'Grid';
-Grid.defaultProps = {
-  width: '100%',
-  vSpacing: 1,
-  hSpacing: 1,
-  position: GridPosition.Left,
-  defaultSpan: 'XL3 L3 M6 S12',
-  defaultIndent: 'XL0 L0 M0 S0',
-  containerQuery: false
-};
 
 export { Grid };

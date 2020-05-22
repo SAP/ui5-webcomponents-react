@@ -1,23 +1,27 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { RefObject, useImperativeHandle, useRef } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import { AnalyticalTableDomRef } from '../../../interfaces/AnalyticalTableDomRef';
 
 export const useTableScrollHandles = (ref) => {
   const analyticalTableRef: RefObject<AnalyticalTableDomRef> = useConsolidatedRef(ref);
-  const reactWindowRef = useRef(null);
-  // @ts-ignore
-  useImperativeHandle(analyticalTableRef, () => ({
-    scrollTo: (...args) => {
-      if (reactWindowRef.current) {
-        reactWindowRef.current.scrollTo(...args);
-      }
-    },
-    scrollToItem: (...args) => {
-      if (reactWindowRef.current) {
-        reactWindowRef.current.scrollToItem(...args);
-      }
+  const reactWindowRef = useRef<any>({});
+
+  useEffect(() => {
+    if (analyticalTableRef.current) {
+      Object.assign(analyticalTableRef.current, {
+        scrollTo: (offset, align) => {
+          if (typeof reactWindowRef.current?.scrollToOffset === 'function') {
+            reactWindowRef.current.scrollToOffset(offset, { align });
+          }
+        },
+        scrollToItem: (index, align) => {
+          if (typeof reactWindowRef.current?.scrollToIndex === 'function') {
+            reactWindowRef.current.scrollToIndex(index, { align });
+          }
+        }
+      });
     }
-  }));
+  }, [analyticalTableRef.current, reactWindowRef.current.scrollToIndex, reactWindowRef.current.scrollToOffset]);
 
   return [analyticalTableRef, reactWindowRef];
 };

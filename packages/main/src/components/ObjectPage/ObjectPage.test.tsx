@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, getEventFromCallback, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest, getEventFromCallback } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
@@ -13,7 +14,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React from 'react';
 import * as sinon from 'sinon';
 
-const renderHeaderContent = () => (
+const headerContent = (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
     <Link href="https://www.sap.com">www.myurl.com</Link>
     <Text>Address 1</Text>
@@ -27,7 +28,7 @@ const renderComponent = (mode = ObjectPageMode.Default) => (
     title="Fiori Object Page Title"
     subTitle="Sub Title"
     headerActions={[<Button key="Actions">Action</Button>]}
-    renderHeaderContent={renderHeaderContent}
+    headerContent={headerContent}
     showHideHeaderButton
     mode={mode}
   >
@@ -65,7 +66,7 @@ const renderComponentWithSections = () => (
     title="Fiori Object Page Title"
     subTitle="Sub Title"
     headerActions={[<Button key="Actions">Action</Button>]}
-    renderHeaderContent={renderHeaderContent}
+    headerContent={headerContent}
     mode={ObjectPageMode.Default}
   >
     <ObjectPageSection title="Test 1" id="1">
@@ -82,22 +83,22 @@ const renderComponentWithSections = () => (
 
 describe('ObjectPage', () => {
   test('With Subsections', () => {
-    const wrapper = mountThemedComponent(renderComponent(), {}, { attachTo: document.body });
+    const wrapper = mount(renderComponent());
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Only Sections', () => {
-    const wrapper = mountThemedComponent(renderComponentWithSections());
+    const wrapper = mount(renderComponentWithSections());
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('IconTabBar Mode', () => {
-    const wrapper = mountThemedComponent(renderComponent(ObjectPageMode.IconTabBar));
+    const wrapper = mount(renderComponent(ObjectPageMode.IconTabBar));
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Just Some Sections', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
@@ -108,7 +109,7 @@ describe('ObjectPage', () => {
   });
 
   test('Not crashing with 1 section - Default Mode', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
       </ObjectPage>
@@ -118,7 +119,7 @@ describe('ObjectPage', () => {
   });
 
   test('Not crashing with 1 section - IconTabBar Mode', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
       </ObjectPage>
@@ -128,13 +129,13 @@ describe('ObjectPage', () => {
   });
 
   test('Not crashing with 0 sections', () => {
-    const wrapper = mountThemedComponent(<ObjectPage mode={ObjectPageMode.IconTabBar} />);
+    const wrapper = mount(<ObjectPage mode={ObjectPageMode.IconTabBar} />);
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('Set selected section id', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage selectedSectionId={'2'} mode={ObjectPageMode.IconTabBar}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
@@ -145,21 +146,18 @@ describe('ObjectPage', () => {
 
   test.skip('onSelectedSectionChangedHandler', () => {
     const callback = sinon.spy();
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage selectedSectionId={'2'} mode={ObjectPageMode.IconTabBar} onSelectedSectionChanged={callback}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>
     );
-    wrapper
-      .find('section[role="navigation"] ui5-button')
-      .first()
-      .simulate('click');
-    expect(getEventFromCallback(callback).getParameter('selectedSectionId')).toEqual('1');
+    wrapper.find('section[role="navigation"] ui5-button').first().simulate('click');
+    expect(getEventFromCallback(callback).detail.selectedSectionId).toEqual('1');
   });
 
   test('No Header', () => {
-    const wrapper = mountThemedComponent(
+    const wrapper = mount(
       <ObjectPage selectedSectionId={'2'} noHeader>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
@@ -168,7 +166,7 @@ describe('ObjectPage', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  const renderKeyInfos = () => (
+  const keyInfos = (
     <>
       <div>
         <Title level={TitleLevel.H5}>Key Info 1</Title>
@@ -185,7 +183,7 @@ describe('ObjectPage', () => {
     </>
   );
 
-  const renderBreadcrumbs = () => (
+  const breadcrumbs = (
     <Breadcrumbs>
       <Link href="PathSegment1">Path1</Link>
       <Link href="PathSegment2">Path2</Link>
@@ -194,8 +192,8 @@ describe('ObjectPage', () => {
   );
 
   test('Key Infos', () => {
-    const wrapper = mountThemedComponent(
-      <ObjectPage renderKeyInfos={renderKeyInfos} renderBreadcrumbs={renderBreadcrumbs}>
+    const wrapper = mount(
+      <ObjectPage keyInfos={keyInfos} breadcrumbs={breadcrumbs}>
         <ObjectPageSection id={'1'}>Test</ObjectPageSection>
         <ObjectPageSection id={'2'}>Test 2</ObjectPageSection>
       </ObjectPage>

@@ -1,3 +1,3 @@
-import { FormGroup } from '../components/Form/FormGroup';
+import { FormGroup } from '../components/FormGroup';
 
 export { FormGroup };

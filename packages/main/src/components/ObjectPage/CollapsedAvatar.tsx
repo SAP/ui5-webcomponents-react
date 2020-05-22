@@ -1,11 +1,11 @@
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
-import React, { useLayoutEffect, useMemo, useRef, useState, ReactElement } from 'react';
-import { createUseStyles } from 'react-jss';
+import React, { ReactElement, useEffect, useMemo, useRef, useState } from 'react';
 
 const styles = {
   base: {
-    marginRight: '1rem',
+    margin: 'var(--_ui5wcr_ObjectPage_avatar_margin)', // defined in ObjectPage JSS
     opacity: 0
   },
   hidden: {
@@ -27,12 +27,12 @@ const styles = {
   }
 };
 
-const useStyles = createUseStyles(styles, {
+const useStyles = createComponentStyles(styles, {
   name: 'CollapsedAvatar'
 });
 
 export interface CollapsedAvatarPropTypes {
-  image?: string | ReactElement<unknown>;
+  image?: string | ReactElement;
   imageShapeCircle?: boolean;
 }
 
@@ -51,7 +51,7 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
           className={classes.imageContainer}
           style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
         >
-          <img className={classes.image} src={image} alt="Company Logo" />
+          <img className={classes.image} src={image} alt="Object Page Image" />
         </span>
       );
     } else {
@@ -65,10 +65,8 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
     }
   }, [image, imageShapeCircle]);
 
-  useLayoutEffect(() => {
-    requestAnimationFrame(() => {
-      setIsMounted(true);
-    });
+  useEffect(() => {
+    setIsMounted(true);
   }, []);
 
   const containerClasses = StyleClassHelper.of(classes.base);

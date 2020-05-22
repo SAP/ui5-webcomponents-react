@@ -8,6 +8,8 @@
       "es6",
       "es7",
       "es2017",
+      "es2018",
+      "es2019",
       "dom"
     ],
     "sourceMap": true,
@@ -40,6 +42,6 @@
     "node_modules"
   ],
   "files": [
-    "./packages/docs/typings.d.ts"
+    "./docs/typings.d.ts"
   ]
 }

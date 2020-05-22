@@ -1,15 +1,18 @@
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
 export const ColumnChartPlaceholder = (props) => {
   return (
     <ContentLoader
-      height={145}
-      width={165}
+      viewBox="0 0 165 145"
+      preserveAspectRatio="xMidYMid meet"
+      width="100%"
+      height="100%"
       speed={2}
-      primaryColor="#6a6d70"
-      secondaryColor="#d9d9d9"
-      primaryOpacity={0.2}
+      backgroundColor={ThemingParameters.sapContent_ImagePlaceholderBackground}
+      foregroundColor={ThemingParameters.sapContent_ImagePlaceholderForegroundColor}
+      backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as any}
       {...props}
     >
       <rect x="10" y="135" width="135" height="1" />

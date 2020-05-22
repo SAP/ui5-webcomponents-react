@@ -2,16 +2,15 @@
 
 exports[`MessageBox Confirm - Cancel 1`] = `
 <ui5-dialog
-  header-text=""
-  open="true"
+  opened=""
 >
   <header
-    class="MessageBox--header-"
+    class="MessageBox-header-0"
     data-type="Confirm"
     slot="header"
   >
     <div
-      class="MessageBox--icon-"
+      class="MessageBox-icon-0"
     >
       <ui5-icon
         name="question-mark"
@@ -24,7 +23,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     </ui5-title>
   </header>
   <footer
-    class="MessageBox--footer-"
+    class="MessageBox-footer-0"
     slot="footer"
   >
     <ui5-button
@@ -43,7 +42,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     </ui5-button>
   </footer>
   <span
-    class="Text--text- MessageBox--content-"
+    class="Text-text-0 MessageBox-content-0"
   >
     Confirm - Cancel
   </span>
@@ -52,17 +51,15 @@ exports[`MessageBox Confirm - Cancel 1`] = `
 
 exports[`MessageBox Confirm - OK 1`] = `
 <ui5-dialog
-  header-text=""
-  open="true"
   opened=""
 >
   <header
-    class="MessageBox--header-"
+    class="MessageBox-header-0"
     data-type="Confirm"
     slot="header"
   >
     <div
-      class="MessageBox--icon-"
+      class="MessageBox-icon-0"
     >
       <ui5-icon
         name="question-mark"
@@ -75,7 +72,7 @@ exports[`MessageBox Confirm - OK 1`] = `
     </ui5-title>
   </header>
   <footer
-    class="MessageBox--footer-"
+    class="MessageBox-footer-0"
     slot="footer"
   >
     <ui5-button
@@ -94,7 +91,7 @@ exports[`MessageBox Confirm - OK 1`] = `
     </ui5-button>
   </footer>
   <span
-    class="Text--text- MessageBox--content-"
+    class="Text-text-0 MessageBox-content-0"
   >
     Confirm - OK
   </span>
@@ -103,16 +100,15 @@ exports[`MessageBox Confirm - OK 1`] = `
 
 exports[`MessageBox Error 1`] = `
 <ui5-dialog
-  header-text=""
-  open="true"
+  opened=""
 >
   <header
-    class="MessageBox--header-"
+    class="MessageBox-header-0"
     data-type="Error"
     slot="header"
   >
     <div
-      class="MessageBox--icon-"
+      class="MessageBox-icon-0"
     >
       <ui5-icon
         name="message-error"
@@ -125,7 +121,7 @@ exports[`MessageBox Error 1`] = `
     </ui5-title>
   </header>
   <footer
-    class="MessageBox--footer-"
+    class="MessageBox-footer-0"
     slot="footer"
   >
     <ui5-button
@@ -137,7 +133,7 @@ exports[`MessageBox Error 1`] = `
     </ui5-button>
   </footer>
   <span
-    class="Text--text- MessageBox--content-"
+    class="Text-text-0 MessageBox-content-0"
   >
     Error
   </span>
@@ -146,16 +142,15 @@ exports[`MessageBox Error 1`] = `
 
 exports[`MessageBox Information 1`] = `
 <ui5-dialog
-  header-text=""
-  open="true"
+  opened=""
 >
   <header
-    class="MessageBox--header-"
+    class="MessageBox-header-0"
     data-type="Information"
     slot="header"
   >
     <div
-      class="MessageBox--icon-"
+      class="MessageBox-icon-0"
     >
       <ui5-icon
         name="message-information"
@@ -168,7 +163,7 @@ exports[`MessageBox Information 1`] = `
     </ui5-title>
   </header>
   <footer
-    class="MessageBox--footer-"
+    class="MessageBox-footer-0"
     slot="footer"
   >
     <ui5-button
@@ -180,7 +175,7 @@ exports[`MessageBox Information 1`] = `
     </ui5-button>
   </footer>
   <span
-    class="Text--text- MessageBox--content-"
+    class="Text-text-0 MessageBox-content-0"
   >
     Information
   </span>
@@ -189,17 +184,15 @@ exports[`MessageBox Information 1`] = `
 
 exports[`MessageBox No Title 1`] = `
 <ui5-dialog
-  header-text=""
-  open="true"
   opened=""
 >
   <header
-    class="MessageBox--header-"
+    class="MessageBox-header-0"
     data-type="Confirm"
     slot="header"
   >
     <div
-      class="MessageBox--icon-"
+      class="MessageBox-icon-0"
     >
       <ui5-icon
         name="question-mark"
@@ -212,7 +205,7 @@ exports[`MessageBox No Title 1`] = `
     </ui5-title>
   </header>
   <footer
-    class="MessageBox--footer-"
+    class="MessageBox-footer-0"
     slot="footer"
   >
     <ui5-button
@@ -231,7 +224,7 @@ exports[`MessageBox No Title 1`] = `
     </ui5-button>
   </footer>
   <span
-    class="Text--text- MessageBox--content-"
+    class="Text-text-0 MessageBox-content-0"
   >
     No Title
   </span>
@@ -239,17 +232,14 @@ exports[`MessageBox No Title 1`] = `
 `;
 
 exports[`MessageBox Not open 1`] = `
-<ui5-dialog
-  header-text=""
-  open="false"
->
+<ui5-dialog>
   <header
-    class="MessageBox--header-"
+    class="MessageBox-header-0"
     data-type="Success"
     slot="header"
   >
     <div
-      class="MessageBox--icon-"
+      class="MessageBox-icon-0"
     >
       <ui5-icon
         name="message-success"
@@ -262,7 +252,7 @@ exports[`MessageBox Not open 1`] = `
     </ui5-title>
   </header>
   <footer
-    class="MessageBox--footer-"
+    class="MessageBox-footer-0"
     slot="footer"
   >
     <ui5-button
@@ -274,7 +264,7 @@ exports[`MessageBox Not open 1`] = `
     </ui5-button>
   </footer>
   <span
-    class="Text--text- MessageBox--content-"
+    class="Text-text-0 MessageBox-content-0"
   >
     Custom Success
   </span>
@@ -283,16 +273,15 @@ exports[`MessageBox Not open 1`] = `
 
 exports[`MessageBox Show 1`] = `
 <ui5-dialog
-  header-text=""
-  open="true"
+  opened=""
 >
   <header
-    class="MessageBox--header-"
+    class="MessageBox-header-0"
     data-type="Confirm"
     slot="header"
   >
     <div
-      class="MessageBox--icon-"
+      class="MessageBox-icon-0"
     >
       <ui5-icon
         name="question-mark"
@@ -305,7 +294,7 @@ exports[`MessageBox Show 1`] = `
     </ui5-title>
   </header>
   <footer
-    class="MessageBox--footer-"
+    class="MessageBox-footer-0"
     slot="footer"
   >
     <ui5-button
@@ -324,7 +313,7 @@ exports[`MessageBox Show 1`] = `
     </ui5-button>
   </footer>
   <span
-    class="Text--text- MessageBox--content-"
+    class="Text-text-0 MessageBox-content-0"
   >
     Custom
   </span>
@@ -333,16 +322,15 @@ exports[`MessageBox Show 1`] = `
 
 exports[`MessageBox Success 1`] = `
 <ui5-dialog
-  header-text=""
-  open="true"
+  opened=""
 >
   <header
-    class="MessageBox--header-"
+    class="MessageBox-header-0"
     data-type="Success"
     slot="header"
   >
     <div
-      class="MessageBox--icon-"
+      class="MessageBox-icon-0"
     >
       <ui5-icon
         name="message-success"
@@ -355,7 +343,7 @@ exports[`MessageBox Success 1`] = `
     </ui5-title>
   </header>
   <footer
-    class="MessageBox--footer-"
+    class="MessageBox-footer-0"
     slot="footer"
   >
     <ui5-button
@@ -367,7 +355,7 @@ exports[`MessageBox Success 1`] = `
     </ui5-button>
   </footer>
   <span
-    class="Text--text- MessageBox--content-"
+    class="Text-text-0 MessageBox-content-0"
   >
     Success
   </span>
@@ -376,16 +364,15 @@ exports[`MessageBox Success 1`] = `
 
 exports[`MessageBox Success w/ custom title 1`] = `
 <ui5-dialog
-  header-text=""
-  open="true"
+  opened=""
 >
   <header
-    class="MessageBox--header-"
+    class="MessageBox-header-0"
     data-type="Success"
     slot="header"
   >
     <div
-      class="MessageBox--icon-"
+      class="MessageBox-icon-0"
     >
       <ui5-icon
         name="message-success"
@@ -398,7 +385,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
     </ui5-title>
   </header>
   <footer
-    class="MessageBox--footer-"
+    class="MessageBox-footer-0"
     slot="footer"
   >
     <ui5-button
@@ -410,7 +397,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
     </ui5-button>
   </footer>
   <span
-    class="Text--text- MessageBox--content-"
+    class="Text-text-0 MessageBox-content-0"
   >
     Custom Success
   </span>
@@ -419,16 +406,15 @@ exports[`MessageBox Success w/ custom title 1`] = `
 
 exports[`MessageBox Warning 1`] = `
 <ui5-dialog
-  header-text=""
-  open="true"
+  opened=""
 >
   <header
-    class="MessageBox--header-"
+    class="MessageBox-header-0"
     data-type="Warning"
     slot="header"
   >
     <div
-      class="MessageBox--icon-"
+      class="MessageBox-icon-0"
     >
       <ui5-icon
         name="message-warning"
@@ -441,7 +427,7 @@ exports[`MessageBox Warning 1`] = `
     </ui5-title>
   </header>
   <footer
-    class="MessageBox--footer-"
+    class="MessageBox-footer-0"
     slot="footer"
   >
     <ui5-button
@@ -453,7 +439,7 @@ exports[`MessageBox Warning 1`] = `
     </ui5-button>
   </footer>
   <span
-    class="Text--text- MessageBox--content-"
+    class="Text-text-0 MessageBox-content-0"
   >
     Warning
   </span>

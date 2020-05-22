@@ -1,3 +1,3 @@
-import { SegmentedButton } from '../components/SegmentedButton';
+import { SegmentedButton } from '../webComponents/SegmentedButton';
 
 export { SegmentedButton };

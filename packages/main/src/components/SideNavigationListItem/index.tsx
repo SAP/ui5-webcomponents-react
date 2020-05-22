@@ -25,9 +25,8 @@ import React, {
   useState
 } from 'react';
 import { createPortal } from 'react-dom';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import { sideNavigationListItemStyles } from './SideNavigationListItem.jss';
 
 export interface SideNavigationListItemProps extends CommonProps {
@@ -37,12 +36,9 @@ export interface SideNavigationListItemProps extends CommonProps {
   children?: ReactNode | ReactNodeArray;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof sideNavigationListItemStyles>>(
-  sideNavigationListItemStyles,
-  {
-    name: 'SideNavigationListItem'
-  }
-);
+const useStyles = createComponentStyles(sideNavigationListItemStyles, {
+  name: 'SideNavigationListItem'
+});
 /**
  * <code>import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';</code>
  */
@@ -162,7 +158,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
               {displayedIcon}
               <div className={classes.condensedExpandTriangle} />
               {createPortal(
-                <Popover ref={popoverRef} open={isExpanded} verticalAlign={PopoverVerticalAlign.Top}>
+                <Popover ref={popoverRef} verticalAlign={PopoverVerticalAlign.Top}>
                   <List onItemClick={props['onListItemSelected']}>
                     <StandardListItem selected={isSelfSelected} data-id={id} tooltip={tooltip}>
                       {text}

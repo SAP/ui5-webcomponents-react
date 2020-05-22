@@ -1,77 +1,115 @@
-import { Device } from '@ui5/webcomponents-react-base/lib/Device';
+import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
-import { Popover } from '@ui5/webcomponents-react/lib/Popover';
-import React, { Children, cloneElement, FC, forwardRef, ReactElement, ReactNode, RefObject } from 'react';
-import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { ResponsivePopover } from '@ui5/webcomponents-react/lib/ResponsivePopover';
+import React, { Children, cloneElement, FC, forwardRef, ReactElement, RefObject } from 'react';
+import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';
 import { ButtonPropTypes } from '../../webComponents/Button';
+import { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
 import styles from './ActionSheet.jss';
 
-export interface ActionSheetPropTypes extends CommonProps {
-  openBy: ReactNode;
+export interface ActionSheetPropTypes extends ResponsivePopoverPropTypes {
   placement?: PlacementType;
-  children?: ReactElement<ButtonPropTypes> | Array<ReactElement<ButtonPropTypes>>;
+  children?: ReactElement<ButtonPropTypes> | ReactElement<ButtonPropTypes>[];
 }
 
-const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
+const useStyles = createComponentStyles(styles, { name: 'ActionSheet' });
+
+addCustomCSS(
+  'ui5-button',
+  `
+  :host([data-is-action-sheet-button]) .ui5-button-root {
+    justify-content: flex-start;
+  }
+  `
+);
 
 /**
  * <code>import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';</code>
  */
 const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
-  (props: ActionSheetPropTypes, ref: RefObject<Ui5PopoverDomRef>) => {
-    const { children, placement, openBy, style, slot } = props;
+  (props: ActionSheetPropTypes, ref: RefObject<Ui5ResponsivePopoverDomRef>) => {
+    const {
+      children,
+      style,
+      slot,
+      className,
+      allowTargetOverlap,
+      headerText,
+      horizontalAlign,
+      initialFocus,
+      modal,
+      noArrow,
+      placementType,
+      verticalAlign,
+      footer,
+      header,
+      onAfterClose,
+      onAfterOpen,
+      onBeforeClose,
+      onBeforeOpen
+    } = props;
 
     const classes = useStyles();
 
     const actionSheetClasses = StyleClassHelper.of(classes.actionSheet);
-    if (Device.system.tablet) {
-      actionSheetClasses.put(classes.tablet);
-    } else if (Device.system.phone) {
-      actionSheetClasses.put(classes.phone);
+    if (className) {
+      actionSheetClasses.put(className);
     }
 
-    const popoverRef: RefObject<Ui5PopoverDomRef> = useConsolidatedRef(ref);
+    const popoverRef: RefObject<Ui5ResponsivePopoverDomRef> = useConsolidatedRef(ref);
 
-    const renderActionSheetButton = (element) => {
-      if (element && element.props) {
-        return (
-          <div key={element.key} className={classes.actionButtonContainer}>
-            {cloneElement(element, {
-              design: ButtonDesign.Transparent,
-              onClick: onActionButtonClicked(element.props.onClick)
-            })}
-          </div>
-        );
-      }
-      return element;
-    };
-
-    const onActionButtonClicked = (handler) => () => {
+    const onActionButtonClicked = (handler) => (e) => {
       popoverRef.current.close();
       if (typeof handler === 'function') {
-        handler();
+        handler(e);
       }
     };
 
-    const passThroughProps = usePassThroughHtmlProps(props);
+    const renderActionSheetButton = (element, index) => {
+      return cloneElement(element, {
+        key: index,
+        design: ButtonDesign.Transparent,
+        onClick: onActionButtonClicked(element.props.onClick),
+        'data-is-action-sheet-button': ''
+      });
+    };
+
+    const passThroughProps = usePassThroughHtmlProps(props, [
+      'onAfterClose',
+      'onAfterOpen',
+      'onBeforeClose',
+      'onBeforeOpen'
+    ]);
 
     return (
-      <Popover
+      <ResponsivePopover
         ref={popoverRef}
-        openBy={openBy}
-        placementType={placement}
         style={style}
         slot={slot}
+        className={actionSheetClasses.valueOf()}
+        allowTargetOverlap={allowTargetOverlap}
+        headerText={headerText}
+        horizontalAlign={horizontalAlign}
+        initialFocus={initialFocus}
+        modal={modal}
+        noArrow={noArrow}
+        placementType={placementType}
+        verticalAlign={verticalAlign}
+        footer={footer}
+        header={header}
+        onAfterClose={onAfterClose}
+        onAfterOpen={onAfterOpen}
+        onBeforeClose={onBeforeClose}
+        onBeforeOpen={onBeforeOpen}
         {...passThroughProps}
       >
-        <ul className={actionSheetClasses.valueOf()}>{Children.map(children, renderActionSheetButton)}</ul>
-      </Popover>
+        {Children.map(children, renderActionSheetButton)}
+      </ResponsivePopover>
     );
   }
 );

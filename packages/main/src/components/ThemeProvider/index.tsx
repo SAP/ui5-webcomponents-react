@@ -1,29 +1,30 @@
-import { getCompactSize } from '@ui5/webcomponents-base/dist/config/CompactSize';
+import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme';
-import { createGenerateClassName } from '@ui5/webcomponents-react-base/lib/createGenerateClassName';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { cssVariablesStyles } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import * as sap_fiori_3 from '@ui5/webcomponents-react-base/lib/sap_fiori_3';
+import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { ContentDensity } from '@ui5/webcomponents-react/lib/ContentDensity';
-import { MessageToast } from '@ui5/webcomponents-react/lib/MessageToast';
-import { Jss } from 'jss';
-import React, { FC, Fragment, ReactNode, useEffect, useMemo } from 'react';
-import { JssProvider, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
+import React, { FC, ReactNode, useEffect, useMemo } from 'react';
+import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
+import { JSSTheme } from '../../interfaces/JSSTheme';
+import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';
 
-export interface ThemeProviderProps {
-  /*
-   * If true, the Theme Provider will also inject the root node for message toasts.
-   * Required in case you want to use them.
-   */
-  withToastContainer?: boolean;
-  children: ReactNode;
-  /*
-   * Allows you to inject a custom JSS instance, e.g. if you need another insertionPoint or different plugins.
-   * If not provided, the default instance from `react-jss` will be used.
-   */
-  jss?: Jss;
+const useStyles = createComponentStyles(GlobalStyleClassesStyles);
+
+declare global {
+  interface Window {
+    CSSVarsPonyfill: {
+      cssVars: (options: any) => void;
+    };
+  }
 }
 
-const generateClassName = createGenerateClassName();
+const cssVarsPonyfillNeeded = () => !!window.CSSVarsPonyfill;
+
+export interface ThemeProviderProps {
+  children: ReactNode;
+}
 
 // inject the size variables first before the ThemeProvider Component is mounted, otherwise there will be some flickering
 if (!document.querySelector('style[data-ui5-webcomponents-react-sizes]')) {
@@ -36,42 +37,40 @@ if (!document.querySelector('style[data-ui5-webcomponents-react-sizes]')) {
 /**
  * <code>import { ThemeProvider } from '@ui5/webcomponents-react/lib/ThemeProvider';</code>
  */
-const ThemeProvider: FC<ThemeProviderProps> = (props) => {
-  const { withToastContainer, children, jss } = props;
-  const theme = getTheme();
-  const isCompactSize = getCompactSize();
+const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
+  const { children } = props;
+  const isCompactSize = document.body.classList.contains('ui5-content-density-compact');
+  useStyles();
+  useI18nBundle('@ui5/webcomponents-react');
 
-  const themeContext = useMemo(() => {
+  const theme = getTheme();
+
+  const themeContext: JSSTheme = useMemo(() => {
     return {
       theme,
       contentDensity: isCompactSize ? ContentDensity.Compact : ContentDensity.Cozy,
-      parameters: sap_fiori_3
+      parameters: ThemingParameters,
+      rtl: getRTL()
     };
   }, [theme, isCompactSize]);
 
   useEffect(() => {
-    if (isCompactSize) {
-      document.body.classList.add('ui5-content-density-compact');
-    } else {
-      document.body.classList.remove('ui5-content-density-compact');
+    if (cssVarsPonyfillNeeded()) {
+      window.CSSVarsPonyfill.cssVars({
+        rootElement: document.head,
+        include: 'style[data-ui5-webcomponents-react-sizes],style[data-jss]',
+        watch: true,
+        silent: true
+      });
     }
-  }, [isCompactSize]);
+    if (getRTL()) {
+      document.dir = 'rtl';
+    }
+  }, []);
 
-  return (
-    <JssProvider generateId={generateClassName} jss={jss}>
-      <ReactJssThemeProvider theme={themeContext}>
-        <Fragment>
-          {children}
-          {withToastContainer && <MessageToast />}
-        </Fragment>
-      </ReactJssThemeProvider>
-    </JssProvider>
-  );
+  return <ReactJssThemeProvider theme={themeContext}>{children}</ReactJssThemeProvider>;
 };
 
 ThemeProvider.displayName = 'ThemeProvider';
-ThemeProvider.defaultProps = {
-  withToastContainer: false
-};
 
 export { ThemeProvider };

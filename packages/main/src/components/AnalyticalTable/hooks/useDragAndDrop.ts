@@ -1,18 +1,18 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { useCallback, useState } from 'react';
 
 const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
 };
 
-export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo) => {
+export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo, columns: any[]) => {
   const { onColumnsReordered } = props;
 
   const [dragOver, setDragOver] = useState('');
 
   const handleDragStart = useCallback(
     (e) => {
-      if (resizeInfo.isResizingColumn === e.currentTarget.dataset.columnId) {
+      if (resizeInfo.isResizingColumn) {
         e.preventDefault();
         return;
       }
@@ -37,7 +37,7 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo) =
       const draggedColId = e.dataTransfer.getData('colId');
       if (droppedColId === draggedColId) return;
 
-      const internalColumnOrder = columnOrder.length > 0 ? columnOrder : props.columns.map((col) => getColumnId(col));
+      const internalColumnOrder = columnOrder.length > 0 ? columnOrder : columns.map((col) => getColumnId(col));
       const droppedColIdx = internalColumnOrder.findIndex((col) => col === droppedColId);
       const draggedColIdx = internalColumnOrder.findIndex((col) => col === draggedColId);
 
@@ -45,11 +45,11 @@ export const useDragAndDrop = (props, setColumnOrder, columnOrder, resizeInfo) =
       tempCols.splice(droppedColIdx, 0, tempCols.splice(draggedColIdx, 1)[0]);
       setColumnOrder(tempCols);
 
-      const columnsNewOrder = tempCols.map((tempColId) => props.columns.find((col) => getColumnId(col) === tempColId));
+      const columnsNewOrder = tempCols.map((tempColId) => columns.find((col) => getColumnId(col) === tempColId));
       onColumnsReordered(
-        Event.of(null, e, {
+        enrichEventWithDetails(e, {
           columnsNewOrder,
-          column: props.columns[draggedColIdx]
+          column: columns[draggedColIdx]
         })
       );
     },

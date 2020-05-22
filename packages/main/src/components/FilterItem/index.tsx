@@ -1,4 +1,4 @@
-import { Event } from '@ui5/webcomponents-react-base/lib/Event';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
@@ -11,24 +11,23 @@ import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import React, { FC, forwardRef, ReactNode, RefObject, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterItem.jss';
 
 export interface FilterItemPropTypes extends CommonProps {
   placeholder?: string;
-  renderText?: (item?: any) => JSX.Element;
   type?: FilterType;
   label?: string;
   filterItems?: any[];
-  onChange?: (event: Event) => void;
+  onChange?: (event: CustomEvent<{ selectedItem?: unknown; selectedItems?: unknown }>) => void;
   loading?: boolean;
   children?: ReactNode;
   valueParamName?: string;
   changeEventName?: string;
 }
 
-const useStyles = createUseStyles(styles, { name: 'FilterItem' });
+const useStyles = createComponentStyles(styles, { name: 'FilterItem' });
 
 /**
  * <code>import { FilterItem } from '@ui5/webcomponents-react/lib/FilterItem';</code>
@@ -54,15 +53,15 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
   }
 
   function onSelect(e) {
-    const selectedKey = e.getParameter('selectedOption').getAttribute('data-key');
+    const selectedKey = e.detail.selectedOption.getAttribute('data-key');
     const item = getItemByKey(selectedKey) || filterItems[0];
-    onChange(Event.of(null, e.getOriginalEvent(), { selectedItem: item }));
+    onChange(enrichEventWithDetails(e, { selectedItem: item }));
   }
 
   function onMultiCbChange(e) {
-    const selectedItems = e.getParameter('items');
+    const selectedItems = e.detail.items;
     onChange(
-      Event.of(null, e.getOriginalEvent(), {
+      enrichEventWithDetails(e, {
         selectedItems: selectedItems.map((item) => {
           return getItemByKey(item.getAttribute('data-key'));
         })
@@ -111,15 +110,14 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
           <div>
             {React.Children.map(children, (child) => {
               return React.cloneElement(child as React.ReactElement<any>, {
-                [changeEventName]: (event) => {
-                  onSelect(event);
-                  // @ts-ignore
-                  if (child.props.hasOwnProperty(changeEventName)) {
-                    // @ts-ignore
-                    child.props[changeEventName](event);
-                  }
-                },
-                valueParameter: valueParamName,
+                // [changeEventName]: (event) => {
+                //   onSelect(event);
+                //   // @ts-ignore
+                //   if (child.props.hasOwnProperty(changeEventName)) {
+                //     // @ts-ignore
+                //     child.props[changeEventName](event);
+                //   }
+                // },
                 style: { width: '100%' }
               });
             })}
@@ -130,7 +128,7 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
 
   const filterItemClasses = StyleClassHelper.of(classes.filterItem);
 
-  const passThroughProps = usePassThroughHtmlProps(props);
+  const passThroughProps = usePassThroughHtmlProps(props, ['onChange']);
 
   return (
     <div ref={ref} className={filterItemClasses.toString()} style={style} title={tooltip} {...passThroughProps}>
@@ -144,7 +142,6 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
 
 FilterItem.defaultProps = {
   placeholder: '',
-  renderText: (item) => (item && item.text) || '',
   type: FilterType.Default,
   filterItems: [],
   label: '',

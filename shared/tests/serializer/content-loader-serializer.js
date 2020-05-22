@@ -2,7 +2,7 @@
 // istanbul-instrumenter-loader
 
 const MARKER = '__content-loader-serializer-marker__';
-const styleUrl = /fill: url\(#([\d\w)]+)\)/i;
+const styleUrl = /fill: url\(#([\d\w-)]+)\)/i;
 
 const collectElements = (element, elements = []) => {
   if (typeof element !== 'object') {
@@ -25,9 +25,18 @@ const markElements = (elements) =>
 
 const replaceIds = (elements) => {
   elements.forEach((element) => {
-    if (element.node.name === 'clipPath' || element.props['clip-path'] || element.node.name === 'linearGradient') {
+    if (
+      element.node.name === 'clipPath' ||
+      element.props['clip-path'] ||
+      element.props['aria-labelledby'] ||
+      element.node.name === 'linearGradient' ||
+      element.node.name === 'title'
+    ) {
       if (element.props['clip-path']) {
         element.props['clip-path'] = 'CLIP-PATH-URL';
+      }
+      if (element.props['aria-labelledby']) {
+        element.props['aria-labelledby'] = 'ARIA-LABELLED-BY';
       }
 
       if (element.props.style) {
@@ -42,6 +51,10 @@ const replaceIds = (elements) => {
 
       if (element.node.name === 'linearGradient') {
         element.props.id = 'STYLE-URL';
+      }
+
+      if (element.node.name === 'title' && /[\d\w]+-aria/.exec(element.props.id)) {
+        element.props.id = 'TITLE_ARIA_ID';
       }
     }
   });

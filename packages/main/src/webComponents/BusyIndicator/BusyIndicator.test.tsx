@@ -1,26 +1,10 @@
-import { mountThemedComponent } from '@shared/tests/utils';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
-import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
+import { mount } from 'enzyme';
 import React from 'react';
 
 describe('BusyIndicator', () => {
-  test('Basic Test', () => {
-    const wrapper = mountThemedComponent(<BusyIndicator active />);
-    expect(wrapper.render()).toMatchSnapshot();
-  });
-
-  test('Inactive', () => {
-    const wrapper = mountThemedComponent(<BusyIndicator />);
-    expect(wrapper.render()).toMatchSnapshot();
-  });
-
-  test('Size Medium', () => {
-    const wrapper = mountThemedComponent(<BusyIndicator active size={BusyIndicatorSize.Medium} />);
-    expect(wrapper.render()).toMatchSnapshot();
-  });
-
-  test('Size Small', () => {
-    const wrapper = mountThemedComponent(<BusyIndicator active size={BusyIndicatorSize.Small} />);
+  test('Basic Test (generated)', () => {
+    const wrapper = mount(<BusyIndicator />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

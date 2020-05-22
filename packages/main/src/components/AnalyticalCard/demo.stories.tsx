@@ -17,7 +17,6 @@ export default {
 
 export const defaultStory = () => (
   <AnalyticalCard
-    width={text('width', '20rem')}
     header={
       <AnalyticalCardHeader
         title={text('title', 'Title')}

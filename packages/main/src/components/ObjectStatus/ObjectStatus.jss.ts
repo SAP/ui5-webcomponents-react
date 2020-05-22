@@ -1,35 +1,35 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   objectStatus: {
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
     position: 'relative',
     display: 'flex'
   },
   iconSuccess: {
     '& ui5-icon': {
-      color: parameters.sapUiPositiveText
+      color: ThemingParameters.sapPositiveTextColor
     }
   },
   iconWarning: {
     '& ui5-icon': {
-      color: parameters.sapUiCriticalText
+      color: ThemingParameters.sapCriticalTextColor
     }
   },
   iconError: {
     '& ui5-icon': {
-      color: parameters.sapUiNegativeText
+      color: ThemingParameters.sapNegativeTextColor
     }
   },
   iconNone: {
     '& ui5-icon': {
-      color: parameters.sapUiNeutralText
+      color: ThemingParameters.sapNeutralTextColor
     }
   },
   iconInformation: {
-    color: parameters.sapUiInformativeElement
+    color: ThemingParameters.sapInformativeElementColor
   },
   icon: {
     marginRight: '0.5rem',
@@ -38,20 +38,20 @@ const styles = ({ parameters }: JSSTheme) => ({
     lineHeight: 'inherit'
   },
   textSuccess: {
-    color: parameters.sapUiPositiveText
+    color: ThemingParameters.sapPositiveTextColor
   },
   textError: {
-    color: parameters.sapUiNegativeText
+    color: ThemingParameters.sapNegativeTextColor
   },
   textWarning: {
-    color: parameters.sapUiCriticalText
+    color: ThemingParameters.sapCriticalTextColor
   },
   textInformation: {
-    color: parameters.sapUiInformativeText
+    color: ThemingParameters.sapInformativeTextColor
   },
   textNone: {
-    color: parameters.sapUiNeutralText
+    color: ThemingParameters.sapNeutralTextColor
   }
-});
+};
 
 export default styles;

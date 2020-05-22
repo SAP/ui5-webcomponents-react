@@ -1,4 +1,4 @@
-import { getBrowser, getOS, getSystem } from '@ui5/webcomponents-core/dist/sap/ui/Device';
+import { getBrowser, getOS, getSystem } from '@ui5/webcomponents-base/dist/Device';
 import { EventRegistry } from './EventRegistry';
 import { Media } from './Media';
 import { Orientation } from './Orientation';

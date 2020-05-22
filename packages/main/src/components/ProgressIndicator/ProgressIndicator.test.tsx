@@ -1,4 +1,5 @@
-import { createPassThroughPropsTest, mountThemedComponent } from '@shared/tests/utils';
+import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { mount } from 'enzyme';
 import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
@@ -6,7 +7,7 @@ import React from 'react';
 const testFactory = () => {
   Object.values(ValueState).forEach((state) => {
     test(`ProgressIndicator with state ${state}`, () => {
-      const wrapper = mountThemedComponent(<ProgressIndicator state={state} />);
+      const wrapper = mount(<ProgressIndicator state={state} />);
       expect(wrapper.render()).toMatchSnapshot();
     });
   });
@@ -14,14 +15,14 @@ const testFactory = () => {
 
 describe('ProgressIndicator', () => {
   test('Custom', () => {
-    const wrapper = mountThemedComponent(
-      <ProgressIndicator displayValue="sdf" width="50%" height="50%" percentValue={40} />
+    const wrapper = mount(
+      <ProgressIndicator displayValue="sdf" style={{ width: '50%', height: '50%' }} percentValue={40} />
     );
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   test('State', () => {
-    const wrapper = mountThemedComponent(<ProgressIndicator percentValue={85} state={ValueState.Error} />);
+    const wrapper = mount(<ProgressIndicator percentValue={85} state={ValueState.Error} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 

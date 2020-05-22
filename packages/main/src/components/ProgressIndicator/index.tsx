@@ -1,10 +1,9 @@
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import React, { FC, forwardRef, Ref, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import React, { FC, forwardRef, Ref } from 'react';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 import styles from './ProgressIndicator.jss';
 
 export interface ProgressIndicatorPropTypes extends CommonProps {
@@ -18,29 +17,19 @@ export interface ProgressIndicatorPropTypes extends CommonProps {
   displayValue?: string;
 
   /*
-   * Specified width of component
-   */
-  width?: string;
-
-  /*
-   * Specified height of component
-   */
-  height?: string;
-
-  /*
    * State of indicator (using ValueState)
    */
   state?: ValueState;
 }
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'ProgressIndicator' });
+const useStyles = createComponentStyles(styles, { name: 'ProgressIndicator' });
 
 /**
  * <code>import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';</code>
  */
 const ProgressIndicator: FC<ProgressIndicatorPropTypes> = forwardRef(
   (props: ProgressIndicatorPropTypes, ref: Ref<HTMLDivElement>) => {
-    const { percentValue, displayValue, width, height, className, style, tooltip, state, slot } = props;
+    const { percentValue, displayValue, className, style, tooltip, state, slot } = props;
 
     const classes = useStyles();
 
@@ -68,15 +57,13 @@ const ProgressIndicator: FC<ProgressIndicatorPropTypes> = forwardRef(
       wrapperClasses.put(className);
     }
 
-    const progressBarContainerStyle = useMemo(() => ({ ...style, width, height }), [style, width, height]);
-
     const passThroughProps = usePassThroughHtmlProps(props);
 
     return (
       <div
         ref={ref}
         className={wrapperClasses.valueOf()}
-        style={progressBarContainerStyle}
+        style={style}
         title={tooltip}
         slot={slot}
         {...passThroughProps}
@@ -95,8 +82,6 @@ ProgressIndicator.displayName = 'ProgressIndicator';
 ProgressIndicator.defaultProps = {
   percentValue: 0,
   displayValue: '',
-  width: 'auto',
-  height: '',
   state: ValueState.None
 };
 

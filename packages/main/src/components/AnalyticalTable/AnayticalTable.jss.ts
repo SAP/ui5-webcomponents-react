@@ -1,64 +1,79 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
-const styles = ({ parameters }: JSSTheme) => ({
-  tableContainer: {
-    width: '100%',
-    height: `calc(100% - ${CssSizeVariables.sapWcrAnalyticalTableRowHeight})`,
-    minHeight: '3rem'
-  },
+const styles = {
   table: {
     position: 'relative',
     width: '100%',
     maxWidth: '100%',
-    overflowX: 'auto'
+    overflowY: 'hidden',
+    overflowX: 'auto',
+    height: '100%',
+    minHeight: '3rem',
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
+    fontWeight: 'normal'
   },
   tableHeaderRow: {
-    boxShadow: 'none !important',
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    zIndex: 1,
-    position: 'relative'
+    position: 'relative',
+    display: 'inline-flex'
   },
   th: {
-    backgroundColor: parameters.sapUiListHeaderBackground,
+    backgroundColor: ThemingParameters.sapList_HeaderBackground,
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
     fontWeight: 'normal',
-    color: parameters.sapUiListHeaderTextColor,
-    borderTop: `1px solid ${parameters.sapUiListBorderColor}`,
-    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
-    borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
+    color: ThemingParameters.sapList_HeaderTextColor,
+    borderTop: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    padding: `0 0.5rem`,
     textAlign: 'start',
     boxSizing: 'border-box',
     '&:first-child': {
-      borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
+      borderLeft: `1px solid ${ThemingParameters.sapList_BorderColor}`
+    },
+    '&:last-child': {
+      '& [data-resizer]': {
+        transform: 'translateX(0px)'
+      }
     }
   },
   tbody: {
     position: 'relative',
     zIndex: 0,
-    backgroundColor: parameters.sapUiListBackground
+    backgroundColor: ThemingParameters.sapList_Background,
+    overflowX: 'hidden',
+    overflowY: 'auto'
   },
   alternateRowColor: {
-    backgroundColor: parameters.sapUiListHeaderBackground
+    backgroundColor: ThemingParameters.sapList_HeaderBackground
   },
   emptyRow: {},
   tr: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
     zIndex: 0,
-    color: parameters.sapUiListTextColor,
+    color: ThemingParameters.sapList_TextColor,
+    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    boxSizing: 'border-box',
+    display: 'flex',
+    height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     '&[data-is-selected]': {
-      backgroundColor: `${parameters.sapUiListSelectionBackgroundColor} !important`
+      borderBottom: `1px solid ${ThemingParameters.sapList_SelectionBorderColor}`,
+      backgroundColor: `${ThemingParameters.sapList_SelectionBackgroundColor} !important`
     },
     '&[data-is-selected]:hover': {
-      backgroundColor: `${parameters.sapUiListSelectionHoverBackground} !important`
+      backgroundColor: `${ThemingParameters.sapList_Hover_SelectionBackground} !important`
     }
   },
   tableGroupHeader: {
     '&$tr': {
-      backgroundColor: `${parameters.sapUiListTableGroupHeaderBackground} !important`,
-      border: `1px solid ${parameters.sapUiListTableGroupHeaderBorderColor}`,
-      color: parameters.sapUiListTextColor,
+      backgroundColor: `${ThemingParameters.sapList_TableGroupHeaderBackground} !important`,
+      border: `1px solid ${ThemingParameters.sapList_TableGroupHeaderBorderColor}`,
+      color: ThemingParameters.sapList_TextColor,
       '& $tableCell': {
         borderRight: 'none'
       }
@@ -66,60 +81,54 @@ const styles = ({ parameters }: JSSTheme) => ({
   },
   selectable: {
     '& $tr:hover:not($emptyRow)': {
-      backgroundColor: parameters.sapUiListHoverBackground,
-      cursor: 'pointer'
+      backgroundColor: ThemingParameters.sapList_Hover_Background,
+      '&:not($selectionModeRowSelector)': {
+        cursor: 'pointer'
+      }
     },
-    '& $tr:active:not([data-is-selected]):not($tableGroupHeader):not($emptyRow)': {
-      backgroundColor: parameters.sapUiListActiveBackground,
+    '& $tr:active:not([data-is-selected]):not($tableGroupHeader):not($emptyRow):not($selectionModeRowSelector)': {
+      backgroundColor: ThemingParameters.sapList_Active_Background,
       '& $tableCell': {
-        borderRight: `1px solid ${parameters.sapUiListActiveBackground}`,
-        color: `${parameters.sapUiListActiveTextColor}`,
-        '--sapUiBaseText': parameters.sapUiListActiveTextColor
+        borderRight: `1px solid ${ThemingParameters.sapList_Active_Background}`,
+        color: `${ThemingParameters.sapList_Active_TextColor}`,
+        '--sapTextColor': ThemingParameters.sapList_Active_TextColor
       }
     }
   },
+  selectionModeRowSelector: {},
   tableCell: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
-    fontWeight: 'normal',
-    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`,
     boxSizing: 'border-box',
-    borderRight: `1px solid ${parameters.sapUiListVerticalBorderColor}`,
-    display: 'flex',
+    borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    display: 'inline-flex',
     padding: '0 0.5rem',
     '&:first-child': {
-      borderLeft: `1px solid ${parameters.sapUiListVerticalBorderColor}`
+      borderLeft: `1px solid ${ThemingParameters.sapList_BorderColor}`
     },
     overflow: 'hidden',
-    position: 'relative',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-    alignItems: 'center'
-  },
-  virtualTableBody: {
-    overflowX: 'hidden !important',
-    overflowY: 'auto !important'
+    alignItems: 'center',
+    position: 'relative',
+    '&:focus': {
+      outlineOffset: '-2px',
+      outline: `1px dotted ${ThemingParameters.sapContent_FocusColor}`
+    }
   },
   noDataContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
-    backgroundColor: parameters.sapUiListBackground,
+    backgroundColor: ThemingParameters.sapList_Background,
     width: '100%',
     boxSizing: 'border-box',
-    color: parameters.sapUiListTextColor,
-    fontFamily: parameters.sapUiFontFamily,
-    fontSize: parameters.sapMFontMediumSize,
+    color: ThemingParameters.sapList_TextColor,
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
-    borderBottom: `1px solid ${parameters.sapUiListBorderColor}`
-  },
-  modifiedRowHeight: {
-    '& $tableCell': {
-      height: (props) => `${props.rowHeight}px`
-    }
+    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
   }
-});
+};
 
 export default styles;

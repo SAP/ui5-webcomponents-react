@@ -1,28 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ColumnChart loading placeholder 1`] = `
+exports[`ColumnRechart Renders with data 1`] = `
 <div
-  class="ChartContainer--chart- ChartContainer--chart-d0-"
-  style="position: relative; padding-top: 6px; width: 300px; height: 300px;"
+  style="font-family: var(--sapFontFamily); width: 100%; height: 60vh; position: relative;"
+>
+  <div
+    class="recharts-responsive-container"
+    id="undefined"
+    style="width: 100%; height: 100%;"
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`ColumnRechart loading placeholder 1`] = `
+<div
+  style="font-family: var(--sapFontFamily); width: 30%; height: 400px; position: relative;"
 >
   <svg
-    aria-label="Loading interface..."
-    preserveAspectRatio="none"
+    aria-labelledby="ARIA-LABELLED-BY"
+    height="100%"
+    preserveAspectRatio="xMidYMid meet"
     role="img"
     viewBox="0 0 165 145"
+    width="100%"
   >
-    <title>
-      Loading interface...
+    <title
+      id="TITLE_ARIA_ID"
+    >
+      Loading...
     </title>
     <rect
       clip-path="CLIP-PATH-URL"
-      height="145"
+      height="100%"
+      role="presentation"
       style="fill: url(#STYLE-URL);"
-      width="165"
+      width="100%"
       x="0"
       y="0"
     />
-    <defs>
+    <defs
+      role="presentation"
+    >
       <clipPath
         id="CLIP-PATH-URL"
       >
@@ -74,8 +94,8 @@ exports[`ColumnChart loading placeholder 1`] = `
       >
         <stop
           offset="0%"
-          stop-color="#6a6d70"
-          stop-opacity="0.2"
+          stop-color="var(--sapContent_ImagePlaceholderBackground)"
+          stop-opacity="var(--sapContent_DisabledOpacity)"
         >
           <animate
             attributeName="offset"
@@ -87,7 +107,7 @@ exports[`ColumnChart loading placeholder 1`] = `
         </stop>
         <stop
           offset="50%"
-          stop-color="#d9d9d9"
+          stop-color="var(--sapContent_ImagePlaceholderForegroundColor)"
           stop-opacity="1"
         >
           <animate
@@ -100,8 +120,8 @@ exports[`ColumnChart loading placeholder 1`] = `
         </stop>
         <stop
           offset="100%"
-          stop-color="#6a6d70"
-          stop-opacity="0.2"
+          stop-color="var(--sapContent_ImagePlaceholderBackground)"
+          stop-opacity="var(--sapContent_DisabledOpacity)"
         >
           <animate
             attributeName="offset"
@@ -114,8 +134,5 @@ exports[`ColumnChart loading placeholder 1`] = `
       </linearGradient>
     </defs>
   </svg>
-  <div
-    class="legend"
-  />
 </div>
 `;

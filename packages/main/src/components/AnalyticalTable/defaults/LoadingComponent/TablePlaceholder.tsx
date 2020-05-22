@@ -1,61 +1,59 @@
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import React, { CSSProperties, FC, useMemo } from 'react';
 import ContentLoader from 'react-content-loader';
-import { useTheme } from 'react-jss';
-import { JSSTheme } from '../../../../interfaces/JSSTheme';
 
 const getArrayOfLength = (len) => Array.from(Array(len).keys());
 
-const TableRow: FC<{ columns: number; y: number; row: number }> = ({ columns, y, row }) => {
+type RowProps = { columns: any[]; y: number; row: number };
+const TableRow: FC<RowProps> = ({ columns, y, row }: RowProps) => {
   let columnOffset = 0;
   return (
     <>
-      {getArrayOfLength(columns).map((val, i) => {
+      {columns.map((column, i) => {
         const el = (
-          <rect key={`row-${row}-column-${i}`} x={columnOffset + 2} y={y} rx="2" ry="8" width="61" height="16" />
+          <rect
+            key={`column-${i}-row-${row}`}
+            x={columnOffset + 2}
+            y={y}
+            rx="2"
+            ry="8"
+            width={column.totalWidth - 4}
+            height="16"
+          />
         );
-        columnOffset += 65;
+        columnOffset += column.totalWidth;
         return el;
       })}
     </>
   );
 };
 
-export const TablePlaceholder: FC<{ columns: number; rows: number; style: CSSProperties; rowHeight: number }> = (
-  props
-) => {
-  const { columns, rows, style, rowHeight } = props;
-
-  const { parameters } = useTheme() as JSSTheme;
+type Props = { columns: any[]; rows: number; style: CSSProperties; rowHeight: number; tableWidth: number };
+export const TablePlaceholder: FC<Props> = (props: Props) => {
+  const { columns, rows = 5, style, rowHeight, tableWidth } = props;
 
   const height = rows * rowHeight;
-  const width = columns * 65;
 
   const innerStyles = useMemo(() => {
     return {
-      backgroundColor: parameters.sapUiListBackground,
-      width: '100%',
+      backgroundColor: ThemingParameters.sapList_Background,
       ...style
     };
-  }, [style, parameters.sapUiListBackground]);
+  }, [style, ThemingParameters.sapList_Background]);
 
   return (
     <ContentLoader
       style={innerStyles}
       height={height}
-      width={width}
+      width={tableWidth}
       speed={2}
-      primaryColor={parameters.sapUiContentImagePlaceholderBackground}
-      secondaryColor={parameters.sapUiFieldPlaceholderTextColor}
-      primaryOpacity={(parameters.sapUiContentDisabledOpacity as undefined) as number}
+      backgroundColor={ThemingParameters.sapContent_ImagePlaceholderBackground}
+      foregroundColor={ThemingParameters.sapContent_ImagePlaceholderForegroundColor}
+      backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as any}
     >
       {getArrayOfLength(rows).map((_, index) => (
         <TableRow key={index} columns={columns} y={rowHeight * index + rowHeight / 2} row={index} />
       ))}
     </ContentLoader>
   );
-};
-
-TablePlaceholder.defaultProps = {
-  rows: 5,
-  columns: 3
 };

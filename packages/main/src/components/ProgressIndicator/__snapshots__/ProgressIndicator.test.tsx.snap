@@ -2,18 +2,18 @@
 
 exports[`ProgressIndicator Custom 1`] = `
 <div
-  class="ProgressIndicator--wrapper-"
+  class="ProgressIndicator-wrapper-0"
   style="width: 50%; height: 50%;"
 >
   <div
-    class="ProgressIndicator--progressbar- ProgressIndicator--stateNone-"
+    class="ProgressIndicator-progressbar-0 ProgressIndicator-stateNone-0"
     style="flex-basis: 40%;"
   />
   <div
-    class="ProgressIndicator--progressBarRemaining-"
+    class="ProgressIndicator-progressBarRemaining-0"
   >
     <span
-      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+      class="ProgressIndicator-progressBarText-0 ProgressIndicator-progressBarTextColorLow-0 ProgressIndicator-progressBarTextRight-0"
     >
        sdf 
     </span>
@@ -23,18 +23,17 @@ exports[`ProgressIndicator Custom 1`] = `
 
 exports[`ProgressIndicator ProgressIndicator with state Error 1`] = `
 <div
-  class="ProgressIndicator--wrapper-"
-  style="width: auto;"
+  class="ProgressIndicator-wrapper-0"
 >
   <div
-    class="ProgressIndicator--progressbar- ProgressIndicator--stateError-"
+    class="ProgressIndicator-progressbar-0 ProgressIndicator-stateError-0"
     style="flex-basis: 0%;"
   />
   <div
-    class="ProgressIndicator--progressBarRemaining-"
+    class="ProgressIndicator-progressBarRemaining-0"
   >
     <span
-      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+      class="ProgressIndicator-progressBarText-0 ProgressIndicator-progressBarTextColorLow-0 ProgressIndicator-progressBarTextRight-0"
     >
         
     </span>
@@ -44,18 +43,17 @@ exports[`ProgressIndicator ProgressIndicator with state Error 1`] = `
 
 exports[`ProgressIndicator ProgressIndicator with state Information 1`] = `
 <div
-  class="ProgressIndicator--wrapper-"
-  style="width: auto;"
+  class="ProgressIndicator-wrapper-0"
 >
   <div
-    class="ProgressIndicator--progressbar- ProgressIndicator--stateInformation-"
+    class="ProgressIndicator-progressbar-0 ProgressIndicator-stateInformation-0"
     style="flex-basis: 0%;"
   />
   <div
-    class="ProgressIndicator--progressBarRemaining-"
+    class="ProgressIndicator-progressBarRemaining-0"
   >
     <span
-      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+      class="ProgressIndicator-progressBarText-0 ProgressIndicator-progressBarTextColorLow-0 ProgressIndicator-progressBarTextRight-0"
     >
         
     </span>
@@ -65,18 +63,17 @@ exports[`ProgressIndicator ProgressIndicator with state Information 1`] = `
 
 exports[`ProgressIndicator ProgressIndicator with state None 1`] = `
 <div
-  class="ProgressIndicator--wrapper-"
-  style="width: auto;"
+  class="ProgressIndicator-wrapper-0"
 >
   <div
-    class="ProgressIndicator--progressbar- ProgressIndicator--stateNone-"
+    class="ProgressIndicator-progressbar-0 ProgressIndicator-stateNone-0"
     style="flex-basis: 0%;"
   />
   <div
-    class="ProgressIndicator--progressBarRemaining-"
+    class="ProgressIndicator-progressBarRemaining-0"
   >
     <span
-      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+      class="ProgressIndicator-progressBarText-0 ProgressIndicator-progressBarTextColorLow-0 ProgressIndicator-progressBarTextRight-0"
     >
         
     </span>
@@ -86,18 +83,17 @@ exports[`ProgressIndicator ProgressIndicator with state None 1`] = `
 
 exports[`ProgressIndicator ProgressIndicator with state Success 1`] = `
 <div
-  class="ProgressIndicator--wrapper-"
-  style="width: auto;"
+  class="ProgressIndicator-wrapper-0"
 >
   <div
-    class="ProgressIndicator--progressbar- ProgressIndicator--stateSuccess-"
+    class="ProgressIndicator-progressbar-0 ProgressIndicator-stateSuccess-0"
     style="flex-basis: 0%;"
   />
   <div
-    class="ProgressIndicator--progressBarRemaining-"
+    class="ProgressIndicator-progressBarRemaining-0"
   >
     <span
-      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+      class="ProgressIndicator-progressBarText-0 ProgressIndicator-progressBarTextColorLow-0 ProgressIndicator-progressBarTextRight-0"
     >
         
     </span>
@@ -107,18 +103,17 @@ exports[`ProgressIndicator ProgressIndicator with state Success 1`] = `
 
 exports[`ProgressIndicator ProgressIndicator with state Warning 1`] = `
 <div
-  class="ProgressIndicator--wrapper-"
-  style="width: auto;"
+  class="ProgressIndicator-wrapper-0"
 >
   <div
-    class="ProgressIndicator--progressbar- ProgressIndicator--stateWarning-"
+    class="ProgressIndicator-progressbar-0 ProgressIndicator-stateWarning-0"
     style="flex-basis: 0%;"
   />
   <div
-    class="ProgressIndicator--progressBarRemaining-"
+    class="ProgressIndicator-progressBarRemaining-0"
   >
     <span
-      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorLow- ProgressIndicator--progressBarTextRight-"
+      class="ProgressIndicator-progressBarText-0 ProgressIndicator-progressBarTextColorLow-0 ProgressIndicator-progressBarTextRight-0"
     >
         
     </span>
@@ -128,21 +123,20 @@ exports[`ProgressIndicator ProgressIndicator with state Warning 1`] = `
 
 exports[`ProgressIndicator State 1`] = `
 <div
-  class="ProgressIndicator--wrapper-"
-  style="width: auto;"
+  class="ProgressIndicator-wrapper-0"
 >
   <div
-    class="ProgressIndicator--progressbar- ProgressIndicator--stateError-"
+    class="ProgressIndicator-progressbar-0 ProgressIndicator-stateError-0"
     style="flex-basis: 85%;"
   >
     <span
-      class="ProgressIndicator--progressBarText- ProgressIndicator--progressBarTextColorHigh- ProgressIndicator--progressBarTextLeft-"
+      class="ProgressIndicator-progressBarText-0 ProgressIndicator-progressBarTextColorHigh-0 ProgressIndicator-progressBarTextLeft-0"
     >
         
     </span>
   </div>
   <div
-    class="ProgressIndicator--progressBarRemaining-"
+    class="ProgressIndicator-progressBarRemaining-0"
   />
 </div>
 `;

@@ -1,15 +1,32 @@
-import { mountThemedComponent, renderThemedComponent } from '@shared/tests/utils';
+import { action } from '@storybook/addon-actions';
+import { mount } from 'enzyme';
 import * as React from 'react';
-import { labels, singleDataset } from '../../test/resources/ChartProps';
-import { DonutChart } from './index';
+import { simpleDataSet } from '../../resources/DemoProps';
+import { DonutChart } from './DonutChart';
 
 describe('DonutChart', () => {
   test('Renders with data', () => {
-    renderThemedComponent(<DonutChart labels={labels} datasets={singleDataset} />);
+    expect(
+      mount(
+        <DonutChart
+          onLegendClick={action('onLegendClick')}
+          onDataPointClick={action('onDataPointClick')}
+          style={{ width: '50%' }}
+          dataset={simpleDataSet}
+          dimension={{
+            accessor: 'name'
+          }}
+          measure={{
+            accessor: 'users',
+            label: 'Number of Users'
+          }}
+        />
+      ).render()
+    ).toMatchSnapshot();
   });
 
   test('loading placeholder', () => {
-    const wrapper = mountThemedComponent(<DonutChart labels={labels} datasets={[]} loading />);
+    const wrapper = mount(<DonutChart style={{ width: '30%' }} dimensions={[]} measures={[]} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });

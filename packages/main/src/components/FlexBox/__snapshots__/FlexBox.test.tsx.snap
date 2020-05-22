@@ -2,7 +2,7 @@
 
 exports[`FlexBox with Custom Class Names and Style 1`] = `
 <div
-  class="FlexBox--flexBox- FlexBox--flexBoxDirectionRow- FlexBox--justifyContentStart- FlexBox--alignItemsStretch- FlexBox--flexWrapNoWrap- testClass"
+  class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionRow-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 testClass"
   style="background-color: rgb(0, 0, 0);"
 >
   <span>

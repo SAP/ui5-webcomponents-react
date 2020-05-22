@@ -1,20 +1,20 @@
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import * as spacing from '@ui5/webcomponents-react-base/lib/spacing';
-import { JSSTheme } from '../../interfaces/JSSTheme';
 
-const styles = ({ parameters }: JSSTheme) => ({
+const styles = {
   card: {
-    backgroundColor: parameters.sapUiTileBackground,
-    // TODO There is a border mentioned in the specs, but this one looks weird.
-    // border: `0.625rem solid ${parameters.sapUiTileBorderColor}`,
-    boxShadow: parameters.sapUiShadowLevel0,
-    borderRadius: '0.25rem',
+    backgroundColor: ThemingParameters.sapTile_Background,
+    border: `0.0625rem solid ${ThemingParameters.sapTile_BorderColor}`,
+    boxShadow: ThemingParameters.sapContent_Shadow0,
+    borderRadius: ThemingParameters.sapElement_BorderCornerRadius,
     textAlign: 'start',
     overflow: 'hidden',
     position: 'relative',
-    fontFamily: parameters.sapUiFontFamily,
-    boxSizing: 'border-box'
+    fontFamily: ThemingParameters.sapFontFamily,
+    boxSizing: 'border-box',
+    width: '20rem'
   },
   content: spacing.sapUiContentPadding
-});
+};
 
 export default styles;

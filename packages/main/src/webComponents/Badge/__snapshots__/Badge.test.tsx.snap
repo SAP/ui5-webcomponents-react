@@ -1,21 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Badge Basic Test 1`] = `
+exports[`Badge Basic Test (generated) 1`] = `
 <ui5-badge
   color-scheme="1"
->
-  My Badge
-</ui5-badge>
-`;
-
-exports[`Badge with Icon 1`] = `
-<ui5-badge
-  color-scheme="1"
->
-  <ui5-icon
-    name="employee"
-    slot="icon"
-  />
-  My Badge
-</ui5-badge>
+/>
 `;

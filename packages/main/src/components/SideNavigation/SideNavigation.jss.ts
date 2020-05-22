@@ -1,10 +1,10 @@
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
-export const sideNavigationStyles = ({ parameters }: JSSTheme) => ({
+export const sideNavigationStyles = {
   sideNavigation: {
     height: '100%',
-    borderRight: `0.0625rem solid ${parameters.sapUiGroupContentBorderColor}`,
-    backgroundColor: parameters.sapUiListBackground,
+    borderRight: `0.0625rem solid ${ThemingParameters.sapGroup_ContentBorderColor}`,
+    backgroundColor: ThemingParameters.sapList_Background,
     display: 'flex',
     flexDirection: 'column',
     transition: 'width 500ms'
@@ -30,6 +30,6 @@ export const sideNavigationStyles = ({ parameters }: JSSTheme) => ({
   footerItemsSeparator: {
     margin: '0.25rem 0.875rem',
     height: '0.125rem',
-    backgroundColor: parameters.sapUiListBorderColor
+    backgroundColor: ThemingParameters.sapList_BorderColor
   }
-});
+};

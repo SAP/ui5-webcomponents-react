@@ -1,5 +1,6 @@
 export enum CssSizeVariablesNames {
   sapWcrBarHeight = 'sapWcrBarHeight',
+  sapWcrSubHeaderBarHeight = 'sapWcrSubHeaderBarHeight',
   sapWcrProgressIndicatorHeight = 'sapWcrProgressIndicatorHeight',
   sapWcrProgressIndicatorMargin = 'sapWcrProgressIndicatorMargin',
   sapWcrSegmentedButtonPadding = 'sapWcrSegmentedButtonPadding',
@@ -12,7 +13,8 @@ export enum CssSizeVariablesNames {
   sapWcrAnalyticalTableRowHeight = 'sapWcrAnalyticalTableRowHeight',
   sapWcrAnalyticalTableTreePaddingLevel1 = 'sapWcrAnalyticalTableTreePaddingLevel1',
   sapWcrAnalyticalTableTreePaddingLevel2 = 'sapWcrAnalyticalTableTreePaddingLevel2',
-  sapWcrAnalyticalTableTreePaddingLevel3 = 'sapWcrAnalyticalTableTreePaddingLevel3'
+  sapWcrAnalyticalTableTreePaddingLevel3 = 'sapWcrAnalyticalTableTreePaddingLevel3',
+  sapWcrAnalyticalTableSelectionColumnWidth = 'sapWcrAnalyticalTableSelectionColumnWidth'
 }
 
 export const CssSizeVariables: Record<CssSizeVariablesNames, string> = Object.values(CssSizeVariablesNames).reduce(
@@ -26,6 +28,7 @@ export const CssSizeVariables: Record<CssSizeVariablesNames, string> = Object.va
 export const cssVariablesStyles = `
 :root {
   --${CssSizeVariablesNames.sapWcrBarHeight}:2.75rem;
+  --${CssSizeVariablesNames.sapWcrSubHeaderBarHeight}:3rem;
   --${CssSizeVariablesNames.sapWcrProgressIndicatorHeight}:1rem;
   --${CssSizeVariablesNames.sapWcrProgressIndicatorMargin}:0.5rem 0;
   --${CssSizeVariablesNames.sapWcrSegmentedButtonPadding}:0.250rem 0;
@@ -39,12 +42,15 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel1}:1.5rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel2}:2.25rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel3}:2.75rem;
+  --${CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth}:55px;
+
 }
 
 [data-ui5-compact-size],
 .ui5-content-density-compact,
 .sapUiSizeCompact {
   --${CssSizeVariablesNames.sapWcrBarHeight}:2.5rem;
+  --${CssSizeVariablesNames.sapWcrSubHeaderBarHeight}:2.25rem;
   --${CssSizeVariablesNames.sapWcrProgressIndicatorHeight}:1.125rem;
   --${CssSizeVariablesNames.sapWcrSegmentedButtonPadding}:0.1875rem 0;
   --${CssSizeVariablesNames.sapWcrSegmentedButtonHeight}:2rem;
@@ -57,5 +63,6 @@ export const cssVariablesStyles = `
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel1}:1rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel2}:1.5rem;
   --${CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel3}:2rem;
+  --${CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth}:40px;
 }
 `;

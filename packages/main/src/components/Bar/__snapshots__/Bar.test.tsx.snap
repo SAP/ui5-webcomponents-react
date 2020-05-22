@@ -1,61 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Bar Render all content 1`] = `
-<div
-  class="Bar--bar-"
-  data-bar-part="Root"
->
+<DocumentFragment>
   <div
-    class="Bar--left-"
-    data-bar-part="Left"
-  >
-    <div>
-      Content Left
-    </div>
-  </div>
-  <div
-    class="Bar--center-"
-    data-bar-part="Center"
+    class="Bar-bar-0-2-1 Bar-auto-0-2-6"
+    data-bar-part="Root"
   >
     <div
-      class="Bar--inner-"
+      class="Bar-left-0-2-2"
+      data-bar-part="Left"
     >
       <div>
-        Content Middle
+        Content Left
+      </div>
+    </div>
+    <div
+      class="Bar-center-0-2-3"
+      data-bar-part="Center"
+    >
+      <div
+        class="Bar-inner-0-2-4"
+      >
+        <div>
+          Content Middle
+        </div>
+      </div>
+    </div>
+    <div
+      class="Bar-right-0-2-5"
+      data-bar-part="Right"
+    >
+      <div>
+        Content Right
       </div>
     </div>
   </div>
-  <div
-    class="Bar--right-"
-    data-bar-part="Right"
-  >
-    <div>
-      Content Right
-    </div>
-  </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`Bar Renders with default Props 1`] = `
-<div
-  class="Bar--bar-"
-  data-bar-part="Root"
->
+<DocumentFragment>
   <div
-    class="Bar--left-"
-    data-bar-part="Left"
-  />
-  <div
-    class="Bar--center-"
-    data-bar-part="Center"
+    class="Bar-bar-0-2-1 Bar-auto-0-2-6"
+    data-bar-part="Root"
   >
     <div
-      class="Bar--inner-"
+      class="Bar-left-0-2-2"
+      data-bar-part="Left"
+    />
+    <div
+      class="Bar-center-0-2-3"
+      data-bar-part="Center"
+    >
+      <div
+        class="Bar-inner-0-2-4"
+      />
+    </div>
+    <div
+      class="Bar-right-0-2-5"
+      data-bar-part="Right"
     />
   </div>
-  <div
-    class="Bar--right-"
-    data-bar-part="Right"
-  />
-</div>
+</DocumentFragment>
 `;

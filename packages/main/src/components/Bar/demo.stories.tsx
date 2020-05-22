@@ -1,13 +1,16 @@
+import { select } from '@storybook/addon-knobs';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React from 'react';
 
 export const defaultStory = () => {
   return (
     <Bar
-      renderContentLeft={() => <Label>Content Left</Label>}
-      renderContentMiddle={() => <Label>Content Middle</Label>}
-      renderContentRight={() => <Label>Content Right</Label>}
+      design={select('design', BarDesign, BarDesign.Auto)}
+      contentLeft={<Label>Content Left</Label>}
+      contentMiddle={<Label>Content Middle</Label>}
+      contentRight={<Label>Content Right</Label>}
     />
   );
 };
