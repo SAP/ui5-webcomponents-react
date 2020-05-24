@@ -61,21 +61,15 @@ const getRowProps = (rowProps, { instance, row }) => {
   const { classes, selectionBehavior, selectionMode, alternateRowColor } = webComponentsReactProperties;
   const isEmptyRow = row.original?.emptyRow;
   let className = classes.tr;
+  const rowCanBeSelected =
+    [TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode) && !isEmptyRow;
 
   if (row.isGrouped) {
     className += ` ${classes.tableGroupHeader}`;
   }
 
-  if (isEmptyRow) {
-    className += ` ${classes.emptyRow}`;
-  }
-
   if (alternateRowColor && row.index % 2 !== 0) {
     className += ` ${classes.alternateRowColor}`;
-  }
-
-  if (TableSelectionBehavior.ROW_SELECTOR === selectionBehavior) {
-    className += ` ${classes.selectionModeRowSelector}`;
   }
 
   const newRowProps = {
@@ -84,7 +78,10 @@ const getRowProps = (rowProps, { instance, row }) => {
     'aria-rowindex': row.index
   };
 
-  if ([TableSelectionMode.SINGLE_SELECT, TableSelectionMode.MULTI_SELECT].includes(selectionMode) && !isEmptyRow) {
+  if (rowCanBeSelected) {
+    if (TableSelectionBehavior.ROW_SELECTOR !== selectionBehavior) {
+      newRowProps.className += ` ${classes.trActive}`;
+    }
     if (row.isSelected) {
       newRowProps[ROW_SELECTION_ATTRIBUTE] = '';
     }
