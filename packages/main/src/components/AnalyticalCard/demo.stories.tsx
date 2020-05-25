@@ -17,23 +17,23 @@ export default {
 
 const simpleDataSet = [
   {
-    name: 'January / Month',
-    users: 100
+    name: 'January',
+    users: 76
   },
   {
-    name: 'February / Month',
+    name: 'February',
     users: 230
   },
   {
-    name: 'March / Month',
+    name: 'March',
     users: 240
   },
   {
-    name: 'April / Month',
+    name: 'April',
     users: 280
   },
   {
-    name: 'May / Month',
+    name: 'May',
     users: 100
   }
 ];
@@ -63,7 +63,7 @@ export const defaultStory = () => (
     <LineChart
       noLegend
       dimensions={[{ accessor: 'name' }]}
-      measures={[{ accessor: 'users', color: 'red' }]}
+      measures={[{ accessor: 'users', formatter: (val) => `${val}k` }]}
       dataset={simpleDataSet}
     />
   </AnalyticalCard>
