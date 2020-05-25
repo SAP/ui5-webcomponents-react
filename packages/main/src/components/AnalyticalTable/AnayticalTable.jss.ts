@@ -22,7 +22,6 @@ const styles = {
   th: {
     backgroundColor: ThemingParameters.sapList_HeaderBackground,
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    fontWeight: 'normal',
     color: ThemingParameters.sapList_HeaderTextColor,
     borderTop: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
@@ -41,52 +40,39 @@ const styles = {
   },
   tbody: {
     position: 'relative',
-    zIndex: 0,
     backgroundColor: ThemingParameters.sapList_Background,
     overflowX: 'hidden',
     overflowY: 'auto'
   },
   alternateRowColor: {
-    backgroundColor: ThemingParameters.sapList_HeaderBackground
+    backgroundColor: ThemingParameters.sapList_AlternatingBackground
   },
-  emptyRow: {},
   tr: {
     position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
-    zIndex: 0,
     color: ThemingParameters.sapList_TextColor,
     borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     boxSizing: 'border-box',
     display: 'flex',
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
+    '&:hover': {
+      backgroundColor: ThemingParameters.sapList_Hover_Background
+    },
     '&[data-is-selected]': {
       borderBottom: `1px solid ${ThemingParameters.sapList_SelectionBorderColor}`,
-      backgroundColor: `${ThemingParameters.sapList_SelectionBackgroundColor} !important`
+      backgroundColor: ThemingParameters.sapList_SelectionBackgroundColor
     },
     '&[data-is-selected]:hover': {
-      backgroundColor: `${ThemingParameters.sapList_Hover_SelectionBackground} !important`
+      backgroundColor: ThemingParameters.sapList_Hover_SelectionBackground
     }
   },
-  tableGroupHeader: {
-    '&$tr': {
-      backgroundColor: `${ThemingParameters.sapList_TableGroupHeaderBackground} !important`,
-      border: `1px solid ${ThemingParameters.sapList_TableGroupHeaderBorderColor}`,
-      color: ThemingParameters.sapList_TextColor,
-      '& $tableCell': {
-        borderRight: 'none'
-      }
-    }
-  },
-  selectable: {
-    '& $tr:hover:not($emptyRow)': {
-      backgroundColor: ThemingParameters.sapList_Hover_Background,
-      '&:not($selectionModeRowSelector)': {
-        cursor: 'pointer'
-      }
+  trActive: {
+    '&:hover': {
+      cursor: 'pointer'
     },
-    '& $tr:active:not([data-is-selected]):not($tableGroupHeader):not($emptyRow):not($selectionModeRowSelector)': {
+    '&:active': {
       backgroundColor: ThemingParameters.sapList_Active_Background,
       '& $tableCell': {
         borderRight: `1px solid ${ThemingParameters.sapList_Active_Background}`,
@@ -95,7 +81,16 @@ const styles = {
       }
     }
   },
-  selectionModeRowSelector: {},
+  tableGroupHeader: {
+    '&$tr': {
+      backgroundColor: `${ThemingParameters.sapList_TableGroupHeaderBackground}`,
+      border: `1px solid ${ThemingParameters.sapList_TableGroupHeaderBorderColor}`,
+      color: ThemingParameters.sapList_TextColor,
+      '& $tableCell': {
+        borderRight: 'none'
+      }
+    }
+  },
   tableCell: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     boxSizing: 'border-box',
