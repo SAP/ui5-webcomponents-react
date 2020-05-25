@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-rc.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.0...v0.10.0-rc.1) (2020-05-25)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** remove padding and scrollbar from select-all header cell ([#536](https://github.com/SAP/ui5-webcomponents-react/issues/536)) ([97158a3](https://github.com/SAP/ui5-webcomponents-react/commit/97158a39663cf40c424829a86962df7070a0dacb)), closes [#532](https://github.com/SAP/ui5-webcomponents-react/issues/532)
+* **DurationPicker:** use correct value for defaultProp maxValue ([#529](https://github.com/SAP/ui5-webcomponents-react/issues/529)) ([888d069](https://github.com/SAP/ui5-webcomponents-react/commit/888d069a86784c4833f9257abc67e569be3dd231))
+
+
+### Features
+
+* **StyleClassHelper:** add putIfPresent method ([#539](https://github.com/SAP/ui5-webcomponents-react/issues/539)) ([0ae0785](https://github.com/SAP/ui5-webcomponents-react/commit/0ae078554dd0e7e6a1424de6755ec02fa15bb12e))
+
+
+
+
+
 # [0.10.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.5...v0.10.0-rc.0) (2020-05-19)
 
 
