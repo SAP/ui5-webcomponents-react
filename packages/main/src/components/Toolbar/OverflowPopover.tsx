@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
-import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { Popover } from '@ui5/webcomponents-react/lib/Popover';
-import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import '@ui5/webcomponents-icons/dist/icons/overflow';
+import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
+import { Popover } from '@ui5/webcomponents-react/lib/Popover';
+import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export function OverflowPopover(props) {
   const { lastVisibleIndex, contentClass, children } = props;
@@ -21,9 +22,43 @@ export function OverflowPopover(props) {
     }
   };
 
+  useEffect(() => {
+    return () => {
+      if (popoverRef.current) {
+        popoverRef.current.close();
+      }
+    };
+  }, []);
+
   const handleClose = () => {
     setPressed(false);
   };
+
+  const renderChildren = useCallback(() => {
+    return React.Children.map(children, (item, index) => {
+      if (item.type.displayName === 'ToolbarSeparator') {
+        console.log(
+          React.cloneElement(item, {
+            style: {
+              height: '0.0625rem',
+              margin: '0.375rem 0.1875rem',
+              width: '100%'
+            }
+          })
+        );
+        return React.cloneElement(item, {
+          style: {
+            height: '0.0625rem',
+            margin: '0.375rem 0.1875rem',
+            width: '100%',
+            background: ThemingParameters.sapToolbar_SeparatorColor
+          }
+        });
+      }
+      if (index > lastVisibleIndex) return item;
+      return null;
+    });
+  }, [children]);
 
   return (
     <>
@@ -34,12 +69,7 @@ export function OverflowPopover(props) {
         pressed={pressed}
       />
       <Popover placementType={PlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose}>
-        <div className={contentClass}>
-          {React.Children.map(children, (item, index) => {
-            if (index > lastVisibleIndex) return item;
-            return null;
-          })}
-        </div>
+        <div className={contentClass}>{renderChildren()}</div>
       </Popover>
     </>
   );

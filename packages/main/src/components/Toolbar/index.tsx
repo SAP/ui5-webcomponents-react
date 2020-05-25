@@ -1,15 +1,38 @@
-import React, { createRef, RefObject, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { JSSTheme } from '../../interfaces/JSSTheme';
+import { createComponentStyles } from '@ui5/webcomponents-react-base';
+import React, {
+  createRef,
+  FC,
+  forwardRef,
+  ReactNode,
+  ReactNodeArray,
+  Ref,
+  RefObject,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Toolbar.jss';
 import ResizeObserver from 'resize-observer-polyfill';
 import { OverflowPopover } from './OverflowPopover';
 
-const useStyles = createUseStyles<JSSTheme, keyof ReturnType<typeof styles>>(styles, { name: 'Toolbar' });
+const useStyles = createComponentStyles(styles, { name: 'Toolbar' });
 
-export function Toolbar(props) {
-  //todo add style, design enum
-  const { children, width = '100%', toolbarStyle = 'Standard', design = 'Auto', active = true } = props;
+export interface ToolbarProptypes extends CommonProps {
+  children?: ReactNode | ReactNodeArray;
+  toolbarStyle?: string; //todo enum
+  design?: string; //todo enum
+  active?: boolean;
+  enabled?: boolean;
+}
+
+const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: Ref<HTMLDivElement>) => {
+  //todo add style, design enum, commonprops
+  //todo export separator, spacer
+  const { children, toolbarStyle = 'Standard', design = 'Auto', active = true, style } = props;
   const classes = useStyles(styles);
   const outerContainer = useRef(null);
   const controlMetaData = useRef([]);
@@ -25,7 +48,9 @@ export function Toolbar(props) {
       controlMetaData.current.push({
         ref: itemRef
       });
-
+      if (item.type.displayName === 'ToolbarSpacer') {
+        return item;
+      }
       return (
         <div ref={itemRef} key={index}>
           {item}
@@ -39,42 +64,48 @@ export function Toolbar(props) {
   const calculateVisibleItems = useCallback(() => {
     requestAnimationFrame(() => {
       if (!outerContainer.current) return;
-      const availableWidth = outerContainer.current.getBoundingClientRect().width /*- 32 - 8*/;
+      const availableWidth = outerContainer.current.getBoundingClientRect().width; /*- 32 - 8*/
       let consumedWidth = 0;
       let lastIndex = null;
       let lastFitWidth = 0;
-      controlMetaData.current.forEach((item, index) => {
-        const currentMeta = controlMetaData.current[index];
-        if (currentMeta && currentMeta.ref && currentMeta.ref.current) {
-          let nextWidth = currentMeta.ref.current.getBoundingClientRect().width;
-          nextWidth += index === 0 || index === controlMetaData.current.length - 1 ? 4 : 8; //first & last element = padding: 4px
-          if (index === controlMetaData.current.length - 1) {
-            if (consumedWidth + nextWidth <= availableWidth - 8) {
-              lastIndex = index;
-              lastFitWidth = consumedWidth + nextWidth;
-            }
-          } else {
-            if (consumedWidth + nextWidth <= availableWidth - 32 - 8) {
-              lastIndex = index;
-              lastFitWidth = consumedWidth + nextWidth;
-            }
-            if (consumedWidth < availableWidth - 32 - 8 && consumedWidth + nextWidth >= availableWidth - 32 - 8) {
-              lastIndex = index - 1;
-              lastFitWidth = 0;
-            }
-          }
-          consumedWidth += nextWidth;
-        }
-      });
 
+      if (availableWidth - 32 - 8 <= 0) {
+        lastIndex = -1;
+        lastFitWidth = 0;
+      } else {
+        controlMetaData.current.forEach((item, index) => {
+          const currentMeta = controlMetaData.current[index];
+          if (currentMeta && currentMeta.ref && currentMeta.ref.current) {
+            let nextWidth = currentMeta.ref.current.getBoundingClientRect().width;
+            nextWidth += index === 0 || index === controlMetaData.current.length - 1 ? 4 : 8; //first & last element = padding: 4px
+            if (index === controlMetaData.current.length - 1) {
+              if (consumedWidth + nextWidth <= availableWidth - 8) {
+                lastIndex = index;
+                lastFitWidth = consumedWidth + nextWidth;
+              }
+            } else {
+              if (consumedWidth + nextWidth <= availableWidth - 32 - 8) {
+                lastIndex = index;
+                lastFitWidth = consumedWidth + nextWidth;
+              }
+              if (consumedWidth < availableWidth - 32 - 8 && consumedWidth + nextWidth >= availableWidth - 32 - 8) {
+                lastIndex = index - 1;
+                lastFitWidth = 0;
+              }
+            }
+            consumedWidth += nextWidth;
+          }
+        });
+      }
       setBlockerWidth(Math.max(0, availableWidth - lastFitWidth));
       setLastVisibleIndex(lastIndex);
     });
   }, [outerContainer.current, controlMetaData.current, setLastVisibleIndex, childrenWithRef, overflowNeeded]);
 
-  const renderBlocker = useCallback(() => <div data-toolbar-blocker style={{ width: `${blockerWidth}px` }} />, [
-    blockerWidth
-  ]);
+  const renderBlocker = useCallback(
+    () => <div data-toolbar-blocker style={{ width: `${blockerWidth}px`, minWidth: `${blockerWidth}px` }} />,
+    [blockerWidth]
+  );
 
   const observer = useRef(new ResizeObserver(calculateVisibleItems));
 
@@ -90,13 +121,6 @@ export function Toolbar(props) {
   useLayoutEffect(() => {
     calculateVisibleItems();
   }, [calculateVisibleItems]);
-
-  const inlineStyle = useMemo(() => {
-    if (width) {
-      return { width };
-    }
-    return {};
-  }, [width]);
 
   const renderOverflowPopover = useCallback(() => {
     return (
@@ -132,10 +156,9 @@ export function Toolbar(props) {
   };
 
   const toolbarStyleDesign = toolbarStyle === 'Clear' ? classes.clear : '';
-
   return (
     <div
-      style={inlineStyle}
+      style={style}
       className={`${classes.outerContainer} ${getToolbarDesign()} ${getActiveDesign()} ${toolbarStyleDesign} `}
       ref={outerContainer}
     >
@@ -165,4 +188,7 @@ export function Toolbar(props) {
       {overflowNeeded && renderOverflowPopover()}
     </div>
   );
-}
+});
+
+Toolbar.displayName = 'Toolbar';
+export { Toolbar };

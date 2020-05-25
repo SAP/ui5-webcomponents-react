@@ -2,6 +2,9 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingPara
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
 export const styles = {
   outerContainer: {
+    width: '100%',
+    //todo
+    // minWidth: '50px',
     height: CssSizeVariables.sapWcrToolbarHeight,
     position: 'relative',
     overflow: 'hidden',
@@ -49,14 +52,14 @@ export const styles = {
     }
   },
   toolbar: {
-    padding: '0.5rem',
-    '& >:first-child': {
+    width: '100%',
+    '& >:first-child:not(.spacer)': {
       margin: '0 0.25rem 0 0'
     },
-    '& >:last-child': {
-      margin: '0 0 0 0.25rem'
+    '& >:last-child:not(.spacer)': {
+      margin: '0 0.5rem 0 0.25rem'
     },
-    '& > *:not(first-child):not(last-child)': {
+    '& > *:not(first-child):not(last-child):not(.spacer)': {
       margin: '0 0.25rem'
     },
     display: 'flex',
