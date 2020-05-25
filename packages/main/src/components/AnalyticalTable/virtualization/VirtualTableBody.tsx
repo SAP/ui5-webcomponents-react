@@ -64,9 +64,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   };
 
   const classNames = StyleClassHelper.of(classes.tbody, GlobalStyleClasses.sapScrollBar);
-  if (selectionMode === TableSelectionMode.SINGLE_SELECT || selectionMode === TableSelectionMode.MULTI_SELECT) {
-    classNames.put(classes.selectable);
-  }
 
   const lastScrollTop = useRef(0);
 
