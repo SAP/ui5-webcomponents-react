@@ -42,6 +42,11 @@
     "react": "^16.8.0",
     "react-jss": "^10.0.4"
   },
+  "peerDependenciesMeta": {
+    "@ui5/webcomponents-base": {
+      "optional": true
+    }
+  },
   "publishConfig": {
     "access": "public"
   }
