@@ -39,6 +39,7 @@ import { Dialog } from './lib/Dialog';
 import { DurationPicker } from './lib/DurationPicker';
 import { FileUploader } from './lib/FileUploader';
 import { FilterBar } from './lib/FilterBar';
+import { FilterGroupItem } from './lib/FilterGroupItem';
 import { FilterItem } from './lib/FilterItem';
 import { FilterType } from './lib/FilterType';
 import { FlexBox } from './lib/FlexBox';
@@ -181,6 +182,7 @@ export {
   DurationPicker,
   FileUploader,
   FilterBar,
+  FilterGroupItem,
   FilterItem,
   FilterType,
   FlexBox,

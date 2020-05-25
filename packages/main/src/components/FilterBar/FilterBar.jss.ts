@@ -44,29 +44,18 @@ const styles = {
   headerRowRight: {
     display: 'flex',
     justifyContent: 'flex-end',
-    flexGrow: 1
+    flexGrow: 1,
+    '& ui5-button': {
+      marginLeft: '0.5rem'
+    }
   },
-  // is being applied to the span which represents the InfoLabel Text
-  label: {
-    fontSize: ThemingParameters.sapFontSmallSize,
-    fontFamily: ThemingParameters.sapFontFamily,
-    lineHeight: '1.125rem',
-    fontWeight: 600,
-    letterSpacing: '0.0125rem',
-    textTransform: 'uppercase',
-    textAlign: 'center',
-    verticalAlign: 'top',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    display: 'inline-block',
-    color: ThemingParameters.sapTextColor
-  },
-  // specific padding needed for purely numeric input
-  numeric: {},
-  // specific padding needed for text input
-  text: {},
-  // displayOnly mode
-  displayOnly: {}
+  showFiltersBtn: { minWidth: '108px' },
+  loadingContainer: {
+    marginBottom: '0.5rem',
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'center'
+  }
 };
 
 export default styles;
