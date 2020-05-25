@@ -21,7 +21,7 @@ const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
  * <code>import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';</code>
  */
 const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { children, search, variants } = props as FilterBarInternalProps;
+  const { children, search, variants, className, style, tooltip, slot } = props as FilterBarInternalProps;
   const [showFilters, setShowFilters] = useState(true);
 
   const classes = useStyles();
@@ -39,8 +39,20 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
+  const filterBarClasses = StyleClassHelper.of(classes.outerContainer);
+  if (className) {
+    filterBarClasses.put(className);
+  }
+
   return (
-    <div ref={ref} className={classes.outerContainer} {...passThroughProps}>
+    <div
+      ref={ref}
+      className={filterBarClasses.valueOf()}
+      style={style}
+      title={tooltip}
+      slot={slot}
+      {...passThroughProps}
+    >
       <div className={classes.filterBarHeader}>
         {variants}
         {search && <div className={classes.vLine}> {search} </div>}

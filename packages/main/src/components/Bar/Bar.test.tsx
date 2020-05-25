@@ -1,49 +1,65 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { mount } from 'enzyme';
+import { render, screen, cleanup } from '@testing-library/react';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
+import { BarDesign } from '@ui5/webcomponents-react/lib/BarDesign';
 import React from 'react';
 
-const createRenderLabel = (text) => () => {
-  return <p>{text}</p>;
-};
+const text1 = 'Content Left';
+const text2 = 'Content Middle';
+const text3 = 'Content Right';
 
 describe('Bar', () => {
+  afterEach(cleanup);
+
   test('Renders with default Props', () => {
-    expect(mount(<Bar />).render()).toMatchSnapshot();
+    expect(render(<Bar />).asFragment()).toMatchSnapshot();
   });
 
   test('Render all content', () => {
-    const wrapper = mount(
-      <Bar
-        contentLeft={<div>Content Left</div>}
-        contentMiddle={<div>Content Middle</div>}
-        contentRight={<div>Content Right</div>}
-      />
-    );
-    expect(wrapper.render()).toMatchSnapshot();
-  });
-
-  test('Render all content', () => {
-    const text1 = 'Content Left';
-    const text2 = 'Content Middle';
-    const text3 = 'Content Right';
-
-    const wrapper = mount(
+    const utils = render(
       <Bar contentLeft={<div>{text1}</div>} contentMiddle={<div>{text2}</div>} contentRight={<div>{text3}</div>} />
     );
-    expect(wrapper.text()).toContain(text1);
-    expect(wrapper.text()).toContain(text2);
-    expect(wrapper.text()).toContain(text3);
+
+    expect(screen.getByText(text1).textContent).toEqual(text1);
+    expect(screen.getByText(text2).textContent).toEqual(text2);
+    expect(screen.getByText(text3).textContent).toEqual(text3);
+
+    expect(utils.asFragment()).toMatchSnapshot();
   });
 
-  test('Has Fiori 3 padding', () => {
-    const wrapper = mount(
-      <Bar renderContentLeft={createRenderLabel('Test')} renderContentRight={createRenderLabel('Right')} />
-    )
-      .find('div')
-      .at(1);
-    const node = wrapper.getDOMNode();
-    expect(window.getComputedStyle(node).paddingLeft).toEqual('0.5rem');
+  test('Test classes for all modes', () => {
+    const { rerender } = render(
+      <Bar
+        design={BarDesign.Footer}
+        contentLeft={<div>{text1}</div>}
+        contentMiddle={<div>{text2}</div>}
+        contentRight={<div>{text3}</div>}
+        data-testid={'bar'}
+      />
+    );
+    expect(screen.getByTestId('bar').className).toMatch(/footer/);
+
+    rerender(
+      <Bar
+        design={BarDesign.SubHeader}
+        contentLeft={<div>{text1}</div>}
+        contentMiddle={<div>{text2}</div>}
+        contentRight={<div>{text3}</div>}
+        data-testid={'bar'}
+      />
+    );
+
+    expect(screen.getByTestId('bar').className).toMatch(/subHeader/);
+    rerender(
+      <Bar
+        design={BarDesign.FloatingFooter}
+        contentLeft={<div>{text1}</div>}
+        contentMiddle={<div>{text2}</div>}
+        contentRight={<div>{text3}</div>}
+        data-testid={'bar'}
+      />
+    );
+    expect(screen.getByTestId('bar').className).toMatch(/floatingFooter/);
   });
 
   createPassThroughPropsTest(Bar);

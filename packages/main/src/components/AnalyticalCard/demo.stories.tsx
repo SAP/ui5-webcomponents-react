@@ -15,6 +15,29 @@ export default {
   }
 };
 
+const simpleDataSet = [
+  {
+    name: 'January',
+    users: 76
+  },
+  {
+    name: 'February',
+    users: 230
+  },
+  {
+    name: 'March',
+    users: 240
+  },
+  {
+    name: 'April',
+    users: 280
+  },
+  {
+    name: 'May',
+    users: 100
+  }
+];
+
 export const defaultStory = () => (
   <AnalyticalCard
     header={
@@ -38,37 +61,10 @@ export const defaultStory = () => (
     }
   >
     <LineChart
-      labels={[
-        '201901',
-        '201902',
-        '201903',
-        '201904',
-        '201905',
-        '201906',
-        '201907',
-        '201908',
-        '201909',
-        '201910',
-        '201911',
-        '201912'
-      ]}
-      datasets={[
-        {
-          label: 'automated mapping quota',
-          data: [65, 64, 68, 73, 75, 75, 79, 84, 88, 88.5, 89, 92]
-        }
-      ]}
-      height={200}
-      width={270}
-      options={{
-        layout: {
-          padding: { top: 25 }
-        }
-      }}
-      valueAxisFormatter={(yValue) => {
-        return `${yValue}%`;
-      }}
-      colors={['#607182']}
+      noLegend
+      dimensions={[{ accessor: 'name' }]}
+      measures={[{ accessor: 'users', formatter: (val) => `${val}k` }]}
+      dataset={simpleDataSet}
     />
   </AnalyticalCard>
 );
