@@ -3,7 +3,7 @@ import '@ui5/webcomponents-icons/dist/icons/message-error';
 import '@ui5/webcomponents-icons/dist/icons/message-success';
 import '@ui5/webcomponents-icons/dist/icons/message-warning';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import {
@@ -245,7 +245,13 @@ const Notification: FC<NotificationProptypes> = forwardRef(
 
     const passThroughProps = usePassThroughHtmlProps(props, ['onClick', 'onClose']);
 
-    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+    const [showLessText, showMoreText, expandGroupText, collapseGroupText] = useI18nText(
+      '@ui5/webcomponents-react',
+      SHOW_LESS,
+      SHOW_MORE,
+      EXPAND_GROUP,
+      COLLAPSE_GROUP
+    );
     if (!visibleState) return null;
     return (
       <>
@@ -294,7 +300,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                   {!noShowMoreButton && (
                     <Button design={ButtonDesign.Transparent} onClick={handleShowMore}>
-                      {i18nBundle.getText(showMore ? SHOW_LESS : SHOW_MORE)}
+                      {showMore ? showLessText : showMoreText}
                     </Button>
                   )}
                   {footer}
@@ -307,7 +313,7 @@ const Notification: FC<NotificationProptypes> = forwardRef(
                 onClick={handleShowNotificationGroup}
                 className={classes.showGroup}
               >
-                {i18nBundle.getText(showChildren ? COLLAPSE_GROUP : EXPAND_GROUP)}
+                {showChildren ? collapseGroupText : expandGroupText}
               </Button>
             )}
           </div>
