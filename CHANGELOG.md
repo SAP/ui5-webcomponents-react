@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.11](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.10...v0.9.11) (2020-05-26)
+
+**Note:** Version bump only for package ui5-webcomponents-react-release-0.9.x
+
+
+
+
+
 ## [0.9.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.9...v0.9.10) (2020-05-22)
 
 
