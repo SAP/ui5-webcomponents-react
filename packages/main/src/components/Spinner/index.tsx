@@ -1,5 +1,5 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
@@ -47,7 +47,7 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
-  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const [pleaseWait] = useI18nText('@ui5/webcomponents-react', PLEASE_WAIT);
 
   if (!isVisible) {
     return null;
@@ -63,7 +63,7 @@ const Spinner: FC<SpinnerProps> = forwardRef((props: SpinnerProps, ref: RefObjec
       tabIndex={0}
       aria-valuemin={0}
       aria-valuemax={100}
-      title={tooltip || i18nBundle.getText(PLEASE_WAIT)}
+      title={tooltip || pleaseWait}
       slot={slot}
       style={style}
       {...passThroughProps}

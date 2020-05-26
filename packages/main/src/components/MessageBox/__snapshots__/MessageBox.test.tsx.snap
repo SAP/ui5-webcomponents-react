@@ -9,13 +9,9 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     data-type="Confirm"
     slot="header"
   >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        name="question-mark"
-      />
-    </div>
+    <ui5-icon
+      name="question-mark"
+    />
     <ui5-title
       level="H5"
     >
@@ -58,13 +54,9 @@ exports[`MessageBox Confirm - OK 1`] = `
     data-type="Confirm"
     slot="header"
   >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        name="question-mark"
-      />
-    </div>
+    <ui5-icon
+      name="question-mark"
+    />
     <ui5-title
       level="H5"
     >
@@ -107,13 +99,9 @@ exports[`MessageBox Error 1`] = `
     data-type="Error"
     slot="header"
   >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        name="message-error"
-      />
-    </div>
+    <ui5-icon
+      name="message-error"
+    />
     <ui5-title
       level="H5"
     >
@@ -149,13 +137,9 @@ exports[`MessageBox Information 1`] = `
     data-type="Information"
     slot="header"
   >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        name="message-information"
-      />
-    </div>
+    <ui5-icon
+      name="message-information"
+    />
     <ui5-title
       level="H5"
     >
@@ -191,13 +175,9 @@ exports[`MessageBox No Title 1`] = `
     data-type="Confirm"
     slot="header"
   >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        name="question-mark"
-      />
-    </div>
+    <ui5-icon
+      name="question-mark"
+    />
     <ui5-title
       level="H5"
     >
@@ -238,13 +218,9 @@ exports[`MessageBox Not open 1`] = `
     data-type="Success"
     slot="header"
   >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        name="message-success"
-      />
-    </div>
+    <ui5-icon
+      name="message-success"
+    />
     <ui5-title
       level="H5"
     >
@@ -280,13 +256,9 @@ exports[`MessageBox Show 1`] = `
     data-type="Confirm"
     slot="header"
   >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        name="question-mark"
-      />
-    </div>
+    <ui5-icon
+      name="question-mark"
+    />
     <ui5-title
       level="H5"
     >
@@ -329,13 +301,9 @@ exports[`MessageBox Success 1`] = `
     data-type="Success"
     slot="header"
   >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        name="message-success"
-      />
-    </div>
+    <ui5-icon
+      name="message-success"
+    />
     <ui5-title
       level="H5"
     >
@@ -371,13 +339,9 @@ exports[`MessageBox Success w/ custom title 1`] = `
     data-type="Success"
     slot="header"
   >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        name="message-success"
-      />
-    </div>
+    <ui5-icon
+      name="message-success"
+    />
     <ui5-title
       level="H5"
     >
@@ -413,13 +377,9 @@ exports[`MessageBox Warning 1`] = `
     data-type="Warning"
     slot="header"
   >
-    <div
-      class="MessageBox-icon-0"
-    >
-      <ui5-icon
-        name="message-warning"
-      />
-    </div>
+    <ui5-icon
+      name="message-warning"
+    />
     <ui5-title
       level="H5"
     >

@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/icons/decline';
-import { useI18nBundle } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import {
@@ -38,7 +38,14 @@ export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties,
 
   const { Filter } = column;
 
-  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const [clearSortingText, sortAscendingText, sortDescendingText, groupText, ungroupText] = useI18nText(
+    '@ui5/webcomponents-react',
+    CLEAR_SORTING,
+    SORT_ASCENDING,
+    SORT_DESCENDING,
+    GROUP,
+    UNGROUP
+  );
 
   const handleSort = useCallback(
     (e) => {
@@ -112,22 +119,22 @@ export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties,
       <List onItemClick={handleSort}>
         {isSortedAscending && (
           <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
-            {i18nBundle.getText(CLEAR_SORTING)}
+            {clearSortingText}
           </StandardListItem>
         )}
         {showSort && !isSortedAscending && (
           <StandardListItem type={ListItemTypes.Active} icon="sort-ascending" data-sort="asc">
-            {i18nBundle.getText(SORT_ASCENDING)}
+            {sortAscendingText}
           </StandardListItem>
         )}
         {showSort && !isSortedDescending && (
           <StandardListItem type={ListItemTypes.Active} icon="sort-descending" data-sort="desc">
-            {i18nBundle.getText(SORT_DESCENDING)}
+            {sortDescendingText}
           </StandardListItem>
         )}
         {isSortedDescending && (
           <StandardListItem type={ListItemTypes.Active} icon="decline" data-sort="clear">
-            {i18nBundle.getText(CLEAR_SORTING)}
+            {clearSortingText}
           </StandardListItem>
         )}
         {showFilter && !column.isGrouped && (
@@ -145,7 +152,7 @@ export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties,
         )}
         {showGroup && (
           <StandardListItem type={ListItemTypes.Active} icon="group-2" data-sort={'group'}>
-            {i18nBundle.getText(column.isGrouped ? UNGROUP : GROUP)}
+            {column.isGrouped ? ungroupText : groupText}
           </StandardListItem>
         )}
       </List>
