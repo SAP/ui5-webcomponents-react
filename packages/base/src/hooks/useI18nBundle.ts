@@ -34,7 +34,7 @@ export const useI18nText = (bundleName: string, ...texts: (TextWithDefault | Tex
       });
     };
     fetchAndLoadBundle();
-  }, [fetchI18nBundle]);
+  }, [fetchI18nBundle, bundleName, texts]);
 
   return translations;
 };
