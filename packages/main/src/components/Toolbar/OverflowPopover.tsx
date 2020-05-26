@@ -4,7 +4,7 @@ import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 
 export function OverflowPopover(props) {
   const { lastVisibleIndex, contentClass, children } = props;
@@ -35,30 +35,23 @@ export function OverflowPopover(props) {
   };
 
   const renderChildren = useCallback(() => {
-    return React.Children.map(children, (item, index) => {
-      if (item.type.displayName === 'ToolbarSeparator') {
-        console.log(
-          React.cloneElement(item, {
+    return React.Children.toArray(children).map((item: ReactElement<any>, index) => {
+      if (index > lastVisibleIndex) {
+        if (item.type.displayName === 'ToolbarSeparator') {
+          return React.cloneElement(item, {
             style: {
               height: '0.0625rem',
               margin: '0.375rem 0.1875rem',
-              width: '100%'
+              width: '100%',
+              background: ThemingParameters.sapToolbar_SeparatorColor
             }
-          })
-        );
-        return React.cloneElement(item, {
-          style: {
-            height: '0.0625rem',
-            margin: '0.375rem 0.1875rem',
-            width: '100%',
-            background: ThemingParameters.sapToolbar_SeparatorColor
-          }
-        });
+          });
+        }
+        return item;
       }
-      if (index > lastVisibleIndex) return item;
       return null;
     });
-  }, [children]);
+  }, [children, lastVisibleIndex]);
 
   return (
     <>

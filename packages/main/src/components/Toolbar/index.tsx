@@ -1,4 +1,10 @@
-import { createComponentStyles } from '@ui5/webcomponents-react-base';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
+import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import React, {
   createRef,
   FC,
@@ -14,30 +20,58 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { styles } from './Toolbar.jss';
 import ResizeObserver from 'resize-observer-polyfill';
 import { OverflowPopover } from './OverflowPopover';
+import { styles } from './Toolbar.jss';
 
 const useStyles = createComponentStyles(styles, { name: 'Toolbar' });
 
 export interface ToolbarProptypes extends CommonProps {
   children?: ReactNode | ReactNodeArray;
-  toolbarStyle?: string; //todo enum
-  design?: string; //todo enum
+  toolbarStyle?: ToolbarStyle;
+  design?: ToolbarDesign;
   active?: boolean;
-  enabled?: boolean;
+  onToolbarClick?: (event: CustomEvent<{}>) => void;
 }
 
 const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: Ref<HTMLDivElement>) => {
-  //todo add style, design enum, commonprops
-  //todo export separator, spacer
-  const { children, toolbarStyle = 'Standard', design = 'Auto', active = true, style } = props;
+  const { children, toolbarStyle, design, active, style, tooltip, className, onToolbarClick } = props;
   const classes = useStyles(styles);
-  const outerContainer = useRef(null);
+  const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState(null);
   const [blockerWidth, setBlockerWidth] = useState(0);
+  const toolbarClasses = StyleClassHelper.of(classes.outerContainer);
+
+  if (toolbarStyle === ToolbarStyle.Clear) {
+    toolbarClasses.put(classes.clear);
+  }
+
+  if (active) {
+    toolbarClasses.put(classes.active);
+  }
+
+  switch (design) {
+    case ToolbarDesign.Solid:
+      toolbarClasses.put(classes.solid);
+      break;
+    case ToolbarDesign.Transparent:
+      toolbarClasses.put(classes.transparent);
+      break;
+    case ToolbarDesign.Info:
+      if (active) {
+        toolbarClasses.put(classes.activeInfo);
+      } else {
+        toolbarClasses.put(classes.info);
+      }
+      break;
+    default:
+      break;
+  }
+
+  if (className) {
+    toolbarClasses.put(className);
+  }
 
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
@@ -132,36 +166,19 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
     );
   }, [classes.popoverContent, lastVisibleIndex, children]);
 
-  const getToolbarDesign = () => {
-    switch (design) {
-      case 'Info':
-        return classes.info;
-      case 'Solid':
-        return classes.solid;
-      case 'Transparent':
-        return classes.transparent;
-      default:
-        return '';
-    }
-  };
-
-  const getActiveDesign = () => {
-    if (active) {
-      if (design === 'Info') {
-        return classes.activeInfo;
+  const onClick = useCallback(
+    (e) => {
+      if (active && onToolbarClick) {
+        if (onToolbarClick) {
+          onToolbarClick(enrichEventWithDetails(e));
+        }
       }
-      return classes.active;
-    }
-    return '';
-  };
+    },
+    [onToolbarClick, active]
+  );
 
-  const toolbarStyleDesign = toolbarStyle === 'Clear' ? classes.clear : '';
   return (
-    <div
-      style={style}
-      className={`${classes.outerContainer} ${getToolbarDesign()} ${getActiveDesign()} ${toolbarStyleDesign} `}
-      ref={outerContainer}
-    >
+    <div title={tooltip} style={style} className={toolbarClasses.toString()} ref={outerContainer} onClick={onClick}>
       <div className={classes.toolbar}>
         {overflowNeeded &&
           React.Children.map(childrenWithRef, (item, index) => {
@@ -189,6 +206,12 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
     </div>
   );
 });
+
+Toolbar.defaultProps = {
+  toolbarStyle: ToolbarStyle.Standard,
+  design: ToolbarDesign.Auto,
+  active: false
+};
 
 Toolbar.displayName = 'Toolbar';
 export { Toolbar };

@@ -3,8 +3,6 @@ import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVaria
 export const styles = {
   outerContainer: {
     width: '100%',
-    //todo
-    // minWidth: '50px',
     height: CssSizeVariables.sapWcrToolbarHeight,
     position: 'relative',
     overflow: 'hidden',
@@ -13,43 +11,36 @@ export const styles = {
     alignItems: 'center',
     borderBottom: `solid 0.0625rem ${ThemingParameters.sapGroup_TitleBorderColor}`
   },
-  //todo do this in index.tsx
-  active: {
-    '&:active': {
-      background: `${ThemingParameters.sapActiveColor}`
-    }
-  },
-  activeInfo: {
-    '&:active': {
-      background: `${ThemingParameters.sapInfobar_Active_Background}`
-    }
-  },
   clear: {
     borderBottom: 'none'
   },
-  info: {
-    //todo not active background color: darken(@sapUiBaseColor, 10);
-    background: ThemingParameters.sapInfobar_Background,
+  active: {
+    cursor: 'pointer',
+    '&:active': {
+      backgroundColor: ThemingParameters.sapActiveColor
+    },
     '&:hover': {
-      background: ThemingParameters.sapInfobar_Hover_Background
+      backgroundColor: ThemingParameters.sapList_Hover_Background
     }
+  },
+  activeInfo: {
+    backgroundColor: ThemingParameters.sapInfobar_Active_Background,
+    '&:active': {
+      backgroundColor: `${ThemingParameters.sapInfobar_Active_Background}`
+    },
+    '&:hover': {
+      backgroundColor: ThemingParameters.sapInfobar_Hover_Background
+    }
+  },
+  info: {
+    // This color is most similar to darken(@sapUiBaseColor, 10)
+    backgroundColor: ThemingParameters.sapList_HeaderBorderColor
   },
   solid: {
-    background: ThemingParameters.sapBackgroundColor,
-    '&:hover': {
-      //todo hover color contrast(@sapUiBaseBG, darken(@sapUiBaseBG, 3), lighten(@sapUiBaseBG, 3));
-      background: 'lightblue'
-    }
+    backgroundColor: ThemingParameters.sapBackgroundColor
   },
   transparent: {
-    background: ThemingParameters.sapToolbar_Background,
-    '&:hover': {
-      //todo hover color contrast(@sapUiToolbarBackground, darken(@sapUiToolbarBackground, 3), lighten(@sapUiToolbarBackground, 3));
-      background: 'lightgrey'
-    },
-    '&:active': {
-      background: ThemingParameters.sapActiveColor
-    }
+    backgroundColor: ThemingParameters.sapToolbar_Background
   },
   toolbar: {
     width: '100%',
