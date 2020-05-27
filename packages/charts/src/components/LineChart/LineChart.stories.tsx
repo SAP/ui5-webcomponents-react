@@ -45,9 +45,7 @@ export const renderStory = () => (
   />
 );
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export const renderStoryWithCustomColor = () => (
   <LineChart
@@ -62,9 +60,7 @@ export const renderStoryWithCustomColor = () => (
   />
 );
 
-renderStoryWithCustomColor.story = {
-  name: 'With custom color'
-};
+renderStoryWithCustomColor.storyName = 'With custom color';
 
 export const withSecondaryDimension = () => (
   <LineChart
@@ -79,9 +75,7 @@ export const withSecondaryDimension = () => (
   />
 );
 
-withSecondaryDimension.story = {
-  name: 'With secondary dimension'
-};
+withSecondaryDimension.storyName = 'With secondary dimension';
 
 export const renderLabelStory = () => {
   return (
@@ -112,9 +106,7 @@ export const renderLabelStory = () => {
   );
 };
 
-renderLabelStory.story = {
-  name: 'With data labels'
-};
+renderLabelStory.storyName = 'With data labels';
 
 export const renderCustomDataLabelStory = () => {
   return (
@@ -147,15 +139,11 @@ export const renderCustomDataLabelStory = () => {
   );
 };
 
-renderCustomDataLabelStory.story = {
-  name: 'With formatter'
-};
+renderCustomDataLabelStory.storyName = 'With formatter';
 
 export const loadingPlaceholder = () => <LineChart style={{ width: '100%' }} dimensions={[]} measures={[]} />;
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';
 
 export const withReferenceLineStory = () => {
   return (
@@ -190,6 +178,4 @@ export const withReferenceLineStory = () => {
   );
 };
 
-withReferenceLineStory.story = {
-  name: 'With reference line'
-};
+withReferenceLineStory.storyName = 'With reference line';

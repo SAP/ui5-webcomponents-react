@@ -63,9 +63,7 @@ export const renderStory = () => {
     </FilterBar>
   );
 };
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export default {
   title: 'Components / FilterBar',

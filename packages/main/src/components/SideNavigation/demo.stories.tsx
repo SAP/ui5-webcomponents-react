@@ -41,9 +41,7 @@ export const defaultStory = () => (
   </SideNavigation>
 );
 
-defaultStory.story = {
-  name: 'Default'
-};
+defaultStory.storyName = 'Default';
 
 export default {
   title: 'Components / SideNavigation',

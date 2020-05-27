@@ -47,9 +47,7 @@ export const renderStory = () => {
   );
 };
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export const renderStoryWithCustomColor = () => (
   <BarChart
@@ -64,9 +62,7 @@ export const renderStoryWithCustomColor = () => (
   />
 );
 
-renderStoryWithCustomColor.story = {
-  name: 'With custom color'
-};
+renderStoryWithCustomColor.storyName = 'With custom color';
 
 export const withSecondaryDimension = () => (
   <BarChart
@@ -81,9 +77,7 @@ export const withSecondaryDimension = () => (
   />
 );
 
-withSecondaryDimension.story = {
-  name: 'With secondary dimension'
-};
+withSecondaryDimension.storyName = 'With secondary dimension';
 
 export const renderLabelStory = () => (
   <BarChart
@@ -112,9 +106,7 @@ export const renderLabelStory = () => (
   />
 );
 
-renderLabelStory.story = {
-  name: 'With data labels'
-};
+renderLabelStory.storyName = 'With data labels';
 
 export const renderCustomDataLabelStory = () => (
   <BarChart
@@ -145,15 +137,11 @@ export const renderCustomDataLabelStory = () => (
   />
 );
 
-renderCustomDataLabelStory.story = {
-  name: 'With formatter'
-};
+renderCustomDataLabelStory.storyName = 'With formatter';
 
 export const loadingPlaceholder = () => <BarChart style={{ width: '30%' }} dimensions={[]} measures={[]} />;
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';
 
 export const withReferenceLineStory = () => (
   <BarChart
@@ -192,7 +180,6 @@ export const withReferenceLineStory = () => (
       '--sapChart_OrderedColor_10': '#f8a6a6',
       '--sapChart_OrderedColor_11': '#921473'
     }}
-    loading
     chartConfig={{
       referenceLine: {
         color: 'red',
@@ -203,6 +190,4 @@ export const withReferenceLineStory = () => (
   />
 );
 
-withReferenceLineStory.story = {
-  name: 'With reference line'
-};
+withReferenceLineStory.storyName = 'With reference line';

@@ -13,7 +13,12 @@ const DEPENDENCY_REGEX = BUILD_FOR_IE11
 
 module.exports = {
   stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.mdx', '../packages/**/*.stories.[tj]sx'],
-  addons: ['@storybook/addon-toolbars', '@storybook/addon-knobs', '@storybook/addon-docs', '@storybook/addon-actions'],
+  addons: [
+    '@storybook/addon-toolbars',
+    '@storybook/addon-docs',
+    '@storybook/addon-controls',
+    '@storybook/addon-actions'
+  ],
   webpack: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.

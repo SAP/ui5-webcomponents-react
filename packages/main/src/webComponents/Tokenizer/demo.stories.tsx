@@ -22,6 +22,4 @@ export const defaultStory = () => (
   </Tokenizer>
 );
 
-defaultStory.story = {
-  name: 'Default story'
-};
+defaultStory.storyName = 'Default story';

@@ -37,9 +37,7 @@ export const defaultStory = () => (
   />
 );
 
-defaultStory.story = {
-  name: 'Default'
-};
+defaultStory.storyName = 'Default';
 
 export default {
   title: 'Components / Notification',

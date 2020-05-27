@@ -17,9 +17,7 @@ const Demo = (props) => {
 };
 
 export const renderSpinner = () => <Demo delay={number('delay', 2000)} />;
-renderSpinner.story = {
-  name: 'Default'
-};
+renderSpinner.storyName = 'Default';
 
 export default {
   title: 'Components / Spinner',

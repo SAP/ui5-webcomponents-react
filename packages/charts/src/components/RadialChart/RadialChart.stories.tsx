@@ -18,9 +18,7 @@ export const renderStory = () => {
   );
 };
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export const customColorStory = () => {
   return (
@@ -33,6 +31,4 @@ export const customColorStory = () => {
   );
 };
 
-customColorStory.story = {
-  name: 'with custom color'
-};
+customColorStory.storyName = 'with custom color';

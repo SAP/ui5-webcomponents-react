@@ -35,6 +35,4 @@ export const generatedDefaultStory = () => (
   </ComboBox>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

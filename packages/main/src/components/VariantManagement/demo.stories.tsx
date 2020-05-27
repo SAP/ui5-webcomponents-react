@@ -21,9 +21,7 @@ export const renderStory = () => (
     disabled={boolean('disabled', false)}
   />
 );
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export default {
   title: 'Components / VariantManagement',

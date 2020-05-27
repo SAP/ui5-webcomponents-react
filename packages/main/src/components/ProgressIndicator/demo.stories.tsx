@@ -21,9 +21,7 @@ export const renderStory = () => {
     </div>
   );
 };
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export default {
   title: 'Components / ProgressIndicator',

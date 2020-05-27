@@ -7,12 +7,14 @@ export default {
   component: Button,
   argTypes: {
     design: {
-      defaultValue: ButtonDesign.Default,
       control: { type: 'options', controlType: 'select', options: ButtonDesign }
     },
-    icon: { defaultValue: 'add' },
-    children: { defaultValue: 'Button Text' },
     onClick: { control: { type: 'function' } }
+  },
+  args: {
+    design: ButtonDesign.Default,
+    icon: 'add',
+    children: 'Button Text'
   }
 };
 
@@ -24,6 +26,4 @@ export const generatedDefaultStory = ({ design, disabled, icon, iconEnd, submits
   );
 };
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

@@ -36,6 +36,4 @@ export const generatedDefaultStory = () => (
   </MultiComboBox>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

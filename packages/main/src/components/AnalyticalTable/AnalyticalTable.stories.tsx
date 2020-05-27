@@ -132,9 +132,7 @@ export const defaultTable = () => {
   );
 };
 
-defaultTable.story = {
-  name: 'Default'
-};
+defaultTable.storyName = 'Default';
 
 export const treeTable = () => {
   return (
@@ -163,9 +161,7 @@ export const treeTable = () => {
     />
   );
 };
-treeTable.story = {
-  name: 'Tree Table'
-};
+treeTable.storyName = 'Tree Table';
 
 export default {
   title: 'Components / Analytical Table',

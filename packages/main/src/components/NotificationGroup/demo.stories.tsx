@@ -59,9 +59,7 @@ export const defaultStory = () => (
   </NotificationGroup>
 );
 
-defaultStory.story = {
-  name: 'Default'
-};
+defaultStory.storyName = 'Default';
 
 export default {
   title: 'Components / NotificationGroup',

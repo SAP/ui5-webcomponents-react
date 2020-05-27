@@ -31,6 +31,4 @@ export const generatedDefaultStory = () => (
   </Card>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

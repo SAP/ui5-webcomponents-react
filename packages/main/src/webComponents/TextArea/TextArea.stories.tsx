@@ -29,6 +29,4 @@ export const generatedDefaultStory = () => (
   />
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

@@ -45,9 +45,7 @@ export const defaultStory = () => (
   />
 );
 
-defaultStory.story = {
-  name: 'Default'
-};
+defaultStory.storyName = 'Default';
 
 export const withCustomColor = () => (
   <MicroBarChart
@@ -66,12 +64,8 @@ export const withCustomColor = () => (
   />
 );
 
-withCustomColor.story = {
-  name: 'With custom color'
-};
+withCustomColor.storyName = 'With custom color';
 
 export const loadingPlaceholder = () => <MicroBarChart style={{ width: '20%' }} />;
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';

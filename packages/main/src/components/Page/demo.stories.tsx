@@ -23,9 +23,7 @@ export const renderPage = () => (
     </Page>
   </div>
 );
-renderPage.story = {
-  name: 'Default'
-};
+renderPage.storyName = 'Default';
 
 export default {
   title: 'Components / Page',

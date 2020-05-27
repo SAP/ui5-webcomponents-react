@@ -21,6 +21,4 @@ export const generatedDefaultStory = () => (
   </Timeline>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

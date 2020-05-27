@@ -10,9 +10,7 @@ export const renderLoader = () => (
     delay={number('delay', 1000)}
   />
 );
-renderLoader.story = {
-  name: 'Default'
-};
+renderLoader.storyName = 'Default';
 
 export default {
   title: 'Components / Loader',

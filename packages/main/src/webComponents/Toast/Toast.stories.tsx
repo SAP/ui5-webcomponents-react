@@ -40,6 +40,4 @@ export const generatedDefaultStory = () => {
   );
 };
 
-generatedDefaultStory.story = {
-  name: 'Default story'
-};
+generatedDefaultStory.storyName = 'Default story';

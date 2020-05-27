@@ -15,9 +15,7 @@ export const renderStory = () => {
     </Text>
   );
 };
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export default {
   title: 'Components / Text',

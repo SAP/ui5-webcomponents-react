@@ -69,4 +69,4 @@ export const defaultStory = () => (
   </AnalyticalCard>
 );
 
-defaultStory.story = { name: 'Default' };
+defaultStory.storyName = 'Default';

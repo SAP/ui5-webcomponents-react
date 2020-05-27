@@ -29,9 +29,7 @@ export const renderStory = () => {
   );
 };
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export const renderCustomColorStory = () => (
   <DonutChart
@@ -52,9 +50,7 @@ export const renderCustomColorStory = () => (
   />
 );
 
-renderCustomColorStory.story = {
-  name: 'With custom color'
-};
+renderCustomColorStory.storyName = 'With custom color';
 
 export const withPaddingStory = () => (
   <DonutChart
@@ -75,9 +71,7 @@ export const withPaddingStory = () => (
   />
 );
 
-withPaddingStory.story = {
-  name: 'With padding angle'
-};
+withPaddingStory.storyName = 'With padding angle';
 
 export const withCustomRadiusStory = () => (
   <DonutChart
@@ -101,15 +95,11 @@ export const withCustomRadiusStory = () => (
   />
 );
 
-withCustomRadiusStory.story = {
-  name: 'With custom inner radius'
-};
+withCustomRadiusStory.storyName = 'With custom inner radius';
 
 export const loadingPlaceholder = () => <DonutChart style />;
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';
 
 export const withFormatter = () => (
   <DonutChart
@@ -131,6 +121,4 @@ export const withFormatter = () => (
   />
 );
 
-withFormatter.story = {
-  name: 'With formatter'
-};
+withFormatter.storyName = 'With formatter';

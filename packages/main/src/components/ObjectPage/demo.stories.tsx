@@ -107,9 +107,7 @@ export const renderDemo = () => {
     </div>
   );
 };
-renderDemo.story = {
-  name: 'Default'
-};
+renderDemo.storyName = 'Default';
 
 export const renderComponentWithSections = () => (
   <ObjectPage
@@ -143,9 +141,7 @@ export const renderComponentWithSections = () => (
     </ObjectPageSection>
   </ObjectPage>
 );
-renderComponentWithSections.story = {
-  name: 'with Sections Only'
-};
+renderComponentWithSections.storyName = 'with Sections Only';
 
 export const renderShortContent = () => {
   return (
@@ -189,9 +185,7 @@ export const renderShortContent = () => {
     </div>
   );
 };
-renderShortContent.story = {
-  name: 'Short Content'
-};
+renderShortContent.storyName = 'Short Content';
 
 export default {
   title: 'Components / ObjectPage',

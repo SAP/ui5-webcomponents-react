@@ -47,9 +47,7 @@ export const renderStory = () => {
   );
 };
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export const renderStoryWithCustomColor = () => (
   <RadarChart
@@ -64,9 +62,7 @@ export const renderStoryWithCustomColor = () => (
   />
 );
 
-renderStoryWithCustomColor.story = {
-  name: 'With custom color'
-};
+renderStoryWithCustomColor.storyName = 'With custom color';
 
 export const renderLabelStory = () => {
   return (
@@ -94,9 +90,7 @@ export const renderLabelStory = () => {
   );
 };
 
-renderLabelStory.story = {
-  name: 'With data labels'
-};
+renderLabelStory.storyName = 'With data labels';
 
 export const renderCustomDataLabelStory = () => {
   return (
@@ -127,12 +121,8 @@ export const renderCustomDataLabelStory = () => {
   );
 };
 
-renderCustomDataLabelStory.story = {
-  name: 'As polygon'
-};
+renderCustomDataLabelStory.storyName = 'As polygon';
 
 export const loadingPlaceholder = () => <RadarChart style={{ width: '100%' }} dimensions={[]} measures={[]} />;
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';

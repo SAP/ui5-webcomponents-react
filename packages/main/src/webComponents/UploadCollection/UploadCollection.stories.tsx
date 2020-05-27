@@ -29,6 +29,4 @@ export const generatedDefaultStory = () => (
   </UploadCollection>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

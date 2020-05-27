@@ -8,18 +8,14 @@ import React from 'react';
 export const onlyText = () => (
   <ObjectStatus state={select('state', ValueState, ValueState.Success)}>Object Status</ObjectStatus>
 );
-onlyText.story = {
-  name: 'with Text only'
-};
+onlyText.storyName = 'with Text only';
 
 export const withIcon = () => (
   <ObjectStatus state={select('state', ValueState, ValueState.Success)} icon={<Icon name="sys-cancel" />}>
     Object Status
   </ObjectStatus>
 );
-withIcon.story = {
-  name: 'with Text and Icon'
-};
+withIcon.storyName = 'with Text and Icon';
 
 export const withDefaultIcon = () => (
   <ObjectStatus
@@ -29,16 +25,12 @@ export const withDefaultIcon = () => (
     Default Icon Status
   </ObjectStatus>
 );
-withDefaultIcon.story = {
-  name: 'with Default Icon'
-};
+withDefaultIcon.storyName = 'with Default Icon';
 
 export const withIconOnly = () => (
   <ObjectStatus icon={<Icon name="sys-cancel" />} state={select('state', ValueState, ValueState.Success)} />
 );
-withIconOnly.story = {
-  name: 'with Icon only'
-};
+withIconOnly.storyName = 'with Icon only';
 
 export default {
   title: 'Components / ObjectStatus',

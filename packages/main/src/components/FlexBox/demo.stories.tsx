@@ -22,9 +22,7 @@ export const defaultStory = () => (
     <Label>Item 5</Label>
   </FlexBox>
 );
-defaultStory.story = {
-  name: 'Default'
-};
+defaultStory.storyName = 'Default';
 
 export default {
   title: 'Components / FlexBox',

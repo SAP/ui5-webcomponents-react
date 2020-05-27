@@ -50,9 +50,7 @@ export const renderStory = () => {
   );
 };
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export const renderStoryWithCustomColor = () => (
   <ComposedChart
@@ -67,9 +65,7 @@ export const renderStoryWithCustomColor = () => (
   />
 );
 
-renderStoryWithCustomColor.story = {
-  name: 'With custom color'
-};
+renderStoryWithCustomColor.storyName = 'With custom color';
 
 export const withSecondaryDimension = () => (
   <ComposedChart
@@ -84,9 +80,7 @@ export const withSecondaryDimension = () => (
   />
 );
 
-withSecondaryDimension.story = {
-  name: 'With secondary dimension'
-};
+withSecondaryDimension.storyName = 'With secondary dimension';
 
 export const renderLabelStory = () => {
   return (
@@ -124,9 +118,7 @@ export const renderLabelStory = () => {
   );
 };
 
-renderLabelStory.story = {
-  name: 'With data labels'
-};
+renderLabelStory.storyName = 'With data labels';
 
 export const renderCustomDataLabelStory = () => {
   return (
@@ -167,9 +159,7 @@ export const renderCustomDataLabelStory = () => {
   );
 };
 
-renderCustomDataLabelStory.story = {
-  name: 'With formatter'
-};
+renderCustomDataLabelStory.storyName = 'With formatter';
 
 export const withReferenceLineStory = () => {
   return (
@@ -210,9 +200,7 @@ export const withReferenceLineStory = () => {
   );
 };
 
-withReferenceLineStory.story = {
-  name: 'With reference line'
-};
+withReferenceLineStory.storyName = 'With reference line';
 
 export const loadingPlaceholder = () => {
   return (
@@ -253,6 +241,4 @@ export const loadingPlaceholder = () => {
   );
 };
 
-loadingPlaceholder.story = {
-  name: 'with Loading Placeholder'
-};
+loadingPlaceholder.storyName = 'with Loading Placeholder';

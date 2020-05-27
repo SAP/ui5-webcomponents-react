@@ -33,9 +33,7 @@ export const renderStory = () => {
   );
 };
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export const renderCustomColorStory = () => {
   return (
@@ -58,15 +56,11 @@ export const renderCustomColorStory = () => {
   );
 };
 
-renderCustomColorStory.story = {
-  name: 'With custom color'
-};
+renderCustomColorStory.storyName = 'With custom color';
 
 export const loadingPlaceholder = () => <PieChart style={{ width: '50%' }} />;
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';
 
 export const renderFormatedStory = () => {
   return (
@@ -89,6 +83,4 @@ export const renderFormatedStory = () => {
   );
 };
 
-renderFormatedStory.story = {
-  name: 'With formatted data labels'
-};
+renderFormatedStory.storyName = 'With formatted data labels';

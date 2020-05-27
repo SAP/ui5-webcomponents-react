@@ -14,9 +14,7 @@ export const defaultStory = () => {
     </Breadcrumbs>
   );
 };
-defaultStory.story = {
-  name: 'Default'
-};
+defaultStory.storyName = 'Default';
 export const withCurrentLocation = () => {
   return (
     <Breadcrumbs
@@ -30,9 +28,7 @@ export const withCurrentLocation = () => {
     </Breadcrumbs>
   );
 };
-withCurrentLocation.story = {
-  name: 'with currentLocation'
-};
+withCurrentLocation.storyName = 'with currentLocation';
 
 export default {
   title: 'Components / Breadcrumbs',
