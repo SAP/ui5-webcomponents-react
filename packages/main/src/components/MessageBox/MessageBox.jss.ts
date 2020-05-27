@@ -14,12 +14,16 @@ const style = {
         verticalAlign: 'middle'
       }
     },
-    // justifyContent: 'center',
     padding: '0.25rem 1rem',
     boxSizing: 'border-box',
     borderBottom: `1px solid var(--messageBoxBorderColor)`,
     color: ThemingParameters.sapContent_LabelColor,
     fontSize: '1rem',
+    '& ui5-icon:first-child': {
+      padding: '0 0.25rem',
+      width: '1rem',
+      height: '1rem'
+    },
     '&[data-type="Error"]': {
       '--sapPageFooter_BorderColor': ThemingParameters.sapErrorBorderColor,
       '--messageBoxBorderColor': ThemingParameters.sapErrorBorderColor,
@@ -63,11 +67,6 @@ const style = {
       }
     }
   },
-  icon: {
-    marginRight: '0.5rem',
-    fontSize: '1rem',
-    width: '1rem'
-  },
   content: {
     padding: '1rem'
   },
@@ -77,8 +76,8 @@ const style = {
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: '0 0.5rem',
-    '& >*:not(:last-child)': {
-      marginRight: '0.5rem'
+    '& > *': {
+      margin: '0 0.25rem'
     },
     '& > ui5-button': {
       display: 'flex'
