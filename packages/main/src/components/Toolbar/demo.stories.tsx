@@ -28,7 +28,6 @@ export const renderStory = () => {
       </Button>
       <Button>Item3</Button>
       <Button>Item4</Button>
-      <ToolbarSeparator />
       <Button>Item5</Button>
       <Text>Item6</Text>
       <Button>Item8</Button>
