@@ -7,7 +7,7 @@ import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
-import { Toolbar } from './index';
+import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
 
 export const renderStory = () => {
   return (

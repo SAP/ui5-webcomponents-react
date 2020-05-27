@@ -5,6 +5,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils'
 import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
+import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import React, {
   createRef,
   FC,
@@ -42,6 +43,8 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
   const [lastVisibleIndex, setLastVisibleIndex] = useState(null);
   const [blockerWidth, setBlockerWidth] = useState(0);
   const toolbarClasses = StyleClassHelper.of(classes.outerContainer);
+
+  const passThroughProps = usePassThroughHtmlProps(props, ['onToolbarClick']);
 
   if (toolbarStyle === ToolbarStyle.Clear) {
     toolbarClasses.put(classes.clear);
@@ -158,7 +161,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
 
   const renderOverflowPopover = useCallback(() => {
     return (
-      <div className={classes.overflowButtonContainer}>
+      <div className={classes.overflowButtonContainer} title="Show More">
         <OverflowPopover lastVisibleIndex={lastVisibleIndex} contentClass={classes.popoverContent}>
           {children}
         </OverflowPopover>
@@ -178,7 +181,14 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
   );
 
   return (
-    <div title={tooltip} style={style} className={toolbarClasses.toString()} ref={outerContainer} onClick={onClick}>
+    <div
+      title={tooltip}
+      style={style}
+      className={toolbarClasses.toString()}
+      ref={outerContainer}
+      onClick={onClick}
+      {...passThroughProps}
+    >
       <div className={classes.toolbar}>
         {overflowNeeded &&
           React.Children.map(childrenWithRef, (item, index) => {

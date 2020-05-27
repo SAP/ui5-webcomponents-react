@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toolbar Renders with children 1`] = `
+<DocumentFragment>
+  <div
+    class="Toolbar-outerContainer-0-2-1"
+  >
+    <div
+      class="Toolbar-toolbar-0-2-8"
+    >
+      <div>
+        <span
+          class="Text-text-0-2-11"
+        >
+          Item1
+        </span>
+      </div>
+      <div>
+        <span
+          class="Text-text-0-2-11"
+        >
+          Item2
+        </span>
+      </div>
+      <div>
+        <span
+          class="Text-text-0-2-11"
+        >
+          Item3
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Toolbar Renders with default Props 1`] = `
+<DocumentFragment>
+  <div
+    class="Toolbar-outerContainer-0-2-1"
+  >
+    <div
+      class="Toolbar-toolbar-0-2-8"
+    />
+  </div>
+</DocumentFragment>
+`;
