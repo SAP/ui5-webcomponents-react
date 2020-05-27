@@ -5,22 +5,38 @@ import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarFitType';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / Avatar',
-  component: Avatar
+  component: Avatar,
+  argTypes: {
+    ...createSelectArgTypes({
+      backgroundColor: AvatarBackgroundColor,
+      imageFitType: AvatarFitType,
+      shape: AvatarShape,
+      size: AvatarSize
+    })
+  },
+  args: {
+    backgroundColor: AvatarBackgroundColor.Accent6,
+    icon: 'employee',
+    imageFitType: AvatarFitType.Cover,
+    shape: AvatarShape.Circle,
+    size: AvatarSize.S
+  }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <Avatar
-    backgroundColor={select('backgroundColor', AvatarBackgroundColor, AvatarBackgroundColor.Accent6)}
-    icon={text('icon', 'employee')}
-    image={text('image', '')}
-    imageFitType={select('imageFitType', AvatarFitType, AvatarFitType.Cover)}
-    initials={text('initials', '')}
-    shape={select('shape', AvatarShape, AvatarShape.Circle)}
-    size={select('size', AvatarSize, AvatarSize.S)}
-    accessibleName={text('accessibleName', '')}
+    backgroundColor={props.backgroundColor}
+    icon={props.icon}
+    image={props.image}
+    imageFitType={props.imageFitType}
+    initials={props.initials}
+    shape={props.shape}
+    size={props.size}
+    accessibleName={props.accessibleName}
   />
 );
 

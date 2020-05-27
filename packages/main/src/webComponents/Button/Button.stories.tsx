@@ -1,3 +1,4 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import React from 'react';
@@ -6,9 +7,7 @@ export default {
   title: 'UI5 Web Components / Button',
   component: Button,
   argTypes: {
-    design: {
-      control: { type: 'options', controlType: 'select', options: ButtonDesign }
-    },
+    ...createSelectArgTypes({ design: ButtonDesign }),
     onClick: { control: { type: 'function' } }
   },
   args: {
