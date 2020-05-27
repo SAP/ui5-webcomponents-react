@@ -36,9 +36,9 @@ const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
     }
   }, [contentDensity]);
 
-  useEffect(() => {
-    document.querySelector('html').setAttribute('dir', direction);
-  }, [direction]);
+  // useEffect(() => {
+  //   document.querySelector('html').setAttribute('dir', direction);
+  // }, [direction]);
 
   useEffect(() => {
     setTheme(theme);

@@ -23,7 +23,7 @@ bash ${WORKSPACE}/scripts/ci/setup-npm.sh
 # if we came to that point we are ready for publish
 
 # trigger lerna release
-${WORKSPACE}/node_modules/.bin/lerna publish preminor \
+${WORKSPACE}/node_modules/.bin/lerna publish prerelease \
         --conventional-prerelease \
         --create-release github \
         --dist-tag next \

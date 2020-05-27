@@ -2,28 +2,40 @@
  * Created by d059190 at 16.03.18
  */
 
-class StyleClassHelper extends String {
+class StyleClassHelper {
   private classes: string[] = [];
 
   constructor(...classes: string[]) {
-    super();
     this.classes = [...classes];
   }
 
-  put(...clazz: string[]) {
+  put(...clazz: string[]): StyleClassHelper {
     this.classes.push(...clazz);
     return this;
   }
 
-  valueOf() {
+  putIfPresent(...clazzes: (string | null | undefined)[]): StyleClassHelper {
+    for (const clazz of clazzes) {
+      if (clazz) {
+        this.classes.push(clazz);
+      }
+    }
+    return this;
+  }
+
+  valueOf(): string {
+    return this.className;
+  }
+
+  toString(): string {
+    return this.className;
+  }
+
+  get className(): string {
     return this.classes.join(' ');
   }
 
-  toString() {
-    return this.valueOf();
-  }
-
-  static of(...classes: string[]) {
+  static of(...classes: string[]): StyleClassHelper {
     return new StyleClassHelper().put(...classes);
   }
 }
