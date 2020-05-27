@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
 import '@ui5/webcomponents-icons/dist/icons/person-placeholder.js';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarBackgroundColor } from '@ui5/webcomponents-react/lib/AvatarBackgroundColor';
@@ -10,18 +8,23 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Card',
-  component: Card
+  component: Card,
+  args: {
+    heading: 'Team Space',
+    status: '3 of 5',
+    subheading: 'Direct Reports'
+  }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <Card
-    headerInteractive={boolean('headerInteractive', false)}
-    heading={text('heading', 'Team Space')}
-    status={text('status', '3 of 5')}
-    subheading={text('subheading', 'Direct Reports')}
     avatar={<Avatar backgroundColor={AvatarBackgroundColor.Accent3} icon="person-placeholder" />}
-    onHeaderClick={action('onHeaderClick')}
     style={{ width: '300px' }}
+    headerInteractive={props.headerInteractive}
+    heading={props.heading}
+    status={props.status}
+    subheading={props.subheading}
+    onHeaderClick={props.onHeaderClick}
   >
     <List>
       <StandardListItem description="Software Architect">Richard Wilson</StandardListItem>
