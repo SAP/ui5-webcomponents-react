@@ -21,6 +21,12 @@ module.exports = {
     // You can change the configuration based on that.
     // 'PRODUCTION' is used when building the static version of storybook.
 
+    config.module.rules.push({
+      test: /assets\/.*\.json$/,
+      use: 'file-loader',
+      type: 'javascript/auto'
+    });
+
     const tsLoader = {
       test: /\.tsx?$/,
       include: PATHS.packages,

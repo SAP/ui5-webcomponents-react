@@ -1,4 +1,6 @@
+import { deprecationNotice } from '@ui5/webcomponents-react-base/lib/Utils';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
+import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
@@ -10,8 +12,7 @@ import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-import React, { FC, forwardRef, ReactNode, RefObject, useMemo } from 'react';
-import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import React, { FC, forwardRef, ReactNode, RefObject, useEffect, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterItem.jss';
 
@@ -47,6 +48,13 @@ const FilterItem: FC<FilterItemPropTypes> = forwardRef((props: FilterItemPropTyp
     tooltip
   } = props as FilterItemPropTypes;
   const classes = useStyles();
+
+  useEffect(() => {
+    deprecationNotice(
+      'FilterItem',
+      "'@ui5/webcomponents-react/lib/FilterItem' is deprecated and will be removed in the next major release.\nPlease use '@ui5/webcomponents-react/lib/FilterGroupItem' instead."
+    );
+  }, []);
 
   function getItemByKey(key) {
     return filterItems.filter((item) => item.key === key)[0];

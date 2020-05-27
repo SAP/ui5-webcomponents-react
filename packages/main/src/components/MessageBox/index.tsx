@@ -5,7 +5,7 @@ import '@ui5/webcomponents-icons/dist/icons/message-success';
 import '@ui5/webcomponents-icons/dist/icons/message-warning';
 import '@ui5/webcomponents-icons/dist/icons/question-mark';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
-import { useConsolidatedRef, useI18nBundle, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
+import { useConsolidatedRef, useI18nText, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 
 import {
@@ -40,15 +40,15 @@ import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import styles from './MessageBox.jss';
 
 const actionTextMap = new Map();
-actionTextMap.set(MessageBoxActions.ABORT, ABORT);
-actionTextMap.set(MessageBoxActions.CANCEL, CANCEL);
-actionTextMap.set(MessageBoxActions.CLOSE, CLOSE);
-actionTextMap.set(MessageBoxActions.DELETE, DELETE);
-actionTextMap.set(MessageBoxActions.IGNORE, IGNORE);
-actionTextMap.set(MessageBoxActions.NO, NO);
-actionTextMap.set(MessageBoxActions.OK, OK);
-actionTextMap.set(MessageBoxActions.RETRY, RETRY);
-actionTextMap.set(MessageBoxActions.YES, YES);
+actionTextMap.set(MessageBoxActions.ABORT, 0);
+actionTextMap.set(MessageBoxActions.CANCEL, 1);
+actionTextMap.set(MessageBoxActions.CLOSE, 2);
+actionTextMap.set(MessageBoxActions.DELETE, 3);
+actionTextMap.set(MessageBoxActions.IGNORE, 4);
+actionTextMap.set(MessageBoxActions.NO, 5);
+actionTextMap.set(MessageBoxActions.OK, 6);
+actionTextMap.set(MessageBoxActions.RETRY, 7);
+actionTextMap.set(MessageBoxActions.YES, 8);
 
 export interface MessageBoxPropTypes extends CommonProps {
   open?: boolean;
@@ -67,8 +67,6 @@ const useStyles = createComponentStyles(styles, { name: 'MessageBox' });
  */
 const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTypes, ref: Ref<Ui5DialogDomRef>) => {
   const { open, type, children, className, style, tooltip, slot, title, icon, actions, onClose } = props;
-
-  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const classes = useStyles();
 
@@ -92,26 +90,53 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
     return null;
   }, [icon, type]);
 
-  const titleToRender = useMemo(() => {
+  const [
+    titleConfirmation,
+    titleError,
+    titleInformation,
+    titleSuccess,
+    titleWarning,
+    titleHighlight,
+    ...actionTranslations
+  ] = useI18nText(
+    '@ui5/webcomponents-react',
+    CONFIRMATION,
+    ERROR,
+    INFORMATION,
+    SUCCESS,
+    WARNING,
+    HIGHLIGHT,
+    ABORT,
+    CANCEL,
+    CLOSE,
+    DELETE,
+    IGNORE,
+    NO,
+    OK,
+    RETRY,
+    YES
+  );
+
+  const titleToRender = () => {
     if (title) {
       return title;
     }
     switch (type) {
       case MessageBoxTypes.CONFIRM:
-        return i18nBundle.getText(CONFIRMATION);
+        return titleConfirmation;
       case MessageBoxTypes.ERROR:
-        return i18nBundle.getText(ERROR);
+        return titleError;
       case MessageBoxTypes.INFORMATION:
-        return i18nBundle.getText(INFORMATION);
+        return titleInformation;
       case MessageBoxTypes.SUCCESS:
-        return i18nBundle.getText(SUCCESS);
+        return titleSuccess;
       case MessageBoxTypes.WARNING:
-        return i18nBundle.getText(WARNING);
+        return titleWarning;
       case MessageBoxTypes.HIGHLIGHT:
-        return i18nBundle.getText(HIGHLIGHT);
+        return titleHighlight;
     }
     return null;
-  }, [title, type, i18nBundle]);
+  };
 
   const actionsToRender = useMemo(() => {
     if (actions && actions.length > 0) {
@@ -158,14 +183,13 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       onAfterClose={open ? handleOnClose : null}
       header={
         <header className={classes.header} data-type={type}>
-          {!!iconToRender && <div className={classes.icon}>{iconToRender}</div>}
-          <Title level={TitleLevel.H5}>{titleToRender}</Title>
+          {iconToRender}
+          <Title level={TitleLevel.H5}>{titleToRender()}</Title>
         </header>
       }
       footer={
         <footer className={classes.footer}>
           {actionsToRender.map((action, index) => {
-            const text = i18nBundle.getText(actionTextMap.get(action));
             return (
               <Button
                 style={{
@@ -176,7 +200,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
                 onClick={handleOnClose}
                 data-action={action}
               >
-                {text}
+                {actionTranslations[actionTextMap.get(action)]}
               </Button>
             );
           })}
