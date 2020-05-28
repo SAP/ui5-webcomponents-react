@@ -21,7 +21,6 @@ import React, {
   useRef,
   useState
 } from 'react';
-import ResizeObserver from 'resize-observer-polyfill';
 import { OverflowPopover } from './OverflowPopover';
 import { styles } from './Toolbar.jss';
 
