@@ -5,7 +5,7 @@ declare const ResizeObserver;
 export const useObserveHeights = (objectPage, topHeader, headerContentRef, anchorBarRef, { noHeader }) => {
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
-  const [isIntersecting, setIsIntersecting] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(true);
 
   useEffect(() => {
     const headerIntersectionObserver = new IntersectionObserver(

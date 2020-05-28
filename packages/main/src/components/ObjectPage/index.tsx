@@ -451,6 +451,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         </header>
       </header>
       <ObjectPageHeader
+        headerActions={headerActions}
         image={image}
         classes={classes}
         imageShapeCircle={imageShapeCircle}

@@ -84,7 +84,7 @@ const styles = {
     position: 'relative'
   },
   container: {
-    flexGrow: 1,
+    flex: '1 1 70%',
     boxSizing: 'border-box'
   },
   title: {
@@ -146,6 +146,7 @@ const styles = {
   },
 
   headerImage: {
+    minWidth: '5rem',
     maxWidth: '5rem',
     maxHeight: '5rem',
     display: 'inline-block',

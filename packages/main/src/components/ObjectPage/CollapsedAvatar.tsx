@@ -19,7 +19,8 @@ const styles = {
     display: 'inline-block',
     verticalAlign: 'middle',
     maxHeight: '3rem',
-    width:'3rem'
+    width: '3rem',
+    maxWidth: '3rem'
   },
   image: {
     width: '100%',
