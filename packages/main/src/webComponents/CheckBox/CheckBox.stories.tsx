@@ -1,24 +1,30 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / CheckBox',
-  component: CheckBox
+  component: CheckBox,
+  argTypes: {
+    ...createSelectArgTypes({ valueState: ValueState })
+  },
+  args: {
+    text: 'My CheckBox Text',
+    valueState: ValueState.None
+  }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <CheckBox
-    checked={boolean('checked', false)}
-    disabled={boolean('disabled', false)}
-    name={text('name', '')}
-    readonly={boolean('readonly', false)}
-    text={text('text', 'My CheckBox Text')}
-    valueState={select('valueState', ValueState, ValueState.None)}
-    wrap={boolean('wrap', false)}
-    onChange={action('onChange')}
+    checked={props.checked}
+    disabled={props.disabled}
+    name={props.name}
+    readonly={props.readonly}
+    text={props.text}
+    valueState={props.valueState}
+    wrap={props.wrap}
+    onChange={props.onChange}
   />
 );
 

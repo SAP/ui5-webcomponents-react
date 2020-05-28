@@ -1,29 +1,37 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { DateTimePicker } from '@ui5/webcomponents-react/lib/DateTimePicker';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / DateTimePicker',
-  component: DateTimePicker
+  component: DateTimePicker,
+  argTypes: {
+    ...createSelectArgTypes({ valueState: ValueState }),
+    ...createSelectArgTypes({ primaryCalendarType: CalendarType })
+  },
+  args: {
+    placeholder: undefined,
+    primaryCalendarType: CalendarType.Gregorian,
+    valueState: ValueState.None
+  }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <DateTimePicker
-    disabled={boolean('disabled', false)}
-    formatPattern={text('formatPattern', '')}
-    maxDate={text('maxDate', '')}
-    minDate={text('minDate', '')}
-    name={text('name', '')}
-    placeholder={text('placeholder', undefined)}
-    primaryCalendarType={select('primaryCalendarType', CalendarType, CalendarType.Gregorian)}
-    readonly={boolean('readonly', false)}
-    value={text('value', '')}
-    valueState={select('valueState', ValueState, ValueState.None)}
-    onChange={action('onChange')}
-    onInput={action('onInput')}
+    disabled={props.disabled}
+    formatPattern={props.formatPattern}
+    maxDate={props.maxDate}
+    minDate={props.minDate}
+    name={props.name}
+    placeholder={props.placeholder}
+    primaryCalendarType={props.primaryCalendarType}
+    readonly={props.readonly}
+    value={props.value}
+    valueState={props.valueState}
+    onChange={props.onChange}
+    onInput={props.onInput}
   />
 );
 

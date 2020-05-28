@@ -6,10 +6,13 @@ import React, { useCallback, useRef } from 'react';
 
 export default {
   title: 'UI5 Web Components / Dialog',
-  component: Dialog
+  component: Dialog,
+  args: {
+    headerText: 'Dialog Header Text'
+  }
 };
 
-export const generatedDefaultStory = () => {
+export const generatedDefaultStory = (props) => {
   const dialogRef = useRef();
   const onButtonClick = useCallback(() => {
     dialogRef.current.open();
@@ -20,15 +23,15 @@ export const generatedDefaultStory = () => {
       <Button onClick={onButtonClick}>Open Dialog</Button>
       <Dialog
         ref={dialogRef}
-        stretch={boolean('stretch', false)}
-        headerText={text('headerText', 'Dialog Header Text')}
-        initialFocus={text('initialFocus', '')}
+        stretch={props.stretch}
+        headerText={props.headerText}
+        initialFocus={props.initialFocus}
+        onAfterClose={props.onAfterClose}
+        onAfterOpen={props.onAfterOpen}
+        onBeforeClose={props.onBeforeClose}
+        onBeforeOpen={props.onBeforeOpen}
         footer={<span>Footer</span>}
         header={null}
-        onAfterClose={action('onAfterClose')}
-        onAfterOpen={action('onAfterOpen')}
-        onBeforeClose={action('onBeforeClose')}
-        onBeforeOpen={action('onBeforeOpen')}
       >
         Some Content
       </Dialog>

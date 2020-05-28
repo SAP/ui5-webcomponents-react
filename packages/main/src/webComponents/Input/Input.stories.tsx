@@ -5,33 +5,43 @@ import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { SuggestionItem } from '@ui5/webcomponents-react/lib/SuggestionItem';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / Input',
   component: Input,
   parameters: {
     subcomponents: { SuggestionItem }
+  },
+  argsTypes: {
+    ...createSelectArgTypes({ type: InputType }),
+    ...createSelectArgTypes({ valueState: ValueState })
+  },
+  args: {
+    placeholder: 'Placeholder...',
+    type: InputType.Text,
+    valueState: ValueState.None
   }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <Input
-    disabled={boolean('disabled', false)}
-    maxlength={number('maxlength', undefined)}
-    name={text('name', '')}
-    placeholder={text('placeholder', 'Placeholder...')}
-    readonly={boolean('readonly', false)}
-    required={boolean('required', false)}
-    showSuggestions={boolean('showSuggestions', false)}
-    type={select('type', InputType, InputType.Text)}
-    value={text('value', '')}
-    valueState={select('valueState', ValueState, ValueState.None)}
+    disabled={props.disabled}
+    maxlength={props.maxlength}
+    name={props.name}
+    placeholder={props.placeholder}
+    readonly={props.readonly}
+    required={props.required}
+    showSuggestions={props.showSuggestions}
+    type={props.type}
+    value={props.value}
+    valueState={props.valueState}
+    onChange={props.onChange}
+    onInput={props.onInput}
+    onSubmit={props.onSubmit}
+    onSuggestionItemSelect={props.onSuggestionItemSelect}
     icon={null}
     valueStateMessage={null}
-    onChange={action('onChange')}
-    onInput={action('onInput')}
-    onSubmit={action('onSubmit')}
-    onSuggestionItemSelect={action('onSuggestionItemSelect')}
   >
     Some Content
   </Input>

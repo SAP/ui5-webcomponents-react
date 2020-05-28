@@ -1,31 +1,37 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { ComboBox } from '@ui5/webcomponents-react/lib/ComboBox';
 import { ComboBoxItem } from '@ui5/webcomponents-react/lib/ComboBoxItem';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / ComboBox',
   component: ComboBox,
   parameters: {
     subcomponents: { ComboBoxItem }
+  },
+  argTypes: {
+    ...createSelectArgTypes({ valueState: ValueState })
+  },
+  args: {
+    filter: 'StartsWithPerTerm',
+    valueState: ValueState.None
   }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <ComboBox
-    disabled={boolean('disabled', false)}
-    filter={text('filter', 'StartsWithPerTerm')}
-    filterValue={text('filterValue', '')}
-    loading={boolean('loading', false)}
-    placeholder={text('placeholder', '')}
-    readonly={boolean('readonly', false)}
-    required={boolean('required', false)}
-    value={text('value', '')}
-    valueState={select('valueState', ValueState, ValueState.None)}
-    onChange={action('onChange')}
-    onInput={action('onInput')}
+    disabled={props.disabled}
+    filter={props.filter}
+    filterValue={props.filterValue}
+    loading={props.loading}
+    placeholder={props.placeHolder}
+    readonly={props.readonly}
+    required={props.required}
+    value={props.value}
+    valueState={props.valueState}
+    onChange={props.onChange}
+    onInput={props.onInput}
   >
     <ComboBoxItem text="ComboBox Entry 1" />
     <ComboBoxItem text="ComboBox Entry 2" />
