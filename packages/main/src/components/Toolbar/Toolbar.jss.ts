@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVariables';
+
 export const styles = {
   outerContainer: {
     width: '100%',
@@ -7,9 +8,14 @@ export const styles = {
     position: 'relative',
     overflow: 'hidden',
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     alignItems: 'center',
     borderBottom: `solid 0.0625rem ${ThemingParameters.sapGroup_TitleBorderColor}`
+  },
+  hasOverflow: {
+    '& $toolbar': {
+      maxWidth: 'calc(100% - 40px)'
+    }
   },
   clear: {
     borderBottom: 'none'
@@ -55,10 +61,7 @@ export const styles = {
     },
     display: 'flex',
     alignItems: 'center',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0
+    maxWidth: '100%'
   },
   overflowButtonContainer: {
     marginRight: '0.5rem'

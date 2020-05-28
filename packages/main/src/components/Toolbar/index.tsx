@@ -72,9 +72,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
       break;
   }
 
-  if (className) {
-    toolbarClasses.put(className);
-  }
+  toolbarClasses.putIfPresent(className);
 
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
@@ -97,6 +95,8 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
   }, [children]);
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
+
+  toolbarClasses.putIfPresent(overflowNeeded && classes.hasOverflow);
 
   const calculateVisibleItems = useCallback(() => {
     requestAnimationFrame(() => {
