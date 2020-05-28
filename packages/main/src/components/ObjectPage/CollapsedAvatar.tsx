@@ -18,8 +18,8 @@ const styles = {
   imageContainer: {
     display: 'inline-block',
     verticalAlign: 'middle',
-    maxWidth: '3rem',
-    maxHeight: '3rem'
+    maxHeight: '3rem',
+    width:'3rem'
   },
   image: {
     width: '100%',

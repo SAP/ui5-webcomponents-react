@@ -84,7 +84,7 @@ const styles = {
     position: 'relative'
   },
   container: {
-    width: '70%',
+    flexGrow: 1,
     boxSizing: 'border-box'
   },
   title: {

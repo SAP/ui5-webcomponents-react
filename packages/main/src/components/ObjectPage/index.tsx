@@ -11,6 +11,11 @@ import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { ObjectPageMode } from '@ui5/webcomponents-react/lib/ObjectPageMode';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
+import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
+import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
+import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import debounce from 'lodash.debounce';
 import React, {
   ComponentType,
@@ -25,7 +30,6 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
@@ -420,7 +424,6 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         style={scrollBarWidthPadding}
         className={classes.header}
       >
-        <span className={classes.actions}>{headerActions}</span>
         <header className={classes.titleBar}>
           {(!showTitleInHeaderContent || headerContentHeight === 0) && (
             <FlexBox alignItems={FlexBoxAlignItems.Center}>
@@ -439,6 +442,10 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
                   <div className={classes.keyInfos}>{keyInfos}</div>
                 </FlexBox>
               </FlexBox>
+              <Toolbar toolbarStyle={ToolbarStyle.Clear} design={ToolbarDesign.Transparent}>
+                <ToolbarSpacer />
+                {headerActions}
+              </Toolbar>
             </FlexBox>
           )}
         </header>
