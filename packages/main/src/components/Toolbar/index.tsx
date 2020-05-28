@@ -10,6 +10,7 @@ import React, {
   createRef,
   FC,
   forwardRef,
+  ReactElement,
   ReactNode,
   ReactNodeArray,
   Ref,
@@ -40,7 +41,6 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
   const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState(null);
-  const [blockerWidth, setBlockerWidth] = useState(0);
   const toolbarClasses = StyleClassHelper.of(classes.outerContainer);
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onToolbarClick']);
@@ -82,7 +82,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
       controlMetaData.current.push({
         ref: itemRef
       });
-      if (item.type.displayName === 'ToolbarSpacer') {
+      if (item?.type?.displayName === 'ToolbarSpacer') {
         return item;
       }
       return (
@@ -133,15 +133,9 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
           }
         });
       }
-      setBlockerWidth(Math.max(0, availableWidth - lastFitWidth));
       setLastVisibleIndex(lastIndex);
     });
   }, [outerContainer.current, controlMetaData.current, setLastVisibleIndex, childrenWithRef, overflowNeeded]);
-
-  const renderBlocker = useCallback(
-    () => <div data-toolbar-blocker style={{ width: `${blockerWidth}px`, minWidth: `${blockerWidth}px` }} />,
-    [blockerWidth]
-  );
 
   const observer = useRef(new ResizeObserver(calculateVisibleItems));
 
@@ -191,21 +185,8 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
       <div className={classes.toolbar}>
         {overflowNeeded &&
           React.Children.map(childrenWithRef, (item, index) => {
-            if (index === lastVisibleIndex) {
-              return (
-                <>
-                  {item}
-                  {renderBlocker()}
-                </>
-              );
-            }
-            if (lastVisibleIndex === -1) {
-              return (
-                <>
-                  {renderBlocker()}
-                  {item}
-                </>
-              );
+            if (index >= lastVisibleIndex + 1) {
+              return React.cloneElement(item as ReactElement, { style: { visibility: 'hidden' } });
             }
             return item;
           })}
