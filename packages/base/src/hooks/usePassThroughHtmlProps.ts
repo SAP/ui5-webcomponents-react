@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-const PROP_WHITELIST = /^(aria-|data-|id$|on[A-Z])/;
+const PROP_WHITELIST = /^(aria-|data-|id$|on[A-Z]|slot$)/;
 
 export const usePassThroughHtmlProps = (props, propBlackList: string[] = []) => {
   const componentPropBlacklist = new Set(propBlackList);
