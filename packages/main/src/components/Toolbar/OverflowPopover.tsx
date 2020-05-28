@@ -5,6 +5,7 @@ import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import React, { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export function OverflowPopover(props) {
   const { lastVisibleIndex, contentClass, children } = props;
@@ -61,9 +62,12 @@ export function OverflowPopover(props) {
         onClick={handleToggleButtonClick}
         pressed={pressed}
       />
-      <Popover placementType={PlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose}>
-        <div className={contentClass}>{renderChildren()}</div>
-      </Popover>
+      {createPortal(
+        <Popover placementType={PlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose}>
+          <div className={contentClass}>{renderChildren()}</div>
+        </Popover>,
+        document.body
+      )}
     </>
   );
 }
