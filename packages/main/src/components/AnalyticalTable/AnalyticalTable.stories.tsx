@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { array, boolean, number, object, select, text } from '@storybook/addon-knobs';
 import '@ui5/webcomponents-icons/dist/icons/delete';
 import '@ui5/webcomponents-icons/dist/icons/edit';
 import '@ui5/webcomponents-icons/dist/icons/settings';
@@ -16,6 +14,7 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
 import React from 'react';
 import generateData from './demo/generateData';
 import mdx from './AnalyticalTable.mdx';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 const columns = [
   {
@@ -83,7 +82,7 @@ const columns = [
 const data = generateData(10_000);
 const dataTree = generateData(20, true);
 
-export const defaultTable = () => {
+export const defaultTable = (props) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <AnalyticalTable
@@ -95,38 +94,30 @@ export const defaultTable = () => {
         }
         data={data}
         columns={columns}
-        loading={boolean('loading', false)}
-        busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
-        alternateRowColor={boolean('alternateRowColor', false)}
-        sortable={boolean('sortable', true)}
-        filterable={boolean('filterable', true)}
-        visibleRows={number('visibleRows', 15)}
-        minRows={number('minRows', 5)}
-        groupable={boolean('groupable', true)}
-        selectionMode={select<TableSelectionMode>(
-          'selectionMode',
-          TableSelectionMode,
-          TableSelectionMode.SINGLE_SELECT
-        )}
-        scaleWidthMode={select<TableScaleWidthMode>('scaleWidthMode', TableScaleWidthMode, TableScaleWidthMode.Default)}
-        onRowSelected={action('onRowSelected')}
-        onSort={action('onSort')}
-        onGroup={action('onGroup')}
-        onRowExpandChange={action('onRowExpandChange')}
-        groupBy={array('groupBy', [])}
-        rowHeight={number('rowHeight', 44)}
-        selectedRowIds={object('selectedRowIds', { 3: true })}
-        onColumnsReordered={action('onColumnsReordered')}
-        withRowHighlight={boolean('withRowHighlight', true)}
-        highlightField={text('highlightField', 'status')}
-        infiniteScroll={boolean('infiniteScroll', true)}
-        infiniteScrollThreshold={number('infiniteScrollThreshold', 20)}
-        onLoadMore={action('onLoadMore')}
-        selectionBehavior={select<TableSelectionBehavior>(
-          'selectionBehavior',
-          TableSelectionBehavior,
-          TableSelectionBehavior.ROW
-        )}
+        loading={props.loading}
+        busyIndicatorEnabled={props.busyIndicatorEnabled}
+        alternateRowColor={props.alternateRowColor}
+        sortable={props.sortable}
+        filterable={props.filterable}
+        visibleRows={props.visibleRows}
+        minRows={props.minRows}
+        groupable={props.groupable}
+        selectionMode={props.selectionMode}
+        scaleWidthMode={props.scaleWidthMode}
+        onRowSelected={props.onRowSelected}
+        onSort={props.onSort}
+        onGroup={props.onGroup}
+        onRowExpandChange={props.onRowExpandChange}
+        groupBy={props.groupBy}
+        rowHeight={props.rowHeight}
+        selectedRowIds={props.selectedRowIds}
+        onColumnsReordered={props.onColumnsReordered}
+        withRowHighlight={props.withRowHighlight}
+        highlightField={props.highlightField}
+        infiniteScroll={props.infiniteScroll}
+        infiniteScrollThreshold={props.infiniteScrollThreshold}
+        onLoadMore={props.onLoadMore}
+        selectionBehavior={props.selectionBehavior}
       />
     </div>
   );
@@ -134,30 +125,26 @@ export const defaultTable = () => {
 
 defaultTable.storyName = 'Default';
 
-export const treeTable = () => {
+export const treeTable = (props) => {
   return (
     <AnalyticalTable
       title="Table Title"
       data={dataTree}
       columns={columns}
-      loading={boolean('loading', false)}
-      busyIndicatorEnabled={boolean('busyIndicatorEnabled', true)}
-      sortable={boolean('sortable', true)}
-      filterable={boolean('filterable', true)}
-      visibleRows={number('visibleRows', 15)}
-      minRows={number('minRows', 5)}
-      selectionMode={select<TableSelectionMode>('selectionMode', TableSelectionMode, TableSelectionMode.MULTI_SELECT)}
-      onRowSelected={action('onRowSelected')}
-      onSort={action('onSort')}
-      onRowExpandChange={action('onRowExpandChange')}
-      subRowsKey={text('subRowsKey', 'subRows')}
-      selectedRowIds={object('selectedRowIds', { 3: true })}
-      selectionBehavior={select<TableSelectionBehavior>(
-        'selectionBehavior',
-        TableSelectionBehavior,
-        TableSelectionBehavior.ROW
-      )}
-      isTreeTable={boolean('isTreeTable', true)}
+      loading={props.loading}
+      busyIndicatorEnabled={props.busyIndicatorEnabled}
+      sortable={props.sortable}
+      filterable={props.filterable}
+      visibleRows={props.visibleRows}
+      minRows={props.minRows}
+      selectionMode={props.selectionMode}
+      onRowSelected={props.onRowSelected}
+      onSort={props.onSort}
+      onRowExpandChange={props.onRowExpandChange}
+      subRowsKey={props.subRowsKey}
+      selectedRowIds={props.selectedRowIds}
+      selectionBehavior={props.selectionBehavior}
+      isTreeTable={props.isTreeTable}
     />
   );
 };
@@ -170,5 +157,30 @@ export default {
     docs: {
       page: mdx
     }
+  },
+  argTypes: {
+    ...createSelectArgTypes({ scaleWidthMode: TableScaleWidthMode }),
+    ...createSelectArgTypes({ selectionMode: TableSelectionMode }),
+    ...createSelectArgTypes({ selectionBehavior: TableSelectionBehavior })
+  },
+  args: {
+    busyIndicatorEnabled: true,
+    sortable: true,
+    filterable: true,
+    visibleRows: 15,
+    minRows: 5,
+    groupable: true,
+    groupBy: [],
+    rowHeight: 44,
+    selectedRowIds: { 3: true },
+    withRowHighlight: true,
+    highlightField: 'status',
+    infiniteScroll: true,
+    infiniteScrollThreshold: 20,
+    subRowsKey: 'subRows',
+    isTreeTable: true,
+    scaleWidthMode: TableScaleWidthMode.Default,
+    selectionMode: TableSelectionMode.SINGLE_SELECT,
+    selectionBehavior: TableSelectionBehavior.ROW
   }
 };

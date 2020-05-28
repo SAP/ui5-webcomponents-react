@@ -1,12 +1,12 @@
-import { select, text } from '@storybook/addon-knobs';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { BreadcrumbsSeparatorStyle } from '@ui5/webcomponents-react/lib/BreadcrumbsSeparatorStyle';
 import { Link } from '@ui5/webcomponents-react/lib/Link';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
-export const defaultStory = () => {
+export const defaultStory = (props) => {
   return (
-    <Breadcrumbs separatorStyle={select('separatorStyle', BreadcrumbsSeparatorStyle, BreadcrumbsSeparatorStyle.Slash)}>
+    <Breadcrumbs separatorStyle={props.separatorStyle}>
       <Link>Products</Link>
       <Link>Hardware</Link>
       <Link>Notebooks</Link>
@@ -15,12 +15,9 @@ export const defaultStory = () => {
   );
 };
 defaultStory.storyName = 'Default';
-export const withCurrentLocation = () => {
+export const withCurrentLocation = (props) => {
   return (
-    <Breadcrumbs
-      separatorStyle={select('separatorStyle', BreadcrumbsSeparatorStyle, BreadcrumbsSeparatorStyle.Slash)}
-      currentLocationText={text('currentLocationText', 'Super Slim Notebook 13 inch')}
-    >
+    <Breadcrumbs separatorStyle={props.separatorStyle} currentLocationText={props.currentLocationText}>
       <Link>Products</Link>
       <Link>Hardware</Link>
       <Link>Notebooks</Link>
@@ -35,5 +32,12 @@ export default {
   component: Breadcrumbs,
   parameters: {
     subcomponents: { Link }
+  },
+  argTypes: {
+    ...createSelectArgTypes({ separatorStyle: BreadcrumbsSeparatorStyle })
+  },
+  args: {
+    separatorStyle: BreadcrumbsSeparatorStyle.Slash,
+    currentLocationText: 'Super Slim Notebook 13 inch'
   }
 };

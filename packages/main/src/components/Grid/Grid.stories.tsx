@@ -1,14 +1,13 @@
-import { text } from '@storybook/addon-knobs';
 import { Grid } from '@ui5/webcomponents-react/lib/Grid';
 import React from 'react';
 
-export const defaultStory = () => {
+export const defaultStory = (props) => {
   return (
     <Grid
-      defaultSpan={text('defaultSpan', 'XL3 L3 M6 S12')}
-      defaultIndent={text('defaultIndent', 'XL0 L0 M0 S0')}
-      vSpacing={text('vSpacing', '1rem')}
-      hSpacing={text('hSpacing', '1rem')}
+      defaultSpan={props.defaultSpan}
+      defaultIndent={props.defaultIndent}
+      vSpacing={props.vSpacing}
+      hSpacing={props.hSpacing}
     >
       <div style={{ backgroundColor: 'lightgreen' }} data-layout-span="XL8 L8 M8 S12" data-layout-indent="XL1 L1 M1 S0">
         {`Div 1 with prop: data-layout-span="XL8 L8 M8 S12" and data-layout-indent="XL1 L1 M1 S0"`}
@@ -24,5 +23,11 @@ export const defaultStory = () => {
 
 export default {
   title: 'Components / Grid',
-  component: Grid
+  component: Grid,
+  args: {
+    defaultSpan: 'XL3 L3 M6 S12',
+    defaultIndent: 'XL0 L0 M0 S0',
+    vSpacing: '1rem',
+    hSpacing: '1rem'
+  }
 };

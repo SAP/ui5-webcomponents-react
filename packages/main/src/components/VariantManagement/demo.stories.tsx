@@ -1,29 +1,38 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 const variantItems = [
   { label: 'Variant 1', key: '1' },
   { label: 'Variant 2', key: '2' }
 ];
-export const renderStory = () => (
+export const renderStory = (props) => (
   <VariantManagement
     style={{ width: '300px', height: 'auto' }}
-    closeOnItemSelect={boolean('closeOnItemSelect', true)}
-    selectedKey={text('selectedKey', '2')}
+    closeOnItemSelect={props.closeOnItemSelect}
+    selectedKey={props.selectedKey}
     variantItems={variantItems}
-    onSelect={action('onSelect')}
-    placement={select('Placement', PlacementType, PlacementType.Bottom)}
-    level={select('level', TitleLevel, TitleLevel.H4)}
-    disabled={boolean('disabled', false)}
+    onSelect={props.onSelect}
+    placement={props.placement}
+    level={props.level}
+    disabled={props.disabled}
   />
 );
 renderStory.storyName = 'Default';
 
 export default {
   title: 'Components / VariantManagement',
-  component: VariantManagement
+  component: VariantManagement,
+  argTypes: {
+    ...createSelectArgTypes({ placement: PlacementType }),
+    ...createSelectArgTypes({ level: TitleLevel })
+  },
+  args: {
+    closeOnItemSelect: true,
+    selectedKey: '2',
+    placement: PlacementType.Bottom,
+    level: TitleLevel.H4
+  }
 };

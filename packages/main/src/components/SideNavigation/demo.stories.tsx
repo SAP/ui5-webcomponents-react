@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import '@ui5/webcomponents-icons/dist/icons/add-product';
 import '@ui5/webcomponents-icons/dist/icons/calendar';
 import '@ui5/webcomponents-icons/dist/icons/chain-link';
@@ -11,13 +9,14 @@ import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
 import { SideNavigationListItem } from '@ui5/webcomponents-react/lib/SideNavigationListItem';
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
-export const defaultStory = () => (
+export const defaultStory = (props) => (
   <SideNavigation
-    openState={select('openState', SideNavigationOpenState, SideNavigationOpenState.Expanded)}
-    selectedId={text('selectedId', 'sales-leads')}
-    onItemSelect={action('onItemSelect')}
-    noIcons={boolean('noIcons', false)}
+    openState={props.openState}
+    selectedId={props.selectedId}
+    onItemSelect={props.onItemSelect}
+    noIcons={props.noIcons}
     style={{ height: '900px' }}
     footerItems={[
       <SideNavigationListItem id="footer1" text="Legal Information" icon="compare" />,
@@ -48,5 +47,12 @@ export default {
   component: SideNavigation,
   parameters: {
     subcomponents: { SideNavigationListItem }
+  },
+  argTypes: {
+    ...createSelectArgTypes({ openState: SideNavigationOpenState })
+  },
+  args: {
+    openState: SideNavigationOpenState.Expanded,
+    selectedId: 'sales-leads'
   }
 };

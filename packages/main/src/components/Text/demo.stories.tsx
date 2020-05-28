@@ -1,10 +1,9 @@
-import { boolean, text } from '@storybook/addon-knobs';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import React from 'react';
 
-export const renderStory = () => {
+export const renderStory = (props) => {
   return (
-    <Text wrapping={boolean('wrapping', true)} renderWhitespace={boolean('renderWhitespace', false)}>
+    <Text wrapping={props.wrapping} renderWhitespace={props.renderWhitespace}>
       Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
       magna aliquyam erat, sed diam voluptua.
       {'\n\n'}
@@ -19,5 +18,8 @@ renderStory.storyName = 'Default';
 
 export default {
   title: 'Components / Text',
-  component: Text
+  component: Text,
+  args: {
+    wrapping: true
+  }
 };
