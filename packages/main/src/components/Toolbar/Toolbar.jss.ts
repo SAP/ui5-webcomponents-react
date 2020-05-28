@@ -14,7 +14,7 @@ export const styles = {
   },
   hasOverflow: {
     '& $toolbar': {
-      maxWidth: 'calc(100% - 40px)'
+      maxWidth: 'calc(100% - 44px)'
     }
   },
   clear: {
