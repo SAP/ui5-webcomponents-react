@@ -75,6 +75,6 @@ withSpacerAndSeparator.story = {
 };
 
 export default {
-  title: 'Components | Toolbar',
+  title: 'Components / Toolbar',
   component: Toolbar
 };
