@@ -1,24 +1,30 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { TimePicker } from '@ui5/webcomponents-react/lib/TimePicker';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / TimePicker',
-  component: TimePicker
+  component: TimePicker,
+  argTypes: {
+    ...createSelectArgTypes({ valueState: ValueState })
+  },
+  args: {
+    formatPattern: 'hh:mm:ss a',
+    valueState: ValueState.None
+  }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <TimePicker
-    disabled={boolean('disabled', false)}
-    formatPattern={text('formatPattern', 'hh:mm:ss a')}
-    placeholder={text('placeholder', undefined)}
-    readonly={boolean('readonly', false)}
-    value={text('value', '')}
-    valueState={select('valueState', ValueState, ValueState.None)}
-    onChange={action('onChange')}
-    onInput={action('onInput')}
+    disabled={props.disabled}
+    formatPattern={props.formatPattern}
+    placeholder={props.placeholder}
+    readonly={props.readonly}
+    value={props.value}
+    valueState={props.valueState}
+    onChange={props.onChange}
+    onInput={props.onInput}
   />
 );
 

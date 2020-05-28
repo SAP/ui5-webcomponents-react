@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, number, select, text } from '@storybook/addon-knobs';
 import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { SuggestionItem } from '@ui5/webcomponents-react/lib/SuggestionItem';

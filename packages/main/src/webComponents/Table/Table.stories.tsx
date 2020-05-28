@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Table } from '@ui5/webcomponents-react/lib/Table';
 import { TableCell } from '@ui5/webcomponents-react/lib/TableCell';
@@ -15,11 +13,11 @@ export default {
   }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <Table
-    noDataText={text('noDataText', '')}
-    showNoData={boolean('showNoData', false)}
-    stickyColumnHeader={boolean('stickyColumnHeader', false)}
+    noDataText={props.noDataText}
+    showNoData={props.showNoData}
+    stickyColumnHeader={props.stickyColumnHeader}
     columns={
       <>
         <TableColumn style={{ width: '12rem' }}>
@@ -39,8 +37,8 @@ export const generatedDefaultStory = () => (
         </TableColumn>
       </>
     }
-    onPopinChange={action('onPopinChange')}
-    onRowClick={action('onRowClick')}
+    onPopinChange={props.onPopinChange}
+    onRowClick={props.onRowClick}
   >
     <TableRow>
       <TableCell>

@@ -1,23 +1,28 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / ToggleButton',
-  component: ToggleButton
+  component: ToggleButton,
+  argTypes: {
+    ...createSelectArgTypes({ design: ButtonDesign })
+  },
+  args: {
+    design: ButtonDesign.Default
+  }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <ToggleButton
-    pressed={boolean('pressed', false)}
-    design={select('design', ButtonDesign, ButtonDesign.Default)}
-    disabled={boolean('disabled', false)}
-    icon={text('icon', '')}
-    iconEnd={boolean('iconEnd', false)}
-    submits={boolean('submits', false)}
-    onClick={action('onClick')}
+    pressed={props.pressed}
+    design={props.design}
+    disabled={props.disabled}
+    icon={props.icon}
+    iconEnd={props.iconEnd}
+    submits={props.submits}
+    onClick={props.onClick}
   >
     Some Content
   </ToggleButton>

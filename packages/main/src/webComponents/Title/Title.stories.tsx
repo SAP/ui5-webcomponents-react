@@ -1,15 +1,21 @@
-import { boolean, select } from '@storybook/addon-knobs';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / Title',
-  component: Title
+  component: Title,
+  argTypes: {
+    ...createSelectArgTypes({ level: TitleLevel })
+  },
+  args: {
+    level: TitleLevel.H2
+  }
 };
 
-export const generatedDefaultStory = () => (
-  <Title level={select('level', TitleLevel, TitleLevel.H2)} wrap={boolean('wrap', false)}>
+export const generatedDefaultStory = (props) => (
+  <Title level={props.level} wrap={props.wrap}>
     Some Content
   </Title>
 );

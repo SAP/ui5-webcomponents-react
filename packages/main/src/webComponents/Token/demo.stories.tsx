@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
 import { Token } from '@ui5/webcomponents-react/lib/Token';
 import React from 'react';
 
@@ -8,13 +6,8 @@ export default {
   component: Token
 };
 
-export const generatedDefaultStory = () => (
-  <Token
-    selected={boolean('selected', false)}
-    readonly={boolean('readonly', false)}
-    onDelete={action('onDelete')}
-    onSelect={action('onSelect')}
-  >
+export const generatedDefaultStory = (props) => (
+  <Token selected={props.selected} readonly={props.readonly} onDelete={props.onDelete} onSelect={props.onSelect}>
     Token 1
   </Token>
 );

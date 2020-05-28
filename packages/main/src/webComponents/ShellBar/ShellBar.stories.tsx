@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { ShellBar } from '@ui5/webcomponents-react/lib/ShellBar';
 import { ShellBarItem } from '@ui5/webcomponents-react/lib/ShellBarItem';
@@ -12,18 +10,26 @@ export default {
   component: ShellBar,
   parameters: {
     subcomponents: { ShellBarItem }
+  },
+  args: {
+    notificationCount: 10,
+    primaryTitle: 'Shell Bar',
+    secondaryTitle: 'Fiori 3 Shell Bar',
+    showCoPilot: true,
+    showNotifications: true,
+    showProductSwitch: true
   }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <ShellBar
-    logo={text('logo', '')}
-    notificationCount={text('notificationCount', '10')}
-    primaryTitle={text('primaryTitle', 'Shell Bar')}
-    secondaryTitle={text('secondaryTitle', 'Fiori 3 Shell Bar')}
-    showCoPilot={boolean('showCoPilot', true)}
-    showNotifications={boolean('showNotifications', true)}
-    showProductSwitch={boolean('showProductSwitch', true)}
+    logo={props.logo}
+    notificationCount={props.notificationCount}
+    primaryTitle={props.primaryTitle}
+    secondaryTitle={props.secondaryTitle}
+    showCoPilot={props.showCoPilot}
+    showNotifications={props.showNotifications}
+    showProductSwitch={props.showProductSwitch}
     menuItems={
       <>
         <StandardListItem data-key="1">Menu Item 1</StandardListItem>
@@ -34,12 +40,12 @@ export const generatedDefaultStory = () => (
     profile={<Avatar image={image} />}
     searchField={null}
     startButton={null}
-    onCoPilotClick={action('onCoPilotClick')}
-    onLogoClick={action('onLogoClick')}
-    onMenuItemClick={action('onMenuItemClick')}
-    onNotificationsClick={action('onNotificationsClick')}
-    onProductSwitchClick={action('onProductSwitchClick')}
-    onProfileClick={action('onProfileClick')}
+    onCoPilotClick={props.onCoPilotClick}
+    onLogoClick={props.onLogoClick}
+    onMenuItemClick={props.onMenuItemClick}
+    onNotificationsClick={props.onNotificationsClick}
+    onProductSwitchClick={props.onProductSwitchClick}
+    onProfileClick={props.onProfileClick}
   >
     <ShellBarItem text={'ShellBarItem'} icon={'add'} count={'2'} />
   </ShellBar>
