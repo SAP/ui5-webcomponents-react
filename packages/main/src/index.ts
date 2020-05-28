@@ -137,6 +137,11 @@ import { ToastPlacement } from './lib/ToastPlacement';
 import { ToggleButton } from './lib/ToggleButton';
 import { Token } from './lib/Token';
 import { Tokenizer } from './lib/Tokenizer';
+import { Toolbar } from './lib/Toolbar';
+import { ToolbarDesign } from './lib/ToolbarDesign';
+import { ToolbarSeparator } from './lib/ToolbarSeparator';
+import { ToolbarSpacer } from './lib/ToolbarSpacer';
+import { ToolbarStyle } from './lib/ToolbarStyle';
 import { UploadCollection } from './lib/UploadCollection';
 import { UploadCollectionItem } from './lib/UploadCollectionItem';
 import { UploadState } from './lib/UploadState';
@@ -280,6 +285,11 @@ export {
   ToggleButton,
   Token,
   Tokenizer,
+  Toolbar,
+  ToolbarDesign,
+  ToolbarSeparator,
+  ToolbarSpacer,
+  ToolbarStyle,
   UploadCollection,
   UploadCollectionItem,
   UploadState,
