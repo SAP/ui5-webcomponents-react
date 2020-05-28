@@ -72,21 +72,24 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
 
-    return React.Children.toArray(children).map((item, index) => {
-      const itemRef: RefObject<HTMLDivElement> = createRef();
+    return React.Children.toArray(children?.type === React.Fragment ? children.props.children : children).map(
+      (item, index) => {
+        const itemRef: RefObject<HTMLDivElement> = createRef();
 
-      controlMetaData.current.push({
-        ref: itemRef
-      });
-      if (item?.type?.displayName === 'ToolbarSpacer') {
-        return item;
+        controlMetaData.current.push({
+          ref: itemRef
+        });
+
+        if (item?.type?.displayName === 'ToolbarSpacer') {
+          return item;
+        }
+        return (
+          <div ref={itemRef} key={index}>
+            {item}
+          </div>
+        );
       }
-      return (
-        <div ref={itemRef} key={index}>
-          {item}
-        </div>
-      );
-    });
+    );
   }, [children, controlMetaData]);
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
