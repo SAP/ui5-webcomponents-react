@@ -29,18 +29,18 @@ export const styles = {
       backgroundColor: ThemingParameters.sapList_Hover_Background
     }
   },
-  activeInfo: {
-    backgroundColor: ThemingParameters.sapInfobar_Active_Background,
-    '&:active': {
-      backgroundColor: `${ThemingParameters.sapInfobar_Active_Background}`
-    },
-    '&:hover': {
-      backgroundColor: ThemingParameters.sapInfobar_Hover_Background
-    }
-  },
   info: {
     // This color is most similar to darken(@sapUiBaseColor, 10)
-    backgroundColor: ThemingParameters.sapList_HeaderBorderColor
+    backgroundColor: ThemingParameters.sapList_HeaderBorderColor,
+    '&$active': {
+      backgroundColor: ThemingParameters.sapInfobar_Active_Background,
+      '&:active': {
+        backgroundColor: `${ThemingParameters.sapInfobar_Active_Background}`
+      },
+      '&:hover': {
+        backgroundColor: ThemingParameters.sapInfobar_Hover_Background
+      }
+    }
   },
   solid: {
     backgroundColor: ThemingParameters.sapBackgroundColor

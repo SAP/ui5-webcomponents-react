@@ -1,11 +1,10 @@
-import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { cleanup, render, screen, waitFor, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@tests/index';
+import { createPassThroughPropsTest } from '@tests/utils';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
 import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
 import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 
 describe('Toolbar', () => {
   test('Renders with default Props', () => {
@@ -15,7 +14,7 @@ describe('Toolbar', () => {
   test('Renders with children', () => {
     expect(
       render(
-        <Toolbar>
+        <Toolbar active data-testid="toolbar">
           <Text>Item1</Text>
           <Text>Item2</Text>
           <Text>Item3</Text>
@@ -23,6 +22,7 @@ describe('Toolbar', () => {
       ).asFragment()
     ).toMatchSnapshot();
     expect(screen.getByText('Item1').textContent).toEqual('Item1');
+    expect(screen.getByTestId('toolbar')).toHaveClass('Toolbar-active');
   });
 
   // test('Renders overflowButton', async () => {
@@ -43,60 +43,67 @@ describe('Toolbar', () => {
   //   await waitFor(() => expect(screen.getByTitle('Show More').className).toMatch(/overflowButtonContainer/));
   // });
 
-  test('Design Style modes', () => {
+  test('active', () => {
+    const onClick = jest.fn();
     const { rerender } = render(
-      <Toolbar tooltip={'toolbar'} toolbarStyle={ToolbarStyle.Clear}>
+      <Toolbar data-testid="toolbar" onToolbarClick={onClick}>
         <Text>Item1</Text>
         <Text>Item2</Text>
         <Text>Item3</Text>
       </Toolbar>
     );
-    expect(screen.getByTitle('toolbar').className).toMatch(/clear/);
+
+    fireEvent.click(screen.getByTestId('toolbar'));
+
+    expect(onClick).not.toHaveBeenCalled();
 
     rerender(
-      <Toolbar tooltip={'toolbar'} toolbarStyle={ToolbarStyle.Clear} design={ToolbarDesign.Transparent}>
+      <Toolbar data-testid="toolbar" onToolbarClick={onClick} active>
         <Text>Item1</Text>
         <Text>Item2</Text>
         <Text>Item3</Text>
       </Toolbar>
     );
-    expect(screen.getByTitle('toolbar').className).toMatch(/transparent/);
+
+    fireEvent.click(screen.getByTestId('toolbar'));
+
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  test('style', () => {
+    const { rerender } = render(
+      <Toolbar data-testid="toolbar">
+        <Text>Item1</Text>
+        <Text>Item2</Text>
+        <Text>Item3</Text>
+      </Toolbar>
+    );
+    expect(screen.getByTestId('toolbar')).not.toHaveClass('Toolbar-clear');
 
     rerender(
-      <Toolbar tooltip={'toolbar'} toolbarStyle={ToolbarStyle.Clear} design={ToolbarDesign.Solid}>
+      <Toolbar data-testid="toolbar" toolbarStyle={ToolbarStyle.Clear}>
         <Text>Item1</Text>
         <Text>Item2</Text>
         <Text>Item3</Text>
       </Toolbar>
     );
-    expect(screen.getByTitle('toolbar').className).toMatch(/solid/);
+    expect(screen.getByTestId('toolbar')).toHaveClass('Toolbar-clear');
+  });
 
-    rerender(
-      <Toolbar tooltip={'toolbar'} toolbarStyle={ToolbarStyle.Clear} design={ToolbarDesign.Info}>
+  test.each([
+    [ToolbarDesign.Info, 'Toolbar-info'],
+    [ToolbarDesign.Solid, 'Toolbar-solid'],
+    [ToolbarDesign.Transparent, 'Toolbar-transparent']
+  ])('design: %s', (design, expected) => {
+    render(
+      <Toolbar data-testid={'toolbar'} design={design}>
         <Text>Item1</Text>
         <Text>Item2</Text>
         <Text>Item3</Text>
       </Toolbar>
     );
-    expect(screen.getByTitle('toolbar').className).toMatch(/info/);
 
-    rerender(
-      <Toolbar tooltip={'toolbar'} toolbarStyle={ToolbarStyle.Clear} active design={ToolbarDesign.Info}>
-        <Text>Item1</Text>
-        <Text>Item2</Text>
-        <Text>Item3</Text>
-      </Toolbar>
-    );
-    expect(screen.getByTitle('toolbar').className).toMatch(/activeInfo/);
-
-    rerender(
-      <Toolbar tooltip={'toolbar'} toolbarStyle={ToolbarStyle.Clear} active>
-        <Text>Item1</Text>
-        <Text>Item2</Text>
-        <Text>Item3</Text>
-      </Toolbar>
-    );
-    expect(screen.getByTitle('toolbar').className).toMatch(/active/);
+    expect(screen.getByTestId('toolbar')).toHaveClass(expected);
   });
 
   createPassThroughPropsTest(Toolbar);

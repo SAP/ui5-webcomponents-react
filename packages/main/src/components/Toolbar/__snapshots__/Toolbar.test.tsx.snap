@@ -3,28 +3,29 @@
 exports[`Toolbar Renders with children 1`] = `
 <DocumentFragment>
   <div
-    class="Toolbar-outerContainer-0-2-1"
+    class="Toolbar-outerContainer Toolbar-active"
+    data-testid="toolbar"
   >
     <div
-      class="Toolbar-toolbar-0-2-9"
+      class="Toolbar-toolbar"
     >
       <div>
         <span
-          class="Text-text-0-2-12"
+          class="Text-text"
         >
           Item1
         </span>
       </div>
       <div>
         <span
-          class="Text-text-0-2-12"
+          class="Text-text"
         >
           Item2
         </span>
       </div>
       <div>
         <span
-          class="Text-text-0-2-12"
+          class="Text-text"
         >
           Item3
         </span>
@@ -37,10 +38,10 @@ exports[`Toolbar Renders with children 1`] = `
 exports[`Toolbar Renders with default Props 1`] = `
 <DocumentFragment>
   <div
-    class="Toolbar-outerContainer-0-2-1"
+    class="Toolbar-outerContainer"
   >
     <div
-      class="Toolbar-toolbar-0-2-9"
+      class="Toolbar-toolbar"
     />
   </div>
 </DocumentFragment>

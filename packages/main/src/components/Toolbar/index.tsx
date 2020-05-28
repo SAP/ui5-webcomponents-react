@@ -62,11 +62,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
       toolbarClasses.put(classes.transparent);
       break;
     case ToolbarDesign.Info:
-      if (active) {
-        toolbarClasses.put(classes.activeInfo);
-      } else {
-        toolbarClasses.put(classes.info);
-      }
+      toolbarClasses.put(classes.info);
       break;
     default:
       break;
