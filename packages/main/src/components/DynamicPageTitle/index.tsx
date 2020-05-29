@@ -72,8 +72,10 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
           </FlexBox>
 
           <div className={classes.navigationActions}>
-            <ToolbarSeparator />
-            <Toolbar toolbarStyle={ToolbarStyle.Clear}>{navigationActions}</Toolbar>
+            <Toolbar toolbarStyle={ToolbarStyle.Clear}>
+              <ToolbarSeparator />
+              {navigationActions}
+            </Toolbar>
           </div>
         </FlexBox>
       </div>
