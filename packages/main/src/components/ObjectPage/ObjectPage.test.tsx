@@ -80,8 +80,17 @@ const renderComponentWithSections = () => (
     </ObjectPageSection>
   </ObjectPage>
 );
+let original;
+beforeAll(() => {
+  original = Element.prototype.scrollTo;
+  Element.prototype.scrollTo = Element.prototype.scrollTo || jest.fn();
+});
 
+afterAll(() => {
+  Element.prototype.scrollTo = original;
+});
 describe('ObjectPage', () => {
+
   test('With Subsections', () => {
     const wrapper = mount(renderComponent());
     expect(wrapper.render()).toMatchSnapshot();

@@ -18,10 +18,6 @@ const styles = {
     boxShadow: 'none',
     flexWrap: 'wrap'
   },
-  vLine: {
-    borderLeft: '1px solid gray',
-    paddingLeft: '0.5rem'
-  },
   filterArea: {
     display: 'flex',
     flexWrap: 'wrap',

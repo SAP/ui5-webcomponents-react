@@ -5,17 +5,20 @@ declare const ResizeObserver;
 export const useObserveHeights = (objectPage, topHeader, headerContentRef, anchorBarRef, { noHeader }) => {
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
+  const [isIntersecting, setIsIntersecting] = useState(true);
 
   useEffect(() => {
     const headerIntersectionObserver = new IntersectionObserver(
       ([header]) => {
         if (header.isIntersecting) {
+          setIsIntersecting(true);
           setHeaderContentHeight((header.target as HTMLElement).offsetHeight);
         } else {
+          setIsIntersecting(false);
           setHeaderContentHeight(0);
         }
       },
-      { rootMargin: `-${topHeaderHeight}px 0px 0px 0px`, root: objectPage.current, threshold: 0.5 }
+      { rootMargin: `-${topHeaderHeight}px 0px 0px 0px`, root: objectPage.current, threshold: 0.3 }
     );
 
     if (headerContentRef.current) {
@@ -25,7 +28,7 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
     return () => {
       headerIntersectionObserver.disconnect();
     };
-  }, [topHeaderHeight, setHeaderContentHeight, headerContentRef]);
+  }, [topHeaderHeight, setHeaderContentHeight, headerContentRef, setIsIntersecting]);
 
   // top header
   useEffect(() => {
@@ -38,12 +41,14 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
     return () => {
       headerContentResizeObserver.disconnect();
     };
-  }, [topHeader.current, setHeaderContentHeight]);
+  }, [topHeader.current, setTopHeaderHeight]);
 
   // header content
   useEffect(() => {
     const headerContentResizeObserver = new ResizeObserver(([headerContent]) => {
-      setHeaderContentHeight(headerContent?.contentRect?.height ?? 0);
+      if (isIntersecting) {
+        setHeaderContentHeight(headerContent?.contentRect?.height ?? 0);
+      }
     });
 
     if (headerContentRef.current) {
@@ -52,7 +57,7 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
     return () => {
       headerContentResizeObserver.disconnect();
     };
-  }, [headerContentRef.current, setHeaderContentHeight]);
+  }, [headerContentRef.current, setHeaderContentHeight, isIntersecting]);
 
   const anchorBarHeight = anchorBarRef.current?.offsetHeight ?? 33;
   const totalHeaderHeight = (noHeader ? 0 : topHeaderHeight + headerContentHeight) + anchorBarHeight;
