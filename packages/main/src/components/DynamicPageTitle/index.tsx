@@ -1,8 +1,9 @@
-import { StyleClassHelper, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, FC } from 'react';
-import { FlexBox, Toolbar } from '../..';
+import { createComponentStyles, StyleClassHelper, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base';
+import React, { FC, forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref } from 'react';
+import { FlexBox, FlexBoxAlignItems, Toolbar, ToolbarDesign, ToolbarSeparator, ToolbarStyle } from '../..';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { BreadcrumbsPropTypes } from '../Breadcrumbs';
+import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
 
 export interface DynamicPageTitleProps extends CommonProps {
   /**
@@ -37,11 +38,15 @@ export interface DynamicPageTitleProps extends CommonProps {
   navigationActions?: ReactElement | ReactElement[];
 }
 
+const useStyles = createComponentStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
+
 const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
   (props: DynamicPageTitleProps, ref: Ref<HTMLDivElement>) => {
     const { actions, breadcrumbs, children, heading, navigationActions, className, style } = props;
 
-    const containerClasses = StyleClassHelper.of();
+    const classes = useStyles();
+
+    const containerClasses = StyleClassHelper.of(classes.container);
 
     containerClasses.putIfPresent(className);
 
@@ -54,12 +59,22 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
         data-component-name="DynamicPageTitle"
         {...passThroughProps}
       >
-        {breadcrumbs}
-        <FlexBox>
-          {heading}
-          {children}
-          <Toolbar>{actions}</Toolbar>
-          <Toolbar>{navigationActions}</Toolbar>
+        <div className={classes.breadcrumbs}>{breadcrumbs}</div>
+        <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
+          <FlexBox className={classes.titleMainSection}>
+            <div className={classes.title}>{heading}</div>
+            <div className={classes.content}>
+              <Toolbar toolbarStyle={ToolbarStyle.Clear}>{children}</Toolbar>
+            </div>
+            <div className={classes.actions}>
+              <Toolbar toolbarStyle={ToolbarStyle.Clear}>{actions}</Toolbar>
+            </div>
+          </FlexBox>
+
+          <div className={classes.navigationActions}>
+            <ToolbarSeparator />
+            <Toolbar toolbarStyle={ToolbarStyle.Clear}>{navigationActions}</Toolbar>
+          </div>
         </FlexBox>
       </div>
     );

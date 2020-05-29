@@ -28,9 +28,9 @@ export const defaultStory = (props) => {
             <>
               <Button design="Emphasized">Edit</Button>
               <Button design="Transparent">Delete</Button>
-              <Button type="Transparent">Copy</Button>
+              <Button design="Transparent">Copy</Button>
               <Button design="Transparent">Toggle Footer</Button>
-              <Button icon="action" type="Transparent"></Button>
+              <Button icon="action" design="Transparent"></Button>
             </>
           }
           breadcrumbs={
