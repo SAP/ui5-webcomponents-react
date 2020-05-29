@@ -116,7 +116,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
 
   const onPinHeader = useCallback(
     (e) => {
-      setHeaderPinned(e.detail.pressed);
+      setHeaderPinned(e.target.pressed);
     },
     [setHeaderPinned]
   );

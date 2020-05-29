@@ -36,22 +36,24 @@ export function OverflowPopover(props) {
   };
 
   const renderChildren = useCallback(() => {
-    return React.Children.toArray(children).map((item: ReactElement<any>, index) => {
-      if (index > lastVisibleIndex) {
-        if (item.type.displayName === 'ToolbarSeparator') {
-          return React.cloneElement(item, {
-            style: {
-              height: '0.0625rem',
-              margin: '0.375rem 0.1875rem',
-              width: '100%',
-              background: ThemingParameters.sapToolbar_SeparatorColor
-            }
-          });
+    return React.Children.toArray(children?.type === React.Fragment ? children.props.children : children).map(
+      (item: ReactElement<any>, index) => {
+        if (index > lastVisibleIndex) {
+          if (item.type.displayName === 'ToolbarSeparator') {
+            return React.cloneElement(item, {
+              style: {
+                height: '0.0625rem',
+                margin: '0.375rem 0.1875rem',
+                width: '100%',
+                background: ThemingParameters.sapToolbar_SeparatorColor
+              }
+            });
+          }
+          return item;
         }
-        return item;
+        return null;
       }
-      return null;
-    });
+    );
   }, [children, lastVisibleIndex]);
 
   return (
