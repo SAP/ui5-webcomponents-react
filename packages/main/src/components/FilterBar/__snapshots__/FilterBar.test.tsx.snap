@@ -200,8 +200,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         <div
           class="ToolbarSeparator-separator-0"
         />
-      </div>
-      <div>
         <div>
           <ui5-input
             placeholder="Search"
@@ -221,30 +219,22 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         >
           Clear
         </ui5-button>
-      </div>
-      <div>
         <ui5-button
           design="Transparent"
         >
           Restore
         </ui5-button>
-      </div>
-      <div>
         <ui5-button
           class="FilterBar-showFiltersBtn-0"
           design="Transparent"
         >
           Hide Filter Bar
         </ui5-button>
-      </div>
-      <div>
         <ui5-button
           design="Default"
         >
           Filters (1337)
         </ui5-button>
-      </div>
-      <div>
         <ui5-button
           design="Emphasized"
         >
@@ -894,8 +884,6 @@ Array [
           <div
             class="ToolbarSeparator-separator-0"
           />
-        </div>
-        <div>
           <div>
             <ui5-input
               placeholder="Search"
@@ -915,30 +903,22 @@ Array [
           >
             Clear
           </ui5-button>
-        </div>
-        <div>
           <ui5-button
             design="Transparent"
           >
             Restore
           </ui5-button>
-        </div>
-        <div>
           <ui5-button
             class="FilterBar-showFiltersBtn-0"
             design="Transparent"
           >
             Hide Filter Bar
           </ui5-button>
-        </div>
-        <div>
           <ui5-button
             design="Default"
           >
             Filters (1337)
           </ui5-button>
-        </div>
-        <div>
           <ui5-button
             design="Emphasized"
           >
@@ -1216,8 +1196,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
         <div
           class="ToolbarSeparator-separator-0"
         />
-      </div>
-      <div>
         <div>
           <ui5-input
             placeholder="Search"
@@ -1237,30 +1215,22 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
         >
           Clear
         </ui5-button>
-      </div>
-      <div>
         <ui5-button
           design="Transparent"
         >
           Restore
         </ui5-button>
-      </div>
-      <div>
         <ui5-button
           class="FilterBar-showFiltersBtn-0"
           design="Transparent"
         >
           Hide Filter Bar
         </ui5-button>
-      </div>
-      <div>
         <ui5-button
           design="Default"
         >
           Filters (1337)
         </ui5-button>
-      </div>
-      <div>
         <ui5-button
           design="Emphasized"
         >
