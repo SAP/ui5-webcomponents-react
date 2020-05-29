@@ -7,6 +7,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 import 'intersection-observer';
 import '@ui5/webcomponents/dist/generated/json-imports/i18n';
 import 'whatwg-fetch';
+import '@testing-library/jest-dom';
 
 // React 16 Enzyme adapter
 Enzyme.configure({ adapter: new Adapter() });

@@ -11,14 +11,6 @@ import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';
 
 const useStyles = createComponentStyles(GlobalStyleClassesStyles);
 
-declare global {
-  interface Window {
-    CSSVarsPonyfill: {
-      cssVars: (options: any) => void;
-    };
-  }
-}
-
 const cssVarsPonyfillNeeded = () => !!window.CSSVarsPonyfill;
 
 export interface ThemeProviderProps {
