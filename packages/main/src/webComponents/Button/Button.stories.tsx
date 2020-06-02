@@ -7,8 +7,7 @@ export default {
   title: 'UI5 Web Components / Button',
   component: Button,
   argTypes: {
-    ...createSelectArgTypes({ design: ButtonDesign }),
-    onClick: { control: { type: 'function' } }
+    ...createSelectArgTypes({ design: ButtonDesign })
   },
   args: {
     design: ButtonDesign.Default,
