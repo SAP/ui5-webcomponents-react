@@ -5,7 +5,7 @@ import { simpleDataSet } from '../../resources/DemoProps';
 export default {
   title: 'Charts /  DonutChart',
   component: DonutChart,
-  arg: {
+  args: {
     innerRadius: '20%',
     outerRadius: '90%'
   }
