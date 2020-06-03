@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { LineChart } from '../../lib/LineChart';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
@@ -9,13 +7,13 @@ export default {
   component: LineChart
 };
 
-export const renderStory = () => (
+export const renderStory = (props) => (
   <LineChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
-    onLegendClick={action('onLegendClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dataset={complexDataSet}
     style={{ width: '100%' }}
     dimensions={[
@@ -47,12 +45,13 @@ export const renderStory = () => (
 
 renderStory.storyName = 'Default';
 
-export const renderStoryWithCustomColor = () => (
+export const renderStoryWithCustomColor = (props) => (
   <LineChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
     dataset={simpleDataSet}
@@ -62,12 +61,13 @@ export const renderStoryWithCustomColor = () => (
 
 renderStoryWithCustomColor.storyName = 'With custom color';
 
-export const withSecondaryDimension = () => (
+export const withSecondaryDimension = (props) => (
   <LineChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
     dataset={secondaryDimensionDataSet}
@@ -77,14 +77,14 @@ export const withSecondaryDimension = () => (
 
 withSecondaryDimension.storyName = 'With secondary dimension';
 
-export const renderLabelStory = () => {
+export const renderLabelStory = (props) => {
   return (
     <LineChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dimensions={[{ accessor: 'name' }]}
       measures={[
         {
@@ -108,14 +108,14 @@ export const renderLabelStory = () => {
 
 renderLabelStory.storyName = 'With data labels';
 
-export const renderCustomDataLabelStory = () => {
+export const renderCustomDataLabelStory = (props) => {
   return (
     <LineChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={complexDataSet}
       dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
       measures={[
@@ -145,14 +145,14 @@ export const loadingPlaceholder = () => <LineChart style={{ width: '100%' }} dim
 
 loadingPlaceholder.storyName = 'Loading placeholder';
 
-export const withReferenceLineStory = () => {
+export const withReferenceLineStory = (props) => {
   return (
     <LineChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={bigDataSet}
       dimensions={[{ accessor: 'name' }]}
       measures={[

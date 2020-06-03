@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
 import { RadarChart } from './RadarChart';
@@ -9,14 +7,14 @@ export default {
   component: RadarChart
 };
 
-export const renderStory = () => {
+export const renderStory = (props) => {
   return (
     <RadarChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={complexDataSet}
       style={{ width: '100%' }}
       dimensions={[
@@ -49,12 +47,13 @@ export const renderStory = () => {
 
 renderStory.storyName = 'Default';
 
-export const renderStoryWithCustomColor = () => (
+export const renderStoryWithCustomColor = (props) => (
   <RadarChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
     dataset={simpleDataSet}
@@ -64,14 +63,14 @@ export const renderStoryWithCustomColor = () => (
 
 renderStoryWithCustomColor.storyName = 'With custom color';
 
-export const renderLabelStory = () => {
+export const renderLabelStory = (props) => {
   return (
     <RadarChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dimensions={[{ accessor: 'name' }]}
       measures={[
         {
@@ -92,14 +91,14 @@ export const renderLabelStory = () => {
 
 renderLabelStory.storyName = 'With data labels';
 
-export const renderCustomDataLabelStory = () => {
+export const renderCustomDataLabelStory = (props) => {
   return (
     <RadarChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={complexDataSet}
       dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
       chartConfig={{ polarGridType: 'polygon' }}

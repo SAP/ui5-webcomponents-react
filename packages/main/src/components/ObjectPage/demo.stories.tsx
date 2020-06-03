@@ -56,12 +56,10 @@ export const renderDemo = (props) => {
         title={props.title}
         subTitle={props.subTitle}
         headerActions={[
-          <Button key="1" design={ButtonDesign.Emphasized} onClick={props.onHeaderAction1Pressed}>
+          <Button key="1" design={ButtonDesign.Emphasized}>
             Primary Action
           </Button>,
-          <Button key="2" onClick={props.onHeaderAction2Pressed}>
-            Action
-          </Button>
+          <Button key="2">Action</Button>
         ]}
         image={SampleImage}
         mode={props.mode}
@@ -149,12 +147,10 @@ export const renderShortContent = (props) => {
         title={props.title}
         subTitle={props.subTitle}
         headerActions={[
-          <Button key="1" design={ButtonDesign.Emphasized} onClick={props.onHeaderAction1Pressed}>
+          <Button key="1" design={ButtonDesign.Emphasized}>
             Primary Action
           </Button>,
-          <Button key="2" onClick={props.onHeaderAction2Pressed}>
-            Action
-          </Button>
+          <Button key="2">Action</Button>
         ]}
         image={SampleImage}
         headerContent={

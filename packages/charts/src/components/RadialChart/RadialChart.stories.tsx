@@ -1,32 +1,33 @@
-import { action } from '@storybook/addon-actions';
-import { number, text } from '@storybook/addon-knobs';
 import React from 'react';
 import { RadialChart } from '../../lib/RadialChart';
 
 export default {
   title: 'Charts /  RadialChart',
-  component: RadialChart
+  component: RadialChart,
+  args: {
+    displayValue: '67%',
+    value: 67,
+    maxValue: 250,
+    color: '#f0ab00',
+    displayCustomValue: '150l'
+  }
 };
 
-export const renderStory = () => {
+export const renderStory = (props) => {
   return (
-    <RadialChart
-      value={number('value', 67)}
-      displayValue={text('displayValue', '67%')}
-      onDataPointClick={action('onDataPointClick')}
-    />
+    <RadialChart value={props.value} displayValue={props.displayValue} onDataPointClick={props.onDataPointClick} />
   );
 };
 
 renderStory.storyName = 'Default';
 
-export const customColorStory = () => {
+export const customColorStory = (props) => {
   return (
     <RadialChart
-      value={number('value', 150)}
-      displayValue={text('displayValue', '150l')}
-      maxValue={number('maxValue', 250)}
-      color={text('color', '#f0ab00')}
+      value={props.value}
+      displayValue={props.displayCustomValue}
+      maxValue={props.maxValue}
+      color={props.color}
     />
   );
 };

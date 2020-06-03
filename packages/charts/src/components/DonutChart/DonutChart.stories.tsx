@@ -1,22 +1,24 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
 import React from 'react';
 import { DonutChart } from '../../lib/DonutChart';
 import { simpleDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts /  DonutChart',
-  component: DonutChart
+  component: DonutChart,
+  arg: {
+    innerRadius: '20%',
+    outerRadius: '90%'
+  }
 };
 
-export const renderStory = () => {
+export const renderStory = (props) => {
   return (
     <DonutChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onLegendClick={action('onLegendClick')}
-      onDataPointClick={action('onDataPointClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       style={{ width: '50%' }}
       dataset={simpleDataSet}
       dimension={{
@@ -31,13 +33,13 @@ export const renderStory = () => {
 
 renderStory.storyName = 'Default';
 
-export const renderCustomColorStory = () => (
+export const renderCustomColorStory = (props) => (
   <DonutChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onLegendClick={action('onLegendClick')}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     style={{ width: '50%' }}
     dataset={simpleDataSet}
     dimension={{
@@ -52,13 +54,13 @@ export const renderCustomColorStory = () => (
 
 renderCustomColorStory.storyName = 'With custom color';
 
-export const withPaddingStory = () => (
+export const withPaddingStory = (props) => (
   <DonutChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onLegendClick={action('onLegendClick')}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     style={{ width: '50%' }}
     dataset={simpleDataSet}
     dimension={{
@@ -73,18 +75,18 @@ export const withPaddingStory = () => (
 
 withPaddingStory.storyName = 'With padding angle';
 
-export const withCustomRadiusStory = () => (
+export const withCustomRadiusStory = (props) => (
   <DonutChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onLegendClick={action('onLegendClick')}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     style={{ width: '50%' }}
     dataset={simpleDataSet}
     chartConfig={{
-      innerRadius: text('innerRadius', '20%'),
-      outerRadius: text('outerRadius', '90%')
+      innerRadius: props.innerRadius,
+      outerRadius: props.outerRadius
     }}
     dimension={{
       accessor: 'name'
@@ -101,13 +103,13 @@ export const loadingPlaceholder = () => <DonutChart style />;
 
 loadingPlaceholder.storyName = 'Loading placeholder';
 
-export const withFormatter = () => (
+export const withFormatter = (props) => (
   <DonutChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onLegendClick={action('onLegendClick')}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     style={{ width: '50%' }}
     dataset={simpleDataSet}
     dimension={{

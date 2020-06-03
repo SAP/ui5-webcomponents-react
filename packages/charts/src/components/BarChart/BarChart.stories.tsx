@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { BarChart } from '../../lib/BarChart';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
@@ -9,14 +7,14 @@ export default {
   component: BarChart
 };
 
-export const renderStory = () => {
+export const renderStory = (props) => {
   return (
     <BarChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={complexDataSet}
       style={{ height: '60vh' }}
       chartConfig={{}}
@@ -49,12 +47,12 @@ export const renderStory = () => {
 
 renderStory.storyName = 'Default';
 
-export const renderStoryWithCustomColor = () => (
+export const renderStoryWithCustomColor = (props) => (
   <BarChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
     dataset={simpleDataSet}
@@ -64,12 +62,12 @@ export const renderStoryWithCustomColor = () => (
 
 renderStoryWithCustomColor.storyName = 'With custom color';
 
-export const withSecondaryDimension = () => (
+export const withSecondaryDimension = (props) => (
   <BarChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
     dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
     dataset={secondaryDimensionDataSet}
@@ -79,13 +77,13 @@ export const withSecondaryDimension = () => (
 
 withSecondaryDimension.storyName = 'With secondary dimension';
 
-export const renderLabelStory = () => (
+export const renderLabelStory = (props) => (
   <BarChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
-    onLegendClick={action('onLegendClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dimensions={[{ accessor: 'name' }]}
     measures={[
       {
@@ -108,13 +106,13 @@ export const renderLabelStory = () => (
 
 renderLabelStory.storyName = 'With data labels';
 
-export const renderCustomDataLabelStory = () => (
+export const renderCustomDataLabelStory = (props) => (
   <BarChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
-    onLegendClick={action('onLegendClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dataset={complexDataSet}
     dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
     measures={[
@@ -143,13 +141,13 @@ export const loadingPlaceholder = () => <BarChart style={{ width: '30%' }} dimen
 
 loadingPlaceholder.storyName = 'Loading placeholder';
 
-export const withReferenceLineStory = () => (
+export const withReferenceLineStory = (props) => (
   <BarChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
-    onLegendClick={action('onLegendClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dataset={complexDataSet}
     dimensions={[{ accessor: 'name' }]}
     measures={[

@@ -1,5 +1,5 @@
 type ArgDefinition = {
-  [key: string]: Record<string, string>;
+  [key: string]: Record<string, string> | string[];
 };
 
 export const createSelectArgTypes = (definition: ArgDefinition) => {

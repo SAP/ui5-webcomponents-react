@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { MicroBarChart } from './MicroBarChart';
 
@@ -30,10 +29,10 @@ export default {
   component: MicroBarChart
 };
 
-export const defaultStory = () => (
+export const defaultStory = (props) => (
   <MicroBarChart
-    onDataPointClick={action('onDataPointClickHandler')}
-    onLegendClick={action('onLegendClickHandler')}
+    onDataPointClick={props.onDataPointClickHandler}
+    onLegendClick={props.onLegendClickHandler}
     dataset={singleData}
     style={{ width: '100%', height: '30vh' }}
     dimension={{
@@ -49,8 +48,8 @@ defaultStory.storyName = 'Default';
 
 export const withCustomColor = () => (
   <MicroBarChart
-    onDataPointClick={action('onDataPointClickHandler')}
-    onLegendClick={action('onLegendClickHandler')}
+    onDataPointClick={props.onDataPointClickHandler}
+    onLegendClick={props.onLegendClickHandler}
     dataset={singleData}
     style={{ width: '100%', height: '30vh' }}
     dimension={{

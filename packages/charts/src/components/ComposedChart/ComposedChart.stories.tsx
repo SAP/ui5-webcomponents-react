@@ -1,25 +1,30 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select } from '@storybook/addon-knobs';
 import React from 'react';
 import { ComposedChart } from '../../lib/ComposedChart';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'Charts /  ComposedChart',
-  component: ComposedChart
+  component: ComposedChart,
+  argTypes: {
+    ...createSelectArgTypes({ layout: ['horizontal', 'vertical'] })
+  },
+  args: {
+    layout: 'vertical'
+  }
 };
 
-export const renderStory = () => {
+export const renderStory = (props) => {
   return (
     <ComposedChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={complexDataSet}
       style={{ height: '60vh' }}
-      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
+      layout={props.layout}
       dimensions={[
         {
           accessor: 'name',
@@ -52,12 +57,13 @@ export const renderStory = () => {
 
 renderStory.storyName = 'Default';
 
-export const renderStoryWithCustomColor = () => (
+export const renderStoryWithCustomColor = (props) => (
   <ComposedChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red', type: 'bar' }]}
     dataset={simpleDataSet}
@@ -67,12 +73,13 @@ export const renderStoryWithCustomColor = () => (
 
 renderStoryWithCustomColor.storyName = 'With custom color';
 
-export const withSecondaryDimension = () => (
+export const withSecondaryDimension = (props) => (
   <ComposedChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
     measures={[{ accessor: 'users', type: 'area', color: 'red', width: 2, opacity: 0.5 }]}
     dataset={secondaryDimensionDataSet}
@@ -82,14 +89,14 @@ export const withSecondaryDimension = () => (
 
 withSecondaryDimension.storyName = 'With secondary dimension';
 
-export const renderLabelStory = () => {
+export const renderLabelStory = (props) => {
   return (
     <ComposedChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dimensions={[{ accessor: 'name' }]}
       measures={[
         {
@@ -120,14 +127,14 @@ export const renderLabelStory = () => {
 
 renderLabelStory.storyName = 'With data labels';
 
-export const renderCustomDataLabelStory = () => {
+export const renderCustomDataLabelStory = (props) => {
   return (
     <ComposedChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={complexDataSet}
       dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
       measures={[
@@ -161,17 +168,17 @@ export const renderCustomDataLabelStory = () => {
 
 renderCustomDataLabelStory.storyName = 'With formatter';
 
-export const withReferenceLineStory = () => {
+export const withReferenceLineStory = (props) => {
   return (
     <ComposedChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={bigDataSet}
       dimensions={[{ accessor: 'name' }]}
-      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
+      layout={props.layout}
       measures={[
         {
           accessor: 'users',
@@ -202,15 +209,15 @@ export const withReferenceLineStory = () => {
 
 withReferenceLineStory.storyName = 'With reference line';
 
-export const loadingPlaceholder = () => {
+export const loadingPlaceholder = (props) => {
   return (
     <ComposedChart
-      loading={boolean('loading', true)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={[]}
       style={{ height: '60vh' }}
-      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
+      layout={props.layout}
       dimensions={[
         {
           accessor: 'name',
