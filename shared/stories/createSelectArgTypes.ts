@@ -8,8 +8,7 @@ export const createSelectArgTypes = (definition: ArgDefinition) => {
   for (let arg in definition) {
     argTypes[arg] = {
       control: {
-        type: 'options',
-        controlType: 'select',
+        type: 'radio',
         options: definition[arg]
       }
     };
