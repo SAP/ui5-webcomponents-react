@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -148,8 +146,8 @@ export const renderShortContent = (props) => {
   return (
     <div style={{ width: 'calc(100% - 1rem)', height: '100%', position: 'relative', marginTop: '2rem' }}>
       <ObjectPage
-        title={text('title', 'Object Page Title')}
-        subTitle={text('subTitle', 'Object Page Sub Title')}
+        title={props.title}
+        subTitle={props.subTitle}
         headerActions={[
           <Button key="1" design={ButtonDesign.Emphasized} onClick={props.onHeaderAction1Pressed}>
             Primary Action
