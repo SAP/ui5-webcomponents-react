@@ -1,4 +1,3 @@
-import { select, text } from '@storybook/addon-knobs';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarBackgroundColor } from '@ui5/webcomponents-react/lib/AvatarBackgroundColor';
 import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarFitType';

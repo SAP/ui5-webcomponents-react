@@ -1,3 +1,26 @@
+export const singleData = [
+  {
+    name: 'January',
+    data: 100,
+    users: 120
+  },
+  {
+    name: 'February',
+    data: 300,
+    users: 40
+  },
+  {
+    name: 'March',
+    data: 530,
+    users: 20
+  },
+  {
+    name: 'April',
+    data: 200,
+    users: 30
+  }
+];
+
 export const complexDataSet = [
   {
     name: 'January',

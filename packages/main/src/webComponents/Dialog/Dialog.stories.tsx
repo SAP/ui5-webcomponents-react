@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { Dialog } from '@ui5/webcomponents-react/lib/Dialog';
 import React, { useCallback, useRef } from 'react';
