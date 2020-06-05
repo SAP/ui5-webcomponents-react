@@ -2,13 +2,17 @@ import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
+import mdx from './Select.mdx';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / Select',
   component: Select,
   parameters: {
-    subcomponents: { Option }
+    subcomponents: { Option },
+    docs: {
+      page: mdx
+    }
   },
   argTypes: {
     ...createSelectArgTypes({ valueState: ValueState })
@@ -28,4 +32,6 @@ export const generatedDefaultStory = (props) => (
   </Select>
 );
 
-generatedDefaultStory.storyName = 'Generated default story';
+generatedDefaultStory.story = {
+  name: 'Generated default story'
+};

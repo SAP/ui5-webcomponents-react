@@ -1,0 +1,37 @@
+import { Story, Props, Title, Subtitle, Description, Primary, Stories } from '@storybook/addon-docs/blocks';
+import { Select } from '@ui5/webcomponents-react/lib/Select'
+import { Option } from '@ui5/webcomponents-react/lib/Option'
+
+<Title />
+<Subtitle />
+<Description />
+<Primary />
+<Props />
+<Stories />
+
+## Recipes
+
+### Get the ID of the selected item with `onChange`
+
+With the help of the HTML5 `data-` API you can define any primitive value (like numbers, strings)
+as an attribute on an element.
+This data will be available on the `onChange` event as part of the `dataset` object of the `selectedOption`:
+```jsx
+
+const data = [
+ { id: 1, text: 'Option 1'},
+ { id: 2, text: 'Option 2'}
+];
+
+const onChange = (event) => {
+  // event.detail.selectedOption is a reference to the selected HTML Element
+  // dataset contains all attributes that were passed with the data- prefix.
+  console.log(event.detail.selectedOption.dataset.id)
+}
+
+<Select onChange={onChange}>
+  {data.map(item => (
+    <Option key={item.id} data-id={item.id}>{item.text}</Option>
+  ))}
+</Select>
+```

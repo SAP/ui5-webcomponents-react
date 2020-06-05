@@ -12,6 +12,7 @@ import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import { VariantManagement } from '@ui5/webcomponents-react/lib/VariantManagement';
 import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
+import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
 import { mount } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
@@ -198,7 +199,8 @@ describe('FilterBar', () => {
         </FilterGroupItem>
       </FilterBar>
     );
-    const openFiltersDialogBtn = wrapper.find('.FilterBar-headerRowRight-0-2-7').childAt(3);
+    const openFiltersDialogBtn = wrapper.find(Toolbar).find(Button).at(5);
+
     act(() => {
       openFiltersDialogBtn.prop('onClick')();
     });
@@ -266,7 +268,7 @@ describe('FilterBar', () => {
     );
 
     const filterItemsFB = wrapper.find(FilterGroupItem);
-    const openFiltersDialogBtn = wrapper.find('.FilterBar-headerRowRight-0-2-7').childAt(3);
+    const openFiltersDialogBtn = wrapper.find(Toolbar).find(Button).at(3);
     act(() => {
       openFiltersDialogBtn.prop('onClick')();
     });

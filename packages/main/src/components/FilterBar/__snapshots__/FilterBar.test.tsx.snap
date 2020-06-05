@@ -5,17 +5,23 @@ exports[`FilterBar Hide FilterBar 1`] = `
   class="FilterBar-outerContainer-0"
 >
   <div
-    class="FilterBar-filterBarHeader-0"
+    class="Toolbar-outerContainer-0 Toolbar-clear-0 FilterBar-filterBarHeader-0"
   >
     <div
-      class="FilterBar-headerRowRight-0"
+      class="Toolbar-toolbar-0"
     >
-      <ui5-button
-        class="FilterBar-showFiltersBtn-0"
-        design="Transparent"
-      >
-        Show Filter Bar
-      </ui5-button>
+      <span
+        class="spacer"
+        style="flex-grow: 1;"
+      />
+      <div>
+        <ui5-button
+          class="FilterBar-showFiltersBtn-0"
+          design="Transparent"
+        >
+          Show Filter Bar
+        </ui5-button>
+      </div>
     </div>
   </div>
   <div
@@ -66,17 +72,23 @@ exports[`FilterBar Render without crashing - default props 1`] = `
   class="FilterBar-outerContainer-0"
 >
   <div
-    class="FilterBar-filterBarHeader-0"
+    class="Toolbar-outerContainer-0 Toolbar-clear-0 FilterBar-filterBarHeader-0"
   >
     <div
-      class="FilterBar-headerRowRight-0"
+      class="Toolbar-toolbar-0"
     >
-      <ui5-button
-        class="FilterBar-showFiltersBtn-0"
-        design="Transparent"
-      >
-        Hide Filter Bar
-      </ui5-button>
+      <span
+        class="spacer"
+        style="flex-grow: 1;"
+      />
+      <div>
+        <ui5-button
+          class="FilterBar-showFiltersBtn-0"
+          design="Transparent"
+        >
+          Hide Filter Bar
+        </ui5-button>
+      </div>
     </div>
   </div>
   <div
@@ -127,97 +139,108 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
   class="FilterBar-outerContainer-0"
 >
   <div
-    class="FilterBar-filterBarHeader-0"
+    class="Toolbar-outerContainer-0 Toolbar-clear-0 FilterBar-filterBarHeader-0"
   >
     <div
-      class="VariantManagement-container-0"
+      class="Toolbar-toolbar-0"
     >
-      <ui5-title
-        class="VariantManagement-title-0"
-        level="H4"
-      >
-        Variant 1
-      </ui5-title>
-      <ui5-button
-        design="Transparent"
-        icon="navigation-down-arrow"
-      />
-      <ui5-responsive-popover
-        header-text="Variants"
-        horizontal-align="Center"
-        placement-type="Bottom"
-        vertical-align="Center"
-      >
-        <ui5-button
-          class="VariantManagement-footer-0"
-          design="Emphasized"
-          slot="footer"
+      <div>
+        <div
+          class="VariantManagement-container-0"
         >
-          Cancel
-        </ui5-button>
-        <ui5-list
-          mode="SingleSelect"
-          separators="All"
-        >
-          <ui5-li
-            data-key="1"
-            info-state="None"
-            selected="true"
-            style="width: 300px;"
-            type="Active"
+          <ui5-title
+            class="VariantManagement-title-0"
+            level="H4"
           >
             Variant 1
-          </ui5-li>
-          <ui5-li
-            data-key="2"
-            info-state="None"
-            style="width: 300px;"
-            type="Active"
+          </ui5-title>
+          <ui5-button
+            design="Transparent"
+            icon="navigation-down-arrow"
+          />
+          <ui5-responsive-popover
+            header-text="Variants"
+            horizontal-align="Center"
+            placement-type="Bottom"
+            vertical-align="Center"
           >
-            Variant 2
-          </ui5-li>
-        </ui5-list>
-      </ui5-responsive-popover>
-    </div>
-    <div
-      class="FilterBar-vLine-0"
-    >
-      <ui5-input
-        placeholder="Search"
-        type="Text"
-        value=""
-        value-state="None"
+            <ui5-button
+              class="VariantManagement-footer-0"
+              design="Emphasized"
+              slot="footer"
+            >
+              Cancel
+            </ui5-button>
+            <ui5-list
+              mode="SingleSelect"
+              separators="All"
+            >
+              <ui5-li
+                data-key="1"
+                info-state="None"
+                selected="true"
+                style="width: 300px;"
+                type="Active"
+              >
+                Variant 1
+              </ui5-li>
+              <ui5-li
+                data-key="2"
+                info-state="None"
+                style="width: 300px;"
+                type="Active"
+              >
+                Variant 2
+              </ui5-li>
+            </ui5-list>
+          </ui5-responsive-popover>
+        </div>
+      </div>
+      <div>
+        <div
+          class="ToolbarSeparator-separator-0"
+        />
+        <div>
+          <ui5-input
+            placeholder="Search"
+            type="Text"
+            value=""
+            value-state="None"
+          />
+        </div>
+      </div>
+      <span
+        class="spacer"
+        style="flex-grow: 1;"
       />
-    </div>
-    <div
-      class="FilterBar-headerRowRight-0"
-    >
-      <ui5-button
-        design="Transparent"
-      >
-        Clear
-      </ui5-button>
-      <ui5-button
-        design="Transparent"
-      >
-        Restore
-      </ui5-button>
-      <ui5-button
-        class="FilterBar-showFiltersBtn-0"
-        design="Transparent"
-      >
-        Hide Filter Bar
-      </ui5-button>
-      <ui5-button
-        design="Default"
-      >
-        Filters (1337)
-      </ui5-button>
-      <ui5-button
-        design="Emphasized"
-      >
-        Go
-      </ui5-button>
+      <div>
+        <ui5-button
+          design="Transparent"
+        >
+          Clear
+        </ui5-button>
+        <ui5-button
+          design="Transparent"
+        >
+          Restore
+        </ui5-button>
+        <ui5-button
+          class="FilterBar-showFiltersBtn-0"
+          design="Transparent"
+        >
+          Hide Filter Bar
+        </ui5-button>
+        <ui5-button
+          design="Default"
+        >
+          Filters (1337)
+        </ui5-button>
+        <ui5-button
+          design="Emphasized"
+        >
+          Go
+        </ui5-button>
+      </div>
     </div>
   </div>
   <div
@@ -800,97 +823,108 @@ Array [
     class="FilterBar-outerContainer-0"
   >
     <div
-      class="FilterBar-filterBarHeader-0"
+      class="Toolbar-outerContainer-0 Toolbar-clear-0 FilterBar-filterBarHeader-0"
     >
       <div
-        class="VariantManagement-container-0"
+        class="Toolbar-toolbar-0"
       >
-        <ui5-title
-          class="VariantManagement-title-0"
-          level="H4"
-        >
-          Variant 1
-        </ui5-title>
-        <ui5-button
-          design="Transparent"
-          icon="navigation-down-arrow"
-        />
-        <ui5-responsive-popover
-          header-text="Variants"
-          horizontal-align="Center"
-          placement-type="Bottom"
-          vertical-align="Center"
-        >
-          <ui5-button
-            class="VariantManagement-footer-0"
-            design="Emphasized"
-            slot="footer"
+        <div>
+          <div
+            class="VariantManagement-container-0"
           >
-            Cancel
-          </ui5-button>
-          <ui5-list
-            mode="SingleSelect"
-            separators="All"
-          >
-            <ui5-li
-              data-key="1"
-              info-state="None"
-              selected="true"
-              style="width: 300px;"
-              type="Active"
+            <ui5-title
+              class="VariantManagement-title-0"
+              level="H4"
             >
               Variant 1
-            </ui5-li>
-            <ui5-li
-              data-key="2"
-              info-state="None"
-              style="width: 300px;"
-              type="Active"
+            </ui5-title>
+            <ui5-button
+              design="Transparent"
+              icon="navigation-down-arrow"
+            />
+            <ui5-responsive-popover
+              header-text="Variants"
+              horizontal-align="Center"
+              placement-type="Bottom"
+              vertical-align="Center"
             >
-              Variant 2
-            </ui5-li>
-          </ui5-list>
-        </ui5-responsive-popover>
-      </div>
-      <div
-        class="FilterBar-vLine-0"
-      >
-        <ui5-input
-          placeholder="Search"
-          type="Text"
-          value=""
-          value-state="None"
+              <ui5-button
+                class="VariantManagement-footer-0"
+                design="Emphasized"
+                slot="footer"
+              >
+                Cancel
+              </ui5-button>
+              <ui5-list
+                mode="SingleSelect"
+                separators="All"
+              >
+                <ui5-li
+                  data-key="1"
+                  info-state="None"
+                  selected="true"
+                  style="width: 300px;"
+                  type="Active"
+                >
+                  Variant 1
+                </ui5-li>
+                <ui5-li
+                  data-key="2"
+                  info-state="None"
+                  style="width: 300px;"
+                  type="Active"
+                >
+                  Variant 2
+                </ui5-li>
+              </ui5-list>
+            </ui5-responsive-popover>
+          </div>
+        </div>
+        <div>
+          <div
+            class="ToolbarSeparator-separator-0"
+          />
+          <div>
+            <ui5-input
+              placeholder="Search"
+              type="Text"
+              value=""
+              value-state="None"
+            />
+          </div>
+        </div>
+        <span
+          class="spacer"
+          style="flex-grow: 1;"
         />
-      </div>
-      <div
-        class="FilterBar-headerRowRight-0"
-      >
-        <ui5-button
-          design="Transparent"
-        >
-          Clear
-        </ui5-button>
-        <ui5-button
-          design="Transparent"
-        >
-          Restore
-        </ui5-button>
-        <ui5-button
-          class="FilterBar-showFiltersBtn-0"
-          design="Transparent"
-        >
-          Hide Filter Bar
-        </ui5-button>
-        <ui5-button
-          design="Default"
-        >
-          Filters (1337)
-        </ui5-button>
-        <ui5-button
-          design="Emphasized"
-        >
-          Go
-        </ui5-button>
+        <div>
+          <ui5-button
+            design="Transparent"
+          >
+            Clear
+          </ui5-button>
+          <ui5-button
+            design="Transparent"
+          >
+            Restore
+          </ui5-button>
+          <ui5-button
+            class="FilterBar-showFiltersBtn-0"
+            design="Transparent"
+          >
+            Hide Filter Bar
+          </ui5-button>
+          <ui5-button
+            design="Default"
+          >
+            Filters (1337)
+          </ui5-button>
+          <ui5-button
+            design="Emphasized"
+          >
+            Go
+          </ui5-button>
+        </div>
       </div>
     </div>
     <div
@@ -1101,97 +1135,108 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
   class="FilterBar-outerContainer-0"
 >
   <div
-    class="FilterBar-filterBarHeader-0"
+    class="Toolbar-outerContainer-0 Toolbar-clear-0 FilterBar-filterBarHeader-0"
   >
     <div
-      class="VariantManagement-container-0"
+      class="Toolbar-toolbar-0"
     >
-      <ui5-title
-        class="VariantManagement-title-0"
-        level="H4"
-      >
-        Variant 1
-      </ui5-title>
-      <ui5-button
-        design="Transparent"
-        icon="navigation-down-arrow"
-      />
-      <ui5-responsive-popover
-        header-text="Variants"
-        horizontal-align="Center"
-        placement-type="Bottom"
-        vertical-align="Center"
-      >
-        <ui5-button
-          class="VariantManagement-footer-0"
-          design="Emphasized"
-          slot="footer"
+      <div>
+        <div
+          class="VariantManagement-container-0"
         >
-          Cancel
-        </ui5-button>
-        <ui5-list
-          mode="SingleSelect"
-          separators="All"
-        >
-          <ui5-li
-            data-key="1"
-            info-state="None"
-            selected="true"
-            style="width: 300px;"
-            type="Active"
+          <ui5-title
+            class="VariantManagement-title-0"
+            level="H4"
           >
             Variant 1
-          </ui5-li>
-          <ui5-li
-            data-key="2"
-            info-state="None"
-            style="width: 300px;"
-            type="Active"
+          </ui5-title>
+          <ui5-button
+            design="Transparent"
+            icon="navigation-down-arrow"
+          />
+          <ui5-responsive-popover
+            header-text="Variants"
+            horizontal-align="Center"
+            placement-type="Bottom"
+            vertical-align="Center"
           >
-            Variant 2
-          </ui5-li>
-        </ui5-list>
-      </ui5-responsive-popover>
-    </div>
-    <div
-      class="FilterBar-vLine-0"
-    >
-      <ui5-input
-        placeholder="Search"
-        type="Text"
-        value=""
-        value-state="None"
+            <ui5-button
+              class="VariantManagement-footer-0"
+              design="Emphasized"
+              slot="footer"
+            >
+              Cancel
+            </ui5-button>
+            <ui5-list
+              mode="SingleSelect"
+              separators="All"
+            >
+              <ui5-li
+                data-key="1"
+                info-state="None"
+                selected="true"
+                style="width: 300px;"
+                type="Active"
+              >
+                Variant 1
+              </ui5-li>
+              <ui5-li
+                data-key="2"
+                info-state="None"
+                style="width: 300px;"
+                type="Active"
+              >
+                Variant 2
+              </ui5-li>
+            </ui5-list>
+          </ui5-responsive-popover>
+        </div>
+      </div>
+      <div>
+        <div
+          class="ToolbarSeparator-separator-0"
+        />
+        <div>
+          <ui5-input
+            placeholder="Search"
+            type="Text"
+            value=""
+            value-state="None"
+          />
+        </div>
+      </div>
+      <span
+        class="spacer"
+        style="flex-grow: 1;"
       />
-    </div>
-    <div
-      class="FilterBar-headerRowRight-0"
-    >
-      <ui5-button
-        design="Transparent"
-      >
-        Clear
-      </ui5-button>
-      <ui5-button
-        design="Transparent"
-      >
-        Restore
-      </ui5-button>
-      <ui5-button
-        class="FilterBar-showFiltersBtn-0"
-        design="Transparent"
-      >
-        Hide Filter Bar
-      </ui5-button>
-      <ui5-button
-        design="Default"
-      >
-        Filters (1337)
-      </ui5-button>
-      <ui5-button
-        design="Emphasized"
-      >
-        Go
-      </ui5-button>
+      <div>
+        <ui5-button
+          design="Transparent"
+        >
+          Clear
+        </ui5-button>
+        <ui5-button
+          design="Transparent"
+        >
+          Restore
+        </ui5-button>
+        <ui5-button
+          class="FilterBar-showFiltersBtn-0"
+          design="Transparent"
+        >
+          Hide Filter Bar
+        </ui5-button>
+        <ui5-button
+          design="Default"
+        >
+          Filters (1337)
+        </ui5-button>
+        <ui5-button
+          design="Emphasized"
+        >
+          Go
+        </ui5-button>
+      </div>
     </div>
   </div>
   <div
