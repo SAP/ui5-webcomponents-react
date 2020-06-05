@@ -192,9 +192,6 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
           {actionsToRender.map((action, index) => {
             return (
               <Button
-                style={{
-                  minWidth: '4rem'
-                }}
                 key={action}
                 design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
                 onClick={handleOnClose}

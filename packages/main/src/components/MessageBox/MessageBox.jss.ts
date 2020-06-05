@@ -63,7 +63,8 @@ const style = {
       margin: '0 0.25rem'
     },
     '& > ui5-button': {
-      display: 'flex'
+      display: 'flex',
+      minWidth: '4rem'
     }
   }
 };
