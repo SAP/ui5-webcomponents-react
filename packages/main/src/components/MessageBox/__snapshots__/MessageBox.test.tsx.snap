@@ -25,14 +25,12 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      style="min-width: 4rem;"
     >
       OK
     </ui5-button>
     <ui5-button
       data-action="Cancel"
       design="Transparent"
-      style="min-width: 4rem;"
     >
       Cancel
     </ui5-button>
@@ -70,14 +68,12 @@ exports[`MessageBox Confirm - OK 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      style="min-width: 4rem;"
     >
       OK
     </ui5-button>
     <ui5-button
       data-action="Cancel"
       design="Transparent"
-      style="min-width: 4rem;"
     >
       Cancel
     </ui5-button>
@@ -115,7 +111,6 @@ exports[`MessageBox Error 1`] = `
     <ui5-button
       data-action="Close"
       design="Emphasized"
-      style="min-width: 4rem;"
     >
       Close
     </ui5-button>
@@ -153,7 +148,6 @@ exports[`MessageBox Information 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      style="min-width: 4rem;"
     >
       OK
     </ui5-button>
@@ -191,14 +185,12 @@ exports[`MessageBox No Title 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      style="min-width: 4rem;"
     >
       OK
     </ui5-button>
     <ui5-button
       data-action="Cancel"
       design="Transparent"
-      style="min-width: 4rem;"
     >
       Cancel
     </ui5-button>
@@ -234,7 +226,6 @@ exports[`MessageBox Not open 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      style="min-width: 4rem;"
     >
       OK
     </ui5-button>
@@ -272,14 +263,12 @@ exports[`MessageBox Show 1`] = `
     <ui5-button
       data-action="Yes"
       design="Emphasized"
-      style="min-width: 4rem;"
     >
       Yes
     </ui5-button>
     <ui5-button
       data-action="No"
       design="Transparent"
-      style="min-width: 4rem;"
     >
       No
     </ui5-button>
@@ -317,7 +306,6 @@ exports[`MessageBox Success 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      style="min-width: 4rem;"
     >
       OK
     </ui5-button>
@@ -355,7 +343,6 @@ exports[`MessageBox Success w/ custom title 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      style="min-width: 4rem;"
     >
       OK
     </ui5-button>
@@ -393,7 +380,6 @@ exports[`MessageBox Warning 1`] = `
     <ui5-button
       data-action="OK"
       design="Emphasized"
-      style="min-width: 4rem;"
     >
       OK
     </ui5-button>
