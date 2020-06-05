@@ -12,17 +12,21 @@ export const defaultStory = (props) => (
 
 defaultStory.storyName = 'Default';
 
-export const withCustomActions = () => (
+export const withCustomActions = (props) => (
   <MessageBox
-    type={select('type', Object.values(MessageBoxTypes), MessageBoxTypes.CONFIRM)}
-    open={boolean('open', true)}
-    onClose={action('onClose')}
-    title={text('title', 'A Custom Message Box Title')}
+    type={props.type}
+    open={props.open}
+    onClose={props.onClose}
+    title={props.title}
     actions={[MessageBoxActions.OK, 'A custom action', MessageBoxActions.CANCEL]}
   >
     Message Box Content
   </MessageBox>
 );
+
+withCustomActions.args = {
+  title: 'A Custom Message Box Title'
+};
 
 export default {
   title: 'Components / MessageBox',
