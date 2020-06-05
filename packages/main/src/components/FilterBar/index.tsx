@@ -11,10 +11,15 @@ import {
   RESTORE,
   SHOW_FILTER_BAR
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
 import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
+import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
+import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
+import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import React, {
   Children,
   cloneElement,
@@ -30,7 +35,6 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './FilterBar.jss';
 import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue } from './utils';
@@ -334,15 +338,17 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           <BusyIndicator active className={classes.loadingContainer} size={BusyIndicatorSize.Large} />
         ) : (
           <>
-            <div className={classes.filterBarHeader}>
+            <Toolbar className={classes.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
               {variants}
               {search && (
-                <div className={classes.vLine} ref={searchRef}>
-                  {renderSearchWithValue(search, searchValue)}
-                </div>
+                <>
+                  <ToolbarSeparator />
+                  <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>
+                </>
               )}
+              <ToolbarSpacer />
               {useToolbar && (
-                <div className={classes.headerRowRight}>
+                <>
                   {showClearOnFB && (
                     <Button onClick={onClear} design={ButtonDesign.Transparent}>
                       {clearText}
@@ -353,9 +359,11 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                       {restoreText}
                     </Button>
                   )}
-                  <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
-                    {showFilters ? hideFilterBarText : showFilterBarText}
-                  </Button>
+                  {
+                    <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
+                      {showFilters ? hideFilterBarText : showFilterBarText}
+                    </Button>
+                  }
                   {showFilterConfiguration && (
                     <Button onClick={handleDialogOpen}>
                       {`${filtersText}${
@@ -370,9 +378,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
                       {goText}
                     </Button>
                   )}
-                </div>
+                </>
               )}
-            </div>
+            </Toolbar>
             {mountFilters && <div className={filterAreaClasses.valueOf()}>{renderChildren()}</div>}
           </>
         )}

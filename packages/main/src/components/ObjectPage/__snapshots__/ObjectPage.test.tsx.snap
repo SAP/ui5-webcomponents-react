@@ -11,15 +11,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
     role="banner"
     style="padding-right: 12px;"
   >
-    <span
-      class="ObjectPage-actions-0"
-    >
-      <ui5-button
-        design="Default"
-      >
-        Action
-      </ui5-button>
-    </span>
     <header
       class="ObjectPage-titleBar-0"
     >
@@ -46,6 +37,25 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             <div
               class="ObjectPage-keyInfos-0"
             />
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer-0 Toolbar-clear-0 Toolbar-transparent-0"
+        >
+          <div
+            class="Toolbar-toolbar-0"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
+            />
+            <div>
+              <ui5-button
+                design="Default"
+              >
+                Action
+              </ui5-button>
+            </div>
           </div>
         </div>
       </div>
@@ -187,9 +197,6 @@ exports[`ObjectPage Just Some Sections 1`] = `
     role="banner"
     style="padding-right: 12px;"
   >
-    <span
-      class="ObjectPage-actions-0"
-    />
     <header
       class="ObjectPage-titleBar-0"
     >
@@ -211,6 +218,18 @@ exports[`ObjectPage Just Some Sections 1`] = `
             />
             <div
               class="ObjectPage-keyInfos-0"
+            />
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer-0 Toolbar-clear-0 Toolbar-transparent-0"
+        >
+          <div
+            class="Toolbar-toolbar-0"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
             />
           </div>
         </div>
@@ -295,9 +314,6 @@ exports[`ObjectPage Key Infos 1`] = `
     role="banner"
     style="padding-right: 12px;"
   >
-    <span
-      class="ObjectPage-actions-0"
-    />
     <header
       class="ObjectPage-titleBar-0"
     >
@@ -385,6 +401,18 @@ exports[`ObjectPage Key Infos 1`] = `
                 </span>
               </div>
             </div>
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer-0 Toolbar-clear-0 Toolbar-transparent-0"
+        >
+          <div
+            class="Toolbar-toolbar-0"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
+            />
           </div>
         </div>
       </div>
@@ -491,9 +519,6 @@ exports[`ObjectPage No Header 1`] = `
     role="banner"
     style="padding-right: 12px;"
   >
-    <span
-      class="ObjectPage-actions-0"
-    />
     <header
       class="ObjectPage-titleBar-0"
     >
@@ -515,6 +540,18 @@ exports[`ObjectPage No Header 1`] = `
             />
             <div
               class="ObjectPage-keyInfos-0"
+            />
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer-0 Toolbar-clear-0 Toolbar-transparent-0"
+        >
+          <div
+            class="Toolbar-toolbar-0"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
             />
           </div>
         </div>
@@ -622,9 +659,6 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
     role="banner"
     style="padding-right: 12px;"
   >
-    <span
-      class="ObjectPage-actions-0"
-    />
     <header
       class="ObjectPage-titleBar-0"
     >
@@ -646,6 +680,18 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
             />
             <div
               class="ObjectPage-keyInfos-0"
+            />
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer-0 Toolbar-clear-0 Toolbar-transparent-0"
+        >
+          <div
+            class="Toolbar-toolbar-0"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
             />
           </div>
         </div>
@@ -693,9 +739,6 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
     role="banner"
     style="padding-right: 12px;"
   >
-    <span
-      class="ObjectPage-actions-0"
-    />
     <header
       class="ObjectPage-titleBar-0"
     >
@@ -717,6 +760,18 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
             />
             <div
               class="ObjectPage-keyInfos-0"
+            />
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer-0 Toolbar-clear-0 Toolbar-transparent-0"
+        >
+          <div
+            class="Toolbar-toolbar-0"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
             />
           </div>
         </div>
@@ -795,9 +850,6 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
     role="banner"
     style="padding-right: 12px;"
   >
-    <span
-      class="ObjectPage-actions-0"
-    />
     <header
       class="ObjectPage-titleBar-0"
     >
@@ -819,6 +871,18 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
             />
             <div
               class="ObjectPage-keyInfos-0"
+            />
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer-0 Toolbar-clear-0 Toolbar-transparent-0"
+        >
+          <div
+            class="Toolbar-toolbar-0"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
             />
           </div>
         </div>
@@ -897,15 +961,6 @@ exports[`ObjectPage Only Sections 1`] = `
     role="banner"
     style="padding-right: 12px;"
   >
-    <span
-      class="ObjectPage-actions-0"
-    >
-      <ui5-button
-        design="Default"
-      >
-        Action
-      </ui5-button>
-    </span>
     <header
       class="ObjectPage-titleBar-0"
     >
@@ -932,6 +987,25 @@ exports[`ObjectPage Only Sections 1`] = `
             <div
               class="ObjectPage-keyInfos-0"
             />
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer-0 Toolbar-clear-0 Toolbar-transparent-0"
+        >
+          <div
+            class="Toolbar-toolbar-0"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
+            />
+            <div>
+              <ui5-button
+                design="Default"
+              >
+                Action
+              </ui5-button>
+            </div>
           </div>
         </div>
       </div>
@@ -1109,9 +1183,6 @@ exports[`ObjectPage Set selected section id 1`] = `
     role="banner"
     style="padding-right: 12px;"
   >
-    <span
-      class="ObjectPage-actions-0"
-    />
     <header
       class="ObjectPage-titleBar-0"
     >
@@ -1133,6 +1204,18 @@ exports[`ObjectPage Set selected section id 1`] = `
             />
             <div
               class="ObjectPage-keyInfos-0"
+            />
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer-0 Toolbar-clear-0 Toolbar-transparent-0"
+        >
+          <div
+            class="Toolbar-toolbar-0"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
             />
           </div>
         </div>
@@ -1217,15 +1300,6 @@ exports[`ObjectPage With Subsections 1`] = `
     role="banner"
     style="padding-right: 12px;"
   >
-    <span
-      class="ObjectPage-actions-0"
-    >
-      <ui5-button
-        design="Default"
-      >
-        Action
-      </ui5-button>
-    </span>
     <header
       class="ObjectPage-titleBar-0"
     >
@@ -1252,6 +1326,25 @@ exports[`ObjectPage With Subsections 1`] = `
             <div
               class="ObjectPage-keyInfos-0"
             />
+          </div>
+        </div>
+        <div
+          class="Toolbar-outerContainer-0 Toolbar-clear-0 Toolbar-transparent-0"
+        >
+          <div
+            class="Toolbar-toolbar-0"
+          >
+            <span
+              class="spacer"
+              style="flex-grow: 1;"
+            />
+            <div>
+              <ui5-button
+                design="Default"
+              >
+                Action
+              </ui5-button>
+            </div>
           </div>
         </div>
       </div>

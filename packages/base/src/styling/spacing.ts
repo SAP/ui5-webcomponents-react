@@ -152,9 +152,28 @@ export const sapUiResponsiveMargin = {
   '@media (min-width:600px) and (max-width:1023px)': {
     margin: '1rem !important'
   },
-  '@media (min-width:1024px)': {
+  '@media (min-width:1024px) and (max-width: 1439px)': {
     margin: '1rem 2rem !important'
+  },
+  '@media (min-width:1440px)': {
+    margin: '1rem 3rem !important'
   }
+};
+
+export const sapUiTinyNegativeMarginBeginEnd = {
+  margin: '0 -0.5rem !important'
+};
+
+export const sapUiSmallNegativeMarginBeginEnd = {
+  margin: '0 -1rem !important'
+};
+
+export const sapUiMediumNegativeMarginBeginEnd = {
+  margin: '0 -2rem !important'
+};
+
+export const sapUiLargeNegativeMarginBeginEnd = {
+  margin: '0 -3rem !important'
 };
 
 /*
@@ -171,14 +190,38 @@ export const sapUiContentPadding = {
   padding: '1rem'
 };
 
+// Two Sided Padding
+export const sapUiTinyPaddingBeginEnd = {
+  paddingLeft: '0.5rem !important',
+  paddingRight: '0.5rem !important'
+};
+
+export const sapUiSmallPaddingBeginEnd = {
+  paddingLeft: '1rem !important',
+  paddingRight: '1rem !important'
+};
+
+export const sapUiMediumPaddingBeginEnd = {
+  paddingLeft: '2rem !important',
+  paddingRight: '2rem !important'
+};
+
+export const sapUiLargePaddingBeginEnd = {
+  paddingLeft: '3rem !important',
+  paddingRight: '3rem !important'
+};
+
 export const sapUiResponsiveContentPadding = {
   '@media(max-width:599px)': {
-    padding: '0'
+    padding: '0 1rem'
   },
   '@media (min-width:600px) and (max-width:1023px)': {
-    padding: '1rem'
+    padding: '0 2rem'
   },
-  '@media (min-width:1024px)': {
-    padding: '1rem 2rem !important'
+  '@media (min-width:1024px) and (max-width: 1439px)': {
+    padding: '0 2rem !important'
+  },
+  '@media (min-width:1440px)': {
+    padding: '0 3rem !important'
   }
 };

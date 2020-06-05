@@ -4,6 +4,10 @@ import { FlexBoxDirection } from '@ui5/webcomponents-react/lib/FlexBoxDirection'
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
+import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
+import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
+import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
+import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import React, { CSSProperties, forwardRef, ReactElement, ReactNode, RefObject, useMemo } from 'react';
 import { safeGetChildrenArray } from './ObjectPageUtils';
 
@@ -19,6 +23,7 @@ interface Props {
   subTitle: string;
   headerPinned: boolean;
   topHeaderHeight: number;
+  headerActions: ReactElement<unknown>[];
 }
 
 export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDivElement>) => {
@@ -33,7 +38,8 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
     subTitle,
     keyInfos,
     headerPinned,
-    topHeaderHeight
+    topHeaderHeight,
+    headerActions
   } = props;
 
   const avatar = useMemo(() => {
@@ -109,6 +115,10 @@ export const ObjectPageHeader = forwardRef((props: Props, ref: RefObject<HTMLDiv
               <div className={classes.keyInfos}>{keyInfos}</div>
             </FlexBox>
           </FlexBox>
+          <Toolbar toolbarStyle={ToolbarStyle.Clear} design={ToolbarDesign.Transparent}>
+            <ToolbarSpacer />
+            {headerActions}
+          </Toolbar>
         </FlexBox>
       </>
     );
