@@ -38,9 +38,7 @@ export const renderStory = (props) => {
   );
 };
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export const withSpacerAndSeparator = (props) => {
   return (
@@ -69,9 +67,7 @@ export const withSpacerAndSeparator = (props) => {
   );
 };
 
-withSpacerAndSeparator.story = {
-  name: 'with spacer and separator'
-};
+withSpacerAndSeparator.storyName = 'with spacer and separator';
 
 export default {
   title: 'Components / Toolbar',

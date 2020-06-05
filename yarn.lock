@@ -17105,7 +17105,7 @@ react-display-name@^0.2.4:
   resolved "https://registry.yarnpkg.com/react-display-name/-/react-display-name-0.2.5.tgz#304c7cbfb59ee40389d436e1a822c17fe27936c6"
   integrity sha512-I+vcaK9t4+kypiSgaiVWAipqHRXYmZIuAiS8vzFvXHHXVigg/sMKwlRgLy6LH2i3rmP+0Vzfl5lFsFRwF1r3pg==
 
-react-docgen-typescript-loader@3.7.2, react-docgen-typescript-loader@^3.7.2:
+react-docgen-typescript-loader@^3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/react-docgen-typescript-loader/-/react-docgen-typescript-loader-3.7.2.tgz#45cb2305652c0602767242a8700ad1ebd66bbbbd"
   integrity sha512-fNzUayyUGzSyoOl7E89VaPKJk9dpvdSgyXg81cUkwy0u+NBvkzQG3FC5WBIlXda0k/iaxS+PWi+OC+tUiGxzPA==
