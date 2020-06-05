@@ -460,7 +460,7 @@ Array [
         Filters
       </ui5-title>
       <ui5-input
-        placeholder="Search for filters"
+        placeholder="Search for Filters"
         type="Text"
         value-state="None"
       >
