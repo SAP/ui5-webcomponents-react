@@ -38,5 +38,44 @@ import { Story, Props, Title, Subtitle, Description, Primary, Stories } from '@s
 |`hAlign`          | `TextAlign`                                                             |Horizontal align of the cell|
 |`vAlign`          | `VerticalAlign`                                                         |Vertical align of the cell|
 
+## Recipes
+
+### How do I stop my table state from automatically resetting when my data changes?
+
+
+By default, the `AnalyticalTable` will reset the sorters, filters, grouping, selected rows, etc. when the table data changes.
+In case you want to keep the current state of the Table, you can disable this behavior by using the `reactTableOptions` prop:
+```jsx
+const [data, setData] = React.useState([])
+const skipPageResetRef = React.useRef()
+
+const updateData = newData => {
+  // When data gets updated with this function, set a flag
+  // to disable all of the auto resetting
+  skipPageResetRef.current = true
+
+  setData(newData)
+}
+
+React.useEffect(() => {
+  // After the table has updated, always remove the flag
+  skipPageResetRef.current = false
+})
+<AnalyticalTable
+  columns={columns}
+  data={data}
+  reactTableOptions={{
+    // ... any other options you want to set
+    autoResetExpanded: !skipPageResetRef.current,
+    autoResetGroupBy: !skipPageResetRef.current,
+    autoResetSelectedRows: !skipPageResetRef.current,
+    autoResetSortBy: !skipPageResetRef.current,
+    autoResetFilters: !skipPageResetRef.current,
+  }}
+/>
+```
+
+For more details on this behavior you can double check the [react-table docs](https://github.com/tannerlinsley/react-table/blob/master/docs/faq.md#how-do-i-stop-my-table-state-from-automatically-resetting-when-my-data-changes).
+
 <Stories />
 
