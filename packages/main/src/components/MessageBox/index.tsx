@@ -54,7 +54,7 @@ export interface MessageBoxPropTypes extends CommonProps {
   open?: boolean;
   title?: string;
   children: string;
-  actions?: MessageBoxActions[];
+  actions?: (MessageBoxActions | string)[];
   icon?: ReactNode;
   type?: MessageBoxTypes;
   onClose: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
@@ -200,7 +200,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
                 onClick={handleOnClose}
                 data-action={action}
               >
-                {actionTranslations[actionTextMap.get(action)]}
+                {actionTextMap.has(action) ? actionTranslations[actionTextMap.get(action)] : action}
               </Button>
             );
           })}

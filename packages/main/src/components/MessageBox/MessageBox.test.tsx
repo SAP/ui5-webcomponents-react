@@ -1,4 +1,5 @@
 import { createPassThroughPropsTest, getEventFromCallback } from '@shared/tests/utils';
+import { render, screen, fireEvent } from '@tests/index';
 import { mount } from 'enzyme';
 import { MessageBox } from '@ui5/webcomponents-react/lib/MessageBox';
 import { MessageBoxActions } from '@ui5/webcomponents-react/lib/MessageBoxActions';
@@ -142,6 +143,26 @@ describe('MessageBox', () => {
       </MessageBox>
     );
     expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  test('Custom Action Text', async () => {
+    const onClose = jest.fn();
+    render(
+      <MessageBox type={MessageBoxTypes.CONFIRM} actions={[MessageBoxActions.OK, 'My Custom Action']} onClose={onClose}>
+        My Message Box Content
+      </MessageBox>
+    );
+
+    const textOK = screen.getByText(MessageBoxActions.OK);
+    expect(textOK).toBeInTheDocument();
+    let customAction = screen.getByText('My Custom Action');
+    expect(customAction).toBeInTheDocument();
+
+    fireEvent.click(textOK);
+    fireEvent.click(customAction);
+
+    expect(onClose.mock.calls[0][0].detail.action).toEqual(MessageBoxActions.OK);
+    expect(onClose.mock.calls[1][0].detail.action).toEqual('My Custom Action');
   });
 
   createPassThroughPropsTest(MessageBox);
