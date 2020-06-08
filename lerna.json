@@ -7,14 +7,14 @@
   "useWorkspaces": true,
   "command": {
     "version": {
-      "allowBranch": "rel/0.9.x",
+      "allowBranch": "rel/0.100.x",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
       "message": "chore(release): publish %s\n\nskip-checks: true"
     },
     "publish": {
-      "allowBranch": "rel/0.9.x",
+      "allowBranch": "rel/0.100.x",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
