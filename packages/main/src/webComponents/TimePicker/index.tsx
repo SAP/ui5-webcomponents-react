@@ -1,7 +1,7 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/TimePicker';
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
@@ -34,6 +34,12 @@ export interface TimePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   valueState?: ValueState;
   /**
+   * Defines the value state message that will be displayed as pop up under the <code>ui5-timepicker</code>. <br><br><br/><br/>
+   *
+   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-timepicker</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   */
+  valueStateMessage?: ReactNode;
+  /**
    * Fired when the input operation has finished by clicking the "OK" button or when the text in the input field has changed and the focus leaves the input field.
    */
   onChange?: (event: CustomEvent<{}>) => void;
@@ -52,7 +58,7 @@ const TimePicker: FC<TimePickerPropTypes> = withWebComponent<TimePickerPropTypes
   'ui5-timepicker',
   ['formatPattern', 'placeholder', 'value', 'valueState'],
   ['disabled', 'readonly'],
-  [],
+  ['valueStateMessage'],
   ['change', 'input']
 );
 

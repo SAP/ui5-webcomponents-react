@@ -59,7 +59,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    */
   icon?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>ui5-input</code>. <br><br>
+   * Defines the value state message that will be displayed as pop up under the <code>ui5-input</code>. <br><br><br/><br/>
    *
    * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-input</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state. <br> <b>Note:</b> If the <code>ui5-input</code> has <code>suggestionItems</code>, the <code>valueStateMessage</code> would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    */
@@ -92,7 +92,7 @@ const Input: FC<InputPropTypes> = withWebComponent<InputPropTypes>(
   ['maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'readonly', 'required', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
-  ['change', 'input', 'submit', 'suggestionItemSelect']
+  ['change', 'input', 'submit', 'suggestion-item-select']
 );
 
 Input.displayName = 'Input';

@@ -12,17 +12,9 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
    */
   allowTargetOverlap?: boolean;
   /**
-   * Defines the header text. <br><br> <b>Note:</b> If <code>header</code> slot is provided, the <code>headerText</code> is ignored.
-   */
-  headerText?: string;
-  /**
    * Determines the horizontal alignment of the <code>ui5-popover</code>. <br><br> Available options are: <ul> <li><code>Center</code></li> <li><code>Left</code></li> <li><code>Right</code></li> <li><code>Stretch</code></li> </ul>
    */
   horizontalAlign?: PopoverHorizontalAlign;
-  /**
-   * Defines the ID of the HTML Element, which will get the initial focus.
-   */
-  initialFocus?: string;
   /**
    * Defines whether the <code>ui5-popover</code> should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
    */
@@ -39,6 +31,14 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
    * Determines the vertical alignment of the <code>ui5-popover</code>. <br><br> Available options are: <ul> <li><code>Center</code></li> <li><code>Top</code></li> <li><code>Bottom</code></li> <li><code>Stretch</code></li> </ul>
    */
   verticalAlign?: PopoverVerticalAlign;
+  /**
+   * Defines the header text. <br><br> <b>Note:</b> If <code>header</code> slot is provided, the <code>headerText</code> is ignored.
+   */
+  headerText?: string;
+  /**
+   * Defines the ID of the HTML Element, which will get the initial focus.
+   */
+  initialFocus?: string;
   /**
    * Defines the content of the Web Component.
    */
@@ -76,10 +76,10 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
  */
 const Popover: FC<PopoverPropTypes> = withWebComponent<PopoverPropTypes>(
   'ui5-popover',
-  ['headerText', 'horizontalAlign', 'initialFocus', 'placementType', 'verticalAlign'],
+  ['horizontalAlign', 'placementType', 'verticalAlign', 'headerText', 'initialFocus'],
   ['allowTargetOverlap', 'modal', 'noArrow'],
   ['footer', 'header'],
-  ['afterClose', 'afterOpen', 'beforeClose', 'beforeOpen']
+  ['after-close', 'after-open', 'before-close', 'before-open']
 );
 
 Popover.displayName = 'Popover';

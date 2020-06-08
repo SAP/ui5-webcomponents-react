@@ -88,7 +88,7 @@ const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(
   ['logo', 'notificationCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch'],
   ['menuItems', 'profile', 'searchField', 'startButton'],
-  ['coPilotClick', 'logoClick', 'menuItemClick', 'notificationsClick', 'productSwitchClick', 'profileClick']
+  ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click']
 );
 
 ShellBar.displayName = 'ShellBar';

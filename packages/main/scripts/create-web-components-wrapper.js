@@ -112,12 +112,7 @@ TagNames.set('ToggleButton', 'ui5-togglebutton');
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-const snakeToCamel = (str) => {
-  if (!str) {
-    debugger;
-  }
-  return str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
-};
+const snakeToCamel = (str) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
 const filterNonPublicAttributes = (prop) =>
   prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 

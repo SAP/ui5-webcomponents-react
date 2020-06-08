@@ -41,7 +41,7 @@ const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(
   ['maxDate', 'minDate', 'primaryCalendarType', 'selectedDates', 'timestamp'],
   [],
   [],
-  ['selectedDatesChange']
+  ['selected-dates-change']
 );
 
 Calendar.displayName = 'Calendar';

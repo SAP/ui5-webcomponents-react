@@ -24,7 +24,7 @@ const SegmentedButton: FC<SegmentedButtonPropTypes> = withWebComponent<Segmented
   [],
   [],
   [],
-  ['selectionChange']
+  ['selection-change']
 );
 
 SegmentedButton.displayName = 'SegmentedButton';

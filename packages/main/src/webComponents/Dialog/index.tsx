@@ -56,7 +56,7 @@ const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
   ['headerText', 'initialFocus'],
   ['stretch'],
   ['footer', 'header'],
-  ['afterClose', 'afterOpen', 'beforeClose', 'beforeOpen']
+  ['after-close', 'after-open', 'before-close', 'before-open']
 );
 
 Dialog.displayName = 'Dialog';

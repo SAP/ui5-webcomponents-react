@@ -32,7 +32,7 @@ const ShellBarItem: FC<ShellBarItemPropTypes> = withWebComponent<ShellBarItemPro
   ['count', 'icon', 'text'],
   [],
   [],
-  ['itemClick']
+  ['item-click']
 );
 
 ShellBarItem.displayName = 'ShellBarItem';

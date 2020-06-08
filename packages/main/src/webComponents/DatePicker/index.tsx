@@ -2,7 +2,7 @@ import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/DatePicker';
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
@@ -53,6 +53,12 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
    */
   valueState?: ValueState;
   /**
+   * Defines the value state message that will be displayed as pop up under the <code>ui5-datepicker</code>. <br><br><br/><br/>
+   *
+   * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-datepicker</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state.
+   */
+  valueStateMessage?: ReactNode;
+  /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
   onChange?: (event: CustomEvent<{}>) => void;
@@ -71,7 +77,7 @@ const DatePicker: FC<DatePickerPropTypes> = withWebComponent<DatePickerPropTypes
   'ui5-datepicker',
   ['formatPattern', 'maxDate', 'minDate', 'name', 'placeholder', 'primaryCalendarType', 'value', 'valueState'],
   ['disabled', 'readonly'],
-  [],
+  ['valueStateMessage'],
   ['change', 'input']
 );
 

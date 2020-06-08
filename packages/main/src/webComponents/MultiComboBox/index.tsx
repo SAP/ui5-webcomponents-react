@@ -69,7 +69,7 @@ const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBox
   ['placeholder', 'value', 'valueState'],
   ['allowCustomValues', 'disabled', 'open', 'readonly', 'required'],
   [],
-  ['change', 'input', 'openChange', 'selectionChange']
+  ['change', 'input', 'open-change', 'selection-change']
 );
 
 MultiComboBox.displayName = 'MultiComboBox';

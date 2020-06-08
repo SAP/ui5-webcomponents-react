@@ -46,7 +46,7 @@ const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPro
   ['icon', 'itemName', 'subtitleText', 'titleText'],
   ['itemNameClickable'],
   [],
-  ['itemNameClick']
+  ['item-name-click']
 );
 
 TimelineItem.displayName = 'TimelineItem';

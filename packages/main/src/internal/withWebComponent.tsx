@@ -19,6 +19,7 @@ import { Ui5DomRef } from '../interfaces/Ui5DomRef';
 const capitalizeFirstLetter = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const toKebabCase = (s: string) => s.replace(/([A-Z])/g, (a, b) => `-${b.toLowerCase()}`);
+const snakeToCamel = (str) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
 
 export interface WithWebComponentPropTypes extends CommonProps, HTMLAttributes<HTMLElement> {
   ref?: Ref<any>;
@@ -92,7 +93,7 @@ export const withWebComponent = <T extends {}>(
     useEffect(
       () => {
         eventProperties.forEach((eventName) => {
-          const eventHandler = rest[`on${capitalizeFirstLetter(eventName)}`];
+          const eventHandler = rest[`on${capitalizeFirstLetter(snakeToCamel(eventName))}`];
           if (typeof eventHandler === 'function' && eventRegistry.current[eventName] !== eventHandler) {
             if (eventRegistry.current[eventName]) {
               ref.current.removeEventListener(eventName, eventRegistryWrapped.current[eventName]);
@@ -105,7 +106,7 @@ export const withWebComponent = <T extends {}>(
           }
         });
       },
-      eventProperties.map((eventName) => rest[`on${capitalizeFirstLetter(eventName)}`])
+      eventProperties.map((eventName) => rest[`on${capitalizeFirstLetter(snakeToCamel(eventName))}`])
     );
 
     // non web component related props, just pass them
@@ -113,7 +114,7 @@ export const withWebComponent = <T extends {}>(
       .filter(([key]) => !regularProperties.includes(key))
       .filter(([key]) => !slotProperties.includes(key))
       .filter(([key]) => !booleanProperties.includes(key))
-      .filter(([key]) => !eventProperties.map((val) => `on${capitalizeFirstLetter(val)}`).includes(key))
+      .filter(([key]) => !eventProperties.map((val) => `on${capitalizeFirstLetter(snakeToCamel(val))}`).includes(key))
       .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
 
     return (

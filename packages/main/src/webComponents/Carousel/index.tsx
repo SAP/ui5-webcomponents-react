@@ -18,6 +18,10 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
    */
   hideNavigation?: boolean;
   /**
+   * Defines when the <code>load-more</code> event is thrown. If not applied the event will not be thrown.
+   */
+  infiniteScrollOffset?: number;
+  /**
    * Sets the number of items per page on large size (more than 1024px). One item per page shown by default.
    */
   itemsPerPageL?: number;
@@ -38,6 +42,10 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
+   * Fired for the last items of the <code>ui5-carousel</code> if it is scrolled and the direction of scrolling is to the end. The number of items for which the event is thrown is controlled by the <code>infiniteScrollOffset</code> property.
+   */
+  onLoadMore?: (event: CustomEvent<{}>) => void;
+  /**
    * Fired whenever the <code>selectedIndex</code> changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the <code>items-per-page-l</code>, <code>items-per-page-m</code> and <code>items-per-page-s</code> properties.
    */
   onNavigate?: (event: CustomEvent<{ selectedIndex: number }>) => void;
@@ -50,10 +58,10 @@ export interface CarouselPropTypes extends WithWebComponentPropTypes {
  */
 const Carousel: FC<CarouselPropTypes> = withWebComponent<CarouselPropTypes>(
   'ui5-carousel',
-  ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS', 'selectedIndex'],
+  ['arrowsPlacement', 'infiniteScrollOffset', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS', 'selectedIndex'],
   ['cyclic', 'hideNavigation'],
   [],
-  ['navigate']
+  ['load-more', 'navigate']
 );
 
 Carousel.displayName = 'Carousel';
@@ -62,6 +70,7 @@ Carousel.defaultProps = {
   arrowsPlacement: CarouselArrowsPlacement.Content,
   cyclic: false,
   hideNavigation: false,
+  infiniteScrollOffset: 1,
   itemsPerPageL: 1,
   itemsPerPageM: 1,
   itemsPerPageS: 1,

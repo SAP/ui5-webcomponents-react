@@ -44,7 +44,7 @@ const Card: FC<CardPropTypes> = withWebComponent<CardPropTypes>(
   ['heading', 'status', 'subheading'],
   ['headerInteractive'],
   ['avatar'],
-  ['headerClick']
+  ['header-click']
 );
 
 Card.displayName = 'Card';
