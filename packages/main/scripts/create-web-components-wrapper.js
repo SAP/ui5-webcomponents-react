@@ -19,9 +19,11 @@ const PRIVATE_COMPONENTS = new Set([
   'ListItemBase',
   'MessageBundleAssets',
   'MonthPicker',
+  'NotificationListItemBase',
   'Popup',
   'TabBase',
   'ThemePropertiesProvider',
+  'TreeListItem',
   'YearPicker',
   'WheelSlider'
 ]);
@@ -70,12 +72,16 @@ TagNames.set('List', 'ui5-list');
 TagNames.set('MessageStrip', 'ui5-messagestrip');
 TagNames.set('MultiComboBox', 'ui5-multi-combobox');
 TagNames.set('MultiComboBoxItem', 'ui5-mcb-item');
+TagNames.set('NotificationListGroupItem', 'ui5-li-notification-group');
+TagNames.set('NotificationListItem', 'ui5-li-notification');
+TagNames.set('NotificationOverflowAction', 'ui5-notification-overflow-action');
 TagNames.set('Option', 'ui5-option');
 TagNames.set('Panel', 'ui5-panel');
 TagNames.set('Popover', 'ui5-popover');
 TagNames.set('ProductSwitch', 'ui5-product-switch');
 TagNames.set('ProductSwitchItem', 'ui5-product-switch-item');
 TagNames.set('RadioButton', 'ui5-radiobutton');
+TagNames.set('RatingIndicator', 'ui5-rating-indicator');
 TagNames.set('ResponsivePopover', 'ui5-responsive-popover');
 TagNames.set('SegmentedButton', 'ui5-segmentedbutton');
 TagNames.set('Select', 'ui5-select');
@@ -95,6 +101,8 @@ TagNames.set('TextArea', 'ui5-textarea');
 TagNames.set('Timeline', 'ui5-timeline');
 TagNames.set('TimelineItem', 'ui5-timeline-item');
 TagNames.set('TimePicker', 'ui5-timepicker');
+TagNames.set('Tree', 'ui5-tree');
+TagNames.set('TreeItem', 'ui5-tree-item');
 TagNames.set('Title', 'ui5-title');
 TagNames.set('Toast', 'ui5-toast');
 TagNames.set('UploadCollection', 'ui5-upload-collection');
@@ -104,6 +112,12 @@ TagNames.set('ToggleButton', 'ui5-togglebutton');
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+const snakeToCamel = (str) => {
+  if (!str) {
+    debugger;
+  }
+  return str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
+};
 const filterNonPublicAttributes = (prop) =>
   prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 
@@ -124,6 +138,7 @@ const getTypeScriptTypeForProperty = (property) => {
     case 'number':
     case 'Number':
     case 'Integer':
+    case 'Float':
       return {
         importStatement: null,
         tsType: 'number'
@@ -276,6 +291,12 @@ const getTypeScriptTypeForProperty = (property) => {
       return {
         importStatement: "import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';",
         tsType: 'PopoverVerticalAlign',
+        isEnum: true
+      };
+    case 'Priority':
+      return {
+        importStatement: "import { Priority } from '@ui5/webcomponents-react/lib/Priority';",
+        tsType: 'Priority',
         isEnum: true
       };
     case 'SemanticColor':
@@ -478,7 +499,10 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
     });
 
   const eventProps = (componentSpec.events || []).map(
-    (event) => `on${capitalizeFirstLetter(event.name)}={action('on${capitalizeFirstLetter(event.name)}')}`
+    (event) =>
+      `on${capitalizeFirstLetter(snakeToCamel(event.name))}={action('on${capitalizeFirstLetter(
+        snakeToCamel(event.name)
+      )}')}`
   );
 
   const componentBody = childrenProp ? `>Some Content</${componentName}>` : ' />';
@@ -593,7 +617,7 @@ resolvedWebComponents.forEach((componentSpec) => {
 
       propTypes.push(dedent`
     /**
-     * ${property.description
+     * ${(property.description || '')
        .replace(/\n\n<br><br> /g, '<br/><br/>\n  *\n  * ')
        .replace(/\n\n/g, '<br/><br/>\n  *\n  * ')}
      */
@@ -625,7 +649,7 @@ resolvedWebComponents.forEach((componentSpec) => {
       /**
        * ${eventSpec.description}
        */
-       on${capitalizeFirstLetter(eventSpec.name)}?: ${eventParameters.tsType};
+       on${capitalizeFirstLetter(snakeToCamel(eventSpec.name))}?: ${eventParameters.tsType};
       `);
     });
 
