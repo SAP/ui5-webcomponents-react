@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.100.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.11...v0.100.0) (2020-06-08)
+
+
+### Reverts
+
+* Revert "update release sfsf script" ([7468456](https://github.com/SAP/ui5-webcomponents-react/commit/74684568b7f654eff6e52129f1462eb22d9dfedb))
+
+
+
+
+
 ## [0.9.11](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.10...v0.9.11) (2020-05-26)
 
 **Note:** Version bump only for package ui5-webcomponents-react-release-0.9.x
