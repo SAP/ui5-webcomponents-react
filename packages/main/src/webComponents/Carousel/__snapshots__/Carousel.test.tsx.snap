@@ -3,6 +3,7 @@
 exports[`Carousel Basic Test (generated) 1`] = `
 <ui5-carousel
   arrows-placement="Content"
+  infinite-scroll-offset="1"
   items-per-page-l="1"
   items-per-page-m="1"
   items-per-page-s="1"

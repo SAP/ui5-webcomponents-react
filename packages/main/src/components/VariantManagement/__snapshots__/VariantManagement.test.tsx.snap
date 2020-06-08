@@ -123,11 +123,10 @@ exports[`VariantManagement With suggestions 1`] = `
   />
   <ui5-responsive-popover
     _max-content-height="-8"
-    actual-placement-type="Bottom"
     header-text="Variants"
     horizontal-align="Center"
     placement-type="Bottom"
-    style="z-index: 102; visibility: visible; display: none; left: 0px; top: 8px;"
+    style="z-index: 102; visibility: visible; display: none;"
     vertical-align="Center"
   >
     <ui5-button

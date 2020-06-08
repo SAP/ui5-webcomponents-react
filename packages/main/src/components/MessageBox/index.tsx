@@ -128,8 +128,10 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
 
   const handleOnClose = useCallback(
     (e) => {
-      const { action } = e.target.dataset;
-      onClose(enrichEventWithDetails(e, { action }));
+      if (typeof onClose === 'function') {
+        const { action } = e.target.dataset;
+        onClose(enrichEventWithDetails(e, { action }));
+      }
     },
     [onClose]
   );

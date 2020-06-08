@@ -7,7 +7,7 @@ const style = {
     height: CssSizeVariables.sapWcrBarHeight,
     lineHeight: CssSizeVariables.sapWcrBarHeight,
     textAlign: 'center',
-    width: 'auto',
+    width: '100%',
     alignItems: 'center',
     '& $icon': {
       '& >*': {
@@ -76,6 +76,7 @@ const style = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
+    width: '100%',
     padding: '0 0.5rem',
     '& >*:not(:last-child)': {
       marginRight: '0.5rem'
