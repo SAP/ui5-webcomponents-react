@@ -72,8 +72,9 @@ import { MessageStrip } from './lib/MessageStrip';
 import { MessageStripType } from './lib/MessageStripType';
 import { MultiComboBox } from './lib/MultiComboBox';
 import { MultiComboBoxItem } from './lib/MultiComboBoxItem';
-import { Notification } from './lib/Notification';
-import { NotificationGroup } from './lib/NotificationGroup';
+import { NotificationListGroupItem } from './lib/NotificationListGroupItem';
+import { NotificationListItem } from './lib/NotificationListItem';
+import { NotificationOverflowAction } from './lib/NotificationOverflowAction';
 import { ObjectPage } from './lib/ObjectPage';
 import { ObjectPageMode } from './lib/ObjectPageMode';
 import { ObjectPageSection } from './lib/ObjectPageSection';
@@ -94,6 +95,7 @@ import { ProductSwitch } from './lib/ProductSwitch';
 import { ProductSwitchItem } from './lib/ProductSwitchItem';
 import { ProgressIndicator } from './lib/ProgressIndicator';
 import { RadioButton } from './lib/RadioButton';
+import { RatingIndicator } from './lib/RatingIndicator';
 import { ResponsivePopover } from './lib/ResponsivePopover';
 import { SegmentedButton } from './lib/SegmentedButton';
 import { Select } from './lib/Select';
@@ -112,6 +114,7 @@ import { Tab } from './lib/Tab';
 import { TabContainer } from './lib/TabContainer';
 import { TabContainerTabsPlacement } from './lib/TabContainerTabsPlacement';
 import { TabLayout } from './lib/TabLayout';
+import { TabSeparator } from './lib/TabSeparator';
 import { Table } from './lib/Table';
 import { TableCell } from './lib/TableCell';
 import { TableColumn } from './lib/TableColumn';
@@ -120,15 +123,14 @@ import { TableRow } from './lib/TableRow';
 import { TableScaleWidthMode } from './lib/TableScaleWidthMode';
 import { TableSelectionBehavior } from './lib/TableSelectionBehavior';
 import { TableSelectionMode } from './lib/TableSelectionMode';
-import { TabSeparator } from './lib/TabSeparator';
 import { Text } from './lib/Text';
 import { TextAlign } from './lib/TextAlign';
 import { TextArea } from './lib/TextArea';
 import { ThemeProvider } from './lib/ThemeProvider';
 import { Themes } from './lib/Themes';
+import { TimePicker } from './lib/TimePicker';
 import { Timeline } from './lib/Timeline';
 import { TimelineItem } from './lib/TimelineItem';
-import { TimePicker } from './lib/TimePicker';
 import { Title } from './lib/Title';
 import { TitleLevel } from './lib/TitleLevel';
 import { Toast } from './lib/Toast';
@@ -136,6 +138,8 @@ import { ToastPlacement } from './lib/ToastPlacement';
 import { ToggleButton } from './lib/ToggleButton';
 import { Token } from './lib/Token';
 import { Tokenizer } from './lib/Tokenizer';
+import { Tree } from './lib/Tree';
+import { TreeItem } from './lib/TreeItem';
 import { UploadCollection } from './lib/UploadCollection';
 import { UploadCollectionItem } from './lib/UploadCollectionItem';
 import { UploadState } from './lib/UploadState';
@@ -214,8 +218,9 @@ export {
   MessageStripType,
   MultiComboBox,
   MultiComboBoxItem,
-  Notification,
-  NotificationGroup,
+  NotificationListGroupItem,
+  NotificationListItem,
+  NotificationOverflowAction,
   ObjectPage,
   ObjectPageMode,
   ObjectPageSection,
@@ -236,6 +241,7 @@ export {
   ProductSwitchItem,
   ProgressIndicator,
   RadioButton,
+  RatingIndicator,
   ResponsivePopover,
   SegmentedButton,
   Select,
@@ -278,6 +284,8 @@ export {
   ToggleButton,
   Token,
   Tokenizer,
+  Tree,
+  TreeItem,
   UploadCollection,
   UploadCollectionItem,
   UploadState,
