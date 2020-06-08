@@ -17,7 +17,7 @@ module.exports = {
     '@storybook/addon-toolbars',
     '@storybook/addon-docs',
     '@storybook/addon-controls',
-    '@storybook/addon-actions'
+    '@storybook/addon-actions/register'
   ],
   webpack: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'

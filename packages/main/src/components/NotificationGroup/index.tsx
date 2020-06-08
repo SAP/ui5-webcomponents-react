@@ -16,6 +16,6 @@ NotificationGroup.defaultProps = {
   truncate: true
 };
 
-NotificationGroup.displayName = 'Notification Group';
+NotificationGroup.displayName = 'NotificationGroup';
 
 export { NotificationGroup };

@@ -195,6 +195,6 @@ VariantManagement.defaultProps = {
   disabled: false,
   variantItems: []
 };
-VariantManagement.displayName = 'Variant Management';
+VariantManagement.displayName = 'VariantManagement';
 
 export { VariantManagement };
