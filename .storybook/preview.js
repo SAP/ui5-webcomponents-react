@@ -24,6 +24,8 @@ addParameters({
     showRoots: true
   },
   passArgsFirst: true,
+  viewMode: 'docs',
+  docs: { forceExtractedArgTypes: true },
   actions: { argTypesRegex: '^on.*' }
 });
 
