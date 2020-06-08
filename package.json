@@ -107,7 +107,7 @@
   },
   "resolutions": {
     "@types/react": "16.9.34",
-    "@babel/runtime": "7.9.6"
+    "@babel/runtime": "7.10.2"
   },
   "husky": {
     "hooks": {

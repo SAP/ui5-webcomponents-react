@@ -28,10 +28,12 @@ export default {
   title: 'Components / FlexBox',
   component: FlexBox,
   argTypes: {
-    ...createSelectArgTypes({ justifyContent: FlexBoxJustifyContent }),
-    ...createSelectArgTypes({ alignItems: FlexBoxAlignItems }),
-    ...createSelectArgTypes({ direction: FlexBoxDirection }),
-    ...createSelectArgTypes({ wrap: FlexBoxWrap })
+    ...createSelectArgTypes({
+      justifyContent: FlexBoxJustifyContent,
+      alignItems: FlexBoxAlignItems,
+      direction: FlexBoxDirection,
+      wrap: FlexBoxWrap
+    })
   },
   args: {
     justifyContent: FlexBoxJustifyContent.Start,

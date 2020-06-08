@@ -159,9 +159,11 @@ export default {
     }
   },
   argTypes: {
-    ...createSelectArgTypes({ scaleWidthMode: TableScaleWidthMode }),
-    ...createSelectArgTypes({ selectionMode: TableSelectionMode }),
-    ...createSelectArgTypes({ selectionBehavior: TableSelectionBehavior })
+    ...createSelectArgTypes({
+      scaleWidthMode: TableScaleWidthMode,
+      selectionMode: TableSelectionMode,
+      selectionBehavior: TableSelectionBehavior
+    })
   },
   args: {
     busyIndicatorEnabled: true,

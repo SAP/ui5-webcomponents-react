@@ -8,8 +8,7 @@ export default {
   title: 'UI5 Web Components / Panel',
   component: Panel,
   argTypes: {
-    ...createSelectArgTypes({ accessibleRole: PanelAccessibleRoles }),
-    ...createSelectArgTypes({ headerLevel: TitleLevel })
+    ...createSelectArgTypes({ accessibleRole: PanelAccessibleRoles, headerLevel: TitleLevel })
   },
   args: {
     accessibleRole: PanelAccessibleRoles.Form,

@@ -8,8 +8,7 @@ export default {
   title: 'UI5 Web Components / DateTimePicker',
   component: DateTimePicker,
   argTypes: {
-    ...createSelectArgTypes({ valueState: ValueState }),
-    ...createSelectArgTypes({ primaryCalendarType: CalendarType })
+    ...createSelectArgTypes({ valueState: ValueState, primaryCalendarType: CalendarType })
   },
   args: {
     placeholder: undefined,

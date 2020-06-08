@@ -1,10 +1,10 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
 import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';
 import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';
 import { DeviationIndicator } from '@ui5/webcomponents-react/lib/DeviationIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'Components / Analytical Card',
@@ -13,10 +13,12 @@ export default {
     subcomponents: { AnalyticalCardHeader }
   },
   argTypes: {
-    ...createSelectArgTypes({ arrowIndicator: DeviationIndicator }),
-    ...createSelectArgTypes({ indicatorState: ValueState }),
-    ...createSelectArgTypes({ valueState: ValueState }),
-    ...createSelectArgTypes({ counterState: ValueState })
+    ...createSelectArgTypes({
+      arrowIndicator: DeviationIndicator,
+      indicatorState: ValueState,
+      valueState: ValueState,
+      counterState: ValueState
+    })
   },
   args: {
     title: 'Title',

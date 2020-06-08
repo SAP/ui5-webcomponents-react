@@ -73,8 +73,7 @@ export default {
   title: 'Components / Toolbar',
   component: Toolbar,
   argTypes: {
-    ...createSelectArgTypes({ toolbarStyle: ToolbarStyle }),
-    ...createSelectArgTypes({ design: ToolbarDesign })
+    ...createSelectArgTypes({ toolbarStyle: ToolbarStyle, design: ToolbarDesign })
   },
   args: {
     toolbarStyle: ToolbarStyle.Standard,

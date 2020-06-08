@@ -26,8 +26,7 @@ export default {
   title: 'Components / VariantManagement',
   component: VariantManagement,
   argTypes: {
-    ...createSelectArgTypes({ placement: PlacementType }),
-    ...createSelectArgTypes({ level: TitleLevel })
+    ...createSelectArgTypes({ placement: PlacementType, level: TitleLevel })
   },
   args: {
     closeOnItemSelect: true,

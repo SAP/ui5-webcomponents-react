@@ -10,9 +10,11 @@ export default {
   title: 'UI5 Web Components / ResponsivePopover',
   component: ResponsivePopover,
   argTypes: {
-    ...createSelectArgTypes({ horizontalAlign: PopoverHorizontalAlign }),
-    ...createSelectArgTypes({ placementType: PlacementType }),
-    ...createSelectArgTypes({ verticalAlign: PopoverVerticalAlign })
+    ...createSelectArgTypes({
+      horizontalAlign: PopoverHorizontalAlign,
+      placementType: PlacementType,
+      verticalAlign: PopoverVerticalAlign
+    })
   },
   args: {
     allowTargetOverlap: true,

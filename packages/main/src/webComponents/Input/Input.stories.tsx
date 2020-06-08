@@ -12,8 +12,7 @@ export default {
     subcomponents: { SuggestionItem }
   },
   argsTypes: {
-    ...createSelectArgTypes({ type: InputType }),
-    ...createSelectArgTypes({ valueState: ValueState })
+    ...createSelectArgTypes({ type: InputType, valueState: ValueState })
   },
   args: {
     placeholder: 'Placeholder...',
