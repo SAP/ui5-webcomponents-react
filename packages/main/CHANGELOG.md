@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.100.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.100.0...v0.100.1) (2020-06-10)
+
+
+### Bug Fixes
+
+* **base:** remove proxy polyfill for old event API ([31a6970](https://github.com/SAP/ui5-webcomponents-react/commit/31a697080ea44c549e73d72bfe6baf395c1ea588)), closes [#565](https://github.com/SAP/ui5-webcomponents-react/issues/565)
+
+
+
+
+
 # [0.100.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.11...v0.100.0) (2020-06-08)
 
 **Note:** Version bump only for package @ui5/webcomponents-react
