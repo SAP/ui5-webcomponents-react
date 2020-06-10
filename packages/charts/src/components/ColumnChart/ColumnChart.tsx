@@ -13,6 +13,7 @@ import {
   BarChart as ColumnChartLib,
   Brush,
   CartesianGrid,
+  LabelList,
   Legend,
   ReferenceLine,
   Tooltip,
@@ -168,6 +169,9 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
+  const valueAccessor = (attribute) => ({ payload }) => {
+    return payload[attribute];
+  };
 
   return (
     <ChartContainer
@@ -235,7 +239,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
@@ -243,7 +246,12 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               barSize={element.width}
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
-            />
+            >
+              <LabelList
+                valueAccessor={valueAccessor(element.accessor)}
+                content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
+              />
+            </Column>
           );
         })}
         {!noLegend && (
