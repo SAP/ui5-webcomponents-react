@@ -1,5 +1,4 @@
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
-import { polyfillDeprecatedEventAPI } from '@ui5/webcomponents-react-base/lib/Utils';
 import React, {
   Children,
   cloneElement,
@@ -27,7 +26,6 @@ export interface WithWebComponentPropTypes extends CommonProps, HTMLAttributes<H
 }
 
 const createEventWrapperFor = (eventIdentifier, eventHandler) => (event) => {
-  polyfillDeprecatedEventAPI(event);
   return eventHandler(event);
 };
 
