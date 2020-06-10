@@ -27,6 +27,7 @@ exports[`Grid Custom Class Names and Styling 1`] = `
 exports[`Grid Grid Position Center 1`] = `
 <div
   class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0 Grid-gridPositionCenter-0"
+  style="width: calc(60% - 1rem);"
 >
   <div
     class="Grid-gridSpan-0 Grid-gridSpan3-0"
@@ -50,6 +51,7 @@ exports[`Grid Grid Position Center 1`] = `
 exports[`Grid Grid Position Right 1`] = `
 <div
   class="Grid-grid-0 Grid-gridHSpace1-0 Grid-gridVSpace1-0 Grid-gridPositionRight-0"
+  style="width: calc(60% - 1rem);"
 >
   <div
     class="Grid-gridSpan-0 Grid-gridSpan3-0"
