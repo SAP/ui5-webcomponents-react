@@ -13,6 +13,7 @@ import {
   BarChart as BarChartLib,
   Brush,
   CartesianGrid,
+  LabelList,
   Legend,
   ReferenceLine,
   Tooltip,
@@ -163,6 +164,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
   const [width, legendPosition] = useLongestYAxisLabelBar(dataset, dimensions);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const [xAxisHeight] = useObserveXAxisHeights(chartRef, 1);
+  const valueAccessor = (attribute) => ({ payload }) => {
+    return payload[attribute];
+  };
 
   return (
     <ChartContainer
@@ -225,7 +229,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={<ChartDataLabel config={element} chartType="bar" position="insideRight" />}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
@@ -233,7 +236,12 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               barSize={element.width}
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
-            />
+            >
+              <LabelList
+                valueAccessor={valueAccessor(element.accessor)}
+                content={<ChartDataLabel config={element} chartType="bar" position={'insideRight'} />}
+              />
+            </Bar>
           );
         })}
         {!noLegend && (
