@@ -77,5 +77,37 @@ React.useEffect(() => {
 
 For more details on this behavior you can double check the [react-table docs](https://github.com/tannerlinsley/react-table/blob/master/docs/faq.md#how-do-i-stop-my-table-state-from-automatically-resetting-when-my-data-changes).
 
-<Stories />
+### How can I show a subset of all columns on mobile devices?
 
+
+In case you want to use the `AnalyticalTable` on mobile devices as well, it might be helpful to reduce the amount of columns
+for the sake of better readability. You can achieve this by using the `useViewportRange` hook in combination with a local React state:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { useViewportRange } from '@ui5/webcomponents-react-base/lib/hooks';
+
+const columns = [{}, {}, {}, {}, ...]; /* your full set of columns*/
+const data = []; /* your data array */
+
+export const ResponsiveTable = () => {
+  const [responsiveColumns, setResponsiveColumns] = useState(columns);
+  const currentRange = useViewportRange('StdExt');
+  useEffect(() => {
+    if (currentRange === 'Phone') {
+      setResponsiveColumns(columns.slice(0, 2));
+    } else if (currentRange === 'Tablet') {
+      setResponsiveColumns(columns.slice(0, 3));
+    } else {
+      setResponsiveColumns(columns);
+    }
+  }, [currentRange]);
+  return <AnalyticalTable columns={responsiveColumns} data={data} title="ResponsiveTable" />;
+};
+```
+
+With the help of that effect, the table will now show either 2 columns on a mobile phone, 3 columns on a tablet device and all columns on Desktop devices.
+This even works if you resize the browser window!
+
+<Stories />
