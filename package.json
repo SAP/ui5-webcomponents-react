@@ -32,20 +32,20 @@
     "@ui5/webcomponents-fiori": "1.0.0-rc.7",
     "@ui5/webcomponents-icons": "1.0.0-rc.7",
     "react": "16.8.0",
-    "react-dom": "16.8.0",
-    "react-docgen-typescript-loader": "3.7.2"
+    "react-docgen-typescript-loader": "3.7.2",
+    "react-dom": "16.8.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-decorators": "^7.8.3",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.0",
-    "@babel/plugin-proposal-numeric-separator": "^7.8.3",
-    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
-    "@babel/plugin-transform-runtime": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/preset-typescript": "^7.9.0",
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/plugin-proposal-decorators": "^7.10.1",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.1",
+    "@babel/plugin-proposal-numeric-separator": "^7.10.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/preset-typescript": "^7.10.1",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-json": "^4.0.3",
@@ -107,7 +107,7 @@
   },
   "resolutions": {
     "@types/react": "16.9.34",
-    "@babel/runtime": "7.9.6"
+    "@babel/runtime": "7.10.2"
   },
   "husky": {
     "hooks": {
