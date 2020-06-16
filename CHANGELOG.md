@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-rc.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.2...v0.10.0-rc.3) (2020-06-16)
+
+
+### Bug Fixes
+
+* **base:** remove unnecessary proxy polyfill ([10adb29](https://github.com/SAP/ui5-webcomponents-react/commit/10adb29135d0966c6b95c8018453751663267109))
+* Fix wrong display names for NotificationGroup and VariantManagement ([2963a55](https://github.com/SAP/ui5-webcomponents-react/commit/2963a55bd11ebc5d99c654374352f0fd0a28370b))
+* **BarChart/ColumnChart:** display correct labels in stacked charts ([#568](https://github.com/SAP/ui5-webcomponents-react/issues/568)) ([66b68be](https://github.com/SAP/ui5-webcomponents-react/commit/66b68beca816964c7c6230da2de8e43ac5f0e0d7))
+
+
+
+
+
 # [0.10.0-rc.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.1...v0.10.0-rc.2) (2020-06-05)
 
 
