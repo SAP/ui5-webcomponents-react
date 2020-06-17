@@ -2,14 +2,12 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingPara
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
-import { ChartDataLabel } from '@ui5/webcomponents-react-charts/lib/components/ChartDataLabel';
 import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxisTicks';
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
 import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
-  Brush,
   CartesianGrid,
   Legend,
   Scatter,
@@ -18,19 +16,17 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  ZAxis,
-  Line
+  ZAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
-import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
-import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps';
+import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -43,15 +39,20 @@ interface MeasureConfig extends IChartMeasure {
    * @default 1
    */
   opacity?: number;
+  /**
+   * Defines axis of measures
+   * @default 1
+   */
+  axis: 'x' | 'y' | 'z';
 }
 
-interface DimensionConfig extends IChartDimension {
-  interval?: number;
+interface ScatterDataObject {
+  label?: string;
+  data: any[];
 }
 
 export interface ScatterChartProps extends IChartBaseProps {
-  dimension: DimensionConfig;
-  dataset?: Record<string, any>[][];
+  dataset?: ScatterDataObject[];
   /**
    * An array of config objects. Each object is defining one line in the chart.
    *
@@ -73,14 +74,8 @@ export interface ScatterChartProps extends IChartBaseProps {
   measures: MeasureConfig[];
 }
 
-const dimensionDefaults = {
-  formatter: defaultFormatter
-};
-
 const measureDefaults = {
-  formatter: defaultFormatter,
-  width: 1,
-  opacity: 1
+  formatter: defaultFormatter
 };
 
 /**
@@ -115,30 +110,10 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     };
   }, [props.chartConfig]);
 
-  const { dimensions, measures } = usePrepareDimensionsAndMeasures(
-    [],
-    props.measures,
-    dimensionDefaults,
-    measureDefaults
-  );
+  const { measures } = usePrepareDimensionsAndMeasures([], props.measures, {}, measureDefaults);
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
-
-  const primaryDimension = dimensions[0];
-  const primaryMeasure = measures[0];
-
   const chartRef = useConsolidatedRef<any>(ref);
-
-  const dataKeys = measures.map(({ accessor }) => accessor);
-
-  const dimension: DimensionConfig = useMemo(
-    () => ({
-      formatter: defaultFormatter,
-      ...props.dimension
-    }),
-    [props.dimension]
-  );
-
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
@@ -161,11 +136,18 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
   );
 
   const isBigDataSet = dataset?.length > 30 ?? false;
-  const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset[0], measures);
+  const xMeasure = measures.filter(({ axis }) => axis === 'x');
+  const yMeasure = measures.filter(({ axis }) => axis === 'y');
+  const zMeasure = measures.filter(({ axis }) => axis === 'z');
+
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(
+    dataset[0].data,
+    measures.filter(({ axis }) => axis === 'y')
+  );
+  const xAxisHeights = useObserveXAxisHeights(chartRef, 1);
+
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
-  // const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
 
   return (
     <ChartContainer
@@ -192,32 +174,40 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
         {chartConfig.xAxisVisible && (
           <XAxis
             type={'number'}
-            key={measures[0].accessor}
-            name={measures[0].accessor}
-            dataKey={measures[0].accessor}
-            interval={measures[0]?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-            tick={<XAxisTicks config={measures[0]} />}
+            key={xMeasure[0].accessor}
+            label={{ position: 'bottom', value: xMeasure[0].label }}
+            dataKey={xMeasure[0].accessor}
+            interval={xMeasure[0]?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
+            tick={<XAxisTicks config={xMeasure[0]} />}
             padding={xAxisPadding}
+            // height={xAxisHeights[0]}
           />
         )}
         <YAxis
+          label={yMeasure[0].label ? { position: 'top', value: yMeasure[0].label } : false}
           type={'number'}
-          name={measures[1].accessor}
+          name={yMeasure[0].accessor}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
-          key={measures[1].accessor}
-          dataKey={measures[1].accessor}
-          tickFormatter={measures[1]?.formatter}
+          key={yMeasure[0].accessor}
+          dataKey={yMeasure[0].accessor}
+          tickFormatter={yMeasure[0]?.formatter}
           interval={0}
-          tick={<YAxisTicks config={measures[1]} />}
+          tick={<YAxisTicks config={yMeasure[0]} />}
           width={yAxisWidth}
+          padding={yMeasure[0].label ? { top: 10 } : 0}
         />
-        <ZAxis name={dimension.accessor} dataKey={dimension.accessor} range={[0, 5000]} key={dimension.accessor} />
-        {dataset.map((data, index) => {
+        <ZAxis
+          name={zMeasure[0].accessor}
+          dataKey={zMeasure[0].accessor}
+          range={[0, 5000]}
+          key={zMeasure[0].accessor}
+        />
+        {dataset.map((dataSet, index) => {
           return (
             <Scatter
-              data={data}
-              name={dimension.accessor}
+              data={dataSet.data}
+              name={dataSet.label}
               fill={`var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               isAnimationActive={noAnimation === false}
             />
@@ -240,15 +230,6 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           />
         )}
         <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
-        {chartConfig.zoomingTool && (
-          <Brush
-            y={10}
-            dataKey={primaryDimensionAccessor}
-            stroke={ThemingParameters.sapObjectHeader_BorderColor}
-            travellerWidth={10}
-            height={20}
-          />
-        )}
       </ScatterChartLib>
     </ChartContainer>
   );

@@ -2,13 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { ScatterChart } from '../../lib/ScatterChart';
-import {
-  bigDataSet,
-  complexDataSet,
-  scatterComplexDataSet,
-  secondaryDimensionDataSet,
-  simpleDataSet
-} from '../../resources/DemoProps';
+import { bigDataSet, complexDataSet, scatterComplexDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts /  ScatterChart',
@@ -24,20 +18,23 @@ export const renderStory = () => (
     onLegendClick={action('onLegendClick')}
     dataset={scatterComplexDataSet}
     style={{ width: '100%' }}
-    dimension={{
-      accessor: 'volume',
-      formatter: (e) => e + 'test'
-    }}
     measures={[
       {
         accessor: 'users',
         label: 'Users',
-        formatter: (val) => val.toLocaleString()
+        formatter: (e) => e + ' Users',
+        axis: 'x'
       },
       {
         accessor: 'sessions',
         label: 'Active Sessions',
-        hideDataLabel: true
+        formatter: (e) => e + ' Sessions',
+        hideDataLabel: true,
+        axis: 'y'
+      },
+      {
+        accessor: 'volume',
+        axis: 'z'
       }
     ]}
   />
