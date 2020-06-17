@@ -18,7 +18,8 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  ZAxis
+  ZAxis,
+  Line
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
@@ -48,8 +49,9 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-export interface LineChartProps extends IChartBaseProps {
+export interface ScatterChartProps extends IChartBaseProps {
   dimension: DimensionConfig;
+  dataset?: Record<string, any>[][];
   /**
    * An array of config objects. Each object is defining one line in the chart.
    *
@@ -84,7 +86,7 @@ const measureDefaults = {
 /**
  * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';</code>
  */
-const ScatterChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<any>) => {
+const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps, ref: Ref<any>) => {
   const {
     dataset,
     loading,
@@ -161,9 +163,9 @@ const ScatterChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref:
   const isBigDataSet = dataset?.length > 30 ?? false;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset[0], measures);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
-  const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
+  // const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
 
   return (
     <ChartContainer
@@ -195,10 +197,7 @@ const ScatterChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref:
             dataKey={measures[0].accessor}
             interval={measures[0]?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
             tick={<XAxisTicks config={measures[0]} />}
-            // tickLine={index < 1}
-            // axisLine={index < 1}
             padding={xAxisPadding}
-            // allowDuplicatedCategory={index === 0}
           />
         )}
         <YAxis
@@ -213,15 +212,17 @@ const ScatterChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref:
           tick={<YAxisTicks config={measures[1]} />}
           width={yAxisWidth}
         />
-        <ZAxis
-          name={dimension.accessor}
-          dataKey={dimension.accessor}
-          axisLine={chartConfig.yAxisVisible}
-          tickLine={tickLineConfig}
-          key={dimension.accessor}
-          tickFormatter={dimension?.formatter}
-        />
-        <Scatter data={dataset} name={dimension.accessor} />
+        <ZAxis name={dimension.accessor} dataKey={dimension.accessor} range={[0, 5000]} key={dimension.accessor} />
+        {dataset.map((data, index) => {
+          return (
+            <Scatter
+              data={data}
+              name={dimension.accessor}
+              fill={`var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              isAnimationActive={noAnimation === false}
+            />
+          );
+        })}
         {!noLegend && (
           <Legend
             verticalAlign={chartConfig.legendPosition}

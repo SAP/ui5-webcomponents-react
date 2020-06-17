@@ -2,7 +2,13 @@ import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { ScatterChart } from '../../lib/ScatterChart';
-import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import {
+  bigDataSet,
+  complexDataSet,
+  scatterComplexDataSet,
+  secondaryDimensionDataSet,
+  simpleDataSet
+} from '../../resources/DemoProps';
 
 export default {
   title: 'Charts /  ScatterChart',
@@ -16,15 +22,12 @@ export const renderStory = () => (
     noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
     onLegendClick={action('onLegendClick')}
-    dataset={complexDataSet}
+    dataset={scatterComplexDataSet}
     style={{ width: '100%' }}
-    dimensions={[
-      {
-        accessor: 'name',
-        formatter: (d) => `${d} 2019`,
-        interval: 0
-      }
-    ]}
+    dimension={{
+      accessor: 'volume',
+      formatter: (e) => e + 'test'
+    }}
     measures={[
       {
         accessor: 'users',
@@ -34,12 +37,7 @@ export const renderStory = () => (
       {
         accessor: 'sessions',
         label: 'Active Sessions',
-        formatter: (val) => `${val} sessions`,
         hideDataLabel: true
-      },
-      {
-        accessor: 'volume',
-        label: 'Vol.'
       }
     ]}
   />
@@ -55,9 +53,9 @@ export const renderStoryWithCustomColor = () => (
     noLegend={boolean('noLegend', false)}
     noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
-    dimensions={[{ accessor: 'name' }]}
+    dimensions={{ accessor: 'name' }}
     measures={[{ accessor: 'users', color: 'red' }]}
-    dataset={simpleDataSet}
+    dataset={scatterComplexDataSet}
     style={{ width: '95%', height: '40vh' }}
   />
 );
