@@ -182,7 +182,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
             tick={<XAxisTicks config={xMeasure?.[0]} />}
             padding={xAxisPadding}
             height={xAxisHeights[0]}
-            label={xMeasure?.[0].label ? { value: xMeasure?.[0].label, dy: 15, position: 'insideRight' } : 0}
+            label={xMeasure?.[0]?.label ? { value: xMeasure?.[0]?.label, dy: 15, position: 'insideRight' } : 0}
           />
         )}
         <YAxis
