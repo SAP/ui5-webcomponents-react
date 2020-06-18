@@ -6,6 +6,10 @@ import { Input } from '@ui5/webcomponents-react/lib/Input';
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
+import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
+import { DateTimePicker } from '@ui5/webcomponents-react/lib/DateTimePicker';
 import React from 'react';
 
 export const defaultStory = () => {
@@ -15,7 +19,7 @@ export const defaultStory = () => {
         <FormItem label={'Name'}>
           <Input type={InputType.Text} />
         </FormItem>
-        <FormItem label={'Address'}>
+        <FormItem label={<Label>Address</Label>}>
           <Input type={InputType.Text} />
         </FormItem>
         <FormItem label={'Country'}>
@@ -40,6 +44,40 @@ export const defaultStory = () => {
           <Input type={InputType.Number} value={'5000'} disabled />
         </FormItem>
         <FormItem label={'Pilot license'}>
+          <CheckBox checked />
+        </FormItem>
+        <FormItem label={'Name'}>
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem label={<Label>Address</Label>}>
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem label={'Country'}>
+          <Select>
+            <Option>Germany</Option>
+            <Option>France</Option>
+            <Option>Italy</Option>
+          </Select>
+        </FormItem>
+        <FormItem label={'Home address'}>
+          <CheckBox checked />
+        </FormItem>
+      </FormGroup>
+      <FormGroup title={'Personal Data'}>
+        <FormItem label={'Name'}>
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem label={<Label>Address</Label>}>
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem label={'Country'}>
+          <Select>
+            <Option>Germany</Option>
+            <Option>France</Option>
+            <Option>Italy</Option>
+          </Select>
+        </FormItem>
+        <FormItem label={'Home address'}>
           <CheckBox checked />
         </FormItem>
       </FormGroup>
