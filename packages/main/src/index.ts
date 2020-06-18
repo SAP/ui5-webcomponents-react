@@ -30,7 +30,6 @@ import { CheckBox } from './lib/CheckBox';
 import { ComboBox } from './lib/ComboBox';
 import { ComboBoxItem } from './lib/ComboBoxItem';
 import { ContentDensity } from './lib/ContentDensity';
-import { CurrentViewportRangeContext } from './lib/CurrentViewportRangeContext';
 import { CustomListItem } from './lib/CustomListItem';
 import { DatePicker } from './lib/DatePicker';
 import { DateTimePicker } from './lib/DateTimePicker';
@@ -178,7 +177,6 @@ export {
   ComboBox,
   ComboBoxItem,
   ContentDensity,
-  CurrentViewportRangeContext,
   CustomListItem,
   DatePicker,
   DateTimePicker,
