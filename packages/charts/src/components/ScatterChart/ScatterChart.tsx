@@ -16,7 +16,8 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  ZAxis
+  ZAxis,
+  Label
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
@@ -175,17 +176,17 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           <XAxis
             type={'number'}
             key={xMeasure?.[0]?.accessor}
-            label={{ position: 'bottom', value: xMeasure?.[0]?.label }}
             dataKey={xMeasure?.[0]?.accessor}
             xAxisId={0}
             interval={xMeasure?.[0]?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
             tick={<XAxisTicks config={xMeasure?.[0]} />}
             padding={xAxisPadding}
-            // height={xAxisHeights[0]}
+            height={xAxisHeights[0]}
+            label={xMeasure?.[0].label ? { value: xMeasure?.[0].label, dy: 15, position: 'insideRight' } : 0}
           />
         )}
         <YAxis
-          label={yMeasure?.[0]?.label ? { position: 'top', value: yMeasure?.[0]?.label } : false}
+          label={yMeasure?.[0]?.label ? { value: yMeasure?.[0]?.label, angle: -90, position: 'insideLeft' } : false}
           type={'number'}
           name={yMeasure?.[0]?.accessor}
           axisLine={chartConfig.yAxisVisible}
@@ -195,8 +196,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           tickFormatter={yMeasure?.[0]?.formatter}
           interval={0}
           tick={<YAxisTicks config={yMeasure[0]} />}
-          width={yAxisWidth}
-          padding={yMeasure?.[0]?.label ? { top: 10 } : 0}
+          width={yMeasure?.[0]?.label ? yAxisWidth + 10 : yAxisWidth}
+          margin={yMeasure?.[0]?.label ? { left: 200 } : 0}
         />
         <ZAxis
           name={zMeasure?.[0]?.accessor}
