@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LineChart Renders with data 1`] = `
+<div
+  style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+>
+  <div
+    class="recharts-responsive-container"
+    id="undefined"
+    style="width: 100%; height: 100%;"
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`LineChart loading placeholder 1`] = `
+<div
+  style="font-family: var(--sapFontFamily); width: 30%; height: 400px; position: relative;"
+>
+  <svg
+    aria-labelledby="ARIA-LABELLED-BY"
+    height="100%"
+    preserveAspectRatio="xMidYMid meet"
+    role="img"
+    viewBox="0 0 165 145"
+    width="100%"
+  >
+    <title
+      id="TITLE_ARIA_ID"
+    >
+      Loading...
+    </title>
+    <rect
+      clip-path="CLIP-PATH-URL"
+      height="100%"
+      role="presentation"
+      style="fill: url(#STYLE-URL);"
+      width="100%"
+      x="0"
+      y="0"
+    />
+    <defs
+      role="presentation"
+    >
+      <clipPath
+        id="CLIP-PATH-URL"
+      >
+        <rect
+          height="1"
+          width="135"
+          x="10"
+          y="135"
+        />
+        <path
+          d="M20 135 L40 80 L60 70 L80 30 L100 50 L120 65 L 135 100 L120 67 L100 52 L80 32 L60 72 L40 82 L20 137 Z"
+          fill="none"
+          stroke-width="2"
+        />
+      </clipPath>
+      <linearGradient
+        id="STYLE-URL"
+      >
+        <stop
+          offset="0%"
+          stop-color="var(--sapContent_ImagePlaceholderBackground)"
+          stop-opacity="var(--sapContent_DisabledOpacity)"
+        >
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="-2; -2; 1"
+          />
+        </stop>
+        <stop
+          offset="50%"
+          stop-color="var(--sapContent_ImagePlaceholderForegroundColor)"
+          stop-opacity="1"
+        >
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="-1; -1; 2"
+          />
+        </stop>
+        <stop
+          offset="100%"
+          stop-color="var(--sapContent_ImagePlaceholderBackground)"
+          stop-opacity="var(--sapContent_DisabledOpacity)"
+        >
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="0; 0; 3"
+          />
+        </stop>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+`;

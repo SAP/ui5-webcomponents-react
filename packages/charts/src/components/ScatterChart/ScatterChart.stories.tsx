@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { ScatterChart } from '../../lib/ScatterChart';
-import { bigDataSet, complexDataSet, scatterComplexDataSet } from '../../resources/DemoProps';
+import { bigDataSet, complexDataSet, scatterColorDataSet, scatterComplexDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts /  ScatterChart',
@@ -22,14 +22,11 @@ export const renderStory = () => (
       {
         accessor: 'users',
         label: 'Users',
-        formatter: (e) => e + ' Users',
         axis: 'x'
       },
       {
         accessor: 'sessions',
-        label: 'Active Sessions',
-        formatter: (e) => e + ' Sessions',
-        hideDataLabel: true,
+        label: 'Sessions',
         axis: 'y'
       },
       {
@@ -50,65 +47,29 @@ export const renderStoryWithCustomColor = () => (
     noLegend={boolean('noLegend', false)}
     noAnimation={boolean('noAnimation', false)}
     onDataPointClick={action('onDataPointClick')}
-    dimensions={{ accessor: 'name' }}
-    measures={[{ accessor: 'users', color: 'red' }]}
-    dataset={scatterComplexDataSet}
-    style={{ width: '95%', height: '40vh' }}
+    dataset={scatterColorDataSet}
+    style={{ width: '100%' }}
+    measures={[
+      {
+        accessor: 'users',
+        label: 'Users',
+        axis: 'x'
+      },
+      {
+        accessor: 'sessions',
+        label: 'Sessions',
+        axis: 'y'
+      },
+      {
+        accessor: 'volume',
+        axis: 'z'
+      }
+    ]}
   />
 );
 
 renderStoryWithCustomColor.story = {
   name: 'With custom color'
-};
-
-export const withSecondaryDimension = () => (
-  <ScatterChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
-    dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
-    measures={[{ accessor: 'users', color: 'red' }]}
-    dataset={secondaryDimensionDataSet}
-    style={{ width: '95%', height: '60vh' }}
-  />
-);
-
-withSecondaryDimension.story = {
-  name: 'With secondary dimension'
-};
-
-export const renderLabelStory = () => {
-  return (
-    <ScatterChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
-      dimensions={[{ accessor: 'name' }]}
-      measures={[
-        {
-          accessor: 'users'
-        },
-        {
-          accessor: 'sessions'
-        },
-        {
-          accessor: 'volume'
-        }
-      ]}
-      dataset={complexDataSet}
-      style={{ width: '95%', height: '40vh' }}
-      chartConfig={{
-        zoomingTool: true
-      }}
-    />
-  );
-};
-
-renderLabelStory.story = {
-  name: 'With data labels'
 };
 
 export const renderCustomDataLabelStory = () => {
@@ -119,25 +80,27 @@ export const renderCustomDataLabelStory = () => {
       noAnimation={boolean('noAnimation', false)}
       onDataPointClick={action('onDataPointClick')}
       onLegendClick={action('onLegendClick')}
-      dataset={complexDataSet}
-      dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
+      dataset={scatterComplexDataSet}
+      style={{ width: '100%' }}
       measures={[
         {
           accessor: 'users',
-          formatter: (element: number) => `${element / 10}`,
-          label: 'number of users'
+          label: 'Users',
+          formatter: (e) => e + ' Users',
+          axis: 'x'
         },
         {
-          accessor: 'sessions'
+          accessor: 'sessions',
+          label: 'Active Sessions',
+          formatter: (e) => e + ' Sessions',
+          hideDataLabel: true,
+          axis: 'y'
         },
         {
-          accessor: 'volume'
+          accessor: 'volume',
+          axis: 'z'
         }
       ]}
-      style={{ width: '95%', height: '40vh' }}
-      chartConfig={{
-        zoomingTool: true
-      }}
     />
   );
 };
@@ -146,45 +109,8 @@ renderCustomDataLabelStory.story = {
   name: 'With formatter'
 };
 
-export const loadingPlaceholder = () => <LineChart style={{ width: '100%' }} dimensions={[]} measures={[]} />;
+export const loadingPlaceholder = () => <ScatterChart style={{ width: '100%' }} measures={[]} />;
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
-};
-
-export const withReferenceLineStory = () => {
-  return (
-    <ScatterChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
-      dataset={bigDataSet}
-      dimensions={[{ accessor: 'name' }]}
-      measures={[
-        {
-          accessor: 'users'
-        },
-        {
-          accessor: 'sessions'
-        },
-        {
-          accessor: 'volume'
-        }
-      ]}
-      style={{ width: '95%', height: '40vh' }}
-      chartConfig={{
-        referenceLine: {
-          color: 'red',
-          label: 'MAX',
-          value: 650
-        }
-      }}
-    />
-  );
-};
-
-withReferenceLineStory.story = {
-  name: 'With reference line'
 };

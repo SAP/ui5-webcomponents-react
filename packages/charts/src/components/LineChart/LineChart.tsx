@@ -158,7 +158,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
-
+  console.log(dataset);
   return (
     <ChartContainer
       dataset={dataset}

@@ -6,7 +6,7 @@ import { XAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/XAxis
 import { YAxisTicks } from '@ui5/webcomponents-react-charts/lib/components/YAxisTicks';
 import { LineChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/LineChartPlaceholder';
 import { useLegendItemClick } from '@ui5/webcomponents-react-charts/lib/useLegendItemClick';
-import React, { FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
 import {
   CartesianGrid,
   Legend,
@@ -48,7 +48,8 @@ interface MeasureConfig extends IChartMeasure {
 
 interface ScatterDataObject {
   label?: string;
-  data: any[];
+  data?: any[];
+  color?: CSSProperties['color'];
 }
 
 export interface ScatterChartProps extends IChartBaseProps {
@@ -71,7 +72,7 @@ export interface ScatterChartProps extends IChartBaseProps {
    * - `opacity`: line opacity, defaults to `1`
    *
    */
-  measures: MeasureConfig[];
+  measures?: MeasureConfig[];
 }
 
 const measureDefaults = {
@@ -142,11 +143,10 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
   const zMeasure = measures.filter(({ axis }) => axis === 'z');
 
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(
-    dataset[0].data,
+    dataset?.[0].data,
     measures.filter(({ axis }) => axis === 'y')
   );
   const xAxisHeights = useObserveXAxisHeights(chartRef, 1);
-
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
 
   return (
@@ -174,41 +174,42 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
         {chartConfig.xAxisVisible && (
           <XAxis
             type={'number'}
-            key={xMeasure[0].accessor}
-            label={{ position: 'bottom', value: xMeasure[0].label }}
-            dataKey={xMeasure[0].accessor}
-            interval={xMeasure[0]?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-            tick={<XAxisTicks config={xMeasure[0]} />}
+            key={xMeasure?.[0]?.accessor}
+            label={{ position: 'bottom', value: xMeasure?.[0]?.label }}
+            dataKey={xMeasure?.[0]?.accessor}
+            xAxisId={0}
+            interval={xMeasure?.[0]?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
+            tick={<XAxisTicks config={xMeasure?.[0]} />}
             padding={xAxisPadding}
             // height={xAxisHeights[0]}
           />
         )}
         <YAxis
-          label={yMeasure[0].label ? { position: 'top', value: yMeasure[0].label } : false}
+          label={yMeasure?.[0]?.label ? { position: 'top', value: yMeasure?.[0]?.label } : false}
           type={'number'}
-          name={yMeasure[0].accessor}
+          name={yMeasure?.[0]?.accessor}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
-          key={yMeasure[0].accessor}
-          dataKey={yMeasure[0].accessor}
-          tickFormatter={yMeasure[0]?.formatter}
+          key={yMeasure?.[0]?.accessor}
+          dataKey={yMeasure?.[0]?.accessor}
+          tickFormatter={yMeasure?.[0]?.formatter}
           interval={0}
           tick={<YAxisTicks config={yMeasure[0]} />}
           width={yAxisWidth}
-          padding={yMeasure[0].label ? { top: 10 } : 0}
+          padding={yMeasure?.[0]?.label ? { top: 10 } : 0}
         />
         <ZAxis
-          name={zMeasure[0].accessor}
-          dataKey={zMeasure[0].accessor}
+          name={zMeasure?.[0]?.accessor}
+          dataKey={zMeasure?.[0]?.accessor}
           range={[0, 5000]}
-          key={zMeasure[0].accessor}
+          key={zMeasure?.[0]?.accessor}
         />
-        {dataset.map((dataSet, index) => {
+        {dataset?.map((dataSet, index) => {
           return (
             <Scatter
-              data={dataSet.data}
-              name={dataSet.label}
-              fill={`var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              data={dataSet?.data}
+              name={dataSet?.label}
+              fill={dataSet?.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               isAnimationActive={noAnimation === false}
             />
           );

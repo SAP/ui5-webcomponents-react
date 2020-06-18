@@ -2,41 +2,33 @@ import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import { mount } from 'enzyme';
 import * as React from 'react';
-import { complexDataSet } from '../../resources/DemoProps';
-import { LineChart } from './LineChart';
+import { scatterComplexDataSet } from '../../resources/DemoProps';
+import { ScatterChart } from './ScatterChart';
 
 describe('LineChart', () => {
   test('Renders with data', () => {
     expect(
       mount(
-        <LineChart
+        <ScatterChart
           loading={boolean('loading', false)}
           onDataPointClick={action('onDataPointClick')}
           onLegendClick={action('onLegendClick')}
-          dataset={complexDataSet}
+          dataset={scatterComplexDataSet}
           style={{ width: '100%' }}
-          dimensions={[
-            {
-              accessor: 'name',
-              formatter: (d) => `${d} 2019`,
-              interval: 0
-            }
-          ]}
           measures={[
             {
               accessor: 'users',
               label: 'Users',
-              formatter: (val) => val.toLocaleString()
+              axis: 'x'
             },
             {
               accessor: 'sessions',
-              label: 'Active Sessions',
-              formatter: (val) => `${val} sessions`,
-              hideDataLabel: true
+              label: 'Sessions',
+              axis: 'y'
             },
             {
               accessor: 'volume',
-              label: 'Vol.'
+              axis: 'z'
             }
           ]}
         />
@@ -45,7 +37,7 @@ describe('LineChart', () => {
   });
 
   test('loading placeholder', () => {
-    const wrapper = mount(<LineChart style={{ width: '30%' }} dimensions={[]} measures={[]} />);
+    const wrapper = mount(<ScatterChart style={{ width: '30%' }} measures={[]} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });
