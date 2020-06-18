@@ -116,8 +116,10 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "prettier -config ./prettier.config.js --write",
-      "git add"
+      "prettier -config ./prettier.config.js --write"
+    ],
+    "*.mdx": [
+      "prettier -config ./prettier.config.js --write --parser mdx"
     ]
   }
 }
