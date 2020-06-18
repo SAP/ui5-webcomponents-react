@@ -1,55 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Create a Form should create a FormGroup and put ungrouped FormItems into it 1`] = `
-<div
-  class="Form-form-0"
-  style="grid-template-columns: repeat(24, 1fr); --ui5wcr_form_full_span: span 24; --ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4;"
->
-  <ui5-title
-    class="Form-formTitle-0"
-    level="H3"
-  >
-    Test form
-  </ui5-title>
-  <ui5-title
-    level="H5"
-    style="padding-bottom: 0.75rem; grid-column: span 12;"
-  />
-  <ui5-title
-    level="H5"
-    style="padding-bottom: 0.75rem; grid-column: span 12;"
-  />
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 1;"
-  >
-    item 1:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-  >
-    <ui5-input
-      type="Text"
-      value-state="None"
-    />
-  </div>
-  <ui5-label
-    class="FormItem-label-0"
-    style="grid-column-start: 13;"
-  >
-    item 2:
-  </ui5-label>
-  <div
-    class="FormItem-content-0"
-  >
-    <ui5-input
-      type="Number"
-      value-state="None"
-    />
-  </div>
-</div>
-`;
-
 exports[`Create a Form should use a single FormGroup's title as a Form title if one is not set 1`] = `
 <div
   class="Form-form-0"

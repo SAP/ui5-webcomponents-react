@@ -58,6 +58,8 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
     for (let i = 0; i < firstColumnFormGroups.length; i++) {
       const formGroupColumnOne = firstColumnFormGroups[i];
       const formGroupColumnTwo = secondColumnFormGroups[i];
+      let childrenOfColumnOneGroup = [];
+      let childrenOfColumnTwoGroup = [];
 
       if (formGroupColumnOne) {
         formGroups.push(
@@ -69,6 +71,10 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
             {formGroupColumnOne?.props?.title ?? ''}
           </Title>
         );
+        childrenOfColumnOneGroup =
+          formGroupColumnOne.type.displayName === 'FormItem'
+            ? [formGroupColumnOne]
+            : Children.toArray(formGroupColumnOne?.props?.children);
         totalRowCount++;
       }
 
@@ -82,16 +88,11 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
             {formGroupColumnTwo?.props?.title ?? ''}
           </Title>
         );
+        childrenOfColumnTwoGroup =
+          formGroupColumnTwo.type.displayName === 'FormItem'
+            ? [formGroupColumnTwo]
+            : Children.toArray(formGroupColumnTwo?.props?.children);
       }
-
-      const childrenOfColumnOneGroup =
-        formGroupColumnOne.type.displayName === 'FormItem'
-          ? [formGroupColumnOne]
-          : Children.toArray(formGroupColumnOne?.props?.children);
-      const childrenOfColumnTwoGroup =
-        formGroupColumnTwo.type.displayName === 'FormItem'
-          ? [formGroupColumnTwo]
-          : Children.toArray(formGroupColumnTwo?.props?.children);
 
       const maxChildCount = Math.max(childrenOfColumnOneGroup.length, childrenOfColumnTwoGroup.length);
 
