@@ -7,7 +7,8 @@ const styles = {
     rowGap: '0.5rem',
     columnGap: '0.25rem',
     gridTemplateColumns: `repeat(12, 1fr)`,
-    '--ui5wcr_form_full_span': 'span 12'
+    '--ui5wcr_form_full_span': 'span 12',
+    '--ui5wcr_form_label_text_align': 'end'
   },
   formTitle: {
     borderBottom: `1px solid ${ThemingParameters.sapGroup_TitleBorderColor}`,
