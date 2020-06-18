@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
-import { ScatterChart } from '../../lib/ScatterChart';
-import { bigDataSet, complexDataSet, scatterColorDataSet, scatterComplexDataSet } from '../../resources/DemoProps';
+import { ScatterChart } from '@ui5/webcomponents-react-charts/lib/ScatterChart';
+import { scatterColorDataSet, scatterComplexDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts /  ScatterChart',

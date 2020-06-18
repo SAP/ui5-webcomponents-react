@@ -3,9 +3,9 @@ import { boolean } from '@storybook/addon-knobs';
 import { mount } from 'enzyme';
 import * as React from 'react';
 import { scatterComplexDataSet } from '../../resources/DemoProps';
-import { ScatterChart } from './ScatterChart';
+import { ScatterChart } from '@ui5/webcomponents-react-charts/lib/ScatterChart';
 
-describe('LineChart', () => {
+describe('Scatter Chart', () => {
   test('Renders with data', () => {
     expect(
       mount(

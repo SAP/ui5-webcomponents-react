@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LineChart Renders with data 1`] = `
+exports[`Scatter Chart Renders with data 1`] = `
 <div
   style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
 >
@@ -14,7 +14,7 @@ exports[`LineChart Renders with data 1`] = `
 </div>
 `;
 
-exports[`LineChart loading placeholder 1`] = `
+exports[`Scatter Chart loading placeholder 1`] = `
 <div
   style="font-family: var(--sapFontFamily); width: 30%; height: 400px; position: relative;"
 >

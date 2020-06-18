@@ -83,7 +83,7 @@ const measureDefaults = {
 /**
  * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';</code>
  */
-const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<any>) => {
+const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,
     loading,
@@ -158,7 +158,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
-  console.log(dataset);
+
   return (
     <ChartContainer
       dataset={dataset}

@@ -16,8 +16,7 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  ZAxis,
-  Label
+  ZAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
@@ -30,19 +29,9 @@ import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding }
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 
 interface MeasureConfig extends IChartMeasure {
-  /**
-   * Line Width
-   * @default 1
-   */
-  width?: number;
-  /**
-   * Line Opacity
-   * @default 1
-   */
   opacity?: number;
   /**
    * Defines axis of measures
-   * @default 1
    */
   axis: 'x' | 'y' | 'z';
 }
@@ -62,16 +51,6 @@ export interface ScatterChartProps extends IChartBaseProps {
    * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
-   * <h4>Optional properties</h4>
-   *
-   * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
-   * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
-   * - `formatter`: function will be called for each data label and allows you to format it according to your needs
-   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this line.
-   * - `DataLabel`: a custom component to be used for the data label
-   * - `width`: line width, defaults to `1`
-   * - `opacity`: line opacity, defaults to `1`
-   *
    */
   measures?: MeasureConfig[];
 }
@@ -81,9 +60,9 @@ const measureDefaults = {
 };
 
 /**
- * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';</code>
+ * <code>import { ScatterChart } from '@ui5/webcomponents-react-charts/lib/ScatterChart';</code>
  */
-const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps, ref: Ref<any>) => {
+const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,
     loading,
@@ -136,17 +115,13 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     },
     [onDataPointClick]
   );
-
   const isBigDataSet = dataset?.length > 30 ?? false;
 
-  const xMeasure = measures.filter(({ axis }) => axis === 'x');
-  const yMeasure = measures.filter(({ axis }) => axis === 'y');
-  const zMeasure = measures.filter(({ axis }) => axis === 'z');
+  const xMeasure = measures.find(({ axis }) => axis === 'x');
+  const yMeasure = measures.find(({ axis }) => axis === 'y');
+  const zMeasure = measures.find(({ axis }) => axis === 'z');
 
-  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(
-    dataset?.[0].data,
-    measures.filter(({ axis }) => axis === 'y')
-  );
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset?.[0].data, [yMeasure]);
   const xAxisHeights = useObserveXAxisHeights(chartRef, 1);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
 
@@ -175,36 +150,31 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
         {chartConfig.xAxisVisible && (
           <XAxis
             type={'number'}
-            key={xMeasure?.[0]?.accessor}
-            dataKey={xMeasure?.[0]?.accessor}
+            key={xMeasure?.accessor}
+            dataKey={xMeasure?.accessor}
             xAxisId={0}
-            interval={xMeasure?.[0]?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-            tick={<XAxisTicks config={xMeasure?.[0]} />}
+            interval={xMeasure?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
+            tick={<XAxisTicks config={xMeasure} />}
             padding={xAxisPadding}
             height={xAxisHeights[0]}
-            label={xMeasure?.[0]?.label ? { value: xMeasure?.[0]?.label, dy: 15, position: 'insideRight' } : 0}
+            label={xMeasure?.label ? { value: xMeasure?.label, dy: 15, position: 'insideRight' } : 0}
           />
         )}
         <YAxis
-          label={yMeasure?.[0]?.label ? { value: yMeasure?.[0]?.label, angle: -90, position: 'insideLeft' } : false}
+          label={yMeasure?.label ? { value: yMeasure?.label, angle: -90, position: 'insideLeft' } : false}
           type={'number'}
-          name={yMeasure?.[0]?.accessor}
+          name={yMeasure?.accessor}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
-          key={yMeasure?.[0]?.accessor}
-          dataKey={yMeasure?.[0]?.accessor}
-          tickFormatter={yMeasure?.[0]?.formatter}
+          key={yMeasure?.accessor}
+          dataKey={yMeasure?.accessor}
+          tickFormatter={yMeasure?.formatter}
           interval={0}
-          tick={<YAxisTicks config={yMeasure[0]} />}
-          width={yMeasure?.[0]?.label ? yAxisWidth + 10 : yAxisWidth}
-          margin={yMeasure?.[0]?.label ? { left: 200 } : 0}
+          tick={<YAxisTicks config={yMeasure} />}
+          width={yMeasure?.label ? yAxisWidth + 10 : yAxisWidth}
+          margin={yMeasure?.label ? { left: 200 } : 0}
         />
-        <ZAxis
-          name={zMeasure?.[0]?.accessor}
-          dataKey={zMeasure?.[0]?.accessor}
-          range={[0, 5000]}
-          key={zMeasure?.[0]?.accessor}
-        />
+        <ZAxis name={zMeasure?.accessor} dataKey={zMeasure?.accessor} range={[0, 5000]} key={zMeasure?.accessor} />
         {dataset?.map((dataSet, index) => {
           return (
             <Scatter
