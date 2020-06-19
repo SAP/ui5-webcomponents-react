@@ -12,6 +12,7 @@ import { PieChartPlaceholder } from './lib/PieChartPlaceholder';
 import { RadarChart } from './lib/RadarChart';
 import { RadialChart } from './lib/RadialChart';
 import { ScatterChart } from './lib/ScatterChart';
+import { ScatterChartPlaceholder } from './lib/ScatterChartPlaceholder';
 
 export {
   ColumnChart,
@@ -26,5 +27,6 @@ export {
   BarChartPlaceholder,
   ColumnChartPlaceholder,
   LineChartPlaceholder,
-  PieChartPlaceholder
+  PieChartPlaceholder,
+  ScatterChartPlaceholder
 };
