@@ -52,10 +52,45 @@ exports[`Scatter Chart loading placeholder 1`] = `
           x="10"
           y="135"
         />
-        <path
-          d="M20 135 L40 80 L60 70 L80 30 L100 50 L120 65 L 135 100 L120 67 L100 52 L80 32 L60 72 L40 82 L20 137 Z"
-          fill="none"
-          stroke-width="2"
+        <circle
+          cx="20"
+          cy="90"
+          r="2"
+        />
+        <circle
+          cx="40"
+          cy="58"
+          r="3"
+        />
+        <circle
+          cx="60"
+          cy="108"
+          r="14"
+        />
+        <circle
+          cx="85"
+          cy="87"
+          r="8"
+        />
+        <circle
+          cx="105"
+          cy="50"
+          r="6"
+        />
+        <circle
+          cx="125"
+          cy="115"
+          r="4"
+        />
+        <circle
+          cx="78"
+          cy="58"
+          r="10"
+        />
+        <circle
+          cx="28"
+          cy="115"
+          r="4"
         />
       </clipPath>
       <linearGradient
