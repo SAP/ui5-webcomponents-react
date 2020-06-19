@@ -3,7 +3,7 @@
 exports[`Create a Form should use a single FormGroup's title as a Form title if one is not set 1`] = `
 <div
   class="Form-form-0"
-  style="grid-template-columns: repeat(24, 1fr); --ui5wcr_form_full_span: span 24; --ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4;"
+  style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; --ui5wcr_form_full_span: span 24; grid-template-columns: repeat(24, 1fr);"
 >
   <ui5-title
     class="Form-formTitle-0"
@@ -14,6 +14,7 @@ exports[`Create a Form should use a single FormGroup's title as a Form title if 
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 1:
   </ui5-label>
@@ -28,6 +29,7 @@ exports[`Create a Form should use a single FormGroup's title as a Form title if 
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 2:
   </ui5-label>
@@ -45,7 +47,7 @@ exports[`Create a Form should use a single FormGroup's title as a Form title if 
 exports[`Create a Form size rate L; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
 <div
   class="Form-form-0"
-  style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4;"
+  style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; --ui5wcr_form_full_span: span 12; grid-template-columns: repeat(12, 1fr);"
 >
   <ui5-title
     class="Form-formTitle-0"
@@ -62,6 +64,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 1:
   </ui5-label>
@@ -76,6 +79,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 2:
   </ui5-label>
@@ -96,6 +100,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 1:
   </ui5-label>
@@ -110,6 +115,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 2:
   </ui5-label>
@@ -127,7 +133,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
 exports[`Create a Form size rate M; should create Label and Element with 16% and 83% width respectively and display: flex for top FormItem div 1`] = `
 <div
   class="Form-form-0"
-  style="--ui5wcr_form_content_span: 10; --ui5wcr_form_label_span: 2;"
+  style="--ui5wcr_form_content_span: 10; --ui5wcr_form_label_span: 2; --ui5wcr_form_full_span: span 12; grid-template-columns: repeat(12, 1fr);"
 >
   <ui5-title
     class="Form-formTitle-0"
@@ -144,6 +150,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 1:
   </ui5-label>
@@ -158,6 +165,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 2:
   </ui5-label>
@@ -178,6 +186,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 1:
   </ui5-label>
@@ -192,6 +201,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 2:
   </ui5-label>
@@ -209,7 +219,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
 exports[`Create a Form size rate S; should create Label and Element with 100% width and display: block for top FormItem div 1`] = `
 <div
   class="Form-form-0"
-  style="--ui5wcr_form_content_span: 12; --ui5wcr_form_label_span: 12; --ui5wcr_form_label_text_align: start;"
+  style="--ui5wcr_form_content_span: 12; --ui5wcr_form_label_span: 12; --ui5wcr_form_full_span: span 12; grid-template-columns: repeat(12, 1fr); --ui5wcr_form_label_text_align: start;"
 >
   <ui5-title
     class="Form-formTitle-0"
@@ -226,6 +236,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 1:
   </ui5-label>
@@ -240,6 +251,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 2:
   </ui5-label>
@@ -260,6 +272,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 1:
   </ui5-label>
@@ -274,6 +287,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 2:
   </ui5-label>
@@ -291,7 +305,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
 exports[`Create a Form size rate XL; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
 <div
   class="Form-form-0"
-  style="grid-template-columns: repeat(24, 1fr); --ui5wcr_form_full_span: span 24; --ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4;"
+  style="--ui5wcr_form_content_span: 8; --ui5wcr_form_label_span: 4; --ui5wcr_form_full_span: span 24; grid-template-columns: repeat(24, 1fr);"
 >
   <ui5-title
     class="Form-formTitle-0"
@@ -314,6 +328,7 @@ exports[`Create a Form size rate XL; should create Label and Element with 33% an
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 1:
   </ui5-label>
@@ -328,6 +343,7 @@ exports[`Create a Form size rate XL; should create Label and Element with 33% an
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 13;"
+    wrap="true"
   >
     item 1:
   </ui5-label>
@@ -342,6 +358,7 @@ exports[`Create a Form size rate XL; should create Label and Element with 33% an
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 1;"
+    wrap="true"
   >
     item 2:
   </ui5-label>
@@ -356,6 +373,7 @@ exports[`Create a Form size rate XL; should create Label and Element with 33% an
   <ui5-label
     class="FormItem-label-0"
     style="grid-column-start: 13;"
+    wrap="true"
   >
     item 2:
   </ui5-label>
