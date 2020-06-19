@@ -1,6 +1,6 @@
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
-import React, { cloneElement, FC, ReactElement, ReactNode, ReactNodeArray } from 'react';
+import React, { cloneElement, FC, isValidElement, ReactElement, ReactNode, ReactNodeArray } from 'react';
 
 export interface FormItemProps {
   /**
@@ -17,6 +17,7 @@ const useStyles = createComponentStyles(
   {
     label: {
       gridColumnEnd: 'span var(--ui5wcr_form_label_span)',
+      justifySelf: 'var(--ui5wcr_form_label_text_align)',
       textAlign: 'var(--ui5wcr_form_label_text_align)'
     },
     content: {
@@ -39,18 +40,21 @@ const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
 
   return (
     <>
-      {label != null && typeof label === 'string' && (
-        <Label className={classes.label} style={{ gridColumnStart }}>
+      {typeof label === 'string' && (
+        <Label className={classes.label} style={{ gridColumnStart }} wrap>
           {label ? `${label}:` : ''}
         </Label>
       )}
-      {label != null &&
-        typeof label !== 'string' &&
-        cloneElement(label, {
-          className: `${classes.label} ${label.props.className ?? ''}`,
-          style: { gridColumnStart, ...(label.props.style || {}) },
-          children: label.props.children ? `${label.props.children}:` : ''
-        })}
+      {isValidElement(label) &&
+        cloneElement(
+          label,
+          {
+            wrap: label.props.wrap ?? true,
+            className: `${classes.label} ${label.props.className ?? ''}`,
+            style: { gridColumnStart, ...(label.props.style || {}) }
+          },
+          label.props.children ? `${label.props.children}:` : ''
+        )}
 
       <div className={classes.content}>{children}</div>
     </>

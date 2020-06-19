@@ -1,10 +1,23 @@
+import { useConsolidatedRef } from '@ui5/webcomponents-react-base/hooks/useConsolidatedRef';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
+import { Device } from '@ui5/webcomponents-react-base/lib/Device';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
-import { useViewportRange } from '@ui5/webcomponents-react-base/lib/useViewportRange';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React, { Children, cloneElement, CSSProperties, FC, forwardRef, ReactElement, Ref, useMemo } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  CSSProperties,
+  FC,
+  forwardRef,
+  ReactElement,
+  Ref,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Form.jss';
 
@@ -28,8 +41,30 @@ const useStyles = createComponentStyles(styles, { name: 'Form' });
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
   const { title, children, className, slot, style, tooltip } = props;
 
+  const formRef = useConsolidatedRef<HTMLDivElement>(ref);
+  // use the window range set as first best guess
+  const [currentRange, setCurrentRange] = useState(Device.media.getCurrentRange('StdExt', window.innerWidth).name);
+  const lastRange = useRef(currentRange);
+
+  useEffect(() => {
+    const observer = new ResizeObserver(([form]) => {
+      const newRange = Device.media.getCurrentRange('StdExt', form.contentRect.width).name;
+      if (lastRange.current !== newRange) {
+        lastRange.current = newRange;
+        setCurrentRange(newRange);
+      }
+    });
+
+    if (formRef.current) {
+      observer.observe(formRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [formRef, setCurrentRange, lastRange]);
+
   const classes = useStyles();
-  const currentRange = useViewportRange('StdExt');
 
   const [formGroups, updatedTitle] = useMemo(() => {
     let formGroups: any[] = [];
@@ -146,6 +181,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
   return (
     <div
+      ref={formRef}
       slot={slot}
       className={formClassNames.valueOf()}
       title={tooltip}
