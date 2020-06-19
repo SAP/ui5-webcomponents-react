@@ -28,8 +28,7 @@ import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 
-interface MeasureConfig extends IChartMeasure {
-  opacity?: number;
+interface MeasureConfig extends Omit<IChartMeasure, 'color' | 'hideDataLabel' | 'DataLabel'> {
   /**
    * Defines axis of measures
    */
@@ -37,20 +36,69 @@ interface MeasureConfig extends IChartMeasure {
 }
 
 interface ScatterDataObject {
+  /**
+   * Defines label of the dataset
+   */
   label?: string;
+  /**
+   * Contains the data of the chart
+   */
   data?: any[];
+  /**
+   * Any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
+   */
   color?: CSSProperties['color'];
+  /**
+   * Defines opacity of the displayed dataset
+   * @default 1
+   */
+  opacity?: number;
 }
 
 export interface ScatterChartProps extends IChartBaseProps {
+  /**
+   * An array of dataset objects. Each object defines a dataset which is displayed.
+   *
+   * <h4>Optional properties</h4>
+   *  - `label`: string containing the label of the dataset which is also displayed in the legend.
+   *  - `data`: array of objects which contains the data.
+   *  - `color`: any valid CSS color or CSS variable. Defaults to the `sapChart_Ordinal` colors.
+   *  - ´opacity´: number contains value of opacity of dataset
+   *
+   *  Example of dataset:
+   *    <code>
+   *      [
+   *        {
+   *         label: 'America',
+   *         opacity: 0.7,
+   *         data: [
+   *           {
+   *             users: 120,
+   *             sessions: 200,
+   *             volume: 302
+   *           },
+   *           {
+   *             users: 20,
+   *             sessions: 230,
+   *             volume: 392
+   *           }
+   *         ]
+   *        }
+   *      ]
+   *    </code>
+   */
   dataset?: ScatterDataObject[];
   /**
-   * An array of config objects. Each object is defining one line in the chart.
+   * An array of config objects. Each object is defining one axis in the chart.
    *
    * <h4>Required properties</h4>
-   * - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
-   *   Can also be a getter.
+   *  - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
+   *     Can also be a getter.
+   *  - `axis`: string containing definition of axis. Must be x, y or z data to the axis.
    *
+   * <h4>Optional properties</h4>
+   *  - `label`: Label to display in tooltips. Falls back to the <code>accessor</code> if not present.
+   *  - `formatter`: function will be called for each data label and allows you to format it according to your needs. Also addresses labels of axis.
    */
   measures?: MeasureConfig[];
 }
@@ -151,6 +199,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           <XAxis
             type={'number'}
             key={xMeasure?.accessor}
+            name={xMeasure?.label}
             dataKey={xMeasure?.accessor}
             xAxisId={0}
             interval={xMeasure?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
@@ -163,7 +212,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
         <YAxis
           label={yMeasure?.label ? { value: yMeasure?.label, angle: -90, position: 'insideLeft' } : false}
           type={'number'}
-          name={yMeasure?.accessor}
+          name={yMeasure?.label}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
           key={yMeasure?.accessor}
@@ -174,10 +223,11 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           width={yMeasure?.label ? yAxisWidth + 10 : yAxisWidth}
           margin={yMeasure?.label ? { left: 200 } : 0}
         />
-        <ZAxis name={zMeasure?.accessor} dataKey={zMeasure?.accessor} range={[0, 5000]} key={zMeasure?.accessor} />
+        <ZAxis name={zMeasure?.label} dataKey={zMeasure?.accessor} range={[0, 5000]} key={zMeasure?.accessor} />
         {dataset?.map((dataSet, index) => {
           return (
             <Scatter
+              opacity={dataSet.opacity}
               data={dataSet?.data}
               name={dataSet?.label}
               fill={dataSet?.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}

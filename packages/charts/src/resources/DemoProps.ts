@@ -174,7 +174,7 @@ export const secondaryDimensionDataSet = [
 
 export const scatterComplexDataSet = [
   {
-    label: 'Volume',
+    label: 'Americas',
     data: [
       {
         users: 120,
@@ -239,7 +239,8 @@ export const scatterComplexDataSet = [
     ]
   },
   {
-    label: 'Volume',
+    label: 'APJ',
+    opacity: 0.6,
     data: [
       {
         users: 100,
@@ -307,7 +308,7 @@ export const scatterComplexDataSet = [
 
 export const scatterColorDataSet = [
   {
-    label: 'Volume',
+    label: 'Americas',
     color: 'red',
     data: [
       {
