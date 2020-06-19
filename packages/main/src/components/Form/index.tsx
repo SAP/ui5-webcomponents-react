@@ -1,8 +1,7 @@
-import { useConsolidatedRef } from '@ui5/webcomponents-react-base/hooks/useConsolidatedRef';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { Device } from '@ui5/webcomponents-react-base/lib/Device';
+import { useConsolidatedRef, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
-import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, {
