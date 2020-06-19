@@ -20,6 +20,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
@@ -86,6 +87,10 @@ const dimensionDefaults = {
 const measureDefaults = {
   formatter: defaultFormatter,
   opacity: 1
+};
+
+const valueAccessor = (attribute) => ({ payload }) => {
+  return getValueByDataKey(payload, attribute);
 };
 
 /**
@@ -169,9 +174,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
-  const valueAccessor = (attribute) => ({ payload }) => {
-    return payload[attribute];
-  };
 
   return (
     <ChartContainer
