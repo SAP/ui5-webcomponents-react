@@ -146,18 +146,15 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
   const onItemLegendClick = useLegendItemClick(onLegendClick);
 
   const onDataPointClickInternal = useCallback(
-    (payload, eventOrIndex) => {
-      if (eventOrIndex.dataKey && onDataPointClick) {
+    (payload, eventOrIndex, event) => {
+      if (payload && onDataPointClick) {
         onDataPointClick(
-          enrichEventWithDetails(
-            {},
-            {
-              value: eventOrIndex.value,
-              dataKey: eventOrIndex.dataKey,
-              dataIndex: eventOrIndex.index,
-              payload: eventOrIndex.payload
-            }
-          )
+          enrichEventWithDetails(event, {
+            value: payload.node,
+            dataKey: payload.zAxis.dataKey,
+            dataIndex: eventOrIndex,
+            payload: payload.payload
+          })
         );
       }
     },
@@ -187,7 +184,6 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     >
       <ScatterChartLib
         margin={marginChart}
-        onClick={onDataPointClickInternal}
         className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
       >
         <CartesianGrid
@@ -227,9 +223,12 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
         {dataset?.map((dataSet, index) => {
           return (
             <Scatter
+              className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+              onMouseDown={onDataPointClickInternal}
               opacity={dataSet.opacity}
               data={dataSet?.data}
               name={dataSet?.label}
+              key={dataSet?.label}
               fill={dataSet?.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               isAnimationActive={noAnimation === false}
             />
