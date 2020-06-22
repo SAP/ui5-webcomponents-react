@@ -68,7 +68,7 @@ const measureDefaults = {
 /**
  * <code>import { RadarChart } from '@ui5/webcomponents-react-charts/lib/RadarChart';</code>
  */
-const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref: Ref<any>) => {
+const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,
