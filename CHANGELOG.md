@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-rc.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.4...v0.10.0-rc.5) (2020-06-22)
+
+
+### Bug Fixes
+
+* **BarChart/ColumnChart:** fix data labels for nested data accessors ([#579](https://github.com/SAP/ui5-webcomponents-react/issues/579)) ([605cb06](https://github.com/SAP/ui5-webcomponents-react/commit/605cb06f5b5929a190e9c962535e666557c6c2f2))
+* **Form:** fix bad import ([12e3278](https://github.com/SAP/ui5-webcomponents-react/commit/12e32789cfddb40a6f56738e6d1fbe5904e7d459))
+
+
+### Features
+
+* **Form:** add props to control labelSpan and columns for each size ([#578](https://github.com/SAP/ui5-webcomponents-react/issues/578)) ([40d9579](https://github.com/SAP/ui5-webcomponents-react/commit/40d95790bb330dc4a1a5e6077c278de78825967b))
+* **ScatterChart:** initial component implementation ([#577](https://github.com/SAP/ui5-webcomponents-react/issues/577)) ([bcadbea](https://github.com/SAP/ui5-webcomponents-react/commit/bcadbeaabbe523ed1e7a24ff964cb3da67a9d9b2)), closes [#570](https://github.com/SAP/ui5-webcomponents-react/issues/570)
+
+
+
+
+
 # [0.10.0-rc.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.3...v0.10.0-rc.4) (2020-06-18)
 
 
