@@ -20,6 +20,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabelBar } from '../../hooks/useLongestYAxisLabelBar';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
@@ -38,6 +39,10 @@ const dimensionDefaults = {
 const measureDefaults = {
   formatter: defaultFormatter,
   opacity: 1
+};
+
+const valueAccessor = (attribute) => ({ payload }) => {
+  return getValueByDataKey(payload, attribute);
 };
 
 interface MeasureConfig extends IChartMeasure {
@@ -164,9 +169,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
   const [width, legendPosition] = useLongestYAxisLabelBar(dataset, dimensions);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const [xAxisHeight] = useObserveXAxisHeights(chartRef, 1);
-  const valueAccessor = (attribute) => ({ payload }) => {
-    return payload[attribute];
-  };
 
   return (
     <ChartContainer
