@@ -10,9 +10,9 @@ import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 
 import {
   CartesianGrid,
   Legend,
+  ReferenceLine,
   Scatter,
   ScatterChart as ScatterChartLib,
-  ReferenceLine,
   Tooltip,
   XAxis,
   YAxis,
@@ -20,17 +20,18 @@ import {
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
+import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
+import { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps';
-import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'color' | 'hideDataLabel' | 'DataLabel'> {
   /**
-   * Defines axis of measures
+   * Defines the axis of the measure
    */
   axis: 'x' | 'y' | 'z';
 }
@@ -55,13 +56,23 @@ interface ScatterDataObject {
   opacity?: number;
 }
 
-export interface ScatterChartProps extends IChartBaseProps {
+interface IScatterChartConfig extends ICartesianChartConfig {
+  referenceLineX?: {
+    label: string;
+    value: number;
+    color: string;
+  };
+}
+
+export interface ScatterChartProps extends IChartBaseProps<IScatterChartConfig> {
   /**
    * An array of dataset objects. Each object defines a dataset which is displayed.
    *
+   * <h4>Required properties</h4>
+   *  - `data`: array of objects which contains the data.
+   *
    * <h4>Optional properties</h4>
    *  - `label`: string containing the label of the dataset which is also displayed in the legend.
-   *  - `data`: array of objects which contains the data.
    *  - `color`: any valid CSS color or CSS variable. Defaults to the `sapChart_Ordinal` colors.
    *  - ´opacity´: number contains value of opacity of dataset
    *
@@ -247,7 +258,13 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
             stroke={chartConfig.referenceLine.color}
             y={chartConfig.referenceLine.value}
             label={chartConfig.referenceLine.label}
-            yAxisId={'left'}
+          />
+        )}
+        {chartConfig.referenceLineX && (
+          <ReferenceLine
+            stroke={chartConfig.referenceLineX.color}
+            x={chartConfig.referenceLineX.value}
+            label={chartConfig.referenceLineX.label}
           />
         )}
         <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />

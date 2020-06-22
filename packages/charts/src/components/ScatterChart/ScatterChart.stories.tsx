@@ -27,6 +27,7 @@ export const renderStory = () => (
       {
         accessor: 'sessions',
         label: 'Sessions',
+        formatter: (val) => `${val}k`,
         axis: 'y'
       },
       {
@@ -70,43 +71,6 @@ export const renderStoryWithCustomColor = () => (
 
 renderStoryWithCustomColor.story = {
   name: 'With custom color'
-};
-
-export const renderCustomDataLabelStory = () => {
-  return (
-    <ScatterChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
-      dataset={scatterComplexDataSet}
-      style={{ width: '100%' }}
-      measures={[
-        {
-          accessor: 'users',
-          label: 'Users',
-          formatter: (e) => e + ' Users',
-          axis: 'x'
-        },
-        {
-          accessor: 'sessions',
-          label: 'Active Sessions',
-          formatter: (e) => e + ' Sessions',
-          hideDataLabel: true,
-          axis: 'y'
-        },
-        {
-          accessor: 'volume',
-          axis: 'z'
-        }
-      ]}
-    />
-  );
-};
-
-renderCustomDataLabelStory.story = {
-  name: 'With formatter'
 };
 
 export const loadingPlaceholder = () => <ScatterChart style={{ width: '100%' }} measures={[]} />;
