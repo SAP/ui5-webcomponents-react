@@ -8,7 +8,10 @@ export default {
   title: 'Components / ActionSheet',
   component: ActionSheet,
   argTypes: {
-    ...createSelectArgTypes({ placementType: PlacementType })
+    ...createSelectArgTypes({ placementType: PlacementType }),
+    children: {
+      type: null
+    }
   },
   args: {
     placement: PlacementType.Bottom

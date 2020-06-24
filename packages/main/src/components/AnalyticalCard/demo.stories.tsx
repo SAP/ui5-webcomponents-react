@@ -17,7 +17,10 @@ export default {
       arrowIndicator: DeviationIndicator,
       indicatorState: ValueState,
       valueState: ValueState,
-      counterState: ValueState
+      counterState: ValueState,
+      children: {
+        type: null
+      }
     })
   },
   args: {
