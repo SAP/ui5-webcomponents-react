@@ -12,6 +12,12 @@ export default {
     },
     chartConfig: {
       type: null
+    },
+    measures: {
+      type: null
+    },
+    dimensions: {
+      type: null
     }
   }
 };

@@ -31,6 +31,12 @@ export default {
   argTypes: {
     dataset: {
       type: null
+    },
+    measure: {
+      type: null
+    },
+    dimension: {
+      type: null
     }
   },
   args: {

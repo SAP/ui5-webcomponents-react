@@ -11,6 +11,9 @@ export default {
   argTypes: {
     dataset: {
       type: null
+    },
+    measures: {
+      type: null
     }
   },
   args: {

@@ -9,6 +9,12 @@ export default {
   argTypes: {
     dataset: {
       type: null
+    },
+    measures: {
+      type: null
+    },
+    dimensions: {
+      type: null
     }
   },
   chartConfig: {

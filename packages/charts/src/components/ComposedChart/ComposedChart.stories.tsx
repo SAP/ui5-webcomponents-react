@@ -11,6 +11,12 @@ export default {
     ...createSelectArgTypes({ layout: ['horizontal', 'vertical'] }),
     dataset: {
       type: null
+    },
+    measures: {
+      type: null
+    },
+    dimensions: {
+      type: null
     }
   },
   args: {
