@@ -9,13 +9,13 @@ export default {
   component: ScatterChart
 };
 
-export const renderStory = () => (
+export const renderStory = (props) => (
   <ScatterChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
-    onLegendClick={action('onLegendClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dataset={scatterComplexDataSet}
     style={{ width: '100%' }}
     measures={[
@@ -42,12 +42,13 @@ renderStory.story = {
   name: 'Default'
 };
 
-export const renderStoryWithCustomColor = () => (
+export const renderStoryWithCustomColor = (props) => (
   <ScatterChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dataset={scatterColorDataSet}
     style={{ width: '100%' }}
     measures={[
