@@ -8,7 +8,7 @@ export default {
   title: 'UI5 Web Components / BusyIndicator',
   component: BusyIndicator,
   argTypes: {
-    ...createSelectArgTypes({ sie: BusyIndicatorSize })
+    ...createSelectArgTypes({ size: BusyIndicatorSize })
   },
   args: {
     active: true,
