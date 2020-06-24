@@ -3,6 +3,7 @@ import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { ScatterChart } from '@ui5/webcomponents-react-charts/lib/ScatterChart';
 import { scatterColorDataSet, scatterComplexDataSet } from '../../resources/DemoProps';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export default {
   title: 'Charts /  ScatterChart',
@@ -11,11 +12,25 @@ export default {
     dataset: {
       type: null
     }
+  },
+  args: {
+    chartConfig: {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      zoomingTool: false,
+      resizeDebounce: 250
+    }
   }
 };
 
 export const renderStory = (props) => (
   <ScatterChart
+    chartConfig={props.chartConfig}
     loading={props.loading}
     noLegend={props.noLegend}
     noAnimation={props.noAnimation}
@@ -49,6 +64,7 @@ renderStory.story = {
 
 export const renderStoryWithCustomColor = (props) => (
   <ScatterChart
+    chartConfig={props.chartConfig}
     loading={props.loading}
     noLegend={props.noLegend}
     noAnimation={props.noAnimation}

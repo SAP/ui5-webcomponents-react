@@ -2,6 +2,7 @@ import React from 'react';
 import { ComposedChart } from '../../lib/ComposedChart';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export default {
   title: 'Charts /  ComposedChart',
@@ -13,13 +14,25 @@ export default {
     }
   },
   args: {
-    layout: 'vertical'
+    layout: 'vertical',
+    chartConfig: {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      zoomingTool: false,
+      resizeDebounce: 250
+    }
   }
 };
 
 export const renderStory = (props) => {
   return (
     <ComposedChart
+      chartConfig={props.chartConfig}
       loading={props.loading}
       noLegend={props.noLegend}
       noAnimation={props.noAnimation}
@@ -62,6 +75,7 @@ renderStory.storyName = 'Default';
 
 export const renderStoryWithCustomColor = (props) => (
   <ComposedChart
+    chartConfig={props.chartConfig}
     loading={props.loading}
     noLegend={props.noLegend}
     noAnimation={props.noAnimation}
@@ -78,6 +92,7 @@ renderStoryWithCustomColor.storyName = 'With custom color';
 
 export const withSecondaryDimension = (props) => (
   <ComposedChart
+    chartConfig={props.chartConfig}
     loading={props.loading}
     noLegend={props.noLegend}
     noAnimation={props.noAnimation}
@@ -162,9 +177,7 @@ export const renderCustomDataLabelStory = (props) => {
         }
       ]}
       style={{ width: '95%', height: '40vh' }}
-      chartConfig={{
-        zoomingTool: true
-      }}
+      chartConfig={props.chartConfig}
     />
   );
 };

@@ -1,12 +1,16 @@
 import React from 'react';
 import { DonutChart } from '../../lib/DonutChart';
 import { simpleDataSet } from '../../resources/DemoProps';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export default {
   title: 'Charts /  DonutChart',
   component: DonutChart,
   argTypes: {
     dataset: {
+      type: null
+    },
+    chartConfig: {
       type: null
     }
   },

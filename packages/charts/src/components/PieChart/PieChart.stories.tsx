@@ -12,6 +12,9 @@ export default {
   argTypes: {
     dataset: {
       type: null
+    },
+    chartConfig: {
+      type: null
     }
   }
 };

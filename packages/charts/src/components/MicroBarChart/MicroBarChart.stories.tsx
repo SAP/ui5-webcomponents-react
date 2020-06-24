@@ -1,5 +1,6 @@
 import React from 'react';
 import { MicroBarChart } from './MicroBarChart';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const singleData = [
   {
@@ -30,6 +31,19 @@ export default {
   argTypes: {
     dataset: {
       type: null
+    }
+  },
+  args: {
+    chartConfig: {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      zoomingTool: false,
+      resizeDebounce: 250
     }
   }
 };

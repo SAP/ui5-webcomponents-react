@@ -1,12 +1,16 @@
 import React from 'react';
 import { complexDataSet, simpleDataSet } from '../../resources/DemoProps';
 import { RadarChart } from './RadarChart';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export default {
   title: 'Charts /  RadarChart',
   component: RadarChart,
   argTypes: {
     dataset: {
+      type: null
+    },
+    chartConfig: {
       type: null
     }
   }

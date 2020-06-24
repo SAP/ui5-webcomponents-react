@@ -1,6 +1,7 @@
 import React from 'react';
 import { LineChart } from '../../lib/LineChart';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export default {
   title: 'Charts /  LineChart',
@@ -11,7 +12,18 @@ export default {
     }
   },
   args: {
-    dataset: complexDataSet
+    dataset: complexDataSet,
+    chartConfig: {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      zoomingTool: false,
+      resizeDebounce: 250
+    }
   }
 };
 
@@ -24,6 +36,7 @@ export const renderStory = (props) => (
     onLegendClick={props.onLegendClick}
     dataset={complexDataSet}
     style={{ width: '100%' }}
+    chartConfig={props.chartConfig}
     dimensions={[
       {
         accessor: 'name',
@@ -63,6 +76,7 @@ export const renderStoryWithCustomColor = (props) => (
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red' }]}
     dataset={simpleDataSet}
+    chartConfig={props.chartConfig}
     style={{ width: '95%', height: '40vh' }}
   />
 );
@@ -72,6 +86,7 @@ renderStoryWithCustomColor.storyName = 'With custom color';
 export const withSecondaryDimension = (props) => (
   <LineChart
     loading={props.loading}
+    chartConfig={props.chartConfig}
     noLegend={props.noLegend}
     noAnimation={props.noAnimation}
     onDataPointClick={props.onDataPointClick}
@@ -89,6 +104,7 @@ export const renderLabelStory = (props) => {
   return (
     <LineChart
       loading={props.loading}
+      chartConfig={props.chartConfig}
       noLegend={props.noLegend}
       noAnimation={props.noAnimation}
       onDataPointClick={props.onDataPointClick}
@@ -107,9 +123,6 @@ export const renderLabelStory = (props) => {
       ]}
       dataset={complexDataSet}
       style={{ width: '95%', height: '40vh' }}
-      chartConfig={{
-        zoomingTool: true
-      }}
     />
   );
 };
@@ -140,9 +153,7 @@ export const renderCustomDataLabelStory = (props) => {
         }
       ]}
       style={{ width: '95%', height: '40vh' }}
-      chartConfig={{
-        zoomingTool: true
-      }}
+      chartConfig={props.chartConfig}
     />
   );
 };

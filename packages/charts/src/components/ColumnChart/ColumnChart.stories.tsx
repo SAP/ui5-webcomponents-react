@@ -1,6 +1,7 @@
 import React from 'react';
 import { ColumnChart } from '../../lib/ColumnChart';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export default {
   title: 'Charts /  ColumnChart',
@@ -9,11 +10,25 @@ export default {
     dataset: {
       type: null
     }
+  },
+  args: {
+    chartConfig: {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      zoomingTool: false,
+      resizeDebounce: 250
+    }
   }
 };
 
 export const renderStory = (props) => (
   <ColumnChart
+    chartConfig={props.chartConfig}
     loading={props.loading}
     noLegend={props.noLegend}
     noAnimation={props.noAnimation}
@@ -51,6 +66,7 @@ renderStory.storyName = 'Default';
 
 export const renderStoryWithCustomColor = (props) => (
   <ColumnChart
+    chartConfig={props.chartConfig}
     loading={props.loading}
     noLegend={props.noLegend}
     noAnimation={props.noAnimation}
@@ -67,6 +83,7 @@ renderStoryWithCustomColor.storyName = 'With custom color';
 
 export const withSecondaryDimension = (props) => (
   <ColumnChart
+    chartConfig={props.chartConfig}
     loading={props.loading}
     noLegend={props.noLegend}
     noAnimation={props.noAnimation}
@@ -82,6 +99,7 @@ withSecondaryDimension.storyName = 'With secondary dimension';
 
 export const renderLabelStory = (props) => (
   <ColumnChart
+    chartConfig={props.chartConfig}
     loading={props.loading}
     noLegend={props.noLegend}
     noAnimation={props.noAnimation}
@@ -103,9 +121,6 @@ export const renderLabelStory = (props) => (
     ]}
     dataset={complexDataSet}
     style={{ width: '95%', height: '40vh' }}
-    chartConfig={{
-      zoomingTool: true
-    }}
   />
 );
 
@@ -113,6 +128,7 @@ renderLabelStory.storyName = 'With data labels';
 
 export const renderCustomDataLabelStory = (props) => (
   <ColumnChart
+    chartConfig={props.chartConfig}
     loading={props.loading}
     noLegend={props.noLegend}
     noAnimation={props.noAnimation}
@@ -134,9 +150,6 @@ export const renderCustomDataLabelStory = (props) => (
       }
     ]}
     style={{ width: '95%', height: '40vh' }}
-    chartConfig={{
-      zoomingTool: true
-    }}
   />
 );
 
