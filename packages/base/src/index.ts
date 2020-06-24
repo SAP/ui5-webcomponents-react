@@ -11,6 +11,7 @@ import { ThemingParameters } from './lib/ThemingParameters';
 import { useConsolidatedRef } from './lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from './lib/usePassThroughHtmlProps';
 import { deprecationNotice, enrichEventWithDetails, getScrollBarWidth } from './lib/Utils';
+import * as hooks from './lib/hooks';
 
 export {
   createComponentStyles,
@@ -27,5 +28,6 @@ export {
   CssSizeVariables,
   cssVariablesStyles,
   ThemingParameters,
-  enrichEventWithDetails
+  enrichEventWithDetails,
+  hooks
 };

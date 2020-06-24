@@ -13,12 +13,14 @@ import {
   BarChart as BarChartLib,
   Brush,
   CartesianGrid,
+  LabelList,
   Legend,
   ReferenceLine,
   Tooltip,
   XAxis,
   YAxis
 } from 'recharts';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabelBar } from '../../hooks/useLongestYAxisLabelBar';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
@@ -37,6 +39,10 @@ const dimensionDefaults = {
 const measureDefaults = {
   formatter: defaultFormatter,
   opacity: 1
+};
+
+const valueAccessor = (attribute) => ({ payload }) => {
+  return getValueByDataKey(payload, attribute);
 };
 
 interface MeasureConfig extends IChartMeasure {
@@ -92,7 +98,7 @@ export interface BarChartProps extends IChartBaseProps {
 /**
  * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';</code>
  */
-const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<any>) => {
+const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,
@@ -225,7 +231,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={<ChartDataLabel config={element} chartType="bar" position="insideRight" />}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
@@ -233,7 +238,12 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<a
               barSize={element.width}
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
-            />
+            >
+              <LabelList
+                valueAccessor={valueAccessor(element.accessor)}
+                content={<ChartDataLabel config={element} chartType="bar" position={'insideRight'} />}
+              />
+            </Bar>
           );
         })}
         {!noLegend && (

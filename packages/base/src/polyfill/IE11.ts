@@ -5,7 +5,6 @@ import 'core-js/modules/es.array.from';
 import ResizeObserver from 'resize-observer-polyfill';
 import 'intersection-observer';
 import { polyfill as scrollToPolyfill } from 'smoothscroll-polyfill';
-import 'proxy-polyfill/proxy.min.js';
 
 // @ts-ignore
 window.ResizeObserver = ResizeObserver;

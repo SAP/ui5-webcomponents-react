@@ -58,7 +58,7 @@ export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
 /**
  * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/PieChart';</code>
  */
-const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<any>) => {
+const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,

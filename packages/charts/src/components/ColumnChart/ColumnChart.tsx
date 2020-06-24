@@ -13,12 +13,14 @@ import {
   BarChart as ColumnChartLib,
   Brush,
   CartesianGrid,
+  LabelList,
   Legend,
   ReferenceLine,
   Tooltip,
   XAxis,
   YAxis
 } from 'recharts';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
@@ -87,10 +89,14 @@ const measureDefaults = {
   opacity: 1
 };
 
+const valueAccessor = (attribute) => ({ payload }) => {
+  return getValueByDataKey(payload, attribute);
+};
+
 /**
  * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/ColumnChart';</code>
  */
-const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
+const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,
@@ -235,7 +241,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
@@ -243,7 +248,12 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               barSize={element.width}
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
-            />
+            >
+              <LabelList
+                valueAccessor={valueAccessor(element.accessor)}
+                content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
+              />
+            </Column>
           );
         })}
         {!noLegend && (

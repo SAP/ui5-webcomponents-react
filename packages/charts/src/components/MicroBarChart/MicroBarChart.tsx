@@ -78,7 +78,7 @@ const microBarChartMargin = { left: -30, right: 30, top: 40, bottom: 30 };
 /**
  * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';</code>
  */
-const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<any>) => {
+const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
   const { loading, dataset, onDataPointClick, style, className, tooltip, slot } = props;
 
   const chartRef = useConsolidatedRef<any>(ref);

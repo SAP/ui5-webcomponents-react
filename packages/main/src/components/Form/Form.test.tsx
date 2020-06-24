@@ -58,21 +58,6 @@ describe('Create a Form', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  test('should create a FormGroup and put ungrouped FormItems into it', () => {
-    const ungroupedChildren = (
-      <Form title={'Test form'}>
-        <FormItem label={'item 1'}>
-          <Input type={InputType.Text} />
-        </FormItem>
-        <FormItem label={'item 2'}>
-          <Input type={InputType.Number} />
-        </FormItem>
-      </Form>
-    );
-    const wrapper = mount(ungroupedChildren);
-    expect(wrapper.render()).toMatchSnapshot();
-  });
-
   test("should use a single FormGroup's title as a Form title if one is not set", () => {
     const ungroupedChildren = (
       <Form>

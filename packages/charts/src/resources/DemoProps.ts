@@ -195,6 +195,209 @@ export const secondaryDimensionDataSet = [
   }
 ];
 
+export const scatterComplexDataSet = [
+  {
+    label: 'Americas',
+    data: [
+      {
+        users: 120,
+        sessions: 330,
+        volume: 744
+      },
+      {
+        users: 213,
+        sessions: 313,
+        volume: 881
+      },
+      {
+        users: 241,
+        sessions: 424,
+        volume: 670
+      },
+      {
+        users: 328,
+        sessions: 83,
+        volume: 630
+      },
+      {
+        users: 102,
+        sessions: 302,
+        volume: 126
+      },
+      {
+        users: 233,
+        sessions: 304,
+        volume: 880
+      },
+      {
+        users: 202,
+        sessions: 47,
+        volume: 452
+      },
+      {
+        users: 222,
+        sessions: 18,
+        volume: 500
+      },
+      {
+        users: 210,
+        sessions: 362,
+        volume: 892
+      },
+      {
+        users: 215,
+        sessions: 510,
+        volume: 2022
+      },
+      {
+        users: 242,
+        sessions: 402,
+        volume: 70
+      },
+      {
+        users: 20,
+        sessions: 10,
+        volume: 60
+      }
+    ]
+  },
+  {
+    label: 'APJ',
+    opacity: 0.6,
+    data: [
+      {
+        users: 100,
+        sessions: 300,
+        volume: 756
+      },
+      {
+        users: 230,
+        sessions: 330,
+        volume: 880
+      },
+      {
+        users: 240,
+        sessions: 404,
+        volume: 700
+      },
+      {
+        users: 280,
+        sessions: 80,
+        volume: 604
+      },
+      {
+        users: 100,
+        sessions: 300,
+        volume: 756
+      },
+      {
+        users: 230,
+        sessions: 330,
+        volume: 880
+      },
+      {
+        users: 20,
+        sessions: 470,
+        volume: 450
+      },
+      {
+        users: 220,
+        sessions: 180,
+        volume: 5000
+      },
+      {
+        users: 200,
+        sessions: 360,
+        volume: 879
+      },
+      {
+        users: 250,
+        sessions: 500,
+        volume: 200
+      },
+      {
+        users: 240,
+        sessions: 404,
+        volume: 700
+      },
+      {
+        users: 280,
+        sessions: 80,
+        volume: 604
+      }
+    ]
+  }
+];
+
+export const scatterColorDataSet = [
+  {
+    label: 'Americas',
+    color: 'red',
+    data: [
+      {
+        users: 120,
+        sessions: 330,
+        volume: 744
+      },
+      {
+        users: 213,
+        sessions: 313,
+        volume: 881
+      },
+      {
+        users: 241,
+        sessions: 424,
+        volume: 670
+      },
+      {
+        users: 328,
+        sessions: 83,
+        volume: 630
+      },
+      {
+        users: 102,
+        sessions: 302,
+        volume: 126
+      },
+      {
+        users: 233,
+        sessions: 304,
+        volume: 880
+      },
+      {
+        users: 202,
+        sessions: 47,
+        volume: 452
+      },
+      {
+        users: 222,
+        sessions: 18,
+        volume: 500
+      },
+      {
+        users: 210,
+        sessions: 362,
+        volume: 892
+      },
+      {
+        users: 215,
+        sessions: 510,
+        volume: 2022
+      },
+      {
+        users: 242,
+        sessions: 402,
+        volume: 70
+      },
+      {
+        users: 20,
+        sessions: 10,
+        volume: 60
+      }
+    ]
+  }
+];
+
 const concatYear = (array, year) => array.map((item) => ({ ...item, name: `${item.name} ${year}` }));
 
 export const bigDataSet = [
