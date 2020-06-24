@@ -4,7 +4,15 @@ import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } 
 
 export default {
   title: 'Charts /  LineChart',
-  component: LineChart
+  component: LineChart,
+  argTypes: {
+    dataset: {
+      type: null
+    }
+  },
+  args: {
+    dataset: complexDataSet
+  }
 };
 
 export const renderStory = (props) => (

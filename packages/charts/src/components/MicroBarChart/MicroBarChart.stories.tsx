@@ -26,7 +26,12 @@ const singleData = [
 
 export default {
   title: 'Charts /  MicroBarChart',
-  component: MicroBarChart
+  component: MicroBarChart,
+  argTypes: {
+    dataset: {
+      type: null
+    }
+  }
 };
 
 export const defaultStory = (props) => (

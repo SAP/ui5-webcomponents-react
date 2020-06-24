@@ -6,7 +6,12 @@ import { scatterColorDataSet, scatterComplexDataSet } from '../../resources/Demo
 
 export default {
   title: 'Charts /  ScatterChart',
-  component: ScatterChart
+  component: ScatterChart,
+  argTypes: {
+    dataset: {
+      type: null
+    }
+  }
 };
 
 export const renderStory = (props) => (

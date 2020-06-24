@@ -4,7 +4,12 @@ import { RadarChart } from './RadarChart';
 
 export default {
   title: 'Charts /  RadarChart',
-  component: RadarChart
+  component: RadarChart,
+  argTypes: {
+    dataset: {
+      type: null
+    }
+  }
 };
 
 export const renderStory = (props) => {

@@ -8,6 +8,11 @@ export default {
   args: {
     innerRadius: '0%',
     outerRadius: '80%'
+  },
+  argTypes: {
+    dataset: {
+      type: null
+    }
   }
 };
 

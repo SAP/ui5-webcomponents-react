@@ -10,6 +10,11 @@ export default {
     maxValue: 250,
     color: '#f0ab00',
     displayCustomValue: '150l'
+  },
+  argTypes: {
+    dataset: {
+      type: null
+    }
   }
 };
 

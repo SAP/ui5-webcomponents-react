@@ -4,7 +4,12 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
 
 export default {
   title: 'Charts /  BarChart',
-  component: BarChart
+  component: BarChart,
+  argTypes: {
+    dataset: {
+      type: null
+    }
+  }
 };
 
 export const renderStory = (props) => {

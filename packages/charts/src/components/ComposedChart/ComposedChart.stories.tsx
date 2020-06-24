@@ -7,7 +7,10 @@ export default {
   title: 'Charts /  ComposedChart',
   component: ComposedChart,
   argTypes: {
-    ...createSelectArgTypes({ layout: ['horizontal', 'vertical'] })
+    ...createSelectArgTypes({ layout: ['horizontal', 'vertical'] }),
+    dataset: {
+      type: null
+    }
   },
   args: {
     layout: 'vertical'
