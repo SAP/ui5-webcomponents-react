@@ -8,6 +8,9 @@ export const sideNavigationListItemStyles = {
       '& $icon, & $expandArrow': {
         '--sapContent_NonInteractiveIconColor': ThemingParameters.sapList_Active_TextColor
       }
+    },
+    '&[data-is-expanded]': {
+      '--ui5-listitem-border-bottom': 'none'
     }
   },
 
@@ -36,11 +39,8 @@ export const sideNavigationListItemStyles = {
     width: '0.875rem',
     height: '0.875rem',
     padding: CssSizeVariables.sapWcrSideNavigationItemExpandedArrowPadding,
-    marginLeft: 'auto'
-  },
-
-  expanded: {
-    '--ui5-listitem-border-bottom': 'none'
+    marginLeft: 'auto',
+    zIndex: 1
   },
 
   condensedExpandTriangle: {

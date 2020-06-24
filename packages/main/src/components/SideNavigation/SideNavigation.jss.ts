@@ -22,11 +22,6 @@ export const sideNavigationStyles = {
     }
   },
 
-  collapsed: {
-    width: '15rem',
-    marginLeft: '-15.0625rem'
-  },
-
   footerItemsSeparator: {
     margin: '0.25rem 0.875rem',
     height: '0.125rem',
