@@ -46,7 +46,7 @@ export const defaultStory = (props) => (
 
 defaultStory.storyName = 'Default';
 
-export const withCustomColor = () => (
+export const withCustomColor = (props) => (
   <MicroBarChart
     onDataPointClick={props.onDataPointClickHandler}
     onLegendClick={props.onLegendClickHandler}
