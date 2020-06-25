@@ -15,6 +15,9 @@ export default {
     },
     children: {
       type: null
+    },
+    ref: {
+      type: null
     }
   },
   args: {

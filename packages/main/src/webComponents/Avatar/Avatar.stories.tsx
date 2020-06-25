@@ -15,7 +15,10 @@ export default {
       imageFitType: AvatarFitType,
       shape: AvatarShape,
       size: AvatarSize
-    })
+    }),
+    ref: {
+      type: null
+    }
   },
   args: {
     backgroundColor: AvatarBackgroundColor.Accent6,

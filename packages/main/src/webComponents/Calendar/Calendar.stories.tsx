@@ -7,6 +7,11 @@ export default {
   arg: {
     maxDate: '2099-12-31',
     minDate: '2020-01-01'
+  },
+  argTypes: {
+    ref: {
+      type: null
+    }
   }
 };
 

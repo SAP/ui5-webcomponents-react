@@ -7,6 +7,11 @@ export default {
   component: Icon,
   args: {
     name: 'add'
+  },
+  argTypes: {
+    ref: {
+      type: null
+    }
   }
 };
 

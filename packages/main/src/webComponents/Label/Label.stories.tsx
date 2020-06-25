@@ -7,6 +7,9 @@ export default {
   argTypes: {
     children: {
       type: null
+    },
+    ref: {
+      type: null
     }
   }
 };

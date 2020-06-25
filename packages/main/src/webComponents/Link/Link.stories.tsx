@@ -10,6 +10,9 @@ export default {
     ...createSelectArgTypes({ design: LinkDesign }),
     children: {
       type: null
+    },
+    ref: {
+      type: null
     }
   },
   args: {

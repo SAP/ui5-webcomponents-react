@@ -11,6 +11,9 @@ export default {
     ...createSelectArgTypes({ arrowsPlacement: CarouselArrowsPlacement }),
     children: {
       type: null
+    },
+    ref: {
+      type: null
     }
   },
   args: {

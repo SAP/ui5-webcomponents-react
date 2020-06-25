@@ -7,7 +7,10 @@ export default {
   title: 'UI5 Web Components / Button',
   component: Button,
   argTypes: {
-    ...createSelectArgTypes({ design: ButtonDesign })
+    ...createSelectArgTypes({ design: ButtonDesign }),
+    ref: {
+      type: null
+    }
   },
   args: {
     design: ButtonDesign.Default,

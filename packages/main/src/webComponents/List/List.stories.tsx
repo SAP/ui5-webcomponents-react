@@ -17,6 +17,9 @@ export default {
     ...createSelectArgTypes({ mode: ListMode, separators: ListSeparators }),
     children: {
       type: null
+    },
+    ref: {
+      type: null
     }
   },
   args: {

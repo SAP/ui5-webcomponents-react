@@ -10,6 +10,9 @@ export default {
     ...createSelectArgTypes({ type: MessageStripType }),
     children: {
       type: null
+    },
+    ref: {
+      type: null
     }
   },
   args: {

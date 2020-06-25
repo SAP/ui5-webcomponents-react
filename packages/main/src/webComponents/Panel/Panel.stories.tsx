@@ -11,6 +11,9 @@ export default {
     ...createSelectArgTypes({ accessibleRole: PanelAccessibleRoles, headerLevel: TitleLevel }),
     children: {
       type: null
+    },
+    ref: {
+      type: null
     }
   },
   args: {

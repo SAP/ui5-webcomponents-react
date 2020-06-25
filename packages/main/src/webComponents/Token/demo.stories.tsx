@@ -3,7 +3,12 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Token',
-  component: Token
+  component: Token,
+  argTypes: {
+    ref: {
+      type: null
+    }
+  }
 };
 
 export const generatedDefaultStory = (props) => (

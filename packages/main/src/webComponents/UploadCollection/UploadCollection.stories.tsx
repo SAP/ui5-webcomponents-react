@@ -12,7 +12,16 @@ export default {
     subcomponents: { UploadCollectionItem }
   },
   argTypes: {
-    ...createSelectArgTypes({ mode: ListMode })
+    ...createSelectArgTypes({ mode: ListMode }),
+    ref: {
+      type: null
+    },
+    children: {
+      type: null
+    },
+    header: {
+      type: null
+    }
   },
   args: {
     mode: ListMode.None

@@ -7,6 +7,14 @@ export default {
   component: SegmentedButton,
   parameters: {
     subcomponents: { ToggleButton }
+  },
+  argTypes: {
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   }
 };
 

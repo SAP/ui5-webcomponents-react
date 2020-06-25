@@ -14,7 +14,13 @@ export default {
       horizontalAlign: PopoverHorizontalAlign,
       placementType: PlacementType,
       verticalAlign: PopoverVerticalAlign
-    })
+    }),
+    ref: {
+      type: null
+    },
+    children: {
+      type: null
+    }
   },
   args: {
     allowTargetOverlap: true,

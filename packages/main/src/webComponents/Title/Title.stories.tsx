@@ -7,7 +7,13 @@ export default {
   title: 'UI5 Web Components / Title',
   component: Title,
   argTypes: {
-    ...createSelectArgTypes({ level: TitleLevel })
+    ...createSelectArgTypes({ level: TitleLevel }),
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   },
   args: {
     level: TitleLevel.H2

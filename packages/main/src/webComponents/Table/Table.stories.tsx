@@ -10,6 +10,14 @@ export default {
   component: Table,
   parameters: {
     subcomponents: { TableColumn, TableRow, TableCell }
+  },
+  argTypes: {
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   }
 };
 

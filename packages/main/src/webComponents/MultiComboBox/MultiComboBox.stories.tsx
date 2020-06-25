@@ -14,6 +14,9 @@ export default {
     ...createSelectArgTypes({ valueState: ValueState }),
     children: {
       type: null
+    },
+    ref: {
+      type: null
     }
   },
   arg: {

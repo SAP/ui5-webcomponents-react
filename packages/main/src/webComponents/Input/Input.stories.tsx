@@ -11,9 +11,12 @@ export default {
   parameters: {
     subcomponents: { SuggestionItem }
   },
-  argsTypes: {
+  argTypes: {
     ...createSelectArgTypes({ type: InputType, valueState: ValueState }),
     children: {
+      type: null
+    },
+    ref: {
       type: null
     }
   },

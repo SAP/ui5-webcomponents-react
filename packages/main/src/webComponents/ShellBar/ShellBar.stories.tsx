@@ -18,6 +18,14 @@ export default {
     showCoPilot: true,
     showNotifications: true,
     showProductSwitch: true
+  },
+  argTypes: {
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   }
 };
 

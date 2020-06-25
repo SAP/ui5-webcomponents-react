@@ -7,7 +7,10 @@ export default {
   title: 'UI5 Web Components / CheckBox',
   component: CheckBox,
   argTypes: {
-    ...createSelectArgTypes({ valueState: ValueState })
+    ...createSelectArgTypes({ valueState: ValueState }),
+    ref: {
+      type: null
+    }
   },
   args: {
     text: 'My CheckBox Text',

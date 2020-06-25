@@ -7,7 +7,10 @@ export default {
   title: 'UI5 Web Components / RadioButton',
   component: RadioButton,
   argTypes: {
-    ...createSelectArgTypes({ value: ValueState })
+    ...createSelectArgTypes({ value: ValueState }),
+    ref: {
+      type: null
+    }
   },
   args: {
     text: 'Radio Button Text',

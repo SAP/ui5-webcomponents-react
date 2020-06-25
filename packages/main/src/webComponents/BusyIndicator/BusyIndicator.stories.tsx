@@ -11,6 +11,9 @@ export default {
     ...createSelectArgTypes({ size: BusyIndicatorSize }),
     children: {
       type: null
+    },
+    ref: {
+      type: null
     }
   },
   args: {

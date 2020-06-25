@@ -8,6 +8,11 @@ export default {
     maxValue: '23:59:59',
     value: '00:00:00',
     valueState: 'None'
+  },
+  argTypes: {
+    ref: {
+      type: null
+    }
   }
 };
 

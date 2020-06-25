@@ -13,7 +13,13 @@ export default {
     subcomponents: { Tab, TabSeparator }
   },
   argTypes: {
-    ...createSelectArgTypes({ tabLayout: TabLayout, tabsPlacement: TabContainerTabsPlacement })
+    ...createSelectArgTypes({ tabLayout: TabLayout, tabsPlacement: TabContainerTabsPlacement }),
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   },
   args: {
     tabLayout: TabLayout.Standard,

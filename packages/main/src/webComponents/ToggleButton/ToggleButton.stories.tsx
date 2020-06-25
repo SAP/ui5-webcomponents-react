@@ -7,7 +7,13 @@ export default {
   title: 'UI5 Web Components / ToggleButton',
   component: ToggleButton,
   argTypes: {
-    ...createSelectArgTypes({ design: ButtonDesign })
+    ...createSelectArgTypes({ design: ButtonDesign }),
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   },
   args: {
     design: ButtonDesign.Default

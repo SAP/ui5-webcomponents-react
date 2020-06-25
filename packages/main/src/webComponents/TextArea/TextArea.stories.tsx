@@ -7,7 +7,10 @@ export default {
   title: 'UI5 Web Components / TextArea',
   component: TextArea,
   argTypes: {
-    ...createSelectArgTypes({ valueState: ValueState })
+    ...createSelectArgTypes({ valueState: ValueState }),
+    ref: {
+      type: null
+    }
   },
   args: {
     growingMaxLines: 0,

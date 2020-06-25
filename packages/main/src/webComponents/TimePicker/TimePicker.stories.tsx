@@ -7,7 +7,10 @@ export default {
   title: 'UI5 Web Components / TimePicker',
   component: TimePicker,
   argTypes: {
-    ...createSelectArgTypes({ valueState: ValueState })
+    ...createSelectArgTypes({ valueState: ValueState }),
+    ref: {
+      type: null
+    }
   },
   args: {
     formatPattern: 'hh:mm:ss a',

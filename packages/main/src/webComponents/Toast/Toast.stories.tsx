@@ -14,7 +14,13 @@ export default {
     }
   },
   argTypes: {
-    ...createSelectArgTypes({ placement: ToastPlacement })
+    ...createSelectArgTypes({ placement: ToastPlacement }),
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   },
   args: {
     duration: 3000,

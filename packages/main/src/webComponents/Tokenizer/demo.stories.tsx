@@ -4,7 +4,12 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Tokenizer',
-  component: Tokenizer
+  component: Tokenizer,
+  argTypes: {
+    ref: {
+      type: null
+    }
+  }
 };
 
 export const defaultStory = (props) => (
