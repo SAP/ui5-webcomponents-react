@@ -12,7 +12,6 @@ import { ISideNavigationContext, SideNavigationContext } from '@ui5/webcomponent
 import { SideNavigationOpenState } from '@ui5/webcomponents-react/lib/SideNavigationOpenState';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
-
 import React, {
   Children,
   cloneElement,
@@ -28,12 +27,13 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
 import { sideNavigationListItemStyles } from './SideNavigationListItem.jss';
 
 export interface SideNavigationListItemProps extends CommonProps {
   icon?: string;
   text: string;
-  id: number | string;
+  id: string;
   children?: ReactNode | ReactNodeArray;
   expanded?: boolean;
 }
@@ -49,6 +49,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
     const { icon, text, id, children, tooltip, slot, className, style } = props;
 
     const context = useContext<ISideNavigationContext>(SideNavigationContext);
+    const popoverRef = useRef<Ui5PopoverDomRef>();
 
     const isExpanded = context.expandedItems.includes(id);
     const handleToggleExpand = useCallback(
@@ -62,11 +63,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
 
     const classes = useStyles();
 
-    const listItemClasses = StyleClassHelper.of(classes.listItem);
-
-    if (className) {
-      listItemClasses.put(className);
-    }
+    const listItemClasses = StyleClassHelper.of(classes.listItem).putIfPresent(className);
 
     if (context.noIcons) {
       listItemClasses.put(classes.noIcons);
@@ -80,7 +77,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
     const isSelfSelected = context.selectedId === id;
     const hasSelectedChild = !!validChildren.find((child: any) => child.props.id === context.selectedId);
 
-    const passThroughProps = usePassThroughHtmlProps(props, ['id']);
+    const passThroughProps = usePassThroughHtmlProps(props);
 
     const customListItemCommonProps = {
       ref,
@@ -104,8 +101,6 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
       customListItemCommonProps['data-is-child'] = '';
     }
 
-    const popoverRef = useRef();
-
     const displayedIcon = useMemo(() => {
       if (!icon) {
         return <span className={classes.icon} />;
@@ -115,7 +110,6 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
 
     const handleOpenPopover = useCallback(
       (e) => {
-        // @ts-ignore
         popoverRef.current.openBy(e.target);
       },
       [popoverRef.current]
