@@ -12,6 +12,9 @@ export default {
         min: 1,
         max: 10
       }
+    },
+    children: {
+      type: null
     }
   },
   args: {

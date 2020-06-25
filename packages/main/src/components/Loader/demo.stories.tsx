@@ -10,7 +10,10 @@ export default {
   title: 'Components / Loader',
   component: Loader,
   argTypes: {
-    ...createSelectArgTypes({ type: LoaderType })
+    ...createSelectArgTypes({ type: LoaderType }),
+    ref: {
+      type: null
+    }
   },
   args: {
     type: LoaderType.Indeterminate,

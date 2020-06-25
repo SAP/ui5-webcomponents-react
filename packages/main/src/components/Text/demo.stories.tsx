@@ -21,5 +21,13 @@ export default {
   component: Text,
   args: {
     wrapping: true
+  },
+  argTypes: {
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   }
 };

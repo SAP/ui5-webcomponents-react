@@ -8,7 +8,10 @@ export default {
   title: 'UI5 Web Components / Carousel',
   component: Carousel,
   argTypes: {
-    ...createSelectArgTypes({ arrowsPlacement: CarouselArrowsPlacement })
+    ...createSelectArgTypes({ arrowsPlacement: CarouselArrowsPlacement }),
+    children: {
+      type: null
+    }
   },
   args: {
     arrowsPlacement: CarouselArrowsPlacement.Content,

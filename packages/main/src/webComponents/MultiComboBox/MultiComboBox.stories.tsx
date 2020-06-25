@@ -11,7 +11,10 @@ export default {
     subcomponents: { MultiComboBoxItem }
   },
   argTypes: {
-    ...createSelectArgTypes({ valueState: ValueState })
+    ...createSelectArgTypes({ valueState: ValueState }),
+    children: {
+      type: null
+    }
   },
   arg: {
     valueState: ValueState.None

@@ -8,7 +8,10 @@ export default {
   title: 'UI5 Web Components / FileUploader',
   component: FileUploader,
   argTypes: {
-    ...createSelectArgTypes({ valueState: ValueState })
+    ...createSelectArgTypes({ valueState: ValueState }),
+    children: {
+      type: null
+    }
   },
   args: {
     accept: undefined,

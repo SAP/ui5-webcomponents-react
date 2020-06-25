@@ -33,7 +33,10 @@ export default {
       alignItems: FlexBoxAlignItems,
       direction: FlexBoxDirection,
       wrap: FlexBoxWrap
-    })
+    }),
+    ref: {
+      type: null
+    }
   },
   args: {
     justifyContent: FlexBoxJustifyContent.Start,

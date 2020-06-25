@@ -23,7 +23,10 @@ export default {
   title: 'Components / Spinner',
   component: Spinner,
   argTypes: {
-    ...createSelectArgTypes({ size: Size })
+    ...createSelectArgTypes({ size: Size }),
+    ref: {
+      type: null
+    }
   },
   args: {
     size: Size.Medium,

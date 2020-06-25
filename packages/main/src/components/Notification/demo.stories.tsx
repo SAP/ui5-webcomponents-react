@@ -44,7 +44,13 @@ export default {
   title: 'Components / Notification',
   component: Notification,
   argTypes: {
-    ...createSelectArgTypes({ priority: Priority })
+    ...createSelectArgTypes({ priority: Priority }),
+    footer: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   },
   args: {
     description: 'Short description',

@@ -34,7 +34,13 @@ export default {
     subcomponents: { Link }
   },
   argTypes: {
-    ...createSelectArgTypes({ separatorStyle: BreadcrumbsSeparatorStyle })
+    ...createSelectArgTypes({ separatorStyle: BreadcrumbsSeparatorStyle }),
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   },
   args: {
     separatorStyle: BreadcrumbsSeparatorStyle.Slash,

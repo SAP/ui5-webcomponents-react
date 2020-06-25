@@ -11,7 +11,10 @@ export default {
     subcomponents: { ComboBoxItem }
   },
   argTypes: {
-    ...createSelectArgTypes({ valueState: ValueState })
+    ...createSelectArgTypes({ valueState: ValueState }),
+    children: {
+      type: null
+    }
   },
   args: {
     filter: 'StartsWithPerTerm',

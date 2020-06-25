@@ -14,7 +14,10 @@ export default {
       horizontalAlign: PopoverHorizontalAlign,
       placementType: PlacementType,
       verticalAlign: PopoverVerticalAlign
-    })
+    }),
+    children: {
+      type: null
+    }
   },
   args: {
     headerText: 'Popover Header Text',

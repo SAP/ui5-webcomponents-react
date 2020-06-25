@@ -7,7 +7,10 @@ export default {
   title: 'UI5 Web Components / Link',
   component: Link,
   argTypes: {
-    ...createSelectArgTypes({ design: LinkDesign })
+    ...createSelectArgTypes({ design: LinkDesign }),
+    children: {
+      type: null
+    }
   },
   args: {
     design: LinkDesign.Default

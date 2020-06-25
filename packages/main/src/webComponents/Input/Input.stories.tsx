@@ -12,7 +12,10 @@ export default {
     subcomponents: { SuggestionItem }
   },
   argsTypes: {
-    ...createSelectArgTypes({ type: InputType, valueState: ValueState })
+    ...createSelectArgTypes({ type: InputType, valueState: ValueState }),
+    children: {
+      type: null
+    }
   },
   args: {
     placeholder: 'Placeholder...',

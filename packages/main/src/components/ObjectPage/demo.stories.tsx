@@ -189,7 +189,22 @@ export default {
     subcomponents: { ObjectPageSection, ObjectPageSubSection }
   },
   argTypes: {
-    ...createSelectArgTypes({ mode: ObjectPageMode })
+    ...createSelectArgTypes({ mode: ObjectPageMode }),
+    breadcrumbs: {
+      type: null
+    },
+    image: {
+      type: null
+    },
+    headerActions: {
+      type: null
+    },
+    headerContent: {
+      type: null
+    },
+    keyInfos: {
+      type: null
+    }
   },
   args: {
     title: 'Object Page Title',

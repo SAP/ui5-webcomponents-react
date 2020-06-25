@@ -29,7 +29,10 @@ export default {
   title: 'Components / ObjectStatus',
   component: ObjectStatus,
   argTypes: {
-    ...createSelectArgTypes({ state: ValueState })
+    ...createSelectArgTypes({ state: ValueState }),
+    ref: {
+      type: null
+    }
   },
   args: {
     state: ValueState.Success,

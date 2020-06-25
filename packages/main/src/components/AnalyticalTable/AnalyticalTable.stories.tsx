@@ -163,7 +163,10 @@ export default {
       scaleWidthMode: TableScaleWidthMode,
       selectionMode: TableSelectionMode,
       selectionBehavior: TableSelectionBehavior
-    })
+    }),
+    ref: {
+      type: null
+    }
   },
   args: {
     busyIndicatorEnabled: true,

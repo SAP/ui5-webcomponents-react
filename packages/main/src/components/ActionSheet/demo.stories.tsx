@@ -11,6 +11,15 @@ export default {
     ...createSelectArgTypes({ placementType: PlacementType }),
     children: {
       type: null
+    },
+    footer: {
+      type: null
+    },
+    header: {
+      type: null
+    },
+    ref: {
+      type: null
     }
   },
   args: {

@@ -29,5 +29,13 @@ export default {
     defaultIndent: 'XL0 L0 M0 S0',
     vSpacing: '1rem',
     hSpacing: '1rem'
+  },
+  argTypes: {
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   }
 };

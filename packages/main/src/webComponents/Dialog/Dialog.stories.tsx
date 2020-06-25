@@ -7,6 +7,11 @@ export default {
   component: Dialog,
   args: {
     headerText: 'Dialog Header Text'
+  },
+  argTypes: {
+    children: {
+      type: null
+    }
   }
 };
 

@@ -32,7 +32,10 @@ export default {
   title: 'Components / MessageBox',
   component: MessageBox,
   argTypes: {
-    ...createSelectArgTypes({ type: MessageBoxTypes })
+    ...createSelectArgTypes({ type: MessageBoxTypes }),
+    ref: {
+      type: null
+    }
   },
   args: {
     open: true,

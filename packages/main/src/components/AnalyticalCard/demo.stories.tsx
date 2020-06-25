@@ -18,7 +18,13 @@ export default {
       indicatorState: ValueState,
       valueState: ValueState,
       counterState: ValueState,
+      header: {
+        type: null
+      },
       children: {
+        type: null
+      },
+      ref: {
         type: null
       }
     })

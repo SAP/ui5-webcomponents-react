@@ -13,6 +13,11 @@ export default {
     heading: 'Team Space',
     status: '3 of 5',
     subheading: 'Direct Reports'
+  },
+  argTypes: {
+    children: {
+      type: null
+    }
   }
 };
 

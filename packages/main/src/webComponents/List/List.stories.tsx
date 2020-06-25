@@ -14,7 +14,10 @@ export default {
     subcomponents: { StandardListItem, CustomListItem, GroupHeaderListItem }
   },
   argTypes: {
-    ...createSelectArgTypes({ mode: ListMode, separators: ListSeparators })
+    ...createSelectArgTypes({ mode: ListMode, separators: ListSeparators }),
+    children: {
+      type: null
+    }
   },
   args: {
     mode: ListMode.None,

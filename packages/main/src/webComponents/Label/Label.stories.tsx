@@ -3,7 +3,12 @@ import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Label',
-  component: Label
+  component: Label,
+  argTypes: {
+    children: {
+      type: null
+    }
+  }
 };
 
 export const generatedDefaultStory = (props) => (

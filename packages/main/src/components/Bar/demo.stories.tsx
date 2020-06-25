@@ -20,7 +20,10 @@ export default {
   title: 'Components / Bar',
   component: Bar,
   argTypes: {
-    ...createSelectArgTypes({ design: BarDesign })
+    ...createSelectArgTypes({ design: BarDesign }),
+    ref: {
+      type: null
+    }
   },
   args: {
     design: BarDesign.Auto

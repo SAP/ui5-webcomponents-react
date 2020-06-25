@@ -7,7 +7,10 @@ export default {
   title: 'UI5 Web Components / MessageStrip',
   component: MessageStrip,
   argTypes: {
-    ...createSelectArgTypes({ type: MessageStripType })
+    ...createSelectArgTypes({ type: MessageStripType }),
+    children: {
+      type: null
+    }
   },
   args: {
     type: MessageStripType['Information']
