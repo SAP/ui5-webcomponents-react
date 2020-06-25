@@ -24,7 +24,7 @@ export interface SideNavigationProps extends CommonProps {
   openState?: SideNavigationOpenState;
   children?: ReactNode;
   footerItems?: ReactNode[];
-  selectedId?: string | number;
+  selectedId?: string;
   onItemSelect?: (event: CustomEvent<{ selectedItem: HTMLElement; selectedId: string | number }>) => void;
   onItemClick?: (
     event: CustomEvent<{
@@ -46,146 +46,162 @@ const useStyles = createComponentStyles(sideNavigationStyles, {
   name: 'SideNavigation'
 });
 
+export interface SideNavigationRef extends HTMLDivElement {
+  collapseItem: (id: string) => void;
+  expandItem: (id: string) => void;
+  toggleItem: (id: string) => void;
+}
+
 /**
  * <code>import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';</code>
  */
-const SideNavigation: FC<SideNavigationProps> = forwardRef((props: SideNavigationProps, ref: Ref<HTMLDivElement>) => {
-  const {
-    children,
-    openState,
-    footerItems,
-    selectedId,
-    onItemSelect,
-    onItemClick,
-    noIcons,
-    style,
-    className,
-    tooltip
-  } = props;
+const SideNavigation: FC<SideNavigationProps> = forwardRef(
+  (props: SideNavigationProps, ref: Ref<SideNavigationRef>) => {
+    const {
+      children,
+      openState,
+      footerItems,
+      selectedId,
+      onItemSelect,
+      onItemClick,
+      noIcons,
+      style,
+      className,
+      tooltip
+    } = props;
 
-  const classes = useStyles();
+    const classes = useStyles();
 
-  const sideNavigationRef = useConsolidatedRef<any>(ref);
+    const sideNavigationRef = useConsolidatedRef<any>(ref);
 
-  const [internalSelectedId, setInternalSelectedId] = useState(selectedId);
-  const [expandedItems, setExpandedItems] = useState(() => Children.map(children, (child) => child.props.id));
-  const selectionTimeout = useRef(null);
+    const [internalSelectedId, setInternalSelectedId] = useState(selectedId);
+    const [expandedItems, setExpandedItems] = useState(
+      () =>
+        Children.map(children, (child) => {
+          if (child.type === React.Fragment) {
+            return Children.map(child.props.children, (fragmentChild) => fragmentChild.props.id);
+          }
+          return child.props.id;
+        })?.flat() ?? []
+    );
+    const selectionTimeout = useRef(null);
 
-  useEffect(() => {
-    sideNavigationRef.current.expandItem = (id) => {
-      setExpandedItems((items) => Array.from(new Set([items, id])));
-    };
-    sideNavigationRef.current.collapseItem = (id) => {
-      setExpandedItems((items) => items.filter((item) => item !== id));
-    };
+    useEffect(() => {
+      sideNavigationRef.current.expandItem = (id) => {
+        setExpandedItems((items) => Array.from(new Set([items, id])));
+      };
+      sideNavigationRef.current.collapseItem = (id) => {
+        setExpandedItems((items) => items.filter((item) => item !== id));
+      };
 
-    sideNavigationRef.current.toggleItem = (id) => {
-      setExpandedItems((items) => {
-        if (items.includes(id)) {
-          return items.filter((item) => item !== id);
-        }
-        return Array.from(new Set([items, id]));
-      });
-    };
-  }, [sideNavigationRef.current, setExpandedItems]);
+      sideNavigationRef.current.toggleItem = (id) => {
+        setExpandedItems((items) => {
+          if (items.includes(id)) {
+            return items.filter((item) => item !== id);
+          }
+          return Array.from(new Set([items, id]));
+        });
+      };
+    }, [sideNavigationRef.current, setExpandedItems]);
 
-  useEffect(() => {
-    setInternalSelectedId(selectedId);
-  }, [selectedId, setInternalSelectedId]);
+    useEffect(() => {
+      setInternalSelectedId(selectedId);
+    }, [selectedId, setInternalSelectedId]);
 
-  const sideNavigationClasses = StyleClassHelper.of(classes.sideNavigation).putIfPresent(className);
+    const sideNavigationClasses = StyleClassHelper.of(classes.sideNavigation).putIfPresent(className);
 
-  switch (openState) {
-    case SideNavigationOpenState.Expanded: {
-      sideNavigationClasses.put(classes.expanded);
-      break;
+    switch (openState) {
+      case SideNavigationOpenState.Expanded: {
+        sideNavigationClasses.put(classes.expanded);
+        break;
+      }
+      case SideNavigationOpenState.Condensed: {
+        sideNavigationClasses.put(classes.condensed);
+        break;
+      }
     }
-    case SideNavigationOpenState.Condensed: {
-      sideNavigationClasses.put(classes.condensed);
-      break;
-    }
+
+    const toggleExpandedItems = useCallback(
+      (id) => {
+        cancelAnimationFrame(selectionTimeout.current);
+        setExpandedItems((items) => {
+          if (items.includes(id)) {
+            return items.filter((item) => item !== id);
+          }
+          return Array.from(new Set([...items, id]));
+        });
+      },
+      [setExpandedItems]
+    );
+
+    const onListItemSelected = useCallback(
+      (e) => {
+        selectionTimeout.current = requestAnimationFrame(() => {
+          const listItem = e.detail.item;
+          onItemClick(
+            enrichEventWithDetails(e, {
+              selectedItem: listItem,
+              selectedId: listItem.dataset.id,
+              hasChildren: listItem.hasAttribute('data-has-children'),
+              isExpanded: listItem.hasAttribute('data-is-expanded')
+            })
+          );
+
+          if (lastFiredSelection === listItem.dataset.id) {
+            return;
+          }
+          setInternalSelectedId(listItem.dataset.id);
+
+          onItemSelect(
+            enrichEventWithDetails(e, {
+              selectedItem: listItem,
+              selectedId: listItem.dataset.id
+            })
+          );
+          lastFiredSelection = listItem.dataset.id;
+          selectionTimeout.current = null;
+        });
+      },
+      [onItemSelect, onItemClick, setInternalSelectedId, setExpandedItems, toggleExpandedItems, selectionTimeout]
+    );
+
+    const passThroughProps = usePassThroughHtmlProps(props, ['onItemSelect', 'onItemClick']);
+
+    const contextValue = {
+      openState,
+      selectedId: internalSelectedId,
+      noIcons,
+      onListItemSelected,
+      expandedItems: expandedItems,
+      toggleExpandedItems
+    };
+
+    return (
+      <div
+        ref={sideNavigationRef}
+        className={sideNavigationClasses.className}
+        style={style}
+        title={tooltip}
+        {...passThroughProps}
+      >
+        <SideNavigationContext.Provider value={contextValue}>
+          <List onItemClick={onListItemSelected}>{children}</List>
+          <span style={{ flexGrow: 1 }} />
+          {footerItems.length > 0 && <span className={classes.footerItemsSeparator} />}
+          {footerItems && (
+            <List onItemClick={onListItemSelected}>
+              {footerItems.map((item: any, index) =>
+                cloneElement(item, {
+                  key: index
+                })
+              )}
+            </List>
+          )}
+        </SideNavigationContext.Provider>
+      </div>
+    );
   }
-
-  const toggleExpandedItems = useCallback(
-    (id) => {
-      cancelAnimationFrame(selectionTimeout.current);
-      setExpandedItems((items) => {
-        if (items.includes(id)) {
-          return items.filter((item) => item !== id);
-        }
-        return Array.from(new Set([...items, id]));
-      });
-    },
-    [setExpandedItems]
-  );
-
-  const onListItemSelected = useCallback(
-    (e) => {
-      selectionTimeout.current = requestAnimationFrame(() => {
-        const listItem = e.detail.item;
-        onItemClick(
-          enrichEventWithDetails(e, {
-            selectedItem: listItem,
-            selectedId: listItem.dataset.id,
-            hasChildren: listItem.hasAttribute('data-has-children'),
-            isExpanded: listItem.hasAttribute('data-is-expanded')
-          })
-        );
-
-        if (lastFiredSelection === listItem.dataset.id) {
-          return;
-        }
-        setInternalSelectedId(listItem.dataset.id);
-
-        onItemSelect(
-          enrichEventWithDetails(e, {
-            selectedItem: listItem,
-            selectedId: listItem.dataset.id
-          })
-        );
-        lastFiredSelection = listItem.dataset.id;
-        selectionTimeout.current = null;
-      });
-    },
-    [onItemSelect, onItemClick, setInternalSelectedId, setExpandedItems, toggleExpandedItems, selectionTimeout]
-  );
-
-  const passThroughProps = usePassThroughHtmlProps(props, ['onItemSelect', 'onItemClick']);
-
-  const contextValue = {
-    openState,
-    selectedId: internalSelectedId,
-    noIcons,
-    onListItemSelected,
-    expandedItems: expandedItems,
-    toggleExpandedItems
-  };
-
-  return (
-    <div
-      ref={sideNavigationRef}
-      className={sideNavigationClasses.className}
-      style={style}
-      title={tooltip}
-      {...passThroughProps}
-    >
-      <SideNavigationContext.Provider value={contextValue}>
-        <List onItemClick={onListItemSelected}>{children}</List>
-        <span style={{ flexGrow: 1 }} />
-        {footerItems.length > 0 && <span className={classes.footerItemsSeparator} />}
-        {footerItems && (
-          <List onItemClick={onListItemSelected}>
-            {footerItems.map((item: any, index) =>
-              cloneElement(item, {
-                key: index
-              })
-            )}
-          </List>
-        )}
-      </SideNavigationContext.Provider>
-    </div>
-  );
-});
+);
 
 SideNavigation.displayName = 'SideNavigation';
 
