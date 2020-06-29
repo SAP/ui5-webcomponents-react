@@ -35,7 +35,6 @@ export interface SideNavigationListItemProps extends CommonProps {
   text: string;
   id: string;
   children?: ReactNode | ReactNodeArray;
-  expanded?: boolean;
 }
 
 const useStyles = createComponentStyles(sideNavigationListItemStyles, {
