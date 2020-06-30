@@ -15,6 +15,9 @@ const styles = {
     fontWeight: 'normal',
     '&::-webkit-scrollbar': {
       height: ThemingParameters.sapScrollBar_Dimension
+    },
+    '&::-webkit-scrollbar-thumb': {
+      height: ThemingParameters.sapScrollBar_Dimension
     }
   },
   tableHeaderRow: {
