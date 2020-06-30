@@ -1,12 +1,12 @@
-import { StyleClassHelper } from '@ui5/webcomponents-react-base';
+import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
+import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
 import { VerticalAlign } from '@ui5/webcomponents-react/lib/VerticalAlign';
-import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL';
 import { CSSProperties } from 'react';
-import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 
 const getTableProps = (tableProps, { instance }) => {
   const { classes } = instance.webComponentsReactProperties;
