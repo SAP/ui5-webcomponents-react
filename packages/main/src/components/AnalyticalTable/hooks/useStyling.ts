@@ -10,7 +10,7 @@ import { CSSProperties } from 'react';
 
 const getTableProps = (tableProps, { instance }) => {
   const { classes } = instance.webComponentsReactProperties;
-  const classNames = StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar);
+  const classNames = StyleClassHelper.of(classes.table, GlobalStyleClasses.sapScrollBar).className;
   return [
     tableProps,
     {
