@@ -31,7 +31,7 @@
     "build:assets": "node ../../scripts/generate-assets/index.js"
   },
   "dependencies": {
-    "@babel/runtime": "7.10.2",
+    "@babel/runtime": "7.10.4",
     "@ui5/webcomponents-react-base": "^0.10.0-rc.3",
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "^5.0.4",
