@@ -17,17 +17,17 @@ export default {
       arrowIndicator: DeviationIndicator,
       indicatorState: ValueState,
       valueState: ValueState,
-      counterState: ValueState,
-      header: {
-        type: null
-      },
-      children: {
-        type: null
-      },
-      ref: {
-        type: null
-      }
-    })
+      counterState: ValueState
+    }),
+    header: {
+      type: null
+    },
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   },
   args: {
     title: 'Title',
