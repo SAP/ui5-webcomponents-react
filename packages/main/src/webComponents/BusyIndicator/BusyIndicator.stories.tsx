@@ -18,7 +18,8 @@ export default {
   },
   args: {
     active: true,
-    text: 'Loading...'
+    text: 'Loading...',
+    size: 'Medium'
   }
 };
 

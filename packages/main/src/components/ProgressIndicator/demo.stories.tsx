@@ -27,7 +27,10 @@ export default {
   title: 'Components / ProgressIndicator',
   component: ProgressIndicator,
   argTypes: {
-    ...createSelectArgTypes({ state: ValueState })
+    ...createSelectArgTypes({ state: ValueState }),
+    ref: {
+      type: null
+    }
   },
   args: {
     percentValue: 5,

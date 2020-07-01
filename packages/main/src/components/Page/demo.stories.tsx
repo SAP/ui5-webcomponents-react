@@ -28,7 +28,16 @@ export default {
   title: 'Components / Page',
   component: Page,
   argTypes: {
-    ...createSelectArgTypes({ backgroundDesign: PageBackgroundDesign })
+    ...createSelectArgTypes({ backgroundDesign: PageBackgroundDesign }),
+    customHeader: {
+      type: null
+    },
+    customFooter: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   },
   args: {
     title: 'Page Demo',

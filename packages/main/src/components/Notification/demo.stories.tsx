@@ -50,6 +50,9 @@ export default {
     },
     ref: {
       type: null
+    },
+    avatar: {
+      type: null
     }
   },
   args: {

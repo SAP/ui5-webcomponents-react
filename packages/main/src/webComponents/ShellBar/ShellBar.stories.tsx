@@ -25,6 +25,18 @@ export default {
     },
     ref: {
       type: null
+    },
+    menuItems: {
+      type: null
+    },
+    profile: {
+      type: null
+    },
+    searchField: {
+      type: null
+    },
+    startButton: {
+      type: null
     }
   }
 };

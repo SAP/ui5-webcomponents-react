@@ -49,7 +49,10 @@ export default {
     subcomponents: { SideNavigationListItem }
   },
   argTypes: {
-    ...createSelectArgTypes({ openState: SideNavigationOpenState })
+    ...createSelectArgTypes({ openState: SideNavigationOpenState }),
+    ref: {
+      type: null
+    }
   },
   args: {
     openState: SideNavigationOpenState.Expanded,

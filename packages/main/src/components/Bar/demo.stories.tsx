@@ -23,6 +23,15 @@ export default {
     ...createSelectArgTypes({ design: BarDesign }),
     ref: {
       type: null
+    },
+    contentMiddle: {
+      type: null
+    },
+    contentLeft: {
+      type: null
+    },
+    contentRight: {
+      type: null
     }
   },
   args: {

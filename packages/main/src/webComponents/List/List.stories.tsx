@@ -20,6 +20,9 @@ export default {
     },
     ref: {
       type: null
+    },
+    header: {
+      type: null
     }
   },
   args: {

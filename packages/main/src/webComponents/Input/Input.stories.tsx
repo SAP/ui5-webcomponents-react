@@ -18,6 +18,9 @@ export default {
     },
     ref: {
       type: null
+    },
+    icon: {
+      type: null
     }
   },
   args: {

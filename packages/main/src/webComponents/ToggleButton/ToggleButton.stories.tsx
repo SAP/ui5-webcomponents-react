@@ -8,9 +8,6 @@ export default {
   component: ToggleButton,
   argTypes: {
     ...createSelectArgTypes({ design: ButtonDesign }),
-    children: {
-      type: null
-    },
     ref: {
       type: null
     }

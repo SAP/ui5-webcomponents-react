@@ -8,9 +8,6 @@ export default {
   component: Title,
   argTypes: {
     ...createSelectArgTypes({ level: TitleLevel }),
-    children: {
-      type: null
-    },
     ref: {
       type: null
     }

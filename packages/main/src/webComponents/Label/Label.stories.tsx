@@ -5,9 +5,6 @@ export default {
   title: 'UI5 Web Components / Label',
   component: Label,
   argTypes: {
-    children: {
-      type: null
-    },
     ref: {
       type: null
     }
