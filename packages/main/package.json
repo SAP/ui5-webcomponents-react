@@ -36,8 +36,8 @@
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "^5.0.4",
     "react-jss": "10.1.1",
-    "react-table": "7.0.4",
-    "react-virtual": "2.1.7"
+    "react-table": "7.2.2",
+    "react-virtual": "2.2.1"
   },
   "peerDependencies": {
     "@ui5/webcomponents": "1.0.0-rc.7",

@@ -2525,16 +2525,6 @@
   resolved "https://registry.yarnpkg.com/@sap-theming/theming-base-content/-/theming-base-content-11.1.19.tgz#301b8085807cd410e5c7269cca55cd4ca385534c"
   integrity sha512-0RIoniX0XgQDMfMsySvNDeXVGtH3UQRQMkJYFIkaq/nrTGSyfXT9k+B4CbTf4546dyrlLM0YoaHIOtxmMsh1ZA==
 
-"@scarf/scarf@^0.1.5":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@scarf/scarf/-/scarf-0.1.7.tgz#e6ffb3660bda77f96037f8c4e21174177fed2d97"
-  integrity sha512-XUBa8nl9J1XGyyA+wul1ko5v5ioNU1s/pUPODnPzJ4+uUOwwYZm197KQoxxzOAsypldlFGnAlQ8nkjTjoQV9GQ==
-
-"@scarf/scarf@^1.0.0":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@scarf/scarf/-/scarf-1.0.6.tgz#52011dfb19187b53b75b7b6eac20da0810ddd88f"
-  integrity sha512-y4+DuXrAd1W5UIY3zTcsosi/1GyYT8k5jGnZ/wG7UUHVrU+MHlH4Mp87KK2/lvMW4+H7HVcdB+aJhqywgXksjA==
-
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
@@ -16421,12 +16411,10 @@ react-syntax-highlighter@^11.0.2:
     prismjs "^1.8.4"
     refractor "^2.4.1"
 
-react-table@7.0.4:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.0.4.tgz#456838661982c83c3682f156c59a41b4339a2120"
-  integrity sha512-Uqpj+VnUIvsNWNtNFD1z2i7OCHdlhoJtQt0DWx3XOkZnvDyI/eCghK8YBfA9mY4TW7vEgCDLaRCcREC/fmcx6Q==
-  dependencies:
-    "@scarf/scarf" "^0.1.5"
+react-table@7.2.2:
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.2.2.tgz#2978a903f0e367e1ceab25d60a6a40ae23498f77"
+  integrity sha512-JBE3QUyRQJkHRU72NKo7HRGtSGcrzIcVLDbsoZI+KhWkFEZ2t9UfpqeHBdbc3R5RRJZ6qC7+NzZZxJPSYWKPBQ==
 
 react-test-renderer@^16.0.0-0:
   version "16.13.1"
@@ -16466,13 +16454,12 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-virtual@2.1.7:
-  version "2.1.7"
-  resolved "https://registry.yarnpkg.com/react-virtual/-/react-virtual-2.1.7.tgz#901bd4d1817cd3ee53224269b3557bff7021bf6b"
-  integrity sha512-lepQsBnNc6RtzvstxRbf+PQ7GneTVpfzYnv0gGXyO+eYUf0TrIWKFm06JuscW1J09WwYgR0EANn7wkxXUHwN8w==
+react-virtual@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-virtual/-/react-virtual-2.2.1.tgz#639741f203b683630457836e85ddbba7a732d9b5"
+  integrity sha512-71wjhbm/WgFRKaaS/oAN6znUpQkdSdbRfg3jCyvgP45QAbBKH3lSiTR/nLawgqhlwGjcYp9jN94MLNW1UVoobQ==
   dependencies:
     "@reach/observe-rect" "^1.1.0"
-    "@scarf/scarf" "^1.0.0"
     ts-toolbelt "^6.4.2"
 
 react@16.8.0:
