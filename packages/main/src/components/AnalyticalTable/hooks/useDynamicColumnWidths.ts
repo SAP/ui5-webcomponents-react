@@ -34,15 +34,54 @@ const columns = (columns, { instance }) => {
   });
 
   const calculateDefaultTableWidth = () => {
-    const columnsWithFixedWidth = visibleColumns.filter(({ width }) => width ?? false).map(({ width }) => width);
-    const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
+    const columnsWithWidthProperties = visibleColumns
+      .filter((column) => column.width ?? column.minWidth ?? column.maxWidth ?? false)
+      .map((column) => ({
+        accessor: column.id ?? column.accessor,
+        minWidth: column.minWidth,
+        width: column.width,
+        maxWidth: column.maxWidth
+      }));
 
-    const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth.length;
+    const columnsWithFixedWidth = () => {
+      let availableWidth = totalWidth;
+      let defaultColumnsCount = visibleColumns.length;
+      return columnsWithWidthProperties
+        .map((column) => {
+          const { width, minWidth, maxWidth, accessor } = column;
+          if (width) {
+            // necessary because of default minWidth
+            const acceptedWidth =
+              accessor !== '__ui5wcr__internal_highlight_column' &&
+              accessor !== '__ui5wcr__internal_selection_column' &&
+              width < 60
+                ? 60
+                : width;
+            availableWidth -= acceptedWidth;
+            defaultColumnsCount--;
+            return acceptedWidth;
+          }
+          if (minWidth > availableWidth / defaultColumnsCount) {
+            availableWidth -= minWidth;
+            defaultColumnsCount--;
+            return minWidth;
+          }
+          if (maxWidth < availableWidth / defaultColumnsCount) {
+            availableWidth -= minWidth;
+            defaultColumnsCount--;
+            return maxWidth;
+          }
+          return false;
+        })
+        .filter(Boolean);
+    };
+    const fixedWidth = columnsWithFixedWidth().reduce((acc, val) => acc + val, 0);
 
+    const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth().length;
     // check if columns are visible and table has width
     if (visibleColumns.length > 0 && totalWidth > 0) {
-      // set fixedWidth as defaultWidth if visible columns have fixed value
-      if (visibleColumns.length === columnsWithFixedWidth.length) {
+      // set fixedWidth as defaultWidth if all visible columns have fixed value
+      if (visibleColumns.length === columnsWithFixedWidth().length) {
         return fixedWidth / visibleColumns.length;
       }
       // spread default columns
@@ -57,7 +96,9 @@ const columns = (columns, { instance }) => {
 
   if (scaleWidthMode === TableScaleWidthMode.Default || (!hasData && loading)) {
     const defaultWidth = calculateDefaultTableWidth();
-    return columns.map((column) => ({ ...column, width: column.width ?? defaultWidth }));
+    return columns.map((column) => {
+      return { ...column, width: column.width ?? defaultWidth };
+    });
   }
 
   const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);

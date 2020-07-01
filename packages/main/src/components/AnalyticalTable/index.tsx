@@ -246,7 +246,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     if (tableRef.current) {
       dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
     }
-  }, []);
+  }, [tableRef]);
 
   useEffect(() => {
     // @ts-ignore
