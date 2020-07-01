@@ -16,7 +16,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
   <div
     aria-colcount="4"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >
@@ -523,7 +523,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
   <div
     aria-colcount="4"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >
@@ -1030,7 +1030,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
   <div
     aria-colcount="4"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >
@@ -1529,7 +1529,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
   <div
     aria-colcount="5"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >
@@ -2179,7 +2179,7 @@ exports[`AnalyticalTable custom row height 1`] = `
   <div
     aria-colcount="4"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >
@@ -2686,7 +2686,7 @@ exports[`AnalyticalTable render without data 1`] = `
   <div
     aria-colcount="4"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >
@@ -2958,7 +2958,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
   <div
     aria-colcount="4"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >
@@ -3465,7 +3465,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
   <div
     aria-colcount="4"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >
@@ -3972,7 +3972,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
   <div
     aria-colcount="4"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >
@@ -4479,7 +4479,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
   <div
     aria-colcount="4"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >
@@ -4986,7 +4986,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
   <div
     aria-colcount="6"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >
@@ -5621,7 +5621,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
   <div
     aria-colcount="4"
     aria-rowcount="5"
-    class="AnalyticalTable-table-0"
+    class="AnalyticalTable-table-0 sapScrollBar"
     data-per-page="15"
     role="grid"
   >

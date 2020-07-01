@@ -1,4 +1,4 @@
-const resolve = require('@rollup/plugin-node-resolve');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const { babel } = require('@rollup/plugin-babel');
 const path = require('path');
@@ -22,7 +22,7 @@ const rollupConfigFactory = (pkgName, externals = []) => {
   console.log(require('@babel/runtime/package.json').version);
 
   const plugins = [
-    resolve({
+    nodeResolve({
       extensions: ['.mjs', '.js', '.json', '.node', '.jsx', '.ts', '.tsx']
     }),
     commonjs(),
