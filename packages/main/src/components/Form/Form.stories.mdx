@@ -9,7 +9,23 @@ import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 
-<Meta title="Components / Form" component={Form} subcomponents={{ FormGroup, FormItem }} />
+<Meta
+  title="Components / Form"
+  component={Form}
+  subcomponents={{ FormGroup, FormItem }}
+  argTypes={{ children: { type: null }, ref: { type: null } }}
+  args={{
+    title: 'Test Form',
+    labelSpanS: 2,
+    labelSpanM: 2,
+    labelSpanL: 2,
+    labelSpanXL: 2,
+    columnsS: 1,
+    columnsM: 1,
+    columnsL: 1,
+    columnsXL: 1
+  }}
+/>
 
 <Title />
 
@@ -20,7 +36,7 @@ import { Form } from '@ui5/webcomponents-react/lib/Form';
 <Preview>
   <Story name="Default">
     {(args) => (
-      <Form {...args} title={'Test Form'}>
+      <Form {...args} title={args.title}>
         <FormGroup title={'Personal Data'}>
           <FormItem label={'Name'}>
             <Input type={InputType.Text} />
