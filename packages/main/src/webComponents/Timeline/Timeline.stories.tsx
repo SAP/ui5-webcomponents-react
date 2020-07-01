@@ -9,13 +9,32 @@ export default {
   component: Timeline,
   parameters: {
     subcomponents: { TimelineItem }
+  },
+  args: {
+    titleText: 'called',
+    subtitleText: '2019/01/01',
+    icon: 'phone',
+    itemName: 'John Smith'
+  },
+  argTypes: {
+    ref: {
+      type: null
+    },
+    children: {
+      type: null
+    }
   }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <Timeline>
-    <TimelineItem titleText="called" subtitleText={'2019/01/01'} icon="phone" itemName="John Smith" />
-    <TimelineItem titleText="Weekly Sync - CP Design" subtitleText={'2019/01/02'} icon="calendar">
+    <TimelineItem
+      titleText={props.titleText}
+      subtitleText={props.subtitleText}
+      icon={props.icon}
+      itemName={props.itemName}
+    />
+    <TimelineItem titleText={props.titleText} subtitleText={props.subtitleText} icon={props.icon}>
       <div>MR SOF02 2.43</div>
     </TimelineItem>
   </Timeline>

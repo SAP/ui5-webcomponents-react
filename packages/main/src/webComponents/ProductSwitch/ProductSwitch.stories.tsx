@@ -11,15 +11,28 @@ export default {
   component: ProductSwitch,
   parameters: {
     subcomponents: { ProductSwitchItem }
+  },
+  args: {
+    heading: 'Home',
+    subtitle: 'Central Home',
+    icon: 'home'
+  },
+  argTypes: {
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <ProductSwitch>
-    <ProductSwitchItem heading="Home" subtitle="Central Home" icon="home" />
-    <ProductSwitchItem heading="Analytics Cloud" subtitle="Analytics Cloud" icon="business-objects-experience" />
-    <ProductSwitchItem heading="Catalog" subtitle="Ariba" icon="contacts" />
-    <ProductSwitchItem heading="Travel & Expense" subtitle="Concur" icon="flight" />
+    <ProductSwitchItem heading={props.heading} subtitle={props.subtitle} icon={props.icon} />
+    <ProductSwitchItem heading={props.heading} subtitle={props.subtitle} icon={props.icon} />
+    <ProductSwitchItem heading={props.heading} subtitle={props.subtitle} icon={props.icon} />
+    <ProductSwitchItem heading={props.heading} subtitle={props.subtitle} icon={props.icon} />
   </ProductSwitch>
 );
 
