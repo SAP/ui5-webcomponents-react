@@ -144,7 +144,7 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
           groupable={args.groupable}
           selectionMode={args.selectionMode}
           scaleWidthMode={args.scaleWidthMode}
-          onRowSelected={(e) => console.log(e)}
+          onRowSelected={args.onRowSelected}
           onSort={args.onSort}
           onGroup={args.onGroup}
           onRowExpandChange={args.onRowExpandChange}
@@ -278,6 +278,7 @@ This even works if you resize the browser window!
   <Story name="Tree Table">
     {(args) => (
       <AnalyticalTable
+        {...args}
         title={args.title}
         data={args.dataTree}
         columns={args.columns}
