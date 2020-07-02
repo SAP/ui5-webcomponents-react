@@ -34,14 +34,51 @@ const columns = (columns, { instance }) => {
   });
 
   const calculateDefaultTableWidth = () => {
-    const columnsWithFixedWidth = visibleColumns.filter(({ width }) => width ?? false).map(({ width }) => width);
+    const columnsWithWidthProperties = visibleColumns
+      .filter((column) => column.width ?? column.minWidth ?? column.maxWidth ?? false)
+      .map((column) => ({
+        accessor: column.id ?? column.accessor,
+        minWidth: column.minWidth,
+        width: column.width,
+        maxWidth: column.maxWidth
+      }));
+    let availableWidth = totalWidth;
+    let internalDefaultColumnsCount = visibleColumns.length;
+    const columnsWithFixedWidth = columnsWithWidthProperties
+      .map((column) => {
+        const { width, minWidth, maxWidth, accessor } = column;
+        if (width) {
+          // necessary because of default minWidth
+          const acceptedWidth =
+            accessor !== '__ui5wcr__internal_highlight_column' &&
+            accessor !== '__ui5wcr__internal_selection_column' &&
+            width < 60
+              ? 60
+              : width;
+          availableWidth -= acceptedWidth;
+          internalDefaultColumnsCount--;
+          return acceptedWidth;
+        }
+        if (minWidth > availableWidth / defaultColumnsCount) {
+          availableWidth -= minWidth;
+          internalDefaultColumnsCount--;
+          return minWidth;
+        }
+        if (maxWidth < availableWidth / defaultColumnsCount) {
+          availableWidth -= maxWidth;
+          internalDefaultColumnsCount--;
+          return maxWidth;
+        }
+        return false;
+      })
+      .filter(Boolean);
+
     const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
 
     const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth.length;
-
     // check if columns are visible and table has width
     if (visibleColumns.length > 0 && totalWidth > 0) {
-      // set fixedWidth as defaultWidth if visible columns have fixed value
+      // set fixedWidth as defaultWidth if all visible columns have fixed value
       if (visibleColumns.length === columnsWithFixedWidth.length) {
         return fixedWidth / visibleColumns.length;
       }
