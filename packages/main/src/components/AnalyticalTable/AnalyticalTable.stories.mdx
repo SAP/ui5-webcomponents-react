@@ -17,11 +17,11 @@ import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItem
 import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
 
 <Meta
-  title="Components / AnalyticalTableNew"
+  title="Components / AnalyticalTable"
   component={AnalyticalTable}
   args={{
     dataTree: generateData(20, true),
-    data: generateData(10000),
+    data: generateData(1000),
     columns: [
       {
         Header: 'Name',
@@ -270,11 +270,14 @@ export const ResponsiveTable = () => {
 With the help of that effect, the table will now show either 2 columns on a mobile phone, 3 columns on a tablet device and all columns on Desktop devices.
 This even works if you resize the browser window!
 
+# Stories
+
+## Tree Table
+
 <Preview>
   <Story name="Tree Table">
     {(args) => (
       <AnalyticalTable
-        {...args}
         title={args.title}
         data={args.dataTree}
         columns={args.columns}
