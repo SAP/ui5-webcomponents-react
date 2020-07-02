@@ -42,46 +42,44 @@ const columns = (columns, { instance }) => {
         width: column.width,
         maxWidth: column.maxWidth
       }));
+    let availableWidth = totalWidth;
+    let internalDefaultColumnsCount = visibleColumns.length;
+    const columnsWithFixedWidth = columnsWithWidthProperties
+      .map((column) => {
+        const { width, minWidth, maxWidth, accessor } = column;
+        if (width) {
+          // necessary because of default minWidth
+          const acceptedWidth =
+            accessor !== '__ui5wcr__internal_highlight_column' &&
+            accessor !== '__ui5wcr__internal_selection_column' &&
+            width < 60
+              ? 60
+              : width;
+          availableWidth -= acceptedWidth;
+          internalDefaultColumnsCount--;
+          return acceptedWidth;
+        }
+        if (minWidth > availableWidth / defaultColumnsCount) {
+          availableWidth -= minWidth;
+          internalDefaultColumnsCount--;
+          return minWidth;
+        }
+        if (maxWidth < availableWidth / defaultColumnsCount) {
+          availableWidth -= maxWidth;
+          internalDefaultColumnsCount--;
+          return maxWidth;
+        }
+        return false;
+      })
+      .filter(Boolean);
 
-    const columnsWithFixedWidth = () => {
-      let availableWidth = totalWidth;
-      let defaultColumnsCount = visibleColumns.length;
-      return columnsWithWidthProperties
-        .map((column) => {
-          const { width, minWidth, maxWidth, accessor } = column;
-          if (width) {
-            // necessary because of default minWidth
-            const acceptedWidth =
-              accessor !== '__ui5wcr__internal_highlight_column' &&
-              accessor !== '__ui5wcr__internal_selection_column' &&
-              width < 60
-                ? 60
-                : width;
-            availableWidth -= acceptedWidth;
-            defaultColumnsCount--;
-            return acceptedWidth;
-          }
-          if (minWidth > availableWidth / defaultColumnsCount) {
-            availableWidth -= minWidth;
-            defaultColumnsCount--;
-            return minWidth;
-          }
-          if (maxWidth < availableWidth / defaultColumnsCount) {
-            availableWidth -= minWidth;
-            defaultColumnsCount--;
-            return maxWidth;
-          }
-          return false;
-        })
-        .filter(Boolean);
-    };
-    const fixedWidth = columnsWithFixedWidth().reduce((acc, val) => acc + val, 0);
+    const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
 
-    const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth().length;
+    const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth.length;
     // check if columns are visible and table has width
     if (visibleColumns.length > 0 && totalWidth > 0) {
       // set fixedWidth as defaultWidth if all visible columns have fixed value
-      if (visibleColumns.length === columnsWithFixedWidth().length) {
+      if (visibleColumns.length === columnsWithFixedWidth.length) {
         return fixedWidth / visibleColumns.length;
       }
       // spread default columns
@@ -96,9 +94,7 @@ const columns = (columns, { instance }) => {
 
   if (scaleWidthMode === TableScaleWidthMode.Default || (!hasData && loading)) {
     const defaultWidth = calculateDefaultTableWidth();
-    return columns.map((column) => {
-      return { ...column, width: column.width ?? defaultWidth };
-    });
+    return columns.map((column) => ({ ...column, width: column.width ?? defaultWidth }));
   }
 
   const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
