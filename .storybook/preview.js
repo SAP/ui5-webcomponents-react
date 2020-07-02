@@ -55,9 +55,9 @@ const withQuery = makeDecorator({
   wrapper: (getStory, context) => {
     return (
       <ThemeContainer
-        theme={context.globalArgs.theme || Themes.sap_fiori_3}
-        contentDensity={context.globalArgs.contentDensity}
-        direction={context.globalArgs.direction}
+        theme={context.globals.theme || Themes.sap_fiori_3}
+        contentDensity={context.globals.contentDensity}
+        direction={context.globals.direction}
       >
         {getStory(context)}
       </ThemeContainer>

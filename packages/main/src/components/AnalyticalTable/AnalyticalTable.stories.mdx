@@ -1,0 +1,299 @@
+import { Title, Subtitle, Primary, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { createSelectArgTypes } from '../../../../../shared/stories/createSelectArgTypes';
+import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
+import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
+import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import generateData from './demo/generateData';
+
+import '@ui5/webcomponents-icons/dist/icons/delete';
+import '@ui5/webcomponents-icons/dist/icons/edit';
+import '@ui5/webcomponents-icons/dist/icons/settings';
+import { Button } from '@ui5/webcomponents-react/lib/Button';
+import { Text } from '@ui5/webcomponents-react/lib/Text';
+import { FlexBox } from '@ui5/webcomponents-react/lib/FlexBox';
+import { TextAlign } from '@ui5/webcomponents-react/lib/TextAlign';
+import { FlexBoxAlignItems } from '@ui5/webcomponents-react/lib/FlexBoxAlignItems';
+import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJustifyContent';
+
+<Meta
+  title="Components / AnalyticalTableNew"
+  component={AnalyticalTable}
+  args={{
+    dataTree: generateData(20, true),
+    data: generateData(10000),
+    columns: [
+      {
+        Header: 'Name',
+        accessor: 'name' // String-based value accessors!
+      },
+      {
+        Header: 'Age',
+        accessor: 'age',
+        hAlign: TextAlign.End,
+        disableGroupBy: true,
+        disableSortBy: false,
+        disableFilters: false,
+        className: 'superCustomClass'
+      },
+      {
+        Header: 'Friend Name',
+        accessor: 'friend.name'
+      },
+      {
+        Header: () => <span>Friend Age</span>,
+        accessor: 'friend.age',
+        hAlign: TextAlign.End,
+        filter: (rows, accessor, filterValue) => {
+          if (filterValue === 'all') {
+            return rows;
+          }
+          if (filterValue === 'true') {
+            return rows.filter((row) => row.values[accessor] >= 21);
+          }
+          return rows.filter((row) => row.values[accessor] < 21);
+        },
+        Filter: ({ column }) => {
+          return (
+            <select
+              onChange={(event) => column.setFilter(event.target.value)}
+              style={{ width: '100%' }}
+              value={column.filterValue ? column.filterValue : 'all'}
+            >
+              <option value="all">Show All</option>
+              <option value="true">Can Drink</option>
+              <option value="false">Can't Drink</option>
+            </select>
+          );
+        }
+      },
+      {
+        id: 'actions',
+        Header: 'Actions',
+        accessor: '.',
+        width: 100,
+        canResize: false,
+        Cell: ({ cell, row }) => {
+          // console.log('This is your row data', row.original);
+          return (
+            <FlexBox>
+              <Button icon="edit" />
+              <Button icon="delete" />
+            </FlexBox>
+          );
+        }
+      }
+    ],
+    title: 'Table Title',
+    busyIndicatorEnabled: true,
+    sortable: true,
+    filterable: true,
+    visibleRows: 15,
+    minRows: 5,
+    groupable: true,
+    groupBy: [],
+    rowHeight: 44,
+    selectedRowIds: { 3: true },
+    withRowHighlight: true,
+    highlightField: 'status',
+    infiniteScroll: true,
+    infiniteScrollThreshold: 20,
+    subRowsKey: 'subRows',
+    isTreeTable: true,
+    scaleWidthMode: TableScaleWidthMode.Default,
+    selectionMode: TableSelectionMode.SINGLE_SELECT,
+    selectionBehavior: TableSelectionBehavior.ROW
+  }}
+  argTypes={{
+    ref: { type: null },
+    dataTree: { type: null },
+    data: { type: null },
+    columns: { type: null },
+    reactTableOptions: { type: null },
+    tableHooks: { type: null },
+    NoDataComponent: { type: null },
+    LoadingComponent: { type: null },
+    ...createSelectArgTypes({
+      scaleWidthMode: TableScaleWidthMode,
+      selectionMode: TableSelectionMode,
+      selectionBehavior: TableSelectionBehavior
+    })
+  }}
+/>
+
+<Title />
+
+<Description />
+
+<Preview>
+  <Story name="Default">
+    {(args) => (
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <AnalyticalTable
+          {...args}
+          title={args.title}
+          data={args.data}
+          columns={args.columns}
+          loading={args.loading}
+          busyIndicatorEnabled={args.busyIndicatorEnabled}
+          alternateRowColor={args.alternateRowColor}
+          sortable={args.sortable}
+          filterable={args.filterable}
+          visibleRows={args.visibleRows}
+          minRows={args.minRows}
+          groupable={args.groupable}
+          selectionMode={args.selectionMode}
+          scaleWidthMode={args.scaleWidthMode}
+          onRowSelected={(e) => console.log(e)}
+          onSort={args.onSort}
+          onGroup={args.onGroup}
+          onRowExpandChange={args.onRowExpandChange}
+          groupBy={args.groupBy}
+          rowHeight={args.rowHeight}
+          selectedRowIds={args.selectedRowIds}
+          onColumnsReordered={args.onColumnsReordered}
+          withRowHighlight={args.withRowHighlight}
+          highlightField={args.highlightField}
+          infiniteScroll={args.infiniteScroll}
+          infiniteScrollThreshold={args.infiniteScrollThreshold}
+          onLoadMore={args.onLoadMore}
+          selectionBehavior={args.selectionBehavior}
+        />
+      </div>
+    )}
+  </Story>
+</Preview>
+
+<Props story="Default" components={{ AnalyticalTable }} />
+
+## Column Properties
+
+**Required Attributes**
+
+| Attribute  | Type                                              | Description                               |
+| ---------- | ------------------------------------------------- | ----------------------------------------- |
+| `accessor` | `string OR ((row: any, rowIndex: number) => any)` |                                           |
+| `id`       | `string`                                          | Only required if `accessor` is a function |
+
+**Optional Properties**
+
+| Attribute          | Type                                                                     | Description                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------ | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Header`           | `string OR ComponentType`                                                | Can either be `string` or a React component that will be rendered as column header                                                                                                                                                                                                                                                                                                                              |
+| `Cell`             | `ComponentType`                                                          | Custom cell renderer. If set, the table will call that component for every cell and pass all required information as props, e.g. the cell value as `props.cell.value`                                                                                                                                                                                                                                           |
+| `width`            | `number`                                                                 | Cell width, if not set the table will distribute all columns without a width evenly                                                                                                                                                                                                                                                                                                                             |
+| `minWidth`         | `number`                                                                 | min width of the column, e.g. used for resizing                                                                                                                                                                                                                                                                                                                                                                 |
+| `maxWidth`         | `number`                                                                 | max with of the column, e.g. used for resizing                                                                                                                                                                                                                                                                                                                                                                  |
+| `Filter`           | `ComponentType`                                                          | Filter Component to be rendered in the Header                                                                                                                                                                                                                                                                                                                                                                   |
+| `disableFilters`   | `boolean`                                                                | Disable filters for this column                                                                                                                                                                                                                                                                                                                                                                                 |
+| `defaultCanFilter` | `boolean`                                                                | If set to true, this column will be filterable, regardless if it has a valid `accessor`                                                                                                                                                                                                                                                                                                                         |
+| `filter`           | `string OR Function`                                                     | Either a string or a filter function.<br />Supported String Values: <ul><li>`text`</li><li>`exactText`</li><li>`exactTextCase`</li><li>`equals`</li></ul>                                                                                                                                                                                                                                                       |
+| `Aggregated`       | `ComponentType`                                                          | Component to render for aggregated cells                                                                                                                                                                                                                                                                                                                                                                        |
+| `aggregate`        | `string OR ((leafValues, aggregatedValues) => any)`                      | Aggregation function or string.<br />Supported String Values: <ul><li>`min`</li><li>`max`</li><li>`median`</li><li>`count`</li></ul>                                                                                                                                                                                                                                                                            |
+| `aggregateValue`   | `string OR ((values, row, column) => any)`                               | When attempting to group/aggregate non primitive cell values (eg. arrays of items) you will likely need to resolve a stable primitive value like a number or string to use in normal row aggregations. This property can be used to aggregate or simply access the value to be used in aggregations eg. count-ing the unique number of items in a cell's array value before sum-ing that count across the table |
+| `disableGroupBy`   | `boolean`                                                                | Disable groupBy for this column                                                                                                                                                                                                                                                                                                                                                                                 |
+| `defaultCanSort`   | `boolean`                                                                | If set to true, this column will be sortable, regardless if it has a valid `accessor`                                                                                                                                                                                                                                                                                                                           |
+| `disableSortBy`    | `boolean`                                                                | Disable sorting for this column                                                                                                                                                                                                                                                                                                                                                                                 |
+| `sortType`         | `string OR ((rowA, rowB, columnId: string, descending: boolean) => any)` | String or custom sort function.<br />Supported String Values: <ul><li>`basic`</li><li>`datetime`</li><li>`alphanumeric`</li></ul>                                                                                                                                                                                                                                                                               |
+| `disableResizing`  | `boolean`                                                                | Disable resizing for this column                                                                                                                                                                                                                                                                                                                                                                                |
+| `hAlign`           | `TextAlign`                                                              | Horizontal align of the cell                                                                                                                                                                                                                                                                                                                                                                                    |
+| `vAlign`           | `VerticalAlign`                                                          | Vertical align of the cell                                                                                                                                                                                                                                                                                                                                                                                      |
+
+## Recipes
+
+### How do I stop my table state from automatically resetting when my data changes?
+
+By default, the `AnalyticalTable` will reset the sorters, filters, grouping, selected rows, etc. when the table data changes.
+In case you want to keep the current state of the Table, you can disable this behavior by using the `reactTableOptions` prop:
+
+```jsx
+const [data, setData] = React.useState([])
+const skipPageResetRef = React.useRef()
+
+const updateData = newData => {
+  // When data gets updated with this function, set a flag
+  // to disable all of the auto resetting
+  skipPageResetRef.current = true
+
+  setData(newData)
+}
+
+React.useEffect(() => {
+  // After the table has updated, always remove the flag
+  skipPageResetRef.current = false
+})
+<AnalyticalTable
+  columns={columns}
+  data={data}
+  reactTableOptions={{
+    // ... any other options you want to set
+    autoResetExpanded: !skipPageResetRef.current,
+    autoResetGroupBy: !skipPageResetRef.current,
+    autoResetSelectedRows: !skipPageResetRef.current,
+    autoResetSortBy: !skipPageResetRef.current,
+    autoResetFilters: !skipPageResetRef.current,
+  }}
+/>
+```
+
+For more details on this behavior you can double check the [react-table docs](https://github.com/tannerlinsley/react-table/blob/master/docs/faq.md#how-do-i-stop-my-table-state-from-automatically-resetting-when-my-data-changes).
+
+### How can I show a subset of all columns on mobile devices?
+
+In case you want to use the `AnalyticalTable` on mobile devices as well, it might be helpful to reduce the amount of columns
+for the sake of better readability. You can achieve this by using the `useViewportRange` hook in combination with a local React state:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
+import { useViewportRange } from '@ui5/webcomponents-react-base/lib/hooks';
+
+const columns = [{}, {}, {}, {}, ...]; /* your full set of columns*/
+const data = []; /* your data array */
+
+export const ResponsiveTable = () => {
+  const [responsiveColumns, setResponsiveColumns] = useState(columns);
+  const currentRange = useViewportRange('StdExt');
+  useEffect(() => {
+    if (currentRange === 'Phone') {
+      setResponsiveColumns(columns.slice(0, 2));
+    } else if (currentRange === 'Tablet') {
+      setResponsiveColumns(columns.slice(0, 3));
+    } else {
+      setResponsiveColumns(columns);
+    }
+  }, [currentRange]);
+  return <AnalyticalTable columns={responsiveColumns} data={data} title="ResponsiveTable" />;
+};
+```
+
+With the help of that effect, the table will now show either 2 columns on a mobile phone, 3 columns on a tablet device and all columns on Desktop devices.
+This even works if you resize the browser window!
+
+<Preview>
+  <Story name="Tree Table">
+    {(args) => (
+      <AnalyticalTable
+        title={args.title}
+        data={args.dataTree}
+        columns={args.columns}
+        loading={args.loading}
+        busyIndicatorEnabled={args.busyIndicatorEnabled}
+        sortable={args.sortable}
+        filterable={args.filterable}
+        visibleRows={args.visibleRows}
+        minRows={args.minRows}
+        selectionMode={args.selectionMode}
+        onRowSelected={args.onRowSelected}
+        onSort={args.onSort}
+        onRowExpandChange={args.onRowExpandChange}
+        subRowsKey={args.subRowsKey}
+        selectedRowIds={args.selectedRowIds}
+        selectionBehavior={args.selectionBehavior}
+        isTreeTable={args.isTreeTable}
+      />
+    )}
+  </Story>
+</Preview>
+
+<Props story="Tree Table" components={{ AnalyticalTable }} />
