@@ -267,13 +267,11 @@ export const ResponsiveTable = () => {
 };
 ```
 
-With the help of that effect, the table will now show either 2 columns on a mobile phone, 3 columns on a tablet device and all columns on Desktop devices.
-This even works if you resize the browser window!
-
 <Preview>
   <Story name="Tree Table">
     {(args) => (
       <AnalyticalTable
+        {...args}
         title={args.title}
         data={args.dataTree}
         columns={args.columns}
