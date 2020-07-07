@@ -65,22 +65,19 @@ const TiltedAxisTick = (props) => {
   const { x, y, payload } = props;
   return (
     <g transform={`translate(${x},${y})`}>
-      <text x={7} y={-10} textAnchor="begin" fill={ThemingParameters.sapContent_LabelColor}>
+      <text x={8} y={-6} textAnchor="begin" fill={ThemingParameters.sapContent_LabelColor}>
         {payload.value}
       </text>
     </g>
   );
 };
 
-const microBarChartLabel = { position: 'insideBottomRight', fill: ThemingParameters.sapContent_LabelColor };
-const microBarChartMargin = { left: -30, right: 30, top: 40, bottom: 30 };
-
 /**
  * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';</code>
  */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
-  const { loading, dataset, onDataPointClick, style, className, tooltip, slot } = props;
-
+  const { loading, dataset, onDataPointClick, style, className, tooltip, slot, chartConfig } = props;
+  const microBarChartMargin = chartConfig?.margin ?? { left: 1, right: 0, top: 0, bottom: 0 };
   const chartRef = useConsolidatedRef<any>(ref);
 
   const dimension: DimensionConfig = useMemo(
@@ -120,11 +117,11 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
 
   const CustomizedLabel = (properties) => {
     const { x, y, value } = properties;
-    const xText = chartRef.current.clientWidth - 60;
-
+    const marginRight = chartConfig?.margin?.right ?? 0;
+    const xText = chartRef.current.clientWidth - 3 - marginRight;
     return (
       <g transform={`translate(${x},${y})`}>
-        <text y={-7} dx={`${xText}px`} textAnchor={'end'} fill={ThemingParameters.sapContent_LabelColor}>
+        <text y={-2} dx={`${xText}px`} textAnchor={'end'} fill={ThemingParameters.sapContent_LabelColor}>
           {measure.formatter(value)}
         </text>
       </g>
@@ -143,12 +140,15 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
       slot={slot}
       resizeDebounce={250}
     >
-      <MicroBarChartLib margin={microBarChartMargin} layout="vertical" data={dataset} label={microBarChartLabel}>
+      <MicroBarChartLib margin={microBarChartMargin} layout="vertical" data={dataset}>
         <XAxis hide type="number" />
         <YAxis
+          padding={{ top: 8, bottom: 0 }}
           axisLine={false}
           tick={<TiltedAxisTick />}
           tickLine={false}
+          width={1}
+          interval={0}
           type="category"
           dataKey={dimension.accessor}
         />
@@ -156,7 +156,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
           background={{ fill: ThemingParameters.sapNeutralBackground }}
           strokeOpacity={measure.opacity}
           fillOpacity={measure.opacity}
-          label={{ content: <CustomizedLabel external={style.width} /> }}
+          label={{ content: <CustomizedLabel external={style?.width} /> }}
           dataKey={measure.accessor}
           barSize={measure.width ?? 5}
           onClick={onDataPointClickInternal}
