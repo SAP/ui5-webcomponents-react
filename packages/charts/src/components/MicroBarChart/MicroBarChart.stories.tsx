@@ -5,23 +5,19 @@ import { MicroBarChart } from './MicroBarChart';
 const singleData = [
   {
     name: 'January',
-    data: 100,
-    users: 120
+    data: 100
   },
   {
     name: 'February',
-    data: 300,
-    users: 40
+    data: 300
   },
   {
     name: 'March',
-    data: 530,
-    users: 20
+    data: 530
   },
   {
     name: 'April',
-    data: 200,
-    users: 30
+    data: 200
   }
 ];
 
@@ -40,7 +36,7 @@ export const defaultStory = () => (
       accessor: 'name'
     }}
     measure={{
-      accessor: 'users'
+      accessor: 'data'
     }}
   />
 );
@@ -59,7 +55,7 @@ export const withCustomColor = () => (
       accessor: 'name'
     }}
     measure={{
-      accessor: 'users',
+      accessor: 'data',
       colors: ['#f0ab00', 'var(--sapHighlightColor)'],
       formatter: (d) => (d > 200 ? 'over 200' : 'lower')
     }}
@@ -70,7 +66,18 @@ withCustomColor.story = {
   name: 'With custom color'
 };
 
-export const loadingPlaceholder = () => <MicroBarChart style={{ width: '20%' }} />;
+export const loadingPlaceholder = () => (
+  <MicroBarChart
+    dataset={[]}
+    dimension={{
+      accessor: 'name'
+    }}
+    measure={{
+      accessor: 'data'
+    }}
+    style={{ width: '20%' }}
+  />
+);
 
 loadingPlaceholder.story = {
   name: 'Loading placeholder'
