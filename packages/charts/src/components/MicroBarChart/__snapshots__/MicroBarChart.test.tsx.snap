@@ -11,103 +11,103 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
       style="width: 100%; height: 100%;"
     >
       <div
-        class="MicroBarChart-container-0-2-1"
+        class="MicroBarChart-container"
         height="0"
         width="0"
       >
         <div
-          class="MicroBarChart-barContainer-0-2-2"
+          class="MicroBarChart-barContainer"
         >
           <div
-            class="MicroBarChart-labelContainer-0-2-4"
+            class="MicroBarChart-labelContainer"
           >
             <span
-              class="MicroBarChart-label-0-2-8"
+              class="MicroBarChart-label"
               title="Bar Number One"
             >
               Bar Number One
             </span>
             <span
-              class="MicroBarChart-text-0-2-9"
+              class="MicroBarChart-text"
               title="10"
             >
               10
             </span>
           </div>
           <div
-            class="MicroBarChart-valueContainer-0-2-5"
+            class="MicroBarChart-valueContainer"
             style="opacity: 1; width: auto;"
           >
             <div
-              class="MicroBarChart-valueBar-0-2-6"
+              class="MicroBarChart-valueBar"
               style="width: 10%;"
             />
             <div
-              class="MicroBarChart-fillUp-0-2-7"
+              class="MicroBarChart-fillUp"
             />
           </div>
         </div>
         <div
-          class="MicroBarChart-barContainer-0-2-2"
+          class="MicroBarChart-barContainer"
         >
           <div
-            class="MicroBarChart-labelContainer-0-2-4"
+            class="MicroBarChart-labelContainer"
           >
             <span
-              class="MicroBarChart-label-0-2-8"
+              class="MicroBarChart-label"
               title="Bar Number Two"
             >
               Bar Number Two
             </span>
             <span
-              class="MicroBarChart-text-0-2-9"
+              class="MicroBarChart-text"
               title="100"
             >
               100
             </span>
           </div>
           <div
-            class="MicroBarChart-valueContainer-0-2-5"
+            class="MicroBarChart-valueContainer"
             style="opacity: 1; width: auto;"
           >
             <div
-              class="MicroBarChart-valueBar-0-2-6"
+              class="MicroBarChart-valueBar"
               style="width: 100%;"
             />
             <div
-              class="MicroBarChart-fillUp-0-2-7"
+              class="MicroBarChart-fillUp"
             />
           </div>
         </div>
         <div
-          class="MicroBarChart-barContainer-0-2-2"
+          class="MicroBarChart-barContainer"
         >
           <div
-            class="MicroBarChart-labelContainer-0-2-4"
+            class="MicroBarChart-labelContainer"
           >
             <span
-              class="MicroBarChart-label-0-2-8"
+              class="MicroBarChart-label"
               title="Bar Number Three"
             >
               Bar Number Three
             </span>
             <span
-              class="MicroBarChart-text-0-2-9"
+              class="MicroBarChart-text"
               title="70"
             >
               70
             </span>
           </div>
           <div
-            class="MicroBarChart-valueContainer-0-2-5"
+            class="MicroBarChart-valueContainer"
             style="opacity: 1; width: auto;"
           >
             <div
-              class="MicroBarChart-valueBar-0-2-6"
+              class="MicroBarChart-valueBar"
               style="width: 70%;"
             />
             <div
-              class="MicroBarChart-fillUp-0-2-7"
+              class="MicroBarChart-fillUp"
             />
           </div>
         </div>
@@ -129,103 +129,103 @@ exports[`Micro Bar Chart With custom colors 1`] = `
       style="width: 100%; height: 100%;"
     >
       <div
-        class="MicroBarChart-container-0-2-1"
+        class="MicroBarChart-container"
         height="0"
         width="0"
       >
         <div
-          class="MicroBarChart-barContainer-0-2-2"
+          class="MicroBarChart-barContainer"
         >
           <div
-            class="MicroBarChart-labelContainer-0-2-4"
+            class="MicroBarChart-labelContainer"
           >
             <span
-              class="MicroBarChart-label-0-2-8"
+              class="MicroBarChart-label"
               title="Bar Number One - formatted"
             >
               Bar Number One - formatted
             </span>
             <span
-              class="MicroBarChart-text-0-2-9"
+              class="MicroBarChart-text"
               title="10"
             >
               10
             </span>
           </div>
           <div
-            class="MicroBarChart-valueContainer-0-2-5"
+            class="MicroBarChart-valueContainer"
             style="opacity: 1; width: auto;"
           >
             <div
-              class="MicroBarChart-valueBar-0-2-6"
+              class="MicroBarChart-valueBar"
               style="width: 10%; background-color: black;"
             />
             <div
-              class="MicroBarChart-fillUp-0-2-7"
+              class="MicroBarChart-fillUp"
             />
           </div>
         </div>
         <div
-          class="MicroBarChart-barContainer-0-2-2"
+          class="MicroBarChart-barContainer"
         >
           <div
-            class="MicroBarChart-labelContainer-0-2-4"
+            class="MicroBarChart-labelContainer"
           >
             <span
-              class="MicroBarChart-label-0-2-8"
+              class="MicroBarChart-label"
               title="Bar Number Two - formatted"
             >
               Bar Number Two - formatted
             </span>
             <span
-              class="MicroBarChart-text-0-2-9"
+              class="MicroBarChart-text"
               title="100"
             >
               100
             </span>
           </div>
           <div
-            class="MicroBarChart-valueContainer-0-2-5"
+            class="MicroBarChart-valueContainer"
             style="opacity: 1; width: auto;"
           >
             <div
-              class="MicroBarChart-valueBar-0-2-6"
+              class="MicroBarChart-valueBar"
               style="width: 100%; background-color: yellow;"
             />
             <div
-              class="MicroBarChart-fillUp-0-2-7"
+              class="MicroBarChart-fillUp"
             />
           </div>
         </div>
         <div
-          class="MicroBarChart-barContainer-0-2-2"
+          class="MicroBarChart-barContainer"
         >
           <div
-            class="MicroBarChart-labelContainer-0-2-4"
+            class="MicroBarChart-labelContainer"
           >
             <span
-              class="MicroBarChart-label-0-2-8"
+              class="MicroBarChart-label"
               title="Bar Number Three - formatted"
             >
               Bar Number Three - formatted
             </span>
             <span
-              class="MicroBarChart-text-0-2-9"
+              class="MicroBarChart-text"
               title="70"
             >
               70
             </span>
           </div>
           <div
-            class="MicroBarChart-valueContainer-0-2-5"
+            class="MicroBarChart-valueContainer"
             style="opacity: 1; width: auto;"
           >
             <div
-              class="MicroBarChart-valueBar-0-2-6"
+              class="MicroBarChart-valueBar"
               style="width: 70%;"
             />
             <div
-              class="MicroBarChart-fillUp-0-2-7"
+              class="MicroBarChart-fillUp"
             />
           </div>
         </div>

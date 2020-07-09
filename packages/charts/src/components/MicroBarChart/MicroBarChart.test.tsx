@@ -1,17 +1,17 @@
-import { mount } from "enzyme";
+import { mount } from 'enzyme';
 import * as React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@shared/tests/index';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';
-
-const dataset = [
-  { value: 10, label: 'Bar Number One' },
-  { value: 100, label: 'Bar Number Two' },
-  { value: 70, label: 'Bar Number Three' }
-];
 
 const text1 = 'Bar Number One';
 const text2 = 'Bar Number Two';
 const text3 = 'Bar Number Three';
+
+const dataset = [
+  { value: 10, label: text1 },
+  { value: 100, label: text2 },
+  { value: 70, label: text3 }
+];
 
 describe('Micro Bar Chart', () => {
   test('Render with default Props', () => {
@@ -71,7 +71,7 @@ describe('Micro Bar Chart', () => {
   test('Bar click', async () => {
     let internalDataset = dataset;
 
-    const { getByText, findByText, rerender } = render(
+    const { getByText, rerender } = render(
       <MicroBarChart
         dimension={{
           accessor: 'label'
@@ -106,8 +106,7 @@ describe('Micro Bar Chart', () => {
   });
 
   test('loading placeholder', () => {
-    const wrapper = mount(<MicroBarChart style={{ width: '50%' }} dimension={[]} measure={[]} />);
+    const wrapper = mount(<MicroBarChart style={{ width: '50%' }} dimension={null} measure={null} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
-
 });
