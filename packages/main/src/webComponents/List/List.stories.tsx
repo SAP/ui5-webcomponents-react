@@ -36,7 +36,7 @@ export const generatedDefaultStory = (props) => (
     busy={props.busy}
     footerText={props.footerText}
     headerText={props.headerText}
-    infiniteScroll={props.infiniteScrolll}
+    infiniteScroll={props.infiniteScroll}
     inset={props.inset}
     mode={props.mode}
     noDataText={props.noDataText}
