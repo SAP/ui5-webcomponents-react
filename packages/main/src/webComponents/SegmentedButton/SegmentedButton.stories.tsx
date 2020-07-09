@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions';
 import { SegmentedButton } from '@ui5/webcomponents-react/lib/SegmentedButton';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import React from 'react';
@@ -8,17 +7,23 @@ export default {
   component: SegmentedButton,
   parameters: {
     subcomponents: { ToggleButton }
+  },
+  argTypes: {
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   }
 };
 
-export const generatedDefaultStory = () => (
-  <SegmentedButton onSelectionChange={action('onSelectionChange')}>
+export const generatedDefaultStory = (props) => (
+  <SegmentedButton onSelectionChange={props.onSelectionChange}>
     <ToggleButton>Button 1</ToggleButton>
     <ToggleButton pressed>Button 2</ToggleButton>
     <ToggleButton>Button 3</ToggleButton>
   </SegmentedButton>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

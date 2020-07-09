@@ -1,7 +1,5 @@
-const { highlightLog } = require('../scripts/utils');
 const path = require('path');
 const PATHS = require('../config/paths');
-const dedent = require('dedent');
 require('dotenv').config({
   path: path.join(PATHS.root, '.env')
 });
@@ -14,8 +12,13 @@ const DEPENDENCY_REGEX = BUILD_FOR_IE11
   : /node_modules\/(@ui5\/webcomponents(-(base|core|fiori|icons|theme-base))?|lit-html)\//;
 
 module.exports = {
-  stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.mdx', '../packages/**/*.stories.[tj]sx'],
-  addons: ['@storybook/addon-knobs', '@storybook/addon-docs', '@storybook/addon-actions'],
+  stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx)'],
+  addons: [
+    '@storybook/addon-toolbars',
+    '@storybook/addon-docs',
+    '@storybook/addon-controls',
+    '@storybook/addon-actions'
+  ],
   webpack: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -26,35 +29,6 @@ module.exports = {
       use: 'file-loader',
       type: 'javascript/auto'
     });
-
-    const tsLoader = {
-      test: /\.tsx?$/,
-      include: PATHS.packages,
-      use: [
-        {
-          loader: require.resolve('babel-loader'),
-          options: {
-            envName: 'esm',
-            configFile: path.resolve(PATHS.root, 'babel.config.js')
-          }
-        }
-      ]
-    };
-
-    if (IS_RELEASE_BUILD) {
-      highlightLog('Warning: Prop Types Table Generation is active');
-      tsLoader.use.push(require.resolve('react-docgen-typescript-loader'));
-    } else {
-      highlightLog('Info: Prop Types Table Generation is disabled');
-      console.log(dedent`
-          The Prop Table Generation is very expensive during build-time and therefore disabled by default. 
-          If you need Prop-Tables, you can activate it by adding a '.env' file to the root of the project with the following content:
-          
-          UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD=true\n\n 
-      `);
-    }
-
-    config.module.rules.push(tsLoader);
 
     if ((IS_RELEASE_BUILD && configType === 'PRODUCTION') || BUILD_FOR_IE11) {
       config.module.rules.push({
@@ -102,8 +76,6 @@ module.exports = {
         }
       });
     }
-
-    config.resolve.extensions.push('.ts', '.tsx');
     config.resolve.alias = {
       ...config.resolve.alias,
       '@shared': path.join(PATHS.root, 'shared'),

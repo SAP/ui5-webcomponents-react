@@ -1,6 +1,6 @@
-import { action } from '@storybook/addon-actions';
 import React from 'react';
 import { MicroBarChart } from './MicroBarChart';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const singleData = [
   {
@@ -27,13 +27,37 @@ const singleData = [
 
 export default {
   title: 'Charts /  MicroBarChart',
-  component: MicroBarChart
+  component: MicroBarChart,
+  argTypes: {
+    dataset: {
+      type: null
+    },
+    measure: {
+      type: null
+    },
+    dimension: {
+      type: null
+    }
+  },
+  args: {
+    chartConfig: {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      zoomingTool: false,
+      resizeDebounce: 250
+    }
+  }
 };
 
-export const defaultStory = () => (
+export const defaultStory = (props) => (
   <MicroBarChart
-    onDataPointClick={action('onDataPointClickHandler')}
-    onLegendClick={action('onLegendClickHandler')}
+    onDataPointClick={props.onDataPointClickHandler}
+    onLegendClick={props.onLegendClickHandler}
     dataset={singleData}
     style={{ width: '100%', height: '30vh' }}
     dimension={{
@@ -45,14 +69,12 @@ export const defaultStory = () => (
   />
 );
 
-defaultStory.story = {
-  name: 'Default'
-};
+defaultStory.storyName = 'Default';
 
-export const withCustomColor = () => (
+export const withCustomColor = (props) => (
   <MicroBarChart
-    onDataPointClick={action('onDataPointClickHandler')}
-    onLegendClick={action('onLegendClickHandler')}
+    onDataPointClick={props.onDataPointClickHandler}
+    onLegendClick={props.onLegendClickHandler}
     dataset={singleData}
     style={{ width: '100%', height: '30vh' }}
     dimension={{
@@ -66,12 +88,8 @@ export const withCustomColor = () => (
   />
 );
 
-withCustomColor.story = {
-  name: 'With custom color'
-};
+withCustomColor.storyName = 'With custom color';
 
 export const loadingPlaceholder = () => <MicroBarChart style={{ width: '20%' }} />;
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';

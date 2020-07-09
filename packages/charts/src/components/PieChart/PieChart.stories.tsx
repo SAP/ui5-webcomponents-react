@@ -1,27 +1,43 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
 import React from 'react';
 import { PieChart } from '../../lib/PieChart';
 import { simpleDataSet } from '../../resources/DemoProps';
 
 export default {
   title: 'Charts /  PieChart',
-  component: PieChart
+  component: PieChart,
+  args: {
+    innerRadius: '0%',
+    outerRadius: '80%'
+  },
+  argTypes: {
+    dataset: {
+      type: null
+    },
+    chartConfig: {
+      type: null
+    },
+    measure: {
+      type: null
+    },
+    dimension: {
+      type: null
+    }
+  }
 };
 
-export const renderStory = () => {
+export const renderStory = (props) => {
   return (
     <PieChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       style={{ width: '50%' }}
       dataset={simpleDataSet}
       chartConfig={{
-        innerRadius: text('innerRadius', '0%'),
-        outerRadius: text('outerRadius', '80%')
+        innerRadius: props.innerRadius,
+        outerRadius: props.outerRadius
       }}
       dimension={{
         accessor: 'name'
@@ -33,18 +49,16 @@ export const renderStory = () => {
   );
 };
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
-export const renderCustomColorStory = () => {
+export const renderCustomColorStory = (props) => {
   return (
     <PieChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       style={{ width: '50%' }}
       dataset={simpleDataSet}
       dimension={{
@@ -58,24 +72,20 @@ export const renderCustomColorStory = () => {
   );
 };
 
-renderCustomColorStory.story = {
-  name: 'With custom color'
-};
+renderCustomColorStory.storyName = 'With custom color';
 
 export const loadingPlaceholder = () => <PieChart style={{ width: '50%' }} />;
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';
 
-export const renderFormatedStory = () => {
+export const renderFormatedStory = (props) => {
   return (
     <PieChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       style={{ width: '50%' }}
       dataset={simpleDataSet}
       dimension={{
@@ -89,6 +99,4 @@ export const renderFormatedStory = () => {
   );
 };
 
-renderFormatedStory.story = {
-  name: 'With formatted data labels'
-};
+renderFormatedStory.storyName = 'With formatted data labels';

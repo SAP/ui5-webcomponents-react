@@ -1,7 +1,7 @@
-import { number, select } from '@storybook/addon-knobs';
 import { Size } from '@ui5/webcomponents-react/lib/Size';
 import { Spinner } from '@ui5/webcomponents-react/lib/Spinner';
 import React, { useMemo } from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 let spinnerKey = 0;
 
@@ -10,18 +10,26 @@ const Demo = (props) => {
 
   const spinner = useMemo(() => {
     spinnerKey++;
-    return <Spinner key={`${spinnerKey}`} size={select('size', Size, Size.Medium)} delay={delay} />;
+    return <Spinner key={`${spinnerKey}`} size={props.size} delay={delay} />;
   }, [delay]);
 
   return spinner;
 };
 
-export const renderSpinner = () => <Demo delay={number('delay', 2000)} />;
-renderSpinner.story = {
-  name: 'Default'
-};
+export const renderSpinner = (props) => <Demo delay={props.delay} />;
+renderSpinner.storyName = 'Default';
 
 export default {
   title: 'Components / Spinner',
-  component: Spinner
+  component: Spinner,
+  argTypes: {
+    ...createSelectArgTypes({ size: Size }),
+    ref: {
+      type: null
+    }
+  },
+  args: {
+    size: Size.Medium,
+    delay: 2000
+  }
 };

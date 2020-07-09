@@ -1,34 +1,46 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { UploadCollection } from '@ui5/webcomponents-react/lib/UploadCollection';
 import { UploadCollectionItem } from '@ui5/webcomponents-react/lib/UploadCollectionItem';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / UploadCollection',
   component: UploadCollection,
   parameters: {
     subcomponents: { UploadCollectionItem }
+  },
+  argTypes: {
+    ...createSelectArgTypes({ mode: ListMode }),
+    ref: {
+      type: null
+    },
+    children: {
+      type: null
+    },
+    header: {
+      type: null
+    }
+  },
+  args: {
+    mode: ListMode.None
   }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <UploadCollection
-    mode={select('mode', ListMode, ListMode.None)}
-    noDataDescription={text('noDataDescription', '')}
-    noDataText={text('noDataText', '')}
-    noDnd={boolean('noDnd', false)}
+    mode={props.mode}
+    noDataDescription={props.noDataDescription}
+    noDataText={props.noDataText}
+    noDnd={props.noDnd}
+    onFileDeleted={props.onFileDeleted}
+    onSelectionChange={props.onSelectionChange}
     header={<Title>Attachments</Title>}
-    onFileDeleted={action('onFileDeleted')}
-    onSelectionChange={action('onSelectionChange')}
     style={{ height: '20rem' }}
   >
     Some Content
   </UploadCollection>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

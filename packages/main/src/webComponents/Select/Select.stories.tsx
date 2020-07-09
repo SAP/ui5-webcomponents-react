@@ -1,10 +1,9 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 import mdx from './Select.mdx';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / Select',
@@ -14,16 +13,23 @@ export default {
     docs: {
       page: mdx
     }
+  },
+  argTypes: {
+    ...createSelectArgTypes({ valueState: ValueState }),
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
+  },
+  args: {
+    valueState: ValueState.None
   }
 };
 
-export const generatedDefaultStory = () => (
-  <Select
-    disabled={boolean('disabled', false)}
-    name={text('name', '')}
-    valueState={select('valueState', ValueState, ValueState.None)}
-    onChange={action('onChange')}
-  >
+export const generatedDefaultStory = (props) => (
+  <Select disabled={props.disabled} name={props.name} valueState={props.valueState} onChange={props.onChange}>
     <Option>Option 1</Option>
     <Option>Option 2</Option>
     <Option>Option 3</Option>
@@ -32,6 +38,4 @@ export const generatedDefaultStory = () => (
   </Select>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

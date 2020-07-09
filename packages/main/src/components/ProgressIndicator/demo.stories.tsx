@@ -1,17 +1,17 @@
-import { number, select, text } from '@storybook/addon-knobs';
 import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
-export const renderStory = () => {
+export const renderStory = (props) => {
   return (
     <div>
       <ProgressIndicator
-        percentValue={number('percentValue', 5)}
+        percentValue={props.percentValue}
         style={{ width: '50%' }}
-        displayValue={text('displayValue', '5%')}
+        displayValue={props.displayValue}
         // @ts-ignore
-        state={select('state', ValueState, ValueState.None)}
+        state={props.state}
       />
       <ProgressIndicator percentValue={95} style={{ width: '50%' }} displayValue="95%" />
       <ProgressIndicator percentValue={25} state={ValueState.Success} displayValue="25 GB" />
@@ -21,11 +21,20 @@ export const renderStory = () => {
     </div>
   );
 };
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export default {
   title: 'Components / ProgressIndicator',
-  component: ProgressIndicator
+  component: ProgressIndicator,
+  argTypes: {
+    ...createSelectArgTypes({ state: ValueState }),
+    ref: {
+      type: null
+    }
+  },
+  args: {
+    percentValue: 5,
+    displayValue: '5%',
+    state: ValueState.None
+  }
 };

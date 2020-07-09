@@ -1,18 +1,35 @@
-import { text } from '@storybook/addon-knobs';
 import { Badge } from '@ui5/webcomponents-react/lib/Badge';
+import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Badge',
-  component: Badge
+  component: Badge,
+  argTypes: {
+    colorScheme: {
+      control: {
+        type: 'number',
+        min: 1,
+        max: 10
+      }
+    },
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
+  },
+  args: {
+    colorScheme: 1,
+    children: 'Some Content'
+  }
 };
 
-export const generatedDefaultStory = () => (
-  <Badge colorScheme={text('colorScheme', '1')} icon={null}>
-    Some Content
+export const generatedDefaultStory = (props) => (
+  <Badge colorScheme={props.colorScheme} icon={<Icon name="add" />}>
+    {props.children}
   </Badge>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

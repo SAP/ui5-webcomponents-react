@@ -1,25 +1,29 @@
-import { action } from '@storybook/addon-actions';
-import { number, text } from '@storybook/addon-knobs';
 import { Calendar } from '@ui5/webcomponents-react/lib/Calendar';
-// import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Calendar',
-  component: Calendar
+  component: Calendar,
+  arg: {
+    maxDate: '2099-12-31',
+    minDate: '2020-01-01'
+  },
+  argTypes: {
+    ref: {
+      type: null
+    }
+  }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <Calendar
-    maxDate={text('maxDate', '2099-12-31')}
-    minDate={text('minDate', '2020-01-01')}
+    maxDate={props.maxDate}
+    minDate={props.minDate}
     // primaryCalendarType={select('primaryCalendarType', CalendarType, CalendarType.Gregorian)}
     selectedDates={null}
-    timestamp={number('timestamp', undefined)}
-    onSelectedDatesChange={action('onSelectedDatesChange')}
+    timestamp={props.timestamp}
+    onSelectedDatesChange={props.onSelectedDatesChange}
   />
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

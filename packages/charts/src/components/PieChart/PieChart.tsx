@@ -40,7 +40,7 @@ export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
   centerLabel?: string;
   dimension: DimensionConfig;
   /**
-   * An array of config objects. Each object is defining one pie in the chart.
+   * A object which contains the configuration of the measure. The object is defining one pie in the chart.
    *
    * <h4>Required properties</h4>
    * - `accessor`: string containing the path to the dataset key this pie should display. Supports object structures by using <code>'parent.child'</code>.

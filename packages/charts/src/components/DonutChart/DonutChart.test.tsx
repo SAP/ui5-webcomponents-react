@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions';
 import { mount } from 'enzyme';
 import * as React from 'react';
 import { simpleDataSet } from '../../resources/DemoProps';
@@ -9,10 +8,8 @@ describe('DonutChart', () => {
     expect(
       mount(
         <DonutChart
-          onLegendClick={action('onLegendClick')}
-          onDataPointClick={action('onDataPointClick')}
-          style={{ width: '50%' }}
           dataset={simpleDataSet}
+          style={{ width: '50%' }}
           dimension={{
             accessor: 'name'
           }}
