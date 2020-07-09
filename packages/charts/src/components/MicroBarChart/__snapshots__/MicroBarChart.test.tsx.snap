@@ -42,9 +42,6 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
               class="MicroBarChart-valueBar"
               style="width: 10%;"
             />
-            <div
-              class="MicroBarChart-fillUp"
-            />
           </div>
         </div>
         <div
@@ -74,9 +71,6 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
               class="MicroBarChart-valueBar"
               style="width: 100%;"
             />
-            <div
-              class="MicroBarChart-fillUp"
-            />
           </div>
         </div>
         <div
@@ -105,9 +99,6 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
             <div
               class="MicroBarChart-valueBar"
               style="width: 70%;"
-            />
-            <div
-              class="MicroBarChart-fillUp"
             />
           </div>
         </div>
@@ -160,9 +151,6 @@ exports[`Micro Bar Chart With custom colors 1`] = `
               class="MicroBarChart-valueBar"
               style="width: 10%; background-color: black;"
             />
-            <div
-              class="MicroBarChart-fillUp"
-            />
           </div>
         </div>
         <div
@@ -192,9 +180,6 @@ exports[`Micro Bar Chart With custom colors 1`] = `
               class="MicroBarChart-valueBar"
               style="width: 100%; background-color: yellow;"
             />
-            <div
-              class="MicroBarChart-fillUp"
-            />
           </div>
         </div>
         <div
@@ -223,9 +208,6 @@ exports[`Micro Bar Chart With custom colors 1`] = `
             <div
               class="MicroBarChart-valueBar"
               style="width: 70%;"
-            />
-            <div
-              class="MicroBarChart-fillUp"
             />
           </div>
         </div>
