@@ -66,13 +66,12 @@ const withQuery = makeDecorator({
 
 addDecorator(withQuery);
 
-export const globalArgTypes = {
+export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Fiori Theme',
     defaultValue: Themes.sap_fiori_3,
     toolbar: {
-      icon: 'paintbrush',
       items: [
         {
           value: Themes.sap_fiori_3,
@@ -102,7 +101,6 @@ export const globalArgTypes = {
     description: 'Content Density',
     defaultValue: ContentDensity.Cozy,
     toolbar: {
-      icon: 'component',
       items: [
         {
           value: ContentDensity.Cozy,
@@ -120,17 +118,14 @@ export const globalArgTypes = {
     description: 'Text Direction',
     defaultValue: 'ltr',
     toolbar: {
-      icon: 'transfer',
       items: [
         {
           value: 'ltr',
-          title: 'LTR',
-          icon: 'arrowrightalt'
+          title: 'LTR'
         },
         {
           value: 'rtl',
-          title: 'RTL',
-          icon: 'arrowleftalt'
+          title: 'RTL'
         }
       ]
     }
