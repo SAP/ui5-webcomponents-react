@@ -68,7 +68,7 @@ defaultStory.storyName = 'Default';
 
 export const withCustomProps = (props) => (
   <MicroBarChart
-    onDataPointClick={props.onDataPointClickHandler}
+    onDataPointClick={props.onDataPointClick}
     dataset={singleData}
     style={{ width: '50%' }}
     loading={props.loading}
