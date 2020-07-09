@@ -42,6 +42,6 @@ export const Fiori4ReactTheme = create({
    * URL for name in top left corner to link to
    * @type {String}
    */
-  brandUrl: '#'
-  // // brandImage: 'https://placehold.it/350x150'
+  brandUrl: '#',
+  brandImage: 'https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/master/assets/Logo.png'
 });
