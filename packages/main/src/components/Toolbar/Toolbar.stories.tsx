@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select } from '@storybook/addon-knobs';
 import React from 'react';
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { ToolbarDesign } from '@ui5/webcomponents-react/lib/ToolbarDesign';
@@ -8,14 +6,15 @@ import { ToolbarStyle } from '@ui5/webcomponents-react/lib/ToolbarStyle';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
-export const renderStory = () => {
+export const renderStory = (props) => {
   return (
     <Toolbar
-      active={boolean('active', false)}
-      toolbarStyle={select<ToolbarStyle>('toolbarStyle', ToolbarStyle, ToolbarStyle.Standard)}
-      design={select<ToolbarDesign>('design', ToolbarDesign, ToolbarDesign.Auto)}
-      onToolbarClick={action('onToolbarClick')}
+      active={props.active}
+      toolbarStyle={props.toolbarStyle}
+      design={props.design}
+      onToolbarClick={props.onToolbarClick}
     >
       <Text>Item1</Text>
       <Button
@@ -39,17 +38,15 @@ export const renderStory = () => {
   );
 };
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
-export const withSpacerAndSeparator = () => {
+export const withSpacerAndSeparator = (props) => {
   return (
     <Toolbar
-      active={boolean('active', false)}
-      toolbarStyle={select<ToolbarStyle>('toolbarStyle', ToolbarStyle, ToolbarStyle.Standard)}
-      design={select<ToolbarDesign>('design', ToolbarDesign, ToolbarDesign.Auto)}
-      onToolbarClick={action('onToolbarClick')}
+      active={props.active}
+      toolbarStyle={props.toolbarStyle}
+      design={props.design}
+      onToolbarClick={props.onToolbarClick}
     >
       <ToolbarSpacer />
       <Text>Item1</Text>
@@ -70,11 +67,16 @@ export const withSpacerAndSeparator = () => {
   );
 };
 
-withSpacerAndSeparator.story = {
-  name: 'with spacer and separator'
-};
+withSpacerAndSeparator.storyName = 'with spacer and separator';
 
 export default {
   title: 'Components / Toolbar',
-  component: Toolbar
+  component: Toolbar,
+  argTypes: {
+    ...createSelectArgTypes({ toolbarStyle: ToolbarStyle, design: ToolbarDesign })
+  },
+  args: {
+    toolbarStyle: ToolbarStyle.Standard,
+    design: ToolbarDesign.Auto
+  }
 };

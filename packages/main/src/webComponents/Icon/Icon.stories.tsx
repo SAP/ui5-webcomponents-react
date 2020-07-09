@@ -1,21 +1,22 @@
-import { boolean, text } from '@storybook/addon-knobs';
 import '@ui5/webcomponents-icons/dist/icons/add';
 import { Icon } from '@ui5/webcomponents-react/lib/Icon';
 import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Icon',
-  component: Icon
+  component: Icon,
+  args: {
+    name: 'add'
+  },
+  argTypes: {
+    ref: {
+      type: null
+    }
+  }
 };
 
-export const generatedDefaultStory = () => (
-  <Icon
-    accessibleName={text('accessibleName', '')}
-    name={text('name', 'add')}
-    showTooltip={boolean('showTooltip', false)}
-  />
+export const generatedDefaultStory = (props) => (
+  <Icon accessibleName={props.accessibleName} name={props.name} showTooltip={props.showTooltip} />
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

@@ -1,5 +1,7 @@
 <a name="top"></a>
-# UI5 Web Components for React
+<p align="center">
+  <img src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/master/assets/Logo.png" alt="UI5 Web Components for React Logo" />
+</p>
 <p align="center">
   <a href="https://github.com/SAP/ui5-webcomponents-react/actions?query=workflow:%22build%22" target="_blank">
     <img alt="Build Status" src="https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg">

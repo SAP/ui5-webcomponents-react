@@ -11,18 +11,38 @@ export default {
   component: ProductSwitch,
   parameters: {
     subcomponents: { ProductSwitchItem }
+  },
+  args: {
+    heading1: 'Home',
+    subtitle1: 'Central Home',
+    icon1: 'home',
+    heading2: 'Analytical Cloud',
+    subtitle2: 'Analytical Cloud',
+    icon2: 'business-objects-experience',
+    heading3: 'Catalog',
+    subtitle3: 'Ariba',
+    icon3: 'contacts',
+    heading4: 'Travel & Expense',
+    subtitle4: 'Concur',
+    icon4: 'flight'
+  },
+  argTypes: {
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
   }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <ProductSwitch>
-    <ProductSwitchItem heading="Home" subtitle="Central Home" icon="home" />
-    <ProductSwitchItem heading="Analytics Cloud" subtitle="Analytics Cloud" icon="business-objects-experience" />
-    <ProductSwitchItem heading="Catalog" subtitle="Ariba" icon="contacts" />
-    <ProductSwitchItem heading="Travel & Expense" subtitle="Concur" icon="flight" />
+    <ProductSwitchItem heading={props.heading1} subtitle={props.subtitle1} icon={props.icon1} />
+    <ProductSwitchItem heading={props.heading2} subtitle={props.subtitle2} icon={props.icon2} />
+    <ProductSwitchItem heading={props.heading3} subtitle={props.subtitle3} icon={props.icon3} />
+    <ProductSwitchItem heading={props.heading4} subtitle={props.subtitle4} icon={props.icon4} />
   </ProductSwitch>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

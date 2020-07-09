@@ -6,7 +6,7 @@ export const Fiori4ReactTheme = create({
   base: 'light',
 
   colorPrimary: TEXT_COLOR, //'#000000',
-  colorSecondary: '#0a6ed1',
+  colorSecondary: PRIMARY_COLOR,
 
   // UI
   appBg: '#edeff0',
@@ -24,7 +24,7 @@ export const Fiori4ReactTheme = create({
 
   // Toolbar default and active colors
   barTextColor: '#ffffff',
-  barSelectedColor: PRIMARY_COLOR,
+  barSelectedColor: '#ffffff',
   barBg: '#354a5f',
 
   // Form colors
@@ -42,6 +42,6 @@ export const Fiori4ReactTheme = create({
    * URL for name in top left corner to link to
    * @type {String}
    */
-  brandUrl: '#'
-  // // brandImage: 'https://placehold.it/350x150'
+  brandUrl: 'https://sap.github.io/ui5-webcomponents-react',
+  brandImage: 'https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/master/assets/Logo.png'
 });

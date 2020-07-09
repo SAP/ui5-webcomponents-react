@@ -3,19 +3,42 @@ import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { ScatterChart } from '@ui5/webcomponents-react-charts/lib/ScatterChart';
 import { scatterColorDataSet, scatterComplexDataSet } from '../../resources/DemoProps';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export default {
   title: 'Charts /  ScatterChart',
-  component: ScatterChart
+  component: ScatterChart,
+  argTypes: {
+    dataset: {
+      type: null
+    },
+    measures: {
+      type: null
+    }
+  },
+  args: {
+    chartConfig: {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      zoomingTool: false,
+      resizeDebounce: 250
+    }
+  }
 };
 
-export const renderStory = () => (
+export const renderStory = (props) => (
   <ScatterChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
-    onLegendClick={action('onLegendClick')}
+    chartConfig={props.chartConfig}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dataset={scatterComplexDataSet}
     style={{ width: '100%' }}
     measures={[
@@ -38,16 +61,16 @@ export const renderStory = () => (
   />
 );
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
-export const renderStoryWithCustomColor = () => (
+export const renderStoryWithCustomColor = (props) => (
   <ScatterChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    chartConfig={props.chartConfig}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dataset={scatterColorDataSet}
     style={{ width: '100%' }}
     measures={[
@@ -69,12 +92,8 @@ export const renderStoryWithCustomColor = () => (
   />
 );
 
-renderStoryWithCustomColor.story = {
-  name: 'With custom color'
-};
+renderStoryWithCustomColor.storyName = 'With custom color';
 
 export const loadingPlaceholder = () => <ScatterChart style={{ width: '100%' }} measures={[]} />;
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';

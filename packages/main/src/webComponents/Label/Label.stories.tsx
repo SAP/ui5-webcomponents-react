@@ -1,23 +1,20 @@
-import { boolean, text } from '@storybook/addon-knobs';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Label',
-  component: Label
+  component: Label,
+  argTypes: {
+    ref: {
+      type: null
+    }
+  }
 };
 
-export const generatedDefaultStory = () => (
-  <Label
-    for={text('for', '')}
-    required={boolean('required', false)}
-    showColon={boolean('showColon', false)}
-    wrap={boolean('wrap', false)}
-  >
+export const generatedDefaultStory = (props) => (
+  <Label for={props.for} required={props.required} showColon={props.showColon} wrap={props.wrap}>
     Some Content
   </Label>
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

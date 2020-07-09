@@ -503,9 +503,7 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
          ${componentBody}
      );
      
-     generatedDefaultStory.story = {
-       name: 'Generated default story'
-     };
+     generatedDefaultStory.storyName = 'Generated default story';
 
   `,
     prettierConfig

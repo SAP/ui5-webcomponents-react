@@ -1,5 +1,4 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';
 import { AnalyticalCard } from '@ui5/webcomponents-react/lib/AnalyticalCard';
 import { AnalyticalCardHeader } from '@ui5/webcomponents-react/lib/AnalyticalCardHeader';
@@ -12,6 +11,39 @@ export default {
   component: AnalyticalCard,
   parameters: {
     subcomponents: { AnalyticalCardHeader }
+  },
+  argTypes: {
+    ...createSelectArgTypes({
+      arrowIndicator: DeviationIndicator,
+      indicatorState: ValueState,
+      valueState: ValueState,
+      counterState: ValueState
+    }),
+    header: {
+      type: null
+    },
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
+  },
+  args: {
+    title: 'Title',
+    subTitle: 'Subtitle',
+    arrowIndicator: DeviationIndicator.Down,
+    indicatorState: ValueState.Success,
+    value: 'Value',
+    valueState: ValueState.Success,
+    unit: 'Unit',
+    target: 'Target',
+    deviation: 'Deviation',
+    showIndicator: true,
+    description: 'Description',
+    counter: 'Counter',
+    counterState: ValueState.Success,
+    currency: 'EUR'
   }
 };
 
@@ -38,25 +70,25 @@ const simpleDataSet = [
   }
 ];
 
-export const defaultStory = () => (
+export const defaultStory = (props) => (
   <AnalyticalCard
     header={
       <AnalyticalCardHeader
-        title={text('title', 'Title')}
-        subTitle={text('subTitle', 'Subtitle')}
-        arrowIndicator={select('arrowIndicator', DeviationIndicator, DeviationIndicator.Down)}
-        indicatorState={select('indicatorState', ValueState, ValueState.Success)}
-        value={text('value', 'Value')}
-        valueState={select('valueState', ValueState, ValueState.Success)}
-        unit={text('unit', 'Unit')}
-        target={text('target', 'target')}
-        deviation={text('deviation', 'deviation')}
-        onHeaderPress={action('Header pressed')}
-        showIndicator={boolean('showIndicator', true)}
-        description={text('description', 'Description')}
-        counter={text('counter', 'Counter')}
-        counterState={select('counterState', ValueState, ValueState.Success)}
-        currency={text('currency', 'EUR')}
+        title={props.title}
+        subTitle={props.subTitle}
+        arrowIndicator={props.arrowIndicator}
+        indicatorState={props.indicatorState}
+        value={props.value}
+        valueState={props.valueState}
+        unit={props.unit}
+        target={props.target}
+        deviation={props.deviation}
+        onHeaderPress={props.onHeaderPress}
+        showIndicator={props.showIndicator}
+        description={props.description}
+        counter={props.counter}
+        counterState={props.counterState}
+        currency={props.currency}
       />
     }
   >
@@ -69,4 +101,4 @@ export const defaultStory = () => (
   </AnalyticalCard>
 );
 
-defaultStory.story = { name: 'Default' };
+defaultStory.storyName = 'Default';

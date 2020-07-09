@@ -1,7 +1,6 @@
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const singleData = [
   {
@@ -24,10 +23,34 @@ const singleData = [
 
 export default {
   title: 'Charts /  MicroBarChart',
-  component: MicroBarChart
+  component: MicroBarChart,
+  argTypes: {
+    dataset: {
+      type: null
+    },
+    measure: {
+      type: null
+    },
+    dimension: {
+      type: null
+    }
+  },
+  args: {
+    chartConfig: {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      zoomingTool: false,
+      resizeDebounce: 250
+    }
+  }
 };
 
-export const defaultStory = () => (
+export const defaultStory = (props) => (
   <MicroBarChart
     dataset={singleData}
     loading={boolean('loading', false)}
@@ -41,13 +64,11 @@ export const defaultStory = () => (
   />
 );
 
-defaultStory.story = {
-  name: 'Default'
-};
+defaultStory.storyName = 'Default';
 
-export const withCustomProps = () => (
+export const withCustomProps = (props) => (
   <MicroBarChart
-    onDataPointClick={action('onDataPointClickHandler')}
+    onDataPointClick={props.onDataPointClickHandler}
     dataset={singleData}
     style={{ width: '50%' }}
     loading={boolean('loading', false)}
@@ -62,9 +83,7 @@ export const withCustomProps = () => (
   />
 );
 
-withCustomProps.story = {
-  name: 'With custom props'
-};
+withCustomProps.storyName = 'With custom props';
 
 export const loadingPlaceholder = () => (
   <MicroBarChart
@@ -79,6 +98,4 @@ export const loadingPlaceholder = () => (
   />
 );
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';

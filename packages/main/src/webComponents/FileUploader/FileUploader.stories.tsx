@@ -1,29 +1,39 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { FileUploader } from '@ui5/webcomponents-react/lib/FileUploader';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React from 'react';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / FileUploader',
-  component: FileUploader
+  component: FileUploader,
+  argTypes: {
+    ...createSelectArgTypes({ valueState: ValueState }),
+    children: {
+      type: null
+    },
+    ref: {
+      type: null
+    }
+  },
+  args: {
+    accept: undefined,
+    valueState: ValueState.None
+  }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <FileUploader
-    accept={text('accept', undefined)}
-    disabled={boolean('disabled', false)}
-    hideInput={boolean('hideInput', false)}
-    multiple={boolean('multiple', false)}
-    name={text('name', '')}
-    placeholder={text('placeholder', '')}
-    value={text('value', '')}
-    valueState={select('valueState', ValueState, ValueState.None)}
-    onChange={action('onChange')}
+    accept={props.accept}
+    disabled={props.disabled}
+    hideInput={props.hideInput}
+    multiple={props.multiple}
+    name={props.name}
+    placeholder={props.placeholder}
+    value={props.value}
+    valueState={props.valueState}
+    // onChange={props.onChange}
   />
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

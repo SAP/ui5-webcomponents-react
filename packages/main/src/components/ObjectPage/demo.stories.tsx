@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -14,8 +12,9 @@ import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React from 'react';
 import SampleImage from './DemoImage.png';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
-export const renderDemo = () => {
+export const renderDemo = (props) => {
   return (
     <div style={{ width: 'calc(100% - 1rem)', height: 'calc(100% - 1rem)', position: 'relative', marginTop: '2rem' }}>
       <ObjectPage
@@ -54,28 +53,26 @@ export const renderDemo = () => {
             </div>
           </>
         }
-        title={text('title', 'Object Page Title')}
-        subTitle={text('subTitle', 'Object Page Sub Title')}
+        title={props.title}
+        subTitle={props.subTitle}
         headerActions={[
-          <Button key="1" design={ButtonDesign.Emphasized} onClick={action('onHeaderAction1Pressed')}>
+          <Button key="1" design={ButtonDesign.Emphasized}>
             Primary Action
           </Button>,
-          <Button key="2" onClick={action('onHeaderAction2Pressed')}>
-            Action
-          </Button>
+          <Button key="2">Action</Button>
         ]}
         image={SampleImage}
-        mode={select('mode', ObjectPageMode, ObjectPageMode.Default)}
-        imageShapeCircle={boolean('imageShapeCircle', false)}
-        showHideHeaderButton={boolean('showHideHeaderButton', true)}
-        selectedSectionId={text('selectedSectionId', '1')}
-        selectedSubSectionId={text('selectedSubSectionId', undefined)}
-        onSelectedSectionChanged={action('onSelectedSectionChanged')}
-        noHeader={boolean('noHeader', false)}
-        alwaysShowContentHeader={boolean('alwaysShowContentHeader', false)}
-        showTitleInHeaderContent={boolean('showTitleInHeaderContent', false)}
+        mode={props.mode}
+        imageShapeCircle={props.imageShapeCircle}
+        showHideHeaderButton={props.showHideHeaderButton}
+        selectedSectionId={props.selectedSectionId}
+        selectedSubSectionId={props.selectedSubSectionId}
+        onSelectedSectionChanged={props.onSelectedSectionChanged}
+        noHeader={props.noHeader}
+        alwaysShowContentHeader={props.alwaysShowContentHeader}
+        showTitleInHeaderContent={props.showTitleInHeaderContent}
         style={{ height: '700px' }}
-        headerContentPinnable={boolean('headerContentPinnable', true)}
+        headerContentPinnable={props.headerContentPinnable}
       >
         <ObjectPageSection title="Test 1" id="1">
           <div style={{ height: '200px' }}>Test1</div>
@@ -107,11 +104,9 @@ export const renderDemo = () => {
     </div>
   );
 };
-renderDemo.story = {
-  name: 'Default'
-};
+renderDemo.storyName = 'Default';
 
-export const renderComponentWithSections = () => (
+export const renderComponentWithSections = (props) => (
   <ObjectPage
     title="Fiori Object Page Title"
     subTitle="Sub Title"
@@ -129,7 +124,7 @@ export const renderComponentWithSections = () => (
         </div>
       </>
     }
-    mode={select('mode', ObjectPageMode, ObjectPageMode.Default)}
+    mode={props.mode}
     style={{ height: '700px' }}
   >
     <ObjectPageSection title="Test 1" id="1">
@@ -143,23 +138,19 @@ export const renderComponentWithSections = () => (
     </ObjectPageSection>
   </ObjectPage>
 );
-renderComponentWithSections.story = {
-  name: 'with Sections Only'
-};
+renderComponentWithSections.storyName = 'with Sections Only';
 
-export const renderShortContent = () => {
+export const renderShortContent = (props) => {
   return (
     <div style={{ width: 'calc(100% - 1rem)', height: '100%', position: 'relative', marginTop: '2rem' }}>
       <ObjectPage
-        title={text('title', 'Object Page Title')}
-        subTitle={text('subTitle', 'Object Page Sub Title')}
+        title={props.title}
+        subTitle={props.subTitle}
         headerActions={[
-          <Button key="1" design={ButtonDesign.Emphasized} onClick={action('onHeaderAction1Pressed')}>
+          <Button key="1" design={ButtonDesign.Emphasized}>
             Primary Action
           </Button>,
-          <Button key="2" onClick={action('onHeaderAction2Pressed')}>
-            Action
-          </Button>
+          <Button key="2">Action</Button>
         ]}
         image={SampleImage}
         headerContent={
@@ -174,12 +165,12 @@ export const renderShortContent = () => {
             </div>
           </>
         }
-        mode={select('mode', ObjectPageMode, ObjectPageMode.IconTabBar)}
-        imageShapeCircle={boolean('imageShapeCircle', false)}
-        showHideHeaderButton={boolean('showHideHeaderButton', true)}
-        selectedSectionId={text('selectedSectionId', '1')}
-        onSelectedSectionChanged={action('onSelectedSectionChanged')}
-        noHeader={boolean('noHeader', false)}
+        mode={props.mode}
+        imageShapeCircle={props.imageShapeCircle}
+        showHideHeaderButton={props.showHideHeaderButton}
+        selectedSectionId={props.selectedSectionId}
+        onSelectedSectionChanged={props.onSelectedSectionChanged}
+        noHeader={props.noHeader}
         style={{ height: '700px' }}
       >
         <ObjectPageSection title="Test 1" id="1">
@@ -189,14 +180,38 @@ export const renderShortContent = () => {
     </div>
   );
 };
-renderShortContent.story = {
-  name: 'Short Content'
-};
+renderShortContent.storyName = 'Short Content';
 
 export default {
   title: 'Components / ObjectPage',
   component: ObjectPage,
   parameters: {
     subcomponents: { ObjectPageSection, ObjectPageSubSection }
+  },
+  argTypes: {
+    ...createSelectArgTypes({ mode: ObjectPageMode }),
+    breadcrumbs: {
+      type: null
+    },
+    image: {
+      type: null
+    },
+    headerActions: {
+      type: null
+    },
+    headerContent: {
+      type: null
+    },
+    keyInfos: {
+      type: null
+    }
+  },
+  args: {
+    title: 'Object Page Title',
+    subTitle: 'Object Page Sub Title',
+    mode: ObjectPageMode.Default,
+    showHideHeaderButton: true,
+    selectedSectionId: '1',
+    headerContentPinnable: true
   }
 };
