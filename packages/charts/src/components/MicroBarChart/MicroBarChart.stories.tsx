@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
+import { boolean } from '@storybook/addon-knobs';
 import React from 'react';
-import { MicroBarChart } from './MicroBarChart';
+import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';
 
 const singleData = [
   {
@@ -28,10 +29,9 @@ export default {
 
 export const defaultStory = () => (
   <MicroBarChart
-    onDataPointClick={action('onDataPointClickHandler')}
-    onLegendClick={action('onLegendClickHandler')}
     dataset={singleData}
-    style={{ width: '100%', height: '30vh' }}
+    loading={boolean('loading', false)}
+    style={{ width: '100%' }}
     dimension={{
       accessor: 'name'
     }}
@@ -45,12 +45,12 @@ defaultStory.story = {
   name: 'Default'
 };
 
-export const withCustomColor = () => (
+export const withCustomProps = () => (
   <MicroBarChart
     onDataPointClick={action('onDataPointClickHandler')}
-    onLegendClick={action('onLegendClickHandler')}
     dataset={singleData}
-    style={{ width: '100%', height: '30vh' }}
+    style={{ width: '50%' }}
+    loading={boolean('loading', false)}
     dimension={{
       accessor: 'name'
     }}
@@ -62,8 +62,8 @@ export const withCustomColor = () => (
   />
 );
 
-withCustomColor.story = {
-  name: 'With custom color'
+withCustomProps.story = {
+  name: 'With custom props'
 };
 
 export const loadingPlaceholder = () => (

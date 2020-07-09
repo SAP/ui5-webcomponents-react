@@ -1,14 +1,14 @@
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { ChartContainer } from '@ui5/webcomponents-react-charts/lib/components/ChartContainer';
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 import { defaultFormatter } from '../../internal/defaults';
-import { BarChartPlaceholder } from '../BarChart/Placeholder';
+import { BarChartPlaceholder } from '@ui5/webcomponents-react-charts/lib/BarChartPlaceholder';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'color'> {
   /**
@@ -73,6 +73,13 @@ const MicroBarChartStyles = {
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden'
+  },
+  barContainer: {
+    cursor: 'auto'
+  },
+  barContainerActive: {
+    '&:active': { opacity: '0.3 !important' },
+    cursor: 'pointer'
   },
   labelContainer: {
     display: 'flex',
@@ -149,14 +156,25 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
   const barWidth = measure?.width ? `${measure.width}px` : 'auto';
 
   const onBarClick = useCallback(
-    (item) => (e) => {
-      console.log(item);
-      //todo
+    (item, index) => (e) => {
+      if (typeof onDataPointClick === 'function') {
+        onDataPointClick(
+          enrichEventWithDetails(e, {
+            dataKey: measure.accessor,
+            value: item[measure.accessor],
+            payload: item,
+            dataIndex: index
+          })
+        );
+      }
     },
-    []
+    [measure.accessor]
   );
+  const barContainerClasses = StyleClassHelper.of(classes.barContainer);
+  if (onDataPointClick) {
+    barContainerClasses.put(classes.barContainerActive);
+  }
 
-  //todo onDataPointClick, ?onLegendClick, ?noLegend, ?centerLabel
   return (
     <ChartContainer
       dataset={dataset}
@@ -174,7 +192,11 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
           const formattedDimension = dimension.formatter(item[dimension.accessor]);
           const formattedMeasure = measure.formatter(item[measure.accessor]);
           return (
-            <div key={item[dimension.accessor]}>
+            <div
+              key={item[dimension.accessor]}
+              className={barContainerClasses.toString()}
+              onClick={onBarClick(item, index)}
+            >
               <div className={classes.labelContainer}>
                 <span className={classes.label} title={formattedDimension}>
                   {formattedDimension}
@@ -187,13 +209,12 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
                 className={classes.valueContainer}
                 style={{
                   opacity: measure?.opacity ?? 1,
-                  width: barWidth,
-                  cursor: onDataPointClick ? 'pointer' : 'auto'
+                  width: barWidth
                 }}
-                onClick={onBarClick(item)}
               >
                 <div
                   className={classes.valueBar}
+
                   style={{
                     width: `${(item[measure.accessor] / maxValue) * 100}%`,
                     backgroundColor: resolveColor(index, measure?.colors?.[index])

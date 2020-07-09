@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Micro Bar Chart Render with default Props 1`] = `
+<DocumentFragment>
+  <div
+    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+  >
+    <div
+      class="recharts-responsive-container"
+      id="undefined"
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="MicroBarChart-container-0-2-1"
+        height="0"
+        width="0"
+      >
+        <div
+          class="MicroBarChart-barContainer-0-2-2"
+        >
+          <div
+            class="MicroBarChart-labelContainer-0-2-4"
+          >
+            <span
+              class="MicroBarChart-label-0-2-8"
+              title="Bar Number One"
+            >
+              Bar Number One
+            </span>
+            <span
+              class="MicroBarChart-text-0-2-9"
+              title="10"
+            >
+              10
+            </span>
+          </div>
+          <div
+            class="MicroBarChart-valueContainer-0-2-5"
+            style="opacity: 1; width: auto;"
+          >
+            <div
+              class="MicroBarChart-valueBar-0-2-6"
+              style="width: 10%;"
+            />
+            <div
+              class="MicroBarChart-fillUp-0-2-7"
+            />
+          </div>
+        </div>
+        <div
+          class="MicroBarChart-barContainer-0-2-2"
+        >
+          <div
+            class="MicroBarChart-labelContainer-0-2-4"
+          >
+            <span
+              class="MicroBarChart-label-0-2-8"
+              title="Bar Number Two"
+            >
+              Bar Number Two
+            </span>
+            <span
+              class="MicroBarChart-text-0-2-9"
+              title="100"
+            >
+              100
+            </span>
+          </div>
+          <div
+            class="MicroBarChart-valueContainer-0-2-5"
+            style="opacity: 1; width: auto;"
+          >
+            <div
+              class="MicroBarChart-valueBar-0-2-6"
+              style="width: 100%;"
+            />
+            <div
+              class="MicroBarChart-fillUp-0-2-7"
+            />
+          </div>
+        </div>
+        <div
+          class="MicroBarChart-barContainer-0-2-2"
+        >
+          <div
+            class="MicroBarChart-labelContainer-0-2-4"
+          >
+            <span
+              class="MicroBarChart-label-0-2-8"
+              title="Bar Number Three"
+            >
+              Bar Number Three
+            </span>
+            <span
+              class="MicroBarChart-text-0-2-9"
+              title="70"
+            >
+              70
+            </span>
+          </div>
+          <div
+            class="MicroBarChart-valueContainer-0-2-5"
+            style="opacity: 1; width: auto;"
+          >
+            <div
+              class="MicroBarChart-valueBar-0-2-6"
+              style="width: 70%;"
+            />
+            <div
+              class="MicroBarChart-fillUp-0-2-7"
+            />
+          </div>
+        </div>
+      </div>
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Micro Bar Chart With custom colors 1`] = `
+<DocumentFragment>
+  <div
+    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+  >
+    <div
+      class="recharts-responsive-container"
+      id="undefined"
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="MicroBarChart-container-0-2-1"
+        height="0"
+        width="0"
+      >
+        <div
+          class="MicroBarChart-barContainer-0-2-2"
+        >
+          <div
+            class="MicroBarChart-labelContainer-0-2-4"
+          >
+            <span
+              class="MicroBarChart-label-0-2-8"
+              title="Bar Number One - formatted"
+            >
+              Bar Number One - formatted
+            </span>
+            <span
+              class="MicroBarChart-text-0-2-9"
+              title="10"
+            >
+              10
+            </span>
+          </div>
+          <div
+            class="MicroBarChart-valueContainer-0-2-5"
+            style="opacity: 1; width: auto;"
+          >
+            <div
+              class="MicroBarChart-valueBar-0-2-6"
+              style="width: 10%; background-color: black;"
+            />
+            <div
+              class="MicroBarChart-fillUp-0-2-7"
+            />
+          </div>
+        </div>
+        <div
+          class="MicroBarChart-barContainer-0-2-2"
+        >
+          <div
+            class="MicroBarChart-labelContainer-0-2-4"
+          >
+            <span
+              class="MicroBarChart-label-0-2-8"
+              title="Bar Number Two - formatted"
+            >
+              Bar Number Two - formatted
+            </span>
+            <span
+              class="MicroBarChart-text-0-2-9"
+              title="100"
+            >
+              100
+            </span>
+          </div>
+          <div
+            class="MicroBarChart-valueContainer-0-2-5"
+            style="opacity: 1; width: auto;"
+          >
+            <div
+              class="MicroBarChart-valueBar-0-2-6"
+              style="width: 100%; background-color: yellow;"
+            />
+            <div
+              class="MicroBarChart-fillUp-0-2-7"
+            />
+          </div>
+        </div>
+        <div
+          class="MicroBarChart-barContainer-0-2-2"
+        >
+          <div
+            class="MicroBarChart-labelContainer-0-2-4"
+          >
+            <span
+              class="MicroBarChart-label-0-2-8"
+              title="Bar Number Three - formatted"
+            >
+              Bar Number Three - formatted
+            </span>
+            <span
+              class="MicroBarChart-text-0-2-9"
+              title="70"
+            >
+              70
+            </span>
+          </div>
+          <div
+            class="MicroBarChart-valueContainer-0-2-5"
+            style="opacity: 1; width: auto;"
+          >
+            <div
+              class="MicroBarChart-valueBar-0-2-6"
+              style="width: 70%;"
+            />
+            <div
+              class="MicroBarChart-fillUp-0-2-7"
+            />
+          </div>
+        </div>
+      </div>
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;
