@@ -61,9 +61,7 @@ export const renderStory = (props) => (
   />
 );
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
 export const renderStoryWithCustomColor = (props) => (
   <ScatterChart
@@ -94,12 +92,8 @@ export const renderStoryWithCustomColor = (props) => (
   />
 );
 
-renderStoryWithCustomColor.story = {
-  name: 'With custom color'
-};
+renderStoryWithCustomColor.storyName = 'With custom color';
 
 export const loadingPlaceholder = () => <ScatterChart style={{ width: '100%' }} measures={[]} />;
 
-loadingPlaceholder.story = {
-  name: 'Loading placeholder'
-};
+loadingPlaceholder.storyName = 'Loading placeholder';

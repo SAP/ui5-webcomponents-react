@@ -38,5 +38,7 @@ addons.setConfig({
    * enable/disable shortcuts
    * @type {Boolean}
    */
-  enableShortcuts: false
+  enableShortcuts: false,
+
+  showRoots: true
 });

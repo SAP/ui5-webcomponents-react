@@ -12,7 +12,7 @@ const DEPENDENCY_REGEX = BUILD_FOR_IE11
   : /node_modules\/(@ui5\/webcomponents(-(base|core|fiori|icons|theme-base))?|lit-html)\//;
 
 module.exports = {
-  stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.mdx', '../packages/**/*.stories.[tj]sx'],
+  stories: ['../docs/**/*.stories.mdx', '../packages/**/*.stories.mdx', '../packages/**/*.stories.@(tsx|jsx)'],
   addons: [
     '@storybook/addon-toolbars',
     '@storybook/addon-docs',
