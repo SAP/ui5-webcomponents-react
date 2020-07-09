@@ -158,7 +158,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
         );
       }
     },
-    [measure.accessor]
+    [measure.accessor, onDataPointClick]
   );
   const barContainerClasses = StyleClassHelper.of(classes.barContainer);
   if (onDataPointClick) {
