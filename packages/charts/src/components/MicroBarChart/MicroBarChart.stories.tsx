@@ -53,7 +53,7 @@ export default {
 export const defaultStory = (props) => (
   <MicroBarChart
     dataset={singleData}
-    loading={boolean('loading', false)}
+    loading={props.loading}
     style={{ width: '100%' }}
     dimension={{
       accessor: 'name'
@@ -71,7 +71,7 @@ export const withCustomProps = (props) => (
     onDataPointClick={props.onDataPointClickHandler}
     dataset={singleData}
     style={{ width: '50%' }}
-    loading={boolean('loading', false)}
+    loading={props.loading}
     dimension={{
       accessor: 'name'
     }}
