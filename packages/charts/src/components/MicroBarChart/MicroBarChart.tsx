@@ -54,6 +54,10 @@ export interface MicroBarChartProps
    *
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `colors`: array of any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
+   * - `width`: bar width in pixel, defaults to `4`
+   * - `opacity`: bar opacity, defaults to `1`
+   * - `hideDataLabel`: flag whether the data labels should be hidden in the chart for this column.
+   * - `DataLabel`: a custom component to be used for the data label
    */
   measure: MeasureConfig;
 }
@@ -89,10 +93,9 @@ const MicroBarChartStyles = {
   },
   valueContainer: {
     display: 'flex',
-    height: '4px',
     backgroundColor: ThemingParameters.sapContent_Placeholderloading_Background
   },
-  valueBar: { height: '4px' },
+  valueBar: { height: '100%' },
   label: {
     color: ThemingParameters.sapContent_LabelColor,
     display: 'block',
@@ -143,7 +146,7 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
   const maxValue = dataset ? Math.max(...dataset?.map((item) => getValueByDataKey(item, measure.accessor))) : 0;
   const chartRef = useConsolidatedRef<any>(ref);
 
-  const barWidth = measure?.width ? `${measure.width}px` : 'auto';
+  const barHeight = measure?.width ? `${measure.width}px` : '4px';
 
   const onBarClick = useCallback(
     (item, index) => (e) => {
@@ -182,7 +185,18 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
           const dimensionValue = getValueByDataKey(item, dimension.accessor);
           const measureValue = getValueByDataKey(item, measure.accessor);
           const formattedDimension = dimension.formatter(dimensionValue);
-          const formattedMeasure = measure.formatter(measureValue);
+          let formattedMeasure: any = '';
+          if (!measure.hideDataLabel) {
+            if (measure.DataLabel) {
+              formattedMeasure = React.createElement(measure.DataLabel, {
+                value: measureValue,
+                config: measure,
+                formattedValue: measure.formatter(measureValue)
+              });
+            } else {
+              formattedMeasure = measure.formatter(measureValue);
+            }
+          }
           return (
             <div key={dimensionValue} className={barContainerClasses.className} onClick={onBarClick(item, index)}>
               <div className={classes.labelContainer}>
@@ -190,14 +204,14 @@ const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartPr
                   {formattedDimension}
                 </span>
                 <span className={classes.text} title={formattedMeasure}>
-                  {formattedMeasure}
+                  {measure.hideDataLabel ? '' : formattedMeasure}
                 </span>
               </div>
               <div
                 className={classes.valueContainer}
                 style={{
                   opacity: measure?.opacity ?? 1,
-                  width: barWidth
+                  height: barHeight
                 }}
               >
                 <div

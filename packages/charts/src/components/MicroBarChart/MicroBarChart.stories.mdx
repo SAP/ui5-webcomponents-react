@@ -68,7 +68,8 @@ import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart
         measure={{
           accessor: 'data',
           colors: ['#f0ab00', 'var(--sapHighlightColor)'],
-          formatter: (d) => (d > 200 ? 'over 200' : 'lower')
+          formatter: (d) => (d > 200 ? 'over 200' : 'lower'),
+          width: 16
         }}
       />
     )}

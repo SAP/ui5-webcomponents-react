@@ -36,7 +36,7 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
           </div>
           <div
             class="MicroBarChart-valueContainer"
-            style="opacity: 1; width: auto;"
+            style="opacity: 1; height: 4px;"
           >
             <div
               class="MicroBarChart-valueBar"
@@ -65,7 +65,7 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
           </div>
           <div
             class="MicroBarChart-valueContainer"
-            style="opacity: 1; width: auto;"
+            style="opacity: 1; height: 4px;"
           >
             <div
               class="MicroBarChart-valueBar"
@@ -94,7 +94,7 @@ exports[`Micro Bar Chart Render with default Props 1`] = `
           </div>
           <div
             class="MicroBarChart-valueContainer"
-            style="opacity: 1; width: auto;"
+            style="opacity: 1; height: 4px;"
           >
             <div
               class="MicroBarChart-valueBar"
@@ -145,7 +145,7 @@ exports[`Micro Bar Chart With custom colors 1`] = `
           </div>
           <div
             class="MicroBarChart-valueContainer"
-            style="opacity: 1; width: auto;"
+            style="opacity: 1; height: 4px;"
           >
             <div
               class="MicroBarChart-valueBar"
@@ -174,7 +174,7 @@ exports[`Micro Bar Chart With custom colors 1`] = `
           </div>
           <div
             class="MicroBarChart-valueContainer"
-            style="opacity: 1; width: auto;"
+            style="opacity: 1; height: 4px;"
           >
             <div
               class="MicroBarChart-valueBar"
@@ -203,7 +203,7 @@ exports[`Micro Bar Chart With custom colors 1`] = `
           </div>
           <div
             class="MicroBarChart-valueContainer"
-            style="opacity: 1; width: auto;"
+            style="opacity: 1; height: 4px;"
           >
             <div
               class="MicroBarChart-valueBar"
