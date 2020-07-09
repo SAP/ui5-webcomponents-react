@@ -45,7 +45,6 @@ interface DimensionConfig {
 }
 
 export interface MicroBarChartProps extends IChartBaseProps {
-  centerLabel?: string;
   dimension: DimensionConfig;
   /**
    * An array of config objects. Each object is defining one bar in the chart.
