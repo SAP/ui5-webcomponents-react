@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2-beta
+      - uses: actions/checkout@v2.3.1
         with:
           fetch-depth: 1
-      - uses: preactjs/compressed-size-action@v1
+      - uses: preactjs/compressed-size-action@v2
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           pattern: 'packages/**/lib/**/*.js'
