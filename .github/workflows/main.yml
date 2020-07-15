@@ -28,9 +28,10 @@ jobs:
         UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD: true
 
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+      uses: JamesIves/github-pages-deploy-action@3.5.7
       with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages # The branch the action should deploy to.
         FOLDER: .out # The folder the action should deploy.
         TARGET_FOLDER: master
+        CLEAN: true
