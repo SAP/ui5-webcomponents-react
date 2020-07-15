@@ -340,45 +340,35 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
           <>
             <Toolbar className={classes.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
               {variants}
-              {search && (
-                <>
-                  <ToolbarSeparator />
-                  <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>
-                </>
-              )}
+              {search && <ToolbarSeparator />}
+              {search && <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>}
               <ToolbarSpacer />
+              {useToolbar && showClearOnFB && (
+                <Button onClick={onClear} design={ButtonDesign.Transparent}>
+                  {clearText}
+                </Button>
+              )}
+              {useToolbar && showRestoreOnFB && (
+                <Button onClick={handleFBRestore} design={ButtonDesign.Transparent}>
+                  {restoreText}
+                </Button>
+              )}
               {useToolbar && (
-                <>
-                  {showClearOnFB && (
-                    <Button onClick={onClear} design={ButtonDesign.Transparent}>
-                      {clearText}
-                    </Button>
-                  )}
-                  {showRestoreOnFB && (
-                    <Button onClick={handleFBRestore} design={ButtonDesign.Transparent}>
-                      {restoreText}
-                    </Button>
-                  )}
-                  {
-                    <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
-                      {showFilters ? hideFilterBarText : showFilterBarText}
-                    </Button>
-                  }
-                  {showFilterConfiguration && (
-                    <Button onClick={handleDialogOpen}>
-                      {`${filtersText}${
-                        activeFiltersCount && parseInt(activeFiltersCount as string) > 0
-                          ? ` (${activeFiltersCount})`
-                          : ''
-                      }`}
-                    </Button>
-                  )}
-                  {showGoOnFB && (
-                    <Button onClick={onGo} design={ButtonDesign.Emphasized}>
-                      {goText}
-                    </Button>
-                  )}
-                </>
+                <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
+                  {showFilters ? hideFilterBarText : showFilterBarText}
+                </Button>
+              )}
+              {useToolbar && showFilterConfiguration && (
+                <Button onClick={handleDialogOpen}>
+                  {`${filtersText}${
+                    activeFiltersCount && parseInt(activeFiltersCount as string) > 0 ? ` (${activeFiltersCount})` : ''
+                  }`}
+                </Button>
+              )}
+              {useToolbar && showGoOnFB && (
+                <Button onClick={onGo} design={ButtonDesign.Emphasized}>
+                  {goText}
+                </Button>
               )}
             </Toolbar>
             {mountFilters && <div className={filterAreaClasses.valueOf()}>{renderChildren()}</div>}
