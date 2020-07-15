@@ -108,6 +108,10 @@ export default {
   parameters: {
     subcomponents: { FilterGroupItem }
   },
+  argTypes: {
+    search: { type: null },
+    variants: { type: null }
+  },
   args: {
     useToolbar: true,
     filterBarExpanded: true,
