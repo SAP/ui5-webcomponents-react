@@ -59,12 +59,12 @@ const columns = (columns, { instance }) => {
           internalDefaultColumnsCount--;
           return acceptedWidth;
         }
-        if (minWidth > availableWidth / defaultColumnsCount) {
+        if (minWidth > availableWidth / internalDefaultColumnsCount) {
           availableWidth -= minWidth;
           internalDefaultColumnsCount--;
           return minWidth;
         }
-        if (maxWidth < availableWidth / defaultColumnsCount) {
+        if (maxWidth < availableWidth / internalDefaultColumnsCount) {
           availableWidth -= maxWidth;
           internalDefaultColumnsCount--;
           return maxWidth;
@@ -74,7 +74,6 @@ const columns = (columns, { instance }) => {
       .filter(Boolean);
 
     const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
-
     const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth.length;
     // check if columns are visible and table has width
     if (visibleColumns.length > 0 && totalWidth > 0) {

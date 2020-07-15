@@ -327,7 +327,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const inlineStyle = useMemo(() => {
     const tableStyles = {
       maxWidth: '100%',
-      overflowX: 'auto'
+      overflowX: 'auto',
+      display: 'flex',
+      flexDirection: 'column'
     };
     if (!!rowHeight) {
       tableStyles['--sapWcrAnalyticalTableRowHeight'] = `${rowHeight}px`;
