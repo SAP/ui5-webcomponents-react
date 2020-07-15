@@ -45,60 +45,6 @@ export const renderDefaultStory = (props) => {
       onGo={props.onGo}
       onRestore={props.onRestore}
     >
-      <FilterGroupItem label="Classification" key="classification" loading={props.loading}>
-        <Select>
-          <Option>Option 1</Option>
-          <Option selected>Option 2</Option>
-          <Option>Option 3</Option>
-          <Option>Option 4</Option>
-        </Select>
-      </FilterGroupItem>
-      <FilterGroupItem key={'filter2'} label={'Custom Filter 1'} loading={props.loading}>
-        <Switch />
-      </FilterGroupItem>
-      <FilterGroupItem label="Multi" key="Multi" loading={props.loading}>
-        <MultiComboBox>
-          <MultiComboBoxItem text="MultiComboBoxItem 1" />
-          <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
-          <MultiComboBoxItem text="MultiComboBoxItem 3" />
-          <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
-        </MultiComboBox>
-      </FilterGroupItem>
-    </FilterBar>
-  );
-};
-renderDefaultStory.storyName = 'Default';
-
-export const renderStoryWithFiltersDialog = (props) => {
-  return (
-    <FilterBar
-      search={<Input placeholder={'Search'} />}
-      variants={<VariantManagement selectedKey="2" variantItems={variantItems} />}
-      useToolbar={props.useToolbar}
-      filterBarExpanded={props.filterBarExpanded}
-      loading={props.loading}
-      considerGroupName={props.considerGroupName}
-      filterContainerWidth={props.filterContainerWidth}
-      activeFiltersCount={props.activeFiltersCount}
-      showClearOnFB={props.showClearOnFB}
-      showRestoreOnFB={props.showRestoreOnFB}
-      showGo={props.showGo}
-      showGoOnFB={props.showGoOnFB}
-      showFilterConfiguration={props.showFilterConfiguration}
-      showSearchOnFiltersDialog={props.showSearchOnFiltersDialog}
-      showClearButton={props.showClearButton}
-      showRestoreButton={props.showRestoreButton}
-      onToggleFilters={props.onToggleFilters}
-      onFiltersDialogOpen={props.onFiltersDialogOpen}
-      onFiltersDialogClose={props.onFiltersDialogClose}
-      onFiltersDialogSave={props.onFiltersDialogSave}
-      onFiltersDialogClear={props.onFiltersDialogClear}
-      onClear={props.onClear}
-      onFiltersDialogSelectionChange={props.onFiltersDialogSelectionChange}
-      onFiltersDialogSearch={props.onFiltersDialogSearch}
-      onGo={props.onGo}
-      onRestore={props.onRestore}
-    >
       <FilterGroupItem label="Input" loading={props.loading} visibleInFilterBar={props.visibleInFilterBar}>
         <Input placeholder="Placeholder" />
       </FilterGroupItem>
@@ -154,7 +100,7 @@ export const renderStoryWithFiltersDialog = (props) => {
     </FilterBar>
   );
 };
-renderStoryWithFiltersDialog.storyName = 'With Filters Dialog';
+renderDefaultStory.storyName = 'Default';
 
 export default {
   title: 'Components / FilterBar',
@@ -162,23 +108,27 @@ export default {
   parameters: {
     subcomponents: { FilterGroupItem }
   },
+  argTypes: {
+    search: { type: null },
+    variants: { type: null }
+  },
   args: {
     useToolbar: true,
     filterBarExpanded: true,
-    considerGroupName: true,
+    considerGroupName: false,
     filterContainerWidth: '13rem',
     activeFiltersCount: 0,
-    showClearOnFB: true,
-    showRestoreOnFB: true,
-    showGo: true,
-    showGoOnFB: true,
-    showFilterConfiguration: true,
-    showSearchOnFiltersDialog: true,
-    showClearButton: true,
-    showRestoreButton: true,
+    showClearOnFB: false,
+    showRestoreOnFB: false,
+    showGo: false,
+    showGoOnFB: false,
+    showFilterConfiguration: false,
+    showSearchOnFiltersDialog: false,
+    showClearButton: false,
+    showRestoreButton: false,
     visibleInFilterBar: true,
     groupName: 'Custom Group',
     visible: true,
-    required: true
+    required: false
   }
 };

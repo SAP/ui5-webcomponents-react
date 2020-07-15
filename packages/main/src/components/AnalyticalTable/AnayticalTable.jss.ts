@@ -56,6 +56,7 @@ const styles = {
     borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     boxSizing: 'border-box',
     display: 'flex',
+    willChange: 'transform',
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     '&:hover': {
       backgroundColor: ThemingParameters.sapList_Hover_Background
