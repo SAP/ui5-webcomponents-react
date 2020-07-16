@@ -10,7 +10,7 @@ import { ObjectPageSubSection } from '@ui5/webcomponents-react/lib/ObjectPageSub
 import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
-import React from 'react';
+import React, { useState } from 'react';
 import SampleImage from './DemoImage.png';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
@@ -106,81 +106,47 @@ export const renderDemo = (props) => {
 };
 renderDemo.storyName = 'Default';
 
-export const renderComponentWithSections = (props) => (
-  <ObjectPage
-    title="Fiori Object Page Title"
-    subTitle="Sub Title"
-    headerActions={[<Button>Action</Button>]}
-    image={SampleImage}
-    headerContent={
-      <>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Link href="https://www.sap.com">www.myurl.com</Link>
-          <Text>Address 1</Text>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Text>Address 2</Text>
-          <Text>Address 3</Text>
-        </div>
-      </>
-    }
-    mode={props.mode}
-    style={{ height: '700px' }}
-  >
-    <ObjectPageSection title="Test 1" id="1">
-      <Label>My Content 1</Label>
-    </ObjectPageSection>
-    <ObjectPageSection title="Test 2" id="2">
-      <Label>My Content 2</Label>
-    </ObjectPageSection>
-    <ObjectPageSection title="Test 3" id="3">
-      <Label>My Content 3</Label>
-    </ObjectPageSection>
-  </ObjectPage>
-);
-renderComponentWithSections.storyName = 'with Sections Only';
+export const renderComponentWithSections = (props) => {
+  const [numberOfSections, setNumberOfSections] = useState(3);
 
-export const renderShortContent = (props) => {
   return (
-    <div style={{ width: 'calc(100% - 1rem)', height: '100%', position: 'relative', marginTop: '2rem' }}>
-      <ObjectPage
-        title={props.title}
-        subTitle={props.subTitle}
-        headerActions={[
-          <Button key="1" design={ButtonDesign.Emphasized}>
-            Primary Action
-          </Button>,
-          <Button key="2">Action</Button>
-        ]}
-        image={SampleImage}
-        headerContent={
-          <>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <Link href="https://www.sap.com">www.myurl.com</Link>
-              <Text>Address 1</Text>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <Text>Address 2</Text>
-              <Text>Address 3</Text>
-            </div>
-          </>
-        }
-        mode={props.mode}
-        imageShapeCircle={props.imageShapeCircle}
-        showHideHeaderButton={props.showHideHeaderButton}
-        selectedSectionId={props.selectedSectionId}
-        onSelectedSectionChanged={props.onSelectedSectionChanged}
-        noHeader={props.noHeader}
-        style={{ height: '700px' }}
-      >
-        <ObjectPageSection title="Test 1" id="1">
-          <div>My Content 1</div>
-        </ObjectPageSection>
-      </ObjectPage>
-    </div>
+    <ObjectPage
+      title="Fiori Object Page Title"
+      subTitle="Sub Title"
+      headerActions={[
+        <Button key="add-section" onClick={() => setNumberOfSections((old) => old + 1)}>
+          Add Section
+        </Button>
+      ]}
+      image={SampleImage}
+      headerContent={
+        <>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Link href="https://www.sap.com">www.myurl.com</Link>
+            <Text>Address 1</Text>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Text>Address 2</Text>
+            <Text>Address 3</Text>
+          </div>
+        </>
+      }
+      mode={props.mode}
+      style={{ height: '700px' }}
+    >
+      {Array(numberOfSections)
+        .fill('')
+        .map((_, index) => {
+          return (
+            <ObjectPageSection title={`Section ${index + 1}`} id={`${index}`} key={index}>
+              <Label>Section Content {index + 1}</Label>
+            </ObjectPageSection>
+          );
+        })}
+    </ObjectPage>
   );
 };
-renderShortContent.storyName = 'Short Content';
+renderComponentWithSections.storyName = 'with Sections Only';
 
 export default {
   title: 'Components / ObjectPage',

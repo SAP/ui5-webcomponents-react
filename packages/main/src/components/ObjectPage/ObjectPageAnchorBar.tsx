@@ -121,17 +121,20 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
     [setHeaderPinned]
   );
 
-  const onTabItemSelect = useCallback((event) => {
-    const { sectionId, index } = event.detail.tab.dataset;
-    // eslint-disable-next-line eqeqeq
-    const section = safeGetChildrenArray(sections).find((el) => el.props.id == sectionId);
-    handleOnSectionSelected(
-      enrichEventWithDetails({} as any, {
-        ...section,
-        index
-      })
-    );
-  }, []);
+  const onTabItemSelect = useCallback(
+    (event) => {
+      const { sectionId, index } = event.detail.tab.dataset;
+      // eslint-disable-next-line eqeqeq
+      const section = safeGetChildrenArray(sections).find((el) => el.props.id == sectionId);
+      handleOnSectionSelected(
+        enrichEventWithDetails({} as any, {
+          ...section,
+          index
+        })
+      );
+    },
+    [sections]
+  );
 
   const onShowSubSectionPopover = useCallback(
     (e, section) => {

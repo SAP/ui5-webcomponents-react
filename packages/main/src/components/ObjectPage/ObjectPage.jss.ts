@@ -1,10 +1,11 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
-const ObjectPageCssVariables = {
+export const ObjectPageCssVariables = {
   anchorFloat: '--_ui5wcr_ObjectPage_actions_float',
   anchorLeft: '--_ui5wcr_ObjectPage_actions_left',
   anchorRight: '--_ui5wcr_ObjectPage_actions_right',
-  avatarMargin: '--_ui5wcr_ObjectPage_avatar_margin'
+  avatarMargin: '--_ui5wcr_ObjectPage_avatar_margin',
+  lastSectionMargin: '--_ui5wcr_ObjectPage_last_section_margin_bottom'
 };
 
 const styles = {
@@ -18,6 +19,7 @@ const styles = {
     backgroundColor: ThemingParameters.sapBackgroundColor,
     overflowX: 'hidden',
     overflowY: 'auto',
+    [ObjectPageCssVariables.lastSectionMargin]: 0,
     '& section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'none'
     },
@@ -25,6 +27,9 @@ const styles = {
     // https://stackoverflow.com/questions/7128406/css-select-the-first-child-from-elements-with-particular-attribute
     '& section[id*="ObjectPageSection-"] ~ section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'block'
+    },
+    '& section[data-component-name="ObjectPageSection"]:last-child': {
+      marginBottom: `var(${ObjectPageCssVariables.lastSectionMargin})`
     }
   },
   '@global html': {
