@@ -75,14 +75,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 150px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
@@ -134,14 +134,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 300px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -193,14 +193,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 450px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -253,14 +253,14 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 600px;"
+      />
     </header>
     <div
       class="AnalyticalTable-tbody-0 sapScrollBar"
@@ -582,14 +582,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 150px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
@@ -641,14 +641,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 300px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -700,14 +700,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 450px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -760,14 +760,14 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 600px;"
+      />
     </header>
     <div
       class="AnalyticalTable-tbody-0 sapScrollBar"
@@ -1089,14 +1089,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 150px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
@@ -1148,14 +1148,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 300px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -1207,14 +1207,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 450px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -1267,14 +1267,14 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 600px;"
+      />
     </header>
     <svg
       aria-labelledby="ARIA-LABELLED-BY"
@@ -1621,14 +1621,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 197px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
@@ -1693,14 +1693,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 347px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -1765,14 +1765,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 497px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -1838,14 +1838,14 @@ exports[`AnalyticalTable Tree Table 1`] = `
             </div>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 647px;"
+      />
     </header>
     <div
       class="AnalyticalTable-tbody-0 sapScrollBar"
@@ -2238,14 +2238,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 150px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
@@ -2297,14 +2297,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 300px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -2356,14 +2356,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 450px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -2416,14 +2416,14 @@ exports[`AnalyticalTable custom row height 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 600px;"
+      />
     </header>
     <div
       class="AnalyticalTable-tbody-0 sapScrollBar"
@@ -2745,14 +2745,14 @@ exports[`AnalyticalTable render without data 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 150px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
@@ -2804,14 +2804,14 @@ exports[`AnalyticalTable render without data 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 300px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -2863,14 +2863,14 @@ exports[`AnalyticalTable render without data 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 450px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -2923,14 +2923,14 @@ exports[`AnalyticalTable render without data 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 600px;"
+      />
     </header>
     <div
       class="AnalyticalTable-noDataContainer-0"
@@ -3017,14 +3017,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 150px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
@@ -3076,14 +3076,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 300px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -3135,14 +3135,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 450px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -3195,14 +3195,14 @@ exports[`AnalyticalTable test Asc desc 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 600px;"
+      />
     </header>
     <div
       class="AnalyticalTable-tbody-0 sapScrollBar"
@@ -3524,14 +3524,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 150px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
@@ -3583,14 +3583,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 300px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -3642,14 +3642,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 450px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -3702,14 +3702,14 @@ exports[`AnalyticalTable test Asc desc 2`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 600px;"
+      />
     </header>
     <div
       class="AnalyticalTable-tbody-0 sapScrollBar"
@@ -4031,14 +4031,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 150px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
@@ -4090,14 +4090,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 300px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -4149,14 +4149,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 450px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -4209,14 +4209,14 @@ exports[`AnalyticalTable test Asc desc 3`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 600px;"
+      />
     </header>
     <div
       class="AnalyticalTable-tbody-0 sapScrollBar"
@@ -4538,14 +4538,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 150px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="name"
@@ -4597,14 +4597,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 300px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -4656,14 +4656,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 450px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -4716,14 +4716,14 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 600px;"
+      />
     </header>
     <div
       class="AnalyticalTable-tbody-0 sapScrollBar"
@@ -5089,14 +5089,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 203px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
@@ -5148,14 +5148,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 353px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -5207,14 +5207,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 503px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -5267,14 +5267,14 @@ exports[`AnalyticalTable with highlight row 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 653px;"
+      />
     </header>
     <div
       class="AnalyticalTable-tbody-0 sapScrollBar"
@@ -5680,14 +5680,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 150px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
@@ -5739,14 +5739,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 300px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
@@ -5798,14 +5798,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 450px;"
+      />
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
@@ -5858,14 +5858,14 @@ exports[`AnalyticalTable without selection Column 1`] = `
             </ui5-li>
           </ui5-list>
         </ui5-popover>
-        <div
-          class="TableColumnHeader-resizer-0"
-          data-resizer="true"
-          draggable="false"
-          role="separator"
-          style="cursor: ew-resize;"
-        />
       </div>
+      <div
+        class="TableColumnHeader-resizer-0"
+        data-resizer="true"
+        draggable="false"
+        role="separator"
+        style="left: 600px;"
+      />
     </header>
     <div
       class="AnalyticalTable-tbody-0 sapScrollBar"
