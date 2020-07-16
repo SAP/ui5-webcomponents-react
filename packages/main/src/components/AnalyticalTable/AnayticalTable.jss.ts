@@ -16,7 +16,6 @@ const styles = {
   },
   tableHeaderRow: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
-    position: 'relative',
     display: 'inline-flex'
   },
   th: {
