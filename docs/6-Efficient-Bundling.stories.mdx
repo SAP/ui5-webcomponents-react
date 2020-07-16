@@ -1,0 +1,122 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Efficient Bundling" />
+
+# Efficient Bundling
+
+This section describes some options on how to optimize your bundle size.
+
+**Following these steps require you to modify the default `create-react-app` setup. This might result in broken applications!**<br />
+**We can't provide any support for custom build setups.**
+
+UI5 Web Components (for React) aim to be feature rich and with a minimal code footprint at the same time, so we are
+providing several assets as `.json` files which can be optionally imported (like `themes`, `i18n translations`).
+As `create-react-app` is inlining all `.json` files by default, this could result in a very large bundle size.
+
+Here are two options how to improve your bundle size:
+
+## Option 1: Using `react-app-rewired`
+
+[react-app-rewired](https://github.com/timarney/react-app-rewired) is tweaking the `create-react-app` config without
+the need to use `eject` or to fork `react-scripts`. <br />
+Please read through the projects' [`README`](https://github.com/timarney/react-app-rewired/blob/master/README.md) before continuing.
+
+**Step by Step Guide**
+
+1. Follow the setup instructions of [react-app-rewired](https://github.com/timarney/react-app-rewired#how-to-rewire-your-create-react-app-project)
+2. Add the following content to the `config-overrides.js` file:
+
+```js
+module.exports = function override(config, env) {
+  config.module.rules.push({
+    test: /assets\/.*\.json$/,
+    use: 'file-loader',
+    type: 'javascript/auto'
+  });
+  return config;
+};
+```
+
+## Option 2: Ejecting your `create-react-app`
+
+Another option to take full control of configs in your app is to eject your `create-react-app` by running `npm run eject`
+in your project. Please read the `create-react-app` notes about the [eject command](https://github.com/facebook/create-react-app/blob/master/packages/cra-template/template/README.md#npm-run-eject) carefully:
+
+> ### `npm run eject`
+>
+> **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+>
+> If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+>
+> Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+>
+> You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+>
+> _Quote from https://github.com/facebook/create-react-app/blob/master/packages/cra-template/template/README.md#npm-run-eject_
+
+**Step by Step Guide**
+
+1. Run `npm run eject` in your project
+2. Open `config/webpack.config.js` and look for the `oneOf` array inside of `module.rules`. Add the following `file-loader`
+   anywhere in this array but **before the existing `file-loader`**:
+
+```js
+{
+  test: /assets\/.*\.json$/,
+  use: 'file-loader',
+  type: 'javascript/auto'
+}
+```
+
+Your `config/webpack.config.js` should now look similar to:
+
+```js
+...
+  return {
+    ...
+    module: {
+      strictExportPresence: true,
+      rules: [
+        ...,
+        {
+          // "oneOf" will traverse all following loaders until one will
+          // match the requirements. When no loader matches it will fall
+          // back to the "file" loader at the end of the loader list.
+          oneOf: [
+            ...,
+            {
+              test: /assets\/.*\.json$/,
+              use: 'file-loader',
+              type: 'javascript/auto'
+            },
+            // "file" loader makes sure those assets get served by WebpackDevServer.
+            // When you `import` an asset, you get its (virtual) filename.
+            // In production, they would get copied to the `build` folder.
+            // This loader doesn't use a "test" so it will catch all modules
+            // that fall through the other loaders.
+            {
+              loader: require.resolve('file-loader'),
+              // Exclude `js` files to keep "css" loader working as it injects
+              // its runtime that would otherwise be processed through "file" loader.
+              // Also exclude `html` and `json` extensions so they get processed
+              // by webpacks internal loaders.
+              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+              options: {
+                name: 'static/media/[name].[hash:8].[ext]',
+              },
+            },
+            // ** STOP ** Are you adding a new loader?
+            // Make sure to add the new loader(s) before the "file" loader.
+          ],
+        },
+      ],
+    },
+    ...
+  };
+};
+
+```
+
+<br />
+
+_In case you also have other alternatives for improving the bundle size, please feel free to submit a pull request!_

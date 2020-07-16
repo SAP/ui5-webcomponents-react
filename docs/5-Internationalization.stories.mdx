@@ -1,0 +1,123 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internationalization" />
+
+# Setup Internationalization (i18n)
+
+UI5 Web Components (for React) aim to be feature rich and with a minimal code footprint at the same time.
+In order to achieve this, most UI5 Web Components packages ship their assets as `.json` files while also providing a public module import for them.
+
+**Prerequisite: your `@ui5/webcomponents-react` dependency has to be at least at `0.10.0-rc.2` or newer.**
+
+In order to make your app translatable into various languages, you need to import the following assets:
+
+```js
+import '@ui5/webcomponents/dist/Assets.js';
+import '@ui5/webcomponents-fiori/dist/Assets.js';
+import '@ui5/webcomponents-react/dist/Assets';
+```
+
+That's it! You can now test whether the translations work correctly by adding e.g. `?sap-ui-language=de` to your URL for German translations.
+
+<br />
+<br />
+
+## How to add custom translations
+
+_Please also read the [UI5 Web Components i18n documentation](https://github.com/SAP/ui5-webcomponents/blob/master/docs/i18n.md)._
+_This chapter requires `@ui5/webcomponents@>1.0.0-rc.8`._
+
+**1. Start by creating some `i18n` resources in a directory that can be served, for example:**
+
+| File                                 | Content                    |
+| ------------------------------------ | -------------------------- |
+| `assets/messagebundle_de.properties` | `PLEASE_WAIT=Bitte warten` |
+| `assets/messagebundle_fr.properties` | `PLEASE_WAIT=Patientez.`   |
+| `assets/messagebundle_es.properties` | `PLEASE_WAIT=Espere`       |
+| `assets/messagebundle_en.properties` | `PLEASE_WAIT=Please wait`  |
+
+**2. Import the following `i18n`-related modules to your app:**
+
+```js
+import '@ui5/webcomponents-base/dist/features/PropertiesFormatSupport.js';
+import { registerI18nBundle, fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
+```
+
+The first one provides support for `.properties` files, as used in the example and the second one contains the functions
+that will allow you to take advantage of the `i18n` functionality.
+
+**3. Register your message bundles:**
+
+```js
+registerI18nBundle('myApp', {
+  de: './assets/messagebundle_de.properties',
+  es: './assets/messagebundle_es.properties',
+  fr: './assets/messagebundle_fr.properties',
+  en: './assets/messagebundle_en.properties'
+});
+```
+
+The first argument is an ID that will be used to reference this message bundle and the second, an object,
+providing the URLs where the `i18n` assets can be found.
+
+_Note:_ This is just asset registration, no data will be fetched at that point.
+
+**4. Use your translated texts in your components**
+
+Add the following import statement to the component where you want to use translated texts:
+
+```js
+import { useI18nText } from '@ui5/webcomponents-react-base/lib/hooks';
+```
+
+Now, you can use the `useI18nText` hook in your functional components in order to get your translated texts.
+
+The hook has the following signature:
+
+```js
+const translatedTextsArray = useI18nText((messageBundleId: string), (...textsToTranslate: (string | string[])[]));
+```
+
+In case you have texts without placeholder values you can use the simple `string` arguments, but if you have parameters
+in your message bundle you will have to use the `array` notation (_please see step 6_).
+You can mix `string` and `array` arguments in the same call.
+
+Each parameter will be translated one by one and returned in an array in the same order.
+
+**Example:**
+
+```jsx
+const MyTranslatedTextComponent = () => {
+  const [pleaseWaitText, anotherText] = useI18nText('myApp', 'PLEASE_WAIT', 'ANOTHER_TEXT_TO_TRANSLATE');
+
+  return (
+    <div>
+      <span>{pleaseWaitText}</span>
+      <p>{anotherText}</p>
+    </div>
+  );
+};
+```
+
+**5. Use texts with placeholder values**
+
+In case you have texts with placeholders in your message bundle, you can pass an array as text parameter to receive
+translated text with parameters. In this case, the first entry in the array is the translation key, followed by an
+arbitrary number of parameters which should be inserted into the translation.
+
+**Example:**
+
+You have this text in your message bundle:
+
+```properties
+CAROUSEL_DOT_TEXT=Item {0} of {1} displayed
+```
+
+Your hook call would now look like this:
+
+```js
+const [carouselText, pleaseWaitText] = useI18nText('myApp', ['CAROUSEL_DOT_TEXT', 5, 20], 'PLEASE_WAIT');
+```
+
+This would resolve this text:<br />
+`Item 5 of 20 displayed`
