@@ -9,7 +9,7 @@ In order to achieve this, most UI5 Web Components packages ship their assets as 
 
 **Prerequisite: your `@ui5/webcomponents-react` dependency has to be at least at `0.10.0-rc.2` or newer.**
 
-In order to make your app translatable into various languages, you need to import import the following assets:
+In order to make your app translatable into various languages, you need to import the following assets:
 
 ```js
 import '@ui5/webcomponents/dist/Assets.js';
@@ -17,7 +17,7 @@ import '@ui5/webcomponents-fiori/dist/Assets.js';
 import '@ui5/webcomponents-react/dist/Assets';
 ```
 
-That's it! You can now test whether the translations work correctly by adding e.g. `?sap-ui-language=de` to your URL for german translations.
+That's it! You can now test whether the translations work correctly by adding e.g. `?sap-ui-language=de` to your URL for German translations.
 
 <br />
 <br />
@@ -43,7 +43,7 @@ import '@ui5/webcomponents-base/dist/features/PropertiesFormatSupport.js';
 import { registerI18nBundle, fetchI18nBundle, getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
 ```
 
-The first one provides support for `.properties` files, as used in the example and the second one - the functions
+The first one provides support for `.properties` files, as used in the example and the second one contains the functions
 that will allow you to take advantage of the `i18n` functionality.
 
 **3. Register your message bundles:**
@@ -103,7 +103,7 @@ const MyTranslatedTextComponent = () => {
 
 In case you have texts with placeholders in your message bundle, you can pass an array as text parameter to receive
 translated text with parameters. In this case, the first entry in the array is the translation key, followed by an
-arbitrary number of parameters which should be inserted in the translation.
+arbitrary number of parameters which should be inserted into the translation.
 
 **Example:**
 
