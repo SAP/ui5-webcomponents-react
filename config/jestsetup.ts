@@ -5,9 +5,19 @@ import Adapter from 'enzyme-adapter-react-16';
 import { createSerializer } from 'enzyme-to-json';
 import ResizeObserver from 'resize-observer-polyfill';
 import 'intersection-observer';
-import '@ui5/webcomponents/dist/generated/json-imports/i18n';
-import 'whatwg-fetch';
 import '@testing-library/jest-dom';
+
+beforeAll(async () => {
+  await import('@ui5/webcomponents/dist/Assets');
+  await import('@ui5/webcomponents-fiori/dist/Assets');
+  await import('@ui5/webcomponents-react/dist/Assets');
+});
+
+jest.spyOn(global.console, 'warn').mockImplementation((message, ...rest) => {
+  if (!message.startsWith('Inefficient bundling detected')) {
+    console.error(message, ...rest);
+  }
+});
 
 // React 16 Enzyme adapter
 Enzyme.configure({ adapter: new Adapter() });
