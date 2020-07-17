@@ -193,7 +193,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     setColumnOrder,
     dispatch,
     totalColumnsWidth,
-    selectedFlatRows
+    toggleRowSelected,
+    toggleAllRowsSelected
   } = useTable(
     {
       columns,
@@ -204,7 +205,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       stateReducer,
       disableFilters: !filterable,
       disableSortBy: !sortable,
-      disableGroupBy: !groupable,
+      disableGroupBy: isTreeTable ? true : !groupable,
+      selectSubRows: false,
       webComponentsReactProperties: {
         tableRef,
         selectionMode,
@@ -266,8 +268,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [groupBy, dispatch]);
 
   useEffect(() => {
-    dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: selectedRowIds });
-  }, [selectedRowIds, dispatch]);
+    toggleAllRowsSelected(false);
+    for (const row in selectedRowIds) {
+      toggleRowSelected(row, selectedRowIds[row]);
+    }
+  }, [toggleRowSelected, toggleAllRowsSelected, selectedRowIds]);
 
   const calcRowHeight = parseInt(
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
