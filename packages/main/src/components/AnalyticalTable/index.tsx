@@ -205,7 +205,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       stateReducer,
       disableFilters: !filterable,
       disableSortBy: !sortable,
-      disableGroupBy: !groupable,
+      disableGroupBy: isTreeTable ? true : !groupable,
       selectSubRows: false,
       webComponentsReactProperties: {
         tableRef,
