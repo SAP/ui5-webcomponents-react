@@ -114,12 +114,13 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState(undefined);
   const searchRef = useRef(null);
   const filterRefs = useRef({});
   const [dialogRefs, setDialogRefs] = useState({});
   const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});
+  const prevSearchInputPropsValueRef = useRef();
 
   const [clearText, restoreText, showFilterBarText, hideFilterBarText, goText, filtersText] = useI18nText(
     '@ui5/webcomponents-react',
@@ -307,6 +308,17 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   if (className) {
     cssClasses.put(className);
   }
+
+  useEffect(() => {
+    prevSearchInputPropsValueRef.current = search?.props?.value;
+  });
+  const prevSearchInputPropsValue = prevSearchInputPropsValueRef.current;
+
+  useEffect(() => {
+    if (prevSearchInputPropsValue !== search?.props?.value) {
+      setSearchValue(search?.props?.value);
+    }
+  }, [prevSearchInputPropsValue, search?.props?.value]);
 
   return (
     <>
