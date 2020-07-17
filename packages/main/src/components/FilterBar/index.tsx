@@ -318,7 +318,7 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
     if (prevSearchInputPropsValue !== search?.props?.value) {
       setSearchValue(search?.props?.value);
     }
-  }, [prevSearchInputPropsValue, search?.props?.value]);
+  }, [prevSearchInputPropsValueRef.current, search?.props?.value]);
 
   return (
     <>
