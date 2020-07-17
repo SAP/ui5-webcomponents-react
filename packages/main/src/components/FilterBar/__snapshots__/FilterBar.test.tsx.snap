@@ -206,7 +206,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           <ui5-input
             placeholder="Search"
             type="Text"
-            value=""
             value-state="None"
           />
         </div>
@@ -900,7 +899,6 @@ Array [
             <ui5-input
               placeholder="Search"
               type="Text"
-              value=""
               value-state="None"
             />
           </div>
@@ -1222,7 +1220,6 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           <ui5-input
             placeholder="Search"
             type="Text"
-            value=""
             value-state="None"
           />
         </div>
