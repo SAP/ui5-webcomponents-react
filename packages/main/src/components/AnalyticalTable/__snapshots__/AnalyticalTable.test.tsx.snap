@@ -30,11 +30,10 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         draggable="true"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -89,11 +88,10 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         draggable="true"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -148,11 +146,10 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         draggable="true"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -207,11 +204,10 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         draggable="true"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -537,11 +533,10 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         draggable="true"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -596,11 +591,10 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         draggable="true"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -655,11 +649,10 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         draggable="true"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -714,11 +707,10 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         draggable="true"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -1044,11 +1036,10 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         draggable="true"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -1103,11 +1094,10 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         draggable="true"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -1162,11 +1152,10 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         draggable="true"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -1221,11 +1210,10 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         draggable="true"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -1543,11 +1531,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
         draggable="false"
         id="__ui5wcr__internal_selection_column"
         role="columnheader"
-        style="position: relative; width: 47px; padding: 0px;"
+        style="position: relative; width: 47px; padding: 0px; cursor: auto;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: auto;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -1563,11 +1550,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
         draggable="false"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -1635,11 +1621,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
         draggable="false"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -1707,11 +1692,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
         draggable="false"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -1779,11 +1763,10 @@ exports[`AnalyticalTable Tree Table 1`] = `
         draggable="false"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -2193,11 +2176,10 @@ exports[`AnalyticalTable custom row height 1`] = `
         draggable="true"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -2252,11 +2234,10 @@ exports[`AnalyticalTable custom row height 1`] = `
         draggable="true"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -2311,11 +2292,10 @@ exports[`AnalyticalTable custom row height 1`] = `
         draggable="true"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -2370,11 +2350,10 @@ exports[`AnalyticalTable custom row height 1`] = `
         draggable="true"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -2700,11 +2679,10 @@ exports[`AnalyticalTable render without data 1`] = `
         draggable="true"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -2759,11 +2737,10 @@ exports[`AnalyticalTable render without data 1`] = `
         draggable="true"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -2818,11 +2795,10 @@ exports[`AnalyticalTable render without data 1`] = `
         draggable="true"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -2877,11 +2853,10 @@ exports[`AnalyticalTable render without data 1`] = `
         draggable="true"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -2972,11 +2947,10 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         draggable="true"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -3031,11 +3005,10 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         draggable="true"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -3090,11 +3063,10 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         draggable="true"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -3149,11 +3121,10 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         draggable="true"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -3479,11 +3450,10 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         draggable="true"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -3538,11 +3508,10 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         draggable="true"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -3597,11 +3566,10 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         draggable="true"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -3656,11 +3624,10 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         draggable="true"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -3986,11 +3953,10 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         draggable="true"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -4045,11 +4011,10 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         draggable="true"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -4104,11 +4069,10 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         draggable="true"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -4163,11 +4127,10 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         draggable="true"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -4493,11 +4456,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         draggable="true"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -4552,11 +4514,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         draggable="true"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -4611,11 +4572,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         draggable="true"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -4670,11 +4630,10 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         draggable="true"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5000,11 +4959,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
         draggable="false"
         id="__ui5wcr__internal_highlight_column"
         role="columnheader"
-        style="position: relative; width: 6px; padding: 0px;"
+        style="position: relative; width: 6px; padding: 0px; cursor: auto;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: auto;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5024,11 +4982,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
         draggable="false"
         id="__ui5wcr__internal_selection_column"
         role="columnheader"
-        style="position: relative; width: 47px; padding: 0px;"
+        style="position: relative; width: 47px; padding: 0px; cursor: auto;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: auto;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5044,11 +5001,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
         draggable="true"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5103,11 +5059,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
         draggable="true"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5162,11 +5117,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
         draggable="true"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5221,11 +5175,10 @@ exports[`AnalyticalTable with highlight row 1`] = `
         draggable="true"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5635,11 +5588,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
         draggable="true"
         id="name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5694,11 +5646,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
         draggable="true"
         id="age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5753,11 +5704,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
         draggable="true"
         id="friend.name"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
@@ -5812,11 +5762,10 @@ exports[`AnalyticalTable without selection Column 1`] = `
         draggable="true"
         id="friend.age"
         role="columnheader"
-        style="position: relative; width: 150px;"
+        style="position: relative; width: 150px; cursor: pointer;"
       >
         <div
           class="TableColumnHeader-header-0"
-          style="cursor: pointer;"
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
