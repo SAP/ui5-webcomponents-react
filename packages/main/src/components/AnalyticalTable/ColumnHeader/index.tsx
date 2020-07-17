@@ -153,7 +153,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   const onOpenPopover = useCallback(
     (e) => {
       if (popoverRef.current && hasPopover) {
-        popoverRef.current.openBy(e.target);
+        popoverRef.current.openBy(e.currentTarget);
       }
     },
     [popoverRef, hasPopover]
@@ -179,8 +179,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onDrop={onDrop}
         onDragEnd={onDragEnd}
         data-column-id={id}
+        onClick={onOpenPopover}
       >
-        <div onClick={onOpenPopover} className={classes.header} data-h-align={column.hAlign}>
+        <div className={classes.header} data-h-align={column.hAlign}>
           <Text
             tooltip={typeof children === 'string' ? children : null}
             wrapping={false}
