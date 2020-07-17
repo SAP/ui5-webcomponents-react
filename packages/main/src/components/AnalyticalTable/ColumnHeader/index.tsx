@@ -147,15 +147,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   }, [column.isSorted, column.isGrouped, isFiltered]);
 
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
-  const innerStyle: CSSProperties = useMemo(() => {
-    const modifiedStyles: CSSProperties = {
-      cursor: hasPopover ? 'pointer' : 'auto'
-    };
-    if (dragOver) {
-      modifiedStyles.borderLeft = `3px solid ${ThemingParameters.sapSelectedColor}`;
-    }
-    return modifiedStyles;
-  }, [dragOver, hasPopover]);
 
   const popoverRef = useRef<Ui5PopoverDomRef>(null);
 
@@ -175,7 +166,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       <div
         id={id}
         className={className}
-        style={style}
+        style={{
+          ...style,
+          cursor: hasPopover ? 'pointer' : 'auto',
+          borderLeft: dragOver ? `3px solid ${ThemingParameters.sapSelectedColor}` : undefined
+        }}
         role={role}
         draggable={isDraggable}
         onDragEnter={onDragEnter}
@@ -185,7 +180,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onDragEnd={onDragEnd}
         data-column-id={id}
       >
-        <div style={innerStyle} onClick={onOpenPopover} className={classes.header} data-h-align={column.hAlign}>
+        <div onClick={onOpenPopover} className={classes.header} data-h-align={column.hAlign}>
           <Text
             tooltip={typeof children === 'string' ? children : null}
             wrapping={false}
