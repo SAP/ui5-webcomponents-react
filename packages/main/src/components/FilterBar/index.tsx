@@ -311,14 +311,15 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
 
   useEffect(() => {
     prevSearchInputPropsValueRef.current = search?.props?.value;
-  });
+  }, [prevSearchInputPropsValueRef.current, search?.props?.value]);
+
   const prevSearchInputPropsValue = prevSearchInputPropsValueRef.current;
 
   useEffect(() => {
     if (prevSearchInputPropsValue !== search?.props?.value) {
       setSearchValue(search?.props?.value);
     }
-  }, [prevSearchInputPropsValueRef.current, search?.props?.value]);
+  }, [prevSearchInputPropsValue, search?.props?.value]);
 
   return (
     <>
