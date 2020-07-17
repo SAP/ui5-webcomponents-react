@@ -814,6 +814,7 @@ Array [
                 </div>
                 <ui5-datepicker
                   primary-calendar-type="Gregorian"
+                  value=""
                   value-state="None"
                 />
               </div>
