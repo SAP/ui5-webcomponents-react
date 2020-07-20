@@ -373,23 +373,27 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           return (
             // eslint-disable-next-line react/jsx-key
             <header {...headerProps} role="rowgroup">
-              {headerGroup.headers.map((column) => (
-                // eslint-disable-next-line react/jsx-key
-                <ColumnHeader
-                  {...column.getHeaderProps()}
-                  onSort={onSort}
-                  onGroupBy={onGroupByChanged}
-                  onDragStart={handleDragStart}
-                  onDragOver={handleDragOver}
-                  onDrop={handleOnDrop}
-                  onDragEnter={handleDragEnter}
-                  onDragEnd={handleOnDragEnd}
-                  dragOver={column.id === dragOver}
-                  isDraggable={!isTreeTable && column.canReorder}
-                >
-                  {column.render('Header')}
-                </ColumnHeader>
-              ))}
+              {headerGroup.headers.map((column, index) => {
+                const isLastColumn = !column.disableResizing && index + 1 === headerGroup.headers.length;
+                return (
+                  // eslint-disable-next-line react/jsx-key
+                  <ColumnHeader
+                    {...column.getHeaderProps()}
+                    isLastColumn={isLastColumn}
+                    onSort={onSort}
+                    onGroupBy={onGroupByChanged}
+                    onDragStart={handleDragStart}
+                    onDragOver={handleDragOver}
+                    onDrop={handleOnDrop}
+                    onDragEnter={handleDragEnter}
+                    onDragEnd={handleOnDragEnd}
+                    dragOver={column.id === dragOver}
+                    isDraggable={!isTreeTable && column.canReorder}
+                  >
+                    {column.render('Header')}
+                  </ColumnHeader>
+                );
+              })}
             </header>
           );
         })}
