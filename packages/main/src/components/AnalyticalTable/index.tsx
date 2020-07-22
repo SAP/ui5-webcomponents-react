@@ -106,7 +106,7 @@ export interface TableProps extends CommonProps {
   tableHooks?: PluginHook<any>[];
   subRowsKey?: string;
   /**
-   * The key must consist of a valid rowId like `{ 2: true }` or `{ ['0.2.0']: true }` for nested rows.
+   * The key must consist of a valid `rowId` like `{ 2: true }` or `{ ['0.2.0']: true }` for nested rows.
    */
   selectedRowIds?: { [key: string]: boolean };
   isTreeTable?: boolean;
