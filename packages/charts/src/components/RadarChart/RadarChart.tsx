@@ -15,6 +15,7 @@ import {
   RadarChart as RadarChartLib,
   Tooltip
 } from 'recharts';
+import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
@@ -106,6 +107,8 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
 
   const primaryDimension = dimensions[0];
 
+  const labelFormatter = useLabelFormatter(primaryDimension);
+
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
@@ -171,7 +174,12 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
             />
           );
         })}
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          contentStyle={tooltipContentStyle}
+          labelFormatter={labelFormatter}
+        />
         {!noLegend && (
           <Legend
             verticalAlign={chartConfig.legendPosition}
