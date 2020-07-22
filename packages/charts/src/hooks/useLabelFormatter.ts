@@ -6,6 +6,7 @@ export const useLabelFormatter = (primaryDimension) => {
       if (primaryDimension && typeof primaryDimension?.formatter === 'function') {
         return primaryDimension.formatter(name);
       }
+      return name;
     },
     [primaryDimension]
   );
