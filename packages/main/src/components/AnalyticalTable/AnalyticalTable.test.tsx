@@ -169,7 +169,6 @@ describe('AnalyticalTable', () => {
         data={dataTree}
         columns={columns}
         loading={false}
-        busyIndicatorEnabled={true}
         sortable={true}
         filterable={true}
         visibleRows={15}
