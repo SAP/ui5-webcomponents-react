@@ -72,7 +72,6 @@ export interface TableProps extends CommonProps {
   minRows?: number;
   visibleRows?: number;
   loading?: boolean;
-  busyIndicatorEnabled?: boolean;
   noDataText?: string;
   rowHeight?: number;
   alternateRowColor?: boolean;
@@ -143,7 +142,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     onSort,
     reactTableOptions,
     tableHooks,
-    busyIndicatorEnabled,
     subRowsKey,
     onGroup,
     rowHeight,
@@ -227,8 +225,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       ...reactTableOptions
     },
     useFilters,
-    useGroupBy,
     useColumnOrder,
+    useGroupBy,
     useSortBy,
     useExpanded,
     useRowSelect,
@@ -403,9 +401,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             </header>
           );
         })}
-        {loading && busyIndicatorEnabled && props.data?.length > 0 && (
-          <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />
-        )}
+        {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
         {loading && props.data?.length === 0 && (
           <TablePlaceholder
             columns={tableInternalColumns.filter(
@@ -448,7 +444,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 AnalyticalTable.displayName = 'AnalyticalTable';
 AnalyticalTable.defaultProps = {
   loading: false,
-  busyIndicatorEnabled: true,
   sortable: true,
   filterable: false,
   groupable: false,
