@@ -100,11 +100,14 @@ export interface TableProps extends CommonProps {
   onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
   onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
   /**
-   * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api/useTable.md#table-options)
+   * Additional options which will be passed to [react-table´s useTable hook](https://react-table.tanstack.com/docs/api/useTable#table-options)
    */
   reactTableOptions?: object;
   tableHooks?: PluginHook<any>[];
   subRowsKey?: string;
+  /**
+   * The key must consist of a valid `rowId` like `{ 2: true }` or `{ '0.2.0': true }` for nested rows.
+   */
   selectedRowIds?: { [key: string]: boolean };
   isTreeTable?: boolean;
   overscanCount?: number;
@@ -269,8 +272,11 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   useEffect(() => {
     toggleAllRowsSelected(false);
+    const validChars = /^(\d\.)*\d$/;
     for (const row in selectedRowIds) {
-      toggleRowSelected(row, selectedRowIds[row]);
+      if (validChars.test(row)) {
+        toggleRowSelected(row, selectedRowIds[row]);
+      }
     }
   }, [toggleRowSelected, toggleAllRowsSelected, selectedRowIds]);
 
