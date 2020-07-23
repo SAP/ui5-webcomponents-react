@@ -37,6 +37,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, useEffect, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
+import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
 const actionTextMap = new Map();
@@ -154,6 +155,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   const handleOnClose = useCallback(
     (e) => {
       const { action } = e.target.dataset;
+      stopPropagation(e);
       onClose(enrichEventWithDetails(e, { action }));
     },
     [onClose]
@@ -180,7 +182,6 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       style={style}
       tooltip={tooltip}
       className={className}
-      onAfterClose={open ? handleOnClose : null}
       header={
         <header className={classes.header} data-type={type}>
           {iconToRender}
@@ -203,6 +204,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
           })}
         </footer>
       }
+      onAfterClose={open ? handleOnClose : stopPropagation}
       {...passThroughProps}
     >
       <Text className={classes.content}>{children}</Text>

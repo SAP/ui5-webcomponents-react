@@ -27,6 +27,7 @@ import React, {
 import { createPortal } from 'react-dom';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { stopPropagation } from '../../internal/stopPropagation';
 import { sideNavigationListItemStyles } from './SideNavigationListItem.jss';
 
 export interface SideNavigationListItemProps extends CommonProps {
@@ -158,7 +159,7 @@ const SideNavigationListItem: FC<SideNavigationListItemProps> = forwardRef(
               {displayedIcon}
               <div className={classes.condensedExpandTriangle} />
               {createPortal(
-                <Popover ref={popoverRef} verticalAlign={PopoverVerticalAlign.Top}>
+                <Popover ref={popoverRef} verticalAlign={PopoverVerticalAlign.Top} onAfterClose={stopPropagation}>
                   <List onItemClick={props['onListItemSelected']}>
                     <StandardListItem selected={isSelfSelected} data-id={id} tooltip={tooltip}>
                       {text}
