@@ -227,8 +227,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       ...reactTableOptions
     },
     useFilters,
-    useGroupBy,
     useColumnOrder,
+    useGroupBy,
     useSortBy,
     useExpanded,
     useRowSelect,
