@@ -40,6 +40,7 @@ export interface ColumnHeaderProps {
   isResizing: boolean;
   isDraggable: boolean;
   role: string;
+  isLastColumn: boolean;
 }
 
 const styles = {
@@ -118,7 +119,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     onDragEnd,
     isDraggable,
     dragOver,
-    role
+    role,
+    isLastColumn
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -203,7 +205,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
           {...column.getResizerProps()}
           data-resizer
           className={classes.resizer}
-          style={{ left: `${column.totalLeft + column.totalFlexWidth}px` }}
+          style={{ left: `${column.totalLeft + column.totalFlexWidth - (isLastColumn ? 3 : 0)}px` }}
         />
       )}
     </>

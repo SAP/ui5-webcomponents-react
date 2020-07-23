@@ -255,7 +255,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 600px;"
+        style="left: 597px;"
       />
     </header>
     <div
@@ -758,7 +758,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 600px;"
+        style="left: 597px;"
       />
     </header>
     <div
@@ -1261,7 +1261,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 600px;"
+        style="left: 597px;"
       />
     </header>
     <svg
@@ -1827,7 +1827,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 647px;"
+        style="left: 644px;"
       />
     </header>
     <div
@@ -2401,7 +2401,7 @@ exports[`AnalyticalTable custom row height 1`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 600px;"
+        style="left: 597px;"
       />
     </header>
     <div
@@ -2904,7 +2904,7 @@ exports[`AnalyticalTable render without data 1`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 600px;"
+        style="left: 597px;"
       />
     </header>
     <div
@@ -3172,7 +3172,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 600px;"
+        style="left: 597px;"
       />
     </header>
     <div
@@ -3675,7 +3675,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 600px;"
+        style="left: 597px;"
       />
     </header>
     <div
@@ -4178,7 +4178,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 600px;"
+        style="left: 597px;"
       />
     </header>
     <div
@@ -4681,7 +4681,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 600px;"
+        style="left: 597px;"
       />
     </header>
     <div
@@ -5226,7 +5226,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 653px;"
+        style="left: 650px;"
       />
     </header>
     <div
@@ -5813,7 +5813,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
         data-resizer="true"
         draggable="false"
         role="separator"
-        style="left: 600px;"
+        style="left: 597px;"
       />
     </header>
     <div
