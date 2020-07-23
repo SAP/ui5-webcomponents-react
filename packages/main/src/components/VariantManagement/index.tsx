@@ -19,6 +19,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';
+import { stopPopoverPropagationProps } from '../../internal/stopPopoverPropagationProps';
 
 export interface VariantItem {
   key: string;
@@ -165,7 +166,13 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
           icon="navigation-down-arrow"
           disabled={disabled}
         />
-        <ResponsivePopover ref={popoverRef} headerText={popupTitle} placementType={placement} footer={footerButtons}>
+        <ResponsivePopover
+          ref={popoverRef}
+          headerText={popupTitle}
+          placementType={placement}
+          footer={footerButtons}
+          {...stopPopoverPropagationProps}
+        >
           <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
             {variantItems.map((item) => (
               <StandardListItem

@@ -20,6 +20,7 @@ import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHori
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import React, { CSSProperties, forwardRef, RefObject, useCallback } from 'react';
 import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
+import { stopPopoverPropagationProps } from '../../../internal/stopPopoverPropagationProps';
 import { ColumnType } from '../types/ColumnType';
 
 export interface ColumnHeaderModalProperties {
@@ -115,6 +116,7 @@ export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties,
       placementType={PlacementType.Bottom}
       ref={ref}
       style={staticStyle as CSSProperties}
+      {...stopPopoverPropagationProps}
     >
       <List onItemClick={handleSort}>
         {isSortedAscending && (

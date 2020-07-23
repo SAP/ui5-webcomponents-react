@@ -27,6 +27,7 @@ import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { stopPopoverPropagationProps } from '../../internal/stopPopoverPropagationProps';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue } from './utils';
 
@@ -105,6 +106,7 @@ export const FilterDialog = (props) => {
 
   const handleClose = useCallback(
     (e) => {
+      e.stopPropagation();
       if (!showGoButton) {
         handleSave(e);
         return;
@@ -268,7 +270,13 @@ export const FilterDialog = (props) => {
   }, [renderChildren, toggledFilters, handleCheckBoxChange]);
 
   return (
-    <Dialog ref={dialogRef} onAfterClose={handleClose} header={renderHeader()} footer={renderFooter()}>
+    <Dialog
+      ref={dialogRef}
+      header={renderHeader()}
+      footer={renderFooter()}
+      {...stopPopoverPropagationProps}
+      onAfterClose={handleClose}
+    >
       <div className={classes.dialog}>
         {renderFBSearch && (
           <div className={classes.fbSearch} ref={searchRef}>
