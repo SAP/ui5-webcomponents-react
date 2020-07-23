@@ -106,7 +106,7 @@ export interface TableProps extends CommonProps {
   tableHooks?: PluginHook<any>[];
   subRowsKey?: string;
   /**
-   * The key must consist of a valid `rowId` like `{ 2: true }` or `{ ['0.2.0']: true }` for nested rows.
+   * The key must consist of a valid `rowId` like `{ 2: true }` or `{ '0.2.0': true }` for nested rows.
    */
   selectedRowIds?: { [key: string]: boolean };
   isTreeTable?: boolean;
@@ -272,9 +272,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   useEffect(() => {
     toggleAllRowsSelected(false);
-    const validChars = /^[0-9.]+$/;
+    const validChars = /^(\d\.)*\d$/;
     for (const row in selectedRowIds) {
-      if (row.match(validChars)) {
+      if (validChars.test(row)) {
         toggleRowSelected(row, selectedRowIds[row]);
       }
     }
