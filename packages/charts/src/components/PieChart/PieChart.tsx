@@ -118,7 +118,10 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
     [measure]
   );
 
-  const tooltipValueFormatter = useCallback((value) => measure.formatter(value), [measure.formatter]);
+  const tooltipValueFormatter = useCallback((value, name) => [measure.formatter(value), dimension.formatter(name)], [
+    measure.formatter,
+    dimension.formatter
+  ]);
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
