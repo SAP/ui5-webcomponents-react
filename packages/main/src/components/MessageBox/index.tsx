@@ -37,7 +37,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, useEffect, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
-import { stopPopoverPropagationProps } from '../../internal/stopPopoverPropagationProps';
+import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
 const actionTextMap = new Map();
@@ -155,7 +155,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   const handleOnClose = useCallback(
     (e) => {
       const { action } = e.target.dataset;
-      e.stopPropagation();
+      stopPropagation(e);
       onClose(enrichEventWithDetails(e, { action }));
     },
     [onClose]
@@ -174,10 +174,6 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   }, [open, dialogRef]);
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
-
-  const stopPropagation = (e) => {
-    e.stopPropagation();
-  };
 
   return (
     <Dialog
@@ -208,7 +204,6 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
           })}
         </footer>
       }
-      {...stopPopoverPropagationProps}
       onAfterClose={open ? handleOnClose : stopPropagation}
       {...passThroughProps}
     >

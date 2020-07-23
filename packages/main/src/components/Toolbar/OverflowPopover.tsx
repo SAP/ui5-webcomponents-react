@@ -6,7 +6,7 @@ import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import React, { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { stopPopoverPropagationProps } from '../../internal/stopPopoverPropagationProps';
+import { stopPropagation } from '../../internal/stopPropagation';
 
 export function OverflowPopover(props) {
   const { lastVisibleIndex, contentClass, children } = props;
@@ -33,7 +33,7 @@ export function OverflowPopover(props) {
   }, []);
 
   const handleClose = (e) => {
-    e.stopPropagation();
+    stopPropagation(e);
     setPressed(false);
   };
 
@@ -67,12 +67,7 @@ export function OverflowPopover(props) {
         pressed={pressed}
       />
       {createPortal(
-        <Popover
-          placementType={PlacementType.Bottom}
-          ref={popoverRef}
-          {...stopPopoverPropagationProps}
-          onAfterClose={handleClose}
-        >
+        <Popover placementType={PlacementType.Bottom} ref={popoverRef} onAfterClose={handleClose}>
           <div className={contentClass}>{renderChildren()}</div>
         </Popover>,
         document.body
