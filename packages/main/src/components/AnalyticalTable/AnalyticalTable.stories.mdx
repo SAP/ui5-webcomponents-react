@@ -85,7 +85,6 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
       }
     ],
     title: 'Table Title',
-    busyIndicatorEnabled: true,
     sortable: true,
     filterable: true,
     visibleRows: 15,
@@ -135,7 +134,6 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
           data={args.data}
           columns={args.columns}
           loading={args.loading}
-          busyIndicatorEnabled={args.busyIndicatorEnabled}
           alternateRowColor={args.alternateRowColor}
           sortable={args.sortable}
           filterable={args.filterable}
@@ -283,7 +281,6 @@ This even works if you resize the browser window!
         data={args.dataTree}
         columns={args.columns}
         loading={args.loading}
-        busyIndicatorEnabled={args.busyIndicatorEnabled}
         sortable={args.sortable}
         filterable={args.filterable}
         visibleRows={args.visibleRows}
