@@ -43,7 +43,7 @@ const columns = (columns, { instance }) => {
         maxWidth: column.maxWidth
       }));
     let availableWidth = totalWidth;
-    let internalDefaultColumnsCount = visibleColumns.length;
+    let defaultColumnsCount = visibleColumns.length;
     const columnsWithFixedWidth = columnsWithWidthProperties
       .map((column) => {
         const { width, minWidth, maxWidth, accessor } = column;
@@ -56,17 +56,37 @@ const columns = (columns, { instance }) => {
               ? 60
               : width;
           availableWidth -= acceptedWidth;
-          internalDefaultColumnsCount--;
+          defaultColumnsCount--;
           return acceptedWidth;
         }
-        if (minWidth > availableWidth / internalDefaultColumnsCount) {
+
+        const columnsWithMaxWidth = columnsWithWidthProperties.filter((item) => item.maxWidth);
+        const aggregatedColumnsMaxWidth = columnsWithMaxWidth.reduce((acc, cur) => acc + cur.maxWidth, 0);
+        const aggregatedColumnsMinWidth = columnsWithWidthProperties
+          .filter((item) => item.minWidth && !item.maxWidth)
+          .reduce((acc, cur) => acc + cur.minWidth, 0);
+
+        if (minWidth > availableWidth / defaultColumnsCount) {
+          // don't apply minWidth if enough space is available because of maxWidth properties
+          if (
+            availableWidth - aggregatedColumnsMaxWidth >
+            aggregatedColumnsMinWidth + (columns.length - columnsWithWidthProperties.length) * 60
+          ) {
+            // apply minWidth only if it's larger than the calculated available width
+            if (minWidth > (availableWidth - aggregatedColumnsMaxWidth) / columnsWithMaxWidth.length) {
+              availableWidth -= minWidth;
+              defaultColumnsCount--;
+              return minWidth;
+            }
+            return false;
+          }
           availableWidth -= minWidth;
-          internalDefaultColumnsCount--;
+          defaultColumnsCount--;
           return minWidth;
         }
-        if (maxWidth < availableWidth / internalDefaultColumnsCount) {
+        if (maxWidth < availableWidth / defaultColumnsCount) {
           availableWidth -= maxWidth;
-          internalDefaultColumnsCount--;
+          defaultColumnsCount--;
           return maxWidth;
         }
         return false;
@@ -74,7 +94,7 @@ const columns = (columns, { instance }) => {
       .filter(Boolean);
 
     const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
-    const defaultColumnsCount = visibleColumns.length - columnsWithFixedWidth.length;
+
     // check if columns are visible and table has width
     if (visibleColumns.length > 0 && totalWidth > 0) {
       // set fixedWidth as defaultWidth if all visible columns have fixed value
