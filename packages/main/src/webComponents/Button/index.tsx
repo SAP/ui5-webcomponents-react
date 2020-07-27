@@ -6,6 +6,10 @@ import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
   /**
+   *
+   */
+  ariaExpanded?: string;
+  /**
    * Defines the <code>ui5-button</code> design. <br><br> <b>Note:</b> Available options are "Default", "Emphasized", "Positive", "Negative", and "Transparent".
    */
   design?: ButtonDesign;
@@ -44,7 +48,7 @@ export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClic
  */
 const Button: FC<ButtonPropTypes> = withWebComponent<ButtonPropTypes>(
   'ui5-button',
-  ['design', 'icon'],
+  ['ariaExpanded', 'design', 'icon'],
   ['disabled', 'iconEnd', 'submits'],
   [],
   ['click']

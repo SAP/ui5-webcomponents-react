@@ -1,8 +1,8 @@
 // import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / DatePicker',
