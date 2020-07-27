@@ -5,7 +5,7 @@ import '@ui5/webcomponents/dist/DateRangePicker';
 import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
-export interface DateRangePickerPropTypes extends WithWebComponentPropTypes {
+export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
    * Determines the symbol which separates the dates.
    */
