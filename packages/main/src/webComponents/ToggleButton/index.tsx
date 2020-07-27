@@ -10,6 +10,10 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
    */
   pressed?: boolean;
   /**
+   *
+   */
+  ariaExpanded?: string;
+  /**
    * Defines the <code>ui5-button</code> design. <br><br> <b>Note:</b> Available options are "Default", "Emphasized", "Positive", "Negative", and "Transparent".
    */
   design?: ButtonDesign;
@@ -48,7 +52,7 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
  */
 const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPropTypes>(
   'ui5-togglebutton',
-  ['design', 'icon'],
+  ['ariaExpanded', 'design', 'icon'],
   ['pressed', 'disabled', 'iconEnd', 'submits'],
   [],
   ['click']

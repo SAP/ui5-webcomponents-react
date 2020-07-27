@@ -1,7 +1,7 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / ToggleButton',
