@@ -5,19 +5,23 @@ import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
   /**
-   * Determines whether the <code>ui5-dialog</code> should be stretched to fullscreen. <br><br> <b>Note:</b> The <code>ui5-dialog</code> will be stretched to aproximetly 90% of the viewport.
-   */
-  stretch?: boolean;
-  /**
    * Defines the header text. <br><br> <b>Note:</b> If <code>header</code> slot is provided, the <code>headerText</code> is ignored.
    */
   headerText?: string;
+  /**
+   * Determines whether the <code>ui5-dialog</code> should be stretched to fullscreen. <br><br> <b>Note:</b> The <code>ui5-dialog</code> will be stretched to aproximetly 90% of the viewport.
+   */
+  stretch?: boolean;
   /**
    * Defines the ID of the HTML Element, which will get the initial focus.
    */
   initialFocus?: string;
   /**
-   * Defines the content of the Web Component.
+   * Defines if the focus should be returned to the previously focused element, when the popup closes.
+   */
+  preventFocusRestore?: boolean;
+  /**
+   * Defines the content of the Popup.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -54,15 +58,16 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
 const Dialog: FC<DialogPropTypes> = withWebComponent<DialogPropTypes>(
   'ui5-dialog',
   ['headerText', 'initialFocus'],
-  ['stretch'],
+  ['stretch', 'preventFocusRestore'],
   ['footer', 'header'],
-  ['afterClose', 'afterOpen', 'beforeClose', 'beforeOpen']
+  ['after-close', 'after-open', 'before-close', 'before-open']
 );
 
 Dialog.displayName = 'Dialog';
 
 Dialog.defaultProps = {
-  stretch: false
+  stretch: false,
+  preventFocusRestore: false
 };
 
 export { Dialog };
