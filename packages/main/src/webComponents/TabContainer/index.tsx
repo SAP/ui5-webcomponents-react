@@ -50,7 +50,7 @@ const TabContainer: FC<TabContainerPropTypes> = withWebComponent<TabContainerPro
   ['tabLayout', 'tabsPlacement'],
   ['collapsed', 'fixed', 'showOverflow'],
   [],
-  ['tabSelect']
+  ['tab-select']
 );
 
 TabContainer.displayName = 'TabContainer';

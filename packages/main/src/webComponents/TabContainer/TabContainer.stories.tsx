@@ -1,10 +1,10 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { Tab } from '@ui5/webcomponents-react/lib/Tab';
 import { TabContainer } from '@ui5/webcomponents-react/lib/TabContainer';
 import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabContainerTabsPlacement';
 import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';
 import { TabSeparator } from '@ui5/webcomponents-react/lib/TabSeparator';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / TabContainer',
