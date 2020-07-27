@@ -1,0 +1,30 @@
+import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { FlexibleColumnLayout } from '@ui5/webcomponents-react/lib/FlexibleColumnLayout';
+import { FCLLayout } from '@ui5/webcomponents-react/lib/FCLLayout';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+
+<Meta
+  title="UI5 Web Components / FlexibleColumnLayout"
+  component={FlexibleColumnLayout}
+  argTypes={{
+    ...createSelectArgTypes({ layout: FCLLayout })
+  }}
+  args={{
+    layout: FCLLayout.OneColumn
+  }}
+/>
+
+<Title />
+<Subtitle />
+<Description />
+
+<Preview>
+  <Story name="Default">
+    {(args) => {
+      return <FlexibleColumnLayout {...args} />;
+    }}
+  </Story>
+</Preview>
+
+<Props story="Default" components={{ FlexibleColumnLayout }} />
