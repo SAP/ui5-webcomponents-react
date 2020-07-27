@@ -5,10 +5,6 @@ import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ShellBarPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines the <code>logo</code> source URI.
-   */
-  logo?: string;
-  /**
    * Defines the <code>notificationCount</code>, displayed in the notification icon top-right corner.
    */
   notificationCount?: string;
@@ -36,6 +32,10 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
    * Defines the <code>ui5-shellbar</code> aditional items. <br><br> <b>Note:</b> You can use the &nbsp;&lt;ui5-shellbar-item>&lt;/ui5-shellbar-item>.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Defines the logo of the <code>ui5-shellbar</code>. For example, you can use <code>ui5-avatar</code> or <code>img</code> elements as logo.
+   */
+  logo?: ReactNode;
   /**
    * Defines the items displayed in menu after a click on the primary title. <br><br> <b>Note:</b> You can use the &nbsp;&lt;ui5-li>&lt;/ui5-li> and its ancestors.
    */
@@ -85,10 +85,10 @@ export interface ShellBarPropTypes extends WithWebComponentPropTypes {
  */
 const ShellBar: FC<ShellBarPropTypes> = withWebComponent<ShellBarPropTypes>(
   'ui5-shellbar',
-  ['logo', 'notificationCount', 'primaryTitle', 'secondaryTitle'],
+  ['notificationCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch'],
-  ['menuItems', 'profile', 'searchField', 'startButton'],
-  ['coPilotClick', 'logoClick', 'menuItemClick', 'notificationsClick', 'productSwitchClick', 'profileClick']
+  ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
+  ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click']
 );
 
 ShellBar.displayName = 'ShellBar';
