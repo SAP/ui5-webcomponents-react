@@ -42,11 +42,11 @@ export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</a>
  */
 const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPropTypes>(
-  'ui5-timeline-item',
+  'ui5-timeline',
   ['icon', 'itemName', 'subtitleText', 'titleText'],
   ['itemNameClickable'],
   [],
-  ['itemNameClick']
+  ['item-name-click']
 );
 
 TimelineItem.displayName = 'TimelineItem';
