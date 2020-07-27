@@ -1,3 +1,4 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { CustomListItem } from '@ui5/webcomponents-react/lib/CustomListItem';
 import { GroupHeaderListItem } from '@ui5/webcomponents-react/lib/GroupHeaderListItem';
 import { List } from '@ui5/webcomponents-react/lib/List';
@@ -5,7 +6,6 @@ import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / List',
