@@ -42,6 +42,10 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
    * Defines the text of the <code>ui5-li</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired when the user clicks on the detail button when type is <code>Detail</code>.
+   */
+  onDetailClick?: (event: CustomEvent<{}>) => void;
 }
 
 /**
@@ -54,7 +58,7 @@ const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<Standar
   ['description', 'icon', 'image', 'info', 'infoState', 'type'],
   ['iconEnd', 'selected'],
   [],
-  []
+  ['detail-click']
 );
 
 StandardListItem.displayName = 'StandardListItem';
