@@ -20,10 +20,6 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    */
   horizontalAlign?: PopoverHorizontalAlign;
   /**
-   * Defines the ID of the HTML Element, which will get the initial focus.
-   */
-  initialFocus?: string;
-  /**
    * Defines whether the <code>ui5-popover</code> should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
    */
   modal?: boolean;
@@ -40,9 +36,13 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    */
   verticalAlign?: PopoverVerticalAlign;
   /**
-   * Defines the content of the Web Component.
+   * Defines the ID of the HTML Element, which will get the initial focus.
    */
-  children?: ReactNode | ReactNode[];
+  initialFocus?: string;
+  /**
+   * Defines if the focus should be returned to the previously focused element, when the popup closes.
+   */
+  preventFocusRestore?: boolean;
   /**
    * Defines the footer HTML Element.
    */
@@ -51,6 +51,10 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
    * Defines the header HTML Element.
    */
   header?: ReactNode | ReactNode[];
+  /**
+   * Defines the content of the Popup.
+   */
+  children?: ReactNode | ReactNode[];
   /**
    * Fired after the component is closed.
    */
@@ -76,10 +80,10 @@ export interface ResponsivePopoverPropTypes extends WithWebComponentPropTypes {
  */
 const ResponsivePopover: FC<ResponsivePopoverPropTypes> = withWebComponent<ResponsivePopoverPropTypes>(
   'ui5-responsive-popover',
-  ['headerText', 'horizontalAlign', 'initialFocus', 'placementType', 'verticalAlign'],
-  ['allowTargetOverlap', 'modal', 'noArrow'],
+  ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'initialFocus'],
+  ['allowTargetOverlap', 'modal', 'noArrow', 'preventFocusRestore'],
   ['footer', 'header'],
-  ['afterClose', 'afterOpen', 'beforeClose', 'beforeOpen']
+  ['after-close', 'after-open', 'before-close', 'before-open']
 );
 
 ResponsivePopover.displayName = 'ResponsivePopover';
@@ -90,7 +94,8 @@ ResponsivePopover.defaultProps = {
   modal: false,
   noArrow: false,
   placementType: PlacementType.Right,
-  verticalAlign: PopoverVerticalAlign.Center
+  verticalAlign: PopoverVerticalAlign.Center,
+  preventFocusRestore: false
 };
 
 export { ResponsivePopover };
