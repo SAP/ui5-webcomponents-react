@@ -444,7 +444,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           Date Picker
           </ui5-label>
         </div>
-        <ui5-datepicker
+        <ui5-date-picker
           primary-calendar-type="Gregorian"
           value-state="None"
         />
