@@ -44,7 +44,7 @@ const Table: FC<TablePropTypes> = withWebComponent<TablePropTypes>(
   ['noDataText'],
   ['showNoData', 'stickyColumnHeader'],
   ['columns'],
-  ['popinChange', 'rowClick']
+  ['popin-change', 'row-click']
 );
 
 Table.displayName = 'Table';
