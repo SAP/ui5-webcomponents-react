@@ -1,6 +1,9 @@
 import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import { FlexibleColumnLayout } from '@ui5/webcomponents-react/lib/FlexibleColumnLayout';
 import { FCLLayout } from '@ui5/webcomponents-react/lib/FCLLayout';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { List } from '@ui5/webcomponents-react/lib/List';
+import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
@@ -8,10 +11,13 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
   title="UI5 Web Components / FlexibleColumnLayout"
   component={FlexibleColumnLayout}
   argTypes={{
-    ...createSelectArgTypes({ layout: FCLLayout })
+    ...createSelectArgTypes({ layout: FCLLayout }),
+    startColumn: { type: null },
+    midColumn: { type: null },
+    endColumn: { type: null }
   }}
   args={{
-    layout: FCLLayout.OneColumn
+    layout: FCLLayout.ThreeColumnsMidExpanded
   }}
 />
 
@@ -21,9 +27,32 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <Preview>
   <Story name="Default">
-    {(args) => {
-      return <FlexibleColumnLayout {...args} />;
-    }}
+    {(args) => (
+      <FlexibleColumnLayout
+        {...args}
+        startColumn={
+          <List headerText="Start Column List">
+            <StandardListItem>List Item 1</StandardListItem>
+            <StandardListItem>List Item 2</StandardListItem>
+            <StandardListItem>List Item 3</StandardListItem>
+          </List>
+        }
+        midColumn={
+          <List headerText="Mid Column List">
+            <StandardListItem>List Item 1</StandardListItem>
+            <StandardListItem>List Item 2</StandardListItem>
+            <StandardListItem>List Item 3</StandardListItem>
+          </List>
+        }
+        endColumn={
+          <List headerText="End Column List">
+            <StandardListItem>List Item 1</StandardListItem>
+            <StandardListItem>List Item 2</StandardListItem>
+            <StandardListItem>List Item 3</StandardListItem>
+          </List>
+        }
+      />
+    )}
   </Story>
 </Preview>
 
