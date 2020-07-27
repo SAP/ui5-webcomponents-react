@@ -1,8 +1,8 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { Panel } from '@ui5/webcomponents-react/lib/Panel';
 import { PanelAccessibleRoles } from '@ui5/webcomponents-react/lib/PanelAccessibleRoles';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / Panel',
