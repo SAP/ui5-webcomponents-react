@@ -9,6 +9,10 @@ export interface IconPropTypes extends WithWebComponentPropTypes {
    */
   accessibleName?: string;
   /**
+   * Defines if the icon is interactive (focusable and pressable)
+   */
+  interactive?: boolean;
+  /**
    * Defines the unique identifier (icon name) of each <code>ui5-icon</code>. <br><br> To browse all available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>. <br><br> Example: <br> <code>name='add'</code>, <code>name='delete'</code>, <code>name='employee'</code>.
    */
   name?: string;
@@ -26,7 +30,7 @@ export interface IconPropTypes extends WithWebComponentPropTypes {
 const Icon: FC<IconPropTypes> = withWebComponent<IconPropTypes>(
   'ui5-icon',
   ['accessibleName', 'name'],
-  ['showTooltip'],
+  ['interactive', 'showTooltip'],
   [],
   []
 );
@@ -34,6 +38,7 @@ const Icon: FC<IconPropTypes> = withWebComponent<IconPropTypes>(
 Icon.displayName = 'Icon';
 
 Icon.defaultProps = {
+  interactive: false,
   showTooltip: false
 };
 
