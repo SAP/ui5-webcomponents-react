@@ -49,7 +49,7 @@ const UploadCollection: FC<UploadCollectionPropTypes> = withWebComponent<UploadC
   ['mode', 'noDataDescription', 'noDataText'],
   ['noDnd'],
   ['header'],
-  ['fileDeleted', 'selectionChange']
+  ['file-deleted', 'selection-change']
 );
 
 UploadCollection.displayName = 'UploadCollection';

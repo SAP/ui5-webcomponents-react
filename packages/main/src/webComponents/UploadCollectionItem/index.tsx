@@ -14,7 +14,7 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
    */
   fileName?: string;
   /**
-   * If set to <code>true</code> the file name will be clickable and it will fire <code>fileNameClick</code> event upon click.
+   * If set to <code>true</code> the file name will be clickable and it will fire <code>file-name-click</code> event upon click.
    */
   fileNameClickable?: boolean;
   /**
@@ -73,7 +73,7 @@ const UploadCollectionItem: FC<UploadCollectionItemPropTypes> = withWebComponent
   ['file', 'fileName', 'progress', 'uploadState'],
   ['fileNameClickable', 'noDelete', 'noRetry', 'noTerminate'],
   ['thumbnail'],
-  ['fileNameClick', 'rename', 'retry', 'terminate']
+  ['file-name-click', 'rename', 'retry', 'terminate']
 );
 
 UploadCollectionItem.displayName = 'UploadCollectionItem';
