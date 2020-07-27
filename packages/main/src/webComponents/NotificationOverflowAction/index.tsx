@@ -1,3 +1,4 @@
+import '@ui5/webcomponents-fiori/dist/NotificationOverflowAction';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/MultiComboBoxItem';
