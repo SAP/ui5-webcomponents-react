@@ -1,7 +1,7 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { Link } from '@ui5/webcomponents-react/lib/Link';
 import { LinkDesign } from '@ui5/webcomponents-react/lib/LinkDesign';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / Link',
