@@ -1,6 +1,6 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Badge';
-import React, { FC, ReactElement, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface BadgePropTypes extends WithWebComponentPropTypes {
@@ -15,7 +15,7 @@ export interface BadgePropTypes extends WithWebComponentPropTypes {
   /**
    * Defines the <code>ui5-icon</code> to be displayed in the <code>ui5-badge</code>.
    */
-  icon?: ReactElement;
+  icon?: ReactNode | ReactNode[];
 }
 
 /**
