@@ -46,6 +46,7 @@ COMPONENTS_WITHOUT_DEMOS.add('TableColumn');
 COMPONENTS_WITHOUT_DEMOS.add('TableRow');
 COMPONENTS_WITHOUT_DEMOS.add('TabSeparator');
 COMPONENTS_WITHOUT_DEMOS.add('TimelineItem');
+COMPONENTS_WITHOUT_DEMOS.add('TreeItem');
 COMPONENTS_WITHOUT_DEMOS.add('ProductSwitchItem');
 COMPONENTS_WITHOUT_DEMOS.add('ComboBoxItem');
 COMPONENTS_WITHOUT_DEMOS.add('MultiComboBoxItem');
@@ -388,29 +389,15 @@ const createWebComponentTest = (name) => {
 const createWebComponentDemo = (componentSpec, componentProps) => {
   const componentName = componentSpec.module;
 
-  const storybookImports = [];
-  const storybookKnobImports = new Set();
   const enumImports = [];
-  const storybookProps = [];
 
-  const componentFiresEvents = componentSpec.events && componentSpec.events.length > 0;
-  if (componentFiresEvents) {
-    storybookImports.push("import { action } from '@storybook/addon-actions';");
-  }
-
-  const childrenProp = componentProps.find((prop) => prop.name === 'children');
+  const selectArgTypes = [];
+  const args = [];
 
   const additionalComponentDocs = componentSpec.hasOwnProperty('appenddocs') ? componentSpec.appenddocs.split(' ') : [];
   const additionalComponentImports = additionalComponentDocs.map(
     (component) => `import { ${component} } from '@ui5/webcomponents-react/lib/${component}';`
   );
-  let additionalComponentsParameters = '';
-  if (additionalComponentDocs.length > 0) {
-    additionalComponentsParameters = `,
-    parameters: {
-      subcomponents: { ${additionalComponentDocs.join(', ')} }
-    }`;
-  }
 
   componentProps
     .filter((prop) => prop.name !== 'children')
@@ -418,64 +405,50 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
       if (prop.importStatement) {
         enumImports.push(prop.importStatement);
       }
-      let storybookKnob = `${prop.name}={`;
       if (prop.isEnum) {
-        storybookKnobImports.add('select');
-        storybookKnob += `select('${prop.name}', ${prop.tsType}, ${prop.tsType}.${prop.defaultValue.replace(
-          /['"]/g,
-          ''
-        )})`;
-      } else if (prop.tsType === 'number') {
-        storybookKnobImports.add('number');
-        storybookKnob += `number('${prop.name}', ${prop.defaultValue})`;
-      } else if (prop.tsType === 'boolean') {
-        storybookKnobImports.add('boolean');
-        storybookKnob += `boolean('${prop.name}', ${prop.defaultValue === 'true'})`;
-      } else if (prop.tsType === 'string') {
-        storybookKnobImports.add('text');
-        storybookKnob += `text('${prop.name}', ${prop.defaultValue})`;
-      } else {
-        console.warn(`Warning: Unknown Type for demo ${prop.name}: ${prop.tsType}`);
-        storybookKnob += 'null';
+        selectArgTypes.push(`${prop.name}: ${prop.tsType}`);
+        args.push(`${prop.name}: ${prop.tsType}.${prop.defaultValue.replace(/['"]/g, '')}`);
       }
-
-      storybookKnob += '}';
-      storybookProps.push(storybookKnob);
     });
 
-  const eventProps = (componentSpec.events || []).map(
-    (event) =>
-      `on${capitalizeFirstLetter(snakeToCamel(event.name))}={action('on${capitalizeFirstLetter(
-        snakeToCamel(event.name)
-      )}')}`
-  );
-
-  const componentBody = childrenProp ? `>Some Content</${componentName}>` : ' />';
-
   return prettier.format(
-    `import React from 'react';
-     import { ${componentName} } from '@ui5/webcomponents-react/lib/${componentName}';
-     ${storybookImports.join('\n')}
-     import { ${[...storybookKnobImports].join(', ')} } from '@storybook/addon-knobs';
-     ${enumImports.join('\n')};
-     ${additionalComponentImports.join('\n')}
+    dedent`
+    import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+    import { ${componentName} } from '@ui5/webcomponents-react/lib/${componentName}';
+    ${enumImports.join('\n')}
+    ${additionalComponentImports.join('\n')}
+    import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
      
-     export default {
-       title: 'UI5 Web Components / ${componentName}',
-       component: ${componentName}${additionalComponentsParameters}
-     };
-     
-     export const generatedDefaultStory = () => (
-       <${componentName}
-         ${storybookProps.join('\n')}
-         ${eventProps.join('\n')}
-         ${componentBody}
-     );
-     
-     generatedDefaultStory.storyName = 'Generated default story';
+    <Meta
+     title="UI5 Web Components / ${componentName}"
+     component={${componentName}}
+     ${additionalComponentDocs.length > 0 ? `subcomponents={{ ${additionalComponentDocs.join(', ')} }}` : ''}
+     argTypes={{
+       ...createSelectArgTypes({${selectArgTypes.join(', ')}})
+     }}
+     args={{
+       ${args.join(',\n')}
+     }}
+    />
+    
+    <Title />
+    <Subtitle />
+    <Description />
+    
+    <Preview>
+      <Story name="Default">
+        {(args) => {
+          return (
+            <${componentName} {...args} />
+          );
+        }}
+      </Story>
+    </Preview>
+    
+    <Props story="Default" components={{ ${[componentName].concat(additionalComponentDocs).join(', ')} }} />
 
-  `,
-    prettierConfig
+    `,
+    { ...prettierConfigRaw, parser: 'mdx' }
   );
 };
 
@@ -645,9 +618,10 @@ export { ${componentSpec.module} };`,
   // create demo
   if (
     !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)) &&
+    !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
     !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module)
   ) {
     const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties);
-    fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`), webComponentDemo);
+    fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
   }
 });
