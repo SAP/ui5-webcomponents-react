@@ -1,8 +1,8 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';
 import { MultiComboBoxItem } from '@ui5/webcomponents-react/lib/MultiComboBoxItem';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / MultiComboBox',
