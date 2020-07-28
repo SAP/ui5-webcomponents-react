@@ -1,4 +1,5 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
+import { cleanStaticAreaAfterEachTest } from '@tests/index';
 import { Bar } from '@ui5/webcomponents-react/lib/Bar';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { CheckBox } from '@ui5/webcomponents-react/lib/CheckBox';
@@ -26,6 +27,8 @@ const variants = <VariantManagement variantItems={variantItems} />;
 const search = <Input placeholder={'Search'} />;
 
 describe('FilterBar', () => {
+  cleanStaticAreaAfterEachTest();
+
   it('Render without crashing - default props', () => {
     const wrapper = mount(
       <FilterBar>
@@ -197,7 +200,8 @@ describe('FilterBar', () => {
         <FilterGroupItem label="Date Picker" groupName="Group 2" required>
           <DatePicker />
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
+      { attachTo: document.body.appendChild(document.createElement('div')) }
     );
     const openFiltersDialogBtn = wrapper.find(Toolbar).find(Button).at(5);
 
@@ -264,7 +268,8 @@ describe('FilterBar', () => {
             <Option>Option 4</Option>
           </Select>
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
+      { attachTo: document.body.appendChild(document.createElement('div')) }
     );
 
     const filterItemsFB = wrapper.find(FilterGroupItem);
