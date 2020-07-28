@@ -55,6 +55,8 @@ export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
   measure: MeasureConfig;
 }
 
+const tooltipItemDefaultStyle = { color: 'var (--sapTextColor)' };
+
 /**
  * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/PieChart';</code>
  */
@@ -81,6 +83,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
       paddingAngle: 0,
       outerRadius: '80%',
       resizeDebounce: 250,
+      tooltipItemStyle: tooltipItemDefaultStyle,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -182,7 +185,13 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
               />
             ))}
         </Pie>
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          contentStyle={tooltipContentStyle}
+          itemStyle={chartConfig.tooltipItemStyle}
+          labelStyle={chartConfig.tooltipLabelStyle}
+        />
         {!noLegend && (
           <Legend
             verticalAlign={chartConfig.legendPosition}
