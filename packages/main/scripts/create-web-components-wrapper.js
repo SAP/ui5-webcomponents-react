@@ -609,16 +609,16 @@ resolvedWebComponents.forEach((componentSpec) => {
   fs.writeFileSync(path.join(webComponentFolderPath, 'index.tsx'), webComponentWrapper);
 
   // create lib export
-  if (!fs.existsSync(path.join(LIB_DIR, `${componentSpec.module}.ts`))) {
-    const libContent = prettier.format(
-      `
-import { ${componentSpec.module} } from '../webComponents/${componentSpec.module}';
-
-export { ${componentSpec.module} };`,
-      prettierConfig
-    );
-    fs.writeFileSync(path.join(LIB_DIR, `${componentSpec.module}.ts`), libContent);
-  }
+  const libContent = prettier.format(
+    `
+    import { ${componentSpec.module} } from '../webComponents/${componentSpec.module}';
+    import type { ${componentSpec.module}PropTypes } from '../webComponents/${componentSpec.module}';
+    
+    export { ${componentSpec.module} };
+    export type { ${componentSpec.module}PropTypes };`,
+    prettierConfig
+  );
+  fs.writeFileSync(path.join(LIB_DIR, `${componentSpec.module}.ts`), libContent);
 
   // create test
   if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
