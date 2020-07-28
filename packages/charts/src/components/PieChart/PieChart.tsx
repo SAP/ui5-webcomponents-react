@@ -81,6 +81,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
       paddingAngle: 0,
       outerRadius: '80%',
       resizeDebounce: 250,
+      tooltipItemStyle: { color: 'var (--sapTextColor)' },
+      tooltipLabelStyle: {},
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -182,7 +184,13 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
               />
             ))}
         </Pie>
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          contentStyle={tooltipContentStyle}
+          itemStyle={chartConfig.tooltipItemStyle}
+          labelStyle={chartConfig.tooltipLabelStyle}
+        />
         {!noLegend && (
           <Legend
             verticalAlign={chartConfig.legendPosition}
