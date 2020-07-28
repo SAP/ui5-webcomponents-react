@@ -16,6 +16,8 @@ const prettierConfig = {
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const LIB_DIR = path.join(PATHS.packages, 'main', 'src', 'lib');
 
+const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change']);
+
 const PRIVATE_COMPONENTS = new Set([
   'CalendarHeader',
   'DefaultTheme',
@@ -326,6 +328,15 @@ const createWebComponentWrapper = (
   slotProps,
   eventProps
 ) => {
+  const eventsToBeOmitted = eventProps.filter((eventName) => KNOWN_EVENTS.has(eventName));
+
+  let tsExtendsStatement = 'WithWebComponentPropTypes';
+  if (eventsToBeOmitted.length > 0) {
+    tsExtendsStatement = `Omit<WithWebComponentPropTypes, ${eventsToBeOmitted
+      .map((eventName) => `'on${capitalizeFirstLetter(snakeToCamel(eventName))}'`)
+      .join(' | ')}>`;
+  }
+
   return prettier.format(
     `
     import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
@@ -334,7 +345,7 @@ const createWebComponentWrapper = (
     import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
     ${importStatements.join('\n')}
     
-    export interface ${name}PropTypes extends WithWebComponentPropTypes {
+    export interface ${name}PropTypes extends ${tsExtendsStatement} {
       ${types.join('\n')}
     }
     
