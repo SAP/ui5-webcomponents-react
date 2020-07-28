@@ -4452,9 +4452,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
     >
       <div
         class="AnalyticalTable-th-0"
-        data-column-id="age"
+        data-column-id="name"
         draggable="true"
-        id="age"
+        id="name"
         role="columnheader"
         style="position: relative; width: 150px; cursor: pointer;"
       >
@@ -4463,9 +4463,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
-            title="Age"
+            title="Name"
           >
-            Age
+            Name
           </span>
           <div
             class="TableColumnHeader-iconContainer-0"
@@ -4510,9 +4510,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
       />
       <div
         class="AnalyticalTable-th-0"
-        data-column-id="name"
+        data-column-id="age"
         draggable="true"
-        id="name"
+        id="age"
         role="columnheader"
         style="position: relative; width: 150px; cursor: pointer;"
       >
@@ -4521,9 +4521,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
         >
           <span
             class="Text-text-0 Text-noWrap-0 TableColumnHeader-text-0"
-            title="Name"
+            title="Age"
           >
-            Name
+            Age
           </span>
           <div
             class="TableColumnHeader-iconContainer-0"
@@ -4707,9 +4707,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0"
-              title="40"
+              title="Fra"
             >
-              40
+              Fra
             </span>
           </div>
           <div
@@ -4721,9 +4721,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0"
-              title="Fra"
+              title="40"
             >
-              Fra
+              40
             </span>
           </div>
           <div
@@ -4770,9 +4770,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0"
-              title="20"
+              title="bla"
             >
-              20
+              bla
             </span>
           </div>
           <div
@@ -4784,9 +4784,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           >
             <span
               class="Text-text-0 Text-noWrap-0"
-              title="bla"
+              title="20"
             >
-              bla
+              20
             </span>
           </div>
           <div
