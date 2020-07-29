@@ -33,7 +33,8 @@ You can find our documentation under the following links:
 - [Next Release Documentation](https://sap.github.io/ui5-webcomponents-react/master/)
 
 ## Migration Guide
-Migrating your app from `v0.8.X` to `v0.9.0` requires a few updates. You can find the most important changes and how to adapt your code to migrate to `v0.9.0` in our [Migration Guide](https://github.com/SAP/ui5-webcomponents-react/blob/master/docs/MigrationGuide.stories.mdx).
+Each new major version of this project might contain breaking changes which require you to change coding in your project.
+In order to help you with those tasks, we have prepared a [Migration Guide](https://sap.github.io/ui5-webcomponents-react/master/?path=/docs/migration-guide--page).
 
 
 ## Package Overview
