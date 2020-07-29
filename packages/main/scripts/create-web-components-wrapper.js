@@ -341,7 +341,7 @@ const createWebComponentWrapper = (
     `
     import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
     import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
-    import React, { FC } from 'react';
+    import { FC } from 'react';
     import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
     ${importStatements.join('\n')}
     

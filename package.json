@@ -29,9 +29,9 @@
     "@storybook/cli": "6.0.0-rc.16",
     "@storybook/react": "6.0.0-rc.16",
     "@storybook/theming": "6.0.0-rc.16",
-    "@ui5/webcomponents": "0.0.0-8b66a95c7",
-    "@ui5/webcomponents-fiori": "0.0.0-8b66a95c7",
-    "@ui5/webcomponents-icons": "0.0.0-8b66a95c7",
+    "@ui5/webcomponents": "0.0.0-88ceb8357",
+    "@ui5/webcomponents-fiori": "0.0.0-88ceb8357",
+    "@ui5/webcomponents-icons": "0.0.0-88ceb8357",
     "react": "16.8.0",
     "react-dom": "16.8.0"
   },
