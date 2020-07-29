@@ -106,8 +106,8 @@ import { SemanticColor } from './lib/SemanticColor';
 import { ShellBar } from './lib/ShellBar';
 import { ShellBarItem } from './lib/ShellBarItem';
 import { SideNavigation } from './lib/SideNavigation';
-import { SideNavigationListItem } from './lib/SideNavigationListItem';
-import { SideNavigationOpenState } from './lib/SideNavigationOpenState';
+import { SideNavigationItem } from './lib/SideNavigationItem';
+import { SideNavigationSubItem } from './lib/SideNavigationSubItem';
 import { Size } from './lib/Size';
 import { Spinner } from './lib/Spinner';
 import { StandardListItem } from './lib/StandardListItem';
@@ -260,8 +260,8 @@ export {
   ShellBar,
   ShellBarItem,
   SideNavigation,
-  SideNavigationListItem,
-  SideNavigationOpenState,
+  SideNavigationItem,
+  SideNavigationSubItem,
   Size,
   Spinner,
   StandardListItem,
