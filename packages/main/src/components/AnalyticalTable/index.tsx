@@ -2,6 +2,7 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import debounce from 'lodash.debounce';
@@ -56,7 +57,7 @@ export interface TableProps extends CommonProps {
    * Please look at the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.
    */
   columns: AnalyticalTableColumnDefinition[];
-  data: object[];
+  data: Record<any, any>[];
 
   /**
    * Component or text of title section of the Table (if not set it will be hidden)
@@ -75,8 +76,19 @@ export interface TableProps extends CommonProps {
   noDataText?: string;
   rowHeight?: number;
   alternateRowColor?: boolean;
+  /**
+   * Flag whether the table should add an extra column for displaying row highlights, based on the `highlightField` prop.
+   */
   withRowHighlight?: boolean;
-  highlightField?: string;
+  /**
+   * Accessor for showing the row highlights. Only taken into account when `withRowHighlight` is set.
+   *
+   * Default Value: `status`.
+   *
+   * The value of this prop can either be a `string` pointing to a `ValueState` in your dataset
+   * or an accessor function which should return a `ValueState`.
+   */
+  highlightField?: string | ((row: Record<any, any>) => ValueState);
 
   // features
   filterable?: boolean;
@@ -86,7 +98,7 @@ export interface TableProps extends CommonProps {
   selectionBehavior?: TableSelectionBehavior;
   selectionMode?: TableSelectionMode;
   scaleWidthMode?: TableScaleWidthMode;
-  columnOrder?: object[];
+  columnOrder?: string[];
   infiniteScroll?: boolean;
   infiniteScrollThreshold?: number;
 
@@ -462,6 +474,7 @@ AnalyticalTable.defaultProps = {
   tableHooks: [],
   visibleRows: 15,
   subRowsKey: 'subRows',
+  highlightField: 'status',
   selectedRowIds: {},
   onGroup: () => {},
   onRowExpandChange: () => {},
