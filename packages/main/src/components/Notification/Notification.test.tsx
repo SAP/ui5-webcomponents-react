@@ -1,6 +1,5 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
 import { mount } from 'enzyme';
-import { action } from '@storybook/addon-actions';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarShape } from '@ui5/webcomponents-react/lib/AvatarShape';
 import { AvatarSize } from '@ui5/webcomponents-react/lib/AvatarSize';
@@ -10,12 +9,10 @@ import { Priority } from '@ui5/webcomponents-react/lib/Priority';
 import React from 'react';
 
 const ActionButtons = [
-  <Button key="Btn1" onClick={action('Accept')} style={{ paddingRight: '0.5rem' }}>
+  <Button key="Btn1" style={{ paddingRight: '0.5rem' }}>
     Accept
   </Button>,
-  <Button key="Btn2" onClick={action('Decline')}>
-    Reject
-  </Button>
+  <Button key="Btn2">Reject</Button>
 ];
 
 const sampleAvatar =

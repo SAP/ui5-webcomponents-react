@@ -1,23 +1,28 @@
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 
-<Meta title="1 Welcome / Migration Guide" />
+<Meta title="Migration Guide" />
 
 # Migration Guide
+
 <br />
 <br />
 
 ## Table of Contents
+
 - [0.9.x to 0.10.0](#migrating-from-09x-to-0100)
 - [0.8.x to 0.9.0](#migrating-from-08x-to-090)
 
 ## Migrating from 0.9.x to 0.10.0
+
 <br />
 
 ### API Consolidation (unified styling)
+
 Some components had special props like `width` and `height` to change their size. In order to unify how the size of a
 component can be changed, these special props where dropped and all components can now be styles by using the `style`
 and/or the `className` prop.
 This affects the following components:
+
 - AnalyticalCard
 - Text
 - ProgressIndicator
@@ -25,27 +30,29 @@ This affects the following components:
 - Grid
 
 ### Removal of deprecated props and components
+
 With version `0.9.0` we have deprecated a couple of props like the render-props (please check the [Migration Guide for 0.9.0](#replace-render-props-with-slots)).
 This affects the following components:
 
-|Component      |old prop|new prop|
-|---------------|---|---|
-|AnalyticalTable|`renderExtension`| `extension`|
-|Bar            |`renderContentLeft`, `renderContentMiddle`, `renderContentRight`|`contentLeft`, `contentMiddle`, `contentRight`|
-|FormItem       |`labelText`|`label`|
-|FilterBar      |`renderSearch`, `renderVariants`|`search`, `variants`|
-|ObjectPage     |`renderHeaderContent`, `renderBreadcrumbs`, `renderKeyInfos`| `headerContent`, `breadcrumbs`, `keyInfos`|
-|Page           |`renderCustomHeader`, `renderCustomFooter`|`customHeader`, `customFooter`|
+| Component       | old prop                                                         | new prop                                       |
+| --------------- | ---------------------------------------------------------------- | ---------------------------------------------- |
+| AnalyticalTable | `renderExtension`                                                | `extension`                                    |
+| Bar             | `renderContentLeft`, `renderContentMiddle`, `renderContentRight` | `contentLeft`, `contentMiddle`, `contentRight` |
+| FormItem        | `labelText`                                                      | `label`                                        |
+| FilterBar       | `renderSearch`, `renderVariants`                                 | `search`, `variants`                           |
+| ObjectPage      | `renderHeaderContent`, `renderBreadcrumbs`, `renderKeyInfos`     | `headerContent`, `breadcrumbs`, `keyInfos`     |
+| Page            | `renderCustomHeader`, `renderCustomFooter`                       | `customHeader`, `customFooter`                 |
 
 In addition to that, we have cleaned up our base package (deletion of `Event`, `font72`, `HSLColor`, `Optional`, `Scroller`, and `sap_fiori_3` exports).
 As those components were most probably only used internally this should not affect your upgrade.
 
 ### Removal of old event-api
+
 The [event-system](#event-system) that was deprecated in `0.9.0` is now removed.
 
 ### Charts
 
-With version v0.9.5 of `@ui5/webcomponents-react-charts` we replace the canvas based charts with SVG based charts and 
+With version v0.9.5 of `@ui5/webcomponents-react-charts` we replace the canvas based charts with SVG based charts and
 streamlined the ChartAPI to work similar to the `AnalyticalTable` API.
 This requires a couple of changes on your side:
 
@@ -58,6 +65,7 @@ This requires a couple of changes on your side:
 To illustrate the required changes, you can find the migration of a bar chart with two bars per dimension below:
 
 Old Bar Chart:
+
 ```jsx
 import React from 'react';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';
@@ -83,6 +91,7 @@ const MyComponent = () => {
 ```
 
 New Bar Chart:
+
 ```jsx
 import React from 'react';
 import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';
@@ -128,11 +137,14 @@ const MyComponent = () => {
 ```
 
 ## Migrating from 0.8.x to 0.9.0
+
 Migrating your app from 0.8.x to 0.9.0 requires a few updates to the API properties, this includes dependencies, theming, event handling and prop changes.
 
 ### Breaking changes
+
 For a complete list of breaking changes from 0.8.X to 0.9.0, please refer to [the list of releases](https://github.com/SAP/ui5-webcomponents-react/releases) or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CHANGELOG.md).
 Most important breaking changes:
+
 - configuring of compact size is removed, use the ui5-content-density-compact CSS class to apply compact size.
 - `@ui5/webcomponents`, `@ui5/webcomponents-icons` and `@ui5/webcomponents-fiori` are now `peerDependencies`
 - **Replaced Components with potential new API**
@@ -140,10 +152,10 @@ Most important breaking changes:
   - Carousel
   - SegmentedButton
   - Toast (replaces MessageToast)
-- **ThemeProvider**: 
+- **ThemeProvider**:
   - does not longer render a `JSSProvider` and the `jss`-prop is removed. If you need a custom JSS setup, please render your own JSSProvider.
   - remove prop `withToastContainer`
-- **AnalyticalTable**: 
+- **AnalyticalTable**:
   - replace `noSelectionColumn` prop with `selectionBehavior` enum
   - column option `groupable` replaced by `disableGroupBy`: boolean
   - column option `sortable` replaced by `disableSortBy`: boolean
@@ -165,15 +177,19 @@ Most important breaking changes:
   - SegmentedButtonItem: replaced by ToggleButton
 
 ## Dependencies
-The dependencies `@ui5/webcomponents`, `@ui5/webcomponents-fiori` and `@ui5/webcomponents-icons` are now  `peerDependencies` and have to be installed next to `@ui5/webcomponents-react`.
+
+The dependencies `@ui5/webcomponents`, `@ui5/webcomponents-fiori` and `@ui5/webcomponents-icons` are now `peerDependencies` and have to be installed next to `@ui5/webcomponents-react`.
 
 npm:
+
 ```sh
 npm install @ui5/webcomponents --save
 npm install @ui5/webcomponents-fiori --save
 npm install @ui5/webcomponents-icons --save
 ```
+
 yarn:
+
 ```sh
 yarn add @ui5/webcomponents
 yarn add @ui5/webcomponents-fiori
@@ -181,26 +197,32 @@ yarn add @ui5/webcomponents-icons
 ```
 
 ## Configure content density
+
 Configuration of compact size is removed.  
 The default configuration is `Cozy`, to enable `Compact`, provide the `ui5-content-density-compact` CSS class to any of your HTML elements, and it applies compact size to all of its children.
 
 Add `ui5-content-density-compact` to your `<body>` element to apply compact setting to the whole app:
+
 ```html
 <body class="ui5-content-density-compact">
-    <div>
-        <ShellBar />
-        <Button />
-    </div>
+  <div>
+    <ShellBar />
+    <button />
+  </div>
 </body>
 ```
+
 Or just to a single container or component:
+
 ```html
-<Button className="ui5-content-density-compact">Compact Button</Button>
+<button className="ui5-content-density-compact">Compact Button</button>
 ```
 
 ## Theming
+
 UI5 Web Components and UI5 Web Components for React are both coming with the `sap_fiori_3` a.k.a. `Quartz` Theme built in.
 In case you want to change your applications' theme, you have to import a couple of modules:
+
 ```js
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import '@ui5/webcomponents/dist/Assets';
@@ -209,6 +231,7 @@ import '@ui5/webcomponents-fiori/dist/Assets'; // only if you are using the Shel
 
 Now you can call `setTheme` with a string parameter of the new theme.  
 Available Themes:
+
 - `sap_fiori_3` (default)
 - `sap_fiori_dark`
 - `sap_belize`
@@ -216,6 +239,7 @@ Available Themes:
 - `sap_belize_hcw`
 
 Example for applying the `sap_fiori_3_dark` theme:
+
 ```jsx
 setTheme(Themes.sap_fiori_3_dark);
 
@@ -232,7 +256,8 @@ const App = () => {
 ```
 
 ## Style custom components
-If you want to use our central styling approach with your custom components you can now use the `ThemingParameters`. 
+
+If you want to use our central styling approach with your custom components you can now use the `ThemingParameters`.
 With these parameters you get all available CSS Variables as a static import. As a consequence, you can now define your `react-jss` styles as a static object.
 
 ```JSX
@@ -266,65 +291,68 @@ const MyCustomElement = () => {
 ```
 
 ## Opening Popovers
-Our library used to provide a custom API on top of all UI5 Web Components Popovers/Dialogs. 
+
+Our library used to provide a custom API on top of all UI5 Web Components Popovers/Dialogs.
 For the sake of consistency, we removed that extension and now handle popovers the same way as UI5 Web Components does.
 Popovers like the `Dialog`, `Popover` and `ResponsivePopover` now only can be opened by attaching a `ref` to the component
 and then call the corresponding `open` method:
 
-* Dialog - `.open()`:
-    ```JSX
-    const DialogComponent = () => {
-      const dialogRef = useRef();
-      const onButtonClick = useCallback(() => {
-        dialogRef.current.open();
-      }, [dialogRef]);
-   
-      return (
-        <>
-          <Button onClick={onButtonClick}>Open Dialog</Button>
-          <Dialog ref={dialogRef}>Some Content</Dialog>
-        </>
-      );
-    };
-    ```
-* Popover - `.openBy(event.target)`:
-    ```JSX
-    const PopoverComponent = () => {
-      const popoverRef = useRef();
-      const onButtonClick = useCallback(
-        (e) => {
-          popoverRef.current.openBy(e.target);
-        },
-        [popoverRef]
-      );
-      return (
-        <>
-          <Button onClick={onButtonClick}>Open Popover</Button>
-          <Popover ref={popoverRef}>Some Content</Popover>
-        </>
-      );
-    };
-    ```
-* ResponsivePopover - `.open(event.target)`:
-    ```JSX
-    const ResponsivePopoverComponent = () => {
-      const popoverRef = useRef();
-      const onButtonClick = useCallback(
-        (e) => {
-          popoverRef.current.open(e.target);
-        },
-        [popoverRef]
-      );
-      return (
-        <>
-          <Button onClick={onButtonClick}>Open Responsive Popover</Button>
-          <ResponsivePopover ref={popoverRef}>Some Content</ResponsivePopover>
-        </>
-      );
-    };
-    ```
-  
+- Dialog - `.open()`:
+  ```JSX
+  const DialogComponent = () => {
+    const dialogRef = useRef();
+    const onButtonClick = useCallback(() => {
+      dialogRef.current.open();
+    }, [dialogRef]);
+
+    return (
+      <>
+        <Button onClick={onButtonClick}>Open Dialog</Button>
+        <Dialog ref={dialogRef}>Some Content</Dialog>
+      </>
+    );
+  };
+  ```
+- Popover - `.openBy(event.target)`:
+  ```JSX
+  const PopoverComponent = () => {
+    const popoverRef = useRef();
+    const onButtonClick = useCallback(
+      (e) => {
+        popoverRef.current.openBy(e.target);
+      },
+      [popoverRef]
+    );
+    return (
+      <>
+        <Button onClick={onButtonClick}>Open Popover</Button>
+        <Popover ref={popoverRef}>Some Content</Popover>
+      </>
+    );
+  };
+  ```
+- ResponsivePopover - `.open(event.target)`:
+
+  ```JSX
+  const ResponsivePopoverComponent = () => {
+    const popoverRef = useRef();
+    const onButtonClick = useCallback(
+      (e) => {
+        popoverRef.current.open(e.target);
+      },
+      [popoverRef]
+    );
+    return (
+      <>
+        <Button onClick={onButtonClick}>Open Responsive Popover</Button>
+        <ResponsivePopover ref={popoverRef}>Some Content</ResponsivePopover>
+      </>
+    );
+  };
+  ```
+
 ## Event System
+
 The custom API for events is deprecated as it's incompatible with the UI5 Web Components API and will be removed in `0.10.0`.
 
 Now, all event handlers are called with an Object which is compatible with the `CustomEvent` API.
@@ -334,40 +362,41 @@ Sometimes a UI5 Custom Event is passed, sometimes a React SyntheticEvent and all
 
 Examples:
 
-* Access selected option in `Select` component:
-    ```JSX
-    export const SelectComponent = () => {
-      const handleSelect = (event) => {
-        const selectedOption = event.detail.selectedOption; //new
-        const selectedOption = event.parameters.selectedOption; //deprecated
-      };
-      return (
-        <Select onChange={handleSelect}>
-          <Option>Option 1</Option>
-          <Option>Option 2</Option>
-        </Select>
-      );
+- Access selected option in `Select` component:
+
+  ```JSX
+  export const SelectComponent = () => {
+    const handleSelect = (event) => {
+      const selectedOption = event.detail.selectedOption; //new
+      const selectedOption = event.parameters.selectedOption; //deprecated
     };
-    ```
-  
-* Get state of `CheckBox`:
-    ```JSX
-    export const CheckBoxComponent = () => {
-      const handleChange = (event) => {
-        const isChecked = event.target.checked; //new
-        const isChecked = event.parameters.checked; //deprecated
-      };
-      return <CheckBox onChange={handleChange} />;
+    return (
+      <Select onChange={handleSelect}>
+        <Option>Option 1</Option>
+        <Option>Option 2</Option>
+      </Select>
+    );
+  };
+  ```
+
+- Get state of `CheckBox`:
+  ```JSX
+  export const CheckBoxComponent = () => {
+    const handleChange = (event) => {
+      const isChecked = event.target.checked; //new
+      const isChecked = event.parameters.checked; //deprecated
     };
-    ```
+    return <CheckBox onChange={handleChange} />;
+  };
+  ```
 
 ## Replace render props with slots
+
 UI5 Web Components for React used to have `renderXYZ` props for adding custom content into components, e.g. `renderCustomHeader`.
 For providing a unified API, these props have been deprecated and corresponding slots have been added.
 Slots can be passed a `ReactNode` and depending on the case also a `ReactNodeArray`.
- 
-**The `renderXYZ` props are still supported but will be removed with `0.10.0`**
 
+**The `renderXYZ` props are still supported but will be removed with `0.10.0`**
 
 ```JSX
 export const BarComponent = () => {
@@ -385,43 +414,49 @@ export const BarComponent = () => {
 ```
 
 ## New components with different API
+
 Avatar:
-* props:
-    * `onClick`: Has been removed.
-    * `customDisplaySize` and `customFontSize`: Has been replaced by `size`. Uses `AvatarSize` enum.
-    * `backgroundColor`: Defines the background color. Uses `AvatarBackgroundColor` enum.
-    * `icon`: Defines the name of the UI5 Icon as string. _Remember that icons have to be imported first._
-    * `imageFitType`: Defines the fit type of the desired image. Uses `AvatarFitType` enum.
-    
+
+- props:
+  - `onClick`: Has been removed.
+  - `customDisplaySize` and `customFontSize`: Has been replaced by `size`. Uses `AvatarSize` enum.
+  - `backgroundColor`: Defines the background color. Uses `AvatarBackgroundColor` enum.
+  - `icon`: Defines the name of the UI5 Icon as string. _Remember that icons have to be imported first._
+  - `imageFitType`: Defines the fit type of the desired image. Uses `AvatarFitType` enum.
+
 Carousel:
-* props:
-    * `onPageChanged`: Has been replaced by `onNavigate`
-    * `width`: Has been removed.
-    * `height`: Has been removed.
-    * `showPageIndicator`: Has been removed. _To hide the navigation-bar use `hideNavigation`._
-    * `pageIndicatorPlacement`: Has been removed.
-    * `loop`: Has been replaced by `cyclic`.
-    * `activePage`: Has been replaced by `selectedIndex`.
-    
+
+- props:
+  - `onPageChanged`: Has been replaced by `onNavigate`
+  - `width`: Has been removed.
+  - `height`: Has been removed.
+  - `showPageIndicator`: Has been removed. _To hide the navigation-bar use `hideNavigation`._
+  - `pageIndicatorPlacement`: Has been removed.
+  - `loop`: Has been replaced by `cyclic`.
+  - `activePage`: Has been replaced by `selectedIndex`.
+
 MessageToast:
-* Has been replaced by the `Toast` component.
+
+- Has been replaced by the `Toast` component.
 
 MultiComboBox:
-* Does not accept `StandardListItem` as children anymore. Use `MultiComboBoxItem` instead.
+
+- Does not accept `StandardListItem` as children anymore. Use `MultiComboBoxItem` instead.
 
 SegmentedButton:
-* `SegementedButtonItem` has been replaced by `ToggleButton`
-* props:
-    * `disabled`: Has been removed.
-    * `selectedKey`: Has been removed. _To initially select a button set the `pressed` prop of the `ToggleButton` to `true`._
-    * `onItemSelected`: Has been replaced by `onSelectionChange` and is fired when the button selection changes. To get the selected button you can use the following function:
-    ```JSX
-    const onSelectionChange = (event) => {
-        const selectedButton = event.detail.selectedButton;
-    };
-    ```
-    
-ShellBar:
-* props:
-    * `profile`: Is now a slot where you should use the `Avatar` component.
 
+- `SegementedButtonItem` has been replaced by `ToggleButton`
+- props:
+  - `disabled`: Has been removed.
+  - `selectedKey`: Has been removed. _To initially select a button set the `pressed` prop of the `ToggleButton` to `true`._
+  - `onItemSelected`: Has been replaced by `onSelectionChange` and is fired when the button selection changes. To get the selected button you can use the following function:
+  ```JSX
+  const onSelectionChange = (event) => {
+      const selectedButton = event.detail.selectedButton;
+  };
+  ```
+
+ShellBar:
+
+- props:
+  - `profile`: Is now a slot where you should use the `Avatar` component.

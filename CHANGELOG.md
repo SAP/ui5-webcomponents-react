@@ -3,6 +3,162 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-rc.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.9...v0.10.0-rc.10) (2020-07-23)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** prevent crash if unsupported rowId is set as selectedRowId ([#615](https://github.com/SAP/ui5-webcomponents-react/issues/615)) ([83a808e](https://github.com/SAP/ui5-webcomponents-react/commit/83a808e101bae5320b930b512e8f54245252b360))
+* **AnalyticalTable:** prevent horizontal overflow if last column is resizable ([#612](https://github.com/SAP/ui5-webcomponents-react/issues/612)) ([47d3f16](https://github.com/SAP/ui5-webcomponents-react/commit/47d3f16bc7adc3bc52ef51296b62f13610bba905))
+* **AnalyticalTable:** update react-table ([#616](https://github.com/SAP/ui5-webcomponents-react/issues/616)) ([17ed544](https://github.com/SAP/ui5-webcomponents-react/commit/17ed5449709c87e1744f1d3891b404d76df9c171))
+* **Charts:** tooltip respects dimension formatter ([#614](https://github.com/SAP/ui5-webcomponents-react/issues/614)) ([47104f9](https://github.com/SAP/ui5-webcomponents-react/commit/47104f9067c15fd06bfcfc126191ef578effe5a0))
+* **Popups:** prevent bubbling of internally used popover events ([#618](https://github.com/SAP/ui5-webcomponents-react/issues/618)) ([8781f42](https://github.com/SAP/ui5-webcomponents-react/commit/8781f42e4bb8369a0631c382cc173c8d9129abd7))
+
+
+### chore
+
+* **AnalyticalTable:** remove busyIndicatorEnabled prop ([#617](https://github.com/SAP/ui5-webcomponents-react/issues/617)) ([ff287cf](https://github.com/SAP/ui5-webcomponents-react/commit/ff287cf5eeb2c08825ff5c93b257c9b1b8bbf816))
+
+
+### BREAKING CHANGES
+
+* **AnalyticalTable:** remove  prop `busyIndicatorEnabled` as it is somehow duplicate to `loading`. The visibility of the busy indicator is now solely controlled by the prop `loading`.
+
+
+
+
+
+# [0.10.0-rc.9](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.8...v0.10.0-rc.9) (2020-07-17)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix subRows selection in tree table mode ([#610](https://github.com/SAP/ui5-webcomponents-react/issues/610)) ([69e63d9](https://github.com/SAP/ui5-webcomponents-react/commit/69e63d9b14cc9e9ad2936bd4c0301f2122f285d3))
+* **FilterBar:** search-input field reacts to value prop changes ([#609](https://github.com/SAP/ui5-webcomponents-react/issues/609)) ([27981dd](https://github.com/SAP/ui5-webcomponents-react/commit/27981dd0cafa44d137c66ae9a0eeca2f553fff27))
+
+
+### Features
+
+* **AnalyticalTable:** support resize on whole column ([#607](https://github.com/SAP/ui5-webcomponents-react/issues/607)) ([cb99e78](https://github.com/SAP/ui5-webcomponents-react/commit/cb99e785cc1c0df8c4839d904bc8f0aff90db628)), closes [#580](https://github.com/SAP/ui5-webcomponents-react/issues/580)
+
+
+
+
+
+# [0.10.0-rc.8](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.7...v0.10.0-rc.8) (2020-07-16)
+
+
+### Bug Fixes
+
+* **ObjectPage:** support dynamically added sections ([#604](https://github.com/SAP/ui5-webcomponents-react/issues/604)) ([a7ecb3c](https://github.com/SAP/ui5-webcomponents-react/commit/a7ecb3c55d2d3cb47b43b9c2c57e0fc609a9fb01)), closes [#591](https://github.com/SAP/ui5-webcomponents-react/issues/591)
+* remove useMemo from usePassThroughHtmlProps ([#601](https://github.com/SAP/ui5-webcomponents-react/issues/601)) ([10e0d89](https://github.com/SAP/ui5-webcomponents-react/commit/10e0d89ebcf338e692ecc92931d04c50d3a3a3d1))
+* **AnalyticalTable:** fix dynamic column width and prevent table from overflowing in some cases ([#597](https://github.com/SAP/ui5-webcomponents-react/issues/597)) ([fe93af8](https://github.com/SAP/ui5-webcomponents-react/commit/fe93af8762ff149929fbeb3ac1c306ba2458d272))
+* **AnalyticalTable:** improve scroll performance when scrolling very fast ([#600](https://github.com/SAP/ui5-webcomponents-react/issues/600)) ([e4a8e95](https://github.com/SAP/ui5-webcomponents-react/commit/e4a8e95b2269147229f6768aa1ded8edbc3f5b5e))
+* **FilterBar:** replace fragments inside of toolbar and update story ([#599](https://github.com/SAP/ui5-webcomponents-react/issues/599)) ([ab0760f](https://github.com/SAP/ui5-webcomponents-react/commit/ab0760f266006bc6e26534e00982bce6fb3d52d3))
+
+
+
+
+
+# [0.10.0-rc.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.6...v0.10.0-rc.7) (2020-07-09)
+
+
+### Bug Fixes
+
+* **MicroBarChart:** rollback to old implementation with new API ([#588](https://github.com/SAP/ui5-webcomponents-react/issues/588)) ([330d639](https://github.com/SAP/ui5-webcomponents-react/commit/330d63946ca025128f0a2395211f6686f82029e6))
+* **sapScrollBar:** use correct height for horizontal scrollbar ([#587](https://github.com/SAP/ui5-webcomponents-react/issues/587)) ([3ceb0de](https://github.com/SAP/ui5-webcomponents-react/commit/3ceb0dee7dc7328bbb6d816d083f3ca1f8af6e73))
+
+
+### BREAKING CHANGES
+
+* **MicroBarChart:** Removed props `noLegend`, `onLegendClick`, `noAnimation`, `centerLabel` and `chartConfig` as they we not used in the chart and had no effect.
+
+
+
+
+
+# [0.10.0-rc.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.5...v0.10.0-rc.6) (2020-07-02)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix behavior of minWidth and add maxWidth support ([#585](https://github.com/SAP/ui5-webcomponents-react/issues/585)) ([525bbec](https://github.com/SAP/ui5-webcomponents-react/commit/525bbece5ba3f1f041e36193540b894c32b93364))
+
+
+### Features
+
+* **AnalyticalTable:** add horizontal scrollbar in fiori design ([#583](https://github.com/SAP/ui5-webcomponents-react/issues/583)) ([f695215](https://github.com/SAP/ui5-webcomponents-react/commit/f6952151b768ddff6ac481c694a64da9453e3d77))
+
+
+
+
+
+# [0.10.0-rc.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.4...v0.10.0-rc.5) (2020-06-22)
+
+
+### Bug Fixes
+
+* **BarChart/ColumnChart:** fix data labels for nested data accessors ([#579](https://github.com/SAP/ui5-webcomponents-react/issues/579)) ([605cb06](https://github.com/SAP/ui5-webcomponents-react/commit/605cb06f5b5929a190e9c962535e666557c6c2f2))
+* **Form:** fix bad import ([12e3278](https://github.com/SAP/ui5-webcomponents-react/commit/12e32789cfddb40a6f56738e6d1fbe5904e7d459))
+
+
+### Features
+
+* **Form:** add props to control labelSpan and columns for each size ([#578](https://github.com/SAP/ui5-webcomponents-react/issues/578)) ([40d9579](https://github.com/SAP/ui5-webcomponents-react/commit/40d95790bb330dc4a1a5e6077c278de78825967b))
+* **ScatterChart:** initial component implementation ([#577](https://github.com/SAP/ui5-webcomponents-react/issues/577)) ([bcadbea](https://github.com/SAP/ui5-webcomponents-react/commit/bcadbeaabbe523ed1e7a24ff964cb3da67a9d9b2)), closes [#570](https://github.com/SAP/ui5-webcomponents-react/issues/570)
+
+
+
+
+
+# [0.10.0-rc.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.3...v0.10.0-rc.4) (2020-06-18)
+
+
+### Code Refactoring
+
+* **Form:** use grid layout ([#576](https://github.com/SAP/ui5-webcomponents-react/issues/576)) ([6f14ae5](https://github.com/SAP/ui5-webcomponents-react/commit/6f14ae5b8131f06fe1c3f32083a8cdb75e5b613a)), closes [#564](https://github.com/SAP/ui5-webcomponents-react/issues/564)
+
+
+### BREAKING CHANGES
+
+* **Form:** deleted `CurrentViewportRange` (mostly used internally)
+* **Form:** `FormGroup` and `FormItem` don't support `className`, `style`, `ref`, ..etc. props anymore, there are only used for calculating the final form layout.
+
+
+
+
+
+# [0.10.0-rc.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.2...v0.10.0-rc.3) (2020-06-16)
+
+
+### Bug Fixes
+
+* **base:** remove unnecessary proxy polyfill ([10adb29](https://github.com/SAP/ui5-webcomponents-react/commit/10adb29135d0966c6b95c8018453751663267109))
+* Fix wrong display names for NotificationGroup and VariantManagement ([2963a55](https://github.com/SAP/ui5-webcomponents-react/commit/2963a55bd11ebc5d99c654374352f0fd0a28370b))
+* **BarChart/ColumnChart:** display correct labels in stacked charts ([#568](https://github.com/SAP/ui5-webcomponents-react/issues/568)) ([66b68be](https://github.com/SAP/ui5-webcomponents-react/commit/66b68beca816964c7c6230da2de8e43ac5f0e0d7))
+
+
+
+
+
+# [0.10.0-rc.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.1...v0.10.0-rc.2) (2020-06-05)
+
+
+### Bug Fixes
+
+* **FilterBar/ObjectPage:** add toolbar for making action bars responsive ([#546](https://github.com/SAP/ui5-webcomponents-react/issues/546)) ([bb0d9d4](https://github.com/SAP/ui5-webcomponents-react/commit/bb0d9d4a0023f9ecaf058f8b3bccd049621e96bf)), closes [#533](https://github.com/SAP/ui5-webcomponents-react/issues/533)
+* **MessageBox:** allow custom action texts ([#561](https://github.com/SAP/ui5-webcomponents-react/issues/561)) ([f20d861](https://github.com/SAP/ui5-webcomponents-react/commit/f20d8614bfe241b5e7ea8c87ac047c2eb7e92df4)), closes [#551](https://github.com/SAP/ui5-webcomponents-react/issues/551)
+
+
+### Features
+
+* **spacings:** add fiori 3 spacings ([#549](https://github.com/SAP/ui5-webcomponents-react/issues/549)) ([270110d](https://github.com/SAP/ui5-webcomponents-react/commit/270110d89302741f259a1c122a0beab83eef452e))
+* **Toolbar:** initial component implementation ([#543](https://github.com/SAP/ui5-webcomponents-react/issues/543)) ([0ef66dd](https://github.com/SAP/ui5-webcomponents-react/commit/0ef66ddb8a6285a15c6a3f6245114a83e4e4ad8d))
+
+
+
+
+
 # [0.10.0-rc.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.0...v0.10.0-rc.1) (2020-05-25)
 
 

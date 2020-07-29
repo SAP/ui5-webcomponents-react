@@ -1,25 +1,52 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, select } from '@storybook/addon-knobs';
 import React from 'react';
 import { ComposedChart } from '../../lib/ComposedChart';
 import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export default {
   title: 'Charts /  ComposedChart',
-  component: ComposedChart
+  component: ComposedChart,
+  argTypes: {
+    ...createSelectArgTypes({ layout: ['horizontal', 'vertical'] }),
+    dataset: {
+      type: null
+    },
+    measures: {
+      type: null
+    },
+    dimensions: {
+      type: null
+    }
+  },
+  args: {
+    layout: 'vertical',
+    chartConfig: {
+      yAxisVisible: false,
+      xAxisVisible: true,
+      gridStroke: ThemingParameters.sapList_BorderColor,
+      gridHorizontal: true,
+      gridVertical: false,
+      legendPosition: 'bottom',
+      legendHorizontalAlign: 'left',
+      zoomingTool: false,
+      resizeDebounce: 250
+    }
+  }
 };
 
-export const renderStory = () => {
+export const renderStory = (props) => {
   return (
     <ComposedChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      chartConfig={props.chartConfig}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={complexDataSet}
       style={{ height: '60vh' }}
-      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
+      layout={props.layout}
       dimensions={[
         {
           accessor: 'name',
@@ -50,16 +77,16 @@ export const renderStory = () => {
   );
 };
 
-renderStory.story = {
-  name: 'Default'
-};
+renderStory.storyName = 'Default';
 
-export const renderStoryWithCustomColor = () => (
+export const renderStoryWithCustomColor = (props) => (
   <ComposedChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    chartConfig={props.chartConfig}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dimensions={[{ accessor: 'name' }]}
     measures={[{ accessor: 'users', color: 'red', type: 'bar' }]}
     dataset={simpleDataSet}
@@ -67,16 +94,16 @@ export const renderStoryWithCustomColor = () => (
   />
 );
 
-renderStoryWithCustomColor.story = {
-  name: 'With custom color'
-};
+renderStoryWithCustomColor.storyName = 'With custom color';
 
-export const withSecondaryDimension = () => (
+export const withSecondaryDimension = (props) => (
   <ComposedChart
-    loading={boolean('loading', false)}
-    noLegend={boolean('noLegend', false)}
-    noAnimation={boolean('noAnimation', false)}
-    onDataPointClick={action('onDataPointClick')}
+    chartConfig={props.chartConfig}
+    loading={props.loading}
+    noLegend={props.noLegend}
+    noAnimation={props.noAnimation}
+    onDataPointClick={props.onDataPointClick}
+    onLegendClick={props.onLegendClick}
     dimensions={[{ accessor: 'name' }, { accessor: 'dimension' }]}
     measures={[{ accessor: 'users', type: 'area', color: 'red', width: 2, opacity: 0.5 }]}
     dataset={secondaryDimensionDataSet}
@@ -84,18 +111,16 @@ export const withSecondaryDimension = () => (
   />
 );
 
-withSecondaryDimension.story = {
-  name: 'With secondary dimension'
-};
+withSecondaryDimension.storyName = 'With secondary dimension';
 
-export const renderLabelStory = () => {
+export const renderLabelStory = (props) => {
   return (
     <ComposedChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dimensions={[{ accessor: 'name' }]}
       measures={[
         {
@@ -124,18 +149,16 @@ export const renderLabelStory = () => {
   );
 };
 
-renderLabelStory.story = {
-  name: 'With data labels'
-};
+renderLabelStory.storyName = 'With data labels';
 
-export const renderCustomDataLabelStory = () => {
+export const renderCustomDataLabelStory = (props) => {
   return (
     <ComposedChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={complexDataSet}
       dimensions={[{ accessor: 'name', formatter: (element: string) => element.slice(0, 3) }]}
       measures={[
@@ -160,28 +183,24 @@ export const renderCustomDataLabelStory = () => {
         }
       ]}
       style={{ width: '95%', height: '40vh' }}
-      chartConfig={{
-        zoomingTool: true
-      }}
+      chartConfig={props.chartConfig}
     />
   );
 };
 
-renderCustomDataLabelStory.story = {
-  name: 'With formatter'
-};
+renderCustomDataLabelStory.storyName = 'With formatter';
 
-export const withReferenceLineStory = () => {
+export const withReferenceLineStory = (props) => {
   return (
     <ComposedChart
-      loading={boolean('loading', false)}
-      noLegend={boolean('noLegend', false)}
-      noAnimation={boolean('noAnimation', false)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      noLegend={props.noLegend}
+      noAnimation={props.noAnimation}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={bigDataSet}
       dimensions={[{ accessor: 'name' }]}
-      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
+      layout={props.layout}
       measures={[
         {
           accessor: 'users',
@@ -210,19 +229,17 @@ export const withReferenceLineStory = () => {
   );
 };
 
-withReferenceLineStory.story = {
-  name: 'With reference line'
-};
+withReferenceLineStory.storyName = 'With reference line';
 
-export const loadingPlaceholder = () => {
+export const loadingPlaceholder = (props) => {
   return (
     <ComposedChart
-      loading={boolean('loading', true)}
-      onDataPointClick={action('onDataPointClick')}
-      onLegendClick={action('onLegendClick')}
+      loading={props.loading}
+      onDataPointClick={props.onDataPointClick}
+      onLegendClick={props.onLegendClick}
       dataset={[]}
       style={{ height: '60vh' }}
-      layout={select('layout', ['horizontal', 'vertical'], 'horizontal')}
+      layout={props.layout}
       dimensions={[
         {
           accessor: 'name',
@@ -253,6 +270,4 @@ export const loadingPlaceholder = () => {
   );
 };
 
-loadingPlaceholder.story = {
-  name: 'with Loading Placeholder'
-};
+loadingPlaceholder.storyName = 'with Loading Placeholder';

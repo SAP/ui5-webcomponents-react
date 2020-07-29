@@ -1,0 +1,14 @@
+packages/*/src/lib/
+packages/*/lib/
+packages/*/dist/
+scripts
+shared
+.eslintrc.js
+*.stories.tsx
+*.test.tsx
+*.test.ts
+rollup.config.js
+index.cjs.js
+index.esm.js
+packages/base/third-party/
+packages/cra-template

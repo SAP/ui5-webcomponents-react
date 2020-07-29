@@ -13,6 +13,7 @@ import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';
 import React, { CSSProperties, forwardRef, ReactElement, RefObject, useCallback, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { Ui5PopoverDomRef } from '../../interfaces/Ui5PopoverDomRef';
+import { stopPropagation } from '../../internal/stopPropagation';
 import { StandardListItem } from '../../webComponents/StandardListItem';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { safeGetChildrenArray } from './ObjectPageUtils';
@@ -121,17 +122,20 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
     [setHeaderPinned]
   );
 
-  const onTabItemSelect = useCallback((event) => {
-    const { sectionId, index } = event.detail.tab.dataset;
-    // eslint-disable-next-line eqeqeq
-    const section = safeGetChildrenArray(sections).find((el) => el.props.id == sectionId);
-    handleOnSectionSelected(
-      enrichEventWithDetails({} as any, {
-        ...section,
-        index
-      })
-    );
-  }, []);
+  const onTabItemSelect = useCallback(
+    (event) => {
+      const { sectionId, index } = event.detail.tab.dataset;
+      // eslint-disable-next-line eqeqeq
+      const section = safeGetChildrenArray(sections).find((el) => el.props.id == sectionId);
+      handleOnSectionSelected(
+        enrichEventWithDetails({} as any, {
+          ...section,
+          index
+        })
+      );
+    },
+    [sections]
+  );
 
   const onShowSubSectionPopover = useCallback(
     (e, section) => {
@@ -191,7 +195,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
           data-ui5wcr-object-page-header-action=""
         />
       )}
-      <Popover placementType={PlacementType.Bottom} noArrow ref={popoverRef}>
+      <Popover placementType={PlacementType.Bottom} noArrow ref={popoverRef} onAfterClose={stopPropagation}>
         <List onItemClick={onSubSectionClick}>
           {popoverContent?.props?.children
             .filter((item) => item.props && item.props.isSubSection)

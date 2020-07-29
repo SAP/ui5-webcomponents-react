@@ -8,11 +8,6 @@ export const stateReducer = (newState, action) => {
         return newState;
       }
       return { ...newState, groupBy: payload };
-    case 'SET_SELECTED_ROWS':
-      if (deepCompare(newState.selectedRowIds, action.selectedIds)) {
-        return newState;
-      }
-      return { ...newState, selectedRowIds: action.selectedIds };
     case 'TABLE_RESIZE':
       return { ...newState, tableClientWidth: payload.tableClientWidth };
     case 'TABLE_SCROLLING_ENABLED':

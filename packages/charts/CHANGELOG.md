@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-rc.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.9...v0.10.0-rc.10) (2020-07-23)
+
+
+### Bug Fixes
+
+* **Charts:** tooltip respects dimension formatter ([#614](https://github.com/SAP/ui5-webcomponents-react/issues/614)) ([47104f9](https://github.com/SAP/ui5-webcomponents-react/commit/47104f9067c15fd06bfcfc126191ef578effe5a0))
+
+
+
+
+
+# [0.10.0-rc.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.6...v0.10.0-rc.7) (2020-07-09)
+
+
+### Bug Fixes
+
+* **MicroBarChart:** rollback to old implementation with new API ([#588](https://github.com/SAP/ui5-webcomponents-react/issues/588)) ([330d639](https://github.com/SAP/ui5-webcomponents-react/commit/330d63946ca025128f0a2395211f6686f82029e6))
+
+
+### BREAKING CHANGES
+
+* **MicroBarChart:** Removed props `noLegend`, `onLegendClick`, `noAnimation`, `centerLabel` and `chartConfig` as they we not used in the chart and had no effect.
+
+
+
+
+
+# [0.10.0-rc.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.5...v0.10.0-rc.6) (2020-07-02)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
+# [0.10.0-rc.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.4...v0.10.0-rc.5) (2020-06-22)
+
+
+### Bug Fixes
+
+* **BarChart/ColumnChart:** fix data labels for nested data accessors ([#579](https://github.com/SAP/ui5-webcomponents-react/issues/579)) ([605cb06](https://github.com/SAP/ui5-webcomponents-react/commit/605cb06f5b5929a190e9c962535e666557c6c2f2))
+
+
+### Features
+
+* **ScatterChart:** initial component implementation ([#577](https://github.com/SAP/ui5-webcomponents-react/issues/577)) ([bcadbea](https://github.com/SAP/ui5-webcomponents-react/commit/bcadbeaabbe523ed1e7a24ff964cb3da67a9d9b2)), closes [#570](https://github.com/SAP/ui5-webcomponents-react/issues/570)
+
+
+
+
+
+# [0.10.0-rc.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.2...v0.10.0-rc.3) (2020-06-16)
+
+
+### Bug Fixes
+
+* **BarChart/ColumnChart:** display correct labels in stacked charts ([#568](https://github.com/SAP/ui5-webcomponents-react/issues/568)) ([66b68be](https://github.com/SAP/ui5-webcomponents-react/commit/66b68beca816964c7c6230da2de8e43ac5f0e0d7))
+
+
+
+
+
 # [0.10.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.9.5...v0.10.0-rc.0) (2020-05-19)
 
 

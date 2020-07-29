@@ -1,5 +1,7 @@
 <a name="top"></a>
-# UI5 Web Components for React
+<p align="center">
+  <img src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/master/assets/Logo.png" alt="UI5 Web Components for React Logo" />
+</p>
 <p align="center">
   <a href="https://github.com/SAP/ui5-webcomponents-react/actions?query=workflow:%22build%22" target="_blank">
     <img alt="Build Status" src="https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg">
@@ -130,18 +132,20 @@ For Browser Support and the configuration of the UI5 Web Components, please take
  [UI5 Web Components Readme](https://github.com/SAP/ui5-webcomponents#ui5-web-components).
 
 ### Browser Support
+
+#### Internet Explorer 11
 `@ui5/webcomponents-react` is supporting all modern major browsers. There is no support for Internet Explorer 11 built in.<br />
 If you want your application to run in IE11, you will have to polyfill some features by importing these polyfills as **first** imports in your `src/index.js`:
 ```js
 import 'react-app-polyfill/ie11';
-import '@ui5/webcomponents-base/dist/features/browsersupport/IE11';
+import '@ui5/webcomponents-base/dist/features/browsersupport/IE11WithWebComponentsPolyfill';
 import '@ui5/webcomponents-react-base/polyfill/IE11';
-import '@webcomponents/webcomponentsjs/webcomponents-bundle';
 ```
-You can install `react-app-polyfill` and `@webcomponents/webcomponentsjs` with the following command:
+You can install `react-app-polyfill` with the following command:
 ```bash
-npm install react-app-polyfill @webcomponents/webcomponentsjs --save
+npm install react-app-polyfill --save
 ```
+In case you are using [`browserslist`](https://github.com/browserslist/browserslist) (which is part of `create-react-app`), please also make sure you have added `IE 11` to your browserslist configuration (can be found in `package.json` if you are using CRA).
 
 <!-- *********************************************************************** -->
 <a name="issues"></a>

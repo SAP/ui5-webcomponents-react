@@ -6,14 +6,24 @@ export const GlobalStyleClassesStyles = {
     [`.${GlobalStyleClasses.sapScrollBar}`]: {
       '&::-webkit-scrollbar': {
         backgroundColor: ThemingParameters.sapScrollBar_TrackColor,
-        width: ThemingParameters.sapScrollBar_Dimension
+        '&:horizontal': {
+          height: ThemingParameters.sapScrollBar_Dimension
+        },
+        '&:vertical': {
+          width: ThemingParameters.sapScrollBar_Dimension
+        }
       },
       '&::-webkit-scrollbar-thumb': {
         backgroundColor: ThemingParameters.sapScrollBar_FaceColor,
-        width: ThemingParameters.sapScrollBar_Dimension,
         borderRadius: '0.25rem',
         '&:hover': {
           backgroundColor: ThemingParameters.sapScrollBar_Hover_FaceColor
+        },
+        '&:horizontal': {
+          height: ThemingParameters.sapScrollBar_Dimension
+        },
+        '&:vertical': {
+          width: ThemingParameters.sapScrollBar_Dimension
         }
       },
       '&::-webkit-scrollbar-corner': {

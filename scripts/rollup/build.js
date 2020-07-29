@@ -2,7 +2,7 @@ const { rollup } = require('rollup');
 const stripBanner = require('rollup-plugin-strip-banner');
 const { babel } = require('@rollup/plugin-babel');
 const replace = require('@rollup/plugin-replace');
-const resolve = require('@rollup/plugin-node-resolve');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const json = require('@rollup/plugin-json');
 const closure = require('./plugins/closure-plugin');
 const stripUnusedImports = require('./plugins/strip-unused-imports');
@@ -132,7 +132,7 @@ function getPlugins(entry, externals, updateBabelOptions, filename, packageName,
   const isProduction = isProductionBundleType(bundleType);
   const shouldStayReadable = forcePrettyOutput;
   return [
-    resolve({
+    nodeResolve({
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
     }),
     // Remove license headers from individual modules

@@ -1,20 +1,23 @@
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
 import { Token } from '@ui5/webcomponents-react/lib/Token';
 import { Tokenizer } from '@ui5/webcomponents-react/lib/Tokenizer';
 import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Tokenizer',
-  component: Tokenizer
+  component: Tokenizer,
+  argTypes: {
+    ref: {
+      type: null
+    }
+  }
 };
 
-export const defaultStory = () => (
+export const defaultStory = (props) => (
   <Tokenizer
-    showMore={boolean('showMore', false)}
-    disabled={boolean('disabled', false)}
-    onTokenDelete={action('onTokenDelete')}
-    onShowMoreItemsPress={action('onShowMoreItemsPress')}
+    showMore={props.showMore}
+    disabled={props.disabled}
+    onTokenDelete={props.onTokenDelete}
+    onShowMoreItemsPress={props.onShowMoreItemsPress}
   >
     <Token>Token 1</Token>
     <Token>Token 2</Token>
@@ -22,6 +25,4 @@ export const defaultStory = () => (
   </Tokenizer>
 );
 
-defaultStory.story = {
-  name: 'Default story'
-};
+defaultStory.storyName = 'Default story';

@@ -40,7 +40,7 @@ export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
   centerLabel?: string;
   dimension: DimensionConfig;
   /**
-   * An array of config objects. Each object is defining one pie in the chart.
+   * A object which contains the configuration of the measure. The object is defining one pie in the chart.
    *
    * <h4>Required properties</h4>
    * - `accessor`: string containing the path to the dataset key this pie should display. Supports object structures by using <code>'parent.child'</code>.
@@ -55,10 +55,12 @@ export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
   measure: MeasureConfig;
 }
 
+const tooltipItemDefaultStyle = { color: 'var (--sapTextColor)' };
+
 /**
  * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/PieChart';</code>
  */
-const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<any>) => {
+const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,
@@ -81,6 +83,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
       paddingAngle: 0,
       outerRadius: '80%',
       resizeDebounce: 250,
+      tooltipItemStyle: tooltipItemDefaultStyle,
       ...props.chartConfig
     };
   }, [props.chartConfig]);
@@ -118,7 +121,10 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
     [measure]
   );
 
-  const tooltipValueFormatter = useCallback((value) => measure.formatter(value), [measure.formatter]);
+  const tooltipValueFormatter = useCallback((value, name) => [measure.formatter(value), dimension.formatter(name)], [
+    measure.formatter,
+    dimension.formatter
+  ]);
   const chartRef = useConsolidatedRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
@@ -179,7 +185,13 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<a
               />
             ))}
         </Pie>
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          contentStyle={tooltipContentStyle}
+          itemStyle={chartConfig.tooltipItemStyle}
+          labelStyle={chartConfig.tooltipLabelStyle}
+        />
         {!noLegend && (
           <Legend
             verticalAlign={chartConfig.legendPosition}

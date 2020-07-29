@@ -13,13 +13,16 @@ import {
   BarChart as ColumnChartLib,
   Brush,
   CartesianGrid,
+  LabelList,
   Legend,
   ReferenceLine,
   Tooltip,
   XAxis,
   YAxis
 } from 'recharts';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
@@ -87,10 +90,14 @@ const measureDefaults = {
   opacity: 1
 };
 
+const valueAccessor = (attribute) => ({ payload }) => {
+  return getValueByDataKey(payload, attribute);
+};
+
 /**
  * <code>import { ColumnChart } from '@ui5/webcomponents-react-charts/lib/ColumnChart';</code>
  */
-const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, ref: Ref<any>) => {
+const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,
@@ -134,6 +141,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
   const primaryDimension = dimensions[0];
   const primaryMeasure = measures[0];
 
+  const labelFormatter = useLabelFormatter(primaryDimension);
   const chartRef = useConsolidatedRef<any>(ref);
 
   const dataKeys = measures.map(({ accessor }) => accessor);
@@ -235,7 +243,6 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              label={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
               type="monotone"
               dataKey={element.accessor}
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
@@ -243,7 +250,12 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               barSize={element.width}
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
-            />
+            >
+              <LabelList
+                valueAccessor={valueAccessor(element.accessor)}
+                content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
+              />
+            </Column>
           );
         })}
         {!noLegend && (
@@ -262,7 +274,12 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             yAxisId={'left'}
           />
         )}
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          labelFormatter={labelFormatter}
+          contentStyle={tooltipContentStyle}
+        />
         {chartConfig.zoomingTool && (
           <Brush
             y={10}

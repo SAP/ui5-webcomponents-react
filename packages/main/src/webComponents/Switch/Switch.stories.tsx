@@ -1,24 +1,25 @@
-import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
 import { Switch } from '@ui5/webcomponents-react/lib/Switch';
 import React from 'react';
 
 export default {
   title: 'UI5 Web Components / Switch',
-  component: Switch
+  component: Switch,
+  argTypes: {
+    ref: {
+      type: null
+    }
+  }
 };
 
-export const generatedDefaultStory = () => (
+export const generatedDefaultStory = (props) => (
   <Switch
-    checked={boolean('checked', false)}
-    disabled={boolean('disabled', false)}
-    graphical={boolean('graphical', false)}
-    textOff={text('textOff', '')}
-    textOn={text('textOn', '')}
-    onChange={action('onChange')}
+    checked={props.checked}
+    disabled={props.disabled}
+    graphical={props.graphical}
+    textOff={props.textOff}
+    textOn={props.textOn}
+    onChange={props.onChange}
   />
 );
 
-generatedDefaultStory.story = {
-  name: 'Generated default story'
-};
+generatedDefaultStory.storyName = 'Generated default story';

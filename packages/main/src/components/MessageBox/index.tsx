@@ -37,6 +37,7 @@ import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, isValidElement, ReactNode, Ref, useCallback, useEffect, useMemo } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
+import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './MessageBox.jss';
 
 const actionTextMap = new Map();
@@ -54,7 +55,7 @@ export interface MessageBoxPropTypes extends CommonProps {
   open?: boolean;
   title?: string;
   children: string;
-  actions?: MessageBoxActions[];
+  actions?: (MessageBoxActions | string)[];
   icon?: ReactNode;
   type?: MessageBoxTypes;
   onClose: (event: CustomEvent<{ action: MessageBoxActions }>) => void;
@@ -154,6 +155,7 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
   const handleOnClose = useCallback(
     (e) => {
       const { action } = e.target.dataset;
+      stopPropagation(e);
       onClose(enrichEventWithDetails(e, { action }));
     },
     [onClose]
@@ -180,7 +182,6 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
       style={style}
       tooltip={tooltip}
       className={className}
-      onAfterClose={open ? handleOnClose : null}
       header={
         <header className={classes.header} data-type={type}>
           {iconToRender}
@@ -192,20 +193,18 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
           {actionsToRender.map((action, index) => {
             return (
               <Button
-                style={{
-                  minWidth: '4rem'
-                }}
                 key={action}
                 design={index === 0 ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
                 onClick={handleOnClose}
                 data-action={action}
               >
-                {actionTranslations[actionTextMap.get(action)]}
+                {actionTextMap.has(action) ? actionTranslations[actionTextMap.get(action)] : action}
               </Button>
             );
           })}
         </footer>
       }
+      onAfterClose={open ? handleOnClose : stopPropagation}
       {...passThroughProps}
     >
       <Text className={classes.content}>{children}</Text>

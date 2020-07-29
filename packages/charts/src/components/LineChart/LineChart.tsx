@@ -20,6 +20,7 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
@@ -83,7 +84,7 @@ const measureDefaults = {
 /**
  * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';</code>
  */
-const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<any>) => {
+const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,
     loading,
@@ -123,6 +124,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
 
   const primaryDimension = dimensions[0];
   const primaryMeasure = measures[0];
+
+  const labelFormatter = useLabelFormatter(primaryDimension);
 
   const chartRef = useConsolidatedRef<any>(ref);
 
@@ -252,7 +255,12 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             yAxisId={'left'}
           />
         )}
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          contentStyle={tooltipContentStyle}
+          labelFormatter={labelFormatter}
+        />
         {chartConfig.zoomingTool && (
           <Brush
             y={10}

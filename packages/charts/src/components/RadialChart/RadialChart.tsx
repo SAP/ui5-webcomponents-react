@@ -21,7 +21,7 @@ const radialBarLabelStyle = { fontSize: ThemingParameters.sapFontHeader3Size, fi
 /**
  * <code>import { RadialChart } from '@ui5/webcomponents-react-charts/lib/RadialChart';</code>
  */
-const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<any>) => {
+const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<HTMLDivElement>) => {
   const { maxValue = 100, value, displayValue, onDataPointClick, color, style, className, tooltip, slot } = props;
 
   const range = useMemo(() => {

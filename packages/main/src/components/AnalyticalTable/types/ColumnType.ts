@@ -21,4 +21,6 @@ export interface ColumnType extends Column {
   getResizerProps: () => any;
   isResizing: boolean;
   hAlign: string;
+  totalLeft: number;
+  totalFlexWidth: number;
 }

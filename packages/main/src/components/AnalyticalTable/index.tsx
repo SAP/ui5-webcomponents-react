@@ -72,7 +72,6 @@ export interface TableProps extends CommonProps {
   minRows?: number;
   visibleRows?: number;
   loading?: boolean;
-  busyIndicatorEnabled?: boolean;
   noDataText?: string;
   rowHeight?: number;
   alternateRowColor?: boolean;
@@ -100,11 +99,14 @@ export interface TableProps extends CommonProps {
   onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
   onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
   /**
-   * additional options which will be passed to [react-table´s useTable hook](https://github.com/tannerlinsley/react-table/blob/master/docs/api/useTable.md#table-options)
+   * Additional options which will be passed to [react-table´s useTable hook](https://react-table.tanstack.com/docs/api/useTable#table-options)
    */
   reactTableOptions?: object;
   tableHooks?: PluginHook<any>[];
   subRowsKey?: string;
+  /**
+   * The key must consist of a valid `rowId` like `{ 2: true }` or `{ '0.2.0': true }` for nested rows.
+   */
   selectedRowIds?: { [key: string]: boolean };
   isTreeTable?: boolean;
   overscanCount?: number;
@@ -140,7 +142,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     onSort,
     reactTableOptions,
     tableHooks,
-    busyIndicatorEnabled,
     subRowsKey,
     onGroup,
     rowHeight,
@@ -193,7 +194,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     setColumnOrder,
     dispatch,
     totalColumnsWidth,
-    selectedFlatRows
+    toggleRowSelected,
+    toggleAllRowsSelected
   } = useTable(
     {
       columns,
@@ -204,7 +206,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       stateReducer,
       disableFilters: !filterable,
       disableSortBy: !sortable,
-      disableGroupBy: !groupable,
+      disableGroupBy: isTreeTable ? true : !groupable,
+      selectSubRows: false,
       webComponentsReactProperties: {
         tableRef,
         selectionMode,
@@ -222,8 +225,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       ...reactTableOptions
     },
     useFilters,
-    useGroupBy,
     useColumnOrder,
+    useGroupBy,
     useSortBy,
     useExpanded,
     useRowSelect,
@@ -266,8 +269,14 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [groupBy, dispatch]);
 
   useEffect(() => {
-    dispatch({ type: 'SET_SELECTED_ROWS', selectedIds: selectedRowIds });
-  }, [selectedRowIds, dispatch]);
+    toggleAllRowsSelected(false);
+    const validChars = /^(\d\.)*\d$/;
+    for (const row in selectedRowIds) {
+      if (validChars.test(row)) {
+        toggleRowSelected(row, selectedRowIds[row]);
+      }
+    }
+  }, [toggleRowSelected, toggleAllRowsSelected, selectedRowIds]);
 
   const calcRowHeight = parseInt(
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
@@ -327,7 +336,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   const inlineStyle = useMemo(() => {
     const tableStyles = {
       maxWidth: '100%',
-      overflowX: 'auto'
+      overflowX: 'auto',
+      display: 'flex',
+      flexDirection: 'column'
     };
     if (!!rowHeight) {
       tableStyles['--sapWcrAnalyticalTableRowHeight'] = `${rowHeight}px`;
@@ -366,29 +377,31 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
           return (
             // eslint-disable-next-line react/jsx-key
             <header {...headerProps} role="rowgroup">
-              {headerGroup.headers.map((column) => (
-                // eslint-disable-next-line react/jsx-key
-                <ColumnHeader
-                  {...column.getHeaderProps()}
-                  onSort={onSort}
-                  onGroupBy={onGroupByChanged}
-                  onDragStart={handleDragStart}
-                  onDragOver={handleDragOver}
-                  onDrop={handleOnDrop}
-                  onDragEnter={handleDragEnter}
-                  onDragEnd={handleOnDragEnd}
-                  dragOver={column.id === dragOver}
-                  isDraggable={!isTreeTable && column.canReorder}
-                >
-                  {column.render('Header')}
-                </ColumnHeader>
-              ))}
+              {headerGroup.headers.map((column, index) => {
+                const isLastColumn = !column.disableResizing && index + 1 === headerGroup.headers.length;
+                return (
+                  // eslint-disable-next-line react/jsx-key
+                  <ColumnHeader
+                    {...column.getHeaderProps()}
+                    isLastColumn={isLastColumn}
+                    onSort={onSort}
+                    onGroupBy={onGroupByChanged}
+                    onDragStart={handleDragStart}
+                    onDragOver={handleDragOver}
+                    onDrop={handleOnDrop}
+                    onDragEnter={handleDragEnter}
+                    onDragEnd={handleOnDragEnd}
+                    dragOver={column.id === dragOver}
+                    isDraggable={!isTreeTable && column.canReorder}
+                  >
+                    {column.render('Header')}
+                  </ColumnHeader>
+                );
+              })}
             </header>
           );
         })}
-        {loading && busyIndicatorEnabled && props.data?.length > 0 && (
-          <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />
-        )}
+        {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
         {loading && props.data?.length === 0 && (
           <TablePlaceholder
             columns={tableInternalColumns.filter(
@@ -431,7 +444,6 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 AnalyticalTable.displayName = 'AnalyticalTable';
 AnalyticalTable.defaultProps = {
   loading: false,
-  busyIndicatorEnabled: true,
   sortable: true,
   filterable: false,
   groupable: false,

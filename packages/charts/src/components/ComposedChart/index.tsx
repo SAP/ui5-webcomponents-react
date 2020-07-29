@@ -22,6 +22,7 @@ import {
   YAxis
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
+import { useLabelFormatter } from '../../hooks/useLabelFormatter';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
@@ -107,7 +108,7 @@ type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 /**
  * <code>import { ComposedChart } from '@ui5/webcomponents-react-charts/lib/ComposedChart';</code>
  */
-const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartProps, ref: Ref<any>) => {
+const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,
@@ -150,6 +151,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const primaryDimension = dimensions[0];
   const primaryMeasure = measures[0];
+
+  const labelFormatter = useLabelFormatter(primaryDimension);
 
   const dataKeys = measures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
@@ -307,7 +310,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             xAxisId={layout === 'vertical' ? 'primary' : undefined}
           />
         )}
-        <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
+        <Tooltip
+          cursor={tooltipFillOpacity}
+          formatter={tooltipValueFormatter}
+          labelFormatter={labelFormatter}
+          contentStyle={tooltipContentStyle}
+        />
         {!noLegend && (
           <Legend
             verticalAlign={chartConfig.legendPosition}

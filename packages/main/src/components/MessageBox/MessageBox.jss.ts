@@ -9,11 +9,6 @@ const style = {
     textAlign: 'center',
     width: 'auto',
     alignItems: 'center',
-    '& $icon': {
-      '& >*': {
-        verticalAlign: 'middle'
-      }
-    },
     padding: '0.25rem 1rem',
     boxSizing: 'border-box',
     borderBottom: `1px solid var(--messageBoxBorderColor)`,
@@ -27,44 +22,32 @@ const style = {
     '&[data-type="Error"]': {
       '--sapPageFooter_BorderColor': ThemingParameters.sapErrorBorderColor,
       '--messageBoxBorderColor': ThemingParameters.sapErrorBorderColor,
-      '& $icon': {
-        '--sapContent_NonInteractiveIconColor': ThemingParameters.sapNegativeElementColor
-      }
+      '--sapContent_NonInteractiveIconColor': ThemingParameters.sapNegativeElementColor
     },
     '&[data-type="Warning"]': {
       '--sapPageFooter_BorderColor': ThemingParameters.sapWarningBorderColor,
       '--messageBoxBorderColor': ThemingParameters.sapWarningBorderColor,
-      '& $icon': {
-        '--sapContent_NonInteractiveIconColor': ThemingParameters.sapCriticalElementColor
-      }
+      '--sapContent_NonInteractiveIconColor': ThemingParameters.sapCriticalElementColor
     },
     '&[data-type="Success"]': {
       '--sapPageFooter_BorderColor': ThemingParameters.sapSuccessBorderColor,
       '--messageBoxBorderColor': ThemingParameters.sapSuccessBorderColor,
-      '& $icon': {
-        '--sapContent_NonInteractiveIconColor': ThemingParameters.sapPositiveElementColor
-      }
+      '--sapContent_NonInteractiveIconColor': ThemingParameters.sapPositiveElementColor
     },
     '&[data-type="Confirm"]': {
       '--sapPageFooter_BorderColor': ThemingParameters.sapNeutralBorderColor,
       '--messageBoxBorderColor': ThemingParameters.sapNeutralBorderColor,
-      '& $icon': {
-        '--sapContent_NonInteractiveIconColor': ThemingParameters.sapNeutralElementColor
-      }
+      '--sapContent_NonInteractiveIconColor': ThemingParameters.sapNeutralElementColor
     },
     '&[data-type="Information"]': {
       '--sapPageFooter_BorderColor': ThemingParameters.sapNeutralBorderColor,
       '--messageBoxBorderColor': ThemingParameters.sapNeutralBorderColor,
-      '& $icon': {
-        '--sapContent_NonInteractiveIconColor': ThemingParameters.sapNeutralElementColor
-      }
+      '--sapContent_NonInteractiveIconColor': ThemingParameters.sapNeutralElementColor
     },
     '&[data-type="Highlight"]': {
       '--sapPageFooter_BorderColor': ThemingParameters.sapInformationBorderColor,
       '--messageBoxBorderColor': ThemingParameters.sapInformationBorderColor,
-      '& $icon': {
-        '--sapContent_NonInteractiveIconColor': ThemingParameters.sapInformativeElementColor
-      }
+      '--sapContent_NonInteractiveIconColor': ThemingParameters.sapInformativeElementColor
     }
   },
   content: {
@@ -80,7 +63,8 @@ const style = {
       margin: '0 0.25rem'
     },
     '& > ui5-button': {
-      display: 'flex'
+      display: 'flex',
+      minWidth: '4rem'
     }
   }
 };
