@@ -50,7 +50,7 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/SuggestionItem" target="_blank">UI5 Web Components Playground</a>
  */
 const SuggestionItem: FC<SuggestionItemPropTypes> = withWebComponent<SuggestionItemPropTypes>(
-  'undefined',
+  'ui5-suggestion-item',
   ['description', 'icon', 'image', 'info', 'infoState', 'text', 'type'],
   ['group', 'iconEnd'],
   [],

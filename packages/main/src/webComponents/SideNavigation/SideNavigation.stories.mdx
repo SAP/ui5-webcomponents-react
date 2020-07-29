@@ -5,8 +5,6 @@ import { SideNavigationSubItem } from '@ui5/webcomponents-react/lib/SideNavigati
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import '@ui5/webcomponents-icons/dist/icons/home';
 import '@ui5/webcomponents-icons/dist/icons/group';
-import '@ui5/webcomponents-icons/dist/icons/employee-approvals';
-import '@ui5/webcomponents-icons/dist/icons/employee-rejections';
 import '@ui5/webcomponents-icons/dist/icons/locate-me';
 import '@ui5/webcomponents-icons/dist/icons/calendar';
 import '@ui5/webcomponents-icons/dist/icons/chain-link';
@@ -35,20 +33,20 @@ import '@ui5/webcomponents-icons/dist/icons/history';
           {...args}
           fixedItems={
             <>
-              <SideNavigationItem text="Useful Links" icon="chain-link"></SideNavigationItem>
-              <SideNavigationItem text="History" icon="history"></SideNavigationItem>
+              <SideNavigationItem text="Useful Links" icon="chain-link" />
+              <SideNavigationItem text="History" icon="history" />
             </>
           }
         >
-          <SideNavigationItem text="Home" icon="home"></SideNavigationItem>
+          <SideNavigationItem text="Home" icon="home" />
           <SideNavigationItem text="People" expanded icon="group">
-            <SideNavigationSubItem text="From My Team" icon="employee-approvals"></SideNavigationSubItem>
-            <SideNavigationSubItem text="From Other Teams" icon="employee-rejections"></SideNavigationSubItem>
+            <SideNavigationSubItem text="From My Team" />
+            <SideNavigationSubItem text="From Other Teams" />
           </SideNavigationItem>
-          <SideNavigationItem text="Locations" icon="locate-me" selected></SideNavigationItem>
+          <SideNavigationItem text="Locations" icon="locate-me" selected />
           <SideNavigationItem text="Events" icon="calendar">
-            <SideNavigationSubItem text="Local"></SideNavigationSubItem>
-            <SideNavigationSubItem text="Others"></SideNavigationSubItem>
+            <SideNavigationSubItem text="Local" />
+            <SideNavigationSubItem text="Others" />
           </SideNavigationItem>
         </SideNavigation>
       );
