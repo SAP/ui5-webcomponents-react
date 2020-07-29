@@ -1,8 +1,8 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { ComboBox } from '@ui5/webcomponents-react/lib/ComboBox';
 import { ComboBoxItem } from '@ui5/webcomponents-react/lib/ComboBoxItem';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / ComboBox',

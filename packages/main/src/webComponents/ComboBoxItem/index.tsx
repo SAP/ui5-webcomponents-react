@@ -1,6 +1,6 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/ComboBoxItem';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ComboBoxItemPropTypes extends WithWebComponentPropTypes {

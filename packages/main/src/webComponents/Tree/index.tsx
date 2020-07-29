@@ -1,7 +1,7 @@
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Tree';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TreePropTypes extends WithWebComponentPropTypes {

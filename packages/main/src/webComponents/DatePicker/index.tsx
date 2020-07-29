@@ -2,7 +2,7 @@ import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/DatePicker';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {

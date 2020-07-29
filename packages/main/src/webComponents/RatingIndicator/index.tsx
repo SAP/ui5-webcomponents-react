@@ -1,6 +1,6 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/RatingIndicator';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes, 'onChange'> {
@@ -19,8 +19,7 @@ export interface RatingIndicatorPropTypes extends Omit<WithWebComponentPropTypes
    */
   readonly?: boolean;
   /**
-   * The indicated value of the rating <br><br>
-   * <b>Note:</b> If you set a number which is not round, it would be shown as follows:
+   * The indicated value of the rating <br><br> <b>Note:</b> If you set a number which is not round, it would be shown as follows:
    * <ul>
    *   <li>1.0 - 1.2 -> 1</li>
    *   <li>1.3 - 1.7 -> 1.5</li>

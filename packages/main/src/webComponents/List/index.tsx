@@ -2,7 +2,7 @@ import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/List';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ListPropTypes extends WithWebComponentPropTypes {

@@ -2,7 +2,7 @@ import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/StandardListItem';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
@@ -27,7 +27,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
    */
   info?: string;
   /**
-   * Defines the state of the <code>info</code>. <br> Available options are: <code>"None"</code> (by default), <code>"Success"</code>, <code>"Warning"</code> and <code>"Erorr"</code>.
+   * Defines the state of the <code>info</code>. <br> Available options are: <code>"None"</code> (by default), <code>"Success"</code>, <code>"Warning"</code>, <code>"Information"</code> and <code>"Erorr"</code>.
    */
   infoState?: ValueState;
   /**

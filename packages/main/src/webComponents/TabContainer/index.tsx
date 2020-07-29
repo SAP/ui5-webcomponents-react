@@ -2,7 +2,7 @@ import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabConta
 import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/TabContainer';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TabContainerPropTypes extends WithWebComponentPropTypes {

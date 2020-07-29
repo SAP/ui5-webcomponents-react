@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout';
 import { FCLLayout } from '@ui5/webcomponents-react/lib/FCLLayout';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface FlexibleColumnLayoutPropTypes extends WithWebComponentPropTypes {

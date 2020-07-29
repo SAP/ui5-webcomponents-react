@@ -1,6 +1,6 @@
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Dialog';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface DialogPropTypes extends WithWebComponentPropTypes {
@@ -33,19 +33,19 @@ export interface DialogPropTypes extends WithWebComponentPropTypes {
    */
   header?: ReactNode | ReactNode[];
   /**
-   * Fired after the component is closed.
+   * Fired after the component is closed. This event does not bubble.
    */
   onAfterClose?: (event: CustomEvent<{}>) => void;
   /**
-   * Fired after the component is opened.
+   * Fired after the component is opened. This event does not bubble.
    */
   onAfterOpen?: (event: CustomEvent<{}>) => void;
   /**
-   * Fired before the component is closed.
+   * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. This event does not bubble.
    */
   onBeforeClose?: (event: CustomEvent<{ escPressed: boolean }>) => void;
   /**
-   * Fired before the component is opened.
+   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
   onBeforeOpen?: (event: CustomEvent<{}>) => void;
 }

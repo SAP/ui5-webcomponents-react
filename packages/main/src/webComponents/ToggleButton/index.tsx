@@ -1,7 +1,7 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/ToggleButton';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
@@ -9,10 +9,6 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
    * Determines whether the <code>ui5-togglebutton</code> is displayed as pressed.
    */
   pressed?: boolean;
-  /**
-   *
-   */
-  ariaExpanded?: string;
   /**
    * Defines the <code>ui5-button</code> design. <br><br> <b>Note:</b> Available options are "Default", "Emphasized", "Positive", "Negative", and "Transparent".
    */
@@ -52,7 +48,7 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
  */
 const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPropTypes>(
   'ui5-togglebutton',
-  ['ariaExpanded', 'design', 'icon'],
+  ['design', 'icon'],
   ['pressed', 'disabled', 'iconEnd', 'submits'],
   [],
   ['click']

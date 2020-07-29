@@ -1,14 +1,10 @@
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Button';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
-  /**
-   *
-   */
-  ariaExpanded?: string;
   /**
    * Defines the <code>ui5-button</code> design. <br><br> <b>Note:</b> Available options are "Default", "Emphasized", "Positive", "Negative", and "Transparent".
    */
@@ -48,7 +44,7 @@ export interface ButtonPropTypes extends Omit<WithWebComponentPropTypes, 'onClic
  */
 const Button: FC<ButtonPropTypes> = withWebComponent<ButtonPropTypes>(
   'ui5-button',
-  ['ariaExpanded', 'design', 'icon'],
+  ['design', 'icon'],
   ['disabled', 'iconEnd', 'submits'],
   [],
   ['click']

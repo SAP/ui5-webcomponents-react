@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-fiori/dist/ProductSwitchItem';
 import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTypes, 'onClick'> {
