@@ -17,18 +17,17 @@ import { Ui5DomRef } from '../interfaces/Ui5DomRef';
 
 const capitalizeFirstLetter = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-const toKebabCase = (s: string) => s.replace(/([A-Z])/g, (a, b) => `-${b.toLowerCase()}`);
+const toKebabCase = (s: string) => s.replace(/([A-Z])/g, (a, b: string) => `-${b.toLowerCase()}`);
+const snakeToCamel = (str: string) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
+
+type EventHandler = (event: CustomEvent<unknown>) => void;
 
 export interface WithWebComponentPropTypes extends CommonProps, HTMLAttributes<HTMLElement> {
   ref?: Ref<any>;
   children?: any | void;
 }
 
-const createEventWrapperFor = (eventIdentifier, eventHandler) => (event) => {
-  return eventHandler(event);
-};
-
-export const withWebComponent = <T extends {}>(
+export const withWebComponent = <T extends Record<string, unknown>>(
   TagName: string,
   regularProperties: string[],
   booleanProperties: string[],
@@ -39,8 +38,7 @@ export const withWebComponent = <T extends {}>(
     const { className, tooltip, children, ...rest } = props;
 
     const ref = useConsolidatedRef<HTMLElement>(wcRef);
-    const eventRegistry = useRef({});
-    const eventRegistryWrapped = useRef({});
+    const eventRegistry = useRef<Record<string, EventHandler>>({});
 
     // regular props (no booleans, no slots and no events)
     const regularProps = useMemo(
@@ -90,16 +88,15 @@ export const withWebComponent = <T extends {}>(
     useEffect(
       () => {
         eventProperties.forEach((eventName) => {
-          const eventHandler = rest[`on${capitalizeFirstLetter(eventName)}`];
+          const eventHandler = rest[`on${capitalizeFirstLetter(snakeToCamel(eventName))}`] as EventHandler;
           if (typeof eventHandler === 'function' && eventRegistry.current[eventName] !== eventHandler) {
             if (eventRegistry.current[eventName]) {
-              ref.current.removeEventListener(eventName, eventRegistryWrapped.current[eventName]);
+              ref.current.removeEventListener(eventName, eventRegistry.current[eventName]);
             }
-            eventRegistryWrapped.current[eventName] = createEventWrapperFor(eventName, eventHandler);
-            ref.current.addEventListener(eventName, eventRegistryWrapped.current[eventName]);
             eventRegistry.current[eventName] = eventHandler;
+            ref.current.addEventListener(eventName, eventRegistry.current[eventName]);
           } else if (eventRegistry.current[eventName] && !eventHandler) {
-            ref.current.removeEventListener(eventName, eventRegistryWrapped.current[eventName]);
+            ref.current.removeEventListener(eventName, eventRegistry.current[eventName]);
           }
         });
       },
