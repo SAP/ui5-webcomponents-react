@@ -1,36 +1,465 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MessageBox Not open 1`] = `
-<ui5-dialog>
-  <footer
-    class="MessageBox-footer-0"
-    slot="footer"
+exports[`MessageBox Confirm - Cancel 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    opened=""
+    style="z-index: 104; display: block;"
   >
-    <ui5-button
-      data-action="OK"
-      design="Emphasized"
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
     >
-      OK
-    </ui5-button>
-  </footer>
-  <header
-    class="MessageBox-header-0"
-    data-type="Success"
-    slot="header"
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+      >
+        OK
+      </ui5-button>
+      <ui5-button
+        data-action="Cancel"
+        design="Transparent"
+      >
+        Cancel
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Confirm"
+      slot="header"
+    >
+      <ui5-icon
+        name="question-mark"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Confirmation
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      Confirm
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox Confirm - OK 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    opened=""
+    style="z-index: 102; display: block;"
   >
-    <ui5-icon
-      name="message-success"
-    />
-    <ui5-title
-      level="H5"
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+      >
+        OK
+      </ui5-button>
+      <ui5-button
+        data-action="Cancel"
+        design="Transparent"
+      >
+        Cancel
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Confirm"
+      slot="header"
+    >
+      <ui5-icon
+        name="question-mark"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Confirmation
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      Confirm
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox Custom Action Text 1`] = `
+<DocumentFragment>
+  <ui5-dialog>
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+      >
+        OK
+      </ui5-button>
+      <ui5-button
+        data-action="My Custom Action"
+        design="Transparent"
+      >
+        My Custom Action
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Confirm"
+      slot="header"
+    >
+      <ui5-icon
+        name="question-mark"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Confirmation
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      My Message Box Content
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox Error 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    opened=""
+    style="z-index: 110; display: block;"
+  >
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="Close"
+        design="Emphasized"
+      >
+        Close
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Error"
+      slot="header"
+    >
+      <ui5-icon
+        name="message-error"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Error
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      Error
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox Information 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    opened=""
+    style="z-index: 112; display: block;"
+  >
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+      >
+        OK
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Information"
+      slot="header"
+    >
+      <ui5-icon
+        name="message-information"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Information
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      Information
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox No Title 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    opened=""
+    style="z-index: 118; display: block;"
+  >
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+      >
+        OK
+      </ui5-button>
+      <ui5-button
+        data-action="Cancel"
+        design="Transparent"
+      >
+        Cancel
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Confirm"
+      slot="header"
+    >
+      <ui5-icon
+        name="question-mark"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Confirmation
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      No Title
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox Not open 1`] = `
+<DocumentFragment>
+  <ui5-dialog>
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+      >
+        OK
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Success"
+      slot="header"
+    >
+      <ui5-icon
+        name="message-success"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Custom Success
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
     >
       Custom Success
-    </ui5-title>
-  </header>
-  <span
-    class="Text-text-0 MessageBox-content-0"
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox Show 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    opened=""
+    style="z-index: 114; display: block;"
   >
-    Custom Success
-  </span>
-</ui5-dialog>
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="Yes"
+        design="Emphasized"
+      >
+        Yes
+      </ui5-button>
+      <ui5-button
+        data-action="No"
+        design="Transparent"
+      >
+        No
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Confirm"
+      slot="header"
+    >
+      <ui5-icon
+        name="question-mark"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Custom
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      Custom
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox Success 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    opened=""
+    style="z-index: 106; display: block;"
+  >
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+      >
+        OK
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Success"
+      slot="header"
+    >
+      <ui5-icon
+        name="message-success"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Success
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      Success
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox Success w/ custom title 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    opened=""
+    style="z-index: 116; display: block;"
+  >
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+      >
+        OK
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Success"
+      slot="header"
+    >
+      <ui5-icon
+        name="message-success"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Custom Success
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      Custom Success
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox Warning 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    opened=""
+    style="z-index: 108; display: block;"
+  >
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+      >
+        OK
+      </ui5-button>
+    </footer>
+    <header
+      class="MessageBox-header"
+      data-type="Warning"
+      slot="header"
+    >
+      <ui5-icon
+        name="message-warning"
+      />
+      <ui5-title
+        level="H5"
+      >
+        Warning
+      </ui5-title>
+    </header>
+    <span
+      class="Text-text MessageBox-content"
+    >
+      Warning
+    </span>
+  </ui5-dialog>
+</DocumentFragment>
 `;

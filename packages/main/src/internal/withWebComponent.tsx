@@ -105,6 +105,7 @@ export const withWebComponent = <T extends Record<string, unknown>>(
       .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
 
     return (
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       <TagName
         ref={ref}
