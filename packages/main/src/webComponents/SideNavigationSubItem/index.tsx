@@ -4,7 +4,13 @@ import { FC } from 'react';
 
 export interface SideNavigationSubItemPropTypes extends WithWebComponentPropTypes {
   /**
-   * Defines whether the subitem is selected
+   * Defines the icon of the item. <br><br><br/><br/>
+   *
+   * The SAP-icons font provides numerous options. <br> See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   */
+  icon?: string;
+  /**
+   * Defines whether the subitem is selected.
    */
   selected?: boolean;
   /**
@@ -20,7 +26,7 @@ export interface SideNavigationSubItemPropTypes extends WithWebComponentPropType
  */
 const SideNavigationSubItem: FC<SideNavigationSubItemPropTypes> = withWebComponent<SideNavigationSubItemPropTypes>(
   'ui5-side-navigation-sub-item',
-  ['text'],
+  ['icon', 'text'],
   ['selected'],
   [],
   []
