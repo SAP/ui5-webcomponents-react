@@ -1,4 +1,4 @@
-import { createPassThroughPropsTest, getEventFromCallback } from '@shared/tests/utils';
+import { getEventFromCallback } from '@shared/tests/utils';
 import { mount } from 'enzyme';
 import { Breadcrumbs } from '@ui5/webcomponents-react/lib/Breadcrumbs';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -209,5 +209,5 @@ describe('ObjectPage', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  createPassThroughPropsTest(ObjectPage);
+  // createPassThroughPropsTest(ObjectPage);
 });
