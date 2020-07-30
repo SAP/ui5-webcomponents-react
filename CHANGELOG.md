@@ -19,6 +19,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **ShellBar**: `logo` is now accepting an `img` tag or the `Avatar` component. Passing a `string` with the URL to the image is not longer supported.
 * **TabContainer** will no longer automatically select the first tab, if no tab is selected. If you relied on this behaviour, you should now explicitly set the selected property on the first tab.
 
+For a full list of breaking changes, please take a look at the [CHANGELOG](https://github.com/SAP/ui5-webcomponents-react/blob/master/CHANGELOG.md) with all `0.10.0-rc.x` releases and read our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page#migrating-from-09x-to-0100).
+
 
 
 
