@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-rc.11](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.10...v0.10.0-rc.11) (2020-07-29)
+
+
+### Bug Fixes
+
+* **PieChart:** fix tooltip font color and add chartConfig option to modify the tooltip styles ([#625](https://github.com/SAP/ui5-webcomponents-react/issues/625)) ([ae697a9](https://github.com/SAP/ui5-webcomponents-react/commit/ae697a9134283e3290bb1c10b5da33e734b58ca4))
+
+
+
+
+
 # [0.10.0-rc.10](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.0-rc.9...v0.10.0-rc.10) (2020-07-23)
 
 
