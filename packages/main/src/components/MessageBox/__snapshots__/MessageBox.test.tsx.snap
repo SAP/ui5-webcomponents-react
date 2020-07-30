@@ -2,6 +2,17 @@
 
 exports[`MessageBox Not open 1`] = `
 <ui5-dialog>
+  <footer
+    class="MessageBox-footer-0"
+    slot="footer"
+  >
+    <ui5-button
+      data-action="OK"
+      design="Emphasized"
+    >
+      OK
+    </ui5-button>
+  </footer>
   <header
     class="MessageBox-header-0"
     data-type="Success"
@@ -16,17 +27,6 @@ exports[`MessageBox Not open 1`] = `
       Custom Success
     </ui5-title>
   </header>
-  <footer
-    class="MessageBox-footer-0"
-    slot="footer"
-  >
-    <ui5-button
-      data-action="OK"
-      design="Emphasized"
-    >
-      OK
-    </ui5-button>
-  </footer>
   <span
     class="Text-text-0 MessageBox-content-0"
   >
