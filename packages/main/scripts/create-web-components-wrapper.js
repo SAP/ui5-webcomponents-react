@@ -341,10 +341,9 @@ const createWebComponentWrapper = (
 
   return prettier.format(
     `
-    import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+    import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
     import '@ui5/webcomponents${componentsFromFioriPackage.has(name) ? '-fiori' : ''}/dist/${name}';
     import { FC } from 'react';
-    import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
     ${importStatements.join('\n')}
     
     export interface ${name}PropTypes extends ${tsExtendsStatement} {

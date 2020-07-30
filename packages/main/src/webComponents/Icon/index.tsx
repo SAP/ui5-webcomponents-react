@@ -1,7 +1,6 @@
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Icon';
 import { FC } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface IconPropTypes extends WithWebComponentPropTypes {
   /**

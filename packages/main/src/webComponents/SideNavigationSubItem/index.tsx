@@ -1,7 +1,6 @@
 import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import { FC } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface SideNavigationSubItemPropTypes extends WithWebComponentPropTypes {
   /**

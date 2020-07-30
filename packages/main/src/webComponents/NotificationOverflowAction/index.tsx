@@ -1,9 +1,8 @@
 import '@ui5/webcomponents-fiori/dist/NotificationOverflowAction';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/MultiComboBoxItem';
 import React, { FC } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface NotificationOverflowActionPropTypes extends WithWebComponentPropTypes {
   /**
