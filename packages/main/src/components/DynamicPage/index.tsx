@@ -25,13 +25,14 @@ export interface DynamicPageProps extends CommonProps {
 }
 
 const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, ref: Ref<HTMLDivElement>) => {
-  const { title, className, tooltip, style } = props;
+  const { title, header, className, tooltip, style } = props;
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
   return (
     <div ref={ref} title={tooltip} className={className} style={style} {...passThroughProps}>
       {title}
+      {header}
     </div>
   );
 });

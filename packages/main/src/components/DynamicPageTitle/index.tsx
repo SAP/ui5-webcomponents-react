@@ -26,6 +26,11 @@ export interface DynamicPageTitleProps extends CommonProps {
    * Use this aggregation to display a `Title` (or any other component that serves as a heading)
    */
   heading?: ReactNode;
+  /**
+   * The `heading` is positioned in the `DynamicPageTitle` left area.
+   * Use this aggregation to display a `Title` (or any other component that serves as a heading)
+   */
+  subHeading?: ReactNode;
 
   /**
    * The `DynamicPageTitle` navigation actions.<br />
@@ -42,7 +47,7 @@ const useStyles = createComponentStyles(DynamicPageTitleStyles, { name: 'Dynamic
 
 const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
   (props: DynamicPageTitleProps, ref: Ref<HTMLDivElement>) => {
-    const { actions, breadcrumbs, children, heading, navigationActions, className, style } = props;
+    const { actions, breadcrumbs, children, heading, subHeading, navigationActions, className, style } = props;
 
     const classes = useStyles();
 
@@ -77,6 +82,9 @@ const DynamicPageTitle: FC<DynamicPageTitleProps> = forwardRef(
               {navigationActions}
             </Toolbar>
           </div>
+        </FlexBox>
+        <FlexBox>
+          <div className={classes.subTitle}>{subHeading}</div>
         </FlexBox>
       </div>
     );

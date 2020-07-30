@@ -3,13 +3,15 @@ import '@ui5/webcomponents-icons/dist/icons/full-screen';
 import '@ui5/webcomponents-icons/dist/icons/exit-full-screen';
 import '@ui5/webcomponents-icons/dist/icons/decline';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
+import { Label } from '@ui5/webcomponents-react/lib/Label';
 import React from 'react';
-import { Badge } from '../..';
+import { Badge, FlexBox, FlexBoxDirection, ObjectStatus } from '../..';
 import { Breadcrumbs } from '../../lib/Breadcrumbs';
 import { Link } from '../../webComponents/Link';
 import { DynamicPageTitle } from '../DynamicPageTitle';
 import { DynamicPage } from './index';
 import { Button } from '../../lib/Button';
+import { DynamicPageHeader } from '../DynamicPageHeader';
 
 export default {
   title: 'Components / DynamicPage',
@@ -44,6 +46,7 @@ export const defaultStory = (props) => {
             </Breadcrumbs>
           }
           heading={<Title>Header Title</Title>}
+          subHeading={<Label>This is a subheading</Label>}
           navigationActions={
             <>
               <Button icon="full-screen" design="Transparent" />
@@ -54,6 +57,23 @@ export const defaultStory = (props) => {
         >
           <Badge>Status: OK</Badge>
         </DynamicPageTitle>
+      }
+      header={
+        <DynamicPageHeader
+          headerContent={
+            <>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <Label>Location: Warehouse A</Label>
+                <Label>Halway: 23L</Label>
+                <Label>Rack: 34</Label>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <Label>Availability:</Label>
+                <ObjectStatus state={'Success'}>In Stock</ObjectStatus>
+              </div>
+            </>
+          }
+        />
       }
     >
       Dynamic Page Content
