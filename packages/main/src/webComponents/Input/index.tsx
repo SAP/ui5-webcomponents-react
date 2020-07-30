@@ -1,15 +1,18 @@
 import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Input';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput' | 'onSubmit'> {
   /**
    * Defines whether the <code>ui5-input</code> is in disabled state. <br><br> <b>Note:</b> A disabled <code>ui5-input</code> is completely noninteractive.
    */
   disabled?: boolean;
+  /**
+   * Defines if characters within the suggestions are to be highlighted in case the input value matches parts of the suggestions text. <br><br> <b>Note:</b> takes effect when <code>showSuggestions</code> is set to <code>true</code>
+   */
+  highlight?: boolean;
   /**
    * Sets the maximum number of characters available in the input field.
    */
@@ -59,7 +62,7 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    */
   icon?: ReactNode | ReactNode[];
   /**
-   * Defines the value state message that will be displayed as pop up under the <code>ui5-input</code>. <br><br>
+   * Defines the value state message that will be displayed as pop up under the <code>ui5-input</code>. <br><br><br/><br/>
    *
    * <b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the <code>ui5-input</code> is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state. <br> <b>Note:</b> If the <code>ui5-input</code> has <code>suggestionItems</code>, the <code>valueStateMessage</code> would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    */
@@ -77,9 +80,17 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
    */
   onSubmit?: (event: CustomEvent<{}>) => void;
   /**
+   * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
+   */
+  onSuggestionItemPreview?: (event: CustomEvent<{ item: ReactNode; targetRef: ReactNode }>) => void;
+  /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
   onSuggestionItemSelect?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  /**
+   * Fired when the user scrolls the suggestion popover.
+   */
+  onSuggestionScroll?: (event: CustomEvent<{ scrollTop: number; scrollContainer: ReactNode }>) => void;
 }
 
 /**
@@ -90,15 +101,16 @@ export interface InputPropTypes extends Omit<WithWebComponentPropTypes, 'onChang
 const Input: FC<InputPropTypes> = withWebComponent<InputPropTypes>(
   'ui5-input',
   ['maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
-  ['disabled', 'readonly', 'required', 'showSuggestions'],
+  ['disabled', 'highlight', 'readonly', 'required', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
-  ['change', 'input', 'submit', 'suggestionItemSelect']
+  ['change', 'input', 'submit', 'suggestion-item-preview', 'suggestion-item-select', 'suggestion-scroll']
 );
 
 Input.displayName = 'Input';
 
 Input.defaultProps = {
   disabled: false,
+  highlight: false,
   readonly: false,
   required: false,
   showSuggestions: false,

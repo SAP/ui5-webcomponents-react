@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RatingIndicator Basic Test (generated) 1`] = `
+<ui5-rating-indicator
+  max-value="5"
+  value="0"
+/>
+`;

@@ -36,7 +36,7 @@
     "@sap-theming/theming-base-content": "11.1.18"
   },
   "peerDependencies": {
-    "@ui5/webcomponents-base": "0.20.0",
+    "@ui5/webcomponents-base": "0.22.0",
     "react": "^16.8.0",
     "react-jss": "^10.0.4"
   },

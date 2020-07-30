@@ -1,0 +1,57 @@
+import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
+import { SideNavigationItem } from '@ui5/webcomponents-react/lib/SideNavigationItem';
+import { SideNavigationSubItem } from '@ui5/webcomponents-react/lib/SideNavigationSubItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import '@ui5/webcomponents-icons/dist/icons/home';
+import '@ui5/webcomponents-icons/dist/icons/group';
+import '@ui5/webcomponents-icons/dist/icons/locate-me';
+import '@ui5/webcomponents-icons/dist/icons/calendar';
+import '@ui5/webcomponents-icons/dist/icons/chain-link';
+import '@ui5/webcomponents-icons/dist/icons/history';
+
+<Meta
+  title="UI5 Web Components / SideNavigation"
+  component={SideNavigation}
+  subcomponents={{ SideNavigationItem, SideNavigationSubItem }}
+  argTypes={{
+    children: { type: null },
+    fixedItems: { type: null },
+    ref: { type: null }
+  }}
+/>
+
+<Title />
+<Subtitle />
+<Description />
+
+<Preview>
+  <Story name="Default">
+    {(args) => {
+      return (
+        <SideNavigation
+          {...args}
+          fixedItems={
+            <>
+              <SideNavigationItem text="Useful Links" icon="chain-link" />
+              <SideNavigationItem text="History" icon="history" />
+            </>
+          }
+        >
+          <SideNavigationItem text="Home" icon="home" />
+          <SideNavigationItem text="People" expanded icon="group">
+            <SideNavigationSubItem text="From My Team" />
+            <SideNavigationSubItem text="From Other Teams" />
+          </SideNavigationItem>
+          <SideNavigationItem text="Locations" icon="locate-me" selected />
+          <SideNavigationItem text="Events" icon="calendar">
+            <SideNavigationSubItem text="Local" />
+            <SideNavigationSubItem text="Others" />
+          </SideNavigationItem>
+        </SideNavigation>
+      );
+    }}
+  </Story>
+</Preview>
+
+<Props story="Default" components={{ SideNavigation, SideNavigationItem, SideNavigationSubItem }} />

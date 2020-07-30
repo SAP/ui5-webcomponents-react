@@ -1,7 +1,7 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { MessageStrip } from '@ui5/webcomponents-react/lib/MessageStrip';
 import { MessageStripType } from '@ui5/webcomponents-react/lib/MessageStripType';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / MessageStrip',

@@ -1,7 +1,6 @@
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/SegmentedButton';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface SegmentedButtonPropTypes extends WithWebComponentPropTypes {
   /**
@@ -24,7 +23,7 @@ const SegmentedButton: FC<SegmentedButtonPropTypes> = withWebComponent<Segmented
   [],
   [],
   [],
-  ['selectionChange']
+  ['selection-change']
 );
 
 SegmentedButton.displayName = 'SegmentedButton';

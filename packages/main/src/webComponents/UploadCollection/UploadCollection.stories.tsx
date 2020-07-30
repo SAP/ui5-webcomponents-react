@@ -1,9 +1,9 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { UploadCollection } from '@ui5/webcomponents-react/lib/UploadCollection';
 import { UploadCollectionItem } from '@ui5/webcomponents-react/lib/UploadCollectionItem';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / UploadCollection',

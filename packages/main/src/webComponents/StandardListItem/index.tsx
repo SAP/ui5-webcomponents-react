@@ -1,9 +1,8 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/StandardListItem';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -27,7 +26,7 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
    */
   info?: string;
   /**
-   * Defines the state of the <code>info</code>. <br> Available options are: <code>"None"</code> (by default), <code>"Success"</code>, <code>"Warning"</code> and <code>"Erorr"</code>.
+   * Defines the state of the <code>info</code>. <br> Available options are: <code>"None"</code> (by default), <code>"Success"</code>, <code>"Warning"</code>, <code>"Information"</code> and <code>"Erorr"</code>.
    */
   infoState?: ValueState;
   /**
@@ -42,6 +41,10 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
    * Defines the text of the <code>ui5-li</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired when the user clicks on the detail button when type is <code>Detail</code>.
+   */
+  onDetailClick?: (event: CustomEvent<{}>) => void;
 }
 
 /**
@@ -54,7 +57,7 @@ const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<Standar
   ['description', 'icon', 'image', 'info', 'infoState', 'type'],
   ['iconEnd', 'selected'],
   [],
-  []
+  ['detail-click']
 );
 
 StandardListItem.displayName = 'StandardListItem';

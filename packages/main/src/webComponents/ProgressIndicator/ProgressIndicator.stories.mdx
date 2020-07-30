@@ -1,0 +1,31 @@
+import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+
+<Meta
+  title="UI5 Web Components / ProgressIndicator"
+  component={ProgressIndicator}
+  argTypes={{
+    ...createSelectArgTypes({ valueState: ValueState })
+  }}
+  args={{
+    valueState: ValueState.None,
+    value: 50
+  }}
+/>
+
+<Title />
+<Subtitle />
+<Description />
+
+<Preview>
+  <Story name="Default">
+    {(args) => {
+      return <ProgressIndicator {...args} />;
+    }}
+  </Story>
+</Preview>
+
+<Props story="Default" components={{ ProgressIndicator }} />

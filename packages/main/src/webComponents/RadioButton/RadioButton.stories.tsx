@@ -1,7 +1,7 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / RadioButton',

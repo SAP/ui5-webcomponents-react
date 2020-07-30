@@ -1,11 +1,11 @@
 import contentLoaderSerializer from '@shared/tests/serializer/content-loader-serializer.js';
 import jssSerializer from '@shared/tests/serializer/jss-snapshot-serializer';
+import '@testing-library/jest-dom';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { createSerializer } from 'enzyme-to-json';
-import ResizeObserver from 'resize-observer-polyfill';
 import 'intersection-observer';
-import '@testing-library/jest-dom';
+import ResizeObserver from 'resize-observer-polyfill';
 
 beforeAll(async () => {
   await import('@ui5/webcomponents/dist/Assets');
@@ -55,3 +55,4 @@ export const setupResizeObserver = () => {
 
 setupMatchMedia();
 setupResizeObserver();
+window.scrollTo = jest.fn();

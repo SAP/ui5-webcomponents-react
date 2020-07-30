@@ -1,7 +1,7 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { TextArea } from '@ui5/webcomponents-react/lib/TextArea';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / TextArea',

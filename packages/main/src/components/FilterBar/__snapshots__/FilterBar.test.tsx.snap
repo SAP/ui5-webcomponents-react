@@ -444,7 +444,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           Date Picker
           </ui5-label>
         </div>
-        <ui5-datepicker
+        <ui5-date-picker
           primary-calendar-type="Gregorian"
           value-state="None"
         />
@@ -458,6 +458,7 @@ exports[`FilterBar Toggle Filters Dialog 1`] = `
 Array [
   <ui5-dialog
     opened=""
+    style="z-index: 102; display: block;"
   >
     <div
       class="FlexBox-flexBox-0 FlexBox-flexBoxDirectionColumn-0 FlexBox-justifyContentStart-0 FlexBox-alignItemsStretch-0 FlexBox-flexWrapNoWrap-0 FilterBarDialog-header-0"
@@ -812,9 +813,8 @@ Array [
           Date Picker
                   </ui5-label>
                 </div>
-                <ui5-datepicker
+                <ui5-date-picker
                   primary-calendar-type="Gregorian"
-                  value=""
                   value-state="None"
                 />
               </div>
@@ -870,7 +870,9 @@ Array [
                 separators="All"
               >
                 <ui5-li
+                  actionable=""
                   data-key="1"
+                  has-title=""
                   info-state="None"
                   selected="true"
                   style="width: 300px;"
@@ -879,7 +881,9 @@ Array [
                   Variant 1
                 </ui5-li>
                 <ui5-li
+                  actionable=""
                   data-key="2"
+                  has-title=""
                   info-state="None"
                   style="width: 300px;"
                   type="Active"
@@ -1138,7 +1142,7 @@ Array [
           Date Picker
             </ui5-label>
           </div>
-          <ui5-datepicker
+          <ui5-date-picker
             primary-calendar-type="Gregorian"
             value-state="None"
           />
@@ -1191,7 +1195,9 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
               separators="All"
             >
               <ui5-li
+                actionable=""
                 data-key="1"
+                has-title=""
                 info-state="None"
                 selected="true"
                 style="width: 300px;"
@@ -1200,7 +1206,9 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
                 Variant 1
               </ui5-li>
               <ui5-li
+                actionable=""
                 data-key="2"
+                has-title=""
                 info-state="None"
                 style="width: 300px;"
                 type="Active"
@@ -1459,7 +1467,7 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
           Date Picker
           </ui5-label>
         </div>
-        <ui5-datepicker
+        <ui5-date-picker
           primary-calendar-type="Gregorian"
           value-state="None"
         />

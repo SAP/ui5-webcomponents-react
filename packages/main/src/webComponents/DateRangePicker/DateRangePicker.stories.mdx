@@ -1,0 +1,32 @@
+import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { DateRangePicker } from '@ui5/webcomponents-react/lib/DateRangePicker';
+import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
+
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+
+<Meta
+  title="UI5 Web Components / DateRangePicker"
+  component={DateRangePicker}
+  argTypes={{
+    ...createSelectArgTypes({ primaryCalendarType: CalendarType, valueState: ValueState })
+  }}
+  args={{
+    primaryCalendarType: CalendarType.Gregorian,
+    valueState: ValueState.None
+  }}
+/>
+
+<Title />
+<Subtitle />
+<Description />
+
+<Preview>
+  <Story name="Default">
+    {(args) => {
+      return <DateRangePicker {...args} />;
+    }}
+  </Story>
+</Preview>
+
+<Props story="Default" components={{ DateRangePicker }} />
