@@ -215,7 +215,6 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
                 type="category"
                 key={dimension.accessor}
                 dataKey={dimension.accessor}
-                xAxisId={index}
                 tick={<YAxisTicks config={dimension} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
@@ -249,6 +248,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
           );
         })}
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -260,6 +261,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
             x={chartConfig.referenceLine.value}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={chartConfig.referenceLine.label}
           />
         )}

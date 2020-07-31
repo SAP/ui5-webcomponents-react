@@ -213,10 +213,14 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
             tick={<XAxisTicks config={xMeasure} />}
             padding={xAxisPadding}
             height={xAxisHeights[0]}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={xMeasure?.label ? { value: xMeasure?.label, dy: 15, position: 'insideRight' } : 0}
           />
         )}
         <YAxis
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           label={yMeasure?.label ? { value: yMeasure?.label, angle: -90, position: 'insideLeft' } : false}
           type={'number'}
           name={yMeasure?.label}
@@ -246,6 +250,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           );
         })}
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -257,6 +263,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
             y={chartConfig.referenceLine.value}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={chartConfig.referenceLine.label}
           />
         )}
@@ -264,6 +272,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           <ReferenceLine
             stroke={chartConfig.referenceLineX.color}
             x={chartConfig.referenceLineX.value}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={chartConfig.referenceLineX.label}
           />
         )}

@@ -240,6 +240,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           );
         })}
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -251,6 +253,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           <ReferenceLine
             stroke={chartConfig.referenceLine.color}
             y={chartConfig.referenceLine.value}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={chartConfig.referenceLine.label}
             yAxisId={'left'}
           />
