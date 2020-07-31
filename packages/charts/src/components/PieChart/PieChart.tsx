@@ -162,6 +162,9 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
         margin={chartConfig.margin}
         className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
       >
+        {/*
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore*/}
         <Pie
           onClick={onDataPointClickInternal}
           innerRadius={chartConfig.innerRadius}
@@ -193,6 +196,8 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
           labelStyle={chartConfig.tooltipLabelStyle}
         />
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}

@@ -17,7 +17,8 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
+  Label
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
@@ -140,15 +141,12 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     (payload, eventOrIndex) => {
       if (eventOrIndex.dataKey && onDataPointClick) {
         onDataPointClick(
-          enrichEventWithDetails(
-            {},
-            {
-              value: eventOrIndex.value,
-              dataKey: eventOrIndex.dataKey,
-              dataIndex: eventOrIndex.index,
-              payload: eventOrIndex.payload
-            }
-          )
+          enrichEventWithDetails({} as any, {
+            value: eventOrIndex.value,
+            dataKey: eventOrIndex.dataKey,
+            dataIndex: eventOrIndex.index,
+            payload: eventOrIndex.payload
+          })
         );
       }
     },
@@ -214,7 +212,15 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         {chartConfig.secondYAxis?.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
+            axisLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            tick={{ fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})` }}
+            tickLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
             yAxisId="right"
@@ -229,17 +235,21 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               label={isBigDataSet ? false : <ChartDataLabel config={element} chartType="line" position="top" />}
               type="monotone"
               dataKey={element.accessor}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               strokeWidth={element.width}
-              activeDot={{ onClick: onDataPointClickInternal }}
+              activeDot={{ onClick: onDataPointClickInternal } as any}
               isAnimationActive={noAnimation === false}
             />
           );
         })}
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -248,12 +258,9 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           />
         )}
         {chartConfig.referenceLine && (
-          <ReferenceLine
-            stroke={chartConfig.referenceLine.color}
-            y={chartConfig.referenceLine.value}
-            label={chartConfig.referenceLine.label}
-            yAxisId={'left'}
-          />
+          <ReferenceLine stroke={chartConfig.referenceLine.color} y={chartConfig.referenceLine.value} yAxisId={'left'}>
+            <Label>{chartConfig.referenceLine.label}</Label>
+          </ReferenceLine>
         )}
         <Tooltip
           cursor={tooltipFillOpacity}

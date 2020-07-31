@@ -88,7 +88,7 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
       legendPosition: 'bottom',
       legendHorizontalAlign: 'center',
       dataLabel: true,
-      polarGridType: 'circle',
+      polarGridType: 'circle' as 'circle',
       resizeDebounce: 250,
       ...props.chartConfig
     };
@@ -117,16 +117,13 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
     (payload, eventOrIndex) => {
       if (eventOrIndex.value && onDataPointClick) {
         onDataPointClick(
-          enrichEventWithDetails(
-            {},
-            {
-              value: eventOrIndex.value,
-              dataKey: eventOrIndex.dataKey,
-              name: eventOrIndex.payload.label,
-              dataIndex: eventOrIndex.index,
-              payload: eventOrIndex.payload
-            }
-          )
+          enrichEventWithDetails({} as any, {
+            value: eventOrIndex.value,
+            dataKey: eventOrIndex.dataKey,
+            name: eventOrIndex.payload.label,
+            dataIndex: eventOrIndex.index,
+            payload: eventOrIndex.payload
+          })
         );
       }
     },
@@ -181,6 +178,8 @@ const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref:
           labelFormatter={labelFormatter}
         />
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}

@@ -33,7 +33,7 @@ export interface ToolbarProptypes extends CommonProps {
   toolbarStyle?: ToolbarStyle;
   design?: ToolbarDesign;
   active?: boolean;
-  onToolbarClick?: (event: CustomEvent<{}>) => void;
+  onToolbarClick?: (event: CustomEvent) => void;
 }
 
 const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: Ref<HTMLDivElement>) => {
@@ -41,7 +41,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
   const classes = useStyles(styles);
   const outerContainer: RefObject<HTMLDivElement> = useConsolidatedRef(ref);
   const controlMetaData = useRef([]);
-  const [lastVisibleIndex, setLastVisibleIndex] = useState(null);
+  const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onToolbarClick']);
 
@@ -72,24 +72,25 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
 
-    return React.Children.toArray(children?.type === React.Fragment ? children.props.children : children).map(
-      (item, index) => {
-        const itemRef: RefObject<HTMLDivElement> = createRef();
+    return React.Children.toArray(
+      (children as ReactElement)?.type === React.Fragment ? (children as ReactElement).props.children : children
+    ).map((item: ReactElement, index) => {
+      const itemRef: RefObject<HTMLDivElement> = createRef();
 
-        controlMetaData.current.push({
-          ref: itemRef
-        });
+      controlMetaData.current.push({
+        ref: itemRef
+      });
 
-        if (item?.type?.displayName === 'ToolbarSpacer') {
-          return item;
-        }
-        return (
-          <div ref={itemRef} key={index}>
-            {item}
-          </div>
-        );
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      if ((item?.type as any)?.displayName === 'ToolbarSpacer') {
+        return item;
       }
-    );
+      return (
+        <div ref={itemRef} key={index}>
+          {item}
+        </div>
+      );
+    });
   }, [children, controlMetaData]);
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) && React.Children.count(childrenWithRef) !== lastVisibleIndex + 1;
@@ -100,7 +101,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
     const OVERFLOW_BUTTON_WIDTH = 32 + 8;
     requestAnimationFrame(() => {
       if (!outerContainer.current) return;
-      const availableWidth = outerContainer.current.getBoundingClientRect().width; /*- 32 - 8*/
+      const availableWidth = outerContainer.current.getBoundingClientRect().width;
       let consumedWidth = 0;
       let lastIndex = null;
       let lastFitWidth = 0;
@@ -110,7 +111,7 @@ const Toolbar: FC<ToolbarProptypes> = forwardRef((props: ToolbarProptypes, ref: 
         lastFitWidth = 0;
       } else {
         controlMetaData.current.forEach((item, index) => {
-          const currentMeta = controlMetaData.current[index];
+          const currentMeta = controlMetaData.current[index] as { ref: RefObject<HTMLElement> };
           if (currentMeta && currentMeta.ref && currentMeta.ref.current) {
             let nextWidth = currentMeta.ref.current.getBoundingClientRect().width;
             nextWidth += index === 0 || index === controlMetaData.current.length - 1 ? 4 : 8; //first & last element = padding: 4px
