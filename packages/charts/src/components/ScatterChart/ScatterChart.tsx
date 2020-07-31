@@ -16,7 +16,8 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  ZAxis
+  ZAxis,
+  Label
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
@@ -262,22 +263,14 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           />
         )}
         {chartConfig.referenceLine && (
-          <ReferenceLine
-            stroke={chartConfig.referenceLine.color}
-            y={chartConfig.referenceLine.value}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            label={chartConfig.referenceLine.label}
-          />
+          <ReferenceLine stroke={chartConfig.referenceLine.color} y={chartConfig.referenceLine.value}>
+            <Label>{chartConfig.referenceLine.label}</Label>
+          </ReferenceLine>
         )}
         {chartConfig.referenceLineX && (
-          <ReferenceLine
-            stroke={chartConfig.referenceLineX.color}
-            x={chartConfig.referenceLineX.value}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            label={chartConfig.referenceLineX.label}
-          />
+          <ReferenceLine stroke={chartConfig.referenceLineX.color} x={chartConfig.referenceLineX.value}>
+            <Label>{chartConfig.referenceLineX.label}</Label>
+          </ReferenceLine>
         )}
         <Tooltip cursor={tooltipFillOpacity} formatter={tooltipValueFormatter} contentStyle={tooltipContentStyle} />
       </ScatterChartLib>

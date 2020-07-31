@@ -17,7 +17,8 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
+  Label
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
@@ -251,14 +252,9 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
           />
         )}
         {chartConfig.referenceLine && (
-          <ReferenceLine
-            stroke={chartConfig.referenceLine.color}
-            y={chartConfig.referenceLine.value}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            label={chartConfig.referenceLine.label}
-            yAxisId={'left'}
-          />
+          <ReferenceLine stroke={chartConfig.referenceLine.color} y={chartConfig.referenceLine.value} yAxisId={'left'}>
+            <Label>{chartConfig.referenceLine.label}</Label>
+          </ReferenceLine>
         )}
         <Tooltip
           cursor={tooltipFillOpacity}

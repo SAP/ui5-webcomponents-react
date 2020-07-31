@@ -18,7 +18,8 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
+  Label
 } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useChartMargin } from '../../hooks/useChartMargin';
@@ -263,13 +264,9 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
           />
         )}
         {chartConfig.referenceLine && (
-          <ReferenceLine
-            stroke={chartConfig.referenceLine.color}
-            x={chartConfig.referenceLine.value}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            label={chartConfig.referenceLine.label}
-          />
+          <ReferenceLine stroke={chartConfig.referenceLine.color} x={chartConfig.referenceLine.value}>
+            <Label>{chartConfig.referenceLine.label}</Label>
+          </ReferenceLine>
         )}
         <Tooltip
           cursor={tooltipFillOpacity}

@@ -19,7 +19,8 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
+  Label
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
@@ -305,12 +306,11 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             stroke={chartConfig.referenceLine.color}
             y={layout === 'horizontal' ? chartConfig.referenceLine.value : undefined}
             x={layout === 'vertical' ? chartConfig.referenceLine.value : undefined}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            label={chartConfig.referenceLine.label}
             yAxisId={layout === 'horizontal' ? 'primary' : undefined}
             xAxisId={layout === 'vertical' ? 'primary' : undefined}
-          />
+          >
+            <Label>{chartConfig.referenceLine.label}</Label>
+          </ReferenceLine>
         )}
         <Tooltip
           cursor={tooltipFillOpacity}
