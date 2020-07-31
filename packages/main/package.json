@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "index.cjs.js",
   "module": "index.esm.js",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.11.0",
-    "@ui5/webcomponents-react-base": "^0.10.0",
+    "@ui5/webcomponents-react-base": "^0.10.1",
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "5.1.0",
     "react-jss": "10.1.1",
