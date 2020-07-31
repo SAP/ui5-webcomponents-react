@@ -256,10 +256,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
             >
-              {/*
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore*/}
               <LabelList
+                data={dataset}
                 valueAccessor={valueAccessor(element.accessor)}
                 content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
               />

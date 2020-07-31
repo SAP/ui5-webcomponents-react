@@ -243,10 +243,8 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
             >
-              {/*
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore*/}
               <LabelList
+                data={dataset}
                 valueAccessor={valueAccessor(element.accessor)}
                 content={<ChartDataLabel config={element} chartType="bar" position={'insideRight'} />}
               />
