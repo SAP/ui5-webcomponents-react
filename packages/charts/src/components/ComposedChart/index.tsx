@@ -181,15 +181,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           );
         } else {
           onDataPointClick(
-            enrichEventWithDetails(
-              {},
-              {
-                value: eventOrIndex.value,
-                dataKey: eventOrIndex.dataKey,
-                dataIndex: eventOrIndex.index,
-                payload: eventOrIndex.payload
-              }
-            )
+            enrichEventWithDetails({} as any, {
+              value: eventOrIndex.value,
+              dataKey: eventOrIndex.dataKey,
+              dataIndex: eventOrIndex.index,
+              payload: eventOrIndex.payload
+            })
           );
         }
       }
