@@ -140,15 +140,12 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
     (payload, eventOrIndex) => {
       if (eventOrIndex.dataKey && onDataPointClick) {
         onDataPointClick(
-          enrichEventWithDetails(
-            {},
-            {
-              value: eventOrIndex.value,
-              dataKey: eventOrIndex.dataKey,
-              dataIndex: eventOrIndex.index,
-              payload: eventOrIndex.payload
-            }
-          )
+          enrichEventWithDetails({} as any, {
+            value: eventOrIndex.value,
+            dataKey: eventOrIndex.dataKey,
+            dataIndex: eventOrIndex.index,
+            payload: eventOrIndex.payload
+          })
         );
       }
     },
@@ -214,6 +211,8 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
         {chartConfig.secondYAxis?.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
@@ -229,12 +228,14 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
               key={element.accessor}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               label={isBigDataSet ? false : <ChartDataLabel config={element} chartType="line" position="top" />}
               type="monotone"
               dataKey={element.accessor}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               strokeWidth={element.width}
-              activeDot={{ onClick: onDataPointClickInternal }}
+              activeDot={{ onClick: onDataPointClickInternal } as any}
               isAnimationActive={noAnimation === false}
             />
           );

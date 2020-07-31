@@ -239,6 +239,8 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
           return (
             <Scatter
               className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               onMouseDown={onDataPointClickInternal}
               opacity={dataSet.opacity}
               data={dataSet?.data}

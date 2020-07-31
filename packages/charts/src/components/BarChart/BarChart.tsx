@@ -237,9 +237,14 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               barSize={element.width}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
             >
+              {/*
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore*/}
               <LabelList
                 valueAccessor={valueAccessor(element.accessor)}
                 content={<ChartDataLabel config={element} chartType="bar" position={'insideRight'} />}

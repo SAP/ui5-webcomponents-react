@@ -227,6 +227,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         {chartConfig.secondYAxis?.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
@@ -248,9 +250,14 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               barSize={element.width}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
             >
+              {/*
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore*/}
               <LabelList
                 valueAccessor={valueAccessor(element.accessor)}
                 content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
