@@ -24,8 +24,6 @@ jobs:
       run: |
         yarn install
         yarn build:storybook
-      env:
-        UI5_WEBCOMPONENTS_FOR_REACT_RELEASE_BUILD: true
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@3.5.7
