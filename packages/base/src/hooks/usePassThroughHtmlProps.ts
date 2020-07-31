@@ -1,6 +1,6 @@
 const PROP_WHITELIST = /^(aria-|data-|id$|on[A-Z])/;
 
-export const usePassThroughHtmlProps = (props: Record<string, unknown>, propBlackList: string[] = []) => {
+export const usePassThroughHtmlProps = (props: Record<string, any>, propBlackList: string[] = []) => {
   const componentPropBlacklist = new Set(propBlackList);
 
   const returnVal = {};

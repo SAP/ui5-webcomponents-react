@@ -28,7 +28,7 @@ export interface WithWebComponentPropTypes extends CommonProps, HTMLAttributes<H
   children?: any | void;
 }
 
-export const withWebComponent = <T extends Record<string, unknown>>(
+export const withWebComponent = <T extends Record<string, any>>(
   TagName: string,
   regularProperties: string[],
   booleanProperties: string[],
