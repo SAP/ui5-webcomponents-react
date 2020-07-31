@@ -404,7 +404,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
                     onDragEnter={handleDragEnter}
                     onDragEnd={handleOnDragEnd}
                     dragOver={column.id === dragOver}
-                    isDraggable={!isTreeTable && column.canReorder}
+                    isDraggable={column.canReorder}
                   >
                     {column.render('Header')}
                   </ColumnHeader>
