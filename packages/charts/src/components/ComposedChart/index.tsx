@@ -162,8 +162,8 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex, event) => {
-      if (payload.name) {
-        typeof onDataPointClick === 'function' &&
+      if (typeof onDataPointClick === 'function') {
+        if (payload.name) {
           onDataPointClick(
             enrichEventWithDetails(event ?? eventOrIndex, {
               value: payload.value.length ? payload.value[1] - payload.value[0] : payload.value,
@@ -179,8 +179,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               payload: payload.payload
             })
           );
-      } else {
-        typeof onDataPointClick === 'function' &&
+        } else {
           onDataPointClick(
             enrichEventWithDetails(
               {},
@@ -192,6 +191,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               }
             )
           );
+        }
       }
     },
     [onDataPointClick]
@@ -301,7 +301,15 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
         {chartConfig.secondYAxis?.dataKey && layout === 'vertical' && (
           <XAxis
             dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
+            axisLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            tick={{ fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})` }}
+            tickLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="top"
             interval={0}
