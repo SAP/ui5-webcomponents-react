@@ -16,6 +16,7 @@ import { BusyIndicator } from '@ui5/webcomponents-react/lib/BusyIndicator';
 import { BusyIndicatorSize } from '@ui5/webcomponents-react/lib/BusyIndicatorSize';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
+import { InputPropTypes } from '@ui5/webcomponents-react/lib/Input';
 import { Toolbar } from '@ui5/webcomponents-react/lib/Toolbar';
 import { ToolbarSeparator } from '@ui5/webcomponents-react/lib/ToolbarSeparator';
 import { ToolbarSpacer } from '@ui5/webcomponents-react/lib/ToolbarSpacer';
@@ -41,7 +42,7 @@ import { filterValue, renderSearchWithValue } from './utils';
 
 export interface FilterBarPropTypes extends CommonProps {
   children: ReactNode | ReactNodeArray;
-  search?: ReactNode;
+  search?: ReactElement<InputPropTypes>;
   variants?: ReactNode;
   useToolbar?: boolean;
   filterBarExpanded?: boolean;
@@ -114,13 +115,13 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState(undefined);
+  const [searchValue, setSearchValue] = useState<string>(undefined);
   const searchRef = useRef(null);
   const filterRefs = useRef({});
   const [dialogRefs, setDialogRefs] = useState({});
   const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});
-  const prevSearchInputPropsValueRef = useRef();
+  const prevSearchInputPropsValueRef = useRef<string>();
 
   const [clearText, restoreText, showFilterBarText, hideFilterBarText, goText, filtersText] = useI18nText(
     '@ui5/webcomponents-react',
@@ -171,8 +172,8 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   );
 
   const handleDialogSave = useCallback(
-    (e, dialogRefs, updatedToggledFilters) => {
-      setDialogRefs(dialogRefs);
+    (e, newRefs, updatedToggledFilters) => {
+      setDialogRefs(newRefs);
       setToggledFilters({ ...toggledFilters, ...updatedToggledFilters });
       if (onFiltersDialogSave) {
         onFiltersDialogSave(enrichEventWithDetails(e));
@@ -227,19 +228,19 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
         return child;
       });
     }
-    return Children.toArray(children) as any;
+    return Children.toArray(children) as unknown[];
   }, [toggledFilters, children]);
 
   const renderChildren = useCallback(() => {
-    let childProps = { considerGroupName: considerGroupName, inFB: true } as any;
+    const childProps = { considerGroupName, inFB: true } as any;
     return safeChildren()
-      .filter((item) => {
-        if (item.type.displayName !== 'FilterGroupItem') return true; //needed for deprecated FilterItem or custom elements
+      .filter((item: ReactElement<any, any>) => {
+        if (item.type.displayName !== 'FilterGroupItem') return true; // needed for deprecated FilterItem or custom elements
 
-        return !!item?.props && item?.props.visible && item.props?.visibleInFilterBar;
+        return item?.props?.visible && item.props?.visibleInFilterBar;
       })
-      .map((child) => {
-        if (child.type.displayName !== 'FilterGroupItem') return child; //needed for deprecated FilterItem or custom elements
+      .map((child: ReactElement<any, any>) => {
+        if (child.type.displayName !== 'FilterGroupItem') return child; // needed for deprecated FilterItem or custom elements
         if (filterContainerWidth) {
           childProps.style = { width: filterContainerWidth, ...child.props.style };
         }
