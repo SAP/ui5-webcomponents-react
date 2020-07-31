@@ -98,11 +98,11 @@ export interface ComposedChartProps extends IChartBaseProps {
   layout?: 'horizontal' | 'vertical';
 }
 
-enum ChartTypes {
-  line = Line,
-  bar = Bar,
-  area = Area
-}
+const ChartTypes = {
+  line: Line,
+  bar: Bar,
+  area: Area
+};
 
 type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
