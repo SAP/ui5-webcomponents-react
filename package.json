@@ -14,10 +14,10 @@
     "pretest": "rimraf coverage && lerna run build:i18n",
     "test": "jest --config=config/jest.config.js --coverage",
     "clean": "lerna run clean --stream && rimraf coverage",
-    "postversion": "node ./scripts/postversion/index.js",
     "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{ts,tsx}\"",
     "lint": "eslint packages",
-    "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push"
+    "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
+    "deploy:storybook": "lerna run build:i18n && storybook-to-ghpages --ci"
   },
   "dependencies": {
     "@storybook/addon-actions": "6.0.0-rc.20",
