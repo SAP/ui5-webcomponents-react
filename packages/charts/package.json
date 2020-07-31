@@ -19,7 +19,7 @@
     "build": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "@babel/runtime": "7.10.5",
+    "@babel/runtime": "7.11.0",
     "lodash.debounce": "^4.0.8",
     "react-content-loader": "5.1.0",
     "recharts": "2.0.0-beta.6"
