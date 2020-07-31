@@ -21,7 +21,7 @@ yarn build
 bash ${WORKSPACE}/scripts/ci/setup-npm.sh
 
 # trigger lerna release
-${WORKSPACE}/node_modules/.bin/lerna publish minor --conventional-graduate \
+${WORKSPACE}/node_modules/.bin/lerna publish patch --conventional-graduate \
   --create-release github
 
 # deploy docs
