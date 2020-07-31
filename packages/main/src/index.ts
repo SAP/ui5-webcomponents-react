@@ -154,6 +154,7 @@ import { UploadState } from './lib/UploadState';
 import { ValueState } from './lib/ValueState';
 import { VariantManagement } from './lib/VariantManagement';
 import { VerticalAlign } from './lib/VerticalAlign';
+import { withWebComponent } from './lib/withWebComponent';
 
 export {
   ActionSheet,
@@ -307,5 +308,6 @@ export {
   UploadState,
   ValueState,
   VariantManagement,
-  VerticalAlign
+  VerticalAlign,
+  withWebComponent
 };
