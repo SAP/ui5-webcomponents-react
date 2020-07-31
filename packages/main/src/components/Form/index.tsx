@@ -83,7 +83,7 @@ export interface FormPropTypes extends CommonProps {
 
 const useStyles = createComponentStyles(styles, { name: 'Form' });
 
-const createArrayOfLength = (length) => {
+const createArrayOfLength = (length): unknown[][] => {
   const arr = new Array(length);
   for (let i = 0; i < length; i++) {
     arr[i] = [];
@@ -150,10 +150,10 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
   const classes = useStyles();
 
   const [formGroups, updatedTitle] = useMemo(() => {
-    let formGroups: any[] = [];
+    const computedFormGroups: any[] = [];
 
-    if (Children.count(children) === 1 && !title && children.props.title?.length > 0) {
-      return [cloneElement(children as ReactElement, { title: null }), children.props.title];
+    if (Children.count(children) === 1 && !title && (children as ReactElement).props.title?.length > 0) {
+      return [cloneElement(children as ReactElement, { title: null }), (children as ReactElement).props.title];
     }
 
     const currentColumnCount = columnsMap.get(currentRange);
@@ -175,29 +175,34 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
 
       formGroupsForRow.forEach((formGroup, index) => {
         if (formGroup) {
-          formGroups.push(
+          computedFormGroups.push(
             <Title
               level={TitleLevel.H5}
               style={{ paddingBottom: '0.75rem', gridColumn: 'span 12' }}
               key={`title-col-${index}-row-${totalRowCount}`}
             >
-              {formGroup?.props?.title ?? ''}
+              {(formGroup as ReactElement)?.props?.title ?? ''}
             </Title>
           );
           childrenOfFormGroups[index] =
-            formGroup.type.displayName === 'FormItem' ? [formGroup] : Children.toArray(formGroup?.props?.children);
+            ((formGroup as ReactElement).type as any).displayName === 'FormItem'
+              ? [formGroup]
+              : Children.toArray((formGroup as ReactElement)?.props?.children);
         }
       });
       totalRowCount++;
 
-      const maxChildCount = Math.max(...childrenOfFormGroups.map((children) => children.length));
+      const maxChildCount = Math.max(...childrenOfFormGroups.map((c) => c.length));
 
       for (let childIndex = 0; childIndex < maxChildCount; childIndex++) {
         childrenOfFormGroups.forEach((child, columnIndex) => {
           if (child[childIndex]) {
             // @ts-ignore
-            formGroups.push(
-              cloneElement(child[childIndex], { key: `col-${columnIndex}-row-${totalRowCount}`, columnIndex })
+            computedFormGroups.push(
+              cloneElement(child[childIndex] as ReactElement, {
+                key: `col-${columnIndex}-row-${totalRowCount}`,
+                columnIndex
+              })
             );
           }
         });
@@ -205,7 +210,7 @@ const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLD
       }
     }
 
-    return [formGroups, title];
+    return [computedFormGroups, title];
   }, [children, currentRange, title, columnsMap.get(currentRange)]);
 
   const passThroughProps = usePassThroughHtmlProps(props);
