@@ -1,0 +1,9 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: UI5 Web Components for React
+Upstream-Contact: ui5-webcomponents-react@sap.com
+Source: https://github.com/SAP/ui5-webcomponents-react
+
+Files:
+    *
+Copyright:  2019-2020 SAP SE or an SAP affiliate company and UI5 Web Components for React contributors
+License: Apache-2.0
