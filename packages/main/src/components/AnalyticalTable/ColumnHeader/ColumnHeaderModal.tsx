@@ -19,6 +19,7 @@ import { Popover } from '@ui5/webcomponents-react/lib/Popover';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
 import React, { CSSProperties, forwardRef, RefObject, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { Ui5PopoverDomRef } from '../../../interfaces/Ui5PopoverDomRef';
 import { stopPropagation } from '../../../internal/stopPropagation';
 import { ColumnType } from '../types/ColumnType';
@@ -109,7 +110,7 @@ export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties,
   const isSortedAscending = column.isSorted && column.isSortedDesc === false;
   const isSortedDescending = column.isSorted && column.isSortedDesc === true;
 
-  return (
+  return createPortal(
     <Popover
       noArrow
       horizontalAlign={PopoverHorizontalAlign.Left}
@@ -158,7 +159,8 @@ export const ColumnHeaderModal = forwardRef((props: ColumnHeaderModalProperties,
           </StandardListItem>
         )}
       </List>
-    </Popover>
+    </Popover>,
+    document.body
   );
 });
 ColumnHeaderModal.displayName = 'ColumnHeaderModal';
