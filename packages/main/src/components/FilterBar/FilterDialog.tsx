@@ -179,7 +179,7 @@ export const FilterDialog = (props) => {
 
   const renderHeader = useCallback(
     () => (
-      <FlexBox direction={FlexBoxDirection.Column} className={classes.header}>
+      <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Center} className={classes.header}>
         <Title level={TitleLevel.H4}>Filters</Title>
         {showSearch && (
           <Input placeholder={searchForFiltersText} onInput={handleSearch} icon={<Icon name="search" />} />
