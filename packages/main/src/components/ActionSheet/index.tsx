@@ -4,16 +4,15 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { useConsolidatedRef } from '@ui5/webcomponents-react-base/lib/useConsolidatedRef';
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
-import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { ResponsivePopover } from '@ui5/webcomponents-react/lib/ResponsivePopover';
 import React, { Children, cloneElement, FC, forwardRef, ReactElement, RefObject } from 'react';
+import { createPortal } from 'react-dom';
 import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';
 import { ButtonPropTypes } from '../../webComponents/Button';
 import { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover';
 import styles from './ActionSheet.jss';
 
-export interface ActionSheetPropTypes extends ResponsivePopoverPropTypes {
-  placement?: PlacementType;
+export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {
   children?: ReactElement<ButtonPropTypes> | ReactElement<ButtonPropTypes>[];
 }
 
@@ -56,10 +55,7 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
 
     const classes = useStyles();
 
-    const actionSheetClasses = StyleClassHelper.of(classes.actionSheet);
-    if (className) {
-      actionSheetClasses.put(className);
-    }
+    const actionSheetClasses = StyleClassHelper.of(classes.actionSheet).putIfPresent(className);
 
     const popoverRef: RefObject<Ui5ResponsivePopoverDomRef> = useConsolidatedRef(ref);
 
@@ -86,12 +82,12 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
       'onBeforeOpen'
     ]);
 
-    return (
+    return createPortal(
       <ResponsivePopover
         ref={popoverRef}
         style={style}
         slot={slot}
-        className={actionSheetClasses.valueOf()}
+        className={actionSheetClasses.className}
         allowTargetOverlap={allowTargetOverlap}
         headerText={headerText}
         horizontalAlign={horizontalAlign}
@@ -109,14 +105,12 @@ const ActionSheet: FC<ActionSheetPropTypes> = forwardRef(
         {...passThroughProps}
       >
         {Children.map(children, renderActionSheetButton)}
-      </ResponsivePopover>
+      </ResponsivePopover>,
+      document.body
     );
   }
 );
 
-ActionSheet.defaultProps = {
-  placement: PlacementType.Bottom
-};
 ActionSheet.displayName = 'ActionSheet';
 
 export { ActionSheet };

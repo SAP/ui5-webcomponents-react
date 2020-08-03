@@ -158,42 +158,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
             design="Transparent"
             icon="navigation-down-arrow"
           />
-          <ui5-responsive-popover
-            header-text="Variants"
-            horizontal-align="Center"
-            placement-type="Bottom"
-            vertical-align="Center"
-          >
-            <ui5-button
-              class="VariantManagement-footer-0"
-              design="Emphasized"
-              slot="footer"
-            >
-              Cancel
-            </ui5-button>
-            <ui5-list
-              mode="SingleSelect"
-              separators="All"
-            >
-              <ui5-li
-                data-key="1"
-                info-state="None"
-                selected="true"
-                style="width: 300px;"
-                type="Active"
-              >
-                Variant 1
-              </ui5-li>
-              <ui5-li
-                data-key="2"
-                info-state="None"
-                style="width: 300px;"
-                type="Active"
-              >
-                Variant 2
-              </ui5-li>
-            </ui5-list>
-          </ui5-responsive-popover>
         </div>
       </div>
       <div>

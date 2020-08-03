@@ -17,6 +17,7 @@ import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem'
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { FC, forwardRef, Ref, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5ResponsivePopoverDomRef } from '../../interfaces/Ui5ResponsivePopoverDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
@@ -166,27 +167,30 @@ const VariantManagement: FC<VariantManagementPropTypes> = forwardRef(
           icon="navigation-down-arrow"
           disabled={disabled}
         />
-        <ResponsivePopover
-          ref={popoverRef}
-          headerText={popupTitle}
-          placementType={placement}
-          footer={footerButtons}
-          onAfterClose={stopPropagation}
-        >
-          <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
-            {variantItems.map((item) => (
-              <StandardListItem
-                style={{ width: '300px' }}
-                data-key={item.key}
-                type={ListItemTypes.Active}
-                key={item.key}
-                selected={selectedKey === item.key}
-              >
-                {item.label}
-              </StandardListItem>
-            ))}
-          </List>
-        </ResponsivePopover>
+        {createPortal(
+          <ResponsivePopover
+            ref={popoverRef}
+            headerText={popupTitle}
+            placementType={placement}
+            footer={footerButtons}
+            onAfterClose={stopPropagation}
+          >
+            <List onItemClick={handleVariantItemSelect} mode={ListMode.SingleSelect}>
+              {variantItems.map((item) => (
+                <StandardListItem
+                  style={{ width: '300px' }}
+                  data-key={item.key}
+                  type={ListItemTypes.Active}
+                  key={item.key}
+                  selected={selectedKey === item.key}
+                >
+                  {item.label}
+                </StandardListItem>
+              ))}
+            </List>
+          </ResponsivePopover>,
+          document.body
+        )}
       </div>
     );
   }
