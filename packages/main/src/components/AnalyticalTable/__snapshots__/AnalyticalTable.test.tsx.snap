@@ -2172,7 +2172,6 @@ exports[`AnalyticalTable render without data 1`] = `
 exports[`AnalyticalTable test Asc desc 1`] = `
 <DocumentFragment>
   <div
-    data-testid="table"
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
@@ -2562,7 +2561,6 @@ exports[`AnalyticalTable test Asc desc 1`] = `
 exports[`AnalyticalTable test Asc desc 2`] = `
 <DocumentFragment>
   <div
-    data-testid="table"
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
@@ -2952,7 +2950,6 @@ exports[`AnalyticalTable test Asc desc 2`] = `
 exports[`AnalyticalTable test Asc desc 3`] = `
 <DocumentFragment>
   <div
-    data-testid="table"
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
