@@ -1,9 +1,8 @@
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { ListSeparators } from '@ui5/webcomponents-react/lib/ListSeparators';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/List';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface ListPropTypes extends WithWebComponentPropTypes {
   /**
@@ -19,7 +18,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
    */
   headerText?: string;
   /**
-   * Defines if the component would fire the <code>loadMore</code> event when the user scrolls to the bottom of the list, and helps achieving an "infinite scroll" effect by adding new items each time.
+   * Defines if the component would fire the <code>load-more</code> event when the user scrolls to the bottom of the list, and helps achieving an "infinite scroll" effect by adding new items each time.
    */
   infiniteScroll?: boolean;
   /**
@@ -27,7 +26,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
    */
   inset?: boolean;
   /**
-   * Defines the mode of the <code>ui5-list</code>. <br><br> <b>Note:</b> Avalaible options are <code>None</code>, <code>SingleSelect</code>, <code>MultiSelect</code>, and <code>Delete</code>.
+   * Defines the mode of the <code>ui5-list</code>. <br><br> <b>Note:</b> Available options are <code>None</code>, <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code>, <code>MultiSelect</code>, and <code>Delete</code>.
    */
   mode?: ListMode;
   /**
@@ -43,7 +42,7 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the <code>ui5-li</code> header. <br><br> <b>Note:</b> When <code>header</code> is set, the <code>headerText</code> property is ignored.
+   * Defines the <code>ui5-list</code> header. <br><br> <b>Note:</b> When <code>header</code> is set, the <code>headerText</code> property is ignored.
    */
   header?: ReactNode | ReactNode[];
   /**
@@ -51,15 +50,23 @@ export interface ListPropTypes extends WithWebComponentPropTypes {
    */
   onItemClick?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
+   * Fired when the <code>Close</code> button of any item is clicked <br><br> <b>Note:</b> This event is applicable to <code>ui5-li-notification</code> items only, not to be confused with <code>item-delete</code>.
+   */
+  onItemClose?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  /**
    * Fired when the Delete button of any item is pressed. <br><br> <b>Note:</b> A Delete button is displayed on each item, when the <code>ui5-list</code> <code>mode</code> property is set to <code>Delete</code>.
    */
   onItemDelete?: (event: CustomEvent<{ item: ReactNode }>) => void;
+  /**
+   * Fired when the <code>Toggle</code> button of any item is clicked. <br><br> <b>Note:</b> This event is applicable to <code>ui5-li-notification-group</code> items only.
+   */
+  onItemToggle?: (event: CustomEvent<{ item: ReactNode }>) => void;
   /**
    * Fired when the user scrolls to the bottom of the list. <br><br> <b>Note:</b> The event is fired when the <code>infiniteScroll</code> property is enabled.
    */
   onLoadMore?: (event: CustomEvent<{}>) => void;
   /**
-   * Fired when selection is changed by user interaction in <code>SingleSelect</code> and <code>MultiSelect</code> modes.
+   * Fired when selection is changed by user interaction in <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code> modes.
    */
   onSelectionChange?: (event: CustomEvent<{ selectedItems: unknown[]; previouslySelectedItems: unknown[] }>) => void;
 }
@@ -74,7 +81,7 @@ const List: FC<ListPropTypes> = withWebComponent<ListPropTypes>(
   ['footerText', 'headerText', 'mode', 'noDataText', 'separators'],
   ['busy', 'infiniteScroll', 'inset'],
   ['header'],
-  ['itemClick', 'itemDelete', 'loadMore', 'selectionChange']
+  ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'selection-change']
 );
 
 List.displayName = 'List';

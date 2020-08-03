@@ -1,12 +1,13 @@
-import { Children, ReactElement, RefObject } from 'react';
+import { Children, ReactElement, ReactNode, RefObject } from 'react';
 
-export const safeGetChildrenArray = <T = any>(children): T[] => Children.toArray(children).filter(Boolean);
+export const safeGetChildrenArray = <T = Exclude<ReactNode, boolean | null | undefined>>(children: unknown): T[] =>
+  Children.toArray(children).filter(Boolean) as T[];
 
 export const getSectionById = (sections: ReactElement<any> | ReactElement<any>[], id) => {
-  return safeGetChildrenArray(sections).find((objectPageSection) => objectPageSection.props?.id === id);
+  return safeGetChildrenArray(sections).find((objectPageSection: ReactElement) => objectPageSection.props?.id === id);
 };
 
-export const extractSectionIdFromHtmlId = (id) => {
+export const extractSectionIdFromHtmlId = (id: string) => {
   return id.replace(/^ObjectPageSection-/, '');
 };
 

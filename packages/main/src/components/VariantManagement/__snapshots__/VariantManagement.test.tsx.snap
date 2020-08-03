@@ -115,19 +115,17 @@ exports[`VariantManagement With suggestions 1`] = `
     class="VariantManagement-title-0"
     level="H4"
   >
-    Variant 2
+    Variant 1
   </ui5-title>
   <ui5-button
     design="Transparent"
     icon="navigation-down-arrow"
   />
   <ui5-responsive-popover
-    _max-content-height="-8"
-    actual-placement-type="Bottom"
     header-text="Variants"
     horizontal-align="Center"
     placement-type="Bottom"
-    style="z-index: 102; visibility: visible; display: none; left: 0px; top: 8px;"
+    style="z-index: 102; visibility: visible; display: none;"
     vertical-align="Center"
   >
     <ui5-button
@@ -146,6 +144,7 @@ exports[`VariantManagement With suggestions 1`] = `
         data-key="1"
         has-title=""
         info-state="None"
+        selected="true"
         style="width: 300px;"
         type="Active"
       >
@@ -156,7 +155,7 @@ exports[`VariantManagement With suggestions 1`] = `
         data-key="2"
         has-title=""
         info-state="None"
-        selected="true"
+        selected=""
         style="width: 300px;"
         type="Active"
       >

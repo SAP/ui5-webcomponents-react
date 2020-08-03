@@ -3,7 +3,7 @@ const fs = require('fs');
 const PATHS = require('../../../config/paths');
 
 const LIB_BASE_PATH = path.resolve(PATHS.packages, 'main', 'src', 'lib');
-const INTERNAL_COMPONENTS = ['withWebComponent', 'ScrollContext'];
+const INTERNAL_COMPONENTS = ['ScrollContext'];
 
 const allLibFiles = fs
   .readdirSync(LIB_BASE_PATH)

@@ -1,8 +1,7 @@
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/MultiComboBox';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onChange' | 'onInput'> {
   /**
@@ -69,7 +68,7 @@ const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBox
   ['placeholder', 'value', 'valueState'],
   ['allowCustomValues', 'disabled', 'open', 'readonly', 'required'],
   [],
-  ['change', 'input', 'openChange', 'selectionChange']
+  ['change', 'input', 'open-change', 'selection-change']
 );
 
 MultiComboBox.displayName = 'MultiComboBox';

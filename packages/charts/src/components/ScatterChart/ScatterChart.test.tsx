@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
 import { mount } from 'enzyme';
 import * as React from 'react';
 import { scatterComplexDataSet } from '../../resources/DemoProps';
@@ -10,9 +8,6 @@ describe('Scatter Chart', () => {
     expect(
       mount(
         <ScatterChart
-          loading={boolean('loading', false)}
-          onDataPointClick={action('onDataPointClick')}
-          onLegendClick={action('onLegendClick')}
           dataset={scatterComplexDataSet}
           style={{ width: '100%' }}
           measures={[

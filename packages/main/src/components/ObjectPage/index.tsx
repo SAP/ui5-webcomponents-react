@@ -107,7 +107,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
     keyInfos
   } = props;
 
-  const firstSectionId = safeGetChildrenArray(children)[0]?.props?.id;
+  const firstSectionId = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
 
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState(selectedSectionId ?? firstSectionId);
   const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
@@ -456,7 +456,7 @@ const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTyp
         classes={classes}
         imageShapeCircle={imageShapeCircle}
         showTitleInHeaderContent={showTitleInHeaderContent}
-        headerContentProp={headerContent}
+        headerContentProp={headerContent as ReactElement}
         breadcrumbs={breadcrumbs}
         keyInfos={keyInfos}
         title={title}

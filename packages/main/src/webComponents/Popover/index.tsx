@@ -1,10 +1,9 @@
 import { PlacementType } from '@ui5/webcomponents-react/lib/PlacementType';
 import { PopoverHorizontalAlign } from '@ui5/webcomponents-react/lib/PopoverHorizontalAlign';
 import { PopoverVerticalAlign } from '@ui5/webcomponents-react/lib/PopoverVerticalAlign';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Popover';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface PopoverPropTypes extends WithWebComponentPropTypes {
   /**
@@ -19,10 +18,6 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
    * Determines the horizontal alignment of the <code>ui5-popover</code>. <br><br> Available options are: <ul> <li><code>Center</code></li> <li><code>Left</code></li> <li><code>Right</code></li> <li><code>Stretch</code></li> </ul>
    */
   horizontalAlign?: PopoverHorizontalAlign;
-  /**
-   * Defines the ID of the HTML Element, which will get the initial focus.
-   */
-  initialFocus?: string;
   /**
    * Defines whether the <code>ui5-popover</code> should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
    */
@@ -40,9 +35,13 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
    */
   verticalAlign?: PopoverVerticalAlign;
   /**
-   * Defines the content of the Web Component.
+   * Defines the ID of the HTML Element, which will get the initial focus.
    */
-  children?: ReactNode | ReactNode[];
+  initialFocus?: string;
+  /**
+   * Defines if the focus should be returned to the previously focused element, when the popup closes.
+   */
+  preventFocusRestore?: boolean;
   /**
    * Defines the footer HTML Element.
    */
@@ -52,19 +51,23 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
    */
   header?: ReactNode | ReactNode[];
   /**
-   * Fired after the component is closed.
+   * Defines the content of the Popup.
+   */
+  children?: ReactNode | ReactNode[];
+  /**
+   * Fired after the component is closed. This event does not bubble.
    */
   onAfterClose?: (event: CustomEvent<{}>) => void;
   /**
-   * Fired after the component is opened.
+   * Fired after the component is opened. This event does not bubble.
    */
   onAfterOpen?: (event: CustomEvent<{}>) => void;
   /**
-   * Fired before the component is closed.
+   * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. This event does not bubble.
    */
   onBeforeClose?: (event: CustomEvent<{ escPressed: boolean }>) => void;
   /**
-   * Fired before the component is opened.
+   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
   onBeforeOpen?: (event: CustomEvent<{}>) => void;
 }
@@ -76,10 +79,10 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
  */
 const Popover: FC<PopoverPropTypes> = withWebComponent<PopoverPropTypes>(
   'ui5-popover',
-  ['headerText', 'horizontalAlign', 'initialFocus', 'placementType', 'verticalAlign'],
-  ['allowTargetOverlap', 'modal', 'noArrow'],
+  ['headerText', 'horizontalAlign', 'placementType', 'verticalAlign', 'initialFocus'],
+  ['allowTargetOverlap', 'modal', 'noArrow', 'preventFocusRestore'],
   ['footer', 'header'],
-  ['afterClose', 'afterOpen', 'beforeClose', 'beforeOpen']
+  ['after-close', 'after-open', 'before-close', 'before-open']
 );
 
 Popover.displayName = 'Popover';
@@ -90,7 +93,8 @@ Popover.defaultProps = {
   modal: false,
   noArrow: false,
   placementType: PlacementType.Right,
-  verticalAlign: PopoverVerticalAlign.Center
+  verticalAlign: PopoverVerticalAlign.Center,
+  preventFocusRestore: false
 };
 
 export { Popover };

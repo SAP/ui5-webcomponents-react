@@ -1547,7 +1547,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
       <div
         class="AnalyticalTable-th-0"
         data-column-id="name"
-        draggable="false"
+        draggable="true"
         id="name"
         role="columnheader"
         style="position: relative; width: 150px; cursor: pointer;"
@@ -1618,7 +1618,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
       <div
         class="AnalyticalTable-th-0"
         data-column-id="age"
-        draggable="false"
+        draggable="true"
         id="age"
         role="columnheader"
         style="position: relative; width: 150px; cursor: pointer;"
@@ -1689,7 +1689,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.name"
-        draggable="false"
+        draggable="true"
         id="friend.name"
         role="columnheader"
         style="position: relative; width: 150px; cursor: pointer;"
@@ -1760,7 +1760,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
       <div
         class="AnalyticalTable-th-0"
         data-column-id="friend.age"
-        draggable="false"
+        draggable="true"
         id="friend.age"
         role="columnheader"
         style="position: relative; width: 150px; cursor: pointer;"

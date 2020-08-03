@@ -67,12 +67,14 @@ const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, r
         startAngle={90}
         endAngle={-270}
       >
-        <PolarAngleAxis type="number" domain={range} tick={false} />
+        <PolarAngleAxis type="number" domain={range as any} tick={false} />
         <RadialBar
           background={radialBarBackground}
           dataKey="value"
           cornerRadius="50%"
           fill={color ?? ThemingParameters.sapChart_OrderedColor_1}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           onClick={onDataPointClickInternal}
         />
         <text

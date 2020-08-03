@@ -1,8 +1,7 @@
 import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/CustomListItem';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -17,6 +16,10 @@ export interface CustomListItemPropTypes extends WithWebComponentPropTypes {
    * Defines the content of the <code>ui5-li-custom</code>.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired when the user clicks on the detail button when type is <code>Detail</code>.
+   */
+  onDetailClick?: (event: CustomEvent<{}>) => void;
 }
 
 /**
@@ -29,7 +32,7 @@ const CustomListItem: FC<CustomListItemPropTypes> = withWebComponent<CustomListI
   ['type'],
   ['selected'],
   [],
-  []
+  ['detail-click']
 );
 
 CustomListItem.displayName = 'CustomListItem';

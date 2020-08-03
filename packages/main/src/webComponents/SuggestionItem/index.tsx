@@ -1,8 +1,8 @@
+import { ListItemTypes } from '@ui5/webcomponents-react/lib/ListItemTypes';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/SuggestionItem';
-import React, { FC } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC } from 'react';
 
 export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -37,6 +37,10 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
    * Defines the text of the <code>ui5-suggestion-item</code>.
    */
   text?: string;
+  /**
+   * Defines the visual indication and behavior of the item. Available options are <code>Active</code> (by default), <code>Inactive</code> and <code>Detail</code>. <br><br> <b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press and hover, while when <code>Inactive</code> or <code>Detail</code> - will not.
+   */
+  type?: ListItemTypes;
 }
 
 /**
@@ -46,7 +50,7 @@ export interface SuggestionItemPropTypes extends WithWebComponentPropTypes {
  */
 const SuggestionItem: FC<SuggestionItemPropTypes> = withWebComponent<SuggestionItemPropTypes>(
   'ui5-suggestion-item',
-  ['description', 'icon', 'image', 'info', 'infoState', 'text'],
+  ['description', 'icon', 'image', 'info', 'infoState', 'text', 'type'],
   ['group', 'iconEnd'],
   [],
   []
@@ -57,7 +61,8 @@ SuggestionItem.displayName = 'SuggestionItem';
 SuggestionItem.defaultProps = {
   group: false,
   iconEnd: false,
-  infoState: ValueState.None
+  infoState: ValueState.None,
+  type: ListItemTypes.Active
 };
 
 export { SuggestionItem };

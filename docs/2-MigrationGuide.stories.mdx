@@ -5,6 +5,11 @@ import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 # Migration Guide
 
 <br />
+
+_The most important breaking changes of the corresponding releases are outlined here.
+For a full list of all changes, please refer to [the list of releases](https://github.com/SAP/ui5-webcomponents-react/releases)
+or the [changelog](https://github.com/SAP/ui5-webcomponents-react/blob/master/CHANGELOG.md)._
+
 <br />
 
 ## Table of Contents
@@ -15,6 +20,16 @@ import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 ## Migrating from 0.9.x to 0.10.0
 
 <br />
+
+### Replaced Components with UI5 Web Components
+
+Those components were custom built in this repository and have now been replaced with the offical UI5 Web Components.
+This might lead to a changed API. Please consult our documentation for details on the new API.
+
+- `Notification` is replaced by `NotificationListItem`
+- `NotificationGroup` is replaced by `NotificationGroupListItem`
+- `ProgressIndicator`
+- `SideNavigation`
 
 ### API Consolidation (unified styling)
 
@@ -49,6 +64,16 @@ As those components were most probably only used internally this should not affe
 ### Removal of old event-api
 
 The [event-system](#event-system) that was deprecated in `0.9.0` is now removed.
+
+### Other Breaking Changes
+
+- **AnalyticalTable**: Remove prop `busyIndicatorEnabled` as this was duplicate to `loading`. The visibility of the busy indicator is now solely controlled by the prop loading.
+- **FormItem** / **FormGroup**: Those two components are now abstract components, so you can't add any styles, refs, classNames, etc them.
+- **ShellBar**: the prop `logo` is now accepting a `ReactNode` instead of a `string` which is pointing to an image.
+  Example:
+  ```js
+  <ShellBar logo={<img slot="logo" src="../../../assets/images/sap-logo-svg.svg" />} />
+  ```
 
 ### Charts
 

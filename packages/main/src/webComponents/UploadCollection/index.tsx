@@ -1,8 +1,7 @@
 import '@ui5/webcomponents-fiori/dist/UploadCollection';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface UploadCollectionPropTypes extends WithWebComponentPropTypes {
   /**
@@ -49,7 +48,7 @@ const UploadCollection: FC<UploadCollectionPropTypes> = withWebComponent<UploadC
   ['mode', 'noDataDescription', 'noDataText'],
   ['noDnd'],
   ['header'],
-  ['fileDeleted', 'selectionChange']
+  ['file-deleted', 'selection-change']
 );
 
 UploadCollection.displayName = 'UploadCollection';

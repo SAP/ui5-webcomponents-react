@@ -1,7 +1,6 @@
 import '@ui5/webcomponents-fiori/dist/ShellBarItem';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -12,6 +11,10 @@ export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
    * Defines the name of the item's icon.
    */
   icon?: string;
+  /**
+   * Defines the stable selector that you can use via getStableDomRef method.
+   */
+  stableDomRef?: unknown;
   /**
    * Defines the item text.
    */
@@ -29,10 +32,10 @@ export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
  */
 const ShellBarItem: FC<ShellBarItemPropTypes> = withWebComponent<ShellBarItemPropTypes>(
   'ui5-shellbar-item',
-  ['count', 'icon', 'text'],
+  ['count', 'icon', 'stableDomRef', 'text'],
   [],
   [],
-  ['itemClick']
+  ['item-click']
 );
 
 ShellBarItem.displayName = 'ShellBarItem';

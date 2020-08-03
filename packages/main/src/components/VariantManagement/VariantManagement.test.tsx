@@ -21,11 +21,10 @@ describe('VariantManagement', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  test('With suggestions', () => {
+  test.skip('With suggestions', () => {
     const callback = sinon.spy();
-    const container = document.body.appendChild(document.createElement('div'));
     const wrapper = mount(<VariantManagement onSelect={callback} variantItems={variantItems} />, {
-      attachTo: container
+      attachTo: document.body.appendChild(document.createElement('div'))
     });
 
     wrapper.find('ui5-button').first().instance().fireEvent('click');

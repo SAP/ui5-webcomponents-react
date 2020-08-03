@@ -1,0 +1,57 @@
+import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Tree } from '@ui5/webcomponents-react/lib/Tree';
+import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
+import { ReactNode } from 'react';
+import { TreeItem } from '@ui5/webcomponents-react/lib/TreeItem';
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import '@ui5/webcomponents-icons/dist/icons/copy';
+import '@ui5/webcomponents-icons/dist/icons/paste';
+
+<Meta
+  title="UI5 Web Components / Tree"
+  component={Tree}
+  subcomponents={{ TreeItem }}
+  argTypes={{
+    ...createSelectArgTypes({ mode: ListMode }),
+    children: { type: null },
+    header: { type: null }
+  }}
+  args={{
+    mode: ListMode.None,
+    footerText: 'This is a footer text'
+  }}
+/>
+
+<Title />
+<Subtitle />
+<Description />
+
+<Preview>
+  <Story name="Default">
+    {(args) => (
+      <Tree {...args}>
+        <TreeItem expanded text="Tree 1" icon="paste" selected>
+          <TreeItem expanded text="Tree 1.1" selected>
+            <TreeItem text="Tree 1.1.1"></TreeItem>
+            <TreeItem text="Tree 1.1.2"></TreeItem>
+          </TreeItem>
+        </TreeItem>
+        <TreeItem text="Tree 2" icon="copy">
+          <TreeItem text="Tree 2.1">
+            <TreeItem text="Tree 2.1.1"></TreeItem>
+            <TreeItem text="Tree 2.1.2">
+              <TreeItem text="Tree 2.1.2.1"></TreeItem>
+              <TreeItem text="Tree 2.1.2.2"></TreeItem>
+              <TreeItem text="Tree 2.1.2.3"></TreeItem>
+              <TreeItem text="Tree 2.1.2.5"></TreeItem>
+            </TreeItem>
+          </TreeItem>
+          <TreeItem text="Tree 2.2"></TreeItem>
+        </TreeItem>
+        <TreeItem expanded text="Tree 3 (no icon)"></TreeItem>
+      </Tree>
+    )}
+  </Story>
+</Preview>
+
+<Props story="Default" of={Tree} components={{ Tree, TreeItem }} />

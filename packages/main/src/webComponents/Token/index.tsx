@@ -1,7 +1,6 @@
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Token';
 import React, { FC, ReactNode, ReactNodeArray } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
 
 export interface TokenPropTypes extends Omit<WithWebComponentPropTypes, 'onSelect'> {
   selected?: boolean; // @generated

@@ -1,9 +1,8 @@
 import { TabContainerTabsPlacement } from '@ui5/webcomponents-react/lib/TabContainerTabsPlacement';
 import { TabLayout } from '@ui5/webcomponents-react/lib/TabLayout';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/TabContainer';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface TabContainerPropTypes extends WithWebComponentPropTypes {
   /**
@@ -50,7 +49,7 @@ const TabContainer: FC<TabContainerPropTypes> = withWebComponent<TabContainerPro
   ['tabLayout', 'tabsPlacement'],
   ['collapsed', 'fixed', 'showOverflow'],
   [],
-  ['tabSelect']
+  ['tab-select']
 );
 
 TabContainer.displayName = 'TabContainer';

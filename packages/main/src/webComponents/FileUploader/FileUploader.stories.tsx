@@ -1,8 +1,8 @@
+import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { FileUploader } from '@ui5/webcomponents-react/lib/FileUploader';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React from 'react';
-import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 export default {
   title: 'UI5 Web Components / FileUploader',

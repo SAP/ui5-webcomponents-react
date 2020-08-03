@@ -19,7 +19,7 @@ jobs:
     - name: install dependencies
       run: yarn install
     - name: run tests
-      run: yarn test
+      run: yarn test --runInBand
     - name: build project
       run: yarn build
     - name: publish

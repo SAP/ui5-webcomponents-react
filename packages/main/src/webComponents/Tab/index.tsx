@@ -1,8 +1,7 @@
 import { SemanticColor } from '@ui5/webcomponents-react/lib/SemanticColor';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Tab';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface TabPropTypes extends WithWebComponentPropTypes {
   /**
@@ -30,6 +29,10 @@ export interface TabPropTypes extends WithWebComponentPropTypes {
    */
   semanticColor?: SemanticColor;
   /**
+   * Defines the stable selector that you can use via getStableDomRef method.
+   */
+  stableDomRef?: unknown;
+  /**
    * The text to be displayed for the item.
    */
   text?: string;
@@ -46,7 +49,7 @@ export interface TabPropTypes extends WithWebComponentPropTypes {
  */
 const Tab: FC<TabPropTypes> = withWebComponent<TabPropTypes>(
   'ui5-tab',
-  ['additionalText', 'icon', 'semanticColor', 'text'],
+  ['additionalText', 'icon', 'semanticColor', 'stableDomRef', 'text'],
   ['disabled', 'selected'],
   [],
   []

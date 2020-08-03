@@ -1,7 +1,6 @@
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/TimelineItem';
-import React, { FC, ReactNode } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC, ReactNode } from 'react';
 
 export interface TimelineItemPropTypes extends WithWebComponentPropTypes {
   /**
@@ -46,7 +45,7 @@ const TimelineItem: FC<TimelineItemPropTypes> = withWebComponent<TimelineItemPro
   ['icon', 'itemName', 'subtitleText', 'titleText'],
   ['itemNameClickable'],
   [],
-  ['itemNameClick']
+  ['item-name-click']
 );
 
 TimelineItem.displayName = 'TimelineItem';

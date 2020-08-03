@@ -13,6 +13,7 @@ import {
   BarChart as ColumnChartLib,
   Brush,
   CartesianGrid,
+  Label,
   LabelList,
   Legend,
   ReferenceLine,
@@ -227,7 +228,15 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
         {chartConfig.secondYAxis?.dataKey && (
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
-            stroke={chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`}
+            axisLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            tick={{ fill: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})` }}
+            tickLine={{
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+            }}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="right"
             yAxisId="right"
@@ -248,10 +257,13 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               barSize={element.width}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               onClick={onDataPointClickInternal}
               isAnimationActive={noAnimation === false}
             >
               <LabelList
+                data={dataset}
                 valueAccessor={valueAccessor(element.accessor)}
                 content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
               />
@@ -259,6 +271,8 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           );
         })}
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -267,12 +281,9 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
           />
         )}
         {chartConfig.referenceLine && (
-          <ReferenceLine
-            stroke={chartConfig.referenceLine.color}
-            y={chartConfig.referenceLine.value}
-            label={chartConfig.referenceLine.label}
-            yAxisId={'left'}
-          />
+          <ReferenceLine stroke={chartConfig.referenceLine.color} y={chartConfig.referenceLine.value} yAxisId="left">
+            <Label>{chartConfig.referenceLine.label}</Label>
+          </ReferenceLine>
         )}
         <Tooltip
           cursor={tooltipFillOpacity}

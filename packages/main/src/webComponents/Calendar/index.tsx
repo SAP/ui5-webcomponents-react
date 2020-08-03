@@ -1,10 +1,15 @@
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
-import { withWebComponent } from '@ui5/webcomponents-react/lib/withWebComponent';
+import { withWebComponent, WithWebComponentPropTypes } from '@ui5/webcomponents-react/lib/withWebComponent';
 import '@ui5/webcomponents/dist/Calendar';
-import React, { FC } from 'react';
-import { WithWebComponentPropTypes } from '../../internal/withWebComponent';
+import { FC } from 'react';
 
 export interface CalendarPropTypes extends WithWebComponentPropTypes {
+  /**
+   * Defines the visibility of the week numbers column. <br><br><br/><br/>
+   *
+   * <b>Note:<b> For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.
+   */
+  hideWeekNumbers?: boolean;
   /**
    * Determines the maximum date available for selection.
    */
@@ -39,13 +44,15 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
 const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(
   'ui5-calendar',
   ['maxDate', 'minDate', 'primaryCalendarType', 'selectedDates', 'timestamp'],
+  ['hideWeekNumbers'],
   [],
-  [],
-  ['selectedDatesChange']
+  ['selected-dates-change']
 );
 
 Calendar.displayName = 'Calendar';
 
-Calendar.defaultProps = {};
+Calendar.defaultProps = {
+  hideWeekNumbers: false
+};
 
 export { Calendar };

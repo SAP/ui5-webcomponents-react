@@ -112,7 +112,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
   const shouldRenderHideHeaderButton = showHideHeaderButton;
   const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentHeight > 0;
   const showBothActions = shouldRenderHeaderPinnableButton && shouldRenderHideHeaderButton;
-  const [popoverContent, setPopoverContent] = useState(null);
+  const [popoverContent, setPopoverContent] = useState<ReactElement>(null);
   const popoverRef = useRef<Ui5PopoverDomRef>(null);
 
   const onPinHeader = useCallback(
@@ -126,7 +126,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
     (event) => {
       const { sectionId, index } = event.detail.tab.dataset;
       // eslint-disable-next-line eqeqeq
-      const section = safeGetChildrenArray(sections).find((el) => el.props.id == sectionId);
+      const section = safeGetChildrenArray<ReactElement>(sections).find((el) => el.props.id == sectionId);
       handleOnSectionSelected(
         enrichEventWithDetails({} as any, {
           ...section,
@@ -162,7 +162,7 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
   return (
     <section className={className} role="navigation" style={style} ref={ref}>
       <TabContainer collapsed fixed onTabSelect={onTabItemSelect} showOverflow>
-        {safeGetChildrenArray(sections).map((section, index) => {
+        {safeGetChildrenArray(sections).map((section: ReactElement, index) => {
           return (
             <ObjectPageAnchorButton
               key={`Anchor-${section.props?.id}`}

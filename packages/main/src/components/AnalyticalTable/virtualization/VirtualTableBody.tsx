@@ -221,7 +221,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
 
                 let contentToRender;
                 if (
-                  cell.column.id == '__ui5wcr__internal_highlight_column' ||
+                  cell.column.id === '__ui5wcr__internal_highlight_column' ||
                   cell.column.id === '__ui5wcr__internal_selection_column'
                 ) {
                   contentToRender = 'Cell';
