@@ -1,46 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ActionSheet Render without Crashing 1`] = `
-<ui5-responsive-popover
-  class="ActionSheet-actionSheet-0 myCustomClass"
-  horizontal-align="Center"
-  placement-type="Right"
-  vertical-align="Center"
->
-  <ui5-button
-    data-is-action-sheet-button=""
-    design="Transparent"
-    icon="add"
+<body>
+  <div />
+  <ui5-responsive-popover
+    class="ActionSheet-actionSheet myCustomClass"
+    horizontal-align="Center"
+    placement-type="Right"
+    vertical-align="Center"
   >
-    Accept
-  </ui5-button>
-  <ui5-button
-    data-is-action-sheet-button=""
-    design="Transparent"
-  >
-    Reject
-  </ui5-button>
-  <ui5-button
-    data-is-action-sheet-button=""
-    design="Transparent"
-  >
-    This is my super long text!
-  </ui5-button>
-</ui5-responsive-popover>
+    <ui5-button
+      data-is-action-sheet-button=""
+      design="Transparent"
+    >
+      Accept
+    </ui5-button>
+    <ui5-button
+      data-is-action-sheet-button=""
+      design="Transparent"
+    >
+      Reject
+    </ui5-button>
+    <ui5-button
+      data-is-action-sheet-button=""
+      design="Transparent"
+    >
+      This is my super long text!
+    </ui5-button>
+  </ui5-responsive-popover>
+</body>
 `;
 
 exports[`ActionSheet does not crash with other component 1`] = `
-<ui5-responsive-popover
-  class="ActionSheet-actionSheet-0"
-  horizontal-align="Center"
-  placement-type="Right"
-  vertical-align="Center"
->
-  <ui5-label
-    data-is-action-sheet-button=""
-    design="Transparent"
+<body>
+  <div />
+  <ui5-responsive-popover
+    class="ActionSheet-actionSheet"
+    horizontal-align="Center"
+    placement-type="Right"
+    vertical-align="Center"
   >
-    I should not crash
-  </ui5-label>
-</ui5-responsive-popover>
+    <ui5-label
+      data-is-action-sheet-button=""
+      design="Transparent"
+    >
+      I should not crash
+    </ui5-label>
+  </ui5-responsive-popover>
+</body>
 `;
