@@ -23,6 +23,7 @@ interface VirtualTableBodyProps {
   infiniteScroll: boolean;
   infiniteScrollThreshold: number;
   onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
+  columnVirtualizer: any;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -41,7 +42,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     totalColumnsWidth,
     infiniteScroll,
     infiniteScrollThreshold,
-    onLoadMore
+    onLoadMore,
+    columnVirtualizer
   } = props;
 
   const firedInfiniteLoadEvents = useRef(new Set());
@@ -167,7 +169,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     },
     [currentlyFocusedCell]
   );
-
   return (
     <div
       className={classNames.valueOf()}
@@ -184,8 +185,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         onKeyDown={onKeyboardNavigation}
         style={{
           height: `${rowVirtualizer.totalSize}px`,
-          width: `${totalColumnsWidth}px`,
-          position: 'relative'
+          width: `${columnVirtualizer.totalSize}px`
         }}
       >
         {rowVirtualizer.virtualItems.map((virtualRow) => {
@@ -204,16 +204,13 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           }
           prepareRow(row);
           const rowProps = row.getRowProps();
-
           return (
             <div
               {...rowProps}
-              style={{
-                height: `${virtualRow.size}px`,
-                transform: `translateY(${virtualRow.start}px)`
-              }}
+              style={{ height: `${virtualRow.size}px`, transform: `translateY(${virtualRow.start}px)` }}
             >
-              {row.cells.map((cell) => {
+              {columnVirtualizer.virtualItems.map((virtualColumn) => {
+                const cell = row.cells[virtualColumn.index];
                 const cellProps = cell.getCellProps();
                 if (row.original?.emptyRow) {
                   return <div {...cellProps} />;
@@ -236,9 +233,22 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 } else {
                   contentToRender = 'Cell';
                 }
-
                 // eslint-disable-next-line react/jsx-key
-                return <div {...cellProps}>{cell.render(contentToRender)}</div>;
+                return (
+                  <div
+                    {...cellProps}
+                    style={{
+                      ...cellProps.style,
+                      position: 'absolute',
+                      width: `${virtualColumn.size}px`,
+                      transform: `translateX(${virtualColumn.start}px)`,
+                      top: 0,
+                      left: 0
+                    }}
+                  >
+                    {cell.render(contentToRender)}
+                  </div>
+                );
               })}
             </div>
           );

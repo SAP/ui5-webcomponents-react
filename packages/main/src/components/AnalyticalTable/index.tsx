@@ -31,6 +31,7 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
+import { useVirtual } from 'react-virtual';
 import { AnalyticalTableColumnDefinition } from '../../interfaces/AnalyticalTableColumnDefinition';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnayticalTable.jss';
@@ -207,7 +208,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     dispatch,
     totalColumnsWidth,
     toggleRowSelected,
-    toggleAllRowsSelected
+    toggleAllRowsSelected,
+    visibleColumns
   } = useTable(
     {
       columns,
@@ -369,6 +371,13 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     } as CSSProperties;
   }, [tableState.tableClientWidth, style, rowHeight]);
 
+  const columnVirtualizer = useVirtual({
+    size: visibleColumns.length,
+    parentRef: tableRef,
+    estimateSize: useCallback((index) => visibleColumns[index].totalWidth, [visibleColumns]),
+    horizontal: true
+  });
+
   return (
     <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...passThroughProps}>
       {title && <TitleBar>{title}</TitleBar>}
@@ -446,6 +455,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
             infiniteScroll={infiniteScroll}
             infiniteScrollThreshold={infiniteScrollThreshold}
             onLoadMore={onLoadMore}
+            columnVirtualizer={columnVirtualizer}
           />
         )}
       </div>
