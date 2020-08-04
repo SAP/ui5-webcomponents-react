@@ -17,6 +17,7 @@ import { stopPropagation } from '../../internal/stopPropagation';
 import { StandardListItem } from '../../webComponents/StandardListItem';
 import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { safeGetChildrenArray } from './ObjectPageUtils';
+import { createPortal } from 'react-dom';
 
 addCustomCSS(
   'ui5-button',
@@ -195,17 +196,20 @@ const ObjectPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement
           data-ui5wcr-object-page-header-action=""
         />
       )}
-      <Popover placementType={PlacementType.Bottom} noArrow ref={popoverRef} onAfterClose={stopPropagation}>
-        <List onItemClick={onSubSectionClick}>
-          {popoverContent?.props?.children
-            .filter((item) => item.props && item.props.isSubSection)
-            .map((item) => (
-              <StandardListItem key={item.props.id} data-key={item.props.id}>
-                {item.props.title}
-              </StandardListItem>
-            ))}
-        </List>
-      </Popover>
+      {createPortal(
+        <Popover placementType={PlacementType.Bottom} noArrow ref={popoverRef} onAfterClose={stopPropagation}>
+          <List onItemClick={onSubSectionClick}>
+            {popoverContent?.props?.children
+              .filter((item) => item.props && item.props.isSubSection)
+              .map((item) => (
+                <StandardListItem key={item.props.id} data-key={item.props.id}>
+                  {item.props.title}
+                </StandardListItem>
+              ))}
+          </List>
+        </Popover>,
+        document.body
+      )}
     </section>
   );
 });

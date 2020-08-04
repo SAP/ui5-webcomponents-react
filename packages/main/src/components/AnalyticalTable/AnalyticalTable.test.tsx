@@ -1,5 +1,5 @@
 import { createPassThroughPropsTest } from '@shared/tests/utils';
-import { act, render } from '@testing-library/react';
+import { act, render, screen, fireEvent, cleanStaticAreaAfterEachTest, waitFor } from '@shared/tests';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
@@ -142,24 +142,25 @@ const dataTree = [
 ];
 
 describe('AnalyticalTable', () => {
-  test('test Asc desc', () => {
-    const wrapper = mount(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
+  cleanStaticAreaAfterEachTest();
 
-    expect(wrapper.render()).toMatchSnapshot();
+  beforeEach(() => {
+    window = Object.assign(window, { innerWidth: 1440 });
+  });
 
-    // test asc function inside the popover element
-    let component = wrapper.find('ui5-li').at(1).instance();
-    // @ts-ignore
-    component.click();
+  test('test Asc desc', async () => {
+    const { asFragment } = render(<AnalyticalTable data={data} title={'Test'} columns={columns} />);
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
+
+    fireEvent.click(screen.getAllByText('Sort Ascending')[0], { bubbles: false });
+
+    expect(asFragment()).toMatchSnapshot();
 
     // test desc function inside the popover element
-    component = wrapper.find('ui5-li').at(0).instance();
-    // @ts-ignore
-    component.click();
+    fireEvent.click(screen.getAllByText('Sort Descending')[0], { bubbles: false });
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test('Tree Table', () => {
