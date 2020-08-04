@@ -147,7 +147,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
       style="height: 220px; width: 600px;"
     >
       <div
-        style="height: 220px; width: 600px;"
+        style="position: relative; height: 220px; width: 600px;"
         tabindex="0"
       >
         <div
@@ -387,7 +387,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
       style="height: 220px; width: 600px;"
     >
       <div
-        style="height: 220px; width: 600px;"
+        style="position: relative; height: 220px; width: 600px;"
         tabindex="0"
       >
         <div
@@ -1025,7 +1025,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
       style="height: 220px; width: 647px;"
     >
       <div
-        style="height: 220px; width: 0px;"
+        style="position: relative; height: 220px; width: 0px;"
         tabindex="0"
       >
         <div
@@ -1211,7 +1211,7 @@ exports[`AnalyticalTable custom row height 1`] = `
       style="height: 300px; width: 600px;"
     >
       <div
-        style="height: 300px; width: 600px;"
+        style="position: relative; height: 300px; width: 600px;"
         tabindex="0"
       >
         <div
@@ -1604,7 +1604,7 @@ exports[`AnalyticalTable test Asc desc 1`] = `
         style="height: 220px; width: 600px;"
       >
         <div
-          style="height: 220px; width: 600px;"
+          style="position: relative; height: 220px; width: 600px;"
           tabindex="0"
         >
           <div
@@ -1846,7 +1846,7 @@ exports[`AnalyticalTable test Asc desc 2`] = `
         style="height: 220px; width: 600px;"
       >
         <div
-          style="height: 220px; width: 600px;"
+          style="position: relative; height: 220px; width: 600px;"
           tabindex="0"
         >
           <div
@@ -2088,7 +2088,7 @@ exports[`AnalyticalTable test Asc desc 3`] = `
         style="height: 220px; width: 600px;"
       >
         <div
-          style="height: 220px; width: 600px;"
+          style="position: relative; height: 220px; width: 600px;"
           tabindex="0"
         >
           <div
@@ -2329,7 +2329,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
       style="height: 220px; width: 600px;"
     >
       <div
-        style="height: 220px; width: 600px;"
+        style="position: relative; height: 220px; width: 600px;"
         tabindex="0"
       >
         <div
@@ -2611,7 +2611,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
       style="height: 220px; width: 653px;"
     >
       <div
-        style="height: 220px; width: 0px;"
+        style="position: relative; height: 220px; width: 0px;"
         tabindex="0"
       >
         <div
@@ -2843,7 +2843,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
       style="height: 220px; width: 600px;"
     >
       <div
-        style="height: 220px; width: 600px;"
+        style="position: relative; height: 220px; width: 600px;"
         tabindex="0"
       >
         <div
