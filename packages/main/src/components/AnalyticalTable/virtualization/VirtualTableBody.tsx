@@ -4,7 +4,9 @@ import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHe
 import { GlobalStyleClasses } from '@ui5/webcomponents-react/lib/GlobalStyleClasses';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import React, { MutableRefObject, useCallback, useRef } from 'react';
-import { useVirtual } from 'react-virtual';
+import { useVirtual, VirtualItem } from 'react-virtual';
+
+type ScrollAlignment = 'start' | 'center' | 'end' | 'auto';
 
 interface VirtualTableBodyProps {
   classes: Record<string, string>;
@@ -23,7 +25,12 @@ interface VirtualTableBodyProps {
   infiniteScroll: boolean;
   infiniteScrollThreshold: number;
   onLoadMore?: (e?: { detail: { rowCount: number } }) => void;
-  columnVirtualizer: any;
+  columnVirtualizer: {
+    virtualItems: VirtualItem[];
+    totalSize: number;
+    scrollToOffset: (index: number, options?: { align: ScrollAlignment }) => void;
+    scrollToIndex: (index: number, options?: { align: ScrollAlignment }) => void;
+  };
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -184,6 +191,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         onFocus={onTableFocus}
         onKeyDown={onKeyboardNavigation}
         style={{
+          position: 'relative',
           height: `${rowVirtualizer.totalSize}px`,
           width: `${columnVirtualizer.totalSize}px`
         }}
