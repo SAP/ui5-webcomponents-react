@@ -6,7 +6,7 @@ const style = {
     display: 'flex',
     height: CssSizeVariables.sapWcrBarHeight,
     textAlign: 'center',
-    width: 'auto',
+    width: '100%',
     alignItems: 'center',
     padding: '0.25rem 1rem',
     boxSizing: 'border-box',
