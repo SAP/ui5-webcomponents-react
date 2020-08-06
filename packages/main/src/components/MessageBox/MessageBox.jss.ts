@@ -5,7 +5,6 @@ const style = {
   header: {
     display: 'flex',
     height: CssSizeVariables.sapWcrBarHeight,
-    lineHeight: CssSizeVariables.sapWcrBarHeight,
     textAlign: 'center',
     width: 'auto',
     alignItems: 'center',
@@ -55,6 +54,7 @@ const style = {
   },
   footer: {
     height: CssSizeVariables.sapWcrBarHeight,
+    width: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
