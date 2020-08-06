@@ -2,6 +2,9 @@ import { CssSizeVariables } from '@ui5/webcomponents-react-base/lib/CssSizeVaria
 import { ThemingParameters } from '@ui5/webcomponents-react-base/lib/ThemingParameters';
 
 const style = {
+  messageBox: {
+    '--sapContent_Shadow0': 'none'
+  },
   header: {
     display: 'flex',
     height: CssSizeVariables.sapWcrBarHeight,
