@@ -1,4 +1,4 @@
-import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { NotificationListGroupItem } from '@ui5/webcomponents-react/lib/NotificationListGroupItem';
 import { Fragment } from 'react';
 import { NotificationListItem } from '@ui5/webcomponents-react/lib/NotificationListItem';
@@ -30,7 +30,7 @@ import '@ui5/webcomponents-icons/dist/icons/message-error';
 <Subtitle />
 <Description />
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {(args) => (
       <List>
@@ -101,6 +101,6 @@ import '@ui5/webcomponents-icons/dist/icons/message-error';
       </List>
     )}
   </Story>
-</Preview>
+</Canvas>
 
-<Props story="Default" components={{ NotificationListGroupItem, NotificationOverflowAction }} />
+<ArgsTable story="Default" of="." />

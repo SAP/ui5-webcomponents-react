@@ -1,4 +1,4 @@
-import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Toast } from '@ui5/webcomponents-react/lib/Toast';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ToastPlacement } from '@ui5/webcomponents-react/lib/ToastPlacement';
@@ -48,7 +48,7 @@ export const MyComponentWithAToast() {
 }
 ```
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {(args) => {
       const toast = useRef();
@@ -65,6 +65,6 @@ export const MyComponentWithAToast() {
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
-<Props story="Default" of={Toast} />
+<ArgsTable story="Default" of={Toast} />

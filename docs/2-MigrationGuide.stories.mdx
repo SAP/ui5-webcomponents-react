@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 <Meta title="Migration Guide" />
 
@@ -323,6 +323,7 @@ Popovers like the `Dialog`, `Popover` and `ResponsivePopover` now only can be op
 and then call the corresponding `open` method:
 
 - Dialog - `.open()`:
+
   ```JSX
   const DialogComponent = () => {
     const dialogRef = useRef();
@@ -338,6 +339,7 @@ and then call the corresponding `open` method:
     );
   };
   ```
+
 - Popover - `.openBy(event.target)`:
   ```JSX
   const PopoverComponent = () => {

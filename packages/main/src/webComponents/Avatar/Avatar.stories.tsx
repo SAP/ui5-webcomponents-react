@@ -1,4 +1,5 @@
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import '@ui5/webcomponents-icons/dist/icons/employee';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
 import { AvatarBackgroundColor } from '@ui5/webcomponents-react/lib/AvatarBackgroundColor';
 import { AvatarFitType } from '@ui5/webcomponents-react/lib/AvatarFitType';

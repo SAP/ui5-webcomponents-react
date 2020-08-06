@@ -425,7 +425,7 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
 
   return prettier.format(
     dedent`
-    import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+    import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
     import { ${componentName} } from '@ui5/webcomponents-react/lib/${componentName}';
     ${enumImports.join('\n')}
     ${additionalComponentImports.join('\n')}
@@ -447,7 +447,7 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
     <Subtitle />
     <Description />
     
-    <Preview>
+    <Canvas>
       <Story name="Default">
         {(args) => {
           return (
@@ -455,9 +455,9 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
           );
         }}
       </Story>
-    </Preview>
+    </Canvas>
     
-    <Props story="Default" components={{ ${[componentName].concat(additionalComponentDocs).join(', ')} }} />
+    <ArgsTable story="Default" components={{ ${[componentName].concat(additionalComponentDocs).join(', ')} }} />
 
     `,
     { ...prettierConfigRaw, parser: 'mdx' }
