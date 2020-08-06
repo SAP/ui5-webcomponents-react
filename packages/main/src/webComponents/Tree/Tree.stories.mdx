@@ -1,4 +1,4 @@
-import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Tree } from '@ui5/webcomponents-react/lib/Tree';
 import { ListMode } from '@ui5/webcomponents-react/lib/ListMode';
 import { ReactNode } from 'react';
@@ -26,7 +26,7 @@ import '@ui5/webcomponents-icons/dist/icons/paste';
 <Subtitle />
 <Description />
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {(args) => (
       <Tree {...args}>
@@ -52,6 +52,6 @@ import '@ui5/webcomponents-icons/dist/icons/paste';
       </Tree>
     )}
   </Story>
-</Preview>
+</Canvas>
 
-<Props story="Default" of={Tree} components={{ Tree, TreeItem }} />
+<ArgsTable story="Default" of="." />

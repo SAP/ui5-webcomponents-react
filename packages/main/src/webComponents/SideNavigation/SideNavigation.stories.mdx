@@ -1,4 +1,4 @@
-import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { SideNavigation } from '@ui5/webcomponents-react/lib/SideNavigation';
 import { SideNavigationItem } from '@ui5/webcomponents-react/lib/SideNavigationItem';
 import { SideNavigationSubItem } from '@ui5/webcomponents-react/lib/SideNavigationSubItem';
@@ -25,7 +25,7 @@ import '@ui5/webcomponents-icons/dist/icons/history';
 <Subtitle />
 <Description />
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {(args) => {
       return (
@@ -52,6 +52,6 @@ import '@ui5/webcomponents-icons/dist/icons/history';
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
-<Props story="Default" components={{ SideNavigation, SideNavigationItem, SideNavigationSubItem }} />
+<ArgsTable story="Default" of="." />
