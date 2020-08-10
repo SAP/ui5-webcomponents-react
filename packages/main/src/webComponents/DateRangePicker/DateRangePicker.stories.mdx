@@ -1,4 +1,4 @@
-import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { DateRangePicker } from '@ui5/webcomponents-react/lib/DateRangePicker';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
@@ -21,12 +21,12 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 <Subtitle />
 <Description />
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {(args) => {
       return <DateRangePicker {...args} />;
     }}
   </Story>
-</Preview>
+</Canvas>
 
-<Props story="Default" components={{ DateRangePicker }} />
+<ArgsTable story="Default" of="." />
