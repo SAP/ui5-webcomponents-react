@@ -69,13 +69,13 @@ const anchorBarStyles = {
 const useStyles = createUseStyles(anchorBarStyles, { name: 'DynamicPageAnchorBar' });
 
 interface Props {
-  className: string;
+  className?: string;
   style?: CSSProperties;
-  sections: ReactElement | ReactElement[];
+  sections?: ReactElement | ReactElement[];
   headerContentHeight: number;
   headerContentPinnable: boolean;
   showHideHeaderButton: boolean;
-  selectedSectionId: string;
+  selectedSectionId?: string;
 }
 
 const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
@@ -105,20 +105,20 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
   );
 
   return (
-    <section style={style} className={className}>
-      <TabContainer collapsed fixed showOverflow>
-        {safeGetChildrenArray(sections).map((section: ReactElement, index: number) => {
-          return (
-            <DynamicPageAnchorButton
-              key={`Anchor-${section.props?.id}`}
-              section={section}
-              onShowSubSectionPopover={onShowSubSectionPopover}
-              index={index}
-              selected={selectedSectionId === section.props?.id}
-            />
-          );
-        })}
-      </TabContainer>
+    <section style={style} role="navigation" className={className} ref={ref}>
+      {/*<TabContainer collapsed fixed showOverflow>*/}
+      {/*  {safeGetChildrenArray(sections).map((section: ReactElement, index: number) => {*/}
+      {/*    return (*/}
+      {/*      <DynamicPageAnchorButton*/}
+      {/*        key={`Anchor-${section.props?.id}`}*/}
+      {/*        section={section}*/}
+      {/*        onShowSubSectionPopover={onShowSubSectionPopover}*/}
+      {/*        index={index}*/}
+      {/*        selected={selectedSectionId === section.props?.id}*/}
+      {/*      />*/}
+      {/*    );*/}
+      {/*  })}*/}
+      {/*</TabContainer>*/}
       {shouldRenderHideHeaderButton && (
         <Button
           icon={headerContentHeight === 0 ? 'slim-arrow-down' : 'slim-arrow-up'}

@@ -1,8 +1,9 @@
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
 import React, { forwardRef, ReactElement, ReactNode, ReactNodeArray, Ref, FC } from 'react';
-import { PageBackgroundDesign } from '../..';
+import { FlexBox, PageBackgroundDesign } from '../..';
 
 import { CommonProps } from '../../interfaces/CommonProps';
+import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/DynamicPageAnchorBar';
 
 export interface DynamicPageProps extends CommonProps {
   /**
@@ -25,7 +26,7 @@ export interface DynamicPageProps extends CommonProps {
 }
 
 const DynamicPage: FC<DynamicPageProps> = forwardRef((props: DynamicPageProps, ref: Ref<HTMLDivElement>) => {
-  const { title, header, className, tooltip, style } = props;
+  const { title, header, className, tooltip, style, children } = props;
 
   const passThroughProps = usePassThroughHtmlProps(props);
 
