@@ -1,4 +1,4 @@
-import { Meta, Title, Description, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Title, Description, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 import { ActionSheet } from '@ui5/webcomponents-react/lib/ActionSheet';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
@@ -40,7 +40,7 @@ import { useCallback, useRef } from 'react';
 <Subtitle />
 <Description />
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {(args) => {
       const actionSheetRef = useRef();
@@ -62,6 +62,6 @@ import { useCallback, useRef } from 'react';
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
-<Props story="Default" components={{ ActionSheet }} />
+<ArgsTable story="Default" of="." />

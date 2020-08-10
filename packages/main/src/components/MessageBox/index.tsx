@@ -6,24 +6,25 @@ import '@ui5/webcomponents-icons/dist/icons/message-warning';
 import '@ui5/webcomponents-icons/dist/icons/question-mark';
 import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createComponentStyles';
 import { useConsolidatedRef, useI18nText, usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/hooks';
+import { StyleClassHelper } from '@ui5/webcomponents-react-base/lib/StyleClassHelper';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 
 import {
-  CONFIRMATION,
-  ERROR,
-  HIGHLIGHT,
-  INFORMATION,
   ABORT,
   CANCEL,
   CLOSE,
+  CONFIRMATION,
   DELETE,
+  ERROR,
+  HIGHLIGHT,
   IGNORE,
+  INFORMATION,
   NO,
   OK,
   RETRY,
-  YES,
   SUCCESS,
-  WARNING
+  WARNING,
+  YES
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import { Button } from '@ui5/webcomponents-react/lib/Button';
 import { ButtonDesign } from '@ui5/webcomponents-react/lib/ButtonDesign';
@@ -175,13 +176,15 @@ const MessageBox: FC<MessageBoxPropTypes> = forwardRef((props: MessageBoxPropTyp
 
   const passThroughProps = usePassThroughHtmlProps(props, ['onClose']);
 
+  const messageBoxClassNames = StyleClassHelper.of(classes.messageBox).putIfPresent(className).className;
+
   return (
     <Dialog
       slot={slot}
       ref={dialogRef}
       style={style}
       tooltip={tooltip}
-      className={className}
+      className={messageBoxClassNames}
       header={
         <header className={classes.header} data-type={type}>
           {iconToRender}

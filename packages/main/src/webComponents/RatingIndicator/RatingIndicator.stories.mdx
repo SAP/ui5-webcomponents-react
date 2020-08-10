@@ -1,4 +1,4 @@
-import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { RatingIndicator } from '@ui5/webcomponents-react/lib/RatingIndicator';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
@@ -14,12 +14,12 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 <Subtitle />
 <Description />
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {(args) => {
       return <RatingIndicator {...args} />;
     }}
   </Story>
-</Preview>
+</Canvas>
 
-<Props story="Default" components={{ RatingIndicator }} />
+<ArgsTable story="Default" of="." />

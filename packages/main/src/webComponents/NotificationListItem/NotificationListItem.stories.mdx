@@ -1,4 +1,4 @@
-import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Fragment } from 'react';
 import { NotificationListItem } from '@ui5/webcomponents-react/lib/NotificationListItem';
 import { Avatar } from '@ui5/webcomponents-react/lib/Avatar';
@@ -31,7 +31,7 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 <Subtitle />
 <Description />
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {(args) => (
       <List>
@@ -74,6 +74,6 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
       </List>
     )}
   </Story>
-</Preview>
+</Canvas>
 
-<Props story="Default" components={{ NotificationListItem, NotificationOverflowAction }} />
+<ArgsTable story="Default" of="." />

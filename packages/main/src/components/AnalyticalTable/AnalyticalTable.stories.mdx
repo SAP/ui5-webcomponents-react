@@ -1,4 +1,4 @@
-import { Title, Subtitle, Primary, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Primary, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';
 import { createSelectArgTypes } from '../../../../../shared/stories/createSelectArgTypes';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
@@ -124,7 +124,7 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
 
 <Description />
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {(args) => (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -160,9 +160,9 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
       </div>
     )}
   </Story>
-</Preview>
+</Canvas>
 
-<Props story="Default" components={{ AnalyticalTable }} />
+<ArgsTable story="Default" of="." />
 
 ## Column Properties
 
@@ -272,7 +272,7 @@ This even works if you resize the browser window!
 
 ## Tree Table
 
-<Preview>
+<Canvas>
   <Story name="Tree Table">
     {(args) => (
       <AnalyticalTable
@@ -296,6 +296,4 @@ This even works if you resize the browser window!
       />
     )}
   </Story>
-</Preview>
-
-<Props story="Tree Table" components={{ AnalyticalTable }} />
+</Canvas>

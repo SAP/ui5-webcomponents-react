@@ -1,4 +1,4 @@
-import { Title, Subtitle, Description, Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { FlexibleColumnLayout } from '@ui5/webcomponents-react/lib/FlexibleColumnLayout';
 import { FCLLayout } from '@ui5/webcomponents-react/lib/FCLLayout';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
@@ -25,7 +25,7 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 <Subtitle />
 <Description />
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {(args) => (
       <FlexibleColumnLayout
@@ -54,6 +54,6 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
       />
     )}
   </Story>
-</Preview>
+</Canvas>
 
-<Props story="Default" components={{ FlexibleColumnLayout }} />
+<ArgsTable story="Default" of="." />
