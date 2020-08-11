@@ -19,7 +19,7 @@ export default {
       type: null
     }
   },
-  arg: {
+  args: {
     valueState: ValueState.None
   }
 };
