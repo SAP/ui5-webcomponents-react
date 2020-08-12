@@ -1,7 +1,7 @@
 import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { ProgressIndicator } from '@ui5/webcomponents-react/lib/ProgressIndicator';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-
+import { DocsHeader } from '@shared/stories/DocsHeader';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <Meta
@@ -16,9 +16,7 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
   }}
 />
 
-<Title />
-<Subtitle />
-<Description />
+<DocsHeader />
 
 <Canvas>
   <Story name="Default">
@@ -28,4 +26,4 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
   </Story>
 </Canvas>
 
-<ArgsTable story="Default" of="." />
+<ArgsTable story="." />

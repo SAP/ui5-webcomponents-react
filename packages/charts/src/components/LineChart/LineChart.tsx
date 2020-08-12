@@ -82,9 +82,6 @@ const measureDefaults = {
   opacity: 1
 };
 
-/**
- * <code>import { LineChart } from '@ui5/webcomponents-react-charts/lib/LineChart';</code>
- */
 const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,

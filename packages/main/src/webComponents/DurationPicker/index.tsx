@@ -52,8 +52,6 @@ export interface DurationPickerPropTypes extends Omit<WithWebComponentPropTypes,
 }
 
 /**
- * <code>import { DurationPicker } from '@ui5/webcomponents-react/lib/DurationPicker';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DurationPicker" target="_blank">UI5 Web Components Playground</a>
  */
 const DurationPicker: FC<DurationPickerPropTypes> = withWebComponent<DurationPickerPropTypes>(

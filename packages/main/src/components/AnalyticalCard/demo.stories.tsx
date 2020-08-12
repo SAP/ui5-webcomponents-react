@@ -7,7 +7,7 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import React from 'react';
 
 export default {
-  title: 'Components / Analytical Card',
+  title: 'Components / AnalyticalCard',
   component: AnalyticalCard,
   parameters: {
     subcomponents: { AnalyticalCardHeader }

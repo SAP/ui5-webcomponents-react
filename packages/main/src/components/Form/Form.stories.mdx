@@ -8,6 +8,7 @@ import { InputType } from '@ui5/webcomponents-react/lib/InputType';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
+import { DocsHeader } from '@shared/stories/DocsHeader';
 
 <Meta
   title="Components / Form"
@@ -27,9 +28,7 @@ import { Label } from '@ui5/webcomponents-react/lib/Label';
   }}
 />
 
-<Title />
-<Subtitle />
-<Description />
+<DocsHeader />
 
 <Canvas>
   <Story name="Default">
@@ -97,4 +96,4 @@ import { Label } from '@ui5/webcomponents-react/lib/Label';
 Please note that the `FormGroup` and `FormItem` components are only used for calculating the final layout of the `Form`,
 thus they don't accept any other props then the specified ones, especially no `className`, `style` or `ref`.
 
-<ArgsTable story="Default" of="." />
+<ArgsTable story="." />

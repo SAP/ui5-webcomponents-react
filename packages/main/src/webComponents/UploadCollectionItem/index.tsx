@@ -63,8 +63,6 @@ export interface UploadCollectionItemPropTypes extends WithWebComponentPropTypes
 }
 
 /**
- * <code>import { UploadCollectionItem } from '@ui5/webcomponents-react/lib/UploadCollectionItem';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollectionItem" target="_blank">UI5 Web Components Playground</a>
  */
 const UploadCollectionItem: FC<UploadCollectionItemPropTypes> = withWebComponent<UploadCollectionItemPropTypes>(

@@ -36,8 +36,6 @@ export interface PanelPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { Panel } from '@ui5/webcomponents-react/lib/Panel';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Panel" target="_blank">UI5 Web Components Playground</a>
  */
 const Panel: FC<PanelPropTypes> = withWebComponent<PanelPropTypes>(

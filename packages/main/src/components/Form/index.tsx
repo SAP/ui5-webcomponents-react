@@ -91,9 +91,6 @@ const createArrayOfLength = (length): unknown[][] => {
   return arr;
 };
 
-/**
- * <code>import { Form } from '@ui5/webcomponents-react/lib/Form';</code>
- */
 const Form: FC<FormPropTypes> = forwardRef((props: FormPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     title,

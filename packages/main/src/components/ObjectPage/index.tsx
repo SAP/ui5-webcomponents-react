@@ -77,9 +77,6 @@ export interface ObjectPagePropTypes extends CommonProps {
 
 const useStyles = createComponentStyles(styles, { name: 'ObjectPage' });
 
-/**
- * <code>import { ObjectPage } from '@ui5/webcomponents-react/lib/ObjectPage';</code>
- */
 const ObjectPage: FC<ObjectPagePropTypes> = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     title = '',
