@@ -14,6 +14,7 @@ import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React, { useEffect } from 'react';
 import 'react-app-polyfill/ie11';
 import { DocsPage } from '../shared/stories/DocsPage';
+import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection';
 
 addParameters({
   passArgsFirst: true,
@@ -33,6 +34,7 @@ const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
 
   useEffect(() => {
     document.querySelector('html').setAttribute('dir', direction);
+    applyDirection();
   }, [direction]);
 
   useEffect(() => {

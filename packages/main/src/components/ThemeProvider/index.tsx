@@ -50,9 +50,6 @@ const ThemeProvider: FC<ThemeProviderProps> = (props: ThemeProviderProps) => {
         silent: true
       });
     }
-    if (getRTL()) {
-      document.querySelector('html').dir = 'rtl';
-    }
   }, []);
 
   return <ReactJssThemeProvider theme={themeContext}>{children}</ReactJssThemeProvider>;
