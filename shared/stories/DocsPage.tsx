@@ -7,7 +7,7 @@ export const DocsPage = () => {
     <>
       <DocsHeader />
       <Primary />
-      <ArgsTable />
+      <ArgsTable story="." />
       <Stories />
     </>
   );
