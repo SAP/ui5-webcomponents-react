@@ -1,5 +1,6 @@
 import { Meta, Story, ArgsTable, Title, Subtitle, Description, Canvas } from '@storybook/addon-docs/blocks';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
+import { DocsHeader } from '@shared/stories/DocsHeader';
 import { Option } from '@ui5/webcomponents-react/lib/Option';
 import { Select } from '@ui5/webcomponents-react/lib/Select';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
@@ -22,9 +23,7 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
   }}
 />
 
-<Title />
-<Subtitle />
-<Description />
+<DocsHeader />
 
 <Canvas>
   <Story name="Default">
@@ -40,7 +39,7 @@ import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
   </Story>
 </Canvas>
 
-<ArgsTable story="." of="." />
+<ArgsTable story="." />
 
 ## Recipes
 

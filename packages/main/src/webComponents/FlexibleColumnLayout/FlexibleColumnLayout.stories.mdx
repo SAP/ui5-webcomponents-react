@@ -4,7 +4,7 @@ import { FCLLayout } from '@ui5/webcomponents-react/lib/FCLLayout';
 import { Label } from '@ui5/webcomponents-react/lib/Label';
 import { List } from '@ui5/webcomponents-react/lib/List';
 import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';
-
+import { DocsHeader } from '@shared/stories/DocsHeader';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <Meta
@@ -21,9 +21,7 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
   }}
 />
 
-<Title />
-<Subtitle />
-<Description />
+<DocsHeader />
 
 <Canvas>
   <Story name="Default">

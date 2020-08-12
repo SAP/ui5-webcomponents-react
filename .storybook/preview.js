@@ -13,11 +13,12 @@ import '@ui5/webcomponents-react/dist/Assets';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React, { useEffect } from 'react';
 import 'react-app-polyfill/ie11';
+import { DocsPage } from '../shared/stories/DocsPage';
 
 addParameters({
   passArgsFirst: true,
   viewMode: 'docs',
-  docs: { forceExtractedArgTypes: true },
+  docs: { forceExtractedArgTypes: true, page: DocsPage },
   actions: { argTypesRegex: '^on.*' }
 });
 

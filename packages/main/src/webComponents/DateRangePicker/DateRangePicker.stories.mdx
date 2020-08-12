@@ -2,7 +2,7 @@ import { Title, Subtitle, Description, Meta, Story, Canvas, ArgsTable } from '@s
 import { DateRangePicker } from '@ui5/webcomponents-react/lib/DateRangePicker';
 import { CalendarType } from '@ui5/webcomponents-react/lib/CalendarType';
 import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
-
+import { DocsHeader } from '@shared/stories/DocsHeader';
 import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
 
 <Meta
@@ -17,9 +17,7 @@ import { createSelectArgTypes } from '@shared/stories/createSelectArgTypes';
   }}
 />
 
-<Title />
-<Subtitle />
-<Description />
+<DocsHeader />
 
 <Canvas>
   <Story name="Default">
