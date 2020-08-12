@@ -119,9 +119,6 @@ const measureDefaults = {
   formatter: defaultFormatter
 };
 
-/**
- * <code>import { ScatterChart } from '@ui5/webcomponents-react-charts/lib/ScatterChart';</code>
- */
 const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,

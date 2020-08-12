@@ -78,8 +78,6 @@ export interface DateRangePickerPropTypes extends Omit<WithWebComponentPropTypes
 }
 
 /**
- * <code>import { DateRangePicker } from '@ui5/webcomponents-react/lib/DateRangePicker';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DateRangePicker" target="_blank">UI5 Web Components Playground</a>
  */
 const DateRangePicker: FC<DateRangePickerPropTypes> = withWebComponent<DateRangePickerPropTypes>(

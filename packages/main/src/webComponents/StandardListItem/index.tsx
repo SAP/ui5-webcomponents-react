@@ -48,8 +48,6 @@ export interface StandardListItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { StandardListItem } from '@ui5/webcomponents-react/lib/StandardListItem';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/StandardListItem" target="_blank">UI5 Web Components Playground</a>
  */
 const StandardListItem: FC<StandardListItemPropTypes> = withWebComponent<StandardListItemPropTypes>(

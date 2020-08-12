@@ -11,10 +11,7 @@ export interface TitleBarProps {
   children: ReactText | ReactNode;
 }
 
-export /**
- * <code>import { TitleBar } from '@ui5/webcomponents-react/lib/TitleBar';</code>
- */
-const TitleBar: FC<TitleBarProps> = (props) => {
+export const TitleBar: FC<TitleBarProps> = (props) => {
   const { children } = props;
   return (
     <div style={styles}>

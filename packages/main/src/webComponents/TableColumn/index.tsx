@@ -22,8 +22,6 @@ export interface TableColumnPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { TableColumn } from '@ui5/webcomponents-react/lib/TableColumn';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/TableColumn" target="_blank">UI5 Web Components Playground</a>
  */
 const TableColumn: FC<TableColumnPropTypes> = withWebComponent<TableColumnPropTypes>(

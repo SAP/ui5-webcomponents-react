@@ -457,7 +457,7 @@ const createWebComponentDemo = (componentSpec, componentProps) => {
       </Story>
     </Canvas>
     
-    <ArgsTable story="Default" components={{ ${[componentName].concat(additionalComponentDocs).join(', ')} }} />
+    <ArgsTable story="." />
 
     `,
     { ...prettierConfigRaw, parser: 'mdx' }

@@ -12,11 +12,13 @@ import '@ui5/webcomponents/dist/Assets';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport';
 import React, { useEffect } from 'react';
 import 'react-app-polyfill/ie11';
+import { DocsPage } from '../shared/stories/DocsPage';
+import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection';
 
 addParameters({
   passArgsFirst: true,
   viewMode: 'docs',
-  docs: { forceExtractedArgTypes: true },
+  docs: { forceExtractedArgTypes: true, page: DocsPage },
   actions: { argTypesRegex: '^on.*' }
 });
 
@@ -29,9 +31,10 @@ const ThemeContainer = ({ theme, contentDensity, children, direction }) => {
     }
   }, [contentDensity]);
 
-  // useEffect(() => {
-  //   document.querySelector('html').setAttribute('dir', direction);
-  // }, [direction]);
+  useEffect(() => {
+    document.querySelector('html').setAttribute('dir', direction);
+    applyDirection();
+  }, [direction]);
 
   useEffect(() => {
     setTheme(theme);

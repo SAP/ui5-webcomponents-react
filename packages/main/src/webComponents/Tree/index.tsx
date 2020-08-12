@@ -47,8 +47,6 @@ export interface TreePropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { Tree } from '@ui5/webcomponents-react/lib/Tree';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Tree" target="_blank">UI5 Web Components Playground</a>
  */
 const Tree: FC<TreePropTypes> = withWebComponent<TreePropTypes>(

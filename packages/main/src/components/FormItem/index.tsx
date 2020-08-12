@@ -27,9 +27,6 @@ const useStyles = createComponentStyles(
   { name: 'FormItem' }
 );
 
-/**
- * <code>import { FormItem } from '@ui5/webcomponents-react/lib/FormItem';</code>
- */
 const FormItem: FC<FormItemProps> = (props: FormItemProps) => {
   const { label, children } = props;
 

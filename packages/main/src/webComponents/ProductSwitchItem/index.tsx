@@ -32,8 +32,6 @@ export interface ProductSwitchItemPropTypes extends Omit<WithWebComponentPropTyp
 }
 
 /**
- * <code>import { ProductSwitchItem } from '@ui5/webcomponents-react/lib/ProductSwitchItem';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ProductSwitchItem" target="_blank">UI5 Web Components Playground</a>
  */
 const ProductSwitchItem: FC<ProductSwitchItemPropTypes> = withWebComponent<ProductSwitchItemPropTypes>(

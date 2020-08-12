@@ -73,9 +73,6 @@ export interface FilterBarPropTypes extends CommonProps {
 
 const useStyles = createComponentStyles(styles, { name: 'FilterBar' });
 
-/**
- * <code>import { FilterBar } from '@ui5/webcomponents-react/lib/FilterBar';</code>
- */
 const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
   const {
     children,

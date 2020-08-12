@@ -59,8 +59,6 @@ export interface MultiComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 
 }
 
 /**
- * <code>import { MultiComboBox } from '@ui5/webcomponents-react/lib/MultiComboBox';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBox" target="_blank">UI5 Web Components Playground</a>
  */
 const MultiComboBox: FC<MultiComboBoxPropTypes> = withWebComponent<MultiComboBoxPropTypes>(

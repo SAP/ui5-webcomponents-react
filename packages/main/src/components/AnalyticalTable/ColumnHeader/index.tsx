@@ -98,9 +98,6 @@ const styles = {
 
 const useStyles = createComponentStyles(styles, { name: 'TableColumnHeader' });
 
-/**
- * <code>import { ColumnHeader } from '@ui5/webcomponents-react/lib/ColumnHeader';</code>
- */
 export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) => {
   const classes = useStyles(props);
 

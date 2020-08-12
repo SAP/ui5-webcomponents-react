@@ -57,9 +57,6 @@ export interface PieChartProps extends IChartBaseProps<IPolarChartConfig> {
 
 const tooltipItemDefaultStyle = { color: 'var (--sapTextColor)' };
 
-/**
- * <code>import { PieChart } from '@ui5/webcomponents-react-charts/lib/PieChart';</code>
- */
 const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,

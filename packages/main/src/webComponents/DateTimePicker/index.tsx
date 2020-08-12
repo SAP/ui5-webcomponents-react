@@ -74,8 +74,6 @@ export interface DateTimePickerPropTypes extends Omit<WithWebComponentPropTypes,
 }
 
 /**
- * <code>import { DateTimePicker } from '@ui5/webcomponents-react/lib/DateTimePicker';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DateTimePicker" target="_blank">UI5 Web Components Playground</a>
  */
 const DateTimePicker: FC<DateTimePickerPropTypes> = withWebComponent<DateTimePickerPropTypes>(

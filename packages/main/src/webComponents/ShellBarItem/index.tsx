@@ -26,8 +26,6 @@ export interface ShellBarItemPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { ShellBarItem } from '@ui5/webcomponents-react/lib/ShellBarItem';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBarItem" target="_blank">UI5 Web Components Playground</a>
  */
 const ShellBarItem: FC<ShellBarItemPropTypes> = withWebComponent<ShellBarItemPropTypes>(

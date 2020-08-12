@@ -131,8 +131,6 @@ export interface TableProps extends CommonProps {
 const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
 
 /**
- * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code><br />
- * <br />
  * ### Usage Notes
  * By default, the `AnalyticalTable` will not select any rows after clicking on active elements like a `Button`, `Link`,
  * etc. <br />

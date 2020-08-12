@@ -74,8 +74,6 @@ export interface DatePickerPropTypes extends Omit<WithWebComponentPropTypes, 'on
 }
 
 /**
- * <code>import { DatePicker } from '@ui5/webcomponents-react/lib/DatePicker';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/DatePicker" target="_blank">UI5 Web Components Playground</a>
  */
 const DatePicker: FC<DatePickerPropTypes> = withWebComponent<DatePickerPropTypes>(
