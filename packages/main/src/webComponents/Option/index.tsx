@@ -18,8 +18,6 @@ export interface OptionPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { Option } from '@ui5/webcomponents-react/lib/Option';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Option" target="_blank">UI5 Web Components Playground</a>
  */
 const Option: FC<OptionPropTypes> = withWebComponent<OptionPropTypes>(

@@ -40,9 +40,6 @@ const getDefaultIcon = (state) => {
 
 const useStyles = createComponentStyles(styles, { name: 'ObjectStatus' });
 
-/**
- * <code>import { ObjectStatus } from '@ui5/webcomponents-react/lib/ObjectStatus';</code>
- */
 const ObjectStatus: FC<ObjectStatusPropTypes> = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
   const { state, showDefaultIcon, children, icon, className, style, tooltip, slot } = props;
   const iconToRender = useMemo(() => {

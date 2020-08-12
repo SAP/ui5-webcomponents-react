@@ -73,8 +73,6 @@ export interface PopoverPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { Popover } from '@ui5/webcomponents-react/lib/Popover';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Popover" target="_blank">UI5 Web Components Playground</a>
  */
 const Popover: FC<PopoverPropTypes> = withWebComponent<PopoverPropTypes>(

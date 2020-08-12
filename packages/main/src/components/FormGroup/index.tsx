@@ -24,9 +24,6 @@ const useStyles = createComponentStyles(
   { name: 'FormGroup' }
 );
 
-/**
- * <code>import { FormGroup } from '@ui5/webcomponents-react/lib/FormGroup';</code>
- */
 const FormGroup: FC<FormGroupProps> = (props: FormGroupProps) => {
   const { title, children } = props;
 

@@ -121,9 +121,6 @@ const MicroBarChartStyles = {
 
 const useStyles = createComponentStyles(MicroBarChartStyles, { name: 'MicroBarChart' });
 
-/**
- * <code>import { MicroBarChart } from '@ui5/webcomponents-react-charts/lib/MicroBarChart';</code>
- */
 const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
   const { loading, dataset, onDataPointClick, style, className, tooltip, slot } = props;
   const classes = useStyles();

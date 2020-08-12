@@ -51,8 +51,6 @@ export interface RadioButtonPropTypes extends Omit<WithWebComponentPropTypes, 'o
 }
 
 /**
- * <code>import { RadioButton } from '@ui5/webcomponents-react/lib/RadioButton';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/RadioButton" target="_blank">UI5 Web Components Playground</a>
  */
 const RadioButton: FC<RadioButtonPropTypes> = withWebComponent<RadioButtonPropTypes>(
