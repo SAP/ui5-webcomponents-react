@@ -205,7 +205,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     dispatch,
     totalColumnsWidth,
     toggleRowSelected,
-    toggleAllRowsSelected
+    toggleAllRowsSelected,
+    setGroupBy
   } = useTable(
     {
       columns,
@@ -249,6 +250,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useToggleRowExpand,
     ...tableHooks
   );
+
   // scroll bar detection
   useEffect(() => {
     const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
@@ -275,8 +277,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [updateTableClientWidth]);
 
   useEffect(() => {
-    dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
-  }, [groupBy, dispatch]);
+    setGroupBy(groupBy);
+  }, [groupBy, setGroupBy]);
 
   useEffect(() => {
     toggleAllRowsSelected(false);
@@ -313,7 +315,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       } else {
         groupedColumns = tableState.groupBy.filter((group) => group !== column.id);
       }
-      dispatch({ type: 'SET_GROUP_BY', payload: groupedColumns });
+      setGroupBy(groupedColumns);
       onGroup(
         enrichEventWithDetails(e, {
           column,
@@ -321,7 +323,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         })
       );
     },
-    [tableState.groupBy, onGroup, dispatch]
+    [tableState.groupBy, onGroup, setGroupBy]
   );
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
