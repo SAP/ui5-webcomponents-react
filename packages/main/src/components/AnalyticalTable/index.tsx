@@ -2,9 +2,9 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import debounce from 'lodash.debounce';
 import React, {
   ComponentType,
@@ -280,11 +280,9 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
 
   useEffect(() => {
     toggleAllRowsSelected(false);
-    const validChars = /^(\d\.)*\d$/;
+    // eslint-disable-next-line guard-for-in
     for (const row in selectedRowIds) {
-      if (validChars.test(row)) {
-        toggleRowSelected(row, selectedRowIds[row]);
-      }
+      toggleRowSelected(row, selectedRowIds[row]);
     }
   }, [toggleRowSelected, toggleAllRowsSelected, selectedRowIds]);
 
