@@ -311,5 +311,28 @@ describe('AnalyticalTable', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
+  test('highlight row with custom row key', () => {
+    const utils = render(
+      <AnalyticalTable
+        selectionMode={TableSelectionMode.SINGLE_SELECT}
+        data={data}
+        columns={columns}
+        reactTableOptions={{
+          getRowId: (row, relativeIndex, parent) => {
+            return `${row.name ?? relativeIndex}`;
+          }
+        }}
+        selectedRowIds={{
+          ['Fra']: true
+        }}
+      />
+    );
+
+    expect(utils.asFragment()).toMatchSnapshot();
+
+    const row = screen.getByText('Fra').parentNode.parentNode;
+    expect(row).toHaveAttribute('data-is-selected');
+  });
+
   createPassThroughPropsTest(AnalyticalTable);
 });
