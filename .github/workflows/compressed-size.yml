@@ -14,5 +14,5 @@ jobs:
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           pattern: 'packages/**/lib/**/*.js'
-          exlude: 'packages/**/src/lib/**'
+          exclude: 'packages/**/src/lib/**'
           compression: 'gzip'
