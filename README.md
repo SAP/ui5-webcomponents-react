@@ -36,11 +36,7 @@ You can find our documentation under the following links:
 
 - [Stable Release Documentation](https://sap.github.io/ui5-webcomponents-react/)
 - [Next Release Documentation](https://sap.github.io/ui5-webcomponents-react/master/)
-
-## Migration Guide
-
-Each new major version of this project might contain breaking changes which require you to change coding in your project.
-In order to help you with those tasks, we have prepared a [Migration Guide](https://sap.github.io/ui5-webcomponents-react/master/?path=/docs/migration-guide--page).
+- [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page)
 
 ## Package Overview
 
@@ -85,9 +81,14 @@ npm install @ui5/webcomponents-react --save
 
 <!-- *********************************************************************** -->
 
-<a name="configuration"></a>
+## Getting Started
 
-## Configuration
+### Tutorial
+
+You are new to UI5 Web Components for React and don't know where to start?<br />
+Then take a look at our [Tutorial Mission at “SAP Developers”](https://developers.sap.com/mission.react-spa.html)!
+There you get a first glimpse at how easy it is to create an Application with UI5 Web Components for React.<br />
+In about an hour you will create a business dashboard from scratch and get familiar with some React basics in case you don't know them already.
 
 ### Creating a new React app
 
