@@ -283,10 +283,15 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   useEffect(() => {
     toggleAllRowsSelected(false);
     // eslint-disable-next-line guard-for-in
+    const validChars = /^(\d\.)*\d$/;
     for (const row in selectedRowIds) {
-      toggleRowSelected(row, selectedRowIds[row]);
+      if (reactTableOptions?.getRowId) {
+        toggleRowSelected(row, selectedRowIds[row]);
+      } else if (validChars.test(row)) {
+        toggleRowSelected(row, selectedRowIds[row]);
+      }
     }
-  }, [toggleRowSelected, toggleAllRowsSelected, selectedRowIds]);
+  }, [toggleRowSelected, toggleAllRowsSelected, selectedRowIds, reactTableOptions?.getRowId]);
 
   const calcRowHeight = parseInt(
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
