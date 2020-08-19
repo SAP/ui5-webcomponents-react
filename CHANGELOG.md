@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.3...v0.10.4) (2020-08-19)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** fix pre-selection of custom row ids and update react-table ([#649](https://github.com/SAP/ui5-webcomponents-react/issues/649)) ([b733f4c](https://github.com/SAP/ui5-webcomponents-react/commit/b733f4c35b583feda184164552ac3a1c1159b91e))
+* **FilterBar:** use createPortal for FilterDialog within FilterBar ([#655](https://github.com/SAP/ui5-webcomponents-react/issues/655)) ([2a65a24](https://github.com/SAP/ui5-webcomponents-react/commit/2a65a24a1bfb15e225391457033889e7a5ea2617)), closes [#652](https://github.com/SAP/ui5-webcomponents-react/issues/652)
+* **Themes:** add missing themes `sap_fiori_3_hcb` and `sap_fiori_3_hcw` ([#648](https://github.com/SAP/ui5-webcomponents-react/issues/648)) ([19cf697](https://github.com/SAP/ui5-webcomponents-react/commit/19cf697d05c62b3bbc6723d5a4a6e74b6a9d168e))
+
+
+
+
+
 ## [0.10.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.10.2...v0.10.3) (2020-08-06)
 
 
