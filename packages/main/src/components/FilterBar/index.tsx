@@ -306,6 +306,9 @@ const FilterBar: FC<FilterBarPropTypes> = forwardRef((props: FilterBarPropTypes,
   if (className) {
     cssClasses.put(className);
   }
+  if (filterContainerWidth) {
+    cssClasses.put(classes.filterItemExpand);
+  }
 
   useEffect(() => {
     prevSearchInputPropsValueRef.current = search?.props?.value;

@@ -5,8 +5,10 @@ export const filterValue = (ref, child) => {
   let filterItemProps = {};
   if (
     tagName === 'UI5-INPUT' ||
-    tagName === 'UI5-DATEPICKER' ||
+    tagName === 'UI5-DATE-PICKER' ||
     tagName === 'UI5-DATETIME-PICKER' ||
+    tagName === 'UI5-DATERANGE-PICKER' ||
+    tagName === 'UI5-TIME-PICKER' ||
     tagName === 'UI5-DURATION-PICKER'
   ) {
     filterItemProps = { value: ref.value };

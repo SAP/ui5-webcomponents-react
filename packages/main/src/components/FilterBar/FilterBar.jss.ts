@@ -9,6 +9,9 @@ const styles = {
     background: ThemingParameters.sapObjectHeader_Background,
     boxShadow: ThemingParameters.sapContent_HeaderShadow
   },
+  filterItemExpand: {
+    '--_ui5_input_width': '100%'
+  },
   filterBarHeader: {
     alignItems: 'center',
     display: 'flex',
