@@ -27,6 +27,7 @@ import { Text } from '@ui5/webcomponents-react/lib/Text';
 import { Title } from '@ui5/webcomponents-react/lib/Title';
 import { TitleLevel } from '@ui5/webcomponents-react/lib/TitleLevel';
 import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './FilterBarDialog.jss';
@@ -270,7 +271,7 @@ export const FilterDialog = (props) => {
       });
   }, [renderChildren, toggledFilters, handleCheckBoxChange]);
 
-  return (
+  return createPortal(
     <Dialog ref={dialogRef} header={renderHeader()} footer={renderFooter()} onAfterClose={handleClose}>
       <div className={classes.dialog}>
         {renderFBSearch && (
@@ -281,6 +282,7 @@ export const FilterDialog = (props) => {
         )}
         {renderGroups()}
       </div>
-    </Dialog>
+    </Dialog>,
+    document.body
   );
 };
