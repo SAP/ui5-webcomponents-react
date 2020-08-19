@@ -136,7 +136,7 @@ exports[`FilterBar Render without crashing - default props 1`] = `
 
 exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
 <div
-  class="FilterBar-outerContainer-0"
+  class="FilterBar-outerContainer-0 FilterBar-filterItemExpand-0"
 >
   <div
     class="Toolbar-outerContainer-0 Toolbar-clear-0 FilterBar-filterBarHeader-0"
