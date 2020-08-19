@@ -62,7 +62,6 @@ const rollupConfigFactory = (pkgName, externals = []) => {
 
   console.info('Copy License');
   fs.copyFileSync(path.resolve(PATHS.root, 'LICENSE'), path.resolve(PKG_BASE_PATH, `LICENSE`));
-  fs.copyFileSync(path.resolve(PATHS.root, 'NOTICE.txt'), path.resolve(PKG_BASE_PATH, `NOTICE.txt`));
 
   console.info('Copy index file');
   asyncCopyTo(path.resolve(PKG_BASE_PATH, 'src', 'index.ts'), path.resolve(PKG_BASE_PATH, `index.esm.js`));
