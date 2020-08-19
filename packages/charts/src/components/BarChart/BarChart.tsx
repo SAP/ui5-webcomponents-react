@@ -97,9 +97,6 @@ export interface BarChartProps extends IChartBaseProps {
   measures: MeasureConfig[];
 }
 
-/**
- * <code>import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';</code>
- */
 const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,

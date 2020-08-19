@@ -15,9 +15,6 @@ export interface BarPropTypes extends CommonProps {
 
 const useStyles = createComponentStyles(styles, { name: 'Bar' });
 
-/**
- * <code>import { Bar } from '@ui5/webcomponents-react/lib/Bar';</code>
- */
 const Bar: FC<BarPropTypes> = forwardRef((props: BarPropTypes, ref: Ref<HTMLDivElement>) => {
   const { className, style, tooltip, slot, design, contentLeft, contentMiddle, contentRight } = props;
 

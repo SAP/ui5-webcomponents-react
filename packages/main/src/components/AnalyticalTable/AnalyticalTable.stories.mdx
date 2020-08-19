@@ -5,7 +5,7 @@ import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidt
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
 import generateData from './demo/generateData';
-
+import { DocsHeader } from '@shared/stories/DocsHeader';
 import '@ui5/webcomponents-icons/dist/icons/delete';
 import '@ui5/webcomponents-icons/dist/icons/edit';
 import '@ui5/webcomponents-icons/dist/icons/settings';
@@ -120,9 +120,7 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
   }}
 />
 
-<Title />
-
-<Description />
+<DocsHeader />
 
 <Canvas>
   <Story name="Default">
@@ -162,7 +160,7 @@ import { FlexBoxJustifyContent } from '@ui5/webcomponents-react/lib/FlexBoxJusti
   </Story>
 </Canvas>
 
-<ArgsTable story="Default" of="." />
+<ArgsTable story="." />
 
 ## Column Properties
 

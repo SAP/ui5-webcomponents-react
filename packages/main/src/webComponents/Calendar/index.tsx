@@ -37,8 +37,6 @@ export interface CalendarPropTypes extends WithWebComponentPropTypes {
 }
 
 /**
- * <code>import { Calendar } from '@ui5/webcomponents-react/lib/Calendar';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</a>
  */
 const Calendar: FC<CalendarPropTypes> = withWebComponent<CalendarPropTypes>(

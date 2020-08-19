@@ -23,9 +23,6 @@ export interface NotificationOverflowActionPropTypes extends WithWebComponentPro
   text?: string;
 }
 
-/**
- * <code>import { NotificationOverflowAction } from '@ui5/webcomponents-react/lib/NotificationOverflowAction';</code>
- */
 const NotificationOverflowAction: FC<NotificationOverflowActionPropTypes> = withWebComponent<
   NotificationOverflowActionPropTypes
 >('ui5-notification-overflow-action', ['design', 'icon', 'text'], ['disabled'], [], []);

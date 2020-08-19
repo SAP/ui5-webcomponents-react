@@ -41,8 +41,6 @@ export interface ToggleButtonPropTypes extends Omit<WithWebComponentPropTypes, '
 }
 
 /**
- * <code>import { ToggleButton } from '@ui5/webcomponents-react/lib/ToggleButton';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ToggleButton" target="_blank">UI5 Web Components Playground</a>
  */
 const ToggleButton: FC<ToggleButtonPropTypes> = withWebComponent<ToggleButtonPropTypes>(

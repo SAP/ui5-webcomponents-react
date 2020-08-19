@@ -2,9 +2,9 @@ import { createComponentStyles } from '@ui5/webcomponents-react-base/lib/createC
 import { usePassThroughHtmlProps } from '@ui5/webcomponents-react-base/lib/usePassThroughHtmlProps';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/lib/Utils';
 import { TableScaleWidthMode } from '@ui5/webcomponents-react/lib/TableScaleWidthMode';
-import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import { TableSelectionBehavior } from '@ui5/webcomponents-react/lib/TableSelectionBehavior';
 import { TableSelectionMode } from '@ui5/webcomponents-react/lib/TableSelectionMode';
+import { ValueState } from '@ui5/webcomponents-react/lib/ValueState';
 import debounce from 'lodash.debounce';
 import React, {
   ComponentType,
@@ -132,8 +132,6 @@ export interface TableProps extends CommonProps {
 const useStyles = createComponentStyles(styles, { name: 'AnalyticalTable' });
 
 /**
- * <code>import { AnalyticalTable } from '@ui5/webcomponents-react/lib/AnalyticalTable';</code><br />
- * <br />
  * ### Usage Notes
  * By default, the `AnalyticalTable` will not select any rows after clicking on active elements like a `Button`, `Link`,
  * etc. <br />
@@ -209,7 +207,8 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     totalColumnsWidth,
     toggleRowSelected,
     toggleAllRowsSelected,
-    visibleColumns
+    visibleColumns,
+    setGroupBy
   } = useTable(
     {
       columns,
@@ -253,6 +252,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
     useToggleRowExpand,
     ...tableHooks
   );
+
   // scroll bar detection
   useEffect(() => {
     const visibleRowCount = rows.length < visibleRows ? Math.max(rows.length, minRows) : visibleRows;
@@ -279,18 +279,21 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
   }, [updateTableClientWidth]);
 
   useEffect(() => {
-    dispatch({ type: 'SET_GROUP_BY', payload: groupBy });
-  }, [groupBy, dispatch]);
+    setGroupBy(groupBy);
+  }, [groupBy, setGroupBy]);
 
   useEffect(() => {
     toggleAllRowsSelected(false);
     const validChars = /^(\d\.)*\d$/;
+    // eslint-disable-next-line guard-for-in
     for (const row in selectedRowIds) {
-      if (validChars.test(row)) {
+      if (reactTableOptions?.getRowId) {
+        toggleRowSelected(row, selectedRowIds[row]);
+      } else if (validChars.test(row)) {
         toggleRowSelected(row, selectedRowIds[row]);
       }
     }
-  }, [toggleRowSelected, toggleAllRowsSelected, selectedRowIds]);
+  }, [toggleRowSelected, toggleAllRowsSelected, selectedRowIds, reactTableOptions?.getRowId]);
 
   const calcRowHeight = parseInt(
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
@@ -319,7 +322,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
       } else {
         groupedColumns = tableState.groupBy.filter((group) => group !== column.id);
       }
-      dispatch({ type: 'SET_GROUP_BY', payload: groupedColumns });
+      setGroupBy(groupedColumns);
       onGroup(
         enrichEventWithDetails(e, {
           column,
@@ -327,7 +330,7 @@ const AnalyticalTable: FC<TableProps> = forwardRef((props: TableProps, ref: Ref<
         })
       );
     },
-    [tableState.groupBy, onGroup, dispatch]
+    [tableState.groupBy, onGroup, setGroupBy]
   );
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(

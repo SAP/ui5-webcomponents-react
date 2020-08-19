@@ -57,8 +57,6 @@ export interface ComboBoxPropTypes extends Omit<WithWebComponentPropTypes, 'onCh
 }
 
 /**
- * <code>import { ComboBox } from '@ui5/webcomponents-react/lib/ComboBox';</code>
- * <br />
  * <a href="https://sap.github.io/ui5-webcomponents/playground/components/ComboBox" target="_blank">UI5 Web Components Playground</a>
  */
 const ComboBox: FC<ComboBoxPropTypes> = withWebComponent<ComboBoxPropTypes>(
