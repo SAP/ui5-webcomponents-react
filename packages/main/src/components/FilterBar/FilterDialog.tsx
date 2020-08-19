@@ -282,6 +282,7 @@ export const FilterDialog = (props) => {
         )}
         {renderGroups()}
       </div>
-    </Dialog>, document.body
+    </Dialog>,
+    document.body
   );
 };
