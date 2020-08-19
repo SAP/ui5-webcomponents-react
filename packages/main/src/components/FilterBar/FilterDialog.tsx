@@ -31,6 +31,7 @@ import { Ui5DialogDomRef } from '../../interfaces/Ui5DialogDomRef';
 import { stopPropagation } from '../../internal/stopPropagation';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue } from './utils';
+import { createPortal } from 'react-dom';
 
 const useStyles = createComponentStyles(styles, { name: 'FilterBarDialog' });
 export const FilterDialog = (props) => {
@@ -270,7 +271,7 @@ export const FilterDialog = (props) => {
       });
   }, [renderChildren, toggledFilters, handleCheckBoxChange]);
 
-  return (
+  return createPortal(
     <Dialog ref={dialogRef} header={renderHeader()} footer={renderFooter()} onAfterClose={handleClose}>
       <div className={classes.dialog}>
         {renderFBSearch && (
@@ -281,6 +282,7 @@ export const FilterDialog = (props) => {
         )}
         {renderGroups()}
       </div>
-    </Dialog>
+    </Dialog>, 
+    document.body
   );
 };
