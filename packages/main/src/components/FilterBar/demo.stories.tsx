@@ -24,7 +24,7 @@ export const renderDefaultStory = (props) => {
       filterBarExpanded={props.filterBarExpanded}
       loading={props.loading}
       considerGroupName={props.considerGroupName}
-      filterContainerWidth={props.auto}
+      filterContainerWidth={props.filterContainerWidth}
       activeFiltersCount={props.activeFiltersCount}
       showClearOnFB={props.showClearOnFB}
       showRestoreOnFB={props.showRestoreOnFB}
@@ -116,7 +116,7 @@ export default {
     useToolbar: true,
     filterBarExpanded: true,
     considerGroupName: false,
-    filterContainerWidth: '13rem',
+    filterContainerWidth: '13.125rem',
     activeFiltersCount: 0,
     showClearOnFB: false,
     showRestoreOnFB: false,

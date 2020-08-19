@@ -8,7 +8,8 @@ const styles = {
     flexDirection: 'column',
     maxWidth: '960px',
     width: '80vw',
-    maxHeight: '70vh'
+    maxHeight: '70vh',
+    '--_ui5_input_width': '100%'
   },
   header: {
     width: '100%',
